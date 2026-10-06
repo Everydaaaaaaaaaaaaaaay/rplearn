@@ -1,3 +1,4 @@
+import { bankQuestionSchema, bankTags } from "./bank-content.js";
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import type { AdminAuthenticator } from "../admin/http.js";
@@ -41,6 +42,130 @@ export function registerLearningAdminRoutes(
       authenticate(request);
       done();
     });
+    const bankId = (value: unknown) =>
+      parse(z.object({ id: z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/) }), value).id;
+    scope.get(
+      "/internal/admin/learning/bank/questions",
+      { schema: { hide: true } },
+      (request) =>
+        service.bankQuestions(
+          parse(
+            z.strictObject({
+              level: levelSchema.optional(),
+              topic: z.enum(bankTags).optional(),
+              goal: z.string().max(120).optional(),
+              type: z
+                .enum([
+                  "choice",
+                  "listeningChoice",
+                  "arrange",
+                  "completion",
+                  "dictation",
+                  "matching",
+                ])
+                .optional(),
+              published: z
+                .enum(["true", "false"])
+                .transform((v) => v === "true")
+                .optional(),
+              offset: z.coerce.number().int().min(0).max(100000).default(0),
+              limit: z.coerce.number().int().min(1).max(50).default(30),
+            }),
+            request.query,
+          ),
+        ),
+    );
+    scope.get(
+      "/internal/admin/learning/bank/coverage",
+      { schema: { hide: true } },
+      () => service.bankCoverage(),
+    );
+    scope.get(
+      "/internal/admin/learning/bank/questions/:id",
+      { schema: { hide: true } },
+      (request) => service.bankQuestion(bankId(request.params)),
+    );
+    scope.post(
+      "/internal/admin/learning/bank/questions/:id",
+      { schema: { hide: true }, bodyLimit: 65536 },
+      (request) => {
+        const body = parse(
+          z.strictObject({
+            expectedHash: z.string().regex(/^[a-f0-9]{64}$/),
+            question: bankQuestionSchema,
+            published: z.boolean(),
+            confirmed: z.literal(true),
+          }),
+          request.body,
+        );
+        return service.saveBankQuestion(
+          bankId(request.params),
+          body.expectedHash,
+          body.question,
+          body.published,
+          request.operatorKeyId ?? "未知管理员",
+        );
+      },
+    );
+    scope.post(
+      "/internal/admin/learning/bank/questions/:id/variants",
+      { schema: { hide: true }, bodyLimit: 65536 },
+      (request) => {
+        const body = parse(
+          z.strictObject({
+            expectedHash: z.string().regex(/^[a-f0-9]{64}$/),
+            question: bankQuestionSchema,
+            confirmed: z.literal(true),
+          }),
+          request.body,
+        );
+        return service.createBankQuestion(
+          bankId(request.params),
+          body.expectedHash,
+          body.question,
+          request.operatorKeyId ?? "未知管理员",
+        );
+      },
+    );
+    scope.get(
+      "/internal/admin/learning/bank/questions/:id/media/:kind/:assetId",
+      { schema: { hide: true } },
+      async (request, reply) => {
+        const p = parse(
+          z.object({
+            id: z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/),
+            kind: z.enum(["audio", "images"]),
+            assetId: z.string().regex(/^(audio|image)\.[a-f0-9]{64}$/),
+          }),
+          request.params,
+        );
+        const q = parse(
+          z.strictObject({ hash: z.string().regex(/^[a-f0-9]{64}$/) }),
+          request.query,
+        );
+        const result = await service.bankMedia(p.id, p.kind, p.assetId, q.hash);
+        return reply
+          .header("x-content-type-options", "nosniff")
+          .type(result.contentType)
+          .send(result.bytes);
+      },
+    );
+    scope.get(
+      "/internal/admin/learning/bank/preview/:id",
+      { schema: { hide: true } },
+      (request) => {
+        const query = parse(
+          z.strictObject({
+            roleKey: z
+              .string()
+              .regex(/^[a-z][a-z0-9_.-]{0,119}$/)
+              .default("character.preview"),
+          }),
+          request.query,
+        );
+        return service.previewBank(bankId(request.params), query.roleKey);
+      },
+    );
     scope.get("/internal/admin/learning/units", { schema: { hide: true } }, (request) =>
       service.units(parse(filterSchema, request.query)),
     );

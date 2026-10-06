@@ -48,9 +48,10 @@ export class LearningPromotionSession {
     const evidence = await this.sql<
       { goal_id: string; correct: number; units: number }[]
     >`
-      select r.goal_id,count(distinct (a.unit_id,r.question_id))::int as correct,count(distinct a.unit_id)::int as units
+      select r.goal_id,count(distinct coalesce(e.question_id,a.unit_id||':'||r.question_id))::int as correct,count(distinct coalesce(a.blueprint_id,a.unit_id))::int as units
       from app.learning_rewards r join app.learning_attempts a on a.id=r.attempt_id
-      where r.user_id=${this.userId} and r.level_key=${level} and a.first_completed_at is not null
+      left join app.learning_bank_exposures e on e.attempt_id=a.id and e.local_question_id=r.question_id
+      where r.user_id=${this.userId} and r.level_key=${level} and r.points>0 and a.first_completed_at is not null
       group by r.goal_id`;
     const goals = (course?.requiredGoals ?? []).map((goal) => {
       const found = evidence.find((e) => e.goal_id === goal.id);

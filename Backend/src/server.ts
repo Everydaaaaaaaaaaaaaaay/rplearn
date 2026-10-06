@@ -1,3 +1,4 @@
+import { registerLearningBankConsole } from "./modules/learning/bank-console.js";
 import { loadPromotionCourses } from "./modules/learning/promotion-content.js";
 import { fileURLToPath } from "node:url";
 import { loadGenerationBlueprints } from "./modules/learning/generation-content.js";
@@ -9,7 +10,7 @@ import { registerLearningAdminConsole } from "./modules/learning/admin-console.j
 import { createLearningMilestoneReader } from "./modules/learning/service.js";
 import { createLearningChatService } from "./modules/learning/chat-service.js";
 import type { LearningContextReader } from "./modules/learning/context.js";
-import { learningRoleKey } from "./modules/learning/context.js";
+import { learningCompanion, learningRoleKey } from "./modules/learning/context.js";
 import { registerLearningRoutes } from "./modules/learning/routes.js";
 import { createLearningService } from "./modules/learning/service.js";
 import { readServiceJournal } from "./infrastructure/journal-reader.js";
@@ -172,6 +173,8 @@ async function main(): Promise<void> {
     profile: learningProfile.difficulty,
     promotionProfile: learningProfile.promotionProfile,
     promoteProfile: learningProfile.promoteProfile,
+    companion: async (sql, userId, characterId) =>
+      learningCompanion(await learningContent.character(sql, userId, characterId)),
     character: async (sql, userId, characterId) =>
       learningRoleKey(await learningContent.character(sql, userId, characterId)),
   };
@@ -276,6 +279,7 @@ async function main(): Promise<void> {
       ),
     );
     registerLearningAdminConsole(app);
+    registerLearningBankConsole(app);
     registerDictionaryTranslationAdminRoutes(
       app,
       authenticateAdmin,

@@ -1,3 +1,5 @@
+import type { LearningBankRepository } from "./bank-repository.js";
+import { bankQuestionSchema, type BankQuestion } from "./bank-content.js";
 import { ZodError } from "zod";
 import { AppError } from "../../shared/errors.js";
 import type {
@@ -21,6 +23,64 @@ export class LearningAdminService {
     private readonly mediaStore?: Pick<LearningAudioObjectStore, "createDownloadUrl">,
     private readonly download: typeof fetch = fetch,
   ) {}
+  bankQuestions(filter: Parameters<LearningBankRepository["list"]>[0]) {
+    return this.repository.bank().list(filter);
+  }
+  bankCoverage() {
+    return this.repository.bank().coverage();
+  }
+  async bankQuestion(id: string) {
+    const detail = await this.repository.bank().detail(id);
+    const q = bankQuestionSchema.parse(detail.payload);
+    return {
+      ...detail,
+      media: await this.repository.media({ questions: [q.question] }),
+    };
+  }
+  saveBankQuestion(
+    id: string,
+    hash: string,
+    question: BankQuestion,
+    published: boolean,
+    operator: string,
+  ) {
+    return this.repository
+      .bank()
+      .save(id, hash, question, published, operatorLabel(operator));
+  }
+  createBankQuestion(
+    id: string,
+    hash: string,
+    question: BankQuestion,
+    operator: string,
+  ) {
+    return this.repository
+      .bank()
+      .createVariant(id, hash, question, operatorLabel(operator));
+  }
+  previewBank(id: string, roleKey: string) {
+    return this.repository.bank().preview(id, roleKey);
+  }
+  async bankMedia(id: string, kind: "audio" | "images", assetId: string, hash: string) {
+    const detail = await this.bankQuestion(id);
+    if (detail.content_hash !== hash)
+      throw new AppError({
+        code: "LEARNING_MEDIA_VERSION_CHANGED",
+        message: "题目已更新，请重新读取。",
+        statusCode: 409,
+      });
+    const asset = detail.media[kind].find((a) => a.id === assetId);
+    if (!asset)
+      throw new AppError({
+        code: "LEARNING_MEDIA_NOT_FOUND",
+        message: "题目未引用此素材。",
+        statusCode: 404,
+      });
+    return {
+      bytes: await readAdminLearningMedia(asset, this.mediaStore, this.download),
+      contentType: asset.contentType,
+    };
+  }
   units(filter: LearningAdminFilter) {
     return this.repository.units(filter);
   }

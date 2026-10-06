@@ -1,0 +1,349 @@
+import { buildApp } from "../../src/app.js";
+import { createAdminAuthenticator } from "../../src/modules/admin/http.js";
+import { registerLearningAdminRoutes } from "../../src/modules/learning/admin-routes.js";
+import { LearningAdminService } from "../../src/modules/learning/admin-service.js";
+import { LearningAdminRepository } from "../../src/modules/learning/admin-repository.js";
+import { LearningGenerationRepository } from "../../src/modules/learning/generation-repository.js";
+import { randomUUID } from "node:crypto";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { createDatabase, type DatabaseResource } from "../../src/db/client.js";
+import { runMigrations } from "../../src/db/migrate.js";
+import {
+  LearningEngineRepository,
+  type LearningSession,
+} from "../../src/modules/learning/engine-repository.js";
+import { LearningBankRepository } from "../../src/modules/learning/bank-repository.js";
+import { loadBankCatalog } from "../../src/modules/learning/bank-catalog.js";
+import { loadCuratedCatalog } from "../../src/modules/learning/catalog.js";
+import { bankQuestionSchema } from "../../src/modules/learning/bank-content.js";
+import {
+  contentHash,
+  type LearningLevel,
+  type LearningUnit,
+} from "../../src/modules/learning/content.js";
+import { gradeAnswer } from "../../src/modules/learning/grading.js";
+import { integrationConfig } from "../helpers/integration.js";
+
+function required<T>(value: T | undefined | null): T {
+  if (value === undefined || value === null) throw new Error("测试夹具缺少必要内容。");
+  return value;
+}
+
+const directory = new URL("../../config/learning", import.meta.url).pathname;
+describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务", () => {
+  let db: DatabaseResource,
+    engine: LearningEngineRepository,
+    bank: LearningBankRepository;
+  let catalog: Awaited<ReturnType<typeof loadBankCatalog>>;
+  let authored: Awaited<ReturnType<typeof loadCuratedCatalog>>;
+  const users: string[] = [];
+  const addedIds: string[] = [];
+  beforeAll(async () => {
+    db = createDatabase(integrationConfig());
+    await runMigrations(db);
+    engine = new LearningEngineRepository(db);
+    bank = new LearningBankRepository(db);
+    authored = await loadCuratedCatalog(directory);
+    catalog = await loadBankCatalog(directory);
+    await engine.publishBatch(
+      authored.units,
+      authored.audioAssets.map((a) => a.metadata),
+      authored.imageAssets.map((a) => a.metadata),
+    );
+    await bank.importCatalog(catalog.entries, catalog.blueprints);
+  }, 30000);
+  afterAll(async () => {
+    for (const user of users) await db.sql`delete from app.users where id=${user}`;
+    const ids = [...catalog.entries.map((e) => e.question.id), ...addedIds];
+    await db.sql`delete from app.learning_bank_audit where question_id=any(${ids})`;
+    await db.sql`delete from app.learning_bank_sources where question_id=any(${ids})`;
+    await db.sql`delete from app.learning_bank_versions where question_id=any(${ids})`;
+    await db.sql`delete from app.learning_bank_questions where id=any(${ids})`;
+    await db.sql`delete from app.learning_bank_blueprints where id=any(${catalog.blueprints.map((b) => b.id)})`;
+    for (const unit of authored.units) {
+      await db.sql`delete from app.learning_unit_versions where unit_id=${unit.id}`;
+      await db.sql`delete from app.learning_units where id=${unit.id}`;
+    }
+    await db.close();
+  });
+  async function account() {
+    const user = randomUUID();
+    users.push(user);
+    await db.sql`insert into app.users(id) values(${user})`;
+    const command = <T>(action: (s: LearningSession) => Promise<T>) =>
+      engine.command(user, randomUUID(), "test", {}, action);
+    async function character(role = `character.${randomUUID()}`) {
+      const id = randomUUID();
+      const state = await command((s) => s.ensureCharacter(id, role));
+      await command((s) =>
+        s.recordMessage({
+          characterId: id,
+          cycleId: state.cycleId,
+          messageId: randomUUID(),
+          text: "字".repeat(1000),
+        }),
+      );
+      return id;
+    }
+    async function start(id: string, level: LearningLevel = "primary3") {
+      const r = await command((s) => s.start(id, level));
+      if (!r.attempt) throw new Error("未分配挑战");
+      return r.attempt;
+    }
+    return { user, command, character, start };
+  }
+  async function privateUnit(id: string) {
+    const [r] = await db.sql<
+      { payload: LearningUnit }[]
+    >`select coalesce(a.snapshot,v.payload) as payload from app.learning_attempts a left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version where a.id=${id}`;
+    return required(r).payload;
+  }
+  it("任意角色覆盖十二年级，固定快照可读取且响应没有答案", async () => {
+    const c = await account();
+    for (const level of new Set(catalog.blueprints.map((b) => b.level))) {
+      const id = await c.character();
+      const a = await c.start(id, level);
+      expect(a.unit.questions).toHaveLength(6);
+      expect(a.unit.level).toBe(level);
+      expect(JSON.stringify(a.unit)).not.toContain('"acceptedAnswers"');
+      expect(JSON.stringify(a.unit)).not.toContain('"explanation"');
+      expect((await engine.read(c.user, (s) => s.history(id, 10))).items[0]?.id).toBe(
+        a.id,
+      );
+    }
+  });
+  it("并发跨角色不重复出题，其他账号可以使用相同公共库", async () => {
+    const c = await account();
+    const ids = await Promise.all([c.character(), c.character()]);
+    const attempts = await Promise.all(ids.map((id) => c.start(id)));
+    const first = new Set(required(attempts[0]).unit.questions.map((q) => q.id));
+    expect(required(attempts[1]).unit.questions.every((q) => !first.has(q.id))).toBe(
+      true,
+    );
+    const other = await account();
+    expect((await other.start(await other.character())).unit.questions).toHaveLength(6);
+    await expect(
+      engine.read(other.user, (s) => s.attempt(required(attempts[0]).id)),
+    ).rejects.toMatchObject({ code: "LEARNING_ATTEMPT_NOT_FOUND" });
+  });
+  it("首轮、补答、重复提交共用首次得分，且补答保留原题版本", async () => {
+    const c = await account();
+    const character = await c.character();
+    const a = await c.start(character);
+    const unit = await privateUnit(a.id);
+    const first = required(unit.questions[0]);
+    await c.command((s) =>
+      s.submit({
+        attemptId: a.id,
+        roundId: a.round.id,
+        questionId: first.id,
+        answer: gradeAnswer(first, { kind: "skip" }).solution,
+      }),
+    );
+    await c.command((s) => s.finish(a.id, true));
+    expect((await engine.read(c.user, (s) => s.character(character))).characters).toBe(
+      0,
+    );
+    const detail = await bank.detail(first.id);
+    const old = bankQuestionSchema.parse(detail.payload);
+    await bank.save(
+      old.id,
+      detail.content_hash,
+      {
+        ...old,
+        version: old.version + 1,
+        question: {
+          ...old.question,
+          explanation: "只修正讲解，不改变旧挑战已经固定的题面与答案。",
+        },
+        reviewNotes:
+          "逐题核对题干与答案保持原样，本次只修改解析措辞，确认适用水平与场景不发生变化。",
+      },
+      true,
+      "隔离测试",
+    );
+    expect((await privateUnit(a.id)).questions[0]).toEqual(first);
+    const retry = await c.command((s) => s.retry(a.id));
+    expect(retry.round.questionIds).toHaveLength(5);
+    for (const q of unit.questions.slice(1))
+      await c.command((s) =>
+        s.submit({
+          attemptId: a.id,
+          roundId: retry.round.id,
+          questionId: q.id,
+          answer: gradeAnswer(q, { kind: "skip" }).solution,
+        }),
+      );
+    expect((await engine.read(c.user, (s) => s.progress()))[0]?.points).toBe(6);
+    await expect(
+      bank.save(old.id, detail.content_hash, { ...old, version: 2 }, true, "过期编辑"),
+    ).rejects.toMatchObject({ code: "LEARNING_BANK_CONFLICT" });
+  });
+  it("专属单元优先且与公共题库共享去重；下架后不再组卷", async () => {
+    const c = await account();
+    const character = await c.character("oliver");
+    const a = await c.start(character, "primary2");
+    expect(a.unit.id).toMatch(/^oliver\./);
+    const refs = await db.sql<
+      { question_id: string }[]
+    >`select question_id from app.learning_bank_exposures where attempt_id=${a.id}`;
+    expect(refs).toHaveLength(6);
+    const other = await c.start(await c.character(), "primary2");
+    expect(
+      other.unit.questions.every((q) => !refs.some((r) => r.question_id === q.id)),
+    ).toBe(true);
+    const q = required(
+      catalog.entries.find((e) => e.question.level === "primary5"),
+    ).question;
+    await bank.save(
+      q.id,
+      contentHash(q),
+      {
+        ...q,
+        version: 2,
+        reviewNotes:
+          "测试下架单道题后组卷配额不足时应停止抽取，而不是复用旧专属单元继续提供该题。",
+      },
+      false,
+      "隔离测试",
+    );
+    const source = required(catalog.entries.find((e) => e.question.id === q.id));
+    expect(
+      (await bank.preview(`bank.${source.unitId}`, "character.preview")).missing,
+    ).toBe(true);
+  });
+  it("七天到期复习不重复奖励，未到期不重新出题", async () => {
+    const c = await account();
+    for (let i = 0; i < 6; i++) {
+      const a = await c.start(await c.character(), "primary2");
+      const unit = await privateUnit(a.id);
+      for (const q of unit.questions)
+        await c.command((s) =>
+          s.submit({
+            attemptId: a.id,
+            roundId: a.round.id,
+            questionId: q.id,
+            answer: gradeAnswer(q, { kind: "skip" }).solution,
+          }),
+        );
+      await c.command((s) => s.finish(a.id, false));
+    }
+    const character = await c.character();
+    expect(await c.command((s) => s.start(character, "primary2"))).toEqual({
+      status: "preparing",
+      attempt: null,
+    });
+    await db.sql`update app.learning_bank_exposures set created_at=now()-interval '8 days' where user_id=${c.user}`;
+    await db.sql`update app.learning_bank_mastery set created_at=now()-interval '8 days' where user_id=${c.user}`;
+    const review = await c.start(character, "primary2");
+    expect(review.unit.title).toMatch(/^复习/);
+    for (const q of (await privateUnit(review.id)).questions) {
+      const result = await c.command((s) =>
+        s.submit({
+          attemptId: review.id,
+          roundId: review.round.id,
+          questionId: q.id,
+          answer: gradeAnswer(q, { kind: "skip" }).solution,
+        }),
+      );
+      expect(result.awardedPoints).toBe(0);
+    }
+    expect((await engine.read(c.user, (s) => s.progress()))[0]?.points).toBe(36);
+    expect(
+      (await engine.read(c.user, (s) => s.attempt(review.id))).correctQuestionIds,
+    ).toHaveLength(6);
+  });
+
+  it("后台鉴权、筛选、预览、错误答案拒绝、新题发布和重复材料阻止", async () => {
+    const token = "bank-isolated-test-token-at-least-thirty-two";
+    const config = integrationConfig({
+      ADMIN_API_ENABLED: "true",
+      ADMIN_API_KEYS: `editor=${token}`,
+    });
+    const app = await buildApp(config, { logger: false });
+    registerLearningAdminRoutes(
+      app,
+      createAdminAuthenticator(config.adminApiKeys),
+      new LearningAdminService(
+        new LearningAdminRepository(db),
+        new LearningGenerationRepository(db),
+        [],
+      ),
+    );
+    await app.ready();
+    const headers = { authorization: `Bearer ${token}` };
+    const path = "/internal/admin/learning/bank";
+    try {
+      expect((await app.inject({ url: path + "/questions" })).statusCode).toBe(401);
+      const list = await app.inject({
+        url: path + "/questions?level=junior1&type=choice&limit=2",
+        headers,
+      });
+      expect(list.statusCode).toBe(200);
+      expect(
+        list.json<{ items: { payload: unknown; content_hash: string }[] }>().items,
+      ).toHaveLength(2);
+      const item = required(
+        list.json<{ items: { payload: unknown; content_hash: string }[] }>().items[0],
+      );
+      const q = bankQuestionSchema.parse(item.payload);
+      if (q.question.type !== "choice") throw new Error("夹具题型错误");
+      const hash = item.content_hash;
+      const invalid = {
+        ...q,
+        version: q.version + 1,
+        question: { ...q.question, answer: "missing-option" },
+      };
+      expect(
+        (
+          await app.inject({
+            method: "POST",
+            url: path + "/questions/" + q.id,
+            headers,
+            payload: {
+              expectedHash: hash,
+              question: invalid,
+              published: true,
+              confirmed: true,
+            },
+          })
+        ).statusCode,
+      ).toBe(422);
+      const variant = {
+        ...q,
+        question: { ...q.question, prompt: q.question.prompt + "（隔离测试的新材料）" },
+      };
+      const response = await app.inject({
+        method: "POST",
+        url: path + "/questions/" + q.id + "/variants",
+        headers,
+        payload: { expectedHash: hash, question: variant, confirmed: true },
+      });
+      expect(response.statusCode).toBe(200);
+      addedIds.push(response.json<{ id: string }>().id);
+      expect(
+        (
+          await app.inject({
+            method: "POST",
+            url: path + "/questions/" + q.id + "/variants",
+            headers,
+            payload: { expectedHash: hash, question: variant, confirmed: true },
+          })
+        ).statusCode,
+      ).toBe(409);
+      const preview = await app.inject({
+        url:
+          path +
+          "/preview/" +
+          required(catalog.blueprints.find((b) => b.level === "junior1")).id,
+        headers,
+      });
+      expect(preview.statusCode).toBe(200);
+      expect(
+        preview.json<{ unit: { questions: unknown[] } }>().unit.questions,
+      ).toHaveLength(6);
+    } finally {
+      await app.close();
+    }
+  });
+});

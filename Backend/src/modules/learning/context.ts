@@ -7,6 +7,11 @@ import { AppError } from "../../shared/errors.js";
 /** 由组装层连接领域服务；学习仓库不越界读取聊天或档案表。 */
 export type PromotionProfile = Readonly<{ difficulty: LearningLevel; version: number }>;
 export interface LearningContextReader {
+  companion?: (
+    sql: TransactionSql,
+    userId: string,
+    characterId: string,
+  ) => Promise<{ name: string }>;
   promotionProfile?: (sql: TransactionSql, userId: string) => Promise<PromotionProfile>;
   promoteProfile?: (
     sql: TransactionSql,
@@ -54,6 +59,11 @@ export function learningRoleKey(record: ContentRecord | undefined): string {
     );
     if (role) return role.key;
   }
-  // 非预设角色保持独立身份；没有审核内容时保留满条，不能借用主角色题库。
+  // 所有角色保持独立进度身份；非预设角色通过公共题库组卷。
   return `character.${record.resourceId.toLowerCase()}`;
+}
+
+export function learningCompanion(record: ContentRecord | undefined): { name: string } {
+  const parsed = characterSchema.safeParse(record?.payload);
+  return { name: parsed.success ? parsed.data.card.name.slice(0, 60) : "同行者" };
 }

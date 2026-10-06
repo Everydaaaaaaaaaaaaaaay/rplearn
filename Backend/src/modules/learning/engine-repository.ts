@@ -1,3 +1,4 @@
+import { LearningBankSession } from "./bank-repository.js";
 import { LearningPromotionSession } from "./promotion-repository.js";
 import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningContextReader } from "./context.js";
@@ -280,14 +281,22 @@ export class LearningSession {
       { count: number }[]
     >`select count(*)::integer as count from app.learning_units u
       where u.published and u.role_key=${roleKey} and u.level_key=${level}
-      and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)`;
+      and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)
+        and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_exposures e on e.question_id=s.question_id
+          where s.unit_id=u.id and s.unit_version=u.current_version and e.user_id=${this.userId})
+        and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_questions b on b.id=s.question_id
+          where s.unit_id=u.id and s.unit_version=u.current_version and (not b.published or b.current_version<>1))`;
     const [job] = await this.sql<
       { status: string }[]
     >`select status from app.learning_generation_jobs
       where role_key=${roleKey} and level_key=${level} and status in ('pending','running','review') limit 1`;
+    const sharedCount = (
+      await new LearningBankSession(this.sql, this.userId).choices(level, roleKey)
+    ).length;
     return {
-      availableUnits: row?.count ?? 0,
-      generationStatus: row?.count === 0 ? (job?.status ?? null) : null,
+      availableUnits: (row?.count ?? 0) + sharedCount,
+      generationStatus:
+        (row?.count ?? 0) + sharedCount === 0 ? (job?.status ?? null) : null,
     };
   }
 
@@ -307,10 +316,10 @@ export class LearningSession {
         correct_count: number;
       }[]
     >`
-      select a.id,a.level_key,a.started_at::text,a.first_completed_at::text,v.payload->>'title' as title,
-        jsonb_array_length(v.payload->'questions') as question_count,
+      select a.id,a.level_key,a.started_at::text,a.first_completed_at::text,coalesce(a.snapshot,v.payload)->>'title' as title,
+        jsonb_array_length(coalesce(a.snapshot,v.payload)->'questions') as question_count,
         (select count(*)::integer from app.learning_rewards r where r.attempt_id=a.id) as correct_count
-      from app.learning_attempts a join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+      from app.learning_attempts a left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
       where a.user_id=${this.userId} and a.character_id=${characterId}
         and (${cursor === undefined} or (a.started_at,a.id)<(${cursor?.startedAt ?? "9999-01-01T00:00:00Z"}::timestamptz,${cursor?.id ?? "ffffffff-ffff-ffff-ffff-ffffffffffff"}::uuid))
       order by a.started_at desc,a.id desc limit ${limit + 1}`;
@@ -392,6 +401,8 @@ export class LearningSession {
   }
 
   async start(characterId: string, level: LearningLevel) {
+    await this
+      .sql`select pg_advisory_xact_lock_shared(hashtextextended('learning-publication',0))`;
     const state = await this.character(characterId);
     if (state.activeAttemptId)
       return {
@@ -404,17 +415,42 @@ export class LearningSession {
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.role_key=${state.roleKey} and u.level_key=${level}
         and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)
+        and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_exposures e on e.question_id=s.question_id
+          where s.unit_id=u.id and s.unit_version=u.current_version and e.user_id=${this.userId})
+        and not exists(select 1 from app.learning_bank_sources s join app.learning_bank_questions b on b.id=s.question_id
+          where s.unit_id=u.id and s.unit_version=u.current_version and (not b.published or b.current_version<>1))
       order by random() limit 1`;
-    if (!candidate) {
-      await this.sql`insert into app.learning_generation_jobs(id, role_key, level_key)
-        values(${randomUUID()},${state.roleKey},${level}) on conflict do nothing`;
+    const attemptId = randomUUID();
+    const bank = new LearningBankSession(this.sql, this.userId);
+    const companion = await this.context?.companion?.(
+      this.sql,
+      this.userId,
+      characterId,
+    );
+    const composed = candidate
+      ? null
+      : await bank.compose(
+          level,
+          state.roleKey,
+          companion?.name ?? "同行者",
+          attemptId,
+        );
+    if (!candidate && !composed) {
+      // 只为确有角色蓝图的主角色保留原生成队列；普通角色缺题由公共题库补齐。
+      if (
+        ["oliver", "ruby", "marcus"].includes(state.roleKey) &&
+        ["primary3", "primary4"].includes(level)
+      ) {
+        await this.sql`insert into app.learning_generation_jobs(id, role_key, level_key)
+          values(${randomUUID()},${state.roleKey},${level}) on conflict do nothing`;
+      }
       return { status: "preparing" as const, attempt: null };
     }
-    const unit = unitSchema.parse(candidate.payload);
-    const attemptId = randomUUID();
+    const unit = unitSchema.parse(candidate?.payload ?? composed?.unit);
     await this
-      .sql`insert into app.learning_attempts(id,user_id,character_id,cycle_id,unit_id,unit_version,level_key)
-      values(${attemptId},${this.userId},${characterId},${state.cycleId},${unit.id},${unit.version},${level})`;
+      .sql`insert into app.learning_attempts(id,user_id,character_id,cycle_id,unit_id,unit_version,level_key,snapshot,blueprint_id)
+      values(${attemptId},${this.userId},${characterId},${state.cycleId},${candidate ? unit.id : null},${candidate ? unit.version : null},${level},${composed ? JSON.stringify(unit) : null}::jsonb,${composed?.blueprintId ?? null})`;
+    await bank.recordExposure(attemptId, unit, composed?.questions);
     await this.sql`insert into app.learning_rounds(id,attempt_id,ordinal,question_ids)
       values(${randomUUID()},${attemptId},0,${unit.questions.map((q) => q.id)})`;
     await this
@@ -425,8 +461,8 @@ export class LearningSession {
   private async rawAttempt(id: string): Promise<AttemptRow> {
     const [row] = await this.sql<
       AttemptRow[]
-    >`select a.*, v.payload from app.learning_attempts a
-      join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
+    >`select a.*, coalesce(a.snapshot,v.payload) as payload from app.learning_attempts a
+      left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version
       where a.id=${id} and a.user_id=${this.userId}`;
     if (!row) reject("LEARNING_ATTEMPT_NOT_FOUND", "找不到这次挑战。", 404);
     return row;
@@ -478,6 +514,8 @@ export class LearningSession {
     questionId: string;
     answer: LearningAnswer;
   }) {
+    await this
+      .sql`select pg_advisory_xact_lock_shared(hashtextextended('learning-publication',0))`;
     const attempt = await this.rawAttempt(input.attemptId);
     const [round] = await this.sql<
       RoundRow[]
@@ -497,11 +535,15 @@ export class LearningSession {
       values(${input.roundId},${input.questionId},${JSON.stringify(input.answer)}::jsonb,${JSON.stringify(result)}::jsonb)`;
     let awardedPoints = 0;
     if (result.outcome === "correct") {
+      const firstMastery = await new LearningBankSession(this.sql, this.userId).claim(
+        input.attemptId,
+        input.questionId,
+      );
       const award = await this
         .sql`insert into app.learning_rewards(attempt_id,question_id,user_id,level_key,goal_id,points)
-        values(${input.attemptId},${input.questionId},${this.userId},${attempt.level_key},${question.goalId},1)
+        values(${input.attemptId},${input.questionId},${this.userId},${attempt.level_key},${question.goalId},${firstMastery ? 1 : 0})
         on conflict(attempt_id,question_id) do nothing returning points`;
-      if (award.length > 0) {
+      if (award.length > 0 && firstMastery) {
         awardedPoints = 1;
         const [progress] = await this.sql<
           { points: number }[]

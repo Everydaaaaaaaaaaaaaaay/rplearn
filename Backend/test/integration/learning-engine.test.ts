@@ -206,7 +206,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     ).toBe(1000);
     const jobs =
       await database.sql`select id from app.learning_generation_jobs where role_key=${c.role}`;
-    expect(jobs).toHaveLength(1);
+    expect(jobs).toHaveLength(0);
   });
 
   it("多个角色共建同档星星，补答始终计入挑战原档且里程碑不重复", async () => {

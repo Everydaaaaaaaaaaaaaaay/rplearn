@@ -121,7 +121,7 @@ export const unitSchema = z
         }),
       )
       .min(1)
-      .max(8),
+      .max(48),
     authorship: z.strictObject({
       kind: z.enum(["authored", "generated"]),
       author: text.max(100),

@@ -1,3 +1,4 @@
+import { LearningBankRepository } from "./bank-repository.js";
 import type { DatabaseResource } from "../../db/client.js";
 import { questionImageIds, unitSchema, type LearningUnit } from "./content.js";
 import { learningAudioSchema } from "./audio.js";
@@ -13,7 +14,10 @@ export type LearningAdminFilter = Readonly<{
 /** 后台只读取公开课程与生成记录，不读取用户聊天、作答或身份。 */
 export class LearningAdminRepository {
   constructor(private readonly database: DatabaseResource) {}
-  async media(unit: LearningUnit | null) {
+  bank() {
+    return new LearningBankRepository(this.database);
+  }
+  async media(unit: Pick<LearningUnit, "questions"> | null) {
     if (!unit) return { audio: [], images: [] };
     const imageIds = [...new Set(unit.questions.flatMap(questionImageIds))];
     const audioIds = [
