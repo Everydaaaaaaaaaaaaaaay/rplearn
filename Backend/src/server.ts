@@ -7,7 +7,6 @@ import { LearningAdminRepository } from "./modules/learning/admin-repository.js"
 import { LearningAdminService } from "./modules/learning/admin-service.js";
 import { registerLearningAdminRoutes } from "./modules/learning/admin-routes.js";
 import { registerLearningAdminConsole } from "./modules/learning/admin-console.js";
-import { createLearningMilestoneReader } from "./modules/learning/service.js";
 import { createLearningChatService } from "./modules/learning/chat-service.js";
 import type { LearningContextReader } from "./modules/learning/context.js";
 import { learningCompanion, learningRoleKey } from "./modules/learning/context.js";
@@ -286,10 +285,7 @@ async function main(): Promise<void> {
       dictionaryTranslationService,
     );
   }
-  const domainService = createDomainService(
-    dependencies.database,
-    createLearningMilestoneReader(),
-  );
+  const domainService = createDomainService(dependencies.database);
   registerDomainRoutes(app, authService, domainService, {
     enableDebugRoutes: config.nodeEnv !== "production",
   });

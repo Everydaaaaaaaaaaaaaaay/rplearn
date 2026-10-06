@@ -1,4 +1,3 @@
-import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -142,7 +141,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         conversation = randomUUID();
       users.push(user);
       await db.sql`insert into app.users(id) values(${user})`;
-      await createDomainService(db, createLearningMilestoneReader()).getSnapshot(user);
+      await createDomainService(db).getSnapshot(user);
       const tokens = await auth.loginFederated(
         user,
         0,

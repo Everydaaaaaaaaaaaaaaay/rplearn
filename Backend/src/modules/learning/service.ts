@@ -1,6 +1,5 @@
 import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningLevel } from "./content.js";
-import { countEarnedStars } from "./milestone-repository.js";
 import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -47,6 +46,30 @@ export function createLearningService(
 ) {
   const repository = new LearningEngineRepository(database, context);
   return {
+    debugFill: async (
+      userId: string,
+      requestId: string,
+      characterId: string,
+      cycleId: string,
+    ) => {
+      await drainMessages?.(userId);
+      return repository.command(
+        userId,
+        requestId,
+        "debug.fill",
+        { characterId, cycleId },
+        async (session) => {
+          await session.resolveCharacter(characterId);
+          const state = await session.debugFill(characterId, cycleId);
+          const level = await session.currentLevel();
+          return {
+            ...state,
+            level,
+            ...(await session.availability(state.roleKey, level, characterId)),
+          };
+        },
+      );
+    },
     beginPromotion: (userId: string, requestId: string, level: LearningLevel) =>
       repository.command(userId, requestId, "promotion.begin", { level }, (session) =>
         session.promotions(courses).begin(level),
@@ -232,4 +255,3 @@ export function createLearningService(
 export type LearningService = ReturnType<typeof createLearningService>;
 
 /** 向组装层提供事务内读取合同，不暴露学习表。 */
-export const createLearningMilestoneReader = () => countEarnedStars;

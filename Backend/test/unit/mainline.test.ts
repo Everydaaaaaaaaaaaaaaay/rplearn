@@ -3,7 +3,6 @@ import { mainlineProgress } from "../../src/modules/domain/mainline.js";
 const base = {
   starterRegionId: "london",
   hasCompletedOnboarding: true,
-  earnedStars: 0,
   completedStoryIds: [],
   isGuest: false,
 };
@@ -15,9 +14,6 @@ describe("全局主线解锁政策", () => {
   ])("%s 起点与客户端目录保持一致", (starterRegionId, expected) => {
     const result = mainlineProgress({ ...base, starterRegionId });
     expect(result.chapters.map((chapter) => chapter.regionId)).toEqual(expected);
-    expect(result.chapters.map((chapter) => chapter.requiredStars)).toEqual([
-      0, 3, 9, 18, 27,
-    ]);
     expect(result.chapters.map((chapter) => chapter.state)).toEqual([
       "available",
       "locked",
@@ -26,18 +22,15 @@ describe("全局主线解锁政策", () => {
       "locked",
     ]);
   });
-  it("星星足够仍需前章；恰好达标才开放下一章", () => {
-    expect(mainlineProgress({ ...base, earnedStars: 27 }).chapters[1]?.lockReason).toBe(
-      "previousChapter",
-    );
-    const completedStoryIds = ["mainline_london"];
-    expect(
-      mainlineProgress({ ...base, earnedStars: 2, completedStoryIds }).chapters[1],
-    ).toMatchObject({ state: "locked", missingStars: 1, lockReason: "stars" });
-    expect(
-      mainlineProgress({ ...base, earnedStars: 3, completedStoryIds }).chapters[1]
-        ?.state,
-    ).toBe("available");
+  it("主线仅按前章推进，完成前章即可开放下一章", () => {
+    expect(mainlineProgress(base).chapters[1]?.lockReason).toBe("previousChapter");
+    const result = mainlineProgress({
+      ...base,
+      completedStoryIds: ["mainline_london"],
+    });
+    expect(result.chapters[1]?.state).toBe("available");
+    expect(result).not.toHaveProperty("earnedStars");
+    expect(result.chapters[1]).not.toHaveProperty("requiredStars");
   });
   it("保留既有已完成章，不按新门槛重新锁住", () => {
     const result = mainlineProgress({
@@ -54,7 +47,6 @@ describe("全局主线解锁政策", () => {
     const guest = mainlineProgress({
       ...base,
       isGuest: true,
-      earnedStars: 27,
       completedStoryIds: ["mainline_london"],
     });
     expect(guest.chapters[1]?.lockReason).toBe("login");

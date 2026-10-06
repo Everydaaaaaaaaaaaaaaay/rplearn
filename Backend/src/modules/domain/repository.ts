@@ -1,8 +1,4 @@
-import {
-  mainlineProgress,
-  type EarnedStarsReader,
-  type MainlineProgress,
-} from "./mainline.js";
+import { mainlineProgress, type MainlineProgress } from "./mainline.js";
 import { awardCoins } from "../../infrastructure/coin-awards.js";
 import type { TransactionSql } from "postgres";
 import type { DatabaseResource } from "../../db/client.js";
@@ -259,22 +255,15 @@ export class DomainRepository {
     });
   }
 
-  async mainline(
-    userId: string,
-    earnedStars: EarnedStarsReader,
-  ): Promise<MainlineProgress> {
+  async mainline(userId: string): Promise<MainlineProgress> {
     await this.ensureProfile(userId);
     return this.resource.sql.begin(
       "isolation level repeatable read read only",
-      async (sql) => this.mainlineInTransaction(sql, userId, earnedStars),
+      async (sql) => this.mainlineInTransaction(sql, userId),
     );
   }
 
-  private async mainlineInTransaction(
-    sql: TransactionSql,
-    userId: string,
-    earnedStars: EarnedStarsReader,
-  ) {
+  private async mainlineInTransaction(sql: TransactionSql, userId: string) {
     const [profile] = await sql<
       { starter_region_id: string | null; has_completed_onboarding: boolean }[]
     >`
@@ -286,7 +275,6 @@ export class DomainRepository {
     return mainlineProgress({
       starterRegionId: profile?.starter_region_id ?? null,
       hasCompletedOnboarding: profile?.has_completed_onboarding ?? false,
-      earnedStars: await earnedStars(sql, userId),
       completedStoryIds: completed.map((row) => row.story_id),
       isGuest: (await loadAccessPolicy(sql, userId)).isGuest,
     });
@@ -297,7 +285,6 @@ export class DomainRepository {
     command: CommandIdentity,
     storyId: string,
     rewardCoins: number,
-    earnedStars: EarnedStarsReader,
   ): Promise<Readonly<{ coins: number; rewardCoins: number; storyId: string }>> {
     await this.ensureProfile(userId);
     return this.executeCommand(userId, command, async (sql) => {
@@ -340,9 +327,9 @@ export class DomainRepository {
           statusCode: 409,
         });
       }
-      const chapter = (
-        await this.mainlineInTransaction(sql, userId, earnedStars)
-      ).chapters.find((chapter) => chapter.storyId === storyId);
+      const chapter = (await this.mainlineInTransaction(sql, userId)).chapters.find(
+        (chapter) => chapter.storyId === storyId,
+      );
       if (chapter?.state === "locked") {
         throw new AppError({
           code: "MAINLINE_LOCKED",
@@ -351,7 +338,7 @@ export class DomainRepository {
               ? "请先选择你的起始旅伴。"
               : chapter.lockReason === "previousChapter"
                 ? "请先完成前一章主线剧情。"
-                : `继续完成单元挑战，再获得 ${String(chapter.missingStars)} 颗星即可开启这一章。`,
+                : "登录后即可继续主线旅程。",
           statusCode: 409,
           details: chapter,
         });

@@ -1,4 +1,3 @@
-import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import type { FastifyInstance } from "fastify";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { buildApp } from "../../src/app.js";
@@ -49,10 +48,7 @@ describe.runIf(runIntegrationTests)("persistent audit events", () => {
     };
     const authService = await createAuthService(config, dependencies.database);
     const jobWorker = createTestJobWorker(config, dependencies.database, notifier);
-    const domainService = createDomainService(
-      dependencies.database,
-      createLearningMilestoneReader(),
-    );
+    const domainService = createDomainService(dependencies.database);
     app = await buildApp(config, { logger: false });
     registerAuditHooks(app, config, dependencies.database);
     registerAuthRoutes(app, authService);

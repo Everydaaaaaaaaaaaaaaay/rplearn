@@ -13,7 +13,6 @@ import {
 import { LearningEngineRepository } from "../../src/modules/learning/engine-repository.js";
 import {
   createLearningService,
-  createLearningMilestoneReader,
   type LearningService,
 } from "../../src/modules/learning/service.js";
 import { registerLearningRoutes } from "../../src/modules/learning/routes.js";
@@ -335,7 +334,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("全局学习进阶
       s.promotions(courses).eligibility("primary3"),
     );
     expect(oldEvidence.goals[0]).toMatchObject({ correct: 540, units: 90 });
-    const domain = createDomainService(database, createLearningMilestoneReader());
+    const domain = createDomainService(database);
     await domain.updateProfile(user.id, randomUUID(), {
       difficulty: "senior2",
       expectedVersion: 2,
@@ -418,7 +417,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("全局学习进阶
     expect(
       await database.sql`select event_id from app.sync_changes where user_id=${user.id}`,
     ).toHaveLength(0);
-    const domain = createDomainService(database, createLearningMilestoneReader());
+    const domain = createDomainService(database);
     const results = await Promise.allSettled([
       service.completePromotion(
         user.id,

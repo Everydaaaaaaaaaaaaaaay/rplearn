@@ -345,6 +345,18 @@ export class LearningSession {
     };
   }
 
+  /** 只调整当前聊天循环，不伪造消息、答题成绩或学习星星。 */
+  async debugFill(characterId: string, cycleId: string) {
+    const state = await this.character(characterId);
+    if (state.cycleId !== cycleId)
+      reject("LEARNING_CYCLE_CHANGED", "挑战循环已变化，请刷新后重试。");
+    if (state.activeAttemptId) reject("LEARNING_ATTEMPT_ACTIVE", "请先完成当前挑战。");
+    await this
+      .sql`update app.learning_characters set characters=${learningPolicy.characterThreshold},revision=revision+1
+      where user_id=${this.userId} and character_id=${characterId} and characters<${learningPolicy.characterThreshold}`;
+    return this.character(characterId);
+  }
+
   async ensureCharacter(characterId: string, roleKey: string) {
     await this
       .sql`insert into app.learning_characters(user_id, character_id, role_key, cycle_id)

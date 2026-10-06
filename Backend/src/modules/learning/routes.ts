@@ -40,6 +40,20 @@ export function registerLearningRoutes(
       if (!request.authUserId) throw new Error("学习请求尚未鉴权。");
       return request.authUserId;
     };
+    scope.post(
+      "/v1/dev/learning/characters/:id/fill",
+      { bodyLimit: 1024 },
+      (request) => {
+        const userId = user(request);
+        const body = parse(requestSchema.extend({ cycleId: z.uuid() }), request.body);
+        return service.debugFill(
+          userId,
+          body.requestId,
+          parse(paramsSchema, request.params).id,
+          body.cycleId,
+        );
+      },
+    );
     scope.post("/v1/learning/promotions", { bodyLimit: 1024 }, (request) => {
       const body = parse(requestSchema.extend({ level: levelSchema }), request.body);
       return service.beginPromotion(user(request), body.requestId, body.level);

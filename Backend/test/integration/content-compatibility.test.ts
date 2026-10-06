@@ -13,7 +13,6 @@ import type {
   ContentPage,
 } from "../../src/modules/content/types.js";
 import { createDomainService } from "../../src/modules/domain/service.js";
-import { createLearningMilestoneReader } from "../../src/modules/learning/service.js";
 import { createSyncCursorCodec } from "../../src/modules/sync/cursor.js";
 import { registerSyncRoutes } from "../../src/modules/sync/routes.js";
 import { createSyncService } from "../../src/modules/sync/service.js";
@@ -88,11 +87,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       registerSyncRoutes(
         app,
         auth,
-        createSyncService(
-          database,
-          createDomainService(database, createLearningMilestoneReader()),
-          cursor,
-        ),
+        createSyncService(database, createDomainService(database), cursor),
       );
       const parent = await post([
         {

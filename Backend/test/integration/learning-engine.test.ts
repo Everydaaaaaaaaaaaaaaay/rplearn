@@ -73,6 +73,32 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     return { user, character, role, command, state, fill, start };
   }
 
+  it("调试填满不能覆盖进行中的挑战，也不能把旧循环请求用于新循环", async () => {
+    const c = await setup();
+    await c.command({ fill: true }, (session) =>
+      session.debugFill(c.character, c.state.cycleId),
+    );
+    const attempt = await c.start();
+    await expect(
+      c.command({ fill: 2 }, (session) =>
+        session.debugFill(c.character, c.state.cycleId),
+      ),
+    ).rejects.toMatchObject({ code: "LEARNING_ATTEMPT_ACTIVE" });
+    await c.command({ finish: true }, (session) =>
+      session.finish(attempt.id, true),
+    );
+    await expect(
+      c.command({ fill: 3 }, (session) =>
+        session.debugFill(c.character, c.state.cycleId),
+      ),
+    ).rejects.toMatchObject({ code: "LEARNING_CYCLE_CHANGED" });
+    const state = await repository.read(c.user, (session) =>
+      session.character(c.character),
+    );
+    expect(state.characters).toBe(0);
+    expect(await repository.read(c.user, (session) => session.progress())).toEqual([]);
+  });
+
   it("角色独立、同消息去重、满条封顶、旧周期事件不能填新条", async () => {
     const c = await setup();
     const other = randomUUID();
