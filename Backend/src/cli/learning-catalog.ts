@@ -1,4 +1,8 @@
 import "dotenv/config";
+import {
+  requireMaintenanceScope,
+  maintenanceStage,
+} from "../infrastructure/maintenance.js";
 import { fileURLToPath } from "node:url";
 import { loadConfig } from "../config/env.js";
 import { createDatabase } from "../db/client.js";
@@ -21,7 +25,10 @@ async function main(): Promise<void> {
     );
   // 源码与构建后的 CLI 都从 Backend 根目录下的同一份版本化目录读取。
   const directory = fileURLToPath(new URL("../../config/learning/", import.meta.url));
-  const catalog = await loadCuratedCatalog(directory);
+  await requireMaintenanceScope();
+  const catalog = await maintenanceStage("校验目录", () =>
+    loadCuratedCatalog(directory),
+  );
   if (command === "publish") {
     if (expectedHash !== catalog.hash)
       throw new Error("发布哈希不匹配；请先验证当前目录，使用输出的完整哈希。");
@@ -30,15 +37,21 @@ async function main(): Promise<void> {
       if (!config.mediaStorageEnabled)
         throw new Error("未启用对象存储，不能发布视听单元。");
       const store = createMediaObjectStore(config);
-      await uploadLearningAudio(catalog.audioAssets, store);
-      await uploadLearningImages(catalog.imageAssets, store);
+      await maintenanceStage("校验并上传音频", () =>
+        uploadLearningAudio(catalog.audioAssets, store),
+      );
+      await maintenanceStage("校验并上传图片", () =>
+        uploadLearningImages(catalog.imageAssets, store),
+      );
     }
     const database = createDatabase(config);
     try {
-      await new LearningEngineRepository(database).publishBatch(
-        catalog.units,
-        catalog.audioAssets.map((asset) => asset.metadata),
-        catalog.imageAssets.map((asset) => asset.metadata),
+      await maintenanceStage("提交目录事务", () =>
+        new LearningEngineRepository(database).publishBatch(
+          catalog.units,
+          catalog.audioAssets.map((asset) => asset.metadata),
+          catalog.imageAssets.map((asset) => asset.metadata),
+        ),
       );
     } finally {
       await database.close();

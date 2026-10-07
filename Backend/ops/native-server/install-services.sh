@@ -56,7 +56,10 @@ rm -f \
   /etc/systemd/system/lingotrip-maintenance.service \
   /etc/systemd/system/lingotrip-maintenance.timer
 install -m 0644 "${script_dir}"/systemd/*.service /etc/systemd/system/
+install -m 0644 "${script_dir}"/systemd/*.timer /etc/systemd/system/
+install -d -m 0750 /var/log/lingotrip
 systemctl daemon-reload
+systemctl enable --now lingotrip-resource-sampler.timer
 systemctl enable \
   lingotrip-api.service \
   lingotrip-worker.service \

@@ -50,7 +50,7 @@ cd Backend
 ./ops/native-server/package-release.sh <commit>
 scp build/lingotrip-backend-<commit>.tar.gz root@<server>:/tmp/
 ssh root@<server> \
-  "/opt/lingotrip/ops/native-server/deploy.sh /tmp/lingotrip-backend-<commit>.tar.gz <commit>"
+  "/opt/lingotrip/ops/native-server/maintenance.sh deploy /tmp/lingotrip-backend-<commit>.tar.gz <commit>"
 ```
 
 线上运维脚本安装在 `/opt/lingotrip/ops/native-server`，与发布目录分开；旧 `/opt/lingotrip/backend` 链接可能指向已清理的历史目录，不能作为发布入口。发布包在独立临时目录编译，不携带已删除源码的旧编译产物或 macOS 资源分叉文件。
@@ -62,8 +62,32 @@ ssh root@<server> \
 默认保留已有发布目录，不在切换后集中清理旧文件。只有另行确认回滚保留范围后，才可设置
 `DEPLOY_PRUNE_RELEASES=1` 恢复旧的保留最近五个目录行为。故障恢复发布使用
 `DEPLOY_REQUIRE_CACHED_DEPENDENCIES=1`：缓存缺失时停止，不临时在线安装依赖。
-部署、目录发布和公共题库发布必须串行执行；小内存主机应通过 systemd 临时单元限制维护进程
-的内存、交换区和 I/O，并持续检查公网 readiness，不能仅凭 SSH 返回值判断上线成功。
+生产更新统一经过`maintenance.sh`，直接调用`deploy.sh`也会转入该入口。生产题库CLI检测实际
+cgroup与内存限制，普通SSH直接运行会拒绝。入口使用跨发布/导入的统一锁和固定systemd单元名，
+即使终端断开也不会解除资源边界。已有健康版本是更新前提；没有可验证回滚版本时拒绝切换，
+首次建站需先单独完成底版初始化。
+
+维护门槛：可用内存至少384MiB、空闲磁盘至少512MiB、readiness正常，且没有持续内存/I/O阻塞。
+维护任务上限256MiB、Node堆128MiB、swap为0、CPU50%、磁盘读写各2MiB/s、总时限10分钟。
+任务完成后持续观察一分钟，观察期间保留锁；发布在这段观察通过前仍保留回滚事务。
+超时或OOM通过`ExecStopPost`恢复先前程序版本，不回退用户数据库。恢复后还须检查公网健康。
+正常更新不改变内核参数，不为通过门槛临时扩大配额或关闭业务。
+
+```bash
+sudo /opt/lingotrip/ops/native-server/maintenance.sh catalog-validate
+sudo /opt/lingotrip/ops/native-server/maintenance.sh bank-validate
+sudo /opt/lingotrip/ops/native-server/maintenance.sh catalog-publish <完整目录哈希>
+sudo /opt/lingotrip/ops/native-server/maintenance.sh bank-publish <完整题库哈希>
+```
+
+正式目录仍逐个校验所有媒体字节和审核记录，但不在返回对象中保留所有媒体Buffer；上传前再次
+读取和验证，防止校验后替换。目录哈希和原子事务保持不变。CLI把阶段、耗时、RSS写入stderr，
+stdout仍为原JSON结果；发布事务有5秒锁等待、30秒单语句及事务空闲超时。
+
+`lingotrip-resource-sampler.timer`每分钟采集`/proc`资源信息与主要进程的RSS、CPU和磁盘增量，
+不采集参数、环境变量或业务内容。文件位于`/var/log/lingotrip/resources.jsonl`，每份4MiB、
+最多6份轮转备份，另有一份有界当前进程状态文件；原始数据留存时长取决于每条记录大小。
+采样服务本身限制48MiB内存、10%CPU、10秒时限，不自动重启业务服务。
 
 ## 最近发布验证
 

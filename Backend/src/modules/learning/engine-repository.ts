@@ -125,6 +125,10 @@ export class LearningEngineRepository {
     )
       throw new Error("发布目录不能为空，也不能包含重复的单元标识。");
     await this.database.sql.begin(async (sql) => {
+      // 发布遇到锁竞争或异常慢语句时退出，避免维护事务长期占住业务资源。
+      await sql`set local lock_timeout = '5s'`;
+      await sql`set local statement_timeout = '30s'`;
+      await sql`set local idle_in_transaction_session_timeout = '30s'`;
       for (const value of [...(audioAssets ?? [])].sort((a, b) =>
         a.id.localeCompare(b.id),
       )) {

@@ -1,4 +1,8 @@
 import "dotenv/config";
+import {
+  requireMaintenanceScope,
+  maintenanceStage,
+} from "../infrastructure/maintenance.js";
 import { fileURLToPath } from "node:url";
 import { loadBankCatalog } from "../modules/learning/bank-catalog.js";
 import { LearningBankRepository } from "../modules/learning/bank-repository.js";
@@ -7,6 +11,7 @@ import { createDatabase } from "../db/client.js";
 
 async function main() {
   const [command, expectedHash, ...extra] = process.argv.slice(2);
+  await requireMaintenanceScope();
   if (command === "pause" && !expectedHash && extra.length === 0) {
     const database = createDatabase(loadConfig());
     try {
@@ -23,16 +28,18 @@ async function main() {
     (command === "validate" && expectedHash)
   )
     throw new Error("用法：learning-bank validate；learning-bank publish 已验证哈希。");
-  const catalog = await loadBankCatalog(
-    fileURLToPath(new URL("../../config/learning/", import.meta.url)),
+  const catalog = await maintenanceStage("校验公共题库", () =>
+    loadBankCatalog(fileURLToPath(new URL("../../config/learning/", import.meta.url))),
   );
   if (command === "publish") {
     if (expectedHash !== catalog.hash) throw new Error("公共题库发布哈希不一致。");
     const database = createDatabase(loadConfig());
     try {
-      await new LearningBankRepository(database).importCatalog(
-        catalog.entries,
-        catalog.blueprints,
+      await maintenanceStage("提交公共题库事务", () =>
+        new LearningBankRepository(database).importCatalog(
+          catalog.entries,
+          catalog.blueprints,
+        ),
       );
     } finally {
       await database.close();

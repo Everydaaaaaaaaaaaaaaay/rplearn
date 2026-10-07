@@ -7,6 +7,15 @@ if [[ "${EUID}" -ne 0 ]]; then
 fi
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# 直接调用也必须进入统一资源边界，不能靠操作者记住额外参数。
+if ! grep -qx '0::/system.slice/lingotrip-maintenance.service' /proc/self/cgroup; then
+  exec "${script_dir}/maintenance.sh" deploy "$@"
+fi
+memory_limit="$(cat /sys/fs/cgroup/system.slice/lingotrip-maintenance.service/memory.max)"
+[[ "${memory_limit}" =~ ^[0-9]+$ && "${memory_limit}" -le 268435456 && "$(cat /sys/fs/cgroup/system.slice/lingotrip-maintenance.service/memory.swap.max)" = 0 ]] || {
+  echo '维护进程的资源限制未生效，已拒绝发布。' >&2
+  exit 1
+}
 archive="${1:?Usage: deploy.sh RELEASE_ARCHIVE [VERSION]}"
 version="${2:-$(tar -xOf "${archive}" ./RELEASE | tr -d '\r\n')}"
 release_root="${RELEASE_ROOT:-/opt/lingotrip/releases}"
@@ -113,10 +122,6 @@ if [[ ! "${previous_version}" =~ ^[a-zA-Z0-9._-]{4,64}$ ]]; then
   echo "Unsafe current APP_VERSION in ${release_environment}." >&2
   exit 1
 fi
-rm -f /opt/lingotrip/current.next /opt/lingotrip/current.rollback
-ln -s "${release}" /opt/lingotrip/current.next
-mv -Tf /opt/lingotrip/current.next /opt/lingotrip/current
-
 write_release_environment() {
   local release_version="$1"
   local environment_next
@@ -127,24 +132,20 @@ write_release_environment() {
   mv -f "${environment_next}" "${release_environment}"
 }
 
+# 提前记录旧指向；异常退出、超时或 OOM 均可由 ExecStopPost 恢复。
+[[ -d "${previous}" ]] || { echo '缺少可验证的回滚版本。' >&2; exit 1; }
+test "$(tr -d '\r\n' < "${previous}/RELEASE")" = "${previous_version}"
+umask 077
+printf '%s\n' "${previous}" "${previous_version}" "${release}" > /run/lingotrip-release-transaction.next
+mv -f /run/lingotrip-release-transaction.next /run/lingotrip-release-transaction
 rollback() {
-  write_release_environment "${previous_version}"
-  if [[ -n "${previous}" && -d "${previous}" ]]; then
-    ln -s "${previous}" /opt/lingotrip/current.rollback
-    mv -Tf /opt/lingotrip/current.rollback /opt/lingotrip/current
-    systemctl restart \
-      lingotrip-api.service \
-      lingotrip-worker.service \
-      lingotrip-caddy.service || true
-  else
-    systemctl stop \
-      lingotrip-api.service \
-      lingotrip-worker.service \
-      lingotrip-caddy.service || true
-    rm -f /opt/lingotrip/current
-  fi
+  trap - ERR TERM INT HUP
+  "${script_dir}/recover-deployment.sh"
 }
-trap rollback ERR
+trap 'rollback; exit 1' ERR TERM INT HUP
+rm -f /opt/lingotrip/current.next
+ln -s "${release}" /opt/lingotrip/current.next
+mv -Tf /opt/lingotrip/current.next /opt/lingotrip/current
 
 write_release_environment "${version}"
 systemctl restart \
@@ -153,7 +154,9 @@ systemctl restart \
   lingotrip-caddy.service
 for _ in {1..30}; do
   if curl --fail --silent --connect-timeout 2 --max-time 3 http://127.0.0.1:8080/health/ready >/dev/null; then
-    trap - ERR
+    "${script_dir}/resource-guard.py" observe
+    rm -f /run/lingotrip-release-transaction
+    trap - ERR TERM INT HUP
     if [[ "${prune_releases}" = 1 ]]; then
       find "${release_root}" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' |
         sort -nr |

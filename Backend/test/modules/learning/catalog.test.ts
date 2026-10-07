@@ -2,10 +2,11 @@ import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { loadCuratedCatalog } from "../../../src/modules/learning/catalog.js";
 import { contentHash, unitSchema } from "../../../src/modules/learning/content.js";
 
+import { uploadLearningAudio } from "../../../src/modules/learning/audio.js";
 import { learningImageFixture } from "../../helpers/learning-images.js";
 
 const catalogPath = fileURLToPath(
@@ -64,6 +65,25 @@ describe("原创课程发布门槛", () => {
       })),
     ]);
     expect((await loadCuratedCatalog(catalogPath)).hash).toBe(catalog.hash);
+  });
+
+  it("逐个校验后不保留媒体字节，上传前发现文件替换即拒绝", async () => {
+    const directory = await copyCatalog();
+    const catalog = await loadCuratedCatalog(directory);
+    expect(catalog.audioAssets.every((a) => !("bytes" in a))).toBe(true);
+    expect(catalog.imageAssets.every((a) => !("bytes" in a))).toBe(true);
+    const asset = catalog.audioAssets[0];
+    if (!asset) throw new Error("缺少听力夹具。");
+    const bytes = await asset.loadBytes();
+    bytes[bytes.length - 1] = (bytes[bytes.length - 1] ?? 0) ^ 1;
+    await writeFile(join(directory, "audio", `${asset.metadata.id}.wav`), bytes);
+    const store = {
+      headObject: vi.fn(),
+      createUploadUrl: vi.fn(),
+      createDownloadUrl: vi.fn(),
+    };
+    await expect(uploadLearningAudio([asset], store)).rejects.toThrow("不一致");
+    expect(store.headObject).not.toHaveBeenCalled();
   });
 
   it("已审核内容被改写时拒绝，即使 JSON 仍然合法", async () => {

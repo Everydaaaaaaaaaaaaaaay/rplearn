@@ -48,6 +48,10 @@ export type PreparedLearningAudio = Readonly<{
   metadata: LearningAudioAsset;
   bytes: Buffer;
 }>;
+export type DeferredLearningAudio = Readonly<{
+  metadata: LearningAudioAsset;
+  loadBytes: () => Promise<Buffer>;
+}>;
 export const learningAudioObjectKey = (id: string) => `learning/audio/${id}.wav`;
 
 /** 固定生产格式：24 kHz、单声道、16 位 PCM；时长与内容哈希都来自实际文件。 */
@@ -103,10 +107,12 @@ export function verifyLearningAudio(metadata: LearningAudioAsset, bytes: Buffer)
 
 /** 内容寻址音频先上传并核验，再发布数据库目录；失败不会分配缺资源的单元。 */
 export async function uploadLearningAudio(
-  assets: readonly PreparedLearningAudio[],
+  assets: readonly (PreparedLearningAudio | DeferredLearningAudio)[],
   store: LearningAudioObjectStore,
 ): Promise<void> {
-  for (const { metadata, bytes } of assets) {
+  for (const asset of assets) {
+    const { metadata } = asset;
+    const bytes = "bytes" in asset ? asset.bytes : await asset.loadBytes();
     verifyLearningAudio(metadata, bytes);
     const key = learningAudioObjectKey(metadata.id);
     const checksum = Buffer.from(metadata.sha256, "hex").toString("base64");

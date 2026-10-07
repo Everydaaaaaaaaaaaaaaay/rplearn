@@ -22,6 +22,10 @@ export type PreparedLearningImage = Readonly<{
   metadata: LearningImageAsset;
   bytes: Buffer;
 }>;
+export type DeferredLearningImage = Readonly<{
+  metadata: LearningImageAsset;
+  loadBytes: () => Promise<Buffer>;
+}>;
 export type LearningImageObjectStore = Pick<
   MediaObjectStore,
   "createDownloadUrl" | "createUploadUrl" | "headObject"
@@ -98,10 +102,12 @@ export function verifyLearningImage(value: LearningImageAsset, bytes: Buffer): v
 
 /** 先验证并上传不可变字节，再允许发布器提交引用它们的题目。 */
 export async function uploadLearningImages(
-  assets: readonly PreparedLearningImage[],
+  assets: readonly (PreparedLearningImage | DeferredLearningImage)[],
   store: LearningImageObjectStore,
 ): Promise<void> {
-  for (const { metadata, bytes } of assets) {
+  for (const asset of assets) {
+    const { metadata } = asset;
+    const bytes = "bytes" in asset ? asset.bytes : await asset.loadBytes();
     verifyLearningImage(metadata, bytes);
     const key = learningImageObjectKey(metadata.id),
       checksum = Buffer.from(metadata.sha256, "hex").toString("base64");

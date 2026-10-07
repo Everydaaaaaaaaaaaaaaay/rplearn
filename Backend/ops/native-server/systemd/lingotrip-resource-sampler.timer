@@ -1,0 +1,11 @@
+[Unit]
+Description=LingoTrip 每分钟资源采样
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+AccuracySec=5s
+Unit=lingotrip-resource-sampler.service
+
+[Install]
+WantedBy=timers.target

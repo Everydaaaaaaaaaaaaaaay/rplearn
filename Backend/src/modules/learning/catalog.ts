@@ -12,13 +12,13 @@ import { answerSchema, gradeAnswer } from "./grading.js";
 import {
   learningAudioSchema,
   verifyLearningAudio,
-  type PreparedLearningAudio,
+  type DeferredLearningAudio,
 } from "./audio.js";
 
 import {
   learningImageSchema,
   verifyLearningImage,
-  type PreparedLearningImage,
+  type DeferredLearningImage,
 } from "./images.js";
 
 const id = z.string().regex(/^[a-z][a-z0-9_.-]{0,119}$/);
@@ -86,8 +86,8 @@ const reviewSchema = z.strictObject({
 export type CuratedCatalog = Readonly<{
   hash: string;
   registry: z.infer<typeof registrySchema>;
-  audioAssets: readonly PreparedLearningAudio[];
-  imageAssets: readonly PreparedLearningImage[];
+  audioAssets: readonly DeferredLearningAudio[];
+  imageAssets: readonly DeferredLearningImage[];
   units: readonly LearningUnit[];
   summary: readonly {
     roleKey: string;
@@ -121,25 +121,28 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
       throw new Error(`目标 ${goal.id} 引用了未知来源。`);
   }
   const units: LearningUnit[] = [];
-  const audioAssets: PreparedLearningAudio[] = [];
+  const audioAssets: DeferredLearningAudio[] = [];
   requireUnique(
     (registry.audioAssets ?? []).map((asset) => asset.id),
     "听力资源",
   );
   for (const metadata of registry.audioAssets ?? []) {
-    const bytes = await readFile(join(directory, "audio", `${metadata.id}.wav`));
-    verifyLearningAudio(metadata, bytes);
-    audioAssets.push({ metadata, bytes });
+    const path = join(directory, "audio", `${metadata.id}.wav`);
+    const loadBytes = () => readFile(path);
+    verifyLearningAudio(metadata, await loadBytes());
+    // 校验时逐个读取；目录不保留媒体字节，上传时再次校验以防文件被替换。
+    audioAssets.push({ metadata, loadBytes });
   }
-  const imageAssets: PreparedLearningImage[] = [];
+  const imageAssets: DeferredLearningImage[] = [];
   requireUnique(
     (registry.imageAssets ?? []).map((asset) => asset.id),
     "图片资源",
   );
   for (const metadata of registry.imageAssets ?? []) {
-    const bytes = await readFile(join(directory, "images", `${metadata.id}.png`));
-    verifyLearningImage(metadata, bytes);
-    imageAssets.push({ metadata, bytes });
+    const path = join(directory, "images", `${metadata.id}.png`);
+    const loadBytes = () => readFile(path);
+    verifyLearningImage(metadata, await loadBytes());
+    imageAssets.push({ metadata, loadBytes });
   }
   const reviews: z.infer<typeof reviewSchema>[] = [];
   const fingerprints = new Set<string>();

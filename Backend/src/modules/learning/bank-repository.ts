@@ -215,6 +215,10 @@ export class LearningBankRepository {
     blueprints: readonly BankBlueprint[],
   ) {
     await this.database.sql.begin(async (sql) => {
+      // 发布遇到锁竞争或异常慢语句时退出，避免维护事务长期占住业务资源。
+      await sql`set local lock_timeout = '5s'`;
+      await sql`set local statement_timeout = '30s'`;
+      await sql`set local idle_in_transaction_session_timeout = '30s'`;
       await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
       for (const entry of entries) {
         const q = bankQuestionSchema.parse(entry.question);
