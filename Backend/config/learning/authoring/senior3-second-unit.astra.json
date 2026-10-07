@@ -1,0 +1,968 @@
+{
+  "id": "companion.senior3.paper-boat",
+  "level": "senior3",
+  "title": "桥下的纸船",
+  "author": {
+    "name": "Astra高三第二组独立作者",
+    "date": "2026-10-07",
+    "method": "亲读原作者36题、旧库36题、首组正式18题和审稿记录，手选b07一题作为完整听写支架；其余17题分别亲自设计交际任务、材料、正确答案与错误机制。程序只用于存储和检查，没有模板扩写、换人名或槽位组合。",
+    "status": "作者自审稿；待独立主审、来源范围和新目标登记、原声制作与实听，不可发布"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/pep-senior3.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷5、6、7、18、19、30、31、32、33；对应一基PDF12、13、14、25、26、37、38、39、40",
+      "method": "逐页核读本地pages.json完整正文；另渲染并目视PDF13，确认印刷6页的听力活动2、3及Listen for discourse markers。其余所列页本轮只核读抽取正文。",
+      "findings": "印刷5为被动语态与时间视角；6—7为听语篇标记、组织立场和话题转换；18—19为听说话人选择及理由、听补总结表达；30—31为听动作顺序及原因；32—33为找论点与证据、判断材料支持哪方、用PEEL组织并修订论证。",
+      "registrationNeeded": "catalog既有scope仅列印刷5、17、29；本轮新增页尚未登记，应扩充真实核读范围并登记proposedGoals。",
+      "limitations": "封面为选择性必修第四册。文件为公开社区存档，版次印次未进一步核实；不代表全国高三统一进度。未读取或复制配套录音；原创情境与整句听写是受控迁移，不是教材原题。"
+    },
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/fltrp-senior3.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷19、29、42、43、53、54、55；对应一基PDF26、36、49、50、60、61、62",
+      "method": "逐页核读本地pages.json完整正文；另渲染并目视PDF62，确认印刷55页听力活动8—10及理论、评价和未解问题表格。",
+      "findings": "印刷19要求听访谈选择主旨、记录经历与建议；29复习状语从句；42要求听对话、补记事实、区分请求澄清与作出解释；53复习名词从句；55要求听访谈主旨、记录解释及证据限制并追问。43和54为邻页阅读，仅用于确定章节上下文，不作为本组听力依据。",
+      "registrationNeeded": "catalog既有scope仅列印刷5、29、53；19、42、55听力和交际功能范围尚待登记。",
+      "limitations": "沿用公开存档的来源身份及未核实版次边界；没有取得或实听教材原音。只借鉴明确任务能力，不把该页有关脑科学、金融或社会信用的具体事实用于原创题。"
+    }
+  ],
+  "proposedGoals": [
+    {
+      "id": "senior3.listen-discourse-position",
+      "status": "pending_registration",
+      "level": "senior3",
+      "canDo": "能听取短发言或对话中的立场、理由与语篇转向，区分最初提议、澄清后的含义和最终主旨。",
+      "boundaries": "校园及日常活动语境；5道听选自带全部信息，至少两个选项需依据录音才能区分。不考未明示的讽刺、重音含义或成人专业知识；不等同完整高中听力覆盖。",
+      "sourceIds": [
+        "pep.senior3.archive20260929",
+        "fltrp.senior3.archive20260929"
+      ],
+      "pages": "PEP印刷6—7、18—19／PDF13—14、25—26；外研印刷42、55／PDF49、62",
+      "basis": "听语篇标记与理由、概括意见、听对话澄清、记录解释的证据限制。"
+    },
+    {
+      "id": "senior3.listen-precise-record",
+      "status": "pending_registration",
+      "level": "senior3",
+      "canDo": "能听写简短报告，保留进行状态或比较范围等影响意思的词。",
+      "boundaries": "仅两道受控整句听写：一题复习过去进行被动，一题保留比较范围。语法页只作语言结构依据，听记任务页作输入技能依据；教材原页没有要求这两句整句听写。",
+      "sourceIds": [
+        "pep.senior3.archive20260929",
+        "fltrp.senior3.archive20260929"
+      ],
+      "pages": "PEP印刷5、19／PDF12、26；外研印刷19／PDF26",
+      "basis": "PEP听补意见总结和外研访谈听记细节，经作者改为短句完整记录；b07语言结构另据PEP被动复习。"
+    },
+    {
+      "id": "senior3.argument-evidence-link",
+      "status": "pending_registration",
+      "level": "senior3",
+      "canDo": "能在简短论证中辨别论点、相关证据与解释，保留调查对象、比较尺度、观点归属及建议的适用范围。",
+      "boundaries": "校园、社区、环保话题，所有事实在题内；限定关系由明示语境给出。不引入统计术语、不把相关性问题扩展成研究方法课；受控选择、配对和排序不等同自由议论文写作。",
+      "sourceIds": [
+        "pep.senior3.archive20260929",
+        "fltrp.senior3.archive20260929"
+      ],
+      "pages": "PEP印刷32—33／PDF39—40；外研印刷55／PDF62",
+      "basis": "找论点及证据、判断材料支持哪一文本、说明事实如何支持观点、评估来源可靠性和修订；外研听记未证实解释提供限制语境。"
+    },
+    {
+      "id": "senior3.clarification-register",
+      "status": "pending_registration",
+      "level": "senior3",
+      "canDo": "能用得体的澄清请求和间接问句精确指出需要补充的信息，避免在提问中先认定未确认的事实。",
+      "boundaries": "限固定句框、给定词块和明确的信息缺口；说明选择是否符合当前交流目的，不把较直接但合法的表达普遍判为不礼貌。",
+      "sourceIds": [
+        "fltrp.senior3.archive20260929"
+      ],
+      "pages": "印刷42、53、55／PDF49、60、62",
+      "basis": "请求澄清、作出解释、追问更多信息与名词从句功能；词汇和结构的本组搭配为作者原创受控迁移。"
+    }
+  ],
+  "interactionContract": {
+    "story": "三段中英文均少于500字符，全部afterQuestion=0；没有固定职业人设。故事可跳过，题目独立可做，不考情节。",
+    "audio": "7道题的audio.assetId为null、status为pending；audioScript完整列出，答题前必须隐藏。对话的角色标签仅供制作，不朗读。语速为建议而非成品测量。原声、角色区分、自然停顿、原生播放及重播待后续验收。",
+    "normalization": "completion和dictation忽略大小写、首尾空白及句末标点；不删除内部词、不自动替换同义表达。词框限定合法变体已穷尽；dictation只有原声完整转写，两个脚本均无内部标点或缩写歧义。 主代理另逐项登记q12中two/2完整转写变体。",
+    "arrange": "均为文字语篇或精确表达排序，不采用audioArrange。每题给出组织目的，并登记所有满足该目的的顺序；不将其他语境的合法句子笼统判错。",
+    "matching": "按稳定ID判配对，左右显示次序分别打乱；逐项理由包含正确配对和其他选择不合适的原因。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion stop on a low bridge after the rain. Below you, a paper boat turns slowly beside a fallen branch. Your companion follows it with one finger along the rail. Just as the boat seems ready to escape, the water carries it back into the same small circle.",
+      "translation": "雨后，你和同行者停在一座矮桥上。一只纸船在桥下的断枝旁缓缓打转。同行者的手指沿着栏杆，跟着纸船移动。纸船眼看就要漂出去，水流却又把它带回了那个小圈。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You both lean on the rail and wait. A leaf slips past the branch, and the boat follows it for a moment before turning away. Your companion quietly draws another circle on the wet rail. Then a stronger ripple reaches the boat. It tips, straightens, and finally floats beneath the bridge.",
+      "translation": "你们靠着栏杆等着。一片叶子从断枝旁滑过去，纸船跟了一小段，又转开了。同行者在湿栏杆上悄悄画了一个圈。这时，一道稍强的水波推来。纸船歪了一下，重新稳住，终于漂进桥下。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You hurry to the other side together. For a few seconds there is only dark water. Then the little boat appears, one corner folded down but still afloat. It drifts towards a patch of sunlight. Your companion lifts a hand in a small wave, and you continue your walk without deciding where to go next.",
+      "translation": "你们一起快步走到桥的另一侧。几秒钟里，眼前只有暗暗的水面。随后，小纸船出现了，一个角折了下来，却还浮着。它漂向一片阳光。同行者轻轻挥了一下手，你们继续往前走，还没有决定接下来去哪儿。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s3.second.q01",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "taskIntent": "听出理由改变后的立场，而非只记第一项提议",
+      "prompt": "听两人商量旧书交换活动。第二位说话人最后支持什么安排？",
+      "audioScript": "A: Shall we cancel the book swap? Only a few people have offered to help on Saturday morning.\nB: I was thinking the same. But several students have just said they could help in the afternoon. Why don't we keep the event and start it after lunch?\nA: That could work. I'll ask whether the room is free then.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "productionNotes": "两种自然青年声线；只读台词，A/B标签不读；B在But处自然转向，不夸张强调答案。末句不可省略。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "取消活动，因为下午也缺少帮手。"
+        },
+        {
+          "id": "b",
+          "text": "保留活动，建议改到午饭后进行。"
+        },
+        {
+          "id": "c",
+          "text": "保留活动，仍按周六上午安排。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "听清最初的赞同之后，哪条新信息使提议发生变化。",
+      "explanation": "B最初也考虑取消，但随后得知有人下午能帮忙，因此建议保留活动并改到午饭后。A仍需询问房间，不能说新时间已经最终落实。",
+      "difficulty": "高三整合支撑：跟随But前后的立场转向，保留建议与落实的区别；不靠长句或生词。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷6—7／PDF13—14",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "optionReasons": {
+          "a": "把B最初想取消当成最后立场，并把下午有人能帮忙听反。",
+          "b": "保留B最终提出的活动继续及午后开始，未擅称已订妥房间。",
+          "c": "保留活动这一点正确，但漏掉开始时间的修改。"
+        },
+        "ambiguity": "问题只问B最后支持的安排，不问A是否确认房间。b与c都合乎现实，必须听音区分。",
+        "teachingBoundary": "不把音频中的建议当作现实已承诺的活动。"
+      }
+    },
+    {
+      "id": "s3.second.q02",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "taskIntent": "把调查结论限制在实际回答者范围内",
+      "prompt": "校报只在摄影社的群聊里收集了30份回复，其中24人希望周末开放暗房。没有向其他学生调查。哪句适合报告这项结果？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Most students at the school want the darkroom open at weekends."
+        },
+        {
+          "id": "b",
+          "text": "Most photography club members want the darkroom open at weekends."
+        },
+        {
+          "id": "c",
+          "text": "Most of the 30 respondents want the darkroom open at weekends."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对有证据的群体是全校、全社，还是实际回复的这些人。",
+      "explanation": "24/30可以支持这30位回答者中的多数，但题目没有说30人代表整个摄影社，更没有覆盖全校。c明确保留调查范围。respondents指回答调查的人。",
+      "difficulty": "高三语义迁移：区分取样渠道与真正计数的人群，词汇提供解释；不考抽样统计公式。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷32—33／PDF39—40",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "optionReasons": {
+          "a": "把群聊内的回复扩大到全校学生。",
+          "b": "虽然地点在摄影社群聊，也不能据此认定全体社员中的多数；总社员人数和未回复者意愿均未知。",
+          "c": "30份回复及24份支持足以支持回答者中的多数，没有外推。"
+        },
+        "ambiguity": "不暗示摄影社一定多于30人，只说明没有依据把这30人等同全社。",
+        "teachingBoundary": "聚焦语言中most的论断对象；不是数学计算题或完整调查设计教学。"
+      }
+    },
+    {
+      "id": "s3.second.q03",
+      "origin": "手选原作者稿s3.astra.b07，保留原脚本和完整答案；补登记听记来源及制作边界",
+      "goalId": "senior3.listen-precise-record",
+      "supportingGoalIds": [
+        "senior3.repair-report-focus"
+      ],
+      "type": "dictation",
+      "taskIntent": "听记到达时正在发生的被动过程",
+      "prompt": "听录音，写出完整句子。inspected表示检查。",
+      "audioScript": "The bridge was being inspected when we arrived.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 135,
+        "productionNotes": "单人自然陈述；was being不逐词分读，也不吞掉being；完整句可重播。"
+      },
+      "answer": "The bridge was being inspected when we arrived.",
+      "acceptedVariants": [
+        "The bridge was being inspected when we arrived."
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "听清检查动作的完整动词短语，记录到达时的状态。",
+      "explanation": "录音中的was being inspected表示到达时正在检查桥。漏掉being会变成一般过去时被动，不能完整还原这次原声。",
+      "difficulty": "受控听写支架：8词、一个进行被动短语；不宣称新增语法机制或高难迁移。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "结构：印刷5／PDF12；听记迁移：印刷19／PDF26及外研印刷19／PDF26",
+      "review": {
+        "correctExample": "the bridge was being inspected when we arrived",
+        "wrongExample": "The bridge was inspected when we arrived.",
+        "optionReasons": {},
+        "wrongAnswerReasons": {
+          "The bridge was inspected when we arrived.": "语法可以成立，但漏写录音中的being，丢掉进行状态。",
+          "The bridge being inspected when we arrived.": "漏掉录音中的was，当前主句缺少完整谓语。"
+        },
+        "ambiguity": "忽略大小写和末尾句号；没有内部标点、缩写或英美拼写分歧。不接受概括或同义改写，因任务明确要求完整听写。",
+        "teachingBoundary": "允许复习支架；不得把保留一题旧稿说成17题原创之外的第18题全新原创。"
+      }
+    },
+    {
+      "id": "s3.second.q04",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "taskIntent": "听出澄清对原有理解的精确修正",
+      "prompt": "听关于手工活动的对话。对方澄清后，“免费”具体指什么？",
+      "audioScript": "A: The notice says the workshop is free. Does that include the materials?\nB: Entry is free, yes. If you bring your own paper and paints, you won't pay anything. We charge only for the materials we supply.\nA: Right, so the teaching itself doesn't cost anything.\nB: Exactly.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "productionNotes": "双人轻松澄清；标签不读；charge、only自然清楚，不添加价钱或题外解释。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "教学免费；自带材料无需付费，领用现场材料需付费。"
+        },
+        {
+          "id": "b",
+          "text": "教学和现场材料免费；自带材料也无需付费。"
+        },
+        {
+          "id": "c",
+          "text": "材料免费；无论是否自带材料，都要交教学费。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把入场及教学与材料供应分开听，注意only限定的收费对象。",
+      "explanation": "B把收费限定为主办方提供的材料，并确认教学本身免费；自带纸张与颜料可完全不付费。不能把free扩大到现场提供的一切。",
+      "difficulty": "高三精确理解：整合条件、收费对象与最后的确认；常见日常词汇。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷42／PDF49",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "optionReasons": {
+          "a": "同时保留免费教学、自备材料免费、领用材料收费。",
+          "b": "误把free扩大到主办方供应的材料。",
+          "c": "把教学与材料的收费关系对调。"
+        },
+        "ambiguity": "最后明确确认teaching itself免费，避免entry仅指参观入场的歧义；题面未泄露费用结构。",
+        "teachingBoundary": "这是对话所述活动的规则，不是现实收费政策。"
+      }
+    },
+    {
+      "id": "s3.second.q05",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "matching",
+      "taskIntent": "选择真正回答论点所需问题的证据",
+      "prompt": "社区想评估步行上学活动。把每个待核查的说法与最直接相关的记录配对，每项一次。这里只判断相关性，不表示一份记录就足以证明普遍结论。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Taking the side street makes the walk shorter."
+        },
+        {
+          "id": "l2",
+          "text": "The walking group has become more popular."
+        },
+        {
+          "id": "l3",
+          "text": "The group reaches school before the first lesson."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "Weekly counts of students joining the group over the last term."
+        },
+        {
+          "id": "r3",
+          "text": "The group's arrival times compared with the school timetable."
+        },
+        {
+          "id": "r1",
+          "text": "Distances along the main road and the side street between the same start and finish."
+        }
+      ],
+      "pairs": [
+        [
+          "l1",
+          "r1"
+        ],
+        [
+          "l2",
+          "r2"
+        ],
+        [
+          "l3",
+          "r3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先确定每句话要比较的是路程、参与人数还是到校时间。",
+      "explanation": "路程短需要同起终点的距离比较；越来越受欢迎需要一段时间的参与变化；是否课前到校需要到达时刻与课表对照。信息量大不等于与当前论点相关。",
+      "difficulty": "高三证据选择：让测量对象对应论点中的比较维度，避免凭同一主题就配对。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷32—33／PDF39—40",
+      "review": {
+        "correctExample": "l1-r1, l2-r2, l3-r3",
+        "wrongExample": "l1-r3, l2-r2, l3-r1",
+        "optionReasons": {
+          "l1-r1": "同起终点距离直接对应shorter；人数不测距离，到校时刻也可能受出发时间影响。",
+          "l2-r2": "连续参与人数对应流行程度变化；路程和课表均不说明参加人数。",
+          "l3-r3": "到达时刻须与首节课比较；距离短不能单独保证准时，人数也不能。"
+        },
+        "ambiguity": "shorter在步行路线语境按距离理解，r1明确同起终点。只问最直接相关，不把记录直接当作统计上充分的证明。",
+        "teachingBoundary": "不要求做距离计算、读真实地图或掌握统计检验。"
+      }
+    },
+    {
+      "id": "s3.second.q06",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "taskIntent": "准确呈现反方关切，避免虚构反方立场",
+      "prompt": "关于延长图书馆开放时间，一位家长说：I support giving students more time to read, but who will pay the staff for the extra hours? 哪句适合作为回应前的准确概括？",
+      "options": [
+        {
+          "id": "a",
+          "text": "You support extra reading time because the school has agreed to pay staff for the extra hours."
+        },
+        {
+          "id": "b",
+          "text": "You welcome more reading time, but you are asking how the extra staffing cost will be covered."
+        },
+        {
+          "id": "c",
+          "text": "You would support extra reading time only if no extra payment to staff were required."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "承认对方已表达的支持，再保留其实际提出的问题。",
+      "explanation": "对方支持增加阅读时间，提出的是新增人工费用由谁承担。b公平保留支持与成本关切；a把费用已经落实写成支持的原因，c则把无需额外支付写成支持的必要条件，两者都超出原话。",
+      "difficulty": "高三论证与语用：复述另一方的真实关切，为回应建立准确前提，不靠礼貌词数量。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷32—33／PDF39—40",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "optionReasons": {
+          "a": "保留支持但捏造学校已经同意付款，并把它当成支持原因。",
+          "b": "完整保留支持阅读时间与询问费用来源。",
+          "c": "询问谁付钱，不等于只在无需额外付钱时才支持；人为添加必要条件。"
+        },
+        "ambiguity": "不推断此人最后会支持还是反对实施方案；目前只记录表态和问题。",
+        "teachingBoundary": "不评价现实延时政策或给出劳动报酬法律意见。"
+      }
+    },
+    {
+      "id": "s3.second.q07",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.listen-discourse-position",
+      "supportingGoalIds": [
+        "senior3.argument-evidence-link"
+      ],
+      "type": "listeningChoice",
+      "taskIntent": "听取比较尺度，区分总量与每人平均量",
+      "prompt": "听环保小组对活动记录的说明。哪项保留了发言者认为仍需弄清的事情？",
+      "audioScript": "We collected fewer paper cups at this year's fair than at last year's. That sounds encouraging. However, fewer people came this year as well. Before we say each visitor used fewer cups, we need to compare the number of cups per person, not just the total.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "productionNotes": "单人活动总结；However处轻停顿，per person自然连读但清楚；不给背景音。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "今年纸杯总数是否比去年少，尚需统计。"
+        },
+        {
+          "id": "b",
+          "text": "今年到场人数是否比去年少，尚需核实。"
+        },
+        {
+          "id": "c",
+          "text": "今年平均每位访客用了多少纸杯，需要比较。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "发言者已知道两个总量的变化，却提醒不能立即作出哪一种比较结论？",
+      "explanation": "总杯数和到场人数都已知减少；仍需比较的是每人纸杯数。总量变小本身不能说明每人使用量变小。c没有宣称平均量已经下降。",
+      "difficulty": "高三信息整合：听到However后对比较依据的修正；不要求算平均数。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷55／PDF62；论证迁移另据PEP印刷33／PDF40",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "optionReasons": {
+          "a": "总杯数更少是开头已给出的记录，不是最后待比较的对象。",
+          "b": "到场人数更少也已明示，不能把它写成尚待核实。",
+          "c": "per person是总结的关键，保留待比较而非已证明的状态。"
+        },
+        "ambiguity": "collected不是现实中所有使用杯数的必然完美测量；题目只问发言者提出的下一比较步骤，不自行确认环保效果。",
+        "teachingBoundary": "不把总量/平均量问题伪称教材原页内容，明确为证据限制任务的日常迁移。"
+      }
+    },
+    {
+      "id": "s3.second.q08",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "completion",
+      "taskIntent": "用对照关系报告两组不同反馈，不添加因果",
+      "prompt": "同一份食堂调查中，低年级学生多提到饭菜价格，高年级学生多提到排队时间。只从while、whereas、because中填一个词，仅作两组反馈的对照，不说一组造成另一组：Younger pupils mainly mentioned prices, ___ older pupils mainly mentioned waiting times.",
+      "answer": "whereas",
+      "acceptedVariants": [
+        "whereas",
+        "while"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "两条记录各自成立；连接词应呈现差异，不能凭空建立原因。",
+      "explanation": "whereas和while都可在此引出对照；because会把高年级的关注写成低年级关注价格的原因，题面没有这层关系。此处while按语境表示对照，不是在报告两个同时发生的动作。",
+      "difficulty": "高三受控衔接：在同一调查中准确对照两个群体的关注，接受两个合法变体；不是只认唯一连接词。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36；论证组织另据PEP印刷33／PDF40",
+      "review": {
+        "correctExample": "while",
+        "wrongExample": "because",
+        "optionReasons": {
+          "whereas": "对比两组关注的差异，保留各自的报告。",
+          "while": "在此可自然表达对照，与whereas均接受。",
+          "because": "把两组不同反馈改为因果关系，超出题内记录。"
+        },
+        "ambiguity": "题面限定词表，故不需穷尽but等开放改写；while与whereas均为完整合法文本答案。没有说低年级完全不关心时间或高年级完全不关心价格。",
+        "teachingBoundary": "外研原页明确包含comparison类别；本题为两组反馈对照的原创迁移，归入待登记论证衔接目标，未悄悄扩充旧条件目标。"
+      }
+    },
+    {
+      "id": "s3.second.q09",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "arrange",
+      "taskIntent": "组织论点、例证与解释，区分解释桥梁和重复结论",
+      "prompt": "用全部句块组成一个短段落，按“提出建议→给出具体观察→解释观察如何支持建议”排列。不要改变任何句块。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "Keeping the main path clear would therefore leave space for pupils who are only passing through."
+        },
+        {
+          "id": "t1",
+          "text": "The school should place the lunchtime queue beside the wall rather than across the main path."
+        },
+        {
+          "id": "t2",
+          "text": "Yesterday, pupils crossing the yard had to stop because the queue blocked that path."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "找出should建议句、具体发生过的观察，以及说明这一观察为何有关的句子。",
+      "explanation": "t1提出队列位置建议；t2给出堵住通道的具体观察；t3解释留出主通道如何帮助只是路过的人。therefore把证据与建议的理由连接起来，不是再增加一项无关优点。",
+      "difficulty": "高三篇章组织：三个完整句各自语法成立，顺序依据论证目的，而不是句内语法拼装。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷33／PDF40",
+      "review": {
+        "correctExample": "t1,t2,t3",
+        "wrongExample": "t2,t1,t3",
+        "optionReasons": {
+          "t1": "建议承担论点，应按题面先提出。",
+          "t2": "昨日观察承担证据，放在建议之后且在解释之前。",
+          "t3": "说明清出通道的作用，将证据与建议相接，按指定结构收尾。"
+        },
+        "ambiguity": "证据先行的文章也可以成立；本题明确规定顺序，因此不把t2开头笼统判为英语不通。",
+        "teachingBoundary": "只是受控PEEL局部结构，不等同完整议论文写作；没有虚构排队调整后的实际效果。"
+      }
+    },
+    {
+      "id": "s3.second.q10",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "taskIntent": "分清提及的下一议题与说话人决定先处理的议题",
+      "prompt": "听会议中的一小段对话。两人接下来决定先谈什么？",
+      "audioScript": "A: We've agreed on the sports day events. Shall we move on to the food stalls?\nB: In a moment. Before we leave the events, where can pupils ask for a rest if they need one?\nA: Good point. Let's settle that first and come back to the food afterwards.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "productionNotes": "双人会议交流；In a moment为自然暂缓，不读成催促；标签不读，不用音效标示转向。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "休息需求应到哪里提出。"
+        },
+        {
+          "id": "b",
+          "text": "食品摊位如何安排。"
+        },
+        {
+          "id": "c",
+          "text": "运动项目要保留哪些。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "不要把先被提到的下一议题当成最终顺序；听清first和afterwards指向什么。",
+      "explanation": "A原本想转到食品摊位，B在转题前提出休息需求，A同意先处理它，食物议题留后。运动项目本身已经达成一致。",
+      "difficulty": "高三语篇理解：听出暂缓转题并回到当前议题补充问题；三个选项都在录音中出现。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷6—7、30—31／PDF13—14、37—38",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "optionReasons": {
+          "a": "that first承接B刚提出的休息咨询地点。",
+          "b": "这是A最初提出的转题方向，但被明确推迟到afterwards。",
+          "c": "开头说明项目已经达成一致，本段没有重新选项目。"
+        },
+        "ambiguity": "题目问讨论顺序，不问体育活动现实进行顺序；ask for a rest是寻求休息安排，不自动等同医务室。",
+        "teachingBoundary": "不要求熟悉会议流程或推断未说出的安全设施。"
+      }
+    },
+    {
+      "id": "s3.second.q11",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "taskIntent": "在摘引材料时保留来源归属和断言强度",
+      "prompt": "为社区堆肥箱写介绍。你仅有制造商广告：“Our box can turn food scraps into compost in four weeks.” 你没有做过测试，也没有独立检测报告。哪句清楚交代了这项说法的来源？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Independent tests show that the box turns food scraps into compost in four weeks."
+        },
+        {
+          "id": "b",
+          "text": "Our trial confirmed that the box turns food scraps into compost in four weeks."
+        },
+        {
+          "id": "c",
+          "text": "The manufacturer says the box can turn food scraps into compost in four weeks."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "逐项核对谁提出说法，以及是否真的有相应测试。",
+      "explanation": "c明确把四周的说法归于制造商，没有把广告改成独立验证结果。a和b分别捏造独立测试与自己的试验；转述厂商说法也不等于保证它正确。compost指堆肥。",
+      "difficulty": "高三来源与语域：在产品介绍中诚实标记来源，常见报告动词承担断言差别。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷33／PDF40",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "optionReasons": {
+          "a": "题内没有独立检测，Independent tests show伪造了验证来源。",
+          "b": "题内明确没有自己测试，Our trial confirmed越过资料范围。",
+          "c": "来源准确且保留can的能力声称，没有保证每次必定四周完成。"
+        },
+        "ambiguity": "不推断厂商广告真假，也不认为来自制造商就一定错误；只评估这次引用是否诚实。",
+        "teachingBoundary": "不提供堆肥的技术或环保事实保证。"
+      }
+    },
+    {
+      "id": "s3.second.q12",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.listen-precise-record",
+      "type": "dictation",
+      "taskIntent": "完整听记比较所覆盖的对象范围",
+      "prompt": "听录音，写出完整句子。",
+      "audioScript": "This route is shorter than the other two routes we tried.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 140,
+        "productionNotes": "单人自然报告；the other two routes作为自然词组，不人为逐词停顿。we tried不可省略或弱到无法辨认。"
+      },
+      "answer": "This route is shorter than the other two routes we tried.",
+      "acceptedVariants": [
+        "This route is shorter than the other two routes we tried.",
+        "This route is shorter than the other 2 routes we tried."
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "除了比较结果，还要保留比较的是哪些路线。",
+      "explanation": "the other two routes we tried把比较限制在另外两条试走过的路线。漏掉two或we tried会丢失原声中的比较范围，不能改写成所有可能路线中最短。",
+      "difficulty": "高三精确听记支架：11词的限定比较，不靠罕见词或超长记忆跨度。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "听记：印刷19／PDF26；比较限定迁移：印刷33／PDF40；另据外研印刷19／PDF26听记任务",
+      "review": {
+        "correctExample": "this route is shorter than the other two routes we tried",
+        "wrongExample": "This route is shorter than the other routes we tried.",
+        "optionReasons": {},
+        "wrongAnswerReasons": {
+          "This route is shorter than the other routes we tried.": "漏写two，未完整记录数量范围。",
+          "This route is shorter than the other two routes.": "漏写we tried，丢失这次比较基于试走路线的限制。",
+          "This is the shortest route.": "不是原声转写，且扩大比较范围。"
+        },
+        "ambiguity": "routes没有英美拼写变体；不同口音发音不改变拼写。忽略大小写与句末标点，脚本无缩写或内部标点。",
+        "teachingBoundary": "听写并不要求用户额外写出比较逻辑解释；解析仅指出完整记录的意义。",
+        "parentRevision": "主代理逐项接纳数词two写为数字2的完整转写，数量和语义不变；不扩展为其他数字或删词。"
+      }
+    },
+    {
+      "id": "s3.second.q13",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.clarification-register",
+      "type": "arrange",
+      "taskIntent": "把歧义词精确指出，并请求对方解释",
+      "prompt": "通知只写要带“suitable shoes”，你不确定suitable指什么。用全部词块组成以Could开头的请求，询问对方这里所说的“合适”具体是什么意思。",
+      "tokens": [
+        {
+          "id": "t5",
+          "text": "by 'suitable shoes'?"
+        },
+        {
+          "id": "t2",
+          "text": "you clarify"
+        },
+        {
+          "id": "t4",
+          "text": "you mean"
+        },
+        {
+          "id": "t1",
+          "text": "Could"
+        },
+        {
+          "id": "t3",
+          "text": "what"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先提出澄清请求，再把需要解释的原词准确接在mean by之后。",
+      "explanation": "Could you clarify what you mean by 'suitable shoes'?准确定位含义不明确的原词；what you mean采用从句陈述语序，而不是替对方补写鞋子的要求。",
+      "difficulty": "高三受控语用：精确引用待澄清词与嵌入问句相结合；clarify意为说明清楚。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷42、53、55／PDF49、60、62",
+      "review": {
+        "correctExample": "t1,t2,t3,t4,t5",
+        "wrongExample": "t1,t4,t3,t2,t5",
+        "optionReasons": {
+          "t1": "情态动词置于整个请求开头。",
+          "t2": "主句主体和动作you clarify跟在Could后。",
+          "t3": "what引出需要解释的含义。",
+          "t4": "you mean是嵌入从句的陈述顺序。",
+          "t5": "by后精确引用原通知用词，不能擅加鞋种。"
+        },
+        "ambiguity": "给定词块及Could开头使本题可接受顺序唯一；更直接的What do you mean...?在其他语境可成立，不评价其普遍礼貌程度。",
+        "teachingBoundary": "本题不是鞋类常识；不要求推测活动类型。"
+      }
+    },
+    {
+      "id": "s3.second.q14",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "taskIntent": "区分举例中的局部措施与发言的总体主旨",
+      "prompt": "听一段关于校园信息发布的发言。哪项最能概括说话人的主张？",
+      "audioScript": "The school app is useful for quick updates, and I use it myself. But some families cannot check it during the day. A paper notice can help them, while a phone call may be needed for an urgent change. In short, we should choose the way we communicate according to the message and the people who need it.",
+      "audio": {
+        "assetId": null,
+        "status": "pending",
+        "suggestedWordsPerMinute": 150,
+        "productionNotes": "单人自然发言；末句总结轻停顿，不逐字强调；paper、phone均清楚，避免其中一项特别突兀。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "校园通知应改以纸质形式为主，尽量减少其他渠道。"
+        },
+        {
+          "id": "b",
+          "text": "发布渠道应结合信息特点与接收者的实际需要选择。"
+        },
+        {
+          "id": "c",
+          "text": "校园通知应改以电话联系为主，以免错过任何信息。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "听清In short之后如何把前面的三个例子联系起来。",
+      "explanation": "App、纸质通知和电话分别适合不同需要；说话人没有主张全面转向其中一种。b概括了信息特点和接收者两个选择依据。",
+      "difficulty": "高三主旨整合：多个例子共享一个原则，避免把某个被肯定的例子当作全文主张。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷18—19／PDF25—26",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "optionReasons": {
+          "a": "纸质是帮助部分家庭的一个办法，录音没有要求以它为主或减少其他渠道。",
+          "b": "对应总结中的message和people两个条件，保留多种方式的适用性。",
+          "c": "电话仅作为紧急变化可能需要的方式，不是所有通知的主渠道。"
+        },
+        "ambiguity": "不问哪种渠道客观最好；三项都属于现实可能的主张，必须根据录音选择。",
+        "teachingBoundary": "无需任何智能手机或家庭条件的外部常识。"
+      }
+    },
+    {
+      "id": "s3.second.q15",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "matching",
+      "taskIntent": "根据说法性质选择能支持它的查证行动",
+      "prompt": "编辑在核对学校花园的介绍。把每条句子与最合适的核查办法配对，每项一次。不是判断句子目前是真是假。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The garden opens at eight on school days."
+        },
+        {
+          "id": "l2",
+          "text": "The garden is the most relaxing place in the school."
+        },
+        {
+          "id": "l3",
+          "text": "The garden has more visitors this term than last term."
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "Check visitor counts for both terms, using the same counting method."
+        },
+        {
+          "id": "r1",
+          "text": "Check the current opening notice with the person responsible for the garden."
+        },
+        {
+          "id": "r2",
+          "text": "Ask whose judgement this is and identify it as a view rather than a timetable fact."
+        }
+      ],
+      "pairs": [
+        [
+          "l1",
+          "r1"
+        ],
+        [
+          "l2",
+          "r2"
+        ],
+        [
+          "l3",
+          "r3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "区分可以查时间表的安排、个人感受评价和需要两段记录的比较。",
+      "explanation": "开放时间查现行安排；most relaxing是评价，需要交代是谁的看法，不能伪装成时间表事实；more visitors是数量比较，需要相同计数方法下两学期的记录。",
+      "difficulty": "高三事实与观点：不是按肯定/否定分类，而是决定一句话应当如何查证或标注归属。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷32—33／PDF39—40",
+      "review": {
+        "correctExample": "l1-r1, l2-r2, l3-r3",
+        "wrongExample": "l1-r1, l2-r3, l3-r2",
+        "optionReasons": {
+          "l1-r1": "现行开放安排与负责人能直接核对八点；感受和客流均不说明开门时间。",
+          "l2-r2": "放松程度是评价，需标明判断者；客流多不自动说明最放松，开放时刻也无关。",
+          "l3-r3": "同口径的两期人数才直接对应more；单人的感受和时间表不能建立此数量比较。"
+        },
+        "ambiguity": "观点也可以有调查支持，但本题现有句子没有来源；r2没有说所有观点无法调查或永远不需证据。",
+        "teachingBoundary": "与q05不同：q05是在三个实证命题中匹配测量维度，本题先区分安排、评价与数量比较的性质。"
+      }
+    },
+    {
+      "id": "s3.second.q16",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "taskIntent": "保留利益与代价，提出受限制的建议",
+      "prompt": "小组讨论把学校一块闲地改成菜园。大家确认：种菜能提供实践机会；浇水需要稳定人手；目前只有周三有人值班。哪句结论同时回应好处与尚未解决的限制？",
+      "options": [
+        {
+          "id": "a",
+          "text": "A garden could offer practical learning, so the Wednesday team is enough to meet its watering needs."
+        },
+        {
+          "id": "b",
+          "text": "A garden could offer practical learning, but we should arrange regular care before deciding to start."
+        },
+        {
+          "id": "c",
+          "text": "A garden could offer practical learning, but we should first ask pupils which vegetables they want to grow."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "结论应保留已认可的好处，同时真正处理照料安排的缺口。",
+      "explanation": "b承认实践价值，也把稳定照料作为决定开展前需安排的事项。a没有依据就认定周三人手足够；c询问种什么也许有用，却没有回应题目要求处理的照料人手限制。",
+      "difficulty": "高三权衡表达：把限制写进建议，而非仅选语气最积极或最保守的一句。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷32—33／PDF39—40",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "optionReasons": {
+          "a": "由有学习价值跳到现有人手足够，缺少浇水安排依据。",
+          "b": "保留利益与照料限制，提出与缺口直接相关的下一步。",
+          "c": "偏好调查可以另行开展，但它没有回应目前尚未解决的稳定照料问题；不因这句有but就认为完成了权衡。"
+        },
+        "ambiguity": "不规定植物必须每天浇水，也不由周三一班断言必定失败；只需看稳定照料是否已安排。",
+        "teachingBoundary": "不评价真实农业方案，不把条件约束等同已发布许可必要条件题；核心是利益与限制的论证整合。"
+      }
+    },
+    {
+      "id": "s3.second.q17",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "completion",
+      "taskIntent": "在记录未完全核对时正确表达已确认数量的下界",
+      "prompt": "报名表中已逐一确认8名学生选择周日，其余表格尚未核对。请从at least、at most、exactly中填入一个表达，只报告当前可以保证的数量范围：___ eight students have chosen Sunday.",
+      "answer": "at least",
+      "acceptedVariants": [
+        "at least"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "已经确认的人不会因还有表格未核对而减少；但未核对的表格可能增加人数。",
+      "explanation": "at least eight表示至少8人，既包含已经确认的8人，也给尚未核对的表格留下可能增加人数的空间。at most把8变为上限，exactly把8定为最终精确总数，两者都无证据。",
+      "difficulty": "高三精确摘要支架：用常见短语保留证据给出的下界，不要求数学计算或统计术语。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷32—33／PDF39—40；解释与证据限制另据外研印刷55／PDF62",
+      "review": {
+        "correctExample": "At least",
+        "wrongExample": "exactly",
+        "optionReasons": {
+          "at least": "正确表达已确认数量提供的最小范围。",
+          "at most": "无依据地把已确认的8人设为不能超过的上限。",
+          "exactly": "无依据地断言未核对的表格不会增加人数。"
+        },
+        "ambiguity": "明确选择的是周日且8人已逐一确认，不存在重复或待确认身份；题面限定三个表达，故无需把no fewer than等开放同义短语列为本题答案。",
+        "teachingBoundary": "与已发布a13的新增点是数量下界短语的精确产出，仍是同一证据范围主题内的支架，不宣传为全新逻辑机制。教材页支持论点与证据相称，不声称原页教过这道报名题或这一词组辨析。"
+      }
+    },
+    {
+      "id": "s3.second.q18",
+      "origin": "本轮逐题原创",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "arrange",
+      "taskIntent": "让结论回到精确承诺，避免从局部收益滑向无关保证",
+      "prompt": "校报短评已写：“A later bus would let club members stay until their meetings finish. It would not change how much homework teachers set.” 用全部词块组成以The proposal开头的结句，表达“提议关乎参加社团的机会，而非减少课业量”。",
+      "tokens": [
+        {
+          "id": "t4",
+          "text": "not about"
+        },
+        {
+          "id": "t1",
+          "text": "The proposal"
+        },
+        {
+          "id": "t5",
+          "text": "reducing schoolwork"
+        },
+        {
+          "id": "t3",
+          "text": "access to clubs"
+        },
+        {
+          "id": "t2",
+          "text": "is about"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "正面概括实际改善的事情，再排除前文明确没有承诺的另一件事。",
+      "explanation": "The proposal is about access to clubs, not about reducing schoolwork.把机会与课业量分开，准确回扣两句前文。若颠倒两项，会把提议归成减课业且否认社团参与，与材料相反。access在此表示参与机会。",
+      "difficulty": "高三跨句结论：给定词块可以构成相反而语法通顺的概括，必须整合两句前文判断。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷33／PDF40",
+      "review": {
+        "correctExample": "t1,t2,t3,t4,t5",
+        "wrongExample": "t1,t2,t5,t4,t3",
+        "optionReasons": {
+          "t1": "按要求以提议作主语。",
+          "t2": "引出提议实际涉及的重点。",
+          "t3": "社团参与机会承接能待到会议结束的收益。",
+          "t4": "not about明确排除另一解释。",
+          "t5": "减少课业量是前文否定的收益，须放在not about之后。"
+        },
+        "ambiguity": "词块不以逗号、句号的位置泄露顺序。相反顺序也可形成语法成立但意义相反的概括；判错依据是它与前文及指定表达不符。",
+        "teachingBoundary": "不保证晚班车能满足所有学生，仅概括这段材料对提议的明确描述。"
+      }
+    }
+  ],
+  "remainingWork": [
+    "独立主代理逐题试做，复核高三适配性、干扰项与已有库的实质差异。",
+    "按实际核读范围扩充两个既有来源scope，并登记四个proposedGoals；本文件未改catalog。",
+    "真实音频制作与逐段实听；验证脚本无标签被读出、说话人自然区分、目标词完整、语速适合且可重播。",
+    "转为正式unit/review协议后校验内容哈希、所有判题样例、选项审核和原生页面；当前仅是作者稿。",
+    "没有完整课程效度、真人难度分布、自由作文或完整高考覆盖的证据。"
+  ]
+}
