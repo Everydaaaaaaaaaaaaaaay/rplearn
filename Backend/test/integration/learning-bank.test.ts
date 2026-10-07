@@ -413,4 +413,42 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       await app.close();
     }
   });
+  it("互斥修订持久化并用于新组卷，已有挑战仍保留原快照", async () => {
+    const existing = await account();
+    const characterId = await existing.character();
+    const attempt = await existing.start(characterId, "advanced");
+    const snapshot = await privateUnit(attempt.id);
+    const entries = catalog.entries.filter(
+      (entry) => entry.question.level === "advanced",
+    );
+    // 将该档候选临时登记为同一互斥组，验证不能绕过约束拼出新卷。
+    for (const entry of entries) {
+      const detail = await bank.detail(entry.question.id);
+      const current = bankQuestionSchema.parse(detail.payload);
+      await bank.save(
+        current.id,
+        detail.content_hash,
+        {
+          ...current,
+          version: current.version + 1,
+          exclusionGroupIds: ["test.shared-answer"],
+        },
+        true,
+        "隔离互斥修订测试",
+      );
+    }
+    const persisted = bankQuestionSchema.parse(
+      (await bank.detail(required(entries[0]).question.id)).payload,
+    );
+    expect(persisted.exclusionGroupIds).toEqual(["test.shared-answer"]);
+    const fresh = await account();
+    const freshCharacter = await fresh.character();
+    const result = await fresh.command((session) =>
+      session.start(freshCharacter, "advanced"),
+    );
+    expect(result.status).toBe("preparing");
+    expect(result.attempt).toBeNull();
+    expect(await privateUnit(attempt.id)).toEqual(snapshot);
+    expect((await existing.start(characterId, "advanced")).id).toBe(attempt.id);
+  });
 });

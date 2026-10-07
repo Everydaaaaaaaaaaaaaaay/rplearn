@@ -22,6 +22,12 @@ export const bankQuestionSchema = z.strictObject({
   level: levelSchema,
   topic: z.enum(bankTags),
   roleKeys: z.array(id).max(100),
+  // 由内容审核登记；共享任一组的题不能出现在同一挑战中。
+  exclusionGroupIds: z
+    .array(id)
+    .max(30)
+    .refine((groups) => new Set(groups).size === groups.length, "同卷互斥组不能重复。")
+    .optional(),
   question: questionSchema,
   references: unitSchema.shape.references,
   reviewNotes: z.string().trim().min(30).max(2000),
@@ -125,27 +131,51 @@ export function assembleBankQuestions(
       ((!q.seen && !q.mastered) || (q.mastered && q.reviewDue === true)) &&
       (q.roleKeys.length === 0 || q.roleKeys.includes(roleKey)),
   );
+  const choices = blueprint.slots.map((slot) => {
+    const matches = pool.filter(
+      (q) => q.question.goalId === slot.goalId && q.question.type === slot.type,
+    );
+    // 保留新题优先；每个插槽只随机一次，回溯时不反复重抽同一候选。
+    const fresh = matches.filter((q) => !q.mastered);
+    const review = matches.filter((q) => q.mastered);
+    const rotate = (items: BankCandidate[]) => {
+      if (!items.length) return items;
+      const start = Math.min(
+        items.length - 1,
+        Math.max(0, Math.floor(random() * items.length)),
+      );
+      return [...items.slice(start), ...items.slice(0, start)];
+    };
+    return [...rotate(fresh), ...rotate(review)];
+  });
+  if (choices.some((items) => items.length === 0)) return null;
   const used = new Set<string>();
   const selected: BankQuestion[] = [];
-  for (const slot of blueprint.slots) {
-    const matches = pool.filter(
-      (q) =>
-        q.question.goalId === slot.goalId &&
-        q.question.type === slot.type &&
-        !used.has(q.id),
-    );
-    if (!matches.length) return null;
-    const fresh = matches.filter((q) => !q.mastered);
-    const preferred = fresh.length ? fresh : matches;
-    const selectedQuestion =
-      preferred[
-        Math.min(preferred.length - 1, Math.floor(random() * preferred.length))
-      ];
-    if (!selectedQuestion) return null;
-    used.add(selectedQuestion.id);
-    selected.push(selectedQuestion);
-  }
-  return selected;
+  // 互斥约束可能让前面的随机选择堵住后续插槽；有限回溯寻找完整合法试卷。
+  let remainingVisits = 10_000;
+  const fill = (slot: number): boolean => {
+    if (slot === choices.length) return true;
+    for (const candidate of choices[slot] ?? []) {
+      if (--remainingVisits < 0) return false;
+      if (used.has(candidate.id)) continue;
+      if (
+        selected.some((previous) =>
+          candidate.exclusionGroupIds?.some((group) =>
+            previous.exclusionGroupIds?.includes(group),
+          ),
+        )
+      )
+        continue;
+      used.add(candidate.id);
+      selected.push(candidate);
+      if (fill(slot + 1)) return true;
+      selected.pop();
+      used.delete(candidate.id);
+      if (remainingVisits < 0) return false;
+    }
+    return false;
+  };
+  return fill(0) ? selected : null;
 }
 
 const scenes = {

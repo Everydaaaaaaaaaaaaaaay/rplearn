@@ -4,6 +4,7 @@ import {
   bankIdentity,
   bankUnit,
   bankBlueprintSchema,
+  bankQuestionSchema,
   type BankCandidate,
 } from "../../../src/modules/learning/bank-content.js";
 import { loadBankCatalog } from "../../../src/modules/learning/bank-catalog.js";
@@ -18,6 +19,131 @@ const catalog = await loadBankCatalog(
   new URL("../../../config/learning", import.meta.url).pathname,
 );
 describe("公共题库内容与组卷", () => {
+  function exclusionFixture() {
+    const unit = learningFixture();
+    const candidates: BankCandidate[] = unit.questions.map((question, index) => ({
+      id: `test.exclusion.${String(index)}`,
+      version: 1,
+      level: unit.level,
+      topic: "daily",
+      roleKeys: [],
+      question: { ...question, goalId: `test.goal.${String(index)}` },
+      references: unit.references,
+      reviewNotes: "用于验证人工登记的互斥关系，不生成或评审教学内容。",
+      seen: false,
+      mastered: false,
+    }));
+    const blueprint = bankBlueprintSchema.parse({
+      id: "test.exclusion",
+      title: "互斥组卷检查",
+      level: unit.level,
+      topic: "daily",
+      prerequisiteGoalIds: [],
+      slots: candidates.map(({ question }) => ({
+        goalId: question.goalId,
+        type: question.type,
+      })),
+    });
+    return { candidates, blueprint };
+  }
+
+  it("前题暴露后题答案时回溯选择替代题，仍保留完整题数与槽位", () => {
+    const { candidates, blueprint } = exclusionFixture();
+    const first = required(candidates[0]);
+    const last = required(candidates[5]);
+    first.exclusionGroupIds = ["test.same-answer"];
+    last.exclusionGroupIds = ["test.same-answer"];
+    const alternative = { ...first, id: "test.alternative", exclusionGroupIds: [] };
+    const selected = required(
+      assembleBankQuestions(
+        blueprint,
+        [...candidates, alternative],
+        "anyone",
+        new Set(),
+        () => 0,
+      ),
+    );
+    expect(selected).toHaveLength(6);
+    expect(selected[0]?.id).toBe(alternative.id);
+    expect(selected[5]?.id).toBe(last.id);
+    expect(selected.map((q) => q.question.goalId)).toEqual(
+      blueprint.slots.map((slot) => slot.goalId),
+    );
+  });
+
+  it("互斥关系不随题序失效，也不会用冲突题或少题强行交卷", () => {
+    const { candidates, blueprint } = exclusionFixture();
+    required(candidates[0]).exclusionGroupIds = ["test.answer", "test.other"];
+    required(candidates[5]).exclusionGroupIds = ["test.answer"];
+    for (const slots of [blueprint.slots, [...blueprint.slots].reverse()]) {
+      expect(
+        assembleBankQuestions(
+          { ...blueprint, slots },
+          candidates,
+          "anyone",
+          new Set(),
+          () => 0,
+        ),
+      ).toBeNull();
+    }
+  });
+
+  it("新题冲突时可用已到期复习题，不能借用未到期或受角色限制的题", () => {
+    const { candidates, blueprint } = exclusionFixture();
+    const first = required(candidates[0]);
+    first.exclusionGroupIds = ["test.answer"];
+    required(candidates[5]).exclusionGroupIds = ["test.answer"];
+    const review = {
+      ...first,
+      id: "test.review",
+      exclusionGroupIds: [],
+      seen: true,
+      mastered: true,
+      reviewDue: true,
+    };
+    expect(
+      assembleBankQuestions(
+        blueprint,
+        [...candidates, review],
+        "anyone",
+        new Set(),
+        () => 0,
+      )?.[0]?.id,
+    ).toBe(review.id);
+    expect(
+      assembleBankQuestions(
+        blueprint,
+        [...candidates, { ...review, reviewDue: false }],
+        "anyone",
+        new Set(),
+      ),
+    ).toBeNull();
+    expect(
+      assembleBankQuestions(
+        blueprint,
+        [...candidates, { ...review, roleKeys: ["other"] }],
+        "anyone",
+        new Set(),
+      ),
+    ).toBeNull();
+  });
+
+  it("互斥审核信息保留在题库合同中且不改变题目奖励身份", () => {
+    const original = required(catalog.entries[0]).question;
+    const annotated = bankQuestionSchema.parse({
+      ...original,
+      exclusionGroupIds: ["review.answer-family"],
+    });
+    expect(annotated.exclusionGroupIds).toEqual(["review.answer-family"]);
+    expect(bankIdentity(annotated.question)).toBe(bankIdentity(original.question));
+    expect(
+      bankQuestionSchema.safeParse({
+        ...original,
+        exclusionGroupIds: ["review.same", "review.same"],
+      }).success,
+    ).toBe(false);
+  });
+
   it("十八题规则一次组成完整长卷，缺一题时不降级或重复填充", () => {
     const unit = learningFixture();
     // 只复制工程夹具验证长度与事务边界，不生成教学内容。
