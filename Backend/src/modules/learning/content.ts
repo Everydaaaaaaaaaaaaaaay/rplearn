@@ -120,7 +120,7 @@ export const unitSchema = z
     summary: text.max(300),
     scene: text.max(300),
     estimatedMinutes: z.number().int().min(2).max(20),
-    goalIds: z.array(identifier).min(1).max(9),
+    goalIds: z.array(identifier).min(1).max(18),
     prerequisiteGoalIds: z.array(identifier).max(30),
     references: z
       .array(

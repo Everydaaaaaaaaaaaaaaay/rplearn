@@ -13,14 +13,14 @@ import {
 import { learningFixture } from "../../helpers/learning.js";
 
 describe("单元内容合同", () => {
-  it("十八题与九个教学目标可以完整投影，超出上限会被拒绝", () => {
+  it("十八题可各自引用教学目标，超额题目和空挂目标仍拒绝", () => {
     const unit = learningFixture();
     const seed = unit.questions[0];
     if (!seed) throw new Error("缺少长卷夹具。");
     const questions = Array.from({ length: 18 }, (_, index) => ({
       ...seed,
       id: `test.q${String(index)}`,
-      goalId: `test.g${String(index % 9)}`,
+      goalId: `test.g${String(index)}`,
     }));
     const longUnit = unitSchema.parse({
       ...unit,
@@ -28,6 +28,19 @@ describe("单元内容合同", () => {
       goalIds: [...new Set(questions.map((q) => q.goalId))],
     });
     expect(publicUnit(longUnit).questions).toHaveLength(18);
+    expect(publicUnit(longUnit).goalIds).toHaveLength(18);
+    expect(
+      unitSchema.safeParse({
+        ...longUnit,
+        questions: questions.slice(0, 17),
+      }).success,
+    ).toBe(false);
+    expect(
+      unitSchema.safeParse({
+        ...longUnit,
+        goalIds: [...longUnit.goalIds, "test.extra"],
+      }).success,
+    ).toBe(false);
     expect(
       unitSchema.safeParse({
         ...longUnit,
