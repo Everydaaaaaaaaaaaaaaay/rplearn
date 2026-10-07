@@ -100,6 +100,17 @@ export async function loadGenerationBlueprints(
   return result;
 }
 
+// 按题型名称取合同，避免新增题型后数组下标变化误开放听力或丢失文字题。
+function generatedQuestionSchema(
+  type: "choice" | "arrange" | "completion" | "matching",
+) {
+  const schema = questionSchema.options.find(
+    (candidate) => candidate.shape.type.value === type,
+  );
+  if (!schema) throw new Error(`缺少生成题型合同：${type}`);
+  return schema;
+}
+
 export const generatedDraftSchema = z.strictObject({
   title: unitSchema.shape.title,
   summary: unitSchema.shape.summary,
@@ -110,10 +121,10 @@ export const generatedDraftSchema = z.strictObject({
   questions: z
     .array(
       z.discriminatedUnion("type", [
-        questionSchema.options[0],
-        questionSchema.options[2],
-        questionSchema.options[3],
-        questionSchema.options[5],
+        generatedQuestionSchema("choice"),
+        generatedQuestionSchema("arrange"),
+        generatedQuestionSchema("completion"),
+        generatedQuestionSchema("matching"),
       ]),
     )
     .length(6),

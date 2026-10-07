@@ -14,7 +14,7 @@ describe("补库内容硬门槛", () => {
     const schema = JSON.stringify(z.toJSONSchema(generatedDraftSchema));
     for (const type of ["choice", "arrange", "completion", "matching"])
       expect(schema).toContain(`"const":"${type}"`);
-    for (const type of ["listeningChoice", "dictation"])
+    for (const type of ["listeningChoice", "dictation", "audioArrange"])
       expect(schema).not.toContain(`"const":"${type}"`);
   });
   it("盲审合同逐题限定真实标识，配对文字与跳过不能伪装成答案", async () => {
