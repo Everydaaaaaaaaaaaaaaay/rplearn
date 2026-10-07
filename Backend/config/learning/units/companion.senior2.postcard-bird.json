@@ -1,0 +1,590 @@
+{
+  "id": "companion.senior2.postcard-bird",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "明信片上的大鸟",
+  "summary": "明信片上的大鸟",
+  "scene": "一滴水洇开了明信片上的屋顶，你和同行者把它画成一只大鸟。",
+  "estimatedMinutes": 14,
+  "goalIds": [
+    "s2.nonrestrictive",
+    "s2.future-progressive",
+    "s2.verb-patterns",
+    "s2.past-perfect",
+    "s2.present-perfect-continuous",
+    "s2.balanced-argument",
+    "s2.ing-subject",
+    "s2.participle-feelings",
+    "s2.ing-roles"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "非限制性从句、未来时点活动、活动主语与表语、利弊表达的局部练习",
+      "pages": "印刷5、17、20—21、29、41／PDF12、24、27—28、36、48",
+      "alignment": "按已登记来源对齐所列目标。原作者核读范围及本轮补题实际重读范围见authoring/senior2-publication-notes.md；题文与故事原创，不复制教材练习，不声称整册或统一高二学期覆盖。"
+    },
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "动词补语、感受与评价、过去参照与持续近况的局部练习",
+      "pages": "印刷17、41、53、65／PDF24、48、60、72",
+      "alignment": "按已登记来源对齐所列目标。补题实际核读文本PDF24、60、72，感受题沿用原作者PDF48核读记录；不声称本轮重新目视全部PDF或独立教师效度审定。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra高二独立作者与补题作者",
+    "reviewedBy": "Codex主代理逐题终审；Astra分级作者原创及定点返修",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "主代理核对十八道题目的题面、选项、答案、提示、解析、判题样例和三段双语故事后批准接入公共题库。原稿、语义去重与返修记录保留在authoring；不以程序化组合生成题目。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion stop at a table outside a small café to write a postcard. You draw the roofs across the street with a watercolour pencil, then reach for your cup. A drop of water falls onto the card and spreads through the coloured lines. You lift it quickly, but one roof has already become a grey patch.",
+      "translation": "你和同行者在一家小咖啡馆外的桌边停下来，想写张明信片。你用水溶彩铅画好街对面的屋顶，伸手拿杯子时，一滴水落在纸上，沿着彩色线条洇开。你赶紧抬起卡片，一座屋顶却已经变成了灰色的水痕。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Your companion turns the card sideways. The patch looks a little like a bird with one wing open. You add another wing and a tiny beak. The bird is much bigger than the houses below it, which makes you both laugh. You leave the card on the table to dry and finish your drinks.",
+      "translation": "同行者把卡片转了个方向。那块水痕有点像一只张开单边翅膀的鸟。你添上另一只翅膀和小小的喙。鸟比下面的房子大得多，你们看着都笑了。你把卡片留在桌上晾干，慢慢喝完杯里的饮料。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Before you leave, you write the date on the back. There is no address yet. Your companion holds a book open while you slide the card between its pages. At the corner, you look back at the real roofs. They seem smaller now than the bird you will take home.",
+      "translation": "离开前，你在背面写下日期，地址还是空着。同行者替你翻开一本书，你把卡片夹进书页。走到街角，你回头看了一眼真正的屋顶；它们仿佛比那只将跟你回家的鸟还小。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s2.astra.a17",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "prompt": "同伴说：I was bored during the talk. 你只想准确转述他的体验，不额外评价他这个人。哪句合适？",
+      "hint": "原话描述谁的体验？不要把体验改成别人对他的评价。",
+      "explanation": "b保留他在讲话期间的无聊感。boring可用于人，但那是在说此人令人无聊，与原话不同。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "基础感受与评价对象辨析",
+      "options": [
+        {
+          "id": "a",
+          "text": "He was a boring person."
+        },
+        {
+          "id": "b",
+          "text": "He felt bored during the talk."
+        },
+        {
+          "id": "c",
+          "text": "Everyone found him boring."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s2.astra.r03",
+      "goalId": "s2.nonrestrictive",
+      "type": "choice",
+      "prompt": "同一人写了两种说法：① My friends who live nearby came to dinner. ② My friends, who live nearby, came to dinner. 只比较两句对“住在附近”的处理，不推断实际人数。哪项准确？",
+      "hint": "观察信息是在帮助确定谈论哪一组人，还是补充这组人的情况。",
+      "explanation": "①的无逗号从句限定friends；②的逗号从句补充已经作为一组谈论的friends。两句都不提供人数，也不说明搬家时间。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "语义比较",
+      "options": [
+        {
+          "id": "a",
+          "text": "①用住址限定所谈的朋友；②把住址作为对所谈朋友的补充。"
+        },
+        {
+          "id": "b",
+          "text": "①和②都用住址从朋友中选出一部分；逗号只改变停顿。"
+        },
+        {
+          "id": "c",
+          "text": "①把住址作为对所谈朋友的补充；②用住址限定所谈的朋友。"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s2.astra.b03",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "choice",
+      "prompt": "同伴刚放下刷子说：I've been painting the sign. 单凭这句话，哪一项仍不能确定？",
+      "hint": "过程表达与整件作品的完成状态不是同一条信息。",
+      "explanation": "现在完成进行式可描述持续到现在或刚结束的过程；并不单独保证作品完成或未完成。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "识别与证据边界",
+      "options": [
+        {
+          "id": "a",
+          "text": "他此前有一段画标牌的过程。"
+        },
+        {
+          "id": "b",
+          "text": "这段活动与当前近况有关。"
+        },
+        {
+          "id": "c",
+          "text": "整块标牌是否已全部画完。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s2.astra.r01",
+      "goalId": "s2.nonrestrictive",
+      "type": "completion",
+      "prompt": "合并两条信息：Nora borrowed my jacket. Nora's own jacket was wet. 只填一个关系词，使逗号内仍说明Nora自己的外套：Nora, ____ own jacket was wet, borrowed mine.",
+      "hint": "检查空格与后面的名词之间需要表达什么关系。",
+      "explanation": "whose own jacket保留外套属于Nora这一关系；从句已有主语名词jacket，不能只用who替代所属关系。",
+      "instruction": "填写符合要求的答案",
+      "difficultyReason": "受控运用",
+      "acceptedAnswers": [
+        "whose"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s2.astra.r07",
+      "goalId": "s2.verb-patterns",
+      "type": "choice",
+      "prompt": "你记录了两条独立消息：Kai decided to join the walk. Mei enjoyed joining the walk. 哪个判断只使用这两句话已经提供的信息？",
+      "hint": "比较前面的动词是在报告一个决定，还是在评价一段体验。",
+      "explanation": "decided to join报告决定，不单独保证实际参加或完成；enjoyed joining评价参与体验，不是未来承诺。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "动词补语的事件状态",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kai已经完成步行；Mei还只是在考虑参加。"
+        },
+        {
+          "id": "b",
+          "text": "Kai作出了参加的决定；Mei说的是参加这项活动的愉快体验。"
+        },
+        {
+          "id": "c",
+          "text": "Kai和Mei都保证下一次参加同一场步行活动。"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s2.astra.r02",
+      "goalId": "s2.nonrestrictive",
+      "type": "arrange",
+      "prompt": "用全部词块表达：“我们遇到六名步行者，其中两人认识这条小路。”以We met开头，用逗号后的补充说明保留两人的范围。",
+      "hint": "先介绍整组人，再把其中一部分人与他们的情况连接起来。",
+      "explanation": "two of whom指前面六人中的两人，作knew的主语；不是新来两个人，也没有说六人全认识小路。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "受控信息整合",
+      "tokens": [
+        {
+          "id": "k",
+          "text": "knew"
+        },
+        {
+          "id": "o",
+          "text": "of whom"
+        },
+        {
+          "id": "w",
+          "text": "We met"
+        },
+        {
+          "id": "p",
+          "text": "the path."
+        },
+        {
+          "id": "s",
+          "text": "six walkers,"
+        },
+        {
+          "id": "t",
+          "text": "two"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "w",
+          "s",
+          "t",
+          "o",
+          "k",
+          "p"
+        ]
+      ]
+    },
+    {
+      "id": "s2.astra.r11",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "choice",
+      "prompt": "今天是周五。同伴说：I've been walking to the library every morning this week. 哪条转述保留了原句表达的活动方式和时间范围？",
+      "hint": "分别核对转述中的频率和起止范围，看看有没有缩小或扩大原话。",
+      "explanation": "every morning this week说明本周每天早上反复进行的活动，不能缩成今天一次，也不提供更早各周的习惯。现在完成进行时在这里概括一段时间内反复做的事。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "反复活动的频率与时间范围",
+      "options": [
+        {
+          "id": "a",
+          "text": "同伴本周只有今天早上步行去图书馆，前几天早上没有去。"
+        },
+        {
+          "id": "b",
+          "text": "同伴本周及更早每周的每天早上，都保持步行去图书馆的习惯。"
+        },
+        {
+          "id": "c",
+          "text": "同伴本周每天早上都步行去图书馆，描述的是本周反复做的事。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s2.astra.r09",
+      "goalId": "s2.ing-roles",
+      "type": "completion",
+      "prompt": "本来打算坐在室外，雨来后最后还是坐到了室内。补全结局：We planned to sit outside but ended up ____ indoors. 只填sit的适当形式。",
+      "hint": "空格前的搭配表示最后实际出现的结果，检查它怎样连接一个活动。",
+      "explanation": "end up后接-ing活动，因此用sitting，sit末尾t双写；to sit属于前面的plan结构，不能直接照搬到ended up后。",
+      "instruction": "填写符合要求的答案",
+      "difficultyReason": "计划与实际结局的补语转换",
+      "acceptedAnswers": [
+        "sitting"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s2.astra.a06",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "prompt": "试用记录只显示：这周参与试用的十个人中，八个人更快找到了入口。哪句英文总结没有扩大证据范围？",
+      "hint": "核对结论中的人群、时间和确定程度是否超出记录。",
+      "explanation": "c保留本次十人试用中的多数人，以及找到入口更快这一结果。a把试用者扩大为本周多数访客；b把入口寻找速度扩大成指南各部分都易懂，均超出记录。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "识别与意义迁移",
+      "options": [
+        {
+          "id": "a",
+          "text": "Most visitors this week found the entrance faster with the guide."
+        },
+        {
+          "id": "b",
+          "text": "Eight people in the trial found every part of the guide easy to follow."
+        },
+        {
+          "id": "c",
+          "text": "Most people in this small trial found the entrance faster."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s2.astra.r08",
+      "goalId": "s2.ing-roles",
+      "type": "arrange",
+      "prompt": "你赞成分享笔记，反对的是不先询问就分享。用全部词块表达“我的顾虑是未经询问就分享笔记”，以My concern开头。",
+      "hint": "先说出被讨论的行为，再将限制这一行为的条件连上。",
+      "explanation": "sharing the notes作表语说明顾虑的内容；without asking first将顾虑限定为未先询问的分享，而非所有分享行为。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "带条件的活动表述",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "asking first."
+        },
+        {
+          "id": "n",
+          "text": "the notes"
+        },
+        {
+          "id": "c",
+          "text": "My concern"
+        },
+        {
+          "id": "w",
+          "text": "without"
+        },
+        {
+          "id": "s",
+          "text": "sharing"
+        },
+        {
+          "id": "i",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "i",
+          "s",
+          "n",
+          "w",
+          "a"
+        ]
+      ]
+    },
+    {
+      "id": "s2.astra.r05",
+      "goalId": "s2.past-perfect",
+      "type": "matching",
+      "prompt": "同一次活动有两次核查：中午仍有两张桌子没擦，下午三点全部擦完。把各条回顾与它能准确对应的记录配对，每项用一次。",
+      "hint": "同时检查参照时点和否定覆盖的范围；有部分未完成不等于没有完成任何一部分。",
+      "explanation": "中午仍有两张未擦支持not all；三点全部完成支持had cleaned all；总桌数未给，不能确定中午已擦数量，也不能确认none。",
+      "instruction": "将相关的两项配对",
+      "difficultyReason": "时间参照与否定范围",
+      "left": [
+        {
+          "id": "l1",
+          "text": "At noon, we had not cleaned all the tables."
+        },
+        {
+          "id": "l2",
+          "text": "By three, we had cleaned all the tables."
+        },
+        {
+          "id": "l3",
+          "text": "At noon, we had cleaned none of the tables."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "符合下午三点的完成记录。"
+        },
+        {
+          "id": "r2",
+          "text": "符合中午尚未全部完成的记录。"
+        },
+        {
+          "id": "r3",
+          "text": "不能由记录确认：中午是否一张也没擦，题内没有说明。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s2.astra.r10",
+      "goalId": "s2.ing-subject",
+      "type": "arrange",
+      "prompt": "用全部词块表达“事先不核对地址可能造成延误”，把“不核对地址”这项行为作为主语，以Not开头。",
+      "hint": "先把带否定的活动主题连接完整，再接它可能带来的影响。",
+      "explanation": "Not checking the address in advance整体作主语，not否定核对这项活动；can保留可能性，未声称每次都会延误。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "否定活动主语与可能后果",
+      "tokens": [
+        {
+          "id": "d",
+          "text": "delays."
+        },
+        {
+          "id": "a",
+          "text": "the address in advance"
+        },
+        {
+          "id": "n",
+          "text": "Not"
+        },
+        {
+          "id": "c",
+          "text": "can cause"
+        },
+        {
+          "id": "k",
+          "text": "checking"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "n",
+          "k",
+          "a",
+          "c",
+          "d"
+        ]
+      ]
+    },
+    {
+      "id": "s2.astra.a16",
+      "goalId": "s2.ing-subject",
+      "type": "choice",
+      "prompt": "原意：如果事先确定目的地，规划路线会更容易。选以-ing短语作主语、同时保留条件的改写。",
+      "hint": "确认原意中的条件还在，不把有条件的比较变成无条件保证。",
+      "explanation": "a以Planning a route为主语，并保留if条件及easier的比较意义。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "迁移",
+      "options": [
+        {
+          "id": "a",
+          "text": "Planning a route is easier if we choose the destination first."
+        },
+        {
+          "id": "b",
+          "text": "Planning a route is always easy."
+        },
+        {
+          "id": "c",
+          "text": "Choosing a destination is unnecessary when we plan a route."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s2.astra.r06",
+      "goalId": "s2.verb-patterns",
+      "type": "choice",
+      "prompt": "留言说：The knot was difficult, but we didn't stop trying. 你只想保留原话已经说明的行动，不增加成功或失败结果。哪句相符？",
+      "hint": "先判断否定的是尝试本身还是停止尝试，再检查有没有添加结局。",
+      "explanation": "didn't stop trying否定停止尝试，因此仍在尝试；这不等于已经成功解开结。a改成放弃，b额外补了成功。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "否定范围与结果边界",
+      "options": [
+        {
+          "id": "a",
+          "text": "We tried for a while and then gave up."
+        },
+        {
+          "id": "b",
+          "text": "We kept trying and finally undid the knot."
+        },
+        {
+          "id": "c",
+          "text": "We continued our attempts; the message does not say whether we succeeded."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s2.astra.r04",
+      "goalId": "s2.past-perfect",
+      "type": "choice",
+      "prompt": "读完整留言：I tasted the soup and realised I had added too much salt. I mixed in some unsalted soup and tasted it again. It tastes fine now. 哪条回复准确保留了留言最后的状态？unsalted指未加盐的。",
+      "hint": "把早先发现的问题与后面发生的补救分开，再检查回复所说的当前状态。",
+      "explanation": "had added把加盐放在初次品尝之前；后文说明混入未加盐的汤，再次品尝后已合适。回复需更新最初过咸的问题，同时保留补救是混合而非丢弃重做。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "过去叙述中的状态更新",
+      "options": [
+        {
+          "id": "a",
+          "text": "The soup is still too salty after the change, so you need to add more unsalted soup."
+        },
+        {
+          "id": "b",
+          "text": "The soup was too salty at first, but it tastes fine after you mixed in some unsalted soup."
+        },
+        {
+          "id": "c",
+          "text": "You threw away the salty soup and replaced it with a new batch that tastes fine."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s2.astra.b13",
+      "goalId": "s2.future-progressive",
+      "type": "choice",
+      "prompt": "你明天三点到四点会在安静展厅画画，五点有空。同伴想三点半打电话讨论计划。哪句既说明届时状态，又提出可行替代？",
+      "hint": "将提议时间与已占用时段对照，同时检查替代安排是否符合题内事实。",
+      "explanation": "a用将来进行说明三点半的活动，并改约已知有空的五点。b错误声称三点半有空；c虽提出改约，但三点四十五分仍在三点到四点的占用时段内。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "迁移",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'll be drawing then. Could we talk at five?"
+        },
+        {
+          "id": "b",
+          "text": "I'll be free then. Call me at half past three."
+        },
+        {
+          "id": "c",
+          "text": "I'll be drawing then. Could we talk at quarter to four instead?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s2.astra.b17",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "prompt": "你看完同伴整理的图表，觉得有些地方难理解，想请对方解释，不评价同伴能力。哪句最合适？",
+      "hint": "将反馈落在具体内容及自己的体验，再看是否提出了解释请求。",
+      "explanation": "a用confused说明自己对局部内容的困惑，并请求解释。b要求删除，c表达兴趣并索要副本，都没有完成指定的澄清任务。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "迁移",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm confused by this part of the chart. Could you explain it?"
+        },
+        {
+          "id": "b",
+          "text": "I'm confused by this part of the chart. Could you leave it out of the final version?"
+        },
+        {
+          "id": "c",
+          "text": "I'm interested in this part of the chart. Could you send me a copy of it?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s2.astra.b15",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "prompt": "你偏爱简短说明，同伴更喜欢详细说明。你想让同一组读者用同一个任务比较两个版本，不先判断哪版更好。哪句最符合这个意图？",
+      "hint": "看是否认可另一种方案可能的价值，并提出能够比较的方法。",
+      "explanation": "c认可两版可能有用，明确同一组读者用同一个任务比较两个版本，不先认定哪版更好。a让各人只选一版，b改用不同难度的任务，都改变了题目指定的比较条件。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "迁移",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both versions may help. Could the readers each choose one version and then tell us what they think?"
+        },
+        {
+          "id": "b",
+          "text": "Both versions may help. Could the same readers try a simple task with mine and a harder task with yours?"
+        },
+        {
+          "id": "c",
+          "text": "Both versions may help. Could the same readers try both versions on the same task before we choose?"
+        }
+      ],
+      "answer": "c"
+    }
+  ]
+}

@@ -1,0 +1,583 @@
+{
+  "level": "senior1",
+  "author": {
+    "name": "Astra 高一去重返修作者",
+    "method": "逐题人工撰写情境、选项、答案及解析；没有程序组题或词槽替换。程序仅作读取和结构校验。",
+    "status": "14道替换候选，待主代理逐题独立复审；未导入、未发布"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/pep-senior1.pages.json",
+      "readAt": "2026-10-07",
+      "pages": "印刷18、28、40、52、64／PDF25、35、47、59、71（一基）",
+      "method": "本轮实际读取上述六类目标所对应五页的全部本地抽取正文；未重新目视PDF，不声称通读全册。",
+      "findings": "建议及理由、未来安排、交际中确认事实、限制性从句及地点时间原因信息。新语境不是教材原题。"
+    },
+    {
+      "sourceId": "fltrp.senior1.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/fltrp-senior1.pages.json",
+      "readAt": "2026-10-07",
+      "pages": "印刷29／PDF36（一基）",
+      "method": "本轮实际读取整页抽取正文及任务表；未重新目视PDF。",
+      "findings": "过去事件、当前进度与已完成准备的沟通；只采用原稿及目录既有时态范围。"
+    }
+  ],
+  "replacementContract": "id沿用被替换原题ID以便一对一复审；只在本文件提出候选，不自动覆盖原稿。题型改变须重算蓝图。本轮不替换任何听力，原11道音频题继续保留独立隐藏脚本与待制作边界。",
+  "questions": [
+    {
+      "id": "s1.astra.a01",
+      "goalId": "senior1.reader-advice-note",
+      "type": "choice",
+      "taskIntent": "建议中的指代衔接",
+      "prompt": "便笺写着：Try explaining the new idea to a classmate without looking at your notes. This can show you which parts you still need to study. 第二句的This具体指什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read a classmate's notes to find a new idea."
+        },
+        {
+          "id": "b",
+          "text": "Explain the idea to someone without using your notes."
+        },
+        {
+          "id": "c",
+          "text": "Study every part again before talking to someone."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把代词放回前句，核对动作、对象和执行条件。",
+      "explanation": "This承接前一句完整建议：不看笔记向同学解释；它不是指读同学笔记，也不是指谈话前重学全部内容。这样才能把建议与检查薄弱部分的作用接起来。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a颠倒笔记的归属并改变动作；c把尚需找出的薄弱部分提前扩成全部重学。三项都可构成学习活动，不靠粗鲁或荒唐选项排除。",
+        "ambiguity": "只问This在该便笺里的指代，不要求证明这一学习方法普遍有效。"
+      },
+      "novelty": "替换旧建议q1同构的责备/保证排除题；新增建议与后续解释之间的指代衔接。"
+    },
+    {
+      "id": "s1.astra.a05",
+      "goalId": "senior1.confirm-the-details",
+      "type": "choice",
+      "taskIntent": "确认问句不等于已核实事实",
+      "prompt": "群聊中只有一句：The sports hall is open this evening, isn't it? 还没有人回复。管理员请你先确认再订场地。下一条消息怎样写最符合当前信息？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Someone has asked about tonight. I'll check the opening hours before booking."
+        },
+        {
+          "id": "b",
+          "text": "Someone has confirmed tonight's opening. I'll go ahead and book the hall."
+        },
+        {
+          "id": "c",
+          "text": "Someone has reported tonight's closure. I'll look for another hall."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "区分提出确认的问题与得到确认的答复。",
+      "explanation": "原消息在请求确认，尚无答复，因此不能报告已确认开放，也不能因句尾isn't就报告关闭。a保留未知状态并提出核查行动。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b把询问当成确认；c把否定附加部分当成关闭证据。三项都包含信息报告与后续行动。",
+        "ambiguity": "不测试语调推断，不否认说话人可能原本期待肯定回答；仅判断是否已有确认。"
+      },
+      "novelty": "不再换助动词复刻旧确认q4；理解常规附加问句在交流中的证据地位。"
+    },
+    {
+      "id": "s1.astra.a06",
+      "goalId": "senior1.project-time-notes",
+      "type": "matching",
+      "taskIntent": "同一任务的进度与可用结果",
+      "prompt": "三个小组都要打印活动海报。把各组消息与准确的任务记录配对；记录中的“可用”指消息明确说可以使用。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "We've printed all the posters and checked the dates. They're ready to put up."
+        },
+        {
+          "id": "l2",
+          "text": "We're still printing the posters. We've checked the dates, but the printing isn't finished."
+        },
+        {
+          "id": "l3",
+          "text": "We printed all the posters yesterday, but the date was wrong. We need to print them again."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "已全部打印，核对无误，可张贴。"
+        },
+        {
+          "id": "r2",
+          "text": "日期已核对，打印仍未完成。"
+        },
+        {
+          "id": "r3",
+          "text": "曾全部打印，但日期错误，需重印。"
+        }
+      ],
+      "answer": {
+        "l1": "r1",
+        "l2": "r2",
+        "l3": "r3"
+      },
+      "acceptedVariants": [],
+      "hint": "分别检查打印是否结束，以及成品能否使用；不要把“做完”直接等同于“可用”。",
+      "explanation": "第一组明确已打印并核对，可张贴；第二组虽已核对日期，打印还在进行；第三组昨天已打印完，但错误日期使这批海报需要重印。三个消息都谈同一对象，必须读取完成状态和结果条件。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "l1-r1；l2-r2；l3-r3",
+        "wrongExample": "l3-r1；l1-r3；l2-r2",
+        "distractors": "l1与l3都报告全部打印，若只看完成就会互换；l2也有现在完成时，却只表示核对完成，不能把它当成打印完成。",
+        "ambiguity": "只依据消息更新各组独立记录，不把三条消息当成同一组的连续时间线；不推断日期错误已经修好。"
+      },
+      "novelty": "保留配对，将对象全部统一为海报；比较核对完成、打印进行以及打印完成但结果不可用，不能再凭物品名词配对。"
+    },
+    {
+      "id": "s1.astra.a08",
+      "goalId": "senior1.book-donation-labels",
+      "type": "choice",
+      "taskIntent": "所属限定与名单选择",
+      "prompt": "通知：Students whose parents are coming should collect a visitor pass. Lin的父母会来；Bo会参加，但他的父母不来。按这条通知，谁应领访客通行证？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lin和Bo，因为两位学生都会参加。"
+        },
+        {
+          "id": "b",
+          "text": "只有Bo，因为他的父母不来。"
+        },
+        {
+          "id": "c",
+          "text": "只有Lin，因为Lin的父母会来。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对通知限定的是谁的情况，以及题面各人是否满足该条件。",
+      "explanation": "whose parents把父母与学生关联；领证条件是学生的父母会来，不是学生本人参加。题面只有Lin满足。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a把父母来访换成学生参加，并擅自补定Lin参加；b反转条件。",
+        "ambiguity": "不推断通行证数量或其他学生的资格；Lin本人是否参加不是本题条件。"
+      },
+      "novelty": "替换旧关系词q5的whose单空，要求把所属从句映射到两位学生的实际资格。",
+      "coverageRole": "所属限定的支持题，不作为核心难度或新增高一能力覆盖。"
+    },
+    {
+      "id": "s1.astra.a10",
+      "goalId": "senior1.meeting-place-details",
+      "type": "choice",
+      "taskIntent": "用地点限定修复模糊指引",
+      "prompt": "校园里有两处花园。你想指明有蔬菜种植区、学生在那里种菜的那处。哪条指引按这个地点用途准确区分？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait in the garden where students grow vegetables."
+        },
+        {
+          "id": "b",
+          "text": "Wait in the garden that students pass on their way to lunch."
+        },
+        {
+          "id": "c",
+          "text": "Wait in the garden where students keep their bicycles."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "三个从句都能限定花园，但只有一个依据题面给出的活动来区分。",
+      "explanation": "where students grow vegetables说明在花园里发生的种菜活动，符合指引条件；经过花园和停放自行车都是新添且未给定的信息。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b语法完整但改变区分依据；c也正确使用where，却改了用途，不能只见where就选。",
+        "ambiguity": "三项都语法成立；只判断是否准确使用给定信息，不断言另外两种活动现实中不可能。"
+      },
+      "novelty": "彻底移除与旧地点q4近乎逐字重复的café/visited；练习从句的实际指路功能。",
+      "coverageRole": "地点用途限定的支持题，不作为核心难度或新增高一能力覆盖。"
+    },
+    {
+      "id": "s1.astra.a11",
+      "goalId": "senior1.confirm-the-details",
+      "type": "arrange",
+      "taskIntent": "否定预设后的事实修正",
+      "prompt": "你昨天已经交了钥匙。对方问：You didn't return the key, did you? 用全部词块组成先短答、再补充交接事实的回应。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "I gave it"
+        },
+        {
+          "id": "t2",
+          "text": "yesterday."
+        },
+        {
+          "id": "t3",
+          "text": "Yes, I did."
+        },
+        {
+          "id": "t4",
+          "text": "to the receptionist"
+        }
+      ],
+      "answer": [
+        "t3",
+        "t1",
+        "t4",
+        "t2"
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t1",
+          "t4",
+          "t2"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先按题面事实决定短答，再把物品、接收人和时间连接起来。",
+      "explanation": "Yes, I did. I gave it to the receptionist yesterday. 肯定已归还的事实，再说明昨天交给接待员；否定问句不要求机械回答No。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "t3-t1-t4-t2",
+        "wrongExample": "t1-t4-t2-t3",
+        "distractors": "无多余词；错误示例句子本身能表达事实，但未按题干要求先短答再补充。",
+        "ambiguity": "固定词块的句末标点限制时间块前置；不把自由表达中的Yesterday, I gave...判成语法错误。"
+      },
+      "novelty": "不再重复旧确认q2的can't you填空；把事实短答与交接说明衔接，仍是受控运用而非高难题。"
+    },
+    {
+      "id": "s1.astra.a15",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "taskIntent": "保留约定并协商替代时段",
+      "prompt": "周六上午你已约好与同学练习，下午有空。同伴邀你上午见面。你决定保留练习约定，同时提出当天可行的见面时间。选符合决定的回复。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm practising with my classmate that morning. Could we meet in the afternoon?"
+        },
+        {
+          "id": "b",
+          "text": "I'm moving my practice to the afternoon. Could we meet that morning?"
+        },
+        {
+          "id": "c",
+          "text": "I'm keeping my morning practice. Could we leave our meeting for another week?"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "核对哪项保留既定约会，并使用题面给出的当天空闲时段。",
+      "explanation": "a同时满足两项决定；b改变了必须保留的练习时间，c改到另一周，未提出当天的可行时段。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b与c都是自然且礼貌的协商，却分别改变固定约定或当天见面的要求。",
+        "ambiguity": "题目明确此次决定；不把推迟一周或重约练习普遍判为不礼貌。"
+      },
+      "novelty": "原题任务与旧库有区别，但原c逻辑荒唐；本次保留任务，修复干扰项，不能把这项计为新增知识。"
+    },
+    {
+      "id": "s1.astra.a16",
+      "goalId": "senior1.meeting-place-details",
+      "type": "choice",
+      "taskIntent": "地点从句与活动对象从句保义",
+      "prompt": "录制小组发来更新：We have kept our booking for the room where we recorded the interview. We have deleted the recording that we made there. 哪条记录准确保留房间预订和录音文件的不同处理结果？",
+      "options": [
+        {
+          "id": "a",
+          "text": "取消了录制访谈的房间预订，保留了在那里制作的录音。"
+        },
+        {
+          "id": "b",
+          "text": "保留了录制访谈的房间预订，删除了在那里制作的录音。"
+        },
+        {
+          "id": "c",
+          "text": "保留了另一间房的预订，删除了原来录制访谈房间的资料。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "先找两个主句的动作及对象，再用从句确定它们是哪一个。",
+      "explanation": "保留的是曾用于录制访谈的房间预订；删除的是在那里制作的录音文件。where说明录制地点，that在从句中作made的宾语。保留场地预订不等于保留录音。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把两项处理反转；c擅自换成另一间房，并把录音文件改成房间资料。",
+        "ambiguity": "原文未给预订日期、所有权或删除理由，不作补充推断；kept our booking明确是保留预订，不表示保留房间所有权。"
+      },
+      "novelty": "由旧地点q1的where+meet正误识别改为场地预订与录音文件的两项更新，要求保留从句指向和动作对象；本轮修正kept the room的不自然表达。"
+    },
+    {
+      "id": "s1.astra.b03",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "taskIntent": "区分确认安排与尚在考虑的计划",
+      "prompt": "两条消息：Kai: I'm taking the nine o'clock train tomorrow. I've bought my ticket. Mei: I might take that train too, but I haven't decided. 哪项可以写入已确认的同行安排？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kai and Mei are both taking the nine o'clock train."
+        },
+        {
+          "id": "b",
+          "text": "Mei is taking the nine o'clock train; Kai is still deciding."
+        },
+        {
+          "id": "c",
+          "text": "Kai is taking the nine o'clock train; Mei has not decided yet."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "分别检查两个人的决定，不把表达可能性的消息写成确认。",
+      "explanation": "Kai用现在进行时说明安排，并给出票已购买的依据；Mei明确说尚未决定，因此不能把她登记为已确认同行。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a把可能性升级为安排；b交换谁已决定。",
+        "ambiguity": "确认安排不是保证列车必定运行；只记录说话时的个人计划状态。"
+      },
+      "novelty": "区别于旧安排q4的现在/未来单句分类，引入两人计划的确定程度。"
+    },
+    {
+      "id": "s1.astra.b09",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "taskIntent": "澄清冲突安排而不擅自确认变更",
+      "prompt": "你收到组织者的消息：We’re meeting the visitors at four on Friday. Sam随后说他收到的时间是五点，但你还没看到更新通知。你想直接向组织者说明冲突并确认最终时间。选合适的回复。",
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "保留两条消息的来源，指出具体冲突；不要先把一种解释写成已确定的安排。",
+      "explanation": "b明确说明组织者消息与Sam转述的冲突，并询问四点是否仍有效或已变更；a先认定五点生效，c另设两批访客的解释，均未直接核对同一次会面的最终时间。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "三项都是自然的后续消息并提出问题；a在请求通知前已接受未经确认的新时间，c引入原题没有的两组访客安排。",
+        "ambiguity": "不要求判断Sam可信与否，也不要求学生自己选四点或五点；任务是向组织者核实同一会面，不能依据消息先后自动确认变更。"
+      },
+      "novelty": "删除小学疑问词Where填空；亲写两来源时间冲突下的直接澄清任务，比较保留安排、擅自接受变更与无依据拆分事件。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sam says five, so we're meeting at five on Friday. Could you send me the updated notice?"
+        },
+        {
+          "id": "b",
+          "text": "Your message says four, but Sam says five. Are we still meeting at four, or has the time changed?"
+        },
+        {
+          "id": "c",
+          "text": "Your message says four and Sam says five. Are we meeting one group at four and another at five?"
+        }
+      ]
+    },
+    {
+      "id": "s1.astra.b10",
+      "goalId": "senior1.meeting-place-details",
+      "type": "arrange",
+      "taskIntent": "在原因从句中保留取消对象",
+      "prompt": "用全部词块组成以The reason开头的句子，说明取消的是步行活动，原因是大雨。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "was the heavy rain."
+        },
+        {
+          "id": "t2",
+          "text": "we cancelled the walk"
+        },
+        {
+          "id": "t3",
+          "text": "The reason"
+        },
+        {
+          "id": "t4",
+          "text": "why"
+        }
+      ],
+      "answer": [
+        "t3",
+        "t4",
+        "t2",
+        "t1"
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t4",
+          "t2",
+          "t1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先组织要解释的行动，再接主句谓语说明原因。",
+      "explanation": "The reason why we cancelled the walk was the heavy rain. why从句说明哪件事需要解释，was之后给出原因；不能把取消活动误作取消雨。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "t3-t4-t2-t1",
+        "wrongExample": "t3-t1-t4-t2",
+        "distractors": "无多余词；错误序列会让句号位于句中并拆散reason的限定从句。",
+        "ambiguity": "只练指定词块结构；不否定because改写。该题仍属基础结构复现，不单独计作新语义覆盖。"
+      },
+      "novelty": "消除与旧地点q3逐块相同的This is the room/place where排序；仍明确登记为受控复现，不能包装成高级迁移。",
+      "coverageRole": "基础结构复现，不计新增高一能力覆盖。"
+    },
+    {
+      "id": "s1.astra.b12",
+      "goalId": "senior1.project-time-notes",
+      "type": "completion",
+      "taskIntent": "用衔接词保留已完成与待做的反差",
+      "prompt": "选填and或but，使后半句强调准备尚未结束：We've packed the tools, ___ we still need to check the batteries.",
+      "answer": "but",
+      "acceptedVariants": [
+        "but"
+      ],
+      "hint": "检查任务要求的是平列补充，还是突出仍有未完成事项。",
+      "explanation": "but突出工具装好与电池仍待检查之间的反差；and也能形成语法正确的平列句，但没有按题目要求明确标出转折。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "but",
+        "wrongExample": "and",
+        "distractors": "and不是语法错误，本题只因明确要求突出反差而选择but。",
+        "ambiguity": "限制and/but二选一，避免however等形式及标点变体；不把need to check写成正在检查。"
+      },
+      "novelty": "旧时态q1/q6已覆盖sent yesterday；新题以当前完成结果和待做状态构成衔接，保留高一负担。",
+      "coverageRole": "基础衔接复现，不计新增高一能力覆盖。"
+    },
+    {
+      "id": "s1.astra.b13",
+      "goalId": "senior1.reader-advice-note",
+      "type": "choice",
+      "taskIntent": "根据建议目的理解搭配",
+      "prompt": "建议写着：Leave yourself some extra time so you don't have to rush between classes. 这里leave yourself some extra time最接近哪种做法？",
+      "options": [
+        {
+          "id": "a",
+          "text": "预留额外时间，让课间赶路更从容。"
+        },
+        {
+          "id": "b",
+          "text": "把上课时间缩短，以便提早回家。"
+        },
+        {
+          "id": "c",
+          "text": "课间留在原教室，不去下一节课。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把短语与so后说明的目的连起来读，不只根据leave的一个常见中文意思判断。",
+      "explanation": "leave oneself time在这里表示为自己留出时间；后文说明目的是不用匆忙赶路，不是提前离校或停在教室。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b擅自改变课程时长与回家安排；c把leave误读成待在原处而忽略去下一节课的目的。",
+        "ambiguity": "该自然搭配为作者原创语境，来源页支持建议及理由任务，不声称教材该页含此短语或把它列作必背词条。"
+      },
+      "novelty": "不再重复旧建议q4的绝对保证排除；以常用词在建议语境中的搭配含义补充词汇理解。"
+    },
+    {
+      "id": "s1.astra.b16",
+      "goalId": "senior1.meeting-place-details",
+      "type": "choice",
+      "taskIntent": "原因已知与原因待询的区别",
+      "prompt": "两张便笺写着：① The reason why we changed rooms was the noise outside. ② Please ask Jo why we changed the meeting time. 哪条摘要准确保留已知和未知的信息？",
+      "options": [
+        {
+          "id": "a",
+          "text": "换房间和改时间都是因为外面吵。"
+        },
+        {
+          "id": "b",
+          "text": "换房间因为外面吵；改时间的原因还需向Jo询问。"
+        },
+        {
+          "id": "c",
+          "text": "改时间因为外面吵；换房间的原因还需向Jo询问。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别核对两件事，别把一件事的原因补给另一件事。",
+      "explanation": "①明确给出换房间的原因；②请求询问改时间的原因，尚未给出答案。两处why都涉及原因，但不能把已知原因跨事件转移。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把一件事的原因扩展为两件事；c交换原因对应的事件。",
+        "ambiguity": "不把②称为定语从句；它只提供独立待询信息作比较，不另测高阶段宾语从句术语。"
+      },
+      "novelty": "替换旧地点q5的reason why单空；读取原因关系并限制信息归属，兼顾高一真实沟通。"
+    }
+  ],
+  "remainingWork": [
+    "主代理逐题复审14道候选；本轮重点返修a06、a16、b09，a08/a10为支持题，b10/b12为基础复现。",
+    "候选改变题型分布，若采用需重算每组阶段和交互比例，不能沿用原稿计数。",
+    "原稿11道听力未被文字化；音频素材、实听、隐藏脚本和客户端判分仍待原有发布流程。",
+    "b10明确仍为结构复现；新增题数、不同语境与新增知识覆盖须分别统计。"
+  ]
+}

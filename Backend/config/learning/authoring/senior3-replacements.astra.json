@@ -1,0 +1,226 @@
+{
+  "level": "senior3",
+  "status": "五道独立原创替代题；作者自审，待主代理逐题批准，不可发布",
+  "authoringMethod": "逐题分别确定信息缺口、语篇关系和错误推理，手写题干与各选项；没有程序组合或把听力改成文字。",
+  "sourceBoundary": "本轮新增完整核读本地pep-senior3.pages.json的PDF111（印刷104）正文：不定式状语同时列出求职目的与返乡后发现变化的结果；这是文本核读，未渲染PDF。另核读Oxford Advanced Learner’s Dictionary官网only副词义项8，明确only to do用于紧接发生、尤其意外或失望的事件。题文为原创，不照抄例句。其他来源仍沿用原作者记录。",
+  "questions": [
+    {
+      "id": "s3.astra.r01",
+      "goalId": "senior3.repair-report-focus",
+      "type": "choice",
+      "taskIntent": "未知施事的报道与衔接",
+      "prompt": "简报的下一句已写好：No one has yet identified who did it. 已确认的事实只有“路边那辆自行车的轮胎昨夜被修好了”。哪句放在前面既准确又与下一句衔接？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The nearby shop repaired the bicycle tyre last night."
+        },
+        {
+          "id": "b",
+          "text": "The bicycle tyre was repaired last night."
+        },
+        {
+          "id": "c",
+          "text": "The bicycle owner had the tyre repaired last night."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "检查有没有把尚未查明的行动者或安排者写进已经确认的事实。",
+      "explanation": "b用被动报告已知事件，省略未知的施事，与下一句继续查找修理者相接。a擅自认定附近车店是修理者；c虽未说谁动手，却加入车主安排维修的事实。",
+      "difficulty": "迁移：被动的信息功能与下一句的未知施事相衔接，不能只看是否出现被动形式。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12（沿用作者核读记录）",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "ambiguity": "c的have something done在此加入车主促成或安排维修，题内没有该事实；不将这种结构本身判错。",
+        "distractors": "a新增明确修理者；c新增安排者；b只报告已知事件。"
+      },
+      "optionNotes": {
+        "a": "把附近车店指定为修理者，超出记录，也与下一句尚未识别是谁不协调。",
+        "b": "被动句不需要补造施事，保留轮胎、修好和昨夜三个已知要素。",
+        "c": "使役结构写入车主安排维修，不能由轮胎已修好推出。"
+      },
+      "deduplication": "对比旧repair-report-focus/q1、q4和新a13：旧题分别指定已知施事改写、进行状态、确认数量；本题判断省略未知施事为何适合下句，且干扰项引入的是安排者而非时态或数量。"
+    },
+    {
+      "id": "s3.astra.r02",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "choice",
+      "taskIntent": "回叙插入与叙事时间衔接",
+      "prompt": "这段回忆按“发现问题—解释此前原因—采取补救”组织：I reached the entrance and searched my bag for the tickets. ___ So I went back to collect them. 已知票在出发前就放到了厨房桌上。中间哪句既交代这件较早的事，也不另加一次回家经历？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before leaving home, I had put them on the kitchen table."
+        },
+        {
+          "id": "b",
+          "text": "After reaching the entrance, I went home and put them on the kitchen table."
+        },
+        {
+          "id": "c",
+          "text": "Before leaving home, I had taken them off the kitchen table and packed them."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把叙述顺序和事情实际发生的顺序分开，再检查最后一句为什么成立。",
+      "explanation": "a在入口查找之后回叙出发前放票的动作，解释为什么要回去取。b新增一次已经回家放票的经历；c把留在桌上的票改为已装包，破坏题内给定的补救原因。",
+      "difficulty": "迁移：三句叙事的回叙、代词所指和补救原因须同时连贯。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12（沿用作者核读记录）",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "ambiguity": "不声称before一律要求过去完成时；三项本身均可构成英语句子，比较其与完整故事的兼容性。",
+        "distractors": "b插入题内没有的第二段行程；c反转票的去向；a提供回叙解释。"
+      },
+      "optionNotes": {
+        "a": "them回指tickets，较早的放票事件解释随后回去取票。",
+        "b": "将放票移到到达入口之后，还新增已回过家的一次行程。",
+        "c": "虽然保持较早时间，却把票写成已经装入包，改变明确的去向。"
+      },
+      "deduplication": "对比旧archive-time-viewpoint/q1、q2和新a14：旧题识别或填写较早时态，a14按两个时点判断范围；本题要求选择一段回叙作为前后两句之间的解释，不以错误时态作为干扰。"
+    },
+    {
+      "id": "s3.astra.r03",
+      "goalId": "senior3.project-conditions",
+      "type": "choice",
+      "taskIntent": "条件推理的方向",
+      "prompt": "通知写着：If the temperature falls below ten degrees, we will move the activity indoors. 后来只收到消息：The activity has been moved indoors. 没有温度记录，也没说这是唯一搬进室内的原因。哪句总结证据范围准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The activity is now indoors; the move confirms that the temperature fell below ten degrees."
+        },
+        {
+          "id": "b",
+          "text": "The activity is now indoors; the move rules out the temperature having fallen below ten degrees."
+        },
+        {
+          "id": "c",
+          "text": "The activity is now indoors; the move leaves it uncertain whether the temperature fell below ten degrees."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "原通知规定某个条件出现时怎么做；再想想实际采取了这个行动能否反过来确定条件。",
+      "explanation": "原通知承诺低于十度会搬到室内，没有说只有低于十度才会搬。观察到搬入室内不能确认温度，也不能排除温度较低。c保留已知行动和未知温度。",
+      "difficulty": "迁移：跨消息整合充分条件与观察结果，区分不能确认和可以否定。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36（沿用作者核读记录）",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "ambiguity": "题干明确不把低温当唯一可能原因；不能把普通if擅自加强成if and only if。",
+        "distractors": "a肯定后件而反推条件；b从无法确认误跳到否定；c保持未知。"
+      },
+      "optionNotes": {
+        "a": "把搬进室内这一结果反推为低温必然出现，增加唯一原因限制。",
+        "b": "低温仍可能出现，未知不等于不能发生。",
+        "c": "只确认活动地点，温度是否低于十度仍没有结论。"
+      },
+      "deduplication": "对比旧project-conditions/q1、q2与新a16、b10：它们区分让步、必要条件或unless转换；本题处理普通if所给充分条件，禁止从结果反向肯定前提。"
+    },
+    {
+      "id": "s3.astra.r04",
+      "goalId": "senior3.interview-summary",
+      "type": "choice",
+      "taskIntent": "从句内容的归属与建议状态",
+      "prompt": "会议记录：Lea suggested that the library stay open an hour later. The committee said it would discuss the proposal next week. 哪句摘要保留“谁提出什么”以及当前进度？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The committee has agreed to keep the library open an hour later, following Lea's proposal."
+        },
+        {
+          "id": "b",
+          "text": "Lea proposed a later closing time; the committee plans to discuss it next week."
+        },
+        {
+          "id": "c",
+          "text": "The committee proposed a later closing time; Lea will decide on it next week."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别标记建议的提出者、处理建议的人，以及讨论是已经发生还是尚待进行。",
+      "explanation": "suggested that引出Lea提出的建议，不表示建议已被采纳。委员会说下周会讨论，b保留建议归属和未来讨论安排；不能由此认定委员会此前从未讨论。a把将讨论写成已经同意，c交换角色并加入Lea的决定权。",
+      "difficulty": "迁移：跨句转述中同时保存命题归属、建议语气与未来处理安排。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60（沿用作者核读记录）",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "ambiguity": "只报告下一周的讨论安排，不断言此前从未讨论，也不推断最后是否延时。",
+        "distractors": "a把提议当采纳；c颠倒提出者和处理者；b保留建议归属与未来安排。"
+      },
+      "optionNotes": {
+        "a": "has agreed将下周待讨论偷换成已经同意。",
+        "b": "保留Lea提出延后闭馆的建议及委员会下周讨论的安排，不对以往是否讨论作判断。",
+        "c": "把委员会写成提出者，把Lea写成决定者，两种身份都不符合记录。"
+      },
+      "deduplication": "对比旧interview-summary/q6及新b17：旧题区分从句信息类型，b17区分可用已知和大小未知；本题聚焦从句内容归属于谁以及建议与采纳的言语行为差别。"
+    },
+    {
+      "id": "s3.astra.r05",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "taskIntent": "不定式的意外结果与语用目的",
+      "prompt": "日记写道：We hurried to the small cinema, only to find that the last showing had been cancelled. 这里only to find与前半句是什么关系？",
+      "options": [
+        {
+          "id": "a",
+          "text": "他们赶去的唯一目的，是查明最后一场是否取消。"
+        },
+        {
+          "id": "b",
+          "text": "他们先得知最后一场已经取消，然后才匆忙赶到电影院。"
+        },
+        {
+          "id": "c",
+          "text": "他们赶到后却发现最后一场已取消，这是出乎预期的结果。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "不要只见to就认定目的；想想匆忙赶到与后面发现之间形成了什么变化。",
+      "explanation": "only to find在这一叙事中引出抵达后才发现的意外结果，而非解释出发的目的。a把发现结果改成唯一目的；b把得知取消放在赶到之前。c保留先赶到、随后意外发现的叙事关系。",
+      "difficulty": "迁移：根据叙事预期辨别不定式语义功能，不靠单一形式标签作答。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷104／PDF111；Oxford only副词义项8",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "ambiguity": "只解释本句only to find的叙事功能，不将所有only to结构机械归为意外结果。",
+        "distractors": "a把意外结果读成唯一目的；b把发现前置于赶到；c保留随后发生的意外结果。"
+      },
+      "optionNotes": {
+        "a": "原句没有说他们此行就是为了调查取消与否。",
+        "b": "把得知取消放在赶到之前，颠倒本句only to find连接的发现顺序。",
+        "c": "匆忙赶到却发现已取消，only to引出未料到的结果。"
+      },
+      "deduplication": "对比旧exhibition-purpose/q2、q6与新a18：这些题练目的及目的不保证效果；本题是不定式结果状语，不能把它重新解释成同一目的结构。该扩展需核对来源后才能发布。"
+    }
+  ],
+  "additionalSourceReading": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/pep-senior3.pages.json",
+      "pages": "印刷104／PDF111",
+      "readAt": "2026-10-07",
+      "method": "完整阅读该页提取正文；未声称视觉渲染核对",
+      "finding": "作状语一节并列目的和返乡后发现变化的结果示例，支持不把全部to不定式一律解释成目的。"
+    },
+    {
+      "sourceId": "oxford.only.adverb.20261007",
+      "url": "https://www.oxfordlearnersdictionaries.com/definition/english/only_2",
+      "section": "副词义项8 only to do something",
+      "readAt": "2026-10-07",
+      "finding": "该义项说明紧接发生的事情，尤其是令人意外、失望的情况；支持r05的叙事关系。",
+      "registration": "仅候选来源，未改catalog，主代理采用前需决定是否登记。"
+    }
+  ]
+}

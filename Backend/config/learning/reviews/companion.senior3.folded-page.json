@@ -1,0 +1,683 @@
+{
+  "unitId": "companion.senior3.folded-page",
+  "contentHash": "b9b8fb72462fdec89234f7283e9dead2e0bf22c1ca93dcdf7d01de51fe1c3cb4",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex主代理逐题终审；Astra分级作者原创及定点返修",
+  "reviewedAt": "2026-10-07",
+  "roleFit": "三段连续故事仅使用你与普通同行者，无职业绑定；故事不参与题目作答条件。",
+  "levelFit": "六目标综合文字复习：14选择、2配对、1填空、1排序。配对整合版本与信息状态；排序六块区分原因和结果方向。不宣称完整高考测量或六目标平均覆盖。",
+  "limitations": "本批经主代理逐题内容终审，可登记发布；属于作者与主代理审核，未经过独立教师和真实学习者的难度测量。没有听力、自由口语或开放写作，不代表完整年级课程或达级认证。",
+  "questions": [
+    {
+      "questionId": "s3.astra.a03",
+      "standaloneContext": "标签写着：The boxes marked with a blue circle contain glass. 仓库还有未画蓝圈的箱子。只根据标签，哪项成立？",
+      "ambiguityReview": "题内明确存在未标记箱子，但不提供其内容，唯一结论为c。 a取消限定；b把对一部分的肯定错误扩展为对其余部分的否定。",
+      "optionNotes": {
+        "a": "删除蓝圈限定，把一部分扩大成全部箱子。",
+        "b": "原句没有说明未画蓝圈的箱子内容，不能反推没有玻璃。",
+        "c": "只肯定标签限定的箱子，保留其他箱子的未知状态。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r07",
+      "standaloneContext": "题干限定三项待收集信息，三组记录相互独立；每组恰好缺一项，不要求记住其他题目。",
+      "ambiguityReview": "材料字段统一限定为需要主办方提供的材料；l1不需要主办方提供材料是明确答复，不表示无需任何材料。只说记录未给出某项，不推断小组自己尚未决定。 配对说明：r1：仅l2未确认人数；l1和l3已回答人数。；r2：仅l3缺少需要主办方提供的材料信息；l1明确无需主办方提供，l2已说明主办方应提供的材料。；r3：仅l1记录缺到达方式；l2乘公交，l3步行。没有记录方式不等于对方一定尚未决定。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r06",
+      "standaloneContext": "统一寄出规则及三份独立记录全部在题内；不依赖故事或现实出版流程。",
+      "ambiguityReview": "批准只归属于明确版本；l3明确没有后续变化。右侧不假定现实中另有审批规则。 配对说明：r1：仅l2满足当前版已获批且未寄；l1未获批，l3已寄。；r2：仅l3最新版本已获批并寄出且无后续改动；不能给l1或l2直接结案。；r3：仅l1修订发生在批准之后且新版明确未获批；l2和l3的批准在修订之后。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.b06",
+      "standaloneContext": "句子是：The request needs to be approved by the owner. 其中to be approved说明什么？",
+      "ambiguityReview": "只解释给定句，不排斥needs approving等合法表达。 a把房主从审批者改为申请者；b把需求改成已完成的批准。三项保持类似信息量。",
+      "optionNotes": {
+        "a": "把房主从批准者换成请求提交者，并另加后续审批者。",
+        "b": "把需要批准变成已经批准，超出原句。",
+        "c": "request承受批准，owner执行批准；需求不构成完成证明。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.b04",
+      "standaloneContext": "事实是“虽然讨论没有解决所有问题，但它让双方理解了彼此的顾虑”。哪句完整保留关系和范围？",
+      "ambiguityReview": "不要求推断到底解决多少问题；只保留原来部分否定。 b改成全部解决且没有顾虑的因果；c改为未来假设条件。",
+      "optionNotes": {
+        "a": "保留已发生的讨论、未解决全部问题以及理解顾虑的收获。",
+        "b": "把并非全部解决写成全部解决，并把仍有顾虑改成没有顾虑。",
+        "c": "将过去已经发生的事实变成未来尚未发生的假设。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.a17",
+      "standaloneContext": "用全部词块组成以We开头的句子，表达我们需要确认究竟是什么造成了延误。",
+      "ambiguityReview": "指定以We开头、使用全部词块并表达延误的原因。We need to find out what the delay caused.虽语法成立，却问延误造成了什么，方向相反，不能接受。唯一符合指定意义的中性顺序为We / need to / find out / what / caused / the delay。未拆碎need to或find out。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "part1",
+              "part2",
+              "part3",
+              "part4",
+              "part5",
+              "part6"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "part1",
+              "part2",
+              "part3",
+              "part4",
+              "part6",
+              "part5"
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "part1",
+              "part2",
+              "part3",
+              "part6",
+              "part4",
+              "part5"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.b08",
+      "standaloneContext": "午后一点开始等待，下午三点仍在等。按要求用wait的过去完成进行时填空：At three, we ___ for two hours, and we were still waiting.",
+      "ambiguityReview": "明确指定过去完成进行时；had waited在某些完整语境可成立，但不满足本题形式，不作普遍语法否定。 无选项；have been waiting改用现在参照；were waiting未按指定形式体现此前两小时延续。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "had been waiting"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "have been waiting"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.a13",
+      "standaloneContext": "同伴建议报告写“All the windows have been repaired.”。检查记录只确认十扇中的四扇已修好，其余尚未检查。哪句回应最准确且有助于修改？",
+      "ambiguityReview": "任务明确只有四扇得到确认，不根据现实维修速度推断。 三个回应都提出报告与后续行动；a丢失四扇已完成的状态，c将未知改成待修。不能只看语气礼貌或选项长度猜答案。",
+      "optionNotes": {
+        "a": "四扇已有完成记录，不能改成计划中的修理。",
+        "b": "已确认四扇，其余六扇先核查再报告总数。",
+        "c": "未检查的六扇不等于已知尚待维修。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.a14",
+      "standaloneContext": "回忆中写道：At nine, I was reading the message. I had saved a copy at eight. 哪项仅依据这两句可确定？",
+      "ambiguityReview": "a仅判断保存动作已完成，不推断副本后来是否继续保留。 b把保存时间误作阅读起点；c给进行事件增加完成和全部范围。",
+      "optionNotes": {
+        "a": "八点保存早于九点阅读，保存动作届时已完成。",
+        "b": "八点是保存时点，没有被说明为阅读起点。",
+        "c": "九点正在阅读不能证明此前已读完所有消息。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.a18",
+      "standaloneContext": "记录写：We added a diagram to make the route clearer. 没有其他反馈。哪句总结最谨慎准确？",
+      "ambiguityReview": "题面明确无其他反馈，因此不能断定效果已经实现。 a虚构反馈及时间关系；b把设计目的改成经确认的效果。三项均为自然的报告表达，没有绝对词提示。",
+      "optionNotes": {
+        "a": "额外加入此前访客反馈，并把添加图示放到反馈之后。",
+        "b": "把改善目的写成效果已经被确认，缺少证据。",
+        "c": "with the aim of保留添加图示的目的，不保证目的已实现。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.b16",
+      "standaloneContext": "同伴说“The screen went dark after we opened the file, so the file must have caused it.”。现有证据只有先后顺序。哪句既指出逻辑限制，又推动合作？",
+      "ambiguityReview": "不需要知道技术故障原因；只评价证据与语言结论的匹配。 三项都承认时间线索并包含后续核查；区分的是报告结论是否越过当前证据，而非哪句话最礼貌。",
+      "optionNotes": {
+        "a": "测试前先报告因果原因成立，越过只有先后顺序的证据。",
+        "b": "承认时间联系，测试后再决定能否报告因果。",
+        "c": "尚未测试也不能先宣称故障与文件无关。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.b17",
+      "standaloneContext": "访谈记录：We know that the room is available. What we don't know is whether it is large enough. 哪句准确概括已知与未知？",
+      "ambiguityReview": "只读原文信息，大小是否适用无需现实场地知识。 a交换已知与未知；c颠倒可用事实并把未知大小写为太小。",
+      "optionNotes": {
+        "a": "将房间可用和大小适用的已知未知位置交换。",
+        "b": "已知房间可用；是否足够大仍需确认。",
+        "c": "否认可用事实，并将未知的大小适用性写成已知太小。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.b18",
+      "standaloneContext": "同伴说：I have three reports to read before Friday. 仅凭这句话，哪句回应没有误解任务？",
+      "ambiguityReview": "不给机械规则说所有to read均主动；本题依据I have...to read这一明确待办语境。 三项均确认信息并协助安排；a改变完成状态，b改变交付事件和任务时间。",
+      "optionNotes": {
+        "a": "将待阅读的三份报告写成已经完成。",
+        "b": "新增周五才就绪的交付事件，并把阅读放到原期限之后。",
+        "c": "保持三份待阅读、周五前完成的任务，提出协助安排。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r01",
+      "standaloneContext": "简报的下一句已写好：No one has yet identified who did it. 已确认的事实只有“路边那辆自行车的轮胎昨夜被修好了”。哪句放在前面既准确又与下一句衔接？",
+      "ambiguityReview": "c的have something done在此加入车主促成或安排维修，题内没有该事实；不将这种结构本身判错。 a新增明确修理者；c新增安排者；b只报告已知事件。",
+      "optionNotes": {
+        "a": "把附近车店指定为修理者，超出记录，也与下一句尚未识别是谁不协调。",
+        "b": "被动句不需要补造施事，保留轮胎、修好和昨夜三个已知要素。",
+        "c": "使役结构写入车主安排维修，不能由轮胎已修好推出。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r02",
+      "standaloneContext": "这段回忆按“发现问题—解释此前原因—采取补救”组织：I reached the entrance and searched my bag for the tickets. ___ So I went back to collect them. 已知票在出发前就放到了厨房桌上。中间哪句既交代这件较早的事，也不另加一次回家经历？",
+      "ambiguityReview": "不声称before一律要求过去完成时；三项本身均可构成英语句子，比较其与完整故事的兼容性。 b插入题内没有的第二段行程；c反转票的去向；a提供回叙解释。",
+      "optionNotes": {
+        "a": "them回指tickets，较早的放票事件解释随后回去取票。",
+        "b": "将放票移到到达入口之后，还新增已回过家的一次行程。",
+        "c": "虽然保持较早时间，却把票写成已经装入包，改变明确的去向。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r03",
+      "standaloneContext": "通知写着：If the temperature falls below ten degrees, we will move the activity indoors. 后来只收到消息：The activity has been moved indoors. 没有温度记录，也没说这是唯一搬进室内的原因。哪句总结证据范围准确？",
+      "ambiguityReview": "题干明确不把低温当唯一可能原因；不能把普通if擅自加强成if and only if。 a肯定后件而反推条件；b从无法确认误跳到否定；c保持未知。",
+      "optionNotes": {
+        "a": "把搬进室内这一结果反推为低温必然出现，增加唯一原因限制。",
+        "b": "低温仍可能出现，未知不等于不能发生。",
+        "c": "只确认活动地点，温度是否低于十度仍没有结论。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r04",
+      "standaloneContext": "会议记录：Lea suggested that the library stay open an hour later. The committee said it would discuss the proposal next week. 哪句摘要保留“谁提出什么”以及当前进度？",
+      "ambiguityReview": "只报告下一周的讨论安排，不断言此前从未讨论，也不推断最后是否延时。 a把提议当采纳；c颠倒提出者和处理者；b保留建议归属与未来安排。",
+      "optionNotes": {
+        "a": "has agreed将下周待讨论偷换成已经同意。",
+        "b": "保留Lea提出延后闭馆的建议及委员会下周讨论的安排，不对以往是否讨论作判断。",
+        "c": "把委员会写成提出者，把Lea写成决定者，两种身份都不符合记录。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s3.astra.r05",
+      "standaloneContext": "日记写道：We hurried to the small cinema, only to find that the last showing had been cancelled. 这里only to find与前半句是什么关系？",
+      "ambiguityReview": "只解释本句only to find的叙事功能，不将所有only to结构机械归为意外结果。 a把意外结果读成唯一目的；b把发现前置于赶到；c保留随后发生的意外结果。",
+      "optionNotes": {
+        "a": "原句没有说他们此行就是为了调查取消与否。",
+        "b": "把得知取消放在赶到之前，颠倒本句only to find连接的发现顺序。",
+        "c": "匆忙赶到却发现已取消，only to引出未料到的结果。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

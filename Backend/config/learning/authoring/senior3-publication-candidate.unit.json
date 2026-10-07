@@ -1,0 +1,591 @@
+{
+  "id": "companion.senior3.folded-page",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "书页里的长窗",
+  "summary": "书页里的长窗",
+  "scene": "旧书小铺的一张折页，让你们停留得比预想久了一点。",
+  "estimatedMinutes": 12,
+  "goalIds": [
+    "senior3.coastal-display-captions",
+    "senior3.interview-summary",
+    "senior3.exhibition-purpose",
+    "senior3.project-conditions",
+    "senior3.archive-time-viewpoint",
+    "senior3.repair-report-focus"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "unit": "选择性必修第四册：被动、过去分词和不定式综合复习",
+      "pages": "印刷5、17、29、104／PDF12、24、36、111",
+      "alignment": "原作者核读被动、分词及不定式复习页。本轮另完整核读PDF111提取正文，确认不定式状语包含返乡后发现变化的结果用法；未渲染PDF。不宣称整册核读。"
+    },
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "unit": "时态、状语从句与名词性从句综合复习",
+      "pages": "印刷5、29、53／PDF12、36、60",
+      "alignment": "沿用作者已登记的局部核读，迁移到时间线、证据范围及转述；不宣称整册核读或完整高考覆盖。"
+    },
+    {
+      "sourceId": "oxford.only.adverb.20261007",
+      "unit": "Oxford Advanced Learner’s Dictionary：only副词义项8",
+      "pages": "网页义项8",
+      "alignment": "本轮核读官网https://www.oxfordlearnersdictionaries.com/definition/english/only_2，only to do引出紧接发生、尤其意外或失望的事件。仅候选来源，尚未注册。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra高三独立作者；高三发布子代理补充五题及故事",
+    "reviewedBy": "主代理逐题主审；高三发布子代理逐项返修与作者自审",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "18题文字候选：既有作者稿11题、独立原创替代7题。主代理已审替代题并要求修正范围；本轮落实r07主办方材料范围与六块排序。候选待主代理最后核对注册，未批准上线。故事全前置，题目自足。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion step into a second-hand bookshop to wait for the rain to stop. A thin album lies open by the window. As you turn a page, a small drawing slips out and lands beside your shoe. It shows half a window, with a curtain blowing towards the edge of the paper.",
+      "translation": "你和同行者走进一家旧书小铺，等雨停下来。窗边摊着一本薄相册。你翻过一页，一张小画滑出来，落在鞋边。画上只有半扇窗，窗帘被风吹向纸的边缘。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You try to put the drawing back, but it does not fit the empty space on the page. Your companion notices a fold beneath your thumb. You open it carefully: what looked like two pages is one long sheet. The rest of the window appears, and there is room for the little drawing after all.",
+      "translation": "你试着把小画放回去，画却对不上页上的空白。同行者发现你拇指下面藏着一道折痕。你小心展开，原来以为的两页竟是一张长纸。另一半窗户露了出来，小画也终于有了正好合适的位置。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You slide the drawing into its paper corners and close the album. Outside, the rain has stopped. Your companion holds the door while you glance back at the shop window. For a moment, its curtain moves just like the one in the picture. You both notice it and smile before stepping into the wet street.",
+      "translation": "你把小画插进纸角，合上相册。外面的雨已经停了。同行者替你扶着门，你回头看了一眼小铺的窗户。窗帘轻轻一动，恰好像画里的那样。你们都看见了，相视一笑，走进仍湿漉漉的街道。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s3.astra.a03",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "choice",
+      "prompt": "标签写着：The boxes marked with a blue circle contain glass. 仓库还有未画蓝圈的箱子。只根据标签，哪项成立？",
+      "explanation": "marked with a blue circle限定被说明的箱子集合；句子没有对未标记箱子作否定承诺。",
+      "hint": "先找修饰语限定了哪一部分物品，再检查有没有推断超出原句。",
+      "difficultyReason": "识别并限定推断：识别过去分词定语的范围。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "所有箱子都装着玻璃。"
+        },
+        {
+          "id": "b",
+          "text": "未画蓝圈的箱子一定没有玻璃。"
+        },
+        {
+          "id": "c",
+          "text": "画蓝圈的箱子装着玻璃，其他箱子的内容未说明。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.astra.r07",
+      "goalId": "senior3.interview-summary",
+      "type": "matching",
+      "prompt": "三个小组都准备参加同一工作坊。以下是目前收到的全部记录。下一次联系只补问记录仍缺的一项：参加人数、到达方式或需要主办方提供的材料。把每份记录与最直接补齐它的追问配对，每项用一次。记录中的us指主办方。",
+      "instruction": "每份记录先核对已经回答的两项，再找剩余的追问。",
+      "difficultyReason": "三份记录使用同一主题及交叉信息；不能按出现bus、people或materials就直接配对，需定位没有回答的字段。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "They told us how many people were coming and said they needed no materials from us."
+        },
+        {
+          "id": "l2",
+          "text": "They said everyone was coming by bus and told us what materials they needed us to provide."
+        },
+        {
+          "id": "l3",
+          "text": "They confirmed that six people were coming and that they would walk here."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Could you confirm how many people will attend?"
+        },
+        {
+          "id": "r2",
+          "text": "Could you tell us what materials you will need us to provide?"
+        },
+        {
+          "id": "r3",
+          "text": "Could you let us know how you will travel here?"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r2"
+        }
+      ],
+      "hint": "明确“不需要主办方提供”已经回答了这里的材料问题；不要将否定答复当成没有信息。",
+      "explanation": "l1人数已答且明确无需主办方提供材料，只缺到达方式；l2到达方式和需要主办方提供的材料已答，只缺人数；l3人数和步行方式已确认，只缺需要主办方提供的材料。追问应补空缺，不重复已知项。"
+    },
+    {
+      "id": "s3.astra.r06",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "matching",
+      "prompt": "三份传单各有以下记录。统一规则：只寄出“已批准的最新版本”；旧版的批准不自动转给修订版。把每份记录与现在合适的下一步配对，每项用一次。",
+      "instruction": "同时核对修订、批准和寄出的对象与先后，再配对行动。",
+      "difficultyReason": "三个情境都含修订、批准和寄出，必须追踪分词限定的具体版本及状态，不能按主题名词连线。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The version approved on Monday was revised on Tuesday. The revised version has not been approved or sent."
+        },
+        {
+          "id": "l2",
+          "text": "The version revised on Monday was approved on Tuesday. This approved version has not been sent."
+        },
+        {
+          "id": "l3",
+          "text": "The version revised on Monday was approved on Tuesday and sent on Wednesday. No further changes have been made."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "寄出当前版本，不必再等一次批准。"
+        },
+        {
+          "id": "r2",
+          "text": "当前版本已经寄出，不必因这份记录重寄或再送审。"
+        },
+        {
+          "id": "r3",
+          "text": "先让当前版本获得批准，暂不寄出。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r2"
+        }
+      ],
+      "hint": "同一句里出现approved不代表最新版本获批；先找清楚每个分词短语限定的是哪一版。",
+      "explanation": "l1的批准属于周一旧版，周二修订版尚未获批，应先送审；l2周二批准的正是周一修订版，当前未寄，可寄出；l3同一修订版获批且已寄，无后续变化，记录不要求重寄。"
+    },
+    {
+      "id": "s3.astra.b06",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "prompt": "句子是：The request needs to be approved by the owner. 其中to be approved说明什么？",
+      "explanation": "request是批准对象，by the owner标明施事；needs to be approved表达待满足的要求，不报告完成。",
+      "hint": "检查谁承受批准动作，并区分需要做与已经做完。",
+      "difficultyReason": "识别：不定式被动与实际状态的区别。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "房主需要提交请求，之后再由别人批准。"
+        },
+        {
+          "id": "b",
+          "text": "房主已批准请求，目前等待执行批准结果。"
+        },
+        {
+          "id": "c",
+          "text": "请求需要房主批准，是否已获批准尚未说明。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.astra.b04",
+      "goalId": "senior3.project-conditions",
+      "type": "choice",
+      "prompt": "事实是“虽然讨论没有解决所有问题，但它让双方理解了彼此的顾虑”。哪句完整保留关系和范围？",
+      "explanation": "a保留过去事实、并非解决所有问题和仍有理解收获的让步关系。not every不等于一个也没解决。",
+      "hint": "对照事情是否已经发生、解决问题的范围及两部分之间的关系。",
+      "difficultyReason": "识别：让步、部分否定与事实时间综合。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Although the discussion did not solve every problem, it helped both sides understand each other's concerns."
+        },
+        {
+          "id": "b",
+          "text": "Because the discussion solved every problem, both sides had no concerns."
+        },
+        {
+          "id": "c",
+          "text": "If the discussion solves every problem, both sides will understand each other."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s3.astra.a17",
+      "goalId": "senior3.interview-summary",
+      "type": "arrange",
+      "prompt": "用全部词块组成以We开头的句子，表达我们需要确认究竟是什么造成了延误。",
+      "explanation": "what caused the delay中what是主语，无需额外加入did或改变语序。整句只说明尚需查明原因，不指责具体的人。",
+      "hint": "检查从句里提问的成分是否本身担任主语。",
+      "difficultyReason": "受控综合：六个有意义词块，需区分主句动作链和what作主语的宾语从句；顺序不同可能产生语法成立但方向相反的含义。",
+      "instruction": "使用全部词块，按题干要求组句。",
+      "tokens": [
+        {
+          "id": "part4",
+          "text": "what"
+        },
+        {
+          "id": "part2",
+          "text": "need to"
+        },
+        {
+          "id": "part6",
+          "text": "the delay"
+        },
+        {
+          "id": "part1",
+          "text": "We"
+        },
+        {
+          "id": "part5",
+          "text": "caused"
+        },
+        {
+          "id": "part3",
+          "text": "find out"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "part1",
+          "part2",
+          "part3",
+          "part4",
+          "part5",
+          "part6"
+        ]
+      ]
+    },
+    {
+      "id": "s3.astra.b08",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "completion",
+      "prompt": "午后一点开始等待，下午三点仍在等。按要求用wait的过去完成进行时填空：At three, we ___ for two hours, and we were still waiting.",
+      "explanation": "had been waiting从三点这一过去参照点回看持续两小时的等待；后半句明确仍未结束。",
+      "hint": "保留延续过程，并以题目指定的过去时刻为参照。",
+      "difficultyReason": "受控运用：明确时间线上的持续体，不靠时间词猜时态。",
+      "instruction": "只填写横线处缺少的英语。",
+      "acceptedAnswers": [
+        "had been waiting"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s3.astra.a13",
+      "goalId": "senior3.repair-report-focus",
+      "type": "choice",
+      "prompt": "同伴建议报告写“All the windows have been repaired.”。检查记录只确认十扇中的四扇已修好，其余尚未检查。哪句回应最准确且有助于修改？",
+      "explanation": "b将已确认的四扇与尚未检查的六扇分开。a把已经修好改成计划修理；c把尚未检查写成等待修理。记录没有提供后两种说法的依据。",
+      "hint": "把已有证据和仍待核实的部分分开，再选择能推动合作的表述。",
+      "difficultyReason": "迁移：完成时被动、数量范围和协作修订结合。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Let's report four repairs as planned and check the remaining six before we give a completion figure."
+        },
+        {
+          "id": "b",
+          "text": "Let's report four repairs as confirmed and check the remaining six before we give a total."
+        },
+        {
+          "id": "c",
+          "text": "Let's report four repairs as confirmed and list the remaining six as waiting to be repaired."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.astra.a14",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "choice",
+      "prompt": "回忆中写道：At nine, I was reading the message. I had saved a copy at eight. 哪项仅依据这两句可确定？",
+      "explanation": "保存发生在八点，早于九点阅读；was reading只说明九点当时的进行状态，并不说明八点起持续或全部读完。",
+      "hint": "区分明确记录的时点与没有交代的起止时间、数量范围。",
+      "difficultyReason": "迁移：跨句时间线及信息范围，不机械依靠before。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "九点读消息时，保存副本这一动作已经完成。"
+        },
+        {
+          "id": "b",
+          "text": "读消息从八点一直持续到九点。"
+        },
+        {
+          "id": "c",
+          "text": "九点之前所有消息都已读完。"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s3.astra.a18",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "prompt": "记录写：We added a diagram to make the route clearer. 没有其他反馈。哪句总结最谨慎准确？",
+      "explanation": "to make说明添加图示的目的。c保留目的；a加入此前访客反馈，b加入效果已被确认的结果，两者都没有证据。",
+      "hint": "区分行动的意图与需要另有证据才能确认的效果。",
+      "difficultyReason": "迁移：不定式功能与论断强度，避免单纯语法识别。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The diagram was added after visitors said that the route had become clearer."
+        },
+        {
+          "id": "b",
+          "text": "The diagram was added and was found to make the route easier to follow."
+        },
+        {
+          "id": "c",
+          "text": "The diagram was added with the aim of making the route easier to follow."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.astra.b16",
+      "goalId": "senior3.project-conditions",
+      "type": "choice",
+      "prompt": "同伴说“The screen went dark after we opened the file, so the file must have caused it.”。现有证据只有先后顺序。哪句既指出逻辑限制，又推动合作？",
+      "explanation": "b将时间上的联系作为待检验线索。a测试前就报告因果已确定；c在未测试时先报告无关。两种结论都超过只有先后顺序的证据。",
+      "hint": "先后关系可以提供线索，但结论的确定程度要与证据相称。",
+      "difficultyReason": "迁移：时间从句与因果论证、协作语用结合，词汇常见。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The timing suggests the file caused it; let's report that cause and then check how it happened."
+        },
+        {
+          "id": "b",
+          "text": "The timing suggests a link; let's test it before we report that the file caused the problem."
+        },
+        {
+          "id": "c",
+          "text": "The timing suggests a link; let's report the fault as unrelated to the file until a test is done."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.astra.b17",
+      "goalId": "senior3.interview-summary",
+      "type": "choice",
+      "prompt": "访谈记录：We know that the room is available. What we don't know is whether it is large enough. 哪句准确概括已知与未知？",
+      "explanation": "that引出已知的available事实；whether引出尚未确定的大小适合性；不知道是否够大不等于已知太小。",
+      "hint": "分别找到肯定获知的陈述内容和仍未确定的是否问题。",
+      "difficultyReason": "迁移：两个名词性从句跨句整合，防止未知变否定。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "房间是否可用仍未知，但已确认足够大。"
+        },
+        {
+          "id": "b",
+          "text": "已知房间可用，是否足够大仍待确认。"
+        },
+        {
+          "id": "c",
+          "text": "已知房间不可用，而且太小。"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.astra.b18",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "prompt": "同伴说：I have three reports to read before Friday. 仅凭这句话，哪句回应没有误解任务？",
+      "explanation": "have reports to read表达说话人有待阅读的报告；c保留三份、阅读任务和周五之前的时限。a变成已完成；b变成报告周五才就绪并将阅读安排到那时。",
+      "hint": "判断不定式说明的是待办事项还是已完成结果，并核对动作执行者。",
+      "difficultyReason": "迁移：不定式定语、隐含执行者和协作回应。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "So you finished the three reports before Friday. Shall we plan what comes next?"
+        },
+        {
+          "id": "b",
+          "text": "So three reports will be ready for you on Friday. Shall we set aside time then?"
+        },
+        {
+          "id": "c",
+          "text": "So you have three reports to read before Friday. Shall we make time for them?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.astra.r01",
+      "goalId": "senior3.repair-report-focus",
+      "type": "choice",
+      "prompt": "简报的下一句已写好：No one has yet identified who did it. 已确认的事实只有“路边那辆自行车的轮胎昨夜被修好了”。哪句放在前面既准确又与下一句衔接？",
+      "explanation": "b用被动报告已知事件，省略未知的施事，与下一句继续查找修理者相接。a擅自认定附近车店是修理者；c虽未说谁动手，却加入车主安排维修的事实。",
+      "hint": "检查有没有把尚未查明的行动者或安排者写进已经确认的事实。",
+      "difficultyReason": "迁移：被动的信息功能与下一句的未知施事相衔接，不能只看是否出现被动形式。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The nearby shop repaired the bicycle tyre last night."
+        },
+        {
+          "id": "b",
+          "text": "The bicycle tyre was repaired last night."
+        },
+        {
+          "id": "c",
+          "text": "The bicycle owner had the tyre repaired last night."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.astra.r02",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "choice",
+      "prompt": "这段回忆按“发现问题—解释此前原因—采取补救”组织：I reached the entrance and searched my bag for the tickets. ___ So I went back to collect them. 已知票在出发前就放到了厨房桌上。中间哪句既交代这件较早的事，也不另加一次回家经历？",
+      "explanation": "a在入口查找之后回叙出发前放票的动作，解释为什么要回去取。b新增一次已经回家放票的经历；c把留在桌上的票改为已装包，破坏题内给定的补救原因。",
+      "hint": "把叙述顺序和事情实际发生的顺序分开，再检查最后一句为什么成立。",
+      "difficultyReason": "迁移：三句叙事的回叙、代词所指和补救原因须同时连贯。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before leaving home, I had put them on the kitchen table."
+        },
+        {
+          "id": "b",
+          "text": "After reaching the entrance, I went home and put them on the kitchen table."
+        },
+        {
+          "id": "c",
+          "text": "Before leaving home, I had taken them off the kitchen table and packed them."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s3.astra.r03",
+      "goalId": "senior3.project-conditions",
+      "type": "choice",
+      "prompt": "通知写着：If the temperature falls below ten degrees, we will move the activity indoors. 后来只收到消息：The activity has been moved indoors. 没有温度记录，也没说这是唯一搬进室内的原因。哪句总结证据范围准确？",
+      "explanation": "原通知承诺低于十度会搬到室内，没有说只有低于十度才会搬。观察到搬入室内不能确认温度，也不能排除温度较低。c保留已知行动和未知温度。",
+      "hint": "原通知规定某个条件出现时怎么做；再想想实际采取了这个行动能否反过来确定条件。",
+      "difficultyReason": "迁移：跨消息整合充分条件与观察结果，区分不能确认和可以否定。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The activity is now indoors; the move confirms that the temperature fell below ten degrees."
+        },
+        {
+          "id": "b",
+          "text": "The activity is now indoors; the move rules out the temperature having fallen below ten degrees."
+        },
+        {
+          "id": "c",
+          "text": "The activity is now indoors; the move leaves it uncertain whether the temperature fell below ten degrees."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.astra.r04",
+      "goalId": "senior3.interview-summary",
+      "type": "choice",
+      "prompt": "会议记录：Lea suggested that the library stay open an hour later. The committee said it would discuss the proposal next week. 哪句摘要保留“谁提出什么”以及当前进度？",
+      "explanation": "suggested that引出Lea提出的建议，不表示建议已被采纳。委员会说下周会讨论，b保留建议归属和未来讨论安排；不能由此认定委员会此前从未讨论。a把将讨论写成已经同意，c交换角色并加入Lea的决定权。",
+      "hint": "分别标记建议的提出者、处理建议的人，以及讨论是已经发生还是尚待进行。",
+      "difficultyReason": "迁移：跨句转述中同时保存命题归属、建议语气与未来处理安排。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The committee has agreed to keep the library open an hour later, following Lea's proposal."
+        },
+        {
+          "id": "b",
+          "text": "Lea proposed a later closing time; the committee plans to discuss it next week."
+        },
+        {
+          "id": "c",
+          "text": "The committee proposed a later closing time; Lea will decide on it next week."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.astra.r05",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "prompt": "日记写道：We hurried to the small cinema, only to find that the last showing had been cancelled. 这里only to find与前半句是什么关系？",
+      "explanation": "only to find在这一叙事中引出抵达后才发现的意外结果，而非解释出发的目的。a把发现结果改成唯一目的；b把得知取消放在赶到之前。c保留先赶到、随后意外发现的叙事关系。",
+      "hint": "不要只见to就认定目的；想想匆忙赶到与后面发现之间形成了什么变化。",
+      "difficultyReason": "迁移：根据叙事预期辨别不定式语义功能，不靠单一形式标签作答。",
+      "instruction": "选择符合全部条件的一项。",
+      "options": [
+        {
+          "id": "a",
+          "text": "他们赶去的唯一目的，是查明最后一场是否取消。"
+        },
+        {
+          "id": "b",
+          "text": "他们先得知最后一场已经取消，然后才匆忙赶到电影院。"
+        },
+        {
+          "id": "c",
+          "text": "他们赶到后却发现最后一场已取消，这是出乎预期的结果。"
+        }
+      ],
+      "answer": "c"
+    }
+  ]
+}

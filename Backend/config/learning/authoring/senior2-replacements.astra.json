@@ -1,0 +1,796 @@
+{
+  "level": "senior2",
+  "status": "十一道逐题原创替代草稿；等待主代理独立逐题复审，未进入正式题库",
+  "author": {
+    "name": "Astra 高二补题作者",
+    "method": "先人工核对旧库54题与原文字稿29题，再按未覆盖的信息关系逐题写题干、答案、干扰、提示与探针；没有使用程序模板、换词组合或听力转文字。"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "file": "build/learning-research-20260926/pep-senior-selective1-archive.txt",
+      "readAt": "2026-10-07",
+      "pages": "PDF12、24、36、48；印刷5、17、29、41",
+      "method": "本轮逐页读取并核读换页正文",
+      "findings": "非限制性从句及most of whom、所属关系合句；未来时点活动；-ing活动主题与句子焦点；-ing宾语、表语及end up结构。",
+      "limitations": "仅核读所列文本页，未重新目视PDF图像，不声称整册覆盖或全国统一高二进度。"
+    },
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "file": "build/learning-research-20260926/fltrp-senior-selective1-archive.txt",
+      "readAt": "2026-10-07",
+      "pages": "PDF24、60、72；印刷17、53、65",
+      "method": "本轮逐页读取并核读换页正文",
+      "findings": "did not stop trying的否定与活动关系、动词补语叙述；过去参照点与完成先后；反复持续至今的活动和当前近况。",
+      "limitations": "原文中的教学结构供目标对齐，题文另写；不复制教材例句、不声称正式测量效度。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s2.astra.r01",
+      "goalId": "s2.nonrestrictive",
+      "type": "completion",
+      "prompt": "合并两条信息：Nora borrowed my jacket. Nora's own jacket was wet. 只填一个关系词，使逗号内仍说明Nora自己的外套：Nora, ____ own jacket was wet, borrowed mine.",
+      "answer": "whose",
+      "acceptedVariants": [],
+      "hint": "检查空格与后面的名词之间需要表达什么关系。",
+      "explanation": "whose own jacket保留外套属于Nora这一关系；从句已有主语名词jacket，不能只用who替代所属关系。",
+      "difficulty": "受控运用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "deduplication": "旧NR/editor-person填who作主语；此题关系词限定从句主语jacket的所属，不能沿用who规则，不是换人物。",
+      "review": {
+        "ambiguity": "只填一个关系词且保留own jacket，whose为目标；不接受另起独立句的her。",
+        "optionNotes": {},
+        "probes": [
+          {
+            "answer": {
+              "kind": "text",
+              "text": "whose"
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "text",
+              "text": "who"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "text",
+              "text": "her"
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r02",
+      "goalId": "s2.nonrestrictive",
+      "type": "arrange",
+      "prompt": "用全部词块表达：“我们遇到六名步行者，其中两人认识这条小路。”以We met开头，用逗号后的补充说明保留两人的范围。",
+      "tokens": [
+        {
+          "id": "k",
+          "text": "knew"
+        },
+        {
+          "id": "o",
+          "text": "of whom"
+        },
+        {
+          "id": "w",
+          "text": "We met"
+        },
+        {
+          "id": "p",
+          "text": "the path."
+        },
+        {
+          "id": "s",
+          "text": "six walkers,"
+        },
+        {
+          "id": "t",
+          "text": "two"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "w",
+          "s",
+          "t",
+          "o",
+          "k",
+          "p"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先介绍整组人，再把其中一部分人与他们的情况连接起来。",
+      "explanation": "two of whom指前面六人中的两人，作knew的主语；不是新来两个人，也没有说六人全认识小路。",
+      "difficulty": "受控信息整合",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "deduplication": "旧NR只有人、地点、整件事补充，没有数量＋of whom的子集范围；题目要求同时保留整体与子集。",
+      "review": {
+        "ambiguity": "six walkers,以逗号收束主句宾语，two of whom整体构成补充从句主语；不能把two移到six前，也不能倒置数量与of whom。不从two推断另外四人一定不认识小路。",
+        "optionNotes": {},
+        "probes": [
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "w",
+                "s",
+                "t",
+                "o",
+                "k",
+                "p"
+              ]
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "w",
+                "t",
+                "s",
+                "o",
+                "k",
+                "p"
+              ]
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "w",
+                "s",
+                "o",
+                "t",
+                "k",
+                "p"
+              ]
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r03",
+      "goalId": "s2.nonrestrictive",
+      "type": "choice",
+      "prompt": "同一人写了两种说法：① My friends who live nearby came to dinner. ② My friends, who live nearby, came to dinner. 只比较两句对“住在附近”的处理，不推断实际人数。哪项准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "①用住址限定所谈的朋友；②把住址作为对所谈朋友的补充。"
+        },
+        {
+          "id": "b",
+          "text": "①和②都用住址从朋友中选出一部分；逗号只改变停顿。"
+        },
+        {
+          "id": "c",
+          "text": "①把住址作为对所谈朋友的补充；②用住址限定所谈的朋友。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "观察信息是在帮助确定谈论哪一组人，还是补充这组人的情况。",
+      "explanation": "①的无逗号从句限定friends；②的逗号从句补充已经作为一组谈论的friends。两句都不提供人数，也不说明搬家时间。",
+      "difficulty": "语义比较",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "deduplication": "旧NR题均预先指定非限制结构，没有比较有无逗号造成的指称范围变化；此题直接比较两种信息组织。",
+      "review": {
+        "ambiguity": "不从①断言确实存在住得远的朋友；②所指的是当前语境中的朋友群体，不能推广到说话人一生所有朋友。",
+        "optionNotes": {
+          "a": "正确区分限定对象和补充已知对象的信息。",
+          "b": "把两种信息组织都当成限定范围，忽略非限制性补充的作用。",
+          "c": "将有限定与补充两种功能的对应颠倒。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "a"
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "b"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "c"
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r04",
+      "goalId": "s2.past-perfect",
+      "type": "choice",
+      "prompt": "读完整留言：I tasted the soup and realised I had added too much salt. I mixed in some unsalted soup and tasted it again. It tastes fine now. 哪条回复准确保留了留言最后的状态？unsalted指未加盐的。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The soup is still too salty after the change, so you need to add more unsalted soup."
+        },
+        {
+          "id": "b",
+          "text": "The soup was too salty at first, but it tastes fine after you mixed in some unsalted soup."
+        },
+        {
+          "id": "c",
+          "text": "You threw away the salty soup and replaced it with a new batch that tastes fine."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把早先发现的问题与后面发生的补救分开，再检查回复所说的当前状态。",
+      "explanation": "had added把加盐放在初次品尝之前；后文说明混入未加盐的汤，再次品尝后已合适。回复需更新最初过咸的问题，同时保留补救是混合而非丢弃重做。",
+      "difficulty": "过去叙述中的状态更新",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷53／PDF60",
+      "deduplication": "旧PAST仅判两事件先后；本题三阶段包含问题已被补救，要求避免把过去完成叙述永久延伸到现在。",
+      "review": {
+        "ambiguity": "最后一句明确报告味道已合适；不要求判断真实烹饪比例，也不把fine扩大为其他人一定喜欢。",
+        "optionNotes": {
+          "a": "忽略It tastes fine now，仍把已经改善的味道说成过咸。",
+          "b": "保留初次过咸、混入未加盐的汤、再次品尝已合适三个阶段。",
+          "c": "最终味道合适正确，但把mixed in改成丢掉原汤后重做，虚构补救方式。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "a"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "b"
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "c"
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r05",
+      "goalId": "s2.past-perfect",
+      "type": "matching",
+      "prompt": "同一次活动有两次核查：中午仍有两张桌子没擦，下午三点全部擦完。把各条回顾与它能准确对应的记录配对，每项用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "At noon, we had not cleaned all the tables."
+        },
+        {
+          "id": "l2",
+          "text": "By three, we had cleaned all the tables."
+        },
+        {
+          "id": "l3",
+          "text": "At noon, we had cleaned none of the tables."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "符合下午三点的完成记录。"
+        },
+        {
+          "id": "r2",
+          "text": "符合中午尚未全部完成的记录。"
+        },
+        {
+          "id": "r3",
+          "text": "不能由记录确认：中午是否一张也没擦，题内没有说明。"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r2"
+        ],
+        [
+          "l2",
+          "r1"
+        ],
+        [
+          "l3",
+          "r3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "同时检查参照时点和否定覆盖的范围；有部分未完成不等于没有完成任何一部分。",
+      "explanation": "中午仍有两张未擦支持not all；三点全部完成支持had cleaned all；总桌数未给，不能确定中午已擦数量，也不能确认none。",
+      "difficulty": "时间参照与否定范围",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷53／PDF60",
+      "deduplication": "旧PAST的not-finished只有整体尚未完成；此题把两个回顾时点与not all/none的量化边界结合，错误机制不是单纯倒序。",
+      "review": {
+        "ambiguity": "没有假定桌子总数超过两张；第三项标为不能确认而非一定错误，避免过度推论。",
+        "optionNotes": {},
+        "probes": [
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r2"
+                },
+                {
+                  "left": "l2",
+                  "right": "r1"
+                },
+                {
+                  "left": "l3",
+                  "right": "r3"
+                }
+              ]
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r3"
+                },
+                {
+                  "left": "l2",
+                  "right": "r1"
+                },
+                {
+                  "left": "l3",
+                  "right": "r2"
+                }
+              ]
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r06",
+      "goalId": "s2.verb-patterns",
+      "type": "choice",
+      "prompt": "留言说：The knot was difficult, but we didn't stop trying. 你只想保留原话已经说明的行动，不增加成功或失败结果。哪句相符？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We tried for a while and then gave up."
+        },
+        {
+          "id": "b",
+          "text": "We kept trying and finally undid the knot."
+        },
+        {
+          "id": "c",
+          "text": "We continued our attempts; the message does not say whether we succeeded."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "先判断否定的是尝试本身还是停止尝试，再检查有没有添加结局。",
+      "explanation": "didn't stop trying否定停止尝试，因此仍在尝试；这不等于已经成功解开结。a改成放弃，b额外补了成功。",
+      "difficulty": "否定范围与结果边界",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "deduplication": "旧VP比较stop doing与stop to do，或keep后的词形；此题否定stop并区分继续尝试与成功，不能只识别不定式形式。",
+      "review": {
+        "ambiguity": "continued指留言所描述时段内，不承诺一直继续到未来；不把没有交代成功理解成失败。",
+        "optionNotes": {
+          "a": "说后来放弃，与没有停止尝试相反。",
+          "b": "继续尝试正确，但成功解开结没有依据。",
+          "c": "保留持续尝试，同时不编造最终结果。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "a"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "b"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "c"
+            },
+            "correct": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r07",
+      "goalId": "s2.verb-patterns",
+      "type": "choice",
+      "prompt": "你记录了两条独立消息：Kai decided to join the walk. Mei enjoyed joining the walk. 哪个判断只使用这两句话已经提供的信息？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kai已经完成步行；Mei还只是在考虑参加。"
+        },
+        {
+          "id": "b",
+          "text": "Kai作出了参加的决定；Mei说的是参加这项活动的愉快体验。"
+        },
+        {
+          "id": "c",
+          "text": "Kai和Mei都保证下一次参加同一场步行活动。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "比较前面的动词是在报告一个决定，还是在评价一段体验。",
+      "explanation": "decided to join报告决定，不单独保证实际参加或完成；enjoyed joining评价参与体验，不是未来承诺。",
+      "difficulty": "动词补语的事件状态",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "deduplication": "旧VP的decided-invite和enjoy-views检验形式；本题两个形式都合法，须区分决定与已有体验及其证据边界。",
+      "review": {
+        "ambiguity": "Mei的愉快体验不证明她走完全程；Kai可能后来参加，但当前句子未说明。",
+        "optionNotes": {
+          "a": "把决定当完成，又把已有体验降成尚在考虑。",
+          "b": "分别保留决定和愉快体验，不增加完成或将来承诺。",
+          "c": "两条都是过去消息，没有下一次参加的保证。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "a"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "b"
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "c"
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r08",
+      "goalId": "s2.ing-roles",
+      "type": "arrange",
+      "prompt": "你赞成分享笔记，反对的是不先询问就分享。用全部词块表达“我的顾虑是未经询问就分享笔记”，以My concern开头。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "asking first."
+        },
+        {
+          "id": "n",
+          "text": "the notes"
+        },
+        {
+          "id": "c",
+          "text": "My concern"
+        },
+        {
+          "id": "w",
+          "text": "without"
+        },
+        {
+          "id": "s",
+          "text": "sharing"
+        },
+        {
+          "id": "i",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "i",
+          "s",
+          "n",
+          "w",
+          "a"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先说出被讨论的行为，再将限制这一行为的条件连上。",
+      "explanation": "sharing the notes作表语说明顾虑的内容；without asking first将顾虑限定为未先询问的分享，而非所有分享行为。",
+      "difficulty": "带条件的活动表述",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "deduplication": "旧ROLE的job-not-action仅说明职责，本题的-ing表语不是职责或进行动作，而是限定条件下的顾虑，需保留否定条件范围。",
+      "review": {
+        "ambiguity": "sharing与其宾语the notes连接，without再接asking first说明所缺条件；asking first.的句末标点固定末尾。不可把is移到sharing后，也不可把without接到sharing前而丢失原来的限制关系。",
+        "optionNotes": {},
+        "probes": [
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "c",
+                "i",
+                "s",
+                "n",
+                "w",
+                "a"
+              ]
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "c",
+                "s",
+                "i",
+                "n",
+                "w",
+                "a"
+              ]
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "c",
+                "i",
+                "w",
+                "s",
+                "n",
+                "a"
+              ]
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r09",
+      "goalId": "s2.ing-roles",
+      "type": "completion",
+      "prompt": "本来打算坐在室外，雨来后最后还是坐到了室内。补全结局：We planned to sit outside but ended up ____ indoors. 只填sit的适当形式。",
+      "answer": "sitting",
+      "acceptedVariants": [],
+      "hint": "空格前的搭配表示最后实际出现的结果，检查它怎样连接一个活动。",
+      "explanation": "end up后接-ing活动，因此用sitting，sit末尾t双写；to sit属于前面的plan结构，不能直接照搬到ended up后。",
+      "difficulty": "计划与实际结局的补语转换",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "deduplication": "旧ROLE覆盖avoid、consider、appreciate和by，未有end up；本题在同句对照计划与实际结局，不靠换avoid宾语重复。",
+      "review": {
+        "ambiguity": "限定sit，避免staying等语义可行但未要求的自由替换；siting是另一个动词的形式，不能表达坐下。",
+        "optionNotes": {},
+        "probes": [
+          {
+            "answer": {
+              "kind": "text",
+              "text": "sitting"
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "text",
+              "text": "to sit"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "text",
+              "text": "siting"
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r10",
+      "goalId": "s2.ing-subject",
+      "type": "arrange",
+      "prompt": "用全部词块表达“事先不核对地址可能造成延误”，把“不核对地址”这项行为作为主语，以Not开头。",
+      "tokens": [
+        {
+          "id": "d",
+          "text": "delays."
+        },
+        {
+          "id": "a",
+          "text": "the address in advance"
+        },
+        {
+          "id": "n",
+          "text": "Not"
+        },
+        {
+          "id": "c",
+          "text": "can cause"
+        },
+        {
+          "id": "k",
+          "text": "checking"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "n",
+          "k",
+          "a",
+          "c",
+          "d"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先把带否定的活动主题连接完整，再接它可能带来的影响。",
+      "explanation": "Not checking the address in advance整体作主语，not否定核对这项活动；can保留可能性，未声称每次都会延误。",
+      "difficulty": "否定活动主语与可能后果",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷29／PDF36",
+      "deduplication": "旧SUB均为肯定活动主语；本题否定在主语活动内部，不能误移到can后而成为不会造成延误，新增作用域区别。",
+      "review": {
+        "ambiguity": "以Not开头并保持其否定checking活动；checking与宾语块连接后，再接完整谓语can cause。把Not移到谓语后既违反句首要求又改变否定范围；此处不拆in advance，避免多个自然副词位置。",
+        "optionNotes": {},
+        "probes": [
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "n",
+                "k",
+                "a",
+                "c",
+                "d"
+              ]
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "n",
+                "c",
+                "k",
+                "a",
+                "d"
+              ]
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "arrange",
+              "tokenIds": [
+                "k",
+                "a",
+                "c",
+                "n",
+                "d"
+              ]
+            },
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2.astra.r11",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "choice",
+      "prompt": "今天是周五。同伴说：I've been walking to the library every morning this week. 哪条转述保留了原句表达的活动方式和时间范围？",
+      "options": [
+        {
+          "id": "a",
+          "text": "同伴本周只有今天早上步行去图书馆，前几天早上没有去。"
+        },
+        {
+          "id": "b",
+          "text": "同伴本周及更早每周的每天早上，都保持步行去图书馆的习惯。"
+        },
+        {
+          "id": "c",
+          "text": "同伴本周每天早上都步行去图书馆，描述的是本周反复做的事。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "分别核对转述中的频率和起止范围，看看有没有缩小或扩大原话。",
+      "explanation": "every morning this week说明本周每天早上反复进行的活动，不能缩成今天一次，也不提供更早各周的习惯。现在完成进行时在这里概括一段时间内反复做的事。",
+      "difficulty": "反复活动的频率与时间范围",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷65／PDF72",
+      "deduplication": "旧PPC将持续一小时与一般现在时周五习惯分开；此题完成进行时本身带反复频率，须同时保留每天早上与仅有证据的本周范围。",
+      "review": {
+        "ambiguity": "不推断周末是否继续，也不推断路程是否相同；周五只提供本周进行中的参照，题目不计算天数。",
+        "optionNotes": {
+          "a": "把本周每天早上的反复活动缩成只有今天一次，直接改变频率。",
+          "b": "把本周范围扩大为更早每周的长期习惯。",
+          "c": "保留本周、每天早上、步行去图书馆及反复活动四项信息。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "a"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "b"
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "choice",
+              "optionId": "c"
+            },
+            "correct": true
+          }
+        ]
+      }
+    }
+  ],
+  "remainingWork": [
+    "主代理逐题审阅题意、所有选项与探针，尤其r03干扰自然度及r08/r10短词块的实际区分力。",
+    "与七道保留候选合并后再次语义去重、安排层次和目标分布，不把数量达到十八等同于合格。",
+    "七道原候选仍有边界相近题，必要时进一步剔除或补写；无正式单元、审核通过声明或发布授权执行。"
+  ]
+}

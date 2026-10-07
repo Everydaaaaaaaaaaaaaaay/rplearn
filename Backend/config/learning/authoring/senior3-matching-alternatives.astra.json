@@ -1,0 +1,261 @@
+{
+  "level": "senior3",
+  "status": "两道配对原创备选，待主代理审阅；未替换18题候选，未发布",
+  "method": "分别手写多条件信息状态和访谈信息缺口，不按人物、物品或主题名词直接配对。各题所有材料自足，三个情境共享同一主题。程序仅作格式及判题检查。",
+  "questions": [
+    {
+      "id": "s3.astra.r06",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "matching",
+      "taskIntent": "分词限定的版本范围与下一步行动",
+      "prompt": "三份传单各有以下记录。统一规则：只寄出“已批准的最新版本”；旧版的批准不自动转给修订版。把每份记录与现在合适的下一步配对，每项用一次。",
+      "instruction": "同时核对修订、批准和寄出的对象与先后，再配对行动。",
+      "difficultyReason": "三个情境都含修订、批准和寄出，必须追踪分词限定的具体版本及状态，不能按主题名词连线。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The version approved on Monday was revised on Tuesday. The revised version has not been approved or sent."
+        },
+        {
+          "id": "l2",
+          "text": "The version revised on Monday was approved on Tuesday. This approved version has not been sent."
+        },
+        {
+          "id": "l3",
+          "text": "The version revised on Monday was approved on Tuesday and sent on Wednesday. No further changes have been made."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "寄出当前版本，不必再等一次批准。"
+        },
+        {
+          "id": "r2",
+          "text": "当前版本已经寄出，不必因这份记录重寄或再送审。"
+        },
+        {
+          "id": "r3",
+          "text": "先让当前版本获得批准，暂不寄出。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r2"
+        }
+      ],
+      "hint": "同一句里出现approved不代表最新版本获批；先找清楚每个分词短语限定的是哪一版。",
+      "explanation": "l1的批准属于周一旧版，周二修订版尚未获批，应先送审；l2周二批准的正是周一修订版，当前未寄，可寄出；l3同一修订版获批且已寄，无后续变化，记录不要求重寄。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24（沿用原作者核读）",
+      "review": {
+        "standaloneContext": "统一寄出规则及三份独立记录全部在题内；不依赖故事或现实出版流程。",
+        "ambiguityReview": "批准只归属于明确版本；l3明确没有后续变化。右侧不假定现实中另有审批规则。",
+        "optionNotes": {
+          "r1": "仅l2满足当前版已获批且未寄；l1未获批，l3已寄。",
+          "r2": "仅l3最新版本已获批并寄出且无后续改动；不能给l1或l2直接结案。",
+          "r3": "仅l1修订发生在批准之后且新版明确未获批；l2和l3的批准在修订之后。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r3"
+                },
+                {
+                  "left": "l2",
+                  "right": "r1"
+                },
+                {
+                  "left": "l3",
+                  "right": "r2"
+                }
+              ]
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r1"
+                },
+                {
+                  "left": "l2",
+                  "right": "r3"
+                },
+                {
+                  "left": "l3",
+                  "right": "r2"
+                }
+              ]
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r3"
+                },
+                {
+                  "left": "l2",
+                  "right": "r2"
+                },
+                {
+                  "left": "l3",
+                  "right": "r1"
+                }
+              ]
+            },
+            "correct": false
+          }
+        ]
+      },
+      "deduplication": "旧participle/q6是结构功能标签配对，旧q1是施事受事；a03是静态集合范围。本题追踪同一对象三个版本状态与有先后顺序的批准，需综合两个以上信息才选行动，不以一一对应名词匹配。建议替换a06，以补足分词目标并降低简单选择占比。"
+    },
+    {
+      "id": "s3.astra.r07",
+      "goalId": "senior3.interview-summary",
+      "type": "matching",
+      "taskIntent": "多项访谈记录中的剩余信息缺口",
+      "prompt": "三个小组都准备参加同一工作坊。以下是目前收到的全部记录。下一次联系只补问记录仍缺的一项：参加人数、到达方式或需要主办方提供的材料。把每份记录与最直接补齐它的追问配对，每项用一次。记录中的us指主办方。",
+      "instruction": "每份记录先核对已经回答的两项，再找剩余的追问。",
+      "difficultyReason": "三份记录使用同一主题及交叉信息；不能按出现bus、people或materials就直接配对，需定位没有回答的字段。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "They told us how many people were coming and said they needed no materials from us."
+        },
+        {
+          "id": "l2",
+          "text": "They said everyone was coming by bus and told us what materials they needed us to provide."
+        },
+        {
+          "id": "l3",
+          "text": "They confirmed that six people were coming and that they would walk here."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Could you confirm how many people will attend?"
+        },
+        {
+          "id": "r2",
+          "text": "Could you tell us what materials you will need us to provide?"
+        },
+        {
+          "id": "r3",
+          "text": "Could you let us know how you will travel here?"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r2"
+        }
+      ],
+      "hint": "明确“不需要主办方提供”已经回答了这里的材料问题；不要将否定答复当成没有信息。",
+      "explanation": "l1人数已答且明确无需主办方提供材料，只缺到达方式；l2到达方式和需要主办方提供的材料已答，只缺人数；l3人数和步行方式已确认，只缺需要主办方提供的材料。追问应补空缺，不重复已知项。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60（沿用原作者核读）",
+      "review": {
+        "standaloneContext": "题干限定三项待收集信息，三组记录相互独立；每组恰好缺一项，不要求记住其他题目。",
+        "ambiguityReview": "材料字段统一限定为需要主办方提供的材料；l1不需要主办方提供材料是明确答复，不表示无需任何材料。只说记录未给出某项，不推断小组自己尚未决定。",
+        "optionNotes": {
+          "r1": "仅l2未确认人数；l1和l3已回答人数。",
+          "r2": "仅l3缺少需要主办方提供的材料信息；l1明确无需主办方提供，l2已说明主办方应提供的材料。",
+          "r3": "仅l1记录缺到达方式；l2乘公交，l3步行。没有记录方式不等于对方一定尚未决定。"
+        },
+        "probes": [
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r3"
+                },
+                {
+                  "left": "l2",
+                  "right": "r1"
+                },
+                {
+                  "left": "l3",
+                  "right": "r2"
+                }
+              ]
+            },
+            "correct": true
+          },
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r2"
+                },
+                {
+                  "left": "l2",
+                  "right": "r1"
+                },
+                {
+                  "left": "l3",
+                  "right": "r3"
+                }
+              ]
+            },
+            "correct": false
+          },
+          {
+            "answer": {
+              "kind": "matching",
+              "pairs": [
+                {
+                  "left": "l1",
+                  "right": "r3"
+                },
+                {
+                  "left": "l2",
+                  "right": "r2"
+                },
+                {
+                  "left": "l3",
+                  "right": "r1"
+                }
+              ]
+            },
+            "correct": false
+          }
+        ]
+      },
+      "deduplication": "旧interview/q6按whether、what、that配信息类型，b17只对一段记录区分已知与未知；本题每项整合人数、方式、材料三个字段后选择下一次追问，并处理否定答复仍为已知。建议替换a05，以增加多信息关联且不重复同一基础识别。"
+    }
+  ]
+}

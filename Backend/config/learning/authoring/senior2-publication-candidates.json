@@ -1,0 +1,502 @@
+{
+  "status": "候选，七题不足十八；等待主代理逐题复审，禁止发布",
+  "proposedUnitId": "companion.senior2.postcard-bird",
+  "title": "明信片上的大鸟",
+  "sourceReadingBoundary": "沿用原作者核读记录，本次未重新核读教材正文。",
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion stop at a table outside a small café to write a postcard. You draw the roofs across the street with a watercolour pencil, then reach for your cup. A drop of water falls onto the card and spreads through the coloured lines. You lift it quickly, but one roof has already become a grey patch.",
+      "translation": "你和同行者在一家小咖啡馆外的桌边停下来，想写张明信片。你用水溶彩铅画好街对面的屋顶，伸手拿杯子时，一滴水落在纸上，沿着彩色线条洇开。你赶紧抬起卡片，一座屋顶却已经变成了灰色的水痕。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Your companion turns the card sideways. The patch looks a little like a bird with one wing open. You add another wing and a tiny beak. The bird is much bigger than the houses below it, which makes you both laugh. You leave the card on the table to dry and finish your drinks.",
+      "translation": "同行者把卡片转了个方向。那块水痕有点像一只张开单边翅膀的鸟。你添上另一只翅膀和小小的喙。鸟比下面的房子大得多，你们看着都笑了。你把卡片留在桌上晾干，慢慢喝完杯里的饮料。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Before you leave, you write the date on the back. There is no address yet. Your companion holds a book open while you slide the card between its pages. At the corner, you look back at the real roofs. They seem smaller now than the bird you will take home.",
+      "translation": "离开前，你在背面写下日期，地址还是空着。同行者替你翻开一本书，你把卡片夹进书页。走到街角，你回头看了一眼真正的屋顶；它们仿佛比那只将跟你回家的鸟还小。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s2.astra.a06",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "taskIntent": "证据范围",
+      "prompt": "试用记录只显示：这周参与试用的十个人中，八个人更快找到了入口。哪句英文总结没有扩大证据范围？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Most visitors this week found the entrance faster with the guide."
+        },
+        {
+          "id": "b",
+          "text": "Eight people in the trial found every part of the guide easy to follow."
+        },
+        {
+          "id": "c",
+          "text": "Most people in this small trial found the entrance faster."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对结论中的人群、时间和确定程度是否超出记录。",
+      "explanation": "c保留本次十人试用中的多数人，以及找到入口更快这一结果。a把试用者扩大为本周多数访客；b把入口寻找速度扩大成指南各部分都易懂，均超出记录。",
+      "difficulty": "识别与意义迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷20—21／PDF27—28",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a把试用者扩大为本周大多数访客；b把找到入口更快扩大为指南各部分都易懂。三项都可能是正常报告，但只有c有给定记录支持。",
+        "ambiguity": "不推断快了多少，也不把试用直接解释为因果证明。"
+      }
+    },
+    {
+      "id": "s2.astra.a16",
+      "goalId": "s2.ing-subject",
+      "type": "choice",
+      "taskIntent": "保留建议条件的改写",
+      "prompt": "原意：如果事先确定目的地，规划路线会更容易。选以-ing短语作主语、同时保留条件的改写。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Planning a route is easier if we choose the destination first."
+        },
+        {
+          "id": "b",
+          "text": "Planning a route is always easy."
+        },
+        {
+          "id": "c",
+          "text": "Choosing a destination is unnecessary when we plan a route."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "确认原意中的条件还在，不把有条件的比较变成无条件保证。",
+      "explanation": "a以Planning a route为主语，并保留if条件及easier的比较意义。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b删掉条件并改成总是容易；c否定事先确定目的地的必要性，改变原意。",
+        "ambiguity": "任务不是判断所有路线是否容易，不依赖真实旅行知识。"
+      }
+    },
+    {
+      "id": "s2.astra.a17",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "taskIntent": "避免把感受转述成人格评价",
+      "prompt": "同伴说：I was bored during the talk. 你只想准确转述他的体验，不额外评价他这个人。哪句合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "He was a boring person."
+        },
+        {
+          "id": "b",
+          "text": "He felt bored during the talk."
+        },
+        {
+          "id": "c",
+          "text": "Everyone found him boring."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "原话描述谁的体验？不要把体验改成别人对他的评价。",
+      "explanation": "b保留他在讲话期间的无聊感。boring可用于人，但那是在说此人令人无聊，与原话不同。",
+      "difficulty": "基础感受与评价对象辨析",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a改成人物评价；c新增所有人的态度且改变评价对象。",
+        "ambiguity": "a、c并非因为主语是人而语法不合法，而是没有保留给定意义。本题作为基础感受与评价对象支架，不宣称新增高阶迁移。"
+      }
+    },
+    {
+      "id": "s2.astra.b03",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "choice",
+      "taskIntent": "不从体貌过度推断",
+      "prompt": "同伴刚放下刷子说：I've been painting the sign. 单凭这句话，哪一项仍不能确定？",
+      "options": [
+        {
+          "id": "a",
+          "text": "他此前有一段画标牌的过程。"
+        },
+        {
+          "id": "b",
+          "text": "这段活动与当前近况有关。"
+        },
+        {
+          "id": "c",
+          "text": "整块标牌是否已全部画完。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "过程表达与整件作品的完成状态不是同一条信息。",
+      "explanation": "现在完成进行式可描述持续到现在或刚结束的过程；并不单独保证作品完成或未完成。",
+      "difficulty": "识别与证据边界",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷65／PDF72",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a和b属于这一近况陈述支持的信息，不是未知的完成数量。",
+        "ambiguity": "放下刷子也可能只是休息；不据此认定整块标牌已经完成。"
+      }
+    },
+    {
+      "id": "s2.astra.b13",
+      "goalId": "s2.future-progressive",
+      "type": "choice",
+      "taskIntent": "依据安排协作改约",
+      "prompt": "你明天三点到四点会在安静展厅画画，五点有空。同伴想三点半打电话讨论计划。哪句既说明届时状态，又提出可行替代？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'll be drawing then. Could we talk at five?"
+        },
+        {
+          "id": "b",
+          "text": "I'll be free then. Call me at half past three."
+        },
+        {
+          "id": "c",
+          "text": "I'll be drawing then. Could we talk at quarter to four instead?"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "将提议时间与已占用时段对照，同时检查替代安排是否符合题内事实。",
+      "explanation": "a用将来进行说明三点半的活动，并改约已知有空的五点。b错误声称三点半有空；c虽提出改约，但三点四十五分仍在三点到四点的占用时段内。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b与三点半正在画画的状态矛盾；c礼貌改约到三点四十五，但该时点仍在占用时段，没有提供可行替代。",
+        "ambiguity": "并不把其他时态的礼貌改约判错，三个候选中只有a满足全部事实与任务。"
+      }
+    },
+    {
+      "id": "s2.astra.b15",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "taskIntent": "在分歧中提出公平比较",
+      "prompt": "你偏爱简短说明，同伴更喜欢详细说明。你想让同一组读者用同一个任务比较两个版本，不先判断哪版更好。哪句最符合这个意图？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both versions may help. Could the readers each choose one version and then tell us what they think?"
+        },
+        {
+          "id": "b",
+          "text": "Both versions may help. Could the same readers try a simple task with mine and a harder task with yours?"
+        },
+        {
+          "id": "c",
+          "text": "Both versions may help. Could the same readers try both versions on the same task before we choose?"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "看是否认可另一种方案可能的价值，并提出能够比较的方法。",
+      "explanation": "c认可两版可能有用，明确同一组读者用同一个任务比较两个版本，不先认定哪版更好。a让各人只选一版，b改用不同难度的任务，都改变了题目指定的比较条件。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷20—21／PDF27—28",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a让每人自行选一个版本，未让同组读者比较两版；b保留同组读者却改成不同难度任务。三项均自然合作，长度相近。",
+        "ambiguity": "不预设哪版更好；相同任务是初步比较建议，不声称已完成严格实验。"
+      }
+    },
+    {
+      "id": "s2.astra.b17",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "taskIntent": "礼貌反馈且保留感受",
+      "prompt": "你看完同伴整理的图表，觉得有些地方难理解，想请对方解释，不评价同伴能力。哪句最合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm confused by this part of the chart. Could you explain it?"
+        },
+        {
+          "id": "b",
+          "text": "I'm confused by this part of the chart. Could you leave it out of the final version?"
+        },
+        {
+          "id": "c",
+          "text": "I'm interested in this part of the chart. Could you send me a copy of it?"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "将反馈落在具体内容及自己的体验，再看是否提出了解释请求。",
+      "explanation": "a用confused说明自己对局部内容的困惑，并请求解释。b要求删除，c表达兴趣并索要副本，都没有完成指定的澄清任务。",
+      "difficulty": "迁移",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b保留困惑但请求删除而非解释；c请求副本而未表达困惑或请求讲解。三个候选均自然礼貌，按具体意图区分。",
+        "ambiguity": "b语法可以成立但不符合沟通意图；不是因人物不能用-ing而排除。"
+      }
+    }
+  ],
+  "questionReviews": [
+    {
+      "questionId": "s2.astra.a06",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "不推断快了多少，也不把试用直接解释为因果证明。",
+      "optionNotes": {
+        "a": "将十名试用者扩大为本周多数访客，缺少依据。",
+        "b": "把入口寻找速度扩大成指南所有部分易懂，改变测量内容。",
+        "c": "保留本次小样本中多数人的入口寻找速度，没有推广范围。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.a16",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "任务不是判断所有路线是否容易，不依赖真实旅行知识。",
+      "optionNotes": {
+        "a": "保留路线规划为主题，保留先定目的地条件以及更容易的比较。",
+        "b": "删掉条件并将比较变成总是容易的保证。",
+        "c": "改成不必事先确定目的地，未保留给定条件。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.a17",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "a、c并非因为主语是人而语法不合法，而是没有保留给定意义。本题作为基础感受与评价对象支架，不宣称新增高阶迁移。",
+      "optionNotes": {
+        "a": "把一次无聊体验改成对人格的评价。",
+        "b": "保留他在讲话期间感到无聊的体验，不增加他人态度。",
+        "c": "新增所有人的评价并将体验者换成被评价的人。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.b03",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "放下刷子也可能只是休息；不据此认定整块标牌已经完成。",
+      "optionNotes": {
+        "a": "陈述支持此前画标牌的持续活动，这不是未知信息。",
+        "b": "现在完成进行的近况表达与当前有关，不是本题未知事项。",
+        "c": "描述过程没有说明整块标牌是否画完；放下刷子也可能只是休息。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.b13",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "并不把其他时态的礼貌改约判错，三个候选中只有a满足全部事实与任务。",
+      "optionNotes": {
+        "a": "说明三点半正在画画，并将通话改到已知空闲的五点。",
+        "b": "三点半仍处在画画时段，不能声称有空。",
+        "c": "提出三点四十五分这一自然改约，但仍在三点到四点的画画时段，未解决冲突。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.b15",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "不预设哪版更好；相同任务是初步比较建议，不声称已完成严格实验。",
+      "optionNotes": {
+        "a": "各人只选一个版本后反馈，未让同组读者比较两版。",
+        "b": "同组读者条件保留，但两个版本的任务难度不同。",
+        "c": "同组读者、两个版本、同一个任务三项全部明示，并保留开放的最终选择。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.b17",
+      "standaloneContext": "题干及材料独立自足，故事不提供条件。",
+      "ambiguityReview": "b语法可以成立但不符合沟通意图；不是因人物不能用-ing而排除。",
+      "optionNotes": {
+        "a": "表达对具体图表部分的困惑，并请求解释。",
+        "b": "请求删除而非解释，感受正确也不足以完成任务。",
+        "c": "表达兴趣并索要副本，没有传达困惑或解释请求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

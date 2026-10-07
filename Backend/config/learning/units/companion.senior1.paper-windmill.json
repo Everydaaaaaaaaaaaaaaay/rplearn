@@ -1,0 +1,643 @@
+{
+  "id": "companion.senior1.paper-windmill",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior1",
+  "title": "风停之前的纸风车",
+  "summary": "风停之前的纸风车",
+  "scene": "傍晚的小广场，一只转不动的纸风车让你们暂时停下脚步。",
+  "estimatedMinutes": 14,
+  "goalIds": [
+    "senior1.reader-advice-note",
+    "senior1.booked-weekend",
+    "senior1.meeting-place-details",
+    "senior1.project-time-notes",
+    "senior1.confirm-the-details",
+    "senior1.book-donation-labels"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 3 Sports and Fitness / Discovering Useful Structures",
+      "pages": "印刷第40页；PDF第47页",
+      "alignment": "附加问句和事实回答；仅参考语言目标，情景、题干和答案均为原创。"
+    },
+    {
+      "sourceId": "fltrp.senior1.archive20260929",
+      "unit": "Unit 3 Family matters / Using language",
+      "pages": "印刷第29页；PDF第36页",
+      "alignment": "基础时态复习；仅参考语言目标，情景、题干和答案均为原创。"
+    },
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 4 Natural Disasters / Discovering Useful Structures",
+      "pages": "印刷第52页；PDF第59页",
+      "alignment": "限制性定语从句；仅参考语言目标，情景、题干和答案均为原创。"
+    },
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 1 Teenage Life / Write a letter of advice",
+      "pages": "印刷第18页；PDF第25页",
+      "alignment": "本轮实际核读建议、理由及篇章功能；题目原创，不声称原页含全部新搭配。"
+    },
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 2 Travelling Around / Discovering Useful Structures",
+      "pages": "印刷第28页；PDF第35页",
+      "alignment": "现在进行时表达已安排计划；仅参考语言目标，情景、题干和答案均为原创。"
+    },
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "unit": "Unit 5 Languages Around the World / Discovering Useful Structures",
+      "pages": "印刷第64页；PDF第71页",
+      "alignment": "关系副词与从句成分；仅参考语言目标，情景、题干和答案均为原创。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra高一独立作者及去重返修作者",
+    "reviewedBy": "Codex主代理逐题终审；Astra分级作者原创及定点返修",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "主代理核对十八道题目的题面、选项、答案、提示、解析、判题样例和三段双语故事后批准接入公共题库。原稿、语义去重与返修记录保留在authoring；不以程序化组合生成题目。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion are crossing a small square in the evening. A gentle wind is moving the leaves, but the paper windmill you are carrying will not turn. Your companion holds it up a little higher. Nothing happens. You stop beside a bench and look at it together.",
+      "translation": "傍晚，你和同行者穿过一座小广场。微风吹动树叶，你手里的纸风车却一动不动。同行者把它举高了一点，仍然没有动静。你们在长椅旁停下，一起仔细看它。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "One corner of the paper is bent against the stick. You gently pull it away while your companion holds the windmill steady. The paper begins to turn, then stops again. This time there is nothing wrong with it. The leaves above the bench have stopped moving too. The wind has died down.",
+      "translation": "纸张的一角弯了，贴在风车的杆子上。同行者扶稳风车，你轻轻把那一角拉开。风车转了起来，却又停住了。这次并不是风车出了问题：长椅上方的树叶也不动了，风小下来了。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You are about to put the windmill in your bag when your companion takes it and walks quickly across the square. The paper turns again. Laughing, you try it too, then slow down near the other side. You carry the windmill home in your hand, leaving enough space around the paper to keep it from bending.",
+      "translation": "你正要把风车放进包里，同行者接过去，快步走过广场，纸风车又转了起来。你笑着也试了一次，走到广场另一边时放慢脚步。回家的路上，你把风车拿在手里，在纸片周围留出空间，免得它再次弯折。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s1.astra.a01",
+      "goalId": "senior1.reader-advice-note",
+      "type": "choice",
+      "prompt": "便笺写着：Try explaining the new idea to a classmate without looking at your notes. This can show you which parts you still need to study. 第二句的This具体指什么？",
+      "explanation": "This承接前一句完整建议：不看笔记向同学解释；它不是指读同学笔记，也不是指谈话前重学全部内容。这样才能把建议与检查薄弱部分的作用接起来。",
+      "hint": "把代词放回前句，核对动作、对象和执行条件。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "用指代连接建议及作用，保持动作对象和条件。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read a classmate's notes to find a new idea."
+        },
+        {
+          "id": "b",
+          "text": "Explain the idea to someone without using your notes."
+        },
+        {
+          "id": "c",
+          "text": "Study every part again before talking to someone."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s1.astra.b03",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "prompt": "两条消息：Kai: I'm taking the nine o'clock train tomorrow. I've bought my ticket. Mei: I might take that train too, but I haven't decided. 哪项可以写入已确认的同行安排？",
+      "explanation": "Kai用现在进行时说明安排，并给出票已购买的依据；Mei明确说尚未决定，因此不能把她登记为已确认同行。",
+      "hint": "分别检查两个人的决定，不把表达可能性的消息写成确认。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "区分已定安排与尚未决定的计划，不从可能推成确认。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kai and Mei are both taking the nine o'clock train."
+        },
+        {
+          "id": "b",
+          "text": "Mei is taking the nine o'clock train; Kai is still deciding."
+        },
+        {
+          "id": "c",
+          "text": "Kai is taking the nine o'clock train; Mei has not decided yet."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s1.astra.a04",
+      "goalId": "senior1.meeting-place-details",
+      "type": "matching",
+      "prompt": "把方括号内的从句与其中缺少的成分配对。",
+      "explanation": "paint需要说明粉刷的对象；sleep不直接接房间作宾语；arrive在这里缺时间说明。",
+      "hint": "先单独读从句的动词，判断它缺物品、地点还是时间。",
+      "instruction": "将两侧对应的内容逐一配对。",
+      "difficultyReason": "同一地点名词对应宾语或地点缺口，不能只看先行词。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "the room [we painted __]"
+        },
+        {
+          "id": "l2",
+          "text": "the room [we slept __]"
+        },
+        {
+          "id": "l3",
+          "text": "the day [we arrived __]"
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "painted的宾语：粉刷了什么"
+        },
+        {
+          "id": "r2",
+          "text": "地点：在哪里睡觉"
+        },
+        {
+          "id": "r3",
+          "text": "时间：在哪一天到达"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s1.astra.a06",
+      "goalId": "senior1.project-time-notes",
+      "type": "matching",
+      "prompt": "三个小组都要打印活动海报。把各组消息与准确的任务记录配对；记录中的“可用”指消息明确说可以使用。",
+      "explanation": "第一组明确已打印并核对，可张贴；第二组虽已核对日期，打印还在进行；第三组昨天已打印完，但错误日期使这批海报需要重印。三个消息都谈同一对象，必须读取完成状态和结果条件。",
+      "hint": "分别检查打印是否结束，以及成品能否使用；不要把“做完”直接等同于“可用”。",
+      "instruction": "将两侧对应的内容逐一配对。",
+      "difficultyReason": "同一海报任务比较核对、打印和成品可用状态。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "We've printed all the posters and checked the dates. They're ready to put up."
+        },
+        {
+          "id": "l2",
+          "text": "We're still printing the posters. We've checked the dates, but the printing isn't finished."
+        },
+        {
+          "id": "l3",
+          "text": "We printed all the posters yesterday, but the date was wrong. We need to print them again."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "已全部打印，核对无误，可张贴。"
+        },
+        {
+          "id": "r2",
+          "text": "日期已核对，打印仍未完成。"
+        },
+        {
+          "id": "r3",
+          "text": "曾全部打印，但日期错误，需重印。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s1.astra.b01",
+      "goalId": "senior1.reader-advice-note",
+      "type": "matching",
+      "prompt": "把每个困难与最直接对应的建议配对。",
+      "explanation": "噪声、词义和忘带物品分别对应安静环境、查词典和出门提醒。",
+      "hint": "找出每条建议具体解决了哪一种障碍。",
+      "instruction": "将两侧对应的内容逐一配对。",
+      "difficultyReason": "基础支持：根据具体困难匹配直接相关的建议。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I can't hear the recording clearly."
+        },
+        {
+          "id": "l2",
+          "text": "I don't know what this word means."
+        },
+        {
+          "id": "l3",
+          "text": "I forget to bring my notebook."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Try a quieter room; background noise may be covering the words."
+        },
+        {
+          "id": "r2",
+          "text": "Check a learner's dictionary; its examples can help explain the meaning."
+        },
+        {
+          "id": "r3",
+          "text": "Put a reminder by your bag so you see it before leaving."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s1.astra.a05",
+      "goalId": "senior1.confirm-the-details",
+      "type": "choice",
+      "prompt": "群聊中只有一句：The sports hall is open this evening, isn't it? 还没有人回复。管理员请你先确认再订场地。下一条消息怎样写最符合当前信息？",
+      "explanation": "原消息在请求确认，尚无答复，因此不能报告已确认开放，也不能因句尾isn't就报告关闭。a保留未知状态并提出核查行动。",
+      "hint": "区分提出确认的问题与得到确认的答复。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "常规附加问句用于请求确认，不等同得到事实答复。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Someone has asked about tonight. I'll check the opening hours before booking."
+        },
+        {
+          "id": "b",
+          "text": "Someone has confirmed tonight's opening. I'll go ahead and book the hall."
+        },
+        {
+          "id": "c",
+          "text": "Someone has reported tonight's closure. I'll look for another hall."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s1.astra.a07",
+      "goalId": "senior1.reader-advice-note",
+      "type": "arrange",
+      "prompt": "用全部词块组成一条建议，先提出行动，再说明理由。",
+      "explanation": "You could use a larger screen because the print is small. 字小是使用更大屏幕的相关理由。",
+      "hint": "先找带情态动词的建议，再连接能够支持它的原因。",
+      "instruction": "使用全部词块，按题干要求组成表达。",
+      "difficultyReason": "基础复现：受控连接建议与原因，不计新增高一能力。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "because"
+        },
+        {
+          "id": "t2",
+          "text": "the print is small"
+        },
+        {
+          "id": "t3",
+          "text": "you could"
+        },
+        {
+          "id": "t4",
+          "text": "use a larger screen"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t4",
+          "t1",
+          "t2"
+        ]
+      ]
+    },
+    {
+      "id": "s1.astra.b08",
+      "goalId": "senior1.book-donation-labels",
+      "type": "completion",
+      "prompt": "填一个关系词，或用/表示省略：The person ___ you called is waiting outside.",
+      "explanation": "关系词是called的宾语，指人可用who、whom、that，限制性从句中也可省略。",
+      "hint": "you已占主语位置，看看called还缺什么。",
+      "instruction": "按本题要求填写空格。",
+      "difficultyReason": "基础复现：人作宾语时覆盖关系词及省略的合法变体。",
+      "acceptedAnswers": [
+        "who",
+        "whom",
+        "that",
+        "/"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s1.astra.a11",
+      "goalId": "senior1.confirm-the-details",
+      "type": "arrange",
+      "prompt": "你昨天已经交了钥匙。对方问：You didn't return the key, did you? 用全部词块组成先短答、再补充交接事实的回应。",
+      "explanation": "Yes, I did. I gave it to the receptionist yesterday. 肯定已归还的事实，再说明昨天交给接待员；否定问句不要求机械回答No。",
+      "hint": "先按题面事实决定短答，再把物品、接收人和时间连接起来。",
+      "instruction": "使用全部词块，按题干要求组成表达。",
+      "difficultyReason": "受控回应否定预设，再衔接交接事实；不是自由写作。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "I gave it"
+        },
+        {
+          "id": "t2",
+          "text": "yesterday."
+        },
+        {
+          "id": "t3",
+          "text": "Yes, I did."
+        },
+        {
+          "id": "t4",
+          "text": "to the receptionist"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t1",
+          "t4",
+          "t2"
+        ]
+      ]
+    },
+    {
+      "id": "s1.astra.b10",
+      "goalId": "senior1.meeting-place-details",
+      "type": "arrange",
+      "prompt": "用全部词块组成以The reason开头的句子，说明取消的是步行活动，原因是大雨。",
+      "explanation": "The reason why we cancelled the walk was the heavy rain. why从句说明哪件事需要解释，was之后给出原因；不能把取消活动误作取消雨。",
+      "hint": "先组织要解释的行动，再接主句谓语说明原因。",
+      "instruction": "使用全部词块，按题干要求组成表达。",
+      "difficultyReason": "基础复现：原因从句建句，不计新增高一能力覆盖。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "was the heavy rain."
+        },
+        {
+          "id": "t2",
+          "text": "we cancelled the walk"
+        },
+        {
+          "id": "t3",
+          "text": "The reason"
+        },
+        {
+          "id": "t4",
+          "text": "why"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t4",
+          "t2",
+          "t1"
+        ]
+      ]
+    },
+    {
+      "id": "s1.astra.b12",
+      "goalId": "senior1.project-time-notes",
+      "type": "completion",
+      "prompt": "选填and或but，使后半句强调准备尚未结束：We've packed the tools, ___ we still need to check the batteries.",
+      "explanation": "but突出工具装好与电池仍待检查之间的反差；and也能形成语法正确的平列句，但没有按题目要求明确标出转折。",
+      "hint": "检查任务要求的是平列补充，还是突出仍有未完成事项。",
+      "instruction": "按本题要求填写空格。",
+      "difficultyReason": "基础复现：题目明确要求突出反差，不计新增高一能力。",
+      "acceptedAnswers": [
+        "but"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s1.astra.b09",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "prompt": "你收到组织者的消息：We’re meeting the visitors at four on Friday. Sam随后说他收到的时间是五点，但你还没看到更新通知。你想直接向组织者说明冲突并确认最终时间。选合适的回复。",
+      "explanation": "b明确说明组织者消息与Sam转述的冲突，并询问四点是否仍有效或已变更；a先认定五点生效，c另设两批访客的解释，均未直接核对同一次会面的最终时间。",
+      "hint": "保留两条消息的来源，指出具体冲突；不要先把一种解释写成已确定的安排。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "比较两来源冲突，直接核对安排，不擅自确认新时间。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sam says five, so we're meeting at five on Friday. Could you send me the updated notice?"
+        },
+        {
+          "id": "b",
+          "text": "Your message says four, but Sam says five. Are we still meeting at four, or has the time changed?"
+        },
+        {
+          "id": "c",
+          "text": "Your message says four and Sam says five. Are we meeting one group at four and another at five?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s1.astra.a14",
+      "goalId": "senior1.book-donation-labels",
+      "type": "choice",
+      "prompt": "合并两句且保留身份关系：I spoke to a student. Her brother made this model. 选意思不变的句子。",
+      "explanation": "交谈对象是学生，制作者是她的哥哥或弟弟；whose brother保留这个所属关系。",
+      "hint": "分别确认交谈对象和模型制作者，不能在合句时交换。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "合并句子保留人物所属及行为关系，不只填关系词。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I spoke to the student whose brother made this model."
+        },
+        {
+          "id": "b",
+          "text": "I spoke to the student who made this model for her brother."
+        },
+        {
+          "id": "c",
+          "text": "I spoke to the brother whose student made this model."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s1.astra.b14",
+      "goalId": "senior1.book-donation-labels",
+      "type": "choice",
+      "prompt": "原意是“我归还了从Sam那里借的相机”。哪句完整保留原意？",
+      "explanation": "a以returned报告归还，并用从句说明相机来源；b颠倒借用方向，c把主句变成借入且添加昨天。",
+      "hint": "核对主句发生的动作，以及谁向谁借东西。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "保留借入方向和归还行动，三个选项均为自然句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I returned the camera which I borrowed from Sam."
+        },
+        {
+          "id": "b",
+          "text": "I returned the camera which Sam borrowed from me."
+        },
+        {
+          "id": "c",
+          "text": "I borrowed the camera which I returned to Sam yesterday."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s1.astra.a15",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "prompt": "周六上午你已约好与同学练习，下午有空。同伴邀你上午见面。你决定保留练习约定，同时提出当天可行的见面时间。选符合决定的回复。",
+      "explanation": "a同时满足两项决定；b改变了必须保留的练习时间，c改到另一周，未提出当天的可行时段。",
+      "hint": "核对哪项保留既定约会，并使用题面给出的当天空闲时段。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "保留既定活动并提出可行时段，干扰项改变具体条件。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm practising with my classmate that morning. Could we meet in the afternoon?"
+        },
+        {
+          "id": "b",
+          "text": "I'm moving my practice to the afternoon. Could we meet that morning?"
+        },
+        {
+          "id": "c",
+          "text": "I'm keeping my morning practice. Could we leave our meeting for another week?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s1.astra.a16",
+      "goalId": "senior1.meeting-place-details",
+      "type": "choice",
+      "prompt": "录制小组发来更新：We have kept our booking for the room where we recorded the interview. We have deleted the recording that we made there. 哪条记录准确保留房间预订和录音文件的不同处理结果？",
+      "explanation": "保留的是曾用于录制访谈的房间预订；删除的是在那里制作的录音文件。where说明录制地点，that在从句中作made的宾语。保留场地预订不等于保留录音。",
+      "hint": "先找两个主句的动作及对象，再用从句确定它们是哪一个。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "保留房间预订与删除录音的不同处理，不混淆对象。",
+      "options": [
+        {
+          "id": "a",
+          "text": "取消了录制访谈的房间预订，保留了在那里制作的录音。"
+        },
+        {
+          "id": "b",
+          "text": "保留了录制访谈的房间预订，删除了在那里制作的录音。"
+        },
+        {
+          "id": "c",
+          "text": "保留了另一间房的预订，删除了原来录制访谈房间的资料。"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s1.astra.a18",
+      "goalId": "senior1.project-time-notes",
+      "type": "choice",
+      "prompt": "记录显示：海报已完成、现在可用；名单此刻仍在核对。哪条更新准确保留这两个状态？",
+      "explanation": "现在完成时报告海报成果，现在进行时报告仍在核对名单；其他选项改动状态。",
+      "hint": "分别判断每项是已有成果还是尚在进行。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "同时转述完成成果和当前进度，不靠时态名称排除。",
+      "options": [
+        {
+          "id": "a",
+          "text": "We've finished the poster, and we've finished checking the list."
+        },
+        {
+          "id": "b",
+          "text": "We've finished the poster, and we're checking the list."
+        },
+        {
+          "id": "c",
+          "text": "We're making the poster, and we checked the list yesterday."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s1.astra.b17",
+      "goalId": "senior1.confirm-the-details",
+      "type": "choice",
+      "prompt": "你知道票不免费，每张五元。同伴问：The tickets are free, aren't they? 哪句先准确回答，再提供正确信息？",
+      "explanation": "五元表示不免费，短答No, they aren't，然后补充价格；不能先肯定免费再报价格。",
+      "hint": "先回应“免费”是否属实，再检查短答与主句动词是否一致。",
+      "instruction": "选择符合本题条件的一项。",
+      "difficultyReason": "否定错误免费预设，并使短答与价格信息保持一致。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, they are. They're five yuan each."
+        },
+        {
+          "id": "b",
+          "text": "No, they don't. They're five yuan each."
+        },
+        {
+          "id": "c",
+          "text": "No, they aren't. They're five yuan each."
+        }
+      ],
+      "answer": "c"
+    }
+  ]
+}
