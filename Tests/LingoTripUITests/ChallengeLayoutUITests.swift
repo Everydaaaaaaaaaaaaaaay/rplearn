@@ -2,6 +2,48 @@ import XCTest
 
 @MainActor
 final class ChallengeLayoutUITests: XCTestCase {
+    /// 正式四级公开快照：长故事滚到底后，新一段必须从头可读。
+    func testLongOpeningStoryResetsScrollAndOffersCompactHint() throws {
+        continueAfterFailure = false
+        let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "learning-cet4-preview", withExtension: "json"))
+        let data = try Data(contentsOf: url)
+        let unit = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        let beats = try XCTUnwrap(unit["beats"] as? [[String: Any]])
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "unit-challenge",
+            "UI_TEST_LEARNING_UNIT_JSON": String(decoding: data, as: UTF8.self), "UI_TEST_LEARNING_STORY": "1"]
+        app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        addTeardownBlock { app.terminate() }
+        XCTAssertTrue(app.buttons["开始故事"].waitForExistence(timeout: 15))
+        app.buttons["开始故事"].tap()
+        for (index, beat) in beats.enumerated() {
+            let passage = app.staticTexts.matching(NSPredicate(format: "label == %@", try XCTUnwrap(beat["text"] as? String))).firstMatch
+            XCTAssertTrue(passage.waitForExistence(timeout: 5))
+            let top = app.buttons["退出挑战"].frame.maxY
+            XCTAssertGreaterThan(passage.frame.minY, top, "第\(index + 1)段必须从头显示")
+            XCTAssertLessThan(passage.frame.minY, app.frame.midY, "不能沿用上一段末尾偏移")
+            let translate = app.buttons["查看中文"]
+            for _ in 0..<12 {
+                if translate.isHittable && translate.frame.midY < app.buttons[index == beats.count - 1 ? "开始答题" : "继续故事"].frame.minY { break }
+                app.swipeUp()
+            }
+            translate.tap()
+            XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label == %@", try XCTUnwrap(beat["translation"] as? String))).firstMatch.exists)
+            app.buttons[index == beats.count - 1 ? "开始答题" : "继续故事"].tap()
+        }
+        XCTAssertTrue(app.buttons["检查"].exists)
+        let hint = app.buttons["learning.hint"]
+        XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "hittable == true"), object: hint)], timeout: 5) == .completed)
+        hint.tap()
+        XCTAssertTrue(app.staticTexts["learning.hint.text"].exists)
+        XCTAssertEqual(hint.label, "收起提示")
+        hint.tap()
+        XCTAssertFalse(app.staticTexts["learning.hint.text"].exists)
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "四级三段完整开场与长题滚动"; attachment.lifetime = .keepAlways; add(attachment)
+    }
     func testAudioArrangeSupportsReplayAndRemovingSelectedCard() {
         continueAfterFailure = false
         let app = XCUIApplication()

@@ -68,7 +68,7 @@ public final class CharacterLearningModel {
 
 @MainActor @Observable
 public final class LearningChallengeModel {
-    public enum Stage: Equatable { case cover, story(Int), question(String), summary }
+    public enum Stage: Hashable { case cover, story(Int), question(String), summary }
     public private(set) var attempt: LearningAttempt
     public private(set) var stage: Stage
     public private(set) var isBusy = false

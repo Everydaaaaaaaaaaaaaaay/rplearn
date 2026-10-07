@@ -14,6 +14,8 @@ public struct LearningChallengeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @AccessibilityFocusState private var feedbackFocused: Bool
     @State private var showsExit = false
     @State private var showsHint = false
     @State private var showsTranslation = false
@@ -28,20 +30,35 @@ public struct LearningChallengeView: View {
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
     public var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                switch model.stage {
-                case .cover: cover
-                case .story(let index): story(model.attempt.unit.beats[index])
-                case .question: if let question = model.question { questionBody(question) }
-                case .summary: summary
+        ScrollViewReader { reader in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    switch model.stage {
+                    case .cover: cover
+                    case .story(let index): story(model.attempt.unit.beats[index])
+                    case .question: if let question = model.question { questionBody(question) }
+                    case .summary: summary
+                    }
+                    if let error = model.error {
+                        LearningErrorBanner(message: error) { Task { await model.recover() } }
+                    }
+                }.padding(24).frame(maxWidth: 680).frame(maxWidth: .infinity)
+            }
+            // 每题与每段故事拥有独立滚动位置，不继承上一页的末尾偏移。
+            .id(model.stage)
+            .scrollDismissesKeyboard(.interactively)
+            .onChange(of: model.stage) { _, _ in
+                showsHint = false; showsTranslation = false; inputFocused = false
+                feedbackFocused = false
+            }
+            .onChange(of: model.feedback?.outcome) { _, outcome in
+                guard outcome != nil else { return }
+                withAnimation(reduceMotion ? nil : .easeOut(duration: 0.2)) {
+                    reader.scrollTo("challenge.feedback", anchor: .top)
                 }
-                if let error = model.error {
-                    LearningErrorBanner(message: error) { Task { await model.recover() } }
-                }
-            }.padding(24).frame(maxWidth: 680).frame(maxWidth: .infinity)
+                feedbackFocused = true
+            }
         }
-        .scrollDismissesKeyboard(.interactively)
         .safeAreaInset(edge: .top, spacing: 0) { topBar.background(.regularMaterial) }
         .safeAreaInset(edge: .bottom, spacing: 0) { bottomBar }
         .background(Color.dsBackground).tint(theme.tint)
@@ -57,7 +74,6 @@ public struct LearningChallengeView: View {
         } message: {
             Text("已提交的答案会保留。结束首轮会重置该角色的挑战进度条，未答对的题仍可从记录补答。")
         }
-        .onChange(of: model.stage) { _, _ in showsHint = false; showsTranslation = false; inputFocused = false }
         .task(id: model.question?.id) { await audio.prepare(attemptID: model.attempt.id, question: model.question) }
         .task(id: model.question?.id) { await pictures.prepare(attemptID: model.attempt.id, question: model.question) }
         .onDisappear { audio.reset(); pictures.reset() }
@@ -140,12 +156,25 @@ public struct LearningChallengeView: View {
         VStack(alignment: .leading, spacing: 22) {
             let headingLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 10)) : AnyLayout(HStackLayout())
             headingLayout {
-                Label(model.attempt.round.ordinal > 0 ? "补答 · 剩余题目" : "轮到你了", systemImage: "pencil.tip").font(.caption.bold()).foregroundStyle(theme.tint)
+                Label(model.attempt.round.ordinal > 0 ? "补答" : "练习", systemImage: "pencil.tip").font(.caption.bold()).foregroundStyle(theme.tint)
                 if !dynamicTypeSize.isAccessibilitySize { Spacer() }
                 Text(learningLevelName(model.attempt.level)).font(.caption).foregroundStyle(.secondary)
+                if model.feedback == nil {
+                    Button { showsHint.toggle() } label: {
+                        Image(systemName: showsHint ? "lightbulb.fill" : "lightbulb")
+                            .font(.body).frame(width: 44, height: 44)
+                    }.buttonStyle(LearningPressStyle())
+                        .accessibilityLabel(showsHint ? "收起提示" : "查看提示")
+                        .accessibilityIdentifier("learning.hint")
+                        .disabled(model.hasUnconfirmedAnswer)
+                }
             }
             Text(question.type == .matching && dynamicTypeSize.isAccessibilitySize ? "将两组内容逐一配对。" : question.instruction).font(.title2.bold())
             Text(question.prompt).font(.system(.title3, design: .rounded)).lineSpacing(6).fixedSize(horizontal: false, vertical: true)
+            if showsHint && model.feedback == nil {
+                Text(question.hint).font(.subheadline).foregroundStyle(.secondary)
+                    .accessibilityIdentifier("learning.hint.text")
+            }
             if question.audio != nil {
                 listeningControls(question)
             }
@@ -162,10 +191,10 @@ public struct LearningChallengeView: View {
                 .disabled(model.isBusy || model.feedback != nil || model.hasUnconfirmedAnswer || !pictures.isReady(for: question))
             if let feedback = model.feedback {
                 feedbackCard(feedback, question: question)
+                    .id("challenge.feedback")
+                    .accessibilityFocused($feedbackFocused)
+                    .accessibilityIdentifier("learning.feedback")
             } else {
-                Button(showsHint ? "收起提示" : "需要一点提示？") { showsHint.toggle() }
-                    .font(.subheadline).padding(.vertical, 8).disabled(model.hasUnconfirmedAnswer)
-                if showsHint { Text(question.hint).font(.subheadline).foregroundStyle(.secondary) }
                 if dynamicTypeSize.isAccessibilitySize && !model.hasUnconfirmedAnswer { skipQuestionButton }
             }
         }
