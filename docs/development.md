@@ -128,6 +128,10 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 
 学习工程预览只在 Debug 内存账号启用，不连接后端、不产生奖励，也不导入公共题库。可用
 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=arrange Scripts/preview.sh preview unit-challenge`
+
+听后排序可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=audioArrange Scripts/preview.sh preview unit-challenge`。
+沿用紧凑播放器，完整播放后才可检查；已选卡片可点回或用辅助功能动作调整顺序。
+此入口仍是只读工程夹具，不计学习进度，不代表正式听力材料已经审核发布。
 检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。
 
 ## 启动速度与偶发慢启动

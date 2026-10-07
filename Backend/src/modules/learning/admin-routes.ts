@@ -59,6 +59,7 @@ export function registerLearningAdminRoutes(
                   "choice",
                   "listeningChoice",
                   "arrange",
+                  "audioArrange",
                   "completion",
                   "dictation",
                   "matching",

@@ -41,13 +41,19 @@ export const bankBlueprintSchema = z.strictObject({
           "choice",
           "listeningChoice",
           "arrange",
+          "audioArrange",
           "completion",
           "dictation",
           "matching",
         ]),
       }),
     )
-    .length(6),
+    .min(6)
+    .max(18)
+    .refine(
+      (slots) => slots.length === 6 || slots.length === 18,
+      "组卷必须为六题或十八题。",
+    ),
 });
 export type BankBlueprint = z.infer<typeof bankBlueprintSchema>;
 export type BankCandidate = BankQuestion & {
@@ -78,8 +84,11 @@ export function bankIdentity(question: LearningQuestion): string {
       options: materials(question.options),
       audio: "audio" in question ? clean(question.audio.text) : null,
     };
-  } else if (question.type === "arrange") {
-    material = materials(question.tokens);
+  } else if (question.type === "arrange" || question.type === "audioArrange") {
+    material =
+      question.type === "audioArrange"
+        ? { tokens: materials(question.tokens), audio: clean(question.audio.text) }
+        : materials(question.tokens);
   } else if (question.type === "matching") {
     material = { left: materials(question.left), right: materials(question.right) };
   } else {
@@ -241,7 +250,7 @@ export function bankUnit(
     title: blueprint.title,
     summary: scene[0],
     scene: scene[1],
-    estimatedMinutes: 6,
+    estimatedMinutes: questions.length > 6 ? 12 : 6,
     goalIds: [...new Set(questions.map((q) => q.question.goalId))],
     prerequisiteGoalIds: blueprint.prerequisiteGoalIds,
     references,

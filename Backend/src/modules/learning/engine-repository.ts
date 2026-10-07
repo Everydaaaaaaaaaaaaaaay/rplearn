@@ -152,8 +152,7 @@ export class LearningEngineRepository {
       if (audioAssets !== undefined) {
         for (const unit of units)
           for (const question of unit.questions) {
-            if (question.type !== "listeningChoice" && question.type !== "dictation")
-              continue;
+            if (!("audio" in question)) continue;
             const [row] = await sql<
               { metadata: unknown }[]
             >`select metadata from app.learning_audio_assets where id=${question.audio.assetId}`;
@@ -223,10 +222,7 @@ export class LearningSession {
     const question = unitSchema
       .parse(attempt.payload)
       .questions.find((q) => q.id === questionId);
-    if (
-      !question ||
-      (question.type !== "listeningChoice" && question.type !== "dictation")
-    )
+    if (!question || !("audio" in question))
       reject("LEARNING_AUDIO_NOT_FOUND", "这道题没有可播放的听力素材。", 404);
     const [row] = await this.sql<
       { metadata: unknown }[]

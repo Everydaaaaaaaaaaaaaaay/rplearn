@@ -7,13 +7,14 @@ import { runMigrations } from "../../src/db/migrate.js";
 import { createAuthService } from "../../src/modules/auth/service.js";
 import { LearningEngineRepository } from "../../src/modules/learning/engine-repository.js";
 import { createLearningService } from "../../src/modules/learning/service.js";
+import { gradeAnswer } from "../../src/modules/learning/grading.js";
 import { registerLearningRoutes } from "../../src/modules/learning/routes.js";
 import { learningAudioFixture } from "../helpers/learning-audio.js";
 import { learningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
 
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
-  "听力 HTTP 鉴权与版本冻结",
+  "十八题挑战、听力 HTTP 鉴权与版本冻结",
   () => {
     let database: DatabaseResource;
     let app: FastifyInstance;
@@ -27,6 +28,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       learningAudioFixture(),
       learningAudioFixture("Hello friend.", "M5", 660),
       learningAudioFixture("Tea, please.", "M5", 880),
+      learningAudioFixture("I am Oliver.", "M5", 550),
     ];
     const download = vi.fn((key: string) =>
       Promise.resolve(`https://assets.example.com/${key}?signature=temporary`),
@@ -67,6 +69,24 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             voice: asset.metadata.voice,
           };
       }
+      const sort = unit.questions[2];
+      const orderingAudio = assets[3];
+      if (sort?.type !== "arrange" || !orderingAudio)
+        throw new Error("缺少听后排序夹具。");
+      unit.questions[2] = {
+        ...sort,
+        type: "audioArrange",
+        audio: {
+          assetId: orderingAudio.metadata.id,
+          text: orderingAudio.metadata.transcript,
+          voice: orderingAudio.metadata.voice,
+        },
+      };
+      const seed = unit.questions[0];
+      if (!seed) throw new Error("缺少长卷夹具。");
+      // 测试数据仅用于十八次提交与补答边界，不会导入正式教学目录。
+      for (let index = 6; index < 18; index++)
+        unit.questions.push({ ...seed, id: `test.extra${String(index)}` });
       await repository.publishBatch(
         [unit],
         assets.map((asset) => asset.metadata),
@@ -90,6 +110,14 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         },
       );
       if (!started.attempt) throw new Error("缺少测试挑战。");
+      expect(started.attempt.unit.questions).toHaveLength(18);
+      expect(started.attempt.round.questionIds).toHaveLength(18);
+      expect(started.attempt.unit.questions[2]).toMatchObject({
+        type: "audioArrange",
+        audio: { assetId: orderingAudio.metadata.id },
+      });
+      expect(started.attempt.unit.questions[2]).not.toHaveProperty("acceptedOrders");
+      expect(started.attempt.unit.questions[2]?.audio).not.toHaveProperty("text");
       attemptId = started.attempt.id;
       app = await buildApp(config, { logger: false });
       registerLearningRoutes(
@@ -158,6 +186,34 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         ).statusCode,
       ).toBe(404);
     });
+    it("听后排序沿用本人冻结题目的音频鉴权，未登记素材不能发布", async () => {
+      const url = `/v1/learning/attempts/${attemptId}/audio/q.arrange`;
+      expect(
+        (
+          await app.inject({
+            method: "GET",
+            url,
+            headers: { authorization: `Bearer ${tokens[1] ?? ""}` },
+          })
+        ).statusCode,
+      ).toBe(404);
+      const response = await app.inject({
+        method: "GET",
+        url,
+        headers: { authorization: `Bearer ${tokens[0] ?? ""}` },
+      });
+      expect(response.statusCode).toBe(200);
+      expect(response.json()).toMatchObject({ assetId: assets[3]?.metadata.id });
+      expect(response.json()).not.toHaveProperty("transcript");
+      const invalid = structuredClone(unit);
+      invalid.version = 2;
+      const question = invalid.questions[2];
+      if (question?.type !== "audioArrange") throw new Error("缺少听后排序夹具。");
+      question.audio.assetId = "test.unpublished";
+      await expect(repository.publishBatch([invalid], [])).rejects.toMatchObject({
+        code: "LEARNING_AUDIO_NOT_READY",
+      });
+    });
     it("发布新版后，已有挑战继续使用旧版声音", async () => {
       const changed = structuredClone(unit);
       changed.version = 2;
@@ -197,6 +253,83 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           [],
         ),
       ).rejects.toMatchObject({ code: "LEARNING_AUDIO_NOT_READY" });
+    });
+    it("十八题首轮和补答只奖励首次答对，结束才重置当前循环", async () => {
+      const user = users[0];
+      if (!user) throw new Error("缺少测试账号。");
+      const read = () => repository.read(user, (session) => session.attempt(attemptId));
+      const original = await read();
+      const firstRound = original.round.id;
+      for (const question of unit.questions.slice(0, 15)) {
+        const requestId = randomUUID();
+        const input = {
+          attemptId,
+          roundId: firstRound,
+          questionId: question.id,
+          answer: gradeAnswer(question, { kind: "skip" }).solution,
+        };
+        const saved = await repository.command(
+          user,
+          requestId,
+          "answer",
+          input,
+          (session) => session.submit(input),
+        );
+        const replay = await repository.command(
+          user,
+          requestId,
+          "answer",
+          input,
+          (session) => session.submit(input),
+        );
+        expect(replay).toEqual(saved);
+      }
+      expect(
+        (await repository.read(user, (session) => session.character(characterId)))
+          .characters,
+      ).toBe(1000);
+      await repository.command(user, randomUUID(), "finish", {}, (session) =>
+        session.finish(attemptId, true),
+      );
+      expect(
+        (await repository.read(user, (session) => session.character(characterId)))
+          .characters,
+      ).toBe(0);
+      expect(
+        (await repository.read(user, (session) => session.progress()))[0]?.points,
+      ).toBe(15);
+      const retry = await repository.command(
+        user,
+        randomUUID(),
+        "retry",
+        {},
+        (session) => session.retry(attemptId),
+      );
+      expect(retry.round.questionIds).toEqual(
+        unit.questions.slice(15).map((q) => q.id),
+      );
+      expect(retry.unit).toEqual(original.unit);
+      for (const question of unit.questions.slice(15)) {
+        await repository.command(user, randomUUID(), "answer", {}, (session) =>
+          session.submit({
+            attemptId,
+            roundId: retry.round.id,
+            questionId: question.id,
+            answer: gradeAnswer(question, { kind: "skip" }).solution,
+          }),
+        );
+      }
+      await repository.command(user, randomUUID(), "finish", {}, (session) =>
+        session.finish(attemptId, false),
+      );
+      expect((await read()).correctQuestionIds).toHaveLength(18);
+      expect(
+        (await repository.read(user, (session) => session.progress()))[0]?.points,
+      ).toBe(18);
+      expect(
+        (await repository.read(user, (session) => session.history(characterId, 10)))
+          .items[0],
+      ).toMatchObject({ questionCount: 18, correctCount: 18 });
     });
   },
 );

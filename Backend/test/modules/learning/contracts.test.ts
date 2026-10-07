@@ -13,6 +13,96 @@ import {
 import { learningFixture } from "../../helpers/learning.js";
 
 describe("单元内容合同", () => {
+  it("十八题与九个教学目标可以完整投影，超出上限会被拒绝", () => {
+    const unit = learningFixture();
+    const seed = unit.questions[0];
+    if (!seed) throw new Error("缺少长卷夹具。");
+    const questions = Array.from({ length: 18 }, (_, index) => ({
+      ...seed,
+      id: `test.q${String(index)}`,
+      goalId: `test.g${String(index % 9)}`,
+    }));
+    const longUnit = unitSchema.parse({
+      ...unit,
+      questions,
+      goalIds: [...new Set(questions.map((q) => q.goalId))],
+    });
+    expect(publicUnit(longUnit).questions).toHaveLength(18);
+    expect(
+      unitSchema.safeParse({
+        ...longUnit,
+        questions: [...questions, { ...seed, id: "test.extra" }],
+      }).success,
+    ).toBe(false);
+  });
+  it("听后排序隐藏原文和答案，并严格验证卡片及录音引用", () => {
+    const unit = learningFixture();
+    const seed = unit.questions[2];
+    if (!seed) throw new Error("缺少排序夹具。");
+    if (seed.type !== "arrange") throw new Error("缺少排序夹具。");
+    const question = {
+      ...seed,
+      type: "audioArrange" as const,
+      audio: { assetId: "test.order", text: "I am Oliver.", voice: "M5" },
+    };
+    const parsed = unitSchema.parse({
+      ...unit,
+      questions: [question, ...unit.questions.filter((q) => q.id !== seed.id)],
+    });
+    expect(publicUnit(parsed).questions[0]).toEqual({
+      id: question.id,
+      type: "audioArrange",
+      goalId: question.goalId,
+      instruction: question.instruction,
+      prompt: question.prompt,
+      hint: question.hint,
+      tokens: question.tokens,
+      audio: { assetId: "test.order" },
+    });
+    const replace = (q: unknown) => ({
+      ...unit,
+      questions: [q, ...unit.questions.slice(1)],
+    });
+    expect(
+      unitSchema.safeParse(replace({ ...question, id: "test.order", audio: undefined }))
+        .success,
+    ).toBe(false);
+    expect(
+      unitSchema.safeParse(
+        replace({ ...question, id: "test.order", acceptedOrders: [["i", "missing"]] }),
+      ).success,
+    ).toBe(false);
+    expect(
+      unitSchema.safeParse(
+        replace({
+          ...question,
+          id: "test.order",
+          tokens: question.tokens.map((t) => ({
+            ...t,
+            imageAssetId: "image.unsupported",
+          })),
+        }),
+      ).success,
+    ).toBe(false);
+    expect(
+      gradeAnswer(question, { kind: "arrange", tokenIds: ["i", "am", "name"] }).outcome,
+    ).toBe("correct");
+    expect(
+      gradeAnswer(question, { kind: "arrange", tokenIds: ["name", "am", "i"] }).outcome,
+    ).toBe("incorrect");
+    expect(
+      gradeAnswer(question, { kind: "arrange", tokenIds: ["i", "am"] }).outcome,
+    ).toBe("incorrect");
+    expect(() =>
+      gradeAnswer(question, { kind: "arrange", tokenIds: ["i", "i"] }),
+    ).toThrow();
+    expect(() =>
+      gradeAnswer(question, { kind: "arrange", tokenIds: ["i", "foreign"] }),
+    ).toThrow();
+    expect(() =>
+      gradeAnswer(question, { kind: "text", text: "I am Oliver" }),
+    ).toThrow();
+  });
   it("验证六种题型，并拒绝答案不存在、标识重复及未覆盖的目标", () => {
     const unit = learningFixture();
     expect(unitSchema.safeParse(unit).success).toBe(true);

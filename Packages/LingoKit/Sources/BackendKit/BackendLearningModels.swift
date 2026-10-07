@@ -6,7 +6,7 @@ public struct LearningOption: Codable, Sendable, Equatable, Identifiable {
     public let imageAssetId: String?
 }
 public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
-    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, arrange, completion, dictation, matching }
+    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, arrange, audioArrange, completion, dictation, matching }
     public struct Audio: Codable, Sendable, Equatable { public let assetId: String }
     public let id: String
     public let type: Kind

@@ -6,7 +6,7 @@ import Testing
 private let attemptID = UUID(uuidString: "10000000-0000-0000-0000-000000000001")!
 private let characterID = UUID(uuidString: "20000000-0000-0000-0000-000000000001")!
 private let roundID = UUID(uuidString: "30000000-0000-0000-0000-000000000001")!
-private func learningAttemptFixture(_ overrides: [String: Any] = [:], beats: [[String: Any]]? = nil) throws -> LearningAttempt {
+private func learningAttemptFixture(_ overrides: [String: Any] = [:], beats: [[String: Any]]? = nil, questions: [[String: Any]]? = nil) throws -> LearningAttempt {
     var object: [String: Any] = [
         "id": attemptID.uuidString, "characterId": characterID.uuidString, "level": "primary3", "revision": 1,
         "startedAt": "2026-09-26T00:00:00Z", "firstCompletedAt": NSNull(), "correctQuestionIds": [],
@@ -18,6 +18,11 @@ private func learningAttemptFixture(_ overrides: [String: Any] = [:], beats: [[S
     if let beats {
         var unit = object["unit"] as! [String: Any]
         unit["beats"] = beats
+        object["unit"] = unit
+    }
+    if let questions {
+        var unit = object["unit"] as! [String: Any]
+        unit["questions"] = questions
         object["unit"] = unit
     }
     for (key, value) in overrides { object[key] = value }
@@ -76,6 +81,27 @@ private actor ChallengeService: LearningServing {
 
 @Suite("单元挑战恢复与交互状态") @MainActor
 struct LearningChallengeTests {
+    @Test("十八题可完整解码，听后排序按卡片标识提交而不持有原文")
+    func longAudioOrderingContract() throws {
+        let questions: [[String: Any]] = (0..<18).map { index in
+            ["id": "q\(index)", "type": "audioArrange", "goalId": "test.goal", "instruction": "听后排序", "prompt": "工程检查", "hint": "可重听",
+             "tokens": [["id": "first", "text": "1"], ["id": "second", "text": "2"]], "audio": ["assetId": "test.audio"]]
+        }
+        let attempt = try learningAttemptFixture([
+            "firstCompletedAt": "2026-09-26T01:00:00Z",
+            "round": ["id": roundID.uuidString, "ordinal": 1, "questionIds": questions.map { $0["id"] as! String }, "completed": false, "answers": []]
+        ], questions: questions)
+        let model = LearningChallengeModel(attempt: attempt, service: try ChallengeService())
+        #expect(model.attempt.unit.questions.count == 18)
+        #expect(model.question?.type == .audioArrange)
+        #expect(model.question?.audio?.assetId == "test.audio")
+        #expect(model.answer == nil)
+        model.tokens = ["second", "first"]
+        #expect(model.answer == .arrange(["second", "first"]))
+        let publicQuestion = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(model.question)) as? [String: Any])
+        #expect(publicQuestion["acceptedOrders"] == nil)
+        #expect((publicQuestion["audio"] as? [String: Any])?["text"] == nil)
+    }
     private var storyBeats: [[String: Any]] {
         [("opening", 0), ("resolution", 0), ("old_pause", 1), ("old_ending", 2)].map { id, position in
             ["id": id, "afterQuestion": position, "speaker": "旁白", "text": "A short story.", "translation": "一段短故事。"]

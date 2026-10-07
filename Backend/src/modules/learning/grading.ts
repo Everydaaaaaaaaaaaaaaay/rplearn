@@ -64,7 +64,8 @@ export function gradeAnswer(
       }
       break;
     }
-    case "arrange": {
+    case "arrange":
+    case "audioArrange": {
       solution = { kind: "arrange", tokenIds: question.acceptedOrders[0] ?? [] };
       if (!skipped) {
         if (

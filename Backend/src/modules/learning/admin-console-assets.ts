@@ -744,6 +744,7 @@ export const learningAdminJavascript = String.raw`
   const types = {
     choice: "选择",
     listeningChoice: "听力选择",
+    audioArrange: "听后排序",
     arrange: "词块组句",
     completion: "填空",
     dictation: "听写",

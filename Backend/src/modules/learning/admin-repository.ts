@@ -23,9 +23,7 @@ export class LearningAdminRepository {
     const audioIds = [
       ...new Set(
         unit.questions.flatMap((question) =>
-          question.type === "listeningChoice" || question.type === "dictation"
-            ? [question.audio.assetId]
-            : [],
+          "audio" in question ? [question.audio.assetId] : [],
         ),
       ),
     ];

@@ -80,7 +80,7 @@ const reviewSchema = z.strictObject({
       }),
     )
     .min(4)
-    .max(10),
+    .max(18),
 });
 
 export type CuratedCatalog = Readonly<{
@@ -194,7 +194,7 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     for (const question of unit.questions) {
       const checked = review.questions.find((q) => q.questionId === question.id);
       if (!checked) fail(`题目 ${question.id} 缺少审核。`);
-      if (question.type === "listeningChoice" || question.type === "dictation") {
+      if ("audio" in question) {
         const asset = audioAssets.find(
           (asset) => asset.metadata.id === question.audio.assetId,
         )?.metadata;

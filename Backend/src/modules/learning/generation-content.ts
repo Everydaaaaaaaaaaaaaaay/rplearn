@@ -180,11 +180,7 @@ export function validateGeneratedUnit(
   const previous = existing.flatMap((u) => u.questions);
   const seen: LearningUnit["questions"] = [];
   for (const q of unit.questions) {
-    if (
-      q.type === "listeningChoice" ||
-      q.type === "dictation" ||
-      JSON.stringify(q).includes('"imageAssetId"')
-    )
+    if ("audio" in q || JSON.stringify(q).includes('"imageAssetId"'))
       throw contentError("生成资源尚未验收，此批只开放文字题型。");
     if (/看图|图中|图旁|上图|下图/.test([q.prompt, q.instruction, q.hint].join(" ")))
       throw contentError("纯文字题不能指向未提供的图片。");
@@ -279,6 +275,7 @@ export function reviewSchemaForUnit(unit: LearningUnit) {
         });
         break;
       case "arrange":
+      case "audioArrange":
         answer = z.strictObject({
           kind: z.literal("arrange"),
           tokenIds: z

@@ -122,7 +122,7 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
                 "round": ["id": UUID().uuidString, "ordinal": 1, "questionIds": [question.id], "completed": false, "answers": []],
                 "unit": publicUnit])
         }
-        let supported = ["choice", "arrange", "matching", "completion", "listeningChoice", "dictation"]
+        let supported = ["choice", "arrange", "audioArrange", "matching", "completion", "listeningChoice", "dictation"]
         let type = supported.contains(kind) ? kind : "choice"
         var question: [String: Any] = ["id": "preview.question", "type": type, "goalId": "preview.goal",
             "instruction": "界面预览：完成这个练习", "prompt": "这是一道工程检查题，用于观察题干换行和操作区域，不计入学习记录。", "hint": "示例提示。",
@@ -137,7 +137,7 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
             question["left"] = [["id": "l1", "text": "红色圆形", "imageAssetId": "preview.red"], ["id": "l2", "text": "蓝色方形", "imageAssetId": "preview.blue"]]
             question["right"] = [["id": "r1", "text": "方形"], ["id": "r2", "text": "圆形"]]
         }
-        if ["listeningChoice", "dictation"].contains(type) { question["audio"] = ["assetId": "preview.audio"] }
+        if ["listeningChoice", "dictation", "audioArrange"].contains(type) { question["audio"] = ["assetId": "preview.audio"] }
         let showStory = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_STORY"] == "1"
         let beats: [[String: Any]] = showStory ? [
             ["id": "arrival", "afterQuestion": 0, "speaker": "旁白", "text": "A book falls open. A blue bookmark is inside.", "translation": "一本书翻开了，里面夹着一枚蓝色书签。"],

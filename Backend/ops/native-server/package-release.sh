@@ -17,5 +17,6 @@ install -m 0644 package.json pnpm-lock.yaml "${staging}/release/"
 printf '%s\n' "${version}" >"${staging}/release/RELEASE"
 
 install -d "$(dirname "${output}")"
-COPYFILE_DISABLE=1 tar --no-xattrs -C "${staging}/release" -czf "${output}" .
+# 作者草稿不进入生产发布包，只有正式目录与审核记录随服务发布。
+COPYFILE_DISABLE=1 tar --no-xattrs --exclude='./config/learning/authoring' -C "${staging}/release" -czf "${output}" .
 echo "${output}"

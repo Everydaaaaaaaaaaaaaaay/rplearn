@@ -248,14 +248,14 @@ public struct LearningChallengeView: View {
                     choiceButton(option, number: index + 1)
                 }
             }
-        case .arrange:
+        case .arrange, .audioArrange:
             VStack(alignment: .leading, spacing: 18) {
                 LearningFlowLayout(spacing: 9) {
-                    if model.tokens.isEmpty { Text("点选词块，组成句子").foregroundStyle(.secondary).padding(10) }
+                    if model.tokens.isEmpty { Text(question.type == .audioArrange ? "按听到的顺序放入卡片" : "点选词块，组成句子").foregroundStyle(.secondary).padding(10) }
                     ForEach(Array(model.tokens.enumerated()), id: \.element) { index, id in
                         tokenButton(question.tokens?.first { $0.id == id }?.text ?? "", selected: true) { model.tokens.remove(at: index) }
-                            .accessibilityLabel("第 \(index + 1) 个词，\(question.tokens?.first { $0.id == id }?.text ?? "")")
-                            .accessibilityHint("轻点移回词库")
+                            .accessibilityLabel("第 \(index + 1) 项，\(question.tokens?.first { $0.id == id }?.text ?? "")")
+                            .accessibilityHint("轻点移回备选区")
                             .accessibilityAction(named: "向前移动") { if index > 0 { model.tokens.swapAt(index, index - 1) } }
                             .accessibilityAction(named: "向后移动") { if index + 1 < model.tokens.count { model.tokens.swapAt(index, index + 1) } }
                     }

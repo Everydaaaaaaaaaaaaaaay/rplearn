@@ -2,6 +2,32 @@ import XCTest
 
 @MainActor
 final class ChallengeLayoutUITests: XCTestCase {
+    func testAudioArrangeSupportsReplayAndRemovingSelectedCard() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_QUESTION": "audioArrange"]
+        app.launch()
+        let play = app.buttons["learning.audio.play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts["按听到的顺序放入卡片"].exists)
+        app.buttons["I"].tap()
+        XCTAssertFalse(app.buttons["检查"].isEnabled)
+        play.tap()
+        XCTAssertTrue(app.buttons["再听一遍"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["检查"].isEnabled)
+        app.buttons["第 1 项，I"].tap()
+        XCTAssertFalse(app.buttons["检查"].isEnabled)
+        XCTAssertTrue(app.buttons["I"].isHittable)
+        app.buttons["would"].tap()
+        app.buttons["I"].tap()
+        XCTAssertTrue(app.buttons["第 1 项，would"].exists)
+        XCTAssertTrue(app.buttons["第 2 项，I"].exists)
+        app.buttons["learning.audio.slow"].tap()
+        XCTAssertTrue(app.buttons["停止播放"].waitForExistence(timeout: 5))
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "听后排序卡片与紧凑播放器"; attachment.lifetime = .keepAlways; add(attachment)
+    }
     func testOpeningStoryFinishesBeforeQuestions() {
         continueAfterFailure = false
         let app = XCUIApplication()

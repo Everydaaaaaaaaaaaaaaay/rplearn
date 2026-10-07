@@ -118,7 +118,7 @@ public final class LearningChallengeModel {
         guard let question else { return nil }
         switch question.type {
         case .choice, .listeningChoice: return choice.map(LearningAnswer.choice)
-        case .arrange: return tokens.isEmpty ? nil : .arrange(tokens)
+        case .arrange, .audioArrange: return tokens.isEmpty ? nil : .arrange(tokens)
         case .completion, .dictation:
             return text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : .text(text)
         case .matching: return pairs.count == question.left?.count ? .matching(pairs) : nil

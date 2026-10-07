@@ -68,6 +68,17 @@ export const questionSchema = z.discriminatedUnion("type", [
   }),
   z.strictObject({
     ...baseQuestion,
+    type: z.literal("audioArrange"),
+    tokens: z.array(option).min(2).max(18),
+    acceptedOrders: z.array(z.array(identifier).min(2).max(18)).min(1).max(8),
+    audio: z.strictObject({
+      assetId: identifier,
+      text,
+      voice: z.string().min(1).max(32),
+    }),
+  }),
+  z.strictObject({
+    ...baseQuestion,
     type: z.literal("completion"),
     acceptedAnswers: z.array(text.max(240)).min(1).max(12),
     normalization,
@@ -109,7 +120,7 @@ export const unitSchema = z
     summary: text.max(300),
     scene: text.max(300),
     estimatedMinutes: z.number().int().min(2).max(20),
-    goalIds: z.array(identifier).min(1).max(6),
+    goalIds: z.array(identifier).min(1).max(9),
     prerequisiteGoalIds: z.array(identifier).max(30),
     references: z
       .array(
@@ -133,7 +144,7 @@ export const unitSchema = z
       .array(
         z.strictObject({
           id: identifier,
-          afterQuestion: z.number().int().min(0).max(10),
+          afterQuestion: z.number().int().min(0).max(18),
           speaker: text.max(60),
           text: text.max(500),
           translation: text.max(500),
@@ -141,7 +152,7 @@ export const unitSchema = z
       )
       .min(2)
       .max(12),
-    questions: z.array(questionSchema).min(4).max(10),
+    questions: z.array(questionSchema).min(4).max(18),
   })
   .superRefine((unit, context) => {
     const fail = (message: string) => context.addIssue({ code: "custom", message });
@@ -178,7 +189,7 @@ export const unitSchema = z
         );
         if (!question.options.some((o) => o.id === question.answer))
           fail("正确答案必须是已有选项。");
-      } else if (question.type === "arrange") {
+      } else if (question.type === "arrange" || question.type === "audioArrange") {
         if (question.tokens.some((token) => token.imageAssetId))
           fail("词块组句只接收文字；图片请用于选择或配对。");
         unique(
@@ -268,6 +279,12 @@ export function publicQuestion(question: LearningQuestion) {
       };
     case "arrange":
       return { ...common, tokens: question.tokens };
+    case "audioArrange":
+      return {
+        ...common,
+        tokens: question.tokens,
+        audio: { assetId: question.audio.assetId },
+      };
     case "matching":
       return { ...common, left: question.left, right: question.right };
     case "completion":

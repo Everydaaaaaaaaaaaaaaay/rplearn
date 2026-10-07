@@ -3,6 +3,7 @@ import {
   assembleBankQuestions,
   bankIdentity,
   bankUnit,
+  bankBlueprintSchema,
   type BankCandidate,
 } from "../../../src/modules/learning/bank-content.js";
 import { loadBankCatalog } from "../../../src/modules/learning/bank-catalog.js";
@@ -17,6 +18,70 @@ const catalog = await loadBankCatalog(
   new URL("../../../config/learning", import.meta.url).pathname,
 );
 describe("公共题库内容与组卷", () => {
+  it("十八题规则一次组成完整长卷，缺一题时不降级或重复填充", () => {
+    const unit = learningFixture();
+    // 只复制工程夹具验证长度与事务边界，不生成教学内容。
+    const candidates: BankCandidate[] = Array.from({ length: 18 }, (_, index) => ({
+      id: `test.bank${String(index)}`,
+      version: 1,
+      level: unit.level,
+      topic: "daily",
+      roleKeys: [],
+      question: {
+        ...required(unit.questions[index % 6]),
+        id: `test.local${String(index)}`,
+      },
+      references: unit.references,
+      reviewNotes: "仅供测试",
+      seen: false,
+      mastered: false,
+    }));
+    const blueprint = bankBlueprintSchema.parse({
+      id: "test.long",
+      title: "十八题工程检查",
+      level: unit.level,
+      topic: "daily",
+      prerequisiteGoalIds: [],
+      slots: candidates.map((q) => ({
+        goalId: q.question.goalId,
+        type: q.question.type,
+      })),
+    });
+    const selected = required(
+      assembleBankQuestions(blueprint, candidates, "anyone", new Set(), () => 0),
+    );
+    expect(new Set(selected.map((q) => q.id)).size).toBe(18);
+    expect(
+      bankUnit(blueprint, selected, "test.assembled", "anyone", "同行者").questions,
+    ).toHaveLength(18);
+    expect(
+      assembleBankQuestions(blueprint, candidates.slice(1), "anyone", new Set()),
+    ).toBeNull();
+    expect(
+      bankBlueprintSchema.safeParse({
+        ...blueprint,
+        slots: blueprint.slots.slice(0, 17),
+      }).success,
+    ).toBe(false);
+  });
+  it("听后排序的卡片相同但听取顺序不同，不会误合并身份", () => {
+    const seed = required(learningFixture().questions[2]);
+    if (seed.type !== "arrange") throw new Error("缺少排序夹具。");
+    const question = {
+      ...seed,
+      type: "audioArrange" as const,
+      audio: { assetId: "test.order", text: "One, two, three.", voice: "M5" },
+    };
+    expect(bankIdentity(question)).not.toBe(
+      bankIdentity({
+        ...question,
+        audio: { ...question.audio, text: "Three, two, one." },
+      }),
+    );
+    expect(bankIdentity(question)).toBe(
+      bankIdentity({ ...question, tokens: [...question.tokens].reverse() }),
+    );
+  });
   it("十二年级规则都能组成六题，原文与素材保留且不含重复题", () => {
     const candidates = catalog.entries.map((e): BankCandidate => ({
       ...e.question,
