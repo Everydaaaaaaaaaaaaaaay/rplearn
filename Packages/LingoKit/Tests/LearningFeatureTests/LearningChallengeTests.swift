@@ -6,7 +6,7 @@ import Testing
 private let attemptID = UUID(uuidString: "10000000-0000-0000-0000-000000000001")!
 private let characterID = UUID(uuidString: "20000000-0000-0000-0000-000000000001")!
 private let roundID = UUID(uuidString: "30000000-0000-0000-0000-000000000001")!
-private func learningAttemptFixture(_ overrides: [String: Any] = [:]) throws -> LearningAttempt {
+private func learningAttemptFixture(_ overrides: [String: Any] = [:], beats: [[String: Any]]? = nil) throws -> LearningAttempt {
     var object: [String: Any] = [
         "id": attemptID.uuidString, "characterId": characterID.uuidString, "level": "primary3", "revision": 1,
         "startedAt": "2026-09-26T00:00:00Z", "firstCompletedAt": NSNull(), "correctQuestionIds": [],
@@ -15,6 +15,11 @@ private func learningAttemptFixture(_ overrides: [String: Any] = [:]) throws -> 
                  "beats": [["id": "opening", "afterQuestion": 0, "speaker": "测试", "text": "Hello.", "translation": "你好。"]],
                  "questions": ["q1", "q2"].map { ["id": $0, "type": "choice", "goalId": "test.goal", "instruction": "选择", "prompt": "工程检查", "hint": "提示", "options": [["id": "a", "text": "A"], ["id": "b", "text": "B"]]] }]
     ]
+    if let beats {
+        var unit = object["unit"] as! [String: Any]
+        unit["beats"] = beats
+        object["unit"] = unit
+    }
     for (key, value) in overrides { object[key] = value }
     return try JSONDecoder().decode(LearningAttempt.self, from: JSONSerialization.data(withJSONObject: object))
 }
@@ -22,7 +27,7 @@ private actor ChallengeService: LearningServing {
     var attempt: LearningAttempt
     var commands: [LearningAnswerCommand] = []
     var failAfterSaving = true
-    init() throws { attempt = try learningAttemptFixture() }
+    init(attempt: LearningAttempt? = nil) throws { self.attempt = try attempt ?? learningAttemptFixture() }
     func startLearning(_ characterID: UUID, requestID: UUID) async throws -> LearningStart { throw BackendClientError.invalidResponse }
     var pageReads: Set<String> = []
     var pageError: (any Error)?
@@ -58,7 +63,8 @@ private actor ChallengeService: LearningServing {
         let result: [String: Any] = ["outcome": "correct", "explanation": "服务端解析", "solution": ["kind": "choice", "optionId": "a"]]
         let body: [String: Any] = ["id": roundID.uuidString, "ordinal": 0, "questionIds": ["q1", "q2"], "completed": false,
                                   "answers": [["questionId": "q1", "answer": ["kind": "choice", "optionId": "a"], "result": result]]]
-        attempt = try learningAttemptFixture(["revision": 2, "round": body, "correctQuestionIds": ["q1"]])
+        let unit = try JSONSerialization.jsonObject(with: JSONEncoder().encode(attempt.unit))
+        attempt = try learningAttemptFixture(["revision": 2, "round": body, "correctQuestionIds": ["q1"], "unit": unit])
         if failAfterSaving { failAfterSaving = false; throw BackendClientError.transport("响应丢失") }
         let data = try JSONSerialization.data(withJSONObject: ["result": result, "awardedPoints": 1,
             "attempt": JSONSerialization.jsonObject(with: JSONEncoder().encode(attempt)), "progress": []])
@@ -70,6 +76,32 @@ private actor ChallengeService: LearningServing {
 
 @Suite("单元挑战恢复与交互状态") @MainActor
 struct LearningChallengeTests {
+    private var storyBeats: [[String: Any]] {
+        [("opening", 0), ("resolution", 0), ("old_pause", 1), ("old_ending", 2)].map { id, position in
+            ["id": id, "afterQuestion": position, "speaker": "旁白", "text": "A short story.", "translation": "一段短故事。"]
+        }
+    }
+    @Test("短故事在第一题前完整播放，作答后不插入历史题间镜头")
+    func openingBeforeQuestions() async throws {
+        let attempt = try learningAttemptFixture(beats: storyBeats)
+        let service = try ChallengeService(attempt: attempt)
+        let model = LearningChallengeModel(attempt: attempt, service: service)
+        model.advance(); #expect(model.stage == .story(0))
+        #expect(!model.isLastOpeningBeat)
+        model.advance(); #expect(model.stage == .story(1))
+        #expect(model.isLastOpeningBeat)
+        model.advance(); #expect(model.stage == .question("q1"))
+        model.choice = "a"
+        await model.submit(); await model.submit()
+        model.advance(); #expect(model.stage == .question("q2"))
+    }
+    @Test("跳过故事一次即可开始题目，不逐镜头跳过")
+    func skipEntireOpening() throws {
+        let model = LearningChallengeModel(attempt: try learningAttemptFixture(beats: storyBeats), service: try ChallengeService())
+        model.advance()
+        model.skipStory()
+        #expect(model.stage == .question("q1"))
+    }
     @Test("学习页直接读取三个学习接口，展示服务端进度与补答记录")
     func loadsLearningState() async throws {
         let service = try ChallengeService()

@@ -138,10 +138,15 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
             question["right"] = [["id": "r1", "text": "方形"], ["id": "r2", "text": "圆形"]]
         }
         if ["listeningChoice", "dictation"].contains(type) { question["audio"] = ["assetId": "preview.audio"] }
+        let showStory = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_STORY"] == "1"
+        let beats: [[String: Any]] = showStory ? [
+            ["id": "arrival", "afterQuestion": 0, "speaker": "旁白", "text": "A book falls open. A blue bookmark is inside.", "translation": "一本书翻开了，里面夹着一枚蓝色书签。"],
+            ["id": "discovery", "afterQuestion": 0, "speaker": "同行者", "text": "Here it is! Thank you.", "translation": "原来在这里！谢谢你。"]
+        ] : []
         return try decode(["id": UUID().uuidString, "characterId": characterID.uuidString, "level": "primary3", "revision": 1,
-            "startedAt": "2026-09-26T00:00:00Z", "firstCompletedAt": "2026-09-26T00:00:00Z", "correctQuestionIds": [],
-            "round": ["id": UUID().uuidString, "ordinal": 1, "questionIds": ["preview.question"], "completed": false, "answers": []],
-            "unit": ["id": "preview.unit", "version": 1, "schemaVersion": 1, "roleKey": roleKey, "level": "primary3", "title": "工程界面预览", "summary": "不进入正式题库", "scene": "界面检查", "estimatedMinutes": 2, "goalIds": ["preview.goal"], "beats": [], "questions": [question]]])
+            "startedAt": "2026-09-26T00:00:00Z", "firstCompletedAt": showStory ? NSNull() : "2026-09-26T00:00:00Z", "correctQuestionIds": [],
+            "round": ["id": UUID().uuidString, "ordinal": showStory ? 0 : 1, "questionIds": ["preview.question"], "completed": false, "answers": []],
+            "unit": ["id": "preview.unit", "version": 1, "schemaVersion": 1, "roleKey": roleKey, "level": "primary3", "title": "工程界面预览", "summary": "不进入正式题库", "scene": "界面检查", "estimatedMinutes": 2, "goalIds": ["preview.goal"], "beats": beats, "questions": [question]]])
     }
     private var unavailable: BackendClientError { .api(code: "PREVIEW_ONLY", message: "这是界面预览，请登录后使用真实挑战。", requestID: nil, status: 400) }
     private func decode<T: Decodable>(_ object: [String: Any]) throws -> T {

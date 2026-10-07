@@ -87,43 +87,50 @@ public struct LearningChallengeView: View {
             Button { inputFocused = false; showsExit = true } label: {
                 Image(systemName: "xmark").font(.headline).frame(width: 44, height: 44)
             }.accessibilityLabel("退出挑战").disabled(model.isBusy)
-            ProgressView(value: Double(model.attempt.round.answers.count), total: Double(max(1, model.attempt.round.questionIds.count)))
-                .tint(theme.tint).accessibilityLabel("本轮题目进度")
-            Text("\(model.attempt.round.answers.count) / \(model.attempt.round.questionIds.count)")
-                .font(.caption.monospacedDigit().weight(.semibold)).foregroundStyle(.secondary)
+            if case .story(let index) = model.stage {
+                Text("开场故事").font(.subheadline.weight(.semibold))
+                Spacer()
+                Text("\((model.openingBeatIndices.firstIndex(of: index) ?? 0) + 1) / \(model.openingBeatIndices.count)")
+                    .font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+            } else {
+                ProgressView(value: Double(model.attempt.round.answers.count), total: Double(max(1, model.attempt.round.questionIds.count)))
+                    .tint(theme.tint).accessibilityLabel("本轮题目进度")
+                Text("\(model.attempt.round.answers.count) / \(model.attempt.round.questionIds.count)")
+                    .font(.caption.monospacedDigit().weight(.semibold)).foregroundStyle(.secondary)
+            }
         }.padding(.horizontal, 14).padding(.vertical, 8)
     }
     private var cover: some View {
-        VStack(alignment: .leading, spacing: 25) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 30).fill(theme.tint.opacity(0.09))
-                Image(systemName: theme.symbol).font(.system(size: 110, weight: .ultraLight)).foregroundStyle(theme.tint.opacity(0.17)).offset(x: 85, y: -25)
-                VStack(spacing: 15) {
-                    AvatarBadge(name: character.displayName, size: 96, imageName: character.card.avatarAssetName,
+        VStack(alignment: .leading, spacing: 22) {
+                HStack(spacing: 16) {
+                    AvatarBadge(name: character.displayName, size: 64, imageName: character.card.avatarAssetName,
                                 remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
-                    Text(character.displayName).font(.headline).foregroundStyle(theme.tint)
-                }.padding(36)
-            }.frame(height: 230).clipped().accessibilityHidden(true)
-            Label("\(learningLevelName(model.attempt.level)) · \(model.attempt.unit.estimatedMinutes) 分钟", systemImage: "book.closed")
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(character.displayName).font(.headline)
+                        Text("\(model.attempt.round.questionIds.count) 道题 · 约 \(model.attempt.unit.estimatedMinutes) 分钟")
+                            .font(.subheadline).foregroundStyle(.secondary)
+                    }
+                }.padding(.vertical, 12)
+            Label(learningLevelName(model.attempt.level), systemImage: theme.symbol)
                 .font(.caption.weight(.medium)).foregroundStyle(theme.tint)
             Text(model.attempt.unit.title).font(.system(.largeTitle, design: .serif).bold())
-            Text(model.attempt.unit.summary).font(.title3).foregroundStyle(.secondary)
-            Text(model.attempt.unit.scene).font(.subheadline).padding(20).frame(maxWidth: .infinity, alignment: .leading)
-                .background(theme.tint.opacity(0.06), in: RoundedRectangle(cornerRadius: 18))
-            Text("剧情带你进入情景。每一道题都有完整题意，不需要记住剧情细节。")
-                .font(.caption).foregroundStyle(.secondary)
-        }
+            Text(model.attempt.unit.scene).font(.body).foregroundStyle(.secondary).lineSpacing(5)
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
     private func story(_ beat: LearningBeat) -> some View {
         VStack(alignment: .leading, spacing: 26) {
             Label(model.attempt.unit.title, systemImage: theme.symbol).font(.caption).foregroundStyle(theme.tint)
-            Spacer(minLength: 24)
-            AvatarBadge(name: character.displayName, size: 86, imageName: character.card.avatarAssetName,
+            HStack(spacing: 12) {
+            AvatarBadge(name: character.displayName, size: 48, imageName: character.card.avatarAssetName,
                         remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
                 .accessibilityHidden(true)
             Text(beat.speaker).font(.subheadline.bold()).foregroundStyle(theme.tint)
+            }
             Text(beat.text).font(.system(.title2, design: .serif)).lineSpacing(8).fixedSize(horizontal: false, vertical: true)
-            Button(showsTranslation ? "收起中文" : "查看中文") { showsTranslation.toggle() }.font(.subheadline).padding(.vertical, 8)
+            Button { showsTranslation.toggle() } label: {
+                Image(systemName: "character.bubble").frame(width: 44, height: 44)
+            }.buttonStyle(.bordered)
+                .accessibilityLabel(showsTranslation ? "收起中文" : "查看中文")
             if showsTranslation { Text(beat.translation).font(.body).foregroundStyle(.secondary).lineSpacing(5) }
             if dynamicTypeSize.isAccessibilitySize { skipStoryButton }
             Spacer(minLength: 24)
@@ -361,7 +368,7 @@ public struct LearningChallengeView: View {
         VStack(alignment: .leading, spacing: 24) {
             Image(systemName: model.attempt.remainingCount == 0 ? "checkmark.seal" : "book.closed")
                 .font(.system(size: 56, weight: .light)).foregroundStyle(theme.tint).padding(.top, 28).accessibilityHidden(true)
-            Text(model.attempt.firstCompletedAt == nil ? "把这段收进行囊" : "每一点，都有收获").font(.system(.largeTitle, design: .serif).bold())
+            Text("本轮结果").font(.system(.largeTitle, design: .serif).bold())
             Text(model.attempt.unit.title).font(.title3).foregroundStyle(.secondary)
             HStack(alignment: .firstTextBaseline) {
                 Text("\(model.attempt.correctQuestionIds.count)").font(.system(size: 56, weight: .semibold, design: .rounded))
@@ -383,9 +390,9 @@ public struct LearningChallengeView: View {
         VStack(spacing: 10) {
             switch model.stage {
             case .cover:
-                primary("进入情景") { model.advance() }
+                primary("开始故事") { model.advance() }
             case .story:
-                primary("继续") { model.advance() }
+                primary(model.isLastOpeningBeat ? "开始答题" : "继续故事") { model.advance() }
                 if !dynamicTypeSize.isAccessibilitySize { skipStoryButton }
             case .question:
                 if model.feedback != nil { primary("继续") { model.advance() } }

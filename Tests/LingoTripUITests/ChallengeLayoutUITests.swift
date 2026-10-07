@@ -2,6 +2,30 @@ import XCTest
 
 @MainActor
 final class ChallengeLayoutUITests: XCTestCase {
+    func testOpeningStoryFinishesBeforeQuestions() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchEnvironment["UI_TEST_SKIP_ONBOARDING"] = "1"
+        app.launchEnvironment["UI_TEST_DISABLE_BACKGROUND_REFRESH"] = "1"
+        app.launchEnvironment["LINGOTRIP_BACKEND_URL"] = "http://127.0.0.1:9"
+        app.launchEnvironment["UI_TEST_TAB"] = "unit-challenge"
+        app.launchEnvironment["UI_TEST_LEARNING_STORY"] = "1"
+        app.launch()
+        XCTAssertTrue(app.buttons["开始故事"].waitForExistence(timeout: 15))
+        app.buttons["开始故事"].tap()
+        XCTAssertTrue(app.staticTexts["开场故事"].exists)
+        XCTAssertTrue(app.staticTexts["A book falls open. A blue bookmark is inside."].exists)
+        app.buttons["查看中文"].tap()
+        XCTAssertTrue(app.staticTexts["一本书翻开了，里面夹着一枚蓝色书签。"].exists)
+        app.buttons["继续故事"].tap()
+        XCTAssertTrue(app.staticTexts["Here it is! Thank you."].exists)
+        XCTAssertFalse(app.buttons["检查"].exists)
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "前置故事末段"; attachment.lifetime = .keepAlways; add(attachment)
+        app.buttons["开始答题"].tap()
+        XCTAssertTrue(app.buttons["检查"].exists)
+        XCTAssertFalse(app.staticTexts["开场故事"].exists)
+    }
     func testQuestionControlsKeepExitAndPromptVisible() {
         continueAfterFailure = false
         let app = XCUIApplication()

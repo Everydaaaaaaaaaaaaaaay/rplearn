@@ -99,12 +99,20 @@ public final class LearningChallengeModel {
         } else { stage = .summary }
         // 重开已开始的挑战跳过已看开场；不会强迫重复剧情。
         if !attempt.round.answers.isEmpty || attempt.round.ordinal > 0 {
-            seenBeats = Set(attempt.unit.beats.filter { $0.afterQuestion <= attempt.round.answers.count }.map(\.id))
+            seenBeats = Set(attempt.unit.beats.map(\.id))
         }
     }
     public var question: LearningQuestion? {
         guard case .question(let id) = stage else { return nil }
         return attempt.unit.questions.first { $0.id == id }
+    }
+    /// 只演绎开场；历史版本的题间镜头不再打断连续作答。
+    public var openingBeatIndices: [Int] {
+        attempt.unit.beats.indices.filter { attempt.unit.beats[$0].afterQuestion == 0 }
+    }
+    public var isLastOpeningBeat: Bool {
+        guard case .story(let index) = stage else { return false }
+        return openingBeatIndices.last == index
     }
     public var answer: LearningAnswer? {
         guard let question else { return nil }
@@ -121,9 +129,8 @@ public final class LearningChallengeModel {
         if case .story(let index) = stage { seenBeats.insert(attempt.unit.beats[index].id) }
         feedback = nil; awardedPoints = 0
         choice = nil; tokens = []; text = ""; pairs = []; selectedLeft = nil
-        let answered = attempt.round.answers.count
-        if attempt.round.ordinal == 0,
-           let index = attempt.unit.beats.indices.first(where: { attempt.unit.beats[$0].afterQuestion == answered && !seenBeats.contains(attempt.unit.beats[$0].id) }) {
+        if attempt.round.ordinal == 0, attempt.round.answers.isEmpty,
+           let index = openingBeatIndices.first(where: { !seenBeats.contains(attempt.unit.beats[$0].id) }) {
             stage = .story(index); return
         }
         if !attempt.round.completed,
@@ -132,7 +139,7 @@ public final class LearningChallengeModel {
         } else { stage = .summary }
     }
     public func skipStory() {
-        seenBeats.formUnion(attempt.unit.beats.filter { $0.afterQuestion == attempt.round.answers.count }.map(\.id))
+        seenBeats.formUnion(attempt.unit.beats.map(\.id))
         advance()
     }
     public func submit(skip: Bool = false) async {
