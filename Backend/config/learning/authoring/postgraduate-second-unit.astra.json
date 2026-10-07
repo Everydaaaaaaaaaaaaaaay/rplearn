@@ -1,0 +1,940 @@
+{
+  "level": "postgraduate",
+  "displayName": "大学英语六级",
+  "unitId": "companion.postgraduate.second",
+  "title": "把话听完整",
+  "author": {
+    "date": "2026-10-07",
+    "method": "亲自逐题读取原稿、正式单元及首批审稿，手选18道未发布题；逐题修订内容与干扰并亲自书写三篇双语故事。代码只用于明确选择项的搬运、字段序列化与机械验证，没有程序拼接生成教学文本。",
+    "status": "作者稿；音频pending；未登记未导入，不可发布"
+  },
+  "scope": "postgraduate为大学英语六级，不是考研。18道局部微练习，含听写与搭配巩固，不构成六级整卷或达级认证。",
+  "sources": [
+    {
+      "id": "cet.official.2016",
+      "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "localFile": "build/learning-expansion-20261007/research/cet-2016.pdf",
+      "sha256": "9166d3c03b7bc43abd9d9df91bd2ef8085b4419286f1e5ca100dea68f3cfd1f1",
+      "readAt": "2026-10-07",
+      "pagesRead": "本次亲读缓存提取正文：印刷1—4、8—9／PDF6—9、13—14。未新增整本通读或目视核读声明。",
+      "findings": "听力正文列事实、隐含意义、交际功能、态度及句间关系；六级建议140—160词/分。本稿150仅为待制作建议；短录音非原考试长对话与篇章。"
+    }
+  ],
+  "proposedGoalExtension": {
+    "id": "cet6.listening-scope-stance",
+    "level": "postgraduate",
+    "canDo": "能从熟悉话题的短发言与交流中辨认信息范围、条件性态度、纠正误读、比较口径与行动时序。",
+    "boundaries": "对应CET2016局部听力技能；短录音选择与听写不是完整六级听力测量；音频制作及真实播放核验前不得宣称听力已交付。",
+    "sourceIds": [
+      "cet.official.2016"
+    ],
+    "pages": "印刷1—2、8／PDF6—7、13",
+    "status": "待主代理审核登记；catalog只读；现有stance目标的文字限定不可直接当听力认证。"
+  },
+  "usageChecks": [
+    {
+      "url": "https://dictionary.cambridge.org/dictionary/english/ground?topic=topics-and-areas-of-interest",
+      "checked": "检索正文确认ground的理由义及on the grounds that结构；b12另换独立原创语境。"
+    },
+    {
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/unless",
+      "checked": "检索正文确认unless的except if条件义；本题否定主句不擅自保证条件成立必然行动。"
+    },
+    {
+      "url": "https://drupal-s3fs-prod.s3.eu-west-1.amazonaws.com/files/9113/8071/5737/cambridge-learners-dictionary4-intermediate-paperback-with-cd-rom-sample-pages.pdf",
+      "checked": "出版社样页检索正文确认take ... into account／take account of的考虑义。a11由account for改为明确的take ... into account，避免多义误教。"
+    }
+  ],
+  "interactionContract": {
+    "types": [
+      "listeningChoice",
+      "dictation",
+      "choice",
+      "completion",
+      "matching"
+    ],
+    "normalization": "选择按ID、配对按完整集合；填空及听写要求忽略大小写、首尾及重复空格、直弯撇号和句末标点。内部逗号仅接受显式列明变体；正式引擎兼容性未验证。",
+    "pendingAudio": "10题仅有隐藏录音稿和建议语速，assetId为null；不造可播放ID，不生成音频，不冒充ready。",
+    "independence": "每题自足，不需故事或前题答案；三篇故事都是完整可选开场，均afterQuestion=0，不在题间中断。"
+  },
+  "stories": [
+    {
+      "id": "cet6.second.story.1",
+      "title": "露台上的风铃",
+      "afterQuestion": 0,
+      "cast": "你和一位普通同行者",
+      "text": "你和同行者在旧街尽头发现一家快打烊的小店。店主正收起门口的风铃，其中一串缠在了遮阳棚的支架上。你扶住梯子，同行者把低处的绳结一点点解开，最上面的结却够不到。店主从屋里取来一根挂衣杆，你们托住风铃，终于让它滑下来。那时天台上吹来一阵风，几串铃同时响了。店主说，这一串本来是要寄给搬走的妹妹的，可包装盒太小，装不下木架。同行者指了指柜台下的长纸盒，你找来旧报纸垫住铃片。装好后，店主把包裹搁在门边，笑着关了灯。你们走到街角，才发现袖口还粘着一小片报纸。",
+      "english": "At the end of an old street, you and your companion find a small shop about to close. The owner is taking down the wind chimes outside, but one set is tangled around the awning frame. You steady a ladder while your companion loosens the lower knots. The highest one remains out of reach. The owner brings out a long clothes pole, and together you support the chimes until they slide free. A breeze comes down from the roof terrace, setting several sets ringing at once. The owner explains that this set is for a sister who has moved away, but its wooden frame will not fit in the packing box. Your companion spots a longer box beneath the counter, and you find old newspaper to cushion the metal pieces. Once everything is packed, the owner leaves the parcel by the door and switches off the light with a smile. At the street corner, you notice a small piece of newspaper still clinging to your sleeve."
+    },
+    {
+      "id": "cet6.second.story.2",
+      "title": "末班船之前",
+      "afterQuestion": 0,
+      "cast": "你和一位普通同行者",
+      "text": "你和同行者在湖边走得太远，回到码头时，末班船已经亮起了灯。售票窗前，一个小孩抱着空纸袋哭，指着栈桥下的一只布熊。水还很浅，熊却被木柱挡住了。同行者问船员借来长柄网，你趴在栏杆边指方向。网碰了两次都没有够着，船上的人开始收缆绳。船员朝他们挥挥手，又把网往前送了一点。布熊终于被托了起来，湿漉漉地落进纸袋。小孩破涕为笑，跟家人先上了船。你们坐在最后一排，鞋边都是溅起的泥点。船离岸后，同行者递来一张纸巾。远处那个小孩举起纸袋，朝你们认真地挥了挥手。",
+      "english": "You and your companion walk farther along the lake than you intended. When you return to the pier, the last boat already has its lights on. Beside the ticket window, a child is crying into an empty paper bag and pointing at a toy bear beneath the walkway. The water is shallow, but a wooden post blocks the bear. Your companion borrows a long-handled net from a crew member while you lean over the railing to guide it. Twice the net falls short, and someone on board starts gathering the ropes. The crew member waves to them and pushes the net a little farther. At last the wet bear comes up and drops into the bag. The child smiles through the tears and boards with the family. You sit in the back row, mud splashed around your shoes. As the boat pulls away, your companion hands you a tissue. Farther along the deck, the child raises the paper bag and gives you both a careful wave."
+    },
+    {
+      "id": "cet6.second.story.3",
+      "title": "少了一块的拼图",
+      "afterQuestion": 0,
+      "cast": "你和一位普通同行者",
+      "text": "旅馆大厅里摆着一幅没拼完的拼图。你和同行者等雨停，顺手把最后几块蓝色放进海面，却发现灯塔顶端少了一块。你们先找桌底，再翻沙发缝，只有一张旧车票和两枚纽扣。雨渐渐小了，同行者准备拿伞，忽然看见伞尖旁边卡着一个白色纸片。翻过来，正是缺失的灯塔。你把它放回原处，才看出画中灯塔投下的光一直延伸到右下角的小船。前台的人过来拍了一张照片，说这幅拼图已经在这里待了一个星期。你们穿好外套出门，路面还湿着，街对面的灯刚好亮了。",
+      "english": "An unfinished jigsaw puzzle lies on a table in the hotel lobby. While waiting for the rain to stop, you and your companion fit the last blue pieces into the sea, only to discover that the top of the lighthouse is missing. You look beneath the table and between the sofa cushions, finding only an old travel ticket and two buttons. The rain begins to ease. As your companion reaches for the umbrella, a small white piece of card catches their eye near its tip. Turned over, it is the missing part of the lighthouse. You put it in place and notice that the painted beam stretches all the way to a little boat in the lower corner. Someone from reception comes over to take a photograph and says the puzzle has been there for a week. You put on your coats and step outside. The pavement is still wet, and the lights across the street have just come on."
+    }
+  ],
+  "sets": [
+    {
+      "id": "cet6.second",
+      "questionIds": [
+        "cet6.second.01",
+        "cet6.second.02",
+        "cet6.second.03",
+        "cet6.second.04",
+        "cet6.second.05",
+        "cet6.second.06",
+        "cet6.second.07",
+        "cet6.second.08",
+        "cet6.second.09",
+        "cet6.second.10",
+        "cet6.second.11",
+        "cet6.second.12",
+        "cet6.second.13",
+        "cet6.second.14",
+        "cet6.second.15",
+        "cet6.second.16",
+        "cet6.second.17",
+        "cet6.second.18"
+      ],
+      "storyIds": [
+        "cet6.second.story.1",
+        "cet6.second.story.2",
+        "cet6.second.story.3"
+      ],
+      "storySelection": "每次只选一篇完整开场；三个备选均afterQuestion=0",
+      "stages": {
+        "识别": [
+          1,
+          6
+        ],
+        "受控运用": [
+          7,
+          12
+        ],
+        "迁移": [
+          13,
+          18
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet6.second.01",
+      "goalId": "cet6.stance-intent",
+      "type": "listeningChoice",
+      "taskIntent": "听懂有保留的支持",
+      "prompt": "听发言，哪项准确概括说话人对共享空间试行的立场？",
+      "audioScript": "A shared workspace could be useful. My concern is not the idea itself, but the assumption that everyone can stay late. Keep the evening sessions for those who want them. I would support a trial if daytime sessions were included as well.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports a trial if participation is limited to those available in the evening."
+        },
+        {
+          "id": "b",
+          "text": "Supports a trial if evening sessions are replaced entirely by daytime sessions."
+        },
+        {
+          "id": "c",
+          "text": "Supports a trial if daytime sessions are offered alongside the evening sessions."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "听完发言再比较各项，不把中途的评价当成最终立场。",
+      "explanation": "说话人认为共享空间可能有用，但不接受人人都能留下参加晚间活动的假设。included表示加入白天时段，并非取消晚间时段或只接收晚上有空的人。",
+      "difficulty": "六级识别：条件性立场",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "把无法晚间参加的人排除，违背补充白天时段的目的。",
+          "b": "听到daytime却误成完全替换；录音明确保留晚间时段。",
+          "c": "保留试行、白天新增和晚间保留三个条件。"
+        },
+        "ambiguity": "录音新增Keep the evening sessions，明确alongside的根据；不推断已经批准永久实施。",
+        "audioNecessity": "三个选项都是有条件支持，仅听录音才能知道条件是哪一种。"
+      },
+      "originQuestionId": "cet6.a02",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.02",
+      "goalId": "cet6.discussion-clarification",
+      "type": "listeningChoice",
+      "taskIntent": "理解异议的范围",
+      "prompt": "听两人的交流。第二位说话人主要在澄清什么？",
+      "audioScript": "A: So you think public feedback is a waste of time? B: Not at all. I'm questioning whether an online poll reaches people who rarely use the internet.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the survey method leaves some residents poorly represented."
+        },
+        {
+          "id": "b",
+          "text": "Whether the survey asks residents about the appropriate subject."
+        },
+        {
+          "id": "c",
+          "text": "Whether the survey allows residents enough time to respond."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别辨认提问者的概括和回答者自己的意思。",
+      "explanation": "对方质疑线上投票覆盖较少上网者的能力，未否定公众反馈本身。",
+      "difficulty": "六级受控运用：异议澄清",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "rarely use the internet与online poll结合指向参与覆盖不足。",
+          "b": "录音未质疑反馈主题；问题是调查如何触达居民。",
+          "c": "没有提出截止时间或填写时长问题。"
+        },
+        "ambiguity": "B没有证实所有较少上网者都未回应，仅质疑能否覆盖；原音中的Not at all纠正全面否定反馈的误读。",
+        "audioNecessity": "题面不出现线上、覆盖或居民特征，三项均为自然的调查异议。"
+      },
+      "originQuestionId": "cet6.a12",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance",
+      "production": {
+        "status": "script-frozen-awaiting-production",
+        "readSpeakerLabels": false,
+        "joinSeparator": " ",
+        "speakerSegments": [
+          {
+            "id": "cet6-second-02-a",
+            "speaker": "A",
+            "voice": "F1",
+            "text": "So you think public feedback is a waste of time?"
+          },
+          {
+            "id": "cet6-second-02-b",
+            "speaker": "B",
+            "voice": "M1",
+            "text": "Not at all. I'm questioning whether an online poll reaches people who rarely use the internet."
+          }
+        ],
+        "notes": "A/B仅用于区分声音，不送入朗读文本。片段以一个空格连接等于去标签原稿；声音为制作候选，尚未试听。"
+      }
+    },
+    {
+      "id": "cet6.second.03",
+      "goalId": "cet6.evidence-scope",
+      "type": "listeningChoice",
+      "taskIntent": "听出证据缺席不等于反证",
+      "prompt": "听介绍。哪句话最准确反映目前情况？",
+      "audioScript": "We found no evidence that the reminder changed attendance. But attendance was recorded for only one week, so it would be premature to conclude that reminders never help.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The brief observation supports treating reminders as ineffective until further evidence appears."
+        },
+        {
+          "id": "b",
+          "text": "The brief observation has not established a benefit, and a broader conclusion remains premature."
+        },
+        {
+          "id": "c",
+          "text": "The brief observation suggests a benefit, though a longer study is needed to confirm it."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "同时听取观察结果和说话人给出的解释。",
+      "explanation": "材料只说一周内没有找到出勤变化证据，并明确反对过早下广泛结论。既未支持暂定无效，也未提示有效。",
+      "difficulty": "六级识别：缺证与反证",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "未发现效果不能被改成目前可认定无效，录音明确反对这种过早推广。",
+          "b": "保留未建立益处与广泛结论尚早；没有引入正负效果。",
+          "c": "录音没有初步有益迹象，延长观察的必要性不能补出该迹象。"
+        },
+        "ambiguity": "changed attendance不只指改善，但未找到变化证据自然也未建立改善；答案不宣称已证没有变化。",
+        "audioNecessity": "三项都承认短期观察，只有听清no evidence和premature才能选择。"
+      },
+      "originQuestionId": "cet6.b02",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.04",
+      "goalId": "cet6.precise-wording",
+      "type": "completion",
+      "taskIntent": "语境中的学术搭配",
+      "prompt": "从 raise、resolve、dismiss 中填一词，表达记录缺口使可靠性受到质疑：The unexplained gaps in the records ____ questions about the reliability of the estimate.",
+      "answer": "raise",
+      "acceptedVariants": [],
+      "hint": "核对动词让这些疑问处于怎样的状态。",
+      "explanation": "raise questions表达引出疑问。resolve questions会表示疑问得到解决，dismiss questions会表示不予考虑；都不符合缺口使可靠性受到质疑的语境。",
+      "difficulty": "跨档巩固：正式搭配与质疑方向",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "optionNotes": {
+          "raise": "引出问题，与未解释的缺口造成疑问一致。",
+          "resolve": "解决疑问，反转题面指定方向。",
+          "dismiss": "不予考虑或驳回疑问，没有表达缺口引发质疑。"
+        },
+        "ambiguity": "三个词都可作及物动词；按语境选义，不能只靠语法。词库外表达不在受控答案范围。"
+      },
+      "originQuestionId": "cet6.a04",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.05",
+      "goalId": "cet6.precise-wording",
+      "type": "matching",
+      "taskIntent": "区分常见论述动词搭配",
+      "prompt": "把句子与它在讨论中的动作配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The report draws a distinction between access and use."
+        },
+        {
+          "id": "l2",
+          "text": "The reply addresses the concern about privacy."
+        },
+        {
+          "id": "l3",
+          "text": "The estimate takes account of maintenance costs."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "回应隐私方面的担忧"
+        },
+        {
+          "id": "r2",
+          "text": "将维护成本纳入考虑"
+        },
+        {
+          "id": "r3",
+          "text": "区分可以获取和实际使用"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r3"
+        ],
+        [
+          "l2",
+          "r1"
+        ],
+        [
+          "l3",
+          "r2"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "区分文字所说的处理动作与它可能产生的结果。",
+      "explanation": "draw a distinction作区分；address a concern回应担忧；take account of纳入考虑。",
+      "difficulty": "跨档巩固：论述动作与搭配",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "optionNotes": {
+          "l1-r3": "draws a distinction标出获取机会与实际使用的区别，不断言其中一个已发生。",
+          "l2-r1": "addresses表示回应隐私担忧，不保证担忧已解决。",
+          "l3-r2": "takes account of表示估算考虑维护成本，不是忽略成本。"
+        },
+        "ambiguity": "三条独立记录；全配对判分，交换任意两项不保义。"
+      },
+      "originQuestionId": "cet6.b03",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.06",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "choice",
+      "taskIntent": "保留归属与不确定性",
+      "prompt": "原话：The authors argue that shorter meetings may improve focus. 你尚未核验他们的观点。哪句适合转述？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The authors report that shorter meetings have been shown to improve focus."
+        },
+        {
+          "id": "b",
+          "text": "The authors suggest that shorter meetings could help people maintain focus."
+        },
+        {
+          "id": "c",
+          "text": "The authors suggest that better focus could help people hold shorter meetings."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "核对观点归属、关系方向和确定程度。",
+      "explanation": "b保留作者提出的可能性判断及短会议可能帮助集中注意的方向。a把论点升级为已有证明，c保留可能性但交换原因与结果。",
+      "difficulty": "六级受控运用：保义转述",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3—4／PDF8—9",
+      "review": {
+        "optionNotes": {
+          "a": "保留作者归属却把argue和may改成有证据证明，强度过高。",
+          "b": "suggest与could在此保留提出观点与可能性，没有冒充已核验事实。",
+          "c": "仍是作者观点且不确定，但将短会议促进专注改成专注促进会议缩短。"
+        },
+        "ambiguity": "不以有无According to机械选答案；三项均保留作者归属。"
+      },
+      "originQuestionId": "cet6.a10",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.07",
+      "goalId": "cet6.stance-intent",
+      "type": "listeningChoice",
+      "taskIntent": "听辨保留意见",
+      "prompt": "听发言，哪项符合说话人目前对方案的判断？",
+      "audioScript": "The savings in travel time are real, and I am not suggesting that we ignore them. But the maintenance estimate leaves several expenses out. Until those are included, I remain unconvinced that the benefits outweigh the costs.",
+      "acceptedVariants": [],
+      "hint": "把说话人认可的部分和仍未接受的判断分开听。",
+      "explanation": "说话人承认节省旅行时间是真实收益，但维护估算遗漏费用，因此本人尚未确信总收益超过总成本。这是说话者的判断状态，不直接等于客观上不存在其他证明；也不等于已经证明整体劣势。",
+      "difficulty": "六级受控理解：认可局部收益与暂缓整体判断",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "保留说话人认可省时、尚未确信整体优势这两层态度，不把个人未信服扩大为客观证据状态。",
+          "b": "反转对省时的认可，并把未信服改成优势已经证明。",
+          "c": "前半句准确，后半句把未信服收益大于成本提升为已经证明相反。"
+        },
+        "ambiguity": "unconvinced仅报告说话人的证据判断；不据此断言不存在客观证据，也不推出已证明成本更大。",
+        "audioNecessity": "取消一看标点便可排列的词块；认可和保留的范围只能从音频获得。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The speaker accepts the time savings but is not yet persuaded that the plan offers an overall advantage."
+        },
+        {
+          "id": "b",
+          "text": "The time savings are doubtful, but an overall advantage has already been demonstrated."
+        },
+        {
+          "id": "c",
+          "text": "The time savings are established, but an overall disadvantage has now been demonstrated."
+        }
+      ],
+      "answer": "a",
+      "originQuestionId": "cet6.a09",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.08",
+      "goalId": "cet6.evidence-scope",
+      "type": "dictation",
+      "taskIntent": "听写关键限定",
+      "prompt": "听写完整句子。",
+      "audioScript": "These figures do not take seasonal changes into account.",
+      "answer": "These figures do not take seasonal changes into account.",
+      "acceptedVariants": [
+        "These figures don't take seasonal changes into account."
+      ],
+      "hint": "听完后检查每个词，包括容易漏掉的短词。",
+      "explanation": "take ... into account明确表示纳入考虑。句子说这些数字没有考虑季节变化；删除not会反转是否纳入的结论。",
+      "difficulty": "听写巩固：否定与限定信息编码",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "These figures do not take seasonal changes into account.": "与录音一致；do not是完整否定。",
+          "These figures don't take seasonal changes into account.": "允许不改变意义的缩写。",
+          "These figures take seasonal changes into account.": "遗漏否定，含义相反。",
+          "These figures do not take seasonal change into account.": "录音为changes复数；单数虽可另成自然表达，却不是本次听写。"
+        },
+        "ambiguity": "原account for存在解释原因等义项；改为take ... into account后不再单凭无上下文多义短语讲解。",
+        "audioNecessity": "题面和提示都不提供季节、数字或否定方向，不能从文字重建句子。"
+      },
+      "originQuestionId": "cet6.a11",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.09",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "listeningChoice",
+      "taskIntent": "听辨行动时序与修订条件",
+      "prompt": "听发言，哪项准确概括说话人建议采取的行动？",
+      "audioScript": "The findings justify further investigation, rather than an immediate change in policy. We can keep the present rule during that investigation. If the follow-up confirms the same problem across different sites, we should then consider revising it.",
+      "acceptedVariants": [],
+      "hint": "留意调查期间的安排与后续决定各自处在什么时间。",
+      "explanation": "当前维持规则并继续调查；若后续确认问题跨场所存在，再考虑修订。consider不是确认后必然修订，录音也未要求先暂停规则。",
+      "difficulty": "六级受控理解：行动时序与条件范围",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "把调查期间维持改为暂停，又加入确认问题后恢复的动作。",
+          "b": "保留目前维持、进一步调查、确认后考虑修订三层。",
+          "c": "把明确暂不立即改政策颠倒为先改后查。"
+        },
+        "ambiguity": "确认后的动作只是consider；本题不推断该问题最终一定被确认。",
+        "audioNecessity": "三个方案都可实施，题面无现行规则安排，必须听rather than、during与if。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Suspend the rule while investigating, then restore it if the problem is confirmed."
+        },
+        {
+          "id": "b",
+          "text": "Retain the rule while investigating, then consider revision if the problem is confirmed."
+        },
+        {
+          "id": "c",
+          "text": "Revise the rule before investigating, then retain the revision if the problem is confirmed."
+        }
+      ],
+      "answer": "b",
+      "originQuestionId": "cet6.b09",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.10",
+      "goalId": "cet6.stance-intent",
+      "type": "dictation",
+      "taskIntent": "听写克制评价",
+      "prompt": "听写完整句子。",
+      "audioScript": "The results are encouraging, but they are far from conclusive.",
+      "answer": "The results are encouraging, but they are far from conclusive.",
+      "acceptedVariants": [
+        "The results are encouraging, but they're far from conclusive.",
+        "The results are encouraging but they are far from conclusive.",
+        "The results are encouraging but they're far from conclusive."
+      ],
+      "hint": "先听清完整评价，再核对遗漏的词。",
+      "explanation": "结果令人鼓舞，但远未达到确定结论的程度；far from在这里强化否定性评价。",
+      "difficulty": "听写巩固：保留态度与证据强度",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "完整原句及列明的三个变体": "接受有无内部逗号及they are/they’re，不接受删除语义成分。",
+          "The results are encouraging, but they are conclusive.": "漏掉far from，变成确定性结论，反转保留。",
+          "The result is encouraging, but it is far from conclusive.": "单数改写可有意义，但不是录音的results与they。"
+        },
+        "ambiguity": "显式列出四种完整拼写组合；通用输入归一化须导入时验证，未宣称内部标点自动忽略。",
+        "audioNecessity": "题面只要求听写，没有暴露具体句意。"
+      },
+      "originQuestionId": "cet6.b10",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.11",
+      "goalId": "cet6.precise-wording",
+      "type": "completion",
+      "taskIntent": "恰当表达反对的理由",
+      "prompt": "从 grounds、terms、extent 中填一词：The committee declined the request on the ____ that the proposed schedule left no time for a safety check.",
+      "answer": "grounds",
+      "acceptedVariants": [],
+      "hint": "识别空格后从句与委员会决定之间的关系。",
+      "explanation": "on the grounds that引出所依据的理由；委员会因安排没有留出安全检查时间而拒绝。terms常用于on the terms agreed等条件结构；extent用于to the extent that等程度结构，都不符合这里的固定形式。",
+      "difficulty": "跨档巩固：理由搭配",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "optionNotes": {
+          "grounds": "on the grounds that自然引出拒绝理由；不额外断言该理由已被第三方证实。",
+          "terms": "on the terms that不是这里引出决定理由的结构。",
+          "extent": "extent的程度结构通常是to the extent that，且本句在解释拒绝理由。"
+        },
+        "ambiguity": "更换旧稿隐私语境，避免与词典核查中的例句形成过近重合；这是搭配巩固题，不独立作为六级难度证据。"
+      },
+      "originQuestionId": "cet6.b12",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.12",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "completion",
+      "taskIntent": "用限定结构保留条件",
+      "prompt": "从 unless、because、although 中选词，保留原意。原句：We will not extend the trial without the participants' consent. 改写：We will not extend the trial ____ the participants consent.",
+      "answer": "unless",
+      "acceptedVariants": [],
+      "hint": "逐项检查替换后表达的是哪一种句间关系。",
+      "explanation": "unless表达除非参与者同意，否则不延长；仍没有保证一旦同意就一定延长。",
+      "difficulty": "六级迁移：受控条件改写",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3—4／PDF8—9",
+      "review": {
+        "optionNotes": {
+          "unless": "否定主句加unless将同意设为延长的必要前提。",
+          "because": "变成因为同意所以不延长，改变原因与条件关系。",
+          "although": "变成虽然同意仍不延长，没有保留无同意不延长的条件。"
+        },
+        "ambiguity": "同意是必要前提，不保证同意后一定延长；只从给定词库选择。"
+      },
+      "originQuestionId": "cet6.b17",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.13",
+      "goalId": "cet6.stance-intent",
+      "type": "listeningChoice",
+      "taskIntent": "听懂避免过度推广的建议",
+      "prompt": "听短发言。说话人建议下一步怎么做？",
+      "audioScript": "The pilot worked well in two small centres. That's encouraging, but larger centres may face different pressures. Before expanding the scheme nationwide, we should test it in one of those settings.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Extend the pilot in the same small centres before considering a national expansion."
+        },
+        {
+          "id": "b",
+          "text": "Expand the scheme nationally while monitoring how the larger centres respond."
+        },
+        {
+          "id": "c",
+          "text": "Test the scheme in a larger centre before considering a national expansion."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "听完后核对行动发生的地点和先后关系。",
+      "explanation": "说话人建议先在大中心验证，再考虑全国扩大；这不是只延长原小中心试点，也不是全国推广后再观察。",
+      "difficulty": "六级迁移：建议与推广边界",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "仍在原来的小中心延长，未验证说话人指出的大中心环境。",
+          "b": "先全国扩展后观察大中心，颠倒录音的先验证再考虑扩展。",
+          "c": "在大中心试验后才考虑全国扩展，符合those settings的指代。"
+        },
+        "ambiguity": "may face different pressures不是大中心一定失败；测试有必要不意味着测试结果预定。",
+        "audioNecessity": "题面不提供大小中心信息，三个动作都与试点相关，只能依据录音选择。"
+      },
+      "originQuestionId": "cet6.a17",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.14",
+      "goalId": "cet6.discussion-clarification",
+      "type": "listeningChoice",
+      "taskIntent": "听懂暂缓判断的原因",
+      "prompt": "听交流。第二个人为什么暂不选方案？",
+      "audioScript": "A: Which of the two plans would you recommend? B: The first looks cheaper, but it excludes maintenance, whereas the second includes it. Could we compare the total costs before making a recommendation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The current quotes include different items, so their totals need to be made comparable."
+        },
+        {
+          "id": "b",
+          "text": "The current quotes include the same items, but the costs may change before work begins."
+        },
+        {
+          "id": "c",
+          "text": "The current quotes include maintenance, but neither specifies how long that cover lasts."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "听清两个方案分别包含什么，再判断说话人的请求。",
+      "explanation": "第一报价不含维护、第二报价含维护，需先把覆盖项目对齐再比较总成本。录音未说价格将变化，也未评价维护服务期限。",
+      "difficulty": "六级受控运用：比较口径澄清",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "第一个不含维护、第二个包含维护，口径不同，需要可比总成本。",
+          "b": "错误地说包含相同项目，并补出价格可能变化这一暂缓理由。",
+          "c": "错误地说两者都含维护，并增加录音没有提出的服务期限问题。"
+        },
+        "ambiguity": "不能推出第二个方案最终更便宜或更贵；作者明说的报价口径差异足够回答。",
+        "audioNecessity": "不给书面报价细节，费用覆盖内容必须从排除与包含的对照听得。"
+      },
+      "originQuestionId": "cet6.b11",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance",
+      "production": {
+        "status": "script-frozen-awaiting-production",
+        "readSpeakerLabels": false,
+        "joinSeparator": " ",
+        "speakerSegments": [
+          {
+            "id": "cet6-second-14-a",
+            "speaker": "A",
+            "voice": "F1",
+            "text": "Which of the two plans would you recommend?"
+          },
+          {
+            "id": "cet6-second-14-b",
+            "speaker": "B",
+            "voice": "M1",
+            "text": "The first looks cheaper, but it excludes maintenance, whereas the second includes it. Could we compare the total costs before making a recommendation?"
+          }
+        ],
+        "notes": "A/B仅用于区分声音，不送入朗读文本。片段以一个空格连接等于去标签原稿；声音为制作候选，尚未试听。"
+      }
+    },
+    {
+      "id": "cet6.second.15",
+      "goalId": "cet6.stance-intent",
+      "type": "listeningChoice",
+      "taskIntent": "识别评价指向而非知识真伪",
+      "prompt": "听短评。说话人认为这篇文章的主要问题是什么？",
+      "audioScript": "The examples are interesting, and the topic matters. What I still can't see is how those examples support the central claim. A clearer explanation of that link would strengthen the article.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The examples are relevant, but too few to establish how widely the main claim applies."
+        },
+        {
+          "id": "b",
+          "text": "The examples support the claim, but the practical importance of the topic is not explained."
+        },
+        {
+          "id": "c",
+          "text": "The examples are interesting, but their connection to the main claim is not explained clearly."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对每项所说的问题是否就是发言者提出的问题。",
+      "explanation": "说话人肯定例子有趣和主题重要，质疑例子与核心主张的支持关系。没有评价样本数量，也没有承认支持关系已成立。",
+      "difficulty": "六级迁移：评价对象",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、8／PDF6—7、13",
+      "review": {
+        "optionNotes": {
+          "a": "声称相关但数量不足；录音没有too few，也没有谈推广广度。",
+          "b": "把支持关系说成已成立，并转而质疑主题重要性，均与原音相反。",
+          "c": "准确保留例子有趣与论据到主张的连接不清。"
+        },
+        "ambiguity": "不是指例子事实错误，也不是否认主题重要性；cannot see how不预设支持关系已经不存在。",
+        "audioNecessity": "题干没有提供文章文本或批评线索，必须综合听到的肯定与保留。"
+      },
+      "originQuestionId": "cet6.b16",
+      "authoringStatus": "待主代理终审",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "仅作者稿；答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "maxDurationSeconds": 60,
+        "delivery": "自然标准英语；不故意重读答案词，不读说话人标签。对话用两种可辨声音，换人自然停顿。"
+      },
+      "audioGoalProposalId": "cet6.listening-scope-stance"
+    },
+    {
+      "id": "cet6.second.16",
+      "goalId": "cet6.discussion-clarification",
+      "type": "choice",
+      "taskIntent": "纠正误解而不退出讨论",
+      "prompt": "你说先公开评估标准。对方回应：So you want us to delay the project indefinitely? 选最准确的澄清。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm asking for clear criteria before we start; we can keep those criteria within the team."
+        },
+        {
+          "id": "b",
+          "text": "I'm asking for clear criteria to be published; we can settle them after the project starts."
+        },
+        {
+          "id": "c",
+          "text": "I'm asking for clear criteria to be made public before we start, not an indefinite delay."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对回应有没有改变原请求的内容。",
+      "explanation": "c同时保留公开、标准、开始前这三项原请求，并拒绝无限延期的误读。a改变公开范围，b改变先后。",
+      "difficulty": "六级识别：修复误读",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4、9／PDF9、14",
+      "review": {
+        "optionNotes": {
+          "a": "将公开改为团队内保留，改变可见范围。",
+          "b": "保留公开却允许开始后才确定标准，改变先后要求。",
+          "c": "保留公开标准与开始前的时序，并否认无限拖延的误读。"
+        },
+        "ambiguity": "正确回应没有承诺具体日期或确保毫不延误，只修复被加上的无限延期。"
+      },
+      "originQuestionId": "cet6.b05",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.17",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "choice",
+      "taskIntent": "保留比较对象",
+      "prompt": "原句：The new process is less time-consuming than the previous one, although neither is particularly simple. 选择保义概括。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neither process is particularly simple, but the new one takes less time than the old one."
+        },
+        {
+          "id": "b",
+          "text": "The new process takes less time than the old one, making it the simpler of the two."
+        },
+        {
+          "id": "c",
+          "text": "The two processes are equally complex, although the new one takes less time than the old one."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "逐一核对比较对象及比较的方面。",
+      "explanation": "a保留相对省时及两者都不算简单。b从耗时更少推成操作更简单；c从两者都不简单推成复杂程度完全相同。",
+      "difficulty": "六级迁移：双维度转述",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3—4／PDF8—9",
+      "review": {
+        "optionNotes": {
+          "a": "两者都不算简单、新流程更省时，两个维度均保留。",
+          "b": "由更省时推出更简单，增加未经陈述的因果与排序。",
+          "c": "把都不简单提升为一样复杂，原文没有该等值判断。"
+        },
+        "ambiguity": "neither is particularly simple不说明二者复杂程度相等；省时与简单也不可互推。"
+      },
+      "originQuestionId": "cet6.b14",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    },
+    {
+      "id": "cet6.second.18",
+      "goalId": "cet6.discussion-clarification",
+      "type": "choice",
+      "taskIntent": "在分歧中找出可讨论条件",
+      "prompt": "对方说：I support longer opening hours, provided staff are not expected to work unpaid overtime. 哪句回应最准确地接住他的立场并推进讨论？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Then let's check whether the staffing budget can pay for the additional hours."
+        },
+        {
+          "id": "b",
+          "text": "Then let's ask the existing staff to cover the additional hours without extra pay."
+        },
+        {
+          "id": "c",
+          "text": "Then let's check whether visitors would prefer the additional hours to be in the evening."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "回应要保留对方原本附带的条件。",
+      "explanation": "a核对预算能否支付增加的工时，接住不要求员工无偿加班的支持条件。b直接提出让现有员工额外工作却不增加报酬，与该条件冲突；c转向访客时段偏好，没有处理人员报酬。",
+      "difficulty": "六级迁移：有条件共识",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4、9／PDF9、14",
+      "review": {
+        "optionNotes": {
+          "a": "核对预算能否支付增加工时，直接回应不要求无偿加班的前提。",
+          "b": "直接要求现有员工承担额外工时且不增加报酬，与不要求无偿加班的前提相冲突；不再以自愿捐献时间构造有争议的干扰。",
+          "c": "讨论访客希望的时段，仍没有回应说话人提出的人员条件。"
+        },
+        "ambiguity": "本题反对的是提出无报酬加班要求，不泛称所有自愿服务违规或不允许。"
+      },
+      "originQuestionId": "cet6.a18",
+      "authoringStatus": "待主代理终审",
+      "audio": null
+    }
+  ],
+  "selectedStoryId": "cet6.second.story.3"
+}

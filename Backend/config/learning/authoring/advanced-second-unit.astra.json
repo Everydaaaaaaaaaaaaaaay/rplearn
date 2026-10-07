@@ -1,0 +1,957 @@
+{
+  "level": "advanced",
+  "unitId": "companion.advanced.paper-moon",
+  "title": "橱窗后面的纸月亮",
+  "status": "作者稿，待主代理逐题终审；音频pending，不可发布",
+  "author": {
+    "name": "高级英语第二组作者",
+    "method": "亲自逐题核读选题与原稿，手写四道补缺题、两道实质配对修订及三段双语故事；脚本仅复制明确选定的原稿、写入手写字段与检查结构，没有生成教学文本。",
+    "createdAt": "2026-10-07"
+  },
+  "sourceId": "cse.official.search.2024",
+  "catalogBoundary": "来源与六个高级文字目标已登记；本组8道音频正式接入时拟改挂独立advanced.listening-scope-attribution目标，保留已有文字目标边界。当前goalId保留作者原始功能映射，不能据此声称正式登记完成。此文件不修改目录。",
+  "interactionContract": {
+    "inputNormalization": "文本接受首尾及连续空格、大小写、直弯撇号和句末标点归一。选择按ID、排序按词块ID、配对按ID关系判分。全部合理文本答案在acceptedVariants列出；受控任务限定给定词块或词库，不将开放改写交给单一字符串。",
+    "sourceBoundary": "每题sourceId与officialItemIds仅为教学功能依据；题干、选项、音频均原创。每题sourceCategory可对应sourceReading中的类别；没有虚构页码。",
+    "audioBoundary": "audioScript仅属内部作者字段，答前不可公开；没有伪造assetId。媒体生成、语速口音与清晰度审核、字幕隐藏、素材鉴权和正式冻结仍待完成。",
+    "stageBoundary": "各组1至6识别、7至12受控运用、13至18迁移是作者意图；交互负担与认知难度需主审，不能只按题型判断高级性。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "A narrow passage brings you and your companion to a shop with an unlit window. Behind the glass hangs a large paper moon, its lower edge folded inward. A handwritten notice invites passers-by to leave a small drawing in the box by the door. Your companion finds a blank card, and you draw the moon as it looks now, with its crooked edge.",
+      "translation": "一条窄巷把你和同行者带到一家橱窗没有亮灯的小店。玻璃后面挂着一轮纸月亮，下缘向里折着。手写告示邀请路人在门边的盒子里留一张小画。同行者找来一张空卡片，你照着眼前的样子，画下了那轮边缘歪着的月亮。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Before you can put the card in the box, the door opens. Someone inside notices your drawing and laughs softly: the fold was an accident, but now it looks like a smile. They switch on a little lamp behind the paper. Its uneven edge throws a long curved shadow across the wall. Your companion adds a tiny star to the corner of the card.",
+      "translation": "你还没来得及把卡片放进盒子，门就开了。店里的人注意到你的画，轻轻笑起来：那道折痕本是意外，现在倒像一个微笑。对方打开纸月亮后的一盏小灯，不平整的边缘在墙上投下一道长长的弧形影子。同行者在卡片角落添了一颗小星星。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "The card joins a row of drawings inside the window. There are straight moons and round moons, but yours is the only one that seems to smile. You thank the person at the door and walk back through the passage. At the corner, your companion turns for one last look. The lamp is still glowing, and the paper moon has been left exactly as it was.",
+      "translation": "卡片被放进橱窗，加入了一排小画。有的月亮边缘笔直，有的圆圆的，只有你画的这一轮像在微笑。你向门边的人道谢，和同行者沿窄巷走回去。走到转角，同行者又回头看了一眼。小灯仍然亮着，那轮纸月亮也依然保持着原来的模样。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "adv.astra.a03",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "choice",
+      "taskIntent": "正式场合委婉批评的目标",
+      "prompt": "方案评审中，听众说：I can see why speed matters. I'm less clear about how the proposed checks would catch errors before release. 发言的主要作用是什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Question whether the proposed checks are adequate."
+        },
+        {
+          "id": "b",
+          "text": "Ask the team to explain why speed is important."
+        },
+        {
+          "id": "c",
+          "text": "Suggest moving the checks to after the release."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "区分铺垫中的认可与随后真正提出的疑点。",
+      "explanation": "说话者认可速度的重要性，但要求说明发布前检查如何发现错误；核心是质疑检查是否充分。b把已认可内容当作疑点；c改变检查时间。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "三个选项都是合理会议行动，错项分别误认批评焦点、增添具体替代方案。",
+        "difficulty": "需理解间接异议，不靠否定词直译。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        9105
+      ],
+      "sourceCategory": "语用／理解说话者意图",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.a03"
+      },
+      "optionNotes": {
+        "a": "正确：真正的疑点是发布前检查如何发现错误。",
+        "b": "错误：速度的重要性已经被认可，并非提问焦点。",
+        "c": "错误：没有建议将检查推迟至发布后。"
+      }
+    },
+    {
+      "id": "adv.astra.second.a08",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "matching",
+      "taskIntent": "区分个人理由、共同结论与决定权限",
+      "prompt": "将每条评审记录与它实际确认的责任状态配对。所有记录彼此独立；每项使用一次。",
+      "answer": {
+        "l1": "r2",
+        "l2": "r3",
+        "l3": "r1"
+      },
+      "acceptedVariants": [],
+      "hint": "分别追踪理由得到怎样的处理、行动是否已经决定；不要把二者绑在一起。",
+      "explanation": "l1仅记录主张；l2接受耗时估计但未决定删除；l3已决定删除，却采用了另一理由。相同行动不保证相同依据。",
+      "review": {
+        "wrongExample": {
+          "l1": "r2",
+          "l2": "r1",
+          "l3": "r3"
+        },
+        "distractors": "六种错误跨配均改变依据、决定或责任范围，逐一说明见optionNotes。",
+        "difficulty": "三条都谈同一建议；必须分解记录、依据认可、行动决定三个层面。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        3505
+      ],
+      "sourceCategory": "口头说明的准确转述功能／理解书面论述",
+      "origin": {
+        "kind": "原稿实质修订为多信息配对",
+        "originalId": "adv.astra.a08"
+      },
+      "optionNotes": {
+        "l1-r2": "唯一正确：without assessing it表明只是记录观点。l1-r1虚构决定；l1-r3虚构接受估计。",
+        "l2-r3": "唯一正确：accepted限定于estimate，undecided限定于proposal。l2-r1虚构已删除；l2-r2漏掉对估计的认可。",
+        "l3-r1": "唯一正确：决定与Lee主张相同但理由不同。l3-r2忽略已决定；l3-r3把已决定降为未定。"
+      },
+      "left": [
+        {
+          "id": "l1",
+          "text": "Lee argued for removing the step on grounds of delay; the panel recorded his view without assessing it."
+        },
+        {
+          "id": "l2",
+          "text": "The panel accepted Lee’s estimate of the delay but left his proposal to remove the step undecided."
+        },
+        {
+          "id": "l3",
+          "text": "The panel adopted Lee’s proposal to remove the step, but for a different reason."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "已决定采用同一行动，但没有沿用个人提出的理由。"
+        },
+        {
+          "id": "r2",
+          "text": "只记录个人主张，未显示小组认可理由或决定行动。"
+        },
+        {
+          "id": "r3",
+          "text": "接受了耗时估计，仍未就删除建议作出决定。"
+        }
+      ]
+    },
+    {
+      "id": "adv.astra.second.a10",
+      "goalId": "advanced.semantic-register",
+      "type": "matching",
+      "taskIntent": "纠错措辞须承担已知责任而不改写事件",
+      "prompt": "为三个独立情境选择既准确说明事件、又完整承担已知责任的外部邮件。每项使用一次；更正文件均已附上。",
+      "answer": {
+        "l1": "r3",
+        "l2": "r2",
+        "l3": "r1"
+      },
+      "acceptedVariants": [],
+      "hint": "分别检查会议是否改变、日期为何不对，以及影响是否已经查明。要求完整承担已经确认的责任。",
+      "explanation": "l1对应r3：承认笔误但不假定影响。l2对应r2：说明协商改期，不虚构笔误。l3对应r1：同时承认笔误与已确认的白跑。r3虽不说假话，用于l3却漏掉了题目要求承担的已知影响。",
+      "review": {
+        "wrongExample": {
+          "l1": "r1",
+          "l2": "r2",
+          "l3": "r3"
+        },
+        "distractors": "没有声称简短道歉本身失礼；题干要求承担已知责任，因此l3不能省略已知白跑。",
+        "difficulty": "对照相近邮件的事件与责任范围，而非挑最客气的措辞。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8808,
+        9509
+      ],
+      "sourceCategory": "书面表达得体性／语用得体性",
+      "origin": {
+        "kind": "原稿实质修订为多情境配对",
+        "originalId": "adv.astra.a10"
+      },
+      "optionNotes": {
+        "l1-r3": "正确且完整。l1-r1虚构白跑；l1-r2把笔误写成会议改期。",
+        "l2-r2": "正确且完整。l2-r1和l2-r3均虚构先前写错日期，前者还虚构白跑。",
+        "l3-r1": "正确且完整。l3-r2虚构改期；l3-r3遗漏已确认影响，未达到题干要求的完整责任。"
+      },
+      "left": [
+        {
+          "id": "l1",
+          "text": "邮件中的日期是笔误；会议本身未改期；尚不知道是否影响收件人的安排。"
+        },
+        {
+          "id": "l2",
+          "text": "原日期没有写错；双方讨论后决定改期；尚未得知对方因此是否需要调整其他安排。"
+        },
+        {
+          "id": "l3",
+          "text": "邮件中的日期是笔误；会议本身未改期；对方已确认因此白跑了一趟。"
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "I apologise for the incorrect date and the unnecessary journey it caused. The corrected file is attached."
+        },
+        {
+          "id": "r2",
+          "text": "Following our discussion, the meeting has been rescheduled. The updated file is attached."
+        },
+        {
+          "id": "r3",
+          "text": "I apologise for the incorrect date in my message. The corrected file is attached."
+        }
+      ]
+    },
+    {
+      "id": "adv.astra.a11",
+      "goalId": "advanced.evidence-causality",
+      "type": "listeningChoice",
+      "taskIntent": "听取对解释的限定",
+      "prompt": "听讨论，哪句准确概括说话人对结果的解释？",
+      "audioScript": "The evening sessions had better attendance, but they were also advertised more widely. I wouldn't attribute the difference to the time of day without comparing sessions that received similar publicity.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wider publicity was the main cause of better attendance."
+        },
+        {
+          "id": "b",
+          "text": "Evening sessions should receive less publicity in the next trial."
+        },
+        {
+          "id": "c",
+          "text": "The effect of timing is unclear because publicity also differed."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "留意说话者究竟选定了一种解释，还是指出需要怎样的比较。",
+      "explanation": "说话者认为宣传差异妨碍单独判断时段作用，没有断定宣传是主要原因，也没有建议减少宣传。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a把另一种可能因素升级为主要原因；b把可比性要求误作减少宣传的建议。",
+        "difficulty": "需跨句整合保留意见与下一步比较原则。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404
+      ],
+      "sourceCategory": "听力／理解口头互动",
+      "mediaStatus": "原创脚本；待制音及审核",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.a11"
+      },
+      "optionNotes": {
+        "a": "错误：宣传是未排除的差异，不是已确定的主要原因。",
+        "b": "错误：要求比较宣传相似的场次，不是要求减少宣传。",
+        "c": "正确：宣传差异妨碍单独归因于时段。"
+      },
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "direction": "自然完整朗读；不逐词强调答案，不在题面显示脚本。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题面不含录音事实；选项仅为候选解释，须听到录音才有判断依据。"
+    },
+    {
+      "id": "adv.astra.a12",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "listeningChoice",
+      "taskIntent": "辨识礼貌承认与支持的边界",
+      "prompt": "听会议回应，哪项是说话者当前的立场？",
+      "audioScript": "I appreciate the work that has gone into the proposal. Before I can support the launch date, though, I'd need to see how the remaining checks fit into the schedule. The proposal itself isn't what I'm questioning.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Support for the date depends on a credible checking schedule."
+        },
+        {
+          "id": "b",
+          "text": "The proposal needs further development before it can be supported."
+        },
+        {
+          "id": "c",
+          "text": "The launch date is acceptable if the proposal remains unchanged."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把认可的对象、质疑的对象及附带条件分别听清。",
+      "explanation": "他质疑检查能否排入日程，未质疑方案本身。b移错焦点；c把保留意见改成只要方案不变就支持。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "错项保持专业措辞，但错置对象或条件。",
+        "difficulty": "同一句中处理赞许、转折和条件式异议。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404,
+        802
+      ],
+      "sourceCategory": "听力口头互动／语用能力",
+      "mediaStatus": "原创脚本；待制音及审核",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.a12"
+      },
+      "optionNotes": {
+        "a": "正确：支持日期以检查安排可信为前提，并未承诺必然支持。",
+        "b": "错误：把疑问从排期转移到方案本身。",
+        "c": "错误：把检查排期条件偷换成方案保持不变。"
+      },
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "direction": "自然完整朗读；不逐词强调答案，不在题面显示脚本。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题面不含录音事实；选项仅为候选解释，须听到录音才有判断依据。"
+    },
+    {
+      "id": "adv.astra.a16",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "taskIntent": "保留条件的工作摘要",
+      "prompt": "原邮件：We can deliver the draft on Friday if the revised figures arrive by noon on Wednesday. Otherwise, we will need to agree a new date. 哪条一行纪要完整保留约定？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Friday delivery depends on receiving revised figures by Wednesday evening; otherwise, a new date must be agreed."
+        },
+        {
+          "id": "b",
+          "text": "Friday delivery depends on receiving revised figures by Wednesday noon; otherwise, a new date must be agreed."
+        },
+        {
+          "id": "c",
+          "text": "Friday delivery depends on receiving revised figures by Wednesday noon; otherwise, delivery moves to the following Friday."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "检查条件、截止时点及条件不成立时的后续安排是否仍在。",
+      "explanation": "b保留截止时间、条件性交付和未满足时重新协商这三项。a将周三中午延至晚上；c保持截止时间，却擅自约定下一周五，原文只要求另议日期。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "三项均保留截止时间、周五交付及条件未满足后的安排；a只错在截止时点，c只错在后续承诺，不能凭信息条数选答案。",
+        "difficulty": "逐项审查精简纪要中的承诺边界；三项长度接近，难度来自细节保义而非正确项信息更多。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708
+      ],
+      "sourceCategory": "口头说明",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.a16"
+      },
+      "optionNotes": {
+        "a": "错误：将周三中午改成周三晚上。",
+        "b": "正确：保留中午截止、条件性交付及另议日期。",
+        "c": "错误：擅自确定下周五，原文仅要求另议。"
+      }
+    },
+    {
+      "id": "adv.astra.a17",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "预测与承诺的嵌套范围",
+      "prompt": "供应方写：Subject to final testing, we expect the update to be ready by Thursday. This is our current forecast rather than a confirmed release date. 你向团队转述时，哪句准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Readiness by Thursday is the current forecast, contingent on testing and still unconfirmed."
+        },
+        {
+          "id": "b",
+          "text": "Thursday becomes the confirmed release date once final testing is complete."
+        },
+        {
+          "id": "c",
+          "text": "Thursday is confirmed for readiness, although the release date remains open."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别查看条件限制和预测强度；满足一个条件是否自动改变了原话的承诺程度？",
+      "explanation": "a保留测试前提、预计就绪和未确认。b擅自承诺测试结束就确认发布；c抓住ready与release的区别，却把预计就绪也写成已确认。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "b保留测试条件但提升承诺；c保留发布未定却偷换就绪确定性。两项均为自然业务转述。",
+        "difficulty": "需跨两句分辨条件、预期及不同事件的承诺强度，超出简单only if辨析。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3516
+      ],
+      "sourceCategory": "阅读理解／理解书面论述",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.a17"
+      },
+      "optionNotes": {
+        "a": "正确：保留预计就绪、测试前提以及尚未确认。",
+        "b": "错误：测试完成并不自动确认周四发布。",
+        "c": "错误：虽然保留发布未定，却把预计就绪写成确定就绪。"
+      }
+    },
+    {
+      "id": "adv.astra.b01",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "指代整项判断而非表面名词",
+      "prompt": "评阅意见：The authors interpret the silence in the interviews as satisfaction. This is plausible, but it relies on an assumption the interviews did not test. 此处This所评价的具体内容是什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The interviewees' satisfaction with the interview procedure."
+        },
+        {
+          "id": "b",
+          "text": "The authors' interpretation of silence as a sign of satisfaction."
+        },
+        {
+          "id": "c",
+          "text": "The authors' assumption that the interviewees remained silent."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "代词可能承接一个判断，而不只是离它最近的名词；找出究竟哪个环节受到保留。",
+      "explanation": "被认为可理解但有未测假设的是“把沉默解释为满意”的推断。a新增对访谈程序满意；c把未测环节错放到沉默是否发生。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "a保留满意却改变对象；c保留作者与沉默却把事实层和解释层调换。",
+        "difficulty": "跨句指代与隐含论证前提结合；不以not all量词题换名词充作高级。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3516
+      ],
+      "sourceCategory": "阅读理解／理解书面论述",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b01"
+      },
+      "optionNotes": {
+        "a": "错误：原文未谈对访谈程序的满意程度。",
+        "b": "正确：被评价的是把沉默解释为满意这一推断。",
+        "c": "错误：沉默是观察，不是被指为未经检验的假设。"
+      }
+    },
+    {
+      "id": "adv.astra.b03",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "choice",
+      "taskIntent": "允许探索与授权执行的边界",
+      "prompt": "负责人回复：I'm open to exploring that option. Please bring back a costed proposal before we commit. 同事拟立即采购。你应怎样澄清当前授权？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We have approval to proceed while the costs are being prepared."
+        },
+        {
+          "id": "b",
+          "text": "The option has been declined until a cheaper one is identified."
+        },
+        {
+          "id": "c",
+          "text": "We can develop the proposal, but there is no commitment yet."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "分清愿意探讨、要求补充材料和作出承诺这三种行动。",
+      "explanation": "c准确区分探索许可与采购承诺。a把探讨当执行授权；b把暂未承诺当拒绝，并添入更便宜条件。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a沿用积极态度却扩大授权；b把保留写成否决。",
+        "difficulty": "职业沟通中避免将开放态度转化为未经给予的授权。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802
+      ],
+      "sourceCategory": "语用能力",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b03"
+      },
+      "optionNotes": {
+        "a": "错误：探索许可不是边准备成本边采购的授权。",
+        "b": "错误：没有拒绝方案，也没有要求找到更便宜者。",
+        "c": "正确：可以完善提案，当前仍未作出承诺。"
+      }
+    },
+    {
+      "id": "adv.astra.b07",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "让步关系与指代范围",
+      "prompt": "正文：The new procedure requires two extra checks. This may slow individual cases. Nevertheless, it could reduce the time spent correcting mistakes later. 最后一句如何推进论证？",
+      "options": [
+        {
+          "id": "a",
+          "text": "It explains why the additional checks take longer."
+        },
+        {
+          "id": "b",
+          "text": "It sets a possible later benefit against an immediate drawback."
+        },
+        {
+          "id": "c",
+          "text": "It replaces the earlier concern with a confirmed time saving."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "连接词与情态词要一起看：关系是什么，确定程度又到哪里？",
+      "explanation": "nevertheless引出相对前述即时成本的潜在后续收益；could仍是可能性。a只说原因；c误作已确认且取消前述担忧。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "a误认关系；c忽略情态限制并把并存写成替代。",
+        "difficulty": "需同时处理论证衔接和证据强度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8706,
+        3516
+      ],
+      "sourceCategory": "书面表达连贯性／理解书面论述",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b07"
+      },
+      "optionNotes": {
+        "a": "错误：最后一句谈后续纠错，未解释即时检查耗时的原因。",
+        "b": "正确：把可能的后续收益与即时成本并置。",
+        "c": "错误：could不是已确认节省，也未取消前述成本。"
+      }
+    },
+    {
+      "id": "adv.astra.b09",
+      "goalId": "advanced.semantic-register",
+      "type": "choice",
+      "taskIntent": "条件限制与意愿表达",
+      "prompt": "你无法把尚未核对的表格发给合作方；一经核对就愿意发送。你希望说明流程限制，避免被理解为不愿合作。哪句最准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We would prefer not to share the table with your team."
+        },
+        {
+          "id": "b",
+          "text": "We may consider sharing the table after discussing your request."
+        },
+        {
+          "id": "c",
+          "text": "We can share the table once the figures have been checked."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "区分个人偏好、尚未决定的意愿和明确的流程前提。",
+      "explanation": "c把发送挂在核对完成这一条件上。a表达不愿分享；b把已明确的合作意愿改为未决定，并换了前提。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "a、b都可能是合法婉拒，但与此处愿意配合且只受核查限制的意图不符。",
+        "difficulty": "精确措辞避免不必要的人际误读。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        9509,
+        8808
+      ],
+      "sourceCategory": "语用得体性／书面表达得体性",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b09"
+      },
+      "optionNotes": {
+        "a": "错误：把流程限制写为不愿分享的偏好。",
+        "b": "错误：把明确意愿降成待考虑，且将核查条件改为讨论请求。",
+        "c": "正确：发送以核对完成为前提，保留愿意配合的态度。"
+      }
+    },
+    {
+      "id": "adv.astra.b11",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "listeningChoice",
+      "taskIntent": "听取明确撤回的归因",
+      "prompt": "听一段更正，更新纪要时应写哪项？",
+      "audioScript": "Earlier I said the audit team recommended delaying publication. Let me correct that. They identified missing records; the recommendation to delay was mine. We haven't yet asked the audit team whether they agree with it.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The audit team found missing records; the speaker proposed the delay."
+        },
+        {
+          "id": "b",
+          "text": "The audit team proposed the delay; the speaker questioned the missing records."
+        },
+        {
+          "id": "c",
+          "text": "The speaker found missing records; the audit team has accepted a delay."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "注意更正标记之后，发现和建议分别被重新归给了谁。",
+      "explanation": "有效最终信息是审查组发现记录缺失，说话人提出延期，组方是否同意未知。b保留已撤回的归因；c交换角色并增加接受。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "b利用录音开头被纠正的内容；c在人物角色与同意状态上越界。",
+        "difficulty": "跨时间更新转述责任，不能只抓首句关键词。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        2404
+      ],
+      "sourceCategory": "口头说明／听力口头互动",
+      "mediaStatus": "原创脚本；待制音及审核",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b11"
+      },
+      "optionNotes": {
+        "a": "正确：最终更正后，发现归审查组，延期建议归说话者。",
+        "b": "错误：沿用已撤回的归因，并捏造说话者质疑记录缺失。",
+        "c": "错误：交换发现者，还增加审查组接受延期。"
+      },
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "direction": "自然完整朗读；不逐词强调答案，不在题面显示脚本。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题面不含录音事实；选项仅为候选解释，须听到录音才有判断依据。"
+    },
+    {
+      "id": "adv.astra.b12",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "listeningChoice",
+      "taskIntent": "听辨不同时间尺度的推断",
+      "prompt": "听说明，哪句保留了说话者对短期和长期结果的区分？",
+      "audioScript": "The new booking system may initially increase the number of calls, as people learn to use it. That doesn't mean it will increase calls in the long run. We simply don't have enough follow-up data to say yet.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Calls will fall after the initial increase has ended."
+        },
+        {
+          "id": "b",
+          "text": "The follow-up data show that calls have stayed the same."
+        },
+        {
+          "id": "c",
+          "text": "An initial increase is possible; the longer-term effect is uncertain."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "把短期预测与长期尚未知晓的内容分开，不把否定推断听成相反结果。",
+      "explanation": "录音只预测初期可能增加，长期信息不足。a补出下降，b捏造随访结果。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a利用常见期待补完未来；b把缺数据变成无变化证据。",
+        "difficulty": "处理that doesn't mean的逻辑范围与may的强度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2805
+      ],
+      "sourceCategory": "听力／听学术讲座和报告",
+      "mediaStatus": "原创脚本；待制音及审核",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b12"
+      },
+      "optionNotes": {
+        "a": "错误：没有承诺增加已经发生，也没有预测随后下降。",
+        "b": "错误：没有足够随访数据，不能声称数据表明不变。",
+        "c": "正确：初期可能增加，长期尚不能判断。"
+      },
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "direction": "自然完整朗读；不逐词强调答案，不在题面显示脚本。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题面不含录音事实；选项仅为候选解释，须听到录音才有判断依据。"
+    },
+    {
+      "id": "adv.astra.b17",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "dictation",
+      "taskIntent": "听写中保留发现与证明的区别",
+      "prompt": "听写这一句报告更正，注意保留限制词。",
+      "audioScript": "We reported an association, not a proven cause.",
+      "answer": "We reported an association, not a proven cause.",
+      "acceptedVariants": [
+        "We reported an association, not a proven cause.",
+        "We reported an association not a proven cause"
+      ],
+      "hint": "先抓住两个被比较的名词短语，再复听它们之间的关系。",
+      "explanation": "句子说明本方报告的是关联而不是已证实的原因。漏掉not会抹去限制；proven也需保留，不能把原文改成与原因完全无关。",
+      "review": {
+        "wrongExample": "We reported an association and a proven cause.",
+        "distractors": "无显示干扰项；常见错误为把not听成and，导致并列两个肯定发现。",
+        "difficulty": "短听写作为精确接收训练，拼写不承担本档主要难度；需匹配完整句和归一化标点。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        2805
+      ],
+      "sourceCategory": "口头说明／听学术讲座和报告",
+      "mediaStatus": "原创脚本；待制音及审核",
+      "origin": {
+        "kind": "沿用未发布原稿",
+        "originalId": "adv.astra.b17"
+      },
+      "optionNotes": {},
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 125,
+        "direction": "自然完整朗读；不逐词强调答案，不在题面显示脚本。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题面及提示不提供原句；须听音逐字写出。"
+    },
+    {
+      "id": "adv.astra.second.c01",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "listeningChoice",
+      "origin": {
+        "kind": "逐题原创补缺"
+      },
+      "taskIntent": "区分说话者预期、他方可能要求与本方当前义务",
+      "prompt": "听一段工作说明，哪条记录准确保留了说话者当前的判断？",
+      "audioScript": "I don't expect the reviewers to require another trial, though they may ask us to explain how the first one was run. That is a prediction about what they will ask for, not permission to ignore a request for a new trial if one arrives.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The speaker expects a further trial to be unnecessary and says any request for one can be declined."
+        },
+        {
+          "id": "b",
+          "text": "The speaker doubts a further trial will be required but leaves any actual request to be dealt with."
+        },
+        {
+          "id": "c",
+          "text": "The speaker expects the reviewers to require an explanation instead of a trial and has authorised that substitution."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分清对他方下一步的预测与对本方行动的授权。",
+      "explanation": "不预期审查者要求再试，不等于可以忽略后来收到的要求。解释请求也只是may，不是已经决定的替代方案。",
+      "optionNotes": {
+        "a": "错误：把对要求的预测改成试验本身无必要，并增添拒绝权限。",
+        "b": "正确：保留不预期再试及实际收到要求后仍需处理的边界。",
+        "c": "错误：把may提升为expect，并将可能解释误写成获准替代试验。"
+      },
+      "review": {
+        "wrongExample": "c",
+        "distractors": "三项都涉及试验与要求，需同时跟踪预测强度、要求主体及行动权限。",
+        "difficulty": "否定expect的范围包住require；后半段又限制从预测到授权的推理。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2805,
+        802
+      ],
+      "sourceCategory": "听学术讲座和报告／语用能力",
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "direction": "自然停顿，though及not不夸张重读；单人完整朗读。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题干没有透露谁预期什么；三个选项均可独立成为自然说明，须听到预测与授权区分才能确定。"
+    },
+    {
+      "id": "adv.astra.second.c02",
+      "goalId": "advanced.evidence-causality",
+      "type": "listeningChoice",
+      "origin": {
+        "kind": "逐题原创补缺"
+      },
+      "taskIntent": "辨认估计精度改善与真实值准确性的不同尺度",
+      "prompt": "听结果说明，哪项准确概括了这次分析变化所能支持的结论？",
+      "audioScript": "The second analysis gives us a narrower range of estimates. That makes the estimate more precise, but not necessarily closer to the true value. Both analyses use the same sample, so any bias in who was included could still affect both.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The narrower range improves precision while leaving possible sampling bias unresolved."
+        },
+        {
+          "id": "b",
+          "text": "The narrower range shows that the second estimate is closer to the true value despite the same sample."
+        },
+        {
+          "id": "c",
+          "text": "The shared sample shows that both estimates are equally far from the true value despite greater precision."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "比较说话者确认的变化与仍可能影响结果的因素，不要把一种改善当成所有尺度上的改善。",
+      "explanation": "区间更窄支持精度提高，不能保证更接近真值；同样本使潜在偏差仍可能影响两者，却不能确定两次与真值相差相等。",
+      "optionNotes": {
+        "a": "正确：精度变化与尚未解决的潜在偏差并存。",
+        "b": "错误：把not necessarily closer提升为已更接近真值。",
+        "c": "错误：可能受同一偏差影响不等于已知偏离真值的距离相等。"
+      },
+      "review": {
+        "wrongExample": "c",
+        "distractors": "所有选项保留区间或精度与相同样本，错误来自证据尺度而不是遗忘术语。",
+        "difficulty": "音频已解释precise与closer to the true value之区别，无需外部统计知识；考查转折与could still的证据强度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404,
+        2805
+      ],
+      "sourceCategory": "理解口头互动／听学术讲座和报告",
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 140,
+        "direction": "自然报告口吻；true value后自然停顿，不把选项词组强调成答案。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "只有录音提供本次改善的维度及残留限制；选项本身不能确定发生了哪种变化。"
+    },
+    {
+      "id": "adv.astra.second.c03",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "listeningChoice",
+      "origin": {
+        "kind": "逐题原创补缺"
+      },
+      "taskIntent": "话语修正后区分反对建议与要求明确措辞",
+      "prompt": "听发言者修正先前的说法，哪句应写入最终纪要？",
+      "audioScript": "I described Dana's reply as an objection to the proposal. On reflection, that was too strong. She asked us to spell out what we meant by temporary, without saying whether she favoured the proposal. I should have recorded a request for clarification, not a position against it.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dana opposed the proposal until the team clarified how long it would last."
+        },
+        {
+          "id": "b",
+          "text": "Dana withdrew her objection once the team agreed to define the temporary arrangement."
+        },
+        {
+          "id": "c",
+          "text": "Dana sought a clearer meaning for temporary; the reply did not state her position on the proposal."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "留意谁在修正什么；不要把转述者修改标签听成被转述者改变立场。",
+      "explanation": "发言者撤回自己给回复贴上的“反对”标签。Dana只要求明确temporary含义，未表明支持与否；没有证据她曾反对再撤回。",
+      "optionNotes": {
+        "a": "错误：沿用被修正的反对标签，并把澄清写成反对终止的条件。",
+        "b": "错误：把说话者自我修正变成Dana撤回反对，还添加团队已同意。",
+        "c": "正确：保留澄清请求，并明确没有陈述方案立场。"
+      },
+      "review": {
+        "wrongExample": "b",
+        "distractors": "b是自然但错误的事件叙述，混淆元话语修正与人物态度变化。",
+        "difficulty": "跨句追踪评价标签、发言主体与立场空缺；不是凭not翻译。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404,
+        802,
+        9105
+      ],
+      "sourceCategory": "理解口头互动／语用能力／理解说话者意图",
+      "audioProduction": {
+        "status": "pending",
+        "suggestedWordsPerMinute": 145,
+        "direction": "反思语气自然，保留On reflection的停顿；不可使用不同声线暗示Dana本人发言。",
+        "assetId": null,
+        "listeningReviewed": false
+      },
+      "audioNecessity": "题面未给出修正内容；必须听到that was too strong及后续澄清才能判定事件主体。"
+    },
+    {
+      "id": "adv.astra.second.c04",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "origin": {
+        "kind": "逐题原创补缺"
+      },
+      "taskIntent": "保义压缩引文许可的对象及附带归属限制",
+      "prompt": "合作方邮件：You may quote my comments on the draft's clarity, provided you identify them as feedback on that draft. Please do not present them as an assessment of the final report, which I have not read. 哪句内部摘要保留了获准使用的范围？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The comments may be quoted as an assessment of clarity in the final report, provided their author is named."
+        },
+        {
+          "id": "b",
+          "text": "The comments may be quoted as feedback on the draft’s clarity, with their draft-specific scope made explicit."
+        },
+        {
+          "id": "c",
+          "text": "The comments may be quoted as feedback on the draft once the author has also assessed the final report."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "摘要要保留评论针对的文本版本及许可条件；不要自行追加新的先决步骤。",
+      "explanation": "允许引用的是对草稿清晰度的反馈，且必须标明针对草稿。作者没读终稿解释了为何不能把评论变成终稿评价，并非要求等终稿评审后才可引用。",
+      "optionNotes": {
+        "a": "错误：把被评价对象改成终稿，并把限定版本的要求偷换为署名。",
+        "b": "正确：保留草稿清晰度这一对象以及必须显明版本范围的条件。",
+        "c": "错误：把终稿未读改成引用前必须评审终稿，增加未提出的条件。"
+      },
+      "review": {
+        "wrongExample": "c",
+        "distractors": "三项都保留可引用这一许可；错项分别移换许可对象、增加前置程序。",
+        "difficulty": "压缩时分离已给许可、使用限制与解释性事实；不是单一only if同义改写。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507,
+        4708,
+        802
+      ],
+      "sourceCategory": "书面表达准确性／口头说明的转述功能／语用能力"
+    }
+  ],
+  "pending": [
+    "主代理逐题终审与跨档联合去重",
+    "8段音频制作、听审、实际播放与答前文本隐藏验收",
+    "正式结构映射、判题样例与音频目标边界登记",
+    "正式单元及目录接入；本次未授权此作者发布"
+  ]
+}
