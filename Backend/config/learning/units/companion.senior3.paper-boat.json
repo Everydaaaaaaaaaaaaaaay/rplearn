@@ -1,0 +1,584 @@
+{
+  "id": "companion.senior3.paper-boat",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "桥下的纸船",
+  "summary": "桥下的纸船",
+  "scene": "雨后，你和同行者停在一座矮桥上。一只纸船在桥下的断枝旁缓缓打转。同行者的手指沿着栏杆，跟着纸船移动。纸船眼看就要漂出去，水流却又把它带回了那个小圈。",
+  "estimatedMinutes": 14,
+  "goalIds": [
+    "senior3.listen-discourse-position",
+    "senior3.argument-evidence-link",
+    "senior3.listen-precise-record",
+    "senior3.clarification-register"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "unit": "高三第二组受控听记与论证练习",
+      "pages": "印刷5、6、7、18、19、30、31、32、33；对应一基PDF12、13、14、25、26、37、38、39、40",
+      "alignment": "印刷5为被动语态与时间视角；6—7为听语篇标记、组织立场和话题转换；18—19为听说话人选择及理由、听补总结表达；30—31为听动作顺序及原因；32—33为找论点与证据、判断材料支持哪方、用PEEL组织并修订论证。 封面为选择性必修第四册。文件为公开社区存档，版次印次未进一步核实；不代表全国高三统一进度。未读取或复制配套录音；原创情境与整句听写是受控迁移，不是教材原题。"
+    },
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "unit": "高三第二组受控听记与论证练习",
+      "pages": "印刷19、29、42、43、53、54、55；对应一基PDF26、36、49、50、60、61、62",
+      "alignment": "印刷19要求听访谈选择主旨、记录经历与建议；29复习状语从句；42要求听对话、补记事实、区分请求澄清与作出解释；53复习名词从句；55要求听访谈主旨、记录解释及证据限制并追问。43和54为邻页阅读，仅用于确定章节上下文，不作为本组听力依据。 沿用公开存档的来源身份及未核实版次边界；没有取得或实听教材原音。只借鉴明确任务能力，不把该页有关脑科学、金融或社会信用的具体事实用于原创题。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra高三第二组独立作者",
+    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion stop on a low bridge after the rain. Below you, a paper boat turns slowly beside a fallen branch. Your companion follows it with one finger along the rail. Just as the boat seems ready to escape, the water carries it back into the same small circle.",
+      "translation": "雨后，你和同行者停在一座矮桥上。一只纸船在桥下的断枝旁缓缓打转。同行者的手指沿着栏杆，跟着纸船移动。纸船眼看就要漂出去，水流却又把它带回了那个小圈。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You both lean on the rail and wait. A leaf slips past the branch, and the boat follows it for a moment before turning away. Your companion quietly draws another circle on the wet rail. Then a stronger ripple reaches the boat. It tips, straightens, and finally floats beneath the bridge.",
+      "translation": "你们靠着栏杆等着。一片叶子从断枝旁滑过去，纸船跟了一小段，又转开了。同行者在湿栏杆上悄悄画了一个圈。这时，一道稍强的水波推来。纸船歪了一下，重新稳住，终于漂进桥下。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You hurry to the other side together. For a few seconds there is only dark water. Then the little boat appears, one corner folded down but still afloat. It drifts towards a patch of sunlight. Your companion lifts a hand in a small wave, and you continue your walk without deciding where to go next.",
+      "translation": "你们一起快步走到桥的另一侧。几秒钟里，眼前只有暗暗的水面。随后，小纸船出现了，一个角折了下来，却还浮着。它漂向一片阳光。同行者轻轻挥了一下手，你们继续往前走，还没有决定接下来去哪儿。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s3.second.q01",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "prompt": "听两人商量旧书交换活动。第二位说话人最后支持什么安排？",
+      "explanation": "B最初也考虑取消，但随后得知有人下午能帮忙，因此建议保留活动并改到午饭后。A仍需询问房间，不能说新时间已经最终落实。",
+      "hint": "听清最初的赞同之后，哪条新信息使提议发生变化。",
+      "instruction": "听后选择",
+      "difficultyReason": "高三整合支撑：跟随But前后的立场转向，保留建议与落实的区别；不靠长句或生词。",
+      "options": [
+        {
+          "id": "a",
+          "text": "取消活动，因为下午也缺少帮手。"
+        },
+        {
+          "id": "b",
+          "text": "保留活动，建议改到午饭后进行。"
+        },
+        {
+          "id": "c",
+          "text": "保留活动，仍按周六上午安排。"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.c2802e0ea80255ed25e65b931e02843cb196f422c22e31b0ac5c91e3c1a62f97",
+        "text": "Shall we cancel the book swap? Only a few people have offered to help on Saturday morning. I was thinking the same. But several students have just said they could help in the afternoon. Why don't we keep the event and start it after lunch? That could work. Let me check whether the room is available at that time.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s3.second.q02",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "prompt": "校报只在摄影社的群聊里收集了30份回复，其中24人希望周末开放暗房。没有向其他学生调查。哪句适合报告这项结果？",
+      "explanation": "24/30可以支持这30位回答者中的多数，但题目没有说30人代表整个摄影社，更没有覆盖全校。c明确保留调查范围。respondents指回答调查的人。",
+      "hint": "核对有证据的群体是全校、全社，还是实际回复的这些人。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "高三语义迁移：区分取样渠道与真正计数的人群，词汇提供解释；不考抽样统计公式。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Most students at the school want the darkroom open at weekends."
+        },
+        {
+          "id": "b",
+          "text": "Most photography club members want the darkroom open at weekends."
+        },
+        {
+          "id": "c",
+          "text": "Most of the 30 respondents want the darkroom open at weekends."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.second.q03",
+      "goalId": "senior3.listen-precise-record",
+      "type": "dictation",
+      "prompt": "听录音，写出完整句子。inspected表示检查。",
+      "explanation": "录音中的was being inspected表示到达时正在检查桥。漏掉being会变成一般过去时被动，不能完整还原这次原声。",
+      "hint": "听清检查动作的完整动词短语，记录到达时的状态。",
+      "instruction": "听写完整句子",
+      "difficultyReason": "受控听写支架：8词、一个进行被动短语；不宣称新增语法机制或高难迁移。",
+      "acceptedAnswers": ["The bridge was being inspected when we arrived."],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.2de6181fd76737ae3c680f8141d8318eeabb395d2a7c615f1795fde61a2244bd",
+        "text": "The bridge was being inspected when we arrived.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s3.second.q04",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "prompt": "听关于手工活动的对话。对方澄清后，“免费”具体指什么？",
+      "explanation": "B把收费限定为主办方提供的材料，并确认教学本身免费；自带纸张与颜料可完全不付费。不能把free扩大到现场提供的一切。",
+      "hint": "把入场及教学与材料供应分开听，注意only限定的收费对象。",
+      "instruction": "听后选择",
+      "difficultyReason": "高三精确理解：整合条件、收费对象与最后的确认；常见日常词汇。",
+      "options": [
+        {
+          "id": "a",
+          "text": "教学免费；自带材料无需付费，领用现场材料需付费。"
+        },
+        {
+          "id": "b",
+          "text": "教学和现场材料免费；自带材料也无需付费。"
+        },
+        {
+          "id": "c",
+          "text": "材料免费；无论是否自带材料，都要交教学费。"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.44f4bfad5cebca88f6068ba32d580fd2881ef9b0fd77166a215a1be62e0377ea",
+        "text": "The notice says the workshop is free. Does that include the materials? Entry is free, yes. If you bring your own paper and paints, you won't pay anything. We charge only for the materials we supply. Right, so the teaching itself doesn't cost anything. Exactly.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s3.second.q05",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "matching",
+      "prompt": "社区想评估步行上学活动。把每个待核查的说法与最直接相关的记录配对，每项一次。这里只判断相关性，不表示一份记录就足以证明普遍结论。",
+      "explanation": "路程短需要同起终点的距离比较；越来越受欢迎需要一段时间的参与变化；是否课前到校需要到达时刻与课表对照。信息量大不等于与当前论点相关。",
+      "hint": "先确定每句话要比较的是路程、参与人数还是到校时间。",
+      "instruction": "逐一配对",
+      "difficultyReason": "高三证据选择：让测量对象对应论点中的比较维度，避免凭同一主题就配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Taking the side street makes the walk shorter."
+        },
+        {
+          "id": "l2",
+          "text": "The walking group has become more popular."
+        },
+        {
+          "id": "l3",
+          "text": "The group reaches school before the first lesson."
+        }
+      ],
+      "right": [
+        {
+          "id": "r2",
+          "text": "Weekly counts of students joining the group over the last term."
+        },
+        {
+          "id": "r3",
+          "text": "The group's arrival times compared with the school timetable."
+        },
+        {
+          "id": "r1",
+          "text": "Distances along the main road and the side street between the same start and finish."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s3.second.q06",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "prompt": "关于延长图书馆开放时间，一位家长说：I support giving students more time to read, but who will pay the staff for the extra hours? 哪句适合作为回应前的准确概括？",
+      "explanation": "对方支持增加阅读时间，提出的是新增人工费用由谁承担。b公平保留支持与成本关切；a把费用已经落实写成支持的原因，c则把无需额外支付写成支持的必要条件，两者都超出原话。",
+      "hint": "承认对方已表达的支持，再保留其实际提出的问题。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "高三论证与语用：复述另一方的真实关切，为回应建立准确前提，不靠礼貌词数量。",
+      "options": [
+        {
+          "id": "a",
+          "text": "You support extra reading time because the school has agreed to pay staff for the extra hours."
+        },
+        {
+          "id": "b",
+          "text": "You welcome more reading time, but you are asking how the extra staffing cost will be covered."
+        },
+        {
+          "id": "c",
+          "text": "You would support extra reading time only if no extra payment to staff were required."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.second.q07",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "prompt": "听环保小组对活动记录的说明。哪项保留了发言者认为仍需弄清的事情？",
+      "explanation": "总杯数和到场人数都已知减少；仍需比较的是每人纸杯数。总量变小本身不能说明每人使用量变小。c没有宣称平均量已经下降。",
+      "hint": "发言者已知道两个总量的变化，却提醒不能立即作出哪一种比较结论？",
+      "instruction": "听后选择",
+      "difficultyReason": "高三信息整合：听到However后对比较依据的修正；不要求算平均数。",
+      "options": [
+        {
+          "id": "a",
+          "text": "今年纸杯总数是否比去年少，尚需统计。"
+        },
+        {
+          "id": "b",
+          "text": "今年到场人数是否比去年少，尚需核实。"
+        },
+        {
+          "id": "c",
+          "text": "今年平均每位访客用了多少纸杯，需要比较。"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.35c6aba1295505edc267f282e1c8d2f88ca5c55f086d680a46980f0d5cee6dc9",
+        "text": "We collected fewer paper cups at this year's fair than at last year's. That sounds encouraging. However, fewer people came this year as well. Before we say each visitor used fewer cups, we need to compare the number of cups per person, not just the total.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s3.second.q08",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "completion",
+      "prompt": "同一份食堂调查中，低年级学生多提到饭菜价格，高年级学生多提到排队时间。只从while、whereas、because中填一个词，仅作两组反馈的对照，不说一组造成另一组：Younger pupils mainly mentioned prices, ___ older pupils mainly mentioned waiting times.",
+      "explanation": "whereas和while都可在此引出对照；because会把高年级的关注写成低年级关注价格的原因，题面没有这层关系。此处while按语境表示对照，不是在报告两个同时发生的动作。",
+      "hint": "两条记录各自成立；连接词应呈现差异，不能凭空建立原因。",
+      "instruction": "填入准确表达",
+      "difficultyReason": "高三受控衔接：在同一调查中准确对照两个群体的关注，接受两个合法变体；不是只认唯一连接词。",
+      "acceptedAnswers": ["whereas", "while"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s3.second.q09",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "arrange",
+      "prompt": "用全部句块组成一个短段落，按“提出建议→给出具体观察→解释观察如何支持建议”排列。不要改变任何句块。",
+      "explanation": "t1提出队列位置建议；t2给出堵住通道的具体观察；t3解释留出主通道如何帮助只是路过的人。therefore把证据与建议的理由连接起来，不是再增加一项无关优点。",
+      "hint": "找出should建议句、具体发生过的观察，以及说明这一观察为何有关的句子。",
+      "instruction": "排列词块",
+      "difficultyReason": "高三篇章组织：三个完整句各自语法成立，顺序依据论证目的，而不是句内语法拼装。",
+      "tokens": [
+        {
+          "id": "t3",
+          "text": "Keeping the main path clear would therefore leave space for pupils who are only passing through."
+        },
+        {
+          "id": "t1",
+          "text": "The school should place the lunchtime queue beside the wall rather than across the main path."
+        },
+        {
+          "id": "t2",
+          "text": "Yesterday, pupils crossing the yard had to stop because the queue blocked that path."
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3"]]
+    },
+    {
+      "id": "s3.second.q10",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "prompt": "听会议中的一小段对话。两人接下来决定先谈什么？",
+      "explanation": "A原本想转到食品摊位，B在转题前提出休息需求，A同意先处理它，食物议题留后。运动项目本身已经达成一致。",
+      "hint": "不要把先被提到的下一议题当成最终顺序；听清first和afterwards指向什么。",
+      "instruction": "听后选择",
+      "difficultyReason": "高三语篇理解：听出暂缓转题并回到当前议题补充问题；三个选项都在录音中出现。",
+      "options": [
+        {
+          "id": "a",
+          "text": "休息需求应到哪里提出。"
+        },
+        {
+          "id": "b",
+          "text": "食品摊位如何安排。"
+        },
+        {
+          "id": "c",
+          "text": "运动项目要保留哪些。"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.7075e1d7098d07fdd604b5371236a3bd06484d4e578694a248ba89a19eecfdf8",
+        "text": "We've agreed on the sports day events. Shall we move on to the food stalls? In a moment. Before we leave the events, where can pupils ask for a rest if they need one? Good point. Let's settle that first and come back to the food afterwards.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s3.second.q11",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "prompt": "为社区堆肥箱写介绍。你仅有制造商广告：“Our box can turn food scraps into compost in four weeks.” 你没有做过测试，也没有独立检测报告。哪句清楚交代了这项说法的来源？",
+      "explanation": "c明确把四周的说法归于制造商，没有把广告改成独立验证结果。a和b分别捏造独立测试与自己的试验；转述厂商说法也不等于保证它正确。compost指堆肥。",
+      "hint": "逐项核对谁提出说法，以及是否真的有相应测试。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "高三来源与语域：在产品介绍中诚实标记来源，常见报告动词承担断言差别。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Independent tests show that the box turns food scraps into compost in four weeks."
+        },
+        {
+          "id": "b",
+          "text": "Our trial confirmed that the box turns food scraps into compost in four weeks."
+        },
+        {
+          "id": "c",
+          "text": "The manufacturer says the box can turn food scraps into compost in four weeks."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.second.q12",
+      "goalId": "senior3.listen-precise-record",
+      "type": "dictation",
+      "prompt": "听录音，写出完整句子。",
+      "explanation": "the other two routes we tried把比较限制在另外两条试走过的路线。漏掉two或we tried会丢失原声中的比较范围，不能改写成所有可能路线中最短。",
+      "hint": "除了比较结果，还要保留比较的是哪些路线。",
+      "instruction": "听写完整句子",
+      "difficultyReason": "高三精确听记支架：11词的限定比较，不靠罕见词或超长记忆跨度。",
+      "acceptedAnswers": [
+        "This route is shorter than the other two routes we tried.",
+        "This route is shorter than the other 2 routes we tried."
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.a8443befd2092d4ef0e654ca87952d186f68b33ffc0f7d84dc86a6d90853d28b",
+        "text": "This route is shorter than the other two routes we tried.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "s3.second.q13",
+      "goalId": "senior3.clarification-register",
+      "type": "arrange",
+      "prompt": "通知只写要带“suitable shoes”，你不确定suitable指什么。用全部词块组成以Could开头的请求，询问对方这里所说的“合适”具体是什么意思。",
+      "explanation": "Could you clarify what you mean by 'suitable shoes'?准确定位含义不明确的原词；what you mean采用从句陈述语序，而不是替对方补写鞋子的要求。",
+      "hint": "先提出澄清请求，再把需要解释的原词准确接在mean by之后。",
+      "instruction": "排列词块",
+      "difficultyReason": "高三受控语用：精确引用待澄清词与嵌入问句相结合；clarify意为说明清楚。",
+      "tokens": [
+        {
+          "id": "t5",
+          "text": "by 'suitable shoes'?"
+        },
+        {
+          "id": "t2",
+          "text": "you clarify"
+        },
+        {
+          "id": "t4",
+          "text": "you mean"
+        },
+        {
+          "id": "t1",
+          "text": "Could"
+        },
+        {
+          "id": "t3",
+          "text": "what"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    },
+    {
+      "id": "s3.second.q14",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "prompt": "听一段关于校园信息发布的发言。哪项最能概括说话人的主张？",
+      "explanation": "App、纸质通知和电话分别适合不同需要；说话人没有主张全面转向其中一种。b概括了信息特点和接收者两个选择依据。",
+      "hint": "听清In short之后如何把前面的三个例子联系起来。",
+      "instruction": "听后选择",
+      "difficultyReason": "高三主旨整合：多个例子共享一个原则，避免把某个被肯定的例子当作全文主张。",
+      "options": [
+        {
+          "id": "a",
+          "text": "校园通知应改以纸质形式为主，尽量减少其他渠道。"
+        },
+        {
+          "id": "b",
+          "text": "发布渠道应结合信息特点与接收者的实际需要选择。"
+        },
+        {
+          "id": "c",
+          "text": "校园通知应改以电话联系为主，以免错过任何信息。"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.db89447808f0ed9fc06e926fc05876d5cc9b1c7b30b71abf63c2d8aba180299f",
+        "text": "The school app is useful for quick updates, and I use it myself. But some families cannot check it during the day. A paper notice can help them, while a phone call may be needed for an urgent change. In short, we should choose the way we communicate according to the message and the people who need it.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s3.second.q15",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "matching",
+      "prompt": "编辑在核对学校花园的介绍。把每条句子与最合适的核查办法配对，每项一次。不是判断句子目前是真是假。",
+      "explanation": "开放时间查现行安排；most relaxing是评价，需要交代是谁的看法，不能伪装成时间表事实；more visitors是数量比较，需要相同计数方法下两学期的记录。",
+      "hint": "区分可以查时间表的安排、个人感受评价和需要两段记录的比较。",
+      "instruction": "逐一配对",
+      "difficultyReason": "高三事实与观点：不是按肯定/否定分类，而是决定一句话应当如何查证或标注归属。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The garden opens at eight on school days."
+        },
+        {
+          "id": "l2",
+          "text": "The garden is the most relaxing place in the school."
+        },
+        {
+          "id": "l3",
+          "text": "The garden has more visitors this term than last term."
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "Check visitor counts for both terms, using the same counting method."
+        },
+        {
+          "id": "r1",
+          "text": "Check the current opening notice with the person responsible for the garden."
+        },
+        {
+          "id": "r2",
+          "text": "Ask whose judgement this is and identify it as a view rather than a timetable fact."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s3.second.q16",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "prompt": "小组讨论把学校一块闲地改成菜园。大家确认：种菜能提供实践机会；浇水需要稳定人手；目前只有周三有人值班。哪句结论同时回应好处与尚未解决的限制？",
+      "explanation": "b承认实践价值，也把稳定照料作为决定开展前需安排的事项。a没有依据就认定周三人手足够；c询问种什么也许有用，却没有回应题目要求处理的照料人手限制。",
+      "hint": "结论应保留已认可的好处，同时真正处理照料安排的缺口。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "高三权衡表达：把限制写进建议，而非仅选语气最积极或最保守的一句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "A garden could offer practical learning, so the Wednesday team is enough to meet its watering needs."
+        },
+        {
+          "id": "b",
+          "text": "A garden could offer practical learning, but we should arrange regular care before deciding to start."
+        },
+        {
+          "id": "c",
+          "text": "A garden could offer practical learning, but we should first ask pupils which vegetables they want to grow."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.second.q17",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "completion",
+      "prompt": "报名表中已逐一确认8名学生选择周日，其余表格尚未核对。请从at least、at most、exactly中填入一个表达，只报告当前可以保证的数量范围：___ eight students have chosen Sunday.",
+      "explanation": "at least eight表示至少8人，既包含已经确认的8人，也给尚未核对的表格留下可能增加人数的空间。at most把8变为上限，exactly把8定为最终精确总数，两者都无证据。",
+      "hint": "已经确认的人不会因还有表格未核对而减少；但未核对的表格可能增加人数。",
+      "instruction": "填入准确表达",
+      "difficultyReason": "高三精确摘要支架：用常见短语保留证据给出的下界，不要求数学计算或统计术语。",
+      "acceptedAnswers": ["at least"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s3.second.q18",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "arrange",
+      "prompt": "校报短评已写：“A later bus would let club members stay until their meetings finish. It would not change how much homework teachers set.” 用全部词块组成以The proposal开头的结句，表达“提议关乎参加社团的机会，而非减少课业量”。",
+      "explanation": "The proposal is about access to clubs, not about reducing schoolwork.把机会与课业量分开，准确回扣两句前文。若颠倒两项，会把提议归成减课业且否认社团参与，与材料相反。access在此表示参与机会。",
+      "hint": "正面概括实际改善的事情，再排除前文明确没有承诺的另一件事。",
+      "instruction": "排列词块",
+      "difficultyReason": "高三跨句结论：给定词块可以构成相反而语法通顺的概括，必须整合两句前文判断。",
+      "tokens": [
+        {
+          "id": "t4",
+          "text": "not about"
+        },
+        {
+          "id": "t1",
+          "text": "The proposal"
+        },
+        {
+          "id": "t5",
+          "text": "reducing schoolwork"
+        },
+        {
+          "id": "t3",
+          "text": "access to clubs"
+        },
+        {
+          "id": "t2",
+          "text": "is about"
+        }
+      ],
+      "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]]
+    }
+  ]
+}

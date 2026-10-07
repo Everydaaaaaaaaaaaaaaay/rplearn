@@ -156,7 +156,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             const retry = await command({ retry: attempt.id }, (s) =>
               s.retry(attempt.id),
             );
-            expect(retry.round.questionIds).toHaveLength(5);
+            expect(retry.round.questionIds).toEqual(
+              unit.questions.slice(1).map((question) => question.id),
+            );
             for (const question of unit.questions.slice(1)) {
               const input = {
                 attemptId: attempt.id,
@@ -171,7 +173,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             expect(
               (await repository.read(user, (s) => s.attempt(attempt.id)))
                 .correctQuestionIds,
-            ).toHaveLength(6);
+            ).toHaveLength(unit.questions.length);
           }
           expect(seen.size).toBe(expectedCount);
           await fill();
@@ -182,12 +184,16 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
             (await repository.read(user, (s) => s.character(character))).characters,
           ).toBe(1000);
         }
+        const expectedPoints = units.reduce(
+          (sum, unit) => sum + unit.questions.length,
+          0,
+        );
         expect(await repository.read(user, (s) => s.progress())).toEqual([
-          expect.objectContaining({ level, points: units.length * 6, stars: 0 }),
+          expect.objectContaining({ level, points: expectedPoints }),
         ]);
         expect(
           await database.sql`select question_id from app.learning_rewards where user_id=${user}`,
-        ).toHaveLength(units.length * 6);
+        ).toHaveLength(expectedPoints);
       },
     );
   },

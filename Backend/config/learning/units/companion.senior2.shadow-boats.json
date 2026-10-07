@@ -1,0 +1,594 @@
+{
+  "id": "companion.senior2.shadow-boats",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "风把影子留在了纸上",
+  "summary": "风把影子留在了纸上",
+  "scene": "河边的桌旁，你把一张纸放在带叶的树枝下面。同行者举着树枝，阳光在纸上留下一小片影子的树林。你沿着边缘描画，可铅笔还没跟上，一阵风就让每片叶子都换了位置。",
+  "estimatedMinutes": 14,
+  "goalIds": [
+    "s2.nonrestrictive",
+    "s2.verb-patterns",
+    "s2.ing-subject",
+    "s2.past-perfect",
+    "s2.noun-clause-information",
+    "s2.future-progressive",
+    "s2.present-perfect-continuous",
+    "s2.ing-roles",
+    "s2.listening-duration-question",
+    "s2.listening-reasons-and-response",
+    "s2.listening-predictions-and-compromise"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷5、62、103",
+      "alignment": "q01—q02非限制性从句宾语与指向"
+    },
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷29、41、101、104—105",
+      "alignment": "q04、q11、q12活动与名词从句结构"
+    },
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷17、104",
+      "alignment": "q09将来计划询问与间接请求"
+    },
+    {
+      "sourceId": "pep.senior.selective2.preface2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷5、17",
+      "alignment": "q06—q08、q12名词从句"
+    },
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷17、53、65",
+      "alignment": "q03、q05、q10、q13语法结构"
+    },
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷6、18—19、42",
+      "alignment": "q14听理由、q15听预测、q18听语境与事件信息"
+    },
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "unit": "高二第二组受控练习",
+      "pages": "印刷19、54、66—67",
+      "alignment": "q13听记输入、q16关切安慰、q17折中、q18顺序听辨"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra 高二第二组独立逐题作者",
+    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "主代理逐题终审，按冻结作者稿机械映射正文、答案变体、提示、解析和前置故事；全部录音经双ASR及客观波形检查，不等同独立真人听感或教师效度审定。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "At a riverside table, you place a sheet of paper beneath a leafy branch. Your companion holds the branch above it. Sunlight leaves a small forest of shadows on the page. You begin tracing the edges, but a breeze moves every leaf before your pencil can catch up.",
+      "translation": "河边的桌旁，你把一张纸放在带叶的树枝下面。同行者举着树枝，阳光在纸上留下一小片影子的树林。你沿着边缘描画，可铅笔还没跟上，一阵风就让每片叶子都换了位置。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You stop trying to finish each outline. Instead, you mark a few curves whenever the leaves pause. Your companion lowers the branch, and both of you look at the page. The drawing resembles neither the branch nor its shadow. It looks like a group of tiny boats turning together.",
+      "translation": "你不再试着画完每一道轮廓，只在叶子稍停时描下几段弧线。同行者放下树枝，你们一起看纸上的画。它既不像树枝，也不像影子，倒像一群正在一起转弯的小船。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "A drop from your cup lands beside the boats. You turn it into a round island, then add a little harbour. Before leaving, you fold the drawing and tuck it into your bag. The branch stays on the table. On the way home, the paper makes a soft sound with every step.",
+      "translation": "杯子上的一滴水落在小船旁边。你把水痕画成圆圆的岛，又添上一座小港口。离开前，你折好画放进包里，把树枝留在桌上。回家的路上，纸随着每一步发出轻轻的声音。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s2.astra.second.q01",
+      "goalId": "s2.nonrestrictive",
+      "type": "completion",
+      "prompt": "你已经提到名叫Robin的朋友，补充说昨天邀请了这位朋友。只填一个关系词：Robin, ____ we invited yesterday, has replied. 不改变其余词语。",
+      "explanation": "we是invited的主语，关系词指受邀的Robin，作宾语。whom和常用的who都可；非限制性从句中的宾语关系词仍不能直接省去，也不能用that。",
+      "hint": "先找从句已有的主语，再看空格对应谁与什么成分；日常用法和较正式用法可能都成立。",
+      "instruction": "填入准确表达",
+      "difficultyReason": "受控运用；不是人名后机械填who",
+      "acceptedAnswers": ["whom", "who"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s2.astra.second.q02",
+      "goalId": "s2.nonrestrictive",
+      "type": "choice",
+      "prompt": "手提包是蓝色的，里面的围巾是红色的。你从包里拿出了围巾。哪句用补充从句说明包的颜色，同时保留这个动作？",
+      "explanation": "c让which was blue紧接bag，并保留从包里拿出围巾。a把蓝色给了围巾；b虽把蓝色给包，却把拿出改为放入。",
+      "hint": "分别核对颜色附着的名词和主句的动作方向，不要只看逗号形式。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "结构与动作意义双重核对",
+      "options": [
+        {
+          "id": "a",
+          "text": "I picked up the scarf, which was blue, from the bag."
+        },
+        {
+          "id": "b",
+          "text": "The bag, which was blue, was where I put the scarf."
+        },
+        {
+          "id": "c",
+          "text": "From the bag, which was blue, I picked up the scarf."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s2.astra.second.q03",
+      "goalId": "s2.verb-patterns",
+      "type": "choice",
+      "prompt": "一条说明写道：I admit damaging the cover, but I didn't do it on purpose. on purpose意为故意。哪条记录保留了这句话的两层意思？",
+      "explanation": "admit damaging承认已经造成损坏；but之后否认故意。承认责任与承认主观故意不是同一个意思，也没有未来破坏计划。",
+      "hint": "把承认的行为与对行为动机的说明分开核对。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "事件与意图的区别",
+      "options": [
+        {
+          "id": "a",
+          "text": "说话人承认封面由自己弄坏，但否认是故意的。"
+        },
+        {
+          "id": "b",
+          "text": "说话人只计划弄坏封面，还没有实际动手。"
+        },
+        {
+          "id": "c",
+          "text": "说话人承认自己故意弄坏封面，随后改变了主意。"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s2.astra.second.q04",
+      "goalId": "s2.ing-subject",
+      "type": "arrange",
+      "prompt": "用全部词块表达“检查每扇窗是否都已关好需要耐心”，以Checking开头。这里whether从句是检查的内容，不能改成打开或关闭窗户这一动作。",
+      "explanation": "Checking whether every window is closed整体作主语；is属于里面的whether从句，requires才是主句谓语。词块都要使用，不能把is closed接成patience的内容。",
+      "hint": "先接完整的检查内容，再判断整个句子还有哪一层主语和谓语。",
+      "instruction": "排列词块",
+      "difficultyReason": "两个句法层级；不是短句单数词尾复现",
+      "tokens": [
+        {
+          "id": "p",
+          "text": "patience."
+        },
+        {
+          "id": "e",
+          "text": "every window"
+        },
+        {
+          "id": "c",
+          "text": "Checking"
+        },
+        {
+          "id": "r",
+          "text": "requires"
+        },
+        {
+          "id": "w",
+          "text": "whether"
+        },
+        {
+          "id": "i",
+          "text": "is closed"
+        }
+      ],
+      "acceptedOrders": [["c", "w", "e", "i", "r", "p"]]
+    },
+    {
+      "id": "s2.astra.second.q05",
+      "goalId": "s2.past-perfect",
+      "type": "choice",
+      "prompt": "日记写道：Until last Saturday, I had never watched a film outdoors. That evening, I finally did. 哪条整理后的记录准确？",
+      "explanation": "had never watched从上周六这一过去边界向前回顾；That evening, I finally did明确首次经历在当晚发生。不能把过去范围的never延伸到现在。",
+      "hint": "把never的覆盖范围放回叙述给出的时间边界，再读最后一句。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "首次经历的回顾视角",
+      "options": [
+        {
+          "id": "a",
+          "text": "截至现在，写日记的人仍然没有在室外看过电影。"
+        },
+        {
+          "id": "b",
+          "text": "上周六晚上有了室外观影经历，此前没有过。"
+        },
+        {
+          "id": "c",
+          "text": "上周六以前已有室外观影经历，但当晚没看成。"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s2.astra.second.q06",
+      "goalId": "s2.noun-clause-information",
+      "type": "completion",
+      "prompt": "你还不知道活动会不会继续举行。只填whether或that，使句子仍表达这个未决问题：The question is ____ the event will go ahead or not.",
+      "explanation": "whether引出会不会举行这个未决问题，or not保留否定可能。that引出的事实内容不能在此替代是否问题。",
+      "hint": "判断表语部分是在报告已经确定的事实，还是保留两个可能结果。",
+      "instruction": "填入准确表达",
+      "difficultyReason": "名词从句的信息性质",
+      "acceptedAnswers": ["whether"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s2.astra.second.q07",
+      "goalId": "s2.noun-clause-information",
+      "type": "arrange",
+      "prompt": "用全部词块表达“我们需要的是一个具体例子，而不是又一个定义”，以What开头。",
+      "explanation": "What we need是主语从句，is后给出所需内容，rather than排除another definition。不能交换example和definition，否则会反转要求。",
+      "hint": "先组成表示所需内容的主语，再对照句末被排除的另一种内容。",
+      "instruction": "排列词块",
+      "difficultyReason": "主语从句与对比焦点",
+      "tokens": [
+        {
+          "id": "d",
+          "text": "another definition."
+        },
+        {
+          "id": "n",
+          "text": "we need"
+        },
+        {
+          "id": "a",
+          "text": "a concrete example"
+        },
+        {
+          "id": "w",
+          "text": "What"
+        },
+        {
+          "id": "r",
+          "text": "rather than"
+        },
+        {
+          "id": "i",
+          "text": "is"
+        }
+      ],
+      "acceptedOrders": [["w", "n", "i", "a", "r", "d"]]
+    },
+    {
+      "id": "s2.astra.second.q08",
+      "goalId": "s2.noun-clause-information",
+      "type": "matching",
+      "prompt": "下面三人都在讨论搬动一张桌子，但缺少的信息不同。把每句话与能直接补上该信息的回答配对，每项用一次。",
+      "explanation": "why问搬动的原因，对应挡住门口；how问方式，对应两人一起抬；whether问发生与否，对应肯定及当前位置。",
+      "hint": "先辨别对方缺少的是原因、方法还是事件是否发生；三条回答都可能真实，但回答的缺口不同。",
+      "instruction": "逐一配对",
+      "difficultyReason": "相同事件下的三类信息需求",
+      "left": [
+        {
+          "id": "l1",
+          "text": "What I need to know is why the table was moved."
+        },
+        {
+          "id": "l2",
+          "text": "What I need to know is how the table was moved."
+        },
+        {
+          "id": "l3",
+          "text": "What I need to know is whether the table was moved."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Yes, it was. It is in the corner now."
+        },
+        {
+          "id": "r2",
+          "text": "Two people lifted it together."
+        },
+        {
+          "id": "r3",
+          "text": "It was blocking the doorway."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ]
+    },
+    {
+      "id": "s2.astra.second.q09",
+      "goalId": "s2.future-progressive",
+      "type": "choice",
+      "prompt": "你想知道同行者明天的既定路线是否经过面包店；如果顺路，希望对方替你取预订的面包，不要求对方改变路线。哪段话完成这个意图？",
+      "explanation": "a先询问预计路线，再把代取限定为顺路条件。b要求改路线；c虽然同样询问路线，却提出取消订单。",
+      "hint": "核对话语是在询问已有安排还是要求新安排，再看条件后的行动是否符合请求。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "安排询问与条件请求",
+      "options": [
+        {
+          "id": "a",
+          "text": "Will you be passing the bakery tomorrow? If so, could you collect my order?"
+        },
+        {
+          "id": "b",
+          "text": "Will you change your route tomorrow? I'd like you to go to the bakery for me."
+        },
+        {
+          "id": "c",
+          "text": "Will you be passing the bakery tomorrow? If so, I'll cancel my order."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s2.astra.second.q10",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "choice",
+      "prompt": "朋友解释近况：I haven't been sleeping well lately. I do fall asleep, but I wake up several times each night. 哪句准确保留其睡眠情况？",
+      "explanation": "否定的是最近睡得好这一情况，后句明确能入睡但多次醒来。have not been sleeping well不等于have not slept at all。",
+      "hint": "把否定与后面的well连起来理解，再核对第二句提供的具体过程。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "完成进行式近况中的否定范围",
+      "options": [
+        {
+          "id": "a",
+          "text": "最近每晚都睡得很安稳，只是入睡时间比以前晚。"
+        },
+        {
+          "id": "b",
+          "text": "最近完全无法入睡，每晚从头到尾都保持清醒。"
+        },
+        {
+          "id": "c",
+          "text": "最近睡眠质量不好，能入睡，但夜里会醒来几次。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s2.astra.second.q11",
+      "goalId": "s2.ing-roles",
+      "type": "completion",
+      "prompt": "你决定多留一点时间核对字幕。只填check的适当形式：I will devote more time to ____ the subtitles. subtitles指字幕。",
+      "explanation": "devote time to中的to是介词，后接checking这一活动；不能因为看到to就直接填动词原形。",
+      "hint": "先识别devote time to的完整搭配，再判断这个to连接的是哪类成分。",
+      "instruction": "填入准确表达",
+      "difficultyReason": "介词to与不定式标记的区别",
+      "acceptedAnswers": ["checking"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s2.astra.second.q12",
+      "goalId": "s2.noun-clause-information",
+      "type": "choice",
+      "prompt": "你想表达“让我们惊讶的是房间竟然空着”，惊讶的原因是房间空着这一事实，不是某人在房间里说了什么。哪句符合？",
+      "explanation": "the room was empty已有完整陈述，that引导整件事实作主语。a语法正确却改变惊讶内容；c的what不能直接接这个不缺成分的陈述。",
+      "hint": "看连接词后面是否已经有完整的陈述；同时检查主语所指的信息是否改变。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "命题完整性与语义保留",
+      "options": [
+        {
+          "id": "a",
+          "text": "What was said in the room surprised us."
+        },
+        {
+          "id": "b",
+          "text": "That the room was empty surprised us."
+        },
+        {
+          "id": "c",
+          "text": "What the room was empty surprised us."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s2.astra.second.q13",
+      "goalId": "s2.listening-duration-question",
+      "type": "dictation",
+      "prompt": "听近况询问，写下完整问句。",
+      "explanation": "How long询问持续时长；have you been waiting是现在完成进行时的疑问结构。",
+      "hint": "留意时长问法，以及主语前后的助动词位置。",
+      "instruction": "听写完整句子",
+      "difficultyReason": "基础受控听写，不计新增高阶迁移",
+      "acceptedAnswers": ["How long have you been waiting?"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.a1597d3ffb228c0b70ec3feb01e61932939278b547dff4de4932f807abca6d36",
+        "text": "How long have you been waiting?",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s2.astra.second.q14",
+      "goalId": "s2.listening-reasons-and-response",
+      "type": "listeningChoice",
+      "prompt": "听一段活动讨论。说话人为什么暂时不决定参加？",
+      "explanation": "说话人认可活动和价格，待查的是路线台阶；脚踝仍疼解释为何关心台阶。未说要降价或换活动。",
+      "hint": "区分已经给出正面评价的方面，以及说话人仍要核实的信息。",
+      "instruction": "听后选择",
+      "difficultyReason": "听理由与未决条件",
+      "options": [
+        {
+          "id": "a",
+          "text": "想先确认路线台阶情况，再结合脚踝状况决定。"
+        },
+        {
+          "id": "b",
+          "text": "想等价格下降到能够接受的范围，再决定是否参加。"
+        },
+        {
+          "id": "c",
+          "text": "认为晚上步行没有吸引力，等朋友换一个活动再决定。"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.4f7786dd7c1a233898c26d7698f89ef632b884f5c765c2bac2c035671056849e",
+        "text": "The evening walk sounds lovely, and the price is fine. I just need to find out whether the route has many steps. My ankle is still sore. I'll decide once I've checked that.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s2.astra.second.q15",
+      "goalId": "s2.listening-predictions-and-compromise",
+      "type": "listeningChoice",
+      "prompt": "听两个人讨论未来出行。乙与甲的分歧主要在哪里？",
+      "explanation": "Eventually, perhaps保留最终可能发生；ten years seems too soon质疑时间预期，理由是充电站建设需要更久。没有说现在已实现，也没有希望推迟建设。",
+      "hint": "先分清两位说话人，再听乙对可能性和所需时间分别怎样表态。",
+      "instruction": "听后选择",
+      "difficultyReason": "预测归属及时间限定",
+      "options": [
+        {
+          "id": "a",
+          "text": "乙认为大家已经主要乘电动公交，甲认为还没有。"
+        },
+        {
+          "id": "b",
+          "text": "乙认为这种变化可能发生，但十年的时间预期偏乐观。"
+        },
+        {
+          "id": "c",
+          "text": "乙同意十年内实现变化，但希望充电站更晚开始建设。"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.4226f38e8a779ab6521ef809fa43bf202627f92d07d4ffbd2cea8ec7c8696b91",
+        "text": "In ten years, I think most people here will be travelling to work by electric bus. Eventually, perhaps. But ten years seems too soon. Building enough charging stations could take much longer.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s2.astra.second.q16",
+      "goalId": "s2.listening-reasons-and-response",
+      "type": "listeningChoice",
+      "prompt": "听一段练习后的留言。你想先准确回应对方遇到的困难，再邀请对方说说卡住的位置。哪句回应符合？",
+      "explanation": "b回应练习后仍忘记下一部分的具体挫败。a把观众安静等待误作吵闹干扰；c把已经开始讲话后卡住误作没有机会讲话。",
+      "hint": "三句都愿意倾听，区别在于它们怎样概括已发生的困难；核对录音中的行为和旁人的反应。",
+      "instruction": "听后选择",
+      "difficultyReason": "听懂处境后的关切回应",
+      "options": [
+        {
+          "id": "a",
+          "text": "It sounds as if the audience’s noisy reactions threw you off. Would you like to tell me where you got stuck?"
+        },
+        {
+          "id": "b",
+          "text": "It sounds as if forgetting the next part upset you after so much practice. Would you like to tell me where you got stuck?"
+        },
+        {
+          "id": "c",
+          "text": "It sounds as if missing the chance to give your talk upset you. Would you like to tell me where you got stuck?"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.2455baceefe297c29581f8632b1f7bb5c4a64bb76a3aee65f5d55d436d18b4e6",
+        "text": "I practised the short talk all week, but halfway through it, I forgot what came next. Everyone waited quietly. I know they were trying to help, but I still feel disappointed with myself.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s2.astra.second.q17",
+      "goalId": "s2.listening-predictions-and-compromise",
+      "type": "listeningChoice",
+      "prompt": "听两位同行者讨论下午的安排。最后同意的是哪一种？",
+      "explanation": "乙提议先各自活动、四点会合，甲的That works接受该提议，并补充会合后一起喝点东西。并未同意一起完成两种最初活动。",
+      "hint": "把最初各自的愿望与后来被明确接受的安排分开，注意哪些活动一起做。",
+      "instruction": "听后选择",
+      "difficultyReason": "轮次更新、各自与共同活动",
+      "options": [
+        {
+          "id": "a",
+          "text": "先各自进行想做的活动，四点在咖啡馆碰面喝点东西。"
+        },
+        {
+          "id": "b",
+          "text": "先一起去河边画画，四点一起进室内展览，再去咖啡馆。"
+        },
+        {
+          "id": "c",
+          "text": "先一起看室内展览，之后各自活动，取消咖啡馆见面。"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.f3060951035a31be7b040aa13ef3cde2f185703452cc0583f25743aa4aa0ded3",
+        "text": "I'd like to spend the afternoon sketching by the river. I was hoping to visit the indoor exhibition. How about doing our own things first, then meeting at the cafe at four? That works. Let's have a drink together after that.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "s2.astra.second.q18",
+      "goalId": "s2.listening-reasons-and-response",
+      "type": "listeningChoice",
+      "prompt": "听一段对迟到原因的说明。下列哪条记录把最初计划与实际行动区分清楚？",
+      "explanation": "had planned是更早的计划，后面的回家取钱包使其未实现；返回车站时早班已走，实际坐的是下一班。",
+      "hint": "分别记下计划、打断计划的事情和最终乘坐的班次，不把计划当成已实施。",
+      "instruction": "听后选择",
+      "difficultyReason": "三段事件与未实现计划",
+      "options": [
+        {
+          "id": "a",
+          "text": "原计划坐早班车，也确实上了早班车；迟到是因为车开得慢。"
+        },
+        {
+          "id": "b",
+          "text": "原计划坐早班车，因回家取钱包错过了，实际乘坐下一班。"
+        },
+        {
+          "id": "c",
+          "text": "原计划坐下一班车，后来改乘早班车，却在车上丢了钱包。"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "assetId": "audio.fdf508e4c84cf386cf73e5f231b64837c09496731822793c5a19363ef0adb134",
+        "text": "I had planned to take the early bus, but I left my wallet at home and went back for it. By the time I returned to the stop, that bus had gone. I took the next one, which is why I'm late.",
+        "voice": "F3"
+      }
+    }
+  ]
+}

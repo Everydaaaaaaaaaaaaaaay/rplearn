@@ -1,0 +1,699 @@
+{
+  "unitId": "companion.senior2.shadow-boats",
+  "contentHash": "38579f038c85922120197d6dafe0703ad523da0e390f55f3ff2fe4d29bd23a96",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex主代理逐题复核，Astra作者逐题自审",
+  "reviewedAt": "2026-10-07",
+  "roleFit": "普通同行者完整开场，无固定姓名、性别或职业；题目独立且可供任意角色抽取。",
+  "levelFit": "依据实际核读教材页及逐题任务登记；包含明确的基础支架与既有结构迁移，不把18题宣称为18项新增知识。",
+  "limitations": "本单元为局部受控练习，不等于完整考试或自由口语写作测量。音频经双ASR及客观波形检查，尚未独立真人听感审定；主代理逐题终审见senior-second-review-2026-10-07.md。",
+  "questions": [
+    {
+      "questionId": "s2.astra.second.q01",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你已经提到名叫Robin的朋友，补充说昨天邀请了这位朋友。只填一个关系词：Robin, ____ we invited yesterday, has replied. 不改变其余词语。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"whom\",\"who\"],\"wrongExamples\":[\"that\",\"which\",\"\"],\"allAnswerReasons\":{\"whom\":\"正式宾格关系代词，作invited的宾语。\",\"who\":\"在此作宾语的常见合法用法。\",\"that\":\"不引导此处逗号补充从句。\",\"which\":\"指代人物不合本句所需。\",\"空白\":\"该非限制性从句不能省略关系词。\"},\"ambiguity\":\"明确接受who，避免把whom唯一化；Robin只用于本题，不绑定故事同行者。\",\"novelty\":\"旧editor-person用关系词作主语，本题有独立主语we，要求识别宾语位置并保留两种合法形式。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷62／PDF69；印刷103／PDF110\"}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "whom"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "who"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "which"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": ""
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q02",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：手提包是蓝色的，里面的围巾是红色的。你从包里拿出了围巾。哪句用补充从句说明包的颜色，同时保留这个动作？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"c\"],\"wrongExamples\":[\"a\",\"b\"],\"optionReasons\":{\"a\":\"从句明确修饰scarf，与红围巾事实冲突。\",\"b\":\"颜色指向正确，但put改变动作，不能当作准确改写。\",\"c\":\"蓝色仍归包；主句仍报告从包里取出围巾。\"},\"ambiguity\":\"不宣称原句只有一种可能解析或原句必错；任务明确要求消除顾虑的改写，三个选项只有c保留两条事实。\",\"novelty\":\"不同于旧which/where形式题，需主动处理补充说明的位置并保留动作方向。\",\"parentRevision\":\"去掉原句可能误解的假设，直接给事实并选择保留含义的表达；不将本来正常的最近先行词表达包装成错误。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷5、103／PDF12、110\"}}",
+      "optionNotes": {
+        "a": "从句明确修饰scarf，与红围巾事实冲突。",
+        "b": "颜色指向正确，但put改变动作，不能当作准确改写。",
+        "c": "蓝色仍归包；主句仍报告从包里取出围巾。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q03",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：一条说明写道：I admit damaging the cover, but I didn't do it on purpose. on purpose意为故意。哪条记录保留了这句话的两层意思？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"同时保留已承认的损坏和否认故意。\",\"b\":\"将admit的事实承认误作计划，且取消已发生动作。\",\"c\":\"与didn't do it on purpose矛盾，并虚构改变主意。\"},\"ambiguity\":\"只判断这段自述表达的内容，不保证外部调查已证实该自述。\",\"novelty\":\"不再比较decide/enjoy是否有参与体验；新任务区分行为责任与主观动机。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷17／PDF24，第3题admit报告任务\"}}",
+      "optionNotes": {
+        "a": "同时保留已承认的损坏和否认故意。",
+        "b": "将admit的事实承认误作计划，且取消已发生动作。",
+        "c": "与didn't do it on purpose矛盾，并虚构改变主意。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q04",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：用全部词块表达“检查每扇窗是否都已关好需要耐心”，以Checking开头。这里whether从句是检查的内容，不能改成打开或关闭窗户这一动作。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[[\"c\",\"w\",\"e\",\"i\",\"r\",\"p\"]],\"wrongExamples\":[[\"c\",\"e\",\"w\",\"i\",\"r\",\"p\"],[\"c\",\"w\",\"e\",\"r\",\"i\",\"p\"]],\"allAnswerReasons\":{\"正确序列\":\"完整whether内容嵌入活动主语，主句再说明活动所需。\",\"反例1\":\"whether被放在every window后，不能引出所检查的完整命题。\",\"反例2\":\"requires插入从句主语和is closed之间，两个谓语层级被打乱。\"},\"ambiguity\":\"明确以Checking开头；无自由造句唯一性宣称。\",\"novelty\":\"原a08只拼Checking details takes patience，本题需要区分嵌入命题的谓语与活动主句谓语；主题结构不能只凭一个-ing和一个动词解决。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷29、104—105／PDF36、111—112；名词从句补充见选择性必修二印刷17\",\"additionalSourceIds\":[\"pep.senior.selective2.preface2019\"],\"supportingGoalIds\":[\"s2.noun-clause-information\"]}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["c", "w", "e", "i", "r", "p"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["c", "e", "w", "i", "r", "p"]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["c", "w", "e", "r", "i", "p"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q05",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：日记写道：Until last Saturday, I had never watched a film outdoors. That evening, I finally did. 哪条整理后的记录准确？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把过去边界前的未曾经历误扩展为直到现在没有经历。\",\"b\":\"保留此前没有与当晚发生两部分。\",\"c\":\"同时颠倒此前经历和当晚结果。\"},\"ambiguity\":\"did的省略内容明确承接watched a film outdoors；不推断之后是否又看过。\",\"novelty\":\"旧题聚焦具体动作先后和任务是否完成，本题处理经历性never的回顾边界与省略承接。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷53／PDF60\"}}",
+      "optionNotes": {
+        "a": "把过去边界前的未曾经历误扩展为直到现在没有经历。",
+        "b": "保留此前没有与当晚发生两部分。",
+        "c": "同时颠倒此前经历和当晚结果。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q06",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你还不知道活动会不会继续举行。只填whether或that，使句子仍表达这个未决问题：The question is ____ the event will go ahead or not.",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"whether\"],\"wrongExamples\":[\"that\"],\"allAnswerReasons\":{\"whether\":\"引出未决的是非问题，和or not配合。\",\"that\":\"不能保留题目要求的是否含义。\"},\"ambiguity\":\"题面限定两个候选词，不将所有开放改述判错；这里不接受if作此表语从句连接词。\",\"novelty\":\"高二旧九目标没有名词从句目标；题目从信息是否已决切入，不只是缺词记忆。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective2.preface2019\",\"pages\":\"印刷5、17／PDF12、24\"}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "whether"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q07",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：用全部词块表达“我们需要的是一个具体例子，而不是又一个定义”，以What开头。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[[\"w\",\"n\",\"i\",\"a\",\"r\",\"d\"]],\"wrongExamples\":[[\"w\",\"n\",\"i\",\"d\",\"r\",\"a\"],[\"w\",\"i\",\"n\",\"a\",\"r\",\"d\"]],\"allAnswerReasons\":{\"正确序列\":\"陈述语序的主语从句后接真正需要的例子。\",\"反例1\":\"即使忽略块内标点也把需要与排除的对象反转。\",\"反例2\":\"把is放入What we need内部，未形成题意所需的名词从句主语。\"},\"ambiguity\":\"只判给定词块重建；What is needed等开放表达不在本题输出域。\",\"novelty\":\"强调所需信息的种类，非条件利弊排序或简单-ing主语排序。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective2.preface2019\",\"pages\":\"印刷5、17／PDF12、24\"}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["w", "n", "i", "a", "r", "d"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["w", "n", "i", "d", "r", "a"]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["w", "i", "n", "a", "r", "d"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q08",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：下面三人都在讨论搬动一张桌子，但缺少的信息不同。把每句话与能直接补上该信息的回答配对，每项用一次。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"l1-r3,l2-r2,l3-r1\"],\"wrongExamples\":[\"l1-r2,l2-r3,l3-r1\",\"l1-r3,l2-r1,l3-r2\"],\"pairReasons\":{\"l1-r3\":\"挡住门口是原因。\",\"l2-r2\":\"两人一起抬是实现方式。\",\"l3-r1\":\"Yes直接回答是否。\"},\"ambiguity\":\"how和why回答都可间接表明移动发生，但题面要求直接补上各自缺失信息，完整一一配对唯一。\",\"novelty\":\"未沿用旧结构标签配对；必须依据问话者信息需求选回应。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective2.preface2019\",\"pages\":\"印刷5／PDF12\"}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q09",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你想知道同行者明天的既定路线是否经过面包店；如果顺路，希望对方替你取预订的面包，不要求对方改变路线。哪段话完成这个意图？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"保留既定路线询问和顺路代取请求。\",\"b\":\"把不改变路线的条件改成主动要求绕行。\",\"c\":\"条件后取消订单，未请求代取。\"},\"ambiguity\":\"不宣称一般将来时不能礼貌询问；本题按三段话的完整意图判分。\",\"novelty\":\"旧题按占用时段改约，本题是询问原计划并附条件委托；不是替换原日程中的时刻。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷17、104／PDF24、111\"}}",
+      "optionNotes": {
+        "a": "保留既定路线询问和顺路代取请求。",
+        "b": "把不改变路线的条件改成主动要求绕行。",
+        "c": "条件后取消订单，未请求代取。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q10",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：朋友解释近况：I haven't been sleeping well lately. I do fall asleep, but I wake up several times each night. 哪句准确保留其睡眠情况？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"c\"],\"wrongExamples\":[\"a\",\"b\"],\"optionReasons\":{\"a\":\"否认了睡眠质量问题，并添加晚入睡这一未提供事实。\",\"b\":\"把well的程度否定扩大为完全没有睡眠，与do fall asleep冲突。\",\"c\":\"概括近况过程并保留能入睡与多次醒来。\"},\"ambiguity\":\"这是语言理解题，不作睡眠原因、疾病或治疗判断。\",\"novelty\":\"旧r11关注反复活动的频率和时间范围；本题针对否定作用于well而非全部睡眠活动。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷65／PDF72\"}}",
+      "optionNotes": {
+        "a": "否认了睡眠质量问题，并添加晚入睡这一未提供事实。",
+        "b": "把well的程度否定扩大为完全没有睡眠，与do fall asleep冲突。",
+        "c": "概括近况过程并保留能入睡与多次醒来。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q11",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你决定多留一点时间核对字幕。只填check的适当形式：I will devote more time to ____ the subtitles. subtitles指字幕。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"checking\"],\"wrongExamples\":[\"check\",\"to check\",\"checked\"],\"allAnswerReasons\":{\"checking\":\"介词to后接活动动名词。\",\"check\":\"把介词to误当成不定式to。\",\"to check\":\"重复加入to，不能作该介词的活动宾语。\",\"checked\":\"过去式或分词不能在这里单独表达所投入时间的活动。\"},\"ambiguity\":\"已指定check，排除开放近义词；不表示英语中所有to都接-ing。\",\"novelty\":\"旧by-checking直接使用熟悉介词by；本题要求辨认看似不定式的to，错误机制不同。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷101／PDF108，第1条devote…to说明；印刷41／PDF48\"}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "checking"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "check"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "to check"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "checked"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q12",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你想表达“让我们惊讶的是房间竟然空着”，惊讶的原因是房间空着这一事实，不是某人在房间里说了什么。哪句符合？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"主语为房间里说的内容，未保留空房间这一原因。\",\"b\":\"that引导完整事实，符合题意。\",\"c\":\"what需要在自己的从句中承担成分，此处完整陈述没有所需空缺。\"},\"ambiguity\":\"It surprised us that the room was empty也合法，但本题是给定选项任务，不把该改写判错。\",\"novelty\":\"与q06是否未决不同，本题检查that从句完整命题与what成分性，并设置合法但意义不符项。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective2.preface2019\",\"pages\":\"印刷17／PDF24；选择性必修一印刷105／PDF112\",\"additionalSourceIds\":[\"pep.senior.selective1.review2019\"]}}",
+      "optionNotes": {
+        "a": "主语为房间里说的内容，未保留空房间这一原因。",
+        "b": "that引导完整事实，符合题意。",
+        "c": "what需要在自己的从句中承担成分，此处完整陈述没有所需空缺。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q13",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听近况询问，写下完整问句。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"How long have you been waiting?\",\"how long have you been waiting\"],\"wrongExamples\":[\"How long you have been waiting?\",\"How long have you waited?\"],\"allAnswerReasons\":{\"原问句及大小写标点变体\":\"保留完整所听词序和词形。\",\"陈述语序反例\":\"与录音的直接问句语序不同。\",\"have you waited反例\":\"本身可构成另一合法问句，但没有听写出本录音的been waiting。\"},\"ambiguity\":\"无自由改述任务；统一归一化负责大小写和末尾问号，不能接受遗漏助动词。\",\"novelty\":\"旧库有相近结构的文字排序，故明确标基础听写支架；只有真实制音和答前隐藏文本后才增加听辨任务，不能算全新语法机制。\",\"sourceBoundary\":\"印刷54的教材听记任务支持受控听辨输入方式；本问句不是教材规定的听写项目，是本产品的原创基础练习。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷65／PDF72语法；印刷54／PDF61听记事实任务\",\"supportingGoalIds\":[\"s2.present-perfect-continuous\"]}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "How long have you been waiting?"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "how long have you been waiting"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "How long you have been waiting?"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "How long have you waited?"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q14",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段活动讨论。说话人为什么暂时不决定参加？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"把仍需核实的台阶与脚踝状况连成决定理由。\",\"b\":\"price is fine已排除价格障碍。\",\"c\":\"sounds lovely明确对活动有好感，没有换活动要求。\"},\"ambiguity\":\"不推断具体损伤或医生建议，不作医疗判断；只问暂缓决定理由。\",\"audioNecessity\":\"题面不提供身体状况、路线或价格事实，必须听录音。\",\"novelty\":\"不复用旧日程改约或简单过程数量记录；需区分已满足条件与待核实条件。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷6／PDF13，Listen for reasons；名词从句依据选择性必修二印刷5\",\"additionalSourceIds\":[\"pep.senior.selective2.preface2019\"]}}",
+      "optionNotes": {
+        "a": "把仍需核实的台阶与脚踝状况连成决定理由。",
+        "b": "price is fine已排除价格障碍。",
+        "c": "sounds lovely明确对活动有好感，没有换活动要求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q15",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听两个人讨论未来出行。乙与甲的分歧主要在哪里？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把两人的未来预测误作对当前事实的争执。\",\"b\":\"准确区分最终可能与十年太早。\",\"c\":\"把质疑十年改成同意，并把建设耗时误作希望推迟。\"},\"ambiguity\":\"不要求评价真实城市基础设施；录音是虚构观点，不能当作现实预测证据。\",\"audioNecessity\":\"甲乙观点和时间限定只在录音中给出。\",\"productionNotes\":\"两名可辨说话者自然轮换；Speaker A/B是角色标签，不读出。\",\"novelty\":\"旧未来题集中时间段占用；本题理解预测中的部分赞同和时间分歧。\"},\"来源与支撑目标\":{\"sourceId\":\"pep.senior.selective1.review2019\",\"pages\":\"印刷18—19／PDF25—26，听预测与讨论其可能性\",\"supportingGoalIds\":[\"s2.future-progressive\"]}}",
+      "optionNotes": {
+        "a": "把两人的未来预测误作对当前事实的争执。",
+        "b": "准确区分最终可能与十年太早。",
+        "c": "把质疑十年改成同意，并把建设耗时误作希望推迟。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q16",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段练习后的留言。你想先准确回应对方遇到的困难，再邀请对方说说卡住的位置。哪句回应符合？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"与Everyone waited quietly相反；语气关切不代表事实准确。\",\"b\":\"保留充分练习后仍忘词这一实际困难，并邀请讲述具体卡点。\",\"c\":\"说话人已经站起来讲话，只是忘记后续，不是错失发言机会。\"},\"ambiguity\":\"不把三个句子作为普遍人际道德判定，只按本题明确回应目标评分。\",\"audioNecessity\":\"三项都是自然关切回应，只有录音提供忘词、已开始发言与观众安静三条区分信息。\",\"novelty\":\"旧b17是请求别人解释图表；此题是听对方失败经历后进行关切倾听，不是交换形容词。\",\"parentRevision\":\"主代理将when I stood up改为halfway through it，明确已经开始并讲到一半，排除尚未开口就忘词的解释；原选项和答案不变。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷19／PDF26，Showing concern与Comforting people\"}}",
+      "optionNotes": {
+        "a": "与Everyone waited quietly相反；语气关切不代表事实准确。",
+        "b": "保留充分练习后仍忘词这一实际困难，并邀请讲述具体卡点。",
+        "c": "说话人已经站起来讲话，只是忘记后续，不是错失发言机会。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q17",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听两位同行者讨论下午的安排。最后同意的是哪一种？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"a\"],\"wrongExamples\":[\"b\",\"c\"],\"optionReasons\":{\"a\":\"准确保留分开活动与四点会合的共同部分。\",\"b\":\"把各自活动变成共同活动，并把四点地点改成展览。\",\"c\":\"添加共同看展且取消了已接受的会面。\"},\"ambiguity\":\"after that承接四点会合；不推断两人出发前是否同行。\",\"audioNecessity\":\"只有录音给出个人愿望、提议、接受及最终时点。\",\"productionNotes\":\"两名可辨说话者自然轮换；不朗读Speaker标签。\",\"novelty\":\"旧利弊题是试用与公平比较；此题通过后续接受轮次确认分段折中。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷66—67／PDF73—74，Compromise与达成双方接受的安排\"}}",
+      "optionNotes": {
+        "a": "准确保留分开活动与四点会合的共同部分。",
+        "b": "把各自活动变成共同活动，并把四点地点改成展览。",
+        "c": "添加共同看展且取消了已接受的会面。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s2.astra.second.q18",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段对迟到原因的说明。下列哪条记录把最初计划与实际行动区分清楚？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExamples\":[\"b\"],\"wrongExamples\":[\"a\",\"c\"],\"optionReasons\":{\"a\":\"把计划误作实际乘车，并虚构车慢原因。\",\"b\":\"保留计划、回家取物造成的错过以及下一班的实际行动。\",\"c\":\"颠倒班次，并把留在家中的钱包误为车上遗失。\"},\"ambiguity\":\"不把had planned本身解释成一定未实现；未实现由but之后和后续班次明确给出。\",\"audioNecessity\":\"原因及实际班次不在文字题面出现，必须从录音获取。\",\"novelty\":\"不是原b14到达时门开与未开始的双状态；新任务将计划与实施分开，并串起迟到原因。\"},\"来源与支撑目标\":{\"sourceId\":\"fltrp.senior.selective1.review2019\",\"pages\":\"印刷53／PDF60过去参照；印刷19／PDF26听事件顺序；PEP印刷6／PDF13听理由\",\"additionalSourceIds\":[\"pep.senior.selective1.review2019\"],\"supportingGoalIds\":[\"s2.past-perfect\"]}}",
+      "optionNotes": {
+        "a": "把计划误作实际乘车，并虚构车慢原因。",
+        "b": "保留计划、回家取物造成的错过以及下一班的实际行动。",
+        "c": "颠倒班次，并把留在家中的钱包误为车上遗失。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

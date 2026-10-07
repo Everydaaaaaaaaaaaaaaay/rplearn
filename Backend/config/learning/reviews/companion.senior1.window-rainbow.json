@@ -1,0 +1,763 @@
+{
+  "unitId": "companion.senior1.window-rainbow",
+  "contentHash": "e0976d43aae5c2c1c324bf3ac8ef6091549684c7582b99d6c941ed2be956f50e",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex主代理逐题复核，Astra作者逐题自审",
+  "reviewedAt": "2026-10-07",
+  "roleFit": "普通同行者完整开场，无固定姓名、性别或职业；题目独立且可供任意角色抽取。",
+  "levelFit": "依据实际核读教材页及逐题任务登记；包含明确的基础支架与既有结构迁移，不把18题宣称为18项新增知识。",
+  "limitations": "本单元为局部受控练习，不等于完整考试或自由口语写作测量。音频经双ASR及客观波形检查，尚未独立真人听感审定；主代理逐题终审见senior-second-review-2026-10-07.md。",
+  "questions": [
+    {
+      "questionId": "s1.astra.a02",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：通知写着：Students who need a locker should fill in this form. 谁需要填表？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"c\",\"wrongExample\":\"a\",\"optionNotes\":{\"a\":\"忽略who从句的限定，错误扩大到全部学生。\",\"b\":\"把需要柜子改为已经填表。\",\"c\":\"完整保留限定的人群。\"},\"ambiguity\":\"只问通知要求的人群；未声称其余人绝不能填表，也不推断是否获批。\",\"novelty\":\"去重记录为保留；首组未发布，旧库主要考关系词形式，本题考范围理解。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷52／PDF59\"}}}",
+      "optionNotes": {
+        "a": "忽略who从句的限定，错误扩大到全部学生。",
+        "b": "把需要柜子改为已经填表。",
+        "c": "完整保留限定的人群。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.a13",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听同学的困难，选择最能解决所说问题的建议。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"c\",\"wrongExample\":\"b\",\"optionNotes\":{\"a\":\"针对内容组织；录音已有想法，指出的困难不是结构。\",\"b\":\"针对音量；短时间可以练，但未解决所说语速问题。\",\"c\":\"短段录音回听能发现需要放慢之处，符合时间限制。\"},\"ambiguity\":\"仅在给定三个建议中选择；不宣称录音回听是唯一有效学习方法。\",\"audioNecessity\":\"题面不透露困难；三个建议都正常，遮住音频无法确认哪项针对问题。\",\"novelty\":\"原去重保留，原有荒唐干扰已由首轮主审去除。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"听力依据印刷7／PDF14；建议表达印刷18／PDF25\",\"alignment\":\"学习策略与原因的听力任务迁移，不声称原页含演讲语速情境。\"},\"supportingGoalIds\":[\"senior1.reader-advice-note\"]}}",
+      "optionNotes": {
+        "a": "针对内容组织；录音已有想法，指出的困难不是结构。",
+        "b": "针对音量；短时间可以练，但未解决所说语速问题。",
+        "c": "短段录音回听能发现需要放慢之处，符合时间限制。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c03",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：只删除一个多余的词，其余词保持不变，使句子合乎语法：The guide that we downloaded it yesterday includes a city map. 请在空格中填写要删除的原词。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"it\",\"wrongExample\":\"that\",\"optionNotes\":{\"it\":\"关系词已承担宾语，删除重复代词后句子完整。\",\"that\":\"宾语关系词虽可省略，但省略后仍不能再保留it；单删that不能修好本句。\",\"downloaded\":\"删除谓语会留下不完整从句。\"},\"ambiguity\":\"题目明确要求填写删除的原词，不要求提交整句；不把其他多词改写当错误英语。\",\"novelty\":\"与旧宾语关系词填空不同，诊断重复宾语并遵守单词删除约束；属于既有语法的修订迁移。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷52／PDF59\"}}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "it"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "that"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.b15",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听留言，选择应该采用的最新安排。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"a\",\"optionNotes\":{\"a\":\"沿用被替换的图书馆地点。\",\"b\":\"保留明天两点，并采用隔壁咖啡馆的新地点。\",\"c\":\"地点方向接近，但把明天改为今天。\"},\"ambiguity\":\"录音中的明天沿用到替代安排；过去计划只是语境，不另考过去将来时规则。\",\"audioNecessity\":\"题面只有听留言要求，日期和地点均必须由录音确认。\",\"novelty\":\"去重保留；不是只凭tomorrow判断时态的旧题。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"听力依据印刷24/29／PDF31/36；未来安排印刷28／PDF35\"},\"supportingGoalIds\":[\"senior1.booked-weekend\"]}}",
+      "optionNotes": {
+        "a": "沿用被替换的图书馆地点。",
+        "b": "保留明天两点，并采用隔壁咖啡馆的新地点。",
+        "c": "地点方向接近，但把明天改为今天。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c05",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：把三个完整描述与其中文意思配对。注意每次是谁帮助谁，以及被拿着的是谁的包。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"l1-r1；l2-r2；l3-r3\",\"wrongExample\":\"l1-r2；l2-r1；l3-r3\",\"optionNotes\":{\"l1\":\"who对应学生，作帮助这一动作的主语。\",\"l2\":\"whom对应学生，作helped的宾语。\",\"l3\":\"whose限定bag；学生拥有包，来访者拿包。\",\"r1\":\"只与学生为帮助者的l1一致。\",\"r2\":\"只与学生为受助者的l2一致。\",\"r3\":\"记录包的所属及携带者，对应l3；未推断来访者是否同时提供其他帮助。\"},\"ambiguity\":\"只配对给定描述的明确含义，不推断三个描述在现实中必定指不同人；未限制其他合法关系词变体。\",\"novelty\":\"有意的最小对比用于主宾所属诊断，不是通过槽位替换制造三道题；整组只算一道。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷52／PDF59\"}}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.b06",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：消息写着：I'm uploading the photos now. Please wait before opening the link. 能确定哪一项？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"a\",\"optionNotes\":{\"a\":\"添加昨天并把当前过程变成全部完成。\",\"b\":\"准确保留正在上传的当前状态。\",\"c\":\"把当前动作改成明天才开始的意图。\"},\"ambiguity\":\"不推断上传百分比或剩余时间；本题是基础支架，不包装成高难题。\",\"novelty\":\"去重记录保留，首组未发布；用于简短消息理解。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"fltrp.senior1.archive20260929\",\"pages\":\"印刷29／PDF36\"}}}",
+      "optionNotes": {
+        "a": "添加昨天并把当前过程变成全部完成。",
+        "b": "准确保留正在上传的当前状态。",
+        "c": "把当前动作改成明天才开始的意图。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c07",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：同学想练习发言，却不敢一开始就面对全班。用全部词块组成建议：先说从谁开始练习，再用not补充暂不采用的方式，最后解释理由。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"t3-t2-t5-t1-t4\",\"wrongExample\":\"t3-t5-t2-t1-t4\",\"optionNotes\":{\"t1\":\"引出最后的理由，不能单独充当建议。\",\"t2\":\"说明先与一个同伴练习，按题意紧接建议核心。\",\"t3\":\"建立提出练习建议的主句。\",\"t4\":\"完整原因分句，may保留可能性。\",\"t5\":\"补充暂不采用全班听众这一方式；题干指定放在小组方式之后。\"},\"ambiguity\":\"其他表达顺序可能自然，但本题明确规定信息顺序；解析不把未列顺序统称语法错误。所有词块必须使用一次。\",\"novelty\":\"相对首组简单建议because理由排序，增加建议适用方式的明确限定；属于受控巩固，不宣称新增语法。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷18／PDF25\"}}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t3", "t2", "t5", "t1", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t3", "t5", "t2", "t1", "t4"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.b02",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听说明，选择需要放到窗边的书。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"c\",\"optionNotes\":{\"a\":\"忽略that从句，把全部书都搬走。\",\"b\":\"对应录音限定的红标签书。\",\"c\":\"选择条件的反面；这些书应留在桌上。\"},\"ambiguity\":\"题面不泄漏颜色；不依赖图片辨色。与a02共享限定范围知识，但一题读通知，一题听取指令，不按两项新知识计。\",\"audioNecessity\":\"题面不含标签特征，三种范围都可能是正常指令，必须听录音。\",\"novelty\":\"去重保留，媒体仍未制作。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"听力指令依据印刷53／PDF60；限制性从句印刷52／PDF59\",\"alignment\":\"从按听到的信息记录指令迁移至日常整理，不教授灾害应对，也不声称教材原录音含此句。\"},\"supportingGoalIds\":[\"senior1.book-donation-labels\"]}}",
+      "optionNotes": {
+        "a": "忽略that从句，把全部书都搬走。",
+        "b": "对应录音限定的红标签书。",
+        "c": "选择条件的反面；这些书应留在桌上。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c09",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：周日收到消息：I usually go swimming on Monday evenings, but I'm taking my grandmother to the concert tomorrow evening. We've already got our tickets. 你只需在紧接着的周一晚上的日历中记一项活动，应记哪项？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"c\",\"optionNotes\":{\"a\":\"对应本次已经有门票支持的音乐会安排。\",\"b\":\"把通常的周一习惯当作这一次的安排，忽略but后的例外。\",\"c\":\"门票是已经完成的准备，不是当晚待做活动。\"},\"ambiguity\":\"周日到紧接着的周一明确，不涉及跨时区；只要求记录消息里的当晚安排，不推断说话人此后永不游泳。\",\"novelty\":\"比较习惯、这一次的安排及已完成准备，不改写首组的取消邀约或时间冲突模板。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷28／PDF35\"}}}",
+      "optionNotes": {
+        "a": "对应本次已经有门票支持的音乐会安排。",
+        "b": "把通常的周一习惯当作这一次的安排，忽略but后的例外。",
+        "c": "门票是已经完成的准备，不是当晚待做活动。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.b05",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一位同学谈看电影的感受。然后代这位同学回答朋友的问题：You enjoyed the film, didn't you?",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"c\",\"wrongExample\":\"a\",\"optionNotes\":{\"a\":\"把对配乐的肯定误转为对电影的肯定。\",\"b\":\"否定方向相符，但don't不对应问题中的过去时did。\",\"c\":\"否定电影体验，并使用正确的过去时短答。\"},\"ambiguity\":\"已明确代录音说话人作答；不评价电影客观品质。\",\"audioNecessity\":\"不听只能排除时态不匹配的b，a和c的事实肯否仍未知。\",\"novelty\":\"去重记录保留，区别两评价对象；不是简单重录原来已给定事实的问答。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"听取说话人意见依据印刷41／PDF48；常规附加问句印刷40／PDF47\",\"alignment\":\"体育精神听力页含按说话人匹配意见；电影评价对象是本题局部迁移，不声称是教材原活动。\"},\"supportingGoalIds\":[\"senior1.confirm-the-details\"]}}",
+      "optionNotes": {
+        "a": "把对配乐的肯定误转为对电影的肯定。",
+        "b": "否定方向相符，但don't不对应问题中的过去时did。",
+        "c": "否定电影体验，并使用正确的过去时短答。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c11",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：小组正在练习讨论。把每条建议与它最直接针对的目的配对；不要求判断哪条建议总体最好。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"l1-r1；l2-r2；l3-r3\",\"wrongExample\":\"l1-r2；l2-r1；l3-r3\",\"optionNotes\":{\"l1\":\"给思考时间的直接目的为准备回答。\",\"l2\":\"点出quieter member，直接增加该成员的发言机会。\",\"l3\":\"sum up the two views要求回顾不同意见。\",\"r1\":\"对应准备时间，不是特别指定某位成员。\",\"r2\":\"对应发言机会，不是总结全组意见。\",\"r3\":\"对应决定前的回顾，不只是让个人先想答案。\"},\"ambiguity\":\"建议可能同时带来其他益处；最直接目的已由行动对象和顺序限定，不声称其他益处不存在。\",\"novelty\":\"首组b01配困难与行动，本题配给定行动与目的；属于语用迁移，不宣称新的语法点。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷18／PDF25\"}}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.b04",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：比较两处空格：① the day ___ we arrived ② the day ___ we will always remember。哪项分析正确？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"c\",\"optionNotes\":{\"a\":\"①以到达那一天限定时间，②以记住那一天补足宾语。\",\"b\":\"两处都有主语we。\",\"c\":\"先行词为day不能代替对从句成分的判断，remember缺宾语。\"},\"ambiguity\":\"只判断成分，不声称唯一关系词；①可用when/on which，②可用which/that或省略。\",\"novelty\":\"去重记录为保留；首组未收入b04。本组明确标为对a04原则的迁移巩固，不算新增知识覆盖。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷64／PDF71\"}}}",
+      "optionNotes": {
+        "a": "①以到达那一天限定时间，②以记住那一天补足宾语。",
+        "b": "两处都有主语we。",
+        "c": "先行词为day不能代替对从句成分的判断，remember缺宾语。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c13",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：两句都使用限制性定语从句：① The boxes that arrived this morning are in the hall. ② The boxes that we ordered last month are still missing. 如果其余词完全不变，哪种删除that的做法仍能使两句都合乎语法？",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"c\",\"wrongExample\":\"a\",\"optionNotes\":{\"a\":\"把宾语关系词可省略错误扩大到主语关系词。\",\"b\":\"恰好颠倒两个that的作用。\",\"c\":\"只省略有明确主语we的宾语关系词，两个句子均完整。\"},\"ambiguity\":\"明确其余词不变，排除把①改成分词结构或别的多词重写。题目问给出的三种删除做法，不否定两句原样保留that同样正确。\",\"novelty\":\"不是换物品再填关系词，而是对比两句的删除后果；与c03同属宾语原则，记录为复现迁移，不算两项新知识。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷52／PDF59\"}}}",
+      "optionNotes": {
+        "a": "把宾语关系词可省略错误扩大到主语关系词。",
+        "b": "恰好颠倒两个that的作用。",
+        "c": "只省略有明确主语we的宾语关系词，两个句子均完整。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "s1.astra.b18",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听项目更新，选择与录音完全一致的简短记录。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"a\",\"wrongExample\":\"b\",\"optionNotes\":{\"a\":\"三处时间与对象均对应原音。\",\"b\":\"保留周一测试，但交换声音和登录的状态。\",\"c\":\"把周一事件改成修复，并把测试改成当前过程。\"},\"ambiguity\":\"检查声音不等于声音一定有故障；未报告检查完成，更未报告声音已修好。\",\"audioNecessity\":\"题面没有具体日期、问题或进度，三个自然记录必须靠原音确认。\",\"novelty\":\"去重保留；原三时态单句配对之外的整合听辨。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"听取并记录细节依据印刷24/29／PDF31/36\",\"alignment\":\"项目更新是记录细节的局部迁移，并非原页旅行情境。\"},\"additionalSources\":[{\"sourceId\":\"fltrp.senior1.archive20260929\",\"pages\":\"印刷29／PDF36\",\"alignment\":\"三种时态及进度表的文字语言依据。\"}],\"supportingGoalIds\":[\"senior1.project-time-notes\"]}}",
+      "optionNotes": {
+        "a": "三处时间与对象均对应原音。",
+        "b": "保留周一测试，但交换声音和登录的状态。",
+        "c": "把周一事件改成修复，并把测试改成当前过程。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c15",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你们已约定明天换乘火车。看着一座车站，用全部词块问“这是不是我们明天换车的车站？”以Is this开头。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"t2-t5-t4-t1-t3\",\"wrongExample\":\"t2-t4-t5-t1-t3\",\"optionNotes\":{\"t1\":\"地点从句的陈述语序，不能把we're换成are we。\",\"t2\":\"题面规定的外层疑问起点。\",\"t3\":\"安排发生的时间，给定问号置于末尾。\",\"t4\":\"连接the station和描述换车地点的从句。\",\"t5\":\"被核对并由从句限定的车站。\"},\"ambiguity\":\"题面已给定安排和Is this开头；其他自然问法未被否定，但不属于给定词块的本次任务。\",\"novelty\":\"与旧This is the place where we rest不同，检验外层疑问与从句语序并存；属于组合巩固，不单算新关系副词覆盖。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷64及28／PDF71及35\"},\"supportingGoalIds\":[\"senior1.booked-weekend\"]}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t5", "t4", "t1", "t3"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t2", "t4", "t5", "t1", "t3"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c16",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段预订房间的对话，选择客人最后确认的预订信息。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"b\",\"wrongExample\":\"c\",\"optionNotes\":{\"a\":\"误把前台提出的两晚当作客人的选择，推到周日离开。\",\"b\":\"完整保留客人确认的一晚、周六离开及不订早餐。\",\"c\":\"日期正确，但把客人在外吃早餐误作预订酒店早餐。\"},\"ambiguity\":\"不考日期计算，只需原音明确的Friday/Saturday；不推断房价、朋友身份或酒店其他服务。\",\"audioNecessity\":\"题面完全不含日期、晚数和早餐决定；三项预订均自然可行。\",\"novelty\":\"新写完整四轮预订，处理问句选项与实际接受内容；不重做b15地点变更。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"预订听力印刷29／PDF36；已安排未来印刷28／PDF35\"},\"supportingGoalIds\":[\"senior1.booked-weekend\"]}}",
+      "optionNotes": {
+        "a": "误把前台提出的两晚当作客人的选择，推到周日离开。",
+        "b": "完整保留客人确认的一晚、周六离开及不订早餐。",
+        "c": "日期正确，但把客人在外吃早餐误作预订酒店早餐。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c17",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：朋友问：You've booked the return ticket, haven't you? 你只查过日期，正在选返程车次，还没有订票。用全部词块回答：先短答，再说已经做了什么，最后说仍在做什么。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"t3-t2-t5-t1-t4\",\"wrongExample\":\"t3-t1-t4-t5-t2\",\"optionNotes\":{\"t1\":\"正在选择，须接宾语车次。\",\"t2\":\"已经核对日期，是题面指定放在前面的完成步骤。\",\"t3\":\"按尚未订票事实作否定短答，与have保持一致。\",\"t4\":\"choosing的宾语，末尾句号结束说明。\",\"t5\":\"连接已完成步骤与仍进行步骤的反差。\"},\"ambiguity\":\"给定词块已经固定短答，任务主要是受控组织回应，不声称独立选择了肯否；顺序限制和标点在题面明确。\",\"novelty\":\"结合附加问句与两步进度说明，作为首组钥匙交接回应的扩展巩固；不计新附加问句知识。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"印刷40／PDF47\"},\"additionalSources\":[{\"sourceId\":\"fltrp.senior1.archive20260929\",\"pages\":\"印刷29／PDF36\"}],\"supportingGoalIds\":[\"senior1.project-time-notes\"]}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t3", "t2", "t5", "t1", "t4"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["t3", "t1", "t4", "t5", "t2"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "s1.second.c18",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听录音，写出听到的全部内容。可以重播，也可以不写标点。",
+      "ambiguityReview": "{\"作者逐题审核\":{\"correctExample\":\"Read the question again then explain your answer to a partner.\",\"wrongExample\":\"Read the answer again, then explain your question to a partner.\",\"optionNotes\":{\"Read the question again\":\"要求重新读问题，不能把question和answer互换。\",\"then\":\"表明后一个动作接在前一个动作之后。\",\"explain your answer\":\"解释自己的答案，不是解释问题。\",\"to a partner\":\"保留听到的动作接收对象及冠词a。\"},\"ambiguity\":\"明确接受逗号、无内部标点、分号及句间句号四种逐项登记形式；大小写和句末标点归一，不依赖全局忽略内部标点。题面允许不写标点；换同义词或交换动作不是原音复原。\",\"audioNecessity\":\"没有词池和原文展示，题面不透露两个动作或对象，必须听到句子。\",\"novelty\":\"新写具体学习步骤，不沿用旧明确过去事件或否定附加问句听写脚本。\"},\"来源与支撑目标\":{\"source\":{\"sourceId\":\"pep.senior1.archive20260929\",\"pages\":\"听取学习策略印刷7／PDF14；建议表达印刷18／PDF25\",\"alignment\":\"整句听写是本组对学习行动听辨的受控产出迁移，不宣称教材本页安排了整句听写。\"},\"supportingGoalIds\":[\"senior1.reader-advice-note\"]}}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "Read the question again, then explain your answer to a partner."
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "Read the question again then explain your answer to a partner."
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "Read the question again; then explain your answer to a partner."
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "Read the question again. Then explain your answer to a partner."
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "Read the answer again, then explain your question to a partner."
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
