@@ -216,6 +216,10 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
       const fingerprint = contentHash({
         type: question.type,
         prompt: question.prompt.trim().toLowerCase(),
+        // “听写完整句子”等操作语可以复用，录音原文才是听力题的作答材料。
+        ...("audio" in question
+          ? { audio: question.audio.text.trim().toLowerCase() }
+          : {}),
       });
       if (fingerprints.has(fingerprint))
         fail(`题目 ${question.id} 与题库中已有题干重复。`);

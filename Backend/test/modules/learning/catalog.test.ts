@@ -75,6 +75,31 @@ describe("原创课程发布门槛", () => {
     await expect(loadCuratedCatalog(directory)).rejects.toThrow("需要重新逐题审核");
   });
 
+  it("同一听力操作语允许不同录音，重复原文仍拒绝", async () => {
+    const directory = await copyCatalog();
+    const id = "oliver.primary1.bookmark-colours";
+    const unitPath = join(directory, "units", `${id}.json`);
+    const reviewPath = join(directory, "reviews", `${id}.json`);
+    const unit = unitSchema.parse(JSON.parse(await readFile(unitPath, "utf8")));
+    const [first, second] = unit.questions.filter((q) => q.type === "listeningChoice");
+    if (!first || !second || first.audio.text === second.audio.text)
+      throw new Error("缺少两段不同听力夹具。");
+    const review = JSON.parse(await readFile(reviewPath, "utf8")) as {
+      contentHash: string;
+    };
+    async function save() {
+      review.contentHash = contentHash(unit);
+      await writeFile(unitPath, JSON.stringify(unit));
+      await writeFile(reviewPath, JSON.stringify(review));
+    }
+    second.prompt = first.prompt;
+    await save();
+    await expect(loadCuratedCatalog(directory)).resolves.toBeDefined();
+    second.audio = first.audio;
+    await save();
+    await expect(loadCuratedCatalog(directory)).rejects.toThrow("与题库中已有题干重复");
+  });
+
   it("不能只重新计算哈希掩盖错误的判题内容", async () => {
     const directory = await copyCatalog();
     const id = "oliver.primary3.reading-circle";
