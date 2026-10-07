@@ -58,11 +58,15 @@ class ResourceGuardTest(unittest.TestCase):
             self.assertNotIn('arguments', row)
             self.assertEqual(guard.process_sample({'9:122': {'readBytes': 0}})['9:123']['readDelta'], 0)
 
-    def test_observation_stops_at_first_pressure_failure(self):
-        with patch.object(guard, 'check', side_effect=RuntimeError('压力')), patch.object(guard.time, 'sleep') as sleep:
-            with self.assertRaises(RuntimeError):
-                guard.observe()
-            sleep.assert_not_called()
+    def test_observation_waits_for_own_io_pressure_to_decay(self):
+        with patch.object(guard, 'check', side_effect=[['存在持续磁盘阻塞'], [], []]), patch.object(guard.time, 'monotonic', side_effect=[0, 5, 10, 70]), patch.object(guard.time, 'sleep'):
+            guard.observe()
+
+    def test_persistent_pressure_and_health_failures_are_bounded(self):
+        for failures, times in [(['存在持续磁盘阻塞'], [0, 181]), (['健康检查失败'], [0, 1, 6, 11])]:
+            with self.subTest(failures=failures), patch.object(guard, 'check', return_value=failures), patch.object(guard.time, 'monotonic', side_effect=times), patch.object(guard.time, 'sleep'):
+                with self.assertRaises(RuntimeError):
+                    guard.observe()
 
 if __name__ == '__main__':
     unittest.main()

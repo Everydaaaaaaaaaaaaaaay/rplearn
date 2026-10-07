@@ -44,7 +44,7 @@ def problems(data, minimum_memory=384):
     return result
 
 
-def check(minimum_memory=384):
+def check(minimum_memory=384, strict=True):
     data = snapshot()
     failures = problems(data, minimum_memory)
     try:
@@ -54,17 +54,30 @@ def check(minimum_memory=384):
     except Exception:
         failures.append('健康检查失败')
     print(json.dumps({'event': '维护资源检查', **data, 'failures': failures}, ensure_ascii=False), flush=True)
-    if failures:
+    if failures and strict:
         raise RuntimeError('；'.join(failures))
+    return failures
 
 
 def observe():
-    # 一次 ready 不能证明稳定；持续观察一分钟后才允许下一项维护。
+    # 限速任务自身会留下短暂 PSI；允许消退，但必须再连续稳定一分钟。
     started = time.monotonic()
+    stable_since = None
+    unhealthy = 0
     while True:
-        check(256)
-        if time.monotonic() - started >= 60:
+        failures = check(256, strict=False)
+        now = time.monotonic()
+        unhealthy = unhealthy + 1 if any(x in failures for x in ('健康检查失败', '服务尚未就绪')) else 0
+        if unhealthy >= 3:
+            raise RuntimeError('健康检查连续失败，终止维护观察')
+        if failures:
+            stable_since = None
+        elif stable_since is None:
+            stable_since = now
+        elif now - stable_since >= 60:
             return
+        if now - started >= 180:
+            raise RuntimeError('三分钟内未恢复持续稳定，禁止下一项维护')
         time.sleep(5)
 
 
