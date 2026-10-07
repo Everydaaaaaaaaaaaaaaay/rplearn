@@ -10,7 +10,7 @@
       "sourceId": "pep.primary5.archive20260929",
       "path": "build/learning-all-grades-20260929/research/pep-primary5.pages.json",
       "readAt": "2026-10-07",
-      "method": "本轮实际逐页核读PDF提取正文；没有把历史核读记录直接当作本轮阅读。",
+      "method": "2026-10-07作者返修时重新逐页读取本地PDF提取正文，按pdfPages的一基页码定位；没有把历史核读记录直接当作本轮阅读。",
       "printedPages": [
         7,
         8,
@@ -57,7 +57,7 @@
       "group": "a",
       "goalId": "primary5.reading-bag-owners",
       "type": "choice",
-      "instruction": "选一句准确的回答。",
+      "instruction": "选一句明确说出你和妹妹共同拥有彩笔的回答。",
       "prompt": "桌上有一盒彩笔。你和妹妹共同拥有它。朋友问：Whose pencils are these? 你回答：",
       "options": [
         {
@@ -75,7 +75,7 @@
       ],
       "answer": "b",
       "hint": "想清楚回答中是否包含说话人和另一个人。",
-      "explanation": "ours包含“我和妹妹”；mine只表达归我，yours指对方的。题目要求准确说出共同归属。",
+      "explanation": "ours明确包含“我和妹妹”；mine表达我的，却没有说出两人共同拥有，yours指对方的。题目要求把共同归属说完整。",
       "difficultyReason": "把明确的两人共同归属转为名词性物主代词，不靠物品颜色猜答案。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
@@ -89,7 +89,7 @@
       "selfReview": {
         "correct": "b",
         "wrong": "a",
-        "reason": "a没有表达题干强调的共同拥有；c改变了所有者。"
+        "reason": "a不一定否认共同拥有，但没有明确表达题面要求的两人共同归属，不能把mine解释成必然排他；c改变了所有者。"
       }
     },
     {
@@ -440,7 +440,7 @@
           "trip"
         ]
       ],
-      "hint": "时间问句里，询问词后还需要be动词。",
+      "hint": "连起来读一遍，检查是否是在询问郊游的时间。",
       "explanation": "When is the school trip?询问郊游时间；the school trip是完整名词词块。",
       "difficultyReason": "短功能问句组句，为月份回答建立准确问题。",
       "source": {
@@ -515,34 +515,34 @@
       "group": "a",
       "goalId": "primary5.reading-bag-owners",
       "type": "matching",
-      "instruction": "将英文便条与准确意思连接。",
-      "prompt": "失物桌要给三句不同留言配中文说明，每句独立理解。",
+      "instruction": "读每句英文说明，再把它与书包主人配对。",
+      "prompt": "女孩Sam正在对你介绍三个书包，旁边只有一个男孩Leo。下面三句话都由Sam对你说，句中的his指Leo。",
       "left": [
         {
           "id": "l1",
-          "text": "Is this yours?"
+          "text": "This is your bag."
         },
         {
           "id": "l2",
-          "text": "This is hers."
+          "text": "This is his bag."
         },
         {
           "id": "l3",
-          "text": "This is ours."
+          "text": "This is my bag."
         }
       ],
       "right": [
         {
           "id": "r1",
-          "text": "这是我们的。"
+          "text": "书包是Sam的。"
         },
         {
           "id": "r2",
-          "text": "这是你的吗？"
+          "text": "书包是你的。"
         },
         {
           "id": "r3",
-          "text": "这是她的。"
+          "text": "书包是Leo的。"
         }
       ],
       "answerPairs": [
@@ -559,9 +559,9 @@
           "right": "r1"
         }
       ],
-      "hint": "留意谁拥有物品，也留意是不是问句。",
-      "explanation": "yours指对方的，hers指她的，ours指我们的；第一句是在询问，后两句是在说明。",
-      "difficultyReason": "独立代词在实际留言里辨义，兼顾问答功能。",
+      "hint": "说话人没有变，留意物品名称前面哪个词发生了变化。",
+      "explanation": "Sam对你说your bag，指你的书包；his bag按题内所指是Leo的书包；my bag则指说话人Sam自己的书包。听别人说my时不能自动理解成答题者自己的。",
+      "difficultyReason": "同一说话人和同一听话人下区别my、your、his的所指，必须阅读英语代词；不通过中文说话人标签配对，也不复现ours或提前展示hers。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
         "printedPages": [
@@ -574,7 +574,7 @@
       "selfReview": {
         "correct": "l1-r2,l2-r3,l3-r1",
         "wrong": "l1-r2,l2-r1,l3-r3",
-        "reason": "错误把第三人称女性与第一人称复数归属混淆。"
+        "reason": "错误把his指代的Leo与my指代的Sam互换。三句均由同一人说，无法只按说话人的中文标签连线；his的指代在题干明确，不靠名字推测性别。"
       }
     },
     {
@@ -605,7 +605,7 @@
           "walk"
         ]
       ],
-      "hint": "先说谁，再说活动发生得多不多。",
+      "hint": "检查句子有没有同时说出活动和发生频度。",
       "explanation": "I often go for a walk.按题目要求把often放在活动前。句末放often也可有意义，但不符合本次明确的位置练习。",
       "difficultyReason": "熟悉活动作为整块，聚焦频度词位置而非逐词拼写。",
       "source": {
@@ -636,18 +636,18 @@
       "group": "a",
       "goalId": "primary5.quiet-corner-now",
       "type": "completion",
-      "instruction": "把read改为动词-ing形式，只填一个词。",
-      "prompt": "爸爸此刻正在读一本书：Dad is ____ a book now. (read)",
+      "instruction": "把clean改为动词-ing形式，只填一个词。",
+      "prompt": "朋友问你此刻在做什么。你正在打扫自己的房间，回复：I am ____ my room now. (clean)",
       "acceptedAnswers": [
-        "reading"
+        "cleaning"
       ],
       "normalization": {
         "ignoreCase": true,
         "ignoreTerminalPunctuation": true
       },
-      "hint": "句中已有is，空格只需要动作部分。",
-      "explanation": "read加-ing得到reading；is reading合起来表示正在读，不需再次填is。",
-      "difficultyReason": "规则动词的进行形式，题内给出词根和当前时间。",
+      "hint": "句中已有am，空格只需要动作部分。",
+      "explanation": "clean加-ing得到cleaning；am cleaning合起来说明我正在打扫，不需再次填am。",
+      "difficultyReason": "从前面第三人称完整组句迁移到第一人称即时回复，把规则用于本卷此前未呈现过的cleaning词形；不是凭记忆重填reading。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
         "printedPages": [
@@ -660,9 +660,9 @@
         ]
       },
       "selfReview": {
-        "correct": "reading",
-        "wrong": "read",
-        "reason": "is read不能表达此处正在读书；is reading填入会重复is。"
+        "correct": "cleaning",
+        "wrong": "clean",
+        "reason": "am clean不能表达此处正在打扫房间；am cleaning填入会重复am。词形答案经主代理明确授权由reading改为cleaning。"
       }
     },
     {
@@ -763,7 +763,7 @@
       ],
       "answer": "b",
       "hint": "改写前后拥有书的人不能改变。",
-      "explanation": "her books可以改为the books are hers；his改成他的，theirs改成他们的。",
+      "explanation": "her books可以改为the books are hers；his改成他的。theirs通常表示他们、她们或它们的，不再明确表达本题her所指的那一位女性拥有这些书。",
       "difficultyReason": "同义改写保持所属人物，区分限定词和独立形式。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
@@ -1114,20 +1114,20 @@
       "group": "b",
       "goalId": "primary5.quiet-corner-now",
       "type": "matching",
-      "instruction": "把问题和对应人物的回答配对。",
-      "prompt": "活动室有三处活动。每个问题只配一条回答。",
+      "instruction": "把现场说明与意思相同的英文句子配对。",
+      "prompt": "三个人物视角分别描述此刻的活动。每条中文说明只配一句英文。",
       "left": [
         {
           "id": "l1",
-          "text": "What is Dad doing?"
+          "text": "爸爸正在喝水。"
         },
         {
           "id": "l2",
-          "text": "What are the children doing?"
+          "text": "孩子们正在吃午饭。"
         },
         {
           "id": "l3",
-          "text": "What are you doing?"
+          "text": "我正在看一本书。"
         }
       ],
       "right": [
@@ -1141,7 +1141,7 @@
         },
         {
           "id": "r3",
-          "text": "They are having lunch."
+          "text": "They are eating lunch."
         }
       ],
       "answerPairs": [
@@ -1158,9 +1158,9 @@
           "right": "r1"
         }
       ],
-      "hint": "注意问的是谁；对方问you时，回答者从自己的角度说。",
-      "explanation": "Dad对应He，children对应They，别人问you时可用I回答。动作由回答给出，不要求凭身份猜。",
-      "difficultyReason": "三种人称在进行时问答中转换，所有语句短且完整。",
+      "hint": "既要核对人物，也要核对正在做的事。",
+      "explanation": "爸爸可用He指代，孩子们用They，我用I；drinking water、eating lunch、reading a book分别对应三条已给定的动作。",
+      "difficultyReason": "结合人物和当前动作理解完整句意；不给后面的提问题展示整句问法，也不提前呈现having拼写。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
         "printedPages": [
@@ -1175,7 +1175,7 @@
       "selfReview": {
         "correct": "l1-r2,l2-r3,l3-r1",
         "wrong": "l1-r2,l2-r1,l3-r3",
-        "reason": "错误没有保持问题人物与回答主语一致。"
+        "reason": "错误把孩子们吃午饭与我读书互换；人物和动作都有题内证据，不凭身份猜测。"
       }
     },
     {
@@ -1321,26 +1321,26 @@
       "group": "b",
       "goalId": "primary5.quiet-corner-now",
       "type": "choice",
-      "instruction": "选现在动作的问题。",
-      "prompt": "电话那头传来翻书声，但你不确定朋友正在做什么。你想问此刻的活动，应说：",
+      "instruction": "选一句准确转述朋友此刻活动的话。",
+      "prompt": "一位男同学在电话里告诉你，他此刻正在打扫自己的房间。你要向身边的人说明他现在的活动，应说：",
       "options": [
         {
           "id": "a",
-          "text": "What do you do on Sundays?"
+          "text": "He cleans his room on Sundays."
         },
         {
           "id": "b",
-          "text": "What are you doing now?"
+          "text": "He is cleaning his room."
         },
         {
           "id": "c",
-          "text": "Whose book is this?"
+          "text": "They are cleaning their room."
         }
       ],
       "answer": "b",
-      "hint": "声音只是背景；要问的内容在题干中已经说明。",
-      "explanation": "b询问现在活动；a问星期日习惯；c问一本书的归属。翻书声不能代替提问。",
-      "difficultyReason": "在生活交流中区分动作、习惯和归属三种问法。",
+      "hint": "既要保持原来的人物，也要保持原来的时间意思。",
+      "explanation": "b用He指这位男同学，is cleaning表达他此刻正在打扫；a说星期日的习惯，c改成了多个人。",
+      "difficultyReason": "将电话里得到的当前活动信息转述为第三人称说明，同时区分习惯与当前动作；不向后题提前展示进行时问句。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
         "printedPages": [
@@ -1355,7 +1355,7 @@
       "selfReview": {
         "correct": "b",
         "wrong": "c",
-        "reason": "听到书的声音不表示本题要问所有权。"
+        "reason": "c虽然也表达正在打扫，却把题内明确的一位男同学改成多人；a没有保留当前时间。答案键仍为b。"
       }
     },
     {
@@ -1418,7 +1418,7 @@
           "this"
         ]
       ],
-      "hint": "先把询问归属的词与物品名称放在一起。",
+      "hint": "连起来读一遍，检查它是否在问这把伞的主人。",
       "explanation": "Whose umbrella is this?询问这把伞的主人；Whose umbrella构成一个询问部分。",
       "difficultyReason": "物品归属问句重组，名词与询问词的关系明确。",
       "source": {
@@ -1583,25 +1583,25 @@
       "goalId": "primary5.weekend-help",
       "type": "listeningChoice",
       "instruction": "听录音，选说话人通常做的事。",
-      "prompt": "朋友分别介绍常做的事和今天正在做的事。哪件是通常做的？",
+      "prompt": "朋友分别介绍通常做的事和此刻正在做的事。哪件是通常做的？",
       "options": [
         {
           "id": "a",
-          "text": "现在正在读书"
+          "text": "读书"
         },
         {
           "id": "b",
-          "text": "通常去游泳"
+          "text": "游泳"
         },
         {
           "id": "c",
-          "text": "通常去散步"
+          "text": "散步"
         }
       ],
       "answer": "c",
-      "audioScript": "I usually go for a walk on Sundays. Today I am reading a book at home.",
-      "hint": "分清习惯句和today引出的这一次活动。",
-      "explanation": "usually对应go for a walk；reading a book是今天此刻的动作，录音没有swimming。",
+      "audioScript": "I usually go for a walk on Sundays. I am reading a book at home now.",
+      "hint": "分别听清两句话描述的时间，再决定哪件事符合问题。",
+      "explanation": "usually对应go for a walk；am reading加上now说明此刻正在读书，录音没有swimming。",
       "difficultyReason": "两句中区分习惯与当前活动，使用已核读的简单结构。",
       "source": {
         "sourceId": "pep.primary5.archive20260929",
@@ -1617,7 +1617,7 @@
       "selfReview": {
         "correct": "c",
         "wrong": "a",
-        "reason": "a是录音出现的真实信息，但答非所问；不要把所有听到的信息都当正确选项。"
+        "reason": "a是录音出现的真实信息，但答非所问；三项只写活动，不能靠选项里的频度标签排除。用now明确当前动作，避免把today本身当作进行时标志。"
       }
     },
     {
@@ -1666,7 +1666,7 @@
       "goalId": "primary5.quiet-corner-now",
       "type": "arrange",
       "instruction": "用全部词块，从What开始组成问句。",
-      "prompt": "你看见几个孩子聚在桌边，想问他们正在做什么。",
+      "prompt": "你看见几个孩子聚在桌边，向身边的同伴询问那几个孩子正在做什么。",
       "tokens": [
         {
           "id": "doing",
@@ -1693,7 +1693,7 @@
           "doing"
         ]
       ],
-      "hint": "这是问句，人物词前需要放构成进行时的be动词。",
+      "hint": "读一遍排好的句子，检查它是在提问，还是在陈述一件事。",
       "explanation": "What are they doing?用are匹配they，并把are放在主语前构成问题。",
       "difficultyReason": "四词进行时特殊疑问句，从陈述动作迁移到询问动作。",
       "source": {
@@ -1726,25 +1726,63 @@
     {
       "id": "p5.astra.story.a",
       "group": "a",
-      "character": "Oliver",
+      "character": "companion",
       "title": "被风吹歪的小招牌",
-      "text": "你和Oliver来到旧书店门口，发现一块小招牌被风吹得转向了墙。你扶住木架，他把绳结慢慢解开。绳子有一点短，你从口袋里找出一截昨天留下的丝带，递给他接上。两个人退后几步，招牌终于朝向街道。阳光照在新打的结上，Oliver笑着推开门，给你留了窗边的位置。",
+      "text": "你和同行者来到旧书店门口，发现一块小招牌被风吹得转向了墙。你扶住木架，伙伴把绳结慢慢解开。绳子有一点短，你从口袋里找出一截昨天留下的丝带，递过去接上。两个人退后几步，招牌终于朝向街道。阳光照在新打的结上，你们一起推门进店，选了窗边的两个空座位。",
       "teachingNote": "单一同行者与用户共同处理一个小问题，有起因、动作和结果。故事不含后续题目的日期、归属或活动答案，不按故事事实设题。"
     },
     {
       "id": "p5.astra.story.b",
       "group": "b",
-      "character": "Ruby",
+      "character": "companion",
       "title": "长椅上的一点阴凉",
-      "text": "海边的太阳有些晒，你和Ruby想在长椅旁挂一小块遮阳布。Ruby拉住一角，你绕到椅背后找固定的位置。海风突然鼓起布面，你们一起松开一点，再重新系好。阴影稳稳地落在长椅中央，你伸手试了试，果然凉快许多。Ruby把随身的水壶放下，和你坐了一会儿，听浪花一下一下拍着岸。",
-      "teachingNote": "仅Ruby与用户同行，问题、尝试与结果完整；不承担答题说明，也不要求记住故事细节。"
+      "text": "你和同行者来到海边的遮阳棚下，发现棚边的一根绳结松了，垂下的布角轻轻拍着长椅。伙伴托住布角，你捡起落在椅边的绳头，在原来的固定环上重新系好。海风又吹过来，布角这次稳稳地停在了长椅旁。你们坐进阴凉里，伙伴把随身的水壶放下，和你一起听浪花一下一下拍着岸。",
+      "teachingNote": "仅普通同行者与用户一起行动，问题、尝试与结果完整；不承担答题说明，也不要求记住故事细节。"
+    }
+  ],
+  "assetRequirements": [
+    {
+      "questionId": "p5.astra.a02",
+      "kind": "audio",
+      "status": "pending",
+      "acceptance": "逐句实听usually、often、sometimes与三个活动的对应；脚本只作制作资料，不在听前显示。"
+    },
+    {
+      "questionId": "p5.astra.a08",
+      "kind": "audio",
+      "status": "pending",
+      "acceptance": "实听is drinking water，确认地点引入未压过关键动作；不得用脚本文字替代听力。"
+    },
+    {
+      "questionId": "p5.astra.a14",
+      "kind": "audio",
+      "status": "pending",
+      "acceptance": "实听July完整尾音，确认不会因截断与June混淆。"
+    },
+    {
+      "questionId": "p5.astra.b03",
+      "kind": "audio",
+      "status": "pending",
+      "acceptance": "实听Sam's所有格及his，不能靠音色推测风筝主人。"
+    },
+    {
+      "questionId": "p5.astra.b09",
+      "kind": "audio",
+      "status": "pending",
+      "acceptance": "实听March first，核查月份及first尾音都清楚。"
+    },
+    {
+      "questionId": "p5.astra.b16",
+      "kind": "audio",
+      "status": "pending",
+      "acceptance": "使用返修后的now脚本，实听usually与am reading的区别；选项不预先标出习惯或当前动作。"
     }
   ],
   "remainingWork": [
     "草稿36题，两组各18题；采用choice、listeningChoice、arrange、completion、matching五种现有交互。没有新增goalId，也没有提出需客户端新增的cloze。",
     "6道听力a02、a08、a14、b03、b09、b16目前仅有audioScript，须制作原创音频、校验关键音节并完成实听；没有audio.assetId，不可直接发布。",
     "未使用图片题，本轮没有待填的图片assetId。故事可后续独立配置原创插图，但不能把插图作为答题所需的隐含信息。",
-    "逐题已做作者自审，包括正确答案、实质错误反例、提示不直接给答案及题干独立性；尚需独立盲审、与现有题库语义重复检查和五年级儿童试做。",
+    "2026-10-07逐题作者复核见同目录primary5-review.md，不能替代主代理独立审阅；尚需独立盲审、与现有题库语义重复检查和五年级儿童试做。",
     "本轮仅以实际核读的人教PEP五下指定正文为依据；译林五年级未取得并核读，不能声称跨版本覆盖。五项现有目标均有题目，但未覆盖全年课程、请求帮助目标或九星进阶。",
     "source、group、selfReview为作者附加字段；正式集成时需人工迁入单元references和独立review合同，不能将本文件直接作为content.ts的正式题目输入。",
     "所有文字朗读、听力加载和重听、词块多顺序验收、配对可访问性仍待原生界面验证；本轮未改正式目录、未提交、未部署。"
