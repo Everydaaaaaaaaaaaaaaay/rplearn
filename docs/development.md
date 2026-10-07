@@ -93,6 +93,7 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 
 挑战长题面可使用 `SIMCTL_CHILD_UI_TEST_LEARNING_UNIT_JSON` 传入服务端 `publicUnit` 导出的公开单元 JSON，
 再以 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION_ID` 指定题目；不指定 ID 时沿用 `UI_TEST_LEARNING_QUESTION` 题型选择。
+同时设置 `SIMCTL_CHILD_UI_TEST_LEARNING_STORY=1` 可检查该公开单元的完整封面、开场故事及总题数；仍为免登录只读预览，不提交成绩。
 通过 `Scripts/preview.sh preview unit-challenge` 启动后直接展示该题的只读工程尝试。
 这个入口只在 Debug 免登录预览中生效，提交不会判分或写记录；不要传入答案、解析或真实账号数据。
 正式九年级四题型样本及来源哈希见 `Tests/LingoTripUITests/Fixtures/`，

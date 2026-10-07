@@ -33,6 +33,16 @@ export const bankBlueprintSchema = z.strictObject({
   level: levelSchema,
   topic: z.enum(bankTags),
   prerequisiteGoalIds: z.array(id).max(30),
+  openingStory: z
+    .strictObject({
+      title: z.string().trim().min(1).max(100),
+      scene: unitSchema.shape.scene,
+      beats: unitSchema.shape.beats.refine(
+        (beats) => beats.every((beat) => beat.afterQuestion === 0),
+        "完整开场故事必须在所有题目之前。",
+      ),
+    })
+    .optional(),
   slots: z
     .array(
       z.strictObject({
@@ -248,8 +258,8 @@ export function bankUnit(
     roleVersion: 1,
     level: blueprint.level,
     title: blueprint.title,
-    summary: scene[0],
-    scene: scene[1],
+    summary: blueprint.openingStory?.title ?? scene[0],
+    scene: blueprint.openingStory?.scene ?? scene[1],
     estimatedMinutes: questions.length > 6 ? 12 : 6,
     goalIds: [...new Set(questions.map((q) => q.question.goalId))],
     prerequisiteGoalIds: blueprint.prerequisiteGoalIds,
@@ -257,12 +267,12 @@ export function bankUnit(
     authorship: {
       kind: "authored",
       author: "公共题库",
-      reviewedBy: "已审核题目与固定场景",
-      reviewedAt: "2026-10-06",
+      reviewedBy: "已审核题目与开场情景",
+      reviewedAt: "2026-10-07",
       reviewNotes:
         "题目来自已审核版本，剧情仅提供共同场景；本次组卷固定题目版本、顺序与首次得分身份。",
     },
-    beats: [
+    beats: blueprint.openingStory?.beats ?? [
       {
         id: "opening",
         afterQuestion: 0,

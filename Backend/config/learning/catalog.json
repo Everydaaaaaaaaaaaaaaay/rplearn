@@ -349,6 +349,21 @@
           "sha256": "2ad7555a13eb420aa70497f9faa2541fdb502b7ffc4e063e87c60cce88f1b4a3"
         }
       ]
+    },
+    {
+      "id": "cet.official.2016",
+      "title": "全国大学英语四、六级考试大纲（2016年修订版）",
+      "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "edition": "教育部考试中心、全国大学英语四、六级考试委员会；2016年修订版",
+      "readAt": "2026-10-07",
+      "scope": "主代理核读印刷1—6／PDF6—11；四级作者另核读列明样卷页并目视能力页和样卷页。本批只参考熟悉场景的词义、衔接、信息、交际和句子译义局部技能。",
+      "limitations": "不是最新考试政策声明，不复制官方题文，不模拟全卷或宣称考试等值。官方目录仍列2016修订大纲；完整听力、篇章阅读、写作与翻译测评未实现。",
+      "evidence": [
+        {
+          "locator": "官方2016修订版PDF，主代理核读印刷1—6；本地research/cet-2016.pdf",
+          "sha256": "9166d3c03b7bc43abd9d9df91bd2ef8085b4419286f1e5ca100dea68f3cfd1f1"
+        }
+      ]
     }
   ],
   "goals": [
@@ -1156,6 +1171,51 @@
       "sourceIds": [
         "fltrp.primary2.archive20260929"
       ]
+    },
+    {
+      "id": "cet4.pragmatics",
+      "level": "undergraduate",
+      "canDo": "日常学习工作中的请求、澄清与协商",
+      "boundaries": "熟悉话题的交际功能与恰当回应；不将选择礼貌表达等同已具备口语互动能力。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet4.context-vocabulary",
+      "level": "undergraduate",
+      "canDo": "根据上下文辨词义与常用搭配",
+      "boundaries": "日常成熟词汇的具体义项和搭配，不靠生僻词区分等级。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet4.cohesion",
+      "level": "undergraduate",
+      "canDo": "表达因果、转折、条件与衔接",
+      "boundaries": "明确句间关系与逻辑范围，控制复句长度。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet4.paraphrase",
+      "level": "undergraduate",
+      "canDo": "短信息保义转述与证据范围",
+      "boundaries": "保留数量、时序、条件、态度和不确定性，不将可能夸大为确定。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet4.controlled-translation",
+      "level": "undergraduate",
+      "canDo": "熟悉内容的受控译义表达",
+      "boundaries": "句子层面的译义子技能，固定词块或限定填空；不冒充大纲140—160汉字段落翻译任务。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
     }
   ],
   "unitIds": [
@@ -1245,7 +1305,8 @@
     "ruby.primary2.weather-window",
     "ruby.primary2.cafe-actions",
     "marcus.primary2.photo-time",
-    "marcus.primary2.street-directions"
+    "marcus.primary2.street-directions",
+    "companion.undergraduate.clear-messages"
   ],
   "audioAssets": [
     {

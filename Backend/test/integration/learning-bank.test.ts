@@ -98,12 +98,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     >`select coalesce(a.snapshot,v.payload) as payload from app.learning_attempts a left join app.learning_unit_versions v on v.unit_id=a.unit_id and v.version=a.unit_version where a.id=${id}`;
     return required(r).payload;
   }
-  it("任意角色覆盖十二年级，固定快照可读取且响应没有答案", async () => {
+  it("任意角色覆盖已发布档位，固定快照可读取且响应没有答案", async () => {
     const c = await account();
     for (const level of new Set(catalog.blueprints.map((b) => b.level))) {
       const id = await c.character();
       const a = await c.start(id, level);
-      expect(a.unit.questions).toHaveLength(6);
+      expect(a.unit.questions).toHaveLength(level === "undergraduate" ? 18 : 6);
       expect(a.unit.level).toBe(level);
       expect(JSON.stringify(a.unit)).not.toContain('"acceptedAnswers"');
       expect(JSON.stringify(a.unit)).not.toContain('"explanation"');
@@ -111,6 +111,50 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
         a.id,
       );
     }
+  });
+  it("四级正式十八题包含完整开场，补答仅补得分且跨角色不重复出题", async () => {
+    const c = await account();
+    const character = await c.character();
+    const a = await c.start(character, "undergraduate");
+    const frozen = await privateUnit(a.id);
+    expect(a.unit.questions).toHaveLength(18);
+    expect(a.unit.beats).toHaveLength(3);
+    expect(a.unit.beats.every((beat) => beat.afterQuestion === 0)).toBe(true);
+    expect(a.unit.beats).toEqual(frozen.beats);
+    for (const q of frozen.questions.slice(0, 15))
+      await c.command((s) =>
+        s.submit({
+          attemptId: a.id,
+          roundId: a.round.id,
+          questionId: q.id,
+          answer: gradeAnswer(q, { kind: "skip" }).solution,
+        }),
+      );
+    await c.command((s) => s.finish(a.id, true));
+    expect((await engine.read(c.user, (s) => s.progress()))[0]?.points).toBe(15);
+    const retry = await c.command((s) => s.retry(a.id));
+    expect(retry.round.questionIds).toHaveLength(3);
+    for (const q of frozen.questions.slice(15))
+      await c.command((s) =>
+        s.submit({
+          attemptId: a.id,
+          roundId: retry.round.id,
+          questionId: q.id,
+          answer: gradeAnswer(q, { kind: "skip" }).solution,
+        }),
+      );
+    expect((await engine.read(c.user, (s) => s.progress()))[0]?.points).toBe(18);
+    expect((await privateUnit(a.id)).beats).toEqual(frozen.beats);
+    const next = await c.character();
+    expect(await c.command((s) => s.start(next, "undergraduate"))).toEqual({
+      status: "preparing",
+      attempt: null,
+    });
+    expect((await engine.read(c.user, (s) => s.character(next))).characters).toBe(1000);
+    const other = await account();
+    expect(
+      (await other.start(await other.character(), "undergraduate")).unit.beats,
+    ).toEqual(frozen.beats);
   });
   it("并发跨角色不重复出题，其他账号可以使用相同公共库", async () => {
     const c = await account();

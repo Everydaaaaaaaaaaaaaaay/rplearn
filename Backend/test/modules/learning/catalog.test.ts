@@ -25,9 +25,9 @@ afterEach(async () => {
 });
 
 describe("原创课程发布门槛", () => {
-  it("十二个年级按角色独立统计，全部逐题样例通过且结果可复现", async () => {
+  it("学校年级与通用四级内容独立统计，逐题样例通过且结果可复现", async () => {
     const catalog = await loadCuratedCatalog(catalogPath);
-    expect(catalog.units).toHaveLength(87);
+    expect(catalog.units).toHaveLength(88);
     expect(catalog.summary).toEqual([
       ...["primary3", "primary4", "junior3", "senior2", "primary1"].flatMap((level) =>
         ["oliver", "ruby", "marcus"].map((roleKey) => ({
@@ -53,6 +53,7 @@ describe("原创课程发布门槛", () => {
           questions: 12,
         })),
       ),
+      { roleKey: "companion", level: "undergraduate", units: 1, questions: 18 },
     ]);
     expect((await loadCuratedCatalog(catalogPath)).hash).toBe(catalog.hash);
   });

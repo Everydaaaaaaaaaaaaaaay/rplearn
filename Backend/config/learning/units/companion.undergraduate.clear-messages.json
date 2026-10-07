@@ -1,0 +1,626 @@
+{
+  "id": "companion.undergraduate.clear-messages",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "undergraduate",
+  "title": "被风吹乱的下午",
+  "summary": "被风吹乱的下午",
+  "scene": "一次河边换书的约定，被风吹走的旧车票打乱了。",
+  "estimatedMinutes": 12,
+  "goalIds": [
+    "cet4.pragmatics",
+    "cet4.context-vocabulary",
+    "cet4.cohesion",
+    "cet4.paraphrase",
+    "cet4.controlled-translation"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "cet.official.2016",
+      "unit": "四级阅读、写作、翻译与交际功能的局部练习",
+      "pages": "印刷2—5／PDF7—10",
+      "alignment": "参考语境词义、句间关系、观点细节、常见应用文表达和句子译义。题文与故事均原创；本轮为十八题文字练习，不声称覆盖听力、完整写作或考试测量。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra四级独立作者；Codex故事英译与定点修订",
+    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "逐题审阅语境、答案、变体、每个选项、提示和解析；采用已返修作者稿中的十八道文字题，未转换听力题凑数。通用同行者故事全部前置，问题不依赖故事；未做独立教师或真人效度审定。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion are taking a bag of old books to a book exchange by the river. Near the bridge, rain begins, and a gust of wind lifts a ticket out of one book. Your companion tries to catch it while you hold the bag shut, but the ticket lands in a puddle.",
+      "translation": "你和同行者带着一袋旧书，去河边的交换书架。桥边忽然落起雨，一阵风把夹在书里的车票吹了出来。同行者追过去，你按住袋口，车票却还是落进了积水。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "The ink fades as you pick it up. It was a keepsake from your first trip alone. Under the bridge, your companion listens while you tell the story of getting lost and still catching the train. By the end, you are laughing. The memory is clearer than the writing ever was.",
+      "translation": "捡起来时，字迹已经模糊了。那是你第一次独自旅行留下的纪念。同行者陪你站在桥下，听你讲迷路后仍然赶上火车的经过。说到最后，你自己先笑了；记忆比车票上的字更清楚。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "When the rain stops, you reach the exchange and leave your books on the shelf. You choose an old travel book with little drawings in its margins and slip the dry ticket inside. On the way home, you and your companion begin planning another trip.",
+      "translation": "雨停后，你们来到交换书架，放下带来的书。你挑了一本空白处留着小画的旧游记，把晾干的车票夹进去。回家路上，你和同行者开始商量下一次出发。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet4.astra.a01",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "prompt": "你需要多一天完成小组报告，想先征求组员同意，且不假定对方已经答应。哪条消息合适？",
+      "explanation": "b提出尚待回应的请求。其余分别擅自决定、事后责备或预设已经同意。",
+      "hint": "检查每句话把决定放在请求之前还是之后。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "常见词汇承载礼貌与决定权的差别，不以复杂语法增加负担。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I've decided we'll submit it a day later."
+        },
+        {
+          "id": "b",
+          "text": "Would it be possible to submit our report a day later?"
+        },
+        {
+          "id": "c",
+          "text": "You should have given me another day."
+        },
+        {
+          "id": "d",
+          "text": "Thanks for agreeing to the extra day."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet4.astra.a03",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "prompt": "通知写着：The course fee covers all printed materials, but you need to bring your own lunch. 这里的covers是什么意思？",
+      "explanation": "费用covers某项表示已包含该项费用；午餐被单独排除。",
+      "hint": "先看主语是什么，再判断它与后面物品的实际关系。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "熟词多义，需借助fee和but分辨。",
+      "options": [
+        {
+          "id": "a",
+          "text": "包括这些材料的费用"
+        },
+        {
+          "id": "b",
+          "text": "把材料表面遮住"
+        },
+        {
+          "id": "c",
+          "text": "只介绍材料的标题"
+        },
+        {
+          "id": "d",
+          "text": "把材料的钱退回来"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet4.astra.a04",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "prompt": "选择连接词：The instructions were clear. ____, several users skipped a step and had to start again.",
+      "explanation": "说明清晰通常让人少漏步骤，第二句却出现遗漏，因此用Nevertheless表示转折。",
+      "hint": "判断第二句是否符合第一句通常带来的预期。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "常见正式衔接词，语义先于词形。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Therefore"
+        },
+        {
+          "id": "b",
+          "text": "Similarly"
+        },
+        {
+          "id": "c",
+          "text": "For example"
+        },
+        {
+          "id": "d",
+          "text": "Nevertheless"
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "cet4.astra.a05",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "prompt": "读规则：Only applications received by Friday will be considered. 哪句保留了原意？",
+      "explanation": "截至周五收到是进入审核的必要条件，之后收到不予考虑；原句不保证录取，也不承诺出结果时间。",
+      "hint": "分别核对截止时间、接收与寄出的区别，以及审核和录取的区别。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "区别信息约束，四项都具有表面合理性。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every application received by Friday will be accepted."
+        },
+        {
+          "id": "b",
+          "text": "Applications received after Friday will not be considered."
+        },
+        {
+          "id": "c",
+          "text": "Applications must be sent on Friday, not earlier."
+        },
+        {
+          "id": "d",
+          "text": "Applicants will receive a decision by Friday."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet4.astra.a06",
+      "goalId": "cet4.controlled-translation",
+      "type": "choice",
+      "prompt": "选择准确表达“这项服务暂时只向本地居民开放”的一句。",
+      "explanation": "For now保留暂时，only to local residents保留人群限制。",
+      "hint": "核对时间范围和使用人群，两处都不能增删。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "社会服务熟悉语境中的限定表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "This service will always be available to local residents only."
+        },
+        {
+          "id": "b",
+          "text": "Local residents can use this service whenever they like."
+        },
+        {
+          "id": "c",
+          "text": "For now, this service is available only to local residents."
+        },
+        {
+          "id": "d",
+          "text": "This service is no longer available to local residents."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet4.astra.b15",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "prompt": "读句子：The estimate is conservative: it leaves out several possible sources of income, so the final total may be higher. conservative在此最接近什么？",
+      "explanation": "漏计若干可能收入且最终可能更高，说明估计偏谨慎、没有把所有潜在收入算满。",
+      "hint": "利用冒号后面的解释判断这个评价指向哪一侧，而不是套用熟悉的其他义项。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "稍成熟的常见评价词，后文提供充分语境，不靠记偏义。",
+      "options": [
+        {
+          "id": "a",
+          "text": "谨慎偏低的"
+        },
+        {
+          "id": "b",
+          "text": "已经精确核实的"
+        },
+        {
+          "id": "c",
+          "text": "保证不会变化的"
+        },
+        {
+          "id": "d",
+          "text": "故意夸大到偏高的"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet4.astra.a07",
+      "goalId": "cet4.pragmatics",
+      "type": "arrange",
+      "prompt": "用全部词块组成请求：“你能先确认参加人数，再让我预订桌子吗？”",
+      "explanation": "Could you confirm后接陈述语序的间接问句，before说明预订前要先确认。",
+      "hint": "先放请求框架，再补需要确认的内容，最后放时间关系。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "包含间接问句和动作先后，词块减少拼写负担。",
+      "tokens": [
+        {
+          "id": "t",
+          "text": "before I book a table?"
+        },
+        {
+          "id": "n",
+          "text": "how many people are coming"
+        },
+        {
+          "id": "c",
+          "text": "Could you confirm"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "n",
+          "t"
+        ]
+      ]
+    },
+    {
+      "id": "cet4.astra.a09",
+      "goalId": "cet4.context-vocabulary",
+      "type": "matching",
+      "prompt": "将各句中的目标短语与对应意思配对，每项使用一次。目标短语为keep track of、take account of、make use of。",
+      "explanation": "keep track of强调掌握记录；take account of强调考虑因素；make use of强调利用。",
+      "hint": "看动作针对的是变化记录、决策因素，还是可用的东西。",
+      "instruction": "将相关的两项配对",
+      "difficultyReason": "三项常见多词表达，考语义区别而非单词直译。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Please keep track of the expenses during the trip."
+        },
+        {
+          "id": "l2",
+          "text": "We need to take account of the extra travel time."
+        },
+        {
+          "id": "l3",
+          "text": "You can make use of the quiet room upstairs."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "利用某项现有资源"
+        },
+        {
+          "id": "r2",
+          "text": "持续记录并掌握变化"
+        },
+        {
+          "id": "r3",
+          "text": "在考虑时把某因素算进去"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r3"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ]
+    },
+    {
+      "id": "cet4.astra.a10",
+      "goalId": "cet4.cohesion",
+      "type": "completion",
+      "prompt": "只从because、although、unless中选一词填空：We moved the discussion online ____ the evening buses were cancelled and some members could not reach the venue.",
+      "explanation": "晚间公交取消且部分成员到不了会场，是改为线上讨论的原因。",
+      "hint": "先判断后半句是在解释决定、反驳预期，还是提出例外条件。",
+      "instruction": "填写符合要求的答案",
+      "difficultyReason": "通过两项实际后果判断关系，非看单词形式填空。",
+      "acceptedAnswers": [
+        "because"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet4.astra.a11",
+      "goalId": "cet4.paraphrase",
+      "type": "matching",
+      "prompt": "将三条独立调查摘要与不夸大结果的中文意思配对。",
+      "explanation": "few是很少；not all否定全体完成，不等于全体未完成；most是多数。",
+      "hint": "区分少数、多数，以及对全体说法的否定。",
+      "instruction": "将相关的两项配对",
+      "difficultyReason": "短信息范围辨析，避免复杂计算。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Few participants asked for printed copies."
+        },
+        {
+          "id": "l2",
+          "text": "Not all participants finished the survey."
+        },
+        {
+          "id": "l3",
+          "text": "Most participants preferred the shorter version."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "多数参与者更喜欢较短的版本。"
+        },
+        {
+          "id": "r2",
+          "text": "至少有一些参与者没完成问卷。"
+        },
+        {
+          "id": "r3",
+          "text": "要求纸质副本的参与者很少。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ]
+    },
+    {
+      "id": "cet4.astra.a12",
+      "goalId": "cet4.controlled-translation",
+      "type": "arrange",
+      "prompt": "用全部词块表达：“虽然费用涨了，这个展览仍然吸引了很多参观者。”",
+      "explanation": "Although引出费用上涨的让步背景，still保留仍然，主句说明吸引参观者。",
+      "hint": "先组成完整的让步部分，再组成它所对照的主句。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "社会文化熟悉内容，保留让步而非逐字翻译。",
+      "tokens": [
+        {
+          "id": "v",
+          "text": "many visitors."
+        },
+        {
+          "id": "a",
+          "text": "Although the fee had increased,"
+        },
+        {
+          "id": "e",
+          "text": "the exhibition"
+        },
+        {
+          "id": "s",
+          "text": "still attracted"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "e",
+          "s",
+          "v"
+        ]
+      ]
+    },
+    {
+      "id": "cet4.astra.b12",
+      "goalId": "cet4.controlled-translation",
+      "type": "completion",
+      "prompt": "译出“参观者通常需要提前预约”。仅从usually、normally、always、occasionally中选一词填空；允许两个符合原意的词分别作答：Visitors ____ need to book in advance.",
+      "explanation": "usually与normally在此都能表达通常情况；always把频率提高到没有例外，occasionally则降低为偶尔。",
+      "hint": "检查所选词是否表达常态，同时允许存在例外。",
+      "instruction": "填写符合要求的答案",
+      "difficultyReason": "常见服务情境的一词受控翻译，保留频率意义。",
+      "acceptedAnswers": [
+        "usually",
+        "normally"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet4.astra.a13",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "prompt": "对方发来：Could you send me the figures soon? 你愿意配合，但需要知道明确截止时间。选最直接解决这个信息缺口的回复。",
+      "explanation": "d先表示愿意，再询问截止时间；其他回复没有解决soon的模糊性。",
+      "hint": "检查回复是否在表达合作后，询问当前缺少的信息。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项均为合作性回应，只能依据需要澄清的信息类型区分。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Certainly. Which format would you like them in?"
+        },
+        {
+          "id": "b",
+          "text": "Of course. Which period should the figures cover?"
+        },
+        {
+          "id": "c",
+          "text": "Happy to help. Who else should receive a copy?"
+        },
+        {
+          "id": "d",
+          "text": "Certainly. What time do you need them by?"
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "cet4.astra.a15",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "prompt": "读句子：The team had two possible designs. After comparing the costs, they settled on the simpler one. settled on在这里表示什么？",
+      "explanation": "settle on在比较备选项的语境中表示最终选择。",
+      "hint": "将短语放回比较方案的过程，判断它对应哪个阶段。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项均为自然的方案处理阶段，依据settled on区分决定与其他动作。",
+      "options": [
+        {
+          "id": "a",
+          "text": "比较后暂时搁置简单方案"
+        },
+        {
+          "id": "b",
+          "text": "比较后开始修改简单方案"
+        },
+        {
+          "id": "c",
+          "text": "比较后最终选定简单方案"
+        },
+        {
+          "id": "d",
+          "text": "比较后重新讨论简单方案"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet4.astra.a16",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "prompt": "已知：The website was unavailable for an hour. Several people could not complete their bookings. 哪句把前一事实作为后一事实的原因？",
+      "explanation": "b将网站不可用置于because从句，将无法预订作为结果。",
+      "hint": "给两件事分别标出原因和结果，再核对连接词两侧。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "比较可成句但意义不同的连接方式。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The website was unavailable because several people could not complete their bookings."
+        },
+        {
+          "id": "b",
+          "text": "Because the website was unavailable, several people could not complete their bookings."
+        },
+        {
+          "id": "c",
+          "text": "The website was unavailable unless several people completed their bookings."
+        },
+        {
+          "id": "d",
+          "text": "Several people could not complete their bookings so that the website would be unavailable."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet4.astra.a17",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "prompt": "消息写着：I've tried to contact the supplier, but I haven't heard back yet. 哪句转述准确？",
+      "explanation": "原文确认尝试联系且截至现在未获回复，没有给出拒绝或承诺。",
+      "hint": "区分已经做出的尝试、目前收到的回应与尚不明确的原因。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "沟通状态保义转述，含时间范围so far。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The supplier has refused the request."
+        },
+        {
+          "id": "b",
+          "text": "No attempt has been made to contact the supplier."
+        },
+        {
+          "id": "c",
+          "text": "The supplier has promised to reply today."
+        },
+        {
+          "id": "d",
+          "text": "Contact has been attempted, but no reply has arrived so far."
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "cet4.astra.a18",
+      "goalId": "cet4.controlled-translation",
+      "type": "completion",
+      "prompt": "表达“原定周一的活动推迟到了周三”，不是取消。仅将postpone或cancel中的一个改成适当形式填空：The event originally planned for Monday has been ____ until Wednesday.",
+      "explanation": "postpone表示延后，has been后用过去分词postponed；cancel表示取消，不能保留改期举办的原意。",
+      "hint": "先依据安排是否仍会发生来选词，再检查空格前的结构。",
+      "instruction": "填写符合要求的答案",
+      "difficultyReason": "先作语义决策，再完成受控被动表达。",
+      "acceptedAnswers": [
+        "postponed"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet4.astra.b07",
+      "goalId": "cet4.pragmatics",
+      "type": "matching",
+      "prompt": "把每条完整回应与它的主要交际功能配对。",
+      "explanation": "第一句确认文件；第二句先认可再提出不足；第三句道歉并补上名字。",
+      "hint": "看每句话在推动什么：弄清所指、讨论分歧，还是修复已经发生的问题。",
+      "instruction": "将相关的两项配对",
+      "difficultyReason": "辨析成熟但常见的协作语用。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "By 'the final version', do you mean the file you sent this morning?"
+        },
+        {
+          "id": "l2",
+          "text": "I see your point, but a shorter break may not give everyone enough time."
+        },
+        {
+          "id": "l3",
+          "text": "I'm sorry I left your name out. I'll add it before sending the list."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "承认疏漏并提出补救"
+        },
+        {
+          "id": "r2",
+          "text": "确认对方所指的具体对象"
+        },
+        {
+          "id": "r3",
+          "text": "承认对方观点后提出保留意见"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r3"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ]
+    }
+  ]
+}

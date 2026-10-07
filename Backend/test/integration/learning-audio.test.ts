@@ -117,7 +117,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         audio: { assetId: orderingAudio.metadata.id },
       });
       expect(started.attempt.unit.questions[2]).not.toHaveProperty("acceptedOrders");
-      expect(started.attempt.unit.questions[2]?.audio).not.toHaveProperty("text");
+      expect(started.attempt.unit.questions[2]).not.toHaveProperty("audio.text");
       attemptId = started.attempt.id;
       app = await buildApp(config, { logger: false });
       registerLearningRoutes(

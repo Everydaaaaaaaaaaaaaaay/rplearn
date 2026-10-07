@@ -56,6 +56,16 @@ export async function loadBankCatalog(directory: string) {
       level: unit.level,
       topic: rule.topic,
       prerequisiteGoalIds: unit.prerequisiteGoalIds,
+      // 完整故事与抽出的题目独立；不能把只有首镜头的旧单元误当完整开场。
+      ...(unit.beats.every((beat) => beat.afterQuestion === 0)
+        ? {
+            openingStory: {
+              title: unit.summary,
+              scene: unit.scene,
+              beats: unit.beats,
+            },
+          }
+        : {}),
       slots: unit.questions.map((q) => ({ goalId: q.goalId, type: q.type })),
     });
   });

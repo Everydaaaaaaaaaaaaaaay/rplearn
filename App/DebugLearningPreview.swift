@@ -115,11 +115,13 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
                 if let questionID { return question.id == questionID }
                 return question.type.rawValue == kind
             }) else { throw unavailable }
+            let showStory = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_STORY"] == "1"
             let publicUnit = try JSONSerialization.jsonObject(with: JSONEncoder().encode(unit))
             return try decode(["id": UUID().uuidString, "characterId": characterID.uuidString,
                 "level": unit.level, "revision": 1, "startedAt": "2026-09-26T00:00:00Z",
-                "firstCompletedAt": "2026-09-26T00:00:00Z", "correctQuestionIds": [],
-                "round": ["id": UUID().uuidString, "ordinal": 1, "questionIds": [question.id], "completed": false, "answers": []],
+                "firstCompletedAt": showStory ? NSNull() : "2026-09-26T00:00:00Z", "correctQuestionIds": [],
+                "round": ["id": UUID().uuidString, "ordinal": showStory ? 0 : 1,
+                    "questionIds": showStory ? unit.questions.map(\.id) : [question.id], "completed": false, "answers": []],
                 "unit": publicUnit])
         }
         let supported = ["choice", "arrange", "audioArrange", "matching", "completion", "listeningChoice", "dictation"]

@@ -159,9 +159,9 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
       fail("内容已变化，需要重新逐题审核。");
     if (
       unit.authorship.kind !== "authored" ||
-      !["oliver", "ruby", "marcus"].includes(unit.roleKey)
+      !["oliver", "ruby", "marcus", "companion"].includes(unit.roleKey)
     )
-      fail("此目录只接收主角色的亲自编写内容；生成内容走独立审核路径。");
+      fail("此目录只接收主角色或通用同行者的亲自编写内容；生成内容走独立审核路径。");
     if (
       unit.authorship.reviewedBy !== review.reviewer ||
       unit.authorship.reviewedAt !== review.reviewedAt

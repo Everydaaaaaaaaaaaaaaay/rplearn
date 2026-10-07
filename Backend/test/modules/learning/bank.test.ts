@@ -82,13 +82,13 @@ describe("公共题库内容与组卷", () => {
       bankIdentity({ ...question, tokens: [...question.tokens].reverse() }),
     );
   });
-  it("十二年级规则都能组成六题，原文与素材保留且不含重复题", () => {
+  it("各档按已审题量组卷，完整故事保持前置且不含重复题", () => {
     const candidates = catalog.entries.map((e): BankCandidate => ({
       ...e.question,
       seen: false,
       mastered: false,
     }));
-    expect(new Set(catalog.blueprints.map((b) => b.level)).size).toBe(12);
+    expect(new Set(catalog.blueprints.map((b) => b.level)).size).toBe(13);
     for (const b of catalog.blueprints) {
       const selected = assembleBankQuestions(
         b,
@@ -97,8 +97,8 @@ describe("公共题库内容与组卷", () => {
         new Set(),
         () => 0,
       );
-      expect(selected, b.id).toHaveLength(6);
-      expect(new Set(required(selected).map((q) => q.id)).size).toBe(6);
+      expect(selected, b.id).toHaveLength(b.slots.length);
+      expect(new Set(required(selected).map((q) => q.id)).size).toBe(b.slots.length);
       const unit = bankUnit(
         b,
         required(selected),
@@ -106,9 +106,30 @@ describe("公共题库内容与组卷", () => {
         "character.someone",
         "测试同行者",
       );
-      expect(unit.beats[1]?.speaker).toBe("测试同行者");
+      if (b.openingStory) {
+        expect(unit.beats).toEqual(b.openingStory.beats);
+        expect(unit.beats.every((beat) => beat.afterQuestion === 0)).toBe(true);
+        expect(unit.summary).toBe(b.openingStory.title);
+      } else {
+        expect(unit.beats[1]?.speaker).toBe("测试同行者");
+      }
       expect(unit.questions.map((q) => q.goalId)).toEqual(b.slots.map((s) => s.goalId));
     }
+  });
+  it("完整故事不能偷偷插入答题中，换角色不改故事和独立题目", () => {
+    const b = required(catalog.blueprints.find((b) => b.level === "undergraduate"));
+    const story = required(b.openingStory);
+    expect(story.beats).toHaveLength(3);
+    expect(b.slots).toHaveLength(18);
+    expect(
+      bankBlueprintSchema.safeParse({
+        ...b,
+        openingStory: {
+          ...story,
+          beats: story.beats.map((beat) => ({ ...beat, afterQuestion: 1 })),
+        },
+      }).success,
+    ).toBe(false);
   });
   it("换角色或局部编号不会改变题目身份，解释修正不会重发奖励", () => {
     const q = required(learningFixture().questions[0]);
