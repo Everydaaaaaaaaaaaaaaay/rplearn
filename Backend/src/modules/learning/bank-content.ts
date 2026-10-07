@@ -33,6 +33,7 @@ export const bankBlueprintSchema = z.strictObject({
   level: levelSchema,
   topic: z.enum(bankTags),
   prerequisiteGoalIds: z.array(id).max(30),
+  estimatedMinutes: unitSchema.shape.estimatedMinutes.optional(),
   openingStory: z
     .strictObject({
       title: z.string().trim().min(1).max(100),
@@ -260,7 +261,7 @@ export function bankUnit(
     title: blueprint.title,
     summary: blueprint.openingStory?.title ?? scene[0],
     scene: blueprint.openingStory?.scene ?? scene[1],
-    estimatedMinutes: questions.length > 6 ? 12 : 6,
+    estimatedMinutes: blueprint.estimatedMinutes ?? (questions.length > 6 ? 12 : 6),
     goalIds: [...new Set(questions.map((q) => q.question.goalId))],
     prerequisiteGoalIds: blueprint.prerequisiteGoalIds,
     references,

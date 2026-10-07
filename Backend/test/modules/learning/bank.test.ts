@@ -88,7 +88,7 @@ describe("公共题库内容与组卷", () => {
       seen: false,
       mastered: false,
     }));
-    expect(new Set(catalog.blueprints.map((b) => b.level)).size).toBe(13);
+    expect(new Set(catalog.blueprints.map((b) => b.level)).size).toBe(15);
     for (const b of catalog.blueprints) {
       const selected = assembleBankQuestions(
         b,
@@ -110,6 +110,7 @@ describe("公共题库内容与组卷", () => {
         expect(unit.beats).toEqual(b.openingStory.beats);
         expect(unit.beats.every((beat) => beat.afterQuestion === 0)).toBe(true);
         expect(unit.summary).toBe(b.openingStory.title);
+        expect(unit.estimatedMinutes).toBe(b.estimatedMinutes);
       } else {
         expect(unit.beats[1]?.speaker).toBe("测试同行者");
       }

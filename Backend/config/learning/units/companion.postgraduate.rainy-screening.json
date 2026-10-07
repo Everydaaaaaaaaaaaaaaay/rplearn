@@ -1,0 +1,591 @@
+{
+  "id": "companion.postgraduate.rainy-screening",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "postgraduate",
+  "title": "雨声里的放映",
+  "summary": "雨声里的放映",
+  "scene": "旧影院临时停电，你和同行者的电影之夜却没有就此结束。",
+  "estimatedMinutes": 14,
+  "goalIds": [
+    "cet6.evidence-scope",
+    "cet6.stance-intent",
+    "cet6.argument-links",
+    "cet6.faithful-rephrasing",
+    "cet6.precise-wording",
+    "cet6.discussion-clarification"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "cet.official.2016",
+      "unit": "六级阅读隐含意义、句间关系、贴切措辞及讨论澄清的局部练习",
+      "pages": "印刷2—4、9／PDF7—9、14",
+      "alignment": "依据一般题材及熟悉学术语境中的立场、信息范围、衔接和交际要求，亲编句子级微练习。作者另读印刷1、7—8页六级听力及结构说明，以界定本单元不包含的范围；不复制真题，不模拟整卷。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra六级独立作者；Codex主代理原题二审修订",
+    "reviewedBy": "Codex主代理逐题复核与故事审阅；Astra作者逐题自审",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "主代理重新核对十八道题的任务、选项、答案、提示、解析及逐题审阅记录，确认与已二审原稿相符。三段双语故事已读完，情节连贯、人物不绑定职业、全部前置；题目独立且不依赖故事。只作文字局部技能练习，不等同完整考试或独立教师效度审定。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion arrive at an old cinema as rain begins to fall. Tonight is the last showing of a film you have wanted to see for years. At the door, an attendant explains that water has reached the wiring in the main hall. The audience waits in the lobby, listening to rain tap against the glass.",
+      "translation": "你和同行者赶到旧影院时，雨刚落下来。你惦记了好几年的一部电影，今晚是最后一场。门口的工作人员说，主放映厅的线路进了水。观众暂时等在大堂里，听雨点敲着玻璃。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "A small room upstairs still has power. The attendant finds a portable projector, and everyone helps carry chairs up the narrow stairs. You hold one corner of a white sheet while your companion secures the other. Just as the opening image appears, a draught lifts the sheet, and the whole audience laughs.",
+      "translation": "楼上一间小活动室还通着电。工作人员找来便携投影仪，大家沿着窄楼梯把椅子搬上去。你扶住白床单的一角，同行者固定另一角。片头刚亮起来，一阵穿堂风掀起了床单，屋里的人都笑了。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Your companion closes the window, and the picture settles into place. For the next hour, the room grows quiet except for the film and the rain. When the credits end, nobody rushes away. Outside, the clouds have parted. You step around a puddle together, still talking about the scene that made you both laugh.",
+      "translation": "同行者关上窗，画面终于稳住了。接下来的一个小时，屋里只剩电影和雨的声音。片尾字幕结束后，大家都没有急着走。门外的云已经散开，你们一起绕过水洼，还在说刚才让两个人都笑出声的那一幕。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet6.a01",
+      "goalId": "cet6.evidence-scope",
+      "type": "choice",
+      "prompt": "读简报：People who attended the optional study sessions reported high levels of confidence. The survey did not ask how confident they had felt beforehand. 哪个概括保留了证据边界？",
+      "explanation": "记录只说明参加者自报信心较高。没有参加前数据，不能确立增长；也没有未参加者的数据，不能确立两组差异或参与与信心的关联。",
+      "hint": "逐项检查比较所需的数据是否真的出现在简报中。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级识别：证据限定",
+      "options": [
+        {
+          "id": "a",
+          "text": "Attendees reported high confidence, indicating that their confidence had increased during the sessions."
+        },
+        {
+          "id": "b",
+          "text": "Attendees reported high confidence, but the survey did not establish an increase in their confidence."
+        },
+        {
+          "id": "c",
+          "text": "Attendees reported high confidence, indicating higher confidence than among people who did not attend."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.a03",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "choice",
+      "prompt": "原句：The absence of complaints does not necessarily mean that users are satisfied. 选择保义转述。",
+      "explanation": "原句只否认无投诉足以确立满意，仍容许满意或不满意。没有提供从沉默推断不满意的依据。",
+      "hint": "分清否定一种推断与肯定相反结论。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级识别：否定推断",
+      "options": [
+        {
+          "id": "a",
+          "text": "Users may be satisfied, but their failure to complain provides sufficient confirmation."
+        },
+        {
+          "id": "b",
+          "text": "Users may be satisfied, but their failure to complain is insufficient to establish that."
+        },
+        {
+          "id": "c",
+          "text": "Users may be satisfied, but their failure to complain suggests that they are dissatisfied."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.a06",
+      "goalId": "cet6.discussion-clarification",
+      "type": "choice",
+      "prompt": "讨论中对方说：I worry that the proposed changes will reduce access. 你还不知道他指费用还是开放时间。选最有助于澄清的一句。",
+      "explanation": "a确认access具体指什么，并保留其他可能。b预设费用是主要担忧；c在未澄清前将问题限定为开放时间并寻求解决方案。",
+      "hint": "先确认对方担忧的具体指向，避免替对方下结论。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级识别：讨论修复",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do you mean the fee would limit access, the opening hours would, or something else would?"
+        },
+        {
+          "id": "b",
+          "text": "Could you explain why the fee is your main concern, rather than the opening hours?"
+        },
+        {
+          "id": "c",
+          "text": "Could you suggest longer opening hours so that we can resolve your concern about access?"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet6.b01",
+      "goalId": "cet6.stance-intent",
+      "type": "choice",
+      "prompt": "短评：The proposal is promising, though its long-term effects remain uncertain. 作者的态度最接近哪项？",
+      "explanation": "promising给予正面评价，long-term effects uncertain保留长期效果判断。",
+      "hint": "综合评价词和保留部分，不要只取其中半句。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级识别：双层态度",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cautiously positive."
+        },
+        {
+          "id": "b",
+          "text": "Entirely dismissive."
+        },
+        {
+          "id": "c",
+          "text": "Certain of lasting success."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet6.b04",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "choice",
+      "prompt": "原句：The revised procedure is no less reliable than the original, except when records are incomplete. 选择严格保留原意、且不替例外情形添加结果的转述。",
+      "explanation": "no less reliable表示至少同样可靠，允许相等或更可靠；except排除记录不完整的情况，但未说明例外中的具体可靠程度或是否做过比较。a完整保留这两个边界。",
+      "hint": "检查比较表达是否容许相等或更高，并区分排除一种情形与说明该情形的具体结果。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级识别：否定比较与例外范围",
+      "options": [
+        {
+          "id": "a",
+          "text": "With complete records, the revised procedure is at least as reliable as the original; incomplete records are an exception to that assessment."
+        },
+        {
+          "id": "b",
+          "text": "With complete records, the revised procedure is more reliable than the original; with incomplete records, the two are equally reliable."
+        },
+        {
+          "id": "c",
+          "text": "With complete records, the two procedures are equally reliable; with incomplete records, their reliability has not been compared."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet6.b06",
+      "goalId": "cet6.argument-links",
+      "type": "choice",
+      "prompt": "读两句：Online access removes the need to travel. It does not, however, remove the need for a reliable connection. 第二句的作用是什么？",
+      "explanation": "第二句保留免于旅行这一好处，只补充稳定连接仍是要求。没有评价该好处因此失去价值，也没有把连接需求说成免旅行的原因。",
+      "hint": "找出两句分别谈的是哪一种要求。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级识别：论证限定",
+      "options": [
+        {
+          "id": "a",
+          "text": "重新审视第一句的好处，暗示稳定连接会使免于旅行的便利失去价值。"
+        },
+        {
+          "id": "b",
+          "text": "保留第一句的好处，同时指出免于旅行并没有取消稳定连接这项要求。"
+        },
+        {
+          "id": "c",
+          "text": "解释第一句的好处，指出正是稳定连接的需求使人不再需要旅行。"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.a07",
+      "goalId": "cet6.argument-links",
+      "type": "arrange",
+      "prompt": "用全部词块组成一句：承认方案不完美，仍认为值得试行。",
+      "explanation": "Although引导让步，主句表达仍值得试行；没有声称值得永久推行。",
+      "hint": "让步从句提供保留，主句承担最终评价。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "六级受控运用：让步组织",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "the proposal has limitations,"
+        },
+        {
+          "id": "b",
+          "text": "a trial."
+        },
+        {
+          "id": "c",
+          "text": "Although"
+        },
+        {
+          "id": "d",
+          "text": "it is worth"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "a",
+          "d",
+          "b"
+        ]
+      ]
+    },
+    {
+      "id": "cet6.a08",
+      "goalId": "cet6.precise-wording",
+      "type": "completion",
+      "prompt": "从 suggests、proves、guarantees 中选词。记录只有一次小规模观察，写作时要表达“提示一种可能”：This observation ____ that the layout may affect participation.",
+      "explanation": "suggests与may共同保留不确定性；一次观察不能据此宣称证明或保证。",
+      "hint": "核对动词承诺的确定程度是否与证据量匹配。",
+      "instruction": "按题干给定词库填写答案",
+      "difficultyReason": "六级受控运用：审慎措辞",
+      "acceptedAnswers": [
+        "suggests"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet6.a05",
+      "goalId": "cet6.argument-links",
+      "type": "matching",
+      "prompt": "将三句与它在讨论中的作用配对，每项用一次。",
+      "explanation": "Granted引入让步承认；For instance举例；Taken together汇总已有发现。",
+      "hint": "观察每句如何定位自己与前后论述的关系。",
+      "instruction": "将相关的两项逐一配对",
+      "difficultyReason": "六级识别：论证功能",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Granted, the initial cost is high."
+        },
+        {
+          "id": "l2",
+          "text": "For instance, the library now lends tools as well as books."
+        },
+        {
+          "id": "l3",
+          "text": "Taken together, these findings support a limited trial."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "汇总前文形成有限结论"
+        },
+        {
+          "id": "r2",
+          "text": "先承认一个不利因素"
+        },
+        {
+          "id": "r3",
+          "text": "提供具体例子"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r3"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ]
+    },
+    {
+      "id": "cet6.b07",
+      "goalId": "cet6.precise-wording",
+      "type": "completion",
+      "prompt": "从 associated、responsible、identical 中填一词：The study found that flexible hours were ____ with lower reported stress; it did not establish a causal link.",
+      "explanation": "associated with表达相关；responsible通常接for并带原因责任意义，identical with表示相同。",
+      "hint": "让前半句的关系强度与分号后的限制保持一致。",
+      "instruction": "按题干给定词库填写答案",
+      "difficultyReason": "六级受控运用：相关搭配",
+      "acceptedAnswers": [
+        "associated"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet6.b08",
+      "goalId": "cet6.argument-links",
+      "type": "arrange",
+      "prompt": "用全部词块组成一句，表达应当保留纸质选择，并给出理由。",
+      "explanation": "保留纸质选择是主张，不是人人都有稳定网络是理由。",
+      "hint": "先定位主张，再把解释该主张的理由接上。",
+      "instruction": "用全部词块完成表达",
+      "difficultyReason": "六级受控运用：理由衔接",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "because"
+        },
+        {
+          "id": "b",
+          "text": "has reliable internet access."
+        },
+        {
+          "id": "c",
+          "text": "A paper option should remain available"
+        },
+        {
+          "id": "d",
+          "text": "not everyone"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "a",
+          "d",
+          "b"
+        ]
+      ]
+    },
+    {
+      "id": "cet6.a15",
+      "goalId": "cet6.argument-links",
+      "type": "completion",
+      "prompt": "只从 Nevertheless、Consequently、Similarly 选一词。The only room large enough is being repaired, and no alternative venue is available. ____, the meeting has been postponed.",
+      "explanation": "无可用场地与会议延期构成因果结果关系。",
+      "hint": "判断第二句是前述条件造成的结果、与之相反，还是平行的例子。",
+      "instruction": "按题干给定词库填写答案",
+      "difficultyReason": "六级迁移：句间逻辑",
+      "acceptedAnswers": [
+        "Consequently"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet6.a13",
+      "goalId": "cet6.evidence-scope",
+      "type": "choice",
+      "prompt": "报告写道：The service received fewer complaints this year, but it also served substantially fewer users. 哪个后续问题最直接帮助判断投诉是否相对减少？",
+      "explanation": "b把两年投诉数置于相同用户基准。a仍只比较投诉总量，c区分投诉内容，均不能直接判断投诉相对用户规模是否减少。",
+      "hint": "两年的总体规模不同，检查比较有没有共同基准。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级迁移：理解比较限定",
+      "options": [
+        {
+          "id": "a",
+          "text": "By what percentage did the total number of complaints fall between the two years?"
+        },
+        {
+          "id": "b",
+          "text": "How many complaints were recorded per thousand users in each of the two years?"
+        },
+        {
+          "id": "c",
+          "text": "How many of the complaints recorded this year concerned delays rather than staff behaviour?"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.a14",
+      "goalId": "cet6.precise-wording",
+      "type": "choice",
+      "prompt": "你给合作方写正式反馈，希望指出结论还缺支持，并要求补充依据。哪句最符合这个目的？",
+      "explanation": "三项都是礼貌正式的建议。只有b要求补充证据如何支持结论，a关注可读性，c关注实施步骤。",
+      "hint": "先确定需要对方补充的是依据、表达方式，还是实施办法。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级迁移：反馈语域",
+      "options": [
+        {
+          "id": "a",
+          "text": "The conclusion would be clearer if you replaced the technical terms with more familiar language."
+        },
+        {
+          "id": "b",
+          "text": "The conclusion would be more convincing if you explained how the evidence supports it."
+        },
+        {
+          "id": "c",
+          "text": "The conclusion would be more useful if you set out the practical steps needed to implement it."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.a16",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "matching",
+      "prompt": "将三句审稿意见与严格保留判断来源和否定范围的释义配对，每项用一次。",
+      "explanation": "l1否定claim这一行为，不能据此断言审稿人持相反看法；l2把否定放在审稿人明确提出的判断内容中；l3表示没有质疑某主张，不等于审稿人亲自证明或明确支持该主张。",
+      "hint": "确定否定词作用于提出判断、判断内容，还是质疑行为；不要把沉默改写成立场。",
+      "instruction": "将相关的两项逐一配对",
+      "difficultyReason": "六级迁移：元话语归属与否定范围",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The reviewers do not claim that the evidence rules out other explanations."
+        },
+        {
+          "id": "l2",
+          "text": "The reviewers claim that the evidence does not rule out other explanations."
+        },
+        {
+          "id": "l3",
+          "text": "The reviewers do not dispute the claim that the evidence rules out other explanations."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "审稿人提出判断：证据没有排除其他解释。"
+        },
+        {
+          "id": "r2",
+          "text": "审稿人没有质疑“证据排除了其他解释”这一主张。"
+        },
+        {
+          "id": "r3",
+          "text": "审稿人没有提出“证据排除了其他解释”这一判断。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r3"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r2"
+        }
+      ]
+    },
+    {
+      "id": "cet6.b13",
+      "goalId": "cet6.evidence-scope",
+      "type": "choice",
+      "prompt": "摘要：Of the residents who chose to complete our online survey, 72% favoured the plan. 哪句用于报告最忠于原文？",
+      "explanation": "百分比的分母是自行完成线上调查的居民。具备网络条件或被邀请参与的人群，都不等于实际回应者。",
+      "hint": "核对百分比对应的人群，别把未回应者也加入。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级迁移：样本人群限定",
+      "options": [
+        {
+          "id": "a",
+          "text": "Among residents with internet access, 72% supported the plan presented in the survey."
+        },
+        {
+          "id": "b",
+          "text": "Among residents who chose to respond online, 72% supported the plan presented in the survey."
+        },
+        {
+          "id": "c",
+          "text": "Among residents invited to complete the online survey, 72% supported the plan it presented."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.b15",
+      "goalId": "cet6.argument-links",
+      "type": "matching",
+      "prompt": "将每条记录与它自身明确存在的限制配对，每项用一次。",
+      "explanation": "三条分别限制参与人群、测试环境和时间范围。",
+      "hint": "只配材料明说没覆盖的范围，不猜测遗漏后会得到什么结果。",
+      "instruction": "将相关的两项逐一配对",
+      "difficultyReason": "六级迁移：论据适用边界",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The interviews involved only people who had renewed their membership."
+        },
+        {
+          "id": "l2",
+          "text": "The equipment was tested indoors, not in rain."
+        },
+        {
+          "id": "l3",
+          "text": "The report describes immediate reactions, with no later follow-up."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "长期表现未被观察。"
+        },
+        {
+          "id": "r2",
+          "text": "未纳入未续费者的看法。"
+        },
+        {
+          "id": "r3",
+          "text": "雨中表现未被检验。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r3"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ]
+    },
+    {
+      "id": "cet6.b18",
+      "goalId": "cet6.discussion-clarification",
+      "type": "choice",
+      "prompt": "讨论结束前，双方已同意试行，但尚未同意评估成功的标准。哪句总结最准确？",
+      "explanation": "a准确区分已同意试行与未确定成功标准。b互换已决与未决事项，c将标准已定但执行方式未定当成当前分歧。",
+      "hint": "分别记录已达成共识的部分与仍需决定的部分。",
+      "instruction": "选择最符合题意的一项",
+      "difficultyReason": "六级迁移：讨论归纳",
+      "options": [
+        {
+          "id": "a",
+          "text": "We've agreed to a trial; the criteria for assessing its success still need to be settled."
+        },
+        {
+          "id": "b",
+          "text": "We've agreed on the success criteria; whether to conduct a trial still needs to be settled."
+        },
+        {
+          "id": "c",
+          "text": "We've agreed to a trial and its success criteria; how to apply those criteria still needs to be settled."
+        }
+      ],
+      "answer": "a"
+    }
+  ]
+}

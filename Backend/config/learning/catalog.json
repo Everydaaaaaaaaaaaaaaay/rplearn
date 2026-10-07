@@ -356,12 +356,27 @@
       "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
       "edition": "教育部考试中心、全国大学英语四、六级考试委员会；2016年修订版",
       "readAt": "2026-10-07",
-      "scope": "主代理核读印刷1—6／PDF6—11；四级作者另核读列明样卷页并目视能力页和样卷页。本批只参考熟悉场景的词义、衔接、信息、交际和句子译义局部技能。",
+      "scope": "主代理核读印刷1—6／PDF6—11；四级作者另核读列明样卷页并目视能力页和样卷页。本批只参考熟悉场景的词义、衔接、信息、交际和句子译义局部技能。 六级作者另核读印刷1—4、7—9／PDF6—9、12—14并目视能力正文和六级结构页；六级单元参考隐含意义、观点态度、句间关系、贴切措辞及讨论澄清要求。",
       "limitations": "不是最新考试政策声明，不复制官方题文，不模拟全卷或宣称考试等值。官方目录仍列2016修订大纲；完整听力、篇章阅读、写作与翻译测评未实现。",
       "evidence": [
         {
           "locator": "官方2016修订版PDF，主代理核读印刷1—6；本地research/cet-2016.pdf",
           "sha256": "9166d3c03b7bc43abd9d9df91bd2ef8085b4419286f1e5ca100dea68f3cfd1f1"
+        }
+      ]
+    },
+    {
+      "id": "cse.official.search.2024",
+      "title": "中国英语能力等级量表2024版官方描述语检索工具",
+      "url": "https://cse.neea.edu.cn/html1/folder/2503/1-1.htm",
+      "edition": "GF 0018-2024；官方检索数据2026-10-07快照",
+      "readAt": "2026-10-07",
+      "scope": "实际核读顶层2、3及功能条目802、2404、2805、3505、3516、4708、8507、8706、8808、9105、9509。",
+      "limitations": "七八级仅为描述语检索范围，本产品短任务不构成达级认证；网页条目无页码。口头说明的转述功能在本组迁移为文字任务，不声称测得口语或听力。",
+      "evidence": [
+        {
+          "locator": "官方ability.json完整快照；build/learning-expansion-20261007/research/cse-2024-search.json",
+          "sha256": "290d507765a9ae2767eaf6a871f896139ededea56843fe622d293c0b17f1bc95"
         }
       ]
     }
@@ -1216,6 +1231,114 @@
       "sourceIds": [
         "cet.official.2016"
       ]
+    },
+    {
+      "id": "cet6.evidence-scope",
+      "level": "postgraduate",
+      "canDo": "能在短篇调查与报告表述中辨认已观察事实、比较基准和样本人群的范围。",
+      "boundaries": "不将无基线的高水平当作增长，不从参与者数据推断未参与者；不测统计计算或专业研究方法。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.stance-intent",
+      "level": "postgraduate",
+      "canDo": "能综合正面评价与保留条款判断作者在熟悉公共议题上的立场。",
+      "boundaries": "本组只含文字态度判断，不以选择题代替真实听力或自由口语能力。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.argument-links",
+      "level": "postgraduate",
+      "canDo": "能区分让步、例证、汇总、因果与证据适用范围，并用给定词块组织理由。",
+      "boundaries": "句子级脚手架含跨档巩固，不冒充整篇学术论证或高级专业逻辑测量。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.faithful-rephrasing",
+      "level": "postgraduate",
+      "canDo": "能保留否定范围、比较强度、例外条件及转述立场归属。",
+      "boundaries": "不将未主张等同主张相反，不将未质疑等同证明；受控答案不覆盖自由改写全部形式。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.precise-wording",
+      "level": "postgraduate",
+      "canDo": "能按证据强度选择常见论述措辞，并以正式反馈要求补足支持关系。",
+      "boundaries": "不以生僻词汇或专业知识提高难度；相关、提示、证明不可互换。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.discussion-clarification",
+      "level": "postgraduate",
+      "canDo": "能询问异议的具体指向，并准确总结已达成和仍待解决的讨论事项。",
+      "boundaries": "判断题内明确的交流状态，不预设对方动机；不据选择题声称已具备自由讨论表现。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "advanced.evidence-causality",
+      "level": "advanced",
+      "canDo": "能依据题内证据区分观察关系、因果解释、未确立差异及主观与客观指标。",
+      "boundaries": "不需要专业统计知识；不把弱化词当作越界因果结论的补救，不代表完整研究方法能力。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
+    },
+    {
+      "id": "advanced.attribution-responsibility",
+      "level": "advanced",
+      "canDo": "能保留转述来源、引用范围以及主张、实测、预测之间的责任区别。",
+      "boundaries": "只练受控文字转述；不声称测试自由口语、独立文献检索或学术引用格式。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
+    },
+    {
+      "id": "advanced.diplomatic-clarification",
+      "level": "advanced",
+      "canDo": "能明确澄清信息缺口，并在专业讨论中区分异议、保留判断及术语澄清。",
+      "boundaries": "判断交际目的而非挑选最礼貌句；所有专业背景在题内，不推测人物职业。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
+    },
+    {
+      "id": "advanced.semantic-register",
+      "level": "advanced",
+      "canDo": "能区分承认、核实、支持等立场动词，并按中性报告目的选择措辞。",
+      "boundaries": "常见词承载精确意义；不考稀有术语，也不把某个词在全部语境中判为不当。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
+    },
+    {
+      "id": "advanced.faithful-reformulation",
+      "level": "advanced",
+      "canDo": "能在受控压缩或展开中保留评价维度、事件对象、归因和模态限制。",
+      "boundaries": "给定词块或选项限制形式；不以单一字符串衡量开放写作，不能增加原因与动机。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
+    },
+    {
+      "id": "advanced.cohesion-modal-scope",
+      "level": "advanced",
+      "canDo": "能识别无法排除与倾向认定的差别，并以让步或替代解释表达指定论证关系。",
+      "boundaries": "仅为七八级描述语相关功能的局部练习，不承诺产品advanced等同CSE七级或八级。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
     }
   ],
   "unitIds": [
@@ -1306,7 +1429,9 @@
     "ruby.primary2.cafe-actions",
     "marcus.primary2.photo-time",
     "marcus.primary2.street-directions",
-    "companion.undergraduate.clear-messages"
+    "companion.undergraduate.clear-messages",
+    "companion.postgraduate.rainy-screening",
+    "companion.advanced.waiting-room"
   ],
   "audioAssets": [
     {

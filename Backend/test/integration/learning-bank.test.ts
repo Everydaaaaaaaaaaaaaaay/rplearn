@@ -103,7 +103,12 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     for (const level of new Set(catalog.blueprints.map((b) => b.level))) {
       const id = await c.character();
       const a = await c.start(id, level);
-      expect(a.unit.questions).toHaveLength(level === "undergraduate" ? 18 : 6);
+      const isAdult = ["undergraduate", "postgraduate", "advanced"].includes(level);
+      expect(a.unit.questions).toHaveLength(isAdult ? 18 : 6);
+      if (isAdult) {
+        expect(a.unit.beats).toHaveLength(3);
+        expect(a.unit.beats.every((beat) => beat.afterQuestion === 0)).toBe(true);
+      }
       expect(a.unit.level).toBe(level);
       expect(JSON.stringify(a.unit)).not.toContain('"acceptedAnswers"');
       expect(JSON.stringify(a.unit)).not.toContain('"explanation"');

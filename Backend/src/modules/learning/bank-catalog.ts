@@ -59,6 +59,7 @@ export async function loadBankCatalog(directory: string) {
       // 完整故事与抽出的题目独立；不能把只有首镜头的旧单元误当完整开场。
       ...(unit.beats.every((beat) => beat.afterQuestion === 0)
         ? {
+            estimatedMinutes: unit.estimatedMinutes,
             openingStory: {
               title: unit.summary,
               scene: unit.scene,

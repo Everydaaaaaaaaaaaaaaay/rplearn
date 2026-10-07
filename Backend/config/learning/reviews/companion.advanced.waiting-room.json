@@ -1,0 +1,683 @@
+{
+  "unitId": "companion.advanced.waiting-room",
+  "contentHash": "57225b164f6c530f1bbf7896a8ae7b813c37d1d91d24de46e467b07fefd876ef",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex主代理逐题复核与故事审阅；Astra作者逐题自审",
+  "reviewedAt": "2026-10-07",
+  "roleFit": "三段故事只有你与一般同行者，未绑定职业、姓名或性别。题目自足且不以故事作题目材料。",
+  "levelFit": "十二选择、两排序、两填空、两配对；六目标各三题。主要难度来自证据、归因、模态、语域及保义表达，受控排序不独立代表高级能力。",
+  "limitations": "首组十八道文字预设，四种交互；不包含音频、自由口语或开放写作，不声称完整考试或量表等级认证。已完成主代理逐题及故事审阅，尚无独立教师或真人效度审定。跨档脚手架不计为新的高阶能力覆盖。",
+  "questions": [
+    {
+      "questionId": "adv.astra.a01",
+      "standaloneContext": "独立题目，不需要开场或前题信息。一份报告写道：Teams that chose the new planning tool missed fewer deadlines than teams using the previous tool. Teams selected their own tools, and their previous performance was not recorded. 哪句结论最符合现有证据？",
+      "ambiguityReview": "比较对象明确为使用旧工具的团队，关联只指本次观察，不声称显著性、随机化或因果。提示要求区分观察和解释，未指向选项。",
+      "optionNotes": {
+        "a": "appears减弱确信程度，但reduced仍提出工具造成改善的因果解释。",
+        "b": "只记录工具选择与较少错过截止的观察关系，未解释机制。",
+        "c": "历史可靠性没有记录，不能断言可靠团队更可能选新工具。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a02",
+      "standaloneContext": "独立题目，不需要开场或前题信息。你只读过Park的综述。综述称早先的一项试验缩短了等候时间；你尚未找到原始报告。哪句能准确交代你实际查阅的来源？",
+      "ambiguityReview": "题干明确只读过综述，正确转述须显露这一来源层级，不评判原研究真实性。",
+      "optionNotes": {
+        "a": "confirms把原始试验写成直接确认依据，超过实际查阅材料。",
+        "b": "our review of the trial暗示亲自审阅试验，隐去二手来源。",
+        "c": "把报告责任归于实际读过的Park综述，保留试验结果的二手性质。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a04",
+      "standaloneContext": "独立题目，不需要开场或前题信息。会议纪要写：The panel acknowledged the cost concern but did not endorse postponement. 哪句展开准确？",
+      "ambiguityReview": "acknowledged不等于核验费用，did not endorse也不保证曾正式否决；不从未支持推断隐藏原因。",
+      "optionNotes": {
+        "a": "把承认担忧提升为核实估计，又把未支持提升为拒绝。",
+        "b": "保留注意到担忧与没有支持延期这两项立场边界。",
+        "c": "把未认可延期改为接受担忧作为延期理由，改变决定立场。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a06",
+      "standaloneContext": "独立题目，不需要开场或前题信息。设备报告写：We are not yet in a position to rule out a recording error, although the readings were consistent across three checks. 哪句解释保留了报告的证据边界？",
+      "ambiguityReview": "未能排除错误只说明证据未充分，不代表最倾向错误或错误很可能。三次一致仍是明确的观察事实。",
+      "optionNotes": {
+        "a": "保留一致性观察不足以排除错误的认识限制，没有给解释排名。",
+        "b": "将未排除的一种解释写成当前倾向解释，添加相对支持程度。",
+        "c": "将未排除写成likely，并把although让步变为because因果支持。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a09",
+      "standaloneContext": "独立题目，不需要开场或前题信息。合作方邮件要求提供a representative sample，却没有说明代表哪些人。你需要先确认抽样覆盖范围，再准备材料。哪句最合适？",
+      "ambiguityReview": "唯一任务是补齐样本代表的人群范围；三个问句均礼貌，不能靠语气排除。",
+      "optionNotes": {
+        "a": "直接询问样本应代表的人群，补齐当前准备材料所需信息。",
+        "b": "请求确认现有样本合格，预设已存在样本而未询问目标范围。",
+        "c": "询问代表性样本为何必要，未解决具体覆盖哪些人的问题。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b04",
+      "standaloneContext": "独立题目，不需要开场或前题信息。研究简报只需中性报告：二十人参与，十二人返回问卷。作者没有预设理想回收数量。哪句避免添加失望或赞许的评价？",
+      "ambiguityReview": "原文没有回收率目标；数量评价取决于本题明确的中性写作目的，不声称only在所有报告中不适当。",
+      "optionNotes": {
+        "a": "only添加数量偏少的评价，与不预设理想数量的任务不符。",
+        "b": "只保留二十人中十二人返回的数量事实，不增加评价。",
+        "c": "as many as强调数量可观，加入题内没有提供的评价尺度。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a13",
+      "standaloneContext": "独立题目，不需要开场或前题信息。报告已经说明费用估计较稳健，但未计入维护费。用全部词块重组原意：先承认估计稳健，最后强调尚未计入维护费这一保留项。",
+      "ambiguityReview": "先承认稳健、最后强调未计维护的篇章落点已明确。反向让步句可为合法英语，但不满足指定目的；判题仅适用给定词块。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t3",
+              "t1",
+              "t4",
+              "t2"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t3",
+              "t4",
+              "t2",
+              "t1"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a14",
+      "standaloneContext": "独立题目，不需要开场或前题信息。内部复核独立查证了数值，但没有查证作者提出的解释。只能从 verified / endorsed / proposed 中选一词填空：The reviewers ___ the figures, while leaving the explanation unassessed.",
+      "ambiguityReview": "受控词库只含verified、endorsed、proposed。verified描述核查；endorsed是支持，proposed是提出。不把词库外自由表达当成普遍错误。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "verified"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " VERIFIED. "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "endorsed"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "proposed"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a15",
+      "standaloneContext": "独立题目，不需要开场或前题信息。将报告句子与它实际承担的证据责任配对。每项使用一次。",
+      "ambiguityReview": "l1→r3为供应方主张且未表明独立核验；l2→r2是本方实测发现；l3→r1为未来估计，不推定估计方法或已完成实测。claims不自带说谎判断。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b13",
+      "standaloneContext": "独立题目，不需要开场或前题信息。事实是：作者们把变化解释为一种可能性，没有声称已经证实原因。用全部词块组成以The authors开头的准确转述。",
+      "ambiguityReview": "给定词块与The authors起句约束使顺序唯一。suggest that和may都需保留；交换increase与demand会倒转解释方向，不接受凭自由改写增删词块。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t2",
+              "t5",
+              "t4",
+              "t1",
+              "t3"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "t2",
+              "t5",
+              "t3",
+              "t1",
+              "t4"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b14",
+      "standaloneContext": "独立题目，不需要开场或前题信息。后一句需要提出另一种可能解释，不能把它写成前句的推论。只从 therefore / alternatively / similarly 中选择一词：The longer visits may reflect greater interest. ___, visitors may simply have had trouble finding the exit.",
+      "ambiguityReview": "题干规定第二句是竞争性解释；alternatively满足此关系。therefore把兴趣与找不到出口写成推论，similarly误标相似。仅判给定词库。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "alternatively"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "Alternatively."
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "therefore"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "similarly"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b15",
+      "standaloneContext": "独立题目，不需要开场或前题信息。为每句评审发言匹配最具体的交际动作。每项用一次。",
+      "ambiguityReview": "l1→r3澄清access的权限含义；l2→r1依据分组差异质疑结论；l3→r2等待资料。暂缓判断不等于反对，理解比较也不等于接受结论。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a07",
+      "standaloneContext": "独立题目，不需要开场或前题信息。两种页面布局各只试用了6人，完成时间波动很大。报告说：The trial did not establish a difference in speed. 哪句适合随后解释？",
+      "ambiguityReview": "did not establish只表明未确立差异；样本和波动帮助理解不确定性，不要求统计知识，也不声称已证实等效。",
+      "optionNotes": {
+        "a": "把未确立差异当作足以认定一样快，越过当前证据。",
+        "b": "保留差异仍有可能的状态，与未确立差异相容。",
+        "c": "建议中预设已识别较慢布局，但题内没有这个判断。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b06",
+      "standaloneContext": "独立题目，不需要开场或前题信息。顾客试用了新版说明书。十位说更清楚，另十位说没变化；没人评估完成任务的实际表现。哪句准确概括？",
+      "ambiguityReview": "报告测得的是顾客关于清晰度的自述，未测任务表现；半数来自十位与另外十位的明确分组，不将混合反馈概括为全组有效或无效。",
+      "optionNotes": {
+        "a": "把主观清晰度报告提升为已测得任务表现改善，偷换指标。",
+        "b": "将半数人认为更清楚的混合反馈概括为全组未改善，抹去分组。",
+        "c": "保留半数自述更清楚以及任务表现尚未评估两层边界。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b02",
+      "standaloneContext": "独立题目，不需要开场或前题信息。访谈原话是：The instructions were clear, but finding the right page took time. 哪种转述保留完整评价而不冒充逐字引语？",
+      "ambiguityReview": "navigation在此概括寻找页面过程，不表示理解难；正确项不加引号，不冒充逐字引用。",
+      "optionNotes": {
+        "a": "以间接概括保留说明清楚与找页耗时两个不同评价维度。",
+        "b": "引号里的easy to find没有出现在原话中，并与找页耗时相反。",
+        "c": "将定位页面的问题误改为理解说明困难，改变评价对象。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b05",
+      "standaloneContext": "独立题目，不需要开场或前题信息。比较记录：Version A took less time to learn. Version B led to fewer mistakes once users had learned it. Neither cost nor long-term use was assessed. 哪句是忠实的比较摘要？",
+      "ambiguityReview": "少花学习时间与学会后错误较少属于不同阶段；未评估费用与长期使用，不得生成整体排名或成本判断。",
+      "optionNotes": {
+        "a": "逐项保留A学习用时较少、B学会后错误较少的比较。",
+        "b": "增加整体速度优势与长期性价比，原文两者均未评估。",
+        "c": "by增加教学用时导致错误减少的因果机制，原文只给并列比较。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b08",
+      "standaloneContext": "独立题目，不需要开场或前题信息。同事依据白天采集的噪声记录，建议宣布场馆全天安静。你认可白天结果，但认为结论范围过大，希望补夜间记录。哪句最贴合？",
+      "ambiguityReview": "白天测量可支持白天结果，不覆盖全天；三个回应都礼貌，正确回应应针对夜间缺口。",
+      "optionNotes": {
+        "a": "认可现有白天证据，同时将全天主张延至补足夜间数据之后。",
+        "b": "要求改进呈现，却仍准备宣布全天安静，未解决证据范围。",
+        "c": "无据暗示夜间会更好，又延后已有白天证据的合理呈现。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b10",
+      "standaloneContext": "独立题目，不需要开场或前题信息。原句：The exclusion of incomplete forms reduced the number of responses analysed. 哪句展开为更直接的表达后仍只保留原有信息？",
+      "ambiguityReview": "原文减少的是纳入分析的回应数，不是产生回应的人数；排除不完整表格没有说明动机。",
+      "optionNotes": {
+        "a": "把排除后的分析数量减少改成参与回应人数减少，改变事件。",
+        "b": "展开名词化后保留剔除不完整表格和减少分析数量的关系。",
+        "c": "擅加让结果更好看的目的，将观察结果改成作者动机。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
