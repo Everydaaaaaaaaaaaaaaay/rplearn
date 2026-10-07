@@ -3,6 +3,62 @@ import XCTest
 /// 模拟器读取本工作树的正式素材：覆盖三角色实图、真录音播放结束与选图解锁，不提交成绩。
 @MainActor
 final class PrimaryChallengeMediaUITests: XCTestCase {
+    /// 正式成人素材：未听完不能提交，听完后支持重播、慢速和听写输入。
+    func testAdultRecordedListeningAndDictation() throws {
+        continueAfterFailure = false
+        let repository = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let directory = repository.appending(path: "Backend/config/learning")
+        let cases = [("companion.undergraduate.small-mountain", "cet4.astra.a02"),
+                     ("companion.undergraduate.small-mountain", "cet4.astra.b08")]
+        for (unitID, questionID) in cases {
+            let raw = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: directory.appending(path: "units/\(unitID).json"))) as? [String: Any])
+            let questions = try XCTUnwrap(raw["questions"] as? [[String: Any]])
+            let question = try XCTUnwrap(questions.first { $0["id"] as? String == questionID })
+            let audio = try XCTUnwrap(question["audio"] as? [String: String])
+            var visible = question.filter { ["id", "type", "goalId", "instruction", "prompt", "hint", "options"].contains($0.key) }
+            visible["audio"] = ["assetId": try XCTUnwrap(audio["assetId"])]
+            var unit = raw.filter { ["id", "version", "schemaVersion", "roleKey", "level", "title", "summary", "scene", "estimatedMinutes", "goalIds"].contains($0.key) }
+            unit["questions"] = [visible]; unit["beats"] = []
+            let app = XCUIApplication()
+            app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+                "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "unit-challenge",
+                "UI_TEST_LEARNING_LOCAL_MEDIA": "1", "UI_TEST_LEARNING_MEDIA_DIRECTORY": directory.path,
+                "UI_TEST_LEARNING_UNIT_JSON": String(decoding: try JSONSerialization.data(withJSONObject: unit), as: UTF8.self),
+                "UI_TEST_LEARNING_QUESTION_ID": questionID]
+            app.launch()
+            let check = app.buttons["检查"]
+            XCTAssertTrue(check.waitForExistence(timeout: 15))
+            let transcript = try XCTUnwrap(audio["text"])
+            XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label == %@", transcript)).firstMatch.exists, "答前不显示原文")
+            let play = app.buttons["learning.audio.play"]
+            reveal(play, in: app)
+            XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "播放听力"), object: play)], timeout: 10) == .completed)
+            if question["type"] as? String == "dictation" {
+                let input = app.textViews["填写答案"].exists ? app.textViews["填写答案"] : app.textFields["填写答案"]
+                reveal(input, in: app); input.tap(); input.typeText("Please save a copy, not just a link.")
+                let dismissKeyboard = app.buttons["收起键盘"]
+                XCTAssertTrue(dismissKeyboard.waitForExistence(timeout: 5))
+                XCTAssertEqual(dismissKeyboard.frame.midY, check.frame.midY, accuracy: 2, "输入时共用一行操作，不增加独立键盘工具栏")
+                XCTAssertFalse(app.buttons["暂时跳过，留待补答"].exists)
+                dismissKeyboard.tap()
+            } else {
+                let option = app.buttons["learning.option.a"]
+                reveal(option, in: app); option.tap()
+            }
+            XCTAssertFalse(check.isEnabled, "选择或输入不代替完整听音")
+            reveal(play, in: app); play.tap()
+            XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "再听一遍"), object: play)], timeout: 30) == .completed)
+            XCTAssertTrue(check.isEnabled)
+            XCTAssertLessThanOrEqual(app.otherElements["learning.audio.controls"].frame.height, 64)
+            app.buttons["learning.audio.slow"].tap()
+            XCTAssertTrue(app.buttons["停止播放"].waitForExistence(timeout: 5))
+            play.tap()
+            XCTAssertTrue(check.isEnabled, "已完整听过后，停止重播不撤销作答资格")
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = questionID + "-正式音频"; attachment.lifetime = .keepAlways; add(attachment)
+            app.terminate()
+        }
+    }
     func testPrimaryPicturesAndRecordedAudio() throws { try exercise(large: false) }
     func testPrimaryPicturesLargeTextDark() throws { try exercise(large: true) }
 

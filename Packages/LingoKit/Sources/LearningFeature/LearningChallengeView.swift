@@ -105,7 +105,8 @@ public struct LearningChallengeView: View {
                 Image(systemName: "xmark").font(.headline).frame(width: 44, height: 44)
             }.accessibilityLabel("退出挑战").disabled(model.isBusy)
             if case .story(let index) = model.stage {
-                Text("开场故事").font(.subheadline.weight(.semibold))
+                Text(model.attempt.unit.title).font(.subheadline.weight(.semibold))
+                    .lineLimit(1)
                 Spacer()
                 Text("\((model.openingBeatIndices.firstIndex(of: index) ?? 0) + 1) / \(model.openingBeatIndices.count)")
                     .font(.caption.monospacedDigit()).foregroundStyle(.secondary)
@@ -136,12 +137,12 @@ public struct LearningChallengeView: View {
     }
     private func story(_ beat: LearningBeat) -> some View {
         VStack(alignment: .leading, spacing: 26) {
-            Label(model.attempt.unit.title, systemImage: theme.symbol).font(.caption).foregroundStyle(theme.tint)
             HStack(spacing: 12) {
             AvatarBadge(name: character.displayName, size: 48, imageName: character.card.avatarAssetName,
                         remoteURL: character.card.avatarRemoteURL.flatMap(URL.init(string:)), usesPendingPlaceholder: true)
                 .accessibilityHidden(true)
-            Text(beat.speaker).font(.subheadline.bold()).foregroundStyle(theme.tint)
+            Text(["旁白", "同行者"].contains(beat.speaker) ? character.displayName : beat.speaker)
+                .font(.subheadline.bold()).foregroundStyle(theme.tint)
             }
             Text(beat.text).font(.system(.title2, design: .serif)).lineSpacing(8).fixedSize(horizontal: false, vertical: true)
             Button { showsTranslation.toggle() } label: {
@@ -149,7 +150,7 @@ public struct LearningChallengeView: View {
             }.buttonStyle(.bordered)
                 .accessibilityLabel(showsTranslation ? "收起中文" : "查看中文")
             if showsTranslation { Text(beat.translation).font(.body).foregroundStyle(.secondary).lineSpacing(5) }
-            if dynamicTypeSize.isAccessibilitySize { skipStoryButton }
+            if dynamicTypeSize.isAccessibilitySize && !model.isLastOpeningBeat { skipStoryButton }
             Spacer(minLength: 24)
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -181,7 +182,7 @@ public struct LearningChallengeView: View {
             }
             if !question.imageAssetIDs.isEmpty {
                 if pictures.state == .failed {
-                    LearningErrorBanner(message: "图片暂时没能载入。可以重试，也可以先跳过，稍后补答。") {
+                    LearningErrorBanner(message: "图片未能载入") {
                         Task { await pictures.prepare(attemptID: model.attempt.id, question: question) }
                     }.accessibilityIdentifier("learning.images.retry")
                 } else if !pictures.isReady(for: question) {
@@ -259,7 +260,7 @@ public struct LearningChallengeView: View {
                     .accessibilityIdentifier("learning.audio.slow")
             }
             if audio.state == .failed || audio.state == .interrupted {
-                Text(audio.state == .failed ? "声音暂时无法载入，请重试；也可先跳过。" : "播放已中断，轻点重听。")
+                Text(audio.state == .failed ? "声音未能载入" : "播放已中断")
                     .font(.caption).foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -281,7 +282,7 @@ public struct LearningChallengeView: View {
         case .arrange, .audioArrange:
             VStack(alignment: .leading, spacing: 18) {
                 LearningFlowLayout(spacing: 9) {
-                    if model.tokens.isEmpty { Text(question.type == .audioArrange ? "按听到的顺序放入卡片" : "点选词块，组成句子").foregroundStyle(.secondary).padding(10) }
+                    if model.tokens.isEmpty { Text(question.type == .audioArrange ? "听后排列" : "点选词块").foregroundStyle(.secondary).padding(10) }
                     ForEach(Array(model.tokens.enumerated()), id: \.element) { index, id in
                         tokenButton(question.tokens?.first { $0.id == id }?.text ?? "", selected: true) { model.tokens.remove(at: index) }
                             .accessibilityLabel("第 \(index + 1) 项，\(question.tokens?.first { $0.id == id }?.text ?? "")")
@@ -466,7 +467,7 @@ public struct LearningChallengeView: View {
     }
     private func feedbackCard(_ grade: LearningGrade, question: LearningQuestion) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label(grade.outcome == .correct ? (model.awardedPoints > 0 ? "答对了 · +\(model.awardedPoints) 点" : "答对了") : grade.outcome == .skipped ? "先留到下次" : "再认识一下这个表达",
+            Label(grade.outcome == .correct ? (model.awardedPoints > 0 ? "答对了 · +\(model.awardedPoints) 点" : "答对了") : grade.outcome == .skipped ? "已留待补答" : "正确答案",
                   systemImage: grade.outcome == .correct ? "checkmark.circle.fill" : "lightbulb")
                 .font(.headline).foregroundStyle(grade.outcome == .correct ? theme.tint : Color.primary)
             if grade.outcome != .correct { Text(solutionText(grade.solution, question: question)).font(.body.bold()) }
@@ -486,11 +487,10 @@ public struct LearningChallengeView: View {
                 Text("/ \(model.attempt.unit.questions.count) 题已掌握").foregroundStyle(.secondary)
             }
             VStack(alignment: .leading, spacing: 13) {
-                Text("本轮答对 \(model.roundPoints) 题").font(.headline)
-                Text("进度归入：\(learningLevelName(model.attempt.level))").font(.subheadline)
-                Text(model.attempt.remainingCount > 0 ? "还有 \(model.attempt.remainingCount) 道题可以补答，获得尚未拿到的进度。" : "这份单元的进度已经全部获得。继续聊天，开启下一段不同的挑战。")
+                Text("本轮 +\(model.roundPoints) 点").font(.headline)
+                Text(learningLevelName(model.attempt.level)).font(.subheadline)
+                Text(model.attempt.remainingCount > 0 ? "待补答 \(model.attempt.remainingCount) 题" : "全部完成")
                     .font(.subheadline).foregroundStyle(.secondary)
-                if model.attempt.firstCompletedAt == nil { Text("确认完成后，角色挑战条归零，重新从聊天积累。").font(.caption).foregroundStyle(.secondary) }
             }.modifier(LearningPaper())
             if model.attempt.firstCompletedAt != nil && model.attempt.remainingCount > 0 {
                 Button("补答剩余题目") { Task { await model.retry() } }.font(.headline).padding(.vertical, 12).disabled(model.isBusy)
@@ -501,16 +501,27 @@ public struct LearningChallengeView: View {
         VStack(spacing: 10) {
             switch model.stage {
             case .cover:
-                primary("开始故事") { model.advance() }
+                primary("进入") { model.advance() }.accessibilityLabel("开始故事")
             case .story:
-                primary(model.isLastOpeningBeat ? "开始答题" : "继续故事") { model.advance() }
-                if !dynamicTypeSize.isAccessibilitySize { skipStoryButton }
+                HStack(spacing: 12) {
+                    primary(model.isLastOpeningBeat ? "开始挑战" : "继续") { model.advance() }
+                        .accessibilityLabel(model.isLastOpeningBeat ? "开始答题" : "继续故事")
+                    if !dynamicTypeSize.isAccessibilitySize && !model.isLastOpeningBeat { skipStoryButton }
+                }
             case .question:
                 if model.feedback != nil { primary("继续") { model.advance() } }
                 else if model.hasUnconfirmedAnswer { primary("重新确认提交") { Task { await model.submit() } } }
                 else {
-                    primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
-                    if !dynamicTypeSize.isAccessibilitySize { skipQuestionButton }
+                    HStack(spacing: 12) {
+                        primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
+                        if inputFocused {
+                            Button { inputFocused = false } label: {
+                                Image(systemName: "keyboard.chevron.compact.down")
+                                    .font(.title3).frame(minWidth: 48, minHeight: 52)
+                                    .contentShape(Rectangle())
+                            }.buttonStyle(.plain).accessibilityLabel("收起键盘")
+                        } else if !dynamicTypeSize.isAccessibilitySize { skipQuestionButton }
+                    }
                 }
             case .summary:
                 if model.attempt.firstCompletedAt == nil { primary("完成本轮挑战") { Task { await model.finish() } } }
@@ -520,11 +531,15 @@ public struct LearningChallengeView: View {
             .background(.regularMaterial)
     }
     private var skipQuestionButton: some View {
-        Button("暂时跳过，留待补答") { inputFocused = false; audio.stop(); Task { await model.submit(skip: true) } }
-            .font(.subheadline).padding(8).disabled(model.isBusy)
+        Button { inputFocused = false; audio.stop(); Task { await model.submit(skip: true) } } label: {
+            Image(systemName: "forward.end").font(.title3).frame(minWidth: 48, minHeight: 52).contentShape(Rectangle())
+        }.buttonStyle(.plain).disabled(model.isBusy)
+            .accessibilityLabel("暂时跳过，留待补答")
     }
     private var skipStoryButton: some View {
-        Button("直接开始题目") { model.skipStory() }.font(.subheadline).padding(8)
+        Button { model.skipStory() } label: {
+            Image(systemName: "forward.end").font(.title3).frame(minWidth: 48, minHeight: 52).contentShape(Rectangle())
+        }.buttonStyle(.plain).accessibilityLabel("直接开始题目")
     }
     private func primary(_ title: String, disabled: Bool = false, action: @escaping () -> Void) -> some View {
         LearningPrimaryButton(title: title, tint: theme.tint, busy: model.isBusy, disabled: disabled, action: action)

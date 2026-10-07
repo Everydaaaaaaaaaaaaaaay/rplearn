@@ -138,18 +138,19 @@ final class ChallengeLayoutUITests: XCTestCase {
         app.launch()
         XCTAssertTrue(app.buttons["开始故事"].waitForExistence(timeout: 15))
         app.buttons["开始故事"].tap()
-        XCTAssertTrue(app.staticTexts["开场故事"].exists)
+        XCTAssertTrue(app.staticTexts["工程界面预览"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["A book falls open. A blue bookmark is inside."].exists)
         app.buttons["查看中文"].tap()
         XCTAssertTrue(app.staticTexts["一本书翻开了，里面夹着一枚蓝色书签。"].exists)
         app.buttons["继续故事"].tap()
         XCTAssertTrue(app.staticTexts["Here it is! Thank you."].exists)
         XCTAssertFalse(app.buttons["检查"].exists)
+        XCTAssertFalse(app.buttons["直接开始题目"].exists, "末段仅保留一个开始入口")
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "前置故事末段"; attachment.lifetime = .keepAlways; add(attachment)
         app.buttons["开始答题"].tap()
         XCTAssertTrue(app.buttons["检查"].exists)
-        XCTAssertFalse(app.staticTexts["开场故事"].exists)
+        XCTAssertFalse(app.staticTexts["工程界面预览"].exists)
     }
     func testQuestionControlsKeepExitAndPromptVisible() {
         continueAfterFailure = false
