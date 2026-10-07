@@ -2,6 +2,63 @@ import XCTest
 
 @MainActor
 final class ChallengeLayoutUITests: XCTestCase {
+    /// 使用正式高三公开题面，检查长句配对与重分配，不向后端提交答案。
+    func testLongMatchingUsesFullWidthAndAllowsReassignment() throws {
+        continueAfterFailure = false
+        let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "learning-senior3-preview", withExtension: "json"))
+        let data = try Data(contentsOf: url)
+        let app = XCUIApplication()
+        app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+            "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "unit-challenge",
+            "UI_TEST_LEARNING_UNIT_JSON": String(decoding: data, as: UTF8.self),
+            "UI_TEST_LEARNING_QUESTION_ID": "s3.astra.r07"]
+        addTeardownBlock { app.terminate() }
+        for largeText in [false, true] {
+            app.launchArguments = largeText ? ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] : []
+            app.launch()
+            let check = app.buttons["检查"]
+            XCTAssertTrue(check.waitForExistence(timeout: 15))
+            XCTAssertFalse(check.isEnabled)
+            func reveal(_ element: XCUIElement) {
+                for _ in 0..<16 {
+                    let top = app.buttons["退出挑战"].frame.maxY
+                    let bottom = check.frame.minY
+                    if element.isHittable && element.frame.midY > top && element.frame.midY < bottom { return }
+                    if element.frame.midY < top { app.swipeDown() } else { app.swipeUp() }
+                }
+                XCTFail("目标控件无法滚动到可操作区域")
+            }
+            func pair(_ left: String, _ right: String) {
+                let item = app.buttons["learning.matching.item.\(left)"]
+                reveal(item); item.tap()
+                let choice = app.buttons["learning.matching.option.\(right)"]
+                reveal(choice)
+                // 点已滚入可见区域的中心，避免XCTest对超高按钮再次自动滚动。
+                choice.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+                let ordinal = left == "l1" ? 1 : left == "l2" ? 2 : 3
+                XCTAssertEqual(choice.value as? String, "已与第 \(ordinal) 项配对")
+            }
+            let current = app.staticTexts["learning.matching.current"]
+            reveal(current)
+            XCTAssertGreaterThan(current.frame.width, app.frame.width * 0.7)
+            pair("l1", "r3")
+            XCTAssertFalse(check.isEnabled)
+            pair("l2", "r1")
+            pair("l3", "r2")
+            XCTAssertTrue(check.isEnabled)
+            // 同一选项分配给另一项目时，原项目恢复未配对，不能提前提交。
+            pair("l3", "r3")
+            XCTAssertFalse(check.isEnabled)
+            XCTAssertEqual(app.buttons["learning.matching.item.l1"].value as? String, "未配对")
+            pair("l1", "r2")
+            XCTAssertTrue(check.isEnabled)
+            XCTAssertEqual(app.buttons["learning.matching.option.r2"].value as? String, "已与第 1 项配对")
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = largeText ? "长句配对最大辅助字号" : "长句配对完整行宽"
+            attachment.lifetime = .keepAlways; add(attachment)
+            app.terminate()
+        }
+    }
     /// 正式四级公开快照：长故事滚到底后，新一段必须从头可读。
     func testLongOpeningStoryResetsScrollAndOffersCompactHint() throws {
         continueAfterFailure = false

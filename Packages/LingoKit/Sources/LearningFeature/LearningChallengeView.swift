@@ -19,6 +19,7 @@ public struct LearningChallengeView: View {
     @State private var showsExit = false
     @State private var showsHint = false
     @State private var showsTranslation = false
+    @State private var matchingFocus: String?
     @FocusState private var inputFocused: Bool
     public init(attempt: LearningAttempt, character: CharacterDTO, service: any LearningServing,
                 audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
@@ -49,7 +50,7 @@ public struct LearningChallengeView: View {
             .scrollDismissesKeyboard(.interactively)
             .onChange(of: model.stage) { _, _ in
                 showsHint = false; showsTranslation = false; inputFocused = false
-                feedbackFocused = false
+                feedbackFocused = false; matchingFocus = nil
             }
             .onChange(of: model.feedback?.outcome) { _, outcome in
                 guard outcome != nil else { return }
@@ -305,26 +306,107 @@ public struct LearningChallengeView: View {
                 .overlay { RoundedRectangle(cornerRadius: 18).stroke(theme.tint.opacity(0.35)) }
                 .accessibilityLabel("填写答案")
         case .matching:
-            VStack(alignment: .leading, spacing: 14) {
-                Text(dynamicTypeSize.isAccessibilitySize ? "先点第一组，再点第二组；再次选择可调整配对。" : "先点左侧，再点对应的右侧；再次选择可调整配对。")
-                    .font(.caption).foregroundStyle(.secondary)
-                let pairLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 24)) : AnyLayout(HStackLayout(alignment: .top, spacing: 12))
-                pairLayout {
-                    VStack(spacing: 12) {
-                        if dynamicTypeSize.isAccessibilitySize { matchingGroupTitle("第一组") }
-                        ForEach(Array((question.left ?? []).enumerated()), id: \.element.id) { index, option in
-                            matchingButton(option, number: index + 1, selected: model.selectedLeft == option.id,
-                                           paired: model.pairs.contains { $0.left == option.id }) { model.selectedLeft = option.id }
-                        }
-                    }.frame(maxWidth: .infinity)
-                    VStack(spacing: 12) {
-                        if dynamicTypeSize.isAccessibilitySize { matchingGroupTitle("第二组") }
-                        ForEach(question.right ?? []) { option in
-                            let pair = model.pairs.first { $0.right == option.id }
-                            let number = pair.flatMap { p in question.left?.firstIndex { $0.id == p.left } }.map { $0 + 1 }
-                            matchingButton(option, number: number, selected: false, paired: pair != nil) { model.selectPair(right: option.id) }
-                        }
-                    }.frame(maxWidth: .infinity)
+            if usesFocusedMatching(question) {
+                focusedMatching(question)
+            } else {
+                VStack(alignment: .leading, spacing: 14) {
+                    Text(dynamicTypeSize.isAccessibilitySize ? "先点第一组，再点第二组；再次选择可调整配对。" : "先点左侧，再点对应的右侧；再次选择可调整配对。")
+                        .font(.caption).foregroundStyle(.secondary)
+                    let pairLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 24)) : AnyLayout(HStackLayout(alignment: .top, spacing: 12))
+                    pairLayout {
+                        VStack(spacing: 12) {
+                            if dynamicTypeSize.isAccessibilitySize { matchingGroupTitle("第一组") }
+                            ForEach(Array((question.left ?? []).enumerated()), id: \.element.id) { index, option in
+                                matchingButton(option, number: index + 1, selected: model.selectedLeft == option.id,
+                                               paired: model.pairs.contains { $0.left == option.id }) { model.selectedLeft = option.id }
+                            }
+                        }.frame(maxWidth: .infinity)
+                        VStack(spacing: 12) {
+                            if dynamicTypeSize.isAccessibilitySize { matchingGroupTitle("第二组") }
+                            ForEach(question.right ?? []) { option in
+                                let pair = model.pairs.first { $0.right == option.id }
+                                let number = pair.flatMap { p in question.left?.firstIndex { $0.id == p.left } }.map { $0 + 1 }
+                                matchingButton(option, number: number, selected: false, paired: pair != nil) { model.selectPair(right: option.id) }
+                            }
+                        }.frame(maxWidth: .infinity)
+                    }
+                }
+            }
+        }
+    }
+    /// 长句逐项展示，避免在半屏列宽中阅读多行句子；图片保留双列比较。
+    private func usesFocusedMatching(_ question: LearningQuestion) -> Bool {
+        let options = (question.left ?? []) + (question.right ?? [])
+        return options.allSatisfy { $0.imageAssetId == nil }
+            && (dynamicTypeSize.isAccessibilitySize || options.contains { $0.text.count > 60 })
+    }
+    @ViewBuilder private func focusedMatching(_ question: LearningQuestion) -> some View {
+        let left = question.left ?? []
+        let current = left.first { $0.id == matchingFocus } ?? left.first
+        if let current {
+            VStack(alignment: .leading, spacing: 18) {
+                HStack(spacing: 10) {
+                    ForEach(Array(left.enumerated()), id: \.element.id) { index, option in
+                        let isCurrent = current.id == option.id
+                        let paired = model.pairs.contains { $0.left == option.id }
+                        Button { matchingFocus = option.id } label: {
+                            Text("\(index + 1)").font(.system(size: 17, weight: .bold, design: .rounded))
+                                .frame(width: 44, height: 44)
+                                .foregroundStyle(isCurrent ? Color.white : theme.tint)
+                                .background(isCurrent ? theme.tint : theme.tint.opacity(paired ? 0.14 : 0.04), in: Circle())
+                                .overlay(alignment: .bottomTrailing) {
+                                    if paired { Image(systemName: "link.circle.fill").font(.system(size: 12)).symbolRenderingMode(.palette).foregroundStyle(theme.tint, Color.dsBackground) }
+                                }
+                        }.buttonStyle(LearningPressStyle())
+                            .accessibilityLabel("第 \(index + 1) 项")
+                            .accessibilityValue(paired ? "已配对" : "未配对")
+                            .accessibilityAddTraits(isCurrent ? [.isSelected] : [])
+                            .accessibilityIdentifier("learning.matching.item.\(option.id)")
+                    }
+                    Spacer(minLength: 0)
+                    Text("\(model.pairs.count)/\(left.count)").font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+                        .accessibilityLabel("已配对 \(model.pairs.count) 项，共 \(left.count) 项")
+                }
+                Text(current.text).font(.body.weight(.medium)).lineSpacing(5)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("learning.matching.current")
+                Divider()
+                ForEach(question.right ?? []) { option in
+                    let pair = model.pairs.first { $0.right == option.id }
+                    let number = pair.flatMap { p in left.firstIndex { $0.id == p.left } }.map { $0 + 1 }
+                    let selected = pair?.left == current.id
+                    Button {
+                        model.selectedLeft = current.id
+                        model.selectPair(right: option.id)
+                    } label: {
+                        let contentLayout = dynamicTypeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 10)) : AnyLayout(HStackLayout(alignment: .top, spacing: 12))
+                        contentLayout {
+                            HStack(spacing: 8) {
+                                Text(number.map { "\($0)" } ?? "—").font(.system(size: 12, weight: .bold, design: .monospaced))
+                                    .frame(width: 24, height: 24)
+                                    .background(theme.tint.opacity(0.1), in: Circle()).foregroundStyle(theme.tint)
+                                if dynamicTypeSize.isAccessibilitySize {
+                                    Spacer()
+                                    Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                                        .font(.system(size: 18)).foregroundStyle(selected ? theme.tint : Color.secondary)
+                                }
+                            }.fixedSize(horizontal: !dynamicTypeSize.isAccessibilitySize, vertical: true)
+                            Text(option.text).font(.body).multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                            if !dynamicTypeSize.isAccessibilitySize {
+                                Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                                    .font(.system(size: 18)).foregroundStyle(selected ? theme.tint : Color.secondary)
+                            }
+                        }.padding(14).frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                            .background(selected ? theme.tint.opacity(0.08) : Color.dsSurface, in: RoundedRectangle(cornerRadius: 10))
+                            .overlay { RoundedRectangle(cornerRadius: 10).strokeBorder(selected ? theme.tint : Color.primary.opacity(0.1), lineWidth: selected ? 2 : 1) }
+                    }.buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
+                        .accessibilityLabel(option.text)
+                        .accessibilityValue(number.map { "已与第 \($0) 项配对" } ?? "未配对")
+                        .accessibilityAddTraits(selected ? [.isSelected] : [])
+                        .accessibilityIdentifier("learning.matching.option.\(option.id)")
                 }
             }
         }
