@@ -4,7 +4,8 @@ set -euo pipefail
 backend_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 version="${1:-$(git -C "${backend_dir}/.." rev-parse --short=12 HEAD)}"
 output="${2:-${backend_dir}/build/lingotrip-backend-${version}.tar.gz}"
-staging="$(mktemp -d)"
+# 显式传入模板，保证临时打包文件落在调用者指定的磁盘。
+staging="$(mktemp -d "${TMPDIR:-/tmp}/lingotrip-release.XXXXXX")"
 trap 'find "${staging}" -depth -delete' EXIT
 
 cd "${backend_dir}"
