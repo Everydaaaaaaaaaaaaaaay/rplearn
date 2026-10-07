@@ -1,0 +1,573 @@
+{
+  "id": "companion.undergraduate.small-mountain",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "undergraduate",
+  "title": "盘子里的小山",
+  "summary": "盘子里的小山",
+  "scene": "一起烤出的面包成了歪歪的小山，你们掰下一块尝了尝。",
+  "estimatedMinutes": 14,
+  "goalIds": [
+    "cet4.listening-detail-attitude",
+    "cet4.pragmatics",
+    "cet4.context-vocabulary",
+    "cet4.cohesion",
+    "cet4.paraphrase",
+    "cet4.controlled-translation"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "cet.official.2016",
+      "unit": "四级短听力、熟悉场景交际及受控保义练习",
+      "pages": "印刷1—6／PDF6—11",
+      "alignment": "依据熟悉场景的细节、条件、态度、语境词义、句间关系与受控译义；九文字选择、四听力选择、二听写、二排序、一填空。短录音和有支架表达不代表完整四级测量。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "Astra独立年级作者；Codex主代理逐题终审与定点修订",
+    "reviewedBy": "Codex主代理逐题复核，Astra作者逐题自审",
+    "reviewedAt": "2026-10-07",
+    "reviewNotes": "亲写及手选未发布原稿，逐题核对答案、变体、每个选项、提示和解析；退回语法可直接解的听后排序。完整三段故事前置，问题不依赖故事。音频双ASR和客观波形通过，不等同真人听感或独立教师效度审定。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You and your companion decide to bake something together. You try to lift the dough too quickly, leaving half on your hands and half in the bowl. Your companion tries to help and ends up with sticky hands too. You look at each other and begin to laugh.",
+      "translation": "你和同行者决定一起烤点东西。揉面时，你太急着把面团拿起来，结果一半粘在手上，另一半留在碗底。同行者本来想帮忙，也把手弄得黏糊糊的。你们对看了一眼，都忍不住笑起来。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "When the bread finally comes out of the oven, it looks like a crooked little mountain. You place it on a plate, disappointed that it looks so different from what you imagined. Your companion breaks off a piece, smells it, and hands it to you. It is still warm inside, with a slightly crisp edge.",
+      "translation": "好不容易做好的面包，出炉时挤成了一座歪歪的小山。你把它放在盘子上，觉得和想象中的样子差得太远。同行者掰下一小块，先闻了闻，再递给你。里面还是温热的，边缘有一点脆。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You take a bite, then break off another piece. Outside, the light slowly fades, and the little mountain on the plate gets smaller. As you clean the kitchen, you suggest trying again another day. Your companion nods, but first moves the last piece onto their own small plate.",
+      "translation": "你尝了一口，又掰下一块。窗外慢慢暗了，盘子里的小山也慢慢矮了。收拾厨房时，你提议下次再试一次。同行者点点头，却先把剩下的最后一块藏到了自己的碟子里。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet4.astra.a02",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "prompt": "听一则场地通知。参加者应该怎么做？",
+      "explanation": "时间仍是两点，原定六号室改为同层九号室。",
+      "hint": "分清保留的安排与被更正的安排。",
+      "instruction": "听后选择",
+      "difficultyReason": "需要跨两句整合不变信息与更正信息。",
+      "options": [
+        {
+          "id": "a",
+          "text": "一点到六号室。"
+        },
+        {
+          "id": "b",
+          "text": "两点到六号室。"
+        },
+        {
+          "id": "c",
+          "text": "两点到九号室。"
+        },
+        {
+          "id": "d",
+          "text": "一点到九号室。"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "assetId": "audio.d7046c9313d5b363be9170c67e8916ef84fa08971b95ba8b5c8b180b34c5376a",
+        "text": "The workshop will still start at two. We had planned to use Room Six, but it is being repaired. Please go to Room Nine on the same floor instead.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "cet4.astra.b01",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "prompt": "同伴请你今晚检查一份文件。你今晚没空，但明早可以，想明确提出替代安排。哪句合适？",
+      "explanation": "a说明今晚不能检查，并明确提出明早先检查。b与d都安排今晚动手，违背已知限制；c只承诺以后确认，没有提出已知可行的明早安排。",
+      "hint": "核对回复是否同时说明当前限制和可行的下一步。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项均为自然合作回应，需区分检查、反馈和确认时间三个动作。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I can't do it tonight, but I could check it first thing tomorrow."
+        },
+        {
+          "id": "b",
+          "text": "I can check it tonight, but I'll send you my comments tomorrow morning."
+        },
+        {
+          "id": "c",
+          "text": "I can't promise a time yet, but I'll let you know when I'm free."
+        },
+        {
+          "id": "d",
+          "text": "I can't check it tomorrow, but I could make time for it this evening."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet4.astra.b03",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "prompt": "读句子：The figures do not support the claim that sales doubled. 此处support最接近哪种意思？",
+      "explanation": "数据support主张表示提供证据支持。原句说这些数据不支持销量翻倍的说法。",
+      "hint": "看主语是数据，宾语是主张；判断两者建立什么关系。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "基础论证词在短应用信息中的意义。",
+      "options": [
+        {
+          "id": "a",
+          "text": "对这项主张提出解释"
+        },
+        {
+          "id": "b",
+          "text": "为这项主张提供证据"
+        },
+        {
+          "id": "c",
+          "text": "对这项主张作出预测"
+        },
+        {
+          "id": "d",
+          "text": "把这项主张公开发表"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet4.astra.b04",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "prompt": "读句子：We added labels so that visitors could find the right boxes more easily. 哪项是句子明确表达的？",
+      "explanation": "so that此处引出加标签的目的。原句没有报告来自访客的反馈、已核实的速度变化或先找箱子后加标签的时序。",
+      "hint": "判断后半句是在说行动想达到什么，还是汇报最终实际效果。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项都是自然的工作记录，必须区分目的、原因、验证结果与时序。",
+      "options": [
+        {
+          "id": "a",
+          "text": "收到访客反映箱子难找后，我们才开始给箱子加标签。"
+        },
+        {
+          "id": "b",
+          "text": "给箱子加标签之后，我们确认访客找箱子的速度提高了。"
+        },
+        {
+          "id": "c",
+          "text": "给箱子加标签，是为了帮助访客更容易找到正确的箱子。"
+        },
+        {
+          "id": "d",
+          "text": "等访客找到了正确的箱子，我们再给这些箱子补上标签。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet4.astra.b05",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "prompt": "说明写着：The hall used to be a warehouse, but it now hosts community events. 哪句转述准确？",
+      "explanation": "used to be给出以前的用途；now hosts说明目前用于社区活动。",
+      "hint": "分别确认过去的用途与现在的用途，不把时间线倒转。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "former与used to的保义对应。",
+      "options": [
+        {
+          "id": "a",
+          "text": "A former warehouse now provides a venue for community events."
+        },
+        {
+          "id": "b",
+          "text": "A former event venue now provides storage for local businesses."
+        },
+        {
+          "id": "c",
+          "text": "A warehouse is being considered as a future venue for community events."
+        },
+        {
+          "id": "d",
+          "text": "A community venue has recently added a warehouse to the same building."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet4.astra.b06",
+      "goalId": "cet4.controlled-translation",
+      "type": "choice",
+      "prompt": "选准确表达“越来越多的居民选择骑车出行，但汽车仍然很常见”的一句。",
+      "explanation": "More and more保留人数增长；but与still保留汽车依然常见的转折事实。",
+      "hint": "核对变化方向，同时保留后半句仍然存在的情况。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项都保留骑车趋势与汽车信息，细辨变化方向、状态和两者关系。",
+      "options": [
+        {
+          "id": "a",
+          "text": "More and more residents choose to cycle, but cars are becoming less common."
+        },
+        {
+          "id": "b",
+          "text": "Fewer and fewer residents choose to cycle, but cars are still common."
+        },
+        {
+          "id": "c",
+          "text": "More and more residents choose to cycle because cars are still common."
+        },
+        {
+          "id": "d",
+          "text": "More and more residents choose to cycle, but cars are still common."
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "cet4.astra.b08",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "dictation",
+      "prompt": "听一句提醒，写出完整句子。",
+      "explanation": "要求保存副本，而不只是链接；not just若漏掉，会失去提醒的关键。",
+      "hint": "先听完整句，再检查是否准确写出每个词。",
+      "instruction": "听写完整句子",
+      "difficultyReason": "八词短句降低输入负担，重点辨否定限定。",
+      "acceptedAnswers": [
+        "Please save a copy, not just a link.",
+        "Please save a copy not just a link."
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.c38c5f8af9911c97889ec5597ce9563963b2564ac3fc207fb748a7c977112760",
+        "text": "Please save a copy, not just a link.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "cet4.astra.b09",
+      "goalId": "cet4.context-vocabulary",
+      "type": "completion",
+      "prompt": "仅从recommend、require、refuse中选一词，不变形：The notice says helmets are compulsory: all riders must wear one. Here, the organisers ____ riders to wear helmets.",
+      "explanation": "compulsory及must说明强制要求，用require；recommend是建议，refuse是拒绝。",
+      "hint": "比较通知表达的是可以自行选择的建议，还是必须遵守的要求。",
+      "instruction": "填入准确表达",
+      "difficultyReason": "安全通知的语义强度，不需要骑行专业知识。",
+      "acceptedAnswers": ["require"],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet4.astra.b10",
+      "goalId": "cet4.cohesion",
+      "type": "arrange",
+      "prompt": "用全部词块表达：“只要保持安静，你就可以在这里工作。”",
+      "explanation": "provided that表示条件，许可取决于保持安静。",
+      "hint": "先找许可的主句，再把限制它的条件接上。",
+      "instruction": "排列词块",
+      "difficultyReason": "常见正式条件表达，不以长句增加难度。",
+      "tokens": [
+        {
+          "id": "q",
+          "text": "you remain quiet."
+        },
+        {
+          "id": "w",
+          "text": "You may work here"
+        },
+        {
+          "id": "p",
+          "text": "provided that"
+        }
+      ],
+      "acceptedOrders": [["w", "p", "q"]]
+    },
+    {
+      "id": "cet4.astra.b11",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "prompt": "读记录：The company plans to open a second shop next spring, subject to approval. 哪句转述完整保留了计划、时间和批准条件？",
+      "explanation": "plans对应intends；subject to approval说明尚须获批，不能推定已获批或已营业。",
+      "hint": "保留时间方向，以及计划仍然受哪种条件限制。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "短工作信息中的条件保留。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The company has approval to open another shop next spring but has not decided whether to do so."
+        },
+        {
+          "id": "b",
+          "text": "The company intends to open another shop next spring if approval is granted."
+        },
+        {
+          "id": "c",
+          "text": "The company intends to seek approval next spring before choosing when to open another shop."
+        },
+        {
+          "id": "d",
+          "text": "The company intends to open another shop next spring whether or not approval is granted."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet4.astra.second01",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "dictation",
+      "prompt": "听一则简短安排，写出完整句子。",
+      "explanation": "只有上午那场改到了较小的房间；Only限定the morning session。不要漏掉限定词，也不要把has been moved改成将来安排。",
+      "hint": "先听清整句话，再核对句首、动作和句尾。",
+      "instruction": "听写完整句子",
+      "difficultyReason": "十一词，熟悉安排中的范围、完成被动和比较级；短句听辨不代表篇章能力。",
+      "acceptedAnswers": [
+        "Only the morning session has been moved to the smaller room."
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "assetId": "audio.30dfbe3301d37e26aff926df88d3141d8b4623c62cc9e88560fd42f0a4e93c88",
+        "text": "Only the morning session has been moved to the smaller room.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "cet4.astra.b13",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "prompt": "同伴说：We can finish all six interviews in an hour. 已知每次访谈至少十五分钟，且只能依次进行。你想礼貌指出时间不足，不改变人数和进行方式，并准确说明至少需要多久。哪句最合适？",
+      "explanation": "c用已知最短时长说明至少九十分钟，并以缓和语句提出异议。",
+      "hint": "选既回应安排，又用已知事实说明问题的句子。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项均礼貌并提及时长，区分对原约束的保留与至少、至多的范围。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I see your point, but with fifteen minutes per interview, perhaps we could do four instead."
+        },
+        {
+          "id": "b",
+          "text": "I see your point, but with fifteen minutes per interview, perhaps we could run two at once."
+        },
+        {
+          "id": "c",
+          "text": "I see your point, but at fifteen minutes each, we'll need at least an hour and a half."
+        },
+        {
+          "id": "d",
+          "text": "I see your point, but at fifteen minutes each, we'll need at most an hour and a half."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet4.astra.b02",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "prompt": "听一则语音。说话人确定承诺了什么？",
+      "explanation": "明确承诺的是零件不到时五点前联系；明早维修依赖零件今天到，结尾还否认无条件保证。",
+      "hint": "分别记录带条件的可能安排与相应的联系承诺。",
+      "instruction": "听后选择",
+      "difficultyReason": "四项均为相近长度的条件加行动安排，需同时核对触发条件与电话目的。",
+      "options": [
+        {
+          "id": "a",
+          "text": "若零件今天不到，会先开始维修，明早按原计划交车。"
+        },
+        {
+          "id": "b",
+          "text": "若零件今天不到，会在五点前来电确认明早可以交车。"
+        },
+        {
+          "id": "c",
+          "text": "若零件今天到了，会在五点前来电商量其他维修日期。"
+        },
+        {
+          "id": "d",
+          "text": "若零件今天不到，会在五点前来电商量其他维修日期。"
+        }
+      ],
+      "answer": "d",
+      "audio": {
+        "assetId": "audio.ddadae3a4780698d34d0c77f03ca9efca87e02b7b4cfe18a88aa0a3bf5dcef45",
+        "text": "If the replacement part arrives today, we can repair your bike tomorrow morning. If it doesn't, I'll call you by five to discuss another date. I can't promise the repair will be finished tomorrow.",
+        "voice": "M5"
+      }
+    },
+    {
+      "id": "cet4.astra.a14",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "prompt": "听一段评价。说话人对新系统的态度是什么？",
+      "explanation": "认可搜索省时，但不满意分享部分，希望改善前保留旧分享工具。",
+      "hint": "注意评价是否针对同一个功能，以及后面提出了什么选择。",
+      "instruction": "听后选择",
+      "difficultyReason": "需整合褒贬与行动意图，不能只抓一个情感词。",
+      "options": [
+        {
+          "id": "a",
+          "text": "认可新系统的搜索功能，但暂时想保留旧分享工具。"
+        },
+        {
+          "id": "b",
+          "text": "认可新系统的分享功能，但暂时想保留旧搜索工具。"
+        },
+        {
+          "id": "c",
+          "text": "认可新系统的搜索功能，因此准备同时换掉旧分享工具。"
+        },
+        {
+          "id": "d",
+          "text": "不认可新系统的搜索功能，因此暂时想保留旧分享工具。"
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "assetId": "audio.a1ded9cc792dfc66289e4d39e8b4f832da101d557586241c5d3c6d310ceb7c21",
+        "text": "The new system does save us time when we search for files. I'm less happy about the way it shares them, though. I'd rather keep the old sharing tool until that part improves.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "cet4.astra.b14",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "prompt": "听一段发言。说话人的主要意思是什么？",
+      "explanation": "positive是当前少量反馈，仍希望听到其余人的意见才决定保留。",
+      "hint": "把已有观察和下一步决定分开，不要让开头的评价替代结尾的态度。",
+      "instruction": "听后选择",
+      "difficultyReason": "四项均包含当前观察与后续动作，长度相近；需分清等待决定与决定后的执行。",
+      "options": [
+        {
+          "id": "a",
+          "text": "目前反馈不错，虽然回复人数少，仍建议现在决定保留。"
+        },
+        {
+          "id": "b",
+          "text": "目前回复不多，且多数评价偏负面，想收齐意见后决定。"
+        },
+        {
+          "id": "c",
+          "text": "目前反馈不错，已决定正式保留，再收集具体执行建议。"
+        },
+        {
+          "id": "d",
+          "text": "目前反馈不错，但回复人数还少，想听取更多意见后决定。"
+        }
+      ],
+      "answer": "d",
+      "audio": {
+        "assetId": "audio.07257a764479f1e9eaaf570dce99413775f22038fd71c9d83cc2518eb863df2b",
+        "text": "The first few comments on the new schedule look positive. Still, only a small number of people have replied. I'd like to hear from the rest before we decide to keep it.",
+        "voice": "F3"
+      }
+    },
+    {
+      "id": "cet4.astra.b16",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "prompt": "读两句：The team shortened the form and removed two repeated questions. This made it quicker to complete. 第二句中的This最自然地指什么？",
+      "explanation": "This概括前句的改动，it指表格；改动使表格更快填完。",
+      "hint": "看代词承接的是前文的某个名词，还是前面整件事。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项均取自实际出现的对象或事件，区分事件回指、实体回指与实施者。",
+      "options": [
+        {
+          "id": "a",
+          "text": "前文提到的、需要人们填写的那份表格"
+        },
+        {
+          "id": "b",
+          "text": "表格中出现过的、内容重复的那两个问题"
+        },
+        {
+          "id": "c",
+          "text": "缩短表格并删去重复问题的这一整项改动"
+        },
+        {
+          "id": "d",
+          "text": "前文提到的、负责处理这份表格的团队"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet4.astra.b17",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "prompt": "反馈写着：The revised guide is easier to follow than the original, though some sections still need work. 哪句总结准确？",
+      "explanation": "b保留新版比原版更易理解的进步，也保留部分内容仍需修改。原文没有把后续修改限定为版式。",
+      "hint": "分别保留与旧版相比的进步，以及评价中的保留部分。",
+      "instruction": "选择最合适的一项",
+      "difficultyReason": "四项均有评价与保留两个分句，细辨比较方向、改善程度及修改范围。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The revision improved clarity, but only the layout now needs further changes."
+        },
+        {
+          "id": "b",
+          "text": "The revision improved clarity, but further changes are needed in places."
+        },
+        {
+          "id": "c",
+          "text": "The original remains clearer than the revision, though both need further changes."
+        },
+        {
+          "id": "d",
+          "text": "The revision is as clear as the original, though some sections need further changes."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet4.astra.b18",
+      "goalId": "cet4.controlled-translation",
+      "type": "arrange",
+      "prompt": "用全部词块表达：“为了减少浪费，这家食堂开始提供小份餐食。”",
+      "explanation": "To reduce waste表达目的；began serving表达开始提供，小份餐食用smaller portions。",
+      "hint": "先识别行动的目的，再组成谁开始做什么的完整主句。",
+      "instruction": "排列词块",
+      "difficultyReason": "社会生活熟悉主题，准确保留目的、起始和份量变化。",
+      "tokens": [
+        {
+          "id": "s",
+          "text": "serving smaller portions."
+        },
+        {
+          "id": "c",
+          "text": "the canteen"
+        },
+        {
+          "id": "t",
+          "text": "To reduce waste,"
+        },
+        {
+          "id": "b",
+          "text": "began"
+        }
+      ],
+      "acceptedOrders": [["t", "c", "b", "s"]]
+    }
+  ]
+}

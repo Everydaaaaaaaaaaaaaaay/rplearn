@@ -1,0 +1,793 @@
+{
+  "unitId": "companion.advanced.paper-moon",
+  "contentHash": "a35f9faaa26d96d6199ea7167511e2899ac6bd6780d7a00bfb48e0a4f931c9ac",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex主代理逐题复核，Astra作者逐题自审",
+  "reviewedAt": "2026-10-07",
+  "roleFit": "普通同行者完整开场，无固定姓名、性别或职业；题目独立且可供任意角色抽取。",
+  "levelFit": "短音频局部训练转述、证据限定、立场与许可边界；八文字选择、二配对、七听选、一听写。不以短慢录音代替完整快速学术听力测量。",
+  "limitations": "本单元是局部受控训练，含听力接收、文字理解及表达巩固，不等于完整考试或自由口语写作测量。音频经双ASR及客观波形检查，尚未独立真人听感审定；详细终审见adult-second-review-2026-10-07.md。",
+  "questions": [
+    {
+      "questionId": "adv.astra.a03",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：方案评审中，听众说：I can see why speed matters. I'm less clear about how the proposed checks would catch errors before release. 发言的主要作用是什么？",
+      "ambiguityReview": " 三个选项都是合理会议行动，错项分别误认批评焦点、增添具体替代方案。 说话者认可速度的重要性，但要求说明发布前检查如何发现错误；核心是质疑检查是否充分。b把已认可内容当作疑点；c改变检查时间。",
+      "optionNotes": {
+        "a": "正确：真正的疑点是发布前检查如何发现错误。",
+        "b": "错误：速度的重要性已经被认可，并非提问焦点。",
+        "c": "错误：没有建议将检查推迟至发布后。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.second.a08",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：将每条评审记录与它实际确认的责任状态配对。所有记录彼此独立；每项使用一次。",
+      "ambiguityReview": " 六种错误跨配均改变依据、决定或责任范围，逐一说明见optionNotes。 l1仅记录主张；l2接受耗时估计但未决定删除；l3已决定删除，却采用了另一理由。相同行动不保证相同依据。 {\"l1-r2\": \"唯一正确：without assessing it表明只是记录观点。l1-r1虚构决定；l1-r3虚构接受估计。\", \"l2-r3\": \"唯一正确：accepted限定于estimate，undecided限定于proposal。l2-r1虚构已删除；l2-r2漏掉对估计的认可。\", \"l3-r1\": \"唯一正确：决定与Lee主张相同但理由不同。l3-r2忽略已决定；l3-r3把已决定降为未定。\"}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.second.a10",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：为三个独立情境选择既准确说明事件、又完整承担已知责任的外部邮件。每项使用一次；更正文件均已附上。",
+      "ambiguityReview": " 没有声称简短道歉本身失礼；题干要求承担已知责任，因此l3不能省略已知白跑。 l1对应r3：承认笔误但不假定影响。l2对应r2：说明协商改期，不虚构笔误。l3对应r1：同时承认笔误与已确认的白跑。r3虽不说假话，用于l3却漏掉了题目要求承担的已知影响。 {\"l1-r3\": \"正确且完整。l1-r1虚构白跑；l1-r2把笔误写成会议改期。\", \"l2-r2\": \"正确且完整。l2-r1和l2-r3均虚构先前写错日期，前者还虚构白跑。\", \"l3-r1\": \"正确且完整。l3-r2虚构改期；l3-r3遗漏已确认影响，未达到题干要求的完整责任。\"}",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a11",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听讨论，哪句准确概括说话人对结果的解释？",
+      "ambiguityReview": " a把另一种可能因素升级为主要原因；b把可比性要求误作减少宣传的建议。 说话者认为宣传差异妨碍单独判断时段作用，没有断定宣传是主要原因，也没有建议减少宣传。",
+      "optionNotes": {
+        "a": "错误：宣传是未排除的差异，不是已确定的主要原因。",
+        "b": "错误：要求比较宣传相似的场次，不是要求减少宣传。",
+        "c": "正确：宣传差异妨碍单独归因于时段。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a12",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听会议回应，哪项是说话者当前的立场？",
+      "ambiguityReview": " 错项保持专业措辞，但错置对象或条件。 他质疑检查能否排入日程，未质疑方案本身。b移错焦点；c把保留意见改成只要方案不变就支持。",
+      "optionNotes": {
+        "a": "正确：支持日期以检查安排可信为前提，并未承诺必然支持。",
+        "b": "错误：把疑问从排期转移到方案本身。",
+        "c": "错误：把检查排期条件偷换成方案保持不变。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a16",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：原邮件：We can deliver the draft on Friday if the revised figures arrive by noon on Wednesday. Otherwise, we will need to agree a new date. 哪条一行纪要完整保留约定？",
+      "ambiguityReview": " 三项均保留截止时间、周五交付及条件未满足后的安排；a只错在截止时点，c只错在后续承诺，不能凭信息条数选答案。 b保留截止时间、条件性交付和未满足时重新协商这三项。a将周三中午延至晚上；c保持截止时间，却擅自约定下一周五，原文只要求另议日期。",
+      "optionNotes": {
+        "a": "错误：将周三中午改成周三晚上。",
+        "b": "正确：保留中午截止、条件性交付及另议日期。",
+        "c": "错误：擅自确定下周五，原文仅要求另议。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.a17",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：供应方写：Subject to final testing, we expect the update to be ready by Thursday. This is our current forecast rather than a confirmed release date. 你向团队转述时，哪句准确？",
+      "ambiguityReview": " b保留测试条件但提升承诺；c保留发布未定却偷换就绪确定性。两项均为自然业务转述。 a保留测试前提、预计就绪和未确认。b擅自承诺测试结束就确认发布；c抓住ready与release的区别，却把预计就绪也写成已确认。",
+      "optionNotes": {
+        "a": "正确：保留预计就绪、测试前提以及尚未确认。",
+        "b": "错误：测试完成并不自动确认周四发布。",
+        "c": "错误：虽然保留发布未定，却把预计就绪写成确定就绪。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b01",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：评阅意见：The authors interpret the silence in the interviews as satisfaction. This is plausible, but it relies on an assumption the interviews did not test. 此处This所评价的具体内容是什么？",
+      "ambiguityReview": " a保留满意却改变对象；c保留作者与沉默却把事实层和解释层调换。 被认为可理解但有未测假设的是“把沉默解释为满意”的推断。a新增对访谈程序满意；c把未测环节错放到沉默是否发生。",
+      "optionNotes": {
+        "a": "错误：原文未谈对访谈程序的满意程度。",
+        "b": "正确：被评价的是把沉默解释为满意这一推断。",
+        "c": "错误：沉默是观察，不是被指为未经检验的假设。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b03",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：负责人回复：I'm open to exploring that option. Please bring back a costed proposal before we commit. 同事拟立即采购。你应怎样澄清当前授权？",
+      "ambiguityReview": " a沿用积极态度却扩大授权；b把保留写成否决。 c准确区分探索许可与采购承诺。a把探讨当执行授权；b把暂未承诺当拒绝，并添入更便宜条件。",
+      "optionNotes": {
+        "a": "错误：探索许可不是边准备成本边采购的授权。",
+        "b": "错误：没有拒绝方案，也没有要求找到更便宜者。",
+        "c": "正确：可以完善提案，当前仍未作出承诺。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b07",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：正文：The new procedure requires two extra checks. This may slow individual cases. Nevertheless, it could reduce the time spent correcting mistakes later. 最后一句如何推进论证？",
+      "ambiguityReview": " a误认关系；c忽略情态限制并把并存写成替代。 nevertheless引出相对前述即时成本的潜在后续收益；could仍是可能性。a只说原因；c误作已确认且取消前述担忧。",
+      "optionNotes": {
+        "a": "错误：最后一句谈后续纠错，未解释即时检查耗时的原因。",
+        "b": "正确：把可能的后续收益与即时成本并置。",
+        "c": "错误：could不是已确认节省，也未取消前述成本。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b09",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：你无法把尚未核对的表格发给合作方；一经核对就愿意发送。你希望说明流程限制，避免被理解为不愿合作。哪句最准确？",
+      "ambiguityReview": " a、b都可能是合法婉拒，但与此处愿意配合且只受核查限制的意图不符。 c把发送挂在核对完成这一条件上。a表达不愿分享；b把已明确的合作意愿改为未决定，并换了前提。",
+      "optionNotes": {
+        "a": "错误：把流程限制写为不愿分享的偏好。",
+        "b": "错误：把明确意愿降成待考虑，且将核查条件改为讨论请求。",
+        "c": "正确：发送以核对完成为前提，保留愿意配合的态度。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b11",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段更正，更新纪要时应写哪项？",
+      "ambiguityReview": " b利用录音开头被纠正的内容；c在人物角色与同意状态上越界。 有效最终信息是审查组发现记录缺失，说话人提出延期，组方是否同意未知。b保留已撤回的归因；c交换角色并增加接受。",
+      "optionNotes": {
+        "a": "正确：最终更正后，发现归审查组，延期建议归说话者。",
+        "b": "错误：沿用已撤回的归因，并捏造说话者质疑记录缺失。",
+        "c": "错误：交换发现者，还增加审查组接受延期。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b12",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听说明，哪句保留了说话者对短期和长期结果的区分？",
+      "ambiguityReview": " a利用常见期待补完未来；b把缺数据变成无变化证据。 录音只预测初期可能增加，长期信息不足。a补出下降，b捏造随访结果。",
+      "optionNotes": {
+        "a": "错误：没有承诺增加已经发生，也没有预测随后下降。",
+        "b": "错误：没有足够随访数据，不能声称数据表明不变。",
+        "c": "正确：初期可能增加，长期尚不能判断。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.b17",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听写这一句报告更正，注意保留限制词。",
+      "ambiguityReview": " 无显示干扰项；常见错误为把not听成and，导致并列两个肯定发现。 句子说明本方报告的是关联而不是已证实的原因。漏掉not会抹去限制；proven也需保留，不能把原文改成与原因完全无关。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "We reported an association, not a proven cause."
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "We reported an association not a proven cause"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "We reported an association and a proven cause."
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.second.c01",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听一段工作说明，哪条记录准确保留了说话者当前的判断？",
+      "ambiguityReview": " 三项都涉及试验与要求，需同时跟踪预测强度、要求主体及行动权限。 不预期审查者要求再试，不等于可以忽略后来收到的要求。解释请求也只是may，不是已经决定的替代方案。",
+      "optionNotes": {
+        "a": "错误：把对要求的预测改成试验本身无必要，并增添拒绝权限。",
+        "b": "正确：保留不预期再试及实际收到要求后仍需处理的边界。",
+        "c": "错误：把may提升为expect，并将可能解释误写成获准替代试验。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.second.c02",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听结果说明，哪项准确概括了这次分析变化所能支持的结论？",
+      "ambiguityReview": " 所有选项保留区间或精度与相同样本，错误来自证据尺度而不是遗忘术语。 区间更窄支持精度提高，不能保证更接近真值；同样本使潜在偏差仍可能影响两者，却不能确定两次与真值相差相等。",
+      "optionNotes": {
+        "a": "正确：精度变化与尚未解决的潜在偏差并存。",
+        "b": "错误：把not necessarily closer提升为已更接近真值。",
+        "c": "错误：可能受同一偏差影响不等于已知偏离真值的距离相等。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.second.c03",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：听发言者修正先前的说法，哪句应写入最终纪要？",
+      "ambiguityReview": " b是自然但错误的事件叙述，混淆元话语修正与人物态度变化。 发言者撤回自己给回复贴上的“反对”标签。Dana只要求明确temporary含义，未表明支持与否；没有证据她曾反对再撤回。",
+      "optionNotes": {
+        "a": "错误：沿用被修正的反对标签，并把澄清写成反对终止的条件。",
+        "b": "错误：把说话者自我修正变成Dana撤回反对，还添加团队已同意。",
+        "c": "正确：保留澄清请求，并明确没有陈述方案立场。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "adv.astra.second.c04",
+      "standaloneContext": "本题独立提供任务与材料，不使用故事或前题答案：合作方邮件：You may quote my comments on the draft's clarity, provided you identify them as feedback on that draft. Please do not present them as an assessment of the final report, which I have not read. 哪句内部摘要保留了获准使用的范围？",
+      "ambiguityReview": " 三项都保留可引用这一许可；错项分别移换许可对象、增加前置程序。 允许引用的是对草稿清晰度的反馈，且必须标明针对草稿。作者没读终稿解释了为何不能把评论变成终稿评价，并非要求等终稿评审后才可引用。",
+      "optionNotes": {
+        "a": "错误：把被评价对象改成终稿，并把限定版本的要求偷换为署名。",
+        "b": "正确：保留草稿清晰度这一对象以及必须显明版本范围的条件。",
+        "c": "错误：把终稿未读改成引用前必须评审终稿，增加未提出的条件。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

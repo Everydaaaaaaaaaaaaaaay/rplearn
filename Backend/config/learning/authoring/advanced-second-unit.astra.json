@@ -804,7 +804,7 @@
       },
       "taskIntent": "辨认估计精度改善与真实值准确性的不同尺度",
       "prompt": "听结果说明，哪项准确概括了这次分析变化所能支持的结论？",
-      "audioScript": "The second analysis gives us a narrower range of estimates. That makes the estimate more precise, but not necessarily closer to the true value. Both analyses use the same sample, so any bias in who was included could still affect both.",
+      "audioScript": "The second analysis gives us a narrower range of estimates. That makes the estimate more precise, but not necessarily closer to the true value. Both estimates come from the same sample, so any bias in who was included could still affect both.",
       "options": [
         {
           "id": "a",
@@ -831,7 +831,8 @@
       "review": {
         "wrongExample": "c",
         "distractors": "所有选项保留区间或精度与相同样本，错误来自证据尺度而不是遗忘术语。",
-        "difficulty": "音频已解释precise与closer to the true value之区别，无需外部统计知识；考查转折与could still的证据强度。"
+        "difficulty": "音频已解释precise与closer to the true value之区别，无需外部统计知识；考查转折与could still的证据强度。",
+        "audioEditorialRevision": "主代理2026-10-07明示修订：旧analyses在限次制音中未通过双ASR；将两份分析使用同一样本改为两个估计来自同一样本，保持精度与准确性、同样本潜在偏差、could still及所有答案限定不变。不是加入同音容错，整段重新制音及复验。"
       },
       "sourceId": "cse.official.search.2024",
       "officialItemIds": [

@@ -158,15 +158,26 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     expect((await engine.read(c.user, (s) => s.progress()))[0]?.points).toBe(18);
     expect((await privateUnit(a.id)).beats).toEqual(frozen.beats);
     const next = await c.character();
-    expect(await c.command((s) => s.start(next, "undergraduate"))).toEqual({
+    const second = await c.start(next, "undergraduate");
+    expect(second.unit.questions).toHaveLength(18);
+    const firstIds = new Set(a.unit.questions.map((q) => q.id));
+    expect(second.unit.questions.every((q) => !firstIds.has(q.id))).toBe(true);
+    expect(second.unit.beats).toHaveLength(3);
+    const exhausted = await c.character();
+    expect(await c.command((s) => s.start(exhausted, "undergraduate"))).toEqual({
       status: "preparing",
       attempt: null,
     });
-    expect((await engine.read(c.user, (s) => s.character(next))).characters).toBe(1000);
+    expect((await engine.read(c.user, (s) => s.character(exhausted))).characters).toBe(
+      1000,
+    );
     const other = await account();
-    expect(
-      (await other.start(await other.character(), "undergraduate")).unit.beats,
-    ).toEqual(frozen.beats);
+    const reused = await other.start(await other.character(), "undergraduate");
+    const seenByFirst = new Set([
+      ...firstIds,
+      ...second.unit.questions.map((q) => q.id),
+    ]);
+    expect(reused.unit.questions.every((q) => seenByFirst.has(q.id))).toBe(true);
   });
   it("并发跨角色不重复出题，其他账号可以使用相同公共库", async () => {
     const c = await account();

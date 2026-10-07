@@ -1354,6 +1354,42 @@
       "sourceIds": [
         "cse.official.search.2024"
       ]
+    },
+    {
+      "id": "cet4.listening-detail-attitude",
+      "level": "undergraduate",
+      "canDo": "能从熟悉场景的短通知和发言中听辨细节更正、条件、范围及态度，并准确记录短句。",
+      "boundaries": "120—140词/分原创短录音；听写为语音接收巩固，不是正式考试题型。教学可重播，不代表完整四级听力或达级认证。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.listening-scope-stance",
+      "level": "postgraduate",
+      "canDo": "能从熟悉话题的短发言和交流中辨认信息范围、条件性态度、纠正误读、比较口径和行动时序。",
+      "boundaries": "140—160词/分的短录音教学可重播，只练局部听辨，不等于完整六级篇章测量；个人未信服不当作客观反证。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "cet6.listening-detail-encoding",
+      "level": "postgraduate",
+      "canDo": "能准确记录短句中的否定、程度及形式，保留原音表达的限制。",
+      "boundaries": "短句听写是跨档语音接收巩固，不是正式六级题型，不单独证明高级听力或自由写作能力。",
+      "sourceIds": [
+        "cet.official.2016"
+      ]
+    },
+    {
+      "id": "advanced.listening-scope-attribution",
+      "level": "advanced",
+      "canDo": "能从短录音中辨别立场归属、许可范围、转述更正及证据能够支持的结论。",
+      "boundaries": "140—155词/分原创短录音，听写约125词/分作接收支架；不是较快完整讲座，也不代表CSE七八级完整能力。所有必要知识由录音提供。",
+      "sourceIds": [
+        "cse.official.search.2024"
+      ]
     }
   ],
   "unitIds": [
@@ -1449,7 +1485,10 @@
     "companion.advanced.waiting-room",
     "companion.senior1.paper-windmill",
     "companion.senior2.postcard-bird",
-    "companion.senior3.folded-page"
+    "companion.senior3.folded-page",
+    "companion.undergraduate.small-mountain",
+    "companion.postgraduate.missing-piece",
+    "companion.advanced.paper-moon"
   ],
   "audioAssets": [
     {
@@ -2507,6 +2546,290 @@
       "voice": "M3",
       "reviewedAt": "2026-09-29",
       "reviewNotes": "原创台词由作者自审；本地 Supertonic3 固定角色声音。最终24kHz单声道PCM16；波形、峰值与两套无提示识别核验通过。数字读时和标准缩写按明确等价规则归一；不把can与cannot混淆。不声称独立教师或人耳韵律审听。"
+    },
+    {
+      "id": "audio.d7046c9313d5b363be9170c67e8916ef84fa08971b95ba8b5c8b180b34c5376a",
+      "sha256": "d7046c9313d5b363be9170c67e8916ef84fa08971b95ba8b5c8b180b34c5376a",
+      "byteSize": 650312,
+      "durationMs": 13547,
+      "contentType": "audio/wav",
+      "transcript": "The workshop will still start at two. We had planned to use Room Six, but it is being repaired. Please go to Room Nine on the same floor instead.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测13.547秒、128.4词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。"
+    },
+    {
+      "id": "audio.c38c5f8af9911c97889ec5597ce9563963b2564ac3fc207fb748a7c977112760",
+      "sha256": "c38c5f8af9911c97889ec5597ce9563963b2564ac3fc207fb748a7c977112760",
+      "byteSize": 178520,
+      "durationMs": 3718,
+      "contentType": "audio/wav",
+      "transcript": "Please save a copy, not just a link.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测3.718秒、129.1词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。"
+    },
+    {
+      "id": "audio.30dfbe3301d37e26aff926df88d3141d8b4623c62cc9e88560fd42f0a4e93c88",
+      "sha256": "30dfbe3301d37e26aff926df88d3141d8b4623c62cc9e88560fd42f0a4e93c88",
+      "byteSize": 261138,
+      "durationMs": 5439,
+      "contentType": "audio/wav",
+      "transcript": "Only the morning session has been moved to the smaller room.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测5.439秒、121.3词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。"
+    },
+    {
+      "id": "audio.ddadae3a4780698d34d0c77f03ca9efca87e02b7b4cfe18a88aa0a3bf5dcef45",
+      "sha256": "ddadae3a4780698d34d0c77f03ca9efca87e02b7b4cfe18a88aa0a3bf5dcef45",
+      "byteSize": 710784,
+      "durationMs": 14807,
+      "contentType": "audio/wav",
+      "transcript": "If the replacement part arrives today, we can repair your bike tomorrow morning. If it doesn't, I'll call you by five to discuss another date. I can't promise the repair will be finished tomorrow.",
+      "voice": "M5",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测14.807秒、137.8词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。"
+    },
+    {
+      "id": "audio.a1ded9cc792dfc66289e4d39e8b4f832da101d557586241c5d3c6d310ceb7c21",
+      "sha256": "a1ded9cc792dfc66289e4d39e8b4f832da101d557586241c5d3c6d310ceb7c21",
+      "byteSize": 729232,
+      "durationMs": 15191,
+      "contentType": "audio/wav",
+      "transcript": "The new system does save us time when we search for files. I'm less happy about the way it shares them, though. I'd rather keep the old sharing tool until that part improves.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测15.191秒、130.3词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。"
+    },
+    {
+      "id": "audio.07257a764479f1e9eaaf570dce99413775f22038fd71c9d83cc2518eb863df2b",
+      "sha256": "07257a764479f1e9eaaf570dce99413775f22038fd71c9d83cc2518eb863df2b",
+      "byteSize": 718046,
+      "durationMs": 14958,
+      "contentType": "audio/wav",
+      "transcript": "The first few comments on the new schedule look positive. Still, only a small number of people have replied. I'd like to hear from the rest before we decide to keep it.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测14.958秒、128.4词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。"
+    },
+    {
+      "id": "audio.05099ec1637143bec116709c45e7819e8bfadee0dbb60b4161fc77ec1ed6cde7",
+      "sha256": "05099ec1637143bec116709c45e7819e8bfadee0dbb60b4161fc77ec1ed6cde7",
+      "byteSize": 806428,
+      "durationMs": 16800,
+      "contentType": "audio/wav",
+      "transcript": "A shared workspace could be useful. My concern is not the idea itself, but the assumption that everyone can stay late. Keep the evening sessions for those who want them. I would support a trial if daytime sessions were included as well.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测16.800秒、150.0词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.bc0c2908af72a3516b351d786a36f866e89227130aa1e6118719fd42866ce98e",
+      "sha256": "bc0c2908af72a3516b351d786a36f866e89227130aa1e6118719fd42866ce98e",
+      "byteSize": 498926,
+      "durationMs": 10393,
+      "contentType": "audio/wav",
+      "transcript": "So you think public feedback is a waste of time? Not at all. I'm questioning whether an online poll reaches people who rarely use the internet.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测10.393秒、150.1词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 双人分段使用不同声线，发言间加入300毫秒静音，完整拼接母版再次双ASR，不朗读A/B标签。 另仅接受centres/centers英美拼写对，不改变词义或时态。",
+      "speakers": [
+        {
+          "id": "a",
+          "voice": "F3"
+        },
+        {
+          "id": "b",
+          "voice": "M5"
+        }
+      ]
+    },
+    {
+      "id": "audio.7a8080297de754942295c85d3fc436e1f95fcca009d9601679d756ee84d019a5",
+      "sha256": "7a8080297de754942295c85d3fc436e1f95fcca009d9601679d756ee84d019a5",
+      "byteSize": 533764,
+      "durationMs": 11119,
+      "contentType": "audio/wav",
+      "transcript": "We found no evidence that the reminder changed attendance. But attendance was recorded for only one week, so it would be premature to conclude that reminders never help.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测11.119秒、151.1词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.1e97cec9fa2cb6406197ea55fadd95db3898c5aa7e7e08800fdd87c3efd0f27a",
+      "sha256": "1e97cec9fa2cb6406197ea55fadd95db3898c5aa7e7e08800fdd87c3efd0f27a",
+      "byteSize": 705592,
+      "durationMs": 14699,
+      "contentType": "audio/wav",
+      "transcript": "The savings in travel time are real, and I am not suggesting that we ignore them. But the maintenance estimate leaves several expenses out. Until those are included, I remain unconvinced that the benefits outweigh the costs.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测14.699秒、151.0词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.6782e0ae708d29c4967c243f63963cc11a107205a2f0f185ea46cf0720a87de7",
+      "sha256": "6782e0ae708d29c4967c243f63963cc11a107205a2f0f185ea46cf0720a87de7",
+      "byteSize": 171176,
+      "durationMs": 3565,
+      "contentType": "audio/wav",
+      "transcript": "These figures do not take seasonal changes into account.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测3.565秒、151.5词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.cf124e5fe65709d8d503ab9d25fa7636743c89d0f2c175d62e0e4431d2f73c93",
+      "sha256": "cf124e5fe65709d8d503ab9d25fa7636743c89d0f2c175d62e0e4431d2f73c93",
+      "byteSize": 742640,
+      "durationMs": 15471,
+      "contentType": "audio/wav",
+      "transcript": "The findings justify further investigation, rather than an immediate change in policy. We can keep the present rule during that investigation. If the follow-up confirms the same problem across different sites, we should then consider revising it.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测15.471秒、143.5词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.efb34195ddd537f8b196ede4e2b0af464e82d58fbd01f9ae0c60cfd5dd8697e8",
+      "sha256": "efb34195ddd537f8b196ede4e2b0af464e82d58fbd01f9ae0c60cfd5dd8697e8",
+      "byteSize": 188498,
+      "durationMs": 3926,
+      "contentType": "audio/wav",
+      "transcript": "The results are encouraging, but they are far from conclusive.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测3.926秒、152.8词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.558309b00a8cfa02a9b0d459143a8cd8a2fd75658adac15f408ede76e567aa95",
+      "sha256": "558309b00a8cfa02a9b0d459143a8cd8a2fd75658adac15f408ede76e567aa95",
+      "byteSize": 587298,
+      "durationMs": 12234,
+      "contentType": "audio/wav",
+      "transcript": "The pilot worked well in two small centres. That's encouraging, but larger centres may face different pressures. Before expanding the scheme nationwide, we should test it in one of those settings.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测12.234秒、152.0词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.3fc68c0128677bbb64135aa3d6ab501e6921a21c6c80b6d8b83fc9a25e3b55be",
+      "sha256": "3fc68c0128677bbb64135aa3d6ab501e6921a21c6c80b6d8b83fc9a25e3b55be",
+      "byteSize": 623688,
+      "durationMs": 12993,
+      "contentType": "audio/wav",
+      "transcript": "Which of the two plans would you recommend? The first looks cheaper, but it excludes maintenance, whereas the second includes it. Could we compare the total costs before making a recommendation?",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测12.993秒、143.2词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 双人分段使用不同声线，发言间加入300毫秒静音，完整拼接母版再次双ASR，不朗读A/B标签。 另仅接受centres/centers英美拼写对，不改变词义或时态。",
+      "speakers": [
+        {
+          "id": "a",
+          "voice": "F3"
+        },
+        {
+          "id": "b",
+          "voice": "M5"
+        }
+      ]
+    },
+    {
+      "id": "audio.e1f5f007976e9ebce65b1abdae041dd2573717cb51a8f43252c2d6156d12937d",
+      "sha256": "e1f5f007976e9ebce65b1abdae041dd2573717cb51a8f43252c2d6156d12937d",
+      "byteSize": 593104,
+      "durationMs": 12355,
+      "contentType": "audio/wav",
+      "transcript": "The examples are interesting, and the topic matters. What I still can't see is how those examples support the central claim. A clearer explanation of that link would strengthen the article.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测12.355秒、150.5词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受centres/centers英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.35679009fa89b457e3017bc5cc599c47b09db966cd31b6d3da430ebbe4ca155a",
+      "sha256": "35679009fa89b457e3017bc5cc599c47b09db966cd31b6d3da430ebbe4ca155a",
+      "byteSize": 589300,
+      "durationMs": 12276,
+      "contentType": "audio/wav",
+      "transcript": "The evening sessions had better attendance, but they were also advertised more widely. I wouldn't attribute the difference to the time of day without comparing sessions that received similar publicity.",
+      "voice": "M5",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测12.276秒、146.6词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.1792b2d427ed681b8e38af6ee98d0c4e9c45bb257a424cab8d66f8a86b873291",
+      "sha256": "1792b2d427ed681b8e38af6ee98d0c4e9c45bb257a424cab8d66f8a86b873291",
+      "byteSize": 725112,
+      "durationMs": 15106,
+      "contentType": "audio/wav",
+      "transcript": "I appreciate the work that has gone into the proposal. Before I can support the launch date, though, I'd need to see how the remaining checks fit into the schedule. The proposal itself isn't what I'm questioning.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测15.106秒、147.0词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.9a4f030839329cc29949128395aa347059ac8bc1fd74f41d09a1624dd12b2c46",
+      "sha256": "9a4f030839329cc29949128395aa347059ac8bc1fd74f41d09a1624dd12b2c46",
+      "byteSize": 679358,
+      "durationMs": 14152,
+      "contentType": "audio/wav",
+      "transcript": "Earlier I said the audit team recommended delaying publication. Let me correct that. They identified missing records; the recommendation to delay was mine. We haven't yet asked the audit team whether they agree with it.",
+      "voice": "M3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测14.152秒、148.4词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.179c680be1fd34b2098f164de8027faebe93b0818628e1534303af6814bc7591",
+      "sha256": "179c680be1fd34b2098f164de8027faebe93b0818628e1534303af6814bc7591",
+      "byteSize": 763284,
+      "durationMs": 15901,
+      "contentType": "audio/wav",
+      "transcript": "The new booking system may initially increase the number of calls, as people learn to use it. That doesn't mean it will increase calls in the long run. We simply don't have enough follow-up data to say yet.",
+      "voice": "M5",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测15.901秒、143.4词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.c4f8cef05ad89557326a86bd23b968aca0f80b77857c57893c7107bb3b0d685b",
+      "sha256": "c4f8cef05ad89557326a86bd23b968aca0f80b77857c57893c7107bb3b0d685b",
+      "byteSize": 185294,
+      "durationMs": 3859,
+      "contentType": "audio/wav",
+      "transcript": "We reported an association, not a proven cause.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测3.859秒、124.4词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.b7b8bd1fb1e71b171d72cf437c46b78c7c65de1648aa5b08fab768565e17c576",
+      "sha256": "b7b8bd1fb1e71b171d72cf437c46b78c7c65de1648aa5b08fab768565e17c576",
+      "byteSize": 875282,
+      "durationMs": 18234,
+      "contentType": "audio/wav",
+      "transcript": "I don't expect the reviewers to require another trial, though they may ask us to explain how the first one was run. That is a prediction about what they will ask for, not permission to ignore a request for a new trial if one arrives.",
+      "voice": "M5",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测18.234秒、148.1词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.5bbdbf3f99295ccdb36530b903cf9cbbb7676b03b17e196a5d21f8be92237d0d",
+      "sha256": "5bbdbf3f99295ccdb36530b903cf9cbbb7676b03b17e196a5d21f8be92237d0d",
+      "byteSize": 812072,
+      "durationMs": 16917,
+      "contentType": "audio/wav",
+      "transcript": "The second analysis gives us a narrower range of estimates. That makes the estimate more precise, but not necessarily closer to the true value. Both estimates come from the same sample, so any bias in who was included could still affect both.",
+      "voice": "F3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测16.917秒、149.0词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
+    },
+    {
+      "id": "audio.871ca5396c3a089f0fe1959b40930716e740a39bea0b7c1c3405e292c9446f26",
+      "sha256": "871ca5396c3a089f0fe1959b40930716e740a39bea0b7c1c3405e292c9446f26",
+      "byteSize": 918700,
+      "durationMs": 19139,
+      "contentType": "audio/wav",
+      "transcript": "I described Dana's reply as an objection to the proposal. On reflection, that was too strong. She asked us to spell out what we meant by temporary, without saying whether she favoured the proposal. I should have recorded a request for clarification, not a position against it.",
+      "voice": "M3",
+      "reviewedAt": "2026-10-07",
+      "reviewNotes": "主代理逐题审定原创脚本及独立作答条件；Supertonic3离线录音，候选和增益后母版均经base.en/small.en无提示逐词核对；实测19.139秒、147.3词/分，24kHz单声道PCM16、波形无削波。只归一大小写标点、明确缩写和数字，不忽略否定/时态/内容词。尚未经真人听感或独立教师效度审定。 另仅接受favoured/favored英美拼写对，不改变词义或时态。"
     }
   ],
   "imageAssets": [
