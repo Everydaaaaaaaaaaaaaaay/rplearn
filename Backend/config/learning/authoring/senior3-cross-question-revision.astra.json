@@ -1,0 +1,141 @@
+{
+  "status": "隔离返修稿，待主代理逐题主审",
+  "author": "Astra高三人工返修作者",
+  "reviewedAt": "2026-10-07",
+  "method": "实际阅读两处教材缓存正文、两个目标单元及同年级projects池候选，逐题人工重写两个暴露源题。程序仅检索与检查结构，不生成或组合题目。未修改正式题库。",
+  "replacements": [
+    {
+      "originalUnitId": "ruby.senior3.coastal-display-captions",
+      "originalQuestionId": "q1",
+      "originalFullId": "ruby.senior3.coastal-display-captions / q1",
+      "reason": "原q1在选项与解析中直接展示q2要求拼写的collected，现改为从完整句追踪后置过去分词修饰对象和动作施受关系，不再展示该词形。",
+      "sourceReading": {
+        "sourceId": "pep.senior3.archive20260929",
+        "path": "build/learning-all-grades-20260929/research/pep-senior3.pages.json",
+        "printedPages": [17],
+        "pdfPages": [24],
+        "method": "本轮实际读取一基PDF第24页提取正文，页尾为印刷17页；未冒称目视原页图。",
+        "basis": "Review useful structures要求识别过去分词作定语、状语、表语和宾补，并改写过去分词结构；本题只迁移其中被动定语的受事与修饰对象，不照搬教材句子。",
+        "limitations": "使用已登记的PEP选择性必修第四册公开存档；未重新核实版次印次，不代表全国高三统一进度。"
+      },
+      "question": {
+        "id": "q1",
+        "goalId": "senior3.coastal-display-captions",
+        "type": "choice",
+        "instruction": "选择完整保留原句动作关系的一项。",
+        "prompt": "读展板说明：A visitor photographed a boat washed onto the beach by the waves. washed onto表示被水冲到某处。哪项准确说明谁在拍照、什么被海浪冲上海滩？",
+        "difficultyReason": "高三非谓语综合：完整句中先区分主句拍摄动作与过去分词修饰，再核对海浪作用于哪个对象；提供词义支架，不靠海岸常识选答案。",
+        "options": [
+          {
+            "id": "a",
+            "text": "游客拍到了一只被海浪冲上海滩的船。"
+          },
+          {
+            "id": "b",
+            "text": "游客拍到了一只正把海浪推上海滩的船。"
+          },
+          {
+            "id": "c",
+            "text": "游客被海浪冲上海滩时拍下了一只船。"
+          }
+        ],
+        "answer": "a",
+        "hint": "分别找出拍摄动作的执行者，以及船后面那段说明的对象。",
+        "explanation": "主句说明游客拍摄了一只船；washed onto the beach by the waves后置修饰boat，船是被海浪冲上海滩的对象，海浪是施事。b颠倒了船与海浪的动作关系；c把修饰对象改成游客，还增加了原句没有说明的同时关系。"
+      },
+      "authorReview": {
+        "correct": "a",
+        "acceptedVariants": "选择题只有a；不是开放翻译题，没有隐藏的英语拼写变体。",
+        "wrongCases": [
+          {
+            "response": "b",
+            "reason": "把被海浪冲上海滩的船改成推动海浪的施事，误读过去分词的被动关系。"
+          },
+          {
+            "response": "c",
+            "reason": "把后置修饰boat的短语改接visitor，并无依据增加游客受冲时拍照的时间关系。"
+          }
+        ],
+        "independence": "题干自给句子与词义，不依赖角色剧情。不是将原bottles/volunteers换成另一对名词：题目由选择短语形式改为分辨完整句中主句动作、修饰对象与施受关系。",
+        "leakageCheck": "新题所有可见字段不含collected或closed。现有同goal候选没有此新句或正确释义；原q2的collected拼写不再能从新q1复制。",
+        "status": "作者自审完成，待主代理主审"
+      }
+    },
+    {
+      "originalUnitId": "ruby.senior3.project-conditions",
+      "originalQuestionId": "q3",
+      "originalFullId": "ruby.senior3.project-conditions / q3",
+      "reason": "原q3词块和解析直接展示q5答案so that，并复用行动加目的从句框架。现改为已知原因与所需行动的组句，保持原状语从句目标及arrange题型，保留q5的目的判断。",
+      "sourceReading": {
+        "sourceId": "fltrp.senior3.archive20260929",
+        "path": "build/learning-all-grades-20260929/research/fltrp-senior3.pages.json",
+        "printedPages": [29],
+        "pdfPages": [36],
+        "method": "本轮实际读取一基PDF第36页提取正文，页尾为印刷29页；未冒称目视原页图。",
+        "basis": "Review: adverbial clauses明确分类condition、comparison、reason、time，其中示例d用Given that引出已知原因。本题人工迁移该原因从句功能，不复制原例中的敦煌或博览会内容。",
+        "limitations": "使用已登记的外研高三公开存档；未重新核实版次印次，不宣称覆盖全年状语从句能力。"
+      },
+      "question": {
+        "id": "q3",
+        "goalId": "senior3.project-conditions",
+        "type": "arrange",
+        "instruction": "用全部词块组成一句话，以Given that开头。",
+        "prompt": "场馆管理员已经确认大厅正在维修。你要在合作邮件中先交代这个已知理由，再说明需要另找场地，不能把维修写成尚待发生的假设。请组成“鉴于大厅正在维修，我们需要另一个场地”。venue表示场地。",
+        "difficultyReason": "高三状语从句综合：区分作为理由的已知情况与尚未发生的条件，保持原因从句和主句边界；六词块控制拼写负担，不再提前提供后题的目的连接词。",
+        "tokens": [
+          {
+            "id": "t3",
+            "text": "is being repaired,"
+          },
+          {
+            "id": "t5",
+            "text": "need"
+          },
+          {
+            "id": "t1",
+            "text": "Given that"
+          },
+          {
+            "id": "t6",
+            "text": "another venue."
+          },
+          {
+            "id": "t4",
+            "text": "we"
+          },
+          {
+            "id": "t2",
+            "text": "the hall"
+          }
+        ],
+        "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+        "hint": "检查逗号两侧各由谁作主语，哪个分句交代已确认的情况。",
+        "explanation": "Given that the hall is being repaired交代需要换场地的已知理由；we need another venue说明由此产生的需要。前半句的主语是the hall，后半句的主语是we，不能把两者互换。"
+      },
+      "authorReview": {
+        "correct": ["t1", "t2", "t3", "t4", "t5", "t6"],
+        "acceptedVariants": "题面指定Given that开头且给定大小写、逗号、句号；用现有六词块只有所列自然顺序。原因从句放句末在另写句子时可以成立，但不符合本题起首约束且需要改标点，不作为本题词块变体。",
+        "wrongCases": [
+          {
+            "response": ["t1", "t4", "t5", "t6", "t2", "t3"],
+            "reason": "将需要另一个场地误放到Given that之后，并让句号打断剩余内容，不能表达原题的原因和行动关系。"
+          },
+          {
+            "response": ["t1", "t4", "t3", "t2", "t5", "t6"],
+            "reason": "将we写成被维修的对象，又将大厅写成需要场地的主体；主语与动作配合及已知事实都不成立。"
+          }
+        ],
+        "independence": "当前题是把已确认事实组织为原因从句，原题是组织目的从句；认知关系与句子功能改变，不是替换场景名词。故事不提供维修事实或本句答案。",
+        "leakageCheck": "新题所有可见字段不含so that、unless、although；同goal其余题未提供Given that或本题完整句。原q5仍需自己判断目的与原因。",
+        "status": "作者自审完成，待主代理主审"
+      }
+    }
+  ],
+  "remainingWork": [
+    "主代理需逐题审查新题语言质量、目标对应及组卷不再死锁的实际行为；本文件不代表已正式替换或上线。",
+    "两个旧单元原有中途角色台词不符合全部故事前置的最终产品目标，本轮仅修直接答案泄漏，不改其正式剧情。",
+    "coastal-display-captions的q6仍出现q5答案closed；当前matching末槽且completion在前，未证明存在前题泄漏；若允许回改答案或新蓝图前移matching须另审。",
+    "同senior3/projects池的paper-boat听力s3.second.q07仍含collected；当前没有同时包含该听力goal和coastal-display-captions completion的蓝图，未来混合蓝图需阻断此对。",
+    "未制作音频、未修改正式文件、未提交、未部署、未访问线上。"
+  ]
+}
