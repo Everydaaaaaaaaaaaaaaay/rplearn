@@ -1,0 +1,1635 @@
+{
+  "level": "advanced",
+  "author": {
+    "name": "Astra 高级英语独立作者",
+    "method": "36题逐题原创，分别设计交际意图、证据范围和错误机制；未用程序生成、组合或替换槽位。程序仅解析JSON并检查结构。",
+    "status": "待主代理逐题审阅；目标及来源未登记；音频未制作；不可发布",
+    "createdAt": "2026-10-07"
+  },
+  "proposedSources": [
+    {
+      "id": "cse.official.search.2024",
+      "status": "proposed；不表示已登记catalog",
+      "title": "中国英语能力等级量表2024版官方描述语检索工具",
+      "url": "https://cse.neea.edu.cn/html1/folder/2503/1-1.htm",
+      "dataUrl": "https://cse.neea.edu.cn/api/dict/ability.json",
+      "localSnapshot": "build/learning-expansion-20261007/research/cse-2024-search.json",
+      "readAt": "2026-10-07",
+      "versionEvidence": "官方页面明确检索2024版；该版2025年3月1日实施。本次核读下载数据的data.item和children.item；未使用2018版PDF。",
+      "limitation": "官方检索学段建议只是初始检索范围。产品advanced不等于CSE七级或八级；本批短任务只练部分功能，不覆盖完整等级描述，不证明达级。引用ID是描述语条目ID，不是页码。"
+    }
+  ],
+  "sourceReading": [
+    {
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2,
+        3
+      ],
+      "category": "能力等级",
+      "dataPath": "data.item",
+      "reading": "已核读七级、八级顶层remark与content：涉及专业或学术材料理解、评析、准确得体表达；content中的学习者范围不可当作产品达级认证。"
+    },
+    {
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3505,
+        3516
+      ],
+      "category": "阅读理解能力总表／理解书面论述",
+      "dataPath": "data.children[1].children[4].item",
+      "reading": "八级3505关注评价论证逻辑性；七级3516关注理解逻辑推理过程。本批采用题内证据判断，降低专业知识前提。"
+    },
+    {
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708
+      ],
+      "category": "口头表达能力总表／口头说明",
+      "dataPath": "data.children[2].children[2].item",
+      "reading": "八级4708关注准确转述学术报告要点和细节；本批转为受控转述任务，不冒充自由口语测评。"
+    },
+    {
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404,
+        2805
+      ],
+      "category": "听力理解能力总表／理解口头互动；听学术讲座和报告",
+      "dataPath": "data.children[0].children[5].item；data.children[0].children[9].item",
+      "reading": "八级2404关注学术讨论中观点的合理性、逻辑性；2805关注讲座报告关键信息的逻辑关系。原创短音频只提供局部练习。"
+    },
+    {
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507,
+        8706,
+        8808
+      ],
+      "category": "书面表达能力总表／书面表达准确性；书面表达连贯性；书面表达得体性",
+      "dataPaths": {
+        "8507": "data.children[3].children[15].item",
+        "8706": "data.children[3].children[17].item",
+        "8808": "data.children[3].children[18].item"
+      },
+      "reading": "七级8507关注符合规范的论文摘要；8706关注用衔接表达逻辑关系；8808关注按目的调整表达方式。本批保义压缩、衔接和语域选择不等同完整论文写作。"
+    },
+    {
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802,
+        9105,
+        9509
+      ],
+      "category": "语用能力总表；理解说话者意图；得体性",
+      "dataPaths": {
+        "802": "data.children[5].item",
+        "9105": "data.children[5].children[2].item",
+        "9509": "data.children[5].children[6].item"
+      },
+      "reading": "八级802关注交际意图、立场和情境匹配；七级9105关注正式批评与诘问；9509关注按目的和对象选择语体。"
+    }
+  ],
+  "proposedGoals": [
+    {
+      "id": "advanced.evidence-causality",
+      "status": "proposed",
+      "title": "限定证据与因果结论",
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3505,
+        3516,
+        2404
+      ],
+      "scope": "在题内给足研究或工作事实，区分相关、因果、可推广性和证据缺口。"
+    },
+    {
+      "id": "advanced.attribution-responsibility",
+      "status": "proposed",
+      "title": "准确归因与转述责任",
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        8507
+      ],
+      "scope": "区分谁主张、谁证实、谁转述，保留引语、证据和责任边界。"
+    },
+    {
+      "id": "advanced.diplomatic-clarification",
+      "status": "proposed",
+      "title": "专业场合的礼貌异议与澄清",
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802,
+        9105,
+        9509
+      ],
+      "scope": "明确提出实质分歧或澄清请求，避免把礼貌误解为同意或承诺。"
+    },
+    {
+      "id": "advanced.semantic-register",
+      "status": "proposed",
+      "title": "精确语义与语域",
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        9509,
+        8808
+      ],
+      "scope": "按对象和目的选择表达，区分常见近义措辞的责任、评价和限制意味。"
+    },
+    {
+      "id": "advanced.faithful-reformulation",
+      "status": "proposed",
+      "title": "保义压缩与展开",
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507,
+        4708
+      ],
+      "scope": "压缩时保留条件、对比和责任，展开时不增加因果、数量或意图。"
+    },
+    {
+      "id": "advanced.cohesion-modal-scope",
+      "status": "proposed",
+      "title": "逻辑衔接与模态范围",
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3516,
+        8706,
+        2805
+      ],
+      "scope": "辨析否定、必要条件、让步、可能性及指代的作用范围。"
+    }
+  ],
+  "interactionContract": {
+    "inputNormalization": "文本接受首尾及连续空格、大小写、直弯撇号和句末标点归一。选择按ID、排序按词块ID、配对按ID关系判分。全部合理文本答案在acceptedVariants列出；受控任务限定给定词块或词库，不将开放改写交给单一字符串。",
+    "sourceBoundary": "每题sourceId与officialItemIds仅为教学功能依据；题干、选项、音频均原创。每题sourceCategory可对应sourceReading中的类别；没有虚构页码。",
+    "audioBoundary": "audioScript仅属内部作者字段，答前不可公开；没有伪造assetId。媒体生成、语速口音与清晰度审核、字幕隐藏、素材鉴权和正式冻结仍待完成。",
+    "stageBoundary": "各组1至6识别、7至12受控运用、13至18迁移是作者意图；交互负担与认知难度需主审，不能只按题型判断高级性。"
+  },
+  "questions": [
+    {
+      "id": "adv.astra.a01",
+      "goalId": "advanced.evidence-causality",
+      "type": "choice",
+      "taskIntent": "相关与因果边界",
+      "prompt": "一份报告写道：Teams that chose the new planning tool missed fewer deadlines than teams using the previous tool. Teams selected their own tools, and their previous performance was not recorded. 哪句结论最符合现有证据？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The tool appears to have reduced missed deadlines."
+        },
+        {
+          "id": "b",
+          "text": "Tool choice was associated with fewer missed deadlines."
+        },
+        {
+          "id": "c",
+          "text": "Previously reliable teams were more likely to choose the tool."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把直接观察到的关系与解释这种关系所需的额外信息分开。",
+      "explanation": "b只陈述观察到的关联。a虽有appears，仍把工具当作造成变化的原因；c提出合理可能性，但没有历史表现数据支持。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a是弱化措辞包装的因果推断；c是尚未测量的选择机制。",
+        "difficulty": "需要识别模糊限制词并不能修复因果越界；不是统计术语记忆。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3505
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.a02",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "choice",
+      "taskIntent": "二手来源与核实责任",
+      "prompt": "你只读过Park的综述。综述称早先的一项试验缩短了等候时间；你尚未找到原始报告。哪句能准确交代你实际查阅的来源？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The original trial confirms that waiting times fell."
+        },
+        {
+          "id": "b",
+          "text": "Our review of the trial found shorter waiting times."
+        },
+        {
+          "id": "c",
+          "text": "Park's review reports shorter waiting times in the trial."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "检查句子的主语是否让读者误以为你接触了另一份材料。",
+      "explanation": "c明确把报告责任归于已读综述。a宣称原始试验确认，b暗示亲自评阅试验；两者均超出实际阅读。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "a提升证据确定性；b改变查阅来源和责任主体。",
+        "difficulty": "考查学术来源透明度；无需引用格式知识。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        8507
+      ],
+      "sourceCategory": "口头说明／书面表达准确性"
+    },
+    {
+      "id": "adv.astra.a03",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "choice",
+      "taskIntent": "正式场合委婉批评的目标",
+      "prompt": "方案评审中，听众说：I can see why speed matters. I'm less clear about how the proposed checks would catch errors before release. 发言的主要作用是什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Question whether the proposed checks are adequate."
+        },
+        {
+          "id": "b",
+          "text": "Ask the team to explain why speed is important."
+        },
+        {
+          "id": "c",
+          "text": "Suggest moving the checks to after the release."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "区分铺垫中的认可与随后真正提出的疑点。",
+      "explanation": "说话者认可速度的重要性，但要求说明发布前检查如何发现错误；核心是质疑检查是否充分。b把已认可内容当作疑点；c改变检查时间。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "三个选项都是合理会议行动，错项分别误认批评焦点、增添具体替代方案。",
+        "difficulty": "需理解间接异议，不靠否定词直译。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        9105
+      ],
+      "sourceCategory": "语用／理解说话者意图"
+    },
+    {
+      "id": "adv.astra.a04",
+      "goalId": "advanced.semantic-register",
+      "type": "choice",
+      "taskIntent": "承认问题不等于认可行动",
+      "prompt": "会议纪要写：The panel acknowledged the cost concern but did not endorse postponement. 哪句展开准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The panel verified the cost estimate and rejected a delay."
+        },
+        {
+          "id": "b",
+          "text": "The panel recognised the concern without supporting a delay."
+        },
+        {
+          "id": "c",
+          "text": "The panel accepted the concern as a reason to delay."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别检查两个动词赋予小组怎样的立场和责任。",
+      "explanation": "acknowledged在此为承认或注意到担忧，未必核实费用；did not endorse没有说明确否决。b保留这两个边界。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a把承认换成核实、未支持换成否决；c把未认可变为认可。",
+        "difficulty": "辨认工作语境中细微立场梯度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8808,
+        9509
+      ],
+      "sourceCategory": "书面表达得体性／语用得体性"
+    },
+    {
+      "id": "adv.astra.a05",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "taskIntent": "摘要保留人群范围",
+      "prompt": "压缩结果段：Of 80 people invited, 32 completed the survey. Most respondents preferred evening sessions. We do not know the preferences of those who did not respond. 哪句适合摘要？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Evening sessions were preferred by most of the 80 invitees."
+        },
+        {
+          "id": "b",
+          "text": "Evening sessions may suit those who did not respond."
+        },
+        {
+          "id": "c",
+          "text": "Most of the 32 respondents preferred evening sessions."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "缩写不能悄悄改变数据所覆盖的人群。",
+      "explanation": "c保留实际回应人群。a把分母从32扩至80；b虽以may弱化，却增加原文没有支持的非回应者偏好。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a范围漂移；b从未知创造建议。",
+        "difficulty": "在压缩中保留抽样限制，背景数字无计算负担。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507
+      ],
+      "sourceCategory": "书面表达准确性"
+    },
+    {
+      "id": "adv.astra.a06",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "无法排除不等于倾向认定",
+      "prompt": "设备报告写：We are not yet in a position to rule out a recording error, although the readings were consistent across three checks. 哪句解释保留了报告的证据边界？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Consistent readings have not given us sufficient grounds to exclude a recording error."
+        },
+        {
+          "id": "b",
+          "text": "The consistent readings make a recording error the explanation we currently favour."
+        },
+        {
+          "id": "c",
+          "text": "A recording error remains likely because the three checks produced consistent readings."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "检查作者是在说明现阶段能下什么结论，还是在给不同解释排序。",
+      "explanation": "a保留三次一致仍不足以排除记录错误的意思。b把未排除升级为最倾向解释；c把可能保留升级为很可能，并把让步关系改为原因。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "各项都保留读数一致与记录错误两个真实要素，但b添加解释排名，c添加概率及因果。",
+        "difficulty": "处理not yet in a position to与rule out叠加的认识限制，不以简单否定量词代表高级。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3516
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.a07",
+      "goalId": "advanced.evidence-causality",
+      "type": "choice",
+      "taskIntent": "负结果与证据不足",
+      "prompt": "两种页面布局各只试用了6人，完成时间波动很大。报告说：The trial did not establish a difference in speed. 哪句适合随后解释？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The two layouts can therefore be treated as equally fast."
+        },
+        {
+          "id": "b",
+          "text": "A speed difference remains possible despite this result."
+        },
+        {
+          "id": "c",
+          "text": "The slower layout should be tested with more users."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "想一想“未能确立”与“确立不存在”之间是否有距离。",
+      "explanation": "未确立差异并不排除差异。a宣告等效，c预设已知哪一个更慢；题内没有提供这种依据。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a把不确定性变为等效结论；c在后续建议中藏入未证实排序。",
+        "difficulty": "考查证据缺口的语言表达，题内已说明样本小和波动大。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3505
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.a08",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "choice",
+      "taskIntent": "区分记录立场与实质采纳",
+      "prompt": "评审纪要需要记录：Lee主张取消一个步骤，理由是耗时；评审组尚未评估这个理由。哪句符合要求？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The review found the step too time-consuming to retain."
+        },
+        {
+          "id": "b",
+          "text": "The group agreed with Lee that the step should be removed."
+        },
+        {
+          "id": "c",
+          "text": "Lee argued that the step should be removed because it took too long."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "追踪评价内容属于谁，并检查有没有把记录意见写成形成共识。",
+      "explanation": "c把理由和建议都归于Lee。a移交给评审结论；b虚构小组同意。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a改变评价主体；b增加共识。",
+        "difficulty": "转述既保留主张也保留理由，不把reported speech当单纯时态转换。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708
+      ],
+      "sourceCategory": "口头说明"
+    },
+    {
+      "id": "adv.astra.a09",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "choice",
+      "taskIntent": "明确澄清含混标准而不预设答案",
+      "prompt": "合作方邮件要求提供a representative sample，却没有说明代表哪些人。你需要先确认抽样覆盖范围，再准备材料。哪句最合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Could you clarify which population the sample should represent?"
+        },
+        {
+          "id": "b",
+          "text": "Could you confirm that our current sample is representative?"
+        },
+        {
+          "id": "c",
+          "text": "Could you explain why a representative sample is necessary?"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "三个问法都礼貌；关键是哪个直接补齐此刻缺失的信息。",
+      "explanation": "a询问目标人群，正对缺口。b请求批准现有样本，预设已准备好；c追问必要性，而非范围。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "不以粗鲁程度排除；b、c均自然但实施不同言语行动。",
+        "difficulty": "高级点是澄清对象与隐含预设，而非could you形式。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802,
+        9509
+      ],
+      "sourceCategory": "语用能力／得体性"
+    },
+    {
+      "id": "adv.astra.a10",
+      "goalId": "advanced.semantic-register",
+      "type": "choice",
+      "taskIntent": "正式纠错与责任范围",
+      "prompt": "你发现自己发出的文件误写了会议日期，已更正；尚未查明是否影响了他人的安排。给外部合作方的更正邮件应怎样写？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Please note that the date has changed following our discussion."
+        },
+        {
+          "id": "b",
+          "text": "I apologise for the incorrect date in my previous message; the corrected file is attached."
+        },
+        {
+          "id": "c",
+          "text": "I apologise for disrupting your plans; I have rearranged the meeting in the attached file."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "措辞要承担已知错误，同时不要补写没有发生或尚未确认的事件。",
+      "explanation": "b承担错误日期的责任，说明更正。a把笔误伪装成协商后的改期；c认定影响并称重新安排会议，超出事实。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "a淡化错误并改变事件；c看似负责但扩写未知影响与行动。",
+        "difficulty": "兼顾正式语域与事实责任；非挑最礼貌的句子。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8808,
+        9509
+      ],
+      "sourceCategory": "书面表达得体性／语用得体性"
+    },
+    {
+      "id": "adv.astra.a11",
+      "goalId": "advanced.evidence-causality",
+      "type": "listeningChoice",
+      "taskIntent": "听取对解释的限定",
+      "prompt": "听讨论，哪句准确概括说话人对结果的解释？",
+      "audioScript": "The evening sessions had better attendance, but they were also advertised more widely. I wouldn't attribute the difference to the time of day without comparing sessions that received similar publicity.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wider publicity was the main cause of better attendance."
+        },
+        {
+          "id": "b",
+          "text": "Evening sessions should receive less publicity in the next trial."
+        },
+        {
+          "id": "c",
+          "text": "The effect of timing is unclear because publicity also differed."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "留意说话者究竟选定了一种解释，还是指出需要怎样的比较。",
+      "explanation": "说话者认为宣传差异妨碍单独判断时段作用，没有断定宣传是主要原因，也没有建议减少宣传。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a把另一种可能因素升级为主要原因；b把可比性要求误作减少宣传的建议。",
+        "difficulty": "需跨句整合保留意见与下一步比较原则。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404
+      ],
+      "sourceCategory": "听力／理解口头互动",
+      "mediaStatus": "原创脚本；待制音及审核"
+    },
+    {
+      "id": "adv.astra.a12",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "listeningChoice",
+      "taskIntent": "辨识礼貌承认与支持的边界",
+      "prompt": "听会议回应，哪项是说话者当前的立场？",
+      "audioScript": "I appreciate the work that has gone into the proposal. Before I can support the launch date, though, I'd need to see how the remaining checks fit into the schedule. The proposal itself isn't what I'm questioning.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Support for the date depends on a credible checking schedule."
+        },
+        {
+          "id": "b",
+          "text": "The proposal needs further development before it can be supported."
+        },
+        {
+          "id": "c",
+          "text": "The launch date is acceptable if the proposal remains unchanged."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把认可的对象、质疑的对象及附带条件分别听清。",
+      "explanation": "他质疑检查能否排入日程，未质疑方案本身。b移错焦点；c把保留意见改成只要方案不变就支持。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "错项保持专业措辞，但错置对象或条件。",
+        "difficulty": "同一句中处理赞许、转折和条件式异议。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2404,
+        802
+      ],
+      "sourceCategory": "听力口头互动／语用能力",
+      "mediaStatus": "原创脚本；待制音及审核"
+    },
+    {
+      "id": "adv.astra.a13",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "arrange",
+      "taskIntent": "有例外的让步结构",
+      "prompt": "报告已经说明费用估计较稳健，但未计入维护费。用全部词块重组原意：先承认估计稳健，最后强调尚未计入维护费这一保留项。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "the estimate is robust,"
+        },
+        {
+          "id": "t2",
+          "text": "maintenance costs."
+        },
+        {
+          "id": "t3",
+          "text": "Although"
+        },
+        {
+          "id": "t4",
+          "text": "it excludes"
+        }
+      ],
+      "answer": [
+        "t3",
+        "t1",
+        "t4",
+        "t2"
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t1",
+          "t4",
+          "t2"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先确定让步从句的边界，再确认主句里代词的指代。",
+      "explanation": "Although the estimate is robust, it excludes maintenance costs. 先在让步从句承认稳健，再以主句强调未计维护费，满足指定篇章落点。反过来先说未计维护、最后强调稳健，也可构成合法英语，但不满足本题要求的强调方向。",
+      "review": {
+        "wrongExample": "Although it excludes maintenance costs, the estimate is robust.",
+        "distractors": "没有额外干扰词块。反例英语合法、事实相同，却将最后的强调转为稳健；拒绝理由是题干明确指定的篇章目的，不只是词块标点。",
+        "difficulty": "受控迁移支持题，认知难度较低；不能单独代表高级写作能力。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8706
+      ],
+      "sourceCategory": "书面表达连贯性"
+    },
+    {
+      "id": "adv.astra.a14",
+      "goalId": "advanced.semantic-register",
+      "type": "completion",
+      "taskIntent": "论据支持程度的精确措辞",
+      "prompt": "内部复核独立查证了数值，但没有查证作者提出的解释。只能从 verified / endorsed / proposed 中选一词填空：The reviewers ___ the figures, while leaving the explanation unassessed.",
+      "wordBank": [
+        "verified",
+        "endorsed",
+        "proposed"
+      ],
+      "answer": "verified",
+      "acceptedVariants": [
+        "verified"
+      ],
+      "hint": "选能描述已经实施的核查行动的动词，不把事实核查扩大为立场支持。",
+      "explanation": "verified对应查证数字；endorsed表示认可或支持，不等同核查；proposed把审查者变成数字的提出者。",
+      "review": {
+        "wrongExample": "endorsed",
+        "distractors": "endorsed过度赋予赞同立场；proposed改变信息来源。",
+        "difficulty": "高级精确语义的受控运用，不依赖生僻词。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8808
+      ],
+      "sourceCategory": "书面表达得体性"
+    },
+    {
+      "id": "adv.astra.a15",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "matching",
+      "taskIntent": "辨析不同层级的证据归因",
+      "prompt": "将报告句子与它实际承担的证据责任配对。每项使用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The supplier claims that the filter lasts two years."
+        },
+        {
+          "id": "l2",
+          "text": "Our test found that the filter lasted two years."
+        },
+        {
+          "id": "l3",
+          "text": "We estimate that the filter will last two years."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "本方作出未来估计，未表示已完成实测"
+        },
+        {
+          "id": "r2",
+          "text": "本方记录已完成测试的发现"
+        },
+        {
+          "id": "r3",
+          "text": "转述供应方的主张，未表明已独立核验"
+        }
+      ],
+      "answer": {
+        "l1": "r3",
+        "l2": "r2",
+        "l3": "r1"
+      },
+      "acceptedVariants": [],
+      "hint": "把信息提供者、证据形式和时间方向一起比较。",
+      "explanation": "claims只标记供应方主张；our test found承担本方测试发现；estimate与will结合为预测。",
+      "review": {
+        "wrongExample": "l1→r2",
+        "distractors": "每个右项对另外两句都是干扰：主张、实测、预测不能互换。",
+        "difficulty": "短句承担不同证据责任；不推定claims本身意味着说谎。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        8507
+      ],
+      "sourceCategory": "口头说明／书面表达准确性"
+    },
+    {
+      "id": "adv.astra.a16",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "taskIntent": "保留条件的工作摘要",
+      "prompt": "原邮件：We can deliver the draft on Friday if the revised figures arrive by noon on Wednesday. Otherwise, we will need to agree a new date. 哪条一行纪要完整保留约定？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Friday delivery depends on receiving revised figures by Wednesday evening; otherwise, a new date must be agreed."
+        },
+        {
+          "id": "b",
+          "text": "Friday delivery depends on receiving revised figures by Wednesday noon; otherwise, a new date must be agreed."
+        },
+        {
+          "id": "c",
+          "text": "Friday delivery depends on receiving revised figures by Wednesday noon; otherwise, delivery moves to the following Friday."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "检查条件、截止时点及条件不成立时的后续安排是否仍在。",
+      "explanation": "b保留截止时间、条件性交付和未满足时重新协商这三项。a将周三中午延至晚上；c保持截止时间，却擅自约定下一周五，原文只要求另议日期。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "三项均保留截止时间、周五交付及条件未满足后的安排；a只错在截止时点，c只错在后续承诺，不能凭信息条数选答案。",
+        "difficulty": "逐项审查精简纪要中的承诺边界；三项长度接近，难度来自细节保义而非正确项信息更多。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708
+      ],
+      "sourceCategory": "口头说明"
+    },
+    {
+      "id": "adv.astra.a17",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "预测与承诺的嵌套范围",
+      "prompt": "供应方写：Subject to final testing, we expect the update to be ready by Thursday. This is our current forecast rather than a confirmed release date. 你向团队转述时，哪句准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Readiness by Thursday is the current forecast, contingent on testing and still unconfirmed."
+        },
+        {
+          "id": "b",
+          "text": "Thursday becomes the confirmed release date once final testing is complete."
+        },
+        {
+          "id": "c",
+          "text": "Thursday is confirmed for readiness, although the release date remains open."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别查看条件限制和预测强度；满足一个条件是否自动改变了原话的承诺程度？",
+      "explanation": "a保留测试前提、预计就绪和未确认。b擅自承诺测试结束就确认发布；c抓住ready与release的区别，却把预计就绪也写成已确认。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "b保留测试条件但提升承诺；c保留发布未定却偷换就绪确定性。两项均为自然业务转述。",
+        "difficulty": "需跨两句分辨条件、预期及不同事件的承诺强度，超出简单only if辨析。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3516
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.a18",
+      "goalId": "advanced.evidence-causality",
+      "type": "choice",
+      "taskIntent": "跨情境推广的谨慎建议",
+      "prompt": "试用说明：The quieter alert reduced interruptions in a small, quiet office. No tests were conducted in noisy settings. 现在要决定是否推广到嘈杂车间。哪句建议与证据相称？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the quieter alert because it reduced interruptions in the trial."
+        },
+        {
+          "id": "b",
+          "text": "Keep the current alert because the quieter one is ineffective in noise."
+        },
+        {
+          "id": "c",
+          "text": "Test the quieter alert in the workshop before deciding."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "不要把一个环境里的发现或没有测试的环境写成已经比较过的结果。",
+      "explanation": "c针对未覆盖环境补证据。a忽略环境变化；b把未测试误作已证明无效。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "两种实际决策都可能另有理由，但题内证据既不能证成直接推广也不能证成噪声下无效。",
+        "difficulty": "迁移论证时辨认适用条件，不考设备专业常识。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3505
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.b01",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "指代整项判断而非表面名词",
+      "prompt": "评阅意见：The authors interpret the silence in the interviews as satisfaction. This is plausible, but it relies on an assumption the interviews did not test. 此处This所评价的具体内容是什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The interviewees' satisfaction with the interview procedure."
+        },
+        {
+          "id": "b",
+          "text": "The authors' interpretation of silence as a sign of satisfaction."
+        },
+        {
+          "id": "c",
+          "text": "The authors' assumption that the interviewees remained silent."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "代词可能承接一个判断，而不只是离它最近的名词；找出究竟哪个环节受到保留。",
+      "explanation": "被认为可理解但有未测假设的是“把沉默解释为满意”的推断。a新增对访谈程序满意；c把未测环节错放到沉默是否发生。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "a保留满意却改变对象；c保留作者与沉默却把事实层和解释层调换。",
+        "difficulty": "跨句指代与隐含论证前提结合；不以not all量词题换名词充作高级。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3516
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.b02",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "choice",
+      "taskIntent": "引号边界与概括责任",
+      "prompt": "访谈原话是：The instructions were clear, but finding the right page took time. 哪种转述保留完整评价而不冒充逐字引语？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The participant described clear instructions but slow navigation."
+        },
+        {
+          "id": "b",
+          "text": "The participant called the instructions “clear and easy to find”."
+        },
+        {
+          "id": "c",
+          "text": "The participant described the instructions as difficult to understand."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "保留被评价的两个方面，并检查引号内的话是否真实出现过。",
+      "explanation": "a用不加引号的概括保留内容清楚与找页耗时。b创造引语并颠倒找页困难；c把查找问题转成理解问题。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "b伪逐字引述；c混淆不同维度的负面体验。",
+        "difficulty": "压缩定性材料时区分引用与概括，并保留评价对象。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        8507
+      ],
+      "sourceCategory": "口头说明／书面表达准确性"
+    },
+    {
+      "id": "adv.astra.b03",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "choice",
+      "taskIntent": "允许探索与授权执行的边界",
+      "prompt": "负责人回复：I'm open to exploring that option. Please bring back a costed proposal before we commit. 同事拟立即采购。你应怎样澄清当前授权？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We have approval to proceed while the costs are being prepared."
+        },
+        {
+          "id": "b",
+          "text": "The option has been declined until a cheaper one is identified."
+        },
+        {
+          "id": "c",
+          "text": "We can develop the proposal, but there is no commitment yet."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "分清愿意探讨、要求补充材料和作出承诺这三种行动。",
+      "explanation": "c准确区分探索许可与采购承诺。a把探讨当执行授权；b把暂未承诺当拒绝，并添入更便宜条件。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a沿用积极态度却扩大授权；b把保留写成否决。",
+        "difficulty": "职业沟通中避免将开放态度转化为未经给予的授权。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802
+      ],
+      "sourceCategory": "语用能力"
+    },
+    {
+      "id": "adv.astra.b04",
+      "goalId": "advanced.semantic-register",
+      "type": "choice",
+      "taskIntent": "让步词造成的评价立场",
+      "prompt": "研究简报只需中性报告：二十人参与，十二人返回问卷。作者没有预设理想回收数量。哪句避免添加失望或赞许的评价？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only twelve of the twenty participants returned the questionnaire."
+        },
+        {
+          "id": "b",
+          "text": "Twelve of the twenty participants returned the questionnaire."
+        },
+        {
+          "id": "c",
+          "text": "As many as twelve of the twenty participants returned the questionnaire."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "数字相同也可能传达不同预期，留意数字周围的修饰语。",
+      "explanation": "b只陈述数量。only暗示低于预期或不足；as many as强调较多，均加入题内未给定的评价。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "三个句子事实数字相同，差别在作者立场。",
+        "difficulty": "语域与评价意义辨析；不把only在所有语境中都判为不客观。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8808,
+        9509
+      ],
+      "sourceCategory": "书面表达得体性／语用得体性"
+    },
+    {
+      "id": "adv.astra.b05",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "taskIntent": "压缩时保留相反维度",
+      "prompt": "比较记录：Version A took less time to learn. Version B led to fewer mistakes once users had learned it. Neither cost nor long-term use was assessed. 哪句是忠实的比较摘要？",
+      "options": [
+        {
+          "id": "a",
+          "text": "A took less time to learn; B produced fewer errors after learning."
+        },
+        {
+          "id": "b",
+          "text": "A was faster overall, whereas B offered better value over time."
+        },
+        {
+          "id": "c",
+          "text": "B reduced errors by taking longer to teach than A."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "不要把不同阶段的优势合并成整体排名，也不要补出因果。",
+      "explanation": "a保留学习阶段与学会后表现的对比。b增加总速度和长期性价比；c把两项观察写成因果机制。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "b扩大测量维度；c把对比压成因果。",
+        "difficulty": "多维度压缩需要保留比较轴和时间条件。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507
+      ],
+      "sourceCategory": "书面表达准确性"
+    },
+    {
+      "id": "adv.astra.b06",
+      "goalId": "advanced.evidence-causality",
+      "type": "choice",
+      "taskIntent": "混合反馈的证据承载能力",
+      "prompt": "顾客试用了新版说明书。十位说更清楚，另十位说没变化；没人评估完成任务的实际表现。哪句准确概括？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The new instructions improved task performance for half the customers."
+        },
+        {
+          "id": "b",
+          "text": "The new instructions failed to improve clarity for the group."
+        },
+        {
+          "id": "c",
+          "text": "Reported clarity improved for half the customers; performance was not assessed."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "先识别测到的是主观评价还是实际表现，再检查结果是否被概括过头。",
+      "explanation": "c保留报告性评价和未测结果。a把清楚感换成任务表现；b抹去一半人的改善报告。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a混淆指标；b将不一致结果压成整组无效。",
+        "difficulty": "在量化外观下检查证据类型；无需统计计算。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        3505
+      ],
+      "sourceCategory": "阅读理解／理解书面论述"
+    },
+    {
+      "id": "adv.astra.b07",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "choice",
+      "taskIntent": "让步关系与指代范围",
+      "prompt": "正文：The new procedure requires two extra checks. This may slow individual cases. Nevertheless, it could reduce the time spent correcting mistakes later. 最后一句如何推进论证？",
+      "options": [
+        {
+          "id": "a",
+          "text": "It explains why the additional checks take longer."
+        },
+        {
+          "id": "b",
+          "text": "It sets a possible later benefit against an immediate drawback."
+        },
+        {
+          "id": "c",
+          "text": "It replaces the earlier concern with a confirmed time saving."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "连接词与情态词要一起看：关系是什么，确定程度又到哪里？",
+      "explanation": "nevertheless引出相对前述即时成本的潜在后续收益；could仍是可能性。a只说原因；c误作已确认且取消前述担忧。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "a误认关系；c忽略情态限制并把并存写成替代。",
+        "difficulty": "需同时处理论证衔接和证据强度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8706,
+        3516
+      ],
+      "sourceCategory": "书面表达连贯性／理解书面论述"
+    },
+    {
+      "id": "adv.astra.b08",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "choice",
+      "taskIntent": "礼貌异议同时给出可检验理由",
+      "prompt": "同事依据白天采集的噪声记录，建议宣布场馆全天安静。你认可白天结果，但认为结论范围过大，希望补夜间记录。哪句最贴合？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The daytime evidence is useful; could we collect night-time data before making an all-day claim?"
+        },
+        {
+          "id": "b",
+          "text": "Could we present the daytime evidence more clearly before announcing that the venue is quiet all day?"
+        },
+        {
+          "id": "c",
+          "text": "The night-time results may be better; could we wait for them before presenting the daytime evidence?"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "有效异议应指出真正的证据缺口，而不是仅让语气听起来更柔和。",
+      "explanation": "a认可现有证据并把全天主张与夜间缺口连接。b把范围问题误作展示问题；c无据预测夜间更好，还延后合理呈现白天结果。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "均为礼貌句；错误来自改变异议内容，而不是礼貌程度。",
+        "difficulty": "将证据推断落到专业沟通的具体行动。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802,
+        9509
+      ],
+      "sourceCategory": "语用能力／得体性"
+    },
+    {
+      "id": "adv.astra.b09",
+      "goalId": "advanced.semantic-register",
+      "type": "choice",
+      "taskIntent": "条件限制与意愿表达",
+      "prompt": "你无法把尚未核对的表格发给合作方；一经核对就愿意发送。你希望说明流程限制，避免被理解为不愿合作。哪句最准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We would prefer not to share the table with your team."
+        },
+        {
+          "id": "b",
+          "text": "We may consider sharing the table after discussing your request."
+        },
+        {
+          "id": "c",
+          "text": "We can share the table once the figures have been checked."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "区分个人偏好、尚未决定的意愿和明确的流程前提。",
+      "explanation": "c把发送挂在核对完成这一条件上。a表达不愿分享；b把已明确的合作意愿改为未决定，并换了前提。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "a、b都可能是合法婉拒，但与此处愿意配合且只受核查限制的意图不符。",
+        "difficulty": "精确措辞避免不必要的人际误读。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        9509,
+        8808
+      ],
+      "sourceCategory": "语用得体性／书面表达得体性"
+    },
+    {
+      "id": "adv.astra.b10",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "taskIntent": "展开名词化时不补充动机",
+      "prompt": "原句：The exclusion of incomplete forms reduced the number of responses analysed. 哪句展开为更直接的表达后仍只保留原有信息？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fewer people responded because incomplete forms were excluded."
+        },
+        {
+          "id": "b",
+          "text": "Incomplete forms were left out, so fewer responses were analysed."
+        },
+        {
+          "id": "c",
+          "text": "Researchers removed incomplete forms to make the results more favourable."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "检查减少的是参与回应的人，还是进入分析的数据；也检查有无新增动机。",
+      "explanation": "b保持处理行为与进入分析的数量变化。a改变发生顺序和减少对象；c加入改善结果的动机。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a在自然语言展开中偷换数量对象；c把结果改成目的。",
+        "difficulty": "改写名词化不只是句法练习，还需维护事件角色和因果方向。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507
+      ],
+      "sourceCategory": "书面表达准确性"
+    },
+    {
+      "id": "adv.astra.b11",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "listeningChoice",
+      "taskIntent": "听取明确撤回的归因",
+      "prompt": "听一段更正，更新纪要时应写哪项？",
+      "audioScript": "Earlier I said the audit team recommended delaying publication. Let me correct that. They identified missing records; the recommendation to delay was mine. We haven't yet asked the audit team whether they agree with it.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The audit team found missing records; the speaker proposed the delay."
+        },
+        {
+          "id": "b",
+          "text": "The audit team proposed the delay; the speaker questioned the missing records."
+        },
+        {
+          "id": "c",
+          "text": "The speaker found missing records; the audit team has accepted a delay."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "注意更正标记之后，发现和建议分别被重新归给了谁。",
+      "explanation": "有效最终信息是审查组发现记录缺失，说话人提出延期，组方是否同意未知。b保留已撤回的归因；c交换角色并增加接受。",
+      "review": {
+        "wrongExample": "b",
+        "distractors": "b利用录音开头被纠正的内容；c在人物角色与同意状态上越界。",
+        "difficulty": "跨时间更新转述责任，不能只抓首句关键词。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        2404
+      ],
+      "sourceCategory": "口头说明／听力口头互动",
+      "mediaStatus": "原创脚本；待制音及审核"
+    },
+    {
+      "id": "adv.astra.b12",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "listeningChoice",
+      "taskIntent": "听辨不同时间尺度的推断",
+      "prompt": "听说明，哪句保留了说话者对短期和长期结果的区分？",
+      "audioScript": "The new booking system may initially increase the number of calls, as people learn to use it. That doesn't mean it will increase calls in the long run. We simply don't have enough follow-up data to say yet.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Calls will fall after the initial increase has ended."
+        },
+        {
+          "id": "b",
+          "text": "The follow-up data show that calls have stayed the same."
+        },
+        {
+          "id": "c",
+          "text": "An initial increase is possible; the longer-term effect is uncertain."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "把短期预测与长期尚未知晓的内容分开，不把否定推断听成相反结果。",
+      "explanation": "录音只预测初期可能增加，长期信息不足。a补出下降，b捏造随访结果。",
+      "review": {
+        "wrongExample": "a",
+        "distractors": "a利用常见期待补完未来；b把缺数据变成无变化证据。",
+        "difficulty": "处理that doesn't mean的逻辑范围与may的强度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2805
+      ],
+      "sourceCategory": "听力／听学术讲座和报告",
+      "mediaStatus": "原创脚本；待制音及审核"
+    },
+    {
+      "id": "adv.astra.b13",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "arrange",
+      "taskIntent": "受控压缩保留转述与模态",
+      "prompt": "事实是：作者们把变化解释为一种可能性，没有声称已经证实原因。用全部词块组成以The authors开头的准确转述。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "may reflect"
+        },
+        {
+          "id": "t2",
+          "text": "The authors"
+        },
+        {
+          "id": "t3",
+          "text": "a change in demand."
+        },
+        {
+          "id": "t4",
+          "text": "the increase"
+        },
+        {
+          "id": "t5",
+          "text": "suggest that"
+        }
+      ],
+      "answer": [
+        "t2",
+        "t5",
+        "t4",
+        "t1",
+        "t3"
+      ],
+      "acceptedOrders": [
+        [
+          "t2",
+          "t5",
+          "t4",
+          "t1",
+          "t3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先安放转述主体，再检查可能性词限定的是哪个解释。",
+      "explanation": "The authors suggest that the increase may reflect a change in demand. 同时保留作者归因、suggest的建议性判断和may的可能解释。",
+      "review": {
+        "wrongExample": "The authors suggest that a change in demand may reflect the increase.",
+        "distractors": "无多余词块；反例倒转解释方向，而且不符合所给词块边界。",
+        "difficulty": "支持型受控产出；难度来自论元与模态责任，而非词块数量。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        8507
+      ],
+      "sourceCategory": "口头说明／书面表达准确性"
+    },
+    {
+      "id": "adv.astra.b14",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "completion",
+      "taskIntent": "反向因果主张的逻辑修复",
+      "prompt": "后一句需要提出另一种可能解释，不能把它写成前句的推论。只从 therefore / alternatively / similarly 中选择一词：The longer visits may reflect greater interest. ___, visitors may simply have had trouble finding the exit.",
+      "wordBank": [
+        "therefore",
+        "alternatively",
+        "similarly"
+      ],
+      "answer": "alternatively",
+      "acceptedVariants": [
+        "alternatively"
+      ],
+      "hint": "判断第二句是在推出结果、并列相似项，还是换一种解释路径。",
+      "explanation": "alternatively标记竞争性解释。therefore制造从兴趣大到找不到出口的推论；similarly把不同解释误标为相似关系。",
+      "review": {
+        "wrongExample": "therefore",
+        "distractors": "均为常见篇章副词，错在论证关系而不是形式。",
+        "difficulty": "把时长与体验解释分开，需审查推断的方向。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8706
+      ],
+      "sourceCategory": "书面表达连贯性"
+    },
+    {
+      "id": "adv.astra.b15",
+      "goalId": "advanced.diplomatic-clarification",
+      "type": "matching",
+      "taskIntent": "区分澄清、异议与暂缓判断",
+      "prompt": "为每句评审发言匹配最具体的交际动作。每项用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "When you say access, do you mean permission to view or permission to edit?"
+        },
+        {
+          "id": "l2",
+          "text": "I follow the comparison, but the groups were selected differently, so I question the conclusion."
+        },
+        {
+          "id": "l3",
+          "text": "I'd prefer to reserve judgement until the missing responses are included."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "指出理由后质疑结论"
+        },
+        {
+          "id": "r2",
+          "text": "等待缺失信息，暂不表态"
+        },
+        {
+          "id": "r3",
+          "text": "澄清关键词的适用含义"
+        }
+      ],
+      "answer": {
+        "l1": "r3",
+        "l2": "r1",
+        "l3": "r2"
+      },
+      "acceptedVariants": [],
+      "hint": "不要只看礼貌形式；找出每句话此刻要求改变的是什么。",
+      "explanation": "l1缩小术语含义，l2基于可比性提出异议，l3保留判断等待资料。理解论证不表示同意结论，暂缓也不表示反对。",
+      "review": {
+        "wrongExample": "l3→r1",
+        "distractors": "把保留判断误作已质疑结论，或把明确异议降格为单纯澄清。",
+        "difficulty": "三个功能在真实评审中都自然，需识别立场承诺程度。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        802,
+        9105
+      ],
+      "sourceCategory": "语用能力／理解说话者意图"
+    },
+    {
+      "id": "adv.astra.b16",
+      "goalId": "advanced.cohesion-modal-scope",
+      "type": "audioArrange",
+      "taskIntent": "听后重建证据限制范围",
+      "prompt": "听录音，用全部词块重建原句，保留说话者对解释的保留意见。",
+      "audioScript": "The findings are consistent with that explanation, but they do not establish it.",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "but they"
+        },
+        {
+          "id": "t2",
+          "text": "The findings"
+        },
+        {
+          "id": "t3",
+          "text": "that explanation,"
+        },
+        {
+          "id": "t4",
+          "text": "do not establish it."
+        },
+        {
+          "id": "t5",
+          "text": "are consistent with"
+        }
+      ],
+      "answer": [
+        "t2",
+        "t5",
+        "t3",
+        "t1",
+        "t4"
+      ],
+      "acceptedOrders": [
+        [
+          "t2",
+          "t5",
+          "t3",
+          "t1",
+          "t4"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "听清前半句允许怎样的关系，后半句又限制了哪种结论。",
+      "explanation": "与解释相容不等于证实解释；but连接兼容性与尚未确证。it指that explanation。",
+      "review": {
+        "wrongExample": "The findings establish that explanation.",
+        "distractors": "无多余词块；反例删去否定和相容性范围，变成证实。",
+        "difficulty": "听后受控再现，不冒充自由论证；卡片能部分提示文本，须按真实音频交互验收。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        2805
+      ],
+      "sourceCategory": "听力／听学术讲座和报告",
+      "mediaStatus": "原创脚本；待制音及审核"
+    },
+    {
+      "id": "adv.astra.b17",
+      "goalId": "advanced.attribution-responsibility",
+      "type": "dictation",
+      "taskIntent": "听写中保留发现与证明的区别",
+      "prompt": "听写这一句报告更正，注意保留限制词。",
+      "audioScript": "We reported an association, not a proven cause.",
+      "answer": "We reported an association, not a proven cause.",
+      "acceptedVariants": [
+        "We reported an association, not a proven cause.",
+        "We reported an association not a proven cause"
+      ],
+      "hint": "先抓住两个被比较的名词短语，再复听它们之间的关系。",
+      "explanation": "句子说明本方报告的是关联而不是已证实的原因。漏掉not会抹去限制；proven也需保留，不能把原文改成与原因完全无关。",
+      "review": {
+        "wrongExample": "We reported an association and a proven cause.",
+        "distractors": "无显示干扰项；常见错误为把not听成and，导致并列两个肯定发现。",
+        "difficulty": "短听写作为精确接收训练，拼写不承担本档主要难度；需匹配完整句和归一化标点。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        4708,
+        2805
+      ],
+      "sourceCategory": "口头说明／听学术讲座和报告",
+      "mediaStatus": "原创脚本；待制音及审核"
+    },
+    {
+      "id": "adv.astra.b18",
+      "goalId": "advanced.faithful-reformulation",
+      "type": "choice",
+      "taskIntent": "复杂结论的保义缩写",
+      "prompt": "结语：The scheme improved access for people who could book online. Because telephone bookings were not monitored, we cannot say whether access improved for people using that route. 哪句最适合作为精简结论？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The scheme improved access, particularly for online users."
+        },
+        {
+          "id": "b",
+          "text": "Access improved through online booking; the effect through telephone booking is unknown."
+        },
+        {
+          "id": "c",
+          "text": "Online booking improved access more than telephone booking did."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "压缩后仍需区分已观察到的改善和没有测量的路径。",
+      "explanation": "b保留路径和未知范围。a将部分路径改善扩大成总体改善，particularly还暗示其他路径也改善；c把未测的电话路径当作已比较且较弱。",
+      "review": {
+        "wrongExample": "c",
+        "distractors": "a用自然的概括引入范围扩张；c以比较结构伪造路径间证据。",
+        "difficulty": "迁移题同时处理限定人群、缺失证据与摘要压缩。"
+      },
+      "sourceId": "cse.official.search.2024",
+      "officialItemIds": [
+        8507,
+        3505
+      ],
+      "sourceCategory": "书面表达准确性／理解书面论述"
+    }
+  ],
+  "challengeGroups": [
+    {
+      "id": "advanced.astra.a",
+      "title": "被雨留下的一张纸",
+      "questionIds": [
+        "adv.astra.a01",
+        "adv.astra.a02",
+        "adv.astra.a03",
+        "adv.astra.a04",
+        "adv.astra.a05",
+        "adv.astra.a06",
+        "adv.astra.a07",
+        "adv.astra.a08",
+        "adv.astra.a09",
+        "adv.astra.a10",
+        "adv.astra.a11",
+        "adv.astra.a12",
+        "adv.astra.a13",
+        "adv.astra.a14",
+        "adv.astra.a15",
+        "adv.astra.a16",
+        "adv.astra.a17",
+        "adv.astra.a18"
+      ],
+      "story": {
+        "placement": "beforeAllQuestions",
+        "language": "zh-Hans",
+        "cast": "你与一位同行者；同行者无固定姓名、职业或性别",
+        "paragraphs": [
+          "你和同行者走进旧图书馆时，雨刚好落下来。门厅里正在撤掉一场小展览，木架上只剩一幅没有标签的河岸照片。你们原本只是想找地方避雨，却被照片右下角的一把折椅吸引：椅背上挂着一顶歪歪的草帽，像有人才离开片刻。",
+          "同行者在窗台发现一张折起的纸，以为是照片的说明。纸上却是一幅手绘路线，终点标着院子里的一棵树。你们撑着伞绕到院子，树下只有一圈积水。等你蹲下来看，才发现纸上的方向是从后门出发的；真正的终点藏在另一侧的屋檐下。",
+          "屋檐下有个小柜，里面放着展览留言本。最后一页夹着同一张照片的小样，背面写着：如果雨下起来，就把椅子搬进来。同行者笑着指了指角落，那把折椅果然在那里。你们把椅子挪到干处，在留言本上画了一把伞。",
+          "离开时，雨已经变小。你把路线纸放回窗台，同行者把被风吹开的柜门扣好。你们没有查清草帽属于谁，却觉得这趟绕路已经有了一个合适的结尾。"
+        ]
+      }
+    },
+    {
+      "id": "advanced.astra.b",
+      "title": "最后一盏灯",
+      "questionIds": [
+        "adv.astra.b01",
+        "adv.astra.b02",
+        "adv.astra.b03",
+        "adv.astra.b04",
+        "adv.astra.b05",
+        "adv.astra.b06",
+        "adv.astra.b07",
+        "adv.astra.b08",
+        "adv.astra.b09",
+        "adv.astra.b10",
+        "adv.astra.b11",
+        "adv.astra.b12",
+        "adv.astra.b13",
+        "adv.astra.b14",
+        "adv.astra.b15",
+        "adv.astra.b16",
+        "adv.astra.b17",
+        "adv.astra.b18"
+      ],
+      "story": {
+        "placement": "beforeAllQuestions",
+        "language": "zh-Hans",
+        "cast": "你与一位同行者；同行者无固定姓名、职业或性别",
+        "paragraphs": [
+          "傍晚，你和同行者沿着河边散步，看见旧候船亭里亮着一盏小灯。亭子已经不用来候船，里面摆着几只供路人交换旧物的箱子。同行者从箱底拿出一只八音盒，转了两圈，旋律只响到一半便停住了。",
+          "你们把它放到灯下，发现转轴旁卡着一小片蓝纸。你想用钥匙挑出来，同行者拦住你，从自己的本子里抽出一张硬卡片。纸片被轻轻推开后，八音盒终于唱完了后半段；可亭子里的灯忽然灭了，四周只剩河面反射的天光。",
+          "你打开手机照明，两个人把刚才翻动的东西逐一放回。蓝纸原来是一张小小的船票，边缘已经磨圆。你们没有把它丢掉，而是把它平放在八音盒旁，免得再卡进转轴。",
+          "收拾完走出亭子，头顶的灯又亮了——入口处的感应灯要有人经过才会开启。同行者回头看了一眼，你们都笑起来。河对岸的窗户一扇接一扇亮起，刚才没听完的那段旋律，似乎还跟在脚步后面。"
+        ]
+      }
+    }
+  ],
+  "releaseChecklist": {
+    "authorSelfReview": "已逐题检查语境、答案范围、自然干扰项和无答案式提示；仍需独立主审，不表示接受。",
+    "advancedBoundary": "28道选择或听力选择直接考具体语境中的意义、证据、语用或保义改写；其余8题为受控表达与精确接收支持题，不以低阶排序数量充作高级覆盖。",
+    "pending": [
+      "主代理逐题审阅与跨档同构检查",
+      "6个proposedGoals及1个proposedSources正式审定登记",
+      "6条原创音频制作、听审与媒体验收",
+      "7种交互的当前客户端和判题合同映射核对",
+      "两组18题蓝图、故事及题目导入后的冻结与公开题面检查",
+      "上线授权范围内的最终正式目录发布与在线验收"
+    ],
+    "notClaimed": [
+      "已发布",
+      "CSE七级或八级达标",
+      "完整专业学术英语测评",
+      "媒体资产已完成",
+      "自由口语或开放写作已评测"
+    ]
+  },
+  "primaryReview": {
+    "reviewedAt": "2026-10-07",
+    "status": "36题逐题首审，7题定点返修/替换后二审完成；仍为草稿",
+    "notes": [
+      "新a06/a17/b01替换简单否定量词和必要条件同构任务",
+      "a15不补造估计方法；a16平衡三项信息；a13明确篇章落点；a01比较对象明确",
+      "主代理再补a17预测事件为就绪而非发布",
+      "6待审目标与2024官方描述语需正式登记；素材和18题导入未完成"
+    ]
+  }
+}

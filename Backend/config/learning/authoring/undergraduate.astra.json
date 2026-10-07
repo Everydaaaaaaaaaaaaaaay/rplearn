@@ -1,0 +1,1685 @@
+{
+  "level": "undergraduate",
+  "label": "大学英语四级",
+  "author": {
+    "name": "Astra 四级独立作者",
+    "date": "2026-10-07",
+    "method": "逐题原创36题；每题分别设定交际意图、证据范围、答案和错误机制。程序仅用于JSON结构与计数核验，未用程序组合或替换题目。",
+    "status": "待主代理逐题审阅；目标与来源均待登记；音频未制作；不得发布"
+  },
+  "scope": "产品undergraduate在本批对应大学英语四级，不是泛大学英语，也不是英语专业四级。短题练习四级相关局部能力，不模拟完整四级试卷；完成36题不等于通过考试或获得完整四级能力评估。",
+  "proposedSources": [
+    {
+      "id": "cet.official.2016",
+      "status": "待审登记",
+      "title": "全国大学英语四、六级考试大纲（2016年修订版）",
+      "publisher": "教育部考试中心／全国大学英语四、六级考试委员会",
+      "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "listingUrl": "https://cet.neea.edu.cn/xhtml1/folder/16113/1588-1.htm",
+      "localFile": "build/learning-expansion-20261007/research/cet-2016.pdf",
+      "usage": "只参考四级能力、任务结构与难度；所有练习素材原创，不复制或改名官方样题。"
+    }
+  ],
+  "sourceReading": [
+    {
+      "sourceId": "cet.official.2016",
+      "readAt": "2026-10-07",
+      "pages": "印刷1—6／PDF6—11；样卷印刷145—146、150—151、155／PDF150—151、155—156、160",
+      "method": "核读本地逐页提取正文；实际渲染并目视PDF7（页脚2）与PDF150（页脚145），确认听读技能条目及四级笔试样卷写作、听力结构；未声称读完整部大纲。",
+      "findings": "四级熟悉题材听力要求含重要细节、态度、交际功能及句间关系；阅读含常见应用文、语境词义与衔接；写作要求表达恰当且连贯；翻译重在准确传达原意。样卷是篇章考试，本批拆成独立微任务，不能声称难度与测量效度等同整卷。",
+      "versionNote": "仅使用2016年修订版CET大纲；未将搜索结果标为2024的GF0018-2018文件当作2024标准。"
+    }
+  ],
+  "proposedGoals": [
+    {
+      "id": "cet4.pragmatics",
+      "status": "待审登记",
+      "title": "日常学习工作中的请求、澄清与协商",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "boundary": "熟悉话题的交际功能与恰当回应；不将选择礼貌表达等同已具备口语互动能力。"
+    },
+    {
+      "id": "cet4.listening-detail-attitude",
+      "status": "待审登记",
+      "title": "短口头信息的细节、限定与态度",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2、6／PDF6—7、11",
+      "boundary": "原创短录音，制作建议每分钟120—140词；教学可重播，不模拟正式考试播放规则。"
+    },
+    {
+      "id": "cet4.context-vocabulary",
+      "status": "待审登记",
+      "title": "根据上下文辨词义与常用搭配",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3、6／PDF8、11",
+      "boundary": "日常成熟词汇的具体义项和搭配，不靠生僻词区分等级。"
+    },
+    {
+      "id": "cet4.cohesion",
+      "status": "待审登记",
+      "title": "表达因果、转折、条件与衔接",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "boundary": "明确句间关系与逻辑范围，控制复句长度。"
+    },
+    {
+      "id": "cet4.paraphrase",
+      "status": "待审登记",
+      "title": "短信息保义转述与证据范围",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "boundary": "保留数量、时序、条件、态度和不确定性，不将可能夸大为确定。"
+    },
+    {
+      "id": "cet4.controlled-translation",
+      "status": "待审登记",
+      "title": "熟悉内容的受控译义表达",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "boundary": "句子层面的译义子技能，固定词块或限定填空；不冒充大纲140—160汉字段落翻译任务。"
+    }
+  ],
+  "interactionContract": {
+    "types": "choice、listeningChoice、arrange、audioArrange、completion、dictation、matching；本批不提出未实现的新题型。",
+    "normalization": "文字输入忽略大小写、首尾及重复空格、直弯撇号、句末标点；不忽略not等实义词。answer和acceptedVariants是完整可接受输入集合；受控填空明确词池或给定词，避免开放翻译遗漏同义句。",
+    "arrangement": "排序使用全部词块并按acceptedOrders判分；标点附着词块。audioArrange须按实际所听顺序重建，非任意保义改写。",
+    "matching": "左右各三项、每项使用一次，全部配对正确得分；题前打乱两侧展示顺序。",
+    "media": "所有audioScript均原创、仅供服务端制音和审阅；未生成媒体且不含assetId。听力题发布前须制作、听验并检查答前不泄露脚本。",
+    "reviewBoundary": "下面review均为作者自审，不是独立复核或上线批准。"
+  },
+  "stories": [
+    {
+      "id": "cet4.astra.story.a",
+      "group": "a",
+      "title": "被风吹乱的下午",
+      "placement": "全部练习之前",
+      "language": "zh-Hans",
+      "paragraphs": [
+        "你和同行者带着一小袋旧书，约好去河边的交换书架。出门时天还亮着，走到桥边却突然起了风。袋口被吹开，一张夹在书里的旧车票飞了出去。同行者追了几步，你赶紧按住其余的书，眼看车票落进了路边的浅水里。",
+        "捡起来时，车票上的字已经模糊了。你有些失落：那是第一次独自旅行留下的纪念。同行者没有急着劝你忘掉，而是陪你站在桥下，听你把当时迷路又赶上车的经过讲了一遍。说到最后，你自己先笑了。原来记得最清楚的，一直都不是车票上的字。",
+        "雨停后，你们终于找到书架，把带来的书放好。你挑了一本空白处留着小画的旧游记，把晾干的车票夹进去，准备带回家。回程的天色已经晚了，但你没有觉得这个下午被耽误。同行者走在身边，你们开始商量下一次出发。"
+      ],
+      "review": "只有你与泛化同行者参与行动；事件有丢失、交流、重新理解和收束。故事不提供任何练习答案，后续题目不考故事记忆。"
+    },
+    {
+      "id": "cet4.astra.story.b",
+      "group": "b",
+      "title": "没赶上的日落",
+      "placement": "全部练习之前",
+      "language": "zh-Hans",
+      "paragraphs": [
+        "你和同行者听说旧城高处能看见很漂亮的日落，便沿着小路往上走。拐过最后一道弯，才发现通往观景台的门关着。你看了看天边变暗的云，心里一下子空了下来；背包里还装着特意带来的相机。",
+        "同行者指了指旁边一条向下的石阶。你们没有急着回家，顺着石阶来到一片安静的水边。太阳已经被屋顶挡住，水上却留着几道细碎的金光。你举起相机，试了几次都拍不出眼前的颜色，索性把它收起来，和同行者坐在岸边。",
+        "等到最后一点亮色消失，你们才起身。回去的路上，你在相册里看见一张误拍的照片：只有石阶、半截鞋尖和两道长长的影子。同行者凑过来看，你们同时笑了。这一天没有留下预想中的日落，却有了一张只属于你们的照片。"
+      ],
+      "review": "不硬套职业或固定角色；期待受挫后出现新发现并收束；独立题不以故事为答题前提。"
+    }
+  ],
+  "groups": [
+    {
+      "id": "a",
+      "title": "把话说清楚",
+      "storyId": "cet4.astra.story.a",
+      "questionIds": [
+        "cet4.astra.a01",
+        "cet4.astra.a02",
+        "cet4.astra.a03",
+        "cet4.astra.a04",
+        "cet4.astra.a05",
+        "cet4.astra.a06",
+        "cet4.astra.a07",
+        "cet4.astra.a08",
+        "cet4.astra.a09",
+        "cet4.astra.a10",
+        "cet4.astra.a11",
+        "cet4.astra.a12",
+        "cet4.astra.a13",
+        "cet4.astra.a14",
+        "cet4.astra.a15",
+        "cet4.astra.a16",
+        "cet4.astra.a17",
+        "cet4.astra.a18"
+      ],
+      "stages": [
+        {
+          "title": "识别",
+          "positions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "title": "受控运用",
+          "positions": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "title": "迁移",
+          "positions": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "title": "保留关键意思",
+      "storyId": "cet4.astra.story.b",
+      "questionIds": [
+        "cet4.astra.b01",
+        "cet4.astra.b02",
+        "cet4.astra.b03",
+        "cet4.astra.b04",
+        "cet4.astra.b05",
+        "cet4.astra.b06",
+        "cet4.astra.b07",
+        "cet4.astra.b08",
+        "cet4.astra.b09",
+        "cet4.astra.b10",
+        "cet4.astra.b11",
+        "cet4.astra.b12",
+        "cet4.astra.b13",
+        "cet4.astra.b14",
+        "cet4.astra.b15",
+        "cet4.astra.b16",
+        "cet4.astra.b17",
+        "cet4.astra.b18"
+      ],
+      "stages": [
+        {
+          "title": "识别",
+          "positions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "title": "受控运用",
+          "positions": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "title": "迁移",
+          "positions": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet4.astra.a01",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "taskIntent": "区分征询、命令与事后通知",
+      "prompt": "你需要多一天完成小组报告，想先征求组员同意，且不假定对方已经答应。哪条消息合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I've decided we'll submit it a day later."
+        },
+        {
+          "id": "b",
+          "text": "Would it be possible to submit our report a day later?"
+        },
+        {
+          "id": "c",
+          "text": "You should have given me another day."
+        },
+        {
+          "id": "d",
+          "text": "Thanks for agreeing to the extra day."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "检查每句话把决定放在请求之前还是之后。",
+      "explanation": "b提出尚待回应的请求。其余分别擅自决定、事后责备或预设已经同意。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "d",
+        "distractors": "a先做决定；c追究过去；d预设同意。",
+        "ambiguity": "明确征求同意而不是通报既定变更。",
+        "difficultyAudit": "常见词汇承载礼貌与决定权的差别，不以复杂语法增加负担。"
+      }
+    },
+    {
+      "id": "cet4.astra.a02",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "taskIntent": "从更正中锁定有效信息",
+      "prompt": "听一则场地通知。参加者应该怎么做？",
+      "audioScript": "The workshop will still start at two. We had planned to use Room Six, but it is being repaired. Please go to Room Nine on the same floor instead.",
+      "options": [
+        {
+          "id": "a",
+          "text": "一点到九号室。"
+        },
+        {
+          "id": "b",
+          "text": "两点到六号室。"
+        },
+        {
+          "id": "c",
+          "text": "两点到九号室。"
+        },
+        {
+          "id": "d",
+          "text": "等维修结束再确认时间。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "分清保留的安排与被更正的安排。",
+      "explanation": "时间仍是两点，原定六号室改为同层九号室。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2／PDF6—7",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a改错时间；b保留过期地点；d把确定的新安排误作等待通知。",
+        "ambiguity": "无需推测楼层数；题目不要求辨认无关数字。",
+        "difficultyAudit": "需要跨两句整合不变信息与更正信息。"
+      }
+    },
+    {
+      "id": "cet4.astra.a03",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "taskIntent": "辨认普通动词的语境义",
+      "prompt": "通知写着：The course fee covers all printed materials, but you need to bring your own lunch. 这里的covers是什么意思？",
+      "options": [
+        {
+          "id": "a",
+          "text": "包括这些材料的费用"
+        },
+        {
+          "id": "b",
+          "text": "把材料表面遮住"
+        },
+        {
+          "id": "c",
+          "text": "只介绍材料的标题"
+        },
+        {
+          "id": "d",
+          "text": "把材料的钱退回来"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "先看主语是什么，再判断它与后面物品的实际关系。",
+      "explanation": "费用covers某项表示已包含该项费用；午餐被单独排除。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b取物理覆盖义；c误作内容介绍且加入only；d误作退款。",
+        "ambiguity": "只问本句义项，不否认cover在别处有其他含义。",
+        "difficultyAudit": "熟词多义，需借助fee和but分辨。"
+      }
+    },
+    {
+      "id": "cet4.astra.a04",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "taskIntent": "识别反预期关系",
+      "prompt": "选择连接词：The instructions were clear. ____, several users skipped a step and had to start again.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Therefore"
+        },
+        {
+          "id": "b",
+          "text": "Similarly"
+        },
+        {
+          "id": "c",
+          "text": "For example"
+        },
+        {
+          "id": "d",
+          "text": "Nevertheless"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "判断第二句是否符合第一句通常带来的预期。",
+      "explanation": "说明清晰通常让人少漏步骤，第二句却出现遗漏，因此用Nevertheless表示转折。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "d",
+        "wrongExample": "a",
+        "distractors": "a误设直接因果；b要求相似情况；c把错误操作当成说明清晰的例子。",
+        "ambiguity": "不声称清晰说明能保证人人操作正确，只比较这两句的连接关系。",
+        "difficultyAudit": "常见正式衔接词，语义先于词形。"
+      }
+    },
+    {
+      "id": "cet4.astra.a05",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "taskIntent": "保留必要条件而不新增保证",
+      "prompt": "读规则：Only applications received by Friday will be considered. 哪句保留了原意？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every application received by Friday will be accepted."
+        },
+        {
+          "id": "b",
+          "text": "Applications received after Friday will not be considered."
+        },
+        {
+          "id": "c",
+          "text": "Applications must be sent on Friday, not earlier."
+        },
+        {
+          "id": "d",
+          "text": "Applicants will receive a decision by Friday."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别核对截止时间、接收与寄出的区别，以及审核和录取的区别。",
+      "explanation": "截至周五收到是进入审核的必要条件，之后收到不予考虑；原句不保证录取，也不承诺出结果时间。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把考虑变成接受；c把截至周五变成仅周五当天且把收到改成寄出；d改成结果日期。",
+        "ambiguity": "by Friday在此作截至周五，不要求推断具体几点。",
+        "difficultyAudit": "区别信息约束，四项都具有表面合理性。"
+      }
+    },
+    {
+      "id": "cet4.astra.a06",
+      "goalId": "cet4.controlled-translation",
+      "type": "choice",
+      "taskIntent": "译义时保留范围限定",
+      "prompt": "选择准确表达“这项服务暂时只向本地居民开放”的一句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "This service will always be available to local residents only."
+        },
+        {
+          "id": "b",
+          "text": "Local residents can use this service whenever they like."
+        },
+        {
+          "id": "c",
+          "text": "For now, this service is available only to local residents."
+        },
+        {
+          "id": "d",
+          "text": "This service is no longer available to local residents."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对时间范围和使用人群，两处都不能增删。",
+      "explanation": "For now保留暂时，only to local residents保留人群限制。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a把暂时变成永久；b加入随时并丢失仅本地；d反转可用状态。",
+        "ambiguity": "限定选择译义，不把其余未列出的正确自由译文判错。",
+        "difficultyAudit": "社会服务熟悉语境中的限定表达。"
+      }
+    },
+    {
+      "id": "cet4.astra.a07",
+      "goalId": "cet4.pragmatics",
+      "type": "arrange",
+      "taskIntent": "形成先确认再安排的请求",
+      "prompt": "用全部词块组成请求：“你能先确认参加人数，再让我预订桌子吗？”",
+      "tokens": [
+        {
+          "id": "t",
+          "text": "before I book a table?"
+        },
+        {
+          "id": "n",
+          "text": "how many people are coming"
+        },
+        {
+          "id": "c",
+          "text": "Could you confirm"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "n",
+          "t"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先放请求框架，再补需要确认的内容，最后放时间关系。",
+      "explanation": "Could you confirm后接陈述语序的间接问句，before说明预订前要先确认。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "review": {
+        "correctExample": "Could you confirm how many people are coming before I book a table?",
+        "wrongExample": "Could you confirm before I book a table? how many people are coming",
+        "distractors": "提前结束问句会把确认内容孤立。",
+        "ambiguity": "给定词块限定形式；不是开放翻译唯一答案。",
+        "difficultyAudit": "包含间接问句和动作先后，词块减少拼写负担。"
+      }
+    },
+    {
+      "id": "cet4.astra.a08",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "audioArrange",
+      "taskIntent": "保留所听条件限制",
+      "prompt": "听一句承诺，用全部词块重建所听句子。",
+      "audioScript": "I can lend you the camera as long as you return it tonight.",
+      "tokens": [
+        {
+          "id": "r",
+          "text": "you return it tonight."
+        },
+        {
+          "id": "c",
+          "text": "I can lend you"
+        },
+        {
+          "id": "a",
+          "text": "as long as"
+        },
+        {
+          "id": "m",
+          "text": "the camera"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "m",
+          "a",
+          "r"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "听清承诺的内容，以及它附带的条件。",
+      "explanation": "可以借相机，但条件是今晚归还；as long as连接这个条件。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2／PDF7",
+      "review": {
+        "correctExample": "I can lend you the camera as long as you return it tonight.",
+        "wrongExample": "I can lend you as long as the camera you return it tonight.",
+        "distractors": "错误顺序切断lend的宾语，也破坏条件从句。",
+        "ambiguity": "按录音顺序判分；音频未制作，脚本答前隐藏。",
+        "difficultyAudit": "短句含一项条件限制，适于听后重建。"
+      }
+    },
+    {
+      "id": "cet4.astra.a09",
+      "goalId": "cet4.context-vocabulary",
+      "type": "matching",
+      "taskIntent": "在独立短句中辨认搭配意义",
+      "prompt": "将各句中的目标短语与对应意思配对，每项使用一次。目标短语为keep track of、take account of、make use of。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Please keep track of the expenses during the trip."
+        },
+        {
+          "id": "l2",
+          "text": "We need to take account of the extra travel time."
+        },
+        {
+          "id": "l3",
+          "text": "You can make use of the quiet room upstairs."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "利用某项现有资源"
+        },
+        {
+          "id": "r2",
+          "text": "持续记录并掌握变化"
+        },
+        {
+          "id": "r3",
+          "text": "在考虑时把某因素算进去"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r2"
+        ],
+        [
+          "l2",
+          "r3"
+        ],
+        [
+          "l3",
+          "r1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "看动作针对的是变化记录、决策因素，还是可用的东西。",
+      "explanation": "keep track of强调掌握记录；take account of强调考虑因素；make use of强调利用。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "l1-r2,l2-r3,l3-r1",
+        "wrongExample": "l1-r3,l2-r2,l3-r1",
+        "distractors": "记录开销不等于把额外时间纳入计划；只凭account与账目联想会错配。",
+        "ambiguity": "每个释义均与完整搭配及本句语境对应。",
+        "difficultyAudit": "三项常见多词表达，考语义区别而非单词直译。"
+      }
+    },
+    {
+      "id": "cet4.astra.a10",
+      "goalId": "cet4.cohesion",
+      "type": "completion",
+      "taskIntent": "补足原因关系",
+      "prompt": "只从because、although、unless中选一词填空：We moved the discussion online ____ the evening buses were cancelled and some members could not reach the venue.",
+      "answer": "because",
+      "acceptedVariants": [],
+      "hint": "先判断后半句是在解释决定、反驳预期，还是提出例外条件。",
+      "explanation": "晚间公交取消且部分成员到不了会场，是改为线上讨论的原因。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "because",
+        "wrongExample": "although",
+        "distractors": "although把支持决定的原因改成相反预期；unless与已经发生的情况及当前因果不合。",
+        "ambiguity": "词池限制答案，不排除自由写作中其他因果表达。",
+        "difficultyAudit": "通过两项实际后果判断关系，非看单词形式填空。"
+      }
+    },
+    {
+      "id": "cet4.astra.a11",
+      "goalId": "cet4.paraphrase",
+      "type": "matching",
+      "taskIntent": "保留不同数量范围",
+      "prompt": "将三条独立调查摘要与不夸大结果的中文意思配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Few participants asked for printed copies."
+        },
+        {
+          "id": "l2",
+          "text": "Not all participants finished the survey."
+        },
+        {
+          "id": "l3",
+          "text": "Most participants preferred the shorter version."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "多数参与者更喜欢较短的版本。"
+        },
+        {
+          "id": "r2",
+          "text": "至少有一些参与者没完成问卷。"
+        },
+        {
+          "id": "r3",
+          "text": "要求纸质副本的参与者很少。"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r3"
+        ],
+        [
+          "l2",
+          "r2"
+        ],
+        [
+          "l3",
+          "r1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "区分少数、多数，以及对全体说法的否定。",
+      "explanation": "few是很少；not all否定全体完成，不等于全体未完成；most是多数。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "review": {
+        "correctExample": "l1-r3,l2-r2,l3-r1",
+        "wrongExample": "把l2理解为所有人都没完成",
+        "distractors": "不得把few改成无人，也不得把not all改成none；配对错位会改变范围。",
+        "ambiguity": "不从not all推定具体完成比例。",
+        "difficultyAudit": "短信息范围辨析，避免复杂计算。"
+      }
+    },
+    {
+      "id": "cet4.astra.a12",
+      "goalId": "cet4.controlled-translation",
+      "type": "arrange",
+      "taskIntent": "受控表达让步与未变事实",
+      "prompt": "用全部词块表达：“虽然费用涨了，这个展览仍然吸引了很多参观者。”",
+      "tokens": [
+        {
+          "id": "v",
+          "text": "many visitors."
+        },
+        {
+          "id": "a",
+          "text": "Although the fee had increased,"
+        },
+        {
+          "id": "e",
+          "text": "the exhibition"
+        },
+        {
+          "id": "s",
+          "text": "still attracted"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "e",
+          "s",
+          "v"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先组成完整的让步部分，再组成它所对照的主句。",
+      "explanation": "Although引出费用上涨的让步背景，still保留仍然，主句说明吸引参观者。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "review": {
+        "correctExample": "Although the fee had increased, the exhibition still attracted many visitors.",
+        "wrongExample": "Although the fee had increased, many visitors the exhibition still attracted.",
+        "distractors": "错误次序使主句主宾结构失序。",
+        "ambiguity": "首词大小写与逗号固定让步从句前置；自由翻译可有其他时态表达，但本题用给定词块。",
+        "difficultyAudit": "社会文化熟悉内容，保留让步而非逐字翻译。"
+      }
+    },
+    {
+      "id": "cet4.astra.a13",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "taskIntent": "在协作中澄清模糊期限",
+      "prompt": "对方发来：Could you send me the figures soon? 你愿意配合，但需要知道明确截止时间。选最直接解决这个信息缺口的回复。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Certainly. Which format would you like them in?"
+        },
+        {
+          "id": "b",
+          "text": "Of course. Which period should the figures cover?"
+        },
+        {
+          "id": "c",
+          "text": "Happy to help. Who else should receive a copy?"
+        },
+        {
+          "id": "d",
+          "text": "Certainly. What time do you need them by?"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "检查回复是否在表达合作后，询问当前缺少的信息。",
+      "explanation": "d先表示愿意，再询问截止时间；其他回复没有解决soon的模糊性。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "review": {
+        "correctExample": "d",
+        "wrongExample": "a",
+        "distractors": "a询问格式；b询问数据覆盖时期；c询问其他收件人。三者都礼貌且愿意合作，但没有问提交截止时间。",
+        "ambiguity": "题干明确唯一缺口是期限，不推断figures指哪类数据。",
+        "difficultyAudit": "四项均为合作性回应，只能依据需要澄清的信息类型区分。"
+      }
+    },
+    {
+      "id": "cet4.astra.a14",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "taskIntent": "区分认可部分优点与整体接受",
+      "prompt": "听一段评价。说话人对新系统的态度是什么？",
+      "audioScript": "The new system does save us time when we search for files. I'm less happy about the way it shares them, though. I'd rather keep the old sharing tool until that part improves.",
+      "options": [
+        {
+          "id": "a",
+          "text": "认为搜索更快，但暂不愿用它的分享功能。"
+        },
+        {
+          "id": "b",
+          "text": "认为所有功能都比旧系统更差。"
+        },
+        {
+          "id": "c",
+          "text": "已经决定完全停用旧工具。"
+        },
+        {
+          "id": "d",
+          "text": "只担心文件搜索速度，没有评价分享功能。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "注意评价是否针对同一个功能，以及后面提出了什么选择。",
+      "explanation": "认可搜索省时，但不满意分享部分，希望改善前保留旧分享工具。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2／PDF6—7",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b把部分不满扩大到全部；c反转保留旧工具的选择；d遗漏主要保留意见。",
+        "ambiguity": "不推断分享功能具体哪里有问题，录音未说明。",
+        "difficultyAudit": "需整合褒贬与行动意图，不能只抓一个情感词。"
+      }
+    },
+    {
+      "id": "cet4.astra.a15",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "taskIntent": "用上下文修正熟词默认义",
+      "prompt": "读句子：The team had two possible designs. After comparing the costs, they settled on the simpler one. settled on在这里表示什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "比较后暂时搁置简单方案"
+        },
+        {
+          "id": "b",
+          "text": "比较后开始修改简单方案"
+        },
+        {
+          "id": "c",
+          "text": "比较后最终选定简单方案"
+        },
+        {
+          "id": "d",
+          "text": "比较后重新讨论简单方案"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "将短语放回比较方案的过程，判断它对应哪个阶段。",
+      "explanation": "settle on在比较备选项的语境中表示最终选择。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "d",
+        "distractors": "a把选定改为搁置；b把决策改为开始修改；d把决定落定改为重新讨论。",
+        "ambiguity": "不推断选定方案一定最便宜；只知比较过成本。",
+        "difficultyAudit": "四项均为自然的方案处理阶段，依据settled on区分决定与其他动作。"
+      }
+    },
+    {
+      "id": "cet4.astra.a16",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "taskIntent": "避免倒置原因与结果",
+      "prompt": "已知：The website was unavailable for an hour. Several people could not complete their bookings. 哪句把前一事实作为后一事实的原因？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The website was unavailable because several people could not complete their bookings."
+        },
+        {
+          "id": "b",
+          "text": "Because the website was unavailable, several people could not complete their bookings."
+        },
+        {
+          "id": "c",
+          "text": "The website was unavailable unless several people completed their bookings."
+        },
+        {
+          "id": "d",
+          "text": "Several people could not complete their bookings so that the website would be unavailable."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "给两件事分别标出原因和结果，再核对连接词两侧。",
+      "explanation": "b将网站不可用置于because从句，将无法预订作为结果。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a倒置因果；c改成例外条件；d把故障写成人为目的。",
+        "ambiguity": "题干指定因果方向，避免仅凭两事实断言任何因果。",
+        "difficultyAudit": "比较可成句但意义不同的连接方式。"
+      }
+    },
+    {
+      "id": "cet4.astra.a17",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "taskIntent": "保留尝试和成功的区别",
+      "prompt": "消息写着：I've tried to contact the supplier, but I haven't heard back yet. 哪句转述准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The supplier has refused the request."
+        },
+        {
+          "id": "b",
+          "text": "No attempt has been made to contact the supplier."
+        },
+        {
+          "id": "c",
+          "text": "The supplier has promised to reply today."
+        },
+        {
+          "id": "d",
+          "text": "Contact has been attempted, but no reply has arrived so far."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "区分已经做出的尝试、目前收到的回应与尚不明确的原因。",
+      "explanation": "原文确认尝试联系且截至现在未获回复，没有给出拒绝或承诺。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "review": {
+        "correctExample": "d",
+        "wrongExample": "a",
+        "distractors": "a把沉默当拒绝；b否认尝试；c虚构回复承诺。",
+        "ambiguity": "不能确定供应商是否读到消息；d不作该推断。",
+        "difficultyAudit": "沟通状态保义转述，含时间范围so far。"
+      }
+    },
+    {
+      "id": "cet4.astra.a18",
+      "goalId": "cet4.controlled-translation",
+      "type": "completion",
+      "taskIntent": "受控表达推迟而非取消",
+      "prompt": "表达“原定周一的活动推迟到了周三”，不是取消。仅将postpone或cancel中的一个改成适当形式填空：The event originally planned for Monday has been ____ until Wednesday.",
+      "answer": "postponed",
+      "acceptedVariants": [],
+      "hint": "先依据安排是否仍会发生来选词，再检查空格前的结构。",
+      "explanation": "postpone表示延后，has been后用过去分词postponed；cancel表示取消，不能保留改期举办的原意。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "review": {
+        "correctExample": "postponed",
+        "wrongExample": "cancelled",
+        "distractors": "cancelled或canceled不表达本题的改期；postpone缺少过去分词形式。",
+        "ambiguity": "词池限定为两个动词，避免把delayed等其他有效自由译法遗漏。",
+        "difficultyAudit": "先作语义决策，再完成受控被动表达。"
+      }
+    },
+    {
+      "id": "cet4.astra.b01",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "taskIntent": "有理由地谢绝但保留合作意愿",
+      "prompt": "同伴请你今晚检查一份文件。你今晚没空，但明早可以，想明确提出替代安排。哪句合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I can't do it tonight, but I could check it first thing tomorrow."
+        },
+        {
+          "id": "b",
+          "text": "I can check it tonight, but I'll send you my comments tomorrow morning."
+        },
+        {
+          "id": "c",
+          "text": "I can't promise a time yet, but I'll let you know when I'm free."
+        },
+        {
+          "id": "d",
+          "text": "I can't check it tomorrow, but I could make time for it this evening."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "核对回复是否同时说明当前限制和可行的下一步。",
+      "explanation": "a说明今晚不能检查，并明确提出明早先检查。b与d都安排今晚动手，违背已知限制；c只承诺以后确认，没有提出已知可行的明早安排。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "d",
+        "distractors": "b将检查放在今晚、仅把反馈推到明早；c保留合作意愿却未给明确替代时间；d颠倒今明两段时间的可用性。",
+        "ambiguity": "first thing tomorrow表示明早优先做，不等于承诺精确几点完成。",
+        "difficultyAudit": "四项均为自然合作回应，需区分检查、反馈和确认时间三个动作。"
+      }
+    },
+    {
+      "id": "cet4.astra.b02",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "taskIntent": "听懂条件性承诺",
+      "prompt": "听一则语音。说话人确定承诺了什么？",
+      "audioScript": "If the replacement part arrives today, we can repair your bike tomorrow morning. If it doesn't, I'll call you by five to discuss another date. I can't promise the repair will be finished tomorrow.",
+      "options": [
+        {
+          "id": "a",
+          "text": "若零件今天不到，会先开始维修，明早按原计划交车。"
+        },
+        {
+          "id": "b",
+          "text": "若零件今天不到，会在五点前来电确认明早可以交车。"
+        },
+        {
+          "id": "c",
+          "text": "若零件今天到了，会在五点前来电商量其他维修日期。"
+        },
+        {
+          "id": "d",
+          "text": "若零件今天不到，会在五点前来电商量其他维修日期。"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "分别记录带条件的可能安排与相应的联系承诺。",
+      "explanation": "明确承诺的是零件不到时五点前联系；明早维修依赖零件今天到，结尾还否认无条件保证。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2／PDF6—7",
+      "review": {
+        "correctExample": "d",
+        "wrongExample": "a",
+        "distractors": "a在零件未到时仍保证按原计划交车；b保留电话时间却把改期协商换成确认明早交车；c保留电话动作却反转触发条件。",
+        "ambiguity": "题面不泄露零件或时间，须听录音；不据此猜具体维修时长。",
+        "difficultyAudit": "四项均为相近长度的条件加行动安排，需同时核对触发条件与电话目的。"
+      }
+    },
+    {
+      "id": "cet4.astra.b03",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "taskIntent": "识别证据语境中的动词义",
+      "prompt": "读句子：The figures do not support the claim that sales doubled. 此处support最接近哪种意思？",
+      "options": [
+        {
+          "id": "a",
+          "text": "支付这项主张的费用"
+        },
+        {
+          "id": "b",
+          "text": "为这项主张提供证据"
+        },
+        {
+          "id": "c",
+          "text": "帮助搬运这些商品"
+        },
+        {
+          "id": "d",
+          "text": "把销售额增加一倍"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "看主语是数据，宾语是主张；判断两者建立什么关系。",
+      "explanation": "数据support主张表示提供证据支持。原句说这些数据不支持销量翻倍的说法。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "d",
+        "distractors": "a误用资助义；c误用物理帮助；d把证明关系改成促成增长。",
+        "ambiguity": "不支持不等于已证明主张为假；本题只问词义。",
+        "difficultyAudit": "基础论证词在短应用信息中的意义。"
+      }
+    },
+    {
+      "id": "cet4.astra.b04",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "taskIntent": "识别目的与结果的区别",
+      "prompt": "读句子：We added labels so that visitors could find the right boxes more easily. 哪项是句子明确表达的？",
+      "options": [
+        {
+          "id": "a",
+          "text": "收到访客反映箱子难找后，我们才开始给箱子加标签。"
+        },
+        {
+          "id": "b",
+          "text": "给箱子加标签之后，我们确认访客找箱子的速度提高了。"
+        },
+        {
+          "id": "c",
+          "text": "给箱子加标签，是为了帮助访客更容易找到正确的箱子。"
+        },
+        {
+          "id": "d",
+          "text": "等访客找到了正确的箱子，我们再给这些箱子补上标签。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "判断后半句是在说行动想达到什么，还是汇报最终实际效果。",
+      "explanation": "so that此处引出加标签的目的。原句没有报告来自访客的反馈、已核实的速度变化或先找箱子后加标签的时序。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a添加访客反馈作为行动起因；b把行动目的改成已确认的实际结果；d添加访客先找到箱子、工作人员再贴标签的时序。",
+        "ambiguity": "原句表达目的，未报告是否收到反馈或验证成效，也未交代具体贴标签的时刻。",
+        "difficultyAudit": "四项都是自然的工作记录，必须区分目的、原因、验证结果与时序。"
+      }
+    },
+    {
+      "id": "cet4.astra.b05",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "taskIntent": "保留过去习惯与当前变化",
+      "prompt": "说明写着：The hall used to be a warehouse, but it now hosts community events. 哪句转述准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "A former warehouse is now used for community activities."
+        },
+        {
+          "id": "b",
+          "text": "The hall will become a warehouse after the events."
+        },
+        {
+          "id": "c",
+          "text": "The hall has always been used only for community activities."
+        },
+        {
+          "id": "d",
+          "text": "Community events stopped when the hall became a warehouse."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别确认过去的用途与现在的用途，不把时间线倒转。",
+      "explanation": "used to be给出以前的用途；now hosts说明目前用于社区活动。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "d",
+        "distractors": "b虚构未来用途；c抹掉历史；d倒转变化方向。",
+        "ambiguity": "不声称建筑翻新日期或所有权，原文没有提供。",
+        "difficultyAudit": "former与used to的保义对应。"
+      }
+    },
+    {
+      "id": "cet4.astra.b06",
+      "goalId": "cet4.controlled-translation",
+      "type": "choice",
+      "taskIntent": "保留渐变而非绝对完成",
+      "prompt": "选准确表达“越来越多的居民选择骑车出行，但汽车仍然很常见”的一句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "More and more residents choose to cycle, but cars are becoming less common."
+        },
+        {
+          "id": "b",
+          "text": "Fewer and fewer residents choose to cycle, but cars are still common."
+        },
+        {
+          "id": "c",
+          "text": "More and more residents choose to cycle because cars are still common."
+        },
+        {
+          "id": "d",
+          "text": "More and more residents choose to cycle, but cars are still common."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "核对变化方向，同时保留后半句仍然存在的情况。",
+      "explanation": "More and more保留人数增长；but与still保留汽车依然常见的转折事实。",
+      "difficulty": "识别",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "review": {
+        "correctExample": "d",
+        "wrongExample": "a",
+        "distractors": "a把汽车仍很常见换成汽车正在减少，原文未提供这种趋势；b倒转骑车人数的变化方向；c将转折改成未给出的因果。",
+        "ambiguity": "汽车变少与汽车仍常见可以同时为真，但原文仅说明后者，不能用前者替换；也不推断骑车人数已超过开车人数。",
+        "difficultyAudit": "四项都保留骑车趋势与汽车信息，细辨变化方向、状态和两者关系。"
+      }
+    },
+    {
+      "id": "cet4.astra.b07",
+      "goalId": "cet4.pragmatics",
+      "type": "matching",
+      "taskIntent": "区分回应的会话功能",
+      "prompt": "把每条完整回应与它的主要交际功能配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "By 'the final version', do you mean the file you sent this morning?"
+        },
+        {
+          "id": "l2",
+          "text": "I see your point, but a shorter break may not give everyone enough time."
+        },
+        {
+          "id": "l3",
+          "text": "I'm sorry I left your name out. I'll add it before sending the list."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "承认疏漏并提出补救"
+        },
+        {
+          "id": "r2",
+          "text": "确认对方所指的具体对象"
+        },
+        {
+          "id": "r3",
+          "text": "承认对方观点后提出保留意见"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r2"
+        ],
+        [
+          "l2",
+          "r3"
+        ],
+        [
+          "l3",
+          "r1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "看每句话在推动什么：弄清所指、讨论分歧，还是修复已经发生的问题。",
+      "explanation": "第一句确认文件；第二句先认可再提出不足；第三句道歉并补上名字。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "review": {
+        "correctExample": "l1-r2,l2-r3,l3-r1",
+        "wrongExample": "把l2当成完全同意",
+        "distractors": "I see your point不抹掉but后的保留；I'm sorry后实际提出补救，不是仅表达遗憾。",
+        "ambiguity": "每句都完整自足，配对不依赖故事或额外对话。",
+        "difficultyAudit": "辨析成熟但常见的协作语用。"
+      }
+    },
+    {
+      "id": "cet4.astra.b08",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "dictation",
+      "taskIntent": "准确保留口头纠正中的否定对比",
+      "prompt": "听一句提醒，写出完整句子。",
+      "audioScript": "Please save a copy, not just a link.",
+      "answer": "Please save a copy, not just a link.",
+      "acceptedVariants": [
+        "Please save a copy not just a link."
+      ],
+      "hint": "听清说话人区分的两样东西，尤其不要漏掉改变意思的小词。",
+      "explanation": "要求保存副本，而不只是链接；not just若漏掉，会失去提醒的关键。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2／PDF7",
+      "review": {
+        "correctExample": "Please save a copy, not just a link.",
+        "wrongExample": "Please save a copy and a link.",
+        "distractors": "and把纠正改成并列要求；just a link会颠倒需要保存的内容。",
+        "ambiguity": "这是听写而不是自由转述；大小写及句末标点按正式规则归一。内部逗号不由通用规则忽略，故显式接受省去内部逗号的版本；保留not just等意义词。",
+        "difficultyAudit": "八词短句降低输入负担，重点辨否定限定。"
+      }
+    },
+    {
+      "id": "cet4.astra.b09",
+      "goalId": "cet4.context-vocabulary",
+      "type": "completion",
+      "taskIntent": "区分建议与强制要求",
+      "prompt": "仅从recommend、require、refuse中选一词，不变形：The notice says helmets are compulsory: all riders must wear one. Here, the organisers ____ riders to wear helmets.",
+      "answer": "require",
+      "acceptedVariants": [],
+      "hint": "比较通知表达的是可以自行选择的建议，还是必须遵守的要求。",
+      "explanation": "compulsory及must说明强制要求，用require；recommend是建议，refuse是拒绝。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "require",
+        "wrongExample": "recommend",
+        "distractors": "recommend只表达建议，弱于原文compulsory与must的强制要求；refuse表达拒绝，也不传达该要求。",
+        "ambiguity": "仅在给定三词中依据语义强度选择；不以recommend someone to do是否可接受作为判错依据。",
+        "difficultyAudit": "安全通知的语义强度，不需要骑行专业知识。"
+      }
+    },
+    {
+      "id": "cet4.astra.b10",
+      "goalId": "cet4.cohesion",
+      "type": "arrange",
+      "taskIntent": "将条件与许可组成准确规则",
+      "prompt": "用全部词块表达：“只要保持安静，你就可以在这里工作。”",
+      "tokens": [
+        {
+          "id": "q",
+          "text": "you remain quiet."
+        },
+        {
+          "id": "w",
+          "text": "You may work here"
+        },
+        {
+          "id": "p",
+          "text": "provided that"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "w",
+          "p",
+          "q"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先找许可的主句，再把限制它的条件接上。",
+      "explanation": "provided that表示条件，许可取决于保持安静。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "You may work here provided that you remain quiet.",
+        "wrongExample": "You may work here you remain quiet. provided that",
+        "distractors": "把连接词留到句末无法连接两个分句。",
+        "ambiguity": "词块和句末标点固定顺序；条件前置在自由写作中可行，但不符合此组给定词块的标点。",
+        "difficultyAudit": "常见正式条件表达，不以长句增加难度。"
+      }
+    },
+    {
+      "id": "cet4.astra.b11",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "taskIntent": "分清计划、可能与实际发生",
+      "prompt": "读记录：The company plans to open a second shop next spring, subject to approval. 哪句转述没有把计划写成事实？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The company opened a second shop last spring."
+        },
+        {
+          "id": "b",
+          "text": "The company intends to open another shop next spring if approval is granted."
+        },
+        {
+          "id": "c",
+          "text": "Approval has been granted, so a second shop is already open."
+        },
+        {
+          "id": "d",
+          "text": "The company has decided never to open another shop."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "保留时间方向，以及计划仍然受哪种条件限制。",
+      "explanation": "plans对应intends；subject to approval说明尚须获批，不能推定已获批或已营业。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a改未来为过去；c虚构批准及营业状态；d反转计划。",
+        "ambiguity": "未说批准一定会获得，也未说申请被拒绝。",
+        "difficultyAudit": "短工作信息中的条件保留。"
+      }
+    },
+    {
+      "id": "cet4.astra.b12",
+      "goalId": "cet4.controlled-translation",
+      "type": "completion",
+      "taskIntent": "受控表达通常不等于总是",
+      "prompt": "译出“参观者通常需要提前预约”。仅从usually、normally、always、occasionally中选一词填空；允许两个符合原意的词分别作答：Visitors ____ need to book in advance.",
+      "answer": "usually",
+      "acceptedVariants": [
+        "normally"
+      ],
+      "hint": "检查所选词是否表达常态，同时允许存在例外。",
+      "explanation": "usually与normally在此都能表达通常情况；always把频率提高到没有例外，occasionally则降低为偶尔。",
+      "difficulty": "受控运用",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "review": {
+        "correctExample": "Visitors normally need to book in advance.",
+        "wrongExample": "Visitors always need to book in advance.",
+        "distractors": "always过强；occasionally过弱。",
+        "ambiguity": "明确词池且接受usually、normally两个答案；不把未列入词池的自由译文当作错误英语。",
+        "difficultyAudit": "常见服务情境的一词受控翻译，保留频率意义。"
+      }
+    },
+    {
+      "id": "cet4.astra.b13",
+      "goalId": "cet4.pragmatics",
+      "type": "choice",
+      "taskIntent": "有证据地提出异议",
+      "prompt": "同伴说：We can finish all six interviews in an hour. 已知每次访谈至少十五分钟，且只能依次进行。你想礼貌指出时间不足，不改变人数和进行方式，并准确说明至少需要多久。哪句最合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I see your point, but with fifteen minutes per interview, perhaps we could do four instead."
+        },
+        {
+          "id": "b",
+          "text": "I see your point, but with fifteen minutes per interview, perhaps we could run two at once."
+        },
+        {
+          "id": "c",
+          "text": "I see your point, but at fifteen minutes each, we'll need at least an hour and a half."
+        },
+        {
+          "id": "d",
+          "text": "I see your point, but at fifteen minutes each, we'll need at most an hour and a half."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "选既回应安排，又用已知事实说明问题的句子。",
+      "explanation": "c用已知最短时长说明至少九十分钟，并以缓和语句提出异议。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4—5／PDF9—10",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a礼貌提出减少到四人的方案，改变人数；b礼貌提出并行方案，改变依次进行的方式；d把最低需要九十分钟说成最多九十分钟。",
+        "ambiguity": "题干要求保留六人依次访谈并说明最低时间，因此不接受改变任务方案，也不能把每次至少十五分钟当成总耗时上限。",
+        "difficultyAudit": "四项均礼貌并提及时长，区分对原约束的保留与至少、至多的范围。"
+      }
+    },
+    {
+      "id": "cet4.astra.b14",
+      "goalId": "cet4.listening-detail-attitude",
+      "type": "listeningChoice",
+      "taskIntent": "辨认暂缓判断而非否定",
+      "prompt": "听一段发言。说话人的主要意思是什么？",
+      "audioScript": "The first few comments on the new schedule look positive. Still, only a small number of people have replied. I'd like to hear from the rest before we decide to keep it.",
+      "options": [
+        {
+          "id": "a",
+          "text": "目前反馈不错，虽然回复人数少，仍建议现在决定保留。"
+        },
+        {
+          "id": "b",
+          "text": "目前回复不多，且多数评价偏负面，想收齐意见后决定。"
+        },
+        {
+          "id": "c",
+          "text": "目前反馈不错，已决定正式保留，再收集具体执行建议。"
+        },
+        {
+          "id": "d",
+          "text": "目前反馈不错，但回复人数还少，想听取更多意见后决定。"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "把已有观察和下一步决定分开，不要让开头的评价替代结尾的态度。",
+      "explanation": "positive是当前少量反馈，仍希望听到其余人的意见才决定保留。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷1—2／PDF6—7",
+      "review": {
+        "correctExample": "d",
+        "wrongExample": "a",
+        "distractors": "a保留正面反馈和样本少，却将暂缓改为现在决定；b保留等待意见的动作，却将当前评价改为多数负面；c把是否保留仍未定偷换成已决定保留、只待收集执行建议。",
+        "ambiguity": "不推断尚未回复者赞成或反对。",
+        "difficultyAudit": "四项均包含当前观察与后续动作，长度相近；需分清等待决定与决定后的执行。"
+      }
+    },
+    {
+      "id": "cet4.astra.b15",
+      "goalId": "cet4.context-vocabulary",
+      "type": "choice",
+      "taskIntent": "根据后文理解评价词",
+      "prompt": "读句子：The estimate is conservative: it leaves out several possible sources of income, so the final total may be higher. conservative在此最接近什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "谨慎偏低的"
+        },
+        {
+          "id": "b",
+          "text": "已经精确核实的"
+        },
+        {
+          "id": "c",
+          "text": "保证不会变化的"
+        },
+        {
+          "id": "d",
+          "text": "故意夸大到偏高的"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "利用冒号后面的解释判断这个评价指向哪一侧，而不是套用熟悉的其他义项。",
+      "explanation": "漏计若干可能收入且最终可能更高，说明估计偏谨慎、没有把所有潜在收入算满。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "d",
+        "distractors": "b把估计当核实；c把may变成保证；d与最终可能更高的方向相反。",
+        "ambiguity": "偏低是估计方法的谨慎取向，不保证最终必然超过估计。",
+        "difficultyAudit": "稍成熟的常见评价词，后文提供充分语境，不靠记偏义。"
+      }
+    },
+    {
+      "id": "cet4.astra.b16",
+      "goalId": "cet4.cohesion",
+      "type": "choice",
+      "taskIntent": "保持指代对象明确",
+      "prompt": "读两句：The team shortened the form and removed two repeated questions. This made it quicker to complete. 第二句中的This最自然地指什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "前文提到的、需要人们填写的那份表格"
+        },
+        {
+          "id": "b",
+          "text": "表格中出现过的、内容重复的那两个问题"
+        },
+        {
+          "id": "c",
+          "text": "缩短表格并删去重复问题的这一整项改动"
+        },
+        {
+          "id": "d",
+          "text": "前文提到的、负责处理这份表格的团队"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "看代词承接的是前文的某个名词，还是前面整件事。",
+      "explanation": "This概括前句的改动，it指表格；改动使表格更快填完。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷3／PDF8",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a是it所指的表格，不是This概括的事件；b抓住邻近名词却丢掉删除动作；d抓住实施者而不是其所做的改动。",
+        "ambiguity": "两个动作组成一项改动，不要求在两者之间人为选一个唯一原因。",
+        "difficultyAudit": "四项均取自实际出现的对象或事件，区分事件回指、实体回指与实施者。"
+      }
+    },
+    {
+      "id": "cet4.astra.b17",
+      "goalId": "cet4.paraphrase",
+      "type": "choice",
+      "taskIntent": "保留比较基准",
+      "prompt": "反馈写着：The revised guide is easier to follow than the original, though some sections still need work. 哪句总结准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The revision improved clarity, but only the layout now needs further changes."
+        },
+        {
+          "id": "b",
+          "text": "The revision improved clarity, but further changes are needed in places."
+        },
+        {
+          "id": "c",
+          "text": "The original remains clearer than the revision, though both need further changes."
+        },
+        {
+          "id": "d",
+          "text": "The revision is as clear as the original, though some sections need further changes."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别保留与旧版相比的进步，以及评价中的保留部分。",
+      "explanation": "b保留新版比原版更易理解的进步，也保留部分内容仍需修改。原文没有把后续修改限定为版式。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷2—3／PDF7—8",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a将未指明的修改限定为只有版式；c倒置新旧清晰度并添加两版都需改动；d把新版更清晰降低成与原版一样清晰。",
+        "ambiguity": "只比较易理解程度，不扩大到准确性；some sections未说明需要修改的具体类型。",
+        "difficultyAudit": "四项均有评价与保留两个分句，细辨比较方向、改善程度及修改范围。"
+      }
+    },
+    {
+      "id": "cet4.astra.b18",
+      "goalId": "cet4.controlled-translation",
+      "type": "arrange",
+      "taskIntent": "受控译出目的而非强制效果",
+      "prompt": "用全部词块表达：“为了减少浪费，这家食堂开始提供小份餐食。”",
+      "tokens": [
+        {
+          "id": "s",
+          "text": "serving smaller portions."
+        },
+        {
+          "id": "c",
+          "text": "the canteen"
+        },
+        {
+          "id": "t",
+          "text": "To reduce waste,"
+        },
+        {
+          "id": "b",
+          "text": "began"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "t",
+          "c",
+          "b",
+          "s"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先识别行动的目的，再组成谁开始做什么的完整主句。",
+      "explanation": "To reduce waste表达目的；began serving表达开始提供，小份餐食用smaller portions。",
+      "difficulty": "迁移",
+      "sourceId": "cet.official.2016",
+      "pages": "印刷4／PDF9",
+      "review": {
+        "correctExample": "To reduce waste, the canteen began serving smaller portions.",
+        "wrongExample": "The canteen to reduce waste, began serving smaller portions.",
+        "distractors": "错误次序把带逗号的目的短语插入主语和谓语之间，形成不完整标点结构。",
+        "ambiguity": "按给定词块及标点排序，不否认自由译文可以后置目的或用started；不声称已经证明浪费减少。",
+        "difficultyAudit": "社会生活熟悉主题，准确保留目的、起始和份量变化。"
+      }
+    }
+  ],
+  "authorReview": {
+    "questionCount": 36,
+    "groups": 2,
+    "questionsPerGroup": 18,
+    "goalCount": 6,
+    "interactionCount": 7,
+    "semanticFocus": "选择、听辨、配对以及多道受控输出均考意图、信息限定、搭配义或逻辑关系，超过12题；不是36道语法填空。",
+    "releaseBlockers": [
+      "主代理逐题独立审阅及与正式旧题的实质重复检查",
+      "6条目标及1条来源正式登记审查",
+      "所有录音制作、听验、答前隐藏及无障碍核验",
+      "导入正式题库前按真实合同转换与验证；当前作者JSON不是生产数据",
+      "18题实际组卷与客户端全流程验收"
+    ],
+    "independence": "所有题目各自给足材料，不依赖开场故事、前题答案或共同阅读篇章。"
+  },
+  "primaryReview": {
+    "reviewedAt": "2026-10-07",
+    "status": "36题逐题首审、13题作者返修及主代理二审完成；仍待正式导入",
+    "notes": [
+      "主代理另修b08八词计数及无内部逗号输入变体",
+      "来源目标待登记、音频未制作、正式合同与18题组卷待验收"
+    ]
+  }
+}

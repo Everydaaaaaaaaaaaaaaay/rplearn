@@ -1,0 +1,1329 @@
+{
+  "level": "senior3",
+  "author": {
+    "name": "Astra 高三独立作者",
+    "method": "逐题亲自原创：为每题分别确定交际目的、时间线、信息范围、答案及错误机制；没有用程序组合、槽位替换或循环生成题目。程序仅用于解析与结构检查。",
+    "status": "作者自审草稿；媒体和独立主审未完成，不可发布"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/pep-senior3.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷5、17、29；PDF12、24、36（从1计）",
+      "method": "逐页核读pages.json完整正文，并渲染、目视PDF24，核对印刷17页过去分词功能辨析、改写与语篇改错。",
+      "findings": "被动语态复习要求讨论采用被动的理由并结合时态；过去分词复习涉及定语、状语、表语和宾补；不定式复习包含主语、表语、宾语、宾补、定语、状语及主动被动关系。",
+      "limitations": "本地文件封面实际为选择性必修第四册，并非第三册；只以真实正文支持高三综合复习，不宣称全国高三统一册次或整册核读。不复制教材题文、插图和音轨。"
+    },
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/fltrp-senior3.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷5、29、53；PDF12、36、60（从1计）",
+      "method": "逐页核读pages.json完整正文，渲染、目视PDF60并确认印刷53页名词性从句问题、补全文本及基于证据讨论可能原因的任务。",
+      "findings": "时态页区分过去之前完成、过去进行、过去视角将来及延续；状语从句页辨析条件、原因、比较和时间并练习目的；名词性从句页区分主宾表从句，要求按未知信息选择连接成分。",
+      "limitations": "核读仅限上述实际正文；条件推断与证据范围题是基于复习目标的原创迁移，不声称来自教材原题或考试真题。"
+    }
+  ],
+  "interactionContract": {
+    "inputNormalization": "文本输入接受首尾空格、连续空格、大小写、直弯撇号及句末标点归一；明确列出缩写及其他合法答案。选择题按选项ID；排序按tokens的ID序列；配对按pairs中的ID关系，不按显示位置。",
+    "audioArrange": {
+      "status": "待确认客户端及判题闭环，音频待制作",
+      "description": "答前隐藏audioScript，听后用全部词块重建原句；提供重播和可撤回的点选；必须按acceptedOrders验证，不能退化为阅读排序。"
+    },
+    "sourceBoundary": "sourceId和pages表示教学依据，不表示原创题干摘自该页。所有题目自足，不要求记忆前置故事。"
+  },
+  "questions": [
+    {
+      "id": "s3.astra.a01",
+      "goalId": "senior3.repair-report-focus",
+      "type": "choice",
+      "taskIntent": "表达重心与信息保留",
+      "prompt": "进度表围绕new entrance展开。事实：工人正在修这个入口，尚未完工。哪句既以入口为主语，又完整保留事实？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The new entrance has been repaired by the workers."
+        },
+        {
+          "id": "b",
+          "text": "The new entrance is being repaired by the workers."
+        },
+        {
+          "id": "c",
+          "text": "The workers are repairing the new entrance."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别检查句子的起点和动作处于哪个阶段。",
+      "explanation": "is being repaired保留正在维修的被动过程。a误报完成；c英语正确，但没有满足题目明确要求的入口作主语。",
+      "difficulty": "识别：同时检查信息重心与完成状态，词汇基础。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把进行误作完成；c只满足事实不满足指定表达重心，不判其语法错误。",
+        "ambiguity": "已经指定入口作主语，避免把合法主动语态普遍判错。"
+      }
+    },
+    {
+      "id": "s3.astra.a02",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "listeningChoice",
+      "taskIntent": "过去时间视角",
+      "prompt": "听一段回忆，哪项准确说明说话人进屋那个时刻的情况？",
+      "audioScript": "When I entered the room, Ana was sorting the photographs. She had already counted them, but she had not put them into boxes yet.",
+      "options": [
+        {
+          "id": "a",
+          "text": "照片已经数过，正在分类，尚未装箱。"
+        },
+        {
+          "id": "b",
+          "text": "照片正在清点，分类与装箱都已完成。"
+        },
+        {
+          "id": "c",
+          "text": "照片尚未清点，进屋后才开始分类。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把已完成、当时进行和尚未发生的动作分开记。",
+      "explanation": "had already counted表示进屋前已清点；was sorting是进屋时正在分类；had not put说明尚未装箱。",
+      "difficulty": "识别：三个短动作的先后与状态，不考长篇记忆。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b交换清点与分类状态并捏造装箱完成；c漏听already并改变分类起点。",
+        "ambiguity": "参照点为进屋时，题面没有泄露音频顺序。"
+      }
+    },
+    {
+      "id": "s3.astra.a03",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "choice",
+      "taskIntent": "修饰范围",
+      "prompt": "标签写着：The boxes marked with a blue circle contain glass. 仓库还有未画蓝圈的箱子。只根据标签，哪项成立？",
+      "options": [
+        {
+          "id": "a",
+          "text": "所有箱子都装着玻璃。"
+        },
+        {
+          "id": "b",
+          "text": "未画蓝圈的箱子一定没有玻璃。"
+        },
+        {
+          "id": "c",
+          "text": "画蓝圈的箱子装着玻璃，其他箱子的内容未说明。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "先找修饰语限定了哪一部分物品，再检查有没有推断超出原句。",
+      "explanation": "marked with a blue circle限定被说明的箱子集合；句子没有对未标记箱子作否定承诺。",
+      "difficulty": "识别并限定推断：识别过去分词定语的范围。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a取消限定；b把对一部分的肯定错误扩展为对其余部分的否定。",
+        "ambiguity": "题内明确存在未标记箱子，但不提供其内容，唯一结论为c。"
+      }
+    },
+    {
+      "id": "s3.astra.a04",
+      "goalId": "senior3.project-conditions",
+      "type": "matching",
+      "taskIntent": "逻辑关系识别",
+      "prompt": "将四句中连接部分表达的关系与类别配对，每类用一次。",
+      "left": [
+        {
+          "id": "item1",
+          "text": "We stayed inside because the path was flooded."
+        },
+        {
+          "id": "item2",
+          "text": "We can open the gate if the guard agrees."
+        },
+        {
+          "id": "item3",
+          "text": "We used a lamp so that everyone could see the map."
+        },
+        {
+          "id": "item4",
+          "text": "Although the room was small, we held the meeting there."
+        }
+      ],
+      "right": [
+        {
+          "id": "a",
+          "text": "条件"
+        },
+        {
+          "id": "b",
+          "text": "让步"
+        },
+        {
+          "id": "c",
+          "text": "原因"
+        },
+        {
+          "id": "d",
+          "text": "目的"
+        }
+      ],
+      "pairs": [
+        [
+          "item1",
+          "c"
+        ],
+        [
+          "item2",
+          "a"
+        ],
+        [
+          "item3",
+          "d"
+        ],
+        [
+          "item4",
+          "b"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "判断后半信息是在说明缘由、前提、意图，还是与结果形成反差。",
+      "explanation": "because说明留下的原因；if给出开门前提；so that表达用灯的目的；although承认房间小而说明仍在那里开会。",
+      "difficulty": "识别：四个短语境并列对比，不靠专门背景。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "1-c，2-a，3-d，4-b",
+        "wrongExample": "3-c",
+        "distractors": "把目的配成原因会将意图误当已经导致行动的既成事实；让步不等于允许行动的前提。",
+        "ambiguity": "本题so that与could、主动用灯语境明确表示目的。"
+      }
+    },
+    {
+      "id": "s3.astra.a05",
+      "goalId": "senior3.interview-summary",
+      "type": "choice",
+      "taskIntent": "是否问题与内容问题",
+      "prompt": "访谈记录只写：The speaker explained why the trip was cancelled. 哪项是记录明确说明的？",
+      "options": [
+        {
+          "id": "a",
+          "text": "发言者说明了取消行程的原因。"
+        },
+        {
+          "id": "b",
+          "text": "发言者确认行程没有取消。"
+        },
+        {
+          "id": "c",
+          "text": "发言者只询问行程是否取消。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "注意引导从句的词指向哪一种未知信息。",
+      "explanation": "why引导的内容是取消的原因；句子说explained，不是asked。记录没有提供具体原因，也不能自行补充。",
+      "difficulty": "识别：从句内容与言语行为同时辨析。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b颠倒取消事实；c把原因问题换成是否问题，并把解释换成询问。",
+        "ambiguity": "不要求推断原因本身，只识别已记录的信息类型。"
+      }
+    },
+    {
+      "id": "s3.astra.a06",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "taskIntent": "不定式逻辑主语",
+      "prompt": "要表达“为了让访客容易读懂，我们把说明缩短了”。哪句目的部分的动作执行者与主句搭配清楚？",
+      "options": [
+        {
+          "id": "a",
+          "text": "To help visitors understand, the explanation was difficult."
+        },
+        {
+          "id": "b",
+          "text": "To help visitors understand, we shortened the explanation."
+        },
+        {
+          "id": "c",
+          "text": "To help visitors understand, the visitors were confused."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "找出谁有意采取行动，再看主句是否明确呈现这个行动。",
+      "explanation": "b中we既执行帮助访客理解的意图，也执行缩短说明的行动。a、c既未保留缩短说明的信息，目的短语与主句主体也不吻合。",
+      "difficulty": "识别：目的、行动和主体的完整对应。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a将状态描述当成有意行动；c把受益访客写成目的行动主体且丢失缩短行为。",
+        "ambiguity": "不是仅凭句首to判断，需同时保存题内信息。"
+      }
+    },
+    {
+      "id": "s3.astra.a07",
+      "goalId": "senior3.repair-report-focus",
+      "type": "completion",
+      "taskIntent": "指定形式改写",
+      "prompt": "只填空白：把They have checked the final copy.改为以The final copy为主语的现在完成时被动句。The final copy ___ by them. 使用check。 请填写完整形式，不使用缩写。",
+      "answer": "has been checked",
+      "acceptedVariants": [
+        "has been checked"
+      ],
+      "hint": "检查新主语的数，并完整保留完成状态和被动关系。",
+      "explanation": "单数copy对应has；完成时被动为has been checked。主动原句正确，这里仅练指定重心改写。",
+      "difficulty": "受控运用：组合单数一致、完成时与被动。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "has been checked",
+        "wrongExample": "has checked",
+        "distractors": "无选项；has checked缺被动，had been checked擅自改变时间参照，is checked丢失指定完成时。",
+        "ambiguity": "使用check且时态、主语均指定，避免开放改写无限变体。"
+      }
+    },
+    {
+      "id": "s3.astra.a08",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "audioArrange",
+      "taskIntent": "过去视角将来",
+      "prompt": "听录音，用全部词块还原听到的句子。",
+      "audioScript": "He said he would bring the map the next day.",
+      "tokens": [
+        {
+          "id": "item1",
+          "text": "the next day"
+        },
+        {
+          "id": "item2",
+          "text": "He said"
+        },
+        {
+          "id": "item3",
+          "text": "the map"
+        },
+        {
+          "id": "item4",
+          "text": "he would bring"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "item2",
+          "item4",
+          "item3",
+          "item1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先确定引述框架，再连接计划的行动、对象和时间。",
+      "explanation": "would bring表示相对于said那个过去时点的未来计划；the next day随行动放在句末。",
+      "difficulty": "受控运用：四个语块降低操作负担，保留间接引语时间视角。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "He said he would bring the map the next day.",
+        "wrongExample": "He said the map he would bring the next day.",
+        "distractors": "无额外干扰块；错误排列使the map位置破坏当前中性转述结构。",
+        "ambiguity": "还原音频，不把其他语境下合法的时间状语前置说成普遍不合法。"
+      }
+    },
+    {
+      "id": "s3.astra.a09",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "completion",
+      "taskIntent": "被动修饰",
+      "prompt": "把括号动词变为一个过去分词，不增加从句：The letters ___ (write) by the visitors are in this folder. 信由访客写成。",
+      "answer": "written",
+      "acceptedVariants": [
+        "written"
+      ],
+      "hint": "检查名词与动作之间是执行还是承受关系，再选择要求的非谓语形式。",
+      "explanation": "letters承受write，written by the visitors作后置定语；wrote是过去式，writing通常表达主动或进行关系。",
+      "difficulty": "受控运用：不规则分词与定语关系。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "written",
+        "wrongExample": "writing",
+        "distractors": "无选项；writing改变主被动关系，were written会引入额外谓语而没有关系词。",
+        "ambiguity": "题目明确只填一个过去分词；which were written虽可另作改写，但不符合本题形式。"
+      }
+    },
+    {
+      "id": "s3.astra.a10",
+      "goalId": "senior3.project-conditions",
+      "type": "arrange",
+      "taskIntent": "让步改写",
+      "prompt": "用全部词块组成一句以Although开头的句子，保留“下着雨，但活动继续”的反差。",
+      "tokens": [
+        {
+          "id": "item1",
+          "text": "the event"
+        },
+        {
+          "id": "item2",
+          "text": "continued"
+        },
+        {
+          "id": "item3",
+          "text": "Although it was raining,"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "item3",
+          "item1",
+          "item2"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先放让步背景，再完成主句；不要额外添加重复的连接词。",
+      "explanation": "Although it was raining, the event continued.让步从句承认不利背景，主句说明与预期相反的结果。",
+      "difficulty": "受控运用：明确首语的让步句整合，不以拖动数量增难。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "Although it was raining, the event continued.",
+        "wrongExample": "Although it was raining, continued the event.",
+        "distractors": "无额外干扰块；主句的普通陈述语序不应倒置。",
+        "ambiguity": "指定Although开头，因此不把主从句另一顺序当作唯一答案遗漏。"
+      }
+    },
+    {
+      "id": "s3.astra.a11",
+      "goalId": "senior3.interview-summary",
+      "type": "completion",
+      "taskIntent": "接受合法连接词变体",
+      "prompt": "只填一个连接词，表示“我不知道门是否锁好了”：I don't know ___ the door is locked. 不改变后面的完整从句。",
+      "answer": "whether",
+      "acceptedVariants": [
+        "whether",
+        "if"
+      ],
+      "hint": "先判断这是询问内容还是在两种可能之间尚未确定。",
+      "explanation": "know后的是否宾语从句在这里可用whether或if；两者都应接受。what会在已完整的从句中制造不需要的成分。",
+      "difficulty": "受控运用：允许等价变体，避免口诀式单一答案。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "if",
+        "wrongExample": "what",
+        "distractors": "无选项；what不表示是否；that引导陈述内容，未表达指定的两种可能。",
+        "ambiguity": "无介词前置、不定式或whether...or等额外限制，明确接受if。"
+      }
+    },
+    {
+      "id": "s3.astra.a12",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "dictation",
+      "taskIntent": "不定式宾补听写",
+      "prompt": "听录音，写出完整句子。",
+      "audioScript": "We asked the group to wait outside.",
+      "answer": "We asked the group to wait outside.",
+      "acceptedVariants": [
+        "We asked the group to wait outside."
+      ],
+      "hint": "分清提出请求的人、接到请求的人以及需要做的事。",
+      "explanation": "asked后以the group作宾语，to wait说明希望该群体执行的动作；不能丢掉to。",
+      "difficulty": "受控运用：七词常用句，重点为宾补关系而非罕见拼写。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "We asked the group to wait outside.",
+        "wrongExample": "We asked the group wait outside.",
+        "distractors": "无选项；漏to破坏ask somebody to do结构；把asked写成ask丢失听到的过去时间。",
+        "ambiguity": "听写任务以原音为准，不作为所有语义改写的开放评估；标点大小写归一。"
+      }
+    },
+    {
+      "id": "s3.astra.a13",
+      "goalId": "senior3.repair-report-focus",
+      "type": "choice",
+      "taskIntent": "协作语用与报告边界",
+      "prompt": "同伴建议报告写“All the windows have been repaired.”。检查记录只确认十扇中的四扇已修好，其余尚未检查。哪句回应最准确且有助于修改？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Let's report four repairs as planned and check the remaining six before we give a completion figure."
+        },
+        {
+          "id": "b",
+          "text": "Let's report four repairs as confirmed and check the remaining six before we give a total."
+        },
+        {
+          "id": "c",
+          "text": "Let's report four repairs as confirmed and list the remaining six as waiting to be repaired."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把已有证据和仍待核实的部分分开，再选择能推动合作的表述。",
+      "explanation": "b将已确认的四扇与尚未检查的六扇分开。a把已经修好改成计划修理；c把尚未检查写成等待修理。记录没有提供后两种说法的依据。",
+      "difficulty": "迁移：完成时被动、数量范围和协作修订结合。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "三个回应都提出报告与后续行动；a丢失四扇已完成的状态，c将未知改成待修。不能只看语气礼貌或选项长度猜答案。",
+        "ambiguity": "任务明确只有四扇得到确认，不根据现实维修速度推断。"
+      }
+    },
+    {
+      "id": "s3.astra.a14",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "choice",
+      "taskIntent": "限定时间推断",
+      "prompt": "回忆中写道：At nine, I was reading the message. I had saved a copy at eight. 哪项仅依据这两句可确定？",
+      "options": [
+        {
+          "id": "a",
+          "text": "九点读消息时，保存副本这一动作已经完成。"
+        },
+        {
+          "id": "b",
+          "text": "读消息从八点一直持续到九点。"
+        },
+        {
+          "id": "c",
+          "text": "九点之前所有消息都已读完。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "区分明确记录的时点与没有交代的起止时间、数量范围。",
+      "explanation": "保存发生在八点，早于九点阅读；was reading只说明九点当时的进行状态，并不说明八点起持续或全部读完。",
+      "difficulty": "迁移：跨句时间线及信息范围，不机械依靠before。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b把保存时间误作阅读起点；c给进行事件增加完成和全部范围。",
+        "ambiguity": "a仅判断保存动作已完成，不推断副本后来是否继续保留。"
+      }
+    },
+    {
+      "id": "s3.astra.a15",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "choice",
+      "taskIntent": "避免悬垂与信息保留",
+      "prompt": "原句：Because the sign was hidden by a tree, we failed to notice it. 要用Hidden by a tree开头改写，保留“没看见标牌”这一结果。选合适句子。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hidden by a tree, we failed to notice the sign."
+        },
+        {
+          "id": "b",
+          "text": "Hidden by a tree, the sign was not noticed by us."
+        },
+        {
+          "id": "c",
+          "text": "Hidden by a tree, the sign was removed by us."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "句首修饰成分应接到真正具有该状态的主语上，同时核对结果有没有变。",
+      "explanation": "被树遮挡的是sign，故b将其作主语并保留未被注意的结果。a变成我们被遮挡；c把未注意改成搬走。",
+      "difficulty": "迁移：过去分词修饰对象与被动改写联合判断。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a悬垂或错误指向；c结构可通但结果不符。",
+        "ambiguity": "指定句首形式后再评价；不否认原because句或其他完整改写。"
+      }
+    },
+    {
+      "id": "s3.astra.a16",
+      "goalId": "senior3.project-conditions",
+      "type": "listeningChoice",
+      "taskIntent": "必要条件与承诺范围",
+      "prompt": "听同伴对借用房间的说明，选能保留承诺范围的记录。",
+      "audioScript": "We can use the room only if the owner agrees. I haven't asked her yet, so please don't announce the meeting there.",
+      "options": [
+        {
+          "id": "a",
+          "text": "房主已经同意，可以公布地点。"
+        },
+        {
+          "id": "b",
+          "text": "是否获准尚未确认，先不要公布在那里开会。"
+        },
+        {
+          "id": "c",
+          "text": "房主已经拒绝，必须取消整个会议。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "同时听清使用前提、确认进度和当前建议，别把未确定当成肯定或否定。",
+      "explanation": "only if给出房主同意这一必要前提；haven't asked说明未确认。说话人只要求暂不公布该地点，没有取消会议。",
+      "difficulty": "迁移：条件范围与协作行动结合，录音信息自足。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a把未询问写成已同意；c把未确定写成拒绝，又扩大到取消会议。",
+        "ambiguity": "不将only if反向理解为一旦同意就无其他限制；答案只保留必要条件。"
+      }
+    },
+    {
+      "id": "s3.astra.a17",
+      "goalId": "senior3.interview-summary",
+      "type": "arrange",
+      "taskIntent": "限定未知信息的间接提问",
+      "prompt": "用全部词块组成以We开头的句子，表达我们需要确认究竟是什么造成了延误。",
+      "tokens": [
+        {
+          "id": "item1",
+          "text": "what caused"
+        },
+        {
+          "id": "item2",
+          "text": "We need to find out"
+        },
+        {
+          "id": "item3",
+          "text": "the delay"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "item2",
+          "item1",
+          "item3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "检查从句里提问的成分是否本身担任主语。",
+      "explanation": "what caused the delay中what是主语，无需额外加入did或改变语序。整句只说明尚需查明原因，不指责具体的人。",
+      "difficulty": "迁移：主语疑问词嵌入宾语从句，兼顾证据范围。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "We need to find out what caused the delay.",
+        "wrongExample": "We need to find out the delay what caused.",
+        "distractors": "无额外词块；颠倒what与宾语破坏从句成分关系。",
+        "ambiguity": "限定使用全部词块且以We开头，唯一中性顺序明确；不暗示所有疑问从句都须机械调序。"
+      }
+    },
+    {
+      "id": "s3.astra.a18",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "taskIntent": "目的不等于已实现结果",
+      "prompt": "记录写：We added a diagram to make the route clearer. 没有其他反馈。哪句总结最谨慎准确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The diagram was added after visitors said that the route had become clearer."
+        },
+        {
+          "id": "b",
+          "text": "The diagram was added and was found to make the route easier to follow."
+        },
+        {
+          "id": "c",
+          "text": "The diagram was added with the aim of making the route easier to follow."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "区分行动的意图与需要另有证据才能确认的效果。",
+      "explanation": "to make说明添加图示的目的。c保留目的；a加入此前访客反馈，b加入效果已被确认的结果，两者都没有证据。",
+      "difficulty": "迁移：不定式功能与论断强度，避免单纯语法识别。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a虚构反馈及时间关系；b把设计目的改成经确认的效果。三项均为自然的报告表达，没有绝对词提示。",
+        "ambiguity": "题面明确无其他反馈，因此不能断定效果已经实现。"
+      }
+    },
+    {
+      "id": "s3.astra.b01",
+      "goalId": "senior3.repair-report-focus",
+      "type": "listeningChoice",
+      "taskIntent": "报告完成状态与施事",
+      "prompt": "听进度留言，哪条英文记录保留了核查对象、执行者和完成状态？",
+      "audioScript": "The figures have been checked by both teams. The written comments are still being reviewed by one team.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both the figures and the comments have been checked by both teams."
+        },
+        {
+          "id": "b",
+          "text": "The figures have been checked by both teams, but the comments are still under review by one team."
+        },
+        {
+          "id": "c",
+          "text": "One team has finished reviewing the comments, but neither team has checked the figures."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别追踪两种材料，不要把一个对象的进度套到另一个对象上。",
+      "explanation": "数字已经由两组核查；文字意见仍由一组审阅。b同时保留施事和状态；被动也可用under review改述。",
+      "difficulty": "识别：两条平行进度、施事和完成状态。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把正在审阅变为完成并改变组数；c颠倒两种进度。",
+        "ambiguity": "figures在核查语境中指数字，译义不构成答案关键，音频无教材资产。"
+      }
+    },
+    {
+      "id": "s3.astra.b02",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "matching",
+      "taskIntent": "过去参照框架",
+      "prompt": "把每句与其表达的时间关系配对，每项用一次。",
+      "left": [
+        {
+          "id": "item1",
+          "text": "At noon, she was checking the list."
+        },
+        {
+          "id": "item2",
+          "text": "By noon, she had checked the list."
+        },
+        {
+          "id": "item3",
+          "text": "At noon, she said she would check the list after lunch."
+        }
+      ],
+      "right": [
+        {
+          "id": "a",
+          "text": "站在中午这一过去时点，核查被安排在之后。"
+        },
+        {
+          "id": "b",
+          "text": "中午那个时刻核查正在进行。"
+        },
+        {
+          "id": "c",
+          "text": "截至中午这一过去时点核查已经完成。"
+        }
+      ],
+      "pairs": [
+        [
+          "item1",
+          "b"
+        ],
+        [
+          "item2",
+          "c"
+        ],
+        [
+          "item3",
+          "a"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "观察整个谓语和时间框架，分别判断进行、已完成或尚待执行。",
+      "explanation": "was checking描述当时进行；had checked表示截至过去参照点已经完成；would check是过去视角下的未来安排。",
+      "difficulty": "识别：相同对象帮助聚焦时间关系，这是一道对照配对题而非批量换词题。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "1-b，2-c，3-a",
+        "wrongExample": "1-c",
+        "distractors": "将1配c抹去进行与完成差别；把3配b把计划误当正在发生。",
+        "ambiguity": "不据单个by强制所有表达用过去完成时，而是解释已经给定的完整句子。"
+      }
+    },
+    {
+      "id": "s3.astra.b03",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "choice",
+      "taskIntent": "施事受事分离",
+      "prompt": "哪句准确表达“那张由孩子画的地图现在挂在墙上”，且用过去分词短语修饰map？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The map drawn for the child is on the wall now."
+        },
+        {
+          "id": "b",
+          "text": "The map drawn by the child is on the wall now."
+        },
+        {
+          "id": "c",
+          "text": "The map drawn with the child is on the wall now."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "确定被描述的是谁，以及谁执行了绘画动作。",
+      "explanation": "drawn by the child指明孩子是画地图的人。for the child说明为孩子而画，with the child说明有人与孩子一起画，都没有准确保留原句的作者关系。",
+      "difficulty": "识别：过去分词后置定语及by施事。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "三句都合乎语法且保留分词修饰；a将作者改成受益者，c添加共同绘制者。",
+        "ambiguity": "明确要求过去分词短语，但不宣称关系从句改写错误。"
+      }
+    },
+    {
+      "id": "s3.astra.b04",
+      "goalId": "senior3.project-conditions",
+      "type": "choice",
+      "taskIntent": "让步与因果",
+      "prompt": "事实是“虽然讨论没有解决所有问题，但它让双方理解了彼此的顾虑”。哪句完整保留关系和范围？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Although the discussion did not solve every problem, it helped both sides understand each other's concerns."
+        },
+        {
+          "id": "b",
+          "text": "Because the discussion solved every problem, both sides had no concerns."
+        },
+        {
+          "id": "c",
+          "text": "If the discussion solves every problem, both sides will understand each other."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "对照事情是否已经发生、解决问题的范围及两部分之间的关系。",
+      "explanation": "a保留过去事实、并非解决所有问题和仍有理解收获的让步关系。not every不等于一个也没解决。",
+      "difficulty": "识别：让步、部分否定与事实时间综合。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b改成全部解决且没有顾虑的因果；c改为未来假设条件。",
+        "ambiguity": "不要求推断到底解决多少问题；只保留原来部分否定。"
+      }
+    },
+    {
+      "id": "s3.astra.b05",
+      "goalId": "senior3.interview-summary",
+      "type": "listeningChoice",
+      "taskIntent": "间接问题信息保留",
+      "prompt": "听同伴转述问题，选择准确的记录。",
+      "audioScript": "I asked what the volunteers needed, not whether they could help. We already knew they were willing to join us.",
+      "options": [
+        {
+          "id": "a",
+          "text": "问题是志愿者是否愿意参加，意愿仍未知。"
+        },
+        {
+          "id": "b",
+          "text": "问题是志愿者需要什么，参加意愿已明确。"
+        },
+        {
+          "id": "c",
+          "text": "问题是志愿者为什么拒绝参加。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "区分这次询问的信息和对话里已经确定的前提。",
+      "explanation": "what the volunteers needed询问所需内容；后句说明已知他们愿意参加。whether they could help是被否定的问法。",
+      "difficulty": "识别：名词性从句的问项及否定范围。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把已知意愿当未知问项；c无中生有加入拒绝及原因。",
+        "ambiguity": "could help与willing不是普遍等价，正确选项只记录音频确实给出的need和willing。"
+      }
+    },
+    {
+      "id": "s3.astra.b06",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "taskIntent": "不定式被动关系",
+      "prompt": "句子是：The request needs to be approved by the owner. 其中to be approved说明什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "房主需要提交请求，之后再由别人批准。"
+        },
+        {
+          "id": "b",
+          "text": "房主已批准请求，目前等待执行批准结果。"
+        },
+        {
+          "id": "c",
+          "text": "请求需要房主批准，是否已获批准尚未说明。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "检查谁承受批准动作，并区分需要做与已经做完。",
+      "explanation": "request是批准对象，by the owner标明施事；needs to be approved表达待满足的要求，不报告完成。",
+      "difficulty": "识别：不定式被动与实际状态的区别。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a把房主从审批者改为申请者；b把需求改成已完成的批准。三项保持类似信息量。",
+        "ambiguity": "只解释给定句，不排斥needs approving等合法表达。"
+      }
+    },
+    {
+      "id": "s3.astra.b07",
+      "goalId": "senior3.repair-report-focus",
+      "type": "dictation",
+      "taskIntent": "过去进行时被动听写",
+      "prompt": "听录音，写出完整句子。",
+      "audioScript": "The bridge was being inspected when we arrived.",
+      "answer": "The bridge was being inspected when we arrived.",
+      "acceptedVariants": [
+        "The bridge was being inspected when we arrived."
+      ],
+      "hint": "留意动词短语的每一部分，并把到达时刻与当时状态连接起来。",
+      "explanation": "was being inspected表示到达时桥正接受检查；was inspected会丢掉录音明确表达的进行状态。",
+      "difficulty": "受控运用：八词句听写，inspected意为接受检查，词义在解析说明。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "The bridge was being inspected when we arrived.",
+        "wrongExample": "The bridge was inspected when we arrived.",
+        "distractors": "无选项；漏being改变原音表达的体貌；漏was使谓语不完整。",
+        "ambiguity": "听写要求还原录音；不将一般过去时被动在其他语境中的使用判为语法错误。"
+      }
+    },
+    {
+      "id": "s3.astra.b08",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "completion",
+      "taskIntent": "持续到过去参照点",
+      "prompt": "午后一点开始等待，下午三点仍在等。按要求用wait的过去完成进行时填空：At three, we ___ for two hours, and we were still waiting.",
+      "answer": "had been waiting",
+      "acceptedVariants": [
+        "had been waiting"
+      ],
+      "hint": "保留延续过程，并以题目指定的过去时刻为参照。",
+      "explanation": "had been waiting从三点这一过去参照点回看持续两小时的等待；后半句明确仍未结束。",
+      "difficulty": "受控运用：明确时间线上的持续体，不靠时间词猜时态。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "had been waiting",
+        "wrongExample": "have been waiting",
+        "distractors": "无选项；have been waiting改用现在参照；were waiting未按指定形式体现此前两小时延续。",
+        "ambiguity": "明确指定过去完成进行时；had waited在某些完整语境可成立，但不满足本题形式，不作普遍语法否定。"
+      }
+    },
+    {
+      "id": "s3.astra.b09",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "audioArrange",
+      "taskIntent": "宾补的被动状态",
+      "prompt": "听录音，用全部词块还原句子。",
+      "audioScript": "We found the gate locked from the inside.",
+      "tokens": [
+        {
+          "id": "item1",
+          "text": "locked"
+        },
+        {
+          "id": "item2",
+          "text": "the gate"
+        },
+        {
+          "id": "item3",
+          "text": "from the inside"
+        },
+        {
+          "id": "item4",
+          "text": "We found"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "item4",
+          "item2",
+          "item1",
+          "item3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "分清发现者、被观察的物体及该物体的状态。",
+      "explanation": "the gate是found的宾语，locked from the inside补充门被从里面锁上的状态。",
+      "difficulty": "受控运用：四语块重建过去分词宾补，不额外考拼写。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "We found the gate locked from the inside.",
+        "wrongExample": "We found locked the gate from the inside.",
+        "distractors": "无额外词块；把locked当found之后另一谓语导致当前结构错误。",
+        "ambiguity": "要求还原原音顺序，不评价from the inside在其他完整句中的位置变体。"
+      }
+    },
+    {
+      "id": "s3.astra.b10",
+      "goalId": "senior3.project-conditions",
+      "type": "completion",
+      "taskIntent": "否定条件转换",
+      "prompt": "只用一个连接词改写，保留原意：If we do not receive permission, we cannot enter. → ___ we receive permission, we cannot enter.",
+      "answer": "Unless",
+      "acceptedVariants": [
+        "Unless"
+      ],
+      "hint": "检查改写前后的否定落在哪里，确保许可仍是进入的必要条件。",
+      "explanation": "unless在这里相当于if...not；不能再把receive改成否定，否则条件会反转。",
+      "difficulty": "受控运用：否定条件等义转换，有固定句框避免开放同义句误判。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "Unless",
+        "wrongExample": "Although",
+        "distractors": "无选项；Although改成让步事实，If会变成得到许可反而不能进入。",
+        "ambiguity": "此句只说无许可不能进入，不承诺有许可就必然能进入；答案不反向推断充分条件。"
+      }
+    },
+    {
+      "id": "s3.astra.b11",
+      "goalId": "senior3.interview-summary",
+      "type": "arrange",
+      "taskIntent": "陈述语序与未知项",
+      "prompt": "用全部词块组成以Please开头的礼貌请求，询问工具应放在哪里。",
+      "tokens": [
+        {
+          "id": "item1",
+          "text": "where"
+        },
+        {
+          "id": "item2",
+          "text": "Please tell us"
+        },
+        {
+          "id": "item3",
+          "text": "we should put"
+        },
+        {
+          "id": "item4",
+          "text": "the tools"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "item2",
+          "item1",
+          "item3",
+          "item4"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "嵌入请求中的从句保留自己的主语，再接情态动词与动作。",
+      "explanation": "where we should put the tools采用从句陈述语序；问的是地点，不是工具是否存在。",
+      "difficulty": "受控运用：间接问题及情态动词语序，四个完整语块。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "Please tell us where we should put the tools.",
+        "wrongExample": "Please tell us we should put where the tools.",
+        "distractors": "无额外干扰块；where不能在这里插到put与宾语之间形成指定从句。",
+        "ambiguity": "指定全部语块，避免开放口语请求有多种自然措辞却仅接受一种。"
+      }
+    },
+    {
+      "id": "s3.astra.b12",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "completion",
+      "taskIntent": "不定式被动产出",
+      "prompt": "用approve的不定式被动形式填空：The final design is ready ___ by the committee. 设计是接受批准的对象。",
+      "answer": "to be approved",
+      "acceptedVariants": [
+        "to be approved"
+      ],
+      "hint": "先保留题目要求的不定式，再把动作方向与主语对应。",
+      "explanation": "design承受approve，所以是不定式被动to be approved；to approve会把设计写成批准动作的执行者。",
+      "difficulty": "受控运用：主动被动关系与不定式形式，委员会词义可由中文理解。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "to be approved",
+        "wrongExample": "to approved",
+        "distractors": "无选项；to approved缺be且to后不能直接用过去分词；being approved不是指定不定式。",
+        "ambiguity": "明确要求approve的不定式被动，避免for approval等合理名词表达被误判。"
+      }
+    },
+    {
+      "id": "s3.astra.b13",
+      "goalId": "senior3.repair-report-focus",
+      "type": "choice",
+      "taskIntent": "保留施事与报告范围",
+      "prompt": "原报告：A local team restored two paintings last year. restored意为修复。改写须以Two paintings开头并保留所有事实。选合适句子。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Two paintings were restored by a local team over the past year."
+        },
+        {
+          "id": "b",
+          "text": "Two paintings were being restored by a local team last year."
+        },
+        {
+          "id": "c",
+          "text": "Two paintings were restored by a local team last year."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "列出原句中的对象、数量、执行者与时间，逐项核对。",
+      "explanation": "c保留修复完成的陈述、本地团队和去年。a将上一个日历年改为过去一年这一滚动时间段；b只说明去年某时正在修复，未保留原句对修复事件的完整报告。",
+      "difficulty": "迁移：完整信息改写，不把省略施事的被动句笼统判错。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "三句均合乎语法且保留施事；a改变时间范围，b改变体貌。不能靠最完整最长或明显错误时态排除。",
+        "ambiguity": "题目明确全信息保留要求，主语和形式约束充足。"
+      }
+    },
+    {
+      "id": "s3.astra.b14",
+      "goalId": "senior3.archive-time-viewpoint",
+      "type": "choice",
+      "taskIntent": "协作解释时间线",
+      "prompt": "你准备解释昨晚的延误：列车七点已经离站，你七点十分才到。哪句按要求用过去完成时突出“到站前已经离开”，同时不责怪未说明的人？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The train had left before I reached the station."
+        },
+        {
+          "id": "b",
+          "text": "The train had left earlier than scheduled when I arrived."
+        },
+        {
+          "id": "c",
+          "text": "I had reached the station before the train left."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "只保留可核实的先后，不补充他人的动机。",
+      "explanation": "a以到站为过去参照，had left表达此前离开；b加入题面未给出的时刻表比较；c颠倒顺序。一般过去时配before也可能正确，但本题明确要求过去完成时。",
+      "difficulty": "迁移：指定体貌、时间线与证据边界。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b是自然时间报告，但early的时刻表依据不存在；c反转先后。不能靠带恶意动机的荒唐句子排除。",
+        "ambiguity": "不用before必配过去完成时的口诀；指定形式服务表达重点。"
+      }
+    },
+    {
+      "id": "s3.astra.b15",
+      "goalId": "senior3.coastal-display-captions",
+      "type": "listeningChoice",
+      "taskIntent": "修饰对象与未确认集合",
+      "prompt": "听关于照片的说明，选择不扩大范围的总结。",
+      "audioScript": "Only the photographs selected by the group are on the website. The others are still in the folder; we haven't decided what to do with them.",
+      "options": [
+        {
+          "id": "a",
+          "text": "所有照片都已上传，团队之后再筛选。"
+        },
+        {
+          "id": "b",
+          "text": "团队选中的照片已上网站，其余如何处理仍未决定。"
+        },
+        {
+          "id": "c",
+          "text": "未上网站的照片已决定全部删除。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "听清修饰语划定的集合，并区分存放状态与处理决定。",
+      "explanation": "selected by the group限定已上网站的照片；其余仍在文件夹且未决定用途，不等于将删除。",
+      "difficulty": "迁移：过去分词限定、only范围与未知状态。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a取消筛选限定并颠倒顺序；c把尚未决定改成已决定删除。",
+        "ambiguity": "音频明确其余仍在文件夹，不需要任何前置故事或网络常识。"
+      }
+    },
+    {
+      "id": "s3.astra.b16",
+      "goalId": "senior3.project-conditions",
+      "type": "choice",
+      "taskIntent": "因果证据与协作回应",
+      "prompt": "同伴说“The screen went dark after we opened the file, so the file must have caused it.”。现有证据只有先后顺序。哪句既指出逻辑限制，又推动合作？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The timing suggests the file caused it; let's report that cause and then check how it happened."
+        },
+        {
+          "id": "b",
+          "text": "The timing suggests a link; let's test it before we report that the file caused the problem."
+        },
+        {
+          "id": "c",
+          "text": "The timing suggests a link; let's report the fault as unrelated to the file until a test is done."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "先后关系可以提供线索，但结论的确定程度要与证据相称。",
+      "explanation": "b将时间上的联系作为待检验线索。a测试前就报告因果已确定；c在未测试时先报告无关。两种结论都超过只有先后顺序的证据。",
+      "difficulty": "迁移：时间从句与因果论证、协作语用结合，词汇常见。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "三项都承认时间线索并包含后续核查；区分的是报告结论是否越过当前证据，而非哪句话最礼貌。",
+        "ambiguity": "不需要知道技术故障原因；只评价证据与语言结论的匹配。"
+      }
+    },
+    {
+      "id": "s3.astra.b17",
+      "goalId": "senior3.interview-summary",
+      "type": "choice",
+      "taskIntent": "陈述内容与是否待查",
+      "prompt": "访谈记录：We know that the room is available. What we don't know is whether it is large enough. 哪句准确概括已知与未知？",
+      "options": [
+        {
+          "id": "a",
+          "text": "房间是否可用仍未知，但已确认足够大。"
+        },
+        {
+          "id": "b",
+          "text": "已知房间可用，是否足够大仍待确认。"
+        },
+        {
+          "id": "c",
+          "text": "已知房间不可用，而且太小。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别找到肯定获知的陈述内容和仍未确定的是否问题。",
+      "explanation": "that引出已知的available事实；whether引出尚未确定的大小适合性；不知道是否够大不等于已知太小。",
+      "difficulty": "迁移：两个名词性从句跨句整合，防止未知变否定。",
+      "sourceId": "fltrp.senior3.archive20260929",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a交换已知与未知；c颠倒可用事实并把未知大小写为太小。",
+        "ambiguity": "只读原文信息，大小是否适用无需现实场地知识。"
+      }
+    },
+    {
+      "id": "s3.astra.b18",
+      "goalId": "senior3.exhibition-purpose",
+      "type": "choice",
+      "taskIntent": "不定式修饰与责任边界",
+      "prompt": "同伴说：I have three reports to read before Friday. 仅凭这句话，哪句回应没有误解任务？",
+      "options": [
+        {
+          "id": "a",
+          "text": "So you finished the three reports before Friday. Shall we plan what comes next?"
+        },
+        {
+          "id": "b",
+          "text": "So three reports will be ready for you on Friday. Shall we set aside time then?"
+        },
+        {
+          "id": "c",
+          "text": "So you have three reports to read before Friday. Shall we make time for them?"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "判断不定式说明的是待办事项还是已完成结果，并核对动作执行者。",
+      "explanation": "have reports to read表达说话人有待阅读的报告；c保留三份、阅读任务和周五之前的时限。a变成已完成；b变成报告周五才就绪并将阅读安排到那时。",
+      "difficulty": "迁移：不定式定语、隐含执行者和协作回应。",
+      "sourceId": "pep.senior3.archive20260929",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "三项均确认信息并协助安排；a改变完成状态，b改变交付事件和任务时间。",
+        "ambiguity": "不给机械规则说所有to read均主动；本题依据I have...to read这一明确待办语境。"
+      }
+    }
+  ],
+  "openingStories": [
+    {
+      "id": "s3.astra.story.a",
+      "title": "折痕另一边",
+      "character": "同行者",
+      "questionGroup": "a",
+      "questionCount": 18,
+      "text": "你和同行者走进一间旧书小铺，在靠窗的箱子里发现一本散了线的空白相册。你本想把它放回去，一张夹在封面里的小纸片却滑到了地上。纸上没有名字，只画着一扇半开的窗。同行者扶着相册，你试着把散开的页码理顺，却发现有两页怎么也对不上。你们停下来，顺着纸张边缘的折痕慢慢比较，才看出那原来是一张折起来的长页。展开后，纸上留出了一道窄窄的空白，正好能放下那幅小窗画。你将它轻轻夹回去，同行者把相册合上。两人离开时都放慢了脚步，仿佛刚把一件差点走散的小东西送回了原处。",
+      "teachingNote": "单一泛化同行者与你；发现相册、误判页序、借折痕解决并归还形成完整事件。故事不承担任何题目的事实条件，也不预告语法答案。"
+    },
+    {
+      "id": "s3.astra.story.b",
+      "title": "差一点错过的声音",
+      "character": "同行者",
+      "questionGroup": "b",
+      "questionCount": 18,
+      "text": "傍晚，你和同行者在河边收起野餐垫，准备赶在天黑前回去。刚走几步，你听见垫子里传来很轻的一声响，以为有什么小东西被卷了进去。你们重新铺开垫子，找遍边角，只有一片干叶和几粒沙。同行者把干叶放到一旁，声音却又响了一次。你们没有急着再翻，而是站着等了一会儿。风从栏杆旁穿过，挂在你背包上的两枚小扣子轻轻碰在一起。你把扣子分开，同行者忍不住笑了。天色已经深了一点，但回程并不远。你们沿着河边慢慢走，偶尔任那两枚扣子再响一下。",
+      "teachingNote": "普通同行者与你；误听来源引起查找，停下观察后发现小真相，最后自然收束；无职业绑定，不是操作说明，题目不依赖故事记忆。"
+    }
+  ],
+  "remainingWork": [
+    "每组18题；1—6识别、7—12受控运用、13—18迁移；每组六个catalog真实目标各3题。难度是作者自审，尚待独立试做与主代理逐题审阅。",
+    "七种真实交互标签：choice、listeningChoice、arrange、audioArrange、completion、dictation、matching；没有自造别名或未实现的cloze混入。audioArrange的完整端到端能力仍待核验。",
+    "九道听力相关题仅有亲自手写audioScript，没有assetId、没有教材音轨。尚须制作原创音频、逐条实听及核对脚本、重播和答前隐藏行为；没有媒体的题不可发布。",
+    "高中综合任务明确增加信息保留、有限证据推断、表达重心及协作语用，未用偏词或长文作为难度来源。所有文本输入均限定形式或听写任务，whether/if合法变体均已列入。",
+    "仍需与正式库进行实质重复排查、主代理独立逐题审核、输入归一及排序判题核查、18题组卷与原生交互验收。作者自审和结构校验不等于发布验收。",
+    "本文件仅为隔离作者草稿，未修改正式题库、媒体库、数据库或部署。"
+  ],
+  "primaryReview": {
+    "reviewedAt": "2026-10-07",
+    "status": "36题逐题首审并定点修订，仍为草稿",
+    "changes": [
+      "九题干扰项、信息范围及缩写边界修订",
+      "排序及配对的纯数字局部ID正规化，不改内容或答案关系"
+    ],
+    "releaseGaps": [
+      "正式字段映射与审核哈希",
+      "音频制作及听觉质量核查",
+      "与已有题库实质去重",
+      "正式18题组卷及原生完整作答验收"
+    ]
+  }
+}

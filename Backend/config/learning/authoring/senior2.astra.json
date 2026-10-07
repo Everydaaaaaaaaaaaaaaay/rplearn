@@ -1,0 +1,1320 @@
+{
+  "level": "senior2",
+  "author": {
+    "name": "Astra 高二独立作者",
+    "method": "实际核读相关结构、语篇与写作正文后逐题原创，分别设定信息差、语义条件、答案及错误机制。程序只用于核验JSON、引用和计数，未用于生成、组合或替换题目。",
+    "status": "作者自审草稿；待主代理逐题复审和媒体制作，不可发布"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "file": "build/learning-research-20260926/pep-senior-selective1-archive.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷5、17、20—21、29、41；PDF12、24、27—28、36、48",
+      "method": "逐页核读同名txt的换页正文；目视已有PDF24渲染图，确认Discover useful structures和页脚17。",
+      "findings": "非限制性从句人物/地点/整件事补充；将来进行与一般将来不同表达侧重及未来安排；技术议论正文和利弊写作检查表；-ing主语、宾语、表语。",
+      "limitations": "只核读所列正文，未声称整册已读；册次与高二难度作教学映射，不代表全国统一教学进度。"
+    },
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "file": "build/learning-research-20260926/fltrp-senior-selective1-archive.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷17、41、53、65；PDF24、48、60、72",
+      "method": "逐页核读同名txt换页正文；目视已有PDF60渲染图，确认Past perfect及页脚53。",
+      "findings": "start两种补语、stop的意义区别；-ing/-ed表语体验；过去事件参照与完成先后；现在完成进行的持续过程。",
+      "limitations": "只核读上述正文；原创场景不复制教材例句，不以目录代替正文，也不把教材单一练习答案推广为所有语境的唯一语法。"
+    }
+  ],
+  "interactionContract": {
+    "inputNormalization": "输入题忽略首尾空格、大小写、直弯撇号和句末标点；保留词内拼写与必要助动词。列出的缩写全写均可接受。选择按ID判分，排序按全部词块ID，配对需全部正确。",
+    "audioArrange": {
+      "status": "交互端到端合同待主代理核验，媒体未制作",
+      "description": "先播放隐藏原文的录音，再用全部词块重建所听句子。提供重播、撤回与点选无障碍操作，按acceptedOrders判分，不在答前展示audioScript。"
+    },
+    "media": "所有audioScript均原创且未配音；无assetId。脚本只供制音与审核，不应在题面或提示中露出。"
+  },
+  "questions": [
+    {
+      "id": "s2.astra.a01",
+      "goalId": "s2.nonrestrictive",
+      "type": "choice",
+      "taskIntent": "补充信息而不添加人物事实",
+      "prompt": "已知Lena是你唯一的同行者，她找到了入口。选能用非限制性从句自然合成这两条信息的一句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lena, that is my only companion, found the entrance."
+        },
+        {
+          "id": "b",
+          "text": "Lena, who is my only companion, found the entrance."
+        },
+        {
+          "id": "c",
+          "text": "Lena, who she is my only companion, found the entrance."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "注意逗号内补充部分的连接方式，并检查主语有没有出现两次。",
+      "explanation": "who在补充从句中作主语；非限制性从句不用that，也不再加she。",
+      "difficulty": "识别",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a错误使用that；c重复主语。",
+        "ambiguity": "三项仅比较指定非限制性结构；不否定两句分别表达。"
+      }
+    },
+    {
+      "id": "s2.astra.a02",
+      "goalId": "s2.future-progressive",
+      "type": "listeningChoice",
+      "taskIntent": "协调未来联系时间",
+      "prompt": "听一条语音。对方提出的安排是什么？",
+      "audioScript": "At ten tomorrow, I'll be taking part in a quiet reading session. Could you call me after eleven instead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "明天十点通话，因为阅读还没开始。"
+        },
+        {
+          "id": "b",
+          "text": "明天十一点前随时通话，对方一直有空。"
+        },
+        {
+          "id": "c",
+          "text": "改到明天十一点以后通话。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "把正在进行的活动与最后提出的请求分开听。",
+      "explanation": "十点在参加安静阅读；请求把电话改到十一点以后。",
+      "difficulty": "识别",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a颠倒十点的状态；b把活动时段说成有空。",
+        "ambiguity": "after eleven不包括十一点以前；不推断整个上午都不能通话。"
+      }
+    },
+    {
+      "id": "s2.astra.a03",
+      "goalId": "s2.verb-patterns",
+      "type": "matching",
+      "prompt": "把每句与它实际表达的动作关系配对，每项用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "We stopped discussing the route."
+        },
+        {
+          "id": "l2",
+          "text": "We stopped to discuss the route."
+        },
+        {
+          "id": "l3",
+          "text": "We kept discussing the route."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "讨论继续进行。"
+        },
+        {
+          "id": "r2",
+          "text": "停下当时的活动，转而讨论路线。"
+        },
+        {
+          "id": "r3",
+          "text": "不再讨论路线。"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r3"
+        ],
+        [
+          "l2",
+          "r2"
+        ],
+        [
+          "l3",
+          "r1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "看停止的究竟是后面的动作，还是为了做后面的动作而暂停别的事。",
+      "explanation": "stop doing停止该活动；stop to do停下来做另一件事；keep doing持续该活动。",
+      "difficulty": "识别",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "l1-r3,l2-r2,l3-r1",
+        "wrongExample": "l1-r2,l2-r3,l3-r1",
+        "distractors": "交换前两项会把停止讨论与开始讨论混为一谈。",
+        "ambiguity": "不凭stop一词判所有后接形式；由完整结构决定意义。"
+      }
+    },
+    {
+      "id": "s2.astra.a04",
+      "goalId": "s2.past-perfect",
+      "type": "choice",
+      "taskIntent": "保留事件先后",
+      "prompt": "读句子：When I opened the shared folder, my companion had uploaded the photos. 哪条记录与它一致？",
+      "options": [
+        {
+          "id": "a",
+          "text": "上传照片早于我打开文件夹。"
+        },
+        {
+          "id": "b",
+          "text": "打开文件夹早于上传照片。"
+        },
+        {
+          "id": "c",
+          "text": "两件事一定同时开始。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "找出叙述的过去参照点，再看哪件事处于它之前。",
+      "explanation": "opened是过去参照点，had uploaded说明上传在此之前已完成。",
+      "difficulty": "识别",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b颠倒先后；c把when机械理解为动作同时开始。",
+        "ambiguity": "没有要求推断上传提前了多久。"
+      }
+    },
+    {
+      "id": "s2.astra.a05",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "prompt": "你想说“我觉得这次讲解很无聊”，评价的是讲解带来的感受。选相符的表达。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I found the explanation bored."
+        },
+        {
+          "id": "b",
+          "text": "I found the explanation boring."
+        },
+        {
+          "id": "c",
+          "text": "I was interesting in the explanation."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "区分引起某种感受的内容与体验这种感受的人。",
+      "explanation": "boring评价讲解让人感到无聊；bored通常描述感到无聊的体验者。",
+      "difficulty": "识别",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a给讲解本身安上无聊体验；c结构错误，也未表达无聊。",
+        "ambiguity": "不建立人只能-ed、物只能-ing规则；此题按明确的情感意义判分。"
+      }
+    },
+    {
+      "id": "s2.astra.a06",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "taskIntent": "证据范围",
+      "prompt": "试用记录只显示：这周参与试用的十个人中，八个人更快找到了入口。哪句英文总结没有扩大证据范围？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Most visitors this week found the entrance faster with the guide."
+        },
+        {
+          "id": "b",
+          "text": "Eight people in the trial found every part of the guide easy to follow."
+        },
+        {
+          "id": "c",
+          "text": "Most people in this small trial found the entrance faster."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "核对结论中的人群、时间和确定程度是否超出记录。",
+      "explanation": "c限定这次小规模试用及其中大多数人；记录不足以支持所有人或从不出错。",
+      "difficulty": "识别与意义迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷20—21／PDF27—28",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a把试用者扩大为本周大多数访客；b把找到入口更快扩大为指南各部分都易懂。三项都可能是正常报告，但只有c有给定记录支持。",
+        "ambiguity": "不推断快了多少，也不把试用直接解释为因果证明。"
+      }
+    },
+    {
+      "id": "s2.astra.a07",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "completion",
+      "prompt": "从上午起你一直在整理照片，现在仍在整理。按要求用sort的现在完成进行时填空：I ____ photos since this morning.",
+      "answer": "have been sorting",
+      "acceptedVariants": [
+        "'ve been sorting"
+      ],
+      "hint": "检查结构是否同时体现过去开始、延续过程以及与现在的联系。",
+      "explanation": "现在完成进行时为have/has been加-ing；I配have。",
+      "difficulty": "受控运用",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷65／PDF72",
+      "review": {
+        "correctExample": "have been sorting",
+        "wrongExample": "am sorting",
+        "distractors": "am sorting没有满足指定的现在完成进行形式；have sorting缺少been。",
+        "ambiguity": "本题明确指定时态，不把其他语境中的have sorted一律判成语法错误。缩写与前面的I拼接。"
+      }
+    },
+    {
+      "id": "s2.astra.a08",
+      "goalId": "s2.ing-subject",
+      "type": "arrange",
+      "prompt": "用全部词块组成陈述：“检查细节需要耐心。”以-ing短语作主语。",
+      "tokens": [
+        {
+          "id": "p",
+          "text": "patience."
+        },
+        {
+          "id": "c",
+          "text": "Checking"
+        },
+        {
+          "id": "t",
+          "text": "takes"
+        },
+        {
+          "id": "d",
+          "text": "the details"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "d",
+          "t",
+          "p"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "把整项活动放在句首，再为这一项活动选择谓语位置。",
+      "explanation": "Checking the details是一个活动主语，后接单数谓语takes。",
+      "difficulty": "受控运用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "Checking the details takes patience.",
+        "wrongExample": "Checking takes the details patience.",
+        "distractors": "错误次序把details与checking拆开，破坏句意和结构。",
+        "ambiguity": "给定词块限定输出；并未宣称To check the details作主语必然不合法。"
+      }
+    },
+    {
+      "id": "s2.astra.a09",
+      "goalId": "s2.ing-roles",
+      "type": "completion",
+      "prompt": "用repeat的适当形式填空，表达“我们避免重复相同的信息”：We avoid ____ the same information.",
+      "answer": "repeating",
+      "acceptedVariants": [],
+      "hint": "关注空格前的动词能接什么形式的活动。",
+      "explanation": "avoid后接-ing活动作宾语。",
+      "difficulty": "受控运用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "repeating",
+        "wrongExample": "to repeat",
+        "distractors": "avoid to repeat不符合该动词的常用补语结构；repeat原形也不能直接放在这里。",
+        "ambiguity": "给定动词避免开放同义填空遗漏变体。"
+      }
+    },
+    {
+      "id": "s2.astra.a10",
+      "goalId": "s2.nonrestrictive",
+      "type": "completion",
+      "prompt": "只填一个关系词：We reached the garden, ____ was still open. 空格后的补充说明说的是花园仍然开放。",
+      "answer": "which",
+      "acceptedVariants": [],
+      "hint": "不要只看前面的词是不是地点，还要看从句缺少什么成分。",
+      "explanation": "was still open缺主语，用which指花园；where是地点状语，不能补这个主语位置。",
+      "difficulty": "受控运用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "which",
+        "wrongExample": "where",
+        "distractors": "where未补主语；that不能用于这里的逗号补充从句。",
+        "ambiguity": "限定一个关系词，排除另起独立句或改写整个结构。"
+      }
+    },
+    {
+      "id": "s2.astra.a11",
+      "goalId": "s2.future-progressive",
+      "type": "audioArrange",
+      "prompt": "听一句关于明天的安排，用全部词块重建所听句子。",
+      "audioScript": "We'll be checking the sound at noon.",
+      "tokens": [
+        {
+          "id": "s",
+          "text": "the sound"
+        },
+        {
+          "id": "w",
+          "text": "We'll"
+        },
+        {
+          "id": "n",
+          "text": "at noon."
+        },
+        {
+          "id": "b",
+          "text": "be checking"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "w",
+          "b",
+          "s",
+          "n"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "听清谁在做什么，再安放时间短语。",
+      "explanation": "We'll be checking表达未来某时正在检查的活动；at noon说明时间。",
+      "difficulty": "受控听后重建",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "We'll be checking the sound at noon.",
+        "wrongExample": "We'll the sound be checking at noon.",
+        "distractors": "错误顺序把宾语放到助动词与主要动词之间。",
+        "ambiguity": "按听到的词序重建；At noon前置本可合法，但非本段录音且给定末尾标点限定顺序。"
+      }
+    },
+    {
+      "id": "s2.astra.a12",
+      "goalId": "s2.verb-patterns",
+      "type": "completion",
+      "prompt": "用paint的形式填空，表示“雨停后，我们开始画画”：When the rain stopped, we started ____. 可填单词或短语。",
+      "answer": "painting",
+      "acceptedVariants": [
+        "to paint"
+      ],
+      "hint": "这一动词后的两种常见活动形式，在当前语境中可能都成立。",
+      "explanation": "started painting和started to paint在此都表示开始画画。",
+      "difficulty": "受控运用与变体意识",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "painting；to paint",
+        "wrongExample": "paint",
+        "distractors": "原形paint不能直接作started的这个补语。",
+        "ambiguity": "显式接受两种合法补语，不以唯一答案屏蔽to paint。"
+      }
+    },
+    {
+      "id": "s2.astra.a13",
+      "goalId": "s2.past-perfect",
+      "type": "choice",
+      "taskIntent": "意义等价改写",
+      "prompt": "事实是你先锁门，之后离开。原句：I locked the door before I left. 你要用过去完成时强调先锁门，且不改变先后。选合适改写。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I had left before I locked the door."
+        },
+        {
+          "id": "b",
+          "text": "I had locked the door before I left."
+        },
+        {
+          "id": "c",
+          "text": "I locked the door after I had left."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "改写时保留两件事的顺序，不要只寻找目标时态。",
+      "explanation": "b把较早的锁门改为had locked，同时保留先后。原句用一般过去时也正确，before已经清楚表示顺序。",
+      "difficulty": "迁移",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a和c都说先离开后锁门，改变给定事实。",
+        "ambiguity": "要求是改写练习，不是纠正原句；出现before不自动强制过去完成。"
+      }
+    },
+    {
+      "id": "s2.astra.a14",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "listeningChoice",
+      "taskIntent": "保留过程与结果的区别",
+      "prompt": "听近况更新，选有录音支持的记录。",
+      "audioScript": "I've been testing the new map all afternoon. So far, I've checked three routes, but there are two more to try.",
+      "options": [
+        {
+          "id": "a",
+          "text": "整个下午在测试；已检查三条路线，另有两条待试。"
+        },
+        {
+          "id": "b",
+          "text": "整个下午在测试；已检查两条路线，另有三条待试。"
+        },
+        {
+          "id": "c",
+          "text": "上午开始并已完成测试；五条路线都已经检查过。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别记录活动持续多久、已经完成多少、还有什么未完成。",
+      "explanation": "完成进行式描述下午的测试过程；I've checked three明确已完成数量；two more是剩余任务。",
+      "difficulty": "迁移",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷65／PDF72",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b颠倒已完成与剩余数量；c改变开始时间且把未完任务报为完成；三项信息量相近。",
+        "ambiguity": "不单凭完成进行式推断未完成，未完成依据是but之后的明确内容。"
+      }
+    },
+    {
+      "id": "s2.astra.a15",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "taskIntent": "承认顾虑并提出可检验建议",
+      "prompt": "同伴担心电子地图耗电。你也认为它可能让找路更方便，想承认顾虑并提出小范围试用。哪句最符合这个意图？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The map may help us find our way, but battery life is a concern. Let's set it aside without trying it."
+        },
+        {
+          "id": "b",
+          "text": "Let's test the map on a short trip. We can discuss whether battery life matters after we decide to use it."
+        },
+        {
+          "id": "c",
+          "text": "Battery life is a concern, but the map may help us find our way. Let's try it on one short trip."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "看回应是否同时保留对方的顾虑、你的可能收益和具体下一步。",
+      "explanation": "c承认问题，用may限定收益，并提出一次短程试用；不是笼统保证。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷20—21／PDF27—28",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a承认顾虑和收益却取消试用；b提出试用却把承认顾虑推迟到决定采用之后。c同时符合三项明确意图，三项长度近似。",
+        "ambiguity": "不判电子地图本身好坏，只判给定沟通意图是否保留。"
+      }
+    },
+    {
+      "id": "s2.astra.a16",
+      "goalId": "s2.ing-subject",
+      "type": "choice",
+      "taskIntent": "保留建议条件的改写",
+      "prompt": "原意：如果事先确定目的地，规划路线会更容易。选以-ing短语作主语、同时保留条件的改写。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Planning a route is easier if we choose the destination first."
+        },
+        {
+          "id": "b",
+          "text": "Planning a route is always easy."
+        },
+        {
+          "id": "c",
+          "text": "Choosing a destination is unnecessary when we plan a route."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "确认原意中的条件还在，不把有条件的比较变成无条件保证。",
+      "explanation": "a以Planning a route为主语，并保留if条件及easier的比较意义。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b删掉条件并改成总是容易；c否定事先确定目的地的必要性，改变原意。",
+        "ambiguity": "任务不是判断所有路线是否容易，不依赖真实旅行知识。"
+      }
+    },
+    {
+      "id": "s2.astra.a17",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "taskIntent": "避免把感受转述成人格评价",
+      "prompt": "同伴说：I was bored during the talk. 你只想准确转述他的体验，不额外评价他这个人。哪句合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "He was a boring person."
+        },
+        {
+          "id": "b",
+          "text": "He felt bored during the talk."
+        },
+        {
+          "id": "c",
+          "text": "Everyone found him boring."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "原话描述谁的体验？不要把体验改成别人对他的评价。",
+      "explanation": "b保留他在讲话期间的无聊感。boring可用于人，但那是在说此人令人无聊，与原话不同。",
+      "difficulty": "迁移",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a改成人物评价；c新增所有人的态度且改变评价对象。",
+        "ambiguity": "a、c并非因为主语是人而语法不合法，而是没有保留给定意义。"
+      }
+    },
+    {
+      "id": "s2.astra.a18",
+      "goalId": "s2.ing-roles",
+      "type": "arrange",
+      "taskIntent": "表达协作方法",
+      "prompt": "用全部词块表达：“我们可以通过分担工作来节省时间。”以We开头。",
+      "tokens": [
+        {
+          "id": "b",
+          "text": "by sharing"
+        },
+        {
+          "id": "w",
+          "text": "We"
+        },
+        {
+          "id": "t",
+          "text": "the work."
+        },
+        {
+          "id": "s",
+          "text": "can save time"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "w",
+          "s",
+          "b",
+          "t"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先形成完整的主要建议，再补充如何实现它。",
+      "explanation": "by sharing the work说明实现方法，介词by后用-ing。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "We can save time by sharing the work.",
+        "wrongExample": "We by sharing can save time the work.",
+        "distractors": "错误次序拆开sharing与其宾语，不能自然表达方法。",
+        "ambiguity": "给定词块与We开头固定本题输出；不否认其他开放表达。"
+      }
+    },
+    {
+      "id": "s2.astra.b01",
+      "goalId": "s2.nonrestrictive",
+      "type": "choice",
+      "taskIntent": "辨认整件事的信息补充",
+      "prompt": "读句子：The path reopened, which made our walk much shorter. which补充说明的对象是什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "步道重新开放这件事。"
+        },
+        {
+          "id": "b",
+          "text": "某一个没有说明身份的人。"
+        },
+        {
+          "id": "c",
+          "text": "我们把步道本身缩短了这件事。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "观察补充部分是在描述一个名词的属性，还是前面事件带来的结果。",
+      "explanation": "which承接步道重新开放这件事，并补充它让这次步行缩短的结果；句子没有说我们改造了步道。",
+      "difficulty": "识别",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b无人物先行内容；c把结果中的walk换成path，并虚构改造步道。",
+        "ambiguity": "不要求把which一律解释成紧邻名词；此处事件与结果联系清楚。"
+      }
+    },
+    {
+      "id": "s2.astra.b02",
+      "goalId": "s2.verb-patterns",
+      "type": "listeningChoice",
+      "taskIntent": "判断停止行为的实际含义",
+      "prompt": "听同行者的说明，选准确的动作记录。",
+      "audioScript": "We were walking uphill. We stopped to look at the view, then continued along the path.",
+      "options": [
+        {
+          "id": "a",
+          "text": "停止看景色后才开始上坡。"
+        },
+        {
+          "id": "b",
+          "text": "上坡途中暂停脚步看景色，之后继续走。"
+        },
+        {
+          "id": "c",
+          "text": "停下来后没有再继续走。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把暂停前、暂停时和暂停后的活动连成一条时间线。",
+      "explanation": "stopped to look表示暂停原先的行走以看景色；then continued说明随后继续。",
+      "difficulty": "识别",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把stop to look误成停止看；c忽略continued。",
+        "ambiguity": "录音明确之前是walking，不让学习者猜测暂停了什么活动。"
+      }
+    },
+    {
+      "id": "s2.astra.b03",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "choice",
+      "taskIntent": "不从体貌过度推断",
+      "prompt": "同伴刚放下刷子说：I've been painting the sign. 单凭这句话，哪一项仍不能确定？",
+      "options": [
+        {
+          "id": "a",
+          "text": "他此前有一段画标牌的过程。"
+        },
+        {
+          "id": "b",
+          "text": "这段活动与当前近况有关。"
+        },
+        {
+          "id": "c",
+          "text": "整块标牌是否已全部画完。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "过程表达与整件作品的完成状态不是同一条信息。",
+      "explanation": "现在完成进行式可描述持续到现在或刚结束的过程；并不单独保证作品完成或未完成。",
+      "difficulty": "识别与证据边界",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷65／PDF72",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a和b属于这一近况陈述支持的信息，不是未知的完成数量。",
+        "ambiguity": "放下刷子也可能只是休息；不据此认定整块标牌已经完成。"
+      }
+    },
+    {
+      "id": "s2.astra.b04",
+      "goalId": "s2.participle-feelings",
+      "type": "matching",
+      "prompt": "把英文评价与相同含义配对，不额外推断原因。每项用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The visitor was confused."
+        },
+        {
+          "id": "l2",
+          "text": "The visitor was confusing."
+        },
+        {
+          "id": "l3",
+          "text": "The explanation was encouraging."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "讲解让人受到鼓舞。"
+        },
+        {
+          "id": "r2",
+          "text": "访客自己感到困惑。"
+        },
+        {
+          "id": "r3",
+          "text": "访客让别人感到困惑。"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r2"
+        ],
+        [
+          "l2",
+          "r3"
+        ],
+        [
+          "l3",
+          "r1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "识别每句说的是体验者，还是引起体验的一方。",
+      "explanation": "confused描述体验，confusing描述造成困惑的作用；encouraging表示令人受鼓舞。",
+      "difficulty": "识别",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "l1-r2,l2-r3,l3-r1",
+        "wrongExample": "l1-r3,l2-r2,l3-r1",
+        "distractors": "交换前两项会颠倒困惑的体验者与引发者。",
+        "ambiguity": "人也能用-ing评价其对别人的影响；不限定访客为什么令人困惑。"
+      }
+    },
+    {
+      "id": "s2.astra.b05",
+      "goalId": "s2.ing-subject",
+      "type": "choice",
+      "prompt": "只讨论“独自旅行”这一项活动。哪句以-ing短语作主语且主谓一致？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Travelling alone give me time to think."
+        },
+        {
+          "id": "b",
+          "text": "Travelling alone gives me time to think."
+        },
+        {
+          "id": "c",
+          "text": "Travelling alone giving me time to think."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把整个活动当作一个主语，并确认句中有完整谓语。",
+      "explanation": "单个-ing活动短语作主语，谓语用gives；giving不能独立构成这里的限定谓语。",
+      "difficulty": "识别",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a缺少第三人称单数变化；c缺完整谓语。",
+        "ambiguity": "只用一个活动主语，避免并列多个活动的一致问题。"
+      }
+    },
+    {
+      "id": "s2.astra.b06",
+      "goalId": "s2.ing-roles",
+      "type": "matching",
+      "prompt": "将加方括号的-ing部分与它在句中的作用配对，每项用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "My task is [checking the names]."
+        },
+        {
+          "id": "l2",
+          "text": "I am [checking the names] now."
+        },
+        {
+          "id": "l3",
+          "text": "I enjoy [checking the names]."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "作宾语，说明喜欢做的活动。"
+        },
+        {
+          "id": "r2",
+          "text": "作表语，说明任务内容。"
+        },
+        {
+          "id": "r3",
+          "text": "与am构成进行时，说明正在发生的动作。"
+        }
+      ],
+      "answerPairs": [
+        [
+          "l1",
+          "r2"
+        ],
+        [
+          "l2",
+          "r3"
+        ],
+        [
+          "l3",
+          "r1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "结合主语和前面的动词判断，不只看-ing外形。",
+      "explanation": "task is后说明任务内容；I am ... now报告正在做的动作；enjoy后是所喜欢活动的宾语。",
+      "difficulty": "识别",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "l1-r2,l2-r3,l3-r1",
+        "wrongExample": "l1-r3,l2-r2,l3-r1",
+        "distractors": "把task is误判进行时，会变成任务本身在核对名字。",
+        "ambiguity": "now帮助明确第二句动态用法；不把所有be加-ing都当同一结构。"
+      }
+    },
+    {
+      "id": "s2.astra.b07",
+      "goalId": "s2.future-progressive",
+      "type": "completion",
+      "prompt": "明天下午两点你们会正在布置大厅。按要求用prepare的将来进行时填空：At two tomorrow afternoon, we ____ the hall.",
+      "answer": "will be preparing",
+      "acceptedVariants": [
+        "'ll be preparing",
+        "shall be preparing"
+      ],
+      "hint": "检查助动词、表示进行的成分与主要动词是否齐全。",
+      "explanation": "will be preparing强调届时正在进行的布置；第一人称复数的shall be preparing也可接受。",
+      "difficulty": "受控运用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "will be preparing",
+        "wrongExample": "will preparing",
+        "distractors": "will preparing缺be；will prepare未满足本题指定的进行形式。",
+        "ambiguity": "不否定一般将来表达该安排的可能；这里明确要求将来进行时，缩写与we拼接。"
+      }
+    },
+    {
+      "id": "s2.astra.b08",
+      "goalId": "s2.past-perfect",
+      "type": "completion",
+      "prompt": "昨晚八点开始讨论，七点半你已完成笔记。用finish的过去完成时填空：By the time our discussion began, I ____ my notes.",
+      "answer": "had finished",
+      "acceptedVariants": [
+        "'d finished"
+      ],
+      "hint": "找出参照的过去时点，再表达在它之前已经完成的事。",
+      "explanation": "完成笔记早于讨论开始，用had finished对应明确的时间关系。",
+      "difficulty": "受控运用",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "had finished",
+        "wrongExample": "have finished",
+        "distractors": "have finished以现在为联系点，不满足指定的过去完成结构。",
+        "ambiguity": "时间线已明示；'d在finished之前可确定为had，不与would混淆。"
+      }
+    },
+    {
+      "id": "s2.astra.b09",
+      "goalId": "s2.balanced-argument",
+      "type": "arrange",
+      "taskIntent": "表达有让步的建议",
+      "prompt": "用全部词块表达“虽然计划有用，但我们仍需要备用方案”。以The plan开头。",
+      "tokens": [
+        {
+          "id": "w",
+          "text": "we still need"
+        },
+        {
+          "id": "p",
+          "text": "The plan is useful,"
+        },
+        {
+          "id": "b",
+          "text": "but"
+        },
+        {
+          "id": "a",
+          "text": "a backup."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "p",
+          "b",
+          "w",
+          "a"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先保留正面评价，再用连接成分引入尚未解决的需求。",
+      "explanation": "but连接认可价值与保留顾虑；still强调备用需求并未因此消失。",
+      "difficulty": "受控语用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷20—21／PDF27—28",
+      "review": {
+        "correctExample": "The plan is useful, but we still need a backup.",
+        "wrongExample": "The plan is useful, we still need but a backup.",
+        "distractors": "错误次序把连接两个分句的but放进第二分句宾语前。",
+        "ambiguity": "backup在此指备用方案，不要求学习者懂技术备份。"
+      }
+    },
+    {
+      "id": "s2.astra.b10",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "dictation",
+      "prompt": "听近况询问，写下完整问句。",
+      "audioScript": "How long have you been waiting?",
+      "answer": "How long have you been waiting?",
+      "acceptedVariants": [],
+      "hint": "留意时长问法，以及主语前后的助动词位置。",
+      "explanation": "How long询问持续时长；have you been waiting是现在完成进行时的疑问结构。",
+      "difficulty": "受控听写",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷65／PDF72",
+      "review": {
+        "correctExample": "How long have you been waiting?",
+        "wrongExample": "How long you have been waiting?",
+        "distractors": "错误反例保留陈述语序，未构成直接问句。",
+        "ambiguity": "录音明确用have不提供改述任务；大小写和问号归一，不把How long have you waited当听写原句。"
+      }
+    },
+    {
+      "id": "s2.astra.b11",
+      "goalId": "s2.verb-patterns",
+      "type": "completion",
+      "prompt": "用share的适当形式填空，表达已经作出的决定：We decided ____ one umbrella on the way back.",
+      "answer": "to share",
+      "acceptedVariants": [],
+      "hint": "检查表示决定的动词后，怎样接上准备采取的行动。",
+      "explanation": "decide to do表示决定做某事。",
+      "difficulty": "受控运用",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "to share",
+        "wrongExample": "sharing",
+        "distractors": "decided sharing不符合该句常用补语结构；share缺to。",
+        "ambiguity": "指定share而非开放改述，不涉及decide on等另一个介词结构。"
+      }
+    },
+    {
+      "id": "s2.astra.b12",
+      "goalId": "s2.nonrestrictive",
+      "type": "arrange",
+      "prompt": "用全部词块补充说明大厅的位置：这个大厅在楼上，有两扇窗。以The hall开头。",
+      "tokens": [
+        {
+          "id": "h",
+          "text": "The hall,"
+        },
+        {
+          "id": "t",
+          "text": "has two windows."
+        },
+        {
+          "id": "w",
+          "text": "which is upstairs,"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "h",
+          "w",
+          "t"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "保留句子的主干，把补充位置的信息放进两处逗号之间。",
+      "explanation": "主干The hall has two windows；which is upstairs作补充说明，which在从句中作主语。",
+      "difficulty": "受控运用",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷5／PDF12",
+      "review": {
+        "correctExample": "The hall, which is upstairs, has two windows.",
+        "wrongExample": "The hall, has two windows. which is upstairs,",
+        "distractors": "错误顺序产生主语后的孤立逗号及残缺句，不能靠忽略标点判对。",
+        "ambiguity": "整块标点明示补充语插入主干；无多种合法块序遗漏。"
+      }
+    },
+    {
+      "id": "s2.astra.b13",
+      "goalId": "s2.future-progressive",
+      "type": "choice",
+      "taskIntent": "依据安排协作改约",
+      "prompt": "你明天三点到四点会在安静展厅画画，五点有空。同伴想三点半打电话讨论计划。哪句既说明届时状态，又提出可行替代？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'll be drawing then. Could we talk at five?"
+        },
+        {
+          "id": "b",
+          "text": "I'll be free then. Call me at half past three."
+        },
+        {
+          "id": "c",
+          "text": "I'll be drawing then, so we can never discuss it."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "将提议时间与已占用时段对照，同时检查替代安排是否符合题内事实。",
+      "explanation": "a用将来进行说明三点半的活动，并改约已知有空的五点。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷17／PDF24",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b与占用时段矛盾；c把一小时冲突扩大成永远不能讨论。",
+        "ambiguity": "并不把其他时态的礼貌改约判错，三个候选中只有a满足全部事实与任务。"
+      }
+    },
+    {
+      "id": "s2.astra.b14",
+      "goalId": "s2.past-perfect",
+      "type": "listeningChoice",
+      "taskIntent": "保留过去时点的未完成状态",
+      "prompt": "听回顾，选择没有改变当时情况的一项。",
+      "audioScript": "When we arrived at the hall, the doors had opened, but the talk had not started. We still had time to find seats.",
+      "options": [
+        {
+          "id": "a",
+          "text": "到达时门还没开，讲话也没开始。"
+        },
+        {
+          "id": "b",
+          "text": "到达时门已开，讲话尚未开始。"
+        },
+        {
+          "id": "c",
+          "text": "到达时讲话已经结束。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别判断两件事在到达这个时点之前是否发生，留意否定。",
+      "explanation": "had opened表明已开门，had not started表明当时尚未开始讲话。",
+      "difficulty": "迁移",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷53／PDF60",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a把肯定开门听成否定；c把尚未开始误成已经结束。",
+        "ambiguity": "doors had opened在此为门已经打开，不据此推断开放了多久。"
+      }
+    },
+    {
+      "id": "s2.astra.b15",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "taskIntent": "在分歧中提出公平比较",
+      "prompt": "你偏爱简短说明，同伴更喜欢详细说明。你想让同一组读者用同一个任务比较两个版本，不先判断哪版更好。哪句最符合这个意图？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The details may help some readers. Could we let each reader choose a version before we compare their results?"
+        },
+        {
+          "id": "b",
+          "text": "Both versions may help. Could we give mine a simple task and yours a harder one to see how much readers learn?"
+        },
+        {
+          "id": "c",
+          "text": "The details may help some readers. Could we test both versions with the same task?"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "看是否认可另一种方案可能的价值，并提出能够比较的方法。",
+      "explanation": "c认可详细版可能有用，再提议同任务比较两版；a改成各人先选一版，b改用不同难度任务，都偏离题目指定的比较方式。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷20—21／PDF27—28",
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "b",
+        "distractors": "a让不同读者自行选版，没有让同一组比较两个版本；b安排不同难度任务，不满足同一任务条件。三项均礼貌，不以冒犯语气送分。",
+        "ambiguity": "不预设哪版更好；相同任务是初步比较建议，不声称已完成严格实验。"
+      }
+    },
+    {
+      "id": "s2.astra.b16",
+      "goalId": "s2.ing-subject",
+      "type": "audioArrange",
+      "taskIntent": "重建协作建议的意义",
+      "prompt": "听一句讨论协作的陈述，用全部词块重建原句。",
+      "audioScript": "Listening to each other helps us make better plans.",
+      "tokens": [
+        {
+          "id": "m",
+          "text": "make better plans."
+        },
+        {
+          "id": "e",
+          "text": "to each other"
+        },
+        {
+          "id": "l",
+          "text": "Listening"
+        },
+        {
+          "id": "h",
+          "text": "helps us"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "l",
+          "e",
+          "h",
+          "m"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先听出句子把哪项活动作为主题，再连接它带来的作用。",
+      "explanation": "Listening to each other整个短语作主语，helps作谓语，后接us make better plans。",
+      "difficulty": "迁移听后重建",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷29／PDF36",
+      "review": {
+        "correctExample": "Listening to each other helps us make better plans.",
+        "wrongExample": "Listening helps us to each other make better plans.",
+        "distractors": "错误次序使to each other不再与listening连接。",
+        "ambiguity": "固定听到的词块；开放表达helps us to make也合法，但本题无该词块且录音不是该变体。"
+      }
+    },
+    {
+      "id": "s2.astra.b17",
+      "goalId": "s2.participle-feelings",
+      "type": "choice",
+      "taskIntent": "礼貌反馈且保留感受",
+      "prompt": "你看完同伴整理的图表，觉得有些地方难理解，想请对方解释，不评价同伴能力。哪句最合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm confused by this part of the chart. Could you explain it?"
+        },
+        {
+          "id": "b",
+          "text": "I'm confused by this part of the chart. Could you leave it out of the final version?"
+        },
+        {
+          "id": "c",
+          "text": "I'm interested in this part of the chart. Could you send me a copy of it?"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "将反馈落在具体内容及自己的体验，再看是否提出了解释请求。",
+      "explanation": "a用confused说明自己对局部内容的困惑，并请求解释。b要求删除，c表达兴趣并索要副本，都没有完成指定的澄清任务。",
+      "difficulty": "迁移",
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b保留困惑但请求删除而非解释；c请求副本而未表达困惑或请求讲解。三个候选均自然礼貌，按具体意图区分。",
+        "ambiguity": "b语法可以成立但不符合沟通意图；不是因人物不能用-ing而排除。"
+      }
+    },
+    {
+      "id": "s2.astra.b18",
+      "goalId": "s2.ing-roles",
+      "type": "choice",
+      "taskIntent": "区分任务分工与正在进行",
+      "prompt": "你要介绍自己在活动中的固定分工是核对名单，并未表示此刻已经开始。哪句最直接表达这项分工？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I am checking the list right now."
+        },
+        {
+          "id": "b",
+          "text": "My task is checking the list."
+        },
+        {
+          "id": "c",
+          "text": "I have finished checking the list."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分清介绍任务内容、报告当前动作和报告完成结果。",
+      "explanation": "b的checking the list作表语，说明任务内容；a报告现在正在做，c报告已经完成。",
+      "difficulty": "迁移",
+      "sourceId": "pep.senior.selective1.review2019",
+      "pages": "印刷41／PDF48",
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a加入题内没有的当前动作；c加入完成结果。",
+        "ambiguity": "My task is to check the list也可自然表达，但不在候选中；不将表语不定式判错。"
+      }
+    }
+  ],
+  "openingStories": [
+    {
+      "id": "s2.astra.story.a",
+      "title": "半张没有寄出的明信片",
+      "character": "同行者",
+      "questionGroup": "a",
+      "questionCount": 18,
+      "text": "你和同行者想给今天留下一点纪念，在窗边摊开一张空白明信片。你刚画了远处的屋顶，一滴水就落在纸上，把线条洇开了。你有些懊恼，准备把它收起来，同行者却转了转纸，指着那团浅灰色的水痕。你看了好一会儿，在它旁边添了几条细线，它竟有些像一只展开翅膀的鸟。等纸晾干，你们把明信片夹进书里，谁也没有急着写地址。",
+      "teachingNote": "只有你与泛化同行者；从留纪念、画面洇开到改画收存构成完整事件；不提供题目条件或答案，不承担答题教程。"
+    },
+    {
+      "id": "s2.astra.story.b",
+      "title": "另一端的结",
+      "character": "同行者",
+      "questionGroup": "b",
+      "questionCount": 18,
+      "text": "你和同行者想把一路收集的几片落叶夹成一本小册子。纸页已经叠齐，穿到最后一个孔时，绳子却怎么也不够长。你们拆开前面的结，把纸一张张重新对好，又发现其中一片叶子悄悄滑到了桌下。你俯身把它捡回来，同行者找到一小截颜色不同的线。两段线接起来后，册子终于合上了，封面边上留下一个显眼的小结。你摸了摸它，觉得这样反而更容易认出这一本。",
+      "teachingNote": "只有你与泛化同行者；制作、绳短和落叶滑落、接线收束；不绑定职业，不介绍语法，不让题目依赖故事记忆。"
+    }
+  ],
+  "remainingWork": [
+    "九个真实s2目标各4题，两组各18题，每组各目标2题；1—6偏识别、7—12受控运用、13—18迁移，阶段难度仍需真实试做。",
+    "七种交互：choice、listeningChoice、matching、completion、arrange、audioArrange、dictation。未提出未实现的多空cloze；audioArrange仍需主代理确认实际端到端合同。",
+    "七道听力题仅有原创脚本：a02/a11/a14/b02/b10/b14/b16。尚无音频文件或assetId；制作后须逐条实听校核缩写、否定、时间、完成数量及音质，答前隐藏原文。",
+    "多道独立题涉及意义等价、证据限定和协作表达，非纯语法填空；不采用长文记忆、偏词或专业知识提升难度。作者自审不代替主代理独立逐题审阅。",
+    "待逐题主审、与正式题库实质重复核查、合理变体及空格缩写拼接验收、18题组卷、媒体制作、原生交互与无障碍验证。此文件不被正式bank加载，不代表发布或线上验收。",
+    "教材核读范围仅为sourceReading所列正文，两张页图目视仅核对页码和结构；不宣称整册、所有教材版次或全年课程覆盖。"
+  ]
+}

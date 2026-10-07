@@ -1,0 +1,1360 @@
+{
+  "level": "senior1",
+  "author": {
+    "name": "Astra 高一独立作者",
+    "method": "实际核读正文后，逐题原创交际条件、选项、可接受答案与反例；没有使用程序组合、词槽替换或自动生成题目。程序仅用于来源定位、渲染和JSON检查。",
+    "status": "36题作者自审草稿，未独立复审，音频未制作，不可发布"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/pep-senior1.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷18、28、40、52、64；对应PDF25、35、47、59、71（均为一基页码）",
+      "method": "实际阅读pages.json上述五页全部正文及练习；渲染并目视PDF59，确认页脚52、关系词主宾/所属示例及允许省略的练习。",
+      "findings": "建议需要相关理由；现在进行时可表已安排未来；附加问句按事实答；限制性关系词区分主语、宾语与所属；关系副词依从句成分选用。",
+      "limitations": "核读范围只限所列正文，未声称通读全册；必修第一册的教学内容不机械等同所有地区高一进度。不复制教材题目或原文。"
+    },
+    {
+      "sourceId": "fltrp.senior1.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/fltrp-senior1.pdf",
+      "readAt": "2026-10-07",
+      "pages": "印刷29／PDF36（一基页码）",
+      "method": "阅读pages.json本页全部时态说明、时间线、对话与准备事项表；实际渲染并目视该页，确认页脚29与Review: tenses标题。",
+      "findings": "一般过去时定位过去完成的事件，现在完成时连接过去与现在，现在进行时表示当前进行；表格任务鼓励按完成/进行/待做状态交流。",
+      "limitations": "只核读时态复习这一正文页，不声称整册已读；本稿只采用catalog已声明的三种时态视角。"
+    }
+  ],
+  "interactionContract": {
+    "inputNormalization": "completion与dictation忽略首尾空白、大小写、直弯撇号和句末标点；明确列出的缩写与全写同等接受。关系词可省略时，用户填写/表示省略，空白输入本身不作已答。",
+    "audioArrange": "待核验正式实现：播放隐藏原文的原创音频，点选或拖动词块复原；acceptedOrders列出全部允许的词块ID序列，支持重播、撤销和无障碍点选。未制音频不得替换成公开原文排序后称为听力。",
+    "matching": "左右项分别打乱，以稳定ID保存配对，整题全部配对正确才得分；不是按显示位置判分。",
+    "media": "所有音频仅提供audioScript，不提供assetId；答题前脚本隐藏。无额外图片依赖。"
+  },
+  "questions": [
+    {
+      "id": "s1.astra.a01",
+      "goalId": "senior1.reader-advice-note",
+      "type": "choice",
+      "taskIntent": "建议与理由",
+      "prompt": "同学说：I keep forgetting new words. 选一条有相关理由、又不过度保证结果的建议。",
+      "options": [
+        {
+          "id": "a",
+          "text": "You should know them already. Everyone else does."
+        },
+        {
+          "id": "b",
+          "text": "Try reviewing a few each day; regular practice can help you remember them."
+        },
+        {
+          "id": "c",
+          "text": "Read the list once and you will never forget a word again."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "同时检查建议是否可执行、理由是否相关、承诺是否有依据。",
+      "explanation": "b提出少量持续复习，并谨慎说明可能的作用；a责备，c作无法保证的承诺。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a没有帮助行动；c一次阅读就永不忘的保证不成立。",
+        "ambiguity": "不将某一种礼貌句式视为唯一正确；依据题面三项条件作答。"
+      }
+    },
+    {
+      "id": "s1.astra.a02",
+      "goalId": "senior1.book-donation-labels",
+      "type": "choice",
+      "taskIntent": "限定信息识别",
+      "prompt": "通知写着：Students who need a locker should fill in this form. 谁需要填表？",
+      "options": [
+        {
+          "id": "a",
+          "text": "所有学生，无论是否需要柜子。"
+        },
+        {
+          "id": "b",
+          "text": "已经填过表的学生。"
+        },
+        {
+          "id": "c",
+          "text": "需要柜子的学生。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "看修饰students的部分怎样缩小人群范围。",
+      "explanation": "who need a locker限定students的范围，通知没有要求所有人填表。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a丢失限定；b把需要柜子改成已填表。",
+        "ambiguity": "只问通知要求的人群，不推断柜子数量或申请结果。"
+      }
+    },
+    {
+      "id": "s1.astra.a03",
+      "goalId": "senior1.booked-weekend",
+      "type": "listeningChoice",
+      "taskIntent": "当前动作与未来安排辨析",
+      "prompt": "听留言，判断说话人提到的两件事分别发生在何时。",
+      "audioScript": "I'm packing my bag now. I'm leaving for the lake tomorrow morning.",
+      "options": [
+        {
+          "id": "a",
+          "text": "现在收拾包；明早出发。"
+        },
+        {
+          "id": "b",
+          "text": "现在出发；明早收拾包。"
+        },
+        {
+          "id": "c",
+          "text": "两件事都正在发生。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "不要只看动词形式，留意两个动作各自的时间线索。",
+      "explanation": "两个动词都是现在进行时；now定位当前动作，tomorrow morning定位未来安排。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b交换时间；c把形式相同误当作时间相同。",
+        "ambiguity": "音频原创，题面不写时间或活动；安排不等于结果绝对保证。"
+      }
+    },
+    {
+      "id": "s1.astra.a04",
+      "goalId": "senior1.meeting-place-details",
+      "type": "matching",
+      "taskIntent": "从句成分识别",
+      "prompt": "把方括号内的从句与其中缺少的成分配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "the room [we painted __]"
+        },
+        {
+          "id": "l2",
+          "text": "the room [we slept __]"
+        },
+        {
+          "id": "l3",
+          "text": "the day [we arrived __]"
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "painted的宾语：粉刷了什么"
+        },
+        {
+          "id": "r2",
+          "text": "地点：在哪里睡觉"
+        },
+        {
+          "id": "r3",
+          "text": "时间：在哪一天到达"
+        }
+      ],
+      "answer": {
+        "l1": "r1",
+        "l2": "r2",
+        "l3": "r3"
+      },
+      "acceptedVariants": [],
+      "hint": "先单独读从句的动词，判断它缺物品、地点还是时间。",
+      "explanation": "paint需要说明粉刷的对象；sleep不直接接房间作宾语；arrive在这里缺时间说明。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "l1-r1；l2-r2；l3-r3",
+        "wrongExample": "l1-r2",
+        "distractors": "把l1配地点会只看room而忽略paint的宾语。",
+        "ambiguity": "方括号只是标记，不要求加粗渲染；到达地点可不明说，此处先行词day已指定时间。"
+      }
+    },
+    {
+      "id": "s1.astra.a05",
+      "goalId": "senior1.confirm-the-details",
+      "type": "choice",
+      "taskIntent": "按事实回应否定附加问句",
+      "prompt": "你查过记录，Mia确实交了表。对方问：Mia hasn't sent the form, has she? 选准确回应。",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, she hasn't."
+        },
+        {
+          "id": "b",
+          "text": "Yes, she has."
+        },
+        {
+          "id": "c",
+          "text": "Yes, she hasn't."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "先按事实组成肯定或否定短答，不要照搬中文的“对/不对”。",
+      "explanation": "事实是已提交，因此回答Yes, she has；英语短答的肯否与事实相合。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a否认已提交的事实；c的Yes与否定谓语不匹配。",
+        "ambiguity": "事实已给定；不要求通过主句肯否猜答案。"
+      }
+    },
+    {
+      "id": "s1.astra.a06",
+      "goalId": "senior1.project-time-notes",
+      "type": "matching",
+      "taskIntent": "时间视角匹配",
+      "prompt": "将三条记录与它们主要呈现的时间视角配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I repaired the bike last Sunday."
+        },
+        {
+          "id": "l2",
+          "text": "I've repaired the bike, so you can use it now."
+        },
+        {
+          "id": "l3",
+          "text": "I'm repairing the bike. Please wait."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "过去具体时间发生的事"
+        },
+        {
+          "id": "r2",
+          "text": "已完成的事带来现在的结果"
+        },
+        {
+          "id": "r3",
+          "text": "现在尚在进行的动作"
+        }
+      ],
+      "answer": {
+        "l1": "r1",
+        "l2": "r2",
+        "l3": "r3"
+      },
+      "acceptedVariants": [],
+      "hint": "比较时间短语，以及后半句说明的当前状态。",
+      "explanation": "last Sunday定位过去；第二句强调现在能用的结果；第三句请人等，修理还在进行。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "l1-r1；l2-r2；l3-r3",
+        "wrongExample": "l2-r3",
+        "distractors": "混淆修好后的结果与仍在修的过程。",
+        "ambiguity": "只分类给定句子的主要视角，不宣称一般过去时永远不能说明现时结果。"
+      }
+    },
+    {
+      "id": "s1.astra.a07",
+      "goalId": "senior1.reader-advice-note",
+      "type": "arrange",
+      "taskIntent": "理由连接",
+      "prompt": "用全部词块组成一条建议，先提出行动，再说明理由。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "because"
+        },
+        {
+          "id": "t2",
+          "text": "the print is small"
+        },
+        {
+          "id": "t3",
+          "text": "you could"
+        },
+        {
+          "id": "t4",
+          "text": "use a larger screen"
+        }
+      ],
+      "answer": [
+        "t3",
+        "t4",
+        "t1",
+        "t2"
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t4",
+          "t1",
+          "t2"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先找带情态动词的建议，再连接能够支持它的原因。",
+      "explanation": "You could use a larger screen because the print is small. 字小是使用更大屏幕的相关理由。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "t3-t4-t1-t2",
+        "wrongExample": "t3-t4-t2-t1",
+        "distractors": "无额外干扰词；错误次序不能连接两个完整分句。",
+        "ambiguity": "because从句前置也合法，但题面明确要求先建议后理由，不将前置当作语法错误。"
+      }
+    },
+    {
+      "id": "s1.astra.a08",
+      "goalId": "senior1.book-donation-labels",
+      "type": "completion",
+      "taskIntent": "所属关系",
+      "prompt": "填一个关系词：The girl ___ phone was missing checked under every chair.",
+      "answer": "whose",
+      "acceptedVariants": [
+        "whose"
+      ],
+      "hint": "检查空格后的名词与前面的人是什么关系。",
+      "explanation": "手机属于女孩，whose phone表示她的手机；空格不是从句的独立主语。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "whose",
+        "wrongExample": "who",
+        "distractors": "who phone缺所属连接；who's表示who is或who has，不能修饰phone。",
+        "ambiguity": "限定一个关系词；the phone of whom需要改写更多成分，不是此空的答案。"
+      }
+    },
+    {
+      "id": "s1.astra.a09",
+      "goalId": "senior1.booked-weekend",
+      "type": "audioArrange",
+      "taskIntent": "听后重建安排",
+      "prompt": "听一段关于明天安排的留言，用全部词块复原听到的句子。",
+      "audioScript": "We're meeting our cousins after lunch.",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "after lunch"
+        },
+        {
+          "id": "t2",
+          "text": "our cousins"
+        },
+        {
+          "id": "t3",
+          "text": "meeting"
+        },
+        {
+          "id": "t4",
+          "text": "We're"
+        }
+      ],
+      "answer": [
+        "t4",
+        "t3",
+        "t2",
+        "t1"
+      ],
+      "acceptedOrders": [
+        [
+          "t4",
+          "t3",
+          "t2",
+          "t1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "听清谁参加、做什么，以及时间短语在录音中的位置。",
+      "explanation": "录音用We're meeting表示安排，after lunch是会面的时间。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "t4-t3-t2-t1",
+        "wrongExample": "t1-t4-t3-t2",
+        "distractors": "无额外词；时间前置可构成合法句，但没有复原本题录音顺序。",
+        "ambiguity": "本题是听后复原，不是自由表达；不以此否定其他词序或will结构。"
+      }
+    },
+    {
+      "id": "s1.astra.a10",
+      "goalId": "senior1.meeting-place-details",
+      "type": "completion",
+      "taskIntent": "关系副词与宾语关系词",
+      "prompt": "填关系词；如果可以省略，也可填/：This is the café ___ we visited yesterday.",
+      "answer": "which",
+      "acceptedVariants": [
+        "which",
+        "that",
+        "/"
+      ],
+      "hint": "暂时拿掉前面的地点名词，看看visited后缺的是什么。",
+      "explanation": "visit直接接地点作宾语，空格补宾语关系词which或that，也可省略；where不能在这里直接承担visit的宾语。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "/",
+        "wrongExample": "where",
+        "distractors": "where误把先行词为地点等同于从句缺地点状语。",
+        "ambiguity": "明确接受which、that及省略；不以唯一标准答案排斥合法变体。"
+      }
+    },
+    {
+      "id": "s1.astra.a11",
+      "goalId": "senior1.confirm-the-details",
+      "type": "completion",
+      "taskIntent": "构成附加问句",
+      "prompt": "补全常规附加问句（两词）：You can hear me, ___ ___?",
+      "answer": "can't you",
+      "acceptedVariants": [
+        "can't you",
+        "can’t you"
+      ],
+      "hint": "沿用主句的情态动词，并检查主句是肯定还是否定。",
+      "explanation": "肯定主句含can，常规附加部分用can't you。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "can't you",
+        "wrongExample": "don't you",
+        "distractors": "don't you没有沿用can；can you不是本题要求的常规反向附加结构。",
+        "ambiguity": "两词与常规附加明确限定形式；can you not是另一合法较正式次序，但为三词，不符合本题字数要求。"
+      }
+    },
+    {
+      "id": "s1.astra.a12",
+      "goalId": "senior1.project-time-notes",
+      "type": "dictation",
+      "taskIntent": "听写已结束事件",
+      "prompt": "听录音，写出整句。",
+      "audioScript": "We changed the meeting time yesterday.",
+      "answer": "We changed the meeting time yesterday.",
+      "acceptedVariants": [
+        "We changed the meeting time yesterday."
+      ],
+      "hint": "留意动词词尾和句末的时间信息。",
+      "explanation": "changed是一般过去时，与yesterday指向已经结束的昨天。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "We changed the meeting time yesterday.",
+        "wrongExample": "We change the meeting time yesterday.",
+        "distractors": "无选项；change漏掉已听到的过去式词尾。",
+        "ambiguity": "听写按原话，不将其他可能的改写视为本音频的复原。"
+      }
+    },
+    {
+      "id": "s1.astra.a13",
+      "goalId": "senior1.reader-advice-note",
+      "type": "listeningChoice",
+      "taskIntent": "约束下给建议",
+      "prompt": "听同学的困难，选择最能解决所说问题的建议。",
+      "audioScript": "I have ideas for the talk, but I keep speaking too fast. I only have ten minutes to practise tonight.",
+      "options": [
+        {
+          "id": "a",
+          "text": "List three main points and choose a clear order for the talk."
+        },
+        {
+          "id": "b",
+          "text": "Practise a short part at a higher volume and check that it is loud enough."
+        },
+        {
+          "id": "c",
+          "text": "Record a short part and listen for places where you need to slow down."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "先确定困难是什么，再检查建议能否在现有条件下执行。",
+      "explanation": "问题是语速，时间只有十分钟；短段录音回听直接针对问题，负担也可控。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a针对内容组织，b针对音量，均是可执行的十分钟练习，但录音困难是语速；三项均为正常建议，必须听材料确定。",
+        "ambiguity": "不要求认定c是所有情境下唯一建议，只是在给定选项中满足已听约束。",
+        "primaryReview": "主审修订：原改写整篇/通宵练习明显不合理，可绕过听力直接选c；现三项均合理且近似长度。"
+      }
+    },
+    {
+      "id": "s1.astra.a14",
+      "goalId": "senior1.book-donation-labels",
+      "type": "choice",
+      "taskIntent": "合句保持意义",
+      "prompt": "合并两句且保留身份关系：I spoke to a student. Her brother made this model. 选意思不变的句子。",
+      "options": [
+        {
+          "id": "a",
+          "text": "I spoke to the student whose brother made this model."
+        },
+        {
+          "id": "b",
+          "text": "I spoke to the student who made this model for her brother."
+        },
+        {
+          "id": "c",
+          "text": "I spoke to the brother whose student made this model."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别确认交谈对象和模型制作者，不能在合句时交换。",
+      "explanation": "交谈对象是学生，制作者是她的哥哥或弟弟；whose brother保留这个所属关系。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b变成学生制作；c变换交谈对象和人物关系。",
+        "ambiguity": "brother不强行译成年长或年幼；使用the把第二句已限定的学生作为识别对象。"
+      }
+    },
+    {
+      "id": "s1.astra.a15",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "taskIntent": "有约在先的回应",
+      "prompt": "周六上午你已约好与同学练习；下午有空。同伴邀你上午见面。哪句既解释冲突，又提供可行时间？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I'm practising with my classmate on Saturday morning. Could we meet in the afternoon?"
+        },
+        {
+          "id": "b",
+          "text": "I'm free on Saturday morning. Let's meet then."
+        },
+        {
+          "id": "c",
+          "text": "I practised last Saturday, so I can't meet next month."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "核对回答中的安排和替代时间是否都与已知条件一致。",
+      "explanation": "a用现在进行时说明已安排的活动，并提出有空的下午；另两项改变事实或时间。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b谎称上午有空；c谈过去和下月，没有回答本次邀请。",
+        "ambiguity": "不以will作干扰项，其他合法将来表达不被判错。"
+      }
+    },
+    {
+      "id": "s1.astra.a16",
+      "goalId": "senior1.meeting-place-details",
+      "type": "choice",
+      "taskIntent": "保留会面地点信息",
+      "prompt": "需要表达“这是我们第一次见面的公园”。哪句保留这个意思？",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is the park that we first met."
+        },
+        {
+          "id": "b",
+          "text": "This is the park where we first met."
+        },
+        {
+          "id": "c",
+          "text": "This is the park that we first built."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "区分“在某处相遇”和“把某物作为动作对象”。",
+      "explanation": "where补充相遇地点；a把park放成meet的直接对象，不能表达在公园相遇；c变成建公园。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a缺表达地点的介词或副词；c改变动作。",
+        "ambiguity": "in which、at which以及that we first met in也可表达地点；本题选项未把它们当错项。"
+      }
+    },
+    {
+      "id": "s1.astra.a17",
+      "goalId": "senior1.confirm-the-details",
+      "type": "listeningChoice",
+      "taskIntent": "听取事实后确认",
+      "prompt": "听完消息，回答：The room isn't ready, is it?",
+      "audioScript": "The room is ready now. I've checked the chairs and lights. You can come in.",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, it isn't."
+        },
+        {
+          "id": "b",
+          "text": "Yes, it does."
+        },
+        {
+          "id": "c",
+          "text": "Yes, it is."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "用消息中的实际状态判断肯否，再沿用问题中的动词。",
+      "explanation": "录音明确房间已准备好，所以答Yes, it is；不能因否定提问就机械答No。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a与录音事实相反；b用does代替系动词is。",
+        "ambiguity": "题面只有待确认问题，不预告准备结果；无需故事信息。"
+      }
+    },
+    {
+      "id": "s1.astra.a18",
+      "goalId": "senior1.project-time-notes",
+      "type": "choice",
+      "taskIntent": "状态报告保持信息",
+      "prompt": "记录显示：海报已完成、现在可用；名单此刻仍在核对。哪条更新准确保留这两个状态？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We've finished the poster, and we've finished checking the list."
+        },
+        {
+          "id": "b",
+          "text": "We've finished the poster, and we're checking the list."
+        },
+        {
+          "id": "c",
+          "text": "We're making the poster, and we checked the list yesterday."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别判断每项是已有成果还是尚在进行。",
+      "explanation": "现在完成时报告海报成果，现在进行时报告仍在核对名单；其他选项改动状态。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a误报名单核对完成；c误报海报未完成，并添加昨天。",
+        "ambiguity": "一般过去时也能在适当语境报告完成，但本题错误项错在状态，不单靠时态名称判错。"
+      }
+    },
+    {
+      "id": "s1.astra.b01",
+      "goalId": "senior1.reader-advice-note",
+      "type": "matching",
+      "taskIntent": "问题与相关建议",
+      "prompt": "把每个困难与最直接对应的建议配对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I can't hear the recording clearly."
+        },
+        {
+          "id": "l2",
+          "text": "I don't know what this word means."
+        },
+        {
+          "id": "l3",
+          "text": "I forget to bring my notebook."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Try a quieter room; background noise may be covering the words."
+        },
+        {
+          "id": "r2",
+          "text": "Check a learner's dictionary; its examples can help explain the meaning."
+        },
+        {
+          "id": "r3",
+          "text": "Put a reminder by your bag so you see it before leaving."
+        }
+      ],
+      "answer": {
+        "l1": "r1",
+        "l2": "r2",
+        "l3": "r3"
+      },
+      "acceptedVariants": [],
+      "hint": "找出每条建议具体解决了哪一种障碍。",
+      "explanation": "噪声、词义和忘带物品分别对应安静环境、查词典和出门提醒。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "l1-r1；l2-r2；l3-r3",
+        "wrongExample": "l2-r1",
+        "distractors": "降低噪声不能直接解决不懂词义；词典不能直接提醒带本子。",
+        "ambiguity": "要求最直接对应，不声称这些措施保证解决问题。"
+      }
+    },
+    {
+      "id": "s1.astra.b02",
+      "goalId": "senior1.book-donation-labels",
+      "type": "listeningChoice",
+      "taskIntent": "限定对象听辨",
+      "prompt": "听说明，选择需要放到窗边的书。",
+      "audioScript": "Put the books that have red labels by the window. Leave the other books on the desk.",
+      "options": [
+        {
+          "id": "a",
+          "text": "所有书。"
+        },
+        {
+          "id": "b",
+          "text": "带红标签的书。"
+        },
+        {
+          "id": "c",
+          "text": "不带红标签的书。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "注意修饰books的部分，它决定指令适用的范围。",
+      "explanation": "that have red labels限定需要移动的书；其他书留在桌上。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a忽略限定；c取限定范围的反面。",
+        "ambiguity": "题面未给标签颜色；不需图像，也不考故事记忆。"
+      }
+    },
+    {
+      "id": "s1.astra.b03",
+      "goalId": "senior1.booked-weekend",
+      "type": "choice",
+      "taskIntent": "安排语境识别",
+      "prompt": "哪句话中的现在进行时明确表达未来安排？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Please wait. I'm talking to Ben now."
+        },
+        {
+          "id": "b",
+          "text": "Look! The children are running across the field."
+        },
+        {
+          "id": "c",
+          "text": "I'm having lunch with Ben tomorrow; we've booked a table."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "结合时间说明与上下文，判断动作是否已在发生。",
+      "explanation": "tomorrow和已订桌支持未来安排；另两句通过now或Look指向眼前动作。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a与b都是真正进行中的动作，虽同为进行时但不是未来安排。",
+        "ambiguity": "三句都语法正确，只分类用法，不判另外两句为病句。"
+      }
+    },
+    {
+      "id": "s1.astra.b04",
+      "goalId": "senior1.meeting-place-details",
+      "type": "choice",
+      "taskIntent": "关系副词成分判断",
+      "prompt": "比较两处空格：① the day ___ we arrived ② the day ___ we will always remember。哪项分析正确？",
+      "options": [
+        {
+          "id": "a",
+          "text": "①缺时间信息；②缺remember的宾语。"
+        },
+        {
+          "id": "b",
+          "text": "两处都缺主语。"
+        },
+        {
+          "id": "c",
+          "text": "只要前面是day，两处都必须填when。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别检查从句里的主语和动词是否已经完整。",
+      "explanation": "we是两句主语；arrived后可补时间，remember则要说明记住什么，不能只凭day选when。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b忽略现成主语we；c忽略remember的及物用法。",
+        "ambiguity": "分析成分而不强行唯一关系词；①可用when/on which，②可用which/that或省略。"
+      }
+    },
+    {
+      "id": "s1.astra.b05",
+      "goalId": "senior1.confirm-the-details",
+      "type": "listeningChoice",
+      "taskIntent": "否定事实回应",
+      "prompt": "听录音后回答：You enjoyed the film, didn't you?",
+      "audioScript": "I liked the music, but I didn't enjoy the film. The story was too hard to follow.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, I did."
+        },
+        {
+          "id": "b",
+          "text": "No, I don't."
+        },
+        {
+          "id": "c",
+          "text": "No, I didn't."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "区分对配乐与整部电影的评价，并留意提问的时间。",
+      "explanation": "喜欢配乐不等于喜欢电影；录音明确没喜欢这部电影，用过去时短答No, I didn't。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a只抓到liked而丢失转折；b动词时间与问题不一致。",
+        "ambiguity": "以说话人自述为事实，不对电影品质作客观判断。"
+      }
+    },
+    {
+      "id": "s1.astra.b06",
+      "goalId": "senior1.project-time-notes",
+      "type": "choice",
+      "taskIntent": "完成与过程区别",
+      "prompt": "消息写着：I'm uploading the photos now. Please wait before opening the link. 能确定哪一项？",
+      "options": [
+        {
+          "id": "a",
+          "text": "照片昨天已经全部上传完成。"
+        },
+        {
+          "id": "b",
+          "text": "上传此刻仍在进行。"
+        },
+        {
+          "id": "c",
+          "text": "说话人明天才打算开始上传。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "根据动词形式和等待请求判断现在的状态，不补充未给信息。",
+      "explanation": "I'm uploading与now表当前过程；等待请求说明不应把它读成已完成报告。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a擅自添加昨天且改成完成；c改成明天。",
+        "ambiguity": "不推测上传比例或剩余时长。"
+      }
+    },
+    {
+      "id": "s1.astra.b07",
+      "goalId": "senior1.reader-advice-note",
+      "type": "audioArrange",
+      "taskIntent": "听后重建建议",
+      "prompt": "听录音，用全部词块复原这条建议。",
+      "audioScript": "Why not check the address before you leave?",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "the address"
+        },
+        {
+          "id": "t2",
+          "text": "Why not"
+        },
+        {
+          "id": "t3",
+          "text": "before you leave"
+        },
+        {
+          "id": "t4",
+          "text": "check"
+        }
+      ],
+      "answer": [
+        "t2",
+        "t4",
+        "t1",
+        "t3"
+      ],
+      "acceptedOrders": [
+        [
+          "t2",
+          "t4",
+          "t1",
+          "t3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先听建议的开头，再把动作对象和时间条件连接起来。",
+      "explanation": "Why not接动词原形提出建议，before you leave补充执行时机。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "t2-t4-t1-t3",
+        "wrongExample": "t2-t1-t4-t3",
+        "distractors": "无额外词；the address不能插在Why not与其动词之间。",
+        "ambiguity": "时间从句前置可合法，但本题要求复原录音；不据此排斥自由表达的其他词序。"
+      }
+    },
+    {
+      "id": "s1.astra.b08",
+      "goalId": "senior1.book-donation-labels",
+      "type": "completion",
+      "taskIntent": "宾语关系词变体",
+      "prompt": "填一个关系词，或用/表示省略：The person ___ you called is waiting outside.",
+      "answer": "who",
+      "acceptedVariants": [
+        "who",
+        "whom",
+        "that",
+        "/"
+      ],
+      "hint": "you已占主语位置，看看called还缺什么。",
+      "explanation": "关系词是called的宾语，指人可用who、whom、that，限制性从句中也可省略。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "whom",
+        "wrongExample": "whose",
+        "distractors": "whose需与被所属的名词构成关系；这里缺被打电话联系的人。",
+        "ambiguity": "四种合理形式全部接受；不拿口语who与较正式whom作对错区分。"
+      }
+    },
+    {
+      "id": "s1.astra.b09",
+      "goalId": "senior1.booked-weekend",
+      "type": "completion",
+      "taskIntent": "按指定形式改写安排",
+      "prompt": "已约好见面。用现在进行时改写，只填空：I will meet Jo at six. → I ___ Jo at six.",
+      "answer": "am meeting",
+      "acceptedVariants": [
+        "am meeting",
+        "'m meeting",
+        "’m meeting"
+      ],
+      "hint": "按要求的时态选择助动词，并检查后面的动词形式。",
+      "explanation": "am meeting用现在进行时表达已安排会面。原句will meet本身并非语法错误，本题只是练习指定改写。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "am meeting",
+        "wrongExample": "am meet",
+        "distractors": "am meet缺-ing形式；will meet未完成指定改写，但不应标成普遍错误。",
+        "ambiguity": "接受与固定I衔接的'm meeting；输入合成展示时不得在I和撇号之间保留空格。"
+      }
+    },
+    {
+      "id": "s1.astra.b10",
+      "goalId": "senior1.meeting-place-details",
+      "type": "arrange",
+      "taskIntent": "构造地点限定",
+      "prompt": "用全部词块组成陈述句，说明这间房间的用途。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "we practise"
+        },
+        {
+          "id": "t2",
+          "text": "This is"
+        },
+        {
+          "id": "t3",
+          "text": "where"
+        },
+        {
+          "id": "t4",
+          "text": "the room"
+        }
+      ],
+      "answer": [
+        "t2",
+        "t4",
+        "t3",
+        "t1"
+      ],
+      "acceptedOrders": [
+        [
+          "t2",
+          "t4",
+          "t3",
+          "t1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "先形成介绍房间的主句，再补充发生在其中的活动。",
+      "explanation": "This is the room where we practise. where引出在房间里发生的活动。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "t2-t4-t3-t1",
+        "wrongExample": "t2-t3-t4-t1",
+        "distractors": "错误序列把where放在先行词之前，且不能用现有词块组成完整结构。",
+        "ambiguity": "只排列给定词块；in which等改写不在词块内，不宣称它们错误。"
+      }
+    },
+    {
+      "id": "s1.astra.b11",
+      "goalId": "senior1.confirm-the-details",
+      "type": "dictation",
+      "taskIntent": "听写否定主句的附加问句",
+      "prompt": "听录音，写出完整问句。",
+      "audioScript": "They didn't change the plan, did they?",
+      "answer": "They didn't change the plan, did they?",
+      "acceptedVariants": [
+        "They didn't change the plan, did they?",
+        "They did not change the plan, did they?"
+      ],
+      "hint": "留意前后两部分的肯否，以及它们是否使用相同助动词。",
+      "explanation": "主句didn't是否定一般过去时，常规附加部分是肯定did they。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "They didn't change the plan, did they?",
+        "wrongExample": "They didn't change the plan, didn't they?",
+        "distractors": "无选项；错误例把否定复制到附加部分，也不符合录音。",
+        "ambiguity": "缩写及全写都收；不根据附加问句推断计划是否真的改变。"
+      }
+    },
+    {
+      "id": "s1.astra.b12",
+      "goalId": "senior1.project-time-notes",
+      "type": "completion",
+      "taskIntent": "明确过去时间定位",
+      "prompt": "用send的一般过去时填空，报告一次已完成的发送：I ___ the file at nine yesterday morning.",
+      "answer": "sent",
+      "acceptedVariants": [
+        "sent"
+      ],
+      "hint": "先定位时间，再检查这个动词的过去式是否规则。",
+      "explanation": "昨天上午九点是明确已结束的过去时间，send的过去式是sent。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "sent",
+        "wrongExample": "have sent",
+        "distractors": "have sent与此处明确结束的过去时间不搭配；sended不是规范过去式。",
+        "ambiguity": "题面明确一般过去时与已完成事件，因此限定sent；was sending在其他进行视角下可成立，不将它判为普遍语法错误。"
+      }
+    },
+    {
+      "id": "s1.astra.b13",
+      "goalId": "senior1.reader-advice-note",
+      "type": "choice",
+      "taskIntent": "修订无依据保证",
+      "prompt": "建议稿写着：Join one practice session and you will never feel nervous again. 哪个修改保留练习建议，同时去掉无法保证的结果？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Join one practice session and you are certain to feel confident forever."
+        },
+        {
+          "id": "b",
+          "text": "Don't practise; feeling nervous means you cannot improve."
+        },
+        {
+          "id": "c",
+          "text": "A practice session may help you feel more prepared, though you may still feel nervous."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "检查改写是否保留行动建议，并给结果留出合理余地。",
+      "explanation": "c保留练习的可能益处，也承认紧张仍可能存在；a继续绝对保证，b取消建议并武断否定进步。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷18／PDF25"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a只是换词，仍有certain与forever；b不满足保留建议的任务。",
+        "ambiguity": "评价承诺范围，不把may视为任何建议中都必需的词。"
+      }
+    },
+    {
+      "id": "s1.astra.b14",
+      "goalId": "senior1.book-donation-labels",
+      "type": "choice",
+      "taskIntent": "改写保留宾语关系",
+      "prompt": "原意是“我归还了从Sam那里借的相机”。哪句完整保留原意？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I returned the camera which I borrowed from Sam."
+        },
+        {
+          "id": "b",
+          "text": "I returned the camera which Sam borrowed from me."
+        },
+        {
+          "id": "c",
+          "text": "I borrowed the camera which I returned to Sam yesterday."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "核对主句发生的动作，以及谁向谁借东西。",
+      "explanation": "a以returned报告归还，并用从句说明相机来源；b颠倒借用方向，c把主句变成借入且添加昨天。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷52／PDF59"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b施受方向反了；c不是原句事件报告。",
+        "ambiguity": "a中的which可替换that或省略；本题不把这些合法变体放为错误选项。"
+      }
+    },
+    {
+      "id": "s1.astra.b15",
+      "goalId": "senior1.booked-weekend",
+      "type": "listeningChoice",
+      "taskIntent": "听取变更后更新安排",
+      "prompt": "听留言，选择应该采用的最新安排。",
+      "audioScript": "We were going to meet at the library, but it's closed tomorrow. We're meeting at the café next door at two instead.",
+      "options": [
+        {
+          "id": "a",
+          "text": "明天两点在图书馆见。"
+        },
+        {
+          "id": "b",
+          "text": "明天两点在图书馆隔壁的咖啡馆见。"
+        },
+        {
+          "id": "c",
+          "text": "今天两点在咖啡馆见。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把原安排与转折后替代它的新安排分开。",
+      "explanation": "图书馆明天关闭，instead引出新安排；We're meeting表达明天在隔壁咖啡馆两点见。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷28／PDF35"
+      },
+      "review": {
+        "correctExample": "b",
+        "wrongExample": "a",
+        "distractors": "a保留被替换地点；c把明天改成今天。",
+        "ambiguity": "过去计划只作听力背景，不另考过去将来时规则；题面不预告新地点。"
+      }
+    },
+    {
+      "id": "s1.astra.b16",
+      "goalId": "senior1.meeting-place-details",
+      "type": "completion",
+      "taskIntent": "给定原因关系改写",
+      "prompt": "用一个关系副词连接，保持“我因生病缺席”之意：I was ill. That was the reason ___ I missed the meeting.",
+      "answer": "why",
+      "acceptedVariants": [
+        "why"
+      ],
+      "hint": "判断后面的从句需要补充地点、时间还是原因。",
+      "explanation": "why引出缺席的原因。题面限定关系副词；for which、that或省略在其他允许的改写形式中也可成立。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷64／PDF71"
+      },
+      "review": {
+        "correctExample": "why",
+        "wrongExample": "where",
+        "distractors": "where表示地点，不能承接这里的原因。",
+        "ambiguity": "明确指定一个关系副词才限why；不能在未限定形式的自由填空中把that、for which及省略全部判错。"
+      }
+    },
+    {
+      "id": "s1.astra.b17",
+      "goalId": "senior1.confirm-the-details",
+      "type": "choice",
+      "taskIntent": "纠正带预设的确认",
+      "prompt": "你知道票不免费，每张五元。同伴问：The tickets are free, aren't they? 哪句先准确回答，再提供正确信息？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, they are. They're five yuan each."
+        },
+        {
+          "id": "b",
+          "text": "No, they don't. They're five yuan each."
+        },
+        {
+          "id": "c",
+          "text": "No, they aren't. They're five yuan each."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "先回应“免费”是否属实，再检查短答与主句动词是否一致。",
+      "explanation": "五元表示不免费，短答No, they aren't，然后补充价格；不能先肯定免费再报价格。",
+      "source": {
+        "sourceId": "pep.senior1.archive20260929",
+        "pages": "印刷40／PDF47"
+      },
+      "review": {
+        "correctExample": "c",
+        "wrongExample": "a",
+        "distractors": "a前后事实矛盾；b错误使用don't回应are。",
+        "ambiguity": "没有手续费等未说明条件；事实是每票五元且不免费。"
+      }
+    },
+    {
+      "id": "s1.astra.b18",
+      "goalId": "senior1.project-time-notes",
+      "type": "listeningChoice",
+      "taskIntent": "区分报告时间与当前进度",
+      "prompt": "听项目更新，选择与录音完全一致的简短记录。",
+      "audioScript": "We tested the app on Monday. We've fixed the login problem, but we're still checking the sound.",
+      "options": [
+        {
+          "id": "a",
+          "text": "周一测试；登录问题已修好；声音仍在检查。"
+        },
+        {
+          "id": "b",
+          "text": "周一测试；声音已经修好；登录问题仍在检查。"
+        },
+        {
+          "id": "c",
+          "text": "周一修复；登录和声音问题已解决；测试仍在进行。"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "分别记录过去事件、现有成果和尚未完成的工作。",
+      "explanation": "tested on Monday定位过去测试；have fixed报告登录问题修好；are still checking报告声音检查仍在继续。",
+      "source": {
+        "sourceId": "fltrp.senior1.archive20260929",
+        "pages": "印刷29／PDF36"
+      },
+      "review": {
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b交换登录与声音进度；c交换测试和修复的先后与完成状态。三项均提供三个信息点，不能仅凭长度选a。",
+        "ambiguity": "不推断声音一定有故障，也不把检查完成等同修复完成；各项记录只依据听到的信息。",
+        "primaryReview": "主审修订：原正确项唯一完整列三信息且更长，现平衡信息量。"
+      }
+    }
+  ],
+  "openingStories": [
+    {
+      "id": "s1.astra.story.a",
+      "title": "雨停之后的长椅",
+      "character": "同行者",
+      "questionGroup": "a",
+      "questionCount": 18,
+      "text": "雨刚停，你和同行者走进小广场，想坐一会儿。长椅看起来已经干了，你把手放上去，才发现木板缝里还积着水。同行者从包里找出一张旧报纸，你们试着垫在座位上，风却立刻把纸角掀了起来。你用水杯压住一边，同行者扶住另一边，总算腾出两个干燥的位置。坐下来时，鞋底还沾着湿泥，眼前的树叶却被洗得很亮。你们没有急着继续赶路，安静地等到树梢最后几滴水落下。",
+      "teachingNote": "单一泛化同行者与你；想坐下、发现积水、合作处理、停留构成完整小事件。只作前置氛围，不给题目条件，不预告英语答案，不绑定职业。"
+    },
+    {
+      "id": "s1.astra.story.b",
+      "title": "最后一块拼图",
+      "character": "同行者",
+      "questionGroup": "b",
+      "questionCount": 18,
+      "text": "你和同行者把一盒旧拼图倒在桌上，准备拼好后放回盒子。图案渐渐完整，角落却始终空着一块。你们翻看盒盖，又沿着桌边找了一圈，还是没有发现。正准备把未完成的图案收起来，同行者挪动水杯，露出杯底压住的小纸片。你拿起来一试，正好填满那个缺口。两人看着完整的图案笑了起来。收拾时，你把拼图一块块装回袋里，同行者扶着袋口，这次连桌面的小角落也仔细看过了。",
+      "teachingNote": "缺块、寻找、发现、收妥形成完整故事；角色只有同行者与你。题目不询问拼图细节，不依赖故事记忆。"
+    }
+  ],
+  "remainingWork": [
+    "两组各18道，组内1—6识别、7—12受控运用、13—18迁移；六个真实catalog目标每组各3道，共各6道。组卷前需确认每题负荷和阶段难度。",
+    "7种真实交互：choice 13、listeningChoice 7、completion 7、matching 3、arrange 2、audioArrange 2、dictation 2；已由JSON计数核对。",
+    "11道带audioScript题仅有原创脚本，须制作音频并独立实听；特别检查否定、过去式词尾、转折与时间，不展示原文泄题。无assetId，不得作为媒体已完成证据。",
+    "需核验audioArrange与matching的客户端、无障碍操作及判分合同；completion的斜杠省略选项、缩写衔接与输入归一需端到端验证。",
+    "需主代理逐题独立复审、与旧库实质重复检查及试做；作者自审不是独立验收。本文件不接正式库，不代表发布。",
+    "至少a01/a02/a13/a14/a15/a16/a18/b01/b02/b13/b14/b15/b17/b18包含语用、限定信息或保义改写任务，超过6道；不以偏词或长篇阅读提高难度。"
+  ]
+}
