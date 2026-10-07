@@ -2,12 +2,48 @@ import { describe, expect, it, vi, afterEach } from "vitest";
 import {
   uploadLearningAudio,
   verifyLearningAudio,
+  learningAudioSchema,
   type LearningAudioObjectStore,
 } from "../../../src/modules/learning/audio.js";
 import { learningAudioFixture } from "../../helpers/learning-audio.js";
 
 afterEach(() => vi.unstubAllGlobals());
 describe("听力资源完整性与发布顺序", () => {
+  it("单人素材不增加默认字段；双人素材完整记录可辨声线和首位发言者", () => {
+    const { metadata } = learningAudioFixture();
+    expect(learningAudioSchema.parse(metadata)).toEqual(metadata);
+    const dialogue = {
+      ...metadata,
+      voice: "F3",
+      speakers: [
+        { id: "a", voice: "F3" },
+        { id: "b", voice: "M5" },
+      ],
+    };
+    expect(learningAudioSchema.parse(dialogue)).toEqual(dialogue);
+    for (const speakers of [
+      [{ id: "a", voice: "F3" }],
+      [
+        { id: "a", voice: "F3" },
+        { id: "a", voice: "M5" },
+      ],
+      [
+        { id: "a", voice: "F3" },
+        { id: "b", voice: "F3" },
+      ],
+      [
+        { id: "a", voice: "F3" },
+        { id: "b", voice: "unknown" },
+      ],
+      [
+        { id: "a", voice: "M5" },
+        { id: "b", voice: "F3" },
+      ],
+    ])
+      expect(learningAudioSchema.safeParse({ ...dialogue, speakers }).success).toBe(
+        false,
+      );
+  });
   it("实际字节、时长和内容寻址必须同时一致", () => {
     const { metadata, bytes } = learningAudioFixture();
     expect(() => verifyLearningAudio(metadata, bytes)).not.toThrow();
@@ -32,12 +68,10 @@ describe("听力资源完整性与发布顺序", () => {
     const store: LearningAudioObjectStore = {
       headObject: head,
       createDownloadUrl: vi.fn(),
-      createUploadUrl: vi
-        .fn()
-        .mockResolvedValue({
-          url: "https://assets.example.com/upload",
-          headers: { "content-type": "audio/wav" },
-        }),
+      createUploadUrl: vi.fn().mockResolvedValue({
+        url: "https://assets.example.com/upload",
+        headers: { "content-type": "audio/wav" },
+      }),
     };
     const upload = vi.fn().mockResolvedValue({ ok: true });
     vi.stubGlobal("fetch", upload);

@@ -30,6 +30,13 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       learningAudioFixture("Tea, please.", "M5", 880),
       learningAudioFixture("I am Oliver.", "M5", 550),
     ];
+    // 只测试多人元数据、授权与冻结；波形夹具不代表真实对话录音。
+    const dialogue = assets[0];
+    if (!dialogue) throw new Error("缺少对话素材夹具。");
+    dialogue.metadata.speakers = [
+      { id: "a", voice: "M5" },
+      { id: "b", voice: "F3" },
+    ];
     const download = vi.fn((key: string) =>
       Promise.resolve(`https://assets.example.com/${key}?signature=temporary`),
     );
@@ -185,6 +192,26 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
           })
         ).statusCode,
       ).toBe(404);
+    });
+    it("双人归档保持完整，发布后不能改写参与声线", async () => {
+      const [row] = await database.sql<
+        { metadata: unknown }[]
+      >`select metadata from app.learning_audio_assets where id=${dialogue.metadata.id}`;
+      expect(row?.metadata).toEqual(dialogue.metadata);
+      await expect(
+        repository.publishBatch(
+          [unit],
+          [
+            {
+              ...dialogue.metadata,
+              speakers: [
+                { id: "a", voice: "M5" },
+                { id: "b", voice: "F2" },
+              ],
+            },
+          ],
+        ),
+      ).rejects.toMatchObject({ code: "LEARNING_IMMUTABLE_AUDIO" });
     });
     it("听后排序沿用本人冻结题目的音频鉴权，未登记素材不能发布", async () => {
       const url = `/v1/learning/attempts/${attemptId}/audio/q.arrange`;

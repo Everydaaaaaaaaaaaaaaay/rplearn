@@ -3,17 +3,42 @@ import { z } from "zod";
 import type { MediaObjectStore } from "../media/object-store.js";
 import { AppError } from "../../shared/errors.js";
 
-export const learningAudioSchema = z.strictObject({
-  id: z.string().regex(/^audio\.[a-f0-9]{64}$/),
-  sha256: z.string().regex(/^[a-f0-9]{64}$/),
-  byteSize: z.number().int().min(1000).max(3_000_000),
-  durationMs: z.number().int().min(300).max(60_000),
-  contentType: z.literal("audio/wav"),
-  transcript: z.string().trim().min(1).max(1200),
-  voice: z.string().regex(/^[MF][1-5]$/),
-  reviewedAt: z.iso.date(),
-  reviewNotes: z.string().trim().min(20).max(2000),
-});
+const voice = z.string().regex(/^[MF][1-5]$/);
+export const learningAudioSchema = z
+  .strictObject({
+    id: z.string().regex(/^audio\.[a-f0-9]{64}$/),
+    sha256: z.string().regex(/^[a-f0-9]{64}$/),
+    byteSize: z.number().int().min(1000).max(3_000_000),
+    durationMs: z.number().int().min(300).max(60_000),
+    contentType: z.literal("audio/wav"),
+    transcript: z.string().trim().min(1).max(1200),
+    // 单人素材使用该声线；多人素材保留首位发言者声线，与题目引用一致。
+    voice,
+    speakers: z
+      .array(
+        z.strictObject({
+          id: z.string().regex(/^[a-z][a-z0-9_.-]{0,59}$/),
+          voice,
+        }),
+      )
+      .min(2)
+      .max(4)
+      .optional(),
+    reviewedAt: z.iso.date(),
+    reviewNotes: z.string().trim().min(20).max(2000),
+  })
+  .superRefine((asset, context) => {
+    if (!asset.speakers) return;
+    const ids = asset.speakers.map((speaker) => speaker.id);
+    const voices = asset.speakers.map((speaker) => speaker.voice);
+    if (new Set(ids).size !== ids.length || new Set(voices).size !== voices.length)
+      context.addIssue({
+        code: "custom",
+        message: "对话发言者及其声线必须各自唯一，便于听辨。",
+      });
+    if (asset.voice !== asset.speakers[0]?.voice)
+      context.addIssue({ code: "custom", message: "对话主声线必须对应首位发言者。" });
+  });
 export type LearningAudioAsset = z.infer<typeof learningAudioSchema>;
 export type LearningAudioObjectStore = Pick<
   MediaObjectStore,

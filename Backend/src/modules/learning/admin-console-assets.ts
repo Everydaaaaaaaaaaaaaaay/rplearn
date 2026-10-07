@@ -1064,8 +1064,9 @@ export const learningAdminJavascript = String.raw`
       detail.append(
         el(
           "p",
-          "固定声音：" +
-            asset.voice +
+          (asset.speakers
+            ? "对话声音：" + asset.speakers.map((speaker) => speaker.id + " · " + speaker.voice).join("、")
+            : "固定声音：" + asset.voice) +
             "；时长 " +
             (asset.durationMs / 1000).toFixed(2) +
             " 秒",

@@ -13,6 +13,8 @@ struct Plan: Decodable {
         let segments: [Segment]
     }
     let clips: [Clip]
+    // 长听力显式启用SDK分句，历史短句生产计划保持原上限。
+    let allowLongUtterances: Bool?
 }
 
 @main struct Producer {
@@ -38,7 +40,8 @@ struct Plan: Decodable {
                 let speed = variant == 3 && !segment.breath ? min(1.12, segment.rate + 0.02) : segment.rate
                 let expression = segment.breath && variant != 3 ? "breath" : "none"
                 let text = (expression == "breath" ? "<breath> " : "") + segment.text
-                guard text.decomposedStringWithCompatibilityMapping.unicodeScalars.count <= 70 else { fatalError("Chunk too long: \(segment.id)") }
+                let textLimit = plan.allowLongUtterances == true ? 1200 : 70
+                guard text.decomposedStringWithCompatibilityMapping.unicodeScalars.count <= textLimit else { fatalError("录音脚本超过显式计划上限：\(segment.id)") }
                 let name = "candidate-\(segment.id)-\(take)"
                 let metadata = output.appendingPathComponent(name + ".json")
                 let wavURL = output.appendingPathComponent(name + ".wav")
@@ -50,7 +53,8 @@ struct Plan: Decodable {
                 let began = Date()
                 let result = try await manager.synthesize(text: text, language: "en", style: styles[segment.voice]!, totalSteps: steps, speed: speed, silenceDuration: 0.05)
                 let samples = result.samples
-                guard !samples.isEmpty, samples.allSatisfy(\.isFinite), samples.contains(where: { abs($0) > 0.001 }) else { fatalError("Invalid audio: \(name)") }
+                guard !samples.isEmpty, samples.allSatisfy(\.isFinite), samples.contains(where: { abs($0) > 0.001 }) else { fatalError("音频为空或波形无效：\(name)") }
+                if plan.allowLongUtterances == true && samples.count > 60 * 44100 { fatalError("学习录音超过60秒：\(name)") }
                 try wav(samples).write(to: wavURL, options: .atomic)
                 let row: [String: Any] = ["segment": segment.id, "take": take, "file": name + ".wav", "text": segment.text,
                     "speaker": segment.speaker, "voice": segment.voice, "speed": speed, "steps": steps, "expression": expression,
