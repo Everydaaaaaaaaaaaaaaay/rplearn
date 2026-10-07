@@ -53,6 +53,12 @@ ssh root@<server> \
 `/opt/lingotrip/current`，然后重启 API 和 Worker 并检查 readiness。应用启动失败会切回
 上一个发布目录；数据库结构不自动回滚。
 
+默认保留已有发布目录，不在切换后集中清理旧文件。只有另行确认回滚保留范围后，才可设置
+`DEPLOY_PRUNE_RELEASES=1` 恢复旧的保留最近五个目录行为。故障恢复发布使用
+`DEPLOY_REQUIRE_CACHED_DEPENDENCIES=1`：缓存缺失时停止，不临时在线安装依赖。
+部署、目录发布和公共题库发布必须串行执行；小内存主机应通过 systemd 临时单元限制维护进程
+的内存、交换区和 I/O，并持续检查公网 readiness，不能仅凭 SSH 返回值判断上线成功。
+
 ## 最近发布验证
 
 2026-09-17（当晚）：发布 `ab144cc7`，上一版本 `output-budget-20260917-01` 保留用于回滚。

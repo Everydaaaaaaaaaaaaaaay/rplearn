@@ -17,7 +17,16 @@ release="${release_root}/${version}"
 partial="${release}.partial"
 lock_file="/run/lock/lingotrip-deploy.lock"
 release_environment="/etc/lingotrip/release.env"
+# 恢复后的发布默认保留旧版本；清理应单独安排，避免集中目录删除冲击云盘。
+prune_releases="${DEPLOY_PRUNE_RELEASES:-0}"
+require_cached_dependencies="${DEPLOY_REQUIRE_CACHED_DEPENDENCIES:-0}"
 export PATH="/opt/lingotrip/runtime/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+
+if [[ ! "${prune_releases}" =~ ^[01]$ ]] ||
+  [[ ! "${require_cached_dependencies}" =~ ^[01]$ ]]; then
+  echo "发布选项必须为 0 或 1。" >&2
+  exit 1
+fi
 
 if [[ "${release_root}" != /opt/lingotrip/releases ]] ||
   [[ "${dependency_root}" != /opt/lingotrip/dependencies ]] ||
@@ -60,6 +69,10 @@ dependency_key="$(
 )"
 dependencies="${dependency_root}/${dependency_key}"
 if [[ ! -d "${dependencies}/node_modules" ]]; then
+  if [[ "${require_cached_dependencies}" = 1 ]]; then
+    echo "依赖缓存不存在，已停止发布；请另行安排依赖安装。" >&2
+    exit 1
+  fi
   [[ -x "${runtime_corepack}" ]] || {
     echo "Missing Corepack for first-time dependency installation." >&2
     exit 1
@@ -139,13 +152,15 @@ systemctl restart \
   lingotrip-worker.service \
   lingotrip-caddy.service
 for _ in {1..30}; do
-  if curl --fail --silent http://127.0.0.1:8080/health/ready >/dev/null; then
+  if curl --fail --silent --connect-timeout 2 --max-time 3 http://127.0.0.1:8080/health/ready >/dev/null; then
     trap - ERR
-    find "${release_root}" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' |
-      sort -nr |
-      tail -n +6 |
-      cut -d' ' -f2- |
-      xargs --no-run-if-empty rm -r
+    if [[ "${prune_releases}" = 1 ]]; then
+      find "${release_root}" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' |
+        sort -nr |
+        tail -n +6 |
+        cut -d' ' -f2- |
+        xargs --no-run-if-empty rm -r
+    fi
     echo "Activated native release ${version}"
     exit 0
   fi
