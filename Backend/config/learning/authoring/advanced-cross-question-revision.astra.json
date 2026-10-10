@@ -1,0 +1,68 @@
+{
+  "status": "待主代理终审的作者候选，未进入正式题库",
+  "authoredAt": "2026-10-11",
+  "author": "Astra 高级英语作者",
+  "authorshipMethod": "作者亲写单题及反例；程序仅展开既有原文和验证结构，不生成或拼接题目。",
+  "replaces": {
+    "unitId": "companion.advanced.waiting-room",
+    "questionId": "adv.astra.a14",
+    "position": 8
+  },
+  "question": {
+    "id": "adv.astra.a14",
+    "goalId": "advanced.semantic-register",
+    "type": "completion",
+    "prompt": "原话：The method is reliable.\n修订：It is reliable for routine cases; I make no claim about unusual ones.\n词库：qualified rather than withdrew / withdrew rather than qualified / reiterated rather than qualified\n纪要：The speaker ___ the original claim.",
+    "explanation": "qualified rather than withdrew 最准确地概括这里的变化：保留常规情形下可靠的判断，同时收窄适用范围。withdrew rather than qualified 否定了实际发生的限定；reiterated rather than qualified 则把范围收窄误记为原样重申。这里不评价方法实际上是否可靠。",
+    "hint": "同时检查原判断还有哪一部分被保留，以及修订是否改变了它的适用范围。",
+    "instruction": "填写一个给定短语",
+    "difficultyReason": "在中性纪要中精确命名一次话语修订：既要识别范围收窄，也要保留仍有效的主张，比较限定、撤回和重申的完整对比短语。难度来自复合立场与话语变化，不来自专业知识或长篇阅读；属于高级目标的局部受控表达，不代表完整高级写作。",
+    "acceptedAnswers": [
+      "qualified rather than withdrew"
+    ],
+    "normalization": {
+      "ignoreCase": true,
+      "ignoreTerminalPunctuation": true
+    }
+  },
+  "sourceReading": {
+    "sourceId": "cse.official.search.2024",
+    "officialPage": "https://cse.neea.edu.cn/html1/folder/2503/1-1.htm",
+    "officialData": "https://cse.neea.edu.cn/api/dict/ability.json",
+    "readEvidence": "build/learning-expansion-20261007/research/cse-2024-search.json",
+    "sha256": "290d507765a9ae2767eaf6a871f896139ededea56843fe622d293c0b17f1bc95",
+    "directDescriptorIds": [8808, 802, 9509],
+    "boundary": "当前核读了登记快照中的原始描述语，并打开官方检索页确认2024版；官方数据地址在网页工具中读取失败，不冒称重新下载成功。条目只提供准确得体表达、立场及语体的功能依据；没有官方例题、词表或等级认证背书。"
+  },
+  "review": {
+    "correctAnswerReason": "原来的可靠判断在常规情形下继续有效，修订明确不覆盖特殊情形；三个给定短语中，只有该短语准确突出实际发生的范围限定。",
+    "counterexamples": [
+      {
+        "answer": "withdrew rather than qualified",
+        "accepted": false,
+        "reason": "rather than qualified 否定了实际发生的范围限定，因此这个完整短语不合题意；不据此断言现实中的收窄不能被称为撤回原先不加条件的版本。"
+      },
+      {
+        "answer": "reiterated rather than qualified",
+        "accepted": false,
+        "reason": "后句增加实质范围限制，不能记录为只重申而未限定。"
+      },
+      {
+        "answer": "qualified",
+        "accepted": false,
+        "reason": "语义可作自然英语，但未按本题要求填写一个完整给定短语；这是受控答案边界，不是断言该英语错误。"
+      },
+      {
+        "answer": "qualified rather than disproved",
+        "accepted": false,
+        "reason": "不在给定短语中；disproved涉及证伪，与撤回这一话语动作不同，本题未提供方法效果的新证据。"
+      }
+    ],
+    "acceptedNormalizationExamples": [
+      "qualified rather than withdrew",
+      "Qualified rather than withdrew."
+    ],
+    "ambiguityBoundary": "撤回无条件版本与限定主张在现实中可以描述同一修订的不同侧面。本题比较的是 qualified rather than withdrew 与其反向短语，后者明确否定发生限定；因此即使把原来的无条件措辞称为被撤回，也不能选反向短语。解释不宣称任何一次收窄都绝不可以被称为撤回。",
+    "crossQuestionConclusion": "a04 与 b09 不再向本题预教 verified 或核对数值情境；36题、6段故事及8段音频脚本中未发现限定/撤回/重申的本题完整答词短语预先教学。正常证据范围与立场边界迁移仍存在，不将其称为独立能力测量。"
+  }
+}

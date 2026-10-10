@@ -2,7 +2,7 @@
   "level": "senior2",
   "author": {
     "name": "Astra 高二人工返修作者",
-    "method": "亲自逐题编写三道替换题；程序仅检索候选中的答案片段、核对映射和JSON结构，不生成或组合题目。",
+    "method": "亲自逐题改写题面、答案边界及反例；程序只落盘人工文字、检查JSON及检索跨题答案，不生成、组合或扩充题目。",
     "status": "隔离候选；待主代理逐题审阅；未改正式库、未发布"
   },
   "sourceReading": [
@@ -10,15 +10,15 @@
       "sourceId": "pep.senior.selective1.review2019",
       "pages": "印刷29；PDF36",
       "localEvidence": "build/learning-research-20260926/pep-senior-selective1-archive-p36.png",
-      "readAt": "2026-10-07",
+      "readAt": "2026-10-11",
       "evidence": "本轮实际目视核读：辨认-ing功能、将It开头的不定式活动改为-ing主语、讨论句子信息重心；不复制国家公园课文或习题情境。"
     },
     {
       "sourceId": "pep.senior.selective1.review2019",
       "pages": "印刷41；PDF48",
       "localEvidence": "build/learning-research-20260926/pep-senior-selective1-archive-p48.png",
-      "readAt": "2026-10-07",
-      "evidence": "本轮实际目视核读：-ing作宾语与表语、Bill's job句架、By加-ing、区分活动内容及进行意义。题目另写职责、完整活动主语和行动方法。"
+      "readAt": "2026-10-11",
+      "evidence": "本轮实际目视核读：-ing作宾语与表语、Bill's job句架、By加-ing。原页By例句解释动作含义，不直接教授避免打断的方法情境；方法提取是本题原创迁移。"
     }
   ],
   "sourceLimitations": "来源ID与版本沿用catalog的2019审核版公开社区存档登记；本轮看过以上两张正文原页，未重新核对原PDF哈希或出版社版权页。不宣称当前新版、整册覆盖或统一学期等价。",
@@ -33,28 +33,56 @@
         "id": "s2.cross.r01",
         "goalId": "s2.ing-roles",
         "type": "completion",
-        "instruction": "按信息改写，填写完整的活动短语。",
-        "prompt": "同伴说：It is my responsibility to show visitors around the building. Right now, I am putting chairs away. responsibility指职责。你要把职责写进摘要，不把此刻动作写成职责。将原文中的职责改为完整的-ing短语补全：My main job is ____. 除动词改成-ing形式外，保留该活动短语的全部原词及顺序。",
-        "acceptedAnswers": ["showing visitors around the building"],
-        "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
-        "hint": "先区分长久承担的工作与眼前正在做的事，再检查摘要空格需要活动内容还是一个新谓语。",
-        "explanation": "填showing visitors around the building。职责是带访客参观建筑，把to show visitors around the building改成-ing活动短语，放在is后说明job的内容。putting chairs away只描述此刻收椅子的动作，不能替换已说明的职责。",
-        "difficultyReason": "同一人有职责与当前动作两层信息；先选对职责，再转换完整表语短语，不能仅抄题内已经出现的-ing词。"
+        "instruction": "按原文改写，用 show 的 -ing 短语写出职责。",
+        "prompt": "I am putting chairs away now. My job is to show visitors around the building.\nMy job is ____.",
+        "acceptedAnswers": [
+          "showing visitors around the building",
+          "showing visitors round the building"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "现在正在做的事一定是职责吗？找出说明工作内容的部分。",
+        "explanation": "填 showing visitors around the building；round 也可。它说明工作内容：带访客参观这栋楼。putting chairs away 只是当前动作。这里的 -ing 短语作表语，不构成进行时。",
+        "difficultyReason": "从相邻的当前动作和职责中选择正确内容，再将整项职责转为-ing表语；题面已有的putting不能直接作答。难度是高二结构迁移的基础档。"
       },
       "references": [
-        {"sourceId": "pep.senior.selective1.review2019", "unit": "Unit 4 Discover useful structures", "pages": "印刷41；PDF48", "alignment": "-ing作表语说明工作内容，区别进行时动作；将职责信息改写为活动表语是本题原创迁移。"},
-        {"sourceId": "pep.senior.selective1.review2019", "unit": "Unit 3 Discover useful structures", "pages": "印刷29；PDF36", "alignment": "不定式活动与-ing活动表达之间的受控改写；本题改成表语，非复制原页主语练习。"}
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "unit": "Unit 4 Discover useful structures",
+          "pages": "印刷41；PDF48",
+          "alignment": "-ing作表语说明工作内容，区别进行时动作；将职责信息改写为活动表语是本题原创迁移。"
+        },
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "unit": "Unit 3 Discover useful structures",
+          "pages": "印刷29；PDF36",
+          "alignment": "不定式活动与-ing活动表达之间的受控改写；本题改成表语，非复制原页主语练习。"
+        }
       ],
       "authorReview": {
-        "answerBoundary": "要求保留原活动短语全部用词与顺序，因此仅接收showing visitors around the building；首字母大小写及末尾标点由normalization处理，不另造同义答案。",
+        "answerBoundary": "本题是按原文短语改写，指定show，保留visitors及the building。接收around/round这一常见英式变体，不再要求逐词顺序不变。大小写及末尾标点归一化。导览职责必须完整；自由换用guide等动词不属于本题指定的show改写。",
         "counterexamples": [
-          {"answer": "putting chairs away", "whyRejected": "语法上可作活动表语，但改成了眼前动作，未保留题内职责。"},
-          {"answer": "to show visitors around the building", "whyRejected": "本句中不定式表语自然，但题目明确要求-ing改写；不把这一变体宣称为普通英语错误。"},
-          {"answer": "showing visitors", "whyRejected": "删去了around the building，未完成本题保留完整职责短语的要求。"},
-          {"answer": "show visitors around the building", "whyRejected": "未把show改为指定的-ing形式。"}
+          {
+            "answer": "putting chairs away",
+            "whyRejected": "把当前收椅子动作误当职责；该短语本身可以作表语，并非语法错误。"
+          },
+          {
+            "answer": "to show visitors around the building",
+            "whyRejected": "英语自然，但未使用题目指定的-ing形式。"
+          },
+          {
+            "answer": "showing visitors",
+            "whyRejected": "未保留原文参观这栋楼的职责内容，且showing visitors本身未说明带领参观。"
+          },
+          {
+            "answer": "show visitors around the building",
+            "whyRejected": "原形未转换为本题要求的-ing表语。"
+          }
         ],
-        "crossQuestionReview": "已亲读当前高二projects全部60题及本批其余两题；原候选未出现showing或visitors around the building，未提供该完整目标短语。旧ing-functions仍可教活动表语与进行时的区别，但不能给出本题职责选择与showing完整答案。",
-        "status": "作者返修；待主代理逐题审阅"
+        "crossQuestionReview": "2026-10-11重读高二projects池相关题面、选项、提示及反馈。ing-functions的listening仍示范职责/进行区别，但没有showing、round/around the building或本题完整职责答案；listening-value同样不能直接给答案。本批r02/r03也未给出showing。规则支架仍存在，不计作完全独立诊断。",
+        "status": "短题终修候选；待主代理逐题审阅"
       }
     },
     {
@@ -67,28 +95,56 @@
         "id": "s2.cross.r02",
         "goalId": "s2.ing-subject",
         "type": "completion",
-        "instruction": "用完整的-ing活动短语作主语，补好句子。",
-        "prompt": "原句：It takes time to explain the new rule without using pictures. 请把原句谈论的整项活动放到句首，并保留“不使用图片”这一限制：____ takes time. 以explain的-ing形式开头；除这一动词形式变化外，活动短语中的词不增不减、顺序不变。",
-        "acceptedAnswers": ["Explaining the new rule without using pictures"],
-        "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
-        "hint": "确定主句谈论的是哪项活动，并把活动的对象及限制条件一起保留下来。",
-        "explanation": "填Explaining the new rule without using pictures。整个短语指不借助图片来解释新规则这项活动，作单数主语与takes对应；using pictures只是without内部的活动，不能单独替代整句主语。这里练习按指定形式改写，不否认原句的不定式结构。",
-        "difficultyReason": "需把完整活动移到句首，同时保留内部without条件；不能只识别句中任意一个-ing词，或删掉条件后凑出语法正确句。"
+        "instruction": "按原句改写，用 explain 的 -ing 短语作主语，保留限制条件。",
+        "prompt": "It takes time to explain the new rule without using pictures.\n____ takes time.",
+        "acceptedAnswers": [
+          "Explaining the new rule without using pictures",
+          "Explaining the new rule without pictures"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "哪一整项活动需要时间？活动怎样进行的限制也属于主语。",
+        "explanation": "填 Explaining the new rule without using pictures；without pictures 也保留原意。这一完整活动作单数主语，与 takes 对应。只填解释规则的活动而删去“不用图片”，会丢失原句的限制。",
+        "difficultyReason": "识别整个不定式活动及内部without限制，再转成-ing主语；using pictures虽有-ing形式，却不是主句谈论的完整活动。对应高二教材的完整活动改写。"
       },
       "references": [
-        {"sourceId": "pep.senior.selective1.review2019", "unit": "Unit 3 Discover useful structures", "pages": "印刷29；PDF36", "alignment": "将It开头的不定式活动改为完整-ing主语，并关注整体活动的句子重心；本题另设解释规则且不用图片的条件。"},
-        {"sourceId": "pep.senior.selective1.review2019", "unit": "Unit 4 Discover useful structures", "pages": "印刷41；PDF48", "alignment": "-ing活动短语可置于介词后；本题保留已给定的without using，不另考未给出的新介词选择。"}
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "unit": "Unit 3 Discover useful structures",
+          "pages": "印刷29；PDF36",
+          "alignment": "将It开头的不定式活动改为完整-ing主语，并关注整体活动的句子重心；本题另设解释规则且不用图片的条件。"
+        },
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "unit": "Unit 4 Discover useful structures",
+          "pages": "印刷41；PDF48",
+          "alignment": "-ing活动短语可置于介词后；本题保留已给定的without using，不另考未给出的新介词选择。"
+        }
       ],
       "authorReview": {
-        "answerBoundary": "本题固定输出来自原文的完整活动，只变to explain为Explaining。Explaining the new rule without using pictures为完整受控答案；大小写和末尾标点归一化。若允许自由同义改写，应另设评分，当前不假装覆盖所有自然英语。",
+        "answerBoundary": "指定explain并按原句改写，保留the new rule以及不用图片的限制。接收without using pictures和自然省去using的without pictures；不再用逐词不增不减排除后一表达。此处不是自由写同义句；大小写及末尾标点归一化。",
         "counterexamples": [
-          {"answer": "Explaining the new rule", "whyRejected": "能作语法正确主语，但删去了不使用图片的必要限制，未保留原意。"},
-          {"answer": "Using pictures", "whyRejected": "把原文排除的方式改成主句谈论的活动，改变了信息重心与意义。"},
-          {"answer": "To explain the new rule without using pictures", "whyRejected": "可构成合法不定式主语，但没有遵守本题明确的-ing形式要求。"},
-          {"answer": "Explaining the new rule by using pictures", "whyRejected": "将without改成by，反转是否借助图片的条件。"}
+          {
+            "answer": "Explaining the new rule",
+            "whyRejected": "主语结构成立，但遗漏不用图片的限制，未保留原意。"
+          },
+          {
+            "answer": "Using pictures",
+            "whyRejected": "错误地把内部被排除的方法提为主句活动，并改变原意。"
+          },
+          {
+            "answer": "To explain the new rule without using pictures",
+            "whyRejected": "不定式主语可以成立，但未按要求改为-ing主语。"
+          },
+          {
+            "answer": "Explaining the new rule by using pictures",
+            "whyRejected": "by将不用图片反转成借助图片的方法。"
+          }
         ],
-        "crossQuestionReview": "已亲读当前高二projects全部60题及本批其余两题；没有其他候选给出Explaining、without using pictures或完整答案。activity-focus虽保留-ing主语的教学规则，不再给出本题可抄词形或完整活动。",
-        "status": "作者返修；待主代理逐题审阅"
+        "crossQuestionReview": "2026-10-11重读projects池。activity-focus和collecting-stories提供完整活动主语的规则与takes句架，但没有Explaining或without pictures，也不提供解释新规则且不用图片的完整答案。前题可教方法，仍需自行识别并保留本题限制。本批r01/r03未给本题动词形式或答案。",
+        "status": "短题终修候选；待主代理逐题审阅"
       }
     },
     {
@@ -101,27 +157,59 @@
         "id": "s2.cross.r03",
         "goalId": "s2.ing-roles",
         "type": "completion",
-        "instruction": "读实际做法，用完整的-ing短语补全方法说明。",
-        "prompt": "记录写着：We did not call out our questions during the talk. We wrote our questions on cards. 你要说明采用了哪种具体做法来避免打断发言者，不能只重复“没有喊出问题”：We avoided interrupting the speaker by ____. 把记录中实际采用的做法改成完整的-ing短语；除动词形式变化外，保留该活动短语的原词与顺序。",
-        "acceptedAnswers": ["writing our questions on cards"],
-        "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
-        "hint": "先找出记录中的肯定行动，再检查怎样将这一行动接到说明方法的介词后。",
-        "explanation": "填writing our questions on cards。记录中的实际替代做法是把问题写在卡片上，将wrote转换成writing后接在by后说明方法。not calling out our questions只重复未做的事；interrupting the speaker反而是需要避免的行为。",
-        "difficultyReason": "先区别未做的行为与实际方法，再把方法转成介词后的完整-ing短语；不再只输入从前题可抄出的单个checking。"
+        "instruction": "按记录改写，用 write 的 -ing 短语补出实际做法。",
+        "prompt": "We did not call out our questions. We wrote them on cards.\nWe avoided interrupting the speaker by ____.",
+        "acceptedAnswers": [
+          "writing them on cards",
+          "writing our questions on cards",
+          "writing the questions on cards",
+          "writing questions on cards",
+          "writing them down on cards",
+          "writing down our questions on cards",
+          "writing our questions down on cards",
+          "writing down the questions on cards",
+          "writing the questions down on cards",
+          "writing down questions on cards",
+          "writing questions down on cards"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "记录中实际采用了什么替代做法？将它接到表示方法的 by 后。",
+        "explanation": "填 writing them on cards，也可把 them 写成 our questions、the questions 或 questions。write down 的自然表达也接受。by 后的 -ing 短语说明把问题写在卡片上的方法；not calling out 只重复了没做的事。",
+        "difficultyReason": "先从否定行为与实际替代行动中提取方法，再将wrote改为介词后writing，并保持卡片这一方法细节；包含them的指代理解。属于高二-ing角色的基础迁移。"
       },
       "references": [
-        {"sourceId": "pep.senior.selective1.review2019", "unit": "Unit 4 Discover useful structures", "pages": "印刷41；PDF48", "alignment": "以-ing短语表示介词后活动及方法；本题将记录中的肯定做法改写为by后的完整活动，区别需避免的动作。"}
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "unit": "Unit 4 Discover useful structures",
+          "pages": "印刷41；PDF48",
+          "alignment": "以-ing短语表示介词后活动及方法；本题将记录中的肯定做法改写为by后的完整活动，区别需避免的动作。"
+        }
       ],
       "authorReview": {
-        "answerBoundary": "要求保留原肯定行动的全部原词，唯一受控答案为writing our questions on cards；大小写与末尾标点归一化。writing them on cards等代词改写在自然语言中可行，但不符合本题明确的原词保留要求。",
+        "answerBoundary": "指定write，保留记录中的问题与on cards。逐项人工接收them、our questions、the questions、questions，以及自然的write down表达；代词them只能置于writing与down之间，不接收writing down them。大小写及末尾标点归一化。不要求机械保留原词顺序；但不是无限制的自由释义评分。",
         "counterexamples": [
-          {"answer": "not calling out our questions", "whyRejected": "只重复没有采取的行为，没有报告记录中实际采用的具体替代做法。"},
-          {"answer": "interrupting the speaker", "whyRejected": "把需避免的行为误作所采用的方法，意义相反。"},
-          {"answer": "wrote our questions on cards", "whyRejected": "未转换为by后所需的活动形式，仍是过去式。"},
-          {"answer": "writing our questions", "whyRejected": "遗漏on cards，没有按要求保留完整的具体做法。"}
+          {
+            "answer": "not calling out our questions",
+            "whyRejected": "能说明未打断，但只重述没有做的事，未完成题目要求的write实际做法改写。"
+          },
+          {
+            "answer": "wrote them on cards",
+            "whyRejected": "by后仍用了过去式，未形成-ing活动短语。"
+          },
+          {
+            "answer": "writing our questions",
+            "whyRejected": "丢失写在卡片上的实际方法细节。"
+          },
+          {
+            "answer": "writing down them on cards",
+            "whyRejected": "write down的宾语为代词时应放在write与down之间；writing them down on cards已收为正确答案。"
+          }
         ],
-        "crossQuestionReview": "已亲读当前高二projects全部60题及本批其余两题；其他题没有writing our questions on cards、our questions on cards或writing词形。q04保留Checking及by-checking保留checking不会给出本题输出。仍需对未替换的q04与by-checking保留互斥。",
-        "status": "作者返修；待主代理逐题审阅"
+        "crossQuestionReview": "2026-10-11重读projects池；题面、选项、提示、反馈及听力文字稿未给出writing词形或on cards答案。avoid-interrupting虽给avoid interrupting、by-checking虽讲by加-ing，但均未提供实际写卡片方法。r01/r02亦不展示writing。q04和by-checking之间的Checking/checking仍需保留互斥。",
+        "status": "短题终修候选；待主代理逐题审阅"
       }
     }
   ],
@@ -130,7 +218,7 @@
     "mediaRequired": false,
     "keepHistory": "使用新的候选题ID；旧bank身份、用户成绩及历史版本如何保留由主代理另行实现，本作者未迁移或删除数据。",
     "remainingConflicts": [
-      "q04 Checking与旧by-checking依然不能同卷，需保留人工互斥；shadow-boats有新r01/r03可替补其completion槽。",
+      "q04 Checking与旧by-checking依然不能同卷，需保留人工互斥；r01/r03为-ing角色completion新增可选内容。",
       "旧reversed-history选项中的checking与旧by-checking仍有词形提示，需保留互斥或后续独立返修。",
       "三道候选未通过主代理终审，不能以本作者的候选扫描作为正式发布批准。"
     ]

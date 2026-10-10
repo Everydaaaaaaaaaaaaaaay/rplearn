@@ -1,7 +1,7 @@
 {
   "status": "隔离返修稿，待主代理逐题主审",
   "author": "Astra高三人工返修作者",
-  "reviewedAt": "2026-10-07",
+  "reviewedAt": "2026-10-11",
   "method": "实际阅读两处教材缓存正文、两个目标单元及同年级projects池候选，逐题人工重写两个暴露源题。程序仅检索与检查结构，不生成或组合题目。未修改正式题库。",
   "replacements": [
     {
@@ -22,8 +22,8 @@
         "id": "q1",
         "goalId": "senior3.coastal-display-captions",
         "type": "choice",
-        "instruction": "选择完整保留原句动作关系的一项。",
-        "prompt": "读展板说明：A visitor photographed a boat washed onto the beach by the waves. washed onto表示被水冲到某处。哪项准确说明谁在拍照、什么被海浪冲上海滩？",
+        "instruction": "选择准确的理解。",
+        "prompt": "A visitor photographed a boat washed onto the beach by the waves. 哪项符合原句？（washed onto：被水冲到）",
         "difficultyReason": "高三非谓语综合：完整句中先区分主句拍摄动作与过去分词修饰，再核对海浪作用于哪个对象；提供词义支架，不靠海岸常识选答案。",
         "options": [
           {
@@ -32,7 +32,7 @@
           },
           {
             "id": "b",
-            "text": "游客拍到了一只正把海浪推上海滩的船。"
+            "text": "游客拍下一只船后，海浪才把船冲上海滩。"
           },
           {
             "id": "c",
@@ -41,7 +41,7 @@
         ],
         "answer": "a",
         "hint": "分别找出拍摄动作的执行者，以及船后面那段说明的对象。",
-        "explanation": "主句说明游客拍摄了一只船；washed onto the beach by the waves后置修饰boat，船是被海浪冲上海滩的对象，海浪是施事。b颠倒了船与海浪的动作关系；c把修饰对象改成游客，还增加了原句没有说明的同时关系。"
+        "explanation": "washed onto the beach by the waves修饰boat，表示船被海浪冲上海滩。a保留了这个关系；b擅自补出先拍照、后冲上海滩的顺序；c把被冲的对象换成了游客。"
       },
       "authorReview": {
         "correct": "a",
@@ -49,11 +49,15 @@
         "wrongCases": [
           {
             "response": "b",
-            "reason": "把被海浪冲上海滩的船改成推动海浪的施事，误读过去分词的被动关系。"
+            "reason": "把修饰船的过去分词短语改写成拍摄之后才发生的独立事件；原句没有提供这个先后顺序。"
           },
           {
             "response": "c",
             "reason": "把后置修饰boat的短语改接visitor，并无依据增加游客受冲时拍照的时间关系。"
+          },
+          {
+            "response": "句中有两个独立谓语，visitor既photographed又washed。",
+            "reason": "这是额外的诊断反例，不是第四个选项。washed短语没有独立主语，也没有与photographed并列；它后置修饰boat，不能据-ed结尾把两个词一律读成并列过去时。"
           }
         ],
         "independence": "题干自给句子与词义，不依赖角色剧情。不是将原bottles/volunteers换成另一对名词：题目由选择短语形式改为分辨完整句中主句动作、修饰对象与施受关系。",
@@ -80,12 +84,12 @@
         "goalId": "senior3.project-conditions",
         "type": "arrange",
         "instruction": "用全部词块组成一句话，以Given that开头。",
-        "prompt": "场馆管理员已经确认大厅正在维修。你要在合作邮件中先交代这个已知理由，再说明需要另找场地，不能把维修写成尚待发生的假设。请组成“鉴于大厅正在维修，我们需要另一个场地”。venue表示场地。",
-        "difficultyReason": "高三状语从句综合：区分作为理由的已知情况与尚未发生的条件，保持原因从句和主句边界；六词块控制拼写负担，不再提前提供后题的目的连接词。",
+        "prompt": "鉴于大厅太小，我们需要更大的场地。（venue：场地）",
+        "difficultyReason": "高三状语从句复习：把题内明示的理由与需要组织为原因从句和主句；六词块提供形式支架，不把有提示组句夸大为独立辨认连接词。",
         "tokens": [
           {
             "id": "t3",
-            "text": "is being repaired,"
+            "text": "is too small,"
           },
           {
             "id": "t5",
@@ -97,7 +101,7 @@
           },
           {
             "id": "t6",
-            "text": "another venue."
+            "text": "a larger venue."
           },
           {
             "id": "t4",
@@ -109,8 +113,8 @@
           }
         ],
         "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
-        "hint": "检查逗号两侧各由谁作主语，哪个分句交代已确认的情况。",
-        "explanation": "Given that the hall is being repaired交代需要换场地的已知理由；we need another venue说明由此产生的需要。前半句的主语是the hall，后半句的主语是we，不能把两者互换。"
+        "hint": "先交代场地的问题，再说明我们的需要。",
+        "explanation": "Given that the hall is too small交代已知理由；we need a larger venue说明由此产生的需要。两个分句的主语分别是the hall和we。"
       },
       "authorReview": {
         "correct": ["t1", "t2", "t3", "t4", "t5", "t6"],
@@ -118,14 +122,18 @@
         "wrongCases": [
           {
             "response": ["t1", "t4", "t5", "t6", "t2", "t3"],
-            "reason": "将需要另一个场地误放到Given that之后，并让句号打断剩余内容，不能表达原题的原因和行动关系。"
+            "reason": "把需要更大场地放进理由部分，颠倒题面关系；词块内句号又打断剩余内容。"
           },
           {
             "response": ["t1", "t4", "t3", "t2", "t5", "t6"],
-            "reason": "将we写成被维修的对象，又将大厅写成需要场地的主体；主语与动作配合及已知事实都不成立。"
+            "reason": "拼出we is too small及the hall need，主谓不一致，也把太小的对象和需要场地的主体互换。"
+          },
+          {
+            "response": ["t1", "t2", "t5", "t6", "t4", "t3"],
+            "reason": "把need接在the hall后、is接在we后，两处主谓均不一致，且没有保留大厅太小导致我们需要更大场地的关系。"
           }
         ],
-        "independence": "当前题是把已确认事实组织为原因从句，原题是组织目的从句；认知关系与句子功能改变，不是替换场景名词。故事不提供维修事实或本句答案。",
+        "independence": "当前题是把题内已知事实组织为原因从句，原题是组织目的从句；句子功能改变，不是只替换场景名词。故事不提供大厅大小或本句答案。Given that由词块提供，题目测有支架的组织，不独立测该连接词的提取。",
         "leakageCheck": "新题所有可见字段不含so that、unless、although；同goal其余题未提供Given that或本题完整句。原q5仍需自己判断目的与原因。",
         "status": "作者自审完成，待主代理主审"
       }

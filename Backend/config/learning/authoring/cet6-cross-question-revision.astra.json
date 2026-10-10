@@ -1,0 +1,107 @@
+{
+  "level": "postgraduate",
+  "author": {
+    "name": "Astra 六级人工返修作者",
+    "date": "2026-10-11",
+    "method": "亲自逐题设计并撰写题面、答案、反例和双向跨题复核；程序只检索、展开原文、落盘人工文字及验证，不用程序模板生成题目。",
+    "status": "隔离候选，待主代理逐题终审；未修改正式库，未提交，未访问生产"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "cet.official.2016",
+      "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "edition": "全国大学英语四、六级考试大纲（2016年修订版）",
+      "readAt": "2026-10-11",
+      "localPdf": "build/learning-expansion-20261007/research/cet-2016.pdf",
+      "localText": "build/learning-expansion-20261007/research/cet-2016.txt",
+      "sha256": "9166d3c03b7bc43abd9d9df91bd2ef8085b4419286f1e5ca100dea68f3cfd1f1",
+      "pagesRead": "印刷2—4、9；一基PDF7—9、14",
+      "actualFindings": "核读阅读中的信息、观点态度、上下文词义及句间关系；六级写作要求较深入讨论、解释、用词贴切，语言运用含恰当词汇和句子结构；口头表达包含解释、比较、论证。PDF14的口试形式为陈述与讨论，不能将本批短语填空或配对说成完整口试。",
+      "limits": "本轮实际读取本地逐页正文并重新核对PDF哈希；未目视渲染、未通读整部大纲。网页读取官方PDF因体积过大失败，不宣称当前考试政策或重新在线下载成功。"
+    }
+  ],
+  "goalContract": {
+    "goalId": "cet6.precise-wording",
+    "catalogCanDo": "能按证据强度选择常见论述措辞，并以正式反馈要求补足支持关系。",
+    "alignment": "第一题转向该目标明确列出的正式反馈：要求与时间比较主张相匹配的支持。第二题保留原题的论述动作与精确措辞识别，分清确认异议存在、回应异议和撤回异议；不把任何动作升级为证明异议真假。",
+    "limits": "第二题沿用原matching的局部论述动作练习范围，不独立覆盖catalog全部canDo；两题均为六级方向受控微练习，不声称考试等值。"
+  },
+  "replacements": [
+    {
+      "originalUnitId": "companion.postgraduate.rainy-screening",
+      "originalQuestionId": "cet6.a08",
+      "originalFullId": "companion.postgraduate.rainy-screening/cet6.a08",
+      "newFullId": "companion.postgraduate.rainy-screening/cet6.cross.r01",
+      "reason": "一次观察加suggests的动词槽同时接受a03、second.03和second.06的词形或词义提示。改成根据缺失的比较证据选择完整正式反馈短语，保留目标与completion，不用另一审慎动词替换suggests。",
+      "question": {
+        "id": "cet6.cross.r01",
+        "goalId": "cet6.precise-wording",
+        "type": "completion",
+        "instruction": "从下列短语中选一个，原样填入。",
+        "prompt": "报告只给新说明的清晰度评分，却称它比旧说明省时。请求最直接的支持依据：\nPlease provide ____ to support this claim.\n• completion times for both versions\n• clarity ratings for both versions\n• the revised version's completion time\n• future demand for either version",
+        "acceptedAnswers": ["completion times for both versions"],
+        "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
+        "hint": "核对断言比较的是哪个方面，以及请求是否同时覆盖两个比较对象。",
+        "explanation": "断言比较新旧说明的完成用时，因此请求两版的完成用时。清晰度评分回答另一个问题；只有新版用时缺少旧版基准；未来需求也不能支持省时断言。索取这些数据不等于预先认定比较结果一定支持断言。",
+        "difficultyReason": "六级受控运用：在正式反馈中同时保留比较指标和比较基准；四个短语都能接在provide之后，不能只凭语法或某个审慎动词作答。"
+      },
+      "references": [{"sourceId": "cet.official.2016", "pages": "印刷2—3；PDF7—8", "alignment": "阅读准确获取信息与写作贴切用词的局部结合；反馈情境及四个候选短语均为原创。"}],
+      "authorReview": {
+        "answerBoundary": "明确限定从四个给定短语原样选择，每项5词；只接受completion times for both versions这5词，忽略大小写和句末标点。自由改写both versions' completion times也自然，但不在本题有限词库内，不作为受控答案；不能由此宣称该自由表达英语错误。",
+        "counterexamples": [
+          {"answer": "clarity ratings for both versions", "reason": "补齐了两个版本，却仍测清晰度而非用时；不能支持省时比较。"},
+          {"answer": "the revised version's completion time", "reason": "指标正确，但只索取新版数据，缺旧版基准；仍无法比较新旧。"},
+          {"answer": "future demand for either version", "reason": "任一版本的未来需求都不是现有省时断言的支持。"},
+          {"answer": "suggests", "reason": "既不在短语库，也不能完成provide的宾语；旧题词族不能被直接搬来作答。"}
+        ],
+        "independence": "压缩为5词答案后重新逐项复核36题及故事、脚本：与a01、a13、b13共享检查证据是否对应比较的问题解决方法；与a14共享正式反馈目的；与second.17共享不可混淆评价维度的方法。但没有给出本题completion times for both versions或反向泄漏原题答案。方法迁移不被声称为零；E2—E4的suggest词族答案边被移除。"
+      }
+    },
+    {
+      "originalUnitId": "companion.postgraduate.missing-piece",
+      "originalQuestionId": "cet6.second.05",
+      "originalFullId": "companion.postgraduate.missing-piece/cet6.second.05",
+      "newFullId": "companion.postgraduate.missing-piece/cet6.cross.r02",
+      "reason": "整题改为相同主体、相同异议对象的论述动作辨析。删除take account of及维护成本内容，保留precise-wording matching；不修改second.08听写或录音。",
+      "question": {
+        "id": "cet6.cross.r02",
+        "goalId": "cet6.precise-wording",
+        "type": "matching",
+        "instruction": "每句独立判断，与准确释义配对，每项用一次。",
+        "prompt": "三句是互不相连的讨论记录。配对时只保留句中明确说出的动作。",
+        "left": [
+          {"id": "l1", "text": "The committee acknowledges the objection to the revised procedure."},
+          {"id": "l2", "text": "The committee responds to the objection to the revised procedure."},
+          {"id": "l3", "text": "The committee withdraws the objection to the revised procedure."}
+        ],
+        "right": [
+          {"id": "r1", "text": "委员会撤回了对修订流程的异议；未说明流程本身是否改变。"},
+          {"id": "r2", "text": "委员会确认该异议的存在；未说明已作答复或异议已消除。"},
+          {"id": "r3", "text": "委员会对该异议作了回应；未说明回应是否使异议消除。"}
+        ],
+        "answerPairs": [{"left": "l1", "right": "r2"}, {"left": "l2", "right": "r3"}, {"left": "l3", "right": "r1"}],
+        "hint": "辨认动作停留在确认、答复还是撤回；不要替记录补写结果。",
+        "explanation": "acknowledges在这里确认异议存在，不自动包含答复；responds to表示作了回应，不保证说服了提出异议的人；withdraws表示撤回异议，不表示撤回或修改流程。三句不是同一场讨论的时间线，各句都凭自身动词确定动作。",
+        "difficultyReason": "六级受控识别：同一主体和同一对象下区分三种论述动作及其结果边界；不能按人名、领域名词或中文对象的对应排除。"
+      },
+      "references": [{"sourceId": "cet.official.2016", "pages": "印刷3—4；PDF8—9", "alignment": "按上下文准确理解措辞、表达讨论动作；配对是产品教学形式，不是大纲原题型。"}],
+      "authorReview": {
+        "answerBoundary": "三个独立记录均给出主体、动作和异议对象。acknowledges不推定委员会赞同异议内容；responds不推定异议被撤回；withdraws的宾语是objection而非procedure。右项完整区分动作，不能靠删除某一条后剩余项硬配。",
+        "counterexamples": [
+          {"pair": "l1-r3", "reason": "确认异议存在并不蕴含已经对它作出答复。"},
+          {"pair": "l2-r1", "reason": "回应可能坚持立场，也可能解释，不能推出撤回异议。"},
+          {"pair": "l3-r2", "reason": "撤回超出单纯确认异议存在；此释义漏掉记录明确的撤回动作。"},
+          {"claim": "l3表示委员会撤回修订流程", "reason": "withdraws的宾语是异议；介词短语里的流程不是被撤回的对象。"}
+        ],
+        "independence": "与a06、a16、b18、second.16和second.18只共享不要补写立场或结果的一般方法。两道新题互不提供对方短语或动词对照；本题无account词族、季节变化或听写句架。",
+        "audioDecision": "E5可在纯文字来源题内合理修复，无需重录；second.08整句、否定、季节范围与音频assetId均不受此次候选影响。未实听音频，不宣称声学验收。"
+      }
+    }
+  ],
+  "poolReview": {
+    "scope": "两份正式postgraduate单元全部36题的题干、选项或词块或配对项、答案、hint、explanation、10段音频脚本，以及6段双语前置故事；候选互相审阅。逐题双向结论见同名Markdown。",
+    "directionPolicy": "不以当前固定顺序豁免提示；每个候选与36个原ID均检视原题在前和候选在前两种方向，含被替换原题的迁移共存风险。正文区分真实合法蓝图共现和保守语义检查。",
+    "deploymentConstraint": "候选终审后应替换原题，不得把新ID追加入池并同时保留旧a08或旧second.05；否则旧E2—E5仍在。当前未改正式库，所以线上风险尚未修复。",
+    "openLimits": "未进行学习者测量、运行时抽卷验证、音频实听或生产核验；不宣称完全无教学迁移或完整六级难度校准。"
+  }
+}

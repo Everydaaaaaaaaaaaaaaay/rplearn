@@ -1,0 +1,853 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-11",
+  "reviewRecord": "docs/learning-program/cross-question-publication-2026-10-11.md",
+  "verification": {
+    "draftFiles": [
+      "senior2-cross-question-revision.astra.json",
+      "senior3-cross-question-revision.astra.json",
+      "advanced-cross-question-revision.astra.json",
+      "cet6-cross-question-revision.astra.json"
+    ],
+    "revisedQuestions": 15,
+    "positives": 20,
+    "negatives": 28,
+    "blueprints": 99,
+    "rolls": 1980,
+    "scope": "离线候选覆盖；不等同线上发布、任意已学状态或学习者验收"
+  },
+  "updates": [
+    {
+      "unitId": "marcus.senior2.interview-worktable",
+      "localQuestionId": "job-not-action",
+      "expectedHash": "195b584b79cae4c9ce50ad10bd09ef72e7907cf62714ce496c6dfbbf08d60225",
+      "question": {
+        "id": "question.62fae8f17fb596988c5e4c8be78f470015ca7fd551cb167b2486a1b6d0cb4d5c",
+        "version": 2,
+        "level": "senior2",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "job-not-action",
+          "goalId": "s2.ing-roles",
+          "instruction": "按原文改写，用 show 的 -ing 短语写出职责。",
+          "prompt": "I am putting chairs away now. My job is to show visitors around the building.\nMy job is ____.",
+          "explanation": "填 showing visitors around the building；round 也可。它说明工作内容：带访客参观这栋楼。putting chairs away 只是当前动作。这里的 -ing 短语作表语，不构成进行时。",
+          "hint": "现在正在做的事一定是职责吗？找出说明工作内容的部分。",
+          "difficultyReason": "从相邻的当前动作和职责中选择正确内容，再将整项职责转为-ing表语；题面已有的putting不能直接作答。难度是高二结构迁移的基础档。",
+          "type": "completion",
+          "acceptedAnswers": [
+            "showing visitors around the building",
+            "showing visitors round the building"
+          ],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "Unit 4 Body Language / Discover useful structures",
+            "pages": "印刷第41页；PDF第48页",
+            "alignment": "参考 -ing 作宾语和表语的意义与语法功能，区别于正在进行的动作。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "bf31d66ed4765938172e395589d714a486d606a43c9914ff3c775fb4f1d828bc"
+    },
+    {
+      "unitId": "marcus.senior2.community-project-brief",
+      "localQuestionId": "single-activity-agreement",
+      "expectedHash": "62207988f86307c92be143ae9660483d03dffaedf2ecc1c3cdcdb8e23e78e69c",
+      "question": {
+        "id": "question.2797146fc08e5a65c5465c43887266a3daddcd5af931bf19ac5e940bdf289986",
+        "version": 2,
+        "level": "senior2",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "single-activity-agreement",
+          "goalId": "s2.ing-subject",
+          "instruction": "按原句改写，用 explain 的 -ing 短语作主语，保留限制条件。",
+          "prompt": "It takes time to explain the new rule without using pictures.\n____ takes time.",
+          "explanation": "填 Explaining the new rule without using pictures；without pictures 也保留原意。这一完整活动作单数主语，与 takes 对应。只填解释规则的活动而删去“不用图片”，会丢失原句的限制。",
+          "hint": "哪一整项活动需要时间？活动怎样进行的限制也属于主语。",
+          "difficultyReason": "识别整个不定式活动及内部without限制，再转成-ing主语；using pictures虽有-ing形式，却不是主句谈论的完整活动。对应高二教材的完整活动改写。",
+          "type": "completion",
+          "acceptedAnswers": [
+            "Explaining the new rule without using pictures",
+            "Explaining the new rule without pictures"
+          ],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "Unit 3 Fascinating Parks / Discover useful structures",
+            "pages": "印刷第29页；PDF第36页",
+            "alignment": "参考 -ing 短语作主语与信息重心调整；题干明确形式约束，不误判合法不定式。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "9b734b592c65beefc24768d0d57f3eea0d7a96f93bbac65156d2c5ee35788ee5"
+    },
+    {
+      "unitId": "companion.senior2.shadow-boats",
+      "localQuestionId": "s2.astra.second.q11",
+      "expectedHash": "ac3758c76d4de4e4c41e7773db764a82ab0a0eed443a54a67bfe51d66f386991",
+      "question": {
+        "id": "question.25105712b7fe2201d418fcf02d426ff10e3105c4d6b0dde7007c6e6378ab3d2e",
+        "version": 2,
+        "level": "senior2",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "s2.astra.second.q11",
+          "goalId": "s2.ing-roles",
+          "instruction": "按记录改写，用 write 的 -ing 短语补出实际做法。",
+          "prompt": "We did not call out our questions. We wrote them on cards.\nWe avoided interrupting the speaker by ____.",
+          "explanation": "填 writing them on cards，也可把 them 写成 our questions、the questions 或 questions。write down 的自然表达也接受。by 后的 -ing 短语说明把问题写在卡片上的方法；not calling out 只重复了没做的事。",
+          "hint": "记录中实际采用了什么替代做法？将它接到表示方法的 by 后。",
+          "difficultyReason": "先从否定行为与实际替代行动中提取方法，再将wrote改为介词后writing，并保持卡片这一方法细节；包含them的指代理解。属于高二-ing角色的基础迁移。",
+          "type": "completion",
+          "acceptedAnswers": [
+            "writing them on cards",
+            "writing our questions on cards",
+            "writing the questions on cards",
+            "writing questions on cards",
+            "writing them down on cards",
+            "writing down our questions on cards",
+            "writing our questions down on cards",
+            "writing down the questions on cards",
+            "writing the questions down on cards",
+            "writing down questions on cards",
+            "writing questions down on cards"
+          ],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷5、62、103",
+            "alignment": "q01—q02非限制性从句宾语与指向"
+          },
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷29、41、101、104—105",
+            "alignment": "q04、q11、q12活动与名词从句结构"
+          },
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷17、104",
+            "alignment": "q09将来计划询问与间接请求"
+          },
+          {
+            "sourceId": "pep.senior.selective2.preface2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷5、17",
+            "alignment": "q06—q08、q12名词从句"
+          },
+          {
+            "sourceId": "fltrp.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷17、53、65",
+            "alignment": "q03、q05、q10、q13语法结构"
+          },
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷6、18—19、42",
+            "alignment": "q14听理由、q15听预测、q18听语境与事件信息"
+          },
+          {
+            "sourceId": "fltrp.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷19、54、66—67",
+            "alignment": "q13听记输入、q16关切安慰、q17折中、q18顺序听辨"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "5c25ca084d12d1ffcb066640b84d786a9a4e4ebc36a7c6c458036c8ab6f6d81c"
+    },
+    {
+      "unitId": "ruby.senior3.coastal-display-captions",
+      "localQuestionId": "q1",
+      "expectedHash": "a2a7c0a1bf79cef2c245aa0b0997b0fe0c2ddd92ad3c6850cf19e182dfd66956",
+      "question": {
+        "id": "question.4796a0d603965b7694c0e78180d9dd5d35d8283b4d4596d5880bfe19ac5a1600",
+        "version": 2,
+        "level": "senior3",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "q1",
+          "goalId": "senior3.coastal-display-captions",
+          "instruction": "选择准确的理解。",
+          "prompt": "A visitor photographed a boat washed onto the beach by the waves. 哪项符合原句？（washed onto：被水冲到）",
+          "explanation": "washed onto the beach by the waves修饰boat，表示船被海浪冲上海滩。a保留了这个关系；b擅自补出先拍照、后冲上海滩的顺序；c把被冲的对象换成了游客。",
+          "hint": "分别找出拍摄动作的执行者，以及船后面那段说明的对象。",
+          "difficultyReason": "高三非谓语综合：完整句中先区分主句拍摄动作与过去分词修饰，再核对海浪作用于哪个对象；提供词义支架，不靠海岸常识选答案。",
+          "type": "choice",
+          "options": [
+            {
+              "id": "a",
+              "text": "游客拍到了一只被海浪冲上海滩的船。"
+            },
+            {
+              "id": "b",
+              "text": "游客拍下一只船后，海浪才把船冲上海滩。"
+            },
+            {
+              "id": "c",
+              "text": "游客被海浪冲上海滩时拍下了一只船。"
+            }
+          ],
+          "answer": "a"
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior3.archive20260929",
+            "unit": "Unit 2 Iconic Attractions / Review useful structures",
+            "pages": "印刷第17页；PDF第24页",
+            "alignment": "过去分词的功能与改写；仅参考语言目标，情景、题干和答案均为原创。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "c4180ee082ed48b16cf84e01468ee301628028e7d20410e66ce11496a6d47210"
+    },
+    {
+      "unitId": "ruby.senior3.project-conditions",
+      "localQuestionId": "q3",
+      "expectedHash": "122d05e9be92fbdbde50eac3c87c27d90cbdabacf97a189982d037413bf56b34",
+      "question": {
+        "id": "question.450f36ff18d9868a3e041996d8a3a7f2016e035efbfb4699b2226b13136f9c6f",
+        "version": 2,
+        "level": "senior3",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "q3",
+          "goalId": "senior3.project-conditions",
+          "instruction": "用全部词块组成一句话，以Given that开头。",
+          "prompt": "鉴于大厅太小，我们需要更大的场地。（venue：场地）",
+          "explanation": "Given that the hall is too small交代已知理由；we need a larger venue说明由此产生的需要。两个分句的主语分别是the hall和we。",
+          "hint": "先交代场地的问题，再说明我们的需要。",
+          "difficultyReason": "高三状语从句复习：把题内明示的理由与需要组织为原因从句和主句；六词块提供形式支架，不把有提示组句夸大为独立辨认连接词。",
+          "type": "arrange",
+          "tokens": [
+            {
+              "id": "t3",
+              "text": "is too small,"
+            },
+            {
+              "id": "t5",
+              "text": "need"
+            },
+            {
+              "id": "t1",
+              "text": "Given that"
+            },
+            {
+              "id": "t6",
+              "text": "a larger venue."
+            },
+            {
+              "id": "t4",
+              "text": "we"
+            },
+            {
+              "id": "t2",
+              "text": "the hall"
+            }
+          ],
+          "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]]
+        },
+        "references": [
+          {
+            "sourceId": "fltrp.senior3.archive20260929",
+            "unit": "Unit 3 The world meets China / Using language",
+            "pages": "印刷第29页；PDF第36页",
+            "alignment": "状语从句综合复习；仅参考语言目标，情景、题干和答案均为原创。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "e24bb85c02c82be923cb61c2cbac88e2467920edc0f25d3f5b01dcabe1e5a282"
+    },
+    {
+      "unitId": "companion.advanced.waiting-room",
+      "localQuestionId": "adv.astra.a14",
+      "expectedHash": "6918b1e41e451040766f3303318ef5bf623a1bd29ae3f1d8906b9f4e9902d1cb",
+      "question": {
+        "id": "question.2149e61ef561e18f4746286619dd1a56abcd2dc1af0c470628cf09fe59b4afb7",
+        "version": 2,
+        "level": "advanced",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "adv.astra.a14",
+          "goalId": "advanced.semantic-register",
+          "instruction": "填写一个给定短语",
+          "prompt": "原话：The method is reliable.\n修订：It is reliable for routine cases; I make no claim about unusual ones.\n词库：qualified rather than withdrew / withdrew rather than qualified / reiterated rather than qualified\n纪要：The speaker ___ the original claim.",
+          "explanation": "qualified rather than withdrew 最准确地概括这里的变化：保留常规情形下可靠的判断，同时收窄适用范围。withdrew rather than qualified 否定了实际发生的限定；reiterated rather than qualified 则把范围收窄误记为原样重申。这里不评价方法实际上是否可靠。",
+          "hint": "同时检查原判断还有哪一部分被保留，以及修订是否改变了它的适用范围。",
+          "difficultyReason": "在中性纪要中精确命名一次话语修订：既要识别范围收窄，也要保留仍有效的主张，比较限定、撤回和重申的完整对比短语。难度来自复合立场与话语变化，不来自专业知识或长篇阅读；属于高级目标的局部受控表达，不代表完整高级写作。",
+          "type": "completion",
+          "acceptedAnswers": ["qualified rather than withdrew"],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "cse.official.search.2024",
+            "unit": "阅读理解能力总表／理解书面论述",
+            "pages": "官方描述语ID 3505、3516；网页数据无页码",
+            "alignment": "核读2024版八级论证逻辑评价和七级推理过程理解描述。用于证据范围与模态限制的原创局部练习，不代表CSE达级。"
+          },
+          {
+            "sourceId": "cse.official.search.2024",
+            "unit": "口头表达能力总表／口头说明",
+            "pages": "官方描述语ID 4708；网页数据无页码",
+            "alignment": "准确转述要点和细节功能迁移为受控文字辨析及配对；本组不测口头表达或听力。"
+          },
+          {
+            "sourceId": "cse.official.search.2024",
+            "unit": "书面表达准确性／连贯性／得体性",
+            "pages": "官方描述语ID 8507、8706、8808；网页数据无页码",
+            "alignment": "摘要规范、衔接关系及按目的调整表达的局部任务；不声称测得完整论文或开放写作能力。"
+          },
+          {
+            "sourceId": "cse.official.search.2024",
+            "unit": "语用能力总表／理解说话者意图／得体性",
+            "pages": "官方描述语ID 802、9105、9509；网页数据无页码",
+            "alignment": "按情境识别意图、异议和语体；专业背景均在题内提供。只把七八级描述作为功能参考，不把产品advanced等同标准等级。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "6c60a2bdf6a9c5beaa454db6e1387bec107d0922c959377e747d4c21248c42ce"
+    },
+    {
+      "unitId": "companion.postgraduate.rainy-screening",
+      "localQuestionId": "cet6.a08",
+      "expectedHash": "0ce19ce688dd4f64e1b39b5395c62b2a6a279405e19bed3dcc902b3f220e1618",
+      "question": {
+        "id": "question.c38c1199daf68e2e410bfff169746c3d655f3f3dc0b1f8283ecfe0b88a6de1fb",
+        "version": 2,
+        "level": "postgraduate",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "cet6.a08",
+          "goalId": "cet6.precise-wording",
+          "instruction": "从下列短语中选一个，原样填入。",
+          "prompt": "报告只给新说明的清晰度评分，却称它比旧说明省时。请求最直接的支持依据：\nPlease provide ____ to support this claim.\n• completion times for both versions\n• clarity ratings for both versions\n• the revised version's completion time\n• future demand for either version",
+          "explanation": "断言比较新旧说明的完成用时，因此请求两版的完成用时。清晰度评分回答另一个问题；只有新版用时缺少旧版基准；未来需求也不能支持省时断言。索取这些数据不等于预先认定比较结果一定支持断言。",
+          "hint": "核对断言比较的是哪个方面，以及请求是否同时覆盖两个比较对象。",
+          "difficultyReason": "六级受控运用：在正式反馈中同时保留比较指标和比较基准；四个短语都能接在provide之后，不能只凭语法或某个审慎动词作答。",
+          "type": "completion",
+          "acceptedAnswers": ["completion times for both versions"],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "cet.official.2016",
+            "unit": "六级阅读隐含意义、句间关系、贴切措辞及讨论澄清的局部练习",
+            "pages": "印刷2—4、9／PDF7—9、14",
+            "alignment": "依据一般题材及熟悉学术语境中的立场、信息范围、衔接和交际要求，亲编句子级微练习。作者另读印刷1、7—8页六级听力及结构说明，以界定本单元不包含的范围；不复制真题，不模拟整卷。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "2ff5748afb7ff1a8f7eab7a22567ffb15b6d777fd92b8dfc632b1f90cb35f756"
+    },
+    {
+      "unitId": "companion.postgraduate.missing-piece",
+      "localQuestionId": "cet6.second.05",
+      "expectedHash": "de8b9f393c3d8220666f821c0508a80bd999e153caac4d0eadbe492188fbfa98",
+      "question": {
+        "id": "question.d857609a88586758d340f62110173bb9b4a12df227271babaac08bb2571c2e7e",
+        "version": 2,
+        "level": "postgraduate",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "cet6.second.05",
+          "goalId": "cet6.precise-wording",
+          "instruction": "每句独立判断，与准确释义配对，每项用一次。",
+          "prompt": "三句是互不相连的讨论记录。配对时只保留句中明确说出的动作。",
+          "explanation": "acknowledges在这里确认异议存在，不自动包含答复；responds to表示作了回应，不保证说服了提出异议的人；withdraws表示撤回异议，不表示撤回或修改流程。三句不是同一场讨论的时间线，各句都凭自身动词确定动作。",
+          "hint": "辨认动作停留在确认、答复还是撤回；不要替记录补写结果。",
+          "difficultyReason": "六级受控识别：同一主体和同一对象下区分三种论述动作及其结果边界；不能按人名、领域名词或中文对象的对应排除。",
+          "type": "matching",
+          "left": [
+            {
+              "id": "l1",
+              "text": "The committee acknowledges the objection to the revised procedure."
+            },
+            {
+              "id": "l2",
+              "text": "The committee responds to the objection to the revised procedure."
+            },
+            {
+              "id": "l3",
+              "text": "The committee withdraws the objection to the revised procedure."
+            }
+          ],
+          "right": [
+            {
+              "id": "r1",
+              "text": "委员会撤回了对修订流程的异议；未说明流程本身是否改变。"
+            },
+            {
+              "id": "r2",
+              "text": "委员会确认该异议的存在；未说明已作答复或异议已消除。"
+            },
+            {
+              "id": "r3",
+              "text": "委员会对该异议作了回应；未说明回应是否使异议消除。"
+            }
+          ],
+          "answerPairs": [
+            {
+              "left": "l1",
+              "right": "r2"
+            },
+            {
+              "left": "l2",
+              "right": "r3"
+            },
+            {
+              "left": "l3",
+              "right": "r1"
+            }
+          ]
+        },
+        "references": [
+          {
+            "sourceId": "cet.official.2016",
+            "unit": "六级短篇听力、精确措辞、保义及讨论澄清",
+            "pages": "印刷1—4、8—9／PDF6—9、13—14",
+            "alignment": "八听力选择、二听写、四文字选择、三填空、一配对；练条件范围、观点强度、行动顺序和受控表达。短录音不冒充完整长对话或篇章测量，搭配及听写只是支持性巩固。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 Astra逐题返修，主代理核对答案、反例、题间提示与完整组卷；不把规则迁移视为独立掌握测量。来源与媒体保持原登记。"
+      },
+      "contentHash": "2f4f8833ce6dbfd9c4c7870c2f9f237512e93945f8bd409c275ff9af06d0431a"
+    },
+    {
+      "unitId": "companion.senior2.shadow-boats",
+      "localQuestionId": "s2.astra.second.q04",
+      "expectedHash": "10d1c7d5e3c664b51c6065a27f8a906bf6c1360ed71e0fcdecb6f306da068e3a",
+      "question": {
+        "id": "question.89874ccf3c106196c0b325acf15b0eaf3ac021c388242bc54854fb4c7e904021",
+        "version": 2,
+        "level": "senior2",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "s2.astra.second.q04",
+          "goalId": "s2.ing-subject",
+          "instruction": "排列词块",
+          "prompt": "用全部词块表达“检查每扇窗是否都已关好需要耐心”，以Checking开头。这里whether从句是检查的内容，不能改成打开或关闭窗户这一动作。",
+          "explanation": "Checking whether every window is closed整体作主语；is属于里面的whether从句，requires才是主句谓语。词块都要使用，不能把is closed接成patience的内容。",
+          "hint": "先接完整的检查内容，再判断整个句子还有哪一层主语和谓语。",
+          "difficultyReason": "两个句法层级；不是短句单数词尾复现",
+          "type": "arrange",
+          "tokens": [
+            {
+              "id": "p",
+              "text": "patience."
+            },
+            {
+              "id": "e",
+              "text": "every window"
+            },
+            {
+              "id": "c",
+              "text": "Checking"
+            },
+            {
+              "id": "r",
+              "text": "requires"
+            },
+            {
+              "id": "w",
+              "text": "whether"
+            },
+            {
+              "id": "i",
+              "text": "is closed"
+            }
+          ],
+          "acceptedOrders": [["c", "w", "e", "i", "r", "p"]]
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷5、62、103",
+            "alignment": "q01—q02非限制性从句宾语与指向"
+          },
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷29、41、101、104—105",
+            "alignment": "q04、q11、q12活动与名词从句结构"
+          },
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷17、104",
+            "alignment": "q09将来计划询问与间接请求"
+          },
+          {
+            "sourceId": "pep.senior.selective2.preface2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷5、17",
+            "alignment": "q06—q08、q12名词从句"
+          },
+          {
+            "sourceId": "fltrp.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷17、53、65",
+            "alignment": "q03、q05、q10、q13语法结构"
+          },
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷6、18—19、42",
+            "alignment": "q14听理由、q15听预测、q18听语境与事件信息"
+          },
+          {
+            "sourceId": "fltrp.senior.selective1.review2019",
+            "unit": "高二第二组受控练习",
+            "pages": "印刷19、54、66—67",
+            "alignment": "q13听记输入、q16关切安慰、q17折中、q18顺序听辨"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": ["review.20261011.checking-subject"]
+      },
+      "contentHash": "14e7735a7c1a6fff8e70ebea3f1f3a5055027a0854babfe2d06d35a0c3c64ddc"
+    },
+    {
+      "unitId": "marcus.senior2.interview-worktable",
+      "localQuestionId": "by-checking",
+      "expectedHash": "62c8f409124dc691991f6226148e5640de6d8f5902cda40c749399c098ea9709",
+      "question": {
+        "id": "question.df71ba0b7b069a3c5e20897190ba781755570a758e38193d0b1d407949330e8a",
+        "version": 2,
+        "level": "senior2",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "by-checking",
+          "goalId": "s2.ing-roles",
+          "instruction": "按题干限定，只填写横线处缺少的英语。",
+          "prompt": "补全方法说明：“我们通过检查录音来确认原话。” We confirm the exact words by ___ the recording. 填 check 的正确形式。",
+          "explanation": "填 checking。by checking… 表示通过检查来做某事，介词后不能直接接 check 或 to check。",
+          "hint": "by 在这里是介词，后面接表示方法的活动形式。",
+          "difficultyReason": "方法关系由中文给定，-ing 是介词宾语；不测试录音操作技术或事实真假。",
+          "type": "completion",
+          "acceptedAnswers": ["checking"],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior.selective1.review2019",
+            "unit": "Unit 4 Body Language / Discover useful structures",
+            "pages": "印刷第41页；PDF第48页",
+            "alignment": "参考 -ing 作宾语和表语的意义与语法功能，区别于正在进行的动作。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": [
+          "review.20261011.checking-subject",
+          "review.20261011.checking-history"
+        ]
+      },
+      "contentHash": "c0e252b1d5124280c5571d5300789214fc59f4c10a74378159f5b8d07f22d910"
+    },
+    {
+      "unitId": "ruby.senior2.volunteer-handover",
+      "localQuestionId": "reversed-history",
+      "expectedHash": "2333100620cad9041595a61ead766931ca48d21f5c637d6c4c2997b069000afa",
+      "question": {
+        "id": "question.31ae9dec313348e7428394d8ae4f1b22a93468bf229f93c93469cf33ecb5a111",
+        "version": 2,
+        "level": "senior2",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "reversed-history",
+          "goalId": "s2.past-perfect",
+          "instruction": "选择符合本题情景的英语表达。",
+          "prompt": "本题事实：我们周一检查了水箱，周二才发现漏水。哪句保持先后，并用过去完成时突出较早的检查？ tank 指水箱，leak 指漏水。",
+          "explanation": "We had checked the tank before we discovered the leak. 较早的检查用 had checked，较后的发现用 discovered。",
+          "hint": "选择语法成立且没有把先后倒过来的表达。",
+          "difficultyReason": "三项均为可成立的英语结构；按给定顺序与指定时间角度排除颠倒和同时，不作事实阅读测验。",
+          "type": "choice",
+          "options": [
+            {
+              "id": "a",
+              "text": "We had discovered the leak before we checked the tank."
+            },
+            {
+              "id": "b",
+              "text": "We discovered the leak while we were checking the tank."
+            },
+            {
+              "id": "c",
+              "text": "We had checked the tank before we discovered the leak."
+            }
+          ],
+          "answer": "c"
+        },
+        "references": [
+          {
+            "sourceId": "fltrp.senior.selective1.review2019",
+            "unit": "Unit 5 Revealing nature / Using language",
+            "pages": "印刷第53页；PDF第60页",
+            "alignment": "参考以一个过去事件为参照解释更早动作；时间顺序由本题完整给出。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": ["review.20261011.checking-history"]
+      },
+      "contentHash": "f63c22666f62ed73f20eef524c0ed6f9afe58848100813455a2268111e7dd6c9"
+    },
+    {
+      "unitId": "companion.senior1.paper-windmill",
+      "localQuestionId": "s1.astra.b10",
+      "expectedHash": "aaaded6d8c0f77311738728d1be6f8fc09b63af1d20a81126fb61142e3e96aab",
+      "question": {
+        "id": "question.13c7cde813a5927e248524ce9f30d326dfdd7a43cbcf14182965a46de05cbd83",
+        "version": 2,
+        "level": "senior1",
+        "topic": "daily",
+        "roleKeys": [],
+        "question": {
+          "id": "s1.astra.b10",
+          "goalId": "senior1.meeting-place-details",
+          "instruction": "使用全部词块，按题干要求组成表达。",
+          "prompt": "用全部词块组成以The reason开头的句子，说明取消的是步行活动，原因是大雨。",
+          "explanation": "The reason why we cancelled the walk was the heavy rain. why从句说明哪件事需要解释，was之后给出原因；不能把取消活动误作取消雨。",
+          "hint": "先组织要解释的行动，再接主句谓语说明原因。",
+          "difficultyReason": "基础复现：原因从句建句，不计新增高一能力覆盖。",
+          "type": "arrange",
+          "tokens": [
+            {
+              "id": "t1",
+              "text": "was the heavy rain."
+            },
+            {
+              "id": "t2",
+              "text": "we cancelled the walk"
+            },
+            {
+              "id": "t3",
+              "text": "The reason"
+            },
+            {
+              "id": "t4",
+              "text": "why"
+            }
+          ],
+          "acceptedOrders": [["t3", "t4", "t2", "t1"]]
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior1.archive20260929",
+            "unit": "Unit 3 Sports and Fitness / Discovering Useful Structures",
+            "pages": "印刷第40页；PDF第47页",
+            "alignment": "附加问句和事实回答；仅参考语言目标，情景、题干和答案均为原创。"
+          },
+          {
+            "sourceId": "fltrp.senior1.archive20260929",
+            "unit": "Unit 3 Family matters / Using language",
+            "pages": "印刷第29页；PDF第36页",
+            "alignment": "基础时态复习；仅参考语言目标，情景、题干和答案均为原创。"
+          },
+          {
+            "sourceId": "pep.senior1.archive20260929",
+            "unit": "Unit 4 Natural Disasters / Discovering Useful Structures",
+            "pages": "印刷第52页；PDF第59页",
+            "alignment": "限制性定语从句；仅参考语言目标，情景、题干和答案均为原创。"
+          },
+          {
+            "sourceId": "pep.senior1.archive20260929",
+            "unit": "Unit 1 Teenage Life / Write a letter of advice",
+            "pages": "印刷第18页；PDF第25页",
+            "alignment": "本轮实际核读建议、理由及篇章功能；题目原创，不声称原页含全部新搭配。"
+          },
+          {
+            "sourceId": "pep.senior1.archive20260929",
+            "unit": "Unit 2 Travelling Around / Discovering Useful Structures",
+            "pages": "印刷第28页；PDF第35页",
+            "alignment": "现在进行时表达已安排计划；仅参考语言目标，情景、题干和答案均为原创。"
+          },
+          {
+            "sourceId": "pep.senior1.archive20260929",
+            "unit": "Unit 5 Languages Around the World / Discovering Useful Structures",
+            "pages": "印刷第64页；PDF第71页",
+            "alignment": "关系副词与从句成分；仅参考语言目标，情景、题干和答案均为原创。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": ["review.20261011.reason-why"]
+      },
+      "contentHash": "4ba393e0637c6af0f2cc820f88cc7a871121e924a193544f19746de2e5f0dc5f"
+    },
+    {
+      "unitId": "ruby.senior1.meeting-place-details",
+      "localQuestionId": "q5",
+      "expectedHash": "eecb73f4630034050bd7d9f792b3ae1eaa0a246c7643e2cca4bed0d3d5617661",
+      "question": {
+        "id": "question.bd2a1bccfe18fdd1cdfaae19fc2b20cf868b6421fd2e3abe4298b2a72a71afb0",
+        "version": 2,
+        "level": "senior1",
+        "topic": "daily",
+        "roleKeys": [],
+        "question": {
+          "id": "q5",
+          "goalId": "senior1.meeting-place-details",
+          "instruction": "按本题要求，只填写横线处缺少的英语。",
+          "prompt": "按本题要求填一个关系副词：That is the reason ___ we changed the meeting time.",
+          "explanation": "reason 后说明改变时间的原因，使用关系副词 why。",
+          "hint": "题干要求副词而不是介词短语。",
+          "difficultyReason": "高一关系副词；不能机械地见 place 就填 where，接受宾语关系词合法变体。",
+          "type": "completion",
+          "acceptedAnswers": ["why"],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "pep.senior1.archive20260929",
+            "unit": "Unit 5 Languages Around the World / Discovering Useful Structures",
+            "pages": "印刷第64页；PDF第71页",
+            "alignment": "关系副词与从句成分；仅参考语言目标，情景、题干和答案均为原创。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": ["review.20261011.reason-why"]
+      },
+      "contentHash": "e34eaaa2e3fa7938eef85242c8b226c8ea7a7b147ba121cd948c60c164a3138f"
+    },
+    {
+      "unitId": "companion.undergraduate.clear-messages",
+      "localQuestionId": "cet4.astra.a16",
+      "expectedHash": "5e3cbc7248670e2c9bcd75b881957cdbd939127541acb0790d3b43305f6b41c9",
+      "question": {
+        "id": "question.0b25976380924fd25d0f6f68839ad627c5d8d38edda780e08671bb5d7a9e1d8e",
+        "version": 2,
+        "level": "undergraduate",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "cet4.astra.a16",
+          "goalId": "cet4.cohesion",
+          "instruction": "选择最合适的一项",
+          "prompt": "已知：The website was unavailable for an hour. Several people could not complete their bookings. 哪句把前一事实作为后一事实的原因？",
+          "explanation": "b将网站不可用置于because从句，将无法预订作为结果。",
+          "hint": "给两件事分别标出原因和结果，再核对连接词两侧。",
+          "difficultyReason": "比较可成句但意义不同的连接方式。",
+          "type": "choice",
+          "options": [
+            {
+              "id": "a",
+              "text": "The website was unavailable because several people could not complete their bookings."
+            },
+            {
+              "id": "b",
+              "text": "Because the website was unavailable, several people could not complete their bookings."
+            },
+            {
+              "id": "c",
+              "text": "The website was unavailable unless several people completed their bookings."
+            },
+            {
+              "id": "d",
+              "text": "Several people could not complete their bookings so that the website would be unavailable."
+            }
+          ],
+          "answer": "b"
+        },
+        "references": [
+          {
+            "sourceId": "cet.official.2016",
+            "unit": "四级阅读、写作、翻译与交际功能的局部练习",
+            "pages": "印刷2—5／PDF7—10",
+            "alignment": "参考语境词义、句间关系、观点细节、常见应用文表达和句子译义。题文与故事均原创；本轮为十八题文字练习，不声称覆盖听力、完整写作或考试测量。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": ["review.20261011.because"]
+      },
+      "contentHash": "c7543a745662326b8446d67c880c26b3a79faaed19642c61bee99f79e8455996"
+    },
+    {
+      "unitId": "companion.undergraduate.clear-messages",
+      "localQuestionId": "cet4.astra.a10",
+      "expectedHash": "9f759fb3f18a4561bac57a6158d9ef3e8fc1aa577fdc9f2a7eb22c96bc36d23f",
+      "question": {
+        "id": "question.67f18420ce193f13079e78a4ba3d420606e2913c2654c924dab9421bb1051b04",
+        "version": 2,
+        "level": "undergraduate",
+        "topic": "projects",
+        "roleKeys": [],
+        "question": {
+          "id": "cet4.astra.a10",
+          "goalId": "cet4.cohesion",
+          "instruction": "填写符合要求的答案",
+          "prompt": "只从because、although、unless中选一词填空：We moved the discussion online ____ the evening buses were cancelled and some members could not reach the venue.",
+          "explanation": "晚间公交取消且部分成员到不了会场，是改为线上讨论的原因。",
+          "hint": "先判断后半句是在解释决定、反驳预期，还是提出例外条件。",
+          "difficultyReason": "通过两项实际后果判断关系，非看单词形式填空。",
+          "type": "completion",
+          "acceptedAnswers": ["because"],
+          "normalization": {
+            "ignoreCase": true,
+            "ignoreTerminalPunctuation": true
+          }
+        },
+        "references": [
+          {
+            "sourceId": "cet.official.2016",
+            "unit": "四级阅读、写作、翻译与交际功能的局部练习",
+            "pages": "印刷2—5／PDF7—10",
+            "alignment": "参考语境词义、句间关系、观点细节、常见应用文表达和句子译义。题文与故事均原创；本轮为十八题文字练习，不声称覆盖听力、完整写作或考试测量。"
+          }
+        ],
+        "reviewNotes": "2026-10-11 主代理复核可见题面与解析的直接答案词提示；仅对已确认的双题登记互斥，不扩大为所有共享语法题。",
+        "exclusionGroupIds": ["review.20261011.because"]
+      },
+      "contentHash": "159c65ac9fc5a3549fb105aa255b67a995360b770b6b16393160262999c72d85"
+    }
+  ]
+}
