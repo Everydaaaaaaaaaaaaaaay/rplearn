@@ -1,7 +1,7 @@
 {
   "level": "junior3",
   "author": "独立Astra初三作者",
-  "status": "draft-awaiting-independent-review",
+  "status": "independently-reviewed-awaiting-integration",
   "authorship": "36题逐题原创，未用程序生成、组合或替换词槽造题；程序仅用于结构核验。",
   "sourceReading": [
     {
@@ -65,9 +65,9 @@
       "id": "j3.astra.story.a",
       "questionGroup": "a",
       "questionCount": 18,
-      "title": "没钉住的角",
+      "title": "卷起来的角",
       "characterPolicy": "与你同行的一个朋友，可随抽取同行者替换称呼；无职业设定。",
-      "text": "你和同行的朋友带着一张自己画的地图来到小广场，想找个地方把它摊开。长椅刚被雨淋过，你们只好在屋檐下借一块窄窄的窗台。地图的一个角不停卷起来，朋友用钥匙压住，你按住另一边。刚找到要走的路，一阵风又把纸掀起来，露出背面很早以前画的小笑脸。你们都笑了。临走前，你把地图重新折好，特意把那个笑脸留在最外面。这一次，找路也有了一个值得记住的小插曲。",
+      "text": "你和同行的朋友带着一张自己画的地图来到小广场，想找个地方把它摊开。长椅刚被雨淋过，你们只好在屋檐下借一块窄窄的窗台。地图的一个角不停卷起来，朋友用钥匙压住，你按住另一边。刚找到要走的路，一阵风又把纸掀起来，露出背面很早以前画的小笑脸。你们都笑了。临走前，你把地图重新折好，特意把那个笑脸留在最外面。",
       "review": "有展开地图受阻、共同处理、偶然发现和收束；不预告后续语言答案。"
     },
     {
@@ -202,7 +202,7 @@
       "review": {
         "wrongExample": "cups,use,washed",
         "distractors": "没有额外词块；错序会把句末时间放进主语与谓语之间且破坏指定标点结构。",
-        "difficulty": "识别：三词块建立施受关系，作为后续自主填空的准备。",
+        "difficulty": "入门脚手架：三词块且指定开头，操作难度很低；只用于认识被动主干，不作为独立产出能力证据。",
         "ambiguity": "按词块标点固定句末；不据此声称英语不能把时间状语前置。"
       }
     },
@@ -501,7 +501,7 @@
       "goalId": "j3.passive-past",
       "type": "audioArrange",
       "status": "proposed",
-      "prompt": "听一句事件记录，按录音顺序排列所有词块。",
+      "prompt": "听事件记录，选词块组成录音原句。有一个多余词块。",
       "audioScript": "The two keys were found under a chair.",
       "tokens": [
         {
@@ -511,6 +511,10 @@
         {
           "id": "found",
           "text": "were found"
+        },
+        {
+          "id": "left",
+          "text": "were left"
         },
         {
           "id": "keys",
@@ -537,9 +541,9 @@
       },
       "review": {
         "wrongExample": "keys,chair,found",
-        "distractors": "无额外词块；不将地点放在录音未出现的位置。",
-        "difficulty": "受控：听后重建过去被动的完整信息次序。",
-        "ambiguity": "这是听后排序，不把所有词预排成句；录音原文只在提交后显示。"
+        "distractors": "were left也能组成自然的过去被动句，但录音说的是被找到，不能靠语法排除多余词块。",
+        "difficulty": "受控：听辨found与left，再重建过去被动的完整信息次序。",
+        "ambiguity": "答案只包含三个词块；多余词块留在候选区。录音原文仅在提交后显示。"
       }
     },
     {
@@ -585,14 +589,14 @@
       "id": "j3.astra.a13",
       "goalId": "j3.indirect-questions",
       "type": "completion",
-      "prompt": "只修正括号内动词，其余不变：Could you tell me how much this bag ____ (cost)? 询问现在的售价。",
-      "answer": "costs",
+      "prompt": "询问这把钥匙为何打不开锁。用not和work的一般现在时形式补全：Could you tell me why this key ____?",
+      "answer": "does not work",
       "acceptedVariants": [
-        "Costs",
-        "COSTS"
+        "doesn't work",
+        "doesn’t work"
       ],
-      "hint": "从句已经有自己的主语；根据这个主语处理动词，不再加问句助动词。",
-      "explanation": "间接问句中this bag是单数主语，一般现在时用costs。",
+      "hint": "从句需要否定一个动作；保持主语在前，再处理否定和动词形式。",
+      "explanation": "this key是单数，否定谓语用does not work，也可缩写为doesn't work。间接问句不倒装，但否定句仍可需要does。",
       "sourceId": "pep.junior3.full.copyright2014",
       "pages": {
         "printed": [
@@ -603,46 +607,43 @@
         ]
       },
       "review": {
-        "wrongExample": "does cost",
-        "distractors": "cost漏第三人称单数；does cost在特定强调语境可成立，但这里明确只改括号动词且无强调语境。",
-        "difficulty": "迁移：将直接询价句法转换到完整礼貌句。",
-        "ambiguity": "限定单个动词变形，避免把有语境的强调形式作为普遍错误。"
+        "wrongExample": "not works",
+        "distractors": "not works缺少否定助动词；does not works重复标记第三人称单数。",
+        "difficulty": "迁移：从句内否定仍需助动词，区别旧库仅补第三人称单数的start-form。",
+        "ambiguity": "限定一般现在时；接收全写、缩写和两种撇号，不把现在进行时普遍判为错误。"
       }
     },
     {
       "id": "j3.astra.a14",
       "goalId": "j3.passive-present",
-      "secondaryGoalIds": [
-        "j3.passive-past"
-      ],
       "type": "matching",
-      "prompt": "把三条记录与准确含义配对。注意检查者、被检查者和时间。",
+      "prompt": "把三条独立记录与中文配对。Mia是米娅，Leo是利奥。",
       "left": [
         {
           "id": "l1",
-          "text": "The team checks the lights every Friday."
+          "text": "Mia is helped by Leo."
         },
         {
           "id": "l2",
-          "text": "The lights are checked every Friday."
+          "text": "Leo is helped by Mia."
         },
         {
           "id": "l3",
-          "text": "The lights were checked last Friday."
+          "text": "Mia is not helped by Leo."
         }
       ],
       "right": [
         {
           "id": "r1",
-          "text": "上周五有人检查了灯，句中没说是谁。"
+          "text": "利奥没有帮助米娅。"
         },
         {
           "id": "r2",
-          "text": "小组每周五检查灯。"
+          "text": "利奥帮助米娅。"
         },
         {
           "id": "r3",
-          "text": "灯每周五都会被检查，句中没说是谁。"
+          "text": "米娅帮助利奥。"
         }
       ],
       "answerPairs": [
@@ -659,24 +660,22 @@
           "r1"
         ]
       ],
-      "hint": "先圈定每句表达的时间，再判断句中是否交代了执行者。",
-      "explanation": "主动句l1保留team；l2是日常被动且未说执行者；l3是明确上周五的被动事件。",
+      "hint": "同样的两个人，谁提供帮助、谁接受帮助，以及是否发生，都可能不同。",
+      "explanation": "by后是提供帮助的人。l1是利奥帮米娅，l2方向相反；l3否定利奥帮米娅，没有说明是否另有人帮忙。",
       "sourceId": "pep.junior3.full.copyright2014",
       "pages": {
         "printed": [
-          36,
-          44
+          36
         ],
         "pdf": [
-          50,
-          58
+          50
         ]
       },
       "review": {
         "wrongExample": "l1-r2,l2-r1,l3-r3",
-        "distractors": "错误示例把惯常流程与一次过去事件混同。",
-        "difficulty": "迁移：不要求把被动句臆补为小组所做。",
-        "ambiguity": "三条独立记录；未交代执行者不等于无人执行。"
+        "distractors": "错误示例混淆相反的帮助方向和否定事实；三项均出现相同人名，不能按名词连线。",
+        "difficulty": "迁移：从被动句恢复施受方向与否定范围，替换与旧库record-time同构的时态配对。",
+        "ambiguity": "三条是独立记录；否定特定帮助者不等于无人帮助。"
       }
     },
     {
@@ -702,7 +701,7 @@
       "answer": "b",
       "acceptedVariants": [],
       "hint": "区分习惯变化和绝对次数，不要把“某种情况下会做”扩大成“总是做”。",
-      "explanation": "录音对比过去不提问的习惯与如今不懂就问，没有说现在每节课必问。",
+      "explanation": "过去没有在课堂上提问的习惯，现在不懂就问。didn't use to不等于一生从未问过；录音也没说现在每节课必问。",
       "sourceId": "pep.junior3.full.copyright2014",
       "pages": {
         "printed": [
@@ -881,29 +880,40 @@
     {
       "id": "j3.astra.b02",
       "goalId": "j3.rules",
-      "type": "completion",
-      "prompt": "把Don’t park here.改成No开头的简短标牌，意思不变。只填park的正确形式：No ____ here.",
-      "answer": "parking",
-      "acceptedVariants": [
-        "Parking",
-        "PARKING"
+      "type": "choice",
+      "prompt": "规定：未获许可不能开窗，获许可后可以。哪句准确？permission指许可。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Windows must be opened without permission."
+        },
+        {
+          "id": "b",
+          "text": "Windows must not be opened without permission."
+        },
+        {
+          "id": "c",
+          "text": "Windows must not be opened, even with permission."
+        }
       ],
-      "hint": "观察标牌已经给出的开头，选择适合这种简短禁令的动作形式。",
-      "explanation": "No parking here使用No加动名词表达禁止停车，不是No加动词原形。",
-      "sourceId": "fltrp.junior3.upper.review2013",
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "先核对禁止的动作，再看禁令是否只在某个条件下适用。",
+      "explanation": "b禁止未经许可开窗。a要求未经许可也要开窗，c连已获许可的情况也禁止，扩大了范围。",
+      "sourceId": "pep.junior3.full.copyright2014",
       "pages": {
         "printed": [
-          38
+          52
         ],
         "pdf": [
-          45
+          66
         ]
       },
       "review": {
-        "wrongExample": "park",
-        "distractors": "park未转为动名词；parked不是这种禁令的结构。",
-        "difficulty": "识别：常用规则结构，拼写变化直接。",
-        "ambiguity": "题面明确只填park变形，不接受结构不同的Don't park填进现有句框。"
+        "wrongExample": "c",
+        "distractors": "a反转禁止与义务，c把有条件的禁止扩大为无条件禁止；三项均为完整情态被动句。",
+        "difficulty": "识别：理解规则中的许可条件，替换与正式no-running实质同构的No加动名词填空。",
+        "ambiguity": "全部规则由题面给定；不要求了解现实场所如何批准开窗。"
       }
     },
     {
@@ -1134,12 +1144,16 @@
       "goalId": "j3.indirect-questions",
       "type": "audioArrange",
       "status": "proposed",
-      "prompt": "听完整问询，按录音顺序排列全部词块。",
+      "prompt": "听完整问询，选词块组成录音原句。有一个多余词块。",
       "audioScript": "Could you tell me which room we should use?",
       "tokens": [
         {
           "id": "use",
           "text": "should use?"
+        },
+        {
+          "id": "could",
+          "text": "could use?"
         },
         {
           "id": "we",
@@ -1175,8 +1189,8 @@
       },
       "review": {
         "wrongExample": "tell,we,room,use",
-        "distractors": "无额外词块；错误顺序把疑问短语放到主语之后。",
-        "difficulty": "受控：听后重建带情态词的间接问句，不要求输入长句。",
+        "distractors": "could use也能组成自然问句，但与录音中的should不同；只靠语法不能决定用哪块。",
+        "difficulty": "受控：听辨情态词后重建间接问句，不要求输入长句。",
         "ambiguity": "录音原文答前隐藏；词块应打乱并可点选排序。"
       }
     },
@@ -1276,10 +1290,16 @@
           "written",
           "students",
           "year"
+        ],
+        [
+          "story",
+          "students",
+          "written",
+          "year"
         ]
       ],
-      "hint": "主语是作品；把发生的事、谁做的和何时发生按要求接上。",
-      "explanation": "The story was written by two students last year. 作品作为承受者，作者由by引出。",
+      "hint": "主语是作品；核对被动谓语、作者信息和时间是否都保留了。",
+      "explanation": "可写The story was written by two students last year. 也接受The story by two students was written last year.，后者把作者信息放在主语短语里。",
       "sourceId": "pep.junior3.full.copyright2014",
       "pages": {
         "printed": [
@@ -1290,10 +1310,10 @@
         ]
       },
       "review": {
-        "wrongExample": "story,students,written,year",
-        "distractors": "错误排列把执行者短语插入规定的主语与谓语之间，不能形成此任务要求的中性完整句。",
+        "wrongExample": "story,year,students,written",
+        "distractors": "错误排列把带句号的时间词块放在主语之后，割裂句子；by two students修饰story的自然排列已登记，不判错。",
         "difficulty": "受控：被动句同时保留作者与时间，四块操作。",
-        "ambiguity": "明确执行者在时间前，避免拒绝英语中其他自然的时间状语位置。"
+        "ambiguity": "两种合法作者短语位置均接收。指定开头和带句号的时间块仍有效，不将单一默认词序当唯一合语法表达。"
       }
     },
     {
@@ -1446,17 +1466,14 @@
       "id": "j3.astra.b15",
       "goalId": "j3.indirect-questions",
       "type": "completion",
-      "prompt": "询问是否需要提前预订，只填一个表示“是否”的连接词：Could you tell me ____ we need to book in advance?",
-      "answer": "if",
+      "prompt": "把Will we need a coat?放进问询。重排will、we、need填空，可缩写：Do you know if ____ a coat?",
+      "answer": "we will need",
       "acceptedVariants": [
-        "whether",
-        "If",
-        "Whether",
-        "IF",
-        "WHETHER"
+        "we'll need",
+        "we’ll need"
       ],
-      "hint": "从句不是给出一个条件，而是把需要确认的整件事作为询问内容。",
-      "explanation": "这里if与whether都可以引出是否宾语从句，两者均应判对。",
+      "hint": "保留原问题的将来含义，检查放进if后，主语与情态动词的先后。",
+      "explanation": "应填we will need，缩写we'll need也可以。这里if表示“是否”，从句保留will，并改为陈述语序；它不是将来条件从句。",
       "sourceId": "pep.junior3.full.copyright2014",
       "pages": {
         "printed": [
@@ -1467,10 +1484,10 @@
         ]
       },
       "review": {
-        "wrongExample": "where",
-        "distractors": "where询问地点，不表示题面给出的是否需要预订。",
-        "difficulty": "迁移：识别是否从句并承认两个正确变体。",
-        "ambiguity": "不加入or not或介词来人为排除if；不把此if当将来条件从句。"
+        "wrongExample": "will we need",
+        "distractors": "will we need仍倒装；we need漏掉要求保留的will，不是否定一般现在时可以谈将来。",
+        "difficulty": "迁移：将直接将来问句嵌入是否从句，替换与旧库whether-seat和whether-come重复的连接词填空。",
+        "ambiguity": "允许will与we缩合；这是限定原词重组，不要求学生在所有可能时态中猜测唯一答案。"
       }
     },
     {
@@ -1507,7 +1524,7 @@
       "id": "j3.astra.b17",
       "goalId": "j3.passive-present",
       "type": "arrange",
-      "prompt": "这份说明要表达：只在周末派发地图。以Maps开头，用全部词块，保留only修饰的时间范围。",
+      "prompt": "组句：只在周末派发地图。以Maps开头，用全部词块；把only紧挨在时间词块前。",
       "tokens": [
         {
           "id": "weekends",
@@ -1549,7 +1566,7 @@
         "wrongExample": "only,maps,given,weekends",
         "distractors": "Only Maps开头会把限定范围改成物品，并违反指定开头。",
         "difficulty": "迁移：被动流程中保持only的语义范围，四块操作。",
-        "ambiguity": "词块given out作为整体减少短语动词拆分负担；指定起句和only范围后唯一序列合理。"
+        "ambiguity": "明确only紧挨时间词块，避免把其他可表达相同限定的副词位置误判为不合语法。"
       }
     },
     {
@@ -1601,9 +1618,9 @@
         "tokens[{id,text}]",
         "acceptedOrders[[tokenId]]"
       ],
-      "behavior": "重播音频后按顺序点选或拖动全部词块，提交整句；支持撤回和重新排序，答前不显示台词。",
+      "behavior": "播放或重播后，从含一个多余词块的候选区依次点选或拖动所需词块；支持撤回和重新排序，答前不显示台词。a11使用3/4块，b08使用4/5块。",
       "grading": "按tokenId整序列与任一acceptedOrders一致判对；不降级为选择题。",
-      "remaining": "需与后端audioArrange合同、iOS原生排序、读屏焦点及真实音频接入共同验证；本作者稿不声明实现完成。"
+      "remaining": "主代理已静态确认现有schema/判题允许acceptedOrders为tokens子集，iOS允许自由选移后提交，无需新题型枚举。仍需真实音频、原生交互及读屏焦点实测；题目保留proposed直至验收。"
     },
     "matching": "一次配完三个独立语义关系再提交；不得以三道独立选择题宣称配对交互完成。"
   },
@@ -1613,10 +1630,10 @@
     "本稿无必需图片题，不伪造imageAssetId；故事配图若制作，需另立imageBriefs和视觉审核，不影响题意成立。"
   ],
   "remainingWork": [
-    "主代理逐题独立审阅、盲答及与旧库实质去重；作者review是自审，不是验收。",
+    "已完成独立代理逐题内容复核和54道正式初三题对照，详见junior3-review.md；仍需主代理终审，不等同教师或学习者验证。",
     "36题为两组18题候选，不是完整初三全年题库或九星全部组卷余量。",
     "核验实际18题挑战合同、补答唯一计分、开放题变体归一、配对与排序的辅助功能、移动屏幕负担。",
-    "媒体9条音频及2道audioArrange合同/客户端交互未验收，不能发布。",
+    "媒体9条音频及2道audioArrange原生交互未验收，不能发布；含竞争词块的子集答案合同已由主代理静态核对。",
     "初三推测情态词未纳入本稿：现有catalog无对应真实goalId，须单独核读正文、设计目标并获主代理纳入后再扩写，不借rules目标冒充覆盖。",
     "只写本作者稿，不修改正式库，不提交，不部署。"
   ]

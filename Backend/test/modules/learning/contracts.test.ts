@@ -116,6 +116,46 @@ describe("单元内容合同", () => {
       gradeAnswer(question, { kind: "text", text: "I am Oliver" }),
     ).toThrow();
   });
+  it("听后选词保留竞争词块，允许只选录音需要的子集", () => {
+    const unit = learningFixture();
+    const seed = unit.questions[2];
+    if (seed?.type !== "arrange") throw new Error("缺少排序夹具。");
+    const question = {
+      ...seed,
+      type: "audioArrange" as const,
+      instruction: "选出听到的词块，有多余词块。",
+      tokens: [...seed.tokens, { id: "other", text: "Nina." }],
+      audio: { assetId: "test.competition", text: "I am Oliver.", voice: "M5" },
+    };
+    const parsed = unitSchema.parse({
+      ...unit,
+      questions: unit.questions.map((q) => (q.id === seed.id ? question : q)),
+    });
+    const visible = publicUnit(parsed).questions.find((q) => q.id === seed.id);
+    // 公开载荷不能删去干扰词，也不能标出哪些词未进入正确答案。
+    expect(visible).toHaveProperty("tokens", question.tokens);
+    expect(visible).not.toHaveProperty("acceptedOrders");
+    expect(visible).toHaveProperty("audio", { assetId: "test.competition" });
+    expect(
+      gradeAnswer(question, {
+        kind: "arrange",
+        tokenIds: ["i", "am", "name"],
+      }).outcome,
+    ).toBe("correct");
+    // 语法成立但姓名与录音不同：应判内容错误，而非格式错误。
+    expect(
+      gradeAnswer(question, {
+        kind: "arrange",
+        tokenIds: ["i", "am", "other"],
+      }).outcome,
+    ).toBe("incorrect");
+    expect(
+      gradeAnswer(question, {
+        kind: "arrange",
+        tokenIds: ["i", "am", "name", "other"],
+      }).outcome,
+    ).toBe("incorrect");
+  });
   it("验证六种题型，并拒绝答案不存在、标识重复及未覆盖的目标", () => {
     const unit = learningFixture();
     expect(unitSchema.safeParse(unit).success).toBe(true);

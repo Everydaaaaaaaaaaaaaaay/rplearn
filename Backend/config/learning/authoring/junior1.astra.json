@@ -3,7 +3,7 @@
   "author": {
     "name": "Astra 初一独立作者",
     "method": "先逐页核读六个实际目标对应正文，再为每题单独决定交际目的、条件、答案和错误机制，直接撰写36个独立JSON题目；未使用循环、组合词表、槽位替换或程序生成题目。",
-    "status": "作者自审草稿；尚未独立审阅，尚无音频，不可发布"
+    "status": "2026-10-11 已完成独立逐题首审与人工返修；媒体和扩展交互未验收，不可发布"
   },
   "sourceReading": [
     {
@@ -28,17 +28,40 @@
   ],
   "interactionContract": {
     "audioArrange": {
-      "status": "实现待核验，媒体待制作",
-      "description": "先听隐藏原文的音频，再点选或拖动全部词块重建听到的整句；按acceptedOrders的词块ID整题判分。不得展示原文或把任务改成阅读排序；提供重播、移除及无障碍点选。"
+      "status": "现有子集词块能力可表达；本批判题回归、公开载荷与音频原生体验待验收",
+      "description": "隐藏audioScript，播放后从四或五个词块中选用三或四块，留下一块不用。所有竞争选项可组成合语法句，由录音决定采用哪块；按acceptedOrders的词块ID整题判分。支持重播、取消选择、点选移动及读屏；不以强制拖动完成。",
+      "useAllTokens": false,
+      "unusedTokenCount": 1,
+      "releaseGate": "主代理代码核查确认可提交合法词块子集；本批仍须验证多余词块判题、公开载荷不泄漏及原生操作，不转换为静默阅读排序。"
     },
-    "inputNormalization": "completion和dictation接受首尾空格、大小写、直弯撇号及句末标点归一；明确列出的缩写与全写都可接受。选择题用选项ID；配对须全部正确。"
+    "inputNormalization": "completion和dictation接受首尾空格、大小写、直弯撇号及句末标点归一；明确列出的缩写与全写都可接受。选择题用选项ID；配对须全部正确。",
+    "feedback": "保留每题提交后的及时反馈；同组共享语言规则是练习迁移，不宣称各题均为独立掌握测量。组卷前检查题面、候选项、音频、提示及解析是否直接给出另一题的具体答案；下列互斥约束不可被随机组卷忽略。",
+    "assemblyExclusions": [
+      {
+        "questionIds": [
+          "j1.astra.a01",
+          "j1.astra.b12"
+        ],
+        "reason": "mine及复数归属框架复现；两组不能合并为一次独立诊断。",
+        "kind": "doNotMixDiagnosticGroups"
+      },
+      {
+        "questionIds": [
+          "j1.astra.a05",
+          "j1.astra.b01"
+        ],
+        "reason": "同为人称短答配对，跨组可练习，不可当成新结构覆盖。",
+        "kind": "doNotMixDiagnosticGroups"
+      }
+    ],
+    "arrange": "普通arrange用全部词块；b16词块为整句对话卡，按给定轮次一次提交判分，保留换行、可点选重排。与audioArrange的多余词块规则分开。"
   },
   "questions": [
     {
       "id": "j1.astra.a01",
       "goalId": "junior1.lost-found-desk",
       "type": "choice",
-      "prompt": "同伴指着你脚边的两只手套问：Are these yours? 手套确实属于你。选自然的回答。",
+      "prompt": "同伴拿着两只手套问：Are these yours? 你看见自己的姓名标记，确认两只都是你的。选同时回答问题并说明归属的一句。",
       "options": [
         {
           "id": "a",
@@ -55,7 +78,7 @@
       ],
       "answer": "b",
       "acceptedVariants": [],
-      "hint": "先数清物品，再检查表示归属的词能否独立放在句末。",
+      "hint": "核对回答是否完整保留题内的数量与归属。",
       "explanation": "两只手套用they，mine可独立表示我的东西；it指单数，my后需接名词。",
       "difficulty": "基础：复数与名词性物主代词。",
       "source": "pep.junior1.archive20260929 印刷15／PDF38",
@@ -79,7 +102,7 @@
         },
         {
           "id": "b",
-          "text": "笔记本在桌下，包在桌上。"
+          "text": "笔记本在包里，包在桌上。"
         },
         {
           "id": "c",
@@ -95,7 +118,7 @@
       "review": {
         "correctExample": "a",
         "wrongExample": "c",
-        "distractors": "b改变包的位置且未保留笔记本直接位置；c误听in为on。",
+        "distractors": "b只改变包的位置；c只改变笔记本与包的关系，两项均需听清介词。",
         "ambiguity": "只评估直接听到的两条记录；题面不预告位置。"
       }
     },
@@ -103,20 +126,20 @@
       "id": "j1.astra.a03",
       "goalId": "junior1.snack-preferences",
       "type": "completion",
-      "prompt": "你记录一位男同学的午餐喜好。用like的正确形式补全：He ____ rice, but he doesn't like bread.",
-      "answer": "likes",
+      "prompt": "午餐调查写着：He likes rice. 现在确认他不喜欢米饭。保留主语和rice，只在空格填入否定部分：He ____ rice.（填两个或三个词）",
+      "answer": "doesn't like",
       "acceptedVariants": [
-        "Likes"
+        "does not like"
       ],
-      "hint": "空格属于前半句，先找这一句的主语和句式。",
-      "explanation": "He在一般现在时肯定句中搭配likes；后半句有doesn't，不影响前半句的动词。",
-      "difficulty": "基础：第三人称肯定与否定边界。",
+      "hint": "改变的是喜好的肯否，人物没有变化。",
+      "explanation": "He doesn't like rice. 也可写成He does not like rice. 否定结构中的like用原形。",
+      "difficulty": "受控运用：把肯定记录改为否定，输入2—3词。",
       "source": "pep.junior1.archive20260929 印刷33／PDF56",
       "review": {
-        "correctExample": "likes",
-        "wrongExample": "like",
-        "distractors": "like受后半句原形干扰；liked改变时态。",
-        "ambiguity": "给定动词，仅填词形。"
+        "correctExample": "doesn't like",
+        "wrongExample": "doesn't likes",
+        "distractors": "否定助动词后仍写likes会重复标记第三人称。",
+        "ambiguity": "接受缩写与全写；不是自由改写整句。"
       }
     },
     {
@@ -146,7 +169,7 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "先放询问价格的词块，再连接动词和商品。",
+      "hint": "先完整读一遍排好的句子，确认它在问价格。",
       "explanation": "How much are these shoes?用are与复数shoes一致。",
       "difficulty": "基础：三块完整价格问句。",
       "source": "pep.junior1.archive20260929 印刷39／PDF62",
@@ -161,43 +184,43 @@
       "id": "j1.astra.a05",
       "goalId": "junior1.community-class-board",
       "type": "matching",
-      "prompt": "把课程问题与直接回答配对，每项用一次。",
+      "prompt": "三张采访卡分别问不同人的课程偏好。把问题与人称对应的直接回答配对，每项一次。",
       "left": [
         {
           "id": "l1",
-          "text": "Who teaches you art?"
+          "text": "Why do you like music?"
         },
         {
           "id": "l2",
-          "text": "When is your art class?"
+          "text": "Why does your sister like music?"
         },
         {
           "id": "l3",
-          "text": "Why do you like art?"
+          "text": "Why do your parents like music?"
         }
       ],
       "right": [
         {
           "id": "r1",
-          "text": "Because it's relaxing."
+          "text": "Because they think it is fun."
         },
         {
           "id": "r2",
-          "text": "On Wednesday."
+          "text": "Because I think it is fun."
         },
         {
           "id": "r3",
-          "text": "Ms. Green."
+          "text": "Because she thinks it is fun."
         }
       ],
       "answerPairs": [
         [
           "l1",
-          "r3"
+          "r2"
         ],
         [
           "l2",
-          "r2"
+          "r3"
         ],
         [
           "l3",
@@ -205,22 +228,22 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "分别判断问题需要人物、时间还是原因。",
-      "explanation": "Who需要人物，When需要时间，Why需要原因。",
-      "difficulty": "基础：三类问答区分。",
+      "hint": "同样的课程与评价重复出现，重点追踪每张卡在问谁。",
+      "explanation": "直接作答时you转为I；your sister由she回指；your parents由they回指。三条都在解释喜欢音乐的原因。",
+      "difficulty": "受控运用：相同原因内容中的问答人称对应。",
       "source": "pep.junior1.archive20260929 印刷51／PDF74",
       "review": {
-        "correctExample": "l1-r3,l2-r2,l3-r1",
-        "wrongExample": "l1-r2,l2-r3,l3-r1",
-        "distractors": "交换前两项会用星期回答谁、用人名回答时间。",
-        "ambiguity": "短答自然有效，不要求补成完整句。"
+        "correctExample": "l1-r2,l2-r3,l3-r1",
+        "wrongExample": "l1-r3,l2-r2,l3-r1",
+        "distractors": "交换前两项会把听者本人和其姐妹混为一人。",
+        "ambiguity": "三张卡是独立采访；三项均为课程、相同评价，不可只靠名词或because配对。"
       }
     },
     {
       "id": "j1.astra.a06",
       "goalId": "junior1.camera-club-kit",
       "type": "choice",
-      "prompt": "你需要借相机，想先问Sam有没有相机。哪句询问拥有物，而不是询问喜好？",
+      "prompt": "你不知道Sam有没有相机。哪句只询问他是否拥有相机？",
       "options": [
         {
           "id": "a",
@@ -228,7 +251,7 @@
         },
         {
           "id": "b",
-          "text": "Is Sam a camera?"
+          "text": "Does Sam need a camera?"
         },
         {
           "id": "c",
@@ -238,41 +261,53 @@
       "answer": "c",
       "acceptedVariants": [],
       "hint": "检查句子的动作是否对应你需要确认的信息。",
-      "explanation": "have询问拥有；like询问喜欢；Is Sam a camera把人说成物品。",
+      "explanation": "have问拥有，like问喜欢，need问需要。喜欢或需要相机都不能证明已经拥有。",
       "difficulty": "基础：have与like及be的语义区别。",
       "source": "pep.junior1.archive20260929 印刷27／PDF50",
       "review": {
         "correctExample": "c",
         "wrongExample": "a",
-        "distractors": "a语法正确却问错信息；b结构表达身份而非拥有。",
+        "distractors": "a自然但问喜好；b自然但问需要。三句均语法正确，必须区分所问信息。",
         "ambiguity": "相机是否能借是后续问题，本题只问拥有。"
       }
     },
     {
       "id": "j1.astra.a07",
       "goalId": "junior1.lost-found-desk",
-      "type": "completion",
-      "prompt": "这本书属于一位女孩，她已确认了姓名。用her的适当形式补全：The book is ____.",
-      "answer": "hers",
-      "acceptedVariants": [
-        "Hers"
-      ],
-      "hint": "空后没有名词，选择能独立表达归属的形式。",
-      "explanation": "hers独立表示她的东西；her通常在这里需要后接book。",
-      "difficulty": "受控运用：物主代词独立使用。",
+      "type": "choice",
+      "prompt": "一位女孩说：This is my bag. 随后她指着旁边另一个包说：That is his. 哪条认领记录符合她的话？",
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "每一句都有各自指向的物品和归属词。",
+      "explanation": "女孩说my时指她自己；第二句his说明另一个包属于男性。不能把两个指示词当成同一个包。",
+      "difficulty": "受控运用：跨两句区分物品指向与所有者。",
       "source": "pep.junior1.archive20260929 印刷15／PDF38",
       "review": {
-        "correctExample": "hers",
-        "wrongExample": "her",
-        "distractors": "her缺少其修饰的名词；she是主格。",
-        "ambiguity": "给定her词形，不接受换成其他人称。"
-      }
+        "correctExample": "b",
+        "wrongExample": "c",
+        "distractors": "a忽略his；c交换两个包的所有者。",
+        "ambiguity": "不要求猜男性身份；题面明确是两个包。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "两个包都属于女孩。"
+        },
+        {
+          "id": "b",
+          "text": "第一个包属于女孩，另一个属于一位男性。"
+        },
+        {
+          "id": "c",
+          "text": "第一个包属于一位男性，另一个属于女孩。"
+        }
+      ]
     },
     {
       "id": "j1.astra.a08",
       "goalId": "junior1.reading-room-locations",
       "type": "audioArrange",
-      "prompt": "听同伴询问物品位置，用全部词块重建听到的问题。",
+      "prompt": "听位置问题，从词块中选出听到的内容并排序，有一个词块不用。",
       "audioScript": "Where are the red pens?",
       "tokens": [
         {
@@ -286,6 +321,10 @@
         {
           "id": "where",
           "text": "Where"
+        },
+        {
+          "id": "blue",
+          "text": "the blue pens?"
         }
       ],
       "acceptedOrders": [
@@ -296,47 +335,47 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "留意录音怎样从疑问词过渡到被寻找的物品。",
+      "hint": "有两种都能组成自然问句的物品描述，按录音选择。",
       "explanation": "Where are the red pens?中复数pens与are搭配。",
-      "difficulty": "受控运用：听后重建位置问句。",
+      "difficulty": "受控运用：听辨颜色并重建位置问句。",
       "source": "pep.junior1.archive20260929 印刷21／PDF44",
       "review": {
         "correctExample": "where,are,pens",
         "wrongExample": "where,pens,are",
         "distractors": "后者保留内容但不是所听的疑问语序。",
-        "ambiguity": "原文答后揭示；音频尚待制作。"
+        "ambiguity": "red与blue对应序列均合语法，录音决定选择；主代理确认现有合同可表达子集，本批仍待判题与原生验收。"
       }
     },
     {
       "id": "j1.astra.a09",
       "goalId": "junior1.snack-preferences",
       "type": "choice",
-      "prompt": "你问：Does Mei like eggs? 对方回答：No, she doesn't. 哪条记录准确？",
+      "prompt": "Mei说：I like eggs. Lin说：I do, too. 你只记录Lin的喜好，哪项有依据？",
       "options": [
         {
           "id": "a",
-          "text": "Mei doesn't like eggs."
+          "text": "Lin likes eggs."
         },
         {
           "id": "b",
-          "text": "Mei don't like eggs."
+          "text": "Lin doesn't like eggs."
         },
         {
           "id": "c",
-          "text": "Mei likes eggs."
+          "text": "Lin likes every kind of food."
         }
       ],
       "answer": "a",
       "acceptedVariants": [],
-      "hint": "同时保留回答的肯否和人称。",
-      "explanation": "否定短答说明Mei不喜欢鸡蛋，第三人称单数用doesn't like。",
-      "difficulty": "受控运用：把短答转成完整记录。",
+      "hint": "先找后一句省略的内容，再判断能推到多大范围。",
+      "explanation": "I do, too承接前句的like eggs，表示Lin也喜欢鸡蛋；不代表Lin喜欢所有食物。",
+      "difficulty": "受控运用：恢复肯定短答的内容，不扩大结论。",
       "source": "pep.junior1.archive20260929 印刷33／PDF56",
       "review": {
         "correctExample": "a",
-        "wrongExample": "b",
-        "distractors": "b人称搭配错误；c反转肯否。",
-        "ambiguity": "不把不喜欢解释成过敏或不能吃。"
+        "wrongExample": "c",
+        "distractors": "b反转肯否；c把一种食物扩大成所有食物。",
+        "ambiguity": "只记录明确表达的鸡蛋偏好，不推断健康或过敏。"
       }
     },
     {
@@ -361,7 +400,7 @@
       ],
       "answer": "b",
       "acceptedVariants": [],
-      "hint": "分别记住商品与数字，别只记数字出现的顺序。",
+      "hint": "为每件商品分别记一个金额，再检查记录。",
       "explanation": "cap对应twelve dollars，socks对应two dollars。",
       "difficulty": "受控运用：两个商品与明确价格。",
       "source": "pep.junior1.archive20260929 印刷39／PDF62",
@@ -375,22 +414,34 @@
     {
       "id": "j1.astra.a11",
       "goalId": "junior1.community-class-board",
-      "type": "completion",
-      "prompt": "对方说：Because the lessons are fun. 你原本问的是喜欢音乐课的原因。只填疑问词：____ do you like music?",
-      "answer": "Why",
-      "acceptedVariants": [
-        "why"
-      ],
-      "hint": "看答语提供的是哪一类信息。",
-      "explanation": "because引出原因，与Why提问相呼应。",
-      "difficulty": "受控运用：从回答识别疑问信息。",
+      "type": "choice",
+      "prompt": "访谈记录：Why do you like music? — Because I can sing with my friends. 哪条中文记录准确？",
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "确认喜欢的原因，不要给朋友添加新身份。",
+      "explanation": "can sing with my friends给出了与朋友一起唱歌的原因；没有说朋友是老师，也没有否定喜欢。",
+      "difficulty": "受控运用：读懂具体课程原因，而非补疑问词。",
       "source": "pep.junior1.archive20260929 印刷51／PDF74",
       "review": {
-        "correctExample": "Why",
-        "wrongExample": "When",
-        "distractors": "When问时间；Who问人物，均不与原因回答匹配。",
-        "ambiguity": "已说明问喜欢的原因，不考猜测省略对话。"
-      }
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b偷换朋友的身份；c反转喜好和能力。",
+        "ambiguity": "问句和答句全部在本题，独立完成。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "喜欢音乐课，因为可以和朋友一起唱歌。"
+        },
+        {
+          "id": "b",
+          "text": "喜欢音乐课，因为朋友是音乐老师。"
+        },
+        {
+          "id": "c",
+          "text": "不喜欢音乐课，因为不能和朋友一起唱歌。"
+        }
+      ]
     },
     {
       "id": "j1.astra.a12",
@@ -405,7 +456,7 @@
       ],
       "hint": "写完检查数量词后面的名词形式。",
       "explanation": "We与have搭配，two后用复数maps。",
-      "difficulty": "受控运用：五个常用词的听写。",
+      "difficulty": "受控运用：四个常用词的短句听写。",
       "source": "pep.junior1.archive20260929 印刷27／PDF50",
       "review": {
         "correctExample": "We have two maps.",
@@ -446,9 +497,9 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "先说所指物品，再说明否定的归属关系。",
+      "hint": "排好后核对是不是在否认所指物品的归属。",
       "explanation": "Those keys are not mine.指明复数物品并否认归属。",
-      "difficulty": "迁移：指示词、复数和归属合成整句。",
+      "difficulty": "受控运用：四词块重建否定归属句。",
       "source": "pep.junior1.archive20260929 印刷15／PDF38",
       "review": {
         "correctExample": "those,keys,not,mine",
@@ -480,7 +531,7 @@
       "acceptedVariants": [],
       "hint": "既要回答问题的方向，也要让代词对应被问的对象。",
       "explanation": "地点用in the library，单数reading room用It is。a只说特点，b人称数量不匹配。",
-      "difficulty": "迁移：位置与特点信息区分。",
+      "difficulty": "受控运用：区分地点回答与特点描述。",
       "source": "pep.junior1.archive20260929 印刷21／PDF44",
       "review": {
         "correctExample": "c",
@@ -493,7 +544,7 @@
       "id": "j1.astra.a15",
       "goalId": "junior1.snack-preferences",
       "type": "audioArrange",
-      "prompt": "听对一位同学的介绍，用所有词块还原句子。",
+      "prompt": "听偏好介绍，选出听到的词块并排序，有一个词块不用。",
       "audioScript": "She likes apples but not pears.",
       "tokens": [
         {
@@ -511,6 +562,10 @@
         {
           "id": "but",
           "text": "but"
+        },
+        {
+          "id": "and",
+          "text": "and"
         }
       ],
       "acceptedOrders": [
@@ -522,35 +577,33 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "听清两个食物之间是什么关系，以及否定影响哪一部分。",
+      "hint": "两种连接词都能形成句子，听清说话人采用了哪一种。",
       "explanation": "录音说她喜欢苹果但不喜欢梨；but not连接相反偏好。",
-      "difficulty": "迁移：整句听辨转折和否定范围。",
+      "difficulty": "受控运用：听辨连接词，重建已提供词块的偏好句。",
       "source": "pep.junior1.archive20260929 印刷33／PDF56",
       "review": {
         "correctExample": "she,apples,but,pears",
         "wrongExample": "she,but,apples,pears",
         "distractors": "错序使转折位于主要动作之前。",
-        "ambiguity": "提供完整词块避免把连词排布当自由作文；正文为偏好结构依据。"
+        "ambiguity": "and not与but not均可成句，需听录音选but；提供词块仍降低听写负担，不宣称独立口语产出。"
       }
     },
     {
       "id": "j1.astra.a16",
       "goalId": "junior1.market-price-talk",
       "type": "completion",
-      "prompt": "价签写着这件夹克30美元。用is或are补全顾客的问题：How much ____ this jacket?",
-      "answer": "is",
-      "acceptedVariants": [
-        "Is"
-      ],
-      "hint": "价格数字不决定动词形式，先看被询问的商品名词。",
-      "explanation": "this jacket为单数，因此用is；30只是价格。",
-      "difficulty": "迁移：排除数字对单复数的干扰。",
+      "prompt": "你在录入英文价签。店员写道：The jacket is thirty dollars. 只在金额框填阿拉伯数字：$____",
+      "answer": "30",
+      "acceptedVariants": [],
+      "hint": "只提取价格，不填写商品名称或货币符号。",
+      "explanation": "thirty表示30，金额框前已有美元符号，因此只填30。",
+      "difficulty": "基础：把给定英语价格记录为数字，不做计算。",
       "source": "pep.junior1.archive20260929 印刷39／PDF62",
       "review": {
-        "correctExample": "is",
-        "wrongExample": "are",
-        "distractors": "are把价格数字误当主语数量。",
-        "ambiguity": "仅在两个be形式中选择，不考价格计算。"
+        "correctExample": "30",
+        "wrongExample": "13",
+        "distractors": "13对应thirteen，与thirty不同。",
+        "ambiguity": "题面指定阿拉伯数字且已有美元符号，不接受重复符号或整句。"
       }
     },
     {
@@ -577,7 +630,7 @@
       "acceptedVariants": [],
       "hint": "辨认录音提供的信息类别，不要添加没有听到的细节。",
       "explanation": "Thursday afternoon提供课程时间，可以回答When；没有提供教师或原因。",
-      "difficulty": "迁移：从听到的信息反选合适问题。",
+      "difficulty": "受控运用：从听到的信息选择能回答的问题。",
       "source": "pep.junior1.archive20260929 印刷51／PDF74",
       "review": {
         "correctExample": "b",
@@ -590,7 +643,7 @@
       "id": "j1.astra.a18",
       "goalId": "junior1.camera-club-kit",
       "type": "choice",
-      "prompt": "一位男同学说：I have a camera, but my brother doesn't. 你要向别人准确转述其中关于弟弟的情况。选正确的一句。",
+      "prompt": "一位男同学说：I have a camera, but my brother doesn’t. 你要转述其中关于他兄弟的情况。选正确的一句。",
       "options": [
         {
           "id": "a",
@@ -615,7 +668,7 @@
         "correctExample": "a",
         "wrongExample": "b",
         "distractors": "b在doesn't后仍用has；c漏掉否定。",
-        "ambiguity": "男同学与其弟弟的人称明确给出，不根据姓名或角色推断。"
+        "ambiguity": "brother未说明年龄，不译成弟弟；拥有与否由本题原话确定。"
       }
     },
     {
@@ -666,7 +719,7 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "问题分别问谁？让回答中的人称指回相应对象。",
+      "hint": "每张卡独立作答，核对回答中的人称和助动词。",
       "explanation": "sister对应she，friends对应they，问you时说话人用I回答。",
       "difficulty": "基础：三种人称的短答。",
       "source": "pep.junior1.archive20260929 印刷27／PDF50",
@@ -681,32 +734,32 @@
       "id": "j1.astra.b02",
       "goalId": "junior1.community-class-board",
       "type": "choice",
-      "prompt": "你已经知道美术课在星期二，现在还想知道谁来教。选最合适的问题。",
+      "prompt": "同伴问：Who is your art teacher? 你回答：On Tuesday. 为使回答切题，还需要补充哪类信息？",
       "options": [
         {
           "id": "a",
-          "text": "When is the art class?"
+          "text": "教美术的老师是谁。"
         },
         {
           "id": "b",
-          "text": "Who is the art teacher?"
+          "text": "美术课在星期几。"
         },
         {
           "id": "c",
-          "text": "What is your favorite subject?"
+          "text": "为什么喜欢美术。"
         }
       ],
-      "answer": "b",
+      "answer": "a",
       "acceptedVariants": [],
-      "hint": "把已知信息和仍然缺少的信息分开。",
-      "explanation": "缺少的是教师身份，用Who；a重复问时间，c问偏好而不是教师。",
-      "difficulty": "基础：日常信息缺口。",
+      "hint": "检查已有回答是否解决了对方的疑问。",
+      "explanation": "Who询问人物。On Tuesday只给了时间，没有提供教师身份。",
+      "difficulty": "基础：发现问答信息不匹配并确定修复方向。",
       "source": "pep.junior1.archive20260929 印刷51／PDF74",
       "review": {
-        "correctExample": "b",
-        "wrongExample": "a",
-        "distractors": "a被题面的星期吸引；c转向另一类课程信息。",
-        "ambiguity": "三句均成立，只选满足此目的的句子。"
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b重复无效信息；c补充了另一个没有被问的问题。",
+        "ambiguity": "选择缺失的信息类型，不要求编造教师姓名。"
       }
     },
     {
@@ -721,7 +774,7 @@
         "They are 7 dollars.",
         "They're 7 dollars."
       ],
-      "hint": "注意句首代词和金额单位的结尾。",
+      "hint": "听完再写，检查是否漏了金额单位。",
       "explanation": "They are可以缩写为They're；seven dollars的金额单位用复数。",
       "difficulty": "基础：四词价格短句。",
       "source": "pep.junior1.archive20260929 印刷39／PDF62",
@@ -736,7 +789,7 @@
       "id": "j1.astra.b04",
       "goalId": "junior1.snack-preferences",
       "type": "arrange",
-      "prompt": "你想问一位女孩是否喜欢胡萝卜。使用全部词块完成问句。",
+      "prompt": "你向同伴确认另一位女孩是否喜欢胡萝卜。用全部词块组成以Does开头的一般疑问句。",
       "tokens": [
         {
           "id": "she",
@@ -764,7 +817,7 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "疑问句先确定助动词，再放主语和动作。",
+      "hint": "问的是另一位女孩，不是正在与你说话的人。",
       "explanation": "Does she like carrots?中does承担第三人称变化，like用原形。",
       "difficulty": "基础：完整第三人称一般疑问句。",
       "source": "pep.junior1.archive20260929 印刷33／PDF56",
@@ -778,22 +831,23 @@
     {
       "id": "j1.astra.b05",
       "goalId": "junior1.reading-room-locations",
-      "type": "completion",
-      "prompt": "桌上放着三本杂志。用is或are补全：Where ____ the magazines?",
-      "answer": "are",
+      "type": "dictation",
+      "prompt": "听一句寻找物品的问题，写下完整问句。",
+      "answer": "Where's my hat?",
       "acceptedVariants": [
-        "Are"
+        "Where is my hat?"
       ],
-      "hint": "疑问词后面的动词要与被寻找的物品数量一致。",
-      "explanation": "magazines为复数，与are搭配。位置已知不改变问句结构。",
-      "difficulty": "基础：复数位置问句。",
+      "hint": "这是一个问题，别漏掉物品前表示归属的词。",
+      "explanation": "Where's是Where is的缩写；my hat是说话人要寻找的物品。全写也接受。",
+      "difficulty": "受控运用：短位置问句听写，接受缩写展开。",
       "source": "pep.junior1.archive20260929 印刷21／PDF44",
       "review": {
-        "correctExample": "are",
-        "wrongExample": "is",
-        "distractors": "is忽略复数主语。",
-        "ambiguity": "只填be形式，不考未知位置。"
-      }
+        "correctExample": "Where is my hat?",
+        "wrongExample": "Where's your hat?",
+        "distractors": "your改变所听归属；hats改变物品数量。",
+        "ambiguity": "不提供位置线索，不需要图片；只凭本题录音完成。"
+      },
+      "audioScript": "Where's my hat?"
     },
     {
       "id": "j1.astra.b06",
@@ -808,7 +862,7 @@
         },
         {
           "id": "b",
-          "text": "尺子属于一位男性。"
+          "text": "尺子属于一位男性，不属于说话人。"
         },
         {
           "id": "c",
@@ -817,7 +871,7 @@
       ],
       "answer": "c",
       "acceptedVariants": [],
-      "hint": "既要听归属词，也要留意前一句是否带有否定。",
+      "hint": "把两句听完，再确定说话人最终说明的所有者。",
       "explanation": "isn't mine否认说话人拥有；hers指她的。",
       "difficulty": "基础：否认和更正归属。",
       "source": "pep.junior1.archive20260929 印刷15／PDF38",
@@ -831,28 +885,40 @@
     {
       "id": "j1.astra.b07",
       "goalId": "junior1.camera-club-kit",
-      "type": "completion",
-      "prompt": "小组记录中，Ben有两本词典。用have的正确形式填空：Ben ____ two dictionaries.",
-      "answer": "has",
-      "acceptedVariants": [
-        "Has"
-      ],
-      "hint": "动词与拥有东西的人搭配，不由物品数量决定。",
-      "explanation": "Ben是第三人称单数，肯定句中用has；two dictionaries是宾语。",
-      "difficulty": "受控运用：单数主语与复数宾语区分。",
+      "type": "choice",
+      "prompt": "装备记录写着：Ben and I have one camera. 哪项可以仅凭这句话确定？",
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "区分小组的总数和每个人的数量。",
+      "explanation": "复合主语Ben and I把两人作为一组，one camera给出这一组的数量；没有说each，也没有说明相机只属于其中谁。",
+      "difficulty": "受控运用：理解复合主语的拥有记录，不多推个人分配。",
       "source": "pep.junior1.archive20260929 印刷27／PDF50",
       "review": {
-        "correctExample": "has",
-        "wrongExample": "have",
-        "distractors": "have可能来自误看two而选择复数动词。",
-        "ambiguity": "只变给定have，不能用其他动词代替。"
-      }
+        "correctExample": "a",
+        "wrongExample": "b",
+        "distractors": "b把小组一台理解成每人一台；c凭空排除一人。",
+        "ambiguity": "句子按小组装备记录理解，不判断法律所有权。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Ben和说话人一共有一台相机。"
+        },
+        {
+          "id": "b",
+          "text": "Ben和说话人每人都有一台相机。"
+        },
+        {
+          "id": "c",
+          "text": "只有Ben有相机，说话人没有。"
+        }
+      ]
     },
     {
       "id": "j1.astra.b08",
       "goalId": "junior1.community-class-board",
       "type": "audioArrange",
-      "prompt": "听同伴解释喜欢一门课的原因，用所有词块还原回答。",
+      "prompt": "听喜欢这门课的原因，选出听到的词块并排序，有一个词块不用。",
       "audioScript": "Because the teacher is kind.",
       "tokens": [
         {
@@ -870,6 +936,10 @@
         {
           "id": "teacher",
           "text": "the teacher"
+        },
+        {
+          "id": "funny",
+          "text": "funny."
         }
       ],
       "acceptedOrders": [
@@ -881,15 +951,15 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "先听出回答在解释什么，再检查后面小句的主谓顺序。",
+      "hint": "两种评价都可以形容老师，选择实际听到的一种。",
       "explanation": "Because引出原因，the teacher is kind说明老师和善。",
-      "difficulty": "受控运用：听后重建原因回答。",
+      "difficulty": "受控运用：听辨评价词并重建原因短答。",
       "source": "pep.junior1.archive20260929 印刷51／PDF74",
       "review": {
         "correctExample": "because,teacher,is,kind",
         "wrongExample": "because,is,teacher,kind",
         "distractors": "错序将原因小句错误倒装。",
-        "ambiguity": "对话中的because片段是自然短答，不当作独立作文病句。"
+        "ambiguity": "kind与funny都能成自然原因短答，录音决定末块；使用现有合法子集能力，本批仍待验收。"
       }
     },
     {
@@ -904,7 +974,7 @@
         },
         {
           "id": "b",
-          "text": "It's four dollars."
+          "text": "They're four socks."
         },
         {
           "id": "c",
@@ -913,14 +983,14 @@
       ],
       "answer": "a",
       "acceptedVariants": [],
-      "hint": "按价签读价格，不把整双价格再翻倍。再检查代词。",
-      "explanation": "socks用They；整双价格已是four dollars。b代词不对应，c擅自翻倍。",
+      "hint": "回答应报出价格，不能只报商品数量。",
+      "explanation": "four dollars报出价签中的整双价格；four socks只说四只袜子；eight dollars与价签不一致。",
       "difficulty": "受控运用：复数名词与整双价。",
       "source": "pep.junior1.archive20260929 印刷39／PDF62",
       "review": {
         "correctExample": "a",
         "wrongExample": "c",
-        "distractors": "b用单数回指socks；c误把整双价当单只价。",
+        "distractors": "b把金额改成物品数量；c把整双报价翻倍。不用自然口语中的It’s作错误项。",
         "ambiguity": "明确整双报价，绝不要求心算。"
       }
     },
@@ -928,7 +998,7 @@
       "id": "j1.astra.b10",
       "goalId": "junior1.snack-preferences",
       "type": "matching",
-      "prompt": "将三份英文偏好记录与中文意思配对，每项只用一次。",
+      "prompt": "三张独立的偏好卡都谈同一种饮品。将各卡与中文记录配对，每项一次。",
       "left": [
         {
           "id": "l1",
@@ -972,7 +1042,7 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "跟踪每句中谁与肯定、谁与否定相连。",
+      "hint": "每张卡重新判断两个人的喜好，不把上一张卡当共同背景。",
       "explanation": "前两句交换了喜欢和不喜欢的人；both指两人都喜欢。",
       "difficulty": "受控运用：跨分句追踪人称与否定。",
       "source": "pep.junior1.archive20260929 印刷33／PDF56",
@@ -987,7 +1057,7 @@
       "id": "j1.astra.b11",
       "goalId": "junior1.reading-room-locations",
       "type": "arrange",
-      "prompt": "你要告诉同伴：你的书包在椅子上。用所有词块组成陈述，以Your schoolbag开头。",
+      "prompt": "同伴找不到书包，你知道它在椅子上。用全部词块组成陈述，以Your schoolbag开头。",
       "tokens": [
         {
           "id": "chair",
@@ -1010,7 +1080,7 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "先说物品，再用be连接完整的位置短语。",
+      "hint": "检查排好的句子能否直接告诉同伴位置。",
       "explanation": "Your schoolbag is on the chair.单数schoolbag与is搭配，on说明在椅子上。",
       "difficulty": "受控运用：自然位置陈述。",
       "source": "pep.junior1.archive20260929 印刷21／PDF44",
@@ -1031,7 +1101,7 @@
       "acceptedVariants": [
         "these books are mine"
       ],
-      "hint": "留意开头的指示词，以及物品名词的结尾。",
+      "hint": "听完再写，检查所指物品和归属是否都已记录。",
       "explanation": "These指近处复数物品，books与are一致，mine独立说明归属。",
       "difficulty": "受控运用：四词整句听写。",
       "source": "pep.junior1.archive20260929 印刷15／PDF38",
@@ -1066,7 +1136,7 @@
       "acceptedVariants": [],
       "hint": "两句话的主语发生了变化，分别对应拥有与否。",
       "explanation": "My friends have表示朋友们有；I don't have one中one指一个足球，说明说话人没有。",
-      "difficulty": "迁移：人称转换和one的简单回指。",
+      "difficulty": "综合理解：群体与个人的肯否变化及one回指。",
       "source": "pep.junior1.archive20260929 印刷27／PDF50",
       "review": {
         "correctExample": "b",
@@ -1078,30 +1148,40 @@
     {
       "id": "j1.astra.b14",
       "goalId": "junior1.community-class-board",
-      "type": "completion",
-      "prompt": "同伴回答：My favorite subject is geography. 补全与你想询问的“最喜欢哪一科”对应的问题，只填一个疑问词：____ is your favorite subject?",
-      "answer": "What",
-      "acceptedVariants": [
-        "what",
-        "Which",
-        "which"
-      ],
-      "hint": "问的是一种事物或类别，不是人物或时间。",
-      "explanation": "What询问最喜欢的科目；Who询问人物，When询问时间。",
-      "difficulty": "迁移：从完整回答回构问题。",
+      "type": "choice",
+      "prompt": "访谈中，小雨说：My favorite subject is geography. 小安说：My favorite subject is art. 记录员写成“两人最喜欢的都是地理”。应怎样改？",
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "逐条核对人物与科目，保留本来正确的记录。",
+      "explanation": "小雨的geography已经记对；小安说的是art，因此只改小安一项。",
+      "difficulty": "受控运用：核对两条科目偏好并定位需修正的记录。",
       "source": "pep.junior1.archive20260929 印刷51／PDF74",
       "review": {
-        "correctExample": "What",
-        "wrongExample": "Who",
-        "distractors": "Who把科目当人物；Why改变为原因询问。",
-        "ambiguity": "What是常见开放提问；Which也能在双方了解可选科目的语境中成立，因此接受该合理变体。"
-      }
+        "correctExample": "a",
+        "wrongExample": "c",
+        "distractors": "b改错人物；c把原本正确的记录也改错。",
+        "ambiguity": "这是本题内的两条访谈，不需知道故事人物课程。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "只把小安的记录改为美术。"
+        },
+        {
+          "id": "b",
+          "text": "只把小雨的记录改为美术。"
+        },
+        {
+          "id": "c",
+          "text": "把两人的记录都改为美术。"
+        }
+      ]
     },
     {
       "id": "j1.astra.b15",
       "goalId": "junior1.market-price-talk",
       "type": "audioArrange",
-      "prompt": "听顾客的一句价格问题，用所有词块重建问句。",
+      "prompt": "听价格问题，选择听到的词块并排序，有一个词块不用。",
       "audioScript": "How much is that blue bag?",
       "tokens": [
         {
@@ -1115,6 +1195,10 @@
         {
           "id": "how",
           "text": "How much"
+        },
+        {
+          "id": "red",
+          "text": "that red bag?"
         }
       ],
       "acceptedOrders": [
@@ -1125,36 +1209,59 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "先听完整问题，再按疑问部分、动词和物品组织词块。",
+      "hint": "两种商品描述都能组成问句，按听到的描述选取。",
       "explanation": "that blue bag是单数商品，所以所听问句使用is。",
-      "difficulty": "迁移：听后重建带修饰信息的价格问句。",
+      "difficulty": "受控运用：听辨商品修饰词并重建单数价格问句。",
       "source": "pep.junior1.archive20260929 印刷39／PDF62",
       "review": {
         "correctExample": "how,is,bag",
         "wrongExample": "how,bag,is",
         "distractors": "错误次序不符合所听的价格问句。",
-        "ambiguity": "蓝色仅修饰名词，没有图片或价格预告答案。"
+        "ambiguity": "blue与red都能形成合语法的价格问句；文字不能决定所听颜色。"
       }
     },
     {
       "id": "j1.astra.b16",
       "goalId": "junior1.snack-preferences",
-      "type": "completion",
-      "prompt": "你想确认两位同学是否都喜欢面包。用do或does补全：____ your two friends like bread?",
-      "answer": "Do",
-      "acceptedVariants": [
-        "do"
-      ],
-      "hint": "不要被your分散注意力，找出整个主语的中心词和数量。",
-      "explanation": "your two friends是复数主语，疑问句用Do；Does用于第三人称单数。",
-      "difficulty": "迁移：带修饰语的复数主语。",
+      "type": "arrange",
+      "prompt": "将四张对话卡排成一次完整的点心询问。先询问饼干（biscuits），否定后再问面包；每张卡用一次。",
+      "acceptedVariants": [],
+      "hint": "先找初次提问，再让两个回答分别回应前面的食物。",
+      "explanation": "先问饼干并得到否定，再用What about bread?换问面包，最后确认喜欢面包。",
+      "difficulty": "综合运用：按已给定交际顺序组织四轮短对话。",
       "source": "pep.junior1.archive20260929 印刷33／PDF56",
       "review": {
-        "correctExample": "Do",
-        "wrongExample": "Does",
-        "distractors": "Does忽略two friends的复数。",
-        "ambiguity": "问群体喜好；不推断回答结果。"
-      }
+        "correctExample": "ask,no,bread,yes",
+        "wrongExample": "ask,yes,bread,no",
+        "distractors": "错序用面包回答饼干问题，最后还否认了面包偏好。",
+        "ambiguity": "题面明确先问哪种食物及首问为否定，避免自由对话多种顺序。"
+      },
+      "tokens": [
+        {
+          "id": "bread",
+          "text": "What about bread?"
+        },
+        {
+          "id": "no",
+          "text": "No, I don't."
+        },
+        {
+          "id": "yes",
+          "text": "Yes, I like bread."
+        },
+        {
+          "id": "ask",
+          "text": "Do you like biscuits?"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "ask",
+          "no",
+          "bread",
+          "yes"
+        ]
+      ]
     },
     {
       "id": "j1.astra.b17",
@@ -1179,7 +1286,7 @@
       "acceptedVariants": [],
       "hint": "先判断提问里的位置是否正确，再保持物品数量一致。",
       "explanation": "地图不在墙上，因此先否定；两张地图用they，后句提供真实位置。",
-      "difficulty": "迁移：判断、短答和更正组合。",
+      "difficulty": "综合运用：先否定错误位置，再给出正确位置。",
       "source": "pep.junior1.archive20260929 印刷21／PDF44",
       "review": {
         "correctExample": "c",
@@ -1192,7 +1299,7 @@
       "id": "j1.astra.b18",
       "goalId": "junior1.lost-found-desk",
       "type": "choice",
-      "prompt": "一位男同学拿着两支笔说：These are my pens. 你转述时仍然指着他手里的那两支笔。哪句在不重复pens的情况下准确说明归属？",
+      "prompt": "一位男同学拿着两支笔说：These are my pens. 你指着同一组笔向别人转述，不重复pens。选归属准确的一句。",
       "options": [
         {
           "id": "a",
@@ -1209,7 +1316,7 @@
       ],
       "answer": "a",
       "acceptedVariants": [],
-      "hint": "换了说话人之后，“我的”指向也会变化。检查归属词而不是宾格。",
+      "hint": "分别确定原话和转述中的说话人。",
       "explanation": "原话的my属于男同学，转述用his；him是宾格，mine会变成转述者自己的笔。",
       "difficulty": "迁移：说话视角转换与名词性物主代词。",
       "source": "pep.junior1.archive20260929 印刷15／PDF38",
@@ -1242,11 +1349,27 @@
     }
   ],
   "remainingWork": [
-    "六个真实catalog目标在每组各3题，两组各18题；每组1—6为识别、7—12为受控运用、13—18为迁移，难度是作者自审，需试做校准。",
-    "共7种交互：choice、listeningChoice、arrange、completion、dictation、matching、audioArrange。audioArrange需主代理确认正式端到端合同，不因文件枚举已出现就称为可发布。",
-    "全部12道听力相关题只提供原创audioScript，无伪造assetId；制作后必须独立实听，检查否定、数字、代词、复数与转折。音频脚本不含舞台旁白，答前不展示原文。",
-    "本批不依赖图片，因此没有必需imageBriefs；若添加故事装饰图，应另行生成审核，不复制教材图。",
-    "仍待主代理逐题独立复审、与正式题库实质重复排查、输入归一和合理变体验证、18题实际组卷及原生交互试做。草稿不由正式bank加载，本文件不代表上线。",
-    "教材核读限上述正文和两张实际目视页；外研初一没有正式sourceId，不添加虚构来源。中文短故事独立原创，题目没有依赖其细节。"
-  ]
+    "36题均经独立人工逐题审阅；每组18题、六目标各3题保留。旧的1—6识别、7—12受控、13—18迁移不再成立，各题难度已按实际操作标注，需试做校准。",
+    "保留choice、listeningChoice、arrange、completion、dictation、matching、audioArrange七种交互。四道audioArrange加入一个语法可成立的竞争词块；现有子集能力可表达，本批端到端验收尚未完成。b16为整句对话卡排序。",
+    "本批13道听力相关题仅有原创脚本，尚无音频资产；制作后独立实听数字、代词、否定、颜色、复数、连接词和缩写。原文不得答前泄露。",
+    "题目不依赖图片；两篇开场故事保留中文原创，若正式要求双语故事仍需另行撰写与核读，不能机器补写后直接发布。",
+    "已与正式初一36题人工语义对照，替换最明显的填空及问答同构题；仍共享六个教学目标，a04、b04、b11等基础排序与既有语言框架接近，属于练习变式，不应宣传为全新技能。",
+    "保留逐题即时反馈，不改产品时序；已经移除a05→a11的Why填空泄漏和b02→b14的What填空泄漏。跨组规则复现与诊断组混用限制见interactionContract及审阅记录。",
+    "本轮只核读所列本地文本页面，不宣称目视PDF、整册核读、当前新版对齐、媒体实听或端到端产品验收。"
+  ],
+  "independentReview": {
+    "reviewedAt": "2026-10-11",
+    "method": "实际阅读全部36题、两篇故事、六份正式初一单元共36题与catalog六个目标，逐题人工判断及定点改写；程序仅保存明确写出的编辑并验证结构。",
+    "sourcePagesActuallyReadThisReview": [
+      "pep-junior1.pages.json PDF38／印刷15",
+      "pep-junior1.pages.json PDF44／印刷21",
+      "pep-junior1.pages.json PDF50／印刷27",
+      "pep-junior1.pages.json PDF56／印刷33",
+      "pep-junior1.pages.json PDF62／印刷39",
+      "pep-junior1.pages.json PDF74／印刷51",
+      "fltrp-junior1.pages.json PDF59／印刷26"
+    ],
+    "sourceLimit": "本轮阅读本地正文提取文本，未重新目视PDF；不继承作者历史目视声明作为本轮证据。",
+    "record": "junior1-review.md"
+  }
 }

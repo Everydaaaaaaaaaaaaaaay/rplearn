@@ -3,7 +3,7 @@
   "author": {
     "name": "Astra 初二独立作者",
     "method": "逐题亲自原创；程序只用于结构、引用与数量验证，未用于组合或替换槽位造题。",
-    "status": "作者自审草稿，待主代理逐题审阅与媒体制作"
+    "status": "已完成36题独立文本复核与人工返修；待媒体、交互和学习者验证"
   },
   "sourceReading": [
     {
@@ -34,31 +34,31 @@
       "id": "j2.astra.a01",
       "goalId": "junior2.invitation-replies",
       "type": "choice",
-      "prompt": "同伴邀请你周六一起画画。你很想去，也已经有空。哪句回复最符合这两个事实？",
+      "prompt": "你想邀请同伴明晚一起看展。哪句是在发出邀请？",
       "options": [
         {
           "id": "a",
-          "text": "I'd love to, but I have to stay home."
+          "text": "Did you visit the show yesterday?"
         },
         {
           "id": "b",
-          "text": "Sure, I'd love to."
+          "text": "Can you come to the show tomorrow?"
         },
         {
           "id": "c",
-          "text": "I'm not sure. I might be busy."
+          "text": "Do you go to shows every month?"
         }
       ],
       "answer": "b",
       "acceptedVariants": [],
-      "hint": "把愿意参加与时间是否确定分开核对。",
-      "explanation": "b明确接受；a表示想去但去不了；c表示能否参加未定。",
+      "hint": "辨认说话人是在问过去、问习惯，还是邀约。",
+      "explanation": "b邀请对方明天来；a问昨天的经历，c问平时的习惯。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷67／PDF78",
       "review": {
         "wrongExample": "a",
-        "distractors": "a只满足愿意却加入冲突；c将已确定改成未定。",
-        "difficulty": "识别：三句短答，考交际意图，不猜礼貌程度。"
+        "distractors": "三个完整问句分别指过去、未来邀请与习惯，不靠唯一语法正确项猜答。",
+        "difficulty": "识别：can邀请与过去经历、日常频率的交际功能对比。"
       }
     },
     {
@@ -96,7 +96,7 @@
       "id": "j2.astra.a03",
       "goalId": "junior2.rain-backup",
       "type": "listeningChoice",
-      "prompt": "听户外活动的备用安排。说话人是否已经确定明天会刮大风？",
+      "prompt": "听户外活动的备用安排。说话人是否已确定明天会刮风？",
       "audioScript": "If it is windy tomorrow, we will draw inside.",
       "options": [
         {
@@ -186,7 +186,7 @@
       "id": "j2.astra.a05",
       "goalId": "junior2.invitation-replies",
       "type": "listeningChoice",
-      "prompt": "听一条不能参加散步的回复。对方给出的原因是什么？",
+      "prompt": "你邀请同伴今晚散步。听他的回复，哪项符合他的安排？",
       "audioScript": "I'd like to join you, but I have to finish this report tonight.",
       "options": [
         {
@@ -218,34 +218,37 @@
       "id": "j2.astra.a06",
       "goalId": "junior2.two-reading-spaces",
       "type": "completion",
-      "prompt": "录音显示，两人这次唱得同样好。用well补全，不改变词义：Kai sings as ____ as Mei.",
+      "prompt": "两人这次唱得同样好。用good对应的副词补全：Kai sings as ____ as Mei.",
       "answer": "well",
       "acceptedVariants": [],
-      "hint": "检查空格在比较结构中的位置，以及它修饰的是动作还是人。",
+      "hint": "这里描述唱歌的表现，并非描述人的品质。",
       "explanation": "as…as中使用原级，修饰sings需用副词well；better不能放进这个同等比较。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷19／PDF30",
       "review": {
         "wrongExample": "better",
         "distractors": "better是比较级；good是形容词，均不满足给定结构。",
-        "difficulty": "受控：单空，不评价歌手总体优劣。"
+        "difficulty": "受控：从good选择对应副词well；题面不直接给出答案，也不要求播放不存在的录音。"
       }
     },
     {
       "id": "j2.astra.a07",
       "goalId": "junior2.rain-backup",
       "type": "completion",
-      "prompt": "补全明天的条件安排，使用rain的正确形式：If it ____ tomorrow, we will meet in the hall.",
-      "answer": "rains",
-      "acceptedVariants": [],
-      "hint": "先找到条件部分，再检查它的主语。",
-      "explanation": "真实未来条件的if从句用一般现在时，it搭配rains；这里不用will rain。",
+      "prompt": "用not work补全明天的备用安排：If the lights ____ tomorrow, we will use a torch.",
+      "answer": "don't work",
+      "acceptedVariants": [
+        "do not work",
+        "don’t work"
+      ],
+      "hint": "保留否定，并检查条件部分的主语。",
+      "explanation": "lights是复数，条件部分用don't work或do not work。这里谈未来可能发生的情况，普通条件从句不用won't work。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷75／PDF86",
       "review": {
-        "wrongExample": "will rain",
-        "distractors": "will rain把主句形式搬进条件从句；rain忽略第三人称单数。",
-        "difficulty": "受控：时态与一致，单一动词不考天气知识。"
+        "wrongExample": "doesn't work",
+        "distractors": "does not误判复数主语；will not把普通未来形式移入条件部分。",
+        "difficulty": "受控：复数主语的否定条件，区别正式库rains/arrives肯定填空。"
       }
     },
     {
@@ -312,7 +315,7 @@
       "goalId": "junior2.two-reading-spaces",
       "type": "audioArrange",
       "status": "media-pending",
-      "prompt": "听录音，用所有词块还原听到的比较。",
+      "prompt": "听录音，选出需要的词块还原原句。有一个多余词块。",
       "audioScript": "This room is not as quiet as the one upstairs.",
       "tokens": [
         {
@@ -322,6 +325,10 @@
         {
           "id": "r",
           "text": "This room"
+        },
+        {
+          "id": "positive",
+          "text": "is"
         },
         {
           "id": "q",
@@ -341,25 +348,25 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "听清否定落在哪里，再连接两部分比较对象。",
+      "hint": "两个词块都能组成句子，听清比较是否带否定。",
       "explanation": "not as quiet as表示这间没有楼上那间安静。否定是比较的一部分，不能漏掉。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷19／PDF30",
       "review": {
-        "wrongExample": "r,q,n,u",
-        "distractors": "错序将否定插进as…as中间，破坏句法。",
-        "difficulty": "受控：四词块，听后排序，不要求全文键入。"
+        "wrongExample": "r,positive,q,u",
+        "distractors": "is与is not均可组成自然比较句，必须根据录音选择；多余词块不提交。",
+        "difficulty": "受控听辨加重构：从五块选四块，辨认比较否定；不能仅凭语法排除is。"
       }
     },
     {
       "id": "j2.astra.a11",
       "goalId": "junior2.rain-backup",
       "type": "arrange",
-      "prompt": "约定：若你找到钥匙，就给我打电话。用全部词块组句，以If开头。",
+      "prompt": "你承诺：若同伴找到钥匙，你就去开门。用全部词块组句，以If开头。",
       "tokens": [
         {
           "id": "call",
-          "text": "you will call me."
+          "text": "I will open the door."
         },
         {
           "id": "keys",
@@ -384,13 +391,13 @@
       ],
       "acceptedVariants": [],
       "hint": "先完整说出条件，再接约定的后续行动。",
-      "explanation": "If you find the keys, you will call me.条件从句用find，后续行动用will call。",
+      "explanation": "If you find the keys, I will open the door.你找到钥匙是条件，我来开门是承诺的行动。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷75／PDF86",
       "review": {
         "wrongExample": "if,call,find,keys",
         "distractors": "把完整主句放进If you后会重复主语并拆散条件。",
-        "difficulty": "受控：明确是双方约定，will并非无依据预测。"
+        "difficulty": "受控：条件和结果有不同主语；避免将普通请求硬写成you will。"
       }
     },
     {
@@ -410,71 +417,71 @@
       "review": {
         "wrongExample": "How you are going to get there?",
         "distractors": "无选择干扰；反例保留词语但丢失直接问句倒装。",
-        "difficulty": "受控：八个常见词；需键盘输入，无生词和专名。"
+        "difficulty": "受控：七个常见词；需键盘输入，允许重播。"
       }
     },
     {
       "id": "j2.astra.a13",
       "goalId": "junior2.rain-backup",
       "type": "choice",
-      "prompt": "同伴说：If the room is free, we will use it. 你现在能确定什么？",
+      "prompt": "留言说：If the room is free, we will use it. 后来大家用了这间房。只凭这些话，能断定房间原先空着吗？",
       "options": [
         {
           "id": "a",
-          "text": "房间现在一定空着。"
+          "text": "能，使用房间就证明它原先空着。"
         },
         {
           "id": "b",
-          "text": "使用房间取决于它是否空着。"
+          "text": "不能，留言没说只有空着才会使用。"
         },
         {
           "id": "c",
-          "text": "房间有人用也会照常使用。"
+          "text": "能，这证明房间原先一定有人。"
         }
       ],
       "answer": "b",
       "acceptedVariants": [],
-      "hint": "找出行动成立前先要满足的条件。",
-      "explanation": "句子说明有空房时的安排，未确认房间是否空着；也没承诺占用时使用。",
+      "hint": "检查留言是否排除了其他使用房间的情况。",
+      "explanation": "留言只给出“空着→使用”的安排，没有说“只有空着才使用”。仅知道后来使用了，不能反推出原先状态。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷75／PDF86",
       "review": {
         "wrongExample": "a",
-        "distractors": "a把条件断言为事实；c删除条件限制。",
-        "difficulty": "迁移：不靠天气词判断if逻辑。"
+        "distractors": "a把单向条件倒推为必要条件；c同样没有依据。",
+        "difficulty": "迁移：识别条件的逆向推断边界；不是重复正式库条件与事实的识别题。"
       }
     },
     {
       "id": "j2.astra.a14",
       "goalId": "junior2.invitation-replies",
       "type": "matching",
-      "prompt": "三条回复各自对应一种态度。每项连一次。",
+      "prompt": "三条回复各来自不同同伴。配上下一步最合适的安排，每项一次。",
       "left": [
         {
           "id": "l1",
-          "text": "I'd love to, but I have to leave now."
+          "text": "I can't come today. Can we meet tomorrow?"
         },
         {
           "id": "l2",
-          "text": "That sounds great. See you there!"
+          "text": "Yes, I'll join you. Where shall we meet?"
         },
         {
           "id": "l3",
-          "text": "I might come. I'll tell you tonight."
+          "text": "I'm not sure yet. I'll let you know tonight."
         }
       ],
       "right": [
         {
           "id": "r1",
-          "text": "尚未确定，稍后确认。"
+          "text": "等今晚确认，再确定是否一起去。"
         },
         {
           "id": "r2",
-          "text": "愿意但因义务不能参加。"
+          "text": "商量明天是否能见面。"
         },
         {
           "id": "r3",
-          "text": "明确接受邀请。"
+          "text": "告知这次集合地点。"
         }
       ],
       "answerPairs": [
@@ -492,14 +499,14 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "读完每条回复，不只凭开头的积极语气判断。",
-      "explanation": "第一条but后有离开的限制；第二条约定见面；第三条might保留不确定。",
+      "hint": "读完整条回复，判断还有哪项安排没有解决。",
+      "explanation": "第一条提出改期；第二条已接受但需集合地点；第三条尚未确认是否参加。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷67／PDF78",
       "review": {
         "wrongExample": "l1-r3,l2-r2,l3-r1",
-        "distractors": "只看I'd love to会把婉拒错当接受。",
-        "difficulty": "迁移：三种真实交际状态，短文本。"
+        "distractors": "地点、改期与是否出席不能互换；并非简单配对接受、拒绝、未定标签。",
+        "difficulty": "迁移：根据邀约回复决定后续交流，保留三段独立场景。"
       }
     },
     {
@@ -532,22 +539,22 @@
         },
         {
           "id": "b",
-          "text": "已经完成了短片。"
+          "text": "先选定放映日期。"
         },
         {
           "id": "c",
-          "text": "取消拍短片的想法。"
+          "text": "先写出完整故事。"
         }
       ],
       "answer": "a",
       "acceptedVariants": [],
       "hint": "区分想达到的结果、准备采取的行动与已经完成的事。",
-      "explanation": "want说明目标，going to learn说明行动计划；没有完成或取消的含义。",
+      "explanation": "录音明确计划先学习使用相机；放映日期和完整故事虽与拍片有关，却没有提到。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷43／PDF54",
       "review": {
         "wrongExample": "b",
-        "distractors": "b把计划当完成；c把行动准备误解为取消。",
+        "distractors": "三个选项都是可能的准备行动，需要听出实际计划。",
         "difficulty": "迁移：两短句，真实目标与方法分离。"
       }
     },
@@ -563,11 +570,11 @@
         },
         {
           "id": "b",
-          "text": "已经在昨晚读完，并在今天归还了。"
+          "text": "今晚先归还，明天再读末段。"
         },
         {
           "id": "c",
-          "text": "无论是否读完，明天都一定不会归还。"
+          "text": "明天读完末段，今晚就能归还。"
         }
       ],
       "answer": "a",
@@ -578,7 +585,7 @@
       "pages": "印刷75／PDF86",
       "review": {
         "wrongExample": "b",
-        "distractors": "b把条件安排当作过去事实；c删除条件并反转结果。",
+        "distractors": "b、c互换阅读与归还的时间关系，不再用明显无关的绝对否定。",
         "difficulty": "迁移：在建议中理解真实未来条件，所有事实题内给出。"
       }
     },
@@ -630,31 +637,31 @@
       "id": "j2.astra.b01",
       "goalId": "junior2.two-reading-spaces",
       "type": "choice",
-      "prompt": "昨晚两盏灯照同一张纸，亮度测得相同。只比较亮度，哪句正确？",
+      "prompt": "昨晚测试中，黄灯比白灯亮，白灯和蓝灯一样亮。哪句符合这两条记录？",
       "options": [
         {
           "id": "a",
-          "text": "The left light was brighter than the right one."
+          "text": "The yellow light was as bright as the blue one."
         },
         {
           "id": "b",
-          "text": "The left light was as bright as the right one."
+          "text": "The yellow light was brighter than the blue one."
         },
         {
           "id": "c",
-          "text": "The left light was not as bright as the right one."
+          "text": "The yellow light was not as bright as the blue one."
         }
       ],
       "answer": "b",
       "acceptedVariants": [],
-      "hint": "先确定比较结果是相同还是不同，再核对否定。",
-      "explanation": "as bright as表示同样亮；a表示左侧更亮，c表示左侧不如右侧亮。",
+      "hint": "先用相同亮度的两盏灯连接两条记录。",
+      "explanation": "白灯和蓝灯一样亮，黄灯又比白灯亮，因此黄灯比蓝灯亮。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷19／PDF30",
       "review": {
-        "wrongExample": "c",
-        "distractors": "a改变比较关系；c多了否定使相等变成不等。",
-        "difficulty": "识别：过去测量事件中比较属性，不考数值计算。"
+        "wrongExample": "a",
+        "distractors": "a把黄白差异消掉，c反转推得的比较方向。",
+        "difficulty": "迁移：整合两条同属性比较记录，避免只替换正式库同级比较的名词。"
       }
     },
     {
@@ -693,30 +700,30 @@
       "id": "j2.astra.b03",
       "goalId": "junior2.invitation-replies",
       "type": "choice",
-      "prompt": "有人问Can you join us at four? 你四点已有必须参加的活动，五点后才有空。哪句既说明限制，又给出替代时间？",
+      "prompt": "四点有必须参加的活动，五点后才有空。哪句既婉拒四点的邀请，又提议五点后见？",
       "options": [
         {
           "id": "a",
-          "text": "Sure. Four is fine."
+          "text": "I can't meet at four. How about half past four?"
         },
         {
           "id": "b",
-          "text": "I don't like clocks."
+          "text": "I can meet at four. Let's stay until five."
         },
         {
           "id": "c",
-          "text": "Sorry, I have to be somewhere else at four. Can we meet after five?"
+          "text": "I can't meet at four. Can we meet after five?"
         }
       ],
       "answer": "c",
       "acceptedVariants": [],
       "hint": "两项都要满足：交代原时间冲突，并提出另一个时间。",
-      "explanation": "c说明四点有义务并建议五点后见；a与事实冲突，b没有回答邀请。",
+      "explanation": "c同时说明四点不能见，并建议五点以后；a提出的四点半仍冲突，b误称四点有空。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷67／PDF78",
       "review": {
         "wrongExample": "a",
-        "distractors": "a虽自然但错误接受；b答非所问。",
+        "distractors": "三个选项都回应时间，长度相近；必须同时核对不能见面和替代时间。",
         "difficulty": "识别：最长选项两短句，后续盲审检查长度是否构成提示。"
       }
     },
@@ -782,17 +789,17 @@
       "id": "j2.astra.b05",
       "goalId": "junior2.two-reading-spaces",
       "type": "completion",
-      "prompt": "用carefully的正确比较形式表达：这次剪纸比上次更仔细。I cut the paper ____ this time than last time.",
-      "answer": "more carefully",
+      "prompt": "这次表现更差。用badly的常用不规则比较级填空：I played ____ this time than last time.",
+      "answer": "worse",
       "acceptedVariants": [],
-      "hint": "检查修饰的动作及比较级的构成，不要只改形容词。",
-      "explanation": "carefully修饰cut，比较级是more carefully。more careful是形容词形式，不是给定副词的比较形式。",
+      "hint": "这里比较的是动作表现；这个副词的比较级不按常规构成。",
+      "explanation": "本题要求badly的常用不规则比较级worse，用来修饰played；不以此断言more badly在任何语境都不可能。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷19／PDF30",
       "review": {
-        "wrongExample": "carefullier",
-        "distractors": "carefully不直接加-er；more careful遗漏副词形式。",
-        "difficulty": "受控：过去动作体貌不另设题，聚焦副词比较，词形已给。"
+        "wrongExample": "more badly",
+        "distractors": "more badly没有采用题目明确要求的不规则比较级。",
+        "difficulty": "受控：不规则副词比较级，与a15规则more slowly及正式库good/better不同。"
       }
     },
     {
@@ -831,19 +838,21 @@
       "id": "j2.astra.b07",
       "goalId": "junior2.photo-project-plans",
       "type": "completion",
-      "prompt": "对方回答By taking a drawing class. 你原本问的是怎样提高画画水平。填一个疑问词：____ are you going to improve your drawing?",
-      "answer": "How",
+      "prompt": "正在讨论为展览做海报。补全自然的提问：____ are you going to make for the show? — Three posters.",
+      "answer": "What",
       "acceptedVariants": [
-        "how"
+        "what",
+        "How many",
+        "how many"
       ],
-      "hint": "看回答提供了哪一类信息，再选择对应的提问。",
-      "explanation": "By taking a drawing class提供方法，因此问How；Where、When分别问地点和时间。",
+      "hint": "回答既说明要做什么，也说明做几个；两种问法都可以。",
+      "explanation": "What问制作什么；海报这一对象已明确，How many也可以独立询问数量。两者都能由Three posters自然回答。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷43／PDF54",
       "review": {
         "wrongExample": "Where",
-        "distractors": "Where不能由参加课程这种方法直接回答；What不适合现有完整谓语。",
-        "difficulty": "受控：单词填空，语境足以限定，不考生词。"
+        "distractors": "Where询问地点，Three posters不能回答；What与How many均应接受。",
+        "difficulty": "受控：接受两种自然提问，不以错误的名词省略规则制造唯一答案。"
       }
     },
     {
@@ -851,7 +860,7 @@
       "goalId": "junior2.rain-backup",
       "type": "audioArrange",
       "status": "media-pending",
-      "prompt": "听这项约定，用全部词块还原原句。",
+      "prompt": "听这项约定，选词块还原原句。有一个多余词块。",
       "audioScript": "We will start without you if you arrive late.",
       "tokens": [
         {
@@ -869,6 +878,10 @@
         {
           "id": "without",
           "text": "without you"
+        },
+        {
+          "id": "with",
+          "text": "with you"
         }
       ],
       "acceptedOrders": [
@@ -880,14 +893,14 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "听条件在前还是在后，再确定行动与条件的边界。",
+      "hint": "听清是否会等对方一起开始，再按原顺序排列。",
       "explanation": "主句先说明会先开始，后置if从句说明在对方迟到时如此安排。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷75／PDF86",
       "review": {
-        "wrongExample": "if,late,we,without",
-        "distractors": "反例改变录音顺序；英语允许条件前置，但这题要求还原录音且现有标点不支持该序。",
-        "difficulty": "受控：后置条件，四词块；不是只凭固定If开头完成。"
+        "wrongExample": "we,with,if,late",
+        "distractors": "with you与without you都能形成句子，但会反转是否一起开始；以录音为准，不能按个人认为合理的约定作答。",
+        "difficulty": "受控听辨加重构：后置条件，从五块选四块，辨认with/without。"
       }
     },
     {
@@ -937,19 +950,19 @@
       "goalId": "junior2.invitation-replies",
       "type": "dictation",
       "prompt": "听写这句回复中的完整英文句子。可重复播放。",
-      "audioScript": "I might have to stay here.",
-      "answer": "I might have to stay here.",
+      "audioScript": "Sorry, I must finish this first.",
+      "answer": "Sorry, I must finish this first.",
       "acceptedVariants": [
-        "I might have to stay here"
+        "Sorry I must finish this first"
       ],
-      "hint": "注意动词前有几部分表达，别漏掉其中一部分。",
-      "explanation": "might have to表可能必须留下；漏掉might会将不确定义务说成确定义务。",
+      "hint": "听清开头的礼貌回应和事情的先后。",
+      "explanation": "must表示说话人必须先完成眼前的事。first保留先后关系，不能漏掉。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷67／PDF78",
       "review": {
-        "wrongExample": "I have to stay here.",
-        "distractors": "无选择干扰；漏might改变确定程度，漏to破坏have to结构。",
-        "difficulty": "受控：七个常见词，听写情态组合。"
+        "wrongExample": "Sorry, I might finish this first.",
+        "distractors": "might把义务改为可能；本题是听写，不接受换词复述。",
+        "difficulty": "受控：六词听写；不再重复b06及a09的might have to答案片段。"
       }
     },
     {
@@ -976,7 +989,7 @@
       "id": "j2.astra.b12",
       "goalId": "junior2.photo-project-plans",
       "type": "arrange",
-      "prompt": "你想知道同伴打算在哪里练习，使用全部词块组成直接问句。",
+      "prompt": "你已决定明天不拍照。用全部词块组句，以We开头。",
       "tokens": [
         {
           "id": "going",
@@ -984,15 +997,15 @@
         },
         {
           "id": "where",
-          "text": "Where"
+          "text": "We"
         },
         {
           "id": "practice",
-          "text": "practise?"
+          "text": "take photos tomorrow."
         },
         {
           "id": "are",
-          "text": "are you"
+          "text": "are not"
         }
       ],
       "acceptedOrders": [
@@ -1004,14 +1017,14 @@
         ]
       ],
       "acceptedVariants": [],
-      "hint": "从所问的信息开始，检查直接问句中主语与be的位置。",
-      "explanation": "Where are you going to practise?询问计划练习的地点。are you必须在going to之前。",
+      "hint": "先组成否定计划结构，再接具体行动。",
+      "explanation": "We are not going to take photos tomorrow.表达已定好的不拍照计划；not位于are之后。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷43／PDF54",
       "review": {
         "wrongExample": "where,going,are,practice",
-        "distractors": "把going to放到are you之前破坏计划疑问结构。",
-        "difficulty": "受控：四词块的自然直接问句。"
+        "distractors": "将going to提前会破坏be going to结构。",
+        "difficulty": "受控：否定计划排序，不重复正式库Where学习地点排序。"
       }
     },
     {
@@ -1019,7 +1032,7 @@
       "goalId": "junior2.two-reading-spaces",
       "type": "listeningChoice",
       "prompt": "听一段对两次尝试的比较。哪项符合录音？",
-      "audioScript": "The second try was slower than the first, but it was more careful.",
+      "audioScript": "I worked faster the second time, but I was less careful.",
       "options": [
         {
           "id": "a",
@@ -1027,54 +1040,54 @@
         },
         {
           "id": "b",
-          "text": "两次速度相同，第二次更仔细。"
+          "text": "第二次一样快，但不如第一次仔细。"
         },
         {
           "id": "c",
-          "text": "第二次更慢，但更仔细。"
+          "text": "第二次更快，但不如第一次仔细。"
         }
       ],
       "answer": "c",
       "acceptedVariants": [],
       "hint": "分别记录两个比较维度，不把一个维度的方向套到另一个上。",
-      "explanation": "slower说明第二次较慢，more careful说明较仔细；不是所有方面都同时增加或相同。",
+      "explanation": "faster说明做得更快，less careful说明不如第一次仔细；两个维度的变化不同。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷19／PDF30",
       "review": {
         "wrongExample": "a",
-        "distractors": "a反转速度，b将速度差异改为相同。",
-        "difficulty": "迁移：两个清楚维度，不依赖评价谁更优秀。"
+        "distractors": "a反转仔细程度；b把速度的变化改为相同。",
+        "difficulty": "迁移：对比副词修饰动作与形容词描述人；不用不自然的a try was careful。"
       }
     },
     {
       "id": "j2.astra.b14",
       "goalId": "junior2.photo-project-plans",
       "type": "choice",
-      "prompt": "你说想学会拍夜景。同伴追问How are you going to do that? 哪个回答直接提供了做法？",
+      "prompt": "便条写着：I want to make a film. First, I’m going to borrow a camera. Then I’m going to learn to use it. 哪句保留了计划顺序？",
       "options": [
         {
           "id": "a",
-          "text": "I'm going to practise with a camera each evening."
+          "text": "Borrow the camera before learning to use it."
         },
         {
           "id": "b",
-          "text": "I'm going to start next month."
+          "text": "Learn to use the camera before borrowing it."
         },
         {
           "id": "c",
-          "text": "I'm going to be in the park."
+          "text": "Make the film before borrowing the camera."
         }
       ],
       "answer": "a",
       "acceptedVariants": [],
-      "hint": "每句都可能是计划信息，挑出直接回应这个疑问词的一句。",
-      "explanation": "a给出通过晚间练习实现目标的做法；b给开始时间，c给所在地点，都没有说明怎样学习。",
+      "hint": "只按便条中的first和then判断，不用自己的拍摄经验。",
+      "explanation": "计划先借相机，再学习使用；想拍电影是目标，不是已完成的第一步。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷43／PDF54",
       "review": {
         "wrongExample": "b",
-        "distractors": "b、c语法正确但主要分别提供时间与地点，未提供实现拍摄目标的方法。",
-        "difficulty": "迁移：答案不是挑唯一正确语法；三句长度相近。"
+        "distractors": "b对调两个准备步骤；c把目标当成借相机之前已完成的行动。",
+        "difficulty": "迁移：整合目标与两项有序行动，不重复正式库摄影how方法选择。"
       }
     },
     {
@@ -1099,7 +1112,7 @@
       "right": [
         {
           "id": "r1",
-          "text": "Not yet. I might have to."
+          "text": "I'm not sure. I might have to."
         },
         {
           "id": "r2",
@@ -1126,12 +1139,12 @@
       ],
       "acceptedVariants": [],
       "hint": "先辨别邀请、询问原因与核实确定程度。",
-      "explanation": "邀请用明确接受回应；Why问离开原因；Are you sure问是否已确定，Not yet保留可能。",
+      "explanation": "邀请对应接受，Why对应原因，Are you sure对应是否确定。三段对话独立，不合并成人物时间线。",
       "sourceId": "pep.junior2.archive20260929",
       "pages": "印刷67／PDF78",
       "review": {
         "wrongExample": "l1-r3,l2-r2,l3-r1",
-        "distractors": "r3只能解释不能留下的原因，不能作为已愿意参加的直接接受；r2不给Why原因。",
+        "distractors": "r3回答Why的原因，r2接受邀请，r1明确回应尚未确定；用全局一对一配对判定。",
         "difficulty": "迁移：三段独立对话，避免同一人前后矛盾。"
       }
     },
@@ -1214,7 +1227,7 @@
       "id": "j2.astra.b18",
       "goalId": "junior2.rain-backup",
       "type": "choice",
-      "prompt": "活动明早开始。同伴说：If we start tonight, we will have more time to check our work. 这句话承诺的好处是什么？",
+      "prompt": "明早要交作品。同伴说：If we start tonight, we will have more time to check our work. 这句话说的好处是什么？",
       "options": [
         {
           "id": "a",
@@ -1263,12 +1276,18 @@
     }
   ],
   "remainingWork": [
-    "两组各18题为候选稿，尚未独立审题、与正式旧题逐题去重或学生试做；不计为正式发布。",
-    "12题有audioScript：a03、a05、a10、a12、a16、a18、b02、b06、b08、b10、b13、b17。须制作并实听，检查might/have to、否定及比较词；无虚构assetId。",
-    "audioArrange有a10、a18、b08、b17，需主代理核实端到端交互、音频重播、答案顺序判定与无障碍操作；媒体未完成不可发布。脚本不得答前可见。",
-    "作者已将a17、b18从纯should建议改为建议语境下的真实条件句理解，全部36题映射现有四个目标。should独立建议尚未覆盖，不能以本批声称初二建议目标完备。",
-    "外研过去进行时、许可禁止虽已目视正文，但本批没有对应目标及正式来源登记，尚未覆盖。需要补充课程目标后独立新增，不能声称初二所有内容完备。",
-    "已收紧b14的地点干扰、去除b18超纲结构；b03答案长度偏长仍需盲审，全部题目仍须独立检查与旧题实质去重。",
-    "无必需图片，不制造imageAssetId；故事可先用文字，若增加插图须另行原创和审图。未改正式catalog、bank、组卷、部署配置；本作者不提交不部署。"
-  ]
+    "36题及2则故事已在2026-10-11完成独立文本审阅，详见junior2-review.md；没有学生试做、真人教师审定或正式入库。",
+    "12题含audioScript，均待制作及实听：a03、a05、a10、a12、a16、a18、b02、b06、b08、b10、b13、b17；b10、b13脚本本轮已改，旧音频不能复用。",
+    "保留4道audioArrange新交互a10、a18、b08、b17；主代理已静态确认现有合同支持词块子集，a10/b08新增竞争词块。媒体制作、实听、原生重播与无障碍验收仍待做。脚本与答案不得答前展示。",
+    "已与正式初二6单元36题逐题作语义审阅；保留答后即时反馈。只对报告所列同句答案或高度近邻题做组卷互斥，不将所有同目标题泛化互斥，也不以延迟反馈掩盖题间泄漏。",
+    "当前四目标覆盖比较、邀请义务与可能性、计划、真实条件；过去事件只作时间对照背景，should建议和过去进行时未形成独立目标，不能声称初二覆盖完备。",
+    "本轮阅读外研八上PDF9、67、99文本，catalog仍无该册sourceId与相应目标。主代理需先登记来源与目标，再另编建议、过去进行时、许可禁止题，不伪造引用。",
+    "无需图片；两则开场故事保持原创文字与泛化同伴，无答题线索。媒体及交互验收前不发布。本轮只编辑本草稿和审阅报告，不提交、不部署。"
+  ],
+  "independentReview": {
+    "reviewedAt": "2026-10-11",
+    "method": "逐题阅读题面、答案、提示、解析，并与正式初二6单元36题作语义比较；下述修订逐题人工拟定，程序仅写入与检查结构。",
+    "report": "junior2-review.md",
+    "sourceVerification": "本轮实际阅读人教PDF30、54、78、86及外研PDF9、67、99的本地pages.json全文；未重新目视PDF。sourceReading中的2026-10-07目视记录为继承作者记录，不当作本轮证据。"
+  }
 }
