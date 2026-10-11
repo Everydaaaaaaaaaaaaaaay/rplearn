@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 import type { DatabaseResource } from "./client.js";
+import { assertCompatibleMigrationInventory } from "./migration-compatibility.js";
 
 const MIGRATIONS_FOLDER = fileURLToPath(new URL("../../migrations", import.meta.url));
 const JOURNAL_PATH = fileURLToPath(
@@ -42,14 +43,11 @@ export async function runMigrations(resource: DatabaseResource): Promise<void> {
 export async function assertMigrationsCurrent(
   resource: DatabaseResource,
 ): Promise<void> {
-  const [row] = await resource.sql<{ count: string }[]>`
-    select count(*)::text as count
+  const applied = await resource.sql<{ hash: string; created_at: string }[]>`
+    select hash,created_at::text
     from drizzle.__drizzle_migrations
+    order by created_at
   `;
-  const applied = Number.parseInt(row?.count ?? "0", 10);
   const expected = await expectedMigrationCount();
-
-  if (applied !== expected) {
-    throw new Error("Database migrations are not current");
-  }
+  assertCompatibleMigrationInventory(expected, applied);
 }
