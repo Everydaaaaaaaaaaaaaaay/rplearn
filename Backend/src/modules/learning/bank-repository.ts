@@ -144,8 +144,13 @@ export class LearningBankSession {
     roleKey: string,
     name: string,
     attemptId: string,
+    options: { minQuestions?: number; excludeReviewOnly?: boolean } = {},
   ) {
-    const choices = await this.choices(level, roleKey);
+    const choices = (await this.choices(level, roleKey)).filter(
+      (choice) =>
+        choice.questions.length >= (options.minQuestions ?? 0) &&
+        !(options.excludeReviewOnly && choice.reviewOnly),
+    );
     if (!choices.length) return null;
     const priority = Math.max(...choices.map((choice) => choice.priority));
     const preferred = choices.filter((choice) => choice.priority === priority);

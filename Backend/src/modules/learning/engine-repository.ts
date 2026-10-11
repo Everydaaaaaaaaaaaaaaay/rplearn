@@ -423,7 +423,7 @@ export class LearningSession {
       };
     if (state.characters < learningPolicy.characterThreshold)
       reject("LEARNING_NOT_READY", "再聊一会儿，进度满后就能开启挑战。");
-    const [candidate] = await this.sql<{ payload: LearningUnit }[]>`
+    const [dedicated] = await this.sql<{ payload: LearningUnit }[]>`
       select v.payload from app.learning_units u join app.learning_unit_versions v on v.unit_id=u.id and v.version=u.current_version
       where u.published and u.role_key=${state.roleKey} and u.level_key=${level}
         and not exists(select 1 from app.learning_attempts a where a.user_id=${this.userId} and a.character_id=${characterId} and a.unit_id=u.id)
@@ -439,14 +439,20 @@ export class LearningSession {
       this.userId,
       characterId,
     );
-    const composed = candidate
-      ? null
-      : await bank.compose(
-          level,
-          state.roleKey,
-          companion?.name ?? "同行者",
-          attemptId,
-        );
+    // 已有更完整的新练习时，不让早期短专属单元遮住公共长单元；纯复习不抢占未见专属题。
+    const composed = await bank.compose(
+      level,
+      state.roleKey,
+      companion?.name ?? "同行者",
+      attemptId,
+      dedicated
+        ? {
+            minQuestions: dedicated.payload.questions.length + 1,
+            excludeReviewOnly: true,
+          }
+        : {},
+    );
+    const candidate = composed ? undefined : dedicated;
     if (!candidate && !composed) {
       // 只为确有角色蓝图的主角色保留原生成队列；普通角色缺题由公共题库补齐。
       if (

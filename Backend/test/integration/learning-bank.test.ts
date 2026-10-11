@@ -128,6 +128,25 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       );
     }
   });
+  it("主角色同样优先进入已发布十八题新单元及完整开场", async () => {
+    for (const role of ["oliver", "ruby", "marcus"]) {
+      for (const level of [
+        "senior1",
+        "senior2",
+        "senior3",
+        "undergraduate",
+        "postgraduate",
+        "advanced",
+      ] as const) {
+        const c = await account();
+        const a = await c.start(await c.character(role), level);
+        expect(a.unit.questions, `${role}/${level}`).toHaveLength(18);
+        expect(a.unit.beats).toHaveLength(3);
+        expect(a.unit.beats.every((beat) => beat.afterQuestion === 0)).toBe(true);
+        expect(a.unit.id).toMatch(/^assembled\./);
+      }
+    }
+  });
   it("四级正式十八题包含完整开场，补答仅补得分且跨角色不重复出题", async () => {
     const c = await account();
     const character = await c.character();
@@ -182,6 +201,24 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
       ...second.unit.questions.map((q) => q.id),
     ]);
     expect(reused.unit.questions.every((q) => seenByFirst.has(q.id))).toBe(true);
+  });
+  it("公共库暂停时保留专属单元，恢复后旧挑战冻结而新挑战进入长单元", async () => {
+    const c = await account();
+    const character = await c.character("oliver");
+    await bank.setEnabled(false);
+    let old: Awaited<ReturnType<typeof c.start>>;
+    try {
+      old = await c.start(character, "senior1");
+      expect(old.unit.id).toMatch(/^oliver\./);
+      expect(old.unit.questions).toHaveLength(6);
+    } finally {
+      await bank.setEnabled(true);
+    }
+    expect(await c.start(character, "senior1")).toEqual(old);
+    const fresh = await account();
+    expect(
+      (await fresh.start(await fresh.character("oliver"), "senior1")).unit.questions,
+    ).toHaveLength(18);
   });
   it("并发跨角色不重复出题，其他账号可以使用相同公共库", async () => {
     const c = await account();
