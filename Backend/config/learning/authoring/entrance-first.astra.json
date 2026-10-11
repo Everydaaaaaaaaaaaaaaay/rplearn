@@ -1,0 +1,1629 @@
+{
+  "schemaVersion": "authoring-v1",
+  "id": "entrance.first",
+  "title": "考研英语并列方向：英语一与英语二首组原创微练习",
+  "authoringStatus": "隔离原创稿，待主代理逐题终审；未接入、未发布",
+  "authorship": {
+    "method": "作者逐题撰写材料、答案与解释；程序仅保存并检查结构，未组合或替换模板生成教学内容",
+    "date": "2026-10-11"
+  },
+  "identityBoundary": "entrance为新并列备考方向；现有postgraduate是六级，绝不覆盖、迁移或复用其题目、目标、进度标识。当前正式level枚举尚无entrance，不擅自提交为postgraduate。",
+  "evidenceBoundary": "这些题是原创能力微练习，不是模拟整卷。未取得2027或2026大纲正文、官方样题正文与评分细则，不能宣称最新版全面对齐、考试估分、通过保证或难度经考生标定。两类写作侧重点为本稿教学设计，不主张某类考试只考某种写作。",
+  "sources": [
+    {
+      "id": "entrance.chsi.2025",
+      "title": "考研常识：英语一与英语二的区别",
+      "url": "https://yz.chsi.com.cn/kyzx/bkzn/202506/20250618/2293390155.html",
+      "publisher": "中国研究生招生信息网",
+      "published": "2025-06-18",
+      "checked": "实际核读第二、三部分。确认英一与英二试卷组成有差异，英一强调概念或结构较复杂语句的理解与翻译，英二强调书面材料理解与翻译。仅作方向证据，不引用专业代码或推定最新大纲不变。"
+    },
+    {
+      "id": "entrance.neea.2022.catalog",
+      "title": "2022年全国硕士研究生招生考试英语（二）考试大纲（非英语专业）",
+      "url": "https://yankao.neea.edu.cn/xhtml1/report/21115/5092-1.htm",
+      "checked": "实际打开页面并核看211155089.jpg版权页、211155090.jpg目录图片。目录含考查目标、考试形式内容结构、题型示例参考答案及评分参考；未展示这些章节正文，不能声称已核读样题或评分规则。"
+    },
+    {
+      "id": "entrance.hep.english2.catalog",
+      "title": "考研英语（二）新教材",
+      "url": "https://xuanshu.hep.com.cn/front/book/findBookDetails?bookId=690a31f9e119ac97291cd8e6",
+      "checked": "实际核读出版信息和目录，ISBN 978-7-04-059487-4，页面标示2026年03月印次；目录含阅读、英译汉、应用文、图表作文。不是考试院大纲正文，目录也不证明已读书中内容。"
+    }
+  ],
+  "interactionContract": {
+    "types": [
+      "choice",
+      "completion",
+      "cloze",
+      "arrange",
+      "matching"
+    ],
+    "normalization": "选择按ID；排列与配对按完整集合；填空接受显式列出的词或短语，忽略大小写、首尾空格与句末标点。不得用有限词表判定自由翻译或写作能力。",
+    "story": "每组只有一段完整可选开场，afterQuestion=0；没有故事理解题，不引用故事物品或人物来解题。",
+    "reviewVisibility": "答案、解释、最短路径、干扰项分析只在提交后展示。",
+    "gradingBoundary": "客观题只报告该能力片段的作答证据；proposed任务不计入36题，不送入现有自动判题。"
+  },
+  "sets": [
+    {
+      "id": "entrance.english1.first",
+      "title": "英语一：把论证读准确",
+      "direction": "英语一",
+      "questionIds": [
+        "entrance.english1.01",
+        "entrance.english1.02",
+        "entrance.english1.03",
+        "entrance.english1.04",
+        "entrance.english1.05",
+        "entrance.english1.06",
+        "entrance.english1.07",
+        "entrance.english1.08",
+        "entrance.english1.09",
+        "entrance.english1.10",
+        "entrance.english1.11",
+        "entrance.english1.12",
+        "entrance.english1.13",
+        "entrance.english1.14",
+        "entrance.english1.15",
+        "entrance.english1.16",
+        "entrance.english1.17",
+        "entrance.english1.18"
+      ],
+      "story": {
+        "id": "entrance.english1.story",
+        "afterQuestion": 0,
+        "title": "还未关灯的修表铺",
+        "text": "雨停后，你和同行者走进一间还亮着灯的修表铺，取回昨天送修的旧手表。老师傅把它放在软布上，却找不到装表的小盒子。你们帮他在柜台旁找了一会儿，同行者从椅背取下一顶帽子，盒子就藏在下面。老师傅笑着包好手表，又把门口倾斜的伞扶正。你戴上表，听见秒针轻轻走动。走出店门时，街边的积水映着最后一盏灯。",
+        "english": "After the rain, you and your companion enter a watch repair shop whose light is still on. The watch you left yesterday is ready, but the repairer cannot find its small box. You help him look beside the counter. Your companion lifts a hat from a chair, revealing the box underneath. The repairer smiles, packs the watch and straightens an umbrella by the door. You put the watch on and hear its quiet ticking. Outside, the last shop light shines in a puddle."
+      }
+    },
+    {
+      "id": "entrance.english2.first",
+      "title": "英语二：把信息组织清楚",
+      "direction": "英语二",
+      "questionIds": [
+        "entrance.english2.01",
+        "entrance.english2.02",
+        "entrance.english2.03",
+        "entrance.english2.04",
+        "entrance.english2.05",
+        "entrance.english2.06",
+        "entrance.english2.07",
+        "entrance.english2.08",
+        "entrance.english2.09",
+        "entrance.english2.10",
+        "entrance.english2.11",
+        "entrance.english2.12",
+        "entrance.english2.13",
+        "entrance.english2.14",
+        "entrance.english2.15",
+        "entrance.english2.16",
+        "entrance.english2.17",
+        "entrance.english2.18"
+      ],
+      "story": {
+        "id": "entrance.english2.story",
+        "afterQuestion": 0,
+        "title": "装进纸袋的栗子",
+        "text": "你和同行者经过一个快收摊的栗子摊，买了最后一小袋。刚走两步，纸袋底部裂开，几颗栗子滚到路边。摊主赶来递上一只新袋，同行者蹲下拾起没有碰到水的栗子，你则托住破口。重新装好后，摊主又送了一张纸巾。你们在桥边找了张长椅坐下，把袋口折低，慢慢剥开还热的栗子。河面上经过一只小船，你们等它转过桥洞，才起身回去。",
+        "english": "You and your companion buy the last small bag of chestnuts from a stall that is closing. A few steps away, the bottom tears and several chestnuts roll towards the road. The seller brings a fresh bag. Your companion picks up the chestnuts that have stayed dry while you hold the torn bag together. Once everything is repacked, the seller adds a paper napkin. You find a bench beside a bridge and peel the warm chestnuts. A small boat passes below. You watch it disappear beneath the bridge before heading back."
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "entrance.english1.01",
+      "goalId": "entrance.english1.scope",
+      "type": "choice",
+      "prompt": "读句子，哪项保留了原句的否定范围？",
+      "material": "Not every proposal that reduces average travel time improves access for residents whose journeys begin outside the city centre.",
+      "options": [
+        {
+          "id": "a",
+          "text": "No proposal reducing average travel time improves access for outer-area residents."
+        },
+        {
+          "id": "b",
+          "text": "Some proposals reduce average travel time without improving access for outer-area residents."
+        },
+        {
+          "id": "c",
+          "text": "Every proposal improving access must reduce average travel time."
+        },
+        {
+          "id": "d",
+          "text": "Only residents in the city centre benefit from shorter travel times."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "not every否定全称，说明至少有反例；它不等于一个也没有，更没有建立改善可达性所必需的条件。",
+      "difficulty": "英语一受控：全称否定叠加两个关系从句",
+      "shortestPath": "先读Not every proposal improves access，再补两个从句限制。",
+      "distractorNotes": {
+        "a": "把并非全部改成全部不。",
+        "c": "倒置并追加必要条件。",
+        "d": "把局部反例扩大到受益人群的排他结论。"
+      },
+      "leakageAudit": "其他题未复用此句、交通对象或否定范围答案；故事无相应线索。"
+    },
+    {
+      "id": "entrance.english1.02",
+      "goalId": "entrance.english1.reference",
+      "type": "completion",
+      "prompt": "填入原文中被This change指向的新标签名称，使用原文短语。",
+      "material": "The archive replaced its subject labels with date-based labels. This change made browsing harder for visitors interested in a theme. The archivists therefore reversed the change. Here, This change refers to the adoption of ____.",
+      "acceptedAnswers": [
+        "date-based labels"
+      ],
+      "acceptedVariants": [
+        "date based labels"
+      ],
+      "explanation": "This change回指标签改为按日期编排；后面的撤回是后续行动。需填写date-based labels，而不是旧标签名称或撤回行为。",
+      "difficulty": "英语一识别：跨句事件指代",
+      "shortestPath": "定位This之前刚发生的变更，再取新标签名称。",
+      "distractorNotes": {
+        "subject labels": "这是旧标签。",
+        "reversed the change": "发生在指代之后。"
+      },
+      "leakageAudit": "档案标签只出现于本题；填空无前题词库。"
+    },
+    {
+      "id": "entrance.english1.03",
+      "goalId": "entrance.english1.argument",
+      "type": "choice",
+      "prompt": "第三句在论证中起什么作用？",
+      "material": "A publisher argues that faster reviews necessarily produce weaker books. Its own rushed series did contain many errors. Yet a second publisher shortened review times by assigning more editors, and its error rate fell. The two businesses did not use identical procedures, so the comparison cannot tell us how much any single change contributed. It does, however, give us a reason to question the original claim. Speed alone cannot explain quality; what happens during the available time may matter as much as the number of days on the calendar.",
+      "options": [
+        {
+          "id": "a",
+          "text": "It challenges the claim that faster review must weaken quality."
+        },
+        {
+          "id": "b",
+          "text": "It establishes the precise contribution of each editorial change."
+        },
+        {
+          "id": "c",
+          "text": "It supports the first publisher’s view by describing a comparable failure."
+        },
+        {
+          "id": "d",
+          "text": "It shows that the two publishers used the same review procedure."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "第三句提供快而错误率下降的反例，足以挑战必然联系；不足以证明增派编辑总能奏效。",
+      "difficulty": "英语一迁移：反例与因果全称命题",
+      "shortestPath": "比较necessarily与第三句相反结果，再看末句归纳。",
+      "distractorNotes": {
+        "b": "后文明确不能量化单项改变的贡献。",
+        "c": "第二家错误率下降，不是同类失败。",
+        "d": "后文明确流程不相同。"
+      },
+      "leakageAudit": "出版审稿案例独立；没有其他题给出counterexample作为同材料答案。"
+    },
+    {
+      "id": "entrance.english1.04",
+      "goalId": "entrance.english1.stance",
+      "type": "choice",
+      "prompt": "作者如何评价公共雕塑的数字复制？",
+      "material": "Digital copies let many people inspect a sculpture's smallest details. That is a real gain. Still, a screen cannot reproduce the experience of walking around the work in a public square. We should welcome the copies without treating them as substitutes for the encounter.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enthusiastic about replacing physical visits."
+        },
+        {
+          "id": "b",
+          "text": "Dismissive of digital access in any form."
+        },
+        {
+          "id": "c",
+          "text": "Supportive of access, with a reservation about replacement."
+        },
+        {
+          "id": "d",
+          "text": "Uncertain whether digital copies reveal any detail."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "作者明确承认收益，又限定复制品不可替代现场体验；不是含糊中立。",
+      "difficulty": "英语一受控：让步之后的评价边界",
+      "shortestPath": "把real gain与without treating them as substitutes合并。",
+      "distractorNotes": {
+        "a": "忽略不可替代的保留。",
+        "b": "否认明确认可的收益。",
+        "d": "把确定的细节优势改成不确定。"
+      },
+      "leakageAudit": "本题媒介与受限支持对象独立，其他题不复述此评价。"
+    },
+    {
+      "id": "entrance.english1.05",
+      "goalId": "entrance.english1.inference",
+      "type": "choice",
+      "prompt": "哪项后续设计最直接补足材料指出的时间信息缺口？",
+      "material": "In a survey, researchers found that people who regularly repaired household objects reported greater confidence in learning new skills. The survey was conducted once and did not record confidence before people began repairing things. The researchers also asked participants why they repaired objects. Some wanted to save money; others enjoyed working with their hands. These answers help describe the group, but they do not establish whether repairing objects increased confidence or whether confident people were more willing to attempt repairs. A follow-up study would need to address that question directly.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the one-time survey with a larger sample, comparing regular repairers with people who rarely repair things."
+        },
+        {
+          "id": "b",
+          "text": "Ask current repairers to rank their motives, comparing those who save money with those who enjoy practical work."
+        },
+        {
+          "id": "c",
+          "text": "Assess current repair skill alongside current confidence, comparing simpler repairs with more demanding ones."
+        },
+        {
+          "id": "d",
+          "text": "Measure confidence before beginners start repairing and again later, tracking the order in which changes appear."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "d补入开始修理前的测量与后续追踪，帮助判断变化次序。扩大同一时点样本、细分动机或同时测试技能都不能直接补这一时间缺口。追踪仍不能单独排除其他原因。",
+      "difficulty": "英语一迁移：识别研究设计应补的时间证据",
+      "shortestPath": "定位did not record confidence before，再找含开始前测量与后续追踪的设计。",
+      "distractorNotes": {
+        "a": "扩大同一时点样本不补活动前基线。",
+        "b": "动机细分不记录信心的变化次序。",
+        "c": "同时测两项仍缺开始前数据。"
+      },
+      "leakageAudit": "修理与信心的研究仅本题出现；后题不用该因果方向作提示。"
+    },
+    {
+      "id": "entrance.english1.06",
+      "goalId": "entrance.english1.cohesion",
+      "type": "cloze",
+      "prompt": "每个空位选择一个连接词，使两处关系都与上下文一致；每词最多使用一次。",
+      "passage": "The debate was presented as a choice between preserving the old theatre and allowing it to decay. {s1}, residents proposed a third option: convert part of the building into classrooms while keeping the stage. {s2}, the council had to consider a plan absent from its original comparison.",
+      "tokens": [
+        {
+          "id": "previously",
+          "text": "Previously"
+        },
+        {
+          "id": "consequently",
+          "text": "Consequently"
+        },
+        {
+          "id": "similarly",
+          "text": "Similarly"
+        },
+        {
+          "id": "however",
+          "text": "However"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "however"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "consequently"
+          }
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "第三种方案打破二选一框架，第一空转折；新方案导致议会扩大考虑范围，第二空结果。",
+      "difficulty": "英语一受控：完形的论述转向与结果链",
+      "shortestPath": "识别二选一到第三方案的转向，再读had to。",
+      "distractorNotes": {
+        "similarly": "没有并列的相同例子。",
+        "previously": "议会的新考虑由刚提出的方案触发，并非此前。"
+      },
+      "leakageAudit": "剧院第三选项不在其他题出现；词序不按答案先后。"
+    },
+    {
+      "id": "entrance.english1.07",
+      "goalId": "entrance.english1.structure",
+      "type": "arrange",
+      "prompt": "将三个段落按议论文逻辑排序；每段使用一次。",
+      "tokens": [
+        {
+          "id": "c",
+          "text": "That gap matters: a policy based only on reported demand may overlook people who have already stopped asking."
+        },
+        {
+          "id": "a",
+          "text": "City officials often use requests for public services as a measure of local need."
+        },
+        {
+          "id": "b",
+          "text": "But requests record expressed demand, whereas need may persist among residents who expect no response."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "a引入以请求衡量需求；b提出已表达与未表达需求的缺口；c用That gap承接并说明政策意义。",
+      "difficulty": "英语一迁移：概念区分驱动篇章排序",
+      "shortestPath": "找That gap的先行概念，再放入介绍句。",
+      "distractorNotes": {
+        "a-c-b": "c在b介绍差异前无明确gap。",
+        "b-a-c": "b的But缺乏所反驳的起点。"
+      },
+      "leakageAudit": "需求与请求只在此题成对出现，其他题不提供排序原句。"
+    },
+    {
+      "id": "entrance.english1.08",
+      "goalId": "entrance.english1.function",
+      "type": "matching",
+      "prompt": "把各句在这段论证中的作用配对；右侧有一项不用。",
+      "material": "A critic writes: (1) Open data are often described as an automatic source of accountability. (2) I accept that access is a necessary first step. (3) Yet access achieves little when no one can challenge the decisions revealed by the data.",
+      "left": [
+        {
+          "id": "one",
+          "text": "句1"
+        },
+        {
+          "id": "two",
+          "text": "句2"
+        },
+        {
+          "id": "three",
+          "text": "句3"
+        }
+      ],
+      "right": [
+        {
+          "id": "concession",
+          "text": "承认对方主张中的有限合理性"
+        },
+        {
+          "id": "target",
+          "text": "引出准备检视的常见主张"
+        },
+        {
+          "id": "limit",
+          "text": "指出单有该条件仍不足"
+        },
+        {
+          "id": "cause",
+          "text": "报告一次实验的确定因果结果"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "one",
+          "right": "target"
+        },
+        {
+          "left": "two",
+          "right": "concession"
+        },
+        {
+          "left": "three",
+          "right": "limit"
+        }
+      ],
+      "acceptedVariants": [],
+      "explanation": "描述常见说法、有限承认、补充限制构成三步论证；没有实验。",
+      "difficulty": "英语一受控：区分引述、让步与限制",
+      "shortestPath": "依次看often described、I accept、Yet及各句命题。",
+      "distractorNotes": {
+        "cause": "全文未报告实验或确定因果。",
+        "concession-target互换": "句1是外部通说，句2才表明作者接受的部分。"
+      },
+      "leakageAudit": "开放数据例子独立；匹配标签是操作选项，不供另一题使用。"
+    },
+    {
+      "id": "entrance.english1.09",
+      "goalId": "entrance.english1.translation-analysis",
+      "type": "choice",
+      "prompt": "这是一道译文诊断题。哪项完整保留原句的条件、主体与程度？",
+      "material": "Even if a model predicts individual choices accurately, it does not follow that the institutions using it understand why those choices are made.",
+      "options": [
+        {
+          "id": "a",
+          "text": "模型只要准确预测个人选择，使用它的机构就能理解这些选择的原因。"
+        },
+        {
+          "id": "b",
+          "text": "即使模型能准确预测个人选择，也不能由此认定使用它的机构理解这些选择为何作出。"
+        },
+        {
+          "id": "c",
+          "text": "由于模型不能准确预测个人选择，使用它的机构无法理解人们。"
+        },
+        {
+          "id": "d",
+          "text": "即使机构理解个人选择的原因，模型也永远无法预测这些选择。"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "Even if保留假设性让步；does not follow是不足以推出，并非事实上完全不理解。此题只检验译文辨析，不是翻译产出。",
+      "difficulty": "英语一迁移：嵌套关系与推论否定的译文诊断",
+      "shortestPath": "锁定Even if和does not follow，再核对understand的主语。",
+      "distractorNotes": {
+        "a": "将让步与不可推出改成充分条件。",
+        "c": "把假设准确变成事实不准确。",
+        "d": "颠倒预测与理解并新增永远。"
+      },
+      "leakageAudit": "模型与机构原句未在proposed翻译复用，选项不能充当后续译稿。"
+    },
+    {
+      "id": "entrance.english1.10",
+      "goalId": "entrance.english1.lexical-context",
+      "type": "completion",
+      "prompt": "根据语境，用原文一个词完成释义：Here, 'qualified' means ____ rather than complete.",
+      "material": "The committee gave the plan qualified approval: work could begin on the outer wall, but any changes to the interior required a fresh vote. Its approval was therefore limited.",
+      "acceptedAnswers": [
+        "limited"
+      ],
+      "acceptedVariants": [],
+      "explanation": "qualified在此修饰approval，后面的外墙许可与内部另表决给出限制，段末提供释义limited；不是某人具备资格。",
+      "difficulty": "英语一识别：常见词在评价语境中的义项",
+      "shortestPath": "读冒号后的许可边界，再找段末释义。",
+      "distractorNotes": {
+        "complete": "与内部需重新表决冲突。",
+        "qualified": "抄回目标词，没有完成释义。"
+      },
+      "leakageAudit": "此题为明确释义提取，不将答案直接出现误称高阶推断；其他题无qualified目标。"
+    },
+    {
+      "id": "entrance.english1.11",
+      "goalId": "entrance.english1.cohesion",
+      "type": "cloze",
+      "prompt": "依据论述关系补全两空，每个词最多用一次。",
+      "passage": "An experiment can be repeated with identical equipment and still produce different results if the setting changes. A classroom, {s1}, may be noisier than a laboratory. {s2} this variation, researchers should record the setting as carefully as the equipment.",
+      "tokens": [
+        {
+          "id": "despite",
+          "text": "Despite"
+        },
+        {
+          "id": "example",
+          "text": "for example"
+        },
+        {
+          "id": "given",
+          "text": "Given"
+        },
+        {
+          "id": "contrary",
+          "text": "on the contrary"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "example"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "given"
+          }
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "教室更吵是环境变化的例子；正因为该变化，才应记录环境。Given引出理由，Despite会把理由改成让步。",
+      "difficulty": "英语一受控：举例与依据在完形中的协同",
+      "shortestPath": "把教室句视作上句setting的具体化，再判断末句建议的理由。",
+      "distractorNotes": {
+        "contrary": "on the contrary用于否定前述命题；教室例子支持而非否定环境差异会影响结果。",
+        "despite": "变化正是建议的原因，不是与建议相对的障碍。"
+      },
+      "leakageAudit": "实验环境只在本题；与06连接词不重复答案组合。"
+    },
+    {
+      "id": "entrance.english1.12",
+      "goalId": "entrance.english1.writing-argument",
+      "type": "arrange",
+      "prompt": "重排三句，使短论证先提出判断，再给理由，最后处理反面考虑。",
+      "tokens": [
+        {
+          "id": "b",
+          "text": "Without such time, staff can complete routine tasks yet have little chance to examine whether those tasks remain useful."
+        },
+        {
+          "id": "c",
+          "text": "This does not mean every meeting should become a debate; a short, regular review would be enough to start."
+        },
+        {
+          "id": "a",
+          "text": "Organisations should reserve some working time for questioning established routines."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "a为主张，b用such time解释理由，c防止把主张夸大成每场会议都辩论。",
+      "difficulty": "英语一迁移：议论文的主张、支持与范围限制",
+      "shortestPath": "按题目指定功能定位a，再让such time承接，最后放限制。",
+      "distractorNotes": {
+        "a-c-b": "限制先于本题要求的理由，且b被切断。",
+        "b-a-c": "such time在开头无明确先行内容。"
+      },
+      "leakageAudit": "这里只测结构识别；proposed写作采用别的主题，不提供可整段照抄答案。"
+    },
+    {
+      "id": "entrance.english1.13",
+      "goalId": "entrance.english1.application",
+      "type": "choice",
+      "prompt": "你邀请外校研究员为学生读书会做一次短讲，对方尚未答应。哪句最符合目的与正式语域？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Thank you for agreeing to give our reading group a talk; please let us know which date you prefer."
+        },
+        {
+          "id": "b",
+          "text": "Would you kindly send us a written introduction to your recent work for our reading group’s newsletter?"
+        },
+        {
+          "id": "c",
+          "text": "Would you be willing to give a short talk to our reading group at a time convenient for you?"
+        },
+        {
+          "id": "d",
+          "text": "We enjoyed reading your recent article and would be grateful for permission to reproduce it in our newsletter."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "c明确提出邀请并给对方协商时间的空间；礼貌之外还须完成交际目的。",
+      "difficulty": "英语一受控：邀请函目的与受众",
+      "shortestPath": "核对是否真正提出邀请、是否错误预设接受。",
+      "distractorNotes": {
+        "a": "语气礼貌但错误预设对方已接受。",
+        "b": "请求写简介，不是邀请短讲。",
+        "d": "请求转载许可，未完成邀请目的。"
+      },
+      "leakageAudit": "新主题单独提供受众与目的，不依赖故事或其他应用文题。"
+    },
+    {
+      "id": "entrance.english1.14",
+      "goalId": "entrance.english1.assumption",
+      "type": "choice",
+      "prompt": "以下哪项若为真，最直接削弱末句的判断？",
+      "material": "After a university moved all course evaluations online, it received twice as many forms. Administrators concluded that students previously unable to attend the paper sessions were now better represented.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The online form retained all the original questions."
+        },
+        {
+          "id": "b",
+          "text": "Nearly all additional forms came from students who had also attended the paper sessions."
+        },
+        {
+          "id": "c",
+          "text": "Some students preferred completing forms on a phone."
+        },
+        {
+          "id": "d",
+          "text": "The new forms were easier for staff to store."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "更多份数未必来自过去缺席的人；b直接切断数量增长到该群体更有代表性的推断。",
+      "difficulty": "英语一迁移：总量证据与群体构成假设",
+      "shortestPath": "找结论强调的是谁被代表，再问新增表来自谁。",
+      "distractorNotes": {
+        "a": "问题不变不说明参与者构成。",
+        "c": "便利偏好不说明过去缺席群体。",
+        "d": "存储效率与代表性无关。"
+      },
+      "leakageAudit": "大学评价数据独立；未借05的调查事实作答。"
+    },
+    {
+      "id": "entrance.english1.15",
+      "goalId": "entrance.english1.headings",
+      "type": "matching",
+      "prompt": "为两段各选一个最合适的小标题；一项不用。",
+      "left": [
+        {
+          "id": "p",
+          "text": "A museum labels an object as 'everyday clothing'. But whose everyday life does the label assume? A garment common among wealthy residents may have been rare elsewhere."
+        },
+        {
+          "id": "q",
+          "text": "Visitors can now attach notes about their own family histories to the display. The museum keeps conflicting accounts visible rather than merging them into a single official story."
+        }
+      ],
+      "right": [
+        {
+          "id": "voices",
+          "text": "Making room for more than one account"
+        },
+        {
+          "id": "repair",
+          "text": "Restoring damaged garments"
+        },
+        {
+          "id": "category",
+          "text": "Questioning a seemingly neutral category"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "p",
+          "right": "category"
+        },
+        {
+          "left": "q",
+          "right": "voices"
+        }
+      ],
+      "acceptedVariants": [],
+      "explanation": "p检视everyday这一分类所预设的群体；q保留多种叙述。材料没有修复服装。",
+      "difficulty": "英语一受控：段落概念主旨与表层名词区分",
+      "shortestPath": "看p的问题指向标签，看q的行动是保留分歧。",
+      "distractorNotes": {
+        "repair": "只抓服装主题，忽略论述动作。",
+        "voices用于p": "p尚未描述多方记录机制。"
+      },
+      "leakageAudit": "两段属于同一配对任务而非跨题共享材料；各自独立证据足够。"
+    },
+    {
+      "id": "entrance.english1.16",
+      "goalId": "entrance.english1.translation-analysis",
+      "type": "choice",
+      "prompt": "哪项准确保留了原句中历史学家接受与质疑的范围？",
+      "material": "What the historian disputes is not that the reform changed working lives, but that its benefits were distributed as evenly as later accounts suggest.",
+      "options": [
+        {
+          "id": "a",
+          "text": "承认收益分配较均衡，质疑改革是否如后来的记述所说那样改变了生活。"
+        },
+        {
+          "id": "b",
+          "text": "承认改革改变了生活，质疑收益是否如后来的记述所说那样迅速显现。"
+        },
+        {
+          "id": "c",
+          "text": "承认改革改变了生活，质疑收益是否比后来的记述所说的分配得更均衡。"
+        },
+        {
+          "id": "d",
+          "text": "承认改革改变了生活，质疑收益是否如后来的记述所说那样分配均衡。"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "not that ... but that ...把改变生活排除出争议，焦点在收益分配是否达到后来的记述所描述的均衡程度。as evenly as表示达到所述程度，不是出现得快，也不是比所述更均衡。",
+      "difficulty": "英语一迁移：主语从句、焦点纠正与比较从句",
+      "shortestPath": "抽出disputes not X but Y，再给Y补比较对象。",
+      "distractorNotes": {
+        "a": "交换了接受部分与争议部分。",
+        "b": "将分配均衡程度换成收益出现速度。",
+        "c": "将同等程度比较换成更高程度比较。"
+      },
+      "leakageAudit": "历史改革句不用于自由翻译规格，防止答案照搬。"
+    },
+    {
+      "id": "entrance.english1.17",
+      "goalId": "entrance.english1.writing-evidence",
+      "type": "choice",
+      "prompt": "一幅原创示意图中，两人面对同一道围墙：一人只量墙的高度，另一人走到旁边发现了一扇门。短文拟讨论“认真分析，也应检视问题的框架”。哪条展开最贴合且不过度？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The picture favours searching for alternatives before trying to understand the obstacle itself."
+        },
+        {
+          "id": "b",
+          "text": "The picture suggests that examining available approaches can complement detailed analysis of an obstacle."
+        },
+        {
+          "id": "c",
+          "text": "The picture shows that the measured height is the information needed to identify the door."
+        },
+        {
+          "id": "d",
+          "text": "The picture recommends choosing the approach that requires the least preparation, regardless of its purpose."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "b将图中两种行动转为互补的有限论点，保留分析价值，也回应检视框架的题设。其他项分别新增固定先后、未给出的因果关系或准备量评价。题面使用文字示意，无未生成图片依赖。",
+      "difficulty": "英语一迁移：从图示到可辩护论点",
+      "shortestPath": "把量高度与找门对应到分析与框架检查，避免全称断言。",
+      "distractorNotes": {
+        "a": "将题设中的相互补充换成固定先后优先，且没有人物先后行动证据。",
+        "c": "材料未建立测量高度与发现门的因果或信息关系。",
+        "d": "把检视框架换成省准备，图中未比较准备量。"
+      },
+      "leakageAudit": "围墙图示独立，不复用12的论证句或proposed主题。"
+    },
+    {
+      "id": "entrance.english1.18",
+      "goalId": "entrance.english1.summary",
+      "type": "choice",
+      "prompt": "哪句概括同时保留文章主张与限制？",
+      "material": "Remote access has widened participation in public lectures, especially for people with limited mobility. Yet providing a stream does not ensure that everyone can follow it: captions, clear sound and opportunities to ask questions still matter. One organiser counted every opened link as a participant, even when the connection ended after a few seconds. Another asked viewers whether they could hear the discussion and contribute a question. Neither measure tells the whole story, but the second addresses a condition the first overlooks. The achievement should be judged by usable participation rather than the mere existence of a link.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remote access expands opportunity, but success requires attention to usable participation."
+        },
+        {
+          "id": "b",
+          "text": "The number of opened links adequately measures meaningful participation."
+        },
+        {
+          "id": "c",
+          "text": "The second organiser’s questions provide a complete account of audience experience."
+        },
+        {
+          "id": "d",
+          "text": "The main benefit of remote lectures lies in making audience counting simpler."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "主张是扩大机会仍需可用参与条件；未提出放弃线上、保证平等或各条件排序。",
+      "difficulty": "英语一迁移：压缩主旨且保留评价尺度",
+      "shortestPath": "将首句收益与末句评价标准合并。",
+      "distractorNotes": {
+        "b": "短暂打开也被计入，不能据此认为已经参与。",
+        "c": "Neither measure tells the whole story明确否认完整性。",
+        "d": "计数方式是检验参与的手段，不是文章所述主要收益。"
+      },
+      "leakageAudit": "公共讲座主旨没有在前题作为范文；全组共享的是能力，不是答案语句。"
+    },
+    {
+      "id": "entrance.english2.01",
+      "goalId": "entrance.english2.scope",
+      "type": "choice",
+      "prompt": "哪项准确说明通知中的资格条件？",
+      "material": "Employees who joined before July may request a training allowance only if their manager approves the course. Approval does not guarantee payment, which also depends on the remaining budget.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Employees who joined before July can submit requests before approval, with the course reviewed when payment is due."
+        },
+        {
+          "id": "b",
+          "text": "Employees who joined before July need approval, after which the allowance is reserved from the remaining budget."
+        },
+        {
+          "id": "c",
+          "text": "Employees who joined before July need approval to request support, and payment also depends on the remaining budget."
+        },
+        {
+          "id": "d",
+          "text": "Employees who joined before July need either course approval or sufficient remaining funds before requesting support."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "申请须符合入职时间及经理批准条件；支付还受预算限制，必要条件不等于保证。",
+      "difficulty": "英语二受控：实际通知中的多重限制",
+      "shortestPath": "分开may request和payment，分别找条件。",
+      "distractorNotes": {
+        "a": "批准是可申请条件，不能延后至支付时才审。",
+        "b": "批准后预留津贴仍是新增保证；原文保留预算限制。",
+        "d": "将批准与预算要求改成二选一。"
+      },
+      "leakageAudit": "报销制度仅此题，不与其他数字或人物复用。"
+    },
+    {
+      "id": "entrance.english2.02",
+      "goalId": "entrance.english2.reference",
+      "type": "completion",
+      "prompt": "用原文两个词填空：第二句的They指代____。",
+      "material": "Customers received paper receipts and return envelopes with their orders. They were prepaid, so customers could send unwanted items back without buying stamps.",
+      "acceptedAnswers": [
+        "return envelopes"
+      ],
+      "acceptedVariants": [],
+      "explanation": "prepaid和无需买邮票限定They是退货信封，而不是顾客或收据；不能仅按最近名词机械判断。",
+      "difficulty": "英语二识别：利用属性消解复数指代",
+      "shortestPath": "问哪个对象可以预付邮资并用于寄回商品。",
+      "distractorNotes": {
+        "customers": "顾客不是预付邮资的邮寄物。",
+        "paper receipts": "收据不承担退货邮资。"
+      },
+      "leakageAudit": "退货信封未出现在其他题；目标答案没有提前提供。"
+    },
+    {
+      "id": "entrance.english2.03",
+      "goalId": "entrance.english2.inference",
+      "type": "choice",
+      "prompt": "哪项判断有直接依据？",
+      "material": "A town opened its swimming pool an hour earlier on weekdays. In the first month, 70 visits were recorded during the new hour. The report did not say whether those visitors had previously used the pool later in the day. Staff welcomed the quieter conditions during the early session, and several swimmers said the time suited them better. Those comments suggest that the new hour met a preference among some users. They do not settle a different question: whether the pool gained more visits overall or merely spread existing visits across a longer day.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The new hour brought the pool 70 additional members."
+        },
+        {
+          "id": "b",
+          "text": "The extra hour was used, but its effect on total attendance is not established."
+        },
+        {
+          "id": "c",
+          "text": "The favourable comments establish an increase in total visits."
+        },
+        {
+          "id": "d",
+          "text": "The early session mainly served people who had not visited the pool before."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "70是新增时段的访问次数，不是新会员人数；可能有从旧时段转移来的访问。",
+      "difficulty": "英语二受控：次数、人数与净增量区别",
+      "shortestPath": "看visits的统计单位，再看未记录的原时段。",
+      "distractorNotes": {
+        "a": "访问次数不是新增会员人数。",
+        "c": "偏好和满意评论不能证明净增访问量。",
+        "d": "没有此前访问记录，无法判断主要构成。"
+      },
+      "leakageAudit": "泳池70次只在此题，不作为图表写作数据。"
+    },
+    {
+      "id": "entrance.english2.04",
+      "goalId": "entrance.english2.stance",
+      "type": "choice",
+      "prompt": "作者对四天工作周试验的态度是什么？",
+      "material": "The trial gave staff more uninterrupted time at home, and several reported feeling rested. These are encouraging signs. Before expanding it, however, the company should examine whether the same workload was simply being pushed into longer working days.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Encouraged by reports of rest, but seeking to check workload patterns before extending the trial."
+        },
+        {
+          "id": "b",
+          "text": "Encouraged by reports of rest, and ready to extend the trial while checking workload patterns afterwards."
+        },
+        {
+          "id": "c",
+          "text": "Concerned by reports of rest, and inclined to restore the previous schedule while reviewing workload patterns."
+        },
+        {
+          "id": "d",
+          "text": "Encouraged by reports of rest, but seeking to reduce the assigned workload before testing the shorter week."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "encouraging体现认可，扩展前检查工作量体现审慎；不是已确认全面减负。",
+      "difficulty": "英语二受控：积极评价中的实施保留",
+      "shortestPath": "组合encouraging signs与Before expanding的条件。",
+      "distractorNotes": {
+        "b": "把扩展前检查换成扩展后检查。",
+        "c": "休息感是鼓舞信号，作者没提出恢复旧安排。",
+        "d": "试验已开展；作者要求检查而非先减任务再试。"
+      },
+      "leakageAudit": "工作周主题不在英一题中使用，不能靠重复材料作答。"
+    },
+    {
+      "id": "entrance.english2.05",
+      "goalId": "entrance.english2.cohesion",
+      "type": "cloze",
+      "prompt": "选择词语补全两空，每项最多一次。",
+      "passage": "The village shop expected online orders to replace telephone orders. {s1}, many customers used the website only to check prices and then called to place an order. The owner kept both channels open {s2} customers were using them together.",
+      "tokens": [
+        {
+          "id": "unless",
+          "text": "unless"
+        },
+        {
+          "id": "instead",
+          "text": "Instead"
+        },
+        {
+          "id": "because",
+          "text": "because"
+        },
+        {
+          "id": "therefore",
+          "text": "Therefore"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "instead"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "because"
+          }
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "实际行为偏离取代预期，第一空Instead；两渠道结合使用解释保留两者的原因。",
+      "difficulty": "英语二受控：完形中的预期偏离与原因",
+      "shortestPath": "比较expected与实际下单方式，再问为何保留两个渠道。",
+      "distractorNotes": {
+        "therefore": "实际行为不是预期所推出的结果。",
+        "unless": "除非会反转保留渠道的理由。"
+      },
+      "leakageAudit": "电话与网页只在本题，答案不是英一完形连接词排列的复刻。"
+    },
+    {
+      "id": "entrance.english2.06",
+      "goalId": "entrance.english2.headings",
+      "type": "matching",
+      "prompt": "两段各匹配一个标题，一项不用。",
+      "left": [
+        {
+          "id": "p",
+          "text": "At first, volunteers were asked to stay for an entire afternoon. Several could spare only an hour. The organiser now offers shorter shifts that can be booked separately."
+        },
+        {
+          "id": "q",
+          "text": "New volunteers used to learn by watching whoever happened to be nearby. Now each receives a checklist and completes the first task with an experienced partner."
+        }
+      ],
+      "right": [
+        {
+          "id": "induction",
+          "text": "Making the first shift easier to navigate"
+        },
+        {
+          "id": "funding",
+          "text": "Finding a new source of money"
+        },
+        {
+          "id": "time",
+          "text": "Adapting participation to available time"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "p",
+          "right": "time"
+        },
+        {
+          "left": "q",
+          "right": "induction"
+        }
+      ],
+      "acceptedVariants": [],
+      "explanation": "第一段解决整下午门槛，第二段解决新手上手方式；没有募资。",
+      "difficulty": "英语二受控：把具体改动概括为段意",
+      "shortestPath": "各找旧问题和新办法，归纳其共同目的。",
+      "distractorNotes": {
+        "funding": "材料没有经费信息。",
+        "time用于q": "第二段是指导流程，不是时长。"
+      },
+      "leakageAudit": "两段同题配对，不与英一博物馆段落同构换名；分别涉及排班与入门流程。"
+    },
+    {
+      "id": "entrance.english2.07",
+      "goalId": "entrance.english2.sequence",
+      "type": "arrange",
+      "prompt": "按指代和时间关系排列三句，形成连贯短段。",
+      "tokens": [
+        {
+          "id": "b",
+          "text": "This revealed that most delays occurred before an item reached the packing table."
+        },
+        {
+          "id": "a",
+          "text": "The warehouse team recorded the time at each stage of an order's journey."
+        },
+        {
+          "id": "c",
+          "text": "After identifying that bottleneck, they reorganised the shelves rather than buying faster packing machines."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "记录产生发现，发现定位瓶颈，随后选择针对性的改进；This与that bottleneck各有明确先行内容。",
+      "difficulty": "英语二受控：过程叙述的发现与行动",
+      "shortestPath": "先找产生This发现的记录行为，再放After句。",
+      "distractorNotes": {
+        "a-c-b": "先识别瓶颈再行动，不能将发现放在行动后。",
+        "b-a-c": "This开头缺乏具体记录。"
+      },
+      "leakageAudit": "仓储流程独立，词序打乱不是直接原文重抄。"
+    },
+    {
+      "id": "entrance.english2.08",
+      "goalId": "entrance.english2.translation-analysis",
+      "type": "choice",
+      "prompt": "以下哪项译文保留了段落中的转变与原因？这道题检验译文辨析。",
+      "material": "Mara initially kept her lunch break free so that she could leave work earlier. She later began joining colleagues for lunch, not because her workload had fallen, but because she found the informal conversations useful.",
+      "options": [
+        {
+          "id": "a",
+          "text": "玛拉工作减少后开始和同事吃午饭，以便每天更早下班。"
+        },
+        {
+          "id": "b",
+          "text": "玛拉一直和同事吃午饭，因为工作轻松、闲聊也没用。"
+        },
+        {
+          "id": "c",
+          "text": "玛拉起初不在午休安排活动，好早点下班；后来与同事吃午饭，是因为随意交谈有益，而非工作量减少。"
+        },
+        {
+          "id": "d",
+          "text": "玛拉起初提前下班，所以后来同事要求她在午休工作。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "译文需保留起初的目的、后来的行为、否定的原因和真正原因；不能把两阶段原因混合。这里没有自由翻译产出证据。",
+      "difficulty": "英语二迁移：连续语段中的时间与因果保留",
+      "shortestPath": "分别圈initially、later、not because与but because。",
+      "distractorNotes": {
+        "a": "把被否定原因当事实，并混合阶段目的。",
+        "b": "抹掉行为变化且反转useful。",
+        "d": "新增同事要求且错误解释午休。"
+      },
+      "leakageAudit": "人物与情节不在故事中；不将此译文作为proposed翻译参考。"
+    },
+    {
+      "id": "entrance.english2.09",
+      "goalId": "entrance.english2.application",
+      "type": "choice",
+      "prompt": "你负责活动报名。某报名者被重复扣费，原因已查明，你刚提交原支付渠道退款，预计三个工作日到账。哪句最适合回复中的核心段落？",
+      "options": [
+        {
+          "id": "a",
+          "text": "We apologise for the duplicate charge. Your refund has been initiated and should reach the original payment account within three working days."
+        },
+        {
+          "id": "b",
+          "text": "We apologise for the inconvenience. Please allow three working days for us to establish whether the second payment was taken in error."
+        },
+        {
+          "id": "c",
+          "text": "We apologise for the duplicate charge. A credit for a future event has been arranged and should appear within three working days."
+        },
+        {
+          "id": "d",
+          "text": "We apologise for the inconvenience. Your refund has reached the original payment account, and we will confirm the details within three working days."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "a准确区分已发起退款和预计到账，保留原支付渠道与时限。其余项也礼貌自然，但分别把已查明变成待查、把退款变抵用额度、把处理中变已到账。",
+      "difficulty": "英语二受控：服务邮件的信息完成度与语域",
+      "shortestPath": "核对道歉、退款措施和时限三项是否匹配。",
+      "distractorNotes": {
+        "b": "原因已查明，不是未来三天才调查。",
+        "c": "未来活动额度不是已授权的原路退款。",
+        "d": "刚提交退款不等于资金已到账。"
+      },
+      "leakageAudit": "退款与英一邀请目的不同，不能通过背同一礼貌句作答。"
+    },
+    {
+      "id": "entrance.english2.10",
+      "goalId": "entrance.english2.data-description",
+      "type": "choice",
+      "prompt": "选择准确描述数据变化的英文句子。虚构调查：选择骑车上班的受访者比例由20%升至32%。",
+      "acceptedVariants": [],
+      "explanation": "从20%到32%是上升12个百分点；英文用rose by表达变化量、rose to或reaching表达末期水平。percentage points描述百分点差值，percent描述比例水平或相对增长；相对增长实际为60%。",
+      "difficulty": "英语二受控：英文数据表达中的by/to与percent/percentage points",
+      "shortestPath": "先算32−20=12，再核对变化用by、末值用to或reaching，差值单位为percentage points。",
+      "distractorNotes": {
+        "a": "12 percent表示相对增幅，不能代替12个百分点。",
+        "c": "把12写成末值、32写成变化量。",
+        "d": "末值32单位应为percent，变化12应为percentage points。"
+      },
+      "leakageAudit": "已改为英文表达选择；11不使用其数值或百分点差值作为答案，proposed写作数据也独立。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The share of respondents cycling to work rose by 12 percent, reaching 32 percent."
+        },
+        {
+          "id": "b",
+          "text": "The share of respondents cycling to work rose by 12 percentage points, reaching 32 percent."
+        },
+        {
+          "id": "c",
+          "text": "The share of respondents cycling to work rose to 12 percent, increasing by 32 percentage points."
+        },
+        {
+          "id": "d",
+          "text": "The share of respondents cycling to work rose to 32 percentage points, increasing by 12 percent."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "entrance.english2.11",
+      "goalId": "entrance.english2.data-inference",
+      "type": "choice",
+      "prompt": "下列哪句话适合写入图表描述，且不虚构原因？虚构调查：2023年600名受访者中45%每周使用电子书，2025年另600名受访者中为54%。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The 2025 sample contained a higher share of people who had recently started using e-books than the 2023 sample."
+        },
+        {
+          "id": "b",
+          "text": "Respondents in the 2025 sample spent a larger share of their reading time on e-books than those surveyed in 2023."
+        },
+        {
+          "id": "c",
+          "text": "The 2025 survey recorded more weekly reading sessions per e-book user than the 2023 survey recorded."
+        },
+        {
+          "id": "d",
+          "text": "The 2025 sample contained a higher share of weekly e-book users than the 2023 sample contained."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "45%与54%比较的是样本中每周使用电子书的人所占比例；没有测开始时间、阅读时间分配或每人的阅读次数。d保留原始指标及不同样本口径。",
+      "difficulty": "英语二迁移：保留数据指标与不同样本口径",
+      "shortestPath": "锁定每周使用者占受访者比例，核对分子分母是否改变。",
+      "distractorNotes": {
+        "a": "是否每周使用不等于是否最近开始使用。",
+        "b": "使用者比例不能改成个人阅读时间分配。",
+        "c": "使用者占比不等于每人使用次数。"
+      },
+      "leakageAudit": "10题计算方法可迁移但数值和任务不同；本题答案不依赖前题。"
+    },
+    {
+      "id": "entrance.english2.12",
+      "goalId": "entrance.english2.cohesion",
+      "type": "cloze",
+      "prompt": "选择最合适的词补全两空，每词最多一次。",
+      "passage": "The repair cafe does not charge visitors, but it cannot operate without supplies. It therefore invites small donations. These {s1} help pay for replacement parts; they do not buy priority in the {s2} for repairs.",
+      "tokens": [
+        {
+          "id": "queue",
+          "text": "queue"
+        },
+        {
+          "id": "complaints",
+          "text": "complaints"
+        },
+        {
+          "id": "contributions",
+          "text": "contributions"
+        },
+        {
+          "id": "manual",
+          "text": "manual"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "contributions"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "queue"
+          }
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "contributions与donations同义承接；priority in the queue表示维修排队优先权，捐款不是购买优先。",
+      "difficulty": "英语二受控：词汇衔接与搭配共同约束",
+      "shortestPath": "让These回指donations，再看priority需要什么名词。",
+      "distractorNotes": {
+        "complaints": "投诉不承接捐款支付零件费。",
+        "manual": "手册不构成等待顺序。"
+      },
+      "leakageAudit": "不复用连接词完形，考名词衔接；咖啡维修点不关联英一家庭维修调查。"
+    },
+    {
+      "id": "entrance.english2.13",
+      "goalId": "entrance.english2.argument",
+      "type": "choice",
+      "prompt": "作者提及“周六的满座”主要为了什么？",
+      "material": "The theatre manager points to a full house on Saturday as evidence that local demand is strong. But the tickets that night were free and most visitors arrived on a coach from another town. The performance may have introduced new people to the theatre, which the staff regard as a worthwhile achievement. That success is different from the one the manager claims. To plan a regular programme funded by ticket sales, the theatre needs to know whether nearby residents are willing to pay. Saturday’s crowd is a weak guide to that particular question.",
+      "options": [
+        {
+          "id": "a",
+          "text": "To estimate the revenue a regular programme would generate."
+        },
+        {
+          "id": "b",
+          "text": "To examine whether a concrete example supports the manager’s claim."
+        },
+        {
+          "id": "c",
+          "text": "To explain why the free performance failed to reach new people."
+        },
+        {
+          "id": "d",
+          "text": "To argue that attracting visitors from elsewhere has little value."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "作者检验满座这一证据是否能支撑本地付费需求；免费且外地来客较多削弱代表性，但不证明本地无人观看。",
+      "difficulty": "英语二迁移：论据与结论所需口径",
+      "shortestPath": "比较local willingness to pay与free、another town。",
+      "distractorNotes": {
+        "a": "材料未给票价且单场免费，不能估算常规收入。",
+        "c": "作者承认可能触达新人，不认为该项失败。",
+        "d": "工作人员明确认为触达新人有价值，作者区分的是两种成功。"
+      },
+      "leakageAudit": "剧院在英一06为建筑改用论证，本题是观众与付费证据，人物数据和答案均不共享。"
+    },
+    {
+      "id": "entrance.english2.14",
+      "goalId": "entrance.english2.writing-structure",
+      "type": "arrange",
+      "prompt": "按“明确请求→解释原因→提出替代安排”的指定顺序排列三段，组成延期申请邮件主体。",
+      "tokens": [
+        {
+          "id": "c",
+          "text": "Would it be possible to submit it on Friday instead? I can send the completed tables by the original deadline."
+        },
+        {
+          "id": "a",
+          "text": "I am writing to request a short extension for the project report due on Wednesday."
+        },
+        {
+          "id": "b",
+          "text": "The supplier sent the final figures later than agreed, so I need extra time to check the analysis."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "acceptedVariants": [],
+      "explanation": "先明确请求和原截止日，再说明理由，最后提出新期限及可先交部分；instead与original deadline回指Wednesday。",
+      "difficulty": "英语二受控：应用文请求、理由与补救安排",
+      "shortestPath": "用I am writing定位开头，再让instead承接原期限。",
+      "distractorNotes": {
+        "c-a-b": "替代期限先于原期限，不适合作邮件开头。",
+        "a-c-b": "真实邮件中可能先给新日期再解释，但不符合本题明确指定的组织顺序；不将其说成语法错误。"
+      },
+      "leakageAudit": "不与退款邮件复用功能句；本题仅结构训练，不算邮件产出。"
+    },
+    {
+      "id": "entrance.english2.15",
+      "goalId": "entrance.english2.reference",
+      "type": "matching",
+      "prompt": "把两个指代表达与各自对应内容配对，一项不用。",
+      "material": "The manager suggested replacing paper rota sheets with a shared calendar. At the next meeting, the team members rejected that suggestion because reliable internet access could not be assumed. They agreed instead to keep printed copies beside the entrance.",
+      "left": [
+        {
+          "id": "that",
+          "text": "that suggestion"
+        },
+        {
+          "id": "they",
+          "text": "They"
+        }
+      ],
+      "right": [
+        {
+          "id": "team",
+          "text": "the team members"
+        },
+        {
+          "id": "replacement",
+          "text": "replacing paper rota sheets with a shared calendar"
+        },
+        {
+          "id": "copies",
+          "text": "keeping printed copies beside the entrance"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "that",
+          "right": "replacement"
+        },
+        {
+          "left": "they",
+          "right": "team"
+        }
+      ],
+      "acceptedVariants": [],
+      "explanation": "that suggestion回指共享日历替换方案；They紧接作出拒绝决定的the team members，继续陈述同一批人的替代决定。已删除可竞争的复数workers，不能只靠解释排除它。",
+      "difficulty": "英语二受控：事件指代与决策主体连续性",
+      "shortestPath": "找suggested引出的方案，再让They衔接上一句明确的复数决策者。",
+      "distractorNotes": {
+        "copies": "这是随后商定的替代行动，不是此前被拒绝的建议，也不是They指代的人。",
+        "team用于that": "that suggestion指行动方案，不是讨论方案的人。"
+      },
+      "leakageAudit": "已消除workers导致的复数指代歧义；材料和替代行动只在此题。"
+    },
+    {
+      "id": "entrance.english2.16",
+      "goalId": "entrance.english2.translation-analysis",
+      "type": "choice",
+      "prompt": "译文需要保留什么逻辑关系？",
+      "material": "Although the new booking system reduced the number of phone calls, staff spent more time helping visitors who could not complete the online form. The change saved time in one part of the service while adding work in another.",
+      "options": [
+        {
+          "id": "a",
+          "text": "电话减少，因此所有岗位的工作量都减少。"
+        },
+        {
+          "id": "b",
+          "text": "员工多花时间帮助访客，是因为电话数量增加。"
+        },
+        {
+          "id": "c",
+          "text": "电话减少与另一部分帮助工作增加并存，不能据此认定整体省时。"
+        },
+        {
+          "id": "d",
+          "text": "新系统完全没有节省任何服务环节的时间。"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "Although与while组织并存对照；段落指出局部节省和局部增负，没有提供整体净效果。",
+      "difficulty": "英语二迁移：连贯段落中对比与量化边界",
+      "shortestPath": "分别列出减少和增加的工作，再检查有没有总量。",
+      "distractorNotes": {
+        "a": "局部节省推广至所有岗位。",
+        "b": "电话增加与原文相反。",
+        "d": "抹掉one part的确有节省。"
+      },
+      "leakageAudit": "材料不在真实翻译规格出现，不能用本答案替代自由译文。"
+    },
+    {
+      "id": "entrance.english2.17",
+      "goalId": "entrance.english2.writing-explanation",
+      "type": "choice",
+      "prompt": "以下四句都将原因写成可能性。哪句与这份虚构记录相容，适合作为讨论借阅量增加的一个待验证解释？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The demonstrations may have made students more aware of the service, contributing to the increase in borrowing."
+        },
+        {
+          "id": "b",
+          "text": "The reduction in borrowing fees may have made the service more affordable, contributing to the increase in borrowing."
+        },
+        {
+          "id": "c",
+          "text": "The extension of opening hours may have made collection more convenient, contributing to the increase in borrowing."
+        },
+        {
+          "id": "d",
+          "text": "The new course requirement may have brought more students to the service, contributing to the increase in borrowing."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "四项均使用may，谨慎措辞不能挽救与材料冲突的前提。只有宿舍演示确实新增，提高知晓度才是与记录相容的待验证解释；借阅仍免费、时间未延长、参加仍自愿。没有询问动机，也不能把a的因果链当成已证实。",
+      "difficulty": "英语二迁移：核对假设前提并保留因果不确定性",
+      "shortestPath": "先核对各项所称变化与记录，再区分真实演示与未验证的影响。",
+      "distractorNotes": {
+        "b": "一直免费，没有降低费用这一变化。",
+        "c": "开放时间不变，没有延长。",
+        "d": "仍自愿，没有新课程要求。"
+      },
+      "leakageAudit": "四项均may，需本题新增演示与三个不变条件作答；11和proposed图表不提供本题事实。",
+      "material": "Tool loans at a college increased over three years. During that period, the service began holding demonstrations in student residences. Its opening hours stayed the same, borrowing remained free, and participation continued to be voluntary rather than required by courses. The records did not ask borrowers why they used the service."
+    },
+    {
+      "id": "entrance.english2.18",
+      "goalId": "entrance.english2.summary",
+      "type": "choice",
+      "prompt": "哪项最适合作为这段短文的结语？",
+      "material": "A neighbourhood food project began with a fixed weekly box. Some households could not use all the items, while others needed more of particular staples. The organisers now let households choose from a short list before packing. They still buy in bulk, but the contents vary. This does make preparation more complicated: volunteers must check the selections before sealing each box. The organisers accept that extra step because it helps match supplies to what people expect to use. They are not offering an unlimited menu, but neither are they treating different households as if their needs were identical.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The project has prioritised simpler packing over household preferences."
+        },
+        {
+          "id": "b",
+          "text": "The revised scheme replaces collective purchasing with individual shopping."
+        },
+        {
+          "id": "c",
+          "text": "The organisers have extended the menu without adding preparation work."
+        },
+        {
+          "id": "d",
+          "text": "The project retains bulk purchasing while accepting some extra work to accommodate different needs."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "项目仍集中采购，并接受多一步核对来照顾不同需要；有限菜单不等于无限定制，也不意味着准备更省事。",
+      "difficulty": "英语二迁移：保留流程变化与不变条件的总结",
+      "shortestPath": "合并still buy in bulk与accept that extra step的理由。",
+      "distractorNotes": {
+        "a": "恰好相反，接受额外准备以满足差异。",
+        "b": "仍然集中采购，没有转为个人购物。",
+        "c": "选择增加但确实需要多一步核对。"
+      },
+      "leakageAudit": "食品项目单独成题；开场栗子故事没有采购制度信息。"
+    }
+  ],
+  "proposedProductionTasks": [
+    {
+      "id": "entrance.english1.translation.proposed",
+      "status": "proposed",
+      "type": "freeTranslation",
+      "title": "英语一：在上下文中译出复杂句",
+      "prompt": "阅读上下文，自行把target中的完整句子译为汉语。可以拆句，但不得省略逻辑限制。",
+      "contextBefore": "A university is debating how to evaluate public engagement. Some projects attract large audiences immediately; others build relationships slowly.",
+      "target": "The fact that an activity can be counted does not make it more valuable than work whose effects, though difficult to measure at first, may become visible only after years of patient collaboration.",
+      "contextAfter": "The committee therefore wants reports to include a description of the relationships developed, alongside attendance figures.",
+      "referenceTranslation": "一项活动能够被计数，并不意味着它比另一类工作更有价值：后者的成效起初虽难以衡量，却可能只有经过多年的耐心合作才显现出来。",
+      "acceptableVariants": "可将The fact that处理为能够计数这一事实；whose effects可以拆句为这类工作的成效；may与only after的可能性及延后限制都必须保留。参考译文不是唯一字符串答案。",
+      "evaluationDimensions": [
+        {
+          "dimension": "命题完整",
+          "evidence": "保留可计数不推出更有价值及比较对象。"
+        },
+        {
+          "dimension": "辖域与情态",
+          "evidence": "保留though、may、only after，不把可能改为必然。"
+        },
+        {
+          "dimension": "指代衔接",
+          "evidence": "effects属于work，不能改成统计数字的效果。"
+        },
+        {
+          "dimension": "汉语表达",
+          "evidence": "允许拆句，比较与让步关系仍清楚。"
+        }
+      ],
+      "feedbackContract": "按维度给已保留、需修改、证据不足及对应译文片段；人审校准后才可启用自动建议，不输出考研分数。",
+      "implementationGap": "现有completion精确匹配不足以承载；需多行自由输入、版本化评价、参考答案答后显示及申诉/人工复核。"
+    },
+    {
+      "id": "entrance.english2.translation.proposed",
+      "status": "proposed",
+      "type": "freeTranslation",
+      "title": "英语二：完整语段翻译",
+      "prompt": "将下面整段原创材料译为汉语，保留人物行动的先后、转折与原因。约120词为本练习长度，不声称考试规定长度。",
+      "material": "When a small library began lending tools, its staff expected most questions to concern how the tools worked. Instead, visitors often wanted to know whether they were allowed to borrow an unfamiliar item without having used one before. The library responded by offering short demonstrations on Saturday mornings. Attendance was modest at first, but several attendees returned with a neighbour the following week. Staff now keep the demonstrations informal so that beginners feel comfortable asking basic questions. They have not concluded that every visitor needs a lesson. Their aim is simply to make lack of experience less of a barrier to trying something useful, while leaving confident borrowers free to collect an item and go.",
+      "referenceTranslation": "一家小图书馆开始出借工具时，工作人员原以为大多数问题会涉及工具的使用方法。可是，访客常常想知道，自己从未用过某种不熟悉的工具，是否也可以借。为此，图书馆在周六上午提供简短演示。起初来的人不多，但有几位参加者在下一周带着邻居又来了。工作人员现在保持演示轻松随意，让初学者自在地提出基础问题。他们并未认定每位访客都需要上一课。他们只是想降低经验不足对尝试实用事物的阻碍，同时让有把握的借用者可以取走工具就离开。",
+      "acceptableVariants": "informal可译轻松、非正式；modest译不多或有限；several attendees须保留数量有限，returned with a neighbour保留再次到场和陪同者。译文可调整句序，但须保留起初预期与实际问题的不同。",
+      "evaluationDimensions": [
+        {
+          "dimension": "信息覆盖",
+          "evidence": "预期、实际疑虑、回应、出席变化、当前安排、目的与例外均有表达。"
+        },
+        {
+          "dimension": "篇章逻辑",
+          "evidence": "Instead及but的转折，responded by的回应关系清楚。"
+        },
+        {
+          "dimension": "否定范围",
+          "evidence": "并未认定每人需要课程，不能写成没人需要。"
+        },
+        {
+          "dimension": "自然度与术语一致",
+          "evidence": "借用者、工具、演示称谓一致，不把lending译成出售。"
+        }
+      ],
+      "feedbackContract": "不按参考译文逐字匹配；分段标注遗漏、关系错置与可接受改写，不输出考试估分。",
+      "implementationGap": "需真实输入与语段级评价，当前选择译文题不能替代该任务。"
+    },
+    {
+      "id": "entrance.application.proposed",
+      "status": "proposed",
+      "type": "freeWriting",
+      "title": "共通应用文：调整一次合作安排",
+      "prompt": "你是校园语言交流活动负责人。原定周五户外活动遇到场地临时关闭，现可改到周六上午的室内教室。给合作方Ms Reed写约100词英文邮件：说明变化及原因，提出替代安排，询问是否方便并表达歉意。署名Li Ming。100词为本练习目标，不声称最新考试刚性规则。",
+      "answerVariants": "接受先道歉后解释、先说明变更后道歉等自然结构；允许额外给出合理联系方式，但不得编造对方已经同意或原场地关闭的未给原因。",
+      "referenceOutline": [
+        "合适称呼及写信目的",
+        "周五户外活动因场地关闭需变更",
+        "周六上午室内教室的替代方案",
+        "询问可行性、致歉及署名"
+      ],
+      "evaluationDimensions": [
+        {
+          "dimension": "任务完成",
+          "evidence": "必要信息与征询均齐全。"
+        },
+        {
+          "dimension": "语域与受众",
+          "evidence": "礼貌、清楚，不命令合作方。"
+        },
+        {
+          "dimension": "组织与衔接",
+          "evidence": "原因、变更和请求可追踪。"
+        },
+        {
+          "dimension": "语言可理解性",
+          "evidence": "时态、时间表达和语法不妨碍沟通。"
+        }
+      ],
+      "feedbackContract": "按维度返回具体文字证据和一项优先修改；不存在唯一范文，词数提示不等同总分。",
+      "implementationGap": "需多行编辑、草稿保留、提交后评价及人审校准；不使用选择句子冒充写信。"
+    },
+    {
+      "id": "entrance.english1.writing.proposed",
+      "status": "proposed",
+      "type": "freeWriting",
+      "title": "英语一侧重：从情景建立并限定论点",
+      "prompt": "原创文字情景：两位同学为同一项社区调查做准备。一人收集了大量材料，却迟迟没有提出问题；另一人先写出一个小问题，再按需要寻找证据。请用160—200词英文简述情景，讨论“资料与问题应如何相互促进”，并提出一条有理由支持的建议。避免把大量阅读或提出问题中的任何一项说成毫无价值。长度为训练规格，最新大纲正文尚待核读。",
+      "answerVariants": "可支持先形成问题后迭代阅读，也可主张探索性阅读帮助产生问题；须回应两者关系，有理由且避免由两人情景推导所有人的必然规律。",
+      "referenceOutline": [
+        "准确描述两种准备方式",
+        "提出关于问题与资料关系的中心论点",
+        "用解释或合理例子支持，不虚构研究权威",
+        "限定适用范围并给出建议"
+      ],
+      "evaluationDimensions": [
+        {
+          "dimension": "回应提示",
+          "evidence": "涉及资料与问题的互动，不只泛谈努力。"
+        },
+        {
+          "dimension": "论证发展",
+          "evidence": "理由解释主张，而非换词重复。"
+        },
+        {
+          "dimension": "推断与立场边界",
+          "evidence": "区分图景启发和普遍证明，处理至少一个合理限制。"
+        },
+        {
+          "dimension": "结构和语言",
+          "evidence": "段落推进清楚，语法与词汇服务于意思。"
+        }
+      ],
+      "feedbackContract": "不按与范文的相似度评分；提供证据式维度反馈，不宣称英一正式作文分。",
+      "implementationGap": "现有排列和选择任务只提供前置诊断，不能替代写作产出评价。"
+    },
+    {
+      "id": "entrance.english2.writing.proposed",
+      "status": "proposed",
+      "type": "freeWriting",
+      "title": "英语二侧重：数据描述与审慎解释",
+      "prompt": "虚构表格：某市对两批各500名受访者调查其首选获取社区通知方式。2022年：纸质通知50%、社区应用30%、电话20%；2025年：纸质通知35%、社区应用45%、电话20%。请写约150词英文短文，概括主要变化，提出一种明确标为可能的解释，再给出一条与数据相称的通知服务建议。两年不是同一批人，表格不提供年龄、价格或满意度。长度为训练规格，最新大纲正文尚待核读。",
+      "answerVariants": "可重点讨论应用占比上升、纸质下降和电话持平；不强求报告全部数字。解释可多样但须标注不确定；建议可保留多渠道或开展原因调查，须与数据相符。",
+      "referenceOutline": [
+        "说明对象为受访者首选渠道",
+        "准确写出应用上升、纸质下降及电话稳定",
+        "把一种原因标为可能而非表格已证实",
+        "提出不排除剩余纸质/电话偏好者的可行建议"
+      ],
+      "evaluationDimensions": [
+        {
+          "dimension": "数据准确与口径",
+          "evidence": "比例和百分点正确，不写成同一批人转变。"
+        },
+        {
+          "dimension": "概括与比较",
+          "evidence": "概括主趋势，不机械堆数字。"
+        },
+        {
+          "dimension": "解释边界",
+          "evidence": "未测变量不能宣称为已证实因果。"
+        },
+        {
+          "dimension": "目的、结构与语言",
+          "evidence": "建议回应数据，描述解释段落连贯，语言清楚。"
+        }
+      ],
+      "feedbackContract": "逐项指出数据误读、无依据断言和表达问题，允许多种合理展开；不输出考试估分。",
+      "implementationGap": "需自由写作输入与数据约束审阅；客观图表题正确不代表会写完整短文。"
+    }
+  ]
+}

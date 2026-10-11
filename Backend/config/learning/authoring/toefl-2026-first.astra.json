@@ -1,0 +1,1877 @@
+{
+  "schemaVersion": "隔离作者稿-1",
+  "trackId": "toefl-ibt-2026",
+  "displayName": "托福备考（2026 TOEFL iBT）",
+  "relationship": "与其他备考方向并列；不是advanced之后的英语水平升级链，不写入现有level枚举。",
+  "author": {
+    "date": "2026-10-11",
+    "method": "逐道原创题干、材料、选项、答案和解释；程序仅保存与结构检查，没有模板槽位或组合生成教学内容。",
+    "status": "作者自审稿，待主代理逐题终审；不可发布"
+  },
+  "scope": "两组各18道局部技能练习；不是官方样题、全真模考、自适应测验或考试分数预测。所有故事、材料和脚本均为原创虚构，科研例子只用于理解材料内证据。真实写作与口语产出另列proposed，不计入36道客观微练习。",
+  "sources": [
+    {
+      "id": "ets2026spec",
+      "url": "https://www.in.ets.org/content/dam/ets-org/pdfs/toefl/toefl-ibt-test-specifications-2026.pdf",
+      "readAt": "2026-10-11",
+      "sectionsRead": "实际核读解析正文：Reading概览及Claim pp.3、7–9；Listening概览及Claim pp.4、10–12；Writing概览及Claim pp.5、13–14；Speaking概览及Claim pp.6、15–17。这里p为文内印刷页码，PDF阅读器页码加1。未声称整本目视核读。",
+      "application": "用任务类型及技能陈述限定训练范围；不复制示例或官方评分量表，不以作者难度替代ETS校准。"
+    },
+    {
+      "id": "etswriting",
+      "url": "https://www.ets.org/toefl/test-takers/ibt/about/content/writing.html",
+      "requestedUrl": "https://www.ets.org/toefl/test-takers/ibt/about/content/writing/.html",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Writing tasks type；What to Expect",
+      "note": "用户给定含额外斜线的路径返回错误，实际读取同站规范路径。"
+    },
+    {
+      "id": "etsreading",
+      "url": "https://www.ets.org/toefl/test-takers/ibt/about/content/reading.html",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Reading Task Types；What to Expect"
+    },
+    {
+      "id": "etslistening",
+      "url": "https://www.ets.org/toefl/test-takers/ibt/about/content/listening.html",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Listening Task Types；What to Expect",
+      "note": "网页引言写two却列四类；以同页四个条目及2026规格PDF为准，不据two删掉公告或学术短讲。"
+    },
+    {
+      "id": "etsspeaking",
+      "url": "https://www.ets.org/toefl/test-takers/ibt/about/content/speaking.html",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Speaking Task Types；What to Expect"
+    }
+  ],
+  "interactionContract": {
+    "existingTypeCandidates": [
+      "arrange",
+      "choice",
+      "completion",
+      "listeningChoice",
+      "matching",
+      "cloze"
+    ],
+    "adapterStatus": "未接入；当前正式合同没有toefl水平值。作者稿有额外测量字段，必须显式无损映射，不能直接按正式questionSchema解析。",
+    "audio": "9道listeningChoice均只有完整脚本，audio.assetId=null且status=pending；尚无录音、声音与时长核验。脚本、答案和解析仅作者可见，听力答前隐藏。",
+    "grading": "choice按选项ID；arrange按显式acceptedOrders。completion仅接受显式acceptedAnswers，忽略大小写、首尾空白和句末标点；不做模糊同义匹配。未验证正式引擎适配。 matching按完整配对集合；cloze按slotId-tokenId集合并接收两套明确变体。",
+    "learningEvidence": "提示、重播、答案展示、重做和撤销必须记录；看到故事不提供任何解题证据。重做正确不能算新的独立首次表现。",
+    "examBoundary": "句子重组对应新写作句法任务的局部练习；阅读单题短文和单词补全经过微练习化，非官方组题规格。邮件/讨论选择只练辨析，不能证明写作产出；本稿无旧版综合写作或旧版四口语任务。"
+  },
+  "stories": [
+    {
+      "id": "toefl2026.a.story",
+      "afterQuestion": 0,
+      "title": "窗边的地图",
+      "text": "你和同行者躲进一家小书店避雨。窗边挂着一张手绘地图，标出附近的树和长椅，却没有路名。店主说是邻居的小孩画的，今天想挂好，绳子却断了。同行者从背包里找出一根鞋带，你扶住地图，三个人终于把它挂正。雨停时，店主指着地图角落的小圆圈，说那里有一棵很香的桂花树。你们绕过去，果然在院墙外闻见了淡淡的花香。",
+      "english": "You and your companion duck into a small bookshop to escape the rain. A hand-drawn map by the window shows nearby trees and benches but no street names. The owner explains that a neighbor's child drew it. She had hoped to hang it today, but the string broke. Your companion finds a spare shoelace in a backpack. You hold the map steady, and together you get it level. As the rain stops, the owner points to a small circle in one corner: a fragrant tree grows there. You take a short detour and find its sweet scent drifting over a courtyard wall."
+    },
+    {
+      "id": "toefl2026.b.story",
+      "afterQuestion": 0,
+      "title": "没有寄出的明信片",
+      "text": "你和同行者在旅馆借了一本旧画册，里面掉出一张没有写地址的明信片。背面只有一句话：终于看到海了。你们把它交给前台，老板认出照片中的旧码头，说这是父亲年轻时常去的地方。他翻出一本相册，对着照片笑了很久。第二天离开时，前台多了一个小相框，那张明信片就放在里面。老板向你们道谢，又递来两张空白卡片。你们在路边坐下，各自写了几行，终于把自己的旅程寄了出去。",
+      "english": "In a borrowed art book at the guesthouse, you and your companion find a postcard with no address. On the back, someone has written just one sentence: At last, I have seen the sea. You take it to reception. The owner recognizes the old pier in the picture, a place his father used to visit when he was young. He brings out an album and smiles over the photographs for a long time. When you leave the next morning, the postcard stands in a small frame on the desk. The owner thanks you and hands you two blank cards. You sit down beside the road, write a few lines each, and finally send a little of your own journey home."
+    }
+  ],
+  "sets": [
+    {
+      "id": "toefl2026.a",
+      "title": "读准关系，听出用意",
+      "storyIds": [
+        "toefl2026.a.story"
+      ],
+      "storySelection": "只在开头完整显示一次；所有题均不问故事",
+      "questionIds": [
+        "toefl2026.a01",
+        "toefl2026.a02",
+        "toefl2026.a03",
+        "toefl2026.a04",
+        "toefl2026.a05",
+        "toefl2026.a06",
+        "toefl2026.a07",
+        "toefl2026.a08",
+        "toefl2026.a09",
+        "toefl2026.a10",
+        "toefl2026.a11",
+        "toefl2026.a12",
+        "toefl2026.a13",
+        "toefl2026.a14",
+        "toefl2026.a15",
+        "toefl2026.a16",
+        "toefl2026.a17",
+        "toefl2026.a18"
+      ]
+    },
+    {
+      "id": "toefl2026.b",
+      "title": "限定结论，组织表达",
+      "storyIds": [
+        "toefl2026.b.story"
+      ],
+      "storySelection": "只在开头完整显示一次；所有题均不问故事",
+      "questionIds": [
+        "toefl2026.b01",
+        "toefl2026.b02",
+        "toefl2026.b03",
+        "toefl2026.b04",
+        "toefl2026.b05",
+        "toefl2026.b06",
+        "toefl2026.b07",
+        "toefl2026.b08",
+        "toefl2026.b09",
+        "toefl2026.b10",
+        "toefl2026.b11",
+        "toefl2026.b12",
+        "toefl2026.b13",
+        "toefl2026.b14",
+        "toefl2026.b15",
+        "toefl2026.b16",
+        "toefl2026.b17",
+        "toefl2026.b18"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "toefl2026.a01",
+      "type": "arrange",
+      "goalId": "toefl.syntax.embedded-question",
+      "taskFamily": "写作句子重组局部练习",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "同学问新设备的位置。用全部词块组成以Could you开头的一个问句。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "the new scanner"
+        },
+        {
+          "id": "b",
+          "text": "tell me"
+        },
+        {
+          "id": "c",
+          "text": "is"
+        },
+        {
+          "id": "d",
+          "text": "Could you"
+        },
+        {
+          "id": "e",
+          "text": "where"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "d",
+          "b",
+          "e",
+          "a",
+          "c"
+        ]
+      ],
+      "answer": "Could you tell me where the new scanner is?",
+      "acceptedVariants": [],
+      "explanation": "Could you承载主句疑问语序，where后的嵌入问句采用主语the new scanner加is的陈述语序。",
+      "difficulty": "中：嵌入问句与主句语序分离",
+      "measurementTarget": "带礼貌请求框架的间接疑问句",
+      "shortestSolutionPath": "固定Could you→tell me；where后放主语再放is。",
+      "review": {
+        "distractors": "无额外干扰块；where is the new scanner把直接疑问语序误带入宾语从句。",
+        "variants": "题干固定Could you起首，排除Where...的主句重组；现有词块只有此顺序符合指定请求。",
+        "crossQuestionLeakage": "其他题不复用扫描仪材料或该完整句；无需先题答案。"
+      }
+    },
+    {
+      "id": "toefl2026.a02",
+      "type": "arrange",
+      "goalId": "toefl.syntax.relative-clause",
+      "taskFamily": "写作句子重组局部练习",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "用全部词块组成以The samples开头的陈述句，说明昨天采集的样本存放在哪里。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "are stored"
+        },
+        {
+          "id": "b",
+          "text": "we collected yesterday"
+        },
+        {
+          "id": "c",
+          "text": "The samples"
+        },
+        {
+          "id": "d",
+          "text": "in a locked cabinet"
+        },
+        {
+          "id": "e",
+          "text": "that"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "e",
+          "b",
+          "a",
+          "d"
+        ]
+      ],
+      "answer": "The samples that we collected yesterday are stored in a locked cabinet.",
+      "acceptedVariants": [],
+      "explanation": "that引导修饰samples的关系从句；we collected yesterday内部已完整，主句谓语仍需are stored。",
+      "difficulty": "中：分清从句谓语和主句谓语",
+      "measurementTarget": "限制性关系从句与被动主句",
+      "shortestSolutionPath": "samples后连接that we collected yesterday，剩余are stored接地点。",
+      "review": {
+        "distractors": "无额外块；把are stored放到that后会留下we collected yesterday无连接结构。",
+        "variants": "yesterday被绑定在从句块内，避免修饰主句的另一种含义。",
+        "crossQuestionLeakage": "样本存放事实仅出现本题；其他阅读科研材料不提供语序。"
+      }
+    },
+    {
+      "id": "toefl2026.a03",
+      "type": "arrange",
+      "goalId": "toefl.syntax.counterfactual",
+      "taskFamily": "写作句子重组局部练习",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "用全部词块组成以If开头的句子，表达过去没有及时看到通知的遗憾。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "I would have attended"
+        },
+        {
+          "id": "b",
+          "text": "If"
+        },
+        {
+          "id": "c",
+          "text": "the workshop"
+        },
+        {
+          "id": "d",
+          "text": "I had seen"
+        },
+        {
+          "id": "e",
+          "text": "the notice earlier"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "b",
+          "d",
+          "e",
+          "a",
+          "c"
+        ]
+      ],
+      "answer": "If I had seen the notice earlier, I would have attended the workshop.",
+      "acceptedVariants": [],
+      "explanation": "过去未实现条件用had seen，过去未实现结果用would have attended；通知是seen的宾语，活动是attended的宾语。",
+      "difficulty": "较高：过去反事实的条件与结果",
+      "measurementTarget": "过去完成时条件从句和情态完成式主句",
+      "shortestSolutionPath": "If后用I had seen并接notice，再接would have attended the workshop。",
+      "review": {
+        "distractors": "无额外块；把would have放进If从句不是此处表达过去反事实的目标结构。",
+        "variants": "题干指定If开头，排除主句前置；标点不计词块。",
+        "crossQuestionLeakage": "未在其他题教授本句或过去反事实答案。"
+      }
+    },
+    {
+      "id": "toefl2026.a04",
+      "type": "choice",
+      "goalId": "toefl.reading.reference",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "阅读短文。第二句中的They指什么？\nThe back of a desert beetle is crossed by narrow ridges. They direct condensed water toward the insect's mouth. This surface pattern helps the beetle collect moisture without finding a pool.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The beetle's back"
+        },
+        {
+          "id": "b",
+          "text": "The ridges"
+        },
+        {
+          "id": "c",
+          "text": "The condensed water"
+        },
+        {
+          "id": "d",
+          "text": "The beetle"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "第一句的beetle和back均为单数，ridges是唯一与They数一致的先行词；第二句说明这些脊状结构的导流作用。水在第二句作为被引导对象才引入。",
+      "difficulty": "基础至中：代词数一致与先行词定位",
+      "measurementTarget": "结合句法与语义找代词先行词",
+      "shortestSolutionPath": "先找第一句中的复数名词ridges，再用导流作用核对指代。",
+      "review": {
+        "distractors": {
+          "a": "back为单数，不能作为本段They的先行词。",
+          "b": "ridges是前句唯一复数名词，且第二句说明它们的功能。",
+          "c": "water是不可数名词，且在They之后作direct的宾语。",
+          "d": "本段只有a desert beetle，单数个体不能被They回指为多个甲虫。"
+        },
+        "crossQuestionLeakage": "改成单只甲虫与复数ridges，消除beetles/ridges双重回指；题干、答案与其他题无复用。"
+      }
+    },
+    {
+      "id": "toefl2026.a05",
+      "type": "choice",
+      "goalId": "toefl.reading.meaning",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "阅读短文。这里的tentative最接近哪项？\nThe archaeologists found only three fragments with the unusual pattern. Their identification of a separate workshop remains tentative until more examples can be examined.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Based on a location already established"
+        },
+        {
+          "id": "b",
+          "text": "Unrelated to the fragments"
+        },
+        {
+          "id": "c",
+          "text": "Certain despite the limited evidence"
+        },
+        {
+          "id": "d",
+          "text": "Not yet firmly established"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "only three和until more examples显示证据暂少、鉴定尚待确认；tentative在此是暂定的。",
+      "difficulty": "中：用证据数量及时间条件推断词义",
+      "measurementTarget": "学术语境中不确定性词义",
+      "shortestSolutionPath": "抓住only与until，排除确定结论。",
+      "review": {
+        "distractors": {
+          "a": "把鉴定是否可靠换成地点已知。",
+          "b": "鉴定正是根据碎片作出的，并非无关。",
+          "c": "与等待更多样本的限定冲突。",
+          "d": "保留尚未证实的状态。"
+        },
+        "crossQuestionLeakage": "其他题没有tentative或该考古材料。"
+      }
+    },
+    {
+      "id": "toefl2026.a06",
+      "type": "choice",
+      "goalId": "toefl.reading.organization",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.8",
+      "prompt": "阅读短文。最后一句主要起什么作用？\nEarly streetlights made it easier to travel after sunset. Yet brighter streets did not immediately make every district equally accessible. Some neighborhoods received lights decades later than the city center. The benefits of the technology therefore depended partly on decisions about where to install it.",
+      "options": [
+        {
+          "id": "a",
+          "text": "It draws a qualified conclusion from the uneven distribution described."
+        },
+        {
+          "id": "b",
+          "text": "It replaces the historical example with a different invention."
+        },
+        {
+          "id": "c",
+          "text": "It disputes the claim that lighting helped anyone travel at night."
+        },
+        {
+          "id": "d",
+          "text": "It explains the engineering method used to produce brighter lamps."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "最后一句从安装时间与地点不均，推出技术收益还受分配决策影响；并未否认照明的作用。",
+      "difficulty": "中：识别让步后总结",
+      "measurementTarget": "句子功能与论证范围",
+      "shortestSolutionPath": "追踪Yet的不均衡，再读therefore的有限结论。",
+      "review": {
+        "distractors": {
+          "a": "总结前文且保留partly。",
+          "b": "未引入其他发明。",
+          "c": "第一句的正面作用仍成立。",
+          "d": "没有灯具制造过程。"
+        },
+        "crossQuestionLeakage": "路灯论证不复用，结论只能从本段推出。"
+      }
+    },
+    {
+      "id": "toefl2026.a07",
+      "type": "choice",
+      "goalId": "toefl.reading.evidence-scope",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7–8",
+      "prompt": "哪项准确概括材料明确呈现的设计局限？\nIn a trial, the same 24 volunteers read one article on paper and a different article on a screen. They recalled more details from the paper article. The articles covered different subjects, and each volunteer read the paper article first.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The recall difference may reflect different readers being assigned to the two reading formats."
+        },
+        {
+          "id": "b",
+          "text": "The recall difference may reflect volunteers reading the same article for a second time."
+        },
+        {
+          "id": "c",
+          "text": "The recall difference may reflect differences in article topic or the order of reading."
+        },
+        {
+          "id": "d",
+          "text": "The recall difference may reflect fatigue from reading the screen article before the paper article."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "同一批人读两篇不同主题文章，且纸本固定先读，因而主题和顺序与媒介同时变化。其他选项虽同样谨慎，却分别误读参与者、文章是否相同或先后顺序。",
+      "difficulty": "较高：区分观察与唯一因果解释",
+      "measurementTarget": "证据限定与混杂变量",
+      "shortestSolutionPath": "核对same volunteers、different subjects和paper first，辨认实际随媒介共同变化的因素。",
+      "review": {
+        "distractors": {
+          "a": "不是两组不同读者：same 24 volunteers完成两种媒介阅读。",
+          "b": "不是同一篇重复阅读：材料明确另一篇且主题不同。",
+          "c": "主题不同与顺序固定都真实存在，是不能单独归因于媒介的原因。",
+          "d": "把顺序读反：屏幕文章在后，不能以先读屏幕造成的疲劳解释先读纸本表现。"
+        },
+        "crossQuestionLeakage": "四项统一使用may reflect，没有谨慎措辞捷径；须独立核对本题设计事实，未复用其他研究数字或流程。"
+      }
+    },
+    {
+      "id": "toefl2026.a08",
+      "type": "choice",
+      "goalId": "toefl.reading.daily-condition",
+      "taskFamily": "日常阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "阅读通知。谁符合这次领取条件？\nEquipment desk: Reserved cameras may be collected after 2 p.m. The person who made the reservation must bring their own student card and confirmation email. A representative must instead bring the representative's own photo ID, the reservation holder's confirmation email, and a note signed by the reservation holder authorizing collection.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The reservation holder arriving at noon with their own student card and confirmation email"
+        },
+        {
+          "id": "b",
+          "text": "A representative arriving at 3 p.m. with their own photo ID, the holder's confirmation email, and the holder's signed authorization"
+        },
+        {
+          "id": "c",
+          "text": "A representative arriving at 3 p.m. with the holder's student card, confirmation email, and signed authorization"
+        },
+        {
+          "id": "d",
+          "text": "The reservation holder arriving at 3 p.m. with their own student card but without the confirmation email"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "本人领取须带本人的学生证及预订确认邮件。代领须带代领人自己的照片证件、预订人的确认邮件及预订人签署的授权。两种领取方式都限下午两点后。",
+      "difficulty": "中：合并基础条件与代领附加条件",
+      "measurementTarget": "通知细节与条件整合",
+      "shortestSolutionPath": "先检查时间，再按本人或代领身份核对三份材料及其所有者。",
+      "review": {
+        "distractors": {
+          "a": "本人材料齐全，但中午早于领取时段。",
+          "b": "时间正确，代领人本人的照片证件、预订人邮件与授权均齐全。",
+          "c": "带的是预订人的学生证，缺少规则要求的代领人自己的照片证件。",
+          "d": "本人领取仍须提供确认邮件。"
+        },
+        "crossQuestionLeakage": "题内明确区分预订人和代领人的证件归属，不借用其他题的身份假设；故事无设备信息。"
+      }
+    },
+    {
+      "id": "toefl2026.a09",
+      "type": "choice",
+      "goalId": "toefl.email.purpose-register",
+      "taskFamily": "邮件写作前的辨析训练，不测产出",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "你已按时交实验报告，但系统显示未提交。给课程助教写信核实记录，哪个开头最切合目的且语气合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Please remove the missing-report mark; the system status is enough to show that your office lost my work."
+        },
+        {
+          "id": "b",
+          "text": "Could you send me the assignment instructions so that I can start preparing my report?"
+        },
+        {
+          "id": "c",
+          "text": "Could you extend the deadline? I would like more time to finish the report before submitting it."
+        },
+        {
+          "id": "d",
+          "text": "I submitted my report yesterday, but it is marked missing. Could you help me check the submission record?"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "说明已提交与系统状态的差异，再提出可执行的核实请求，既不先指责助教，也不要求代写。",
+      "difficulty": "中：目的、事实与收件人语域",
+      "measurementTarget": "辨认适当邮件请求；不据此判定能独立写邮件",
+      "shortestSolutionPath": "找到同时陈述问题与请求核实记录的选项。",
+      "review": {
+        "distractors": {
+          "a": "从缺交状态推断办公室遗失，证据不足，且跳过核实直接要求删除记录。",
+          "b": "请求作业说明并开始写作，与已经交完只需核实不符。",
+          "c": "延期是尚未完成作业的目的，不是已提交记录异常。",
+          "d": "事实明确且请求适当。"
+        },
+        "crossQuestionLeakage": "不与真实邮件proposed题共用问题或参考表达。"
+      }
+    },
+    {
+      "id": "toefl2026.a10",
+      "type": "choice",
+      "goalId": "toefl.discussion.extension",
+      "taskFamily": "学术讨论写作前的论点辨析，不测产出",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "课堂讨论：Should universities lend bicycles to students? Lina: Free loans would reduce students' travel costs. Omar: Repairs may be expensive for the university. 哪项保留双方观点的含义，又提供新的具体推进？",
+      "options": [
+        {
+          "id": "a",
+          "text": "A small pilot could track student savings and university repair costs before a decision is made about expanding the service."
+        },
+        {
+          "id": "b",
+          "text": "Lina points to lower travel expenses for students, whereas Omar raises the possible cost of maintaining the bicycles for the university."
+        },
+        {
+          "id": "c",
+          "text": "Both students favor charging a rental fee, so the next step could be to compare possible prices for the service."
+        },
+        {
+          "id": "d",
+          "text": "Lina expects repairs to save the university money, so a pilot could examine how much the maintenance budget might fall."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "A把学生节省的出行费用和学校承担的维修成本一起列入试点，保留双方关切并提出新办法。B准确复述却没有推进；C、D虽提出下一步，却改写了原观点。",
+      "difficulty": "较高：回应他人并加入可检验的理由",
+      "measurementTarget": "识别讨论贡献；不替代写出自己的论证",
+      "shortestSolutionPath": "分别核对学生省出行费、学校可能付维修费，再检查是否新增具体评价办法。",
+      "review": {
+        "distractors": {
+          "a": "保留两种费用的承担者，并新增记录两者的试点评价。",
+          "b": "准确概括已有两句话，但没有新的理由、证据或行动方案。",
+          "c": "原发言没有双方支持收费的结论，Lina谈的是免费借用。",
+          "d": "Lina说学生减少出行费，不是学校因维修节省预算。"
+        },
+        "crossQuestionLeakage": "四项均谈同一借车费用议题；需区分费用承担者和新增贡献，无法只凭离题词排除。其他题未出现本讨论。"
+      }
+    },
+    {
+      "id": "toefl2026.a11",
+      "type": "completion",
+      "goalId": "toefl.reading.word-form",
+      "taskFamily": "阅读补词局部练习，非完整Complete the Words组题",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "根据语境补全缺词。只输入完整单词；consis后缺4个字母。\nEvery sensor showed the same rise in temperature. The readings were consis____ with one another, although that agreement alone did not establish why the room had warmed.",
+      "acceptedAnswers": [
+        "consistent"
+      ],
+      "answer": "consistent",
+      "acceptedVariants": [
+        "Consistent"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "explanation": "be consistent with表示与……一致。四个缺字母为tent；单词一致性并不自动证明升温原因。",
+      "difficulty": "中：形容词词形与搭配",
+      "measurementTarget": "结合字形和句法恢复语境词",
+      "shortestSolutionPath": "were后需形容词，consis+tent与with构成一致关系。",
+      "review": {
+        "distractors": "开放补全无列出干扰；consist是动词且不满足缺字母数，consistency是名词且不合were ... with。",
+        "variants": "只收完整consistent，不收只写tent；大小写可正规化。",
+        "crossQuestionLeakage": "跨两组答前材料复查：除本题作者答案与解析外，没有其他题、选项或故事出现完整答案consistent；b11已改写。"
+      }
+    },
+    {
+      "id": "toefl2026.a12",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.response",
+      "taskFamily": "Listen and Choose a Response局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听一句话，选择最合适的回应。",
+      "audioScript": "Could you hold the door?",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The door was replaced last year."
+        },
+        {
+          "id": "b",
+          "text": "Sure, go ahead."
+        },
+        {
+          "id": "c",
+          "text": "I bought it at the campus store."
+        },
+        {
+          "id": "d",
+          "text": "It is the room at the end of the hall."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "说话人请求暂时扶住门，让其通过；Sure, go ahead接受请求。不能只抓door去选描述门的信息。",
+      "difficulty": "基础：口语请求功能",
+      "measurementTarget": "短口语的交际意图与回应",
+      "shortestSolutionPath": "听出Could you的请求用法，选择接受帮助请求的回应。",
+      "review": {
+        "distractors": {
+          "a": "回答更换时间，未回应请求。",
+          "b": "接受扶门请求并请对方通过。",
+          "c": "回答购买地点，与门的请求无关。",
+          "d": "回答房间位置，误作问路。"
+        },
+        "crossQuestionLeakage": "无文字题面透露扶门内容；故事和其他题均无相同请求。",
+        "audioNecessity": "必须听到请求才能区分四种回应功能。"
+      }
+    },
+    {
+      "id": "toefl2026.a13",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.indirect-request",
+      "taskFamily": "Listen to a Conversation局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听对话。第二位说话人最可能希望对方做什么？",
+      "audioScript": "A: I've put the draft on the shared drive. We can discuss it tomorrow. B: Thanks. I have a field visit all morning, and I won't be back until just before the meeting. A short note about which sections you changed would save me some time.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Cancel the field visit"
+        },
+        {
+          "id": "b",
+          "text": "Print the entire draft"
+        },
+        {
+          "id": "c",
+          "text": "Send a brief list of the revised sections"
+        },
+        {
+          "id": "d",
+          "text": "Move the meeting to the morning"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "最后一句通过说明省时的好处，间接请求标出修改部分。没有请求取消外出或调整会议。",
+      "difficulty": "中：陈述形式的间接请求",
+      "measurementTarget": "说话意图与语用推断",
+      "shortestSolutionPath": "把a short note about which sections you changed识别为希望获得的帮助。",
+      "review": {
+        "distractors": {
+          "a": "外出是阅读时间不足的原因，不是取消请求。",
+          "b": "共享盘与纸质无冲突，没要求打印。",
+          "c": "完整对应所需简短修改说明。",
+          "d": "上午恰好不在，移到上午不合语境。"
+        },
+        "crossQuestionLeakage": "题面不显示草稿或修改；其他题不提供这一意图。",
+        "audioNecessity": "需要听完整段落，不能凭选项知道哪种行动被请求。"
+      }
+    },
+    {
+      "id": "toefl2026.a14",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.announcement-action",
+      "taskFamily": "Listen to an Announcement局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听通知。已经在旧地点候车的学生应当怎么做？",
+      "audioScript": "The shuttle stop outside the sports center is closed this afternoon while workers repair the pavement. Buses will stop beside the art building instead. Departure times are unchanged. If you are waiting at the sports center, follow the blue signs through the courtyard; the temporary stop is about a two-minute walk away.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Walk through the courtyard to the stop beside the art building"
+        },
+        {
+          "id": "b",
+          "text": "Wait for a later bus at the sports center"
+        },
+        {
+          "id": "c",
+          "text": "Enter the sports center to collect a new ticket"
+        },
+        {
+          "id": "d",
+          "text": "Ask the driver to change the departure schedule"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "旧站点临时关闭，学生应沿蓝色标志穿过院子去艺术楼旁临时站点；班次时间不变。",
+      "difficulty": "中：从公告提取下一步行动",
+      "measurementTarget": "地点变动与行动指令",
+      "shortestSolutionPath": "锁定If you are waiting后的行动及目的地。",
+      "review": {
+        "distractors": {
+          "a": "正确执行临时站点指令。",
+          "b": "关闭的是站点，等下一班仍无法在此上车。",
+          "c": "没有换票要求。",
+          "d": "departure times are unchanged否定改时刻。"
+        },
+        "crossQuestionLeakage": "题面仅给旧地点概念，答案的楼与路径不在别题出现。",
+        "audioNecessity": "路线与地点来自完整通知音频。"
+      }
+    },
+    {
+      "id": "toefl2026.a15",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.academic-organization",
+      "taskFamily": "Listen to an Academic Talk局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10–11",
+      "prompt": "听短讲。讲者为什么提到手机上的路线提示？",
+      "audioScript": "External memory means using something outside your mind to store information. A written shopping list is a familiar example. Digital tools do this too. When a phone keeps the turns for your journey available on screen, you don't have to hold the whole route in mind. That can free attention for other tasks. It doesn't mean you have stopped using memory; you still need to recognize the instructions and connect them to what you see around you.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "To show how route prompts help a traveler commit an entire journey to long-term memory"
+        },
+        {
+          "id": "b",
+          "text": "To show why digital directions require less memory than the same directions written on paper"
+        },
+        {
+          "id": "c",
+          "text": "To show how following directions shifts attention away from the surroundings toward the device itself"
+        },
+        {
+          "id": "d",
+          "text": "To show how storing directions on a device reduces the information a traveler must hold mentally"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "路线保存在手机上，使人不必在脑中保持完整路线，示范外部记忆的作用。短讲没有说帮助长期记住路线、比较数字与纸质方向，也没有主张把注意力从环境转移到设备。",
+      "difficulty": "中：例子与抽象概念的关系",
+      "measurementTarget": "学术短讲的例证功能",
+      "shortestSolutionPath": "听清phone keeps the turns与do not have to hold the whole route的因果，再用末句核对仍须联系周围环境。",
+      "review": {
+        "distractors": {
+          "a": "把减少即时保持负担换成把整条路线记入长期记忆，短讲未提出这种效果。",
+          "b": "购物单与手机都是外部记忆例子，并未比较同一路线纸质和数字版本的负担。",
+          "c": "末句要求把提示与周围所见相联系，不是用设备注意替代环境注意。",
+          "d": "外部保存路线减少脑中需保持的信息，直接对应例证功能。"
+        },
+        "crossQuestionLeakage": "四项均为To show开头的路线与记忆机制解释，长度接近；删除原干扰中的accuracy，避免提示b12补词。音频原稿无该答案词。",
+        "audioNecessity": "问题需要听讲者如何使用该例子。"
+      }
+    },
+    {
+      "id": "toefl2026.a16",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.stance",
+      "taskFamily": "Listen to a Conversation局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听交流。老师对学生方案的态度是什么？",
+      "audioScript": "Student: I want to compare every neighborhood in the city for my final project. Professor: The question is worthwhile, but you have only six weeks. Two carefully selected neighborhoods would let you examine the differences properly. You can explain why those cases are useful without claiming that they represent the entire city.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The project could focus on one neighborhood to avoid the difficulties of comparing different places."
+        },
+        {
+          "id": "b",
+          "text": "The project could compare two selected neighborhoods in depth while limiting claims about the wider city."
+        },
+        {
+          "id": "c",
+          "text": "The project could cover the city within six weeks by collecting less detailed information from each neighborhood."
+        },
+        {
+          "id": "d",
+          "text": "The project could use two selected neighborhoods to estimate differences across the rest of the city."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "老师建议保留比较问题，以两个精心选择的社区换取研究深度，并限制城市总体推论。不是取消比较、以少细节保留全城覆盖，也不是用两地估计全城差异。",
+      "difficulty": "较高：区分肯定主题与否定范围",
+      "measurementTarget": "有保留支持与研究范围",
+      "shortestSolutionPath": "同时听取two neighborhoods、examine differences properly与without claiming代表全城这三点。",
+      "review": {
+        "distractors": {
+          "a": "缩小范围被误成只看一个社区并放弃比较；老师仍建议比较两个。",
+          "b": "同时保留两社区、比较深度和对全城结论的限制。",
+          "c": "把老师建议的缩小范围换成削减各地细节以保留全城覆盖。",
+          "d": "案例有用不等于可以推估其余城市；老师明确限制代表性。"
+        },
+        "crossQuestionLeakage": "四项均用could提出谨慎研究方案，差异在社区数量、深度和推论范围，不能凭绝对措辞排除。材料不与其他题复用。",
+        "audioNecessity": "题面未提供评价方向。"
+      }
+    },
+    {
+      "id": "toefl2026.a17",
+      "type": "choice",
+      "goalId": "toefl.reading.insertion",
+      "taskFamily": "学术阅读衔接局部练习",
+      "sourceRef": "etsreading / ets2026spec p.8",
+      "prompt": "把句子“The air in these spaces slows the loss of heat from the body.”插入最合适的位置。\n[A] Feathers form a covering over a bird's body. [B] Small spaces among the feathers hold pockets of air close to the skin. [C] That reduction in heat loss is especially valuable when the surrounding air is cold. [D]",
+      "options": [
+        {
+          "id": "a",
+          "text": "[A]"
+        },
+        {
+          "id": "b",
+          "text": "[B]"
+        },
+        {
+          "id": "c",
+          "text": "[C]"
+        },
+        {
+          "id": "d",
+          "text": "[D]"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "these spaces须回指已出现的羽毛间隙；下一句That reduction又须回指待插句首次说明的热量流失减少。两个方向的指代共同将位置限定在C。",
+      "difficulty": "较高：指代与信息推进共同约束插入",
+      "measurementTarget": "篇章衔接而非孤立词义",
+      "shortestSolutionPath": "先找spaces的引入，再找That reduction需承接的减少事件，插在两者之间。",
+      "review": {
+        "distractors": {
+          "a": "these spaces尚无先行信息。",
+          "b": "只介绍羽毛覆盖身体，尚未介绍spaces。",
+          "c": "spaces已引入，并及时为下一句That reduction提供先行事件。",
+          "d": "That reduction在插句前已出现却没有减少事件可回指，破坏信息链。"
+        },
+        "crossQuestionLeakage": "羽毛材料与其他动物题不共享句子或答案；题型只标局部衔接，不声称官方独立插句题型。"
+      }
+    },
+    {
+      "id": "toefl2026.a18",
+      "type": "choice",
+      "goalId": "toefl.reading.paraphrase",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7–8",
+      "prompt": "哪项保留原句全部关键关系？\nAlthough the new catalog made rare books easier to locate, access to the books themselves still required an appointment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The catalog improved finding the books, but readers still had to arrange a visit to consult them."
+        },
+        {
+          "id": "b",
+          "text": "Readers could consult the books without appointments once the catalog appeared."
+        },
+        {
+          "id": "c",
+          "text": "The catalog was difficult to use because appointments were required."
+        },
+        {
+          "id": "d",
+          "text": "Appointments became easier to arrange, although the books remained impossible to locate."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "原句区别定位图书与实际查阅：前者改善，后者仍需预约；不能把两者合成无门槛访问。",
+      "difficulty": "中：让步关系与两个行为对象",
+      "measurementTarget": "保留限定的释义判断",
+      "shortestSolutionPath": "分别核对locate改善、access仍预约两个信息。",
+      "review": {
+        "distractors": {
+          "a": "两层关系完整。",
+          "b": "删除still required限制。",
+          "c": "凭空把预约当目录难用的原因。",
+          "d": "互换改善对象并夸成无法定位。"
+        },
+        "crossQuestionLeakage": "目录与预约条件只在本题；不问开场书店故事。"
+      }
+    },
+    {
+      "id": "toefl2026.b01",
+      "type": "arrange",
+      "goalId": "toefl.syntax.extraposition",
+      "taskFamily": "写作句子重组局部练习",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "用全部词块组成以It开头的陈述句，强调保存原始记录的重要性。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "retain"
+        },
+        {
+          "id": "b",
+          "text": "It"
+        },
+        {
+          "id": "c",
+          "text": "the original records"
+        },
+        {
+          "id": "d",
+          "text": "is important"
+        },
+        {
+          "id": "e",
+          "text": "for researchers to"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "b",
+          "d",
+          "e",
+          "a",
+          "c"
+        ]
+      ],
+      "answer": "It is important for researchers to retain the original records.",
+      "acceptedVariants": [],
+      "explanation": "It为形式主语，for researchers指出不定式动作的执行者，to retain the original records给出真正强调的行动。",
+      "difficulty": "中：形式主语与不定式逻辑主语",
+      "measurementTarget": "it + adjective + for + noun + infinitive结构",
+      "shortestSolutionPath": "It is important后放for researchers，再接to retain及宾语。",
+      "review": {
+        "distractors": "无额外词块；for researchers to绑定后须紧接retain，避免把for researchers理解成修饰records的受益者。",
+        "variants": "for researchers to为单一词块，无法尾置而生成另一合法读法。",
+        "crossQuestionLeakage": "不与a02存储样本共用词块或相同结构。"
+      }
+    },
+    {
+      "id": "toefl2026.b02",
+      "type": "arrange",
+      "goalId": "toefl.syntax.indirect-object",
+      "taskFamily": "写作句子重组局部练习",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "用全部词块组成以The coordinator开头的陈述句，表示协调员向志愿者说明撤离程序。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "to the volunteers"
+        },
+        {
+          "id": "b",
+          "text": "explained"
+        },
+        {
+          "id": "c",
+          "text": "The coordinator"
+        },
+        {
+          "id": "d",
+          "text": "the evacuation procedure"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "b",
+          "d",
+          "a"
+        ],
+        [
+          "c",
+          "b",
+          "a",
+          "d"
+        ]
+      ],
+      "answer": "The coordinator explained the evacuation procedure to the volunteers.",
+      "acceptedVariants": [
+        "The coordinator explained to the volunteers the evacuation procedure."
+      ],
+      "explanation": "explain的内容作直接宾语，接收者用to引出。to短语可放在较长的内容宾语前；两种自然顺序均接收。",
+      "difficulty": "中：explain的论元搭配与可变语序",
+      "measurementTarget": "避免explain somebody something的误用",
+      "shortestSolutionPath": "先定主语和explained，保留to the volunteers完整，内容宾语可前可后。",
+      "review": {
+        "distractors": "无额外块；to已经绑定volunteers，防止误把人作直接宾语。",
+        "variants": "显式接收两种语序，不因偏好某一语序误判。",
+        "crossQuestionLeakage": "本题唯一撤离说明材料，其他题未给explain搭配答案。"
+      }
+    },
+    {
+      "id": "toefl2026.b03",
+      "type": "arrange",
+      "goalId": "toefl.syntax.comparison-clause",
+      "taskFamily": "写作句子重组局部练习",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "用全部词块组成以The more开头的比较关联句。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "the easier"
+        },
+        {
+          "id": "b",
+          "text": "you define the terms"
+        },
+        {
+          "id": "c",
+          "text": "to compare the proposals"
+        },
+        {
+          "id": "d",
+          "text": "The more clearly"
+        },
+        {
+          "id": "e",
+          "text": "it becomes"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "d",
+          "b",
+          "a",
+          "e",
+          "c"
+        ]
+      ],
+      "answer": "The more clearly you define the terms, the easier it becomes to compare the proposals.",
+      "acceptedVariants": [],
+      "explanation": "前半以副词比较级修饰define，后半以形容词比较级说明比较方案的难易变化，形成the more..., the easier...。",
+      "difficulty": "较高：双比较关联与形式主语",
+      "measurementTarget": "比较级关联句法",
+      "shortestSolutionPath": "clearly接define从句；easier接it becomes及to compare。",
+      "review": {
+        "distractors": "无额外块；easier不能在这里修饰define，clearly不能作becomes后的难易表语。",
+        "variants": "固定The more起首，词块绑定消除倒置两半的歧义。",
+        "crossQuestionLeakage": "其余题不提供该比较框架或术语界定内容。"
+      }
+    },
+    {
+      "id": "toefl2026.b04",
+      "type": "choice",
+      "goalId": "toefl.reading.reference-event",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "这里的This指什么？\nA river may deposit sediment where its flow slows. Over many years, the deposits can divert part of the current into a new channel. This can leave an earlier channel carrying much less water.",
+      "options": [
+        {
+          "id": "a",
+          "text": "The disappearance of all sediment"
+        },
+        {
+          "id": "b",
+          "text": "Water speeding up in the original channel"
+        },
+        {
+          "id": "c",
+          "text": "Part of the current being redirected into a new channel"
+        },
+        {
+          "id": "d",
+          "text": "The river receiving more water from rainfall"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "This回指前一句描述的改道事件，而非单个new channel名词；部分水流改道使旧河道水量减少。",
+      "difficulty": "中：指代整个事件",
+      "measurementTarget": "跨句事件回指",
+      "shortestSolutionPath": "用前一句整个事件替换This，检查能否导致旧河道水量下降。",
+      "review": {
+        "distractors": {
+          "a": "材料说沉积形成，不是全部消失。",
+          "b": "流速变慢才促成沉积，未说旧道加速。",
+          "c": "回指完整改道事件并连上结果。",
+          "d": "没有降雨信息。"
+        },
+        "crossQuestionLeakage": "与a04名词回指的认知动作不同，材料、代词、因果均独立。"
+      }
+    },
+    {
+      "id": "toefl2026.b05",
+      "type": "choice",
+      "goalId": "toefl.reading.word-sense",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "这里的account最接近哪个意思？\nThe historian's account of the strike draws on letters written by workers and minutes from management meetings. These sources sometimes describe the same event differently.",
+      "options": [
+        {
+          "id": "a",
+          "text": "A record of money held in a bank"
+        },
+        {
+          "id": "b",
+          "text": "A description of what happened"
+        },
+        {
+          "id": "c",
+          "text": "Permission to enter an online service"
+        },
+        {
+          "id": "d",
+          "text": "A demand for payment"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "史学作者根据工人信件与管理会议记录叙述罢工，account在此为事件记述，不是银行或登录账户。",
+      "difficulty": "中：常见词的学术义",
+      "measurementTarget": "由来源与叙述对象确定多义词词义",
+      "shortestSolutionPath": "把historian、strike与两类历史材料相连。",
+      "review": {
+        "distractors": {
+          "a": "bank含义不合历史事件叙述。",
+          "b": "对应史学记述。",
+          "c": "材料没有登录或权限。",
+          "d": "管理会议不意味着支付账单。"
+        },
+        "crossQuestionLeakage": "account一词及罢工语境不在其他题出现。"
+      }
+    },
+    {
+      "id": "toefl2026.b06",
+      "type": "choice",
+      "goalId": "toefl.reading.concession",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.8",
+      "prompt": "第三句与前两句是什么关系？\nSmall urban gardens can provide feeding sites for insects. Several surveys have recorded many insect species in such gardens. However, the number of species alone does not show whether their populations can survive there over many years.",
+      "options": [
+        {
+          "id": "a",
+          "text": "It denies that insects have been recorded in gardens."
+        },
+        {
+          "id": "b",
+          "text": "It identifies the exact cause of population decline."
+        },
+        {
+          "id": "c",
+          "text": "It adds another example of a feeding site."
+        },
+        {
+          "id": "d",
+          "text": "It limits what can be inferred from the survey results."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "发现物种多只支持存在及多样性，不能独立证明长期存续；第三句限定证据所能支持的结论。",
+      "difficulty": "较高：肯定观察但限制外推",
+      "measurementTarget": "让步转折中的证据边界",
+      "shortestSolutionPath": "识别does not show限制的是长期存续结论，不是已有观察。",
+      "review": {
+        "distractors": {
+          "a": "没有撤回物种记录。",
+          "b": "没有证明数量下降，更未找到原因。",
+          "c": "第三句没有新增地点例子。",
+          "d": "精确描述第三句功能。"
+        },
+        "crossQuestionLeakage": "虽同属证据训练，但与a07因果混杂不同，本题是短期记录到长期存续的外推。"
+      }
+    },
+    {
+      "id": "toefl2026.b07",
+      "type": "choice",
+      "goalId": "toefl.reading.quantifier",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7–8",
+      "prompt": "哪项受到研究报告支持？\nA town council contacted 80 households about winter energy use, and 46 returned its survey. Thirty of those respondents said they had reduced heating use during the winter. The questionnaire asked residents to compare their current habits with the previous winter, but it did not ask them to provide bills. The researchers did not obtain heating records or responses from the remaining households. Their report presented the responses as descriptions of residents' own experiences. It recommended collecting meter data in a later study before estimating the total energy saved across the town.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Thirty responding households reported reducing their heating use."
+        },
+        {
+          "id": "b",
+          "text": "The survey established reduced heating use in more than half of the contacted households."
+        },
+        {
+          "id": "c",
+          "text": "The reported reductions were checked against household heating records."
+        },
+        {
+          "id": "d",
+          "text": "The proposed meter study had already supplied the town-wide savings estimate."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "30是46名回应者中的自述，非80户总体的大多数，也没有用实际用热记录验证；未回应者的行为未知。",
+      "difficulty": "较高：分母、信息来源和未知值",
+      "measurementTarget": "量词与自报证据范围",
+      "shortestSolutionPath": "保留respondents与said，不把30/46改成总体多数或实测结果。",
+      "review": {
+        "distractors": {
+          "a": "保留人数、回应范围与reported。",
+          "b": "30是回应者中的人数；即使报告建议以后估算全镇，也没有获得未回应家庭的数据。",
+          "c": "明确没有取得heating records。",
+          "d": "建议未来收集meter data，不能把研究计划读成已完成结果。"
+        },
+        "crossQuestionLeakage": "独立数量关系；不以其他题的may或however作为答案捷径。"
+      }
+    },
+    {
+      "id": "toefl2026.b08",
+      "type": "choice",
+      "goalId": "toefl.reading.email-inference",
+      "taskFamily": "日常阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "读邮件。导师想让学生先做什么？\nYour proposal identifies an interesting question about public art. Before we meet, please add a paragraph explaining how you will choose the people you interview. I do not need additional background on the artists at this stage.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Interview every artist mentioned in the proposal"
+        },
+        {
+          "id": "b",
+          "text": "Replace the public-art topic with a new topic"
+        },
+        {
+          "id": "c",
+          "text": "Explain the method for selecting interview participants"
+        },
+        {
+          "id": "d",
+          "text": "Expand the historical background of the artists"
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "导师具体要求说明如何选择受访者，且明确暂不需要更多艺术家背景；没有要求立即采访或换题。",
+      "difficulty": "中：邮件目的与排除项",
+      "measurementTarget": "定位下一步修改要求",
+      "shortestSolutionPath": "读取please add后内容，再用最后一句排除背景扩写。",
+      "review": {
+        "distractors": {
+          "a": "方法说明不等于采访所有艺术家。",
+          "b": "interesting肯定研究问题，未要求换题。",
+          "c": "对应choose the people you interview。",
+          "d": "正是明确无需补充的部分。"
+        },
+        "crossQuestionLeakage": "与a09不同，是接收邮件的阅读理解，不是假装写作产出。"
+      }
+    },
+    {
+      "id": "toefl2026.b09",
+      "type": "matching",
+      "goalId": "toefl.discussion.support-relevance",
+      "taskFamily": "学术讨论写作前的论据配对，不测产出",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "将三条主张与最直接支持它的理由配对。每条理由最多用一次，一条理由不用。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Searchable transcripts help students review a particular concept."
+        },
+        {
+          "id": "l2",
+          "text": "Flexible office hours can improve access for students with jobs."
+        },
+        {
+          "id": "l3",
+          "text": "Anonymous first-round reviews can reduce the influence of an author's reputation."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Reviewers judge the submission before learning who wrote it."
+        },
+        {
+          "id": "r2",
+          "text": "Students can locate a term without replaying the entire recording."
+        },
+        {
+          "id": "r3",
+          "text": "A wider choice of appointment times can avoid clashes with work shifts."
+        },
+        {
+          "id": "r4",
+          "text": "Instructors can record which appointment times are most popular."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r3"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ],
+      "answer": "l1-r2；l2-r3；l3-r1",
+      "acceptedVariants": [],
+      "explanation": "检索定位直接支持复习具体概念；更多时间选择直接缓解工作冲突；隐去作者身份直接削弱声望线索。记录时段热度并不能单独证明在职学生更易参加。",
+      "difficulty": "中至较高：三条不同的论证机制与一个相关但不足的理由",
+      "measurementTarget": "辨认论据是否直接支持具体主张，而非仅主题相关",
+      "shortestSolutionPath": "分别对齐术语定位、排班冲突、作者身份三条机制，再排除只提供热度信息的r4。",
+      "review": {
+        "distractors": {
+          "r1": "支持作者声望论点，不能解释课程访问或检索。",
+          "r2": "支持查找具体概念，不能解释时间安排。",
+          "r3": "支持在职学生参加，非只统计使用人数。",
+          "r4": "与办公时间主题相关，但缺少工作学生能参加的机制或结果。"
+        },
+        "variants": "按配对集合判定，提交顺序无关；各理由限一次。",
+        "crossQuestionLeakage": "本题三条材料独立，不依赖前题；不把主题词命中当成写作产出能力。"
+      }
+    },
+    {
+      "id": "toefl2026.b10",
+      "type": "choice",
+      "goalId": "toefl.email.repair-register",
+      "taskFamily": "邮件写作前的修改辨析，不测产出",
+      "sourceRef": "etswriting / ets2026spec p.13",
+      "prompt": "你此前邮件误写了预约日期，实际想约周四而非周二。哪句修订能清楚负责地纠正错误并礼貌确认？",
+      "options": [
+        {
+          "id": "a",
+          "text": "I understood that you had booked Thursday, so please correct the Tuesday date in your records."
+        },
+        {
+          "id": "b",
+          "text": "Thank you for confirming Tuesday. I will let you know if Thursday becomes convenient instead."
+        },
+        {
+          "id": "c",
+          "text": "Please disregard my earlier message. I no longer need an appointment this week."
+        },
+        {
+          "id": "d",
+          "text": "I apologize for giving the wrong date. I meant Thursday; would that still be possible?"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "承认是自己给错日期、明确周四并询问是否仍可安排，三个交际任务齐全。",
+      "difficulty": "中：纠错邮件的责任与请求",
+      "measurementTarget": "识别信息更正及适当语域",
+      "shortestSolutionPath": "检查是否负责、说清日期、向收件人确认可行性。",
+      "review": {
+        "distractors": {
+          "a": "把错误归于对方记录，与自己误写的事实不符。",
+          "b": "确认周二而把周四说成未定，未完成明确更正。",
+          "c": "取消预约改变了仍希望周四见面的目标。",
+          "d": "完整完成纠正与请求。"
+        },
+        "crossQuestionLeakage": "不与a09系统错误混同；此处已知写信人自身误写。"
+      }
+    },
+    {
+      "id": "toefl2026.b11",
+      "type": "choice",
+      "goalId": "toefl.reading.summary",
+      "taskFamily": "学术阅读局部练习",
+      "sourceRef": "etsreading / ets2026spec p.7–8",
+      "prompt": "哪项最准确概括这段文字？\nSome museums invite visitors to label digital photographs from their collections. The labels can make overlooked details easier to search: a person interested in street markets may notice a stall that the official description does not mention. However, visitors may use different words for the same object, and some labels may identify an object incorrectly. Staff therefore review contributions and combine equivalent labels without discarding the useful details visitors noticed. The resulting index can serve a wider range of interests than the original descriptions alone. Public participation expands access, but it also creates editorial work needed to make that access dependable.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Visitor labels can improve discovery, while staff must still check and organize the contributions."
+        },
+        {
+          "id": "b",
+          "text": "Visitor labels mainly improve access by replacing specialist descriptions with unreviewed public terms."
+        },
+        {
+          "id": "c",
+          "text": "Staff improve discovery by keeping only details already included in the official descriptions."
+        },
+        {
+          "id": "d",
+          "text": "Combining equivalent labels removes the need to check whether objects have been correctly identified."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "摘要应同时保留公众标签提升可检索性和员工整理同义标签的必要性，不把辅助变为完全替代。",
+      "difficulty": "较高：压缩两面关系而不失范围",
+      "measurementTarget": "主旨整合与准确概括",
+      "shortestSolutionPath": "用第二句收益和第三句限制检查选项。",
+      "review": {
+        "distractors": {
+          "a": "同时保留新增检索细节与人员复核整理。",
+          "b": "材料保留原说明并要求复核，非未经审查地替代。",
+          "c": "新标签的意义正在于加入原说明遗漏的细节，不是只保留原内容。",
+          "d": "同义合并处理用词差异，物体识别错误仍须检查。"
+        },
+        "crossQuestionLeakage": "数字收藏独立于a18实体馆藏查阅；正确选项改成check and organize，不再出现a11待补全答案consistent。"
+      }
+    },
+    {
+      "id": "toefl2026.b12",
+      "type": "completion",
+      "goalId": "toefl.reading.derivation",
+      "taskFamily": "阅读补词局部练习，非完整Complete the Words组题",
+      "sourceRef": "etsreading / ets2026spec p.7",
+      "prompt": "只输入完整单词；accu后缺4个字母。\nThe scale was checked against a certified weight before each session. This procedure improved the accu____ of the measurements, not merely the speed at which they were recorded.",
+      "acceptedAnswers": [
+        "accuracy"
+      ],
+      "answer": "accuracy",
+      "acceptedVariants": [
+        "Accuracy"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "explanation": "the ... of结构需名词；accuracy指测量准确性。accurate是形容词，不能放在此结构中。",
+      "difficulty": "中：名词词形与测量语境",
+      "measurementTarget": "派生词辨认",
+      "shortestSolutionPath": "the与of确定名词；accu+racy构成accuracy。",
+      "review": {
+        "distractors": "无列出干扰；accurate词性不合，accumulate的词形、长度和含义均不合。",
+        "variants": "只接受完整名词，不把acuracy拼写错误当变体。",
+        "crossQuestionLeakage": "跨两组答前材料复查：除本题作者答案与解析外，没有其他题、选项或故事出现完整答案accuracy；a15已改写。"
+      }
+    },
+    {
+      "id": "toefl2026.b13",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.response-offer",
+      "taskFamily": "Listen and Choose a Response局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听一句话，选择最合适的回应。",
+      "audioScript": "Shall I save you a seat?",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "I've already saved a copy of the file."
+        },
+        {
+          "id": "b",
+          "text": "It was repaired yesterday."
+        },
+        {
+          "id": "c",
+          "text": "Yes, please. I'll be there soon."
+        },
+        {
+          "id": "d",
+          "text": "There are three floors in the building."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "explanation": "Shall I ...是在提出帮忙留座，回答Yes, please并说明即将到达，形成完整交际对。",
+      "difficulty": "基础：辨认主动提供帮助",
+      "measurementTarget": "口语提议与接受",
+      "shortestSolutionPath": "听出对方提出留座，再选择接受提议的回应。",
+      "review": {
+        "distractors": {
+          "a": "抓住save但把对象换成文件，不回应留座提议。",
+          "b": "把seat当需要报告维修的物品，未回应提议。",
+          "c": "自然接受并给出到场信息。",
+          "d": "回答楼层数量，功能不符。"
+        },
+        "crossQuestionLeakage": "与a12请求他人帮忙不同，此处说话人主动帮忙；无同一情境或答案句。",
+        "audioNecessity": "必须识别Shall I的提议功能。"
+      }
+    },
+    {
+      "id": "toefl2026.b14",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.correction",
+      "taskFamily": "Listen to a Conversation局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听对话。第二位说话人纠正了哪种理解？",
+      "audioScript": "A: So the presentation is due on Friday now? B: Only the outline. The full presentation is still scheduled for next Wednesday. The instructor moved the outline forward so we can get comments before we prepare the slides.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "That the full presentation is due on Friday"
+        },
+        {
+          "id": "b",
+          "text": "That feedback will be provided on the outline"
+        },
+        {
+          "id": "c",
+          "text": "That slides need to be prepared"
+        },
+        {
+          "id": "d",
+          "text": "That the outline deadline has changed"
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "explanation": "Friday仅适用于outline；完整展示仍是下周三。老师确实提前了提纲时间以先给反馈，后三项不是被否定的理解。",
+      "difficulty": "中：纠正的对象与保留事实",
+      "measurementTarget": "对话中的范围纠正",
+      "shortestSolutionPath": "听Only限定哪个产物，再对照still保留的日期。",
+      "review": {
+        "distractors": {
+          "a": "被B明确纠正。",
+          "b": "是调整的目的，未被否定。",
+          "c": "仍要做幻灯片。",
+          "d": "提纲截止日确有调整。"
+        },
+        "crossQuestionLeakage": "与b10邮件日期不同：本题是两种作业产物的范围，不是寄件人写错日期。",
+        "audioNecessity": "题面不提供日期或产物名称。"
+      }
+    },
+    {
+      "id": "toefl2026.b15",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.announcement-exception",
+      "taskFamily": "Listen to an Announcement局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10",
+      "prompt": "听公告。哪项服务在维护期间仍可使用？",
+      "audioScript": "The library's online reservation system will be unavailable tonight from nine until midnight. During that period, you won't be able to request books or renew loans online. You can still return books through the outside slot, and those returns will be recorded tomorrow morning. Existing due dates have not been extended.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Renewing loans through the website"
+        },
+        {
+          "id": "b",
+          "text": "Requesting books through the online system"
+        },
+        {
+          "id": "c",
+          "text": "Automatically receiving a later due date"
+        },
+        {
+          "id": "d",
+          "text": "Leaving returned books in the outside slot"
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "explanation": "维护影响线上预约和续借，但实体还书口仍可用；翌晨记账不意味着到期日自动顺延。",
+      "difficulty": "中：系统故障范围与保留服务",
+      "measurementTarget": "公告中的例外和否定限定",
+      "shortestSolutionPath": "抓住You can still，再检查最后一句不延期。",
+      "review": {
+        "distractors": {
+          "a": "明确不可线上续借。",
+          "b": "明确不可线上预约。",
+          "c": "最后一句否定自动延期。",
+          "d": "明确保留的实体服务。"
+        },
+        "crossQuestionLeakage": "不与a14路线公告复用结构性答案；服务例外需要独立听取。",
+        "audioNecessity": "书槽与维护限制没有在题干显示。"
+      }
+    },
+    {
+      "id": "toefl2026.b16",
+      "type": "listeningChoice",
+      "goalId": "toefl.listening.counterexample",
+      "taskFamily": "Listen to an Academic Talk局部练习",
+      "sourceRef": "etslistening / ets2026spec p.10–11",
+      "prompt": "听短讲。讲者举蜜蜂的例子，是为了质疑哪种推断？",
+      "audioScript": "It's tempting to judge an animal's color vision by how colorful its body looks to us. But appearance is not a reliable guide to sensory ability. Bees, for example, can detect ultraviolet light, which humans cannot see. Their familiar yellow and dark markings tell us little about that ability. To understand what an animal can detect, researchers need evidence about its visual system or its responses to controlled signals, rather than just a description of its colors.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "That controlled signals can be used to study perception"
+        },
+        {
+          "id": "b",
+          "text": "That an animal's visible body colors reveal the range of light it can detect"
+        },
+        {
+          "id": "c",
+          "text": "That humans cannot see ultraviolet light"
+        },
+        {
+          "id": "d",
+          "text": "That researchers need evidence about sensory systems"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "explanation": "蜜蜂可见紫外线这一能力无法从人类看到的体色推知，例子反驳外表颜色能揭示视觉范围的推断。其他三项被保留或支持。",
+      "difficulty": "较高：反例靶点与研究方法",
+      "measurementTarget": "识别学术短讲反例针对的命题",
+      "shortestSolutionPath": "先听开头诱人的推断，再看蜜蜂例子如何反驳它。",
+      "review": {
+        "distractors": {
+          "a": "讲者反而建议用受控信号测试。",
+          "b": "正是开头被But否定的推断。",
+          "c": "作为例子的事实依据，未被质疑。",
+          "d": "是讲者的结论，未被质疑。"
+        },
+        "crossQuestionLeakage": "虽含动物主题，测试反例功能，与a04指代和a17衔接各自独立。",
+        "audioNecessity": "仅知道蜜蜂事实不够，需听出讲者的反驳对象。"
+      }
+    },
+    {
+      "id": "toefl2026.b17",
+      "type": "cloze",
+      "goalId": "toefl.reading.discourse-links",
+      "taskFamily": "篇章逻辑多空辅助训练，非声称官方独立题型",
+      "sourceRef": "etsreading / ets2026spec p.8",
+      "prompt": "阅读完整短文，把两个连接语放入对应空位。每个词最多使用一次，有两个多余词。",
+      "passage": "The archive lost several boxes of letters during a flood. {s1}, enough letters survived to reconstruct the main sequence of a local campaign. Researchers first arranged these documents by date and then compared references to meetings across different writers. Agreement between the letters helped them identify when important decisions were made. {s2}, a missing month in the collection prevented them from explaining why one planned event was canceled. Their final account separated the sequence supported by the surviving documents from the motive that remained uncertain. They treated the gap as a limit on their explanation, rather than filling it with an invented cause.",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "Nevertheless"
+        },
+        {
+          "id": "b",
+          "text": "Therefore"
+        },
+        {
+          "id": "c",
+          "text": "However"
+        },
+        {
+          "id": "d",
+          "text": "Similarly"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "a"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "c"
+          }
+        ],
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "c"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "a"
+          }
+        ]
+      ],
+      "answer": "s1 Nevertheless、s2 However；或s1 However、s2 Nevertheless。",
+      "acceptedVariants": [
+        "两个让步转折词互换仍语法自然且关系成立，两种都接收。"
+      ],
+      "explanation": "第一空把资料受损与仍可还原顺序对照；第二空把顺序可确认与取消动机未知对照。两处都不是因果或类比，However和Nevertheless可互换，不能只认作者首选。",
+      "difficulty": "较高：两个不同范围的转折及可互换连接语",
+      "measurementTarget": "在较长篇章中追踪可知顺序与未知动机，并识别两处对照",
+      "shortestSolutionPath": "分别判断损失/仍存、顺序可知/动机未知的关系，选择两种转折词；同义语序两种都接收。",
+      "review": {
+        "distractors": {
+          "a": "可用于两处转折。",
+          "b": "前句不是后句成立的原因，任一空放Therefore均破坏关系。",
+          "c": "可用于两处转折。",
+          "d": "两空前后都不是相似情况的追加。"
+        },
+        "variants": "两套显式acceptedFills；填空提交按slotId判，不靠数组顺序。",
+        "crossQuestionLeakage": "本题需统整三个研究步骤和两类结论；其他历史题没有这段资料或连接答案。"
+      }
+    },
+    {
+      "id": "toefl2026.b18",
+      "type": "completion",
+      "goalId": "toefl.reading.condition-scope",
+      "taskFamily": "限定结构辅助训练，非声称官方独立题型",
+      "sourceRef": "etsreading / ets2026spec p.8",
+      "prompt": "从unless、because、although中选择一个词填空，只输入该词。要保持这个意思：如果没有单独的摄像许可，访客不得录制展品。\nVisitors may not record the exhibits ______ they have a separate filming permit.",
+      "acceptedAnswers": [
+        "unless"
+      ],
+      "answer": "unless",
+      "acceptedVariants": [
+        "Unless"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "explanation": "may not ... unless ...表达许可是解除这条禁止的必要条件；不能据此推断有许可便免除所有其他场馆规则。",
+      "difficulty": "较高：否定主句和例外条件",
+      "measurementTarget": "保留必要条件的语义",
+      "shortestSolutionPath": "把unless读成except if，检查无许可时仍禁止。",
+      "review": {
+        "distractors": {
+          "unless": "保留无许可即禁止的条件。",
+          "because": "会变成因有许可而禁止，因果与原意相反。",
+          "although": "会变成虽有许可仍禁止，未表达所需条件。"
+        },
+        "variants": "只接受词表内unless，不接受provided等改变否定句含义的词。",
+        "crossQuestionLeakage": "展品录制规则首次出现，与b11数字照片标签无推理联系；中文任务意图是此辅助题的支架，不计无支架阅读表现。"
+      }
+    }
+  ],
+  "proposedProductionTasks": [
+    {
+      "id": "toefl2026.proposed.email",
+      "status": "proposed，当前正式交互不支持",
+      "officialTaskFamily": "Write an Email",
+      "sourceRef": "etswriting / ets2026spec p.13–14",
+      "prompt": "You are taking a photography course. You booked a studio for Saturday afternoon, but the booking confirmation lists Sunday morning. Write an email to the studio coordinator. Explain the discrepancy, explain why the Saturday slot matters to your group, and ask for a workable solution. You may invent ordinary details about your group's schedule.",
+      "responseMode": "自由键入英文邮件；不提供选项，不以关键词命中代替评价。练习不限时，非官方限时模拟。",
+      "measurementTarget": "在明确受众和目的下独立组织多句信息、理由与请求",
+      "answer": "开放任务，无唯一标准答案；必须说明两时段差异、给出小组周六需求理由、提出可执行询问或备选。",
+      "acceptedVariants": "可要求核对原预订、恢复周六或询问其他周六时段；合理安排与语体都可。无需夸张道歉或固定模板。",
+      "localReviewCriteria": [
+        "任务要点完整且没有将确认时间写反",
+        "信息清楚、请求适合协调员身份",
+        "句间衔接自然，语法词汇足以传意"
+      ],
+      "difficulty": "中至较高：三项交际要求整合",
+      "shortestSolutionPath": "先列差异、需求原因、具体请求，再写成自然邮件并校对时间。",
+      "distractorNotes": "不适用：开放产出，无选项；只写礼貌套话或辱骂收件人不能完成目的。",
+      "crossQuestionLeakage": "客观题未给该情境样文；不在答前展示参考答案。",
+      "implementationNeeds": [
+        "多行编辑与草稿保存",
+        "透明反馈及人工复核通道",
+        "不输出ETS分数或水平认证"
+      ]
+    },
+    {
+      "id": "toefl2026.proposed.discussion",
+      "status": "proposed，当前正式交互不支持",
+      "officialTaskFamily": "Write for an Academic Discussion",
+      "sourceRef": "etswriting / ets2026spec p.13–14",
+      "prompt": "Professor: A university is deciding whether first-year students should complete a small research project with a local community organization. Do the benefits justify making this a requirement? Explain your view.\nMaya: A requirement would help students connect course ideas to problems outside the classroom.\nEli: Organizations may have to spend too much time supervising beginners.\nWrite your contribution to the discussion. State and support your own view, and engage with an idea already raised.",
+      "responseMode": "自由键入英文讨论发言；练习不限时，不复制同学话当原创贡献。",
+      "measurementTarget": "独立提出立场、展开理由并回应他人",
+      "answer": "开放任务，可支持、反对或提出带条件方案；评价支持是否充分，不按立场判分。",
+      "acceptedVariants": "可论述学习迁移、合作单位负担或分阶段合作；可回应任一同学，也可比较双方。无需使用预定连接词。",
+      "localReviewCriteria": [
+        "明确回应是否必修",
+        "给出相关理由及具体展开",
+        "回应同学观点并新增贡献",
+        "语言可理解、组织连贯"
+      ],
+      "difficulty": "较高：回应与展开结合",
+      "shortestSolutionPath": "选择立场及一条他人观点，解释机制或例子，检查是否新增内容。",
+      "distractorNotes": "不适用：开放产出；复述Maya/Eli而无新意见不能充分完成任务。",
+      "crossQuestionLeakage": "两组没有社区研究必修话题；不复用自行车试点答案作为标准方案。",
+      "implementationNeeds": [
+        "保留原始文本及修改历史",
+        "过程提示与正式独立尝试分开",
+        "反馈不伪装官方评分"
+      ]
+    },
+    {
+      "id": "toefl2026.proposed.repeat",
+      "status": "proposed，未录音、未实现语音采集评价",
+      "officialTaskFamily": "Listen and Repeat",
+      "sourceRef": "etsspeaking / ets2026spec p.15–16",
+      "prompt": "你正在听一位工作人员介绍校园设施。播放一句后，尽可能准确、清晰地重复。",
+      "audioScript": "The computers beside the entrance are available without a reservation.",
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "答前隐藏"
+      },
+      "responseMode": "真实麦克风录音；不能以文字输入或选择正确句替代。",
+      "measurementTarget": "听后复述的词句保留与可理解度",
+      "answer": "The computers beside the entrance are available without a reservation.",
+      "acceptedVariants": "口音差异只要清晰可懂就不作为错误；同义改写不是准确复述，不将ASR文本一致当发音通过。",
+      "localReviewCriteria": [
+        "词语和结构保留",
+        "关键否定或限制without未遗漏",
+        "语音可理解及意群切分"
+      ],
+      "difficulty": "中：带地点修饰和否定介词的单句",
+      "shortestSolutionPath": "听清主体、位置和无需预约条件，按意群连续复述。",
+      "distractorNotes": "不适用：无选项；遗漏without会反转条件，不能与轻微口音差异同等处理。",
+      "crossQuestionLeakage": "无客观题给出此句，录音稿不得显示在练习界面。",
+      "implementationNeeds": [
+        "制作并核听原音",
+        "真实录音保存与授权说明",
+        "人工可复核的发音反馈；不作官方分数换算"
+      ]
+    },
+    {
+      "id": "toefl2026.proposed.interview",
+      "status": "proposed，未录音、未实现语音采集评价",
+      "officialTaskFamily": "Take an Interview",
+      "sourceRef": "etsspeaking / ets2026spec p.15–16",
+      "prompt": "你参加一次关于学生协作经验的模拟访谈。听到每个问题后，用英语口头作答。这是一组口语拓展练习，不计入两组36道客观题。",
+      "audioScripts": [
+        "Think of a time when you worked with other people on a task. What was the task, and what did you do?",
+        "What helped the group communicate effectively? Please give a specific example.",
+        "Some people prefer to choose their own teammates, while others prefer assigned groups. Which approach do you favor, and why?",
+        "How might online collaboration change the way students divide work in the future? Explain one likely change and a possible difficulty."
+      ],
+      "audio": {
+        "status": "pending",
+        "assetId": null,
+        "scriptVisibility": "问题以音频依次呈现；记录完整脚本供制作，不作为已交付媒体"
+      },
+      "responseMode": "四次独立录音回答，后续题完整提出所需背景；用户可以虚构普通经历，练习不限时，不称官方考试时间。",
+      "measurementTarget": "由叙述到解释、意见和预测的连续真实表达",
+      "answer": "开放回答，无唯一内容答案；逐问回应、适当展开且可理解。",
+      "acceptedVariants": "可以支持自选或分组、预测积极或消极变化；不要求与作者观点一致。无经历可给合理假设并说明。",
+      "localReviewCriteria": [
+        "各问回应相关",
+        "例子与理由支持观点",
+        "话语连贯及自然停顿",
+        "语法词汇支持表达且语音可理解"
+      ],
+      "difficulty": "由中到较高：从具体经历过渡到抽象预测",
+      "shortestSolutionPath": "每问先直接回答，再给一个支持细节；最后问同时说变化与困难。",
+      "distractorNotes": "不适用：开放口语；背诵无关模板不能替代回答具体问题。",
+      "crossQuestionLeakage": "访谈内部允许语境连续，问题不依赖前问是否答对；不用于客观题答案推导。",
+      "implementationNeeds": [
+        "制作问题音频并核验顺序",
+        "逐问录音及失败恢复",
+        "反馈与录音可回看，提示暴露留痕",
+        "不把选择题成绩换算为口语能力或考试分数"
+      ]
+    }
+  ]
+}

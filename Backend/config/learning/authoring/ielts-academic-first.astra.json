@@ -1,0 +1,1513 @@
+{
+  "trackId": "ielts-academic",
+  "displayName": "雅思 Academic 备考",
+  "version": 1,
+  "author": {
+    "date": "2026-10-11",
+    "method": "逐题亲写原创材料、问题、答案与干扰分析；程序仅保存、格式化和机械校验。",
+    "status": "隔离作者稿，待独立主审；未导入、未发布"
+  },
+  "scope": "并列备考方向，独立于英语等级与升星。默认Academic，不是General Training。36道微练习不构成整场考试、完整题型覆盖或分数预测。阅读篇幅显著短于正式考试；写作相关选择仅测辨识，不代表写作产出能力。 A组是基础微技能支架；B组含三篇较长的进阶微阅读，但仍远短于正式阅读全文，未经正式考题难度标定。",
+  "sources": [
+    {
+      "id": "ielts.samples",
+      "url": "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Preparing for your IELTS Academic test；Academic sample tasks下Listening、Academic Reading、Academic Writing、Speaking目录说明",
+      "use": "核对Academic与General Training读写差异及任务种类。只读页面正文，未读取链接中的样题PDF、音频或交互试卷；没有移植官方题干。"
+    },
+    {
+      "id": "ielts.reading",
+      "url": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-reading",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Summary；Question types 1–9的What's involved及What skills are tested",
+      "use": "事实和作者观点分别采用T/F/NG与Y/N/NG；定位与主旨分开；原文取词明确字数限制。"
+    },
+    {
+      "id": "ielts.listening",
+      "url": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-listening",
+      "readAt": "2026-10-11",
+      "sectionsRead": "What's in the IELTS Listening paper；Summary；Question types 1、2、4、5、6",
+      "use": "社会及学术语境，细节与信息关系；正式考试单次播放。练习重播单独记录，不称模拟成绩。"
+    },
+    {
+      "id": "ielts.writing",
+      "url": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing",
+      "readAt": "2026-10-11",
+      "sectionsRead": "What's in the IELTS Academic Writing paper；Marking；Summary；Academic Writing Task 1",
+      "use": "Task 1图表概述、比较和中性语域；Task 2回应论题并展开论证。产出另列proposed。"
+    },
+    {
+      "id": "ielts.speaking",
+      "url": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-speaking",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Marking；Summary；Part 1 Introduction and interview；Part 2 Long turn；Part 3 Discussion",
+      "use": "口语需要实际连续发言与互动；读文字选择不能证明流利度或发音。"
+    },
+    {
+      "id": "ielts.scoring",
+      "url": "https://ielts.org/take-a-test/your-results/ielts-scoring-in-detail",
+      "readAt": "2026-10-11",
+      "sectionsRead": "Understanding IELTS test scores；Overall band score；Section band scores中的Listening、Reading、Writing、Speaking正文",
+      "use": "正式四科评分与本稿局部正确率不等值；未核读评分描述语PDF，不给band分或校准难度。"
+    }
+  ],
+  "interactionContract": {
+    "choice": "答案为选项ID；acceptedVariants空数组表示无其他正确选项。TFNG和YNNG始终保留标准标签，不以随机标签记忆测量。",
+    "completion": "原文取词按各题wordLimit与acceptedVariants；大小写及首尾空格可忽略，不能自动接受同义词、漏词或超字数。规则待正式引擎接入验证。",
+    "independence": "每题带自己的全部材料；故事可跳过且不含答案。提交前不展示解析、音频稿或目标中的解题结论。",
+    "audio": "所有音频status=pending、assetId=null。脚本为作者私有，不可作为题前字幕；素材未制作时阻止听力任务进入可完成态。",
+    "formatBoundary": "choice与completion是拟映射到现有合同的作者字段，不是可直接导入合同；听力填空另列proposed，不拿dictation冒充笔记填空。",
+    "construction": "a07为arrange，a11/b08/b18为cloze；所有候选与接受组合逐题手写。b18的readingPassage需要映射到正式prompt并验证完整呈现，不能把材料丢掉。组句/填词测局部主动构造，仍不等于自由作文。"
+  },
+  "units": [
+    {
+      "id": "ielts-academic.first.a",
+      "title": "只说证据允许的话",
+      "story": {
+        "afterQuestion": 0,
+        "title": "修好的纸灯",
+        "text": "雨停后，你和同行者走进河边的小展厅。志愿者正为一盏破了边角的纸灯发愁，今晚的展览就要开始了。你扶住灯架，同行者找来一张薄纸。补好的地方比原来浅了一点，志愿者却没有再遮盖，而是把灯转向墙边。灯亮起来，墙上多了一片柔和的影子。你们帮她把桌子归位，走出展厅时，门口已经有人排队。",
+        "english": "After the rain, you and your companion step into a small gallery by the river. A volunteer is worried about a paper lamp with a torn corner; the exhibition opens tonight. You hold the frame while your companion finds a sheet of thin paper. The patch is slightly paler than the rest. Instead of covering it again, the volunteer turns the lamp towards the wall. When she switches it on, a soft shape appears on the wall. You help move the table back into place. As you leave, visitors are already waiting outside."
+      },
+      "questions": [
+        {
+          "id": "ielts.a01",
+          "type": "choice",
+          "goalId": "ielts.reading.fact-boundary",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "区分未提及与反证",
+          "difficulty": "入门：区分两个不同变量",
+          "prompt": "材料：A field team counted insects on six green roofs in June. Roof height was recorded, but the report gives no information about the age of the buildings. 判断：All six buildings were constructed after 2000.",
+          "options": [
+            {
+              "id": "a",
+              "text": "True"
+            },
+            {
+              "id": "b",
+              "text": "False"
+            },
+            {
+              "id": "c",
+              "text": "Not Given"
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "explanation": "报告没有楼龄资料，不能支持或反驳建造年份。",
+          "distractorReasons": {
+            "a": "把屋顶高度误当成建造时间。",
+            "b": "没有支持并不等于存在反证。"
+          },
+          "shortestPath": "找建造时间证据，确认材料未给。",
+          "crossQuestionAudit": "屋顶和楼龄资料只在此题出现；不能靠其他TFNG题答案排除。"
+        },
+        {
+          "id": "ielts.a02",
+          "type": "choice",
+          "goalId": "ielts.reading.fact-boundary",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "识别明确反证而非缺失",
+          "difficulty": "入门：数量范围冲突",
+          "prompt": "材料：The seed trial used twelve trays. Nine were kept beside a window, while the other three were placed in a dark cupboard. 判断：Every tray in the trial received daylight.",
+          "options": [
+            {
+              "id": "a",
+              "text": "True"
+            },
+            {
+              "id": "b",
+              "text": "False"
+            },
+            {
+              "id": "c",
+              "text": "Not Given"
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "三个托盘在黑暗柜中，明确反驳所有托盘都接收日光。",
+          "distractorReasons": {
+            "a": "忽略三个例外。",
+            "c": "材料已经提供否定全称断言的证据。"
+          },
+          "shortestPath": "将every与three in a dark cupboard对照。",
+          "crossQuestionAudit": "此题有明确反证；不沿用a01缺失信息的答案策略。"
+        },
+        {
+          "id": "ielts.a03",
+          "type": "choice",
+          "goalId": "ielts.reading.paraphrase",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "辨认带完成先后关系的等义改写",
+          "difficulty": "基础：delay与until改写",
+          "prompt": "材料：Publication of the coastal survey was postponed until the team had checked the disputed measurements. 判断：The coastal survey was not published before the team had finished checking the measurements that had been questioned.",
+          "options": [
+            {
+              "id": "a",
+              "text": "True"
+            },
+            {
+              "id": "b",
+              "text": "False"
+            },
+            {
+              "id": "c",
+              "text": "Not Given"
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "explanation": "not published before与postponed until都保留核查结束前不发表的时间关系；不额外推断延期目的。",
+          "distractorReasons": {
+            "b": "改写未改变行动或时间关系。",
+            "c": "核查和延期的联系已在句中给出。"
+          },
+          "shortestPath": "将until核查完成与not before核查完成对应。",
+          "crossQuestionAudit": "不复用其他题材料；不能仅因同义词外形不同判NG。"
+        },
+        {
+          "id": "ielts.a04",
+          "type": "choice",
+          "goalId": "ielts.reading.locate",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "定位原因而非相同关键词",
+          "difficulty": "基础：三段功能区分",
+          "prompt": "A: The museum began collecting fishing tools in 1978. B: Salt remaining on some tools continued to damage the metal, so conservators introduced a longer cleaning stage. C: Visitors can now watch the cleaning through a glass screen. 哪段解释了处理程序为什么改变？",
+          "options": [
+            {
+              "id": "a",
+              "text": "A"
+            },
+            {
+              "id": "b",
+              "text": "B"
+            },
+            {
+              "id": "c",
+              "text": "C"
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "B给出残盐继续腐蚀这一原因及延长清洗的回应。",
+          "distractorReasons": {
+            "a": "藏品收集时间不是程序变化原因。",
+            "c": "观看方式涉及cleaning，但没有解释清洗流程变化。"
+          },
+          "shortestPath": "找原因与措施相连的so。",
+          "crossQuestionAudit": "段落均随题提供；并非共享文章的排除式配对。"
+        },
+        {
+          "id": "ielts.a05",
+          "type": "completion",
+          "goalId": "ielts.reading.extract",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "定位不同包装层的材料，完成原文取词微练习",
+          "difficulty": "基础：两词名词短语",
+          "prompt": "材料：Before storing the pottery, staff wrapped each piece in acid-free tissue. Bubble wrap was used only around the outside of the storage boxes. 从原文填入不超过两词：Each piece was wrapped in ____.",
+          "wordLimit": 2,
+          "answer": "acid-free tissue",
+          "acceptedVariants": [
+            "acid-free tissue",
+            "tissue"
+          ],
+          "explanation": "直接接触每件陶器的是acid-free tissue。完整材料名和其中心词tissue均符合本空；带连字符的acid-free按一词计。",
+          "distractorReasons": {
+            "bubble wrap": "用于盒子外侧。",
+            "in acid-free tissue": "空前已有in且超两词。"
+          },
+          "shortestPath": "定位each piece，取wrapped in后的材料。",
+          "crossQuestionAudit": "包装材料未出现在故事或其他题；不把故事修纸情节用作答案。"
+        },
+        {
+          "id": "ielts.a06",
+          "type": "choice",
+          "goalId": "ielts.reading.scope",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "保留关联证据边界",
+          "difficulty": "进阶：关联不推出原因",
+          "prompt": "材料：Among 240 commuters surveyed, those who cycled reported lower stress. The survey did not measure stress before people chose their mode of travel. 哪个结论最受材料支持？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The survey indicates that switching to cycling lowered commuters’ stress."
+            },
+            {
+              "id": "b",
+              "text": "The survey indicates that lower initial stress led commuters to choose cycling."
+            },
+            {
+              "id": "c",
+              "text": "The survey indicates an association between cycling and lower reported stress."
+            },
+            {
+              "id": "d",
+              "text": "The survey indicates that cyclists’ stress fell relative to their earlier levels."
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "explanation": "观察到样本内的关联；缺少此前状态，不能确定因果方向。",
+          "distractorReasons": {
+            "a": "从当前关联推出换用骑车的因果效果。",
+            "b": "假设测量了最初压力并确定反向因果。",
+            "d": "假设存在同一批人的前后压力比较。"
+          },
+          "shortestPath": "保留样本、reported和associated三个限定。",
+          "crossQuestionAudit": "其他题没有这项调查；不能从医学或交通常识作答。"
+        },
+        {
+          "id": "ielts.a07",
+          "type": "arrange",
+          "goalId": "ielts.writing.trend",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "用by和to主动组装增量与终值表达",
+          "difficulty": "基础：带数字和介词的词块组句",
+          "prompt": "原创数据：月均电子借阅量从2,000次增至3,000次。选择4个词块组成完整句子，准确表达增量和终值；有2个多余词块。",
+          "tokens": [
+            {
+              "id": "loans",
+              "text": "Monthly electronic loans"
+            },
+            {
+              "id": "rose",
+              "text": "rose"
+            },
+            {
+              "id": "delta",
+              "text": "by 1,000"
+            },
+            {
+              "id": "end",
+              "text": "to 3,000."
+            },
+            {
+              "id": "wrong-delta",
+              "text": "by 3,000"
+            },
+            {
+              "id": "wrong-end",
+              "text": "to 1,000."
+            }
+          ],
+          "answer": [
+            "loans",
+            "rose",
+            "delta",
+            "end"
+          ],
+          "acceptedOrders": [
+            [
+              "loans",
+              "rose",
+              "delta",
+              "end"
+            ]
+          ],
+          "acceptedVariants": [],
+          "explanation": "by引出增加1,000次，to引出终值3,000次；需自行组织完整的数据描述句。",
+          "distractorReasons": {
+            "wrong-delta": "3,000是终值，不能当增加量。",
+            "wrong-end": "1,000是增加量，不能当终值。"
+          },
+          "shortestPath": "先算增加量，再按主语、上升、by增量、to终值排列。",
+          "crossQuestionAudit": "两个多余块维持相同上升语义，必须看数字角色；不靠下降词机械排除。"
+        },
+        {
+          "id": "ielts.a08",
+          "type": "choice",
+          "goalId": "ielts.writing.overview",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "概括主要趋势而非逐项罗列",
+          "difficulty": "基础：两序列走势整合",
+          "prompt": "原创数据：同一城市通勤比例（%），2005/2015/2025年：公交40/35/30，自行车10/18/25。哪句最适合作为这两类交通方式的概述？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Cycling became more common than bus travel by 2025."
+            },
+            {
+              "id": "b",
+              "text": "Bus use declined while cycling gained ground, although buses remained more common."
+            },
+            {
+              "id": "c",
+              "text": "The two modes had identical shares in 2015."
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "公交下降、自行车上升，但末年公交30仍大于25。",
+          "distractorReasons": {
+            "a": "末年并未反超。",
+            "c": "35与18并不相等。"
+          },
+          "shortestPath": "检查两条方向与末年排序。",
+          "crossQuestionAudit": "不提供原因，不能把a06骑车压力材料当成本题趋势解释。"
+        },
+        {
+          "id": "ielts.a09",
+          "type": "choice",
+          "goalId": "ielts.writing.evidence",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "避免图表之外的原因推断",
+          "difficulty": "基础：描述与解释边界",
+          "prompt": "一张原创表格只给出河运货量：2018年60万吨、2023年45万吨，没有政策或费用数据。哪句可直接用于数据描述？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Higher charges caused river freight to decline."
+            },
+            {
+              "id": "b",
+              "text": "New regulations drove freight onto the roads."
+            },
+            {
+              "id": "c",
+              "text": "River freight was 15 million tonnes lower in 2023."
+            },
+            {
+              "id": "d",
+              "text": "River freight fell from 600,000 to 450,000 tonnes."
+            }
+          ],
+          "answer": "d",
+          "acceptedVariants": [],
+          "explanation": "d准确换算并描述已给数据，不增添原因。",
+          "distractorReasons": {
+            "a": "表中没有费用证据。",
+            "b": "表中没有法规或公路流量。",
+            "c": "万吨换算错误；实际差150,000吨。"
+          },
+          "shortestPath": "先核单位，再排除无材料支撑的原因。",
+          "crossQuestionAudit": "本题单位陷阱独立于a07增量；不靠重复句型选答案。"
+        },
+        {
+          "id": "ielts.a10",
+          "type": "choice",
+          "goalId": "ielts.writing.register",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "学术中性表达与恰当搭配",
+          "difficulty": "基础：搭配和语域同时判断",
+          "prompt": "论文讨论公共设施，想表达“缺少可靠数据妨碍规划”，哪句适合中性书面语？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The planning team is completely lost because the data are such a mess."
+            },
+            {
+              "id": "b",
+              "text": "A lack of reliable data poses a challenge to planning."
+            },
+            {
+              "id": "c",
+              "text": "The available data remove the main obstacles to planning."
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "三句语法均成立；b准确保留缺少可靠数据妨碍规划的含义，且采用中性书面语。",
+          "distractorReasons": {
+            "a": "情绪化评价数据并增添规划团队完全迷失的断言。",
+            "c": "把数据不足造成阻碍改成数据消除障碍，含义相反。"
+          },
+          "shortestPath": "核对pose a challenge及语气。",
+          "crossQuestionAudit": "本题测局部措辞；不将选对句子记为写作完成。"
+        },
+        {
+          "id": "ielts.a11",
+          "type": "cloze",
+          "goalId": "ielts.writing.argument",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "在论证展开中连接具体障碍与对应收益",
+          "difficulty": "基础：两空论证关系而非孤立词汇",
+          "prompt": "论点是晚间开放帮助白天工作的读者。将两个短语分别放入相应空位，每项最多一次；另有两个多余短语。",
+          "passage": "A worker whose shift ends at six cannot use a library that closes at five. Staying open until nine would {access}. This would allow that reader to study {benefit}.",
+          "tokens": [
+            {
+              "id": "access-after",
+              "text": "make access possible after work"
+            },
+            {
+              "id": "leave",
+              "text": "without taking time off work"
+            },
+            {
+              "id": "cost",
+              "text": "make borrowing less expensive"
+            },
+            {
+              "id": "quieter",
+              "text": "in a room with fewer distractions"
+            }
+          ],
+          "answer": {
+            "access": "access-after",
+            "benefit": "leave"
+          },
+          "acceptedFills": [
+            [
+              {
+                "slotId": "access",
+                "tokenId": "access-after"
+              },
+              {
+                "slotId": "benefit",
+                "tokenId": "leave"
+              }
+            ]
+          ],
+          "acceptedVariants": [],
+          "explanation": "时间延长解决下班后进不去的障碍，因此不必请假。较低费用和较少干扰也可能是图书馆收益，但材料没有说晚间开放带来这两项变化。",
+          "distractorReasons": {
+            "cost": "没有借阅费用变化证据。",
+            "quieter": "没有白天与晚间安静程度比较。"
+          },
+          "shortestPath": "从六点下班、五点关门定位时间冲突，把开放时间变化连接到无需请假。",
+          "crossQuestionAudit": "候选均是自然的图书馆收益；不能只凭话题相关性填空，有两个未用项避免最后一项自动确定。"
+        },
+        {
+          "id": "ielts.a12",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.correction",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "更新被修正的时间",
+          "difficulty": "基础：显式自我修正",
+          "prompt": "听预约对话：最后确认的预约时间是什么？",
+          "options": [
+            {
+              "id": "a",
+              "text": "10:15"
+            },
+            {
+              "id": "b",
+              "text": "10:45"
+            },
+            {
+              "id": "c",
+              "text": "11:15"
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "Receptionist: I can offer you ten fifteen on Wednesday. Oh, sorry, that slot has just been taken. Would ten forty-five work? Visitor: Yes, please book that. I need to leave by eleven fifteen.",
+            "production": "两人自然对话，建议145词/分；读出完整时间，不重读正确项。"
+          },
+          "explanation": "10:15被撤回，访客确认10:45；11:15是离开期限。",
+          "distractorReasons": {
+            "a": "最初提议已失效。",
+            "c": "混淆离开时间与预约时间。"
+          },
+          "shortestPath": "跟随sorry后的新提议及接受回应。",
+          "crossQuestionAudit": "三个时间仅存在隐藏脚本；题前无字幕，其他题不重复。"
+        },
+        {
+          "id": "ielts.a13",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.detail",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "区分总价与额外费用",
+          "difficulty": "基础：价格适用条件",
+          "prompt": "听活动介绍：录音中这位不是会员、并自带头盔的成人来电者，需支付多少？",
+          "options": [
+            {
+              "id": "a",
+              "text": "£18"
+            },
+            {
+              "id": "b",
+              "text": "£21"
+            },
+            {
+              "id": "c",
+              "text": "£15"
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "The guided ride costs eighteen pounds for an adult. Helmet hire is three pounds extra, but you won't pay that if you bring your own. Members pay fifteen pounds; today's caller isn't a member.",
+            "production": "一人说明，建议150词/分；货币自然读法。"
+          },
+          "explanation": "成人基础价18；自带头盔不用加3，且不是会员。",
+          "distractorReasons": {
+            "b": "错误加入不需要的租赁费。",
+            "c": "误用会员价。"
+          },
+          "shortestPath": "匹配成人、非会员、自带头盔三个条件。",
+          "crossQuestionAudit": "不利用现实价格常识；费用条件在本题录音内完整给出。"
+        },
+        {
+          "id": "ielts.a14",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.sequence",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "辨别修订后的操作顺序",
+          "difficulty": "基础：否定旧步骤",
+          "prompt": "听导师说明：学生接下来首先应做什么？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Send out the questionnaire."
+            },
+            {
+              "id": "b",
+              "text": "Prepare the final charts."
+            },
+            {
+              "id": "c",
+              "text": "Test the questions with a small group."
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "Student: Shall I send the questionnaire out this afternoon? Tutor: Not yet. Try the questions with five volunteers first, to see whether anything is unclear. Once you've revised it, you can distribute it. The charts come much later.",
+            "production": "两人，建议150词/分；停顿不刻意提示答案。"
+          },
+          "explanation": "导师先要求小范围试测，修改后才能发放；图表更晚。",
+          "distractorReasons": {
+            "a": "学生提议被not yet否定。",
+            "b": "最终图表不是当前步骤。"
+          },
+          "shortestPath": "抓not yet、first、once三个时序标记。",
+          "crossQuestionAudit": "不借其他研究题知识推步骤，只依本段顺序。"
+        },
+        {
+          "id": "ielts.a15",
+          "type": "choice",
+          "goalId": "ielts.reading.reference",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "指代回指完整做法",
+          "difficulty": "基础：跨句回指",
+          "prompt": "材料：The researchers stored a second copy of every interview in a separate building. This precaution meant that a fire in the main office did not destroy the whole archive. This precaution指什么？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Keeping duplicate recordings at another location."
+            },
+            {
+              "id": "b",
+              "text": "Interviewing each participant in two buildings."
+            },
+            {
+              "id": "c",
+              "text": "Moving the main office after the fire."
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "explanation": "回指异地保存第二份副本这一防护做法。",
+          "distractorReasons": {
+            "b": "存两份不等于采访两次。",
+            "c": "原文未说搬迁办公室。"
+          },
+          "shortestPath": "读取this之前的完整行动。",
+          "crossQuestionAudit": "档案材料自足；a04博物馆清洗不提供指代信息。"
+        },
+        {
+          "id": "ielts.a16",
+          "type": "completion",
+          "goalId": "ielts.reading.extract",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "把过程条件改写定位到原文",
+          "difficulty": "基础：wait until与before对应",
+          "prompt": "材料：The sensor was fitted beneath the bridge. Before measurements began, technicians waited until the temperature became stable. 从原文取一个词：Measurements started only after the temperature was ____.",
+          "wordLimit": 1,
+          "answer": "stable",
+          "acceptedVariants": [
+            "stable"
+          ],
+          "explanation": "until temperature became stable对应after temperature was stable。",
+          "distractorReasons": {
+            "low": "没有低温要求。",
+            "stabilised": "虽近义但不是原文用词。",
+            "became stable": "不符合空前was且超过一词。"
+          },
+          "shortestPath": "定位开始测量的条件，保留原词stable。",
+          "crossQuestionAudit": "与a05同为取词但句法与测量目标不同，答案不互泄。"
+        },
+        {
+          "id": "ielts.a17",
+          "type": "choice",
+          "goalId": "ielts.reading.main-idea",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "区分全文主旨与例子",
+          "difficulty": "基础：多个例子归纳",
+          "prompt": "材料：A city archive once received documents only on paper. It now accepts emails and recorded interviews as well. Staff have had to develop new storage methods for these formats, while continuing to care for older collections. 选择最合适的标题。",
+          "options": [
+            {
+              "id": "a",
+              "text": "Why paper records should be discarded"
+            },
+            {
+              "id": "b",
+              "text": "An archive adapting to a wider range of material"
+            },
+            {
+              "id": "c",
+              "text": "The history of a single recorded interview"
+            },
+            {
+              "id": "d",
+              "text": "How email replaced every older collection"
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "中心是接收材料拓宽带来保存方式适应，旧馆藏仍保留。",
+          "distractorReasons": {
+            "a": "与继续照顾旧馆藏相反。",
+            "c": "把一个材料类型缩成整段主旨。",
+            "d": "没有全部替代。"
+          },
+          "shortestPath": "整合格式变化及保存方式响应。",
+          "crossQuestionAudit": "a15副本做法不属于本档案材料；不据前题补写本段信息。"
+        },
+        {
+          "id": "ielts.a18",
+          "type": "choice",
+          "goalId": "ielts.writing.comparison",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "保留比例比较的分母",
+          "difficulty": "进阶：人数与比例区分",
+          "prompt": "原创数据：A校100名受访者中60人步行上学，B校200名受访者中80人步行。哪句准确？",
+          "options": [
+            {
+              "id": "a",
+              "text": "School B had a higher proportion of walkers than School A."
+            },
+            {
+              "id": "b",
+              "text": "The same proportion walked at both schools."
+            },
+            {
+              "id": "c",
+              "text": "School A had a higher proportion of walkers, despite having fewer walkers in total."
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "explanation": "A为60%，B为40%；人数60少于80，比例排序相反。",
+          "distractorReasons": {
+            "a": "用绝对人数替代比例。",
+            "b": "两个分母不同且比例不相等。"
+          },
+          "shortestPath": "分别算60/100和80/200，再看绝对人数。",
+          "crossQuestionAudit": "不使用a08已经给出的比例；此题考从人数识别分母。"
+        }
+      ]
+    },
+    {
+      "id": "ielts-academic.first.b",
+      "title": "听出变化，写清限制",
+      "story": {
+        "afterQuestion": 0,
+        "title": "留给下一个人的椅子",
+        "text": "你和同行者在小车站等雨停，角落里一把椅子的椅背松了。同行者从包里拿出小工具，你扶住椅子，他慢慢拧紧螺丝。试坐时椅子还是摇晃，你们才发现一条腿下垫着折起的车票。把票取出、移开地上的小石子后，椅子终于稳了。雨小下来，你们走向站台。一位提着菜篮的老人走进候车室，坐在了那把椅子上。",
+        "english": "You and your companion wait for the rain to ease at a small station. A chair in the corner has a loose back. Your companion takes a small tool from a bag, and you hold the chair while the screws are tightened. It still rocks when you try it. Then you notice a folded ticket beneath one leg. You remove the ticket and move a small stone from the floor, and the chair finally stands firm. As the rain eases, you walk towards the platform. An older passenger carrying a basket enters the waiting room and sits on the chair."
+      },
+      "questions": [
+        {
+          "id": "ielts.b01",
+          "type": "choice",
+          "goalId": "ielts.reading.writer-view",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "区分引用观点与作者立场",
+          "difficulty": "进阶：转折后的评价",
+          "prompt": "材料：Some planners claim that bigger stations always improve journeys. I find that claim unconvincing: a larger building can make changing trains slower if the platforms are poorly connected. 判断是否符合作者观点：Increasing station size always improves the passenger experience.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Yes"
+            },
+            {
+              "id": "b",
+              "text": "No"
+            },
+            {
+              "id": "c",
+              "text": "Not Given"
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "作者明确不认同always的观点，并给出可能反例。",
+          "distractorReasons": {
+            "a": "把规划者的说法当作者观点。",
+            "c": "作者已明确表态，不是未提及。"
+          },
+          "shortestPath": "定位I find与反例。",
+          "crossQuestionAudit": "故事中的车站没有规模信息；不把修椅子当证据。"
+        },
+        {
+          "id": "ielts.b02",
+          "type": "choice",
+          "goalId": "ielts.reading.writer-view",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "不从建议反推未表达的比较态度",
+          "difficulty": "进阶：建议与成本判断分开",
+          "prompt": "材料：Town gardens deserve more attention in planning decisions. They provide spaces where neighbours can meet, and losing them would remove opportunities for informal contact. 判断是否符合作者观点：Maintaining gardens costs less than maintaining sports centres.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Yes"
+            },
+            {
+              "id": "b",
+              "text": "No"
+            },
+            {
+              "id": "c",
+              "text": "Not Given"
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "explanation": "作者讨论社会接触价值，没有花园与体育中心维护费用的比较。",
+          "distractorReasons": {
+            "a": "重视花园并不意味着认定它便宜。",
+            "b": "也没有认定花园更贵或同价。"
+          },
+          "shortestPath": "查找成本比较，确认不存在。",
+          "crossQuestionAudit": "不同于b01反对观点，此处缺的是比较维度；不能按题序猜标签。"
+        },
+        {
+          "id": "ielts.b03",
+          "type": "choice",
+          "goalId": "ielts.reading.writer-view",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "保留作者建议的限定",
+          "difficulty": "进阶：条件性主张",
+          "prompt": "材料：Local energy projects can be worthwhile, but residents should see realistic maintenance estimates before committing money. Enthusiasm is no substitute for this information. 判断是否符合作者观点：Residents need information about likely upkeep costs before investing.",
+          "options": [
+            {
+              "id": "a",
+              "text": "Yes"
+            },
+            {
+              "id": "b",
+              "text": "No"
+            },
+            {
+              "id": "c",
+              "text": "Not Given"
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "explanation": "maintenance estimates被改写为likely upkeep costs，before条件保留。",
+          "distractorReasons": {
+            "b": "作者明确要求预先获知费用。",
+            "c": "并非缺失，信息已给出。"
+          },
+          "shortestPath": "对应maintenance/upkeep和before。",
+          "crossQuestionAudit": "b02未提费用不能迁移成本题NG；每题重新依据材料。"
+        },
+        {
+          "id": "ielts.b04",
+          "type": "choice",
+          "goalId": "ielts.reading.scope",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "识别样本覆盖限制",
+          "difficulty": "进阶微练习：跨句整合采样、数据检查和建议的关系",
+          "prompt": "材料：A council wanted to understand weekend bus travel. Interviewers approached passengers leaving the central terminal on Saturday morning and asked about waiting times. Most respondents used a route that passed through the city centre. The team checked the completed forms for missing answers and retained all usable responses. Its report described the results as the experience of the people interviewed, rather than a picture of weekend travel across the city. It recommended another round of interviews before decisions about outer-suburb routes or evening timetables were made. Which limitation explains that recommendation?",
+          "options": [
+            {
+              "id": "a",
+              "text": "The questionnaire recorded waiting times rather than the routes passengers used."
+            },
+            {
+              "id": "b",
+              "text": "The interview schedule left other locations and parts of the weekend unrepresented."
+            },
+            {
+              "id": "c",
+              "text": "The checking process removed the responses of passengers who used city-centre routes."
+            },
+            {
+              "id": "d",
+              "text": "The report combined observations from different terminals without distinguishing them."
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "现有访问仅覆盖中心站周六上午；扩大地点与时段才能补充郊区、晚间体验。核查表格完整不能修复抽样覆盖不足。",
+          "distractorReasons": {
+            "a": "材料没有说只记等待、不记录路线；这不是建议覆盖郊区与晚间的理由。",
+            "c": "核查是缺答检查，且保留可用回答，没有按市中心路线删人。",
+            "d": "只在一个终点站采集，不存在合并多个站的问题。"
+          },
+          "shortestPath": "把采样地点/时间与报告要求补访的地点/时间对应。",
+          "crossQuestionAudit": "与a06因果限制不同；这里只问抽样覆盖。"
+        },
+        {
+          "id": "ielts.b05",
+          "type": "choice",
+          "goalId": "ielts.reading.locate",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "定位与预期不一致的结果",
+          "difficulty": "进阶：逻辑功能定位",
+          "prompt": "A: Engineers expected a pale road surface to stay cooler. B: They installed temperature sensors at equal depths beneath two surfaces. C: During the trial, the pale surface was warmer on several cloudy mornings, contrary to the team's prediction. 哪段报告了意外发现？",
+          "options": [
+            {
+              "id": "a",
+              "text": "A"
+            },
+            {
+              "id": "b",
+              "text": "B"
+            },
+            {
+              "id": "c",
+              "text": "C"
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "explanation": "C将实际较暖与预测相反明确连结。",
+          "distractorReasons": {
+            "a": "是预期本身，不是发现。",
+            "b": "是测量方法。"
+          },
+          "shortestPath": "找结果与预测相反的关系。",
+          "crossQuestionAudit": "a16温度稳定条件不属于此试验；不能跨题引入测量解释。"
+        },
+        {
+          "id": "ielts.b06",
+          "type": "completion",
+          "goalId": "ielts.reading.extract",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "从对比材料中提取限定类别",
+          "difficulty": "基础：定位数据来源的原文取词支架",
+          "prompt": "材料：The camera counted vehicles but could not identify their fuel type. To estimate the number of electric cars, the team consulted registration records instead. 从原文取一个词：The team consulted ____ records to estimate the number of electric cars.",
+          "wordLimit": 1,
+          "answer": "registration",
+          "acceptedVariants": [
+            "registration"
+          ],
+          "explanation": "instead标明估算电动车数量所用信息来源是登记记录。",
+          "distractorReasons": {
+            "camera": "相机不能区分燃料类别，也不能修饰records表达原文来源。",
+            "registration records": "空后已有records，且超出一词。",
+            "fuel": "不是记录的类别。"
+          },
+          "shortestPath": "定位instead前的信息来源，填records的原文修饰词。",
+          "crossQuestionAudit": "交通题材重复但数据与设问独立；公交调查不能回答。"
+        },
+        {
+          "id": "ielts.b07",
+          "type": "choice",
+          "goalId": "ielts.reading.paraphrase",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "保留比较基准与让步关系",
+          "difficulty": "进阶：两维度同时保真",
+          "prompt": "材料：The revised filter removed more particles than the original, although it required the same amount of energy. 哪个改写准确？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The revised filter improved particle removal without increasing energy use."
+            },
+            {
+              "id": "b",
+              "text": "The revised filter reduced energy use without changing particle removal."
+            },
+            {
+              "id": "c",
+              "text": "The original filter removed more particles using less energy."
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "explanation": "去除颗粒更多且能耗相同，不能改写成节能。",
+          "distractorReasons": {
+            "b": "颠倒哪个维度变化。",
+            "c": "比较方向与能耗均错。"
+          },
+          "shortestPath": "分别标记removal增加、energy不变。",
+          "crossQuestionAudit": "不与a07增长数字共用答案；测双维度而非单词替换。"
+        },
+        {
+          "id": "ielts.b08",
+          "type": "cloze",
+          "goalId": "ielts.writing.overview",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "同时组织峰值、趋势方向与首末比较",
+          "difficulty": "基础：三空趋势概述",
+          "prompt": "原创数据：工厂年产量（千件），2020/2021/2022/2023年为50/70/60/55。选词块完成概述，每项最多一次，有两个多余项。",
+          "passage": "Output {peak} in 2021. It then {direction}, finishing {comparison} its 2020 level.",
+          "tokens": [
+            {
+              "id": "peaked",
+              "text": "reached a peak"
+            },
+            {
+              "id": "fell",
+              "text": "declined"
+            },
+            {
+              "id": "above",
+              "text": "above"
+            },
+            {
+              "id": "rose",
+              "text": "continued to rise"
+            },
+            {
+              "id": "below",
+              "text": "below"
+            }
+          ],
+          "answer": {
+            "peak": "peaked",
+            "direction": "fell",
+            "comparison": "above"
+          },
+          "acceptedFills": [
+            [
+              {
+                "slotId": "peak",
+                "tokenId": "peaked"
+              },
+              {
+                "slotId": "direction",
+                "tokenId": "fell"
+              },
+              {
+                "slotId": "comparison",
+                "tokenId": "above"
+              }
+            ]
+          ],
+          "acceptedVariants": [],
+          "explanation": "2021的70最高；随后60、55下降；55仍高于2020的50。三个判断共同构成概述。",
+          "distractorReasons": {
+            "rose": "2021后两次记录均下降。",
+            "below": "末值55大于起点50。"
+          },
+          "shortestPath": "找最大值，再检查其后序列，最后对比55与50。",
+          "crossQuestionAudit": "每个信息空需据数据确认；多余rise/below防止只靠词数填满，不能凭语法推完。"
+        },
+        {
+          "id": "ielts.b09",
+          "type": "choice",
+          "goalId": "ielts.writing.comparison",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "区分百分比增长与百分点",
+          "difficulty": "进阶：单位语义",
+          "prompt": "原创数据：参与培训的员工比例从20%升至30%。哪句用percentage points准确描述？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The proportion rose by 50 percentage points."
+            },
+            {
+              "id": "b",
+              "text": "The proportion rose by 10 percentage points."
+            },
+            {
+              "id": "c",
+              "text": "The proportion rose to 10 percentage points."
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "比例之差是10个百分点；相对增幅50%不是50个百分点。",
+          "distractorReasons": {
+            "a": "把相对增幅当百分点。",
+            "c": "将增量误写为终值。"
+          },
+          "shortestPath": "30减20，保留percentage points单位。",
+          "crossQuestionAudit": "a18分母问题不含此数据；不要求记忆前题比例。"
+        },
+        {
+          "id": "ielts.b10",
+          "type": "choice",
+          "goalId": "ielts.writing.argument",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "回应双边讨论和个人观点的任务要求",
+          "difficulty": "进阶：任务覆盖辨识",
+          "prompt": "原创Task 2练习题：Some people think cities should fund public art, while others prefer the money to be spent on basic services. Discuss both views and give your own opinion. 哪个提纲完整回应题目？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Explain cultural and tourism benefits of public art; compare two types of art project; favour a larger art budget."
+            },
+            {
+              "id": "b",
+              "text": "Compare the urgency of health and transport services; illustrate shortages in each; prioritise health provision."
+            },
+            {
+              "id": "c",
+              "text": "Discuss cultural benefits of public art and unmet needs in basic services; explain which deserves funding priority."
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "explanation": "覆盖两种主张并给出有理由的立场；只是辨识任务覆盖，并未产出作文。",
+          "distractorReasons": {
+            "a": "讨论艺术及其内部类型，未讨论优先保障基本服务的立场。",
+            "b": "细致讨论两项基本服务，但没有讨论公共艺术这一方。"
+          },
+          "shortestPath": "将both views与own opinion逐一核对。",
+          "crossQuestionAudit": "不借b02花园社会价值代答艺术论证；产出任务另用新题。"
+        },
+        {
+          "id": "ielts.b11",
+          "type": "choice",
+          "goalId": "ielts.writing.cohesion",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "按语义使用让步连接",
+          "difficulty": "基础：效益与局限的关系",
+          "prompt": "选出衔接最准确的句子：Online tutorials allow learners to study at convenient times. ____, they may offer fewer chances for spontaneous discussion than live classes.",
+          "options": [
+            {
+              "id": "a",
+              "text": "However"
+            },
+            {
+              "id": "b",
+              "text": "For example"
+            },
+            {
+              "id": "c",
+              "text": "As a result"
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "explanation": "第二句提出局限，与第一句的便利形成转折。",
+          "distractorReasons": {
+            "b": "讨论机会少不是时间便利的例子。",
+            "c": "材料未把讨论减少说成时间便利的必然结果。"
+          },
+          "shortestPath": "确认两句是优点与局限。",
+          "crossQuestionAudit": "不提供整篇模板；不能凭连接词数量推断写作档次。"
+        },
+        {
+          "id": "ielts.b12",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.correction",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "区分旧地点、最终地点与集合点",
+          "difficulty": "进阶：同类实体竞争",
+          "prompt": "听活动通知：讲座最终在哪个房间举行？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The Green Room"
+            },
+            {
+              "id": "b",
+              "text": "The main foyer"
+            },
+            {
+              "id": "c",
+              "text": "The Studio"
+            }
+          ],
+          "answer": "c",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "Your email says the Green Room, but there's a leak there, so we've moved the lecture to the Studio. Meet your guide in the main foyer at six; she'll take you upstairs to the lecture room.",
+            "production": "单人通知，建议155词/分；三个地点同等清晰。"
+          },
+          "explanation": "漏水导致改到Studio；foyer是集合处。",
+          "distractorReasons": {
+            "a": "旧邮件地点已作废。",
+            "b": "集合点并非讲座房间。"
+          },
+          "shortestPath": "跟随moved the lecture to，区分meet。",
+          "crossQuestionAudit": "与a12修正时间的表层形式不同；地点不在故事提前出现。"
+        },
+        {
+          "id": "ielts.b13",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.stance",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "保留附条件的认可",
+          "difficulty": "进阶：评价和条件结合",
+          "prompt": "听导师反馈：导师对学生的选题是什么态度？",
+          "options": [
+            {
+              "id": "a",
+              "text": "Supportive if the scope is narrowed."
+            },
+            {
+              "id": "b",
+              "text": "Opposed because the topic has no value."
+            },
+            {
+              "id": "c",
+              "text": "Ready to approve the current plan without changes."
+            }
+          ],
+          "answer": "a",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "There's a worthwhile question in your proposal, and I'd be happy for you to pursue it. But comparing every coastal town in the country is too much for this project. Focus on two towns, and the plan should be manageable.",
+            "production": "单人反馈，建议150词/分；自然友好，不用语气替代文字条件。"
+          },
+          "explanation": "导师认可价值但要求把全国范围缩到两镇。",
+          "distractorReasons": {
+            "b": "与worthwhile、happy相反。",
+            "c": "忽略缩小范围的要求。"
+          },
+          "shortestPath": "把认可与but后的修改条件合并。",
+          "crossQuestionAudit": "前题没有导师立场；不能凭积极声调跳过限制。"
+        },
+        {
+          "id": "ielts.b14",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.reason",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "识别最终决策原因而非被否定的猜测",
+          "difficulty": "进阶：问答中的否定与原因",
+          "prompt": "听两位学生讨论：他们为什么放弃使用现场访谈？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The equipment is too expensive."
+            },
+            {
+              "id": "b",
+              "text": "Permission would arrive after their deadline."
+            },
+            {
+              "id": "c",
+              "text": "No participants are interested."
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "Maya: Are we dropping the interviews because hiring recorders costs too much? Leo: No, the department can lend us those, and plenty of people volunteered. It's the approval process. We won't get permission before the report is due, so we'll use the existing survey data.",
+            "production": "两名可区分声线，建议155词/分；保留No与It's的自然重音。"
+          },
+          "explanation": "设备可借、参与者充足；审批赶不上截止才是原因。",
+          "distractorReasons": {
+            "a": "提问猜测被明确否定。",
+            "c": "与plenty volunteered相反。"
+          },
+          "shortestPath": "排除被否定猜测，抓approval与deadline。",
+          "crossQuestionAudit": "不将a14问卷流程当本题审批规定；两题独立研究。"
+        },
+        {
+          "id": "ielts.b15",
+          "type": "listeningChoice",
+          "goalId": "ielts.listening.academic-detail",
+          "sourceId": "ielts.listening",
+          "measurementTarget": "分辨测量对象与代理指标",
+          "difficulty": "进阶：学术讲述概念限定",
+          "prompt": "听讲解：这项研究中的传感器直接测量什么？",
+          "options": [
+            {
+              "id": "a",
+              "text": "How satisfied visitors felt."
+            },
+            {
+              "id": "b",
+              "text": "How many different people visited."
+            },
+            {
+              "id": "c",
+              "text": "How much money visitors spent."
+            },
+            {
+              "id": "d",
+              "text": "How many times the doorway was crossed."
+            }
+          ],
+          "answer": "d",
+          "acceptedVariants": [],
+          "audio": {
+            "status": "pending",
+            "assetId": null,
+            "script": "The entrance sensor registered each crossing of the doorway. That gave us a measure of traffic, not a count of unique visitors: someone leaving for lunch and returning could trigger it again. It told us nothing about satisfaction or spending.",
+            "production": "一人学术讲述，建议155词/分；crossing和unique正常清晰发音。"
+          },
+          "explanation": "直接测门口经过次数；重复经过不等于不同访客数量。",
+          "distractorReasons": {
+            "a": "录音明确不测满意度。",
+            "b": "重复触发使次数不能等同独立人数。",
+            "c": "录音明确不测消费。"
+          },
+          "shortestPath": "定位registered each crossing，保留直接测量口径。",
+          "crossQuestionAudit": "不把a18人数/比例训练直接套作答案；本题依赖录音口径。"
+        },
+        {
+          "id": "ielts.b16",
+          "type": "completion",
+          "goalId": "ielts.reading.extract",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "识别替代方法并按词数提取",
+          "difficulty": "基础：否定结构后取词",
+          "prompt": "材料：To track the owls without attaching devices to them, researchers identified individuals from distinctive feather patterns in photographs. 从原文取不超过两词：Individual owls were recognised by their ____.",
+          "wordLimit": 2,
+          "answer": "feather patterns",
+          "acceptedVariants": [
+            "feather patterns"
+          ],
+          "explanation": "个体识别依赖羽毛纹样；distinctive加上后超两词。",
+          "distractorReasons": {
+            "devices": "研究避免给鸟装设备。",
+            "photographs": "照片是记录载体，题目问个体自身的识别特征。",
+            "distinctive feather patterns": "超出两词限制。"
+          },
+          "shortestPath": "找identified individuals from，再按两词截取特征名。",
+          "crossQuestionAudit": "鸟类材料只出现一次；前题传感器不得用于补充本文。"
+        },
+        {
+          "id": "ielts.b17",
+          "type": "choice",
+          "goalId": "ielts.writing.precision",
+          "sourceId": "ielts.writing",
+          "measurementTarget": "使学术主张强度与证据匹配",
+          "difficulty": "进阶微练习：整合自选、共同条件、缺失基线与后续设计",
+          "prompt": "材料：At one college, tutors invited students to try a weekly planning sheet for six weeks. Those who chose to use it submitted a greater share of assignments on time than those who declined. Both groups had access to the same online reminders. The researchers did not collect information about the students’ submission habits before the trial. They suggested testing the sheets again with students assigned to groups by chance. Their recommendation reflected uncertainty about whether the sheets changed behaviour or whether students who already managed deadlines well were more likely to volunteer. 哪句最准确地概括研究意义与下一步？",
+          "options": [
+            {
+              "id": "a",
+              "text": "The comparison suggests the reminders improved punctuality; the next trial would test whether planning sheets add a further benefit."
+            },
+            {
+              "id": "b",
+              "text": "The comparison links sheet use with punctuality; random assignment could help separate an effect of the sheets from existing differences."
+            },
+            {
+              "id": "c",
+              "text": "The comparison shows users improved on their earlier habits; random assignment could show which features of the sheets worked best."
+            }
+          ],
+          "answer": "b",
+          "acceptedVariants": [],
+          "explanation": "观察到使用者交得更及时，但自愿选择可能反映已有差异；随机分组旨在更好分离干预效果。三项均用审慎语气，须核对对照与基线。",
+          "distractorReasons": {
+            "a": "两组都有相同提醒，没有无提醒对照来评价提醒效果。",
+            "c": "未采集此前习惯，无法证明组内改善；下一步也未比较表格不同功能。"
+          },
+          "shortestPath": "定位chose与未采集此前习惯，再联系随机分组的目的。",
+          "crossQuestionAudit": "不以may/suggests或绝对词辨别答案；三项均自然谨慎，但只有b保留研究设计关系。"
+        },
+        {
+          "id": "ielts.b18",
+          "type": "cloze",
+          "goalId": "ielts.reading.argument-function",
+          "sourceId": "ielts.reading",
+          "measurementTarget": "追踪反面看法、例证与研究限制的篇章功能",
+          "difficulty": "进阶微练习：三空跨段功能归纳",
+          "prompt": "阅读独立材料，用词块概括三个部分的功能，每项最多一次；有两个多余项。",
+          "readingPassage": "A: A design journal predicted that affordable scanners would soon replace hand tools in small workshops. This prediction treated the two methods as competing ways of completing the same task. B: At a furniture workshop visited by the writer, scanners recorded the broad shape of a damaged chair, but craft workers used hand tools to finish corners that the machine could not reach easily. The methods were used at different stages rather than offered as alternatives. C: One workshop cannot establish how the whole industry will develop. Nevertheless, the visit gives a reason to question the assumption that adopting a new tool necessarily means abandoning an older one.",
+          "passage": "Part A introduces {claim}. Part B provides {example}. Part C adds {limit} while explaining why the example still matters.",
+          "tokens": [
+            {
+              "id": "prediction",
+              "text": "a prediction of replacement"
+            },
+            {
+              "id": "complement",
+              "text": "an example of complementary roles"
+            },
+            {
+              "id": "scope",
+              "text": "a limit on the reach of the evidence"
+            },
+            {
+              "id": "accuracy",
+              "text": "a comparison of measurement accuracy"
+            },
+            {
+              "id": "history",
+              "text": "an account of how scanners were invented"
+            }
+          ],
+          "answer": {
+            "claim": "prediction",
+            "example": "complement",
+            "limit": "scope"
+          },
+          "acceptedFills": [
+            [
+              {
+                "slotId": "claim",
+                "tokenId": "prediction"
+              },
+              {
+                "slotId": "example",
+                "tokenId": "complement"
+              },
+              {
+                "slotId": "limit",
+                "tokenId": "scope"
+              }
+            ]
+          ],
+          "acceptedVariants": [],
+          "explanation": "A给出替代预测；B的不同阶段分工提供互补例证；C承认单个作坊的外推限制，同时指出例子对原假设的挑战。",
+          "distractorReasons": {
+            "accuracy": "材料谈工作阶段和可达位置，未比较测量精度。",
+            "history": "没有讲扫描仪发明历史。"
+          },
+          "shortestPath": "分别抓A预测、B实际分工、C单个作坊局限，再匹配功能。",
+          "crossQuestionAudit": "与修椅子故事仅共享物件，不共享关于扫描仪、分工或外推的事实；有两个多余候选，不靠末项排除。"
+        }
+      ]
+    }
+  ],
+  "proposedTasks": [
+    {
+      "id": "ielts.proposed.writing1",
+      "status": "proposed",
+      "type": "extendedWriting",
+      "sourceIds": [
+        "ielts.writing",
+        "ielts.scoring"
+      ],
+      "title": "真实Task 1写作产出",
+      "prompt": "The table shows the percentage of households with internet access in three fictional regions in 2010, 2015 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.",
+      "data": {
+        "unit": "% of households",
+        "years": [
+          2010,
+          2015,
+          2020
+        ],
+        "regions": [
+          {
+            "name": "North",
+            "values": [
+              40,
+              65,
+              85
+            ]
+          },
+          {
+            "name": "Central",
+            "values": [
+              55,
+              70,
+              80
+            ]
+          },
+          {
+            "name": "South",
+            "values": [
+              20,
+              45,
+              75
+            ]
+          }
+        ]
+      },
+      "interaction": "建议20分钟；完整表格、自由文本编辑、字数和可选计时；提交前无例文或自动补全；支持保存恢复；不得用单项选择替代。",
+      "reviewCriteria": "检查总体上升、North反超Central、South始终最低但增幅最大；数据准确、比较组织、词汇与语法。人工形成性反馈，不套算band。",
+      "answerVariants": "开放产出，无唯一范文；不同组织和措辞均可，只要准确覆盖主要特征。",
+      "media": {
+        "status": "pending-render",
+        "assetId": null,
+        "acceptance": "表格逐格与原创数据核对，标题、单位、年份全显示；窄屏和辅助阅读均保留行列关系。"
+      },
+      "readiness": "现有questionSchema没有extendedWriting，需新合同、持久化与评阅流程；不可发布"
+    },
+    {
+      "id": "ielts.proposed.writing2",
+      "status": "proposed",
+      "type": "extendedWriting",
+      "sourceIds": [
+        "ielts.writing",
+        "ielts.scoring"
+      ],
+      "title": "真实Task 2论证产出",
+      "prompt": "Some people believe universities should require all students to complete a work placement before graduating. To what extent do you agree or disagree? Give reasons for your answer and include relevant examples from your own knowledge or experience. Write at least 250 words.",
+      "interaction": "建议40分钟自由作文；用户可同意、反对或有条件支持，需明确回应all students和require；保留草稿及实际提示使用记录。",
+      "reviewCriteria": "立场与问题吻合，理由展开，例子相关，结构连贯，词汇及语法恰当；不要求某种政治立场或虚构统计；不输出认证分。",
+      "answerVariants": "开放产出，无标准立场或固定段落数；完整论证优先于模板。",
+      "media": null,
+      "readiness": "需独立产出合同与评阅，尚未实现；不计入36道客观题或英语等级升星"
+    },
+    {
+      "id": "ielts.proposed.speaking2",
+      "status": "proposed",
+      "type": "spokenLongTurn",
+      "sourceIds": [
+        "ielts.speaking",
+        "ielts.scoring"
+      ],
+      "title": "真实口语长段与追问",
+      "prompt": "Describe a time when you learned a practical skill from another person. You should say what the skill was, who helped you, how you practised, and explain why the experience was useful to you.",
+      "followUp": "Why might learning a skill from another person be different from learning it through a video?",
+      "interaction": "准备1分钟并允许短笔记；录音持续1至2分钟，随后单独录制追问回答；录音权限拒绝可退出，不伪造音频成功；回听和重录记录暴露状态。",
+      "reviewCriteria": "依真实音频看连贯、词汇、语法和可理解发音；追问看解释与比较。文字转录不可替代发音证据，短任务不能评完整Speaking band。",
+      "answerVariants": "个人经历和合理虚构练习经历均可，不能强求故事中的技能；不设唯一措辞。",
+      "media": {
+        "status": "pending",
+        "assetId": null,
+        "acceptance": "验证录音、暂停/结束、保存/恢复、回放、删除及跨账号隔离；未录到声音时不得判定完成。"
+      },
+      "readiness": "当前合同没有spokenLongTurn；需录音产出、隐私和人工反馈流程"
+    },
+    {
+      "id": "ielts.proposed.listening-note",
+      "status": "proposed",
+      "type": "listeningCompletion",
+      "sourceIds": [
+        "ielts.listening"
+      ],
+      "title": "听力笔记填空交互补充",
+      "prompt": "听活动报名对话，从录音取不超过两个词完成：Participants should bring ____.",
+      "script": "You'll need sturdy shoes for the walk. We used to ask everyone to bring a torch, but lights are now provided. A waterproof jacket is optional if the forecast is dry.",
+      "answer": "sturdy shoes",
+      "acceptedVariants": [
+        "sturdy shoes"
+      ],
+      "wordLimit": 2,
+      "measurementTarget": "区分必需、自备取消项与可选项；提取关键短语而非听写全文",
+      "difficulty": "基础：三个装备条件竞争",
+      "distractorReasons": {
+        "a torch": "过去要求已取消。",
+        "waterproof jacket": "是可选项，且带a会超字数。"
+      },
+      "shortestPath": "抓need和for the walk，排除used to与optional。",
+      "crossQuestionAudit": "36题中没有装备录音，不靠前题答案完成；此题额外不计36题。",
+      "interaction": "播放器加单空笔记；隐藏稿与答案，保留播放/重播事件。不是dictation的全文复现合同。",
+      "media": {
+        "status": "pending",
+        "assetId": null,
+        "acceptance": "单人清晰通知，建议150词/分；必需/过去/可选条件完整，实机验证无字幕泄漏和字数限制。"
+      },
+      "readiness": "需新类型或明确支持短答案的音频输入合同；未实现不可用普通completion冒充听力"
+    }
+  ],
+  "mediaAcceptance": {
+    "audioCount": 7,
+    "required": "逐条对稿核验人名、数字、否定、修正与先后关系；自然口音且不夸张强调答案；无截断、底噪遮蔽或音量跳变。核验文件存在、时长、哈希、真实可播放和客户端完成链路。所有七段及proposed附加段尚未制作。",
+    "exposure": "题前只显示提问与选项；字幕、翻译、脚本、答案和review字段仅提交后可看。重播算练习支持，不能混充正式单次播放成绩。",
+    "tables": "a07–a09、a18、b08–b09使用完整文字数据，不依赖待制图片；writing1拟议表格尚未渲染。"
+  },
+  "authorReview": {
+    "status": "作者逐题自审完成，待主代理独立终审",
+    "crossUnit": "事实判断和观点判断标准标签保持一致，但文章、命题与答案彼此独立；相似技能刻意迁移而非替换名词。共享交通/研究话题不共享事实。不得把正确答案位置分布展示为解题规律。",
+    "releaseBlockers": [
+      "备考方向尚未登记独立产品合同",
+      "七段听力媒体待制作及真实播放验收",
+      "原创数据文字题需客户端完整呈现验收",
+      "独立主审与真人试做未完成",
+      "proposed产出交互尚未实现"
+    ]
+  }
+}
