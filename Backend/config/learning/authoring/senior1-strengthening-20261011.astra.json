@@ -1,0 +1,774 @@
+{
+  "level": "senior1",
+  "version": 1,
+  "author": {
+    "name": "Astra 高一独立作者",
+    "method": "逐题亲写材料、问题、答案、干扰依据与最短作答路径；程序只保存、核对计数与审计，不组合句槽生成题。",
+    "status": "18题人工作者稿；待独立复审；音频pending；未接正式库"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior1.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/pep-senior1.pdf",
+      "readAt": "2026-10-11",
+      "pages": "印刷7、14、15、18、24、28、53、62；PDF14、21、22、25、31、35、60、69（一基页码）",
+      "method": "实际逐页阅读同目录pep-senior1.pages.json的上述八页完整提取正文；本轮未渲染图版或听取教材录音。",
+      "findings": "阅读页要求段落主旨、情感判断与文本依据，含指代和转折发展；建议页将问题、感受、建议及理由连成篇章；听力页要求听学习策略及原因、出行准备、分阶段记录指令。",
+      "limitations": "沿用catalog登记的公开社区PDF存档，非出版社现行新版；具体版次未核实。仅上述八页实际核读，不声称通读全册或全国高一进度一致。所有题材与材料原创，不复用教材句子。新增阅读目标为本次拟登记目标。"
+    },
+    {
+      "sourceId": "fltrp.senior1.archive20260929",
+      "file": "build/learning-all-grades-20260929/research/fltrp-senior1.pdf",
+      "readAt": "2026-10-11",
+      "pages": "印刷29／PDF36",
+      "method": "实际阅读fltrp-senior1.pages.json该页全部提取正文、时态描述及准备表文本；未目视图版。",
+      "findings": "完成事项与当前进展应结合上下文判断；时间表支持从多条记录组织信息。",
+      "limitations": "只用于时态语境支撑，不将本页当作听力测量依据。"
+    }
+  ],
+  "proposedGoals": [
+    {
+      "id": "senior1.reading-links",
+      "canDo": "能在短篇中追踪指代、对比、例证和作者态度，并指出支持判断的具体信息。",
+      "sourceId": "pep.senior1.archive20260929",
+      "pages": "印刷14—15、62／PDF21—22、69",
+      "boundary": "高一常见词汇与短篇；不以找谨慎情态词替代阅读；不声称该能力已在catalog登记。"
+    },
+    {
+      "id": "senior1.integrated-message",
+      "canDo": "能合并两条简短信息中的条件，形成保留对象、因果和例外的摘要或受控回复。",
+      "sourceId": "pep.senior1.archive20260929",
+      "pages": "印刷15、18、28／PDF22、25、35",
+      "boundary": "教材阅读纲要、建议结构和安排交流的局部迁移；不是自由写作或完整学业水平考试。"
+    }
+  ],
+  "openingStory": {
+    "id": "s1.strength.story",
+    "title": "架子上的小陶碗",
+    "afterQuestion": 0,
+    "text": "You and your companion stop at a small shop near closing time. On a low shelf sits a blue bowl with an uneven edge. You pick it up, turn it slowly, and notice a tiny flower painted inside. Your companion holds it towards the lamp, and the dark blue becomes bright. You buy the bowl and carry it home in both hands. That evening, you place it on the table and fill it with a few oranges. The little flower is hidden now, but you know where to find it.",
+    "translation": "快打烊时，你和同行者走进一家小店。矮架上放着一只边缘不太整齐的蓝色陶碗。你拿起来慢慢转动，发现碗里画着一朵小花。同行者把碗举向灯光，深蓝色一下子明亮起来。你买下陶碗，双手捧着带回家。当晚，你把它放在桌上，装进几只橙子。小花被遮住了，但你知道到哪里找它。",
+    "teachingNote": "完整发现—观察—购买—使用小事件，仅前置氛围。18题不问陶碗、不依赖故事，不以故事供给答案。"
+  },
+  "interactionContract": {
+    "audio": "三道listeningChoice仅原创audioScript，mediaStatus=pending，无assetId。正式答题前隐藏脚本；音频制作、独立实听和客户端隐藏状态均待验。",
+    "matching": "稳定ID判分；左3右4，右侧一项不用。服务端与客户端支持已完成；本稿尚需正式转换及实题验收，不可直接导入。",
+    "completion": "忽略大小写、首尾空白和句末标点；仅接受明确列出的受控答案。",
+    "cloze": "每空独立候选和稳定ID，全部空正确才整题得分；正式导入需机械映射现有cloze字段，不改变文字。",
+    "measurement": "答后解析属于教学曝光，不将18题当作互相独立的掌握测量。"
+  },
+  "questions": [
+    {
+      "id": "s1.strength.q01",
+      "goalId": "senior1.reading-links",
+      "type": "choice",
+      "taskIntent": "追踪对比关系中的指代对象",
+      "prompt": "阅读：The school website lists clubs by name. The new guide groups them by the days they meet. This makes it easier for students to find activities that fit their week. 末句This指哪一做法？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Putting club names on the school website."
+        },
+        {
+          "id": "b",
+          "text": "Organising clubs according to their meeting days."
+        },
+        {
+          "id": "c",
+          "text": "Asking students to choose a different club each week."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "找出两种介绍方式的区别，再看哪一种直接改变了查找方法。",
+      "explanation": "末句说明新指南按活动日分组的作用。a是旧网站的呈现方式；c把按周安排筛选变成每周换社团。",
+      "review": {
+        "target": "跨句回指完整做法",
+        "difficulty": "高一基础提升，三句约40词",
+        "shortestPath": "辨认第二句的groups by days，再把This替换成该动作核对作用。",
+        "distractors": "a近邻且主题相关，但不是新方法；c借week改写成学生行为。",
+        "legalVariants": "单选b；自由释义可说按社团开会日期分类，但本题不收自由答案。"
+      }
+    },
+    {
+      "id": "s1.strength.q02",
+      "goalId": "senior1.integrated-message",
+      "type": "matching",
+      "taskIntent": "合并共同规则与各人条件",
+      "prompt": "志愿活动说明：Morning helpers must arrive by 8:30 and stay until 10:00. Afternoon helpers must be free from 14:00 to 15:30. Students who cannot attend either session can prepare name cards at home. 将每人的情况与可行工作配对。每项用一次，右侧有一项不用。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Rui can arrive at 8:15 but must leave at 9:40. She is free after 13:00."
+        },
+        {
+          "id": "l2",
+          "text": "Zoe has a class from 11:00 to 16:00. She is free before that."
+        },
+        {
+          "id": "l3",
+          "text": "Ibrahim is away all day but has time at home that evening."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Attend the morning session."
+        },
+        {
+          "id": "r2",
+          "text": "Attend the afternoon session."
+        },
+        {
+          "id": "r3",
+          "text": "Prepare name cards at home."
+        },
+        {
+          "id": "r4",
+          "text": "Attend both sessions."
+        }
+      ],
+      "answer": {
+        "l1": "r2",
+        "l2": "r1",
+        "l3": "r3"
+      },
+      "acceptedVariants": [],
+      "hint": "每个现场时段都要同时满足开始和结束时间；只赶得到开头不够。",
+      "explanation": "Rui无法留到上午十点，但下午完整有空；Zoe上午有空而下午上课；Ibrahim不能到场，晚上能在家制作。没有人能参加两个完整时段。",
+      "review": {
+        "target": "共同规则与个人约束整合",
+        "difficulty": "高一中等，需做三次条件核对",
+        "shortestPath": "逐人对照完整时段，再检查居家替代条件。",
+        "distractors": "r4会吸引只注意free或到场时间而不核对整段的人；l1不是上午提前到就合格。",
+        "legalVariants": "只有列明三组对应满足条件；不允许额外假定可提前离开。"
+      }
+    },
+    {
+      "id": "s1.strength.q03",
+      "goalId": "senior1.everyday-detail-listening",
+      "type": "listeningChoice",
+      "taskIntent": "听取指令的例外与理由",
+      "prompt": "听设备借用说明，选择符合说明的做法。",
+      "audioScript": "Most of the cameras can go back on the shelf after use. Keep the one with the loose cover on my desk, though. I need to repair it before anyone borrows it again.",
+      "mediaStatus": "pending",
+      "options": [
+        {
+          "id": "a",
+          "text": "Put every camera on the shelf and mark the damaged one."
+        },
+        {
+          "id": "b",
+          "text": "Leave the cameras on the desk until all of them are checked."
+        },
+        {
+          "id": "c",
+          "text": "Return the others to the shelf and leave the damaged one on the desk."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "区分一般处理办法与特别提到的那一件设备。",
+      "explanation": "大多数相机用后上架，盖子松动的那台留桌上待修。a把例外也上架；b把针对一台的限制扩大到全部。",
+      "review": {
+        "target": "听力中的例外范围",
+        "difficulty": "高一中等，约35词音频",
+        "shortestPath": "听到most、the one及though后分别记录两类设备的去处。",
+        "distractors": "三项都是可执行管理办法；错误在适用范围，不靠语法错误排除。",
+        "legalVariants": "单选c；实际音频未验，不能凭脚本记听力已完成。"
+      }
+    },
+    {
+      "id": "s1.strength.q04",
+      "goalId": "senior1.reader-advice-note",
+      "type": "arrange",
+      "taskIntent": "受控表达具体困难、建议与作用",
+      "prompt": "同学把小组报告从头读到尾，听众很难知道重点。用全部词块组成三句回复：先承认准备充分，再提出改善重点表达的建议，最后说明作用。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "That will help listeners"
+        },
+        {
+          "id": "t2",
+          "text": "You've prepared plenty of material."
+        },
+        {
+          "id": "t3",
+          "text": "identify the main points."
+        },
+        {
+          "id": "t4",
+          "text": "Try pausing briefly"
+        },
+        {
+          "id": "t5",
+          "text": "after each key idea."
+        }
+      ],
+      "answer": [
+        "t2",
+        "t4",
+        "t5",
+        "t1",
+        "t3"
+      ],
+      "acceptedOrders": [
+        [
+          "t2",
+          "t4",
+          "t5",
+          "t1",
+          "t3"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "三句分别承担肯定准备、提出行动、解释作用三个功能。",
+      "explanation": "You've prepared plenty of material. Try pausing briefly after each key idea. That will help listeners identify the main points. 暂停标出重点，而不是要求增加更多材料。",
+      "review": {
+        "target": "建议文本的衔接与交际结构",
+        "difficulty": "高一中等；5块，三句逻辑结构",
+        "shortestPath": "按交际功能定位首句与建议句，再让That承接建议并接其作用。",
+        "distractors": "无额外词块；将作用放在建议前不符合题面功能顺序。",
+        "legalVariants": "限定三句及功能顺序后唯一词块序列；其他自然建议不被宣称错误。"
+      }
+    },
+    {
+      "id": "s1.strength.q05",
+      "goalId": "senior1.reading-links",
+      "type": "choice",
+      "taskIntent": "理解转折推进而非寻找连接词",
+      "prompt": "阅读：Lena expected the interview to give her enough material for an article. It lasted an hour, and she filled six pages with notes. Yet when she began writing, she realised that she still could not explain how the club had started. 最后一句主要起什么作用？",
+      "options": [
+        {
+          "id": "a",
+          "text": "It shows that a large amount of material did not answer an important question."
+        },
+        {
+          "id": "b",
+          "text": "It explains why the interview had to finish earlier than planned."
+        },
+        {
+          "id": "c",
+          "text": "It shows how writing helped Lena discover when the club began."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "比较笔记数量和真正写文章时仍然缺少的信息。",
+      "explanation": "一小时、六页笔记构成材料充足的预期，最后却发现关键背景缺失。b没有时间依据；c把仍不清楚说成已经发现。",
+      "review": {
+        "target": "转折的具体语篇作用",
+        "difficulty": "高一中等，约45词",
+        "shortestPath": "抓住six pages与still could not explain的反差，再辨别究竟缺什么。",
+        "distractors": "b把写作缺口误归因于采访过短；c保留人物动作却颠倒信息结果。",
+        "legalVariants": "单选a；不是问yet的中文翻译。"
+      }
+    },
+    {
+      "id": "s1.strength.q06",
+      "goalId": "senior1.integrated-message",
+      "type": "completion",
+      "taskIntent": "从限制条件生成受控摘要",
+      "prompt": "规则：The art room is open to everyone at lunchtime. After four, students need a teacher with them. 根据规则，用原文连续四个英文词补全摘要，只填空：Students can use the room at lunchtime, but after four they need ___.",
+      "answer": "a teacher with them",
+      "acceptedVariants": [
+        "a teacher with them"
+      ],
+      "hint": "定位下午四点之后新增的人员条件，并检查摘录范围。",
+      "explanation": "下午四点后需要教师陪同，完整短语是a teacher with them。",
+      "review": {
+        "target": "保留条件差异的摘要补全",
+        "difficulty": "高一基础提升，文本摘录非词形变化",
+        "shortestPath": "找到after four对应要求，摘录需要的人及陪同关系。",
+        "distractors": "填everyone会误取开放对象；只填a teacher会遗漏题目要求的连续范围。",
+        "legalVariants": "仅a teacher with them，四词连续摘录；自由改写不在本题范围。 主审删除摘要中的alone：向所有人开放本身不保证无需监督。"
+      }
+    },
+    {
+      "id": "s1.strength.q07",
+      "goalId": "senior1.reading-links",
+      "type": "cloze",
+      "taskIntent": "复原篇章关系与对象回指",
+      "prompt": "分别选择两个空格的内容，使整段前后连贯。",
+      "text": "The old map shows a path beside the river. {{g1}}, the entrance to that path is now closed. A second path runs behind the houses. Visitors should use {{g2}} to reach the garden.",
+      "gaps": [
+        {
+          "id": "g1",
+          "options": [
+            {
+              "id": "a",
+              "text": "For example"
+            },
+            {
+              "id": "b",
+              "text": "However"
+            },
+            {
+              "id": "c",
+              "text": "As a result"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "g2",
+          "options": [
+            {
+              "id": "a",
+              "text": "the first path"
+            },
+            {
+              "id": "b",
+              "text": "both paths"
+            },
+            {
+              "id": "c",
+              "text": "the second path"
+            }
+          ],
+          "answer": "c"
+        }
+      ],
+      "answer": {
+        "g1": "b",
+        "g2": "c"
+      },
+      "acceptedVariants": [],
+      "hint": "先判断旧地图与现在入口状态的关系，再确定仍可采用的路线。",
+      "explanation": "第一空标出地图呈现与当前可用性的反差；入口关闭后应采用另一条路。入口关闭不是地图画出小路的结果，也不是例子。",
+      "review": {
+        "target": "两空分别承担转折与指代选择",
+        "difficulty": "高一中等，两步信息衔接",
+        "shortestPath": "比较shows与now closed，再用排除关闭路线的信息确定末句对象。",
+        "distractors": "g1两个干扰分别误判例证和因果；g2混淆旧路线及两路都可用。",
+        "legalVariants": "候选范围内b/c；自由写作中其他转折词也可能自然，不列为普遍错误。"
+      }
+    },
+    {
+      "id": "s1.strength.q08",
+      "goalId": "senior1.learning-advice-listening",
+      "type": "listeningChoice",
+      "taskIntent": "听懂已尝试方法为何失效",
+      "prompt": "听学习交流，选择下一步最直接针对所说困难的做法。",
+      "audioScript": "I know what each sentence means when I read slowly. But after I finish a paragraph, I can't tell which sentence gives the main point and which ones explain it. Looking up more words hasn't helped with that.",
+      "mediaStatus": "pending",
+      "options": [
+        {
+          "id": "a",
+          "text": "Read the paragraph aloud and practise the difficult sounds."
+        },
+        {
+          "id": "b",
+          "text": "Mark the paragraph's main point and link the supporting sentences to it."
+        },
+        {
+          "id": "c",
+          "text": "Make a list of new words and compare their dictionary meanings."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "留意说话人已经能做到什么，以及还不能判断什么。",
+      "explanation": "困难在句子之间的主次关系，b直接练习主旨与支持句。a解决发音；c重复已经尝试而未解决当前问题的查词路径。",
+      "review": {
+        "target": "困难诊断与建议匹配",
+        "difficulty": "高一中等，约40词",
+        "shortestPath": "听出单句能懂、段内关系不清，选择处理段落结构的方法。",
+        "distractors": "三项均为常见有效学习活动，但仅b对准当前障碍；不通过绝对词识别。",
+        "legalVariants": "单选b；不是声称查词或朗读无学习价值。"
+      }
+    },
+    {
+      "id": "s1.strength.q09",
+      "goalId": "senior1.reading-links",
+      "type": "choice",
+      "taskIntent": "少量长文中的行为证据与态度变化",
+      "prompt": "阅读：When our class planned a small garden, I thought the empty corner behind the gym was a poor choice. It looked dark, and few students passed it. Our teacher asked us to watch the corner at different times of day before deciding. At noon, sunlight reached most of the ground. We also found a door that opened onto the lunch area. I still wanted to test the soil, but I no longer wanted to reject the place without trying it. 作者的看法怎样改变？",
+      "options": [
+        {
+          "id": "a",
+          "text": "From supporting the place to rejecting it because students rarely passed."
+        },
+        {
+          "id": "b",
+          "text": "From doubting the place to deciding that no further checks were needed."
+        },
+        {
+          "id": "c",
+          "text": "From rejecting the place to considering it while keeping one question open."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "比较开头判断和最后决定，并保留末句尚未完成的检查。",
+      "explanation": "开头不赞成，中午光线和通道提供新证据后愿意尝试，但土壤仍需检查。a颠倒变化；b忽略仍待检查的条件。",
+      "review": {
+        "target": "跨段内多句追踪态度与证据",
+        "difficulty": "高一中高，约88词，普通词汇；非考试难度校准",
+        "shortestPath": "首句定位否定，末句定位保留条件的开放态度，中间两条观察解释变化。",
+        "distractors": "三个选项均描述合理态度轨迹；必须同时读取起点与终点。",
+        "legalVariants": "单选c；不能从愿意尝试推成已确定地点。"
+      }
+    },
+    {
+      "id": "s1.strength.q10",
+      "goalId": "senior1.integrated-message",
+      "type": "arrange",
+      "taskIntent": "压缩两条来源且保留改变理由",
+      "prompt": "两条记录：Visitors entered through the side gate last year. This year visitors are using the front gate because it is wider than the side gate. 用全部词块组成一条今年的通知：先说入口要求，再说明理由，最后对比去年。",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "although we used the side gate last year."
+        },
+        {
+          "id": "t2",
+          "text": "because it is wider,"
+        },
+        {
+          "id": "t3",
+          "text": "Please enter"
+        },
+        {
+          "id": "t4",
+          "text": "through the front gate"
+        }
+      ],
+      "answer": [
+        "t3",
+        "t4",
+        "t2",
+        "t1"
+      ],
+      "acceptedOrders": [
+        [
+          "t3",
+          "t4",
+          "t2",
+          "t1"
+        ]
+      ],
+      "acceptedVariants": [],
+      "hint": "让今年的行动占主句位置，再安排原因和过去做法。",
+      "explanation": "Please enter through the front gate because it is wider, although we used the side gate last year. 通知要求正门进入，保留更宽的理由与去年侧门的对比。",
+      "review": {
+        "target": "因果和让步背景的受控表达",
+        "difficulty": "高一中等，4块；语法难度低于信息组织难度",
+        "shortestPath": "确定当前有效入口，再用because组织理由、although保留过去对比。",
+        "distractors": "无额外块；把去年当作主要求不符合任务，改变功能顺序也不符合明确要求。",
+        "legalVariants": "仅指定词序；其他词序可自然，但不满足题面先后要求。 主审在原记录中明确入口更换的原因和比较对象，避免摘要自行添加因果。"
+      }
+    },
+    {
+      "id": "s1.strength.q11",
+      "goalId": "senior1.reader-advice-note",
+      "type": "choice",
+      "taskIntent": "识别建议的解释缺口",
+      "prompt": "建议草稿：Your notes are very detailed, but finding a fact takes too long. Divide each page into sections with clear headings. ___ 选最能解释该建议为何针对这个问题的一句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The headings will show you where to look for each kind of information."
+        },
+        {
+          "id": "b",
+          "text": "The headings will tell you which facts to leave out when copying your notes."
+        },
+        {
+          "id": "c",
+          "text": "The headings will put the facts in the order in which the teacher mentioned them."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "问题是查找速度，不是笔记内容不够或字写得不美观。",
+      "explanation": "分区标题指明各类信息的位置，直接解决查找慢。b把定位信息改为删选事实，c把分类定位改为恢复课堂讲述顺序；草稿没有提出这两个目标。",
+      "review": {
+        "target": "建议与相关理由的语义连接",
+        "difficulty": "高一基础提升，三项相近长度",
+        "shortestPath": "识别finding takes too long，再匹配where to look的作用。",
+        "distractors": "主审将空间和书法弱干扰改为删选事实、时间排序两种真实笔记功能；二者均不能直接说明分类标题如何改善查找。",
+        "legalVariants": "单选a；不把will作为保证一定提高成绩，仅陈述标题定位功能。"
+      }
+    },
+    {
+      "id": "s1.strength.q12",
+      "goalId": "senior1.integrated-message",
+      "type": "matching",
+      "taskIntent": "区分请求的真正交际功能",
+      "prompt": "三位同学都在讨论一份活动通知。将回复与其最直接的交际功能配对；右侧有一项不用。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "By 'bring something to share', do you mean food or an idea for the discussion?"
+        },
+        {
+          "id": "l2",
+          "text": "The date is clear, but could you add the room number before sending it?"
+        },
+        {
+          "id": "l3",
+          "text": "I can take photos during the activity. Would that be useful?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "请求解释已有表达的含义。"
+        },
+        {
+          "id": "r2",
+          "text": "请求补上缺少的具体信息。"
+        },
+        {
+          "id": "r3",
+          "text": "提出自己能够提供的帮助。"
+        },
+        {
+          "id": "r4",
+          "text": "请求改变已确定的活动日期。"
+        }
+      ],
+      "answer": {
+        "l1": "r1",
+        "l2": "r2",
+        "l3": "r3"
+      },
+      "acceptedVariants": [],
+      "hint": "三句都是问句，但各自希望对方做的事不同。",
+      "explanation": "l1已有词语但意思不清；l2知道日期却缺房间；l3主动提供拍照服务。没有一句要求改日期。",
+      "review": {
+        "target": "语用意图辨析",
+        "difficulty": "高一中等，排除仅按问句形式分类",
+        "shortestPath": "逐句确定未知含义、缺少信息和主动帮助三个对象。",
+        "distractors": "r4借l2的date吸引只抓名词的配对；最后一对仍需读句，不因右侧等量而白送。",
+        "legalVariants": "唯一完整配对；could与would本身不能决定功能。"
+      }
+    },
+    {
+      "id": "s1.strength.q13",
+      "goalId": "senior1.reading-links",
+      "type": "completion",
+      "taskIntent": "准确提取群体指代范围",
+      "prompt": "阅读：Some students sent drawings for the cover; others sent photographs. The editor thanked both groups, but chose a drawing for the front. 用原文一个英文词补全：这里的others是指那些sent ___的学生。",
+      "answer": "photographs",
+      "acceptedVariants": [
+        "photographs"
+      ],
+      "hint": "先确定others与哪一群人对照，再找到他们提交的内容。",
+      "explanation": "others与提交绘画的学生对照，指提交照片的另一群学生。被选择的封面形式不改变others的范围。",
+      "review": {
+        "target": "代词回指与对照群体",
+        "difficulty": "高一基础提升，受控摘录",
+        "shortestPath": "将others展开为other students，再取其动作对象。",
+        "distractors": "drawings来自另一组；both groups扩大了others范围。",
+        "legalVariants": "photographs，一词摘录；photos虽是自然同义表达，但不是原文单词。"
+      }
+    },
+    {
+      "id": "s1.strength.q14",
+      "goalId": "senior1.everyday-detail-listening",
+      "type": "listeningChoice",
+      "taskIntent": "听取条件改变后的推理结果",
+      "prompt": "听参观说明。假如今天下雨，参观者会怎样活动？",
+      "audioScript": "The visit starts indoors with a short talk. After that, we normally walk through the garden. If it rains, we'll stay inside and look at pictures of the plants instead. The starting time won't change.",
+      "mediaStatus": "pending",
+      "options": [
+        {
+          "id": "a",
+          "text": "They will start later and go straight to the garden."
+        },
+        {
+          "id": "b",
+          "text": "They will start on time, hear the talk and then view plant pictures indoors."
+        },
+        {
+          "id": "c",
+          "text": "They will start on time, skip the talk and wait indoors for the rain to stop."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分别记录保持不变的部分和天气条件影响的部分。",
+      "explanation": "下雨只把花园步行换为室内看植物图片；开始时间及先听简短介绍都保留。a改了开始时间与顺序；c取消介绍并添加等雨停。",
+      "review": {
+        "target": "听力中条件分支与不变量",
+        "difficulty": "高一中等，约40词",
+        "shortestPath": "保留开头活动和末尾时间说明，用下雨分支替换中间花园活动。",
+        "distractors": "错误选项沿用室内、花园、下雨等真实信息，错在组合关系。",
+        "legalVariants": "单选b；脚本待音频制作及听感验收。"
+      }
+    },
+    {
+      "id": "s1.strength.q15",
+      "goalId": "senior1.integrated-message",
+      "type": "cloze",
+      "taskIntent": "保留试验结果中的条件与结论",
+      "prompt": "依据记录完成简报，每空选择一项。记录：On Tuesday, twelve students tried the reading corner. Nine said it was quiet enough. Three found the chairs uncomfortable. The school will keep the corner open and change the chairs. uncomfortable意为坐着不舒服。",
+      "text": "Most of the students were satisfied with the {{g1}}. The school decided to {{g2}} rather than close the reading corner.",
+      "gaps": [
+        {
+          "id": "g1",
+          "options": [
+            {
+              "id": "a",
+              "text": "seats"
+            },
+            {
+              "id": "b",
+              "text": "opening hours"
+            },
+            {
+              "id": "c",
+              "text": "noise level"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "g2",
+          "options": [
+            {
+              "id": "a",
+              "text": "replace the seats"
+            },
+            {
+              "id": "b",
+              "text": "shorten the opening hours"
+            },
+            {
+              "id": "c",
+              "text": "move the reading corner"
+            }
+          ],
+          "answer": "a"
+        }
+      ],
+      "answer": {
+        "g1": "c",
+        "g2": "a"
+      },
+      "acceptedVariants": [],
+      "hint": "把多数人的评价对象与具体改善行动分开记录。",
+      "explanation": "九人认可安静程度，不能据此说他们认可座椅；学校针对三人提出的问题换椅子，保留空间开放。",
+      "review": {
+        "target": "跨句摘要与信息对象绑定",
+        "difficulty": "高一中等，数字仅用于判断most，不考计算",
+        "shortestPath": "九人评价quiet对应noise level；明确change chairs对应replace seats。",
+        "distractors": "g1用少数人的座椅问题和未提开放时长混淆；g2两个办法可实施但不在记录决定中。",
+        "legalVariants": "候选范围c/a；uncomfortable已给释义，不靠该词提高难度。"
+      }
+    },
+    {
+      "id": "s1.strength.q16",
+      "goalId": "senior1.reading-links",
+      "type": "choice",
+      "taskIntent": "识别例子的论证作用",
+      "prompt": "阅读：A useful school sign does more than tell people what not to do. Beside the sports field, our old sign said, 'Keep off the grass.' The new one says, 'Please use the path while the young grass grows.' It gives the same direction, but also explains the reason and offers another route. 作者用新旧标牌主要说明什么？",
+      "options": [
+        {
+          "id": "a",
+          "text": "A sign can explain why visitors should take greater care while walking on the grass."
+        },
+        {
+          "id": "b",
+          "text": "A sign can invite visitors to suggest a better route around the sports field."
+        },
+        {
+          "id": "c",
+          "text": "A sign can explain a restriction and show people what to do instead."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "看例子支持首句的哪一层意思，不只比较字数。",
+      "explanation": "新标牌要求走已有小路，说明保护幼草的原因并提供替代行动，支持首句“不止禁止”。a仍允许走草地，只要求更小心；b把指定路线误说成征求新路线建议。",
+      "review": {
+        "target": "主题句与例证关系",
+        "difficulty": "高一中等，约55词",
+        "shortestPath": "首句明确more than，结合末句reason和another route归纳。",
+        "distractors": "三个选项都围绕标牌怎样引导路线，干扰分别改变可允许的行为与交际目的；不再用种草教学或字数作为弱项。",
+        "legalVariants": "单选c；不是把所有长标牌判断为优质标牌。"
+      }
+    },
+    {
+      "id": "s1.strength.q17",
+      "goalId": "senior1.integrated-message",
+      "type": "choice",
+      "taskIntent": "分清事实核对和不同评价",
+      "prompt": "同学甲写：The film club met for forty minutes, so we had enough time to discuss the ending. 同学乙写：The film club met for forty minutes, but we did not have enough time to discuss the ending. 编辑要合并报道。哪句准确指出两条信息的关系？",
+      "options": [
+        {
+          "id": "a",
+          "text": "They agree on the meeting's length but differ on whether it allowed enough discussion."
+        },
+        {
+          "id": "b",
+          "text": "They disagree on the meeting's length but agree that the ending was discussed fully."
+        },
+        {
+          "id": "c",
+          "text": "They agree that forty minutes was enough but differ on which ending they discussed."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "把可直接核对的时长，与对时长是否够用的评价分开。",
+      "explanation": "两条均为四十分钟，差异在是否足够讨论结尾；连接词呈现各自判断，不能据此改写共同事实。",
+      "review": {
+        "target": "跨来源一致事实与冲突评价",
+        "difficulty": "高一中等，不考复杂虚拟或时态",
+        "shortestPath": "对齐两句共同数字，再比较enough与not enough。",
+        "distractors": "b把冲突放错事实维度；c抹去够用评价的分歧并添加不同结尾。",
+        "legalVariants": "单选a；不要求替任一同学裁定时间客观上够不够。"
+      }
+    },
+    {
+      "id": "s1.strength.q18",
+      "goalId": "senior1.reading-links",
+      "type": "choice",
+      "taskIntent": "整合短文主旨及作者决定依据",
+      "prompt": "阅读：Our class wanted to make a page for students who were new to the school. At first, we listed the questions we remembered asking in September. Then we invited five new students to try the page. They found the answers easy to read, but three could not find the lunch menu. We had placed it under 'School Life', a heading that seemed clear to us. We moved the menu to the front page. Testing did not tell us to rewrite every answer; it showed us where our own experience was no longer enough. 哪句最适合作为文章标题？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Writing More Answers for New Students"
+        },
+        {
+          "id": "b",
+          "text": "Seeing a School Page Through New Students' Eyes"
+        },
+        {
+          "id": "c",
+          "text": "Choosing the Most Popular School Lunch"
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "用结尾观点检查标题能否涵盖试用、发现问题和修改三步。",
+      "explanation": "试用揭示熟悉学校的人未意识到的查找困难，修改来自新生视角。a误将定位问题当成答案数量不足；c把用于说明问题的菜单当成全文目的。",
+      "review": {
+        "target": "少量长文主旨与细节层级",
+        "difficulty": "高一中高，约100词；普通校园词汇",
+        "shortestPath": "找到测试对象与结尾经验限制，再排除只抓写答案或菜单的局部标题。",
+        "distractors": "a与初始准备动作相关但遗漏真实发现；c是显著具体名词造成的主题误判。",
+        "legalVariants": "单选b；不把五人试用说成证明所有新生均有同样问题。"
+      }
+    }
+  ],
+  "releaseStatus": {
+    "authorSelfReview": "已逐题人工复核，仍需独立复审",
+    "audio": "pending",
+    "formalImport": "not_started",
+    "deployment": "not_started",
+    "humanLearningValidation": "pending"
+  },
+  "sourceMapping": {
+    "senior1.reading-links": "人教印刷14—15、62：主旨、依据、变化和篇章衔接的局部迁移。",
+    "senior1.integrated-message": "人教印刷15、18、28：纲要整理、建议结构、安排交流的局部迁移；不是逐课原题。",
+    "senior1.reader-advice-note": "人教印刷18。",
+    "senior1.learning-advice-listening": "人教印刷7；建议关联参考18。",
+    "senior1.everyday-detail-listening": "人教印刷24、53：听细节、准备事项与按条件执行指令的局部迁移。"
+  }
+}

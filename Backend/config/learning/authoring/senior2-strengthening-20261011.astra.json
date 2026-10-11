@@ -1,0 +1,947 @@
+{
+  "level": "senior2",
+  "title": "黄昏留下的空位",
+  "author": {
+    "name": "Astra 高二独立作者",
+    "date": "2026-10-11",
+    "method": "逐题亲写18道原创任务；程序仅保存、结构校验、字数统计及字符串核对，没有组合或模板替换生成教学文本。",
+    "status": "隔离作者自审稿；待独立主审、目标注册、真实制音及组卷验收，不可发布"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.senior.selective1.review2019",
+      "file": "build/learning-research-20260926/pep-senior-selective1-archive.pdf",
+      "textFile": "build/learning-research-20260926/pep-senior-selective1-archive.txt",
+      "readAt": "2026-10-11",
+      "pages": "Unit 1 印刷5、6、11／PDF12、13、18；Unit 2 印刷17—21／PDF24—28；Unit 4 印刷41／PDF48",
+      "method": "本轮实际读取本地PDF既有换页文本，核对正文和印刷页脚。没有把他人阅读记录当本轮核读，也没有声称重新目视全部页面。",
+      "findings": "非限制性从句的附着与整件事补充；听理由；书评中的评价及理由；未来时点与日程；预测的归属；议论语篇的立场、利弊和衔接标记；-ing宾语/表语。",
+      "limitations": "沿用catalog的2019审核版社区存档，非出版社当前下载；未重新核验版次/印次、整本哈希。跨来源整合与独立语篇证据题是上述语言功能的原创教学延伸，不伪称教材有相同题型或高二统一学期要求。"
+    },
+    {
+      "sourceId": "fltrp.senior.selective1.review2019",
+      "file": "build/learning-research-20260926/fltrp-senior-selective1-archive.pdf",
+      "textFile": "build/learning-research-20260926/fltrp-senior-selective1-archive.txt",
+      "readAt": "2026-10-11",
+      "pages": "Unit 5 印刷53／PDF60；Unit 6 印刷65／PDF72",
+      "method": "本轮实际逐页读取既有换页正文并核对页脚。",
+      "findings": "过去参照下的动作先后；持续过程与完成结果的比较。",
+      "limitations": "只核读列出页；未核读配套音频。本稿不据此声称考查整册能力。"
+    }
+  ],
+  "proposedGoals": [
+    {
+      "id": "s2.discourse-reference-scope",
+      "status": "proposed",
+      "canDo": "在完整短语篇中追踪指代、关系从句附着与否定/数量辖域，保留对象范围。",
+      "sourceIds": [
+        "pep.senior.selective1.review2019"
+      ],
+      "pages": "印刷5、20—21；结构和语篇功能迁移，不是逐页题型等值。"
+    },
+    {
+      "id": "s2.integrating-conditions",
+      "status": "proposed",
+      "canDo": "合并两份短信息的同时成立条件，区分可行方案与只满足一个来源的方案。",
+      "sourceIds": [
+        "pep.senior.selective1.review2019"
+      ],
+      "pages": "印刷17、20—21；从日程安排及有条件论证向双来源任务延伸。"
+    }
+  ],
+  "interactionContract": {
+    "matching": "左侧每项必配；右侧可多一项且可不使用，不得删掉多余候选以伪装旧合同兼容。待主代理确认对应客户端与判题实现。",
+    "cloze": "passage使用{slotId}，tokens提供具名候选，acceptedFills为完整slotId/tokenId数组；不以自由文本假装拖词。",
+    "completion": "受控改写，保留指定词汇和结构；接受列明变体；不把其他自然英文一概说成语言错误。",
+    "media": "两道listeningChoice仅audioScript；mediaStatus=pending，无assetId、无成品音频。文字稿只供审核和制音，答前隐藏。",
+    "measurement": "固定组内每题使用独立材料；故事仅营造情境；共享策略仍可能带来学习迁移，不能声称18次独立无提示测量。"
+  },
+  "openingStories": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "At the end of a narrow street, you and your companion find a small shop selling old lamps. Most are dark, but one throws a warm circle across an empty chair. You pause outside. Someone has left a pair of shoes beneath the chair, neatly side by side.",
+      "translation": "在一条窄街的尽头，你和同行者发现一家卖旧灯的小店。大多数灯都暗着，只有一盏在空椅子上投下一圈暖光。你们在店外停下。有人把一双鞋整齐地摆在椅子下面。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "The owner comes out carrying a bowl of water. A sleepy dog follows him and settles beside the shoes. Your companion smiles. Neither of you goes inside. For a while, you simply stand there as the street grows quieter and the circle of light becomes easier to see.",
+      "translation": "店主端着一碗水走出来。一只困倦的狗跟在身后，随后在鞋边躺下。同行者笑了。你们谁也没有进店，只静静站了一会儿。街道渐渐安静，那圈光也变得更清楚了。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "On the way back, you notice the spaces between things: two bicycles, a half-open curtain, the last houses before the river. Your companion slows down to match your steps. There is nothing special to take home, yet the evening no longer feels like an empty part of the day.",
+      "translation": "回去的路上，你开始留意事物之间的空隙：两辆自行车之间，半掀开的窗帘旁，还有河边最后几栋房子之外。同行者放慢脚步，与你走在一起。没有什么特别的东西可以带走，可这个傍晚已不再像一天里空着的一段。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s2.strength.q01",
+      "goalId": "s2.discourse-reference-scope",
+      "type": "choice",
+      "instruction": "选择准确转述",
+      "prompt": "读完整句子：The guide did not recommend every path marked on the map that the hotel had given us; she recommended the two beside the river. 哪条转述不改变推荐范围？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The guide recommended the hotel map but gave no advice about its paths."
+        },
+        {
+          "id": "b",
+          "text": "The guide recommended two riverside paths, rather than all the paths shown on the hotel map."
+        },
+        {
+          "id": "c",
+          "text": "The guide advised us to avoid the two riverside paths marked on the hotel map."
+        },
+        {
+          "id": "d",
+          "text": "The guide recommended every marked path except the two beside the river."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "先找recommend的对象，再结合分号后的补充核对not every的范围。",
+      "explanation": "not every否定全部都推荐，后半句明确肯定河边两条。that the hotel had given us修饰map，不改变推荐对象。a改成推荐地图且否认路线建议；c反转河边两条的态度；d将被推荐两条变成例外。",
+      "review": {
+        "target": "两层后置修饰与部分否定",
+        "difficulty": "高二进阶：须跨分号消解范围，词汇普通",
+        "shortestPath": "识别not every→读she recommended的肯定对象→选b",
+        "distractors": "a主干对象错；c极性错；d例外范围反转，四项语法均自然。",
+        "sameGroupLeakage": "其余17题无河边两条路线材料，无答案句复现。",
+        "crossExistingLeakage": "既有睡眠否定范围题共享策略，但没有not every加后置修饰与明确子集；无可抄出的完整答句。",
+        "answerBoundary": "按ID判分；不是要求从not every单独推导恰好两条。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷5；长句/辖域为教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q02",
+      "goalId": "s2.discourse-reference-scope",
+      "type": "choice",
+      "instruction": "追踪指代",
+      "prompt": "The museum asked its regular visitors to describe an object they remembered. It then invited first-time visitors to read these accounts beside the objects. This helped the newcomers notice details that the labels did not mention.\n最后一句的This准确指哪项安排？accounts在这里指个人描述。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replacing object labels with the names of regular visitors."
+        },
+        {
+          "id": "b",
+          "text": "Asking newcomers to write about an object before seeing it."
+        },
+        {
+          "id": "c",
+          "text": "Inviting regular visitors to rewrite all the museum labels."
+        },
+        {
+          "id": "d",
+          "text": "Having newcomers read earlier visitors' descriptions beside the objects."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "This可能概括前面的安排，不一定指距离最近的单个名词；同时确认newcomers是谁。",
+      "explanation": "It指博物馆，these accounts回指老访客写下的描述，This概括让新访客在实物旁读描述的安排。没有更换展签、让新访客预写或重写全部展签。",
+      "review": {
+        "target": "三步指代链与事件回指",
+        "difficulty": "高二中高：代词跨句且参与者不同",
+        "shortestPath": "regular visitors→accounts→first-time visitors读材料→This概括该安排",
+        "distractors": "a把补充变替换；b互换写作者/读者和时间；c扩大任务对象。",
+        "sameGroupLeakage": "不复用后文任何展览事实或输出短语。",
+        "crossExistingLeakage": "旧整句which回指path reopened只测单一回指；本题有参与者和材料的链式消解，不是换名。",
+        "answerBoundary": "This概括第二句安排，其材料由第一句说明；不能仅答objects。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷5；Unit 2 印刷20—21；指代链为教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q03",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "instruction": "读独立材料，判断作者立场",
+      "prompt": "When our school garden opened, I expected it to become a quiet place for reading. During the first month, however, classes used it for growing vegetables, and the space was rarely silent. At first I thought the plan had failed. Then I watched two students who seldom spoke in class explain their work to a younger group. The garden had given them something worth talking about. I still want a quiet corner, but I no longer judge the whole garden by that one wish. A place can succeed in a way its first visitors did not expect.\n作者现在怎样评价花园？",
+      "options": [
+        {
+          "id": "a",
+          "text": "It has educational value, even though it has not fully met the writer's original wish."
+        },
+        {
+          "id": "b",
+          "text": "It failed at first but became successful once quiet reading replaced vegetable growing."
+        },
+        {
+          "id": "c",
+          "text": "Its value depends on whether it can become a quiet reading space next month."
+        },
+        {
+          "id": "d",
+          "text": "It has persuaded the writer that quiet spaces are less useful than practical lessons."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "比较At first与I still...but之后的判断；保留作者尚未放弃的愿望。",
+      "explanation": "作者看到学生表达后的价值而修正单一评价标准，仍希望有安静角落。b虚构功能替换；c将已经认可的价值推迟到未来条件；d虚构不同用途的价值排序。",
+      "review": {
+        "target": "态度变化、事例与评价关系",
+        "difficulty": "高二进阶：约100词独立语篇，需结合前后立场",
+        "shortestPath": "起初以安静为标准→学生表达的反例→结尾调整评价且保留愿望",
+        "distractors": "三个错误项都保留部分材料内容，再错误连接时间、条件或比较。",
+        "sameGroupLeakage": "该材料只配本题，不另设让后题能从本题解析抄取的花园问题。",
+        "crossExistingLeakage": "旧利弊题多为试用建议，本题要求追踪叙述中改变评价标准，非固定may/suggests选项。",
+        "answerBoundary": "不推断花园已经提供安静阅读区。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷11；Unit 2 印刷20—21"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q04",
+      "goalId": "s2.balanced-argument",
+      "type": "choice",
+      "instruction": "读独立材料，区分记录和解释",
+      "prompt": "A village shop moved its bread shelf closer to the entrance in June. Sales rose during that month, and the owner credited the new position. Her assistant pointed out that a nearby shop had closed for repairs at the same time. Neither had recorded where the extra customers came from. They agreed to keep the shelf in place for now and compare sales again after the other shop reopened. The owner was pleased with the result, but she removed a sentence from her report claiming that moving the shelf had caused the increase. She kept the sales figures.\n为什么保留数字却删掉那句话？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The sales figures were estimates, while the shelf position had been recorded accurately."
+        },
+        {
+          "id": "b",
+          "text": "The assistant had shown that the closed shop accounted for the entire increase."
+        },
+        {
+          "id": "c",
+          "text": "The increase was recorded, but another change made its cause uncertain."
+        },
+        {
+          "id": "d",
+          "text": "The owner had decided to return the shelf to its earlier position before comparing sales."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "将发生了什么与为什么发生分开；注意另一家店的变化有没有被证明为全部原因。",
+      "explanation": "销售增加是已有记录；货架移动与邻店关闭同时发生，来源未记录，不能只归因于移动。a捏造估算；b把另一解释变成已证实全因；d违背keep the shelf in place。",
+      "review": {
+        "target": "观察证据与因果主张的强度",
+        "difficulty": "高二进阶：约100词，必须区分两个同时变化因素",
+        "shortestPath": "销量升为观察→邻店关闭是另一可能影响→删因果句保留数据",
+        "distractors": "不靠always/only排错，分别误读数据可靠性、证据强度、后续行动。",
+        "sameGroupLeakage": "本组没有另一因果填词题；不会把本题解析当其他题答案。",
+        "crossExistingLeakage": "既有十人试用8人总结测样本范围；本题测竞争解释和报告删改，认知操作不同。",
+        "answerBoundary": "不能反过来判定移动货架没有效果。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷20—21；竞争解释为教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q05",
+      "goalId": "s2.discourse-reference-scope",
+      "type": "choice",
+      "instruction": "读独立材料，解释衔接关系",
+      "prompt": "The town's reading room used to lend books without asking readers to record what they thought. Last winter, a volunteer placed blank cards inside several books. Readers could leave a comment for the next person, but signing a name was optional. Some wrote long reviews; others drew a face or left the card untouched. The volunteer expected the detailed reviews to start conversations. To her surprise, a drawing of a puzzled face led three readers to discuss the same ending at the desk. This did not make the longer reviews worthless. It reminded her that a small response could also invite a useful exchange.\n最后两句怎样衔接前面的例子？",
+      "options": [
+        {
+          "id": "a",
+          "text": "They reject written reviews because drawings are easier for most readers to understand."
+        },
+        {
+          "id": "b",
+          "text": "They limit the conclusion: a brief response can help, without making detailed reviews useless."
+        },
+        {
+          "id": "c",
+          "text": "They explain why readers should give their names before discussing a book's ending."
+        },
+        {
+          "id": "d",
+          "text": "They show that the volunteer's original prediction about detailed reviews was confirmed."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "把This did not...与could also...连读，判断作者是在推翻一种方式还是扩展可能方式。",
+      "explanation": "not worthless阻止把小回应有用误读为长评论无用；also扩展有效方式。a无依据比较并否定长评；c引入与例子无关的实名条件；d忽略To her surprise标记的预期差异。",
+      "review": {
+        "target": "例证后限定句的篇章功能",
+        "difficulty": "高二进阶：约110词，含预期/实际与限制性结论",
+        "shortestPath": "原预期长评→实际小图引发讨论→末句保留长评价值并扩展可能",
+        "distractors": "均为自然语句，错在归纳方向、相关性或预期归属。",
+        "sameGroupLeakage": "不再围绕同一材料出指代或填空，避免同材反馈泄漏。",
+        "crossExistingLeakage": "旧书会stop/decide词形题同为阅读话题但无评论卡情境或衔接推断。",
+        "answerBoundary": "不能推出绘画普遍优于文字，也不能推出长评已实际引发讨论。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷20—21"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q06",
+      "goalId": "s2.integrating-conditions",
+      "type": "choice",
+      "instruction": "合并两份信息选方案",
+      "prompt": "场馆规则：A school group may use the roof garden before noon if a staff guide is present. After noon, school groups must use the ground-floor room.\n工作人员邮件：I can guide your group from 10:30 to 11:15. The roof garden will be closed for repairs until 11:00.\n你需要连续15分钟在屋顶花园活动。哪个预约同时符合两份信息？",
+      "options": [
+        {
+          "id": "a",
+          "text": "10:30–10:45, with the staff guide."
+        },
+        {
+          "id": "b",
+          "text": "11:15–11:30, after the guided visit."
+        },
+        {
+          "id": "c",
+          "text": "12:15–12:30, with a teacher from the school."
+        },
+        {
+          "id": "d",
+          "text": "11:00–11:15, with the staff guide."
+        }
+      ],
+      "answer": "d",
+      "acceptedVariants": [],
+      "hint": "分别确定允许时段、场地开放时段和工作人员可用时段，取重叠部分。",
+      "explanation": "11:00修缮结束到11:15带队结束，正好15分钟且在中午前。a修缮未结束；b工作人员已不可用；c午后学校团体限地面房间，学校教师也不能替代指定staff guide。",
+      "review": {
+        "target": "两来源三个条件交集",
+        "difficulty": "高二中高：语言解读主导，时间计算限15分钟",
+        "shortestPath": "before noon且staff→开放11:00起→staff到11:15→d",
+        "distractors": "每个错误方案满足部分事实但漏一关键条件。",
+        "sameGroupLeakage": "本题时间/屋顶场景不在听力或后题重现。",
+        "crossExistingLeakage": "旧未来日程单来源占用题不能直接回答该三条件交集，未来时结构也不是唯一判据。",
+        "answerBoundary": "以题内时段连续有效为准，不引入交通时间或维修延期。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷17；双来源条件为教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q07",
+      "goalId": "s2.nonrestrictive",
+      "type": "choice",
+      "instruction": "核对修饰对象与信息范围",
+      "prompt": "你编辑记录：有两份报告。第一份由学生写，第二份由教师写；两份都讨论河流水质。你只想补充第二份报告的作者，同时明确两份都研究水质。哪句保持这些事实？",
+      "options": [
+        {
+          "id": "a",
+          "text": "The two reports, the second of which was written by teachers, both examine river water quality."
+        },
+        {
+          "id": "b",
+          "text": "Both reports, which were written by teachers, examine river water quality."
+        },
+        {
+          "id": "c",
+          "text": "The second report, which examines river water quality, was written by students."
+        },
+        {
+          "id": "d",
+          "text": "The teachers who wrote both reports examined river water quality."
+        }
+      ],
+      "answer": "a",
+      "acceptedVariants": [],
+      "hint": "核对both、the second以及逗号内说明各自管到哪些对象。",
+      "explanation": "a用the second of which把教师作者身份限定给第二份报告，主句both examine保留两份共有的研究内容。b和d把教师作者扩到两份；c把第二份作者改为学生，也没有明确两份都研究水质。",
+      "review": {
+        "target": "复数范围与补充从句附着",
+        "difficulty": "高二中高",
+        "shortestPath": "两份共有研究对象→教师作者仅第二份→核对补充说明",
+        "distractors": "b和d将教师作者扩到两份；c作者错误且未保留两份范围。",
+        "sameGroupLeakage": "不同于q01部分否定，本题定位从句的指称范围；无答案文本共用。",
+        "crossExistingLeakage": "旧包/围巾颜色题考单个名词附着，本题增加复数与子集约束。",
+        "answerBoundary": "只补充第二份的作者；不要求这一个合句也重复第一份作者身份，但不得与已知事实冲突。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷5"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q08",
+      "goalId": "s2.nonrestrictive",
+      "type": "completion",
+      "instruction": "补写非限制性关系从句",
+      "prompt": "原句：The evening ferry was cancelled. This left several workers on the island.\n用which合并，保留原词和过去时，不增加原因；只填空内部分：The evening ferry was cancelled, ____. ferry指渡船。",
+      "acceptedAnswers": [
+        "which left several workers on the island"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "补充的是取消这件事的后果，关系词在从句中要承担一个成分。",
+      "explanation": "which回指前面整件事，并作left的主语，所以不再加it。保留several，不扩大为全部工人；没有信息证明取消原因。",
+      "review": {
+        "target": "整件事回指的受控合并与数量保留",
+        "difficulty": "高二中档：有指定结构支架，但需输出完整后果",
+        "shortestPath": "This换为which→保留后果与时态→检查不加it",
+        "distractors": "which it left...重复主语；which left all the workers...扩大数量；because...改成原因。",
+        "sameGroupLeakage": "其他题无渡船/岛上工人或完整目标片段；不是仅填which。",
+        "crossExistingLeakage": "既有which/整句回指会构成已教策略；但完整输出内容未在旧题出现，不作为无教学提示的独立基线测量。",
+        "answerBoundary": "指定原词和which，唯一列出规范形式；其他自然同义改写不属于此受控任务。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷5"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q09",
+      "goalId": "s2.past-perfect",
+      "type": "completion",
+      "instruction": "按指定时态改写信息",
+      "prompt": "记录：At noon, the editor opened the folder. Someone removed the final photograph at eleven.\n从中午的视角回顾更早发生的事，用remove的过去完成时被动形式填完整谓语，不缩写：When the editor opened the folder, the final photograph ____. editor指编辑。",
+      "acceptedAnswers": [
+        "had been removed"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "先判断照片与动作的关系，再判断移除发生在回顾点前还是后。",
+      "explanation": "照片是被移除的对象，且十一点早于中午，因此指定形式为had been removed。had removed把照片变成施事；was removed不满足本题指定的过去完成形式，但不能因此说一般过去时在其他清楚语境中都不合法。",
+      "review": {
+        "target": "过去参照与施受关系同时转换",
+        "difficulty": "高二中高：结合熟悉时态和被动，不靠生词",
+        "shortestPath": "11点早于12点→照片受事→had been removed",
+        "distractors": "had removed遗漏被动；has been removed改变回顾视角；had been removing把照片变为行动者。",
+        "sameGroupLeakage": "全组其他题不出现removed或该完整助动词序列；q04仅报告原因，不给目标形式。",
+        "crossExistingLeakage": "旧had finished/had sent是主动单时态，本题需事件整合及被动；旧题没有had been removed答案。",
+        "answerBoundary": "明确不缩写，接受大小写与句末标点归一。"
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.senior.selective1.review2019",
+          "pages": "Unit 5 印刷53；被动结合为先修结构迁移"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q10",
+      "goalId": "s2.ing-roles",
+      "type": "completion",
+      "instruction": "保留方式和否定，受控改写",
+      "prompt": "原意：We protected the old floor. We did not drag the chairs across it.\n用avoid的-ing形式和drag的-ing形式说明采用的方法；沿用the chairs，不用代词替换：We protected the old floor by ____. drag指拖动。",
+      "acceptedAnswers": [
+        "avoiding dragging the chairs across it"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "hint": "by后写采取的办法；avoid后也要连接活动，不能把没有做的动作改成做了。",
+      "explanation": "by avoiding dragging the chairs across it表示通过避免拖动来保护地板。两个-ing分别由by和avoid要求；直接写dragging会反转实际方法。",
+      "review": {
+        "target": "两层补语及否定意义保留",
+        "difficulty": "高二进阶受控输出：不是单词拼写",
+        "shortestPath": "方法为避免拖动→by后avoiding→avoid后dragging→保留宾语地点",
+        "distractors": "dragging...反转行动；avoiding to drag...补语错误；not avoiding dragging...双重意义反转。",
+        "sameGroupLeakage": "其余题没有avoiding dragging、旧checking/listening/gives亦不作为本组输出答案。",
+        "crossExistingLeakage": "旧avoid repeating和by checking只教单层结构；本题整合两层及否定，不使用其目标词形。",
+        "answerBoundary": "指定词汇和句架，保留it回指floor；未列任意同义改写。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 4 印刷41；两层嵌套为教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q11",
+      "goalId": "s2.balanced-argument",
+      "type": "arrange",
+      "instruction": "用全部词块保留让步关系",
+      "prompt": "表达：即使这份问卷反映了年轻乘客的看法，它也没有告诉我们老年乘客需要什么。以Even if开头；survey指问卷调查。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "what older passengers need."
+        },
+        {
+          "id": "b",
+          "text": "it does not tell us"
+        },
+        {
+          "id": "c",
+          "text": "Even if"
+        },
+        {
+          "id": "d",
+          "text": "younger passengers' views,"
+        },
+        {
+          "id": "e",
+          "text": "the survey reflects"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "e",
+          "d",
+          "b",
+          "a"
+        ]
+      ],
+      "hint": "让步部分承认一种可能价值，主句说明它仍未提供的另一类信息。",
+      "explanation": "Even if the survey reflects younger passengers' views, it does not tell us what older passengers need. 即便覆盖年轻人也不能自动代表老年人；Even if不在此证明问卷实际上已经充分反映年轻人的观点。",
+      "review": {
+        "target": "让步、群体范围与嵌入问句",
+        "difficulty": "高二中高：有词块，主要是保持信息范围",
+        "shortestPath": "Even if接调查可能覆盖→主句否定另一信息→what作宾语从句",
+        "distractors": "将what片段接reflects会把调查对象倒置；倒置两类乘客改变原意。",
+        "sameGroupLeakage": "不在后题再要求even if/what填空。",
+        "crossExistingLeakage": "旧虽然有用仍需备用方案是短让步，本题含群体证据边界，不复用其词块。",
+        "answerBoundary": "固定开头、全部词块、内含标点，词块序列唯一；不声称自由写作能力。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷20—21；嵌入问句是先修迁移"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q12",
+      "goalId": "s2.discourse-reference-scope",
+      "type": "arrange",
+      "instruction": "用全部词块准确限定描述",
+      "prompt": "你要说明：在图书馆找不到安静座位的学生被邀请试用楼上的房间。只指这一部分学生，并非全校学生都找不到座位。以Students开头，词块间不另加逗号。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "were invited"
+        },
+        {
+          "id": "b",
+          "text": "in the library"
+        },
+        {
+          "id": "c",
+          "text": "Students"
+        },
+        {
+          "id": "d",
+          "text": "to try the upstairs room."
+        },
+        {
+          "id": "e",
+          "text": "who could not find a quiet seat"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "e",
+          "b",
+          "a",
+          "d"
+        ]
+      ],
+      "hint": "先组成受到邀请的学生范围，再接主句谓语和邀请内容。",
+      "explanation": "Students who could not find a quiet seat in the library were invited to try the upstairs room. 无逗号关系从句限定学生子集；in the library属于找座位的位置，不是邀请发出的地点。",
+      "review": {
+        "target": "限制范围、长主语边界与介词短语附着",
+        "difficulty": "高二中高：先修定语从句迁移到长句",
+        "shortestPath": "学生+限定从句+座位地点→were invited→邀请内容",
+        "distractors": "Students were invited...后再接who使修饰断裂；把in the library接邀请可能改变位置关系。",
+        "sameGroupLeakage": "不把who作为后题单空；与q07均涉及范围但不共用对象或答案。",
+        "crossExistingLeakage": "旧friends逗号对照提供语法支架，本题需处理完整长主语和地点附着；不能标无先修测量。",
+        "answerBoundary": "以Students开头、不加逗号，按全部词块ID顺序判分。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷5；比较限制与非限制范围"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q13",
+      "goalId": "s2.integrating-conditions",
+      "type": "matching",
+      "instruction": "每个申请配一个资格结论，有一项多余",
+      "prompt": "规则A：Travel support is available to students living more than 5 km away.\n规则B：For this visit, applicants must also join the morning session. The afternoon session alone does not qualify.\n将申请与准确结论配对；每个结论至多用一次。travel support指交通补助。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Elena: 7 km away; morning session."
+        },
+        {
+          "id": "l2",
+          "text": "Victor: 4 km away; morning session."
+        },
+        {
+          "id": "l3",
+          "text": "Sam: 8 km away; afternoon session, not morning."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Meets the distance condition but not the session condition."
+        },
+        {
+          "id": "r2",
+          "text": "Meets both conditions."
+        },
+        {
+          "id": "r3",
+          "text": "Meets neither condition."
+        },
+        {
+          "id": "r4",
+          "text": "Meets the session condition but not the distance condition."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r4"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ],
+      "acceptedVariants": [],
+      "hint": "每人都分别核对距离和参加时段，不能满足一条就当作全部符合。",
+      "explanation": "Elena两条均满足；Victor距离不足；Sam只满足距离。r3多余：没有人两条都不满足。",
+      "review": {
+        "target": "两来源条件逐个归类",
+        "difficulty": "高二中档：降低词汇负担，保留条件合取",
+        "shortestPath": "每人记录距离真假与时段真假→找对应二条件结论",
+        "distractors": "r3防止以排除剩余项免读最后一人；r1/r4专测条件混淆。",
+        "sameGroupLeakage": "q06教条件交集但无相同申请数据/结论；若研究无教学迁移应分场次，不把共享策略当无影响。",
+        "crossExistingLeakage": "旧原因/方法/是否三配三可末项排除；本题三配四且双条件，不继承旧末项无需阅读问题。",
+        "answerBoundary": "多余right r3必须保留；3个left均需作答且唯一右项。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷17；双来源条件为教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q14",
+      "goalId": "s2.balanced-argument",
+      "type": "matching",
+      "instruction": "将回应配给最符合的沟通目的，有一项多余",
+      "prompt": "小组在准备一本关于老街的册子。根据每句实际表达的内容配对，不凭礼貌词多少判断。每项至多使用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The description is vivid. Could you add where this account came from so readers can judge it?"
+        },
+        {
+          "id": "l2",
+          "text": "I treated the date as certain earlier. The diary gives a different year, so I need to correct that."
+        },
+        {
+          "id": "l3",
+          "text": "I agree that the factory mattered, but the interviews also describe life before it opened."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "修正自己先前过于确定的信息"
+        },
+        {
+          "id": "r2",
+          "text": "肯定表达效果，同时索取信息来源"
+        },
+        {
+          "id": "r3",
+          "text": "拒绝使用口述材料，要求全用书面记录"
+        },
+        {
+          "id": "r4",
+          "text": "承认一个重点，同时补充被忽略的时间范围"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        },
+        {
+          "left": "l3",
+          "right": "r4"
+        }
+      ],
+      "acceptedVariants": [],
+      "hint": "区分索取根据、修正自己的说法、扩展已有讨论范围；不要把补充理解成拒绝。",
+      "explanation": "l1请求来源；l2明确收回确定日期并纠正；l3承认工厂重要，又补充开厂前生活。三句都未要求排除口述材料，所以r3不用。",
+      "review": {
+        "target": "评价与信息请求、修正和补充的语用功能",
+        "difficulty": "高二中高：同样礼貌/合作语气，须读命题关系",
+        "shortestPath": "定位每句肯定与后续动作→区分证据请求/自我修正/扩展范围",
+        "distractors": "r3把日记和采访的不同作用误读成来源排斥。",
+        "sameGroupLeakage": "不会把这三句话在后题作填空原句；与q04证据意识有迁移但答案无复制。",
+        "crossExistingLeakage": "旧图表关切题只有情绪回应；本题需区分三个讨论动作，非同名替换。",
+        "answerBoundary": "3对必选，r3留空；是受控语用识别而非自由讨论口语证明。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷11；Unit 2 印刷21"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q15",
+      "goalId": "s2.discourse-reference-scope",
+      "type": "cloze",
+      "instruction": "按语篇关系填两处，词块不重复，有多余项",
+      "prompt": "完整表达：大家没有在不同地点各摆一份时间表，而是共用入口处那一份；这样也更容易看出改动。拖入最合适的衔接词。",
+      "passage": "We decided against putting separate timetables in every room. {s1}, we placed one large timetable at the entrance. {s2}, changes were easier to notice because everyone used the same version.",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "For instance"
+        },
+        {
+          "id": "b",
+          "text": "Instead"
+        },
+        {
+          "id": "c",
+          "text": "As a result"
+        },
+        {
+          "id": "d",
+          "text": "Despite this"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "b"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "c"
+          }
+        ]
+      ],
+      "hint": "第一空连接放弃的做法与采用的做法；第二空引出实际效果。",
+      "explanation": "Instead引出替代方案；As a result引出共用版本带来的效果。For instance不是对首句举例，Despite this将顺承结果误说成转折。",
+      "review": {
+        "target": "跨句替代与因果衔接",
+        "difficulty": "高二中档：两空须联系语篇，词库提供输出支架",
+        "shortestPath": "否定方案A→方案B为替代→方便看改动为结果",
+        "distractors": "a举例关系不成立；d逆预期关系不成立，词本身都能用于语法正确的句子。",
+        "sameGroupLeakage": "自审时发现q05原稿出现Instead，已亲改为To her surprise，避免同组先展示该完整候选词。其余题没有本题两空组合或相同时间表材料。",
+        "crossExistingLeakage": "旧but/however题共享衔接训练，无本题完整安排；本题仍须核对同卷词形曝光。",
+        "answerBoundary": "只接受列出两空映射；两个未用词块保留。曾发现的同组Instead暴露已在交稿前修正，不依赖调换顺序。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷21，衔接标记功能"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q16",
+      "goalId": "s2.present-perfect-continuous",
+      "type": "cloze",
+      "instruction": "根据两条更新填入谓语，保留过程与结果",
+      "prompt": "同一个维修项目的两条更新：第一人强调从周一开始至今仍在进行的工作；第二人报告已经装好的具体数量。使用词库，不重复。benches指长椅。",
+      "passage": "We {s1} the benches since Monday, and the work is still going on. So far, we {s2} four new seats; two more are needed.",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "have fitted"
+        },
+        {
+          "id": "b",
+          "text": "had repaired"
+        },
+        {
+          "id": "c",
+          "text": "have been repairing"
+        },
+        {
+          "id": "d",
+          "text": "are fitting"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "c"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "a"
+          }
+        ]
+      ],
+      "hint": "分别识别持续至今的过程和截至现在已完成的数量，不要看到时间词就忽略句子后半部分。",
+      "explanation": "have been repairing突出持续且仍进行的维修；have fitted对应已安装好四个座位。had repaired缺少相应过去参照点；are fitting表示正在装，不能保留题定的已完成数量。",
+      "review": {
+        "target": "同项目内持续过程和可数结果的视角转换",
+        "difficulty": "高二中高：双空联读而非孤立since词形",
+        "shortestPath": "since Monday+仍进行→持续完成；So far+完成四个→完成结果",
+        "distractors": "b错在过去参照；d错在完成状态，均不是坏语法词串。",
+        "sameGroupLeakage": "其他题无repairing/fitted组合；q09过去完成被动不会直接供给本题答案。",
+        "crossExistingLeakage": "旧sort持续题会教结构，但不含本题两谓语及结果对比；保留教学迁移边界。",
+        "answerBoundary": "指定词库和已完成四个语义，唯一完整映射；不据此断言完成进行永远未结束。"
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.senior.selective1.review2019",
+          "pages": "Unit 6 印刷65"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q17",
+      "goalId": "s2.listening-reasons-and-response",
+      "type": "listeningChoice",
+      "instruction": "听清修改请求的依据",
+      "prompt": "听一段关于文章草稿的留言。对方希望作者怎样修改？",
+      "audioScript": "Your description of the station is clear. I paused at the sentence saying travellers felt safer after the new lights went in. The manager told you that, didn't she? I couldn't find any comments from travellers themselves. Please make clear whose view it is. You don't need to remove the description of the lights.",
+      "mediaStatus": "pending",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the description of the lights because the station manager objects to it."
+        },
+        {
+          "id": "b",
+          "text": "State that the safety judgment came from the manager, rather than presenting it as travellers' own feedback."
+        },
+        {
+          "id": "c",
+          "text": "Replace the manager's comments with the travellers' comments already collected."
+        },
+        {
+          "id": "d",
+          "text": "Explain why the lights made travellers safer by adding the manager's technical description."
+        }
+      ],
+      "answer": "b",
+      "acceptedVariants": [],
+      "hint": "分清留言认可的部分与要求修改的判断；听明信息是谁提供的。",
+      "explanation": "要求标明安全感判断来自经理，不能冒充旅客自身反馈。没有经理反对灯光描述，也没有已收集旅客意见或技术因果说明。",
+      "review": {
+        "target": "听力中的来源归属和有限修改",
+        "difficulty": "高二进阶：约60词，判断转述来源而非关键词取数",
+        "shortestPath": "认可描述→质疑travellers felt safer来源→只修正归属",
+        "distractors": "a错在删除对象和反对者；c虚构已有采访；d把来源核对改成技术论证。",
+        "sameGroupLeakage": "与q14同属来源意识但无经理/车站材料或可复制答句；文字稿答前隐藏。",
+        "crossExistingLeakage": "旧关切回复、路线脚踝题考理由，本题考消息归属与修改边界，无checking/listening目标泄漏。",
+        "answerBoundary": "未制作或听验音频；不能发布成文字阅读替代听力。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 1 印刷6；来源归属为听理由的教学延伸"
+        }
+      ]
+    },
+    {
+      "id": "s2.strength.q18",
+      "goalId": "s2.listening-predictions-and-compromise",
+      "type": "listeningChoice",
+      "instruction": "听懂提议被怎样修改",
+      "prompt": "听两人讨论社区修理活动。最后被接受的安排是什么？",
+      "audioScript": "A: I think we could repair twice as many bikes next month if we invited more volunteers. B: More hands would help, but we have just three sets of tools. New volunteers could learn from us in the morning, then bring their own tools for the afternoon. A: Some won't have tools. Let's lend those people ours after lunch while we take a break. B: That should work. We can give advice if they need it.",
+      "mediaStatus": "pending",
+      "productionNotes": "需要两个清楚可辨的声音；A/B是制音角色标签，不朗读标签。保持自然轮次和语速，不能合成后未经实听即登记完成。",
+      "options": [
+        {
+          "id": "a",
+          "text": "New volunteers will bring tools in the morning and teach the existing team after lunch."
+        },
+        {
+          "id": "b",
+          "text": "The team will buy extra tools before allowing new volunteers to take part."
+        },
+        {
+          "id": "c",
+          "text": "New volunteers will learn in the morning; those without tools can borrow the team's after lunch."
+        },
+        {
+          "id": "d",
+          "text": "The existing team will repair bikes all day while new volunteers observe without using tools."
+        }
+      ],
+      "answer": "c",
+      "acceptedVariants": [],
+      "hint": "把最初的数量预测、工具限制、后来对没工具者的补充办法分开。",
+      "explanation": "B提出上午学习下午自带工具，A补足没有工具的人可以在午饭后借用原队工具，B接受。两倍数量是最初预测，不是已证实结果；没有购买决定或全天旁观要求。",
+      "review": {
+        "target": "多轮协商中方案的保留与修改",
+        "difficulty": "高二进阶：约80词，须更新并保留前方案未被取消部分",
+        "shortestPath": "更多志愿者受工具限制→上午学习保留→下午对无工具者改借用→B接受",
+        "distractors": "a师生角色/时间反转；b新添采购前提；d删除被接受的工具使用。",
+        "sameGroupLeakage": "独立修车场景，不重复q06时段条件或q13申请结论；不让录音供给输出题完整短语。",
+        "crossExistingLeakage": "旧分开活动四点会合为单次折中，本题需保留旧方案一部分并修补子群体条件，非换场景同句。",
+        "answerBoundary": "不主张数量预测已实现；音频pending，必须两声实听检查归属。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.senior.selective1.review2019",
+          "pages": "Unit 2 印刷18—19；协商更新为教学延伸"
+        }
+      ]
+    }
+  ],
+  "remainingWork": [
+    "主代理逐题终审与新增目标映射",
+    "两段真实音频制作、隐藏原文合同及实听验收",
+    "matching多余候选端到端验证",
+    "正式同卷插槽与既有候选泄漏扫描，不能只凭字符串无重复宣称无风险",
+    "真人试做与学习效果待验证"
+  ]
+}
