@@ -4,7 +4,11 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { loadCuratedCatalog } from "../../../src/modules/learning/catalog.js";
-import { contentHash, unitSchema } from "../../../src/modules/learning/content.js";
+import {
+  contentHash,
+  unitSchema,
+  type LearningQuestion,
+} from "../../../src/modules/learning/content.js";
 
 import { uploadLearningAudio } from "../../../src/modules/learning/audio.js";
 import { learningImageFixture } from "../../helpers/learning-images.js";
@@ -116,6 +120,77 @@ describe("原创课程发布门槛", () => {
     await save();
     await expect(loadCuratedCatalog(directory)).resolves.toBeDefined();
     second.audio = first.audio;
+    await save();
+    await expect(loadCuratedCatalog(directory)).rejects.toThrow("与题库中已有题干重复");
+  });
+
+  it("多空题相同操作语按正文与候选区分，改编号不绕过重复检查", async () => {
+    const directory = await copyCatalog();
+    const id = "oliver.primary3.reading-circle";
+    const unitPath = join(directory, "units", `${id}.json`);
+    const reviewPath = join(directory, "reviews", `${id}.json`);
+    const unit = unitSchema.parse(JSON.parse(await readFile(unitPath, "utf8")));
+    const review = JSON.parse(await readFile(reviewPath, "utf8")) as {
+      contentHash: string;
+      questions: { questionId: string; optionNotes: unknown; probes: unknown }[];
+    };
+    // 仅工程夹具，验证材料身份；不进入正式教学内容。
+    function cloze(index: number, passage: string, renamed = false): LearningQuestion {
+      const old = unit.questions[index];
+      if (!old) throw new Error("缺少待转换的工程题目。");
+      const first = renamed ? "x" : "one";
+      const second = renamed ? "y" : "two";
+      const a = renamed ? "new-a" : "a";
+      const b = renamed ? "new-b" : "b";
+      const c = renamed ? "new-c" : "c";
+      const accepted = [
+        { slotId: first, tokenId: a },
+        { slotId: second, tokenId: b },
+      ];
+      const checked = review.questions.find((q) => q.questionId === old.id);
+      if (!checked) throw new Error("缺少对应的工程审核记录。");
+      checked.optionNotes = {};
+      checked.probes = [
+        { answer: { kind: "cloze", fills: accepted }, correct: true },
+        {
+          answer: {
+            kind: "cloze",
+            fills: [
+              { slotId: first, tokenId: b },
+              { slotId: second, tokenId: a },
+            ],
+          },
+          correct: false,
+        },
+      ];
+      return {
+        id: old.id,
+        goalId: old.goalId,
+        type: "cloze",
+        instruction: "填写两个工程插槽。",
+        prompt: "每空选一个词块，余项不用。",
+        explanation: "只用于检验目录重复材料拦截。",
+        hint: "工程隔离测试材料。",
+        difficultyReason: "不是可发布的教学题目。",
+        passage,
+        tokens: [
+          { id: a, text: "first" },
+          { id: b, text: "second" },
+          { id: c, text: "other" },
+        ],
+        acceptedFills: [accepted],
+      };
+    }
+    async function save() {
+      review.contentHash = contentHash(unit);
+      await writeFile(unitPath, JSON.stringify(unit));
+      await writeFile(reviewPath, JSON.stringify(review));
+    }
+    unit.questions[0] = cloze(0, "The first record has {one} and {two}.");
+    unit.questions[1] = cloze(1, "Another independent record uses {one} before {two}.");
+    await save();
+    await expect(loadCuratedCatalog(directory)).resolves.toBeDefined();
+    unit.questions[1] = cloze(1, "The first record has {x} and {y}.", true);
     await save();
     await expect(loadCuratedCatalog(directory)).rejects.toThrow("与题库中已有题干重复");
   });

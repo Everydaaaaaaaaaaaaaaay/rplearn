@@ -10,6 +10,7 @@ import {
   type LearningUnit,
 } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
+import { bankIdentity } from "./bank-content.js";
 import {
   learningAudioSchema,
   verifyLearningAudio,
@@ -214,21 +215,25 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         fail(`题目 ${question.id} 引用了未审核的图片。`);
       if (images.length > 0 && !checked.imageReview)
         fail(`题目 ${question.id} 缺少图片语义、替代描述及答案泄露审核。`);
-      const fingerprint = contentHash({
-        type: question.type,
-        prompt: question.prompt.trim().toLowerCase(),
-        // “听写完整句子”等操作语可以复用，录音原文才是听力题的作答材料。
-        ...("audio" in question
-          ? { audio: question.audio.text.trim().toLowerCase() }
-          : {}),
-        ...(question.type === "audioChoice" || question.type === "audioMatching"
-          ? {
-              audioOptions: question.audioOptions
-                .map((o) => o.audio.text.trim().toLowerCase())
-                .sort(),
-            }
-          : {}),
-      });
+      // 多空题的操作语可以相同；复用公共题库材料身份，正文、候选和局部编号归一规则一致。
+      const fingerprint =
+        question.type === "cloze"
+          ? bankIdentity(question)
+          : contentHash({
+              type: question.type,
+              prompt: question.prompt.trim().toLowerCase(),
+              // “听写完整句子”等操作语可以复用，录音原文才是听力题的作答材料。
+              ...("audio" in question
+                ? { audio: question.audio.text.trim().toLowerCase() }
+                : {}),
+              ...(question.type === "audioChoice" || question.type === "audioMatching"
+                ? {
+                    audioOptions: question.audioOptions
+                      .map((o) => o.audio.text.trim().toLowerCase())
+                      .sort(),
+                  }
+                : {}),
+            });
       if (fingerprints.has(fingerprint))
         fail(`题目 ${question.id} 与题库中已有题干重复。`);
       fingerprints.add(fingerprint);
