@@ -3,7 +3,7 @@
   "author": {
     "name": "Astra 小三独立作者",
     "method": "逐题亲写操作语、替题、故事和证据；程序仅复制未变字段、保存明确写好的文字及检查结构。",
-    "status": "交接提案，待主代理审定；未发布"
+    "status": "交接稿；b08数量题及固定B顺序已由主审采纳，未正式入库或发布"
   },
   "reviewedAt": "2026-10-11",
   "sourceReading": [
@@ -45,6 +45,30 @@
       "pages": "9个正式小三单元54题；作者稿36题；两份小三复审记录",
       "evidence": "逐题读题干、候选项、正确映射、提示、解释；听力只读脚本。以unitId/localQuestionId引用旧题。",
       "limitations": "本地快照，不代表生产额外修订；未审听旧音频。"
+    },
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "pages": "印刷64、65；电子70、71",
+      "files": [
+        "build/learning-research-20260926/primary3-refinement-p70.jpg",
+        "build/learning-research-20260926/primary3-refinement-p71.jpg"
+      ],
+      "evidence": "本轮作者实际下载官方阅读器原图并逐张view_image核读，主审另实际查看电子71页。印刷65页Lets learn明确列one至five；b08只取one、three、four的数量辨认。印刷64页仅核对数字单元上下文，不将年龄问答或家人介绍加入此题。",
+      "pageEvidence": [
+        {
+          "printedPage": 64,
+          "electronicPage": 70,
+          "url": "https://book.pep.com.cn/1212001301245/files/mobile/70.jpg",
+          "sha256": "e20708985caf58232757733bfbda010bcaf85e2899c99313b18ef6c1750b0206"
+        },
+        {
+          "printedPage": 65,
+          "electronicPage": 71,
+          "url": "https://book.pep.com.cn/1212001301245/files/mobile/71.jpg",
+          "sha256": "8520a81974f622eb982e507502e479f3852a8715d44f4557f338438f0f534b12"
+        }
+      ],
+      "limitations": "仅新增这些页面的实际核读；未重验版权页、ISBN或全册。教材图仅留研究缓存，不用于产品媒体。"
     }
   ],
   "questions": [
@@ -283,11 +307,13 @@
     },
     {
       "id": "p3.astra.b08",
-      "instruction": "把动物词和中文配对，每项一次。",
+      "instruction": "把数量词和数字配对，每项一次。",
       "mediaDelivery": {
         "required": "无必需音图",
-        "support": "纯文字英汉配对，左右独立乱序，各项可点读；不需要图片，也不使用预先正确连线的色标。"
-      }
+        "support": "各英文数词可点读，阿拉伯数字可中文朗读；左右独立乱序，不预先按从小到大排成对应行，不用颜色连接正确项。",
+        "acceptance": "检查单项改选和全部配对，不能连完两项就自动补最后一项；支架使用可记录，但不将正常点读等同错误。"
+      },
+      "goalId": "p3.numbers"
     },
     {
       "id": "p3.astra.b09",
@@ -917,39 +943,39 @@
     },
     {
       "id": "p3.astra.b08",
-      "reason": "撤回双动物组合提案：各组存在只认一个区别词的捷径，不能声称必须双词判断。改为cat/fish/rabbit三词低负担巩固，明示它复习前面已教的词义，不虚构新增覆盖。",
+      "reason": "主审已采纳：把b08改为现有p3.numbers下one/three/four三配对，移除原整组已教动物词义重测；保持matching和低阅读负担，补本组缺失的数量词辨认，不冒称全库新题型。",
       "newQuestion": {
         "id": "p3.astra.b08",
-        "goalId": "p3.animals",
+        "goalId": "p3.numbers",
         "type": "matching",
-        "instruction": "把动物词和中文配对，每项一次。",
-        "prompt": "核对三张动物名称卡，把英文词与中文名称连起来。",
+        "instruction": "把数量词和数字配对，每项一次。",
+        "prompt": "核对活动用的数量卡，把英文数字和阿拉伯数字连起来。",
         "left": [
           {
-            "id": "l1",
-            "text": "cat"
+            "id": "l2",
+            "text": "three"
           },
           {
-            "id": "l2",
-            "text": "fish"
+            "id": "l1",
+            "text": "one"
           },
           {
             "id": "l3",
-            "text": "rabbit"
+            "text": "four"
           }
         ],
         "right": [
           {
-            "id": "r1",
-            "text": "鱼"
-          },
-          {
             "id": "r2",
-            "text": "兔"
+            "text": "4"
           },
           {
             "id": "r3",
-            "text": "猫"
+            "text": "1"
+          },
+          {
+            "id": "r1",
+            "text": "3"
           }
         ],
         "answerPairs": [
@@ -966,23 +992,29 @@
             "right": "r2"
           }
         ],
-        "explanation": "cat是猫，fish是鱼，rabbit是兔。每个英文词对应一种动物。这里的fish是在说动物，不是在点餐。",
-        "hint": "先读每个动物词，再核对对应的中文名称。",
-        "difficultyReason": "三个已学动物词的文字释义巩固，低阅读负担；不宣称增加新动物、新能力或双条件判断。",
-        "review": {
-          "reasoning": "l1-r3、l2-r1、l3-r2分别对应猫、鱼、兔，全部一一用尽。",
-          "wrongAnswer": "l1-r2：cat表示猫，兔对应rabbit。",
-          "ambiguity": "前面的b02、b03、b04已经接触并反馈这些词义；本题明确是有反馈支架的巩固，不能作为未受提示的独立掌握证据。三项一一配对允许排除法，也不宣称每项都测了独立识别。"
-        },
-        "taskIntent": "animal_word_consolidation",
+        "explanation": "one表示1，three表示3，four表示4。这三种英文写法分别对应三个不同的数量。",
+        "hint": "逐个读英文数字，再找对应的阿拉伯数字。",
+        "difficultyReason": "三个五以内数量词与数字一一对应，不做计算，不读长句，不要求键盘拼写。",
+        "taskIntent": "number_word_match",
         "references": [
           {
             "sourceId": "pep.primary3.upper.2024",
-            "pages": "印刷28–29；电子34–35",
-            "alignment": "28页a cat、a dog等单个动物表达，29页出现猫、鱼、兔类别及cat、fish、rabbit相关词形；本题只巩固三个动物名的英汉对应，不引用52页and或制造组合任务。"
+            "pages": "印刷65；电子71",
+            "alignment": "本轮实际核读该页Let's learn的one至five及下方数词复现；选one、three、four设计独立数量对应练习，不复制教材画面或歌谣。"
           }
-        ]
-      }
+        ],
+        "review": {
+          "reasoning": "l1-r3为one与1，l2-r1为three与3，l3-r2为four与4；三项全部一一用尽。",
+          "wrongAnswer": "l2-r2把three连到4；three表示3，4对应four。",
+          "ambiguity": "阿拉伯数字明确给出，不要求先点数图片，不涉及物品数量是否遮挡；三配对允许排除法，不能宣传为三次完全独立的词汇诊断。"
+        },
+        "mediaDelivery": {
+          "required": "无必需音图",
+          "support": "各英文数词可点读，阿拉伯数字可中文朗读；左右独立乱序，不预先按从小到大排成对应行，不用颜色连接正确项。",
+          "acceptance": "检查单项改选和全部配对，不能连完两项就自动补最后一项；支架使用可记录，但不将正常点读等同错误。"
+        }
+      },
+      "reviewStatus": "交接主审已采纳，未进入正式库"
     },
     {
       "id": "p3.astra.b17",
@@ -1093,7 +1125,7 @@
         "p3.astra.b08"
       ],
       "finding": "原b08的fish/dog/bird三条词义已由前三题全部解释。",
-      "resolution": "撤回双动物组合，保留三词cat/fish/rabbit文字巩固。明确前题反馈已给词义，本题不提供独立新增能力或无提示掌握证据；这是接受已教词复习的定位，不声称消除了全部内容复现。固定18槽与即时反馈照常保留。"
+      "resolution": "主审已采纳把b08改为p3.numbers的one/three/four与1/3/4三配对。该组三个英文数量词及对应答案未出现在前面的题面、干扰或反馈中；不再保留动物三词巩固。其余动物图词、标签、听辨仍各保留，并承认词义支架。"
     },
     {
       "questionIds": [
@@ -1140,26 +1172,26 @@
     {
       "questionIds": [
         "p3.astra.b01",
-        "p3.astra.b02",
-        "p3.astra.b03",
-        "p3.astra.b04",
-        "p3.astra.b05",
-        "p3.astra.b06",
-        "p3.astra.b07",
-        "p3.astra.b08",
-        "p3.astra.b09",
         "p3.astra.b10",
-        "p3.astra.b11",
+        "p3.astra.b02",
+        "p3.astra.b07",
+        "p3.astra.b04",
         "p3.astra.b12",
-        "p3.astra.b13",
+        "p3.astra.b08",
         "p3.astra.b14",
-        "p3.astra.b15",
-        "p3.astra.b16",
+        "p3.astra.b05",
+        "p3.astra.b09",
+        "p3.astra.b03",
         "p3.astra.b17",
+        "p3.astra.b11",
+        "p3.astra.b13",
+        "p3.astra.b16",
+        "p3.astra.b15",
+        "p3.astra.b06",
         "p3.astra.b18"
       ],
       "finding": "采纳提案后B仍为18槽。b04给I like结构，b11仍需处理新限定my dog；b11教所属范围，b15为猫类别/自有宠物两句辨义；b03说未必拥有，b18还需独立读鸟句和作画数量干扰。",
-      "resolution": "这些是刻意复现的学习支架，不能宣传为18个独立能力。b09补is保留为缩写展开基础练习，b07音轨是It's orange，没有展示展开式It is或指定is空的答案。"
+      "resolution": "使用fixedGroups.b的18ID交错顺序，逐题即时反馈、无组内互斥。b08换入本组未覆盖的数量辨认，实质移除整组动物词义重测；重排本身不消除迁移。b09仍为It's展开基础练习，不计新语法；b11到b15、b03到b18等支架仍存在，不能宣传18个独立能力。"
     }
   ],
   "exclusionPairs": [
@@ -1506,27 +1538,82 @@
       "evidence": "旧题正确为I’m Mei，干扰有My name Mei并强调句子完整；a14改I am An后仍是I主语自我介绍的完整结构判断，缩写展开及换姓名不能计独立新能力。"
     },
     {
-      "exclusionGroupId": "p3.delivery.b08-animal-words",
+      "exclusionGroupId": "p3.delivery.b08-number-labels",
       "kind": "candidate-old",
       "candidateIds": [
         "p3.astra.b08"
       ],
       "oldQuestions": [
         {
-          "unitId": "ruby.primary3.animal-postcards",
-          "localQuestionId": "animal-words"
+          "unitId": "oliver.primary3.bookmark-packs",
+          "localQuestionId": "number-labels"
         }
       ],
-      "evidence": "旧题cat/bird/fish三词英汉配对；新b08为cat/fish/rabbit，同为三动物词义配对且其中cat、fish答案完全相同，只换一个动物不构成新的教学任务。"
+      "evidence": "正式number-labels是two/five/ten与2/5/10三配对；新b08是one/three/four与1/3/4三配对。相同数量词到阿拉伯数字对应任务，只换数值，不应在混合测量中算独立新题型或能力。"
     }
   ],
   "remainingWork": [
-    "全部替题与目标范围扩充须由主代理审定；采纳提案也不等于清除全部词义复现，尤其b08明确为已教动物词巩固，不作独立无提示掌握证据。",
+    "主审已采纳b08改为现有p3.numbers和fixedGroups.b明确18ID顺序，已应用于本交接稿；未导入正式库。其余已审替题和p3.preferences范围扩充仍须在正式接入时显式映射，不能靠短操作语直接导入。",
     "两篇故事各三段均为afterQuestion=0且可跳过，正文为有中文支架的开场，不测故事记忆；英文难度、朗读和儿童可读性待审。",
     "8段听力及b02三图均未制作，无assetId、生成记录或实听证据；两段双人对话须真两声部。",
     "逐题媒体需求只是制作与验收规范，不表示界面支持或素材完成。音频脚本提交前不可见，提交后即时反馈可以正常揭示。",
     "exclusionPairs按采纳全部提案后的内容登记；每项恰两成员，主代理映射正式bank身份，不把连通分量合并为大互斥组。",
     "本地54旧题审计不处理旧旧题冲突；词义基础复现可保留，但不计新增覆盖。36题不等于36种新能力或全年课程。",
-    "原稿、catalog、正式题库、代码均未改；未生成素材、提交或部署。"
+    "原稿、catalog、正式题库、代码均未改；未生成素材、提交或部署。",
+    "正式接入必须读取固定顺序字段，并保持所有音图按题ID绑定；重排只降低密集复现，不声称互相提示全部消除。b08只覆盖1、3、4辨认，不代表十以内数量或全年目标已覆盖。"
+  ],
+  "fixedGroups": [
+    {
+      "id": "a",
+      "questionIds": [
+        "p3.astra.a01",
+        "p3.astra.a02",
+        "p3.astra.a03",
+        "p3.astra.a04",
+        "p3.astra.a05",
+        "p3.astra.a06",
+        "p3.astra.a07",
+        "p3.astra.a08",
+        "p3.astra.a09",
+        "p3.astra.a10",
+        "p3.astra.a11",
+        "p3.astra.a12",
+        "p3.astra.a13",
+        "p3.astra.a14",
+        "p3.astra.a15",
+        "p3.astra.a16",
+        "p3.astra.a17",
+        "p3.astra.a18"
+      ],
+      "ordering": "保持原顺序",
+      "feedbackTiming": "每题提交后即时反馈",
+      "mediaBinding": "按questionId绑定，不能按数组位置绑定"
+    },
+    {
+      "id": "b",
+      "questionIds": [
+        "p3.astra.b01",
+        "p3.astra.b10",
+        "p3.astra.b02",
+        "p3.astra.b07",
+        "p3.astra.b04",
+        "p3.astra.b12",
+        "p3.astra.b08",
+        "p3.astra.b14",
+        "p3.astra.b05",
+        "p3.astra.b09",
+        "p3.astra.b03",
+        "p3.astra.b17",
+        "p3.astra.b11",
+        "p3.astra.b13",
+        "p3.astra.b16",
+        "p3.astra.b15",
+        "p3.astra.b06",
+        "p3.astra.b18"
+      ],
+      "ordering": "主审已采纳的交错顺序；顺序仅分散密集复现，不代表知识帮助消失",
+      "feedbackTiming": "每题提交后即时反馈",
+      "mediaBinding": "按questionId绑定，position仅负责排程；b02三图、b03/b07/b12/b16音轨各随原题ID"
+    }
   ]
 }
