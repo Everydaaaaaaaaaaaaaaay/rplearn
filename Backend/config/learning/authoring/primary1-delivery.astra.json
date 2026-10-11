@@ -1,0 +1,3349 @@
+{
+  "level": "primary1",
+  "author": "Astra 小一交付复核，2026-10-11；36题逐题人工审阅，非发布版本",
+  "sourceReading": [
+    {
+      "sourceId": "pep.primary1.upper.archive",
+      "pages": "2026-10-11实际复核抽取正文 PDF 11–12、19–20、27–28、37–38、45–46、53–54，对应印刷6–7、14–15、22–23、32–33、40–41、48–49；本轮另目视PDF19页",
+      "evidence": "本地 build/learning-research-20260926/pep-primary1-archive.pdf；SHA-256 8a6237013cb04fd402d63c7285bfc63513c1c6537150edf0b17340f187d63bbf。正文包含四种文具、四个五官、五种动物、一至十数量、五种颜色和四种水果；图页确认五官指认图式。",
+      "limitations": "第三方旧版存档；本轮只核读列明页，不声称完整通读、当前新版逐课匹配或核听教材音频；题目不复用教材图文。 本轮读取的是本地按PDF页标记的抽取正文，并目视已列出的单页PNG；未重新全文抽取PDF，未浏览外部版本。"
+    },
+    {
+      "sourceId": "fltrp.primary1.upper.archive",
+      "pages": "2026-10-11实际复核抽取正文 PDF19–20、25–26、28、49–50，对应印刷14–15、20–21、23、44–45；本轮另目视PDF28页",
+      "evidence": "本地 build/learning-research-20260926/fltrp-primary1-archive.pdf；SHA-256 7b1eb1b3069a7b453b4db2f13821c1bea8b09b8b27670298be9b76c2c23aa67d。正文核对坐站、开门开窗、基本颜色、颜色加猫狗、一至十；图页确认幻想色动物语境。",
+      "limitations": "只采用catalog已限定的语言范围；图页另有白色、橙色和混色，本稿不扩用这些词。未核听教材音频。 本轮读取的是本地按PDF页标记的抽取正文，并目视已列出的单页PNG；未重新全文抽取PDF，未浏览外部版本。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "p1-astra-a01",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听声音，点出说到的文具。",
+      "prompt": "三样学习用品各放在一个格子里。点选录音提到的那一格。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一本合上的书"
+        },
+        {
+          "id": "B",
+          "text": "一把带刻度的直尺"
+        },
+        {
+          "id": "C",
+          "text": "一支削好的铅笔"
+        }
+      ],
+      "answer": "B",
+      "audioScript": "Show me your ruler.",
+      "imageBriefs": "三格同底色、物件同视觉大小；书露出书脊与纸页，尺有刻度但无数字文字，铅笔露出笔尖。无手指或箭头提示答案。",
+      "explanation": "ruler 是尺子，要找带刻度的直尺。",
+      "hint": "先把指令听完，再逐张核对物品。",
+      "difficultyReason": "在完整短指令中辨一个熟悉名词；无读写要求。",
+      "sourceBasis": "人教印刷6–7页：ruler及Show me / I have文具任务。",
+      "review": {
+        "reasoning": "只有B是尺，A与C均是同类学习用品但不符合所听名词。",
+        "wrongAnswer": "选C：把铅笔误当成ruler；形状细长不能代替词义。",
+        "ambiguity": "美术须画清尺的刻度与铅笔尖；不考学生是否知道尺的用途。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "尺与铅笔必须凭刻度和笔尖分清。单个尺词未预告a10的铅笔、书包。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Show me your ruler.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一本合上的书"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一把带刻度的直尺"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一支削好的铅笔"
+          }
+        ],
+        "imageAcceptance": "三格同底色、物件同视觉大小；书露出书脊与纸页，尺有刻度但无数字文字，铅笔露出笔尖。无手指或箭头提示答案。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a02",
+      "goalId": "p1.fruit-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个声音，各配一张水果图。",
+      "prompt": "声音①和声音②各需要一种水果。把两张相应的图放到它们下面，剩下一张不用。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一根完整香蕉"
+        },
+        {
+          "id": "B",
+          "text": "一个上窄下宽的梨"
+        },
+        {
+          "id": "C",
+          "text": "一个圆圆的橙子"
+        }
+      ],
+      "answer": {
+        "sound1": "C",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "An orange.",
+        "sound2": "A banana."
+      },
+      "imageBriefs": "三个水果均画完整外形，大小相近；香蕉弯曲并有果柄，梨具典型梨形，橙有细小果皮纹理。交互建议为独立播放与一对一拖放，也提供点选配对；不连播、不限时。",
+      "explanation": "orange 对应橙子，banana 对应香蕉，梨不需要配。",
+      "hint": "先听一个声音，配好后再听另一个。",
+      "difficultyReason": "将两个独立可重播的词音分别映射到图，不考工作记忆或水果颜色。",
+      "sourceBasis": "人教印刷48页四种水果听辨。",
+      "review": {
+        "reasoning": "①只能配C，②只能配A；B为同类但未提到的水果。",
+        "wrongAnswer": "①配B、②配A：第二个正确，第一个把梨当成橙子，整题不算全对。",
+        "ambiguity": "不把黄色或橙色作为判题规则；橙和梨必须凭完整形态区分。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "橙、香蕉映射唯一；梨作为余项。不可合并音轨。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "An orange.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "A banana.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一根完整香蕉"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一个上窄下宽的梨"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一个圆圆的橙子"
+          }
+        ],
+        "imageAcceptance": "三个水果均画完整外形，大小相近；香蕉弯曲并有果柄，梨具典型梨形，橙有细小果皮纹理。交互建议为独立播放与一对一拖放，也提供点选配对；不连播、不限时。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a03",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听声音，点出圈对部位的脸。",
+      "prompt": "三张木偶脸只有亮圈位置不同。请选择录音说到的部位；不用触碰自己。",
+      "options": [
+        {
+          "id": "A",
+          "text": "亮圈圈住一个耳朵"
+        },
+        {
+          "id": "B",
+          "text": "亮圈圈住嘴巴"
+        },
+        {
+          "id": "C",
+          "text": "亮圈圈住鼻子"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "Touch your ear.",
+      "imageBriefs": "三张相同正面木偶脸，双耳清楚外露；每图仅一个不遮挡五官的细亮圈。圈耳图只圈一耳，不能兼圈脸颊。",
+      "explanation": "ear 是耳朵，应选圈住耳朵的脸。",
+      "hint": "先听部位名称，再看每张脸上的圆圈。",
+      "difficultyReason": "把Touch your中的单个部位词与整脸定位对应，不测试真实动作。",
+      "sourceBasis": "人教印刷14页Touch your ear及五官指认。",
+      "review": {
+        "reasoning": "A的圈只对应耳，B为嘴，C为鼻，目标位置唯一。",
+        "wrongAnswer": "选B：听到的是ear，嘴巴对应mouth。",
+        "ambiguity": "图中没有头发、耳饰或手遮住耳朵；圈的位置而非表情决定答案。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "单耳圈不跨脸颊；不要求本人触碰。耳与后题眼、鼻不同。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Touch your ear.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "亮圈圈住一个耳朵"
+          },
+          {
+            "optionId": "B",
+            "semantics": "亮圈圈住嘴巴"
+          },
+          {
+            "optionId": "C",
+            "semantics": "亮圈圈住鼻子"
+          }
+        ],
+        "imageAcceptance": "三张相同正面木偶脸，双耳清楚外露；每图仅一个不遮挡五官的细亮圈。圈耳图只圈一耳，不能兼圈脸颊。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a04",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听颜色，点一张圆贴纸。",
+      "prompt": "三张贴纸形状和大小完全相同，只看录音要求的颜色。",
+      "options": [
+        {
+          "id": "A",
+          "text": "黑色圆贴纸"
+        },
+        {
+          "id": "B",
+          "text": "绿色圆贴纸"
+        },
+        {
+          "id": "C",
+          "text": "黄色圆贴纸"
+        }
+      ],
+      "answer": "C",
+      "audioScript": "Show me yellow.",
+      "imageBriefs": "白底三个同尺寸实心圆，黑、绿、黄均用稳定标准色，无图案、阴影或其他识别线索；中文颜色为无障碍替代描述。",
+      "explanation": "yellow 是黄色，黄色贴纸符合要求。",
+      "hint": "可以再听一次，然后逐张看看颜色。",
+      "difficultyReason": "最基础的单色听辨；不要求物品词或混色知识。",
+      "sourceBasis": "人教印刷40–41页五色及Show me red同类指认活动。",
+      "review": {
+        "reasoning": "C为唯一黄色；A、B是已学但不同的基本颜色。",
+        "wrongAnswer": "选B：green才是绿色，不能与yellow混同。",
+        "ambiguity": "任务依赖颜色视觉或中文颜色替代描述；须实际检查成图色值与显示可辨度。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "黄为唯一答案；只改形状并非新能力，颜色替代描述需如实报全体候选。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Show me yellow.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "黑色圆贴纸"
+          },
+          {
+            "optionId": "B",
+            "semantics": "绿色圆贴纸"
+          },
+          {
+            "optionId": "C",
+            "semantics": "黄色圆贴纸"
+          }
+        ],
+        "imageAcceptance": "白底三个同尺寸实心圆，黑、绿、黄均用稳定标准色，无图案、阴影或其他识别线索；中文颜色为无障碍替代描述。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a05",
+      "goalId": "p1.animals-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个介绍，各配一张动物图。",
+      "prompt": "每个声音按钮下面放一张动物图；有一张不用。",
+      "options": [
+        {
+          "id": "A",
+          "text": "有条纹的老虎"
+        },
+        {
+          "id": "B",
+          "text": "张开双翼的小鸟"
+        },
+        {
+          "id": "C",
+          "text": "垂耳小狗"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "It is a bird.",
+        "sound2": "It is a tiger."
+      },
+      "imageBriefs": "白底独立全身动物，鸟有喙和羽翼，虎有明显条纹，狗有垂耳；无场景或叫声。两个声音独立重播，用拖放或点选建立配对。",
+      "explanation": "bird 是鸟，tiger 是老虎；狗没有被提到。",
+      "hint": "听一个声音，就先给它找一张图。",
+      "difficultyReason": "从短介绍中抽取名词，配两个不同动物；不用记连播顺序。",
+      "sourceBasis": "人教印刷22–23页五种动物与简短介绍。",
+      "review": {
+        "reasoning": "鸟的图为B、虎的图为A，C不能满足任一声音。",
+        "wrongAnswer": "①配C：把dog与bird混淆，不能因都是小动物而配上。",
+        "ambiguity": "无需依据动物叫声、飞行能力或栖息地；全身外形足够。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "鸟与虎独立听辨，不能加叫声；狗为余项。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "It is a bird.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "It is a tiger.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "有条纹的老虎"
+          },
+          {
+            "optionId": "B",
+            "semantics": "张开双翼的小鸟"
+          },
+          {
+            "optionId": "C",
+            "semantics": "垂耳小狗"
+          }
+        ],
+        "imageAcceptance": "白底独立全身动物，鸟有喙和羽翼，虎有明显条纹，狗有垂耳；无场景或叫声。两个声音独立重播，用拖放或点选建立配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a06",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听数量，点出圆饼数相同的盘子。",
+      "prompt": "每盘圆饼都分开放着。只数饼，不数盘子或盘边花纹。",
+      "options": [
+        {
+          "id": "A",
+          "text": "盘内四块圆饼"
+        },
+        {
+          "id": "B",
+          "text": "盘内五块圆饼"
+        },
+        {
+          "id": "C",
+          "text": "盘内三块圆饼"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "Four.",
+      "imageBriefs": "三只纯白无花纹盘，饼同尺寸无碎屑；四块按两排各二，五块按三加二，三块呈三角；不得相互遮挡。",
+      "explanation": "four 表示四个，四块饼的盘子正确。",
+      "hint": "一块一块点着数，最后再对照听到的数量。",
+      "difficultyReason": "将four与四个分离物体对应；邻近数量三、五形成有效干扰。",
+      "sourceBasis": "人教印刷32–33页；外研印刷44–45页一至十听数活动。",
+      "review": {
+        "reasoning": "A中恰好四块，B多一块，C少一块；不要求做加减。",
+        "wrongAnswer": "选B：盘子看起来更满不代表four，实际有五块。",
+        "ambiguity": "饼上不画小圆装饰，避免把装饰也数作饼。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "四对三、五唯一；无碎屑和盘边圆纹。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Four.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "盘内四块圆饼"
+          },
+          {
+            "optionId": "B",
+            "semantics": "盘内五块圆饼"
+          },
+          {
+            "optionId": "C",
+            "semantics": "盘内三块圆饼"
+          }
+        ],
+        "imageAcceptance": "三只纯白无花纹盘，饼同尺寸无碎屑；四块按两排各二，五块按三加二，三块呈三角；不得相互遮挡。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-a07",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听介绍，点出颜色和动物都对的纸偶。",
+      "prompt": "颜色和动物都要对上；这些纸偶可以是想象中的颜色。",
+      "options": [
+        {
+          "id": "A",
+          "text": "红色猫纸偶"
+        },
+        {
+          "id": "B",
+          "text": "绿色狗纸偶"
+        },
+        {
+          "id": "C",
+          "text": "绿色猫纸偶"
+        }
+      ],
+      "answer": "C",
+      "audioScript": "It is a green cat.",
+      "imageBriefs": "三只纸偶同尺寸、纯主色；A与C猫轮廓相同，B为垂耳狗；眼鼻用少量中性色，绿不是衣服颜色。",
+      "explanation": "green cat 是绿色的猫，颜色和猫的形状都要符合。",
+      "hint": "先听颜色，再听是哪种动物。",
+      "difficultyReason": "同时保留两个简单属性；A只动物对，B只颜色对。",
+      "sourceBasis": "外研印刷23页幻想色猫狗，目视核读。",
+      "review": {
+        "reasoning": "C满足绿和猫两个条件；A红色错误，B动物错误。",
+        "wrongAnswer": "选B：只听准green，没有分清cat与dog。",
+        "ambiguity": "题干说明幻想色纸偶，不要求现实动物毛色；不得用衣服颜色替代身体主色。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "绿猫同时排除红猫、绿狗；与正式q6完整同构。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "It is a green cat.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "红色猫纸偶"
+          },
+          {
+            "optionId": "B",
+            "semantics": "绿色狗纸偶"
+          },
+          {
+            "optionId": "C",
+            "semantics": "绿色猫纸偶"
+          }
+        ],
+        "imageAcceptance": "三只纸偶同尺寸、纯主色；A与C猫轮廓相同，B为垂耳狗；眼鼻用少量中性色，绿不是衣服颜色。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a08",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听数量，点出照片数相同的一页。",
+      "prompt": "每个选项是一整页相册，数完两排全部照片再选。",
+      "options": [
+        {
+          "id": "A",
+          "text": "六张独立照片"
+        },
+        {
+          "id": "B",
+          "text": "八张独立照片"
+        },
+        {
+          "id": "C",
+          "text": "七张独立照片"
+        }
+      ],
+      "answer": "C",
+      "audioScript": "Seven.",
+      "imageBriefs": "三页相册无封面、无重叠，分别排三加三、四加四、四加三；照片内只有一条抽象色带，不能产生可误数的小照片。",
+      "explanation": "seven 表示七，四张和三张两排一共可逐张数到七。",
+      "hint": "两排都要数，数过的照片不要再数一次。",
+      "difficultyReason": "听七并逐个核对六至八的相邻数量；不要求计算。",
+      "sourceBasis": "人教印刷32–33页、外研印刷44–45页；遵守现有六至十照片计数边界。",
+      "review": {
+        "reasoning": "只有C完整页有七张，A六、B八。",
+        "wrongAnswer": "选B：两排一样长很整齐，但实际有八张，不是seven。",
+        "ambiguity": "不能用照片图案数量充当照片数；成图须逐张核验。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "七张可逐张数；页面相同大小，不用板宽暗示。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Seven.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "六张独立照片"
+          },
+          {
+            "optionId": "B",
+            "semantics": "八张独立照片"
+          },
+          {
+            "optionId": "C",
+            "semantics": "七张独立照片"
+          }
+        ],
+        "imageAcceptance": "三页相册无封面、无重叠，分别排三加三、四加四、四加三；照片内只有一条抽象色带，不能产生可误数的小照片。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-a09",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听指令，点出木偶照做后的图。",
+      "prompt": "现在木偶站在椅子前。听完录音，哪张图表示它照做了？",
+      "options": [
+        {
+          "id": "A",
+          "text": "木偶坐在椅面上，双脚落地"
+        },
+        {
+          "id": "B",
+          "text": "木偶仍站在椅子旁"
+        },
+        {
+          "id": "C",
+          "text": "木偶站着把门打开"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "Sit down, please.",
+      "imageBriefs": "起始图木偶站立；三幅结果图使用同一木偶、同一椅子、同一房间。A明确臀部落座，C门开但木偶站立；不画中途动作。",
+      "explanation": "Sit down 是坐下。坐在椅子上的结果符合指令。",
+      "hint": "听完整句，再比较每张图的完成状态。",
+      "difficultyReason": "将一个完整指令与完成状态对应；无需本人活动。",
+      "sourceBasis": "外研印刷14–15页Sit down、Stand up；人教印刷6页。",
+      "review": {
+        "reasoning": "A完成坐下，B没改变，C完成了别的动作。",
+        "wrongAnswer": "选C：虽然木偶做了事，但开门不是Sit down。",
+        "ambiguity": "只判断静态结果；椅子高度须让坐姿与站姿明显区分。"
+      },
+      "taskIntent": "instruction_result_choice",
+      "deliveryReview": "坐下结果唯一；提示改中性，避免预先缩小到坐或站。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Sit down, please.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "initial",
+            "semantics": "同一木偶站在椅子前，门窗关闭。"
+          },
+          {
+            "optionId": "A",
+            "semantics": "木偶坐在椅面上，双脚落地"
+          },
+          {
+            "optionId": "B",
+            "semantics": "木偶仍站在椅子旁"
+          },
+          {
+            "optionId": "C",
+            "semantics": "木偶站着把门打开"
+          }
+        ],
+        "imageAcceptance": "起始图木偶站立；三幅结果图使用同一木偶、同一椅子、同一房间。A明确臀部落座，C门开但木偶站立；不画中途动作。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a10",
+      "goalId": "p1.school-items-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个声音，各配一张文具图。",
+      "prompt": "声音①和声音②可单独重听。每个声音只配一张图，还有一张留在推车上。",
+      "options": [
+        {
+          "id": "A",
+          "text": "带双肩带的书包"
+        },
+        {
+          "id": "B",
+          "text": "一支有笔尖的铅笔"
+        },
+        {
+          "id": "C",
+          "text": "一本露出纸页的书"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "I have a pencil.",
+        "sound2": "I have a schoolbag."
+      },
+      "imageBriefs": "物品独立图卡，书包不打开、不露出其他文具；书无字。声音按钮保持可见，可反复单听，以点选或拖放配对。",
+      "explanation": "pencil 对应铅笔，schoolbag 对应书包；书这次没有被说到。",
+      "hint": "不用记整句，留意最后的物品名称。",
+      "difficultyReason": "两个名词在相同简短句式中出现，重播消除长序列记忆要求。",
+      "sourceBasis": "人教印刷7页I have文具介绍。",
+      "review": {
+        "reasoning": "①B、②A是唯一词图对应，C是book。",
+        "wrongAnswer": "①B、②C：schoolbag不是book，虽然都与上学有关。",
+        "ambiguity": "书包必须完整露出肩带，避免画成普通手提袋；不判断所有者。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "铅笔和书包完整映射；关闭书包避免内露书。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "I have a pencil.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "I have a schoolbag.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "带双肩带的书包"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一支有笔尖的铅笔"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一本露出纸页的书"
+          }
+        ],
+        "imageAcceptance": "物品独立图卡，书包不打开、不露出其他文具；书无字。声音按钮保持可见，可反复单听，以点选或拖放配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a11",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听声音，点出说到的水果。",
+      "prompt": "只选录音要的水果，不用比较大小或颜色。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一个有圆形轮廓和凹顶的苹果"
+        },
+        {
+          "id": "B",
+          "text": "一根带柄香蕉"
+        },
+        {
+          "id": "C",
+          "text": "一个上窄下宽的梨"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "Show me an apple.",
+      "imageBriefs": "三个完整水果同等显著，苹果明显圆形肩部及凹顶，梨有细颈；空碟只是背景且不含水果影子。",
+      "explanation": "apple 是苹果，应选圆形、顶端微凹的苹果图。",
+      "hint": "先听最后的水果名称，再逐张核对图。",
+      "difficultyReason": "从简短请求中选具体水果；苹果与梨同为有柄水果形成形态干扰。",
+      "sourceBasis": "人教印刷48页Show me an apple。",
+      "review": {
+        "reasoning": "A为苹果，B香蕉、C梨都不符合音频；颜色不参与答案。",
+        "wrongAnswer": "选C：梨虽也有果柄，但pear与apple不是同一种水果。",
+        "ambiguity": "苹果不可画成长颈梨形；语音不得在答案词前添加提示音效。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "苹果凹顶与梨细颈可辨；不另加放碟子的拖拽要求。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Show me an apple.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一个有圆形轮廓和凹顶的苹果"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一根带柄香蕉"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一个上窄下宽的梨"
+          }
+        ],
+        "imageAcceptance": "三个完整水果同等显著，苹果明显圆形肩部及凹顶，梨有细颈；空碟只是背景且不含水果影子。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a12",
+      "goalId": "p1.face-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个声音，各配一张五官图。",
+      "prompt": "分别听声音①和②。每个声音配一个部位，剩下的不用；不需要触碰自己的脸。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一个鼻子的清晰小图"
+        },
+        {
+          "id": "B",
+          "text": "一只张开的眼睛"
+        },
+        {
+          "id": "C",
+          "text": "一张微张的嘴"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "An eye.",
+        "sound2": "A nose."
+      },
+      "imageBriefs": "三张简洁五官局部图，眼睛有眼白、虹膜与上下眼睑，鼻画鼻梁和鼻翼，嘴有上下唇；独立声音图卡配对，随时重听。",
+      "explanation": "eye 是眼睛，nose 是鼻子，嘴巴没有被说到。",
+      "hint": "配好一个以后，再听另一个声音。",
+      "difficultyReason": "从整脸指认迁移到清楚局部轮廓；只要求单部位听辨。",
+      "sourceBasis": "人教印刷14–15页eye、nose、mouth词图。",
+      "review": {
+        "reasoning": "①只能配B，②只能配A，C是mouth。",
+        "wrongAnswer": "①C、②A：鼻子配对正确，但把眼睛配成嘴仍错误。",
+        "ambiguity": "眼睛不能闭合成与嘴相似的弧线；不考五官功能。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "眼有虹膜且张开，鼻有鼻翼；嘴不能像闭眼。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "An eye.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "A nose.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一个鼻子的清晰小图"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一只张开的眼睛"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一张微张的嘴"
+          }
+        ],
+        "imageAcceptance": "三张简洁五官局部图，眼睛有眼白、虹膜与上下眼睑，鼻画鼻梁和鼻翼，嘴有上下唇；独立声音图卡配对，随时重听。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a13",
+      "goalId": "p1.basic-colours-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个颜色，各配一张色片。",
+      "prompt": "每个声音下面放一张色片，剩下一张不放。可以反复单听。",
+      "options": [
+        {
+          "id": "A",
+          "text": "蓝色色片"
+        },
+        {
+          "id": "B",
+          "text": "黑色色片"
+        },
+        {
+          "id": "C",
+          "text": "红色色片"
+        }
+      ],
+      "answer": {
+        "sound1": "C",
+        "sound2": "B"
+      },
+      "audioScript": {
+        "sound1": "Red.",
+        "sound2": "Black."
+      },
+      "imageBriefs": "同形同尺寸无纹样纯色色片；蓝与黑有足够亮度差但不借亮度规则判题。独立按钮点选配对。",
+      "explanation": "red 对应红色，black 对应黑色；蓝色是blue。",
+      "hint": "每次只给一个声音找颜色。",
+      "difficultyReason": "两个单词独立映射到色片；不加入物品词或双属性。",
+      "sourceBasis": "人教印刷40页、外研印刷21页基本颜色。",
+      "review": {
+        "reasoning": "①C、②B，蓝色图只作未提到的同类干扰。",
+        "wrongAnswer": "②A：蓝色再深也不能作为black的正确答案。",
+        "ambiguity": "禁止深蓝接近纯黑；中文替代描述直接报颜色，承认视觉依赖。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "红黑映射唯一；蓝黑需足够可辨但不把明暗当规则。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Red.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Black.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "蓝色色片"
+          },
+          {
+            "optionId": "B",
+            "semantics": "黑色色片"
+          },
+          {
+            "optionId": "C",
+            "semantics": "红色色片"
+          }
+        ],
+        "imageAcceptance": "同形同尺寸无纹样纯色色片；蓝与黑有足够亮度差但不借亮度规则判题。独立按钮点选配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a14",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听介绍，点出说到的动物布偶。",
+      "prompt": "三只布偶都没有衣服和道具，按动物的样子来选。",
+      "options": [
+        {
+          "id": "A",
+          "text": "圆耳长尾的猴子布偶"
+        },
+        {
+          "id": "B",
+          "text": "三角耳带胡须的猫布偶"
+        },
+        {
+          "id": "C",
+          "text": "垂耳长嘴的小狗布偶"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "It is a monkey.",
+      "imageBriefs": "原创布偶风格全身图；猴子有明显猴脸、圆耳、四肢和长尾；猫狗外形明确，三者颜色不作识别条件。",
+      "explanation": "monkey 是猴子，选猴子布偶。",
+      "hint": "听最后的动物名称，再看看三只布偶。",
+      "difficultyReason": "把常见动物词迁移到布偶外观；不以真实照片或叫声作为前提。",
+      "sourceBasis": "人教印刷22–23页monkey及动物介绍。",
+      "review": {
+        "reasoning": "A唯一具有猴的整体形象，B猫、C狗不符合。",
+        "wrongAnswer": "选B：猫也有尾巴，但monkey并不表示所有长尾动物。",
+        "ambiguity": "不能只画尾巴让学生猜，猴脸和四肢必须同时清楚。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "猴靠完整脸和肢体认，不靠长尾单特征。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "It is a monkey.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "圆耳长尾的猴子布偶"
+          },
+          {
+            "optionId": "B",
+            "semantics": "三角耳带胡须的猫布偶"
+          },
+          {
+            "optionId": "C",
+            "semantics": "垂耳长嘴的小狗布偶"
+          }
+        ],
+        "imageAcceptance": "原创布偶风格全身图；猴子有明显猴脸、圆耳、四肢和长尾；猫狗外形明确，三者颜色不作识别条件。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a15",
+      "goalId": "p1.quantities-one-five",
+      "type": "audioMatching",
+      "instruction": "分别听两个数量，各配一张圆点卡。",
+      "prompt": "每个声音需要一张点数相同的卡。可以逐个点着数，也可以重听。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一枚圆点"
+        },
+        {
+          "id": "B",
+          "text": "三枚圆点"
+        },
+        {
+          "id": "C",
+          "text": "两枚圆点"
+        }
+      ],
+      "answer": {
+        "sound1": "C",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "Two.",
+        "sound2": "One."
+      },
+      "imageBriefs": "三个无边框白底点阵，点大小一致且分离；两点斜放，三点一排；不显示数字字形。独立声音配对。",
+      "explanation": "two 是两个，one 是一个；三点卡没有用到。",
+      "hint": "听完一个声音，数一张卡上的全部圆点。",
+      "difficultyReason": "一与二的基础对应，卡片空间排列不等于数量顺序。",
+      "sourceBasis": "人教印刷32页、外研印刷44–45页one、two、three。",
+      "review": {
+        "reasoning": "①C、②A；每张点卡只有一个清楚的总数。",
+        "wrongAnswer": "①B：看到一排圆点就选了，但B有三点，不是two。",
+        "ambiguity": "不画装饰小点，卡片也不带序号水印；界面选项编号不是计数对象。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "二和一不由a06的四直接给出；点卡无数字和序号水印。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Two.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "One.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一枚圆点"
+          },
+          {
+            "optionId": "B",
+            "semantics": "三枚圆点"
+          },
+          {
+            "optionId": "C",
+            "semantics": "两枚圆点"
+          }
+        ],
+        "imageAcceptance": "三个无边框白底点阵，点大小一致且分离；两点斜放，三点一排；不显示数字字形。独立声音配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-a16",
+      "goalId": "p1.colour-animal-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个介绍，各配一张彩色动物图。",
+      "prompt": "两个声音可各自重听，每个配一张图。余下的一张不用。",
+      "options": [
+        {
+          "id": "A",
+          "text": "蓝色狗"
+        },
+        {
+          "id": "B",
+          "text": "红色猫"
+        },
+        {
+          "id": "C",
+          "text": "蓝色猫"
+        }
+      ],
+      "answer": {
+        "sound1": "A",
+        "sound2": "B"
+      },
+      "audioScript": {
+        "sound1": "A blue dog.",
+        "sound2": "A red cat."
+      },
+      "imageBriefs": "三只同尺寸幻想色动物。狗垂耳，猫三角耳；蓝狗与蓝猫主色相同，红猫与蓝猫轮廓相同。独立声音配对。",
+      "explanation": "blue dog 是蓝色狗；red cat 是红色猫。蓝色猫不能只凭其中一个词配上。",
+      "hint": "配图前再检查一次：颜色对吗，动物也对吗？",
+      "difficultyReason": "两个双属性短语分开处理，C可暴露只听颜色或只听动物的错误。",
+      "sourceBasis": "外研印刷23页颜色加猫狗；蓝狗为已有目标词的原创组合。",
+      "review": {
+        "reasoning": "①A、②B；C只满足①的颜色、②的动物，均不能配。",
+        "wrongAnswer": "①C、②B：①颜色正确而动物错误，不能得全对。",
+        "ambiguity": "蓝狗组合不是声称教材逐句原文；按现有目标范围重组且不用新词。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "蓝狗、红猫；蓝猫分别只共享一个属性，不能按某一个词配。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "A blue dog.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "A red cat.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "蓝色狗"
+          },
+          {
+            "optionId": "B",
+            "semantics": "红色猫"
+          },
+          {
+            "optionId": "C",
+            "semantics": "蓝色猫"
+          }
+        ],
+        "imageAcceptance": "三只同尺寸幻想色动物。狗垂耳，猫三角耳；蓝狗与蓝猫主色相同，红猫与蓝猫轮廓相同。独立声音配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-a17",
+      "goalId": "p1.quantities-six-ten",
+      "type": "audioMatching",
+      "instruction": "分别听两个数量，各配一页照片。",
+      "prompt": "每页的两排照片都要数。声音可以单独重听，页面没有英文或阿拉伯数字。",
+      "options": [
+        {
+          "id": "A",
+          "text": "十张照片，分成五张和五张"
+        },
+        {
+          "id": "B",
+          "text": "八张照片，分成四张和四张"
+        },
+        {
+          "id": "C",
+          "text": "九张照片，分成五张和四张"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "Eight.",
+        "sound2": "Ten."
+      },
+      "imageBriefs": "三页同尺寸，照片同尺寸且留足间隙，不出现照片外装饰；两排逐张可数。交互为两个独立声音到相册页的一对一配对。",
+      "explanation": "eight 是八，ten 是十；九张的一页没有被要求。",
+      "hint": "可以从左上开始，一张一张数到右下。",
+      "difficultyReason": "上段数量听辨加完整集合计数；不考把两行相加的算式。",
+      "sourceBasis": "人教印刷32–33页、外研印刷45页eight、nine、ten。",
+      "review": {
+        "reasoning": "①B恰有八、②A恰有十，C九为相邻干扰。",
+        "wrongAnswer": "②C：九与十只差一张，漏数不能算正确。",
+        "ambiguity": "照片不能叠放或裁边，图片小屏预览须保证每张分界可见。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "八与十各自重听，九为干扰；不可用一条长音轨或文字数词替代。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Eight.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Ten.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "十张照片，分成五张和五张"
+          },
+          {
+            "optionId": "B",
+            "semantics": "八张照片，分成四张和四张"
+          },
+          {
+            "optionId": "C",
+            "semantics": "九张照片，分成五张和四张"
+          }
+        ],
+        "imageAcceptance": "三页同尺寸，照片同尺寸且留足间隙，不出现照片外装饰；两排逐张可数。交互为两个独立声音到相册页的一对一配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-a18",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听指令，点出房间照做后的图。",
+      "prompt": "开始时门和窗都关着。录音说完后，哪幅图表示正确完成？",
+      "options": [
+        {
+          "id": "A",
+          "text": "门开着，窗关着"
+        },
+        {
+          "id": "B",
+          "text": "门关着，窗开着"
+        },
+        {
+          "id": "C",
+          "text": "门和窗仍都关着"
+        }
+      ],
+      "answer": "B",
+      "audioScript": "Open the window, please.",
+      "imageBriefs": "同一房间同一视角；门在左、窗在右且形态明显不同。开窗图窗扇明显外开，开门图门扇明显打开；没有人物位置线索。",
+      "explanation": "Open the window 是打开窗户，门不需要打开。",
+      "hint": "听清要打开哪一样，再比较结果图。",
+      "difficultyReason": "分清相同动词后的对象，并对照变化后的完整状态。",
+      "sourceBasis": "外研印刷15页开窗与开门指令。",
+      "review": {
+        "reasoning": "B只打开窗，A打开错误对象，C未执行。",
+        "wrongAnswer": "选A：听懂open但把door与window混淆。",
+        "ambiguity": "不要求推断动作先后；起始状态与所需结果都明确，禁止只画窗帘变化。"
+      },
+      "taskIntent": "instruction_result_choice",
+      "deliveryReview": "只开窗唯一；原提示含英文window/door，改全中文且不报译义。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Open the window, please.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "initial",
+            "semantics": "同一房间，门窗均关闭。"
+          },
+          {
+            "optionId": "A",
+            "semantics": "门开着，窗关着"
+          },
+          {
+            "optionId": "B",
+            "semantics": "门关着，窗开着"
+          },
+          {
+            "optionId": "C",
+            "semantics": "门和窗仍都关着"
+          }
+        ],
+        "imageAcceptance": "同一房间同一视角；门在左、窗在右且形态明显不同。开窗图窗扇明显外开，开门图门扇明显打开；没有人物位置线索。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b01",
+      "goalId": "p1.school-items-listening",
+      "type": "listeningChoice",
+      "instruction": "听介绍，点出说到的学习用品。",
+      "prompt": "三个格子分别放着一本摊开的书、一把直尺和一个书包。选录音提到的那个。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一把直尺"
+        },
+        {
+          "id": "B",
+          "text": "一本摊开的书"
+        },
+        {
+          "id": "C",
+          "text": "一个双肩书包"
+        }
+      ],
+      "answer": "B",
+      "audioScript": "I have a book.",
+      "imageBriefs": "书摊开且装订中缝清楚，页上只有无文字几何插画；尺与书包完整独立。不得将书误画成两张散纸。",
+      "explanation": "book 是书；摊开的书也对应book。",
+      "hint": "先听最后的物品名称，再看看每件物品。",
+      "difficultyReason": "将听到的书对应到打开状态，检验概念识别而非只记封面轮廓。",
+      "sourceBasis": "人教印刷6–7页book及I have a book。",
+      "review": {
+        "reasoning": "B为唯一书本，A尺、C书包都是合理文具干扰。",
+        "wrongAnswer": "选C：书包可能装书，但音频说的是book本身。",
+        "ambiguity": "书包画关闭，不让内露书本造成两项均含书。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "摊开的书仍须装订完整；提示不依赖a01。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "I have a book.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一把直尺"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一本摊开的书"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一个双肩书包"
+          }
+        ],
+        "imageAcceptance": "书摊开且装订中缝清楚，页上只有无文字几何插画；尺与书包完整独立。不得将书误画成两张散纸。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b02",
+      "goalId": "p1.fruit-listening",
+      "type": "listeningChoice",
+      "instruction": "听声音，点出说到的水果图。",
+      "prompt": "三张水果图都用灰色线条画成；不用看颜色，选听到的水果。",
+      "options": [
+        {
+          "id": "A",
+          "text": "带细颈的完整梨轮廓"
+        },
+        {
+          "id": "B",
+          "text": "弯曲香蕉轮廓"
+        },
+        {
+          "id": "C",
+          "text": "圆肩凹顶的苹果轮廓"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "A pear.",
+      "imageBriefs": "三张黑灰线描图同尺寸白底，梨上窄下宽但不夸张成葫芦，香蕉弯曲，苹果无细颈。没有实物切片。",
+      "explanation": "pear 是梨，即使没有颜色也能由完整梨形认出来。",
+      "hint": "可以再听一次，看看三个水果的完整形状。",
+      "difficultyReason": "消除熟悉颜色帮助，仍只测四种具体水果名词。",
+      "sourceBasis": "人教印刷48页pear及水果听辨；线描呈现为原创迁移。",
+      "review": {
+        "reasoning": "A形态为梨，B香蕉、C苹果；不存在颜色条件。",
+        "wrongAnswer": "选C：苹果也有果柄，但它没有梨的细颈。",
+        "ambiguity": "须独立看图确认梨与苹果轮廓清楚；不以美术风格猜词。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "梨的线描不能变葫芦；不为换画风声称新增能力。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "A pear.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "带细颈的完整梨轮廓"
+          },
+          {
+            "optionId": "B",
+            "semantics": "弯曲香蕉轮廓"
+          },
+          {
+            "optionId": "C",
+            "semantics": "圆肩凹顶的苹果轮廓"
+          }
+        ],
+        "imageAcceptance": "三张黑灰线描图同尺寸白底，梨上窄下宽但不夸张成葫芦，香蕉弯曲，苹果无细颈。没有实物切片。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b03",
+      "goalId": "p1.face-listening",
+      "type": "listeningChoice",
+      "instruction": "听声音，点出圈对部位的脸。",
+      "prompt": "三张木偶脸的圆框位置不同，只需选图，不用往自己脸上贴东西。",
+      "options": [
+        {
+          "id": "A",
+          "text": "圆框围住一只眼睛"
+        },
+        {
+          "id": "B",
+          "text": "圆框围住鼻子"
+        },
+        {
+          "id": "C",
+          "text": "圆框围住嘴巴"
+        }
+      ],
+      "answer": "C",
+      "audioScript": "Touch your mouth.",
+      "imageBriefs": "完全相同的木偶脸三副，圆框依次框单眼、鼻、嘴；五官不被框线遮挡。不得以张嘴程度或笑脸提示答案。",
+      "explanation": "mouth 是嘴巴，选择嘴巴外有圆框的那张。",
+      "hint": "注意录音最后的部位名称，再看圆圈位置。",
+      "difficultyReason": "从部位词转到整脸空间定位；与鼻和眼形成近位置干扰。",
+      "sourceBasis": "人教印刷14–15页mouth与Touch your句式。",
+      "review": {
+        "reasoning": "C框嘴，A框眼、B框鼻，且各框不跨部位。",
+        "wrongAnswer": "选B：nose指鼻子，不能因离嘴近就选它。",
+        "ambiguity": "圈必须只包围目标部位；不得让圆框遮掉嘴使其不可辨。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "嘴圈不跨鼻；只选图，删除贴脸想象操作。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Touch your mouth.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "圆框围住一只眼睛"
+          },
+          {
+            "optionId": "B",
+            "semantics": "圆框围住鼻子"
+          },
+          {
+            "optionId": "C",
+            "semantics": "圆框围住嘴巴"
+          }
+        ],
+        "imageAcceptance": "完全相同的木偶脸三副，圆框依次框单眼、鼻、嘴；五官不被框线遮挡。不得以张嘴程度或笑脸提示答案。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b04",
+      "goalId": "p1.basic-colours-listening",
+      "type": "listeningChoice",
+      "instruction": "听颜色，点一块底板。",
+      "prompt": "三块底板都是同样的长方形，只需选录音指定的颜色。",
+      "options": [
+        {
+          "id": "A",
+          "text": "红色底板"
+        },
+        {
+          "id": "B",
+          "text": "蓝色底板"
+        },
+        {
+          "id": "C",
+          "text": "绿色底板"
+        }
+      ],
+      "answer": "B",
+      "audioScript": "It is blue.",
+      "imageBriefs": "三个相同大小长方形色板，红蓝绿无渐变无图案；背景留白，不让相邻色反光。",
+      "explanation": "blue 是蓝色，应选蓝色底板。",
+      "hint": "这一句只告诉你一种颜色。",
+      "difficultyReason": "从简短陈述中听出颜色，蓝绿作为相邻色系干扰但图中必须明显区分。",
+      "sourceBasis": "人教印刷40–41页、外研印刷20–21页基本色与It's表达。",
+      "review": {
+        "reasoning": "B是唯一蓝色，A红、C绿。",
+        "wrongAnswer": "选C：绿色对应green，不是blue。",
+        "ambiguity": "不用偏青的中间色；颜色替代描述允许辅助作答，不声称纯视觉无障碍。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "蓝色清楚、不偏青；与正式蓝书签同构。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "It is blue.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "红色底板"
+          },
+          {
+            "optionId": "B",
+            "semantics": "蓝色底板"
+          },
+          {
+            "optionId": "C",
+            "semantics": "绿色底板"
+          }
+        ],
+        "imageAcceptance": "三个相同大小长方形色板，红蓝绿无渐变无图案；背景留白，不让相邻色反光。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b05",
+      "goalId": "p1.animals-listening",
+      "type": "listeningChoice",
+      "instruction": "听介绍，点出说到的动物头像。",
+      "prompt": "三张贴纸分别是猫、老虎和狗的清晰头像。选择声音介绍的动物。",
+      "options": [
+        {
+          "id": "A",
+          "text": "圆耳、额头有条纹的老虎头像"
+        },
+        {
+          "id": "B",
+          "text": "垂耳、长嘴的小狗头像"
+        },
+        {
+          "id": "C",
+          "text": "三角耳、有胡须的家猫头像"
+        }
+      ],
+      "answer": "B",
+      "audioScript": "It is a dog.",
+      "imageBriefs": "原创头像，狗为明确垂耳长嘴，虎圆耳大脸有额纹，家猫尖耳小脸；各自都带同样圆形白边。",
+      "explanation": "dog 是狗，应选小狗头像。",
+      "hint": "不要只看都有两只耳朵，看看整个脸的样子。",
+      "difficultyReason": "同类动物只露头像时仍能听词识别；不考尾巴或身体线索。",
+      "sourceBasis": "人教印刷22–23页dog、cat、tiger。",
+      "review": {
+        "reasoning": "B明确为狗，A虎、C猫。",
+        "wrongAnswer": "选C：cat才是家猫，不能因两个头像都可爱就混同。",
+        "ambiguity": "狗不可画成尖耳短嘴的模糊形象；最终成图需盲看确认三物种。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "狗、虎、猫须独立盲认；同样的边框不能偏显目标。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "It is a dog.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "圆耳、额头有条纹的老虎头像"
+          },
+          {
+            "optionId": "B",
+            "semantics": "垂耳、长嘴的小狗头像"
+          },
+          {
+            "optionId": "C",
+            "semantics": "三角耳、有胡须的家猫头像"
+          }
+        ],
+        "imageAcceptance": "原创头像，狗为明确垂耳长嘴，虎圆耳大脸有额纹，家猫尖耳小脸；各自都带同样圆形白边。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b06",
+      "goalId": "p1.quantities-one-five",
+      "type": "listeningChoice",
+      "instruction": "听数量，点出积木数相同的盒子。",
+      "prompt": "每个盒子里的积木都平铺着，没有藏在下面的积木。数积木，不数盒子。",
+      "options": [
+        {
+          "id": "A",
+          "text": "五块彼此分离的方积木"
+        },
+        {
+          "id": "B",
+          "text": "四块彼此分离的方积木"
+        },
+        {
+          "id": "C",
+          "text": "三块彼此分离的方积木"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "Five.",
+      "imageBriefs": "俯视三个浅盒，五块散排、四块成方阵、三块一排；同尺寸方块不画分割线、不叠放，无盒外散落物。",
+      "explanation": "five 是五，选可以一块一块数到五的盒子。",
+      "hint": "散放的积木也要每块只数一次。",
+      "difficultyReason": "五个物体以不规则排列出现，防止仅凭固定点阵背形状。",
+      "sourceBasis": "人教印刷32–33页、外研印刷44–45页five及数物。",
+      "review": {
+        "reasoning": "A五块，B四块，C三块；位置松散不影响总数。",
+        "wrongAnswer": "选B：排列整齐不表示five，B只有四块。",
+        "ambiguity": "积木表面的棱线不能像多个拼接方块；每块完整分离。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "五块散排仍每块一次；棱线不能像组合方块。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Five.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "五块彼此分离的方积木"
+          },
+          {
+            "optionId": "B",
+            "semantics": "四块彼此分离的方积木"
+          },
+          {
+            "optionId": "C",
+            "semantics": "三块彼此分离的方积木"
+          }
+        ],
+        "imageAcceptance": "俯视三个浅盒，五块散排、四块成方阵、三块一排；同尺寸方块不画分割线、不叠放，无盒外散落物。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-b07",
+      "goalId": "p1.colour-animal-listening",
+      "type": "listeningChoice",
+      "instruction": "听介绍，点出颜色和动物都对的窗贴。",
+      "prompt": "每张窗贴只有一只动物。既要听颜色，也要听动物名字。",
+      "options": [
+        {
+          "id": "A",
+          "text": "红色狗窗贴"
+        },
+        {
+          "id": "B",
+          "text": "蓝色狗窗贴"
+        },
+        {
+          "id": "C",
+          "text": "红色猫窗贴"
+        }
+      ],
+      "answer": "A",
+      "audioScript": "A red dog.",
+      "imageBriefs": "纯色原创动物窗贴，透明效果仅用于白色外边，不改变红蓝主色；红狗与蓝狗同轮廓，红猫尖耳有胡须。",
+      "explanation": "red dog 是红色狗，蓝狗颜色不对，红猫动物不对。",
+      "hint": "先核对颜色，再核对动物，两个都要相符。",
+      "difficultyReason": "同色与同动物各有一项干扰，不能只抓一个词。",
+      "sourceBasis": "外研印刷23页red dog及幻想色猫狗。",
+      "review": {
+        "reasoning": "A满足双条件，B只满足狗，C只满足红。",
+        "wrongAnswer": "选C：听到red就停止判断，遗漏了dog。",
+        "ambiguity": "窗贴主色必须是动物本体，背景和窗框不参与颜色判定。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "红狗排蓝狗和红猫，正式q1完全同构。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "A red dog.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "红色狗窗贴"
+          },
+          {
+            "optionId": "B",
+            "semantics": "蓝色狗窗贴"
+          },
+          {
+            "optionId": "C",
+            "semantics": "红色猫窗贴"
+          }
+        ],
+        "imageAcceptance": "纯色原创动物窗贴，透明效果仅用于白色外边，不改变红蓝主色；红狗与蓝狗同轮廓，红猫尖耳有胡须。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b08",
+      "goalId": "p1.quantities-six-ten",
+      "type": "listeningChoice",
+      "instruction": "听数量，点出照片数相同的板子。",
+      "prompt": "每块板上所有照片都算在内。照片没有重叠，也没有藏在边框后面。",
+      "options": [
+        {
+          "id": "A",
+          "text": "七张照片，上排四张下排三张"
+        },
+        {
+          "id": "B",
+          "text": "六张照片，两排各三张"
+        },
+        {
+          "id": "C",
+          "text": "八张照片，两排各四张"
+        }
+      ],
+      "answer": "B",
+      "audioScript": "Six.",
+      "imageBriefs": "三块照片板同尺寸同底色，照片分两排且大小统一；相邻照片有大于照片边线的空隙。内部图案只是简洁色块。",
+      "explanation": "six 是六，B板共有六张完整照片。",
+      "hint": "从第一张开始，逐张数完两排。",
+      "difficultyReason": "六与七、八的听数对应；不依赖板的宽窄判断。",
+      "sourceBasis": "人教印刷32–33页、外研印刷45页six至eight。",
+      "review": {
+        "reasoning": "B六张，A七、C八，图板大小相同不会直接泄露数量。",
+        "wrongAnswer": "选A：数完上排还要继续数下排，A最终数到七。",
+        "ambiguity": "无额外相框装饰；照片内容中的物体不另计数。"
+      },
+      "taskIntent": "listening_image_choice",
+      "deliveryReview": "六对七、八；与正式q1相同声音及集合。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Six.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "七张照片，上排四张下排三张"
+          },
+          {
+            "optionId": "B",
+            "semantics": "六张照片，两排各三张"
+          },
+          {
+            "optionId": "C",
+            "semantics": "八张照片，两排各四张"
+          }
+        ],
+        "imageAcceptance": "三块照片板同尺寸同底色，照片分两排且大小统一；相邻照片有大于照片边线的空隙。内部图案只是简洁色块。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-b09",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听指令，点出木偶照做后的图。",
+      "prompt": "开始时木偶坐在椅子上。听录音，选执行完成后的状态。",
+      "options": [
+        {
+          "id": "A",
+          "text": "木偶仍坐在椅子上"
+        },
+        {
+          "id": "B",
+          "text": "木偶坐着，旁边窗打开了"
+        },
+        {
+          "id": "C",
+          "text": "木偶双脚着地站在椅子旁"
+        }
+      ],
+      "answer": "C",
+      "audioScript": "Stand up, please.",
+      "imageBriefs": "同一椅子与木偶，C双膝伸直、臀部离座，A与B臀部落座；B窗开只是不同指令的结果，三图木偶表情一致。",
+      "explanation": "Stand up 是站起来，木偶离开椅面站好才符合。",
+      "hint": "听完整句，再比较每张图的完成状态。",
+      "difficultyReason": "从已坐状态识别站起结果，与坐着但环境变化区分。",
+      "sourceBasis": "外研印刷14页Stand up、Sit down；人教印刷6页。",
+      "review": {
+        "reasoning": "C为站立，A未动作，B虽窗开仍坐着。",
+        "wrongAnswer": "选B：有变化不等于完成了站起来的指令。",
+        "ambiguity": "不画半蹲或踮脚；结果图无需学生模仿动作。"
+      },
+      "taskIntent": "instruction_result_choice",
+      "deliveryReview": "站起唯一；提示改不预选动作的中性策略。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Stand up, please.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "initial",
+            "semantics": "同一木偶坐在椅面上，窗关闭。"
+          },
+          {
+            "optionId": "A",
+            "semantics": "木偶仍坐在椅子上"
+          },
+          {
+            "optionId": "B",
+            "semantics": "木偶坐着，旁边窗打开了"
+          },
+          {
+            "optionId": "C",
+            "semantics": "木偶双脚着地站在椅子旁"
+          }
+        ],
+        "imageAcceptance": "同一椅子与木偶，C双膝伸直、臀部离座，A与B臀部落座；B窗开只是不同指令的结果，三图木偶表情一致。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b10",
+      "goalId": "p1.school-items-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个声音，各配一张文具图。",
+      "prompt": "每个声音下面放它说到的那件学习用品，留下一张不用。",
+      "options": [
+        {
+          "id": "A",
+          "text": "合上的厚书，书脊和纸页可见"
+        },
+        {
+          "id": "B",
+          "text": "直尺，刻度整齐"
+        },
+        {
+          "id": "C",
+          "text": "关闭的双肩书包"
+        }
+      ],
+      "answer": {
+        "sound1": "C",
+        "sound2": "B"
+      },
+      "audioScript": {
+        "sound1": "A schoolbag.",
+        "sound2": "A ruler."
+      },
+      "imageBriefs": "物件各自独立，不采用内部含物的组合图；书和尺横放，书包正放，但位置不与按钮顺序对应。独立配对，不限重播。",
+      "explanation": "schoolbag 对应书包，ruler 对应尺；书是book，这次不用。",
+      "hint": "每听完一个声音，就核对一件物品。",
+      "difficultyReason": "同一领域内两个名词配对；厚书与书包都有较大轮廓但名称不同。",
+      "sourceBasis": "人教印刷6–7页schoolbag、ruler。",
+      "review": {
+        "reasoning": "①C、②B；A不是任何一段声音指的物件。",
+        "wrongAnswer": "①A、②B：只答对尺，不能把book算作schoolbag。",
+        "ambiguity": "不依据是否能装东西判题，完整书包肩带与书页为必要视觉特征。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "书包与尺；上一文具题book没有给出这两个映射。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "A schoolbag.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "A ruler.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "合上的厚书，书脊和纸页可见"
+          },
+          {
+            "optionId": "B",
+            "semantics": "直尺，刻度整齐"
+          },
+          {
+            "optionId": "C",
+            "semantics": "关闭的双肩书包"
+          }
+        ],
+        "imageAcceptance": "物件各自独立，不采用内部含物的组合图；书和尺横放，书包正放，但位置不与按钮顺序对应。独立配对，不限重播。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b11",
+      "goalId": "p1.fruit-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个声音，各配一张水果图。",
+      "prompt": "每个声音可单独重听。两张水果图各用一次，多出的一张不用。",
+      "options": [
+        {
+          "id": "A",
+          "text": "一个完整梨"
+        },
+        {
+          "id": "B",
+          "text": "一个完整苹果"
+        },
+        {
+          "id": "C",
+          "text": "一个完整橙子"
+        }
+      ],
+      "answer": {
+        "sound1": "A",
+        "sound2": "B"
+      },
+      "audioScript": {
+        "sound1": "Show me a pear.",
+        "sound2": "Show me an apple."
+      },
+      "imageBriefs": "梨细颈大底，苹果凹顶圆肩，橙子圆形有皮纹；三果同大小同简洁底色，不靠色彩判定。点选或拖放配给声音按钮。",
+      "explanation": "pear 是梨，apple 是苹果。橙子对应orange，这次不用。",
+      "hint": "先配第一个声音，再单独听另一个声音。",
+      "difficultyReason": "两个请求独立配图，重点分清两种均有果柄的水果。",
+      "sourceBasis": "人教印刷48页四种水果与Show me请求。",
+      "review": {
+        "reasoning": "①A、②B，C为未请求的水果；每项只有一张目标图。",
+        "wrongAnswer": "①B、②A：两种水果颠倒，即使都选中了也不构成正确配对。",
+        "ambiguity": "两个声音不能只按先后位置连播，必须能分别播放并修改各自配对。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "b02提前练过梨，仅覆盖①；②苹果仍需听辨，整题不由前题完整给出。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Show me a pear.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Show me an apple.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "一个完整梨"
+          },
+          {
+            "optionId": "B",
+            "semantics": "一个完整苹果"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一个完整橙子"
+          }
+        ],
+        "imageAcceptance": "梨细颈大底，苹果凹顶圆肩，橙子圆形有皮纹；三果同大小同简洁底色，不靠色彩判定。点选或拖放配给声音按钮。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b12",
+      "goalId": "p1.face-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个声音，各配一张五官图。",
+      "prompt": "先听一个按钮，把对应图卡放下，再听另一个；剩下的图卡不用。",
+      "options": [
+        {
+          "id": "A",
+          "text": "嘴巴的局部图"
+        },
+        {
+          "id": "B",
+          "text": "鼻子的局部图"
+        },
+        {
+          "id": "C",
+          "text": "一只耳朵的局部图"
+        }
+      ],
+      "answer": {
+        "sound1": "C",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "Touch your ear.",
+        "sound2": "Touch your mouth."
+      },
+      "imageBriefs": "清楚完整的单耳、鼻、嘴，耳廓有外轮廓与耳垂，嘴唇不画成耳状；独立指令按钮配图，反复重听。",
+      "explanation": "ear 是耳朵，mouth 是嘴巴。Touch your后面的部位决定配哪张图。",
+      "hint": "只听每句最后说到的身体部位。",
+      "difficultyReason": "把两个短指令分别解释成部位图，仍不要求动作执行。",
+      "sourceBasis": "人教印刷14–15页五官及Touch your结构。",
+      "review": {
+        "reasoning": "①C、②A，B鼻没有被要求。",
+        "wrongAnswer": "①C、②B：第二句说的是mouth而不是nose。",
+        "ambiguity": "题干明确图卡任务，避免诱导触眼、触口或他人；耳图不附耳饰。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "b03练过嘴，仅覆盖②；①耳仍需听辨，不当作两项首次独立测评。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Touch your ear.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Touch your mouth.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "嘴巴的局部图"
+          },
+          {
+            "optionId": "B",
+            "semantics": "鼻子的局部图"
+          },
+          {
+            "optionId": "C",
+            "semantics": "一只耳朵的局部图"
+          }
+        ],
+        "imageAcceptance": "清楚完整的单耳、鼻、嘴，耳廓有外轮廓与耳垂，嘴唇不画成耳状；独立指令按钮配图，反复重听。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b13",
+      "goalId": "p1.basic-colours-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个颜色，各配一块积木。",
+      "prompt": "只按颜色配，不按积木位置配；每个声音可以单独重听。",
+      "options": [
+        {
+          "id": "A",
+          "text": "黄色方积木"
+        },
+        {
+          "id": "B",
+          "text": "绿色方积木"
+        },
+        {
+          "id": "C",
+          "text": "蓝色方积木"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "Green.",
+        "sound2": "Yellow."
+      },
+      "imageBriefs": "相同正方形正视积木，无阴影渐变、无数量差异；绿、黄、蓝纯主色。独立音频与点选配对。",
+      "explanation": "green 配绿色，yellow 配黄色，蓝色没有用到。",
+      "hint": "听一个颜色词，就给那个按钮配一块。",
+      "difficultyReason": "将熟悉颜色词映射到同形物品，排除形状或数量策略。",
+      "sourceBasis": "人教印刷40页、外研印刷21页green、yellow、blue。",
+      "review": {
+        "reasoning": "①B、②A，C为同类但不满足声音的干扰。",
+        "wrongAnswer": "①C：蓝与绿在这里有明确不同色值，blue才配蓝。",
+        "ambiguity": "不使用黄绿色中间色；单色图的中文替代描述如实报色名。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "绿和黄都不同于b04的蓝；形状同一，不用位置建立答案。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Green.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Yellow.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "黄色方积木"
+          },
+          {
+            "optionId": "B",
+            "semantics": "绿色方积木"
+          },
+          {
+            "optionId": "C",
+            "semantics": "蓝色方积木"
+          }
+        ],
+        "imageAcceptance": "相同正方形正视积木，无阴影渐变、无数量差异；绿、黄、蓝纯主色。独立音频与点选配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b14",
+      "goalId": "p1.animals-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个介绍，各配一张动物图。",
+      "prompt": "每个介绍配一只纸偶，余下的一只不用。可以单独重听任意介绍。",
+      "options": [
+        {
+          "id": "A",
+          "text": "有明显猴脸和长尾的猴子"
+        },
+        {
+          "id": "B",
+          "text": "有喙和翅膀的小鸟"
+        },
+        {
+          "id": "C",
+          "text": "尖耳有胡须的家猫"
+        }
+      ],
+      "answer": {
+        "sound1": "C",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "It is a cat.",
+        "sound2": "It is a monkey."
+      },
+      "imageBriefs": "原创全身纸偶，各自无道具无衣服，底座大小一样且不算动物部分；猫和猴均清楚露出脸及四肢。独立音图配对。",
+      "explanation": "cat 是猫，monkey 是猴子；小鸟对应bird。",
+      "hint": "听名字，再看整只动物，不只看尾巴。",
+      "difficultyReason": "区分两种有尾动物并将声音逐一配对；不考行为习性。",
+      "sourceBasis": "人教印刷22–23页cat、monkey、bird。",
+      "review": {
+        "reasoning": "①C、②A，B没有被介绍；每图只一只动物。",
+        "wrongAnswer": "①A、②C：两只都有尾巴也不能交换名称。",
+        "ambiguity": "猴子不画成猫耳猴脸混合角色，舞台背景不出现额外动物剪影。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "猫、猴均须听；b05狗不直接给这两个映射。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "It is a cat.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "It is a monkey.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "有明显猴脸和长尾的猴子"
+          },
+          {
+            "optionId": "B",
+            "semantics": "有喙和翅膀的小鸟"
+          },
+          {
+            "optionId": "C",
+            "semantics": "尖耳有胡须的家猫"
+          }
+        ],
+        "imageAcceptance": "原创全身纸偶，各自无道具无衣服，底座大小一样且不算动物部分；猫和猴均清楚露出脸及四肢。独立音图配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b15",
+      "goalId": "p1.quantities-one-five",
+      "type": "audioMatching",
+      "instruction": "分别听两个数量，各配一张印章卡。",
+      "prompt": "每张卡上只有独立的圆印记。数完一张卡上的全部印记，再配给声音。",
+      "options": [
+        {
+          "id": "A",
+          "text": "四个圆印记"
+        },
+        {
+          "id": "B",
+          "text": "三个圆印记"
+        },
+        {
+          "id": "C",
+          "text": "五个圆印记"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "C"
+      },
+      "audioScript": {
+        "sound1": "Three.",
+        "sound2": "Five."
+      },
+      "imageBriefs": "印记实心无双圈，每个同尺寸不接触；四个两行，三个斜散，五个一行且不挤压。两个声音独立重播配对。",
+      "explanation": "three 是三，five 是五，四个印记的卡不需要。",
+      "hint": "卡上的位置不同，数的时候仍然每个只算一次。",
+      "difficultyReason": "在不同空间排布中识别三与五；不考数序背诵。",
+      "sourceBasis": "人教印刷32–33页、外研印刷44–45页三至五数物。",
+      "review": {
+        "reasoning": "①B三个、②C五个，A四个为中间数量干扰。",
+        "wrongAnswer": "①A：卡片占的面积大不等于three，应逐个数。",
+        "ambiguity": "印记不叠印、不残缺，不能把一个双圈误算为两枚。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "b06五只覆盖②；①三仍需听辨，须承认局部先教后练。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Three.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Five.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "四个圆印记"
+          },
+          {
+            "optionId": "B",
+            "semantics": "三个圆印记"
+          },
+          {
+            "optionId": "C",
+            "semantics": "五个圆印记"
+          }
+        ],
+        "imageAcceptance": "印记实心无双圈，每个同尺寸不接触；四个两行，三个斜散，五个一行且不挤压。两个声音独立重播配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-b16",
+      "goalId": "p1.colour-animal-listening",
+      "type": "audioMatching",
+      "instruction": "分别听两个介绍，各配一张彩色动物图。",
+      "prompt": "每段声音都含颜色和动物两个线索，两个都符合才能配上；可以重听。",
+      "options": [
+        {
+          "id": "A",
+          "text": "绿色狗"
+        },
+        {
+          "id": "B",
+          "text": "蓝色猫"
+        },
+        {
+          "id": "C",
+          "text": "绿色猫"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "A"
+      },
+      "audioScript": {
+        "sound1": "A blue cat.",
+        "sound2": "A green dog."
+      },
+      "imageBriefs": "蓝猫和绿猫轮廓相同；绿狗和绿猫主色相同但耳、口鼻清楚不同；同尺寸无配饰。独立重播和点选配对。",
+      "explanation": "blue cat 配蓝色猫，green dog 配绿色狗。绿色猫只对上其中一个线索，不能配给任一个声音。",
+      "hint": "配完后，分别再核对颜色和动物。",
+      "difficultyReason": "干扰图跨两个目标分别共享属性，要求完整听辨而不增加词汇。",
+      "sourceBasis": "外研印刷23页blue cat、green cat、red dog；green dog按现有目标范围原创组合。",
+      "review": {
+        "reasoning": "①B、②A；C对①仅猫正确，对②仅绿正确。",
+        "wrongAnswer": "①B、②C：第二个只按green配，漏掉dog。",
+        "ambiguity": "不称绿色狗是教材原句；幻想毛色说明消除现实毛色知识干扰。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "蓝猫、绿狗；绿猫跨两目标共享属性，与a16是换词平行结构。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "A blue cat.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "A green dog.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "绿色狗"
+          },
+          {
+            "optionId": "B",
+            "semantics": "蓝色猫"
+          },
+          {
+            "optionId": "C",
+            "semantics": "绿色猫"
+          }
+        ],
+        "imageAcceptance": "蓝猫和绿猫轮廓相同；绿狗和绿猫主色相同但耳、口鼻清楚不同；同尺寸无配饰。独立重播和点选配对。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "本题颜色是所测属性；纯色、无渐变、不靠屏幕滤色。中文报色辅助允许使用，但须标记辅助，不另加仅正确图才有的纹理。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    },
+    {
+      "id": "p1-astra-b17",
+      "goalId": "p1.quantities-six-ten",
+      "type": "audioMatching",
+      "instruction": "分别听两个数量，各配一页照片。",
+      "prompt": "每页有两排照片，都要数。每个声音可重听，不需要记住前一个声音。",
+      "options": [
+        {
+          "id": "A",
+          "text": "七张照片，四张和三张两排"
+        },
+        {
+          "id": "B",
+          "text": "九张照片，五张和四张两排"
+        },
+        {
+          "id": "C",
+          "text": "六张照片，每排三张"
+        }
+      ],
+      "answer": {
+        "sound1": "B",
+        "sound2": "C"
+      },
+      "audioScript": {
+        "sound1": "Nine.",
+        "sound2": "Six."
+      },
+      "imageBriefs": "三张等大相册页，照片同尺寸不遮挡；内容只画简洁风景色带，无插页、胶带或多重相框。独立声音配图。",
+      "explanation": "nine 是九，six 是六。七张的一页不符合这两个声音。",
+      "hint": "可以点着每张照片数，数过的不要重复。",
+      "difficultyReason": "听辨六与九并对应清楚可数的集合，避免数字字形依赖。",
+      "sourceBasis": "人教印刷32–33页、外研印刷45页six、seven、nine。",
+      "review": {
+        "reasoning": "①B九张、②C六张，A七张未被要求。",
+        "wrongAnswer": "①A、②C：第一项漏数后选成七张，第二项正确也不算全对。",
+        "ambiguity": "照片数量必须与图意逐项核验，页面边缘不得裁掉最后一张。"
+      },
+      "taskIntent": "audio_image_matching_proposal",
+      "implementationStatus": "拟新增独立声音配图，待实现和媒体验收，不可发布",
+      "deliveryReview": "b08六只覆盖②；①九仍需听辨。小屏逐张完整可点数。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "sound1",
+            "fullText": "Nine.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          },
+          {
+            "id": "sound2",
+            "fullText": "Six.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "A",
+            "semantics": "七张照片，四张和三张两排"
+          },
+          {
+            "optionId": "B",
+            "semantics": "九张照片，五张和四张两排"
+          },
+          {
+            "optionId": "C",
+            "semantics": "六张照片，每排三张"
+          }
+        ],
+        "imageAcceptance": "三张等大相册页，照片同尺寸不遮挡；内容只画简洁风景色带，无插页、胶带或多重相框。独立声音配图。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "按每个候选语义逐件点数，禁止遮挡、裁切、影子、重复边框或装饰混计；中文报总数会绕过计数，须标辅助模式。"
+      }
+    },
+    {
+      "id": "p1-astra-b18",
+      "goalId": "p1.simple-directions-listening",
+      "type": "listeningChoice",
+      "instruction": "听指令，点出小屋照做后的图。",
+      "prompt": "起始图中门和窗都关着。录音只有一个要求，选完成这个要求的结果。",
+      "options": [
+        {
+          "id": "A",
+          "text": "门和窗都关着"
+        },
+        {
+          "id": "B",
+          "text": "门关着，窗开着"
+        },
+        {
+          "id": "C",
+          "text": "门开着，窗关着"
+        }
+      ],
+      "answer": "C",
+      "audioScript": "Open the door.",
+      "imageBriefs": "同一小屋正视图，门有清楚门把手且直达地面，窗有窗台且高于地面；C门扇外开，B窗扇外开，A均闭合。",
+      "explanation": "Open the door 是开门，应选门打开、窗仍关着的图。",
+      "hint": "先听需要打开哪一样，再比较门和窗的状态。",
+      "difficultyReason": "听对象并判断单步动作结果；无需读英文或理解关门命令。",
+      "sourceBasis": "外研印刷15页Open the door与open the window。",
+      "review": {
+        "reasoning": "C正确打开门，B打开窗而门未开，A未完成动作。",
+        "wrongAnswer": "选B：虽然也有东西打开，但不是录音中的door。",
+        "ambiguity": "门窗形态与位置都清楚；不在选项中加入门窗都开的可争议结果。"
+      },
+      "taskIntent": "instruction_result_choice",
+      "deliveryReview": "只开门唯一；与开窗任务同结构但目标命令不同。",
+      "mediaRequirements": {
+        "audioTracks": [
+          {
+            "id": "main",
+            "fullText": "Open the door.",
+            "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+          }
+        ],
+        "images": [
+          {
+            "optionId": "initial",
+            "semantics": "同一小屋，门窗均关闭。"
+          },
+          {
+            "optionId": "A",
+            "semantics": "门和窗都关着"
+          },
+          {
+            "optionId": "B",
+            "semantics": "门关着，窗开着"
+          },
+          {
+            "optionId": "C",
+            "semantics": "门开着，窗关着"
+          }
+        ],
+        "imageAcceptance": "同一小屋正视图，门有清楚门把手且直达地面，窗有窗台且高于地面；C门扇外开，B窗扇外开，A均闭合。",
+        "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+        "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+        "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+        "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+      }
+    }
+  ],
+  "openingStories": [
+    {
+      "id": "p1-astra-opening-a",
+      "roundQuestionIds": [
+        "p1-astra-a01",
+        "p1-astra-a02",
+        "p1-astra-a03",
+        "p1-astra-a04",
+        "p1-astra-a05",
+        "p1-astra-a06",
+        "p1-astra-a07",
+        "p1-astra-a08",
+        "p1-astra-a09",
+        "p1-astra-a10",
+        "p1-astra-a11",
+        "p1-astra-a12",
+        "p1-astra-a13",
+        "p1-astra-a14",
+        "p1-astra-a15",
+        "p1-astra-a16",
+        "p1-astra-a17",
+        "p1-astra-a18"
+      ],
+      "title": "线轴回来了",
+      "skippable": true,
+      "beats": [
+        {
+          "id": "a-beat1",
+          "afterQuestion": 0,
+          "speaker": "旁白",
+          "text": "You and your companion are making a string of little flags. Suddenly, the spool rolls under a chair. The thread curls across the floor.",
+          "translation": "你和同行者坐在桌边串小旗。线轴忽然滚到椅子下面，长线绕成了一个圈。"
+        },
+        {
+          "id": "a-beat2",
+          "afterQuestion": 0,
+          "speaker": "旁白",
+          "text": "Your companion gently moves the chair, and you pick up the spool. You each hold one end and slowly straighten the thread.",
+          "translation": "同行者轻轻移开椅子，你伸手捡回线轴。你们各拿一头，慢慢把线理顺。"
+        },
+        {
+          "id": "a-beat3",
+          "afterQuestion": 0,
+          "speaker": "旁白",
+          "text": "The last little flag is in place. You hang the flags by the window, then sit together and watch them sway.",
+          "translation": "最后一面小旗也穿好了。你们把旗子挂在窗边，坐下来，看它轻轻地晃。"
+        }
+      ],
+      "independence": "故事完整结束后才进入第1题；跳过不缺任何作答事实，无职业或姓名绑定。",
+      "presentation": "text为可选英文呈现或朗读内容，translation保留完整中文叙事；故事可跳过、不参与评分。小一需要中文优先入口与中文朗读适配，不能要求读懂英文才能进入答题，也不宣称当前英文默认界面已适龄。"
+    },
+    {
+      "id": "p1-astra-opening-b",
+      "roundQuestionIds": [
+        "p1-astra-b01",
+        "p1-astra-b02",
+        "p1-astra-b03",
+        "p1-astra-b04",
+        "p1-astra-b05",
+        "p1-astra-b06",
+        "p1-astra-b07",
+        "p1-astra-b08",
+        "p1-astra-b09",
+        "p1-astra-b10",
+        "p1-astra-b11",
+        "p1-astra-b12",
+        "p1-astra-b13",
+        "p1-astra-b14",
+        "p1-astra-b15",
+        "p1-astra-b16",
+        "p1-astra-b17",
+        "p1-astra-b18"
+      ],
+      "title": "盒盖上的小画",
+      "skippable": true,
+      "beats": [
+        {
+          "id": "b-beat1",
+          "afterQuestion": 0,
+          "speaker": "旁白",
+          "text": "You want to keep your drawing in a little box. But the paper is a little too wide. It will not lie flat inside.",
+          "translation": "你想把亲手画的小画收进盒子，可画纸宽了一点，怎么放也放不平。"
+        },
+        {
+          "id": "b-beat2",
+          "afterQuestion": 0,
+          "speaker": "旁白",
+          "text": "Your companion holds the lid steady. You lay your drawing on top. It fits just right, so you stick it down together.",
+          "translation": "同行者扶住盒盖。你把画轻轻放上去，发现大小刚刚好，便一起把画贴牢。"
+        },
+        {
+          "id": "b-beat3",
+          "afterQuestion": 0,
+          "speaker": "旁白",
+          "text": "You put the box on a shelf with the drawing facing out. You both step back to look, then smile and straighten it a little.",
+          "translation": "盒子放到了架子上，小画朝着外面。你们退后看看，又笑着把它摆正了一点。"
+        }
+      ],
+      "independence": "故事是尝试、协作、收束的完整事件，不出现题目词义或后续所需事实；可跳过。",
+      "presentation": "text为可选英文呈现或朗读内容，translation保留完整中文叙事；故事可跳过、不参与评分。小一需要中文优先入口与中文朗读适配，不能要求读懂英文才能进入答题，也不宣称当前英文默认界面已适龄。"
+    }
+  ],
+  "remainingWork": [
+    "保留36题、每轮18题与9目标各2题；本交付未改原稿或正式库。",
+    "20道listeningChoice、16道audioMatching；后者待实现，不得缩水为普通单选或文字配对。",
+    "素材要求是逐轨全文和逐图语义，不是现有素材验收证据；尚未生成、试听或验图。",
+    "紧凑中文指令需可朗读；故事六beat均afterQuestion=0、可跳过；英文text和中文translation齐备，但中文优先入口、朗读与双语页面仍待适配和验收。",
+    "正式目录仅作内容比对，本次未验证正式媒体资产。逐题反馈保留；B轮局部迁移须体现在测评解释。",
+    "主代理决定接受与否；未提交、未部署，不能直接导入生产合同。"
+  ],
+  "deliveryVersion": 1,
+  "status": "待主代理内容审阅、交互实现与媒体验收；不可发布",
+  "displayContract": {
+    "instruction": "每题仅显示本稿紧凑中文instruction，可由中文语音朗读；prompt供展开说明，不与instruction重复堆叠。",
+    "answerVisibility": "保持逐题即时反馈；提交前不展示audioScript、answer、explanation、review、素材文件名和正确性标签。",
+    "options": "常规模式只显示图，中文text是作者语义及无障碍替代描述，不是需识字的可见选项。",
+    "audioMatching": "待实现：两条独立可重播音轨、三个无英文图选项、一对一两次点选、可撤回修改、未使用图保留；不要求拖拽、不合成长录音、不用文字配对代替。整题两项都对才全对。",
+    "accessibility": "所有候选提供同等中文描述及朗读；颜色描述改变纯视觉识别条件，计数描述可能移除点数负担，须标记辅助模式，不伪称原任务测量完全等价。听力障碍的英文转写辅助会改变听力构念，另标辅助模式。",
+    "feedback": "沿用逐题反馈；解析只在提交后显示。B轮四处部分词复现是练习迁移，不宣称每题都是首次独立诊断。",
+    "openingStory": "每段text为英文、translation为完整中文；英文可选呈现或朗读，中文优先入口和朗读尚待客户端适配。所有开场可跳过、不评分、不提供作答前提；当前英文默认界面不等于完成小一适龄适配。"
+  },
+  "replacementProposals": [
+    {
+      "candidateId": "p1-astra-a09",
+      "reason": "仅修订提示以减少预先缩小答案集合或英文阅读负担；完整题如下，原稿不改。",
+      "goalPreserved": "p1.simple-directions-listening",
+      "replacement": {
+        "id": "p1-astra-a09",
+        "goalId": "p1.simple-directions-listening",
+        "type": "listeningChoice",
+        "instruction": "听指令，点出木偶照做后的图。",
+        "prompt": "现在木偶站在椅子前。听完录音，哪张图表示它照做了？",
+        "options": [
+          {
+            "id": "A",
+            "text": "木偶坐在椅面上，双脚落地"
+          },
+          {
+            "id": "B",
+            "text": "木偶仍站在椅子旁"
+          },
+          {
+            "id": "C",
+            "text": "木偶站着把门打开"
+          }
+        ],
+        "answer": "A",
+        "audioScript": "Sit down, please.",
+        "imageBriefs": "起始图木偶站立；三幅结果图使用同一木偶、同一椅子、同一房间。A明确臀部落座，C门开但木偶站立；不画中途动作。",
+        "explanation": "Sit down 是坐下。坐在椅子上的结果符合指令。",
+        "hint": "听完整句，再比较每张图的完成状态。",
+        "difficultyReason": "将一个完整指令与完成状态对应；无需本人活动。",
+        "sourceBasis": "外研印刷14–15页Sit down、Stand up；人教印刷6页。",
+        "review": {
+          "reasoning": "A完成坐下，B没改变，C完成了别的动作。",
+          "wrongAnswer": "选C：虽然木偶做了事，但开门不是Sit down。",
+          "ambiguity": "只判断静态结果；椅子高度须让坐姿与站姿明显区分。"
+        },
+        "taskIntent": "instruction_result_choice",
+        "deliveryReview": "坐下结果唯一；提示改中性，避免预先缩小到坐或站。",
+        "mediaRequirements": {
+          "audioTracks": [
+            {
+              "id": "main",
+              "fullText": "Sit down, please.",
+              "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+            }
+          ],
+          "images": [
+            {
+              "optionId": "initial",
+              "semantics": "同一木偶站在椅子前，门窗关闭。"
+            },
+            {
+              "optionId": "A",
+              "semantics": "木偶坐在椅面上，双脚落地"
+            },
+            {
+              "optionId": "B",
+              "semantics": "木偶仍站在椅子旁"
+            },
+            {
+              "optionId": "C",
+              "semantics": "木偶站着把门打开"
+            }
+          ],
+          "imageAcceptance": "起始图木偶站立；三幅结果图使用同一木偶、同一椅子、同一房间。A明确臀部落座，C门开但木偶站立；不画中途动作。",
+          "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+          "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+          "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+          "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+        }
+      }
+    },
+    {
+      "candidateId": "p1-astra-a18",
+      "reason": "仅修订提示以减少预先缩小答案集合或英文阅读负担；完整题如下，原稿不改。",
+      "goalPreserved": "p1.simple-directions-listening",
+      "replacement": {
+        "id": "p1-astra-a18",
+        "goalId": "p1.simple-directions-listening",
+        "type": "listeningChoice",
+        "instruction": "听指令，点出房间照做后的图。",
+        "prompt": "开始时门和窗都关着。录音说完后，哪幅图表示正确完成？",
+        "options": [
+          {
+            "id": "A",
+            "text": "门开着，窗关着"
+          },
+          {
+            "id": "B",
+            "text": "门关着，窗开着"
+          },
+          {
+            "id": "C",
+            "text": "门和窗仍都关着"
+          }
+        ],
+        "answer": "B",
+        "audioScript": "Open the window, please.",
+        "imageBriefs": "同一房间同一视角；门在左、窗在右且形态明显不同。开窗图窗扇明显外开，开门图门扇明显打开；没有人物位置线索。",
+        "explanation": "Open the window 是打开窗户，门不需要打开。",
+        "hint": "听清要打开哪一样，再比较结果图。",
+        "difficultyReason": "分清相同动词后的对象，并对照变化后的完整状态。",
+        "sourceBasis": "外研印刷15页开窗与开门指令。",
+        "review": {
+          "reasoning": "B只打开窗，A打开错误对象，C未执行。",
+          "wrongAnswer": "选A：听懂open但把door与window混淆。",
+          "ambiguity": "不要求推断动作先后；起始状态与所需结果都明确，禁止只画窗帘变化。"
+        },
+        "taskIntent": "instruction_result_choice",
+        "deliveryReview": "只开窗唯一；原提示含英文window/door，改全中文且不报译义。",
+        "mediaRequirements": {
+          "audioTracks": [
+            {
+              "id": "main",
+              "fullText": "Open the window, please.",
+              "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+            }
+          ],
+          "images": [
+            {
+              "optionId": "initial",
+              "semantics": "同一房间，门窗均关闭。"
+            },
+            {
+              "optionId": "A",
+              "semantics": "门开着，窗关着"
+            },
+            {
+              "optionId": "B",
+              "semantics": "门关着，窗开着"
+            },
+            {
+              "optionId": "C",
+              "semantics": "门和窗仍都关着"
+            }
+          ],
+          "imageAcceptance": "同一房间同一视角；门在左、窗在右且形态明显不同。开窗图窗扇明显外开，开门图门扇明显打开；没有人物位置线索。",
+          "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+          "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+          "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+          "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+        }
+      }
+    },
+    {
+      "candidateId": "p1-astra-b09",
+      "reason": "仅修订提示以减少预先缩小答案集合或英文阅读负担；完整题如下，原稿不改。",
+      "goalPreserved": "p1.simple-directions-listening",
+      "replacement": {
+        "id": "p1-astra-b09",
+        "goalId": "p1.simple-directions-listening",
+        "type": "listeningChoice",
+        "instruction": "听指令，点出木偶照做后的图。",
+        "prompt": "开始时木偶坐在椅子上。听录音，选执行完成后的状态。",
+        "options": [
+          {
+            "id": "A",
+            "text": "木偶仍坐在椅子上"
+          },
+          {
+            "id": "B",
+            "text": "木偶坐着，旁边窗打开了"
+          },
+          {
+            "id": "C",
+            "text": "木偶双脚着地站在椅子旁"
+          }
+        ],
+        "answer": "C",
+        "audioScript": "Stand up, please.",
+        "imageBriefs": "同一椅子与木偶，C双膝伸直、臀部离座，A与B臀部落座；B窗开只是不同指令的结果，三图木偶表情一致。",
+        "explanation": "Stand up 是站起来，木偶离开椅面站好才符合。",
+        "hint": "听完整句，再比较每张图的完成状态。",
+        "difficultyReason": "从已坐状态识别站起结果，与坐着但环境变化区分。",
+        "sourceBasis": "外研印刷14页Stand up、Sit down；人教印刷6页。",
+        "review": {
+          "reasoning": "C为站立，A未动作，B虽窗开仍坐着。",
+          "wrongAnswer": "选B：有变化不等于完成了站起来的指令。",
+          "ambiguity": "不画半蹲或踮脚；结果图无需学生模仿动作。"
+        },
+        "taskIntent": "instruction_result_choice",
+        "deliveryReview": "站起唯一；提示改不预选动作的中性策略。",
+        "mediaRequirements": {
+          "audioTracks": [
+            {
+              "id": "main",
+              "fullText": "Stand up, please.",
+              "delivery": "单独制作并可独立重播；不添加中文译义、答案音效或物品叫声。"
+            }
+          ],
+          "images": [
+            {
+              "optionId": "initial",
+              "semantics": "同一木偶坐在椅面上，窗关闭。"
+            },
+            {
+              "optionId": "A",
+              "semantics": "木偶仍坐在椅子上"
+            },
+            {
+              "optionId": "B",
+              "semantics": "木偶坐着，旁边窗打开了"
+            },
+            {
+              "optionId": "C",
+              "semantics": "木偶双脚着地站在椅子旁"
+            }
+          ],
+          "imageAcceptance": "同一椅子与木偶，C双膝伸直、臀部离座，A与B臀部落座；B窗开只是不同指令的结果，三图木偶表情一致。",
+          "leakRisk": "提交前隐藏英文音轨文字和解析；图片与按钮不用同色配线、目标高亮或顺序对齐。",
+          "accessibilityRisk": "各图均提供相同粒度中文语义朗读，不用英文标签；辅助模式单独标记。",
+          "colourRisk": "颜色不参与本题答案，不以物品颜色或背景颜色暗示音轨映射。",
+          "countRisk": "不是计数题；每选项只保留一个明确对象或一个完整动作结果场景，不以额外对象数量暗示答案。"
+        }
+      }
+    }
+  ],
+  "fixedRoundAudit": {
+    "A": {
+      "candidateIds": [
+        "p1-astra-a01",
+        "p1-astra-a02",
+        "p1-astra-a03",
+        "p1-astra-a04",
+        "p1-astra-a05",
+        "p1-astra-a06",
+        "p1-astra-a07",
+        "p1-astra-a08",
+        "p1-astra-a09",
+        "p1-astra-a10",
+        "p1-astra-a11",
+        "p1-astra-a12",
+        "p1-astra-a13",
+        "p1-astra-a14",
+        "p1-astra-a15",
+        "p1-astra-a16",
+        "p1-astra-a17",
+        "p1-astra-a18"
+      ],
+      "verdict": "18题保留；按实际explanation而非作者review作为即时反馈审查，没有先题直接给出同轮后题完整目标映射。",
+      "details": [
+        "a01尺→a10铅笔/书包；a02橙/香蕉→a11苹果；a03耳→a12眼/鼻；a04黄→a13红/黑。",
+        "a05鸟/虎→a14猴；a06四→a15二/一；a07绿猫→a16蓝狗/红猫；a08七→a17八/十；a09坐下→a18开窗。",
+        "颜色单词可能从颜色题迁移到彩色动物题，但动物+颜色完整映射仍需听辨；不把单一基础属性复现当整题泄漏。"
+      ]
+    },
+    "B": {
+      "candidateIds": [
+        "p1-astra-b01",
+        "p1-astra-b02",
+        "p1-astra-b03",
+        "p1-astra-b04",
+        "p1-astra-b05",
+        "p1-astra-b06",
+        "p1-astra-b07",
+        "p1-astra-b08",
+        "p1-astra-b09",
+        "p1-astra-b10",
+        "p1-astra-b11",
+        "p1-astra-b12",
+        "p1-astra-b13",
+        "p1-astra-b14",
+        "p1-astra-b15",
+        "p1-astra-b16",
+        "p1-astra-b17",
+        "p1-astra-b18"
+      ],
+      "verdict": "18题保留；当前逐题即时反馈可用作练习，四处是双声音题的一项先学后练，不是完整答案直给。",
+      "partialTransfer": [
+        {
+          "from": "p1-astra-b02",
+          "to": "p1-astra-b11",
+          "evidence": "pear=梨提前出现，仅完成sound1；sound2的apple尚需听辨。"
+        },
+        {
+          "from": "p1-astra-b03",
+          "to": "p1-astra-b12",
+          "evidence": "mouth=嘴提前出现，仅完成sound2；sound1的ear尚需听辨。"
+        },
+        {
+          "from": "p1-astra-b06",
+          "to": "p1-astra-b15",
+          "evidence": "five=五提前出现，仅完成sound2；sound1的three尚需听辨。"
+        },
+        {
+          "from": "p1-astra-b08",
+          "to": "p1-astra-b17",
+          "evidence": "six=六提前出现，仅完成sound2；sound1的nine尚需听辨。"
+        }
+      ],
+      "details": [
+        "b01书→b10书包/尺；b04蓝→b13绿/黄；b05狗→b14猫/猴；b07红狗→b16蓝猫/绿狗；b09站起→b18开门，均未直接给出完整后题映射。",
+        "配对题的两个声音都必须实际播放，不能一题仅听新词再靠自动填充旧词；不得据部分迁移宣称两项均为独立诊断。"
+      ]
+    }
+  },
+  "exclusionPairs": [
+    {
+      "candidateIds": [
+        "p1-astra-a01"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.reading-bag",
+          "questionId": "q4"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "尺为目标，书/尺/铅笔三图集合相同；增加Show me不改变选择推理。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a03"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.portrait-faces",
+          "questionId": "q6"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "同为Touch your ear到耳图；整脸圈耳与耳局部图仅呈现差异。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a04"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.bookmark-colours",
+          "questionId": "q3"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "yellow到黄，干扰均黑/绿；贴纸替换书签不改变关系。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a06"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.shell-count",
+          "questionId": "q5"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Four到四，三/五干扰完全相同；圆饼替换贝壳不新增能力。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a07"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.painted-animal-flags",
+          "questionId": "q6"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "It is a green cat完全相同，绿猫/红猫/绿狗集合相同。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a08"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.photo-count",
+          "questionId": "q4"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Seven到七张照片，都是两排逐张计数；干扰八换十不足以独立覆盖。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a09"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.studio-directions",
+          "questionId": "q1"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "坐下命令到坐姿，站姿及开门干扰；新增起始图没有新的条件判断。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a09"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.studio-directions",
+          "questionId": "q5"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Sit down, please完全相同；坐下结果仍是唯一目标。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a11"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.picnic-fruit",
+          "questionId": "q1"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "apple到苹果且苹果/香蕉/梨集合一致，增加Show me不改变名词听辨。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a11"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.picnic-fruit",
+          "questionId": "q5"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Show me an apple完全相同；将橙干扰换香蕉仍是同一映射。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a14"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.animal-book-covers",
+          "questionId": "q4"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "monkey到猴；头像变布偶全身以及换干扰不新增目标推理。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a18"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.studio-directions",
+          "questionId": "q4"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "开窗到开窗图；门开/窗闭干扰与原稿完整房间状态等效。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a18"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.studio-directions",
+          "questionId": "q6"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Please位置改变不改变Open the window的结果指认。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b01"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.reading-bag",
+          "questionId": "q1"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "book到书，书/尺/书包集合相同；摊开不产生额外语言要求。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b01"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.reading-bag",
+          "questionId": "q5"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "目标仍book；请求改自我介绍，答题仍只认书。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b02"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.picnic-fruit",
+          "questionId": "q4"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "A pear完全相同，梨/香蕉/苹果集合相同；线描仅画风变化。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b02"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.picnic-fruit",
+          "questionId": "q6"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "pear到梨及同三果集合，请求句并未改变名词指认。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b03"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.portrait-faces",
+          "questionId": "q4"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "mouth到嘴，眼/鼻干扰相同；Touch your与My不改变当前作答判断。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b04"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.bookmark-colours",
+          "questionId": "q2"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "It is blue及蓝/绿/红集合完全相同。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b04"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.bookmark-colours",
+          "questionId": "q6"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "blue到蓝；please和一项干扰变化不能视为新任务。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b05"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.animal-book-covers",
+          "questionId": "q3"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "狗目标及狗/猫/虎头像集合相同。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b05"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary1.animal-book-covers",
+          "questionId": "q6"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "It is a dog完全相同，换虎干扰仍直接认狗。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b06"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.shell-count",
+          "questionId": "q3"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Five到五及三/四干扰相同；积木替贝壳是计数载体变化。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b07"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary1.painted-animal-flags",
+          "questionId": "q1"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "A red dog与红狗/蓝狗/红猫集合完全相同。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b08"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.photo-count",
+          "questionId": "q1"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Six及六/七/八照片集合相同。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b09"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.studio-directions",
+          "questionId": "q3"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Stand up到站姿；坐着开窗仍等效于非站立干扰。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-b18"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary1.studio-directions",
+          "questionId": "q2"
+        }
+      ],
+      "relation": "直接同构；同一测评不并用",
+      "evidence": "Open the door及开门/不开/开窗三状态相同。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a01",
+        "p1-astra-b10"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "b10提交后解析明确ruler=尺，足以给a01单目标完整映射；a01先出仅给b10一半。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a11",
+        "p1-astra-b11"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "b11录音Show me an apple与苹果映射完整给出a11；反向仅覆盖b11一项。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a03",
+        "p1-astra-b12"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "b12含Touch your ear及耳图完整映射，之后a03只换为整脸圈耳。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a14",
+        "p1-astra-b14"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "b14中It is a monkey到猴完整给出a14；布偶换纸偶不改变单目标。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a08",
+        "p1-astra-b08"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "同样六/七/八两排照片听数，只将Seven换Six；平行题可分轮，混抽不当两种新任务。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a16",
+        "p1-astra-b16"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "都是双声音三彩图；余图交叉共享两个目标的一项属性，仅换蓝狗/红猫为蓝猫/绿狗，不新增作答步骤。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a17",
+        "p1-astra-b17"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "都是两独立数音到两排相册页一对一映射，只换八/十为九/六；作为平行轮次，非新增能力。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a13",
+        "p1-astra-b04"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "a13提交后解析明确蓝色是blue，已给出b04单颜色听选的完整目标音义映射；不仅是出现一张蓝色干扰图。"
+    },
+    {
+      "candidateIds": [
+        "p1-astra-a04",
+        "p1-astra-b13"
+      ],
+      "oldQuestions": [],
+      "relation": "跨轮混抽限制；不影响各自固定18题",
+      "evidence": "b13提交后解析明确yellow配黄色，完整教会a04的单颜色目标；反向a04只覆盖b13第二项。"
+    }
+  ],
+  "dedupBoundary": "单音题与旧库相同目标且相同认图推理列直接同构；独立双声音题与旧单音题不只因共享一个基础词就互斥。双声音跨轮高度平行关系明确列出，不称36种新能力。exclusionPairs每条总共恰好两成员；固定A/B内部没有互斥。"
+}

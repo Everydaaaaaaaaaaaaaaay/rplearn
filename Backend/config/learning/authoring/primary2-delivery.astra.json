@@ -1,0 +1,3144 @@
+{
+  "level": "primary2",
+  "author": {
+    "name": "小学二年级独立 Astra 作者",
+    "method": "完整保留原题语义，逐题亲写操作语、素材清单及审查记录；程序仅复制已有字段、序列化与结构核对，不组合生成题目或错答。",
+    "status": "交付提案，待主代理亲审；未生成素材、未发布、未提交、未部署。",
+    "grouping": "A、B各18题；排斥对是后续组卷约束，不允许为了凑18题绕过；保留原ID以追踪稿件，不代表正式题目ID。"
+  },
+  "sourceReading": [
+    {
+      "sourceId": "pep.primary2.archive20260929",
+      "pages": "印刷4–5、30–31、46–47；PDF8–9、34–35、50–51",
+      "evidence": "2026-10-11本轮通过view_image逐页目视本地pep-primary2-8/9/34/35/50/51.png：能力词组与can问答、数字报时、七天与询问星期。",
+      "limitations": "未重验PDF哈希或印次；不是全册核读。保留整点限制，不采用教材中的指针钟和非整点。"
+    },
+    {
+      "sourceId": "fltrp.primary2.archive20260929",
+      "pages": "印刷2–4、13–14、20–21、50–51、57；PDF7–9、18–19、25–26、55–56、62",
+      "evidence": "2026-10-11本轮逐页读取fltrp-primary2.pages.json十页正文：冷热风晴雨、正在做及否定、更正问答、左右直行返回。",
+      "limitations": "只核读提取正文，未目视扫描图；不是全册或现行版本对齐。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "primary2.astra.A01",
+      "goalId": "primary2.playtime-can",
+      "type": "listeningChoice",
+      "taskIntent": "选择能力记录",
+      "instruction": "听一听，选能力标签。",
+      "prompt": "他会做什么？",
+      "audioScript": "I can make a model plane.",
+      "options": [
+        {
+          "id": "A",
+          "text": "会做飞机模型"
+        },
+        {
+          "id": "B",
+          "text": "不会做飞机模型"
+        },
+        {
+          "id": "C",
+          "text": "会放风筝"
+        }
+      ],
+      "answer": "A",
+      "explanation": "can表示会；make a model plane是做飞机模型。",
+      "hint": "先听会不会，再听是什么活动。",
+      "difficultyReason": "一个能力和一个活动短语，不要求阅读英文。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷4–5"
+      },
+      "review": {
+        "reasoning": "A保留肯定能力与完整活动。",
+        "wrongAnswer": "B漏听肯定，C混淆两种空中物品活动。",
+        "ambiguity": "只报告自述能力，不由拿着工具推断会不会。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "肯定能力与活动须一起保留；B否定、C换活动均不符。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "I can make a model plane.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "会做飞机模型"
+          },
+          {
+            "id": "B",
+            "text": "不会做飞机模型"
+          },
+          {
+            "id": "C",
+            "text": "会放风筝"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A02",
+      "goalId": "primary2.playtime-can",
+      "type": "listeningChoice",
+      "taskIntent": "核对能力标签",
+      "instruction": "听一听，核对能力卡。",
+      "prompt": "原卡写着“会骑车”。哪张卡符合录音？",
+      "audioScript": "I cannot ride a bike.",
+      "options": [
+        {
+          "id": "A",
+          "text": "会游泳"
+        },
+        {
+          "id": "B",
+          "text": "不会骑车"
+        },
+        {
+          "id": "C",
+          "text": "会骑车"
+        }
+      ],
+      "answer": "B",
+      "explanation": "cannot ride a bike表示不会骑车。",
+      "hint": "把整句听完，再核对活动和会不会。",
+      "difficultyReason": "核对能力肯否，不预告原标签对错。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷4–5"
+      },
+      "review": {
+        "reasoning": "B保留骑车活动和否定信息。",
+        "wrongAnswer": "A听错活动，C忽略否定或照抄旧标签。",
+        "ambiguity": "原卡可对可错，未听声音无法唯一判断；A没有录音依据。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "原卡可以正确；操作语不预告必改。录音cannot决定否定。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "I cannot ride a bike.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "会游泳"
+          },
+          {
+            "id": "B",
+            "text": "不会骑车"
+          },
+          {
+            "id": "C",
+            "text": "会骑车"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A03",
+      "goalId": "primary2.playtime-can",
+      "type": "listeningChoice",
+      "taskIntent": "问答信息提取",
+      "instruction": "听问答，选一个答案。",
+      "prompt": "回答的人会踢足球吗？",
+      "audioScript": "Can you play football? Yes, I can.",
+      "options": [
+        {
+          "id": "A",
+          "text": "不会"
+        },
+        {
+          "id": "B",
+          "text": "没有说"
+        },
+        {
+          "id": "C",
+          "text": "会"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Yes, I can是肯定回答，说明会踢足球。",
+      "hint": "答案在第二个人的回答里。",
+      "difficultyReason": "听懂短答所指的活动；两句可整体重播。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷5"
+      },
+      "review": {
+        "reasoning": "C由Yes直接确定。",
+        "wrongAnswer": "A混淆yes/no；B只听问题未整合回答。",
+        "ambiguity": "音频制作须有清晰问答停顿，不加入足球声暗示答案。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "答案在Yes短答，问题本身不确认能力；保留问答停顿。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Can you play football? Yes, I can.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "不会"
+          },
+          {
+            "id": "B",
+            "text": "没有说"
+          },
+          {
+            "id": "C",
+            "text": "会"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A04",
+      "goalId": "primary2.week-day-cards",
+      "type": "listeningChoice",
+      "taskIntent": "听选日历卡",
+      "instruction": "听一听，选星期卡。",
+      "prompt": "录音说今天星期几？",
+      "audioScript": "Today is Tuesday.",
+      "options": [
+        {
+          "id": "A",
+          "text": "星期四"
+        },
+        {
+          "id": "B",
+          "text": "星期二"
+        },
+        {
+          "id": "C",
+          "text": "星期一"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Tuesday是星期二。",
+      "hint": "听星期名称开头和中间的声音。",
+      "difficultyReason": "单一星期名；不推算昨天明天。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷46–47"
+      },
+      "review": {
+        "reasoning": "B直接对应Tuesday。",
+        "wrongAnswer": "A混淆Tuesday和Thursday；C把相邻日混作答案。",
+        "ambiguity": "题中今天由录音规定，与设备实际日期无关。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "星期二由Tuesday决定，日期不取设备时间。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Today is Tuesday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "星期四"
+          },
+          {
+            "id": "B",
+            "text": "星期二"
+          },
+          {
+            "id": "C",
+            "text": "星期一"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A05",
+      "goalId": "primary2.week-day-cards",
+      "type": "listeningChoice",
+      "taskIntent": "辨认短答",
+      "instruction": "听问答，选星期卡。",
+      "prompt": "回答说星期几？",
+      "audioScript": "What day is it today? It's Sunday.",
+      "options": [
+        {
+          "id": "A",
+          "text": "星期日"
+        },
+        {
+          "id": "B",
+          "text": "星期六"
+        },
+        {
+          "id": "C",
+          "text": "星期三"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Sunday是星期日。",
+      "hint": "专心听回答里的星期名称。",
+      "difficultyReason": "熟悉问句加一个短答，不要求记忆整段。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷46–47"
+      },
+      "review": {
+        "reasoning": "A对应Sunday。",
+        "wrongAnswer": "B混淆两个周末日名称，C为不同中间音节的星期名。",
+        "ambiguity": "接受星期天与星期日同义；界面仅出现其中一个。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "Sunday与周六区分，中文星期日不与星期天重复作选项。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "What day is it today? It's Sunday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "星期日"
+          },
+          {
+            "id": "B",
+            "text": "星期六"
+          },
+          {
+            "id": "C",
+            "text": "星期三"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A06",
+      "goalId": "primary2.week-day-cards",
+      "type": "listeningChoice",
+      "taskIntent": "听后核对标签",
+      "instruction": "听一听，核对星期卡。",
+      "prompt": "原卡写着“星期五”。保留还是换掉？",
+      "audioScript": "It's Wednesday.",
+      "options": [
+        {
+          "id": "A",
+          "text": "保留星期五"
+        },
+        {
+          "id": "B",
+          "text": "换成星期四"
+        },
+        {
+          "id": "C",
+          "text": "换成星期三"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Wednesday是星期三，因此要换掉星期五。",
+      "hint": "先听星期名称，再和原来的标签比较。",
+      "difficultyReason": "以熟悉中文卡核对一个英文词。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷46–47"
+      },
+      "review": {
+        "reasoning": "C听辨正确并完成纠错。",
+        "wrongAnswer": "A依赖视觉旧标签；B混淆Wednesday和Thursday。",
+        "ambiguity": "录音为唯一正确依据，原卡明确可能有误。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "保留项与两个更换项均开放；不在提示中预告原卡错误。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's Wednesday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "保留星期五"
+          },
+          {
+            "id": "B",
+            "text": "换成星期四"
+          },
+          {
+            "id": "C",
+            "text": "换成星期三"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A07",
+      "goalId": "primary2.weather-window",
+      "type": "listeningChoice",
+      "taskIntent": "听选天气图",
+      "instruction": "听一听，选天气图。",
+      "prompt": "哪张图符合录音？",
+      "audioScript": "It's windy.",
+      "options": [
+        {
+          "id": "A",
+          "text": "树叶向一边飘，旗子展开"
+        },
+        {
+          "id": "B",
+          "text": "雨滴落入水洼"
+        },
+        {
+          "id": "C",
+          "text": "晴朗天空，旗子自然下垂"
+        }
+      ],
+      "answer": "A",
+      "imageBriefs": [
+        "A：正面窗框外同一棵树，树叶和旗帜向右吹；无雨、无太阳符号。",
+        "B：同窗框树木，明显雨线和水洼，旗子下垂。",
+        "C：同窗框树木，太阳与无云天空，旗子下垂；不可用颜色亮度强调正确图。"
+      ],
+      "explanation": "windy表示有风；飘动的树叶和旗子表示风。",
+      "hint": "先听天气词，再逐张看看图里画了什么。",
+      "difficultyReason": "单一天气特征与直观图像对应。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷2–4"
+      },
+      "review": {
+        "reasoning": "A用可见风迹象表示windy。",
+        "wrongAnswer": "B把风雨混同，C把一般好天气替代具体词义。",
+        "ambiguity": "图片尚待生产；必须保证B和C没有明显风迹象。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "风迹象对应windy，其他两图不能有飘旗或歪树。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's windy.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [
+          {
+            "key": "option.A",
+            "meaning": "同一窗外树叶与旗子向一侧吹，无雨，无太阳符号。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.B",
+            "meaning": "同一窗外雨线落到水洼，旗子下垂，无风迹象。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.C",
+            "meaning": "同一窗外太阳、晴空，旗子下垂，无雨无风迹象。",
+            "status": "待制作"
+          }
+        ],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "树叶向一边飘，旗子展开"
+          },
+          {
+            "id": "B",
+            "text": "雨滴落入水洼"
+          },
+          {
+            "id": "C",
+            "text": "晴朗天空，旗子自然下垂"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需媒体绑定及本题实际页面验收；图片选项须验证图文映射与无障碍描述不添加英文答案。"
+      }
+    },
+    {
+      "id": "primary2.astra.A08",
+      "goalId": "primary2.weather-window",
+      "type": "listeningChoice",
+      "taskIntent": "提取两个特征",
+      "instruction": "听一听，选天气卡。",
+      "prompt": "哪张卡的两项都对？",
+      "audioScript": "It's cold and sunny.",
+      "options": [
+        {
+          "id": "A",
+          "text": "冷，下雨"
+        },
+        {
+          "id": "B",
+          "text": "热，晴朗"
+        },
+        {
+          "id": "C",
+          "text": "冷，晴朗"
+        }
+      ],
+      "answer": "C",
+      "explanation": "cold是冷，sunny是晴朗，两项都要符合。",
+      "hint": "and前后各有一条信息。",
+      "difficultyReason": "两个已学天气词组成短句，不需常识推断。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷2–4"
+      },
+      "review": {
+        "reasoning": "C同时保留温度和天空状态。",
+        "wrongAnswer": "A只保留cold，B只保留sunny。",
+        "ambiguity": "晴天可以冷；不能用晴朗等于热的生活联想判题。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "冷与晴两个条件必须同时成立；晴朗不默认炎热。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's cold and sunny.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "冷，下雨"
+          },
+          {
+            "id": "B",
+            "text": "热，晴朗"
+          },
+          {
+            "id": "C",
+            "text": "冷，晴朗"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A09",
+      "goalId": "primary2.weather-window",
+      "type": "listeningChoice",
+      "taskIntent": "问答核对天气",
+      "instruction": "听问答，选天气记录。",
+      "prompt": "回答确认了什么？",
+      "audioScript": "Is it windy? No, it isn't.",
+      "options": [
+        {
+          "id": "A",
+          "text": "确认有风"
+        },
+        {
+          "id": "B",
+          "text": "说了没有风"
+        },
+        {
+          "id": "C",
+          "text": "说了正在下雨"
+        }
+      ],
+      "answer": "B",
+      "explanation": "No, it isn't否定了有风；没有说明下雨。",
+      "hint": "问题里出现的词不一定是真实天气。",
+      "difficultyReason": "识别问句中的假设和否定回答。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷4"
+      },
+      "review": {
+        "reasoning": "B是对windy的否定。",
+        "wrongAnswer": "A仅抓windy，C无依据推断另一种天气。",
+        "ambiguity": "不把没有风等价于晴天或雨天。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "否定有风，不能推导下雨；提問不算天气事实。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Is it windy? No, it isn't.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "确认有风"
+          },
+          {
+            "id": "B",
+            "text": "说了没有风"
+          },
+          {
+            "id": "C",
+            "text": "说了正在下雨"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A10",
+      "goalId": "primary2.cafe-actions",
+      "type": "listeningChoice",
+      "taskIntent": "听选动作图",
+      "instruction": "听一听，选动作图。",
+      "prompt": "她正在做什么？",
+      "audioScript": "She is reading.",
+      "options": [
+        {
+          "id": "A",
+          "text": "女孩吃点心"
+        },
+        {
+          "id": "B",
+          "text": "女孩看打开的书"
+        },
+        {
+          "id": "C",
+          "text": "女孩张嘴唱歌"
+        }
+      ],
+      "answer": "B",
+      "imageBriefs": [
+        "三幅均为同一女孩同一桌椅：A手拿点心接近嘴；B双眼朝向打开的书；C双手离桌张嘴，旁有简单音符。各图不出现其他目标活动。"
+      ],
+      "explanation": "reading表示正在阅读。",
+      "hint": "听动作，不用猜她喜欢什么。",
+      "difficultyReason": "一人物一动作的听图对应。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷13"
+      },
+      "review": {
+        "reasoning": "B明确展示reading。",
+        "wrongAnswer": "A混淆reading与eating，C把张嘴行为作为相同活动。",
+        "ambiguity": "书页无可读文字，不能靠识字作答；唱歌图须避免像朗读。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "图中读书与吃、唱互斥表现；不能以书页文字替代听辨。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "She is reading.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [
+          {
+            "key": "option.A",
+            "meaning": "同一女孩同一桌椅，手拿点心接近嘴，桌上无书。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.B",
+            "meaning": "同一女孩双眼朝向打开的无字书，不拿食物，不画音符。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.C",
+            "meaning": "同一女孩张嘴唱歌，简单音符，手边无书，不画朗读场景。",
+            "status": "待制作"
+          }
+        ],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "女孩吃点心"
+          },
+          {
+            "id": "B",
+            "text": "女孩看打开的书"
+          },
+          {
+            "id": "C",
+            "text": "女孩张嘴唱歌"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需媒体绑定及本题实际页面验收；图片选项须验证图文映射与无障碍描述不添加英文答案。"
+      }
+    },
+    {
+      "id": "primary2.astra.A11",
+      "goalId": "primary2.cafe-actions",
+      "type": "listeningChoice",
+      "taskIntent": "动作纠错",
+      "instruction": "听完整句，选动作。",
+      "prompt": "她现在正在做什么？",
+      "audioScript": "She isn't reading. She's eating.",
+      "options": [
+        {
+          "id": "A",
+          "text": "吃东西"
+        },
+        {
+          "id": "B",
+          "text": "看书"
+        },
+        {
+          "id": "C",
+          "text": "边看书边吃东西"
+        }
+      ],
+      "answer": "A",
+      "explanation": "前句否定看书，后句说明正在吃东西。",
+      "hint": "听isn't之后，还要听后面那一句。",
+      "difficultyReason": "两个短句作否定纠正，信息都在本题音频中。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷13–14"
+      },
+      "review": {
+        "reasoning": "A保留最终陈述。",
+        "wrongAnswer": "B只记先出现活动，C漏掉否定并把两动作相加。",
+        "ambiguity": "现实中可以边看边吃，但录音已明确否定看书，故C不成立。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "先否定阅读再确认吃；双动作选项漏掉否定。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "She isn't reading. She's eating.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "吃东西"
+          },
+          {
+            "id": "B",
+            "text": "看书"
+          },
+          {
+            "id": "C",
+            "text": "边看书边吃东西"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A12",
+      "goalId": "primary2.cafe-actions",
+      "type": "listeningChoice",
+      "taskIntent": "动作问答辨认",
+      "instruction": "听问答，选动作。",
+      "prompt": "回答的人正在做什么？",
+      "audioScript": "What are you doing? I'm singing.",
+      "options": [
+        {
+          "id": "A",
+          "text": "散步"
+        },
+        {
+          "id": "B",
+          "text": "听歌"
+        },
+        {
+          "id": "C",
+          "text": "唱歌"
+        }
+      ],
+      "answer": "C",
+      "explanation": "I'm singing表示我正在唱歌，不是听歌。",
+      "hint": "听清是自己唱，还是用耳朵听。",
+      "difficultyReason": "听辨相近生活活动，不增加长句。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷13、20–21"
+      },
+      "review": {
+        "reasoning": "C对应singing。",
+        "wrongAnswer": "A混淆-ing动作词，B将唱歌与听歌混同。",
+        "ambiguity": "音轨不能播放背景音乐，以免形成额外提示。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "唱歌不是听歌；不用伴奏提示。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "What are you doing? I'm singing.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "散步"
+          },
+          {
+            "id": "B",
+            "text": "听歌"
+          },
+          {
+            "id": "C",
+            "text": "唱歌"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A13",
+      "goalId": "primary2.photo-time",
+      "type": "listeningChoice",
+      "taskIntent": "选择数字钟",
+      "instruction": "听报时，选数字钟。",
+      "prompt": "现在几点整？",
+      "audioScript": "It's eleven o'clock.",
+      "options": [
+        {
+          "id": "A",
+          "text": "11:00"
+        },
+        {
+          "id": "B",
+          "text": "12:00"
+        },
+        {
+          "id": "C",
+          "text": "1:00"
+        }
+      ],
+      "answer": "A",
+      "explanation": "eleven o'clock是十一点整。",
+      "hint": "只听几点，不需要计算。",
+      "difficultyReason": "十一点整与相邻数辨听。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷30–31"
+      },
+      "review": {
+        "reasoning": "A唯一对应eleven。",
+        "wrongAnswer": "B混淆eleven/twelve，C遗漏eleven前后音节。",
+        "ambiguity": "不判断上午晚上，12小时钟不附AM/PM。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "eleven对应11:00；数字钟无指针、无上午下午。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's eleven o'clock.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "11:00"
+          },
+          {
+            "id": "B",
+            "text": "12:00"
+          },
+          {
+            "id": "C",
+            "text": "1:00"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A14",
+      "goalId": "primary2.photo-time",
+      "type": "listeningChoice",
+      "taskIntent": "报时核对",
+      "instruction": "听报时，核对数字钟。",
+      "prompt": "原来显示8:00。现在应显示什么？",
+      "audioScript": "It's nine o'clock now.",
+      "options": [
+        {
+          "id": "A",
+          "text": "8:00"
+        },
+        {
+          "id": "B",
+          "text": "9:00"
+        },
+        {
+          "id": "C",
+          "text": "10:00"
+        }
+      ],
+      "answer": "B",
+      "explanation": "nine是九；报时为九点整。",
+      "hint": "先听完整报时，再与原来的数字比较。",
+      "difficultyReason": "听辨一个时数后改正旧值。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷30–31"
+      },
+      "review": {
+        "reasoning": "B直接依据nine。",
+        "wrongAnswer": "A被旧显示吸引，C误认相邻时数。",
+        "ambiguity": "不需计算过了多久，录音就是本题标准。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "核对而非预告修正；nine与旧值eight比较。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's nine o'clock now.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "8:00"
+          },
+          {
+            "id": "B",
+            "text": "9:00"
+          },
+          {
+            "id": "C",
+            "text": "10:00"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A15",
+      "goalId": "primary2.photo-time",
+      "type": "listeningChoice",
+      "taskIntent": "听选数字钟",
+      "instruction": "听问答，选数字钟。",
+      "prompt": "回答说几点整？",
+      "audioScript": "What time is it? It's four o'clock.",
+      "options": [
+        {
+          "id": "A",
+          "text": "5:00"
+        },
+        {
+          "id": "B",
+          "text": "3:00"
+        },
+        {
+          "id": "C",
+          "text": "4:00"
+        }
+      ],
+      "answer": "C",
+      "explanation": "four o'clock是四点整，对应4:00。",
+      "hint": "听回答里的数字，可以再听一次。",
+      "difficultyReason": "所有选项均整点，只区分英语时数，不要求读指针。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷30–31"
+      },
+      "review": {
+        "reasoning": "C表示4:00。",
+        "wrongAnswer": "A听成five，B混淆相邻数。",
+        "ambiguity": "使用等大数字，不考上午下午或指针知识。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "four对应4:00，未引入指针读钟。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "What time is it? It's four o'clock.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "5:00"
+          },
+          {
+            "id": "B",
+            "text": "3:00"
+          },
+          {
+            "id": "C",
+            "text": "4:00"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.A16",
+      "goalId": "primary2.street-directions",
+      "type": "listeningChoice",
+      "taskIntent": "执行单步指令",
+      "instruction": "听口令，选转向图。",
+      "prompt": "玩偶背对你、面朝画面上方。接下来怎么转？",
+      "audioScript": "Turn right.",
+      "options": [
+        {
+          "id": "A",
+          "text": "向画面左边转"
+        },
+        {
+          "id": "B",
+          "text": "向画面右边转"
+        },
+        {
+          "id": "C",
+          "text": "保持朝上"
+        }
+      ],
+      "answer": "B",
+      "imageBriefs": [
+        "题面玩偶背对观看者，面向上方，鼻尖方向用上箭头说明；选项为同款玩偶分别转向左、右、不转，禁止镜面视角。"
+      ],
+      "explanation": "right是右；turn right表示向右转。",
+      "hint": "玩偶和你朝着同一个方向。",
+      "difficultyReason": "只听一条左右指令，无真实导航。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷50–51"
+      },
+      "review": {
+        "reasoning": "同向初始姿态下，B为玩偶右方。",
+        "wrongAnswer": "A左右颠倒，C漏听turn。",
+        "ambiguity": "必须使用题面规定的背影视角，不能面朝用户造成左右反转。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "朝向信息必须保留；右是玩偶自身右侧，与屏幕右一致。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Turn right.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [
+          {
+            "key": "stem",
+            "meaning": "同一玩偶背影视角，朝屏幕上方，头部方向清楚；桌面无真实道路。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.A",
+            "meaning": "同一玩偶从初始朝上转到画面左侧。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.B",
+            "meaning": "同一玩偶从初始朝上转到画面右侧。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.C",
+            "meaning": "同一玩偶保持朝上。",
+            "status": "待制作"
+          }
+        ],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "向画面左边转"
+          },
+          {
+            "id": "B",
+            "text": "向画面右边转"
+          },
+          {
+            "id": "C",
+            "text": "保持朝上"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需媒体绑定及本题实际页面验收；图片选项须验证图文映射与无障碍描述不添加英文答案。"
+      }
+    },
+    {
+      "id": "primary2.astra.A17",
+      "goalId": "primary2.street-directions",
+      "type": "audioArrange",
+      "implementationStatus": "当前服务端与Swift已有audioArrange合同；本题仍缺音轨assetId、导入映射与实际排序验收，不可发布。",
+      "taskIntent": "搭建玩偶两步路线",
+      "instruction": "听口令，排两张动作卡。",
+      "prompt": "先做什么，再做什么？",
+      "audioScript": "Go straight on. Then turn left.",
+      "tokens": [
+        {
+          "id": "left",
+          "text": "左转"
+        },
+        {
+          "id": "straight",
+          "text": "直走"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "straight",
+          "left"
+        ]
+      ],
+      "answer": [
+        "straight",
+        "left"
+      ],
+      "explanation": "先直走，再左转；卡片也按这个顺序放。",
+      "hint": "先放第一句的动作，再听第二句。",
+      "difficultyReason": "两张必要动作卡，考声音次序而非整行中文选择。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷50–51"
+      },
+      "review": {
+        "reasoning": "直走→左转是唯一口令顺序。",
+        "wrongAnswer": "左转→直走两个动作都对，但颠倒执行先后。",
+        "ambiguity": "不计算终点；动作卡随机初始位置，允许完整重播；不附会泄露顺序的路线图。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "只按两步指令排序，不算终点；保留真实排序交互。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Go straight on. Then turn left.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "left",
+            "text": "左转"
+          },
+          {
+            "id": "straight",
+            "text": "直走"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 两段间清晰短停顿，完整重播；不自动逐词点亮已排卡。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "已有audioArrange基础；需验证两卡乱序、放入先后槽、撤回重排、整段重播和顺序判分。"
+      }
+    },
+    {
+      "id": "primary2.astra.A18",
+      "goalId": "primary2.street-directions",
+      "type": "listeningChoice",
+      "taskIntent": "辨认返回指令",
+      "instruction": "听口令，选一个动作。",
+      "prompt": "桌面玩偶现在该怎么做？",
+      "audioScript": "Turn back.",
+      "options": [
+        {
+          "id": "A",
+          "text": "继续向前"
+        },
+        {
+          "id": "B",
+          "text": "向右转"
+        },
+        {
+          "id": "C",
+          "text": "转身返回"
+        }
+      ],
+      "answer": "C",
+      "explanation": "turn back是转身返回。",
+      "hint": "把整条口令再听一次，比较三个动作有什么不同。",
+      "difficultyReason": "单一口令，区别返回与普通转弯。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷57"
+      },
+      "review": {
+        "reasoning": "C符合返回语义。",
+        "wrongAnswer": "A忽略back，B只听到turn。",
+        "ambiguity": "不要求倒着走；转身返回与后退须在插图制作时区分。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "返回处理为转身向来路，不要求倒走或精确归位。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Turn back.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "继续向前"
+          },
+          {
+            "id": "B",
+            "text": "向右转"
+          },
+          {
+            "id": "C",
+            "text": "转身返回"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B01",
+      "goalId": "primary2.playtime-can",
+      "type": "audioMatching",
+      "implementationStatus": "拟新增交互，待实现与验收，不可发布",
+      "taskIntent": "给声音卡配能力图",
+      "instruction": "分别听两张声音卡，再配图。",
+      "prompt": "每张声音卡配一张能力图。",
+      "audioCards": [
+        {
+          "id": "voice1",
+          "label": "声音1",
+          "audioScript": "I cannot fly a kite."
+        },
+        {
+          "id": "voice2",
+          "label": "声音2",
+          "audioScript": "I can swim."
+        }
+      ],
+      "audioScript": "分别录制：声音1 I cannot fly a kite.；声音2 I can swim.。不得把说明文字读入音频。",
+      "targets": [
+        {
+          "id": "swim-can",
+          "text": "游泳：会"
+        },
+        {
+          "id": "kite-can",
+          "text": "放风筝：会"
+        },
+        {
+          "id": "swim-cannot",
+          "text": "游泳：不会"
+        },
+        {
+          "id": "kite-cannot",
+          "text": "放风筝：不会"
+        }
+      ],
+      "answer": {
+        "voice1": "kite-cannot",
+        "voice2": "swim-can"
+      },
+      "imageBriefs": [
+        "游泳与放风筝各画一张清楚的活动图，活动图本身重复使用；下方分别加统一大小中文会/不会标签。会与不会不依赖颜色区别，不用受伤、溺水或哭脸暗示不会。四张图大小一致。"
+      ],
+      "explanation": "声音1说不会放风筝；声音2说会游泳。",
+      "hint": "每条声音分别听活动和会不会，拿不准就重播那一条。",
+      "difficultyReason": "两条独立短句对应四张图，既辨活动又辨肯否。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷4–5"
+      },
+      "review": {
+        "reasoning": "声音1连kite-cannot，声音2连swim-can；另两图不使用。",
+        "wrongAnswer": "声音1连kite-can是漏听否定；连swim-cannot是听错活动。声音2连swim-cannot是肯否反转；连kite-can是活动混淆。",
+        "ambiguity": "每条声音只连一图，允许修改连线且不自动排除错误候选；图不依靠现实人物能力推断。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "两个独立声音对应活动与肯否；四候选用二，不能合成长录音。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "voice1",
+            "script": "I cannot fly a kite.",
+            "independentPlayback": true,
+            "status": "待录制"
+          },
+          {
+            "key": "voice2",
+            "script": "I can swim.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [
+          {
+            "key": "target.swim-can",
+            "meaning": "游泳活动图，加中文“会”；与swim-cannot复用同一图。",
+            "status": "待制作"
+          },
+          {
+            "key": "target.kite-can",
+            "meaning": "放风筝活动图，加中文“会”；与kite-cannot复用同一图。",
+            "status": "待制作"
+          },
+          {
+            "key": "target.swim-cannot",
+            "meaning": "同一游泳活动图，加中文“不会”；不画受伤、溺水、哭脸。",
+            "status": "待制作"
+          },
+          {
+            "key": "target.kite-cannot",
+            "meaning": "同一放风筝图，加中文“不会”；不画断线失败来猜能力。",
+            "status": "待制作"
+          }
+        ],
+        "renderedCards": [
+          {
+            "id": "swim-can",
+            "text": "游泳：会"
+          },
+          {
+            "id": "kite-can",
+            "text": "放风筝：会"
+          },
+          {
+            "id": "swim-cannot",
+            "text": "游泳：不会"
+          },
+          {
+            "id": "kite-cannot",
+            "text": "放风筝：不会"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需要新增audioMatching合同、两个独立播放器、四图用二、修改连线、逐映射判分及无障碍替代。"
+      }
+    },
+    {
+      "id": "primary2.astra.B02",
+      "goalId": "primary2.playtime-can",
+      "type": "listeningChoice",
+      "taskIntent": "否定短答",
+      "instruction": "听问答，选一个答案。",
+      "prompt": "回答的人会堆雪人吗？",
+      "audioScript": "Can you make a snowman? No, I can't.",
+      "options": [
+        {
+          "id": "A",
+          "text": "不会"
+        },
+        {
+          "id": "B",
+          "text": "会"
+        },
+        {
+          "id": "C",
+          "text": "没有回答"
+        }
+      ],
+      "answer": "A",
+      "explanation": "No, I can't表示不会，回答针对堆雪人。",
+      "hint": "重点听第二个人的回答，再判断会不会。",
+      "difficultyReason": "目标否定采用自然缩写，但No提供可靠听辨支持。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷4–5"
+      },
+      "review": {
+        "reasoning": "A是明确否定回答。",
+        "wrongAnswer": "B将can't当can，C未将短答与问题关联。",
+        "ambiguity": "不依据季节或是否下雪推断能力；声音须清楚保留否定。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "No与can’t决定不会，不以题问中make判断会。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Can you make a snowman? No, I can't.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "不会"
+          },
+          {
+            "id": "B",
+            "text": "会"
+          },
+          {
+            "id": "C",
+            "text": "没有回答"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B03",
+      "goalId": "primary2.playtime-can",
+      "type": "listeningChoice",
+      "taskIntent": "区分能力与当前动作",
+      "instruction": "听一听，选已确定的事。",
+      "prompt": "这句话告诉了什么？",
+      "audioScript": "I can ride a bike.",
+      "options": [
+        {
+          "id": "A",
+          "text": "现在正在骑车"
+        },
+        {
+          "id": "B",
+          "text": "不会骑车"
+        },
+        {
+          "id": "C",
+          "text": "有骑车的本领"
+        }
+      ],
+      "answer": "C",
+      "explanation": "can说的是本领，没有说明此刻正在骑车。",
+      "hint": "会做和现在正在做不一样。",
+      "difficultyReason": "同一简单活动中辨别can的信息范围。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷4–5"
+      },
+      "review": {
+        "reasoning": "C是原句确定陈述。",
+        "wrongAnswer": "A把能力误作当前动作，B肯否反转。",
+        "ambiguity": "A可能现实中发生但本句没有证明；问法限定可以确定。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "can是本领，不证明当前骑车；保留能力和当前动作界线。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "I can ride a bike.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "现在正在骑车"
+          },
+          {
+            "id": "B",
+            "text": "不会骑车"
+          },
+          {
+            "id": "C",
+            "text": "有骑车的本领"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B04",
+      "goalId": "primary2.week-day-cards",
+      "type": "audioChoice",
+      "taskIntent": "从声音中寻找日历对应者",
+      "instruction": "分别听三段声音，再选一段。",
+      "prompt": "哪段声音说的是“星期四”？",
+      "audioScript": "分别制作三个独立录音，文本见audioCards；不朗读声音编号，不合并长音轨。",
+      "options": [
+        {
+          "id": "A",
+          "text": "声音1"
+        },
+        {
+          "id": "B",
+          "text": "声音2"
+        },
+        {
+          "id": "C",
+          "text": "声音3"
+        }
+      ],
+      "answer": "B",
+      "explanation": "声音2里的Thursday表示星期四。",
+      "hint": "逐段核对，每听一段就看看卡片。",
+      "difficultyReason": "从给定中文意义反向识别英语声音，三段均只有一条短句。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷46–47"
+      },
+      "review": {
+        "reasoning": "第二段Thursday与给定卡相符。",
+        "wrongAnswer": "声音1混淆Tuesday/Thursday；声音3混淆Wednesday/Thursday。",
+        "ambiguity": "每个选项有独立可重播的按钮；编号不读入录音，不考数词或连续记忆，三段同一声线。"
+      },
+      "implementationStatus": "拟新增三个独立声音选项，待实现、录音与验收，不可发布",
+      "audioCards": [
+        {
+          "id": "A",
+          "label": "声音1",
+          "audioScript": "It's Tuesday."
+        },
+        {
+          "id": "B",
+          "label": "声音2",
+          "audioScript": "It's Thursday."
+        },
+        {
+          "id": "C",
+          "label": "声音3",
+          "audioScript": "It's Wednesday."
+        }
+      ],
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "必须三个独立播放器，只显示声音标签，不显示英文字幕。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "A",
+            "script": "It's Tuesday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          },
+          {
+            "key": "B",
+            "script": "It's Thursday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          },
+          {
+            "key": "C",
+            "script": "It's Wednesday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "声音1"
+          },
+          {
+            "id": "B",
+            "text": "声音2"
+          },
+          {
+            "id": "C",
+            "text": "声音3"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需要新增audioChoice合同、三独立声音选项；播放与提交分开、允许重听，不展示英文。"
+      }
+    },
+    {
+      "id": "primary2.astra.B05",
+      "goalId": "primary2.week-day-cards",
+      "type": "listeningChoice",
+      "taskIntent": "核对是否需要改卡",
+      "instruction": "听一听，核对星期卡。",
+      "prompt": "原卡写着“星期六”。保留还是换掉？",
+      "audioScript": "Today is Saturday.",
+      "options": [
+        {
+          "id": "A",
+          "text": "保留星期六"
+        },
+        {
+          "id": "B",
+          "text": "换成星期日"
+        },
+        {
+          "id": "C",
+          "text": "换成星期五"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Saturday就是星期六，卡片已经正确。",
+      "hint": "先听完整星期名，再与原卡比较。",
+      "difficultyReason": "纠错任务中包含正确原卡，避免形成逢卡必改策略。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷46–47"
+      },
+      "review": {
+        "reasoning": "A正确核对录音与原卡。",
+        "wrongAnswer": "B混同周末日，C只因相邻天或任务惯性而改。",
+        "ambiguity": "题中没有真实日期，也不推算放假安排。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "此题原卡正确，避免逢核对必更换的作答习惯。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Today is Saturday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "保留星期六"
+          },
+          {
+            "id": "B",
+            "text": "换成星期日"
+          },
+          {
+            "id": "C",
+            "text": "换成星期五"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B06",
+      "goalId": "primary2.week-day-cards",
+      "type": "audioArrange",
+      "implementationStatus": "当前服务端与Swift已有audioArrange合同；本题仍缺音轨assetId、导入映射与实际排序验收，不可发布。",
+      "taskIntent": "按声音整理星期卡",
+      "instruction": "听录音，排两张星期卡。",
+      "prompt": "先听到的放前面。",
+      "audioScript": "Friday. Monday.",
+      "tokens": [
+        {
+          "id": "monday",
+          "text": "星期一"
+        },
+        {
+          "id": "friday",
+          "text": "星期五"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "friday",
+          "monday"
+        ]
+      ],
+      "answer": [
+        "friday",
+        "monday"
+      ],
+      "explanation": "先听到Friday星期五，再听到Monday星期一。",
+      "hint": "跟着声音排列，不按日历顺序猜。",
+      "difficultyReason": "两张卡直接排序；录音顺序不同于通常星期顺序。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷46–47"
+      },
+      "review": {
+        "reasoning": "星期五→星期一与声音先后一致。",
+        "wrongAnswer": "星期一→星期五按日历位置重排，未依据声音。",
+        "ambiguity": "不要求跨周日期计算，卡片初始位置随机，允许完整重播。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "Friday在Monday前；不按日历自然顺序排序。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Friday. Monday.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "monday",
+            "text": "星期一"
+          },
+          {
+            "id": "friday",
+            "text": "星期五"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 两段间清晰短停顿，完整重播；不自动逐词点亮已排卡。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "已有audioArrange基础；需验证两卡乱序、放入先后槽、撤回重排、整段重播和顺序判分。"
+      }
+    },
+    {
+      "id": "primary2.astra.B07",
+      "goalId": "primary2.weather-window",
+      "type": "listeningChoice",
+      "taskIntent": "区分问题与事实",
+      "instruction": "听完整段，选天气记录。",
+      "prompt": "回答说天气怎么样？",
+      "audioScript": "Is it cold? No. It's hot.",
+      "options": [
+        {
+          "id": "A",
+          "text": "冷"
+        },
+        {
+          "id": "B",
+          "text": "热"
+        },
+        {
+          "id": "C",
+          "text": "又冷又热"
+        }
+      ],
+      "answer": "B",
+      "explanation": "cold只出现在问题里；回答否定它并说hot。",
+      "hint": "最后回答说的天气才是记录内容。",
+      "difficultyReason": "两种反义天气词，否定后明确给出替代答案。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷2–4"
+      },
+      "review": {
+        "reasoning": "B由It's hot确定。",
+        "wrongAnswer": "A抓第一个天气词，C把问句和回答并列成事实。",
+        "ambiguity": "不作温度值推断，避免冷暖主观判断。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "No否定cold，随后hot是实际温度；非又冷又热。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Is it cold? No. It's hot.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "冷"
+          },
+          {
+            "id": "B",
+            "text": "热"
+          },
+          {
+            "id": "C",
+            "text": "又冷又热"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B08",
+      "goalId": "primary2.weather-window",
+      "type": "listeningChoice",
+      "taskIntent": "同时勾选天气特征",
+      "instruction": "听一听，选一行天气。",
+      "prompt": "哪一行的两项都对？",
+      "audioScript": "It's hot and windy.",
+      "options": [
+        {
+          "id": "A",
+          "text": "热，有风"
+        },
+        {
+          "id": "B",
+          "text": "冷，有风"
+        },
+        {
+          "id": "C",
+          "text": "热，下雨"
+        }
+      ],
+      "answer": "A",
+      "explanation": "hot是热，windy是有风。",
+      "hint": "听完and后面的词再选。",
+      "difficultyReason": "两特征联合识别，与A组冷/晴组合不同。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷2–4"
+      },
+      "review": {
+        "reasoning": "A两个特征都正确。",
+        "wrongAnswer": "B只保留风，C只保留热。",
+        "ambiguity": "不把有风理解为必然凉快；只按声音判断。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "热、有风双条件；B仅风对、C仅热对。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's hot and windy.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "热，有风"
+          },
+          {
+            "id": "B",
+            "text": "冷，有风"
+          },
+          {
+            "id": "C",
+            "text": "热，下雨"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B09",
+      "goalId": "primary2.weather-window",
+      "type": "listeningChoice",
+      "taskIntent": "听后判断图卡是否相符",
+      "instruction": "听一听，核对天气图。",
+      "prompt": "原图有太阳、没有雨。该怎么处理？",
+      "audioScript": "It's raining now.",
+      "options": [
+        {
+          "id": "A",
+          "text": "保留太阳图"
+        },
+        {
+          "id": "B",
+          "text": "换成只有风吹树叶的图"
+        },
+        {
+          "id": "C",
+          "text": "换成雨滴落下的图"
+        }
+      ],
+      "answer": "C",
+      "imageBriefs": [
+        "题面清晰太阳、无云无雨；A重复原图；B明显风旗但无雨；C同地点雨滴落到水洼，无太阳。三图同尺寸同构图。"
+      ],
+      "explanation": "raining表示正在下雨，应换成雨图。",
+      "hint": "听的是此刻的天气。",
+      "difficultyReason": "将声音与已有图比较后纠错。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷3–4"
+      },
+      "review": {
+        "reasoning": "C包含雨的明确视觉证据。",
+        "wrongAnswer": "A忽略声音依赖旧图，B把风和雨混同。",
+        "ambiguity": "真实太阳雨存在，但本题原图明确无雨；问相符依据是雨滴，不是必须阴天。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "题内明确原图无雨；不能用现实太阳雨争辩保留原图。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's raining now.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [
+          {
+            "key": "stem",
+            "meaning": "太阳与无雨天空，同一窗框树木。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.A",
+            "meaning": "完整重复原图，太阳、无雨。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.B",
+            "meaning": "同一窗外树叶和旗子吹向一侧，无雨。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.C",
+            "meaning": "同一窗外雨滴落入水洼，无太阳，不画风迹象。",
+            "status": "待制作"
+          }
+        ],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "保留太阳图"
+          },
+          {
+            "id": "B",
+            "text": "换成只有风吹树叶的图"
+          },
+          {
+            "id": "C",
+            "text": "换成雨滴落下的图"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需媒体绑定及本题实际页面验收；图片选项须验证图文映射与无障碍描述不添加英文答案。"
+      }
+    },
+    {
+      "id": "primary2.astra.B10",
+      "goalId": "primary2.cafe-actions",
+      "type": "listeningChoice",
+      "taskIntent": "区分听与唱",
+      "instruction": "听一听，选动作记录。",
+      "prompt": "他正在做什么？",
+      "audioScript": "He is listening to the radio.",
+      "options": [
+        {
+          "id": "A",
+          "text": "自己唱歌"
+        },
+        {
+          "id": "B",
+          "text": "听收音机"
+        },
+        {
+          "id": "C",
+          "text": "看书"
+        }
+      ],
+      "answer": "B",
+      "explanation": "listening to the radio是听收音机。",
+      "hint": "注意声音是他唱出来的，还是他听到的。",
+      "difficultyReason": "用已核读短语听辨接收声音的动作。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷13"
+      },
+      "review": {
+        "reasoning": "B保留listening和radio。",
+        "wrongAnswer": "A听唱混同，C把reading与listening混同。",
+        "ambiguity": "不要求认识老式收音机造型；中文选项可由照料者读出。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "听收音机不同于自己唱；用中文记录免设备造型识别前置。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "He is listening to the radio.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "自己唱歌"
+          },
+          {
+            "id": "B",
+            "text": "听收音机"
+          },
+          {
+            "id": "C",
+            "text": "看书"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B11",
+      "goalId": "primary2.cafe-actions",
+      "type": "listeningChoice",
+      "taskIntent": "确认否定信息范围",
+      "instruction": "听一听，选已确定的事。",
+      "prompt": "录音明确告诉了什么？",
+      "audioScript": "I'm not eating.",
+      "options": [
+        {
+          "id": "A",
+          "text": "没有在吃东西"
+        },
+        {
+          "id": "B",
+          "text": "正在喝水"
+        },
+        {
+          "id": "C",
+          "text": "正在吃东西"
+        }
+      ],
+      "answer": "A",
+      "explanation": "not eating否定吃东西，没有说明正在喝水。",
+      "hint": "没做一件事，不代表一定在做另一件事。",
+      "difficultyReason": "短否定句的理解，不用补猜动作。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷21"
+      },
+      "review": {
+        "reasoning": "A是原句全部信息。",
+        "wrongAnswer": "B以常识补全未说动作，C漏听not。",
+        "ambiguity": "喝水也许发生但录音未确认，问法只要求明确的信息。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "not eating只否定吃，不能因此断言喝水。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "I'm not eating.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "没有在吃东西"
+          },
+          {
+            "id": "B",
+            "text": "正在喝水"
+          },
+          {
+            "id": "C",
+            "text": "正在吃东西"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B12",
+      "goalId": "primary2.cafe-actions",
+      "type": "listeningChoice",
+      "taskIntent": "听后改正动作卡",
+      "instruction": "听问答，选当前动作。",
+      "prompt": "回答的人正在做什么？",
+      "audioScript": "Are you dancing? No, I'm swimming.",
+      "options": [
+        {
+          "id": "A",
+          "text": "跳舞"
+        },
+        {
+          "id": "B",
+          "text": "唱歌"
+        },
+        {
+          "id": "C",
+          "text": "游泳"
+        }
+      ],
+      "answer": "C",
+      "explanation": "回答No后说I'm swimming，说明正在游泳。",
+      "hint": "不要只选问题中出现的动作。",
+      "difficultyReason": "短问答纠正一个动作，延续听辨而非阅读。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷20"
+      },
+      "review": {
+        "reasoning": "C由肯定陈述确定。",
+        "wrongAnswer": "A遗漏否定，B仅凭-ing结尾混淆动作。",
+        "ambiguity": "不要求解释对话发生场所，不用水声提示答案。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "否定跳舞后说明游泳；题内足够，不需要旧卡叙事。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Are you dancing? No, I'm swimming.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "跳舞"
+          },
+          {
+            "id": "B",
+            "text": "唱歌"
+          },
+          {
+            "id": "C",
+            "text": "游泳"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B13",
+      "goalId": "primary2.photo-time",
+      "type": "listeningChoice",
+      "taskIntent": "问答选择数字钟",
+      "instruction": "听问答，选数字钟。",
+      "prompt": "回答说几点整？",
+      "audioScript": "What time is it? It's twelve o'clock.",
+      "options": [
+        {
+          "id": "A",
+          "text": "2:00"
+        },
+        {
+          "id": "B",
+          "text": "12:00"
+        },
+        {
+          "id": "C",
+          "text": "11:00"
+        }
+      ],
+      "answer": "B",
+      "explanation": "twelve是十二，twelve o'clock是十二点整。",
+      "hint": "听清完整数字，不只听开头。",
+      "difficultyReason": "十二与二、十一辨听，不扩展到非整点。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷30–31"
+      },
+      "review": {
+        "reasoning": "B唯一十二点。",
+        "wrongAnswer": "A混淆two/twelve，C混淆eleven/twelve。",
+        "ambiguity": "十二点可指中午或午夜，本题不要求判断。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "twelve对应12:00，不判中午或午夜。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "What time is it? It's twelve o'clock.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "2:00"
+          },
+          {
+            "id": "B",
+            "text": "12:00"
+          },
+          {
+            "id": "C",
+            "text": "11:00"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 问答两声线、自然停顿，但不夸张重读答案。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B14",
+      "goalId": "primary2.photo-time",
+      "type": "listeningChoice",
+      "taskIntent": "核对正确旧值",
+      "instruction": "听报时，核对数字钟。",
+      "prompt": "原来显示6:00。保留还是更改？",
+      "audioScript": "It's six o'clock.",
+      "options": [
+        {
+          "id": "A",
+          "text": "保留6:00"
+        },
+        {
+          "id": "B",
+          "text": "改为7:00"
+        },
+        {
+          "id": "C",
+          "text": "改为5:00"
+        }
+      ],
+      "answer": "A",
+      "explanation": "six o'clock就是六点整，小钟没有写错。",
+      "hint": "先听完整报时，再与原来的数字比较。",
+      "difficultyReason": "正向核对，避免机械总改答案。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷30–31"
+      },
+      "review": {
+        "reasoning": "A与六点一致。",
+        "wrongAnswer": "B混淆six/seven，C误听为five或默认需要改。",
+        "ambiguity": "没有时间流逝情境，不推算下一小时。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "原值正确，应保留；不预告录音一定纠错。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "It's six o'clock.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "保留6:00"
+          },
+          {
+            "id": "B",
+            "text": "改为7:00"
+          },
+          {
+            "id": "C",
+            "text": "改为5:00"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    },
+    {
+      "id": "primary2.astra.B15",
+      "goalId": "primary2.photo-time",
+      "type": "audioArrange",
+      "implementationStatus": "当前服务端与Swift已有audioArrange合同；本题仍缺音轨assetId、导入映射与实际排序验收，不可发布。",
+      "taskIntent": "整理报时录音标签",
+      "instruction": "听录音，排两张时间卡。",
+      "prompt": "先听到的放前面。",
+      "audioScript": "Eight o'clock. Three o'clock.",
+      "tokens": [
+        {
+          "id": "three",
+          "text": "3:00"
+        },
+        {
+          "id": "eight",
+          "text": "8:00"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "eight",
+          "three"
+        ]
+      ],
+      "answer": [
+        "eight",
+        "three"
+      ],
+      "explanation": "第一段是八点，第二段是三点。",
+      "hint": "这是两段录音，只按听到的次序放。",
+      "difficultyReason": "直接移动两张数字卡；不能靠数字从小到大排列代替听辨。",
+      "source": {
+        "sourceId": "pep.primary2.archive20260929",
+        "pages": "印刷30–31"
+      },
+      "review": {
+        "reasoning": "8:00→3:00是播放次序。",
+        "wrongAnswer": "3:00→8:00颠倒两段录音，或默认时间必须递增。",
+        "ambiguity": "不表示连续时间流逝，不计算时差；两段间留清晰短停顿，允许完整重播。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "8:00先于3:00，表示播放次序，不表示时间流逝。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Eight o'clock. Three o'clock.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "three",
+            "text": "3:00"
+          },
+          {
+            "id": "eight",
+            "text": "8:00"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 两段间清晰短停顿，完整重播；不自动逐词点亮已排卡。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "已有audioArrange基础；需验证两卡乱序、放入先后槽、撤回重排、整段重播和顺序判分。"
+      }
+    },
+    {
+      "id": "primary2.astra.B16",
+      "goalId": "primary2.street-directions",
+      "type": "listeningChoice",
+      "taskIntent": "听选直行箭头",
+      "instruction": "听口令，选路线箭头。",
+      "prompt": "玩偶背对你、面朝画面上方。接下来怎么走？",
+      "audioScript": "Go straight on.",
+      "options": [
+        {
+          "id": "A",
+          "text": "向左弯的箭头"
+        },
+        {
+          "id": "B",
+          "text": "直直向上的箭头"
+        },
+        {
+          "id": "C",
+          "text": "转身向下的箭头"
+        }
+      ],
+      "answer": "B",
+      "imageBriefs": [
+        "题面玩偶背影视角明确朝上。三个等粗箭头从相同点出发：A先向上后左弯；B垂直向上直线；C上行后U形返回向下。均无额外路径。"
+      ],
+      "explanation": "go straight on表示继续直走。",
+      "hint": "把口令听完，再从每条箭头的起点看到终点。",
+      "difficultyReason": "从口令匹配单步路径图，不需路线记忆。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷50–51"
+      },
+      "review": {
+        "reasoning": "B始终保持原方向。",
+        "wrongAnswer": "A把前进与转弯混同，C与返回口令混淆。",
+        "ambiguity": "箭头长度相同，初始朝向固定；不把屏幕上方默认为地理北方。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "直行与左弯、掉头图分别明确；桌面非真实导航。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Go straight on.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [
+          {
+            "key": "stem",
+            "meaning": "玩偶背对观看者、面朝画面上方，桌面起点标记。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.A",
+            "meaning": "从共同起点先向上后左弯的单一箭头。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.B",
+            "meaning": "从共同起点直直向上的单一箭头。",
+            "status": "待制作"
+          },
+          {
+            "key": "option.C",
+            "meaning": "从共同起点上行后U形转身朝下的单一箭头。",
+            "status": "待制作"
+          }
+        ],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "向左弯的箭头"
+          },
+          {
+            "id": "B",
+            "text": "直直向上的箭头"
+          },
+          {
+            "id": "C",
+            "text": "转身向下的箭头"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需媒体绑定及本题实际页面验收；图片选项须验证图文映射与无障碍描述不添加英文答案。"
+      }
+    },
+    {
+      "id": "primary2.astra.B17",
+      "goalId": "primary2.street-directions",
+      "type": "audioArrange",
+      "implementationStatus": "当前服务端与Swift已有audioArrange合同；本题仍缺音轨assetId、导入映射与实际排序验收，不可发布。",
+      "taskIntent": "给玩偶排两次转向",
+      "instruction": "听口令，排两张转向卡。",
+      "prompt": "先做哪个转向，再做哪个？",
+      "audioScript": "Turn right. Then turn left.",
+      "tokens": [
+        {
+          "id": "left",
+          "text": "左转"
+        },
+        {
+          "id": "right",
+          "text": "右转"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "right",
+          "left"
+        ]
+      ],
+      "answer": [
+        "right",
+        "left"
+      ],
+      "explanation": "先右转，再左转。两次转向顺序要跟声音一致。",
+      "hint": "每条口令占一个位置，听完再检查先后。",
+      "difficultyReason": "两个必要的转向词直接排序，考相对指令次序，不画复杂路线。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷50–51"
+      },
+      "review": {
+        "reasoning": "右转→左转是唯一口令顺序。",
+        "wrongAnswer": "左转→右转虽然也会回到原朝向，执行次序仍与录音不同。",
+        "ambiguity": "明确评估每步指令而不是最终朝向；不凭最终位置判对，界面不自动播放正确动作。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "右后左与左后右最终朝向可相同，必须按步骤判定。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Turn right. Then turn left.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "left",
+            "text": "左转"
+          },
+          {
+            "id": "right",
+            "text": "右转"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。 两段间清晰短停顿，完整重播；不自动逐词点亮已排卡。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "已有audioArrange基础；需验证两卡乱序、放入先后槽、撤回重排、整段重播和顺序判分。"
+      }
+    },
+    {
+      "id": "primary2.astra.B18",
+      "goalId": "primary2.street-directions",
+      "type": "listeningChoice",
+      "taskIntent": "纠正第一步方向",
+      "instruction": "听两句，只核对第一步。",
+      "prompt": "原来第一步写着“右转”。应保留还是更换？",
+      "audioScript": "Turn back. Go straight on.",
+      "options": [
+        {
+          "id": "A",
+          "text": "还是右转"
+        },
+        {
+          "id": "B",
+          "text": "换成左转"
+        },
+        {
+          "id": "C",
+          "text": "换成转身返回"
+        }
+      ],
+      "answer": "C",
+      "explanation": "第一句是turn back，要求转身返回；第二句才是直走。",
+      "hint": "这次只核对第一句，先别被第二句分散注意。",
+      "difficultyReason": "在两步听力中定位第一步，区分back与左右。",
+      "source": {
+        "sourceId": "fltrp.primary2.archive20260929",
+        "pages": "印刷57"
+      },
+      "review": {
+        "reasoning": "C准确修正第一条口令。",
+        "wrongAnswer": "A照搬旧记录，B听到turn就猜另一侧。",
+        "ambiguity": "把turn back处理为朝相反方向转身，之后前行；不要求倒走或回到精确原点。"
+      },
+      "deliveryReview": {
+        "verdict": "文字可交主审；媒体未验收",
+        "note": "第一句back决定返回；第二句straight不能替代第一步。",
+        "sameGroupFullAnswerLeak": "已逐题对照本组其他17题的题面、正确答案、提示及解析；未找到可直接给出本题完整答案的另一题。共词或单个条件重现不列为完整泄答。"
+      },
+      "deliveryAssets": {
+        "audioTracks": [
+          {
+            "key": "main",
+            "script": "Turn back. Go straight on.",
+            "independentPlayback": true,
+            "status": "待录制"
+          }
+        ],
+        "images": [],
+        "renderedCards": [
+          {
+            "id": "A",
+            "text": "还是右转"
+          },
+          {
+            "id": "B",
+            "text": "换成左转"
+          },
+          {
+            "id": "C",
+            "text": "换成转身返回"
+          }
+        ],
+        "audioAcceptance": "英文正文可重播；不读编号、制作说明或选项文字；无环境音答案提示。否定、星期和数字须人耳复核；答题前不显示英文转写。",
+        "imageAcceptance": "无图题无需生成装饰图；有图题须逐图盲认，等尺寸等视觉权重，不用颜色或构图标答案。",
+        "interactionGap": "需绑定录音，验证中文卡可读、可重播及答前不显示解析。"
+      }
+    }
+  ],
+  "openingStories": [
+    {
+      "id": "primary2.astra.story.A",
+      "questionIds": "A01–A18",
+      "title": "纸船回来了",
+      "afterQuestion": 0,
+      "skippable": true,
+      "roleBinding": "任何同行角色；无姓名、职业或世界观前提",
+      "requiredForQuestions": false,
+      "beats": [
+        {
+          "id": "A.beat1",
+          "afterQuestion": 0,
+          "skippable": true,
+          "speaker": "narrator",
+          "text": "You put a paper boat in a little pool. The boat gets stuck behind a stone.",
+          "translation": "你把纸船放进小水池。纸船漂了一会儿，卡在一块石头后面。",
+          "imageMeaning": "你和同行者蹲在池边，纸船卡在石后；不含题中天气、时钟或文字卡。"
+        },
+        {
+          "id": "A.beat2",
+          "afterQuestion": 0,
+          "skippable": true,
+          "speaker": "narrator",
+          "text": "Your friend holds a little stick. You point to the boat. Together, you bring it back.",
+          "translation": "同行者拿来一根细树枝。你指着纸船，你们一起轻轻把它拨了回来。",
+          "imageMeaning": "同行者用细枝拨船，你指向卡船处；角色不固定服装职业。"
+        },
+        {
+          "id": "A.beat3",
+          "afterQuestion": 0,
+          "skippable": true,
+          "speaker": "narrator",
+          "text": "The boat floats again. You stay by the pool and watch it go.",
+          "translation": "纸船又漂起来了。你们留在池边，陪它漂过了一小段。",
+          "imageMeaning": "纸船脱离石头漂在水中，两人安心看着；无问题答案标签。"
+        }
+      ],
+      "assetStatus": "三幅可选故事图、三条英文旁白、三条中文旁白均待制作；可只读中文、可跳过，不计答题分。",
+      "audioTracks": [
+        {
+          "key": "A.beat1.en",
+          "script": "You put a paper boat in a little pool. The boat gets stuck behind a stone.",
+          "status": "待录制"
+        },
+        {
+          "key": "A.beat2.en",
+          "script": "Your friend holds a little stick. You point to the boat. Together, you bring it back.",
+          "status": "待录制"
+        },
+        {
+          "key": "A.beat3.en",
+          "script": "The boat floats again. You stay by the pool and watch it go.",
+          "status": "待录制"
+        },
+        {
+          "key": "A.beat1.zh",
+          "script": "你把纸船放进小水池。纸船漂了一会儿，卡在一块石头后面。",
+          "status": "待录制"
+        },
+        {
+          "key": "A.beat2.zh",
+          "script": "同行者拿来一根细树枝。你指着纸船，你们一起轻轻把它拨了回来。",
+          "status": "待录制"
+        },
+        {
+          "key": "A.beat3.zh",
+          "script": "纸船又漂起来了。你们留在池边，陪它漂过了一小段。",
+          "status": "待录制"
+        }
+      ]
+    },
+    {
+      "id": "primary2.astra.story.B",
+      "questionIds": "B01–B18",
+      "title": "小车过桥",
+      "afterQuestion": 0,
+      "skippable": true,
+      "roleBinding": "任何同行角色；无姓名、职业或世界观前提",
+      "requiredForQuestions": false,
+      "beats": [
+        {
+          "id": "B.beat1",
+          "afterQuestion": 0,
+          "skippable": true,
+          "speaker": "narrator",
+          "text": "You make a bridge with blocks. Your toy car cannot get under it.",
+          "translation": "你用积木搭起一座桥。推小车试一试，车顶碰到了桥洞。",
+          "imageMeaning": "积木桥低矮，车顶被挡；不画方向箭头、星期或数字。"
+        },
+        {
+          "id": "B.beat2",
+          "afterQuestion": 0,
+          "skippable": true,
+          "speaker": "narrator",
+          "text": "Your friend holds the bridge. You make both sides higher.",
+          "translation": "同行者扶稳桥身。你在桥的两边各垫一块积木，把桥洞抬高。",
+          "imageMeaning": "同行者扶稳桥面，你给桥两端加高；不展示英文字卡。"
+        },
+        {
+          "id": "B.beat3",
+          "afterQuestion": 0,
+          "skippable": true,
+          "speaker": "narrator",
+          "text": "Now the car goes under the bridge. You both smile and try it again.",
+          "translation": "这次，小车顺利穿过了桥洞。你们笑起来，又推着小车试了一回。",
+          "imageMeaning": "小车完整通过桥洞，两人高兴；没有后题能力/星期/天气答案。"
+        }
+      ],
+      "assetStatus": "三幅可选故事图、三条英文旁白、三条中文旁白均待制作；可只读中文、可跳过，不计答题分。",
+      "audioTracks": [
+        {
+          "key": "B.beat1.en",
+          "script": "You make a bridge with blocks. Your toy car cannot get under it.",
+          "status": "待录制"
+        },
+        {
+          "key": "B.beat2.en",
+          "script": "Your friend holds the bridge. You make both sides higher.",
+          "status": "待录制"
+        },
+        {
+          "key": "B.beat3.en",
+          "script": "Now the car goes under the bridge. You both smile and try it again.",
+          "status": "待录制"
+        },
+        {
+          "key": "B.beat1.zh",
+          "script": "你用积木搭起一座桥。推小车试一试，车顶碰到了桥洞。",
+          "status": "待录制"
+        },
+        {
+          "key": "B.beat2.zh",
+          "script": "同行者扶稳桥身。你在桥的两边各垫一块积木，把桥洞抬高。",
+          "status": "待录制"
+        },
+        {
+          "key": "B.beat3.zh",
+          "script": "这次，小车顺利穿过了桥洞。你们笑起来，又推着小车试了一回。",
+          "status": "待录制"
+        }
+      ]
+    }
+  ],
+  "remainingWork": [
+    "主代理逐题亲审与必要修订；排斥边尚未接入正式组卷执行。",
+    "未生成39条题目音轨、22项题图绑定；故事另需12条双语旁白与6幅图，可选制作。所有素材仍需人耳/实图验收。",
+    "audioChoice、audioMatching缺正式类型合同与端到端交互；audioArrange已有合同，四题仍需媒体绑定与真实排序验收。",
+    "本稿保留原36题完整对象，但不是可直接导入的正式schema；作者字段、audioScript、素材语义与排斥提案需导入映射。",
+    "中文操作/选项可按需由通用朗读辅助；不强制读英文、拼写、指针钟或真实道路导航。",
+    "本地正式库对照不等于线上全量去重。未提交、未部署、不生成音图。"
+  ],
+  "deliveryVersion": 1,
+  "exclusionPolicy": {
+    "scope": "仅本稿及本地正式六个primary2单元；未查询线上数据库个性化题、别年级或未列外部库。",
+    "rule": "每个members严格两项；同组不存在直接完整泄答边，故A/B原顺序可留作分开练习。跨组或正式库边不得进入同一测评包；也不得把重现计入独立新增覆盖。不能仅凭共词排斥。",
+    "evidenceAddress": "本稿以primary2.astra.ID定位；正式题以unitId/qN定位Backend/config/learning/units/unitId.json中的questions[id=qN]。",
+    "retention": "不为避开排斥而程序换词出题；主审可选取其一或明确保留为有意复习，不可宣称去重完成。"
+  },
+  "exclusionPairs": [
+    {
+      "members": [
+        "primary2.astra.A03",
+        "primary2.astra.B02"
+      ],
+      "reason": "跨组直接同构",
+      "evidence": "两题均给Can you+活动及Yes/No短答，要求只判断会/不会；活动名与肯否替换，作答结构相同。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A06",
+        "primary2.astra.B05"
+      ],
+      "reason": "跨组直接同构",
+      "evidence": "旧星期卡+一条报星期音，三项为保留或改卡；不同星期和原卡真伪不形成新的组卷覆盖。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A08",
+        "primary2.astra.B08"
+      ],
+      "reason": "跨组直接同构",
+      "evidence": "两天气属性合取，两个干扰各错一属性；cold/sunny换hot/windy不增加新处理步骤。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A13",
+        "primary2.astra.B13"
+      ],
+      "reason": "跨组直接同构",
+      "evidence": "单一整点音转数字卡；B加通用问句，不增加答案条件。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A14",
+        "primary2.astra.B14"
+      ],
+      "reason": "跨组直接同构",
+      "evidence": "旧数字钟与一条整点录音核对；保留/更改不改变比较任务。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A15",
+        "primary2.astra.B13"
+      ],
+      "reason": "跨组直接同构",
+      "evidence": "相同What time is it问答到三数字钟，four换twelve。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A18",
+        "primary2.astra.B18"
+      ],
+      "reason": "跨组完整答案重现",
+      "evidence": "A18已给Turn back=转身返回；B18只问第一句Turn back，第二句不参与答案，前者给出其完整所需映射。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A01",
+        "oliver.primary2.playtime-can/q5"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "两条声音均I can make a model plane，选会做飞机模型；只改干扰不能算新增。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A04",
+        "oliver.primary2.week-day-cards/q6"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "Today is Tuesday与It is Tuesday均选星期二，today不改变所求。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A05",
+        "oliver.primary2.week-day-cards/q4"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "Sunday到星期日；新增通用询问不增加答案条件。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A06",
+        "oliver.primary2.week-day-cards/q2"
+      ],
+      "reason": "正式库完整答案重现",
+      "evidence": "Wednesday=星期三直接决定原星期五须换成星期三。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A07",
+        "ruby.primary2.weather-window/q5"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "windy到有风；图与中文对应相同单特征，now不新增条件。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A08",
+        "ruby.primary2.weather-window/q1"
+      ],
+      "reason": "正式库直接同构",
+      "evidence": "双天气属性合取，两个单属性错误干扰；冷热换值仍是相同判断。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A08",
+        "ruby.primary2.weather-window/q2"
+      ],
+      "reason": "正式库直接同构",
+      "evidence": "相同双属性判断与一对一错属性干扰；cold保留，sunny换windy。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A10",
+        "ruby.primary2.cafe-actions/q1"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "reading到读书；人物代词及图文承载变化不改变目标动作。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A12",
+        "ruby.primary2.cafe-actions/q5"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "singing到唱歌；问答与人称变化不增加条件。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A13",
+        "marcus.primary2.photo-time/q1"
+      ],
+      "reason": "正式库完整同构",
+      "evidence": "eleven o’clock到11:00；三选项11:00、12:00、1:00也完全一致。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A16",
+        "marcus.primary2.street-directions/q2"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "Turn right到右转；初始朝上只是消除视角歧义。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A17",
+        "marcus.primary2.street-directions/q5"
+      ],
+      "reason": "正式库完整答案重现",
+      "evidence": "完整语句Go straight on, then turn left及直行→左转顺序相同；改为真实排序仍须排斥。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.A18",
+        "marcus.primary2.street-directions/q4"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "Turn back到返回；please不改变动作。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B02",
+        "oliver.primary2.playtime-can/q6"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "不能堆雪人相同，陈述改否定问答仍给相同能力结论。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B03",
+        "oliver.primary2.playtime-can/q2"
+      ],
+      "reason": "正式库完整答案重现",
+      "evidence": "I can ride a bike完全相同；旧题会骑车映射已给本题有骑车本领的完整结论。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B04",
+        "oliver.primary2.week-day-cards/q5"
+      ],
+      "reason": "正式库完整答案重现",
+      "evidence": "Thursday=星期四的完整映射重复；反向在三声音中找词仍可直接复用。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B08",
+        "ruby.primary2.weather-window/q1"
+      ],
+      "reason": "正式库直接同构",
+      "evidence": "双天气属性合取，单属性错干扰，与hot/sunny同构。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B08",
+        "ruby.primary2.weather-window/q2"
+      ],
+      "reason": "正式库直接同构",
+      "evidence": "双天气属性合取，单属性错干扰，与cold/windy同构。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B09",
+        "ruby.primary2.weather-window/q3"
+      ],
+      "reason": "正式库完整答案重现",
+      "evidence": "raining now到正在下雨；旧晴图并无额外待听条件。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B11",
+        "ruby.primary2.cafe-actions/q4"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "I am not eating与I’m not eating相同否定，均选没有在吃东西。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B13",
+        "marcus.primary2.photo-time/q2"
+      ],
+      "reason": "正式库完整同构",
+      "evidence": "twelve o’clock到12:00；干扰2:00、11:00也相同。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B16",
+        "marcus.primary2.street-directions/q3"
+      ],
+      "reason": "正式库完整语义重现",
+      "evidence": "Go straight on完全相同，直行、左转、返回三候选相同，仅图文载体不同。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    },
+    {
+      "members": [
+        "primary2.astra.B18",
+        "marcus.primary2.street-directions/q4"
+      ],
+      "reason": "正式库完整答案重现",
+      "evidence": "B18只查第一句Turn back，正式q4给完整返回映射。",
+      "action": "同一测评包只取其一；有意复习须明确标注"
+    }
+  ]
+}

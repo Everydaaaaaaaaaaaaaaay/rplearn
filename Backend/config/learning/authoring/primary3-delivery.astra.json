@@ -1,0 +1,1532 @@
+{
+  "level": "primary3",
+  "author": {
+    "name": "Astra 小三独立作者",
+    "method": "逐题亲写操作语、替题、故事和证据；程序仅复制未变字段、保存明确写好的文字及检查结构。",
+    "status": "交接提案，待主代理审定；未发布"
+  },
+  "reviewedAt": "2026-10-11",
+  "sourceReading": [
+    {
+      "sourceId": "pep.primary3.upper.2024",
+      "pages": "印刷3、4、16、28、29、52",
+      "files": [
+        "build/learning-research-20260926/pep-primary3-p9.jpg",
+        "build/learning-research-20260926/pep-primary3-p10.jpg",
+        "build/learning-research-20260926/primary3-astra-p22.jpg",
+        "build/learning-research-20260926/primary3-astra-p34.jpg",
+        "build/learning-research-20260926/primary3-astra-p35.jpg",
+        "build/learning-research-20260926/primary3-astra-p58.jpg"
+      ],
+      "evidence": "本轮逐张view_image核读。28页有晨间问候、I like your dog及I have a cat；29页并列鱼猫鸟兔类别喜好和I like my dog；52页有颜色问答及red and blue。",
+      "limitations": "只证明已列缓存原页的内容；未重验版权页、全册、远端版本和哈希。"
+    },
+    {
+      "sourceId": "jingtong.primary3.upper.2024",
+      "pages": "印刷4；电子10",
+      "files": [
+        "build/learning-research-20260926/jingtong-primary3-p10.jpg"
+      ],
+      "evidence": "本轮看原页第一课问候、询问姓名及I'm自报姓名，作为交叉核对。",
+      "limitations": "不声称已读整套精通或其余年级。"
+    },
+    {
+      "sourceId": "moe.english.2022",
+      "pages": "印刷18、19；PDF25、26",
+      "files": [
+        "build/learning-research-20260926/curriculum-p25.jpg",
+        "build/learning-research-20260926/curriculum-p26.jpg"
+      ],
+      "evidence": "本轮看一级日常简短对话、人物物品介绍、配图故事等语篇范围，以及基础语音、简单拼读、语调要求。",
+      "limitations": "范围依据，不能代替每道题的教材正文或儿童试做。"
+    },
+    {
+      "sourceId": "local.primary3.catalog",
+      "pages": "9个正式小三单元54题；作者稿36题；两份小三复审记录",
+      "evidence": "逐题读题干、候选项、正确映射、提示、解释；听力只读脚本。以unitId/localQuestionId引用旧题。",
+      "limitations": "本地快照，不代表生产额外修订；未审听旧音频。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "p3.astra.a01",
+      "instruction": "选一句打招呼的话。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "英文选项可逐项点按朗读，不配人物姓名标牌。"
+      }
+    },
+    {
+      "id": "p3.astra.a02",
+      "instruction": "选一句回答姓名的话。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "Lin读音可点听；题面扮演身份可中文朗读。"
+      }
+    },
+    {
+      "id": "p3.astra.a03",
+      "instruction": "听一句话，选它的意思。",
+      "mediaDelivery": {
+        "required": "原创单声部录音",
+        "script": "Nice to meet you.",
+        "status": "pending",
+        "acceptance": "自然初见语气，不能配字幕或表情标签给出交际功能；实听并检查正常、慢速和重播。"
+      }
+    },
+    {
+      "id": "p3.astra.a04",
+      "instruction": "用全部词块组成一句话。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "词块分别可朗读；提交前不自动连读正确顺序。"
+      }
+    },
+    {
+      "id": "p3.astra.a05",
+      "instruction": "把英文和中文配对，每项一次。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "左右独立乱序；my与your的朗读使用相同音量，无正确连线色标。"
+      }
+    },
+    {
+      "id": "p3.astra.a06",
+      "instruction": "选一句符合人物关系的介绍。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "题面已说明妈妈身份，无须家庭照片；选项可等条件朗读。"
+      }
+    },
+    {
+      "id": "p3.astra.a07",
+      "instruction": "听介绍，选人物关系。",
+      "mediaDelivery": {
+        "required": "原创单声部录音",
+        "script": "This is my grandpa.",
+        "status": "pending",
+        "acceptance": "grandpa清晰，不能靠老年声线或照片暗示；合并爷爷或外公选项；正常、慢速、重播实听。"
+      }
+    },
+    {
+      "id": "p3.astra.a08",
+      "instruction": "用全部词块介绍人物。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "my dad整体可朗读；不展示排好顺序的整句。"
+      }
+    },
+    {
+      "id": "p3.astra.a09",
+      "instruction": "把名字和介绍内容配对，每项一次。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "两条原话按各自署名显示、可分别朗读；不用照片推断辈分。"
+      }
+    },
+    {
+      "id": "p3.astra.a10",
+      "instruction": "选一句符合颜色的回答。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "颜色由中文明确给定，不依赖屏幕色块。"
+      }
+    },
+    {
+      "id": "p3.astra.a11",
+      "instruction": "听录音，选卡片颜色。",
+      "mediaDelivery": {
+        "required": "原创单声部录音",
+        "script": "It's purple.",
+        "status": "pending",
+        "acceptance": "实际审听purple，选项只用中文同样式；不得显示紫色卡片或调色动画；正常、慢速、重播。"
+      }
+    },
+    {
+      "id": "p3.astra.a12",
+      "instruction": "用全部词块说出颜色。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "逐块朗读，不预演正确句序；无需贴纸图片。"
+      }
+    },
+    {
+      "id": "p3.astra.a13",
+      "instruction": "把颜色词和中文配对，每项一次。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "不使用颜色编码连线；左右独立乱序，可中文朗读。"
+      }
+    },
+    {
+      "id": "p3.astra.a14",
+      "instruction": "选一句结构完整的自我介绍。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "三个选项均可点读但不得提前标注对错；An读音可点听，不把正确选项单独预播为完整介绍。"
+      }
+    },
+    {
+      "id": "p3.astra.a15",
+      "instruction": "选一句表达同样心情的回应。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "全部选项均可点读；不突出too或正确项长度。"
+      }
+    },
+    {
+      "id": "p3.astra.a16",
+      "instruction": "听两人说话，选第一人的名字。",
+      "mediaDelivery": {
+        "required": "原创两声部录音",
+        "script": "[第一位] Hi! I'm Bo. [第二位] Hello, Bo. My name is Mei.",
+        "status": "pending",
+        "acceptance": "两位声线清楚不同，轮次有自然停顿；舞台指令不朗读；核对Bo与Mei实际读音及第一人身份；姓名选项均可点读，无字幕、姓名头像；正常、慢速、重播实听。"
+      }
+    },
+    {
+      "id": "p3.astra.a17",
+      "instruction": "读两次介绍，选两条都正确的记录。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "两次介绍分行显示，可分别点读；Bo、Lin与被指对象由文字给定，不需照片。"
+      }
+    },
+    {
+      "id": "p3.astra.a18",
+      "instruction": "核对两张纸，选两条都正确的记录。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "两张纸颜色由中文给定；甲乙标记不靠位置或色块。"
+      }
+    },
+    {
+      "id": "p3.astra.b01",
+      "instruction": "选一句表示早上好的问候。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "选项均可点读；不把Hello说成早晨不能用。"
+      }
+    },
+    {
+      "id": "p3.astra.b02",
+      "instruction": "把词和动物图配对，每图一次。",
+      "mediaDelivery": {
+        "required": "三幅原创动物图",
+        "status": "pending",
+        "images": [
+          {
+            "optionId": "r1",
+            "subject": "单只兔全身，长耳和兔体型清楚",
+            "alt": "一只兔",
+            "restrictions": "无文字，无其他动物，无特别背景"
+          },
+          {
+            "optionId": "r2",
+            "subject": "单只家猫全身，猫耳、胡须与猫体型清楚",
+            "alt": "一只猫",
+            "restrictions": "不画成虎，无文字，无其他动物"
+          },
+          {
+            "optionId": "r3",
+            "subject": "单只鸟全身，喙、翅、羽毛清楚",
+            "alt": "一只鸟",
+            "restrictions": "不用叫声或飞行线索代替外形，无文字"
+          }
+        ],
+        "acceptance": "右侧必须是真实imageAssetId图片，原稿right.text仅制作及无障碍描述，不得可见文字顶替；盲看物种、小屏清晰度、独立乱序与屏幕阅读器分别验收。无障碍描述改变图像识别负担，需单记辅助呈现，不虚报纯视觉成绩。"
+      }
+    },
+    {
+      "id": "p3.astra.b03",
+      "instruction": "听一句话，选喜欢的动物。",
+      "mediaDelivery": {
+        "required": "原创单声部录音",
+        "script": "I like rabbits.",
+        "status": "pending",
+        "acceptance": "实听rabbits尾音；无兔图或兔叫提示，中文选项；正常、慢速、重播。"
+      }
+    },
+    {
+      "id": "p3.astra.b04",
+      "instruction": "用全部词块说出喜好。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "三词分别点读，fish按动物语境；不自动播放整句答案。"
+      }
+    },
+    {
+      "id": "p3.astra.b05",
+      "instruction": "选一个符合说明的动物标签。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "中文完整给定一只狗，不虚称已有画面；三选项均可朗读。"
+      }
+    },
+    {
+      "id": "p3.astra.b06",
+      "instruction": "读两句喜好，选正确的记录。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "每位人物的署名和原话清楚配属，可分行点读，无头像动物暗示。"
+      }
+    },
+    {
+      "id": "p3.astra.b07",
+      "instruction": "听问答，选第二人说的颜色。",
+      "mediaDelivery": {
+        "required": "原创两声部录音",
+        "script": "[第一位] What colour is it? [第二位] It's orange.",
+        "status": "pending",
+        "acceptance": "提问与回答分两声部，停顿自然，舞台指令不读；画框不得有橙色或字幕；实听orange、正常、慢速、重播及两位声线。"
+      }
+    },
+    {
+      "id": "p3.astra.b08",
+      "instruction": "把动物词和中文配对，每项一次。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "纯文字英汉配对，左右独立乱序，各项可点读；不需要图片，也不使用预先正确连线的色标。"
+      }
+    },
+    {
+      "id": "p3.astra.b09",
+      "instruction": "选一个词填入空格。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "各候选词独立点读，不以正确补句形式朗读空格。"
+      }
+    },
+    {
+      "id": "p3.astra.b10",
+      "instruction": "读一句话，选它告诉你的信息。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "Kai可点读；不需胸牌照片，不从排版位置猜姓名主人。"
+      }
+    },
+    {
+      "id": "p3.astra.b11",
+      "instruction": "用全部词块说出对宠物的喜好。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "my dog整体点读；虚构养狗角色由中文给定，不索取用户宠物信息。"
+      }
+    },
+    {
+      "id": "p3.astra.b12",
+      "instruction": "听介绍，选人物关系。",
+      "mediaDelivery": {
+        "required": "原创单声部录音",
+        "script": "This is my friend.",
+        "status": "pending",
+        "acceptance": "实听friend词尾与整句清晰度；不靠头像或声线猜关系；无字幕；正常、慢速、重播。"
+      }
+    },
+    {
+      "id": "p3.astra.b13",
+      "instruction": "选一个两种颜色都符合的标签。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "中文给定两种颜色，不需画作；各短语可完整点读。"
+      }
+    },
+    {
+      "id": "p3.astra.b14",
+      "instruction": "用全部词块询问姓名。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "What's整块可点读，问号随name保留；不要求键盘标点。"
+      }
+    },
+    {
+      "id": "p3.astra.b15",
+      "instruction": "把句子和准确意思配对，每项一次。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "两句均可点读；不把my高亮成答案，不用猫图数量暗示类别。"
+      }
+    },
+    {
+      "id": "p3.astra.b16",
+      "instruction": "听一句话，选提到的动物。",
+      "mediaDelivery": {
+        "required": "原创单声部录音",
+        "script": "This is a cat.",
+        "status": "pending",
+        "acceptance": "实听cat，不附猫图或叫声、不显示原文；正常、慢速、重播。"
+      }
+    },
+    {
+      "id": "p3.astra.b17",
+      "instruction": "读两句对话，选两人的名字。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "甲乙两行身份明显；Lin与Bo可分别点读，不按正确映射制作姓名头像。"
+      }
+    },
+    {
+      "id": "p3.astra.b18",
+      "instruction": "只选句子已经告诉你的信息。",
+      "mediaDelivery": {
+        "required": "无必需音图",
+        "support": "只显示原句，不用养鸟或作画图补充未说的信息；三项中文均可朗读。"
+      }
+    }
+  ],
+  "stories": [
+    {
+      "id": "p3.astra.story.a",
+      "questionGroup": "a",
+      "title": "窗边的空桌",
+      "character": "companion",
+      "skippable": true,
+      "beats": [
+        {
+          "speaker": "旁白",
+          "text": "Rain starts. You and your friend go into a room. A child is there with a photo book. There is no room on the table.",
+          "translation": "下雨了。你和同行的伙伴走进一间活动室。一个孩子抱着相册站在那里，桌上却没有地方放。",
+          "afterQuestion": 0
+        },
+        {
+          "speaker": "旁白",
+          "text": "Your friend finds a box. You put the paper in it. The child puts the book on the table and opens it. You move closer to look.",
+          "translation": "伙伴找来一个盒子。你把桌上的纸收进去。孩子把相册放到桌上翻开，你凑近了看。",
+          "afterQuestion": 0
+        },
+        {
+          "speaker": "旁白",
+          "text": "The rain stops. The child closes the book with a smile. You all put the chairs back. Next time, you will bring a photo too.",
+          "translation": "雨停了。孩子笑着合上相册。你们一起把椅子放回原处。下次，你也要带一张照片来。",
+          "afterQuestion": 0
+        }
+      ]
+    },
+    {
+      "id": "p3.astra.story.b",
+      "questionGroup": "b",
+      "title": "墙边留下的位置",
+      "character": "companion",
+      "skippable": true,
+      "beats": [
+        {
+          "speaker": "旁白",
+          "text": "You and your friend go to a little art show. A child holds a picture. The other pictures are on the wall, but this one is still in the child's hands.",
+          "translation": "你和同行的伙伴去看一个小画展。一个孩子拿着一张画。别人的作品都挂在墙上，只有这张还留在孩子手里。",
+          "afterQuestion": 0
+        },
+        {
+          "speaker": "旁白",
+          "text": "Your friend finds a space on the wall. You hold the picture there. The child puts it up. One corner curls up, so you gently press it flat.",
+          "translation": "伙伴在墙上找到一块空处，你帮忙扶住画，孩子把它挂好。一只纸角翘了起来，你轻轻把它压平。",
+          "afterQuestion": 0
+        },
+        {
+          "speaker": "旁白",
+          "text": "Someone stops to look. The child stands by the picture and begins to talk. When you leave, the child waves. The picture stays with the others.",
+          "translation": "有人停下来看画。孩子站在作品旁，开始讲自己的画。你们离开时，孩子挥了挥手。那张画稳稳地留在其他作品旁边。",
+          "afterQuestion": 0
+        }
+      ]
+    }
+  ],
+  "goalExpansionProposals": [
+    {
+      "goalId": "p3.preferences",
+      "status": "待主代理显式审定，未改catalog",
+      "currentCanDo": "能用 I like 加颜色或动物类别表达简单喜好。",
+      "proposedCanDo": "能用 I like 加颜色、动物类别或 my cat、my dog 等特定宠物表达简单喜好，并在给定短句中区分类别喜好与对自己的特定宠物的喜好。",
+      "proposedBoundaries": "只练肯定表达；特定宠物限给定的my cat、my dog，不要求推断现实拥有关系或披露用户宠物信息；可比较I like cats与I like my cat的字面范围，不推断喜欢自己的猫等于不喜欢其他猫；不引入原因从句、一般现在时第三人称变化或自由生成复数规则。",
+      "affectedCandidateIds": [
+        "p3.astra.b11",
+        "p3.astra.b15"
+      ],
+      "evidence": "本轮实读PEP印刷29页直接并列I like cats、I like birds、I like rabbits、I like fish与I like my dog；印刷28页I have a cat提供单个猫对象，I like your dog也显示限定宠物。my cat对比是作者依此作的受控迁移，不冒称29页逐字原句。",
+      "sourceRefs": [
+        {
+          "sourceId": "pep.primary3.upper.2024",
+          "pages": "28–29"
+        }
+      ]
+    }
+  ],
+  "replacementProposals": [
+    {
+      "id": "p3.astra.a01",
+      "reason": "删除直接展示a04完整答案的干扰项，只改自报姓名的表述形式。",
+      "newQuestion": {
+        "id": "p3.astra.a01",
+        "goalId": "p3.greetings",
+        "type": "choice",
+        "instruction": "选一句打招呼的话。",
+        "prompt": "书店门口，你只想先向新来的孩子打个招呼。你说：____",
+        "options": [
+          {
+            "id": "a",
+            "text": "Hello!"
+          },
+          {
+            "id": "b",
+            "text": "I'm Bo."
+          },
+          {
+            "id": "c",
+            "text": "What's your name?"
+          }
+        ],
+        "answer": "a",
+        "explanation": "Hello完成打招呼；I'm Bo是在介绍自己的名字，另一句是在问对方姓名。三句都能用于交友，这里只选问候。",
+        "hint": "先找表示“你好”的话。",
+        "difficultyReason": "识别一个交际功能，中文限定目的，不要求拼写。",
+        "review": {
+          "reasoning": "三项都是自然交友表达，但仅a直接完成问候。",
+          "wrongAnswer": "b：直接报名字，没有完成题目限定的问候。",
+          "ambiguity": "明确只打招呼；不把其他交友句判为日常交际错误。"
+        },
+        "taskIntent": "dialogue_choice",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷3–4；电子9–10",
+            "alignment": "问候与姓名交流的不同功能；题目另写书店招呼目的。"
+          },
+          {
+            "sourceId": "jingtong.primary3.upper.2024",
+            "pages": "印刷4；电子10",
+            "alignment": "第一课问候与自我介绍交叉核对；不据此宣称跨全部版本等价。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a04",
+      "reason": "原提示直接给首尾，三块题因此被排完；仅改提示。",
+      "newQuestion": {
+        "id": "p3.astra.a04",
+        "goalId": "p3.introductions",
+        "type": "arrange",
+        "instruction": "用全部词块组成一句话。",
+        "prompt": "你扮演Bo。请用给出的词块告诉新朋友“我叫Bo”。",
+        "tokens": [
+          {
+            "id": "name",
+            "text": "My name"
+          },
+          {
+            "id": "bo",
+            "text": "Bo."
+          },
+          {
+            "id": "is",
+            "text": "is"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "name",
+            "is",
+            "bo"
+          ]
+        ],
+        "explanation": "My name作为一个词块表示“我的名字”，后接is，再接名字。",
+        "hint": "排好后连起来读，检查是不是在介绍自己的名字。",
+        "difficultyReason": "仅三个词块，保留名词短语整体，点击组句。",
+        "review": {
+          "reasoning": "三个词块只能组成指定陈述句。",
+          "wrongAnswer": "is,name,bo：变成问句式开头，不能表达给定意思。",
+          "ambiguity": "不接受人名置前的标签格式；任务明确要求一句话。"
+        },
+        "taskIntent": "chunk_order",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷4；电子10",
+            "alignment": "自报姓名的完整句式；三个词块重建句子。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a08",
+      "reason": "原提示逐个给This/is，只剩一块；仅改提示。",
+      "newQuestion": {
+        "id": "p3.astra.a08",
+        "goalId": "p3.family",
+        "type": "arrange",
+        "instruction": "用全部词块介绍人物。",
+        "prompt": "你扮演照片主人，要说“这是我的爸爸”。",
+        "tokens": [
+          {
+            "id": "dad",
+            "text": "my dad."
+          },
+          {
+            "id": "is",
+            "text": "is"
+          },
+          {
+            "id": "this",
+            "text": "This"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "this",
+            "is",
+            "dad"
+          ]
+        ],
+        "explanation": "This is用来介绍眼前的人，my dad说明他是我的爸爸。",
+        "hint": "读一遍排好的句子，检查介绍对象和题目是否一致。",
+        "difficultyReason": "三个词块；my dad不拆开，避免增加拼写负担。",
+        "review": {
+          "reasoning": "按中文目标组成介绍句，主语This在前。",
+          "wrongAnswer": "dad,is,this：不是要求的自然人物介绍。",
+          "ambiguity": "只判断给定词块顺序，不要求用户输入dad/father变体。"
+        },
+        "taskIntent": "chunk_order",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷16；电子22",
+            "alignment": "dad和This is my人物介绍结构；固定词块，免拼写。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a09",
+      "reason": "a06即时反馈已给原两条词义；保留matching及家庭目标，改为新人物原话归属。",
+      "newQuestion": {
+        "id": "p3.astra.a09",
+        "goalId": "p3.family",
+        "type": "matching",
+        "instruction": "把名字和介绍内容配对，每项一次。",
+        "prompt": "两名孩子分别介绍身边的人。Bo说：This is my grandma. Lin说：This is my mum. 把名字与各自的介绍配对。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "Bo"
+          },
+          {
+            "id": "l2",
+            "text": "Lin"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "介绍自己的妈妈"
+          },
+          {
+            "id": "r2",
+            "text": "介绍自己的奶奶或外婆"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "explanation": "Bo的原话用了grandma，Lin用了mum，所以两条介绍分别属于Bo和Lin。两句中的my各指当前说话人，不能把两位孩子的介绍混在一起。",
+        "hint": "沿着每个名字找到紧接着的原话，再配介绍内容。",
+        "difficultyReason": "两个熟悉家庭短句配署名，不凭年龄外貌，不引入新关系词。",
+        "review": {
+          "reasoning": "Bo介绍grandma而Lin介绍mum，l1-r2、l2-r1唯一。",
+          "wrongAnswer": "l1-r1：把Lin的原话配给了Bo。",
+          "ambiguity": "这是两条独立发言，不推断两名孩子之间的关系；my随说话人解释。"
+        },
+        "taskIntent": "speaker_family_match",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷16；电子22",
+            "alignment": "mum、grandma及This is my介绍；两名虚构人物的发言归属由作者另设。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a12",
+      "reason": "提示不再直接给首块，保留三块原题。",
+      "newQuestion": {
+        "id": "p3.astra.a12",
+        "goalId": "p3.colours",
+        "type": "arrange",
+        "instruction": "用全部词块说出颜色。",
+        "prompt": "贴纸是橙色的。用给定词块说“它是橙色的”。",
+        "tokens": [
+          {
+            "id": "orange",
+            "text": "orange."
+          },
+          {
+            "id": "it",
+            "text": "It"
+          },
+          {
+            "id": "is",
+            "text": "is"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "it",
+            "is",
+            "orange"
+          ]
+        ],
+        "explanation": "It is后面接颜色词，构成完整描述。orange在这里是颜色，不是水果名称。",
+        "hint": "连读排好的句子，检查它是否在说明贴纸的颜色。",
+        "difficultyReason": "三个词块，中文限定orange的颜色用法。",
+        "review": {
+          "reasoning": "陈述句顺序为It-is-orange。",
+          "wrongAnswer": "is,it,orange：会形成疑问句词序，不符合题目要求的陈述；给定大小写和句号也不支持问句。",
+          "ambiguity": "不要求区分物品性别；物品由It代指。"
+        },
+        "taskIntent": "chunk_order",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷52；电子58",
+            "alignment": "orange及颜色描述；将正文缩写展开为It is的受控词块任务，不声称该页逐字提供展开句。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a14",
+      "reason": "原My name ____ An的is被前题直接给出。改I主语下am/is/are完整句选择，保留be搭配判断，不再重复双人信息记录。",
+      "newQuestion": {
+        "id": "p3.astra.a14",
+        "goalId": "p3.introductions",
+        "type": "choice",
+        "instruction": "选一句结构完整的自我介绍。",
+        "prompt": "你扮演An，要用I开头说“我是An”。哪一句写对了？",
+        "options": [
+          {
+            "id": "a",
+            "text": "I is An."
+          },
+          {
+            "id": "b",
+            "text": "I am An."
+          },
+          {
+            "id": "c",
+            "text": "I are An."
+          }
+        ],
+        "answer": "b",
+        "explanation": "用I介绍自己时说I am An。另一种表达My name is An以My name开头；改成I以后，不能直接保留is。are也不与这里的I搭配。",
+        "hint": "看清这次句子开头用的是哪个词，再把整句读一遍。",
+        "difficultyReason": "保留初级be搭配选择，但把主语从My name换为I，需要选择am，不能直接抄前题的is；不要求输入。",
+        "review": {
+          "reasoning": "I与am搭配，b唯一；三句姓名相同，只判断当前主语下的句子结构。",
+          "wrongAnswer": "a：把My name is里的is原样接在I后，主语改变后搭配不对。",
+          "ambiguity": "I am为已核读I'm的受控展开，不冒称教材原页直接讲解完整be变位表；不要求儿童使用主语等术语。"
+        },
+        "taskIntent": "self_introduction_be_choice",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷4；电子10",
+            "alignment": "原页并列I'm与My name is自我介绍。提案将I'm展开为I am后，在同一I主语下选择am/is/are，是作者受控句法辨认，不声称原页逐字提供展开句或变位教学。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a17",
+      "reason": "原题完整复取a06展示的介绍句；改为两次介绍中的对象、说话人、关系共同核对，不能仅抄my friend完成。",
+      "newQuestion": {
+        "id": "p3.astra.a17",
+        "goalId": "p3.family",
+        "type": "choice",
+        "instruction": "读两次介绍，选两条都正确的记录。",
+        "prompt": "甲指着Bo说：This is my friend. 乙指着Lin说：This is my mum. 哪条记录把两次介绍都写对了？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Bo是甲的妈妈，Lin是乙的朋友。"
+          },
+          {
+            "id": "b",
+            "text": "Bo是甲的朋友，Lin是乙的妈妈。"
+          },
+          {
+            "id": "c",
+            "text": "Bo和Lin都是甲的朋友。"
+          }
+        ],
+        "answer": "b",
+        "explanation": "甲介绍Bo时用了my friend，乙介绍Lin时用了my mum。my分别指当时说话的人；两条关系不能交换，也不能都归到甲身上。",
+        "hint": "分别核对谁在介绍谁，以及原话里的关系词。",
+        "difficultyReason": "整合两次简短人物介绍中的对象和关系；中文指定所指人物，不靠照片。",
+        "review": {
+          "reasoning": "b同时符合Bo是甲的朋友、Lin是乙的妈妈。a交换关系，c改了Lin的关系与所属。",
+          "wrongAnswer": "c：第二句是乙在介绍Lin，不是甲在介绍另一位朋友。",
+          "ambiguity": "Bo、Lin为本题虚构姓名；这里只记录两次已知关系，不猜人物年龄或甲乙之间的关系。"
+        },
+        "taskIntent": "two_relationship_records",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷16；电子22",
+            "alignment": "friend、mum及人物介绍结构；两次介绍的说话人和对象是作者另设。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.a18",
+      "reason": "原单张蓝纸反向题的全部颜色区别已由a13讲完；保留颜色单选，增加两张纸独立归属，取消低龄反向措辞。",
+      "newQuestion": {
+        "id": "p3.astra.a18",
+        "goalId": "p3.colours",
+        "type": "choice",
+        "instruction": "核对两张纸，选两条都正确的记录。",
+        "prompt": "甲纸只有绿色，乙纸只有蓝色。哪条英文记录把两张纸的颜色都写对了？",
+        "options": [
+          {
+            "id": "a",
+            "text": "甲：blue；乙：green"
+          },
+          {
+            "id": "b",
+            "text": "甲：green；乙：red"
+          },
+          {
+            "id": "c",
+            "text": "甲：green；乙：blue"
+          }
+        ],
+        "answer": "c",
+        "explanation": "甲需要green，乙需要blue，只有c两条都对。a把两张纸互换，b只记对甲纸。",
+        "hint": "先核对甲，再核对乙，两条都要符合。",
+        "difficultyReason": "两个中文明示颜色与对应对象整合；不测调色，也不要求反向排除。",
+        "review": {
+          "reasoning": "c符合甲green及乙blue；a均错位，b乙错误。",
+          "wrongAnswer": "b：甲正确，乙应是blue而非red。",
+          "ambiguity": "甲乙是文字身份，不依赖左右位置；两张纸的事实都在题内。"
+        },
+        "taskIntent": "two_colour_records",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷52；电子58",
+            "alignment": "green、blue、red颜色词；甲乙两张纸归属和正向双条件记录是作者设计，不测原页调色。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.b04",
+      "reason": "仅去除已把三词顺序说出的提示；保留原句及答案。",
+      "newQuestion": {
+        "id": "p3.astra.b04",
+        "goalId": "p3.preferences",
+        "type": "arrange",
+        "instruction": "用全部词块说出喜好。",
+        "prompt": "你扮演一位喜欢鱼的画展访客。用词块说“我喜欢鱼”。",
+        "tokens": [
+          {
+            "id": "fish",
+            "text": "fish."
+          },
+          {
+            "id": "i",
+            "text": "I"
+          },
+          {
+            "id": "like",
+            "text": "like"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "i",
+            "like",
+            "fish"
+          ]
+        ],
+        "explanation": "I like后接喜欢的动物。在这句表达中，fish指鱼这一类动物，通常保持fish这个形式，不需要添s。",
+        "hint": "把排好的话读一遍，检查它是否表达题目里的喜好。",
+        "difficultyReason": "三个完整词块，fish直接给定，不考变形书写。",
+        "review": {
+          "reasoning": "指定陈述句唯一顺序I-like-fish。",
+          "wrongAnswer": "fish,like,i：把喜欢的对象放到了说话人的位置。",
+          "ambiguity": "本题动物画展语境中fish指动物，不指餐食。"
+        },
+        "taskIntent": "chunk_order",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷29；电子35",
+            "alignment": "fish类别表达和I like结构；词块直接给定，不考词形拼写。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.b06",
+      "reason": "原选项和反馈给出b15类别分支及b16完整听力句；保留喜好单选，改为两位访客的新归属记录。",
+      "newQuestion": {
+        "id": "p3.astra.b06",
+        "goalId": "p3.preferences",
+        "type": "choice",
+        "instruction": "读两句喜好，选正确的记录。",
+        "prompt": "甲说：I like rabbits. 乙说：I like fish. 哪条记录符合两人的话？",
+        "options": [
+          {
+            "id": "a",
+            "text": "甲喜欢鱼，乙喜欢兔。"
+          },
+          {
+            "id": "b",
+            "text": "甲喜欢兔，乙喜欢鱼。"
+          },
+          {
+            "id": "c",
+            "text": "甲和乙都喜欢兔。"
+          }
+        ],
+        "answer": "b",
+        "explanation": "甲说的是rabbits，乙说的是fish；所以甲喜欢兔，乙喜欢鱼。不能把发言顺序交换，也不能把甲的喜好当成两人的喜好。",
+        "hint": "分别把每位访客和自己的原话对上。",
+        "difficultyReason": "用两个熟悉喜好短句整合两人信息；不输出新词形。",
+        "review": {
+          "reasoning": "b同时对应两条原话；a归属互换，c漏看乙的fish。",
+          "wrongAnswer": "c：乙明说喜欢鱼，不能复制甲的喜好给乙。",
+          "ambiguity": "只记录说出的喜好，不推断除此以外什么都不喜欢；访客是虚构角色。"
+        },
+        "taskIntent": "speaker_preference_record",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷29；电子35",
+            "alignment": "I like rabbits与I like fish类别喜好；甲乙两条发言归属由作者另设，不冒称教材对话。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.b08",
+      "reason": "撤回双动物组合提案：各组存在只认一个区别词的捷径，不能声称必须双词判断。改为cat/fish/rabbit三词低负担巩固，明示它复习前面已教的词义，不虚构新增覆盖。",
+      "newQuestion": {
+        "id": "p3.astra.b08",
+        "goalId": "p3.animals",
+        "type": "matching",
+        "instruction": "把动物词和中文配对，每项一次。",
+        "prompt": "核对三张动物名称卡，把英文词与中文名称连起来。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "cat"
+          },
+          {
+            "id": "l2",
+            "text": "fish"
+          },
+          {
+            "id": "l3",
+            "text": "rabbit"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "鱼"
+          },
+          {
+            "id": "r2",
+            "text": "兔"
+          },
+          {
+            "id": "r3",
+            "text": "猫"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r3"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          },
+          {
+            "left": "l3",
+            "right": "r2"
+          }
+        ],
+        "explanation": "cat是猫，fish是鱼，rabbit是兔。每个英文词对应一种动物。这里的fish是在说动物，不是在点餐。",
+        "hint": "先读每个动物词，再核对对应的中文名称。",
+        "difficultyReason": "三个已学动物词的文字释义巩固，低阅读负担；不宣称增加新动物、新能力或双条件判断。",
+        "review": {
+          "reasoning": "l1-r3、l2-r1、l3-r2分别对应猫、鱼、兔，全部一一用尽。",
+          "wrongAnswer": "l1-r2：cat表示猫，兔对应rabbit。",
+          "ambiguity": "前面的b02、b03、b04已经接触并反馈这些词义；本题明确是有反馈支架的巩固，不能作为未受提示的独立掌握证据。三项一一配对允许排除法，也不宣称每项都测了独立识别。"
+        },
+        "taskIntent": "animal_word_consolidation",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷28–29；电子34–35",
+            "alignment": "28页a cat、a dog等单个动物表达，29页出现猫、鱼、兔类别及cat、fish、rabbit相关词形；本题只巩固三个动物名的英汉对应，不引用52页and或制造组合任务。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3.astra.b17",
+      "reason": "原b17完整复取b14问姓名答案；改为两句有称呼和自报的归属理解，保留姓名目标和choice。",
+      "newQuestion": {
+        "id": "p3.astra.b17",
+        "goalId": "p3.introductions",
+        "type": "choice",
+        "instruction": "读两句对话，选两人的名字。",
+        "prompt": "甲对乙说：Hello, Bo! My name is Lin. 乙回应：Hello, Lin! 谁叫Lin，谁叫Bo？",
+        "options": [
+          {
+            "id": "a",
+            "text": "甲叫Bo，乙叫Lin。"
+          },
+          {
+            "id": "b",
+            "text": "甲叫Lin，乙叫Bo。"
+          },
+          {
+            "id": "c",
+            "text": "甲和乙都叫Lin。"
+          }
+        ],
+        "answer": "b",
+        "explanation": "甲用My name介绍自己叫Lin，开头的Hello, Bo是在称呼乙。乙回应时称呼Lin，和甲自报的名字相符。",
+        "hint": "分别找自报姓名和对对方的称呼。",
+        "difficultyReason": "两人短对话区分称呼与自报；不新增姓名问句，不收集真实身份。",
+        "review": {
+          "reasoning": "甲自报Lin并称呼乙Bo，b唯一；a互换，c忽略Bo。",
+          "wrongAnswer": "a：把甲开头称呼对方的Bo当成甲自己的名字。",
+          "ambiguity": "甲明确对乙说话，没有第三人；名字由原话给出，与开场无关。"
+        },
+        "taskIntent": "address_and_self_name",
+        "references": [
+          {
+            "sourceId": "pep.primary3.upper.2024",
+            "pages": "印刷3–4；电子9–10",
+            "alignment": "问候与自报姓名的结构；两人的称呼和自报对照为作者原创短对话。"
+          },
+          {
+            "sourceId": "jingtong.primary3.upper.2024",
+            "pages": "印刷4；电子10",
+            "alignment": "原页出现Hello加对方称呼与自我介绍，可交叉核对称呼对方的功能。"
+          }
+        ]
+      }
+    }
+  ],
+  "fixedGroupFeedbackAudit": [
+    {
+      "questionIds": [
+        "p3.astra.a01",
+        "p3.astra.a04"
+      ],
+      "finding": "原a01干扰项逐字展示My name is Bo，等于a04完整排序答案。",
+      "resolution": "a01把这一干扰改为I'm Bo；同样是自报姓名而非问候，但不再显示a04的完整词块顺序。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.a02",
+        "p3.astra.a04",
+        "p3.astra.a14"
+      ],
+      "finding": "原a14只补is；前面两题已展示、解释同一个My name is结构。只换人名不能恢复这一个空的测量。",
+      "resolution": "a14改为I is/am/are An完整句选择，正确为am；前题My name is不能直接复制，保留主语变化后的be搭配辨认。I'm已作为熟悉表达出现，可成为基础支架，但未直接给出本题展开式的am答案。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.a06",
+        "p3.astra.a09"
+      ],
+      "finding": "a06反馈给出mum和grandma全部映射，原a09两条答案被完整教完。",
+      "resolution": "a09改为两位人物原话与姓名配对，保留家庭称呼，新增每条原话属于谁的独立事实。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.a06",
+        "p3.astra.a17"
+      ],
+      "finding": "原a06干扰项已有This is my friend且反馈说明朋友；a17原题只取同一完整介绍句。",
+      "resolution": "a17改为甲介绍Bo为朋友、乙介绍Lin为妈妈的两条记录共同核对；a06给称呼词义，但没有这两次介绍的新对象和所属组合。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.a10",
+        "p3.astra.a11",
+        "p3.astra.a13",
+        "p3.astra.a18"
+      ],
+      "finding": "a13反馈给出blue/red映射，原a18仅凭此即可确定唯一red不合蓝纸；a10已教purple词义但不能确定a11未播放的录音究竟说哪个颜色。",
+      "resolution": "a18改成甲乙两张纸与两条颜色记录共同核对；a11保留，必须听本题音轨，词义支架不等于知道本段录音。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.b06",
+        "p3.astra.b15",
+        "p3.astra.b16"
+      ],
+      "finding": "原b06展示I like cats及This is a cat，分别与后面配对分支和整个听力原文重合。",
+      "resolution": "b06改两位人物的兔/鱼喜好记录，不含后两题原句；b15仍需独立比较my cat范围，b16仍需实听。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.b02",
+        "p3.astra.b04",
+        "p3.astra.b05",
+        "p3.astra.b08"
+      ],
+      "finding": "原b08的fish/dog/bird三条词义已由前三题全部解释。",
+      "resolution": "撤回双动物组合，保留三词cat/fish/rabbit文字巩固。明确前题反馈已给词义，本题不提供独立新增能力或无提示掌握证据；这是接受已教词复习的定位，不声称消除了全部内容复现。固定18槽与即时反馈照常保留。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.b14",
+        "p3.astra.b17"
+      ],
+      "finding": "原b14排序完展示What's your name，原b17只是再选同一完整问句。",
+      "resolution": "b17改为称呼对方与自报姓名的两人身份理解；必须将新对话中的两人分开，不能抄b14答案。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.a04",
+        "p3.astra.a08",
+        "p3.astra.a12",
+        "p3.astra.b04"
+      ],
+      "finding": "原排序提示有首尾或前两块顺序直接指示，容易把三块题做成跟提示点按。",
+      "resolution": "完整提案改中性读回核对提示；即时反馈仍完整讲当前题。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.a01",
+        "p3.astra.a02",
+        "p3.astra.a03",
+        "p3.astra.a04",
+        "p3.astra.a05",
+        "p3.astra.a06",
+        "p3.astra.a07",
+        "p3.astra.a08",
+        "p3.astra.a09",
+        "p3.astra.a10",
+        "p3.astra.a11",
+        "p3.astra.a12",
+        "p3.astra.a13",
+        "p3.astra.a14",
+        "p3.astra.a15",
+        "p3.astra.a16",
+        "p3.astra.a17",
+        "p3.astra.a18"
+      ],
+      "finding": "采纳提案后A仍为18槽。a03教见面心情，a15还需理解对等回应too；a04教姓名结构，a16还需实听两声部的新姓名和轮次。",
+      "resolution": "按原顺序正常即时反馈；不登记组内互斥，不延迟反馈。语法词义可迁移不算独立新覆盖，听力和新事实必须重新核对。"
+    },
+    {
+      "questionIds": [
+        "p3.astra.b01",
+        "p3.astra.b02",
+        "p3.astra.b03",
+        "p3.astra.b04",
+        "p3.astra.b05",
+        "p3.astra.b06",
+        "p3.astra.b07",
+        "p3.astra.b08",
+        "p3.astra.b09",
+        "p3.astra.b10",
+        "p3.astra.b11",
+        "p3.astra.b12",
+        "p3.astra.b13",
+        "p3.astra.b14",
+        "p3.astra.b15",
+        "p3.astra.b16",
+        "p3.astra.b17",
+        "p3.astra.b18"
+      ],
+      "finding": "采纳提案后B仍为18槽。b04给I like结构，b11仍需处理新限定my dog；b11教所属范围，b15为猫类别/自有宠物两句辨义；b03说未必拥有，b18还需独立读鸟句和作画数量干扰。",
+      "resolution": "这些是刻意复现的学习支架，不能宣传为18个独立能力。b09补is保留为缩写展开基础练习，b07音轨是It's orange，没有展示展开式It is或指定is空的答案。"
+    }
+  ],
+  "exclusionPairs": [
+    {
+      "exclusionGroupId": "p3.delivery.a10-b07",
+      "kind": "cross-group",
+      "candidateIds": [
+        "p3.astra.a10",
+        "p3.astra.b07"
+      ],
+      "oldQuestions": [],
+      "evidence": "a10干扰项逐字给出It's orange，反馈明确orange=橙色；b07第二位的完整回答正是It's orange，考其颜色。完整目标句与译义重合。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a12-b07",
+      "kind": "cross-group",
+      "candidateIds": [
+        "p3.astra.a12",
+        "p3.astra.b07"
+      ],
+      "oldQuestions": [],
+      "evidence": "a12完整排序答案It is orange与b07的It's orange只差缩写，都是同一物品橙色描述；两题不宜在混合测量中当独立覆盖。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a01-social-purposes",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a01"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.beach-welcome",
+          "localQuestionId": "social-purposes"
+        }
+      ],
+      "evidence": "旧题l1=Hello!配见面时打招呼，正是a01唯一目的及完整正确表达；不是泛泛共同问候主题。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a01-hello",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a01"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.reading-circle",
+          "localQuestionId": "hello"
+        }
+      ],
+      "evidence": "旧题完整选项Hello! Nice to meet you及反馈明确先问好，直接给出a01的Hello问候映射。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a03-meet-you",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a03"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.beach-welcome",
+          "localQuestionId": "meet-you"
+        }
+      ],
+      "evidence": "旧题排序得到Nice to meet you并解释初见高兴，a03以完全相同整句为录音，选同一功能。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a03-hello",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a03"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.reading-circle",
+          "localQuestionId": "hello"
+        }
+      ],
+      "evidence": "旧音轨第二句Nice to meet you逐字覆盖a03全部音轨，反馈明说初见高兴；两题均为听选。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a03-greeting-reply",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a03"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.beach-welcome",
+          "localQuestionId": "greeting-reply"
+        }
+      ],
+      "evidence": "旧题题干逐字给Nice to meet you，正确回应及解释明确同样的见面喜悦；覆盖a03整句与功能。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a05-whose-name",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a05"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.reading-circle",
+          "localQuestionId": "whose-name"
+        }
+      ],
+      "evidence": "旧题l1=my→我的、l2=your→你的，恰是a05两条配对的全部区分点；a05两边共同添加name没有新增判断。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a06-my-mother",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a06"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary3.family-photo-wall",
+          "localQuestionId": "my-mother"
+        }
+      ],
+      "evidence": "a06正确This is my mum与旧题正确This is my mother仅母亲称呼口语形式不同，同为我的妈妈介绍；旧题另测my/your，仍属明显近似核心句。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a10-green-cover",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a10"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.colour-covers",
+          "localQuestionId": "green-cover"
+        }
+      ],
+      "evidence": "旧题中文给绿色、答案green；a10三句仅颜色词不同，中文同样指定绿色，唯一实质辨认仍是green=绿色。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a10-green-cup",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a10"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.picnic-colours",
+          "localQuestionId": "green-cup"
+        }
+      ],
+      "evidence": "两题均固定其他句词只比较颜色，由中文绿色选green；旧题a green cup与新题It's green换场景未增加核心辨认。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a13-green-cup",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a13"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.picnic-colours",
+          "localQuestionId": "green-cup"
+        }
+      ],
+      "evidence": "旧题反馈完整给出green绿色、red红色、blue蓝色，覆盖a13三条全部配对答案。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a15-greeting-reply",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a15"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.beach-welcome",
+          "localQuestionId": "greeting-reply"
+        }
+      ],
+      "evidence": "同样听对方Nice to meet you，选择我也很高兴；完整正确句Nice to meet you too仅逗号不同，近乎重复。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b01-morning",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b01"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.beach-welcome",
+          "localQuestionId": "morning"
+        }
+      ],
+      "evidence": "旧题选Good morning且反馈译为早上好；b01以同一译义选完全相同的问候句。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b02-animal-words",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b02"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.animal-postcards",
+          "localQuestionId": "animal-words"
+        }
+      ],
+      "evidence": "旧题cat/猫、bird/鸟两条与b02图词的猫、鸟相同；第三项fish换rabbit且改真实图识别，仍是三动物标签配对近似练习，不能把换一个物种计完整新覆盖。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b04-like-fish",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b04"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.animal-postcards",
+          "localQuestionId": "like-fish"
+        }
+      ],
+      "evidence": "两题均三块I、like、fish.按同顺序排序表达我喜欢鱼，完整题目操作与答案重复。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b05-dog-card",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b05"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.animal-postcards",
+          "localQuestionId": "dog-card"
+        }
+      ],
+      "evidence": "旧题中文狗选dog、干扰bird/cat；b05三项共同加a，正确及两干扰物种完全相同，不增加数量辨认。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b09-red-book",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b09"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.colour-covers",
+          "localQuestionId": "red-book"
+        }
+      ],
+      "evidence": "旧题明确展开It is a red book，反馈点明该句；b09唯一空是It ____ red的is，缺口的相邻搭配已完整给出，不是仅共同涉及be动词。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b09-black-and-white",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b09"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "marcus.primary3.street-colour-hunt",
+          "localQuestionId": "black-and-white"
+        }
+      ],
+      "evidence": "旧题排序It is black and white并显示完整It is；b09只填相同It之后的is，因此唯一作答缺口已被旧题直接给出。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b12-introduce-friend",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b12"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.reading-circle",
+          "localQuestionId": "introduce-friend"
+        }
+      ],
+      "evidence": "旧题答案This is my friend Tom比b12完整音轨This is my friend只多姓名，两题正确信息同为介绍自己的朋友。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b14-ask-name",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b14"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.reading-circle",
+          "localQuestionId": "ask-name"
+        }
+      ],
+      "evidence": "两个排序均问你叫什么名字；What's your name与What is your name仅缩写词块拆分不同，完整语义与顺序重复。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b14-colour-question",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b14"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.colour-covers",
+          "localQuestionId": "colour-question"
+        }
+      ],
+      "evidence": "旧题干扰项What is your name及反馈问姓名，逐字展开了b14整个问句答案；不是同有疑问词便互斥。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b16-a-cat",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b16"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.animal-postcards",
+          "localQuestionId": "a-cat"
+        }
+      ],
+      "evidence": "旧题排序答案This is a cat与b16完整音轨逐字一致，中文目标均辨认猫。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b18-likes-birds",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b18"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.animal-postcards",
+          "localQuestionId": "likes-birds"
+        }
+      ],
+      "evidence": "旧题正确I like birds及反馈喜欢鸟这一类动物，正是b18全部原句与正确理解；b18增加不推断拥有或作画，不改变核心信息重复。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.a14-self-introduction",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.a14"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "oliver.primary3.reading-circle",
+          "localQuestionId": "self-introduction"
+        }
+      ],
+      "evidence": "旧题正确为I’m Mei，干扰有My name Mei并强调句子完整；a14改I am An后仍是I主语自我介绍的完整结构判断，缩写展开及换姓名不能计独立新能力。"
+    },
+    {
+      "exclusionGroupId": "p3.delivery.b08-animal-words",
+      "kind": "candidate-old",
+      "candidateIds": [
+        "p3.astra.b08"
+      ],
+      "oldQuestions": [
+        {
+          "unitId": "ruby.primary3.animal-postcards",
+          "localQuestionId": "animal-words"
+        }
+      ],
+      "evidence": "旧题cat/bird/fish三词英汉配对；新b08为cat/fish/rabbit，同为三动物词义配对且其中cat、fish答案完全相同，只换一个动物不构成新的教学任务。"
+    }
+  ],
+  "remainingWork": [
+    "全部替题与目标范围扩充须由主代理审定；采纳提案也不等于清除全部词义复现，尤其b08明确为已教动物词巩固，不作独立无提示掌握证据。",
+    "两篇故事各三段均为afterQuestion=0且可跳过，正文为有中文支架的开场，不测故事记忆；英文难度、朗读和儿童可读性待审。",
+    "8段听力及b02三图均未制作，无assetId、生成记录或实听证据；两段双人对话须真两声部。",
+    "逐题媒体需求只是制作与验收规范，不表示界面支持或素材完成。音频脚本提交前不可见，提交后即时反馈可以正常揭示。",
+    "exclusionPairs按采纳全部提案后的内容登记；每项恰两成员，主代理映射正式bank身份，不把连通分量合并为大互斥组。",
+    "本地54旧题审计不处理旧旧题冲突；词义基础复现可保留，但不计新增覆盖。36题不等于36种新能力或全年课程。",
+    "原稿、catalog、正式题库、代码均未改；未生成素材、提交或部署。"
+  ]
+}
