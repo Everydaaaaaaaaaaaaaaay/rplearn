@@ -63,6 +63,7 @@ export const bankBlueprintSchema = z.strictObject({
         type: z.enum([
           "choice",
           "listeningChoice",
+          "listeningCompletion",
           "audioChoice",
           "audioMatching",
           "arrange",

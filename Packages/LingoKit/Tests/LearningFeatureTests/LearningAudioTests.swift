@@ -35,8 +35,8 @@ private actor AudioTestService: LearningServing {
 
 @Suite("学习听力的加载与中断") @MainActor
 struct LearningAudioTests {
-    private func question(_ id: String = "listening") throws -> LearningQuestion {
-        let data = try JSONSerialization.data(withJSONObject: ["id": id, "type": "dictation", "goalId": "test.goal", "instruction": "听写", "prompt": "工程测试", "hint": "工程提示", "audio": ["assetId": "audio.test"]])
+    private func question(_ id: String = "listening", kind: String = "dictation") throws -> LearningQuestion {
+        let data = try JSONSerialization.data(withJSONObject: ["id": id, "type": kind, "goalId": "test.goal", "instruction": "听力", "prompt": "工程测试", "hint": "工程提示", "wordLimit": 2, "audio": ["assetId": "audio.test"]])
         return try JSONDecoder().decode(LearningQuestion.self, from: data)
     }
     private func waitForPlayback(_ model: LearningAudioModel) async throws {
@@ -46,11 +46,11 @@ struct LearningAudioTests {
         }
         Issue.record("播放器没有进入播放状态。")
     }
-    @Test("正常与慢速只有完整播放后解锁，中断和旧回调不能假报听完")
-    func interruptionAndCompletion() async throws {
+    @Test("正常与慢速只有完整播放后解锁，中断和旧回调不能假报听完", arguments: ["dictation", "listeningCompletion"])
+    func interruptionAndCompletion(kind: String) async throws {
         let playback = TestAudioPlayback()
         let model = LearningAudioModel(service: AudioTestService(), playback: playback)
-        await model.prepare(attemptID: UUID(), question: try question())
+        await model.prepare(attemptID: UUID(), question: try question(kind: kind))
         #expect(model.state == .ready); #expect(!model.hasListened)
         model.play(slow: false); try await waitForPlayback(model)
         model.stop(interrupted: true)
@@ -76,11 +76,11 @@ struct LearningAudioTests {
         model.reset(); await service.finishDownload(); await loading.value
         #expect(model.state == .idle); #expect(!model.hasListened); #expect(playback.rates.isEmpty)
     }
-    @Test("下载失败保持可重试状态，不能解锁听力作答")
-    func failureKeepsListeningLocked() async throws {
+    @Test("下载失败保持可重试状态，不能解锁听力作答", arguments: ["dictation", "listeningCompletion"])
+    func failureKeepsListeningLocked(kind: String) async throws {
         let service = AudioTestService(); await service.failDownloads()
         let model = LearningAudioModel(service: service, playback: TestAudioPlayback())
-        await model.prepare(attemptID: UUID(), question: try question())
+        await model.prepare(attemptID: UUID(), question: try question(kind: kind))
         #expect(model.state == .failed); #expect(!model.hasListened)
     }
     @Test("多声音题逐段听完才解锁，切换和迟到回调不伪造听完", arguments: ["audioChoice", "audioMatching"])

@@ -190,6 +190,7 @@ export const bankJavascript = String.raw`
   const types = {
     choice: "选择",
     listeningChoice: "听辨",
+    listeningCompletion: "听力短答",
     audioChoice: "声音选项",
     audioMatching: "声音配图",
     audioArrange: "听后排序",

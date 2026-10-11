@@ -133,6 +133,7 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=arrange Scripts/preview.sh preview unit-challenge`
 
 听后排序可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=audioArrange Scripts/preview.sh preview unit-challenge`。
+听力笔记短答可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=listeningCompletion Scripts/preview.sh preview unit-challenge`；工程预览检查两词限制、超限提示及音频未听完时的提交门槛，不属于正式教学题。
 共享词库多空题可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=cloze Scripts/preview.sh preview unit-challenge`。
 定向路径 `Scripts/test-ui.sh -only-testing:LingoTripUITests/ChallengeLayoutUITests/testClozeSelectReplaceUndoAndLargeText`
 检查普通与最大辅助字号的选空、替换和撤回；工程预览不提交成绩。

@@ -395,6 +395,41 @@ struct LearningChallengeTests {
         #expect(await flag.calls == 1)
         #expect(!model.isBusy)
     }
+    @Test("听力笔记保留短答合同并阻止空白、超限或缺失词限提交")
+    func listeningCompletionAnswers() throws {
+        var question: [String: Any] = ["id": "q1", "type": "listeningCompletion", "goalId": "test.goal",
+            "instruction": "听录音补全笔记", "prompt": "Bring ____.", "hint": "留意必需物品",
+            "audio": ["assetId": "audio.test"], "wordLimit": 2]
+        let attempt = try learningAttemptFixture(questions: [question])
+        let model = LearningChallengeModel(attempt: attempt, service: try ChallengeService())
+        model.skipStory()
+        #expect(model.question?.audioAssetIDs == ["audio.test"])
+        #expect(model.answer == nil)
+        model.text = "sturdy shoes"
+        #expect(model.answer == .text("sturdy shoes"))
+        model.text = "very sturdy shoes"
+        #expect(model.answer == nil)
+        #expect(model.answerWordCount == 3)
+        model.text = "\u{FEFF} \n"
+        #expect(model.answer == nil)
+        let data = try JSONEncoder().encode(attempt.unit.questions[0])
+        let publicQuestion = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        #expect(publicQuestion["acceptedAnswers"] == nil)
+        #expect((publicQuestion["audio"] as? [String: Any])?["text"] == nil)
+        question.removeValue(forKey: "wordLimit")
+        let invalid = LearningChallengeModel(attempt: try learningAttemptFixture(questions: [question]), service: try ChallengeService())
+        invalid.skipStory(); invalid.text = "shoes"
+        #expect(invalid.answer == nil)
+    }
+    @Test("短答分词与服务端共享空白集合，连字符和撇号不拆词")
+    func listeningCompletionWordCount() {
+        #expect(LearningQuestion.answerWordCount("  acid-free\t tissues\n") == 2)
+        #expect(LearningQuestion.answerWordCount("student's book") == 2)
+        #expect(LearningQuestion.answerWordCount("sturdy\u{00A0}shoes") == 2)
+        #expect(LearningQuestion.answerWordCount("\u{FEFF}sturdy\u{3000}shoes\u{202F}") == 2)
+        #expect(LearningQuestion.answerWordCount("sturdy\u{200B}shoes") == 1)
+        #expect(LearningQuestion.answerWordCount("\t\n \u{FEFF}") == 0)
+    }
     @Test("公开题目不持有答案，六种提交形式编码为严格合同")
     func answerContract() throws {
         let answers: [LearningAnswer] = [.choice("a"), .arrange(["word1", "word2"]), .text("hello"), .matching([.init(left: "l1", right: "r1")]), .cloze([.init(slotId: "s1", tokenId: "a"), .init(slotId: "s2", tokenId: "b")]), .skip]

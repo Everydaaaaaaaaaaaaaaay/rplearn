@@ -335,6 +335,7 @@ export function reviewSchemaForUnit(unit: LearningUnit) {
         });
         break;
       case "completion":
+      case "listeningCompletion":
       case "dictation":
         answer = z.strictObject({
           kind: z.literal("text"),

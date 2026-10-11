@@ -32,6 +32,15 @@ const normalization = z.strictObject({
   ignoreCase: z.boolean(),
   ignoreTerminalPunctuation: z.boolean(),
 });
+/** 产品词数规则：按 ECMAScript 空白分隔；连字符、撇号及零宽非空白不拆词。 */
+export function listeningAnswerWordCount(value: string): number {
+  return value
+    .split(
+      // eslint-disable-next-line no-control-regex -- 跨端合同明确包含制表和换行等空白控制字符。
+      /[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]+/u,
+    )
+    .filter(Boolean).length;
+}
 export const clozeFillSchema = z.strictObject({
   slotId: identifier,
   tokenId: identifier,
@@ -147,6 +156,25 @@ export const questionSchema = z.discriminatedUnion("type", [
     acceptedAnswers: z.array(text.max(240)).min(1).max(12),
     normalization,
   }),
+  z
+    .strictObject({
+      ...baseQuestion,
+      type: z.literal("listeningCompletion"),
+      audio: audioReference,
+      acceptedAnswers: z.array(text.max(240)).min(1).max(12),
+      normalization,
+      wordLimit: z.number().int().min(1).max(8),
+    })
+    .superRefine((question, context) => {
+      question.acceptedAnswers.forEach((answer, index) => {
+        if (listeningAnswerWordCount(answer) > question.wordLimit)
+          context.addIssue({
+            code: "custom",
+            path: ["acceptedAnswers", index],
+            message: "听力短答的作者答案超过词数限制。",
+          });
+      });
+    }),
   z.strictObject({
     ...baseQuestion,
     type: z.literal("matching"),
@@ -448,6 +476,12 @@ export function publicQuestion(question: LearningQuestion) {
       return common;
     case "dictation":
       return { ...common, audio: { assetId: question.audio.assetId } };
+    case "listeningCompletion":
+      return {
+        ...common,
+        audio: { assetId: question.audio.assetId },
+        wordLimit: question.wordLimit,
+      };
   }
 }
 

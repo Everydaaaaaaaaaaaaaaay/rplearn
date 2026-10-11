@@ -7,7 +7,7 @@ public struct LearningOption: Codable, Sendable, Equatable, Identifiable {
     public let caption: String?
 }
 public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
-    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, audioChoice, audioMatching, arrange, audioArrange, completion, dictation, matching, cloze }
+    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, audioChoice, audioMatching, arrange, audioArrange, completion, dictation, listeningCompletion, matching, cloze }
     public struct Audio: Codable, Sendable, Equatable { public let assetId: String }
     public struct AudioOption: Codable, Sendable, Equatable, Identifiable { public let id: String; public let audio: Audio }
     public let id: String
@@ -24,6 +24,17 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
     public let audioOptions: [AudioOption]?
     public var audioAssetIDs: [String] { audio.map { [$0.assetId] } ?? (audioOptions ?? []).map(\.audio.assetId) }
     public let passage: String?
+    public let wordLimit: Int?
+    /// 与服务端相同的空白分词规则；连字符及撇号不拆词。
+    public static func answerWordCount(_ text: String) -> Int {
+        text.unicodeScalars.split { scalar in
+            switch scalar.value {
+            case 0x0009...0x000D, 0x0020, 0x00A0, 0x1680, 0x2000...0x200A,
+                 0x2028, 0x2029, 0x202F, 0x205F, 0x3000, 0xFEFF: true
+            default: false
+            }
+        }.count
+    }
     public var clozeSlotIDs: [String] {
         guard let passage, let pattern = try? NSRegularExpression(pattern: #"\{([a-z][a-z0-9_.-]{0,119})\}"#) else { return [] }
         let text = passage as NSString

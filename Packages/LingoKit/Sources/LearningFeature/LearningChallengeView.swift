@@ -318,6 +318,28 @@ public struct LearningChallengeView: View {
                 .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
                 .overlay { RoundedRectangle(cornerRadius: 18).stroke(theme.tint.opacity(0.35)) }
                 .accessibilityLabel("填写答案")
+        case .listeningCompletion:
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text("最多 \(question.wordLimit ?? 0) 词").font(.caption.weight(.medium))
+                    Spacer()
+                    Text("\(model.answerWordCount) / \(question.wordLimit ?? 0)")
+                        .font(.caption.monospacedDigit())
+                        .foregroundStyle(model.answerWordCount > (question.wordLimit ?? 0) ? Color.red : Color.secondary)
+                        .accessibilityLabel("已填 \(model.answerWordCount) 词，最多 \(question.wordLimit ?? 0) 词")
+                }.foregroundStyle(.secondary)
+                TextField("填入笔记", text: $model.text, axis: .vertical)
+                    .font(.title3).lineLimit(1...3)
+                    .textInputAutocapitalization(.never).autocorrectionDisabled()
+                    .keyboardType(.asciiCapable).focused($inputFocused)
+                    .padding(.vertical, 12)
+                    .accessibilityLabel("听力笔记答案")
+                    .accessibilityHint("按空格计词，连字符和撇号不拆词")
+                Rectangle().fill(theme.tint.opacity(0.5)).frame(height: 1)
+                if model.answerWordCount > (question.wordLimit ?? 0) {
+                    Text("超出词数").font(.caption).foregroundStyle(.red)
+                }
+            }
         case .cloze:
             LearningClozeControls(question: question, model: model, tint: theme.tint)
         case .matching:

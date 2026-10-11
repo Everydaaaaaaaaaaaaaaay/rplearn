@@ -1,6 +1,11 @@
 import { z } from "zod";
 import { AppError } from "../../shared/errors.js";
-import { clozeFillSchema, clozeSlotIds, type LearningQuestion } from "./content.js";
+import {
+  clozeFillSchema,
+  clozeSlotIds,
+  listeningAnswerWordCount,
+  type LearningQuestion,
+} from "./content.js";
 
 export const answerSchema = z.discriminatedUnion("kind", [
   z.strictObject({ kind: z.literal("choice"), optionId: z.string().min(1).max(120) }),
@@ -128,15 +133,19 @@ export function gradeAnswer(
       break;
     }
     case "completion":
+    case "listeningCompletion":
     case "dictation": {
       solution = { kind: "text", text: question.acceptedAnswers[0] ?? "" };
       if (!skipped) {
         if (answer.kind !== "text") malformed();
-        correct = question.acceptedAnswers.some(
-          (expected) =>
-            normalize(expected, question.normalization) ===
-            normalize(answer.text, question.normalization),
-        );
+        correct =
+          (question.type !== "listeningCompletion" ||
+            listeningAnswerWordCount(answer.text) <= question.wordLimit) &&
+          question.acceptedAnswers.some(
+            (expected) =>
+              normalize(expected, question.normalization) ===
+              normalize(answer.text, question.normalization),
+          );
       }
       break;
     }

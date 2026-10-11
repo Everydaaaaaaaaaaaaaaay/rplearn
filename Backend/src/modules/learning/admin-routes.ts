@@ -58,6 +58,7 @@ export function registerLearningAdminRoutes(
                 .enum([
                   "choice",
                   "listeningChoice",
+                  "listeningCompletion",
                   "arrange",
                   "audioArrange",
                   "completion",

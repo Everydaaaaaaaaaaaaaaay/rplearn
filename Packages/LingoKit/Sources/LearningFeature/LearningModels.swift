@@ -174,12 +174,17 @@ public final class LearningChallengeModel {
         case .arrange, .audioArrange: return tokens.isEmpty ? nil : .arrange(tokens)
         case .completion, .dictation:
             return text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : .text(text)
+        case .listeningCompletion:
+            guard let limit = question.wordLimit, (1...8).contains(limit),
+                  answerWordCount > 0, answerWordCount <= limit else { return nil }
+            return .text(text)
         case .audioMatching: return pairs.count == question.audioOptions?.count ? .matching(pairs) : nil
         case .matching: return pairs.count == question.left?.count ? .matching(pairs) : nil
         case .cloze:
             return !question.clozeSlotIDs.isEmpty && fills.count == question.clozeSlotIDs.count ? .cloze(fills) : nil
         }
     }
+    public var answerWordCount: Int { LearningQuestion.answerWordCount(text) }
     public func advance() {
         guard !isBusy, !hasUnconfirmedAnswer else { return }
         if case .story(let index) = stage { seenBeats.insert(attempt.unit.beats[index].id) }
