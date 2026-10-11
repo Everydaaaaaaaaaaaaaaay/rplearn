@@ -83,8 +83,8 @@ struct LearningAudioTests {
         await model.prepare(attemptID: UUID(), question: try question())
         #expect(model.state == .failed); #expect(!model.hasListened)
     }
-    @Test("声音选项逐段听完才解锁，切换和迟到回调不伪造听完")
-    func optionPlaybackIsolation() async throws {
+    @Test("多声音题逐段听完才解锁，切换和迟到回调不伪造听完", arguments: ["audioChoice", "audioMatching"])
+    func optionPlaybackIsolation(kind: String) async throws {
         let service = AudioTestService()
         var playbacks: [TestAudioPlayback] = []
         let model = LearningAudioOptionsModel {
@@ -92,7 +92,9 @@ struct LearningAudioTests {
             return LearningAudioModel(service: service, playback: playback)
         }
         let data = Data(#"{"id":"sounds","type":"audioChoice","goalId":"test.goal","instruction":"选声音","prompt":"工程测试","hint":"工程提示","audioOptions":[{"id":"a","audio":{"assetId":"audio.a"}},{"id":"b","audio":{"assetId":"audio.b"}}]}"#.utf8)
-        let question = try JSONDecoder().decode(LearningQuestion.self, from: data)
+        var publicQuestion = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        publicQuestion["type"] = kind
+        let question = try JSONDecoder().decode(LearningQuestion.self, from: JSONSerialization.data(withJSONObject: publicQuestion))
         await model.prepare(attemptID: UUID(), question: question)
         let first = try #require(model.players["a"]), second = try #require(model.players["b"])
         #expect(!model.hasListenedToAll)

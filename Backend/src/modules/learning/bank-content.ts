@@ -64,6 +64,7 @@ export const bankBlueprintSchema = z.strictObject({
           "choice",
           "listeningChoice",
           "audioChoice",
+          "audioMatching",
           "arrange",
           "audioArrange",
           "completion",
@@ -104,7 +105,17 @@ export function bankIdentity(question: LearningQuestion): string {
       .map((o) => text(items, o.id))
       .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
   let material: unknown;
-  if (question.type === "audioChoice") {
+  if (question.type === "audioMatching") {
+    material = {
+      audio: question.audioOptions.map((o) => clean(o.audio.text)).sort(),
+      images: question.right
+        .map((o) => ({
+          image: o.imageAssetId,
+          caption: o.caption ? clean(o.caption) : null,
+        }))
+        .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b))),
+    };
+  } else if (question.type === "audioChoice") {
     material = {
       audioOptions: question.audioOptions.map((o) => clean(o.audio.text)).sort(),
     };

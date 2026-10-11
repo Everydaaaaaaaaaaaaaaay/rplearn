@@ -15,7 +15,7 @@ final class LearningAudioOptionsModel {
 
     func prepare(attemptID: UUID, question: LearningQuestion?) async {
         reset()
-        guard let question, question.type == .audioChoice else { return }
+        guard let question, [.audioChoice, .audioMatching].contains(question.type) else { return }
         let requestRevision = revision
         let options = question.audioOptions ?? []
         for option in options { players[option.id] = makePlayer() }

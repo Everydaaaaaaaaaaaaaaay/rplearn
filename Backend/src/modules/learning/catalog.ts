@@ -221,7 +221,7 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         ...("audio" in question
           ? { audio: question.audio.text.trim().toLowerCase() }
           : {}),
-        ...(question.type === "audioChoice"
+        ...(question.type === "audioChoice" || question.type === "audioMatching"
           ? {
               audioOptions: question.audioOptions
                 .map((o) => o.audio.text.trim().toLowerCase())

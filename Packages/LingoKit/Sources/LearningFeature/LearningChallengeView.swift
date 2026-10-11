@@ -198,7 +198,7 @@ public struct LearningChallengeView: View {
                 }
             }
             answerControls(question)
-                .disabled(model.isBusy || (model.feedback != nil && question.type != .audioChoice) || model.hasUnconfirmedAnswer || !pictures.isReady(for: question))
+                .disabled(model.isBusy || (model.feedback != nil && ![.audioChoice, .audioMatching].contains(question.type)) || model.hasUnconfirmedAnswer || !pictures.isReady(for: question))
             if let feedback = model.feedback {
                 feedbackCard(feedback, question: question)
                     .id("challenge.feedback")
@@ -279,6 +279,8 @@ public struct LearningChallengeView: View {
     @ViewBuilder
     private func answerControls(_ question: LearningQuestion) -> some View {
         switch question.type {
+        case .audioMatching:
+            LearningAudioMatchingControls(question: question, attemptID: model.attempt.id, audio: audioOptions, pictures: pictures, pairs: $model.pairs, feedback: model.feedback, tint: theme.tint).id(question.id)
         case .audioChoice:
             LearningAudioChoiceControls(question: question, attemptID: model.attempt.id, audio: audioOptions, selection: $model.choice, tint: theme.tint, selectionDisabled: model.feedback != nil)
         case .choice, .listeningChoice:
@@ -525,7 +527,7 @@ public struct LearningChallengeView: View {
                 else if model.hasUnconfirmedAnswer { primary("重新确认提交") { Task { await model.submit() } } }
                 else {
                     HStack(spacing: 12) {
-                        primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened) || (model.question?.type == .audioChoice && !audioOptions.hasListenedToAll)) { inputFocused = false; audio.stop(); audioOptions.stop(); Task { await model.submit() } }
+                        primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened) || ([LearningQuestion.Kind.audioChoice, .audioMatching].contains(model.question?.type ?? .choice) && !audioOptions.hasListenedToAll)) { inputFocused = false; audio.stop(); audioOptions.stop(); Task { await model.submit() } }
                         if inputFocused {
                             Button { inputFocused = false } label: {
                                 Image(systemName: "keyboard.chevron.compact.down")
@@ -571,7 +573,7 @@ public struct LearningChallengeView: View {
         case .arrange: return (answer.tokenIds ?? []).compactMap { id in question.tokens?.first { $0.id == id }?.text }.joined(separator: " ")
         case .text: return answer.text ?? ""
         case .matching: return (answer.pairs ?? []).map { pair in
-            "\(question.left?.first { $0.id == pair.left }?.text ?? "") ↔ \(question.right?.first { $0.id == pair.right }?.text ?? "")"
+            "\(question.audioOptions?.firstIndex(where: { $0.id == pair.left }).map { "声音 \($0 + 1)" } ?? question.left?.first { $0.id == pair.left }?.text ?? "") ↔ \(question.right?.first { $0.id == pair.right }?.text ?? "")"
         }.joined(separator: "\n")
         case .skip: return ""
         }

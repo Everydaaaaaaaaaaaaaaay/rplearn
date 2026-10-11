@@ -60,6 +60,28 @@ const audioReference = z.strictObject({
 export const questionSchema = z.discriminatedUnion("type", [
   z.strictObject({
     ...baseQuestion,
+    type: z.literal("audioMatching"),
+    audioOptions: z
+      .array(z.strictObject({ id: identifier, audio: audioReference }))
+      .min(2)
+      .max(4),
+    right: z
+      .array(
+        z.strictObject({
+          ...option.shape,
+          imageAssetId: identifier,
+          caption: text.max(40).optional(),
+        }),
+      )
+      .min(3)
+      .max(5),
+    answerPairs: z
+      .array(z.strictObject({ left: identifier, right: identifier }))
+      .min(2)
+      .max(4),
+  }),
+  z.strictObject({
+    ...baseQuestion,
     type: z.literal("audioChoice"),
     audioOptions: z
       .array(z.strictObject({ id: identifier, audio: audioReference }))
@@ -209,7 +231,7 @@ export const unitSchema = z
     if (!unit.beats.some((beat) => beat.afterQuestion === 0)) fail("单元必须有开场。");
     for (const question of unit.questions) {
       if (!unit.goalIds.includes(question.goalId)) fail("题目引用了未声明的学习目标。");
-      if (question.type === "audioChoice") {
+      if (question.type === "audioChoice" || question.type === "audioMatching") {
         unique(
           question.audioOptions.map((o) => o.id),
           "声音选项标识",
@@ -222,8 +244,42 @@ export const unitSchema = z
           question.audioOptions.map((o) => o.audio.text.trim().toLowerCase()),
           "声音选项原文",
         );
-        if (!question.audioOptions.some((o) => o.id === question.answer))
+        if (
+          question.type === "audioChoice" &&
+          !question.audioOptions.some((o) => o.id === question.answer)
+        )
           fail("正确答案必须是已有声音选项。");
+        if (question.type === "audioMatching") {
+          unique(
+            question.right.map((o) => o.id),
+            "图片选项标识",
+          );
+          unique(
+            question.right.map((o) => [o.imageAssetId, o.caption ?? ""].join("/")),
+            "图片选项内容",
+          );
+          unique(
+            question.answerPairs.map((p) => p.left),
+            "声音配对答案",
+          );
+          unique(
+            question.answerPairs.map((p) => p.right),
+            "图片配对答案",
+          );
+          if (
+            question.right.length <= question.audioOptions.length ||
+            question.answerPairs.length !== question.audioOptions.length
+          )
+            fail("声音配图必须覆盖全部声音，并保留至少一个干扰图片。");
+          if (
+            question.answerPairs.some(
+              (p) =>
+                !question.audioOptions.some((o) => o.id === p.left) ||
+                !question.right.some((o) => o.id === p.right),
+            )
+          )
+            fail("声音配图答案引用了不存在的选项。");
+        }
       } else if (question.type === "choice" || question.type === "listeningChoice") {
         unique(
           question.options.map((o) => o.id),
@@ -351,6 +407,15 @@ export function publicQuestion(question: LearningQuestion) {
     hint: question.hint,
   };
   switch (question.type) {
+    case "audioMatching":
+      return {
+        ...common,
+        audioOptions: question.audioOptions.map((o) => ({
+          id: o.id,
+          audio: { assetId: o.audio.assetId },
+        })),
+        right: question.right,
+      };
     case "audioChoice":
       return {
         ...common,
@@ -388,7 +453,7 @@ export function publicQuestion(question: LearningQuestion) {
 
 /** 包含独立声音选项；资源授权、发布和后台检查共用同一媒体集合。 */
 export function questionAudios(question: LearningQuestion) {
-  return question.type === "audioChoice"
+  return question.type === "audioChoice" || question.type === "audioMatching"
     ? question.audioOptions.map((o) => o.audio)
     : "audio" in question
       ? [question.audio]
@@ -399,9 +464,11 @@ export function questionImageIds(question: LearningQuestion): string[] {
   const options =
     question.type === "choice" || question.type === "listeningChoice"
       ? question.options
-      : question.type === "matching"
-        ? [...question.left, ...question.right]
-        : [];
+      : question.type === "audioMatching"
+        ? question.right
+        : question.type === "matching"
+          ? [...question.left, ...question.right]
+          : [];
   return [
     ...new Set(
       options.flatMap((option) => (option.imageAssetId ? [option.imageAssetId] : [])),
@@ -429,6 +496,13 @@ export function publicUnit(unit: LearningUnit, attemptId?: string) {
         projected.audioOptions.sort((a, b) =>
           contentHash([attemptId, question.id, a.id]).localeCompare(
             contentHash([attemptId, question.id, b.id]),
+          ),
+        );
+      }
+      if (attemptId && question.type === "audioMatching" && "right" in projected) {
+        projected.right = [...projected.right].sort((a, b) =>
+          contentHash([attemptId, question.id, "image", a.id]).localeCompare(
+            contentHash([attemptId, question.id, "image", b.id]),
           ),
         );
       }

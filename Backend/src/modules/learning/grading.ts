@@ -23,6 +23,7 @@ export type GradeResult = Readonly<{
   outcome: "correct" | "incorrect" | "skipped";
   explanation: string;
   solution: LearningAnswer;
+  pairResults?: readonly { left: string; correct: boolean }[];
   slotResults?: readonly { slotId: string; correct: boolean }[];
 }>;
 
@@ -51,6 +52,7 @@ export function gradeAnswer(
 ): GradeResult {
   let correct = false;
   let solution: LearningAnswer;
+  let pairResults: GradeResult["pairResults"];
   let slotResults: GradeResult["slotResults"];
   const skipped = answer.kind === "skip";
   switch (question.type) {
@@ -138,8 +140,20 @@ export function gradeAnswer(
       }
       break;
     }
+    case "audioMatching":
     case "matching": {
+      const left =
+        question.type === "audioMatching" ? question.audioOptions : question.left;
       solution = { kind: "matching", pairs: question.answerPairs };
+      if (question.type === "audioMatching")
+        pairResults = question.answerPairs.map((expected) => ({
+          left: expected.left,
+          correct:
+            answer.kind === "matching" &&
+            answer.pairs.some(
+              (pair) => pair.left === expected.left && pair.right === expected.right,
+            ),
+        }));
       if (!skipped) {
         if (
           answer.kind !== "matching" ||
@@ -147,7 +161,7 @@ export function gradeAnswer(
           new Set(answer.pairs.map((p) => p.right)).size !== answer.pairs.length ||
           answer.pairs.some(
             (p) =>
-              !question.left.some((o) => o.id === p.left) ||
+              !left.some((o) => o.id === p.left) ||
               !question.right.some((o) => o.id === p.right),
           )
         )
@@ -168,5 +182,6 @@ export function gradeAnswer(
     explanation: question.explanation,
     solution,
     ...(slotResults ? { slotResults } : {}),
+    ...(pairResults ? { pairResults } : {}),
   };
 }

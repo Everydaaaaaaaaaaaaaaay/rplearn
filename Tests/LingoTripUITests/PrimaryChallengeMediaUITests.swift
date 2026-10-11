@@ -181,6 +181,73 @@ final class PrimaryChallengeMediaUITests: XCTestCase {
             app.terminate()
         }
     }
+    /// 仅验证配对交互，复用正式媒体的工程夹具不进入题库。
+    func testAudioImageMatching() throws {
+        continueAfterFailure = false
+        let directory = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().appending(path: "Backend/config/learning")
+        func read(_ id: String) throws -> [String: Any] {
+            try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: directory.appending(path: "units/\(id).json"))) as? [String: Any])
+        }
+        let raw = try read("oliver.primary1.bookmark-colours")
+        let original = try XCTUnwrap(raw["questions"] as? [[String: Any]])
+        let pictures = try XCTUnwrap(original.first?["options"] as? [[String: Any]])
+        var sounds: [[String: Any]] = []
+        for (index, id) in ["oliver.primary2.playtime-can", "ruby.primary2.weather-window"].enumerated() {
+            let source = try read(id)
+            let questions = try XCTUnwrap(source["questions"] as? [[String: Any]])
+            let audio = try XCTUnwrap(questions.first?["audio"] as? [String: String])
+            sounds.append(["id": "sound\(index)", "audio": ["assetId": try XCTUnwrap(audio["assetId"])]])
+        }
+        var unit = raw.filter { ["id", "version", "schemaVersion", "roleKey", "level", "title", "summary", "scene", "estimatedMinutes", "goalIds"].contains($0.key) }
+        unit["questions"] = [["id": "audio-matching-engineering", "type": "audioMatching", "goalId": "preview.goal", "instruction": "给声音配图", "prompt": "声音与图片", "hint": "工程预览", "audioOptions": sounds, "right": pictures]]
+        unit["beats"] = []
+        for large in [false, true] {
+            let app = XCUIApplication()
+            app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+                "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "unit-challenge",
+                "UI_TEST_LEARNING_LOCAL_MEDIA": "1", "UI_TEST_LEARNING_MEDIA_DIRECTORY": directory.path,
+                "UI_TEST_LEARNING_UNIT_JSON": String(decoding: try JSONSerialization.data(withJSONObject: unit), as: UTF8.self),
+                "UI_TEST_LEARNING_QUESTION_ID": "audio-matching-engineering"]
+            if large {
+                app.launchArguments = ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+                app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark"
+            }
+            app.launch()
+            let check = app.buttons["检查"]
+            XCTAssertTrue(check.waitForExistence(timeout: 15))
+            for index in 0..<2 {
+                let play = app.buttons["learning.sound.play.sound\(index)"]
+                reveal(play, in: app)
+                XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: play)], timeout: 10) == .completed)
+                play.tap()
+                XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "已听完"), object: play)], timeout: 20) == .completed)
+            }
+            XCTAssertFalse(check.isEnabled)
+            let first = app.buttons["learning.sound.image.a"]
+            reveal(first, in: app); first.tap()
+            XCTAssertFalse(check.isEnabled, "不能自动补全另一声音")
+            let secondSound = app.buttons["learning.sound.select.sound1"]
+            reveal(secondSound, in: app); secondSound.tap()
+            reveal(first, in: app); first.tap()
+            XCTAssertEqual(first.value as? String, "已与声音 2 配对")
+            XCTAssertFalse(check.isEnabled, "移用图片必须清除旧配对")
+            let firstSound = app.buttons["learning.sound.select.sound0"]
+            reveal(firstSound, in: app); firstSound.tap()
+            let second = app.buttons["learning.sound.image.b"]
+            reveal(second, in: app); second.tap()
+            XCTAssertTrue(check.isEnabled)
+            let undo = app.buttons["learning.sound.match.undo"]
+            reveal(undo, in: app); undo.tap()
+            XCTAssertFalse(check.isEnabled)
+            reveal(second, in: app); second.tap()
+            XCTAssertTrue(check.isEnabled)
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = "声音配图" + (large ? "-大字深色" : "-常规")
+            attachment.lifetime = .keepAlways; add(attachment)
+            app.terminate()
+        }
+    }
+
     private func reveal(_ element: XCUIElement, in app: XCUIApplication) {
         for _ in 0..<24 {
             let top = app.buttons["退出挑战"].frame.maxY + 12

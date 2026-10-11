@@ -4,9 +4,10 @@ public struct LearningOption: Codable, Sendable, Equatable, Identifiable {
     public let id: String
     public let text: String
     public let imageAssetId: String?
+    public let caption: String?
 }
 public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
-    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, audioChoice, arrange, audioArrange, completion, dictation, matching, cloze }
+    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, audioChoice, audioMatching, arrange, audioArrange, completion, dictation, matching, cloze }
     public struct Audio: Codable, Sendable, Equatable { public let assetId: String }
     public struct AudioOption: Codable, Sendable, Equatable, Identifiable { public let id: String; public let audio: Audio }
     public let id: String
@@ -32,6 +33,7 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
         let candidates: [LearningOption]
         switch type {
         case .choice, .listeningChoice: candidates = options ?? []
+        case .audioMatching: candidates = right ?? []
         case .matching: candidates = (left ?? []) + (right ?? [])
         default: candidates = []
         }
@@ -90,6 +92,11 @@ public struct LearningAnswer: Codable, Sendable, Equatable {
     public static var skip: Self { .init(kind: .skip) }
 }
 public struct LearningGrade: Codable, Sendable, Equatable {
+    public struct PairResult: Codable, Sendable, Equatable {
+        public let left: String
+        public let correct: Bool
+    }
+    public let pairResults: [PairResult]?
     public struct SlotResult: Codable, Sendable, Equatable {
         public let slotId: String
         public let correct: Bool

@@ -745,6 +745,7 @@ export const learningAdminJavascript = String.raw`
     choice: "选择",
     listeningChoice: "听力选择",
     audioChoice: "声音选项",
+    audioMatching: "声音配图",
     audioArrange: "听后排序",
     arrange: "词块组句",
     completion: "填空",
@@ -1271,6 +1272,11 @@ export const learningAdminJavascript = String.raw`
         q.tokens.forEach((o) => tokens.append(el("span", o.text, "token")));
         block.append(tokens);
       }
+      if (q.type === "audioMatching") {
+        const images = el("div", undefined, "media-options");
+        q.right.forEach((o, index) => { images.append(pictureOption(o, String(index + 1))); if (o.caption) images.append(el("p", o.caption)); });
+        block.append(images);
+      }
       if (q.left) {
         const pairs = el("div", undefined, "pairs");
         for (const list of [q.left, q.right]) {
@@ -1302,7 +1308,7 @@ export const learningAdminJavascript = String.raw`
         answer = q.answerPairs
           .map(
             (p) =>
-              (q.left.find((o) => o.id === p.left)?.text || p.left) +
+              (q.audioOptions?.find((o) => o.id === p.left)?.audio.text || q.left?.find((o) => o.id === p.left)?.text || p.left) +
               " → " +
               (q.right.find((o) => o.id === p.right)?.text || p.right),
           )
@@ -1460,7 +1466,7 @@ export const learningAdminJavascript = String.raw`
       goal.append(select);
       grid.append(goal);
       group.append(grid);
-      if (q.options || q.audioOptions) {
+      if (q.options || q.type === "audioChoice") {
         group.append(el("p", "选项与正确答案", "muted"));
         (q.options || q.audioOptions).forEach((o, j) => {
           const row = el("div", undefined, "edit-option"),
@@ -1537,6 +1543,14 @@ export const learningAdminJavascript = String.raw`
       }
       if (q.passage) field(group, "填词原文（保留{s1}等空位标记）", q.passage, v => q.passage = v, { lines: 3 });
       if (q.acceptedFills) field(group, "完整答案组合（每行一种：空位标识=词块标识，以空格分隔）", q.acceptedFills.map(fills => fills.map(fill => fill.slotId + "=" + fill.tokenId).join(" ")).join("\n"), v => q.acceptedFills = v.split("\n").filter(line => line.trim()).map(line => line.trim().split(/\s+/).map(pair => { const [slotId, tokenId] = pair.split("="); return {slotId, tokenId}; })), { lines: 3 });
+      if (q.type === "audioMatching") {
+        q.right.forEach((o, index) => { field(group, "图片 " + (index + 1) + " 描述", o.text, v => o.text = v); field(group, "图片 " + (index + 1) + " 必要标签", o.caption || "", v => { if (v.trim()) o.caption = v; else delete o.caption; }); });
+        q.audioOptions.forEach((o, index) => {
+          const label = el("label", "声音 " + (index + 1) + " 对应图片"), select = el("select");
+          q.right.forEach((r, j) => { const item = el("option", String(j + 1) + " · " + r.text); item.value = r.id; item.selected = q.answerPairs.some(p => p.left === o.id && p.right === r.id); select.append(item); });
+          select.addEventListener("change", () => { q.answerPairs = q.answerPairs.filter(p => p.left !== o.id).concat({left:o.id,right:select.value}); changed(); }); label.append(select); group.append(label);
+        });
+      }
       if (q.left) {
         for (const [name, list] of [
           ["左列", q.left],

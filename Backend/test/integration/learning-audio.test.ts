@@ -9,6 +9,7 @@ import { LearningEngineRepository } from "../../src/modules/learning/engine-repo
 import { createLearningService } from "../../src/modules/learning/service.js";
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
 import { registerLearningRoutes } from "../../src/modules/learning/routes.js";
+import { learningImageFixture } from "../helpers/learning-images.js";
 import { learningAudioFixture } from "../helpers/learning-audio.js";
 import { learningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
@@ -30,6 +31,11 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
     const tokens: string[] = [];
     const characterId = randomUUID();
     const unit = learningFixture(`test.audio.${randomUUID()}`);
+    const images = [
+      learningImageFixture(81),
+      learningImageFixture(141),
+      learningImageFixture(211),
+    ];
     const assets = [
       learningAudioFixture(),
       learningAudioFixture("Hello friend.", "M5", 660),
@@ -119,9 +125,37 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         })),
         answer: "sound1",
       };
+      unit.questions[7] = {
+        id: "test.sound-pictures",
+        type: "audioMatching",
+        goalId: seed.goalId,
+        instruction: "工程声音配图",
+        prompt: "仅验证配图合同",
+        hint: "工程提示",
+        explanation: "工程解析",
+        difficultyReason: "两声音三图授权与判题测试",
+        audioOptions: assets.slice(0, 2).map((asset, index) => ({
+          id: `s${String(index)}`,
+          audio: {
+            assetId: asset.metadata.id,
+            text: asset.metadata.transcript,
+            voice: asset.metadata.voice,
+          },
+        })),
+        right: images.map((image, index) => ({
+          id: `r${String(index)}`,
+          imageAssetId: image.metadata.id,
+          text: `工程图片 ${String(index)}`,
+        })),
+        answerPairs: [
+          { left: "s0", right: "r2" },
+          { left: "s1", right: "r0" },
+        ],
+      };
       await repository.publishBatch(
         [unit],
         assets.map((asset) => asset.metadata),
+        images.map((image) => image.metadata),
       );
       const user = users[0];
       if (!user) throw new Error("缺少测试账号。");
@@ -181,6 +215,8 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       await database.sql`delete from app.learning_units where id=${unit.id}`;
       for (const asset of assets)
         await database.sql`delete from app.learning_audio_assets where id=${asset.metadata.id}`;
+      for (const image of images)
+        await database.sql`delete from app.learning_image_assets where id=${image.metadata.id}`;
       await database.close();
     });
     it("只允许本人挑战的听力题，公开响应不含原文或声音配置", async () => {
@@ -308,6 +344,38 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       required(q.audioOptions[1]).audio.text = "原文不匹配";
       await expect(repository.publishBatch([invalid], [])).rejects.toMatchObject({
         code: "LEARNING_AUDIO_NOT_READY",
+      });
+    });
+    it("声音配图同时保护两种素材，遗漏图片或篡改配对媒体不能发布", async () => {
+      const audioURL = `/v1/learning/attempts/${attemptId}/audio/test.sound-pictures?assetId=${required(assets[0]).metadata.id}`;
+      const imageURL = `/v1/learning/attempts/${attemptId}/images/test.sound-pictures/${required(images[0]).metadata.id}`;
+      for (const url of [audioURL, imageURL]) {
+        expect(
+          (
+            await app.inject({
+              method: "GET",
+              url,
+              headers: { authorization: `Bearer ${tokens[0] ?? ""}` },
+            })
+          ).statusCode,
+        ).toBe(200);
+        expect(
+          (
+            await app.inject({
+              method: "GET",
+              url,
+              headers: { authorization: `Bearer ${tokens[1] ?? ""}` },
+            })
+          ).statusCode,
+        ).toBe(404);
+      }
+      const invalid = structuredClone(unit);
+      invalid.version = 2;
+      const question = invalid.questions[7];
+      if (question?.type !== "audioMatching") throw new Error("缺少声音配图夹具。");
+      required(question.right[0]).imageAssetId = "image.absent";
+      await expect(repository.publishBatch([invalid], [], [])).rejects.toMatchObject({
+        code: "LEARNING_IMAGE_NOT_READY",
       });
     });
     it("发布新版后，已有挑战继续使用旧版声音", async () => {

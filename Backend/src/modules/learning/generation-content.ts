@@ -316,17 +316,22 @@ export function reviewSchemaForUnit(unit: LearningUnit) {
             .length(clozeSlotIds(q.passage).length),
         });
         break;
+      case "audioMatching":
       case "matching":
         answer = z.strictObject({
           kind: z.literal("matching"),
           pairs: z
             .array(
               z.strictObject({
-                left: z.enum(q.left.map((o) => o.id)),
+                left: z.enum(
+                  (q.type === "audioMatching" ? q.audioOptions : q.left).map(
+                    (o) => o.id,
+                  ),
+                ),
                 right: z.enum(q.right.map((o) => o.id)),
               }),
             )
-            .length(q.left.length),
+            .length(q.type === "audioMatching" ? q.audioOptions.length : q.left.length),
         });
         break;
       case "completion":

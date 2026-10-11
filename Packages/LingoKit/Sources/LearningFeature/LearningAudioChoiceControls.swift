@@ -8,6 +8,7 @@ struct LearningAudioChoiceControls: View {
     @Binding var selection: String?
     let tint: Color
     let selectionDisabled: Bool
+    var selectionPrefix: String = "选择声音"
 
     var body: some View {
         VStack(spacing: 0) {
@@ -43,7 +44,7 @@ struct LearningAudioChoiceControls: View {
                             Spacer(minLength: 8)
                             Image(systemName: selection == option.id ? "checkmark.circle.fill" : "circle").font(.system(size: 24))
                         }.frame(minHeight: 52).contentShape(Rectangle())
-                    }.disabled(selectionDisabled).accessibilityLabel("选择声音 \(index + 1)")
+                    }.disabled(selectionDisabled).accessibilityLabel("\(selectionPrefix) \(index + 1)")
                         .accessibilityAddTraits(selection == option.id ? .isSelected : [])
                         .accessibilityIdentifier("learning.sound.select.\(option.id)")
                 }.padding(.vertical, 16)

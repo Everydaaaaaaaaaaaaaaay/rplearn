@@ -81,6 +81,27 @@ private actor ChallengeService: LearningServing {
 
 @Suite("单元挑战恢复与交互状态") @MainActor
 struct LearningChallengeTests {
+    @Test("声音配图保留多余候选，未完整配对不可提交，逐项结果可以解码")
+    func audioMatchingContract() throws {
+        let question: [String: Any] = ["id":"q1","type":"audioMatching","goalId":"test.goal","instruction":"配图","prompt":"工程检查","hint":"工程提示",
+            "audioOptions":[["id":"s1","audio":["assetId":"audio.one"]],["id":"s2","audio":["assetId":"audio.two"]]],
+            "right":[["id":"r1","text":"图一","imageAssetId":"image.one"],["id":"r2","text":"图二","imageAssetId":"image.two","caption":"会"],["id":"r3","text":"图三","imageAssetId":"image.three"]]]
+        let attempt = try learningAttemptFixture(["firstCompletedAt":"2026-09-26T01:00:00Z"], questions:[question])
+        let model = LearningChallengeModel(attempt:attempt,service:try ChallengeService())
+        model.skipStory()
+        #expect(model.question?.type == .audioMatching)
+        #expect(model.question?.audioAssetIDs.count == 2)
+        #expect(model.question?.imageAssetIDs.count == 3)
+        model.selectedLeft="s1"; model.selectPair(right:"r1")
+        #expect(model.answer == nil)
+        model.selectedLeft="s2"; model.selectPair(right:"r2")
+        #expect(model.answer?.pairs?.count == 2)
+        model.selectedLeft="s2"; model.selectPair(right:"r1")
+        #expect(model.answer == nil); #expect(model.pairs.count == 1)
+        let grade=try JSONDecoder().decode(LearningGrade.self,from:Data(#"{"outcome":"incorrect","explanation":"工程反馈","solution":{"kind":"matching","pairs":[{"left":"s1","right":"r2"},{"left":"s2","right":"r1"}]},"pairResults":[{"left":"s1","correct":false},{"left":"s2","correct":true}]}"#.utf8))
+        #expect(grade.pairResults?.map(\.correct) == [false,true])
+    }
+
     @Test("多空共享词库支持指定空位、替换、回收和完整提交")
     func clozeInteraction() async throws {
         let q: [String: Any] = ["id": "q1", "type": "cloze", "goalId": "test.goal", "instruction": "填两空", "prompt": "工程检查", "hint": "提示",
