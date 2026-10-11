@@ -68,6 +68,7 @@ export const bankBlueprintSchema = z.strictObject({
           "completion",
           "dictation",
           "matching",
+          "cloze",
         ]),
       }),
     )
@@ -112,6 +113,11 @@ export function bankIdentity(question: LearningQuestion): string {
       question.type === "audioArrange"
         ? { tokens: materials(question.tokens), audio: clean(question.audio.text) }
         : materials(question.tokens);
+  } else if (question.type === "cloze") {
+    material = {
+      passage: clean(question.passage).replace(/\{[a-z][a-z0-9_.-]{0,119}\}/gu, "{}"),
+      tokens: materials(question.tokens),
+    };
   } else if (question.type === "matching") {
     material = { left: materials(question.left), right: materials(question.right) };
   } else {

@@ -306,6 +306,8 @@ public struct LearningChallengeView: View {
                 .background(Color.dsSurface, in: RoundedRectangle(cornerRadius: 18))
                 .overlay { RoundedRectangle(cornerRadius: 18).stroke(theme.tint.opacity(0.35)) }
                 .accessibilityLabel("填写答案")
+        case .cloze:
+            LearningClozeControls(question: question, model: model, tint: theme.tint)
         case .matching:
             if usesFocusedMatching(question) {
                 focusedMatching(question)
@@ -546,6 +548,13 @@ public struct LearningChallengeView: View {
     }
     private func solutionText(_ answer: LearningAnswer, question: LearningQuestion) -> String {
         switch answer.kind {
+        case .cloze:
+            var passage = question.passage ?? ""
+            for fill in answer.fills ?? [] {
+                let word = question.tokens?.first { $0.id == fill.tokenId }?.text ?? ""
+                passage = passage.replacingOccurrences(of: "{\(fill.slotId)}", with: word)
+            }
+            return passage
         case .choice: return question.options?.first { $0.id == answer.optionId }?.text ?? ""
         case .arrange: return (answer.tokenIds ?? []).compactMap { id in question.tokens?.first { $0.id == id }?.text }.joined(separator: " ")
         case .text: return answer.text ?? ""

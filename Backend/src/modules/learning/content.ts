@@ -32,6 +32,16 @@ const normalization = z.strictObject({
   ignoreCase: z.boolean(),
   ignoreTerminalPunctuation: z.boolean(),
 });
+export const clozeFillSchema = z.strictObject({
+  slotId: identifier,
+  tokenId: identifier,
+});
+/** 空位只能由显式标记声明，保持客户端呈现顺序与判题身份一致。 */
+export function clozeSlotIds(passage: string): string[] {
+  return [...passage.matchAll(/\{([a-z][a-z0-9_.-]{0,119})\}/gu)].map(
+    (match) => match[1] ?? "",
+  );
+}
 const baseQuestion = {
   id: identifier,
   goalId: identifier,
@@ -43,6 +53,13 @@ const baseQuestion = {
 };
 
 export const questionSchema = z.discriminatedUnion("type", [
+  z.strictObject({
+    ...baseQuestion,
+    type: z.literal("cloze"),
+    passage: text,
+    tokens: z.array(option).min(2).max(12),
+    acceptedFills: z.array(z.array(clozeFillSchema).min(2).max(6)).min(1).max(8),
+  }),
   z.strictObject({
     ...baseQuestion,
     type: z.literal("choice"),
@@ -202,6 +219,42 @@ export const unitSchema = z
             fail("组句答案包含不存在的词块。");
           }
         }
+      } else if (question.type === "cloze") {
+        const slots = clozeSlotIds(question.passage);
+        if (slots.length < 2 || slots.length > 6)
+          fail("多空填词必须包含二至六个空位。");
+        if (/[{}]/u.test(question.passage.replace(/\{[a-z][a-z0-9_.-]{0,119}\}/gu, "")))
+          fail("多空填词包含无效空位标记。");
+        unique(slots, "空位标识");
+        unique(
+          question.tokens.map((token) => token.id),
+          "词块标识",
+        );
+        unique(
+          question.tokens.map((token) => token.text.trim().toLowerCase()),
+          "词块文字",
+        );
+        if (question.tokens.some((token) => token.imageAssetId))
+          fail("多空填词只接收文字词块。");
+        for (const fills of question.acceptedFills) {
+          unique(
+            fills.map((fill) => fill.slotId),
+            "答案空位",
+          );
+          unique(
+            fills.map((fill) => fill.tokenId),
+            "答案词块",
+          );
+          if (
+            fills.length !== slots.length ||
+            fills.some(
+              (fill) =>
+                !slots.includes(fill.slotId) ||
+                !question.tokens.some((token) => token.id === fill.tokenId),
+            )
+          )
+            fail("多空答案必须完整覆盖已有空位，且每个词块最多使用一次。");
+        }
       } else if (question.type === "matching") {
         unique(
           question.left.map((o) => o.id),
@@ -287,6 +340,8 @@ export function publicQuestion(question: LearningQuestion) {
       };
     case "matching":
       return { ...common, left: question.left, right: question.right };
+    case "cloze":
+      return { ...common, passage: question.passage, tokens: question.tokens };
     case "completion":
       return common;
     case "dictation":

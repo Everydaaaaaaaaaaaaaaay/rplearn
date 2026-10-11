@@ -6,7 +6,7 @@ public struct LearningOption: Codable, Sendable, Equatable, Identifiable {
     public let imageAssetId: String?
 }
 public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
-    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, arrange, audioArrange, completion, dictation, matching }
+    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, arrange, audioArrange, completion, dictation, matching, cloze }
     public struct Audio: Codable, Sendable, Equatable { public let assetId: String }
     public let id: String
     public let type: Kind
@@ -19,6 +19,12 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
     public let left: [LearningOption]?
     public let right: [LearningOption]?
     public let audio: Audio?
+    public let passage: String?
+    public var clozeSlotIDs: [String] {
+        guard let passage, let pattern = try? NSRegularExpression(pattern: #"\{([a-z][a-z0-9_.-]{0,119})\}"#) else { return [] }
+        let text = passage as NSString
+        return pattern.matches(in: passage, range: NSRange(location: 0, length: text.length)).map { text.substring(with: $0.range(at: 1)) }
+    }
     public var imageAssetIDs: [String] {
         let candidates: [LearningOption]
         switch type {
@@ -52,31 +58,44 @@ public struct LearningUnit: Codable, Sendable, Equatable {
 }
 /// 与服务端提交合同一致；客户端不包含未答题目的判题资料。
 public struct LearningAnswer: Codable, Sendable, Equatable {
+    public struct Fill: Codable, Sendable, Equatable {
+        public let slotId: String
+        public let tokenId: String
+        public init(slotId: String, tokenId: String) { self.slotId = slotId; self.tokenId = tokenId }
+    }
     public struct Pair: Codable, Sendable, Equatable {
         public let left: String
         public let right: String
         public init(left: String, right: String) { self.left = left; self.right = right }
     }
-    public enum Kind: String, Codable, Sendable { case choice, arrange, text, matching, skip }
+    public enum Kind: String, Codable, Sendable { case choice, arrange, text, matching, cloze, skip }
     public let kind: Kind
     public let optionId: String?
     public let tokenIds: [String]?
     public let text: String?
     public let pairs: [Pair]?
-    private init(kind: Kind, optionId: String? = nil, tokenIds: [String]? = nil, text: String? = nil, pairs: [Pair]? = nil) {
+    public let fills: [Fill]?
+    private init(kind: Kind, optionId: String? = nil, tokenIds: [String]? = nil, text: String? = nil, pairs: [Pair]? = nil, fills: [Fill]? = nil) {
         self.kind = kind; self.optionId = optionId; self.tokenIds = tokenIds; self.text = text; self.pairs = pairs
+        self.fills = fills
     }
     public static func choice(_ id: String) -> Self { .init(kind: .choice, optionId: id) }
     public static func arrange(_ ids: [String]) -> Self { .init(kind: .arrange, tokenIds: ids) }
     public static func text(_ text: String) -> Self { .init(kind: .text, text: text) }
     public static func matching(_ pairs: [Pair]) -> Self { .init(kind: .matching, pairs: pairs) }
+    public static func cloze(_ fills: [Fill]) -> Self { .init(kind: .cloze, fills: fills) }
     public static var skip: Self { .init(kind: .skip) }
 }
 public struct LearningGrade: Codable, Sendable, Equatable {
+    public struct SlotResult: Codable, Sendable, Equatable {
+        public let slotId: String
+        public let correct: Bool
+    }
     public enum Outcome: String, Codable, Sendable { case correct, incorrect, skipped }
     public let outcome: Outcome
     public let explanation: String
     public let solution: LearningAnswer
+    public let slotResults: [SlotResult]?
 }
 public struct LearningAttempt: Codable, Sendable, Equatable, Identifiable {
     public struct Submission: Codable, Sendable, Equatable {

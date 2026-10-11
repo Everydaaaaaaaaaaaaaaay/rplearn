@@ -124,7 +124,7 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
                     "questionIds": showStory ? unit.questions.map(\.id) : [question.id], "completed": false, "answers": []],
                 "unit": publicUnit])
         }
-        let supported = ["choice", "arrange", "audioArrange", "matching", "completion", "listeningChoice", "dictation"]
+        let supported = ["choice", "arrange", "audioArrange", "matching", "completion", "listeningChoice", "dictation", "cloze"]
         let type = supported.contains(kind) ? kind : "choice"
         var question: [String: Any] = ["id": "preview.question", "type": type, "goalId": "preview.goal",
             "instruction": "界面预览：完成这个练习", "prompt": "这是一道工程检查题，用于观察题干换行和操作区域，不计入学习记录。", "hint": "示例提示。",
@@ -132,6 +132,12 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
             "tokens": [["id": "i", "text": "I"], ["id": "would", "text": "would"], ["id": "like", "text": "like"], ["id": "to", "text": "to"], ["id": "read", "text": "read"], ["id": "books", "text": "books"]],
             "left": [["id": "l1", "text": "a book"], ["id": "l2", "text": "a pencil"], ["id": "l3", "text": "a bag"]],
             "right": [["id": "r1", "text": "一本书"], ["id": "r2", "text": "一个包"], ["id": "r3", "text": "一支铅笔"]]]
+        if type == "cloze" {
+            question["instruction"] = "选择词块，填入两空。"
+            question["prompt"] = "工程交互检查，不进入正式题库。"
+            question["passage"] = "First {first}.\nThen {second}."
+            question["tokens"] = [["id": "a", "text": "one"], ["id": "b", "text": "two"], ["id": "c", "text": "three"]]
+        }
         if ProcessInfo.processInfo.environment["UI_TEST_LEARNING_IMAGES"] == "1" {
             question["instruction"] = "图片选项 · 工程预览"
             question["prompt"] = type == "matching" ? "把两组相同的图形配对。此题只检查图片展示与操作，不进入正式题库。" : "请选择红色圆形。此题只检查图片展示与操作，不进入正式题库。"

@@ -82,6 +82,11 @@ public final class LearningChallengeModel {
     public var text = ""
     public var pairs: [LearningAnswer.Pair] = []
     public var selectedLeft: String?
+    public private(set) var fills: [LearningAnswer.Fill] = []
+    public private(set) var selectedSlot: String?
+    public var activeSlot: String? {
+        selectedSlot ?? question?.clozeSlotIDs.first(where: { id in !fills.contains { $0.slotId == id } }) ?? question?.clozeSlotIDs.first
+    }
     let service: any LearningServing
     private var pendingAnswer: LearningAnswerCommand?
     private var finishRequestID = UUID()
@@ -122,6 +127,8 @@ public final class LearningChallengeModel {
         case .completion, .dictation:
             return text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : .text(text)
         case .matching: return pairs.count == question.left?.count ? .matching(pairs) : nil
+        case .cloze:
+            return !question.clozeSlotIDs.isEmpty && fills.count == question.clozeSlotIDs.count ? .cloze(fills) : nil
         }
     }
     public func advance() {
@@ -129,6 +136,7 @@ public final class LearningChallengeModel {
         if case .story(let index) = stage { seenBeats.insert(attempt.unit.beats[index].id) }
         feedback = nil; awardedPoints = 0
         choice = nil; tokens = []; text = ""; pairs = []; selectedLeft = nil
+        fills = []; selectedSlot = nil
         if attempt.round.ordinal == 0, attempt.round.answers.isEmpty,
            let index = openingBeatIndices.first(where: { !seenBeats.contains(attempt.unit.beats[$0].id) }) {
             stage = .story(index); return
@@ -208,5 +216,21 @@ public final class LearningChallengeModel {
         guard let left = selectedLeft, !hasUnconfirmedAnswer, feedback == nil else { return }
         pairs.removeAll { $0.left == left || $0.right == right }
         pairs.append(.init(left: left, right: right)); selectedLeft = nil
+    }
+    public func selectSlot(_ id: String) {
+        guard !isBusy, !hasUnconfirmedAnswer, feedback == nil, question?.clozeSlotIDs.contains(id) == true else { return }
+        selectedSlot = id
+    }
+    public func fillSlot(with tokenID: String) {
+        guard !isBusy, !hasUnconfirmedAnswer, feedback == nil,
+              let question, question.type == .cloze, let slot = activeSlot,
+              question.tokens?.contains(where: { $0.id == tokenID }) == true else { return }
+        fills.removeAll { $0.slotId == slot || $0.tokenId == tokenID }
+        fills.append(.init(slotId: slot, tokenId: tokenID))
+        selectedSlot = question.clozeSlotIDs.first { id in !fills.contains { $0.slotId == id } } ?? slot
+    }
+    public func clearSlot(_ id: String) {
+        guard !isBusy, !hasUnconfirmedAnswer, feedback == nil, question?.clozeSlotIDs.contains(id) == true else { return }
+        fills.removeAll { $0.slotId == id }; selectedSlot = id
     }
 }

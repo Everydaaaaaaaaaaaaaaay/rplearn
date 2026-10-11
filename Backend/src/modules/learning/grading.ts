@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { AppError } from "../../shared/errors.js";
-import type { LearningQuestion } from "./content.js";
+import { clozeFillSchema, clozeSlotIds, type LearningQuestion } from "./content.js";
 
 export const answerSchema = z.discriminatedUnion("kind", [
   z.strictObject({ kind: z.literal("choice"), optionId: z.string().min(1).max(120) }),
@@ -9,6 +9,7 @@ export const answerSchema = z.discriminatedUnion("kind", [
     tokenIds: z.array(z.string().min(1).max(120)).max(18),
   }),
   z.strictObject({ kind: z.literal("text"), text: z.string().max(1000) }),
+  z.strictObject({ kind: z.literal("cloze"), fills: z.array(clozeFillSchema).max(6) }),
   z.strictObject({
     kind: z.literal("matching"),
     pairs: z
@@ -22,6 +23,7 @@ export type GradeResult = Readonly<{
   outcome: "correct" | "incorrect" | "skipped";
   explanation: string;
   solution: LearningAnswer;
+  slotResults?: readonly { slotId: string; correct: boolean }[];
 }>;
 
 function normalize(
@@ -49,8 +51,44 @@ export function gradeAnswer(
 ): GradeResult {
   let correct = false;
   let solution: LearningAnswer;
+  let slotResults: GradeResult["slotResults"];
   const skipped = answer.kind === "skip";
   switch (question.type) {
+    case "cloze": {
+      const slots = clozeSlotIds(question.passage);
+      const fills = answer.kind === "cloze" ? answer.fills : [];
+      if (
+        !skipped &&
+        (answer.kind !== "cloze" ||
+          new Set(fills.map((fill) => fill.slotId)).size !== fills.length ||
+          new Set(fills.map((fill) => fill.tokenId)).size !== fills.length ||
+          fills.some(
+            (fill) =>
+              !slots.includes(fill.slotId) ||
+              !question.tokens.some((token) => token.id === fill.tokenId),
+          ))
+      )
+        malformed();
+      const matches = (expected: { slotId: string; tokenId: string }) =>
+        fills.some(
+          (fill) =>
+            fill.slotId === expected.slotId && fill.tokenId === expected.tokenId,
+        );
+      // 多个完整可接受组合时，反馈对应最接近的合法组合，不拼出未获认可的新答案。
+      const expected =
+        [...question.acceptedFills].sort(
+          (a, b) => b.filter(matches).length - a.filter(matches).length,
+        )[0] ?? [];
+      solution = { kind: "cloze", fills: expected };
+      slotResults = slots.map((slotId) => ({
+        slotId,
+        correct:
+          !skipped && expected.some((fill) => fill.slotId === slotId && matches(fill)),
+      }));
+      correct =
+        fills.length === slots.length && slotResults.every((slot) => slot.correct);
+      break;
+    }
     case "choice":
     case "listeningChoice": {
       solution = { kind: "choice", optionId: question.answer };
@@ -126,5 +164,6 @@ export function gradeAnswer(
     outcome: skipped ? "skipped" : correct ? "correct" : "incorrect",
     explanation: question.explanation,
     solution,
+    ...(slotResults ? { slotResults } : {}),
   };
 }

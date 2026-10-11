@@ -195,6 +195,7 @@ export const bankJavascript = String.raw`
     completion: "填空",
     dictation: "听写",
     matching: "配对",
+    cloze: "多空填词",
   };
   const levels = {
     kindergarten: "启蒙",
@@ -311,6 +312,7 @@ export const bankJavascript = String.raw`
       node("h3", types[q.type] + " · " + q.instruction),
       node("p", q.prompt),
     );
+    if (q.passage) article.append(node("p", q.passage));
     for (const o of q.options || q.tokens || []) {
       article.append(
         node(
@@ -328,6 +330,7 @@ export const bankJavascript = String.raw`
     if (q.answer) solution = optionText(q.options, q.answer);
     if (q.acceptedAnswers) solution = q.acceptedAnswers.join(" / ");
     if (q.acceptedOrders) solution = q.acceptedOrders.map((order) => order.map((id) => optionText(q.tokens, id)).join(" ")).join(" / ");
+    if (q.acceptedFills) solution = q.acceptedFills.map(fills => fills.map(fill => fill.slotId + " = " + optionText(q.tokens, fill.tokenId)).join("；")).join(" / ");
     if (q.answerPairs) solution = q.answerPairs.map((pair) => optionText(q.left, pair.left) + " → " + optionText(q.right, pair.right)).join("；");
     if (solution) article.append(node("p", "答案：" + solution));
     if (q.audio) article.append(node("p", "听力材料：" + q.audio.text));
@@ -497,6 +500,8 @@ export const bankJavascript = String.raw`
             .filter((x) => x.trim())
             .map((x) => x.trim().split(/\s+/))),
       );
+    if (q.passage) field(form, "填词原文（保留{s1}等空位标记）", q.passage, v => q.passage = v);
+    if (q.acceptedFills) field(form, "完整答案组合（每行一种：空位标识=词块标识，以空格分隔）", q.acceptedFills.map(fills => fills.map(fill => fill.slotId + "=" + fill.tokenId).join(" ")).join("\n"), v => q.acceptedFills = v.split("\n").filter(line => line.trim()).map(line => line.trim().split(/\s+/).map(pair => { const [slotId, tokenId] = pair.split("="); return {slotId, tokenId}; })));
     if (q.answerPairs)
       field(
         form,

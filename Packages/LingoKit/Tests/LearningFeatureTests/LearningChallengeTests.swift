@@ -81,6 +81,46 @@ private actor ChallengeService: LearningServing {
 
 @Suite("单元挑战恢复与交互状态") @MainActor
 struct LearningChallengeTests {
+    @Test("多空共享词库支持指定空位、替换、回收和完整提交")
+    func clozeInteraction() async throws {
+        let q: [String: Any] = ["id": "q1", "type": "cloze", "goalId": "test.goal", "instruction": "填两空", "prompt": "工程检查", "hint": "提示",
+            "passage": "One {first}.\nTwo {second}.", "tokens": [["id": "a", "text": "A"], ["id": "b", "text": "B"], ["id": "c", "text": "C"]]]
+        let service = try ChallengeService()
+        let model = LearningChallengeModel(attempt: try learningAttemptFixture(questions: [q]), service: service)
+        model.skipStory()
+        #expect(model.question?.clozeSlotIDs == ["first", "second"])
+        #expect(model.activeSlot == "first")
+        model.fillSlot(with: "missing")
+        #expect(model.fills.isEmpty)
+        model.fillSlot(with: "a")
+        #expect(model.activeSlot == "second")
+        #expect(model.answer == nil)
+        model.selectSlot("first")
+        model.fillSlot(with: "c")
+        #expect(model.fills == [.init(slotId: "first", tokenId: "c")])
+        model.fillSlot(with: "b")
+        #expect(model.answer?.kind == .cloze)
+        model.clearSlot("first")
+        #expect(model.answer == nil)
+        #expect(model.activeSlot == "first")
+        model.fillSlot(with: "a")
+        let answer = try #require(model.answer)
+        #expect(try JSONDecoder().decode(LearningAnswer.self, from: JSONEncoder().encode(answer)) == answer)
+        #expect(Set(model.fills.map(\.tokenId)).count == 2)
+        await model.submit()
+        #expect(model.hasUnconfirmedAnswer)
+        let frozen = model.fills
+        model.clearSlot("first"); model.selectSlot("second"); model.fillSlot(with: "c")
+        #expect(model.fills == frozen)
+        #expect(await service.commands.first?.answer == answer)
+    }
+    @Test("多空逐空反馈可解码，公开题面不含答案组合")
+    func clozeFeedbackContract() throws {
+        let json = #"{"outcome":"incorrect","explanation":"工程反馈","solution":{"kind":"cloze","fills":[{"slotId":"a","tokenId":"x"},{"slotId":"b","tokenId":"y"}]},"slotResults":[{"slotId":"a","correct":true},{"slotId":"b","correct":false}]}"#
+        let grade = try JSONDecoder().decode(LearningGrade.self, from: Data(json.utf8))
+        #expect(grade.slotResults?.map(\.correct) == [true, false])
+        #expect(grade.solution.fills?.count == 2)
+    }
     @Test("十八题可完整解码，听后排序按卡片标识提交而不持有原文")
     func longAudioOrderingContract() throws {
         let questions: [[String: Any]] = (0..<18).map { index in
@@ -230,7 +270,7 @@ struct LearningChallengeTests {
     }
     @Test("公开题目不持有答案，六种提交形式编码为严格合同")
     func answerContract() throws {
-        let answers: [LearningAnswer] = [.choice("a"), .arrange(["word1", "word2"]), .text("hello"), .matching([.init(left: "l1", right: "r1")]), .skip]
+        let answers: [LearningAnswer] = [.choice("a"), .arrange(["word1", "word2"]), .text("hello"), .matching([.init(left: "l1", right: "r1")]), .cloze([.init(slotId: "s1", tokenId: "a"), .init(slotId: "s2", tokenId: "b")]), .skip]
         for answer in answers {
             let data = try JSONEncoder().encode(answer)
             #expect(try JSONDecoder().decode(LearningAnswer.self, from: data) == answer)

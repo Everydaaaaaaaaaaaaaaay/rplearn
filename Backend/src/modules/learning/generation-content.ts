@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { z } from "zod";
 import { loadCuratedCatalog } from "./catalog.js";
 import {
+  clozeSlotIds,
   contentHash,
   questionSchema,
   unitSchema,
@@ -293,6 +294,19 @@ export function reviewSchemaForUnit(unit: LearningUnit) {
             .array(z.enum(q.tokens.map((t) => t.id)))
             .min(1)
             .max(q.tokens.length),
+        });
+        break;
+      case "cloze":
+        answer = z.strictObject({
+          kind: z.literal("cloze"),
+          fills: z
+            .array(
+              z.strictObject({
+                slotId: z.enum(clozeSlotIds(q.passage)),
+                tokenId: z.enum(q.tokens.map((token) => token.id)),
+              }),
+            )
+            .length(clozeSlotIds(q.passage).length),
         });
         break;
       case "matching":

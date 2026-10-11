@@ -63,6 +63,7 @@ export function registerLearningAdminRoutes(
                   "completion",
                   "dictation",
                   "matching",
+                  "cloze",
                 ])
                 .optional(),
               published: z

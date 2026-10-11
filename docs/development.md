@@ -131,6 +131,9 @@ DEVELOPER_DIR=/Volumes/data/Applications/Xcode.app/Contents/Developer \
 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=arrange Scripts/preview.sh preview unit-challenge`
 
 听后排序可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=audioArrange Scripts/preview.sh preview unit-challenge`。
+共享词库多空题可用 `SIMCTL_CHILD_UI_TEST_LEARNING_QUESTION=cloze Scripts/preview.sh preview unit-challenge`。
+定向路径 `Scripts/test-ui.sh -only-testing:LingoTripUITests/ChallengeLayoutUITests/testClozeSelectReplaceUndoAndLargeText`
+检查普通与最大辅助字号的选空、替换和撤回；工程预览不提交成绩。
 沿用紧凑播放器，完整播放后才可检查；已选卡片可点回或用辅助功能动作调整顺序。
 此入口仍是只读工程夹具，不计学习进度，不代表正式听力材料已经审核发布。
 检查词块题；题型可选 `choice`、`arrange`、`matching`、`completion`。正式内容、听力和联网结算另行验收。

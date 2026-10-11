@@ -152,6 +152,61 @@ final class ChallengeLayoutUITests: XCTestCase {
         XCTAssertTrue(app.buttons["检查"].exists)
         XCTAssertFalse(app.staticTexts["工程界面预览"].exists)
     }
+    func testClozeSelectReplaceUndoAndLargeText() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        for large in [false, true] {
+            app.launchEnvironment = ["UI_TEST_SKIP_ONBOARDING": "1", "UI_TEST_DISABLE_BACKGROUND_REFRESH": "1",
+                "LINGOTRIP_BACKEND_URL": "http://127.0.0.1:9", "UI_TEST_TAB": "unit-challenge", "UI_TEST_LEARNING_QUESTION": "cloze"]
+            app.launchArguments = large ? ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] : []
+            if large { app.launchEnvironment["UI_TEST_CAPTURE_APPEARANCE"] = "dark" }
+            app.launch()
+            XCTAssertTrue(app.buttons["退出挑战"].waitForExistence(timeout: 15))
+            let initialTree = XCTAttachment(string: app.debugDescription)
+            initialTree.name = "多空题初始可访问性树"; initialTree.lifetime = .keepAlways; add(initialTree)
+            let check = app.buttons["检查"]
+            let first = app.buttons["learning.cloze.slot.first"]
+            let second = app.buttons["learning.cloze.slot.second"]
+            let one = app.buttons["learning.cloze.token.a"]
+            let two = app.buttons["learning.cloze.token.b"]
+            let three = app.buttons["learning.cloze.token.c"]
+            func tap(_ element: XCUIElement) {
+                for _ in 0..<12 {
+                    let top = app.buttons["退出挑战"].frame.maxY + 10
+                    let bottom = check.frame.minY - 10
+                    if element.isHittable, element.frame.midY > top, element.frame.midY < bottom { break }
+                    let downward = element.exists && element.frame.midY < top
+                    let origin = app.coordinate(withNormalizedOffset: .zero)
+                    origin.withOffset(CGVector(dx: app.frame.midX, dy: top + (bottom - top) * (downward ? 0.25 : 0.75)))
+                        .press(forDuration: 0.05, thenDragTo: origin.withOffset(CGVector(dx: app.frame.midX, dy: top + (bottom - top) * (downward ? 0.75 : 0.25))))
+                }
+                XCTAssertTrue(element.isHittable)
+                XCTAssertGreaterThanOrEqual(element.frame.height, 44)
+                element.tap()
+            }
+            XCTAssertFalse(check.isEnabled)
+            tap(one)
+            XCTAssertEqual(first.value as? String, "one")
+            XCTAssertTrue(second.isSelected)
+            XCTAssertFalse(check.isEnabled)
+            tap(first); tap(three)
+            XCTAssertEqual(first.value as? String, "three")
+            XCTAssertTrue(one.isEnabled)
+            tap(two)
+            XCTAssertTrue(check.isEnabled)
+            tap(first); tap(app.buttons["learning.cloze.undo"])
+            XCTAssertFalse(check.isEnabled)
+            XCTAssertEqual(first.value as? String, "未填写")
+            tap(one)
+            XCTAssertTrue(check.isEnabled)
+            XCTAssertEqual(second.value as? String, "two")
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = large ? "共享词库-最大字号深色" : "共享词库-替换与撤回"
+            attachment.lifetime = .keepAlways; add(attachment)
+            app.terminate()
+        }
+    }
+
     func testQuestionControlsKeepExitAndPromptVisible() {
         continueAfterFailure = false
         let app = XCUIApplication()

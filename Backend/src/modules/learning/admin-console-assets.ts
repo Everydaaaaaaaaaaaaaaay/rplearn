@@ -749,6 +749,7 @@ export const learningAdminJavascript = String.raw`
     completion: "填空",
     dictation: "听写",
     matching: "配对",
+    cloze: "多空填词",
   };
   const errors = {
     AUTHOR_CONTENT_INVALID: "候选内容检查未通过",
@@ -1248,6 +1249,7 @@ export const learningAdminJavascript = String.raw`
         el("div", q.prompt, "prompt"),
       );
       if (q.audio) block.append(audioPreview(q));
+      if (q.passage) block.append(el("p", q.passage, "prompt"));
       if (q.options) {
         const options = el(
           "div",
@@ -1290,6 +1292,7 @@ export const learningAdminJavascript = String.raw`
               .join(" "),
           )
           .join(" / ");
+      if (q.acceptedFills) answer = q.acceptedFills.map(fills => fills.map(fill => fill.slotId + " = " + (q.tokens.find(token => token.id === fill.tokenId)?.text || fill.tokenId)).join("；")).join(" / ");
       if (q.answerPairs)
         answer = q.answerPairs
           .map(
@@ -1499,11 +1502,11 @@ export const learningAdminJavascript = String.raw`
         );
       if (q.tokens) {
         q.tokens.forEach((o, j) =>
-          field(group, "词块 " + (j + 1), o.text, (v) => (o.text = v), {
+          field(group, "词块 " + (j + 1) + " · " + o.id, o.text, (v) => (o.text = v), {
             lines: 1,
           }),
         );
-        field(
+        if (q.acceptedOrders) field(
           group,
           "正确词块顺序（用上面的编号，以空格分隔；每行一种答案）",
           q.acceptedOrders
@@ -1526,6 +1529,8 @@ export const learningAdminJavascript = String.raw`
           { lines: 2 },
         );
       }
+      if (q.passage) field(group, "填词原文（保留{s1}等空位标记）", q.passage, v => q.passage = v, { lines: 3 });
+      if (q.acceptedFills) field(group, "完整答案组合（每行一种：空位标识=词块标识，以空格分隔）", q.acceptedFills.map(fills => fills.map(fill => fill.slotId + "=" + fill.tokenId).join(" ")).join("\n"), v => q.acceptedFills = v.split("\n").filter(line => line.trim()).map(line => line.trim().split(/\s+/).map(pair => { const [slotId, tokenId] = pair.split("="); return {slotId, tokenId}; })), { lines: 3 });
       if (q.left) {
         for (const [name, list] of [
           ["左列", q.left],

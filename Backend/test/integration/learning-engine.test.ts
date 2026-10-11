@@ -7,6 +7,7 @@ import {
   type LearningSession,
 } from "../../src/modules/learning/engine-repository.js";
 import { gradeAnswer } from "../../src/modules/learning/grading.js";
+import { unitSchema } from "../../src/modules/learning/content.js";
 import { integrationConfig } from "../helpers/integration.js";
 import { learningFixture } from "../helpers/learning.js";
 
@@ -84,9 +85,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
         session.debugFill(c.character, c.state.cycleId),
       ),
     ).rejects.toMatchObject({ code: "LEARNING_ATTEMPT_ACTIVE" });
-    await c.command({ finish: true }, (session) =>
-      session.finish(attempt.id, true),
-    );
+    await c.command({ finish: true }, (session) => session.finish(attempt.id, true));
     await expect(
       c.command({ fill: 3 }, (session) =>
         session.debugFill(c.character, c.state.cycleId),
@@ -199,6 +198,90 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("单元学习事务
     await expect(
       c.command({ missingAttempt: true }, (s) => s.attempt(randomUUID())),
     ).rejects.toMatchObject({ statusCode: 404 });
+  });
+
+  it("多空题部分答对不计分，补全后只奖整题一分，同请求重试不重复奖励", async () => {
+    const c = await setup(0);
+    const fixture = learningFixture(`test.${randomUUID()}`);
+    // 工程夹具，仅验证事务计分，不进入教学题库。
+    const unit = unitSchema.parse({
+      ...fixture,
+      roleKey: c.role,
+      questions: [
+        {
+          id: "test.cloze",
+          type: "cloze",
+          goalId: "test.greetings",
+          instruction: "填两空。",
+          prompt: "工程检查。",
+          hint: "工程提示。",
+          explanation: "工程解析。",
+          difficultyReason: "验证整题计分。",
+          passage: "A {first}. B {second}.",
+          tokens: [
+            { id: "x", text: "X" },
+            { id: "y", text: "Y" },
+            { id: "z", text: "Z" },
+          ],
+          acceptedFills: [
+            [
+              { slotId: "first", tokenId: "x" },
+              { slotId: "second", tokenId: "y" },
+            ],
+          ],
+        },
+        ...fixture.questions.slice(1),
+      ],
+    });
+    units.push(unit.id);
+    await repository.publish(unit);
+    await c.fill();
+    const attempt = await c.start();
+    const partial = {
+      attemptId: attempt.id,
+      roundId: attempt.round.id,
+      questionId: "test.cloze",
+      answer: {
+        kind: "cloze" as const,
+        fills: [
+          { slotId: "first", tokenId: "x" },
+          { slotId: "second", tokenId: "z" },
+        ],
+      },
+    };
+    const result = await c.command(partial, (s) => s.submit(partial));
+    expect(result.awardedPoints).toBe(0);
+    expect(result.result.slotResults).toEqual([
+      { slotId: "first", correct: true },
+      { slotId: "second", correct: false },
+    ]);
+    await c.command({ finish: attempt.id }, (s) => s.finish(attempt.id, true));
+    const retry = await c.command({ retry: attempt.id }, (s) => s.retry(attempt.id));
+    expect(retry.round.questionIds).toContain("test.cloze");
+    const correct = {
+      ...partial,
+      roundId: retry.round.id,
+      answer: {
+        kind: "cloze" as const,
+        fills: [
+          { slotId: "second", tokenId: "y" },
+          { slotId: "first", tokenId: "x" },
+        ],
+      },
+    };
+    const requestId = randomUUID();
+    const [first, replay] = await Promise.all([
+      c.command(correct, (s) => s.submit(correct), requestId),
+      c.command(correct, (s) => s.submit(correct), requestId),
+    ]);
+    expect(first).toEqual(replay);
+    expect(first.awardedPoints).toBe(1);
+    expect((await repository.read(c.user, (s) => s.progress()))[0]).toMatchObject({
+      points: 1,
+    });
+    await expect(c.command(correct, (s) => s.submit(correct))).rejects.toMatchObject({
+      code: "LEARNING_ALREADY_ANSWERED",
+    });
   });
 
   it("内容版本冻结，耗尽后保留机会并只排一个共享生成任务", async () => {
