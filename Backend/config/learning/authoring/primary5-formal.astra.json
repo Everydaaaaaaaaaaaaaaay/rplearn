@@ -1,0 +1,2366 @@
+{
+  "level": "primary5",
+  "inputHashes": {
+    "primary5.astra.json": "6aa2223b8740be13e07359fca09bd60155f375aceb57202551c9d259a6b339a0",
+    "primary5-delivery.astra.json": "cec67d9463cc5a0864848ccbd24940b5539e818726fbbb5a601770f12f17060d"
+  },
+  "questions": [
+    {
+      "id": "p5.astra.a01",
+      "question": {
+        "id": "p5.astra.a01",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "choice",
+        "instruction": "选最合适的回答。",
+        "prompt": "桌上有一盒彩笔。你和妹妹共同拥有它。朋友问：Whose pencils are these? 你回答：",
+        "options": [
+          {
+            "id": "a",
+            "text": "They are mine."
+          },
+          {
+            "id": "b",
+            "text": "They are ours."
+          },
+          {
+            "id": "c",
+            "text": "They are yours."
+          }
+        ],
+        "answer": "b",
+        "hint": "想清楚回答中是否包含说话人和另一个人。",
+        "explanation": "ours明确包含“我和妹妹”；mine表达我的，却没有说出两人共同拥有，yours指对方的。题目要求把共同归属说完整。",
+        "difficultyReason": "把明确的两人共同归属转为名词性物主代词，不靠物品颜色猜答案。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "共同归属的独立物主形式。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "题面明确你和妹妹共同拥有彩笔，回答须明确共同归属。",
+      "ambiguityReview": "mine不必然否认共有，但未达到题面明确说出共有的要求。",
+      "optionNotes": {
+        "a": "mine说明我的，但未明确表达两人共同拥有。",
+        "b": "ours包含本人和妹妹，符合明确共同归属的要求。",
+        "c": "yours改成对方的物品，不符合给定主人。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a02",
+      "question": {
+        "id": "p5.astra.a02",
+        "goalId": "primary5.weekend-help",
+        "type": "listeningChoice",
+        "instruction": "听录音，选择答案。",
+        "prompt": "一位孩子介绍自己的周末。哪件事只是有时候做？",
+        "options": [
+          {
+            "id": "a",
+            "text": "散步"
+          },
+          {
+            "id": "b",
+            "text": "读书"
+          },
+          {
+            "id": "c",
+            "text": "打扫房间"
+          }
+        ],
+        "answer": "c",
+        "hint": "分别听清三个活动前表示频度的词。",
+        "explanation": "Sometimes修饰clean my room，因此偶尔做的是打扫房间；其余两项分别由usually和often修饰。",
+        "difficultyReason": "三个短句中定位一项频度信息，不把频度词换算成百分比。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第7页；PDF第12页",
+          "alignment": "频度副词与周末活动的听辨。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "三段频度信息都在独立音频中，题面问有时候做的活动。",
+      "ambiguityReview": "不把频度换算为次数；听后脚本不得听前展示。",
+      "optionNotes": {
+        "a": "散步前是usually，不是题目询问的有时候。",
+        "b": "读书前是often，不对应本题的sometimes。",
+        "c": "打扫房间由sometimes修饰，正是所问活动。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "I usually go for a walk. I often read books. Sometimes I clean my room."
+    },
+    {
+      "id": "p5.astra.a03",
+      "question": {
+        "id": "p5.astra.a03",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "arrange",
+        "instruction": "用全部词块组句，从They开始。",
+        "prompt": "窗边的两个孩子此刻正在读书。请组成对应英文句子。",
+        "tokens": [
+          {
+            "id": "read",
+            "text": "reading"
+          },
+          {
+            "id": "they",
+            "text": "They"
+          },
+          {
+            "id": "books",
+            "text": "books."
+          },
+          {
+            "id": "are",
+            "text": "are"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "they",
+            "are",
+            "read",
+            "books"
+          ]
+        ],
+        "hint": "先找人物，再把表示正在做的结构连起来。",
+        "explanation": "They是复数主语，用are reading表达此刻正在读；books是阅读的对象。",
+        "difficultyReason": "四词块保留完整进行时，检查复数主语与be动词。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "复数主语的现在进行时组句。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "题面给两个孩子此刻读书，不依赖配图。",
+      "ambiguityReview": "全词块、They起首和句末标点约束唯一顺序。 they→are→read→books；reading放are前破坏进行时。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "they",
+              "are",
+              "read",
+              "books"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "they",
+              "read",
+              "are",
+              "books"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a04",
+      "question": {
+        "id": "p5.astra.a04",
+        "goalId": "primary5.bookshop-calendar",
+        "type": "completion",
+        "instruction": "从in、on、at中填一个词。",
+        "prompt": "读书会只确定了月份，卡片写着：Our book party is ____ November.",
+        "acceptedAnswers": [
+          "in"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "观察时间信息是月份、星期还是钟点。",
+        "explanation": "November是月份，这里用in November表示在十一月。题目没有给出具体哪一天。",
+        "difficultyReason": "有限词库内选择时间介词，不额外考月份拼写。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第30页；PDF第35页",
+          "alignment": "月份前的时间介词。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "卡片只给November，无具体日期。",
+      "ambiguityReview": "三词库内只能in；解析已收窄到本题月份。 in正确；on/at不能直接引出这里的月份。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "in"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "on"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a05",
+      "question": {
+        "id": "p5.astra.a05",
+        "goalId": "primary5.gallery-date-cards",
+        "type": "matching",
+        "instruction": "连接意思相同的卡片。",
+        "prompt": "活动桌上的三个标记分别表示日期、数量和钟点，请检查中文说明。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "June 3rd"
+          },
+          {
+            "id": "l2",
+            "text": "three books"
+          },
+          {
+            "id": "l3",
+            "text": "three o'clock"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "三点整"
+          },
+          {
+            "id": "r2",
+            "text": "六月三日"
+          },
+          {
+            "id": "r3",
+            "text": "三本书"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ],
+        "hint": "不要只看数字；旁边的词决定它表示哪类信息。",
+        "explanation": "3rd在月份后表示日期；three books数书本；three o'clock表示钟点。",
+        "difficultyReason": "同一数字跨三种功能辨义，不要求日历推算。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第44页；PDF第49页",
+          "alignment": "同数字的日期序数、数量与钟点辨义。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "三张卡片完整给出日期、数量、钟点。",
+      "ambiguityReview": "无需日历或图片；每项中文唯一对应。 l1-r2、l2-r3、l3-r1；不能互换日期与数量。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a06",
+      "question": {
+        "id": "p5.astra.a06",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "completion",
+        "instruction": "填my或mine，只填一词。",
+        "prompt": "你把自己的水杯递给朋友看，说：This is ____ cup.",
+        "acceptedAnswers": [
+          "my"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "看看空格后面是否紧接物品名称。",
+        "explanation": "cup已经在句中，前面用my来限定归属；mine可独立代替my cup，不能再接cup。",
+        "difficultyReason": "用实物介绍区别限定词与独立代词，不引入所有格嵌套。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "区别名词前限定词与独立物主代词。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "明确本人水杯，空后已有cup。",
+      "ambiguityReview": "只填my/mine一词，无需补全句子。 my限定名词；mine不能后接cup。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "my"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "mine"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a07",
+      "question": {
+        "id": "p5.astra.a07",
+        "goalId": "primary5.weekend-help",
+        "type": "choice",
+        "instruction": "选择合适的问句。",
+        "prompt": "你想了解新朋友周末通常做什么，并不知道具体活动。应该问：",
+        "options": [
+          {
+            "id": "a",
+            "text": "What do you do on the weekend?"
+          },
+          {
+            "id": "b",
+            "text": "What are you doing now?"
+          },
+          {
+            "id": "c",
+            "text": "When is your birthday?"
+          }
+        ],
+        "answer": "a",
+        "hint": "先判断想问的是习惯、眼前动作还是日期。",
+        "explanation": "a问周末习惯活动；b问当前动作；c问生日时间，与交流目的不同。",
+        "difficultyReason": "根据明确交流目的选择问题，避免只看熟悉单词。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第7、8页；PDF第12、13页",
+          "alignment": "周末习惯的功能问句。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "问朋友周末习惯，具体活动未知。",
+      "ambiguityReview": "b可以交流但问的是此刻，不符合本次目的。",
+      "optionNotes": {
+        "a": "完整询问周末活动，符合了解习惯的目的。",
+        "b": "询问此刻正在做什么，未询问周末习惯。",
+        "c": "询问生日时间，与周末活动目的不同。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a08",
+      "question": {
+        "id": "p5.astra.a08",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "listeningChoice",
+        "instruction": "听录音，选择答案。",
+        "prompt": "录音介绍花园里的一个孩子。她现在在做什么？",
+        "options": [
+          {
+            "id": "a",
+            "text": "正在读书"
+          },
+          {
+            "id": "b",
+            "text": "正在喝水"
+          },
+          {
+            "id": "c",
+            "text": "正在听音乐"
+          }
+        ],
+        "answer": "b",
+        "hint": "听描述动作的部分，不必记住地点。",
+        "explanation": "is drinking water表示正在喝水；录音没有说读书或听音乐。",
+        "difficultyReason": "在短地点引入后提取单数人物的当前动作。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "单数人物当前动作的听辨。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "音频给花园女孩正在喝水，题面不暗示活动。",
+      "ambiguityReview": "凭动作信息判断，不凭人物性别或地点。",
+      "optionNotes": {
+        "a": "录音没有说正在读书，不能据地点推断。",
+        "b": "录音明确说is drinking water，即正在喝水。",
+        "c": "录音未提正在听音乐，这不是所述动作。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Look at the girl in the garden. She is drinking water."
+    },
+    {
+      "id": "p5.astra.a09",
+      "question": {
+        "id": "p5.astra.a09",
+        "goalId": "primary5.bookshop-calendar",
+        "type": "arrange",
+        "instruction": "用全部词块组句，从When开始。",
+        "prompt": "学校准备举行一次郊游，你想问它的时间。用这些词块组成问句。",
+        "tokens": [
+          {
+            "id": "trip",
+            "text": "the school trip?"
+          },
+          {
+            "id": "when",
+            "text": "When"
+          },
+          {
+            "id": "is",
+            "text": "is"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "when",
+            "is",
+            "trip"
+          ]
+        ],
+        "hint": "连起来读一遍，检查是否是在询问郊游的时间。",
+        "explanation": "When is the school trip?询问郊游时间；the school trip是完整名词词块。",
+        "difficultyReason": "短功能问句组句，为月份回答建立准确问题。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第23、24页；PDF第28、29页",
+          "alignment": "活动时间问句。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "题面明确询问学校郊游时间。",
+      "ambiguityReview": "When起首、三个完整词块，无需日期常识。 when→is→trip；陈述语序不合直接问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "when",
+              "is",
+              "trip"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "when",
+              "trip",
+              "is"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a10",
+      "question": {
+        "id": "p5.astra.a10",
+        "goalId": "primary5.gallery-date-cards",
+        "type": "choice",
+        "instruction": "选择符合日期的一句。",
+        "prompt": "小画展定在4月5日，不需要查日历。哪句话写对了？",
+        "options": [
+          {
+            "id": "a",
+            "text": "The art show is on April 5th."
+          },
+          {
+            "id": "b",
+            "text": "The art show is on May 4th."
+          },
+          {
+            "id": "c",
+            "text": "The art show is on April 4th."
+          }
+        ],
+        "answer": "a",
+        "hint": "分别核对月份和日子，两项都必须相同。",
+        "explanation": "April对应四月，5th表示五日；b交换月份与日子，c把五日写成四日。",
+        "difficultyReason": "同时核对两项日期信息，不依赖真实活动常识。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第41、44页；PDF第46、49页",
+          "alignment": "准确读取给定月日。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "4月5日完整给定，按卡片信息核对。",
+      "ambiguityReview": "三个选项语法成立，只有一个日期相同。",
+      "optionNotes": {
+        "a": "April 5th与给定四月五日的月日都一致。",
+        "b": "May 4th是五月四日，月份和日子均不符。",
+        "c": "April 4th虽是四月，但把五日改成四日。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a11",
+      "question": {
+        "id": "p5.astra.a11",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "matching",
+        "instruction": "将说明与主人配对。",
+        "prompt": "女孩Sam正在对你介绍三个书包，旁边只有一个男孩Leo。下面三句话都由Sam对你说，句中的his指Leo。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "This is your bag."
+          },
+          {
+            "id": "l2",
+            "text": "This is his bag."
+          },
+          {
+            "id": "l3",
+            "text": "This is my bag."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "书包是Sam的。"
+          },
+          {
+            "id": "r2",
+            "text": "书包是你的。"
+          },
+          {
+            "id": "r3",
+            "text": "书包是Leo的。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ],
+        "hint": "说话人没有变，留意物品名称前面哪个词发生了变化。",
+        "explanation": "Sam对你说your bag，指你的书包；his bag按题内所指是Leo的书包；my bag则指说话人Sam自己的书包。听别人说my时不能自动理解成答题者自己的。",
+        "difficultyReason": "同一说话人和同一听话人下区别my、your、his的所指，必须阅读英语代词；不通过中文说话人标签配对，也不复现ours或提前展示hers。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "同一说话视角下限定词所指。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "三句都由Sam对答题者说，his明确指Leo。",
+      "ambiguityReview": "my随说话人指Sam，不自动指答题者；无姓名连线捷径。 l1-r2、l2-r3、l3-r1；错换my/your会换主人。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a12",
+      "question": {
+        "id": "p5.astra.a12",
+        "goalId": "primary5.weekend-help",
+        "type": "arrange",
+        "instruction": "用全部词块组句，以I开头，频度词放在动作前。",
+        "prompt": "你在周末调查中想说“我经常散步”。",
+        "tokens": [
+          {
+            "id": "walk",
+            "text": "go for a walk."
+          },
+          {
+            "id": "often",
+            "text": "often"
+          },
+          {
+            "id": "i",
+            "text": "I"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "i",
+            "often",
+            "walk"
+          ]
+        ],
+        "hint": "检查句子有没有同时说出活动和发生频度。",
+        "explanation": "I often go for a walk.按题目要求把often放在活动前。句末放often也可有意义，但不符合本次明确的位置练习。",
+        "difficultyReason": "熟悉活动作为整块，聚焦频度词位置而非逐词拼写。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第8页；PDF第13页",
+          "alignment": "often在受控习惯句中的位置。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "中文给我经常散步，动作词块完整。",
+      "ambiguityReview": "保留I起首及频度词在动作前；句末often并非所有语境都错误。 i→often→walk；i→walk→often违反本题位置限制。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "often",
+              "walk"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "walk",
+              "often"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a13",
+      "question": {
+        "id": "p5.astra.a13",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "completion",
+        "instruction": "填所给动词的-ing形式，只填一词。",
+        "prompt": "朋友问你此刻在做什么。你正在打扫自己的房间，回复：I am ____ my room now. (clean)",
+        "acceptedAnswers": [
+          "cleaning"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "句中已有am，空格只需要动作部分。",
+        "explanation": "clean加-ing得到cleaning；am cleaning合起来说明我正在打扫，不需再次填am。",
+        "difficultyReason": "从前面第三人称完整组句迁移到第一人称即时回复，把规则用于本卷此前未呈现过的cleaning词形；不是凭记忆重填reading。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "clean的现在分词在当前动作中的使用。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "朋友问本人此刻活动，题面明确正在打扫房间。",
+      "ambiguityReview": "am已提供，只填clean的-ing一词；接受大小写及末标点归一。 cleaning正确；clean未变形；不再填am。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "cleaning"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "clean"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a14",
+      "question": {
+        "id": "p5.astra.a14",
+        "goalId": "primary5.bookshop-calendar",
+        "type": "listeningChoice",
+        "instruction": "听录音，选择答案。",
+        "prompt": "一次学校活动的月份在录音里直接给出。请听后选择。",
+        "options": [
+          {
+            "id": "a",
+            "text": "六月"
+          },
+          {
+            "id": "b",
+            "text": "一月"
+          },
+          {
+            "id": "c",
+            "text": "七月"
+          }
+        ],
+        "answer": "c",
+        "hint": "集中听最后的月份名称，不需要推算时间。",
+        "explanation": "July是七月；June是六月，January是一月。本题只依据录音。",
+        "difficultyReason": "听辨相近月份词；中文选项不考拼写。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第23、30页；PDF第28、35页",
+          "alignment": "活动举行月份的听辨。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "月份只在音频给出，不依赖现实校历。",
+      "ambiguityReview": "July/June听辨需实际音频验收，当前只确认文本。",
+      "optionNotes": {
+        "a": "六月对应June，不是录音给出的July。",
+        "b": "一月对应January，不是本录音的月份。",
+        "c": "July对应七月，与完整录音的信息一致。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Our school trip is in July."
+    },
+    {
+      "id": "p5.astra.a15",
+      "question": {
+        "id": "p5.astra.a15",
+        "goalId": "primary5.gallery-date-cards",
+        "type": "completion",
+        "instruction": "填完整英文序数词，不写数字。",
+        "prompt": "小镇歌会的日期是5月2日：The singing contest is on May ____. (two)",
+        "acceptedAnswers": [
+          "second"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "这里表达某月的第几天，不是物品有几个。",
+        "explanation": "two的序数词是second。May second表示五月二日；two只表示数量。",
+        "difficultyReason": "不规则但教材明确覆盖的基础序数词，限定完整词形避免数字缩写争议。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第44页；PDF第49页",
+          "alignment": "基数词与完整日期序数词区别。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "5月2日及two均已给出。",
+      "ambiguityReview": "要求完整英文序数词，2nd虽语义相同但不满足输入限制。 second正确；two为数量词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "second"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "two"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a16",
+      "question": {
+        "id": "p5.astra.a16",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "choice",
+        "instruction": "选择意思相同的一句。",
+        "prompt": "物品标签写着：These are her books. 哪一句保留相同归属？",
+        "options": [
+          {
+            "id": "a",
+            "text": "The books are his."
+          },
+          {
+            "id": "b",
+            "text": "The books are hers."
+          },
+          {
+            "id": "c",
+            "text": "The books are theirs."
+          }
+        ],
+        "answer": "b",
+        "hint": "改写前后拥有书的人不能改变。",
+        "explanation": "her books可以改为the books are hers；his改成他的。theirs通常表示他们、她们或它们的，不再明确表达本题her所指的那一位女性拥有这些书。",
+        "difficultyReason": "同义改写保持所属人物，区分限定词和独立形式。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "限定词加名词改写为独立物主形式。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "原标签her books明确归属，不依赖姓名猜人称。",
+      "ambiguityReview": "theirs可指他们/她们/它们，未明确保留原her指向。",
+      "optionNotes": {
+        "a": "his改成他的，未保留原句her所指。",
+        "b": "hers独立代替her books，物品归属保持不变。",
+        "c": "theirs未明确保留原her所指那位女性的归属。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a17",
+      "question": {
+        "id": "p5.astra.a17",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "choice",
+        "instruction": "选择符合情境的一句。",
+        "prompt": "午饭刚开始。你和两位朋友正在吃午饭，要向别人说明你们此刻的动作。",
+        "options": [
+          {
+            "id": "a",
+            "text": "We eat lunch every day."
+          },
+          {
+            "id": "b",
+            "text": "They are eating lunch."
+          },
+          {
+            "id": "c",
+            "text": "We are eating lunch."
+          }
+        ],
+        "answer": "c",
+        "hint": "既要核对时间，也要核对是否包括说话人。",
+        "explanation": "c用We包括自己，用are eating表达现在；a讲日常习惯，b把人物改成他们。",
+        "difficultyReason": "短句同时保持人称和当前时间，不增加生词。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58页；PDF第63页",
+          "alignment": "包括说话人的复数当前动作。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "题面明确自己与朋友此刻一起吃午饭。",
+      "ambiguityReview": "同时核对包含说话人和当前时间，不能只看动作。",
+      "optionNotes": {
+        "a": "every day陈述习惯，未表达此刻正在吃饭。",
+        "b": "They排除说话人，不符合包括自己的题面。",
+        "c": "We包括自己，are eating明确表达当前动作。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.a18",
+      "question": {
+        "id": "p5.astra.a18",
+        "goalId": "primary5.bookshop-calendar",
+        "type": "matching",
+        "instruction": "将两侧内容逐一配对。",
+        "prompt": "给同一张活动日程卡检查三个时间写法。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "____ Friday"
+          },
+          {
+            "id": "l2",
+            "text": "____ 10 o'clock"
+          },
+          {
+            "id": "l3",
+            "text": "____ August"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "at"
+          },
+          {
+            "id": "r2",
+            "text": "in"
+          },
+          {
+            "id": "r3",
+            "text": "on"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r3"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          },
+          {
+            "left": "l3",
+            "right": "r2"
+          }
+        ],
+        "hint": "先把三条时间分成星期、钟点和月份。",
+        "explanation": "星期前用on，钟点前用at，月份前用in。每个右侧词只使用一次。",
+        "difficultyReason": "对比三种教材时间介词，给定词库不需要自由输入。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第30页；PDF第35页",
+          "alignment": "月份、星期、钟点前in/on/at对比。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "Friday、10 oclock和August已给，不需推算日历。",
+      "ambiguityReview": "原时间介词目标保留；A04单题月份解释属教学支架，不是独立前测。 l1-r3、l2-r1、l3-r2；交换星期/月介词错误。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b01",
+      "question": {
+        "id": "p5.astra.b01",
+        "goalId": "primary5.weekend-help",
+        "type": "choice",
+        "instruction": "选择能确定的信息。",
+        "prompt": "朋友说：I sometimes go swimming on Sundays. 这句话可以确定什么？",
+        "options": [
+          {
+            "id": "a",
+            "text": "朋友每个星期日都游泳。"
+          },
+          {
+            "id": "b",
+            "text": "朋友有时星期日去游泳。"
+          },
+          {
+            "id": "c",
+            "text": "朋友从来不游泳。"
+          }
+        ],
+        "answer": "b",
+        "hint": "别把频度词表达的范围扩大或缩小。",
+        "explanation": "sometimes表示有时，既不是每次都做，也不是从不做。句子没有给具体次数。",
+        "difficultyReason": "理解频度的定性意义，不编造比例或要求统计。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第7、8页；PDF第12、13页",
+          "alignment": "频度词sometimes的范围。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "完整习惯句提供sometimes和星期日游泳信息。",
+      "ambiguityReview": "只能推有时，不能推具体次数或每次。",
+      "optionNotes": {
+        "a": "每个星期日都游泳扩大了sometimes的范围。",
+        "b": "有时星期日游泳准确保留原句的频度。",
+        "c": "从不游泳与原句有时游泳直接矛盾。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b02",
+      "question": {
+        "id": "p5.astra.b02",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "completion",
+        "instruction": "从am、is、are中填一个词。",
+        "prompt": "你正在给朋友发消息，告诉她你在听音乐：I ____ listening to music now.",
+        "acceptedAnswers": [
+          "am"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "先找句子的主语，再确定be动词。",
+        "explanation": "主语I与am搭配；listening已给出，完整结构是am listening。",
+        "difficultyReason": "第一人称当前活动，有限词库聚焦be搭配。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "第一人称进行时be动词。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "本人发消息，I与listening已在句中。",
+      "ambiguityReview": "只补am/is/are，不接受重写整句。 am与I搭配；is/are不符。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "am"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b03",
+      "question": {
+        "id": "p5.astra.b03",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "listeningChoice",
+        "instruction": "听录音，选择答案。",
+        "prompt": "说话人正在说明风筝的归属。风筝是谁的？",
+        "options": [
+          {
+            "id": "a",
+            "text": "说话人的"
+          },
+          {
+            "id": "b",
+            "text": "说话人和Sam共同的"
+          },
+          {
+            "id": "c",
+            "text": "Sam的"
+          }
+        ],
+        "answer": "c",
+        "hint": "听清人物名字和后面的归属表达。",
+        "explanation": "Sam's kite和his指向同一个主人Sam；没有说明共同拥有或属于说话人。",
+        "difficultyReason": "短听力中理解名词所有格与his的同指，不从声音猜人物。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "听辨物品归属。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "音频完整给Sam所有格及his同指。",
+      "ambiguityReview": "不以声音、名字推性别；只按脚本归属。",
+      "optionNotes": {
+        "a": "脚本说Sam的风筝，没有说归说话人。",
+        "b": "录音没有共同拥有的信息，不能额外推断。",
+        "c": "Sam所有格和his指向同一主人Sam。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "This is Sam's kite. It is his."
+    },
+    {
+      "id": "p5.astra.b04",
+      "question": {
+        "id": "p5.astra.b04",
+        "goalId": "primary5.gallery-date-cards",
+        "type": "arrange",
+        "instruction": "用全部词块组句，从My开始。",
+        "prompt": "在朋友资料卡上介绍自己的生日是9月1日。日期已经给定，不需查日历。",
+        "tokens": [
+          {
+            "id": "date",
+            "text": "September 1st."
+          },
+          {
+            "id": "on",
+            "text": "on"
+          },
+          {
+            "id": "birthday",
+            "text": "My birthday"
+          },
+          {
+            "id": "is",
+            "text": "is"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "birthday",
+            "is",
+            "on",
+            "date"
+          ]
+        ],
+        "hint": "把具体月日看成一整块，再安排句子其他部分。",
+        "explanation": "My birthday is on September 1st.在具体月日前使用on。",
+        "difficultyReason": "已有日期词块中建立完整表达，免去September拼写负担。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第41、44页；PDF第46、49页",
+          "alignment": "用on连接明确生日日期。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "9月1日完整给定，词块带日期不需拼写。",
+      "ambiguityReview": "全部词块、My起首限定；on不能放日期后。 birthday→is→on→date；将on置日期后不成句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "birthday",
+              "is",
+              "on",
+              "date"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "birthday",
+              "is",
+              "date",
+              "on"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b05",
+      "question": {
+        "id": "p5.astra.b05",
+        "goalId": "primary5.bookshop-calendar",
+        "type": "choice",
+        "instruction": "选择合适的回答。",
+        "prompt": "朋友问：When is the English party? 你知道活动在十月，但尚未确定哪天。你可以回答：",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is in October."
+          },
+          {
+            "id": "b",
+            "text": "It is on October 12th."
+          },
+          {
+            "id": "c",
+            "text": "It is on Wednesday."
+          }
+        ],
+        "answer": "a",
+        "hint": "只使用已知的信息，不补写没有确定的细节。",
+        "explanation": "a只报告已知的十月；b另外确定为十二日，c另外确定为星期三，这两条信息题目都没有给出。",
+        "difficultyReason": "按已知粒度回答时间，干扰句均可成立但信息无依据。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第24、30页；PDF第29、35页",
+          "alignment": "按已知月份回答活动时间。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "只知道十月、尚未确定哪天。",
+      "ambiguityReview": "三个选项均语法成立；不能补十二日或星期三。",
+      "optionNotes": {
+        "a": "仅报告已知十月，没有编造尚未确定的日期。",
+        "b": "十二日是题面未确定的新信息，不能作为回答。",
+        "c": "星期三同样未在题面确定，不能自行补充。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b06",
+      "question": {
+        "id": "p5.astra.b06",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "matching",
+        "instruction": "连接意思相同的句子。",
+        "prompt": "三条说明分别描述此刻的活动。每条中文只配一句英文。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "爸爸正在喝水。"
+          },
+          {
+            "id": "l2",
+            "text": "孩子们正在吃午饭。"
+          },
+          {
+            "id": "l3",
+            "text": "我正在看电视。"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "I am watching TV."
+          },
+          {
+            "id": "r2",
+            "text": "He is drinking water."
+          },
+          {
+            "id": "r3",
+            "text": "They are eating lunch."
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ],
+        "hint": "核对人物和动作。",
+        "explanation": "He指爸爸，They指孩子们，I指说话人。drinking water、eating lunch和watching TV分别表示喝水、吃午饭和看电视。",
+        "difficultyReason": "保持三种人物视角与当前动作配对；不提前展示having。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "三个视角的当前动作句义匹配。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "三条中文提供爸爸、孩子们、我及各自动作。",
+      "ambiguityReview": "每个人物动作都已给；第三条已审为watching TV。 l1-r2、l2-r3、l3-r1；把爸爸配电视会改变人物动作。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b07",
+      "question": {
+        "id": "p5.astra.b07",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "completion",
+        "instruction": "填their或theirs，只填一词。",
+        "prompt": "两位朋友说这些帽子归他们。你向旁人说明：These hats are ____.",
+        "acceptedAnswers": [
+          "theirs"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "空格后没有再写出物品名称。",
+        "explanation": "句末用theirs独立表达“他们的”；their必须和名词相连，如their hats。",
+        "difficultyReason": "第三人称复数归属在句末的独立形式，题内明确所有者。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "第三人称复数独立物主代词。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "两位朋友明确拥有帽子，向旁人转述。",
+      "ambiguityReview": "空格后无名词，选their/theirs一词。 theirs独立成立；their需接名词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "theirs"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "their"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b08",
+      "question": {
+        "id": "p5.astra.b08",
+        "goalId": "primary5.weekend-help",
+        "type": "arrange",
+        "instruction": "用全部词块组句，从What开始。",
+        "prompt": "你想进一步问朋友星期六通常做什么，把usually所在词块保持完整。",
+        "tokens": [
+          {
+            "id": "do",
+            "text": "do"
+          },
+          {
+            "id": "saturday",
+            "text": "on Saturdays?"
+          },
+          {
+            "id": "what",
+            "text": "What"
+          },
+          {
+            "id": "you",
+            "text": "you usually do"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "what",
+            "do",
+            "you",
+            "saturday"
+          ]
+        ],
+        "hint": "这里问日常活动；疑问句中有帮助提问的do。",
+        "explanation": "What do you usually do on Saturdays?第一个do帮助构成问句，第二个do表示做什么。",
+        "difficultyReason": "理解日常活动问句的两个do；usually已嵌入词块减少无关排序歧义。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第7、8页；PDF第12、13页",
+          "alignment": "习惯活动问句与助动词do。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "询问朋友星期六通常做什么。",
+      "ambiguityReview": "you usually do保持完整，不拆块形成额外顺序。 what→do→you→saturday；what→you→do→saturday不合问句语序。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "what",
+              "do",
+              "you",
+              "saturday"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "what",
+              "you",
+              "do",
+              "saturday"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b09",
+      "question": {
+        "id": "p5.astra.b09",
+        "goalId": "primary5.gallery-date-cards",
+        "type": "listeningChoice",
+        "instruction": "听录音，选择答案。",
+        "prompt": "录音给出一个生日。请同时听清月份和日子。",
+        "options": [
+          {
+            "id": "a",
+            "text": "3月1日"
+          },
+          {
+            "id": "b",
+            "text": "3月3日"
+          },
+          {
+            "id": "c",
+            "text": "5月1日"
+          }
+        ],
+        "answer": "a",
+        "hint": "月份和日子是两条信息，都要核对。",
+        "explanation": "March是三月，first表示一日；b把first换成third，c改变月份。",
+        "difficultyReason": "听辨简单月日组合，中文日期选项避免拼写负担。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第41、44页；PDF第46、49页",
+          "alignment": "具体生日月日的听辨。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "音频独立给生日月日，中文选项无拼写负担。",
+      "ambiguityReview": "需要同时听月份与日期；脚本不可提前显示。",
+      "optionNotes": {
+        "a": "三月一日同时符合March和first两项信息。",
+        "b": "三月三日改变了first所表示的一日。",
+        "c": "五月一日改变了March所表示的三月。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "My birthday is on March first."
+    },
+    {
+      "id": "p5.astra.b10",
+      "question": {
+        "id": "p5.astra.b10",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "choice",
+        "instruction": "选择准确的转述。",
+        "prompt": "一位男同学在电话里告诉你，他此刻正在打扫自己的房间。你要向身边的人说明他现在的活动，应说：",
+        "options": [
+          {
+            "id": "a",
+            "text": "He cleans his room on Sundays."
+          },
+          {
+            "id": "b",
+            "text": "He is cleaning his room."
+          },
+          {
+            "id": "c",
+            "text": "They are cleaning their room."
+          }
+        ],
+        "answer": "b",
+        "hint": "既要保持原来的人物，也要保持原来的时间意思。",
+        "explanation": "b用He指这位男同学，is cleaning表达他此刻正在打扫；a说星期日的习惯，c改成了多个人。",
+        "difficultyReason": "将电话里得到的当前活动信息转述为第三人称说明，同时区分习惯与当前动作；不向后题提前展示进行时问句。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "第三人称单数当前动作转述。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "一位男同学此刻打扫自己房间，转述给身边人。",
+      "ambiguityReview": "题面明确单人、现在，不能改为日常或多人。",
+      "optionNotes": {
+        "a": "on Sundays改成习惯，未转述此刻的动作。",
+        "b": "He保留单个人物，is cleaning说明当前打扫。",
+        "c": "They改成多个人，不符合题内一位同学。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b11",
+      "question": {
+        "id": "p5.astra.b11",
+        "goalId": "primary5.bookshop-calendar",
+        "type": "completion",
+        "instruction": "从in、on、at中填一个词。",
+        "prompt": "通知给出了钟点：The music class starts ____ 9 o'clock.",
+        "acceptedAnswers": [
+          "at"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "看空格后是一天、一月，还是一天中的某个钟点。",
+        "explanation": "9 o'clock是钟点，前面用at。这里不是星期或月份。",
+        "difficultyReason": "同一日历领域迁移到活动开始钟点；不考读钟或计算。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第30页；PDF第35页",
+          "alignment": "活动开始钟点前的介词at。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "9 oclock是明确钟点，不需读钟图片。",
+      "ambiguityReview": "原at目标保留，只填有限词库一词。 at正确；on/in不用于此钟点。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "at"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "on"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b12",
+      "question": {
+        "id": "p5.astra.b12",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "arrange",
+        "instruction": "用全部词块组成问句。",
+        "prompt": "门边有一把伞，你想问是谁的，而不是问它在哪里。",
+        "tokens": [
+          {
+            "id": "is",
+            "text": "is"
+          },
+          {
+            "id": "whose",
+            "text": "Whose umbrella"
+          },
+          {
+            "id": "this",
+            "text": "this?"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "whose",
+            "is",
+            "this"
+          ]
+        ],
+        "hint": "连起来读一遍，检查它是否在问这把伞的主人。",
+        "explanation": "Whose umbrella is this?询问这把伞的主人；Whose umbrella构成一个询问部分。",
+        "difficultyReason": "物品归属问句重组，名词与询问词的关系明确。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "归属询问句的受控排序。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "一把门边的伞，目标问主人而非地点。",
+      "ambiguityReview": "Whose umbrella完整成块，this带句末问号。 whose→is→this；whose→this→is不合直接问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "whose",
+              "is",
+              "this"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "whose",
+              "this",
+              "is"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b13",
+      "question": {
+        "id": "p5.astra.b13",
+        "goalId": "primary5.weekend-help",
+        "type": "matching",
+        "instruction": "连接意思相同的句子。",
+        "prompt": "两位朋友给周末活动卡各写了一句话，请保持原句频度，不增加次数。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "I usually clean my room."
+          },
+          {
+            "id": "l2",
+            "text": "I sometimes go shopping."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "我有时去购物。"
+          },
+          {
+            "id": "r2",
+            "text": "我通常打扫自己的房间。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "hint": "动作和频度都要对应，不必换算一周几次。",
+        "explanation": "usually是通常，sometimes是有时；两个句子分别介绍打扫和购物，没有具体次数。",
+        "difficultyReason": "整句习惯意义匹配，保持频度范围与动作一致。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第7、8页；PDF第12、13页",
+          "alignment": "usually/sometimes与习惯活动辨义。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "两条习惯句分别给频度与动作。",
+      "ambiguityReview": "不推一周次数，全部配对须同时保留动作与频度。 l1-r2、l2-r1；互换后两个活动都错。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b14",
+      "question": {
+        "id": "p5.astra.b14",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "completion",
+        "instruction": "填所给动词的-ing形式，只填一词。",
+        "prompt": "教室里的孩子们正在上英语课：They are ____ an English class now. (have)",
+        "acceptedAnswers": [
+          "having"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "hint": "先想想词尾字母在变化时是否需要保留。",
+        "explanation": "have去掉末尾e再加-ing，得到having；haveing不是正确拼写。",
+        "difficultyReason": "使用教材已有have a class短语，练一项常见拼写变化。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58、59页；PDF第63、64页",
+          "alignment": "have变having的当前活动表达。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "孩子们正在上英语课，have和are均已给。",
+      "ambiguityReview": "仅填动词-ing一词；提示检查词尾而不直接说去e。 having正确；haveing保留多余e。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "having"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "haveing"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b15",
+      "question": {
+        "id": "p5.astra.b15",
+        "goalId": "primary5.gallery-date-cards",
+        "type": "choice",
+        "instruction": "选择能补全日期的一项。",
+        "prompt": "通知要写“六月八日”：The party is on June ____.",
+        "options": [
+          {
+            "id": "a",
+            "text": "eight"
+          },
+          {
+            "id": "b",
+            "text": "eighth"
+          },
+          {
+            "id": "c",
+            "text": "eighteen"
+          }
+        ],
+        "answer": "b",
+        "hint": "这一空表示日期，不是物品数量。",
+        "explanation": "eighth表示第八，对应六月八日；eight和eighteen是数量词，不能放在这里表示所给日期。",
+        "difficultyReason": "辨认八的日期序数形式，不重复本组first。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第44页；PDF第49页",
+          "alignment": "日期中基数与序数形式辨认。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "六月八日完整给定，已审定改用eighth。",
+      "ambiguityReview": "不再出现first/second，B05不再出现8th。",
+      "optionNotes": {
+        "a": "eight是数量词，不能表达本题要求的第八日。",
+        "b": "eighth是序数词第八，正确补全六月八日。",
+        "c": "eighteen为数量十八，与所给日期不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b16",
+      "question": {
+        "id": "p5.astra.b16",
+        "goalId": "primary5.weekend-help",
+        "type": "listeningChoice",
+        "instruction": "听录音，选择答案。",
+        "prompt": "朋友分别介绍通常做的事和此刻正在做的事。哪件是通常做的？",
+        "options": [
+          {
+            "id": "a",
+            "text": "读书"
+          },
+          {
+            "id": "b",
+            "text": "游泳"
+          },
+          {
+            "id": "c",
+            "text": "散步"
+          }
+        ],
+        "answer": "c",
+        "hint": "分别听清两句话描述的时间，再决定哪件事符合问题。",
+        "explanation": "usually对应go for a walk；am reading加上now说明此刻正在读书，录音没有swimming。",
+        "difficultyReason": "两句中区分习惯与当前活动，使用已核读的简单结构。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第8、58页；PDF第13、63页",
+          "alignment": "听辨习惯活动与当前动作。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "音频对比通常散步与此刻读书。",
+      "ambiguityReview": "三个选项纯活动，不能靠通常/现在标签排除。",
+      "optionNotes": {
+        "a": "读书描述当前动作，不是题目询问的通常活动。",
+        "b": "脚本没有提游泳，不能根据其他题目推断。",
+        "c": "usually修饰散步，符合询问通常做什么。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "I usually go for a walk on Sundays. I am reading a book at home now."
+    },
+    {
+      "id": "p5.astra.b17",
+      "question": {
+        "id": "p5.astra.b17",
+        "goalId": "primary5.reading-bag-owners",
+        "type": "choice",
+        "instruction": "选择不重复物品名称的回答。",
+        "prompt": "你的笔在桌上。朋友指着它问：Is this your pen? 你要肯定并说明归属。",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, it is mine."
+          },
+          {
+            "id": "b",
+            "text": "Yes, it is my."
+          },
+          {
+            "id": "c",
+            "text": "Yes, it is yours."
+          }
+        ],
+        "answer": "a",
+        "hint": "回答既要保持主人不变，也要让句末表达完整。",
+        "explanation": "mine可以独立表示我的笔；my后缺名词；yours把主人改成朋友。",
+        "difficultyReason": "问答视角从对方的your转为自己的mine，同时检查句子完整性。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第54页；PDF第59页",
+          "alignment": "问答视角中的独立物主代词。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "题面明确本人笔，对朋友肯定其归属。",
+      "ambiguityReview": "指令保留不重复物品名；需把问句your视角转为mine。",
+      "optionNotes": {
+        "a": "mine独立说明自己的笔，正确完成肯定回答。",
+        "b": "my后缺少名词，不能独立放在这里结束回答。",
+        "c": "yours把主人改成朋友，与本人拥有的条件不符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p5.astra.b18",
+      "question": {
+        "id": "p5.astra.b18",
+        "goalId": "primary5.quiet-corner-now",
+        "type": "arrange",
+        "instruction": "用全部词块组句，从What开始。",
+        "prompt": "你看见几个孩子聚在桌边，向身边的同伴询问那几个孩子正在做什么。",
+        "tokens": [
+          {
+            "id": "doing",
+            "text": "doing?"
+          },
+          {
+            "id": "they",
+            "text": "they"
+          },
+          {
+            "id": "what",
+            "text": "What"
+          },
+          {
+            "id": "are",
+            "text": "are"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "what",
+            "are",
+            "they",
+            "doing"
+          ]
+        ],
+        "hint": "读一遍排好的句子，检查它是在提问，还是在陈述一件事。",
+        "explanation": "What are they doing?用are匹配they，并把are放在主语前构成问题。",
+        "difficultyReason": "四词进行时特殊疑问句，从陈述动作迁移到询问动作。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary5.archive20260929",
+          "unit": "PEP五年级下册已核读语言活动",
+          "pages": "印刷第58页；PDF第63页",
+          "alignment": "第三人称复数当前动作问句。仅采用教材语言范围，题目情境为原创。"
+        }
+      ],
+      "standaloneContext": "问身边同伴有关那几个孩子，不直接问孩子。",
+      "ambiguityReview": "they视角正确；What起首、全部词块且doing带问号。 what→are→they→doing；陈述语序不能构成此直接问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "what",
+              "are",
+              "they",
+              "doing"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "what",
+              "they",
+              "are",
+              "doing"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

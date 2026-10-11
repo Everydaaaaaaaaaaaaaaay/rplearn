@@ -1,0 +1,2551 @@
+{
+  "level": "primary6",
+  "inputHashes": {
+    "primary6.astra.json": "e2e55721a2583ea9e382e17db7d92b51833e896f5b980b2436dff9d4ad02e10f",
+    "primary6-delivery.astra.json": "16a658c3eae64e0fd3e096ae6afa516d11752b516e214b09ba9b988a57f83d46"
+  },
+  "questions": [
+    {
+      "id": "p6.astra.a01",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a01",
+        "goalId": "primary6.shelf-comparisons",
+        "type": "choice",
+        "prompt": "蓝桌布长90厘米，绿桌布长120厘米。哪句正确比较了两条桌布的长度？",
+        "hint": "先比较两个长度，再检查句子比较的方向。",
+        "explanation": "90厘米短于120厘米，所以蓝桌布更短。a把方向说反，c把不同长度说成相同。",
+        "instruction": "选择正确的一句。",
+        "difficultyReason": "基础：同单位两个对象，不换算。",
+        "options": [
+          {
+            "id": "a",
+            "text": "The blue cloth is longer than the green one."
+          },
+          {
+            "id": "b",
+            "text": "The blue cloth is shorter than the green one."
+          },
+          {
+            "id": "c",
+            "text": "The two cloths are the same length."
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷5／PDF10",
+          "alignment": "两个对象的长度比较。"
+        }
+      ],
+      "standaloneContext": "题内给两条桌布90和120厘米，无需图片。",
+      "ambiguityReview": "长度单位一致，cloth明确指桌布。",
+      "optionNotes": {
+        "a": "把蓝布说成更长，颠倒已给出的长度关系。",
+        "b": "蓝布90厘米小于绿布120厘米，正确表达更短。",
+        "c": "两条桌布的长度不同，不能描述为等长。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a02",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a02",
+        "goalId": "primary6.old-shop-now",
+        "type": "completion",
+        "prompt": "旧照片的说明已确认：五年前花园只有一张长椅。填入was或were：There ____ only one bench in the garden five years ago.",
+        "hint": "看清过去的时间，再数一数说的是几张长椅。",
+        "explanation": "five years ago指过去；one bench是单数，因此使用was。were不与本题单数数量一致。",
+        "instruction": "用was或were填空。",
+        "difficultyReason": "基础：过去存在句的单数。",
+        "acceptedAnswers": [
+          "was",
+          "Was",
+          "WAS"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷34–35／PDF39–40",
+          "alignment": "过去存在句的单数形式。"
+        }
+      ],
+      "standaloneContext": "五年前、只有一张长椅均已给定。",
+      "ambiguityReview": "仅在was/were中选，one bench限定单数。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "was"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "were"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a03",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a03",
+        "goalId": "primary6.weekend-postcard",
+        "type": "listeningChoice",
+        "prompt": "听一段昨天出游的留言。说话人先做了什么，再做了什么？",
+        "hint": "听清两个动作以及连接它们的顺序词。",
+        "explanation": "bought some bread在前；Then之后是went to the park。a倒转顺序，c把目的地改成家。",
+        "instruction": "听留言，选择正确的顺序。",
+        "difficultyReason": "基础：两个常见过去动作，显式then。",
+        "options": [
+          {
+            "id": "a",
+            "text": "先去公园，再买面包。"
+          },
+          {
+            "id": "b",
+            "text": "先买面包，再去公园。"
+          },
+          {
+            "id": "c",
+            "text": "先买面包，再回家。"
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷25、27／PDF30、32",
+          "alignment": "常见旅行过去动作与顺序理解。"
+        }
+      ],
+      "standaloneContext": "独立录音给买面包、然后去公园两动作。",
+      "ambiguityReview": "只问录音顺序，不推测行程理由；尚无可用audio资产。",
+      "optionNotes": {
+        "a": "把去公园放在买面包之前，与录音顺序相反。",
+        "b": "保留先买面包再去公园的两个动作及顺序。",
+        "c": "将第二个目的地改成家，录音没有这一信息。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Yesterday I bought some bread. Then I went to the park."
+    },
+    {
+      "id": "p6.astra.a04",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a04",
+        "goalId": "primary6.picnic-next-week",
+        "type": "arrange",
+        "prompt": "你们已经约好明天修好风筝。用所有词块组成一句计划，以We开头，把时间放在句末。",
+        "hint": "先放说话的人，再连接计划表达和活动，最后放时间。",
+        "explanation": "We are going to fix the kite tomorrow.说明已作出的计划。are going to后接动词原形。",
+        "instruction": "全部词块组句：We开头，时间句末。",
+        "difficultyReason": "基础：四个词块，保留计划结构整体。",
+        "tokens": [
+          {
+            "id": "fix",
+            "text": "fix the kite"
+          },
+          {
+            "id": "we",
+            "text": "We"
+          },
+          {
+            "id": "tomorrow",
+            "text": "tomorrow."
+          },
+          {
+            "id": "going",
+            "text": "are going to"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "we",
+            "going",
+            "fix",
+            "tomorrow"
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "be going to表达近期计划。"
+        }
+      ],
+      "standaloneContext": "题内明确明天修风筝的既定计划，词块齐全。",
+      "ambiguityReview": "We开头、时间句末已限定；不声称其他情境时间前置不合法。 词块与配对逐项复核：fix：活动词块应接在计划结构are going to之后。；we：题干指定的主语，必须作为本句的开头。；tomorrow：明确明天这一计划时间，按要求放在句末。；going：连接主语和动词原形，不能放在活动词块之后。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "we",
+              "going",
+              "fix",
+              "tomorrow"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "we",
+              "fix",
+              "going",
+              "tomorrow"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a05",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a05",
+        "goalId": "primary6.weekend-check-in",
+        "type": "matching",
+        "prompt": "三人都在谈昨天。将每个问题与内容相符的回答连起来，每项只用一次。",
+        "hint": "判断每句是在确认事情、询问地点，还是询问食物。",
+        "explanation": "Did问题可用Yes, I did确认；Where需要地点；What did you eat需要食物。三个回答分别提供这些信息。",
+        "instruction": "配对问答，每项一次。",
+        "difficultyReason": "基础：过去问答的信息类型。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "Did you take any photos?"
+          },
+          {
+            "id": "l2",
+            "text": "Where did you go?"
+          },
+          {
+            "id": "l3",
+            "text": "What did you eat?"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "I ate noodles."
+          },
+          {
+            "id": "r2",
+            "text": "Yes, I did."
+          },
+          {
+            "id": "r3",
+            "text": "I went to the lake."
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷17、25、27／PDF22、30、32",
+          "alignment": "过去问答的信息类型和常见活动。"
+        }
+      ],
+      "standaloneContext": "三个问题和三个直接回答均在本题，且都谈昨天。",
+      "ambiguityReview": "一问一答各一次，是否、地点、食物的信息类型不同。 词块与配对逐项复核：l1：询问是否拍照，需要对应肯定或否定的回应。；l2：询问去过哪里，必须配提供地点的回答。；l3：询问吃过什么，需要配具体食物的回答。；r1：面条是食物，回应What did you eat这个问题。；r2：过去肯定短答直接回应Did you take any photos。；r3：湖边是所去地点，回应Where did you go。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a06",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a06",
+        "goalId": "primary6.first-camera-days",
+        "type": "choice",
+        "prompt": "安安六岁时不会游泳，今年已经能游过小泳池。哪句准确说明她六岁时的能力？",
+        "hint": "这次要描述过去的能力，别把今年的情况放到六岁时。",
+        "explanation": "couldn't表示过去不会。b把过去说成会；c说现在不会，与题内今年已能游泳不符。",
+        "instruction": "选择符合题意的一句。",
+        "difficultyReason": "基础：过去与现在两个明确时间点。",
+        "options": [
+          {
+            "id": "a",
+            "text": "She couldn't swim when she was six."
+          },
+          {
+            "id": "b",
+            "text": "She could swim when she was six."
+          },
+          {
+            "id": "c",
+            "text": "She can't swim now."
+          }
+        ],
+        "answer": "a"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷36–37／PDF41–42",
+          "alignment": "过去现在能力与否定变化。"
+        }
+      ],
+      "standaloneContext": "六岁时不会游泳、今年已经会，两个时期自足。",
+      "ambiguityReview": "只描述六岁能力，不考could的许可或推测。",
+      "optionNotes": {
+        "a": "同时保留六岁这个过去时间和不会游泳的事实。",
+        "b": "改成六岁时已经会游泳，与题内事实相反。",
+        "c": "说的是现在不会，既改变时间又违背今年情况。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a07",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a07",
+        "goalId": "primary6.weekend-postcard",
+        "type": "completion",
+        "prompt": "你在写已经结束的春游记录。用take的正确形式补全：Yesterday I ____ a photo of a red boat.",
+        "hint": "先看时间，再回想这个动作叙述过去时的词形。",
+        "explanation": "Yesterday表明事件已发生，take的过去式是took；taked不符合这个常见不规则动词的变化。",
+        "instruction": "填写take的正确形式。",
+        "difficultyReason": "基础：一个常见不规则过去式。",
+        "acceptedAnswers": [
+          "took",
+          "Took",
+          "TOOK"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷27／PDF32",
+          "alignment": "拍照动作的常见不规则过去式。"
+        }
+      ],
+      "standaloneContext": "Yesterday和给定take确定过去词形任务。",
+      "ambiguityReview": "仅补take形式，不接收任意同义动词；大小写和句末标点归一。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "took"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "taked"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a08",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a08",
+        "goalId": "primary6.shelf-comparisons",
+        "type": "listeningChoice",
+        "prompt": "听同伴对两个箱子的比较，哪句中文与录音意思相符？",
+        "hint": "留意先说的是哪一个箱子，以及两个箱子的比较关系。",
+        "explanation": "录音说棕箱比白箱重。a把比较方向倒过来；b说一样重，与heavier than不符。",
+        "instruction": "听录音，选择相符的一项。",
+        "difficultyReason": "基础：听辨明确的英文重量比较句，不通过数字大小猜关系。",
+        "options": [
+          {
+            "id": "a",
+            "text": "白箱比棕箱重。"
+          },
+          {
+            "id": "b",
+            "text": "白箱和棕箱一样重。"
+          },
+          {
+            "id": "c",
+            "text": "棕箱比白箱重。"
+          }
+        ],
+        "answer": "c"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷7／PDF12",
+          "alignment": "重量比较heavier than的听辨。"
+        }
+      ],
+      "standaloneContext": "颜色对象及比较关系完全由录音提供。",
+      "ambiguityReview": "无重量数字可绕过英文比较；尚无audio资产。",
+      "optionNotes": {
+        "a": "把白箱说成更重，倒转录音的比较方向。",
+        "b": "把两箱说成同样重，丢失heavier的比较差异。",
+        "c": "棕箱比白箱重，完整保留录音的对象和关系。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "The brown box is heavier than the white box."
+    },
+    {
+      "id": "p6.astra.a09",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a09",
+        "goalId": "primary6.old-shop-now",
+        "type": "arrange",
+        "prompt": "社区记录说明：去年院子里没有树。用全部词块组成这条记录，以There开头，将地点放在时间之前。",
+        "hint": "先组成“过去没有某物”，再放地点和时间。",
+        "explanation": "There were no trees in the yard last year.用were对应复数trees，no表明数量为零。",
+        "instruction": "全部词块组句：There开头，地点在时间前。",
+        "difficultyReason": "巩固：否定的过去存在句，五词块。",
+        "tokens": [
+          {
+            "id": "trees",
+            "text": "no trees"
+          },
+          {
+            "id": "there",
+            "text": "There"
+          },
+          {
+            "id": "last",
+            "text": "last year."
+          },
+          {
+            "id": "were",
+            "text": "were"
+          },
+          {
+            "id": "yard",
+            "text": "in the yard"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "there",
+            "were",
+            "trees",
+            "yard",
+            "last"
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷34–35／PDF39–40",
+          "alignment": "过去复数不存在的描述。"
+        }
+      ],
+      "standaloneContext": "去年院子没有树的事实与全部词块自足。",
+      "ambiguityReview": "There起句、地点在时间前明确；no trees为复数。 词块与配对逐项复核：trees：表达零棵树，应接在过去复数存在形式之后。；there：题干指定起句词，必须放在整句最前面。；last：表示去年，题干要求将它放在地点之后。；were：与复数trees搭配，置于There与no trees之间。；yard：表示院子里的地点，按题干要求放在时间之前。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "there",
+              "were",
+              "trees",
+              "yard",
+              "last"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "there",
+              "trees",
+              "were",
+              "yard",
+              "last"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a10",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a10",
+        "goalId": "primary6.weekend-check-in",
+        "type": "choice",
+        "prompt": "你的同伴问：Did you ride a bike yesterday? 你昨天走路出门，没有骑自行车。选符合事实的简短回答。",
+        "hint": "先决定肯定还是否定，再与问题的时间保持一致。",
+        "explanation": "昨天没有骑车，应否定回答did问句。c用don't回答现在的习惯，时间不对应；a与事实相反。",
+        "instruction": "选择合适的回答。",
+        "difficultyReason": "基础：过去问句的否定短答。",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, I did."
+          },
+          {
+            "id": "b",
+            "text": "No, I didn't."
+          },
+          {
+            "id": "c",
+            "text": "No, I don't."
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷16–17／PDF21–22",
+          "alignment": "did过去问句的否定回应。"
+        }
+      ],
+      "standaloneContext": "题面直接确认昨天没骑车，不靠走路反推。",
+      "ambiguityReview": "所问Did与昨天一致，需否定短答。",
+      "optionNotes": {
+        "a": "肯定回答意味着昨天骑车了，与明示事实不符。",
+        "b": "使用过去否定短答，准确回应昨天没有骑车。",
+        "c": "使用现在助动词dont，没有对应过去的Did问句。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a11",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a11",
+        "goalId": "primary6.picnic-next-week",
+        "type": "completion",
+        "prompt": "今天是周五，两位同学已定好明天去放风筝。用am、is或are填空：They ____ going to fly a kite tomorrow.",
+        "hint": "先找计划由谁来做，再检查主语与be动词的搭配。",
+        "explanation": "主语They是复数，计划结构用are going to。is对应第三人称单数，am与I搭配。",
+        "instruction": "用am、is或are填空。",
+        "difficultyReason": "基础：计划句中复数主语的一致。",
+        "acceptedAnswers": [
+          "are",
+          "Are",
+          "ARE"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "计划结构中复数主语与be一致。"
+        }
+      ],
+      "standaloneContext": "They、明天与已定好计划均在题内。",
+      "ambiguityReview": "限am/is/are，不能另填were叙述过去计划。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "are"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a12",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a12",
+        "goalId": "primary6.weekend-postcard",
+        "type": "matching",
+        "prompt": "周日晚上整理三张活动记录。把英文与对应的中文连起来。每项用一次。",
+        "hint": "同时核对动作和每句自己的时间或地点。",
+        "explanation": "bought对应买，ate对应吃，went home对应回家；分别保留早晨、河边和晚上的信息。",
+        "instruction": "配对中英文，每项一次。",
+        "difficultyReason": "巩固：三条独立短记录，常见不规则过去式。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "I bought a gift in the morning."
+          },
+          {
+            "id": "l2",
+            "text": "I ate lunch by the river."
+          },
+          {
+            "id": "l3",
+            "text": "I went home in the evening."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "我晚上回了家。"
+          },
+          {
+            "id": "r2",
+            "text": "我早晨买了礼物。"
+          },
+          {
+            "id": "r3",
+            "text": "我在河边吃了午饭。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷25、27／PDF30、32",
+          "alignment": "过去活动的动作与时间地点理解。"
+        }
+      ],
+      "standaloneContext": "三条英文记录及完整中文候选都已给出。",
+      "ambiguityReview": "三条独立记录，不以一天活动常识猜时间。 词块与配对逐项复核：l1：过去买礼物且在早晨，对应中文早晨买了礼物。；l2：过去在河边吃午饭，动作和地点都必须保留。；l3：过去晚上回家，不能与早晨购买活动交换。；r1：晚上回家同时对应went home与in the evening。；r2：早晨买礼物同时对应bought a gift和morning。；r3：在河边吃午饭同时保留ate lunch及河边地点。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a13",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a13",
+        "goalId": "primary6.first-camera-days",
+        "type": "cloze",
+        "prompt": "从词库选词填入两处空格，每个词块最多用一次。事实：小时候我不会滑冰，现在已经会了。",
+        "hint": "逐空核对两个维度：是哪段时间，是会还是不会。",
+        "explanation": "第一空过去不会用couldn't；第二空现在会用can。can't是否定现在，could是肯定过去，分别改变原事实。",
+        "instruction": "选词填空，每块一次。",
+        "difficultyReason": "巩固：两个空共享词库，须分别定位时间与否定。",
+        "passage": "When I was little, I {s1} skate. Now I {s2} skate.",
+        "acceptedFills": [
+          [
+            {
+              "slotId": "s1",
+              "tokenId": "couldnt"
+            },
+            {
+              "slotId": "s2",
+              "tokenId": "can"
+            }
+          ]
+        ],
+        "tokens": [
+          {
+            "id": "can",
+            "text": "can"
+          },
+          {
+            "id": "couldnt",
+            "text": "couldn't"
+          },
+          {
+            "id": "cant",
+            "text": "can't"
+          },
+          {
+            "id": "could",
+            "text": "could"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷36–37／PDF41–42",
+          "alignment": "过去与现在能力的双槽对应。"
+        }
+      ],
+      "standaloneContext": "小时候不会滑冰、现在会的事实明确给出。",
+      "ambiguityReview": "两空共同判定，过去否定和现在肯定缺一不可。 词块与配对逐项复核：can：表达现在会滑冰，与第二空的Now对应。；couldnt：表达过去不会滑冰，与第一空小时候的事实对应。；cant：表达现在不会，不能用于本题的过去否定位置。；could：表达过去会，既不对应现在也不对应过去不会。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "couldnt"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "can"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "cant"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "could"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a14",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a14",
+        "goalId": "primary6.old-shop-now",
+        "type": "listeningChoice",
+        "prompt": "听对一个旧活动室的介绍。哪一项符合十年前的情况？",
+        "hint": "分别记住数量和有没有，别只听懂一半。",
+        "explanation": "two tables是两张桌子；no computer是没有电脑。b两项均不符，c漏听no而添加一台电脑。",
+        "instruction": "听录音，选择相符的一项。",
+        "difficultyReason": "巩固：同段听辨复数存在与单数否定。",
+        "options": [
+          {
+            "id": "a",
+            "text": "两张桌子，没有电脑。"
+          },
+          {
+            "id": "b",
+            "text": "一张桌子，两台电脑。"
+          },
+          {
+            "id": "c",
+            "text": "两张桌子，一台电脑。"
+          }
+        ],
+        "answer": "a"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷34–35／PDF39–40",
+          "alignment": "过去设施的数量与否定听辨。"
+        }
+      ],
+      "standaloneContext": "录音给十年前两张桌子、没有电脑。",
+      "ambiguityReview": "仅问过去，不推断今天；需真实音频后再验no。",
+      "optionNotes": {
+        "a": "同时保留两张桌子和没有电脑这两项录音事实。",
+        "b": "把桌子和电脑数量改错，两项均不符合录音。",
+        "c": "桌子数量正确，但漏听no而凭空增加一台电脑。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Ten years ago, there were two tables in this room. There was no computer."
+    },
+    {
+      "id": "p6.astra.a15",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a15",
+        "goalId": "primary6.shelf-comparisons",
+        "type": "completion",
+        "prompt": "两个纸袋放在一起，红纸袋比蓝纸袋大。用big的正确形式补全：The red bag is ____ than the blue bag.",
+        "hint": "看到than，检查所给形容词的比较形式及拼写变化。",
+        "explanation": "这里只比较两个纸袋，big要变成比较级bigger，双写g后加-er。big没有表达比较变化；biggest是最高级，不适合这个than结构。",
+        "instruction": "填写big的正确形式。",
+        "difficultyReason": "基础：常见比较级双写拼写。",
+        "acceptedAnswers": [
+          "bigger",
+          "Bigger",
+          "BIGGER"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷7／PDF12",
+          "alignment": "大小比较级的受控词形。"
+        }
+      ],
+      "standaloneContext": "红纸袋比蓝纸袋大的关系与big已直接给定。",
+      "ambiguityReview": "不以容量推出尺寸；只填big比较级。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "bigger"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "biger"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a16",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a16",
+        "goalId": "primary6.weekend-check-in",
+        "type": "arrange",
+        "prompt": "你想确认同伴上周日是否去看望奶奶。用全部词块组成问句，以Did开头，把时间放在句末。",
+        "hint": "先摆出过去一般疑问句的开头，再接动作和时间。",
+        "explanation": "Did you visit your grandma last Sunday?中Did已经标记过去，后面保持visit原形。",
+        "instruction": "全部词块组句：Did开头，时间句末。",
+        "difficultyReason": "基础：四词块确认过去事件。",
+        "tokens": [
+          {
+            "id": "you",
+            "text": "you"
+          },
+          {
+            "id": "last",
+            "text": "last Sunday?"
+          },
+          {
+            "id": "did",
+            "text": "Did"
+          },
+          {
+            "id": "visit",
+            "text": "visit your grandma"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "did",
+            "you",
+            "visit",
+            "last"
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷16–17／PDF21–22",
+          "alignment": "did询问过去活动。"
+        }
+      ],
+      "standaloneContext": "题内给上周日看望奶奶的确认任务。",
+      "ambiguityReview": "Did起句、时间置末明确，visit保持原形。 词块与配对逐项复核：you：主语位于Did之后、看望奶奶的动词词块之前。；last：过去的周日时间，按要求放在问句的末尾。；did：题干明确指定起句，同时承担过去疑问结构。；visit：动词原形和宾语作为整体，接在主语you之后。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "did",
+              "you",
+              "visit",
+              "last"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "you",
+              "did",
+              "visit",
+              "last"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a17",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a17",
+        "goalId": "primary6.picnic-next-week",
+        "type": "choice",
+        "prompt": "朋友知道你们周六要野餐，还不知道几点吃饭。他该用哪句向你询问吃饭时间？",
+        "hint": "先判断缺的是时间、地点还是食物。",
+        "explanation": "When询问时间；Where询问地点；What询问吃什么。本题缺少的是吃饭时间。",
+        "instruction": "选择合适的问句。",
+        "difficultyReason": "基础：计划问句的信息焦点。",
+        "options": [
+          {
+            "id": "a",
+            "text": "Where are we going to eat?"
+          },
+          {
+            "id": "b",
+            "text": "When are we going to eat?"
+          },
+          {
+            "id": "c",
+            "text": "What are we going to eat?"
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "计划中的时间问答。"
+        }
+      ],
+      "standaloneContext": "已知周六野餐、未知吃饭时刻，询问需求自足。",
+      "ambiguityReview": "不需要猜午饭常见时间；三句都可成句但只一项切题。",
+      "optionNotes": {
+        "a": "Where询问吃饭地点，没有询问所缺的时刻。",
+        "b": "When询问时间，正好满足想知道几点吃饭的需求。",
+        "c": "What询问吃的食物，没有回答什么时候吃饭。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.a18",
+      "questionGroup": "a",
+      "question": {
+        "id": "p6.astra.a18",
+        "goalId": "primary6.weekend-postcard",
+        "type": "cloze",
+        "prompt": "用词库补全记录，每个词最多用一次。昨天上午我看了一场电影，下午在家睡了一觉。",
+        "hint": "先为每空找到动作，再检查两件事共同的日期。",
+        "explanation": "看电影和睡觉都发生在昨天：see的过去式是saw，sleep的过去式是slept。第二句虽另起一句，仍在记录昨天下午，不能改用现在式。",
+        "instruction": "选词填空，每块一次。",
+        "difficultyReason": "巩固：跨两句保留已给定的过去时间。",
+        "passage": "Yesterday morning I {s1} a film. In the afternoon I {s2} at home.",
+        "acceptedFills": [
+          [
+            {
+              "slotId": "s1",
+              "tokenId": "saw"
+            },
+            {
+              "slotId": "s2",
+              "tokenId": "slept"
+            }
+          ]
+        ],
+        "tokens": [
+          {
+            "id": "saw",
+            "text": "saw"
+          },
+          {
+            "id": "sleep",
+            "text": "sleep"
+          },
+          {
+            "id": "see",
+            "text": "see"
+          },
+          {
+            "id": "slept",
+            "text": "slept"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷17／PDF22",
+          "alignment": "同一过去日期下的saw与slept。"
+        }
+      ],
+      "standaloneContext": "昨天上午看电影、下午在家睡觉明确给出。",
+      "ambiguityReview": "第二句沿用昨天，不引入过去完成时；保留saw/slept。 词块与配对逐项复核：saw：对应昨天上午看电影，必须使用过去式saw。；sleep：是睡觉的原形，未对应昨天已经结束的下午。；see：是看的原形，未与题目给定的昨天时间对应。；slept：对应昨天下午睡觉，沿用整段记录的过去时间。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "saw"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "slept"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "saw"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "sleep"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b01",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b01",
+        "goalId": "primary6.weekend-check-in",
+        "type": "choice",
+        "prompt": "昨天你到过游泳馆，但因泳池关闭没有游泳。朋友问：Did you swim yesterday? 应怎样准确回答？",
+        "hint": "到过一个地方不等于做过那项活动；再检查时间。",
+        "explanation": "题目确认没有游泳，因此用No, I didn't。a把到游泳馆等同于游泳；c的don't与昨天不一致。",
+        "instruction": "选择合适的回答。",
+        "difficultyReason": "迁移：区分去过地点与完成活动。",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, I did. I went to the pool."
+          },
+          {
+            "id": "b",
+            "text": "No, I didn't. The pool was closed."
+          },
+          {
+            "id": "c",
+            "text": "No, I don't. The pool was closed."
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷16–17／PDF21–22",
+          "alignment": "过去活动事实与did回应。"
+        }
+      ],
+      "standaloneContext": "泳池关闭、确实没有游泳均由题内确认。",
+      "ambiguityReview": "到过场地不等于完成活动，不让学生仅凭关闭常识推断。",
+      "optionNotes": {
+        "a": "去过泳池不能支持游过泳，肯定短答与事实相反。",
+        "b": "准确否定过去游泳，并保留泳池关闭的已知信息。",
+        "c": "背景说明虽正确，dont仍未对应昨天的Did问句。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b02",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b02",
+        "goalId": "primary6.shelf-comparisons",
+        "type": "matching",
+        "prompt": "这是三张独立句子卡，每张各自比较一对红蓝箱子的高度或重量。把英文与对应中文连起来，每项用一次。",
+        "hint": "三张卡的物品名称相同，找出每句中描述比较关系的词。",
+        "explanation": "taller比较高度，表示更高；shorter在箱子高矮的比较中表示更矮；heavier比较重量，表示更重。物品名称相同，不能只靠颜色配对。",
+        "instruction": "配对中英文，每项一次。",
+        "difficultyReason": "巩固：相同对象词下辨认更高、更矮、更重，须理解比较级词义。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "The red box is taller than the blue box."
+          },
+          {
+            "id": "l2",
+            "text": "The red box is shorter than the blue box."
+          },
+          {
+            "id": "l3",
+            "text": "The red box is heavier than the blue box."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "红箱比蓝箱重。"
+          },
+          {
+            "id": "r2",
+            "text": "红箱比蓝箱高。"
+          },
+          {
+            "id": "r3",
+            "text": "红箱比蓝箱矮。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷5、7／PDF10、12",
+          "alignment": "区分高矮和重量的比较关系。"
+        }
+      ],
+      "standaloneContext": "三张独立卡各比较红蓝箱子，三维关系由文字给出。",
+      "ambiguityReview": "独立卡不描述同一对箱子同时高又矮；不能凭颜色配对。 词块与配对逐项复核：l1：taller比较高度，必须匹配红箱比蓝箱更高。；l2：shorter在这张高度卡中表示红箱比蓝箱更矮。；l3：heavier比较重量，必须匹配红箱比蓝箱更重。；r1：中文的更重对应重量词heavier，不对应高度词。；r2：中文的更高对应taller，不能凭相同颜色定位。；r3：中文的更矮对应shorter，方向与更高相反。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b03",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b03",
+        "goalId": "primary6.picnic-next-week",
+        "type": "listeningChoice",
+        "prompt": "听明天的两项安排。哪张便条记录准确？",
+        "hint": "把每个时间与紧邻的活动配好，不凭平常作息猜。",
+        "explanation": "录音将draw配九点，have lunch配十二点；a交换两项活动，c误听第二个时间。",
+        "instruction": "听录音，选择正确的便条。",
+        "difficultyReason": "巩固：两句计划的时间对应。",
+        "options": [
+          {
+            "id": "a",
+            "text": "九点午饭，十二点画画。"
+          },
+          {
+            "id": "b",
+            "text": "九点画画，十二点午饭。"
+          },
+          {
+            "id": "c",
+            "text": "九点画画，十点午饭。"
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "明确计划时刻的听辨。"
+        }
+      ],
+      "standaloneContext": "两个明天活动及九点十二点由独立录音提供。",
+      "ambiguityReview": "不以日常午饭习惯代替听辨；尚无audio。",
+      "optionNotes": {
+        "a": "把画画和午饭的时刻互换，不符合录音安排。",
+        "b": "九点对应画画，十二点对应午饭，两项记录准确。",
+        "c": "画画时间正确，午饭却从十二点变成了十点。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve."
+    },
+    {
+      "id": "p6.astra.b04",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b04",
+        "goalId": "primary6.weekend-check-in",
+        "type": "completion",
+        "prompt": "你在记录昨天的事情，确认自己昨天没有用雨伞。用use的正确形式补全：I didn't ____ my umbrella yesterday.",
+        "hint": "看看空格前是否已经有表示过去的助动词。",
+        "explanation": "didn't后接动词原形use，不再写used。这里的过去信息由did承载。",
+        "instruction": "填写use的正确形式。",
+        "difficultyReason": "基础：否定过去动作中的动词原形。",
+        "acceptedAnswers": [
+          "use",
+          "Use",
+          "USE"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷35–36／PDF40–41",
+          "alignment": "过去否定动作与动词原形。"
+        }
+      ],
+      "standaloneContext": "昨天没有用伞是明示事实，use为给定动词。",
+      "ambiguityReview": "不根据下没下雨推出用没用伞；只补形式。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "use"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "used"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b05",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b05",
+        "goalId": "primary6.first-camera-days",
+        "type": "arrange",
+        "prompt": "七岁时，你已经会弹一小段钢琴曲。用所有词块说明过去能力，以I开头，把年龄放在句末。",
+        "hint": "把过去的能力表达放在活动前，再接年龄。",
+        "explanation": "I could play the piano when I was seven.用could描述七岁时已具备的能力。",
+        "instruction": "全部词块组句：I开头，年龄句末。",
+        "difficultyReason": "巩固：能力肯定句加明确年龄短语。",
+        "tokens": [
+          {
+            "id": "seven",
+            "text": "when I was seven."
+          },
+          {
+            "id": "piano",
+            "text": "play the piano"
+          },
+          {
+            "id": "i",
+            "text": "I"
+          },
+          {
+            "id": "could",
+            "text": "could"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "i",
+            "could",
+            "piano",
+            "seven"
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷36–37／PDF41–42",
+          "alignment": "过去肯定能力的描述。"
+        }
+      ],
+      "standaloneContext": "七岁时会弹一小段曲子的事实和全部词块明确。",
+      "ambiguityReview": "I起句、年龄末尾，不要求推断如今能力。 词块与配对逐项复核：seven：七岁时的年龄短语，题干指定放在整句末尾。；piano：弹钢琴的活动词块，应接在过去能力词could之后。；i：题干指定I开头，确定句子的第一人称主语。；could：标明过去具备的能力，放在主语和活动之间。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "could",
+              "piano",
+              "seven"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "piano",
+              "could",
+              "seven"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b06",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b06",
+        "goalId": "primary6.old-shop-now",
+        "type": "choice",
+        "prompt": "去年这片空地没有商店，今年建了一家。哪句只准确描述去年？",
+        "hint": "分别检查句子说的是哪一年，以及那一年有没有商店。",
+        "explanation": "c同时符合过去时间和没有商店。a符合今年情况但没有回答去年；b说去年有商店，与事实相反。",
+        "instruction": "选择符合题意的一句。",
+        "difficultyReason": "巩固：正确事实也可能不回答指定时间。",
+        "options": [
+          {
+            "id": "a",
+            "text": "There is a shop here now."
+          },
+          {
+            "id": "b",
+            "text": "There was a shop here last year."
+          },
+          {
+            "id": "c",
+            "text": "There wasn't a shop here last year."
+          }
+        ],
+        "answer": "c"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷34–35／PDF39–40",
+          "alignment": "过去不存在与如今存在的区分。"
+        }
+      ],
+      "standaloneContext": "去年无商店、今年有一家两个时间自足。",
+      "ambiguityReview": "只准确描述去年；a并非现实假命题，而是答非所问。",
+      "optionNotes": {
+        "a": "准确描述今年但没有描述题干指定的去年情况。",
+        "b": "说去年有商店，违背题内明确的去年没有商店。",
+        "c": "保留去年时间与不存在事实，准确回答指定问题。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b07",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b07",
+        "goalId": "primary6.weekend-postcard",
+        "type": "completion",
+        "prompt": "今天是周一，你在记录前一天的旅行：周日我骑车绕湖一圈。用ride的正确形式补全：On Sunday, I ____ my bike around the lake.",
+        "hint": "先确定这件事是否已经结束，再检查所给动词的词形。",
+        "explanation": "周一记录前一天的骑车活动，ride用过去式rode。ride没有对应本句已结束的过去时间，rided不是这个不规则动词的过去式。",
+        "instruction": "填写ride的正确形式。",
+        "difficultyReason": "巩固：用上下文确定已结束时间，填写常见旅行过去式。",
+        "acceptedAnswers": [
+          "rode",
+          "Rode",
+          "RODE"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷25／PDF30",
+          "alignment": "出游骑车的常见不规则过去式。"
+        }
+      ],
+      "standaloneContext": "周一记录前一天周日骑车绕湖，已结束时间明确。",
+      "ambiguityReview": "采用已审rode替题；On Sunday不是未来周日。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "rode"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "rided"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b08",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b08",
+        "goalId": "primary6.first-camera-days",
+        "type": "listeningChoice",
+        "prompt": "听一位孩子谈过去和现在骑车的情况。哪项描述与录音一致？",
+        "hint": "分别留意过去一句和现在一句中的能力词及否定。",
+        "explanation": "couldn't属于去年，can属于现在；能力由不会变为会。b颠倒变化方向，c漏掉后句的肯定。",
+        "instruction": "听录音，选择相符的一项。",
+        "difficultyReason": "巩固：听辨时间转折与否定。",
+        "options": [
+          {
+            "id": "a",
+            "text": "去年不会骑，现在会骑。"
+          },
+          {
+            "id": "b",
+            "text": "去年会骑，现在不会骑。"
+          },
+          {
+            "id": "c",
+            "text": "去年和现在都不会骑。"
+          }
+        ],
+        "answer": "a"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷36–37／PDF41–42",
+          "alignment": "过去现在能力变化的听辨。"
+        }
+      ],
+      "standaloneContext": "录音完整给去年不会骑车、现在会去公园。",
+      "ambiguityReview": "中性题干不预告学会的方向；不凭公园推交通。",
+      "optionNotes": {
+        "a": "去年不会、现在会，保留录音两个时段的肯否。",
+        "b": "把两个时段的能力方向完全倒换，与录音不符。",
+        "c": "把现在也说成不会，忽略第二句can的肯定。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Last year I couldn't ride a bike. Now I can ride to the park."
+    },
+    {
+      "id": "p6.astra.b09",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b09",
+        "goalId": "primary6.picnic-next-week",
+        "type": "matching",
+        "prompt": "周五晚上，朋友们在聊已经定好的周六计划。为每个问题配上直接回答，每项用一次。",
+        "hint": "找出各问题缺少的信息类别，不必补成长句。",
+        "explanation": "When对应时刻At eight；Where对应地点In the park；What ... bring对应要带的物品A ball。",
+        "instruction": "配对问答，每项一次。",
+        "difficultyReason": "基础：熟悉计划结构中的三个询问方向。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "When are you going to leave?"
+          },
+          {
+            "id": "l2",
+            "text": "Where are you going to play?"
+          },
+          {
+            "id": "l3",
+            "text": "What are you going to bring?"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "A ball."
+          },
+          {
+            "id": "r2",
+            "text": "At eight."
+          },
+          {
+            "id": "r3",
+            "text": "In the park."
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "计划问答的时刻地点物品。"
+        }
+      ],
+      "standaloneContext": "周五讨论已定周六计划，三个问句和短答齐全。",
+      "ambiguityReview": "短答合法，不要求补主谓；三个信息类别唯一。 词块与配对逐项复核：l1：When问出发时刻，应配具体的八点短答。；l2：Where问活动地点，应配公园这一地点短答。；l3：What问携带物品，应配一个球而不是时刻。；r1：一个球是携带物品，直接回答What bring问题。；r2：八点是明确时刻，直接回答When leave问题。；r3：公园是活动地点，直接回答Where play问题。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b10",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b10",
+        "goalId": "primary6.shelf-comparisons",
+        "type": "choice",
+        "prompt": "黄书高25厘米，白书高20厘米。哪句正确比较了两本书的高度？",
+        "hint": "一边检查比较方向，一边检查than前的词形。",
+        "explanation": "白书高度较小，用shorter than。a缺少比较级变化，c虽然结构成立却比较方向错误。",
+        "instruction": "选择正确的一句。",
+        "difficultyReason": "巩固：同时判断数值关系和比较形式。",
+        "options": [
+          {
+            "id": "a",
+            "text": "The white book is short than the yellow book."
+          },
+          {
+            "id": "b",
+            "text": "The white book is shorter than the yellow book."
+          },
+          {
+            "id": "c",
+            "text": "The white book is taller than the yellow book."
+          }
+        ],
+        "answer": "b"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷5／PDF10",
+          "alignment": "两物高度比较及比较级形式。"
+        }
+      ],
+      "standaloneContext": "黄书25、白书20厘米高度已给定。",
+      "ambiguityReview": "明确高度而非厚度，同时检查数值方向和比较级。",
+      "optionNotes": {
+        "a": "方向虽指较矮，但short原级不能这样接than。",
+        "b": "白书20厘米低于黄书25厘米，shorter形式也正确。",
+        "c": "taller比较形式成立，但把白书高度方向说反。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b11",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b11",
+        "goalId": "primary6.old-shop-now",
+        "type": "cloze",
+        "prompt": "从词库选词填入两空，每个词最多用一次。旧记录：十年前这里有一座图书馆和两座小桥。",
+        "hint": "两句共用哪个时间？每句后面的事物又各有几个？",
+        "explanation": "十年前限定两句都用过去形式。a library单数用was；two small bridges复数用were。is与are分别是现在形式。",
+        "instruction": "选词填空，每块一次。",
+        "difficultyReason": "巩固：跨句过去时间与单复数两层判断。",
+        "passage": "Ten years ago, there {s1} a library here. There {s2} two small bridges.",
+        "acceptedFills": [
+          [
+            {
+              "slotId": "s1",
+              "tokenId": "was"
+            },
+            {
+              "slotId": "s2",
+              "tokenId": "were"
+            }
+          ]
+        ],
+        "tokens": [
+          {
+            "id": "are",
+            "text": "are"
+          },
+          {
+            "id": "was",
+            "text": "was"
+          },
+          {
+            "id": "is",
+            "text": "is"
+          },
+          {
+            "id": "were",
+            "text": "were"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷34–35／PDF39–40",
+          "alignment": "同一过去时段单复数存在形式。"
+        }
+      ],
+      "standaloneContext": "十年前、一座图书馆、两座桥均为题内记录。",
+      "ambiguityReview": "两句共用过去时间；整题须同时满足单复数。 词块与配对逐项复核：are：现在复数形式，没有对应十年前的共同时间。；was：过去单数形式，正确对应第一句一座图书馆。；is：现在单数形式，不能描述题内十年前的设施。；were：过去复数形式，正确对应第二句两座小桥。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "was"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "were"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "was"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "are"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b12",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b12",
+        "goalId": "primary6.weekend-postcard",
+        "type": "arrange",
+        "prompt": "你的旅行已经结束：上周六在湖边拍了照片。用所有词块写这条记录，以Last Saturday开头。",
+        "hint": "把指定时间放在开头，再说谁做了什么、在哪里。",
+        "explanation": "Last Saturday, I took some photos by the lake.记录过去的拍照事件；by the lake说明拍照地点。",
+        "instruction": "全部词块组句：Last Saturday开头。",
+        "difficultyReason": "巩固：时间前置的简单过去陈述。",
+        "tokens": [
+          {
+            "id": "lake",
+            "text": "by the lake."
+          },
+          {
+            "id": "i",
+            "text": "I"
+          },
+          {
+            "id": "last",
+            "text": "Last Saturday,"
+          },
+          {
+            "id": "photos",
+            "text": "took some photos"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "last",
+            "i",
+            "photos",
+            "lake"
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷27／PDF32",
+          "alignment": "时间前置的过去旅行记录。"
+        }
+      ],
+      "standaloneContext": "上周六湖边拍照的活动时间地点全部给出。",
+      "ambiguityReview": "Last Saturday起句，湖边块自带句末标点，顺序受控。 词块与配对逐项复核：lake：湖边地点词块自带句末标点，接在拍照活动之后。；i：陈述句主语，放在起首时间和拍照动作之间。；last：题干明确指定Last Saturday开头，先定位过去时间。；photos：完整拍照活动词块，置于主语之后、地点之前。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "last",
+              "i",
+              "photos",
+              "lake"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "last",
+              "photos",
+              "i",
+              "lake"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b13",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b13",
+        "goalId": "primary6.weekend-check-in",
+        "type": "listeningChoice",
+        "prompt": "听关于昨晚的两句留言。哪件事做了，哪件事没做？",
+        "hint": "把每个动作和它前面的肯定或否定对应起来。",
+        "explanation": "第一句肯定cleaned my shoes；第二句didn't否定wash my bag。a漏掉否定，b把否定放错对象。",
+        "instruction": "听录音，选择相符的一项。",
+        "difficultyReason": "巩固：两个不同动作中的否定范围。",
+        "options": [
+          {
+            "id": "a",
+            "text": "清洁了鞋，也洗了包。"
+          },
+          {
+            "id": "b",
+            "text": "没清洁鞋，洗了包。"
+          },
+          {
+            "id": "c",
+            "text": "清洁了鞋，没洗包。"
+          }
+        ],
+        "answer": "c"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷14、35–36／PDF19、40–41",
+          "alignment": "过去活动中肯定与否定范围听辨。"
+        }
+      ],
+      "standaloneContext": "录音独立给昨晚清鞋、未洗包两件事。",
+      "ambiguityReview": "否定只作用洗包，不考clean和wash细微词义。",
+      "optionNotes": {
+        "a": "把未洗包改成也洗了包，遗漏录音的否定。",
+        "b": "将清鞋和洗包的肯否颠倒，否定作用对象错误。",
+        "c": "准确保留清洁鞋子肯定、清洗包否定这两件事。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "I cleaned my shoes last night. I didn't wash my bag."
+    },
+    {
+      "id": "p6.astra.b14",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b14",
+        "goalId": "primary6.picnic-next-week",
+        "type": "completion",
+        "prompt": "现在是周二，你和一位朋友已经约好明天见面。用am、is或are填空：My friend ____ going to meet me tomorrow.",
+        "hint": "先看空格前的主语，再判断它指的是谁、有几个人。",
+        "explanation": "My friend指一位朋友，是第三人称单数，使用is going to。am与I搭配；are不与这里的单数主语My friend搭配。",
+        "instruction": "用am、is或are填空。",
+        "difficultyReason": "基础：明确单数第三人称计划句中的be一致性。",
+        "acceptedAnswers": [
+          "is",
+          "Is",
+          "IS"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        }
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "计划句的单数第三人称be一致。"
+        }
+      ],
+      "standaloneContext": "周二已与一位朋友约好明天见面，My friend为明确主语。",
+      "ambiguityReview": "采用已审My friend→is；me是宾语，不能以两人见面当复数主语。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "is"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "am"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b15",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b15",
+        "goalId": "primary6.first-camera-days",
+        "type": "matching",
+        "prompt": "三张独立句子卡都谈会不会唱歌。把每张英文卡与对应的中文连起来，每项只用一次。",
+        "hint": "每张卡都提到唱歌，还需要核对时间和是否定。",
+        "explanation": "could为过去会，couldn't为过去不会，can与now描述现在会。三句相似但不可互换。",
+        "instruction": "配对中英文，每项一次。",
+        "difficultyReason": "巩固：相同活动的时间和肯否精确辨义。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "I could sing when I was eight."
+          },
+          {
+            "id": "l2",
+            "text": "I couldn't sing when I was eight."
+          },
+          {
+            "id": "l3",
+            "text": "I can sing now."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "我现在会唱歌。"
+          },
+          {
+            "id": "r2",
+            "text": "我八岁时会唱歌。"
+          },
+          {
+            "id": "r3",
+            "text": "我八岁时不会唱歌。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r3"
+          },
+          {
+            "left": "l3",
+            "right": "r1"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷36–37／PDF41–42",
+          "alignment": "同一活动的能力时间与肯否辨义。"
+        }
+      ],
+      "standaloneContext": "三张独立唱歌卡和对应中文都在题内。",
+      "ambiguityReview": "每卡独立，不以相互矛盾判错；活动相同使时间肯否成为区分点。 词块与配对逐项复核：l1：could与八岁共同表达过去会唱歌的肯定能力。；l2：couldnt与八岁共同表达过去不会唱歌的否定能力。；l3：can与now共同表达现在已经会唱歌的能力。；r1：现在会唱歌对应can sing now而不是过去肯定。；r2：八岁时会唱歌对应could的过去肯定表达。；r3：八岁时不会唱歌对应couldnt的过去否定表达。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r3"
+              },
+              {
+                "left": "l3",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b16",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b16",
+        "goalId": "primary6.weekend-postcard",
+        "type": "choice",
+        "prompt": "日记写于周日晚上。你周六买了一张地图，周日上午用它去公园。哪句准确记录买地图的时间？",
+        "hint": "以写日记的周日为起点，定位购买那一天，不要选使用那一天。",
+        "explanation": "周六是周日的昨天，因此买地图的过去事件用bought ... yesterday。b把过去动词配明天，c添加每周习惯且改变日期。",
+        "instruction": "选择符合题意的一句。",
+        "difficultyReason": "迁移：记录时间、购买时间和使用时间分开。",
+        "options": [
+          {
+            "id": "a",
+            "text": "I bought the map yesterday."
+          },
+          {
+            "id": "b",
+            "text": "I bought the map tomorrow."
+          },
+          {
+            "id": "c",
+            "text": "I buy the map every Sunday."
+          }
+        ],
+        "answer": "a"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷17、27／PDF22、32",
+          "alignment": "叙述过去购买并定位相对日期。"
+        }
+      ],
+      "standaloneContext": "周日日记、周六购买、周日使用三个时点明确。",
+      "ambiguityReview": "只定位购买时间，不问使用时间或过去完成时。",
+      "optionNotes": {
+        "a": "周六相对记录日周日是昨天，正确定位购买时间。",
+        "b": "tomorrow指将来，与已经买了地图的事实矛盾。",
+        "c": "增加每周购买习惯，还把购买时间改成周日。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b17",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b17",
+        "goalId": "primary6.shelf-comparisons",
+        "type": "arrange",
+        "prompt": "黄书厚2厘米，绿书厚4厘米。用全部词块说黄书比绿书薄，以The yellow book开头。",
+        "hint": "从题干指定的书开始，再连接比较特点与另一本书。",
+        "explanation": "The yellow book is thinner than the green book.说明2厘米厚的黄书比4厘米厚的绿书薄。than引出比较对象。",
+        "instruction": "全部词块组句：The yellow book开头。",
+        "difficultyReason": "基础：两个明确厚度、同单位的比较句排序。",
+        "tokens": [
+          {
+            "id": "green",
+            "text": "the green book."
+          },
+          {
+            "id": "yellow",
+            "text": "The yellow book"
+          },
+          {
+            "id": "than",
+            "text": "than"
+          },
+          {
+            "id": "thinner",
+            "text": "is thinner"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "yellow",
+            "thinner",
+            "than",
+            "green"
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷7／PDF12",
+          "alignment": "两物厚薄比较句的受控排序。"
+        }
+      ],
+      "standaloneContext": "黄书2厘米、绿书4厘米的厚度由本题给出。",
+      "ambiguityReview": "采用已审thinner替题，The yellow book起句；不混同B10高度。 词块与配对逐项复核：green：被比较的绿书词块，自带句末标点并放在than之后。；yellow：题干指定黄书作为主语，必须以这个词块开头。；than：引出另一比较对象，放在特点与绿书词块之间。；thinner：说明黄书更薄，连接主语之后并位于than之前。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "yellow",
+              "thinner",
+              "than",
+              "green"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "yellow",
+              "than",
+              "thinner",
+              "green"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p6.astra.b18",
+      "questionGroup": "b",
+      "question": {
+        "id": "p6.astra.b18",
+        "goalId": "primary6.picnic-next-week",
+        "type": "cloze",
+        "prompt": "用词库补全两段记录，每个词块最多用一次。昨天晚上我喝了茶，明天我计划画一张画。",
+        "hint": "为两句分别标出已发生和已计划，再让动词结构对应各自时间。",
+        "explanation": "昨晚喝茶已经发生，drink用过去式drank；明天已定的画画计划用am going to后接draw。drink未表示给定的过去事件，went to不能表达这里的未来计划。",
+        "instruction": "选词填空，每块一次。",
+        "difficultyReason": "迁移：两个明确时间并列，区分过去事件和未来计划，无高阶时态。",
+        "passage": "Last night I {s1} some tea. Tomorrow I {s2} draw a picture.",
+        "acceptedFills": [
+          [
+            {
+              "slotId": "s1",
+              "tokenId": "drank"
+            },
+            {
+              "slotId": "s2",
+              "tokenId": "going"
+            }
+          ]
+        ],
+        "tokens": [
+          {
+            "id": "drank",
+            "text": "drank"
+          },
+          {
+            "id": "drink",
+            "text": "drink"
+          },
+          {
+            "id": "going",
+            "text": "am going to"
+          },
+          {
+            "id": "went",
+            "text": "went to"
+          }
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "fltrp.primary6.archive20260929",
+          "pages": "印刷10／PDF15",
+          "alignment": "已定未来计划的am going to结构。"
+        },
+        {
+          "sourceId": "pep.primary6.archive20260929",
+          "pages": "印刷14／PDF19",
+          "alignment": "已结束喝茶事件中的drank。"
+        }
+      ],
+      "standaloneContext": "昨晚喝茶和明天已定画画均为明示事实。",
+      "ambiguityReview": "保留drank/am going to；两槽整体正确，词库限定不否定其他场景will合法性。 词块与配对逐项复核：drank：昨晚喝茶已经发生，第一空使用过去式drank。；drink：喝茶原形没有落实题内已经结束的昨晚时间。；going：词块am going to完整引出明天已经定好的画画计划。；went：went to表示过去前往，不符合第二句明天的计划。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "drank"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "going"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "drank"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "went"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "secondaryGoalIds": [
+        "primary6.weekend-postcard"
+      ]
+    }
+  ]
+}

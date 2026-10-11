@@ -1,0 +1,2389 @@
+{
+  "level": "primary4",
+  "inputHashes": {
+    "primary4.astra.json": "32c0377b92af998694eafd13feafafd62c99a32d50679c6a19a9db6d6c93d8af",
+    "primary4-delivery.astra.json": "979ed74af564b155c77c85604c7c08618f860b71cd138dfbf7d8e54a7246a2ee"
+  },
+  "questions": [
+    {
+      "id": "p4.astra.a01",
+      "question": {
+        "id": "p4.astra.a01",
+        "goalId": "p4.clock",
+        "type": "choice",
+        "instruction": "选一句完整回答。",
+        "prompt": "活动室的电子钟显示4:00。你要告诉正在收画笔的同伴现在几点，选哪句？",
+        "options": [
+          {
+            "id": "a",
+            "text": "It's four o'clock."
+          },
+          {
+            "id": "b",
+            "text": "At four o'clock."
+          },
+          {
+            "id": "c",
+            "text": "It's time for art class."
+          }
+        ],
+        "answer": "a",
+        "explanation": "It's four o'clock直接报告当前钟点；At four o'clock是“在四点”；c说该做什么，没有报时。",
+        "hint": "找“现在是……点”的完整表达。",
+        "difficultyReason": "整点直接给出，区分钟点回答和时间短语。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "17",
+          "alignment": "本轮目视PEP印刷17页的整点报时与time for课程表达；本题以明示4:00区分报时、介词短语和活动提醒。"
+        }
+      ],
+      "standaloneContext": "电子钟4:00及报告当前时间的目的均在题内，不需开场故事。",
+      "ambiguityReview": "整点数字已给，不读指针、不推课程表；At four o'clock不能作为本题要求的完整报时句。",
+      "optionNotes": {
+        "a": "完整说出现在四点，符合题内电子钟及报时目的。",
+        "b": "只有在四点的介词短语，没有完整报告现在几点。",
+        "c": "宣布美术课时间，不能回答钟面显示的当前钟点。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a02",
+      "question": {
+        "id": "p4.astra.a02",
+        "goalId": "p4.routines",
+        "type": "arrange",
+        "instruction": "用全部词块，以I开头；先活动，再钟点，最后时段。",
+        "prompt": "你给笔友介绍作息：我下午五点做家庭作业。",
+        "tokens": [
+          {
+            "id": "at",
+            "text": "at five"
+          },
+          {
+            "id": "i",
+            "text": "I"
+          },
+          {
+            "id": "period",
+            "text": "in the afternoon."
+          },
+          {
+            "id": "work",
+            "text": "do my homework"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "i",
+            "work",
+            "at",
+            "period"
+          ]
+        ],
+        "explanation": "I后接活动do my homework，再说明at five in the afternoon。",
+        "hint": "先说谁做什么，再放时间。",
+        "difficultyReason": "活动作为完整词块，组合具体钟点与下午。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "18",
+          "alignment": "本轮目视译林印刷18页的I do my homework及钟点、下午表达；五点为本题另写，不复用正文五点半。"
+        }
+      ],
+      "standaloneContext": "题内直接说明下午五点做作业，指令规定I开头、活动—钟点—时段。",
+      "ambiguityReview": "保留全部四块及指定输出顺序；错误样例是违反本题顺序，不据此断言所有中置时间状语均不合语法。 词块或输入审阅：i→work→at→period满足要求；i→at→work→period把钟点提前，不满足本题受控排列。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "work",
+              "at",
+              "period"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "at",
+              "work",
+              "period"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a03",
+      "question": {
+        "id": "p4.astra.a03",
+        "goalId": "p4.routines",
+        "type": "listeningChoice",
+        "instruction": "听录音，选一个时间。",
+        "prompt": "你在帮一位新营员记晚间作息。只记录晚饭时间。",
+        "options": [
+          {
+            "id": "a",
+            "text": "晚上八点"
+          },
+          {
+            "id": "b",
+            "text": "晚上六点"
+          },
+          {
+            "id": "c",
+            "text": "晚上七点"
+          }
+        ],
+        "answer": "b",
+        "explanation": "have dinner后跟at six；eight属于go to bed，不能把两个活动的时间对调。",
+        "hint": "先听到“吃晚饭”，再留意紧跟的钟点。",
+        "difficultyReason": "两条简短信息中选择目标活动的时间。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "18",
+          "alignment": "本轮目视译林印刷18页的晚饭、就寝活动及钟点表达；录音中的六点晚饭、八点就寝是本题原创组合。"
+        }
+      ],
+      "standaloneContext": "题面限定只记晚饭；全部所需时间来自本题脚本，不靠真实营地安排。",
+      "ambiguityReview": "六点对应晚饭、八点对应就寝；无图片条件。脚本审阅不替代听觉辨识，尚无音频资产。",
+      "optionNotes": {
+        "a": "八点确实在录音出现，但它对应就寝而非晚饭。",
+        "b": "六点紧跟have dinner，准确对应题目要记录的晚饭时间。",
+        "c": "录音没有给七点这个时间，不能据日常经验补入。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "I have dinner at six. I go to bed at eight."
+    },
+    {
+      "id": "p4.astra.a04",
+      "question": {
+        "id": "p4.astra.a04",
+        "goalId": "p4.clock",
+        "type": "completion",
+        "instruction": "从to、for中选一词填入。",
+        "prompt": "你们已经拿好书包。墙上提示现在该回家了：It's time ____ go home.",
+        "acceptedAnswers": [
+          "to"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "explanation": "go home是动作，It's time to后接动作原形；for后不能直接接这里的go。",
+        "hint": "空格后是“回家”这个动作。",
+        "difficultyReason": "在明确两词范围内区分time to与time for。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "17、48",
+          "alignment": "本轮目视PEP印刷17页time to动作与time for名词的对照，并在48页核对time to go home。"
+        }
+      ],
+      "standaloneContext": "回家动作和It's time句架已给，操作语只准从to、for选词。",
+      "ambiguityReview": "明确候选范围，不能按开放续写处理；go home是动作。保留单空键盘型completion。 词块或输入审阅：to完成time to go home；for无法直接接这里的go。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "to"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "for"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a05",
+      "question": {
+        "id": "p4.astra.a05",
+        "goalId": "p4.weather",
+        "type": "matching",
+        "instruction": "把英文和中文配对，每项一次。",
+        "prompt": "给活动室的两张天气词卡补上中文说明。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "It's cool."
+          },
+          {
+            "id": "l2",
+            "text": "It's cold."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "天气寒冷。"
+          },
+          {
+            "id": "r2",
+            "text": "天气凉爽。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "explanation": "cool在天气中指凉爽，cold指寒冷；这里cool不是“很酷”。",
+        "hint": "注意词形接近，但冷的程度不同。",
+        "difficultyReason": "在天气语境辨析两个常见形容词。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "33",
+          "alignment": "本轮目视译林印刷33页秋季cool、冬季cold的天气形容词；本题只辨词义，不从季节推天气。"
+        }
+      ],
+      "standaloneContext": "两条英文天气记录与两条中文释义全部在题内。",
+      "ambiguityReview": "天气语境排除cool的很酷义；不以温度阈值或个人耐寒感受判分。 词块或输入审阅：l1凉爽配r2，l2寒冷配r1；全量反配是有效格式的错误答案。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a06",
+      "question": {
+        "id": "p4.astra.a06",
+        "goalId": "p4.weather",
+        "type": "choice",
+        "instruction": "选一句合适的回答。",
+        "prompt": "窗外正在下雨。视频里的朋友问：What's the weather like there? 你只需报告天气。",
+        "options": [
+          {
+            "id": "a",
+            "text": "It's windy."
+          },
+          {
+            "id": "b",
+            "text": "It's snowy."
+          },
+          {
+            "id": "c",
+            "text": "It's rainy."
+          }
+        ],
+        "answer": "c",
+        "explanation": "rainy表示有雨；windy是有风，snowy是下雪。不能从下雨推断一定刮风。",
+        "hint": "把题干的“雨”对应到天气词。",
+        "difficultyReason": "自然问答中使用已明示的天气事实。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "27",
+          "alignment": "本轮目视PEP印刷27页天气问答及rainy；本题雨天事实由中文明示，不复制正文城市或温度事件。"
+        }
+      ],
+      "standaloneContext": "窗外下雨已直接写出，只需对天气问句作答。",
+      "ambiguityReview": "下雨不等于已知有风或下雪；没有季节、地点或图片隐含条件。",
+      "optionNotes": {
+        "a": "windy表示有风，题内下雨不能推出已经有风。",
+        "b": "snowy表示下雪，与题内正在下雨的事实不同。",
+        "c": "rainy表示有雨，直接报告题内明确的天气。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a07",
+      "question": {
+        "id": "p4.astra.a07",
+        "goalId": "p4.permission",
+        "type": "arrange",
+        "instruction": "用全部词块组成问句。",
+        "prompt": "你想得到管理员同意，再走到室外。组出“我现在可以出去吗？”",
+        "tokens": [
+          {
+            "id": "out",
+            "text": "go outside"
+          },
+          {
+            "id": "can",
+            "text": "Can"
+          },
+          {
+            "id": "now",
+            "text": "now?"
+          },
+          {
+            "id": "i",
+            "text": "I"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "can",
+            "i",
+            "out",
+            "now"
+          ]
+        ],
+        "explanation": "Can I后接想获准做的动作；now说明现在。",
+        "hint": "先确认这句话是请求，再检查谁想做这件事。",
+        "difficultyReason": "四词块许可问句，明确区别陈述能力。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "24",
+          "alignment": "本轮目视PEP印刷24页Can I go outside now的许可句；本题保留基础句式的受控排列，不把它包装成新结构。"
+        }
+      ],
+      "standaloneContext": "题面明确要获管理员同意再出去，并给所需中文问句。",
+      "ambiguityReview": "词块now?带问号，所需输出是问句；不评儿童自行外出的安全决定。 词块或输入审阅：can→i→out→now构成请求；i→can→out→now成为陈述词序，不能完成所需提问。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "can",
+              "i",
+              "out",
+              "now"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "can",
+              "out",
+              "now"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a08",
+      "question": {
+        "id": "p4.astra.a08",
+        "goalId": "p4.permission",
+        "type": "choice",
+        "instruction": "选一句合适的回答。",
+        "prompt": "你扮演活动室管理员。孩子问你：Can I have some water? 你同意孩子喝水，应回答哪句？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, he can."
+          },
+          {
+            "id": "b",
+            "text": "Yes, you can."
+          },
+          {
+            "id": "c",
+            "text": "No, you can't."
+          }
+        ],
+        "answer": "b",
+        "explanation": "管理员直接对请求喝水的孩子说you；he说的是另一位男孩，c则表示不同意。",
+        "hint": "确认你在对谁说话，再看是否表示同意。",
+        "difficultyReason": "许可回应中辨别人称与肯否；不加入新时态。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "24",
+          "alignment": "本轮目视PEP印刷24页Can I请求及Yes,you can许可回应；已审替题只换第三人称干扰，不增时态。"
+        }
+      ],
+      "standaloneContext": "作答者是管理员，面对请求喝水的孩子，且已经同意，角色与结果都写明。",
+      "ambiguityReview": "按已审替题去掉Yes,I can。he指第三人，不能替代直接对孩子的you；不以现实职业权限设隐题。",
+      "optionNotes": {
+        "a": "he改指另一位男孩，不是管理员正在面对的请求者。",
+        "b": "you直接指眼前孩子，肯定回答符合题内同意事实。",
+        "c": "否定许可表示不同意，与管理员已经同意喝水相反。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a09",
+      "question": {
+        "id": "p4.astra.a09",
+        "goalId": "p4.ownership",
+        "type": "listeningChoice",
+        "instruction": "听对话，选一个答案。",
+        "prompt": "一位同伴问Ben一件外套的主人。听录音，外套是谁的？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Ben"
+          },
+          {
+            "id": "b",
+            "text": "无法确定任何主人"
+          },
+          {
+            "id": "c",
+            "text": "Mia"
+          }
+        ],
+        "answer": "c",
+        "explanation": "Ben先否认外套属于自己，再用Mia's说明是Mia的。Mia是被谈到的第三个人。",
+        "hint": "听否定之后补充的名字。",
+        "difficultyReason": "两轮对话辨认否定与姓名所有格。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "48、51",
+          "alignment": "本轮目视PEP印刷48、51页否认归属及姓名所有格；本题主人Mia及Friend/Ben两话轮为另写。"
+        }
+      ],
+      "standaloneContext": "题面说同伴向Ben问外套主人；录音给否认及Mia所属，Mia不发言。",
+      "ambiguityReview": "Friend与Ben需两声部，标签不读而呼语Ben照读；只有脚本审阅，未完成媒体听验。",
+      "optionNotes": {
+        "a": "Ben在问句里被问到，但其回答已经否认是自己的。",
+        "b": "后一句用Mia所有格给出主人，所以不是无法确定。",
+        "c": "Mia是最后一句明确指出的外套主人，非对话中的发言者。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Friend: Is this your coat, Ben? Ben: No. It's Mia's."
+    },
+    {
+      "id": "p4.astra.a10",
+      "question": {
+        "id": "p4.astra.a10",
+        "goalId": "p4.ownership",
+        "type": "completion",
+        "instruction": "从mine、yours中选一词填入。",
+        "prompt": "这顶帽子是你的。朋友问是谁的，你回答：It's ____.",
+        "acceptedAnswers": [
+          "mine"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "explanation": "说话者自己拥有的东西用mine；yours指听话者的。",
+        "hint": "帽子属于正在回答的“我”。",
+        "difficultyReason": "单件衣物的说话者视角；候选拼写已经给出，但当前completion仍需键盘输入所选词。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "51",
+          "alignment": "本轮目视PEP印刷51页It's mine的归属自述；yours为已核读48页相关表达的目标内对照，引用保留原稿51页。"
+        }
+      ],
+      "standaloneContext": "帽子明确属于作答者本人，作答者正向朋友说明主人。",
+      "ambiguityReview": "不是凭携带或捡到推所有权；指令限定mine/yours，completion仍需输入。 词块或输入审阅：mine表示说话者的东西；yours会错误改成听话者的。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "mine"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "yours"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a11",
+      "question": {
+        "id": "p4.astra.a11",
+        "goalId": "p4.clothes",
+        "type": "choice",
+        "instruction": "选一句合适的回答。",
+        "prompt": "你试穿一双鞋，发现太小，无法合脚。店员问：Are they OK? 你怎么说明问题？",
+        "options": [
+          {
+            "id": "a",
+            "text": "They're too small."
+          },
+          {
+            "id": "b",
+            "text": "They're too big."
+          },
+          {
+            "id": "c",
+            "text": "They're just right."
+          }
+        ],
+        "answer": "a",
+        "explanation": "too small是太小；too big是太大；just right是正合适。",
+        "hint": "要报告大小问题，不需要猜尺码。",
+        "difficultyReason": "理解试穿结果，复数they与鞋搭配。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "58",
+          "alignment": "本轮目视PEP印刷58页试鞋反馈too small、too big、just right及复数they。"
+        }
+      ],
+      "standaloneContext": "试鞋太小、不能合脚是本题直接给定的结果。",
+      "ambiguityReview": "不测实际尺寸、国际尺码或用户身材；只报告明确大小问题。",
+      "optionNotes": {
+        "a": "too small准确表达题内试鞋太小的结果。",
+        "b": "too big说成太大，与题目明示的大小问题相反。",
+        "c": "just right表示正合适，与无法合脚的试穿结果冲突。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a12",
+      "question": {
+        "id": "p4.astra.a12",
+        "goalId": "p4.prices",
+        "type": "arrange",
+        "instruction": "用全部词块组成问句。",
+        "prompt": "你指着一条围巾，想问“这条围巾多少钱？”",
+        "tokens": [
+          {
+            "id": "scarf",
+            "text": "this scarf?"
+          },
+          {
+            "id": "much",
+            "text": "How much"
+          },
+          {
+            "id": "is",
+            "text": "is"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "much",
+            "is",
+            "scarf"
+          ]
+        ],
+        "explanation": "问单件物品价格用How much is this…?",
+        "hint": "先放询问价格的词块。",
+        "difficultyReason": "三块构成真实购物问句，保留How much整体。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "61",
+          "alignment": "本轮目视PEP印刷61页How much单件询价；本题把物品换为围巾，三块形成单数价格问句。"
+        }
+      ],
+      "standaloneContext": "题内指定一条围巾及询问其价格的中文目的。",
+      "ambiguityReview": "How much整体保留，不增加数量、总价或代问角色。 词块或输入审阅：much→is→scarf是完整问价；scarf→is→much没有组成指定问句。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "much",
+              "is",
+              "scarf"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "scarf",
+              "is",
+              "much"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a13",
+      "question": {
+        "id": "p4.astra.a13",
+        "goalId": "p4.prices",
+        "type": "listeningChoice",
+        "instruction": "听录音，选对应价签。",
+        "prompt": "一顶帽子的旧价签脱落了。听店员对这顶帽子的报价。",
+        "options": [
+          {
+            "id": "a",
+            "text": "¥30"
+          },
+          {
+            "id": "b",
+            "text": "¥40"
+          },
+          {
+            "id": "c",
+            "text": "¥50"
+          }
+        ],
+        "answer": "b",
+        "explanation": "forty是四十；yuan表示人民币元，因此应配¥40。",
+        "hint": "听出金额，不需要计算。",
+        "difficultyReason": "整十报价听辨，币种明确。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "61",
+          "alignment": "本轮目视PEP印刷61页单件报价及yuan；本题四十元为目标内整十报价迁移，不引用教材售价作事实。"
+        }
+      ],
+      "standaloneContext": "物品是单顶帽子，价钱仅由本题店员录音给出。",
+      "ambiguityReview": "币种yuan与人民币符号对应；不计算价格或引入fourteen干扰；未实听。",
+      "optionNotes": {
+        "a": "三十元不是录音中forty yuan的数额。",
+        "b": "四十元与forty yuan对应，币种也与人民币价签一致。",
+        "c": "五十元改变了录音数额，不能配给该帽子报价。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "The hat is forty yuan."
+    },
+    {
+      "id": "p4.astra.a14",
+      "question": {
+        "id": "p4.astra.a14",
+        "goalId": "p4.seasons",
+        "type": "completion",
+        "instruction": "填一个英文单词。",
+        "prompt": "你给自己的野餐记录写标题，中文意思是“秋天的野餐”：A picnic in ____.",
+        "acceptedAnswers": [
+          "autumn",
+          "fall"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "explanation": "autumn与fall都可表示秋天；in后可接季节。",
+        "hint": "两种常见的“秋天”说法都接受。",
+        "difficultyReason": "一个季节词的受控拼写，接受英美变体。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "32、33",
+          "alignment": "本轮目视译林印刷32、33页季节名称及in autumn；fall沿用已登记目标的英美变体，不声称原页出现。"
+        }
+      ],
+      "standaloneContext": "标题的中文明确秋天，野餐本身不是季节推断依据。",
+      "ambiguityReview": "接受autumn和fall，忽略大小写和末尾句号；春天词不能以也可野餐为理由接受。 词块或输入审阅：autumn、fall均正确；spring指春天，不符合指定标题。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "autumn"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "fall"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " Autumn. "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "spring"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a15",
+      "question": {
+        "id": "p4.astra.a15",
+        "goalId": "p4.ability",
+        "type": "matching",
+        "instruction": "把问题和回答配对，每项一次。",
+        "prompt": "观察窗边一朵花时，一人问看到了什么，另一人问绘画能力。为两种问法配回答。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "What can you see?"
+          },
+          {
+            "id": "l2",
+            "text": "Can you draw a flower?"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "Yes, I can."
+          },
+          {
+            "id": "r2",
+            "text": "I can see a flower."
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "explanation": "What can you see需要说出看到的物体；Can you draw可用Yes, I can回答能力。",
+        "hint": "一个问“什么”，一个问“能不能”。",
+        "difficultyReason": "区别特殊问句与能力一般问句的回答信息。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "24、25",
+          "alignment": "本轮目视译林印刷24、25页可见物问答和绘画能力问答；本题配对两种问句所需信息。"
+        }
+      ],
+      "standaloneContext": "两种问题、花的观察情境与候选回答均完整提供。",
+      "ambiguityReview": "配对回答信息种类，不评真实用户能否画花；What问题不能仅答Yes。 词块或输入审阅：l1配r2说看见花，l2配r1肯定能力；反配两项都没有直接回应所问信息。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a16",
+      "question": {
+        "id": "p4.astra.a16",
+        "goalId": "p4.ability",
+        "type": "arrange",
+        "instruction": "以I开头，用全部词块组句。",
+        "prompt": "你在窗边观察，确实看到一棵树。写出“我能看见一棵树”。",
+        "tokens": [
+          {
+            "id": "tree",
+            "text": "a tree."
+          },
+          {
+            "id": "see",
+            "text": "see"
+          },
+          {
+            "id": "i",
+            "text": "I"
+          },
+          {
+            "id": "can",
+            "text": "can"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "i",
+            "can",
+            "see",
+            "tree"
+          ]
+        ],
+        "explanation": "I can see后接看到的事物；can后用see。",
+        "hint": "“能”放在“看见”前面。",
+        "difficultyReason": "四词块表达可见物，区分能力动词与动作位置。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "24",
+          "alignment": "本轮目视译林印刷24页I can see及tree；本题以四块表达一个明确可见物。"
+        }
+      ],
+      "standaloneContext": "题面直接说确实看见一棵树，且要求以I开头。",
+      "ambiguityReview": "不需要画面或记忆故事；目标是给定中文陈述，非任意问句。 词块或输入审阅：i→can→see→tree正确；i→see→can→tree把can放到动作后，结构不成立。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "can",
+              "see",
+              "tree"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "i",
+              "see",
+              "can",
+              "tree"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a17",
+      "question": {
+        "id": "p4.astra.a17",
+        "goalId": "p4.permission",
+        "type": "cloze",
+        "instruction": "选词填空，每块一次。",
+        "prompt": "①你问老师能否用桌上的纸画画。老师同意了。\n②你问老师能否把教室里的画带回家。老师没有同意。\n补全老师分别对你说的话。",
+        "passage": "① You {s1} draw on this paper.\n② You {s2} take the picture home.",
+        "tokens": [
+          {
+            "id": "cannot",
+            "text": "can't"
+          },
+          {
+            "id": "can",
+            "text": "can"
+          }
+        ],
+        "explanation": "第一件事得到允许，用can；第二件事没有得到允许，用can’t。两句话都是老师对请求者说的，许可结果要分别看，不能把第一件事的回答照搬到第二件事。",
+        "hint": "每一空都对应一件事，分别确认老师是否同意。",
+        "difficultyReason": "两段请求分别给定许可结果，在同一个词库中选择肯定与否定；不从生活常识猜老师的决定。",
+        "acceptedFills": [
+          [
+            {
+              "slotId": "s1",
+              "tokenId": "can"
+            },
+            {
+              "slotId": "s2",
+              "tokenId": "cannot"
+            }
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "24",
+          "alignment": "本轮目视PEP印刷24页肯定与否定许可回应；已审替题以纸上画画获准、带画回家未获准迁移许可意义，不冒称两个事件是教材原情景。"
+        }
+      ],
+      "standaloneContext": "两个请求分别说明老师同意与未同意，老师对请求者说话的You已给；无须推测教室管理规则。",
+      "ambiguityReview": "采用已审can/can't两空，拒绝旧open/use辨形稿；两词两空有排除法，仍需分辨本题相反许可结果。cannot是词块ID，显示文本为can't。 词块或输入审阅：唯一完整组合s1=can、s2=cannot；交换后两段许可结果都相反，不接受。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "can"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "cannot"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "cannot"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "can"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.a18",
+      "question": {
+        "id": "p4.astra.a18",
+        "goalId": "p4.routines",
+        "type": "audioArrange",
+        "instruction": "听录音，按提及顺序排卡，不按钟点排序。",
+        "prompt": "一位孩子用三句话介绍作息。按录音提到的先后排卡，不按一天中做事的先后排。",
+        "tokens": [
+          {
+            "id": "homework",
+            "text": "做家庭作业"
+          },
+          {
+            "id": "dinner",
+            "text": "吃晚饭"
+          },
+          {
+            "id": "home",
+            "text": "回家"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "dinner",
+            "home",
+            "homework"
+          ]
+        ],
+        "explanation": "录音先说have dinner，再说go home，最后说do my homework。要按提及顺序排卡，不是按一天中通常做事的顺序或数字大小排序。",
+        "hint": "每听到一个活动就记它的位置，可以重新播放。",
+        "difficultyReason": "三句简短语音以非晨到晚的顺序介绍作息，需要听取提及顺序；中文卡降低英文阅读负担。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "18",
+          "alignment": "本轮目视译林印刷18页晚饭、回家、作业及整点活动表达；已审脚本改为七点晚饭、五点回家、六点作业，以提及而非时钟顺序排序。"
+        }
+      ],
+      "standaloneContext": "题面和指令都要求录音提及顺序，全部三项活动由本题脚本给出。",
+      "ambiguityReview": "正确次序故意不按一天中做事的先后；中文卡降低阅读负担。未实听，不能用脚本正确代替媒体验收。 词块或输入审阅：dinner→home→homework对应三句；home→homework→dinner虽然符合钟点先后，却违反听序任务。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "dinner",
+              "home",
+              "homework"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "home",
+              "homework",
+              "dinner"
+            ]
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "I have dinner at seven. I go home at five. I do my homework at six."
+    },
+    {
+      "id": "p4.astra.b01",
+      "question": {
+        "id": "p4.astra.b01",
+        "goalId": "p4.routines",
+        "type": "choice",
+        "instruction": "选一个合适的问题。",
+        "prompt": "同伴回答：I have lunch at one. 你想知道的是午饭时间。前一句应问什么？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Where do you have lunch?"
+          },
+          {
+            "id": "b",
+            "text": "When do you have lunch?"
+          },
+          {
+            "id": "c",
+            "text": "What can you see?"
+          }
+        ],
+        "answer": "b",
+        "explanation": "When询问时间，at one正好回答时间；Where问地点，c问能看到什么。",
+        "hint": "要问的不是午饭地点。",
+        "difficultyReason": "根据回答的信息类型选择合适问句。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "18",
+          "alignment": "本轮目视译林印刷18页When do you日常活动问句；本题午饭一点是另写事实，非正文十二点。"
+        }
+      ],
+      "standaloneContext": "回答I have lunch at one及要问午饭时间的目的都在题内。",
+      "ambiguityReview": "一点是时间，不是地点；不要求真实个人作息或上一题信息。",
+      "optionNotes": {
+        "a": "Where要求地点，at one给的是钟点而不是地点。",
+        "b": "When要求时间，正好与午饭一点的完整回答相接。",
+        "c": "问能看见什么，与午饭活动时间没有直接问答对应。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b02",
+      "question": {
+        "id": "p4.astra.b02",
+        "goalId": "p4.clock",
+        "type": "matching",
+        "instruction": "把英文和中文配对，每项一次。",
+        "prompt": "营地广播员有两张提醒卡，一张宣布午饭时间，一张催大家回家。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "It's time for lunch."
+          },
+          {
+            "id": "l2",
+            "text": "It's time to go home."
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "该回家了。"
+          },
+          {
+            "id": "r2",
+            "text": "午饭时间到了。"
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "explanation": "for后接lunch这个名词；to后接go home动作。两条都是到点提醒，内容不同。",
+        "hint": "先抓午饭与回家两个关键意思。",
+        "difficultyReason": "理解两种time句式的完整交际意义。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "17、48",
+          "alignment": "本轮目视PEP印刷17页time for名词和time to动作，并在48页核对time to go home；本题配完整提醒意义。"
+        }
+      ],
+      "standaloneContext": "午饭与回家两条提醒及中英文配项都完整提供。",
+      "ambiguityReview": "只测试两种提醒的语义配对，不把两项排除法成绩宣称独立产出to/for语法。 词块或输入审阅：l1午饭配r2，l2回家配r1；反配把两个不同活动换错。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b03",
+      "question": {
+        "id": "p4.astra.b03",
+        "goalId": "p4.weather",
+        "type": "listeningChoice",
+        "instruction": "听完整回答，选一个答案。",
+        "prompt": "你需要记录通话中说话人那里的天气。只根据录音。",
+        "options": [
+          {
+            "id": "a",
+            "text": "不冷，很暖和。"
+          },
+          {
+            "id": "b",
+            "text": "很冷。"
+          },
+          {
+            "id": "c",
+            "text": "没说冷暖，只说下雨。"
+          }
+        ],
+        "answer": "a",
+        "explanation": "No, it isn't否定cold，接着warm明确暖和。问句出现cold不代表回答说冷。",
+        "hint": "听完整个回答，不要停在问句。",
+        "difficultyReason": "天气问答中听出否定及随后确认。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "27",
+          "alignment": "本轮目视PEP印刷27页Is it cold、否定回应及warm；本题不使用正文的温标误会，只听明确冷暖回答。"
+        }
+      ],
+      "standaloneContext": "天气事实来自本题问答，题面要求只根据录音。",
+      "ambiguityReview": "cold在问句不是既定事实；No及warm共同决定答案。要求问答两声部，未实听。",
+      "optionNotes": {
+        "a": "同时保留No对冷的否定和warm给出的暖和事实。",
+        "b": "仅取问句里的cold，把被询问的情况误当已确认天气。",
+        "c": "录音明说冷暖而未说下雨，选项颠倒了信息来源。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "Is it cold there? No, it isn't. It's warm."
+    },
+    {
+      "id": "p4.astra.b04",
+      "question": {
+        "id": "p4.astra.b04",
+        "goalId": "p4.weather",
+        "type": "arrange",
+        "instruction": "用全部词块组成问句。",
+        "prompt": "你和远方朋友通话，想问“那里天气怎么样？”",
+        "tokens": [
+          {
+            "id": "there",
+            "text": "there?"
+          },
+          {
+            "id": "weather",
+            "text": "the weather"
+          },
+          {
+            "id": "what",
+            "text": "What's"
+          },
+          {
+            "id": "like",
+            "text": "like"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "what",
+            "weather",
+            "like",
+            "there"
+          ]
+        ],
+        "explanation": "What's the weather like there?是询问那里天气的完整问句。这里like不是动词“喜欢”。",
+        "hint": "先确认你是在提问，再把整句话连起来读。",
+        "difficultyReason": "四块构成固定天气问句，区别like的句式作用。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "27",
+          "alignment": "本轮目视PEP印刷27页What's the weather like问法；本题用there代所在地，组合固定天气句式。"
+        }
+      ],
+      "standaloneContext": "题面直接给那里天气怎么样的提问目的。",
+      "ambiguityReview": "这里like是天气问句组成部分，不是喜欢；there?标点锁定末尾。 词块或输入审阅：what→weather→like→there为标准顺序；what→like→weather→there错误移动like。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "what",
+              "weather",
+              "like",
+              "there"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "what",
+              "like",
+              "weather",
+              "there"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b05",
+      "question": {
+        "id": "p4.astra.b05",
+        "goalId": "p4.permission",
+        "type": "choice",
+        "instruction": "选出句子在这里的意思。",
+        "prompt": "你已经会画花，带着画本来到活动室。动笔前，你问管理员：Can I draw here? 这句话在这里表达什么？",
+        "options": [
+          {
+            "id": "a",
+            "text": "宣布自己不会画画。"
+          },
+          {
+            "id": "b",
+            "text": "请求允许自己在这里画画。"
+          },
+          {
+            "id": "c",
+            "text": "询问对方会不会画花。"
+          }
+        ],
+        "answer": "b",
+        "explanation": "Can I draw here?在这里询问自己能否获准在这个地方画画；不是否认自己的能力，也没有问管理员会不会画。",
+        "hint": "读英文时，留意说话者问的是谁，以及here指哪里。",
+        "difficultyReason": "同一can在明确情境中区分许可和能力。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "24",
+          "alignment": "本轮目视PEP印刷24页Can I请求许可；本题以已经会画、动笔前问管理员限定地点许可。"
+        },
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "24",
+          "alignment": "本轮目视译林印刷24页draw及can绘画能力；用来与本题许可功能对照，不把两种can语境混为一谈。"
+        }
+      ],
+      "standaloneContext": "已会画花、来到活动室、动笔前询问管理员三项条件在题内自足。",
+      "ambiguityReview": "中文题干未先说请求允许作为答案；须读Can I draw here理解询问主体及地点许可。",
+      "optionNotes": {
+        "a": "英文没有否定词，而且题面已说明会画，不能说不会。",
+        "b": "已会画且动笔前向管理员发问，表达在此处画画的许可请求。",
+        "c": "I指提问者自己，并非you指向对方的能力询问。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b06",
+      "question": {
+        "id": "p4.astra.b06",
+        "goalId": "p4.ownership",
+        "type": "arrange",
+        "instruction": "用全部词块组成问句。",
+        "prompt": "整理箱里放着一副手套。你要问“这些是谁的手套？”",
+        "tokens": [
+          {
+            "id": "these",
+            "text": "these?"
+          },
+          {
+            "id": "whose",
+            "text": "Whose"
+          },
+          {
+            "id": "are",
+            "text": "are"
+          },
+          {
+            "id": "gloves",
+            "text": "gloves"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "whose",
+            "gloves",
+            "are",
+            "these"
+          ]
+        ],
+        "explanation": "Whose gloves问谁的手套；gloves是复数，后面用are these。",
+        "hint": "先想清楚要问主人还是问大小，再连起来读。",
+        "difficultyReason": "复数归属问句四块组句。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "39",
+          "alignment": "本轮目视译林印刷39页Whose gloves are these及复数衣物归属；本题为该基础句式的受控排序。"
+        }
+      ],
+      "standaloneContext": "题内给一副手套及问主人目的，英语gloves复数已在词块提供。",
+      "ambiguityReview": "these?和Whose的标点、大小写限定给定输出；不按中文一副错误推断英语单数。 词块或输入审阅：whose→gloves→are→these正确；whose→are→gloves→these不能构成所需句子。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "whose",
+              "gloves",
+              "are",
+              "these"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "whose",
+              "are",
+              "gloves",
+              "these"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b07",
+      "question": {
+        "id": "p4.astra.b07",
+        "goalId": "p4.ownership",
+        "type": "choice",
+        "instruction": "选一句合适的回答。",
+        "prompt": "鞋盒上已经写明这双鞋属于Leo。有人问你：Whose shoes are these?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They're Ben's."
+          },
+          {
+            "id": "b",
+            "text": "They're Leo."
+          },
+          {
+            "id": "c",
+            "text": "They're Leo's."
+          }
+        ],
+        "answer": "c",
+        "explanation": "Leo's表示Leo的，符合鞋盒上的名字。Ben's说成Ben的；只说Leo没有表达所属关系。",
+        "hint": "先核对名字，再检查是否说出了所属关系。",
+        "difficultyReason": "同时核对主人和姓名所有格，不展示mine/yours作为干扰。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "48、51",
+          "alignment": "本轮目视PEP印刷48、51页姓名所有格及单复数归属回答；已审替题保留Leo主人，改用Ben's作另一主人干扰。"
+        }
+      ],
+      "standaloneContext": "鞋盒明确标Leo，题面问这双鞋的主人；不靠故事人物身份。",
+      "ambiguityReview": "按已审替题去掉mine及自己措辞；人名不带's不能表达这里的归属。",
+      "optionNotes": {
+        "a": "Ben所有格形式成立，但与鞋盒标明的Leo主人不一致。",
+        "b": "只用Leo人名，缺少表达属于Leo的所有格标记。",
+        "c": "Leo所有格同时保留正确主人和所属关系，符合题内标签。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b08",
+      "question": {
+        "id": "p4.astra.b08",
+        "goalId": "p4.clothes",
+        "type": "listeningChoice",
+        "instruction": "听录音，选一个答案。",
+        "prompt": "试衣间里有人谈到自己穿的裤子。请记录录音明确说出的情况。",
+        "options": [
+          {
+            "id": "a",
+            "text": "裤子太长。"
+          },
+          {
+            "id": "b",
+            "text": "裤子太短。"
+          },
+          {
+            "id": "c",
+            "text": "裤子太贵。"
+          }
+        ],
+        "answer": "a",
+        "explanation": "too long表示太长；too short才是太短；录音没有说价格。",
+        "hint": "听清too后面的描述词。",
+        "difficultyReason": "一句试衣反馈中辨别长度，非大小或价格。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "38",
+          "alignment": "本轮目视译林印刷38页trousers are too long的试衣长度表达；本题改为These trousers一句听辨。"
+        }
+      ],
+      "standaloneContext": "裤子情况由本题试衣录音说明，不需要人物身材图。",
+      "ambiguityReview": "只记明确说出的长度；没有价格信息；待实听too long和整体清晰度。",
+      "optionNotes": {
+        "a": "too long明确说明裤子太长，正是需要记录的长度问题。",
+        "b": "too short才是太短，与脚本中的long方向相反。",
+        "c": "脚本没有价格或贵的评价，不能自行增加价格问题。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "These trousers are too long."
+    },
+    {
+      "id": "p4.astra.b09",
+      "question": {
+        "id": "p4.astra.b09",
+        "goalId": "p4.clothes",
+        "type": "completion",
+        "instruction": "从it、them中选一词填入。",
+        "prompt": "你指着一双手套，希望试戴：Can I try ____ on?",
+        "acceptedAnswers": [
+          "them"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "explanation": "gloves用复数，代指它们用them；try them on表示试戴或试穿它们。",
+        "hint": "这次指的是两只手套。",
+        "difficultyReason": "在完整许可句框中选择复数宾语代词。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "58",
+          "alignment": "本轮目视PEP印刷58页Can I try them on及代词在try/on之间；本题保留句架。"
+        },
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "39",
+          "alignment": "本轮目视译林印刷39页gloves复数词形；本题以手套明确复数指代对象。"
+        }
+      ],
+      "standaloneContext": "题面明说一双手套并要试戴，指令限定it/them。",
+      "ambiguityReview": "有候选范围，these等其他可成句表达不在任务范围内；仍为键盘输入单空。 词块或输入审阅：them代复数手套；it错误代为单数，不接受。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "them"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "it"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b10",
+      "question": {
+        "id": "p4.astra.b10",
+        "goalId": "p4.prices",
+        "type": "choice",
+        "instruction": "选一句合适的回答。",
+        "prompt": "一件衬衫价签写着人民币三十元。顾客问：How much is this shirt? 你按价签回答。",
+        "options": [
+          {
+            "id": "a",
+            "text": "It's thirty yuan."
+          },
+          {
+            "id": "b",
+            "text": "It's very nice."
+          },
+          {
+            "id": "c",
+            "text": "It's fifty yuan."
+          }
+        ],
+        "answer": "a",
+        "explanation": "thirty yuan是三十元；nice只评价外观；fifty是五十，与价签不同。",
+        "hint": "价格要同时对上数额和元。",
+        "difficultyReason": "整十价格表达，区分数额错误与答非所问，不要求计算。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "61",
+          "alignment": "本轮目视PEP印刷61页单件询价和报价；三十元是目标内整十数额迁移，不做实际消费计算。"
+        }
+      ],
+      "standaloneContext": "人民币三十元价签和顾客对衬衫的问句都直接给出。",
+      "ambiguityReview": "只报单件价格，不做找零、折扣或币种推断。",
+      "optionNotes": {
+        "a": "thirty yuan正好对应人民币三十元的明示价签。",
+        "b": "very nice只评价衣服，并未回答顾客所问的价格。",
+        "c": "fifty yuan是五十元，与三十元价签不相符。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b11",
+      "question": {
+        "id": "p4.astra.b11",
+        "goalId": "p4.prices",
+        "type": "matching",
+        "instruction": "把问题和回应配对，每项一次。",
+        "prompt": "你给商店整理两张服务卡，一张用于问价，一张用于请求试穿。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "Can I try these shoes on?"
+          },
+          {
+            "id": "l2",
+            "text": "How much is this coat?"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "It's sixty yuan."
+          },
+          {
+            "id": "r2",
+            "text": "Of course. Here you are."
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "explanation": "试穿请求接许可与递物回应；How much接价格。两句都在商店使用，但目的不同。",
+        "hint": "分别找“允许”和“报价”。",
+        "difficultyReason": "区分同一购物场景两种交际功能。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "58、61",
+          "alignment": "本轮目视PEP印刷58页试穿请求与Of course/Here you are，61页询价与报价；本题比较两个购物意图的直接回应。"
+        }
+      ],
+      "standaloneContext": "两张卡分别是试穿请求和价格问题，所有候选回应都在题内。",
+      "ambiguityReview": "评直接答所问的信息，不断言真实店员绝不能在试穿时顺便报价；这里配对意图明确。 词块或输入审阅：l1试穿配r2许可递物；l2询价配r1六十元；反配均未直接回应。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b12",
+      "question": {
+        "id": "p4.astra.b12",
+        "goalId": "p4.seasons",
+        "type": "arrange",
+        "instruction": "以In开头，用全部词块组句。",
+        "prompt": "你在季节活动册里写“冬天，我们去滑冰”。活动和季节都已给定。",
+        "tokens": [
+          {
+            "id": "we",
+            "text": "we"
+          },
+          {
+            "id": "skate",
+            "text": "go skating."
+          },
+          {
+            "id": "winter",
+            "text": "In winter,"
+          }
+        ],
+        "acceptedOrders": [
+          [
+            "winter",
+            "we",
+            "skate"
+          ]
+        ],
+        "explanation": "In winter放在句首表示冬天，we go skating说明活动。",
+        "hint": "题目要求先说季节，再说活动。",
+        "difficultyReason": "季节状语在前的三块句子，活动词组整体保留。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "33",
+          "alignment": "本轮目视译林印刷33页In winter与We go skating；本题承认沿用基础活动组合，排序限制由指令明确给定。"
+        }
+      ],
+      "standaloneContext": "中文直接给冬天与滑冰，并指定In开头。",
+      "ambiguityReview": "不因滑冰推所有地区季节；只表达这份活动册所写事实，词块标点也限定句首季节。 词块或输入审阅：winter→we→skate满足指令；we→winter→skate不以In开头且标点不合指定表达。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "winter",
+              "we",
+              "skate"
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": [
+              "we",
+              "winter",
+              "skate"
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b13",
+      "question": {
+        "id": "p4.astra.b13",
+        "goalId": "p4.seasons",
+        "type": "listeningChoice",
+        "instruction": "听录音，选一个季节。",
+        "prompt": "有人介绍一项划船活动。只选对方实际说出的季节，不按自己的生活经验猜。",
+        "options": [
+          {
+            "id": "a",
+            "text": "春天"
+          },
+          {
+            "id": "b",
+            "text": "夏天"
+          },
+          {
+            "id": "c",
+            "text": "秋天"
+          }
+        ],
+        "answer": "b",
+        "explanation": "in summer明确说明夏天；划船并不只在某一个季节发生。",
+        "hint": "听in后面的季节词。",
+        "difficultyReason": "将熟悉活动与不同季节组合，听取明示信息。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "32、33",
+          "alignment": "本轮目视译林印刷32、33页四季、划船及季节活动句；本题特意另配夏天划船，不让正文春季划船代替听辨。"
+        }
+      ],
+      "standaloneContext": "只选本题录音说出的季节，用户自己的经验不参与判分。",
+      "ambiguityReview": "划船不限春天；录音summer才是事实。已审脚本并未实听。",
+      "optionNotes": {
+        "a": "春天不是脚本所说的季节，不能照搬教材划船搭配。",
+        "b": "summer直接表示夏天，须按本段录音确定。",
+        "c": "录音没有说秋天，活动可以秋天发生也不能替代听到的事实。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        }
+      ],
+      "audioScript": "We go boating in summer."
+    },
+    {
+      "id": "p4.astra.b14",
+      "question": {
+        "id": "p4.astra.b14",
+        "goalId": "p4.ability",
+        "type": "completion",
+        "instruction": "填表示“不能”的词或缩写。",
+        "prompt": "窗外没有树，只有房屋；题中观察者确实看不见树。他说：I ____ see a tree.",
+        "acceptedAnswers": [
+          "cannot",
+          "can't",
+          "can’t"
+        ],
+        "normalization": {
+          "ignoreCase": true,
+          "ignoreTerminalPunctuation": true
+        },
+        "explanation": "cannot或can't表示不能；这里明确是看不见，不是禁止看。",
+        "hint": "can的否定形式，完整或缩写都可以。",
+        "difficultyReason": "可见事实给定，填写情态动词否定，接受两种撇号。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "24、25",
+          "alignment": "本轮目视译林印刷24、25页can see及可见物表达；cannot/can't为该目标的受控否定迁移，不声称这些页逐字出现cannot。"
+        }
+      ],
+      "standaloneContext": "看不见树的事实明确给出，指令要求表示不能的词或缩写。",
+      "ambiguityReview": "不接受can这个反向事实，也不把不看见don't当作所限定不能；接收完整形式及两种撇号。 词块或输入审阅：cannot、can't、can’t都接受；can表示能看见，语义反向。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "cannot"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can't"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can’t"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "can"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b15",
+      "question": {
+        "id": "p4.astra.b15",
+        "goalId": "p4.ability",
+        "type": "choice",
+        "instruction": "选一句合适的回答。",
+        "prompt": "同伴问：Can you draw a boat? 你扮演一位会画船的孩子，应怎样肯定回答自己的能力？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, you can."
+          },
+          {
+            "id": "b",
+            "text": "Yes, they can."
+          },
+          {
+            "id": "c",
+            "text": "Yes, I can."
+          }
+        ],
+        "answer": "c",
+        "explanation": "同伴问的是你。你回答自己的能力时用I；you把能力说成对方的，they则说成其他人的。",
+        "hint": "回答者现在是在说明谁的能力？",
+        "difficultyReason": "在肯定能力回答中区分三个说话视角，不暴露另一题的否定词形。"
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "24、25",
+          "alignment": "本轮目视译林印刷24、25页绘画能力提问与回应；已审替题保留我能的肯定回答，用不同人称作干扰。"
+        }
+      ],
+      "standaloneContext": "题面明确用户扮演会画船的孩子，正在回答同伴对自己的能力问题。",
+      "ambiguityReview": "保留已审替题Yes,they can，去掉会直接给B14否定词形的旧干扰；共同人称知识仍有教学支架。",
+      "optionNotes": {
+        "a": "you把会画船的能力说成对方的，没有自述作答者。",
+        "b": "they指其他人，不是题内正在回答自己能力的孩子。",
+        "c": "I由作答者自述会画船，肯定回答符合题内事实。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b16",
+      "question": {
+        "id": "p4.astra.b16",
+        "goalId": "p4.clothes",
+        "type": "cloze",
+        "instruction": "选词填空，每块一次。",
+        "prompt": "分别记录一件连衣裙和一条短裤的大小。补全两句。",
+        "passage": "This dress {s1} too small.\nThese shorts {s2} too big.",
+        "tokens": [
+          {
+            "id": "are",
+            "text": "are"
+          },
+          {
+            "id": "is",
+            "text": "is"
+          }
+        ],
+        "explanation": "This dress是单数，用is；These shorts是复数，用are。small和big已给，不需要判断真实衣物尺寸。",
+        "hint": "分别看两句在描述什么衣物。",
+        "difficultyReason": "两句联合比较单复数be，词汇均在已核读衣物场景内。",
+        "acceptedFills": [
+          [
+            {
+              "slotId": "s1",
+              "tokenId": "is"
+            },
+            {
+              "slotId": "s2",
+              "tokenId": "are"
+            }
+          ]
+        ]
+      },
+      "references": [
+        {
+          "sourceId": "yilin.primary4.lower.2013",
+          "pages": "38、39",
+          "alignment": "本轮目视译林印刷38、39页dress与shorts衣物、单复数描述；本题保留已审shorts替代gloves的两空。"
+        }
+      ],
+      "standaloneContext": "This dress和These shorts主语已明确，太小/太大也已给；只补be形式。",
+      "ambiguityReview": "shorts为复数不能按中文一条判单数；dress末尾ss不代表复数。两块两空可排除，测量有限。 词块或输入审阅：唯一完整组合s1=is、s2=are；反放使两个主语都与be不一致。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "is"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "are"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "are"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "is"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b17",
+      "question": {
+        "id": "p4.astra.b17",
+        "goalId": "p4.ownership",
+        "type": "matching",
+        "instruction": "把说话场景和句子配对，每项一次。",
+        "prompt": "帽子是你的。①你向同伴说明这是谁的帽子。②同伴把帽子递还给你，也说出帽子是谁的。把两人说的话分别配好。",
+        "left": [
+          {
+            "id": "l1",
+            "text": "你向同伴说"
+          },
+          {
+            "id": "l2",
+            "text": "同伴向你说"
+          }
+        ],
+        "right": [
+          {
+            "id": "r1",
+            "text": "It's yours."
+          },
+          {
+            "id": "r2",
+            "text": "It's mine."
+          }
+        ],
+        "answerPairs": [
+          {
+            "left": "l1",
+            "right": "r2"
+          },
+          {
+            "left": "l2",
+            "right": "r1"
+          }
+        ],
+        "explanation": "主人没变，但说话者变了：你说自己的用mine，同伴对你说你的用yours。",
+        "hint": "每次重新确认是谁在说话。",
+        "difficultyReason": "同一物品不换主人，只切换说话视角。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "48、51",
+          "alignment": "本轮目视PEP印刷48、51页yours与mine的归属视角；本题同一帽子固定主人、切换说话者。"
+        }
+      ],
+      "standaloneContext": "帽子始终属于用户；两行明确用户向同伴说及同伴向用户说。",
+      "ambiguityReview": "不是换主人或赠送，只换说话者。双场景中文仍需儿童试读，未自行缩改已审正文。 词块或输入审阅：l1用户说配r2 mine；l2同伴向用户说配r1 yours；反配都会改变主人。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "p4.astra.b18",
+      "question": {
+        "id": "p4.astra.b18",
+        "goalId": "p4.prices",
+        "type": "choice",
+        "instruction": "选一个合适的问题。",
+        "prompt": "你看中一顶蓝色帽子，但找不到价签。你想问店员这顶帽子多少钱，应问哪句？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Is it blue?"
+          },
+          {
+            "id": "b",
+            "text": "How much is it?"
+          },
+          {
+            "id": "c",
+            "text": "Whose hat is it?"
+          }
+        ],
+        "answer": "b",
+        "explanation": "How much is it?询问这顶帽子的价格；Is it blue?问颜色；Whose hat is it?问主人。后两句不能问到价格。",
+        "hint": "帽子的颜色已知，价格还不知道。",
+        "difficultyReason": "在简短购物情境中，区分询问价格、颜色与主人三种信息。"
+      },
+      "references": [
+        {
+          "sourceId": "pep.primary4.lower.2013",
+          "pages": "61",
+          "alignment": "本轮目视PEP印刷61页How much is it单件询价；本题由用户直接向店员问帽子价格，未再设第三方代问。"
+        }
+      ],
+      "standaloneContext": "帽子蓝色已知、价钱未知、问店员的目的明确，不依赖其他人物故事。",
+      "ambiguityReview": "只选择能获取价格的问题，不需要知道实际售价或推主人。",
+      "optionNotes": {
+        "a": "只问帽子是否蓝色，颜色已给且不是要获取的价格。",
+        "b": "How much is it直接询问眼前这顶帽子的售价。",
+        "c": "Whose询问物品归属，不能直接问到售价。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
