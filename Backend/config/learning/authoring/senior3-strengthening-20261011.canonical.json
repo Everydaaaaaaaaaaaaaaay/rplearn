@@ -1,0 +1,647 @@
+{
+  "id": "companion.senior3.umbrella-kindness",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior3",
+  "title": "伞下的一分钟",
+  "summary": "一把陌生人的伞，让米娜把善意带上了火车。",
+  "scene": "米娜在小车站遇见短暂的善意，又在火车上把它传递下去。",
+  "estimatedMinutes": 20,
+  "goalIds": [
+    "senior3.argument-evidence-link",
+    "senior3.complex-record-scope",
+    "senior3.clarification-register",
+    "senior3.listen-discourse-position",
+    "senior3.interview-summary",
+    "senior3.reported-claim-status",
+    "senior3.listen-scope-record",
+    "senior3.controlled-information-revision"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "pep.senior3.archive20260929",
+      "unit": "选择性必修第四册：论点、证据及论证修订任务",
+      "pages": "PDF39–40／印刷32–33",
+      "alignment": "作者于2026-10-11实际核读两页完整抽取正文，未渲染图片。借鉴识别论点与证据、解释支持关系、评价来源可靠性及修订论证的任务目标。公开社区存档，未核实印次；不声称全年或全册覆盖。材料均原创，不使用未经视觉核验的图表数据。"
+    },
+    {
+      "sourceId": "fltrp.senior3.archive20260929",
+      "unit": "选择性必修第四册：澄清、名词从句与访谈听记任务",
+      "pages": "PDF49、60、62／印刷42、53、55",
+      "alignment": "作者于2026-10-11实际核读三页完整抽取正文，未听教材音轨。借鉴请求澄清、名词从句承载已知及待解释内容、访谈记录解释与未确认部分的任务目标。公开社区存档，未核实印次；不声称全套覆盖，不将页码虚构为deny等每个句法形式的直接出处。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "高三独立Astra作者",
+    "reviewedBy": "主代理逐题主审；结构适配代理逐项核对",
+    "reviewedAt": "2026-10-11",
+    "reviewNotes": "18题已审核作者稿无损适配，程序仅用于保存与验证。开场双语故事完整前置；新增提示只引导操作，不采用作者最短解答路径。5道听力保留原题型且音频pending，无伪assetId；4项拟新增目标未注册。本稿为隔离待媒体稿，非发布批准，详见canonical-review。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Mina was waiting outside a small station when a gust turned her umbrella inside out. A stranger held his umbrella over her while she pushed the metal arms back into place. Neither of them said much. When Mina thanked him, he smiled and hurried towards an arriving taxi. She never learnt his name.",
+      "translation": "米娜在一座小车站外等车，一阵风把她的伞吹翻了。一位陌生人把自己的伞撑到她头上，她趁机把金属伞骨推回原位。两人没说多少话。米娜道谢时，他笑了笑，匆匆走向一辆刚到的出租车。她始终不知道他的名字。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "On the train, she noticed a little boy struggling to lift his bag onto the shelf. She stood up to help. Later, in her notebook, she drew two umbrellas: one broken, one open. Under them she wrote, 'A brief kindness can travel further than the person who began it.' The rain followed the train for a while, but she no longer minded it.",
+      "translation": "上了火车，她看到一个小男孩正费劲地把包举到行李架上，便起身帮忙。后来，她在笔记本上画了两把伞：一把翻折，一把撑开。下面写着：‘短暂的善意，可以比最先付出它的人走得更远。’雨跟着火车下了一阵，她却不再介意。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "s3.strength.01",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "instruction": "选择例证在论证中发挥的作用。",
+      "prompt": "The town plans to replace its printed walking guide with an app. Supporters point out that an app can update a closed path immediately, whereas printed copies may remain in circulation for months. The editor accepts this advantage but opposes removing the printed guide. During last winter's power failure, visitors used paper maps to find the emergency shelter. That incident does not show that paper is usually more accurate; it shows that access matters as well as accuracy. The editor therefore proposes a small print run alongside the app, with the printing cost reviewed after a year. She is defending a backup, rather than rejecting the new technology.\n\n文中停电事件在论证中主要起什么作用？",
+      "explanation": "停电时纸图仍能引路，把评价维度从更新准确性扩展到可获取性。作者仍支持app，并未给出印量计算。",
+      "hint": "结合例证前后的解释判断它支持什么评价维度。",
+      "difficultyReason": "高三强化：109词左右论证中辨认例证与评价标准的连接。",
+      "options": [
+        {
+          "id": "a",
+          "text": "证明纸质路线的信息通常比手机路线更新。"
+        },
+        {
+          "id": "b",
+          "text": "说明评价导览方式还须考虑信息能否被获取。"
+        },
+        {
+          "id": "c",
+          "text": "解释编辑为何主张推迟推出手机应用一年。"
+        },
+        {
+          "id": "d",
+          "text": "为下一年印刷数量的具体计算提供依据。"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.strength.02",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "instruction": "根据目标、证据和资源选择行动。",
+      "prompt": "A youth centre tested whether moving its chess sessions from Friday to Tuesday would help more members attend. The same twelve members were invited to both sessions, and ten attended on Tuesday compared with six on Friday. Four of the Tuesday visitors said that Friday music lessons had previously kept them away. The centre has a room and a volunteer available on either evening next term, and its stated aim is to make these sessions accessible to this group. A member suggests waiting until a hundred people have been surveyed. The coordinator replies that the current evidence is sufficient for a decision about these twelve members, though a programme for the whole town would require wider consultation.\n\n依据材料中明确的目标和资源条件，哪项行动最有根据？",
+      "explanation": "同一组的出席比较、四人的具体时间冲突及两晚均有资源，共同支持对这十二人的周二安排。有限范围的证据可以支持有限范围的行动，无需一律等待更大调查。",
+      "hint": "核对行动服务的对象是否与材料中的决策范围一致。",
+      "difficultyReason": "高三强化：约117词，综合目标、群体、出席和可行性作明确决策。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep Friday sessions until the centre can survey a hundred people."
+        },
+        {
+          "id": "b",
+          "text": "Move the town's youth activities to Tuesday using this attendance comparison."
+        },
+        {
+          "id": "c",
+          "text": "Offer these members Tuesday chess sessions next term and monitor attendance."
+        },
+        {
+          "id": "d",
+          "text": "Alternate the two evenings because the comparison gives neither evening an advantage."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.strength.03",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "instruction": "选择与两部分核查方法相符的一项。",
+      "prompt": "An online archive invited volunteers to describe old street photographs. At first, each person worked alone, and editors received several confident but conflicting descriptions of the same images. The archive then displayed earlier comments before accepting new ones. Agreement increased sharply. The manager welcomed the change, but historian Eva was less impressed. If later volunteers merely followed the first confident comment, she argued, agreement would reveal influence rather than accuracy. She proposed asking a separate group to examine the photographs without seeing any comments, then comparing their descriptions with dated street records. Her objection was not to cooperation itself: she wanted a way to discover whether the new agreement rested on evidence that was independent of the discussion.\n\nEva提出另设一组并查街道记录，主要要解决什么问题？",
+      "explanation": "独立描述切断跟随首条评论的路径，带日期记录提供外部核对依据；两步合起来区分证据支持的一致与相互影响的一致。",
+      "hint": "分别考虑不看评论和核对记录各自能解决什么问题。",
+      "difficultyReason": "高三强化：约119词，整合问题机制与两部分方法的作用。",
+      "options": [
+        {
+          "id": "a",
+          "text": "是否能在不互看评论时仍得到与外部记录相符的描述。"
+        },
+        {
+          "id": "b",
+          "text": "是否能让原组参与者更快接受管理者对一致性的评价。"
+        },
+        {
+          "id": "c",
+          "text": "是否能通过增加评论数量减少编辑的审核责任。"
+        },
+        {
+          "id": "d",
+          "text": "是否能证实最早发言者比后来者熟悉街道历史。"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "s3.strength.04",
+      "goalId": "senior3.complex-record-scope",
+      "type": "choice",
+      "instruction": "阅读长句，选择准确记录。",
+      "prompt": "阅读：The scholarships that the committee, having reviewed the applications submitted before June, recommended for renewal will be paid in September, provided that the recipients remain enrolled. 哪条记录保留了修饰范围和支付条件？renewal指续发；enrolled指在读。",
+      "explanation": "主干是scholarships will be paid；关系从句限定委员会推荐续发的奖学金，having reviewed说明审核先于推荐；provided that给支付条件。",
+      "hint": "先找主干，再检查修饰语的范围与支付条件。",
+      "difficultyReason": "高三强化：多层修饰中恢复主干、先后与条件，术语只用于答后解释。",
+      "options": [
+        {
+          "id": "a",
+          "text": "六月之前提交的所有申请均获续发，九月付款无需再看在读状态。"
+        },
+        {
+          "id": "b",
+          "text": "委员会将在九月审核六月之前的申请，再决定是否推荐续发。"
+        },
+        {
+          "id": "c",
+          "text": "已获推荐续发的奖学金将在九月支付，领取者须保持在读状态。"
+        },
+        {
+          "id": "d",
+          "text": "六月之后提交但保持在读的申请人也已获委员会推荐续发。"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "s3.strength.05",
+      "goalId": "senior3.clarification-register",
+      "type": "choice",
+      "instruction": "选择适合当前沟通任务的表达。",
+      "prompt": "你写信给尚未见过的实习指导老师。她已确认收到草稿，却没有说明反馈时间。你必须在周四下午交终稿。哪句既交代实际期限，又请求对安排有用的信息，不凭空声称她违约？",
+      "explanation": "b陈述自己的期限并询问预期时间；未把未承诺的反馈时间写成逾期或确认安排。",
+      "hint": "区分对方已经确认的内容与你仍需要询问的内容。",
+      "difficultyReason": "高三应用：语域、信息准确和请求目的同时匹配；不能仅数礼貌词。",
+      "options": [
+        {
+          "id": "a",
+          "text": "As your feedback is overdue, please send it before I submit the final version on Thursday afternoon."
+        },
+        {
+          "id": "b",
+          "text": "My final version is due on Thursday afternoon. Could you let me know when I can expect your feedback?"
+        },
+        {
+          "id": "c",
+          "text": "I look forward to receiving your feedback whenever convenient; there is no particular deadline to consider."
+        },
+        {
+          "id": "d",
+          "text": "Thank you for confirming that your feedback will arrive before my Thursday afternoon deadline."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "s3.strength.06",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "matching",
+      "instruction": "配对三种回应与论证动作；右侧有一项不用。",
+      "prompt": "短评原主张是“校内每间自习室都应禁用交谈”。将三种回应与其实际完成的论证动作配对。右侧有一个不用的选项，每项最多用一次。",
+      "explanation": "l1区别场所；l2质疑从一间推到每间；l3让步接受效果仍提出表达练习需要。没有一句给出安静不能改善注意力的实证。",
+      "hint": "判断每条回应改变的是适用范围、证据要求还是讨论角度。",
+      "difficultyReason": "高三强化：功能相邻的三种回应，保留一个真实近邻干扰，不能靠末项消元全对。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Silent rooms are valuable. Rooms reserved for group projects, however, need a different rule."
+        },
+        {
+          "id": "l2",
+          "text": "That conclusion rests on complaints from one room; we should examine how the other rooms are used."
+        },
+        {
+          "id": "l3",
+          "text": "Even if silence improved concentration in every room, students would still need somewhere to practise presentations."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "保留主张在一类场所的适用性，排除另一类。"
+        },
+        {
+          "id": "r2",
+          "text": "指出现有证据覆盖范围不足以支撑原范围。"
+        },
+        {
+          "id": "r3",
+          "text": "暂接受对方的效果前提，另提出未解决的需要。"
+        },
+        {
+          "id": "r4",
+          "text": "提出观察，直接否定安静能够改善注意力。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s3.strength.07",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "instruction": "听讨论，选择最终安排。",
+      "prompt": "听活动策划讨论。最后确定的安排是什么？",
+      "explanation": "最初方案被修订；后续澄清保留诗人朗读，最终begin、then、final明确四阶段。",
+      "hint": "区分最初提议、追问与后续确定的安排。",
+      "difficultyReason": "高三听力强化：跟踪方案变更与否定误解，不按初次提及顺序抄。",
+      "options": [
+        {
+          "id": "a",
+          "text": "诗人朗读→学生提问→学生作品→诗人回应。"
+        },
+        {
+          "id": "b",
+          "text": "学生作品→诗人回应→诗人朗读→学生提问。"
+        },
+        {
+          "id": "c",
+          "text": "学生作品→学生提问→诗人回应，不安排诗人朗读。"
+        },
+        {
+          "id": "d",
+          "text": "诗人回应→诗人朗读→学生作品→学生提问。"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "text": "I thought we'd invite the poet to read her work and then let students ask questions. That could work, but she says she would prefer to hear the students' writing first. Does that mean she won't read anything herself? No, she'll still read. We'll begin with three student pieces, invite her to respond, and then hear one of her poems. We can keep the questions for the final ten minutes.",
+        "status": "pending"
+      }
+    },
+    {
+      "id": "s3.strength.08",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "instruction": "听说明，选择现在应采取的行动。",
+      "prompt": "听馆员向学生介绍借阅新规。哪项是学生现在应做的事？",
+      "explanation": "纠正的是邮件范围，不是系统日期；区分活动参考书和普通借阅后，各自按对应日期处理。",
+      "hint": "留意不同借阅类别是否适用同一规则。",
+      "difficultyReason": "高三听力应用：转述传言、纠正范围和行动要求整合。",
+      "options": [
+        {
+          "id": "a",
+          "text": "把普通借书与活动参考书都改为不晚于周三归还。"
+        },
+        {
+          "id": "b",
+          "text": "等账户更新后，再确认活动参考书是否要还。"
+        },
+        {
+          "id": "c",
+          "text": "活动参考书不晚于周三归还，普通借书按账户原到期日归还。"
+        },
+        {
+          "id": "d",
+          "text": "活动参考书保留原日期，普通借书不晚于周三归还。"
+        }
+      ],
+      "answer": "c",
+      "audio": {
+        "text": "You may have heard that every book must be returned by Wednesday. That message was about the reference books used in last week's workshop, not ordinary loans. If you've borrowed one of those workshop books, bring it to the desk by Wednesday. Your other loans keep their original due dates. The online account will show those dates correctly, even though the email didn't make the distinction clear.",
+        "status": "pending"
+      }
+    },
+    {
+      "id": "s3.strength.09",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "completion",
+      "instruction": "从题面词库选择一个完整表达填空。",
+      "prompt": "评论先说在线展示使外地人也能观看，随后转入筹备过程中的另一项好处。仅从In addition、Furthermore、As a result中选一个填入，不改后句：The online exhibition reaches people outside the city. ___, preparing descriptions gave our volunteers useful writing practice. 后句说的是筹备带来的额外收益，不声称远程观众造成写作练习。",
+      "explanation": "两项好处并列补充，In addition与Furthermore都自然；As a result会把外地人能观看写成志愿者练笔的原因。",
+      "hint": "比较前后两项收益之间的逻辑关系。",
+      "difficultyReason": "受控衔接应用：依据两命题关系选连接表达，非高难自由写作。",
+      "acceptedAnswers": [
+        "In addition",
+        "Furthermore"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s3.strength.10",
+      "goalId": "senior3.interview-summary",
+      "type": "arrange",
+      "instruction": "用全部词块组成两句，保留原事实。",
+      "prompt": "事实：委员会仍未决定是否提供助学金；已确认决定作出后会公布理由。用全部词块组成两句，保持事实，不要求固定先后。",
+      "explanation": "a+b保留是否提供仍待决定；c+d保留决定作出后公开理由。第二句内部once it has been reached已经给出明确时点，因此两句前后互换仍完整自然。",
+      "hint": "先让每句的主语和谓语表达完整，再核对时间与未决状态。",
+      "difficultyReason": "高三受控表达：名词从句主语与承诺内容，不靠固定句首强行排除完整解。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "Whether financial support will be offered"
+        },
+        {
+          "id": "b",
+          "text": "has yet to be decided."
+        },
+        {
+          "id": "c",
+          "text": "The reasons for the decision"
+        },
+        {
+          "id": "d",
+          "text": "will be made public once it has been reached."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        [
+          "c",
+          "d",
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "id": "s3.strength.11",
+      "goalId": "senior3.reported-claim-status",
+      "type": "completion",
+      "instruction": "按给定动词和形式要求完成转述。",
+      "prompt": "财务员说：I did not approve the extra charge. 审核记录尚未核对。请用deny的现在时和approve的动名词形式转述他的否认；可用简单式或完成式，不改其余文字：The accounts officer ___ the extra charge; the records still need to be checked.",
+      "explanation": "两种形式均可转述对过去批准行为的否认；having approved更明确标记先前行为。denies只报告他的说法，不能代替独立核查确认他确实未批准。",
+      "hint": "转述应保留说话者的否认以及记录尚未核查的状态。",
+      "difficultyReason": "高三受控转述：保持说话者归属、否认与事实核实的区别；接受自然完成式。",
+      "acceptedAnswers": [
+        "denies approving",
+        "denies having approved"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s3.strength.12",
+      "goalId": "senior3.listen-scope-record",
+      "type": "dictation",
+      "instruction": "听录音，写出完整句子，可重播。",
+      "prompt": "听录音，写出完整句子。每次可以重播。",
+      "explanation": "excludes与includes方向相反，travel不在估价内，meals在估价内；不能漏掉表示对照的but。",
+      "hint": "留意两个动词表达的范围方向。",
+      "difficultyReason": "基础听记支架：7词，对比估价所含范围，不计作高阶长篇听力。",
+      "acceptedAnswers": [
+        "The estimate excludes travel but includes meals."
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      },
+      "audio": {
+        "text": "The estimate excludes travel but includes meals.",
+        "status": "pending"
+      }
+    },
+    {
+      "id": "s3.strength.13",
+      "goalId": "senior3.listen-discourse-position",
+      "type": "listeningChoice",
+      "instruction": "听对话，判断主管最后回应的含义。",
+      "prompt": "听实习生与主管的对话。主管最后的回应对实习生的建议表达了什么？",
+      "explanation": "积极评价不等于授权拍摄；最后一句把内容草稿和审核放在录制之前，而非仅在公开之前。",
+      "hint": "区分积极评价与获准执行的下一步。",
+      "difficultyReason": "高三听力强化：区分认可、指令和许可条件，三种言语行为跨轮次整合。",
+      "options": [
+        {
+          "id": "a",
+          "text": "认可节时价值，并已授权明天按现有内容拍摄。"
+        },
+        {
+          "id": "b",
+          "text": "对建议有兴趣，先写内容，安全员审核后才能开始录制。"
+        },
+        {
+          "id": "c",
+          "text": "认为例子有用，但已决定继续仅用现场讲解。"
+        },
+        {
+          "id": "d",
+          "text": "授权先录制，随后由安全员决定是否公开。"
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "text": "Could we put the safety briefing on a video? New staff could watch it before their first shift. I can see how that would save time, and the examples you suggest sound useful. Shall I start filming tomorrow, then? Please draft the content first. I'm interested in the idea, but we need the safety officer to review it before any recording begins.",
+        "status": "pending"
+      }
+    },
+    {
+      "id": "s3.strength.14",
+      "goalId": "senior3.clarification-register",
+      "type": "matching",
+      "instruction": "将信息缺口与追问配对；右侧有一项不用。",
+      "prompt": "你在修订志愿活动邮件。将每个已经明确的信息缺口与最直接、不过度重复已知事实的追问配对。右侧有一个不用的选项。",
+      "explanation": "到场时点、装备具体项目、迟到联系人分别对应缺口；l1时长已知，询问时长不能解决arrive early的参照。",
+      "hint": "先确认哪些信息已知，再选择补足缺口的追问。",
+      "difficultyReason": "高三应用：阅读已知与未知，选择实际解决问题的礼貌追问；仍有关键词支架，不夸大高阶程度。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The coordinator confirmed a two-hour shift but wrote 'arrive early' without giving a start time."
+        },
+        {
+          "id": "l2",
+          "text": "You know the starting time and venue, but the email says 'bring protective equipment' without naming it."
+        },
+        {
+          "id": "l3",
+          "text": "The email specifies gloves and an eight o'clock start, but gives no contact for unexpected delays."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "What time should volunteers report for duty?"
+        },
+        {
+          "id": "r2",
+          "text": "Which protective items are volunteers expected to bring?"
+        },
+        {
+          "id": "r3",
+          "text": "Whom should I notify if I am held up on the way?"
+        },
+        {
+          "id": "r4",
+          "text": "Could you confirm how long the shift will last?"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "s3.strength.15",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "choice",
+      "instruction": "阅读说明，选择准确的删改记录。",
+      "prompt": "读校刊编辑说明：We removed the final paragraph, not because its conclusion was unpopular, but because the interview it relied on had been withdrawn. The earlier paragraphs refer to separate records and remain unchanged. 哪项准确概括删改理由与范围？",
+      "explanation": "not because排除观点受欢迎程度这一原因，but because引出资料撤回；第二句限定其他段落有独立来源，未改。",
+      "hint": "同时核对实际原因和受影响的段落范围。",
+      "difficultyReason": "高三强化：否定作用域、代词所指与跨句修订范围同时处理。",
+      "options": [
+        {
+          "id": "a",
+          "text": "观点不受欢迎，因此编辑删去全文中持同一观点的段落。"
+        },
+        {
+          "id": "b",
+          "text": "采访被撤回，因而此前引用不同记录的段落也必须删除。"
+        },
+        {
+          "id": "c",
+          "text": "编辑改变结论以保持采访可用，但保留全部段落。"
+        },
+        {
+          "id": "d",
+          "text": "末段所依赖的采访被撤回，该段被删；其他有独立记录的段落保留。"
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "s3.strength.16",
+      "goalId": "senior3.argument-evidence-link",
+      "type": "arrange",
+      "instruction": "用全部句块组段，建议在前、总结在后。",
+      "prompt": "建议暂留旧售票窗口。两项并列理由：有访客不熟悉售票机；有访客用现金，而新售票机暂不支持现金，旧窗口仍可收现金。用全部句块组成一段，以建议句开始、总结句结束；两个理由先后均可。",
+      "explanation": "建议在前，总结These needs回指两项理由。两条理由都明确以Some visitors引入，各自独立，无先后依赖；两种中间句序均自然。 题面已明确机器与窗口的现金能力，不能仅凭有人付现金就推定必须保留窗口。",
+      "hint": "检查中间理由是否都能支持首句，并由末句回扣。",
+      "difficultyReason": "高三受控篇章：主张—两条理由—回扣，四整句各自通顺，不能只靠句内语法排序。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "The staffed ticket window should remain open for now."
+        },
+        {
+          "id": "b",
+          "text": "Some visitors are unfamiliar with the machines."
+        },
+        {
+          "id": "c",
+          "text": "Some visitors need to pay in cash."
+        },
+        {
+          "id": "d",
+          "text": "These needs make a staffed option necessary during the change."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        [
+          "a",
+          "c",
+          "b",
+          "d"
+        ]
+      ]
+    },
+    {
+      "id": "s3.strength.17",
+      "goalId": "senior3.controlled-information-revision",
+      "type": "completion",
+      "instruction": "从给定词库选一个完整短语填空。",
+      "prompt": "向编辑提出受控修订建议。你同意保留访谈，但要附上采访日期，避免读者误以为它是本周录的。仅从accompanied by、presented with、replaced by中选一个完整短语填空：I suggest retaining the interview, ___ its recording date, to avoid giving the impression that it was recorded this week.",
+      "explanation": "accompanied by和presented with均使日期作为访谈的附加信息出现，保留访谈；replaced by把访谈替换为日期，与retaining及任务冲突。",
+      "hint": "核对修订动作是否同时保留访谈并补充必要信息。",
+      "difficultyReason": "高三受控修订：长句中建议行为、附带信息与避免误解的目的须一致；词库提供拼写支架。",
+      "acceptedAnswers": [
+        "accompanied by",
+        "presented with"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "s3.strength.18",
+      "goalId": "senior3.listen-scope-record",
+      "type": "audioArrange",
+      "instruction": "听录音，用全部词块还原原声。",
+      "prompt": "听录音，用全部词块还原原声顺序。",
+      "explanation": "acknowledge the concern表示承认顾虑值得回应，without accepting把它与接受所提方案分开；本题按原音排序。",
+      "hint": "留意两个行为各自对应的宾语。",
+      "difficultyReason": "基础听记支架：十词四块，巩固顾虑与方案分离，不等同自由协商能力。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "without accepting"
+        },
+        {
+          "id": "b",
+          "text": "the proposed solution"
+        },
+        {
+          "id": "c",
+          "text": "We can acknowledge"
+        },
+        {
+          "id": "d",
+          "text": "the concern"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "c",
+          "d",
+          "a",
+          "b"
+        ]
+      ],
+      "audio": {
+        "text": "We can acknowledge the concern without accepting the proposed solution.",
+        "status": "pending"
+      }
+    }
+  ]
+}

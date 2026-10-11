@@ -1,0 +1,663 @@
+{
+  "id": "companion.postgraduate.pocket-star-strengthening",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "postgraduate",
+  "title": "旧口袋里的星星",
+  "summary": "穿上旧外套出门，口袋里的一颗纸星星唤起了多年前的回忆。",
+  "scene": "一颗旧外套口袋里的纸星星，让普通的一次出门多了一段回忆。",
+  "estimatedMinutes": 20,
+  "goalIds": [
+    "cet6.mechanism-inference",
+    "cet6.stance-intent",
+    "cet6.argument-links",
+    "cet6.cross-source-reconciliation",
+    "cet6.faithful-rephrasing",
+    "cet6.agreement-action",
+    "cet6.listening-scope-stance",
+    "cet6.action-wording"
+  ],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {
+      "sourceId": "cet.official.2016",
+      "unit": "六级短材料的推断、观点归属、篇章关系、工作交流及受控表达教学切片",
+      "pages": "印刷1–4、8–9／PDF6–9、13–14",
+      "alignment": "保留逐题原创作者稿及主审修订。篇幅和听力长度均为教学切片，不等同正式整卷阅读、听力、写作或翻译；跨来源比较为依据综合分析能力细化的产品目标，待登记。"
+    }
+  ],
+  "authorship": {
+    "kind": "authored",
+    "author": "六级独立Astra作者；Codex逐题结构适配",
+    "reviewedBy": "主代理已逐题纸面主审；本次结构适配自检，媒体未审核",
+    "reviewedAt": "2026-10-11",
+    "reviewNotes": "18题及完整故事按2026-10-11已返修作者稿机械搬运，未由程序重造题干、候选或剧情；操作说明与提示逐题亲写。q17使用双方案回指新版。音频待制作，目标存在登记或语义覆盖缺口，当前不通过完整unitSchema，不可导入发布。"
+  },
+  "beats": [
+    {
+      "id": "opening.1",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "While looking for a warmer coat, you discover a paper star in an inside pocket. It is slightly crushed, and one edge has turned soft. You remember folding it on a late train with someone you have not seen for years. The two of you had missed a connection and spent the unexpected hour making small things from a discarded magazine.",
+      "translation": "找一件更暖的外套时，你从内侧口袋发现一颗纸星星。它有些压扁，一条边已经变软。你想起，多年前在一趟晚点的列车上，你曾与一个如今许久未见的人一起折过它。那天你们错过换乘，用多出来的一小时，把一本丢弃的杂志折成各种小东西。"
+    },
+    {
+      "id": "opening.2",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "You place the star beside your keys and put on the coat. Outside, a street musician is packing away a violin. Before closing the case, she plays a few quiet notes, apparently for herself. You stop until the last note fades.",
+      "translation": "你把星星放在钥匙旁，穿上外套出门。街头一位乐手正在收起小提琴。合上琴盒前，她又轻轻拉了几个音，像是只拉给自己听。你停下脚步，直到最后一个音消散。"
+    },
+    {
+      "id": "opening.3",
+      "afterQuestion": 0,
+      "speaker": "旁白",
+      "text": "Nothing remarkable has happened, yet the walk feels different. That evening, you smooth the star as gently as you can and leave it on the windowsill.",
+      "translation": "并没有什么了不起的事情发生，这段路走起来却有些不同。晚上，你尽量轻柔地抚平纸星星，把它留在窗台上。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet6.strength.01",
+      "goalId": "cet6.mechanism-inference",
+      "type": "choice",
+      "instruction": "阅读图书馆的记录，选择最能解释结果的一项",
+      "prompt": "A university library used to send an email whenever a borrowed book became overdue. Staff assumed that stronger wording would bring books back sooner, so they rewrote the message in a more formal tone. Returns barely changed. They then interviewed several borrowers, who explained that they often read the email while travelling and forgot it by the time they reached home. The next version kept the original friendly wording but included a button that added a return reminder to the borrower's calendar. More books came back within two days. The library has decided to retain the button while continuing to track returns. Its experience challenges an explanation centred on readers' unwillingness to cooperate: at least part of the difficulty appears to lie between receiving a message and acting on it.\n\nWhich explanation best accounts for the contrasting results of the two changes?",
+      "explanation": "改严肃措辞无明显效果；访谈给出读信与回家之间遗忘的环节，日历提示恰好连接这一环节。b是有具体机制支持的推断。原文仍在跟踪，不足排除其他原因。",
+      "hint": "把措施的改变和借阅者描述的困难放在一起比较。",
+      "difficultyReason": "六级强化：三阶段材料中整合干预、访谈与解释，需区分态度和执行。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Borrowers responded chiefly to the library's return to a friendlier tone."
+        },
+        {
+          "id": "b",
+          "text": "The calendar button helped borrowers carry an intention into later action."
+        },
+        {
+          "id": "c",
+          "text": "The formal notice made borrowers question whether their loans were overdue."
+        },
+        {
+          "id": "d",
+          "text": "Staff interviews persuaded borrowers to treat late returns as more serious."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.strength.02",
+      "goalId": "cet6.argument-links",
+      "type": "choice",
+      "instruction": "阅读专栏评论，判断作者这一步论述的作用",
+      "prompt": "A newspaper columnist welcomes a delivery company's decision to let customers choose slower shipping. Combining parcels on fewer journeys can reduce traffic, she writes, and many purchases are not urgent. Yet she doubts that a checkout button deserves the praise usually given to a major environmental reform. Customers can select a slower service without knowing whether their parcels will actually share a vehicle. Meanwhile, the company continues to advertise next-day delivery as the normal expectation and the slower option as a sacrifice. The columnist would give greater weight to published figures showing how delivery routes have changed. Her objection is therefore directed less at the availability of a useful option than at a public claim whose scale exceeds the information offered to support it.\n\nWhy does the columnist acknowledge the potential benefit of combining parcels?",
+      "explanation": "作者先承认合并运输有用，再区分提供选择与足以支持大规模环保宣传的运行证据。不是否定慢配送，也不是确认已有减流量结果。",
+      "hint": "区分作者承认的可能收益与她要求进一步支持的主张。",
+      "difficultyReason": "六级强化：让步与批评对象跨句整合。",
+      "options": [
+        {
+          "id": "a",
+          "text": "To establish that customer preferences are the main obstacle to route reform."
+        },
+        {
+          "id": "b",
+          "text": "To explain why next-day delivery remains the company's usual service."
+        },
+        {
+          "id": "c",
+          "text": "To concede a useful possibility before questioning the publicity surrounding it."
+        },
+        {
+          "id": "d",
+          "text": "To present existing traffic reductions as grounds for broader public praise."
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet6.strength.03",
+      "goalId": "cet6.cross-source-reconciliation",
+      "type": "choice",
+      "instruction": "对照两份报告，选择能解释其差异的一项",
+      "prompt": "Two reports appear to disagree about a coastal town's new cycle route. The council says that cycling to work increased after the route opened, while a local employer says it fell. Both reports cover the same six months and count journeys rather than people. The council counted cyclists at the town's three main entrances each weekday morning. The employer recorded how its own staff travelled to its office, which had moved from the town centre to a hillside site shortly before the route opened. A reporter initially planned a story accusing one source of inaccurate counting. After checking the methods, she changed the headline. The figures need not be incompatible: a route can attract more commuters into town while cycling becomes less practical for workers heading to a particular destination.\n\nWhich finding most directly explains why both reports could be accurate?",
+      "explanation": "两个来源观察总体不同，办公地点搬到山坡又改变其中一群人的出行可行性；入镇总量增长与某单位骑行减少能并存。时间与计量单位已明确相同，不能拿来解释。",
+      "hint": "逐一核对两份报告的时间、计量单位和观察对象。",
+      "difficultyReason": "六级强化：双来源时间、计量单位与目的地三维比较，选择真正差异。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The journeys counted by the employer served a different destination from many town arrivals."
+        },
+        {
+          "id": "b",
+          "text": "The council followed individual cyclists, whereas the employer counted daily journeys."
+        },
+        {
+          "id": "c",
+          "text": "The council's six-month period included the move, whereas the employer's period began later."
+        },
+        {
+          "id": "d",
+          "text": "The employer recorded journeys uphill, whereas the council excluded journeys uphill."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "cet6.strength.04",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "choice",
+      "instruction": "阅读原句，选择保留决定及观点归属的概括",
+      "prompt": "Although the board has approved replacing the equipment that technicians identified as unreliable, it has not accepted the supplier's claim that doing so will eliminate the delays attributed by managers to staff shortages.\n\nWhich summary preserves who made each claim and what the board decided?",
+      "explanation": "更换获批；供货商称更换可消除延误，董事会未接受该主张；管理人员把延误归因于缺人。d省略部分来源细节但不改写保留的信息，其余项均错误重分归属或添加证明。",
+      "hint": "先找董事会的两个决定，再分别检查其他主体说了什么。",
+      "difficultyReason": "六级强化：让步主干、两个关系从句和被动归属。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The board accepted the technicians' account of staffing delays and approved the supplier's replacement plan."
+        },
+        {
+          "id": "b",
+          "text": "Managers linked delays to unreliable equipment, but the board declined to guarantee a successful replacement."
+        },
+        {
+          "id": "c",
+          "text": "The board approved replacements after the supplier showed that staffing levels were not responsible for delays."
+        },
+        {
+          "id": "d",
+          "text": "The board approved replacing unreliable equipment without endorsing the supplier's promised cure for delays."
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "cet6.strength.05",
+      "goalId": "cet6.stance-intent",
+      "type": "choice",
+      "instruction": "阅读评论，判断末句隐含的评价",
+      "prompt": "The museum's new guide is described as a conversation with visitors. Each page asks a question, but the next page supplies a single authorised response. Visitors are invited to think for themselves, provided they arrive at the museum's conclusion. The critic adds: 'That is an unusually quiet conversation.'\n\nWhat does the critic imply in the final sentence?",
+      "explanation": "quiet conversation回应单一授权答案与预定结论的落差：形式邀请参与，实质限制不同理解。不是音量、知识量或独处偏好的评价。",
+      "hint": "把末句放回前文，看它如何回应指南的实际做法。",
+      "difficultyReason": "六级强化：识别含蓄批评及表面比喻，不依赖反讽标签提示。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The questions require a quieter setting than the museum currently provides."
+        },
+        {
+          "id": "b",
+          "text": "The guide presents participation while leaving little room for alternative interpretations."
+        },
+        {
+          "id": "c",
+          "text": "Visitors need further historical information before they can discuss the exhibits."
+        },
+        {
+          "id": "d",
+          "text": "The guide encourages private reflection more successfully than group discussion."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "cet6.strength.06",
+      "goalId": "cet6.agreement-action",
+      "type": "choice",
+      "instruction": "阅读工作邮件，选择能解决团队实际问题的回复",
+      "prompt": "A designer writes: 'The quoted fee covers two rounds of changes after the first draft. A round means one combined list of requests. We can discuss additional work separately.' Your team expects several members to send comments on different days and wants to avoid using the two rounds unintentionally.\n\nWhich reply most directly resolves the team's practical concern?",
+      "explanation": "将分日个人意见汇成两次清单直接适应round的定义，既避免误用，也不改变已报两轮范围。其他请求可能能谈，却不能按已有条款解决当前协调问题。",
+      "hint": "核对既有条款与团队评论方式之间的关系。",
+      "difficultyReason": "六级工作语域：理解条款定义，将其转为可实施协作。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Could you confirm that each team member is entitled to two rounds of changes?"
+        },
+        {
+          "id": "b",
+          "text": "Could you include later requests in the original fee once the second round is complete?"
+        },
+        {
+          "id": "c",
+          "text": "Could we collect our comments and send one agreed list on each of two dates?"
+        },
+        {
+          "id": "d",
+          "text": "Could you quote for a third round before we receive and review the first draft?"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "cet6.strength.07",
+      "goalId": "cet6.listening-scope-stance",
+      "type": "listeningChoice",
+      "instruction": "听同事交流，选择符合第二位说话人意图的一项",
+      "prompt": "听同事交流。第二位说话人希望对方如何处理演示？",
+      "explanation": "八分钟、完整报告稍后可读、两个典型评论值得展开共同支持减少屏幕材料并解释含义。give room to breathe在此指给讲解留空间。",
+      "hint": "结合交流中的时间安排和最后的确认作答。",
+      "difficultyReason": "六级听力教学切片：四话轮、间接建议和后续确认；非整卷长对话长度。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use fewer comments and explain the insight from the selected examples."
+        },
+        {
+          "id": "b",
+          "text": "Keep all comments on screen and shorten the explanation of each one."
+        },
+        {
+          "id": "c",
+          "text": "Replace the comments with a summary of how the full report was prepared."
+        },
+        {
+          "id": "d",
+          "text": "Improve the slide design before deciding which comments deserve attention."
+        }
+      ],
+      "answer": "a",
+      "audio": {
+        "status": "pending",
+        "text": "A: I've added all twelve customer comments to the presentation. Shall I make the slides more attractive now? B: We have eight minutes with the directors, and they'll have the full report afterwards. Two comments show exactly why customers abandon the form. I'd give those room to breathe. A: So, fewer comments on screen? B: Yes, and enough time to explain what each one tells us.",
+        "scriptVisibility": "答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "delivery": "两种自然声音，不读A/B，不特别重读two或fewer。"
+      }
+    },
+    {
+      "id": "cet6.strength.08",
+      "goalId": "cet6.cross-source-reconciliation",
+      "type": "listeningChoice",
+      "instruction": "听工作发言，选择说话人建议本周采取的行动",
+      "prompt": "听工作发言。说话人建议本周如何处理采购？",
+      "explanation": "工程师核对具体序列号并书面确认，比仅适用于现产品线的宣传册更切合本批旧设备；预算具备，建议本周买旧规格。",
+      "hint": "注意各份资料适用于哪些设备，以及最后提出的行动。",
+      "difficultyReason": "六级听力强化：辨别资料适用性，整合具体核验、书面确认和可执行条件。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Order the size in the brochure because it describes the current product range."
+        },
+        {
+          "id": "b",
+          "text": "Postpone the purchase until the supplier publishes a corrected brochure."
+        },
+        {
+          "id": "c",
+          "text": "Replace the older machines so the advertised filters can be used."
+        },
+        {
+          "id": "d",
+          "text": "Buy the older-size filters using the engineer's confirmation for these units."
+        }
+      ],
+      "answer": "d",
+      "audio": {
+        "status": "pending",
+        "text": "The supplier's brochure says the replacement filters fit our machines. However, their engineer has now checked the serial numbers and confirmed that the older units need a different size. The brochure covers the current range; most of our machines belong to the previous range. We have the engineer's written confirmation and enough money for the older-size filters. Let's place that order this week rather than hold up the maintenance schedule while the brochure is corrected.",
+        "scriptVisibility": "答前隐藏",
+        "suggestedWordsPerMinute": 150,
+        "delivery": "自然工作说明，不把brochure或engineer处理成答案提示重音。"
+      }
+    },
+    {
+      "id": "cet6.strength.09",
+      "goalId": "cet6.listening-scope-stance",
+      "type": "listeningChoice",
+      "instruction": "听学术讨论，判断第二位说话人的主要保留",
+      "prompt": "听学术讨论。第二位说话人对公开访谈资料的保留主要是什么？",
+      "explanation": "已同意匿名公开；姓名之外的独特身份线索仍可识别人。保留在匿名处理完整性，不在同意、真实性或核验者需要姓名。",
+      "hint": "分清已经满足的条件和尚待检查的问题。",
+      "difficultyReason": "六级学术语域：区分同意、匿名性、可核验性及保留条件。",
+      "options": [
+        {
+          "id": "a",
+          "text": "The participants have not yet agreed that their interviews can be published."
+        },
+        {
+          "id": "b",
+          "text": "Details beyond names can identify participants and need to be checked."
+        },
+        {
+          "id": "c",
+          "text": "Other researchers need the speakers' identities to check the interpretation."
+        },
+        {
+          "id": "d",
+          "text": "The baker's account needs to be verified before the remaining interviews are released."
+        }
+      ],
+      "answer": "b",
+      "audio": {
+        "status": "pending",
+        "text": "A: Making the interviews public would let other researchers check our interpretation. B: I agree, and the participants have agreed to anonymous publication. But removing their names isn't enough here. One speaker describes being the only night-shift baker in a small village. Anyone from that village could recognise her. A: We could remove that detail. B: Yes. I'd support release once we've checked the transcripts for other clues of that kind.",
+        "scriptVisibility": "答前隐藏",
+        "suggestedWordsPerMinute": 145,
+        "delivery": "四话轮自然节奏，不突出唯一正确项对应词。"
+      }
+    },
+    {
+      "id": "cet6.strength.10",
+      "goalId": "cet6.action-wording",
+      "type": "completion",
+      "instruction": "阅读编辑记录，仅从题面词库中填写一个词",
+      "prompt": "The editor removed two examples but kept the article's recommendation unchanged. In her note she explains that she reduced repetition rather than changed the argument.\n\n只从 condensed、reversed、suspended、expanded 中填一词：The editor ____ the discussion without altering its central recommendation.",
+      "explanation": "删重复例子使论述更精炼而主张不变，condensed同时匹配两层信息。",
+      "hint": "同时保留材料说明的改动和未改动之处。",
+      "difficultyReason": "六级词汇巩固：正式编辑语境中的近邻动作，难度不独立代表六级。",
+      "acceptedAnswers": [
+        "condensed"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet6.strength.11",
+      "goalId": "cet6.action-wording",
+      "type": "completion",
+      "instruction": "阅读研究团队的说明，仅从题面词库中填写一个词",
+      "prompt": "A research team first reported that the instrument had detected a change. A later check showed that the signal came from a loose cable. The team publicly stated that its original claim should no longer be treated as valid.\n\n只从 reiterated、qualified、retracted、anticipated 中填一词：After tracing the signal to a loose cable, the team ____ its original claim.",
+      "explanation": "团队撤回原断言的有效性，是retracted。qualified只加限定仍保留部分主张，不能表达这里完整撤回。",
+      "hint": "判断团队最后如何处理原主张的有效性。",
+      "difficultyReason": "六级学术语义：撤回、限定和重申的范围区别。",
+      "acceptedAnswers": [
+        "retracted"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet6.strength.12",
+      "goalId": "cet6.action-wording",
+      "type": "completion",
+      "instruction": "阅读资金调拨记录，仅从题面词库中填写一个词",
+      "prompt": "A department kept its total travel budget at £12,000. It transferred £2,000 from conferences to field visits, leaving £7,000 for conferences and £5,000 for field visits.\n\n只从 depleted、equalised、supplemented、reallocated 中填一词：The department ____ its existing travel funds between two purposes.",
+      "explanation": "部门已将现有额度从会议转到实地访问，总额仍为12,000英镑，两用途最后分别7,000与5,000英镑。因此是reallocated，不是耗减、增补或拉成相等额度。",
+      "hint": "分别核对总额与两项用途的最终金额。",
+      "difficultyReason": "六级工作语域词汇：同时保留总额和用途两个维度。",
+      "acceptedAnswers": [
+        "reallocated"
+      ],
+      "normalization": {
+        "ignoreCase": true,
+        "ignoreTerminalPunctuation": true
+      }
+    },
+    {
+      "id": "cet6.strength.13",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "arrange",
+      "instruction": "使用全部词块，按中文要求组成完整句子",
+      "prompt": "用全部词块组成一句：编辑把发表推迟到独立读者查完那些似乎自相矛盾的段落之后。并非推迟读者的检查，也不是声称全部段落都矛盾。",
+      "explanation": "a为推迟发表的决定；b给等待截止点；c+d为检查对象及限定。发表不会早于检查完成；没有断言届时必定发表或已经获得发表许可。that从句只限定那些似乎自相矛盾的段落。",
+      "hint": "核对谁推迟了什么，以及检查的对象和时间关系。",
+      "difficultyReason": "六级受控句法：until时间关系和限定性关系从句，仍有语法支架。",
+      "tokens": [
+        {
+          "id": "c",
+          "text": "the passages"
+        },
+        {
+          "id": "a",
+          "text": "The editor postponed publication"
+        },
+        {
+          "id": "d",
+          "text": "that appeared to contradict one another."
+        },
+        {
+          "id": "b",
+          "text": "until an independent reader had checked"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ]
+    },
+    {
+      "id": "cet6.strength.14",
+      "goalId": "cet6.argument-links",
+      "type": "arrange",
+      "instruction": "使用全部句块，按题目要求组织完整段落",
+      "prompt": "四个完整句子均通顺。用全部句块组成一段：先交代人们的初始解释，再给反向观察、提出替代解释，最后说明如何检验。",
+      "explanation": "d是初始门宽解释；c的also和however接反向观察；b的this pattern概括两处找不到入口；a的this explanation承接标识位置假说，控制门的位置进行检验。",
+      "hint": "检查每个回指表达能否在前文找到充分依据。",
+      "difficultyReason": "六级篇章衔接：完整句块靠论证结构与指代而非句内语法排列。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "The team plans to test this explanation by moving the signs while keeping the doors in place."
+        },
+        {
+          "id": "b",
+          "text": "Poorly placed signs, rather than door width, could explain this pattern."
+        },
+        {
+          "id": "c",
+          "text": "Visitors, however, also missed the wide entrance on the other side of the building."
+        },
+        {
+          "id": "d",
+          "text": "Staff initially blamed the narrow doorway for visitors' difficulty finding the entrance."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "d",
+          "c",
+          "b",
+          "a"
+        ]
+      ]
+    },
+    {
+      "id": "cet6.strength.15",
+      "goalId": "cet6.cross-source-reconciliation",
+      "type": "matching",
+      "instruction": "逐条配对来源关系与诊断，保留一个未用右项",
+      "prompt": "每条记录均独立。将两份材料的关系与最准确的诊断配对。右侧有一个不用的选项。",
+      "explanation": "l1入组条件不同；l2明确有后续决定修订；l3同最终名单同定义却总数冲突，不能凭空补出范围或时间差。r4没有对应记录。",
+      "hint": "每条记录独立核对，不能把一条记录的条件带入另一条。",
+      "difficultyReason": "六级综合分析：既能解释表面冲突，也能识别不能被解释掉的实质冲突。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "One report includes every application received; the other includes only applications with all supporting documents. Both label the result an acceptance rate."
+        },
+        {
+          "id": "l2",
+          "text": "Two reports cover the same applications under the same definition. One was closed on Monday; the other was updated on Friday after several decisions were revised."
+        },
+        {
+          "id": "l3",
+          "text": "Two reports use the same final list and the same definition of acceptance. They give different accepted totals, and neither records any exclusions."
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "现有范围与时间解释不适用，需要核对计数。"
+        },
+        {
+          "id": "r1",
+          "text": "计入对象不同，需要先对齐分母范围。"
+        },
+        {
+          "id": "r4",
+          "text": "同一人数分别写成数量与比例，不构成冲突。"
+        },
+        {
+          "id": "r2",
+          "text": "记录截止时间不同，变更记录能解释差异。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "cet6.strength.16",
+      "goalId": "cet6.stance-intent",
+      "type": "matching",
+      "instruction": "逐句配对信息性质，保留一个未用右项",
+      "prompt": "阅读三句会议简报，分别配对其信息性质。注意看观点由谁承担。右侧有一个不用的选项。",
+      "explanation": "数量记录、组织者归因和作者价值优先是三个层次。材料没有比较试验，不能把归因写成已确立因果。",
+      "hint": "分别核对说话主体、证据来源与判断内容。",
+      "difficultyReason": "六级巩固：观点与证据、观点归属以及价值判断类型，语言难度中等。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "The attendance sheet records forty participants, twelve more than last year."
+        },
+        {
+          "id": "l2",
+          "text": "The organiser attributes the increase to the new registration system; the writer offers no assessment of that explanation."
+        },
+        {
+          "id": "l3",
+          "text": "In the writer's view, a larger audience is less valuable than a discussion in which quieter participants can contribute."
+        }
+      ],
+      "right": [
+        {
+          "id": "r3",
+          "text": "提出作者评价活动价值时采用的优先标准。"
+        },
+        {
+          "id": "r1",
+          "text": "以记录为依据报告数量变化。"
+        },
+        {
+          "id": "r4",
+          "text": "报告比较试验已经确立变化的原因。"
+        },
+        {
+          "id": "r2",
+          "text": "转述他人对变化的解释，尚未由作者背书。"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r2"
+        },
+        {
+          "left": "l3",
+          "right": "r3"
+        }
+      ]
+    },
+    {
+      "id": "cet6.strength.17",
+      "goalId": "cet6.faithful-rephrasing",
+      "type": "cloze",
+      "instruction": "阅读完整段落，每空填一个不同词块",
+      "prompt": "每空选一个不同词块，恢复对两种选拔方案的准确总结。四个词块都能进入两处句法位置，须读全段判断。",
+      "explanation": "第一方案先数字匿名、后本人会面；第二方案起初即提供完整经历。对应s1第一方案、s2第二方案。匿名样本与稍后会面并不意味着整个评选始终匿名。",
+      "hint": "分别追踪两种方案在不同阶段提供了什么信息。",
+      "difficultyReason": "六级受控篇章巩固：将两种方案的时间顺序与身份信息归属跨句整合；不单独作为高难六级阅读证据。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "The second scheme"
+        },
+        {
+          "id": "b",
+          "text": "Either scheme"
+        },
+        {
+          "id": "c",
+          "text": "The first scheme"
+        },
+        {
+          "id": "d",
+          "text": "Neither scheme"
+        }
+      ],
+      "passage": "A writing fellowship is considering two selection schemes. Under the first, the panel receives a sample carrying a number instead of a name; shortlisted writers then meet the panel in person. Under the second, every sample arrives with a full biography, and selection is completed without an interview. {s1} would conceal identity during the initial assessment but reveal it at a later stage. {s2} would allow the panel to connect a sample with its author's previous work from the outset. The choice therefore concerns when personal background enters the assessment, as well as whether an interview takes place.",
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "c"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "a"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "cet6.strength.18",
+      "goalId": "cet6.action-wording",
+      "type": "cloze",
+      "instruction": "阅读完整段落，每空填一个不同词块，余项不用",
+      "prompt": "把词块填入两个空位，每项最多用一次，余项不用。所有词块均为过去分词，须按整段研究处理过程判断。",
+      "explanation": "多语言录音到英语报告需翻译引语；公开转录省去住址，另存受限档案，故不是丢弃全部来源。原稿可复核和公开文本受限同时成立。",
+      "hint": "按处理前后的语言与公开范围分别核对两处空位。",
+      "difficultyReason": "六级学术语域巩固：信息转换、公开删节与原始材料留存，需保留两个层次。",
+      "tokens": [
+        {
+          "id": "a",
+          "text": "translated"
+        },
+        {
+          "id": "b",
+          "text": "fabricated"
+        },
+        {
+          "id": "c",
+          "text": "omitted"
+        },
+        {
+          "id": "d",
+          "text": "repeated"
+        }
+      ],
+      "passage": "The archive contains interviews recorded in several languages. For the published English report, the quotations were {s1} so that readers unfamiliar with the original languages could understand the speakers. The report kept their meaning intact. Personal addresses were {s2} from the public transcripts and kept in a separate restricted file. The team therefore preserved the source material while limiting which details readers could see.",
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "a"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "c"
+          }
+        ]
+      ]
+    }
+  ]
+}
