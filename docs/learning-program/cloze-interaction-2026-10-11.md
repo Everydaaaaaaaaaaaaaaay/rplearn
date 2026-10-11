@@ -22,3 +22,13 @@ Xcode 宿主 `LearningChallengeTests` 14 项通过。定向原生 UI 测试在�
 - Device Hub 仍停留在 `Connecting display…`。本次原生操作证据来自定向 XCUITest，不宣称 Computer Use 手动点击成功。
 
 工程题只用于合同与界面验证，不进入正式教学库。小四、小六的六道多空作者题仍需正式字段转换、题库互斥验证和整组验收；本次支持新交互不代表这些题已上线。
+
+## 生产验收
+
+2026-10-11 已受控激活 `389e09c6`，API、Worker、PostgreSQL、Redis、MinIO、Caddy均正常，公网 readiness 返回 ready。归档24,909,627字节，SHA-256为`7cdf0f1c3366c636d10d5908ae46fe983bf6c861be5b083034ad34423c25cca2`。作者草稿未进入归档，无新增迁移或正式题库写入。
+
+沿用维护锁、原有内存/CPU/磁盘限额、缓存依赖与禁止回滚目录清理设置。发布耗时1分53秒、峰值194.1MiB、交换空间0；限速操作后的I/O等待正常消退并通过稳定观察。未绕过资源预检。
+
+线上使用一个仅本次验收账号及它专属的工程快照，通过实际HTTPS完成6次检查：公开内容不含答案，部分正确0分、逐空反馈正确，补答全对1分、同请求重放一致、再次读取题目快照未变。账号及附属验收数据已清除，正式公共题和蓝图不受影响。此路径证明答题合同与服务端事务；不代表正式cloze抽题或真人设备验证。
+
+线上驱动使用轻量PostgreSQL客户端，未加载整套Drizzle数据库模块，运行8.3秒、交换空间0。证据在 `build/learning-cloze-20261011/` 的 `deploy.log`、`online-probe.log`、`post-deploy-health.log`。最新Debug已通过 `Scripts/preview.sh preview unit-challenge` 安装并留在模拟器共享词库页面。
