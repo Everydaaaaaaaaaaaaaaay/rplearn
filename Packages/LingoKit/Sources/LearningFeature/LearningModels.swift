@@ -122,7 +122,7 @@ public final class LearningChallengeModel {
     public var answer: LearningAnswer? {
         guard let question else { return nil }
         switch question.type {
-        case .choice, .listeningChoice: return choice.map(LearningAnswer.choice)
+        case .choice, .listeningChoice, .audioChoice: return choice.map(LearningAnswer.choice)
         case .arrange, .audioArrange: return tokens.isEmpty ? nil : .arrange(tokens)
         case .completion, .dictation:
             return text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : .text(text)

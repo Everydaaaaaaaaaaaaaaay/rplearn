@@ -16,6 +16,7 @@ final class LearningAudioModel {
     enum State: Equatable { case idle, loading, ready, playing, interrupted, failed }
     private(set) var state: State = .idle
     private(set) var hasListened = false
+    var isPlaybackActive: Bool { state == .playing || (state == .loading && data != nil) }
     let playbackID = UUID()
     @ObservationIgnored private let service: any LearningServing
     @ObservationIgnored private let playback: any LearningAudioPlayback
@@ -29,12 +30,16 @@ final class LearningAudioModel {
     }
 
     func prepare(attemptID: UUID, question: LearningQuestion?) async {
+        guard let question, let audio = question.audio else { reset(); return }
+        await prepare(attemptID: attemptID, questionID: question.id, assetID: audio.assetId)
+    }
+
+    func prepare(attemptID: UUID, questionID: String, assetID: String) async {
         reset()
-        guard let question, let audio = question.audio else { return }
         let requestRevision = revision
         state = .loading
         do {
-            let loaded = try await service.learningAudio(attemptID, questionID: question.id, assetID: audio.assetId)
+            let loaded = try await service.learningAudio(attemptID, questionID: questionID, assetID: assetID)
             guard revision == requestRevision, !Task.isCancelled else { return }
             data = loaded; state = .ready
         } catch {

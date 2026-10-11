@@ -6,8 +6,9 @@ public struct LearningOption: Codable, Sendable, Equatable, Identifiable {
     public let imageAssetId: String?
 }
 public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
-    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, arrange, audioArrange, completion, dictation, matching, cloze }
+    public enum Kind: String, Codable, Sendable { case choice, listeningChoice, audioChoice, arrange, audioArrange, completion, dictation, matching, cloze }
     public struct Audio: Codable, Sendable, Equatable { public let assetId: String }
+    public struct AudioOption: Codable, Sendable, Equatable, Identifiable { public let id: String; public let audio: Audio }
     public let id: String
     public let type: Kind
     public let goalId: String
@@ -19,6 +20,8 @@ public struct LearningQuestion: Codable, Sendable, Equatable, Identifiable {
     public let left: [LearningOption]?
     public let right: [LearningOption]?
     public let audio: Audio?
+    public let audioOptions: [AudioOption]?
+    public var audioAssetIDs: [String] { audio.map { [$0.assetId] } ?? (audioOptions ?? []).map(\.audio.assetId) }
     public let passage: String?
     public var clozeSlotIDs: [String] {
         guard let passage, let pattern = try? NSRegularExpression(pattern: #"\{([a-z][a-z0-9_.-]{0,119})\}"#) else { return [] }

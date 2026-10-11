@@ -6,6 +6,7 @@ import {
   levelSchema,
   unitSchema,
   questionImageIds,
+  questionAudios,
   type LearningUnit,
 } from "./content.js";
 import { answerSchema, gradeAnswer } from "./grading.js";
@@ -197,14 +198,11 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
     for (const question of unit.questions) {
       const checked = review.questions.find((q) => q.questionId === question.id);
       if (!checked) fail(`题目 ${question.id} 缺少审核。`);
-      if ("audio" in question) {
+      for (const audio of questionAudios(question)) {
         const asset = audioAssets.find(
-          (asset) => asset.metadata.id === question.audio.assetId,
+          (asset) => asset.metadata.id === audio.assetId,
         )?.metadata;
-        if (
-          asset?.transcript !== question.audio.text ||
-          asset.voice !== question.audio.voice
-        )
+        if (asset?.transcript !== audio.text || asset.voice !== audio.voice)
           fail("听力题缺少已审核音频，或其原文和声音与资源不一致。");
       }
       const images = questionImageIds(question);
@@ -223,6 +221,13 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         ...("audio" in question
           ? { audio: question.audio.text.trim().toLowerCase() }
           : {}),
+        ...(question.type === "audioChoice"
+          ? {
+              audioOptions: question.audioOptions
+                .map((o) => o.audio.text.trim().toLowerCase())
+                .sort(),
+            }
+          : {}),
       });
       if (fingerprints.has(fingerprint))
         fail(`题目 ${question.id} 与题库中已有题干重复。`);
@@ -240,10 +245,16 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         )
           fail(`题目 ${question.id} 的判题结果不符合审核样例。`);
       }
-      if (question.type === "choice" || question.type === "listeningChoice") {
+      if (
+        question.type === "choice" ||
+        question.type === "listeningChoice" ||
+        question.type === "audioChoice"
+      ) {
+        const options =
+          question.type === "audioChoice" ? question.audioOptions : question.options;
         if (
-          Object.keys(checked.optionNotes).length !== question.options.length ||
-          question.options.some((o) => !checked.optionNotes[o.id])
+          Object.keys(checked.optionNotes).length !== options.length ||
+          options.some((o) => !checked.optionNotes[o.id])
         )
           fail(`题目 ${question.id} 必须解释每个选项的适切性。`);
       } else if (Object.keys(checked.optionNotes).length !== 0) {

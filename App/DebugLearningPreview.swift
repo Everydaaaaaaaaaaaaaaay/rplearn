@@ -91,7 +91,7 @@ struct DebugLearningPreviewService: LearningServing, MainlineServing {
               assetID.range(of: "^" + kind + "\\.[a-f0-9]{64}$", options: .regularExpression) != nil else { throw unavailable }
         let unit = try JSONDecoder().decode(LearningUnit.self, from: Data(json.utf8))
         guard let question = unit.questions.first(where: { $0.id == questionID }),
-              kind == "image" ? question.imageAssetIDs.contains(assetID) : question.audio?.assetId == assetID else { throw unavailable }
+              kind == "image" ? question.imageAssetIDs.contains(assetID) : question.audioAssetIDs.contains(assetID) else { throw unavailable }
         let directory: URL
         if let path = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_MEDIA_DIRECTORY"], path.hasPrefix("/") {
             directory = URL(fileURLWithPath: path, isDirectory: true).appending(path: kind == "image" ? "images" : "audio")

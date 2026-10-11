@@ -4,6 +4,7 @@ import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
 import {
   contentHash,
+  questionAudios,
   unitSchema,
   type LearningLevel,
   type LearningUnit,
@@ -34,7 +35,7 @@ function validateRevision(old: BankQuestion, q: BankQuestion) {
     conflict("修订必须递增版本，并保留年级、目标、题型和来源；新教学目标应另建题目。");
   // 当前后台修订不接收新媒体；避免未验证的录音或图片进入正式库。
   const media = (question: BankQuestion) => ({
-    audio: "audio" in question.question ? question.question.audio : null,
+    audio: questionAudios(question.question),
     images: JSON.stringify(question.question).match(/image\.[a-f0-9]{64}/g) ?? [],
   });
   if (contentHash(media(q)) !== contentHash(media(old)))

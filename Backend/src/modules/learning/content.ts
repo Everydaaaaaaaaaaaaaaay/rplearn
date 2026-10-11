@@ -51,8 +51,22 @@ const baseQuestion = {
   hint: text,
   difficultyReason: text,
 };
+const audioReference = z.strictObject({
+  assetId: identifier,
+  text,
+  voice: z.string().min(1).max(32),
+});
 
 export const questionSchema = z.discriminatedUnion("type", [
+  z.strictObject({
+    ...baseQuestion,
+    type: z.literal("audioChoice"),
+    audioOptions: z
+      .array(z.strictObject({ id: identifier, audio: audioReference }))
+      .min(2)
+      .max(5),
+    answer: identifier,
+  }),
   z.strictObject({
     ...baseQuestion,
     type: z.literal("cloze"),
@@ -195,7 +209,22 @@ export const unitSchema = z
     if (!unit.beats.some((beat) => beat.afterQuestion === 0)) fail("单元必须有开场。");
     for (const question of unit.questions) {
       if (!unit.goalIds.includes(question.goalId)) fail("题目引用了未声明的学习目标。");
-      if (question.type === "choice" || question.type === "listeningChoice") {
+      if (question.type === "audioChoice") {
+        unique(
+          question.audioOptions.map((o) => o.id),
+          "声音选项标识",
+        );
+        unique(
+          question.audioOptions.map((o) => o.audio.assetId),
+          "声音选项素材",
+        );
+        unique(
+          question.audioOptions.map((o) => o.audio.text.trim().toLowerCase()),
+          "声音选项原文",
+        );
+        if (!question.audioOptions.some((o) => o.id === question.answer))
+          fail("正确答案必须是已有声音选项。");
+      } else if (question.type === "choice" || question.type === "listeningChoice") {
         unique(
           question.options.map((o) => o.id),
           "选项标识",
@@ -322,6 +351,14 @@ export function publicQuestion(question: LearningQuestion) {
     hint: question.hint,
   };
   switch (question.type) {
+    case "audioChoice":
+      return {
+        ...common,
+        audioOptions: question.audioOptions.map((o) => ({
+          id: o.id,
+          audio: { assetId: o.audio.assetId },
+        })),
+      };
     case "choice":
       return { ...common, options: question.options };
     case "listeningChoice":
@@ -349,6 +386,15 @@ export function publicQuestion(question: LearningQuestion) {
   }
 }
 
+/** 包含独立声音选项；资源授权、发布和后台检查共用同一媒体集合。 */
+export function questionAudios(question: LearningQuestion) {
+  return question.type === "audioChoice"
+    ? question.audioOptions.map((o) => o.audio)
+    : "audio" in question
+      ? [question.audio]
+      : [];
+}
+
 export function questionImageIds(question: LearningQuestion): string[] {
   const options =
     question.type === "choice" || question.type === "listeningChoice"
@@ -363,7 +409,7 @@ export function questionImageIds(question: LearningQuestion): string[] {
   ];
 }
 
-export function publicUnit(unit: LearningUnit) {
+export function publicUnit(unit: LearningUnit, attemptId?: string) {
   return {
     id: unit.id,
     version: unit.version,
@@ -376,6 +422,17 @@ export function publicUnit(unit: LearningUnit) {
     estimatedMinutes: unit.estimatedMinutes,
     goalIds: unit.goalIds,
     beats: unit.beats,
-    questions: unit.questions.map(publicQuestion),
+    questions: unit.questions.map((question) => {
+      const projected = publicQuestion(question);
+      if (attemptId && "audioOptions" in projected) {
+        // 挑战身份决定稳定的显示顺序；补答和重进不换编号，答案仍以选项身份判定。
+        projected.audioOptions.sort((a, b) =>
+          contentHash([attemptId, question.id, a.id]).localeCompare(
+            contentHash([attemptId, question.id, b.id]),
+          ),
+        );
+      }
+      return projected;
+    }),
   };
 }

@@ -63,6 +63,7 @@ export const bankBlueprintSchema = z.strictObject({
         type: z.enum([
           "choice",
           "listeningChoice",
+          "audioChoice",
           "arrange",
           "audioArrange",
           "completion",
@@ -103,7 +104,11 @@ export function bankIdentity(question: LearningQuestion): string {
       .map((o) => text(items, o.id))
       .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
   let material: unknown;
-  if (question.type === "choice" || question.type === "listeningChoice") {
+  if (question.type === "audioChoice") {
+    material = {
+      audioOptions: question.audioOptions.map((o) => clean(o.audio.text)).sort(),
+    };
+  } else if (question.type === "choice" || question.type === "listeningChoice") {
     material = {
       options: materials(question.options),
       audio: "audio" in question ? clean(question.audio.text) : null,

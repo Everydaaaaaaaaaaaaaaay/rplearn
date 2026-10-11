@@ -108,9 +108,14 @@ export function createLearningService(
             .promotions(courses)
             .complete(id, expectedRevision, expectedProfileVersion, requestId),
       ),
-    audio: async (userId: string, attemptId: string, questionId: string) => {
+    audio: async (
+      userId: string,
+      attemptId: string,
+      questionId: string,
+      assetId?: string,
+    ) => {
       const asset = await repository.read(userId, (session) =>
-        session.audioAsset(attemptId, questionId),
+        session.audioAsset(attemptId, questionId, assetId),
       );
       if (!assetStore)
         throw new AppError({

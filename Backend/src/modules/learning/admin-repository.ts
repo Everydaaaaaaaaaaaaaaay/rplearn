@@ -1,6 +1,11 @@
 import { LearningBankRepository } from "./bank-repository.js";
 import type { DatabaseResource } from "../../db/client.js";
-import { questionImageIds, unitSchema, type LearningUnit } from "./content.js";
+import {
+  questionAudios,
+  questionImageIds,
+  unitSchema,
+  type LearningUnit,
+} from "./content.js";
 import { learningAudioSchema } from "./audio.js";
 import { learningImageSchema } from "./images.js";
 
@@ -21,11 +26,7 @@ export class LearningAdminRepository {
     if (!unit) return { audio: [], images: [] };
     const imageIds = [...new Set(unit.questions.flatMap(questionImageIds))];
     const audioIds = [
-      ...new Set(
-        unit.questions.flatMap((question) =>
-          "audio" in question ? [question.audio.assetId] : [],
-        ),
-      ),
+      ...new Set(unit.questions.flatMap(questionAudios).map((audio) => audio.assetId)),
     ];
     const [images, audio] = await Promise.all([
       this.database

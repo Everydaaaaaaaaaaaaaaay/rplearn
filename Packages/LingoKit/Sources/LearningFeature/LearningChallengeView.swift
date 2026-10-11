@@ -9,6 +9,7 @@ import SwiftUI
 public struct LearningChallengeView: View {
     @State private var model: LearningChallengeModel
     @State private var audio: LearningAudioModel
+    @State private var audioOptions: LearningAudioOptionsModel
     @State private var pictures: LearningImageModel
     private let character: CharacterDTO
     @Environment(\.dismiss) private var dismiss
@@ -28,6 +29,9 @@ public struct LearningChallengeView: View {
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
         _pictures = State(initialValue: LearningImageModel(service: service))
         _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback))
+        _audioOptions = State(initialValue: LearningAudioOptionsModel {
+            LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback)
+        })
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
     public var body: some View {
@@ -76,22 +80,26 @@ public struct LearningChallengeView: View {
             Text("已提交的答案会保留。结束首轮会重置该角色的挑战进度条，未答对的题仍可从记录补答。")
         }
         .task(id: model.question?.id) { await audio.prepare(attemptID: model.attempt.id, question: model.question) }
+        .task(id: model.question?.id) { await audioOptions.prepare(attemptID: model.attempt.id, question: model.question) }
         .task(id: model.question?.id) { await pictures.prepare(attemptID: model.attempt.id, question: model.question) }
-        .onDisappear { audio.reset(); pictures.reset() }
+        .onDisappear { audio.reset(); audioOptions.reset(); pictures.reset() }
         .onChange(of: scenePhase) { _, phase in
-            if phase != .active { audio.stop(interrupted: true) }
+            if phase != .active { audio.stop(interrupted: true); audioOptions.stop(interrupted: true) }
         }
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { notification in
             if notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt == AVAudioSession.InterruptionType.began.rawValue {
                 audio.stop(interrupted: true)
+                audioOptions.stop(interrupted: true)
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { notification in
             if notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue {
                 audio.stop(interrupted: true)
+                audioOptions.stop(interrupted: true)
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: .speechPlaybackDidBegin)) { notification in
+            audioOptions.interrupt(except: notification.object as? UUID)
             if notification.object as? UUID != audio.playbackID, audio.state == .playing { audio.stop(interrupted: true) }
         }
         .onChange(of: model.feedback?.outcome) { _, outcome in
@@ -190,7 +198,7 @@ public struct LearningChallengeView: View {
                 }
             }
             answerControls(question)
-                .disabled(model.isBusy || model.feedback != nil || model.hasUnconfirmedAnswer || !pictures.isReady(for: question))
+                .disabled(model.isBusy || (model.feedback != nil && question.type != .audioChoice) || model.hasUnconfirmedAnswer || !pictures.isReady(for: question))
             if let feedback = model.feedback {
                 feedbackCard(feedback, question: question)
                     .id("challenge.feedback")
@@ -271,6 +279,8 @@ public struct LearningChallengeView: View {
     @ViewBuilder
     private func answerControls(_ question: LearningQuestion) -> some View {
         switch question.type {
+        case .audioChoice:
+            LearningAudioChoiceControls(question: question, attemptID: model.attempt.id, audio: audioOptions, selection: $model.choice, tint: theme.tint, selectionDisabled: model.feedback != nil)
         case .choice, .listeningChoice:
             let hasPictures = !(question.options ?? []).isEmpty && (question.options ?? []).allSatisfy { $0.imageAssetId != nil }
             let columns = hasPictures && !dynamicTypeSize.isAccessibilitySize ? 2 : 1
@@ -515,7 +525,7 @@ public struct LearningChallengeView: View {
                 else if model.hasUnconfirmedAnswer { primary("重新确认提交") { Task { await model.submit() } } }
                 else {
                     HStack(spacing: 12) {
-                        primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened)) { inputFocused = false; audio.stop(); Task { await model.submit() } }
+                        primary("检查", disabled: model.answer == nil || !pictures.isReady(for: model.question) || (model.question?.audio != nil && !audio.hasListened) || (model.question?.type == .audioChoice && !audioOptions.hasListenedToAll)) { inputFocused = false; audio.stop(); audioOptions.stop(); Task { await model.submit() } }
                         if inputFocused {
                             Button { inputFocused = false } label: {
                                 Image(systemName: "keyboard.chevron.compact.down")
@@ -533,7 +543,7 @@ public struct LearningChallengeView: View {
             .background(.regularMaterial)
     }
     private var skipQuestionButton: some View {
-        Button { inputFocused = false; audio.stop(); Task { await model.submit(skip: true) } } label: {
+        Button { inputFocused = false; audio.stop(); audioOptions.stop(); Task { await model.submit(skip: true) } } label: {
             Image(systemName: "forward.end").font(.title3).frame(minWidth: 48, minHeight: 52).contentShape(Rectangle())
         }.buttonStyle(.plain).disabled(model.isBusy)
             .accessibilityLabel("暂时跳过，留待补答")
@@ -555,7 +565,9 @@ public struct LearningChallengeView: View {
                 passage = passage.replacingOccurrences(of: "{\(fill.slotId)}", with: word)
             }
             return passage
-        case .choice: return question.options?.first { $0.id == answer.optionId }?.text ?? ""
+        case .choice:
+            if let index = question.audioOptions?.firstIndex(where: { $0.id == answer.optionId }) { return "声音 \(index + 1)" }
+            return question.options?.first { $0.id == answer.optionId }?.text ?? ""
         case .arrange: return (answer.tokenIds ?? []).compactMap { id in question.tokens?.first { $0.id == id }?.text }.joined(separator: " ")
         case .text: return answer.text ?? ""
         case .matching: return (answer.pairs ?? []).map { pair in

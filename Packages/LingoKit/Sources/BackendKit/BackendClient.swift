@@ -5,10 +5,11 @@ import Foundation
 public actor BackendClient {
     /// 签名资源请求不携带账号令牌；下载完成后核对不可变内容的长度与哈希。
     public func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
-        guard questionID.range(of: "^[a-z][a-z0-9_.-]{0,119}$", options: .regularExpression) != nil else {
+        guard questionID.range(of: "^[a-z][a-z0-9_.-]{0,119}$", options: .regularExpression) != nil,
+              assetID.range(of: "^audio\\.[a-f0-9]{64}$", options: .regularExpression) != nil else {
             throw BackendClientError.invalidResponse
         }
-        let grant: LearningAudioDownload = try await get("/v1/learning/attempts/\(attemptID.uuidString.lowercased())/audio/\(questionID)")
+        let grant: LearningAudioDownload = try await get("/v1/learning/attempts/\(attemptID.uuidString.lowercased())/audio/\(questionID)", queryItems: [URLQueryItem(name: "assetId", value: assetID)])
         guard grant.assetId == assetID, grant.assetId == "audio.\(grant.sha256)",
               grant.sha256.range(of: "^[a-f0-9]{64}$", options: .regularExpression) != nil,
               (1000...3_000_000).contains(grant.byteSize), (300...60_000).contains(grant.durationMs),

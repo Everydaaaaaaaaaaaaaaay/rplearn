@@ -90,12 +90,15 @@ export function gradeAnswer(
       break;
     }
     case "choice":
+    case "audioChoice":
     case "listeningChoice": {
       solution = { kind: "choice", optionId: question.answer };
       if (!skipped) {
         if (
           answer.kind !== "choice" ||
-          !question.options.some((o) => o.id === answer.optionId)
+          !(
+            question.type === "audioChoice" ? question.audioOptions : question.options
+          ).some((o) => o.id === answer.optionId)
         )
           malformed();
         correct = answer.optionId === question.answer;

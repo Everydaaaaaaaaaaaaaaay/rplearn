@@ -10,6 +10,7 @@ import {
   contentHash,
   publicUnit,
   questionImageIds,
+  questionAudios,
   unitSchema,
   type LearningLevel,
   type LearningUnit,
@@ -155,16 +156,12 @@ export class LearningEngineRepository {
       }
       if (audioAssets !== undefined) {
         for (const unit of units)
-          for (const question of unit.questions) {
-            if (!("audio" in question)) continue;
+          for (const audio of unit.questions.flatMap(questionAudios)) {
             const [row] = await sql<
               { metadata: unknown }[]
-            >`select metadata from app.learning_audio_assets where id=${question.audio.assetId}`;
+            >`select metadata from app.learning_audio_assets where id=${audio.assetId}`;
             const asset = row ? learningAudioSchema.parse(row.metadata) : undefined;
-            if (
-              asset?.transcript !== question.audio.text ||
-              asset.voice !== question.audio.voice
-            )
+            if (asset?.transcript !== audio.text || asset.voice !== audio.voice)
               reject(
                 "LEARNING_AUDIO_NOT_READY",
                 "听力原文、声音与已审核资源不一致，不能发布。",
@@ -221,16 +218,25 @@ export class LearningSession {
     private readonly context?: LearningContextReader,
   ) {}
 
-  async audioAsset(attemptId: string, questionId: string): Promise<LearningAudioAsset> {
+  async audioAsset(
+    attemptId: string,
+    questionId: string,
+    assetId?: string,
+  ): Promise<LearningAudioAsset> {
     const attempt = await this.rawAttempt(attemptId);
     const question = unitSchema
       .parse(attempt.payload)
       .questions.find((q) => q.id === questionId);
-    if (!question || !("audio" in question))
-      reject("LEARNING_AUDIO_NOT_FOUND", "这道题没有可播放的听力素材。", 404);
+    const audios = question ? questionAudios(question) : [];
+    const audio = assetId
+      ? audios.find((item) => item.assetId === assetId)
+      : audios.length === 1
+        ? audios[0]
+        : undefined;
+    if (!audio) reject("LEARNING_AUDIO_NOT_FOUND", "这道题没有可播放的听力素材。", 404);
     const [row] = await this.sql<
       { metadata: unknown }[]
-    >`select metadata from app.learning_audio_assets where id=${question.audio.assetId}`;
+    >`select metadata from app.learning_audio_assets where id=${audio.assetId}`;
     if (!row)
       reject("LEARNING_AUDIO_NOT_READY", "听力素材暂不可用，请重试或稍后补答。", 503);
     return learningAudioSchema.parse(row.metadata);
@@ -510,7 +516,7 @@ export class LearningSession {
         row.first_completed_at === null
           ? null
           : new Date(row.first_completed_at).toISOString(),
-      unit: publicUnit(unitSchema.parse(row.payload)),
+      unit: publicUnit(unitSchema.parse(row.payload), row.id),
       correctQuestionIds: rewarded.map((r) => r.question_id),
       round: {
         id: round.id,

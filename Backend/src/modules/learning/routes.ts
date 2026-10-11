@@ -131,7 +131,16 @@ export function registerLearningRoutes(
         }),
         request.params,
       );
-      return service.audio(user(request), params.id, params.questionId);
+      const query = parse(
+        z.strictObject({
+          assetId: z
+            .string()
+            .regex(/^audio\.[a-f0-9]{64}$/)
+            .optional(),
+        }),
+        request.query,
+      );
+      return service.audio(user(request), params.id, params.questionId, query.assetId);
     });
     scope.get("/v1/learning/attempts/:id/images/:questionId/:assetId", (request) => {
       const params = parse(

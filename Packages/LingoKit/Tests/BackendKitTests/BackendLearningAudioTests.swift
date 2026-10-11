@@ -44,6 +44,8 @@ struct BackendLearningAudioTests {
         let requests = await transport.requests
         let grant = try #require(requests.first { $0.url?.path.contains("/audio/listen") == true })
         #expect(grant.value(forHTTPHeaderField: "Authorization") == "Bearer test-token")
+        let query = URLComponents(url: try #require(grant.url), resolvingAgainstBaseURL: false)?.queryItems
+        #expect(query == [URLQueryItem(name: "assetId", value: "audio.\(await transport.hash)")])
         let asset = try #require(requests.first { $0.url?.host == "assets.example.com" })
         #expect(asset.value(forHTTPHeaderField: "Authorization") == nil)
         await transport.setCorrupt()

@@ -190,6 +190,7 @@ export const bankJavascript = String.raw`
   const types = {
     choice: "选择",
     listeningChoice: "听辨",
+    audioChoice: "声音选项",
     audioArrange: "听后排序",
     arrange: "组句",
     completion: "填空",
@@ -325,15 +326,16 @@ export const bankJavascript = String.raw`
       article.append(node("p", "左侧：" + q.left.map((item) => item.text).join("、")));
       article.append(node("p", "右侧：" + q.right.map((item) => item.text).join("、")));
     }
-    const optionText = (items, id) => items.find((item) => item.id === id)?.text || id;
+    const optionText = (items, id) => (items || []).find((item) => item.id === id)?.text || id;
     let solution;
-    if (q.answer) solution = optionText(q.options, q.answer);
+    if (q.answer) solution = q.audioOptions ? q.audioOptions.find(o => o.id === q.answer)?.audio.text : optionText(q.options, q.answer);
     if (q.acceptedAnswers) solution = q.acceptedAnswers.join(" / ");
     if (q.acceptedOrders) solution = q.acceptedOrders.map((order) => order.map((id) => optionText(q.tokens, id)).join(" ")).join(" / ");
     if (q.acceptedFills) solution = q.acceptedFills.map(fills => fills.map(fill => fill.slotId + " = " + optionText(q.tokens, fill.tokenId)).join("；")).join(" / ");
     if (q.answerPairs) solution = q.answerPairs.map((pair) => optionText(q.left, pair.left) + " → " + optionText(q.right, pair.right)).join("；");
     if (solution) article.append(node("p", "答案：" + solution));
     if (q.audio) article.append(node("p", "听力材料：" + q.audio.text));
+    for (const o of q.audioOptions || []) article.append(node("p", "声音选项 " + o.id + "：" + o.audio.text));
     article.append(node("p", "解析：" + q.explanation));
     parent.append(article);
   }
@@ -465,7 +467,7 @@ export const bankJavascript = String.raw`
     if (q.answer) {
       const label = node("label", "正确选项"),
         select = node("select");
-      for (const option of q.options) {
+      for (const option of q.options || q.audioOptions || []) {
         const o = node("option", option.id);
         o.value = option.id;
         select.append(o);

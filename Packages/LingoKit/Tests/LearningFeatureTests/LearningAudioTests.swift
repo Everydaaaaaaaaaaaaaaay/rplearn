@@ -83,4 +83,33 @@ struct LearningAudioTests {
         await model.prepare(attemptID: UUID(), question: try question())
         #expect(model.state == .failed); #expect(!model.hasListened)
     }
+    @Test("声音选项逐段听完才解锁，切换和迟到回调不伪造听完")
+    func optionPlaybackIsolation() async throws {
+        let service = AudioTestService()
+        var playbacks: [TestAudioPlayback] = []
+        let model = LearningAudioOptionsModel {
+            let playback = TestAudioPlayback(); playbacks.append(playback)
+            return LearningAudioModel(service: service, playback: playback)
+        }
+        let data = Data(#"{"id":"sounds","type":"audioChoice","goalId":"test.goal","instruction":"选声音","prompt":"工程测试","hint":"工程提示","audioOptions":[{"id":"a","audio":{"assetId":"audio.a"}},{"id":"b","audio":{"assetId":"audio.b"}}]}"#.utf8)
+        let question = try JSONDecoder().decode(LearningQuestion.self, from: data)
+        await model.prepare(attemptID: UUID(), question: question)
+        let first = try #require(model.players["a"]), second = try #require(model.players["b"])
+        #expect(!model.hasListenedToAll)
+        model.play("a"); try await waitForPlayback(first)
+        model.play("b"); try await waitForPlayback(second)
+        playbacks[0].completions[0](true)
+        #expect(!first.hasListened); #expect(second.state == .playing)
+        playbacks[1].completions[0](true)
+        #expect(second.hasListened); #expect(!model.hasListenedToAll)
+        model.play("a", slow: true); try await waitForPlayback(first)
+        playbacks[0].completions[1](true)
+        #expect(model.hasListenedToAll); #expect(playbacks[0].rates == [1, 0.75])
+        model.reset()
+        playbacks[0].completions[1](true)
+        #expect(model.players.isEmpty); #expect(!model.hasListenedToAll)
+        await model.prepare(attemptID: UUID(), question: question)
+        #expect(!model.hasListenedToAll)
+    }
+
 }

@@ -744,6 +744,7 @@ export const learningAdminJavascript = String.raw`
   const types = {
     choice: "选择",
     listeningChoice: "听力选择",
+    audioChoice: "声音选项",
     audioArrange: "听后排序",
     arrange: "词块组句",
     completion: "填空",
@@ -1249,6 +1250,10 @@ export const learningAdminJavascript = String.raw`
         el("div", q.prompt, "prompt"),
       );
       if (q.audio) block.append(audioPreview(q));
+      for (const option of q.audioOptions || []) {
+        block.append(el("p", "声音选项 " + option.id));
+        block.append(audioPreview({ id: q.id, audio: option.audio }));
+      }
       if (q.passage) block.append(el("p", q.passage, "prompt"));
       if (q.options) {
         const options = el(
@@ -1283,7 +1288,7 @@ export const learningAdminJavascript = String.raw`
       details.append(el("summary", "查看答案与解析"));
       let answer =
         q.acceptedAnswers?.join(" / ") ||
-        q.options?.find((o) => o.id === q.answer)?.text;
+        q.options?.find((o) => o.id === q.answer)?.text || q.audioOptions?.find((o) => o.id === q.answer)?.audio.text;
       if (q.acceptedOrders)
         answer = q.acceptedOrders
           .map((order) =>
@@ -1455,9 +1460,9 @@ export const learningAdminJavascript = String.raw`
       goal.append(select);
       grid.append(goal);
       group.append(grid);
-      if (q.options) {
+      if (q.options || q.audioOptions) {
         group.append(el("p", "选项与正确答案", "muted"));
-        q.options.forEach((o, j) => {
+        (q.options || q.audioOptions).forEach((o, j) => {
           const row = el("div", undefined, "edit-option"),
             label = el("label", String.fromCharCode(65 + j)),
             radio = el("input");
@@ -1475,7 +1480,8 @@ export const learningAdminJavascript = String.raw`
           label.prepend(radio);
           const input = el("input");
           input.type = "text";
-          input.value = o.text;
+          input.value = o.audio?.text || o.text;
+          input.readOnly = Boolean(o.audio);
           input.setAttribute(
             "aria-label",
             "选项 " + String.fromCharCode(65 + j) + " 内容",
