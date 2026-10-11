@@ -1,6 +1,6 @@
 {
   "date": "2026-10-11",
-  "status": "保存完整原句与实际制作参数；小四a09尚未通过客观核验，不作为已审媒体。",
+  "status": "19段制作计划及实际参数；小四a09完整双声部母版尚未通过，客观记录不替代人耳或原生播放。",
   "levels": {
     "primary4": {
       "allowLongUtterances": true,
@@ -29,7 +29,7 @@
         {
           "id": "a09",
           "questionId": "p4.astra.a09",
-          "transcript": "Friend: Is this your coat, Ben? Ben: No. It's Mia's.",
+          "transcript": "Friend: Is this your coat, Ben? Ben: No, this is Mia's coat.",
           "minimumWpm": 75,
           "maximumWpm": 125,
           "targetWpm": 100,
@@ -44,15 +44,15 @@
             },
             {
               "id": "a09-ben",
-              "text": "No. It's Mia's.",
+              "text": "No, this is Mia's coat.",
               "speaker": "Ben",
               "voice": "M3",
               "rate": 0.76,
               "breath": false
             }
           ],
-          "direction": "F3提问，M5完整回答；Friend与Ben标签不读，句内呼语Ben要读，Mia不发言。No与Mia's须清楚。",
-          "productionAdjustment": "M5多个原句候选的Mia所有格未获双模型一致转写；更换为已在本地模型包中的M3男声完整重录，保留原文和说话人，不改专名或放宽核验。"
+          "direction": "F3提问；原设计M5回答，实际选用M3完整回答。Friend与Ben标签不读，句内呼语Ben要读，Mia不发言。No与Mia's须清楚。",
+          "productionAdjustment": "作者亲写并认可完整归属回答，增加已知物品语境，原所有格主人及否定不变；先验证候选，不视为发音已经通过。"
         },
         {
           "id": "a13",
@@ -156,7 +156,7 @@
           ]
         }
       ],
-      "authoringSha256": "32c0377b92af998694eafd13feafafd62c99a32d50679c6a19a9db6d6c93d8af",
+      "authoringSha256": "455bd8d416a5ff330cadeed6df3701c81ade14664d8f1486031cc55c324c4a3b",
       "deliverySha256": "979ed74af564b155c77c85604c7c08618f860b71cd138dfbf7d8e54a7246a2ee"
     },
     "primary5": {

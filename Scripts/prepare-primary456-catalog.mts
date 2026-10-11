@@ -35,6 +35,22 @@ assert(
   parent === build || parent.startsWith(build + sep),
   "输出父目录必须实际位于本仓库build内。",
 );
+const levels = (process.argv[3] ?? "primary4,primary5,primary6").split(",");
+assert(
+  !process.argv[4] &&
+    levels.length > 0 &&
+    new Set(levels).size === levels.length &&
+    levels.every((level) =>
+      ["primary4", "primary5", "primary6"].includes(level),
+    ),
+  "年级参数必须为不重复的primary4、primary5、primary6逗号列表。",
+);
+const expectedQuestions = levels.length * 36;
+const expectedUnits = levels.length * 2;
+const expectedAudio = levels.reduce(
+  (sum, level) => sum + (level === "primary4" ? 7 : 6),
+  0,
+);
 const output = join(parent, "candidate-catalog");
 try {
   await lstat(output);
@@ -66,16 +82,20 @@ const audioReportPath =
   "Backend/config/learning/authoring/primary456-audio-review-2026-10-11.json";
 const audioReview = await readInput(audioReportPath);
 assert(Array.isArray(audioReview.clips), "音频报告缺少clips。");
+assert(Array.isArray(audioReview.failures), "音频报告缺少完整失败记录。");
+const selectedClips = audioReview.clips.filter((clip: any) =>
+  levels.includes(clip.level),
+);
 assert(
-  audioReview.complete === true &&
-    audioReview.count === 19 &&
-    audioReview.failures?.length === 0,
-  "19段媒体尚未全部通过，拒绝创建候选目录。",
+  audioReview.failures.every(
+    (failure: any) => !levels.includes(failure.level),
+  ) && selectedClips.length === expectedAudio,
+  "所选年级媒体尚未全部通过，拒绝创建候选目录。",
 );
 const clips = new Map(
-  audioReview.clips.map((clip: any) => [clip.questionId, clip]),
+  selectedClips.map((clip: any) => [clip.questionId, clip]),
 );
-assert.equal(clips.size, audioReview.clips.length, "音频报告题号重复。");
+assert.equal(clips.size, selectedClips.length, "音频报告题号重复。");
 const baseline = await loadCuratedCatalog(source);
 const baselineBank = await loadBankCatalog(source);
 const registry = structuredClone(baseline.registry);
@@ -135,7 +155,7 @@ function checkCandidates(clip: any) {
   );
 }
 
-for (const level of ["primary4", "primary5", "primary6"]) {
+for (const level of levels) {
   const formal = await readInput(
     `Backend/config/learning/authoring/${level}-formal.astra.json`,
   );
@@ -259,7 +279,7 @@ for (const level of ["primary4", "primary5", "primary6"]) {
   }
   plans.push({ level, formal, delivery, questions });
 }
-assert.equal(mappedIds.size, 108);
+assert.equal(mappedIds.size, expectedQuestions);
 assert.equal(
   seenClips.size,
   clips.size,
@@ -403,8 +423,11 @@ await write(join(output, "catalog.json"), registry);
 await write(join(output, "bank.json"), manifest);
 const checked = await loadCuratedCatalog(output);
 const bank = await loadBankCatalog(output);
-assert.equal(checked.units.length, baseline.units.length + 6);
-assert.equal(bank.entries.length, baselineBank.entries.length + 108);
+assert.equal(checked.units.length, baseline.units.length + expectedUnits);
+assert.equal(
+  bank.entries.length,
+  baselineBank.entries.length + expectedQuestions,
+);
 assert.equal(
   checked.audioAssets.length,
   baseline.audioAssets.length + audioFiles.size,
@@ -421,13 +444,14 @@ assert.equal(
 );
 await write(join(output, "acceptance.json"), {
   status: "仅隔离候选，不可直接发布",
+  levels,
   baselineHash: baseline.hash,
   candidateHash: checked.hash,
   bankHash: bank.hash,
   inputs,
   units,
   exclusionPairs,
-  newQuestions: 108,
+  newQuestions: expectedQuestions,
   newAudio: audioFiles.size,
   pending: [
     "独立媒体听感与原生播放",
@@ -439,7 +463,7 @@ console.log(
   JSON.stringify({
     output,
     newUnits: units.length,
-    newQuestions: 108,
+    newQuestions: expectedQuestions,
     newAudio: audioFiles.size,
     exclusionPairs: exclusionPairs.length,
     status: "隔离候选合同通过，未发布",

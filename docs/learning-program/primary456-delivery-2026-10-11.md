@@ -43,8 +43,12 @@
 
 首轮小四A03/A18、小五B16、小六B03/B08/B13超出各自制作语速范围，保留原脚本降低合成rate重新生成。小五B16另一个候选出现重复home，直接淘汰。所选母版全部重新独立转写。数字1st/first属于正字法归一，但Mia’s/me as、否定丢失、动词词尾、错误数字和币种不归为等价。
 
-小四A09尚未通过：完整答句“No. It's Mia's.”在M5与M3候选的自动转写不稳定；部分small.en候选识别出Mia's，base.en仍出现me as。此结果不能直接证明录音读错，也不能替代实际听辨；保留原专名与题面，没有为了通过转写而换答案或放宽匹配。该段仍需后续听感复核或完整重录。
+小四A09尚未通过：原答句“No. It's Mia's.”在M5与M3候选的自动转写不稳定。随后由本级Astra作者亲写并经主审采纳“No, this is Mia's coat.”完整回答，保留专名、归属目标、题面与答案；不是剪词或放宽识别等价。M3 take6回答话轮双模型通过，但合并后的双声部母版base.en仍出现me as coat，故仍不计通过。此结果不能直接证明录音读错，也不能替代实际听辨。详见[脚本修订与审定](primary4-a09-audio-revision-2026-10-11.md)。
 
-证据文件为 `authoring/primary456-audio-review-2026-10-11.json`，明确 `complete=false`、18段通过及1段失败；实际制作参数保存在相邻 `primary456-audio-production-2026-10-11.json`，媒体本体留在build，不混入正式媒体库。所有18段仍未作独立人耳及原生播放验收。
+证据文件为 `authoring/primary456-audio-review-2026-10-11.json`，明确 `complete=false`、18段通过及1段失败；实际制作参数保存在相邻 `primary456-audio-production-2026-10-11.json`，媒体本体留在build，不混入正式媒体库。所有18段仍待独立听感判断；本轮补做了其中小五B16、小六B13的实际原生播放验收，不将播放器完成事件当作人耳验收。
 
-复跑客观校验：`python3 Scripts/verify-primary456-audio.py --partial`。不带`--partial`的严格模式已实际确认非零退出。`Backend/node_modules/.bin/tsx Scripts/prepare-primary456-catalog.mts`同样已确认拒绝不完整报告，且不创建candidate-catalog；六单元完整转换成功路径尚未验证。该脚本只映射已审正文、来源和答案；不会生成题目、错误作答或占位音频。此前92对互斥、混卷完整性及原生18题挑战验收仍未完成，正式题库未因此更新。
+复跑客观校验：`python3 Scripts/verify-primary456-audio.py --partial`。不带`--partial`的严格模式已实际确认非零退出。转换脚本新增显式年级选择：只有所选年级全部媒体合格才创建候选，不允许同年级缺题缺音。默认三个年级仍拒绝，重复年级、未知年级及覆盖旧证据也拒绝。本轮实际生成小五/小六四个18题单元，72题、12段新增音频、40对互斥提案，正式合同及公开投影通过。没有改正式目录，也没有应用40对互斥；默认六单元完整成功路径仍未验证。
+
+最终候选位于 `build/learning-primary456-20261011/primary56-final/candidate-catalog`，可用 `Backend/node_modules/.bin/tsx Scripts/prepare-primary456-catalog.mts <build内已存在的新父目录> primary5,primary6` 重建。脚本只映射已审正文、来源和答案，不生成教学文本或占位媒体。小六四道多空的题干已人工删除重复“从词库选词／每块一次”，保留instruction中的一次性使用规则及全部时间、数量、肯否条件；220条作者亲写判题样例再次通过。
+
+原生测试 `Scripts/test-ui.sh -only-testing:LingoTripUITests/PrimaryCandidateUITests` 实际3通过、0失败、0跳过，覆盖四篇三段开场到首题、首段中文切换、四道真实多空的填写／撤回／换词，以及两段真实录音完整播放门槛和慢速重播。普通字号、最大辅助字号深色均有实际操作与截图。首轮证据 `build/DerivedData/VerificationResults/20261011T014120Z-42117.xcresult`，导出18张截图；主审目视普通故事/多空/听力及最大字号的故事/多空，最大字号采用滚动阅读，不能据此宣称所有内容同屏。四处题干精简后多空定向复验1通过、0失败、0跳过，证据为 `build/DerivedData/VerificationResults/20261011T014602Z-42960.xcresult`；其余公开字段和全部152个音频文件字节完全一致，复用先前证据。完整答题计分、92对关系接入、混卷及生产发布仍需后续验收。
