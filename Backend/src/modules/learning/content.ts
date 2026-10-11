@@ -358,10 +358,10 @@ export const unitSchema = z
           "右侧答案",
         );
         if (
-          question.left.length !== question.right.length ||
+          question.left.length > question.right.length ||
           question.left.length !== question.answerPairs.length
         ) {
-          fail("配对必须完整覆盖左右两侧。");
+          fail("配对必须覆盖全部左侧项目，右侧可保留干扰项。");
         }
         if (
           question.answerPairs.some(
