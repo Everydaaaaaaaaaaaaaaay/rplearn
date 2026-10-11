@@ -10,6 +10,11 @@ import { gradeAnswer } from "../../../src/modules/learning/grading.js";
 import { bankIdentity } from "../../../src/modules/learning/bank-content.js";
 import { learningFixture } from "../../helpers/learning.js";
 
+function required<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error("缺少测试夹具。");
+  return value;
+}
+
 // 工程合同夹具，不作为教材题或真实录音发布。
 const question: Extract<LearningQuestion, { type: "audioChoice" }> = {
   id: "test.sound",
@@ -41,7 +46,7 @@ describe("独立声音选项", () => {
     const parsed = unitSchema.parse(unit(question));
     const original = structuredClone(parsed);
     const projections = Array.from({ length: 20 }, (_, i) =>
-      publicUnit(parsed, `attempt${i}`),
+      publicUnit(parsed, `attempt${String(i)}`),
     );
     expect(publicUnit(parsed, "attempt0")).toEqual(projections[0]);
     expect(
@@ -91,7 +96,10 @@ describe("独立声音选项", () => {
           question.audioOptions[0],
           {
             id: "b",
-            audio: { ...question.audioOptions[0]!.audio, assetId: "audio.other" },
+            audio: {
+              ...required(question.audioOptions[0]).audio,
+              assetId: "audio.other",
+            },
           },
         ],
       },
@@ -105,10 +113,14 @@ describe("独立声音选项", () => {
       ...question,
       audioOptions: [...question.audioOptions]
         .reverse()
-        .map((o, i) => ({ ...o, id: `x${i}`, audio: { ...o.audio, voice: "F3" } })),
+        .map((o, i) => ({
+          ...o,
+          id: `x${String(i)}`,
+          audio: { ...o.audio, voice: "F3" },
+        })),
     };
     expect(bankIdentity(renamed)).toBe(bankIdentity(question));
-    renamed.audioOptions[0]!.audio.text = "Different recording.";
+    required(renamed.audioOptions[0]).audio.text = "Different recording.";
     expect(bankIdentity(renamed)).not.toBe(bankIdentity(question));
   });
 });

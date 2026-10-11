@@ -13,11 +13,17 @@ import { learningAudioFixture } from "../helpers/learning-audio.js";
 import { learningFixture } from "../helpers/learning.js";
 import { integrationConfig } from "../helpers/integration.js";
 
+function required<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error("缺少测试夹具。");
+  return value;
+}
+
 describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
   "十八题挑战、听力 HTTP 鉴权与版本冻结",
   () => {
     let database: DatabaseResource;
     let app: FastifyInstance;
+    let appReady = false;
     let repository: LearningEngineRepository;
     let attemptId: string;
     const users = [randomUUID(), randomUUID()];
@@ -104,7 +110,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         explanation: "工程答案解析",
         difficultyReason: "测试独立素材授权与冻结",
         audioOptions: assets.slice(0, 3).map((asset, index) => ({
-          id: `sound${index}`,
+          id: `sound${String(index)}`,
           audio: {
             assetId: asset.metadata.id,
             text: asset.metadata.transcript,
@@ -146,6 +152,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(started.attempt.unit.questions[2]).not.toHaveProperty("audio.text");
       attemptId = started.attempt.id;
       app = await buildApp(config, { logger: false });
+      appReady = true;
       registerLearningRoutes(
         app,
         auth,
@@ -165,7 +172,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       );
     });
     afterAll(async () => {
-      await app?.close();
+      if (appReady) await app.close();
       for (const user of users) {
         await database.sql`delete from app.auth_security_events where user_id=${user}`;
         await database.sql`delete from app.users where id=${user}`;
@@ -285,7 +292,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         (
           await app.inject({
             method: "GET",
-            url: `${url}?assetId=${assets[3]!.metadata.id}`,
+            url: `${url}?assetId=${required(assets[3]).metadata.id}`,
             headers,
           })
         ).statusCode,
@@ -298,7 +305,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       invalid.version = 2;
       const q = invalid.questions[6];
       if (q?.type !== "audioChoice") throw new Error("缺少声音选项夹具");
-      q.audioOptions[1]!.audio.text = "原文不匹配";
+      required(q.audioOptions[1]).audio.text = "原文不匹配";
       await expect(repository.publishBatch([invalid], [])).rejects.toMatchObject({
         code: "LEARNING_AUDIO_NOT_READY",
       });
@@ -316,9 +323,9 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         voice: replacement.metadata.voice,
       };
       const optionQuestion = changed.questions[6];
-      const newSound = assets[3]!;
+      const newSound = required(assets[3]);
       if (optionQuestion?.type !== "audioChoice") throw new Error("缺少声音选项夹具");
-      optionQuestion.audioOptions[0]!.audio = {
+      required(optionQuestion.audioOptions[0]).audio = {
         assetId: newSound.metadata.id,
         text: newSound.metadata.transcript,
         voice: newSound.metadata.voice,
@@ -334,23 +341,25 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       });
       expect(response.statusCode).toBe(200);
       expect(response.json()).toMatchObject({ assetId: assets[0]?.metadata.id });
-      const frozen = await repository.read(users[0]!, (session) =>
+      const frozen = await repository.read(required(users[0]), (session) =>
         session.attempt(attemptId),
       );
-      const again = await repository.read(users[0]!, (session) =>
+      const again = await repository.read(required(users[0]), (session) =>
         session.attempt(attemptId),
       );
       expect(frozen.unit).toEqual(again.unit);
       const publicOptions = frozen.unit.questions.find(
         (q) => q.id === "test.sound-options",
       );
-      expect(publicOptions).toMatchObject({
-        audioOptions: expect.arrayContaining([
-          { id: "sound0", audio: { assetId: assets[0]!.metadata.id } },
-          { id: "sound1", audio: { assetId: assets[1]!.metadata.id } },
-          { id: "sound2", audio: { assetId: assets[2]!.metadata.id } },
-        ]),
-      });
+      if (!publicOptions || !("audioOptions" in publicOptions))
+        throw new Error("缺少公开声音选项。");
+      expect(
+        publicOptions.audioOptions.map((o) => [o.id, o.audio.assetId]).sort(),
+      ).toEqual([
+        ["sound0", required(assets[0]).metadata.id],
+        ["sound1", required(assets[1]).metadata.id],
+        ["sound2", required(assets[2]).metadata.id],
+      ]);
       const optionURL = `/v1/learning/attempts/${attemptId}/audio/test.sound-options`;
       const headers = { authorization: `Bearer ${tokens[0] ?? ""}` };
       expect(
@@ -366,7 +375,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
         (
           await app.inject({
             method: "GET",
-            url: `${optionURL}?assetId=${assets[0]!.metadata.id}`,
+            url: `${optionURL}?assetId=${required(assets[0]).metadata.id}`,
             headers,
           })
         ).statusCode,
