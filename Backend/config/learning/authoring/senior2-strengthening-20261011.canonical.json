@@ -1,0 +1,207 @@
+{
+  "id": "companion.senior2.evening-space",
+  "version": 1,
+  "schemaVersion": 1,
+  "scoringVersion": 1,
+  "roleKey": "companion",
+  "roleVersion": 1,
+  "level": "senior2",
+  "title": "黄昏留下的空位",
+  "summary": "一盏旧灯照亮空椅子，也让同行的傍晚有了不同的意味。",
+  "scene": "你和同行者经过旧灯小店，留意街道与事物之间的空隙。",
+  "estimatedMinutes": 20,
+  "goalIds": ["s2.discourse-reference-scope", "s2.balanced-argument", "s2.integrating-conditions", "s2.nonrestrictive", "s2.past-perfect", "s2.ing-roles", "s2.present-perfect-continuous", "s2.listening-reasons-and-response", "s2.listening-predictions-and-compromise"],
+  "prerequisiteGoalIds": [],
+  "references": [
+    {"sourceId": "pep.senior.selective1.review2019", "unit": "选择性必修第一册：Unit 1、Unit 2、Unit 4", "pages": "印刷5、6、11、17—21、41／PDF12、13、18、24—28、48", "alignment": "沿用2026-10-11独立作者已实际读取分页正文并核对页脚的记录；本次适配未重新核读教材。非限制性从句、理由、评价、日程、预测、利弊衔接与-ing角色为依据。指代链、竞争解释和双来源整合是原创延伸，不伪称教材有相同题型。2019审核版社区存档，未重验版次印次及整册哈希，不声称全年统一学期覆盖。"},
+    {"sourceId": "fltrp.senior.selective1.review2019", "unit": "选择性必修第一册：Unit 5、Unit 6", "pages": "印刷53、65／PDF60、72", "alignment": "沿用独立作者2026-10-11对两页分页正文及页脚的实际核读记录，本次未新查教材或教材音频。借鉴过去参照下动作先后、持续过程与完成结果比较；被动结合为先修迁移。只覆盖所列页，不声称整册能力。"}
+  ],
+  "authorship": {"kind": "authored", "author": "高二独立Astra作者", "reviewedBy": "主代理逐题主审；高二结构适配代理逐题文字复核", "reviewedAt": "2026-10-11", "reviewNotes": "18题和三段完整双语开场逐题无损适配；程序仅保存及验证，不组合教学文本。另写简短操作说明与非泄露提示，保留题面、候选、答案与解析。两道听力仍pending，不填假assetId或媒体哈希；新增两项目标仅备登记。隔离待媒体稿，不是发布批准。"},
+  "beats": [
+    {"id": "opening.1", "afterQuestion": 0, "speaker": "旁白", "text": "At the end of a narrow street, you and your companion find a small shop selling old lamps. Most are dark, but one throws a warm circle across an empty chair. You pause outside. Someone has left a pair of shoes beneath the chair, neatly side by side.", "translation": "在一条窄街的尽头，你和同行者发现一家卖旧灯的小店。大多数灯都暗着，只有一盏在空椅子上投下一圈暖光。你们在店外停下。有人把一双鞋整齐地摆在椅子下面。"},
+    {"id": "opening.2", "afterQuestion": 0, "speaker": "旁白", "text": "The owner comes out carrying a bowl of water. A sleepy dog follows him and settles beside the shoes. Your companion smiles. Neither of you goes inside. For a while, you simply stand there as the street grows quieter and the circle of light becomes easier to see.", "translation": "店主端着一碗水走出来。一只困倦的狗跟在身后，随后在鞋边躺下。同行者笑了。你们谁也没有进店，只静静站了一会儿。街道渐渐安静，那圈光也变得更清楚了。"},
+    {"id": "opening.3", "afterQuestion": 0, "speaker": "旁白", "text": "On the way back, you notice the spaces between things: two bicycles, a half-open curtain, the last houses before the river. Your companion slows down to match your steps. There is nothing special to take home, yet the evening no longer feels like an empty part of the day.", "translation": "回去的路上，你开始留意事物之间的空隙：两辆自行车之间，半掀开的窗帘旁，还有河边最后几栋房子之外。同行者放慢脚步，与你走在一起。没有什么特别的东西可以带走，可这个傍晚已不再像一天里空着的一段。"}
+  ],
+  "questions": [
+    {
+      "id": "s2.strength.q01", "goalId": "s2.discourse-reference-scope", "type": "choice",
+      "instruction": "阅读整句，选择保持原意的转述。",
+      "prompt": "读完整句子：The guide did not recommend every path marked on the map that the hotel had given us; she recommended the two beside the river. 哪条转述不改变推荐范围？",
+      "options": [{"id": "a", "text": "The guide recommended the hotel map but gave no advice about its paths."}, {"id": "b", "text": "The guide recommended two riverside paths, rather than all the paths shown on the hotel map."}, {"id": "c", "text": "The guide advised us to avoid the two riverside paths marked on the hotel map."}, {"id": "d", "text": "The guide recommended every marked path except the two beside the river."}],
+      "answer": "b", "hint": "把每项转述与原句的前后两部分分别核对。",
+      "explanation": "not every否定全部都推荐，后半句明确肯定河边两条。that the hotel had given us修饰map，不改变推荐对象。a改成推荐地图且否认路线建议；c反转河边两条的态度；d将被推荐两条变成例外。",
+      "difficultyReason": "高二进阶：须跨分号消解范围，词汇普通"
+    },
+    {
+      "id": "s2.strength.q02", "goalId": "s2.discourse-reference-scope", "type": "choice",
+      "instruction": "联系前文，选择指代内容。",
+      "prompt": "The museum asked its regular visitors to describe an object they remembered. It then invited first-time visitors to read these accounts beside the objects. This helped the newcomers notice details that the labels did not mention.\n最后一句的This准确指哪项安排？accounts在这里指个人描述。",
+      "options": [{"id": "a", "text": "Replacing object labels with the names of regular visitors."}, {"id": "b", "text": "Asking newcomers to write about an object before seeing it."}, {"id": "c", "text": "Inviting regular visitors to rewrite all the museum labels."}, {"id": "d", "text": "Having newcomers read earlier visitors' descriptions beside the objects."}],
+      "answer": "d", "hint": "核对每个动作的参与者及其使用的材料。",
+      "explanation": "It指博物馆，these accounts回指老访客写下的描述，This概括让新访客在实物旁读描述的安排。没有更换展签、让新访客预写或重写全部展签。",
+      "difficultyReason": "高二中高：代词跨句且参与者不同"
+    },
+    {
+      "id": "s2.strength.q03", "goalId": "s2.balanced-argument", "type": "choice",
+      "instruction": "读完整材料，选择作者现在的评价。",
+      "prompt": "When our school garden opened, I expected it to become a quiet place for reading. During the first month, however, classes used it for growing vegetables, and the space was rarely silent. At first I thought the plan had failed. Then I watched two students who seldom spoke in class explain their work to a younger group. The garden had given them something worth talking about. I still want a quiet corner, but I no longer judge the whole garden by that one wish. A place can succeed in a way its first visitors did not expect.\n作者现在怎样评价花园？",
+      "options": [{"id": "a", "text": "It has educational value, even though it has not fully met the writer's original wish."}, {"id": "b", "text": "It failed at first but became successful once quiet reading replaced vegetable growing."}, {"id": "c", "text": "Its value depends on whether it can become a quiet reading space next month."}, {"id": "d", "text": "It has persuaded the writer that quiet spaces are less useful than practical lessons."}],
+      "answer": "a", "hint": "留意叙述时间的变化，再检查选项是否添加了比较或条件。",
+      "explanation": "作者看到学生表达后的价值而修正单一评价标准，仍希望有安静角落。b虚构功能替换；c将已经认可的价值推迟到未来条件；d虚构不同用途的价值排序。",
+      "difficultyReason": "高二进阶：约100词独立语篇，需结合前后立场"
+    },
+    {
+      "id": "s2.strength.q04", "goalId": "s2.balanced-argument", "type": "choice",
+      "instruction": "根据材料，选择报告修改的理由。",
+      "prompt": "A village shop moved its bread shelf closer to the entrance in June. Sales rose during that month, and the owner credited the new position. Her assistant pointed out that a nearby shop had closed for repairs at the same time. Neither had recorded where the extra customers came from. They agreed to keep the shelf in place for now and compare sales again after the other shop reopened. The owner was pleased with the result, but she removed a sentence from her report claiming that moving the shelf had caused the increase. She kept the sales figures.\n为什么保留数字却删掉那句话？",
+      "options": [{"id": "a", "text": "The sales figures were estimates, while the shelf position had been recorded accurately."}, {"id": "b", "text": "The assistant had shown that the closed shop accounted for the entire increase."}, {"id": "c", "text": "The increase was recorded, but another change made its cause uncertain."}, {"id": "d", "text": "The owner had decided to return the shelf to its earlier position before comparing sales."}],
+      "answer": "c", "hint": "为选项中的每个判断寻找材料依据，特别留意判断的确定程度。",
+      "explanation": "销售增加是已有记录；货架移动与邻店关闭同时发生，来源未记录，不能只归因于移动。a捏造估算；b把另一解释变成已证实全因；d违背keep the shelf in place。",
+      "difficultyReason": "高二进阶：约100词，必须区分两个同时变化因素"
+    },
+    {
+      "id": "s2.strength.q05", "goalId": "s2.discourse-reference-scope", "type": "choice",
+      "instruction": "选择结尾与例子之间的衔接关系。",
+      "prompt": "The town's reading room used to lend books without asking readers to record what they thought. Last winter, a volunteer placed blank cards inside several books. Readers could leave a comment for the next person, but signing a name was optional. Some wrote long reviews; others drew a face or left the card untouched. The volunteer expected the detailed reviews to start conversations. To her surprise, a drawing of a puzzled face led three readers to discuss the same ending at the desk. This did not make the longer reviews worthless. It reminded her that a small response could also invite a useful exchange.\n最后两句怎样衔接前面的例子？",
+      "options": [{"id": "a", "text": "They reject written reviews because drawings are easier for most readers to understand."}, {"id": "b", "text": "They limit the conclusion: a brief response can help, without making detailed reviews useless."}, {"id": "c", "text": "They explain why readers should give their names before discussing a book's ending."}, {"id": "d", "text": "They show that the volunteer's original prediction about detailed reviews was confirmed."}],
+      "answer": "b", "hint": "同时核对原先的预期、发生的事以及结尾的措辞。",
+      "explanation": "not worthless阻止把小回应有用误读为长评论无用；also扩展有效方式。a无依据比较并否定长评；c引入与例子无关的实名条件；d忽略To her surprise标记的预期差异。",
+      "difficultyReason": "高二进阶：约110词，含预期/实际与限制性结论"
+    },
+    {
+      "id": "s2.strength.q06", "goalId": "s2.integrating-conditions", "type": "choice",
+      "instruction": "合读两份信息，选择可行预约。",
+      "prompt": "场馆规则：A school group may use the roof garden before noon if a staff guide is present. After noon, school groups must use the ground-floor room.\n工作人员邮件：I can guide your group from 10:30 to 11:15. The roof garden will be closed for repairs until 11:00.\n你需要连续15分钟在屋顶花园活动。哪个预约同时符合两份信息？",
+      "options": [{"id": "a", "text": "10:30–10:45, with the staff guide."}, {"id": "b", "text": "11:15–11:30, after the guided visit."}, {"id": "c", "text": "12:15–12:30, with a teacher from the school."}, {"id": "d", "text": "11:00–11:15, with the staff guide."}],
+      "answer": "d", "hint": "逐项检查完整预约是否符合材料中的每一项要求。",
+      "explanation": "11:00修缮结束到11:15带队结束，正好15分钟且在中午前。a修缮未结束；b工作人员已不可用；c午后学校团体限地面房间，学校教师也不能替代指定staff guide。",
+      "difficultyReason": "高二中高：语言解读主导，时间计算限15分钟"
+    },
+    {
+      "id": "s2.strength.q07", "goalId": "s2.nonrestrictive", "type": "choice",
+      "instruction": "核对记录，选择准确合句。",
+      "prompt": "你编辑记录：有两份报告。第一份由学生写，第二份由教师写；两份都讨论河流水质。你只想补充第二份报告的作者，同时明确两份都研究水质。哪句保持这些事实？",
+      "options": [{"id": "a", "text": "The two reports, the second of which was written by teachers, both examine river water quality."}, {"id": "b", "text": "Both reports, which were written by teachers, examine river water quality."}, {"id": "c", "text": "The second report, which examines river water quality, was written by students."}, {"id": "d", "text": "The teachers who wrote both reports examined river water quality."}],
+      "answer": "a", "hint": "分别核对每份报告的作者和研究内容。",
+      "explanation": "a用the second of which把教师作者身份限定给第二份报告，主句both examine保留两份共有的研究内容。b和d把教师作者扩到两份；c把第二份作者改为学生，也没有明确两份都研究水质。",
+      "difficultyReason": "高二中高"
+    },
+    {
+      "id": "s2.strength.q08", "goalId": "s2.nonrestrictive", "type": "completion",
+      "instruction": "按要求合句，只填写空缺部分。",
+      "prompt": "原句：The evening ferry was cancelled. This left several workers on the island.\n用which合并，保留原词和过去时，不增加原因；只填空内部分：The evening ferry was cancelled, ____. ferry指渡船。",
+      "acceptedAnswers": ["which left several workers on the island"],
+      "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
+      "hint": "填完后把整句读一遍，检查是否保留原句的事件和数量。",
+      "explanation": "which回指前面整件事，并作left的主语，所以不再加it。保留several，不扩大为全部工人；没有信息证明取消原因。",
+      "difficultyReason": "高二中档：有指定结构支架，但需输出完整后果"
+    },
+    {
+      "id": "s2.strength.q09", "goalId": "s2.past-perfect", "type": "completion",
+      "instruction": "按指定形式补全谓语，不缩写。",
+      "prompt": "记录：At noon, the editor opened the folder. Someone removed the final photograph at eleven.\n从中午的视角回顾更早发生的事，用remove的过去完成时被动形式填完整谓语，不缩写：When the editor opened the folder, the final photograph ____. editor指编辑。",
+      "acceptedAnswers": ["had been removed"],
+      "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
+      "hint": "检查句中主语、动作发生的时间及题面要求的形式。",
+      "explanation": "照片是被移除的对象，且十一点早于中午，因此指定形式为had been removed。had removed把照片变成施事；was removed不满足本题指定的过去完成形式，但不能因此说一般过去时在其他清楚语境中都不合法。",
+      "difficultyReason": "高二中高：结合熟悉时态和被动，不靠生词"
+    },
+    {
+      "id": "s2.strength.q10", "goalId": "s2.ing-roles", "type": "completion",
+      "instruction": "使用指定动词，补写方法。",
+      "prompt": "原意：We protected the old floor. We did not drag the chairs across it.\n用avoid的-ing形式和drag的-ing形式说明采用的方法；沿用the chairs和介词across，不用代词替换the chairs：We protected the old floor by ____. drag指拖动。",
+      "acceptedAnswers": ["avoiding dragging the chairs across it", "avoiding dragging the chairs across the old floor", "avoiding dragging the chairs across the floor"],
+      "normalization": {"ignoreCase": true, "ignoreTerminalPunctuation": true},
+      "hint": "确认补写内容保留原意，并满足两个动词的形式要求。",
+      "explanation": "by avoiding dragging the chairs across it表示通过避免拖动来保护地板。两个-ing分别由by和avoid要求；直接写dragging会反转实际方法。地点也可写across the old floor或across the floor，均指原地板。across是本题指定支架，over不满足此项要求，但不能因此断言它在自然改写中是英语错误。",
+      "difficultyReason": "高二进阶受控输出：不是单词拼写"
+    },
+    {
+      "id": "s2.strength.q11", "goalId": "s2.balanced-argument", "type": "arrange",
+      "instruction": "使用全部词块，按给定开头组句。",
+      "prompt": "表达：即使这份问卷反映了年轻乘客的看法，它也没有告诉我们老年乘客需要什么。以Even if开头；survey指问卷调查。",
+      "tokens": [{"id": "a", "text": "what older passengers need."}, {"id": "b", "text": "it does not tell us"}, {"id": "c", "text": "Even if"}, {"id": "d", "text": "younger passengers' views,"}, {"id": "e", "text": "the survey reflects"}],
+      "acceptedOrders": [["c", "e", "d", "b", "a"]],
+      "hint": "核对两类乘客分别对应哪一部分信息。",
+      "explanation": "Even if the survey reflects younger passengers' views, it does not tell us what older passengers need. 即便覆盖年轻人也不能自动代表老年人；Even if不在此证明问卷实际上已经充分反映年轻人的观点。",
+      "difficultyReason": "高二中高：有词块，主要是保持信息范围"
+    },
+    {
+      "id": "s2.strength.q12", "goalId": "s2.discourse-reference-scope", "type": "arrange",
+      "instruction": "使用全部词块，保持修饰范围组句。",
+      "prompt": "你要说明：在图书馆找不到安静座位的学生被邀请试用楼上的房间。只指这一部分学生，并非全校学生都找不到座位。以Students开头，词块间不另加逗号。",
+      "tokens": [{"id": "a", "text": "were invited"}, {"id": "b", "text": "in the library"}, {"id": "c", "text": "Students"}, {"id": "d", "text": "to try the upstairs room."}, {"id": "e", "text": "who could not find a quiet seat"}],
+      "acceptedOrders": [["c", "e", "b", "a", "d"]],
+      "hint": "读回组好的句子，检查地点与学生范围是否符合描述。",
+      "explanation": "Students who could not find a quiet seat in the library were invited to try the upstairs room. 无逗号关系从句限定学生子集；in the library属于找座位的位置，不是邀请发出的地点。",
+      "difficultyReason": "高二中高：先修定语从句迁移到长句"
+    },
+    {
+      "id": "s2.strength.q13", "goalId": "s2.integrating-conditions", "type": "matching",
+      "instruction": "为每项申请配结论，保留一个多余项。",
+      "prompt": "规则A：Travel support is available to students living more than 5 km away.\n规则B：For this visit, applicants must also join the morning session. The afternoon session alone does not qualify.\n将申请与准确结论配对；每个结论至多用一次。travel support指交通补助。",
+      "left": [{"id": "l1", "text": "Elena: 7 km away; morning session."}, {"id": "l2", "text": "Victor: 4 km away; morning session."}, {"id": "l3", "text": "Sam: 8 km away; afternoon session, not morning."}],
+      "right": [{"id": "r1", "text": "Meets the distance condition but not the session condition."}, {"id": "r2", "text": "Meets both conditions."}, {"id": "r3", "text": "Meets neither condition."}, {"id": "r4", "text": "Meets the session condition but not the distance condition."}],
+      "answerPairs": [{"left": "l1", "right": "r2"}, {"left": "l2", "right": "r4"}, {"left": "l3", "right": "r1"}],
+      "hint": "逐人对照两份规则，再读完整结论。",
+      "explanation": "Elena两条均满足；Victor距离不足；Sam只满足距离。r3多余：没有人两条都不满足。",
+      "difficultyReason": "高二中档：降低词汇负担，保留条件合取"
+    },
+    {
+      "id": "s2.strength.q14", "goalId": "s2.balanced-argument", "type": "matching",
+      "instruction": "为每句回应配沟通目的，有一项多余。",
+      "prompt": "小组在准备一本关于老街的册子。根据每句实际表达的内容配对，不凭礼貌词多少判断。每项至多使用一次。",
+      "left": [{"id": "l1", "text": "The description is vivid. Could you add where this account came from so readers can judge it?"}, {"id": "l2", "text": "I treated the date as certain earlier. The diary gives a different year, so I need to correct that."}, {"id": "l3", "text": "I agree that the factory mattered, but the interviews also describe life before it opened."}],
+      "right": [{"id": "r1", "text": "修正自己先前过于确定的信息"}, {"id": "r2", "text": "肯定表达效果，同时索取信息来源"}, {"id": "r3", "text": "拒绝使用口述材料，要求全用书面记录"}, {"id": "r4", "text": "承认一个重点，同时补充被忽略的时间范围"}],
+      "answerPairs": [{"left": "l1", "right": "r2"}, {"left": "l2", "right": "r1"}, {"left": "l3", "right": "r4"}],
+      "hint": "把每句回应的前后部分一起考虑，核对它实际做了什么。",
+      "explanation": "l1请求来源；l2明确收回确定日期并纠正；l3承认工厂重要，又补充开厂前生活。三句都未要求排除口述材料，所以r3不用。",
+      "difficultyReason": "高二中高：同样礼貌/合作语气，须读命题关系"
+    },
+    {
+      "id": "s2.strength.q15", "goalId": "s2.discourse-reference-scope", "type": "cloze",
+      "instruction": "选择词块填两空，每个词块至多使用一次。",
+      "prompt": "完整表达：大家没有在不同地点各摆一份时间表，而是共用入口处那一份；这样也更容易看出改动。选择最合适的衔接词。",
+      "passage": "We decided against putting separate timetables in every room. {s1}, we placed one large timetable at the entrance. {s2}, changes were easier to notice because everyone used the same version.",
+      "tokens": [{"id": "a", "text": "For instance"}, {"id": "b", "text": "Instead"}, {"id": "c", "text": "As a result"}, {"id": "d", "text": "Despite this"}],
+      "acceptedFills": [[{"slotId": "s1", "tokenId": "b"}, {"slotId": "s2", "tokenId": "c"}]],
+      "hint": "填完后连读三句，检查衔接关系是否符合题意。",
+      "explanation": "Instead引出替代方案；As a result引出共用版本带来的效果。For instance不是对首句举例，Despite this将顺承结果误说成转折。",
+      "difficultyReason": "高二中档：两空须联系语篇，词库提供输出支架"
+    },
+    {
+      "id": "s2.strength.q16", "goalId": "s2.present-perfect-continuous", "type": "cloze",
+      "instruction": "按两条更新填谓语，词块不重复。",
+      "prompt": "同一个维修项目的两条更新：第一人强调从周一开始至今仍在进行的工作；第二人报告已经装好的具体数量。使用词库，不重复。benches指长椅。",
+      "passage": "We {s1} the benches since Monday, and the work is still going on. So far, we {s2} four new seats; two more are needed.",
+      "tokens": [{"id": "a", "text": "have fitted"}, {"id": "b", "text": "had repaired"}, {"id": "c", "text": "have been repairing"}, {"id": "d", "text": "are fitting"}],
+      "acceptedFills": [[{"slotId": "s1", "tokenId": "c"}, {"slotId": "s2", "tokenId": "a"}]],
+      "hint": "联系每句的后半部分，核对所填谓语表达的状态。",
+      "explanation": "have been repairing突出持续且仍进行的维修；have fitted对应已安装好四个座位。had repaired缺少相应过去参照点；are fitting表示正在装，不能保留题定的已完成数量。",
+      "difficultyReason": "高二中高：双空联读而非孤立since词形"
+    },
+    {
+      "id": "s2.strength.q17", "goalId": "s2.listening-reasons-and-response", "type": "listeningChoice",
+      "instruction": "听留言，选择对方要求的修改。",
+      "prompt": "听一段关于文章草稿的留言。对方希望作者怎样修改？",
+      "audioScript": "Your description of the station is clear. I paused at the sentence saying travellers felt safer after the new lights went in. The manager told you that, didn't she? I couldn't find any comments from travellers themselves. Please make clear whose view it is. You don't need to remove the description of the lights.",
+      "mediaStatus": "pending",
+      "options": [{"id": "a", "text": "Remove the description of the lights because the station manager objects to it."}, {"id": "b", "text": "State that the safety judgment came from the manager, rather than presenting it as travellers' own feedback."}, {"id": "c", "text": "Replace the manager's comments with the travellers' comments already collected."}, {"id": "d", "text": "Explain why the lights made travellers safer by adding the manager's technical description."}],
+      "answer": "b", "hint": "听完完整留言，再核对选项中的修改对象和理由。",
+      "explanation": "要求标明安全感判断来自经理，不能冒充旅客自身反馈。没有经理反对灯光描述，也没有已收集旅客意见或技术因果说明。",
+      "difficultyReason": "高二进阶：约60词，判断转述来源而非关键词取数"
+    },
+    {
+      "id": "s2.strength.q18", "goalId": "s2.listening-predictions-and-compromise", "type": "listeningChoice",
+      "instruction": "听完整对话，选择最终接受的安排。",
+      "prompt": "听两人讨论社区修理活动。最后被接受的安排是什么？",
+      "audioScript": "A: I think we could repair twice as many bikes next month if we invited more volunteers. B: More hands would help, but we have just three sets of tools. New volunteers could learn from us in the morning, then bring their own tools for the afternoon. A: Some won't have tools. Let's lend those people ours after lunch while we take a break. B: That should work. We can give advice if they need it.",
+      "mediaStatus": "pending",
+      "productionNotes": "需要两个清楚可辨的声音；A/B是制音角色标签，不朗读标签。保持自然轮次和语速，不能合成后未经实听即登记完成。",
+      "options": [{"id": "a", "text": "New volunteers will bring tools in the morning and teach the existing team after lunch."}, {"id": "b", "text": "The team will buy extra tools before allowing new volunteers to take part."}, {"id": "c", "text": "New volunteers will learn in the morning; those without tools can borrow the team's after lunch."}, {"id": "d", "text": "The existing team will repair bikes all day while new volunteers observe without using tools."}],
+      "answer": "c", "hint": "留意每轮发言是否调整了先前的安排。",
+      "explanation": "B提出上午学习下午自带工具，A补足没有工具的人可以在午饭后借用原队工具，B接受。两倍数量是最初预测，不是已证实结果；没有购买决定或全天旁观要求。",
+      "difficultyReason": "高二进阶：约80词，须更新并保留前方案未被取消部分"
+    }
+  ]
+}

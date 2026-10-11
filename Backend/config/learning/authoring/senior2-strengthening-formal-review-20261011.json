@@ -1,0 +1,139 @@
+{
+  "unitId": "companion.senior2.evening-space",
+  "contentHash": "50579f4d6ded4b46378adbdec3f51f5497256169c9334befdce5f4c6727018df",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "高二结构适配代理逐题文字复核；q10变体经主代理确认",
+  "reviewedAt": "2026-10-11",
+  "roleFit": "三段双语街道故事全文放在题前，只提供同行氛围；每题另给完整材料，不用故事细节判分。",
+  "levelFit": "三篇完整独立材料要求追踪态度、因果证据和结论范围，另有双来源条件、受控改写及词块任务。词库与词块支架须如实保留，不把受控形式或先修结构迁移当开放高阶产出。",
+  "limitations": "approved仅表示本文件逐题文字与答案自审，不是完整单元或发布批准。q17/18媒体pending，未制音、未实听、没有assetId或媒体哈希；完整unitSchema应不通过。两项目标仅备登记；实际混编互斥、原生连续作答与真人难度仍待主审。补齐媒体须重算真实contentHash，不能沿用文字审核宣称媒体获批。",
+  "questions": [
+    {
+      "questionId": "s2.strength.q01",
+      "standaloneContext": "整句同时给出地图来源、没有推荐全部路径与明确推荐河边两条，无需故事或地图图片。",
+      "ambiguityReview": "恰好两条来自分号后的明示补充，不是由not every单独推得；that修饰map。所选转述没有改变推荐对象或极性。",
+      "optionNotes": {"a": "把路线建议改成推荐地图，并否认已有路线建议。", "b": "保留河边两条被推荐及并非全部路径的范围。", "c": "把被推荐的河边路径反转为应避免的路径。", "d": "将肯定推荐的两条改成全部推荐中的例外。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q02",
+      "standaloneContext": "三句完整说明老访客写描述、新访客在实物旁阅读及由此留意展签未写细节；accounts有题内释义。",
+      "ambiguityReview": "This概括第二句安排，第一句提供其材料来源；不能只回指最近的objects。参与者与动作均明确，未声称描述取代展签。",
+      "optionNotes": {"a": "材料补充观察，不是以访客姓名替换展签。", "b": "把新访客的阅读任务改成看实物前写描述。", "c": "把老访客写记忆描述扩大成改写全部展签。", "d": "准确保留新访客在实物旁读已有描述的安排。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": true}]
+    },
+    {
+      "questionId": "s2.strength.q03",
+      "standaloneContext": "独立花园短文完整呈现起初的阅读愿望、种菜实际用途、学生表达实例与作者调整后的评价。",
+      "ambiguityReview": "教育价值是现有观察支持的判断，安静愿望仍保留。结尾未比较两类用途的高低，也没有说安静区已经建成或下月才有价值。",
+      "optionNotes": {"a": "同时保留已认可教育价值与未完全满足原愿望。", "b": "虚构安静阅读已替换种菜，改变事件经过。", "c": "把当前已认可的价值附加到下月实现的条件。", "d": "添加安静空间不如实践课的价值排序。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q04",
+      "standaloneContext": "短文完整给出货架调整、销量上涨、邻店关闭、客源未记录及保留货架和数字的决定。",
+      "ambiguityReview": "存在竞争解释使单一归因不足，不推出移动无效或邻店关闭是全部原因。q14/17共享来源意识，是教学迁移边界而非完整答案重复。",
+      "optionNotes": {"a": "正文没有把销量数据说成估算，可靠性对比无据。", "b": "助手仅提出另一同时变化因素，未证实全部归因。", "c": "区分观察到的增长与尚未确定的因果解释。", "d": "违背暂时保持货架位置再比较的明确决定。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q05",
+      "standaloneContext": "评论卡短文给出写长评的预期、小图实际引发讨论与结尾两句评价，不依赖其他阅读题。",
+      "ambiguityReview": "结尾扩展有效回应方式而不否定长评；不反推长评实际已经引发讨论。保留原稿To her surprise，未重新放入会向q15曝光的Instead。",
+      "optionNotes": {"a": "无依据地比较图文理解难度并否定书面评论。", "b": "准确表达小回应有效且不使长评论失去价值。", "c": "署名是可选的，结尾没有新增实名讨论条件。", "d": "把小图带来的意外结果误作原先长评预期被证实。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q06",
+      "standaloneContext": "场馆规则、员工可用时间、维修结束点与连续十五分钟目标全部在题内，两来源可直接合读。",
+      "ambiguityReview": "11:00至11:15同时满足开放、工作人员及午前要求；按给定时段有效解题，不额外猜测过渡时间或延期。q13共享条件核对策略，不能声称无教学迁移。",
+      "optionNotes": {"a": "虽然员工有空，但该时段屋顶仍因维修关闭。", "b": "屋顶开放且午前，但员工带队时段已经结束。", "c": "午后学校团体须用地面房间，教师不替代员工。", "d": "从维修结束到员工带队结束恰好十五分钟且在午前。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": true}]
+    },
+    {
+      "questionId": "s2.strength.q07",
+      "standaloneContext": "题面列出两份报告各自的作者、共有研究对象与只补充第二份作者的编辑任务，事实齐全。",
+      "ambiguityReview": "正确项只限定第二份教师作者身份；不必在这一句重复第一份学生作者，但不能矛盾。未恢复早期稿额外加入的观察事实。",
+      "optionNotes": {"a": "限定第二份由教师写，同时保留两份都研究水质。", "b": "非限制性从句把教师作者身份扩到两份报告。", "c": "把第二份作者误写成学生，也漏掉两份共有范围。", "d": "主语修饰明确教师写两份报告，与记录冲突。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q08",
+      "standaloneContext": "两原句、which合并要求、保留原词及过去时要求、待填句架均在题内，渡船有释义。",
+      "ambiguityReview": "指定原词使有限规范形式成立，which作left主语不可再加it；数量须保留several。大小写、空白和句末标点归一不改变受控语义，不将别处同义改写概括为英语错误。",
+      "optionNotes": {},
+      "probes": [{"answer": {"kind": "text", "text": "which left several workers on the island"}, "correct": true}, {"answer": {"kind": "text", "text": "  Which left several workers on the island.  "}, "correct": true}, {"answer": {"kind": "text", "text": "which it left several workers on the island"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q09",
+      "standaloneContext": "十一点移除与中午打开文件夹均明确，照片作主语，题面指定remove过去完成被动并禁止缩写。",
+      "ambiguityReview": "had been removed同时符合时间参照与受事；was removed不合本题指定形式，不是断言它在所有清楚时序语境都不自然。不收缩写是明确题面要求。",
+      "optionNotes": {},
+      "probes": [{"answer": {"kind": "text", "text": "had been removed"}, "correct": true}, {"answer": {"kind": "text", "text": "HAD  BEEN REMOVED."}, "correct": true}, {"answer": {"kind": "text", "text": "had removed"}, "correct": false}, {"answer": {"kind": "text", "text": "was removed"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q10",
+      "standaloneContext": "保护地板与未拖椅子的原意、方法句架、avoid/drag的-ing形式以及保留the chairs和介词across要求均已给出。",
+      "ambiguityReview": "主审确认地板未限定必须用it，因此保留across it及across the old floor、across the floor三种合法变体。后续明确沿用介词across，使其成为题面可见的受控支架；over it负probe仅表示不满足这项明确要求，不将自然同义改写泛判为英语错误。目标仍是两层-ing及避免行为，不改变待测词或原意。",
+      "optionNotes": {},
+      "probes": [{"answer": {"kind": "text", "text": "avoiding dragging the chairs across it"}, "correct": true}, {"answer": {"kind": "text", "text": "avoiding dragging the chairs across the old floor"}, "correct": true}, {"answer": {"kind": "text", "text": "avoiding dragging the chairs across the floor"}, "correct": true}, {"answer": {"kind": "text", "text": "Avoiding dragging the chairs across the floor."}, "correct": true}, {"answer": {"kind": "text", "text": "avoiding to drag the chairs across it"}, "correct": false}, {"answer": {"kind": "text", "text": "not avoiding dragging the chairs across it"}, "correct": false}, {"answer": {"kind": "text", "text": "avoiding dragging the chairs over it"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q11",
+      "standaloneContext": "中文目标完整限定年轻人看法与老年人需要，给定Even if开头、全部五块和survey释义。",
+      "ambiguityReview": "c-e-d-b-a保留让步、否定与群体边界；Even if不承诺调查已经充分覆盖年轻人。全部词块和标点约束下未发现第二种保持原意的顺序，任务是受控组句。",
+      "optionNotes": {},
+      "probes": [{"answer": {"kind": "arrange", "tokenIds": ["c", "e", "d", "b", "a"]}, "correct": true}, {"answer": {"kind": "arrange", "tokenIds": ["c", "e", "a", "b", "d"]}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q12",
+      "standaloneContext": "中文材料限定在图书馆找不到安静座位的学生子集，邀请内容和指定开头均明确。",
+      "ambiguityReview": "c-e-b-a-d使地点附着找座位；c-b-e-a-d改成在馆学生的限定，不能等同原定找座位范围；c-e-a-b-d则倾向改成邀请地点。保留一个规范序列，经主代理确认不新增前移地点变体。",
+      "optionNotes": {},
+      "probes": [{"answer": {"kind": "arrange", "tokenIds": ["c", "e", "b", "a", "d"]}, "correct": true}, {"answer": {"kind": "arrange", "tokenIds": ["c", "e", "a", "b", "d"]}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q13",
+      "standaloneContext": "两规则和三人距离及参加时段全部给出，不借用q06结论；travel support有释义。",
+      "ambiguityReview": "l1两条件满足、l2仅时段、l3仅距离，r3须留作多余候选。答案对传输顺序不影响映射；不能删干扰项制造旧三配三兼容。",
+      "optionNotes": {"r1": "适用于Sam，八公里满足距离但未参加上午。", "r2": "适用于Elena，七公里且参加上午同时达标。", "r3": "三人均至少满足一条件，没有此类申请，保留干扰。", "r4": "适用于Victor，上午达标但四公里不满足距离。"},
+      "probes": [{"answer": {"kind": "matching", "pairs": [{"left": "l1", "right": "r2"}, {"left": "l2", "right": "r4"}, {"left": "l3", "right": "r1"}]}, "correct": true}, {"answer": {"kind": "matching", "pairs": [{"left": "l3", "right": "r1"}, {"left": "l1", "right": "r2"}, {"left": "l2", "right": "r4"}]}, "correct": true}, {"answer": {"kind": "matching", "pairs": [{"left": "l1", "right": "r3"}, {"left": "l2", "right": "r4"}, {"left": "l3", "right": "r1"}]}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q14",
+      "standaloneContext": "老街册子场景及三句完整回应提供每个沟通动作的对象和理由，四个目的均保留。",
+      "ambiguityReview": "索取来源、自我纠正和补充时间范围依次为r2/r1/r4；日记与采访出现不等于排斥口述。全部三对必填，保留r3额外候选；只是受控语用识别。",
+      "optionNotes": {"r1": "对应先前把日期看得过于确定并据日记纠正的l2。", "r2": "对应l1先称描述生动再请求补足来源。", "r3": "三句均未拒绝口述材料，这一目的无对应项。", "r4": "对应l3认可工厂重要并补充开厂前生活范围。"},
+      "probes": [{"answer": {"kind": "matching", "pairs": [{"left": "l1", "right": "r2"}, {"left": "l2", "right": "r1"}, {"left": "l3", "right": "r4"}]}, "correct": true}, {"answer": {"kind": "matching", "pairs": [{"left": "l2", "right": "r1"}, {"left": "l3", "right": "r4"}, {"left": "l1", "right": "r2"}]}, "correct": true}, {"answer": {"kind": "matching", "pairs": [{"left": "l1", "right": "r2"}, {"left": "l2", "right": "r1"}, {"left": "l3", "right": "r3"}]}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q15",
+      "standaloneContext": "中文任务和三句英文完整说明放弃分散时间表、采用共用版本以及易察觉改动的效果；原稿即为共享四词库。",
+      "ambiguityReview": "逐词核对两槽：s1须标替代，只能b；s2须标结果，只能c。a不能为放弃分散方案举例，d添加未给出的逆预期；把c放首空或b放次空均不保留原关系。没有机械并集合并词库，也未删候选。",
+      "optionNotes": {"a": "举例既不表达方案替代，也不表达所述结果关系。", "b": "适用于第一空，连接被否定方案与采用的替代方案。", "c": "适用于第二空，将共用版本与易察觉改动相连。", "d": "逆预期关系不由材料支持，两空均不需此词块。"},
+      "probes": [{"answer": {"kind": "cloze", "fills": [{"slotId": "s1", "tokenId": "b"}, {"slotId": "s2", "tokenId": "c"}]}, "correct": true}, {"answer": {"kind": "cloze", "fills": [{"slotId": "s1", "tokenId": "c"}, {"slotId": "s2", "tokenId": "b"}]}, "correct": false}, {"answer": {"kind": "cloze", "fills": [{"slotId": "s1", "tokenId": "b"}, {"slotId": "s2", "tokenId": "d"}]}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q16",
+      "standaloneContext": "同项目两条更新明示持续至今且仍进行与已经装好四座的结果，原稿即共享四个完整谓语词块。",
+      "ambiguityReview": "s1的since加仍进行和维修动作支持c；s2的已装好四个要求a。b缺过去参照，d未表达已完成数量；a移首空改变维修动作，c移次空改变安装结果。逐槽审核没有第二个完整合法映射，不改待测词，也不概括完成进行永远未结束。",
+      "optionNotes": {"a": "第二空保留截至现在已安装四个座位的结果。", "b": "没有题内过去回顾点支持这一过去完成形式。", "c": "第一空对应自周一起持续且仍进行的维修。", "d": "正在安装不能保留中文指定的已经装好数量。"},
+      "probes": [{"answer": {"kind": "cloze", "fills": [{"slotId": "s1", "tokenId": "c"}, {"slotId": "s2", "tokenId": "a"}]}, "correct": true}, {"answer": {"kind": "cloze", "fills": [{"slotId": "s1", "tokenId": "a"}, {"slotId": "s2", "tokenId": "c"}]}, "correct": false}, {"answer": {"kind": "cloze", "fills": [{"slotId": "s1", "tokenId": "c"}, {"slotId": "s2", "tokenId": "d"}]}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q17",
+      "standaloneContext": "完整脚本给出被认可的车站描述、安全感判断的经理来源、未见旅客评论与注明观点归属的修改请求。",
+      "ambiguityReview": "题面要求听力，脚本只供制音审核；当前不展示脚本替代录音。经理来源由留言追问及缺旅客评论支持，不能虚构已经收集旅客意见。文字答案关系可审，媒体尚未验证。",
+      "optionNotes": {"a": "无经理反对描述的事实，也没有要求删除灯光描述。", "b": "保留请求核心：标明安全感判断来自经理。", "c": "留言恰说未找到旅客评论，不能用已有评论替换。", "d": "未请求技术原因分析，且不能把判断归属改成因果证明。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    },
+    {
+      "questionId": "s2.strength.q18",
+      "standaloneContext": "四轮脚本完整给出扩员预测、工具限制、上午学习下午自带及对无工具者借用的补充，最后明确接受。",
+      "ambiguityReview": "上午学习未被取消，下午无工具者可借原团队工具；倍增是预测而非已实现结果。须两个可区分声音且不朗读A/B标签；当前pending，没有实听或原生播放结论。",
+      "optionNotes": {"a": "将上午学习与下午使用工具错置，并反转教学角色。", "b": "没有购买工具决定，更没有购齐后才能参与的前提。", "c": "保留上午学习与午后向无工具者借出工具的最终方案。", "d": "删除新志愿者实际用工具，并误说原团队全天维修。"},
+      "probes": [{"answer": {"kind": "choice", "optionId": "a"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "b"}, "correct": false}, {"answer": {"kind": "choice", "optionId": "c"}, "correct": true}, {"answer": {"kind": "choice", "optionId": "d"}, "correct": false}]
+    }
+  ]
+}
