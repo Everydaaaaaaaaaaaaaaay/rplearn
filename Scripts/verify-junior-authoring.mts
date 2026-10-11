@@ -164,7 +164,7 @@ for (const level of ["junior1", "junior2", "junior3"]) {
   reports.push({
     level,
     questions: questions.length,
-    audioPending: draft.questions.filter((q) => q.audioScript).length,
+    audioScripts: draft.questions.filter((q) => q.audioScript).length,
     types: [...new Set(questions.map((q) => q.type))],
   });
 }

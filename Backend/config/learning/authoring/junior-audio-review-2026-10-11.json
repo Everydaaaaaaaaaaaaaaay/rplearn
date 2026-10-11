@@ -1,0 +1,2965 @@
+{
+  "date": "2026-10-11",
+  "status": "34段离线音频通过客观核验，文件保存在本机build中；未入正式媒体库，未完成人耳听感和原生播放验收。",
+  "normalization": "大小写、标点、列明的缩写、数字/美元书写及practise/practice；保留实际识别原文，不放宽否定、时态或额外词。",
+  "clips": [
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.a02",
+      "file": "build/learning-junior-20261011/junior1/a02.wav",
+      "sha256": "81c528358d48aeba6f5937b35b431de31c3ef7c98d7b82830562b74da67a69df",
+      "durationMs": 5478,
+      "wpm": 131.43,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "The notebooks are in the bag. The bag is under the table.",
+      "audioScriptSha256": "ceb33655fa9970f59b94fa5025a4bce8974aea3753bc6f1ee95dbf21f86752f0",
+      "steps": 12,
+      "candidateSha256": "bccddddf08c261bff872304b67f947a4ebc838e557a641dcd710ae9df4ee1c38",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "The notebooks are in the bag. The bag is under the table.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "notebooks",
+            "are",
+            "in",
+            "the",
+            "bag",
+            "the",
+            "bag",
+            "is",
+            "under",
+            "the",
+            "table"
+          ]
+        },
+        "small.en": {
+          "text": "The notebooks are in the bag. The bag is under the table.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "notebooks",
+            "are",
+            "in",
+            "the",
+            "bag",
+            "the",
+            "bag",
+            "is",
+            "under",
+            "the",
+            "table"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "The notebooks are in the bag. The bag is under the table.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "notebooks",
+            "are",
+            "in",
+            "the",
+            "bag",
+            "the",
+            "bag",
+            "is",
+            "under",
+            "the",
+            "table"
+          ]
+        },
+        "small.en": {
+          "text": "The notebooks are in the bag. The bag is under the table.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "notebooks",
+            "are",
+            "in",
+            "the",
+            "bag",
+            "the",
+            "bag",
+            "is",
+            "under",
+            "the",
+            "table"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.a08",
+      "file": "build/learning-junior-20261011/junior1/a08.wav",
+      "sha256": "cd772d7f28b2ddc2bc528a0ca1d4700f538a36708bade0a2ad38d03c07181d7a",
+      "durationMs": 2298,
+      "wpm": 130.52,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "Where are the red pens?",
+      "audioScriptSha256": "e0bdcd092dc304bc46e41a08788fd1970c3499ce1f6bbce183814d856097bbeb",
+      "steps": 12,
+      "candidateSha256": "128afba3f91c6458f2ca337dd4feb5af697e2a8292713f0ee7d5388778e755cf",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Where are the red pens?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "are",
+            "the",
+            "red",
+            "pens"
+          ]
+        },
+        "small.en": {
+          "text": "Where are the red pens?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "are",
+            "the",
+            "red",
+            "pens"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Where are the red pens?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "are",
+            "the",
+            "red",
+            "pens"
+          ]
+        },
+        "small.en": {
+          "text": "Where are the red pens?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "are",
+            "the",
+            "red",
+            "pens"
+          ]
+        }
+      },
+      "peak": 20518,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.a10",
+      "file": "build/learning-junior-20261011/junior1/a10.wav",
+      "sha256": "beecf8b022b3071c7ef7e2e0118374c56e30806ba7f45e9df6aa3c2551d61242",
+      "durationMs": 5221,
+      "wpm": 114.92,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "The cap is twelve dollars. The socks are two dollars.",
+      "audioScriptSha256": "802ca70022a9c73aa3ca6efe72dc3abcf5fbf7fa349ca0dc7de37835ba1cde51",
+      "steps": 12,
+      "candidateSha256": "1c3db8ce6bf31d3656088c6878f277d1271c2b34d4908212b5f59ec5ae226099",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "The cap is $12. The socks are $2.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "cap",
+            "is",
+            "twelve",
+            "dollars",
+            "the",
+            "socks",
+            "are",
+            "two",
+            "dollars"
+          ]
+        },
+        "small.en": {
+          "text": "The cap is $12. The socks are $2.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "cap",
+            "is",
+            "twelve",
+            "dollars",
+            "the",
+            "socks",
+            "are",
+            "two",
+            "dollars"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "The cap is $12. The socks are $2.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "cap",
+            "is",
+            "twelve",
+            "dollars",
+            "the",
+            "socks",
+            "are",
+            "two",
+            "dollars"
+          ]
+        },
+        "small.en": {
+          "text": "The cap is $12. The socks are $2.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "cap",
+            "is",
+            "twelve",
+            "dollars",
+            "the",
+            "socks",
+            "are",
+            "two",
+            "dollars"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.a12",
+      "file": "build/learning-junior-20261011/junior1/a12.wav",
+      "sha256": "66be5f0361363d18db39bdf28105c5a9683d74dcf4ea0f5865051b45ee299ddb",
+      "durationMs": 2066,
+      "wpm": 116.15,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "We have two maps.",
+      "audioScriptSha256": "8980a07a781c54352ffe8546e01c057859d970acd82d17787e9c16da8c860a95",
+      "steps": 12,
+      "candidateSha256": "439c0a10cf8ca8d047fe6f27697a2076718886a3fe9825f2d147bccc047bc995",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "We have two maps",
+          "exact": true,
+          "tokens": [
+            "we",
+            "have",
+            "two",
+            "maps"
+          ]
+        },
+        "small.en": {
+          "text": "We have two maps.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "have",
+            "two",
+            "maps"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "We have two maps",
+          "exact": true,
+          "tokens": [
+            "we",
+            "have",
+            "two",
+            "maps"
+          ]
+        },
+        "small.en": {
+          "text": "We have two maps",
+          "exact": true,
+          "tokens": [
+            "we",
+            "have",
+            "two",
+            "maps"
+          ]
+        }
+      },
+      "peak": 22210,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.a15",
+      "file": "build/learning-junior-20261011/junior1/a15.wav",
+      "sha256": "6d9d34636d47557a6b752e68280e6811259e96db432e61c3ff0de2030c8e6048",
+      "durationMs": 3099,
+      "wpm": 116.17,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "She likes apples but not pears.",
+      "audioScriptSha256": "faab99bce5fe622ffbe9d49edd5fa3d0959c14a3f5150efb34d43c8f79f5e29b",
+      "steps": 12,
+      "candidateSha256": "c460818e6ae3a13d3e40258a650f9a691ac23d772ebf5c8d39ab980c588fb9c3",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "She likes apples, but not pears.",
+          "exact": true,
+          "tokens": [
+            "she",
+            "likes",
+            "apples",
+            "but",
+            "not",
+            "pears"
+          ]
+        },
+        "small.en": {
+          "text": "She likes apples, but not pears.",
+          "exact": true,
+          "tokens": [
+            "she",
+            "likes",
+            "apples",
+            "but",
+            "not",
+            "pears"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "She likes apples, but not pears.",
+          "exact": true,
+          "tokens": [
+            "she",
+            "likes",
+            "apples",
+            "but",
+            "not",
+            "pears"
+          ]
+        },
+        "small.en": {
+          "text": "She likes apples, but not pears.",
+          "exact": true,
+          "tokens": [
+            "she",
+            "likes",
+            "apples",
+            "but",
+            "not",
+            "pears"
+          ]
+        }
+      },
+      "peak": 24183,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.a17",
+      "file": "build/learning-junior-20261011/junior1/a17.wav",
+      "sha256": "f43838e0ca10100bc706203f60b5c4ab5592214eb166de948bc4bded6e5612f6",
+      "durationMs": 4318,
+      "wpm": 97.26,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "Our science class is on Thursday afternoon.",
+      "audioScriptSha256": "aec99ef69058c41be562b14b038a6aee633972f99c5a213ca0513d0b3e736c81",
+      "steps": 12,
+      "candidateSha256": "bd049770b8aba4fcdd5c65318c279f594e85ddca0cb32c880d720c434189c531",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Our science class is on Thursday afternoon.",
+          "exact": true,
+          "tokens": [
+            "our",
+            "science",
+            "class",
+            "is",
+            "on",
+            "thursday",
+            "afternoon"
+          ]
+        },
+        "small.en": {
+          "text": "Our science class is on Thursday afternoon.",
+          "exact": true,
+          "tokens": [
+            "our",
+            "science",
+            "class",
+            "is",
+            "on",
+            "thursday",
+            "afternoon"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Our science class is on Thursday afternoon.",
+          "exact": true,
+          "tokens": [
+            "our",
+            "science",
+            "class",
+            "is",
+            "on",
+            "thursday",
+            "afternoon"
+          ]
+        },
+        "small.en": {
+          "text": "Our science class is on Thursday afternoon.",
+          "exact": true,
+          "tokens": [
+            "our",
+            "science",
+            "class",
+            "is",
+            "on",
+            "thursday",
+            "afternoon"
+          ]
+        }
+      },
+      "peak": 19140,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b03",
+      "file": "build/learning-junior-20261011/junior1/b03.wav",
+      "sha256": "44e1c70e0fefbe5bdb677b8b5963bc9fbb083edc329a19ee97264f828cb67be2",
+      "durationMs": 2513,
+      "wpm": 95.51,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "They are seven dollars.",
+      "audioScriptSha256": "a13764b37f1ee2528796fd8cc9b018db91f711322d437d2a23a2d0f1ed7d4323",
+      "steps": 12,
+      "candidateSha256": "e6ad22fff3fcbb488beab71061d944c0f41103b444d062eaedd2e8623621c75a",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "They are $7.",
+          "exact": true,
+          "tokens": [
+            "they",
+            "are",
+            "seven",
+            "dollars"
+          ]
+        },
+        "small.en": {
+          "text": "They are seven dollars.",
+          "exact": true,
+          "tokens": [
+            "they",
+            "are",
+            "seven",
+            "dollars"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "They are $7.",
+          "exact": true,
+          "tokens": [
+            "they",
+            "are",
+            "seven",
+            "dollars"
+          ]
+        },
+        "small.en": {
+          "text": "They are $7.",
+          "exact": true,
+          "tokens": [
+            "they",
+            "are",
+            "seven",
+            "dollars"
+          ]
+        }
+      },
+      "peak": 21491,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b05",
+      "file": "build/learning-junior-20261011/junior1/b05.wav",
+      "sha256": "88060e1be2681d022044c3d61e3e503c5d38725509cd3cf1c3c6f6505d1d5444",
+      "durationMs": 1827,
+      "wpm": 98.53,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "Where's my hat?",
+      "audioScriptSha256": "d9c2f8a9b7fa6899270f3bbb29d0e109fd6765dc90218ea2b16453f993c184f4",
+      "steps": 12,
+      "candidateSha256": "df805bd8791e2f51947e84731d45f51ff0c3b5d2b2b4695c6b88410735949863",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Where's my hat?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "is",
+            "my",
+            "hat"
+          ]
+        },
+        "small.en": {
+          "text": "Where's my hat?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "is",
+            "my",
+            "hat"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Where's my hat?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "is",
+            "my",
+            "hat"
+          ]
+        },
+        "small.en": {
+          "text": "Where's my hat?",
+          "exact": true,
+          "tokens": [
+            "where",
+            "is",
+            "my",
+            "hat"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b06",
+      "file": "build/learning-junior-20261011/junior1/b06.wav",
+      "sha256": "3ee9378a8d6ef4d7fc3a54af70a780e3458c403d6f118ae3f16da8114eb0f5f2",
+      "durationMs": 3180,
+      "wpm": 113.21,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "That ruler isn't mine. It's hers.",
+      "audioScriptSha256": "a01fba9efb1c145ae2f751f9788f313a7a7e60190110ce55f414f685497c300d",
+      "steps": 12,
+      "candidateSha256": "55b207fe8251407ba99f281bc66335c4a79fa3cb1270168f58138d73703f3162",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "That ruler isn't mine, it's hers.",
+          "exact": true,
+          "tokens": [
+            "that",
+            "ruler",
+            "is",
+            "not",
+            "mine",
+            "it",
+            "is",
+            "hers"
+          ]
+        },
+        "small.en": {
+          "text": "That ruler isn't mine. It's hers.",
+          "exact": true,
+          "tokens": [
+            "that",
+            "ruler",
+            "is",
+            "not",
+            "mine",
+            "it",
+            "is",
+            "hers"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "That ruler isn't mine, it's hers.",
+          "exact": true,
+          "tokens": [
+            "that",
+            "ruler",
+            "is",
+            "not",
+            "mine",
+            "it",
+            "is",
+            "hers"
+          ]
+        },
+        "small.en": {
+          "text": "That ruler isn't mine. It's hers.",
+          "exact": true,
+          "tokens": [
+            "that",
+            "ruler",
+            "is",
+            "not",
+            "mine",
+            "it",
+            "is",
+            "hers"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b08",
+      "file": "build/learning-junior-20261011/junior1/b08.wav",
+      "sha256": "4e526bc4b004abe55d9f8514e5cfce96d1c575b62f107ec14698ca7ef11d9e10",
+      "durationMs": 2792,
+      "wpm": 107.47,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "Because the teacher is kind.",
+      "audioScriptSha256": "727adbe2db1d5d6f9f5589ba64fc7cbeb492a45fd33940fc7a0ccef4e1b21f5e",
+      "steps": 12,
+      "candidateSha256": "3c884be1355af437240e7168e1a4052676da0ca7a3b7845a81396d81a3383f96",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Because the teacher is kind.",
+          "exact": true,
+          "tokens": [
+            "because",
+            "the",
+            "teacher",
+            "is",
+            "kind"
+          ]
+        },
+        "small.en": {
+          "text": "because the teacher is kind.",
+          "exact": true,
+          "tokens": [
+            "because",
+            "the",
+            "teacher",
+            "is",
+            "kind"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Because the teacher is kind.",
+          "exact": true,
+          "tokens": [
+            "because",
+            "the",
+            "teacher",
+            "is",
+            "kind"
+          ]
+        },
+        "small.en": {
+          "text": "because the teacher is kind.",
+          "exact": true,
+          "tokens": [
+            "because",
+            "the",
+            "teacher",
+            "is",
+            "kind"
+          ]
+        }
+      },
+      "peak": 24168,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b12",
+      "file": "build/learning-junior-20261011/junior1/b12.wav",
+      "sha256": "2b6ff896945b0c35e2e9a91119181721a02a47bd0dce5e0db125f990f1f0399c",
+      "durationMs": 2396,
+      "wpm": 100.16,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "These books are mine.",
+      "audioScriptSha256": "6b1421a6c01ff96760dabcce1ee6e78f31ee8c82e324766b717f56cc0d083191",
+      "steps": 12,
+      "candidateSha256": "f4fbd6080003d93b352e0f4efa1eeb92321849d53764471ef1539cea54968c3f",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "These books are mine.",
+          "exact": true,
+          "tokens": [
+            "these",
+            "books",
+            "are",
+            "mine"
+          ]
+        },
+        "small.en": {
+          "text": "These books are mine.",
+          "exact": true,
+          "tokens": [
+            "these",
+            "books",
+            "are",
+            "mine"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "These books are mine.",
+          "exact": true,
+          "tokens": [
+            "these",
+            "books",
+            "are",
+            "mine"
+          ]
+        },
+        "small.en": {
+          "text": "These books are mine.",
+          "exact": true,
+          "tokens": [
+            "these",
+            "books",
+            "are",
+            "mine"
+          ]
+        }
+      },
+      "peak": 21969,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b13",
+      "file": "build/learning-junior-20261011/junior1/b13.wav",
+      "sha256": "3fdb78785e433e32f8d45ef03404691c9c030bcb13ce48c783da74247d525e8d",
+      "durationMs": 4368,
+      "wpm": 123.62,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.8199999928474426,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "My friends have a football. I don't have one.",
+      "audioScriptSha256": "b313433fd8c38e4f34740ccaaed9b0a47b96e7bfd882c95a13f11f93bda21002",
+      "steps": 12,
+      "candidateSha256": "078c3bae8df082221847a7c59d2bf6f394566c7730dc58e7e8b353ee3b55792f",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "My friends have a football. I don't have one.",
+          "exact": true,
+          "tokens": [
+            "my",
+            "friends",
+            "have",
+            "a",
+            "football",
+            "i",
+            "do",
+            "not",
+            "have",
+            "one"
+          ]
+        },
+        "small.en": {
+          "text": "My friends have a football. I don't have one.",
+          "exact": true,
+          "tokens": [
+            "my",
+            "friends",
+            "have",
+            "a",
+            "football",
+            "i",
+            "do",
+            "not",
+            "have",
+            "one"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "My friends have a football. I don't have one.",
+          "exact": true,
+          "tokens": [
+            "my",
+            "friends",
+            "have",
+            "a",
+            "football",
+            "i",
+            "do",
+            "not",
+            "have",
+            "one"
+          ]
+        },
+        "small.en": {
+          "text": "My friends have a football. I don't have one.",
+          "exact": true,
+          "tokens": [
+            "my",
+            "friends",
+            "have",
+            "a",
+            "football",
+            "i",
+            "do",
+            "not",
+            "have",
+            "one"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior1",
+      "questionId": "j1.astra.b15",
+      "file": "build/learning-junior-20261011/junior1/b15.wav",
+      "sha256": "6231de489b7e41dfdc7960ea8f9278d98bb974a3061a871a5ed100ec9f8629ab",
+      "durationMs": 2717,
+      "wpm": 132.52,
+      "voice": "F3",
+      "take": 2,
+      "rate": 0.7699999809265137,
+      "sourceDraft": "Backend/config/learning/authoring/junior1.astra.json",
+      "audioScript": "How much is that blue bag?",
+      "audioScriptSha256": "4e336552e6345f30b2774a3bb41a789659d4abbc87b537e19acd36325514bab5",
+      "steps": 8,
+      "candidateSha256": "97b8753a25bdba1cb75e73a73428265de40c6b63f991a86b148a34b011a09ac7",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "How much is that blue bag?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "much",
+            "is",
+            "that",
+            "blue",
+            "bag"
+          ]
+        },
+        "small.en": {
+          "text": "How much is that blue bag?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "much",
+            "is",
+            "that",
+            "blue",
+            "bag"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "How much is that blue bag?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "much",
+            "is",
+            "that",
+            "blue",
+            "bag"
+          ]
+        },
+        "small.en": {
+          "text": "How much is that blue bag?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "much",
+            "is",
+            "that",
+            "blue",
+            "bag"
+          ]
+        }
+      },
+      "peak": 24332,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.a03",
+      "file": "build/learning-junior-20261011/junior2/a03.wav",
+      "sha256": "aa9041a5c5f757041bbfd0b75fb5d22c7feca9fce30d9a5dd42f4dd22e156160",
+      "durationMs": 3733,
+      "wpm": 144.65,
+      "voice": "M5",
+      "take": 0,
+      "rate": 0.8799999952316284,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "If it is windy tomorrow, we will draw inside.",
+      "audioScriptSha256": "6e70bb21a55b452ea0a583a03a68737f0cba1bb3b91721ad82572bbd01841c9d",
+      "steps": 12,
+      "candidateSha256": "40dbe88956b54ddf0c1ef1cb20b4968772558c7c95f466a8688fc2c1d0bd035a",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "If it is windy tomorrow, we will draw inside.",
+          "exact": true,
+          "tokens": [
+            "if",
+            "it",
+            "is",
+            "windy",
+            "tomorrow",
+            "we",
+            "will",
+            "draw",
+            "inside"
+          ]
+        },
+        "small.en": {
+          "text": "If it is windy tomorrow, we will draw inside.",
+          "exact": true,
+          "tokens": [
+            "if",
+            "it",
+            "is",
+            "windy",
+            "tomorrow",
+            "we",
+            "will",
+            "draw",
+            "inside"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "If it is windy tomorrow, we will draw inside.",
+          "exact": true,
+          "tokens": [
+            "if",
+            "it",
+            "is",
+            "windy",
+            "tomorrow",
+            "we",
+            "will",
+            "draw",
+            "inside"
+          ]
+        },
+        "small.en": {
+          "text": "If it is windy tomorrow, we will draw inside.",
+          "exact": true,
+          "tokens": [
+            "if",
+            "it",
+            "is",
+            "windy",
+            "tomorrow",
+            "we",
+            "will",
+            "draw",
+            "inside"
+          ]
+        }
+      },
+      "peak": 16176,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.a05",
+      "file": "build/learning-junior-20261011/junior2/a05.wav",
+      "sha256": "1c7352033aa610e74656785fdb6ae0ae3ea1716d6cedfab9d65a148be918248d",
+      "durationMs": 5479,
+      "wpm": 142.36,
+      "voice": "M5",
+      "take": 8,
+      "rate": 0.75,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "I'd like to join you, but I have to finish this report tonight.",
+      "audioScriptSha256": "5b195806ff662fc00cd6ffe6c71cfee247eed97df8eac09bae8201d8ce039e54",
+      "steps": 12,
+      "candidateSha256": "02ab4addaac6f3614cf764f850b356e5f946d09e8ce377c1266d84986b1eda2e",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I'd like to join you, but I have to finish this report tonight.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "would",
+            "like",
+            "to",
+            "join",
+            "you",
+            "but",
+            "i",
+            "have",
+            "to",
+            "finish",
+            "this",
+            "report",
+            "tonight"
+          ]
+        },
+        "small.en": {
+          "text": "I'd like to join you, but I have to finish this report tonight.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "would",
+            "like",
+            "to",
+            "join",
+            "you",
+            "but",
+            "i",
+            "have",
+            "to",
+            "finish",
+            "this",
+            "report",
+            "tonight"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I'd like to join you, but I have to finish this report tonight.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "would",
+            "like",
+            "to",
+            "join",
+            "you",
+            "but",
+            "i",
+            "have",
+            "to",
+            "finish",
+            "this",
+            "report",
+            "tonight"
+          ]
+        },
+        "small.en": {
+          "text": "I'd like to join you, but I have to finish this report tonight.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "would",
+            "like",
+            "to",
+            "join",
+            "you",
+            "but",
+            "i",
+            "have",
+            "to",
+            "finish",
+            "this",
+            "report",
+            "tonight"
+          ]
+        }
+      },
+      "peak": 17215,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.a10",
+      "file": "build/learning-junior-20261011/junior2/a10.wav",
+      "sha256": "4eb793e2006fbb359be286f522cce95ebde42ff8923fc4d878de2ac151fd9124",
+      "durationMs": 4989,
+      "wpm": 120.26,
+      "voice": "M5",
+      "take": 4,
+      "rate": 0.6600000262260437,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "This room is not as quiet as the one upstairs.",
+      "audioScriptSha256": "390f86726fcb6e8e67006175b8c19bedd36adf324d3ae5fe6c42a0c4b9fda851",
+      "steps": 12,
+      "candidateSha256": "de6ce8d67cf7a7d0b37874accc44f0b1d5ff221eee646fff8d0ebd6784b8ea73",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "This room is not as quiet as the one upstairs.",
+          "exact": true,
+          "tokens": [
+            "this",
+            "room",
+            "is",
+            "not",
+            "as",
+            "quiet",
+            "as",
+            "the",
+            "one",
+            "upstairs"
+          ]
+        },
+        "small.en": {
+          "text": "This room is not as quiet as the one upstairs.",
+          "exact": true,
+          "tokens": [
+            "this",
+            "room",
+            "is",
+            "not",
+            "as",
+            "quiet",
+            "as",
+            "the",
+            "one",
+            "upstairs"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "This room is not as quiet as the one upstairs.",
+          "exact": true,
+          "tokens": [
+            "this",
+            "room",
+            "is",
+            "not",
+            "as",
+            "quiet",
+            "as",
+            "the",
+            "one",
+            "upstairs"
+          ]
+        },
+        "small.en": {
+          "text": "This room is not as quiet as the one upstairs.",
+          "exact": true,
+          "tokens": [
+            "this",
+            "room",
+            "is",
+            "not",
+            "as",
+            "quiet",
+            "as",
+            "the",
+            "one",
+            "upstairs"
+          ]
+        }
+      },
+      "peak": 16190,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.a12",
+      "file": "build/learning-junior-20261011/junior2/a12.wav",
+      "sha256": "b4867086026bfcf14676bf3e9919158dc3bcd30e3fc12f5e356377241cef2b2e",
+      "durationMs": 3486,
+      "wpm": 120.47,
+      "voice": "M5",
+      "take": 4,
+      "rate": 0.6000000238418579,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "How are you going to get there?",
+      "audioScriptSha256": "79ce5ba467c341ac6d56eedbbc94fcef48186955a0ba8b809e15e7403cce4b3d",
+      "steps": 12,
+      "candidateSha256": "4977c30e92b08b3f0da042c2df696f37817256eab9010ed1add0f75c6a7eeedb",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "How are you going to get there?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "are",
+            "you",
+            "going",
+            "to",
+            "get",
+            "there"
+          ]
+        },
+        "small.en": {
+          "text": "How are you going to get there?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "are",
+            "you",
+            "going",
+            "to",
+            "get",
+            "there"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "How are you going to get there?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "are",
+            "you",
+            "going",
+            "to",
+            "get",
+            "there"
+          ]
+        },
+        "small.en": {
+          "text": "How are you going to get there?",
+          "exact": true,
+          "tokens": [
+            "how",
+            "are",
+            "you",
+            "going",
+            "to",
+            "get",
+            "there"
+          ]
+        }
+      },
+      "peak": 19306,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.a16",
+      "file": "build/learning-junior-20261011/junior2/a16.wav",
+      "sha256": "561e6c787b0ce846b1ccb4baa6367da60edbd3ab21b673a89481f6ef79c65eaa",
+      "durationMs": 8445,
+      "wpm": 120.78,
+      "voice": "M5",
+      "take": 4,
+      "rate": 0.6299999952316284,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "I want to make a short film. I'm going to learn how to use the camera first.",
+      "audioScriptSha256": "3c4b8493c3f9cd5bd1b6d1dc2f39f2c317084f0e5848d93daa9ad16f0c0f652b",
+      "steps": 12,
+      "candidateSha256": "f989b49ba436584896ed57d602e5513c9f1e90647640461faf0e16d7557fbbe0",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I want to make a short film. I'm going to learn how to use the camera first.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "want",
+            "to",
+            "make",
+            "a",
+            "short",
+            "film",
+            "i",
+            "am",
+            "going",
+            "to",
+            "learn",
+            "how",
+            "to",
+            "use",
+            "the",
+            "camera",
+            "first"
+          ]
+        },
+        "small.en": {
+          "text": "I want to make a short film. I'm going to learn how to use the camera first.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "want",
+            "to",
+            "make",
+            "a",
+            "short",
+            "film",
+            "i",
+            "am",
+            "going",
+            "to",
+            "learn",
+            "how",
+            "to",
+            "use",
+            "the",
+            "camera",
+            "first"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I want to make a short film. I'm going to learn how to use the camera first.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "want",
+            "to",
+            "make",
+            "a",
+            "short",
+            "film",
+            "i",
+            "am",
+            "going",
+            "to",
+            "learn",
+            "how",
+            "to",
+            "use",
+            "the",
+            "camera",
+            "first"
+          ]
+        },
+        "small.en": {
+          "text": "I want to make a short film. I'm going to learn how to use the camera first.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "want",
+            "to",
+            "make",
+            "a",
+            "short",
+            "film",
+            "i",
+            "am",
+            "going",
+            "to",
+            "learn",
+            "how",
+            "to",
+            "use",
+            "the",
+            "camera",
+            "first"
+          ]
+        }
+      },
+      "peak": 18370,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.a18",
+      "file": "build/learning-junior-20261011/junior2/a18.wav",
+      "sha256": "2f0c1b068aa8d5c26b996e51fc060a5a933a9ccaf379398e2c902f92771e7505",
+      "durationMs": 4962,
+      "wpm": 120.93,
+      "voice": "M5",
+      "take": 4,
+      "rate": 0.6200000047683716,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "Thanks for asking, but I have to go home now.",
+      "audioScriptSha256": "dd83d83e2692766c93d91063be88485c328a75e2f762f83ca8391edabbcf028e",
+      "steps": 12,
+      "candidateSha256": "514b99d87b37b595c4a77f15e676fe1d3da476ef0758942a81bff622ca5ab046",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Thanks for asking, but I have to go home now.",
+          "exact": true,
+          "tokens": [
+            "thanks",
+            "for",
+            "asking",
+            "but",
+            "i",
+            "have",
+            "to",
+            "go",
+            "home",
+            "now"
+          ]
+        },
+        "small.en": {
+          "text": "Thanks for asking, but I have to go home now.",
+          "exact": true,
+          "tokens": [
+            "thanks",
+            "for",
+            "asking",
+            "but",
+            "i",
+            "have",
+            "to",
+            "go",
+            "home",
+            "now"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Thanks for asking, but I have to go home now.",
+          "exact": true,
+          "tokens": [
+            "thanks",
+            "for",
+            "asking",
+            "but",
+            "i",
+            "have",
+            "to",
+            "go",
+            "home",
+            "now"
+          ]
+        },
+        "small.en": {
+          "text": "Thanks for asking, but I have to go home now.",
+          "exact": true,
+          "tokens": [
+            "thanks",
+            "for",
+            "asking",
+            "but",
+            "i",
+            "have",
+            "to",
+            "go",
+            "home",
+            "now"
+          ]
+        }
+      },
+      "peak": 21371,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.b02",
+      "file": "build/learning-junior-20261011/junior2/b02.wav",
+      "sha256": "7db8d60d43f013439f586b04bbf10354b8aad01e7da95e26be5d63b970f40147",
+      "durationMs": 6052,
+      "wpm": 128.87,
+      "voice": "M5",
+      "take": 0,
+      "rate": 0.8799999952316284,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "I took photos yesterday. Tomorrow I'm going to choose three for my album.",
+      "audioScriptSha256": "0860bc89deed38e16962827e584fd35ff71e51bf448dcb82ea77d4c7de7e71ee",
+      "steps": 12,
+      "candidateSha256": "7c3b9ee900523790d18affa7ec9aeb925c30ea44678877fb03d913a75bfb1b9e",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I took photos yesterday. Tomorrow I'm going to choose three for my album.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "took",
+            "photos",
+            "yesterday",
+            "tomorrow",
+            "i",
+            "am",
+            "going",
+            "to",
+            "choose",
+            "three",
+            "for",
+            "my",
+            "album"
+          ]
+        },
+        "small.en": {
+          "text": "I took photos yesterday. Tomorrow I'm going to choose 3 for my album.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "took",
+            "photos",
+            "yesterday",
+            "tomorrow",
+            "i",
+            "am",
+            "going",
+            "to",
+            "choose",
+            "three",
+            "for",
+            "my",
+            "album"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I took photos yesterday. Tomorrow I'm going to choose three for my album.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "took",
+            "photos",
+            "yesterday",
+            "tomorrow",
+            "i",
+            "am",
+            "going",
+            "to",
+            "choose",
+            "three",
+            "for",
+            "my",
+            "album"
+          ]
+        },
+        "small.en": {
+          "text": "I took photos yesterday. Tomorrow I'm going to choose 3 for my album.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "took",
+            "photos",
+            "yesterday",
+            "tomorrow",
+            "i",
+            "am",
+            "going",
+            "to",
+            "choose",
+            "three",
+            "for",
+            "my",
+            "album"
+          ]
+        }
+      },
+      "peak": 20116,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.b06",
+      "file": "build/learning-junior-20261011/junior2/b06.wav",
+      "sha256": "5794af43267dec97e8fc0e41c1db93f2b257daf6bf451895bf65aaa7d7b76b15",
+      "durationMs": 4377,
+      "wpm": 137.09,
+      "voice": "M5",
+      "take": 0,
+      "rate": 0.8799999952316284,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "I might have to leave early. I'll know after lunch.",
+      "audioScriptSha256": "fbfa853a0858dfc400d71552c63376ffa96d26e4d1ef9a03c0f349b305028be7",
+      "steps": 12,
+      "candidateSha256": "51258fdf1de97d778a1fa2165919e35fd7760f07f85ab1ece56780c77860eed3",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I might have to leave early. I'll know after lunch.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "might",
+            "have",
+            "to",
+            "leave",
+            "early",
+            "i",
+            "will",
+            "know",
+            "after",
+            "lunch"
+          ]
+        },
+        "small.en": {
+          "text": "I might have to leave early. I'll know after lunch.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "might",
+            "have",
+            "to",
+            "leave",
+            "early",
+            "i",
+            "will",
+            "know",
+            "after",
+            "lunch"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I might have to leave early. I'll know after lunch.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "might",
+            "have",
+            "to",
+            "leave",
+            "early",
+            "i",
+            "will",
+            "know",
+            "after",
+            "lunch"
+          ]
+        },
+        "small.en": {
+          "text": "I might have to leave early. I'll know after lunch.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "might",
+            "have",
+            "to",
+            "leave",
+            "early",
+            "i",
+            "will",
+            "know",
+            "after",
+            "lunch"
+          ]
+        }
+      },
+      "peak": 15222,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.b08",
+      "file": "build/learning-junior-20261011/junior2/b08.wav",
+      "sha256": "cfce312249f260193997d44477ac309dd8d01d76f2e6158330112251f688a561",
+      "durationMs": 4509,
+      "wpm": 119.76,
+      "voice": "M5",
+      "take": 4,
+      "rate": 0.6899999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "We will start without you if you arrive late.",
+      "audioScriptSha256": "95f46b6a337e076a39ae77f6ded318bc390c44e7df6cd7f3bc3f0a2e24d5ccd4",
+      "steps": 12,
+      "candidateSha256": "c9890c3cd8c698f702c18a9e8064540b00df05fde477990f2c9f03611e84f9b0",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "We will start without you if you arrive late.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "will",
+            "start",
+            "without",
+            "you",
+            "if",
+            "you",
+            "arrive",
+            "late"
+          ]
+        },
+        "small.en": {
+          "text": "We will start without you if you arrive late.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "will",
+            "start",
+            "without",
+            "you",
+            "if",
+            "you",
+            "arrive",
+            "late"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "We will start without you if you arrive late.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "will",
+            "start",
+            "without",
+            "you",
+            "if",
+            "you",
+            "arrive",
+            "late"
+          ]
+        },
+        "small.en": {
+          "text": "We will start without you if you arrive late.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "will",
+            "start",
+            "without",
+            "you",
+            "if",
+            "you",
+            "arrive",
+            "late"
+          ]
+        }
+      },
+      "peak": 20352,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.b10",
+      "file": "build/learning-junior-20261011/junior2/b10.wav",
+      "sha256": "a78d3dd8fbd42eda1c116f10e2b8d6e1e819ead65b3636feead68cd6514a7a11",
+      "durationMs": 3043,
+      "wpm": 118.31,
+      "voice": "M5",
+      "take": 0,
+      "rate": 0.8799999952316284,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "Sorry, I must finish this first.",
+      "audioScriptSha256": "13711da109bf3599cfe5742119ce924b6ad07bb0262ee33d3e8531f44ef67aa1",
+      "steps": 12,
+      "candidateSha256": "75dd5148faed44db76d05281d651d656a91adb85b32e8273e09f74e0d38459be",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Sorry, I must finish this first.",
+          "exact": true,
+          "tokens": [
+            "sorry",
+            "i",
+            "must",
+            "finish",
+            "this",
+            "first"
+          ]
+        },
+        "small.en": {
+          "text": "Sorry, I must finish this first.",
+          "exact": true,
+          "tokens": [
+            "sorry",
+            "i",
+            "must",
+            "finish",
+            "this",
+            "first"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Sorry, I must finish this first.",
+          "exact": true,
+          "tokens": [
+            "sorry",
+            "i",
+            "must",
+            "finish",
+            "this",
+            "first"
+          ]
+        },
+        "small.en": {
+          "text": "Sorry, I must finish this first.",
+          "exact": true,
+          "tokens": [
+            "sorry",
+            "i",
+            "must",
+            "finish",
+            "this",
+            "first"
+          ]
+        }
+      },
+      "peak": 20507,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.b13",
+      "file": "build/learning-junior-20261011/junior2/b13.wav",
+      "sha256": "3724ba81dc62d163b7ce60de7b5f977295f3f9d4f141c04eaadaebcceebff182",
+      "durationMs": 4590,
+      "wpm": 143.8,
+      "voice": "M5",
+      "take": 0,
+      "rate": 0.8799999952316284,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "I worked faster the second time, but I was less careful.",
+      "audioScriptSha256": "a4ecaacfd9adab1352a926c4019651e5f41472744c26c2c208787e5c99a69a7a",
+      "steps": 12,
+      "candidateSha256": "f1f1d3f149e6c92de3b625dae74d665f93014ef30a95698be4f2627f683e8dff",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I worked faster the second time, but I was less careful.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "worked",
+            "faster",
+            "the",
+            "second",
+            "time",
+            "but",
+            "i",
+            "was",
+            "less",
+            "careful"
+          ]
+        },
+        "small.en": {
+          "text": "I worked faster the second time, but I was less careful.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "worked",
+            "faster",
+            "the",
+            "second",
+            "time",
+            "but",
+            "i",
+            "was",
+            "less",
+            "careful"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I worked faster the second time, but I was less careful.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "worked",
+            "faster",
+            "the",
+            "second",
+            "time",
+            "but",
+            "i",
+            "was",
+            "less",
+            "careful"
+          ]
+        },
+        "small.en": {
+          "text": "I worked faster the second time, but I was less careful.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "worked",
+            "faster",
+            "the",
+            "second",
+            "time",
+            "but",
+            "i",
+            "was",
+            "less",
+            "careful"
+          ]
+        }
+      },
+      "peak": 22412,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior2",
+      "questionId": "j2.astra.b17",
+      "file": "build/learning-junior-20261011/junior2/b17.wav",
+      "sha256": "d2352491a23166b2c5eadc25ef50a0c0ffd13e36ad865d78a993404e1f499fb4",
+      "durationMs": 5018,
+      "wpm": 119.57,
+      "voice": "M5",
+      "take": 4,
+      "rate": 0.6800000071525574,
+      "sourceDraft": "Backend/config/learning/authoring/junior2.astra.json",
+      "audioScript": "You speak more clearly now than you did last year.",
+      "audioScriptSha256": "ca7c2ebac42a5e5f585b772c09b988be263627073d6dcf2a2efd4a912dd46a9d",
+      "steps": 12,
+      "candidateSha256": "9eeee4d05df44b9d0da128ea92ae70b06072dc045a84ca53496e9713ca18eee4",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "You speak more clearly now than you did last year.",
+          "exact": true,
+          "tokens": [
+            "you",
+            "speak",
+            "more",
+            "clearly",
+            "now",
+            "than",
+            "you",
+            "did",
+            "last",
+            "year"
+          ]
+        },
+        "small.en": {
+          "text": "You speak more clearly now than you did last year.",
+          "exact": true,
+          "tokens": [
+            "you",
+            "speak",
+            "more",
+            "clearly",
+            "now",
+            "than",
+            "you",
+            "did",
+            "last",
+            "year"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "You speak more clearly now than you did last year.",
+          "exact": true,
+          "tokens": [
+            "you",
+            "speak",
+            "more",
+            "clearly",
+            "now",
+            "than",
+            "you",
+            "did",
+            "last",
+            "year"
+          ]
+        },
+        "small.en": {
+          "text": "You speak more clearly now than you did last year.",
+          "exact": true,
+          "tokens": [
+            "you",
+            "speak",
+            "more",
+            "clearly",
+            "now",
+            "than",
+            "you",
+            "did",
+            "last",
+            "year"
+          ]
+        }
+      },
+      "peak": 16975,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.a02",
+      "file": "build/learning-junior-20261011/junior3/a02.wav",
+      "sha256": "3b476ff79754bafdaedb2cc89d992f12edb9a782cf12431a5bb06ad176a108fc",
+      "durationMs": 7216,
+      "wpm": 141.35,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "I used to practise alone. Now I practise with a friend, but I still enjoy quiet places.",
+      "audioScriptSha256": "cb71003e18ba70ea3424578555c5c150bf2cac141e539ca9dabffbd7a50c3521",
+      "steps": 12,
+      "candidateSha256": "c9c3f62e49c3cf92c6c2c33f1150173ff920a74bc8b1a7db891acf3bd4b5a70b",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I used to practice alone. Now I practice with a friend, but I still enjoy quiet places.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "used",
+            "to",
+            "practice",
+            "alone",
+            "now",
+            "i",
+            "practice",
+            "with",
+            "a",
+            "friend",
+            "but",
+            "i",
+            "still",
+            "enjoy",
+            "quiet",
+            "places"
+          ]
+        },
+        "small.en": {
+          "text": "I used to practice alone. Now I practice with a friend, but I still enjoy quiet places.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "used",
+            "to",
+            "practice",
+            "alone",
+            "now",
+            "i",
+            "practice",
+            "with",
+            "a",
+            "friend",
+            "but",
+            "i",
+            "still",
+            "enjoy",
+            "quiet",
+            "places"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I used to practice alone. Now I practice with a friend, but I still enjoy quiet places.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "used",
+            "to",
+            "practice",
+            "alone",
+            "now",
+            "i",
+            "practice",
+            "with",
+            "a",
+            "friend",
+            "but",
+            "i",
+            "still",
+            "enjoy",
+            "quiet",
+            "places"
+          ]
+        },
+        "small.en": {
+          "text": "I used to practice alone. Now I practice with a friend, but I still enjoy quiet places.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "used",
+            "to",
+            "practice",
+            "alone",
+            "now",
+            "i",
+            "practice",
+            "with",
+            "a",
+            "friend",
+            "but",
+            "i",
+            "still",
+            "enjoy",
+            "quiet",
+            "places"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.a09",
+      "file": "build/learning-junior-20261011/junior3/a09.wav",
+      "sha256": "5572efe0514fae3d09b4576d9e12421bc706808b0c3c7bc29ff52fc5eaffcba3",
+      "durationMs": 4754,
+      "wpm": 151.45,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "Excuse me, could you tell me whether the lift is working today?",
+      "audioScriptSha256": "f7439852cdc67a955c835001e9e96b2f26685662ad0b16b1e594d210b8c2a399",
+      "steps": 12,
+      "candidateSha256": "cdab7165fc9bf93089e6e3254ef325553db004e9fb3e4ca9009184787eba70de",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Excuse me, could you tell me whether the lift is working today?",
+          "exact": true,
+          "tokens": [
+            "excuse",
+            "me",
+            "could",
+            "you",
+            "tell",
+            "me",
+            "whether",
+            "the",
+            "lift",
+            "is",
+            "working",
+            "today"
+          ]
+        },
+        "small.en": {
+          "text": "Excuse me, could you tell me whether the lift is working today?",
+          "exact": true,
+          "tokens": [
+            "excuse",
+            "me",
+            "could",
+            "you",
+            "tell",
+            "me",
+            "whether",
+            "the",
+            "lift",
+            "is",
+            "working",
+            "today"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Excuse me, could you tell me whether the lift is working today?",
+          "exact": true,
+          "tokens": [
+            "excuse",
+            "me",
+            "could",
+            "you",
+            "tell",
+            "me",
+            "whether",
+            "the",
+            "lift",
+            "is",
+            "working",
+            "today"
+          ]
+        },
+        "small.en": {
+          "text": "Excuse me, could you tell me whether the lift is working today?",
+          "exact": true,
+          "tokens": [
+            "excuse",
+            "me",
+            "could",
+            "you",
+            "tell",
+            "me",
+            "whether",
+            "the",
+            "lift",
+            "is",
+            "working",
+            "today"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.a11",
+      "file": "build/learning-junior-20261011/junior3/a11.wav",
+      "sha256": "fbfa94ca8bdd35763c6f72925ddaa1cce5f1d5efba0981e19b749d1c50c5f8eb",
+      "durationMs": 3002,
+      "wpm": 159.87,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "The two keys were found under a chair.",
+      "audioScriptSha256": "ebade62724298612a1295f0dd262fd96feb11210454b6eb2ef9413318240a8ec",
+      "steps": 12,
+      "candidateSha256": "6c8bf01a95b9645771eab7a8b5b6bc99098af9d47db413744c0c1fd4d9c70114",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "The two keys were found under a chair.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "two",
+            "keys",
+            "were",
+            "found",
+            "under",
+            "a",
+            "chair"
+          ]
+        },
+        "small.en": {
+          "text": "The two keys were found under a chair.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "two",
+            "keys",
+            "were",
+            "found",
+            "under",
+            "a",
+            "chair"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "The two keys were found under a chair.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "two",
+            "keys",
+            "were",
+            "found",
+            "under",
+            "a",
+            "chair"
+          ]
+        },
+        "small.en": {
+          "text": "The two keys were found under a chair.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "two",
+            "keys",
+            "were",
+            "found",
+            "under",
+            "a",
+            "chair"
+          ]
+        }
+      },
+      "peak": 17339,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.a15",
+      "file": "build/learning-junior-20261011/junior3/a15.wav",
+      "sha256": "fceaca2872ed75bfe703317e79b4c9e667eb51652ed0ab6c4aa22087c9285037",
+      "durationMs": 5658,
+      "wpm": 159.07,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "I didn't use to ask questions in class. Now I ask when I don't understand.",
+      "audioScriptSha256": "dba0563b24834e2aaeb8b45634c9d10d7049383b8fca89b33f750c8f788ea099",
+      "steps": 12,
+      "candidateSha256": "dc7cdf42e7f1d9093e1a8f561206232db1e59ef6e052a99e4383452303e659bf",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "I didn't use to ask questions in class. Now I ask when I don't understand.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "did",
+            "not",
+            "use",
+            "to",
+            "ask",
+            "questions",
+            "in",
+            "class",
+            "now",
+            "i",
+            "ask",
+            "when",
+            "i",
+            "do",
+            "not",
+            "understand"
+          ]
+        },
+        "small.en": {
+          "text": "I didn't use to ask questions in class. Now I ask when I don't understand.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "did",
+            "not",
+            "use",
+            "to",
+            "ask",
+            "questions",
+            "in",
+            "class",
+            "now",
+            "i",
+            "ask",
+            "when",
+            "i",
+            "do",
+            "not",
+            "understand"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "I didn't use to ask questions in class. Now I ask when I don't understand.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "did",
+            "not",
+            "use",
+            "to",
+            "ask",
+            "questions",
+            "in",
+            "class",
+            "now",
+            "i",
+            "ask",
+            "when",
+            "i",
+            "do",
+            "not",
+            "understand"
+          ]
+        },
+        "small.en": {
+          "text": "I didn't use to ask questions in class. Now I ask when I don't understand.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "did",
+            "not",
+            "use",
+            "to",
+            "ask",
+            "questions",
+            "in",
+            "class",
+            "now",
+            "i",
+            "ask",
+            "when",
+            "i",
+            "do",
+            "not",
+            "understand"
+          ]
+        }
+      },
+      "peak": 15620,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.a17",
+      "file": "build/learning-junior-20261011/junior3/a17.wav",
+      "sha256": "9c1051081125461c6d728b0b847f3a0ba6cd9a0c122ab81255af627ed9f5e2c9",
+      "durationMs": 2637,
+      "wpm": 136.53,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "The window was broken last night.",
+      "audioScriptSha256": "ea2771b62f84cd344f2e43b7da2c1c1c881d702a27418251c1245eea64301a88",
+      "steps": 12,
+      "candidateSha256": "b9c4976b790ce55a30c502ab2a09eb7cc86b98686599c94943d5570fc36bc698",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "The window was broken last night.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "window",
+            "was",
+            "broken",
+            "last",
+            "night"
+          ]
+        },
+        "small.en": {
+          "text": "The window was broken last night.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "window",
+            "was",
+            "broken",
+            "last",
+            "night"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "The window was broken last night.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "window",
+            "was",
+            "broken",
+            "last",
+            "night"
+          ]
+        },
+        "small.en": {
+          "text": "The window was broken last night.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "window",
+            "was",
+            "broken",
+            "last",
+            "night"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.b03",
+      "file": "build/learning-junior-20261011/junior3/b03.wav",
+      "sha256": "02493e20305662d7d573e295b0f112f42d099d9b1e79d932c489cb885b454ea2",
+      "durationMs": 6697,
+      "wpm": 134.39,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "The bags are checked at the entrance. The tickets are checked at the door upstairs.",
+      "audioScriptSha256": "98f4bafb9ec757076b9d52c2cb106dd553dbce8fb495ccb255ccd13b006120a2",
+      "steps": 12,
+      "candidateSha256": "542bf704b8f3e49b8a9bad16f25dae8e5633a0f530431a6e097b425175f6ef02",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "The bags are checked at the entrance. The tickets are checked at the door upstairs.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "bags",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "entrance",
+            "the",
+            "tickets",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "door",
+            "upstairs"
+          ]
+        },
+        "small.en": {
+          "text": "The bags are checked at the entrance. The tickets are checked at the door upstairs.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "bags",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "entrance",
+            "the",
+            "tickets",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "door",
+            "upstairs"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "The bags are checked at the entrance the tickets are checked at the door upstairs",
+          "exact": true,
+          "tokens": [
+            "the",
+            "bags",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "entrance",
+            "the",
+            "tickets",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "door",
+            "upstairs"
+          ]
+        },
+        "small.en": {
+          "text": "The bags are checked at the entrance. The tickets are checked at the door upstairs.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "bags",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "entrance",
+            "the",
+            "tickets",
+            "are",
+            "checked",
+            "at",
+            "the",
+            "door",
+            "upstairs"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.b08",
+      "file": "build/learning-junior-20261011/junior3/b08.wav",
+      "sha256": "942d781265a90054ce5876a19dfa250832831c0abdc9c9a792f0264ce7856dc0",
+      "durationMs": 4150,
+      "wpm": 130.11,
+      "voice": "F3",
+      "take": 4,
+      "rate": 0.7200000286102295,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "Could you tell me which room we should use?",
+      "audioScriptSha256": "a399bf0c115d3d37c668f375a1405b99e0e2b6029ab19acfd506cefd162dd06f",
+      "steps": 12,
+      "candidateSha256": "7e74abae8c514c2545007211b07adc6bd17b9e88bcd558a137cf1336e5e2c6c6",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Could you tell me which room we should use?",
+          "exact": true,
+          "tokens": [
+            "could",
+            "you",
+            "tell",
+            "me",
+            "which",
+            "room",
+            "we",
+            "should",
+            "use"
+          ]
+        },
+        "small.en": {
+          "text": "Could you tell me which room we should use?",
+          "exact": true,
+          "tokens": [
+            "could",
+            "you",
+            "tell",
+            "me",
+            "which",
+            "room",
+            "we",
+            "should",
+            "use"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Could you tell me which room we should use?",
+          "exact": true,
+          "tokens": [
+            "could",
+            "you",
+            "tell",
+            "me",
+            "which",
+            "room",
+            "we",
+            "should",
+            "use"
+          ]
+        },
+        "small.en": {
+          "text": "Could you tell me which room we should use?",
+          "exact": true,
+          "tokens": [
+            "could",
+            "you",
+            "tell",
+            "me",
+            "which",
+            "room",
+            "we",
+            "should",
+            "use"
+          ]
+        }
+      },
+      "peak": 18053,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.b12",
+      "file": "build/learning-junior-20261011/junior3/b12.wav",
+      "sha256": "9598f7c6074589dbd4fbce3ac06d36e3cb234253a0c0894a1076f5a89af8d667",
+      "durationMs": 6867,
+      "wpm": 157.27,
+      "voice": "F3",
+      "take": 0,
+      "rate": 0.9399999976158142,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "Your name must be written on the first page. A photo may be added, but it isn't necessary.",
+      "audioScriptSha256": "6c9d8ffdbfb787f47d902dcd9d808db8965a732012648de0a2d8e67015ea7baf",
+      "steps": 12,
+      "candidateSha256": "35cfd4cc9b69c364ffefefa82e0e3d6a18b9c47d98e5e465d49ae76e7960b696",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "Your name must be written on the first page. A photo may be added, but it isn't necessary.",
+          "exact": true,
+          "tokens": [
+            "your",
+            "name",
+            "must",
+            "be",
+            "written",
+            "on",
+            "the",
+            "first",
+            "page",
+            "a",
+            "photo",
+            "may",
+            "be",
+            "added",
+            "but",
+            "it",
+            "is",
+            "not",
+            "necessary"
+          ]
+        },
+        "small.en": {
+          "text": "Your name must be written on the first page. A photo may be added, but it isn't necessary.",
+          "exact": true,
+          "tokens": [
+            "your",
+            "name",
+            "must",
+            "be",
+            "written",
+            "on",
+            "the",
+            "first",
+            "page",
+            "a",
+            "photo",
+            "may",
+            "be",
+            "added",
+            "but",
+            "it",
+            "is",
+            "not",
+            "necessary"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "Your name must be written on the first page. A photo may be added, but it isn't necessary.",
+          "exact": true,
+          "tokens": [
+            "your",
+            "name",
+            "must",
+            "be",
+            "written",
+            "on",
+            "the",
+            "first",
+            "page",
+            "a",
+            "photo",
+            "may",
+            "be",
+            "added",
+            "but",
+            "it",
+            "is",
+            "not",
+            "necessary"
+          ]
+        },
+        "small.en": {
+          "text": "Your name must be written on the first page. A photo may be added, but it isn't necessary.",
+          "exact": true,
+          "tokens": [
+            "your",
+            "name",
+            "must",
+            "be",
+            "written",
+            "on",
+            "the",
+            "first",
+            "page",
+            "a",
+            "photo",
+            "may",
+            "be",
+            "added",
+            "but",
+            "it",
+            "is",
+            "not",
+            "necessary"
+          ]
+        }
+      },
+      "peak": 22513,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    },
+    {
+      "level": "junior3",
+      "questionId": "j3.astra.b16",
+      "file": "build/learning-junior-20261011/junior3/b16.wav",
+      "sha256": "f5827ce84690634155a00838243bdedba4213b5840c3a44b92b3888f5a0b0a56",
+      "durationMs": 2781,
+      "wpm": 129.44,
+      "voice": "F3",
+      "take": 4,
+      "rate": 0.75,
+      "sourceDraft": "Backend/config/learning/authoring/junior3.astra.json",
+      "audioScript": "We used to share a room.",
+      "audioScriptSha256": "bf1ca67f609681c7c6c3130be106824acadfaf807233a6d8856333a02cebdd02",
+      "steps": 12,
+      "candidateSha256": "04e83bae32a6cbb13bcc210a35a8af6f594387d981f7a514aa5f2ab513c7bd33",
+      "candidateRecognition": {
+        "base.en": {
+          "text": "We used to share a room.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "used",
+            "to",
+            "share",
+            "a",
+            "room"
+          ]
+        },
+        "small.en": {
+          "text": "We used to share a room.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "used",
+            "to",
+            "share",
+            "a",
+            "room"
+          ]
+        }
+      },
+      "masterRecognition": {
+        "base.en": {
+          "text": "We used to share a room.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "used",
+            "to",
+            "share",
+            "a",
+            "room"
+          ]
+        },
+        "small.en": {
+          "text": "We used to share a room.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "used",
+            "to",
+            "share",
+            "a",
+            "room"
+          ]
+        }
+      },
+      "peak": 20449,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "editPolicy": "完整发言合成后仅重采样与整段增益；无删词、逐词拼接或后期变速。"
+    }
+  ]
+}
