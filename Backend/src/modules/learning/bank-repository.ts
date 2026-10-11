@@ -12,6 +12,8 @@ import {
   assembleBankQuestions,
   bankBlueprintSchema,
   bankQuestionSchema,
+  bankCatalogRevisionSchema,
+  type BankCatalogRevision,
   bankIdentity,
   bankUnit,
   type BankBlueprint,
@@ -213,13 +215,39 @@ export class LearningBankRepository {
       localQuestionId: string;
     }[],
     blueprints: readonly BankBlueprint[],
+    revisions: readonly BankCatalogRevision[] = [],
   ) {
+    const updates = revisions.map((r) => bankCatalogRevisionSchema.parse(r));
+    if (new Set(updates.map((r) => r.question.id)).size !== updates.length)
+      conflict("公共题库目录含重复修订身份。");
     await this.database.sql.begin(async (sql) => {
       // 发布遇到锁竞争或异常慢语句时退出，避免维护事务长期占住业务资源。
       await sql`set local lock_timeout = '5s'`;
       await sql`set local statement_timeout = '30s'`;
       await sql`set local idle_in_transaction_session_timeout = '30s'`;
       await sql`select pg_advisory_xact_lock(hashtextextended('learning-publication',0))`;
+      // 固定锁顺序；旧题修订、新题及蓝图全部提交或全部回滚。
+      for (const revision of [...updates].sort((a, b) =>
+        a.question.id.localeCompare(b.question.id),
+      )) {
+        const [current] = await sql<{ content_hash: string; published: boolean }[]>`
+          select v.content_hash,q.published from app.learning_bank_questions q
+          join app.learning_bank_versions v on v.question_id=q.id and v.version=q.current_version
+          where q.id=${revision.question.id} for update of q`;
+        if (
+          current?.content_hash === contentHash(revision.question) &&
+          current.published
+        )
+          continue;
+        await this.saveInTransaction(
+          sql,
+          revision.question.id,
+          revision.expectedHash,
+          revision.question,
+          true,
+          "目录逐题修订发布",
+        );
+      }
       for (const entry of entries) {
         const q = bankQuestionSchema.parse(entry.question);
         const [source] = await sql<
@@ -307,23 +335,33 @@ export class LearningBankRepository {
   ) {
     const q = bankQuestionSchema.parse(value);
     if (q.id !== id) conflict("修订不能更换题目身份。");
-    return this.database.sql.begin(async (sql) => {
-      const [current] = await sql<
-        { payload: BankQuestion; content_hash: string }[]
-      >`select v.payload,v.content_hash from app.learning_bank_questions q join app.learning_bank_versions v on v.question_id=q.id and v.version=q.current_version where q.id=${id} for update of q`;
-      if (current?.content_hash !== expectedHash)
-        conflict("题目已更新，请重新读取后再保存。");
-      const old = bankQuestionSchema.parse(current.payload);
-      if (q.version !== old.version + 1) conflict("新版本必须递增。");
-      validateRevision(old, q);
-      const [duplicate] =
-        await sql`select id from app.learning_bank_questions where material_hash=${bankIdentity(q.question)} and id<>${q.id}`;
-      if (duplicate) conflict("同一道题已经存在，请修订原题，不要以新身份重复发布。");
-      await sql`insert into app.learning_bank_versions(question_id,version,payload,content_hash,operator) values(${id},${q.version},${JSON.stringify(q)}::jsonb,${contentHash(q)},${operator})`;
-      await sql`update app.learning_bank_questions set current_version=${q.version},published=${published},material_hash=${bankIdentity(q.question)},updated_at=now() where id=${id}`;
-      await sql`insert into app.learning_bank_audit(question_id,version,operation,operator,notes) values(${id},${q.version},${published ? "publish" : "withdraw"},${operator},${q.reviewNotes})`;
-      return { id, version: q.version, published };
-    });
+    return this.database.sql.begin((sql) =>
+      this.saveInTransaction(sql, id, expectedHash, q, published, operator),
+    );
+  }
+  private async saveInTransaction(
+    sql: TransactionSql,
+    id: string,
+    expectedHash: string,
+    q: BankQuestion,
+    published: boolean,
+    operator: string,
+  ) {
+    const [current] = await sql<
+      { payload: BankQuestion; content_hash: string }[]
+    >`select v.payload,v.content_hash from app.learning_bank_questions q join app.learning_bank_versions v on v.question_id=q.id and v.version=q.current_version where q.id=${id} for update of q`;
+    if (current?.content_hash !== expectedHash)
+      conflict("题目已更新，请重新读取后再保存。");
+    const old = bankQuestionSchema.parse(current.payload);
+    if (q.version !== old.version + 1) conflict("新版本必须递增。");
+    validateRevision(old, q);
+    const [duplicate] =
+      await sql`select id from app.learning_bank_questions where material_hash=${bankIdentity(q.question)} and id<>${q.id}`;
+    if (duplicate) conflict("同一道题已经存在，请修订原题，不要以新身份重复发布。");
+    await sql`insert into app.learning_bank_versions(question_id,version,payload,content_hash,operator) values(${id},${q.version},${JSON.stringify(q)}::jsonb,${contentHash(q)},${operator})`;
+    await sql`update app.learning_bank_questions set current_version=${q.version},published=${published},material_hash=${bankIdentity(q.question)},updated_at=now() where id=${id}`;
+    await sql`insert into app.learning_bank_audit(question_id,version,operation,operator,notes) values(${id},${q.version},${published ? "publish" : "withdraw"},${operator},${q.reviewNotes})`;
+    return { id, version: q.version, published };
   }
   async createVariant(
     templateId: string,

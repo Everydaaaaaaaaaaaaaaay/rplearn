@@ -15,7 +15,10 @@ import {
 import { LearningBankRepository } from "../../src/modules/learning/bank-repository.js";
 import { loadBankCatalog } from "../../src/modules/learning/bank-catalog.js";
 import { loadCuratedCatalog } from "../../src/modules/learning/catalog.js";
-import { bankQuestionSchema } from "../../src/modules/learning/bank-content.js";
+import {
+  bankIdentity,
+  bankQuestionSchema,
+} from "../../src/modules/learning/bank-content.js";
 import {
   contentHash,
   type LearningLevel,
@@ -38,6 +41,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
   let authored: Awaited<ReturnType<typeof loadCuratedCatalog>>;
   const users: string[] = [];
   const addedIds: string[] = [];
+  const addedUnits: LearningUnit[] = [];
   beforeAll(async () => {
     db = createDatabase(integrationConfig());
     await runMigrations(db);
@@ -60,7 +64,7 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     await db.sql`delete from app.learning_bank_versions where question_id=any(${ids})`;
     await db.sql`delete from app.learning_bank_questions where id=any(${ids})`;
     await db.sql`delete from app.learning_bank_blueprints where id=any(${catalog.blueprints.map((b) => b.id)})`;
-    for (const unit of authored.units) {
+    for (const unit of [...authored.units, ...addedUnits]) {
       await db.sql`delete from app.learning_unit_versions where unit_id=${unit.id}`;
       await db.sql`delete from app.learning_units where id=${unit.id}`;
     }
@@ -450,5 +454,102 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")("公共题库事务
     expect(result.attempt).toBeNull();
     expect(await privateUnit(attempt.id)).toEqual(snapshot);
     expect((await existing.start(characterId, "advanced")).id).toBe(attempt.id);
+  });
+  it("目录修订与新题全量原子发布，失败回滚、重复幂等且不覆盖后续编辑", async () => {
+    const original = required(authored.units.find((u) => u.level === "primary3"));
+    const unit: LearningUnit = {
+      ...structuredClone(original),
+      id: "test.atomic-bank-unit",
+      questions: original.questions.map((q) => ({
+        ...q,
+        prompt: q.prompt + "（原子发布隔离夹具）",
+      })),
+    };
+    addedUnits.push(unit);
+    await engine.publishBatch([unit], [], []);
+    const entries = unit.questions.map((question) => ({
+      unitId: unit.id,
+      unitVersion: unit.version,
+      localQuestionId: question.id,
+      question: bankQuestionSchema.parse({
+        ...required(catalog.entries[0]).question,
+        id: bankIdentity(question),
+        version: 1,
+        level: unit.level,
+        question,
+        references: unit.references,
+        exclusionGroupIds:
+          question.id === unit.questions[0]?.id ? ["test.atomic-pair"] : [],
+      }),
+    }));
+    addedIds.push(...entries.map((entry) => entry.question.id));
+    const blueprint = {
+      ...required(catalog.blueprints.find((b) => b.id === "bank." + original.id)),
+      id: "bank.test.atomic-unit",
+    };
+    catalog.blueprints.push(blueprint);
+    const old = await bank.detail(required(catalog.entries[0]).question.id);
+    const revision = {
+      expectedHash: old.content_hash,
+      question: {
+        ...old.payload,
+        version: old.payload.version + 1,
+        exclusionGroupIds: [
+          ...(old.payload.exclusionGroupIds ?? []),
+          "test.atomic-pair",
+        ],
+      },
+    };
+    // 在已修订旧题并插入若干新题后遇到无效来源，所有写入仍须回滚。
+    const broken = entries.map((e, i) =>
+      i === entries.length - 1 ? { ...e, unitId: "test.missing-unit" } : e,
+    );
+    await expect(
+      bank.importCatalog(broken, [blueprint], [revision]),
+    ).rejects.toMatchObject({ code: "LEARNING_BANK_CONFLICT" });
+    expect((await bank.detail(old.payload.id)).content_hash).toBe(old.content_hash);
+    for (const entry of entries)
+      await expect(bank.detail(entry.question.id)).rejects.toMatchObject({
+        code: "LEARNING_BANK_NOT_FOUND",
+      });
+    expect(
+      await db.sql`select id from app.learning_bank_blueprints where id=${blueprint.id}`,
+    ).toHaveLength(0);
+    await expect(
+      bank.importCatalog(
+        entries,
+        [blueprint],
+        [{ ...revision, expectedHash: "0".repeat(64) }],
+      ),
+    ).rejects.toMatchObject({ code: "LEARNING_BANK_CONFLICT" });
+    await bank.importCatalog(entries, [blueprint], [revision]);
+    expect((await bank.detail(old.payload.id)).payload).toEqual(revision.question);
+    expect(
+      (await bank.detail(required(entries[0]).question.id)).payload.exclusionGroupIds,
+    ).toEqual(["test.atomic-pair"]);
+    for (const entry of entries)
+      expect((await bank.detail(entry.question.id)).published).toBe(true);
+    const audit = (await bank.detail(old.payload.id)).audit;
+    await bank.importCatalog(entries, [blueprint], [revision]);
+    expect((await bank.detail(old.payload.id)).audit).toEqual(audit);
+    const fresh = await bank.detail(old.payload.id);
+    const newer = {
+      ...fresh.payload,
+      version: fresh.payload.version + 1,
+      question: {
+        ...fresh.payload.question,
+        explanation: "发布后人工修订的解析必须保留，旧发布包不得覆盖这次更新。",
+      },
+    };
+    await bank.save(newer.id, fresh.content_hash, newer, true, "隔离后续编辑");
+    await bank.setEnabled(false);
+    await expect(
+      bank.importCatalog(entries, [blueprint], [revision]),
+    ).rejects.toMatchObject({ code: "LEARNING_BANK_CONFLICT" });
+    expect((await bank.detail(newer.id)).payload).toEqual(newer);
+    const [control] = await db.sql<
+      { enabled: boolean }[]
+    >`select enabled from app.learning_bank_control where id=true`;
+    expect(control?.enabled).toBe(false);
   });
 });

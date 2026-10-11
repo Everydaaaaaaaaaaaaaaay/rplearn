@@ -33,6 +33,12 @@ export const bankQuestionSchema = z.strictObject({
   reviewNotes: z.string().trim().min(30).max(2000),
 });
 export type BankQuestion = z.infer<typeof bankQuestionSchema>;
+/** 与目录新增题同一事务发布；预期哈希防止覆盖管理员后续修订。 */
+export const bankCatalogRevisionSchema = z.strictObject({
+  expectedHash: z.string().regex(/^[a-f0-9]{64}$/),
+  question: bankQuestionSchema,
+});
+export type BankCatalogRevision = z.infer<typeof bankCatalogRevisionSchema>;
 export const bankBlueprintSchema = z.strictObject({
   id,
   title: z.string().trim().min(1).max(100),

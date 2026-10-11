@@ -39,6 +39,7 @@ async function main() {
         new LearningBankRepository(database).importCatalog(
           catalog.entries,
           catalog.blueprints,
+          catalog.revisions,
         ),
       );
     } finally {
@@ -51,6 +52,7 @@ async function main() {
       hash: catalog.hash,
       questions: catalog.entries.length,
       blueprints: catalog.blueprints.length,
+      revisions: catalog.revisions.length,
     }) + "\n",
   );
 }
