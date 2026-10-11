@@ -1,0 +1,2001 @@
+{
+  "date": "2026-10-11",
+  "status": "不完整：只列当前通过段，不能作为完整媒体审阅或发布依据",
+  "complete": false,
+  "expectedCount": 19,
+  "count": 18,
+  "clips": [
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.a03",
+      "file": "build/learning-primary456-20261011/primary4/a03.wav",
+      "sha256": "a3f12b9492218e4cbe0caed193cf7451af26cee97cd0b370763bef3762603095",
+      "audioScript": "I have dinner at six. I go to bed at eight.",
+      "audioScriptSha256": "e7047e19e47ec7eb8f68825894b41a8139bf2be037a572d902e798ecd8be3495",
+      "spokenText": "I have dinner at six. I go to bed at eight.",
+      "spokenTextSha256": "e7047e19e47ec7eb8f68825894b41a8139bf2be037a572d902e798ecd8be3495",
+      "durationMs": 5872,
+      "wpm": 112.39,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "I have dinner at six. I go to bed at eight.",
+          "speaker": "说话人",
+          "voice": "F3",
+          "sha256": "be7282d0e66751ec12bd923837a75ff51fb995f87f96a41b7e678f51796276a8",
+          "file": "build/learning-primary456-20261011/primary4/candidate-a03-2.pcm.wav",
+          "sourceSha256": "eb067d041d99b78eea07d3466ad8bc966c49bbf9ef8318159a90d9d9d59d3ae6",
+          "take": 2,
+          "rate": 0.6000000238418579,
+          "steps": 8,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "I have dinner at 6. I go to bed at 8.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "have",
+                "dinner",
+                "at",
+                "six",
+                "i",
+                "go",
+                "to",
+                "bed",
+                "at",
+                "eight"
+              ]
+            },
+            "small.en": {
+              "text": "I have dinner at six. I go to bed at eight.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "have",
+                "dinner",
+                "at",
+                "six",
+                "i",
+                "go",
+                "to",
+                "bed",
+                "at",
+                "eight"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "I have dinner at 6. I go to bed at 8.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "have",
+            "dinner",
+            "at",
+            "six",
+            "i",
+            "go",
+            "to",
+            "bed",
+            "at",
+            "eight"
+          ]
+        },
+        "small.en": {
+          "text": "I have dinner at six. I go to bed at eight.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "have",
+            "dinner",
+            "at",
+            "six",
+            "i",
+            "go",
+            "to",
+            "bed",
+            "at",
+            "eight"
+          ]
+        }
+      },
+      "peak": 18954,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.587226550560171,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.a13",
+      "file": "build/learning-primary456-20261011/primary4/a13.wav",
+      "sha256": "2a79779761949810c0c84e8ca08d175845827f963c2a06c2f4dd3ad98fc3484d",
+      "audioScript": "The hat is forty yuan.",
+      "audioScriptSha256": "4d75d083364877ab93c67e679c86a91652444a77f217d84275eeca716e5e5b09",
+      "spokenText": "The hat is forty yuan.",
+      "spokenTextSha256": "4d75d083364877ab93c67e679c86a91652444a77f217d84275eeca716e5e5b09",
+      "durationMs": 2512,
+      "wpm": 119.42,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "The hat is forty yuan.",
+          "speaker": "店员",
+          "voice": "F3",
+          "sha256": "f503c1b6237d65ed8d11c736198ab8896a462f60e7257f1127a3c7b747c31cfa",
+          "file": "build/learning-primary456-20261011/primary4/candidate-a13-1.pcm.wav",
+          "sourceSha256": "7b01ebf617cb75b37f5f02b10bf08c29674223685f9b6afa8e53cad5274f374b",
+          "take": 1,
+          "rate": 0.7599999904632568,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "The hat is 40 yuan.",
+              "exact": true,
+              "tokens": [
+                "the",
+                "hat",
+                "is",
+                "forty",
+                "yuan"
+              ]
+            },
+            "small.en": {
+              "text": "The hat is 40 yuan.",
+              "exact": true,
+              "tokens": [
+                "the",
+                "hat",
+                "is",
+                "forty",
+                "yuan"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "The hat is 40 yuan.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "hat",
+            "is",
+            "forty",
+            "yuan"
+          ]
+        },
+        "small.en": {
+          "text": "The hat is 40 Yuan.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "hat",
+            "is",
+            "forty",
+            "yuan"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.6706231454005933,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.a18",
+      "file": "build/learning-primary456-20261011/primary4/a18.wav",
+      "sha256": "fcd31a9e173b212784e18b870dd170898ed904e14fb94963ad7d7b3313c01f65",
+      "audioScript": "I have dinner at seven. I go home at five. I do my homework at six.",
+      "audioScriptSha256": "3a7525a16be166f2dc24683bf0a497219979e446a82e425450e397540cdafff3",
+      "spokenText": "I have dinner at seven. I go home at five. I do my homework at six.",
+      "spokenTextSha256": "3a7525a16be166f2dc24683bf0a497219979e446a82e425450e397540cdafff3",
+      "durationMs": 9030,
+      "wpm": 106.31,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "I have dinner at seven. I go home at five. I do my homework at six.",
+          "speaker": "说话人",
+          "voice": "F3",
+          "sha256": "3f74e1c9c166699b677df952271e01665d4b4b9e993fbc83fcfe1ec33f5d808d",
+          "file": "build/learning-primary456-20261011/primary4/candidate-a18-2.pcm.wav",
+          "sourceSha256": "44ba74e6a342ef95b1233d8a26b623f2e3d891cbdcebbfebbe37f61229a34dd7",
+          "take": 2,
+          "rate": 0.6000000238418579,
+          "steps": 8,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "I have dinner at 7. I go home at 5. I do my homework at 6.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "have",
+                "dinner",
+                "at",
+                "seven",
+                "i",
+                "go",
+                "home",
+                "at",
+                "five",
+                "i",
+                "do",
+                "my",
+                "homework",
+                "at",
+                "six"
+              ]
+            },
+            "small.en": {
+              "text": "I have dinner at seven. I go home at five. I do my homework at six.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "have",
+                "dinner",
+                "at",
+                "seven",
+                "i",
+                "go",
+                "home",
+                "at",
+                "five",
+                "i",
+                "do",
+                "my",
+                "homework",
+                "at",
+                "six"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "I have dinner at 7. I go home at 5. I do my homework at 6.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "have",
+            "dinner",
+            "at",
+            "seven",
+            "i",
+            "go",
+            "home",
+            "at",
+            "five",
+            "i",
+            "do",
+            "my",
+            "homework",
+            "at",
+            "six"
+          ]
+        },
+        "small.en": {
+          "text": "I have dinner at seven. I go home at five. I do my homework at six.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "have",
+            "dinner",
+            "at",
+            "seven",
+            "i",
+            "go",
+            "home",
+            "at",
+            "five",
+            "i",
+            "do",
+            "my",
+            "homework",
+            "at",
+            "six"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.0587113991612656,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.b03",
+      "file": "build/learning-primary456-20261011/primary4/b03.wav",
+      "sha256": "2a3d7528b4ab4f3907d1a057d8a33ef13510151c6cbc9b2193bcd93f069a6bbb",
+      "audioScript": "Is it cold there? No, it isn't. It's warm.",
+      "audioScriptSha256": "f658984e7a22f7db39e31084be157cc1f2e256144ba0bae3403d162ccac3ad9c",
+      "spokenText": "Is it cold there? No, it isn't. It's warm.",
+      "spokenTextSha256": "f658984e7a22f7db39e31084be157cc1f2e256144ba0bae3403d162ccac3ad9c",
+      "durationMs": 5167,
+      "wpm": 104.5,
+      "voice": "F3+M5",
+      "candidateSegments": [
+        {
+          "text": "Is it cold there?",
+          "speaker": "提问者",
+          "voice": "F3",
+          "sha256": "e592961480f45df39a2afed0fd9577a264d25a87e8ff536da7de46854e7aef19",
+          "file": "build/learning-primary456-20261011/primary4/candidate-b03-question-0.pcm.wav",
+          "sourceSha256": "3ff787d69391fc487c0c2b804e64652aab30cab5f0da6e3d1dac596fd2b99e7f",
+          "take": 0,
+          "rate": 0.7599999904632568,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "Is it cold there?",
+              "exact": true,
+              "tokens": [
+                "is",
+                "it",
+                "cold",
+                "there"
+              ]
+            },
+            "small.en": {
+              "text": "Is it cold there?",
+              "exact": true,
+              "tokens": [
+                "is",
+                "it",
+                "cold",
+                "there"
+              ]
+            }
+          }
+        },
+        {
+          "text": "No, it isn't. It's warm.",
+          "speaker": "回答者",
+          "voice": "M5",
+          "sha256": "26e5cb7106ff5966daebf96f3d8843aff63fb946828218b0626aeea3adda2009",
+          "file": "build/learning-primary456-20261011/primary4/candidate-b03-answer-0.pcm.wav",
+          "sourceSha256": "6f7d4a3c5c741f91f908ce7444f53e7ee96a49eaee4e2535f5308ee91625ebb8",
+          "take": 0,
+          "rate": 0.7599999904632568,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "No, it isn't. It's warm",
+              "exact": true,
+              "tokens": [
+                "no",
+                "it",
+                "is",
+                "not",
+                "it",
+                "is",
+                "warm"
+              ]
+            },
+            "small.en": {
+              "text": "No, it isn't. It's warm.",
+              "exact": true,
+              "tokens": [
+                "no",
+                "it",
+                "is",
+                "not",
+                "it",
+                "is",
+                "warm"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Is it cold there? No, it isn't it's warm",
+          "exact": true,
+          "tokens": [
+            "is",
+            "it",
+            "cold",
+            "there",
+            "no",
+            "it",
+            "is",
+            "not",
+            "it",
+            "is",
+            "warm"
+          ]
+        },
+        "small.en": {
+          "text": "Is it cold there? No, it isn't. It's warm.",
+          "exact": true,
+          "tokens": [
+            "is",
+            "it",
+            "cold",
+            "there",
+            "no",
+            "it",
+            "is",
+            "not",
+            "it",
+            "is",
+            "warm"
+          ]
+        }
+      },
+      "peak": 20767,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.2332024544017637,
+      "gaps": [
+        {
+          "startSample": 52611,
+          "endSampleExclusive": 59811
+        }
+      ],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.b08",
+      "file": "build/learning-primary456-20261011/primary4/b08.wav",
+      "sha256": "0c62559f1a42313868f76ba7130916ab55a8cea887030492ff97aea69eaae880",
+      "audioScript": "These trousers are too long.",
+      "audioScriptSha256": "00a6f353af5f3dd742709370c81ae9b145ecc6c279a971748abd09ba27b94752",
+      "spokenText": "These trousers are too long.",
+      "spokenTextSha256": "00a6f353af5f3dd742709370c81ae9b145ecc6c279a971748abd09ba27b94752",
+      "durationMs": 3063,
+      "wpm": 97.93,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "These trousers are too long.",
+          "speaker": "试穿者",
+          "voice": "F3",
+          "sha256": "5c829e73765a9633ed1df664ff08839ad8c8cafb938857a4cf5617769b2fd241",
+          "file": "build/learning-primary456-20261011/primary4/candidate-b08-0.pcm.wav",
+          "sourceSha256": "61ffef5439befbae1c43468ed8f282ae9102704a3c999ddfffe5d38894ae37df",
+          "take": 0,
+          "rate": 0.7599999904632568,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "These trousers are too long.",
+              "exact": true,
+              "tokens": [
+                "these",
+                "trousers",
+                "are",
+                "too",
+                "long"
+              ]
+            },
+            "small.en": {
+              "text": "These trousers are too long.",
+              "exact": true,
+              "tokens": [
+                "these",
+                "trousers",
+                "are",
+                "too",
+                "long"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "These trousers are too long.",
+          "exact": true,
+          "tokens": [
+            "these",
+            "trousers",
+            "are",
+            "too",
+            "long"
+          ]
+        },
+        "small.en": {
+          "text": "These trousers are too long.",
+          "exact": true,
+          "tokens": [
+            "these",
+            "trousers",
+            "are",
+            "too",
+            "long"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.8625954198473282,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.b13",
+      "file": "build/learning-primary456-20261011/primary4/b13.wav",
+      "sha256": "6d7877460c52269a478a5d69b9ed9d8ac2ea3353add40771ecac9367e2e882cc",
+      "audioScript": "We go boating in summer.",
+      "audioScriptSha256": "bdb71ba69c05373cb962b2ba66b492da826f686190156d8f51d508cec9b34e1c",
+      "spokenText": "We go boating in summer.",
+      "spokenTextSha256": "bdb71ba69c05373cb962b2ba66b492da826f686190156d8f51d508cec9b34e1c",
+      "durationMs": 2657,
+      "wpm": 112.9,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "We go boating in summer.",
+          "speaker": "说话人",
+          "voice": "F3",
+          "sha256": "f9cf58d41bc6bc76ce16230e27cdd65b8c1e8a8a5531da146a75d52f01e63628",
+          "file": "build/learning-primary456-20261011/primary4/candidate-b13-0.pcm.wav",
+          "sourceSha256": "d547d194e9da32e885c82199d296ea43db0bddaf8bd064c83433fe9386074ab9",
+          "take": 0,
+          "rate": 0.7599999904632568,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "We go boating in summer.",
+              "exact": true,
+              "tokens": [
+                "we",
+                "go",
+                "boating",
+                "in",
+                "summer"
+              ]
+            },
+            "small.en": {
+              "text": "We go boating in summer.",
+              "exact": true,
+              "tokens": [
+                "we",
+                "go",
+                "boating",
+                "in",
+                "summer"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "We go boating in summer.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "go",
+            "boating",
+            "in",
+            "summer"
+          ]
+        },
+        "small.en": {
+          "text": "We go boating in summer.",
+          "exact": true,
+          "tokens": [
+            "we",
+            "go",
+            "boating",
+            "in",
+            "summer"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.5839793281653747,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary5",
+      "questionId": "p5.astra.a02",
+      "file": "build/learning-primary456-20261011/primary5/a02.wav",
+      "sha256": "0c32166b97fc11eb138933cca96db4506255da3ec9483a1b3a45e1814a56c2bd",
+      "audioScript": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+      "audioScriptSha256": "6cc2be7e0472d64384be464ffe03395d53ea2ea7ee6e8df0a259c2283304a8de",
+      "spokenText": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+      "spokenTextSha256": "6cc2be7e0472d64384be464ffe03395d53ea2ea7ee6e8df0a259c2283304a8de",
+      "durationMs": 7697,
+      "wpm": 116.93,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "328c994eeea3e3a6cbbfb2191d1e0ab944b76898c1553e36332c15395b304fb7",
+          "file": "build/learning-primary456-20261011/primary5/candidate-a02-0.pcm.wav",
+          "sourceSha256": "fa849bf7206552640945ae3b45936b559fb6e128bcb3d9a0d9127623de590ff8",
+          "take": 0,
+          "rate": 0.7799999713897705,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "I usually go for a walk, I often read books. Sometimes I clean my room.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "usually",
+                "go",
+                "for",
+                "a",
+                "walk",
+                "i",
+                "often",
+                "read",
+                "books",
+                "sometimes",
+                "i",
+                "clean",
+                "my",
+                "room"
+              ]
+            },
+            "small.en": {
+              "text": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "usually",
+                "go",
+                "for",
+                "a",
+                "walk",
+                "i",
+                "often",
+                "read",
+                "books",
+                "sometimes",
+                "i",
+                "clean",
+                "my",
+                "room"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "I usually go for a walk, I often read books. Sometimes I clean my room.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "usually",
+            "go",
+            "for",
+            "a",
+            "walk",
+            "i",
+            "often",
+            "read",
+            "books",
+            "sometimes",
+            "i",
+            "clean",
+            "my",
+            "room"
+          ]
+        },
+        "small.en": {
+          "text": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "usually",
+            "go",
+            "for",
+            "a",
+            "walk",
+            "i",
+            "often",
+            "read",
+            "books",
+            "sometimes",
+            "i",
+            "clean",
+            "my",
+            "room"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.2310361923648983,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary5",
+      "questionId": "p5.astra.a08",
+      "file": "build/learning-primary456-20261011/primary5/a08.wav",
+      "sha256": "7c8570ea4adec2be2c23eb96137cd89fc43bebc11079c269e5a23ba281dc5986",
+      "audioScript": "Look at the girl in the garden. She is drinking water.",
+      "audioScriptSha256": "33be7979cb30e7ec21fec72ea2a3780c3decee0396180e52809bdfb8cf00a56f",
+      "spokenText": "Look at the girl in the garden. She is drinking water.",
+      "spokenTextSha256": "33be7979cb30e7ec21fec72ea2a3780c3decee0396180e52809bdfb8cf00a56f",
+      "durationMs": 5504,
+      "wpm": 119.92,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "Look at the girl in the garden. She is drinking water.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "8d7498354300653f98d8bef7c65e15fca3a891654b9614a667788b7770e419bd",
+          "file": "build/learning-primary456-20261011/primary5/candidate-a08-0.pcm.wav",
+          "sourceSha256": "823f4376117373f5087b344187a48b1ef23398d956a5435c695a5d95c3a7a7cc",
+          "take": 0,
+          "rate": 0.7799999713897705,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "Look at the girl in the garden. She is drinking water.",
+              "exact": true,
+              "tokens": [
+                "look",
+                "at",
+                "the",
+                "girl",
+                "in",
+                "the",
+                "garden",
+                "she",
+                "is",
+                "drinking",
+                "water"
+              ]
+            },
+            "small.en": {
+              "text": "Look at the girl in the garden. She is drinking water.",
+              "exact": true,
+              "tokens": [
+                "look",
+                "at",
+                "the",
+                "girl",
+                "in",
+                "the",
+                "garden",
+                "she",
+                "is",
+                "drinking",
+                "water"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Look at the girl in the garden. She is drinking water.",
+          "exact": true,
+          "tokens": [
+            "look",
+            "at",
+            "the",
+            "girl",
+            "in",
+            "the",
+            "garden",
+            "she",
+            "is",
+            "drinking",
+            "water"
+          ]
+        },
+        "small.en": {
+          "text": "Look at the girl in the garden. She is drinking water.",
+          "exact": true,
+          "tokens": [
+            "look",
+            "at",
+            "the",
+            "girl",
+            "in",
+            "the",
+            "garden",
+            "she",
+            "is",
+            "drinking",
+            "water"
+          ]
+        }
+      },
+      "peak": 20212,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.565662145562792,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary5",
+      "questionId": "p5.astra.a14",
+      "file": "build/learning-primary456-20261011/primary5/a14.wav",
+      "sha256": "5d16bb1707ad323068e86fc13c031e34c8d22e204d36e2438be7d5dd29f4e095",
+      "audioScript": "Our school trip is in July.",
+      "audioScriptSha256": "cda6a0379dd5caef2649ee90d5207be033d0713927e53294863446fd28d535a2",
+      "spokenText": "Our school trip is in July.",
+      "spokenTextSha256": "cda6a0379dd5caef2649ee90d5207be033d0713927e53294863446fd28d535a2",
+      "durationMs": 3035,
+      "wpm": 118.62,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "Our school trip is in July.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "757ab04c408fabd4cad1e0fea9bd5cafea9efc08f4166203d1bc299d693b2fb2",
+          "file": "build/learning-primary456-20261011/primary5/candidate-a14-0.pcm.wav",
+          "sourceSha256": "8abe07f805465d11296832e08f655ed5969e2ae780b26db7653daf6c4077e0fc",
+          "take": 0,
+          "rate": 0.7799999713897705,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "Our school trip is in July.",
+              "exact": true,
+              "tokens": [
+                "our",
+                "school",
+                "trip",
+                "is",
+                "in",
+                "july"
+              ]
+            },
+            "small.en": {
+              "text": "Our school trip is in July.",
+              "exact": true,
+              "tokens": [
+                "our",
+                "school",
+                "trip",
+                "is",
+                "in",
+                "july"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Our school trip is in July.",
+          "exact": true,
+          "tokens": [
+            "our",
+            "school",
+            "trip",
+            "is",
+            "in",
+            "july"
+          ]
+        },
+        "small.en": {
+          "text": "Our school trip is in July.",
+          "exact": true,
+          "tokens": [
+            "our",
+            "school",
+            "trip",
+            "is",
+            "in",
+            "july"
+          ]
+        }
+      },
+      "peak": 23804,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.9265234389196686,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary5",
+      "questionId": "p5.astra.b03",
+      "file": "build/learning-primary456-20261011/primary5/b03.wav",
+      "sha256": "7e0f4233864a058fc5c1ebbe9b3afa1fa80a8d9d131b5c411bd321301fc17ea5",
+      "audioScript": "This is Sam's kite. It is his.",
+      "audioScriptSha256": "c72ef209847caf78e355cfa64c1eefd404326262033a2116d07d5c45eef53077",
+      "spokenText": "This is Sam's kite. It is his.",
+      "spokenTextSha256": "c72ef209847caf78e355cfa64c1eefd404326262033a2116d07d5c45eef53077",
+      "durationMs": 3501,
+      "wpm": 119.98,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "This is Sam's kite. It is his.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "ef4abfbdeec3534c77f82f0d71740e454cb4345d92618bc18998981e46395b07",
+          "file": "build/learning-primary456-20261011/primary5/candidate-b03-0.pcm.wav",
+          "sourceSha256": "98154b2b67b4f937b37b041f81dfb9e808e8995c415b5a4719937404463543cb",
+          "take": 0,
+          "rate": 0.7799999713897705,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "This is Sam's kite. It is his.",
+              "exact": true,
+              "tokens": [
+                "this",
+                "is",
+                "sam's",
+                "kite",
+                "it",
+                "is",
+                "his"
+              ]
+            },
+            "small.en": {
+              "text": "This is Sam's kite. It is his.",
+              "exact": true,
+              "tokens": [
+                "this",
+                "is",
+                "sam's",
+                "kite",
+                "it",
+                "is",
+                "his"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "This is Sam's kite. It is his.",
+          "exact": true,
+          "tokens": [
+            "this",
+            "is",
+            "sam's",
+            "kite",
+            "it",
+            "is",
+            "his"
+          ]
+        },
+        "small.en": {
+          "text": "This is Sam's kite. It is his.",
+          "exact": true,
+          "tokens": [
+            "this",
+            "is",
+            "sam's",
+            "kite",
+            "it",
+            "is",
+            "his"
+          ]
+        }
+      },
+      "peak": 25767,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.3700617768110623,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary5",
+      "questionId": "p5.astra.b09",
+      "file": "build/learning-primary456-20261011/primary5/b09.wav",
+      "sha256": "d2b4ea3aabe8b5ebad2b90d1652c927f4145e05987fe32675e8ea2cbf8fd77e2",
+      "audioScript": "My birthday is on March first.",
+      "audioScriptSha256": "89366e95287eae20f3dbce44ba95077ec72b633c99da7f969e5cfafb59bd4f60",
+      "spokenText": "My birthday is on March first.",
+      "spokenTextSha256": "89366e95287eae20f3dbce44ba95077ec72b633c99da7f969e5cfafb59bd4f60",
+      "durationMs": 3290,
+      "wpm": 109.41,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "My birthday is on March first.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "9dfac17bbaf58e9879a5727b34fe65befe99bf7a579f0d1db407080486cf26d7",
+          "file": "build/learning-primary456-20261011/primary5/candidate-b09-0.pcm.wav",
+          "sourceSha256": "fb30011bea4793ffe4d6748b00a3b375738537034488ddd4a9241da0e8fd3c43",
+          "take": 0,
+          "rate": 0.7799999713897705,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "My birthday is on March 1st.",
+              "exact": true,
+              "tokens": [
+                "my",
+                "birthday",
+                "is",
+                "on",
+                "march",
+                "first"
+              ]
+            },
+            "small.en": {
+              "text": "My birthday is on March 1st.",
+              "exact": true,
+              "tokens": [
+                "my",
+                "birthday",
+                "is",
+                "on",
+                "march",
+                "first"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "My birthday is on March 1st.",
+          "exact": true,
+          "tokens": [
+            "my",
+            "birthday",
+            "is",
+            "on",
+            "march",
+            "first"
+          ]
+        },
+        "small.en": {
+          "text": "My birthday is on March 1st.",
+          "exact": true,
+          "tokens": [
+            "my",
+            "birthday",
+            "is",
+            "on",
+            "march",
+            "first"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.5568181818181817,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary5",
+      "questionId": "p5.astra.b16",
+      "file": "build/learning-primary456-20261011/primary5/b16.wav",
+      "sha256": "0da2bd171c64765392ca7ef44f87ae0ff55a95b6b1cb056237606ddd3b8872e5",
+      "audioScript": "I usually go for a walk on Sundays. I am reading a book at home now.",
+      "audioScriptSha256": "0c6ce069ab75fba16b6b0f13e961ff6b0140a9ac4b0576f4134a435dac4bf234",
+      "spokenText": "I usually go for a walk on Sundays. I am reading a book at home now.",
+      "spokenTextSha256": "0c6ce069ab75fba16b6b0f13e961ff6b0140a9ac4b0576f4134a435dac4bf234",
+      "durationMs": 7872,
+      "wpm": 121.96,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "I usually go for a walk on Sundays. I am reading a book at home now.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "27744b2fc65ee38dd982837900e187defacc672c706194772a9d4212391f51e6",
+          "file": "build/learning-primary456-20261011/primary5/candidate-b16-3.pcm.wav",
+          "sourceSha256": "1f4cd6f095bcc491366d39b0d94f79b6ae2ffb8bc33daddcdc075fa8b4957c39",
+          "take": 3,
+          "rate": 0.6599999666213989,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "I usually go for a walk on Sundays. I am reading a book at home now.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "usually",
+                "go",
+                "for",
+                "a",
+                "walk",
+                "on",
+                "sundays",
+                "i",
+                "am",
+                "reading",
+                "a",
+                "book",
+                "at",
+                "home",
+                "now"
+              ]
+            },
+            "small.en": {
+              "text": "I usually go for a walk on Sundays. I am reading a book at home now.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "usually",
+                "go",
+                "for",
+                "a",
+                "walk",
+                "on",
+                "sundays",
+                "i",
+                "am",
+                "reading",
+                "a",
+                "book",
+                "at",
+                "home",
+                "now"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "I usually go for a walk on Sundays. I am reading a book at home now.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "usually",
+            "go",
+            "for",
+            "a",
+            "walk",
+            "on",
+            "sundays",
+            "i",
+            "am",
+            "reading",
+            "a",
+            "book",
+            "at",
+            "home",
+            "now"
+          ]
+        },
+        "small.en": {
+          "text": "I usually go for a walk on Sundays. I am reading a book at home now.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "usually",
+            "go",
+            "for",
+            "a",
+            "walk",
+            "on",
+            "sundays",
+            "i",
+            "am",
+            "reading",
+            "a",
+            "book",
+            "at",
+            "home",
+            "now"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 1.6159923389992819,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary6",
+      "questionId": "p6.astra.a03",
+      "file": "build/learning-primary456-20261011/primary6/a03.wav",
+      "sha256": "6761de2ba380ccd8a097f7f71588881d1f8bf45c98bc64ef93823b18162f098f",
+      "audioScript": "Yesterday I bought some bread. Then I went to the park.",
+      "audioScriptSha256": "b427708f5dd9e2cc0ed61d7d98a01106291db9e9ecf2865b8393f009ccdb02ea",
+      "spokenText": "Yesterday I bought some bread. Then I went to the park.",
+      "spokenTextSha256": "b427708f5dd9e2cc0ed61d7d98a01106291db9e9ecf2865b8393f009ccdb02ea",
+      "durationMs": 5366,
+      "wpm": 122.99,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "Yesterday I bought some bread. Then I went to the park.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "47d19b4ecad0afaf29af5a9bfb9946652470fbcfa5bf64d1d65395d035bd07c0",
+          "file": "build/learning-primary456-20261011/primary6/candidate-a03-1.pcm.wav",
+          "sourceSha256": "0d8b7fff3ed2f5734256817e910c522a9c57b7e2de40d9bce9954883cb6f1355",
+          "take": 1,
+          "rate": 0.800000011920929,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "Yesterday I bought some bread. Then I went to the park.",
+              "exact": true,
+              "tokens": [
+                "yesterday",
+                "i",
+                "bought",
+                "some",
+                "bread",
+                "then",
+                "i",
+                "went",
+                "to",
+                "the",
+                "park"
+              ]
+            },
+            "small.en": {
+              "text": "Yesterday I bought some bread, then I went to the park.",
+              "exact": true,
+              "tokens": [
+                "yesterday",
+                "i",
+                "bought",
+                "some",
+                "bread",
+                "then",
+                "i",
+                "went",
+                "to",
+                "the",
+                "park"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Yesterday I bought some bread. Then I went to the park.",
+          "exact": true,
+          "tokens": [
+            "yesterday",
+            "i",
+            "bought",
+            "some",
+            "bread",
+            "then",
+            "i",
+            "went",
+            "to",
+            "the",
+            "park"
+          ]
+        },
+        "small.en": {
+          "text": "Yesterday I bought some bread, then I went to the park.",
+          "exact": true,
+          "tokens": [
+            "yesterday",
+            "i",
+            "bought",
+            "some",
+            "bread",
+            "then",
+            "i",
+            "went",
+            "to",
+            "the",
+            "park"
+          ]
+        }
+      },
+      "peak": 24708,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.5475061716904115,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary6",
+      "questionId": "p6.astra.a08",
+      "file": "build/learning-primary456-20261011/primary6/a08.wav",
+      "sha256": "0c45328ec7da4dcc7b2aeef08bef0d9d92ef69b1b6449bcb275a98c31ccdf61c",
+      "audioScript": "The brown box is heavier than the white box.",
+      "audioScriptSha256": "c1f689c0c105ecb0757776f3b8627746f69f31b267bd8ad7d22160051f73c289",
+      "spokenText": "The brown box is heavier than the white box.",
+      "spokenTextSha256": "c1f689c0c105ecb0757776f3b8627746f69f31b267bd8ad7d22160051f73c289",
+      "durationMs": 4163,
+      "wpm": 129.73,
+      "voice": "M5",
+      "candidateSegments": [
+        {
+          "text": "The brown box is heavier than the white box.",
+          "speaker": "a",
+          "voice": "M5",
+          "sha256": "e7b87386bfc7bce878d6b7df911a7641d7d3fbcc735dfb0e28a64df7ecb842aa",
+          "file": "build/learning-primary456-20261011/primary6/candidate-a08-0.pcm.wav",
+          "sourceSha256": "e1f0a8a45fea818cf517afb3f59826f25f44a9db2e178ee131c134ed0cd0e3e4",
+          "take": 0,
+          "rate": 0.800000011920929,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "The brown box is heavier than the white box.",
+              "exact": true,
+              "tokens": [
+                "the",
+                "brown",
+                "box",
+                "is",
+                "heavier",
+                "than",
+                "the",
+                "white",
+                "box"
+              ]
+            },
+            "small.en": {
+              "text": "The brown box is heavier than the white box.",
+              "exact": true,
+              "tokens": [
+                "the",
+                "brown",
+                "box",
+                "is",
+                "heavier",
+                "than",
+                "the",
+                "white",
+                "box"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "The brown box is heavier than the white box.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "brown",
+            "box",
+            "is",
+            "heavier",
+            "than",
+            "the",
+            "white",
+            "box"
+          ]
+        },
+        "small.en": {
+          "text": "The brown box is heavier than the white box.",
+          "exact": true,
+          "tokens": [
+            "the",
+            "brown",
+            "box",
+            "is",
+            "heavier",
+            "than",
+            "the",
+            "white",
+            "box"
+          ]
+        }
+      },
+      "peak": 15568,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 1.7533993961604721,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary6",
+      "questionId": "p6.astra.a14",
+      "file": "build/learning-primary456-20261011/primary6/a14.wav",
+      "sha256": "31c36136a3c1130561923d67082abdccd4e4a3cd46003d0c287da5b70b9988a6",
+      "audioScript": "Ten years ago, there were two tables in this room. There was no computer.",
+      "audioScriptSha256": "00bfe4a6df7f5e0d29dd0b80d2da8fbbfaa8cb1091bc6ad2e0fe4a985e0d65f6",
+      "spokenText": "Ten years ago, there were two tables in this room. There was no computer.",
+      "spokenTextSha256": "00bfe4a6df7f5e0d29dd0b80d2da8fbbfaa8cb1091bc6ad2e0fe4a985e0d65f6",
+      "durationMs": 7009,
+      "wpm": 119.84,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "Ten years ago, there were two tables in this room. There was no computer.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "38a2aa866b94ad1d6db823a93886ad714c7543907460a054f3bad881b64f47be",
+          "file": "build/learning-primary456-20261011/primary6/candidate-a14-0.pcm.wav",
+          "sourceSha256": "57f8bf5d2d06c33f76e578c11c798b280924e138d13534af9a93eaa0817e0ad8",
+          "take": 0,
+          "rate": 0.800000011920929,
+          "steps": 12,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "10 years ago, there were two tables in this room. There was no computer.",
+              "exact": true,
+              "tokens": [
+                "ten",
+                "years",
+                "ago",
+                "there",
+                "were",
+                "two",
+                "tables",
+                "in",
+                "this",
+                "room",
+                "there",
+                "was",
+                "no",
+                "computer"
+              ]
+            },
+            "small.en": {
+              "text": "Ten years ago, there were two tables in this room. There was no computer.",
+              "exact": true,
+              "tokens": [
+                "ten",
+                "years",
+                "ago",
+                "there",
+                "were",
+                "two",
+                "tables",
+                "in",
+                "this",
+                "room",
+                "there",
+                "was",
+                "no",
+                "computer"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Ten years ago, there were two tables in this room. There was no computer.",
+          "exact": true,
+          "tokens": [
+            "ten",
+            "years",
+            "ago",
+            "there",
+            "were",
+            "two",
+            "tables",
+            "in",
+            "this",
+            "room",
+            "there",
+            "was",
+            "no",
+            "computer"
+          ]
+        },
+        "small.en": {
+          "text": "Ten years ago, there were two tables in this room. There was no computer.",
+          "exact": true,
+          "tokens": [
+            "ten",
+            "years",
+            "ago",
+            "there",
+            "were",
+            "two",
+            "tables",
+            "in",
+            "this",
+            "room",
+            "there",
+            "was",
+            "no",
+            "computer"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 1.87565126780132,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary6",
+      "questionId": "p6.astra.b03",
+      "file": "build/learning-primary456-20261011/primary6/b03.wav",
+      "sha256": "32ccb3c77046471ecec31b18543c96b2729c2ff6f4f5c18c84305ebc9acc24d0",
+      "audioScript": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve.",
+      "audioScriptSha256": "a10be512bc53ec21c8d12032b5e590a6ed50d616992304ef5d153f8548f6ce53",
+      "spokenText": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve.",
+      "spokenTextSha256": "a10be512bc53ec21c8d12032b5e590a6ed50d616992304ef5d153f8548f6ce53",
+      "durationMs": 7828,
+      "wpm": 122.64,
+      "voice": "M5",
+      "candidateSegments": [
+        {
+          "text": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve.",
+          "speaker": "a",
+          "voice": "M5",
+          "sha256": "f7dd34ab01feeb7e6c426cf412500dacc2b0439b54bd6d520c708aeeebb58719",
+          "file": "build/learning-primary456-20261011/primary6/candidate-b03-2.pcm.wav",
+          "sourceSha256": "d6ad6c8ef26e2147fa81d95148d6549fdbfaa105af0504f0e3b5ba5dc3fc8b66",
+          "take": 2,
+          "rate": 0.6800000071525574,
+          "steps": 8,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "Tomorrow, we are going to draw at 9. We are going to have lunch at 12.",
+              "exact": true,
+              "tokens": [
+                "tomorrow",
+                "we",
+                "are",
+                "going",
+                "to",
+                "draw",
+                "at",
+                "nine",
+                "we",
+                "are",
+                "going",
+                "to",
+                "have",
+                "lunch",
+                "at",
+                "twelve"
+              ]
+            },
+            "small.en": {
+              "text": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve.",
+              "exact": true,
+              "tokens": [
+                "tomorrow",
+                "we",
+                "are",
+                "going",
+                "to",
+                "draw",
+                "at",
+                "nine",
+                "we",
+                "are",
+                "going",
+                "to",
+                "have",
+                "lunch",
+                "at",
+                "twelve"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Tomorrow we are going to draw at 9. We are going to have lunch at 12.",
+          "exact": true,
+          "tokens": [
+            "tomorrow",
+            "we",
+            "are",
+            "going",
+            "to",
+            "draw",
+            "at",
+            "nine",
+            "we",
+            "are",
+            "going",
+            "to",
+            "have",
+            "lunch",
+            "at",
+            "twelve"
+          ]
+        },
+        "small.en": {
+          "text": "Tomorrow, we are going to draw at nine. We are going to have lunch at twelve.",
+          "exact": true,
+          "tokens": [
+            "tomorrow",
+            "we",
+            "are",
+            "going",
+            "to",
+            "draw",
+            "at",
+            "nine",
+            "we",
+            "are",
+            "going",
+            "to",
+            "have",
+            "lunch",
+            "at",
+            "twelve"
+          ]
+        }
+      },
+      "peak": 18300,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 1.650407195440686,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary6",
+      "questionId": "p6.astra.b08",
+      "file": "build/learning-primary456-20261011/primary6/b08.wav",
+      "sha256": "12388b74daa6cc5b31f65cd3b01664eec237e1283862936ddd763904fd9cb57f",
+      "audioScript": "Last year I couldn't ride a bike. Now I can ride to the park.",
+      "audioScriptSha256": "9e6cc6a3638c044187cfc16c606e2032445b8c17410780acbecc9fa7ce61d5f4",
+      "spokenText": "Last year I couldn't ride a bike. Now I can ride to the park.",
+      "spokenTextSha256": "9e6cc6a3638c044187cfc16c606e2032445b8c17410780acbecc9fa7ce61d5f4",
+      "durationMs": 6836,
+      "wpm": 122.88,
+      "voice": "F3",
+      "candidateSegments": [
+        {
+          "text": "Last year I couldn't ride a bike. Now I can ride to the park.",
+          "speaker": "a",
+          "voice": "F3",
+          "sha256": "859122b1ad1661b4259545ddaedc6cb5d2aecb51240e3709ef31eeb6fda11a1c",
+          "file": "build/learning-primary456-20261011/primary6/candidate-b08-2.pcm.wav",
+          "sourceSha256": "cb29940da3849a8b32cdffbe1b6a52c69edab82827f931e6f3ef4d9796bd56fa",
+          "take": 2,
+          "rate": 0.6800000071525574,
+          "steps": 8,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "Last year, I couldn't ride a bike. Now I can ride to the park.",
+              "exact": true,
+              "tokens": [
+                "last",
+                "year",
+                "i",
+                "couldn't",
+                "ride",
+                "a",
+                "bike",
+                "now",
+                "i",
+                "can",
+                "ride",
+                "to",
+                "the",
+                "park"
+              ]
+            },
+            "small.en": {
+              "text": "Last year, I couldn't ride a bike. Now I can ride to the park.",
+              "exact": true,
+              "tokens": [
+                "last",
+                "year",
+                "i",
+                "couldn't",
+                "ride",
+                "a",
+                "bike",
+                "now",
+                "i",
+                "can",
+                "ride",
+                "to",
+                "the",
+                "park"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "Last year, I couldn't ride a bike. Now I can ride to the park.",
+          "exact": true,
+          "tokens": [
+            "last",
+            "year",
+            "i",
+            "couldn't",
+            "ride",
+            "a",
+            "bike",
+            "now",
+            "i",
+            "can",
+            "ride",
+            "to",
+            "the",
+            "park"
+          ]
+        },
+        "small.en": {
+          "text": "Last year, I couldn't ride a bike. Now I can ride to the park.",
+          "exact": true,
+          "tokens": [
+            "last",
+            "year",
+            "i",
+            "couldn't",
+            "ride",
+            "a",
+            "bike",
+            "now",
+            "i",
+            "can",
+            "ride",
+            "to",
+            "the",
+            "park"
+          ]
+        }
+      },
+      "peak": 27000,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 2.279250379875063,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    },
+    {
+      "level": "primary6",
+      "questionId": "p6.astra.b13",
+      "file": "build/learning-primary456-20261011/primary6/b13.wav",
+      "sha256": "86f831ab43a6b64508046d40864485ef4944b7abab36261e41011fcf33e2a506",
+      "audioScript": "I cleaned my shoes last night. I didn't wash my bag.",
+      "audioScriptSha256": "7c41fb87ea3b07d834b5af1806a7a16aa7f4eddedcd654e08a13cdde210e3abc",
+      "spokenText": "I cleaned my shoes last night. I didn't wash my bag.",
+      "spokenTextSha256": "7c41fb87ea3b07d834b5af1806a7a16aa7f4eddedcd654e08a13cdde210e3abc",
+      "durationMs": 5604,
+      "wpm": 117.78,
+      "voice": "M5",
+      "candidateSegments": [
+        {
+          "text": "I cleaned my shoes last night. I didn't wash my bag.",
+          "speaker": "a",
+          "voice": "M5",
+          "sha256": "e1b688afbea6f83dc69087920b2fa8d2c3f6c62f566631ad7ed67971eb6b5ea8",
+          "file": "build/learning-primary456-20261011/primary6/candidate-b13-2.pcm.wav",
+          "sourceSha256": "0fc36ddb84b7d37a2b7fcfa1ad8518601cf23a3af445abd298703204eda5fc4a",
+          "take": 2,
+          "rate": 0.6800000071525574,
+          "steps": 8,
+          "candidateRecognition": {
+            "base.en": {
+              "text": "I cleaned my shoes last night. I didn't wash my bag",
+              "exact": true,
+              "tokens": [
+                "i",
+                "cleaned",
+                "my",
+                "shoes",
+                "last",
+                "night",
+                "i",
+                "did",
+                "not",
+                "wash",
+                "my",
+                "bag"
+              ]
+            },
+            "small.en": {
+              "text": "I cleaned my shoes last night. I didn't wash my bag.",
+              "exact": true,
+              "tokens": [
+                "i",
+                "cleaned",
+                "my",
+                "shoes",
+                "last",
+                "night",
+                "i",
+                "did",
+                "not",
+                "wash",
+                "my",
+                "bag"
+              ]
+            }
+          }
+        }
+      ],
+      "masterRecognition": {
+        "base.en": {
+          "text": "I cleaned my shoes last night. I didn't wash my bag",
+          "exact": true,
+          "tokens": [
+            "i",
+            "cleaned",
+            "my",
+            "shoes",
+            "last",
+            "night",
+            "i",
+            "did",
+            "not",
+            "wash",
+            "my",
+            "bag"
+          ]
+        },
+        "small.en": {
+          "text": "I cleaned my shoes last night. I didn't wash my bag.",
+          "exact": true,
+          "tokens": [
+            "i",
+            "cleaned",
+            "my",
+            "shoes",
+            "last",
+            "night",
+            "i",
+            "did",
+            "not",
+            "wash",
+            "my",
+            "bag"
+          ]
+        }
+      },
+      "peak": 19056,
+      "sampleRate": 24000,
+      "channels": 1,
+      "sampleWidth": 2,
+      "gain": 1.742841207684004,
+      "gaps": [],
+      "editPolicy": "逐采样核对完整源PCM、话轮间300毫秒静音及整段增益；无删词或后处理变速。"
+    }
+  ],
+  "failures": [
+    {
+      "level": "primary4",
+      "questionId": "p4.astra.a09",
+      "reason": "缺少完整selection或manifest，未伪造缺段"
+    }
+  ],
+  "inputHashes": {
+    "Backend/config/learning/authoring/primary4-formal.astra.json": "7260efe277d23ca877b864e1c7663b98bfef08688f64e027e3dcb334f68d58a8",
+    "Backend/config/learning/authoring/primary4.astra.json": "32c0377b92af998694eafd13feafafd62c99a32d50679c6a19a9db6d6c93d8af",
+    "Backend/config/learning/authoring/primary4-delivery.astra.json": "979ed74af564b155c77c85604c7c08618f860b71cd138dfbf7d8e54a7246a2ee",
+    "build/learning-primary456-20261011/primary4/production-plan.json": "8b69a7b9c240102d649c62dfab65679ee5129e9c8ec9e23613773d324d249680",
+    "build/learning-primary456-20261011/primary4/selection.json": "aba40c3b721716f796ec62002a0d4cdab83680678bb53c3a1e68313daa759b11",
+    "build/learning-primary456-20261011/primary4/manifest.json": "88eeaf6a670b20085287cd3bac6c3b926b04f57647bc7ebade6c5226098f5c3f",
+    "build/learning-primary456-20261011/primary4/a03.wav": "a3f12b9492218e4cbe0caed193cf7451af26cee97cd0b370763bef3762603095",
+    "build/learning-primary456-20261011/primary4/candidate-a03-2.wav": "eb067d041d99b78eea07d3466ad8bc966c49bbf9ef8318159a90d9d9d59d3ae6",
+    "build/learning-primary456-20261011/primary4/candidate-a03-2.json": "6642d274af8a2929d8b9bb05587740ee928dc427569a0d1f79cfd8721dedd1e4",
+    "build/learning-primary456-20261011/primary4/candidate-a03-2.pcm.wav": "be7282d0e66751ec12bd923837a75ff51fb995f87f96a41b7e678f51796276a8",
+    "build/learning-primary456-20261011/primary4/a13.wav": "2a79779761949810c0c84e8ca08d175845827f963c2a06c2f4dd3ad98fc3484d",
+    "build/learning-primary456-20261011/primary4/candidate-a13-1.wav": "7b01ebf617cb75b37f5f02b10bf08c29674223685f9b6afa8e53cad5274f374b",
+    "build/learning-primary456-20261011/primary4/candidate-a13-1.json": "fd7d5790e5249032872f60659c4eea97737739c06517e7a7d2c8e1e37dcd8c4f",
+    "build/learning-primary456-20261011/primary4/candidate-a13-1.pcm.wav": "f503c1b6237d65ed8d11c736198ab8896a462f60e7257f1127a3c7b747c31cfa",
+    "build/learning-primary456-20261011/primary4/a18.wav": "fcd31a9e173b212784e18b870dd170898ed904e14fb94963ad7d7b3313c01f65",
+    "build/learning-primary456-20261011/primary4/candidate-a18-2.wav": "44ba74e6a342ef95b1233d8a26b623f2e3d891cbdcebbfebbe37f61229a34dd7",
+    "build/learning-primary456-20261011/primary4/candidate-a18-2.json": "b3a60d75b211713312c98553ca3058f3c147d1e0874e1d475acde60b8042fb8c",
+    "build/learning-primary456-20261011/primary4/candidate-a18-2.pcm.wav": "3f74e1c9c166699b677df952271e01665d4b4b9e993fbc83fcfe1ec33f5d808d",
+    "build/learning-primary456-20261011/primary4/b03.wav": "2a3d7528b4ab4f3907d1a057d8a33ef13510151c6cbc9b2193bcd93f069a6bbb",
+    "build/learning-primary456-20261011/primary4/candidate-b03-question-0.wav": "3ff787d69391fc487c0c2b804e64652aab30cab5f0da6e3d1dac596fd2b99e7f",
+    "build/learning-primary456-20261011/primary4/candidate-b03-question-0.json": "cfd3e12886430230ccb8b02f364582491a3e73ff6dc0ef67ac32773c972fc86c",
+    "build/learning-primary456-20261011/primary4/candidate-b03-question-0.pcm.wav": "e592961480f45df39a2afed0fd9577a264d25a87e8ff536da7de46854e7aef19",
+    "build/learning-primary456-20261011/primary4/candidate-b03-answer-0.wav": "6f7d4a3c5c741f91f908ce7444f53e7ee96a49eaee4e2535f5308ee91625ebb8",
+    "build/learning-primary456-20261011/primary4/candidate-b03-answer-0.json": "3f5d80b15c1cdc30bd3e1beaccb3e18f377b91fdfd50d775096bb639b80c411c",
+    "build/learning-primary456-20261011/primary4/candidate-b03-answer-0.pcm.wav": "26e5cb7106ff5966daebf96f3d8843aff63fb946828218b0626aeea3adda2009",
+    "build/learning-primary456-20261011/primary4/b08.wav": "0c62559f1a42313868f76ba7130916ab55a8cea887030492ff97aea69eaae880",
+    "build/learning-primary456-20261011/primary4/candidate-b08-0.wav": "61ffef5439befbae1c43468ed8f282ae9102704a3c999ddfffe5d38894ae37df",
+    "build/learning-primary456-20261011/primary4/candidate-b08-0.json": "da86d7891216fdeae4105d135f8ad9ccbedefe5ad921776d9cbb548917c42ad5",
+    "build/learning-primary456-20261011/primary4/candidate-b08-0.pcm.wav": "5c829e73765a9633ed1df664ff08839ad8c8cafb938857a4cf5617769b2fd241",
+    "build/learning-primary456-20261011/primary4/b13.wav": "6d7877460c52269a478a5d69b9ed9d8ac2ea3353add40771ecac9367e2e882cc",
+    "build/learning-primary456-20261011/primary4/candidate-b13-0.wav": "d547d194e9da32e885c82199d296ea43db0bddaf8bd064c83433fe9386074ab9",
+    "build/learning-primary456-20261011/primary4/candidate-b13-0.json": "29e7e78d5a21f9fc87aedbf68292b83b8385b02a1fdfe560e3a23620f84e7944",
+    "build/learning-primary456-20261011/primary4/candidate-b13-0.pcm.wav": "f9cf58d41bc6bc76ce16230e27cdd65b8c1e8a8a5531da146a75d52f01e63628",
+    "Backend/config/learning/authoring/primary5-formal.astra.json": "aade3ce09a0a94c0ceac2bf2cb29e8ca15389b670b0226ad3b75ff42bf4b70c2",
+    "Backend/config/learning/authoring/primary5.astra.json": "6aa2223b8740be13e07359fca09bd60155f375aceb57202551c9d259a6b339a0",
+    "Backend/config/learning/authoring/primary5-delivery.astra.json": "cec67d9463cc5a0864848ccbd24940b5539e818726fbbb5a601770f12f17060d",
+    "build/learning-primary456-20261011/primary5/production-plan.json": "7ccbd406858b7192aaa2bd3cbcc31a026c222d8fe49a3c7d50e8266f235c6f73",
+    "build/learning-primary456-20261011/primary5/selection.json": "e6d84756f60391e6c1ad8101ee2bfb436bf91c950b36d2cc2964299cbb28b59a",
+    "build/learning-primary456-20261011/primary5/manifest.json": "1499435cce3914f854c4c160a8fe6d606331ff409ee8b8677ffe826798c3875e",
+    "build/learning-primary456-20261011/primary5/a02.wav": "0c32166b97fc11eb138933cca96db4506255da3ec9483a1b3a45e1814a56c2bd",
+    "build/learning-primary456-20261011/primary5/candidate-a02-0.wav": "fa849bf7206552640945ae3b45936b559fb6e128bcb3d9a0d9127623de590ff8",
+    "build/learning-primary456-20261011/primary5/candidate-a02-0.json": "1843bd16a5364490b81417e8c5a3e94020947560162f9c3e900d1573ce032244",
+    "build/learning-primary456-20261011/primary5/candidate-a02-0.pcm.wav": "328c994eeea3e3a6cbbfb2191d1e0ab944b76898c1553e36332c15395b304fb7",
+    "build/learning-primary456-20261011/primary5/a08.wav": "7c8570ea4adec2be2c23eb96137cd89fc43bebc11079c269e5a23ba281dc5986",
+    "build/learning-primary456-20261011/primary5/candidate-a08-0.wav": "823f4376117373f5087b344187a48b1ef23398d956a5435c695a5d95c3a7a7cc",
+    "build/learning-primary456-20261011/primary5/candidate-a08-0.json": "41815de22f46a68df0fe6e988609015ec4fccdaa77850c36cf01a20c3b243507",
+    "build/learning-primary456-20261011/primary5/candidate-a08-0.pcm.wav": "8d7498354300653f98d8bef7c65e15fca3a891654b9614a667788b7770e419bd",
+    "build/learning-primary456-20261011/primary5/a14.wav": "5d16bb1707ad323068e86fc13c031e34c8d22e204d36e2438be7d5dd29f4e095",
+    "build/learning-primary456-20261011/primary5/candidate-a14-0.wav": "8abe07f805465d11296832e08f655ed5969e2ae780b26db7653daf6c4077e0fc",
+    "build/learning-primary456-20261011/primary5/candidate-a14-0.json": "97f24d7f98a71a5a696342f8dd7b1bcf63dac8cd8e41d708505394575f1e031b",
+    "build/learning-primary456-20261011/primary5/candidate-a14-0.pcm.wav": "757ab04c408fabd4cad1e0fea9bd5cafea9efc08f4166203d1bc299d693b2fb2",
+    "build/learning-primary456-20261011/primary5/b03.wav": "7e0f4233864a058fc5c1ebbe9b3afa1fa80a8d9d131b5c411bd321301fc17ea5",
+    "build/learning-primary456-20261011/primary5/candidate-b03-0.wav": "98154b2b67b4f937b37b041f81dfb9e808e8995c415b5a4719937404463543cb",
+    "build/learning-primary456-20261011/primary5/candidate-b03-0.json": "1809eb66c77d455d763bbe84bcd3eff1bb5f91eab20a4e0b89759952d67e9e30",
+    "build/learning-primary456-20261011/primary5/candidate-b03-0.pcm.wav": "ef4abfbdeec3534c77f82f0d71740e454cb4345d92618bc18998981e46395b07",
+    "build/learning-primary456-20261011/primary5/b09.wav": "d2b4ea3aabe8b5ebad2b90d1652c927f4145e05987fe32675e8ea2cbf8fd77e2",
+    "build/learning-primary456-20261011/primary5/candidate-b09-0.wav": "fb30011bea4793ffe4d6748b00a3b375738537034488ddd4a9241da0e8fd3c43",
+    "build/learning-primary456-20261011/primary5/candidate-b09-0.json": "60d9f677d980b0da39728da97c58d264373c77725684329d98458627e91df17c",
+    "build/learning-primary456-20261011/primary5/candidate-b09-0.pcm.wav": "9dfac17bbaf58e9879a5727b34fe65befe99bf7a579f0d1db407080486cf26d7",
+    "build/learning-primary456-20261011/primary5/b16.wav": "0da2bd171c64765392ca7ef44f87ae0ff55a95b6b1cb056237606ddd3b8872e5",
+    "build/learning-primary456-20261011/primary5/candidate-b16-3.wav": "1f4cd6f095bcc491366d39b0d94f79b6ae2ffb8bc33daddcdc075fa8b4957c39",
+    "build/learning-primary456-20261011/primary5/candidate-b16-3.json": "d079d574002c1bdb04b59a239359ccc966c6c03581d268362f867c8b6301850d",
+    "build/learning-primary456-20261011/primary5/candidate-b16-3.pcm.wav": "27744b2fc65ee38dd982837900e187defacc672c706194772a9d4212391f51e6",
+    "Backend/config/learning/authoring/primary6-formal.astra.json": "01aa66d513c1e3f7bc78b30c9f87ce40f4820ffd176c56b2eb758c08b6d5e3c0",
+    "Backend/config/learning/authoring/primary6.astra.json": "e2e55721a2583ea9e382e17db7d92b51833e896f5b980b2436dff9d4ad02e10f",
+    "Backend/config/learning/authoring/primary6-delivery.astra.json": "16a658c3eae64e0fd3e096ae6afa516d11752b516e214b09ba9b988a57f83d46",
+    "build/learning-primary456-20261011/primary6/production-plan.json": "054c7841ae0e68edce7446b635d25dd47898d4bc6fe63e652b40e54f770e5e1a",
+    "build/learning-primary456-20261011/primary6/selection.json": "1acb11f1da823b3b710d877c65d2fc2ab7c6433f0ed0629767958839fef4788a",
+    "build/learning-primary456-20261011/primary6/manifest.json": "92bee87107e63d7cde3da690b1e645763b1ed40bf10052e182a3a6d0dfc52637",
+    "build/learning-primary456-20261011/primary6/a03.wav": "6761de2ba380ccd8a097f7f71588881d1f8bf45c98bc64ef93823b18162f098f",
+    "build/learning-primary456-20261011/primary6/candidate-a03-1.wav": "0d8b7fff3ed2f5734256817e910c522a9c57b7e2de40d9bce9954883cb6f1355",
+    "build/learning-primary456-20261011/primary6/candidate-a03-1.json": "d86096d486ff95e673da4397ff702b710ac775948b7a6b0734b52042de2d7342",
+    "build/learning-primary456-20261011/primary6/candidate-a03-1.pcm.wav": "47d19b4ecad0afaf29af5a9bfb9946652470fbcfa5bf64d1d65395d035bd07c0",
+    "build/learning-primary456-20261011/primary6/a08.wav": "0c45328ec7da4dcc7b2aeef08bef0d9d92ef69b1b6449bcb275a98c31ccdf61c",
+    "build/learning-primary456-20261011/primary6/candidate-a08-0.wav": "e1f0a8a45fea818cf517afb3f59826f25f44a9db2e178ee131c134ed0cd0e3e4",
+    "build/learning-primary456-20261011/primary6/candidate-a08-0.json": "875d4dda74c9887651d28f1bd1136e9798a9c3a480be2f1ee02b36192e47e241",
+    "build/learning-primary456-20261011/primary6/candidate-a08-0.pcm.wav": "e7b87386bfc7bce878d6b7df911a7641d7d3fbcc735dfb0e28a64df7ecb842aa",
+    "build/learning-primary456-20261011/primary6/a14.wav": "31c36136a3c1130561923d67082abdccd4e4a3cd46003d0c287da5b70b9988a6",
+    "build/learning-primary456-20261011/primary6/candidate-a14-0.wav": "57f8bf5d2d06c33f76e578c11c798b280924e138d13534af9a93eaa0817e0ad8",
+    "build/learning-primary456-20261011/primary6/candidate-a14-0.json": "966f536f52c50191d21364dfbca090de6e731f1609aea5eaf31d06ab72b85abf",
+    "build/learning-primary456-20261011/primary6/candidate-a14-0.pcm.wav": "38a2aa866b94ad1d6db823a93886ad714c7543907460a054f3bad881b64f47be",
+    "build/learning-primary456-20261011/primary6/b03.wav": "32ccb3c77046471ecec31b18543c96b2729c2ff6f4f5c18c84305ebc9acc24d0",
+    "build/learning-primary456-20261011/primary6/candidate-b03-2.wav": "d6ad6c8ef26e2147fa81d95148d6549fdbfaa105af0504f0e3b5ba5dc3fc8b66",
+    "build/learning-primary456-20261011/primary6/candidate-b03-2.json": "085a8786b0ab60be65601091eb3b0537d442e2d92740dbf5e1ca62c2fdce6f45",
+    "build/learning-primary456-20261011/primary6/candidate-b03-2.pcm.wav": "f7dd34ab01feeb7e6c426cf412500dacc2b0439b54bd6d520c708aeeebb58719",
+    "build/learning-primary456-20261011/primary6/b08.wav": "12388b74daa6cc5b31f65cd3b01664eec237e1283862936ddd763904fd9cb57f",
+    "build/learning-primary456-20261011/primary6/candidate-b08-2.wav": "cb29940da3849a8b32cdffbe1b6a52c69edab82827f931e6f3ef4d9796bd56fa",
+    "build/learning-primary456-20261011/primary6/candidate-b08-2.json": "8647faeb60c484f24385b38a60e43e94248eb566ae027be323f57de5c0211d0c",
+    "build/learning-primary456-20261011/primary6/candidate-b08-2.pcm.wav": "859122b1ad1661b4259545ddaedc6cb5d2aecb51240e3709ef31eeb6fda11a1c",
+    "build/learning-primary456-20261011/primary6/b13.wav": "86f831ab43a6b64508046d40864485ef4944b7abab36261e41011fcf33e2a506",
+    "build/learning-primary456-20261011/primary6/candidate-b13-2.wav": "0fc36ddb84b7d37a2b7fcfa1ad8518601cf23a3af445abd298703204eda5fc4a",
+    "build/learning-primary456-20261011/primary6/candidate-b13-2.json": "1870dbacf088f13b161baebfceb91fc0d6ee0397d4c03af256dd2e895faf5c43",
+    "build/learning-primary456-20261011/primary6/candidate-b13-2.pcm.wav": "e1b688afbea6f83dc69087920b2fa8d2c3f6c62f566631ad7ed67971eb6b5ea8"
+  },
+  "normalization": "只归一大小写、标点、列明缩写、数字与1st；保留否定、词尾、所有格和币种，Mia不等价于me as。",
+  "scope": "只读台词、哈希、声音映射、完整话轮逐采样拼接增益、独立双ASR正字法及计划语速核验；未合成或修改文件。"
+}

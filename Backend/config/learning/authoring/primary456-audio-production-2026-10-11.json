@@ -1,0 +1,397 @@
+{
+  "date": "2026-10-11",
+  "status": "保存完整原句与实际制作参数；小四a09尚未通过客观核验，不作为已审媒体。",
+  "levels": {
+    "primary4": {
+      "allowLongUtterances": true,
+      "level": "primary4",
+      "scope": "七道已审脚本原样制作计划；人物标签仅用于分声部，不朗读。每位说话人的完整话轮保留为独立segment，不切词。语速为儿童练习的制作目标，非课标规定；本文件不代表已生成或审听。",
+      "clips": [
+        {
+          "id": "a03",
+          "questionId": "p4.astra.a03",
+          "transcript": "I have dinner at six. I go to bed at eight.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a03",
+              "text": "I have dinner at six. I go to bed at eight.",
+              "speaker": "说话人",
+              "voice": "F3",
+              "rate": 0.6,
+              "breath": false
+            }
+          ],
+          "productionAdjustment": "初轮语速超过75–125 WPM范围，仅将合成rate降为0.60，保留原句。"
+        },
+        {
+          "id": "a09",
+          "questionId": "p4.astra.a09",
+          "transcript": "Friend: Is this your coat, Ben? Ben: No. It's Mia's.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a09-friend",
+              "text": "Is this your coat, Ben?",
+              "speaker": "Friend",
+              "voice": "F3",
+              "rate": 0.76,
+              "breath": false
+            },
+            {
+              "id": "a09-ben",
+              "text": "No. It's Mia's.",
+              "speaker": "Ben",
+              "voice": "M3",
+              "rate": 0.76,
+              "breath": false
+            }
+          ],
+          "direction": "F3提问，M5完整回答；Friend与Ben标签不读，句内呼语Ben要读，Mia不发言。No与Mia's须清楚。",
+          "productionAdjustment": "M5多个原句候选的Mia所有格未获双模型一致转写；更换为已在本地模型包中的M3男声完整重录，保留原文和说话人，不改专名或放宽核验。"
+        },
+        {
+          "id": "a13",
+          "questionId": "p4.astra.a13",
+          "transcript": "The hat is forty yuan.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a13",
+              "text": "The hat is forty yuan.",
+              "speaker": "店员",
+              "voice": "F3",
+              "rate": 0.76,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "a18",
+          "questionId": "p4.astra.a18",
+          "transcript": "I have dinner at seven. I go home at five. I do my homework at six.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a18",
+              "text": "I have dinner at seven. I go home at five. I do my homework at six.",
+              "speaker": "说话人",
+              "voice": "F3",
+              "rate": 0.6,
+              "breath": false
+            }
+          ],
+          "direction": "保持晚饭、回家、作业的原提及顺序，不按钟点重排。三句使用同一声线完整生成。",
+          "productionAdjustment": "初轮语速超过75–125 WPM范围，仅将合成rate降为0.60，保留原句。"
+        },
+        {
+          "id": "b03",
+          "questionId": "p4.astra.b03",
+          "transcript": "Is it cold there? No, it isn't. It's warm.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "b03-question",
+              "text": "Is it cold there?",
+              "speaker": "提问者",
+              "voice": "F3",
+              "rate": 0.76,
+              "breath": false
+            },
+            {
+              "id": "b03-answer",
+              "text": "No, it isn't. It's warm.",
+              "speaker": "回答者",
+              "voice": "M5",
+              "rate": 0.76,
+              "breath": false
+            }
+          ],
+          "direction": "问句与回答分两声部，完整否定和warm同属回答者；不可把No与后文拆成不同人物。"
+        },
+        {
+          "id": "b08",
+          "questionId": "p4.astra.b08",
+          "transcript": "These trousers are too long.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "b08",
+              "text": "These trousers are too long.",
+              "speaker": "试穿者",
+              "voice": "F3",
+              "rate": 0.76,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "b13",
+          "questionId": "p4.astra.b13",
+          "transcript": "We go boating in summer.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "b13",
+              "text": "We go boating in summer.",
+              "speaker": "说话人",
+              "voice": "F3",
+              "rate": 0.76,
+              "breath": false
+            }
+          ]
+        }
+      ],
+      "authoringSha256": "32c0377b92af998694eafd13feafafd62c99a32d50679c6a19a9db6d6c93d8af",
+      "deliverySha256": "979ed74af564b155c77c85604c7c08618f860b71cd138dfbf7d8e54a7246a2ee"
+    },
+    "primary5": {
+      "allowLongUtterances": true,
+      "authoringSha256": "cec67d9463cc5a0864848ccbd24940b5539e818726fbbb5a601770f12f17060d",
+      "scope": "精确复制审定六段全句脚本，不改写。F3、rate 0.78及75—125 WPM为制作目标，非课标规定；需生成后实听关键音节与测量实际语速。仅交计划，未渲染。",
+      "clips": [
+        {
+          "id": "a02",
+          "questionId": "p5.astra.a02",
+          "transcript": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a02",
+              "text": "I usually go for a walk. I often read books. Sometimes I clean my room.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.78,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "a08",
+          "questionId": "p5.astra.a08",
+          "transcript": "Look at the girl in the garden. She is drinking water.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a08",
+              "text": "Look at the girl in the garden. She is drinking water.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.78,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "a14",
+          "questionId": "p5.astra.a14",
+          "transcript": "Our school trip is in July.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "a14",
+              "text": "Our school trip is in July.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.78,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "b03",
+          "questionId": "p5.astra.b03",
+          "transcript": "This is Sam's kite. It is his.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "b03",
+              "text": "This is Sam's kite. It is his.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.78,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "b09",
+          "questionId": "p5.astra.b09",
+          "transcript": "My birthday is on March first.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "b09",
+              "text": "My birthday is on March first.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.78,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "b16",
+          "questionId": "p5.astra.b16",
+          "transcript": "I usually go for a walk on Sundays. I am reading a book at home now.",
+          "minimumWpm": 75,
+          "maximumWpm": 125,
+          "targetWpm": 100,
+          "segments": [
+            {
+              "id": "b16",
+              "text": "I usually go for a walk on Sundays. I am reading a book at home now.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.64,
+              "breath": false
+            }
+          ],
+          "productionAdjustment": "首轮实际144.1 WPM超过75–125制作范围；仅降低原始合成rate至0.64，脚本未改，不后处理变速。"
+        }
+      ]
+    },
+    "primary6": {
+      "allowLongUtterances": true,
+      "authoringSha256": "e2e55721a2583ea9e382e17db7d92b51833e896f5b980b2436dff9d4ad02e10f",
+      "scope": "六段已审小六脚本原样转存；声音及85–135词/分钟为制作目标，不是课标规定；只写计划，尚未合成或实听。",
+      "clips": [
+        {
+          "id": "a03",
+          "questionId": "p6.astra.a03",
+          "transcript": "Yesterday I bought some bread. Then I went to the park.",
+          "minimumWpm": 85,
+          "maximumWpm": 135,
+          "targetWpm": 105,
+          "segments": [
+            {
+              "id": "a03",
+              "text": "Yesterday I bought some bread. Then I went to the park.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.8,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "a08",
+          "questionId": "p6.astra.a08",
+          "transcript": "The brown box is heavier than the white box.",
+          "minimumWpm": 85,
+          "maximumWpm": 135,
+          "targetWpm": 105,
+          "segments": [
+            {
+              "id": "a08",
+              "text": "The brown box is heavier than the white box.",
+              "speaker": "a",
+              "voice": "M5",
+              "rate": 0.8,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "a14",
+          "questionId": "p6.astra.a14",
+          "transcript": "Ten years ago, there were two tables in this room. There was no computer.",
+          "minimumWpm": 85,
+          "maximumWpm": 135,
+          "targetWpm": 105,
+          "segments": [
+            {
+              "id": "a14",
+              "text": "Ten years ago, there were two tables in this room. There was no computer.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.8,
+              "breath": false
+            }
+          ]
+        },
+        {
+          "id": "b03",
+          "questionId": "p6.astra.b03",
+          "transcript": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve.",
+          "minimumWpm": 85,
+          "maximumWpm": 135,
+          "targetWpm": 105,
+          "segments": [
+            {
+              "id": "b03",
+              "text": "Tomorrow we are going to draw at nine. We are going to have lunch at twelve.",
+              "speaker": "a",
+              "voice": "M5",
+              "rate": 0.68,
+              "breath": false
+            }
+          ],
+          "productionAdjustment": "首轮实际语速或逐词核验未通过；仅降低原始合成rate至0.68并另取候选，不改脚本，不后处理变速。"
+        },
+        {
+          "id": "b08",
+          "questionId": "p6.astra.b08",
+          "transcript": "Last year I couldn't ride a bike. Now I can ride to the park.",
+          "minimumWpm": 85,
+          "maximumWpm": 135,
+          "targetWpm": 105,
+          "segments": [
+            {
+              "id": "b08",
+              "text": "Last year I couldn't ride a bike. Now I can ride to the park.",
+              "speaker": "a",
+              "voice": "F3",
+              "rate": 0.68,
+              "breath": false
+            }
+          ],
+          "productionAdjustment": "首轮实际语速或逐词核验未通过；仅降低原始合成rate至0.68并另取候选，不改脚本，不后处理变速。"
+        },
+        {
+          "id": "b13",
+          "questionId": "p6.astra.b13",
+          "transcript": "I cleaned my shoes last night. I didn't wash my bag.",
+          "minimumWpm": 85,
+          "maximumWpm": 135,
+          "targetWpm": 105,
+          "segments": [
+            {
+              "id": "b13",
+              "text": "I cleaned my shoes last night. I didn't wash my bag.",
+              "speaker": "a",
+              "voice": "M5",
+              "rate": 0.68,
+              "breath": false
+            }
+          ],
+          "productionAdjustment": "首轮实际语速或逐词核验未通过；仅降低原始合成rate至0.68并另取候选，不改脚本，不后处理变速。"
+        }
+      ]
+    }
+  }
+}
