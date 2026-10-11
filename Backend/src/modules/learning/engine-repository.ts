@@ -1,4 +1,5 @@
 import { LearningBankSession } from "./bank-repository.js";
+import { LearningDirectionSession } from "./direction-repository.js";
 import { LearningPromotionSession } from "./promotion-repository.js";
 import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningContextReader } from "./context.js";
@@ -218,6 +219,10 @@ export class LearningSession {
     private readonly context?: LearningContextReader,
   ) {}
 
+  directions() {
+    return new LearningDirectionSession(this.sql, this.userId);
+  }
+
   async audioAsset(
     attemptId: string,
     questionId: string,
@@ -283,6 +288,10 @@ export class LearningSession {
   }
 
   async availability(roleKey: string, level: LearningLevel, characterId: string) {
+    const { selectedDirection } = await this.directions().read();
+    // 备考稿尚未通过正式发布门槛，不回退到同一用户的普通年级题库。
+    if (selectedDirection !== "general")
+      return { availableUnits: 0, generationStatus: null };
     const [row] = await this.sql<
       { count: number }[]
     >`select count(*)::integer as count from app.learning_units u
@@ -333,6 +342,7 @@ export class LearningSession {
       id: row.id,
       title: row.title,
       level: row.level_key,
+      direction: "general" as const,
       startedAt: new Date(row.started_at).toISOString(),
       firstCompletedAt:
         row.first_completed_at === null
@@ -427,6 +437,12 @@ export class LearningSession {
         status: "started" as const,
         attempt: await this.attempt(state.activeAttemptId),
       };
+    const { selectedDirection } = await this.directions().read();
+    if (selectedDirection !== "general")
+      reject(
+        "LEARNING_DIRECTION_NOT_READY",
+        "这个备考方向的题目仍在审核中，暂时无法开启挑战。",
+      );
     if (state.characters < learningPolicy.characterThreshold)
       reject("LEARNING_NOT_READY", "再聊一会儿，进度满后就能开启挑战。");
     const [dedicated] = await this.sql<{ payload: LearningUnit }[]>`
@@ -510,6 +526,7 @@ export class LearningSession {
       id,
       characterId: row.character_id,
       level: row.level_key,
+      direction: "general" as const,
       revision: row.revision,
       startedAt: new Date(row.started_at).toISOString(),
       firstCompletedAt:

@@ -1,5 +1,6 @@
 import type { PromotionCourse } from "./promotion-content.js";
 import type { LearningLevel } from "./content.js";
+import type { LearningDirection } from "./direction.js";
 import { z } from "zod";
 import type { DatabaseResource } from "../../db/client.js";
 import { AppError } from "../../shared/errors.js";
@@ -46,6 +47,21 @@ export function createLearningService(
 ) {
   const repository = new LearningEngineRepository(database, context);
   return {
+    directions: (userId: string) =>
+      repository.read(userId, (session) => session.directions().read()),
+    selectDirection: (
+      userId: string,
+      requestId: string,
+      direction: LearningDirection,
+      expectedRevision: number,
+    ) =>
+      repository.command(
+        userId,
+        requestId,
+        "direction.select",
+        { direction, expectedRevision },
+        (session) => session.directions().select(direction, expectedRevision),
+      ),
     debugFill: async (
       userId: string,
       requestId: string,
@@ -67,6 +83,7 @@ export function createLearningService(
           return {
             ...state,
             level,
+            learningDirections: await session.directions().read(),
             ...(await session.availability(state.roleKey, level, characterId)),
           };
         },
@@ -167,6 +184,7 @@ export function createLearningService(
         const content = await session.publishedContent();
         return {
           currentLevel,
+          learningDirections: await session.directions().read(),
           promotion: await session.promotions(courses).eligibility(currentLevel),
           policy: learningPolicy,
           levels: levelKeys.map((level) => ({
@@ -188,6 +206,7 @@ export function createLearningService(
         return {
           ...state,
           level,
+          learningDirections: await session.directions().read(),
           ...(await session.availability(state.roleKey, level, characterId)),
         };
       });

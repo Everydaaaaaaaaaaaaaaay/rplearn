@@ -1,4 +1,5 @@
 import { levelSchema } from "./content.js";
+import { learningDirectionSchema } from "./direction.js";
 import type { FastifyInstance } from "fastify";
 import { z, type ZodType } from "zod";
 import { authenticateRequest } from "../auth/http.js";
@@ -94,6 +95,24 @@ export function registerLearningRoutes(
         );
       },
     );
+    scope.get("/v1/learning/directions", (request) =>
+      service.directions(user(request)),
+    );
+    scope.post("/v1/learning/directions", { bodyLimit: 1024 }, (request) => {
+      const body = parse(
+        requestSchema.extend({
+          direction: learningDirectionSchema,
+          expectedRevision: z.number().int().min(0),
+        }),
+        request.body,
+      );
+      return service.selectDirection(
+        user(request),
+        body.requestId,
+        body.direction,
+        body.expectedRevision,
+      );
+    });
     scope.get("/v1/learning/journey", (request) => service.journey(user(request)));
     scope.get("/v1/learning/characters/:id", (request) =>
       service.character(user(request), parse(paramsSchema, request.params).id),

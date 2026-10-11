@@ -420,6 +420,64 @@ describe.runIf(process.env.RUN_INTEGRATION_TESTS === "true")(
       expect(messages?.count).toBe(0);
     });
 
+    it("备考方向接口鉴权、严格校验、版本与账号隔离", async () => {
+      const url = "/v1/learning/directions";
+      expect((await app.inject({ url })).statusCode).toBe(401);
+      expect((await app.inject({ method: "POST", url, payload: {} })).statusCode).toBe(
+        401,
+      );
+      const before = (await get(url)).json<unknown>();
+      const profileBefore = (await createDomainService(database).getSnapshot(owner()))
+        .profile;
+      const input = {
+        requestId: randomUUID(),
+        direction: "toefl-ibt-2026",
+        expectedRevision: 0,
+      };
+      for (const invalid of [
+        { ...input, direction: "postgraduate" },
+        { ...input, direction: "toefl-essentials" },
+        { ...input, expectedRevision: -1 },
+        { ...input, expectedRevision: 0.5 },
+        { ...input, userId: accounts[1]?.userId },
+      ])
+        expect((await post(url, invalid)).statusCode).toBe(400);
+      expect((await get(url)).json()).toEqual(before);
+      const selected = await post(url, input);
+      expect(selected.statusCode).toBe(200);
+      expect(selected.headers["cache-control"]).toBe("no-store");
+      expect(selected.json()).toMatchObject({
+        selectedDirection: "toefl-ibt-2026",
+        revision: 1,
+      });
+      expect((await post(url, input)).json()).toEqual(selected.json());
+      expect(
+        (
+          await post(url, {
+            ...input,
+            requestId: randomUUID(),
+            direction: "ielts-academic",
+          })
+        ).statusCode,
+      ).toBe(409);
+      expect((await get(url, 1)).json()).toMatchObject({
+        selectedDirection: "general",
+        revision: 0,
+      });
+      expect(
+        (await createDomainService(database).getSnapshot(owner())).profile,
+      ).toEqual(profileBefore);
+      expect(
+        (
+          await post(url, {
+            requestId: randomUUID(),
+            direction: "general",
+            expectedRevision: 1,
+          })
+        ).statusCode,
+      ).toBe(200);
+    });
+
     it("主线只由前章推进，学习星星和自选年级不影响主线，重放与账号隔离仍生效", async () => {
       const domain = createDomainService(database);
       await domain.completeOnboarding(owner(), randomUUID(), {
