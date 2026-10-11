@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { z } from "zod";
 import {
+  publicUnit,
   unitSchema,
   type LearningQuestion,
 } from "../../../src/modules/learning/content.js";
@@ -33,6 +35,51 @@ describe("文字配对保留干扰项", () => {
   const unit = (q: typeof question) => ({
     ...learningFixture(),
     questions: [q, ...learningFixture().questions.slice(1)],
+  });
+  it("右侧候选按题独立重排，重进与补答稳定，保持材料、答案身份和私有原题", () => {
+    const parsed = unitSchema.parse({
+      ...unit(question),
+      questions: [
+        question,
+        { ...question, id: "test.second-matching" },
+        ...learningFixture().questions.slice(2),
+      ],
+    });
+    const original = structuredClone(parsed);
+    const orders = new Set<string>();
+    let independentlyOrdered = false;
+    for (let i = 0; i < 20; i++) {
+      const attemptId = `attempt.${String(i)}`;
+      const visible = publicUnit(parsed, attemptId);
+      expect(publicUnit(parsed, attemptId)).toEqual(visible);
+      const first = visible.questions[0];
+      const second = visible.questions[1];
+      if (first?.type !== "matching" || second?.type !== "matching")
+        throw new Error("配对题投影丢失。");
+      const item = z.object({ id: z.string(), text: z.string() });
+      const view = z.object({ left: z.array(item), right: z.array(item) });
+      const firstView = view.parse(first);
+      const secondView = view.parse(second);
+      expect(firstView.left).toEqual(question.left);
+      expect([...firstView.right].sort((a, b) => a.id.localeCompare(b.id))).toEqual(
+        question.right,
+      );
+      expect(first).not.toHaveProperty("answerPairs");
+      const firstOrder = firstView.right.map((item) => item.id).join(",");
+      orders.add(firstOrder);
+      independentlyOrdered ||=
+        firstOrder !== secondView.right.map((item) => item.id).join(",");
+      const answer = firstView.left.map((item) => ({
+        left: item.id,
+        right: item.id === "a" ? "x" : "y",
+      }));
+      expect(gradeAnswer(question, { kind: "matching", pairs: answer }).outcome).toBe(
+        "correct",
+      );
+    }
+    expect(independentlyOrdered).toBe(true);
+    expect(orders.size).toBeGreaterThan(2);
+    expect(parsed).toEqual(original);
   });
   it("允许多余右项，保留既有等长配对，不需要把干扰项也配完", () => {
     expect(unitSchema.safeParse(unit(question)).success).toBe(true);

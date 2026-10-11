@@ -499,10 +499,16 @@ export function publicUnit(unit: LearningUnit, attemptId?: string) {
           ),
         );
       }
-      if (attemptId && question.type === "audioMatching" && "right" in projected) {
+      if (
+        attemptId &&
+        (question.type === "audioMatching" || question.type === "matching") &&
+        "right" in projected
+      ) {
+        // 文字配对同样按题独立排列，避免连续题复用答案位置；保持左侧材料阅读顺序。
+        const side = question.type === "audioMatching" ? "image" : "matching-right";
         projected.right = [...projected.right].sort((a, b) =>
-          contentHash([attemptId, question.id, "image", a.id]).localeCompare(
-            contentHash([attemptId, question.id, "image", b.id]),
+          contentHash([attemptId, question.id, side, a.id]).localeCompare(
+            contentHash([attemptId, question.id, side, b.id]),
           ),
         );
       }
