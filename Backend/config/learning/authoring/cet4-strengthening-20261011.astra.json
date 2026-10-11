@@ -1,0 +1,874 @@
+{
+  "id": "companion.undergraduate.strengthening-20261011",
+  "level": "undergraduate",
+  "title": "把信息读完整",
+  "author": {
+    "date": "2026-10-11",
+    "method": "逐题人工原创；程序仅保存与校验，不使用模板、词槽替换或组合生成题目。",
+    "status": "隔离作者稿，待主审；音频pending，不可发布"
+  },
+  "scope": "四级局部能力练习；不等同整卷、真实写作口语产出或能力认证。undergraduate保持四级含义。",
+  "sourceReading": [
+    {
+      "sourceId": "cet.official.2016",
+      "url": "https://www.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "localFile": "build/learning-expansion-20261007/research/cet-2016.pages.json",
+      "readAt": "2026-10-11",
+      "pages": "PDF6—11／印刷1—6",
+      "method": "实际核读本地逐页提取正文；未重新下载、渲染或核读其余页面。",
+      "finding": "四级熟悉题材应用文、主旨细节、关系与衔接；听力120—140词每分；正式阅读篇幅和正式写作翻译要求高于本组教学微任务。"
+    }
+  ],
+  "goalRegistration": {
+    "registered": [
+      "cet4.context-vocabulary",
+      "cet4.pragmatics",
+      "cet4.cohesion",
+      "cet4.paraphrase",
+      "cet4.controlled-translation",
+      "cet4.listening-detail-attitude"
+    ],
+    "proposed": [
+      {
+        "id": "cet4.reading-integration",
+        "level": "undergraduate",
+        "canDo": "整合熟悉题材应用文多处信息，理解篇章功能并选择准确摘要",
+        "sourceIds": [
+          "cet.official.2016"
+        ],
+        "pages": "PDF7—8、11／印刷2—3、6",
+        "status": "proposed，未登记"
+      }
+    ]
+  },
+  "interactionContract": {
+    "media": "三段原创听力脚本仅供制作，答前不可展示；assetId为null，制音及验音前禁止发布。",
+    "stories": "一段完整双语故事，三幕均afterQuestion=0；不用于解题。",
+    "answers": "completion显式限定词池；cloze每词最多一次；matching右侧有额外项；arrange只认可列明词块次序，不否定其他自由译文。",
+    "normalization": "completion忽略大小写、首尾及重复空格、句末标点；不忽略实义词。"
+  },
+  "stories": [
+    {
+      "id": "cet4.strength.story",
+      "title": "窗边的一点蓝",
+      "titleEn": "A Little Blue by the Window",
+      "afterQuestion": 0,
+      "paragraphs": [
+        {
+          "zh": "傍晚，你和同行者坐在窗边，用剩下的彩纸做小摆件。你想折一只蓝鸟，翅膀却总是歪向一边。你把它压平，准备重新开始，同行者伸手拦了一下，说它像正在转弯。",
+          "en": "In the evening, you and your companion sit by a window, making small decorations from scraps of coloured paper. You try to fold a blue bird, but one wing keeps leaning to the side. You flatten it to start again. Your companion stops you gently and says it looks as if it is turning in the air."
+        },
+        {
+          "zh": "你把鸟放在窗台上，它立刻倒了。同行者把一小片纸折成底座，你扶住鸟，两人试了好几次，它终于站稳。此时窗外真的飞过一只鸟，你们一起抬头，谁也没有看清它的颜色。",
+          "en": "You put the bird on the window ledge, and it falls over. Your companion folds a small piece of paper into a base. You hold the bird while the two of you try several times to make it stand. At last it stays up. Just then, a real bird flies past the window. You both look up, but neither of you catches its colour."
+        },
+        {
+          "zh": "天渐渐暗下来，纸鸟还留着明亮的蓝色。你没再修那只歪翅膀，而是在旁边摆了一片黄色的小纸叶。离开房间时，你回头看了一眼：它似乎还在转弯，正要飞向那片叶子。",
+          "en": "As the sky grows dark, the paper bird keeps its bright blue colour. You leave the uneven wing as it is and place a tiny yellow paper leaf beside it. When you leave the room, you look back. The bird still seems to be turning, about to fly towards the leaf."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet4.strength.01",
+      "type": "completion",
+      "goalId": "cet4.context-vocabulary",
+      "taskIntent": "理解付款条款中的退还性质",
+      "prompt": "用一个形容词概括下述退钱条件，仅从refundable、transferable、payable选词原形填空：You pay a £10 deposit when borrowing a tool. Bring the tool back undamaged and the £10 is returned to you. The deposit is ____.",
+      "acceptedAnswers": [
+        "refundable"
+      ],
+      "hint": "判断借用结束后那笔钱发生什么。",
+      "explanation": "refundable表示可退还；transferable是可转让，payable是应支付，均没有表达归还押金。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "refundable": "归还完好工具后退钱，准确。",
+          "transferable": "常见条款形容词，但没有转给他人的安排。",
+          "payable": "押金确实需付，但题目末句要概括归还后的性质。"
+        },
+        "shortestPath": "returned to you→可退还",
+        "variants": "限词池，仅refundable；不接受中文或句子。",
+        "leakage": "新稿其他题与旧36题未教授该词及退押金规则；多个前题也不能拼出该目标。"
+      }
+    },
+    {
+      "id": "cet4.strength.02",
+      "type": "completion",
+      "goalId": "cet4.context-vocabulary",
+      "taskIntent": "区分正式撤回与拒绝、确认",
+      "prompt": "从withdraw、reject、confirm中选词并变为适当形式：I accepted the invitation yesterday, but a family emergency means I cannot attend. I have now ____ my acceptance in a message to the organiser.",
+      "acceptedAnswers": [
+        "withdrawn"
+      ],
+      "hint": "决定由接受者自己改变，再检查have后的形式。",
+      "explanation": "撤回本人先前的接受用withdraw one's acceptance，完成时为withdrawn。reject是拒绝，confirm是确认。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "withdraw": "撤回自己已作的决定，需写withdrawn。",
+          "reject": "通常拒绝邀请或他人的提议，此处不是拒绝自己已经作出的接受。",
+          "confirm": "再次确认，和不能参加的通知相反。"
+        },
+        "shortestPath": "已接受→本人撤回→withdrawn",
+        "variants": "只收withdrawn；withdrew时态不符。",
+        "leakage": "故事、旧库及本组其余题不含withdrawn或对应撤回接受场景。"
+      }
+    },
+    {
+      "id": "cet4.strength.03",
+      "type": "completion",
+      "goalId": "cet4.controlled-translation",
+      "taskIntent": "受控保留责任分配含义",
+      "prompt": "表达“这两位编辑轮流检查来稿”，每次由其中一人检查，不是同时检查。从turns、risks、steps中选一词：The two editors take ____ checking incoming articles.",
+      "acceptedAnswers": [
+        "turns"
+      ],
+      "hint": "找表达交替承担同一任务的搭配。",
+      "explanation": "take turns doing表示轮流做；take risks是冒险，take steps是采取措施，不能表达交替。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "turns": "与checking搭配并表达交替。",
+          "risks": "take risks doing可自然成句，但变成冒险检查。",
+          "steps": "take steps to do是采取措施，既不表达轮流也不符合此处搭配。"
+        },
+        "shortestPath": "轮流→take turns",
+        "variants": "限词池只收turns；其他自由译句不在本题判分范围。",
+        "leakage": "没有别题讲解take turns；故事turning指纸鸟转弯，词形和语义都不同，不能直接教授该搭配。"
+      }
+    },
+    {
+      "id": "cet4.strength.04",
+      "type": "choice",
+      "goalId": "cet4.reading-integration",
+      "goalStatus": "proposed",
+      "taskIntent": "整合邮件的默认状态与特定操作",
+      "passage": "Dear volunteers, Thank you for joining Saturday's river survey. We have enough people to count birds, but the water team needs two more helpers. You do not need scientific training for this task; a leader will show you how to collect samples. Everyone should meet at the north gate at nine, including those who worked with us last month. Please wear shoes that can get wet. If you wish to move from the bird team to the water team, reply by Thursday evening. Otherwise, your original place stays the same. We will send an update on Friday if heavy rain changes our plans. Best wishes, The survey team",
+      "prompt": "根据邮件，已经报名数鸟、也不想换组的人现在该怎么做？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reply by Thursday to keep the bird team place, then meet at nine."
+        },
+        {
+          "id": "b",
+          "text": "Wait for Friday's message to learn whether a team place is available."
+        },
+        {
+          "id": "c",
+          "text": "Keep the existing place and prepare to meet at nine on Saturday."
+        },
+        {
+          "id": "d",
+          "text": "Join the water team at nine to receive the training mentioned."
+        }
+      ],
+      "answer": "c",
+      "hint": "区分主动换组的人和保留原安排的人。",
+      "explanation": "回复期限针对换水组；不换则原名额保留，所有人九点北门集合。周五消息取决于大雨，并非人人必须等通知。",
+      "difficulty": "迁移",
+      "review": {
+        "optionNotes": {
+          "a": "把换组的回复要求误加给保留名额者。",
+          "b": "把天气更新当成名额确认，混淆两个条件。",
+          "c": "正确整合原名额保留与统一集合要求。",
+          "d": "培训不表示自动转组。"
+        },
+        "shortestPath": "Otherwise原位保留＋Everyone九点集合",
+        "variants": "仅c",
+        "leakage": "自足新邮件，旧截止与场地题不能提供默认保留规则；不输出本组填空目标词。"
+      }
+    },
+    {
+      "id": "cet4.strength.05",
+      "type": "choice",
+      "goalId": "cet4.reading-integration",
+      "goalStatus": "proposed",
+      "taskIntent": "准确摘要短新闻，保留已实施措施及观察",
+      "passage": "A small town has changed the way its street market deals with unsold vegetables. At closing time, sellers now put suitable food on a shared table, where residents can collect it free. Before the scheme began, each seller had to find someone to take the food or carry it home. The market manager says the table has made closing easier. A local charity weighs the food each week to learn how much is being shared. The town has not paid sellers for these vegetables. Instead, it has provided a covered space and boxes. Several nearby markets have asked for details of the scheme.",
+      "prompt": "哪句最适合为这则原创短新闻写摘要？",
+      "options": [
+        {
+          "id": "a",
+          "text": "A market shares unsold vegetables through a common collection point supported by the town."
+        },
+        {
+          "id": "b",
+          "text": "A charity buys unsold vegetables from a market and sells them through a covered stall."
+        },
+        {
+          "id": "c",
+          "text": "A town pays market sellers to supply vegetables to residents at the end of each day."
+        },
+        {
+          "id": "d",
+          "text": "Several markets have started a joint delivery service for vegetables left after trading."
+        }
+      ],
+      "answer": "a",
+      "hint": "确定谁提供食物、居民如何取得，以及城镇提供哪种支持。",
+      "explanation": "核心是共同领取点免费分享余菜，城镇提供场地和箱子；没有购买、补贴或送货。",
+      "difficulty": "迁移",
+      "review": {
+        "optionNotes": {
+          "a": "保留主体机制和支持方式，不把询问信息说成实施。",
+          "b": "慈善组织实际称重，并非买卖。",
+          "c": "把实物场地支持改成向摊主付款。",
+          "d": "把其他市场询问改成联合配送。"
+        },
+        "shortestPath": "shared table＋free＋covered space，锁定a",
+        "variants": "仅a；不要求自行写摘要。",
+        "leakage": "与旧食堂减少浪费同属公共生活，处理机制、主体及所需答案不同；多前题不会给出免费领取点。"
+      }
+    },
+    {
+      "id": "cet4.strength.06",
+      "type": "choice",
+      "goalId": "cet4.reading-integration",
+      "goalStatus": "proposed",
+      "taskIntent": "理解篇章中具体例子的论证功能",
+      "passage": "When a museum asks visitors to put their phones away, it is easy to assume that every screen is a distraction. Yet phones can help people notice details they would otherwise miss. At one exhibition, visitors used an enlarged image on their phones to examine tiny marks on a painted bowl. They then looked back at the real object to compare what they had seen. This does not mean that museums should move every experience onto a screen. Rather, a useful digital activity sends attention back to the objects in the room. The important question is what visitors do with a device, not simply whether they carry one.",
+      "prompt": "文中彩绘碗的例子主要起什么作用？",
+      "options": [
+        {
+          "id": "a",
+          "text": "It explains why museums are replacing delicate objects with digital copies."
+        },
+        {
+          "id": "b",
+          "text": "It describes how museums can discover damage by examining visitors' pictures."
+        },
+        {
+          "id": "c",
+          "text": "It suggests that visitors need training before they can study painted objects."
+        },
+        {
+          "id": "d",
+          "text": "It shows how a screen can lead visitors to examine an actual object more closely."
+        }
+      ],
+      "answer": "d",
+      "hint": "把例子前的观点和例子后的归纳一起看。",
+      "explanation": "放大细节后返回实物比较，支持手机可以引导关注展品的观点；不是替代实物。",
+      "difficulty": "迁移",
+      "review": {
+        "optionNotes": {
+          "a": "数字副本相关，但文中返回实物，与替代相反。",
+          "b": "误把观察细纹改为检查损坏，并更换图片来源。",
+          "c": "把有帮助的工具误写成训练前提。",
+          "d": "准确概括例子支撑的观点。"
+        },
+        "shortestPath": "enlarged image→looked back at real object→论点",
+        "variants": "仅d",
+        "leakage": "独立议论短文；旧词义、指代题不能代替论证功能判断，不共享答案句。"
+      }
+    },
+    {
+      "id": "cet4.strength.07",
+      "type": "choice",
+      "goalId": "cet4.reading-integration",
+      "goalStatus": "proposed",
+      "taskIntent": "合并网站规则、临时通知和个人限制作安排",
+      "prompt": "阅读两则独立信息。网站：The archive is open from 10 to 6. Original maps must be requested before your visit; copies are available without a request. 当日通知：Today, the map room closes at 3 for electrical work. Copies can still be viewed in the reading room. 你今天四点才能到，只需看复制件。哪项安排可行？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Visit the map room at four and request the original maps there."
+        },
+        {
+          "id": "b",
+          "text": "Visit the reading room at four and view the available copies."
+        },
+        {
+          "id": "c",
+          "text": "Visit the reading room at four and collect unrequested originals."
+        },
+        {
+          "id": "d",
+          "text": "Visit the map room at four after asking for copies in advance."
+        }
+      ],
+      "answer": "b",
+      "hint": "同时核对关闭的房间、所需材料和到达时间。",
+      "explanation": "关的是地图室，复制件仍可在阅览室看；四点在总开放时段内，复制件不需预约。",
+      "difficulty": "迁移",
+      "review": {
+        "optionNotes": {
+          "a": "房间三点关且原件须提前申请。",
+          "b": "三个条件均满足。",
+          "c": "阅览室仍开不能取消原件申请规则。",
+          "d": "预约复制件不能延长地图室开放。"
+        },
+        "shortestPath": "四点＋复制件→阅览室",
+        "variants": "仅b",
+        "leakage": "旧场地变更听力只提供时间地点辨别技能，不提供地图室与复制件规则。"
+      }
+    },
+    {
+      "id": "cet4.strength.08",
+      "type": "choice",
+      "goalId": "cet4.pragmatics",
+      "taskIntent": "在服务邮件中核实差额而不预断责任",
+      "prompt": "你收到课程付款收据，金额比报名页面显示的高。你尚不知道差额原因，想礼貌请工作人员说明费用明细，暂不要求退款或取消。哪封简短回复最合适？",
+      "options": [
+        {
+          "id": "a",
+          "text": "Thank you for the receipt. Please cancel my place and explain how the money will be returned."
+        },
+        {
+          "id": "b",
+          "text": "Thank you for the receipt. Please correct the charge and send me an updated payment record."
+        },
+        {
+          "id": "c",
+          "text": "Thank you for the receipt. Could you explain the items included in the higher amount?"
+        },
+        {
+          "id": "d",
+          "text": "Thank you for the receipt. Could you tell me how to pay the extra amount shown?"
+        }
+      ],
+      "answer": "c",
+      "hint": "核对信息请求是否已经假定差额有错或必须补付。",
+      "explanation": "c询问构成；其他回复分别取消、预断应纠正、准备补付，都超出当前核实目的。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "a": "礼貌自然，但要求取消。",
+          "b": "礼貌自然，但先判定收费错误。",
+          "c": "正式程度适合服务邮件，准确索取明细。",
+          "d": "先接受需补款，未询问差额原因。"
+        },
+        "shortestPath": "未知原因＋查明细→c",
+        "variants": "仅c；这是语域选择，不是实际邮件写作评分。",
+        "leakage": "旧澄清截止时间题提供通用询问策略，但不能确定收费事项；无填空目标泄漏。"
+      }
+    },
+    {
+      "id": "cet4.strength.09",
+      "type": "choice",
+      "goalId": "cet4.controlled-translation",
+      "taskIntent": "保留起始时间、持续行为和两个效果",
+      "prompt": "选择准确表达“自去年起，村民定期清理河岸，既改善了环境，也增进了邻里联系”的一句。",
+      "options": [
+        {
+          "id": "a",
+          "text": "Since last year, villagers have regularly cleaned the riverbank, improving the environment and strengthening local ties."
+        },
+        {
+          "id": "b",
+          "text": "Until last year, villagers regularly cleaned the riverbank, improving the environment and strengthening local ties."
+        },
+        {
+          "id": "c",
+          "text": "Since last year, villagers have regularly cleaned the riverbank after the environment and local ties had improved."
+        },
+        {
+          "id": "d",
+          "text": "Since last year, villagers have planned regular riverbank cleaning to improve the environment and strengthen local ties."
+        }
+      ],
+      "answer": "a",
+      "hint": "核对行动已发生还是仅计划，以及后半句表达结果还是先行条件。",
+      "explanation": "a保留自去年以来的定期行动与两个效果；b把行动改为持续到去年为止，c颠倒先后，d改成计划。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "a": "完整保留时间、行动及效果。",
+          "b": "把持续至今改为去年已结束。",
+          "c": "把行动效果改成此前已改善的背景。",
+          "d": "把实际清理改成计划。"
+        },
+        "shortestPath": "自去年起＋实际行动＋两个效果→a",
+        "variants": "仅a；不把受控译句识别当段落翻译产出。",
+        "leakage": "与04都涉及河流，但04是观察调查，不提供本题时态或效果句；两题共同出现也不补齐后续空词。"
+      }
+    },
+    {
+      "id": "cet4.strength.10",
+      "type": "listeningChoice",
+      "goalId": "cet4.listening-detail-attitude",
+      "taskIntent": "听懂交接中的替代任务及理由",
+      "prompt": "听两位同事的交谈。第二位说话人接下来会做什么？",
+      "audioScript": "A: Can you show the visitors around the garden this afternoon? B: I need to stay near the entrance to receive a delivery. But I can explain the garden's history before the walk starts. A: That would help. I'll lead the walk after your introduction. B: Good. I'll bring the old photographs for everyone to see.",
+      "audioProduction": {
+        "status": "pending",
+        "assetId": null,
+        "targetWordsPerMinute": 130,
+        "direction": "两人自然交谈，不夸张重读答案；不向答题者展示脚本。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Lead the visitors around the garden after receiving a delivery."
+        },
+        {
+          "id": "b",
+          "text": "Give an introduction before the other person leads the garden walk."
+        },
+        {
+          "id": "c",
+          "text": "Receive the photographs while the other person explains the history."
+        },
+        {
+          "id": "d",
+          "text": "Explain the history to visitors after they return from their walk."
+        }
+      ],
+      "answer": "b",
+      "hint": "分清两人的分工与行动先后。",
+      "explanation": "第二人要守入口收货，答应在参观前介绍历史，第一人带队走访。",
+      "difficulty": "迁移",
+      "review": {
+        "optionNotes": {
+          "a": "把第一人的带队工作给第二人。",
+          "b": "明确先由第二人介绍，再由第一人带队，不表示两件事同时发生。",
+          "c": "待收的是货，照片由第二人带来。",
+          "d": "把参观前介绍放到参观后。"
+        },
+        "shortestPath": "B explain before→A lead after",
+        "variants": "仅b",
+        "leakage": "题面不含分工；其他题无这段对话的事件链，音频仍必需。"
+      }
+    },
+    {
+      "id": "cet4.strength.11",
+      "type": "listeningChoice",
+      "goalId": "cet4.listening-detail-attitude",
+      "taskIntent": "理解原创广播简讯的改变原因",
+      "prompt": "听一则社区广播简讯。组织者为什么调整活动方式？",
+      "audioScript": "The community repair day will have a new format this month. In earlier sessions, people left broken household items with volunteers and came back later. Several visitors said they wanted to understand the repairs themselves. This time, owners will sit beside a volunteer and help with simple tasks. The event is still free, and it will take place in the usual hall.",
+      "audioProduction": {
+        "status": "pending",
+        "assetId": null,
+        "targetWordsPerMinute": 130,
+        "direction": "标准清晰广播语气，完整朗读，制音后核验可辨性。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The hall has less space for storing household items this month."
+        },
+        {
+          "id": "b",
+          "text": "The volunteers need owners to contribute towards the repair costs."
+        },
+        {
+          "id": "c",
+          "text": "The repairs now involve equipment that volunteers have not used."
+        },
+        {
+          "id": "d",
+          "text": "Some visitors want to learn how their household items are repaired."
+        }
+      ],
+      "answer": "d",
+      "hint": "注意报道中是谁提出了什么需要。",
+      "explanation": "访客想了解维修过程，因此安排主人参与简单任务；地点与免费性质不变。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "a": "储物空间可能是现实原因，但脚本未报告。",
+          "b": "把参与劳动误解为分担费用。",
+          "c": "把简单任务误解为志愿者不会使用设备。",
+          "d": "直接对应访客学习需求。"
+        },
+        "shortestPath": "wanted to understand repairs→d",
+        "variants": "仅d",
+        "leakage": "旧自行车维修题只涉及零件到货，不含参与式维修目的；无脚本不能判定原因。"
+      }
+    },
+    {
+      "id": "cet4.strength.12",
+      "type": "listeningChoice",
+      "goalId": "cet4.listening-detail-attitude",
+      "taskIntent": "听出赞许落实为确定行动的态度",
+      "prompt": "听一段留言。说话人决定怎样处理新菜单？",
+      "audioScript": "I tried the new lunch menu yesterday. The dishes were well prepared, and the choices suited our group much better than the previous menu. I know you wondered whether we should try another restaurant, but I think we have found what we need. Please go ahead and book this one for next week's team lunch. I'll send you the number of people this evening.",
+      "audioProduction": {
+        "status": "pending",
+        "assetId": null,
+        "targetWordsPerMinute": 130,
+        "direction": "自然明确的肯定语气，不制造犹豫；不可显示字幕。"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the restaurant for next week's lunch and provide the group size later."
+        },
+        {
+          "id": "b",
+          "text": "Ask the restaurant to improve the dishes before arranging next week's lunch."
+        },
+        {
+          "id": "c",
+          "text": "Compare another restaurant's menu before deciding where the group will eat."
+        },
+        {
+          "id": "d",
+          "text": "Arrange another tasting with the group before making a lunch reservation."
+        }
+      ],
+      "answer": "a",
+      "hint": "评价之后，说话人是继续比较还是发出行动要求？",
+      "explanation": "说话人认可菜单并明确要求预订，晚些提供人数；不是等待更多比较。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "a": "符合go ahead and book及随后报人数。",
+          "b": "编造修改菜品这个前提。",
+          "c": "把被否定的继续比较当成决定。",
+          "d": "把已完成试吃改成还需集体试吃。"
+        },
+        "shortestPath": "go ahead and book＋send number→a",
+        "variants": "仅a",
+        "leakage": "刻意区别旧库常见谨慎保留态度：正确答案是确定行动；先学谨慎策略反而不能代替听辨。"
+      }
+    },
+    {
+      "id": "cet4.strength.13",
+      "type": "arrange",
+      "goalId": "cet4.cohesion",
+      "taskIntent": "按指定提纲组织实验记录，衔接对象、地点、观察与解释",
+      "prompt": "按指定提纲排列四句话：先引入两盆植物，再说明它们各自的位置，随后报告一周后的生长观察，最后解释观察到的差别。保留各句原样。",
+      "tokens": [
+        {
+          "id": "c",
+          "text": "After a week, the one beside the window had grown taller than the other."
+        },
+        {
+          "id": "a",
+          "text": "We placed two similar plants in different parts of the room."
+        },
+        {
+          "id": "d",
+          "text": "This difference suggested that the amount of light mattered."
+        },
+        {
+          "id": "b",
+          "text": "One stood beside the window, while the other stood in a dark corner."
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "hint": "追踪one、the other和This difference各自需要的前文。",
+      "explanation": "依照题目指定提纲，先引入两盆，再说明位置，随后报告生长结果，最后解释这一差别；这不是声称自由叙述只有一种自然顺序。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "a": "建立两盆植物，作开头。",
+          "b": "补充两者位置，为比较提供对象。",
+          "c": "报告一周后的生长观察；按指定提纲应在位置说明之后。",
+          "d": "This difference回指生长差别而非最初位置。"
+        },
+        "shortestPath": "对象引入→位置→结果→解释",
+        "variants": "仅a,b,c,d符合指定提纲；自由叙述可以先写观察再补位置，本题不把那些次序判为不自然英语。",
+        "leakage": "旧This回指题训练通用衔接，但不提供植物时间链；本题也不教授后续空词。"
+      }
+    },
+    {
+      "id": "cet4.strength.14",
+      "type": "arrange",
+      "goalId": "cet4.controlled-translation",
+      "taskIntent": "保留交通变化对群体出行便利的作用",
+      "prompt": "用全部词块表达：“新公交线路让住在郊区的学生更容易到达校园。”不增加出行费用或速度的信息。",
+      "tokens": [
+        {
+          "id": "d",
+          "text": "to reach the campus."
+        },
+        {
+          "id": "b",
+          "text": "has made it easier"
+        },
+        {
+          "id": "a",
+          "text": "The new bus route"
+        },
+        {
+          "id": "c",
+          "text": "for students living in the suburbs"
+        }
+      ],
+      "acceptedOrders": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "hint": "先确定带来便利的事物，再连接受益者与动作。",
+      "explanation": "make it easier for someone to do保留便利与受益群体；living in the suburbs准确限定住在郊区的学生，不扩大为任何城外居民，也不把便利等同于降价或提速。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "a": "主语是新线路。",
+          "b": "说明已带来的便利变化。",
+          "c": "保留住在郊区的人群限定。",
+          "d": "明确便利针对到校。"
+        },
+        "shortestPath": "主语＋made it easier＋for人群＋to动作",
+        "variants": "仅a,b,c,d；自由翻译可使用其他词，不纳入固定词块判题。",
+        "leakage": "旧公交取消题与本题交通主题相近，但因果内容及句型不同；不展示旧because目标词。"
+      }
+    },
+    {
+      "id": "cet4.strength.15",
+      "type": "matching",
+      "goalId": "cet4.reading-integration",
+      "goalStatus": "proposed",
+      "taskIntent": "依据各服务的组合条件匹配需求",
+      "prompt": "三人各选一个合适服务。右侧有两项多余，每项最多用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "I need to scan fragile letters. I want a staff member to handle them while I watch."
+        },
+        {
+          "id": "l2",
+          "text": "I start work at 9 a.m. tomorrow and need to collect twenty paper copies by 8:30 a.m. I have a clear digital file."
+        },
+        {
+          "id": "l3",
+          "text": "I need to learn how to improve the colour in my own digital photographs."
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "Evening photo class: practise colour adjustment on your own laptop."
+        },
+        {
+          "id": "r2",
+          "text": "Document care desk: staff scan delicate papers with the owner present."
+        },
+        {
+          "id": "r3",
+          "text": "Photo printing desk: collect large colour prints three working days later."
+        },
+        {
+          "id": "r4",
+          "text": "Self-service printer: upload a file and collect copies from 7 a.m."
+        },
+        {
+          "id": "r5",
+          "text": "Scanning booth: operate the machine yourself; assistance is available by phone."
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r4"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ],
+      "hint": "每次核对任务类型以及操作人、时限或学习需求。",
+      "explanation": "脆弱信件需工作人员现场处理；现有文件须明早8:30前取纸件，r4从7点可取，满足明确截止时间；照片学习要调色课。",
+      "difficulty": "迁移",
+      "review": {
+        "optionNotes": {
+          "r1": "满足l3自主学习调色，不是代印。",
+          "r2": "同时满足l1脆弱材料、由员工操作和本人在场。",
+          "r3": "打印照片服务，但交付时间与l2不符且l3要学习。",
+          "r4": "支持上传数字文件，从7点可取，早于l2明确的8:30取件截止时间；不猜测上班时间。",
+          "r5": "可扫描但要本人操作，不满足l1。"
+        },
+        "shortestPath": "员工操作→r2；7点可取早于8:30截止→r4；学习调色→r1",
+        "variants": "只接受列明三对；多余r3、r5。",
+        "leakage": "旧打印副本、工具题没有提供这些服务组合；额外候选防止最后一项靠剩余排出。"
+      }
+    },
+    {
+      "id": "cet4.strength.16",
+      "type": "matching",
+      "goalId": "cet4.pragmatics",
+      "taskIntent": "判断学术协作邮件的主要功能和语气",
+      "prompt": "把三段邮件与其主要交际作用配对。右侧有两项多余，每项最多用一次。",
+      "left": [
+        {
+          "id": "l1",
+          "text": "Your comment on the opening paragraph helped me see the problem. I've rewritten it around a clearer example."
+        },
+        {
+          "id": "l2",
+          "text": "The dates in the attachment differ from those in your message. Which set should appear in the final notice?"
+        },
+        {
+          "id": "l3",
+          "text": "I can prepare the graphs, and you could explain the results. Would that division of work suit you?"
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "text": "提出分工方案并征求对方意见"
+        },
+        {
+          "id": "r2",
+          "text": "报告采纳反馈后的具体修改"
+        },
+        {
+          "id": "r3",
+          "text": "对未按时完成约定表达不满"
+        },
+        {
+          "id": "r4",
+          "text": "发现信息冲突后请求确定版本"
+        },
+        {
+          "id": "r5",
+          "text": "确认已经商定的任务分配"
+        }
+      ],
+      "answerPairs": [
+        {
+          "left": "l1",
+          "right": "r2"
+        },
+        {
+          "left": "l2",
+          "right": "r4"
+        },
+        {
+          "left": "l3",
+          "right": "r1"
+        }
+      ],
+      "hint": "区分已完成的修改、待解决的冲突和仍待同意的建议。",
+      "explanation": "第一段回应反馈并报告修改；第二段求证矛盾日期；第三段提出尚待同意的分工。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "r1": "匹配l3，问句保留协商权。",
+          "r2": "匹配l1，既致谢又报告已经重写。",
+          "r3": "三段都未责备延误，信息冲突不是迟交。",
+          "r4": "匹配l2，两份日期不一致需选定。",
+          "r5": "接近分工主题，但把建议升级为既定安排。"
+        },
+        "shortestPath": "rewritten→已修改；differ/which→核对；would suit→提议",
+        "variants": "列明三对；多余r3、r5。",
+        "leakage": "旧会话功能题也有澄清与协作，但本题新增反馈落实、冲突核对与分工协商；没有照搬原句或同一三功能集合。"
+      }
+    },
+    {
+      "id": "cet4.strength.17",
+      "type": "cloze",
+      "goalId": "cet4.context-vocabulary",
+      "taskIntent": "在完整记录中区分精确程度与变化过程",
+      "prompt": "选词填入两个空，每词最多一次，有两项多余。",
+      "passage": "At first, the new clock lost several minutes each day. A technician adjusted it in small stages over a week, so its performance improved {s1}, rather than in a single step. After the final adjustment, it showed the time {s2}: its reading matched the station clock exactly.",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "accurately"
+        },
+        {
+          "id": "t2",
+          "text": "gradually"
+        },
+        {
+          "id": "t3",
+          "text": "privately"
+        },
+        {
+          "id": "t4",
+          "text": "suddenly"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "t2"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "t1"
+          }
+        ]
+      ],
+      "hint": "第一个空描述改善过程，第二个空描述报时质量。",
+      "explanation": "small stages与not a single step支持gradually；与标准钟完全一致支持accurately。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "t1": "对应s2精确报时。",
+          "t2": "对应s1分阶段改善。",
+          "t3": "语法可作副词但没有私下报时或私下改善的信息。",
+          "t4": "同为过程副词，但与分阶段调整相反。"
+        },
+        "shortestPath": "small stages→gradually；matched exactly→accurately",
+        "variants": "仅所列两空映射；互换不符合语义。",
+        "leakage": "新旧其他题不呈现这两个词的拼写与教学解释；本题没有在另一处明写空词，多个前题不能拼出答案。"
+      }
+    },
+    {
+      "id": "cet4.strength.18",
+      "type": "cloze",
+      "goalId": "cet4.context-vocabulary",
+      "taskIntent": "依上下文恢复供应问题与持续表现评价",
+      "prompt": "选词填入两个空，每词最多一次，有两项多余。",
+      "passage": "A bakery could not get enough flour from its usual supplier, so production slowed during the {s1}. It then tested a different supplier for two months. Every order arrived on the agreed day and contained the right amount. The owner described this supplier as {s2} and signed a longer contract.",
+      "tokens": [
+        {
+          "id": "t1",
+          "text": "celebration"
+        },
+        {
+          "id": "t2",
+          "text": "reliable"
+        },
+        {
+          "id": "t3",
+          "text": "shortage"
+        },
+        {
+          "id": "t4",
+          "text": "ambitious"
+        }
+      ],
+      "acceptedFills": [
+        [
+          {
+            "slotId": "s1",
+            "tokenId": "t3"
+          },
+          {
+            "slotId": "s2",
+            "tokenId": "t2"
+          }
+        ]
+      ],
+      "hint": "把开头的供货问题和后面的试用记录分别概括。",
+      "explanation": "面粉不足是shortage；准时足量的持续记录支持reliable，不提供雄心的信息。",
+      "difficulty": "受控运用",
+      "review": {
+        "optionNotes": {
+          "t1": "名词可入s1但缺乏庆祝活动背景。",
+          "t2": "形容词概括s2供货表现稳定可信。",
+          "t3": "名词概括s1原料短缺。",
+          "t4": "形容词可入s2但雄心无法由交货记录推出。"
+        },
+        "shortestPath": "not enough→shortage；每次按约交付→reliable",
+        "variants": "仅所列两空映射；词性只能缩小范围，仍须语义区分。",
+        "leakage": "旧供应商未回复题没有shortage或reliable，也不教授新供货记录；17副词不为18提供名词形容词答案。"
+      }
+    }
+  ]
+}
