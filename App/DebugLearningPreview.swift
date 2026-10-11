@@ -13,12 +13,42 @@ actor DebugLearningFillStore {
     func contains(_ id: UUID) -> Bool { filled.contains(id) }
 }
 
-struct DebugLearningPreviewService: LearningServing, MainlineServing {
+actor DebugLearningDirectionStore {
+    static let shared = DebugLearningDirectionStore()
+    private var selected = ProcessInfo.processInfo.environment["UI_TEST_LEARNING_DIRECTION"] ?? "general"
+    private var revision = 0
+    private var receipts: [UUID: LearningDirections] = [:]
+    func read() -> LearningDirections {
+        .init(selectedDirection: selected, revision: revision, directions: [
+            .init(id: "general", title: "通用英语", status: "available"),
+            .init(id: "entrance-english-1", title: "考研英语一", status: "inReview"),
+            .init(id: "entrance-english-2", title: "考研英语二", status: "inReview"),
+            .init(id: "toefl-ibt-2026", title: "托福 iBT", status: "inReview"),
+            .init(id: "ielts-academic", title: "雅思 Academic", status: "inReview")
+        ])
+    }
+    func select(_ direction: String, requestID: UUID, expectedRevision: Int) throws -> LearningDirections {
+        if let receipt = receipts[requestID] { return receipt }
+        guard expectedRevision == revision else {
+            throw BackendClientError.api(code: "LEARNING_DIRECTION_CONFLICT", message: "方向已更新，请重新选择。", requestID: nil, status: 409)
+        }
+        guard read().directions.contains(where: { $0.id == direction }) else { throw BackendClientError.invalidResponse }
+        if selected != direction { selected = direction; revision += 1 }
+        let receipt = read(); receipts[requestID] = receipt
+        return receipt
+    }
+}
+
+struct DebugLearningPreviewService: LearningServing, LearningDirectionServing, MainlineServing {
     let characterID: UUID
     let roleKey: String
     var profile: EconomyStore? = nil
     private var pageState: String { ProcessInfo.processInfo.environment["UI_TEST_LEARNING_PAGE_STATE"] ?? "empty" }
     private var previewRecordID: String { "20000000-0000-4000-8000-000000000001" }
+    func learningDirections() async throws -> LearningDirections { await DebugLearningDirectionStore.shared.read() }
+    func selectLearningDirection(_ direction: String, requestID: UUID, expectedRevision: Int) async throws -> LearningDirections {
+        try await DebugLearningDirectionStore.shared.select(direction, requestID: requestID, expectedRevision: expectedRevision)
+    }
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter {
         if pageState == "error" { throw BackendClientError.transport("学习数据暂时无法载入") }
         let filled = await DebugLearningFillStore.shared.contains(characterID)

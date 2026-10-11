@@ -78,11 +78,13 @@ Scripts/preview.sh preview home           # 已构建/测试后：只安装和�
 重新生成工程，补齐新增文件的编译成员，再构建安装。只更新源码而未重新生成 `.xcodeproj`
 会造成此类报错；不要删除调用或复制定义来绕过，生成的工程文件不提交。
 
-页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（全局英语旅程；可进入水平选择与校准）、`role-learning`（角色学习页的只读预览）、`unit-challenge`（挑战控件的工程预览）。产物固定取
+页面可选 `messages`、`contacts`、`home`（活动首页）、`map`、`me`、`subscription`（会员订阅）、`learning`（全局英语旅程；可进入水平选择与校准）、`role-learning`（角色学习页的离线预览）、`unit-challenge`（挑战控件的工程预览）。产物固定取
 `build/DerivedData/Build/Products/Debug-iphonesimulator/LingoTrip.app`，可通过既有
 `LINGOTRIP_DERIVED_DATA_PATH` 覆盖；`preview` 不检查源码新旧，尚未构建的修改应使用 `build`。
 脚本自动选择完整 Xcode，无需修改系统 `xcode-select`。设备优先使用工作树绑定；未绑定时选择最新可用 iOS 运行时中的 iPhone，同一运行时优先复用已启动设备，
 可用 `LINGOTRIP_SIMULATOR_UDID` 显式指定；不创建 Clone，不关闭其他项目的设备。
+
+角色学习页方向选择可用 `SIMCTL_CHILD_UI_TEST_LEARNING_PAGE_STATE=ready SIMCTL_CHILD_UI_TEST_LEARNING_DIRECTION=ielts-academic Scripts/preview.sh preview role-learning` 检查准备中状态；`active` 场景检查既有挑战入口。方向切换仅保存于Debug内存，重启重置，不写后端。未构建最新代码时将 `preview` 换为 `build`。
 
 免登录参数通过 `SIMCTL_CHILD_` 传入：`UI_TEST_SKIP_ONBOARDING=1`、
 `UI_TEST_REQUIRE_AUTHENTICATION=0`、`UI_TEST_DISABLE_BACKGROUND_REFRESH=1`，后端固定

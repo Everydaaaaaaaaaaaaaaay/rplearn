@@ -13,9 +13,10 @@ public struct CharacterLearningView: View {
     private let beforePlayback: @Sendable () async -> Void
     @Environment(\.scenePhase) private var scenePhase
     @State private var showJourney = false
+    @State private var showDirections = false
     @State private var onlyUnfinished = false
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    public init(character: CharacterDTO, service: any LearningServing, isVisible: Bool = true,
+    public init(character: CharacterDTO, service: any LearningServing & LearningDirectionServing, isVisible: Bool = true,
                 audioSession: AudioSessionCoordinator = AudioSessionCoordinator(),
                 beforePlayback: @escaping @Sendable () async -> Void = {},
                 cycleChanged: @escaping @Sendable () async -> Void = {}) {
@@ -28,9 +29,15 @@ public struct CharacterLearningView: View {
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                if let error = model.error {
-                    LearningPageError(message: error) { Task { await model.load() } }
+                if let error = model.error ?? model.directionError {
+                    LearningPageError(message: error) {
+                        Task {
+                            if let pending = model.pendingDirection { await model.selectDirection(pending) }
+                            else { await model.load() }
+                        }
+                    }
                 }
+                directionRow
                 if let state = model.state {
                     VStack(spacing: 0) {
                         progressCard(state)
@@ -74,7 +81,29 @@ public struct CharacterLearningView: View {
                     }
             }
         }
+        .sheet(isPresented: $showDirections) {
+            LearningDirectionPicker(model: model)
+                .tint(theme.tint)
+        }
         .accessibilityIdentifier("learning.character")
+    }
+    private var directionRow: some View {
+        Button { showDirections = true } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "signpost.right").foregroundStyle(theme.tint)
+                Text(model.selectedDirection?.title ?? "选择练习方向")
+                    .font(.subheadline.weight(.semibold))
+                Spacer(minLength: 8)
+                if model.isBusy || model.isChangingDirection { ProgressView().controlSize(.small) }
+                else if model.selectedDirection?.status != "available", model.directions != nil {
+                    Text("准备中").font(.caption).foregroundStyle(.secondary)
+                }
+                Image(systemName: "chevron.down").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
+            }
+            .frame(minHeight: 44).contentShape(Rectangle())
+        }
+        .buttonStyle(.plain).foregroundStyle(.primary)
+        .accessibilityIdentifier("learning.direction")
     }
     private func progressCard(_ state: BackendLearningCharacter) -> some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -109,22 +138,24 @@ public struct CharacterLearningView: View {
     }
     private func challengeAction(_ state: BackendLearningCharacter) -> some View {
         let preparing = model.isPreparing && state.activeAttemptId == nil
+        let unavailable = state.activeAttemptId == nil && !model.canStartNewChallenge
         return Button { Task { await model.open() } } label: {
             Group {
                 if model.isBusy {
                     ProgressView().tint(Color.dsSurface)
                 } else {
-                    Image(systemName: preparing ? "arrow.clockwise" : "play.fill")
+                    Image(systemName: unavailable ? "hourglass" : preparing ? "arrow.clockwise" : "play.fill")
                         .font(.system(size: 19, weight: .semibold))
-                        .offset(x: preparing ? 0 : 1)
+                        .offset(x: preparing || unavailable ? 0 : 1)
                 }
             }
             .frame(width: 52, height: 52)
-            .foregroundStyle(Color.dsSurface)
-            .background(theme.tint, in: Circle())
+            .foregroundStyle(unavailable ? Color.secondary : Color.dsSurface)
+            .background(unavailable ? Color.secondary.opacity(0.12) : theme.tint, in: Circle())
         }
-        .buttonStyle(LearningPressStyle()).disabled(model.isBusy)
-        .accessibilityLabel(state.activeAttemptId != nil ? "继续挑战" : preparing ? "刷新状态" : "开始挑战")
+        .buttonStyle(LearningPressStyle())
+        .disabled(model.isBusy || model.isChangingDirection || (state.activeAttemptId == nil && !model.canStartNewChallenge))
+        .accessibilityLabel(state.activeAttemptId != nil ? "继续挑战" : unavailable ? "暂不可开启新挑战" : preparing ? "刷新状态" : "开始挑战")
         .accessibilityIdentifier("learning.start")
     }
     private var challengeTitle: some View {
@@ -151,6 +182,9 @@ public struct CharacterLearningView: View {
     }
     private func challengeStatus(_ state: BackendLearningCharacter) -> String {
         if state.activeAttemptId != nil { return "进行中" }
+        if model.pendingDirection != nil { return "方向待确认" }
+        if model.directions == nil { return "方向未同步" }
+        if !model.canStartNewChallenge { return "题目准备中" }
         if model.isPreparing { return "单元准备中" }
         return state.characters >= state.threshold ? "可开启" : "聊天积累中"
     }
@@ -160,12 +194,12 @@ public struct CharacterLearningView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     ViewThatFits(in: .horizontal) {
                         HStack(alignment: .firstTextBaseline) {
-                            Text(learningLevelName(journey.currentLevel)).font(.subheadline.weight(.semibold))
+                            Text(generalProgressTitle(journey)).font(.subheadline.weight(.semibold))
                             Spacer(minLength: 12)
                             nextStar(journey.current)
                         }
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(learningLevelName(journey.currentLevel)).font(.subheadline.weight(.semibold))
+                            Text(generalProgressTitle(journey)).font(.subheadline.weight(.semibold))
                             nextStar(journey.current)
                         }
                     }
@@ -177,6 +211,10 @@ public struct CharacterLearningView: View {
         .buttonStyle(LearningPressStyle()).foregroundStyle(.primary)
         .accessibilityHint("查看学习进度")
         .accessibilityIdentifier("learning.journey")
+    }
+    private func generalProgressTitle(_ journey: LearningJourney) -> String {
+        let level = learningLevelName(journey.currentLevel)
+        return model.directions?.selectedDirection == "general" ? level : "通用英语 · \(level)"
     }
     private func nextStar(_ current: LearningLevelProgress?) -> some View {
         Text((current?.stars ?? 0) >= 9 ? "9 星已达成" : "下一星  \(current?.currentStarPoints ?? 0)/\(current?.pointsPerStar ?? 60) 点")
@@ -338,7 +376,7 @@ private struct LearningMilestones: View {
     }
 }
 
-private struct LearningPageError: View {
+struct LearningPageError: View {
     let message: String
     let retry: () -> Void
     var body: some View {

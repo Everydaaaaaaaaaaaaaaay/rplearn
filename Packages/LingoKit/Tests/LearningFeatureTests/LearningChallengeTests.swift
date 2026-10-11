@@ -28,12 +28,41 @@ private func learningAttemptFixture(_ overrides: [String: Any] = [:], beats: [[S
     for (key, value) in overrides { object[key] = value }
     return try JSONDecoder().decode(LearningAttempt.self, from: JSONSerialization.data(withJSONObject: object))
 }
-private actor ChallengeService: LearningServing {
+private actor ChallengeService: LearningServing, LearningDirectionServing {
     var attempt: LearningAttempt
     var commands: [LearningAnswerCommand] = []
     var failAfterSaving = true
+    var directionState = LearningDirections(selectedDirection: "general", revision: 0, directions: [
+        .init(id: "general", title: "通用英语", status: "available"),
+        .init(id: "ielts-academic", title: "雅思 Academic", status: "inReview")
+    ])
+    var directionReadFails = false
+    var directionResponseLost = false
+    var directionCommands: [(UUID, String, Int)] = []
+    var directionReceipts: [UUID: LearningDirections] = [:]
+    var starts = 0
+    func setDirectionReadFails(_ value: Bool) { directionReadFails = value }
+    func setDirectionResponseLost(_ value: Bool) { directionResponseLost = value }
+    func changeDirectionOnOtherDevice(_ direction: String) {
+        directionState = .init(selectedDirection: direction, revision: directionState.revision + 1, directions: directionState.directions)
+    }
+    func learningDirections() async throws -> LearningDirections {
+        if directionReadFails { throw BackendClientError.transport("方向读取失败") }
+        return directionState
+    }
+    func selectLearningDirection(_ direction: String, requestID: UUID, expectedRevision: Int) async throws -> LearningDirections {
+        directionCommands.append((requestID, direction, expectedRevision))
+        if let receipt = directionReceipts[requestID] { return receipt }
+        guard expectedRevision == directionState.revision else {
+            throw BackendClientError.api(code: "LEARNING_DIRECTION_CONFLICT", message: "方向已在另一设备更改", requestID: nil, status: 409)
+        }
+        changeDirectionOnOtherDevice(direction)
+        directionReceipts[requestID] = directionState
+        if directionResponseLost { directionResponseLost = false; throw BackendClientError.transport("选择已保存但响应丢失") }
+        return directionState
+    }
     init(attempt: LearningAttempt? = nil) throws { self.attempt = try attempt ?? learningAttemptFixture() }
-    func startLearning(_ characterID: UUID, requestID: UUID) async throws -> LearningStart { throw BackendClientError.invalidResponse }
+    func startLearning(_ characterID: UUID, requestID: UUID) async throws -> LearningStart { starts += 1; throw BackendClientError.invalidResponse }
     var pageReads: Set<String> = []
     var pageError: (any Error)?
     func setPageError(_ error: any Error) { pageError = error }
@@ -225,6 +254,83 @@ struct LearningChallengeTests {
         #expect(model.error == nil)
         #expect(model.state == nil)
         #expect(!model.isBusy)
+    }
+
+    @Test("准备中方向不新开挑战，但历史补答与普通等级保留")
+    func unavailableDirectionPreservesHistory() async throws {
+        let service = try ChallengeService()
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        await model.load()
+        await model.selectDirection("ielts-academic")
+        #expect(model.directions?.selectedDirection == "ielts-academic")
+        #expect(!model.canStartNewChallenge)
+        await model.open()
+        #expect(await service.starts == 0)
+        await model.open(attemptID)
+        #expect(model.presentedAttempt?.id == attemptID)
+        #expect(model.state?.characters == 720)
+        #expect(model.journey?.current?.points == 61)
+        #expect(model.history.count == 1)
+    }
+
+    @Test("方向读取失败或未知方向不能偷偷回到普通练习，历史仍可打开")
+    func unavailableDirectionReadFailsClosed() async throws {
+        let service = try ChallengeService()
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        await model.load()
+        await service.setDirectionReadFails(true)
+        await model.load()
+        #expect(model.directions == nil)
+        #expect(model.directionError != nil)
+        await model.open()
+        #expect(await service.starts == 0)
+        await model.open(attemptID)
+        #expect(model.presentedAttempt?.id == attemptID)
+        await service.setDirectionReadFails(false)
+        await service.changeDirectionOnOtherDevice("future-exam")
+        await model.load()
+        #expect(model.directions?.selectedDirection == "future-exam")
+        #expect(!model.canStartNewChallenge)
+    }
+
+    @Test("切换响应丢失后刷新仍可重试，复用请求且显示最新跨设备选择")
+    func lostDirectionResponseSurvivesRefresh() async throws {
+        let service = try ChallengeService()
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        await model.load()
+        await service.setDirectionResponseLost(true)
+        await model.selectDirection("ielts-academic")
+        #expect(model.pendingDirection == "ielts-academic")
+        #expect(!model.canStartNewChallenge)
+        await service.changeDirectionOnOtherDevice("general")
+        await model.load()
+        #expect(model.directionError != nil)
+        #expect(model.pendingDirection != nil)
+        await model.selectDirection("general")
+        #expect(await service.directionCommands.count == 1)
+        await model.selectDirection("ielts-academic")
+        let commands = await service.directionCommands
+        #expect(commands.count == 2)
+        #expect(commands[0].0 == commands[1].0)
+        #expect(commands[0].2 == commands[1].2)
+        #expect(model.pendingDirection == nil)
+        #expect(model.directions?.selectedDirection == "general")
+        #expect(model.directions?.revision == 2)
+        #expect(model.canStartNewChallenge)
+    }
+
+    @Test("跨设备冲突刷新真实方向，不覆盖其他设备的选择")
+    func directionConflictRefreshesAuthority() async throws {
+        let service = try ChallengeService()
+        let model = CharacterLearningModel(characterID: characterID, service: service)
+        await model.load()
+        await service.changeDirectionOnOtherDevice("ielts-academic")
+        await model.selectDirection("ielts-academic")
+        #expect(model.directionError != nil)
+        #expect(model.pendingDirection == nil)
+        #expect(model.directions?.revision == 1)
+        #expect(await service.directionCommands.count == 1)
+        #expect(!model.canStartNewChallenge)
     }
 
     @Test("响应丢失后冻结答案并复用请求标识，反馈来自服务端")

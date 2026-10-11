@@ -11,20 +11,34 @@ public final class CharacterLearningModel {
     public private(set) var isBusy = false
     public private(set) var error: String?
     public private(set) var isPreparing = false
+    public private(set) var directions: LearningDirections?
+    public private(set) var directionError: String?
+    public private(set) var isChangingDirection = false
+    public private(set) var pendingDirection: String?
     public var presentedAttempt: LearningAttempt?
     public let characterID: UUID
-    let service: any LearningServing
+    let service: any LearningServing & LearningDirectionServing
     private let cycleChanged: @Sendable () async -> Void
     private var startRequestID = UUID()
+    private var directionRequest: (id: UUID, revision: Int)?
 
-    public init(characterID: UUID, service: any LearningServing,
+    public var selectedDirection: LearningDirectionOption? {
+        directions?.directions.first { $0.id == directions?.selectedDirection }
+    }
+    public var canStartNewChallenge: Bool {
+        pendingDirection == nil && selectedDirection?.status == "available"
+    }
+
+    public init(characterID: UUID, service: any LearningServing & LearningDirectionServing,
                 cycleChanged: @escaping @Sendable () async -> Void = {}) {
         self.characterID = characterID; self.service = service
         self.cycleChanged = cycleChanged
     }
     public func load() async {
-        guard !isBusy else { return }
+        guard !isBusy, !isChangingDirection else { return }
         isBusy = true; error = nil
+        directions = nil
+        directionError = pendingDirection == nil ? nil : "上次方向切换尚未确认，请重试。"
         defer { isBusy = false }
         do {
             async let character = service.learningCharacter(characterID)
@@ -35,6 +49,38 @@ public final class CharacterLearningModel {
             state = values.0; journey = values.1; history = values.2.items; nextCursor = values.2.nextCursor
             isPreparing = ["pending", "running", "review"].contains(state?.generationStatus ?? "")
         } catch is CancellationError {} catch { self.error = error.localizedDescription }
+        do {
+            let current = try await service.learningDirections()
+            guard !Task.isCancelled else { return }
+            directions = current
+        } catch is CancellationError {} catch { directionError = error.localizedDescription }
+    }
+    public func selectDirection(_ direction: String) async {
+        guard !isBusy, !isChangingDirection else { return }
+        if let pendingDirection {
+            guard pendingDirection == direction else { return }
+        } else {
+            guard let directions, directions.directions.contains(where: { $0.id == direction }),
+                  direction != directions.selectedDirection else { return }
+            directionRequest = (UUID(), directions.revision)
+            pendingDirection = direction
+        }
+        guard let request = directionRequest else { return }
+        isChangingDirection = true; directionError = nil; directions = nil
+        defer { isChangingDirection = false }
+        do {
+            _ = try await service.selectLearningDirection(direction, requestID: request.id, expectedRevision: request.revision)
+            pendingDirection = nil; directionRequest = nil
+            // 幂等重放可能返回较早的收据，展示前重新读取跨设备权威选择。
+            directions = try await service.learningDirections()
+        } catch {
+            if case BackendClientError.api(let code, _, _, _) = error,
+               code == "LEARNING_DIRECTION_CONFLICT" {
+                pendingDirection = nil; directionRequest = nil
+                directions = try? await service.learningDirections()
+            }
+            directionError = error.localizedDescription
+        }
     }
     public func loadMore() async {
         guard !isBusy, let nextCursor else { return }
@@ -47,7 +93,9 @@ public final class CharacterLearningModel {
         } catch { self.error = error.localizedDescription }
     }
     public func open(_ id: UUID? = nil) async {
-        guard !isBusy else { return }
+        guard !isBusy, !isChangingDirection else { return }
+        // 方向不可用只阻止新开；历史和进行中的挑战按原快照继续。
+        guard id != nil || state?.activeAttemptId != nil || canStartNewChallenge else { return }
         isBusy = true; error = nil
         defer { isBusy = false }
         do {
