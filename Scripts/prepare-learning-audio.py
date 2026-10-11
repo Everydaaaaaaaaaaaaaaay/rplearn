@@ -13,7 +13,9 @@ assert root.is_relative_to(repo_root / 'build'), '仅允许本仓库build内音�
 cache=repo_root / 'build/learning-audio-20260926/models'
 contractions={"i'm":"i am","it's":"it is","we're":"we are","didn't":"did not","we've":"we have","isn't":"is not","don't":"do not","i'll":"i will","i'd":"i would","where's":"where is","they're":"they are"}
 numbers={"1":"one","2":"two","3":"three","7":"seven","12":"twelve","4":"four","5":"five","6":"six","8":"eight","9":"nine","10":"ten","40":"forty"}
-orthography={"practise":"practice"}
+# 只处理明确英美拼写和不可听辨的所有格撇号；保留末尾s，不容许漏词或改变时态。
+# 两个名词的原始ASR文本仍保存，避免为了标点差异反复生产完全相同的录音。
+orthography={"practise":"practice", "recognise":"recognize", "week's":"weeks", "engineer's":"engineers"}
 def norm(s):
     # ASR货币书写展开，不删除金额或币种；原始识别原文仍保留。
     s=re.sub(r"\$(\d+)",r"\1 dollars",s)

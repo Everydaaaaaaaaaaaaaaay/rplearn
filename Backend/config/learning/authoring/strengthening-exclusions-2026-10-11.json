@@ -1,0 +1,86 @@
+{
+  "reviewedAt": "2026-10-11",
+  "reviewedBy": "Astra分级逐题自审，Codex主代理复核",
+  "scope": "五组具体语言形式的直接示范；仅候选关系，未写入正式题库。真实发布须保留线上版本及已有互斥。",
+  "decisions": [
+    "四级a10/a16已有review.20261011.because已发布修订，本批不重复创建；b06只是出现题面词池已有的because，不追加互斥。",
+    "六级六组建议多是来源比较、观点归属等方法迁移，没有给出完整答案；不作硬互斥，保留教学训练而不声称相互独立测量。"
+  ],
+  "pairs": [
+    {
+      "id": "s3.strength10-whether-subject",
+      "reason": "新排序题直接示范Whether主语从句，旧填空正要求相同连接形式。",
+      "members": [
+        {
+          "newQuestionId": "s3.strength.10"
+        },
+        {
+          "unitId": "marcus.senior3.interview-summary",
+          "unitVersion": 1,
+          "questionId": "q5",
+          "bankId": "question.20a1967c3361748c73421cf672476e651b508e2b8076bb5e37e32a65db51b63c"
+        }
+      ]
+    },
+    {
+      "id": "s3.strength10-whether-object",
+      "reason": "新题给出whether表示是否，旧题只需相同完整可接受连接词。",
+      "members": [
+        {
+          "newQuestionId": "s3.strength.10"
+        },
+        {
+          "unitId": "marcus.senior3.interview-summary",
+          "unitVersion": 1,
+          "questionId": "q2",
+          "bankId": "question.a067e9c865ee1ad688192c5e6ad19e04b5ba575c82a88d1161256dc751469675"
+        }
+      ]
+    },
+    {
+      "id": "s3.strength02-whether-object",
+      "reason": "tested whether直接展示待核查是否的宾语从句用法。",
+      "members": [
+        {
+          "newQuestionId": "s3.strength.02"
+        },
+        {
+          "unitId": "marcus.senior3.interview-summary",
+          "unitVersion": 1,
+          "questionId": "q2",
+          "bankId": "question.a067e9c865ee1ad688192c5e6ad19e04b5ba575c82a88d1161256dc751469675"
+        }
+      ]
+    },
+    {
+      "id": "s3.strength03-whether-object",
+      "reason": "discover whether直接展示本题待填写的宾语从句结构。",
+      "members": [
+        {
+          "newQuestionId": "s3.strength.03"
+        },
+        {
+          "unitId": "marcus.senior3.interview-summary",
+          "unitVersion": 1,
+          "questionId": "q2",
+          "bankId": "question.a067e9c865ee1ad688192c5e6ad19e04b5ba575c82a88d1161256dc751469675"
+        }
+      ]
+    },
+    {
+      "id": "s3.strength01-whereas-contrast",
+      "reason": "新阅读通过whereas直接对照两类信息，旧题要求同一对照连接形式。",
+      "members": [
+        {
+          "newQuestionId": "s3.strength.01"
+        },
+        {
+          "unitId": "companion.senior3.paper-boat",
+          "unitVersion": 1,
+          "questionId": "s3.second.q08",
+          "bankId": "question.fc656b20a237d07d21791255cacec0abc072b372624c48c57be47430d3a9940a"
+        }
+      ]
+    }
+  ]
+}

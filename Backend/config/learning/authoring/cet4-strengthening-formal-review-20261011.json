@@ -1,0 +1,689 @@
+{
+  "unitId": "companion.undergraduate.strengthening-20261011",
+  "contentHash": "0b3e4adc2464b9191b29ca9649450e471bff422d36255123160e44beca2a3152",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "Codex主代理纸面主审；结构转换代理逐题对照",
+  "reviewedAt": "2026-10-11",
+  "roleFit": "通用同行者完整折纸故事仅承担开场，题内第三方场景自足，不把教学材料误作当前角色的经历。",
+  "levelFit": "保持undergraduate四级身份；题目为熟悉题材应用信息、短听力、受控词汇译义及衔接，支架强度不冒充完整考试能力。",
+  "limitations": "本approved仅表示本稿逐题文本与判分合同的作者自审，不表示媒体、目录、线上发布或原生连续作答通过。三听力仍缺音频；目标登记与实际混卷另验。contentHash绑定待媒体canonical，音频填入后必须重新核验并更新审核哈希。",
+  "questions": [
+    {
+      "questionId": "cet4.strength.01",
+      "standaloneContext": "付款、完好归还和押金退还条件均在本题给出，无需故事或前题。",
+      "ambiguityReview": "题目要求概括退钱性质且限定三词，只有refundable合意；payable虽可描述应付押金但不是本题所问。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "refundable"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " REFUNDABLE! "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "payable"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.02",
+      "standaloneContext": "接受邀请、家庭紧急事件和通知撤回都在本题，have明确限定所填形式。",
+      "ambiguityReview": "限词池下只接受withdrawn；withdrew不符合完成时，reject不能表示本人撤回已作接受，confirm含义相反。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "withdrawn"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " WITHDRAWN. "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "withdrew"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.03",
+      "standaloneContext": "题内中文明确两人交替检查且不是同时，英语提供take与checking完整框架。",
+      "ambiguityReview": "turns是限定词池中唯一表达轮流者；risks虽可成句但意义改变，steps不符合搭配。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "turns"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " TURNS! "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "risks"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.04",
+      "standaloneContext": "完整志愿者邮件随题给出，包含换组回复、默认原位、统一集合和天气更新条件。",
+      "ambiguityReview": "c同时保留原组和九点集合；a扩大回复条件，b混同天气与名额，d把培训误作自动换组。",
+      "optionNotes": {
+        "a": "把换组的回复要求误加给保留名额者。",
+        "b": "把天气更新当成名额确认，混淆两个条件。",
+        "c": "正确整合原名额保留与统一集合要求。",
+        "d": "培训不表示自动转组。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.05",
+      "standaloneContext": "短新闻完整保留卖方、居民、慈善组织及城镇的不同动作，摘要依据无需外部新闻常识。",
+      "ambiguityReview": "a概括免费共享桌及实物支持；b变成买卖，c变成付补贴，d把询问信息夸大成已经联合配送。",
+      "optionNotes": {
+        "a": "保留主体机制和支持方式，不把询问信息说成实施。",
+        "b": "慈善组织实际称重，并非买卖。",
+        "c": "把实物场地支持改成向摊主付款。",
+        "d": "把其他市场询问改成联合配送。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.06",
+      "standaloneContext": "文章同时给出屏幕作用的观点、彩绘碗例子和返回实物的归纳，可在本题判断篇章功能。",
+      "ambiguityReview": "d对应手机帮助细看实物；数字替代、检查损伤与必需培训都改变原文功能，例证不等于替代展品。",
+      "optionNotes": {
+        "a": "数字副本相关，但文中返回实物，与替代相反。",
+        "b": "误把观察细纹改为检查损坏，并更换图片来源。",
+        "c": "把有帮助的工具误写成训练前提。",
+        "d": "准确概括放大屏幕细节后返回实物细看的例证作用。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.07",
+      "standaloneContext": "网站总时段、地图室临时关闭、复制件所在房间及本人到达时间均显式给定。",
+      "ambiguityReview": "b满足四点仍在总开放时段且复制件可在阅览室看；预约不能延长地图室开放，原件不能未经申请领取。",
+      "optionNotes": {
+        "a": "房间三点关且原件须提前申请。",
+        "b": "四点仍在总开放时段，阅览室可看复制件且无需提前申请。",
+        "c": "阅览室仍开不能取消原件申请规则。",
+        "d": "预约复制件不能延长地图室开放。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.08",
+      "standaloneContext": "收据金额较高、原因未知、只要求费用明细及暂不取消退款在题内明示。",
+      "ambiguityReview": "四条回复均礼貌自然，c仅核实构成；取消、预断收费错误与准备补付款均超出当前交际目标。",
+      "optionNotes": {
+        "a": "礼貌自然，但要求取消。",
+        "b": "礼貌自然，但先判定收费错误。",
+        "c": "正式程度适合服务邮件，准确索取明细。",
+        "d": "先接受需补款，未询问差额原因。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.09",
+      "standaloneContext": "中文给出自去年起、定期清理与两个结果，候选自足，无需另一道河流调查题。",
+      "ambiguityReview": "a保留全部语义；自然的Until last year在b中反转时间界限，c倒置因果先后，d只保留计划而非已发生行动。",
+      "optionNotes": {
+        "a": "保留自去年以来定期清理的实际行动及环境和邻里两个效果。",
+        "b": "把持续至今改为去年已结束。",
+        "c": "把行动效果改成此前已改善的背景。",
+        "d": "把实际清理改成计划。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.10",
+      "standaloneContext": "完整双人脚本提供守入口收货、先介绍、后带队及照片安排，实际题目必须配录音才能独立作答。",
+      "ambiguityReview": "b用before准确对应B介绍后A带队；a错配角色，c把货物换成照片，d倒置时间，不能靠先前分工题代答。",
+      "optionNotes": {
+        "a": "把第一人的带队工作给第二人。",
+        "b": "明确先由第二人介绍，再由第一人带队，不表示两件事同时发生。",
+        "c": "待收的是货，照片由第二人带来。",
+        "d": "把参观前介绍放到参观后。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.11",
+      "standaloneContext": "完整广播脚本给出旧寄修方式、访客学习需要、新参与方式以及免费地点未变，仍待真实录音。",
+      "ambiguityReview": "d是明确报告的改变原因；空间不足、需付款、志愿者不熟设备虽现实可能但均未在脚本出现。",
+      "optionNotes": {
+        "a": "储物空间可能是现实原因，但脚本未报告。",
+        "b": "把参与劳动误解为分担费用。",
+        "c": "把简单任务误解为志愿者不会使用设备。",
+        "d": "直接对应访客学习需求。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.12",
+      "standaloneContext": "完整留言含试吃评价、对继续比较的回应、明确预订和晚间报人数，本题不依赖旧预约题。",
+      "ambiguityReview": "a保留已决定预订且稍后报人数；其他项各自增加改进、比较或再试吃前提，与go ahead and book不符。",
+      "optionNotes": {
+        "a": "符合go ahead and book及随后报人数。",
+        "b": "编造修改菜品这个前提。",
+        "c": "把被否定的继续比较当成决定。",
+        "d": "把已完成试吃改成还需集体试吃。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.13",
+      "standaloneContext": "四句包含对象、各自位置、一周观察和解释；题面明确指定提纲，不需依据故事窗边场景推断。",
+      "ambiguityReview": "指定提纲下完整合法答案为a,b,c,d。自由叙述可先观察后补位置，但不满足本题受控提纲，解释未将其判作不自然英语。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["a", "b", "c", "d"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["a", "c", "b", "d"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.14",
+      "standaloneContext": "中文明确新线路、住在郊区的学生和到校园便利；四个完整词块含所有必要成分。",
+      "ambiguityReview": "固定词块及句末标点下a,b,c,d保留原意；in the suburbs不扩大范围，受控答案不否定换词或调整标点后的自由译法。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["a", "b", "c", "d"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["a", "c", "b", "d"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.15",
+      "standaloneContext": "三项需求各自给定操作人、8:30截止或学习目的，五个服务候选提供判断所需条件。",
+      "ambiguityReview": "完整映射l1-r2、l2-r4、l3-r1；r3三天交付不达时限，r5本人操作不满足工作人员处理。与16同映射须由右列独立重排控制位置提示。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r4"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r5"
+              },
+              {
+                "left": "l2",
+                "right": "r4"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.16",
+      "standaloneContext": "三封邮件完整给出采纳反馈后重写、两份日期矛盾及征求分工意见，交际作用不依赖故事或前题。",
+      "ambiguityReview": "完整映射l1-r2、l2-r4、l3-r1；r5将仍待同意的提议升级为已定，r3虚构不满。与15位置一致不构成语义变体。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r4"
+              },
+              {
+                "left": "l3",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r2"
+              },
+              {
+                "left": "l2",
+                "right": "r4"
+              },
+              {
+                "left": "l3",
+                "right": "r5"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.17",
+      "standaloneContext": "独立passage给出分阶段调钟及最终与标准钟一致，两空标记和四副词完整保存。",
+      "ambiguityReview": "s1-t2与s2-t1是唯一完整填法；突然与分阶段相反，私下无证据，词性相同仍须语义判断，不接受互换。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "t2"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "t1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "t1"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "t2"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet4.strength.18",
+      "standaloneContext": "独立passage包含面粉不足、试用两个月及每单准时足量，足以判断名词和评价词。",
+      "ambiguityReview": "s1-t3与s2-t2是唯一完整填法；庆祝无背景，雄心不能由交付记录推出，每空词性相符干扰仍保留。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "t3"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "t2"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "t1"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "t4"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

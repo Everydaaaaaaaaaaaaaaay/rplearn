@@ -1,0 +1,753 @@
+{
+  "unitId": "companion.postgraduate.pocket-star-strengthening",
+  "contentHash": "b92cd01f6437d750ea922442e65e756283ccfc0286debd705e7f202b607bc78d",
+  "status": "approved",
+  "reviewKind": "author-self-review",
+  "reviewer": "六级Astra作者原审阅与Codex逐题结构适配自审；媒体验收待根代理",
+  "reviewedAt": "2026-10-11",
+  "roleFit": "完整纸星星故事前置，未绑定玩家职业、姓名或固定同行者；18题材料各自独立，适用于companion角色的学习环节。",
+  "levelFit": "六级短篇教学切片包含来源比较、长句归属、论证与听辨，三个精确动作填空及双空题提供受控巩固；不以短材料代替正式整卷或自由产出测量。",
+  "limitations": "approved仅表示本文件逐题纸面自审批准，当前canonical仍待三段真实音频与目标登记，不能导入发布；未完成原生连续作答、媒体独立核听或全池混卷验收。制音后必须重算最终单元contentHash并由根代理确认审阅仍覆盖最终内容。",
+  "questions": [
+    {
+      "questionId": "cet6.strength.01",
+      "standaloneContext": "图书馆段落独立说明严肃邮件、访谈和日历按钮三阶段结果，选择机制所需信息均在本题。",
+      "ambiguityReview": "b将路上读信、回家遗忘与日历提示连接。原友好语气已存在，不能把效果全归于恢复友好；访谈也未被描述为劝诫。材料支持一种机制但不证明唯一原因。",
+      "optionNotes": {
+        "a": "friendly是恢复原措辞，原来的友好文本已未解决问题；把变化归于语气忽略按钮。",
+        "b": "由遗忘环节与提示功能推断行动支持。",
+        "c": "原文没有读者怀疑是否逾期，正式语气也未传递这种歧义。",
+        "d": "访谈对象只是部分借阅者，材料未把访谈描述成劝诫。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.02",
+      "standaloneContext": "专栏全文同时提供合并运输的可能收益、宣传方式及作者要求的路线数据，无须先读其他文章。",
+      "ambiguityReview": "c准确识别先承认可取之处再质疑宣传尺度。can reduce仅说可能，不等于已有减流量证据；批评针对公开主张的支持，不是慢配送本身。",
+      "optionNotes": {
+        "a": "文本提及顾客选项，却未将顾客偏好确立为主要障碍。",
+        "b": "解释正常预期的广告句是批评背景，不能说明承认合并好处的论证作用。",
+        "c": "准确区分可能收益与宣传证据。",
+        "d": "把can reduce偷换为已发生的流量减少。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.03",
+      "standaloneContext": "两报告的半年窗口和journeys单位已在本段对齐，公司的目的地改变及市政入镇计数也独立交代。",
+      "ambiguityReview": "a用观察总体及目的地差异解释相反结果能并存。b/c违背明确相同的单位/时间；d擅加市政排除上坡行程的规则。不能将所有来源冲突默认解释掉。",
+      "optionNotes": {
+        "a": "保留目的地与观察总体差异。",
+        "b": "两份均数journeys，不是people。",
+        "c": "两份同一半年，搬迁也早于开放，时间错置。",
+        "d": "把办公室在坡上添加成市政排除坡上行程的统计规则。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.04",
+      "standaloneContext": "原句完整保留董事会、技术员、供应商及管理人员各自行为，问题只要求概括这一句。",
+      "ambiguityReview": "d保留批准更换与不接受消除延误承诺。它省略部分来源细节而未扭曲保留信息；a/b错分归属，c添加供应商已证明缺人无关的事实。",
+      "optionNotes": {
+        "a": "技术员判断设备可靠性，未报告staffing delays。",
+        "b": "把管理人员的人员短缺归因改为设备归因。",
+        "c": "未给供应商反证缺人不是原因；获批不表示该反证存在。",
+        "d": "保留行动决定与拒绝背书的区别，不补充延误已消除。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.05",
+      "standaloneContext": "博物馆指南的提问、单一授权答案、预定结论和评论末句均在题内，故事中的安静音乐不是解题材料。",
+      "ambiguityReview": "b由邀请参与与答案受限的落差解释quiet conversation。其余项分别转为环境噪声、知识不足或独立反思优势，均没有本段依据。",
+      "optionNotes": {
+        "a": "按quiet字面解成环境噪声，文本未谈声学。",
+        "b": "由形式与实质落差推出评价。",
+        "c": "缺历史知识是一种可信博物馆问题，但没有本段证据。",
+        "d": "把批评解释成对独立反思成效的肯定，忽略预定答案。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.06",
+      "standaloneContext": "设计师原邮件明确两轮、每轮一份汇总清单及另议追加工作，团队成员分日评论的风险也明确提供。",
+      "ambiguityReview": "c按原定义提出两次汇总清单，解决实际轮次消耗。a把项目轮次扩大到每人，b要追加免费服务，d提前询价仍未解决零散提交；四项礼貌程度不决定答案。",
+      "optionNotes": {
+        "a": "将项目总两轮误读为每人两轮。",
+        "b": "请求追加免费服务，没有避免原两轮误用。",
+        "c": "准确安排两份汇总清单。",
+        "d": "提前加购解决预算预案，仍未解决多人零散发送会消耗轮次。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.07",
+      "standaloneContext": "四轮录音独立提供八分钟时限、完整报告后发、两个典型评论及末轮确认；不依赖之前的工作题。",
+      "ambiguityReview": "a同时保留减少屏幕评论与解释所选例子的含义。b保留全量、c转向报告编写、d继续美化均偏离第二位意图。脚本纸面通过，实际声线和可听辨性仍须制音核听。",
+      "optionNotes": {
+        "a": "数量和解释深度均符合。",
+        "b": "保留全量并压缩解释，方向相反。",
+        "c": "报告稍后可读不是要求介绍编写过程。",
+        "d": "沿用第一人的建议，忽略第二人的内容取舍。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.08",
+      "standaloneContext": "独白完整交代宣传册范围、旧机序列号核验、书面确认、足够预算与本周采购建议，行动依据不在前题。",
+      "ambiguityReview": "d采购旧规格与当前已核验对象一致。b等待更正宣传册是过度延后，a把现产品线资料套给旧机，c更换机器超出建议；不以专家身份本身替代适用性证据。",
+      "optionNotes": {
+        "a": "当前产品线资料不适用旧批次。",
+        "b": "与不要等待宣传册改正的决定相反，是过度审慎诱项。",
+        "c": "替换的是滤芯，未建议购置新设备。",
+        "d": "具体核验支持立即采购旧规格。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": true
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.09",
+      "standaloneContext": "学术对话明确匿名公开同意已经取得，并提供村内唯一夜班面包师的识别例子及后续检查条件。",
+      "ambiguityReview": "b是姓名外线索仍可能识别身份。a否认已有同意，c添加核验必须知道姓名，d把身份保护变成核实证词；公开同意与充分匿名不能合并成一个条件。",
+      "optionNotes": {
+        "a": "忽略明确已有匿名发表同意。",
+        "b": "对应具体例子及末轮other clues。",
+        "c": "将可检查解释误读为必须知道真实身份。",
+        "d": "将身份线索问题误成证词真伪。"
+      },
+      "probes": [
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "a"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "b"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "c"
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "choice",
+            "optionId": "d"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.10",
+      "standaloneContext": "编辑删去两个例子、减少重复但保留建议的记录在本题；四个过去式词只从题面词库选。",
+      "ambiguityReview": "仅condensed同时符合精简与主张不变。reversed反转、suspended暂缓、expanded扩展均不符；shortened即使近义也不属于封闭候选，不新增自由改写判分。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "condensed"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " CONDENSED! "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "expanded"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.11",
+      "standaloneContext": "研究发现、松动电缆误信号及公开声明原主张不再有效组成完整纠错链，作答不需要专业仪器知识。",
+      "ambiguityReview": "retracted撤去原断言效力；qualified仅加限制，力度不足；reiterated重申、anticipated预见也不合。原文是完整撤回而非只补条件，因此不接受qualified。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "retracted"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " RETRACTED. "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "qualified"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.12",
+      "standaloneContext": "本题提供总额12000英镑、已转拨2000及两用途7000/5000最终金额，时态和不等额事实均独立明确。",
+      "ambiguityReview": "reallocated是现有额度用途重分。depleted减少总额、supplemented增补、equalised均分都违背材料；已完成转拨与过去式一致，不把计划偷换成已执行。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "text",
+            "text": "reallocated"
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": " REALLOCATED? "
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "text",
+            "text": "equalised"
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.13",
+      "standaloneContext": "中文要求独立限定推迟的是发表、等待独立读者检查特定段落，全部四块已给，不需故事或前题补宾语。",
+      "ambiguityReview": "仅a-b-c-d使postponed接publication、checked接passages并由that限定。until只限定发表不能早于检查完成，不能推出届时一定发表或已有发表许可。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["a", "b", "c", "d"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["a", "c", "d", "b"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.14",
+      "standaloneContext": "四个完整句子共同交代最初门宽解释、另一入口反向观察、标识假说及其检验，题面明确要求阶段顺序。",
+      "ambiguityReview": "d-c-b-a满足initially、also/however、this pattern、this explanation指代链。d-b-c-a虽可勉强拼成散文，但提前给pattern且违反题面先观察后替代解释要求；不将它单称语法错误。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["d", "c", "b", "a"]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "arrange",
+            "tokenIds": ["d", "b", "c", "a"]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.15",
+      "standaloneContext": "三条来源记录各自给出对象、截止时间或最终名单一致条件；右侧四项中有一个未用，不需消元强配。",
+      "ambiguityReview": "l1-r1对齐分母，l2-r2解释后续修订，l3-r3核查同名单同定义下计数差。r4数量/比例无对应。前题能教方法但不能替代逐条事实，本题不独立重复计量同一比较能力。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l3",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l1",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r4"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.16",
+      "standaloneContext": "三句会议简报独立指明出席记录、组织者解释与作者价值判断，writer/organiser承担者均明确。",
+      "ambiguityReview": "l1-r1是有记录的数量变化，l2-r2是未背书的他人解释，l3-r3是作者价值标准；r4试验证明在材料中不存在。数量增长和归因陈述均不能自动构成因果试验。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r1"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l3",
+                "right": "r3"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l1",
+                "right": "r1"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "matching",
+            "pairs": [
+              {
+                "left": "l1",
+                "right": "r4"
+              },
+              {
+                "left": "l2",
+                "right": "r2"
+              },
+              {
+                "left": "l3",
+                "right": "r3"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.17",
+      "standaloneContext": "本题passage完整定义先匿名后面会和起初附履历但不面试两套选拔方案，两个空依各自方案事实回指。",
+      "ambiguityReview": "仅s1=c、s2=a保留两个方案在不同阶段的身份信息。Either/Neither均能接would但事实不符，逆序会交换属性；已使用返修新版，不再把however/therefore作为填词。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "c"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "a"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "a"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "c"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "c"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    },
+    {
+      "questionId": "cet6.strength.18",
+      "standaloneContext": "独立passage说明多语言录音到英文报告，以及住址从公开转录移至受限档案；两空不引用别题材料。",
+      "ambiguityReview": "仅s1=a translated、s2=c omitted同时保留语言转换与公开删节。fabricated违背原意完整，repeated不能解释跨语言理解；与09有匿名主题支架，不作为独立隐私决策证据。",
+      "optionNotes": {},
+      "probes": [
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "a"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "c"
+              }
+            ]
+          },
+          "correct": true
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "c"
+              },
+              {
+                "slotId": "s2",
+                "tokenId": "a"
+              }
+            ]
+          },
+          "correct": false
+        },
+        {
+          "answer": {
+            "kind": "cloze",
+            "fills": [
+              {
+                "slotId": "s1",
+                "tokenId": "a"
+              }
+            ]
+          },
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
