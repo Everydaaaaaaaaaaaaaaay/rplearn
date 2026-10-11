@@ -71,6 +71,38 @@ describe("公共题库内容与组卷", () => {
     );
   });
 
+  it("末槽只有一题时先处理约束，不为无解分支耗尽十八题搜索预算", () => {
+    const { candidates: fixture, blueprint: base } = exclusionFixture();
+    const seed = required(fixture[0]);
+    // 仅构造搜索图的工程夹具，不生成教学内容：旧算法需先遍历2^16个无效组合。
+    const candidates: BankCandidate[] = Array.from({ length: 18 }, (_, index) =>
+      Array.from({ length: index === 17 ? 1 : 2 }, (_, variant) => ({
+        ...seed,
+        id: `test.branch.${String(index)}.${String(variant)}`,
+        question: { ...seed.question, goalId: `test.branch.goal${String(index)}` },
+        exclusionGroupIds:
+          (index === 0 && variant === 0) || index === 17 ? ["test.end-conflict"] : [],
+      })),
+    ).flat();
+    const blueprint = bankBlueprintSchema.parse({
+      ...base,
+      slots: Array.from({ length: 18 }, (_, index) => ({
+        goalId: `test.branch.goal${String(index)}`,
+        type: seed.question.type,
+      })),
+    });
+    const selected = required(
+      assembleBankQuestions(blueprint, candidates, "anyone", new Set(), () => 0),
+    );
+    expect(selected).toHaveLength(18);
+    expect(selected[0]?.id).toBe("test.branch.0.1");
+    expect(selected[17]?.id).toBe("test.branch.17.0");
+    expect(new Set(selected.map((q) => q.id)).size).toBe(18);
+    expect(selected.map((q) => q.question.goalId)).toEqual(
+      blueprint.slots.map((slot) => slot.goalId),
+    );
+  });
+
   it("互斥关系不随题序失效，也不会用冲突题或少题强行交卷", () => {
     const { candidates, blueprint } = exclusionFixture();
     required(candidates[0]).exclusionGroupIds = ["test.answer", "test.other"];

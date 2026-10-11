@@ -150,32 +150,48 @@ export function assembleBankQuestions(
   });
   if (choices.some((items) => items.length === 0)) return null;
   const used = new Set<string>();
-  const selected: BankQuestion[] = [];
-  // 互斥约束可能让前面的随机选择堵住后续插槽；有限回溯寻找完整合法试卷。
+  const occupiedGroups = new Set<string>();
+  const selected: (BankQuestion | undefined)[] = Array.from(
+    { length: choices.length },
+    () => undefined,
+  );
+  // 先填当前可选题最少的槽，避免为末尾已无解的槽枚举前面大量排列。
+  // 搜索顺序独立于呈现顺序，结果仍放回原插槽；不增加有界搜索预算。
   let remainingVisits = 10_000;
-  const fill = (slot: number): boolean => {
-    if (slot === choices.length) return true;
-    for (const candidate of choices[slot] ?? []) {
+  const fill = (remaining: number): boolean => {
+    if (remaining === 0) return true;
+    let slot = -1;
+    let available: BankCandidate[] | undefined;
+    for (let index = 0; index < choices.length; index++) {
+      if (selected[index]) continue;
+      const viable = (choices[index] ?? []).filter(
+        (candidate) =>
+          !used.has(candidate.id) &&
+          !candidate.exclusionGroupIds?.some((group) => occupiedGroups.has(group)),
+      );
+      if (viable.length === 0) return false;
+      if (!available || viable.length < available.length) {
+        slot = index;
+        available = viable;
+      }
+    }
+    for (const candidate of available ?? []) {
       if (--remainingVisits < 0) return false;
-      if (used.has(candidate.id)) continue;
-      if (
-        selected.some((previous) =>
-          candidate.exclusionGroupIds?.some((group) =>
-            previous.exclusionGroupIds?.includes(group),
-          ),
-        )
-      )
-        continue;
       used.add(candidate.id);
-      selected.push(candidate);
-      if (fill(slot + 1)) return true;
-      selected.pop();
+      for (const group of candidate.exclusionGroupIds ?? []) occupiedGroups.add(group);
+      selected[slot] = candidate;
+      if (fill(remaining - 1)) return true;
+      selected[slot] = undefined;
       used.delete(candidate.id);
+      for (const group of candidate.exclusionGroupIds ?? [])
+        occupiedGroups.delete(group);
       if (remainingVisits < 0) return false;
     }
     return false;
   };
-  return fill(0) ? selected : null;
+  return fill(choices.length)
+    ? selected.filter((candidate): candidate is BankQuestion => candidate !== undefined)
+    : null;
 }
 
 const scenes = {
