@@ -215,10 +215,18 @@ export async function loadCuratedCatalog(directory: string): Promise<CuratedCata
         fail(`题目 ${question.id} 引用了未审核的图片。`);
       if (images.length > 0 && !checked.imageReview)
         fail(`题目 ${question.id} 缺少图片语义、替代描述及答案泄露审核。`);
-      // 多空题的操作语可以相同；复用公共题库材料身份，正文、候选和局部编号归一规则一致。
+      // 目录判重忽略大小写，公共题身份保持原规则，避免改变已发布题目的编号。
       const fingerprint =
         question.type === "cloze"
-          ? bankIdentity(question)
+          ? bankIdentity({
+              ...question,
+              prompt: question.prompt.toLowerCase(),
+              passage: question.passage.toLowerCase(),
+              tokens: question.tokens.map((token) => ({
+                ...token,
+                text: token.text.toLowerCase(),
+              })),
+            })
           : contentHash({
               type: question.type,
               prompt: question.prompt.trim().toLowerCase(),

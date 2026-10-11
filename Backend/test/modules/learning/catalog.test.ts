@@ -124,7 +124,7 @@ describe("原创课程发布门槛", () => {
     await expect(loadCuratedCatalog(directory)).rejects.toThrow("与题库中已有题干重复");
   });
 
-  it("多空题相同操作语按正文与候选区分，改编号不绕过重复检查", async () => {
+  it("多空题按正文与候选区分，改编号或大小写不绕过重复检查", async () => {
     const directory = await copyCatalog();
     const id = "oliver.primary3.reading-circle";
     const unitPath = join(directory, "units", `${id}.json`);
@@ -191,6 +191,15 @@ describe("原创课程发布门槛", () => {
     await save();
     await expect(loadCuratedCatalog(directory)).resolves.toBeDefined();
     unit.questions[1] = cloze(1, "The first record has {x} and {y}.", true);
+    await save();
+    await expect(loadCuratedCatalog(directory)).rejects.toThrow("与题库中已有题干重复");
+    const duplicate = cloze(1, "the FIRST record has {x} and {y}.", true);
+    if (duplicate.type !== "cloze") throw new Error("工程夹具必须为多空题。");
+    duplicate.tokens = duplicate.tokens.map((token) => ({
+      ...token,
+      text: token.text.toUpperCase(),
+    }));
+    unit.questions[1] = duplicate;
     await save();
     await expect(loadCuratedCatalog(directory)).rejects.toThrow("与题库中已有题干重复");
   });
