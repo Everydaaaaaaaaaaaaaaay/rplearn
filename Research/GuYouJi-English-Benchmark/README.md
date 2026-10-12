@@ -17,6 +17,7 @@
 - [CEFR-J官方资料复算](Studies/2026-10-13-cefrj-upstream-review.md)：7,801条词性数据、拼写变体与版本差异、2025语法资料及用途范围。
 - [NGSL开放词表与用途边界](Studies/2026-10-13-ngsl-native-files-and-purpose-rights.md)：四类词表的实际计数、未知排名/词形差异、CC BY-SA条件与Oxford API的AI限制，频率分档不直接换年级。
 - [中间年级官方考试配套](Studies/2026-10-13-domestic-semester-components.md)：郑州高一高二四个学期组合的答案、录音与评分，原卷及教学范围仍缺。
+- [历史题面与评分冲突](Studies/2026-10-13-historical-paper-scoring-and-blueprint-boundaries.md)：苏州两份八上题面和配图、分卷分值冲突、许昌命题目标与郑州教师声明的实际证据范围。
 - [CAN-DO阅读与产出样本](Studies/2026-10-13-cando-task-and-rubric-review.md)：五技能187页材料、四题阅读和分档写作，指令语言、第三方组件及实施条件的影响。
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
 - `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。

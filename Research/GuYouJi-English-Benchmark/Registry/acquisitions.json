@@ -18997,6 +18997,516 @@
         "tool": "inspect_ngsl_files.py and openpyxl3.1.5"
       },
       "manifest": "build/english-benchmark-research-20261012/derive-manifest-ngsl20261013.json"
+    },
+    {
+      "id": "suzhou-sip2018-grade8-midterm",
+      "url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99560&NTID=65",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "No local body; Python TLS chain failure retained; normal systemcurl separately succeeded with TLS validation enabled",
+      "format_validation": "not_checked",
+      "status": "fetch_failed",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-source-followup20261013.json"
+    },
+    {
+      "id": "suzhou-snd2018-grade8-midterm",
+      "url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99431&NTID=65",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "No local body; Python TLS chain failure retained; normal systemcurl separately succeeded with TLS validation enabled",
+      "format_validation": "not_checked",
+      "status": "fetch_failed",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-source-followup20261013.json"
+    },
+    {
+      "id": "zz2025-senior-semester-quality-meeting",
+      "url": "https://news.zzedu.net.cn/zzjyxw/04/29851376.shtml",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Exambody/scoreheaders ornotification/purposefacts read; no independent source key or student data",
+      "format_validation": "utf8_HTML_body_parsed",
+      "final_url": "https://news.zzedu.net.cn/zzjyxw/04/29851376.shtml",
+      "http_status": 200,
+      "content_type": "text/html",
+      "path": "build/english-benchmark-research-20261012/raw/zz2025-senior-semester-quality-meeting.html",
+      "bytes": 61311,
+      "sha256": "b4ee159ee2ab50a753547834aff272588781a2a7d37aab47b109fd10d22ccc6b",
+      "status": "fetched_unreviewed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-source-followup20261013.json"
+    },
+    {
+      "id": "xcu2021-2022-first-semester-exam-scope",
+      "url": "https://xcufz.xcu.edu.cn/info/1163/2925.htm",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Exambody/scoreheaders ornotification/purposefacts read; no independent source key or student data",
+      "format_validation": "utf8_HTML_body_parsed",
+      "final_url": "https://xcufz.xcu.edu.cn/info/1163/2925.htm",
+      "http_status": 200,
+      "content_type": "text/html",
+      "path": "build/english-benchmark-research-20261012/raw/xcu2021-2022-first-semester-exam-scope.html",
+      "bytes": 54709,
+      "sha256": "70f94066e1c66ffeede409ecc6a69ec1c3923b809c0f38905ef1b34ce37f27ac",
+      "status": "fetched_unreviewed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-source-followup20261013.json"
+    },
+    {
+      "id": "suzhou-sip2018-curl-normal",
+      "url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99560&NTID=65",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal system curl with TLS validation enabled; public visible links; no credentials",
+      "review_scope": "Exambody/scoreheaders ornotification/purposefacts read; no independent source key or student data",
+      "format_validation": "utf8_HTML_body_parsed",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99560&NTID=65",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-curl-normal.html",
+      "bytes": 304351,
+      "sha256": "e9036ca824e62c019e3fce9b22c7e22e7467b6ad8ba8ecf0e74e96e9cf4d176a",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-curl20261013.json"
+    },
+    {
+      "id": "suzhou-snd2018-curl-normal",
+      "url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99431&NTID=65",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal system curl with TLS validation enabled; public visible links; no credentials",
+      "review_scope": "Exambody/scoreheaders ornotification/purposefacts read; no independent source key or student data",
+      "format_validation": "utf8_HTML_body_parsed",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99431&NTID=65",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-snd2018-curl-normal.html",
+      "bytes": 342615,
+      "sha256": "205d678d80ce7f7351072d1b53dda139c4a4e0267d81ee6d0c8be1933a8f5231",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-curl20261013.json"
+    },
+    {
+      "id": "xcu2021-2022-scope-image01",
+      "url": "https://xcufz.xcu.edu.cn/virtual_attach_file.vsb?afc=bMlQEfUmGPMmC8UezCiUNlaLzCZLzQy7oRlPoz9sUmA7nl-0gihFp2hmCIa0LShVL1yDnSyiL7Q7Mlr7MN-4nzU4MzvZMmNbMlVVMzlZMRTFLNM2M8CDLlVFU49Pn1baptveo4Oe_2MiQjw0qIbtpYyPLzC4g4-bLmlJqdhnx&oid=1324447778&tid=1163&nid=2925&e=.png",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal system curl with TLS validation enabled; public visible links; no credentials",
+      "review_scope": "Visually reviewed schedule identity and exact English date/time; not exam paper",
+      "format_validation": "png_decoded",
+      "http_status": 200,
+      "final_url": "https://xcufz.xcu.edu.cn/virtual_attach_file.vsb?afc=bMlQEfUmGPMmC8UezCiUNlaLzCZLzQy7oRlPoz9sUmA7nl-0gihFp2hmCIa0LShVL1yDnSyiL7Q7Mlr7MN-4nzU4MzvZMmNbMlVVMzlZMRTFLNM2M8CDLlVFU49Pn1baptveo4Oe_2MiQjw0qIbtpYyPLzC4g4-bLmlJqdhnx&oid=1324447778&tid=1163&nid=2925&e=.png",
+      "content_type": "image/png",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/xcu2021-2022-scope-image01.png",
+      "bytes": 51231,
+      "sha256": "7d0c1eaa92cca342961d8bf23323674451644c62e485608fbba2e51d717fbfb1",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-curl20261013.json",
+      "image_dimensions": [
+        618,
+        276
+      ]
+    },
+    {
+      "id": "xcu2021-2022-scope-image02",
+      "url": "https://xcufz.xcu.edu.cn/virtual_attach_file.vsb?afc=bLNUEiLR9bL77sneRAkM4L8UzGbMmMyRMlUsLz-iMl-DM4l0gihFp2hmCIa0U1yaL1hRoSyDLNL4LRLaMR-bozGinmrfnmUYnlMkLlW7UlWFLNrfolWVLmVFnmQkL1b/v2veo4Oe_2MiQjw0qIbtpYyPLzC4g4-bLmlJqdhnx&oid=1324447778&tid=1163&nid=2925&e=.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal system curl with TLS validation enabled; public visible links; no credentials",
+      "review_scope": "Visually reviewed schedule identity and exact English date/time; not exam paper",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://xcufz.xcu.edu.cn/virtual_attach_file.vsb?afc=bLNUEiLR9bL77sneRAkM4L8UzGbMmMyRMlUsLz-iMl-DM4l0gihFp2hmCIa0U1yaL1hRoSyDLNL4LRLaMR-bozGinmrfnmUYnlMkLlW7UlWFLNrfolWVLmVFnmQkL1b/v2veo4Oe_2MiQjw0qIbtpYyPLzC4g4-bLmlJqdhnx&oid=1324447778&tid=1163&nid=2925&e=.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/xcu2021-2022-scope-image02.jpg",
+      "bytes": 63154,
+      "sha256": "76e9ed86070b941a2edbbed62b36d53afe2b9506b97233dd8517341abe3d3e23",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-curl20261013.json",
+      "image_dimensions": [
+        600,
+        710
+      ]
+    },
+    {
+      "id": "xcu2021-2022-scope-image03",
+      "url": "https://xcufz.xcu.edu.cn/virtual_attach_file.vsb?afc=bMlnE2UmW7nm7boeRM7olWVM49inz7yZL4MRLRWkL47bL490gihFp2hmCIa0U1hkUShkMSysoz-bnR7DnR7YUNL8MzLDL4Q7oRMkUlMVnmfFMmTRnlUiLmfFLzvaUz9Jv2bjo4OeosAm6IQEgDTJQty0Lz7DLYyYoz-igtA8pUhcc&oid=1324447778&tid=1163&nid=2925&e=.png",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal system curl with TLS validation enabled; public visible links; no credentials",
+      "review_scope": "Visually reviewed schedule identity and exact English date/time; not exam paper",
+      "format_validation": "png_decoded",
+      "http_status": 200,
+      "final_url": "https://xcufz.xcu.edu.cn/virtual_attach_file.vsb?afc=bMlnE2UmW7nm7boeRM7olWVM49inz7yZL4MRLRWkL47bL490gihFp2hmCIa0U1hkUShkMSysoz-bnR7DnR7YUNL8MzLDL4Q7oRMkUlMVnmfFMmTRnlUiLmfFLzvaUz9Jv2bjo4OeosAm6IQEgDTJQty0Lz7DLYyYoz-igtA8pUhcc&oid=1324447778&tid=1163&nid=2925&e=.png",
+      "content_type": "image/png",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/xcu2021-2022-scope-image03.png",
+      "bytes": 94376,
+      "sha256": "f7c12ad92a965076896c4fc8f35efe3a3a7f4aa9ea1285ee68df46107a668087",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-domestic-curl20261013.json",
+      "image_dimensions": [
+        633,
+        425
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image01",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image002.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image002.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image01.jpg",
+      "bytes": 2344,
+      "sha256": "54754489418b48fd1a4f3cffc9d753649204269909f4708ea167effc8d22876d",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        124,
+        94
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image02",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image004.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image004.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image02.jpg",
+      "bytes": 2244,
+      "sha256": "dba26846e681716fd99a27c1e5554f0fefd8118e35445c23b4d8b43f0630777a",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        118,
+        96
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image03",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image006.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image006.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image03.jpg",
+      "bytes": 2549,
+      "sha256": "ee374d3d5dd8fce4a506711983784b5a97845b23add88c3609cfc01f496afddd",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        122,
+        92
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image04",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image008.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image008.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image04.jpg",
+      "bytes": 2465,
+      "sha256": "6536ba3ccfbd8f163bff5d45e53cf6a07e68c7ac64dece031063d0e41cc1bbf6",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        121,
+        100
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image05",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image010.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image010.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image05.jpg",
+      "bytes": 2992,
+      "sha256": "67b51fa324f678c9c91620c2e613911a8b4bbf554bfdb93bc36ad0db7deb8491",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        121,
+        104
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image06",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image012.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image012.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image06.jpg",
+      "bytes": 2599,
+      "sha256": "7e8b2cb71f4d3085af76858744b89b8be9a797a7ed3469a11ec316c8bd780e31",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        121,
+        100
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image07",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image014.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image014.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image07.jpg",
+      "bytes": 2384,
+      "sha256": "16c4952409330225595a19a49e22e13b8a4a1b49fffc1bf7f963510b36cf1c6e",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        121,
+        94
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image08",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image016.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image016.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image08.jpg",
+      "bytes": 2521,
+      "sha256": "b6c5f1a470627f5e028f3d72283f13d43bebe1d7382326859bb9b027ea4212f9",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        111,
+        88
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image09",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image018.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image018.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image09.jpg",
+      "bytes": 2569,
+      "sha256": "ec1e39f98aaf18ee4e0eb02908ccf332214f4c39a0f799f0625827717f5a8c4d",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        121,
+        97
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image10",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image020.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image020.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image10.jpg",
+      "bytes": 3617,
+      "sha256": "9b93a5db0e48d35919807e9e2b4bf61a7a17b124519fc7aaadf2fb632758f41d",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        123,
+        95
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image11",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image022.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image022.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image11.jpg",
+      "bytes": 2607,
+      "sha256": "92273d77db4f6506b673231d3f171a6b49fe6b78e8eeafd74f58d94432dba233",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        120,
+        98
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image12",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image024.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image024.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image12.jpg",
+      "bytes": 2563,
+      "sha256": "4b5bb25d16b19551300f78fc3dc0883163f3b3ba38840b45ba615c1cf8192313",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        118,
+        99
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-image13",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image026.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181115170016-937.files/image026.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image13.jpg",
+      "bytes": 26445,
+      "sha256": "6eb9e9ba9e1e4392d860cf2bd7a39313421366a7b68b1e1a0f18992eefc9d3dc",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        480,
+        271
+      ]
+    },
+    {
+      "id": "suzhou-snd2018-image01",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181111113355-967.files/image001.gif",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "gif_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181111113355-967.files/image001.gif",
+      "content_type": "image/gif",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-snd2018-image01.gif",
+      "bytes": 73,
+      "sha256": "bb9c873e06eb602a477d9709fb85396e3b6f764287581a3fd60785196b88f5ff",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        65,
+        909
+      ]
+    },
+    {
+      "id": "suzhou-snd2018-image02",
+      "url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181111113355-967.files/image003.jpg",
+      "accessed_on": "2026-10-13",
+      "request_context": "Systemcurl TLSvalidated;exactembeddedquestion/tableimagelinks",
+      "review_scope": "Question/table images visually viewed; source blank GIF decoded and constantpixels checked",
+      "format_validation": "jpg_decoded",
+      "http_status": 200,
+      "final_url": "https://szteacher.suzhou.edu.cn/UploadFileNews/WordImport/128-181111113355-967.files/image003.jpg",
+      "content_type": "image/jpeg",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/suzhou-snd2018-image02.jpg",
+      "bytes": 14965,
+      "sha256": "0a160281f4a6bc8d0a405533a2c95912c2e9d7c75586e73559d56232fbc5b29a",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-suzhou-images20261013.json",
+      "image_dimensions": [
+        502,
+        120
+      ]
+    },
+    {
+      "id": "suzhou-sip2018-curl-normal-body",
+      "url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99560&NTID=65",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "utf8_text_decoded",
+      "review_scope": "Native body text read alongside source HTML/selected images; navigation/format loss retained, not standalonegold",
+      "path": "build/english-benchmark-research-20261012/suzhou-sip2018-curl-normal-body.txt",
+      "bytes": 16540,
+      "sha256": "1b10e283139c3ed15c67af73ff07172fdb09291184e1ff3b2f5a9370e4a507cc",
+      "derivation": {
+        "acquisition_id": "suzhou-sip2018-curl-normal",
+        "tool": "stdlib.HTMLParser"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-domestic-score20261013.json"
+    },
+    {
+      "id": "suzhou-snd2018-curl-normal-body",
+      "url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=99431&NTID=65",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "utf8_text_decoded",
+      "review_scope": "Native body text read alongside source HTML/selected images; navigation/format loss retained, not standalonegold",
+      "path": "build/english-benchmark-research-20261012/suzhou-snd2018-curl-normal-body.txt",
+      "bytes": 18059,
+      "sha256": "484faca66bf6786378c6dbb2783826a7cc6c946735f4ae19917e38b228b82178",
+      "derivation": {
+        "acquisition_id": "suzhou-snd2018-curl-normal",
+        "tool": "stdlib.HTMLParser"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-domestic-score20261013.json"
+    },
+    {
+      "id": "zz2025-senior-semester-quality-meeting-body",
+      "url": "https://news.zzedu.net.cn/zzjyxw/04/29851376.shtml",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "utf8_text_decoded",
+      "review_scope": "Native body text read alongside source HTML/selected images; navigation/format loss retained, not standalonegold",
+      "path": "build/english-benchmark-research-20261012/zz2025-senior-semester-quality-meeting-body.txt",
+      "bytes": 7422,
+      "sha256": "afcadcf4412d99224ca8805375bc4dd932450efe5aed60dacedc76d75033f719",
+      "derivation": {
+        "acquisition_id": "zz2025-senior-semester-quality-meeting",
+        "tool": "stdlib.HTMLParser"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-domestic-score20261013.json"
+    },
+    {
+      "id": "xcu2021-2022-first-semester-exam-scope-body",
+      "url": "https://xcufz.xcu.edu.cn/info/1163/2925.htm",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "utf8_text_decoded",
+      "review_scope": "Native body text read alongside source HTML/selected images; navigation/format loss retained, not standalonegold",
+      "path": "build/english-benchmark-research-20261012/xcu2021-2022-first-semester-exam-scope-body.txt",
+      "bytes": 12857,
+      "sha256": "34b9fc9afca8e6d310ca09061a86852fe124080e35fe9f4b03758a2748fbb1b3",
+      "derivation": {
+        "acquisition_id": "xcu2021-2022-first-semester-exam-scope",
+        "tool": "stdlib.HTMLParser"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-domestic-score20261013.json"
     }
   ],
   "updated_on": "2026-10-13"

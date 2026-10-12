@@ -1,0 +1,60 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "Source-grounded observations, not adjudicated answer keys",
+  "cases": [
+    {
+      "id": "sip2018-part-score-conflict",
+      "source_id": "suzhou.sip-grade8-midterm2018",
+      "acquisition_id": "suzhou-sip2018-curl-normal",
+      "locator": "PartI/II headers and eight section headings",
+      "category": "score_accounting_conflict",
+      "confirmed_source_conflict": true,
+      "observation": "PartIheader65vssection55;PartIIheader35vssection45;wholepapersum100stillmatches",
+      "required_response": "Retain both facts, request original or issuer clarification; block official scoring conversion until resolved"
+    },
+    {
+      "id": "sip2018-cloze-character-import",
+      "source_id": "suzhou.sip-grade8-midterm2018",
+      "acquisition_id": "suzhou-sip2018-curl-normal",
+      "locator": "Cloze36-45,paragraphnear43",
+      "category": "source_name_inconsistency",
+      "confirmed_source_conflict": true,
+      "observation": "CoachSunnyChen appearslaterasSurety;visibleHTMLnot OCRoutput",
+      "required_response": "Keep source and proposed repair separate; no unsupported automatic substitution"
+    },
+    {
+      "id": "sip2018-sense-constrained-MCQ-review",
+      "source_id": "suzhou.sip-grade8-midterm2018",
+      "acquisition_id": "suzhou-sip2018-curl-normal",
+      "locator": "MCQ19/34",
+      "category": "possible_ambiguity_or_premise_error",
+      "confirmed_source_conflict": false,
+      "observation": "Comparative relation alternatives and same-country anycity comparison require independent language/premise review",
+      "required_response": "Do not publish Agent-guessed officialkey or conclusivelylabel invalidwithoutreview"
+    },
+    {
+      "id": "snd2018-imported-text-defects",
+      "source_id": "suzhou.snd-grade8-midterm2018",
+      "acquisition_id": "suzhou-snd2018-curl-normal",
+      "locator": "ReadingB,readingresponseandwritingopening",
+      "category": "visible_source_text_defect_candidates",
+      "confirmed_source_conflict": false,
+      "observation": "Furing/bilephones/couldleans andwe...bythemselves visibleinHTML;originalscanunavailable",
+      "required_response": "RetainrawHTML andflagpublisher/importscope;do notturn defectsintolanguagegoals"
+    },
+    {
+      "id": "snd2018-required-table",
+      "source_id": "suzhou.snd-grade8-midterm2018",
+      "acquisition_id": "suzhou-snd2018-curl-normal",
+      "image_acquisition_id": "suzhou-snd2018-image02",
+      "locator": "Writingtask",
+      "category": "missing_visual_changes_task",
+      "confirmed_source_conflict": false,
+      "observation": "DIYtask requirementsareinthetableimage;HTMLtextonlylosesrequiredpoints",
+      "required_response": "Taskmustretainexacttableassociation beforepresentation/analysis",
+      "confirmed_source_fact": true,
+      "failure_condition": "Presenting only derived plaintext without the associated task table"
+    }
+  ],
+  "gold_admission": false
+}
