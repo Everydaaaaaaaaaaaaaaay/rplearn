@@ -192,6 +192,123 @@
         "Existing material rights and transmission limits still apply"
       ],
       "coverage_note": "Includes registered newer readability/CSE/private sourcegroup assets; copy-on-write files have independent inode/write behavior but share one physical disk failure domain. Logical bytes do not equal additional physical storage."
+    },
+    {
+      "snapshot_id": "2026-10-12T192632.274773+0000-2d316e06",
+      "created_at_utc": "2026-10-12T19:26:32.274773+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T192632.274773+0000-2d316e06",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T192632.274773+0000-2d316e06/snapshot-manifest.json",
+      "manifest_sha256": "a50dd452b913e196135b8ee56f498fb17326ad7c13b2bb2950c707f7eb94e006",
+      "files_verified": 1935,
+      "bytes_verified": 562164565,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write": 1935
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "new_material_restore_evidence": {
+        "snapshot_id": "2026-10-12T192632.274773+0000-2d316e06",
+        "status": "same_host_new_material_restore_verified",
+        "files": [
+          {
+            "source": "build/english-benchmark-research-20261012/raw/pingdong-public-resource-index2025.transport.gz",
+            "sha256": "2663a10489d092209feeccbf6f48e855e0684aad69d100c0f1a9bf8aa4b76953",
+            "restored_bytes": 36202
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/pingdong-public-resource-index2025-decoded.html",
+            "sha256": "653a69ef6da8df24255f591369e657f90214ad66f39bafc72474a19e17eda752",
+            "restored_bytes": 251479
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/pingdong-grade8down2025-paper-candidate.pdf",
+            "sha256": "7d6dcfc168606501a6f42892d78c728962e80642dee00c8138f7cca4e1aebaf4",
+            "restored_bytes": 899714
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/pingdong2025-grade8down-cloze-private-group.json",
+            "sha256": "7c359f0ceecf9becdecd60bebcbc941f0b299775757b1fd9d2e39bdc66f30f33",
+            "restored_bytes": 24711
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/pingdong2025-grade8down-cloze-illustration.png",
+            "sha256": "25b9ad1cf2b499fdddd652884e0ee3fa2cd8567c59e6c10863ac53cfdc057bea",
+            "restored_bytes": 37616
+          },
+          {
+            "source": "Research/GuYouJi-English-Benchmark/ItemGroups/ItemGroup-v0.2.schema.json",
+            "sha256": "f767659fa0971e6b9f5eef70768afe42caf72dee93ed850dbe30fb8b0c36de1a",
+            "restored_bytes": 45708
+          }
+        ],
+        "checks": [
+          "gzip decode matches independent restored HTML digest",
+          "native PDF12pages parsed",
+          "snapshot schema0.2 validates restored10gapgroup withunknownkeys",
+          "restored artwork digest/size matches restoredgroup"
+        ],
+        "limitation": "No actual client/scoring execution or off-host disaster recovery;private asset locators not rewritten for deployment"
+      },
+      "coverage_note": "Captures all registered asset bytes and research files before later coverage/milestone and preservation-note edits; those metadata edits retained in Git, not retrospectively added to snapshot."
     }
   ]
 }
