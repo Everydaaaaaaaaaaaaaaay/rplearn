@@ -224,14 +224,15 @@
       "category": "textbook",
       "priority": "P0",
       "provenance": "official_publisher",
-      "checked_on": "2026-10-12",
+      "checked_on": "2026-10-13",
       "verification_status": "access_pending",
-      "notes": "Search locator found, direct and connector access timed out; current/legacy catalogs differ.",
+      "notes": "Search locator found, direct and connector access timed out; current/legacy catalogs differ. Followup failed;no acquiredbody orupgradedcompletion.",
       "acquisition_ids": [
         "yilin-textbooks",
         "yilin-comparison-ebook-index",
         "yilin-current-ebook-public-index",
-        "yilin-legacy-grade8upper-plan-preview"
+        "yilin-legacy-grade8upper-plan-preview",
+        "yilin-current-ebook-followup20261013"
       ],
       "rights": {
         "commercial_publication": "unknown",
@@ -249,12 +250,13 @@
       "category": "textbook",
       "priority": "P0",
       "provenance": "official_publisher",
-      "checked_on": "2026-10-12",
+      "checked_on": "2026-10-13",
       "verification_status": "access_pending",
-      "notes": "Publisher search lead; direct403 and connector timeout.",
+      "notes": "Publisher search lead; direct403 and connector timeout. Followup failed;no acquiredbody orupgradedcompletion.",
       "acquisition_ids": [
         "yilin-current",
-        "yilin2026-current-portal"
+        "yilin2026-current-portal",
+        "yilin-current-portal-followup20261013"
       ],
       "rights": {
         "commercial_publication": "unknown",
@@ -3052,6 +3054,239 @@
       "acquisition_ids": [
         "pep-legacy-grade8upper-isbn2011-body",
         "pep-legacy-grade8upper-isbn2011"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ngsl.project-metadata",
+      "title": "NGSL project official site FAQ and research index",
+      "url": "https://www.newgeneralservicelist.com/",
+      "category": "methods",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "Official.com statement/teachingresearch distinctions/research index read;not systematic review or acquired empirical paper evidence. OGTEdiscontinued;linked thirdpartytools not cleared.",
+      "acquisition_ids": [
+        "ngsl-current-project-home20261013",
+        "ngsl-current-wordlists20261013",
+        "ngsl-current-faq20261013",
+        "ngsl-current-research20261013",
+        "ngsl-current-faq20261013-body",
+        "ngsl-current-research20261013-body"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "oxford.api-terms",
+      "title": "Oxford Dictionaries API commercial/noncommercial research terms",
+      "url": "https://developer.oxforddictionaries.com/api-terms-and-conditions?tab=commercial",
+      "category": "rights",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "Onepage contains2sets. Commercial4.1credentialgrant/4.2subjecttorestrictions;6.1AIandautomatedrestrictions/6.2cache;7.4TDMconditions. No subscription orAPIuse. DifferentassetfromwordlistPDF/OLDsite.",
+      "acquisition_ids": [
+        "oxford-api-current-terms20261013",
+        "oxford-api-current-terms20261013-body"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ngsl.core",
+      "title": "New General Service List1.2 and supplement",
+      "url": "https://www.newgeneralservicelist.com/new-general-service-list",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "2809core rows and52supplement rows acquired;teaching/research shapes and five form ambiguities retained. CC BY-SA4.0 conditional wordlist use; not CEFR/Chinesegrade.",
+      "acquisition_ids": [
+        "ngsl12-stats20261013",
+        "ngsl12-teaching20261013",
+        "ngsl12-research20261013",
+        "ngsl-supplement20261013",
+        "ngsl-core-page20261013",
+        "ngsl12-description20261013",
+        "ngsl-core-page20261013-body",
+        "ngsl-native-inspection-input20261013",
+        "ngsl-private-native-index20261013",
+        "ngsl-native-inspection-summary20261013",
+        "ngsl-native-inspection-audit20261013",
+        "ngsl-native-audit-method20261013",
+        "ngsl-body-extraction-method20261013"
+      ],
+      "rights": {
+        "commercial_publication": "conditional_CC_BY_SA_4_0",
+        "commercial_model_training": "exact_provider_and_output_scope_not_adjudicated",
+        "bulk_database_reuse": "conditional_CC_BY_SA_4_0",
+        "adaptation": "conditional_CC_BY_SA_4_0",
+        "third_party_model_transmission": "exact_provider_terms_not_adjudicated",
+        "redistribution": "conditional_CC_BY_SA_4_0"
+      }
+    },
+    {
+      "id": "ngsl.spoken",
+      "title": "NGSL-Spoken1.2",
+      "url": "https://www.newgeneralservicelist.com/ngsl-spoken",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "721heads;TRUE statistics#N/A/rank337missing;unsorted ranks and padded research forms retained. Teaching/research forms not automatically supersets.",
+      "acquisition_ids": [
+        "ngsls12-stats20261013",
+        "ngsl-spoken-page20261013",
+        "ngsls12-description20261013",
+        "ngsls12-teaching20261013",
+        "ngsls12-research20261013",
+        "ngsl-spoken-page20261013-body"
+      ],
+      "rights": {
+        "commercial_publication": "conditional_CC_BY_SA_4_0",
+        "commercial_model_training": "exact_provider_and_output_scope_not_adjudicated",
+        "bulk_database_reuse": "conditional_CC_BY_SA_4_0",
+        "adaptation": "conditional_CC_BY_SA_4_0",
+        "third_party_model_transmission": "exact_provider_terms_not_adjudicated",
+        "redistribution": "conditional_CC_BY_SA_4_0"
+      }
+    },
+    {
+      "id": "ngsl.ndl",
+      "title": "New Dolch List1.1",
+      "url": "https://www.newgeneralservicelist.com/new-dolch-list",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "874heads verified;page declares2023release,but bundleddescription references2024andobsolete.org. Preserve dates/identities, do not navigate obsolete domain.",
+      "acquisition_ids": [
+        "ndl11-stats20261013",
+        "ngsl-ndl-page20261013",
+        "ndl11-description20261013",
+        "ndl11-teaching20261013",
+        "ndl11-research20261013",
+        "ngsl-ndl-page20261013-body"
+      ],
+      "rights": {
+        "commercial_publication": "conditional_CC_BY_SA_4_0",
+        "commercial_model_training": "exact_provider_and_output_scope_not_adjudicated",
+        "bulk_database_reuse": "conditional_CC_BY_SA_4_0",
+        "adaptation": "conditional_CC_BY_SA_4_0",
+        "third_party_model_transmission": "exact_provider_terms_not_adjudicated",
+        "redistribution": "conditional_CC_BY_SA_4_0"
+      }
+    },
+    {
+      "id": "ngsl.graded-reader",
+      "title": "NGSL-Graded Reader1.0",
+      "url": "https://www.newgeneralservicelist.com/ngsl-graded-reader",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "Page5000/11bands vs actual5050WordID rows;leading50not proved supplementaryunranked band. Missingfound/quintillion vs core/supp;do not truncate orassign CEFR/grade fromWordID.",
+      "acquisition_ids": [
+        "ngslgr10-rank20261013",
+        "ngsl-gr-page20261013",
+        "ngsl-gr-page20261013-body"
+      ],
+      "rights": {
+        "commercial_publication": "conditional_CC_BY_SA_4_0",
+        "commercial_model_training": "exact_provider_and_output_scope_not_adjudicated",
+        "bulk_database_reuse": "conditional_CC_BY_SA_4_0",
+        "adaptation": "conditional_CC_BY_SA_4_0",
+        "third_party_model_transmission": "exact_provider_terms_not_adjudicated",
+        "redistribution": "conditional_CC_BY_SA_4_0"
+      }
+    },
+    {
+      "id": "cc.bysa4",
+      "title": "Creative Commons BY-SA4.0 official deed/legalcode",
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/legalcode.en",
+      "category": "rights",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "Sections1-4 checked for adaptedmaterial,licensedrights,attribution,downstreamrestrictions and databasecondition;not blanket licence for unrelated work.",
+      "acquisition_ids": [
+        "cc-bysa4-deed20261013",
+        "cc-bysa4-legalcode20261013",
+        "cc-bysa4-deed20261013-body",
+        "cc-bysa4-legalcode20261013-body"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ngsl.extended-frequencies",
+      "title": "NGSL31k extended workbook",
+      "url": "https://www.newgeneralservicelist.com/s/NGSLwithSFI-31K.xlsx",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "31240actualdata rows,max_row80830includes empties;core2809rows includescriteria duplicate,primarilymissing vs currentCSV.47Sup/955NAWL/27429unlabelled;full-extensionrights not established.",
+      "acquisition_ids": [
+        "ngsl-31k-workbook20261013",
+        "ngsl-31k-workbook-native-audit20261013"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "gyaesc.teacherplan-candidate",
+      "title": "Unverified host teacher-plan candidate",
+      "url": "https://www.gyaesc.cn/",
+      "category": "textbook",
+      "priority": "P1",
+      "provenance": "unverified_candidate",
+      "checked_on": "2026-10-13",
+      "verification_status": "fetch_failed_identity_unverified",
+      "notes": "TeacherplanPDF/homeTLS handshake failed;host identity/bodynot verified,not officialteacherguide evidence.",
+      "acquisition_ids": [
+        "gyaesc-pep7upper-unit1-teacherplan2024",
+        "gyaesc-current-host-home20261013"
       ],
       "rights": {
         "commercial_publication": "unknown",

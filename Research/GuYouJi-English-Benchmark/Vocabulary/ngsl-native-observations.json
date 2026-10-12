@@ -1,0 +1,555 @@
+{
+  "method": "native_csv_exact_digest_no_rank_or_sense_inference",
+  "observed_on": "2026-10-13",
+  "production_admission": false,
+  "files": [
+    {
+      "id": "ngsl12-stats",
+      "file": "ngsl12-stats20261013.csv",
+      "bytes": 62566,
+      "sha256": "2098bab8955a120a9766c6282a51d7d578c6cb0a7d946600d2ffb73ba25a0b44",
+      "source_header": {
+        "csv_record_number": 1,
+        "source_fields": [
+          "Lemma",
+          "SFI Rank",
+          "SFI",
+          "Adjusted Frequency per Million (U)"
+        ]
+      },
+      "comment_records": 0,
+      "headword_rows": 2809,
+      "distinct_display_headwords": 2809,
+      "distinct_casefold_headwords": 2809,
+      "source_fields_widths": {
+        "4": 2809
+      },
+      "form_strings": 0,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 2809,
+        "unknown_rank_rows": [],
+        "min_rank": 1,
+        "max_rank": 2809,
+        "distinct_ranks": 2809,
+        "duplicate_rank_values": [],
+        "missing_in_1_to_max": [],
+        "strictly_ascending_in_source_order": true
+      },
+      "source_acquisition_id": "ngsl12-stats20261013"
+    },
+    {
+      "id": "ngsl12-teaching",
+      "file": "ngsl12-teaching20261013.csv",
+      "bytes": 73146,
+      "sha256": "b54e297244988237457e04f823aa8dca68e3d646938dc76d383e099f04cb7666",
+      "source_header": null,
+      "comment_records": 12,
+      "headword_rows": 2809,
+      "distinct_display_headwords": 2809,
+      "distinct_casefold_headwords": 2809,
+      "source_fields_widths": {
+        "2": 827,
+        "4": 1072,
+        "3": 150,
+        "1": 470,
+        "8": 23,
+        "5": 173,
+        "7": 8,
+        "6": 80,
+        "18": 1,
+        "9": 3,
+        "12": 1,
+        "10": 1
+      },
+      "form_strings": 8509,
+      "ambiguous_form_strings": 5,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ngsl12-teaching20261013"
+    },
+    {
+      "id": "ngsl12-research",
+      "file": "ngsl12-research20261013.csv",
+      "bytes": 89485,
+      "sha256": "d814f2a0a3c61479a2c5ad037661719a0cc6e7dbcde31f181b54f12d0f1e11a4",
+      "source_header": null,
+      "comment_records": 15,
+      "headword_rows": 2809,
+      "distinct_display_headwords": 2809,
+      "distinct_casefold_headwords": 2809,
+      "source_fields_widths": {
+        "2": 890,
+        "5": 1194,
+        "7": 38,
+        "1": 334,
+        "3": 128,
+        "6": 119,
+        "9": 30,
+        "4": 57,
+        "8": 11,
+        "18": 1,
+        "10": 5,
+        "12": 2
+      },
+      "form_strings": 10121,
+      "ambiguous_form_strings": 5,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ngsl12-research20261013"
+    },
+    {
+      "id": "ngsl-supplement",
+      "file": "ngsl-supplement20261013.csv",
+      "bytes": 1631,
+      "sha256": "7bb4c76cbe43ae87240be4ac7ada370b9e1a0d9d631d8c4430138646965d03f6",
+      "source_header": null,
+      "comment_records": 0,
+      "headword_rows": 52,
+      "distinct_display_headwords": 52,
+      "distinct_casefold_headwords": 52,
+      "source_fields_widths": {
+        "2": 17,
+        "3": 2,
+        "5": 9,
+        "4": 24
+      },
+      "form_strings": 181,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ngsl-supplement20261013"
+    },
+    {
+      "id": "ngsls12-stats",
+      "file": "ngsls12-stats20261013.csv",
+      "bytes": 17394,
+      "sha256": "07708940c50a07cac4f507fd1e87bdd50081d7b87713a66a99beb3c8c4d11ac8",
+      "source_header": {
+        "csv_record_number": 1,
+        "source_fields": [
+          "Lemma",
+          "Rank",
+          "SFI",
+          "U"
+        ]
+      },
+      "comment_records": 0,
+      "headword_rows": 721,
+      "distinct_display_headwords": 721,
+      "distinct_casefold_headwords": 721,
+      "source_fields_widths": {
+        "4": 721
+      },
+      "form_strings": 0,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 720,
+        "unknown_rank_rows": [
+          {
+            "csv_record_number": 407,
+            "source_headword": "TRUE",
+            "source_rank": "#N/A"
+          }
+        ],
+        "min_rank": 1,
+        "max_rank": 721,
+        "distinct_ranks": 720,
+        "duplicate_rank_values": [],
+        "missing_in_1_to_max": [
+          337
+        ],
+        "strictly_ascending_in_source_order": false
+      },
+      "source_acquisition_id": "ngsls12-stats20261013"
+    },
+    {
+      "id": "ngsls12-teaching",
+      "file": "ngsls12-teaching20261013.csv",
+      "bytes": 17754,
+      "sha256": "91736c7a99b85b3df78b186ff43e227c945e6f46cd8a04ae1e6fa2462c2d17f4",
+      "source_header": null,
+      "comment_records": 0,
+      "headword_rows": 721,
+      "distinct_display_headwords": 721,
+      "distinct_casefold_headwords": 721,
+      "source_fields_widths": {
+        "2": 125,
+        "3": 43,
+        "1": 147,
+        "4": 278,
+        "5": 89,
+        "6": 25,
+        "18": 1,
+        "7": 6,
+        "9": 3,
+        "8": 3,
+        "10": 1
+      },
+      "form_strings": 2354,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ngsls12-teaching20261013"
+    },
+    {
+      "id": "ngsls12-research",
+      "file": "ngsls12-research20261013.csv",
+      "bytes": 27742,
+      "sha256": "1fcf504b7d37fd29dd8d9d1b317b668ef2bdc76010d39c3ecc36d4b574e43877",
+      "source_header": null,
+      "comment_records": 0,
+      "headword_rows": 721,
+      "distinct_display_headwords": 721,
+      "distinct_casefold_headwords": 721,
+      "source_fields_widths": {
+        "17": 721
+      },
+      "form_strings": 2233,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 10024,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ngsls12-research20261013"
+    },
+    {
+      "id": "ndl11-stats",
+      "file": "ndl11-stats20261013.csv",
+      "bytes": 19137,
+      "sha256": "9f12cae8005ba99e44266ef4653c5b455254d4860a07a0a1f4856ace294453d3",
+      "source_header": {
+        "csv_record_number": 1,
+        "source_fields": [
+          "Rank",
+          "Word",
+          "SFI",
+          "U (Freq/million"
+        ]
+      },
+      "comment_records": 0,
+      "headword_rows": 874,
+      "distinct_display_headwords": 874,
+      "distinct_casefold_headwords": 874,
+      "source_fields_widths": {
+        "4": 874
+      },
+      "form_strings": 0,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 874,
+        "unknown_rank_rows": [],
+        "min_rank": 1,
+        "max_rank": 874,
+        "distinct_ranks": 874,
+        "duplicate_rank_values": [],
+        "missing_in_1_to_max": [],
+        "strictly_ascending_in_source_order": false
+      },
+      "source_acquisition_id": "ndl11-stats20261013"
+    },
+    {
+      "id": "ndl11-teaching",
+      "file": "ndl11-teaching20261013.txt",
+      "bytes": 18725,
+      "sha256": "7b0d21240bd143319f4e5683e932a4821dd12d06e10001dc961debe1652842df",
+      "source_header": null,
+      "comment_records": 0,
+      "headword_rows": 874,
+      "distinct_display_headwords": 874,
+      "distinct_casefold_headwords": 874,
+      "source_fields_widths": {
+        "2": 310,
+        "3": 66,
+        "1": 123,
+        "4": 301,
+        "5": 40,
+        "18": 1,
+        "6": 22,
+        "8": 6,
+        "7": 3,
+        "9": 2
+      },
+      "form_strings": 2581,
+      "ambiguous_form_strings": 1,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ndl11-teaching20261013"
+    },
+    {
+      "id": "ndl11-research",
+      "file": "ndl11-research20261013.csv",
+      "bytes": 26616,
+      "sha256": "5ecb87f93e2168c62425d76523409005cf51019c00de0b6cff5dbb19ce633f06",
+      "source_header": null,
+      "comment_records": 0,
+      "headword_rows": 874,
+      "distinct_display_headwords": 874,
+      "distinct_casefold_headwords": 874,
+      "source_fields_widths": {
+        "2": 165,
+        "7": 18,
+        "1": 108,
+        "5": 397,
+        "3": 58,
+        "4": 34,
+        "18": 1,
+        "6": 70,
+        "8": 10,
+        "10": 4,
+        "9": 8,
+        "12": 1
+      },
+      "form_strings": 3473,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 0,
+        "unknown_rank_rows": []
+      },
+      "source_acquisition_id": "ndl11-research20261013"
+    },
+    {
+      "id": "ngslgr10-rank",
+      "file": "ngslgr10-rank20261013.csv",
+      "bytes": 68472,
+      "sha256": "5c4f7bb84b5d74d7481d43483b811f1591bd667b86a6131f1566fdf07cade91e",
+      "source_header": {
+        "csv_record_number": 1,
+        "source_fields": [
+          "WordID",
+          "Word"
+        ]
+      },
+      "comment_records": 0,
+      "headword_rows": 5050,
+      "distinct_display_headwords": 5050,
+      "distinct_casefold_headwords": 5050,
+      "source_fields_widths": {
+        "2": 5050
+      },
+      "form_strings": 0,
+      "ambiguous_form_strings": 0,
+      "blank_form_fields": 0,
+      "ranks": {
+        "numeric_rank_rows": 5050,
+        "unknown_rank_rows": [],
+        "min_rank": 1,
+        "max_rank": 5050,
+        "distinct_ranks": 5050,
+        "duplicate_rank_values": [],
+        "missing_in_1_to_max": [],
+        "strictly_ascending_in_source_order": true
+      },
+      "source_acquisition_id": "ngslgr10-rank20261013"
+    }
+  ],
+  "comparisons": [
+    {
+      "left": "ngsl12-stats",
+      "right": "ngsl12-teaching",
+      "casefold_intersection": 2809,
+      "right_only_count": 0,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 0
+    },
+    {
+      "left": "ngsl12-stats",
+      "right": "ngsl12-research",
+      "casefold_intersection": 2809,
+      "right_only_count": 0,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 0
+    },
+    {
+      "left": "ngsls12-stats",
+      "right": "ngsls12-teaching",
+      "casefold_intersection": 721,
+      "right_only_count": 0,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 0
+    },
+    {
+      "left": "ngsls12-stats",
+      "right": "ngsls12-research",
+      "casefold_intersection": 721,
+      "right_only_count": 0,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 0
+    },
+    {
+      "left": "ndl11-stats",
+      "right": "ndl11-teaching",
+      "casefold_intersection": 874,
+      "right_only_count": 0,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 0
+    },
+    {
+      "left": "ndl11-stats",
+      "right": "ndl11-research",
+      "casefold_intersection": 874,
+      "right_only_count": 0,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 0
+    },
+    {
+      "left": "ngsl-supplement",
+      "right": "ngsl12-stats",
+      "casefold_intersection": 2,
+      "right_only_count": 2807,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 50
+    },
+    {
+      "left": "ngsl-supplement",
+      "right": "ngslgr10-rank",
+      "casefold_intersection": 51,
+      "right_only_count": 4999,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 1
+    },
+    {
+      "left": "ngsl12-stats",
+      "right": "ngslgr10-rank",
+      "casefold_intersection": 2808,
+      "right_only_count": 2242,
+      "reason": "Headword membership only; not meaning equivalence",
+      "left_only_count": 1
+    }
+  ],
+  "source_id": "ngsl.core",
+  "summary_acquisition_id": "ngsl-native-inspection-summary20261013",
+  "private_index_acquisition_id": "ngsl-private-native-index20261013",
+  "audit_acquisition_id": "ngsl-native-inspection-audit20261013",
+  "selected_form_differences": [
+    {
+      "teaching": "ngsl12-teaching",
+      "research": "ngsl12-research",
+      "heads_with_teaching_forms_missing_in_research": 11,
+      "selected": []
+    },
+    {
+      "teaching": "ngsls12-teaching",
+      "research": "ngsls12-research",
+      "heads_with_teaching_forms_missing_in_research": 545,
+      "selected": [
+        {
+          "headword": "a",
+          "teaching_only": [
+            "an"
+          ],
+          "research_only": []
+        },
+        {
+          "headword": "able",
+          "teaching_only": [
+            "abler"
+          ],
+          "research_only": [
+            "abled",
+            "ables",
+            "abling",
+            "ablings"
+          ]
+        },
+        {
+          "headword": "find",
+          "teaching_only": [
+            "finds"
+          ],
+          "research_only": [
+            "finded",
+            "found"
+          ]
+        },
+        {
+          "headword": "i",
+          "teaching_only": [
+            "me"
+          ],
+          "research_only": []
+        },
+        {
+          "headword": "leave",
+          "teaching_only": [
+            "leaves"
+          ],
+          "research_only": []
+        }
+      ]
+    },
+    {
+      "teaching": "ndl11-teaching",
+      "research": "ndl11-research",
+      "heads_with_teaching_forms_missing_in_research": 4,
+      "selected": [
+        {
+          "headword": "leave",
+          "teaching_only": [
+            "left"
+          ],
+          "research_only": [
+            "leaved",
+            "leavings"
+          ]
+        }
+      ]
+    }
+  ],
+  "independent_lexical_review": false,
+  "meaning_inventory_complete": false,
+  "Chinese_grade_alignment": "not_established",
+  "CEFR_alignment": "not_established",
+  "coverage_percentage_on_product_text": null,
+  "version_observations": {
+    "core": "1.2 page2023April",
+    "spoken": "1.2 page2017October;sourceprose callsNGSL",
+    "NDL": "1.1 page2023Feb15;description2024citation/obsolete.org",
+    "GR": "1.0 prose2024 vs recommendedcitation2013"
+  },
+  "GR_discrepancies": {
+    "declared_headwords": 5000,
+    "actual_WordID_rows": 5050,
+    "first50_role": "Notdeclaredas excluded/unranked;do not infer bands",
+    "missing_core_headword": "found",
+    "missing_supplement_headword": "quintillion",
+    "band_column": false
+  },
+  "extended_workbook": {
+    "acquisition_id": "ngsl-31k-workbook20261013",
+    "audit_acquisition_id": "ngsl-31k-workbook-native-audit20261013",
+    "actual_data_rows": 31240,
+    "declared_sheet_max_row": 80830,
+    "source_wordlist_counts": {
+      "1 - NGSL": 2809,
+      "2 - Sup": 47,
+      "3 - NAWL": 955,
+      "None": 27429
+    },
+    "duplicate_headword": "criteria",
+    "core_csv_only": [
+      "primarily"
+    ],
+    "full_extension_rights_cleared": false
+  }
+}
