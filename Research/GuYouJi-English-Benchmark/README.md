@@ -12,6 +12,7 @@
 - [国际题组与听力配套](Studies/2026-10-13-cambridge-groups-and-media-review.md)：九个题组结构、多解与部分得分、B1当前样卷配套及媒体核验边界。
 - [CEFR-J官方资料复算](Studies/2026-10-13-cefrj-upstream-review.md)：7,801条词性数据、拼写变体与版本差异、2025语法资料及用途范围。
 - [中间年级官方考试配套](Studies/2026-10-13-domestic-semester-components.md)：郑州高一高二四个学期组合的答案、录音与评分，原卷及教学范围仍缺。
+- [CAN-DO阅读与产出样本](Studies/2026-10-13-cando-task-and-rubric-review.md)：五技能187页材料、四题阅读和分档写作，指令语言、第三方组件及实施条件的影响。
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
 - `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。
 - `Curriculum/observed-requirements.json`：逐页核读的课程词汇要求及适用条件，未自动换算为产品年级。

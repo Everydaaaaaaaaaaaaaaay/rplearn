@@ -373,6 +373,70 @@
         "acquisition_id": "cambridge-b1-current-bundle-member01",
         "review": "Same25questions/Part3topic;current key adds specific permitted misspelling fields; no blanket spelling tolerance"
       }
+    },
+    {
+      "id": "cefrj.cando.reading.a13.baikal",
+      "source_id": "cefrj.cando",
+      "acquisition_id": "cefrj-cando-reading-all",
+      "identity": "CEFR-J CAN-DO A1.3阅读样本",
+      "kind": "shared_passage_multiple_choice_reading",
+      "pdf_pages": [
+        10,
+        11
+      ],
+      "source_question_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "shared_material": true,
+      "source_claimed_level": {
+        "framework": "CEFR-J",
+        "label": "A1.3",
+        "authority": "CEFR-Jproject"
+      },
+      "instruction_and_question_language": "ja",
+      "passage_language": "en",
+      "supporting_image": true,
+      "answer_status": "original_key_visually_associated",
+      "answer_location": {
+        "acquisition_id": "cefrj-cando-reading-all",
+        "pdf_page": 11
+      },
+      "structure_review": "完整文章、照片、四道三选一题及次页答案目视核对；未复制题文/答案正文入Git",
+      "third_party_components": "Imagecredit PDF11 PixabayURL;exactusepermissionnotverified",
+      "chinese_grade_alignment": "not_established",
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "resource_and_component_scope_pending"
+    },
+    {
+      "id": "cefrj.cando.writing.a21.reply",
+      "source_id": "cefrj.cando",
+      "acquisition_id": "cefrj-cando-writing-all",
+      "identity": "CEFR-J CAN-DO A2.1邮件写作样本",
+      "kind": "productive_written_response",
+      "pdf_page": 12,
+      "response_units": 1,
+      "source_claimed_level": {
+        "framework": "CEFR-J",
+        "label": "A2.1",
+        "authority": "CEFR-Jproject"
+      },
+      "instruction_language": "ja",
+      "response_language": "en",
+      "stimulus_language": "en",
+      "source_word_target": {
+        "value": 50,
+        "unit": "words",
+        "strict_limit": false
+      },
+      "scoring": "A/B/Cdescriptors;B denotes source targetlevel;gradedBsamplewitherrorsnotperfectreferenceanswer",
+      "answer_status": "graded_exemplar_and_rubric_visually_reviewed",
+      "structure_review": "整页输入邮件、产出要求、B档作答例与三档评分目视核读",
+      "chinese_grade_alignment": "not_established",
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "resource_and_component_scope_pending"
     }
   ]
 }
