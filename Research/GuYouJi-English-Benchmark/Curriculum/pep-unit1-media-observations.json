@@ -214,5 +214,19 @@
   "source_audio_rights": "not_cleared",
   "full_semantic_listening": false,
   "learner_timing_or_replay_budget": "not_measured",
-  "gold_admission": false
+  "gold_admission": false,
+  "local_automatic_draft_review": {
+    "audit_acquisition_id": "pep-unit1-asr-reference-audit20261013",
+    "tracks_processed": 9,
+    "script_blocks_compared": 3,
+    "track_numbers_compared": [
+      1,
+      2,
+      6,
+      7
+    ],
+    "full_semantic_listening": false,
+    "instruction_difference_candidate": "2a/2cintros differ;not interchangeable without exact task rule",
+    "actual_audio_equivalence_verified": false
+  }
 }

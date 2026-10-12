@@ -1,0 +1,172 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "pep.current-audio-units",
+  "runtime_source_id": "whisper.cpp.local-runtime",
+  "audit_acquisition_id": "pep-unit1-asr-reference-audit20261013",
+  "visual_draft_acquisition_id": "pep-unit1-script-visual-draft20261013",
+  "source_revision": "0c7be696371069e0baa2515ed7aa08d5a5473aa6",
+  "model_repository_revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+  "model": "ggml-base.en",
+  "model_card_sha1_verified": true,
+  "processing": {
+    "tracks": 9,
+    "english_only": true,
+    "local_CPU": true,
+    "reference_prompt_supplied": false,
+    "source_uploaded_to_provider": false,
+    "timestamps": "ASR segment candidates only;not manually validated cues"
+  },
+  "script_comparisons": [
+    {
+      "track": 1,
+      "source_acquisition_id": "pep-grade7lower-unit1-audio0120261013",
+      "reference_label": "Section A, 1b",
+      "reference_tokens": 45,
+      "draft_tokens": 45,
+      "first_body_segment_candidate_ms": 22400,
+      "body_segment_candidate_end_ms": 50440,
+      "intro_segment_count": 7,
+      "alignment_differences": []
+    },
+    {
+      "track": 2,
+      "source_acquisition_id": "pep-grade7lower-unit1-audio0220261013",
+      "reference_label": "Section A, 1c",
+      "reference_tokens": 80,
+      "draft_tokens": 80,
+      "first_body_segment_candidate_ms": 11240,
+      "body_segment_candidate_end_ms": 53640,
+      "intro_segment_count": 4,
+      "alignment_differences": [
+        {
+          "operation": "replace",
+          "reference_token_range": [
+            10,
+            11
+          ],
+          "asr_token_range": [
+            10,
+            11
+          ],
+          "reference": "yaming",
+          "asr": "yarming"
+        },
+        {
+          "operation": "replace",
+          "reference_token_range": [
+            21,
+            22
+          ],
+          "asr_token_range": [
+            21,
+            22
+          ],
+          "reference": "jie",
+          "asr": "jia"
+        },
+        {
+          "operation": "replace",
+          "reference_token_range": [
+            24,
+            25
+          ],
+          "asr_token_range": [
+            24,
+            25
+          ],
+          "reference": "favourite",
+          "asr": "favorite"
+        }
+      ]
+    },
+    {
+      "track": 6,
+      "source_acquisition_id": "pep-grade7lower-unit1-audio0620261013",
+      "reference_label": "Section A, 2a and 2c",
+      "reference_tokens": 116,
+      "draft_tokens": 116,
+      "first_body_segment_candidate_ms": 13000,
+      "body_segment_candidate_end_ms": 68000,
+      "intro_segment_count": 2,
+      "alignment_differences": [
+        {
+          "operation": "replace",
+          "reference_token_range": [
+            11,
+            12
+          ],
+          "asr_token_range": [
+            11,
+            12
+          ],
+          "reference": "xing",
+          "asr": "sheng"
+        }
+      ]
+    },
+    {
+      "track": 7,
+      "source_acquisition_id": "pep-grade7lower-unit1-audio0720261013",
+      "reference_label": "Section A, 2a and 2c",
+      "reference_tokens": 116,
+      "draft_tokens": 115,
+      "first_body_segment_candidate_ms": 15000,
+      "body_segment_candidate_end_ms": 70000,
+      "intro_segment_count": 3,
+      "alignment_differences": [
+        {
+          "operation": "replace",
+          "reference_token_range": [
+            10,
+            12
+          ],
+          "asr_token_range": [
+            10,
+            11
+          ],
+          "reference": "fu xing",
+          "asr": "fushing"
+        }
+      ]
+    }
+  ],
+  "shared_script_tracks": {
+    "body_token_strings_identical": false,
+    "apparent_lexical_difference": "Name segmentation/spelling candidates only;not evidence actual spoken names differ",
+    "intro_difference_candidate": "2a asks to circle coloured words;2c asks to listen again, attend to unstressed words and roleplay",
+    "actual_acoustic_or_semantic_equivalence": "not independently verified"
+  },
+  "risk_cases": [
+    {
+      "track": 3,
+      "source_page": 3,
+      "issue": "Vowel symbols in spoken phonics became ordinary A/All in ASR;spellings are not validated phoneme labels"
+    },
+    {
+      "track": 4,
+      "source_page": 3,
+      "issue": "Plural-ending instruction became /i/ /s/ in ASR;cannot use this to certify phonetic accuracy"
+    },
+    {
+      "track": 9,
+      "source_page": 97,
+      "issue": "Printed care/guess/Thai/Malee differ from ASR cow/gas/Tie/Mali candidates;require actual cue listening,not automatic normalization"
+    },
+    {
+      "track": 9,
+      "source_page": 97,
+      "issue": "Repetition count/isolated word boundaries not human verified;ASR is not the textbook vocabulary list"
+    }
+  ],
+  "reference_independent_review": false,
+  "full_semantic_listening": false,
+  "official_answer_key_inferred": false,
+  "phoneme_prosody_validated": false,
+  "learner_time_estimate": null,
+  "production_admission": false,
+  "limitations": [
+    "No gold WER,semantic recording match,actual listening accuracy or independent transcript adjudication",
+    "Weights/code license does not clear PEP source or transcript use for commercial output/training",
+    "Binary replay still depends on macOS/Apple frameworks;not offhost runtime acceptance"
+  ]
+}
