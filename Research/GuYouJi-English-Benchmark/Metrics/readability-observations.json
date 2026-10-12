@@ -40,5 +40,39 @@
     "Exact tokenizer differs from Word; no crossanalyzer equality claimed",
     "Questions/options, knowledge, visuals, scaffolding and learner effects separate",
     "Dictionary/license changed identity refuses execution; boundary review claims require real evidence outside code"
-  ]
+  ],
+  "method_version": "readability-research-0.2",
+  "additional_boundary_review": {
+    "all_capital_tokens_or_possessives": "Do not fold US topronounus/AI toordinaryword/name; requirecontextpronunciationreview",
+    "checked_forms": [
+      {
+        "text": "US",
+        "formula_present": false
+      },
+      {
+        "text": "us",
+        "formula_present": true
+      },
+      {
+        "text": "I",
+        "formula_present": true
+      },
+      {
+        "text": "AI",
+        "formula_present": false
+      },
+      {
+        "text": "IT",
+        "formula_present": false
+      },
+      {
+        "text": "FIRE",
+        "formula_present": false
+      },
+      {
+        "text": "US’s",
+        "formula_present": false
+      }
+    ]
+  }
 }

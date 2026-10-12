@@ -72,8 +72,12 @@ def profile(record, dictionary):
         raise ValueError('Uncovered trailing text')
     tokens = WORDS.findall(text)
     word_keys = [unicodedata.normalize('NFC', t).replace('’', "'").casefold() for t in tokens]
+    ambiguous_caps = sorted({token for token in tokens
+                             if len(re.split("['’]", token)[0]) > 1
+                             and re.split("['’]", token)[0].isupper()})
     unknown = sorted({key for key in word_keys if key not in dictionary})
-    known = [dictionary[key] for key in word_keys if key in dictionary]
+    known = [dictionary[key] for token, key in zip(tokens, word_keys)
+             if key in dictionary and token not in ambiguous_caps]
     low, high = sum(min(v) for v in known), sum(max(v) for v in known)
     blocked = []
     if record['prepared_kind'] != 'conventional_prose':
@@ -84,6 +88,8 @@ def profile(record, dictionary):
         blocked.append('Visible gap/template syntax; no prose formula output')
     if unknown:
         blocked.append('Unknown syllables; no guessed one-syllable or heuristic fallback')
+    if ambiguous_caps:
+        blocked.append('All-capital token/acronym needs pronunciation review; no pronoun/word casefold fallback')
     count, sentences = len(tokens), len(ranges)
     formulas = None
     if not blocked:
@@ -94,7 +100,7 @@ def profile(record, dictionary):
             'flesch_kincaid_us_grade_feature_variant_envelope': [
                 .39 * asl + 11.8 * low / count - 15.59,
                 .39 * asl + 11.8 * high / count - 15.59]}
-    return {'method_version': 'readability-research-0.1',
+    return {'method_version': 'readability-research-0.2',
             'dictionary_commit': COMMIT, 'dictionary_sha256': DICT_SHA,
             'license_sha256': LICENSE_SHA,
             'attribution': 'CMUdict, Copyright Carnegie Mellon University; BSD conditions apply',
@@ -103,7 +109,8 @@ def profile(record, dictionary):
             'sentence_count_basis': 'Caller-supplied Unicode-codepoint half-open spans; coverage checked, linguistic boundary review not established by code',
             'word_tokens': count, 'sentence_ranges_count': sentences,
             'covered_syllable_variant_envelope': [low, high],
-            'unknown_word_keys': unknown, 'blocked_formula_reasons': blocked,
+            'unknown_word_keys': unknown, 'unresolved_all_capital_tokens': ambiguous_caps,
+            'blocked_formula_reasons': blocked,
             'formula_features': formulas, 'chinese_grade_alignment': 'not_established',
             'cefr_alignment': 'not_established', 'lexile_measure': None,
             'limitations': ['Variant envelope is not a statistical confidence interval',
