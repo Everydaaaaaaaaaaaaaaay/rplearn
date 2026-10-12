@@ -6,6 +6,7 @@
 
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
+- [登记迁移与完整恢复](Studies/2026-10-13-registry-portability-and-full-restoration.md)：第九副本的实际路径失败、540处登记修正和3,078文件独立恢复，运行时/异机门槛仍开放。
 - [版本与记录复审](Studies/2026-10-12-continuation-audit.md)：2025修订课标线索、新版人教初中册次及状态更正。
 - [新版课标关键要求核读](Studies/2026-10-12-revised-curriculum-review.md)：词汇变化、任务与评分要求、OCR误识别及修正。
 - [人教单元与用途复审](Studies/2026-10-12-pep-unit-and-rights-review.md)：五册单元目录、阅读入口、访问误判及电子教材用途限制。

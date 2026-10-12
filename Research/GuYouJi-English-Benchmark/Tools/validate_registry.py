@@ -10,6 +10,16 @@ BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
 
 
+def cache_reference(value):
+    """Portable, cache-contained identity; never use a live checkout absolute path."""
+    if not isinstance(value, str) or not value:
+        return False
+    path = Path(value)
+    if path.is_absolute() or not path.parts or path.parts[0] != 'build' or '..' in path.parts:
+        return False
+    return (REPO / 'build').resolve() in (REPO / path).resolve().parents
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check-cache', action='store_true')
@@ -83,6 +93,9 @@ def main():
         if not all(key in row for key in ('path', 'bytes', 'sha256', 'review_scope', 'format_validation')):
             errors.append(f'{identity}: incomplete acquisition metadata')
             continue
+        if not cache_reference(row['path']):
+            errors.append(f'{identity}: acquisition path must be a portable in-cache reference')
+            continue
         if args.check_cache:
             path = REPO / row['path']
             if not path.is_file():
@@ -104,10 +117,15 @@ def main():
                 if page.get('exit_code') != 0:
                     continue
                 output = page.get('output') or page.get('output_prefix', '') + '.txt'
+                if page.get('source') and not cache_reference(page['source']):
+                    errors.append(f"{run.get('id')}: nonportable/out-of-cache processing source")
                 pairs = [(output, page.get('sha256'))]
                 if page.get('tsv_output'):
                     pairs.append((page['tsv_output'], page.get('tsv_sha256')))
                 for filename, digest in pairs:
+                    if not cache_reference(filename):
+                        errors.append(f"{run.get('id')}: nonportable/out-of-cache processing output")
+                        continue
                     path = REPO / filename
                     if not path.is_file() or not digest:
                         errors.append(f"{run.get('id')}: missing processing output/digest {filename}")

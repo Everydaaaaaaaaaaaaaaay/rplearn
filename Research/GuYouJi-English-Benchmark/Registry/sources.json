@@ -3447,6 +3447,34 @@
         "third_party_model_transmission": "project_or_output_terms_not_adjudicated_no_thirdparty_exam_rights_granted",
         "redistribution": "project_or_output_terms_not_adjudicated_no_thirdparty_exam_rights_granted"
       }
+    },
+    {
+      "id": "benchmark.registry-portability",
+      "title": "本机登记路径迁移与冻结副本恢复方法验证",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "category": "storage_method",
+      "priority": "P1",
+      "provenance": "project_authored_registry_relocation_and_restore_tests",
+      "checked_on": "2026-10-13",
+      "verification_status": "full_independent_copy_with_explicit_metadata_relocation_replayed",
+      "notes": "Snapshot9legacy reference initiallyfaileddue tolivecheckoutabsolute path;full3078file independentcopy/hash checks plus540recoveredregistryrelocations replay45annotation/61legacychecks,10fixturesand1095cache/1660outputs. Frozenoriginalunchanged;runtime dependencies current;offhost nottested.",
+      "acquisition_ids": [
+        "snapshot9-reference-failure-audit20261013",
+        "registry-relative-path-correction-audit20261013",
+        "registry-cache-reference-policy-audit20261013",
+        "snapshot9-relocated-full-restore-audit20261013",
+        "registry-relative-path-method20261013",
+        "snapshot9-relocation-method20261013",
+        "registry-cache-reference-policy-method20261013"
+      ],
+      "rights": {
+        "commercial_publication": "method_or_project_terms_no_thirdparty_asset_rights_granted",
+        "commercial_model_training": "method_or_project_terms_no_thirdparty_asset_rights_granted",
+        "bulk_database_reuse": "method_or_project_terms_no_thirdparty_asset_rights_granted",
+        "adaptation": "method_or_project_terms_no_thirdparty_asset_rights_granted",
+        "third_party_model_transmission": "method_or_project_terms_no_thirdparty_asset_rights_granted",
+        "redistribution": "method_or_project_terms_no_thirdparty_asset_rights_granted"
+      }
     }
   ]
 }
