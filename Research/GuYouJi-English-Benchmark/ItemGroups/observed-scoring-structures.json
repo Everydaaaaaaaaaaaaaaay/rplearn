@@ -1,0 +1,45 @@
+{
+  "updated_on": "2026-10-13",
+  "status": "reference_observations_not_product_scoring",
+  "observations": [
+    {
+      "id": "a2-open-cloze-variants",
+      "source_id": "cambridge.a2",
+      "acquisition_id": "cambridge-a2-handbook",
+      "pdf_page": 27,
+      "printed_page": 25,
+      "observation": "Part5key provides more than one accepted word for4of6gaps",
+      "implication": "Answer representation needs accepted alternatives even with one-word response limit",
+      "review": "Key original render visually checked"
+    },
+    {
+      "id": "b1-open-cloze-variants",
+      "source_id": "cambridge.b1",
+      "acquisition_id": "cambridge-b1-handbook",
+      "pdf_page": 23,
+      "printed_page": 21,
+      "observation": "Part6key provides two alternatives forquestion27",
+      "implication": "One-word completion does not imply one accepted string",
+      "review": "Key original render visually checked"
+    },
+    {
+      "id": "b2-transformation-segments",
+      "source_id": "cambridge.b2",
+      "acquisition_id": "cambridge-b2-handbook",
+      "pdf_page": 26,
+      "printed_page": 24,
+      "observation": "Part4key uses segmentation bars and alternatives/optional elements; task table gives6items12marks",
+      "implication": "Need source-specific partial-credit segments,variants and exact word-count rule; source total does not define app reward",
+      "review": "Key render visually checked; task-table PDF9text read"
+    },
+    {
+      "id": "b1-listening-source-specific-misspelling",
+      "source_id": "cambridge.b1",
+      "acquisition_id": "cambridge-b1-current-bundle-member01",
+      "pdf_page": 1,
+      "observation": "2022bundle Part3key has acceptable misspelling column for2of6items; alternatives/optional words and singular/plural also specified",
+      "implication": "Represent documented item-specific spelling allowances separately from accepted alternatives; never generalize typo tolerance across all items",
+      "review": "Full key text columns read and PDF1original render visually checked;handbook simpler key separately reviewed"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "observed_on": "2026-10-12",
+  "observed_on": "2026-10-13",
   "status": "source_structure_observations_only",
   "note": "原题结构事实，不是产品题库、已核权金标准或已校准难度；原文与答案不存入本文件。原卷分值也不等于产品奖励。",
   "groups": [
@@ -12,7 +12,23 @@
       "kind": "passage_multiple_choice_cloze",
       "source_page": 9,
       "shared_material": true,
-      "source_question_numbers": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
+      "source_question_numbers": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
       "source_marks_per_item": 1,
       "source_max_marks": 15,
       "structure_review": "原图指令、完整材料、15空与配套选项目视核对；OCR另保存为未经全文校正的草稿。",
@@ -28,7 +44,18 @@
       "kind": "passage_grammar_completion",
       "source_page": 10,
       "shared_material": true,
-      "source_question_numbers": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65],
+      "source_question_numbers": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
       "source_marks_per_item": 1.5,
       "source_max_marks": 15,
       "structure_review": "原图10空、给词/不给词形式及全文材料目视核对；答案与独立评分说明尚缺。",
@@ -45,13 +72,307 @@
       "pdf_page": 23,
       "printed_page": 21,
       "shared_material": true,
-      "source_question_numbers": [31, 32, 33, 34, 35, 36],
+      "source_question_numbers": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
       "structure_review": "完整文章与连续6题目视核读；题目涉及感受、原因、表达含义和指代。",
-      "source_claimed_level": {"framework": "CEFR", "label": "B2", "authority": "Cambridge English"},
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "B2",
+        "authority": "Cambridge English"
+      },
       "chinese_grade_alignment": "not_established",
-      "answer_status": "handbook_acquired_answer_section_not_reviewed",
+      "answer_status": "official_paper_based_key_associated_reviewed",
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "unknown",
+      "answer_location": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "pdf_page": 26,
+        "printed_page": 24,
+        "section": "Paper-based Reading and Use of English Part5 questions31-36"
+      },
+      "source_variant": "paper_based_handbook_sample",
+      "source_marks_per_item": 2,
+      "marks_evidence": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "pdf_page": 9,
+        "printed_page": 7,
+        "review": "Task specification table text read"
+      }
+    },
+    {
+      "id": "cambridge.a2.part4.sample",
+      "source_id": "cambridge.a2",
+      "acquisition_id": "cambridge-a2-handbook",
+      "identity": "A2 Key教师手册纸笔样题part4",
+      "kind": "passage_multiple_choice_cloze",
+      "pdf_page": 23,
+      "printed_page": 21,
+      "source_variant": "paper_based_handbook_sample",
+      "shared_material": true,
+      "source_question_numbers": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "source_marks_per_item": 1,
+      "marks_evidence": {
+        "acquisition_id": "cambridge-a2-handbook",
+        "pdf_page": 9,
+        "review": "Task specification table text read"
+      },
+      "structure_review": "Full passage,all six gaps,numbering and instruction visually checked; paper sample key visually associated by exact part/number",
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "A2",
+        "authority": "Cambridge English"
+      },
+      "chinese_grade_alignment": "not_established",
+      "answer_status": "official_key_associated_reviewed",
+      "answer_location": {
+        "acquisition_id": "cambridge-a2-handbook",
+        "pdf_page": 27,
+        "printed_page": 25
+      },
       "learner_calibration": "not_available_for_product_population",
       "commercial_permission": "unknown"
+    },
+    {
+      "id": "cambridge.a2.part5.sample",
+      "source_id": "cambridge.a2",
+      "acquisition_id": "cambridge-a2-handbook",
+      "identity": "A2 Key教师手册纸笔样题part5",
+      "kind": "passage_open_cloze",
+      "pdf_page": 23,
+      "printed_page": 21,
+      "source_variant": "paper_based_handbook_sample",
+      "shared_material": true,
+      "source_question_numbers": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "source_marks_per_item": 1,
+      "marks_evidence": {
+        "acquisition_id": "cambridge-a2-handbook",
+        "pdf_page": 9,
+        "review": "Task specification table text read"
+      },
+      "structure_review": "Full passage,all six gaps,numbering and instruction visually checked; paper sample key visually associated by exact part/number",
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "A2",
+        "authority": "Cambridge English"
+      },
+      "chinese_grade_alignment": "not_established",
+      "answer_status": "official_key_associated_reviewed",
+      "answer_location": {
+        "acquisition_id": "cambridge-a2-handbook",
+        "pdf_page": 27,
+        "printed_page": 25
+      },
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "unknown"
+    },
+    {
+      "id": "cambridge.b1.part5.sample",
+      "source_id": "cambridge.b1",
+      "acquisition_id": "cambridge-b1-handbook",
+      "identity": "B1 Preliminary教师手册纸笔样题part5",
+      "kind": "passage_multiple_choice_cloze",
+      "pdf_page": 22,
+      "printed_page": 20,
+      "source_variant": "paper_based_handbook_sample",
+      "shared_material": true,
+      "source_question_numbers": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "source_marks_per_item": 1,
+      "marks_evidence": {
+        "acquisition_id": "cambridge-b1-handbook",
+        "pdf_page": 9,
+        "review": "Task specification table text read"
+      },
+      "structure_review": "Full passage,all six gaps,numbering and instruction visually checked; paper sample key visually associated by exact part/number",
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "B1",
+        "authority": "Cambridge English"
+      },
+      "chinese_grade_alignment": "not_established",
+      "answer_status": "official_key_associated_reviewed",
+      "answer_location": {
+        "acquisition_id": "cambridge-b1-handbook",
+        "pdf_page": 23,
+        "printed_page": 21
+      },
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "unknown"
+    },
+    {
+      "id": "cambridge.b1.part6.sample",
+      "source_id": "cambridge.b1",
+      "acquisition_id": "cambridge-b1-handbook",
+      "identity": "B1 Preliminary教师手册纸笔样题part6",
+      "kind": "passage_open_cloze",
+      "pdf_page": 22,
+      "printed_page": 20,
+      "source_variant": "paper_based_handbook_sample",
+      "shared_material": true,
+      "source_question_numbers": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "source_marks_per_item": 1,
+      "marks_evidence": {
+        "acquisition_id": "cambridge-b1-handbook",
+        "pdf_page": 9,
+        "review": "Task specification table text read"
+      },
+      "structure_review": "Full passage,all six gaps,numbering and instruction visually checked; paper sample key visually associated by exact part/number",
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "B1",
+        "authority": "Cambridge English"
+      },
+      "chinese_grade_alignment": "not_established",
+      "answer_status": "official_key_associated_reviewed",
+      "answer_location": {
+        "acquisition_id": "cambridge-b1-handbook",
+        "pdf_page": 23,
+        "printed_page": 21
+      },
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "unknown"
+    },
+    {
+      "id": "cambridge.a2.listening.part2.sample",
+      "source_id": "cambridge.a2",
+      "acquisition_id": "cambridge-a2-handbook",
+      "identity": "A2教师手册纸笔听力样题Part2",
+      "kind": "shared_recording_note_completion",
+      "pdf_page": 39,
+      "printed_page": 37,
+      "source_question_numbers": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "shared_material": true,
+      "source_variant": "paper_based_handbook_sample",
+      "answer_location": {
+        "acquisition_id": "cambridge-a2-handbook",
+        "pdf_page": 45
+      },
+      "answer_status": "official_handbook_key_visually_associated",
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "A2",
+        "authority": "Cambridge English"
+      },
+      "chinese_grade_alignment": "not_established",
+      "commercial_permission": "unknown",
+      "learner_calibration": "not_available_for_product_population",
+      "response_constraint": {
+        "max_words": 1,
+        "numeric_date_time_alternatives": true,
+        "source_instruction_visually_reviewed": true
+      },
+      "script_location": {
+        "acquisition_id": "cambridge-a2-handbook",
+        "pdf_pages": [
+          42,
+          43,
+          44
+        ]
+      },
+      "media": {
+        "acquisition_id": "cambridge-a2-sample-listening-audio",
+        "whole_test_not_individual_clip": true,
+        "alignment_status": "official_reference_or_bundle_and_topic_association_only",
+        "semantic_audio_review": "not_completed",
+        "cue_times": "not_annotated"
+      },
+      "structure_review": "整组指令、全部空位及配套手册答案目视核对；脚本核读；无原题文/答案内容入库。"
+    },
+    {
+      "id": "cambridge.b1.listening.part3.sample",
+      "source_id": "cambridge.b1",
+      "acquisition_id": "cambridge-b1-handbook",
+      "identity": "B1教师手册纸笔听力样题Part3",
+      "kind": "shared_recording_note_completion",
+      "pdf_page": 51,
+      "printed_page": 49,
+      "source_question_numbers": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "shared_material": true,
+      "source_variant": "paper_based_handbook_sample",
+      "answer_location": {
+        "acquisition_id": "cambridge-b1-handbook",
+        "pdf_page": 56
+      },
+      "answer_status": "official_handbook_key_visually_associated",
+      "source_claimed_level": {
+        "framework": "CEFR",
+        "label": "B1",
+        "authority": "Cambridge English"
+      },
+      "chinese_grade_alignment": "not_established",
+      "commercial_permission": "unknown",
+      "learner_calibration": "not_available_for_product_population",
+      "response_constraint": {
+        "max_words": 2,
+        "numeric_date_time_alternatives": true,
+        "source_instruction_visually_reviewed": true
+      },
+      "script_location": {
+        "acquisition_id": "cambridge-b1-handbook",
+        "pdf_pages": [
+          53,
+          54,
+          55
+        ]
+      },
+      "media": {
+        "acquisition_id": "cambridge-b1-current-bundle-member08",
+        "whole_test_not_individual_clip": true,
+        "alignment_status": "official_reference_or_bundle_and_topic_association_only",
+        "semantic_audio_review": "not_completed",
+        "cue_times": "not_annotated"
+      },
+      "structure_review": "整组指令、全部空位及配套手册答案目视核对；脚本核读；无原题文/答案内容入库。",
+      "additional_key_location": {
+        "acquisition_id": "cambridge-b1-current-bundle-member01",
+        "review": "Same25questions/Part3topic;current key adds specific permitted misspelling fields; no blanket spelling tolerance"
+      }
     }
   ]
 }
