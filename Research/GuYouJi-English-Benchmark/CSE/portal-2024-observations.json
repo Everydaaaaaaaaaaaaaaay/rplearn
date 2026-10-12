@@ -1,0 +1,204 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "neea.cse2024",
+  "acquisition_id": "cse2024-public-ability-index",
+  "standard_id": "GF0018-2024",
+  "published_on": "2024-11-26",
+  "effective_on": "2025-03-01",
+  "replaces": "GF0018-2018",
+  "index_metadata": {
+    "input_sha256": "290d507765a9ae2767eaf6a871f896139ededea56843fe622d293c0b17f1bc95",
+    "status": "portal_metadata_only",
+    "tree_nodes_including_option_root": 155,
+    "capability_parent_nodes": 8,
+    "leaf_nodes": 146,
+    "root_level_option_records": 9,
+    "descriptor_records_excluding_option_root": 3732,
+    "distinct_descriptor_ids": 3732,
+    "records_by_label": {
+      "一级": 167,
+      "二级": 281,
+      "三级": 354,
+      "四级": 397,
+      "五级": 511,
+      "六级": 579,
+      "七级": 594,
+      "八级": 539,
+      "九级": 310
+    },
+    "level_options": [
+      {
+        "raw_option_id": 1,
+        "label": "九级",
+        "rank_from_label": 9
+      },
+      {
+        "raw_option_id": 2,
+        "label": "八级",
+        "rank_from_label": 8
+      },
+      {
+        "raw_option_id": 3,
+        "label": "七级",
+        "rank_from_label": 7
+      },
+      {
+        "raw_option_id": 4,
+        "label": "六级",
+        "rank_from_label": 6
+      },
+      {
+        "raw_option_id": 5,
+        "label": "五级",
+        "rank_from_label": 5
+      },
+      {
+        "raw_option_id": 6,
+        "label": "四级",
+        "rank_from_label": 4
+      },
+      {
+        "raw_option_id": 7,
+        "label": "三级",
+        "rank_from_label": 3
+      },
+      {
+        "raw_option_id": 8,
+        "label": "二级",
+        "rank_from_label": 2
+      },
+      {
+        "raw_option_id": 9,
+        "label": "一级",
+        "rank_from_label": 1
+      }
+    ],
+    "parents": [
+      {
+        "node_id": 3,
+        "title": "听力理解能力总表",
+        "child_nodes": 13
+      },
+      {
+        "node_id": 4,
+        "title": "阅读理解能力总表",
+        "child_nodes": 15
+      },
+      {
+        "node_id": 5,
+        "title": "口头表达能力总表",
+        "child_nodes": 26
+      },
+      {
+        "node_id": 6,
+        "title": "书面表达能力总表",
+        "child_nodes": 20
+      },
+      {
+        "node_id": 7,
+        "title": "组构能力总表",
+        "child_nodes": 9
+      },
+      {
+        "node_id": 8,
+        "title": "语用能力总表",
+        "child_nodes": 8
+      },
+      {
+        "node_id": 9,
+        "title": "口译能力总表",
+        "child_nodes": 28
+      },
+      {
+        "node_id": 10,
+        "title": "笔译能力总表",
+        "child_nodes": 27
+      }
+    ],
+    "limitations": [
+      "Root contains search options and remarks, not interchangeable descriptor rows",
+      "Portal node count is not independent full-book/table content review",
+      "Node, option and descriptor IDs use different namespaces",
+      "Numeric option1 means label9 in this payload; ID is not proficiency rank",
+      "No school-semester/CEFR/exam-score mapping or commercial clearance established"
+    ]
+  },
+  "source_version_evidence": [
+    "cse2024-current-search-page",
+    "cse2024-project-introduction"
+  ],
+  "selected_read_scopes": [
+    {
+      "parent_node_id": 4,
+      "label": "阅读理解能力总表",
+      "descriptor_ids": [
+        414,
+        415,
+        416,
+        417,
+        418,
+        419
+      ],
+      "implication": "语言简单/较复杂、体裁、熟悉性、隐含意义、连接关系与推断分别记录"
+    },
+    {
+      "parent_node_id": 26,
+      "label": "听对话",
+      "descriptor_ids": [
+        2611,
+        2612,
+        2613,
+        2614,
+        2615
+      ],
+      "implication": "语速、熟悉性、清晰度、关系与情绪/意图推断不是同一个词汇难度数"
+    },
+    {
+      "parent_node_id": 6,
+      "label": "书面表达能力总表",
+      "descriptor_ids": [
+        615,
+        616,
+        617,
+        618,
+        619,
+        620
+      ],
+      "implication": "经历叙述、观点理由、语篇及交际场景与材料长度分开"
+    },
+    {
+      "parent_node_id": 63,
+      "label": "口头表达准确性",
+      "descriptor_ids": [
+        6329,
+        6330,
+        6331,
+        6332,
+        6333,
+        6334,
+        6335,
+        6336
+      ],
+      "implication": "准确性需语法、发音与交际后果语境，不以零错误或母语口音缺失代替"
+    }
+  ],
+  "retrieval_starting_suggestions": {
+    "junior": "三级",
+    "senior": "四级",
+    "status": "Reference for initial search only; not official one-to-one schoolstage guidance"
+  },
+  "publisher_declared_tables": {
+    "source_id": "sflep.cse2024-preview",
+    "acquisition_id": "cse2024-official-publisher-preview-page",
+    "added": 69,
+    "total": 155,
+    "scope": "Publisher declaration, not fullbook content audit"
+  },
+  "limitations": [
+    "Portal records and nodes counted, not3732 gold trainingexamples or calibrated items",
+    "Root9options containstage hints andremarks;notinterchangeablewithdescriptors",
+    "ID1optionmeans九级; labels mustdrive rank, IDs scoped",
+    "Official introduction3broadclasses andpublisher4subclasses may reflect grouping;no automatic contradiction",
+    "Full standard/frontmatter/69newtables semantics and exactcommercialuse pending"
+  ]
+}

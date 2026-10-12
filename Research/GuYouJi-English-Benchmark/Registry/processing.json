@@ -8948,6 +8948,23 @@
         }
       ],
       "quality_observation": "OmitCSS/scripts;blockbreaksnotfacsimile,unresolvedpublication/importerrorspreserved"
+    },
+    {
+      "id": "cse2024-public-index-inspection",
+      "source_id": "neea.cse2024",
+      "pages": 1,
+      "successful_pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cse2024-public-ability-index.json",
+          "output": "build/english-benchmark-research-20261012/cse2024-index-review.json",
+          "exit_code": 0,
+          "sha256": "c88ec291d1bc274cad18aff79e2798714924a6a98cf5d7d1923e6dd9e5b44a26",
+          "engine": "Python3 scopedJSONmetadata counting",
+          "status": "metadata_reviewed_not_fulltext_gold"
+        }
+      ],
+      "quality_observation": "No full descriptors exported by inspector;rootoption IDs reverse-ranked and separated from descriptor IDs"
     }
   ],
   "observed_errors": [

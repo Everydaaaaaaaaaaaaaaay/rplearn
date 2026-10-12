@@ -351,11 +351,16 @@
       "category": "calibration",
       "priority": "P0",
       "provenance": "official_publisher",
-      "checked_on": "2026-10-12",
-      "verification_status": "legacy_reference",
-      "notes": "2024 metadata and partial descriptors retained from existing catalog; complete standard, publication authority and alignment research pending.",
+      "checked_on": "2026-10-13",
+      "verification_status": "official_version_and_portal_index_partial_descriptor_review",
+      "notes": "GF0018-2024发布日期/实施/替代范围与官方门户互证；公开客户端初始化索引已取得，155节点和3732非根描述语记录复算。选定三级/四级描述语核读，未完成全书/全表核读或商业授权。学段建议只是初始检索参考，不是固定映射。",
       "acquisition_ids": [
-        "cse2024"
+        "cse2024",
+        "cse2024-current-search-page",
+        "cse2024-project-introduction",
+        "cse2024-public-search-client",
+        "cse2024-public-ability-index",
+        "moe-cse2024-revision-announcement"
       ],
       "rights": {
         "commercial_publication": "unknown",
@@ -2072,6 +2077,54 @@
       "acquisition_ids": [
         "lexile-2026-llm-study-notice",
         "lexile-2026-llm-study-report"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "sflep.cse2024-preview",
+      "title": "上海外教社CSE2024出版与试读信息",
+      "url": "https://read.flebm.com/archives/3427",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "出版者声明新增69表、总155表并包含2018内容；试读壳ISBN9787544682855，未取得全书或复制权限。",
+      "acquisition_ids": [
+        "cse2024-official-publisher-preview-page",
+        "cse2024-publisher-reader-shell"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "neea.cse-linking2018",
+      "title": "雅思/普思与CSE对接官方历史结果",
+      "url": "https://cse.neea.edu.cn/html1/report/19011/4146-1.htm",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "历史2018版本对接，专家判断+实证结合；不同技能各有临界分数。不能外推低等级/2024修订/CEFR链式换算，更不能把CSE四级当大学英语四级。",
+      "acquisition_ids": [
+        "cse2018-ielts-aptis-linking-page",
+        "cse2018-ielts-aptis-linking-method",
+        "cse2018-ielts-linking-table",
+        "neea-cse2018-ielts-aptis-cutscore-table"
       ],
       "rights": {
         "commercial_publication": "unknown",

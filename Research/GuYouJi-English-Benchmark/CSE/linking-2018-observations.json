@@ -1,0 +1,77 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "neea.cse-linking2018",
+  "acquisition_id": "neea-cse2018-ielts-aptis-cutscore-table",
+  "cse_standard_scope": "2018-era published linking; not independently extended to2024revision",
+  "method": "Expert judgement plus empirical evidence; actual methods and error detail stillpending",
+  "ielts_cse_levels": [
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "ielts_source_thresholds": {
+    "listening": [
+      5,
+      6,
+      6.5,
+      7.5,
+      8.5
+    ],
+    "reading": [
+      4.5,
+      5.5,
+      6,
+      7,
+      7.5
+    ],
+    "speaking": [
+      5,
+      5.5,
+      6,
+      6.5,
+      7
+    ],
+    "writing": [
+      4,
+      5,
+      6,
+      7,
+      7.5
+    ],
+    "overall": [
+      4.5,
+      5.5,
+      6,
+      7,
+      8
+    ]
+  },
+  "threshold_scope": "Publishedcutscorecorrespondences;not identity of constructs or guaranteed currentindividualperformance",
+  "aptis_scope": "Published CSE3–7; separate0–50skill scores, not IELTSbandunits",
+  "prohibitions": [
+    "CSE4 is not CET4",
+    "No grade->CSE->IELTS->CEFR automatic chain",
+    "No extrapolation IELTSbelowCSE4 oraboveCSE8 fromthisstudy",
+    "No total-score threshold copied toall4skills"
+  ],
+  "thumbnail": "100x56 image wasnotusedtotranscribe;officialHTMLtableinstead",
+  "aggregate_arithmetic_check": {
+    "skill_threshold_means": [
+      4.625,
+      5.5,
+      6.125,
+      7.0,
+      7.625
+    ],
+    "published_overall_thresholds": [
+      4.5,
+      5.5,
+      6,
+      7,
+      8
+    ],
+    "status": "Source says overall cutoff is mean; literal displayed skill averages do not exactly reproduce published overall values, particularly level8. Aggregation/rounding/method details unresolved; preserve values, do not implement naive mean."
+  }
+}
