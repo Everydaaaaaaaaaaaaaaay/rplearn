@@ -10128,6 +10128,34 @@
         2
       ],
       "quality_observation": "Native reading order/linewrap not facsimile; selected pages visually checked,not independent semantic gold"
+    },
+    {
+      "id": "bnu2025-price-native-extraction",
+      "source_id": "bnu.price-beijing2025",
+      "manifest": "build/english-benchmark-research-20261012/native-manifest-bnu2025-price.json",
+      "pages": 2,
+      "successful_pages": 2,
+      "page_records": [
+        {
+          "page": 1,
+          "output": "build/english-benchmark-research-20261012/bnu2025-price-page01.txt",
+          "characters": 3222,
+          "exit_code": 0,
+          "sha256": "8effe0f277950196d22f08239970c539dc20f87cb720a8880b0ac104ce8b4429"
+        },
+        {
+          "page": 2,
+          "output": "build/english-benchmark-research-20261012/bnu2025-price-page02.txt",
+          "characters": 2669,
+          "exit_code": 0,
+          "sha256": "4239e854c5c3f83a356e937f74c053fe8efa11c03cb4e68792cce2e99bac93cf"
+        }
+      ],
+      "visually_reviewed_pdf_pages": [
+        1,
+        2
+      ],
+      "quality_observation": "EnglishISBNandmedia role rowschecked;notcopyrighteditionorprice-current2026"
     }
   ],
   "observed_errors": [
