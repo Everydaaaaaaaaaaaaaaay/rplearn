@@ -10,6 +10,7 @@
 - [新版课标关键要求核读](Studies/2026-10-12-revised-curriculum-review.md)：词汇变化、任务与评分要求、OCR误识别及修正。
 - [人教单元与用途复审](Studies/2026-10-12-pep-unit-and-rights-review.md)：五册单元目录、阅读入口、访问误判及电子教材用途限制。
 - [国际题组与听力配套](Studies/2026-10-13-cambridge-groups-and-media-review.md)：九个题组结构、多解与部分得分、B1当前样卷配套及媒体核验边界。
+- [CEFR-J官方资料复算](Studies/2026-10-13-cefrj-upstream-review.md)：7,801条词性数据、拼写变体与版本差异、2025语法资料及用途范围。
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
 - `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。
 - `Curriculum/observed-requirements.json`：逐页核读的课程词汇要求及适用条件，未自动换算为产品年级。

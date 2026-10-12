@@ -1677,6 +1677,76 @@
         "third_party_model_transmission": "unknown",
         "redistribution": "unknown"
       }
+    },
+    {
+      "id": "cefrj.wordlist",
+      "title": "CEFR-J官方词表Version1.6",
+      "url": "https://www.cefr-j.org/download.html",
+      "category": "vocabulary",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "upstream_workbook_metadata_and_terms_reviewed",
+      "notes": "Upstream workbook and publisher HTML agree on free research/commercial use with acknowledgement and modification with attribution. 7801POSentries/6868case-sensitive headwords independently recomputed. School labels refer to Japan; Chinese-grade/sense mapping not established.",
+      "acquisition_ids": [
+        "cefrj-upstream-resources",
+        "cefrj-v16-archive",
+        "cefrj-v16-workbook"
+      ],
+      "rights": {
+        "commercial_publication": "commercial_wordlist_use_permitted_with_attribution_public_republication_scope_not_explicit",
+        "commercial_model_training": "general_commercial_use_allowed_training_scope_not_separately_specified",
+        "bulk_database_reuse": "commercial_wordlist_use_permitted_with_attribution",
+        "adaptation": "permitted_with_attribution",
+        "third_party_model_transmission": "not_separately_specified",
+        "redistribution": "not_separately_specified"
+      }
+    },
+    {
+      "id": "cefrj.grammar",
+      "title": "CEFR-J Grammar Profile全数据20250225",
+      "url": "https://www.cefr-j.org/download.html",
+      "category": "grammar",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "upstream_workbook_metadata_and_terms_reviewed",
+      "notes": "2025corpus update with20200220item list;501IDs including subcategories;teacher table256rows includes level ranges. Public documentation acknowledges regex false positives;permissions separate from wordlist.",
+      "acquisition_ids": [
+        "cefrj-upstream-resources",
+        "cefrj-grammar2025-archive",
+        "cefrj-grammar2025-workbook"
+      ],
+      "rights": {
+        "commercial_publication": "unknown_not_inferred_from_wordlist_terms",
+        "commercial_model_training": "unknown_not_inferred_from_wordlist_terms",
+        "bulk_database_reuse": "unknown_not_inferred_from_wordlist_terms",
+        "adaptation": "unknown_not_inferred_from_wordlist_terms",
+        "third_party_model_transmission": "unknown_not_inferred_from_wordlist_terms",
+        "redistribution": "unknown_not_inferred_from_wordlist_terms"
+      }
+    },
+    {
+      "id": "cefrj.cando",
+      "title": "CEFR-J CAN-DO test samples Version1.0",
+      "url": "https://www.cefr-j.org/download.html",
+      "category": "international_samples",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "terms_and_sample_links_reviewed_bodies_pending",
+      "notes": "Five skills acrossPreA1-B2.2;educational/researchuse andadaptationstated;citationrequirementmentionscommercialuse,exactresourcecommercial/training/redistributionneedsreview. Listeningaudio promisedlater,notacquired.",
+      "acquisition_ids": [
+        "cefrj-upstream-resources"
+      ],
+      "rights": {
+        "commercial_publication": "educational_research_terms_reviewed_commercial_exactscope_not_established",
+        "commercial_model_training": "educational_research_terms_reviewed_commercial_exactscope_not_established",
+        "bulk_database_reuse": "educational_research_terms_reviewed_commercial_exactscope_not_established",
+        "adaptation": "educational_research_terms_reviewed_commercial_exactscope_not_established",
+        "third_party_model_transmission": "educational_research_terms_reviewed_commercial_exactscope_not_established",
+        "redistribution": "educational_research_terms_reviewed_commercial_exactscope_not_established"
+      }
     }
   ]
 }

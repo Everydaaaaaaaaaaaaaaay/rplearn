@@ -1,0 +1,183 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "cefrj.grammar",
+  "acquisition_id": "cefrj-grammar2025-workbook",
+  "status": "structure_and_versions_only_not_recalculated_or_validated_parser",
+  "sheets": [
+    {
+      "name": "ITEM LIST",
+      "rows": 503,
+      "columns": 9,
+      "version_cell_A1": "Grammatical Item List version: 20200220"
+    },
+    {
+      "name": "EFL FULL",
+      "rows": 503,
+      "columns": 101,
+      "version_cell_A1": "corpus version: 4.0 (20180205) / Grammatical Item List version: 20200220"
+    },
+    {
+      "name": "EFL SUMMARY (FULL)",
+      "rows": 504,
+      "columns": 18,
+      "version_cell_A1": null
+    },
+    {
+      "name": "EFL POSITION-BASED",
+      "rows": 503,
+      "columns": 214,
+      "version_cell_A1": "corpus version: 4.0 (20180205) / Grammatical Item List version: 20200220"
+    },
+    {
+      "name": "EFL SUMMARY (POSITION-BASED)",
+      "rows": 504,
+      "columns": 26,
+      "version_cell_A1": null
+    },
+    {
+      "name": "EFL SKILL-BASED",
+      "rows": 503,
+      "columns": 293,
+      "version_cell_A1": "corpus version: 4.0 (20180205) / Grammatical Item List version: 20200220"
+    },
+    {
+      "name": "EFL SUMMARY (SKILL-BASED)",
+      "rows": 504,
+      "columns": 42,
+      "version_cell_A1": null
+    },
+    {
+      "name": "JEFLL",
+      "rows": 504,
+      "columns": 24,
+      "version_cell_A1": null
+    },
+    {
+      "name": "NICT JLE CEFRレベル別",
+      "rows": 504,
+      "columns": 19,
+      "version_cell_A1": null
+    },
+    {
+      "name": "教科書2018",
+      "rows": 503,
+      "columns": 124,
+      "version_cell_A1": "corpus version: 20180225 / Grammatical Item List version: 20200220"
+    },
+    {
+      "name": "教科書2018SUMMARY",
+      "rows": 504,
+      "columns": 24,
+      "version_cell_A1": null
+    },
+    {
+      "name": "教科書2025",
+      "rows": 503,
+      "columns": 141,
+      "version_cell_A1": "corpus version: 20250225 / Grammatical Item List version: 20200220"
+    },
+    {
+      "name": "教科書2025SUMMARY",
+      "rows": 504,
+      "columns": 26,
+      "version_cell_A1": null
+    },
+    {
+      "name": "教員版",
+      "rows": 258,
+      "columns": 14,
+      "version_cell_A1": "CEFR-J Grammar Profile for Teachers (version: 20200220)"
+    }
+  ],
+  "item_list": {
+    "item_rows": 501,
+    "distinct_ids": 501,
+    "compound_ids": 238,
+    "base_id_min": 1,
+    "base_id_max": 263,
+    "missing_base_ids_inside_range": []
+  },
+  "teacher_table": {
+    "item_rows": 256,
+    "distinct_ids": 256,
+    "compound_ids": 9,
+    "base_id_min": 1,
+    "base_id_max": 263,
+    "missing_base_ids_inside_range": [
+      36,
+      47,
+      48,
+      52,
+      80,
+      83,
+      94,
+      96,
+      98,
+      115,
+      130,
+      191,
+      225,
+      226,
+      227,
+      238
+    ],
+    "levels": {
+      "A1.1": 7,
+      "A1.1-A1.2": 13,
+      "A1.1-A2.2": 5,
+      "A1.1-B1.2": 2,
+      "A1.1-B2.2": 1,
+      "A1.2": 12,
+      "A1.2-A1.3": 8,
+      "A1.2-A2.2": 7,
+      "A1.2-B1.2": 1,
+      "A1.2-B2.2": 1,
+      "A1.3": 21,
+      "A1.3-A2.1": 4,
+      "A1.3-A2.2": 2,
+      "A1.3-B1.1": 3,
+      "A1.3-B1.2": 6,
+      "A2.1": 24,
+      "A2.1-A2.2": 1,
+      "A2.1-B1.2": 7,
+      "A2.1-B2.2": 1,
+      "A2.2": 10,
+      "A2.2-B1.1": 8,
+      "A2.2-B1.2": 3,
+      "A2.2-B2.2": 5,
+      "B1.1": 27,
+      "B1.1-B2.1": 6,
+      "B1.1-B2.2": 5,
+      "B1.2": 19,
+      "B1.2-B2.1": 7,
+      "B1.2-B2.2": 3,
+      "B2.1": 19,
+      "B2.1-B2.2": 5,
+      "B2.2": 13
+    }
+  },
+  "previous_csv_id_comparison": {
+    "acquisition_id": "olp-cefrj-grammar-profile-20180315",
+    "bytes": 72272,
+    "sha256": "94953af376c1336166257e56c78d2139697b40ad8cf6f1235d8f9e89c2efc428",
+    "rows": 500,
+    "added_ids": [
+      "263"
+    ],
+    "removed_ids": [],
+    "limitation": "ID comparison only; no equivalence of regexes, CEFR labels or definitions inferred"
+  },
+  "known_false_positive": {
+    "item_id": "179",
+    "basis": "Official download page explains omitted-object-relative regex also matches unrelated noun/verb clause patterns",
+    "implication": "Do not equate raw regex counts to true grammar instances"
+  },
+  "limits": [
+    "Compound IDs such as1-1 are distinct and cannot be cast to integers",
+    "Teachers level ranges must not be collapsed to a single level",
+    "Japan2022-24textbook corpus is not Chinesecurriculum",
+    "No frequency formulas recalculated;raw corpus/summaries not assumed validated",
+    "Openpyxl reports unsupported extensions;original workbook bytes preserved withoutsave",
+    "Wordlistcommercial terms do not automatically apply to grammar data"
+  ]
+}

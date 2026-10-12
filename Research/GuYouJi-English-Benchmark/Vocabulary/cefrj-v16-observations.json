@@ -1,0 +1,157 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "cefrj.wordlist",
+  "acquisition_id": "cefrj-v16-workbook",
+  "version": "1.6",
+  "publisher_date": "2020-03-24",
+  "status": "verified_structural_counts_not_sense_or_grade_calibration",
+  "method": {
+    "tool": "Tools/inspect_cefrj_workbooks.py",
+    "openpyxl": "3.1.5",
+    "read_only": true,
+    "formula_recalculation": false,
+    "counts_reference": "Publisher download page and workbook ALL/A1/A2/B1/B2 rows"
+  },
+  "sheets": {
+    "ALL": {
+      "pos_entries": 7801,
+      "case_sensitive_headwords": 6868,
+      "casefolded_headwords": 6864,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "A1": 1166,
+        "A2": 1411,
+        "B1": 2445,
+        "B2": 2779
+      },
+      "headwords_with_multiple_levels": 572,
+      "formula_cells": 0
+    },
+    "A1": {
+      "pos_entries": 1166,
+      "case_sensitive_headwords": 1068,
+      "casefolded_headwords": 1066,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "A1": 1166
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "A2": {
+      "pos_entries": 1411,
+      "case_sensitive_headwords": 1352,
+      "casefolded_headwords": 1352,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "A2": 1411
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "B1": {
+      "pos_entries": 2445,
+      "case_sensitive_headwords": 2353,
+      "casefolded_headwords": 2353,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "B1": 2445
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "B2": {
+      "pos_entries": 2779,
+      "case_sensitive_headwords": 2692,
+      "casefolded_headwords": 2692,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "B2": 2779
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "ALL_sep": {
+      "pos_entries": 7988,
+      "case_sensitive_headwords": 7045,
+      "casefolded_headwords": 7035,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "A1": 1200,
+        "A2": 1443,
+        "B1": 2486,
+        "B2": 2859
+      },
+      "headwords_with_multiple_levels": 576,
+      "formula_cells": 0
+    },
+    "A1_sep": {
+      "pos_entries": 1200,
+      "case_sensitive_headwords": 1096,
+      "casefolded_headwords": 1088,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "A1": 1200
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "A2_sep": {
+      "pos_entries": 1443,
+      "case_sensitive_headwords": 1384,
+      "casefolded_headwords": 1384,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "A2": 1443
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "B1_sep": {
+      "pos_entries": 2486,
+      "case_sensitive_headwords": 2394,
+      "casefolded_headwords": 2394,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "B1": 2486
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    },
+    "B2_sep": {
+      "pos_entries": 2859,
+      "case_sensitive_headwords": 2772,
+      "casefolded_headwords": 2772,
+      "duplicate_headword_pos_entries": 0,
+      "entries_by_level": {
+        "B2": 2859
+      },
+      "headwords_with_multiple_levels": 0,
+      "formula_cells": 0
+    }
+  },
+  "level_sheets_match_all_rows": true,
+  "split_sheet_matches_deduplicated_slash_expansion": true,
+  "variant_deduplication": {
+    "duplicate_expanded_entry": "check-in noun B1",
+    "reason": "Two distinct combined headwords share one spelling variant;publisher ALL_sep retains it once",
+    "raw_expansion_entries": 7989,
+    "publisher_split_entries": 7988
+  },
+  "previous_v15_comparison": {
+    "acquisition_id": "olp-cefrj-vocabulary-profile-1.5",
+    "rows": 7799,
+    "added_headword_pos_keys": 17,
+    "removed_headword_pos_keys": 15,
+    "changed_shared_entries": 240,
+    "shared_level_label_changes": 0,
+    "warning": "Headword spelling families and thematic categories changed;17newkeys are not17newlemmas"
+  },
+  "limitations": [
+    "POS profiles do not resolve senses",
+    "Japanese school-equivalence labels cannot be used as Chinesegrade mapping",
+    "casefold/variant/token/lemma policies change denominators",
+    "A1-B2 coverage does not classify all Englishwords",
+    "No textbook-unit alignment or targetstudent validation"
+  ]
+}
