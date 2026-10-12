@@ -150,7 +150,7 @@
       "id": "G17",
       "priority": "P1",
       "title": "研究资产持久保存与恢复",
-      "next_action": "新快照已补入OCR模型、处理输入/裁剪和清单，1808文件逐摘要校验及八格式恢复通过；继续维护新增材料快照，明确异机/磁盘故障恢复与权限、磁盘预算。",
+      "next_action": "最新1854文件检查点采用写时复制并验证独立inode/双向修改隔离、大小/摘要及八格式恢复；继续持久版本、异机/故障恢复、权限与磁盘预算验证。",
       "acceptance": "Raw required assets recoverable independent of ignored build cache",
       "limitation": "两份快照仍同机同盘，不能抵御磁盘丢失；没有异机恢复证据，持续取材会产生新版本。环境依赖安装缓存不是完整可移植运行环境。",
       "status": "open"

@@ -5,11 +5,14 @@ No cloud upload, Git addition of corpora, removal, or source overwrite.
 The destination must be outside this repository and remains on this host.
 """
 import argparse
+import collections
+import ctypes
 import datetime
 import hashlib
 import json
 import os
 import shutil
+import sys
 import tempfile
 import uuid
 from pathlib import Path
@@ -17,6 +20,34 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
+
+
+def clone_function():
+    if sys.platform != 'darwin':
+        return None
+    try:
+        function = ctypes.CDLL(None, use_errno=True).clonefile
+        function.argtypes = (ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int)
+        function.restype = ctypes.c_int
+        return function
+    except AttributeError:
+        return None
+
+
+CLONE = clone_function()
+
+
+def copy_asset(source, target):
+    """Independent files; try APFS COW clone, never hard-link or overwrite."""
+    if target.exists():
+        raise FileExistsError(f'Refuse to overwrite snapshot/restore target {target}')
+    if CLONE is not None:
+        if CLONE(os.fsencode(source), os.fsencode(target), 0) == 0:
+            return 'macos_clonefile_copy_on_write'
+        if target.exists():
+            raise FileExistsError(f'Failed clone left a target; preserve it without overwrite {target}')
+    shutil.copyfile(source, target)
+    return 'byte_copy_fallback'
 
 
 def digest(path):
@@ -83,22 +114,37 @@ def main():
     snapshot = destination / snapshot_id
     snapshot.mkdir(mode=0o700)
     records = list(registered.values())
+    copy_methods = collections.Counter()
     for row in records:
         target = snapshot / row['path']
         target.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
-        shutil.copyfile(REPO / row['path'], target)
+        method = copy_asset(REPO / row['path'], target)
+        copy_methods[method] += 1
         os.chmod(target, 0o600)
         if target.stat().st_size != row['bytes'] or digest(target) != row['sha256']:
             raise ValueError(f'Snapshot copy mismatch: {row["path"]}')
 
     restore_evidence = []
     with tempfile.TemporaryDirectory(prefix='restore-audit-', dir=destination) as scratch:
+        original, duplicate = Path(scratch) / 'isolation-source', Path(scratch) / 'isolation-copy'
+        original.write_bytes(b'original-fixture-before-write')
+        isolation_method = copy_asset(original, duplicate)
+        if original.stat().st_ino == duplicate.stat().st_ino:
+            raise ValueError('Copy is a shared inode, not an independent file')
+        original.write_bytes(b'changed-source-fixture')
+        if duplicate.read_bytes() != b'original-fixture-before-write':
+            raise ValueError('Source write changed copy')
+        duplicate.write_bytes(b'changed-copy-fixture')
+        if original.read_bytes() != b'changed-source-fixture':
+            raise ValueError('Copy write changed source')
+        isolation_evidence = {'method': isolation_method, 'distinct_inodes': True,
+                              'source_write_isolated': True, 'copy_write_isolated': True}
         for extension in ('.pdf', '.jpg', '.png', '.mp3', '.xlsx', '.txt', '.tsv', '.traineddata'):
             candidate = next((r for r in records if r['path'].endswith(extension)), None)
             if not candidate:
                 raise ValueError(f'No representative asset for {extension}')
             restored = Path(scratch) / ('restored' + extension)
-            shutil.copyfile(snapshot / candidate['path'], restored)
+            copy_asset(snapshot / candidate['path'], restored)
             actual = digest(restored)
             if actual != candidate['sha256']:
                 raise ValueError(f'Restore mismatch: {extension}')
@@ -107,6 +153,7 @@ def main():
 
     manifest = {'snapshot_id': snapshot_id, 'created_at_utc': timestamp,
                 'snapshot_path': str(snapshot), 'files': records,
+                'copy_methods': dict(copy_methods), 'copy_isolation': isolation_evidence,
                 'restore_evidence': restore_evidence,
                 'limitations': ['Same-host local storage; no disk-loss/off-host restore test',
                                 'New acquisitions require a new verified snapshot',
@@ -118,6 +165,7 @@ def main():
               'snapshot_path': str(snapshot), 'manifest_path': str(manifest_path),
               'manifest_sha256': digest(manifest_path), 'files_verified': len(records),
               'bytes_verified': sum(r['bytes'] for r in records),
+              'copy_methods': dict(copy_methods), 'copy_isolation': isolation_evidence,
               'restore_evidence': restore_evidence, 'limitations': manifest['limitations']}
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps({k: report[k] for k in ('snapshot_id', 'files_verified', 'bytes_verified')}))
