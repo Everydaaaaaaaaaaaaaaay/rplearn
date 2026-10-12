@@ -26,6 +26,7 @@
 - [地域教材选用与当前目录](Studies/2026-10-13-regional-adoption-and-directories.md)：地区起点/系列差异、国家2024转存件、上海2026目录及待审状态更新。
 - [覆盖与验证设计](Studies/2026-10-13-coverage-and-validation-method.md)：36个优先年级/学期/系列单元、其余14范围及教研/学生/节奏/模型验收准备。
 - [词汇工具边界核验](Studies/2026-10-13-lexical-profile-boundary-review.md)：词性/大小写/词元与未知处理，12个真实条目核验及3个拒绝例。
+- [Oxford候选索引与冲突](Studies/2026-10-13-oxford-native-index-and-source-conflicts.md)：两份PDF私有候选解析、6处显式修复、16锚点检查及官方文件/网页的等级和词性冲突，未自动合并或推断超纲。
 - [课标附录及OCR标记复审](Studies/2026-10-13-curriculum-appendix-marker-review.md)：505/1600/3100声明口径、不同符号含义、附表边界与分栏OCR拒绝证据。
 - [长期检查点复审](Studies/2026-10-13-checkpoint-review.md)：阶段门槛继续未通过，汇总真实增量、未决条件及下一批执行重点。
 - [挑战/星级/用时计量](Studies/2026-10-13-cadence-measurement-protocol.md)：当前字素/模型回复计数口径、奖励与晋级条件及分阶段匿名研究日志，真实时间尚未取得。

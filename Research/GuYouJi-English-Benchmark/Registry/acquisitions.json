@@ -251,7 +251,7 @@
       "sha256": "441aa79b39a720afbe78bf944f8df49bce9f61977c8ac2be9fbcbc81cd94046f",
       "status": "fetched_unreviewed",
       "manifest": "build/english-benchmark-research-20261012/fetch-manifest-foundation.json",
-      "review_scope": "Title and introductory scope on PDF1 read; complete text extracted, entries not independently validated",
+      "review_scope": "All20PDFpages visually inspected for layout/headings and selected16anchors/6repairs/sourceconflicts;not every lexical row independently verified",
       "format_validation": "pdf_parsed",
       "text_review_pages": [
         1
@@ -271,7 +271,7 @@
       "sha256": "6577e6eb8745226ab7ab80912e83d285cf421ec70e61c92d74d5fef5f2c99570",
       "status": "fetched_unreviewed",
       "manifest": "build/english-benchmark-research-20261012/fetch-manifest-foundation.json",
-      "review_scope": "PDF1 introduction and supplemental-list scope visually checked; entries not independently validated",
+      "review_scope": "All20PDFpages visually inspected for layout/headings and selected16anchors/6repairs/sourceconflicts;not every lexical row independently verified",
       "format_validation": "pdf_parsed",
       "visual_pages": [
         1
@@ -17254,6 +17254,487 @@
         "tool": "zipfile_and_ffprobe"
       },
       "manifest": "build/english-benchmark-research-20261012/yle-volume2-audio-container-audit.json"
+    },
+    {
+      "id": "oxford3000-pdf-page001-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page001.png",
+      "bytes": 410363,
+      "sha256": "145a9fec4de64ca1bba672acdc9e3eff3df08979049b911c1fa204f95c30b606",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 1,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page002-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page002.png",
+      "bytes": 386965,
+      "sha256": "1faea7f08e9ffd1d2bd598e1ba0795645b74a329a24760899bbe8b218e73610d",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 2,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page003-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page003.png",
+      "bytes": 405540,
+      "sha256": "59038bd73e4258763d56bae9b5bac390f04c32ff8d5e3dbaffa9db875917b415",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 3,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page004-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page004.png",
+      "bytes": 420554,
+      "sha256": "d6c0e4fa922a336a00dd47e253f07908119e8011e7857cfae8b9b75597d04d7f",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 4,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page005-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page005.png",
+      "bytes": 389744,
+      "sha256": "bb530c2d5cd6a401ac7f848070fc6c2a9803f34b0908d1a4740b77b2a6ccb200",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 5,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page006-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page006.png",
+      "bytes": 398421,
+      "sha256": "fdd2bf95ad7804b38267a419a32a2273e7c4106c3f4f1e5aa0a2e151d3746dfb",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 6,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page007-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page007.png",
+      "bytes": 395721,
+      "sha256": "16e7e668a7954ee21d21a92bef9a620cb98cb112fb068739245749d773c44d84",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 7,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page008-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page008.png",
+      "bytes": 404184,
+      "sha256": "dc0050ffd92a4e26ec646405a14c0fb0fd062b0055516e816f8c4a24430a6305",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 8,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page009-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page009.png",
+      "bytes": 411554,
+      "sha256": "236508baaf8fdad0be39891307c5e92e178ae05ec51e9933bbc9258a8266f11a",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 9,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page010-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page010.png",
+      "bytes": 419851,
+      "sha256": "411b889d28a6de0f7afc2fb6ea9bfb9f2b6d922f2e8ed10a6f0b9516cf463d78",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 10,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page011-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page011.png",
+      "bytes": 396243,
+      "sha256": "62e71b7fac97bcb0f9b51cc5f160b6b09f19ba30ce1b9581bfce7b8e33a86ece",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 11,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford3000-pdf-page012-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford3000-pdf-page012.png",
+      "bytes": 381867,
+      "sha256": "b832df32f91daf565e55e1e4b6806ba82ef3d96035e5141f9d1edad9187670f5",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "pdf_page": 12,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page001-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page001.png",
+      "bytes": 455887,
+      "sha256": "d08aaaf40c41485ff7a7a57bf85ea63ea42ff3bfbe64e08b59b7a2eb98acb860",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 1,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page002-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page002.png",
+      "bytes": 418048,
+      "sha256": "430b0838b3b5e2f8dc495e40d43b513cd9b023c642d2b4bdf784f3cd9a160eeb",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 2,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page003-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page003.png",
+      "bytes": 436272,
+      "sha256": "81b54d7733cce016fc479f8ab7ca0f699cd5a5fdf3ed22e9ee1fdde9bd91ff88",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 3,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page004-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page004.png",
+      "bytes": 410082,
+      "sha256": "0152c31b2b9fc9ef5a4ce96a011f22b36bdce79f156e6dd8a3af8d49044664e6",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 4,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page005-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page005.png",
+      "bytes": 405977,
+      "sha256": "2897e9a337b89f067bbaecf7131d8751a4aa24f7f7144d9429dced046bb8525b",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 5,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page006-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page006.png",
+      "bytes": 432965,
+      "sha256": "47f239042114f37a7beb84480520e5e4abb420f8c488a8e16d9aaf0d187631be",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 6,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page007-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page007.png",
+      "bytes": 412441,
+      "sha256": "12fd3ea8b47be17cbb26104b298d13f2093efdc2973b983fa3bf01780967cac8",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 7,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford5000-pdf-page008-review20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_5000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "png_decoded",
+      "review_scope": "Source page layout/level/headings and selected entries viewed;not everyword verified",
+      "path": "build/english-benchmark-research-20261012/oxford5000-pdf-page008.png",
+      "bytes": 160553,
+      "sha256": "558f9eb20a3e9686a3289b4372a75a2b3fb2b7ded9671a19e672a00b2bc83057",
+      "derivation": {
+        "acquisition_id": "oxford5000-pdf",
+        "pdf_page": 8,
+        "tool": "pdftoppm",
+        "configuration": "scale-to1800-singlefile-png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford-native-repairs20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "json_parsed",
+      "review_scope": "Six explicit line repairs tiedto20sourcepages;not silent correction of source labels",
+      "path": "build/english-benchmark-research-20261012/oxford-native-explicit-repairs.json",
+      "bytes": 1863,
+      "sha256": "64aa5342320e4dd606b8e00cea7ebe38dc2434dab07b3f618a00551682a3d2c9",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "additional_parent_acquisition_ids": [
+          "oxford3000-pdf",
+          "oxford5000-pdf",
+          "oxford-words"
+        ],
+        "tool": "inspect_oxford_pdfs.py"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford-private-candidate-index20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "json_parsed",
+      "review_scope": "Private nativecandidate index forbothPDFs;research only,unknown senses andrights",
+      "path": "build/english-benchmark-research-20261012/oxford-private-candidate-index.json",
+      "bytes": 2708656,
+      "sha256": "461f981b43f93084ec5d630b8b444adf86797c0a42cab6c59639f641e72025b2",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "additional_parent_acquisition_ids": [
+          "oxford3000-pdf",
+          "oxford5000-pdf",
+          "oxford-words"
+        ],
+        "tool": "inspect_oxford_pdfs.py"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford-native-index-summary20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/external/pdf/wordlists/oxford-3000-5000/The_Oxford_3000_by_CEFR_level.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "json_parsed",
+      "review_scope": "Recomputed grouping/POS/levelcounts;not nominal title counts orstudent vocab sizes",
+      "path": "build/english-benchmark-research-20261012/oxford-native-index-summary.json",
+      "bytes": 4691,
+      "sha256": "c137cc59032af1374d4c7b10a4eb44930a1e5ec979c4c10d583cbc89bed6c739",
+      "derivation": {
+        "acquisition_id": "oxford3000-pdf",
+        "additional_parent_acquisition_ids": [
+          "oxford3000-pdf",
+          "oxford5000-pdf",
+          "oxford-words"
+        ],
+        "tool": "inspect_oxford_pdfs.py"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford-web-pdf-concordance20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "json_parsed",
+      "review_scope": "Candidate-only comparison;qualifiers/case/marker/POStaxonomy transforms do not certify equal senses",
+      "path": "build/english-benchmark-research-20261012/oxford-private-web-pdf-concordance.json",
+      "bytes": 3854956,
+      "sha256": "00055967333cc56a00e7e4e4af1cab638dcbe842e2d435c0e23b9d487f560678",
+      "derivation": {
+        "acquisition_id": "oxford-words",
+        "additional_parent_acquisition_ids": [
+          "oxford3000-pdf",
+          "oxford5000-pdf",
+          "oxford-words"
+        ],
+        "tool": "stdlib.HTMLParser"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford-web-pdf-comparison-script20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "format_validation": "python_source_saved",
+      "review_scope": "Cached comparison method as recovery dependency;not approved productlookup",
+      "path": "build/english-benchmark-research-20261012/compare_oxford_web_pdf20261013.py",
+      "bytes": 3993,
+      "sha256": "22d01d9c7b63d1b4398e679edadedf1fbc13dc65406ceef0165df1cd65fe2b5c",
+      "derivation": {
+        "acquisition_id": "oxford-words",
+        "additional_parent_acquisition_ids": [
+          "oxford3000-pdf",
+          "oxford5000-pdf",
+          "oxford-words"
+        ],
+        "tool": "stdlib.HTMLParser"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-oxford20261013.json"
+    },
+    {
+      "id": "oxford-current-methods20261013",
+      "url": "https://www.oxfordlearnersdictionaries.com/about/wordlists/oxford3000-5000",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Official selection/methods and polysemy warning read;bytes duplicate earlier aboutpage,not independent evidence",
+      "format_validation": "html_body_parsed",
+      "final_url": "https://www.oxfordlearnersdictionaries.com/about/wordlists/oxford3000-5000",
+      "http_status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "path": "build/english-benchmark-research-20261012/raw/oxford-current-methods20261013.html",
+      "bytes": 67694,
+      "sha256": "e9bf96a091ceac123f82b7e06d20dd46b5497ec051c8618a6cb648f1824b391e",
+      "status": "fetched_unreviewed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-oxford-methods20261013.json"
     }
   ],
   "updated_on": "2026-10-13"

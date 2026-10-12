@@ -1,0 +1,225 @@
+{
+  "method": "pypdf_native_exact_version_explicit_repairs",
+  "pypdf_version": "6.10.0",
+  "production_admission": false,
+  "observed_on": "2026-10-13",
+  "source_id": "oxford.core",
+  "source_acquisition_ids": [
+    "oxford3000-pdf",
+    "oxford5000-pdf",
+    "oxford-words"
+  ],
+  "sources": [
+    {
+      "source_list": "3000",
+      "pdf_sha256": "441aa79b39a720afbe78bf944f8df49bce9f61977c8ac2be9fbcbc81cd94046f",
+      "pdf_bytes": 336931,
+      "pages": 12,
+      "grouped_entry_rows": 3313,
+      "pos_level_rows": 3815,
+      "distinct_display_headwords": 3003,
+      "casefolded_display_headwords": 3001,
+      "grouped_rows_by_level": {
+        "A1": 902,
+        "A2": 872,
+        "B1": 810,
+        "B2": 729
+      },
+      "pos_rows_by_level": {
+        "A1": 1077,
+        "A2": 995,
+        "B1": 907,
+        "B2": 836
+      },
+      "headwords_with_multiple_levels": 300,
+      "duplicate_display_pos_level_rows": 0,
+      "unresolved_native_lines": 0,
+      "explicit_repairs": [
+        {
+          "pdf_page": 2,
+          "native_line_numbers": [
+            189,
+            190
+          ],
+          "result": "light (from the sun/a lamp) n., adj.",
+          "reason": "Wrapped POS continuation; selected source image reviewed",
+          "visual_evidence": "build/english-benchmark-research-20261012/oxford3000-pdf-page002.png",
+          "visual_evidence_sha256": "1faea7f08e9ffd1d2bd598e1ba0795645b74a329a24760899bbe8b218e73610d"
+        },
+        {
+          "pdf_page": 3,
+          "native_line_numbers": [
+            142,
+            143
+          ],
+          "result": "second1 (next after the first) det./number",
+          "reason": "Wrapped POS continuation; numeral marker retained",
+          "visual_evidence": "build/english-benchmark-research-20261012/oxford3000-pdf-page003.png",
+          "visual_evidence_sha256": "59038bd73e4258763d56bae9b5bac390f04c32ff8d5e3dbaffa9db875917b415"
+        }
+      ],
+      "candidate_index_status": "native_parse_candidate",
+      "all_entries_visually_verified": false,
+      "commercial_use_cleared": false,
+      "full_sense_inventory": false,
+      "Chinese_grade_alignment": "not_established"
+    },
+    {
+      "source_list": "5000_additional",
+      "pdf_sha256": "6577e6eb8745226ab7ab80912e83d285cf421ec70e61c92d74d5fef5f2c99570",
+      "pdf_bytes": 89993,
+      "pages": 8,
+      "grouped_entry_rows": 2015,
+      "pos_level_rows": 2138,
+      "distinct_display_headwords": 1999,
+      "casefolded_display_headwords": 1999,
+      "grouped_rows_by_level": {
+        "B2": 700,
+        "C1": 1315
+      },
+      "pos_rows_by_level": {
+        "B2": 735,
+        "C1": 1403
+      },
+      "headwords_with_multiple_levels": 16,
+      "duplicate_display_pos_level_rows": 0,
+      "unresolved_native_lines": 0,
+      "explicit_repairs": [
+        {
+          "pdf_page": 7,
+          "native_line_numbers": [
+            90,
+            91
+          ],
+          "result": "rifle n.",
+          "reason": "Split headword/POS within one displayed line",
+          "visual_evidence": "build/english-benchmark-research-20261012/oxford5000-pdf-page007.png",
+          "visual_evidence_sha256": "12fd3ea8b47be17cbb26104b298d13f2093efdc2973b983fa3bf01780967cac8"
+        },
+        {
+          "pdf_page": 7,
+          "native_line_numbers": [
+            107,
+            108
+          ],
+          "result": "sanction n.",
+          "reason": "Split source text runs within displayed headword; visual sanction",
+          "visual_evidence": "build/english-benchmark-research-20261012/oxford5000-pdf-page007.png",
+          "visual_evidence_sha256": "12fd3ea8b47be17cbb26104b298d13f2093efdc2973b983fa3bf01780967cac8"
+        },
+        {
+          "pdf_page": 7,
+          "native_line_numbers": [
+            113,
+            114
+          ],
+          "result": "screw v., n.",
+          "reason": "Split headword/POS within displayed line",
+          "visual_evidence": "build/english-benchmark-research-20261012/oxford5000-pdf-page007.png",
+          "visual_evidence_sha256": "12fd3ea8b47be17cbb26104b298d13f2093efdc2973b983fa3bf01780967cac8"
+        },
+        {
+          "pdf_page": 7,
+          "native_line_numbers": [
+            129,
+            130
+          ],
+          "result": "settlement n.",
+          "reason": "Split source text runs within displayed headword; visual settlement",
+          "visual_evidence": "build/english-benchmark-research-20261012/oxford5000-pdf-page007.png",
+          "visual_evidence_sha256": "12fd3ea8b47be17cbb26104b298d13f2093efdc2973b983fa3bf01780967cac8"
+        }
+      ],
+      "candidate_index_status": "native_parse_candidate",
+      "all_entries_visually_verified": false,
+      "commercial_use_cleared": false,
+      "full_sense_inventory": false,
+      "Chinese_grade_alignment": "not_established"
+    }
+  ],
+  "native_candidate_index_acquisition_id": "oxford-private-candidate-index20261013",
+  "repairs_acquisition_id": "oxford-native-repairs20261013",
+  "selected_source_anchors_checked": 16,
+  "negative_cases_rejected": 5,
+  "all_pages_layout_viewed": true,
+  "all_lexical_entries_independently_checked": false,
+  "wordlist_count_basis": "Source grouped display rows or expanded POS rows;not running tokens,word families,known senses or nominal title",
+  "web_comparison": {
+    "acquisition_id": "oxford-web-pdf-concordance20261013",
+    "web_rows": 5975,
+    "unique_data_hw_values": 4957,
+    "web_ox3000_rows": 3812,
+    "web_ox5000_rows": 5975,
+    "status_counts": [
+      {
+        "source_list": "3000",
+        "counts": {
+          "same_level_candidate": 3809,
+          "level_difference_candidate": 4,
+          "missing_reference_candidate": 2
+        }
+      },
+      {
+        "source_list": "5000_additional",
+        "counts": {
+          "same_level_candidate": 2039,
+          "missing_reference_candidate": 84,
+          "level_difference_candidate": 15
+        }
+      }
+    ],
+    "identity_transform": "Case/apostrophe/qualifier/numeral/TM normalisation and subtypePOS onlyforcomparisoncandidates;never sourceidentity or senseequivalence",
+    "limitations": "Samelevel candidate isnot exact semantic match;missingreference not C2/outofcurriculum;source HTML snapshot2026-10-12 not all currentpage entries verified"
+  },
+  "selected_source_conflicts": [
+    {
+      "display_headword": "audio",
+      "source_pos": "adj.",
+      "pdf3000_level": "A2",
+      "pdf3000_page": 4,
+      "pdf5000_additional_level": "B2",
+      "pdf5000_additional_page": 1,
+      "resolution": "not_adjudicated"
+    },
+    {
+      "display_headword": "well-being",
+      "source_pos": "n.",
+      "pdf3000_level": "B2",
+      "pdf3000_page": 12,
+      "pdf5000_additional_level": "C1",
+      "pdf5000_additional_page": 8,
+      "resolution": "not_adjudicated"
+    },
+    {
+      "display_headword": "gender",
+      "source_pos": "n.",
+      "pdf3000_level": "B2",
+      "pdf3000_page": 11,
+      "pdf5000_additional_level": "B2",
+      "pdf5000_additional_page": 2,
+      "resolution": "Duplicate source membership;not independentlynewword"
+    },
+    {
+      "display_headword": "alongside",
+      "source_pos": "prep.",
+      "pdf5000_additional_level": "B2",
+      "pdf5000_additional_page": 1,
+      "current_public_web_level": "C1",
+      "current_web_checked_on": "2026-10-13",
+      "resolution": "Version/scope reason not established"
+    },
+    {
+      "display_headword": "diplomatic",
+      "pdf5000_additional_pos": "n.",
+      "pdf5000_additional_page": 5,
+      "pdf5000_additional_level": "C1",
+      "current_public_web_pos": "adjective",
+      "current_public_web_level": "C1",
+      "resolution": "Retain printedPOS;do not silently correct source"
+    }
+  ],
+  "commercial_use": "not_cleared",
+  "grade_alignment": "not_established",
+  "senses": "incomplete",
+  "gold_admission": false
+}
