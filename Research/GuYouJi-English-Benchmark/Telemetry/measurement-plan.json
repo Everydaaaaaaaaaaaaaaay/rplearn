@@ -1,0 +1,153 @@
+{
+  "plan_version": "0.1",
+  "updated_on": "2026-10-13",
+  "status": "prospective_design_no_observed_participants",
+  "scope": "挑战等待、题组用时、奖励路径和20–30分钟有效学习预算验证",
+  "implementation_reference": {
+    "repository_commit": "f0a10b8250ca966d59c900ed5bd4055850667df6",
+    "files": [
+      {
+        "path": "Backend/src/modules/learning/policy.ts",
+        "git_blob_sha": "b18704d99583ce62c6c9819b057867faabe38bca"
+      },
+      {
+        "path": "Backend/src/modules/learning/chat-repository.ts",
+        "git_blob_sha": "a98071c1d6d3d57bfc38d06b884b354b2a620958"
+      },
+      {
+        "path": "Backend/src/modules/learning/engine-repository.ts",
+        "git_blob_sha": "309bb63b643e91713a8636126768a2ba4d36f605"
+      },
+      {
+        "path": "Backend/src/modules/learning/bank-content.ts",
+        "git_blob_sha": "6badd4e0d653f72f0201f428f3e92adf31bc1532"
+      }
+    ]
+  },
+  "current_policy_observations": {
+    "character_threshold": 1000,
+    "count_unit": "Whitespace removed, grapheme clusters; not UTF16bytes or English-only letters",
+    "eligible_origins": [
+      "server_issued_cycle_user_message",
+      "complete_model_reply_with_matching_operation_and_fragments"
+    ],
+    "unaccepted_characters": "Activeattempt,oldcycle,saturatedmeterorduplicateevent do notadd newmetercredit",
+    "saturation": "Clamp1000;overflowisnotcarriedintothenextcycle",
+    "reset": "First-roundfinish issuesnewcycle andzerocharacters",
+    "points_per_new_reward_claim": 1,
+    "points_per_star": 60,
+    "stars_per_level": 9,
+    "points_threshold_for_promotion_eligibility": 540,
+    "extra_promotion_conditions": [
+      "Required goal set nonempty",
+      "All required goals covered",
+      "Transfer unit completed/available proof",
+      "Next level available and defined"
+    ],
+    "source_score_and_reward": "Do not assume exam marks,gaps,question objects or bankfirstclaim are the same measurement"
+  },
+  "required_log_fields": {
+    "study": [
+      "protocol_version",
+      "purpose",
+      "authorization_or_consent_evidence_ref",
+      "target_population",
+      "sampling_plan",
+      "retention_policy"
+    ],
+    "participant": [
+      "pseudonymous_learner_key",
+      "actual_curriculum_version_or_unknown",
+      "school_grade_or_unknown",
+      "semester_or_unknown",
+      "english_start_or_unknown",
+      "region_or_unknown",
+      "prior_exposure_status"
+    ],
+    "session": [
+      "session_id",
+      "client_device_class",
+      "clock_epoch_id",
+      "start_end_monotonic_ms",
+      "wall_clock_for_coarse_date",
+      "app_foreground_intervals",
+      "background_pause_intervals",
+      "network_provider_grading_wait_intervals",
+      "idle_detection_rule_version",
+      "activity_signal_kind"
+    ],
+    "attempt": [
+      "attempt_id",
+      "checkpoint_blueprint_version",
+      "source_family_ids",
+      "frozen_group_material_question_scoring_versions",
+      "reward_policy_version",
+      "first_or_retry_round",
+      "submitted_response_status",
+      "exposure_history_ref"
+    ],
+    "event": [
+      "event_id",
+      "dedup_key",
+      "sequence_number",
+      "monotonic_ms",
+      "event_kind",
+      "attempt_group_item_refs_or_not_applicable",
+      "phase",
+      "assistance_or_feedback_exposure",
+      "server_received_at",
+      "clock_reset_or_missing_data_flag"
+    ],
+    "chat_meter": [
+      "cycle_id",
+      "origin_role",
+      "raw_grapheme_count",
+      "credited_meter_delta",
+      "meter_before_after",
+      "eligibility_reason",
+      "language_mix_status_or_unknown",
+      "completion_receipt_status",
+      "first_ready_timestamp",
+      "first_start_timestamp"
+    ]
+  },
+  "phase_vocabulary": [
+    "chat_composition",
+    "chat_listening_or_reading",
+    "source_instruction_reading",
+    "shared_material_reading",
+    "audio_playback",
+    "answering",
+    "revision",
+    "submission_wait",
+    "grading_wait",
+    "feedback_review",
+    "background",
+    "pause",
+    "idle_or_unknown"
+  ],
+  "measurement_rules": [
+    "No actual attention claimed from foreground duration alone",
+    "Shared passage reading counted once per group;overlappingaudio/readintervalsnotdoublecounted",
+    "Monotonic clock usedwithin epoch;across resets/device changes keeptimingunknownuntilreconciliation",
+    "Ready timestamp separatefrom start,completionandrewarddelivery",
+    "Assisted/retry success is not unassisted first-answer evidence",
+    "No raw chat text,personal identity or learner audio required indefaultresearchlog",
+    "Keep scalar source marks and incremental productreward separate",
+    "Censor incomplete/withdrawn sessions;do not discard them to make completers faster",
+    "Elapsed walltime,evidence-supported activity and uncertain intervals reportedseparately"
+  ],
+  "requested_analyses": [
+    "First challenge ready/start wait distribution and contentavailability stalls",
+    "Per-type/grade/textbook group timing incl.tail and missingness",
+    "Daily20–30minute budget allocations and provider waiting share",
+    "Distinct reward accrual vsrepeat/correction/assistance",
+    "Time to60points vsstar display andtime to540points vsactualpromotionconditions",
+    "Sensitivity to meterthreshold andidle/timing definitions,withoutclaimingcounterfactualcausality",
+    "Dropout/censoring,device/accessibility andprior-exposure subgroups"
+  ],
+  "acceptance": "Actualauthorizedtargetlearner evidence plus preregistered denominator/precision/criteria; designalonecannotpassG13",
+  "observed_first_challenge_minutes": null,
+  "observed_star_days": null,
+  "observed_level_days": null
+}

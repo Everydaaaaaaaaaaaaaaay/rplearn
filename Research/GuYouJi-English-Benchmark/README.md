@@ -21,6 +21,7 @@
 - [覆盖与验证设计](Studies/2026-10-13-coverage-and-validation-method.md)：36个优先年级/学期/系列单元、其余14范围及教研/学生/节奏/模型验收准备。
 - [词汇工具边界核验](Studies/2026-10-13-lexical-profile-boundary-review.md)：词性/大小写/词元与未知处理，12个真实条目核验及3个拒绝例。
 - [课标附录及OCR标记复审](Studies/2026-10-13-curriculum-appendix-marker-review.md)：505/1600/3100声明口径、不同符号含义、附表边界与分栏OCR拒绝证据。
+- [挑战/星级/用时计量](Studies/2026-10-13-cadence-measurement-protocol.md)：当前字素/模型回复计数口径、奖励与晋级条件及分阶段匿名研究日志，真实时间尚未取得。
 - [写时复制检查点](Studies/2026-10-13-copy-on-write-checkpoint.md)：1,854文件的独立inode/双向修改隔离和八格式恢复，降低持续同盘检查点成本。
 - [真实题组私有导入](Studies/2026-10-13-real-group-private-import.md)：福建完整五题表格阅读的材料/选项/键/摘要关联及损坏反例，原文仅在研究缓存。
 - [CSE版本/索引/对接复审](Studies/2026-10-13-cse-version-portal-and-linking.md)：当前规范身份、倒序选项ID、3732非根记录、指定能力条件及历史技能临界分数边界。
