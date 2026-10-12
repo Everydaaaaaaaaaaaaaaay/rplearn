@@ -16,6 +16,27 @@ BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
 SCHEMA = BASE / 'ItemGroups/ItemGroup.schema.json'
 SCHEMAS = {'0.1': SCHEMA, '0.2': BASE / 'ItemGroups/ItemGroup-v0.2.schema.json'}
+CONTENT_FORMAT_PREFIXES = (
+    'pdf_parsed', 'image_decoded', 'image_rendered', 'png_decoded', 'jpeg_decoded',
+    'html_', 'UTF8_HTML_', 'json_parsed', 'json_schema', 'csv_parsed',
+    'utf8_text_decoded', 'utf8_dictionary_parsed', 'xlsx_zip_openpyxl',
+    'zip_crc_all_members_passed', 'ffprobe_mp3_container',
+    'configuration_text_parsed', 'javascript_read', 'javascript_public_client_only',
+)
+
+
+def acquired_content_metadata(row):
+    """Conservative eligibility for a content reference, never semantic validity.
+
+    Transport-only, empty, blocked and unparsed bytes remain acquisition records.
+    Unknown validation labels require an explicit parser-policy update.
+    """
+    return (row.get('status') in ('fetched_unreviewed', 'derived_unreviewed') and
+            bool(row.get('path')) and type(row.get('bytes')) is int and row['bytes'] > 0 and
+            isinstance(row.get('sha256'), str) and len(row['sha256']) == 64 and
+            all(c in '0123456789abcdef' for c in row['sha256']) and
+            isinstance(row.get('format_validation'), str) and
+            row['format_validation'].startswith(CONTENT_FORMAT_PREFIXES))
 
 
 def validator_for(group):
@@ -77,8 +98,19 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
         if origin['kind'] == 'source_record':
             require(origin['source_id'] in sources, f'{row["id"]}: unknown source')
             aid = origin['acquisition_id']
-            require(aid in acquisitions and bool(acquisitions.get(aid, {}).get('path')),
-                    f'{row["id"]}: source content was not acquired')
+            acquired = acquisitions.get(aid, {})
+            content_ready = acquired_content_metadata(acquired)
+            require(content_ready,
+                    f'{row["id"]}: source content lacks nonempty parsed acquisition metadata')
+            if check_assets and content_ready:
+                path = (REPO / acquired['path']).resolve()
+                in_cache = (REPO / 'build').resolve() in path.parents
+                require(in_cache and path.is_file(), f'{row["id"]}: missing/outside-cache source content')
+                if in_cache and path.is_file():
+                    payload = path.read_bytes()
+                    require(len(payload) == acquired['bytes'] and
+                            hashlib.sha256(payload).hexdigest() == acquired['sha256'],
+                            f'{row["id"]}: source content size/digest mismatch')
             if origin['source_id'] in sources:
                 require(aid in sources[origin['source_id']].get('acquisition_ids', []),
                         f'{row["id"]}: acquisition belongs to a different source')

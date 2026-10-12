@@ -16,12 +16,12 @@ def main():
     fixtures = {p.stem: json.loads(p.read_text()) for p in
                 (BASE / 'ItemGroups/Fixtures').glob('*.json')}
 
-    def errors(group):
+    def errors(group, sources=None, acquisitions=None, check_assets=False):
         try:
             result = list(validator_for(group).iter_errors(group))
         except ValueError as exc:
             return [str(exc)]
-        return result or semantic_errors(group, {}, {})
+        return result or semantic_errors(group, sources or {}, acquisitions or {}, check_assets)
 
     for name, group in fixtures.items():
         assert not errors(group), f'Positive structural fixture rejected: {name}'
@@ -59,6 +59,44 @@ def main():
     reject('opening_story_not_required_or_allowed', 'reading-four', lambda g: g.update(opening_story='Extra unversioned story'))
     reject('gold_or_production_admission', 'reading-four', lambda g: g.update(admission='gold'))
     reject('unacquired_source_content', 'reading-four', lambda g: g['evidence'][0].update(origin=dict(kind='source_record',source_id='missing',acquisition_id='missing',variant='paper',locator='page1')))
+    sources = {r['id']: r for r in json.loads((BASE / 'Registry/sources.json').read_text())['sources']}
+    acquisitions = {r['id']: r for r in json.loads((BASE / 'Registry/acquisitions.json').read_text())['acquisitions']}
+    # Use actual registered nonempty PDF and actual empty HTTP200 records; the
+    # original fixture content stays synthetic and is not declared exam gold.
+    sid = 'pingdong.school-exams2025'
+    aid = 'pingdong-grade8down2025-paper-candidate'
+    sourced = copy.deepcopy(fixtures['reading-four'])
+    sourced['evidence'][0]['origin'] = dict(kind='source_record', source_id=sid,
+        acquisition_id=aid, variant='paper', locator='PDF1; content-reference validation demonstration only')
+    assert not errors(sourced, sources, acquisitions, True), 'Real acquired PDF reference rejected'
+    for label, change in [
+        ('empty_acquisition', {'bytes': 0}),
+        ('boolean_byte_count', {'bytes': True}),
+        ('failed_acquisition_with_path', {'status': 'fetch_failed'}),
+        ('blocked_acquisition_with_path', {'status': 'access_blocked'}),
+        ('empty_status_with_nonempty_metadata', {'status': 'fetched_empty'}),
+        ('unparsed_source_bytes', {'format_validation': 'not_checked'}),
+        ('digest_only_source_bytes', {'format_validation': 'bytes_and_digest_only'}),
+        ('transport_only_source_bytes', {'format_validation': 'gzip_transport_verified_not_HTML'}),
+        ('unknown_parser_label', {'format_validation': 'future_unverified_format'}),
+        ('malformed_source_digest', {'sha256': 'g' * 64}),
+        ('source_size_mismatch', {'bytes': acquisitions[aid]['bytes'] + 1}),
+        ('source_digest_mismatch', {'sha256': '0' * 64}),
+        ('missing_source_file', {'path': 'build/nonexistent-contract-source.pdf'}),
+        ('outside_cache_source_file', {'path': str(BASE / 'README.md')}),
+    ]:
+        rows = dict(acquisitions)
+        rows[aid] = {**acquisitions[aid], **change}
+        assert errors(sourced, sources, rows, True), f'Invalid source reference accepted: {label}'
+        checks.append(label)
+    empty = copy.deepcopy(sourced)
+    empty['evidence'][0]['origin']['acquisition_id'] = 'pingdong-grade8down2025-exam-notice'
+    assert errors(empty, sources, acquisitions, True), 'Real empty HTTP200 accepted as source content'
+    checks.append('actual_empty_HTTP200_source')
+    unrelated = copy.deepcopy(sourced)
+    unrelated['evidence'][0]['origin']['source_id'] = next(k for k in sources if k != sid)
+    assert errors(unrelated, sources, acquisitions, True), 'Acquisition attributed to wrong real source'
+    checks.append('wrong_real_source_membership')
     reject('unsupported_contract_version', 'partial-response-reference', lambda g: g.update(contract_version='9.9'))
     reject('nonexhaustive_exact_rejection', 'partial-response-reference', lambda g: g['private_scoring'][0]['answer_policy'].update(adjudication='exact_documented_forms'))
     reject('unknown_exact_rejection', 'partial-response-reference', lambda g: g['private_scoring'][0]['answer_policy'].update(coverage='unknown',adjudication='exact_documented_forms'))
