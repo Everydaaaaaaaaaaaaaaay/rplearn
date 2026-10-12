@@ -1,0 +1,123 @@
+{
+  "contract_version": "0.1",
+  "admission": "research_only",
+  "id": "fixture.prompt-not-acquired",
+  "version": "v1",
+  "task_id": "fixture.task1",
+  "family_id": "fixture.family1",
+  "source_task_label": "Original writing task1",
+  "source_script_label": "Original scriptA",
+  "modality": "written",
+  "references": [
+    {
+      "id": "response",
+      "role": "response",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original contract example",
+        "source_label": "Original response"
+      },
+      "representation": "original_fixture_text",
+      "full_transcription": true,
+      "transcription_status": "verified",
+      "note": "Original demonstration response: It opens at nine. On Friday it closes at six."
+    },
+    {
+      "id": "score",
+      "role": "published_score",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original contract example",
+        "source_label": "Invented structural score"
+      },
+      "representation": "original_fixture_text",
+      "full_transcription": true,
+      "transcription_status": "verified",
+      "note": "Invented band6 for contract exercise;not real assessment"
+    }
+  ],
+  "prompt": {
+    "status": "not_acquired",
+    "text_ref_ids": [],
+    "required_visual_ref_ids": [],
+    "visual_dependency_status": "unknown",
+    "pairing_basis": "Prompt missing;not scoring anchor"
+  },
+  "response": {
+    "ref_ids": [
+      "response"
+    ],
+    "completeness": "complete_source_response",
+    "errors_preserved": true,
+    "note": "Original structural fixture,not student evidence"
+  },
+  "scales": [
+    {
+      "id": "fixture.band",
+      "unit": "band",
+      "minimum": 0,
+      "maximum": 9,
+      "increment": 0.5,
+      "version_status": "source_identified",
+      "version": "fixture-v1",
+      "reason": "Invented demonstration scale"
+    }
+  ],
+  "scores": [
+    {
+      "id": "task.total",
+      "scope": "task",
+      "criterion_id": null,
+      "scale_id": "fixture.band",
+      "value": 6,
+      "evidence_ref_ids": [
+        "score"
+      ],
+      "score_origin": "original_fixture",
+      "note": "Synthetic total;not criterion or raw score"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "content",
+      "label": "content",
+      "status": "not_published",
+      "score_id": null,
+      "reason": "No invented dimension value"
+    },
+    {
+      "id": "organisation",
+      "label": "organisation",
+      "status": "not_published",
+      "score_id": null,
+      "reason": "No invented dimension value"
+    },
+    {
+      "id": "language",
+      "label": "language",
+      "status": "not_published",
+      "score_id": null,
+      "reason": "No invented dimension value"
+    }
+  ],
+  "rubric": {
+    "scoring_version_status": "unknown",
+    "scoring_version": null,
+    "reference_ref_ids": [],
+    "historical_match_status": "unknown",
+    "reason": "No applied rubric established"
+  },
+  "review": {
+    "independent": "not_performed",
+    "learner_calibration": "not_performed",
+    "note": "Original synthetic consistency exercise only",
+    "independent_evidence_ref_ids": [],
+    "learner_calibration_evidence_ref_ids": []
+  },
+  "rights": {
+    "status": "unknown",
+    "scope_evidence_ref_ids": [],
+    "commercial_use": "not_adjudicated",
+    "reason": "No release or training adjudication"
+  }
+}

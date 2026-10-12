@@ -1,0 +1,362 @@
+{
+  "observed_on": "2026-10-13",
+  "actual_source_negative_checks": [
+    "real_pdf_page_out_of_range",
+    "actual_source_declared_empty",
+    "403_record_as_acquired_response",
+    "PDF_page_locator_on_player_shell"
+  ],
+  "prompt_paired_records": 12,
+  "prompt_missing_records": 4,
+  "dimension_gold_records": 0,
+  "production_admission": false,
+  "gold_admission": false,
+  "limitations": [
+    "Task score source/page/scale consistency only,not authenticated score or semantic pairing validation",
+    "12handwriting scripts retain source images;no verified full response-only transcript",
+    "4computer scripts lack original prompt",
+    "Applied rubric version/independent review/Chinese learner calibration/rights not established"
+  ],
+  "score_text_crosschecks": [
+    {
+      "id": "ielts-writing2023-1A-scriptA",
+      "score_page": 9,
+      "expected": 5,
+      "printed_band_values": [
+        "5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-1A-scriptB",
+      "score_page": 10,
+      "expected": 6,
+      "printed_band_values": [
+        "6"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-1B-scriptA",
+      "score_page": 11,
+      "expected": 6,
+      "printed_band_values": [
+        "6"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-1B-scriptB",
+      "score_page": 12,
+      "expected": 7,
+      "printed_band_values": [
+        "7"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-1C-scriptA",
+      "score_page": 13,
+      "expected": 5,
+      "printed_band_values": [
+        "5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-1C-scriptB",
+      "score_page": 15,
+      "expected": 7,
+      "printed_band_values": [
+        "7"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-1C-scriptC",
+      "score_page": 17,
+      "expected": 8.5,
+      "printed_band_values": [
+        "8.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-2A-scriptA",
+      "score_page": 18,
+      "expected": 4,
+      "printed_band_values": [
+        "4"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-2A-scriptB",
+      "score_page": 20,
+      "expected": 6.5,
+      "printed_band_values": [
+        "6.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-2A-scriptC",
+      "score_page": 22,
+      "expected": 8.5,
+      "printed_band_values": [
+        "8.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-2B-scriptA",
+      "score_page": 24,
+      "expected": 5.5,
+      "printed_band_values": [
+        "5.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-writing2023-2B-scriptB",
+      "score_page": 26,
+      "expected": 7.5,
+      "printed_band_values": [
+        "7.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-computer-writing-task1-response1",
+      "score_page": 2,
+      "expected": 6,
+      "printed_band_values": [
+        "6"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-computer-writing-task1-response2",
+      "score_page": 3,
+      "expected": 4,
+      "printed_band_values": [
+        "4"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-computer-writing-task2-response1",
+      "score_page": 4,
+      "expected": 5.5,
+      "printed_band_values": [
+        "5.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    },
+    {
+      "id": "ielts-computer-writing-task2-response2",
+      "score_page": 5,
+      "expected": 7.5,
+      "printed_band_values": [
+        "7.5"
+      ],
+      "status": "native_score_value_present_and_visual_association_reviewed"
+    }
+  ],
+  "contract_version": "0.1",
+  "schema": "Performances/ScoredPerformance.schema.json",
+  "private_record_metadata": [
+    {
+      "id": "ielts-writing2023-1A-scriptA-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1A-scriptA.json",
+      "bytes": 6693,
+      "sha256": "623bc126227686d7154b24738e834a4c2f1425c21cb103e3f1247a35dbfdf515",
+      "task_id": "ielts.academic.writing2023.1A",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-1A-scriptB-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1A-scriptB.json",
+      "bytes": 6696,
+      "sha256": "50301da92f49f36ab2a288c03474c593748b269f8784363b5bd50898ba9ba25f",
+      "task_id": "ielts.academic.writing2023.1A",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-1B-scriptA-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1B-scriptA.json",
+      "bytes": 6696,
+      "sha256": "a07d124324e14beba43a116ba05ec7eee75edecc810ce4fff3d445244f0a90d9",
+      "task_id": "ielts.academic.writing2023.1B",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-1B-scriptB-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1B-scriptB.json",
+      "bytes": 6696,
+      "sha256": "99c47866eb71a29ac11ecb3ad1103e9f758ac69a9a153d7a20381dafba243ccb",
+      "task_id": "ielts.academic.writing2023.1B",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-1C-scriptA-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1C-scriptA.json",
+      "bytes": 6696,
+      "sha256": "facc240f68eb272099a2264136bff0cafceeecd643ded42f919c5e6f49736a7f",
+      "task_id": "ielts.academic.writing2023.1C",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-1C-scriptB-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1C-scriptB.json",
+      "bytes": 6696,
+      "sha256": "959e1615a28f833a4ae2998743435589d1af5107ee4205848b048332fbbd218c",
+      "task_id": "ielts.academic.writing2023.1C",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-1C-scriptC-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1C-scriptC.json",
+      "bytes": 6698,
+      "sha256": "7ec8a231df4dad2aae03046b96e8a3dee8af905a0d1d18d0961b1296d1d55a0c",
+      "task_id": "ielts.academic.writing2023.1C",
+      "prompt_status": "paired",
+      "required_visual_status": "acquired",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-2A-scriptA-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-2A-scriptA.json",
+      "bytes": 6122,
+      "sha256": "ac33c080b3c6d54f9927ddc03fe81c0bbc82807d0a7e05eafffcf0a2aac3fb07",
+      "task_id": "ielts.academic.writing2023.2A",
+      "prompt_status": "paired",
+      "required_visual_status": "not_required",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-2A-scriptB-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-2A-scriptB.json",
+      "bytes": 6138,
+      "sha256": "a52febaec5250dd2e0b29ccc5ef09e017356f0cc7468f476638cc023e95cb3db",
+      "task_id": "ielts.academic.writing2023.2A",
+      "prompt_status": "paired",
+      "required_visual_status": "not_required",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-2A-scriptC-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-2A-scriptC.json",
+      "bytes": 6138,
+      "sha256": "ad4200e6be952168e57d8b2abbb0192d44fe45d09af3d8d139909e02c53c3fab",
+      "task_id": "ielts.academic.writing2023.2A",
+      "prompt_status": "paired",
+      "required_visual_status": "not_required",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-2B-scriptA-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-2B-scriptA.json",
+      "bytes": 6124,
+      "sha256": "f5c8279f5718c702f87face691c796b0be032fe9c187b458f61722f43c14c1ea",
+      "task_id": "ielts.academic.writing2023.2B",
+      "prompt_status": "paired",
+      "required_visual_status": "not_required",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-writing2023-2B-scriptB-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-sample2023",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-2B-scriptB.json",
+      "bytes": 6138,
+      "sha256": "be6ccb0c12ba91c78ec65294ea18b154f3229295bc761aed0c9e7bdcfa087491",
+      "task_id": "ielts.academic.writing2023.2B",
+      "prompt_status": "paired",
+      "required_visual_status": "not_required",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-computer-writing-task1-response1-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-scored-responses",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-computer-writing-task1-response1.json",
+      "bytes": 5605,
+      "sha256": "c2c799c816fc9c67af7ff14d58c5169903bb3bc09fd2818de45cf9696b298b6a",
+      "task_id": "ielts.academic.computer-writing.Task1",
+      "prompt_status": "not_acquired",
+      "required_visual_status": "unknown",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-computer-writing-task1-response2-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-scored-responses",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-computer-writing-task1-response2.json",
+      "bytes": 5605,
+      "sha256": "e3a66f53857c444090658d4da549c1aa350c8547dc400d784c0485acfe12bfd6",
+      "task_id": "ielts.academic.computer-writing.Task1",
+      "prompt_status": "not_acquired",
+      "required_visual_status": "unknown",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-computer-writing-task2-response1-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-scored-responses",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-computer-writing-task2-response1.json",
+      "bytes": 5601,
+      "sha256": "eebdda666539c8540b354fd4491f7bf6e331ec4f03796fd281187359ba07769e",
+      "task_id": "ielts.academic.computer-writing.Task2",
+      "prompt_status": "not_acquired",
+      "required_visual_status": "unknown",
+      "criterion_scores_status": "not_published"
+    },
+    {
+      "id": "ielts-computer-writing-task2-response2-private-performance",
+      "source_id": "ielts.academic",
+      "source_acquisition_id": "ielts-academic-writing-scored-responses",
+      "path": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-computer-writing-task2-response2.json",
+      "bytes": 5601,
+      "sha256": "6e29f07dd5cb2574af88973b760f0200248819fbd758e66ed847018a0433bd5a",
+      "task_id": "ielts.academic.computer-writing.Task2",
+      "prompt_status": "not_acquired",
+      "required_visual_status": "unknown",
+      "criterion_scores_status": "not_published"
+    }
+  ]
+}
