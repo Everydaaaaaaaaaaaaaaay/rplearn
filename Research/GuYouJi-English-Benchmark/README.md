@@ -21,6 +21,7 @@
 - [完整题组合同草案](ItemGroups/Contract.md)：共享材料、可变题数、评分、实施/曝光、角色要求与版本迁移的必需字段和反例。
 - [IELTS评分样例与联动答案格](Studies/2026-10-13-ielts-scored-performances-and-coupled-slots.md)：12份完整prompt手写作答、4份缺prompt打字作答、任务band与未知维度、图表及口语脚本范围。
 - [已评分作答合同0.1](Performances/Contract.md)：独立保存任务分与维度分来源，三份原创结构样例、39反例及16份真实私有作答引用核验，尚非金标准或商用准入。
+- [低龄纸笔配套与功能边界](Studies/2026-10-13-yle-paper-components-and-function-boundaries.md)：334页原生文本、28选定目视页及14条音频容器核验，保留累积语法、题数/分值、图像依赖和非排他产出示例。
 - [原始资产保存与恢复](Studies/2026-10-13-local-preservation-review.md)：项目外本机1,676文件快照及六种格式恢复核验，长期/异机恢复仍待验收。
 - [地域教材选用与当前目录](Studies/2026-10-13-regional-adoption-and-directories.md)：地区起点/系列差异、国家2024转存件、上海2026目录及待审状态更新。
 - [覆盖与验证设计](Studies/2026-10-13-coverage-and-validation-method.md)：36个优先年级/学期/系列单元、其余14范围及教研/学生/节奏/模型验收准备。

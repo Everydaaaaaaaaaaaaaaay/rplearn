@@ -1,0 +1,214 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "cambridge.yle",
+  "handbook_acquisition_id": "cambridge-yle-handbook2024",
+  "wordlist_acquisition_id": "cambridge-yle-wordlist2025",
+  "target_age": [
+    6,
+    12
+  ],
+  "age_evidence_pdf_pages": {
+    "sample_volume2": 4,
+    "wordlist": 3
+  },
+  "paper_mode": true,
+  "Chinese_grade_mapping": "not_established",
+  "allocations": [
+    {
+      "level": "PreA1Starters",
+      "listening_minutes": 20,
+      "listening_parts": 4,
+      "listening_questions": 20,
+      "reading_writing_minutes": 20,
+      "reading_writing_parts": 5,
+      "reading_writing_questions": 25,
+      "speaking_minutes": [
+        3,
+        5
+      ],
+      "speaking_parts": 4,
+      "reading_writing_source_marks": 25
+    },
+    {
+      "level": "A1Movers",
+      "listening_minutes": 25,
+      "listening_parts": 5,
+      "listening_questions": 25,
+      "reading_writing_minutes": 30,
+      "reading_writing_parts": 6,
+      "reading_writing_questions": 35,
+      "speaking_minutes": [
+        5,
+        7
+      ],
+      "speaking_parts": 4,
+      "reading_writing_source_marks": 39
+    },
+    {
+      "level": "A2Flyers",
+      "listening_minutes": 25,
+      "listening_parts": 5,
+      "listening_questions": 25,
+      "reading_writing_minutes": 40,
+      "reading_writing_parts": 7,
+      "reading_writing_questions": 44,
+      "speaking_minutes": [
+        7,
+        9
+      ],
+      "speaking_parts": 4,
+      "reading_writing_source_marks": 48
+    }
+  ],
+  "allocation_evidence": {
+    "handbook_pdf_page": 8,
+    "marks_pdf_pages": [
+      39,
+      63
+    ],
+    "volume2_key_pdf_pages": [
+      25,
+      58,
+      91
+    ]
+  },
+  "timing_status": "published_allocations_not_student_observations",
+  "grammar_inheritance": {
+    "PreA1Starters": [],
+    "A1Movers": [
+      "PreA1Starters"
+    ],
+    "A2Flyers": [
+      "PreA1Starters",
+      "A1Movers"
+    ]
+  },
+  "grammar_function_constraints": [
+    {
+      "level": "PreA1Starters",
+      "focus": "present_continuous",
+      "excluded_function": "future_reference",
+      "pdf_page": 29
+    },
+    {
+      "level": "PreA1Starters",
+      "focus": "can",
+      "functions": [
+        "ability",
+        "permission_requests"
+      ],
+      "pdf_page": 29
+    },
+    {
+      "level": "A1Movers",
+      "focus": "could",
+      "function": "past_ability",
+      "pdf_page": 52
+    },
+    {
+      "level": "A2Flyers",
+      "focus": "past_continuous",
+      "functions": [
+        "interrupted_actions",
+        "background_setting"
+      ],
+      "pdf_page": 77
+    },
+    {
+      "level": "A2Flyers",
+      "focus": "if_clauses",
+      "function": "zero_conditionals",
+      "pdf_page": 77
+    },
+    {
+      "level": "A2Flyers",
+      "focus": "before_after_clauses",
+      "excluded_function": "future_reference",
+      "pdf_page": 77
+    }
+  ],
+  "grammar_scope": "Selected reviewed constraints,not complete machine grammar or mastery proof",
+  "wordlist_views": [
+    "level_alphabetic",
+    "combined_alphabetic",
+    "grammatical",
+    "thematic"
+  ],
+  "wordlist_deduplication": "Views of lexical reference,not independent corpora;names,aliases,multiword andsensequalifiers retained",
+  "wordlist_requirement": "Understanding expected;not proof everyword produced orknown bytargetstudent",
+  "wordlist_complete_entry_import": false,
+  "speaking_scale": {
+    "pdf_pages": [
+      85,
+      86,
+      87
+    ],
+    "criterion_scale_min": 0,
+    "criterion_scale_max": 5,
+    "PreA1_criterion_domains": [
+      "vocabulary",
+      "pronunciation",
+      "interaction"
+    ],
+    "A1_A2_criterion_domains": [
+      "vocabulary_and_grammar",
+      "pronunciation",
+      "interaction"
+    ],
+    "A1_A2_insufficient_language_pronunciation_cap": 3,
+    "criterion_to_shields_formula": "not_established",
+    "examiner_standardisation": true,
+    "product_rating_equivalence": false
+  },
+  "productive_keys": {
+    "movers_volume2_pdf_page": 58,
+    "flyers_volume2_pdf_page": 91,
+    "coverage": "possible_answers_not_exhaustive",
+    "flyers_low_high_examples": "illustrative_labels_not_published_numeric_criterion_scores"
+  },
+  "mode_boundaries": [
+    "Digitaltasks not assumedidentical",
+    "Source question counts,rawmarks,shields and productstars differ",
+    "Age6to12materials not Chinese secondarygradeanchors"
+  ],
+  "visual_review_pdf_pages": {
+    "cambridge-yle-sample-volume2": [
+      4,
+      5,
+      11,
+      12,
+      15,
+      16,
+      17,
+      25,
+      26,
+      29,
+      38,
+      58,
+      63,
+      71,
+      91,
+      93
+    ],
+    "cambridge-yle-handbook2024": [
+      7,
+      8,
+      29,
+      52,
+      77,
+      85,
+      86,
+      87
+    ],
+    "cambridge-yle-wordlist2025": [
+      3,
+      4,
+      31,
+      38
+    ],
+    "cambridge-yle-sample-volume1-bounded45mb": []
+  },
+  "commercial_use": "not_cleared",
+  "expert_or_student_validation": false,
+  "gold_admission": false
+}
