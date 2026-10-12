@@ -150,9 +150,9 @@
       "id": "G17",
       "priority": "P1",
       "title": "研究资产持久保存与恢复",
-      "next_action": "Project-external local snapshot1676files/385921610bytes verified;sixformat restore checks pass. Continue perbatchsnapshots,define retention/rightscompatible disk-loss recovery and verify finalcompleteassetset.",
+      "next_action": "新快照已补入OCR模型、处理输入/裁剪和清单，1808文件逐摘要校验及八格式恢复通过；继续维护新增材料快照，明确异机/磁盘故障恢复与权限、磁盘预算。",
       "acceptance": "Raw required assets recoverable independent of ignored build cache",
-      "limitation": "Samehostdisk only,not offhost/disastertested;newacquisitionsandmetadatachanges requirefreshsnapshot. Localbuildcleanupnowrecoverableforthecapturedset.",
+      "limitation": "两份快照仍同机同盘，不能抵御磁盘丢失；没有异机恢复证据，持续取材会产生新版本。环境依赖安装缓存不是完整可移植运行环境。",
       "status": "open"
     }
   ]

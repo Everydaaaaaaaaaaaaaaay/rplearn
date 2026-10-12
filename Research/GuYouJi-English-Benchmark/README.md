@@ -21,6 +21,7 @@
 - [覆盖与验证设计](Studies/2026-10-13-coverage-and-validation-method.md)：36个优先年级/学期/系列单元、其余14范围及教研/学生/节奏/模型验收准备。
 - [词汇工具边界核验](Studies/2026-10-13-lexical-profile-boundary-review.md)：词性/大小写/词元与未知处理，12个真实条目核验及3个拒绝例。
 - [课标附录及OCR标记复审](Studies/2026-10-13-curriculum-appendix-marker-review.md)：505/1600/3100声明口径、不同符号含义、附表边界与分栏OCR拒绝证据。
+- [输入依赖与新快照](Studies/2026-10-13-preservation-dependencies.md)：补OCR模型/处理清单/裁剪输入，1,808文件和八格式本机恢复验证。
 - [国内原卷及答案范围](Studies/2026-10-13-domestic-papers-and-answer-scope.md)：常熟初一历史卷/答案/脚本、福建2025官方扫描卷/答案，图文依赖、正文缺陷和整句键/空位输入错配。
 - [研究题组机器合同0.1](Studies/2026-10-13-item-group-machine-contract.md)：共享材料、可变空位、评分与曝光校验，七份原创结构夹具及26个拒绝反例。
 - [原生课标候选与地方范围](Studies/2026-10-13-native-curriculum-and-local-scope.md)：双栏原生抽取、3,099行与星级计数冲突、验证码入口及乐山2026外研/修订课标证据。

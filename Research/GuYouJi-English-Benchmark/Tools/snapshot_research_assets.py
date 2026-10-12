@@ -58,10 +58,17 @@ def main():
         if row.get('manifest'):
             register(row['manifest'])
     processing = json.loads((BASE / 'Registry/processing.json').read_text())
+    for model in processing.get('ocr_models', []):
+        register(model['path'], model['sha256'])
     for run in processing['runs']:
+        if run.get('manifest'):
+            register(run['manifest'])
         for page in run.get('page_records', []):
             if page.get('exit_code') != 0:
                 continue
+            for input_key in ('source', 'source_crop'):
+                if page.get(input_key):
+                    register(page[input_key], page.get(input_key + '_sha256'))
             output = page.get('output') or page['output_prefix'] + '.txt'
             register(output, page['sha256'])
             if page.get('tsv_output'):
@@ -86,7 +93,7 @@ def main():
 
     restore_evidence = []
     with tempfile.TemporaryDirectory(prefix='restore-audit-', dir=destination) as scratch:
-        for extension in ('.pdf', '.jpg', '.mp3', '.xlsx', '.txt', '.tsv'):
+        for extension in ('.pdf', '.jpg', '.png', '.mp3', '.xlsx', '.txt', '.tsv', '.traineddata'):
             candidate = next((r for r in records if r['path'].endswith(extension)), None)
             if not candidate:
                 raise ValueError(f'No representative asset for {extension}')
