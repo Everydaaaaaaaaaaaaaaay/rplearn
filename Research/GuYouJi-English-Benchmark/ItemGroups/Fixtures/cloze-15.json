@@ -1,0 +1,1101 @@
+{
+  "contract_version": "0.1",
+  "admission": "research_only",
+  "id": "fixture.cloze-15",
+  "group_version": "v1",
+  "scoring_version": "v1",
+  "family_id": "fixture.cloze-15.family",
+  "kind": "cloze",
+  "scope_claims": [
+    {
+      "status": "unknown",
+      "value": null,
+      "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+      "evidence_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixture.authorship",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original structural demonstration",
+        "purpose": "contract_demonstration",
+        "authored_on": "2026-10-13"
+      },
+      "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+    }
+  ],
+  "targets": [
+    {
+      "id": "t1",
+      "construct": "Enter the label supplied before each explicit gap",
+      "skill": "language_use",
+      "prerequisites": [],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "m1",
+      "version": "v1",
+      "language": "en",
+      "role": "stimulus",
+      "blocks": [
+        {
+          "id": "b1",
+          "kind": "text",
+          "text": "Enter label1: "
+        },
+        {
+          "id": "gapblock1",
+          "kind": "slot",
+          "slot_id": "gap1"
+        },
+        {
+          "id": "b2",
+          "kind": "text",
+          "text": "Enter label2: "
+        },
+        {
+          "id": "gapblock2",
+          "kind": "slot",
+          "slot_id": "gap2"
+        },
+        {
+          "id": "b3",
+          "kind": "text",
+          "text": "Enter label3: "
+        },
+        {
+          "id": "gapblock3",
+          "kind": "slot",
+          "slot_id": "gap3"
+        },
+        {
+          "id": "b4",
+          "kind": "text",
+          "text": "Enter label4: "
+        },
+        {
+          "id": "gapblock4",
+          "kind": "slot",
+          "slot_id": "gap4"
+        },
+        {
+          "id": "b5",
+          "kind": "text",
+          "text": "Enter label5: "
+        },
+        {
+          "id": "gapblock5",
+          "kind": "slot",
+          "slot_id": "gap5"
+        },
+        {
+          "id": "b6",
+          "kind": "text",
+          "text": "Enter label6: "
+        },
+        {
+          "id": "gapblock6",
+          "kind": "slot",
+          "slot_id": "gap6"
+        },
+        {
+          "id": "b7",
+          "kind": "text",
+          "text": "Enter label7: "
+        },
+        {
+          "id": "gapblock7",
+          "kind": "slot",
+          "slot_id": "gap7"
+        },
+        {
+          "id": "b8",
+          "kind": "text",
+          "text": "Enter label8: "
+        },
+        {
+          "id": "gapblock8",
+          "kind": "slot",
+          "slot_id": "gap8"
+        },
+        {
+          "id": "b9",
+          "kind": "text",
+          "text": "Enter label9: "
+        },
+        {
+          "id": "gapblock9",
+          "kind": "slot",
+          "slot_id": "gap9"
+        },
+        {
+          "id": "b10",
+          "kind": "text",
+          "text": "Enter label10: "
+        },
+        {
+          "id": "gapblock10",
+          "kind": "slot",
+          "slot_id": "gap10"
+        },
+        {
+          "id": "b11",
+          "kind": "text",
+          "text": "Enter label11: "
+        },
+        {
+          "id": "gapblock11",
+          "kind": "slot",
+          "slot_id": "gap11"
+        },
+        {
+          "id": "b12",
+          "kind": "text",
+          "text": "Enter label12: "
+        },
+        {
+          "id": "gapblock12",
+          "kind": "slot",
+          "slot_id": "gap12"
+        },
+        {
+          "id": "b13",
+          "kind": "text",
+          "text": "Enter label13: "
+        },
+        {
+          "id": "gapblock13",
+          "kind": "slot",
+          "slot_id": "gap13"
+        },
+        {
+          "id": "b14",
+          "kind": "text",
+          "text": "Enter label14: "
+        },
+        {
+          "id": "gapblock14",
+          "kind": "slot",
+          "slot_id": "gap14"
+        },
+        {
+          "id": "b15",
+          "kind": "text",
+          "text": "Enter label15: "
+        },
+        {
+          "id": "gapblock15",
+          "kind": "slot",
+          "slot_id": "gap15"
+        }
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "rights": {
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "publication": "unknown",
+        "adaptation": "unknown",
+        "training": "unknown",
+        "provider_transmission": "unknown",
+        "redistribution": "unknown",
+        "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+      }
+    }
+  ],
+  "assets": [],
+  "items": [
+    {
+      "id": "i1",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap1"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s1",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i2",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap2"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s2",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i3",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap3"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s3",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i4",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap4"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s4",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i5",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap5"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s5",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i6",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap6"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s6",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i7",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap7"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s7",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i8",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap8"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s8",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i9",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap9"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s9",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i10",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap10"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s10",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i11",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap11"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s11",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i12",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap12"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s12",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i13",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap13"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s13",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i14",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap14"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s14",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    {
+      "id": "i15",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap15"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One whitespace-delimited fixture label"
+      },
+      "scoring_id": "s15",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "private_scoring": [
+    {
+      "id": "s1",
+      "kind": "text",
+      "item_ids": [
+        "i1"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label1"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s2",
+      "kind": "text",
+      "item_ids": [
+        "i2"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label2"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s3",
+      "kind": "text",
+      "item_ids": [
+        "i3"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label3"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s4",
+      "kind": "text",
+      "item_ids": [
+        "i4"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label4"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s5",
+      "kind": "text",
+      "item_ids": [
+        "i5"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label5"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s6",
+      "kind": "text",
+      "item_ids": [
+        "i6"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label6"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s7",
+      "kind": "text",
+      "item_ids": [
+        "i7"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label7"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s8",
+      "kind": "text",
+      "item_ids": [
+        "i8"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label8"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s9",
+      "kind": "text",
+      "item_ids": [
+        "i9"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label9"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s10",
+      "kind": "text",
+      "item_ids": [
+        "i10"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label10"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s11",
+      "kind": "text",
+      "item_ids": [
+        "i11"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label11"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s12",
+      "kind": "text",
+      "item_ids": [
+        "i12"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label12"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s13",
+      "kind": "text",
+      "item_ids": [
+        "i13"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label13"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s14",
+      "kind": "text",
+      "item_ids": [
+        "i14"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label14"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    },
+    {
+      "id": "s15",
+      "kind": "text",
+      "item_ids": [
+        "i15"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "accepted_forms": [
+        "label15"
+      ],
+      "documented_spelling_variants": [],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "conditions": "Only the literal supplied label"
+    }
+  ],
+  "administration": {
+    "mode": "diagnostic",
+    "submission_boundary": "whole_group",
+    "return_to_items": true,
+    "feedback_release": "after_group_submit",
+    "later_related_items_count_as_unassisted": false,
+    "supports": [],
+    "media_segments": [],
+    "replay_limit": null,
+    "pre_read_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "review_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "timing": {
+      "observed_effective_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No learners have taken this fixture",
+        "evidence_ids": []
+      },
+      "estimated_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No timing estimate registered",
+        "evidence_ids": []
+      },
+      "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+      "excluded_intervals": [
+        "background",
+        "idle",
+        "pause",
+        "network_wait",
+        "grading_wait"
+      ]
+    },
+    "avatar": {
+      "status": "not_applicable",
+      "value": null,
+      "reason": "No character is needed for a structural fixture",
+      "evidence_ids": []
+    }
+  },
+  "review": {
+    "content": {
+      "status": "provisional",
+      "value": "Authored to exercise structure only",
+      "reason": "No quality review or intended population",
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    "independent": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No independent reviewer",
+      "evidence_ids": []
+    },
+    "learner_calibration": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No real learner observations",
+      "evidence_ids": []
+    }
+  },
+  "rights": {
+    "evidence_ids": [
+      "fixture.authorship"
+    ],
+    "publication": "unknown",
+    "adaptation": "unknown",
+    "training": "unknown",
+    "provider_transmission": "unknown",
+    "redistribution": "unknown",
+    "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+  },
+  "limitations": [
+    "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing",
+    "Labels test variable gap count, not English cloze quality or exam authenticity"
+  ]
+}

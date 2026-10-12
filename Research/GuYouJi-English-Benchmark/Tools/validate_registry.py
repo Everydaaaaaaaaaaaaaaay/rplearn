@@ -58,9 +58,9 @@ def main():
     def check_references(value, location):
         if isinstance(value, dict):
             for key, target in value.items():
-                if key == 'source_id' and target not in sources:
+                if key == 'source_id' and (not isinstance(target, str) or target not in sources):
                     errors.append(f'{location}: unknown source {target}')
-                if key == 'acquisition_id' and target not in acquisitions:
+                if key == 'acquisition_id' and (not isinstance(target, str) or target not in acquisitions):
                     errors.append(f'{location}: unknown acquisition {target}')
                 check_references(target, location + '/' + key)
         elif isinstance(value, list):
@@ -68,6 +68,8 @@ def main():
                 check_references(child, location + '/' + str(offset))
 
     for location, value in documents.items():
+        if location.endswith('.schema.json') and isinstance(value, dict) and '$schema' in value:
+            continue  # Field definitions are not source/acquisition references.
         check_references(value, location)
 
     cache_checked = 0

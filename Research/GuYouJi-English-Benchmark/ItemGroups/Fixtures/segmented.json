@@ -1,0 +1,246 @@
+{
+  "contract_version": "0.1",
+  "admission": "research_only",
+  "id": "fixture.segmented",
+  "group_version": "v1",
+  "scoring_version": "v1",
+  "family_id": "fixture.segmented.family",
+  "kind": "grammar_completion",
+  "scope_claims": [
+    {
+      "status": "unknown",
+      "value": null,
+      "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+      "evidence_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixture.authorship",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original structural demonstration",
+        "purpose": "contract_demonstration",
+        "authored_on": "2026-10-13"
+      },
+      "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+    }
+  ],
+  "targets": [
+    {
+      "id": "t1",
+      "construct": "Read the explicitly stated schedule",
+      "skill": "reading",
+      "prerequisites": [],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "m1",
+      "version": "v1",
+      "language": "en",
+      "role": "stimulus",
+      "blocks": [
+        {
+          "id": "b1",
+          "kind": "text",
+          "text": "Complete: I ___ help today. Keep the keyword NOT and preserve that I cannot help today."
+        }
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "rights": {
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "publication": "unknown",
+        "adaptation": "unknown",
+        "training": "unknown",
+        "provider_transmission": "unknown",
+        "redistribution": "unknown",
+        "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+      }
+    }
+  ],
+  "assets": [],
+  "items": [
+    {
+      "id": "i1",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [],
+      "response": {
+        "kind": "text",
+        "max_words": 4,
+        "word_count_rule": "Whitespace-separated words"
+      },
+      "scoring_id": "s1",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "private_scoring": [
+    {
+      "id": "s1",
+      "kind": "segmented",
+      "item_ids": [
+        "i1"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 2,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "segments": [
+        {
+          "id": "seg1",
+          "possible_source_marks": {
+            "status": "provisional",
+            "value": 1,
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          "accepted_forms": [
+            "am not"
+          ],
+          "conditions": "Retain not",
+          "evidence_ids": [
+            "fixture.authorship"
+          ]
+        },
+        {
+          "id": "seg2",
+          "possible_source_marks": {
+            "status": "provisional",
+            "value": 1,
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          "accepted_forms": [
+            "able to"
+          ],
+          "conditions": "Preserve the supplied completion",
+          "evidence_ids": [
+            "fixture.authorship"
+          ]
+        }
+      ],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "word_count_rule": "Whitespace-separated words",
+      "required_keyword": "not",
+      "semantic_equivalence_rule": "Completion must express inability today",
+      "aggregation": "Sum documented segments subject to keyword and meaning constraints"
+    }
+  ],
+  "administration": {
+    "mode": "diagnostic",
+    "submission_boundary": "whole_group",
+    "return_to_items": true,
+    "feedback_release": "after_group_submit",
+    "later_related_items_count_as_unassisted": false,
+    "supports": [],
+    "media_segments": [],
+    "replay_limit": null,
+    "pre_read_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "review_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "timing": {
+      "observed_effective_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No learners have taken this fixture",
+        "evidence_ids": []
+      },
+      "estimated_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No timing estimate registered",
+        "evidence_ids": []
+      },
+      "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+      "excluded_intervals": [
+        "background",
+        "idle",
+        "pause",
+        "network_wait",
+        "grading_wait"
+      ]
+    },
+    "avatar": {
+      "status": "not_applicable",
+      "value": null,
+      "reason": "No character is needed for a structural fixture",
+      "evidence_ids": []
+    }
+  },
+  "review": {
+    "content": {
+      "status": "provisional",
+      "value": "Authored to exercise structure only",
+      "reason": "No quality review or intended population",
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    "independent": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No independent reviewer",
+      "evidence_ids": []
+    },
+    "learner_calibration": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No real learner observations",
+      "evidence_ids": []
+    }
+  },
+  "rights": {
+    "evidence_ids": [
+      "fixture.authorship"
+    ],
+    "publication": "unknown",
+    "adaptation": "unknown",
+    "training": "unknown",
+    "provider_transmission": "unknown",
+    "redistribution": "unknown",
+    "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+  },
+  "limitations": [
+    "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing"
+  ]
+}

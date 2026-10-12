@@ -1,0 +1,231 @@
+{
+  "contract_version": "0.1",
+  "admission": "research_only",
+  "id": "fixture.listening-unacquired",
+  "group_version": "v1",
+  "scoring_version": "v1",
+  "family_id": "fixture.listening-unacquired.family",
+  "kind": "listening",
+  "scope_claims": [
+    {
+      "status": "unknown",
+      "value": null,
+      "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+      "evidence_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixture.authorship",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original structural demonstration",
+        "purpose": "contract_demonstration",
+        "authored_on": "2026-10-13"
+      },
+      "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+    }
+  ],
+  "targets": [
+    {
+      "id": "t1",
+      "construct": "Listen for the opening time",
+      "skill": "listening",
+      "prerequisites": [],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "m1",
+      "version": "v1",
+      "language": "en",
+      "role": "stimulus",
+      "blocks": [
+        {
+          "id": "b1",
+          "kind": "asset",
+          "asset_id": "audio1",
+          "required_to_solve": true
+        }
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "rights": {
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "publication": "unknown",
+        "adaptation": "unknown",
+        "training": "unknown",
+        "provider_transmission": "unknown",
+        "redistribution": "unknown",
+        "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "audio1",
+      "version": "v1",
+      "media_type": "audio",
+      "availability": "not_acquired",
+      "private_locator": null,
+      "sha256": null,
+      "duration_seconds": null,
+      "transcript_material_id": null,
+      "alignment_review": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No actual recording acquired",
+        "evidence_ids": []
+      },
+      "rights": {
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "publication": "unknown",
+        "adaptation": "unknown",
+        "training": "unknown",
+        "provider_transmission": "unknown",
+        "redistribution": "unknown",
+        "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "i1",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Answer from the shared material.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [],
+      "response": {
+        "kind": "text",
+        "max_words": 1,
+        "word_count_rule": "One word"
+      },
+      "scoring_id": "s1",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "private_scoring": [
+    {
+      "id": "s1",
+      "kind": "unknown",
+      "item_ids": [
+        "i1"
+      ],
+      "possible_source_marks": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No original scoring evidence"
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "reason": "No acquired recording or source key; do not synthesize an original answer"
+    }
+  ],
+  "administration": {
+    "mode": "diagnostic",
+    "submission_boundary": "whole_group",
+    "return_to_items": true,
+    "feedback_release": "after_group_submit",
+    "later_related_items_count_as_unassisted": false,
+    "supports": [],
+    "media_segments": [],
+    "replay_limit": null,
+    "pre_read_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "review_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "timing": {
+      "observed_effective_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No learners have taken this fixture",
+        "evidence_ids": []
+      },
+      "estimated_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No timing estimate registered",
+        "evidence_ids": []
+      },
+      "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+      "excluded_intervals": [
+        "background",
+        "idle",
+        "pause",
+        "network_wait",
+        "grading_wait"
+      ]
+    },
+    "avatar": {
+      "status": "not_applicable",
+      "value": null,
+      "reason": "No character is needed for a structural fixture",
+      "evidence_ids": []
+    }
+  },
+  "review": {
+    "content": {
+      "status": "provisional",
+      "value": "Authored to exercise structure only",
+      "reason": "No quality review or intended population",
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    "independent": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No independent reviewer",
+      "evidence_ids": []
+    },
+    "learner_calibration": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No real learner observations",
+      "evidence_ids": []
+    }
+  },
+  "rights": {
+    "evidence_ids": [
+      "fixture.authorship"
+    ],
+    "publication": "unknown",
+    "adaptation": "unknown",
+    "training": "unknown",
+    "provider_transmission": "unknown",
+    "redistribution": "unknown",
+    "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+  },
+  "limitations": [
+    "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing",
+    "Deliberately incomplete audio example; cannot be presented or scored as a complete listening group"
+  ]
+}
