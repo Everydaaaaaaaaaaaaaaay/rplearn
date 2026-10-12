@@ -9,6 +9,9 @@
 - [版本与记录复审](Studies/2026-10-12-continuation-audit.md)：2025修订课标线索、新版人教初中册次及状态更正。
 - [新版课标关键要求核读](Studies/2026-10-12-revised-curriculum-review.md)：词汇变化、任务与评分要求、OCR误识别及修正。
 - [人教单元与用途复审](Studies/2026-10-12-pep-unit-and-rights-review.md)：五册单元目录、阅读入口、访问误判及电子教材用途限制。
+- [人教初中五册教学焦点](Studies/2026-10-13-pep-five-volume-contents-focus.md)：39正式单元的目录语法/词汇专题/交际任务，反复出现的形式与功能分开，九下及完整内容仍缺。
+- [人教高中七册课程焦点](Studies/2026-10-13-pep-senior-course-focus.md)：35正式单元和Welcome的结构/策略/写作任务，长句有教学依据，课程分册不能自动换年级学期。
+- [教研声明与数字模式边界](Studies/2026-10-13-source-claims-and-mode-boundaries.md)：教材使用/支架公开摘要、社区3099说法和Cambridge低龄纸笔/数字模式的实际证据范围。
 - [国际题组与听力配套](Studies/2026-10-13-cambridge-groups-and-media-review.md)：九个题组结构、多解与部分得分、B1当前样卷配套及媒体核验边界。
 - [CEFR-J官方资料复算](Studies/2026-10-13-cefrj-upstream-review.md)：7,801条词性数据、拼写变体与版本差异、2025语法资料及用途范围。
 - [中间年级官方考试配套](Studies/2026-10-13-domestic-semester-components.md)：郑州高一高二四个学期组合的答案、录音与评分，原卷及教学范围仍缺。
