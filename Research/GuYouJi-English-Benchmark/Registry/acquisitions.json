@@ -11466,6 +11466,69 @@
       "sha256": "df5f408f38ae14c4995c76dad2bdfaa14d5c34caecf112bc6382415508f20242",
       "status": "fetched_unreviewed",
       "manifest": "build/english-benchmark-research-20261012/fetch-manifest-cse-version-linking.json"
+    },
+    {
+      "id": "fujian2025-readingA-private-stimulus-crop",
+      "url": "https://jyj.fuzhou.gov.cn/zwgk/cswz/fzygzz/zlxz/202506/P020250621484775049990.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2025-readingA-stimulus-crop.png",
+      "bytes": 147286,
+      "sha256": "c53b3303163d95d919a97632eb26ab3f17c2cf28d79767249db9a3122bd95100",
+      "format_validation": "png_decoded",
+      "review_scope": "Introductory text and all5table rows visuallychecked; crop preserves sourcewatermark and excludes unrelatedgroups",
+      "derivation": {
+        "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+        "kind": "private_research_import",
+        "source_pdf_pages": [
+          29,
+          30,
+          38
+        ]
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-fujian2025-readingA.json"
+    },
+    {
+      "id": "fujian2025-readingA-private-question-transcript",
+      "url": "https://jyj.fuzhou.gov.cn/zwgk/cswz/fzygzz/zlxz/202506/P020250621484775049990.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fujian2025-readingA-private-question-transcript.json",
+      "bytes": 1192,
+      "sha256": "3fa46b10cdcd864aed204230537b09483792bb2ee2a7b994da9a346f49b497ca",
+      "format_validation": "json_parsed",
+      "review_scope": "5questions derivedfromOCR;circlednumerals Q49 and OCRoptionD Q50 corrected against source image;independentreviewpending",
+      "derivation": {
+        "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+        "kind": "private_research_import",
+        "source_pdf_pages": [
+          29,
+          30,
+          38
+        ]
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-fujian2025-readingA.json"
+    },
+    {
+      "id": "fujian2025-readingA-private-group",
+      "url": "https://jyj.fuzhou.gov.cn/zwgk/cswz/fzygzz/zlxz/202506/P020250621484775049990.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fujian2025-readingA-private-group.json",
+      "bytes": 13251,
+      "sha256": "d67b63786129708748699df398d119f89953e45b1371dca44d77c5a05d50b1b1",
+      "format_validation": "json_schema_and_crossreferences_checked",
+      "review_scope": "Realgroup structure/key/cropdigestchecked;commercialpermission/independentreview/learnertimingunknown;notproduction",
+      "derivation": {
+        "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+        "kind": "private_research_import",
+        "source_pdf_pages": [
+          29,
+          30,
+          38
+        ]
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-fujian2025-readingA.json"
     }
   ]
 }
