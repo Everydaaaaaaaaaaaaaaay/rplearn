@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-10-12",
+  "automation_id": "lingotrip",
+  "automation_kind": "heartbeat",
+  "definition": "Milestone decisions require the acceptance protocol; bookkeeping alone cannot pass a gate.",
+  "milestones": [
+    {
+      "id": "M1",
+      "title": "来源与版本",
+      "status": "in_progress",
+      "gap_ids": [
+        "G01",
+        "G15"
+      ],
+      "evidence_paths": [
+        "Studies/2026-10-12-foundation-audit.md",
+        "Studies/2026-10-12-continuation-audit.md"
+      ],
+      "review_roles": [],
+      "passed_on": null
+    },
+    {
+      "id": "M2",
+      "title": "教材与国内试卷",
+      "status": "in_progress",
+      "gap_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G16"
+      ],
+      "evidence_paths": [],
+      "review_roles": [],
+      "passed_on": null
+    },
+    {
+      "id": "M3",
+      "title": "国际标准与语言分析",
+      "status": "in_progress",
+      "gap_ids": [
+        "G04",
+        "G08",
+        "G09",
+        "G10",
+        "G14",
+        "G15"
+      ],
+      "evidence_paths": [],
+      "review_roles": [],
+      "passed_on": null
+    },
+    {
+      "id": "M4",
+      "title": "题组合同与命题规格",
+      "status": "pending",
+      "gap_ids": [
+        "G05",
+        "G06",
+        "G16"
+      ],
+      "evidence_paths": [],
+      "review_roles": [],
+      "passed_on": null
+    },
+    {
+      "id": "M5",
+      "title": "独立复核与目标学生",
+      "status": "pending",
+      "gap_ids": [
+        "G11",
+        "G13",
+        "G16"
+      ],
+      "evidence_paths": [],
+      "review_roles": [],
+      "passed_on": null
+    },
+    {
+      "id": "M6",
+      "title": "商用准入与模型验收",
+      "status": "pending",
+      "gap_ids": [
+        "G07",
+        "G12",
+        "G16"
+      ],
+      "evidence_paths": [],
+      "review_roles": [],
+      "passed_on": null
+    },
+    {
+      "id": "M7",
+      "title": "全范围最终复审",
+      "status": "pending",
+      "gap_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15",
+        "G16",
+        "G17"
+      ],
+      "evidence_paths": [],
+      "review_roles": [],
+      "passed_on": null
+    }
+  ]
+}

@@ -24,7 +24,7 @@
       "id": "G03",
       "priority": "P0",
       "title": "官方12页试卷结构化",
-      "next_action": "OCR12scans, visually verify text, preserve whole passages and linked questions; acquire exact keys/audio.",
+      "next_action": "12 scans OCR completed; visually verify whole paper and passage/question boundaries, acquire exact keys/audio, and preserve group provenance.",
       "acceptance": "Complete paper-group provenance and no invented answers",
       "limitation": "Answers/audio missing",
       "status": "open"
@@ -33,9 +33,9 @@
       "id": "G04",
       "priority": "P0",
       "title": "义教课标扫描与逐年级先修",
-      "next_action": "OCR201page official PDF, preserve page coordinates, reconcile legacy read scope and textbooks.",
+      "next_action": "2022 edition 201 pages OCR completed; verify remaining relevant pages against images, compare 2025 revision, and build curriculum-unit prerequisite crosswalk.",
       "acceptance": "OCR/source concordance plus curriculum-unit crosswalk",
-      "limitation": "No extractable text, manual verification required",
+      "limitation": "Raw 2022 PDF has no extractable text, but full OCR draft exists; partial visual review only. Current-revision differences and textbook alignment unresolved.",
       "status": "open"
     },
     {
@@ -126,6 +126,33 @@
       "next_action": "Complete exam specs/scored writing/translation/speaking/audio with separate contracts and priorities.",
       "acceptance": "Actual productive-task feedback and population validation",
       "limitation": "No score equivalence or comprehensive exam coverage established",
+      "status": "open"
+    },
+    {
+      "id": "G15",
+      "priority": "P0",
+      "title": "2025修订课标与旧版差异",
+      "next_action": "Acquire/review junior and senior 2025 revised standard body, verify publisher/issuer identity and implementation; compare vocabulary, grammar, academic quality and assessment sections.",
+      "acceptance": "Versioned primary evidence and requirement delta with affected conclusions reopened",
+      "limitation": "University image covers/contents reviewed; full relevant-body comparison and official issuance/implementation proof pending",
+      "status": "open"
+    },
+    {
+      "id": "G16",
+      "priority": "P0",
+      "title": "细粒度覆盖与预先验收阈值",
+      "next_action": "Expand 20-row overview into applicable semester/version/region/group/skill cells, justify sampling and pre-register calibration/model acceptance criteria.",
+      "acceptance": "No unexplained required empty cells; thresholds fixed before evaluation with method and uncertainty",
+      "limitation": "Current overview cannot demonstrate fine-grained coverage; no validated numerical completion threshold",
+      "status": "open"
+    },
+    {
+      "id": "G17",
+      "priority": "P1",
+      "title": "研究资产持久保存与恢复",
+      "next_action": "Plan rights-compatible durable storage for raw cache, preserve manifests and demonstrate retrieval/restore with matching hashes.",
+      "acceptance": "Raw required assets recoverable independent of ignored build cache",
+      "limitation": "Git does not preserve ignored raw assets; no restore audit completed",
       "status": "open"
     }
   ]
