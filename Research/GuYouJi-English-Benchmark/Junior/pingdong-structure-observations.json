@@ -1,0 +1,129 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "pingdong.school-exams2025",
+  "acquisition_id": "pingdong-grade8down2025-paper-candidate",
+  "status": "candidate_source_structure_not_gold",
+  "visually_reviewed_pdf_pages": [
+    1,
+    4,
+    9,
+    10,
+    11,
+    12
+  ],
+  "paper_declared_minutes": 120,
+  "paper_declared_marks": 150,
+  "source_association": "Schoolpublicindex+PDFtitle match,exactiframepathunverified",
+  "groups": [
+    {
+      "id": "pingdong2025.cloze36-45",
+      "kind": "choice_cloze",
+      "pdf_pages": [
+        4
+      ],
+      "source_numbers": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "choice_count": 3,
+      "gaps": 10,
+      "source_marks_each": 1.5,
+      "source_marks_total": 15,
+      "shared_narrative": true,
+      "adjacent_illustration": "Acquired;semantic necessity unresolved",
+      "private_import_acquisition_id": "pingdong2025-grade8down-cloze-private-group",
+      "source_key": "not_acquired"
+    },
+    {
+      "id": "pingdong2025.readingE66-70",
+      "kind": "sentence_insertion",
+      "pdf_pages": [
+        9
+      ],
+      "gaps": 5,
+      "options": 5,
+      "source_marks_each": 1,
+      "reuse_rule": "Not explicitly stated;not inferred from counts",
+      "source_key": "not_acquired"
+    },
+    {
+      "id": "pingdong2025.dialogue71-74",
+      "kind": "dialogue_completion",
+      "pdf_pages": [
+        10
+      ],
+      "gaps": 4,
+      "options": 5,
+      "extra_options": 1,
+      "source_marks_each": 1,
+      "reuse_rule": "Not explicitly stated;one extra option does not establish every other rule",
+      "source_key": "not_acquired"
+    },
+    {
+      "id": "pingdong2025.situation75-77",
+      "kind": "situational_text_completion",
+      "pdf_pages": [
+        10
+      ],
+      "items": 3,
+      "source_marks_each": 2,
+      "response_scope": "Q75and77 have printed fixed words around the blank;Q76openutterance",
+      "source_key": "not_acquired",
+      "reference_coverage": "unknown_not_inherited_from_Fujian2025"
+    },
+    {
+      "id": "pingdong2025.picture78-82",
+      "kind": "picture_sentence",
+      "pdf_pages": [
+        10,
+        11
+      ],
+      "items": 5,
+      "source_marks_each": 2,
+      "required_stimuli": "Picture and cue words,source identity unchanged across page boundary",
+      "source_key": "not_acquired"
+    },
+    {
+      "id": "pingdong2025.grammar83-92",
+      "kind": "text_completion",
+      "pdf_pages": [
+        11
+      ],
+      "gaps": 10,
+      "max_words_each": 2,
+      "source_marks_each": 1,
+      "given_word_and_unprompted_gaps": true,
+      "printed_anomaly": "Native and visible source use family rulers;not silently changed to rules",
+      "source_key": "not_acquired"
+    },
+    {
+      "id": "pingdong2025.writing93",
+      "kind": "letter",
+      "pdf_pages": [
+        12
+      ],
+      "items": 1,
+      "approximate_word_target": 80,
+      "approximate_target_is_exact_max": false,
+      "printed_opening_excluded": true,
+      "printed_closing_word_count_rule": "Not expressly specified separately;do not infer from other exams",
+      "source_marks": 15,
+      "required_material": "Activity route/time/transport diagram,experiences and feelings",
+      "detailed_rubric": "not_acquired"
+    }
+  ],
+  "limitations": [
+    "Not independently reviewed,not learner calibrated",
+    "Exact textbook/ISBN,curriculum revision and all commercial-use permissions unknown",
+    "No official keys,script,recording or detailedrubric acquired",
+    "Native text ignores diagram labels and changes layout/reading order;full originalrenders retained"
+  ]
+}

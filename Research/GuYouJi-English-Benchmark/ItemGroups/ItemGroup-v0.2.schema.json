@@ -434,7 +434,11 @@
               "$ref": "#/$defs/id"
             },
             "required_to_solve": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ],
+              "description": "Null preserves an unresolved semantic role; never omit the asset because its role is unknown."
             }
           },
           "required": [

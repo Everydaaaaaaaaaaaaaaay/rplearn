@@ -314,6 +314,9 @@ def main():
                     if s.get('answer_policy', {}).get('coverage') in ('reference_examples_only', 'unknown')],
                 'unknown_response_scope_ids': [i['id'] for i in group['items']
                     if i.get('response_scope', {}).get('kind') == 'unknown'],
+                'unresolved_asset_solve_role_ids': sorted({block['asset_id']
+                    for material in group['materials'] for block in material['blocks']
+                    if block['kind'] == 'asset' and block['required_to_solve'] is None}),
             }
             reports.append({'path': str(path), 'structure_valid': not errors, 'errors': errors,
                             'incomplete_evidence': incomplete,

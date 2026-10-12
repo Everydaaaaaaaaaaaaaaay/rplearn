@@ -98,6 +98,15 @@ def main():
     choice_slots['items'][0]['response_scope']['kind'] = 'slot_only'
     assert errors(choice_slots), 'Choice response falsely declared free text slot-only'
     checks.append('choice_gap_as_free_text_scope')
+    asset_unknown = copy.deepcopy(fixtures['listening-unacquired'])
+    asset_unknown['materials'][0]['blocks'][0]['required_to_solve'] = None
+    assert errors(asset_unknown), 'Historical0.1silently accepts new unresolved asset-role field'
+    checks.append('unknown_asset_role_in_legacy_contract')
+    asset_unknown['contract_version'] = '0.2'
+    for item in asset_unknown['items']:
+        item['response_scope'] = dict(kind='whole_response', slot_ids=item['slot_ids'][:],
+            evidence_ids=['fixture.authorship'], reason='Original free-text answer field')
+    assert not errors(asset_unknown), 'New0.2cannot retain unresolved semantic asset role'
 
     long_group = copy.deepcopy(fixtures['reading-four'])
     long_group['materials'][0]['blocks'][0]['text'] = 'Original long structural placeholder. ' * 100
