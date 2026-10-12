@@ -309,6 +309,128 @@
         "limitation": "No actual client/scoring execution or off-host disaster recovery;private asset locators not rewritten for deployment"
       },
       "coverage_note": "Captures all registered asset bytes and research files before later coverage/milestone and preservation-note edits; those metadata edits retained in Git, not retrospectively added to snapshot."
+    },
+    {
+      "snapshot_id": "2026-10-12T201741.966695+0000-6d7cbcbd",
+      "created_at_utc": "2026-10-12T20:17:41.966695+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T201741.966695+0000-6d7cbcbd",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T201741.966695+0000-6d7cbcbd/snapshot-manifest.json",
+      "manifest_sha256": "fed75dde0fd4ac4067b4a80e037b3835def1900c913fc5eb1a412da3c4b67f60",
+      "files_verified": 2189,
+      "bytes_verified": 617550762,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write": 2189
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Captures registered asset bytes and research files through PEP unit focus/d2e0351e; later snapshot registration and checkpoint note are in Git,not retroactively injected.",
+      "new_material_restore_evidence": {
+        "snapshot_id": "2026-10-12T201741.966695+0000-6d7cbcbd",
+        "files": [
+          {
+            "source": "build/english-benchmark-research-20261012/raw/toefl2026-teacher-practice1-audio.zip",
+            "sha256": "425a50d7e31475363f0ca4af2f0943638043f833f9eb4916a752d512ba22e3fc",
+            "restored_bytes": 6812272,
+            "check": {
+              "members": 47,
+              "mp3_members": 36
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/toefl2026-technical-manual.pdf",
+            "sha256": "6c9786088fb8feec850cc50196c925e381bec55573afb95c86fff01b7f2f9b35",
+            "restored_bytes": 2487043,
+            "check": {
+              "pdf_pages": 68
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/fltrp2025-publication-catalog-bounded30mb.xlsx",
+            "sha256": "888763f9aa7014144c941e20932d85bcfc1a73b1278e0700b3d7e3b0bb486c93",
+            "restored_bytes": 25515658,
+            "check": {
+              "rows": 15025,
+              "columns": 49,
+              "selected_ISBN_and_forthcoming_cell_matched": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/toefl2026-practice1-reading-module1-wordgaps-private-group.json",
+            "sha256": "2e351cb353e5186198a2c9e2322286f98d496af5f11c71174a6770e57ed50212",
+            "restored_bytes": 30855,
+            "check": {
+              "schema": "0.2",
+              "items": 10,
+              "source_key_mappings": 10,
+              "production_admission": false
+            }
+          }
+        ],
+        "status": "same_host_new_material_restore_verified",
+        "limitations": [
+          "No off-host disaster recovery or full semantic listening",
+          "Group source references not rewritten for deployment;structureonly"
+        ]
+      }
     }
   ]
 }
