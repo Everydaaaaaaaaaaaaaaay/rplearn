@@ -40,6 +40,52 @@
       "observation": "2022bundle Part3key has acceptable misspelling column for2of6items; alternatives/optional words and singular/plural also specified",
       "implication": "Represent documented item-specific spelling allowances separately from accepted alternatives; never generalize typo tolerance across all items",
       "review": "Full key text columns read and PDF1original render visually checked;handbook simpler key separately reviewed"
+    },
+    {
+      "id": "fujian2025-short-productive-examples-not-exhaustive",
+      "source_id": "fuzhou.fujian-exam2025",
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "pdf_page": 38,
+      "printed_page": 37,
+      "source_question_numbers": [
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "observation": "71–75和76–80各说明答案仅为参考例；72还列出替代形式。",
+      "implication": "不得设为穷尽字符串键；须核对条件、语义和合法产出形式。",
+      "review": "原始答案页视觉核读"
+    },
+    {
+      "id": "fujian2025-full-utterance-versus-gap",
+      "source_id": "fuzhou.fujian-exam2025",
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "question_number": 73,
+      "prompt_pdf_page": 35,
+      "key_pdf_page": 38,
+      "observation": "73题答案为完整问句，包含题面空位后已印出的部分。",
+      "implication": "保留原键呈现和输入跨度；转换时防止重复固定题面，另作复核。",
+      "review": "题面和答案两页均视觉核读"
+    },
+    {
+      "id": "changshu2019-variable-short-answer-marks",
+      "source_id": "suzhou.changshu-grade7-2019",
+      "acquisition_id": "suzhou-changshu2019-image07",
+      "source_question_numbers": [
+        80,
+        81,
+        82
+      ],
+      "observation": "阅读表达三题原分依次为1、2、3。",
+      "implication": "保留逐题分值，不假设均分或等同产品奖励。",
+      "review": "答案原图与公开题面要求一致"
     }
   ]
 }

@@ -12,6 +12,11 @@
       "revision": 3,
       "uses_cpu_only": true,
       "result": "same error; no accepted OCR"
+    },
+    {
+      "id": "fuzhou2025-initial-ocr-output-config",
+      "engine": "tesseract5.5.3",
+      "result": "Exit0andTXTdidnotestablishTSV:customtessdata lackedtxt/tsvconfigfiles;registrydigestcheck rejected missing TSV. Repeated with explicitcreateflags,14TXT+14TSVnowpresent;nooriginalimagechanged."
     }
   ],
   "ocr_models": [
@@ -8649,6 +8654,300 @@
         }
       ],
       "decision": "Reject canonical admission while observed row/marker counts differ from declaration; preserve aliases and page/bbox evidence"
+    },
+    {
+      "id": "fuzhou2025-english",
+      "source_id": "fuzhou.fujian-exam2025",
+      "manifest": "build/english-benchmark-research-20261012/ocr-manifest-fuzhou2025-english.json",
+      "pages": 14,
+      "successful_pages": 14,
+      "characters": 20277,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-25.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-25.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "4467e38e890731581a5253bc2541fac12746084dc749eb893d7d2ae19281ca61",
+          "tsv_sha256": "4ce344acc03c93d8bfd61935a2783fb1e05f2c30aa16cd29499facabdfa7767f",
+          "characters": 152,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-26.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-26.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-26.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "5de2bd147fded1394ff288f56e2d551ec1ebeb56ca7c60a4ae12f6b23e713509",
+          "tsv_sha256": "73edffafc64d09491652c5035761551b3ac0726c3736c446ffca22626d8d6d4e",
+          "characters": 1156,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-27.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-27.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-27.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "1d163c7d27a0c0d176acd5993240b9ed124ed5e99d4e14821f6cd8317da95cc5",
+          "tsv_sha256": "83de9f09a84843159e381143bbe59820ef1ad8244f2be94ab3dbb62437190a6b",
+          "characters": 1330,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-28.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-28.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-28.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "eb9f21a1fffbf9759d5df99bd252f0bd225814e7252f68a4405089f05c13ff3d",
+          "tsv_sha256": "7606e0ba52b7f6205b9318b4678dfea85c91d5463c0198770b8cb174da51c92a",
+          "characters": 1834,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-29.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-29.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-29.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "ea96a35702db0b74c00505a94a7c960530b5419af778a125557d38b6208347cf",
+          "tsv_sha256": "86b485c0deec29555b17b53bef0d051aa689cefad223e75b037c73f46a9bf2cf",
+          "characters": 1819,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-30.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-30.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-30.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "27e42421312db00b8d2823c05f81521c5e1107f4c07afbcd25909f783931ffa0",
+          "tsv_sha256": "3ab97cceeb1a613e7f3b218453b0d5a3cbb27171eb853d51c1feb5ef30b4a354",
+          "characters": 2113,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-31.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-31.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-31.tsv",
+          "exit_code": 0,
+          "stderr": "Detected 78 diacritics\n",
+          "sha256": "4c76e2a19c2e7454de86ada2d46448486f4fb28d40f559720ff56e1050cfc13e",
+          "tsv_sha256": "c304567bc37aa21e705d0a0b0c0ec281ef57c0612a9661a969a43e2153e72004",
+          "characters": 1840,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-32.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-32.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-32.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "bc588518fbe1bce7e7354904760826c77251952d12033d3b38903b7ed1c97821",
+          "tsv_sha256": "9ead5f9d0630d598ea4ab14b3222bab90d6101a280b4b3928a3a39e87fd843ae",
+          "characters": 1751,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-33.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-33.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-33.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "11750b87df05c1324be4c8056a739b970177472c6ef0ff279786da48819f65f3",
+          "tsv_sha256": "448937860f4ca7867a0405209f49272a132ae02a517568f7bd1e4a15ec87e2df",
+          "characters": 2244,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-34.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-34.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-34.tsv",
+          "exit_code": 0,
+          "stderr": "Detected 50 diacritics\n",
+          "sha256": "c4459f3b7f43356c63ceb0fd3c68e1a0498fdf70f11b4e9b1eee82eca7000681",
+          "tsv_sha256": "94c073e8e9cd7f08531f09d23e1d94afa97ec3e75527bc214ae3e2a66da6e918",
+          "characters": 1747,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-35.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-35.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-35.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "9831720a31630cd18c20456b81f53ed1b00ce39891ab0165a19dec2c40d5af57",
+          "tsv_sha256": "546c7f454aad3000a63ff2e6c49d64c616df505e3f7bafb5d06c924bce522e9f",
+          "characters": 449,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-36.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-36.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-36.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "81bd264a06dc2a0a1cdbaa8f524291ca52ffa17a1395e1fc75b8ba250fc1cb13",
+          "tsv_sha256": "e2528a53dc40a7b9a4e2a3e5b7ed945e819d1529b6217775e9d6eb277446d7c6",
+          "characters": 1732,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-37.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-37.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-37.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "80d0c03c469a54869e201294eced20ebcd29b7156a3c273de63e5464a1a45eb2",
+          "tsv_sha256": "10f7e793be04ce04be754de1a545173ca1bd65f0c1c2713a8c922a7c9cb62e14",
+          "characters": 652,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-38.png",
+          "output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-38.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr/fuzhou2025-english-38.tsv",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "65623ec8fcb287c1347b0318f93e36637cd92a6af7d4bd1842a0ab12dd0e38eb",
+          "tsv_sha256": "77998a4c23c5efd856d6977264fb3caf3b8c182424b8e739ee21e1229910df68",
+          "characters": 1458,
+          "status": "ocr_unreviewed",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3
+        }
+      ],
+      "engine": "tesseract5.5.3",
+      "languages": [
+        "eng",
+        "chi_sim"
+      ],
+      "psm": 3,
+      "visually_reviewed_pdf_pages": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "quality_observation": "Wholepagesvisuallyread;OCRlosescolumn/numberattachment,punctuationandunderlining;notfullgoldtext",
+      "output_flags": [
+        "tessedit_create_txt=1",
+        "tessedit_create_tsv=1"
+      ],
+      "model_root": "build/english-benchmark-research-20261012/tessdata"
+    },
+    {
+      "id": "suzhou-changshu2019-visible-text",
+      "source_id": "suzhou.changshu-grade7-2019",
+      "pages": 1,
+      "successful_pages": 1,
+      "characters": 19926,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-grade7-upper.html",
+          "output": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+          "exit_code": 0,
+          "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684",
+          "engine": "PythonHTMLParser",
+          "status": "extracted_unreviewed"
+        }
+      ],
+      "quality_observation": "OmitCSS/scripts;blockbreaksnotfacsimile,unresolvedpublication/importerrorspreserved"
     }
   ],
   "observed_errors": [
