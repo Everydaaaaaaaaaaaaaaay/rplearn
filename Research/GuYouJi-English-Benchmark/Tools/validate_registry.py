@@ -147,6 +147,32 @@ def main():
     if sum('level' in row for row in coverage) != 16 or sum('direction' in row for row in coverage) != 4:
         errors.append('coverage: expected 16 levels and 4 parallel directions')
 
+    detailed = documents.get('Registry/coverage-cells.json', {})
+    cells = detailed.get('cells', [])
+    if detailed:
+        cell_index = index(cells, 'priority coverage cells')
+        expected_cells = {(grade, term, publisher) for grade in range(7, 13)
+                          for term in ('upper', 'lower')
+                          for publisher in ('PEP', 'FLTRP', 'Yilin')}
+        actual_cells = {(row.get('grade'), row.get('semester'), row.get('publisher'))
+                        for row in cells}
+        if len(cell_index) != 36 or actual_cells != expected_cells:
+            errors.append('priority coverage: expected 36 distinct grade/term/series plan cells')
+        unit_index = index(documents.get('Curriculum/pep-junior-unit-index.json', {}).get('units', []),
+                           'PEP unit index')
+        for row in cells:
+            for uid in row.get('known_unit_index_ids', []):
+                unit = unit_index.get(uid)
+                if (not unit or row['publisher'] != 'PEP' or
+                        (row['grade'], row['semester']) != (unit['grade'], unit['semester'])):
+                    errors.append(f"priority coverage: incorrect unit reference {row['id']}/{uid}")
+        remaining = detailed.get('remaining_full_scope_records', [])
+        expected_remaining = set(identities) - {'junior1', 'junior2', 'junior3',
+                                                'senior1', 'senior2', 'senior3'}
+        if (len(remaining) != 14 or
+                {row.get('scope_id') for row in remaining} != expected_remaining):
+            errors.append('priority coverage: remaining 14 required scopes missing/duplicated')
+
     if set(milestones) != {f'M{i}' for i in range(1, 8)}:
         errors.append('milestones: expected M1 through M7')
     for identity, row in milestones.items():
@@ -172,6 +198,7 @@ def main():
                   processing_outputs_checked=processing_checked,
                   storage_files_checked=storage_checked,
                   scope_rows=len(coverage), incomplete_milestones=incomplete, open_gaps=open_gaps,
+                  priority_coverage_cells=len(cells),
                   bookkeeping_valid=not errors, errors=errors,
                   limitation='Bookkeeping validation does not establish rights, content correctness or educational validity.')
     print(json.dumps(report, ensure_ascii=False, indent=2))

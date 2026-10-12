@@ -1,0 +1,52 @@
+{
+  "reviewed_on": "2026-10-13",
+  "status": "official_connector_text_review_localfiles_notacquired",
+  "observations": [
+    {
+      "id": "coe-linking-responsibility",
+      "source_id": "coe.linking",
+      "url": "https://www.coe.int/en/web/common-european-framework-reference-languages/relating-examinations-to-the-cefr",
+      "locator": "Mainpage reminder aftercontentgrids",
+      "observation": "CoEdoesnotvalidate anexamprovider CEFRlink;provider hasresponsibilityforcoherentrealisticclaims",
+      "implication": "No label of CoE-certifiedgradealignment from usingmanuals or CEFRexamples"
+    },
+    {
+      "id": "alte2011-rights-scope",
+      "source_id": "coe.test-development",
+      "url": "https://rm.coe.int/1680667a2b",
+      "pdf_page": 2,
+      "publication": "CouncilofEurope April2011,ALTE",
+      "connector_page_count": 90,
+      "observation": "Noncommercialextractreproductionwithcitationstated;reproduction/translation enquiries directedtoissuer",
+      "implication": "Internalmethodreviewdoesnotclearcommercialexcerptcorpus/translation/training",
+      "commercial_use": "not_established"
+    },
+    {
+      "id": "alte2011-pretesting",
+      "source_id": "coe.test-development",
+      "url": "https://rm.coe.int/1680667a2b",
+      "pdf_page": 32,
+      "printed_page": 30,
+      "section": "3.4.2",
+      "observation": "Try-outneededbecause candidatessometimesrespondunexpectedly;pilot/pretest/trial methods differbypurpose",
+      "implication": "Contentauthorreviewandstructuralpassnot substitutesfor targetpopulationtry-out"
+    },
+    {
+      "id": "coe2009-agreement-vs-consistency",
+      "source_id": "coe.linking",
+      "url": "https://rm.coe.int/1680667a2d",
+      "pdf_page": 110,
+      "printed_page": 98,
+      "section": "7.4.2.1",
+      "connector_page_count": 200,
+      "observation": "Consistentrelativejudgements maystill disagreein absolutelevel because systematicjudge severity differs",
+      "implication": "Measureexact/adjacentagreement andseverity alongside correlations;modelvoteorhighcorrelationdoesnotprove correctstandards"
+    }
+  ],
+  "local_fetch_status": "ThreenormalnavigationrequestsHTTP403;originalbytesnotstored;futureofficialdownloadorpermittedmirrorpending",
+  "limitations": [
+    "Specifiedpositionsonly,notentiremanualreview",
+    "2009formsreflectoldCEFR;2020CompanionVolume alignmentmustbechecked",
+    "Noexpertpanelorstudent data collected"
+  ]
+}
