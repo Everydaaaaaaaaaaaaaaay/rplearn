@@ -13,6 +13,7 @@ REPO = BASE.parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check-cache', action='store_true')
+    parser.add_argument('--check-processing', action='store_true')
     parser.add_argument('--require-complete', action='store_true')
     args = parser.parse_args()
     errors = []
@@ -85,6 +86,28 @@ def main():
                 errors.append(f'{identity}: cache size/digest mismatch')
             cache_checked += 1
 
+    processing_checked = 0
+    if args.check_processing:
+        processing = documents.get('Registry/processing.json', {})
+        for run in processing.get('runs', []):
+            pages = run.get('page_records', [])
+            if len(pages) != run.get('pages'):
+                errors.append(f"{run.get('id')}: processing page count mismatch")
+            for page in pages:
+                if page.get('exit_code') != 0:
+                    continue
+                output = page.get('output') or page.get('output_prefix', '') + '.txt'
+                pairs = [(output, page.get('sha256'))]
+                if page.get('tsv_output'):
+                    pairs.append((page['tsv_output'], page.get('tsv_sha256')))
+                for filename, digest in pairs:
+                    path = REPO / filename
+                    if not path.is_file() or not digest:
+                        errors.append(f"{run.get('id')}: missing processing output/digest {filename}")
+                    elif hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                        errors.append(f"{run.get('id')}: processing digest mismatch {filename}")
+                    processing_checked += 1
+
     coverage = rows('coverage.json', 'coverage')
     identities = [row.get('level') or row.get('direction') for row in coverage]
     if len(identities) != 20 or len(set(identities)) != 20:
@@ -114,6 +137,7 @@ def main():
         errors.append(f'Not complete: milestones={incomplete}; open gaps={open_gaps}')
     report = dict(json_documents=len(documents), sources=len(sources),
                   acquisition_attempts=len(acquisitions), cache_files_checked=cache_checked,
+                  processing_outputs_checked=processing_checked,
                   scope_rows=len(coverage), incomplete_milestones=incomplete, open_gaps=open_gaps,
                   bookkeeping_valid=not errors, errors=errors,
                   limitation='Bookkeeping validation does not establish rights, content correctness or educational validity.')

@@ -7,9 +7,11 @@
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
 - [版本与记录复审](Studies/2026-10-12-continuation-audit.md)：2025修订课标线索、新版人教初中册次及状态更正。
+- [新版课标关键要求核读](Studies/2026-10-12-revised-curriculum-review.md)：词汇变化、任务与评分要求、OCR误识别及修正。
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
 - `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。
 - `Curriculum/observed-requirements.json`：逐页核读的课程词汇要求及适用条件，未自动换算为产品年级。
+- `Curriculum/revision-deltas.json` 与 `observed-assessment-requirements.json`：有原文定位的版本变化和命题要求，尚未成为已标定产品规则。
 - `Registry/sources.json`：候选和已核查入口；用途许可分开记录。
 - `Registry/acquisitions.json`：本地取得的文件、大小、摘要、文件格式和核读范围。
 - `Registry/legacy-sources.json`：现有 learning catalog 的27条来源记录及其原始限制；不升级为整册完成。

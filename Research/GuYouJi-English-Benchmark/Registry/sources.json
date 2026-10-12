@@ -966,7 +966,7 @@
       "provenance": "university_mirror",
       "checked_on": "2026-10-12",
       "verification_status": "partial_mirror_review",
-      "notes": "All 197 public embedded JPEG pages acquired; index count and image decoding checked. Cover and contents images1-3 visually reviewed only; requirement-body comparison and original issuer/implementation proof pending.",
+      "notes": "All 197 public embedded JPEG pages acquired; index count and image decoding checked. Cover and contents images1-3 visually reviewed only; requirement-body comparison and original issuer/implementation proof pending. Full scan OCR/TXT/TSV completed; specific requirement/assessment image review scope expanded, full-word-list and all-body validation pending.",
       "acquisition_ids": [
         "aku-junior2025-notice",
         "aku-junior2025-page001",
@@ -1175,7 +1175,19 @@
         "third_party_model_transmission": "unknown",
         "redistribution": "unknown"
       },
-      "content_acquisition": "embedded_index_complete_not_publisher_completeness_proof"
+      "content_acquisition": "embedded_index_complete_not_publisher_completeness_proof",
+      "visually_reviewed_image_indices": [
+        1,
+        2,
+        3,
+        10,
+        23,
+        24,
+        61,
+        62,
+        63,
+        64
+      ]
     },
     {
       "id": "aku.senior2025",
@@ -1186,7 +1198,7 @@
       "provenance": "university_mirror",
       "checked_on": "2026-10-12",
       "verification_status": "partial_mirror_review",
-      "notes": "All 178 public embedded JPEG pages acquired; index count and image decoding checked. Cover and contents images1-3 visually reviewed only; requirement-body comparison and original issuer/implementation proof pending.",
+      "notes": "All 178 public embedded JPEG pages acquired; index count and image decoding checked. Cover and contents images1-3 visually reviewed only; requirement-body comparison and original issuer/implementation proof pending. Full scan OCR/TXT/TSV completed; specific requirement/assessment image review scope expanded, full-word-list and all-body validation pending.",
       "acquisition_ids": [
         "aku-senior2025-notice",
         "aku-senior2025-page001",
@@ -1376,7 +1388,20 @@
         "third_party_model_transmission": "unknown",
         "redistribution": "unknown"
       },
-      "content_acquisition": "embedded_index_complete_not_publisher_completeness_proof"
+      "content_acquisition": "embedded_index_complete_not_publisher_completeness_proof",
+      "visually_reviewed_image_indices": [
+        1,
+        2,
+        3,
+        21,
+        22,
+        50,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
     },
     {
       "id": "pep.junior-new-series",
@@ -1459,6 +1484,72 @@
         "qpedu-english2025-notice",
         "qpedu-english2025-pdf",
         "xxgc-junior2025-notice"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "fujian.curriculum2025-use",
+      "title": "福建2026教辅送评引用2025修订课标",
+      "url": "https://jyt.fj.gov.cn/xxgk/gggs/202603/t20260313_7109906.htm",
+      "category": "curriculum",
+      "priority": "P0",
+      "provenance": "provincial_education_authority",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "Official notice explicitly references both2025revised curricula and2025national book directory. Evidence of provincial use, not original national issuance order or exact English version copyright.",
+      "acquisition_ids": [
+        "fujian-revision-implementation"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "shisu.senior2025-revision",
+      "title": "高中课标修订组解读的上外刊载",
+      "url": "https://infadm.shisu.edu.cn/_s60/22/46/c17661a205382/page.psp",
+      "category": "curriculum",
+      "priority": "P0",
+      "provenance": "university_author_record",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "Identifies authors as English revision-group members and article2025issue12pp43-45; confirms revision process and priorities, not complete standard body.",
+      "acquisition_ids": [
+        "shisu-revision-author"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ictr.curriculum-revision-index",
+      "title": "课程教材研究所2025日常修订专题索引",
+      "url": "https://www.ictr.edu.cn/policy/cheng/p/12.html",
+      "category": "curriculum",
+      "priority": "P0",
+      "provenance": "official_research_institute",
+      "checked_on": "2026-10-12",
+      "verification_status": "connector_index_review_only",
+      "notes": "Connector index body reviewed; relevant detail links redirect to unavailable WeChat articles. Direct index TLS fetch failed. October2025senior implementation claim visible in index only; original issuance order not acquired.",
+      "acquisition_ids": [
+        "ictr-revision-index"
       ],
       "rights": {
         "commercial_publication": "unknown",
