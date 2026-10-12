@@ -82,6 +82,15 @@ def main():
     exhaustive['items'][0]['response_scope']['kind'] = 'unknown'
     assert errors(exhaustive), 'Unknown scope allowed exact matching'
     checks.append('unknown_scope_exact_matching')
+    choice_slots = copy.deepcopy(fixtures['cloze-10'])
+    choice_slots.update(contract_version='0.2', id='fixture.choice-slot-scope')
+    for item in choice_slots['items']:
+        item['response_scope'] = dict(kind='option_ids', slot_ids=item['slot_ids'][:],
+            evidence_ids=['fixture.authorship'], reason='Select a stable option identity for the bound cloze gap')
+    assert not errors(choice_slots), 'Choice cloze cannot bind explicit gaps in contract0.2'
+    choice_slots['items'][0]['response_scope']['kind'] = 'slot_only'
+    assert errors(choice_slots), 'Choice response falsely declared free text slot-only'
+    checks.append('choice_gap_as_free_text_scope')
 
     long_group = copy.deepcopy(fixtures['reading-four'])
     long_group['materials'][0]['blocks'][0]['text'] = 'Original long structural placeholder. ' * 100

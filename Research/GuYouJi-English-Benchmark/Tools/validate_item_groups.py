@@ -112,7 +112,7 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
             if scope['kind'] == 'slot_only':
                 require(bool(scope['slot_ids']) and response['kind'] == 'text',
                         f'{item["id"]}: slot-only response lacks text slots')
-            elif scope['kind'] != 'unknown':
+            elif scope['kind'] == 'whole_response':
                 require(not scope['slot_ids'], f'{item["id"]}: non-slot response has slots')
             if scope['kind'] == 'option_ids':
                 require(response['kind'] in ('choice', 'matching', 'ordering'),
