@@ -8628,6 +8628,27 @@
         }
       ],
       "decision": "Scalinganddictionaryswitchdidnotrestoremrkcounts;left1/4right4/8starsremain;somewordsbetterandothersworse. Switchmethodoruseindependentlyreviewedtranscription,nobatchcanonicalintake."
+    },
+    {
+      "id": "senior2025-native-geometry-rows",
+      "source_id": "secondary.senior2025-native",
+      "pages": 1,
+      "distinct_source_pages": 57,
+      "count_semantics": "One candidate JSON report covering57 PDF pages; not one reviewed page",
+      "successful_pages": 1,
+      "review_status": "candidate_not_canonical",
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/secondary-senior2025-native-candidate.pdf",
+          "output": "build/english-benchmark-research-20261012/senior2025-native-row-review.json",
+          "exit_code": 0,
+          "sha256": "20008b120ebd3f7d1c8f261575d7b7ac7860e384300936b9bc47276d01ca4d99",
+          "characters": 739609,
+          "engine": "pdfplumber 0.11.9",
+          "status": "extracted_unreviewed"
+        }
+      ],
+      "decision": "Reject canonical admission while observed row/marker counts differ from declaration; preserve aliases and page/bbox evidence"
     }
   ],
   "observed_errors": [

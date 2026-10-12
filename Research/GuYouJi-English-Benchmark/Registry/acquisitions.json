@@ -10494,6 +10494,54 @@
       "status": "fetch_failed",
       "error": "HTTP Error 403: Forbidden",
       "manifest": "build/english-benchmark-research-20261012/fetch-manifest-coe-manuals.json"
+    },
+    {
+      "id": "xxgc-junior2025-public-download-captcha",
+      "url": "https://www.xxgc.edu.cn/system/_content/download.jsp?owner=1714395206&urltype=news.DownloadAttachUrl&wbfileid=3960423",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Public download link only: web reader displayed captcha; ordinary navigation fetch exceeded cap with octet-stream; no accepted payload or retry bypass",
+      "format_validation": "not_checked",
+      "final_url": "https://www.xxgc.edu.cn/system/_content/download.jsp?owner=1714395206&urltype=news.DownloadAttachUrl&wbfileid=3960423",
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "status": "fetch_failed",
+      "error": "Initial25MB limit exceeded",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-revision-text-alternatives.json"
+    },
+    {
+      "id": "secondary-senior2025-native-candidate",
+      "url": "https://cdn.zizzs.com/zixunzhan/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E8%8B%B1%E8%AF%AD%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86%E6%97%A5%E5%B8%B8%E4%BF%AE%E8%AE%A2%E7%89%88%EF%BC%882017%E5%B9%B4%E7%89%882025%E5%B9%B4%E4%BF%AE%E8%AE%A2%EF%BC%891762759636958.pdf",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Secondary candidate: PDF76/77/136 visually compared with university publisher-page JPEGs; native vocabulary-row extraction PDF76-132, not full source concordance or gold transcription",
+      "format_validation": "pdf_parsed",
+      "final_url": "https://cdn.zizzs.com/zixunzhan/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E8%8B%B1%E8%AF%AD%E8%AF%BE%E7%A8%8B%E6%A0%87%E5%87%86%E6%97%A5%E5%B8%B8%E4%BF%AE%E8%AE%A2%E7%89%88%EF%BC%882017%E5%B9%B4%E7%89%882025%E5%B9%B4%E4%BF%AE%E8%AE%A2%EF%BC%891762759636958.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "path": "build/english-benchmark-research-20261012/raw/secondary-senior2025-native-candidate.pdf",
+      "bytes": 3978785,
+      "sha256": "4d2d0f33e511dc0d239d2cdc53fe16f38a107afde9bd1ae557cec9ce7bb1bba0",
+      "status": "fetched_unreviewed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-revision-text-alternatives.json",
+      "pages": 178,
+      "extractable_text_characters": 120068
+    },
+    {
+      "id": "leshan2026-exam-scope-notice",
+      "url": "https://www.leshan.gov.cn/lsswszf/jyxxzcwj/92337828/787189626822725.html",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Notice metadata, English schedule/marks and appendix1 curriculum/FLTRP scope read; no complete exam paper or national issuance identity inferred",
+      "format_validation": "html_parsed",
+      "final_url": "https://www.leshan.gov.cn/lsswszf/jyxxzcwj/92337828/787189626822725.html",
+      "http_status": 200,
+      "content_type": "text/html",
+      "path": "build/english-benchmark-research-20261012/raw/leshan2026-exam-scope-notice.html",
+      "bytes": 132034,
+      "sha256": "f4c493212394732b45644841688dd02b706918c4c1d1c019d268798cfe6094dc",
+      "status": "fetched_unreviewed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-revision-text-alternatives.json"
     }
   ]
 }

@@ -1,0 +1,51 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "secondary_native_candidate_not_canonical",
+  "source_id": "secondary.senior2025-native",
+  "acquisition_id": "secondary-senior2025-native-candidate",
+  "pdf_pages": [
+    76,
+    132
+  ],
+  "count_unit": "Printed candidate line preserving alias notes and slash alternatives",
+  "declared": {
+    "total": 3100,
+    "no_star": 1600,
+    "one_star": 500,
+    "two_stars": 1000
+  },
+  "observed": {
+    "total_rows": 3099,
+    "no_star": 1600,
+    "one_star": 502,
+    "two_stars": 997,
+    "duplicate_raw_rows": 0
+  },
+  "canonical_admission": false,
+  "tool": "Tools/inspect_native_curriculum_wordlist.py",
+  "limitations": [
+    "Rows are not token, variant, lemma or sense counts",
+    "Observed total and marker subcounts differ from publisher declaration",
+    "No invented missing entry or reassignment to reconcile totals",
+    "Exact PDF identity does not establish publisher origin or rights",
+    "Only separately registered original-image pages were visually compared"
+  ],
+  "rejected_methods": [
+    {
+      "method": "pypdf visitor font runs",
+      "observed_runs": 3100,
+      "reason": "o’clock split into separate runs; run count is not entry count and tm coordinate is not page bbox"
+    },
+    {
+      "method": "naive visitor concatenation",
+      "observed_lines": 3074,
+      "reason": "Cross-row text and stars merged; false3/4-star items"
+    }
+  ],
+  "source_comparison_scope": [
+    76,
+    77,
+    136
+  ],
+  "remaining": "Full original-image comparison, exact authoritative issuance, row-count and marker discrepancy resolution; POS/senses/grade alignment independently pending"
+}
