@@ -570,6 +570,317 @@
           "Structure/format checks,not independent semantic or scoring validation"
         ]
       }
+    },
+    {
+      "snapshot_id": "2026-10-12T214053.549775+0000-e56d016d",
+      "created_at_utc": "2026-10-12T21:40:53.549775+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T214053.549775+0000-e56d016d",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T214053.549775+0000-e56d016d/snapshot-manifest.json",
+      "manifest_sha256": "4ab912b8a99140903d23a7694687c7ec471f08dde225a96d52de8b44c09dd99e",
+      "files_verified": 2922,
+      "bytes_verified": 928823094,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write": 2922
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Captures all registered assets and research files through eaa6fd18, including textbook contents scopes, YLE components/audio and Oxford candidate index. Later checkpoint registration not retroactively included.",
+      "new_material_restore_evidence": {
+        "snapshot_id": "2026-10-12T214053.549775+0000-e56d016d",
+        "status": "same_host_new_textbook_yle_oxford_restore_and_replay_verified",
+        "parsed_files": [
+          {
+            "source": "build/english-benchmark-research-20261012/raw/cambridge-yle-sample-volume2.pdf",
+            "sha256": "042e6450fd527c3f6d97f0f1e762346daa8ddba3860921ef46ceb874b0932627",
+            "restored_bytes": 20071095,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "pdf_pages": 100,
+              "native_text_nonempty": 100
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/cambridge-yle-handbook2024.pdf",
+            "sha256": "22477a5b4aea5db3ec91b140457f61da13867b6f0b79c11c03539c2b3565324c",
+            "restored_bytes": 24378771,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "pdf_pages": 90,
+              "native_text_nonempty": 90
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/cambridge-yle-wordlist2025.pdf",
+            "sha256": "6f7a0ad1e277bd10ae8b3bcccfb76c058f611a607c6c9947601abbd7e16a99fa",
+            "restored_bytes": 2901007,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "pdf_pages": 44,
+              "native_text_nonempty": 44
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/cambridge-yle-starters-volume2-audio.zip",
+            "sha256": "8e20d8c4a564af605ddf667ae2ab443f84a3227162b21d7ca29476461ffcc5b2",
+            "restored_bytes": 22828265,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "member_count": 4,
+              "crc_passed": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/cambridge-yle-movers-volume2-audio-bounded45mb.zip",
+            "sha256": "ee7c2ceefe99cc3fd062a73f182098025633bb7f6bced62a50ca539b7ff2db4b",
+            "restored_bytes": 28051759,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "member_count": 5,
+              "crc_passed": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/cambridge-yle-flyers-volume2-audio-bounded45mb.zip",
+            "sha256": "19a31aae7220cca0d58c67b8e1525577519f92e50830b0fad1590ab393110703",
+            "restored_bytes": 28117933,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "member_count": 5,
+              "crc_passed": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/pep-book-1312001301261-contents-page006.jpg",
+            "sha256": "b95ddf9a145390deb9aed94d25ad41e3bb9f25ce274277866c2a61d472a8df76",
+            "restored_bytes": 370284,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "image_size": [
+                1274,
+                1800
+              ]
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/pep-senior-1412001121191-contents-page006.jpg",
+            "sha256": "dc0e37cdadfaca219803c4f4da54b578ad97b40542f81ebab6b2adfe81979fa8",
+            "restored_bytes": 358999,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "image_size": [
+                1273,
+                1800
+              ]
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/oxford5000-pdf-page007.png",
+            "sha256": "12fd3ea8b47be17cbb26104b298d13f2093efdc2973b983fa3bf01780967cac8",
+            "restored_bytes": 412441,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "image_size": [
+                1273,
+                1800
+              ]
+            }
+          }
+        ],
+        "oxford_replay": {
+          "oxford-private-candidate-index.json": {
+            "replayed_sha256": "461f981b43f93084ec5d630b8b444adf86797c0a42cab6c59639f641e72025b2",
+            "matches_saved_output": true
+          },
+          "oxford-native-index-summary.json": {
+            "replayed_sha256": "c137cc59032af1374d4c7b10a4eb44930a1e5ec979c4c10d583cbc89bed6c739",
+            "matches_saved_output": true
+          },
+          "restored_tool_boundary_check": {
+            "selected_source_anchors": 16,
+            "negative_cases_rejected": 5,
+            "missing_repairs_block_index": true,
+            "no_gold_or_permission_inferred": true
+          }
+        },
+        "restored_audio_containers": [
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-starters-volume2-audio-members/track01.mp3",
+            "sha256": "5a74b97c83301a44602765f5a6eb84c1e9f1cce98a167e3d37d4391daf32e73d",
+            "codec": "mp3",
+            "duration_seconds": 349.897063,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-starters-volume2-audio-members/track02.mp3",
+            "sha256": "13812eb073af1a11f9703dc63159ae04774ea6c7e01923c84b1e69cbebfdc999",
+            "codec": "mp3",
+            "duration_seconds": 348.020563,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-starters-volume2-audio-members/track03.mp3",
+            "sha256": "d65dfe76f51872c10dbd5fa1caa69a89d3cf6027e0f72eecea6005bdbe41b287",
+            "codec": "mp3",
+            "duration_seconds": 370.9295,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-starters-volume2-audio-members/track04.mp3",
+            "sha256": "daa29c55dd6e27a91c0c270ac07c5064a97290e2b7cc11c9e08e0219b6b4a27f",
+            "codec": "mp3",
+            "duration_seconds": 424.461875,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-movers-volume2-audio-bounded45mb-members/track01.mp3",
+            "sha256": "07a4430c174bbde175990a92d024c6c5fb644fe0689855f6be3e103ec601f98e",
+            "codec": "mp3",
+            "duration_seconds": 339.029,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-movers-volume2-audio-bounded45mb-members/track02.mp3",
+            "sha256": "ef60c38e40c7314982ab593d3a5067c479fbebb68e3830aa3061c80b8f824d98",
+            "codec": "mp3",
+            "duration_seconds": 323.339375,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-movers-volume2-audio-bounded45mb-members/track03.mp3",
+            "sha256": "560d1d2deaf42dbf38438a7ef44025f00475faf3df7221ca990089479be8b8e4",
+            "codec": "mp3",
+            "duration_seconds": 317.996563,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-movers-volume2-audio-bounded45mb-members/track04.mp3",
+            "sha256": "b4ac7d5347f5bd8fed56ea825af8805a6b6c34953abdcd7ece7f20492d1076c1",
+            "codec": "mp3",
+            "duration_seconds": 360.348125,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-movers-volume2-audio-bounded45mb-members/track05.mp3",
+            "sha256": "5e50647bf1771a92a4841966dd8f50f07e16cbd260b194b688441819751b03a1",
+            "codec": "mp3",
+            "duration_seconds": 491.155813,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-flyers-volume2-audio-bounded45mb-members/track01.mp3",
+            "sha256": "dcfadb7183d351e2430541a9fb726e1f8560485004da1169cee968924b84a882",
+            "codec": "mp3",
+            "duration_seconds": 326.988125,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-flyers-volume2-audio-bounded45mb-members/track02.mp3",
+            "sha256": "f514476a931efa5774f3ff2dfb2f1aa0a99e0e8a4749670ef7452764da7d44b4",
+            "codec": "mp3",
+            "duration_seconds": 286.487,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-flyers-volume2-audio-bounded45mb-members/track03.mp3",
+            "sha256": "974265e49b5c8eef31b614fa77c5c81f9b8f988152b5b0d4251bc3a209f35c80",
+            "codec": "mp3",
+            "duration_seconds": 363.918688,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-flyers-volume2-audio-bounded45mb-members/track04.mp3",
+            "sha256": "81673f5e16e124d25c5bdfbd0086afb74d9ee177552d3a108ac0310ea6ba8dbc",
+            "codec": "mp3",
+            "duration_seconds": 391.961938,
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/cambridge-yle-flyers-volume2-audio-bounded45mb-members/track05.mp3",
+            "sha256": "7c07ecf241e946bacdbfc8fb82d87964e615e2a657fec55a32a6871e8c0494c2",
+            "codec": "mp3",
+            "duration_seconds": 462.695563,
+            "container_reproduced": true,
+            "semantic_listening": false
+          }
+        ],
+        "limitations": [
+          "Same disk/host;not disaster recovery",
+          "Reproduced source-boundary checks;not independent semantic or educational validation",
+          "Audio container/CRC/duration only;no full listening"
+        ]
+      }
     }
   ]
 }

@@ -23,6 +23,7 @@
 - [已评分作答合同0.1](Performances/Contract.md)：独立保存任务分与维度分来源，三份原创结构样例、39反例及16份真实私有作答引用核验，尚非金标准或商用准入。
 - [低龄纸笔配套与功能边界](Studies/2026-10-13-yle-paper-components-and-function-boundaries.md)：334页原生文本、28选定目视页及14条音频容器核验，保留累积语法、题数/分值、图像依赖和非排他产出示例。
 - [原始资产保存与恢复](Studies/2026-10-13-local-preservation-review.md)：项目外本机1,676文件快照及六种格式恢复核验，长期/异机恢复仍待验收。
+- [新版材料恢复与解析重放](Studies/2026-10-13-yle-oxford-preservation-replay.md)：第七份2,922文件快照，教材目录/YLE附件及14条音频恢复，Oxford候选索引从副本重跑并与保存摘要一致。
 - [地域教材选用与当前目录](Studies/2026-10-13-regional-adoption-and-directories.md)：地区起点/系列差异、国家2024转存件、上海2026目录及待审状态更新。
 - [覆盖与验证设计](Studies/2026-10-13-coverage-and-validation-method.md)：36个优先年级/学期/系列单元、其余14范围及教研/学生/节奏/模型验收准备。
 - [词汇工具边界核验](Studies/2026-10-13-lexical-profile-boundary-review.md)：词性/大小写/词元与未知处理，12个真实条目核验及3个拒绝例。
