@@ -1,0 +1,258 @@
+{
+  "contract_version": "0.2",
+  "admission": "research_only",
+  "id": "fixture.partial-response-reference",
+  "group_version": "v1",
+  "scoring_version": "v1",
+  "family_id": "fixture.partial-response-reference.family",
+  "kind": "mixed",
+  "scope_claims": [
+    {
+      "status": "unknown",
+      "value": null,
+      "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+      "evidence_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixture.authorship",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original structural demonstration",
+        "purpose": "contract_demonstration",
+        "authored_on": "2026-10-13"
+      },
+      "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+    }
+  ],
+  "targets": [
+    {
+      "id": "t1",
+      "construct": "Read the explicitly stated schedule",
+      "skill": "reading",
+      "prerequisites": [],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "m1",
+      "version": "v1",
+      "language": "en",
+      "role": "stimulus",
+      "blocks": [
+        {
+          "id": "b1",
+          "kind": "text",
+          "text": "Ask your friend where the blue box is. Fill only the blank before the printed suffix."
+        },
+        {
+          "id": "gb1",
+          "kind": "slot",
+          "slot_id": "gap1"
+        },
+        {
+          "id": "suffix1",
+          "kind": "text",
+          "text": " the blue box?"
+        }
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "rights": {
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "publication": "unknown",
+        "adaptation": "unknown",
+        "training": "unknown",
+        "provider_transmission": "unknown",
+        "redistribution": "unknown",
+        "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+      }
+    }
+  ],
+  "assets": [],
+  "items": [
+    {
+      "id": "i1",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Complete the question; enter only the missing beginning.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap1"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": null,
+        "word_count_rule": "No numeric limit stated in this original demonstration"
+      },
+      "scoring_id": "s1",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "response_scope": {
+        "kind": "slot_only",
+        "slot_ids": [
+          "gap1"
+        ],
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "reason": "The suffix is already printed and is not entered again"
+      }
+    }
+  ],
+  "private_scoring": [
+    {
+      "id": "s1",
+      "kind": "text",
+      "item_ids": [
+        "i1"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "accepted_forms": [
+        "Where is"
+      ],
+      "documented_spelling_variants": [],
+      "conditions": "A reference example; alternative appropriate questions need adjudication.",
+      "answer_policy": {
+        "coverage": "reference_examples_only",
+        "adjudication": "manual_review",
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "reason": "Example does not enumerate every acceptable formulation"
+      },
+      "source_key_mappings": [
+        {
+          "item_id": "i1",
+          "source_key_form": "Where is the blue box?",
+          "response_form": "Where is",
+          "operation": "extract_documented_span",
+          "source_span": [
+            0,
+            8
+          ],
+          "evidence_ids": [
+            "fixture.authorship"
+          ],
+          "reason": "Unicode codepoint half-open span. Only this span fills the blank; the suffix stays printed."
+        }
+      ]
+    }
+  ],
+  "administration": {
+    "mode": "diagnostic",
+    "submission_boundary": "whole_group",
+    "return_to_items": true,
+    "feedback_release": "after_group_submit",
+    "later_related_items_count_as_unassisted": false,
+    "supports": [],
+    "media_segments": [],
+    "replay_limit": null,
+    "pre_read_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "review_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "timing": {
+      "observed_effective_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No learners have taken this fixture",
+        "evidence_ids": []
+      },
+      "estimated_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No timing estimate registered",
+        "evidence_ids": []
+      },
+      "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+      "excluded_intervals": [
+        "background",
+        "idle",
+        "pause",
+        "network_wait",
+        "grading_wait"
+      ]
+    },
+    "avatar": {
+      "status": "not_applicable",
+      "value": null,
+      "reason": "No character is needed for a structural fixture",
+      "evidence_ids": []
+    }
+  },
+  "review": {
+    "content": {
+      "status": "provisional",
+      "value": "Authored to exercise structure only",
+      "reason": "No quality review or intended population",
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    "independent": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No independent reviewer",
+      "evidence_ids": []
+    },
+    "learner_calibration": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No real learner observations",
+      "evidence_ids": []
+    }
+  },
+  "rights": {
+    "evidence_ids": [
+      "fixture.authorship"
+    ],
+    "publication": "unknown",
+    "adaptation": "unknown",
+    "training": "unknown",
+    "provider_transmission": "unknown",
+    "redistribution": "unknown",
+    "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+  },
+  "limitations": [
+    "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing",
+    "Original synthetic example illustrating the full-question-key/partial-response risk; not a transcription or scoring gold."
+  ]
+}

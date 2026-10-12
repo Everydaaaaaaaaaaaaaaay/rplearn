@@ -15,6 +15,16 @@ from jsonschema import Draft202012Validator, FormatChecker
 BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
 SCHEMA = BASE / 'ItemGroups/ItemGroup.schema.json'
+SCHEMAS = {'0.1': SCHEMA, '0.2': BASE / 'ItemGroups/ItemGroup-v0.2.schema.json'}
+
+
+def validator_for(group):
+    version = group.get('contract_version')
+    if version not in SCHEMAS:
+        raise ValueError(f'Unsupported contract version: {version}')
+    schema = json.loads(SCHEMAS[version].read_text())
+    Draft202012Validator.check_schema(schema)
+    return Draft202012Validator(schema, format_checker=FormatChecker())
 
 
 def semantic_errors(group, sources, acquisitions, check_assets=False):
@@ -95,6 +105,23 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
         require(score is not None and item['id'] in score['item_ids'],
                 f'{item["id"]}: scoring does not refer back to item')
         response = item['response']
+        if group['contract_version'] == '0.2':
+            scope = item['response_scope']
+            require(set(scope['slot_ids']) == set(item['slot_ids']),
+                    f'{item["id"]}: response scope does not bind the item slots')
+            if scope['kind'] == 'slot_only':
+                require(bool(scope['slot_ids']) and response['kind'] == 'text',
+                        f'{item["id"]}: slot-only response lacks text slots')
+            elif scope['kind'] != 'unknown':
+                require(not scope['slot_ids'], f'{item["id"]}: non-slot response has slots')
+            if scope['kind'] == 'option_ids':
+                require(response['kind'] in ('choice', 'matching', 'ordering'),
+                        f'{item["id"]}: option scope on nonoption response')
+            if scope['kind'] == 'whole_response':
+                require(response['kind'] in ('text', 'writing', 'translation', 'speaking', 'interaction'),
+                        f'{item["id"]}: whole-response scope on option response')
+            if scope['kind'] != 'unknown':
+                require(bool(scope['evidence_ids']), f'{item["id"]}: response scope lacks evidence')
         for name in ('options', 'right_options', 'elements'):
             if name in response:
                 index(response[name], item['id'] + '/' + name)
@@ -113,6 +140,40 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
         require(all(items[i]['scoring_id'] == score['id'] for i in bound),
                 f'{score["id"]}: mismatched item/scoring association')
         kind = score['kind']
+        if group['contract_version'] == '0.2' and kind in ('text', 'coupled_text', 'segmented'):
+            policy = score['answer_policy']
+            if policy['coverage'] != 'unknown':
+                require(bool(policy['evidence_ids']), f'{score["id"]}: coverage lacks evidence')
+            if policy['adjudication'] == 'exact_documented_forms':
+                require(policy['coverage'] == 'exhaustive_documented',
+                        f'{score["id"]}: reference/unknown answers cannot reject unmatched strings')
+                require(all(items[i]['response_scope']['kind'] != 'unknown' for i in bound),
+                        f'{score["id"]}: exact matching has unknown response scope')
+            seen_mappings = set()
+            for mapping in score['source_key_mappings']:
+                mid = mapping['item_id']
+                require(mid in bound, f'{score["id"]}: source key mapping outside scored items')
+                identity = (mid, mapping['source_key_form'])
+                require(identity not in seen_mappings, f'{score["id"]}: duplicate source key mapping')
+                seen_mappings.add(identity)
+                original, form, span = mapping['source_key_form'], mapping['response_form'], mapping['source_span']
+                operation = mapping['operation']
+                if operation == 'unresolved':
+                    require(form is None and span is None, f'{score["id"]}: unresolved mapping has fabricated response')
+                    require(policy['adjudication'] != 'exact_documented_forms',
+                            f'{score["id"]}: unresolved source key cannot use exact matching')
+                elif operation == 'identity':
+                    require(form == original and span is None, f'{score["id"]}: identity mapping changes source key')
+                else:
+                    require(span is not None and 0 <= span[0] < span[1] <= len(original),
+                            f'{score["id"]}: invalid source key codepoint span')
+                    if span is not None and 0 <= span[0] < span[1] <= len(original):
+                        require(original[span[0]:span[1]] == form,
+                                f'{score["id"]}: extracted form disagrees with source key span')
+                    require(mid in items and items[mid]['response_scope']['kind'] == 'slot_only',
+                            f'{score["id"]}: span extraction without slot-only response')
+                if kind == 'text' and form is not None:
+                    require(form in score['accepted_forms'], f'{score["id"]}: mapped form not in documented forms')
         if kind in expected_response:
             require(all(items[i]['response']['kind'] == expected_response[kind] for i in bound),
                     f'{score["id"]}: response/scoring kind mismatch')
@@ -204,7 +265,7 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
 
 def pre_submit_projection(group):
     """No private source locator, scoring, hints, transcript or scored examples."""
-    return copy.deepcopy({
+    result = copy.deepcopy({
         'id': group['id'], 'group_version': group['group_version'],
         'contract_version': group['contract_version'], 'kind': group['kind'],
         'materials': [{k: material[k] for k in ('id', 'version', 'language', 'blocks')}
@@ -217,6 +278,11 @@ def pre_submit_projection(group):
         'administration': {k: group['administration'][k] for k in
                            ('mode', 'submission_boundary', 'return_to_items', 'feedback_release')},
     })
+    if group['contract_version'] == '0.2':
+        for projected, item in zip(result['items'], group['items']):
+            projected['response_scope'] = {k: copy.deepcopy(item['response_scope'][k])
+                                           for k in ('kind', 'slot_ids')}
+    return result
 
 
 def main():
@@ -224,9 +290,6 @@ def main():
     parser.add_argument('groups', type=Path, nargs='*')
     parser.add_argument('--check-assets', action='store_true')
     args = parser.parse_args()
-    schema = json.loads(SCHEMA.read_text())
-    Draft202012Validator.check_schema(schema)
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
     sources = {r['id']: r for r in json.loads((BASE / 'Registry/sources.json').read_text())['sources']}
     acquisitions = {r['id']: r for r in json.loads((BASE / 'Registry/acquisitions.json').read_text())['acquisitions']}
     paths = args.groups or sorted((BASE / 'ItemGroups/Fixtures').glob('*.json'))
@@ -236,6 +299,7 @@ def main():
     for path in paths:
         try:
             group = json.loads(path.read_text())
+            validator = validator_for(group)
             errors = [f'{"/".join(map(str, e.absolute_path))}: {e.message}'
                       for e in validator.iter_errors(group)]
             if not errors:
@@ -245,6 +309,11 @@ def main():
                 'unknown_scoring_ids': [s['id'] for s in group['private_scoring'] if s['kind'] == 'unknown'],
                 'independent_review_status': group['review']['independent']['status'],
                 'learner_calibration_status': group['review']['learner_calibration']['status'],
+                'answer_coverage_unrecorded': group['contract_version'] == '0.1',
+                'nonexhaustive_or_unknown_score_ids': [s['id'] for s in group['private_scoring']
+                    if s.get('answer_policy', {}).get('coverage') in ('reference_examples_only', 'unknown')],
+                'unknown_response_scope_ids': [i['id'] for i in group['items']
+                    if i.get('response_scope', {}).get('kind') == 'unknown'],
             }
             reports.append({'path': str(path), 'structure_valid': not errors, 'errors': errors,
                             'incomplete_evidence': incomplete,

@@ -9,19 +9,18 @@ import sys
 
 sys.dont_write_bytecode = True
 
-from jsonschema import Draft202012Validator, FormatChecker
-from validate_item_groups import BASE, SCHEMA, semantic_errors, pre_submit_projection
+from validate_item_groups import BASE, semantic_errors, pre_submit_projection, validator_for
 
 
 def main():
-    schema = json.loads(SCHEMA.read_text())
-    Draft202012Validator.check_schema(schema)
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
     fixtures = {p.stem: json.loads(p.read_text()) for p in
                 (BASE / 'ItemGroups/Fixtures').glob('*.json')}
 
     def errors(group):
-        result = list(validator.iter_errors(group))
+        try:
+            result = list(validator_for(group).iter_errors(group))
+        except ValueError as exc:
+            return [str(exc)]
         return result or semantic_errors(group, {}, {})
 
     for name, group in fixtures.items():
@@ -60,6 +59,29 @@ def main():
     reject('opening_story_not_required_or_allowed', 'reading-four', lambda g: g.update(opening_story='Extra unversioned story'))
     reject('gold_or_production_admission', 'reading-four', lambda g: g.update(admission='gold'))
     reject('unacquired_source_content', 'reading-four', lambda g: g['evidence'][0].update(origin=dict(kind='source_record',source_id='missing',acquisition_id='missing',variant='paper',locator='page1')))
+    reject('unsupported_contract_version', 'partial-response-reference', lambda g: g.update(contract_version='9.9'))
+    reject('nonexhaustive_exact_rejection', 'partial-response-reference', lambda g: g['private_scoring'][0]['answer_policy'].update(adjudication='exact_documented_forms'))
+    reject('unknown_exact_rejection', 'partial-response-reference', lambda g: g['private_scoring'][0]['answer_policy'].update(coverage='unknown',adjudication='exact_documented_forms'))
+    reject('coverage_without_evidence', 'partial-response-reference', lambda g: g['private_scoring'][0]['answer_policy'].update(evidence_ids=[]))
+    reject('missing_response_scope', 'partial-response-reference', lambda g: g['items'][0].pop('response_scope'))
+    reject('scope_wrong_slot', 'partial-response-reference', lambda g: g['items'][0]['response_scope'].update(slot_ids=['missing']))
+    reject('scope_without_evidence', 'partial-response-reference', lambda g: g['items'][0]['response_scope'].update(evidence_ids=[]))
+    reject('slot_scope_as_whole_answer', 'partial-response-reference', lambda g: g['items'][0]['response_scope'].update(kind='whole_response'))
+    reject('span_wrong_end', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'][0].update(source_span=[0,9]))
+    reject('span_outside_source', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'][0].update(source_span=[0,9999]))
+    reject('span_reversed', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'][0].update(source_span=[8,0]))
+    reject('silent_key_truncation_as_identity', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'][0].update(operation='identity',source_span=None))
+    reject('unresolved_fabricated_form', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'][0].update(operation='unresolved',source_span=None))
+    reject('source_mapping_wrong_item', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'][0].update(item_id='missing'))
+    reject('mapped_form_not_documented', 'partial-response-reference', lambda g: g['private_scoring'][0].update(accepted_forms=['Where was']))
+    reject('duplicated_source_mapping', 'partial-response-reference', lambda g: g['private_scoring'][0]['source_key_mappings'].append(copy.deepcopy(g['private_scoring'][0]['source_key_mappings'][0])))
+    exhaustive = copy.deepcopy(fixtures['partial-response-reference'])
+    exhaustive['private_scoring'][0]['answer_policy'].update(coverage='exhaustive_documented',
+        adjudication='exact_documented_forms',reason='Synthetic exact-form task expressly limits the demonstration to the documented form')
+    assert not errors(exhaustive)
+    exhaustive['items'][0]['response_scope']['kind'] = 'unknown'
+    assert errors(exhaustive), 'Unknown scope allowed exact matching'
+    checks.append('unknown_scope_exact_matching')
 
     long_group = copy.deepcopy(fixtures['reading-four'])
     long_group['materials'][0]['blocks'][0]['text'] = 'Original long structural placeholder. ' * 100
@@ -90,6 +112,14 @@ def main():
     assert sentinel not in json.dumps(projection), 'Private scoring/audit/transcript leaked by structural projection'
     projection['items'][0]['instruction'] = 'Mutated public view'
     assert private['items'][0]['instruction'] != 'Mutated public view'
+    scoped = copy.deepcopy(fixtures['partial-response-reference'])
+    scoped['private_scoring'][0]['source_key_mappings'][0]['reason'] = sentinel
+    scoped['items'][0]['response_scope']['reason'] = sentinel
+    assert not errors(scoped)
+    scoped_projection = pre_submit_projection(scoped)
+    assert sentinel not in json.dumps(scoped_projection)
+    assert 'source_key_form' not in json.dumps(scoped_projection)
+    assert scoped_projection['items'][0]['response_scope'] == {'kind':'slot_only','slot_ids':['gap1']}
     print(json.dumps({'positive_fixtures': len(fixtures), 'negative_rejections': len(checks),
         'negative_cases': checks, 'long_text_and_19_items': 'accepted_without_truncation',
         'private_structural_projection': 'sentinel_excluded_copy_independent',
