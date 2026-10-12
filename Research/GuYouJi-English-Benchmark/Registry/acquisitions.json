@@ -911,7 +911,7 @@
       "sha256": "f49fce38cc2283fd1bcd291debe5b0e067eeb0624811bacf2bc8ad2fde1218a9",
       "status": "fetched_unreviewed",
       "manifest": "build/english-benchmark-research-20261012/fetch-manifest.json",
-      "review_scope": "Abstract and introduction text on PDF1-2 reviewed; rest not fully reviewed",
+      "review_scope": "Abstract and introduction text on PDF1-2 reviewed; rest not fully reviewed; extended2026-10-13specific preprocessing,tables,annotation/human estimates andlimitations reviewed,not whole-paper/model reproduction",
       "format_validation": "pdf_parsed",
       "text_review_pages": [
         1,
@@ -932,7 +932,7 @@
       "sha256": "09451ca98547ebda234f14c42acbab3dcf5b470225215e711bee1e4e57808e06",
       "status": "fetched_unreviewed",
       "manifest": "build/english-benchmark-research-20261012/fetch-manifest.json",
-      "review_scope": "Abstract and introduction text on PDF1-2 reviewed; rest not fully reviewed",
+      "review_scope": "Abstract and introduction text on PDF1-2 reviewed; rest not fully reviewed; extended2026-10-13specific preprocessing,tables,annotation/human estimates andlimitations reviewed,not whole-paper/model reproduction",
       "format_validation": "pdf_parsed",
       "text_review_pages": [
         1,
@@ -12246,6 +12246,62 @@
         "command": "-f17 -l17 -scale-to1600 -png"
       },
       "manifest": "build/english-benchmark-research-20261012/render-manifest-nist-tn2045-table2.json"
+    },
+    {
+      "id": "race-paper-appendix",
+      "url": "https://aclanthology.org/attachments/D17-1082.Attachment.pdf",
+      "accessed_on": "2026-10-13",
+      "request_context": "Normal public publisher-page navigation",
+      "review_scope": "Passagesummarizationtasklayout,one4-optionitem;answer not explicitly printed;not whole archive or source passage commercial clearance",
+      "format_validation": "pdf_parsed_1page",
+      "final_url": "https://aclanthology.org/attachments/D17-1082.Attachment.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/race-paper-appendix.pdf",
+      "bytes": 40834,
+      "sha256": "4a566822f90ad124d04e25e4a980c25fdda4a384c89739274c18e934cdb589e6",
+      "status": "fetched_unreviewed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-race-paper-appendix20261013.json"
+    },
+    {
+      "id": "race-paper-table-05",
+      "url": "https://aclanthology.org/D17-1082.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/race-paper-table-05.png",
+      "bytes": 412102,
+      "sha256": "cdc5a11cad975dcae824934c2429c46bcdd8b40ec9a93cf54ea307219d6371e4",
+      "format_validation": "png_decoded",
+      "width": 1132,
+      "height": 1600,
+      "review_scope": "Statistics table and method paragraphs visually checked;not datasetfile verification",
+      "derivation": {
+        "acquisition_id": "race-paper",
+        "pdf_page": 5,
+        "tool": "pdftoppm",
+        "command": "-f5 -l5 -scale-to1600 -png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/render-manifest-dataset-paper-tables20261013.json"
+    },
+    {
+      "id": "cloth-paper-table-04",
+      "url": "https://aclanthology.org/D18-1257.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/cloth-paper-table-04.png",
+      "bytes": 452267,
+      "sha256": "bee11222b69fc8706dc62783c4a2c01e56adc1de9e52d02bc39f79c96f9c64ed",
+      "format_validation": "png_decoded",
+      "width": 1132,
+      "height": 1600,
+      "review_scope": "Statistics table and method paragraphs visually checked;not datasetfile verification",
+      "derivation": {
+        "acquisition_id": "cloth-paper",
+        "pdf_page": 4,
+        "tool": "pdftoppm",
+        "command": "-f4 -l4 -scale-to1600 -png"
+      },
+      "manifest": "build/english-benchmark-research-20261012/render-manifest-dataset-paper-tables20261013.json"
     }
   ],
   "updated_on": "2026-10-13"

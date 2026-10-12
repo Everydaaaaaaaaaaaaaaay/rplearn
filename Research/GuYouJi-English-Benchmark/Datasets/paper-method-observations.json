@@ -1,0 +1,200 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "paper_method_metadata_only_not_dataset_intake",
+  "datasets": [
+    {
+      "id": "race2017-paper-reported",
+      "source_id": "acl.race",
+      "acquisition_id": "race-paper",
+      "publication_year": 2017,
+      "split_table_pdf_page": 5,
+      "split_table_number": 2,
+      "reported_splits": {
+        "middle": {
+          "train": {
+            "passages": 6409,
+            "questions": 25421
+          },
+          "dev": {
+            "passages": 368,
+            "questions": 1436
+          },
+          "test": {
+            "passages": 362,
+            "questions": 1436
+          }
+        },
+        "high": {
+          "train": {
+            "passages": 18728,
+            "questions": 62445
+          },
+          "dev": {
+            "passages": 1021,
+            "questions": 3451
+          },
+          "test": {
+            "passages": 1045,
+            "questions": 3498
+          }
+        }
+      },
+      "reported_totals": {
+        "passages": 27933,
+        "questions": 97687
+      },
+      "annotation": {
+        "source_pdf_pages": [
+          4,
+          5,
+          6
+        ],
+        "sample_passages": 100,
+        "middle_high_passages_each": 50,
+        "questions_per_selected_passage": 5,
+        "sample_questions": 500,
+        "labels_per_question": 2,
+        "labels_total": 1000,
+        "annotator_population": "Master MTurk crowdworkers,not demonstrated Chinese grade cohort",
+        "categories": [
+          "word matching",
+          "paraphrasing",
+          "single-sentence reasoning",
+          "multi-sentence reasoning",
+          "insufficient or ambiguous"
+        ],
+        "reported_ambiguous_insufficient_rate": 0.058,
+        "rate_scope": "Table4 aggregate;not proportion independentlyrecomputed from archive;combined weighting not reconstructed"
+      },
+      "human_estimate": {
+        "source_pdf_pages": [
+          7,
+          8
+        ],
+        "reported_turker_accuracy": 0.733,
+        "reported_ceiling": 0.945,
+        "ceiling_definition": "Author manual estimate of unambiguous questions with a correct answer;not attained target student accuracy",
+        "middle_ceiling_validity": 0.954,
+        "high_ceiling_validity": 0.942,
+        "not_interchangeable_with_crowd_ambiguity_rate": true
+      },
+      "reported_word_lengths": {
+        "middle_mean": 231.1,
+        "high_mean": 353.1,
+        "combined_mean": 321.9,
+        "scope": "Paper descriptive average,not allowed question length or grade standard"
+      },
+      "archive_validation": "Not performed;noncommercial-only context/derived-data terms remain unresolved for commercialproductwork",
+      "no_verified_grade_semester_cefr": true,
+      "split_arithmetic_check": "Paper table sums verified;not original file counts"
+    },
+    {
+      "id": "cloth2018-paper-reported",
+      "source_id": "acl.cloth",
+      "acquisition_id": "cloth-paper",
+      "publication_year": 2018,
+      "split_table_pdf_page": 4,
+      "split_table_number": 1,
+      "reported_splits": {
+        "middle": {
+          "train": {
+            "passages": 2341,
+            "questions": 22056
+          },
+          "dev": {
+            "passages": 355,
+            "questions": 3273
+          },
+          "test": {
+            "passages": 335,
+            "questions": 3198
+          }
+        },
+        "high": {
+          "train": {
+            "passages": 3172,
+            "questions": 54794
+          },
+          "dev": {
+            "passages": 450,
+            "questions": 7794
+          },
+          "test": {
+            "passages": 478,
+            "questions": 8318
+          }
+        }
+      },
+      "reported_totals": {
+        "passages": 7131,
+        "questions": 99433
+      },
+      "preprocessing": {
+        "source_pdf_page": 3,
+        "reported_raw_passages": 20605,
+        "reported_raw_questions": 332755,
+        "excluded": [
+          "More than four options or inconsistent format",
+          "Questions requiring external images or tables",
+          "Duplicate passages",
+          "AnswerimageOCR disagreement between two engines"
+        ],
+        "ocr_agreement_is_gold": false,
+        "multimodal_coverage": "Not represented by cleaned dataset;removed materials cannot establish our required stimuli"
+      },
+      "annotation": {
+        "source_pdf_pages": [
+          3,
+          4,
+          5,
+          12
+        ],
+        "sample_passages_middle": 100,
+        "sample_passages_high": 100,
+        "sample_questions": 3000,
+        "annotator_population": "Master MTurk,no background restriction stated inAppendixA.1",
+        "categories": [
+          "grammar",
+          "short-term reasoning",
+          "matching or paraphrasing",
+          "long-term reasoning",
+          "other"
+        ],
+        "reported_long_term_reasoning_rate": 0.18,
+        "reported_long_term_information_rate": 0.224,
+        "these_rates_are_same_category": false
+      },
+      "human_estimate": {
+        "source_pdf_page": 5,
+        "reported_crowd_full_passage_accuracy": 0.859,
+        "target_students_calibrated": false
+      },
+      "reported_word_lengths": {
+        "middle_mean": 242.88,
+        "high_mean": 365.1,
+        "combined_mean": 313.16,
+        "scope": "Descriptive paper averages;not grade or task admission bounds"
+      },
+      "archive_validation": "Not performed;noncommercial-only context/derived-data terms remain unresolved for commercialproductwork",
+      "no_verified_grade_semester_cefr": true,
+      "split_arithmetic_check": "Paper table sums verified;not original file counts"
+    }
+  ],
+  "rights_boundary": {
+    "paper_license": "ACL publication notice for2016onward CC-BY4;thirdpartymaterials retain rights",
+    "dataset_license": "Cached originalpublisher client clauses specify noncommercial research and restrict commercial context/derived data use",
+    "paper_license_clears_dataset": false,
+    "commercial_training": false,
+    "commercial_adaptation": false,
+    "external_model_transmission": "Not cleared",
+    "corpus_acquisition_status": "Not acquired;do not substitute mirror license or author code license for dataset terms"
+  },
+  "implications": [
+    "Preserve fullpassage/groups and source family splits",
+    "Treat ambiguity and incomplete keys as reviewable defects,not teacher-author label guarantee",
+    "Grade7/8/9 and grade10/11/12 not provided by M/H labels",
+    "Originalsplit families and crossdataset overlap stillneed byte-level review after permitted intake",
+    "Publicbenchmark pretraining exposure unknown;not an unseen finalqualitygate",
+    "Use separately permissioned/multimodal/full-scoring anchors forproduction"
+  ]
+}
