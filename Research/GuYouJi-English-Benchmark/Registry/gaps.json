@@ -150,9 +150,9 @@
       "id": "G17",
       "priority": "P1",
       "title": "研究资产持久保存与恢复",
-      "next_action": "Plan rights-compatible durable storage for raw cache, preserve manifests and demonstrate retrieval/restore with matching hashes.",
+      "next_action": "Project-external local snapshot1676files/385921610bytes verified;sixformat restore checks pass. Continue perbatchsnapshots,define retention/rightscompatible disk-loss recovery and verify finalcompleteassetset.",
       "acceptance": "Raw required assets recoverable independent of ignored build cache",
-      "limitation": "Git does not preserve ignored raw assets; no restore audit completed",
+      "limitation": "Samehostdisk only,not offhost/disastertested;newacquisitionsandmetadatachanges requirefreshsnapshot. Localbuildcleanupnowrecoverableforthecapturedset.",
       "status": "open"
     }
   ]

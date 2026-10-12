@@ -14,6 +14,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check-cache', action='store_true')
     parser.add_argument('--check-processing', action='store_true')
+    parser.add_argument('--check-storage', action='store_true')
     parser.add_argument('--require-complete', action='store_true')
     args = parser.parse_args()
     errors = []
@@ -108,6 +109,37 @@ def main():
                         errors.append(f"{run.get('id')}: processing digest mismatch {filename}")
                     processing_checked += 1
 
+    storage_checked = 0
+    if args.check_storage:
+        snapshots = documents.get('Storage/local-snapshots.json', {}).get('snapshots', [])
+        if not snapshots:
+            errors.append('storage: no registered local snapshot')
+        for snapshot in snapshots:
+            root = Path(snapshot['snapshot_path']).resolve()
+            manifest_path = Path(snapshot['manifest_path']).resolve()
+            if root not in manifest_path.parents or not manifest_path.is_file():
+                errors.append('storage: missing or out-of-root manifest')
+                continue
+            data = manifest_path.read_bytes()
+            if hashlib.sha256(data).hexdigest() != snapshot['manifest_sha256']:
+                errors.append('storage: manifest digest mismatch')
+                continue
+            manifest = json.loads(data)
+            files = manifest['files']
+            if (len(files) != snapshot['files_verified'] or
+                    sum(row['bytes'] for row in files) != snapshot['bytes_verified']):
+                errors.append('storage: manifest count/size mismatch')
+            for row in files:
+                path = (root / row['path']).resolve()
+                if root not in path.parents or not path.is_file():
+                    errors.append(f"storage: missing/out-of-root asset {row['path']}")
+                    continue
+                payload = path.read_bytes()
+                if (len(payload) != row['bytes'] or
+                        hashlib.sha256(payload).hexdigest() != row['sha256']):
+                    errors.append(f"storage: asset digest/size mismatch {row['path']}")
+                storage_checked += 1
+
     coverage = rows('coverage.json', 'coverage')
     identities = [row.get('level') or row.get('direction') for row in coverage]
     if len(identities) != 20 or len(set(identities)) != 20:
@@ -138,6 +170,7 @@ def main():
     report = dict(json_documents=len(documents), sources=len(sources),
                   acquisition_attempts=len(acquisitions), cache_files_checked=cache_checked,
                   processing_outputs_checked=processing_checked,
+                  storage_files_checked=storage_checked,
                   scope_rows=len(coverage), incomplete_milestones=incomplete, open_gaps=open_gaps,
                   bookkeeping_valid=not errors, errors=errors,
                   limitation='Bookkeeping validation does not establish rights, content correctness or educational validity.')
