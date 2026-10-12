@@ -1,0 +1,54 @@
+{
+  "updated_on": "2026-10-13",
+  "status": "source_method_observations_not_product_evidence",
+  "observations": [
+    {
+      "id": "nist-zero-error-table",
+      "source_id": "nist.binary-fixed-threshold2019",
+      "acquisition_id": "nist-tn2045-fixed-binary-report",
+      "pdf_page": 17,
+      "printed_page": 11,
+      "table": 2,
+      "performance_success_rate": 0.99,
+      "consumer_risk": 0.05,
+      "allowed_failures": 0,
+      "required_trials": 299,
+      "assumption_source_pdf_page": 8,
+      "fixed_sequential_distinction_pdf_page": 19,
+      "scope": "Independent identical Bernoulli trials,not related items or repeated model runs"
+    },
+    {
+      "id": "cambridge-pretesting-public-process",
+      "source_id": "cambridge.pretesting-support2026",
+      "acquisition_id": "cambridge-pretesting-support20261007",
+      "body_updated_date": "2026-10-07",
+      "body_review": "OfficialconnectorsectionThepretestingprocessandSecurity;local403",
+      "general_sample_floor": 100,
+      "scope": "Cambridge pretests withvariedL1/backgrounds,not established sample size for eachLingoTripstratum",
+      "private_material_rule": "Actualpretestsconfidentialandcopyingforbidden;public samplesdistinct",
+      "action": "Noregistration,contact,requestorprivatepretestacquisition"
+    },
+    {
+      "id": "cambridge-reliability-methods",
+      "source_id": "cambridge.current-quality",
+      "acquisition_id": "cambridge-current-quality-accountability",
+      "reported_exam_year": 2025,
+      "methods": {
+        "objective": "Cronbach alpha",
+        "writing": "Gwet AC2 onmultiple-rater subset",
+        "speaking": "Feldt Reliability Test inpairedexamformat"
+      },
+      "scope": "Exam/component methodology,scores andpopulation specific;not threshold forshortlearninggroups or AIgrading",
+      "example_guard": "A2andA2forSchoolsoverallSEMdiffersin2025tables;do notforceallperformance orobjectivecomponentsabove0.8becauseoverviewusestypically",
+      "linguaskill_specific_pdf_scope": "not_acquired;indexed250observationclaimnotadopted"
+    },
+    {
+      "id": "complex-design-dependence",
+      "source_id": "cdc.complex-variance",
+      "acquisition_id": "cdc-complex-survey-variance-tutorial",
+      "scope": "Generalcomplexsurveysampling principle,notproduct DEFF",
+      "design_effect": "Variance undercomplex design dividedbyvarianceunderSRS;variable/groupdependent",
+      "implication": "School/learner/itemfamily andstratum structuremustbe accountedforratherthan countingallanswersasIID"
+    }
+  ]
+}

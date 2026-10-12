@@ -96,18 +96,18 @@
       "id": "G11",
       "priority": "P0",
       "title": "专家复核和学生预试",
-      "next_action": "Independentreview/targetstudent protocoloutlinedwithsource support;prepareblindreviewforms,performance/timinglogs andstatisticsplan before authorisedexternalreview/try-out.",
+      "next_action": "已形成两名非作者先解后看键、分歧裁决复核表与学生探索/标定设计，核读Cambridge公开预试及聚类方法；继续确认独立参与、目标人群、权限、精度与依赖后冻结实际方案。",
       "acceptance": "Independent evidence and known uncertainty",
-      "limitation": "No external recruitment authorized or performed",
+      "limitation": "没有真人复核/招募/试做；参考100人并非本产品充分样本量，实际校准采样量和依赖仍待确定。",
       "status": "open"
     },
     {
       "id": "G12",
       "priority": "P1",
       "title": "模型质量隐藏验收",
-      "next_action": "Build unseen gold/negative groups; measure false acceptance/rejection and adherence to versioned specs.",
+      "next_action": "已分开坏题误放、放行坏题占比、好题误拒、自动覆盖与严重错误；形成候选门槛、冻结/家族隔离规则及NIST零错误算术工具，继续独立复核并建立真正隐藏金标准。",
       "acceptance": "Stable repeatable evaluation without training leakage",
-      "limitation": "Public benchmarks may be known to pretrained models",
+      "limitation": "草案未冻结、未获得独立金标准或实际模型结果；公开样题预训练曝光未知，n299/597是IID固定样本假设演示，不是验收通过。",
       "status": "open"
     },
     {

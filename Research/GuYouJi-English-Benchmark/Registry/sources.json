@@ -2318,6 +2318,120 @@
         "third_party_model_transmission": "unknown",
         "redistribution": "unknown"
       }
+    },
+    {
+      "id": "nist.binomial-confidence",
+      "title": "NIST proportion confidence interval methods",
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "category": "validation_method",
+      "priority": "P0",
+      "provenance": "official_institution",
+      "checked_on": "2026-10-13",
+      "verification_status": "specific_method_review",
+      "notes": "Exact/Wilson methods and distinct one/two sided alpha. Mathematical method doesnotdefine acceptable producterror rate.",
+      "acquisition_ids": [
+        "nist-binomial-confidence-method"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "nist.binary-fixed-threshold2019",
+      "title": "NIST TN2045 fixed and sequential binary acceptance design",
+      "url": "https://www.nist.gov/publications/confirming-performance-threshold-binary-experimental-response",
+      "category": "validation_method",
+      "priority": "P0",
+      "provenance": "official_institution",
+      "checked_on": "2026-10-13",
+      "verification_status": "specific_method_review",
+      "notes": "2019-07-15notice/25page report;IID Bernoulli assumptions and table2n299withzeroerrorsfor99%performance/5%consumer risk. Samplingmodelnotlanguage validity.",
+      "acquisition_ids": [
+        "nist-fixed-binary-threshold2019-notice",
+        "nist-tn2045-fixed-binary-report",
+        "nist-tn2045-table2-render-page17"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.pretesting-support2026",
+      "title": "Cambridge public pretesting process and confidential-material boundary",
+      "url": "https://support.cambridgeenglish.org/hc/en-gb/articles/202843216-What-is-Pretesting",
+      "category": "validation_method",
+      "priority": "P0",
+      "provenance": "official_institution",
+      "checked_on": "2026-10-13",
+      "verification_status": "connector_body_review_local_access_blocked",
+      "notes": "Connectorbody updated2026-10-07read;local403 not acquired. Atleast100studentgeneralprocess,notuniversal sample requirement. Actualpretest materialsconfidential;no registration or request sent.",
+      "acquisition_ids": [
+        "cambridge-pretesting-support20261007"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.current-quality",
+      "title": "Cambridge current reliability and quality methods",
+      "url": "https://www.cambridgeenglish.org/english-research-group/quality-and-accountability/",
+      "category": "validation_method",
+      "priority": "P0",
+      "provenance": "official_institution",
+      "checked_on": "2026-10-13",
+      "verification_status": "specific_method_review",
+      "notes": "Currentpublic2025reliabilitytables;objectiveAlpha,writingGwetAC2,speakingFeldt;not LingoTripthreshold. IndexedLinguaskillPDFlinks404/maintenance,not contentacquiredor250observationruleestablished.",
+      "acquisition_ids": [
+        "cambridge-current-quality-accountability",
+        "cambridge-linguaskill-reading-listening-quality",
+        "cambridge-linguaskill-speaking-writing-quality"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cdc.complex-variance",
+      "title": "CDC complex sample variance tutorial",
+      "url": "https://wwwn.cdc.gov/nchs/nhanes/tutorials/varianceestimation.aspx",
+      "category": "validation_method",
+      "priority": "P0",
+      "provenance": "official_institution",
+      "checked_on": "2026-10-13",
+      "verification_status": "specific_method_review",
+      "notes": "Sampling/weights/cluster/stratification affectvariance,DEFFvarieswithstatistic/group. Generaldesignprinciples only,notlanguage-specific samplesize or a fixed DEFF.",
+      "acquisition_ids": [
+        "cdc-complex-survey-variance-tutorial"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
     }
   ]
 }

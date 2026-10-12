@@ -1,0 +1,200 @@
+{
+  "protocol_version": "draft0.1",
+  "authored_on": "2026-10-13",
+  "status": "candidate_not_frozen_or_executed",
+  "frozen_at": null,
+  "independent_method_reviewer": null,
+  "actual_reviewers": [],
+  "actual_learners": [],
+  "actual_model_runs": [],
+  "production_admission": false,
+  "scope": "All16productlevels and4parallel exam directions,priorityjunior/senior;eachclaimedstratum separatelysupported",
+  "phases": [
+    {
+      "id": "independent_content_review",
+      "purpose": "Establish source accuracy,solvability,answer coverage and construct fit",
+      "roles": [
+        "Twoindependentstage-qualifiedreviewers pergroup,neithertheauthor",
+        "Thirdadjudicatorforunresolveddifference"
+      ],
+      "blind_first_solve": "Question/materialonly beforekeyorAIrationale;recordinitialanswer,evidenceandambiguity",
+      "minimum_reviews_per_group": 2,
+      "critical_blockers": [
+        "Missingrequiredstimulusorunconfirmedsourceidentity",
+        "Unresolvedcorrectkey/multiplelegalsolutionwithoutscoringcoverage",
+        "Undocumentedsourcekeytoslottransformation",
+        "Answerexposurebeforeunassistedsubmission",
+        "Unsupportedscope/permission/learnercalibrationclaim"
+      ],
+      "adjudication": "Retaininitialjudgmentsanddisagreement;revisionnewversionrequiresfreshreview;no majorityvote as gold proof"
+    },
+    {
+      "id": "learner_exploration",
+      "purpose": "Discover misunderstood instructions,interaction burden and construct-irrelevant strategies",
+      "sampling": "Purposivelyincludeweaker/boundary/strongerstudents andrelevantcurriculum/device/backgrounds;notrepresentativeaccuracyestimate",
+      "administration": "Unassistedwholegroupfirst;thinkaloudorinterviews inseparateassistedprotocol,not pooledwithsilenttiming",
+      "quantitative_pass": "Not a calibrationpass;no universal small-Ncompletioncount"
+    },
+    {
+      "id": "learner_calibration",
+      "purpose": "Measure difficulty,discrimination,timing andfairness for adefinedpopulation",
+      "sampling": "Predefinepopulation,school/regionselection,inclusion/exposure rules andstrata;size fromprecision anddesigndependence",
+      "unit": "Learnerfirstattempt oncompletegroup;responses withinlearner/materialfamily/school are clustered",
+      "sample_size": "To befixed afterpilot/dependence evidence andstatistical review;Cambridge100is scoped generalprocessreference,not copied as productrequirement",
+      "missingness": "Allscheduledeligibleattempts retained;dropout,skip,technicalfailure andtimecensoring separatelyreported",
+      "estimates": [
+        "Item/groupcorrectnessand uncertainty",
+        "Distractorchoicesandnegative/weakitem discrimination",
+        "Missing/exit proportions",
+        "Phase-specific median/p90timing withright-censoreddropouts",
+        "Exactandadjacentrevieweragreement plusdisagreement severity",
+        "Group-specificfairness evidence withunmeasured confounding limitations"
+      ]
+    },
+    {
+      "id": "model_hidden_gate",
+      "purpose": "Measure compliance andqualitygate decisions onindependentlyadjudicatedtaskfamilies",
+      "units": "Oneprespecified primarydecision perindependentheldoutfamily perclaim;repeatvariants supplementarywithin-family stability",
+      "splits": [
+        "Development",
+        "Validationforpolicychoice",
+        "Frozenhiddenacceptance"
+      ],
+      "isolation": "Allsourcepassages,answertranslations,crops,reorderedoptions,adaptationsandsiblings remain withinone family split",
+      "pretraining": "Publicexams/datasets exposureunknown;no claim of modelunseen merely becauselocal splitheldout",
+      "tools": "Nohiddenbank retrieval;exact externaltransmissionright andapprovedevaluation environment required",
+      "outputs": [
+        "accept",
+        "reject",
+        "review_required",
+        "technical_failure"
+      ],
+      "truth": [
+        "valid",
+        "invalid",
+        "unresolved"
+      ],
+      "unresolved_truth": "Cannot becomeacceptancegold;countandkeepvisible",
+      "failure_handling": "Predefine retry budgets beforedata;firsteligiblefailure retained,never silently rerun untilaccepted"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "false_accept_invalid",
+      "numerator": "Invalidgroupsaccepted",
+      "denominator": "Alladjudicatedinvalidgroupsattempted",
+      "conditional_probability": "P(accept | invalid)",
+      "review_required": "Separateoutcome,not counted ascorrectrejection forautomaticqualityclaim",
+      "technical_failure": "Separatelyreported;include aserror forworst-case operationalanalysis"
+    },
+    {
+      "id": "invalid_share_accepted",
+      "numerator": "Invalidgroupsaccepted",
+      "denominator": "Allacceptedgroupswithadjudicatedtruth",
+      "conditional_probability": "P(invalid | accept)",
+      "sampling_requirement": "Representativegeneration/approvalstream,notbalancedcontrivednegativebank",
+      "unresolved_truth": "Report separatelyandblock acompletequalityclaim"
+    },
+    {
+      "id": "false_reject_valid",
+      "numerator": "Validgroupsrejected",
+      "denominator": "Alladjudicatedvalidgroupsattempted",
+      "conditional_probability": "P(reject | valid)",
+      "review_and_failures": "Separatefromcorrectautomaticacceptance;reportcoverage"
+    },
+    {
+      "id": "valid_automatic_coverage",
+      "numerator": "Validgroupsacceptedwithoutreview",
+      "denominator": "Alladjudicatedvalidgroupsattempted"
+    },
+    {
+      "id": "critical_false_accept",
+      "numerator": "Criticalinvalidgroupsaccepted",
+      "denominator": "Alladjudicatedcriticalinvalidgroupsattempted",
+      "critical_definition": "Wrongoruncoveredkey,missingrequiredmedia,prioranswerleakage,fabricatedsource/calibration,orunauthorizedproductionadmission"
+    }
+  ],
+  "candidate_thresholds": [
+    {
+      "metric": "critical_false_accept",
+      "observed_error_maximum": 0,
+      "one_sided_error_upper_maximum": 0.01,
+      "confidence": 0.95,
+      "status": "Proposedinternalriskbudget,notexternallyvalidatededucationstandard",
+      "rationale": "Anyobservedcriticalfailure preventsunattendedadmission;finitezeroerrorrate stillneedsuncertaintybound"
+    },
+    {
+      "metric": "false_accept_invalid",
+      "one_sided_error_upper_maximum": 0.05,
+      "confidence": 0.95,
+      "status": "Candidateforindependentreview"
+    },
+    {
+      "metric": "false_reject_valid",
+      "one_sided_error_upper_maximum": 0.1,
+      "confidence": 0.95,
+      "status": "Candidateforindependentreview"
+    },
+    {
+      "metric": "valid_automatic_coverage",
+      "one_sided_coverage_lower_minimum": 0.8,
+      "confidence": 0.95,
+      "status": "Candidateforindependentreview;qualitycannotbe inflatedbyabstainingonallgroups"
+    }
+  ],
+  "multiplicity": {
+    "scope": "Allprespecifiedstratum andmetricclaims counted,notmerely20scope labels",
+    "candidate_method": "Bonferroni per-claim alpha orindependentlyreviewed alternative;recordbeforedata",
+    "after_results_threshold_changes": "Newprotocolversion andfreshhidden families,no retroactivepass"
+  },
+  "fixed_sample_rule": "Completeprespecifiedsamplebeforeconfidenceclaim;no optionalstoppinguntilpass",
+  "rights_release_guard": "100%eligibleasset/sourcepermission/version/media/scoringtraceability required,notstatisticalsampling substitute",
+  "result_fields": {
+    "run_id": null,
+    "protocol_digest": null,
+    "scope_digest": null,
+    "model_version": null,
+    "prompt_version": null,
+    "tools_version": null,
+    "source_family_split_digest": null,
+    "review_evidence": null,
+    "counts": null,
+    "confidence_bounds": null,
+    "decision": "not_run"
+  },
+  "reopen_conditions": [
+    "Material/model/prompt/tool/scoring/progression versionchange",
+    "Sourceorlicense change",
+    "Criticalcounterexample",
+    "Hiddenfamily exposure",
+    "Relevantpopulation orcurriculumchange"
+  ],
+  "method_sources": [
+    {
+      "source_id": "nist.binary-fixed-threshold2019",
+      "acquisition_id": "nist-tn2045-fixed-binary-report",
+      "scope": "IIDbinaryfixed/samplingdesign only"
+    },
+    {
+      "source_id": "nist.binomial-confidence",
+      "acquisition_id": "nist-binomial-confidence-method",
+      "scope": "Confidencebound arithmetic only"
+    },
+    {
+      "source_id": "cambridge.pretesting-support2026",
+      "acquisition_id": "cambridge-pretesting-support20261007",
+      "scope": "Publicprocessconnectorreview;localbody403,not confidentialpretestcontent"
+    },
+    {
+      "source_id": "cdc.complex-variance",
+      "acquisition_id": "cdc-complex-survey-variance-tutorial",
+      "scope": "Generaldesign dependence,nolanguageDEFFassigned"
+    }
+  ],
+  "limitations": [
+    "Thresholdsareproposals andprotocolnotfrozen;notcompleted preregistration",
+    "Noindependentexpert/student/modelresults fabricated",
+    "Noexternalrecruitment/messages,purchases,productiondataorpaidmodelruns performed",
+    "Binomialplanningcannotprove languageconstruct validity orfairness"
+  ]
+}
