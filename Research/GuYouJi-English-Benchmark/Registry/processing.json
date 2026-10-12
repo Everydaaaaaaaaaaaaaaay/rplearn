@@ -8520,6 +8520,114 @@
         "source_word_misread": "animal* row rendered as sorrel",
         "decision": "Columnsseparatedbutmarkerandlexicalerrorremain;notapprovedforcanonicalwordlistintake"
       }
+    },
+    {
+      "id": "curriculum2025-scale-dictionary-pilot",
+      "manifest": "build/english-benchmark-research-20261012/ocr-column-scale-pilot-manifest.json",
+      "pages": 4,
+      "distinct_source_pages": 1,
+      "count_semantics": "FourprocessingvariantsfromtwoROIsononesourceimage",
+      "successful_pages": 4,
+      "review_status": "failed_marker_and_word_quality",
+      "page_records": [
+        {
+          "source_crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col1.png",
+          "source_crop_sha256": "3f3842b25624d79e82763e0be33b3c3d99ca54531aa1cd2e5008f477e5897e9c",
+          "stage": "junior",
+          "image_index": 102,
+          "column": 1,
+          "scale": 2,
+          "resampler": "PIL.LANCZOS",
+          "dictionary_mode": "scaled",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col1-scaled",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "a83f2dc9917a4e4f7f8cfd66f306983b353ad008af503314cc11aba34e2eac00",
+          "tsv_sha256": "8b23f7f7ec5da8ef463c96a2e253598337f30c7094bce9623b7d778f900f6a06",
+          "asterisk_characters": 1,
+          "review_status": "experimental_draft_not_canonical",
+          "output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col1-scaled.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col1-scaled.tsv",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6
+        },
+        {
+          "source_crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col1.png",
+          "source_crop_sha256": "3f3842b25624d79e82763e0be33b3c3d99ca54531aa1cd2e5008f477e5897e9c",
+          "stage": "junior",
+          "image_index": 102,
+          "column": 1,
+          "scale": 2,
+          "resampler": "PIL.LANCZOS",
+          "dictionary_mode": "scaled-no-dawg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col1-scaled-no-dawg",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "a83f2dc9917a4e4f7f8cfd66f306983b353ad008af503314cc11aba34e2eac00",
+          "tsv_sha256": "8b23f7f7ec5da8ef463c96a2e253598337f30c7094bce9623b7d778f900f6a06",
+          "asterisk_characters": 1,
+          "review_status": "experimental_draft_not_canonical",
+          "output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col1-scaled-no-dawg.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col1-scaled-no-dawg.tsv",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6
+        },
+        {
+          "source_crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col2.png",
+          "source_crop_sha256": "e785fab0b3c5b3110fbce926e73a3a53778ce79bc938a6a511ec7f9b803f12a1",
+          "stage": "junior",
+          "image_index": 102,
+          "column": 2,
+          "scale": 2,
+          "resampler": "PIL.LANCZOS",
+          "dictionary_mode": "scaled",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col2-scaled",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "b098d1b0f60d98ef961fdeac9cffea2a5afc242506194cd597b55ac8d24e8451",
+          "tsv_sha256": "74b3e6982f3e8403cb674f2126da7d9b782303175e4e9f83de8e7db9710bc2fe",
+          "asterisk_characters": 4,
+          "review_status": "experimental_draft_not_canonical",
+          "output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col2-scaled.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col2-scaled.tsv",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6
+        },
+        {
+          "source_crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col2.png",
+          "source_crop_sha256": "e785fab0b3c5b3110fbce926e73a3a53778ce79bc938a6a511ec7f9b803f12a1",
+          "stage": "junior",
+          "image_index": 102,
+          "column": 2,
+          "scale": 2,
+          "resampler": "PIL.LANCZOS",
+          "dictionary_mode": "scaled-no-dawg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col2-scaled-no-dawg",
+          "exit_code": 0,
+          "stderr": "",
+          "sha256": "b098d1b0f60d98ef961fdeac9cffea2a5afc242506194cd597b55ac8d24e8451",
+          "tsv_sha256": "74b3e6982f3e8403cb674f2126da7d9b782303175e4e9f83de8e7db9710bc2fe",
+          "asterisk_characters": 4,
+          "review_status": "experimental_draft_not_canonical",
+          "output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col2-scaled-no-dawg.txt",
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-scale-pilot/junior-102-col2-scaled-no-dawg.tsv",
+          "engine": "tesseract5.5.3",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6
+        }
+      ],
+      "decision": "Scalinganddictionaryswitchdidnotrestoremrkcounts;left1/4right4/8starsremain;somewordsbetterandothersworse. Switchmethodoruseindependentlyreviewedtranscription,nobatchcanonicalintake."
     }
   ],
   "observed_errors": [
