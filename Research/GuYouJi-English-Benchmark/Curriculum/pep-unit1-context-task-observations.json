@@ -6,13 +6,16 @@
   "grade": 7,
   "semester": "lower",
   "selected_printed_body_pages": [
+    1,
     2,
     3,
+    4,
+    5,
     6,
     7,
     8
   ],
-  "full_unit_body_complete": false,
+  "full_unit_body_complete": true,
   "exact_ISBN_or_printing_verified": false,
   "script_acquisition_id": "pep-unit1-script-1312001102241-image084",
   "script_printed_page": 74,
@@ -157,6 +160,107 @@
       "evidence_acquisition_ids": [
         "pep-unit1-context-1312001102241-image018"
       ]
+    },
+    {
+      "id": "pep.g7lower.u1.sectionA.2b",
+      "printed_page": 4,
+      "label": "SectionA2b",
+      "kind": "displayed_dialogue_note_table",
+      "response_categories": 5,
+      "word_limit": null,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image013",
+        "pep-unit1-context-1312001102241-image014"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.sectionA.2c",
+      "printed_page": 4,
+      "label": "SectionA2c",
+      "kind": "listen_again_unstressed_words_then_roleplay",
+      "response_slots": null,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image013",
+        "pep-unit1-context-1312001102241-image014",
+        "pep-unit1-script-1312001102241-image084"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.sectionA.2d",
+      "printed_page": 4,
+      "label": "SectionA2d",
+      "kind": "header_question_matching",
+      "response_slots": 5,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image014"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.sectionA.2e",
+      "printed_page": 4,
+      "label": "SectionA2e",
+      "kind": "own_animal_card",
+      "response_categories": 5,
+      "picture_component": true,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image014"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.sectionA.2f",
+      "printed_page": 4,
+      "label": "SectionA2f",
+      "kind": "partner_question_answer_with_prepared_card",
+      "response_slots": null,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image014"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.GF3a",
+      "printed_page": 5,
+      "label": "GrammarFocus3a",
+      "kind": "reason_word_circle_annotation",
+      "response_slots": null,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image015"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.GF3b",
+      "printed_page": 5,
+      "label": "GrammarFocus3b",
+      "kind": "dialogue_word_bank_completion_and_noun_underlining",
+      "response_slots": 6,
+      "bank_entries": 6,
+      "additional_required_action": "Underline animal nouns",
+      "explicit_annotation_schema_support": false,
+      "official_key": "not_acquired",
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image015"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.GF3c",
+      "printed_page": 5,
+      "label": "GrammarFocus3c",
+      "kind": "noun_plural_transformation_then_free_preference_sentences",
+      "plural_transformation_slots": 10,
+      "free_sentence_patterns": 2,
+      "source_key": "not_acquired",
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image015"
+      ]
+    },
+    {
+      "id": "pep.g7lower.u1.GF3d",
+      "printed_page": 5,
+      "label": "GrammarFocus3d",
+      "kind": "partner_animal_guessing_dialogue",
+      "response_slots": null,
+      "evidence_acquisition_ids": [
+        "pep-unit1-context-1312001102241-image015"
+      ]
     }
   ],
   "meaning_observations": [
@@ -225,11 +329,15 @@
       "material_family": "pep.g7lower.u1.penguin-dialogue",
       "task_labels": [
         "SectionA2a",
-        "SectionA2c"
+        "SectionA2b",
+        "SectionA2c",
+        "SectionA2d",
+        "SectionA2e",
+        "SectionA2f"
       ],
-      "observed_2c_task_page": false,
+      "observed_2c_task_page": true,
       "source_script_shared_label": true,
-      "implementation_boundary": "Do not invent2cquestions; source script shared label does not prove delivered audio identity or replay count"
+      "implementation_boundary": "2a provides dialogue,2b rereads to table,2c explicitly listens again and roleplays;2d-2f reuse categories/question/card supports. Exact recording/playcount/time remain unobserved."
     }
   ],
   "scaffold_observations": [
@@ -244,5 +352,53 @@
   "independent_teacher_review": false,
   "target_student_validation": false,
   "commercial_use": "not_cleared",
-  "gold_admission": false
+  "gold_admission": false,
+  "full_unit_body_complete_scope": "All8sourcebodypageimages acquired andvisuallyviewed;not fullmachinetranscription,independentsemanticreview orcompleteaudio/keys",
+  "body_page_acquisition_ids": [
+    "pep-unit1-context-1312001102241-image011",
+    "pep-unit1-context-1312001102241-image012",
+    "pep-unit1-context-1312001102241-image013",
+    "pep-unit1-context-1312001102241-image014",
+    "pep-unit1-context-1312001102241-image015",
+    "pep-unit1-context-1312001102241-image016",
+    "pep-unit1-context-1312001102241-image017",
+    "pep-unit1-context-1312001102241-image018"
+  ],
+  "next_unit_body_boundary": {
+    "acquisition_id": "pep-unit2-boundary-1312001102241-image019",
+    "printed_page": 9,
+    "unit_number": 2
+  },
+  "source_Unit1_goals_summary": [
+    "谈论不同动物",
+    "介绍偏爱的动物",
+    "用形容词描写动物",
+    "探索照顾动物的意义"
+  ],
+  "explicit_grammar_focus": {
+    "acquisition_id": "pep-unit1-context-1312001102241-image015",
+    "printed_page": 5,
+    "teaching_focus": [
+      "wh questions and reason because",
+      "animal-noun identification",
+      "regular and irregular plural forms",
+      "adjectives and intensifiers for descriptions",
+      "dialogue guessing with wh/yes-no questions"
+    ],
+    "selected_irregular_examples": [
+      "mouse",
+      "sheep"
+    ],
+    "grammar_focus_not_exhaustive_language_input": true,
+    "necessary_prior_mastery_edges": "not_established",
+    "source_assessment_weights": "not_published"
+  },
+  "task_representation_gap": {
+    "acquisition_id": "span-response-gap-audit20261013",
+    "contract": "0.2",
+    "source_label": "GrammarFocus3b",
+    "dedicated_annotation_kind": false,
+    "source_task_fully_represented": false,
+    "proposed_span_kind_rejected": true
+  }
 }

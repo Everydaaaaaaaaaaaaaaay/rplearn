@@ -1,0 +1,31 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "Open representation work; source finding does not certify implementation",
+  "gaps": [
+    {
+      "id": "response.annotation-and-completion",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-unit1-context-1312001102241-image015",
+      "source_task": "Unit1GrammarFocus3b",
+      "observed_requirements": [
+        "Six-bank six-gap dialogue completion",
+        "Underline animal nouns in the dialogue"
+      ],
+      "schema_version": "0.2",
+      "audit_acquisition_id": "span-response-gap-audit20261013",
+      "valid_original_baseline": true,
+      "dedicated_span_response_exists": false,
+      "proposed_span_object_rejected": true,
+      "next_design_requirements": [
+        "Stable material/block/revision identity and Unicode-coordinate convention",
+        "Specify whether annotations refer to presented or completed text; filling gaps can shift offsets",
+        "Preserve required completion and annotation actions with separate or coupled scoring evidence",
+        "Retain unknown official keys/target ranges and optional-marker states",
+        "Validate bounds, overlap, duplicated marks, pre-submit key isolation and exposure dependencies with original fixtures"
+      ],
+      "production_admission": false,
+      "source_full_response_import_complete": false
+    }
+  ],
+  "curriculum_coverage_is_not_contract_coverage": true
+}

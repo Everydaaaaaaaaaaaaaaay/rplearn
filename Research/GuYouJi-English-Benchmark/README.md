@@ -12,6 +12,7 @@
 - [人教初中五册教学焦点](Studies/2026-10-13-pep-five-volume-contents-focus.md)：39正式单元的目录语法/词汇专题/交际任务，反复出现的形式与功能分开，九下及完整内容仍缺。
 - [人教选定词表与义项](Studies/2026-10-13-pep-appendix-senses-and-reader-identity.md)：六个单元区域的词表边界、七下Unit1私有试录及CEFR-J参考分析，保留字体含义、页码修正和旧ISBN错配风险。
 - [人教真实语境与任务支架](Studies/2026-10-13-pep-real-context-and-scaffolded-task-boundaries.md)：七下Unit1课文和脚本、共用阅读与十空图、词义/词形/功能及暴露条件，目录重点不等于全部语言输入。
+- [单元页覆盖与复合响应缺口](Studies/2026-10-13-pep-unit1-page-coverage-and-response-gap.md)：Unit1八个正文页、明确语法任务及缺失的圈画响应；格式元数据修正不改变商用/教育验收。
 - [人教高中七册课程焦点](Studies/2026-10-13-pep-senior-course-focus.md)：35正式单元和Welcome的结构/策略/写作任务，长句有教学依据，课程分册不能自动换年级学期。
 - [教研声明与数字模式边界](Studies/2026-10-13-source-claims-and-mode-boundaries.md)：教材使用/支架公开摘要、社区3099说法和Cambridge低龄纸笔/数字模式的实际证据范围。
 - [国际题组与听力配套](Studies/2026-10-13-cambridge-groups-and-media-review.md)：九个题组结构、多解与部分得分、B1当前样卷配套及媒体核验边界。
