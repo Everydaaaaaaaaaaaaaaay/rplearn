@@ -24,7 +24,21 @@
         "Validate bounds, overlap, duplicated marks, pre-submit key isolation and exposure dependencies with original fixtures"
       ],
       "production_admission": false,
-      "source_full_response_import_complete": false
+      "source_full_response_import_complete": false,
+      "draft_extension": {
+        "source_id": "benchmark.annotation-v03",
+        "contract_version": "0.3",
+        "schema_path": "ItemGroups/ItemGroup-v0.3.schema.json",
+        "documentation_path": "ItemGroups/Annotation-v0.3.md",
+        "audit_acquisition_id": "annotation-v03-contract-audit20261013",
+        "original_fixtures": 2,
+        "coordinate_and_privacy_checks": 45,
+        "known_old_response_types_retained": true,
+        "limited_surface": "versioned_literal_stimulus_text_blocks",
+        "cross_slot_or_edited_text": false,
+        "real_source_import_complete": false,
+        "attempt_trace_and_client_validation": false
+      }
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true

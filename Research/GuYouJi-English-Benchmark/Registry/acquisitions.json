@@ -20018,6 +20018,57 @@
         "tool": "Existing acquired_content_metadata policy;no broader acceptedprefix"
       },
       "manifest": "build/english-benchmark-research-20261012/derive-manifest-format-correction20261013.json"
+    },
+    {
+      "id": "annotation-v03-contract-audit20261013",
+      "url": "urn:lingotrip:research:item-group:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/annotation-v03-contract-audit.json",
+      "bytes": 1782,
+      "sha256": "ca178751b413b696f02ba17d2452e6c9d9421caaf2e31d1ba6301ff0acc070cf",
+      "format_validation": "json_parsed",
+      "review_scope": "Original structural-fixture/schema method evidence;not real exam key/education/rights or learnervalidation",
+      "derivation": {
+        "origin": "project_authored_contract_and_original_fixtures",
+        "task_motivation_acquisition_id": "pep-unit1-context-1312001102241-image015",
+        "tool": "validate_item_groups.py and check_annotation_contract.py"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-annotation-v0320261013.json"
+    },
+    {
+      "id": "item-group-v03-all-fixtures-audit20261013",
+      "url": "urn:lingotrip:research:item-group:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/item-group-v03-all-fixtures-audit.json",
+      "bytes": 7341,
+      "sha256": "730b6e561b2cd4e8633500a5ba8fb0ccaff8761341bddfbcfc2f90924d84079e",
+      "format_validation": "json_parsed",
+      "review_scope": "Original structural-fixture/schema method evidence;not real exam key/education/rights or learnervalidation",
+      "derivation": {
+        "origin": "project_authored_contract_and_original_fixtures",
+        "task_motivation_acquisition_id": "pep-unit1-context-1312001102241-image015",
+        "tool": "validate_item_groups.py and check_annotation_contract.py"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-annotation-v0320261013.json"
+    },
+    {
+      "id": "annotation-v03-schema-draft-method20261013",
+      "url": "urn:lingotrip:research:item-group:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/draft_annotation_schema20261013.py",
+      "bytes": 2045,
+      "sha256": "cc7a7b9c6d22b1b80176fec61232c6aa76eb4bfa21aa5e41ce066f99b1bde89d",
+      "format_validation": "python_source_saved",
+      "review_scope": "Original structural-fixture/schema method evidence;not real exam key/education/rights or learnervalidation",
+      "derivation": {
+        "origin": "project_authored_contract_and_original_fixtures",
+        "task_motivation_acquisition_id": "pep-unit1-context-1312001102241-image015",
+        "tool": "validate_item_groups.py and check_annotation_contract.py"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-annotation-v0320261013.json"
     }
   ],
   "updated_on": "2026-10-13"

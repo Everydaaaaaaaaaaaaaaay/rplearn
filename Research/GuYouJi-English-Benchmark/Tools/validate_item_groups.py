@@ -11,11 +11,13 @@ import json
 from pathlib import Path
 
 from jsonschema import Draft202012Validator, FormatChecker
+from annotation_ranges import annotation_targets, annotation_range_errors
 
 BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
 SCHEMA = BASE / 'ItemGroups/ItemGroup.schema.json'
-SCHEMAS = {'0.1': SCHEMA, '0.2': BASE / 'ItemGroups/ItemGroup-v0.2.schema.json'}
+SCHEMAS = {'0.1': SCHEMA, '0.2': BASE / 'ItemGroups/ItemGroup-v0.2.schema.json',
+           '0.3': BASE / 'ItemGroups/ItemGroup-v0.3.schema.json'}
 CONTENT_FORMAT_PREFIXES = (
     'pdf_parsed', 'image_decoded', 'image_rendered', 'png_decoded', 'jpeg_decoded',
     'html_', 'UTF8_HTML_', 'json_parsed', 'json_schema', 'csv_parsed',
@@ -137,7 +139,7 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
         require(score is not None and item['id'] in score['item_ids'],
                 f'{item["id"]}: scoring does not refer back to item')
         response = item['response']
-        if group['contract_version'] == '0.2':
+        if group['contract_version'] in ('0.2', '0.3'):
             scope = item['response_scope']
             require(set(scope['slot_ids']) == set(item['slot_ids']),
                     f'{item["id"]}: response scope does not bind the item slots')
@@ -152,8 +154,16 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
             if scope['kind'] == 'whole_response':
                 require(response['kind'] in ('text', 'writing', 'translation', 'speaking', 'interaction'),
                         f'{item["id"]}: whole-response scope on option response')
+            if scope['kind'] == 'annotation_ranges':
+                require(response['kind'] == 'span_annotation' and not item['slot_ids'],
+                        f'{item["id"]}: annotation scope must bind literal blocks, not slots')
             if scope['kind'] != 'unknown':
                 require(bool(scope['evidence_ids']), f'{item["id"]}: response scope lacks evidence')
+        if response['kind'] == 'span_annotation':
+            require(item['response_scope']['kind'] == 'annotation_ranges',
+                    f'{item["id"]}: annotation response lacks explicit annotation scope')
+            _, annotation_errors = annotation_targets(group, item)
+            errors.extend(f'{item["id"]}: {message}' for message in annotation_errors)
         for name in ('options', 'right_options', 'elements'):
             if name in response:
                 index(response[name], item['id'] + '/' + name)
@@ -172,7 +182,7 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
         require(all(items[i]['scoring_id'] == score['id'] for i in bound),
                 f'{score["id"]}: mismatched item/scoring association')
         kind = score['kind']
-        if group['contract_version'] == '0.2' and kind in ('text', 'coupled_text', 'segmented'):
+        if group['contract_version'] in ('0.2', '0.3') and kind in ('text', 'coupled_text', 'segmented'):
             policy = score['answer_policy']
             if policy['coverage'] != 'unknown':
                 require(bool(policy['evidence_ids']), f'{score["id"]}: coverage lacks evidence')
@@ -241,6 +251,24 @@ def semantic_errors(group, sources, acquisitions, check_assets=False):
             total = score['possible_source_marks']['value']
             if total is not None and all(m is not None for m in marks):
                 require(abs(sum(marks) - total) < 1e-9, f'{score["id"]}: segment marks disagree with total')
+        elif kind == 'span_sets':
+            require(len(bound) == 1 and items[bound[0]]['response']['kind'] == 'span_annotation',
+                    f'{score["id"]}: annotation scoring must bind one annotation item')
+            if len(bound) == 1 and items[bound[0]]['response']['kind'] == 'span_annotation':
+                policy = score['answer_policy']
+                require(policy['coverage'] != 'unknown' and bool(policy['evidence_ids']),
+                        f'{score["id"]}: unknown annotation key must remain unknown scoring')
+                if policy['adjudication'] == 'exact_documented_forms':
+                    require(policy['coverage'] == 'exhaustive_documented',
+                            f'{score["id"]}: reference-only ranges cannot reject all alternatives')
+                seen_sets = set()
+                for candidate in score['accepted_sets']:
+                    errors.extend(f'{score["id"]}: {message}' for message in
+                                  annotation_range_errors(group, items[bound[0]], candidate))
+                    identity = tuple(sorted((r['material_id'], r['block_id'], r['start'], r['end'])
+                                            for r in candidate))
+                    require(identity not in seen_sets, f'{score["id"]}: duplicate unordered annotation answer set')
+                    seen_sets.add(identity)
         elif kind == 'rubric':
             require(all(items[i]['response']['kind'] in ('writing', 'translation', 'speaking', 'interaction')
                         for i in bound), f'{score["id"]}: rubric applied to nonproductive response')
@@ -310,10 +338,14 @@ def pre_submit_projection(group):
         'administration': {k: group['administration'][k] for k in
                            ('mode', 'submission_boundary', 'return_to_items', 'feedback_release')},
     })
-    if group['contract_version'] == '0.2':
+    if group['contract_version'] in ('0.2', '0.3'):
         for projected, item in zip(result['items'], group['items']):
             projected['response_scope'] = {k: copy.deepcopy(item['response_scope'][k])
                                            for k in ('kind', 'slot_ids')}
+            if item['response']['kind'] == 'span_annotation':
+                projected['response'].update({k: copy.deepcopy(item['response'][k]) for k in
+                                             ('coordinate_unit', 'normalization', 'surface', 'render_as',
+                                              'target_blocks', 'min_ranges', 'max_ranges', 'overlap_policy')})
     return result
 
 

@@ -24,6 +24,7 @@
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
 - `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。
 - [完整题组合同草案](ItemGroups/Contract.md)：共享材料、可变题数、评分、实施/曝光、角色要求与版本迁移的必需字段和反例。
+- [文本块标注合同0.3](ItemGroups/Annotation-v0.3.md)：填空与圈画作答的坐标、版本、未知键和私有范围隔离，两份原创结构样例；真实原题/客户端/尝试trace仍未验收。
 - [IELTS评分样例与联动答案格](Studies/2026-10-13-ielts-scored-performances-and-coupled-slots.md)：12份完整prompt手写作答、4份缺prompt打字作答、任务band与未知维度、图表及口语脚本范围。
 - [已评分作答合同0.1](Performances/Contract.md)：独立保存任务分与维度分来源，三份原创结构样例、39反例及16份真实私有作答引用核验，尚非金标准或商用准入。
 - [低龄纸笔配套与功能边界](Studies/2026-10-13-yle-paper-components-and-function-boundaries.md)：334页原生文本、28选定目视页及14条音频容器核验，保留累积语法、题数/分值、图像依赖和非排他产出示例。

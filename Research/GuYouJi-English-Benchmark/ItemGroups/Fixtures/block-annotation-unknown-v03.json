@@ -1,0 +1,321 @@
+{
+  "contract_version": "0.3",
+  "admission": "research_only",
+  "id": "fixture.block-annotation-unknown",
+  "group_version": "v1",
+  "scoring_version": "v1",
+  "family_id": "fixture.block-annotation-unknown.family",
+  "kind": "mixed",
+  "scope_claims": [
+    {
+      "status": "unknown",
+      "value": null,
+      "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+      "evidence_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixture.authorship",
+      "origin": {
+        "kind": "original_fixture",
+        "author": "Codex original structural demonstration",
+        "purpose": "contract_demonstration",
+        "authored_on": "2026-10-13"
+      },
+      "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+    }
+  ],
+  "targets": [
+    {
+      "id": "t1",
+      "construct": "Original structural demonstration of literal-block coordinate integrity; not a language proficiency anchor",
+      "skill": "reading",
+      "prerequisites": [],
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "m1",
+      "version": "v1",
+      "language": "en",
+      "role": "stimulus",
+      "blocks": [
+        {
+          "id": "left",
+          "kind": "text",
+          "text": "🦊 Foxes watch "
+        },
+        {
+          "id": "gb1",
+          "kind": "slot",
+          "slot_id": "gap1"
+        },
+        {
+          "id": "right",
+          "kind": "text",
+          "text": " 🧭 sheep near Café."
+        }
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "rights": {
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "publication": "unknown",
+        "adaptation": "unknown",
+        "training": "unknown",
+        "provider_transmission": "unknown",
+        "redistribution": "unknown",
+        "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+      }
+    }
+  ],
+  "assets": [],
+  "items": [
+    {
+      "id": "i1",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Enter a suitable short connector in the blank.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [
+        "gap1"
+      ],
+      "response": {
+        "kind": "text",
+        "max_words": null,
+        "word_count_rule": "No word limit claimed beyond this structural demonstration"
+      },
+      "scoring_id": "s1",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "response_scope": {
+        "kind": "slot_only",
+        "slot_ids": [
+          "gap1"
+        ],
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "reason": "The suffix is already printed and is not entered again"
+      }
+    },
+    {
+      "id": "i2",
+      "version": "v1",
+      "source_number": null,
+      "instruction": "Underline animal names in the literal text; the blank is a separate action.",
+      "material_ids": [
+        "m1"
+      ],
+      "slot_ids": [],
+      "response": {
+        "kind": "span_annotation",
+        "coordinate_unit": "unicode_codepoint",
+        "normalization": "none",
+        "surface": "versioned_literal_text_blocks",
+        "render_as": "underline",
+        "target_blocks": [
+          {
+            "material_id": "m1",
+            "material_version": "v1",
+            "block_id": "left",
+            "text_sha256": "5951a12da602a4cfba6c2f9aea83a5ed37727b3238a2fba59f865f22c5f78592"
+          },
+          {
+            "material_id": "m1",
+            "material_version": "v1",
+            "block_id": "right",
+            "text_sha256": "9bfedb5fab2483c186753632fbeddb8d8504be3d74ef5b0c44dd89fdfc1d1b79"
+          }
+        ],
+        "min_ranges": 0,
+        "max_ranges": null,
+        "overlap_policy": "reject"
+      },
+      "scoring_id": "s2",
+      "target_ids": [
+        "t1"
+      ],
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "response_scope": {
+        "kind": "annotation_ranges",
+        "slot_ids": [],
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "reason": "Ranges anchor unchanged literal blocks; never the concatenated filled surface"
+      }
+    }
+  ],
+  "private_scoring": [
+    {
+      "id": "s1",
+      "kind": "text",
+      "item_ids": [
+        "i1"
+      ],
+      "possible_source_marks": {
+        "status": "provisional",
+        "value": 1,
+        "evidence_ids": [
+          "fixture.authorship"
+        ]
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "normalization": {
+        "case_sensitive": true,
+        "trim_edges": true,
+        "collapse_whitespace": false,
+        "unicode": "NFC",
+        "punctuation": "exact"
+      },
+      "accepted_forms": [
+        "the"
+      ],
+      "documented_spelling_variants": [],
+      "conditions": "Original reference connector; grammar quality and alternate responses need independent review",
+      "answer_policy": {
+        "coverage": "reference_examples_only",
+        "adjudication": "manual_review",
+        "evidence_ids": [
+          "fixture.authorship"
+        ],
+        "reason": "Authored reference example, not all acceptable words"
+      },
+      "source_key_mappings": [
+        {
+          "item_id": "i1",
+          "source_key_form": "the",
+          "response_form": "the",
+          "operation": "identity",
+          "source_span": null,
+          "evidence_ids": [
+            "fixture.authorship"
+          ],
+          "reason": "Original reference example, not an exclusive key"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "item_ids": [
+        "i2"
+      ],
+      "possible_source_marks": {
+        "status": "unknown",
+        "value": null,
+        "evidence_ids": [],
+        "reason": "No score assigned to this original coordinate demonstration"
+      },
+      "evidence_ids": [
+        "fixture.authorship"
+      ],
+      "kind": "unknown",
+      "reason": "Annotation format known; no source key or score invented"
+    }
+  ],
+  "administration": {
+    "mode": "diagnostic",
+    "submission_boundary": "whole_group",
+    "return_to_items": true,
+    "feedback_release": "after_group_submit",
+    "later_related_items_count_as_unassisted": false,
+    "supports": [],
+    "media_segments": [],
+    "replay_limit": null,
+    "pre_read_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "review_seconds": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No timing observed",
+      "evidence_ids": []
+    },
+    "timing": {
+      "observed_effective_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No learners have taken this fixture",
+        "evidence_ids": []
+      },
+      "estimated_seconds": {
+        "status": "unknown",
+        "value": null,
+        "reason": "No timing estimate registered",
+        "evidence_ids": []
+      },
+      "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+      "excluded_intervals": [
+        "background",
+        "idle",
+        "pause",
+        "network_wait",
+        "grading_wait"
+      ]
+    },
+    "avatar": {
+      "status": "not_applicable",
+      "value": null,
+      "reason": "No character is needed for a structural fixture",
+      "evidence_ids": []
+    }
+  },
+  "review": {
+    "content": {
+      "status": "provisional",
+      "value": "Authored to exercise structure only",
+      "reason": "No quality review or intended population",
+      "evidence_ids": [
+        "fixture.authorship"
+      ]
+    },
+    "independent": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No independent reviewer",
+      "evidence_ids": []
+    },
+    "learner_calibration": {
+      "status": "unknown",
+      "value": null,
+      "reason": "No real learner observations",
+      "evidence_ids": []
+    }
+  },
+  "rights": {
+    "evidence_ids": [
+      "fixture.authorship"
+    ],
+    "publication": "unknown",
+    "adaptation": "unknown",
+    "training": "unknown",
+    "provider_transmission": "unknown",
+    "redistribution": "unknown",
+    "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+  },
+  "limitations": [
+    "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing",
+    "Original synthetic example illustrating the full-question-key/partial-response risk; not a transcription or scoring gold."
+  ]
+}
