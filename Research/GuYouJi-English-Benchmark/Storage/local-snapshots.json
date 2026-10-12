@@ -2190,6 +2190,253 @@
         "off_host_or_disk_loss_test": false,
         "education_or_rights_admission": false
       }
+    },
+    {
+      "snapshot_id": "2026-10-12T234050.145024+0000-0006578c",
+      "created_at_utc": "2026-10-12T23:40:50.145024+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T234050.145024+0000-0006578c",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T234050.145024+0000-0006578c/snapshot-manifest.json",
+      "manifest_sha256": "1ea5a7a504622ff0dec552c73b7c9fd4e3e7f855b9c847870e395f04b2b1d15e",
+      "files_verified": 3192,
+      "bytes_verified": 1209638131,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write_required": 3192
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write_required",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Captures through43350fc8 including typed-response0.2 and pinned localASR assets;strictCOW no byte fallback. Later failure/fix audits andregistration not retroactivelyincluded.",
+      "full_restore_and_runtime_replay_evidence": {
+        "snapshot_id": "2026-10-12T234050.145024+0000-0006578c",
+        "independent_full_files": 3192,
+        "all_copies_required_COW": true,
+        "metadata_or_source_rewrites": 0,
+        "current_python_jsonschema_dependency": true,
+        "dependency_restored_from_snapshot": false,
+        "offhost_or_diskloss_test": false,
+        "production_admission": false,
+        "restored_tool_checks": [
+          {
+            "tool": "validate_registry.py",
+            "exit_code": 0,
+            "report": {
+              "json_documents": 91,
+              "sources": 114,
+              "acquisition_attempts": 1258,
+              "cache_files_checked": 1191,
+              "processing_outputs_checked": 1660,
+              "storage_files_checked": 0,
+              "scope_rows": 20,
+              "incomplete_milestones": [
+                "M1",
+                "M2",
+                "M3",
+                "M4",
+                "M5",
+                "M6",
+                "M7"
+              ],
+              "open_gaps": [
+                "G01",
+                "G02",
+                "G03",
+                "G04",
+                "G05",
+                "G06",
+                "G07",
+                "G08",
+                "G09",
+                "G10",
+                "G11",
+                "G12",
+                "G13",
+                "G14",
+                "G15",
+                "G16",
+                "G17"
+              ],
+              "priority_coverage_cells": 36,
+              "bookkeeping_valid": true,
+              "errors": [],
+              "limitation": "Bookkeeping validation does not establish rights, content correctness or educational validity."
+            },
+            "stderr": ""
+          },
+          {
+            "tool": "check_attempt_response_contract.py",
+            "exit_code": 0,
+            "report": {
+              "positive_fixtures": 4,
+              "negative_rejections": 32,
+              "negative_cases": [
+                "missing_answer_record",
+                "null_answer_record",
+                "nonanswer_carries_record",
+                "stale_item_version",
+                "first_response_revision_not_zero",
+                "first_response_replaces_event",
+                "revision_gap",
+                "revision_repeats_ordinal",
+                "revision_links_other_item",
+                "revision_links_old_not_latest",
+                "skip_carries_payload",
+                "answered_lacks_payload",
+                "wrong_response_kind",
+                "unknown_slot",
+                "duplicate_slot",
+                "missing_slot",
+                "range_on_gap_block",
+                "range_wrong_text_echo",
+                "range_utf16_offset",
+                "range_outside_text",
+                "range_reversed",
+                "duplicate_range",
+                "range_extra_private_field",
+                "unknown_choice",
+                "multiple_on_single_choice",
+                "duplicate_choice",
+                "empty_answered_choice",
+                "wrong_writing_kind",
+                "unrequested_personal_content",
+                "event_without_answer_status",
+                "postsubmit_revision",
+                "unsupported_speaking_as_text"
+              ],
+              "raw_text_preserved": true,
+              "wrong_answers_recordable": true,
+              "revision_skip_resume_identity_checked": true,
+              "validation_report_omits_raw_responses": true,
+              "response_history_authentication": false,
+              "production_admission": false,
+              "limitation": "Synthetic record consistency only; no real learners, scoring, server privacy or immutable response ledger"
+            },
+            "stderr": ""
+          },
+          {
+            "tool": "check_attempt_trace_contract.py",
+            "exit_code": 0,
+            "report": {
+              "positive_fixtures": 3,
+              "negative_rejections": 33,
+              "negative_cases": [
+                "frozen_question_changed",
+                "frozen_reward_policy_changed",
+                "event_other_snapshot",
+                "duplicate_event",
+                "duplicate_sequence",
+                "backwards_sequence",
+                "unknown_item",
+                "unknown_epoch",
+                "clock_reset_inside_same_epoch",
+                "unknown_clock_with_time",
+                "known_epoch_without_time",
+                "answer_status_absent",
+                "before_group_feedback",
+                "submit_missing_answer",
+                "repeat_submit",
+                "post_submit_answer",
+                "close_without_submit",
+                "event_after_terminal",
+                "repeat_start",
+                "unknown_support",
+                "response_on_group_event",
+                "group_event_wrong_item_scope",
+                "duplicate_timing_interval",
+                "interval_outside_event_bounds",
+                "reversed_interval",
+                "timing_category_overlap",
+                "playback_without_acquired_media",
+                "nonfinite_event_time",
+                "nonfinite_interval",
+                "extra_raw_chat_field",
+                "externally_expected_snapshot_mismatch",
+                "coherent_replacement_vs_external_anchor",
+                "postsubmit_support_released_early"
+              ],
+              "overlap_counted_once": true,
+              "epochs_kept_separate": true,
+              "retries_and_prior_exposure_not_unassisted": true,
+              "attention_estimate": null,
+              "coherent_rewrite_without_external_anchor": "Self-consistent but not authenticated",
+              "production_admission": false,
+              "limitation": "Synthetic consistency cases only; no real server, learner, grading or reward evidence"
+            },
+            "stderr": ""
+          }
+        ],
+        "preserved_snapshot_mode_requires_execute_recovery": true,
+        "restored_file_mode_changes": 1,
+        "restored_asr_replay": {
+          "track": 6,
+          "exit_code": 0,
+          "text_sha256": "c5e34ce622773f5592db5e6f2229fa70f880a293b9245d75fc19c58933c63610",
+          "text_byte_identical": true,
+          "full_segment_token_output_identical": true,
+          "JSON_model_path_differs_by_restore_root": true,
+          "inputs_and_binary_from_restore": true,
+          "model_not_from_live_checkout": true,
+          "semantic_accuracy_established": false
+        }
+      },
+      "initial_dependency_failure_retained": true
     }
   ]
 }

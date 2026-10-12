@@ -22632,6 +22632,96 @@
         "origin": "project_authored_runtime_checks",
         "tool": "pinned Python stdlib"
       }
+    },
+    {
+      "id": "snapshot11-report20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot-report-20261013-eleven.json",
+      "bytes": 3088,
+      "sha256": "cef60a306822e9b5c621762518f47356b42fc1c64e3e88a9ff50790e67118841",
+      "format_validation": "json_parsed",
+      "review_scope": "Snapshot11 fullCOW restore,preserved dependencyfailure,currentdeps explicitly used,one savedCLI permission recovery,ASRreplay;not offhost/gold",
+      "derivation": {
+        "origin": "project_authored_independent_restore_checks",
+        "tool": "clonefile/savedtools/currentPython-jsonschema/macOSframeworks"
+      }
+    },
+    {
+      "id": "snapshot11-strict-cow-method20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot11_strict_cow20261013.py",
+      "bytes": 898,
+      "sha256": "f17d0421516edfb0ad63005eb7ccc2bd17d3c57f9b68d55036a2c855d6446149",
+      "format_validation": "python_source_saved",
+      "review_scope": "Snapshot11 fullCOW restore,preserved dependencyfailure,currentdeps explicitly used,one savedCLI permission recovery,ASRreplay;not offhost/gold",
+      "derivation": {
+        "origin": "project_authored_independent_restore_checks",
+        "tool": "clonefile/savedtools/currentPython-jsonschema/macOSframeworks"
+      }
+    },
+    {
+      "id": "snapshot11-missing-dependency-failure20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot11-missing-dependency-failure-audit20261013.json",
+      "bytes": 855,
+      "sha256": "b6802af01f7d549de72a555da4901de0991cc9117da7ac0cd34a86e8daa7f393",
+      "format_validation": "json_parsed",
+      "review_scope": "Snapshot11 fullCOW restore,preserved dependencyfailure,currentdeps explicitly used,one savedCLI permission recovery,ASRreplay;not offhost/gold",
+      "derivation": {
+        "origin": "project_authored_independent_restore_checks",
+        "tool": "clonefile/savedtools/currentPython-jsonschema/macOSframeworks"
+      }
+    },
+    {
+      "id": "snapshot11-failed-method20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot11_missing_dependency20261013.py",
+      "bytes": 3768,
+      "sha256": "2e0297ef70e515a3ba1ef88e8415800f876eefa89ef5e58471de64d0e4af564d",
+      "format_validation": "python_source_saved",
+      "review_scope": "Snapshot11 fullCOW restore,preserved dependencyfailure,currentdeps explicitly used,one savedCLI permission recovery,ASRreplay;not offhost/gold",
+      "derivation": {
+        "origin": "project_authored_independent_restore_checks",
+        "tool": "clonefile/savedtools/currentPython-jsonschema/macOSframeworks"
+      }
+    },
+    {
+      "id": "snapshot11-full-cow-runtime-restore20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot11-full-cow-and-asr-restore-audit20261013.json",
+      "bytes": 5511,
+      "sha256": "b8f518801ed7ce23335190d4bd49c30054ee56ee3f289cec842bb9694dceb3fb",
+      "format_validation": "json_parsed",
+      "review_scope": "Snapshot11 fullCOW restore,preserved dependencyfailure,currentdeps explicitly used,one savedCLI permission recovery,ASRreplay;not offhost/gold",
+      "derivation": {
+        "origin": "project_authored_independent_restore_checks",
+        "tool": "clonefile/savedtools/currentPython-jsonschema/macOSframeworks"
+      }
+    },
+    {
+      "id": "snapshot11-restore-method20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot11_cow_asr20261013.py",
+      "bytes": 3805,
+      "sha256": "3dd2cdd83cc519f0290f1890b20af0a609f365096bddfbcb137ea2f38dd77ff3",
+      "format_validation": "python_source_saved",
+      "review_scope": "Snapshot11 fullCOW restore,preserved dependencyfailure,currentdeps explicitly used,one savedCLI permission recovery,ASRreplay;not offhost/gold",
+      "derivation": {
+        "origin": "project_authored_independent_restore_checks",
+        "tool": "clonefile/savedtools/currentPython-jsonschema/macOSframeworks"
+      }
     }
   ],
   "updated_on": "2026-10-13"

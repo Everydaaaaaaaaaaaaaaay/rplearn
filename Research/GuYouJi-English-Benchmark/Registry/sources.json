@@ -3521,7 +3521,7 @@
       "provenance": "project_authored_registry_relocation_and_restore_tests",
       "checked_on": "2026-10-13",
       "verification_status": "full_independent_copy_with_explicit_metadata_relocation_replayed",
-      "notes": "Snapshot9legacy reference initiallyfaileddue tolivecheckoutabsolute path;full3078file independentcopy/hash checks plus540recoveredregistryrelocations replay45annotation/61legacychecks,10fixturesand1095cache/1660outputs. Frozenoriginalunchanged;runtime dependencies current;offhost nottested.",
+      "notes": "Snapshot9legacy reference initiallyfaileddue tolivecheckoutabsolute path;full3078file independentcopy/hash checks plus540recoveredregistryrelocations replay45annotation/61legacychecks,10fixturesand1095cache/1660outputs. Frozenoriginalunchanged;runtime dependencies current;offhost nottested. Snapshot11 full3192file strictCOW restore passes with current externaljsonschema;initial missingdependencyfailure retained. Savedbinary mode600requires explicit restored700;restoredmodel/WAV/CLI repeattrack6byte-identical text/token output. No offhostacceptance.",
       "acquisition_ids": [
         "snapshot9-reference-failure-audit20261013",
         "registry-relative-path-correction-audit20261013",
@@ -3531,7 +3531,13 @@
         "snapshot9-relocation-method20261013",
         "registry-cache-reference-policy-method20261013",
         "snapshot10-no-mapping-full-restore-audit20261013",
-        "snapshot10-no-mapping-restore-method20261013"
+        "snapshot10-no-mapping-restore-method20261013",
+        "snapshot11-report20261013",
+        "snapshot11-strict-cow-method20261013",
+        "snapshot11-missing-dependency-failure20261013",
+        "snapshot11-failed-method20261013",
+        "snapshot11-full-cow-runtime-restore20261013",
+        "snapshot11-restore-method20261013"
       ],
       "rights": {
         "commercial_publication": "method_or_project_terms_no_thirdparty_asset_rights_granted",
