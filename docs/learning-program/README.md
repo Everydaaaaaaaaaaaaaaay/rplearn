@@ -1,5 +1,7 @@
 # 英语学习系统扩展工程
 
+2026-10-12：命题质量研究转向完整大题关卡、课程与考试样本校准，以及商用资料和训练资料的用途隔离。用户确认覆盖现有水平和备考方向，先深做初高中，人教版为主干，外研与译林对照；资料、数据结构和验收清单见[GuYouJi English Benchmark](../../Research/GuYouJi-English-Benchmark/README.md)。研究规格尚未替换现有产品实现。
+
 状态：**2026-09-29 新方案实施中，架构与原生挑战流程已落地，完整课程仍在建设：以[角色单元挑战与全局英语旅程实施总纲](unit-learning-plan-2026-09-26.md)为当前产品方向。** 配套：[架构与数据合同](unit-learning-architecture-2026-09-26.md)、[教材与内容规范](unit-learning-content-2026-09-26.md)、[界面与交互方案](unit-learning-experience-2026-09-26.md)。
 
 当前证据以[工程进度账本](status.md)为准；最新内容扩展见[全年级首轮覆盖](all-grades-content-2026-09-29.md)。已有工程流程不等于完整课程或教学效果已经验收。

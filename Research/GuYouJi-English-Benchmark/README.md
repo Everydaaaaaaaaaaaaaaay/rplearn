@@ -1,0 +1,65 @@
+# GuYouJi English Benchmark
+
+咕游记英语命题基准库，用课程、真实考试、国际能力描述、语言分析和作答证据共同约束题组质量。覆盖现有英语水平与备考方向，先深做初高中；人教版为教材主干，外研版、译林版作对照；优先支持商用出题，研究与训练材料单独登记。
+
+状态：2026-10-12 建立清单与首轮来源审计。此目录中的任务和计划不表示材料已收齐、年级难度已校准或商用授权已取得。实际取得范围见 Registry，待办见 Checklist 与 Studies。
+
+- [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
+- [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
+- `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。
+- `Curriculum/observed-requirements.json`：逐页核读的课程词汇要求及适用条件，未自动换算为产品年级。
+- `Registry/sources.json`：候选和已核查入口；用途许可分开记录。
+- `Registry/acquisitions.json`：本地取得的文件、大小、摘要、文件格式和核读范围。
+- `Registry/legacy-sources.json`：现有 learning catalog 的27条来源记录及其原始限制；不升级为整册完成。
+- `Registry/coverage.json`：16个水平和4个并列备考方向的基准覆盖状态。
+- `Registry/gaps.json`：已发现的具体缺口、下一行动和验收条件。
+- `Registry/processing.json`：OCR和文本抽取的工具版本、文件摘要、配置、错误与人工核读范围。
+
+## 工作边界
+
+1. 学校年级、考试方向、CEFR、CSE、文本可读性和用户能力分别记录；它们之间的映射需要证据，不按一个数字直接换算。
+2. 以完整文章及相关问题、完整完形、完整听力段及问题等题组为基准单元。保留原卷分区、顺序、分值、说明、答案和材料关联。
+3. Oxford 3000/5000、EVP、EGP、Lexile、RACE、CLOTH 均是必查来源；必查不等于可直接商用。出版、改编、训练、外部模型传输、检索和再分发分别核权。
+4. 参考材料缺失、OCR错误、多解、版本不明和低质量题均保留问题记录；不自动补写原文、答案、页码或授权结论。
+5. 无原始作答数据时，只能建立内容和专家判断的初步标准。Agent作答、作者自审或结构检查不能证明目标学生的难度、区分度或用时。
+6. 原始教材、试卷、词表及受限数据默认留在本地研究缓存；Git保存来源记录、自写分析、结构规范和允许发布的资产。产品发布与研究库分开。
+
+## 数据集结构
+
+下面是目标结构。未有材料的分类仅为覆盖任务，不创建空目录假装已经交付。
+
+```text
+GuYouJi-English-Benchmark/
+├── Registry/                 # 来源、版本、获取、权限、修订、缺口
+├── Curriculum/               # 义教、高中课标及实际选用版本
+├── Primary/Grade1..Grade6/    # textbook / exam / samples / alignment
+├── Junior/Grade7..Grade9/     # textbook / exam / samples / alignment
+├── Senior/Grade10..Grade12/   # textbook / exam / samples / alignment
+├── Foundation/               # 启蒙与Pre-A1，不伪装为全国统一幼儿英语课标
+├── Adult/                    # CET4 / CET6 / Advanced
+├── ExamDirections/           # EntranceEnglish1 / EntranceEnglish2
+│                             # TOEFL_iBT_2026 / IELTS_Academic
+├── CEFR/                     # 描述语、能力范围、对齐方法及证据
+├── CSE/                      # 中国英语能力等级量表及对齐研究
+├── Cambridge/                # 样题、教师手册、答案、评分样例
+├── Datasets/                 # RACE / CLOTH / 待核权补充集
+├── Vocabulary/               # 国内课程词汇 / Oxford / EVP / 词频和义项
+├── Grammar/                  # 教材语法范围 / EGP / 句法功能
+├── Metrics/                  # 算法版本、清洗规则、输出及验证集
+├── ItemGroups/               # 完整题组及逐题证据关联
+├── Blueprints/               # 年级、题型、材料、认知要求、时间、评分
+├── GoldSet/                  # 独立复核的锚定题组和带理由的质量反例
+├── Studies/                  # 标准制定、样本试做、误差与修订
+├── Splits/                   # train / development / heldout / contamination
+└── Rights/                   # 条款、许可、来源权属、允许用途与到期
+```
+
+同一材料只有一个来源身份，跨年级、CEFR、题型等通过索引引用，不在多个目录复制后当成新样本。原文和答案、可公开题面与私有审核信息独立存储。
+
+## 可持续修正流程
+
+每一批执行：发现缺口 → 查找原始来源 → 取得与验真 → 核读与标注 → 跨来源比较 → 提出标准 → 独立求解和复核 → 试做与统计 → 修改标准并回归 → 更新覆盖与缺口。
+
+每项标准记录版本、适用范围、来源位置、样本数量、观测分布、专家意见和未证实条件。反例触发修订；来源改版、试卷改革、错误选项、OCR修复和训练泄漏也触发重审。模型不得自行把待验证规则升级为正式准入标准。已开始挑战和历史成绩的版本不被研究修订覆盖。
+
+下一批优先补完整的初高中教材版本矩阵、学期试卷、全国卷完整题组和A2/B1/B2参考样题，并建立题组级数据合同。后续批次持续按覆盖缺口排序，而不是按搜索结果数量排序。

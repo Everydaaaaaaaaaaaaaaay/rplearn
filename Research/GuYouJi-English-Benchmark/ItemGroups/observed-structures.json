@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "observed_on": "2026-10-12",
+  "status": "source_structure_observations_only",
+  "note": "原题结构事实，不是产品题库、已核权金标准或已校准难度；原文与答案不存入本文件。原卷分值也不等于产品奖励。",
+  "groups": [
+    {
+      "id": "neea.english2024.cloze",
+      "source_id": "neea.english2024",
+      "acquisition_id": "neea-2024-english-page09",
+      "identity": "教育考试院2024高考适应性英语卷",
+      "kind": "passage_multiple_choice_cloze",
+      "source_page": 9,
+      "shared_material": true,
+      "source_question_numbers": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55],
+      "source_marks_per_item": 1,
+      "source_max_marks": 15,
+      "structure_review": "原图指令、完整材料、15空与配套选项目视核对；OCR另保存为未经全文校正的草稿。",
+      "answer_status": "not_acquired",
+      "learner_calibration": "not_available",
+      "commercial_permission": "unknown"
+    },
+    {
+      "id": "neea.english2024.grammar",
+      "source_id": "neea.english2024",
+      "acquisition_id": "neea-2024-english-page10",
+      "identity": "教育考试院2024高考适应性英语卷",
+      "kind": "passage_grammar_completion",
+      "source_page": 10,
+      "shared_material": true,
+      "source_question_numbers": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65],
+      "source_marks_per_item": 1.5,
+      "source_max_marks": 15,
+      "structure_review": "原图10空、给词/不给词形式及全文材料目视核对；答案与独立评分说明尚缺。",
+      "answer_status": "not_acquired",
+      "learner_calibration": "not_available",
+      "commercial_permission": "unknown"
+    },
+    {
+      "id": "cambridge.b2.part5.sample",
+      "source_id": "cambridge.b2",
+      "acquisition_id": "cambridge-b2-handbook",
+      "identity": "B2 First普通版教师手册纸笔样题Part5",
+      "kind": "shared_passage_multiple_choice_reading",
+      "pdf_page": 23,
+      "printed_page": 21,
+      "shared_material": true,
+      "source_question_numbers": [31, 32, 33, 34, 35, 36],
+      "structure_review": "完整文章与连续6题目视核读；题目涉及感受、原因、表达含义和指代。",
+      "source_claimed_level": {"framework": "CEFR", "label": "B2", "authority": "Cambridge English"},
+      "chinese_grade_alignment": "not_established",
+      "answer_status": "handbook_acquired_answer_section_not_reviewed",
+      "learner_calibration": "not_available_for_product_population",
+      "commercial_permission": "unknown"
+    }
+  ]
+}

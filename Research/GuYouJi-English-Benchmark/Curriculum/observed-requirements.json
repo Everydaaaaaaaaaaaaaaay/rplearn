@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-12",
+  "status": "partial_source_extraction",
+  "note": "课程要求的定位与数值事实，尚不是产品逐年级难度标准。计词口径、教材范围、义项、额外学习词和实际学生经历须另核；这些总词汇目标不是单篇文章的硬性词表上限。",
+  "requirements": [
+    {
+      "id": "moe2022.vocabulary.level2",
+      "source_id": "moe.english2022",
+      "acquisition_id": "moe-english2022-full",
+      "framework": "义务教育英语2022课程标准",
+      "stage": "二级",
+      "school_grade_band": [5, 6],
+      "target_vocabulary_approximate": 500,
+      "optional_additional_related_words": [100, 300],
+      "pdf_pages": [14, 27],
+      "printed_pages": [7, 20],
+      "table": "课程目标学段表与表10词汇知识内容要求",
+      "review": "原图目视核对，保留约数、相关主题和根据实际情况扩展的条件"
+    },
+    {
+      "id": "moe2022.vocabulary.level3",
+      "source_id": "moe.english2022",
+      "acquisition_id": "moe-english2022-full",
+      "framework": "义务教育英语2022课程标准",
+      "stage": "三级",
+      "school_grade_band": [7, 8, 9],
+      "target_vocabulary_approximate": 1600,
+      "optional_additional_related_words": [100, 300],
+      "pdf_pages": [14, 27],
+      "printed_pages": [7, 20],
+      "table": "课程目标学段表与表10词汇知识内容要求",
+      "review": "原图目视核对，不能把三个年级每年都要求完整1600词"
+    },
+    {
+      "id": "moe2022.vocabulary.level3plus",
+      "source_id": "moe.english2022",
+      "acquisition_id": "moe-english2022-full",
+      "framework": "义务教育英语2022课程标准",
+      "stage": "三级加",
+      "individual_school_grade": null,
+      "target_vocabulary_approximate": 1800,
+      "optional_additional_related_words_approximate": 200,
+      "pdf_page": 28,
+      "printed_page": 21,
+      "table": "表10续表",
+      "review": "原图目视核对，不将三级加解释为全国所有初三学生统一实测词汇量"
+    },
+    {
+      "id": "moe2020.vocabulary.compulsory",
+      "source_id": "moe.senior2020",
+      "acquisition_id": "moe-senior-english2020-extracted",
+      "framework": "高中英语2017版2020修订课程标准",
+      "course_category": "必修",
+      "individual_school_grade": null,
+      "cumulative_vocabulary_target_range": [2000, 2100],
+      "pdf_page": 29,
+      "printed_page": 21,
+      "table": "表5",
+      "review": "文本核读；课程类别不直接等同高一年级"
+    },
+    {
+      "id": "moe2020.vocabulary.selective",
+      "source_id": "moe.senior2020",
+      "acquisition_id": "moe-senior-english2020-extracted",
+      "framework": "高中英语2017版2020修订课程标准",
+      "course_category": "选择性必修",
+      "individual_school_grade": null,
+      "cumulative_vocabulary_target_range": [3000, 3200],
+      "pdf_page": 30,
+      "printed_page": 22,
+      "table": "表5续表",
+      "review": "文本核读；需与教材、课程完成和考试要求共同建立产品年级映射"
+    },
+    {
+      "id": "moe2020.vocabulary.advanced-elective",
+      "source_id": "moe.senior2020",
+      "acquisition_id": "moe-senior-english2020-extracted",
+      "framework": "高中英语2017版2020修订课程标准",
+      "course_category": "选修提高类",
+      "individual_school_grade": null,
+      "cumulative_vocabulary_target_range": [4000, 4200],
+      "pdf_page": 30,
+      "printed_page": 22,
+      "table": "表5续表",
+      "review": "文本核读；不把提高类词汇范围自动作为高考统一基本要求"
+    }
+  ]
+}

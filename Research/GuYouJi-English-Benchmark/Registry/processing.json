@@ -1,0 +1,3462 @@
+{
+  "updated_on": "2026-10-12",
+  "framework": "OCR outputs are drafts, not gold text; page numbers and score notation require original-image checks.",
+  "failed_attempts": [
+    {
+      "engine": "Apple Vision",
+      "revision": "default",
+      "result": "e5rt compute-operation error13; process133; no accepted OCR"
+    },
+    {
+      "engine": "Apple Vision",
+      "revision": 3,
+      "uses_cpu_only": true,
+      "result": "same error; no accepted OCR"
+    }
+  ],
+  "ocr_models": [
+    {
+      "path": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+      "bytes": 2469156,
+      "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730"
+    },
+    {
+      "path": "build/english-benchmark-research-20261012/tessdata/eng.traineddata",
+      "bytes": 4113088,
+      "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+    }
+  ],
+  "runs": [
+    {
+      "id": "neea2024",
+      "source_id": "neea.english2024",
+      "manifest": "build/english-benchmark-research-20261012/ocr-manifest.json",
+      "pages": 12,
+      "successful_pages": 12,
+      "characters": 20733,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page01.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page01",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 963,
+          "sha256": "5afc364639c65d4e5a14aba7174470e32eb01e3864f25aab889e6cf8cafc3f47"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page02.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page02",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 1357,
+          "sha256": "2327207cf7924569fcc889d294289ba559bae843dfa182feac8d35bb373efbcd"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page03",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 1556,
+          "sha256": "f666f9f26a9ebc1928326e727d7c24eaa305eb0dad89723f842bf72c28e335d8"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page04.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page04",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 2324,
+          "sha256": "c424d48aa1b1f454553dc85089f043423a51487fa983e4e702d51cc789420768"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page05.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page05",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 2240,
+          "sha256": "a61d360002adec5fcb1c452a2079df4d5cfbb9c043dd07530d2df210b2274999"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page06.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page06",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 2463,
+          "sha256": "c0235a94c1b3dfa70d6bd77cc709e3f736eb6b65f4bf7e01f6d95b28058619a6"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page07.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page07",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 2451,
+          "sha256": "d2ffa060f09e73e60a47d6a8e0753ec041eb46d01ce30a82d6eb3b36a2d32e81"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page08.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page08",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 1797,
+          "sha256": "a0aa685d1ecf69bdc29d799be45c403a74775382bbc388fe3a6715f00c487f4a"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page09.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page09",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 1914,
+          "sha256": "5f13649a58d0ebd2cb2ec059a71c40082939433a0c85be574f183983ff6d04c3"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page10.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page10",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 1240,
+          "sha256": "6b0c301a7dcd6e2031ecd809ddf7a923cc2ed32af04344433eb09c6e17c38019"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page11.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page11",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 1481,
+          "sha256": "f85ef839976fab7bfd944f7bb8257cefcb555eaab285a552190f30f3aeb441ba"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page12.jpg",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page12",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "eng",
+            "chi_sim"
+          ],
+          "psm": 3,
+          "exit_code": 0,
+          "stderr": "read_params_file: Can't open txt\nread_params_file: Can't open tsv\nread_params_file: Can't open txt\nread_params_file: Can't open tsv\n",
+          "status": "ocr_unreviewed",
+          "characters": 947,
+          "sha256": "d40dfa2cc8771c3c9489d73a072092ce9c76ab7939430625bb39e2f5dca21b3c"
+        }
+      ]
+    },
+    {
+      "id": "moe2022",
+      "source_id": "moe.english2022",
+      "manifest": "build/english-benchmark-research-20261012/ocr-curriculum-manifest.json",
+      "pages": 201,
+      "successful_pages": 201,
+      "characters": 143804,
+      "page_records": [
+        {
+          "pdf_page": 1,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page001.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 61,
+          "sha256": "0a267e1909845c73533b50f353fc06afc0baede9241aa232d58d9903e72e1cde"
+        },
+        {
+          "pdf_page": 2,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page002.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 522,
+          "sha256": "76e61aa4015269ca805c0631e5ae635668abdff1e9b1a56e14bb416f7eaca6eb"
+        },
+        {
+          "pdf_page": 3,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page003.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 606,
+          "sha256": "e6f2a5de36f381455dc50be1aad7fd2f39d529cf6e91573cd9093d47a53e2a9d"
+        },
+        {
+          "pdf_page": 4,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page004.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 603,
+          "sha256": "358a53c81cf9fd6170b86ebde2d195e6835015a998cd2bf96c588b9f024b07bf"
+        },
+        {
+          "pdf_page": 5,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page005.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 730,
+          "sha256": "29165378c15e10bfdfab30d5861e712fd2057a2914b9c043bbea7b5c4b48f91a"
+        },
+        {
+          "pdf_page": 6,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page006.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 374,
+          "sha256": "68a8c14aa353e17ecaf0d09671aaec36615bc77b1c81fd7ec5808c4664ccb3b8"
+        },
+        {
+          "pdf_page": 7,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page007.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 312,
+          "sha256": "6de963b4f8c1d0711c1ef50a3edace4589866d05a7fd80cde83fc92902a4de9d"
+        },
+        {
+          "pdf_page": 8,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page008.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 279,
+          "sha256": "cd204cebd4f4bcefb085ab0e2422e9f3fe965b6af226d31513fd2fb5f94d8433"
+        },
+        {
+          "pdf_page": 9,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page009.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 438,
+          "sha256": "01b4600175b62f5f92b882903ce48bb90e2a45bafe5f983ef1685af16976f460"
+        },
+        {
+          "pdf_page": 10,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page010.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 678,
+          "sha256": "f733ed3e4e195a19977ac6ee9b39cf0d75de09cc257d4a87579403c2d6a6f754"
+        },
+        {
+          "pdf_page": 11,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page011.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 365,
+          "sha256": "fef6e9c0a39c743a4d9747f8b3b81801a45e0bb573ba469a9c6bbc871f023d9c"
+        },
+        {
+          "pdf_page": 12,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page012.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 542,
+          "sha256": "0957e8f5d3f1e4d250549e4c65d7bfebaa44840a4782133aa7784b4558b9aac1"
+        },
+        {
+          "pdf_page": 13,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page013.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 833,
+          "sha256": "fae632688ba7f586fe40236e954fd93d4bcbede657fa41ed8c25dc50071a7d82"
+        },
+        {
+          "pdf_page": 14,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page014.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1039,
+          "sha256": "202cb80a15b3501e1257264966976c722b579ca5a39c9b4edafe9d1593c396e1"
+        },
+        {
+          "pdf_page": 15,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page015.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 950,
+          "sha256": "17ffad7251627588fd70f49c7a8fdfb41e176d907aa2b53dcd3ffd0b33b200d7"
+        },
+        {
+          "pdf_page": 16,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page016.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 870,
+          "sha256": "fee0ce6c3be1cf623fd96718d9b046cfc205ff3f26695e5a7995b58889d242b0"
+        },
+        {
+          "pdf_page": 17,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page017.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 919,
+          "sha256": "26d9ac6a66e438de62096b7484e1598f587f3538b2d138e728440065a08ff140"
+        },
+        {
+          "pdf_page": 18,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page018.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 789,
+          "sha256": "8601fc3a14b1dc22b8da20c9bb9eeef43f9f5cf3e7b18f73642c3c45fbc35d12"
+        },
+        {
+          "pdf_page": 19,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page019.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 314,
+          "sha256": "74e54d73bb1342a326dd53d8c19e3b9e0a0773e0fec71dbbf74a4526a9d6ca76"
+        },
+        {
+          "pdf_page": 20,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page020.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 483,
+          "sha256": "278f44bcdf4f854b6fe1b5a48eb8a2a54a380dbe668db66b323e486ef2496737"
+        },
+        {
+          "pdf_page": 21,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page021.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 651,
+          "sha256": "4cb8f8822f70a3cd61a287ae6bba5c4ebbe6060eda9ab1851abb122d6f572c8c"
+        },
+        {
+          "pdf_page": 22,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page022.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 755,
+          "sha256": "ca77207bc0c6e18e859aa2c31745d77f49fc32cc80ab2cedf86928b6625cec24"
+        },
+        {
+          "pdf_page": 23,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page023.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 672,
+          "sha256": "3cdb667d9179af0856dd33d3643ba57cae57d960cafdf90c142f6ae2ca1afe1b"
+        },
+        {
+          "pdf_page": 24,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page024.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 568,
+          "sha256": "c8a10307ba0f249931748885d0ec35cc88ede9ccc8ad1b67da79ffeca86a7c37"
+        },
+        {
+          "pdf_page": 25,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page025.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 682,
+          "sha256": "c1ed54c2c8e2e8b0bc5bbecaf7e0dfcc4449b91c7ed44c0e80f5d82da661a61b"
+        },
+        {
+          "pdf_page": 26,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page026.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 670,
+          "sha256": "718ff5bfc6d32328d9c4d9ea0a7ba4ee2837ac62b4c72e2e6165d7892b866fe1"
+        },
+        {
+          "pdf_page": 27,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page027.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 831,
+          "sha256": "8e1eda050609dabb4901da06b4ddd38d6b07894f4c8e80a4f169ab974f63a44a"
+        },
+        {
+          "pdf_page": 28,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page028.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 724,
+          "sha256": "6dfd678aa9819bf71a778b4752a4f17156d5f81f42f51d41822de2dcc8b7d3c6"
+        },
+        {
+          "pdf_page": 29,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page029.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 744,
+          "sha256": "30a6b7ef4360e94f3085cae3737cd531fda0a9eaee8a84ef400bc68243124e59"
+        },
+        {
+          "pdf_page": 30,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page030.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 737,
+          "sha256": "b8217f32d7d810bd65951b3bc41bcbe8963e914d9857387670ddd65c172587e9"
+        },
+        {
+          "pdf_page": 31,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page031.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 852,
+          "sha256": "1aaabd6d3d5b542c4e5df2b01ff9f1004ab51d73b8697ff826d3c7087e18a2fe"
+        },
+        {
+          "pdf_page": 32,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page032.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 742,
+          "sha256": "d930dd27e4c2afa3271bd286da6edb19ed1520784806df6da5e4d62fa49b534a"
+        },
+        {
+          "pdf_page": 33,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page033.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "Detected 24 diacritics\n",
+          "characters": 663,
+          "sha256": "13d9bfaa4bc2ddc496c35c02f3f92cf85fe56701ab1b60cded974fb15d0c5cf7"
+        },
+        {
+          "pdf_page": 34,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page034.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 749,
+          "sha256": "79681dd5c5a06a8867acfce7e32b3751fa7d2817e40924affb66ca9d8bfd8461"
+        },
+        {
+          "pdf_page": 35,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page035.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 697,
+          "sha256": "43c383e009ddd3bfd2b21af172d92fc992f39a578faa4b908533274fe28dab7d"
+        },
+        {
+          "pdf_page": 36,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page036.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 584,
+          "sha256": "f70dab9a5e5ef5cba4ff532678d3dfb1e3631a66b262746c8becfb8d46595237"
+        },
+        {
+          "pdf_page": 37,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page037.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 862,
+          "sha256": "1b24f1871b79b9ab7fa529195b6f43acfe23d139d2b7e291ca4aea0ca888a7e3"
+        },
+        {
+          "pdf_page": 38,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page038.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 640,
+          "sha256": "707b310f0ce3c9beaa687e3f27849387b8c7bf7cfee2c341c2dca48ee11a4d8e"
+        },
+        {
+          "pdf_page": 39,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page039.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 832,
+          "sha256": "44aefb1751c42a42e842a210cedcdc94d12ffbd54ad98c5c78e35a01652d3802"
+        },
+        {
+          "pdf_page": 40,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page040.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 682,
+          "sha256": "9efc0bb56c1637d3e3da83022fda66061afbf4c7fd2f557c7698f01ad9479d16"
+        },
+        {
+          "pdf_page": 41,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page041.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 688,
+          "sha256": "e1ee29fdde411a6b13c9a7283631a3d9e0fc1ca9ca1acbc41320e7b70de9db99"
+        },
+        {
+          "pdf_page": 42,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page042.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 686,
+          "sha256": "6c9a1ff36cee1c309d353f4d3608767352cdeecd655f954accb9a79085924dfd"
+        },
+        {
+          "pdf_page": 43,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page043.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 795,
+          "sha256": "4592ca4c6efb7c07c6c8c224d727e9f04fc7030ce1fff35d058e568253fe4cf4"
+        },
+        {
+          "pdf_page": 44,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page044.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 836,
+          "sha256": "1e8f7f70224477d422f4d1024c2d47330e90aec7e9fdd9ae394666e10fd23e25"
+        },
+        {
+          "pdf_page": 45,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page045.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 825,
+          "sha256": "402755d63dc263db03bed604ac95a4a56bfd0feef76784753f4329d02b68160e"
+        },
+        {
+          "pdf_page": 46,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page046.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 855,
+          "sha256": "7f6642ac74433f21fbeb2a25265a1d9c05520c65940d0b3aba6e43f5fed47cb6"
+        },
+        {
+          "pdf_page": 47,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page047.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 858,
+          "sha256": "213f98e650e6cf6d1afec54c6e7dfee1858b6cb98b385f62b880ff2775169d4d"
+        },
+        {
+          "pdf_page": 48,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page048.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 674,
+          "sha256": "b7cb7472a0b1e1f3f57180eebf4018a429e0289eca1d5ac8eb307d0795191fec"
+        },
+        {
+          "pdf_page": 49,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page049.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 393,
+          "sha256": "13d0d786b3371e6e9a2389b778824683b334f3ebc82d8046f83784e27445fe9f"
+        },
+        {
+          "pdf_page": 50,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page050.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 714,
+          "sha256": "e5d9fb3875e00f892b54a470af1e38b3dca028369202aaed43d25c6f415a1bed"
+        },
+        {
+          "pdf_page": 51,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page051.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 751,
+          "sha256": "7ee25b705a283856644977917ee838e69b889770f8f3967712efcace2958a9a6"
+        },
+        {
+          "pdf_page": 52,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page052.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 715,
+          "sha256": "44fc3a65163122839d26e2146bbd3df9e0bf0777fa1d784aea0b5c66e2feac40"
+        },
+        {
+          "pdf_page": 53,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page053.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 372,
+          "sha256": "1c4f39731847bb84c951a6531bd38f54d8fbde9793bd436b3da984069d365595"
+        },
+        {
+          "pdf_page": 54,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page054.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 404,
+          "sha256": "66cfd0304a6a8c13dc8b77502ef5abbd1abd64b49b00493cfc905f7f357eab09"
+        },
+        {
+          "pdf_page": 55,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page055.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 760,
+          "sha256": "67fae647c0e39a5bdb8d72c0b957c2ad020b215e54227828bcfb8a760b31e43b"
+        },
+        {
+          "pdf_page": 56,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page056.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 784,
+          "sha256": "44ad108e1403821fc610f88ba4fa7193681eadd9d7b99988fb7d60880df2d011"
+        },
+        {
+          "pdf_page": 57,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page057.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 802,
+          "sha256": "562eaa92182d80ad92bf901e609d43bb6e32bbdf9429f1a197695a5f360ed07a"
+        },
+        {
+          "pdf_page": 58,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page058.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 791,
+          "sha256": "e63bd5b42563ac02cc53110a5f76e3c69d74cfc69fe40cd2cd916a6c07ff4f3a"
+        },
+        {
+          "pdf_page": 59,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page059.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 661,
+          "sha256": "beb3e1ce593cdea2552257d38787e43201cb5e364c9a464918b52601c2df59d9"
+        },
+        {
+          "pdf_page": 60,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page060.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 721,
+          "sha256": "72454cb2aa58c812b12f1297ec39204b609a9abe0e496115739091fe5746a252"
+        },
+        {
+          "pdf_page": 61,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page061.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 763,
+          "sha256": "f2579d56608073aedddf8ec51beb8f2dccb94421eb9d9bb010a3ca8be7d29728"
+        },
+        {
+          "pdf_page": 62,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page062.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1260,
+          "sha256": "06afa70af2a23247b549a4c4222141c150e8c041a430d093195e20c54544925e"
+        },
+        {
+          "pdf_page": 63,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page063.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1096,
+          "sha256": "981f25cbfad9e9467a2cb70cbb870ceb6a88f5cd8d7000a3419271499c6dfdbb"
+        },
+        {
+          "pdf_page": 64,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page064.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 760,
+          "sha256": "db8543d605be9ce0761ac33e291e2682f2703a9fea0cbe64fdb17e91f63fd5a3"
+        },
+        {
+          "pdf_page": 65,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page065.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 722,
+          "sha256": "536ec7a62b60648b104086ea8e78a693702d158fd409bc8316057a14c96c0156"
+        },
+        {
+          "pdf_page": 66,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page066.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 770,
+          "sha256": "ba2637a4b4c500fe0e365cf4d0202f77e8c74cfd1ae8e18440280e300ad2232a"
+        },
+        {
+          "pdf_page": 67,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page067.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 842,
+          "sha256": "5ae38314b88971ce4113c22dad8bbefcb54d472c8df6def07dfd722f094e10e6"
+        },
+        {
+          "pdf_page": 68,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page068.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 817,
+          "sha256": "a7dc0a650d101fcb5090a98ec5eef788c8b9a513bc1bae0ac42aed090d1e225b"
+        },
+        {
+          "pdf_page": 69,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page069.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1190,
+          "sha256": "cbfa2653ce336e3e1cdca5671cf80e87bd41d3b55951807b28111e5a0d9e31e9"
+        },
+        {
+          "pdf_page": 70,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page070.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 946,
+          "sha256": "7f26795924274d07dc71225bddedc271a9657e9f18ed1d4088418a4145a4e83e"
+        },
+        {
+          "pdf_page": 71,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page071.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1059,
+          "sha256": "cb78c75d81651064574dfdedac00e6aa88ce8a408cafe0d894f69f783b9aa923"
+        },
+        {
+          "pdf_page": 72,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page072.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 327,
+          "sha256": "ddb672580ae89e4fbe9b1c20e21e5c8b8cee67a1655f5a7876c5175b9ff3e393"
+        },
+        {
+          "pdf_page": 73,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page073.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1502,
+          "sha256": "67a5cdaf1e8ffd1ec3f8c57c36669f730785a2a9a78361a69de30bc53432506f"
+        },
+        {
+          "pdf_page": 74,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page074.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 877,
+          "sha256": "0c296c2a9f9593aa6951a35f424d56109d59ad97589e98a9a1e10d9f192be5fa"
+        },
+        {
+          "pdf_page": 75,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page075.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 504,
+          "sha256": "d5022dd1e503b9bfc004bdaf4e2d5b9aea40e659fa0eacd319ce5e55598191d2"
+        },
+        {
+          "pdf_page": 76,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page076.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 626,
+          "sha256": "0297508b0c81094e83aa50cd2e5869ea74a8d067328088cfa9d1bb832efd5531"
+        },
+        {
+          "pdf_page": 77,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page077.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 742,
+          "sha256": "11e6b035daae5ad9bae0b135dde7521053d0adad8a9c9a5b3b3f58a160ae7f34"
+        },
+        {
+          "pdf_page": 78,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page078.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 718,
+          "sha256": "0461b1a9f7eb19e8ef78b768bbb6acae9a24aee5bf870aabfc9c0b25f2de0d9b"
+        },
+        {
+          "pdf_page": 79,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page079.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 650,
+          "sha256": "8d95c6e96610156f00f31dc6224b5ccc87ac5a32b9d5883c6a62f28ced9d4485"
+        },
+        {
+          "pdf_page": 80,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page080.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 715,
+          "sha256": "4b6738871d6557d169996b0212478b2f977176e08d5f2c8a66c81f39fc03b81c"
+        },
+        {
+          "pdf_page": 81,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page081.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 636,
+          "sha256": "85bce0828375bca591a15daf16385b07981a688cb94e17ad2df8a4ad93c61725"
+        },
+        {
+          "pdf_page": 82,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page082.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 745,
+          "sha256": "23ecee808fc70015ce1a99685b57f076a411f4f7d851593c744a15e973e99bdb"
+        },
+        {
+          "pdf_page": 83,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page083.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 808,
+          "sha256": "217e3936f1d2b73daeda37bd409715abf0686382d9a69933cc572275709826f1"
+        },
+        {
+          "pdf_page": 84,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page084.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 805,
+          "sha256": "126c56c1bb9a1c8774b9a6a31e7d711605a6146cb0099ed9ff02d576863f3d12"
+        },
+        {
+          "pdf_page": 85,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page085.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 748,
+          "sha256": "e55c5f40e2981bfdb3bf312c3804476adb26559b5d83f0307df0eb8ec47cd8c0"
+        },
+        {
+          "pdf_page": 86,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page086.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 646,
+          "sha256": "57cd8d0a5e0f12b4b0164de8ed402ff317e3b58dec4e1ab90a5cbe84baa211fb"
+        },
+        {
+          "pdf_page": 87,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page087.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 396,
+          "sha256": "002d49e03cc7670cad32bbeb81cdf68362902def121b4c55dafe465820b3d37f"
+        },
+        {
+          "pdf_page": 88,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page088.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 726,
+          "sha256": "42b0c48779d8a60584aebe36fbecd569801215e0eb22c2a05fecb91e0c0538a3"
+        },
+        {
+          "pdf_page": 89,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page089.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 711,
+          "sha256": "bb3113833abf48482185b958a9476da290782415e0ec872e9cfa802273aed6fe"
+        },
+        {
+          "pdf_page": 90,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page090.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 770,
+          "sha256": "4a23a930235a44e6a25f19ec2fcaeb8a0c83711c067a0557bd70d2f7545d59f0"
+        },
+        {
+          "pdf_page": 91,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page091.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 660,
+          "sha256": "5ce55d02dce68ee9d3cde12d8258e1117f35a72a68058804860d7ba46aef8e29"
+        },
+        {
+          "pdf_page": 92,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page092.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "Detected 88 diacritics\n",
+          "characters": 513,
+          "sha256": "7d253bab886c417100e46b7cb91f449a27aba8ded949d6d8cb0d2089ef91a34b"
+        },
+        {
+          "pdf_page": 93,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page093.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 51,
+          "sha256": "a60066f6b04fc2c2443075c6cf360c7ec93a1ea4d70534342ee33bc021347563"
+        },
+        {
+          "pdf_page": 94,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page094.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 492,
+          "sha256": "ca40322ad626af15226852aac2803880df67d29675ed9b3c402d3bc687cd9d1a"
+        },
+        {
+          "pdf_page": 95,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page095.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 381,
+          "sha256": "4f1a521c57452eba72fa61c6127662a693e798c1434b34c9fc65ee99251131d4"
+        },
+        {
+          "pdf_page": 96,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page096.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 343,
+          "sha256": "225f971ecf2850b2a22fa9ca82f6bd21fb4cfa0ad008cab9e33a25e06c9d3f4c"
+        },
+        {
+          "pdf_page": 97,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page097.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 363,
+          "sha256": "6d7dab2dee36aa883a15efe113eeb81d85c0e1f4992d73dc0fa884769c17d6e9"
+        },
+        {
+          "pdf_page": 98,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page098.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 386,
+          "sha256": "86915f5f3b5a99b257d096ececbcf2337a61f66f617a23d78f61b55d86082931"
+        },
+        {
+          "pdf_page": 99,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page099.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 295,
+          "sha256": "0516bc699d7b38dcea7d0110bc993f242d84c6c25edadad17b0f81542328f7a4"
+        },
+        {
+          "pdf_page": 100,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page100.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 383,
+          "sha256": "0f827da4878136676d628a96d50837a56bb98c39412d328fa4fac8841c52128c"
+        },
+        {
+          "pdf_page": 101,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page101.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 950,
+          "sha256": "0809869419027415d6c1450c9849415c76d00bb9320af71cfc6ad64d75b54c57"
+        },
+        {
+          "pdf_page": 102,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page102.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 351,
+          "sha256": "c6bd1c2d01793b65b1b388ae968635b8f7c49241bf886fd505cc973945edd3bb"
+        },
+        {
+          "pdf_page": 103,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page103.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 342,
+          "sha256": "08caa826959ab1793598429ae6260bca36fcf92b3b37dbf1d3b4fca292c119c1"
+        },
+        {
+          "pdf_page": 104,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page104.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 294,
+          "sha256": "f577b15290032b18e9dbca568e1914bd657dd8bebc081107c666375fc6bfa3e0"
+        },
+        {
+          "pdf_page": 105,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page105.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 864,
+          "sha256": "d4f9e2a7ffb7ee044e74c1ef4d4154715acac956cab895edd5bf3ecf416335bd"
+        },
+        {
+          "pdf_page": 106,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page106.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 480,
+          "sha256": "c799311ee18d06433487309a395ea264d526a7287e3e2a477ee2f033e794c9ef"
+        },
+        {
+          "pdf_page": 107,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page107.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 2162,
+          "sha256": "4353b26830862af544c4780da7b90beb6b3409b06120022f45123391415f547d"
+        },
+        {
+          "pdf_page": 108,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page108.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 450,
+          "sha256": "28a11f5d999720d012c7dc58fad57b01fc9e7ee309b2e8cbd94e6693e4e9a9e1"
+        },
+        {
+          "pdf_page": 109,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page109.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 410,
+          "sha256": "f80afa6e4cc702ed8457bb81bc952b283fc327bf28d558aadc7543750db01adb"
+        },
+        {
+          "pdf_page": 110,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page110.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 497,
+          "sha256": "497cc7f3ddaf73ae258d1a5739c81bda2831e9d7a5ae4930440057f9b852e10c"
+        },
+        {
+          "pdf_page": 111,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page111.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 2049,
+          "sha256": "52041e4b0306b83af043cca703e706004f55f2fc6c60a9b7ebb36344260ec749"
+        },
+        {
+          "pdf_page": 112,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page112.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 474,
+          "sha256": "c514c46bcc58c5f892f3f0f1f3466005f1403d52b8f58e0a294c9c521005080e"
+        },
+        {
+          "pdf_page": 113,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page113.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 452,
+          "sha256": "c0077f31bacfcfac8832bc2e8d928974c2cf2ee6c279c4e7c981f824532c5783"
+        },
+        {
+          "pdf_page": 114,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page114.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 493,
+          "sha256": "e10bf7c9379f7fb70f507cf0136a490ee585b765a910ddb59ccf7153e5e64034"
+        },
+        {
+          "pdf_page": 115,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page115.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 497,
+          "sha256": "2c21d7140a25f4a85c03eda04fd929f8134354b407fc3f6c232a45b70a8ea78c"
+        },
+        {
+          "pdf_page": 116,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page116.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 469,
+          "sha256": "9d8ded529f8519ef9ad97853888dcc60dd5a0a684fa8ed541d83c7095bea9a7c"
+        },
+        {
+          "pdf_page": 117,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page117.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 438,
+          "sha256": "2999ee70a231d0683c53d0470698db3b364eb56ee11e546fd750054d59c2ca6c"
+        },
+        {
+          "pdf_page": 118,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page118.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 457,
+          "sha256": "c06540c13b02500215d86193e1710b1c95f930d2c199e633cb50f04dd6e979ec"
+        },
+        {
+          "pdf_page": 119,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page119.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 432,
+          "sha256": "5f11a0e84974f31eae93a2b6499f8b0dc335955b2726c48186ddb8c153924d6f"
+        },
+        {
+          "pdf_page": 120,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page120.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 369,
+          "sha256": "bc794a44a300d82902fd66733b2988502966cfb220676ecc59bc7d7f1f69a568"
+        },
+        {
+          "pdf_page": 121,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page121.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 480,
+          "sha256": "460b5b4e17e78058093f334d45957f0d6a095bddbc3493ed6828d7b88e0b497b"
+        },
+        {
+          "pdf_page": 122,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page122.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 428,
+          "sha256": "1f40495da42f218129c89e43cc74d29d5b2b07b6f2606dc83bca621aee9ff688"
+        },
+        {
+          "pdf_page": 123,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page123.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 415,
+          "sha256": "95a1368594362623c4a55e10a09ca5b3c96d3afc766e6e823e40a7aac4116905"
+        },
+        {
+          "pdf_page": 124,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page124.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 468,
+          "sha256": "1ea2459eb06d895b5f693fb49757baf97045a053b1867d0740dda9a37237996d"
+        },
+        {
+          "pdf_page": 125,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page125.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 553,
+          "sha256": "530a71bb644202d7fa4a4c4e32bc7a472f3db8353c24547c388ffef1d64af335"
+        },
+        {
+          "pdf_page": 126,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page126.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 434,
+          "sha256": "50cfab40a165852bc5a198fb29976f85e25a2ae237b12c3ce687ecd9d4bbc4a6"
+        },
+        {
+          "pdf_page": 127,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page127.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 2185,
+          "sha256": "353a0357f2664b3997f3586bb5a49e524b5f9acba7623e28ee94420bf3922570"
+        },
+        {
+          "pdf_page": 128,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page128.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 409,
+          "sha256": "00ebf0bc8a2b89536ff77fa51e9d6b560c02343b0fcc5a08bb9108aeecedc1dd"
+        },
+        {
+          "pdf_page": 129,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page129.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 429,
+          "sha256": "4ee0d0b7a35dc66b41b432350c06e81c069e1b2d03da73cc8b56e50d525c47b5"
+        },
+        {
+          "pdf_page": 130,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page130.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 391,
+          "sha256": "c11db68b505031ceb3a17c3f66687d912883f89845459f8ad74402574bb83109"
+        },
+        {
+          "pdf_page": 131,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page131.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 454,
+          "sha256": "cfdb89f434e5dd9f098de028cf443cd85c5cf3c8c309f45d971249e17090862e"
+        },
+        {
+          "pdf_page": 132,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page132.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 450,
+          "sha256": "ed6a0b0a3efde6b7fcde7ac5e0281770b65c5aacf71c147b8db7aa5c1ac2d799"
+        },
+        {
+          "pdf_page": 133,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page133.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 344,
+          "sha256": "17fd656631387adb7eb42a3d3ac21eeb5a4c546baf5a1437841c22a30a940f8a"
+        },
+        {
+          "pdf_page": 134,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page134.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 450,
+          "sha256": "da8ed000ec84e1fd086097945dff8275755a9984bb5c9348c6df7017fad9b0e0"
+        },
+        {
+          "pdf_page": 135,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page135.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 290,
+          "sha256": "7ddc70c42559d653a2f7a399df9c217b7a991399e6006c350b8d2409337407bd"
+        },
+        {
+          "pdf_page": 136,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page136.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 350,
+          "sha256": "f5b07e110d30b7da512d0178ae002487724f23e97b0575b55074130fedc1022a"
+        },
+        {
+          "pdf_page": 137,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page137.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 605,
+          "sha256": "36cf9bb2e2929fb9cb4f2cdc7b75e5b5ac5ffca68bd7b0810a35843b44b0273f"
+        },
+        {
+          "pdf_page": 138,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page138.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 405,
+          "sha256": "5787f0227dce824b1980645523238cf8a71c1b9c11dde3e533688c76c9679fb1"
+        },
+        {
+          "pdf_page": 139,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page139.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 975,
+          "sha256": "8a3e790242f9b442001ccb2d2754c8bdd972c001aef5e2ea61450a8f4f2d131f"
+        },
+        {
+          "pdf_page": 140,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page140.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 443,
+          "sha256": "0b005d38ef8185c2db9a46a4a1eb1236f27254f7eec55b07c54969da9bd84801"
+        },
+        {
+          "pdf_page": 141,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page141.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 456,
+          "sha256": "506293adaeda9b840312aad9f461dfafa9cc4ddd31374eef0b260b4abf375c52"
+        },
+        {
+          "pdf_page": 142,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page142.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 452,
+          "sha256": "6e8c8692bf5d520fb03ef2639dae9a7fe3b207ac4f74288437ae04dc1268ac1f"
+        },
+        {
+          "pdf_page": 143,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page143.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 527,
+          "sha256": "3116dcc903ebec31bb672c9e356b29a3c45061c93bf5f66886b3c94c9e2894ee"
+        },
+        {
+          "pdf_page": 144,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page144.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 224,
+          "sha256": "2849285fbe1a92738981ab4682a7ee342f994c5471af24c25dad53e895b72235"
+        },
+        {
+          "pdf_page": 145,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page145.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 224,
+          "sha256": "c700ddf1cb32f0130e8e9a7117a638fd64649f15a79b1520b2ac5c7475eb3215"
+        },
+        {
+          "pdf_page": 146,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page146.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 175,
+          "sha256": "55cf13e92d0b1b35448c6623e41170e739021095254b1d624c523c5c5584e6da"
+        },
+        {
+          "pdf_page": 147,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page147.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 315,
+          "sha256": "f0cbfbaff495a8ae7a032cfd8f7022576cc7d7576e88725d5e4d87c9e2d52dd3"
+        },
+        {
+          "pdf_page": 148,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page148.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 348,
+          "sha256": "4ef0dea91cba1cc81e3e63f3328128113c207f6a20afcce9d78dadced4ece7c7"
+        },
+        {
+          "pdf_page": 149,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page149.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 108,
+          "sha256": "7ef6d8667cd471667049ef610342ab78a475ba6e714b674f5005e05a4c0e5b95"
+        },
+        {
+          "pdf_page": 150,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page150.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 682,
+          "sha256": "eb1e2df7f64f13eb3f860f291800adf5dc9cb5f284c9e3c04cb9c4305ace4b98"
+        },
+        {
+          "pdf_page": 151,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page151.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1248,
+          "sha256": "74cce46ff7eaee256487bff16ed4e1db422708a9ce1739b7bddd741ad5cbc068"
+        },
+        {
+          "pdf_page": 152,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page152.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 713,
+          "sha256": "3c195c1098b77a369ee8fd13373de17fca90b1638fa46a595f396dfdc13ba3e7"
+        },
+        {
+          "pdf_page": 153,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page153.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "Detected 106 diacritics\n",
+          "characters": 1103,
+          "sha256": "23afe0e05dfce17b8837db8e1c7987700755181b269a58427a05a778bcab0274"
+        },
+        {
+          "pdf_page": 154,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page154.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 969,
+          "sha256": "78f20735d814750b8a3f1c426573d381287a7fb425d857c3ca2d62d0266fecac"
+        },
+        {
+          "pdf_page": 155,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page155.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 825,
+          "sha256": "0f780c0a851d276dca233f821ffdcc9ce17760037008e4c9dca43c4791813177"
+        },
+        {
+          "pdf_page": 156,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page156.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 717,
+          "sha256": "9f72e4fa7bce0a3f974d445a3f5d3cd608a3eb89df81b782271e09f1ba72a743"
+        },
+        {
+          "pdf_page": 157,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page157.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 951,
+          "sha256": "9b1657e84267c491a6fa6a719eee9d021d3f9143644c403c6dce43588dff17ab"
+        },
+        {
+          "pdf_page": 158,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page158.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 725,
+          "sha256": "c4128813694325646bffca89277b4f8a5f26e6e74f05405f7e55640e3a42e85e"
+        },
+        {
+          "pdf_page": 159,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page159.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1310,
+          "sha256": "0c751edbd16b5ef92156165e6506fca494654655921d8135ae089aa710243453"
+        },
+        {
+          "pdf_page": 160,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page160.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 959,
+          "sha256": "f546a975966d1d5ff3f759903482aa6a478e55fb59880334b9501a3be2f69994"
+        },
+        {
+          "pdf_page": 161,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page161.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 887,
+          "sha256": "ffacf61c59d1275cdab1145919a74f5ea6f09b31e69a75169b08ad654d19704d"
+        },
+        {
+          "pdf_page": 162,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page162.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 901,
+          "sha256": "d58841f4a9a0a407af1ac8563dba2accbc31461221546494c50ab5113a02dd24"
+        },
+        {
+          "pdf_page": 163,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page163.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1161,
+          "sha256": "cdaad5986a127dc15d5d4d76126f5d8b4cf2d8cdc4f02d3c98be433aaa60f8c8"
+        },
+        {
+          "pdf_page": 164,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page164.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1127,
+          "sha256": "e2e9b783288b276255bc54c8078d81f831c7a2299cf570e85ac58fdf52ca89c9"
+        },
+        {
+          "pdf_page": 165,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page165.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 790,
+          "sha256": "12cd17d5c7cb5a44e97892444a22d2be9fbea257a2acecdc50a4d192ba6eaae7"
+        },
+        {
+          "pdf_page": 166,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page166.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 849,
+          "sha256": "c3f47a05981b0fab463777b7a2098829b4fde74991a46b448bfa696e51b2849d"
+        },
+        {
+          "pdf_page": 167,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page167.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1134,
+          "sha256": "00e9ab5f2623c890af1841ac409ad7830773655d901ba14a2fcdb08eb82cab9e"
+        },
+        {
+          "pdf_page": 168,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page168.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 796,
+          "sha256": "cc11b1ec018cd1340765c8bcfc489ac52069f5da3c536e8cc927c687d3b874aa"
+        },
+        {
+          "pdf_page": 169,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page169.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 624,
+          "sha256": "29aaec008bbf9e5c0568bc411ac36a30a0fb2960c7bee3479762cac072a91a16"
+        },
+        {
+          "pdf_page": 170,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page170.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 717,
+          "sha256": "9596d20b3be9fd81a9f0ab5a3d89a1ab0d447fa1d41321d24daa888c5a4e9d2d"
+        },
+        {
+          "pdf_page": 171,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page171.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 748,
+          "sha256": "c0f0b9f7241d59369e688b8345a3db63a27f2510fcff1941f1bfc1dcb1a6f1dc"
+        },
+        {
+          "pdf_page": 172,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page172.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 735,
+          "sha256": "0d874313a8f7ccf952986728a6d45c43397a87db16d9e78b670c547c05c3819e"
+        },
+        {
+          "pdf_page": 173,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page173.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1065,
+          "sha256": "04e7fa64e56bfbcef6921d6aa8a8d9307b880e839bb95937572337feb6a7a9e4"
+        },
+        {
+          "pdf_page": 174,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page174.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 938,
+          "sha256": "f5aa2ef4fcd5a58c8f1d9260f8933ec09149bfa722ec5f9bd8c99f3f540e3a32"
+        },
+        {
+          "pdf_page": 175,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page175.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1140,
+          "sha256": "0a6bf3e57ec72538d4aacd705491e3cc24b9c9b51dd39c8d68b5110e6baae4cc"
+        },
+        {
+          "pdf_page": 176,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page176.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1107,
+          "sha256": "3ca9d28654988284878061ecbec27614e86008786505e3b3259ef0196270c48c"
+        },
+        {
+          "pdf_page": 177,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page177.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 822,
+          "sha256": "dd170b26991cb1f78eaee8bd21341adccb44eedef9f490da5747a7824c6ba0d7"
+        },
+        {
+          "pdf_page": 178,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page178.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 792,
+          "sha256": "c158cfba96ab502b966d6ebda5789c130e0a2b9c0883fa62ce46b16406da11ff"
+        },
+        {
+          "pdf_page": 179,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page179.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1597,
+          "sha256": "d77716f77988a15494df2114074fd22af6a65ee73e841d1df03d2bf510938dab"
+        },
+        {
+          "pdf_page": 180,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page180.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1301,
+          "sha256": "d778ee504b2b19aa5ca4bb817351a34a7c50f6601ae2bb20379b31a0f38c5663"
+        },
+        {
+          "pdf_page": 181,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page181.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1785,
+          "sha256": "b1b436f145f9f96b4919bf3b77d229c2d1ed581ef504da036a37e456f3855e64"
+        },
+        {
+          "pdf_page": 182,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page182.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "Detected 72 diacritics\n",
+          "characters": 760,
+          "sha256": "be85a1f92dcc2e5d057f3140012a4aa713b157730b276865930c8198d88859b2"
+        },
+        {
+          "pdf_page": 183,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page183.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 843,
+          "sha256": "a152c2841d4f01a559d163b873c8af4b5762d722f425617c191092427b032fef"
+        },
+        {
+          "pdf_page": 184,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page184.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 724,
+          "sha256": "d0b6e2e2d6e1031f091c8d7a38cc92bd486b23a8a32efb58560db0baad80440b"
+        },
+        {
+          "pdf_page": 185,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page185.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 765,
+          "sha256": "23d4dcd1531aa3bec924faa9b33a89e0d6dfc992746f81fd5fdef9775717013c"
+        },
+        {
+          "pdf_page": 186,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page186.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 566,
+          "sha256": "eb078fdff1ea92d3a16e9f145d6828460602befff9370a23a5fb17cc3de8dc7e"
+        },
+        {
+          "pdf_page": 187,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page187.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 797,
+          "sha256": "a11d972536594e714283ee15d3b3fa557f7094df3b0a3889cc2d7198bca34c7e"
+        },
+        {
+          "pdf_page": 188,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page188.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1145,
+          "sha256": "5a34ae0e0f480617795f8b37cf75e9858a686a4ea0bd6e952885e064ece15bed"
+        },
+        {
+          "pdf_page": 189,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page189.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 942,
+          "sha256": "4ee7c3202089ba5ab98ccc3af542a6098163216a8bfb35bdf37d28e33062a82c"
+        },
+        {
+          "pdf_page": 190,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page190.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 812,
+          "sha256": "ec41e5c63b0a52e849699b7edc6cc468a2102cb1f50b4312feabe2cd32d07e67"
+        },
+        {
+          "pdf_page": 191,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page191.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 746,
+          "sha256": "e4ce6b92ecd1c3e9e1b117e3be1473323c1c46605b647454b68dcf6a2b362e1c"
+        },
+        {
+          "pdf_page": 192,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page192.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 936,
+          "sha256": "03819c3aff9622c46454406e540aa970ae1f9014d013bfeaf3a01875f7623c52"
+        },
+        {
+          "pdf_page": 193,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page193.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 825,
+          "sha256": "a1f377c58125a63ee8f2a77f3276868230b15e204c60237122dc4b0b33603e3d"
+        },
+        {
+          "pdf_page": 194,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page194.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1189,
+          "sha256": "ebd5ff59681b1a88a827fc227f019151395c3709769c32ad335f4bcd4f4914c4"
+        },
+        {
+          "pdf_page": 195,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page195.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 739,
+          "sha256": "457506c684bd60b8e70abc53e676809dda6db0d9443f3b126bd6a84c210f11fa"
+        },
+        {
+          "pdf_page": 196,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page196.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1207,
+          "sha256": "ce790582642baaffa68c5a4f129f9c4669c578e0e94d16aa5d6d0e5d15d3ad94"
+        },
+        {
+          "pdf_page": 197,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page197.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 759,
+          "sha256": "e10e312d0d8d974079693f882b0290bdf2d89aa186671735f091690ace4dca15"
+        },
+        {
+          "pdf_page": 198,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page198.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 815,
+          "sha256": "1786f54f21e058a6e5a0dd25b2ff242257c9582435812d00f954eea6951b8138"
+        },
+        {
+          "pdf_page": 199,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page199.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 939,
+          "sha256": "1f8f3360df02cfec78fbfdb7c94e33e5541b08bab81db6a8c753d701b2a78ade"
+        },
+        {
+          "pdf_page": 200,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page200.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 759,
+          "sha256": "35eef284e5e5f60e56dc347c9ca2a37bff502bc30ce75610367c7a054ab266d9"
+        },
+        {
+          "pdf_page": 201,
+          "source": "/Users/tiantian/eng/build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "output": "/Users/tiantian/eng/build/english-benchmark-research-20261012/ocr-curriculum/page201.txt",
+          "engine": "tesseract 5.5.3",
+          "languages": [
+            "chi_sim",
+            "eng"
+          ],
+          "psm": 3,
+          "review_status": "ocr_unreviewed",
+          "exit_code": 0,
+          "stderr": "",
+          "characters": 1728,
+          "sha256": "45065ccb583a7807573d4adfe0ea2fc4440467aaef6cd579df71ccf2afc112a1"
+        }
+      ]
+    }
+  ],
+  "observed_errors": [
+    {
+      "run": "moe2022",
+      "pdf_page": 14,
+      "type": "grade_digit_misrecognition",
+      "observation": "OCR reads grade7 as1 in7-9 header; original image checked and confirmed7-9.",
+      "action": "Preserve raw OCR,flag table extraction,do not use unverified text for automatic grade assignments."
+    },
+    {
+      "run": "neea2024",
+      "type": "score_notation_and_proper_names",
+      "observation": "Chinese headings,2.5 score punctuation and some names contain OCR errors.",
+      "action": "Require image comparison; group score facts recorded only where visually reviewed."
+    }
+  ]
+}

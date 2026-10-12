@@ -1,0 +1,961 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-10-12",
+  "status_note": "Candidate URLs are research tasks, not verified contents. Rights are source observations, not blanket permissions.",
+  "sources": [
+    {
+      "id": "moe.english2022",
+      "title": "义务教育英语课程标准2022",
+      "url": "https://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html",
+      "category": "curriculum",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "Official 201-page scan acquired; visual check PDF1,14; original legacy digest matches. Full OCR and mapping pending.",
+      "acquisition_ids": [
+        "moe-2022",
+        "moe-english2022-full"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "moe.senior2020",
+      "title": "普通高中英语课程标准2017版2020修订",
+      "url": "https://www.moe.gov.cn/srcsite/A26/s8001/202006/t20200603_462199.html",
+      "category": "curriculum",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "Official archive and English member acquired; specified curriculum and assessment pages read, not entire book.",
+      "acquisition_ids": [
+        "moe-senior",
+        "moe-senior-standards-archive",
+        "moe-senior-english2020-extracted"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "moe.textbook-directory",
+      "title": "国家现行教学用书目录",
+      "url": "https://www.moe.gov.cn/jyb_xxgk/xxgk/neirong/fenlei/kcjc/kcjc_gl/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "candidate",
+      "notes": "Index is a search lead; retrieved 2024 attachment returned404; actual current editions and adoption need verification.",
+      "acquisition_ids": [
+        "moe-new-textbook-directory",
+        "moe-new-textbook-directory-canonical"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "pep.textbooks",
+      "title": "人民教育出版社电子教材",
+      "url": "https://jc.pep.com.cn/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "dynamic_shell_acquired",
+      "notes": "Catalog shell acquired; full current books and ISBN not acquired.",
+      "acquisition_ids": [
+        "pep-textbooks"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "fltrp.textbooks",
+      "title": "外研英语电子教材",
+      "url": "https://ebook.nse.cn/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "dynamic_shell_acquired",
+      "notes": "Catalog shell acquired; current series, editions and units pending.",
+      "acquisition_ids": [
+        "fltrp-textbooks"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "yilin.textbooks",
+      "title": "译林出版社教材入口",
+      "url": "https://edu.yilin.com/index.php/Category/index?nav_id=14",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "access_pending",
+      "notes": "Search locator found, direct and connector access timed out; current/legacy catalogs differ.",
+      "acquisition_ids": [
+        "yilin-textbooks"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "yilin.current",
+      "title": "译林当前英语教材平台",
+      "url": "https://ylyy.yilin.com/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "access_pending",
+      "notes": "Publisher search lead; direct403 and connector timeout.",
+      "acquisition_ids": [
+        "yilin-current"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "neea.english2024",
+      "title": "2024高考适应性英语卷及官方解读",
+      "url": "https://www.neea.edu.cn/html1/report/2401/499-1.htm",
+      "category": "domestic_exam",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "All12 scans acquired; page1 visually checked. Full OCR, answers, audio and grading pending; adaptive exam distinct from actual annual exam.",
+      "acquisition_ids": [
+        "neea-adaptive2024",
+        "neea-2024-english-page01",
+        "neea-2024-english-page02",
+        "neea-2024-english-page03",
+        "neea-2024-english-page04",
+        "neea-2024-english-page05",
+        "neea-2024-english-page06",
+        "neea-2024-english-page07",
+        "neea-2024-english-page08",
+        "neea-2024-english-page09",
+        "neea-2024-english-page10",
+        "neea-2024-english-page11",
+        "neea-2024-english-page12"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "neea.gaokao",
+      "title": "教育考试院高考资料入口",
+      "url": "https://gaokao.neea.edu.cn/",
+      "category": "domestic_exam",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "candidate",
+      "notes": "Full recent exams, paper families and solutions need collection; search lead not verified local content.",
+      "acquisition_ids": [],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "neea.cet",
+      "title": "CET官方大纲",
+      "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "category": "domestic_exam",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "legacy_reference",
+      "notes": "2016 outline read in previous work; current published spec and complete samples require recheck.",
+      "acquisition_ids": [],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "coe.cefr2020",
+      "title": "CEFR Companion Volume2020",
+      "url": "https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "connector_partial_review",
+      "notes": "Official PDF278 pages opened through connector, cover/contents located. Direct local retrieval403; no local PDF.",
+      "acquisition_ids": [
+        "cefr-companion",
+        "cefr-companion-pdf",
+        "cefr-companion-direct"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "coe.linking",
+      "title": "CEFR考试对齐手册与分析网格",
+      "url": "https://www.coe.int/en/web/common-european-framework-reference-languages/relating-examinations-to-the-cefr",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "connector_page_review",
+      "notes": "Official webpage checked; linking manual and task grids still need full acquisition/review.",
+      "acquisition_ids": [
+        "cefr-linking-manual"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "coe.test-development",
+      "title": "语言测试开发手册",
+      "url": "https://www.coe.int/en/web/common-european-framework-reference-languages/developing-tests-examining",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "candidate",
+      "notes": "Official search locator; local request403; full manual pending.",
+      "acquisition_ids": [
+        "cefr-test-development"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "neea.cse2024",
+      "title": "中国英语能力等级量表描述语",
+      "url": "https://cse.neea.edu.cn/html1/folder/2503/1-1.htm",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "legacy_reference",
+      "notes": "2024 metadata and partial descriptors retained from existing catalog; complete standard, publication authority and alignment research pending.",
+      "acquisition_ids": [
+        "cse2024"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.a2",
+      "title": "A2 Key官方样题与教师资料",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/key/preparation/",
+      "category": "international_sample",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "source_page_acquired",
+      "notes": "B2 ordinary/schools handbooks acquired; A2/B1 handbooks collected separately. Full paper/answer/audio association and permissions pending. Scores do not map to Chinese grade automatically.",
+      "acquisition_ids": [
+        "cambridge-a2",
+        "cambridge-a2-handbook",
+        "cambridge-a2-vocabulary"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.b1",
+      "title": "B1 Preliminary官方样题与教师资料",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/preliminary/preparation/",
+      "category": "international_sample",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "source_page_acquired",
+      "notes": "B2 ordinary/schools handbooks acquired; A2/B1 handbooks collected separately. Full paper/answer/audio association and permissions pending. Scores do not map to Chinese grade automatically.",
+      "acquisition_ids": [
+        "cambridge-b1",
+        "cambridge-b1-handbook",
+        "cambridge-b1-vocabulary"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.b2",
+      "title": "B2 First官方样题与教师资料",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/preparation/",
+      "category": "international_sample",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "B2 ordinary/schools handbooks acquired; A2/B1 handbooks collected separately. Full paper/answer/audio association and permissions pending. Scores do not map to Chinese grade automatically.",
+      "acquisition_ids": [
+        "cambridge-b2",
+        "cambridge-b2-handbook",
+        "cambridge-b2-school-handbook"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.yle",
+      "title": "Cambridge低龄样题",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/young-learners/",
+      "category": "international_sample",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "candidate",
+      "notes": "Pre-A1/A1/A2 complete materials, scoring, age demands and rights pending.",
+      "acquisition_ids": [],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.c1",
+      "title": "C1 Advanced样题",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/preparation/",
+      "category": "international_sample",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "candidate",
+      "notes": "Official navigation lead; full sample bundle and version pending.",
+      "acquisition_ids": [],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.c2",
+      "title": "C2 Proficiency样题",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/proficiency/preparation/",
+      "category": "international_sample",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "candidate",
+      "notes": "Official navigation lead; full sample bundle and version pending.",
+      "acquisition_ids": [],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cambridge.quality",
+      "title": "Cambridge测评质量与信度资料",
+      "url": "https://www.cambridgeenglish.org/english-research-group/quality-and-accountability/",
+      "category": "calibration",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "connector_page_review",
+      "notes": "Current page examined; linked material/version must be distinguished from older22695 PDF obtained as historical method reference.",
+      "acquisition_ids": [
+        "cambridge-test-quality"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ets.toefl2026",
+      "title": "TOEFL iBT2026规格",
+      "url": "https://www.eu.ets.org/pdfs/toefl/toefl-enki-test-specifications-2026.pdf",
+      "category": "exam_direction",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "file_acquired_unreviewed",
+      "notes": "Official PDF acquired. Full current tasks, media, scoring and version comparison pending.",
+      "acquisition_ids": [
+        "toefl2026-specifications"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ielts.academic",
+      "title": "IELTS Academic官方样题",
+      "url": "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test",
+      "category": "exam_direction",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "source_page_acquired",
+      "notes": "Sample webpage acquired; task bundles, answer keys, audio and scored performances still pending.",
+      "acquisition_ids": [
+        "ielts-academic"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "oxford.core",
+      "title": "Oxford3000与5000分级列表",
+      "url": "https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "Official PDFs obtained and title/scope read;5000 PDF lists additional2000. POS/level/edition preservation and product-specific permission pending.",
+      "acquisition_ids": [
+        "oxford-words",
+        "oxford3000-pdf",
+        "oxford5000-pdf"
+      ],
+      "rights": {
+        "commercial_publication": "permission_not_established",
+        "commercial_model_training": "permission_not_established",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "oxford.terms",
+      "title": "Oxford Learner网站条款",
+      "url": "https://www.oxfordlearnersdictionaries.com/terms-and-conditions",
+      "category": "rights",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "clauses_reviewed",
+      "notes": "Domestic/private-use and business restrictions checked; dictionary API is a distinct contract, not automatic wordlist permission.",
+      "acquisition_ids": [
+        "oxford-terms"
+      ],
+      "rights": {
+        "commercial_publication": "restricted_public_terms",
+        "commercial_model_training": "permission_not_established",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "englishprofile.evp",
+      "title": "English Vocabulary Profile",
+      "url": "https://englishprofile.org/?menu=english-vocabulary-profile",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "public_rendered_content_reviewed",
+      "notes": "Same-origin public rendering resources contain EVP overview and use conditions. Sense/POS distinction essential; no public commercial license.",
+      "acquisition_ids": [
+        "evp-overview",
+        "evp-terms",
+        "english-profile-static",
+        "english-profile-dynamic"
+      ],
+      "rights": {
+        "commercial_publication": "restricted_public_terms",
+        "commercial_model_training": "restricted_public_terms",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "englishprofile.egp",
+      "title": "English Grammar Profile",
+      "url": "https://englishprofile.org/?menu=english-grammar-profile",
+      "category": "grammar",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "public_rendered_content_reviewed",
+      "notes": "Public rendering and contact/license clauses checked; full profile data not exported.",
+      "acquisition_ids": [
+        "egp-terms",
+        "english-profile-dynamic"
+      ],
+      "rights": {
+        "commercial_publication": "restricted_public_terms",
+        "commercial_model_training": "restricted_public_terms",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "englishprofile.contact",
+      "title": "English Profile许可说明",
+      "url": "https://englishprofile.org/?menu=contact-us",
+      "category": "rights",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "public_rendered_content_reviewed",
+      "notes": "Contact content explicitly says EVP/EGP data are not licensed for commercial purposes; separate prior-written-consent clauses not treated as permission.",
+      "acquisition_ids": [
+        "english-profile-contact",
+        "english-profile-dynamic"
+      ],
+      "rights": {
+        "commercial_publication": "restricted_public_terms",
+        "commercial_model_training": "restricted_public_terms",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "ucl.efllex",
+      "title": "EFLLex词汇研究资源",
+      "url": "https://cental.uclouvain.be/cefrlex/efllex/download/",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "clauses_reviewed",
+      "notes": "Original site lists CC BY-NC-SA4.0; not an automatically commercial substitute. Raw lexicon not acquired.",
+      "acquisition_ids": [
+        "efllex-license"
+      ],
+      "rights": {
+        "commercial_publication": "noncommercial_only",
+        "commercial_model_training": "noncommercial_only",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "olp.cefrj",
+      "title": "CEFR-J与Octanove词汇语法资料",
+      "url": "https://github.com/openlanguageprofiles/olp-en-cefrj",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "author_distributed_repository",
+      "checked_on": "2026-10-12",
+      "verification_status": "readme_reviewed",
+      "notes": "CEFR-J repository states commercial/research with attribution; C1/C2 has separate CC BY-SA4.0. Exact files, upstream/version and obligations must be verified; not a Chinese-grade mapping.",
+      "acquisition_ids": [
+        "open-language-profiles-readme",
+        "olp-cefrj-vocabulary-profile-1.5",
+        "olp-octanove-vocabulary-profile-c1c2-1.0",
+        "olp-cefrj-grammar-profile-20180315"
+      ],
+      "rights": {
+        "commercial_publication": "conditional_candidate",
+        "commercial_model_training": "needs_specific_use_review",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "dataset.race",
+      "title": "RACE原作者入口与条款",
+      "url": "https://www.cs.cmu.edu/~glai1/data/race/",
+      "category": "research_dataset",
+      "priority": "P1",
+      "provenance": "original_author",
+      "checked_on": "2026-10-12",
+      "verification_status": "clauses_and_paper_intro_reviewed",
+      "notes": "Original app terms limit to noncommercial research and restrict commercial context/derived-data exploitation; corpus archive not downloaded. M/H is not a per-grade calibration label.",
+      "acquisition_ids": [
+        "race",
+        "race-public-app",
+        "race-paper",
+        "race-hf-card"
+      ],
+      "rights": {
+        "commercial_publication": "noncommercial_only",
+        "commercial_model_training": "noncommercial_only",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "dataset.cloth",
+      "title": "CLOTH原作者入口与条款",
+      "url": "https://www.cs.cmu.edu/~glai1/data/cloth/",
+      "category": "research_dataset",
+      "priority": "P1",
+      "provenance": "original_author",
+      "checked_on": "2026-10-12",
+      "verification_status": "clauses_and_paper_intro_reviewed",
+      "notes": "Original app terms limit to noncommercial research and restrict commercial context/derived-data exploitation; corpus archive not downloaded. M/H is not a per-grade calibration label.",
+      "acquisition_ids": [
+        "cloth",
+        "cloth-public-app",
+        "cloth-paper"
+      ],
+      "rights": {
+        "commercial_publication": "noncommercial_only",
+        "commercial_model_training": "noncommercial_only",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "acl.race",
+      "title": "RACE原论文",
+      "url": "https://aclanthology.org/D17-1082/",
+      "category": "research_dataset",
+      "priority": "P1",
+      "provenance": "original_paper",
+      "checked_on": "2026-10-12",
+      "verification_status": "paper_intro_reviewed",
+      "notes": "PDF10pages obtained, abstract/introduction read. Paper reuse terms distinct from dataset terms.",
+      "acquisition_ids": [
+        "race-paper"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "acl.cloth",
+      "title": "CLOTH原论文",
+      "url": "https://aclanthology.org/D18-1257/",
+      "category": "research_dataset",
+      "priority": "P1",
+      "provenance": "original_paper",
+      "checked_on": "2026-10-12",
+      "verification_status": "paper_intro_reviewed",
+      "notes": "PDF13pages obtained, abstract/introduction read. Full-context blank reasoning motivation; not proof of current Chinese per-grade targets.",
+      "acquisition_ids": [
+        "cloth-paper"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "microsoft.fk",
+      "title": "Flesch与Flesch-Kincaid公式说明",
+      "url": "https://support.microsoft.com/en-us/word/get-your-document-s-readability-and-level-statistics-in-microsoft-word",
+      "category": "metrics",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "source_page_reviewed",
+      "notes": "Formula explanation and U.S.school-grade interpretation read; a text feature, not Chinese school grade.",
+      "acquisition_ids": [
+        "flesch-kincaid"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "lexile.guide",
+      "title": "Lexile课堂工具说明",
+      "url": "https://hub.lexile.com/text-analyzer-user-guide/",
+      "category": "metrics",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "source_page_reviewed",
+      "notes": "Classroom estimated range and commercial publishing tool distinction checked; current membership changes must be reconciled.",
+      "acquisition_ids": [
+        "lexile-guide",
+        "lexile-current"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "lexile.commercial",
+      "title": "Lexile商业ContentCreator说明",
+      "url": "https://partnerhelp.metametricsinc.com/lexile_text_analyzer_content_creator_faq.html",
+      "category": "metrics",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "source_page_reviewed",
+      "notes": "Organization/licensed usage described; no subscription purchased or analyzer run.",
+      "acquisition_ids": [
+        "lexile-commercial"
+      ],
+      "rights": {
+        "commercial_publication": "license_required",
+        "commercial_model_training": "not_applicable",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "pep.grade8.legacy",
+      "title": "人教八上旧版产品说明",
+      "url": "https://www.pep.com.cn/products/jc/czjks/201510/t20151026_1250651.shtml",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "2011课标旧版说明及ISBN已读；仅作旧版对照。",
+      "acquisition_ids": [
+        "pep-grade8-legacy"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "pep.grade8.audio.legacy",
+      "title": "人教八上旧版配套音频目录",
+      "url": "https://www.pep.com.cn/zslth/yyptypzj/czyy/8s/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "主题序列已检查，与旧版对应；成品录音未取得。",
+      "acquisition_ids": [
+        "pep-grade8-audio"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "pep.newresources",
+      "title": "人教教材数字配套入口",
+      "url": "https://www.pep.com.cn/zslth/yyptzy/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "页面已取得，确切新版本、单元全文和资产对应待核。",
+      "acquisition_ids": [
+        "pep-new-resources"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "changde.adoption2025",
+      "title": "常德2025秋至2026春教材选用",
+      "url": "https://jyj.changde.gov.cn/zwgk/public/content/3438058201",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "local_education_authority",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "已读地方新教材年级安排；地域适用，不外推全国统一目录。",
+      "acquisition_ids": [
+        "changde-adoption2025"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "syswl.adoption2026",
+      "title": "双鸭山2026教材版本回复",
+      "url": "https://www.syswlwz.gov.cn/AskingAboutPolitics/PoliticalDetails-20260618150825628.html",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "local_education_authority",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "已读地方英语选用及旧课标教材切换说明；国家目录和具体册次仍需独立核查。",
+      "acquisition_ids": [
+        "syswl-adoption2026"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    }
+  ]
+}

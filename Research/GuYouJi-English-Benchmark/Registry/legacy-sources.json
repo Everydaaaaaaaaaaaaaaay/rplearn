@@ -1,0 +1,417 @@
+{
+  "imported_on": "2026-10-12",
+  "origin": "Backend/config/learning/catalog.json",
+  "origin_sha256": "d74a389ea94e4c00cb7d8b474e3abd0f0f8fd0b01b55024b0b17ac31500a7810",
+  "policy": "Original readAt, scope, limitations and evidence retained; no claim of new full-text review.",
+  "sources": [
+    {
+      "id": "moe.english.2022",
+      "title": "教育部《义务教育英语课程标准（2022年版）》",
+      "url": "https://www.moe.gov.cn/srcsite/A26/s8001/202204/W020220420582349487953.pdf",
+      "edition": "2022年版；完整下载201页，按实际核读页面记录",
+      "readAt": "2026-09-26",
+      "scope": "实际核读 PDF 第10、12、20、21、25、26、27、28、29页；三四年级一级要求、主题、语篇、语音、词汇和语法。",
+      "limitations": "课标规定学段要求，不直接等于十二个产品年级的精确排序；500词是二级要求，不用于给小学三年级设词汇量门槛。",
+      "evidence": [
+        {
+          "locator": "完整 PDF 文件；本批依据印刷第14、18、20–22页",
+          "sha256": "59ec3971e0dbd6ca487c4e4972cbc80effaf2fd62418d07e5f62c6698fa222fb"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary3.upper.2024",
+      "title": "人教版PEP英语三年级上册（官方电子阅读器）",
+      "url": "https://book.pep.com.cn/1212001301245/mobile/index.html",
+      "edition": "官方目录标记2024；ISBN与版权页尚未取得完整核验",
+      "readAt": "2026-09-26",
+      "scope": "实际核读前言、电子第6页目录与开篇印刷第3–4页；本批仅引用已读交友功能与其他单元的主题位置。",
+      "limitations": "家庭、动物、颜色、数字单元目前只核对目录；不把目录当作正文、完整词表或每课目标已经核读。",
+      "evidence": [
+        {
+          "locator": "电子第6页目录，标有六个单元主题",
+          "sha256": "f5bc8b7cf3385967e02bed3fd690dee07cb74be06c5a2f7062da37d7c6cc7a2a"
+        },
+        {
+          "locator": "印刷第3页，交友、问候与询问姓名",
+          "sha256": "f76658f92787e4f51f3a24dee0b7b7c83e98df77f86f1b8047a99ffc1cd4b610"
+        }
+      ]
+    },
+    {
+      "id": "jingtong.primary3.upper.2024",
+      "title": "人教精通英语三年级上册（官方电子阅读器）",
+      "url": "https://book.pep.com.cn/1212001301244/mobile/index.html",
+      "edition": "官方目录标记2024；ISBN与版权页尚未取得完整核验",
+      "readAt": "2026-09-26",
+      "scope": "实际核读前言、目录与第一课印刷第4页；核对问候、自我介绍、询问姓名的同年级安排。",
+      "limitations": "同出版社另一系列，不能代表外研、译林等出版社；未核读整册，不宣称跨全部教材等价。",
+      "evidence": [
+        {
+          "locator": "印刷第4页第一课，问候与自我介绍",
+          "sha256": "4f89a971ea4824c9637a994b9548c1fd1ec21bf1e0b8f413aa4ab3b17cebe88e"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary4.lower.2013",
+      "title": "人教版PEP英语四年级下册（2013年版公开存档）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88PEP%EF%BC%89%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E5%9B%9B%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "2013年10月第1版；ISBN 978-7-107-27387-2；版权页未填具体印次",
+      "readAt": "2026-09-26",
+      "scope": "核读版权页PDF第3页及正文PDF第22、29、32、53、56、63、66页；对应时间、天气、衣物归属和购物。",
+      "limitations": "文件来自公开社区存档，版权页与实际正文已核对；不是出版社当前电子版下载。只对所列旧版页面作语言功能参考，不声称新课标教材逐课等价；不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；核读范围见scope与各单元references",
+          "sha256": "4246acec85ea322772dea89720ca82d5483f0e6509bf3b9a3559b7e9bd2976cd"
+        }
+      ]
+    },
+    {
+      "id": "yilin.primary4.lower.2013",
+      "title": "译林版英语四年级下册（三年级起点公开存档）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E8%AF%91%E6%9E%97%E7%89%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E5%9B%9B%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf.1",
+      "edition": "2013年10月第2版、2018年11月第6次印刷；ISBN 978-7-5447-4357-0",
+      "readAt": "2026-09-26",
+      "scope": "核读版权页PDF第3页及正文PDF第21、22、27、28、35、36、41、42页；对应日常活动、能力、季节和衣物。",
+      "limitations": "文件来自公开社区存档，版权页与实际正文已核对；不是出版社当前电子版下载。只对所列旧版页面作语言功能参考，不声称新课标教材逐课等价；不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；核读范围见scope与各单元references",
+          "sha256": "937f98de1f99733c6e3ec9056de569de464db84f2df969c7c41b12ba3aa713b0"
+        }
+      ]
+    },
+    {
+      "id": "pep.junior3.full.copyright2014",
+      "title": "人教版英语九年级全一册（公开存档正文）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%88%9D%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E4%B9%9D%E5%B9%B4%E7%BA%A7/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E4%B9%9D%E5%B9%B4%E7%BA%A7%E5%85%A8%E4%B8%80%E5%86%8C.pdf",
+      "edition": "封面教育部审定2013，版权标记2014；未核验具体版次和印次",
+      "readAt": "2026-09-26",
+      "scope": "核读封面、版权页及正文PDF第34、36、42、50、58、66、82页；对应印刷第20、22、28、36、44、52、68页。",
+      "limitations": "国家平台对应PDF访问受限，改读公开社区存档，已核对封面及指定正文。审定年份不是出版版次；不宣称当前新教材逐课等价，不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；正文核读范围见scope和各单元references",
+          "sha256": "9c4118021048d901610b673f590ed28c39c04cb2d4f7fd940f83a2d8b2741af7"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.junior3.upper.review2013",
+      "title": "外研版英语新标准九年级上册（公开存档正文）",
+      "url": "https://github.com/TapXWorld/ChinaTextbook/blob/master/%E5%88%9D%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88-%E5%A4%96%E8%AF%AD%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%87%BA%E7%89%88%E7%A4%BE/%E4%B9%9D%E5%B9%B4%E7%BA%A7/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E4%B9%9D%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "封面及扉页教育部审定2013；未取得具体版次、印次与ISBN",
+      "readAt": "2026-09-26",
+      "scope": "核读封面、扉页、编辑页及正文PDF第29、45、53、67、99、105页；对应印刷第22、38、46、60、92、98页。",
+      "limitations": "国家平台对应PDF访问受限，改读公开社区存档，已核对封面及指定正文。审定年份不是出版版次；不宣称当前新教材逐课等价，不分发教材原文或图片。",
+      "evidence": [
+        {
+          "locator": "本地完整教材PDF的SHA-256；正文核读范围见scope和各单元references",
+          "sha256": "9a05cbe618e0221342ce8caf32a4ff002af4045a9745ce7b06acc4938e0780b8"
+        }
+      ]
+    },
+    {
+      "id": "pep.senior.selective1.review2019",
+      "title": "人教版普通高中英语选择性必修第一册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%B8%80%E5%86%8C.pdf",
+      "edition": "封面标注国家教材委员会专家委员会审核通过2019；存档未提供完整版次与印次，不能等同当前学期用书",
+      "readAt": "2026-10-07",
+      "scope": "核读封面、出版信息页及PDF第12、24、27、28、36、48页；对应印刷第5、17、20、21、29、41页。 2026-10-07第二组扩读：印刷5—6、17—21、29、41—42、62、101、103—105；PDF12—13、24—28、36、48—49、69、108、110—112。听理由、预测与语境推断依据为印刷6、18—19、42；印刷101支持介词to，印刷104支持既定计划询问，印刷105支持主语从句。",
+      "limitations": "本批核读公开社区存档，尚未与出版社同版完整PDF逐页核对。选择性必修册次与学校年级、学期不机械等同；只覆盖所列核读目标的原创文字及短听力练习，不复制课文、插图或习题；未取得或听完教材配套原音，不宣称完整整册或统一学期覆盖。",
+      "evidence": [
+        {
+          "locator": "完整PDF共130页的SHA-256；实际核读页码见scope及单元references，核读方式见作者逐题记录",
+          "sha256": "94ec493439239c436326e228e3d3ad78c7053ac5abc005db5739119f6a98c33d"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.senior.selective1.review2019",
+      "title": "外研版普通高中英语选择性必修第一册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88-%E5%A4%96%E8%AF%AD%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%B8%80%E5%86%8C.pdf",
+      "edition": "封面标注国家教材委员会专家委员会审核通过2019；存档未提供完整版次与印次，不能等同当前学期用书",
+      "readAt": "2026-10-07",
+      "scope": "核读封面、编辑页及PDF第24、48、60、72页；对应印刷第17、41、53、65页。 2026-10-07第二组扩读：印刷17—19、41—43、53—55、65—67；PDF24—26、48—50、60—62、72—74。印刷17第3题支持admit doing；印刷19支持事件顺序及关切安慰，印刷54支持听记，印刷66—67支持折中讨论。",
+      "limitations": "本批核读公开社区存档，尚未与出版社同版完整PDF逐页核对。选择性必修册次与学校年级、学期不机械等同；只覆盖所列核读目标的原创文字及短听力练习，不复制课文、插图或习题；未取得或听完教材配套原音，不宣称完整整册或统一学期覆盖。",
+      "evidence": [
+        {
+          "locator": "完整PDF共130页的SHA-256；实际核读页码见scope及单元references，核读方式见作者逐题记录",
+          "sha256": "9dec766018882be74c858fa34e4cb43b30313a03d90a48b3dc9a27d9607dfe5f"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary1.upper.archive",
+      "title": "人教版英语（一年级起点）一年级上册公开存档",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%B8%80%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "版权页标注 Copyright 2012；具体出版印次未确认，不认定为当前新版",
+      "readAt": "2026-09-26",
+      "scope": "核读版权页PDF第3页及正文PDF第11–12、19–20、53–54页；对应印刷第6–7页文具、第14–15页五官、第48–49页水果。 后续扩展又核读PDF第27–28、37–38、45–46页（印刷第22–23、32–33、40–41页），对应动物、数量与颜色；第11页的坐站指令用于对照。",
+      "limitations": "正文来自公开社区存档，实际核读页面已记录；不是出版社当前电子版下载，不代表2026版或全年级完整课程。不分发教材原文、录音或插图。",
+      "evidence": [
+        {
+          "locator": "已下载完整教材PDF的SHA-256；核读位置详见scope",
+          "sha256": "8a6237013cb04fd402d63c7285bfc63513c1c6537150edf0b17340f187d63bbf"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.primary1.upper.archive",
+      "title": "外研版英语（一年级起点）一年级上册公开存档",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E9%99%88%E7%90%B3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%B8%80%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "前言说明依据2011年课标修订；具体出版印次未确认",
+      "readAt": "2026-09-26",
+      "scope": "核读出版信息与前言PDF第3–4页、正文PDF第37与40页（印刷第32与35页）；文具识别用于跨版本对照。 后续扩展又核读PDF第19–20、25–26、28、49–50页（印刷第14–15、20–21、23、44–45页），对应日常指令、颜色、颜色加动物及一至十数量。",
+      "limitations": "正文来自公开社区存档，实际核读页面已记录；不是出版社当前电子版下载，不代表2026版或全年级完整课程。不分发教材原文、录音或插图。",
+      "evidence": [
+        {
+          "locator": "已下载完整教材PDF的SHA-256；核读位置详见scope",
+          "sha256": "7b1eb1b3069a7b453b4db2f13821c1bea8b09b8b27670298be9b76c2c23aa67d"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.primary2.archive20260929",
+      "title": "外研版英语小学二年级下册（一年级起点）（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E9%99%88%E7%90%B3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%BA%8C%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "前言说明依据2011年版义务教育课标修订；具体出版版次印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Module 1 Unit 1 What’s the weather like?：印刷第2–4页；PDF第7–9页；Module 2–4 / 日常动作：印刷第13–14、20–21页；PDF第18–19、25–26页；Module 9 Unit 1 Turn left!：印刷第50–51页；PDF第55–56页；Module 10 Unit 1 It’s next to the park.：印刷第57页；PDF第62页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "2cddaf22e80b2484d4b71ccb3ff42170a55d141e34521c913689145580cfd6fd"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.primary5.archive20260929",
+      "title": "外研版英语小学五年级下册（三年级起点）（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E9%99%88%E7%90%B3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%BA%94%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "前言说明依据2011年版义务教育课标修订；具体出版版次印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Module 8 Unit 1 Will you help me?：印刷第45页；PDF第50页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "c76dcd30ff385dcbf029919647eec07d4581c22111c6bb275548a861283c1934"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.primary6.archive20260929",
+      "title": "外研版英语小学六年级下册（三年级起点）（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E9%99%88%E7%90%B3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E5%85%AD%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "前言说明依据2011年版义务教育课标修订；具体出版版次印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Module 2 Unit 1 When are we going to eat?：印刷第10页；PDF第15页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "9877edf3a822089804dafbb9d90877495916336b3974f78b13292121cbf7cf93"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.senior1.archive20260929",
+      "title": "外研版英语普通高中必修第一册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88-%E5%A4%96%E8%AF%AD%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%B8%80%E5%86%8C.pdf",
+      "edition": "高中2017年课标体系，具体出版版次与印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Unit 3 Family matters / Using language：印刷第29页；PDF第36页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "5e5228514ae681d323d6bee97d8a2b1e39380cf2f64c0c10ec8d82bdde0c605b"
+        }
+      ]
+    },
+    {
+      "id": "fltrp.senior3.archive20260929",
+      "title": "外研版英语普通高中选择性必修第四册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E5%A4%96%E7%A0%94%E7%A4%BE%E7%89%88-%E5%A4%96%E8%AF%AD%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E5%9B%9B%E5%86%8C.pdf",
+      "edition": "高中2017年课标体系，具体出版版次与印次未核实",
+      "readAt": "2026-10-07",
+      "scope": "实际核读正文：Unit 1 Looking forwards / Using language：印刷第5页；PDF第12页；Unit 3 The world meets China / Using language：印刷第29页；PDF第36页；Unit 5 Into the unknown / Using language：印刷第53页；PDF第60页 2026-10-07第二组扩读：印刷19、29、42、43、53、54、55；对应一基PDF26、36、49、50、60、61、62。印刷19要求听访谈选择主旨、记录经历与建议；29复习状语从句；42要求听对话、补记事实、区分请求澄清与作出解释；53复习名词从句；55要求听访谈主旨、记录解释及证据限制并追问。43和54为邻页阅读，仅用于确定章节上下文，不作为本组听力依据。",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "78a57c3e0d9c55a7afda9ebbb76e92655109031b8c9d3fc66c3201b105a8ec8d"
+        }
+      ]
+    },
+    {
+      "id": "pep.junior1.archive20260929",
+      "title": "人教版英语七年级上册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%88%9D%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E4%B8%83%E5%B9%B4%E7%BA%A7/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E4%B8%83%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "版权标记2012；七年级上册，具体版次印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Unit 3 Is this your pencil? / Grammar Focus：印刷第15页；PDF第38页；Unit 4 Where’s my schoolbag? / Grammar Focus：印刷第21页；PDF第44页；Unit 6 Do you like bananas? / Grammar Focus：印刷第33页；PDF第56页；Unit 7 How much are these socks? / Grammar Focus：印刷第39页；PDF第62页；Unit 9 My favorite subject is science. / Grammar Focus：印刷第51页；PDF第74页；Unit 5 Do you have a soccer ball? / Grammar Focus：印刷第27页；PDF第50页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "4cdfd213e2c54164b6b97bcd6d15e93b71e6b243e8aea958f330e6bf8822f46e"
+        }
+      ]
+    },
+    {
+      "id": "pep.junior2.archive20260929",
+      "title": "人教版英语八年级上册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%88%9D%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E5%85%AB%E5%B9%B4%E7%BA%A7/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E5%85%AB%E5%B9%B4%E7%BA%A7%E4%B8%8A%E5%86%8C.pdf",
+      "edition": "版权标记2013；八年级上册，具体版次印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Unit 2 How often do you exercise? / Grammar Focus：印刷第11页；PDF第22页；Unit 3 I’m more outgoing than my sister. / Grammar Focus：印刷第19页；PDF第30页；Unit 9 Can you come to my party? / Grammar Focus：印刷第67页；PDF第78页；Unit 10 If you go to the party, you’ll have a great time! / Grammar Focus：印刷第75页；PDF第86页；Unit 6 I’m going to study computer science. / Grammar Focus：印刷第43页；PDF第54页；Unit 8 How do you make a banana milk shake? / Grammar Focus：印刷第59页；PDF第70页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "b6aede721a90f5e18420e01a9030709ebf3d9231121db71f8474d0034a10e781"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary2.archive20260929",
+      "title": "人教版英语小学二年级下册（一年级起点）（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%BA%8C%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "前言2013年5月；一年级起点新起点英语，未核实具体印次",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Unit 1 Playtime / Lesson 1–2：印刷第4–5页；PDF第8–9页；Unit 6 My Week / Lesson 1–2：印刷第46–47页；PDF第50–51页；Unit 4 Time / Lesson 1–2：印刷第30–31页；PDF第34–35页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "1d5c94e7579d84e99114875f7e7c87225f065e1716300e4978ef178a8577c3ce"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary5.archive20260929",
+      "title": "人教版英语小学五年级下册（三年级起点）（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88PEP%EF%BC%89%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E4%BA%94%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "2014年10月第1版；ISBN 978-7-107-29086-2，印次未核实",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Unit 5 Whose dog is it? / Let’s wrap it up：印刷第54页；PDF第59页；Unit 3 My school calendar / Let’s wrap it up：印刷第30页；PDF第35页；Unit 1 My day / Let’s talk：印刷第7页；PDF第12页；Unit 6 Work quietly! / Let’s learn：印刷第59页；PDF第64页；Unit 4 When is the art show? / Let’s wrap it up：印刷第44页；PDF第49页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "aecbc56ad3009e0d25cb723bc6a350c5e3544c49b5d80d5ab9f4646814709b5e"
+        }
+      ]
+    },
+    {
+      "id": "pep.primary6.archive20260929",
+      "title": "人教版英语小学六年级下册（三年级起点）（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E5%B0%8F%E5%AD%A6/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88%EF%BC%88PEP%EF%BC%89%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%EF%BC%88%E4%B8%BB%E7%BC%96%EF%BC%9A%E5%90%B4%E6%AC%A3%EF%BC%89/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%EF%BC%88%E4%B8%89%E5%B9%B4%E7%BA%A7%E8%B5%B7%E7%82%B9%EF%BC%89%E5%85%AD%E5%B9%B4%E7%BA%A7%E4%B8%8B%E5%86%8C.pdf",
+      "edition": "2014年10月第1版、2017年11月第4次印刷；ISBN 978-7-107-29071-8",
+      "readAt": "2026-09-29",
+      "scope": "实际核读正文：Unit 1 How tall are you? / Let’s learn：印刷第7页；PDF第12页；Unit 4 Then and now / Let’s learn：印刷第35页；PDF第40页；Unit 3 Where did you go? / Let’s learn：印刷第27页；PDF第32页；Unit 2 Last weekend / Let’s learn：印刷第17页；PDF第22页",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "2e6e1f362999619f174cd51498e60a486c3f8222b543b31b99f30c2bc131d041"
+        }
+      ]
+    },
+    {
+      "id": "pep.senior1.archive20260929",
+      "title": "人教版英语普通高中必修第一册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%B8%80%E5%86%8C.pdf",
+      "edition": "高中2017年课标体系，具体出版版次与印次未核实",
+      "readAt": "2026-10-07",
+      "scope": "实际核读正文：Unit 1 Teenage Life / Write a letter of advice：印刷第19页；PDF第26页；Unit 4 Natural Disasters / Discovering Useful Structures：印刷第52页；PDF第59页；Unit 2 Travelling Around / Discovering Useful Structures：印刷第28页；PDF第35页；Unit 5 Languages Around the World / Discovering Useful Structures：印刷第64页；PDF第71页；Unit 3 Sports and Fitness / Discovering Useful Structures：印刷第40页；PDF第47页 2026-10-07第二组另核读：印刷7/17/18/24/28/29/36/40/41/52/53/64，对应PDF14/24/25/31/35/36/43/47/48/59/60/71。第二组建议依据为印刷18/PDF25，保留此前印刷19/PDF26记录的范围差异。",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "ffe985a370964820aa003008f48c7cf17b5e0dff8eb29fe54cd4743b0c4e8c79"
+        }
+      ]
+    },
+    {
+      "id": "pep.senior3.archive20260929",
+      "title": "人教版英语普通高中选择性必修第四册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E5%9B%9B%E5%86%8C.pdf",
+      "edition": "高中2017年课标体系，具体出版版次与印次未核实",
+      "readAt": "2026-10-07",
+      "scope": "实际核读正文：Unit 1 Science Fiction / Review useful structures：印刷第5页；PDF第12页；Unit 2 Iconic Attractions / Review useful structures：印刷第17页；PDF第24页；Unit 3 Sea Exploration / Review useful structures：印刷第29页；PDF第36页 2026-10-07第二组扩读：印刷5、6、7、18、19、30、31、32、33；对应一基PDF12、13、14、25、26、37、38、39、40。印刷5为被动语态与时间视角；6—7为听语篇标记、组织立场和话题转换；18—19为听说话人选择及理由、听补总结表达；30—31为听动作顺序及原因；32—33为找论点与证据、判断材料支持哪方、用PEEL组织并修订论证。",
+      "limitations": "公开社区存档文件，核读指定正文并记录整册摘要；不是出版社当前新版下载，不宣称2024年后新教材逐课对齐。高中分册对应产品年级为本系统教学排序，不等于全国统一学期安排。不分发教材原文、插图或录音。",
+      "evidence": [
+        {
+          "locator": "完整下载PDF的SHA-256；实际核读正文页码见scope及单元references",
+          "sha256": "2ad7555a13eb420aa70497f9faa2541fdb502b7ffc4e063e87c60cce88f1b4a3"
+        }
+      ]
+    },
+    {
+      "id": "cet.official.2016",
+      "title": "全国大学英语四、六级考试大纲（2016年修订版）",
+      "url": "https://cet.neea.edu.cn/res/Home/1704/55b02330ac17274664f06d9d3db8249d.pdf",
+      "edition": "教育部考试中心、全国大学英语四、六级考试委员会；2016年修订版",
+      "readAt": "2026-10-07",
+      "scope": "主代理核读印刷1—6／PDF6—11；四级作者另核读列明样卷页并目视能力页和样卷页。本批只参考熟悉场景的词义、衔接、信息、交际和句子译义局部技能。 六级作者另核读印刷1—4、7—9／PDF6—9、12—14并目视能力正文和六级结构页；六级单元参考隐含意义、观点态度、句间关系、贴切措辞及讨论澄清要求。",
+      "limitations": "不是最新考试政策声明，不复制官方题文，不模拟全卷或宣称考试等值。官方目录仍列2016修订大纲；完整听力、篇章阅读、写作与翻译测评未实现。",
+      "evidence": [
+        {
+          "locator": "官方2016修订版PDF，主代理核读印刷1—6；本地research/cet-2016.pdf",
+          "sha256": "9166d3c03b7bc43abd9d9df91bd2ef8085b4419286f1e5ca100dea68f3cfd1f1"
+        }
+      ]
+    },
+    {
+      "id": "cse.official.search.2024",
+      "title": "中国英语能力等级量表2024版官方描述语检索工具",
+      "url": "https://cse.neea.edu.cn/html1/folder/2503/1-1.htm",
+      "edition": "GF 0018-2024；官方检索数据2026-10-07快照",
+      "readAt": "2026-10-07",
+      "scope": "实际核读顶层2、3及功能条目802、2404、2805、3505、3516、4708、8507、8706、8808、9105、9509。",
+      "limitations": "七八级仅为描述语检索范围，本产品短任务不构成达级认证；网页条目无页码。口头说明的转述功能在本组迁移为文字任务，不声称测得口语或听力。",
+      "evidence": [
+        {
+          "locator": "官方ability.json完整快照；build/learning-expansion-20261007/research/cse-2024-search.json",
+          "sha256": "290d507765a9ae2767eaf6a871f896139ededea56843fe622d293c0b17f1bc95"
+        }
+      ]
+    },
+    {
+      "id": "oxford.only.adverb.20261007",
+      "title": "Oxford Advanced Learner’s Dictionary：only副词义项8",
+      "url": "https://www.oxfordlearnersdictionaries.com/definition/english/only_2",
+      "edition": "牛津高阶学习词典官方在线条目；网页版本，未核实纸质版次",
+      "readAt": "2026-10-07",
+      "scope": "实际核读only副词条目义项8，only to do something引出紧接发生、尤其令人意外或失望的事件；用于高三r05结果用法核查。",
+      "limitations": "只核读该词条及具体义项，不宣称教材整册对齐。证据哈希为本地局部核读记录，不是网页HTML哈希。题干及选项原创，未复制词典例句。",
+      "evidence": [
+        {
+          "locator": "Backend/config/learning/authoring/senior3-oxford-only-reading.md；含官方URL、义项定位、实际读取的短定义及核读边界",
+          "sha256": "bb77adab90cd16e37c0c0a8272498618d3590303081383cdf47f1669ad189750"
+        }
+      ]
+    },
+    {
+      "id": "pep.senior.selective2.preface2019",
+      "title": "人教版普通高中英语选择性必修第二册（公开存档正文）",
+      "url": "https://raw.githubusercontent.com/TapXWorld/ChinaTextbook/master/%E9%AB%98%E4%B8%AD/%E8%8B%B1%E8%AF%AD/%E4%BA%BA%E6%95%99%E7%89%88-%E4%BA%BA%E6%B0%91%E6%95%99%E8%82%B2%E5%87%BA%E7%89%88%E7%A4%BE/%E6%99%AE%E9%80%9A%E9%AB%98%E4%B8%AD%E6%95%99%E7%A7%91%E4%B9%A6%C2%B7%E8%8B%B1%E8%AF%AD%E9%80%89%E6%8B%A9%E6%80%A7%E5%BF%85%E4%BF%AE%20%E7%AC%AC%E4%BA%8C%E5%86%8C.pdf",
+      "edition": "册名、编著机构及2019年4月前言已核；具体版次、印次未核",
+      "readAt": "2026-10-07",
+      "scope": "PDF1—4、12、24；正文印刷5、17名词性从句。",
+      "limitations": "社区存档，未与出版社同版完整PDF逐页核对；仅所列页面为本次语言任务依据。",
+      "evidence": [
+        {
+          "locator": "134页完整PDF；本次核读范围见scope",
+          "sha256": "cafaee5fe508dfced31ba02877251ffeb01e98b1a48767fe30b2b7187edb0050"
+        }
+      ]
+    }
+  ]
+}
