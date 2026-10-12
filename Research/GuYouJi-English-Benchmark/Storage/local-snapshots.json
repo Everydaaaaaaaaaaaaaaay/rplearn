@@ -431,6 +431,145 @@
           "Group source references not rewritten for deployment;structureonly"
         ]
       }
+    },
+    {
+      "snapshot_id": "2026-10-12T205015.215960+0000-467a131d",
+      "created_at_utc": "2026-10-12T20:50:15.215960+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T205015.215960+0000-467a131d",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T205015.215960+0000-467a131d/snapshot-manifest.json",
+      "manifest_sha256": "e5765cc10e1e085373154f835b678ffa304c99dfddfbc89edd7cd482118720cf",
+      "files_verified": 2403,
+      "bytes_verified": 640842467,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write": 2403
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Captures all registered assets and research files through75590203 including IELTS16private performances and ZZ7 observations;later snapshot registration/notes not retroactively included.",
+      "new_material_restore_evidence": {
+        "snapshot_id": "2026-10-12T205015.215960+0000-467a131d",
+        "status": "same_host_new_ielts_and_zz7_restore_verified",
+        "files": [
+          {
+            "source": "build/english-benchmark-research-20261012/raw/ielts-academic-writing-sample2023.pdf",
+            "sha256": "f9b5b43fbb3f070741f970ecf2adbfaaef8b2f520eb5e2d350bae39557b1c7af",
+            "restored_bytes": 1496682,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "pdf_pages": 26,
+              "score_or_unordered_key_text_present": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/ielts-academic-reading-sample2023.pdf",
+            "sha256": "61035d701cbc12b8aff41c6df25bc25d2d394f6e915ea258c82d2b384be7ed8f",
+            "restored_bytes": 933674,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "pdf_pages": 46,
+              "score_or_unordered_key_text_present": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/ielts-private-performances/ielts-writing2023-1C-scriptC.json",
+            "sha256": "7ec8a231df4dad2aae03046b96e8a3dee8af905a0d1d18d0961b1296d1d55a0c",
+            "restored_bytes": 6698,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "task_band": 8.5,
+              "unknown_criterion_scores": 4,
+              "required_visual_retained": true
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/ielts-writing2023-page05.png",
+            "sha256": "0169384eb9e277ad3ae79cbf492441e63a292d70501d68f9120aafa4c846de65",
+            "restored_bytes": 491469,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "image_size": [
+                1132,
+                1600
+              ]
+            }
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/zz7-2026-grade10-upper-image9.png",
+            "sha256": "db9b06756d5df0b5d33f560814aac96f736504e4d0d75d93f38abe9a3ba93541",
+            "restored_bytes": 110803,
+            "copy_method": "macos_clonefile_copy_on_write",
+            "parsed_check": {
+              "image_size": [
+                900,
+                155
+              ]
+            }
+          }
+        ],
+        "limitations": [
+          "Same disk/host;not disaster recovery",
+          "Structure/format checks,not independent semantic or scoring validation"
+        ]
+      }
     }
   ]
 }
