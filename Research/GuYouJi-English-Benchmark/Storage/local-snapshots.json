@@ -881,6 +881,227 @@
           "Audio container/CRC/duration only;no full listening"
         ]
       }
+    },
+    {
+      "snapshot_id": "2026-10-12T222035.161735+0000-3b7e4243",
+      "created_at_utc": "2026-10-12T22:20:35.161735+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T222035.161735+0000-3b7e4243",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T222035.161735+0000-3b7e4243/snapshot-manifest.json",
+      "manifest_sha256": "f1d85e47c4793e9465219bff0fd3edad07e081317b6ae32cf509fa5acd67caa2",
+      "files_verified": 3041,
+      "bytes_verified": 948594442,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write": 3041
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Captures all registered assets and research files through33dfd8b8, including selected PEP appendix/NGSL files and two historical grade8 task-image bundles. Newly acquired later PEP Unit1 context images and this registration are not retroactively included.",
+      "new_material_restore_evidence": {
+        "snapshot_id": "2026-10-12T222035.161735+0000-3b7e4243",
+        "snapshot_code_replayed": true,
+        "reproduced_outputs": [
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-private-native-index.json",
+            "replayed_sha256": "0fab78aa8c879268ca56ae8532460c1baef09df19ea3e13f43da392558d5a76c",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-native-inspection-summary.json",
+            "replayed_sha256": "9b509d0ad530da84af41fe4766d84e908532b10cda6063f5fe1da6e96564cafc",
+            "identical": true
+          }
+        ],
+        "additional_actual_asset_checks": [
+          {
+            "source": "build/english-benchmark-research-20261012/raw/pep-selected-1312001102241-vocab-page107.jpg",
+            "bytes": 767703,
+            "sha256": "20430a94192702dcaada5464ba5ce15c8b2f9e45ba783f23e89f1d804ec8c7d1",
+            "dimensions": [
+              1274,
+              1800
+            ],
+            "decoded": true
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-image13.jpg",
+            "bytes": 26445,
+            "sha256": "6eb9e9ba9e1e4392d860cf2bd7a39313421366a7b68b1e1a0f18992eefc9d3dc",
+            "dimensions": [
+              480,
+              271
+            ],
+            "decoded": true
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/suzhou-snd2018-image02.jpg",
+            "bytes": 14965,
+            "sha256": "0a160281f4a6bc8d0a405533a2c95912c2e9d7c75586e73559d56232fbc5b29a",
+            "dimensions": [
+              502,
+              120
+            ],
+            "decoded": true
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/xcu2021-2022-scope-image02.jpg",
+            "bytes": 63154,
+            "sha256": "76e9ed86070b941a2edbbed62b36d53afe2b9506b97233dd8517341abe3d3e23",
+            "dimensions": [
+              600,
+              710
+            ],
+            "decoded": true
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/suzhou-sip2018-curl-normal.html",
+            "bytes": 304351,
+            "sha256": "e9036ca824e62c019e3fce9b22c7e22e7467b6ad8ba8ecf0e74e96e9cf4d176a",
+            "format": "UTF8_HTML",
+            "native_exam_marker_checked": true
+          },
+          {
+            "source": "build/english-benchmark-research-20261012/raw/suzhou-snd2018-curl-normal.html",
+            "bytes": 342615,
+            "sha256": "205d678d80ce7f7351072d1b53dda139c4a4e0267d81ee6d0c8be1933a8f5231",
+            "format": "UTF8_HTML",
+            "native_exam_marker_checked": true
+          }
+        ],
+        "NGSL_source_files_replayed": 11,
+        "total_NGSL_source_rows_replayed": 18314,
+        "independent_lexical_or_student_validation": false,
+        "off_host_or_disk_loss_test": false
+      },
+      "new_body_workbook_restore_evidence": {
+        "snapshot_id": "2026-10-12T222035.161735+0000-3b7e4243",
+        "replayed_saved_HTML_extraction_script": true,
+        "reproduced_bodies": [
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-core-page20261013-body.txt",
+            "replayed_sha256": "01a9881a5ffce1261c2d1a08d93a2c0c7000310dceae107dfdba7a2cca23a7f1",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-spoken-page20261013-body.txt",
+            "replayed_sha256": "9c886322d646a304888c2d33f1660451a1af6d7bdd8799ef38ef5dfe722dd7ca",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-ndl-page20261013-body.txt",
+            "replayed_sha256": "8ce91aa0b45327295bf2e80126356683e0b595ebfd67b1ddfaa53d9f4cabc2e8",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-gr-page20261013-body.txt",
+            "replayed_sha256": "6c76aa64d68163a8a74776fddcd8ad74fffed689418d9dca890f6445de9f2045",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-current-faq20261013-body.txt",
+            "replayed_sha256": "896b6a32eea3398652db8a3b65b1c93e07c555514ef4752ae274da498843e360",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/ngsl-current-research20261013-body.txt",
+            "replayed_sha256": "5fee9ee8d3b891565c6125fb0f129c48fc6ca39767c934732041a26628388405",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/cc-bysa4-deed20261013-body.txt",
+            "replayed_sha256": "7bfc9ca7efa6add06f54abfde60bb31386b1b7fb29d786c96ce0286f27ea6934",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/cc-bysa4-legalcode20261013-body.txt",
+            "replayed_sha256": "f6f26901bc51e3da63ab41d33ba56786807f5197724cbacd8254f38d7e91a9e4",
+            "identical": true
+          },
+          {
+            "saved": "build/english-benchmark-research-20261012/oxford-api-current-terms20261013-body.txt",
+            "replayed_sha256": "50422c4f8fbff17aff00521e5fa07f4c178c3a23c1e525cd82310cc92ad5a7d6",
+            "identical": true
+          }
+        ],
+        "reproduced_extended_workbook": {
+          "source": "build/english-benchmark-research-20261012/raw/ngsl-31k-workbook20261013.xlsx",
+          "source_sha256": "6d0da411fb88ee5577d11e72a368c717b9bce088590f6ae34e2d8d148afe6bf3",
+          "sheet": "SFI adj",
+          "data_rows": 31240,
+          "unique_headwords": 31239,
+          "source_wordlist_counts": {
+            "1 - NGSL": 2809,
+            "2 - Sup": 47,
+            "3 - NAWL": 955,
+            "None": 27429
+          },
+          "duplicate_criteria_rows": [
+            1853,
+            1882
+          ],
+          "reproduced": true
+        },
+        "licence_adjudication_or_student_validation": false,
+        "off_host_test": false
+      }
     }
   ]
 }
