@@ -111,6 +111,41 @@
         "Whitespace normalized;prefix/gap count retained;screen rendering not verified",
         "No live grading or observed learner time"
       ]
+    },
+    {
+      "id": "research.neea2024.adaptive.readingA",
+      "source_id": "neea.english2024",
+      "acquisition_id": "neea2024-readingA-private-group20261013",
+      "contract_version": "0.2",
+      "group_version": "single-visual-transcript-v1",
+      "scoring_version": "official-key-unknown-v1",
+      "item_count": 3,
+      "stable_options_per_item": 4,
+      "source_text_blocks": 6,
+      "source_pages": [
+        3,
+        4
+      ],
+      "source_marks_total": 7.5,
+      "unknown_scoring_ids": [
+        "s21",
+        "s22",
+        "s23"
+      ],
+      "structure_validation": "passed_schema_references_and_four_corruption_cases",
+      "initial_failure_acquisition_id": "neea2024-readingA-initial-scope-failure20261013",
+      "contract_audit_acquisition_id": "neea2024-readingA-blueprint-check20261013",
+      "public_projection": "Retains title/fiveparagraphs/threequestions/alloptions;privatekeys/locators omitted",
+      "independent_review": "not_available",
+      "learner_calibration": "not_available",
+      "commercial_permission": "unknown",
+      "production_admission": false,
+      "limitations": [
+        "Singlevisual draft,not independentgold",
+        "Schema accepts an omitted paragraph;completeness needs sourcecomparison",
+        "Unknown officialkeys not replaced by solvedanswers",
+        "Samepaper groups are not independentmaterialfamilies;legacyadaptiveID not a CATclaim"
+      ]
     }
   ]
 }
