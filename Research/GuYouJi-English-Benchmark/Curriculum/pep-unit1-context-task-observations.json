@@ -25,7 +25,7 @@
     "next_unit": 2,
     "Unit1_heading_and_three_script_blocks_complete": true
   },
-  "source_recording_acquired": false,
+  "source_recording_acquired": true,
   "source_key_or_rubric_acquired": false,
   "tasks": [
     {
@@ -53,7 +53,9 @@
       "source_key": "not_acquired",
       "evidence_acquisition_ids": [
         "pep-unit1-context-1312001102241-image012"
-      ]
+      ],
+      "label_associated_recording_acquisition_id": "pep-grade7lower-unit1-audio0120261013",
+      "recording_match_status": "Official entry label matches task label;spokencontent/cue not verified"
     },
     {
       "id": "pep.g7lower.u1.sectionA.1c",
@@ -67,7 +69,9 @@
       "source_key": "not_acquired",
       "evidence_acquisition_ids": [
         "pep-unit1-context-1312001102241-image012"
-      ]
+      ],
+      "label_associated_recording_acquisition_id": "pep-grade7lower-unit1-audio0220261013",
+      "recording_match_status": "Official entry label matches task label;spokencontent/cue not verified"
     },
     {
       "id": "pep.g7lower.u1.sectionA.2a",
@@ -82,7 +86,9 @@
       "source_key": "not_acquired",
       "evidence_acquisition_ids": [
         "pep-unit1-context-1312001102241-image013"
-      ]
+      ],
+      "label_associated_recording_acquisition_id": "pep-grade7lower-unit1-audio0620261013",
+      "recording_match_status": "Official entry label matches task label;spokencontent/cue not verified"
     },
     {
       "id": "pep.g7lower.u1.sectionB.1b",
@@ -95,7 +101,9 @@
       "source_key": "not_acquired",
       "evidence_acquisition_ids": [
         "pep-unit1-context-1312001102241-image016"
-      ]
+      ],
+      "label_associated_recording_acquisition_id": "pep-grade7lower-unit1-audio0820261013",
+      "recording_match_status": "Official entry label matches task label;spokencontent/cue not verified"
     },
     {
       "id": "pep.g7lower.u1.sectionB.1c",
@@ -183,7 +191,9 @@
         "pep-unit1-context-1312001102241-image013",
         "pep-unit1-context-1312001102241-image014",
         "pep-unit1-script-1312001102241-image084"
-      ]
+      ],
+      "label_associated_recording_acquisition_id": "pep-grade7lower-unit1-audio0720261013",
+      "recording_match_status": "Official entry label matches task label;spokencontent/cue not verified"
     },
     {
       "id": "pep.g7lower.u1.sectionA.2d",
@@ -337,7 +347,7 @@
       ],
       "observed_2c_task_page": true,
       "source_script_shared_label": true,
-      "implementation_boundary": "2a provides dialogue,2b rereads to table,2c explicitly listens again and roleplays;2d-2f reuse categories/question/card supports. Exact recording/playcount/time remain unobserved."
+      "implementation_boundary": "2a provides dialogue,2b rereads to table,2c explicitly listens again and roleplays;2d-2f reuse supports. Labelled2a/2cfiles acquired with distinct SHA/duration;exact speech alignment,replay rules andlearner time remain unestablished."
     }
   ],
   "scaffold_observations": [
@@ -401,5 +411,8 @@
     "source_task_fully_represented": false,
     "proposed_span_kind_rejected": true,
     "draft_extension_path": "ItemGroups/Annotation-v0.3.md"
-  }
+  },
+  "source_recording_acquired_scope": "Nine public Unit1 labelled media files andcontainers acquired;exact spoken-script/taskcue match not established",
+  "media_observation_path": "Curriculum/pep-unit1-media-observations.json",
+  "source_media_semantic_verification": false
 }
