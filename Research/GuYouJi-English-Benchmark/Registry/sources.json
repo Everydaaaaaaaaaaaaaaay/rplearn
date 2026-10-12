@@ -81,18 +81,51 @@
       "priority": "P0",
       "provenance": "official_publisher",
       "checked_on": "2026-10-12",
-      "verification_status": "dynamic_shell_acquired",
-      "notes": "Catalog shell acquired; full current books and ISBN not acquired.",
+      "verification_status": "partial_primary_frontmatter_review",
+      "notes": "Official reader shells/configurations and limited frontmatter now acquired after normal public navigation referrer. Grade7upper digital pages explicitly restrict other uses without authorization; no full book intake or commercial clearance.",
       "acquisition_ids": [
-        "pep-textbooks"
+        "pep-textbooks",
+        "pep-reader-1312001101241-with-navigation-referrer",
+        "pep-reader-nav-1312001301261",
+        "pep-reader-nav-1312001202251",
+        "pep-reader-nav-1312001102241",
+        "pep-reader-nav-1412001130201",
+        "pep-reader-nav-1412001129201",
+        "pep-reader-nav-1412001128201",
+        "pep-reader-nav-1412001127191",
+        "pep-reader-nav-1412001123191",
+        "pep-reader-nav-1412001122191",
+        "pep-reader-nav-1412001121191",
+        "pep-reader-nav-1312001303141",
+        "pep-reader-nav-1312001201251",
+        "pep-config-1312001301261",
+        "pep-config-1312001202251",
+        "pep-config-1312001102241",
+        "pep-config-1412001130201",
+        "pep-config-1412001129201",
+        "pep-config-1412001128201",
+        "pep-config-1412001127191",
+        "pep-config-1412001123191",
+        "pep-config-1412001122191",
+        "pep-config-1412001121191",
+        "pep-config-1312001303141",
+        "pep-config-1312001201251",
+        "pep-grade7up-page001",
+        "pep-grade7up-page002",
+        "pep-grade7up-page003",
+        "pep-grade7up-page004",
+        "pep-grade7up-page005",
+        "pep-grade7up-page006",
+        "pep-grade7up-page007",
+        "pep-grade7up-page008"
       ],
       "rights": {
-        "commercial_publication": "unknown",
-        "commercial_model_training": "unknown",
-        "bulk_database_reuse": "unknown",
-        "adaptation": "unknown",
-        "third_party_model_transmission": "unknown",
-        "redistribution": "unknown"
+        "commercial_publication": "requires_prior_authorization_not_obtained",
+        "commercial_model_training": "requires_prior_authorization_not_obtained",
+        "bulk_database_reuse": "requires_prior_authorization_not_obtained",
+        "adaptation": "requires_prior_authorization_not_obtained",
+        "third_party_model_transmission": "requires_prior_authorization_not_obtained",
+        "redistribution": "requires_prior_authorization_not_obtained"
       }
     },
     {
@@ -106,7 +139,8 @@
       "verification_status": "dynamic_shell_acquired",
       "notes": "Catalog shell acquired; current series, editions and units pending.",
       "acquisition_ids": [
-        "fltrp-textbooks"
+        "fltrp-textbooks",
+        "fltrp-nse-legacy-ebook-index"
       ],
       "rights": {
         "commercial_publication": "unknown",
@@ -128,7 +162,8 @@
       "verification_status": "access_pending",
       "notes": "Search locator found, direct and connector access timed out; current/legacy catalogs differ.",
       "acquisition_ids": [
-        "yilin-textbooks"
+        "yilin-textbooks",
+        "yilin-comparison-ebook-index"
       ],
       "rights": {
         "commercial_publication": "unknown",
@@ -1550,6 +1585,76 @@
       "notes": "Connector index body reviewed; relevant detail links redirect to unavailable WeChat articles. Direct index TLS fetch failed. October2025senior implementation claim visible in index only; original issuance order not acquired.",
       "acquisition_ids": [
         "ictr-revision-index"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "pep.current-audio-units",
+      "title": "人教新版初中五册官方单元及配套音频目录",
+      "url": "https://www.pep.com.cn/zslth/yyptzy/czyy/7s/",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-12",
+      "verification_status": "partial_primary_review",
+      "notes": "Five HTML bodies parsed:39formal units+3starter units,330track references. No audio bytes,transcripts,full lexical/grammar matrices or exact ISBN/adoption completed.",
+      "acquisition_ids": [
+        "pep-official-grade7up-audio",
+        "pep-official-grade7down-audio",
+        "pep-official-grade8up-audio",
+        "pep-official-grade8down-audio",
+        "pep-official-grade9up-audio"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "freepep.catalog-lead",
+      "title": "FreePEP第三方目录线索",
+      "url": "https://github.com/siknet/FreePEP/blob/main/pep_catalog.json",
+      "category": "textbook",
+      "priority": "P1",
+      "provenance": "third_party_metadata",
+      "checked_on": "2026-10-12",
+      "verification_status": "discovery_only",
+      "notes": "Use as URL discovery only; creator labels and image-path dates do not establish book edition,permissions or publisher source authority.",
+      "acquisition_ids": [
+        "freepep-catalog-lead"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "bnu.pep-grade8-analysis-preview",
+      "title": "人教初中新版八上教材解析公开预览",
+      "url": "https://flts.bnu.edu.cn/node/17093",
+      "category": "textbook",
+      "priority": "P0",
+      "provenance": "journal_publisher_author_preview",
+      "checked_on": "2026-10-12",
+      "verification_status": "abstract_metadata_only",
+      "notes": "Preview identifies authors at PEP curriculum institute and2025issue12pp7-12; page2026-10-11. Paid body not acquired; do not count as full teacher guidance.",
+      "acquisition_ids": [
+        "bnu-pep-grade8-analysis-preview"
       ],
       "rights": {
         "commercial_publication": "unknown",

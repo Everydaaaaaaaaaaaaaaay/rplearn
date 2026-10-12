@@ -71,7 +71,7 @@ def main():
 
     cache_checked = 0
     for identity, row in acquisitions.items():
-        if row.get('status') != 'fetched_unreviewed':
+        if row.get('status') != 'fetched_unreviewed' and not row.get('path'):
             continue
         if not all(key in row for key in ('path', 'bytes', 'sha256', 'review_scope', 'format_validation')):
             errors.append(f'{identity}: incomplete acquisition metadata')
