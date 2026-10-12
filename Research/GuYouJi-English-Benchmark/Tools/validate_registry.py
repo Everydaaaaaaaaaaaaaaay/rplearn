@@ -60,8 +60,12 @@ def main():
             for key, target in value.items():
                 if key == 'source_id' and (not isinstance(target, str) or target not in sources):
                     errors.append(f'{location}: unknown source {target}')
-                if key == 'acquisition_id' and (not isinstance(target, str) or target not in acquisitions):
+                if key.endswith('acquisition_id') and (not isinstance(target, str) or target not in acquisitions):
                     errors.append(f'{location}: unknown acquisition {target}')
+                if key.endswith('acquisition_ids'):
+                    if not isinstance(target, list) or any(
+                            not isinstance(item, str) or item not in acquisitions for item in target):
+                        errors.append(f'{location}: invalid acquisition references {target}')
                 check_references(target, location + '/' + key)
         elif isinstance(value, list):
             for offset, child in enumerate(value):
