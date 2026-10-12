@@ -20488,6 +20488,46 @@
         "tool": "stdlib.HTMLParser or ffprobe"
       },
       "manifest": "build/english-benchmark-research-20261012/derive-manifest-pep-unit1-audio20261013.json"
+    },
+    {
+      "id": "snapshot10-no-mapping-full-restore-audit20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot10-no-mapping-full-restore-audit.json",
+      "bytes": 18310,
+      "sha256": "e2e27dca6077675a9a5c7acbdc9efa5e24781701d97934d153f3964b36364855",
+      "format_validation": "json_parsed",
+      "review_scope": "Full3103file independentrestore with0metadata rewrites,1114cache/1660processing,9MP3 containers andsavedtoolchecks;notVM/offhost/semanticmedia or learner validation",
+      "derivation": {
+        "origin": "project_authored_independent_restore_tests",
+        "related_acquisition_ids": [
+          "registry-relative-path-correction-audit20261013",
+          "pep-unit1-audio-container-audit20261013"
+        ],
+        "tool": "Savedcheckpoint10tools plus pinnedruntime andffprobe"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-snapshot10-nomapping20261013.json"
+    },
+    {
+      "id": "snapshot10-no-mapping-restore-method20261013",
+      "url": "urn:lingotrip:research:registry-portability:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot10_without_mapping20261013.py",
+      "bytes": 3783,
+      "sha256": "8658afa1f27179967c2092a85f19d11f9e838e56870011c6e2459806ccc9c9f4",
+      "format_validation": "python_source_saved",
+      "review_scope": "Full3103file independentrestore with0metadata rewrites,1114cache/1660processing,9MP3 containers andsavedtoolchecks;notVM/offhost/semanticmedia or learner validation",
+      "derivation": {
+        "origin": "project_authored_independent_restore_tests",
+        "related_acquisition_ids": [
+          "registry-relative-path-correction-audit20261013",
+          "pep-unit1-audio-container-audit20261013"
+        ],
+        "tool": "Savedcheckpoint10tools plus pinnedruntime andffprobe"
+      },
+      "manifest": "build/english-benchmark-research-20261012/derive-manifest-snapshot10-nomapping20261013.json"
     }
   ],
   "updated_on": "2026-10-13"

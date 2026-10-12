@@ -1666,6 +1666,530 @@
         "educational_or_rights_admission": false
       },
       "automatic_relocation_without_mapping": false
+    },
+    {
+      "snapshot_id": "2026-10-12T231438.845051+0000-517086f0",
+      "created_at_utc": "2026-10-12T23:14:38.845051+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T231438.845051+0000-517086f0",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-12T231438.845051+0000-517086f0/snapshot-manifest.json",
+      "manifest_sha256": "612f11d556c50de816728df33a5c56ced5cb331ea8ecb87b7f29ed24cafadd7f",
+      "files_verified": 3103,
+      "bytes_verified": 977295168,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write": 3103
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Captures throughdcd11ef6,including portable relativecache registry/pathguard and9Unit1 labelledMP3s. Independentfullrestore3103files replayswithoutrewritingregistry/sources;laterregistration not retroactivelyincluded.",
+      "no_mapping_full_restore_evidence": {
+        "snapshot_id": "2026-10-12T231438.845051+0000-517086f0",
+        "independent_full_copy_files_verified": 3103,
+        "original_copy_bytes_verified": 977295168,
+        "registry_or_source_rewrites": 0,
+        "old_live_checkout_reference_paths": [],
+        "inputs_read_from_restored_copy": true,
+        "current_pinned_runtime_dependencies": true,
+        "tool_reports": [
+          {
+            "saved_tool": "check_annotation_contract.py",
+            "result": {
+              "original_fixtures_passed": 2,
+              "corruption_checks_passed": 45,
+              "checks": [
+                "stale_material_version",
+                "wrong_literal_digest",
+                "changed_literal_with_old_digest",
+                "target_unknown_material",
+                "target_outside_item_scope",
+                "target_unknown_block",
+                "target_slot_not_literal",
+                "duplicate_target_block",
+                "target_transcript_not_presented",
+                "false_annotation_coordinate_unit",
+                "implicit_unicode_normalization",
+                "concatenated_filled_surface",
+                "reversed_selection_bounds",
+                "private_key_in_response_format",
+                "annotation_bound_to_gap",
+                "annotation_scope_not_explicit",
+                "text_response_with_annotation_scope",
+                "annotation_score_on_text_item",
+                "two_items_for_single_annotation_score",
+                "unknown_annotation_key_as_known_set",
+                "reference_examples_used_as_exact_gate",
+                "known_coverage_without_evidence",
+                "range_unknown_target",
+                "empty_range",
+                "reversed_range",
+                "negative_range",
+                "range_exceeds_literal",
+                "boolean_coordinate",
+                "wrong_selected_text_echo",
+                "utf16_shift_with_correct_word_echo",
+                "duplicate_range",
+                "overlapping_range",
+                "same_answer_set_different_order",
+                "private_ranges_over_maximum",
+                "gold_admission",
+                "opening_story",
+                "raw_NFD_payload_preserved",
+                "NFC_echo_mismatch_rejected",
+                "incomplete_payload_rejected",
+                "malformed_identity_rejected",
+                "non_list_payload_rejected",
+                "slot_width_does_not_move_block_coordinates",
+                "projection_retains_coordinate_contract",
+                "private_keys_absent_from_projection",
+                "projection_independent_of_private_answer_changes"
+              ],
+              "production_admission": false,
+              "limitation": "Structural coordinates and privacy only; no educational scoring, source gold or learner validation"
+            }
+          },
+          {
+            "saved_tool": "check_item_group_contract.py",
+            "result": {
+              "positive_fixtures": 10,
+              "negative_rejections": 61,
+              "negative_cases": [
+                "duplicate_item",
+                "unknown_material",
+                "wrong_scoring_backreference",
+                "unknown_option_key",
+                "single_choice_multiple_keys",
+                "duplicate_option",
+                "orphan_slot",
+                "slot_outside_material",
+                "duplicated_slot_binding",
+                "coupled_tuple_wrong_arity",
+                "segments_total_mismatch",
+                "rubric_reversed_band",
+                "rubric_unknown_assigned_band",
+                "unacquired_asset_fake_location",
+                "acquired_asset_without_digest",
+                "asset_unknown_reference",
+                "unknown_evidence",
+                "unknown_claim_fabricated_value",
+                "known_claim_without_evidence",
+                "authorship_as_independent_review",
+                "early_diagnostic_feedback",
+                "assisted_as_unassisted",
+                "early_hint_leak",
+                "opening_story_not_required_or_allowed",
+                "gold_or_production_admission",
+                "unacquired_source_content",
+                "empty_acquisition",
+                "boolean_byte_count",
+                "failed_acquisition_with_path",
+                "blocked_acquisition_with_path",
+                "empty_status_with_nonempty_metadata",
+                "unparsed_source_bytes",
+                "digest_only_source_bytes",
+                "transport_only_source_bytes",
+                "unknown_parser_label",
+                "malformed_source_digest",
+                "source_size_mismatch",
+                "source_digest_mismatch",
+                "missing_source_file",
+                "outside_cache_source_file",
+                "actual_empty_HTTP200_source",
+                "wrong_real_source_membership",
+                "unsupported_contract_version",
+                "nonexhaustive_exact_rejection",
+                "unknown_exact_rejection",
+                "coverage_without_evidence",
+                "missing_response_scope",
+                "scope_wrong_slot",
+                "scope_without_evidence",
+                "slot_scope_as_whole_answer",
+                "span_wrong_end",
+                "span_outside_source",
+                "span_reversed",
+                "silent_key_truncation_as_identity",
+                "unresolved_fabricated_form",
+                "source_mapping_wrong_item",
+                "mapped_form_not_documented",
+                "duplicated_source_mapping",
+                "unknown_scope_exact_matching",
+                "choice_gap_as_free_text_scope",
+                "unknown_asset_role_in_legacy_contract"
+              ],
+              "long_text_and_19_items": "accepted_without_truncation",
+              "private_structural_projection": "sentinel_excluded_copy_independent",
+              "limitation": "No educational, semantic answer-leakage, real media, grading or production validation"
+            }
+          },
+          {
+            "saved_tool": "validate_item_groups.py",
+            "result": {
+              "groups": [
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/block-annotation-mixed-v03.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": false,
+                    "nonexhaustive_or_unknown_score_ids": [
+                      "s1",
+                      "s2"
+                    ],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/block-annotation-unknown-v03.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [
+                      "s2"
+                    ],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": false,
+                    "nonexhaustive_or_unknown_score_ids": [
+                      "s1"
+                    ],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/cloze-10.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/cloze-15.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/coupled-text.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/listening-unacquired.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [
+                      "audio1"
+                    ],
+                    "unknown_scoring_ids": [
+                      "s1"
+                    ],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/partial-response-reference.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": false,
+                    "nonexhaustive_or_unknown_score_ids": [
+                      "s1"
+                    ],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/reading-four.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/segmented.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                },
+                {
+                  "path": "/Users/tiantian/eng/build/english-benchmark-research-20261012/snapshot10-independent-tozg26oi/Research/GuYouJi-English-Benchmark/ItemGroups/Fixtures/writing-rubric.json",
+                  "structure_valid": true,
+                  "errors": [],
+                  "incomplete_evidence": {
+                    "unacquired_asset_ids": [],
+                    "unknown_scoring_ids": [],
+                    "independent_review_status": "unknown",
+                    "learner_calibration_status": "unknown",
+                    "answer_coverage_unrecorded": true,
+                    "nonexhaustive_or_unknown_score_ids": [],
+                    "unknown_response_scope_ids": [],
+                    "unresolved_asset_solve_role_ids": []
+                  },
+                  "production_admission": false,
+                  "limitation": "Research structure only; no quality, rights, gold, calibration or production validation"
+                }
+              ]
+            }
+          },
+          {
+            "saved_tool": "validate_registry.py",
+            "result": {
+              "json_documents": 85,
+              "sources": 112,
+              "acquisition_attempts": 1181,
+              "cache_files_checked": 1114,
+              "processing_outputs_checked": 1660,
+              "storage_files_checked": 0,
+              "scope_rows": 20,
+              "incomplete_milestones": [
+                "M1",
+                "M2",
+                "M3",
+                "M4",
+                "M5",
+                "M6",
+                "M7"
+              ],
+              "open_gaps": [
+                "G01",
+                "G02",
+                "G03",
+                "G04",
+                "G05",
+                "G06",
+                "G07",
+                "G08",
+                "G09",
+                "G10",
+                "G11",
+                "G12",
+                "G13",
+                "G14",
+                "G15",
+                "G16",
+                "G17"
+              ],
+              "priority_coverage_cells": 36,
+              "bookkeeping_valid": true,
+              "errors": [],
+              "limitation": "Bookkeeping validation does not establish rights, content correctness or educational validity."
+            }
+          }
+        ],
+        "restored_MP3_container_checks": [
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0120261013",
+            "sha256": "2c019e8bfad8163c302944d20e14487a264197925cc8d0c876c70fa5c793bcb8",
+            "duration_seconds": 52.360113,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0220261013",
+            "sha256": "96a456100a10bf472855f12d40c2ce2b4c908932de4a45d1fc9e2e3423ed77e3",
+            "duration_seconds": 55.8439,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0320261013",
+            "sha256": "d8ce6df26519b708ab913dc784de5b1bb165955bf8184df03c2e2fa379529220",
+            "duration_seconds": 88.243311,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0420261013",
+            "sha256": "30608a280b39057e65f923e4342751e98a468492abdc4dbce637c593016bb9ba",
+            "duration_seconds": 54.918186,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0520261013",
+            "sha256": "bd906f344d4c4e3e7f0fba6821384076d8e028b3b640b691cd994a6bd1c74dc1",
+            "duration_seconds": 36.730113,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0620261013",
+            "sha256": "977976018e8e2dbd2ec5140e164b950f8d0526716dd9aa85acabcebabec314ac",
+            "duration_seconds": 72.971224,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0720261013",
+            "sha256": "34173bbff5e3205bc1ab7618618a3b2568a21d05c480a8ced9be594349afe85a",
+            "duration_seconds": 75.519116,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0820261013",
+            "sha256": "97ac587ea937e6befb0c23d18f7f6d11fa78d549acb4306f0a60b0a97c69e62f",
+            "duration_seconds": 114.87263,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          },
+          {
+            "acquisition_id": "pep-grade7lower-unit1-audio0920261013",
+            "sha256": "2ac4d7532ae5124f98032651a9d6964866e3e49c91b5529a07937f90771f971a",
+            "duration_seconds": 200.862971,
+            "codec": "mp3",
+            "container_reproduced": true,
+            "semantic_listening": false
+          }
+        ],
+        "off_host_or_disk_loss_test": false,
+        "education_or_rights_admission": false
+      }
     }
   ]
 }
