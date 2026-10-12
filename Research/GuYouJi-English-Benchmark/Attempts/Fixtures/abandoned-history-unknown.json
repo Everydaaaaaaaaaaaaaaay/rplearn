@@ -1,0 +1,460 @@
+{
+  "contract_version": "0.1",
+  "admission": "research_only",
+  "id": "fixture.abandoned-history-unknown",
+  "round_ordinal": 0,
+  "snapshot": {
+    "serialization_profile": "python_json_sorted_utf8_v1",
+    "sha256": "3896321e80c957c19f19d777f1c902c0ef44d07aac05a7a93d6c74186b9506ed",
+    "payload": {
+      "group": {
+        "contract_version": "0.1",
+        "admission": "research_only",
+        "id": "fixture.reading-four",
+        "group_version": "v1",
+        "scoring_version": "v1",
+        "family_id": "fixture.reading-four.family",
+        "kind": "reading",
+        "scope_claims": [
+          {
+            "status": "unknown",
+            "value": null,
+            "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+            "evidence_ids": []
+          }
+        ],
+        "evidence": [
+          {
+            "id": "fixture.authorship",
+            "origin": {
+              "kind": "original_fixture",
+              "author": "Codex original structural demonstration",
+              "purpose": "contract_demonstration",
+              "authored_on": "2026-10-13"
+            },
+            "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+          }
+        ],
+        "targets": [
+          {
+            "id": "t1",
+            "construct": "Read the explicitly stated schedule",
+            "skill": "reading",
+            "prerequisites": [],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "version": "v1",
+            "language": "en",
+            "role": "stimulus",
+            "blocks": [
+              {
+                "id": "b1",
+                "kind": "text",
+                "text": "The library opens at nine. It closes at five. On Friday it closes at six. It is closed on Sunday."
+              }
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "rights": {
+              "evidence_ids": [
+                "fixture.authorship"
+              ],
+              "publication": "unknown",
+              "adaptation": "unknown",
+              "training": "unknown",
+              "provider_transmission": "unknown",
+              "redistribution": "unknown",
+              "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+            }
+          }
+        ],
+        "assets": [],
+        "items": [
+          {
+            "id": "i1",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "When does it open?",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "choice",
+              "selection": "single",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "nine"
+                },
+                {
+                  "id": "b",
+                  "text": "eight"
+                }
+              ]
+            },
+            "scoring_id": "s1",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          {
+            "id": "i2",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "When does it usually close?",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "choice",
+              "selection": "single",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "five"
+                },
+                {
+                  "id": "b",
+                  "text": "four"
+                }
+              ]
+            },
+            "scoring_id": "s2",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          {
+            "id": "i3",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "When does it close on Friday?",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "choice",
+              "selection": "single",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "six"
+                },
+                {
+                  "id": "b",
+                  "text": "five"
+                }
+              ]
+            },
+            "scoring_id": "s3",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          {
+            "id": "i4",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "Which day is closed?",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "choice",
+              "selection": "single",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Sunday"
+                },
+                {
+                  "id": "b",
+                  "text": "Monday"
+                }
+              ]
+            },
+            "scoring_id": "s4",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          }
+        ],
+        "private_scoring": [
+          {
+            "id": "s1",
+            "kind": "choice",
+            "item_ids": [
+              "i1"
+            ],
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 1,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "accepted_option_ids": [
+              "a"
+            ],
+            "multiple_selection_rule": "exact_set",
+            "rule": "Exact option identity; fixture marks only"
+          },
+          {
+            "id": "s2",
+            "kind": "choice",
+            "item_ids": [
+              "i2"
+            ],
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 1,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "accepted_option_ids": [
+              "a"
+            ],
+            "multiple_selection_rule": "exact_set",
+            "rule": "Exact option identity; fixture marks only"
+          },
+          {
+            "id": "s3",
+            "kind": "choice",
+            "item_ids": [
+              "i3"
+            ],
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 1,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "accepted_option_ids": [
+              "a"
+            ],
+            "multiple_selection_rule": "exact_set",
+            "rule": "Exact option identity; fixture marks only"
+          },
+          {
+            "id": "s4",
+            "kind": "choice",
+            "item_ids": [
+              "i4"
+            ],
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 1,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "accepted_option_ids": [
+              "a"
+            ],
+            "multiple_selection_rule": "exact_set",
+            "rule": "Exact option identity; fixture marks only"
+          }
+        ],
+        "administration": {
+          "mode": "diagnostic",
+          "submission_boundary": "whole_group",
+          "return_to_items": true,
+          "feedback_release": "after_group_submit",
+          "later_related_items_count_as_unassisted": false,
+          "supports": [],
+          "media_segments": [],
+          "replay_limit": null,
+          "pre_read_seconds": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No timing observed",
+            "evidence_ids": []
+          },
+          "review_seconds": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No timing observed",
+            "evidence_ids": []
+          },
+          "timing": {
+            "observed_effective_seconds": {
+              "status": "unknown",
+              "value": null,
+              "reason": "No learners have taken this fixture",
+              "evidence_ids": []
+            },
+            "estimated_seconds": {
+              "status": "unknown",
+              "value": null,
+              "reason": "No timing estimate registered",
+              "evidence_ids": []
+            },
+            "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+            "excluded_intervals": [
+              "background",
+              "idle",
+              "pause",
+              "network_wait",
+              "grading_wait"
+            ]
+          },
+          "avatar": {
+            "status": "not_applicable",
+            "value": null,
+            "reason": "No character is needed for a structural fixture",
+            "evidence_ids": []
+          }
+        },
+        "review": {
+          "content": {
+            "status": "provisional",
+            "value": "Authored to exercise structure only",
+            "reason": "No quality review or intended population",
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          "independent": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No independent reviewer",
+            "evidence_ids": []
+          },
+          "learner_calibration": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No real learner observations",
+            "evidence_ids": []
+          }
+        },
+        "rights": {
+          "evidence_ids": [
+            "fixture.authorship"
+          ],
+          "publication": "unknown",
+          "adaptation": "unknown",
+          "training": "unknown",
+          "provider_transmission": "unknown",
+          "redistribution": "unknown",
+          "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+        },
+        "limitations": [
+          "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing"
+        ]
+      },
+      "blueprint_version": "fixture.blueprint.v1",
+      "reward_policy_version": "fixture.reward.v1",
+      "progression_policy_version": "fixture.progression.v1",
+      "measurement_policy_version": "fixture.measurement.v1",
+      "family_history_status": "unknown"
+    }
+  },
+  "epochs": [
+    {
+      "id": "epoch1",
+      "device_session_id": "synthetic.device1"
+    }
+  ],
+  "events": [
+    {
+      "id": "event0",
+      "sequence": 0,
+      "kind": "start",
+      "snapshot_sha256": "3896321e80c957c19f19d777f1c902c0ef44d07aac05a7a93d6c74186b9506ed",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 0,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null
+    },
+    {
+      "id": "event1",
+      "sequence": 1,
+      "kind": "render",
+      "snapshot_sha256": "3896321e80c957c19f19d777f1c902c0ef44d07aac05a7a93d6c74186b9506ed",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 100,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null
+    },
+    {
+      "id": "event2",
+      "sequence": 2,
+      "kind": "answer",
+      "snapshot_sha256": "3896321e80c957c19f19d777f1c902c0ef44d07aac05a7a93d6c74186b9506ed",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 200,
+      "item_id": "i1",
+      "response_status": "answered",
+      "support_id": null
+    },
+    {
+      "id": "event3",
+      "sequence": 3,
+      "kind": "abandon",
+      "snapshot_sha256": "3896321e80c957c19f19d777f1c902c0ef44d07aac05a7a93d6c74186b9506ed",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 600,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null
+    }
+  ],
+  "intervals": [
+    {
+      "id": "activity",
+      "epoch_id": "epoch1",
+      "start_ms": 0,
+      "end_ms": 600,
+      "category": "foreground_activity_proxy",
+      "phases": [
+        "instruction",
+        "shared_reading",
+        "answering"
+      ]
+    }
+  ],
+  "limitations": [
+    "Original synthetic trace,not real learner/server evidence",
+    "No grading/reward/promotion or actualattention inferred",
+    "Digest is consistency only,not cryptographic authentication"
+  ]
+}
