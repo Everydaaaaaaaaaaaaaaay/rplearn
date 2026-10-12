@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-10-12",
+  "updated_on": "2026-10-13",
   "framework": "OCR outputs are drafts, not gold text; page numbers and score notation require original-image checks.",
   "failed_attempts": [
     {
@@ -8321,6 +8321,205 @@
           "original_characters": 36
         }
       ]
+    },
+    {
+      "id": "curriculum2025-column-pilot",
+      "manifest": "build/english-benchmark-research-20261012/ocr-column-pilot-manifest.json",
+      "pages": 6,
+      "distinct_source_pages": 3,
+      "count_semantics": "pagesfieldcountsprocessingregionsforthisrun;not6newcurriculumpages",
+      "successful_pages": 6,
+      "review_status": "pilotfailedmarkerquality_notcanonical",
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/aku-junior2025-page091.jpg",
+          "source_sha256": "8757886ae022c237a148dda83ab7d027fdaa7508f5762807723ad40170951d03",
+          "image_index": 91,
+          "stage": "junior",
+          "column": 1,
+          "source_bbox": [
+            145,
+            140,
+            530,
+            1400
+          ],
+          "crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col1.png",
+          "crop_sha256": "a0c97e8da8bbbfdac09d616e27374e46685f0854b9012f77780bdc57c82b4f42",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col1",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6,
+          "exit_code": 0,
+          "stderr": "",
+          "review_status": "ocr_draft_not_canonical_wordlist",
+          "sha256": "390e0de56265c3d0fee20c9da4c281bca5b8481bdc1e91397fa47bb8da94152b",
+          "tsv_sha256": "17d8e028a094d395d101751cba1e6843251bf9e13b2b9cd485a8eb98dae0b78d",
+          "nonempty_lines": 27,
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col1.tsv",
+          "output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col1.txt",
+          "engine": "tesseract5.5.3",
+          "unit_kind": "column_ROI_not_whole_page"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/aku-junior2025-page091.jpg",
+          "source_sha256": "8757886ae022c237a148dda83ab7d027fdaa7508f5762807723ad40170951d03",
+          "image_index": 91,
+          "stage": "junior",
+          "column": 2,
+          "source_bbox": [
+            550,
+            140,
+            1030,
+            1400
+          ],
+          "crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col2.png",
+          "crop_sha256": "249f8a1d14f6ac6d9f164f6a0d3f95036c5effc7641005fd45b335d09314d9f7",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col2",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6,
+          "exit_code": 0,
+          "stderr": "",
+          "review_status": "ocr_draft_not_canonical_wordlist",
+          "sha256": "283b2ea4ccd3eadba14ced0fac4b28fc72db38345349e0c1e318777abefea67a",
+          "tsv_sha256": "c325d3dc1aadfc163cf9b7996f42a5c5698b24adf10c022afc0075fe00c66403",
+          "nonempty_lines": 28,
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col2.tsv",
+          "output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-091-col2.txt",
+          "engine": "tesseract5.5.3",
+          "unit_kind": "column_ROI_not_whole_page"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/aku-junior2025-page102.jpg",
+          "source_sha256": "145a79de096b4863471a7fc33913774692d716b3f59caa63b88c07872f8752ee",
+          "image_index": 102,
+          "stage": "junior",
+          "column": 1,
+          "source_bbox": [
+            145,
+            140,
+            530,
+            1400
+          ],
+          "crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col1.png",
+          "crop_sha256": "3f3842b25624d79e82763e0be33b3c3d99ca54531aa1cd2e5008f477e5897e9c",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col1",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6,
+          "exit_code": 0,
+          "stderr": "",
+          "review_status": "ocr_draft_not_canonical_wordlist",
+          "sha256": "d9c958325eee114ff92b6a6fdedc7fb277417c01831b303f5e9b812215e1b577",
+          "tsv_sha256": "14b4eb2bcb34013471c1eec7209c1e79273353957592c868a0092e904ce7473c",
+          "nonempty_lines": 28,
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col1.tsv",
+          "output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col1.txt",
+          "engine": "tesseract5.5.3",
+          "unit_kind": "column_ROI_not_whole_page"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/aku-junior2025-page102.jpg",
+          "source_sha256": "145a79de096b4863471a7fc33913774692d716b3f59caa63b88c07872f8752ee",
+          "image_index": 102,
+          "stage": "junior",
+          "column": 2,
+          "source_bbox": [
+            550,
+            140,
+            1030,
+            1400
+          ],
+          "crop": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col2.png",
+          "crop_sha256": "e785fab0b3c5b3110fbce926e73a3a53778ce79bc938a6a511ec7f9b803f12a1",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col2",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6,
+          "exit_code": 0,
+          "stderr": "",
+          "review_status": "ocr_draft_not_canonical_wordlist",
+          "sha256": "d86e538e9cb87341a2b58968a5f690ce1e27efbbda2056442cef068a0902d105",
+          "tsv_sha256": "48f48c9c6cd3997b5033603fd197c149abc6e85123ffd80f1e2d25ab639849f7",
+          "nonempty_lines": 28,
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col2.tsv",
+          "output": "build/english-benchmark-research-20261012/ocr-column-pilot/junior-102-col2.txt",
+          "engine": "tesseract5.5.3",
+          "unit_kind": "column_ROI_not_whole_page"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/aku-senior2025-page077.jpg",
+          "source_sha256": "e861687160643025634b2f605b4b52b71958e52f5ed303bbc2500e29a7c88c49",
+          "image_index": 77,
+          "stage": "senior",
+          "column": 1,
+          "source_bbox": [
+            110,
+            130,
+            515,
+            1370
+          ],
+          "crop": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col1.png",
+          "crop_sha256": "02e518e44ce4f9fb332f4ef89289ef51f3f314f4b52bd0d322c240f772a7c4ac",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col1",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6,
+          "exit_code": 0,
+          "stderr": "",
+          "review_status": "ocr_draft_not_canonical_wordlist",
+          "sha256": "3dc484e4d3d6a22b99b9971fa6898b33b51d13179af90c8ad37a96df87329d61",
+          "tsv_sha256": "3812c0abfa0833a260d93e2cffa897fbe0806f38b853e35a151f2dc7df6890ca",
+          "nonempty_lines": 28,
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col1.tsv",
+          "output": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col1.txt",
+          "engine": "tesseract5.5.3",
+          "unit_kind": "column_ROI_not_whole_page"
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/aku-senior2025-page077.jpg",
+          "source_sha256": "e861687160643025634b2f605b4b52b71958e52f5ed303bbc2500e29a7c88c49",
+          "image_index": 77,
+          "stage": "senior",
+          "column": 2,
+          "source_bbox": [
+            520,
+            130,
+            1020,
+            1370
+          ],
+          "crop": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col2.png",
+          "crop_sha256": "c39f8a043449e8c6779ee6b5c3bb62eb2956bdfc63b9aa5b793173c49305da20",
+          "output_prefix": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col2",
+          "languages": [
+            "eng"
+          ],
+          "psm": 6,
+          "exit_code": 0,
+          "stderr": "",
+          "review_status": "ocr_draft_not_canonical_wordlist",
+          "sha256": "bc4fbd7f49bc6c36dd1e5051de37269f054628f82a0a3cb9c4a47ee2b049e2e8",
+          "tsv_sha256": "d9c017333b1f9bcaac5c12d21764d4d9932782df7b5d032ef0f5e5bc89f51379",
+          "nonempty_lines": 28,
+          "tsv_output": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col2.tsv",
+          "output": "build/english-benchmark-research-20261012/ocr-column-pilot/senior-077-col2.txt",
+          "engine": "tesseract5.5.3",
+          "unit_kind": "column_ROI_not_whole_page"
+        }
+      ],
+      "quality_observation": {
+        "junior102_left_asterisk_characters": 1,
+        "junior102_left_source_asterisks_visually_counted": 4,
+        "junior102_right_asterisk_characters": 3,
+        "junior102_right_source_asterisks_visually_counted": 8,
+        "source_word_misread": "animal* row rendered as sorrel",
+        "decision": "Columnsseparatedbutmarkerandlexicalerrorremain;notapprovedforcanonicalwordlistintake"
+      }
     }
   ],
   "observed_errors": [

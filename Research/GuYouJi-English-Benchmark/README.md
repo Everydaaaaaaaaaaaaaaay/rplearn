@@ -20,6 +20,7 @@
 - [地域教材选用与当前目录](Studies/2026-10-13-regional-adoption-and-directories.md)：地区起点/系列差异、国家2024转存件、上海2026目录及待审状态更新。
 - [覆盖与验证设计](Studies/2026-10-13-coverage-and-validation-method.md)：36个优先年级/学期/系列单元、其余14范围及教研/学生/节奏/模型验收准备。
 - [词汇工具边界核验](Studies/2026-10-13-lexical-profile-boundary-review.md)：词性/大小写/词元与未知处理，12个真实条目核验及3个拒绝例。
+- [课标附录及OCR标记复审](Studies/2026-10-13-curriculum-appendix-marker-review.md)：505/1600/3100声明口径、不同符号含义、附表边界与分栏OCR拒绝证据。
 - `Curriculum/observed-requirements.json`：逐页核读的课程词汇要求及适用条件，未自动换算为产品年级。
 - `Curriculum/revision-deltas.json` 与 `observed-assessment-requirements.json`：有原文定位的版本变化和命题要求，尚未成为已标定产品规则。
 - `Registry/sources.json`：候选和已核查入口；用途许可分开记录。
