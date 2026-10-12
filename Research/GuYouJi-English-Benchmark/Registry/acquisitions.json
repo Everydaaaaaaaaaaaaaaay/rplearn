@@ -20528,6 +20528,66 @@
         "tool": "Savedcheckpoint10tools plus pinnedruntime andffprobe"
       },
       "manifest": "build/english-benchmark-research-20261012/derive-manifest-snapshot10-nomapping20261013.json"
+    },
+    {
+      "id": "attempt-response-v02-audit20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-response-v02-audit20261013.json",
+      "bytes": 1362,
+      "sha256": "e736940ffba3b852c2f6698a3f620d040fdb2d6ac2d780de106b8d2def7cf8e5",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic typed-response/revision identity checks only; not learner/grade/server evidence",
+      "derivation": {
+        "origin": "project_authored_structural_fixtures_and_checks",
+        "tool": "Pinned Python/jsonschema and project validators"
+      }
+    },
+    {
+      "id": "attempt-v01-regression20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-v01-regression20261013.json",
+      "bytes": 1446,
+      "sha256": "c85b46e819b173474c1c35a1d7c8523e6bcc8da9bbe16440822953aa0a3e7f71",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic typed-response/revision identity checks only; not learner/grade/server evidence",
+      "derivation": {
+        "origin": "project_authored_structural_fixtures_and_checks",
+        "tool": "Pinned Python/jsonschema and project validators"
+      }
+    },
+    {
+      "id": "attempt-v02-schema-method20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/draft_attempt_v02_20261013.py",
+      "bytes": 1638,
+      "sha256": "974bfe34ec34039d4f87c84bdf9f44f46890d67ec9aa984c288252144c3f0345",
+      "format_validation": "python_source_saved",
+      "review_scope": "Original synthetic typed-response/revision identity checks only; not learner/grade/server evidence",
+      "derivation": {
+        "origin": "project_authored_structural_fixtures_and_checks",
+        "tool": "Pinned Python/jsonschema and project validators"
+      }
+    },
+    {
+      "id": "attempt-v02-fixture-method20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/draft_attempt_fixtures_v02_20261013.py",
+      "bytes": 2620,
+      "sha256": "2403c8cbedc710788ee79bb7dea8cb4356cf486c637baf5a79d49ef6f0fca003",
+      "format_validation": "python_source_saved",
+      "review_scope": "Original synthetic typed-response/revision identity checks only; not learner/grade/server evidence",
+      "derivation": {
+        "origin": "project_authored_structural_fixtures_and_checks",
+        "tool": "Pinned Python/jsonschema and project validators"
+      }
     }
   ],
   "updated_on": "2026-10-13"

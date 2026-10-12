@@ -1,0 +1,325 @@
+{
+  "contract_version": "0.2",
+  "admission": "research_only",
+  "id": "fixture.raw-writing",
+  "round_ordinal": 0,
+  "snapshot": {
+    "serialization_profile": "python_json_sorted_utf8_v1",
+    "sha256": "2d61503a37d72842bc8360a4e6cf3abc07f76f0c851ef9445dcb7c0fae5ff82a",
+    "payload": {
+      "group": {
+        "contract_version": "0.1",
+        "admission": "research_only",
+        "id": "fixture.writing-rubric",
+        "group_version": "v1",
+        "scoring_version": "v1",
+        "family_id": "fixture.writing-rubric.family",
+        "kind": "writing",
+        "scope_claims": [
+          {
+            "status": "unknown",
+            "value": null,
+            "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+            "evidence_ids": []
+          }
+        ],
+        "evidence": [
+          {
+            "id": "fixture.authorship",
+            "origin": {
+              "kind": "original_fixture",
+              "author": "Codex original structural demonstration",
+              "purpose": "contract_demonstration",
+              "authored_on": "2026-10-13"
+            },
+            "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+          }
+        ],
+        "targets": [
+          {
+            "id": "t1",
+            "construct": "Communicate two schedule details",
+            "skill": "writing",
+            "prerequisites": [],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "version": "v1",
+            "language": "en",
+            "role": "stimulus",
+            "blocks": [
+              {
+                "id": "b1",
+                "kind": "text",
+                "text": "The library opens at nine. It closes at five. On Friday it closes at six. It is closed on Sunday."
+              }
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "rights": {
+              "evidence_ids": [
+                "fixture.authorship"
+              ],
+              "publication": "unknown",
+              "adaptation": "unknown",
+              "training": "unknown",
+              "provider_transmission": "unknown",
+              "redistribution": "unknown",
+              "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+            }
+          }
+        ],
+        "assets": [],
+        "items": [
+          {
+            "id": "i1",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "Answer from the shared material.",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "writing",
+              "requirements": "Tell a friend when the library opens and one day it is closed.",
+              "min_words": null,
+              "max_words": null,
+              "interaction_protocol": {
+                "status": "not_applicable",
+                "value": null,
+                "reason": "Not an interaction task",
+                "evidence_ids": []
+              }
+            },
+            "scoring_id": "s1",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          }
+        ],
+        "private_scoring": [
+          {
+            "id": "s1",
+            "kind": "rubric",
+            "item_ids": [
+              "i1"
+            ],
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 2,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "dimensions": [
+              {
+                "id": "d1",
+                "name": "Two supplied details",
+                "bands": [
+                  {
+                    "id": "band0",
+                    "descriptor": "Neither supplied detail communicated",
+                    "minimum_marks": 0,
+                    "maximum_marks": 0
+                  },
+                  {
+                    "id": "band1",
+                    "descriptor": "One supplied detail communicated",
+                    "minimum_marks": 1,
+                    "maximum_marks": 1
+                  },
+                  {
+                    "id": "band2",
+                    "descriptor": "Both supplied details communicated",
+                    "minimum_marks": 2,
+                    "maximum_marks": 2
+                  }
+                ],
+                "evidence_ids": [
+                  "fixture.authorship"
+                ]
+              }
+            ],
+            "overall_rule": "One dimension; use source detail correctness only in this structural fixture",
+            "zero_cap_deduction_rules": "No invented spelling or word-count penalties",
+            "scored_examples": []
+          }
+        ],
+        "administration": {
+          "mode": "diagnostic",
+          "submission_boundary": "whole_group",
+          "return_to_items": true,
+          "feedback_release": "after_group_submit",
+          "later_related_items_count_as_unassisted": false,
+          "supports": [],
+          "media_segments": [],
+          "replay_limit": null,
+          "pre_read_seconds": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No timing observed",
+            "evidence_ids": []
+          },
+          "review_seconds": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No timing observed",
+            "evidence_ids": []
+          },
+          "timing": {
+            "observed_effective_seconds": {
+              "status": "unknown",
+              "value": null,
+              "reason": "No learners have taken this fixture",
+              "evidence_ids": []
+            },
+            "estimated_seconds": {
+              "status": "unknown",
+              "value": null,
+              "reason": "No timing estimate registered",
+              "evidence_ids": []
+            },
+            "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+            "excluded_intervals": [
+              "background",
+              "idle",
+              "pause",
+              "network_wait",
+              "grading_wait"
+            ]
+          },
+          "avatar": {
+            "status": "not_applicable",
+            "value": null,
+            "reason": "No character is needed for a structural fixture",
+            "evidence_ids": []
+          }
+        },
+        "review": {
+          "content": {
+            "status": "provisional",
+            "value": "Authored to exercise structure only",
+            "reason": "No quality review or intended population",
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          "independent": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No independent reviewer",
+            "evidence_ids": []
+          },
+          "learner_calibration": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No real learner observations",
+            "evidence_ids": []
+          }
+        },
+        "rights": {
+          "evidence_ids": [
+            "fixture.authorship"
+          ],
+          "publication": "unknown",
+          "adaptation": "unknown",
+          "training": "unknown",
+          "provider_transmission": "unknown",
+          "redistribution": "unknown",
+          "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+        },
+        "limitations": [
+          "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing"
+        ]
+      },
+      "blueprint_version": "fixture.blueprint.v1",
+      "reward_policy_version": "fixture.reward.v1",
+      "progression_policy_version": "fixture.progression.v1",
+      "measurement_policy_version": "fixture.measurement.v1",
+      "family_history_status": "verified_no_prior_exposure"
+    }
+  },
+  "epochs": [
+    {
+      "id": "epoch1",
+      "device_session_id": "synthetic.device1"
+    }
+  ],
+  "events": [
+    {
+      "id": "event0",
+      "sequence": 0,
+      "kind": "start",
+      "snapshot_sha256": "2d61503a37d72842bc8360a4e6cf3abc07f76f0c851ef9445dcb7c0fae5ff82a",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 0,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null,
+      "answer_record": null
+    },
+    {
+      "id": "event1",
+      "sequence": 1,
+      "kind": "answer",
+      "snapshot_sha256": "2d61503a37d72842bc8360a4e6cf3abc07f76f0c851ef9445dcb7c0fae5ff82a",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 100,
+      "item_id": "i1",
+      "response_status": "answered",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 0,
+        "replaces_event_id": null,
+        "payload": {
+          "kind": "writing",
+          "body": "This original response is deliberately beyond any inferred quality claim."
+        }
+      }
+    },
+    {
+      "id": "event2",
+      "sequence": 2,
+      "kind": "submit_group",
+      "snapshot_sha256": "2d61503a37d72842bc8360a4e6cf3abc07f76f0c851ef9445dcb7c0fae5ff82a",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 200,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null,
+      "answer_record": null
+    },
+    {
+      "id": "event3",
+      "sequence": 3,
+      "kind": "close",
+      "snapshot_sha256": "2d61503a37d72842bc8360a4e6cf3abc07f76f0c851ef9445dcb7c0fae5ff82a",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 300,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null,
+      "answer_record": null
+    }
+  ],
+  "intervals": [],
+  "limitations": [
+    "Original synthetic trace,not real learner/server evidence",
+    "No grading/reward/promotion or actualattention inferred",
+    "Digest is consistency only,not cryptographic authentication"
+  ]
+}

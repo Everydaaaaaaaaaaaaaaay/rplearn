@@ -1,0 +1,440 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "0.2"
+    },
+    "admission": {
+      "const": "research_only"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "round_ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "serialization_profile": {
+          "const": "python_json_sorted_utf8_v1"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "payload": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "group": {
+              "type": "object"
+            },
+            "blueprint_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reward_policy_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "progression_policy_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "measurement_policy_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "family_history_status": {
+              "enum": [
+                "verified_no_prior_exposure",
+                "known_exposed",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "group",
+            "blueprint_version",
+            "reward_policy_version",
+            "progression_policy_version",
+            "measurement_policy_version",
+            "family_history_status"
+          ]
+        }
+      },
+      "required": [
+        "serialization_profile",
+        "sha256",
+        "payload"
+      ]
+    },
+    "epochs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "device_session_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "device_session_id"
+        ]
+      },
+      "minItems": 1
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "kind": {
+            "enum": [
+              "start",
+              "render",
+              "answer",
+              "submit_group",
+              "support_exposed",
+              "feedback_exposed",
+              "abandon",
+              "close"
+            ]
+          },
+          "snapshot_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "epoch_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "monotonic_ms": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "item_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "response_status": {
+            "enum": [
+              "not_applicable",
+              "answered",
+              "skipped"
+            ]
+          },
+          "support_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "answer_record": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "item_version": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "replaces_event_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1
+                  },
+                  "payload": {
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "const": "choice"
+                              },
+                              "option_ids": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "minItems": 1,
+                                "uniqueItems": true
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "option_ids"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "enum": [
+                                  "text",
+                                  "writing",
+                                  "translation"
+                                ]
+                              },
+                              "body": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "body"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "const": "slot_text"
+                              },
+                              "slots": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "slot_id": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "slot_id",
+                                    "text"
+                                  ]
+                                },
+                                "minItems": 1
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "slots"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "const": "span_annotation"
+                              },
+                              "ranges": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/$defs/annotation_range"
+                                }
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "ranges"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "item_version",
+                  "revision",
+                  "replaces_event_id",
+                  "payload"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "sequence",
+          "kind",
+          "snapshot_sha256",
+          "epoch_id",
+          "monotonic_ms",
+          "item_id",
+          "response_status",
+          "support_id",
+          "answer_record"
+        ]
+      },
+      "minItems": 1
+    },
+    "intervals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "epoch_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_ms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end_ms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "category": {
+            "enum": [
+              "foreground_activity_proxy",
+              "background",
+              "pause",
+              "wait",
+              "unknown"
+            ]
+          },
+          "phases": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "instruction",
+                "shared_reading",
+                "media_playback",
+                "answering",
+                "revision",
+                "feedback_review",
+                "submission_wait",
+                "grading_wait",
+                "unknown"
+              ]
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "epoch_id",
+          "start_ms",
+          "end_ms",
+          "category",
+          "phases"
+        ]
+      },
+      "minItems": 0
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "contract_version",
+    "admission",
+    "id",
+    "round_ordinal",
+    "snapshot",
+    "epochs",
+    "events",
+    "intervals",
+    "limitations"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lingotrip:research:attempt-trace:0.2",
+  "title": "Research attempt trace0.2: typed responses and explicit revision links",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "annotation_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "material_id": {
+          "$ref": "#/$defs/id"
+        },
+        "block_id": {
+          "$ref": "#/$defs/id"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "selected_text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "material_id",
+        "block_id",
+        "start",
+        "end",
+        "selected_text"
+      ]
+    }
+  }
+}

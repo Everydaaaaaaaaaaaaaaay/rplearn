@@ -16,6 +16,35 @@ sys.dont_write_bytecode = True
 
 from jsonschema import Draft202012Validator, FormatChecker
 from validate_item_groups import BASE, validator_for, semantic_errors
+from annotation_ranges import annotation_range_errors
+
+
+def response_errors(group, item, response):
+    """Check response identity/coordinates, never correctness or linguistic limits.
+
+    Invalid answers (e.g. too many words) still need recording. Product UX and
+    grading must distinguish those from malformed references. Preserve raw text.
+    """
+    expected, kind = item['response']['kind'], response['kind']
+    if expected == 'span_annotation' and kind == expected:
+        return annotation_range_errors(group, item, response['ranges'])
+    if expected == 'choice' and kind == expected:
+        options = set(response['option_ids'])
+        if not options <= {o['id'] for o in item['response']['options']}:
+            return ['Response references an unknown option']
+        if item['response']['selection'] == 'single' and len(options) != 1:
+            return ['Single-choice response selects multiple options']
+        return []
+    if expected == 'text':
+        if item['slot_ids'] and kind == 'slot_text':
+            ids = [s['slot_id'] for s in response['slots']]
+            return [] if len(ids) == len(set(ids)) and set(ids) == set(item['slot_ids']) \
+                else ['Slot response must identify every declared slot exactly once']
+        if not item['slot_ids'] and kind == 'text':
+            return []
+    if expected in ('writing', 'translation') and kind == expected:
+        return []
+    return ['Response format does not match the frozen item or is not supported by trace0.2']
 
 
 def snapshot_digest(payload):
@@ -41,7 +70,11 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
         return isinstance(value, float) and not math.isfinite(value)
     if nonfinite(trace):
         return dict(structure_valid=False, errors=['Non-finite numeric value in trace'], production_admission=False)
-    schema = json.loads((BASE / 'Attempts/AttemptTrace.schema.json').read_text())
+    version = trace.get('contract_version')
+    filename = {'0.1': 'AttemptTrace.schema.json', '0.2': 'AttemptTrace-v0.2.schema.json'}.get(version)
+    if filename is None:
+        return dict(structure_valid=False, errors=['Unsupported attempt contract version'], production_admission=False)
+    schema = json.loads((BASE / 'Attempts' / filename).read_text())
     Draft202012Validator.check_schema(schema)
     errors = [f'{"/".join(map(str, e.absolute_path))}: {e.message}' for e in
               Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(trace)]
@@ -67,12 +100,14 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
     require(snapshot['sha256'] == snapshot_digest(payload), 'Frozen payload digest mismatch')
     require(expected_digest is None or snapshot['sha256'] == expected_digest,
             'Payload disagrees with externally supplied expected digest')
-    items = {i['id'] for i in group['items']}
+    item_index = {i['id']: i for i in group['items']}
+    items = set(item_index)
     supports = {s['id']: s for s in group['administration']['supports']}
     epochs = {e['id'] for e in trace['epochs']}
     require(len(epochs) == len(trace['epochs']), 'Duplicate clock epoch')
     event_ids, sequences, previous_times = set(), [], {}
     answers, submitted, started, closed, assisted = {}, False, False, False, False
+    revisions, first_responses = {}, {}
     for event in trace['events']:
         require(event['id'] not in event_ids, 'Duplicate event identity')
         event_ids.add(event['id'])
@@ -88,6 +123,9 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
         require(item is None or item in items, 'Event references an unknown item')
         require(kind == 'answer' or event['response_status'] == 'not_applicable',
                 'Nonanswer event contains response status')
+        if version == '0.2':
+            require(kind == 'answer' or event['answer_record'] is None,
+                    'Nonanswer event contains a private answer record')
         require(kind == 'support_exposed' or event['support_id'] is None,
                 'Nonsupport event references a support')
         if kind == 'start':
@@ -99,6 +137,26 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
             require(item is not None and event['response_status'] != 'not_applicable',
                     'Answer lacks item/status')
             require(not submitted, 'Answer modified after whole-group submit')
+            if version == '0.2':
+                record = event['answer_record']
+                require(record is not None, 'Answer event lacks typed record')
+                if record is not None:
+                    previous = revisions.get(item)
+                    require(record['revision'] == (0 if previous is None else previous['revision'] + 1),
+                            'Answer revision is not the next per-item ordinal')
+                    require(record['replaces_event_id'] == (None if previous is None else previous['event_id']),
+                            'Answer revision does not replace the immediately previous event for this item')
+                    if item in item_index:
+                        require(record['item_version'] == item_index[item]['version'], 'Answer belongs to a stale item version')
+                    if event['response_status'] == 'skipped':
+                        require(record['payload'] is None, 'Skipped answer must retain null payload')
+                    elif event['response_status'] == 'answered':
+                        require(record['payload'] is not None, 'Answered event lacks actual response payload')
+                        if record['payload'] is not None and item in item_index:
+                            errors += response_errors(group, item_index[item], record['payload'])
+                    revisions[item] = dict(revision=record['revision'], event_id=event['id'],
+                                           status=event['response_status'])
+                    first_responses.setdefault(item, event['id'])
             # Revision events replace the current draft, without inventing first-answer mastery.
             if item is not None:
                 answers[item] = event['response_status']
@@ -168,6 +226,9 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
                 incomplete_or_abandoned=not submitted or not closed,
                 external_expected_digest_supplied=expected_digest is not None,
                 unknown_clock_event_ids=[e['id'] for e in trace['events'] if e['epoch_id'] is None],
+                typed_response_records=version == '0.2',
+                first_response_event_ids=first_responses,
+                latest_response_event_ids={i: r['event_id'] for i, r in revisions.items()},
                 production_admission=False,
                 limitation='Research record consistency only; digests do not authenticate server history; no attention, grading, rewards or learner calibration established')
 
