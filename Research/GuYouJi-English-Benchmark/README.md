@@ -15,6 +15,7 @@
 - [CAN-DO阅读与产出样本](Studies/2026-10-13-cando-task-and-rubric-review.md)：五技能187页材料、四题阅读和分档写作，指令语言、第三方组件及实施条件的影响。
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
 - `ItemGroups/observed-structures.json`：已核读原图/手册的完整题组结构事实，不含未授权题文或自行编造答案。
+- [完整题组合同草案](ItemGroups/Contract.md)：共享材料、可变题数、评分、实施/曝光、角色要求与版本迁移的必需字段和反例。
 - `Curriculum/observed-requirements.json`：逐页核读的课程词汇要求及适用条件，未自动换算为产品年级。
 - `Curriculum/revision-deltas.json` 与 `observed-assessment-requirements.json`：有原文定位的版本变化和命题要求，尚未成为已标定产品规则。
 - `Registry/sources.json`：候选和已核查入口；用途许可分开记录。
