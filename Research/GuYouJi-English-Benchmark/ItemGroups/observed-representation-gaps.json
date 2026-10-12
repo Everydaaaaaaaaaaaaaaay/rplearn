@@ -39,6 +39,35 @@
         "real_source_import_complete": false,
         "attempt_trace_and_client_validation": false
       }
+    },
+    {
+      "id": "response.learner-sign-drawing-and-poster",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-unit2-context-1312001102241-image023",
+      "source_tasks": [
+        "Unit2GF3d",
+        "Unit2Project3c"
+      ],
+      "additional_evidence_acquisition_ids": [
+        "pep-unit2-context-1312001102241-image026"
+      ],
+      "observed_requirements": [
+        "Create learner drawnsigns",
+        "Explain sign meanings toclass",
+        "Collaborate on rules poster andshare/vote"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.2",
+      "dedicated_learner_visual_or_collaborative_payload": false,
+      "complete_source_response_import": false,
+      "reason": "Sourceassets andliteraltext annotations do not represent learnergenerated drawings/posters;freebodytext loses required action",
+      "next_design_requirements": [
+        "Typed learnercreated visualasset with stable provenance/format/version identities",
+        "Preserve ruletext,diagram andoralexplanation roles andseparate scoring evidence",
+        "Define collaboration/individualresponse identities;social voting is not language difficulty data",
+        "Independent rubric/accessibility/task review before treating genericwriting as complete"
+      ],
+      "production_admission": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true
