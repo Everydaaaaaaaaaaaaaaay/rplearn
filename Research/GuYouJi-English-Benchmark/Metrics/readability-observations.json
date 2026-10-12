@@ -1,0 +1,44 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "research_text_features_not_educational_calibration",
+  "dictionary": {
+    "source_id": "cmu.pronouncing-dictionary",
+    "acquisition_id": "cmudict-cmudict.dict-pinned",
+    "commit": "74790861f652b15e4ac49015a90074ad62a27690",
+    "raw_pronunciation_rows": 135166,
+    "raw_headword_keys": 126052,
+    "scope": "North American English pronunciation; not CEFR or curriculum lexicon"
+  },
+  "formula_basis": {
+    "source_id": "microsoft.fk",
+    "acquisition_id": "flesch-kincaid",
+    "location": "Understanding readability scores: formulas/ASL/ASW and U.S.grade interpretation"
+  },
+  "tool": "Tools/profile_readability.py",
+  "input_contract": "Exact prepared text, explicit codepoint sentence ranges, kind/review statuses and preparation evidence; no silent period split",
+  "prohibitions": [
+    "No guessed syllables for unknown/foreign words",
+    "No score for nonprose/gapped or unreviewed text/boundaries",
+    "No clipped formula feature converted to Chinese grade/CEFR/Lexile",
+    "No pronunciation envelope claimed as statistical confidence interval"
+  ],
+  "original_fixture_observations": {
+    "one_word_negative_feature_not_clipped": -3.4,
+    "five_word_tokens": 5,
+    "syllable_variant_envelope": [
+      7,
+      10
+    ],
+    "fk_feature_envelope": [
+      2.88,
+      9.96
+    ],
+    "unknown_accented_word_preserved": true
+  },
+  "limitations": [
+    "Only original structural fixtures tested, not independently reviewed curriculum passages",
+    "Exact tokenizer differs from Word; no crossanalyzer equality claimed",
+    "Questions/options, knowledge, visuals, scaffolding and learner effects separate",
+    "Dictionary/license changed identity refuses execution; boundary review claims require real evidence outside code"
+  ]
+}

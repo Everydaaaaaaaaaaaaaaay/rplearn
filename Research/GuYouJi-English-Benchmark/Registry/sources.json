@@ -863,12 +863,13 @@
       "category": "metrics",
       "priority": "P1",
       "provenance": "official_publisher",
-      "checked_on": "2026-10-12",
+      "checked_on": "2026-10-13",
       "verification_status": "source_page_reviewed",
-      "notes": "Classroom estimated range and commercial publishing tool distinction checked; current membership changes must be reconciled.",
+      "notes": "Current guide explicitly separates reader/text measure, prohibits classroom-measure commercial/public/database use and excludes nonprose/test items. Cleaning must preserve source trace; no analyzer executed.",
       "acquisition_ids": [
         "lexile-guide",
-        "lexile-current"
+        "lexile-current",
+        "lexile-preparation-current"
       ],
       "rights": {
         "commercial_publication": "unknown",
@@ -886,11 +887,13 @@
       "category": "metrics",
       "priority": "P1",
       "provenance": "official_publisher",
-      "checked_on": "2026-10-12",
+      "checked_on": "2026-10-13",
       "verification_status": "source_page_reviewed",
-      "notes": "Organization/licensed usage described; no subscription purchased or analyzer run.",
+      "notes": "API/license definitions and text-domain scope read; no orderform/license purchased or protected content transmitted.",
       "acquisition_ids": [
-        "lexile-commercial"
+        "lexile-commercial",
+        "lexile-api-measurement-scope",
+        "lexile-commercial-license-definitions"
       ],
       "rights": {
         "commercial_publication": "license_required",
@@ -1974,6 +1977,101 @@
         "fuzhou2025-english-render-page036",
         "fuzhou2025-english-render-page037",
         "fuzhou2025-english-render-page038"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "cmu.pronouncing-dictionary",
+      "title": "CMUdict上游固定版本及BSD用途",
+      "url": "https://github.com/cmusphinx/cmudict",
+      "category": "vocabulary",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "固定master提交74790861f652b15e4ac49015a90074ad62a27690；北美英语发音数据，保留版权/条件/免责声明，不含年级或词汇等级。",
+      "acquisition_ids": [
+        "cmudict-upstream-commit",
+        "cmudict-cmudict.dict-pinned",
+        "cmudict-LICENSE-pinned",
+        "cmudict-README-pinned"
+      ],
+      "rights": {
+        "commercial_publication": "allowed_subject_to_BSD_notices",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "allowed_subject_to_BSD_notices",
+        "adaptation": "allowed_subject_to_BSD_notices",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "allowed_subject_to_BSD_notices"
+      },
+      "rights_scope": "CMUdict data/code only; retain LICENSE. Other corpora, learner data and public model weights are separate scopes."
+    },
+    {
+      "id": "ucf.readability1975",
+      "title": "Flesch-Kincaid推导研究机构档案",
+      "url": "https://stars.library.ucf.edu/istlibrary/56/",
+      "category": "metrics",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "研究机构档案已核读，全文入口403/404；该档案要求商业用途许可，不能因海军背景就推定整份材料为公有领域。",
+      "acquisition_ids": [
+        "ucf-fk1975-repository-notice",
+        "ucf-fk1975-report-public-download",
+        "eric-fk1975-public-report"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "lexile.version2026",
+      "title": "Lexile2026测量系统更新公告",
+      "url": "https://www.metametrics.com/resources/lexile-text-analyzer-2026-update/",
+      "category": "metrics",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "4月9日公告计划6月1日更新；测量需保留算法/语料版本，尚未实测API上线或重测旧材料。",
+      "acquisition_ids": [
+        "lexile-2026-update"
+      ],
+      "rights": {
+        "commercial_publication": "unknown",
+        "commercial_model_training": "unknown",
+        "bulk_database_reuse": "unknown",
+        "adaptation": "unknown",
+        "third_party_model_transmission": "unknown",
+        "redistribution": "unknown"
+      }
+    },
+    {
+      "id": "lexile.llm-study2026",
+      "title": "MetaMetrics2026 LLM估计Lexile研究简报",
+      "url": "https://www.metametrics.com/resources/can-llms-estimate-lexile-measures/",
+      "category": "metrics",
+      "priority": "P1",
+      "provenance": "official_publisher",
+      "checked_on": "2026-10-13",
+      "verification_status": "partial_primary_review",
+      "notes": "厂商22页简报，1807材料、四组模型配置、三次重复；指定方法/结果及限制已核读，没有原始试验复算，也不外推未来模型。",
+      "acquisition_ids": [
+        "lexile-2026-llm-study-notice",
+        "lexile-2026-llm-study-report"
       ],
       "rights": {
         "commercial_publication": "unknown",

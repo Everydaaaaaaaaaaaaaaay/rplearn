@@ -1,0 +1,37 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "lexile.llm-study2026",
+  "acquisition_id": "lexile-2026-llm-study-report",
+  "pdf_pages_visually_reviewed": [
+    2,
+    3,
+    4
+  ],
+  "publisher_notice_date": "2026-09-24",
+  "study_author": "MetaMetrics; vendor-authored research brief",
+  "reported_unique_passages": 1807,
+  "model_configurations": 4,
+  "repetitions_per_passage_per_model": 3,
+  "planned_trials": 21684,
+  "excluded_trials": 165,
+  "valid_trials": 21519,
+  "exclusions": {
+    "api_failures": 150,
+    "no_measure": 15
+  },
+  "scalar_handling": "Range-only outputs converted to midpoint for scalar analyses; range analyses separate",
+  "reported_results": {
+    "overall_mae_L": 128.73,
+    "exact_match_percent": 3.03,
+    "within_60L_percent": 32.35
+  },
+  "interpretation": "Unverified LLM numeric claims cannot become official Lexile fields; study is version/prompt/corpus-specific and does not test our entry agent.",
+  "limitations": [
+    "No rawtrial replay or independent validation performed",
+    "Model labels are report labels, not verified API identifiers",
+    "Default settings and oneprompt;futuremodels/prompts may differ",
+    "Repeated measurements on same passages are correlated",
+    "PDF4footnote says125Lthen125words;unit inconsistency preserved,not treated as calibrated error bound",
+    "Not a general evaluation of AI item-writing quality or China grade alignment"
+  ]
+}
