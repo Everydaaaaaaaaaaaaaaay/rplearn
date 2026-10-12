@@ -85,8 +85,15 @@ def main():
     choice_slots = copy.deepcopy(fixtures['cloze-10'])
     choice_slots.update(contract_version='0.2', id='fixture.choice-slot-scope')
     for item in choice_slots['items']:
+        item['response'] = dict(kind='choice', selection='single', options=[
+            dict(id='a', text='Original synthetic choice one'),
+            dict(id='b', text='Original synthetic choice two')])
         item['response_scope'] = dict(kind='option_ids', slot_ids=item['slot_ids'][:],
             evidence_ids=['fixture.authorship'], reason='Select a stable option identity for the bound cloze gap')
+    choice_slots['private_scoring'] = [{**{k: score[k] for k in
+        ('id', 'item_ids', 'possible_source_marks', 'evidence_ids')},
+        'kind': 'choice', 'accepted_option_ids': ['a'], 'multiple_selection_rule': 'exact_set',
+        'rule': 'Synthetic option identity demonstration only'} for score in choice_slots['private_scoring']]
     assert not errors(choice_slots), 'Choice cloze cannot bind explicit gaps in contract0.2'
     choice_slots['items'][0]['response_scope']['kind'] = 'slot_only'
     assert errors(choice_slots), 'Choice response falsely declared free text slot-only'
