@@ -49,6 +49,59 @@
       "scope": "Generalcomplexsurveysampling principle,notproduct DEFF",
       "design_effect": "Variance undercomplex design dividedbyvarianceunderSRS;variable/groupdependent",
       "implication": "School/learner/itemfamily andstratum structuremustbe accountedforratherthan countingallanswersasIID"
+    },
+    {
+      "id": "ets2026-design-review-and-precision",
+      "source_id": "ets.toefl2026.technical-manual",
+      "acquisition_id": "toefl2026-technical-manual",
+      "design_history_pdf_pages": [
+        10,
+        11
+      ],
+      "prototype_participants": 570,
+      "pilot_participants": 700,
+      "field_participants_approximate": 5000,
+      "history_boundary": "TOEFLEssentialsrelatedtaskdesignhistory describedinmanual;not newLingoTriporcurrent2026population",
+      "review_pdf_pages": [
+        31,
+        32
+      ],
+      "review_rule": "Multiple nonauthor sequentialindependentreviews;subjectexpertwhenneeded;editorial/fairnessreview;technologygeneratedcontentstillreviewed",
+      "reliability_pdf_page": 48,
+      "reported_field_form_table11": [
+        {
+          "section": "Reading",
+          "reliability": 0.86,
+          "sem": 0.37
+        },
+        {
+          "section": "Listening",
+          "reliability": 0.88,
+          "sem": 0.35
+        },
+        {
+          "section": "Writing",
+          "reliability": 0.87,
+          "sem": 0.36
+        },
+        {
+          "section": "Speaking",
+          "reliability": 0.94,
+          "sem": 0.22
+        },
+        {
+          "section": "Overall",
+          "reliability": 0.9,
+          "sem": 0.32
+        }
+      ],
+      "methods": {
+        "reading_listening": "IRTbased",
+        "writing": "stratifiedalpha",
+        "speaking": "coefficientalpha"
+      },
+      "unresolved_observation": "Samepageprosecalls overallmostreliableyettablehasSpeaking0.94>Overall0.90;retainratherthan rewrite",
+      "scope": "Fieldform/population/1to6scale specific;not product thresholds or shortgroup confidence"
     }
   ]
 }
