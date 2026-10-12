@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-10-12",
+  "updated_on": "2026-10-13",
   "automation_id": "lingotrip",
   "automation_kind": "heartbeat",
   "definition": "Milestone decisions require the acceptance protocol; bookkeeping alone cannot pass a gate.",
@@ -15,7 +15,8 @@
       ],
       "evidence_paths": [
         "Studies/2026-10-12-foundation-audit.md",
-        "Studies/2026-10-12-continuation-audit.md"
+        "Studies/2026-10-12-continuation-audit.md",
+        "Studies/2026-10-13-regional-adoption-and-directories.md"
       ],
       "review_roles": [],
       "passed_on": null
@@ -30,7 +31,10 @@
         "G03",
         "G16"
       ],
-      "evidence_paths": [],
+      "evidence_paths": [
+        "Studies/2026-10-12-pep-unit-and-rights-review.md",
+        "Studies/2026-10-13-domestic-semester-components.md"
+      ],
       "review_roles": [],
       "passed_on": null
     },
@@ -46,20 +50,26 @@
         "G14",
         "G15"
       ],
-      "evidence_paths": [],
+      "evidence_paths": [
+        "Studies/2026-10-13-cambridge-groups-and-media-review.md",
+        "Studies/2026-10-13-cefrj-upstream-review.md",
+        "Studies/2026-10-13-cando-task-and-rubric-review.md"
+      ],
       "review_roles": [],
       "passed_on": null
     },
     {
       "id": "M4",
       "title": "题组合同与命题规格",
-      "status": "pending",
+      "status": "in_progress",
       "gap_ids": [
         "G05",
         "G06",
         "G16"
       ],
-      "evidence_paths": [],
+      "evidence_paths": [
+        "ItemGroups/Contract.md"
+      ],
       "review_roles": [],
       "passed_on": null
     },

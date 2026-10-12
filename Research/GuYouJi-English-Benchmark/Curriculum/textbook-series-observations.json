@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-10-12",
+  "updated_on": "2026-10-13",
   "observations": [
     {
       "id": "pep-junior-six-volumes",
@@ -51,6 +51,130 @@
       ],
       "edition_identity": "new-series overview; per-volume ISBN and copyright-page verification pending",
       "adoption_scope": "not_established"
+    },
+    {
+      "id": "huairou2025-english-adoption",
+      "source_id": "huairou.adoption2025",
+      "acquisition_id": "huairou2025-textbook-adoption",
+      "authority": "北京市怀柔区教育委员会",
+      "publication_date": "2025-09-24",
+      "scope": "Districtdirectory,notnational",
+      "observed_series": [
+        {
+          "stage": "primary1-2",
+          "publisher": "PEP",
+          "start_grade": 1
+        },
+        {
+          "stage": "primary3-6",
+          "publisher": "PEP",
+          "start_grade": 3
+        },
+        {
+          "stage": "junior",
+          "publisher": "PEP"
+        },
+        {
+          "stage": "senior",
+          "publisher": "BNU"
+        }
+      ],
+      "edition_identity": "ISBN/printedition/semesterallocationnotprovided",
+      "implication": "KeeplocalEnglishstartandpublishercontext;BNUrequiresselectivesupplementforactualregionalusercoverage"
+    },
+    {
+      "id": "lanling2025-2026-english-adoption",
+      "source_id": "lanling.adoption2025-2026",
+      "acquisition_id": "lanling2025-2026-grade7-adoption",
+      "authority": "兰陵县第三中学",
+      "publication_date": "2026-04-23",
+      "school_year": "2025-2026",
+      "scope": "Oneschoolonly",
+      "observed_series": [
+        {
+          "grade": 7,
+          "publisher": "PEP"
+        },
+        {
+          "grade": 8,
+          "publisher": "PEP"
+        }
+      ],
+      "grade9_english_textbook": "NoEnglishrowinpublishedtextbooksection;notproofofnonuse",
+      "edition_identity": "ISBN/printedition/semesterallocationnotprovided",
+      "textbook_vs_supplement": "Teachingaids listedseparately;theirauthorspublishersdonotdeterminetheselectedtextbookseries"
+    },
+    {
+      "id": "national2024-junior-series-identities",
+      "source_id": "moe.textbook-directory",
+      "acquisition_id": "shanghai-national-directory2024-attachment",
+      "pdf_pages": [
+        6,
+        7
+      ],
+      "review": "Englishtablebody visuallychecked",
+      "scope": "Approvednationaldirectory2024for2022curriculum;notregionadoptionormostrecentedition",
+      "six_three_series": [
+        {
+          "publisher": "PEP",
+          "editors": [
+            "刘道义",
+            "郑旺全"
+          ],
+          "volumes": "七年级上至九年级下"
+        },
+        {
+          "publisher": "FLTRP",
+          "editors": [
+            "孙有中"
+          ],
+          "volumes": "七年级上至九年级下"
+        },
+        {
+          "publisher": "Yilin",
+          "editors": [
+            "王守仁",
+            "何锋"
+          ],
+          "volumes": "七年级上至九年级下"
+        },
+        {
+          "publisher": "BNU",
+          "editors": [
+            "王蔷"
+          ],
+          "volumes": "七年级上至九年级下"
+        }
+      ],
+      "five_four_volume_patterns": [
+        "六年级上至八年级下加九年级全一册",
+        "六年级上至九年级下"
+      ],
+      "other_components": "Largeprinteditionandteacherguides listedseparately",
+      "isbn_and_printedition": "Notprovided"
+    },
+    {
+      "id": "shanghai2026-junior-practice-update",
+      "source_id": "shanghai.directory2026",
+      "acquisition_id": "shanghai-directory2026-autumn-attachment",
+      "pdf_page": 5,
+      "printed_page": 8,
+      "scope": "Localfive-four practicebooks;notnationalstudenttextbookdirectory",
+      "series_publisher": "上海教育出版社",
+      "grades_firstsemester": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "grade9_initial_status": "pending_review_in_originalappendix",
+      "grade9_updated_status": "approved_SD-CX-2026012",
+      "update_evidence": {
+        "acquisition_id": "shanghai-directory2026-approved-update",
+        "body_publication_date": "2026-08-31",
+        "table_row": 31
+      },
+      "status_scope": "Approvedforlocalschoolselection;notcommercialreuseclearance"
     }
   ]
 }
