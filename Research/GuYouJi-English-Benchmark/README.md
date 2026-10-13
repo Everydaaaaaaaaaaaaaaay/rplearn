@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [实际用锚理由四组追加](Studies/2026-10-14-current-used-anchor-first-four-reasons.md)：当前15/25组135/205源响应；原生they强调/2019日历/多词词库及图形不确定性保留，10组70点未完成并被严格验收拒绝。
+
 - [源答案值错误修正与实际用锚缺口](Studies/2026-10-14-seed-answer-values-and-used-anchor-gap.md)：15个题号误作选项已按冻结映射纠正，112标签/15映射检查与真实旧错误拒绝；当前25使用锚另有14组待统一逐项理由；[审阅包0.4](FirstRelease/ReviewPackage-v0.4.md)。
 
 - [第24当前形式与初二源恢复](Studies/2026-10-14-checkpoint24-current-forms-and-grade8-recovery.md)：6309文件独立COW恢复，25核心/205点及1开放补充/10点、新历史源/错误更正/实际叙事修订重放一致；异机和完整环境门槛仍开放。

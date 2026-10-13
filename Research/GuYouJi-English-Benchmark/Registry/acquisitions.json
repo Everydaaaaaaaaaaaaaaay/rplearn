@@ -59088,6 +59088,84 @@
         ],
         "tool": "validate_firstrelease_v0_9.py --check-cache"
       }
+    },
+    {
+      "id": "current-used-anchor-rationales-firstfour20261014-record",
+      "url": "urn:lingotrip:research:current-used-anchor-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-used-anchor-rationales-firstfour20261014.json",
+      "bytes": 69471,
+      "sha256": "b0333bc18588a869b40792ce1281de4524e8f3f0eec70ca1f58691046339e0d6",
+      "format_validation": "UTF8_saved",
+      "review_scope": "used15groups135items_partialauthorreasonset;4new19actualsourceitems,11inheritedcorrectedseedgroups;exactHTMLtheyemphasis/June2019/currentwordbankandgrowthstoryfullreasons;source51lowresvisual excluded,10usedgroups70itemsgap retained;not independent/student/model/rights validation",
+      "derivation": {
+        "origin": "project_current_used_source_item_rationale_extension",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales-v0220261014",
+          "suzhou-changshu2019-grade7-upper",
+          "grade8-fengtai2025upper-candidate20261014"
+        ],
+        "tool": "actualsourceHTML/selectedimages/fullsameauthorresolve"
+      }
+    },
+    {
+      "id": "grade7-current-anchor-native-emphasis20261014-record",
+      "url": "urn:lingotrip:research:current-used-anchor-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade7-current-anchor-native-emphasis20261014.json",
+      "bytes": 1824,
+      "sha256": "1bb2b5300f6a91b26e914792f1d4424bd1230d959af2bd350133783d5ed97ac0",
+      "format_validation": "UTF8_saved",
+      "review_scope": "originalHTMLmarkedtheyandcaptionconstraints;4new19actualsourceitems,11inheritedcorrectedseedgroups;exactHTMLtheyemphasis/June2019/currentwordbankandgrowthstoryfullreasons;source51lowresvisual excluded,10usedgroups70itemsgap retained;not independent/student/model/rights validation",
+      "derivation": {
+        "origin": "project_current_used_source_item_rationale_extension",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales-v0220261014",
+          "suzhou-changshu2019-grade7-upper",
+          "grade8-fengtai2025upper-candidate20261014"
+        ],
+        "tool": "actualsourceHTML/selectedimages/fullsameauthorresolve"
+      }
+    },
+    {
+      "id": "extend-current-used-anchor-rationales-firstfour20261014-record",
+      "url": "urn:lingotrip:research:current-used-anchor-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/extend_current_used_anchor_rationales_firstfour20261014.py",
+      "bytes": 11489,
+      "sha256": "7f5ea950d921c5dfdd81d76407dabc93871543918181351c577bf7f2e85371ad",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_extension_method;4new19actualsourceitems,11inheritedcorrectedseedgroups;exactHTMLtheyemphasis/June2019/currentwordbankandgrowthstoryfullreasons;source51lowresvisual excluded,10usedgroups70itemsgap retained;not independent/student/model/rights validation",
+      "derivation": {
+        "origin": "project_current_used_source_item_rationale_extension",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales-v0220261014",
+          "suzhou-changshu2019-grade7-upper",
+          "grade8-fengtai2025upper-candidate20261014"
+        ],
+        "tool": "actualsourceHTML/selectedimages/fullsameauthorresolve"
+      }
+    },
+    {
+      "id": "current-used-anchor-firstfour-validation20261014-record",
+      "url": "urn:lingotrip:research:current-used-anchor-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-used-anchor-firstfour-validation20261014.json",
+      "bytes": 2123,
+      "sha256": "ca7f22673906f62a7ceb56055852260ab4306ce3aa273e81fe580b2e1c6fb0bb",
+      "format_validation": "JSON_parsed",
+      "review_scope": "15actualusedgroups135responses/95choice labels15mappedvalues verified; remaining10groups70points causes explicitrequire-complete rejection;not semantic/independent/student/rights/model validation",
+      "derivation": {
+        "origin": "project_partial_current_source_reason_validation",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-firstfour20261014-record"
+        ],
+        "tool": "validate_current_used_anchor_rationales.py"
+      }
     }
   ],
   "updated_on": "2026-10-13"
