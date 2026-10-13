@@ -10,6 +10,7 @@
 - [七上正式第一单元](Studies/2026-10-13-pep-grade7upper-unit1-information-and-function.md)与[三个Starter](Studies/2026-10-13-pep-starter-input-and-image-response-boundaries.md)：信息缺省、语言功能、着色/图片圈画及真实前置输入。
 - [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
+- [选择性必修二Unit2长句与论证](Studies/2026-10-13-long-sentence-clause-scope-and-argument-tasks.md)及[配套与从句修正](Studies/2026-10-13-senior-unit2-support-and-clause-correction.md)：正文32块、Workbook16块、八条注释与词表区域；来源分类、旧观察、独立金标准分别保留。
 - [商用候选及来源质量](Studies/2026-10-13-commercial-candidates-and-source-quality.md)与[VOA第三方组件](Studies/2026-10-13-voa-thirdparty-lyrics-and-image-blindspots.md)：再版政策不能覆盖歌曲、外链、训练和整库用途。
 - [第十四保存与恢复检查点](Studies/2026-10-13-checkpoint14-appendices-and-voa-recovery.md)：该冻结版本的本机恢复证据；后来批次尚不在此快照中，异机门槛仍开放。
 - [第十五保存与恢复检查点](Studies/2026-10-13-checkpoint15-starter-yilin-and-senior-recovery.md)：截至6331cf49的5118文件独立恢复、冻结schema依赖重建与译林原生文本重放；PDF解析器/解释器完整重建和异机验证仍缺。
