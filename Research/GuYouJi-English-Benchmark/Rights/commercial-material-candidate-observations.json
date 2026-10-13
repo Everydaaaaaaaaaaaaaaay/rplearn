@@ -1,0 +1,44 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "Use-specific source observations, not legal blanket admission",
+  "sources": [
+    {
+      "source_id": "voa.learning-content-policy",
+      "evidence_acquisition_ids": [
+        "voa-commercial-request20261013",
+        "voa-content-terms20261013"
+      ],
+      "declared_reprint_purposes": [
+        "educational",
+        "commercial"
+      ],
+      "conditions": [
+        "exclusiveVOAproduction",
+        "attribution",
+        "thirdpartycomponent exclusion",
+        "separate trademark terms"
+      ],
+      "not_automatically_cleared": [
+        "training",
+        "bulk database",
+        "thirdparty model transmission",
+        "external linkedmedia",
+        "fullmixed news corpus"
+      ]
+    },
+    {
+      "source_id": "openstax.current-material-policy",
+      "evidence_acquisition_ids": [
+        "openstax-computer-preface20261013",
+        "commercial-material-rights-connector20261013"
+      ],
+      "specific_book_license": "CC-BY-NC-SA4.0",
+      "specific_book_LLM_condition": "Priorwritten permission fortraining oringestion intoLLM/generativeAIofferings",
+      "historical_license_revocation": "not_inferred; concrete historicalfiles not acquired",
+      "update_blog_body": "not_verified",
+      "native_help_body": "not_obtained;200appshell"
+    }
+  ],
+  "commercial_admission": false,
+  "licensor_contact_or_registration": false
+}

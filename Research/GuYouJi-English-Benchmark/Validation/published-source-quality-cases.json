@@ -65,6 +65,17 @@
       "confirmed_source_conflict": false,
       "observation": "Dictionary expressly requested before idiom matching, followed by expansion/share",
       "required_response": "Record dictionary assistance for matching as well as expansion; do not infer unassisted ranked proficiency"
+    },
+    {
+      "id": "voa-wordbook-printed-POS-candidates",
+      "source_id": "voa.learning-wordbook",
+      "acquisition_id": "voa-lle1-lesson1-link-bounded20mb20261013",
+      "locator": "PDF11legend/PDF12able/about",
+      "category": "source_POS_review_candidates",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": false,
+      "observation": "adlegend combines adjective/adverb; actualprintedable-v andabout-adj match nativeextract, not OCRonly artifacts",
+      "required_response": "Preserve observedlabels andrequire independent sense/POS review; do not use as goldPOS training labels"
     }
   ],
   "gold_admission": false
