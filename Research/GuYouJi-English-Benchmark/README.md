@@ -36,6 +36,7 @@
 
 - [第十八保存与恢复检查点](Studies/2026-10-13-checkpoint18-sevenupper-and-date-recovery.md)：截至e56eb8e0的5526文件独立恢复，七离线检查及74正文/164活动块、拓展阅读和验证HTML关系重放；依旧非异机/完整工具链或教育验收。
 - [第十九保存与恢复检查点](Studies/2026-10-13-checkpoint19-fujian-shanghai-and-workbook-recovery.md)：截至f787cb15的5601文件独立恢复，福建15独特英语页/91题/150分、六Decimal边界及三XLSX原XML/学校分组重放；完整工具链、异机与教育验收仍缺。
+- [第二十保存与恢复检查点](Studies/2026-10-13-checkpoint20-oral-practice-and-senior-travel-recovery.md)：截至4c2e19a7的5659文件独立恢复，Unit2任务/词表边界、公开RAR仅EXE目录及两城市框架重放；非独立gold、商用/学生或异机验收。
 
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
