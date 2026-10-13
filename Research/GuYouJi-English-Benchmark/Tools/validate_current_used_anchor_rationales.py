@@ -6,12 +6,26 @@ import validate_firstrelease_v0_3 as core
 import validate_seed_answer_values_v0_1 as values
 
 
+def usage_signature(review):
+    fields = ['id', 'grade', 'core_kind', 'author_kind', 'anchor_group_ids', 'questions']
+    return core.canonical(sorted([{key: row[key] for key in fields}
+                                  for row in review['candidates']], key=lambda row: row['id']))
+
+
+def coverage_reference(index):
+    if 'coverage_reference_review_index' in index:
+        return core.file_ref(index['coverage_reference_review_index'])
+    path = core.BASE / index['current_review_index_path']
+    if core.digest(path) != index['current_review_index_sha256']:
+        raise ValueError('coverage reference review binding differs')
+    return path
+
+
 def check(index, require_complete=False):
     errors = []
-    review_path = core.BASE / index['current_review_index_path']
-    if core.digest(review_path) != index['current_review_index_sha256']:
-        errors.append('current review binding differs')
-    review = json.loads(review_path.read_text())
+    review = json.loads(coverage_reference(index).read_text())
+    if index.get('actual_usage_signature_sha256', usage_signature(review)) != usage_signature(review):
+        errors.append('actual source usage signature differs')
     required = {g for row in review['candidates'] for g in row['anchor_group_ids']}
     observations = {g['id']: g for g in json.loads((core.BASE / 'FirstRelease/source-group-observations.json').read_text())['groups']}
     acquisitions = {a['id']: a for a in json.loads((core.BASE / 'Registry/acquisitions.json').read_text())['acquisitions']}

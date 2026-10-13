@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [自身初三最高级规则误拒修正](Studies/2026-10-14-grade9-oneof-rule-and-than-repair.md)：one of不强制最高级，实际改than结构/167 token并重解十空；源理由与用锚签名修正，[现行审阅包0.6](FirstRelease/ReviewPackage-v0.6.md)。
+
 - [当前实际用锚统一理由覆盖成立](Studies/2026-10-14-current-used-highschool-rationales-complete.md)：25使用源组/205响应都有逐项作者理由，12风险响应隔离，实际旧部分集合仍严格拒绝；[审阅包0.5](FirstRelease/ReviewPackage-v0.5.md)不声称独立gold或上线通过。
 
 - [初三三组实际用锚理由](Studies/2026-10-14-current-used-grade9-source-reasons.md)：18/25组160/205点，科学/文化主张与语法开放变体分开；the…month不强制最高级，7高中组45点仍被完整验收拒绝。

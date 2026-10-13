@@ -8,13 +8,13 @@
 
 累计53个完整配套选定源组、25个原创题组家族（当前25个版本，修订前稿另存，不重复计样本）。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
-可以从[当前审阅包0.5](ReviewPackage-v0.5.md)开始（[19组历史基线](ReviewPackage-v0.1.md)另存）：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
+可以从[当前审阅包0.6](ReviewPackage-v0.6.md)开始（[19组历史基线](ReviewPackage-v0.1.md)另存）：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
 | 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md)、[日历](Generated/grade7-calendar-reading-v0.1.md)、[原形词库](Generated/grade7-reading-bus-bank-v0.1.md)、[人物图联合](Generated/grade7-reading-corner-images-v0.1.md) | 7，两卷 | 更多负荷/空间关系与真实视觉验证 |
 | 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[成长叙事0.2](Generated/grade8-music-afternoon-reading-v0.2.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；已补模拟开放形式，学校真卷配套仍缺 |
-| 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
+| 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空0.2](Generated/grade9-weather-grammar-v0.2.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读0.2](Generated/grade10-roof-reading-v0.2.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
 | 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[15空完形](Generated/grade11-maps-funding-cloze-v0.1.md)、[论证阅读0.2](Generated/grade11-commitments-reading-v0.2.md)、[单篇语法](Generated/grade11-archive-grammar-v0.1.md)、[三篇语法](Generated/grade11-three-context-grammar-v0.1.md) | 8，两卷 | 开放变体裁决/更多体裁与第二卷负荷 |
 | 高三 | [0.2](Specifications/grade12-v0.2.md) | [四简介阅读](Generated/grade12-archive-v0.1.md)、[论证阅读](Generated/grade12-dashboard-reading-v0.1.md)、[完形](Generated/grade12-bridge-cloze-v0.1.md)、[语法](Generated/grade12-workshop-grammar-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；全年冲刺范围仍缺 |
@@ -75,3 +75,5 @@
 [高二追加语言形式](../Studies/2026-10-14-grade11-fifteen-cloze-three-grammar-and-author-roles.md)补完整15空与三篇3/3/4；当前[索引0.7](review-index-v0.7.json)24家族/202点/53源组，作者区真实条目、两组三篇分配和图片引用由[0.7检查器](../Tools/validate_firstrelease_v0_7.py)校验。[审阅包0.2](ReviewPackage-v0.2.md)列出具体待裁决响应，不当生产键。
 
 [实际用锚理由0.3](current-used-anchor-rationale-index-v0.3.json)已补完7高中组45点，当前25/25组205/205源响应的作者理由覆盖成立；12源风险响应隔离，非独立gold。[索引0.10](review-index-v0.10.json)/[检查器0.10](../Tools/validate_firstrelease_v0_10.py)绑定真实用锚集合并拒绝旧18/160部分覆盖，[审阅包0.5](ReviewPackage-v0.5.md)为现行入口。
+
+自身初三第8空的one of最高级误拒已由[0.2实际than修订](Generated/grade9-weather-grammar-v0.2.md)修复。现行[索引0.11](review-index-v0.11.json)/[用锚理由0.4](current-used-anchor-rationale-index-v0.4.json)/[审阅包0.6](ReviewPackage-v0.6.md)仍25核心/205点/53源组，源覆盖签名不受同一家族改稿影响但拒绝换源。
