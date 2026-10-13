@@ -19,6 +19,16 @@ from validate_item_groups import BASE, validator_for, semantic_errors
 from annotation_ranges import annotation_range_errors
 
 
+def schema_error_summary(error, prefix=''):
+    """Keep location/constraint, without jsonschema's raw instance or schema dump.
+
+    A failed oneOf may otherwise echo learner text; group errors can include
+    private scoring. These reports are diagnostics, not copies of either input.
+    """
+    location = '/'.join(map(str, error.absolute_path)) or '<root>'
+    return f'{prefix}{location}: schema constraint {error.validator} failed'
+
+
 def response_errors(group, item, response):
     """Check response identity/coordinates, never correctness or linguistic limits.
 
@@ -71,12 +81,13 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
     if nonfinite(trace):
         return dict(structure_valid=False, errors=['Non-finite numeric value in trace'], production_admission=False)
     version = trace.get('contract_version')
-    filename = {'0.1': 'AttemptTrace.schema.json', '0.2': 'AttemptTrace-v0.2.schema.json'}.get(version)
+    filename = {'0.1': 'AttemptTrace.schema.json', '0.2': 'AttemptTrace-v0.2.schema.json'}.get(version) \
+        if isinstance(version, str) else None
     if filename is None:
         return dict(structure_valid=False, errors=['Unsupported attempt contract version'], production_admission=False)
     schema = json.loads((BASE / 'Attempts' / filename).read_text())
     Draft202012Validator.check_schema(schema)
-    errors = [f'{"/".join(map(str, e.absolute_path))}: {e.message}' for e in
+    errors = [schema_error_summary(e) for e in
               Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(trace)]
     if errors:
         return {'structure_valid': False, 'errors': errors, 'production_admission': False}
@@ -89,9 +100,10 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
     payload, group = snapshot['payload'], snapshot['payload']['group']
     try:
         group_errors = list(validator_for(group).iter_errors(group))
-    except ValueError as exc:
-        group_errors = [str(exc)]
-    errors += [f'group snapshot: {e}' for e in group_errors]
+    except (ValueError, TypeError):
+        group_errors = ['Unsupported group snapshot contract']
+    errors += [schema_error_summary(e, 'group snapshot: ') if not isinstance(e, str)
+               else e for e in group_errors]
     if group_errors:
         return {'structure_valid': False, 'errors': errors, 'production_admission': False}
     errors += semantic_errors(group, sources, acquisitions)

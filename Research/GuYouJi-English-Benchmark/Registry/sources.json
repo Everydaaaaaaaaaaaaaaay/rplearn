@@ -3669,12 +3669,15 @@
       "provenance": "project_authored_method_and_structural_fixtures",
       "checked_on": "2026-10-13",
       "verification_status": "synthetic_consistency_checks_passed_not_educational_validation",
-      "notes": "4originalfixtures/32negativechecks;old3fixtures/33checks retained. No actual learner data/scoring/server ledger;raw responses private and reports omit values.",
+      "notes": "4 original fixtures/32 negative checks plus old3/33 retained. Initial schema failure reports echoed raw response/private scoring; repaired path/constraint summaries pass14 sentinel cases. IDs/paths remain diagnostic metadata; no actual learner data, scoring or server ledger.",
       "acquisition_ids": [
         "attempt-response-v02-audit20261013",
         "attempt-v01-regression20261013",
         "attempt-v02-schema-method20261013",
-        "attempt-v02-fixture-method20261013"
+        "attempt-v02-fixture-method20261013",
+        "attempt-error-report-leak-initial20261013",
+        "attempt-group-schema-leak-initial20261013",
+        "attempt-report-privacy-audit20261013"
       ],
       "rights": {
         "commercial_publication": "project_or_output_terms_not_adjudicated_no_thirdparty_exam_rights_granted",

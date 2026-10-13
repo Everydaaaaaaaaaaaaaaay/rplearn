@@ -25580,6 +25580,51 @@
         ],
         "tool": "Single visual inspection andPython/Pillow/curl"
       }
+    },
+    {
+      "id": "attempt-error-report-leak-initial20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-error-report-leak-initial20261013.json",
+      "bytes": 328,
+      "sha256": "5a4abfa686e1fe0a4765031a435b9ca97159a1f17419707320fdaacfc8760bd1",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic sentinel cases: initial raw-value leakage and14 repaired diagnostic checks;notproduction privacy/reallearnerdata",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_report_privacy.py; pre-repair validator at618b2491"
+      }
+    },
+    {
+      "id": "attempt-group-schema-leak-initial20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-group-schema-leak-initial20261013.json",
+      "bytes": 23681,
+      "sha256": "b453cf10b041823a9e01c623508baaefa0762e0c3cec10910dd97cc6abf13d24",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic sentinel cases: initial raw-value leakage and14 repaired diagnostic checks;notproduction privacy/reallearnerdata",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_report_privacy.py; pre-repair validator at618b2491"
+      }
+    },
+    {
+      "id": "attempt-report-privacy-audit20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.2",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-report-privacy-audit20261013.json",
+      "bytes": 763,
+      "sha256": "711289aeac716c9f274c89601267369c1dd81753b35e4fc8baa52cda02023c60",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic sentinel cases: initial raw-value leakage and14 repaired diagnostic checks;notproduction privacy/reallearnerdata",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_report_privacy.py; pre-repair validator at618b2491"
+      }
     }
   ],
   "updated_on": "2026-10-13"
