@@ -47,5 +47,34 @@
     77,
     136
   ],
-  "remaining": "Full original-image comparison, exact authoritative issuance, row-count and marker discrepancy resolution; POS/senses/grade alignment independently pending"
+  "remaining": "Full original-image comparison, exact authoritative issuance, row-count and marker discrepancy resolution; POS/senses/grade alignment independently pending",
+  "glyph_diagnostic": {
+    "pdf_pages": [
+      76,
+      132
+    ],
+    "first_page_min_top_pt": 450,
+    "all_star_glyphs": 2496,
+    "candidate_row_star_sum": 2496,
+    "regular_font_ascii_alpha_occurrences": 19686,
+    "unassigned_regular_alpha_or_star": 0,
+    "multiply_assigned_regular_alpha_or_star": 0,
+    "other_font_ascii_alpha_or_star": 26,
+    "other_font_observation": "Exactly one A-Z heading glyph per letter; no star or candidate-word glyph in other font",
+    "bbox_tolerance_pt": 0.2,
+    "result": "No omitted ASCII alpha/star glyph identified by the specified font/geometry diagnostic; row-count semantics, image concordance and authoritative provenance remain unresolved",
+    "acquisition_ids": [
+      "diagnose-senior2025-native-markers20261013",
+      "senior2025-native-all-glyph-marker-diagnostic20261013",
+      "senior2025-native-nonregular-alpha20261013",
+      "diagnose-senior2025-row-glyphs20261013",
+      "senior2025-native-row-glyph-concordance20261013"
+    ],
+    "limitations": [
+      "PDF text/glyph identity does not establish visual transcription correctness",
+      "No semantic alias/lemma/sense splitting or marker repair performed",
+      "Regular alpha occurrences count characters, not words",
+      "PDF76 opening说明 excluded geometrically; reviewed separately as count declaration"
+    ]
+  }
 }
