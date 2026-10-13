@@ -12,6 +12,7 @@
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
 - [商用候选及来源质量](Studies/2026-10-13-commercial-candidates-and-source-quality.md)与[VOA第三方组件](Studies/2026-10-13-voa-thirdparty-lyrics-and-image-blindspots.md)：再版政策不能覆盖歌曲、外链、训练和整库用途。
 - [第十四保存与恢复检查点](Studies/2026-10-13-checkpoint14-appendices-and-voa-recovery.md)：该冻结版本的本机恢复证据；后来批次尚不在此快照中，异机门槛仍开放。
+- [第十五保存与恢复检查点](Studies/2026-10-13-checkpoint15-starter-yilin-and-senior-recovery.md)：截至6331cf49的5118文件独立恢复、冻结schema依赖重建与译林原生文本重放；PDF解析器/解释器完整重建和异机验证仍缺。
 
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
