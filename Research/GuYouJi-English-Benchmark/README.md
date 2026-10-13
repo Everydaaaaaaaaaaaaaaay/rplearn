@@ -11,6 +11,7 @@
 - [七上第二单元的所有权与证据](Studies/2026-10-13-pep-grade7upper-unit2-ownership-and-evidence.md)：八正文页/配套脚本/词表、23活动块、照片关系与二元判断待裁决；保留邻单元输入误归的观察更正。
 - [七上第三单元的地图与回信](Studies/2026-10-13-pep-grade7upper-unit3-map-and-reply-intent.md)：八正文页/脚本/词表、24活动块，地图重复标签、12语法空位、双标注与回信意图推断。
 - [七上第四单元的学科与访谈](Studies/2026-10-13-pep-grade7upper-unit4-subjects-and-interview-evidence.md)：八正文页/配套、24活动块，gym课程义、多选/跨帖子比较及访谈记录成为下一阶段输入。
+- [七上第五单元的can与准入](Studies/2026-10-13-pep-grade7upper-unit5-can-functions-and-admissions.md)：八正文页/配套、23活动块，能力/时间/许可/学习机会分开；覆盖矩阵同步已核读Units1—5，整册仍未完成。
 - [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
 - [外研高中42单元与产出支撑](Studies/2026-10-13-fltrp-senior-42units-and-output-support.md)：七册官方目录、三幅公开结构图与课程介绍；教材正文、录音、答案及许可仍缺。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
