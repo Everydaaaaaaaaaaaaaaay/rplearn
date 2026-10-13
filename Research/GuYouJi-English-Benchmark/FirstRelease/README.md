@@ -83,3 +83,5 @@
 [高一同类one of误拒修复](../Studies/2026-10-14-grade10-degree-condition-and-current-sweep.md)已实际补最大面积条件并重解十空；[现行索引0.12](review-index-v0.12.json)与[审阅包0.7](ReviewPackage-v0.7.md)仍为25/205/53，同源理由签名保持。旧稿历史不作当前输入。
 
 [范围修复及17项开放响应队列](../Studies/2026-10-14-degree-range-repairs-and-open-response-queue.md)保留初二第11旧歧义、源高一14的程度变体和具体独立裁决任务。当前索引0.13/用锚0.5/审阅包0.8，25/205/53不增，全部独立状态仍未通过。
+
+[可执行标准0.1](PracticalAuthoringStandard-v0.1.md)汇总六年级模式、证据/唯一性/开放变体/真实修订要求；[六项交付检查](DeliveryCheck-v0.1.md)确认可审阅材料已准备，尚不确认质量和长期全部验收。

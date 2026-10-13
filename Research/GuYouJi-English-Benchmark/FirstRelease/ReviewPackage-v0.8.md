@@ -30,3 +30,5 @@
 [初二四选0.2](Generated/grade8-language-choice-v0.2.md)实际修复第11范围结构；源高一14的旧程度排除理由在新用锚0.5中更正，原键不改。两份[三篇语法请求0.3](generation-request-three-grammar-v0.3.json)/[十空完形请求0.3](generation-request-quarantined-cloze-v0.3.json)绑定新目录。
 
 [开放响应裁决队列](open-response-adjudication-queue-v0.1.json)列17具体版本/题号/待回填响应与问题，包括高二3/4/9/10、完成被动分词和参考源13/14/19。这是可交接工作，不是已完成独立裁决；未联系第三方。详见[范围修复与裁决记录](../Studies/2026-10-14-degree-range-repairs-and-open-response-queue.md)。
+
+可从[可执行命题标准](PracticalAuthoringStandard-v0.1.md)快速选择六年级模式和七项质量要求；[六项交付检查](DeliveryCheck-v0.1.md)逐项列已准备材料和实际未通过条件。
