@@ -25,24 +25,6 @@
 
 ## 工作顺序
 
-当前材料入口：[来源矩阵](source-matrix.json)、[选定题组观察](source-group-observations.json)、[首批核读记录](../Studies/2026-10-13-firstrelease-selected-grade-anchors.md)。均为首版过程记录，未表示规格或生成验证已经完成。
-
-[第二批补组](../Studies/2026-10-13-firstrelease-grade12-and-extra-groups.md)新增初二完形、高一报道/说明与高三配套，累计20选定组。高三源键一处实际印刷错误、另一处两个时态变体分别保留；这些是实际审核后进入规格的约束。
-
-第一条实际闭环：[初一首轮规格](Specifications/grade7-v0.1.md) → [原创阅读候选及逐题作者检查](Generated/grade7-library-v0.1.md) → [摘要/结构与修正记录](Generated/grade7-library-author-check-v0.1.json)。其他年级与更多题型继续补齐；单组作者检查不等于独立或学生验收。
-
-新增[初二规格](Specifications/grade8-v0.1.md)与[阅读候选](Generated/grade8-lunch-v0.1.md)、[高一规格](Specifications/grade10-v0.1.md)与[三篇语法候选](Generated/grade10-grammar-v0.1.md)、[高二规格](Specifications/grade11-v0.1.md)与[完形候选](Generated/grade11-exhibition-cloze-v0.1.md)。[三个闭环记录](../Studies/2026-10-13-firstrelease-three-authoring-loops.md)保留多解、范围和干扰项的实际修正；[命题/审核流程](GenerationProtocol-v0.1.md)用于后续同规格与锚组双输入。仍缺初三/高三首轮生成、适用核心题型和第二来源对照。
-
-最新[六年级草案检查](../Studies/2026-10-13-firstrelease-six-grade-draft-check.md)：补[初三规格](Specifications/grade9-v0.1.md)/[图书修复阅读](Generated/grade9-book-repair-v0.1.md)及[高三规格](Specifications/grade12-v0.1.md)/[四项目阅读](Generated/grade12-archive-v0.1.md)。六年级各有一个作者审核候选，23选定源组；尚需各适用核心题型、第二来源/复杂体裁及审阅包，首版未完成。上一段是前一批状态，最新缺口以本检查为准。
-
-[第二来源边界核读](../Studies/2026-10-13-firstrelease-comparison-boundaries.md)取得初二语境/音标/给词一词填空候选（缺键）及高二卷/键（正文待核），保留隐藏标题署名与可见封面差异、地区未知和语法解析63/64题号错位；未新增配套评分组。
-
-最新[高二第二卷对照](Comparisons/grade11-source-comparison-v0.1.md)核读五完整配套组，累计28组；[高二规格0.2](Specifications/grade11-v0.2.md)新增15空完形/单篇10空语法、书评/论证阅读及视角、概念和解析配对规则。保留旧规格与原候选摘要；其他年级第二来源和核心题型仍待完成。
-
-据0.2新增[高二论证阅读](Generated/grade11-commitments-reading-v0.1.md)，329 token/4题四选，区分工时估计、可见性与责任原因；当前7个原创候选。依据[作者检查证据口径](AuthoringEvidence.md)，区分拟稿取舍与保存后的修改，前稿未存不计可复算修改次数；无需要改动的发现也如实记录。
-
-最新[初一第二来源对照](Comparisons/grade7-source-comparison-v0.1.md)复用常熟历史材料/日历/人物图与键，累计31配套选定组；[初一规格0.2](Specifications/grade7-v0.2.md)并列三选/四选与图文模式。新增[箱子标签完形](Generated/grade7-boxes-cloze-v0.1.md)，220 token/10空三选，实际保存首稿并修正三盒物品范围，当前8个原创候选；仍缺初一词库候选与其他年级核心类型/第二来源。
-
 1. 复用已得真卷、答案、教材与国际样例；检索只补六年级题面/答案缺口。每年级优先2—3完整卷，按实际取得再决定是否扩采；数量是控制工作范围的起点，不是标定充分性阈值。
 2. 从完整题组提取文章、问题、干扰项、答案依据和语言负荷特征。同卷/同文/转载按家族去重，教材/样卷/模拟卷身份如实保留。答案来源不明或缺失的题组不能成为已配套评分锚点。
 3. 形成六年级×适用题型的可执行规格。每项区分来源观察、暂定工程规则、未知；常见范围与例外并存。没有源统计的比例、长度、词汇阈值不编造。先修精确对齐、教材整册、CEFR和产品细档标定留作后续，不阻碍用户已接受的年级首版。
