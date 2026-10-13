@@ -57,6 +57,7 @@
 - [B2衔接、多重匹配与评分角色](Studies/2026-10-13-b2-cohesion-reuse-and-teaching-score-boundaries.md)：完整六空七选一次性/十问五段可重复，纸笔/数字样例分开；原分、分配时间与课堂答错扣分不外推产品制度。
 - [B2纸笔七部分完整题面](Studies/2026-10-13-b2-complete-paper-component-and-stem-policy.md)：52编号/六独特题面页及匹配纸笔键，Part2例外/标点拼写、Part3原词根转换与Part4不变关键词分开；其他组件和金标准未验收。
 - [蒜示例事实与正文许可](Studies/2026-10-13-garlic-chronology-clinical-qualification-and-body-rights.md)：截图人物归属时间冲突、实验室与临床证据边界；NCCIH具体正文public-domain声明与第三方图片分开，未认证整篇事实或整站商用。
+- [B2纸笔写作与维度分](Studies/2026-10-13-b2-paper-writing-dimensions-and-task-score-status.md)：四题面、五作答/三家族、20明确维度数字；[作答合同0.2](Performances/Contract-v0.2.md)保存未公布总分的状态，不补造总分，原0.1记录继续兼容。
 - [CEFR-J官方资料复算](Studies/2026-10-13-cefrj-upstream-review.md)：7,801条词性数据、拼写变体与版本差异、2025语法资料及用途范围。
 - [NGSL开放词表与用途边界](Studies/2026-10-13-ngsl-native-files-and-purpose-rights.md)：四类词表的实际计数、未知排名/词形差异、CC BY-SA条件与Oxford API的AI限制，频率分档不直接换年级。
 - [SpeechOcean原始评分与分组](Studies/2026-10-13-speechocean-labels-splits-and-rights.md)：完整公开朗读语料、5000选定条目和五评分者明细、尺度/提示文本隔离及CC BY条件；不是年级/CEFR或产品口语验证。

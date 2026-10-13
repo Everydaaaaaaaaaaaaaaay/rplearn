@@ -20,7 +20,9 @@ SCHEMA = BASE / 'Performances/ScoredPerformance.schema.json'
 
 
 def inspect_performance(record, sources, acquisitions, check_assets=False):
-    schema = json.loads(SCHEMA.read_text())
+    version = record.get('contract_version')
+    schema_path = BASE / 'Performances/ScoredPerformance-v0.2.schema.json' if version == '0.2' else SCHEMA
+    schema = json.loads(schema_path.read_text())
     Draft202012Validator.check_schema(schema)
     errors = [f'{list(e.path)}: {e.message}' for e in
               Draft202012Validator(schema).iter_errors(record)]
@@ -133,7 +135,11 @@ def inspect_performance(record, sources, acquisitions, check_assets=False):
             expected = 'source_record' if score['score_origin'] == 'published_source' else 'original_fixture'
             require(all(refs.get(i, {}).get('origin', {}).get('kind') == expected
                         for i in score['evidence_ref_ids']), 'Score origin contradicts evidence')
-        require(bool(task_scores), 'Single-task performance lacks an explicit task score')
+        if version == '0.2':
+            require((record['task_score_status'] == 'published') == bool(task_scores),
+                    'Task-score publication status contradicts explicit task scores')
+        else:
+            require(bool(task_scores), 'Single-task performance lacks an explicit task score')
         require(all(score['scope'] in ('task', 'criterion') for score in scores.values()),
                 'Single-task performance cannot substitute section/overall rating')
         require(len({(x['scope'], x['criterion_id'], x['scale_id']) for x in scores.values()}) ==

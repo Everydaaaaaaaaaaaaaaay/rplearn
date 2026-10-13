@@ -1,0 +1,571 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:lingotrip:research:scored-performance:0.2",
+  "title": "Research scored performance with explicit task-score publication status",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "0.2"
+    },
+    "admission": {
+      "const": "research_only"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_task_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_script_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modality": {
+      "enum": [
+        "written",
+        "spoken"
+      ]
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "prompt_text",
+              "required_visual",
+              "response",
+              "examiner_comment",
+              "published_score",
+              "rubric_reference",
+              "independent_review_record",
+              "learner_calibration_record",
+              "rights_scope_record"
+            ]
+          },
+          "origin": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "source_record"
+                  },
+                  "source_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "acquisition_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pdf_pages": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "source_label": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "kind",
+                  "source_id",
+                  "acquisition_id",
+                  "pdf_pages",
+                  "source_label"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "original_fixture"
+                  },
+                  "author": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "source_label": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "kind",
+                  "author",
+                  "source_label"
+                ]
+              }
+            ]
+          },
+          "representation": {
+            "enum": [
+              "native_text",
+              "handwritten_image",
+              "page_image",
+              "audio",
+              "original_fixture_text"
+            ]
+          },
+          "full_transcription": {
+            "type": "boolean"
+          },
+          "transcription_status": {
+            "enum": [
+              "not_attempted",
+              "partial",
+              "unverified",
+              "verified"
+            ]
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "origin",
+          "representation",
+          "full_transcription",
+          "transcription_status",
+          "note"
+        ]
+      },
+      "minItems": 1
+    },
+    "prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "paired",
+            "not_acquired"
+          ]
+        },
+        "text_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "required_visual_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "visual_dependency_status": {
+          "enum": [
+            "acquired",
+            "not_required",
+            "not_acquired",
+            "unknown"
+          ]
+        },
+        "pairing_basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "text_ref_ids",
+        "required_visual_ref_ids",
+        "visual_dependency_status",
+        "pairing_basis"
+      ]
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "completeness": {
+          "enum": [
+            "complete_source_response",
+            "partial_source_response",
+            "unknown"
+          ]
+        },
+        "errors_preserved": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "ref_ids",
+        "completeness",
+        "errors_preserved",
+        "note"
+      ]
+    },
+    "scales": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "enum": [
+              "band",
+              "raw_points"
+            ]
+          },
+          "minimum": {
+            "type": "number"
+          },
+          "maximum": {
+            "type": "number"
+          },
+          "increment": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "exclusiveMinimum": 0
+          },
+          "version_status": {
+            "enum": [
+              "source_identified",
+              "unknown"
+            ]
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "unit",
+          "minimum",
+          "maximum",
+          "increment",
+          "version_status",
+          "version",
+          "reason"
+        ]
+      },
+      "minItems": 1
+    },
+    "scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "enum": [
+              "task",
+              "criterion",
+              "section",
+              "overall"
+            ]
+          },
+          "criterion_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "scale_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "number"
+          },
+          "evidence_ref_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "score_origin": {
+            "enum": [
+              "published_source",
+              "original_fixture"
+            ]
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "scope",
+          "criterion_id",
+          "scale_id",
+          "value",
+          "evidence_ref_ids",
+          "score_origin",
+          "note"
+        ]
+      },
+      "minItems": 1
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "not_published",
+              "published"
+            ]
+          },
+          "score_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "status",
+          "score_id",
+          "reason"
+        ]
+      },
+      "minItems": 0
+    },
+    "rubric": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scoring_version_status": {
+          "enum": [
+            "source_identified",
+            "unknown"
+          ]
+        },
+        "scoring_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "reference_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "historical_match_status": {
+          "enum": [
+            "source_established",
+            "unknown"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "scoring_version_status",
+        "scoring_version",
+        "reference_ref_ids",
+        "historical_match_status",
+        "reason"
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "independent": {
+          "enum": [
+            "not_performed",
+            "documented"
+          ]
+        },
+        "learner_calibration": {
+          "enum": [
+            "not_performed",
+            "documented"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independent_evidence_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "learner_calibration_evidence_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "independent",
+        "learner_calibration",
+        "note",
+        "independent_evidence_ref_ids",
+        "learner_calibration_evidence_ref_ids"
+      ]
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "unknown",
+            "restricted",
+            "documented_scope"
+          ]
+        },
+        "scope_evidence_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "commercial_use": {
+          "const": "not_adjudicated"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "status",
+        "scope_evidence_ref_ids",
+        "commercial_use",
+        "reason"
+      ]
+    },
+    "task_score_status": {
+      "enum": [
+        "published",
+        "not_published"
+      ]
+    }
+  },
+  "required": [
+    "contract_version",
+    "admission",
+    "id",
+    "version",
+    "task_id",
+    "family_id",
+    "source_task_label",
+    "source_script_label",
+    "modality",
+    "references",
+    "prompt",
+    "response",
+    "scales",
+    "scores",
+    "criteria",
+    "rubric",
+    "review",
+    "rights",
+    "task_score_status"
+  ]
+}

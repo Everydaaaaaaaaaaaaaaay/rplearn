@@ -24,7 +24,7 @@ def main():
         cases.append(name)
 
     reject('production_admission', lambda r: r.update(admission='production'))
-    reject('missing_task_total', lambda r: r.update(scores=[]))
+    reject('missing_all_scores', lambda r: r.update(scores=[]))
     reject('overall_as_task', lambda r: r['scores'][0].update(scope='overall'))
     reject('section_as_task', lambda r: r['scores'][0].update(scope='section'))
     reject('total_names_dimension', lambda r: r['scores'][0].update(criterion_id='content'))
@@ -62,6 +62,16 @@ def main():
     reject('invented_permission', lambda r: r['rights'].update(status='documented_scope'))
     reject('score_used_as_permission', lambda r: r['rights'].update(status='documented_scope',scope_evidence_ref_ids=['score']))
     reject('copyright_text_inline', lambda r: r.update(full_source_response='Should stay in private source/cache'))
+    reject('criterion_only_without_publication_status', lambda r: r.pop('task_score_status'), 'criterion-only-v0.2')
+    reject('criterion_only_claims_published_total', lambda r: r.update(task_score_status='published'), 'criterion-only-v0.2')
+    reject('total_contradicts_not_published', lambda r: r.update(contract_version='0.2',task_score_status='not_published'))
+    reject('criterion_only_not_valid_in_legacy_version', lambda r: (r.update(contract_version='0.1'),r.pop('task_score_status')), 'criterion-only-v0.2')
+    reject('unsupported_contract_version', lambda r: r.update(contract_version='0.3'), 'criterion-only-v0.2')
+    reject('criterion_only_unlinked_score', lambda r: r['criteria'][0].update(score_id=None), 'criterion-only-v0.2')
+    reject('criterion_only_invented_total_origin', lambda r: r['scores'][0].update(score_origin='derived_sum'), 'criterion-only-v0.2')
+    paired = copy.deepcopy(fixtures['task-and-criterion'])
+    paired.update(contract_version='0.2',task_score_status='published')
+    assert inspect_performance(paired, {}, {})['structure_valid']
     print(json.dumps(dict(original_positive_fixtures=len(fixtures),negative_rejections=len(cases),
         cases=cases,gold_admission=False,production_admission=False,
         limitation='Structural synthetic cases;not scoring accuracy or publication permission'),indent=2))
