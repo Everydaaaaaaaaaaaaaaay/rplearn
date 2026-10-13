@@ -89,3 +89,5 @@
 [高二另一春季公开卷](Expansions/Grade11Spring2024Comparison-v0.1.md)新增7完整源组45响应，全部15原页核读、参考键/作者理由分开；只是来源扩展，冻结53/25/205不增，不能用文件名认证第三地区。
 
 [高一最大线索仍不排除原级的跟进](../Studies/2026-10-14-grade10-maximum-cue-not-exclusive-and-than-followup.md)实际改为明确than/larger。当前0.14/审阅包0.9，三篇54/51/49；第25只覆盖此前0.13，当前后续另存。
+
+[高二三语境负荷](Expansions/LanguageLoadGrade11ThreeContexts-v0.1.md)保留两源与当前原创0.2，正文342/353/324，选项111/143/101；下一步核原创选项是否冗余和其余年级第二来源负荷，不由实例数量定级。
