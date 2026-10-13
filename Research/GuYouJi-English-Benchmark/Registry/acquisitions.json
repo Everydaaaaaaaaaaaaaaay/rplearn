@@ -49332,6 +49332,219 @@
         ],
         "tool": "PythonHTMLParser/Decimal andnativefullarticle review"
       }
+    },
+    {
+      "id": "fuzhou2026-supplementary-primary-xlsx20261013",
+      "url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/gzdt/202607/P020260727599217417813.xlsx",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "status": "fetched_unreviewed",
+      "format_validation": "XLSX_ZIP_integrity_and_workbook_xml",
+      "review_scope": "Native XML/openpyxl exact cells and merges; selected English rows and scope definitions fully read, Artifact read-only preview. Source supplementary catalogue, not textbook body/ISBN or pupil mastery/adoption evidence.",
+      "request_context": "Anonymous bounded3MB verifiedTLS native noticeattachment",
+      "path": "build/english-benchmark-research-20261012/raw/fuzhou2026-supplementary-primary-xlsx20261013.xlsx",
+      "bytes": 10322,
+      "sha256": "9d25e6781c1a105908a9a6ef2d23cdf3118d9401e0da9956aaa1ad88eb00dbed",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-fuzhou2026-supplementary-workbooks20261013.json"
+    },
+    {
+      "id": "fuzhou2026-supplementary-junior-xlsx20261013",
+      "url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/gzdt/202607/P020260727599217849692.xlsx",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "status": "fetched_unreviewed",
+      "format_validation": "XLSX_ZIP_integrity_and_workbook_xml",
+      "review_scope": "Native XML/openpyxl exact cells and merges; selected English rows and scope definitions fully read, Artifact read-only preview. Source supplementary catalogue, not textbook body/ISBN or pupil mastery/adoption evidence.",
+      "request_context": "Anonymous bounded3MB verifiedTLS native noticeattachment",
+      "path": "build/english-benchmark-research-20261012/raw/fuzhou2026-supplementary-junior-xlsx20261013.xlsx",
+      "bytes": 12516,
+      "sha256": "590aa7b94064f4588a832a98473a0642b8aa0cd1bb09cf05fdf0d9a58086cb28",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-fuzhou2026-supplementary-workbooks20261013.json"
+    },
+    {
+      "id": "fuzhou2026-supplementary-senior-xlsx20261013",
+      "url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/gzdt/202607/P020260727599218083081.xlsx",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "status": "fetched_unreviewed",
+      "format_validation": "XLSX_ZIP_integrity_and_workbook_xml",
+      "review_scope": "Native XML/openpyxl exact cells and merges; selected English rows and scope definitions fully read, Artifact read-only preview. Source supplementary catalogue, not textbook body/ISBN or pupil mastery/adoption evidence.",
+      "request_context": "Anonymous bounded3MB verifiedTLS native noticeattachment",
+      "path": "build/english-benchmark-research-20261012/raw/fuzhou2026-supplementary-senior-xlsx20261013.xlsx",
+      "bytes": 15286,
+      "sha256": "46982c7601c4d50f39e32ffaefac37657273e996e35d5ff36e6702b20381f37c",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-fuzhou2026-supplementary-workbooks20261013.json"
+    },
+    {
+      "id": "fetch-fuzhou2026-supplementary-workbooks20261013",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_fuzhou2026_supplementary_workbooks20261013.py",
+      "bytes": 1780,
+      "sha256": "c422967a562b3a1338bef95f6d8d1f55619325f1251abc21272cdbfd30ed4c74",
+      "format_validation": "python_source_saved",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "audit-fuzhou2026-workbook-relations20261013",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/audit_fuzhou2026_workbook_relations20261013.py",
+      "bytes": 6168,
+      "sha256": "ffee038167a75b66be994473718428db21881b0316704f136d2616b2afc2116e",
+      "format_validation": "python_source_saved",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "register-fuzhou2026-workbooks20261013",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_fuzhou2026_workbooks20261013.py",
+      "bytes": 7026,
+      "sha256": "8ff252ad686c03d7e8fb2302e598c1ff69f868db6614eaf616c750880cf9d124",
+      "format_validation": "python_source_saved",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "fuzhou2026-workbook-relations-audit20261013",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2026-workbook-relations-audit20261013.json",
+      "bytes": 58573,
+      "sha256": "e65743156e127cf7525e070ee93dcea33a8aba337a635eda66c4aae61bbe33d5",
+      "format_validation": "json_parsed",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "inspect-fuzhou2026-workbooks",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/artifact-runtime/inspect_fuzhou2026_workbooks.mjs",
+      "bytes": 1254,
+      "sha256": "1a9b90da62d05d64ef76885a6533ac0ac65a153e0ca1fe799f983d76d3448940",
+      "format_validation": "javascript_source_saved",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "fuzhou2026-workbook-artifact-inspection20261013",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2026-workbook-artifact-inspection20261013.json",
+      "bytes": 3953,
+      "sha256": "fcb5cc00f33ecca395e9f491f0e159686b53daa592432737d75d26691c33e489",
+      "format_validation": "json_parsed",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "fuzhou2026-primary-selection-preview",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2026-primary-selection-preview.png",
+      "bytes": 103271,
+      "sha256": "3b28232463e02bd4ee68d75118e02dc8e79820a362a9314b1957856e5d02e00d",
+      "format_validation": "PNG_preview",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "fuzhou2026-junior-selection-preview",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2026-junior-selection-preview.png",
+      "bytes": 87406,
+      "sha256": "0f987f5a5739be1047eec2e11dbd4f50e98d051b5f23dd0815c24ad2fe6b9a5c",
+      "format_validation": "PNG_preview",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
+    },
+    {
+      "id": "fuzhou2026-senior-selection-preview",
+      "url": "urn:lingotrip:research:fuzhou2026:workbook-relations",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2026-senior-selection-preview.png",
+      "bytes": 103390,
+      "sha256": "984c4b8a84fc0e5c72c697f58c9b95c2f58ea6d55e8f15f8862ba70e85247b98",
+      "format_validation": "PNG_preview",
+      "review_scope": "Read-only structural extraction/preview; source files not exported or modified. 13 logical records across 15 rows, exact XML cell/merge match and school partitions; no education or commercial admission.",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-supplementary-primary-xlsx20261013",
+        "additional_parent_acquisition_ids": [
+          "fuzhou2026-supplementary-junior-xlsx20261013",
+          "fuzhou2026-supplementary-senior-xlsx20261013"
+        ],
+        "tool": "openpyxl3.1.5/native ZIP XML/Artifact Tool read-only"
+      }
     }
   ],
   "updated_on": "2026-10-13"
