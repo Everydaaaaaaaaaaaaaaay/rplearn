@@ -1,0 +1,127 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "ucl.icle500-v12",
+  "primary_version": {
+    "major": 1,
+    "minor": 2,
+    "state": "RELEASED",
+    "release_time": "2024-10-02T12:31:50Z",
+    "local_API_acquisition_id": "ucl-icle500-api20261013"
+  },
+  "acquisition": {
+    "primary_files": 505,
+    "learner_texts": 500,
+    "learner_text_MD5_size_SHA256_checks": 500,
+    "report_pages": 45,
+    "metadata_pages": 2,
+    "full_essay_semantic_review": false,
+    "selected_visual_technical_pages": [
+      1,
+      6,
+      7,
+      9,
+      13,
+      14,
+      15,
+      17,
+      18
+    ],
+    "visual_metadata_pages": [
+      1,
+      2
+    ]
+  },
+  "original_tables": {
+    "csv_rows": 500,
+    "xlsx_rows": 500,
+    "unique_ids": 500,
+    "exact_label_agreement": true,
+    "strict_numeric_differences": 137,
+    "maximum_numeric_delta": "1E-15",
+    "cefr_distribution": {
+      "B1": 29,
+      "B1+": 86,
+      "B2": 101,
+      "C2": 64,
+      "B2+": 121,
+      "C1": 91,
+      "NA": 7,
+      "A2": 1
+    },
+    "first_language_groups": 26,
+    "Chinese_L1_texts": 20,
+    "reported_word_count_range": [
+      389,
+      815
+    ],
+    "distinct_prompt_strings": 74,
+    "prompt_string_count_not_semantic_topic_count": true
+  },
+  "tabular_export": {
+    "default_parser_ragged_rows": 5,
+    "backslash_escape_parser_complete_rows": 500,
+    "backslash_escape_parser_label_differences": 0,
+    "generated_tab_bytes_differ_from_API_metadata_md5": true,
+    "interpretation": "Downloaded generated tab representation; original CSV/XLSX retained. Parser options and file format recorded separately from missing essays."
+  },
+  "transformation": {
+    "source_id": "universalcefr.icle500-transform",
+    "rows": 495,
+    "label_differences_for_present_ids": 0,
+    "missing_ids": [
+      "BGSU1248",
+      "KRBF1041",
+      "KRBF1047",
+      "KRBF1058",
+      "KRMJ1027"
+    ],
+    "same_as_TSV_parser_problem_ids": false,
+    "primary_missing_exact_join_suffix": "_relabelled",
+    "same_stem_aliases": "Five candidate aliases; original filenames and file IDs preserved, reason or correction history not asserted",
+    "text_comparison": {
+      "whitespace_normalization_only": 439,
+      "exact_raw_decoded_text": 56
+    },
+    "plus_and_NA_labels": "Preserved, never automatically promoted or dropped",
+    "published_material_hidden_gold": false
+  },
+  "assessment_method": {
+    "scope": "Written learner performance, not reading passage/task difficulty or Chinese grade equivalence",
+    "trained_judges": 28,
+    "connected_script_rating_design": true,
+    "minimum_judges_per_script_reported": 3,
+    "dimensions": [
+      "accuracy",
+      "range",
+      "coherence",
+      "argument",
+      "overall"
+    ],
+    "analysis": "Many-facet Rasch; not reproduced from raw rater observations",
+    "misfit_scripts_excluded_reported": 7,
+    "remaining_reported": 493,
+    "Rasch_kappa_mean": -0.02,
+    "interpretation": "Model-expected agreement baseline differs from ordinary chance-corrected kappa; no project reliability claim"
+  },
+  "unresolved_primary_discrepancy": {
+    "locator": "Technical PDF18 Table2.2.5",
+    "report_counts": {
+      "A2": 1,
+      "A2+": 5,
+      "B1": 28,
+      "B1+": 85,
+      "B2": 100,
+      "B2+": 121,
+      "C1": 89,
+      "C2": 64
+    },
+    "table_valid_count": 493,
+    "csv_valid_count": 493,
+    "distributions_equal": false,
+    "action": "Keep both identities; no moved labels or source correction fabricated"
+  },
+  "research_training_admission": false,
+  "commercial_admission": false,
+  "gold_admission": false,
+  "project_independent_teacher_or_learner_evidence": false
+}
