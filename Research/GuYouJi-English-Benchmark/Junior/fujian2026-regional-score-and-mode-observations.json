@@ -1,0 +1,87 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "fujian.schedule-fuzhou-score-selection2026",
+  "evidence_acquisition_ids": [
+    "fujian2026-exam-schedule-native20261013",
+    "fuzhou2026-oral-admissions-native20261013",
+    "fuzhou2026-supplementary-selection-native20261013"
+  ],
+  "province_schedule": {
+    "document_number": "闽考院学〔2025〕12号",
+    "published_on": "2025-12-16 12:39",
+    "exam_date": "2026-06-22",
+    "start_time": "15:00",
+    "end_time": "17:00",
+    "duration_arithmetic_minutes": 120,
+    "timezone_context": "local exam time",
+    "listening_starts_at": "15:00",
+    "scope": "provinceuniform English writtenpaper; municipal oralcomponent separate",
+    "not_student_active_learning_time": true
+  },
+  "fuzhou_admissions": {
+    "document_number": "榕教中〔2026〕8号",
+    "webpublished": "2026-04-10 11:19",
+    "webmetadata_formed_date": "2026-04-10",
+    "body_signed_date": "2026-04-09",
+    "date_fields_not_silently_collapsed": true,
+    "oral_exam_dates": [
+      "2026-05-16",
+      "2026-05-17"
+    ],
+    "scope": "Fuzhou candidates,withforeignschoolsmall-languageexception;notwholeprovince",
+    "province_paper_listening_max": 30,
+    "converted_listening_max": 25,
+    "oral_max": 5,
+    "paper_nonlistening_max_derived": 120,
+    "admission_total_max": 150,
+    "total_before_rounding_formula": "paper_nonlistening + paper_listening*(25/30) + oral",
+    "rounding_application": "final Englishadmission total; componentrounding not specified",
+    "display_decimal_places": 1,
+    "threshold_rules": [
+      {
+        "fraction_range": "[0,.25)",
+        "result_fraction": "0"
+      },
+      {
+        "fraction_range": "[.25,.75)",
+        "result_fraction": ".5"
+      },
+      {
+        "fraction_range": "[.75,1)",
+        "result_fraction": "nextinteger"
+      }
+    ],
+    "not_regular_round_to_one_decimal_or_bankers_rounding": true,
+    "exemption": {
+      "approved_candidates_only": true,
+      "source_formula": "writtenresult*5/writtenpartmaximum",
+      "writtenpart_denominator_exactmeaning_not_defined_here": true,
+      "do_not_substitute150_or120_without_further_evidence": true,
+      "not_automatic_every_disabled_candidate": true
+    },
+    "oral_duration_rubric_media": "not_in_notice",
+    "no_candidate_platform_or_record_access": true
+  },
+  "supplementary_selection": {
+    "document_number": "榕教教材〔2026〕3号",
+    "published_on": "2026-07-27 16:35",
+    "applicable_start": "2026autumn",
+    "scope": "school-entrysupplementarymaterials,not textbookreplacementdeclaration",
+    "allgrades_in_notice_not_alltextbooks_simultaneouslychanged": true,
+    "selected_versions_and_schools_must_correspond": true,
+    "county_scope_for_provincial_city_junior_schools": true,
+    "workbook_links_discovered": [
+      "./P020260727599217417813.xlsx",
+      "./P020260727599217849692.xlsx",
+      "./P020260727599218083081.xlsx"
+    ],
+    "workbooks": "not_yet_acquired_or_reviewed",
+    "publisher_audio_statement": "SelectedEnglishsupplementaryaudioto be providedfree forteachers/students via publishersites",
+    "does_not_establish_exam_audio_or_commercial_training_licence": true,
+    "order_platform_not_logged_in": true
+  },
+  "arithmetic_acquisition_id": "fuzhou2026-score-synthetic-arithmetic20261013",
+  "commercial_admission": false,
+  "expert_student_or_model_validation": false,
+  "not_in_checkpoint18": true
+}

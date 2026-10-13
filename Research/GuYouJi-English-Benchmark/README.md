@@ -19,6 +19,7 @@
 - [生日与洗礼事件精度](Studies/2026-10-13-shakespeare-birthday-and-baptism-event-precision.md)：两机构原生正文核读，传统生日/洗礼档案/准确日未知区分；UN403与未取档案图像保留。
 - [上海官方任务形态与模拟窗口](Studies/2026-10-13-shanghai-task-modalities-and-practice-window.md)：三原生文章，地图/表格联合阅读、申请邮件/概要/叙事说理和重复模拟曝光；非完整试卷/学生用时或商用验收。
 - [福建2026完整英语页组与参考键](Studies/2026-10-13-fujian2026-complete-english-pages-and-reference-keys.md)：官方合订本英语十五独特页/91编号/150分，作文模板与答案共享页、数字变体和非穷尽参考响应；音频/rubric/商用/学生仍缺。
+- [福建时段与福州投档/教辅分层](Studies/2026-10-13-fujian-provincial-time-and-fuzhou-score-layers.md)：120分钟外部依据、30折25＋口语5及半分阈值；教辅选用非教材整齐换版，免考分母/附件/商用仍待核。
 - [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
 - [外研高中42单元与产出支撑](Studies/2026-10-13-fltrp-senior-42units-and-output-support.md)：七册官方目录、三幅公开结构图与课程介绍；教材正文、录音、答案及许可仍缺。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。

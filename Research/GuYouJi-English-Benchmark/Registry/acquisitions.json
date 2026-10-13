@@ -49227,6 +49227,111 @@
         ],
         "tool": "Python and reviewedpage/section relation indexing"
       }
+    },
+    {
+      "id": "fujian2026-exam-schedule-native20261013",
+      "url": "https://www.eeafj.cn/czxkgsgg/20251216/14362.html",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.eeafj.cn/czxkgsgg/20251216/14362.html",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Native officialarticle fullbodyread:province timetable/Fuzhouweight-rounding-exemption/supplementaryselection. Workbooks links only, no exammedia orcandidate/production access",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/fujian2026-exam-schedule-native20261013.html",
+      "bytes": 29385,
+      "sha256": "015dd36491ae62fa7047cc86df8201ab3b0d36d1217a1a32a81fd2e74bb5dca6",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-fujian2026-mode-score-selection20261013.json"
+    },
+    {
+      "id": "fuzhou2026-oral-admissions-native20261013",
+      "url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/ywgz/zdjy/202604/t20260410_5307190.htm",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/ywgz/zdjy/202604/t20260410_5307190.htm",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Native officialarticle fullbodyread:province timetable/Fuzhouweight-rounding-exemption/supplementaryselection. Workbooks links only, no exammedia orcandidate/production access",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/fuzhou2026-oral-admissions-native20261013.html",
+      "bytes": 44853,
+      "sha256": "9d85eb872fa299b5d46cce3ddbd1124235e52563ac8b978cb9da8ddb67ce2311",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-fujian2026-mode-score-selection20261013.json"
+    },
+    {
+      "id": "fuzhou2026-supplementary-selection-native20261013",
+      "url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/gzdt/202607/t20260727_5350769.htm",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://jyj.fuzhou.gov.cn/zfxxgkzl/gkml/gzdt/202607/t20260727_5350769.htm",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Native officialarticle fullbodyread:province timetable/Fuzhouweight-rounding-exemption/supplementaryselection. Workbooks links only, no exammedia orcandidate/production access",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/fuzhou2026-supplementary-selection-native20261013.html",
+      "bytes": 44881,
+      "sha256": "23e940e8913ac1cb72f1840cce54bb7578f2a14b727f96d303ca8b06c6452592",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-fujian2026-mode-score-selection20261013.json"
+    },
+    {
+      "id": "fetch-fujian2026-mode-score-selection20261013",
+      "url": "urn:lingotrip:research:fujian2026:score-mode-policy",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_fujian2026_mode_score_selection20261013.py",
+      "bytes": 1911,
+      "sha256": "bf5872e3310642dd89c335632955546d911c8ba2d81bc2690daa6ef9ee3b1cf5",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen officialfetch/read andsyntheticDecimal calculation;not observedstudent performance orverifiedproduction scoreimplementation",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-oral-admissions-native20261013",
+        "additional_parent_acquisition_ids": [
+          "fujian2026-exam-schedule-native20261013",
+          "fuzhou2026-supplementary-selection-native20261013"
+        ],
+        "tool": "PythonHTMLParser/Decimal andnativefullarticle review"
+      }
+    },
+    {
+      "id": "record-fujian2026-regional-score-scope20261013",
+      "url": "urn:lingotrip:research:fujian2026:score-mode-policy",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_fujian2026_regional_score_scope20261013.py",
+      "bytes": 9152,
+      "sha256": "dbfec5419b9ecbb3b43ffdaaa110ee7fa69a80139fb8bae380005eec928ec6a3",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen officialfetch/read andsyntheticDecimal calculation;not observedstudent performance orverifiedproduction scoreimplementation",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-oral-admissions-native20261013",
+        "additional_parent_acquisition_ids": [
+          "fujian2026-exam-schedule-native20261013",
+          "fuzhou2026-supplementary-selection-native20261013"
+        ],
+        "tool": "PythonHTMLParser/Decimal andnativefullarticle review"
+      }
+    },
+    {
+      "id": "fuzhou2026-score-synthetic-arithmetic20261013",
+      "url": "urn:lingotrip:research:fujian2026:score-mode-policy",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fuzhou2026-score-synthetic-arithmetic20261013.json",
+      "bytes": 279,
+      "sha256": "8310e5ea434f62e437357e20eceb03221e01326a9bf33080646dbf07a38c6945",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen officialfetch/read andsyntheticDecimal calculation;not observedstudent performance orverifiedproduction scoreimplementation",
+      "derivation": {
+        "acquisition_id": "fuzhou2026-oral-admissions-native20261013",
+        "additional_parent_acquisition_ids": [
+          "fujian2026-exam-schedule-native20261013",
+          "fuzhou2026-supplementary-selection-native20261013"
+        ],
+        "tool": "PythonHTMLParser/Decimal andnativefullarticle review"
+      }
     }
   ],
   "updated_on": "2026-10-13"
