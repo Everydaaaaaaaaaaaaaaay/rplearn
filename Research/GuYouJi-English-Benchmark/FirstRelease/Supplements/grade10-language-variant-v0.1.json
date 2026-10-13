@@ -1,0 +1,214 @@
+{
+  "version": "0.1",
+  "grade": 10,
+  "task_family": "grade10-roof-reading",
+  "one_family_not_three_independent_samples": true,
+  "prior_candidate": {
+    "path": "FirstRelease/Generated/grade10-roof-reading-v0.1.md",
+    "sha256": "a2b60563e26309d42d666e4d3a952414ad2d495d63aa03757b0f427c15b5d196"
+  },
+  "new_candidate": {
+    "path": "FirstRelease/Generated/grade10-roof-reading-v0.2.md",
+    "sha256": "1ba7553136ea024bffceec8ea78f6db98c9a6db183d123a55b46cca757a773ee"
+  },
+  "new_author_check": {
+    "path": "FirstRelease/Generated/grade10-roof-reading-author-check-v0.2.json",
+    "sha256": "4d547765d3c07ff52e835a45f3e2421bb3ce2113c055279cf6ad12e57a89c6a3"
+  },
+  "private_audit_acquisition_id": "grade10-roof-v02-language-variant-audit20261014",
+  "private_audit_sha256": "eb0923f02db12456ea2105b4a9ca78cc72e181676f00e213c82246e0a183caf0",
+  "actual_saved_revision_steps": 2,
+  "same_questions_options": true,
+  "prior_load": {
+    "id": "grade10-roof-reading-v0.1",
+    "grade": 10,
+    "origin": "authored_candidate",
+    "input_sha256": "5bb117e4d84fc6706b455e8028eccf2059808b759ff7277fd12705ed96b1abba",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "material_label": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "option": {
+        "english_digit_tokens": 146,
+        "han_characters": 0,
+        "components": 16
+      },
+      "passage": {
+        "english_digit_tokens": 308,
+        "han_characters": 0,
+        "components": 1
+      },
+      "prompt": {
+        "english_digit_tokens": 36,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 490,
+      "han_characters": 0
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 22,
+    "passage_sentence_token_lengths": [
+      17,
+      12,
+      23,
+      13,
+      19,
+      13,
+      9,
+      10,
+      16,
+      9,
+      6,
+      7,
+      24,
+      16,
+      9,
+      18,
+      10,
+      20,
+      6,
+      19,
+      12,
+      20
+    ],
+    "mean_passage_sentence_tokens": 14.0,
+    "maximum_passage_sentence_tokens": 24,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "new_load": {
+    "id": "grade10-roof-reading-v0.2",
+    "grade": 10,
+    "origin": "authored_candidate",
+    "input_sha256": "3e8fcf467a694a58108d1bbd56bd66cea743bcb8d47171c2862009d94e2ad6b2",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "material_label": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "option": {
+        "english_digit_tokens": 146,
+        "han_characters": 0,
+        "components": 16
+      },
+      "passage": {
+        "english_digit_tokens": 309,
+        "han_characters": 0,
+        "components": 1
+      },
+      "prompt": {
+        "english_digit_tokens": 36,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 491,
+      "han_characters": 0
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 12,
+    "passage_sentence_token_lengths": [
+      30,
+      23,
+      30,
+      24,
+      20,
+      28,
+      28,
+      35,
+      34,
+      25,
+      12,
+      20
+    ],
+    "mean_passage_sentence_tokens": 25.75,
+    "maximum_passage_sentence_tokens": 35,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "source_load": {
+    "id": "g10.2024.readingD",
+    "grade": 10,
+    "origin": "source_reference",
+    "input_sha256": "0aea2a417441d61727b24a605bd9f6dc8393e32c816fac214d373ed622ada0c0",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "material_label": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "option": {
+        "english_digit_tokens": 101,
+        "han_characters": 0,
+        "components": 16
+      },
+      "passage": {
+        "english_digit_tokens": 340,
+        "han_characters": 7,
+        "components": 1
+      },
+      "prompt": {
+        "english_digit_tokens": 39,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 480,
+      "han_characters": 7
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 13,
+    "passage_sentence_token_lengths": [
+      18,
+      20,
+      32,
+      28,
+      26,
+      29,
+      32,
+      21,
+      12,
+      32,
+      37,
+      21,
+      32
+    ],
+    "mean_passage_sentence_tokens": 26.153846153846153,
+    "maximum_passage_sentence_tokens": 37,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "independent_review": false,
+  "student_calibration": false,
+  "production_admission": false,
+  "commercial_admission": false
+}

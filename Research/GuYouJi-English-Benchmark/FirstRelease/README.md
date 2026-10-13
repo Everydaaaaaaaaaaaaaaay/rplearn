@@ -15,7 +15,7 @@
 | 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md)、[日历](Generated/grade7-calendar-reading-v0.1.md)、[原形词库](Generated/grade7-reading-bus-bank-v0.1.md) | 7，两卷 | 更多负荷、人物图模式待补 |
 | 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；已补模拟开放形式，学校真卷配套仍缺 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
-| 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读](Generated/grade10-roof-reading-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
+| 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读0.2](Generated/grade10-roof-reading-v0.2.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
 | 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读0.2](Generated/grade11-commitments-reading-v0.2.md)、[单篇语法](Generated/grade11-archive-grammar-v0.1.md) | 8，两卷 | 核心审阅/负荷对照；15空等更多模式待扩 |
 | 高三 | [0.2](Specifications/grade12-v0.2.md) | [四简介阅读](Generated/grade12-archive-v0.1.md)、[论证阅读](Generated/grade12-dashboard-reading-v0.1.md)、[完形](Generated/grade12-bridge-cloze-v0.1.md)、[语法](Generated/grade12-workshop-grammar-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；全年冲刺范围仍缺 |
 
@@ -55,3 +55,5 @@
 [真实锚与原创语言负荷控制](LanguageLoadControls-v0.1.md)新增六阅读配对的正文/题干/选项/标签测量，[摘要](TaskLoadComparison-v0.1.json)关联30语境单元及六可读性副本；实例不是年级分布或学生时间。初一旧partof粘连已在新测量副本更正，旧220含标签计数由221替代，冻结审计不改字节。
 
 [高二实际语言变体](Generated/grade11-commitments-reading-v0.2.md)保存0.1→0.2前后稿及新句法的逐题复解，当前[索引0.4](review-index-v0.4.json)仍选择21题组家族/174点，旧版不重复计样本；[默认检查器0.4](../Tools/validate_firstrelease_v0_4.py)复用冻结0.3算法。[记录](../Studies/2026-10-14-grade11-actual-language-variant.md)说明353 token/15句与教师/学生边界。
+
+[高一语言变体/对照修正](Generated/grade10-roof-reading-v0.2.md)有实际0.1、工作稿及定稿；309 token/12句，与原308/22不同句法负荷。作者捕获并恢复“另一区未覆盖”条件，四问题/选项保留。当前[索引0.5](review-index-v0.5.json)仍21家族/174点/53组，[检查器0.5](../Tools/validate_firstrelease_v0_5.py)复用冻结0.3算法；[记录](../Studies/2026-10-14-grade10-complex-variant-and-control-repair.md)说明作者检查边界。

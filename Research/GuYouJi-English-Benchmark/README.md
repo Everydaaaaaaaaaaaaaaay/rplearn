@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [高一复杂语言变体与实际对照修正](Studies/2026-10-14-grade10-complex-variant-and-control-repair.md)：309词/12句与原308/22，补回工作稿遗漏的未覆盖对照；索引0.5仍21家族/174点，三个版本不重复计样本。
+
 - [第22当前首版与语言分析恢复](Studies/2026-10-14-checkpoint22-current-firstrelease-and-language-recovery.md)：6181文件严格COW独立恢复，当前0.4/语言负荷/词汇/可读性及实际修订重放一致，异机与全工具链仍缺。
 
 - [高二实际语言变体](Studies/2026-10-14-grade11-actual-language-variant.md)：由真实负荷比较写出0.2较复杂句法稿，前后稿/全部题解保留；索引0.4仍21家族/174点，不重复计样本。
