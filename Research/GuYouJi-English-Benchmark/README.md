@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [源答案值错误修正与实际用锚缺口](Studies/2026-10-14-seed-answer-values-and-used-anchor-gap.md)：15个题号误作选项已按冻结映射纠正，112标签/15映射检查与真实旧错误拒绝；当前25使用锚另有14组待统一逐项理由；[审阅包0.4](FirstRelease/ReviewPackage-v0.4.md)。
+
 - [第24当前形式与初二源恢复](Studies/2026-10-14-checkpoint24-current-forms-and-grade8-recovery.md)：6309文件独立COW恢复，25核心/205点及1开放补充/10点、新历史源/错误更正/实际叙事修订重放一致；异机和完整环境门槛仍开放。
 
 - [初二第二卷叙事与实际负荷修订](Studies/2026-10-14-grade8-narrative-real-load-and-revision.md)：真实313/21句，原创349/29→344/23、选项111→56；当前25核心/205点，另1开放补充/10点；[审阅包0.3](FirstRelease/ReviewPackage-v0.3.md)。

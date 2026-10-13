@@ -59013,6 +59013,81 @@
         ],
         "tool": "macOSclonefile/Python/restoredpypdf/currentformchecks"
       }
+    },
+    {
+      "id": "firstrelease-18-seed-anchor-item-rationales-v0220261014",
+      "url": "urn:lingotrip:research:seed-answer-value-correction",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-18-seed-anchor-item-rationales-v0220261014.json",
+      "bytes": 80970,
+      "sha256": "00fd46dd73fd702bb66881d4e50ad55e26188ed8304ae0d7156e0d4e74a81c04",
+      "format_validation": "UTF8_saved",
+      "review_scope": "corrected_private_seed_rationale_values;15bad source-number-as-key fields corrected,18groups162responses preserved;112choice label values and15explicit mappings checked;oldactual15errors/validlabelsubstitution rejected,not semanticgold/student/rights/model validation",
+      "derivation": {
+        "origin": "project_source_answer_value_role_correction",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-curated-anchor-audit20261013",
+          "firstrelease-18-seed-anchor-item-rationales20261014"
+        ],
+        "tool": "explicit dictlookup and source option-label/mapping validation"
+      }
+    },
+    {
+      "id": "seed-answer-mapping-correction-and-negative-results20261014",
+      "url": "urn:lingotrip:research:seed-answer-value-correction",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/seed-answer-mapping-correction-and-negative-results20261014.json",
+      "bytes": 2681,
+      "sha256": "5d2d1833049fc2ed1ba2543243d7ef5b6fb650cc203f94ae51f6aa433ac73237",
+      "format_validation": "UTF8_saved",
+      "review_scope": "real_prior_and_valid_label_negative_checks;15bad source-number-as-key fields corrected,18groups162responses preserved;112choice label values and15explicit mappings checked;oldactual15errors/validlabelsubstitution rejected,not semanticgold/student/rights/model validation",
+      "derivation": {
+        "origin": "project_source_answer_value_role_correction",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-curated-anchor-audit20261013",
+          "firstrelease-18-seed-anchor-item-rationales20261014"
+        ],
+        "tool": "explicit dictlookup and source option-label/mapping validation"
+      }
+    },
+    {
+      "id": "repair-seed-answer-mapping20261014",
+      "url": "urn:lingotrip:research:seed-answer-value-correction",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/repair_seed_answer_mapping20261014.py",
+      "bytes": 6820,
+      "sha256": "7fc337f5980e0edeeebb3609f61c65b3c9b3860d602f9fda96072e140116cf90",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_correction_method;15bad source-number-as-key fields corrected,18groups162responses preserved;112choice label values and15explicit mappings checked;oldactual15errors/validlabelsubstitution rejected,not semanticgold/student/rights/model validation",
+      "derivation": {
+        "origin": "project_source_answer_value_role_correction",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-curated-anchor-audit20261013",
+          "firstrelease-18-seed-anchor-item-rationales20261014"
+        ],
+        "tool": "explicit dictlookup and source option-label/mapping validation"
+      }
+    },
+    {
+      "id": "firstrelease-v09-seed-value-validation20261014",
+      "url": "urn:lingotrip:research:seed-answer-value-correction",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-v09-seed-value-validation20261014.json",
+      "bytes": 957,
+      "sha256": "f8f9de3110aa1a5c7b446462ba55e262858ab778640e80b11f1f36b87d844b74",
+      "format_validation": "JSON_parsed",
+      "review_scope": "current25/205/53 and112seedchoice labels/15boundmappingvalues;not independent semantic/learner/model/rights validation",
+      "derivation": {
+        "origin": "project_current_binding_and_value_validation",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales-v0220261014"
+        ],
+        "tool": "validate_firstrelease_v0_9.py --check-cache"
+      }
     }
   ],
   "updated_on": "2026-10-13"
