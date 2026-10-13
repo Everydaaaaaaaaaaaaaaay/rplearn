@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [第22当前首版与语言分析恢复](Studies/2026-10-14-checkpoint22-current-firstrelease-and-language-recovery.md)：6181文件严格COW独立恢复，当前0.4/语言负荷/词汇/可读性及实际修订重放一致，异机与全工具链仍缺。
+
 - [高二实际语言变体](Studies/2026-10-14-grade11-actual-language-variant.md)：由真实负荷比较写出0.2较复杂句法稿，前后稿/全部题解保留；索引0.4仍21家族/174点，不重复计样本。
 
 - [真实阅读组件与语言负荷](Studies/2026-10-14-real-reading-component-and-language-load.md)：六真卷/六原创逐部件计量、30语境词汇及六可读性副本；补初一转录粘连更正，未将统计换成年级/时间。
