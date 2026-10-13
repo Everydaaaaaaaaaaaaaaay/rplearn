@@ -6,13 +6,13 @@
 
 ## 当前进展：核心审阅包已形成，扩展与外部验证未完成
 
-累计53个完整配套选定源组、21个原创题组家族（当前21个版本，修订前稿另存，不重复计样本）。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
+累计53个完整配套选定源组、22个原创题组家族（当前22个版本，修订前稿另存，不重复计样本）。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
 可以从[核心审阅包](ReviewPackage-v0.1.md)开始：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
-| 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md)、[日历](Generated/grade7-calendar-reading-v0.1.md)、[原形词库](Generated/grade7-reading-bus-bank-v0.1.md) | 7，两卷 | 更多负荷、人物图模式待补 |
+| 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md)、[日历](Generated/grade7-calendar-reading-v0.1.md)、[原形词库](Generated/grade7-reading-bus-bank-v0.1.md)、[人物图联合](Generated/grade7-reading-corner-images-v0.1.md) | 7，两卷 | 更多负荷/空间关系与真实视觉验证 |
 | 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；已补模拟开放形式，学校真卷配套仍缺 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读0.2](Generated/grade10-roof-reading-v0.2.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
@@ -57,3 +57,5 @@
 [高二实际语言变体](Generated/grade11-commitments-reading-v0.2.md)保存0.1→0.2前后稿及新句法的逐题复解，当前[索引0.4](review-index-v0.4.json)仍选择21题组家族/174点，旧版不重复计样本；[默认检查器0.4](../Tools/validate_firstrelease_v0_4.py)复用冻结0.3算法。[记录](../Studies/2026-10-14-grade11-actual-language-variant.md)说明353 token/15句与教师/学生边界。
 
 [高一语言变体/对照修正](Generated/grade10-roof-reading-v0.2.md)有实际0.1、工作稿及定稿；309 token/12句，与原308/22不同句法负荷。作者捕获并恢复“另一区未覆盖”条件，四问题/选项保留。当前[索引0.5](review-index-v0.5.json)仍21家族/174点/53组，[检查器0.5](../Tools/validate_firstrelease_v0_5.py)复用冻结0.3算法；[记录](../Studies/2026-10-14-grade10-complex-variant-and-control-repair.md)说明作者检查边界。
+
+[初一图文联合题](Generated/grade7-reading-corner-images-v0.1.md)补四幅完整线描/替代描述，当前[索引0.6](review-index-v0.6.json)为22家族/177点/53源组；[检查器0.6](../Tools/validate_firstrelease_v0_6.py)校验四图/题号/引用，保存工具已补SVG原件发现及恢复探针。[记录](../Studies/2026-10-14-grade7-joint-image-assets-and-persistence.md)分清模拟图片与独立/产品验证。

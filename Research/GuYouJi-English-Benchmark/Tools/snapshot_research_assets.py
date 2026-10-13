@@ -105,7 +105,7 @@ def main():
             if page.get('tsv_output'):
                 register(page['tsv_output'], page['tsv_sha256'])
     for path in BASE.rglob('*'):
-        if path.is_file() and path.suffix in ('.json', '.md', '.py'):
+        if path.is_file() and path.suffix in ('.json', '.md', '.py', '.svg'):
             register(path.relative_to(REPO))
 
     destination.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -139,7 +139,10 @@ def main():
             raise ValueError('Copy write changed source')
         isolation_evidence = {'method': isolation_method, 'distinct_inodes': True,
                               'source_write_isolated': True, 'copy_write_isolated': True}
-        for extension in ('.pdf', '.jpg', '.png', '.mp3', '.xlsx', '.txt', '.tsv', '.traineddata'):
+        extensions = ['.pdf', '.jpg', '.png', '.mp3', '.xlsx', '.txt', '.tsv', '.traineddata']
+        if any(r['path'].endswith('.svg') for r in records):
+            extensions.append('.svg')
+        for extension in extensions:
             candidate = next((r for r in records if r['path'].endswith(extension)), None)
             if not candidate:
                 raise ValueError(f'No representative asset for {extension}')
