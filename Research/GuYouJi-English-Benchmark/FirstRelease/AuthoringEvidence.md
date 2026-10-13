@@ -9,3 +9,5 @@
 所有首版任务都仍需第二来源对照和必要的独立/学生工作。机器摘要、题号和链接检查只能证明引用/结构；作者理由需要逐题实读，仍不能替代外部复核。
 
 2026-10-14新增[初二12题语言形式](Generated/grade8-language-choice-v0.1.md)保存完整前稿后实际修订：第9空took也能描述过去洗澡事件，换成will take；第10空put在安排/程序语境可表未来，换成had put，并纠正作者对we put的一致性误说。实际一轮修订后重解12题；[广播完形](Generated/grade8-radio-cloze-v0.1.md)未发现需修改的确定问题，实际修订0。没有把拟稿取舍补造为历史版本。
+
+新增六份高中候选中，[高二档案语法](Generated/grade11-archive-grammar-v0.1.md)保存前稿后删kinds of使three直接限定activities，补1980年代时段限定made；[高三工作坊语法](Generated/grade12-workshop-grammar-v0.1.md)保存前稿后将不清楚的thus结果/目的空改为by adjusting，将介词关系多解改为take…into account。两份各一轮实际修订后回填重解，合理完成时/不定式等变体明列；另外四份实际修订0。这仍是作者检查，不把不同候选或同一回填的变体计成独立审核者。
