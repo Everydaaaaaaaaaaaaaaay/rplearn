@@ -50300,6 +50300,114 @@
         ],
         "tool": "Python/Pillow/actual source images reviewed"
       }
+    },
+    {
+      "id": "tepapa-official-location-native20261013",
+      "url": "https://www.tepapa.govt.nz/visit/plan-your-visit/getting-here",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.tepapa.govt.nz/visit/plan-your-visit/getting-here",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_saved",
+      "review_scope": "Native selected official location/address sections read, linked to Workbook79 geographical frame. TePapaWellington/SkyTowerAuckland confirmed, bookunspecifiedgarden/crosscitytransfer not inferred; no booking/contact, prices ortravel-time claim.",
+      "request_context": "Anonymous verifiedTLS bounded3MB native HTML request",
+      "path": "build/english-benchmark-research-20261012/raw/tepapa-official-location-native20261013.html",
+      "bytes": 74526,
+      "sha256": "f0199e3ee6b418aa3ea61583c314076b54f1346e9ca35058a6dfeb3de55cfaa4",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-senior-travel-location-checks20261013.json"
+    },
+    {
+      "id": "wellington-cablecar-garden-native20261013",
+      "url": "https://www.wellingtoncablecar.co.nz/what-to-do",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.wellingtoncablecar.co.nz/what-to-do",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_saved",
+      "review_scope": "Native selected official location/address sections read, linked to Workbook79 geographical frame. TePapaWellington/SkyTowerAuckland confirmed, bookunspecifiedgarden/crosscitytransfer not inferred; no booking/contact, prices ortravel-time claim.",
+      "request_context": "Anonymous verifiedTLS bounded3MB native HTML request",
+      "path": "build/english-benchmark-research-20261012/raw/wellington-cablecar-garden-native20261013.html",
+      "bytes": 87307,
+      "sha256": "a6414c62b1323fe66a2325230a2db12c66be098a7c6d69c7ad105dd36c9e0e35",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-senior-travel-location-checks20261013.json"
+    },
+    {
+      "id": "skycity-auckland-tower-native20261013",
+      "url": "https://skycityauckland.co.nz/sky-tower/",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://skycityauckland.co.nz/sky-tower/",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_saved",
+      "review_scope": "Native selected official location/address sections read, linked to Workbook79 geographical frame. TePapaWellington/SkyTowerAuckland confirmed, bookunspecifiedgarden/crosscitytransfer not inferred; no booking/contact, prices ortravel-time claim.",
+      "request_context": "Anonymous verifiedTLS bounded3MB native HTML request",
+      "path": "build/english-benchmark-research-20261012/raw/skycity-auckland-tower-native20261013.html",
+      "bytes": 136844,
+      "sha256": "2a557a979de47dd790fb54faf15ef4711875476c5a4f5bc9ca4fd9627e871c2b",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-senior-travel-location-checks20261013.json"
+    },
+    {
+      "id": "fetch-senior-travel-location-checks20261013",
+      "url": "urn:lingotrip:research:senior-travel-location-frame",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_senior_travel_location_checks20261013.py",
+      "bytes": 1801,
+      "sha256": "ce96a4108f6762153e702e11fc6a19c1a77377a3b0b893c438572415f852885f",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen officialselectedlocationtext check/sourcecontext; not complete itineraryevaluation,textbookkeycorrection,commercial orstudent validation",
+      "derivation": {
+        "acquisition_id": "pep-senior-c1u2sample-1412001121191-image087",
+        "additional_parent_acquisition_ids": [
+          "tepapa-official-location-native20261013",
+          "wellington-cablecar-garden-native20261013",
+          "skycity-auckland-tower-native20261013"
+        ],
+        "tool": "Python HTMLParser/native official sections/sourceimage review"
+      }
+    },
+    {
+      "id": "record-senior-travel-location-checks20261013",
+      "url": "urn:lingotrip:research:senior-travel-location-frame",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_senior_travel_location_checks20261013.py",
+      "bytes": 9049,
+      "sha256": "2c02aa62df9cf5ab79ce255d301209064eb02fcacadd403001805b049accfdd9",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen officialselectedlocationtext check/sourcecontext; not complete itineraryevaluation,textbookkeycorrection,commercial orstudent validation",
+      "derivation": {
+        "acquisition_id": "pep-senior-c1u2sample-1412001121191-image087",
+        "additional_parent_acquisition_ids": [
+          "tepapa-official-location-native20261013",
+          "wellington-cablecar-garden-native20261013",
+          "skycity-auckland-tower-native20261013"
+        ],
+        "tool": "Python HTMLParser/native official sections/sourceimage review"
+      }
+    },
+    {
+      "id": "senior-travel-location-native-audit20261013",
+      "url": "urn:lingotrip:research:senior-travel-location-frame",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/senior-travel-location-native-audit20261013.json",
+      "bytes": 22923,
+      "sha256": "34f97c7ba0e952d1f95e49730ec18ecacc7437f765fd26c4319371e4176ad5be",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen officialselectedlocationtext check/sourcecontext; not complete itineraryevaluation,textbookkeycorrection,commercial orstudent validation",
+      "derivation": {
+        "acquisition_id": "pep-senior-c1u2sample-1412001121191-image087",
+        "additional_parent_acquisition_ids": [
+          "tepapa-official-location-native20261013",
+          "wellington-cablecar-garden-native20261013",
+          "skycity-auckland-tower-native20261013"
+        ],
+        "tool": "Python HTMLParser/native official sections/sourceimage review"
+      }
     }
   ],
   "updated_on": "2026-10-13"

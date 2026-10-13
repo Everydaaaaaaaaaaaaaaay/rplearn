@@ -26,6 +26,7 @@
 - [外研高中42单元与产出支撑](Studies/2026-10-13-fltrp-senior-42units-and-output-support.md)：七册官方目录、三幅公开结构图与课程介绍；教材正文、录音、答案及许可仍缺。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
 - [高中必修一Unit2计划与角色关系](Studies/2026-10-13-senior-travel-plans-functions-and-role-relations.md)：18单元页、29正文/18Workbook活动块、九注释和词表边界；计划/预测/未定及百科/宣传/回信、共享输入与支架分开。
+- [旅行地理框架与语言评分边界](Studies/2026-10-13-travel-geographical-frame-and-language-score-boundaries.md)：三个官方地点页核实Te Papa与Sky Tower分属两城，原表未写转移；不推为不可行行程或学生语法错误。
 - [选择性必修二Unit2长句与论证](Studies/2026-10-13-long-sentence-clause-scope-and-argument-tasks.md)及[配套与从句修正](Studies/2026-10-13-senior-unit2-support-and-clause-correction.md)：正文32块、Workbook16块、八条注释与词表区域；来源分类、旧观察、独立金标准分别保留。
 - [商用候选及来源质量](Studies/2026-10-13-commercial-candidates-and-source-quality.md)与[VOA第三方组件](Studies/2026-10-13-voa-thirdparty-lyrics-and-image-blindspots.md)：再版政策不能覆盖歌曲、外链、训练和整库用途。
 - [第十四保存与恢复检查点](Studies/2026-10-13-checkpoint14-appendices-and-voa-recovery.md)：该冻结版本的本机恢复证据；后来批次尚不在此快照中，异机门槛仍开放。

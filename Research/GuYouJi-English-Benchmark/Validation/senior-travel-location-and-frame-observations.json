@@ -1,0 +1,64 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "travel.nz-official-location-checks",
+  "evidence_acquisition_ids": [
+    "tepapa-official-location-native20261013",
+    "wellington-cablecar-garden-native20261013",
+    "skycity-auckland-tower-native20261013"
+  ],
+  "book_source_id": "pep.textbooks",
+  "book_acquisition_id": "pep-senior-c1u2sample-1412001121191-image087",
+  "book_locator": "C1U2 Workbook printed79 UsingStructures5, second itinerary",
+  "native_audit_acquisition_id": "senior-travel-location-native-audit20261013",
+  "facts": [
+    {
+      "acquisition_id": "tepapa-official-location-native20261013",
+      "locator": "Our address",
+      "entity": "Museum of New Zealand Te Papa Tongarewa",
+      "city": "Wellington",
+      "address": "55 Cable Street, Wellington 6011"
+    },
+    {
+      "acquisition_id": "wellington-cablecar-garden-native20261013",
+      "locator": "The Botanical Gardens / Kelburn Terminal",
+      "entity": "Wellington Cable Car access to Wellington Botanic Garden",
+      "city": "Wellington",
+      "not_proof_which_garden_book_intends": true
+    },
+    {
+      "acquisition_id": "skycity-auckland-tower-native20261013",
+      "locator": "Location & contact",
+      "entity": "Sky Tower",
+      "city": "Auckland",
+      "address": "Corner Victoria and Federal Streets, Auckland CBD, Auckland 1010"
+    }
+  ],
+  "source_frame": {
+    "printed_heading": "Auckland, New Zealand",
+    "Tuesday_named_museum": "Te Papa",
+    "Wednesday_activity": "cable car to Botanical Gardens, no explicit garden name/city",
+    "Thursday_named_tower": "Sky Tower",
+    "intercity_transfer_not_explicit": true
+  },
+  "interpretation": {
+    "TePapa_in_Wellington_not_Auckland_confirmed": true,
+    "all_entries_in_Auckland_not_supported": true,
+    "Wednesday_specific_garden_identity": "not_established",
+    "multicity_trip_infeasibility": "not_established",
+    "no_flight_duration_timetable_or_route_estimated": true,
+    "source_not_silently_rewritten": true,
+    "grammatical_task_is_future_plan_expression": true,
+    "copying_supplied_itinerary_not_grounds_for_wrong_grammar_score": true,
+    "proposed_generation_constraint": "If a generated task asserts all attractions in one city or asks logistics/feasibility, verify entities and supply transfers/temporal assumptions; preserve source role for language-only tasks",
+    "constraint_is_draft_not_expert_or_student_adjudication": true
+  },
+  "source_date_and_rights": {
+    "official_HTML_observed_2026": true,
+    "not_retroactive_proof_exact_textbook_print_date": true,
+    "current_prices_opening_hours_not_used": true,
+    "original_prose_photos_not_commercial_or_training_licensed_by_location_facts": true
+  },
+  "commercial_admission": false,
+  "expert_student_validation": false,
+  "not_in_checkpoint19": true
+}
