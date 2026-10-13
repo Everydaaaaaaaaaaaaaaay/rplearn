@@ -8,6 +8,8 @@
 
 当前材料入口：[来源矩阵](source-matrix.json)、[选定题组观察](source-group-observations.json)、[首批核读记录](../Studies/2026-10-13-firstrelease-selected-grade-anchors.md)。均为首版过程记录，未表示规格或生成验证已经完成。
 
+[第二批补组](../Studies/2026-10-13-firstrelease-grade12-and-extra-groups.md)新增初二完形、高一报道/说明与高三配套，累计20选定组。高三源键一处实际印刷错误、另一处两个时态变体分别保留；这些是实际审核后进入规格的约束。
+
 第一条实际闭环：[初一首轮规格](Specifications/grade7-v0.1.md) → [原创阅读候选及逐题作者检查](Generated/grade7-library-v0.1.md) → [摘要/结构与修正记录](Generated/grade7-library-author-check-v0.1.json)。其他年级与更多题型继续补齐；单组作者检查不等于独立或学生验收。
 
 1. 复用已得真卷、答案、教材与国际样例；检索只补六年级题面/答案缺口。每年级优先2—3完整卷，按实际取得再决定是否扩采；数量是控制工作范围的起点，不是标定充分性阈值。
