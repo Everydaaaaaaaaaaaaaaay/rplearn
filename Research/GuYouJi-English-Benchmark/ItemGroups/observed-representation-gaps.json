@@ -203,6 +203,28 @@
       ],
       "complete_source_response_import": false,
       "production_admission": false
+    },
+    {
+      "id": "response.crossword-coupled-cells",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-senior-s2u2-1412001128201-image024",
+      "source_task": "S2U2 Vocab1",
+      "observed_requirements": [
+        "Nine clue answers cross inshared letter cells",
+        "Word positions/orientation andcell intersections constrain wholepuzzle"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.3",
+      "dedicated_crossword_grid_payload": false,
+      "reason": "Image retainsappearance andgenericwordresponses retainstrings butnot sharedcharacter identities/direction/versionedgrid constraints",
+      "next_design_requirements": [
+        "Stable grid/cell/clue identities,orientation andwordtocell mappings",
+        "Sharedcell consistency separatefromunknown lexical answerkey",
+        "Retain revisions/partialentries andaccepted spellingvariants without silently inventingofficialkeys",
+        "Independent source grid/keyboard/accessibility/rubric review"
+      ],
+      "complete_source_response_import": false,
+      "production_admission": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true
