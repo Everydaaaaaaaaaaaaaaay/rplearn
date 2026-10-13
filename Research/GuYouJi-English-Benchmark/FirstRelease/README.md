@@ -1,8 +1,27 @@
 # 初高中命题首版：24小时交付任务
 
-用户于2026-10-13明确接受以年级定位的首版，并授权启动长期任务。启动记录：北京时间2026-10-13 20:12，争取交付时间：2026-10-14 20:12（Asia/Shanghai）。24小时是工作目标，截止时按实际证据报告完成与缺口，不据截止时间宣布完成。
+用户于2026-10-13明确接受以年级定位的首版，并授权启动长期任务。启动：北京时间2026-10-13 20:12；争取交付：2026-10-14 20:12（Asia/Shanghai）。截止时按实际证据报告完成与缺口，时间到不表示完成。
 
-当前优先交付初一、初二、初三、高一、高二、高三的阅读理解、完形填空、语法填空首版规格、配套锚题及审核过的原创生成题组。教材版本、学期与进度作为元数据，不是收卷硬门槛；接受不同地区和版本的正常难度差异，排除明确竞赛/奥赛/选拔卷。全范围16水平与4备考方向及长期M1—M7仍保留，首版完成与全库/上线完成分别报告。
+优先初一至高三六年级的阅读、完形、适用语言/语法填空规格、配套锚题、原创生成与作者解题检查。教材版本、学期和进度只作元数据；接受正常差异，收学校期中期末月考/教研统测，排除明确竞赛/奥赛/选拔卷。完整16水平、4备考方向和长期M1—M7仍保留，首版与全库/上线分别验收。
+
+## 当前进展：首版未完成
+
+累计31个完整配套选定源组、9个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
+
+| 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
+| --- | --- | --- | --- | --- |
+| 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md) | 7，两卷 | 核心审阅/负荷对照；图文与不变形模式缺口保留 |
+| 初二 | [0.1](Specifications/grade8-v0.1.md) | [说明阅读](Generated/grade8-lunch-v0.1.md) | 4，一卷 | 完形、语言形式候选及第二完整配套源；音标/给词候选缺键 |
+| 初三 | [0.1](Specifications/grade9-v0.1.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md) | 3，一卷 | 完形、一词短文填空、第二源对照 |
+| 高一 | [0.1](Specifications/grade10-v0.1.md) | [三篇语法](Generated/grade10-grammar-v0.1.md) | 5，一卷 | 阅读、完形、第二源/复杂输入对照 |
+| 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读](Generated/grade11-commitments-reading-v0.1.md) | 8，两卷 | 语法候选；15空/单篇模式与更多负荷覆盖 |
+| 高三 | [0.1](Specifications/grade12-v0.1.md) | [四简介阅读](Generated/grade12-archive-v0.1.md) | 4，一卷 | 15空完形、单篇语法、第二源及复杂阅读对照 |
+
+[初一第二来源对照](Comparisons/grade7-source-comparison-v0.1.md)扩展三选/四选、日历/人物图；[高二第二卷对照](Comparisons/grade11-source-comparison-v0.1.md)扩展10/15空完形、三篇/单篇语法、书评/论证及概念/视角范围。源人名混用、缺词、错印、解析题号错位和措辞风险保留，不悄改原文或当正向范例。
+
+[命题/作者审核流程](GenerationProtocol-v0.1.md)规定规格＋完整匹配锚组双输入、合法响应、逐项依据/干扰项、实际修题再解。候选旁的作者检查JSON保存对应版本摘要/答案；旧候选仍指向原规格，不用新版本覆盖历史证据。[作者检查证据口径](AuthoringEvidence.md)区分拟稿叙述和实际保存前后文本的修订，不编造审核次数。
+
+已完成增量记录：[首批13组](../Studies/2026-10-13-firstrelease-selected-grade-anchors.md)、[高三及补组](../Studies/2026-10-13-firstrelease-grade12-and-extra-groups.md)、[三个首轮闭环](../Studies/2026-10-13-firstrelease-three-authoring-loops.md)、[六年级首轮检查](../Studies/2026-10-13-firstrelease-six-grade-draft-check.md)、[第二来源候选边界](../Studies/2026-10-13-firstrelease-comparison-boundaries.md)。这些是各时点记录，最新计数与下一步以上表为准。
 
 ## 工作顺序
 
