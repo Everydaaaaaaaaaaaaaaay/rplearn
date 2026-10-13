@@ -287,6 +287,29 @@
       "source_key_available_for_selected_groups": true,
       "all_paper_groups_reviewed": false,
       "limitation": "Institution/region still unknown; readingA opening unreviewed; grammar explanation numbering and reading semantic-scope flags retained"
+    },
+    {
+      "acquisition_id": "suzhou-changshu2019-grade7-upper",
+      "source_id": "suzhou.changshu-grade7-2019",
+      "file_pages": null,
+      "subject": "English_grade7_historical_institution_repost",
+      "role": "selected_paired_groups_with_import_or_editorial_defects",
+      "visually_reviewed_image_acquisition_ids": [
+        "suzhou-changshu2019-image05",
+        "suzhou-changshu2019-image06",
+        "suzhou-changshu2019-image07",
+        "suzhou-changshu2019-image08",
+        "suzhou-changshu2019-image09"
+      ],
+      "selected_group_ids": [
+        "g7.2019.cloze",
+        "g7.2019.readingA",
+        "g7.2019.readingB"
+      ],
+      "source_key_available_for_selected_groups": true,
+      "all_paper_groups_reviewed": false,
+      "publication_date": "2019-01-23",
+      "calendar_year": 2019
     }
   ],
   "grade_progress": [
@@ -296,18 +319,25 @@
         "g7.2021.cloze",
         "g7.2021.readingB",
         "g7.2021.vocabularyA",
-        "g7.2021.vocabularyB"
+        "g7.2021.vocabularyB",
+        "g7.2019.cloze",
+        "g7.2019.readingA",
+        "g7.2019.readingB"
       ],
-      "specification_status": "first_round_v0.1_second_source_pending",
-      "original_generated_groups": 1,
+      "specification_status": "provisional_v0.2_historical_second_source_compared_remaining_types_pending",
+      "original_generated_groups": 2,
       "first_release_complete": false,
-      "specification_path": "FirstRelease/Specifications/grade7-v0.1.md",
+      "specification_path": "FirstRelease/Specifications/grade7-v0.2.md",
       "generated_candidate_paths": [
+        "FirstRelease/Generated/grade7-boxes-cloze-v0.1.md",
         "FirstRelease/Generated/grade7-library-v0.1.md"
       ],
       "author_check_paths": [
+        "FirstRelease/Generated/grade7-boxes-cloze-author-check-v0.1.json",
         "FirstRelease/Generated/grade7-library-author-check-v0.1.json"
-      ]
+      ],
+      "comparison_path": "FirstRelease/Comparisons/grade7-source-comparison-v0.1.md",
+      "second_source_status": "two_paper_families_with_text_visual_format_comparison_not_student_or_hidden_validation"
     },
     {
       "grade": 8,

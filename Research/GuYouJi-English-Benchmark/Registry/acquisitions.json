@@ -53720,6 +53720,93 @@
         ],
         "tool": "Python/re/hashlib/json"
       }
+    },
+    {
+      "id": "firstrelease-grade7-historical-comparison-private-audit20261013",
+      "url": "urn:lingotrip:research:firstrelease:historical-grade7-reuse",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-grade7-historical-comparison-private-audit20261013.json",
+      "bytes": 10944,
+      "sha256": "1ba9e1f89096356124e6fb3176aaac7ad7b61217d08f46aeca2899d9b62bf89a",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen reuse of historical grade7 institution-republished selected text/calendar/photo and original bitmap key; name/verb/year/claim limits retained, no new source fetch, no independent gold",
+      "derivation": {
+        "origin": "project_authored_firstrelease_historical_grade7_comparison",
+        "related_acquisition_ids": [
+          "suzhou-changshu2019-grade7-upper",
+          "suzhou-changshu2019-image05",
+          "suzhou-changshu2019-image06",
+          "suzhou-changshu2019-image07"
+        ],
+        "tool": "Python/actual existing image view and prior native extraction"
+      }
+    },
+    {
+      "id": "record-firstrelease-grade7-historical-comparison20261013",
+      "url": "urn:lingotrip:research:firstrelease:historical-grade7-reuse",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_firstrelease_grade7_historical_comparison20261013.py",
+      "bytes": 5137,
+      "sha256": "8d1c3706d665e4580eaaf2783d29f2d0e0a8de4b4ed34423db9db18c92a9edac",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen reuse of historical grade7 institution-republished selected text/calendar/photo and original bitmap key; name/verb/year/claim limits retained, no new source fetch, no independent gold",
+      "derivation": {
+        "origin": "project_authored_firstrelease_historical_grade7_comparison",
+        "related_acquisition_ids": [
+          "suzhou-changshu2019-grade7-upper",
+          "suzhou-changshu2019-image05",
+          "suzhou-changshu2019-image06",
+          "suzhou-changshu2019-image07"
+        ],
+        "tool": "Python/actual existing image view and prior native extraction"
+      }
+    },
+    {
+      "id": "grade7-boxes-cloze-before-review20261013",
+      "url": "urn:lingotrip:research:firstrelease:authored-cloze-revision",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade7-boxes-cloze-before-review20261013.md",
+      "bytes": 4320,
+      "sha256": "be7aff7d03ea6678ae1e1d97429b5e0f34b6f388df96e565ce60e3aabdbac7a0",
+      "format_validation": "authored_markdown_draft_retained",
+      "review_scope": "Frozen genuine written prior authored draft/revision comparison and final cloze structure/token/hash/answer checks; not independent semantic/student admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_cloze_revision",
+        "tool": "Python/re/hashlib/json/actual prior-final texts"
+      }
+    },
+    {
+      "id": "firstrelease-grade7-boxes-actual-revision-audit20261013",
+      "url": "urn:lingotrip:research:firstrelease:authored-cloze-revision",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-grade7-boxes-actual-revision-audit20261013.json",
+      "bytes": 952,
+      "sha256": "fc33d74060efdb2436168642a0a355db740309a9e57ae465f6085e291644963f",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen genuine written prior authored draft/revision comparison and final cloze structure/token/hash/answer checks; not independent semantic/student admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_cloze_revision",
+        "tool": "Python/re/hashlib/json/actual prior-final texts"
+      }
+    },
+    {
+      "id": "audit-firstrelease-grade7-boxes-revision20261013",
+      "url": "urn:lingotrip:research:firstrelease:authored-cloze-revision",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/audit_firstrelease_grade7_boxes_revision20261013.py",
+      "bytes": 4407,
+      "sha256": "e56dae2cda3d8f9d448dfe81117706d0b669196287a8139000f78fbb83862fe3",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen genuine written prior authored draft/revision comparison and final cloze structure/token/hash/answer checks; not independent semantic/student admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_cloze_revision",
+        "tool": "Python/re/hashlib/json/actual prior-final texts"
+      }
     }
   ],
   "updated_on": "2026-10-13"

@@ -1,5 +1,5 @@
 {
-  "version": "0.4-source-observations",
+  "version": "0.5-source-observations",
   "observed_on": "2026-10-13",
   "status": "selected_sources_not_final_grade_specifications",
   "groups": [
@@ -1130,6 +1130,115 @@
       "independent_review": false,
       "student_calibration": false,
       "commercial_admission": false
+    },
+    {
+      "id": "g7.2019.cloze",
+      "source_id": "suzhou.changshu-grade7-2019",
+      "acquisition_id": "suzhou-changshu2019-grade7-upper",
+      "grade": 7,
+      "kind": "four_option_cloze",
+      "question_numbers": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "material_and_question_native_location": "HTML chapter3/cloze or chapter4/readingsA-B, matching actual retained images",
+      "required_image_acquisition_ids": [],
+      "key_image_acquisition_ids": [
+        "suzhou-changshu2019-image07"
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "institution_republished_bitmap_key_not_independent_gold",
+      "features": {
+        "blanks": 10,
+        "options_each": 4,
+        "genre": "family_daily_reflection_narrative",
+        "source_character_names_inconsistent": true,
+        "lexical_phrasal_and_discourse_options": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g7.2019.readingA",
+      "source_id": "suzhou.changshu-grade7-2019",
+      "acquisition_id": "suzhou-changshu2019-grade7-upper",
+      "grade": 7,
+      "kind": "four_option_text_calendar_reading",
+      "question_numbers": [
+        46,
+        47,
+        48
+      ],
+      "material_and_question_native_location": "HTML chapter3/cloze or chapter4/readingsA-B, matching actual retained images",
+      "required_image_acquisition_ids": [
+        "suzhou-changshu2019-image05"
+      ],
+      "key_image_acquisition_ids": [
+        "suzhou-changshu2019-image07"
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "institution_republished_bitmap_key_not_independent_gold",
+      "features": {
+        "items": 3,
+        "options_each": 4,
+        "genre": "calendar_and_parent_day_explanation",
+        "calendar_explicit_year": 2019,
+        "third_sunday_not_runtime_date": true,
+        "functions": [
+          "text_calendar_join",
+          "referent",
+          "supported_statement"
+        ],
+        "source_gender_study_claims_not_verified": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g7.2019.readingB",
+      "source_id": "suzhou.changshu-grade7-2019",
+      "acquisition_id": "suzhou-changshu2019-grade7-upper",
+      "grade": 7,
+      "kind": "four_option_text_photo_reading",
+      "question_numbers": [
+        49,
+        50,
+        51
+      ],
+      "material_and_question_native_location": "HTML chapter3/cloze or chapter4/readingsA-B, matching actual retained images",
+      "required_image_acquisition_ids": [
+        "suzhou-changshu2019-image06"
+      ],
+      "key_image_acquisition_ids": [
+        "suzhou-changshu2019-image07"
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "institution_republished_bitmap_key_not_independent_gold",
+      "features": {
+        "items": 3,
+        "options_each": 4,
+        "genre": "school_description_and_people_photo",
+        "source_missing_verb_not_generation_template": true,
+        "functions": [
+          "school_detail",
+          "referent",
+          "text_photo_joint_relation"
+        ],
+        "all4_image_options_required": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
     }
   ],
   "source_token_rule": "English/digit tokens; apostrophe/hyphen compounds kept; Chinese parenthetical gloss and numbered cloze placeholders excluded; unfilled cloze count excludes answers; not source counting rule or population estimate",
@@ -1139,7 +1248,8 @@
     "firstrelease-native-page-and-key-scope-audit20261013",
     "firstrelease-grade12-and-extra-private-audit20261013",
     "firstrelease-grade9-reused-selected-private-audit20261013",
-    "firstrelease-grade11-comparison-selected-private-audit20261013"
+    "firstrelease-grade11-comparison-selected-private-audit20261013",
+    "firstrelease-grade7-historical-comparison-private-audit20261013"
   ],
   "source_handbook_or_facts_not_current_factual_gold": true
 }
