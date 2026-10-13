@@ -99,3 +99,5 @@
 [初三六行表格原创补充](Expansions/grade9-repair-table-reading-v0.1.md)已依苏州三题四选完成新材料与作者全组解答C/B/D；[扩展原创索引](Expansions/authored-candidate-index-v0.1.json)1家族/3点另列，正文179/表格37/题干26/选项68，不加进冻结25/205或初二1/10。
 
 [初三图文词/短语词库0.2](Expansions/grade9-book-care-bank-v0.2.md)已有完整原创新图、五项一次/两finish分支和真实作用域/归还关系修订；[扩展索引0.3](Expansions/authored-candidate-index-v0.3.json)两材料家族8点，保留共同曝光簇，原核心25/205与初二1/10不增。详见[记录](../Studies/2026-10-14-grade9-five-entry-bank-and-real-scope-repair.md)。
+
+[初三扩展双输入入口](Expansions/GenerationProtocol-v0.1.md)现支持六行三题阅读和五项图文词库，两元数据请求通过；16作用域/关系破坏及3类型错误拒绝，未单独调用生成/评测服务，不把语义、独立或商用门槛升格。

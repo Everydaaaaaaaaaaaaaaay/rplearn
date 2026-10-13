@@ -1,0 +1,64 @@
+{
+  "version": "0.1",
+  "purpose": "local_extension_dual_input_metadata_no_model_call",
+  "grade": 9,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade9-v0.3.md",
+    "sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe"
+  },
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+    "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+  },
+  "source_group_id": "g9.suzhou2024.readingA",
+  "source_paper_acquisition_id": "suzhou2024-official-english-paper-image20261014",
+  "source_reference_key_acquisition_id": "suzhou2024-official-english-key-image20261014",
+  "source_format": {
+    "items": 3,
+    "features": {
+      "materials": 1,
+      "six_row_climate_table_with_text": true,
+      "items": 3,
+      "options_each": 4
+    }
+  },
+  "target_format": {
+    "items": 3,
+    "options_each": 4,
+    "shared_materials": 1,
+    "table_rows": 6,
+    "table_columns": 3
+  },
+  "positive_source_reference_numbers": [
+    11,
+    12,
+    13
+  ],
+  "source_reference_list_exhaustive": false,
+  "all_shared_material_required": true,
+  "new_scenario": "New fictional school service records with six rows and explicit units, three four-option questions. Local field, example role and whole-text title must use the full new context.",
+  "target_changes_and_justification": [
+    "climate/garden context changed to fictional service records",
+    "keep six-row three-column table and complete supporting paragraphs; no actual student minutes implied"
+  ],
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_alternatives",
+    "whole_group_solve_or_refill",
+    "actual_revision_evidence_if_changed",
+    "independent_unknowns_separate"
+  ],
+  "fact_strategy": "fictional_context_and_numbers_not_source_claims_as_fact",
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "correct_title_leaked": false
+  },
+  "original_source_republication_admitted": false,
+  "commercial_training_admitted": false,
+  "third_party_source_transmission_admitted": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "production_admission": false,
+  "source_factual_gold": false
+}

@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [初三扩展双输入和精确类型](Studies/2026-10-14-grade9-extension-dual-input-and-type-guards.md)：两源/规格请求、16声明拒绝＋3类型错误，实际题面/键WebP和私有理由绑定；仅两已写模式，不声明模型服从/英语全部正确。
+
 - [初三五项图文词库实际修订](Studies/2026-10-14-grade9-five-entry-bank-and-real-scope-repair.md)：完整原创新图/三段/五项一次，明示组合动词与短语，补归还关系/收紧第5形容词，扩展两家族8点共曝光簇、非独立或核心加计。
 
 - [第26新来源与WebP/原创恢复](Studies/2026-10-14-checkpoint26-new-sources-webp-and-original-recovery.md)：6489文件完整严格COW独立恢复，0.14、两新源17/101、三语境负荷、两WebP/精确像素及初三原创1/3一致，长期门槛继续开放。
