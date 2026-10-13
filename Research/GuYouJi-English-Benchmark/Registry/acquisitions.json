@@ -38802,6 +38802,113 @@
         ],
         "tool": "Python and single source visual review"
       }
+    },
+    {
+      "id": "si-octopus-neurons20261013",
+      "url": "https://ocean.si.edu/ocean-life/invertebrates/why-octopus-brain-so-extraordinary",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "format_validation": "not_checked",
+      "review_scope": "Selected sourcebody read through public connector; local bounded request outcome recorded independently",
+      "request_context": "Public verifiedTLS metadata/page request, no login or clinical advice",
+      "http_status": 403,
+      "error": "403",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-content-factchecks20261013.json"
+    },
+    {
+      "id": "nature-cephalopod-arm2025",
+      "url": "https://www.nature.com/articles/s41467-024-55475-5",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "format_validation": "utf8_html_saved_not_fulltext_gold",
+      "review_scope": "Local native HTML abstract, introduction, selected discussion and rights actually read; article date15Jan2025; no full image/data replication",
+      "request_context": "Public verifiedTLS metadata/page request, no login or clinical advice",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "path": "build/english-benchmark-research-20261012/raw/nature-cephalopod-arm2025.html",
+      "bytes": 466292,
+      "sha256": "2b1d73be567d28786ed8e4757103e9e2ef1e07eb9accb56b0c313d5de8e61a14",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-content-factchecks20261013.json"
+    },
+    {
+      "id": "pubmed-vital-dep2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32749491/",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_cookie_gate_not_article",
+      "review_scope": "HTTP203 local HTML is cookie requirement, not abstract; later connector429; earlier abstract summary not an offline native fulltext",
+      "request_context": "Public verifiedTLS metadata/page request, no login or clinical advice",
+      "http_status": 203,
+      "content_type": "text/html; charset=utf-8",
+      "path": "build/english-benchmark-research-20261012/raw/pubmed-vital-dep2020.html",
+      "bytes": 5590,
+      "sha256": "9f01b8011862bf02113cabaaa94410f339f0fe02096631863234ce7c5b05803e",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-content-factchecks20261013.json"
+    },
+    {
+      "id": "nih-vitaminD-professional20261013",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "format_validation": "not_checked",
+      "review_scope": "Selected sourcebody read through public connector; local bounded request outcome recorded independently",
+      "request_context": "Public verifiedTLS metadata/page request, no login or clinical advice",
+      "http_status": 403,
+      "error": "403",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-content-factchecks20261013.json"
+    },
+    {
+      "id": "content-factcheck-connector-selected20261013",
+      "url": "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/content-factcheck-connector-selected20261013.json",
+      "bytes": 32106,
+      "sha256": "1f62a9be2910660ddd23aca09c293122484fff7978e3e79291420e3d38944c7a",
+      "format_validation": "json_parsed",
+      "review_scope": "Connector selected NIH/Smithsonian text or bounded acquisition/registration method; not blanket rights or wholetext validation",
+      "derivation": {
+        "acquisition_id": "nih-vitaminD-professional20261013",
+        "tool": "Public connector/Python source metadata"
+      }
+    },
+    {
+      "id": "fetch-content-factchecks-method20261013",
+      "url": "https://www.nature.com/articles/s41467-024-55475-5",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_content_factchecks20261013.py",
+      "bytes": 1856,
+      "sha256": "053ac720a3f1ac50cb6fef122a1d54377384aae062eeddfc987aa8ed108f1926",
+      "format_validation": "python_source_saved",
+      "review_scope": "Connector selected NIH/Smithsonian text or bounded acquisition/registration method; not blanket rights or wholetext validation",
+      "derivation": {
+        "acquisition_id": "nature-cephalopod-arm2025",
+        "tool": "Public connector/Python source metadata"
+      }
+    },
+    {
+      "id": "register-content-factcheck-method20261013",
+      "url": "https://www.nature.com/articles/s41467-024-55475-5",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_content_factcheck20261013.py",
+      "bytes": 8440,
+      "sha256": "55a56027a69ba82713b3ee9e662f04de02ccc7def1a526aefb09784ac6f8675e",
+      "format_validation": "python_source_saved",
+      "review_scope": "Connector selected NIH/Smithsonian text or bounded acquisition/registration method; not blanket rights or wholetext validation",
+      "derivation": {
+        "acquisition_id": "nature-cephalopod-arm2025",
+        "tool": "Public connector/Python source metadata"
+      }
+    },
+    {
+      "id": "pmc-vital-dep2020-connector-gate20261013",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7403921/",
+      "accessed_on": "2026-10-13",
+      "status": "connector_gate",
+      "format_validation": "browser_verification_page_not_fulltext",
+      "review_scope": "Public connector opening returned recaptcha/browser validation; no challenge traversal or article acquisition"
     }
   ],
   "updated_on": "2026-10-13"

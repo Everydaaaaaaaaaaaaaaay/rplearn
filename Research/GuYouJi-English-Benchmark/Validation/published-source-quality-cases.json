@@ -54,6 +54,17 @@
       "required_response": "Taskmustretainexacttableassociation beforepresentation/analysis",
       "confirmed_source_fact": true,
       "failure_condition": "Presenting only derived plaintext without the associated task table"
+    },
+    {
+      "id": "pep-readingplus-dictionary-assistance",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-readingplus-context-1312001102241-image080",
+      "locator": "Printed70 activity2",
+      "category": "assisted_measurement_scope",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": false,
+      "observation": "Dictionary expressly requested before idiom matching, followed by expansion/share",
+      "required_response": "Record dictionary assistance for matching as well as expansion; do not infer unassisted ranked proficiency"
     }
   ],
   "gold_admission": false

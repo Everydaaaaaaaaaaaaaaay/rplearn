@@ -1,0 +1,56 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "Source content scope review, not adjudicated textbook error or answer key",
+  "cases": [
+    {
+      "id": "pep.rp1.distributed-arm-neurons",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-unit8-context-1312001102241-image075",
+      "locator": "Printed65 paragraph2",
+      "source_claim": "Brain described as in head and arms",
+      "external_evidence": [
+        {
+          "source_id": "smithsonian.octopus-neurons",
+          "acquisition_id": "content-factcheck-connector-selected20261013",
+          "locator": "Connector body line61",
+          "observation": "About two thirds of neurons located in arms"
+        },
+        {
+          "source_id": "nature.cephalopod-arm2025",
+          "acquisition_id": "nature-cephalopod-arm2025",
+          "locator": "Introduction and Abstract",
+          "observation": "Arm axial nerve cords and segmentation; brain-connected distributed circuitry"
+        }
+      ],
+      "required_response": "Do not replace distributed neurons with eight complete autonomous brains; independent biology review before generating accepted science assertions",
+      "all_octopus_claims_verified": false
+    },
+    {
+      "id": "pep.rp6.weather-vitaminD-mood",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-readingplus-context-1312001102241-image080",
+      "locator": "Printed70 paragraph3",
+      "source_claim": "Sunlight vitaminD production linked to improved mood",
+      "external_evidence": [
+        {
+          "source_id": "nih.ods-vitaminD",
+          "acquisition_id": "content-factcheck-connector-selected20261013",
+          "locator": "Depression lines342-354 and reference138",
+          "observation": "Observational association differs from supplementation trial result; NIH VITAL groups16657+1696=18353",
+          "trial_scope": {
+            "participants": 18353,
+            "minimum_age": 50,
+            "median_followup_years": 5.3,
+            "intervention": "vitaminD3 supplementation versus placebo",
+            "outcomes": "depression/symptoms/mood scores",
+            "summary": "No significant difference stated in review"
+          }
+        }
+      ],
+      "required_response": "Check intervention, population, mechanism and outcome scope; not a direct refutation of all adolescent sunlight or weather effects",
+      "adolescent_causal_fact_admission": false
+    }
+  ],
+  "rights_scope": "Fact checking does not license textbook prose, scientific figures, source text or thirdparty media",
+  "gold_admission": false
+}
