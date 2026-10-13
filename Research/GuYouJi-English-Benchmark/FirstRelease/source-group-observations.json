@@ -1,6 +1,6 @@
 {
-  "version": "0.5-source-observations",
-  "observed_on": "2026-10-13",
+  "version": "0.6-source-observations",
+  "observed_on": "2026-10-14",
   "status": "selected_sources_not_final_grade_specifications",
   "groups": [
     {
@@ -1239,6 +1239,184 @@
       "independent_review": false,
       "student_calibration": false,
       "commercial_admission": false
+    },
+    {
+      "id": "g9.2025.cloze",
+      "source_id": "fuzhou.fujian-exam2025",
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "grade": 9,
+      "kind": "three_option_cloze",
+      "question_numbers": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "material_and_question_PDF_pages": [
+        28,
+        29
+      ],
+      "key_PDF_pages": [
+        37
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "blanks": 10,
+        "options_each": 3,
+        "genre": "medical_service_narrative",
+        "functions": [
+          "action",
+          "lack",
+          "temperature",
+          "care",
+          "time_sequence",
+          "celebration",
+          "role",
+          "concession",
+          "gratitude",
+          "training"
+        ],
+        "single_patient_then_wider_service_scope": true,
+        "source_measurement_phrase_risk": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g9.2025.readingA",
+      "source_id": "fuzhou.fujian-exam2025",
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "grade": 9,
+      "kind": "four_option_table_reading",
+      "question_numbers": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "material_and_question_PDF_pages": [
+        29,
+        30
+      ],
+      "key_PDF_pages": [
+        38
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "items": 5,
+        "options_each": 4,
+        "genre": "five_numbered_environment_advice_rows",
+        "functions": [
+          "explicit_detail",
+          "conditional_repair",
+          "advice",
+          "cross_row_category",
+          "publication_domain"
+        ],
+        "numbered_rows_required": true,
+        "existing_private_group": "research.fujian2025.readingA"
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g9.2025.grammar",
+      "source_id": "fuzhou.fujian-exam2025",
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "grade": 9,
+      "kind": "mixed_given_ungiven_oneword_passage",
+      "question_numbers": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90
+      ],
+      "material_and_question_PDF_pages": [
+        36
+      ],
+      "key_PDF_pages": [
+        38
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "materials": 1,
+        "blanks": 10,
+        "all_responses_limit_words": 1,
+        "given_word_form_change": true,
+        "targets": [
+          "adverb",
+          "article",
+          "plural",
+          "past_predicate",
+          "preposition",
+          "gerund",
+          "coordination",
+          "shared_passive_participle",
+          "possessive_determiner",
+          "noun_derivation"
+        ],
+        "source_agreement_risk_technology_have": true,
+        "reference_key_not_exhaustive_alternative_adjudication": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g9.2025.insertionE",
+      "source_id": "fuzhou.fujian-exam2025",
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "grade": 9,
+      "kind": "five_option_sentence_insertion",
+      "question_numbers": [
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "material_and_question_PDF_pages": [
+        34
+      ],
+      "key_PDF_pages": [
+        38
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "blanks": 5,
+        "options": 5,
+        "genre": "hobby_selection_advice",
+        "functions": [
+          "question_transition",
+          "heading",
+          "small_start",
+          "pressure_contrast",
+          "parallel_learning_places"
+        ],
+        "once_only_not_explicit_in_source": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
     }
   ],
   "source_token_rule": "English/digit tokens; apostrophe/hyphen compounds kept; Chinese parenthetical gloss and numbered cloze placeholders excluded; unfilled cloze count excludes answers; not source counting rule or population estimate",
@@ -1249,7 +1427,8 @@
     "firstrelease-grade12-and-extra-private-audit20261013",
     "firstrelease-grade9-reused-selected-private-audit20261013",
     "firstrelease-grade11-comparison-selected-private-audit20261013",
-    "firstrelease-grade7-historical-comparison-private-audit20261013"
+    "firstrelease-grade7-historical-comparison-private-audit20261013",
+    "firstrelease-grade9-secondsource-private-audit20261014"
   ],
   "source_handbook_or_facts_not_current_factual_gold": true
 }

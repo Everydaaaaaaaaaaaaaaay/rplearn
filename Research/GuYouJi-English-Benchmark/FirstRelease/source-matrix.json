@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-10-13",
+  "updated_on": "2026-10-14",
   "owner_grade_based_scope": true,
   "papers": [
     {
@@ -310,6 +310,33 @@
       "all_paper_groups_reviewed": false,
       "publication_date": "2019-01-23",
       "calendar_year": 2019
+    },
+    {
+      "acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "source_id": "fuzhou.fujian-exam2025",
+      "file_pages": 83,
+      "subject": "English_official_selected_component",
+      "role": "reused_official_complete_selected_groups_with_editorial_flags",
+      "visually_reviewed_PDF_pages": [
+        28,
+        29,
+        30,
+        34,
+        36,
+        37,
+        38
+      ],
+      "selected_group_ids": [
+        "g9.2025.cloze",
+        "g9.2025.readingA",
+        "g9.2025.grammar",
+        "g9.2025.insertionE"
+      ],
+      "source_key_available_for_selected_groups": true,
+      "all_paper_groups_reviewed": false,
+      "whole_English_pages_review_previously_recorded": true,
+      "publication_date": "2025-06-21",
+      "limitation": "Same Fujian regional exam family in second year, not second region. Audio/rubric missing; source agreement and reference-key alternatives remain review risks."
     }
   ],
   "grade_progress": [
@@ -365,12 +392,16 @@
       "selected_group_ids": [
         "g9.2026.cloze",
         "g9.2026.readingC",
-        "g9.2026.grammar"
+        "g9.2026.grammar",
+        "g9.2025.cloze",
+        "g9.2025.readingA",
+        "g9.2025.grammar",
+        "g9.2025.insertionE"
       ],
-      "specification_status": "first_round_v0.1_second_source_pending",
+      "specification_status": "provisional_v0.2_second_year_official_source_compared_core_review_pending",
       "original_generated_groups": 3,
       "first_release_complete": false,
-      "specification_path": "FirstRelease/Specifications/grade9-v0.1.md",
+      "specification_path": "FirstRelease/Specifications/grade9-v0.2.md",
       "author_check_paths": [
         "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json",
         "FirstRelease/Generated/grade9-cycle-shop-cloze-author-check-v0.1.json",
@@ -380,7 +411,9 @@
         "FirstRelease/Generated/grade9-book-repair-v0.1.md",
         "FirstRelease/Generated/grade9-cycle-shop-cloze-v0.1.md",
         "FirstRelease/Generated/grade9-weather-grammar-v0.1.md"
-      ]
+      ],
+      "comparison_path": "FirstRelease/Comparisons/grade9-source-comparison-v0.1.md",
+      "second_source_status": "two_paper_year_families_same_region_not_national_student_or_hidden_validation"
     },
     {
       "grade": 10,
