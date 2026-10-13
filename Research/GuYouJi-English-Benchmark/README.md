@@ -16,6 +16,7 @@
 - [第十四保存与恢复检查点](Studies/2026-10-13-checkpoint14-appendices-and-voa-recovery.md)：该冻结版本的本机恢复证据；后来批次尚不在此快照中，异机门槛仍开放。
 - [第十五保存与恢复检查点](Studies/2026-10-13-checkpoint15-starter-yilin-and-senior-recovery.md)：截至6331cf49的5118文件独立恢复、冻结schema依赖重建与译林原生文本重放；PDF解析器/解释器完整重建和异机验证仍缺。
 - [第十六保存与恢复检查点](Studies/2026-10-13-checkpoint16-support-fltrp-and-beijing-recovery.md)：截至69332f5b的5207文件独立恢复，外研42标题和北京政策冲突重放；保存核验不代替教育或商用验收。
+- [第十七保存与恢复检查点](Studies/2026-10-13-checkpoint17-speech-and-openstory-recovery.md)：截至42dea3c7的5369文件独立恢复、七离线检查及SpeechOcean5000标注/开放故事24正文块重放；完整工具链和异机验证仍缺。
 
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
