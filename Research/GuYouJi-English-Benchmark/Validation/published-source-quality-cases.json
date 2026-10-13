@@ -252,6 +252,35 @@
       "observation": "Advice recommendsclassroomteamrace anddeductingpointsforincorrectanswers; itis notthe formalexammarks table orproductreward policy",
       "failure_condition": "Importerturnspracticeactivityscoringadviceintoformalexamnegative markingorlearnerstarpenalty",
       "required_response": "Retainteachingrole separately; requireactualformalmarkingsource before scoreconversion"
+    },
+    {
+      "id": "b2-garlic-pasteur-penicillin-attribution",
+      "source_id": "cambridge.b2",
+      "acquisition_id": "cambridge-b2-handbook",
+      "additional_evidence_acquisition_ids": [
+        "pasteur-museum-history-native20261013",
+        "nobel-museum-fleming-history-native20261013"
+      ],
+      "locator": "PDF14 digitalPart3screenshot",
+      "category": "historical_attribution_chronology",
+      "confirmed_source_conflict": true,
+      "observation": "Screenshotattributescomparisonwithpenicillin toPasteur;selectedofficialdatesplacehisdeath1895andFlemingdiscovery1928/report1929. Originalquote/provenance notestablished.",
+      "required_response": "Retain sourceandchronology; do not authenticateorreplace speaker automatically; keepgrammarreference separatefromhistoricalfactgold"
+    },
+    {
+      "id": "b2-garlic-lab-to-clinical-cold-overreach",
+      "source_id": "cambridge.b2",
+      "acquisition_id": "cambridge-b2-handbook",
+      "additional_evidence_acquisition_ids": [
+        "nccih-garlic-evidence-native20261013",
+        "nccih-cold-garlic-digest-native20261013"
+      ],
+      "locator": "PDF14 digitalPart3screenshot health assertions",
+      "category": "evidence_population_outcome_overreach",
+      "confirmed_source_conflict": false,
+      "confirmed_source_fact": true,
+      "observation": "Lab bacteria/virusassertion doesnot establishclinicalcoldbenefit;NCCIH reports limitedsmallweak evidence and insufficientcoldtrialevidence. Notproofzerobenefit.",
+      "required_response": "Keep lab/clinical/population/intervention/outcome andqualifiers distinct; no provenclinicalcure claim orlearnerpenaltyforexternalunknownfacts"
     }
   ],
   "gold_admission": false

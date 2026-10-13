@@ -1,0 +1,64 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "primary.garlic-history-evidence",
+  "evidence_acquisition_ids": [
+    "pasteur-museum-history-native20261013",
+    "nccih-garlic-evidence-native20261013",
+    "nccih-cold-garlic-digest-native20261013",
+    "nobel-museum-fleming-history-native20261013"
+  ],
+  "benchmark_source_id": "cambridge.b2",
+  "benchmark_acquisition_id": "cambridge-b2-handbook",
+  "benchmark_locator": "PDF14/print12 digitalPart3 screenshot, medical/historical assertions; not completepaperPart3",
+  "native_audit_acquisition_id": "garlic-claim-native-and-chronology-audit20261013",
+  "chronology": {
+    "Pasteur_death": "1895-09-28",
+    "Pasteur_source_published": "2016-12-05",
+    "Pasteur_source_updated": "2023-07-28",
+    "Fleming_mould_discovery_year": 1928,
+    "Fleming_report_year": 1929,
+    "NobelMuseum_native_language": "Swedish",
+    "only_selected_event_statements_used": true,
+    "attribution_comparison_postdates_speakers_death": true,
+    "original_Pasteur_quote_or_garlic_experiment_not_found_or_claimed": true,
+    "no_substitute_speaker_or_automatic_source_rewrite": true
+  },
+  "clinical_scope": {
+    "NCCIH_garlic_body_update": "February2025",
+    "review2022_as_reported": {
+      "studies": 2,
+      "small_samples": true,
+      "method_weaknesses": true,
+      "question": "immune function/cold and flu season"
+    },
+    "NCCIH_digest_body_date": "December2020",
+    "review2014_as_reported": {
+      "included_trial": 1,
+      "participants": 146,
+      "weeks": 12,
+      "garlic_supplement_vs_placebo": true,
+      "conclusion": "insufficient clinical trial evidence for preventing or treating commoncold"
+    },
+    "not_duplicate_reviews_summed": true,
+    "not_our_student_or_B2_calibration": true,
+    "lab_antibacterial_or_antiviral_statement_not_clinical_cold_efficacy": true,
+    "absence_of_sufficient_evidence_not_proof_zero_benefit": true,
+    "not_exhaustive2026_literature_review_or_individual_medical_advice": true,
+    "primary_trials_and2022_review_not_fully_acquired": true
+  },
+  "qualification_for_generation": {
+    "source_authority_not_blanket_factual_gold": true,
+    "retain_speaker_source_time_modality_population_and_outcome": true,
+    "do_not_infer_antibiotic_equivalence_or_proven_cold_cure": true,
+    "English_source_comprehension_not_medical_truth_exam": true,
+    "no_learner_wronganswer_due_to_unprovided_externalmedicalknowledge": true,
+    "grammar_wordformation_rule_not_rejected_by_contentconflict": true,
+    "no_current_production_change_or_expert_admission": true
+  },
+  "access_failures_acquisition_ids": [
+    "nobel-fleming-FAQ-tool403-20261013",
+    "nobel-fleming-lecture-tool403-20261013"
+  ],
+  "body_component_rights_observation_path": "Rights/nccih-publication-and-thirdparty-observations.json",
+  "not_in_checkpoint20": true
+}

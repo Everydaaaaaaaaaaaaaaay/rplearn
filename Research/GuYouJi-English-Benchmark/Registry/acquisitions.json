@@ -51236,6 +51236,199 @@
         "acquisition_id": "cambridge-b2-handbook",
         "tool": "pypdf6.10.0/Python/sourceimageviews"
       }
+    },
+    {
+      "id": "pasteur-museum-history-native20261013",
+      "url": "https://www.pasteur.fr/en/our-research/sharing-knowledge/pasteur-museum/history-pasteur-museum",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.pasteur.fr/en/our-research/sharing-knowledge/pasteur-museum/history-pasteur-museum",
+      "content_type": "text/html; charset=UTF-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_response_saved",
+      "review_scope": "Selected nativehistory/clinicalevidence/publicationdeclaration/imagecredit sections read. Pasteurdeath1895/Fleming1928/1929,NIHbody2025two smallweakstudies and2020digest2014singletrial146/12weeks evidencebounds. Not individualadvice/completedmedicalreview/currentlearnervalidation",
+      "request_context": "Anonymous verifiedTLS bounded3MB ordinary nativeHTML request",
+      "path": "build/english-benchmark-research-20261012/raw/pasteur-museum-history-native20261013.html",
+      "bytes": 96374,
+      "sha256": "7684bd71cd3ddc634e01e5f21a8846c040b828315ca3e1c2512924f385126419",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-garlic-claim-primary-checks20261013.json"
+    },
+    {
+      "id": "nccih-garlic-evidence-native20261013",
+      "url": "https://www.nccih.nih.gov/health/garlic",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.nccih.nih.gov/health/garlic",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_response_saved",
+      "review_scope": "Selected nativehistory/clinicalevidence/publicationdeclaration/imagecredit sections read. Pasteurdeath1895/Fleming1928/1929,NIHbody2025two smallweakstudies and2020digest2014singletrial146/12weeks evidencebounds. Not individualadvice/completedmedicalreview/currentlearnervalidation",
+      "request_context": "Anonymous verifiedTLS bounded3MB ordinary nativeHTML request",
+      "path": "build/english-benchmark-research-20261012/raw/nccih-garlic-evidence-native20261013.html",
+      "bytes": 519127,
+      "sha256": "a8736d338211a8b37d2b7fddaa8538d19e2d932aa139a346ee71bc4fd6200687",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-garlic-claim-primary-checks20261013.json"
+    },
+    {
+      "id": "nccih-cold-garlic-digest-native20261013",
+      "url": "https://www.nccih.nih.gov/health/providers/digest/the-common-cold-and-complementary-health-approaches-science/",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.nccih.nih.gov/health/providers/digest/the-common-cold-and-complementary-health-approaches-science/",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_response_saved",
+      "review_scope": "Selected nativehistory/clinicalevidence/publicationdeclaration/imagecredit sections read. Pasteurdeath1895/Fleming1928/1929,NIHbody2025two smallweakstudies and2020digest2014singletrial146/12weeks evidencebounds. Not individualadvice/completedmedicalreview/currentlearnervalidation",
+      "request_context": "Anonymous verifiedTLS bounded3MB ordinary nativeHTML request",
+      "path": "build/english-benchmark-research-20261012/raw/nccih-cold-garlic-digest-native20261013.html",
+      "bytes": 637264,
+      "sha256": "7f108fb440d5f98e041e41f34bdcaaf0099e14e286e348b7d02b062c0254b531",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-garlic-claim-primary-checks20261013.json"
+    },
+    {
+      "id": "nobel-museum-fleming-history-native20261013",
+      "url": "https://www.nobelprizemuseum.se/skola/lektionsmaterial/texter-for-elever/alexander-fleming-ernest-chain-howard-florey/",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.nobelprizemuseum.se/skola/lektionsmaterial/texter-for-elever/alexander-fleming-ernest-chain-howard-florey/",
+      "content_type": "text/html; charset=UTF-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "HTML_response_saved",
+      "review_scope": "Selected nativehistory/clinicalevidence/publicationdeclaration/imagecredit sections read. Pasteurdeath1895/Fleming1928/1929,NIHbody2025two smallweakstudies and2020digest2014singletrial146/12weeks evidencebounds. Not individualadvice/completedmedicalreview/currentlearnervalidation",
+      "request_context": "Anonymous verifiedTLS bounded3MB native museumHTML; different public institution, no retry403Nobel.org endpoints",
+      "path": "build/english-benchmark-research-20261012/raw/nobel-museum-fleming-history-native20261013.html",
+      "bytes": 223911,
+      "sha256": "4af450ab882411645dcbb2311935b74d0b6d6a35e048226f6c04aad7d8113d96",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-nobel-museum-history20261013.json"
+    },
+    {
+      "id": "nobel-fleming-FAQ-tool403-20261013",
+      "url": "https://www.nobelprize.org/prizes/medicine/1945/fleming/questions-and-answers/",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "http_status": null,
+      "tool_reported_http_status": 403,
+      "observation_channel": "search_service open tool failure",
+      "error": "Tool reported Failed to fetch:403Forbidden; no native body acquired or retry",
+      "format_validation": "tool_provider_error_not_native_source_body",
+      "review_scope": "Search snippet not full verifiedbody; no alternateheaders/client/access bypass"
+    },
+    {
+      "id": "nobel-fleming-lecture-tool403-20261013",
+      "url": "https://www.nobelprize.org/uploads/2018/06/fleming-lecture.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "http_status": null,
+      "tool_reported_http_status": 403,
+      "observation_channel": "search_service open tool failure",
+      "error": "Tool reported Failed to fetch:403Forbidden; PDFnotacquired or retry",
+      "format_validation": "tool_provider_error_not_native_PDF",
+      "review_scope": "Search metadata not downloadedlecture; native museumSwedisharticle separatelyobtained"
+    },
+    {
+      "id": "fetch-garlic-claim-primary-checks20261013",
+      "url": "urn:lingotrip:research:garlic-evidence-attribution",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_garlic_claim_primary_checks20261013.py",
+      "bytes": 1933,
+      "sha256": "261a01bc97581735cca121867927ca4837bf9c9aca07fc3416eecaa3dfdc69f4",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen native selectedevidence/chronology/component rightsandtool-providerfailure record; no trials/clinicalrecommendation/learner or commercialwholepage admission",
+      "derivation": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "additional_parent_acquisition_ids": [
+          "pasteur-museum-history-native20261013",
+          "nccih-garlic-evidence-native20261013",
+          "nccih-cold-garlic-digest-native20261013",
+          "nobel-museum-fleming-history-native20261013"
+        ],
+        "tool": "HTMLParser/pypdf/sourceactualviews andselectednativebody sections"
+      }
+    },
+    {
+      "id": "fetch-nobel-museum-history20261013",
+      "url": "urn:lingotrip:research:garlic-evidence-attribution",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_nobel_museum_history20261013.py",
+      "bytes": 1510,
+      "sha256": "c698129260b5868be132d8992528d97ffe2be3d8f1065e12ac660c1f5b1564bb",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen native selectedevidence/chronology/component rightsandtool-providerfailure record; no trials/clinicalrecommendation/learner or commercialwholepage admission",
+      "derivation": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "additional_parent_acquisition_ids": [
+          "pasteur-museum-history-native20261013",
+          "nccih-garlic-evidence-native20261013",
+          "nccih-cold-garlic-digest-native20261013",
+          "nobel-museum-fleming-history-native20261013"
+        ],
+        "tool": "HTMLParser/pypdf/sourceactualviews andselectednativebody sections"
+      }
+    },
+    {
+      "id": "record-garlic-evidence-and-attribution20261013",
+      "url": "urn:lingotrip:research:garlic-evidence-attribution",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_garlic_evidence_and_attribution20261013.py",
+      "bytes": 15052,
+      "sha256": "2a5a63674f539f33e29c2e2482d2132f21ec79da27f8f6f76029a43b95671121",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen native selectedevidence/chronology/component rightsandtool-providerfailure record; no trials/clinicalrecommendation/learner or commercialwholepage admission",
+      "derivation": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "additional_parent_acquisition_ids": [
+          "pasteur-museum-history-native20261013",
+          "nccih-garlic-evidence-native20261013",
+          "nccih-cold-garlic-digest-native20261013",
+          "nobel-museum-fleming-history-native20261013"
+        ],
+        "tool": "HTMLParser/pypdf/sourceactualviews andselectednativebody sections"
+      }
+    },
+    {
+      "id": "nobel-org-tool-provider-errors20261013",
+      "url": "urn:lingotrip:research:garlic-evidence-attribution",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/nobel-org-tool-provider-errors20261013.json",
+      "bytes": 1357,
+      "sha256": "298f50de4fea7841429a3681c2c8b1d8407a539522bdebc59382705a289245e2",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen native selectedevidence/chronology/component rightsandtool-providerfailure record; no trials/clinicalrecommendation/learner or commercialwholepage admission",
+      "derivation": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "additional_parent_acquisition_ids": [
+          "pasteur-museum-history-native20261013",
+          "nccih-garlic-evidence-native20261013",
+          "nccih-cold-garlic-digest-native20261013",
+          "nobel-museum-fleming-history-native20261013"
+        ],
+        "tool": "HTMLParser/pypdf/sourceactualviews andselectednativebody sections"
+      }
+    },
+    {
+      "id": "garlic-claim-native-and-chronology-audit20261013",
+      "url": "urn:lingotrip:research:garlic-evidence-attribution",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/garlic-claim-native-and-chronology-audit20261013.json",
+      "bytes": 61575,
+      "sha256": "bedbffe23a2f2df0ee84025fd5ce62102285ba7fdf2d9b42fd5fc5afee495fa8",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen native selectedevidence/chronology/component rightsandtool-providerfailure record; no trials/clinicalrecommendation/learner or commercialwholepage admission",
+      "derivation": {
+        "acquisition_id": "cambridge-b2-handbook",
+        "additional_parent_acquisition_ids": [
+          "pasteur-museum-history-native20261013",
+          "nccih-garlic-evidence-native20261013",
+          "nccih-cold-garlic-digest-native20261013",
+          "nobel-museum-fleming-history-native20261013"
+        ],
+        "tool": "HTMLParser/pypdf/sourceactualviews andselectednativebody sections"
+      }
     }
   ],
   "updated_on": "2026-10-13"
