@@ -1,0 +1,85 @@
+{
+  "version": "0.2",
+  "candidate_path": "FirstRelease/Expansions/grade9-book-care-bank-v0.2.md",
+  "candidate_sha256": "0833f72eb7371dafc8a3647759fc74b2b0adda696eb51a612e1d374558900d08",
+  "specification_path": "FirstRelease/Specifications/grade9-v0.3.md",
+  "specification_sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe",
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+    "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+  },
+  "anchor_group_id": "g9.suzhou2024.wordBank",
+  "grade": 9,
+  "kind": "complete_five_entry_word_phrase_correct_form_bank",
+  "questions": 5,
+  "wordbank_entries": [
+    "at least",
+    "clear",
+    "finish",
+    "instead of",
+    "remember"
+  ],
+  "entry_use_vector": [
+    "at least",
+    "instead of",
+    "finish",
+    "remember",
+    "clear"
+  ],
+  "entry_once": true,
+  "author_answer_vector": [
+    [
+      "at least"
+    ],
+    [
+      "instead of"
+    ],
+    [
+      "finishing",
+      "having finished"
+    ],
+    [
+      "remember"
+    ],
+    [
+      "clear"
+    ]
+  ],
+  "passage_tokens_excluding_slots": 161,
+  "bank_tokens": 7,
+  "figure_text_tokens": 13,
+  "figure_asset": {
+    "path": "FirstRelease/Expansions/book-care-process-v0.1.svg",
+    "sha256": "d5a88c07762d2666c36b3aa381db574fdb74e4ae4ce8b13f517ac98ffdc19326",
+    "width": 760,
+    "height": 180,
+    "visual_review": "actual QuickLook thumbnail;four nodes/three left-to-right arrows readable/no clipped labels, full white canvas thumbnailpadding not student SVG aspect",
+    "rendered_proof_acquisition_id": "book-care-process-v0.1.svg-render-proof20261014"
+  },
+  "all_five_same_author_refilled": true,
+  "two_finish_refill_variants": [
+    {
+      "finish_response": "finishing",
+      "refilled_text_sha256": "ef8adea32763e417d499fad66d72e1e68757951ece6a1a7bebfb43a68ab5f69a",
+      "full_same_author_read": true
+    },
+    {
+      "finish_response": "having finished",
+      "refilled_text_sha256": "bce88a55e0aed06ded971cf33f9bb22bce0f2c35bbc8af4232f63c3c21899e9a",
+      "full_same_author_read": true
+    }
+  ],
+  "actual_saved_transition_rounds": 1,
+  "source_form_kept": "five entries words/phrases eachonce/proper forms/complete prose plus schematic/alternative text",
+  "target_changes": "ecological diagram changed to task-order diagram; new fiction/bookcare/wordbank; authored instruction expressly permits necessary compoundverbform, source doesnot list havingfinished",
+  "coarse_exposure_cluster": "grade9_original_repair_service_and_suzhou2024_source",
+  "author_allowed_response_set_exhaustive": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_text_transmitted_to_third_party_model": false,
+  "original_role_story_added": false,
+  "prior_draft_acquisition_id": "grade9-book-bank-before-clear-return-repair20261014-record",
+  "actual_revision_audit_acquisition_id": "grade9-book-bank-clarity-and-return-actual-repair20261014-record"
+}
