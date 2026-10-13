@@ -337,6 +337,78 @@
       "whole_English_pages_review_previously_recorded": true,
       "publication_date": "2025-06-21",
       "limitation": "Same Fujian regional exam family in second year, not second region. Audio/rubric missing; source agreement and reference-key alternatives remain review risks."
+    },
+    {
+      "acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "file_pages": 16,
+      "subject": "English_grade_verified_native_cover",
+      "role": "selected_paired_groups_with_editorial_flags",
+      "visually_reviewed_PDF_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11,
+        12,
+        13,
+        14
+      ],
+      "selected_group_ids": [
+        "g8.2025fengtai.language",
+        "g8.2025fengtai.cloze",
+        "g8.2025fengtai.matchingA",
+        "g8.2025fengtai.readingB",
+        "g8.2025fengtai.readingC"
+      ],
+      "source_key_available_for_selected_groups": true,
+      "all_paper_groups_reviewed": false
+    },
+    {
+      "acquisition_id": "grade10-chaoyang2025upper-candidate20261014",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "file_pages": 11,
+      "subject": "English_grade_verified_native_cover",
+      "role": "candidate_pending_group_or_answer_review",
+      "visually_reviewed_PDF_pages": [
+        1,
+        9
+      ],
+      "selected_group_ids": [],
+      "source_key_available_for_selected_groups": false,
+      "all_paper_groups_reviewed": false
+    },
+    {
+      "acquisition_id": "grade10-2025yearend-explanation-candidate20261014",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "file_pages": 23,
+      "subject": "English_grade_verified_native_cover",
+      "role": "candidate_pending_group_or_answer_review",
+      "visually_reviewed_PDF_pages": [
+        1,
+        2
+      ],
+      "selected_group_ids": [],
+      "source_key_available_for_selected_groups": false,
+      "all_paper_groups_reviewed": false
+    },
+    {
+      "acquisition_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "file_pages": 15,
+      "subject": "English_grade_verified_native_cover",
+      "role": "candidate_pending_group_or_answer_review",
+      "visually_reviewed_PDF_pages": [
+        1,
+        9,
+        10
+      ],
+      "selected_group_ids": [],
+      "source_key_available_for_selected_groups": false,
+      "all_paper_groups_reviewed": false
     }
   ],
   "grade_progress": [
@@ -374,18 +446,25 @@
         "g8.2025.matchingA",
         "g8.2025.readingB",
         "g8.2025.readingC",
-        "g8.2025.cloze"
+        "g8.2025.cloze",
+        "g8.2025fengtai.language",
+        "g8.2025fengtai.cloze",
+        "g8.2025fengtai.matchingA",
+        "g8.2025fengtai.readingB",
+        "g8.2025fengtai.readingC"
       ],
-      "specification_status": "first_round_v0.1_second_source_pending",
+      "specification_status": "provisional_v0.2_second_district_repost_compared_core_candidates_pending",
       "original_generated_groups": 1,
       "first_release_complete": false,
-      "specification_path": "FirstRelease/Specifications/grade8-v0.1.md",
+      "specification_path": "FirstRelease/Specifications/grade8-v0.2.md",
       "author_check_paths": [
         "FirstRelease/Generated/grade8-lunch-author-check-v0.1.json"
       ],
       "generated_candidate_paths": [
         "FirstRelease/Generated/grade8-lunch-v0.1.md"
-      ]
+      ],
+      "comparison_path": "FirstRelease/Comparisons/grade8-source-comparison-v0.1.md",
+      "second_source_status": "two_district_paper_families_same_Beijing_region_reference_key_authentication_and_student_validation_pending"
     },
     {
       "grade": 9,

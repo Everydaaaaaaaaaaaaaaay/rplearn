@@ -6,18 +6,18 @@
 
 ## 当前进展：首版未完成
 
-累计35个完整配套选定源组、11个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
+累计40个完整配套选定源组、11个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
 | 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md) | 7，两卷 | 核心审阅/负荷对照；图文与不变形模式缺口保留 |
-| 初二 | [0.1](Specifications/grade8-v0.1.md) | [说明阅读](Generated/grade8-lunch-v0.1.md) | 4，一卷 | 完形、语言形式候选及第二完整配套源；音标/给词候选缺键 |
+| 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md) | 9，两区卷 | 完形、四选语言形式候选及核心审阅；开放形式缺键 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.1](Specifications/grade10-v0.1.md) | [三篇语法](Generated/grade10-grammar-v0.1.md) | 5，一卷 | 阅读、完形、第二源/复杂输入对照 |
 | 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读](Generated/grade11-commitments-reading-v0.1.md) | 8，两卷 | 语法候选；15空/单篇模式与更多负荷覆盖 |
 | 高三 | [0.1](Specifications/grade12-v0.1.md) | [四简介阅读](Generated/grade12-archive-v0.1.md) | 4，一卷 | 15空完形、单篇语法、第二源及复杂阅读对照 |
 
-[初一第二来源对照](Comparisons/grade7-source-comparison-v0.1.md)扩展三选/四选、日历/人物图；[高二第二卷对照](Comparisons/grade11-source-comparison-v0.1.md)扩展10/15空完形、三篇/单篇语法、书评/论证及概念/视角范围。[初三第二年份对照](Comparisons/grade9-source-comparison-v0.1.md)增加表格行关系、派生名词/物主限定词与共享被动，保留technology…have源一致风险。源人名混用、缺词、错印、解析题号错位和措辞风险保留，不悄改原文或当正向范例。
+[初一第二来源对照](Comparisons/grade7-source-comparison-v0.1.md)扩展三选/四选、日历/人物图；[高二第二卷对照](Comparisons/grade11-source-comparison-v0.1.md)扩展10/15空完形、三篇/单篇语法、书评/论证及概念/视角范围。[初二丰台第二来源对照](Comparisons/grade8-source-comparison-v0.1.md)扩展8/10空完形、3/4题阅读和完整单项，保留第20空缺been风险。[初三第二年份对照](Comparisons/grade9-source-comparison-v0.1.md)增加表格行关系、派生名词/物主限定词与共享被动，保留technology…have源一致风险。源人名混用、缺词、错印、解析题号错位和措辞风险保留，不悄改原文或当正向范例。
 
 [命题/作者审核流程](GenerationProtocol-v0.1.md)规定规格＋完整匹配锚组双输入、合法响应、逐项依据/干扰项、实际修题再解。候选旁的作者检查JSON保存对应版本摘要/答案；旧候选仍指向原规格，不用新版本覆盖历史证据。[作者检查证据口径](AuthoringEvidence.md)区分拟稿叙述和实际保存前后文本的修订，不编造审核次数。
 

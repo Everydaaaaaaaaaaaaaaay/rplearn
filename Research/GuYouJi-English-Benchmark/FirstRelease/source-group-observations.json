@@ -1,5 +1,5 @@
 {
-  "version": "0.6-source-observations",
+  "version": "0.7-source-observations",
   "observed_on": "2026-10-14",
   "status": "selected_sources_not_final_grade_specifications",
   "groups": [
@@ -1417,6 +1417,197 @@
       "independent_review": false,
       "student_calibration": false,
       "commercial_admission": false
+    },
+    {
+      "id": "g8.2025fengtai.language",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "grade": 8,
+      "kind": "sentence_four_option_language",
+      "question_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "material_and_question_PDF_pages": [
+        1,
+        2
+      ],
+      "key_PDF_pages": [
+        11,
+        12
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "appended_repost_reference_and_explanation_not_authenticated_independent_gold",
+      "features": {
+        "items": 12,
+        "options_each": 4,
+        "targets": [
+          "possessive",
+          "year_preposition",
+          "cause_result",
+          "comparative",
+          "modal_obligation",
+          "question_word",
+          "present_agreement",
+          "past",
+          "past_progressive",
+          "conditional_future",
+          "superlative",
+          "infinitive"
+        ],
+        "Q10_present_progressive_future_not_blanket_impossible": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g8.2025fengtai.cloze",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "grade": 8,
+      "kind": "four_option_cloze",
+      "question_numbers": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "material_and_question_PDF_pages": [
+        2,
+        3
+      ],
+      "key_PDF_pages": [
+        12,
+        13
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "appended_repost_reference_and_explanation_not_authenticated_independent_gold",
+      "features": {
+        "blanks": 8,
+        "options_each": 4,
+        "genre": "friendship_and_confidence_camp_narrative",
+        "Q20_missing_passive_auxiliary_been": true,
+        "source_gloss_comfort_zone_incomplete": true,
+        "positive_scoring_admission": false
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g8.2025fengtai.matchingA",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "grade": 8,
+      "kind": "matching_profiles_to_cards",
+      "question_numbers": [
+        21,
+        22,
+        23
+      ],
+      "material_and_question_PDF_pages": [
+        3,
+        4
+      ],
+      "key_PDF_pages": [
+        13
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "appended_repost_reference_and_explanation_not_authenticated_independent_gold",
+      "features": {
+        "cards": 4,
+        "profiles": 3,
+        "extra_option": 1,
+        "app_learning_function_and_profile_need_match": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g8.2025fengtai.readingB",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "grade": 8,
+      "kind": "four_option_reading",
+      "question_numbers": [
+        24,
+        25,
+        26
+      ],
+      "material_and_question_PDF_pages": [
+        4,
+        5
+      ],
+      "key_PDF_pages": [
+        13,
+        14
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "appended_repost_reference_and_explanation_not_authenticated_independent_gold",
+      "features": {
+        "items": 3,
+        "options_each": 4,
+        "genre": "volunteer_growth_narrative",
+        "functions": [
+          "initial_feeling",
+          "persistence_reason",
+          "whole_growth_lesson"
+        ]
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g8.2025fengtai.readingC",
+      "source_id": "firstrelease.additional-public-comparison-candidates",
+      "acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "grade": 8,
+      "kind": "four_option_reading",
+      "question_numbers": [
+        27,
+        28,
+        29
+      ],
+      "material_and_question_PDF_pages": [
+        6,
+        7
+      ],
+      "key_PDF_pages": [
+        14
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "appended_repost_reference_and_explanation_not_authenticated_independent_gold",
+      "features": {
+        "items": 3,
+        "options_each": 4,
+        "genre": "wildlife_threat_explanation",
+        "functions": [
+          "context_word",
+          "paragraph_subset_detail",
+          "main_cause"
+        ],
+        "numbers_and_population_scope_not_collapsed": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
     }
   ],
   "source_token_rule": "English/digit tokens; apostrophe/hyphen compounds kept; Chinese parenthetical gloss and numbered cloze placeholders excluded; unfilled cloze count excludes answers; not source counting rule or population estimate",
@@ -1428,7 +1619,8 @@
     "firstrelease-grade9-reused-selected-private-audit20261013",
     "firstrelease-grade11-comparison-selected-private-audit20261013",
     "firstrelease-grade7-historical-comparison-private-audit20261013",
-    "firstrelease-grade9-secondsource-private-audit20261014"
+    "firstrelease-grade9-secondsource-private-audit20261014",
+    "firstrelease-grade8-fengtai-private-audit20261014"
   ],
   "source_handbook_or_facts_not_current_factual_gold": true
 }
