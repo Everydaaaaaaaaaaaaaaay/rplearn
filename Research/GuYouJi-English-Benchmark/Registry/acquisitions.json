@@ -48607,6 +48607,107 @@
         ],
         "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
       }
+    },
+    {
+      "id": "shmeea-junior2025-review-native20261013",
+      "url": "https://www.shmeea.edu.cn/page/08000/20250615/19514.html",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.shmeea.edu.cn/page/08000/20250615/19514.html",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Native officialreview/notice fullarticle read; no actual paper/keys/audio, no loggedin candidate platform, not benchmarkexpert orcommercial admission",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/shmeea-junior2025-review-native20261013.html",
+      "bytes": 21870,
+      "sha256": "ded05953e7774fc66733c7683ee8230f8bb7b5d4dc52a26124359ca1b1ac2420",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-shmeea2025reviews2026speaking20261013.json"
+    },
+    {
+      "id": "shmeea-senior2025-review-native20261013",
+      "url": "https://www.shmeea.edu.cn/page/02200/20250609/19465.html",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.shmeea.edu.cn/page/02200/20250609/19465.html",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Native officialreview/notice fullarticle read; no actual paper/keys/audio, no loggedin candidate platform, not benchmarkexpert orcommercial admission",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/shmeea-senior2025-review-native20261013.html",
+      "bytes": 10507,
+      "sha256": "c57deeb5191fa4882aaec3f8584996d08e398411d48800f7e47ee575e98f22e7",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-shmeea2025reviews2026speaking20261013.json"
+    },
+    {
+      "id": "shmeea-junior2026-speaking-native20261013",
+      "url": "https://www.shmeea.edu.cn/page/08000/20260415/20174.html",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.shmeea.edu.cn/page/08000/20260415/20174.html",
+      "content_type": "text/html",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Native officialreview/notice fullarticle read; no actual paper/keys/audio, no loggedin candidate platform, not benchmarkexpert orcommercial admission",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/shmeea-junior2026-speaking-native20261013.html",
+      "bytes": 10718,
+      "sha256": "0d139f730ae74a167d12f330d80929a758aaff23cb2a2a2b704343d441141cba",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-shmeea2025reviews2026speaking20261013.json"
+    },
+    {
+      "id": "fetch-shmeea-reviews-and-speaking20261013",
+      "url": "urn:lingotrip:research:shmeea-task-mode-boundaries",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_shmeea_reviews_and_speaking20261013.py",
+      "bytes": 1844,
+      "sha256": "99eae6db3b3154dec01525d9ee131e7f7129a73b7880380d316643d8a261609a",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen anonymous officialHTMLfetch and relevantnative content consistency/originalobservation method",
+      "derivation": {
+        "acquisition_id": "shmeea-junior2025-review-native20261013",
+        "additional_parent_acquisition_ids": [
+          "shmeea-senior2025-review-native20261013",
+          "shmeea-junior2026-speaking-native20261013"
+        ],
+        "tool": "Python HTMLParser and native fullarticle review"
+      }
+    },
+    {
+      "id": "record-shmeea-task-and-platform-boundaries20261013",
+      "url": "urn:lingotrip:research:shmeea-task-mode-boundaries",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_shmeea_task_and_platform_boundaries20261013.py",
+      "bytes": 8275,
+      "sha256": "19f03a9ba6ba695d9f248af4ec1767640127b87d0b27046b203b2aba73345c21",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen anonymous officialHTMLfetch and relevantnative content consistency/originalobservation method",
+      "derivation": {
+        "acquisition_id": "shmeea-junior2025-review-native20261013",
+        "additional_parent_acquisition_ids": [
+          "shmeea-senior2025-review-native20261013",
+          "shmeea-junior2026-speaking-native20261013"
+        ],
+        "tool": "Python HTMLParser and native fullarticle review"
+      }
+    },
+    {
+      "id": "repair-shmeea-observation-path20261013",
+      "url": "urn:lingotrip:research:shmeea-task-mode-boundaries",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/repair_shmeea_observation_path20261013.py",
+      "bytes": 2544,
+      "sha256": "4a4c3a05d02a861b285a6b8acaf7d7016f4d5482ce9abae87a7ad254471cd937",
+      "format_validation": "python_source_saved",
+      "review_scope": "Append-only correction for originalfinalwrite missingdirectory; old frozenmethod/hash retained; no network or registration rerun",
+      "derivation": {
+        "acquisition_id": "record-shmeea-task-and-platform-boundaries20261013",
+        "tool": "Read-only observation prefix replay andcorrect original path"
+      }
     }
   ],
   "updated_on": "2026-10-13"

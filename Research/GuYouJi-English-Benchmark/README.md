@@ -17,6 +17,7 @@
 - [七上七页拓展阅读](Studies/2026-10-13-pep-grade7upper-readingplus-evidence-and-qualification.md)：14活动块，文化限定、NG未说、广告准入与跨夜时间/约数、三卡片人物关系；非教师键或整册验收。
 - [七上发音/语法及附录访问失败](Studies/2026-10-13-pep-grade7upper-grammar-and-access-failure.md)：14完整发音语法页/4部分A—Z页，形式例句非等义改写；四验证HTML及未取得尾页仍为缺口。
 - [生日与洗礼事件精度](Studies/2026-10-13-shakespeare-birthday-and-baptism-event-precision.md)：两机构原生正文核读，传统生日/洗礼档案/准确日未知区分；UN403与未取档案图像保留。
+- [上海官方任务形态与模拟窗口](Studies/2026-10-13-shanghai-task-modalities-and-practice-window.md)：三原生文章，地图/表格联合阅读、申请邮件/概要/叙事说理和重复模拟曝光；非完整试卷/学生用时或商用验收。
 - [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
 - [外研高中42单元与产出支撑](Studies/2026-10-13-fltrp-senior-42units-and-output-support.md)：七册官方目录、三幅公开结构图与课程介绍；教材正文、录音、答案及许可仍缺。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
