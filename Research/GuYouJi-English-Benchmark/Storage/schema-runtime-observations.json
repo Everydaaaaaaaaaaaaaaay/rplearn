@@ -1,0 +1,94 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "benchmark.schema-runtime",
+  "package_count": 6,
+  "packages": [
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "wheel_sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309",
+      "wheel_platform_tags": [
+        "py3",
+        "none",
+        "any.whl"
+      ],
+      "license_expression": "MIT"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.25.1",
+      "wheel_sha256": "3fba0169e345c7175110351d456342c364814cfcf3b964ba4587f22915230a63",
+      "wheel_platform_tags": [
+        "py3",
+        "none",
+        "any.whl"
+      ],
+      "license_expression": "MIT"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "wheel_sha256": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe",
+      "wheel_platform_tags": [
+        "py3",
+        "none",
+        "any.whl"
+      ],
+      "license_expression": "MIT"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "wheel_sha256": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231",
+      "wheel_platform_tags": [
+        "py3",
+        "none",
+        "any.whl"
+      ],
+      "license_expression": "MIT"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "wheel_sha256": "e21c1429e205828ea886a2293a4a2c8e01f4c25d9893ca330e97a6cf73f52e7b",
+      "wheel_platform_tags": [
+        "cp312",
+        "cp312",
+        "macosx_11_0_arm64.whl"
+      ],
+      "license_expression": "MIT"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "wheel_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "wheel_platform_tags": [
+        "py3",
+        "none",
+        "any.whl"
+      ],
+      "license_expression": "PSF-2.0"
+    }
+  ],
+  "upstream_wheel_sha256_matches": true,
+  "temporary_target_clean_install": true,
+  "original_python_libraries_used": false,
+  "site_packages_disabled": true,
+  "requirements_hashes_required": true,
+  "network_indexes_used_for_install": false,
+  "checks_passed": [
+    "check_item_group_contract.py",
+    "check_annotation_contract.py",
+    "check_attempt_trace_contract.py",
+    "check_attempt_response_contract.py",
+    "check_scored_performance_contract.py"
+  ],
+  "python_interpreter_version": "3.12.14",
+  "platform": "macOS27.0 arm64",
+  "native_wheel_constraints": "rpds-py CPython312/macOS11+arm64;not a crossplatform lockfile",
+  "interpreter_reconstructed": false,
+  "OCR_ASR_full_environment_reconstructed": false,
+  "offhost_test": false,
+  "all_input_asset_use_rights_established": false,
+  "gate_M7_passed": false
+}
