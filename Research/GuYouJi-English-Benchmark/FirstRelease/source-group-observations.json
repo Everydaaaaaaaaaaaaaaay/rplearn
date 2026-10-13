@@ -1,5 +1,5 @@
 {
-  "version": "0.2-source-observations",
+  "version": "0.3-source-observations",
   "observed_on": "2026-10-13",
   "status": "selected_sources_not_final_grade_specifications",
   "groups": [
@@ -797,6 +797,134 @@
       "independent_review": false,
       "student_calibration": false,
       "commercial_admission": false
+    },
+    {
+      "id": "g9.2026.cloze",
+      "source_id": "fujian.official-exam-bundle2026",
+      "acquisition_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "grade": 9,
+      "kind": "three_option_cloze",
+      "question_numbers": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "material_and_question_PDF_pages": [
+        26,
+        27
+      ],
+      "key_PDF_pages": [
+        36
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "blanks": 10,
+        "options_each": 3,
+        "genre": "artist_growth_and_community_action_narrative",
+        "lexical_phrasal_and_cross_sentence_evidence": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g9.2026.readingC",
+      "source_id": "fujian.official-exam-bundle2026",
+      "acquisition_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "grade": 9,
+      "kind": "four_option_reading",
+      "question_numbers": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "material_and_question_PDF_pages": [
+        29,
+        30,
+        31
+      ],
+      "key_PDF_pages": [
+        37
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "items": 5,
+        "options_each": 4,
+        "genre": "problem_methods_limits_and_actions_explanation",
+        "functions": [
+          "detail",
+          "method_direction",
+          "referent",
+          "paragraph_focus",
+          "whole_title"
+        ],
+        "underlined_it_and_exact_paragraph_required": true,
+        "scientific_and_medical_claims_not_independently_verified": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
+    },
+    {
+      "id": "g9.2026.grammar",
+      "source_id": "fujian.official-exam-bundle2026",
+      "acquisition_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "grade": 9,
+      "kind": "mixed_given_ungiven_oneword_passage",
+      "question_numbers": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90
+      ],
+      "material_and_question_PDF_pages": [
+        34,
+        35
+      ],
+      "key_PDF_pages": [
+        37
+      ],
+      "complete_selected_group_reviewed": true,
+      "key_status": "official_published_reference_viewed_not_independent_gold",
+      "features": {
+        "materials": 1,
+        "blanks": 10,
+        "all_responses_limit_words": 1,
+        "given_word_form_change": true,
+        "targets": [
+          "past_predicate",
+          "preposition_collocation",
+          "definite_article",
+          "coordination",
+          "adverb",
+          "plural",
+          "agreement",
+          "superlative",
+          "gerund",
+          "object_pronoun"
+        ],
+        "regional_not_national_unified_format": true
+      },
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false
     }
   ],
   "source_token_rule": "English/digit tokens; apostrophe/hyphen compounds kept; Chinese parenthetical gloss and numbered cloze placeholders excluded; unfilled cloze count excludes answers; not source counting rule or population estimate",
@@ -804,7 +932,8 @@
   "private_audit_acquisition_ids": [
     "firstrelease-grade7-curated-anchor-audit20261013",
     "firstrelease-native-page-and-key-scope-audit20261013",
-    "firstrelease-grade12-and-extra-private-audit20261013"
+    "firstrelease-grade12-and-extra-private-audit20261013",
+    "firstrelease-grade9-reused-selected-private-audit20261013"
   ],
   "source_handbook_or_facts_not_current_factual_gold": true
 }

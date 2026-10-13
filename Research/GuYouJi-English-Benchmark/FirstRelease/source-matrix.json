@@ -215,6 +215,32 @@
       "all_paper_groups_reviewed": false,
       "cohort": 2024,
       "printed_exam_date": "2023-08"
+    },
+    {
+      "acquisition_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "source_id": "fujian.official-exam-bundle2026",
+      "file_pages": 82,
+      "subject": "English_official_selected_component",
+      "role": "reused_official_complete_selected_groups",
+      "visually_reviewed_PDF_pages": [
+        26,
+        27,
+        29,
+        30,
+        31,
+        34,
+        35,
+        36,
+        37
+      ],
+      "selected_group_ids": [
+        "g9.2026.cloze",
+        "g9.2026.readingC",
+        "g9.2026.grammar"
+      ],
+      "source_key_available_for_selected_groups": true,
+      "all_paper_groups_reviewed": false,
+      "whole_English_pages_review_previously_recorded": true
     }
   ],
   "grade_progress": [
@@ -258,13 +284,21 @@
     },
     {
       "grade": 9,
-      "selected_group_ids": [],
-      "specification_status": "not_final",
-      "original_generated_groups": 0,
+      "selected_group_ids": [
+        "g9.2026.cloze",
+        "g9.2026.readingC",
+        "g9.2026.grammar"
+      ],
+      "specification_status": "first_round_v0.1_second_source_pending",
+      "original_generated_groups": 1,
       "first_release_complete": false,
-      "specification_path": null,
-      "author_check_paths": [],
-      "generated_candidate_paths": []
+      "specification_path": "FirstRelease/Specifications/grade9-v0.1.md",
+      "author_check_paths": [
+        "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json"
+      ],
+      "generated_candidate_paths": [
+        "FirstRelease/Generated/grade9-book-repair-v0.1.md"
+      ]
     },
     {
       "grade": 10,
@@ -312,12 +346,16 @@
         "g12.2023.cloze",
         "g12.2023.grammar"
       ],
-      "specification_status": "not_final",
-      "original_generated_groups": 0,
+      "specification_status": "first_round_v0.1_second_source_pending",
+      "original_generated_groups": 1,
       "first_release_complete": false,
-      "specification_path": null,
-      "author_check_paths": [],
-      "generated_candidate_paths": []
+      "specification_path": "FirstRelease/Specifications/grade12-v0.1.md",
+      "author_check_paths": [
+        "FirstRelease/Generated/grade12-archive-author-check-v0.1.json"
+      ],
+      "generated_candidate_paths": [
+        "FirstRelease/Generated/grade12-archive-v0.1.md"
+      ]
     }
   ],
   "reuse_next": [
