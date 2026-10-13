@@ -14,6 +14,7 @@
 - [七上第五单元的can与准入](Studies/2026-10-13-pep-grade7upper-unit5-can-functions-and-admissions.md)：八正文页/配套、23活动块，能力/时间/许可/学习机会分开；覆盖矩阵同步已核读Units1—5，整册仍未完成。
 - [七上第六单元的时间与常规](Studies/2026-10-13-pep-grade7upper-unit6-time-precision-and-routines.md)：八正文页/配套、24活动块，实际/通常、精确/约数、出发/到达及when/what time边界，教材作息不替代用户用时。
 - [七上第七单元的日期与计划](Studies/2026-10-13-pep-grade7upper-unit7-date-price-and-plans.md)：八正文页/配套、23活动块，生日/发帖时间、计价单位及意图；[74正文页证据](Curriculum/pep-grade7upper-body-evidence.json)核验全部七正式单元和三个Starter，附录/教师/录音/版本/权限仍缺。
+- [七上七页拓展阅读](Studies/2026-10-13-pep-grade7upper-readingplus-evidence-and-qualification.md)：14活动块，文化限定、NG未说、广告准入与跨夜时间/约数、三卡片人物关系；非教师键或整册验收。
 - [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
 - [外研高中42单元与产出支撑](Studies/2026-10-13-fltrp-senior-42units-and-output-support.md)：七册官方目录、三幅公开结构图与课程介绍；教材正文、录音、答案及许可仍缺。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
