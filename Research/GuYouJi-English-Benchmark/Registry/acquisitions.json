@@ -42176,6 +42176,127 @@
         ],
         "tool": "Python/Pillow/source image review"
       }
+    },
+    {
+      "id": "unesco-outschool2015-press20261013",
+      "url": "https://www.unesco.org/en/articles/out-school-numbers-rise-aid-education-falls-short-2010-levels",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "http_status": 200,
+      "format_validation": "HTML_detected",
+      "review_scope": "Native HTML selected statistic/method paragraphs and date reviewed; not original textbook attribution, raw data, license or student evidence",
+      "request_context": "Ordinary unauthenticated publicURL, verifiedTLS, bounded10MB PDF/3MB HTML",
+      "path": "build/english-benchmark-research-20261012/raw/unesco-outschool2015-press20261013.html",
+      "bytes": 74568,
+      "sha256": "0fa4ccf517828f680cb732b2dca2e41d49dd3a78156de031d2f920b8cbf1b70a",
+      "final_url": "https://www.unesco.org/en/articles/out-school-numbers-rise-aid-education-falls-short-2010-levels",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-unesco-outschool20261013.json"
+    },
+    {
+      "id": "unesco-outschool-current-view20261013",
+      "url": "https://www.unesco.org/en/education/view/outofschool",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "http_status": 200,
+      "format_validation": "HTML_detected",
+      "review_scope": "Native HTML selected statistic/method paragraphs and date reviewed; not original textbook attribution, raw data, license or student evidence",
+      "request_context": "Ordinary unauthenticated publicURL, verifiedTLS, bounded10MB PDF/3MB HTML",
+      "path": "build/english-benchmark-research-20261012/raw/unesco-outschool-current-view20261013.html",
+      "bytes": 260336,
+      "sha256": "73da686e7efeecfebcd20d43fd6733d69e16df1fab48bd709d1c532d08d19f94",
+      "final_url": "https://www.unesco.org/en/education/view/outofschool",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-unesco-outschool20261013.json"
+    },
+    {
+      "id": "uis-outschool-fs31-2015-20261013",
+      "url": "https://uis.unesco.org/sites/default/files/documents/fs31-a-growing-number-of-children-and-adolescents-are-out-of-school-as-aid-fails-to-meet-the-mark-2015-en.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "http_status": 404,
+      "format_validation": "not_checked",
+      "review_scope": "Native404/connector404; search locator only, not originalPDF acquired or rights verified",
+      "request_context": "Ordinary unauthenticated publicURL, verifiedTLS, bounded10MB PDF/3MB HTML",
+      "error": "404",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-unesco-outschool20261013.json"
+    },
+    {
+      "id": "uis-outschool-asiapacific2015-20261013",
+      "url": "https://uis.unesco.org/sites/default/files/documents/out-of-school-children-and-adolescents-in-asia-and-pacific-left-behind-on-the-road-to-learning-opportunities-for-all-2015-en.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "http_status": 404,
+      "format_validation": "not_checked",
+      "review_scope": "Native404/connector404; search locator only, not originalPDF acquired or rights verified",
+      "request_context": "Ordinary unauthenticated publicURL, verifiedTLS, bounded10MB PDF/3MB HTML",
+      "error": "404",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-unesco-outschool20261013.json"
+    },
+    {
+      "id": "unesdoc-outschool233610-public20261013",
+      "url": "https://unesdoc.unesco.org/images/0023/002336/233610e.pdf",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/unesdoc-outschool233610-public20261013.bin",
+      "bytes": 1000,
+      "sha256": "5c7013c4db68711faad2bc08e01f158501b3c766a9cb9284f99abfe7b8a006b8",
+      "format_validation": "HTML_app_shell_not_PDF",
+      "review_scope": "200servedpublicapp shell, not PDF/content/license. No document payload ororiginal statistic denominator verified",
+      "request_context": "Ordinary verifiedTLS publicprimary URL; bounded10MB; no authentication"
+    },
+    {
+      "id": "unesco-pdf-connector-failures20261013",
+      "url": "https://uis.unesco.org/sites/default/files/documents/fs31-a-growing-number-of-children-and-adolescents-are-out-of-school-as-aid-fails-to-meet-the-mark-2015-en.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/unesco-pdf-connector-failures20261013.json",
+      "bytes": 877,
+      "sha256": "aaf66256d11aa2ca533177ab0c6b973077c63c7b8bf7109025c9192d51121e3e",
+      "format_validation": "json_parsed",
+      "review_scope": "Saved connector404 forboth2015PDF candidates; no source textorimages",
+      "derivation": {
+        "acquisition_id": "uis-outschool-fs31-2015-20261013",
+        "additional_parent_acquisition_ids": [
+          "uis-outschool-asiapacific2015-20261013"
+        ],
+        "tool": "web connector response capture"
+      }
+    },
+    {
+      "id": "fetch-unesco-outschool20261013",
+      "url": "https://www.unesco.org/en/articles/out-school-numbers-rise-aid-education-falls-short-2010-levels",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_unesco_outschool20261013.py",
+      "bytes": 2336,
+      "sha256": "e9d20aca468a31775156253434636ee7d584e7ae7b71392bd879d580f8cc1be9",
+      "format_validation": "python_source_saved",
+      "review_scope": "Saved fetch and source claim comparison method; no statistical or educational calibration",
+      "derivation": {
+        "acquisition_id": "unesco-outschool2015-press20261013",
+        "additional_parent_acquisition_ids": [
+          "unesco-outschool-current-view20261013"
+        ],
+        "tool": "Python/nativeHTML/source observation"
+      }
+    },
+    {
+      "id": "record-unesco-stat-scope20261013",
+      "url": "https://www.unesco.org/en/articles/out-school-numbers-rise-aid-education-falls-short-2010-levels",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_unesco_stat_scope20261013.py",
+      "bytes": 8280,
+      "sha256": "188a23f573c2d5d5941d559f73b9ae53b8cf7ad6141f190f8ec4fd33a8369abd",
+      "format_validation": "python_source_saved",
+      "review_scope": "Saved fetch and source claim comparison method; no statistical or educational calibration",
+      "derivation": {
+        "acquisition_id": "unesco-outschool2015-press20261013",
+        "additional_parent_acquisition_ids": [
+          "unesco-outschool-current-view20261013"
+        ],
+        "tool": "Python/nativeHTML/source observation"
+      }
     }
   ],
   "updated_on": "2026-10-13"

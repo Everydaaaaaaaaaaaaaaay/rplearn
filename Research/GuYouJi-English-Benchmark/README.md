@@ -4,6 +4,15 @@
 
 状态：2026-10-12 建立清单与首轮来源审计，并启动每小时自动续办及阶段验收。此目录中的任务和计划不表示材料已收齐、年级难度已校准或商用授权已取得。实际取得范围见 Registry，待办见 Checklist 与 Studies。
 
+2026-10-13 持续核读入口：
+
+- [七下末尾附录与119页核验](Studies/2026-10-13-pep-final-appendices-and-sense-safe-links.md)：正文、Reading Plus、脚本和附录的选定数字本完整页集合；页面完整不等于金标准或商用完成。
+- [七上正式第一单元](Studies/2026-10-13-pep-grade7upper-unit1-information-and-function.md)与[三个Starter](Studies/2026-10-13-pep-starter-input-and-image-response-boundaries.md)：信息缺省、语言功能、着色/图片圈画及真实前置输入。
+- [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
+- [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
+- [商用候选及来源质量](Studies/2026-10-13-commercial-candidates-and-source-quality.md)与[VOA第三方组件](Studies/2026-10-13-voa-thirdparty-lyrics-and-image-blindspots.md)：再版政策不能覆盖歌曲、外链、训练和整库用途。
+- [第十四保存与恢复检查点](Studies/2026-10-13-checkpoint14-appendices-and-voa-recovery.md)：该冻结版本的本机恢复证据；后来批次尚不在此快照中，异机门槛仍开放。
+
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
 - [登记迁移与完整恢复](Studies/2026-10-13-registry-portability-and-full-restoration.md)：第九副本的实际路径失败、540处登记修正和3,078文件独立恢复，运行时/异机门槛仍开放。

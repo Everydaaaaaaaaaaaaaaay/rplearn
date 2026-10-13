@@ -1,0 +1,101 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "Factual scope reference review, not textbook attribution or invalidity verdict",
+  "source_task": {
+    "source_id": "pep.textbooks",
+    "acquisition_id": "pep-senior-c1u1-1412001121191-image028",
+    "printed_page": 20,
+    "source_claims": [
+      "One in eleven/about9percent children outofschool",
+      "Millions ofchildren andteenagers outofschool in2013"
+    ],
+    "question_purpose": "Phrase identification/function andevaluate authoropinion, not independently validated statistic recall"
+  },
+  "historical_press": {
+    "source_id": "unesco.outschool-press2015",
+    "acquisition_id": "unesco-outschool2015-press20261013",
+    "publication_date": "2015-07-06",
+    "page_last_update": "2023-04-20",
+    "data_year": 2013,
+    "displayed_groups": [
+      {
+        "group": "children",
+        "out_of_school_millions": 59,
+        "displayed_rate": "one ineleven"
+      },
+      {
+        "group": "adolescents",
+        "out_of_school_millions": 65,
+        "displayed_rate": "one outsix"
+      }
+    ],
+    "combined_displayed_millions": 124,
+    "counts_are_rounded_display_values": true,
+    "age_boundaries_not_explicit_in_selected_native_press": true,
+    "textbook_original_attribution_not_proven": true
+  },
+  "historical_PDFs": {
+    "source_ids": [
+      "uis.outschool-fs31-2015",
+      "uis.outschool-asiapacific2015"
+    ],
+    "native_fetch": "404 both candidates",
+    "connector_open": "404 both candidates",
+    "search_index_age_range_claim": "Primary typically6-11/lowersecondary typically12-15, remainslocatoronly",
+    "exact_document_text_images_and_license_review": false,
+    "public_unesdoc_response": {
+      "acquisition_id": "unesdoc-outschool233610-public20261013",
+      "http_status": 200,
+      "is_PDF": false,
+      "role": "public application shell",
+      "no_payload_or_licensing_content": true
+    }
+  },
+  "current_VIEW": {
+    "source_id": "unesco.outschool-current-view",
+    "acquisition_id": "unesco-outschool-current-view20261013",
+    "reference_year": 2024,
+    "base_displayed_out_of_school_millions": 273,
+    "base_level_counts_millions": {
+      "primary": 79,
+      "lower_secondary": 64,
+      "upper_secondary": 130
+    },
+    "additional_crisis_estimate_millions": 13,
+    "crisis_adjusted_approximate_total_millions": 286,
+    "base_and_adjusted_same_field": false,
+    "affected_countries_named": 10,
+    "adjustment_watchlist_label": "IRC2025",
+    "explicit_rate_denominator": "Population in official age range for a given education level",
+    "native_method_scope": [
+      "Administrative age/sex enrollment andpopulation estimates can be inconsistent",
+      "Survey sampling/provider approach andinfrequent waves differ",
+      "Model consolidates sources butabrupt crisis disrupts stable trend assumptions",
+      "Humanitarian evidence complements model estimate"
+    ],
+    "raw_data_model_code_or_independent_recalculation": false
+  },
+  "arithmetic": {
+    "one_eleventh_percent": 9.090909090909092,
+    "approximately_nine_percent": true,
+    "rounded_percent_not_exact_equal": true,
+    "level_counts_sum": 273,
+    "displayed_crisis_total_sum": 286,
+    "arithmetic_not_denominator_validation": true
+  },
+  "admission_implications": [
+    "Bind each fact to source edition/referenceyear/population/definition/method/revision",
+    "Distinguish reported historical textfact from current worldclaim andauthor opinion",
+    "Preservebase versuscrisisadjusted estimates; do notextractonlymeta description",
+    "Textbook children/teenagers cannot all inherit same percentage without applicable denominator evidence",
+    "Do not rewrite frozen source passage oranswer keys fromnewer statistics",
+    "Independent factualcheck doesnotclear passage/media commercial rights orprove language difficulty"
+  ],
+  "same_estimation_series_over_time_not_proven": true,
+  "textbook_claim_declared_wrong": false,
+  "original_data_lineage": "unresolved",
+  "official_key": "not_acquired",
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false
+}
