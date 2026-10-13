@@ -35,6 +35,7 @@
 - [NGSL开放词表与用途边界](Studies/2026-10-13-ngsl-native-files-and-purpose-rights.md)：四类词表的实际计数、未知排名/词形差异、CC BY-SA条件与Oxford API的AI限制，频率分档不直接换年级。
 - [中间年级官方考试配套](Studies/2026-10-13-domestic-semester-components.md)：郑州高一高二四个学期组合的答案、录音与评分，原卷及教学范围仍缺。
 - [北京机考模式与来源冲突](Studies/2026-10-13-beijing-mode-version-and-source-conflicts.md)：初中四题型/40分与高中五题型/50分、顺序限时，以及题数/分值/日期混淆的具体反例；完整题面与评分仍缺。
+- [日常考试采样与广州新结构](Studies/2026-10-13-exam-policy-sampling-and-guangzhou-blueprint.md)：2025日常考试政策改变非毕业年级采样；2027—2029广州正式附件的题量/分值及项目情境、角色扮演，完整样题与比例口径仍待核。
 - [历史题面与评分冲突](Studies/2026-10-13-historical-paper-scoring-and-blueprint-boundaries.md)：苏州两份八上题面和配图、分卷分值冲突、许昌命题目标与郑州教师声明的实际证据范围。
 - [CAN-DO阅读与产出样本](Studies/2026-10-13-cando-task-and-rubric-review.md)：五技能187页材料、四题阅读和分档写作，指令语言、第三方组件及实施条件的影响。
 - [首轮来源审计](Studies/2026-10-12-foundation-audit.md)：已有资产、核读发现、访问与授权缺口。
