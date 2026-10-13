@@ -55169,6 +55169,120 @@
         ],
         "tool": "Python/re/hashlib/json/versioned Tools/validate_firstrelease.py"
       }
+    },
+    {
+      "id": "snapshot21-strict-cow20261014",
+      "url": "urn:lingotrip:research:local-snapshot:21-method",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot21_strict_cow20261014.py",
+      "bytes": 868,
+      "sha256": "6ac79921183f9562e832be28f2e62571a052b54f99748227407820b3151bed53",
+      "format_validation": "python_source_saved",
+      "review_scope": "Prepared strict COW/no fallback and independent full restored-root replay method; execution result still pending; old registered methods unchanged",
+      "derivation": {
+        "origin": "project_authored_preservation_method",
+        "related_acquisition_ids": [
+          "snapshot20-restore-method20261013",
+          "firstrelease-review-package-validation20261014"
+        ],
+        "tool": "Python/source preparation only"
+      }
+    },
+    {
+      "id": "restore-snapshot21-offline-deps20261014",
+      "url": "urn:lingotrip:research:local-snapshot:21-method",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot21_offline_deps20261014.py",
+      "bytes": 19119,
+      "sha256": "0a56b4320d81373f3da8e3a9819066e7f63825edc735a55682e5761f76f397bd",
+      "format_validation": "python_source_saved",
+      "review_scope": "Prepared strict COW/no fallback and independent full restored-root replay method; execution result still pending; old registered methods unchanged",
+      "derivation": {
+        "origin": "project_authored_preservation_method",
+        "related_acquisition_ids": [
+          "snapshot20-restore-method20261013",
+          "firstrelease-review-package-validation20261014"
+        ],
+        "tool": "Python/source preparation only"
+      }
+    },
+    {
+      "id": "prepare-snapshot21-methods20261014",
+      "url": "urn:lingotrip:research:local-snapshot:21-method",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/prepare_snapshot21_methods20261014.py",
+      "bytes": 4444,
+      "sha256": "87358c47a0d3efb8a67f7464075d10c63f26baeaa70d371fc726b132d62b9d1f",
+      "format_validation": "python_source_saved",
+      "review_scope": "Prepared strict COW/no fallback and independent full restored-root replay method; execution result still pending; old registered methods unchanged",
+      "derivation": {
+        "origin": "project_authored_preservation_method",
+        "related_acquisition_ids": [
+          "snapshot20-restore-method20261013",
+          "firstrelease-review-package-validation20261014"
+        ],
+        "tool": "Python/source preparation only"
+      }
+    },
+    {
+      "id": "snapshot-report-20261014-twentyone",
+      "url": "urn:lingotrip:research:local-snapshot:21-result",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot-report-20261014-twentyone.json",
+      "bytes": 3088,
+      "sha256": "1f3d123bbca4f56dc68326ccf0f9a54f8dc5cca03f395b17906147f6cf9e2983",
+      "format_validation": "json_parsed",
+      "review_scope": "6046files strictCOW independentfull restoredroot digest pass;7offlinewheel checks plus19candidate/18seed/53source bindings8negativechecks replay. Does not reconstruct interpreter/pypdf/media environment or perform offhost/semantic/student/rights validation; latercalendar outsidefrozenboundary.",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "firstrelease-review-package-validation20261014",
+          "restore-snapshot21-offline-deps20261014"
+        ],
+        "tool": "macOSclonefile/currentPython/frozenwheels/existinghostpypdf"
+      }
+    },
+    {
+      "id": "snapshot21-full-offline-dependency-restore-audit20261014",
+      "url": "urn:lingotrip:research:local-snapshot:21-result",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot21-full-offline-dependency-restore-audit20261014.json",
+      "bytes": 26150,
+      "sha256": "e805587b4ad17dda3ccb4d043d51b75117e90fa4cce1fa5f147a1f74cc57606c",
+      "format_validation": "json_parsed",
+      "review_scope": "6046files strictCOW independentfull restoredroot digest pass;7offlinewheel checks plus19candidate/18seed/53source bindings8negativechecks replay. Does not reconstruct interpreter/pypdf/media environment or perform offhost/semantic/student/rights validation; latercalendar outsidefrozenboundary.",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "firstrelease-review-package-validation20261014",
+          "restore-snapshot21-offline-deps20261014"
+        ],
+        "tool": "macOSclonefile/currentPython/frozenwheels/existinghostpypdf"
+      }
+    },
+    {
+      "id": "register-snapshot21-20261014",
+      "url": "urn:lingotrip:research:local-snapshot:21-result",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_snapshot21_20261014.py",
+      "bytes": 4454,
+      "sha256": "19d650e39b184e7d50f289b8fe112fcbbda0931b9ccab48a9cb8eebc89339247",
+      "format_validation": "python_source_saved",
+      "review_scope": "6046files strictCOW independentfull restoredroot digest pass;7offlinewheel checks plus19candidate/18seed/53source bindings8negativechecks replay. Does not reconstruct interpreter/pypdf/media environment or perform offhost/semantic/student/rights validation; latercalendar outsidefrozenboundary.",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "firstrelease-review-package-validation20261014",
+          "restore-snapshot21-offline-deps20261014"
+        ],
+        "tool": "macOSclonefile/currentPython/frozenwheels/existinghostpypdf"
+      }
     }
   ],
   "updated_on": "2026-10-13"
