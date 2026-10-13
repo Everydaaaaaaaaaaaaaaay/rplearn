@@ -4710,6 +4710,592 @@
         ],
         "all_restored_assets_digest_verified": true
       }
+    },
+    {
+      "snapshot_id": "2026-10-13T045557.296324+0000-5e32665e",
+      "created_at_utc": "2026-10-13T04:55:57.296324+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-13T045557.296324+0000-5e32665e",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-13T045557.296324+0000-5e32665e/snapshot-manifest.json",
+      "manifest_sha256": "439f9ac5091f18afe42274336dbc734f85dd76f2138c8db009d6fc358373194d",
+      "files_verified": 5207,
+      "bytes_verified": 1497364403,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write_required": 5207
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write_required",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "coverage_note": "Through69332f5b: selected seniorS2U2core/support/notes/wordlist, longsentence source-label correction;FLTRP7volume/42title catalogs/3diagrams andtraining metadata;Beijing2025/2026policy and4source conflicts. Snapshot16methods/reports/registration not retroactively included.",
+      "offline_dependency_full_restore_evidence": {
+        "snapshot_id": "2026-10-13T045557.296324+0000-5e32665e",
+        "independent_full_files": 5207,
+        "strict_COW_no_byte_fallback": true,
+        "registered_sources_or_registry_rewritten": false,
+        "schema_dependencies_from_frozen_wheels": true,
+        "schema_dependencies_from_current_research_libraries": false,
+        "interpreter_from_existing_bundle": true,
+        "interpreter_reconstructed": false,
+        "offhost_test": false,
+        "education_or_production_admission": false,
+        "replay_helper_extension": {
+          "frozen_helper_sha256": "3b91c3f31db730c7549dc199857c8cb28b4db5dc8aee92a4affdbb09e46e3a2a",
+          "extended_helper_sha256": "9a77dd32e5d4d0ce6380aa792bc40fb7f3c0d8c4c5323b26e4f70cd9b62cc34c",
+          "separate_fresh_method_only": true,
+          "added_checks": [
+            "check_attempt_relations_contract.py",
+            "check_attempt_report_privacy.py"
+          ]
+        },
+        "offline_dependency_replay": {
+          "original_library_directory_used": false,
+          "python_site_packages_disabled_for_checks": true,
+          "network_package_indexes_disabled_for_install": true,
+          "all_versions_and_wheels_hashed": true,
+          "python_interpreter_bundled_from_current_install": true,
+          "python_interpreter_rebuilt": false,
+          "offhost_validation": false,
+          "production_or_education_admission": false,
+          "install_command": [
+            "/Users/tiantian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--require-hashes",
+            "--find-links",
+            "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/english-benchmark-research-20261012/schema-runtime/wheels",
+            "--requirement",
+            "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/english-benchmark-research-20261012/schema-runtime/requirements-hashed.txt",
+            "--target",
+            "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq"
+          ],
+          "install_exit_code": 0,
+          "module_probe": {
+            "module_paths": {
+              "jsonschema": "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq/jsonschema/__init__.py",
+              "attrs": "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq/attrs/__init__.py",
+              "referencing": "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq/referencing/__init__.py",
+              "rpds": "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq/rpds/__init__.py",
+              "typing_extensions": "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq/typing_extensions.py"
+            },
+            "sys_path": [
+              "",
+              "/Users/tiantian/eng/build/snapshot16-full-restore-6r79dg7y/build/schema-offline-rebuild-klwnpmfq",
+              "/Users/tiantian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python312.zip",
+              "/Users/tiantian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12",
+              "/Users/tiantian/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/lib-dynload"
+            ],
+            "versions": {
+              "jsonschema": "4.25.1",
+              "attrs": "26.1.0",
+              "referencing": "0.37.0",
+              "rpds-py": "2026.9.1",
+              "typing-extensions": "4.16.0",
+              "jsonschema-specifications": "2025.9.1"
+            }
+          },
+          "checks": [
+            {
+              "tool": "check_item_group_contract.py",
+              "exit_code": 0,
+              "report": {
+                "positive_fixtures": 10,
+                "negative_rejections": 61,
+                "negative_cases": [
+                  "duplicate_item",
+                  "unknown_material",
+                  "wrong_scoring_backreference",
+                  "unknown_option_key",
+                  "single_choice_multiple_keys",
+                  "duplicate_option",
+                  "orphan_slot",
+                  "slot_outside_material",
+                  "duplicated_slot_binding",
+                  "coupled_tuple_wrong_arity",
+                  "segments_total_mismatch",
+                  "rubric_reversed_band",
+                  "rubric_unknown_assigned_band",
+                  "unacquired_asset_fake_location",
+                  "acquired_asset_without_digest",
+                  "asset_unknown_reference",
+                  "unknown_evidence",
+                  "unknown_claim_fabricated_value",
+                  "known_claim_without_evidence",
+                  "authorship_as_independent_review",
+                  "early_diagnostic_feedback",
+                  "assisted_as_unassisted",
+                  "early_hint_leak",
+                  "opening_story_not_required_or_allowed",
+                  "gold_or_production_admission",
+                  "unacquired_source_content",
+                  "empty_acquisition",
+                  "boolean_byte_count",
+                  "failed_acquisition_with_path",
+                  "blocked_acquisition_with_path",
+                  "empty_status_with_nonempty_metadata",
+                  "unparsed_source_bytes",
+                  "digest_only_source_bytes",
+                  "transport_only_source_bytes",
+                  "unknown_parser_label",
+                  "malformed_source_digest",
+                  "source_size_mismatch",
+                  "source_digest_mismatch",
+                  "missing_source_file",
+                  "outside_cache_source_file",
+                  "actual_empty_HTTP200_source",
+                  "wrong_real_source_membership",
+                  "unsupported_contract_version",
+                  "nonexhaustive_exact_rejection",
+                  "unknown_exact_rejection",
+                  "coverage_without_evidence",
+                  "missing_response_scope",
+                  "scope_wrong_slot",
+                  "scope_without_evidence",
+                  "slot_scope_as_whole_answer",
+                  "span_wrong_end",
+                  "span_outside_source",
+                  "span_reversed",
+                  "silent_key_truncation_as_identity",
+                  "unresolved_fabricated_form",
+                  "source_mapping_wrong_item",
+                  "mapped_form_not_documented",
+                  "duplicated_source_mapping",
+                  "unknown_scope_exact_matching",
+                  "choice_gap_as_free_text_scope",
+                  "unknown_asset_role_in_legacy_contract"
+                ],
+                "long_text_and_19_items": "accepted_without_truncation",
+                "private_structural_projection": "sentinel_excluded_copy_independent",
+                "limitation": "No educational, semantic answer-leakage, real media, grading or production validation"
+              }
+            },
+            {
+              "tool": "check_annotation_contract.py",
+              "exit_code": 0,
+              "report": {
+                "original_fixtures_passed": 2,
+                "corruption_checks_passed": 45,
+                "checks": [
+                  "stale_material_version",
+                  "wrong_literal_digest",
+                  "changed_literal_with_old_digest",
+                  "target_unknown_material",
+                  "target_outside_item_scope",
+                  "target_unknown_block",
+                  "target_slot_not_literal",
+                  "duplicate_target_block",
+                  "target_transcript_not_presented",
+                  "false_annotation_coordinate_unit",
+                  "implicit_unicode_normalization",
+                  "concatenated_filled_surface",
+                  "reversed_selection_bounds",
+                  "private_key_in_response_format",
+                  "annotation_bound_to_gap",
+                  "annotation_scope_not_explicit",
+                  "text_response_with_annotation_scope",
+                  "annotation_score_on_text_item",
+                  "two_items_for_single_annotation_score",
+                  "unknown_annotation_key_as_known_set",
+                  "reference_examples_used_as_exact_gate",
+                  "known_coverage_without_evidence",
+                  "range_unknown_target",
+                  "empty_range",
+                  "reversed_range",
+                  "negative_range",
+                  "range_exceeds_literal",
+                  "boolean_coordinate",
+                  "wrong_selected_text_echo",
+                  "utf16_shift_with_correct_word_echo",
+                  "duplicate_range",
+                  "overlapping_range",
+                  "same_answer_set_different_order",
+                  "private_ranges_over_maximum",
+                  "gold_admission",
+                  "opening_story",
+                  "raw_NFD_payload_preserved",
+                  "NFC_echo_mismatch_rejected",
+                  "incomplete_payload_rejected",
+                  "malformed_identity_rejected",
+                  "non_list_payload_rejected",
+                  "slot_width_does_not_move_block_coordinates",
+                  "projection_retains_coordinate_contract",
+                  "private_keys_absent_from_projection",
+                  "projection_independent_of_private_answer_changes"
+                ],
+                "production_admission": false,
+                "limitation": "Structural coordinates and privacy only; no educational scoring, source gold or learner validation"
+              }
+            },
+            {
+              "tool": "check_attempt_trace_contract.py",
+              "exit_code": 0,
+              "report": {
+                "positive_fixtures": 3,
+                "negative_rejections": 33,
+                "negative_cases": [
+                  "frozen_question_changed",
+                  "frozen_reward_policy_changed",
+                  "event_other_snapshot",
+                  "duplicate_event",
+                  "duplicate_sequence",
+                  "backwards_sequence",
+                  "unknown_item",
+                  "unknown_epoch",
+                  "clock_reset_inside_same_epoch",
+                  "unknown_clock_with_time",
+                  "known_epoch_without_time",
+                  "answer_status_absent",
+                  "before_group_feedback",
+                  "submit_missing_answer",
+                  "repeat_submit",
+                  "post_submit_answer",
+                  "close_without_submit",
+                  "event_after_terminal",
+                  "repeat_start",
+                  "unknown_support",
+                  "response_on_group_event",
+                  "group_event_wrong_item_scope",
+                  "duplicate_timing_interval",
+                  "interval_outside_event_bounds",
+                  "reversed_interval",
+                  "timing_category_overlap",
+                  "playback_without_acquired_media",
+                  "nonfinite_event_time",
+                  "nonfinite_interval",
+                  "extra_raw_chat_field",
+                  "externally_expected_snapshot_mismatch",
+                  "coherent_replacement_vs_external_anchor",
+                  "postsubmit_support_released_early"
+                ],
+                "overlap_counted_once": true,
+                "epochs_kept_separate": true,
+                "retries_and_prior_exposure_not_unassisted": true,
+                "attention_estimate": null,
+                "coherent_rewrite_without_external_anchor": "Self-consistent but not authenticated",
+                "production_admission": false,
+                "limitation": "Synthetic consistency cases only; no real server, learner, grading or reward evidence"
+              }
+            },
+            {
+              "tool": "check_attempt_response_contract.py",
+              "exit_code": 0,
+              "report": {
+                "positive_fixtures": 4,
+                "negative_rejections": 32,
+                "negative_cases": [
+                  "missing_answer_record",
+                  "null_answer_record",
+                  "nonanswer_carries_record",
+                  "stale_item_version",
+                  "first_response_revision_not_zero",
+                  "first_response_replaces_event",
+                  "revision_gap",
+                  "revision_repeats_ordinal",
+                  "revision_links_other_item",
+                  "revision_links_old_not_latest",
+                  "skip_carries_payload",
+                  "answered_lacks_payload",
+                  "wrong_response_kind",
+                  "unknown_slot",
+                  "duplicate_slot",
+                  "missing_slot",
+                  "range_on_gap_block",
+                  "range_wrong_text_echo",
+                  "range_utf16_offset",
+                  "range_outside_text",
+                  "range_reversed",
+                  "duplicate_range",
+                  "range_extra_private_field",
+                  "unknown_choice",
+                  "multiple_on_single_choice",
+                  "duplicate_choice",
+                  "empty_answered_choice",
+                  "wrong_writing_kind",
+                  "unrequested_personal_content",
+                  "event_without_answer_status",
+                  "postsubmit_revision",
+                  "unsupported_speaking_as_text"
+                ],
+                "raw_text_preserved": true,
+                "wrong_answers_recordable": true,
+                "revision_skip_resume_identity_checked": true,
+                "validation_report_omits_raw_responses": true,
+                "response_history_authentication": false,
+                "production_admission": false,
+                "limitation": "Synthetic record consistency only; no real learners, scoring, server privacy or immutable response ledger"
+              }
+            },
+            {
+              "tool": "check_scored_performance_contract.py",
+              "exit_code": 0,
+              "report": {
+                "original_positive_fixtures": 3,
+                "negative_rejections": 39,
+                "cases": [
+                  "production_admission",
+                  "missing_task_total",
+                  "overall_as_task",
+                  "section_as_task",
+                  "total_names_dimension",
+                  "unpublished_dimension_score",
+                  "declared_dimension_references_total",
+                  "unknown_dimension",
+                  "duplicate_scope",
+                  "duplicate_reference_id",
+                  "duplicate_scale_id",
+                  "duplicate_criterion_id",
+                  "outside_band",
+                  "wrong_half_step",
+                  "score_nan",
+                  "score_infinity",
+                  "scale_nan",
+                  "step_infinity",
+                  "empty_scale",
+                  "unknown_score_scale",
+                  "fake_source_score_from_fixture",
+                  "wrong_score_evidence_role",
+                  "missing_prompt_claimed_paired",
+                  "unresolved_visual_as_paired",
+                  "acquired_visual_without_asset",
+                  "response_used_as_prompt",
+                  "prompt_used_as_response",
+                  "corrected_source_errors",
+                  "audio_as_written_response",
+                  "unverified_full_transcription",
+                  "unknown_rubric_has_version",
+                  "historical_match_without_rubric",
+                  "known_scale_lacks_version",
+                  "invented_independent_review",
+                  "invented_learner_calibration",
+                  "source_score_used_as_review",
+                  "invented_permission",
+                  "score_used_as_permission",
+                  "copyright_text_inline"
+                ],
+                "gold_admission": false,
+                "production_admission": false,
+                "limitation": "Structural synthetic cases;not scoring accuracy or publication permission"
+              }
+            },
+            {
+              "tool": "check_attempt_relations_contract.py",
+              "exit_code": 0,
+              "report": {
+                "positive_fixtures": 2,
+                "negative_rejections": 20,
+                "checks": [
+                  "unknown_order_member",
+                  "duplicate_order_member",
+                  "unordered_set_object_instead_of_sequence",
+                  "missing_order_sequence",
+                  "order_as_choice",
+                  "matching_as_text",
+                  "unknown_matching_right",
+                  "right_array_on_single_left",
+                  "empty_string_is_not_unassigned",
+                  "spoof_other_left_item_inside_payload",
+                  "scoring_value_in_payload",
+                  "stale_order_item_version",
+                  "cross_item_replacement",
+                  "skip_with_empty_match_payload",
+                  "answer_with_null_record_payload",
+                  "v02_cannot_accept_relational_payload",
+                  "missing_order_member_from_frozen_group",
+                  "incomplete_private_order_key",
+                  "unknown_key_with_fabricated_orders",
+                  "right_option_from_another_left_pool"
+                ],
+                "prior_payload_fixtures_preserved": 4,
+                "wrong_partial_and_empty_order_recordable": true,
+                "wrong_reused_matching_recordable": true,
+                "ordered_sequence_not_sorted": true,
+                "skipped_and_empty_matching_distinct": true,
+                "private_keys_not_projected": true,
+                "invalid_response_not_echoed": true,
+                "grading_implemented": false,
+                "production_admission": false
+              }
+            },
+            {
+              "tool": "check_attempt_report_privacy.py",
+              "exit_code": 0,
+              "report": {
+                "invalid_cases": 14,
+                "checks": [
+                  "extra_response_property",
+                  "wrong_body_type",
+                  "wrong_payload_kind",
+                  "extra_private_record_property",
+                  "extra_event_property",
+                  "unsupported_version",
+                  "unhashable_version_array",
+                  "unhashable_version_object",
+                  "group_scoring_extra_property",
+                  "group_scoring_bad_kind",
+                  "group_material_wrong_block_type",
+                  "group_unhashable_version",
+                  "duplicate_choice_schema_echo",
+                  "wrong_annotation_echo"
+                ],
+                "valid_private_text_omitted": true,
+                "invalid_private_values_omitted": true,
+                "identifiers_and_paths_are_not_anonymized": true,
+                "production_admission": false,
+                "limitation": "Synthetic diagnostics only; no production authorization, retention or anonymization established"
+              }
+            }
+          ]
+        },
+        "fresh_audit_outputs_isolated_and_frozen_files_restored": 2,
+        "restored_frozen_registry_exit_code": 0,
+        "restored_frozen_registry_report": {
+          "json_documents": 131,
+          "sources": 152,
+          "acquisition_attempts": 2338,
+          "cache_files_checked": 2239,
+          "processing_outputs_checked": 2507,
+          "storage_files_checked": 0,
+          "scope_rows": 20,
+          "incomplete_milestones": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6",
+            "M7"
+          ],
+          "open_gaps": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "G05",
+            "G06",
+            "G07",
+            "G08",
+            "G09",
+            "G10",
+            "G11",
+            "G12",
+            "G13",
+            "G14",
+            "G15",
+            "G16",
+            "G17"
+          ],
+          "priority_coverage_cells": 36,
+          "bookkeeping_valid": true,
+          "errors": [],
+          "limitation": "Bookkeeping validation does not establish rights, content correctness or educational validity."
+        },
+        "new_native_catalog_replay": [
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-1",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          },
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-2",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          },
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-3",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          },
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-4",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          },
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-5",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          },
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-6",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          },
+          {
+            "acquisition_id": "fltrp-senior-volume-linked20261013-7",
+            "unit_labels": 6,
+            "exact_saved_labels_match": true
+          }
+        ],
+        "new_vocabulary_count_replay": {
+          "normal_candidates": 74,
+          "proper_candidates": 3,
+          "does_not_validate_transcription_or_senses": true
+        },
+        "new_native_policy_conflict_replay": {
+          "junior_four_senior_five": true,
+          "thirdparty_result_year_conflict_retained": true
+        },
+        "all_restored_assets_digest_verified": true
+      }
     }
   ],
   "non_destructive_storage_compaction_events": [
