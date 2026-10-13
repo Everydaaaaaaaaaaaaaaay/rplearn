@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [核心与扩展覆盖同步](Studies/2026-10-14-core-and-expansion-coverage-reconciliation.md)：核心53＋扩展17共70组实例/464源响应/14父卷身份；总览切到核心0.14，原创和同曝光簇另列，不作独立标定或商用通过。
+
 - [初三扩展双输入和精确类型](Studies/2026-10-14-grade9-extension-dual-input-and-type-guards.md)：两源/规格请求、16声明拒绝＋3类型错误，实际题面/键WebP和私有理由绑定；仅两已写模式，不声明模型服从/英语全部正确。
 
 - [初三五项图文词库实际修订](Studies/2026-10-14-grade9-five-entry-bank-and-real-scope-repair.md)：完整原创新图/三段/五项一次，明示组合动词与短语，补归还关系/收紧第5形容词，扩展两家族8点共曝光簇、非独立或核心加计。
