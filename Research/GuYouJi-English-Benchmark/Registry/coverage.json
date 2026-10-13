@@ -1,6 +1,6 @@
 {
-  "updated_on": "2026-10-13",
-  "definition": "Coverage of this benchmark, not product feature availability or production question counts.",
+  "updated_on": "2026-10-14",
+  "definition": "Coverage of this benchmark, not product availability. Selected paired groups are not whole-paper, national-grade, licensed-gold or learner-calibrated coverage.",
   "coverage": [
     {
       "level": "kindergarten",
@@ -91,72 +91,150 @@
       "label": "初一",
       "priority": "P0",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "partial_legacy_question_key_script_and_current_school_HTML_locator",
-      "curriculum_alignment": "partial_legacy_evidence_only",
+      "semester_exam_groups": "partial_selected_complete_groups_from_two_paper_families",
+      "curriculum_alignment": "partial_reviewed_curriculum_evidence_not_grade_term_calibration",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Changshu2019 question/key/script acquired. Pingdong2024-2025 school HTML locator found, local article body absent. Current complete companions/audio/ISBN missing."
+      "notes": "已核读新东方2021下期与常熟2019上期选定完整题组、必要图与原参考键；源姓名/缺词异常保留。人教选定七上74正文页/164活动块与七下119页集合有证据，整册配套/版本/ISBN/独立教材验收仍不成立。",
+      "first_release_evidence": {
+        "review_index_path": "FirstRelease/review-index-v0.3.json",
+        "source_matrix_path": "FirstRelease/source-matrix.json",
+        "specification_path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "comparison_path": "FirstRelease/Comparisons/grade7-source-comparison-v0.1.md",
+        "selected_complete_source_groups": 7,
+        "paper_family_count": 2,
+        "authored_candidate_groups": 5,
+        "core_review_package_prepared": true,
+        "first_release_complete": false,
+        "source_key_not_independent_gold": true,
+        "commercial_admission": false
+      }
     },
     {
       "level": "junior2",
       "label": "初二",
       "priority": "P0",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "partial_candidate_paper_and_private_cloze_structure",
-      "curriculum_alignment": "partial_legacy_evidence_only",
+      "semester_exam_groups": "partial_selected_complete_groups_from_two_paper_families",
+      "curriculum_alignment": "partial_reviewed_curriculum_evidence_not_grade_term_calibration",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Pingdong2024-2025 lower-term12-page candidate and private10-gap cloze structure acquired. Exact iframe association,key/script/audio/ISBN/permission absent."
+      "notes": "西城2025与丰台2025两区普通初二期末，选定题面/键完整；丰台完形20缺been，附加解析原机构认证未知。开放篇章语言候选尚缺配套键；不能将错语文题面与已有英语键配对。",
+      "first_release_evidence": {
+        "review_index_path": "FirstRelease/review-index-v0.3.json",
+        "source_matrix_path": "FirstRelease/source-matrix.json",
+        "specification_path": "FirstRelease/Specifications/grade8-v0.2.md",
+        "comparison_path": "FirstRelease/Comparisons/grade8-source-comparison-v0.1.md",
+        "selected_complete_source_groups": 9,
+        "paper_family_count": 2,
+        "authored_candidate_groups": 3,
+        "core_review_package_prepared": true,
+        "first_release_complete": false,
+        "source_key_not_independent_gold": true,
+        "commercial_admission": false
+      }
     },
     {
       "level": "junior3",
       "label": "初三",
       "priority": "P0",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "partial_official_paper_key_package_no_audio",
-      "curriculum_alignment": "partial_legacy_evidence_only",
+      "semester_exam_groups": "partial_selected_complete_groups_from_two_paper_families",
+      "curriculum_alignment": "partial_reviewed_curriculum_evidence_not_grade_term_calibration",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Fujian2025 official paper/key and private5-item reading structure acquired. Recording/script/detailed rubric/calibration missing."
+      "notes": "福建官方2025/2026两年份选定英语题面/键完整；语法87及非穷尽键风险保留。录音、细评分、更多地区和学生标定仍缺。",
+      "first_release_evidence": {
+        "review_index_path": "FirstRelease/review-index-v0.3.json",
+        "source_matrix_path": "FirstRelease/source-matrix.json",
+        "specification_path": "FirstRelease/Specifications/grade9-v0.2.md",
+        "comparison_path": "FirstRelease/Comparisons/grade9-source-comparison-v0.1.md",
+        "selected_complete_source_groups": 7,
+        "paper_family_count": 2,
+        "authored_candidate_groups": 3,
+        "core_review_package_prepared": true,
+        "first_release_complete": false,
+        "source_key_not_independent_gold": true,
+        "commercial_admission": false
+      }
     },
     {
       "level": "senior1",
       "label": "高一",
       "priority": "P0",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "partial_semester_companions_questionpaper_missing",
-      "curriculum_alignment": "partial_legacy_evidence_only",
+      "semester_exam_groups": "partial_selected_complete_groups_from_two_paper_families",
+      "curriculum_alignment": "partial_reviewed_curriculum_evidence_not_grade_term_calibration",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Zhengzhou grade10 upper/lower keys and audio acquired; questionpapers absent. School adoption and cohort plan observations are partial, not complete textbook coverage."
+      "notes": "石景山2024下期与2024—2025高一质量监测选定题面/附键完整；第二卷地区/学校未知，set located及完形43/54风险保留。郑州既有键/音频仍未取得匹配题面，不因新卷取得而配对。",
+      "first_release_evidence": {
+        "review_index_path": "FirstRelease/review-index-v0.3.json",
+        "source_matrix_path": "FirstRelease/source-matrix.json",
+        "specification_path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "comparison_path": "FirstRelease/Comparisons/grade10-source-comparison-v0.1.md",
+        "selected_complete_source_groups": 11,
+        "paper_family_count": 2,
+        "authored_candidate_groups": 3,
+        "core_review_package_prepared": true,
+        "first_release_complete": false,
+        "source_key_not_independent_gold": true,
+        "commercial_admission": false
+      }
     },
     {
       "level": "senior2",
       "label": "高二",
       "priority": "P0",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "partial_semester_companions_questionpaper_missing",
-      "curriculum_alignment": "partial_legacy_evidence_only",
+      "semester_exam_groups": "partial_selected_complete_groups_from_two_paper_families",
+      "curriculum_alignment": "partial_reviewed_curriculum_evidence_not_grade_term_calibration",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Zhengzhou grade11 upper/lower keys and audio acquired; questionpapers absent. PEP adoption lists are not observed teaching completion."
+      "notes": "延庆2024上期与2025下期选定题面/键完整；第二卷地区/学校未知，语法解析63/64错位保留。郑州配套仍缺题面。人教部分单元正文和教材目录不等于全部高二进度或学期完成。",
+      "first_release_evidence": {
+        "review_index_path": "FirstRelease/review-index-v0.3.json",
+        "source_matrix_path": "FirstRelease/source-matrix.json",
+        "specification_path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "comparison_path": "FirstRelease/Comparisons/grade11-source-comparison-v0.1.md",
+        "selected_complete_source_groups": 8,
+        "paper_family_count": 2,
+        "authored_candidate_groups": 3,
+        "core_review_package_prepared": true,
+        "first_release_complete": false,
+        "source_key_not_independent_gold": true,
+        "commercial_admission": false
+      }
     },
     {
       "level": "senior3",
       "label": "高三",
       "priority": "P0",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "not_collected",
-      "curriculum_alignment": "partial_legacy_evidence_only",
+      "semester_exam_groups": "partial_selected_complete_groups_from_two_paper_families",
+      "curriculum_alignment": "partial_reviewed_curriculum_evidence_not_grade_term_calibration",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Existing practice units do not establish current textbook scope or student difficulty."
+      "notes": "江淮2024届2023年8月联考与鞍山2025—2026首次质量监测选定题面/键完整；lo clean、61/62、分母/标题/词义及完形53风险保留。早期卷不代表全年冲刺/全国范围。",
+      "first_release_evidence": {
+        "review_index_path": "FirstRelease/review-index-v0.3.json",
+        "source_matrix_path": "FirstRelease/source-matrix.json",
+        "specification_path": "FirstRelease/Specifications/grade12-v0.2.md",
+        "comparison_path": "FirstRelease/Comparisons/grade12-source-comparison-v0.1.md",
+        "selected_complete_source_groups": 11,
+        "paper_family_count": 2,
+        "authored_candidate_groups": 4,
+        "core_review_package_prepared": true,
+        "first_release_complete": false,
+        "source_key_not_independent_gold": true,
+        "commercial_admission": false
+      }
     },
     {
       "level": "undergraduate",
