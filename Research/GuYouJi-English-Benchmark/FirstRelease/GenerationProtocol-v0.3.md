@@ -1,6 +1,6 @@
 # 首版双输入命题与审核流程0.3
 
-现行入口为[审阅索引0.13](review-index-v0.13.json)、[实际用锚理由0.5](current-used-anchor-rationale-index-v0.5.json)及[更正种子0.2](seed-anchor-index-v0.2.json)。[流程0.2](GenerationProtocol-v0.2.md)保留历史19候选/18旧种子的时点，不能继续用旧种子中的题号作为公布答案。
+现行入口为[审阅索引0.14](review-index-v0.14.json)、[实际用锚理由0.5](current-used-anchor-rationale-index-v0.5.json)及[更正种子0.2](seed-anchor-index-v0.2.json)。[流程0.2](GenerationProtocol-v0.2.md)保留历史19候选/18旧种子的时点，不能继续用旧种子中的题号作为公布答案。
 
 ## 两个输入怎样共同约束命题
 
@@ -28,10 +28,12 @@
 
 ## 现行核验入口
 
-- `Tools/validate_firstrelease_v0_13.py --check-cache`核25核心家族/205点、53源组、四图、两组三篇分配、更正种子及当前用锚理由。
+- `Tools/validate_firstrelease_v0_14.py --check-cache`核25核心家族/205点、53源组、四图、两组三篇分配、更正种子及当前用锚理由。
 - `Tools/validate_current_used_anchor_rationales.py --index Research/GuYouJi-English-Benchmark/FirstRelease/current-used-anchor-rationale-index-v0.5.json --require-complete`核当前使用集合的理由完整性。
 - `Tools/validate_open_language_supplements_v0_1.py`核初二1家族/10点的独立补充。
 
 这些核字节、角色和关系；没有模型服从、独立语义、教师或学生效度结果。首版审阅材料与长期[验收协议](../Acceptance.md)分开。
 
 现行[17项开放响应裁决队列](open-response-adjudication-queue-v0.1.json)精确绑定候选/源目录版本，不作为自动评分全集。数个现行程度题已实际修复；仅列多于两个对象不能强制最高级，比较级也不只限两对象。
+
+高一修复再次表明：最大范围的语义提示仍可与普通形容词相容，不能直接证明其他词形错误。新0.3改为明确than关系并重解十空；对其余开放题继续实际回填而非套预期答案。17项队列的具体版本未变，冻结全包引用保留0.13；这是所列任务的交接版本，不是对全包后来修订的独立认证。

@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [高一语义线索不能替代排除的跟进](Studies/2026-10-14-grade10-maximum-cue-not-exclusive-and-than-followup.md)：最大面积仍可与large相容，当前明确than/larger、54/51/49及十空重解；[现行审阅包0.9](FirstRelease/ReviewPackage-v0.9.md)。
+
 - [高二春季新公开卷七组](Studies/2026-10-14-grade11-spring-public-paper-seven-group-review.md)：15原页全核、7完整组45点与逐项作者理由，新增借用/频率/主谓反例，地区机构和音频仍缺；与冻结核心53单列。
 
 - [第25现行修题与队列恢复](Studies/2026-10-14-checkpoint25-current-repairs-and-queue-recovery.md)：6403文件严格COW独立恢复；当前0.13、15种子字段、三处真实修题、用锚0.5、两请求和17队列一致，长期门槛仍开放。
