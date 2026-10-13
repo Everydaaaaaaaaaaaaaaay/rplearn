@@ -21408,6 +21408,831 @@
       ],
       "manual_review": "Selected guide/index/lesson1 andWordBookfrontmatter, not allsourcepages semantic gold",
       "method": "pypdf6.10.0 default extraction; no semantic correction"
+    },
+    {
+      "id": "rdfybk-yilin-integration877718-20261013-native-extraction",
+      "source_acquisition_id": "rdfybk-yilin-integration877718-20261013",
+      "source_sha256": "a8d3dd4bcbbf9f26b6f4618dda2d2fa68c651c70e95ace3ea7cbe9b5fc5b59bd",
+      "tool": "pypdf.PdfReader.extract_text",
+      "tool_version": "6.10.0",
+      "parameters": [
+        "Default native extraction; no semantic repair"
+      ],
+      "pages": 4,
+      "page_records": [
+        {
+          "pdf_page": 1,
+          "source": "build/english-benchmark-research-20261012/raw/rdfybk-yilin-integration877718-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-native-text/page-001.txt",
+          "bytes": 4062,
+          "sha256": "26c6b79d83e50943a0fe48a1108828a54ab80f0eafb2e6105ee4b53b2595fbea",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 2,
+          "source": "build/english-benchmark-research-20261012/raw/rdfybk-yilin-integration877718-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-native-text/page-002.txt",
+          "bytes": 5296,
+          "sha256": "19f7832cabc8c209f11fae0c19e722dfd4508ee3329b25b96e4673bc77331963",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 3,
+          "source": "build/english-benchmark-research-20261012/raw/rdfybk-yilin-integration877718-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-native-text/page-003.txt",
+          "bytes": 4783,
+          "sha256": "638e3e923f5f21b397245e80ee3b454121f743620f75962c19e06c587912654f",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 4,
+          "source": "build/english-benchmark-research-20261012/raw/rdfybk-yilin-integration877718-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-native-text/page-004.txt",
+          "bytes": 4556,
+          "sha256": "2d586fcf505d2850dc3f0e5278033fc255c10f9ceb1caca80fe326802c5e5aa7",
+          "exit_code": 0
+        }
+      ],
+      "rendered_previews": [
+        {
+          "pdf_page": 1,
+          "path": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-preview/page-001.png",
+          "bytes": 411370,
+          "sha256": "6a9d21f13d891bd087e046f4151668014422062af163eccd906db7090703040e"
+        },
+        {
+          "pdf_page": 2,
+          "path": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-preview/page-002.png",
+          "bytes": 511619,
+          "sha256": "478b7301ac1c6b73dc1846a613314bf7c73b95b1bce26e53c6deedcf1f16a724"
+        },
+        {
+          "pdf_page": 3,
+          "path": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-preview/page-003.png",
+          "bytes": 436073,
+          "sha256": "5cb2eadb1446c705232f232cd889080162a136ddcaa61fed1fe5845982208afc"
+        },
+        {
+          "pdf_page": 4,
+          "path": "build/english-benchmark-research-20261012/rdfybk-yilin-integration877718-20261013-preview/page-004.png",
+          "bytes": 446341,
+          "sha256": "a4d7d21865e75f796811303054310c332b7f578294ab49987cf0463056294930"
+        }
+      ],
+      "manual_review": "RDFall4pages24-27 orTCEnglisharticleportions42-50actualvisual; no independentlyreviewed full textbook,sourcepermission orlearnergold",
+      "source_id": "rdfybk.yilin-integration2025",
+      "manifest": "build/english-benchmark-research-20261012/yilin-pedagogy-processing-manifest20261013.json",
+      "successful_pages": 4,
+      "preview_tool": "pdftoppm",
+      "preview_tool_version": "26.05.0",
+      "preview_parameters": [
+        "-singlefile",
+        "-r",
+        "110",
+        "-png"
+      ]
+    },
+    {
+      "id": "tcjy-yilin-revised-overview-20261013-native-extraction",
+      "source_acquisition_id": "tcjy-yilin-revised-overview-20261013",
+      "source_sha256": "602ce505407acd8ef91c03c8a1fd3a5d164cfd63a6597ceccb47660712da229f",
+      "tool": "pypdf.PdfReader.extract_text",
+      "tool_version": "6.10.0",
+      "parameters": [
+        "Default native extraction; no semantic repair"
+      ],
+      "pages": 81,
+      "page_records": [
+        {
+          "pdf_page": 1,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-001.txt",
+          "bytes": 2,
+          "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 2,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-002.txt",
+          "bytes": 960,
+          "sha256": "3c5007c712fdb98ca354076f27807f47dff3967d7bffbdd102290c559272d88c",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 3,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-003.txt",
+          "bytes": 3619,
+          "sha256": "95609d8d5c3e66aac6988b7472ff3f626f440693c56168d16404c672a67f0617",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 4,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-004.txt",
+          "bytes": 3993,
+          "sha256": "381626e3e7ed5ece995a1f03099365b9b5db98076ab54e0dead5b2495a590076",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 5,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-005.txt",
+          "bytes": 3992,
+          "sha256": "fbea2d7115b1dcbb42f7208fb6717b4a749ef4d87e769ba1736cd5ce0c65aabc",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 6,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-006.txt",
+          "bytes": 3784,
+          "sha256": "8f3b93c895c62d6b514dd540d048f907e9388a5413357544a14e26619adc00f3",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 7,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-007.txt",
+          "bytes": 3903,
+          "sha256": "9ed3bfe013205e7cb6554c4475ccc56cf6fb13bdb799b40e1a4f5d5db93a91d5",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 8,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-008.txt",
+          "bytes": 3901,
+          "sha256": "de380bff7036266c1585ad906e9df5cdbfe1e80f79b4a505978e4fd485adada1",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 9,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-009.txt",
+          "bytes": 3877,
+          "sha256": "8427d5ad1a6500893b86153bb3c76e96880f2035f05404fc38c5d65ea7f893f0",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 10,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-010.txt",
+          "bytes": 3932,
+          "sha256": "f4a6d353e7af4afb4c1ad51ad461f8660b2b4a674f90b397bd2f5ea06a115732",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 11,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-011.txt",
+          "bytes": 2974,
+          "sha256": "fada3207b33a3ee5b9bfc16ae111c626e05229cc79ac33f10050557745b4ad17",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 12,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-012.txt",
+          "bytes": 156,
+          "sha256": "371767033955e7b19fdfd93d069f9cebf9c16fd2719d347e02aa8c07160ae070",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 13,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-013.txt",
+          "bytes": 3500,
+          "sha256": "df7b1f03d743bf841896daa2357b6811fad34eae0cf7eb1187127ecf2a76d993",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 14,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-014.txt",
+          "bytes": 2576,
+          "sha256": "11a4148e63957517f3dd48d27af4bcf3faf2a308aef389c48741e0c794e88f1e",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 15,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-015.txt",
+          "bytes": 2493,
+          "sha256": "74b1b6e474db1427cb372a0a96e70a0aa948c5e15bd50b6d5398d139fe0f5fc0",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 16,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-016.txt",
+          "bytes": 1774,
+          "sha256": "a857f6b9246b1817be24a6196182c961889d7e971253e239b612d226aded4165",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 17,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-017.txt",
+          "bytes": 1980,
+          "sha256": "40e81bf0d3237b5c49ee642bad5d114974f6f16c2d88680de8d7c89f48e30601",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 18,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-018.txt",
+          "bytes": 3221,
+          "sha256": "553c78abfd234cd2d98628671a9bdfae9ab69ba62beec54a52e7e76d6297552f",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 19,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-019.txt",
+          "bytes": 3344,
+          "sha256": "273614a7e59d7521b24a106d5422b84c00d08b02562e715a8fdc2ef2c587934f",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 20,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-020.txt",
+          "bytes": 3429,
+          "sha256": "bf2d744b29876338100a84d0432e1ec507eb971d4d460406847ef053accf1f50",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 21,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-021.txt",
+          "bytes": 3599,
+          "sha256": "f7ccec21e681d8c73b655a7d74df11e07007e9513df270c033c2e7448142c19d",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 22,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-022.txt",
+          "bytes": 2324,
+          "sha256": "b67255fa603153a1eeb0eeb0c0c8e0cbec13b67a14bbf44623879fe9d83c0a8a",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 23,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-023.txt",
+          "bytes": 3779,
+          "sha256": "f743c20089521480dd0433835eaf202854052c3c0ed1c41ac0a1d196d5b39e70",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 24,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-024.txt",
+          "bytes": 3597,
+          "sha256": "a2702cc5522fe666ef7386a65e7bf5f8133c71a81dc7fed1bbecf4025197d34e",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 25,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-025.txt",
+          "bytes": 3692,
+          "sha256": "6579fb252137b98309d52f22081240dabf03a881aa2d16f35afffed1f24aa28a",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 26,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-026.txt",
+          "bytes": 3518,
+          "sha256": "b62ae1fe4853695755410e21731c1a152ea726eefe98716c272d142296d44014",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 27,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-027.txt",
+          "bytes": 3762,
+          "sha256": "2e48eb0fc5c7ac0ce7359c1f34173b264687fbf1465718c6bf4b0dcd96535175",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 28,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-028.txt",
+          "bytes": 3705,
+          "sha256": "6b7b3f9acc947e1710784ce110bcf6fbbb184fa597f123dd9f681d0ce3399745",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 29,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-029.txt",
+          "bytes": 2584,
+          "sha256": "d7f962437f748d672c4874be848d2a5f51a09966a44799d8dd0b028939d2b4c4",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 30,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-030.txt",
+          "bytes": 3747,
+          "sha256": "add3f794bf5d9af43106b05075417529f819688fe655541a950dd518453e0cb2",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 31,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-031.txt",
+          "bytes": 4004,
+          "sha256": "6cbfb0547a8cd15de54fbc76ea8ea2763e708ec9621211365dd78f7ab8f66242",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 32,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-032.txt",
+          "bytes": 3728,
+          "sha256": "8b5945d6d93873c48a385becba7684b3524e6c9d5bf9a57d38e8836487218081",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 33,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-033.txt",
+          "bytes": 3932,
+          "sha256": "5110ef40158236314434dae427ec62e828c3e1fa46526b019a2466d4e6871d80",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 34,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-034.txt",
+          "bytes": 3669,
+          "sha256": "2fc27bf33286a1cf3d1d2cb9bbd705afb952096be3232fc21caa219cabf17c1e",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 35,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-035.txt",
+          "bytes": 3208,
+          "sha256": "f7ab225156ec53526800b0d854739256d2ebfd663e8daf51f74fb159ade1fc8b",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 36,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-036.txt",
+          "bytes": 3003,
+          "sha256": "d8ab19ccddc67f482cf4e160a8bbe9ef267b70bdc0e6d16824296887cb533a08",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 37,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-037.txt",
+          "bytes": 2573,
+          "sha256": "e0ccb48b507ebf7de32df6522f1e369fb25ba9a87d0874360becf4a2c6b314fb",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 38,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-038.txt",
+          "bytes": 2817,
+          "sha256": "cbbf44d7ad5a87a19405e7222f89441680cfbe013703eecdfa9bcacedfe30e18",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 39,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-039.txt",
+          "bytes": 2851,
+          "sha256": "f0eb17d74ade6690bb61dbecd0413743869c86d3377e6eedc8329e6284e6b36b",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 40,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-040.txt",
+          "bytes": 1126,
+          "sha256": "1685af06f994d1750f72fe4287125e77e08171c06d64d38ed1670cf45cd19da1",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 41,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-041.txt",
+          "bytes": 2354,
+          "sha256": "9f293013254d1b3e319d4fc8874889dc4df5af1d8d4e4549d9f3dee82a7d5d53",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 42,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-042.txt",
+          "bytes": 2080,
+          "sha256": "25679bc8115d6f99c2510dceee1938d1ba923c48062b12986656034004f7f712",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 43,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-043.txt",
+          "bytes": 2183,
+          "sha256": "7d9e038450457ac3d600cd83a390349df58d3425e205f5772ac665d49291ae44",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 44,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-044.txt",
+          "bytes": 2154,
+          "sha256": "a6ffcd92729bf2a1f44d5c6dc8d533ce2dc4929e001abb238c4b11916ed8d676",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 45,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-045.txt",
+          "bytes": 3402,
+          "sha256": "d7873d1bdb394077a13a93cf9fd86d0a3506f85031cddbcf4a56a522ddc946ba",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 46,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-046.txt",
+          "bytes": 2649,
+          "sha256": "f31f8608e3bd2a76094c3a98a0bb958e0651de273f8f3426788247d253835e72",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 47,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-047.txt",
+          "bytes": 1589,
+          "sha256": "fb6fc6dbf4a3c97764e329049b5df753b689e0fb39c5b86fb1ba1bb34ff42c28",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 48,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-048.txt",
+          "bytes": 2526,
+          "sha256": "99d10d6cca8d9bdfdd98c779379cfd3e1a763d837d1e616c69e077b4d6a0effd",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 49,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-049.txt",
+          "bytes": 3566,
+          "sha256": "14ff6ed8794dedad558f9699eb227e1bdf732e2dd692ab75ee86c77b30251ee8",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 50,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-050.txt",
+          "bytes": 1698,
+          "sha256": "f3b7246274a46694390790a8f4e7223f4e542c61e4cce6c65d942d54fead50d4",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 51,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-051.txt",
+          "bytes": 3623,
+          "sha256": "76cb8a945db89d867f77f1b170217b7664a97659c558b616b9f9b1f678084d94",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 52,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-052.txt",
+          "bytes": 3517,
+          "sha256": "daaf6dad9ef12198ccfb672a1075a355dc9e8d6a4d0f4bc28e4fc0c6838e1802",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 53,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-053.txt",
+          "bytes": 3701,
+          "sha256": "404a4d2bc912abc05bdbebd8f978845c4164151531476991e50f08d9c3baf060",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 54,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-054.txt",
+          "bytes": 3546,
+          "sha256": "f4283cb17411656c8263f59740a7d37af3247f500528f949e822b0d496ccbf81",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 55,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-055.txt",
+          "bytes": 238,
+          "sha256": "c42975ca2f1c76459f484400c15cea34ae1f26825406ac18259b6eebdbe6f474",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 56,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-056.txt",
+          "bytes": 2005,
+          "sha256": "734cfbc8a895e2d517a970d6a8504aa39c6c181dfc2c34504185e4b4cf4edd73",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 57,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-057.txt",
+          "bytes": 3628,
+          "sha256": "2b5bb26e3fce5fe56ab934aa22f5617d49fab003f98c1b8f6afb30b97bbecd78",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 58,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-058.txt",
+          "bytes": 3543,
+          "sha256": "96024cea3eb064adcb7ce52d1b3416f8fe09e6216b600cb08f686879dff8ffef",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 59,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-059.txt",
+          "bytes": 3901,
+          "sha256": "9328f6eb09e35547a3ae3f4889c2d1d63bf25930ccc9bf67b37d856cc0fe66b8",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 60,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-060.txt",
+          "bytes": 3190,
+          "sha256": "57ac4071d0d6335ceefa212e21e14e64624bc9845d4177ba5e5fca4c02c7abe4",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 61,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-061.txt",
+          "bytes": 2407,
+          "sha256": "0dab2493548661aa6e28f9c1b975daaa507697de0c41b829e103b5c75b445e25",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 62,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-062.txt",
+          "bytes": 2330,
+          "sha256": "84196ee494c1192a4c5bebb712504a812416047bb3c59d0e6f494ad8ef71550a",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 63,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-063.txt",
+          "bytes": 3284,
+          "sha256": "540ca47d9d236c9b83ceaad42a67dd0d860c6b5dec8b97963e5837618e562a32",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 64,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-064.txt",
+          "bytes": 2425,
+          "sha256": "0398f1cbe35ff47b660ec7827cb60022993b778d9addeb7a172e90f6c3f4e8f7",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 65,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-065.txt",
+          "bytes": 1393,
+          "sha256": "8daffd1b259904953b417c5afaba490f902b363f99cb479f9c17cb66e01842e4",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 66,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-066.txt",
+          "bytes": 1993,
+          "sha256": "d76ee89fc31bbe5dcfb7b24fccef86ba1fec9f34c8d101874fb932473fd1bd23",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 67,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-067.txt",
+          "bytes": 1877,
+          "sha256": "ce87c9bf4a9a6aa5e204a8162f0145286f5e2f736a1b2bb32009098e3a7515da",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 68,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-068.txt",
+          "bytes": 1847,
+          "sha256": "c5890442f15a7017268fb5d254a2b56b0b7b093376aabe7854b0d038a6bf6523",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 69,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-069.txt",
+          "bytes": 3600,
+          "sha256": "08938e7d507f4bef18a5f8f9e7c22ba6f9d92ea25f870f3f22006c6e26c5b8dc",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 70,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-070.txt",
+          "bytes": 3616,
+          "sha256": "02674bd3ce267872dbc3c69a94c8b11eb48568981da22ec450d486b277fbadc6",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 71,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-071.txt",
+          "bytes": 2862,
+          "sha256": "07ca1b9b8336afd213e2b63be19518ae6e0299488795733d5bc29b74fd38ea6b",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 72,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-072.txt",
+          "bytes": 2568,
+          "sha256": "ba0e78574f2ea30c3ba26462dd560ce3f6dc66588d56f6513da5b23cba5c5b77",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 73,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-073.txt",
+          "bytes": 3336,
+          "sha256": "b5a9db8e4a21d479135e504fb19aa70b63134c7b2ea0a9a8ff1df101865de489",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 74,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-074.txt",
+          "bytes": 3495,
+          "sha256": "d6cede5275c0712a081a7ed11d345afc47a720d82b5bc855e04c14c28548fa7c",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 75,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-075.txt",
+          "bytes": 3367,
+          "sha256": "9ad3077bd3077793cf8b8a62b782ed906c59d75b0e0a4cccd77b112daab3ebab",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 76,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-076.txt",
+          "bytes": 2586,
+          "sha256": "76ba52ce271bdea8c83c8038da16475b1751aae75d941999e280e274af03d242",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 77,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-077.txt",
+          "bytes": 1183,
+          "sha256": "6d7ebb389500dc599352586366c7ffc5025889c69645a46d212fcb485144c8b2",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 78,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-078.txt",
+          "bytes": 3014,
+          "sha256": "fb763bd2032f0635dbadbda6282dc66b6bafb4b88e6ff8ba757929338d9e7b21",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 79,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-079.txt",
+          "bytes": 3643,
+          "sha256": "ce106262ab5205f812422c8b77d85eb09228a305659e970c4a2aca421930c3fc",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 80,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-080.txt",
+          "bytes": 3633,
+          "sha256": "7652f2da631dbea1bd2afa96992c436d7d3a1743901930410725ec62a392c239",
+          "exit_code": 0
+        },
+        {
+          "pdf_page": 81,
+          "source": "build/english-benchmark-research-20261012/raw/tcjy-yilin-revised-overview-20261013.pdf",
+          "output": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-native-text/page-081.txt",
+          "bytes": 902,
+          "sha256": "677ca942381fcd711f9dec6ae4bbe6163a00dfdce2cdf8b2b902fbdaee97d94b",
+          "exit_code": 0
+        }
+      ],
+      "rendered_previews": [
+        {
+          "pdf_page": 42,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-042.png",
+          "bytes": 276714,
+          "sha256": "93e51f07f75a091f1b7abf8b069272de773c66db83e65eb9d2bd4b95eee6ccd6"
+        },
+        {
+          "pdf_page": 43,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-043.png",
+          "bytes": 449169,
+          "sha256": "4e3fa0e44862d032b73d78e8d2258945843d871d7e7c642424002520678e23ec"
+        },
+        {
+          "pdf_page": 44,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-044.png",
+          "bytes": 471624,
+          "sha256": "faec1e13c0dedf910f6d2d9fa696635d3583949075f26d0b1010fbeddc3b76f0"
+        },
+        {
+          "pdf_page": 45,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-045.png",
+          "bytes": 423954,
+          "sha256": "5429fbc4394bc492967dd5f19ee27c2548ec9b70f1711c032de5c2b459e883b4"
+        },
+        {
+          "pdf_page": 46,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-046.png",
+          "bytes": 440011,
+          "sha256": "68148fcf4d331f7196151b8fde4670d80c9c347765c2559aa60d3b6af222274f"
+        },
+        {
+          "pdf_page": 47,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-047.png",
+          "bytes": 319175,
+          "sha256": "d34f6bdb4655a07bad5c39507f0b9bc6cc4d2c18d7a354d6bac7457c0c37b31d"
+        },
+        {
+          "pdf_page": 48,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-048.png",
+          "bytes": 468519,
+          "sha256": "85ec9488a4729a7f04d4374495b41a53bd384a5896e71fbc248965adb02b4393"
+        },
+        {
+          "pdf_page": 49,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-049.png",
+          "bytes": 450517,
+          "sha256": "3a5eedfc81cb3922433ccebb925df8ed8894bba9417cb9d5d98453f568935ec5"
+        },
+        {
+          "pdf_page": 50,
+          "path": "build/english-benchmark-research-20261012/tcjy-yilin-revised-overview-20261013-preview/page-050.png",
+          "bytes": 227085,
+          "sha256": "91b0724d037c04107f089fce52bc895112d1ca7384a5f075d2f81746c67ea9fb"
+        }
+      ],
+      "manual_review": "RDFall4pages24-27 orTCEnglisharticleportions42-50actualvisual; no independentlyreviewed full textbook,sourcepermission orlearnergold",
+      "source_id": "tcjy.yilin-overview2024",
+      "manual_boundary_render_command": [
+        "pdftoppm",
+        "-f",
+        "50",
+        "-l",
+        "50",
+        "-singlefile",
+        "-r",
+        "110",
+        "-png",
+        "source.pdf",
+        "page-050"
+      ],
+      "manifest": "build/english-benchmark-research-20261012/yilin-pedagogy-processing-manifest20261013.json",
+      "successful_pages": 81,
+      "preview_tool": "pdftoppm",
+      "preview_tool_version": "26.05.0",
+      "preview_parameters": [
+        "-singlefile",
+        "-r",
+        "110",
+        "-png"
+      ]
     }
   ],
   "observed_errors": [
