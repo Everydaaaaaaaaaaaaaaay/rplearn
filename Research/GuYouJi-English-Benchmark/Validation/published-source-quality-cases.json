@@ -178,6 +178,37 @@
       "confirmed_source_conflict": false,
       "observation": "Extra245WAVs notinselectedlists/scorekeys;zero speaker overlap but52exactprompt strings sharedbetween splits",
       "required_response": "Train/test bydeclared membership andintended evaluation scope; do not addunlabelled audio orclaim promptunseen validation"
+    },
+    {
+      "id": "openstory-dual-column-versus-deliberate-repetition",
+      "source_id": "englishstorybooks.selected-stories",
+      "acquisition_id": "englishstorybooks-en0087-page20261013",
+      "additional_evidence_acquisition_ids": [
+        "openstory-en0087-pdf20261013",
+        "englishstorybooks-en0052-page20261013"
+      ],
+      "locator": "HTMLtext02..09 andtext02..17 source .def/.l1 columns; corresponding PDFbody",
+      "category": "extraction_duplicates_and_page_identity",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": false,
+      "observation": "24English source/parallel blocks identical;0087 has8body pages but6distinct texts. Wholepage extraction duplicates input; set dedup destroys intended repetition.",
+      "required_response": "Select source column by page identity and preserve source order/repetition; compare PDFbody without cover/colophon/footer"
+    },
+    {
+      "id": "openstory-site-footer-versus-work-NC",
+      "source_id": "africanstorybook.per-work-terms",
+      "acquisition_id": "africanstorybook-1788-NC-candidate20261013",
+      "additional_evidence_acquisition_ids": [
+        "englishstorybooks-en0087-page20261013",
+        "africanstorybook-terms20261013",
+        "openstory-ccby30-legal20261013"
+      ],
+      "locator": "Storycolophon; platformfooter; book1788copyright",
+      "category": "per_work_license_scope",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": false,
+      "observation": "Selectedstories linkBY3.0 while sitefooter linksBY4; original platform has book1788NC. Legalcode3.0titleUnported differs from displayInternational.",
+      "required_response": "Preserve per-work exact license/version/credits and media scope; do not blanketgrant commercial rights"
     }
   ],
   "gold_admission": false
