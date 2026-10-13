@@ -8,7 +8,7 @@
 
 累计53个完整配套选定源组、25个原创题组家族（当前25个版本，修订前稿另存，不重复计样本）。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
-可以从[当前审阅包0.6](ReviewPackage-v0.6.md)开始（[19组历史基线](ReviewPackage-v0.1.md)另存）：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
+可以从[当前审阅包0.6](ReviewPackage-v0.6.md)开始：六年级各两个选定卷家族，核心25家族/205点、53配套源组。[现行索引0.11](review-index-v0.11.json)绑定当前候选字节；[实际用锚理由0.4](current-used-anchor-rationale-index-v0.4.json)覆盖25使用源组全部205响应，[更正种子0.2](seed-anchor-index-v0.2.json)保留18解释种子。旧种子0.1有15题号误作答案，不再作当前输入。[流程0.3](GenerationProtocol-v0.3.md)提供两个当前请求与完整模式/风险/版本控制。作者理由齐仅指当前使用集合，核心材料准备与全库、商用、独立教师学生验收分开。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
@@ -77,3 +77,5 @@
 [实际用锚理由0.3](current-used-anchor-rationale-index-v0.3.json)已补完7高中组45点，当前25/25组205/205源响应的作者理由覆盖成立；12源风险响应隔离，非独立gold。[索引0.10](review-index-v0.10.json)/[检查器0.10](../Tools/validate_firstrelease_v0_10.py)绑定真实用锚集合并拒绝旧18/160部分覆盖，[审阅包0.5](ReviewPackage-v0.5.md)为现行入口。
 
 自身初三第8空的one of最高级误拒已由[0.2实际than修订](Generated/grade9-weather-grammar-v0.2.md)修复。现行[索引0.11](review-index-v0.11.json)/[用锚理由0.4](current-used-anchor-rationale-index-v0.4.json)/[审阅包0.6](ReviewPackage-v0.6.md)仍25核心/205点/53源组，源覆盖签名不受同一家族改稿影响但拒绝换源。
+
+[现行双输入请求控制](../Studies/2026-10-14-current-dual-input-request-controls.md)核当前规格、冻结观察/父卷字节、完整形式及作者输出；12隔离响应不能升格正向示范。两请求、原10声明拒绝、源版本故障注入和新增4输出缺失拒绝不是生成模型/语义评测。历史进度记录继续保留，各时点旧索引不作为当前默认。

@@ -4,7 +4,9 @@
 
 状态：2026-10-12 建立清单与首轮来源审计，并启动每小时自动续办及阶段验收。此目录中的任务和计划不表示材料已收齐、年级难度已校准或商用授权已取得。实际取得范围见 Registry，待办见 Checklist 与 Studies。
 
-2026-10-13 持续核读入口：
+2026-10-14 持续核读入口：
+
+- [现行双输入命题控制](Studies/2026-10-14-current-dual-input-request-controls.md)：匹配完整模式、当前规格/父卷/目录与12风险隔离；[流程0.3](FirstRelease/GenerationProtocol-v0.3.md)和两请求只核声明关系，不冒称模型/教师/学生验收。
 
 - [自身初三最高级规则误拒修正](Studies/2026-10-14-grade9-oneof-rule-and-than-repair.md)：one of不强制最高级，实际改than结构/167 token并重解十空；源理由与用锚签名修正，[现行审阅包0.6](FirstRelease/ReviewPackage-v0.6.md)。
 

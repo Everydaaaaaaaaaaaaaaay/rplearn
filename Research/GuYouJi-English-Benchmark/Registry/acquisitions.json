@@ -59446,6 +59446,116 @@
         ],
         "tool": "validate_firstrelease_v0_11.py --check-cache plus actualwrongsource mutation"
       }
+    },
+    {
+      "id": "current-dual-input-request-binding-results20261014-record",
+      "url": "urn:lingotrip:research:current-dual-input-requests",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-dual-input-request-binding-results20261014.json",
+      "bytes": 4363,
+      "sha256": "dd4e223e11107a8dd8e983474bafef0bff6ee6e7ca36c995bf846b3b3844d1f4",
+      "format_validation": "UTF8_saved",
+      "review_scope": "currentdualinputand10realisticdeclarationrejections; actualused3/3/4grammar and10cloze requests withcurrentrefs/fullmaterial/canonicalform/source7/10quarantine;10declarationriskcases rejected, no modelcall/originalbodytransfer/student/gold/rights admission",
+      "derivation": {
+        "origin": "project_local_dual_input_request_controls",
+        "related_acquisition_ids": [
+          "firstrelease-v011-grade9-than-and-usage-validation20261014-record"
+        ],
+        "tool": "validate_authoring_request_v0_3.py,current source/control catalog"
+      }
+    },
+    {
+      "id": "prepare-current-dual-input-requests20261014-record",
+      "url": "urn:lingotrip:research:current-dual-input-requests",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/prepare_current_dual_input_requests20261014.py",
+      "bytes": 7117,
+      "sha256": "ae2fe8911117aff01d5790471207875fbbe2d6e6355e80ceb9804a2535e49d8c",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_request_preparation_and_validation_method; actualused3/3/4grammar and10cloze requests withcurrentrefs/fullmaterial/canonicalform/source7/10quarantine;10declarationriskcases rejected, no modelcall/originalbodytransfer/student/gold/rights admission",
+      "derivation": {
+        "origin": "project_local_dual_input_request_controls",
+        "related_acquisition_ids": [
+          "firstrelease-v011-grade9-than-and-usage-validation20261014-record"
+        ],
+        "tool": "validate_authoring_request_v0_3.py,current source/control catalog"
+      }
+    },
+    {
+      "id": "current-request-source-version-guards20261014-record",
+      "url": "urn:lingotrip:research:current-dual-input-requests",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-request-source-version-guards20261014.json",
+      "bytes": 1143,
+      "sha256": "7a6c718ebc3996355bbf7815d3abbbe076e44eb9849c5e9c967229e1df2e79e0",
+      "format_validation": "UTF8_saved",
+      "review_scope": "parent_and_catalog_version_guard_evidence; realregisteredparent bytes/SHA matched andfrozenobservationversion checked; frozenhashmutation/inmemorydigestfailureinjection refused, originalfilesunmodified/no modelcallor independentquality validation",
+      "derivation": {
+        "origin": "project_actual_source_version_request_controls",
+        "related_acquisition_ids": [
+          "bj-grade11-yanqing2024upper-20261013",
+          "current-dual-input-request-binding-results20261014-record"
+        ],
+        "tool": "validate_authoring_request_v0_3.py and explicitfailureinjections"
+      }
+    },
+    {
+      "id": "check-current-request-source-versions20261014-record",
+      "url": "urn:lingotrip:research:current-dual-input-requests",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/check_current_request_source_versions20261014.py",
+      "bytes": 3062,
+      "sha256": "721120fb633b53af8f86cbfb48473e3210eb9e2519ecfffa55125323c2ecdf01",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_version_guard_check_method; realregisteredparent bytes/SHA matched andfrozenobservationversion checked; frozenhashmutation/inmemorydigestfailureinjection refused, originalfilesunmodified/no modelcallor independentquality validation",
+      "derivation": {
+        "origin": "project_actual_source_version_request_controls",
+        "related_acquisition_ids": [
+          "bj-grade11-yanqing2024upper-20261013",
+          "current-dual-input-request-binding-results20261014-record"
+        ],
+        "tool": "validate_authoring_request_v0_3.py and explicitfailureinjections"
+      }
+    },
+    {
+      "id": "current-request-author-output-guards20261014-record",
+      "url": "urn:lingotrip:research:current-dual-input-requests",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-request-author-output-guards20261014.json",
+      "bytes": 2073,
+      "sha256": "450bf68b374cce28d2956a2fa36e3e4031a3a8d0a642059aa6f5540c50b7eaff",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Two actual current requests accepted; four missing author-output declarations rejected; metadata and relation checks only; no model call or original source mutation",
+      "derivation": {
+        "origin": "project_local_dual_input_request_controls",
+        "related_acquisition_ids": [
+          "current-dual-input-request-binding-results20261014-record"
+        ],
+        "tool": "validate_authoring_request_v0_3.py"
+      }
+    },
+    {
+      "id": "check-current-request-author-outputs20261014-record",
+      "url": "urn:lingotrip:research:current-dual-input-requests",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/check_current_request_author_outputs20261014.py",
+      "bytes": 4519,
+      "sha256": "76b33d6eb792c09d581addfec1cb654de0a508f0858e7585c094ebf4d435acf2",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Two actual current requests accepted; four missing author-output declarations rejected; metadata and relation checks only; no model call or original source mutation",
+      "derivation": {
+        "origin": "project_local_dual_input_request_controls",
+        "related_acquisition_ids": [
+          "current-dual-input-request-binding-results20261014-record"
+        ],
+        "tool": "validate_authoring_request_v0_3.py"
+      }
     }
   ],
   "updated_on": "2026-10-13"

@@ -17,7 +17,7 @@
 
 开放语言重点审阅：初二run/running；初三busy/busiest及限定/连接变体；高中过去式/完成时、被动分词/完成被动分词及让步/并列连接。给词可多词与全组一词的制度须分清。参考列表不穷尽，生产评分前需要独立裁决，不能按一个字符串误拒自然表达。
 
-按[年级规格](README.md)选择完整匹配锚，再执行[双输入流程0.2](GenerationProtocol-v0.2.md)。[六年级实例负荷](LanguageLoadControls-v0.1.md)和[初二两体裁](LanguageLoadGrade8TwoGenres-v0.1.md)区分正文/题干/选项、句法和支架；真实修订有前后稿。均长/词数接近不等于同难度，没有CEFR或学生分钟/细档阈值。
+按[年级规格](README.md)选择完整匹配锚，再执行[双输入流程0.3](GenerationProtocol-v0.3.md)。[六年级实例负荷](LanguageLoadControls-v0.1.md)和[初二两体裁](LanguageLoadGrade8TwoGenres-v0.1.md)区分正文/题干/选项、句法和支架；真实修订有前后稿。均长/词数接近不等于同难度，没有CEFR或学生分钟/细档阈值。
 
 [0.11检查器](../Tools/validate_firstrelease_v0_11.py)加--check-cache核当前25/205、53源绑定、四SVG、两组三篇分配、种子答案值及实际用锚25/205理由。它核字节/角色/关系，不替代教师解题。旧15个题号误作答案已用[种子0.2](seed-anchor-index-v0.2.json)修正，真实旧错误及合法错字母都被拒绝。实际用锚旧18/160部分集合的严格完整检查仍拒绝，不能虚报覆盖。
 
