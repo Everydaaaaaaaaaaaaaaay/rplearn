@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [高二春季新公开卷七组](Studies/2026-10-14-grade11-spring-public-paper-seven-group-review.md)：15原页全核、7完整组45点与逐项作者理由，新增借用/频率/主谓反例，地区机构和音频仍缺；与冻结核心53单列。
+
 - [第25现行修题与队列恢复](Studies/2026-10-14-checkpoint25-current-repairs-and-queue-recovery.md)：6403文件严格COW独立恢复；当前0.13、15种子字段、三处真实修题、用锚0.5、两请求和17队列一致，长期门槛仍开放。
 
 - [程度范围修复与17项裁决队列](Studies/2026-10-14-degree-range-repairs-and-open-response-queue.md)：初二第11真实改题、源高一14原页复核/变体保留；[现行审阅包0.8](FirstRelease/ReviewPackage-v0.8.md)不宣称独立裁决或评分全集。
