@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [苏州官方初三笔试与词数作用域](Studies/2026-10-14-suzhou-official-written-format-and-webp-integrity.md)：8题面/1键、10完整组56响应，四选完形/3或4阅读/短语词库等真实差异；URL/MIME为PNG但实际WebP已核字节，写作参考略及口语音频仍缺。
+
 - [高二两源与当前原创负荷](Studies/2026-10-14-grade11-two-source-task-load-review.md)：342/353/324正文与111/143/101选项分开计量，正确选择实际版本而非把首次单组误称对照，实例不定全国阈值。
 
 - [高一语义线索不能替代排除的跟进](Studies/2026-10-14-grade10-maximum-cue-not-exclusive-and-than-followup.md)：最大面积仍可与large相容，当前明确than/larger、54/51/49及十空重解；[现行审阅包0.9](FirstRelease/ReviewPackage-v0.9.md)。

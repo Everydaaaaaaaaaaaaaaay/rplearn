@@ -91,3 +91,5 @@
 [高一最大线索仍不排除原级的跟进](../Studies/2026-10-14-grade10-maximum-cue-not-exclusive-and-than-followup.md)实际改为明确than/larger。当前0.14/审阅包0.9，三篇54/51/49；第25只覆盖此前0.13，当前后续另存。
 
 [高二三语境负荷](Expansions/LanguageLoadGrade11ThreeContexts-v0.1.md)保留两源与当前原创0.2，正文342/353/324，选项111/143/101；下一步核原创选项是否冗余和其余年级第二来源负荷，不由实例数量定级。
+
+[苏州官方2024初三对照](Expansions/Grade9Suzhou2024Comparison-v0.1.md)新增10配套组56响应，词库短语与给词限制作用域不得照搬福建模式；写作57缺参考/rubric，10/56单列扩展，不增加冻结53或原创计数。
