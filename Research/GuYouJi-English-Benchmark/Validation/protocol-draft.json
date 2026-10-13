@@ -1,5 +1,5 @@
 {
-  "protocol_version": "draft0.1",
+  "protocol_version": "draft0.2",
   "authored_on": "2026-10-13",
   "status": "candidate_not_frozen_or_executed",
   "frozen_at": null,
@@ -10,6 +10,32 @@
   "production_admission": false,
   "scope": "All16productlevels and4parallel exam directions,priorityjunior/senior;eachclaimedstratum separatelysupported",
   "phases": [
+    {
+      "id": "simulation_design_sensitivity",
+      "purpose": "Explore scoring/standard-setting/measurement assumptions andimplementation counterexamples beforetargetlearnerstudy",
+      "status": "not_executed",
+      "allowed_support": [
+        "Originalsyntheticresponses forcontract/coordinate/privacy checks",
+        "Simulatedresponse distributions forsampleprecision/standard-setting sensitivity",
+        "AI-proposedcurriculum/material matching forhumanreview"
+      ],
+      "required_run_metadata": [
+        "simulation_origin/model/version/prompt/seed orreplayidentity",
+        "frozenitem/spec/scoring identity",
+        "assumedability/population/error/exposure structure",
+        "scenarios andselectionpolicy fixedbeforeresults",
+        "human interpretation andlimitations"
+      ],
+      "forbidden_inferences": [
+        "Do notfill actual_learners/revieweridentities withmodels",
+        "No observedstudenttime/difficulty/fairness claims fromsyntheticresponses",
+        "No productioncutoff orCEFRlink claimedwithoutapplicableindependent/performanceevidence",
+        "No restrictedmaterial transmission withoutmatchingrights"
+      ],
+      "counts_for_M5_real_learners": false,
+      "counts_for_M6_hidden_family_gold": false,
+      "method_source_id": "bc.cefr-alignment-supplement2025"
+    },
     {
       "id": "independent_content_review",
       "purpose": "Establish source accuracy,solvability,answer coverage and construct fit",
@@ -196,5 +222,16 @@
     "Noindependentexpert/student/modelresults fabricated",
     "Noexternalrecruitment/messages,purchases,productiondataorpaidmodelruns performed",
     "Binomialplanningcannotprove languageconstruct validity orfairness"
-  ]
+  ],
+  "revision_reason": "Separate simulation-assisted design from real population evidence; follow selected2022/2025/2026alignmentmethod observations withoutmarkingprotocolfrozen/executed",
+  "method_evidence_path": "Validation/current-alignment-method-observations.json",
+  "actual_simulation_runs": [],
+  "evidence_origin_policy": {
+    "real_population": "Authorizedactualtargetlearners withadministration/exposure/context evidence",
+    "independent_human": "Actualqualifiedreviewers withindependence/training/disagreement records",
+    "model_simulation": "Explicitlylabelled AI/syntheticorigin;supportsdesign sensitivity only",
+    "source_metadata": "Source-level statements/labels/printedtimeallowances,notourlearneroutcomes",
+    "reviewer_vs_source_vs_model": "No pooling or silentlyconvertingone typeintoanother",
+    "current_project_status": "No actualreviewers,learners ormodel hiddenacceptance runs;source/methodandoriginalsyntheticcontract evidence only"
+  }
 }

@@ -1,0 +1,169 @@
+{
+  "observed_on": "2026-10-13",
+  "status": "selected_primary_text_review_not_full_offline_acquisition",
+  "manual2026": {
+    "source_id": "coe.alte-language-test-manual2026",
+    "official_notice_year": 2026,
+    "document_copyright_month": "March2026",
+    "connector_pdf_pages": 150,
+    "local_pdf_acquired": false,
+    "acquisition_id": "coe-language-test-manual2026",
+    "locators": [
+      {
+        "pdf_page_one_based": 2,
+        "scope": "copyright andextract restrictions"
+      },
+      {
+        "pdf_page_one_based": 41,
+        "scope": "genuineness vsuse-authenticity;AItext andsources"
+      },
+      {
+        "pdf_page_one_based": 42,
+        "scope": "permittedsource modification instructions,AIconfirmation,timingrevision"
+      },
+      {
+        "pdf_page_one_based": 62,
+        "scope": "pretesting/trialling andsample needs"
+      },
+      {
+        "pdf_page_one_based": 64,
+        "scope": "posttrial retain/revise/reject andpopulation fit"
+      }
+    ],
+    "facts": [
+      "Material origin,task authenticity andspecificuse validity are different",
+      "Source specification should distinguish unchangedgenuine,modifiablegenuine andpurposewritten input;definemodifications includingrerecording",
+      "AIcreated texts/prompts requireverification andconfirmation likehumanmaterials",
+      "Timing maystartasexperiencedestimate butmustberevised aftertryout/liveevidence",
+      "Piloting,pretesting andproductive-task trialling differ;small qualitative samples stillneedpopulationsegment diversity",
+      "Posttrial decisions retain/revise/reject andrecordtasklife cycle;rewrittenitems mayneedfreshtrialling"
+    ],
+    "source_level_to_product_grade": "not_established",
+    "document_rights": "Noncommercialextract allowance up to500words stated;notblanketcommercialreproduction/translation permission"
+  },
+  "alignment_handbook2022": {
+    "source_id": "bc.cefr-alignment-handbook2022",
+    "connector_pdf_pages": 95,
+    "local_pdf_acquired": false,
+    "acquisition_id": "bc-cefr-alignment-handbook2022",
+    "selected_pdf_pages_one_based": [
+      62,
+      67,
+      68,
+      70,
+      72,
+      73,
+      74
+    ],
+    "five_phases": [
+      "familiarization",
+      "specification",
+      "standardization",
+      "standard_setting",
+      "validation"
+    ],
+    "facts": [
+      "Validate claims for adefinedpurpose/context;neithersourceavailability norsingleleveltag proveslink",
+      "Planprocedural,internal andexternal evidence beforetheevent",
+      "Curriculum/materials alignment usesresourcejudgments;testalignment additionallyneedsperformance data",
+      "Independentexternalreview strengthensclaims;actualresourceoperation monitored afterlaunch",
+      "AIscoremodels needunderlyingdevelopment documentation andvalidation for thespecifictestcontext"
+    ],
+    "actual_lingotrip_phase_passes": []
+  },
+  "alignment_supplement2025": {
+    "source_id": "bc.cefr-alignment-supplement2025",
+    "acquisition_id": "bc-cefr-alignment-supplement2025",
+    "connector_pdf_pages": 22,
+    "local_pdf_acquired": false,
+    "document_title_date": "December2025Update",
+    "copyright_year": 2025,
+    "ISBN": "9781739754419",
+    "publisher_page_month": "March2026",
+    "selected_pdf_pages_one_based": [
+      1,
+      2,
+      3,
+      7,
+      14,
+      15,
+      16,
+      18,
+      19,
+      21,
+      22
+    ],
+    "date_identity": "Documentupdate/copyright andpublicationpage/upload months distinct,not silentlyrewritten",
+    "AI_support": {
+      "pdf_page_one_based": 19,
+      "simulation_for_standard_setting": "Explicitlyallows simulatedresponses tosupportexpertjudgments andcutscoreexploration",
+      "human_team": "Stillproceeds throughfivealignmentphases;AIcompiledvalidationforms doublechecked byhumans",
+      "scope": "Simulation methodpotential,not observedtargetlearner difficulty/timing orvalidatedproductioncutoffs"
+    },
+    "concept_language_model": "Amodeloflanguageability withincomprehensivelearning system;notautomaticallyanLLM/entranceAI",
+    "scope_limits": [
+      "Curriculum,delivery andassessment mustalign",
+      "Simulatedandreallearnerdata distinguished inprojectprotocol",
+      "Documentdoesnotgrant automaticmateriallicensing ordeclare anAIscorer valid"
+    ]
+  },
+  "pisa_tech2025": {
+    "source_id": "oecd.pisa2025-technical-standards",
+    "acquisition_id": "oecd-pisa2025-technical-standards",
+    "pdf_pages": 54,
+    "local_pdf_acquired": true,
+    "selected_visual_pdf_pages": [
+      8,
+      9,
+      11,
+      28,
+      40
+    ],
+    "age_months_at_test_start": [
+      183,
+      194
+    ],
+    "minimum_grade": 7,
+    "english_min_prior_academic_years": 1,
+    "assessment_mode": "OptionalEnglishFLA inCBA designs;core2hourtest notFLAduration",
+    "instrument_design": "Construct-relevantknowledge,responseformats/domaincoverage andpracticaladministration",
+    "field_trial_reference": {
+      "standard": "6.9",
+      "pdf_page": 28,
+      "largest_assessment_language_responses_per_item": 200,
+      "other_languages_min_target_population_share": 0.05,
+      "other_language_responses_per_item": 100,
+      "applicability": "PISAadjudicatedentities andtestdesigns;notuniversalLingoTripminimum"
+    },
+    "main_survey_reference": {
+      "standard": "6.10",
+      "pdf_page": 28,
+      "CBA_with_FLA_students": 7950,
+      "additional_FLA_students": 1650,
+      "applicability": "PISAentitysampling/census exceptions;notappchallenge calibration requirement"
+    },
+    "speaking_coding": "Centralizedspecialistinstitution withhighlytrainedcoders andseparatequalitycontrols",
+    "actual_project_sample_or_raters": false
+  },
+  "pisa_speaking_practice_followup": {
+    "source_id": "cambridge.pisa-speaking-expert2025",
+    "acquisition_id": "cambridge-pisa-speaking-expert20250519",
+    "official_article_date": "2025-05-19",
+    "conference_date": "2025-04-04",
+    "speaker": "EmmaPathare, CambridgeUniversityPress&Assessment",
+    "primary_news_confirms_speaker_and_pisa_role": true,
+    "indexed_slide_claim": "Part1fivewindows plus3practice,120seconds;searchleadonly",
+    "slide_full_file_acquired": false,
+    "reproduction_rights": "ALTEparent requirespermission frompresentationcopyrightholders",
+    "operational2024_prompt_classification": "not_finalized_fromsearchsnippetalone"
+  },
+  "access_limitations": [
+    "ALTEpublicparent andfourlinkedresources normalcurl403",
+    "CoEandBritishCouncil alternatives normalcurl403;publicconnector selectedPDFtext available",
+    "BrowserPDFentrytimedout;no acceptedlocalfile/screenshot orhiddenauthmethod",
+    "Do notrepeatfailedsameentry;seekpublishedprimaryalternatives orcontinueindependentgaps"
+  ],
+  "independent_review": false,
+  "gold_admission": false,
+  "commercial_admission": false
+}
