@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [高三新源必要图与转载组件边界](Studies/2026-10-14-grade12-national-graph-and-repost-component-boundaries.md)：13页全核、七组45参考；图道路74.5/显示99.9、听力仅标题、写作范文124与题面约80分开，源10推断待裁决；[总览0.3](FirstRelease/paired-source-overview-v0.3.json)87组实例/554源响应/16父卷身份。
+
 - [初一完整匹配/词库与各一次边界](Studies/2026-10-14-grade7-complete-matching-bank-and-source-once-boundary.md)：四卡三需求12配对、77词四空全回填，两请求与13声明拒绝；扩展原创4材料家族15点，源恰各一次不当原明示规则。
 
 - [初一较新真卷与分篇完形](Studies/2026-10-14-grade7-recent-paper-split-cloze-and-optional-layers.md)：16原页核读，十扩展组45响应；4词库＋6三选分篇、多词给词键、选做层及297正文负荷；[分层总览0.2](FirstRelease/paired-source-overview-v0.2.json)80组实例/509源响应/15父卷身份，不作独立或商用验收。

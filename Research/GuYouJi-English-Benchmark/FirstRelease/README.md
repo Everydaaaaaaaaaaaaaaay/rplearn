@@ -6,6 +6,8 @@
 
 ## 当前进展：核心审阅包已形成，扩展与外部验证未完成
 
+最新[源总览0.3](paired-source-overview-v0.3.json)为核心53＋扩展34，共87题组实例/554源响应/16父卷身份。新增[高三全国2025标题转载组件](Expansions/Grade12National2025Comparison-v0.1.md)七组45与[草案0.3](Specifications/grade12-v0.3.md)：完整图/五卡/研究条件/产出段首，听力仅标题、原题号/官方认证和rubric仍缺；原核心不变。
+
 [扩展原创0.4](Expansions/authored-candidate-index-v0.4.json)当前4材料家族15点：新增初一四卡三需求与四项四空2/7，初三原2/8；[初一双输入](Expansions/Grade7GenerationProtocol-v0.1.md)两请求与13声明拒绝，来源恰各一次不升级为源明示约束。核心25/205和初二补充1/10保持分层。
 
 当前[分层源总览0.2](paired-source-overview-v0.2.json)为核心53＋扩展27，共80题组实例/509源响应/15父卷身份。新增[西城2025初一十组45响应](Expansions/Grade7Xicheng2025Comparison-v0.1.md)和[草案0.3](Specifications/grade7-v0.3.md)，4词库/6三选两个材料、多词给词与选做层已核原页；[负荷](Expansions/TaskLoadGrade7XichengNarrative-v0.1.json)297正文/35题干/49选项仅描述此实例。原下表及核心规格仍保持冻结核心口径。
