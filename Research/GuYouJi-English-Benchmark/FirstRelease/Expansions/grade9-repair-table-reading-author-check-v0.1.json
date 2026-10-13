@@ -1,0 +1,39 @@
+{
+  "version": "0.1",
+  "candidate_path": "FirstRelease/Expansions/grade9-repair-table-reading-v0.1.md",
+  "candidate_sha256": "0b48dcf590737521c8f1186ad6070fcd5a5632b53087f861fd7dcf85a3e26c26",
+  "specification_path": "FirstRelease/Specifications/grade9-v0.3.md",
+  "specification_sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe",
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+    "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+  },
+  "anchor_group_id": "g9.suzhou2024.readingA",
+  "grade": 9,
+  "kind": "six_row_text_table_three_item_four_option_reading",
+  "materials": 1,
+  "questions": 3,
+  "options_each": 4,
+  "table_rows": 6,
+  "table_columns": 3,
+  "author_answer_vector": [
+    "C",
+    "B",
+    "D"
+  ],
+  "prose_tokens": 179,
+  "table_tokens": 37,
+  "prompt_tokens": 26,
+  "option_tokens": 68,
+  "token_rule": "English/digit runs; ASCIIhyphen/apostrophe retained; en-dash cell values/months split; paragraph/table/prompts/options separate. No heading, instruction, letters or filled answers.",
+  "source_form_kept": "one complete text+sixrow3column table/3four-option; purposes local field/example use/full title",
+  "target_changes": "new repair-club figures and training/service case; per-item minutes and items units replace climate temperature/rainfall, no source prose or pictures copied",
+  "all_three_same_author_solved": true,
+  "actual_saved_transition_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_text_transmitted_to_third_party_model": false,
+  "original_role_story_added": false
+}

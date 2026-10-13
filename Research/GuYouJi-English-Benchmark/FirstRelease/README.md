@@ -95,3 +95,5 @@
 [苏州官方2024初三对照](Expansions/Grade9Suzhou2024Comparison-v0.1.md)新增10配套组56响应，词库短语与给词限制作用域不得照搬福建模式；写作57缺参考/rubric，10/56单列扩展，不增加冻结53或原创计数。
 
 [初三扩展规格草案0.3](Specifications/grade9-v0.3.md)已依据苏州官方卷列多种模式/词数作用域/阅读后产出要求；当前核心索引仍0.14/0.2，新模式原创与请求目录接续，不回写旧版本证据。
+
+[初三六行表格原创补充](Expansions/grade9-repair-table-reading-v0.1.md)已依苏州三题四选完成新材料与作者全组解答C/B/D；[扩展原创索引](Expansions/authored-candidate-index-v0.1.json)1家族/3点另列，正文179/表格37/题干26/选项68，不加进冻结25/205或初二1/10。
