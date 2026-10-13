@@ -1,0 +1,532 @@
+{
+  "contract_version": "0.3",
+  "admission": "research_only",
+  "id": "fixture.relations-wrong-and-revised",
+  "round_ordinal": 0,
+  "snapshot": {
+    "serialization_profile": "python_json_sorted_utf8_v1",
+    "sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+    "payload": {
+      "group": {
+        "contract_version": "0.3",
+        "admission": "research_only",
+        "id": "fixture.relations",
+        "group_version": "v1",
+        "scoring_version": "v1",
+        "family_id": "fixture.relations.family",
+        "kind": "mixed",
+        "scope_claims": [
+          {
+            "status": "unknown",
+            "value": null,
+            "reason": "No Chinese grade, textbook, CEFR or CSE assigned",
+            "evidence_ids": []
+          }
+        ],
+        "evidence": [
+          {
+            "id": "fixture.authorship",
+            "origin": {
+              "kind": "original_fixture",
+              "author": "Codex original structural demonstration",
+              "purpose": "contract_demonstration",
+              "authored_on": "2026-10-13"
+            },
+            "note": "Original tiny fixture; not adapted from any exam or claimed as an educational anchor"
+          }
+        ],
+        "targets": [
+          {
+            "id": "t1",
+            "construct": "Original symbolic relation record, not a language proficiency task",
+            "skill": "reading",
+            "prerequisites": [],
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          }
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "version": "v1",
+            "language": "en",
+            "role": "stimulus",
+            "blocks": [
+              {
+                "id": "b1",
+                "kind": "text",
+                "text": "Order ranks from smaller to larger. Blue and green share rank one; red has rank two. Match the two named colours to their own labels."
+              }
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "rights": {
+              "evidence_ids": [
+                "fixture.authorship"
+              ],
+              "publication": "unknown",
+              "adaptation": "unknown",
+              "training": "unknown",
+              "provider_transmission": "unknown",
+              "redistribution": "unknown",
+              "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+            }
+          }
+        ],
+        "assets": [],
+        "items": [
+          {
+            "id": "i1",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "Order blue, green and red by rank; either ordering of the equal ranks is allowed.",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "ordering",
+              "elements": [
+                {
+                  "id": "blue",
+                  "text": "Blue, rank1"
+                },
+                {
+                  "id": "green",
+                  "text": "Green, rank1"
+                },
+                {
+                  "id": "red",
+                  "text": "Red, rank2"
+                }
+              ]
+            },
+            "scoring_id": "s1",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "response_scope": {
+              "kind": "option_ids",
+              "slot_ids": [],
+              "evidence_ids": [
+                "fixture.authorship"
+              ],
+              "reason": "Stable original member IDs; direction in authored instruction"
+            }
+          },
+          {
+            "id": "i2",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "Match blue to its label.",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "matching",
+              "right_options": [
+                {
+                  "id": "label-blue",
+                  "text": "blue"
+                },
+                {
+                  "id": "label-green",
+                  "text": "green"
+                }
+              ],
+              "reuse": false,
+              "extra_options_allowed": false
+            },
+            "scoring_id": "s2",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "response_scope": {
+              "kind": "option_ids",
+              "slot_ids": [],
+              "evidence_ids": [
+                "fixture.authorship"
+              ],
+              "reason": "Stable original member IDs; direction in authored instruction"
+            }
+          },
+          {
+            "id": "i3",
+            "version": "v1",
+            "source_number": null,
+            "instruction": "Match green to its label.",
+            "material_ids": [
+              "m1"
+            ],
+            "slot_ids": [],
+            "response": {
+              "kind": "matching",
+              "right_options": [
+                {
+                  "id": "label-blue",
+                  "text": "blue"
+                },
+                {
+                  "id": "label-green",
+                  "text": "green"
+                }
+              ],
+              "reuse": false,
+              "extra_options_allowed": false
+            },
+            "scoring_id": "s2",
+            "target_ids": [
+              "t1"
+            ],
+            "evidence_ids": [
+              "fixture.authorship"
+            ],
+            "response_scope": {
+              "kind": "option_ids",
+              "slot_ids": [],
+              "evidence_ids": [
+                "fixture.authorship"
+              ],
+              "reason": "Stable original member IDs; direction in authored instruction"
+            }
+          }
+        ],
+        "private_scoring": [
+          {
+            "id": "s1",
+            "kind": "ordering",
+            "item_ids": [
+              "i1"
+            ],
+            "accepted_orders": [
+              [
+                "blue",
+                "green",
+                "red"
+              ],
+              [
+                "green",
+                "blue",
+                "red"
+              ]
+            ],
+            "rule": "Authored fixture only; both complete tie permutations allowed",
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 1,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          {
+            "id": "s2",
+            "kind": "matching",
+            "item_ids": [
+              "i2",
+              "i3"
+            ],
+            "accepted_pairs": [
+              {
+                "left_item_id": "i2",
+                "right_option_id": "label-blue"
+              },
+              {
+                "left_item_id": "i3",
+                "right_option_id": "label-green"
+              }
+            ],
+            "rule": "Authored one-to-one reference only; trace stores wrong reused selections too",
+            "possible_source_marks": {
+              "status": "provisional",
+              "value": 1,
+              "evidence_ids": [
+                "fixture.authorship"
+              ]
+            },
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          }
+        ],
+        "administration": {
+          "mode": "diagnostic",
+          "submission_boundary": "whole_group",
+          "return_to_items": true,
+          "feedback_release": "after_group_submit",
+          "later_related_items_count_as_unassisted": false,
+          "supports": [],
+          "media_segments": [],
+          "replay_limit": null,
+          "pre_read_seconds": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No timing observed",
+            "evidence_ids": []
+          },
+          "review_seconds": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No timing observed",
+            "evidence_ids": []
+          },
+          "timing": {
+            "observed_effective_seconds": {
+              "status": "unknown",
+              "value": null,
+              "reason": "No learners have taken this fixture",
+              "evidence_ids": []
+            },
+            "estimated_seconds": {
+              "status": "unknown",
+              "value": null,
+              "reason": "No timing estimate registered",
+              "evidence_ids": []
+            },
+            "clock_rule": "Separate reading, answering, replay, revision and feedback; never equate foreground dwell with effective time",
+            "excluded_intervals": [
+              "background",
+              "idle",
+              "pause",
+              "network_wait",
+              "grading_wait"
+            ]
+          },
+          "avatar": {
+            "status": "not_applicable",
+            "value": null,
+            "reason": "No character is needed for a structural fixture",
+            "evidence_ids": []
+          }
+        },
+        "review": {
+          "content": {
+            "status": "provisional",
+            "value": "Authored to exercise structure only",
+            "reason": "No quality review or intended population",
+            "evidence_ids": [
+              "fixture.authorship"
+            ]
+          },
+          "independent": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No independent reviewer",
+            "evidence_ids": []
+          },
+          "learner_calibration": {
+            "status": "unknown",
+            "value": null,
+            "reason": "No real learner observations",
+            "evidence_ids": []
+          }
+        },
+        "rights": {
+          "evidence_ids": [
+            "fixture.authorship"
+          ],
+          "publication": "unknown",
+          "adaptation": "unknown",
+          "training": "unknown",
+          "provider_transmission": "unknown",
+          "redistribution": "unknown",
+          "reason": "Original authored structural fixture; no rights or product-release adjudication performed"
+        },
+        "limitations": [
+          "Schema demonstration only; does not establish educational quality, grade, rights clearance or timing",
+          "Task semantics are synthetic; no source Unit3 order/matching key or complete multi-action import claimed"
+        ]
+      },
+      "blueprint_version": "fixture.blueprint.v1",
+      "reward_policy_version": "fixture.reward.v1",
+      "progression_policy_version": "fixture.progression.v1",
+      "measurement_policy_version": "fixture.measurement.v1",
+      "family_history_status": "verified_no_prior_exposure"
+    }
+  },
+  "epochs": [
+    {
+      "id": "epoch1",
+      "device_session_id": "synthetic.device1"
+    }
+  ],
+  "events": [
+    {
+      "id": "event0",
+      "sequence": 0,
+      "kind": "start",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 0,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null,
+      "answer_record": null
+    },
+    {
+      "id": "event1",
+      "sequence": 1,
+      "kind": "answer",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 100,
+      "item_id": "i1",
+      "response_status": "answered",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 0,
+        "replaces_event_id": null,
+        "payload": {
+          "kind": "ordering",
+          "ordered_element_ids": [
+            "red"
+          ]
+        }
+      }
+    },
+    {
+      "id": "event2",
+      "sequence": 2,
+      "kind": "answer",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 200,
+      "item_id": "i2",
+      "response_status": "answered",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 0,
+        "replaces_event_id": null,
+        "payload": {
+          "kind": "matching",
+          "right_option_id": null
+        }
+      }
+    },
+    {
+      "id": "event3",
+      "sequence": 3,
+      "kind": "answer",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 300,
+      "item_id": "i1",
+      "response_status": "answered",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 1,
+        "replaces_event_id": "event1",
+        "payload": {
+          "kind": "ordering",
+          "ordered_element_ids": [
+            "red",
+            "green",
+            "blue"
+          ]
+        }
+      }
+    },
+    {
+      "id": "event4",
+      "sequence": 4,
+      "kind": "answer",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 400,
+      "item_id": "i2",
+      "response_status": "answered",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 1,
+        "replaces_event_id": "event2",
+        "payload": {
+          "kind": "matching",
+          "right_option_id": "label-blue"
+        }
+      }
+    },
+    {
+      "id": "event5",
+      "sequence": 5,
+      "kind": "answer",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 500,
+      "item_id": "i3",
+      "response_status": "skipped",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 0,
+        "replaces_event_id": null,
+        "payload": null
+      }
+    },
+    {
+      "id": "event6",
+      "sequence": 6,
+      "kind": "answer",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 600,
+      "item_id": "i3",
+      "response_status": "answered",
+      "support_id": null,
+      "answer_record": {
+        "item_version": "v1",
+        "revision": 1,
+        "replaces_event_id": "event5",
+        "payload": {
+          "kind": "matching",
+          "right_option_id": "label-blue"
+        }
+      }
+    },
+    {
+      "id": "event7",
+      "sequence": 7,
+      "kind": "submit_group",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 700,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null,
+      "answer_record": null
+    },
+    {
+      "id": "event8",
+      "sequence": 8,
+      "kind": "close",
+      "snapshot_sha256": "18cab2a22fadeb5765f72df4aca172f8ee26d3c22d909a012238a39223ece197",
+      "epoch_id": "epoch1",
+      "monotonic_ms": 800,
+      "item_id": null,
+      "response_status": "not_applicable",
+      "support_id": null,
+      "answer_record": null
+    }
+  ],
+  "intervals": [],
+  "limitations": [
+    "Original synthetic trace,not real learner/server evidence",
+    "No grading/reward/promotion or actualattention inferred",
+    "Digest is consistency only,not cryptographic authentication"
+  ]
+}

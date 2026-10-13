@@ -85,9 +85,8 @@
         "Map colouredsentences tovisual stresspatterns thenroleplay"
       ],
       "current_group_schema": "0.3",
-      "current_attempt_schema": "0.2",
-      "dedicated_order_or_pair_mapping_payload": false,
-      "reason": "Optionids array hasno declaredordering semantics;free textdoesnotpreserve versionedmember relations;annotation actionalone doesnotfulfil order/matching",
+      "current_attempt_schema": "0.3",
+      "reason": "Group schemas already define ordering/matching andprivate keys. Trace0.3nowrecords correspondingresponses; full multi-action source import, typed direction/partialorder andaudio/diagram relations remain incomplete.",
       "next_design_requirements": [
         "Stable ordered member IDs andexact direction;multipleactions remain explicit",
         "Submission cardinality andunknownsource constraints separated fromanswercorrectness",
@@ -96,7 +95,20 @@
         "Independent sourcekey andrubric beforeadmission"
       ],
       "production_admission": false,
-      "complete_source_response_import": false
+      "complete_source_response_import": false,
+      "dedicated_attempt_order_or_pair_mapping_payload": true,
+      "draft_extension": {
+        "source_id": "benchmark.attempt-relations-v03",
+        "contract_version": "0.3",
+        "schema_path": "Attempts/AttemptTrace-v0.3.schema.json",
+        "documentation_path": "Attempts/Relations-v0.3.md",
+        "audit_acquisition_id": "attempt-relations-v03-audit20261013",
+        "original_fixtures": 2,
+        "negative_checks": 20,
+        "grading_implemented": false,
+        "real_source_import_complete": false,
+        "client_or_student_validation": false
+      }
     },
     {
       "id": "stimulus.shared-table-cells-and-learner-mindmaps",

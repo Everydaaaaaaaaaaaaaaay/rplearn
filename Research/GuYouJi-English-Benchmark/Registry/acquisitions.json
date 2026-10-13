@@ -25625,6 +25625,96 @@
         "acquisition_id": "attempt-response-v02-audit20261013",
         "tool": "check_attempt_report_privacy.py; pre-repair validator at618b2491"
       }
+    },
+    {
+      "id": "attempt-relations-v03-audit20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-relations-v03-audit20261013.json",
+      "bytes": 1151,
+      "sha256": "0c5dba027ddb844a49d959fed0efb93f85e056c85f71c2b837fca031b46212e7",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic relation payload, reference andrevision checks;notproduction/reallearner/sourcekeyvalidation",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
+      }
+    },
+    {
+      "id": "attempt-v02-regression-after-v03-20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-v02-regression-after-v03-20261013.json",
+      "bytes": 1362,
+      "sha256": "e736940ffba3b852c2f6698a3f620d040fdb2d6ac2d780de106b8d2def7cf8e5",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic relation payload, reference andrevision checks;notproduction/reallearner/sourcekeyvalidation",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
+      }
+    },
+    {
+      "id": "attempt-v01-regression-after-v03-20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-v01-regression-after-v03-20261013.json",
+      "bytes": 1446,
+      "sha256": "c85b46e819b173474c1c35a1d7c8523e6bcc8da9bbe16440822953aa0a3e7f71",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic relation payload, reference andrevision checks;notproduction/reallearner/sourcekeyvalidation",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
+      }
+    },
+    {
+      "id": "attempt-report-privacy-after-v03-20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/attempt-report-privacy-after-v03-20261013.json",
+      "bytes": 763,
+      "sha256": "711289aeac716c9f274c89601267369c1dd81753b35e4fc8baa52cda02023c60",
+      "format_validation": "json_parsed",
+      "review_scope": "Original synthetic relation payload, reference andrevision checks;notproduction/reallearner/sourcekeyvalidation",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
+      }
+    },
+    {
+      "id": "create-attempt-relations-v03-20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/create_attempt_relations_v03_20261013.py",
+      "bytes": 1113,
+      "sha256": "bff708e5bfb304df17dd9a1420fe73a64a3b9ca758283e275d7de7b0562b4c4f",
+      "format_validation": "python_source_saved",
+      "review_scope": "Original synthetic relation payload, reference andrevision checks;notproduction/reallearner/sourcekeyvalidation",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
+      }
+    },
+    {
+      "id": "create-attempt-relations-fixtures20261013",
+      "url": "urn:lingotrip:research:attempt-trace:0.3",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/create_attempt_relations_fixtures20261013.py",
+      "bytes": 4257,
+      "sha256": "6d780aaaf5f26b5657f1273b137ef2b71915ff488ebdbb32dadbb24dd2d6beeb",
+      "format_validation": "python_source_saved",
+      "review_scope": "Original synthetic relation payload, reference andrevision checks;notproduction/reallearner/sourcekeyvalidation",
+      "derivation": {
+        "acquisition_id": "attempt-response-v02-audit20261013",
+        "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
+      }
     }
   ],
   "updated_on": "2026-10-13"

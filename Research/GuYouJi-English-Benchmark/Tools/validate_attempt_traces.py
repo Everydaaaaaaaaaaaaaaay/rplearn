@@ -29,13 +29,25 @@ def schema_error_summary(error, prefix=''):
     return f'{prefix}{location}: schema constraint {error.validator} failed'
 
 
-def response_errors(group, item, response):
+def response_errors(group, item, response, trace_version='0.2'):
     """Check response identity/coordinates, never correctness or linguistic limits.
 
     Invalid answers (e.g. too many words) still need recording. Product UX and
     grading must distinguish those from malformed references. Preserve raw text.
     """
     expected, kind = item['response']['kind'], response['kind']
+    if trace_version == '0.3' and expected == kind == 'ordering':
+        # Partial/empty drafts and wrong order remain actual response evidence.
+        members = response['ordered_element_ids']
+        declared = {o['id'] for o in item['response']['elements']}
+        return [] if len(members) == len(set(members)) and set(members) <= declared \
+            else ['Ordering response repeats a member or references an unknown element']
+    if trace_version == '0.3' and expected == kind == 'matching':
+        option = response['right_option_id']
+        # Empty entered response is distinct from skipping the entire item.
+        # Wrong reuse across left items is kept for grading, not silently dropped.
+        return [] if option is None or option in {o['id'] for o in item['response']['right_options']} \
+            else ['Matching response references an unknown right option']
     if expected == 'span_annotation' and kind == expected:
         return annotation_range_errors(group, item, response['ranges'])
     if expected == 'choice' and kind == expected:
@@ -54,7 +66,7 @@ def response_errors(group, item, response):
             return []
     if expected in ('writing', 'translation') and kind == expected:
         return []
-    return ['Response format does not match the frozen item or is not supported by trace0.2']
+    return ['Response format does not match the frozen item or is unsupported by this attempt version']
 
 
 def snapshot_digest(payload):
@@ -81,7 +93,8 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
     if nonfinite(trace):
         return dict(structure_valid=False, errors=['Non-finite numeric value in trace'], production_admission=False)
     version = trace.get('contract_version')
-    filename = {'0.1': 'AttemptTrace.schema.json', '0.2': 'AttemptTrace-v0.2.schema.json'}.get(version) \
+    filename = {'0.1': 'AttemptTrace.schema.json', '0.2': 'AttemptTrace-v0.2.schema.json',
+                '0.3': 'AttemptTrace-v0.3.schema.json'}.get(version) \
         if isinstance(version, str) else None
     if filename is None:
         return dict(structure_valid=False, errors=['Unsupported attempt contract version'], production_admission=False)
@@ -135,7 +148,7 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
         require(item is None or item in items, 'Event references an unknown item')
         require(kind == 'answer' or event['response_status'] == 'not_applicable',
                 'Nonanswer event contains response status')
-        if version == '0.2':
+        if version in ('0.2', '0.3'):
             require(kind == 'answer' or event['answer_record'] is None,
                     'Nonanswer event contains a private answer record')
         require(kind == 'support_exposed' or event['support_id'] is None,
@@ -149,7 +162,7 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
             require(item is not None and event['response_status'] != 'not_applicable',
                     'Answer lacks item/status')
             require(not submitted, 'Answer modified after whole-group submit')
-            if version == '0.2':
+            if version in ('0.2', '0.3'):
                 record = event['answer_record']
                 require(record is not None, 'Answer event lacks typed record')
                 if record is not None:
@@ -165,7 +178,7 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
                     elif event['response_status'] == 'answered':
                         require(record['payload'] is not None, 'Answered event lacks actual response payload')
                         if record['payload'] is not None and item in item_index:
-                            errors += response_errors(group, item_index[item], record['payload'])
+                            errors += response_errors(group, item_index[item], record['payload'], version)
                     revisions[item] = dict(revision=record['revision'], event_id=event['id'],
                                            status=event['response_status'])
                     first_responses.setdefault(item, event['id'])
@@ -238,7 +251,7 @@ def inspect_trace(trace, sources, acquisitions, expected_digest=None):
                 incomplete_or_abandoned=not submitted or not closed,
                 external_expected_digest_supplied=expected_digest is not None,
                 unknown_clock_event_ids=[e['id'] for e in trace['events'] if e['epoch_id'] is None],
-                typed_response_records=version == '0.2',
+                typed_response_records=version in ('0.2', '0.3'),
                 first_response_event_ids=first_responses,
                 latest_response_event_ids={i: r['event_id'] for i, r in revisions.items()},
                 production_admission=False,
