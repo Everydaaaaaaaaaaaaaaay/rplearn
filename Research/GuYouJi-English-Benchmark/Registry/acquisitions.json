@@ -53243,6 +53243,24 @@
         ],
         "tool": "Python/pypdf6.10.0/source image view"
       }
+    },
+    {
+      "id": "audit-firstrelease-three-candidates20261013",
+      "url": "urn:lingotrip:research:firstrelease:author-candidate-structure-check",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/audit_firstrelease_three_candidates20261013.py",
+      "bytes": 4355,
+      "sha256": "24f5806501ced36b3a1b25abd14a4e40874baceba2b52d35a9ca65e60e597d24",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen authored-candidate structure/token/hash/link check; first cloze-table label check failure corrected before freeze; not independent semantic or student validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_candidate_check",
+        "tool": "Python/re/hashlib/json",
+        "related_acquisition_ids": [
+          "firstrelease-native-page-and-key-scope-audit20261013"
+        ]
+      }
     }
   ],
   "updated_on": "2026-10-13"

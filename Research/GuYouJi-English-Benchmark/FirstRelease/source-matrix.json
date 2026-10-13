@@ -226,7 +226,7 @@
         "g7.2021.vocabularyA",
         "g7.2021.vocabularyB"
       ],
-      "specification_status": "first_round_provisional_with_source_and_unknowns",
+      "specification_status": "first_round_v0.1_second_source_pending",
       "original_generated_groups": 1,
       "first_release_complete": false,
       "specification_path": "FirstRelease/Specifications/grade7-v0.1.md",
@@ -245,16 +245,26 @@
         "g8.2025.readingC",
         "g8.2025.cloze"
       ],
-      "specification_status": "not_final",
-      "original_generated_groups": 0,
-      "first_release_complete": false
+      "specification_status": "first_round_v0.1_second_source_pending",
+      "original_generated_groups": 1,
+      "first_release_complete": false,
+      "specification_path": "FirstRelease/Specifications/grade8-v0.1.md",
+      "author_check_paths": [
+        "FirstRelease/Generated/grade8-lunch-author-check-v0.1.json"
+      ],
+      "generated_candidate_paths": [
+        "FirstRelease/Generated/grade8-lunch-v0.1.md"
+      ]
     },
     {
       "grade": 9,
       "selected_group_ids": [],
       "specification_status": "not_final",
       "original_generated_groups": 0,
-      "first_release_complete": false
+      "first_release_complete": false,
+      "specification_path": null,
+      "author_check_paths": [],
+      "generated_candidate_paths": []
     },
     {
       "grade": 10,
@@ -265,9 +275,16 @@
         "g10.2024.readingC",
         "g10.2024.readingD"
       ],
-      "specification_status": "not_final",
-      "original_generated_groups": 0,
-      "first_release_complete": false
+      "specification_status": "first_round_v0.1_second_source_pending",
+      "original_generated_groups": 1,
+      "first_release_complete": false,
+      "specification_path": "FirstRelease/Specifications/grade10-v0.1.md",
+      "author_check_paths": [
+        "FirstRelease/Generated/grade10-grammar-author-check-v0.1.json"
+      ],
+      "generated_candidate_paths": [
+        "FirstRelease/Generated/grade10-grammar-v0.1.md"
+      ]
     },
     {
       "grade": 11,
@@ -276,9 +293,16 @@
         "g11.2024.grammar",
         "g11.2024.readingA"
       ],
-      "specification_status": "not_final",
-      "original_generated_groups": 0,
-      "first_release_complete": false
+      "specification_status": "first_round_v0.1_second_source_pending",
+      "original_generated_groups": 1,
+      "first_release_complete": false,
+      "specification_path": "FirstRelease/Specifications/grade11-v0.1.md",
+      "author_check_paths": [
+        "FirstRelease/Generated/grade11-exhibition-cloze-author-check-v0.1.json"
+      ],
+      "generated_candidate_paths": [
+        "FirstRelease/Generated/grade11-exhibition-cloze-v0.1.md"
+      ]
     },
     {
       "grade": 12,
@@ -290,7 +314,10 @@
       ],
       "specification_status": "not_final",
       "original_generated_groups": 0,
-      "first_release_complete": false
+      "first_release_complete": false,
+      "specification_path": null,
+      "author_check_paths": [],
+      "generated_candidate_paths": []
     }
   ],
   "reuse_next": [
@@ -309,5 +336,6 @@
     }
   ],
   "aggregate_complete": false,
-  "original_paper_identity_authentication_and_rights_pending": true
+  "original_paper_identity_authentication_and_rights_pending": true,
+  "artifact_paths_relative_to": "Research/GuYouJi-English-Benchmark"
 }
