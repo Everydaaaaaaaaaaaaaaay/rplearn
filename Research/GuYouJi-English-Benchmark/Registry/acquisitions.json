@@ -55283,6 +55283,96 @@
         ],
         "tool": "macOSclonefile/currentPython/frozenwheels/existinghostpypdf"
       }
+    },
+    {
+      "id": "firstrelease-grade7-calendar-private-audit20261014",
+      "url": "urn:lingotrip:research:firstrelease:calendar-candidate",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-grade7-calendar-private-audit20261014.json",
+      "bytes": 2375,
+      "sha256": "15409f54c82a200dc7b8246febd3c9902b6d2d6e30256efd96aed25c3cdc553c",
+      "format_validation": "json_parsed",
+      "review_scope": "Actual original grade7 calendar/text3fourchoice author review and datetime row/day check; no source medical/gender assertions, student timing or independent semantic validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_calendar_extension",
+        "related_acquisition_ids": [
+          "suzhou-changshu2019-grade7-upper"
+        ],
+        "tool": "Python/calendar/datetime/re/hashlib/json"
+      }
+    },
+    {
+      "id": "extend-firstrelease-calendar20261014",
+      "url": "urn:lingotrip:research:firstrelease:calendar-candidate",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/extend_firstrelease_calendar20261014.py",
+      "bytes": 5988,
+      "sha256": "9b6ad50767e614c862da82053c0521eb8a43aaa0b957a242275eb22c74450844",
+      "format_validation": "python_source_saved",
+      "review_scope": "Actual original grade7 calendar/text3fourchoice author review and datetime row/day check; no source medical/gender assertions, student timing or independent semantic validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_calendar_extension",
+        "related_acquisition_ids": [
+          "suzhou-changshu2019-grade7-upper"
+        ],
+        "tool": "Python/calendar/datetime/re/hashlib/json"
+      }
+    },
+    {
+      "id": "prepare-firstrelease-validator-v02-20261014",
+      "url": "urn:lingotrip:research:firstrelease:calendar-validation",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/prepare_firstrelease_validator_v02_20261014.py",
+      "bytes": 1594,
+      "sha256": "c680349dbea3c67be420d03b5244bb4e3e4a116bfae68d84b14a163be679830f",
+      "format_validation": "python_source_saved",
+      "review_scope": "Versioned v0.2validator fixes original v0.1 calendar-row/evidence confusion without modifying oldcode/audits.20authored/164items binding pass,8negativecases andcalendarroles; no independent student/semantic/rights validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_calendar_validator_extension",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-calendar-private-audit20261014"
+        ],
+        "tool": "Python/re/hashlib/json/calendar/datetime"
+      }
+    },
+    {
+      "id": "firstrelease-calendar-expanded-validation20261014",
+      "url": "urn:lingotrip:research:firstrelease:calendar-validation",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-calendar-expanded-validation20261014.json",
+      "bytes": 2587,
+      "sha256": "38cb6060d825456d5de56a6978373620b785fc1c730445f9636b3336254ddb73",
+      "format_validation": "json_parsed",
+      "review_scope": "Versioned v0.2validator fixes original v0.1 calendar-row/evidence confusion without modifying oldcode/audits.20authored/164items binding pass,8negativecases andcalendarroles; no independent student/semantic/rights validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_calendar_validator_extension",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-calendar-private-audit20261014"
+        ],
+        "tool": "Python/re/hashlib/json/calendar/datetime"
+      }
+    },
+    {
+      "id": "register-firstrelease-calendar-validation20261014",
+      "url": "urn:lingotrip:research:firstrelease:calendar-validation",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_firstrelease_calendar_validation20261014.py",
+      "bytes": 2311,
+      "sha256": "493f54035c78c61297c2ae8bab0cac08d6750f94b663449c2f7973f377acf877",
+      "format_validation": "python_source_saved",
+      "review_scope": "Versioned v0.2validator fixes original v0.1 calendar-row/evidence confusion without modifying oldcode/audits.20authored/164items binding pass,8negativecases andcalendarroles; no independent student/semantic/rights validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_calendar_validator_extension",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-calendar-private-audit20261014"
+        ],
+        "tool": "Python/re/hashlib/json/calendar/datetime"
+      }
     }
   ],
   "updated_on": "2026-10-13"

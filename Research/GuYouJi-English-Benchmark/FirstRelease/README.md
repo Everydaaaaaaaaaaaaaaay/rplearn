@@ -6,13 +6,13 @@
 
 ## 当前进展：核心审阅包已形成，扩展与外部验证未完成
 
-累计53个完整配套选定源组、19个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
+累计53个完整配套选定源组、20个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
 可以从[核心审阅包](ReviewPackage-v0.1.md)开始：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
-| 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md) | 7，两卷 | 核心审阅/负荷对照；图文与不变形模式缺口保留 |
+| 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md)、[日历](Generated/grade7-calendar-reading-v0.1.md) | 7，两卷 | 更多负荷、人物图/原形词库模式待补 |
 | 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；开放形式缺键 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读](Generated/grade10-roof-reading-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
@@ -23,7 +23,7 @@
 
 [命题/作者审核流程](GenerationProtocol-v0.1.md)规定规格＋完整匹配锚组双输入、合法响应、逐项依据/干扰项、实际修题再解。候选旁的作者检查JSON保存对应版本摘要/答案；旧候选仍指向原规格，不用新版本覆盖历史证据。[作者检查证据口径](AuthoringEvidence.md)区分拟稿叙述和实际保存前后文本的修订，不编造审核次数。
 
-2026-10-14检查：[19候选/18种子与八个登记拒绝](../Studies/2026-10-14-firstrelease-core-review-package.md)。首版尚待额外图文/语言模式和更广负荷、持续反例复核及必要保存；作者检查不是第三方认可。没有真实CEFR/学生用时/细档阈值。
+2026-10-14检查：[19候选/18种子与八个登记拒绝](../Studies/2026-10-14-firstrelease-core-review-package.md)。首版尚待额外图文/语言模式和更广负荷、持续反例复核及必要保存；作者检查不是第三方认可。没有真实CEFR/学生用时/细档阈值。[日历模式扩展](../Studies/2026-10-14-firstrelease-calendar-role-extension.md)后最新[索引0.2](review-index-v0.2.json)为20组/164作答点；第21保存仍为原19组基线。
 
 已完成增量记录：[首批13组](../Studies/2026-10-13-firstrelease-selected-grade-anchors.md)、[高三及补组](../Studies/2026-10-13-firstrelease-grade12-and-extra-groups.md)、[三个首轮闭环](../Studies/2026-10-13-firstrelease-three-authoring-loops.md)、[六年级首轮检查](../Studies/2026-10-13-firstrelease-six-grade-draft-check.md)、[第二来源候选边界](../Studies/2026-10-13-firstrelease-comparison-boundaries.md)。这些是各时点记录，最新计数与下一步以上表为准。
 
