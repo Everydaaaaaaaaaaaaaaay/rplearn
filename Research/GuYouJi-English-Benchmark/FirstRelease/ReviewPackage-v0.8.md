@@ -32,3 +32,5 @@
 [开放响应裁决队列](open-response-adjudication-queue-v0.1.json)列17具体版本/题号/待回填响应与问题，包括高二3/4/9/10、完成被动分词和参考源13/14/19。这是可交接工作，不是已完成独立裁决；未联系第三方。详见[范围修复与裁决记录](../Studies/2026-10-14-degree-range-repairs-and-open-response-queue.md)。
 
 可从[可执行命题标准](PracticalAuthoringStandard-v0.1.md)快速选择六年级模式和七项质量要求；[六项交付检查](DeliveryCheck-v0.1.md)逐项列已准备材料和实际未通过条件。
+
+[第25完整恢复](../Studies/2026-10-14-checkpoint25-current-repairs-and-queue-recovery.md)已纳入现行修题/种子/理由/请求/17项队列，全部6403文件严格COW与独立根SHA通过。恢复不代替语义、学生或商业验收，后来增量需下一批保存。

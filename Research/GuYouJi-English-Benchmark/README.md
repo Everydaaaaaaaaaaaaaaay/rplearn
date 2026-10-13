@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [第25现行修题与队列恢复](Studies/2026-10-14-checkpoint25-current-repairs-and-queue-recovery.md)：6403文件严格COW独立恢复；当前0.13、15种子字段、三处真实修题、用锚0.5、两请求和17队列一致，长期门槛仍开放。
+
 - [程度范围修复与17项裁决队列](Studies/2026-10-14-degree-range-repairs-and-open-response-queue.md)：初二第11真实改题、源高一14原页复核/变体保留；[现行审阅包0.8](FirstRelease/ReviewPackage-v0.8.md)不宣称独立裁决或评分全集。
 
 - [高一同类程度规则误拒修复](Studies/2026-10-14-grade10-degree-condition-and-current-sweep.md)：明确最大面积条件、三篇54/56/49及十空重解；[现行审阅包0.7](FirstRelease/ReviewPackage-v0.7.md)保留旧稿和未通过门槛。
