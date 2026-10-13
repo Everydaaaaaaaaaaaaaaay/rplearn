@@ -48448,6 +48448,93 @@
         ],
         "tool": "Python localbody recovery and actual singlevisual review"
       }
+    },
+    {
+      "id": "un-english-day-native20261013",
+      "url": "https://www.un.org/en/observances/english-language-day",
+      "accessed_on": "2026-10-13",
+      "http_status": 403,
+      "final_url": "https://www.un.org/en/observances/english-language-day",
+      "content_type": "text/html",
+      "status": "fetch_failed",
+      "format_validation": "not_checked",
+      "review_scope": "Native403 errorbody,no UN articlecontent; noalternateclient/TLS/headers workaround",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/un-english-day-native20261013.html",
+      "bytes": 919,
+      "sha256": "3d209b0df4ee121ca9292c0831c3ddb7dc869a301c4fe12ea91c62dae949a090",
+      "error": "403",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-shakespeare-date-sources20261013.json"
+    },
+    {
+      "id": "sbt-shakespeare-birth-native20261013",
+      "url": "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/william-shakespeare/when-was-shakespeare-born/",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/william-shakespeare/when-was-shakespeare-born/",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Nativearticle relevant birth/baptism/copyhistory/rights sections read; facsimile not acquired",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/sbt-shakespeare-birth-native20261013.html",
+      "bytes": 84249,
+      "sha256": "474be7953dc90ed5dad36db5613c25cda884cdd573b7699e3410cd1d10ac33c7",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-shakespeare-date-sources20261013.json"
+    },
+    {
+      "id": "folger-baptism108-native20261013",
+      "url": "https://shakespearedocumented.folger.edu/node/108",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://shakespearedocumented.folger.edu/node/108",
+      "content_type": "text/html; charset=utf-8",
+      "status": "fetched_unreviewed",
+      "format_validation": "html_response_saved",
+      "review_scope": "Nativearticle relevant birth/baptism/copyhistory/rights sections read; facsimile not acquired",
+      "request_context": "Anonymous verifiedTLS bounded native HTML request, no alternateclient/headers/access bypass",
+      "path": "build/english-benchmark-research-20261012/raw/folger-baptism108-native20261013.html",
+      "bytes": 61697,
+      "sha256": "405085b10ded3a170cf98bd1ca9cc63649937f31322e1c202d9f22c0599c39db",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-shakespeare-date-sources20261013.json"
+    },
+    {
+      "id": "fetch-shakespeare-date-sources20261013",
+      "url": "urn:lingotrip:research:shakespeare-date-precision",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_shakespeare_date_sources20261013.py",
+      "bytes": 1854,
+      "sha256": "0cb7fd1a41dd262e056b620a4c0cff63e63a8feab4f6768b10190a9cf17035c3",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen acquisition and relevantnative-text consistency check, original paraphrased observations; not facsimile verification",
+      "derivation": {
+        "acquisition_id": "sbt-shakespeare-birth-native20261013",
+        "additional_parent_acquisition_ids": [
+          "folger-baptism108-native20261013",
+          "pep-g7upper-u7context-1312001101241-image081"
+        ],
+        "tool": "Python HTMLParser and native relevant-section reading"
+      }
+    },
+    {
+      "id": "record-shakespeare-date-precision20261013",
+      "url": "urn:lingotrip:research:shakespeare-date-precision",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_shakespeare_date_precision20261013.py",
+      "bytes": 7289,
+      "sha256": "f35a10e366abd8add7a2ce07cb098909b02b434240f6a3ea3eb850ed7318e14a",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen acquisition and relevantnative-text consistency check, original paraphrased observations; not facsimile verification",
+      "derivation": {
+        "acquisition_id": "sbt-shakespeare-birth-native20261013",
+        "additional_parent_acquisition_ids": [
+          "folger-baptism108-native20261013",
+          "pep-g7upper-u7context-1312001101241-image081"
+        ],
+        "tool": "Python HTMLParser and native relevant-section reading"
+      }
     }
   ],
   "updated_on": "2026-10-13"

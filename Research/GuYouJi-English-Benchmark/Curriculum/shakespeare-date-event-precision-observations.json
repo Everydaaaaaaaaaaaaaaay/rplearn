@@ -1,0 +1,62 @@
+{
+  "observed_on": "2026-10-13",
+  "linked_textbook": {
+    "source_id": "pep.textbooks",
+    "book_reader_identity": "1312001101241",
+    "printed_page": 71,
+    "task_id": "pep.g7upper.u7.GF3c",
+    "acquisition_id": "pep-g7upper-u7context-1312001101241-image081"
+  },
+  "claims": [
+    {
+      "kind": "traditional_birthday_observance",
+      "month": 4,
+      "day": 23,
+      "exact_birth_date_established": false,
+      "source_ids": [
+        "historical.shakespeare-sbt",
+        "historical.shakespeare-folger108"
+      ],
+      "evidence_acquisition_ids": [
+        "sbt-shakespeare-birth-native20261013",
+        "folger-baptism108-native20261013"
+      ]
+    },
+    {
+      "kind": "documented_baptism_event",
+      "year": 1564,
+      "month": 4,
+      "day": 26,
+      "not_birth_event": true,
+      "source_id": "historical.shakespeare-folger108",
+      "evidence_acquisition_ids": [
+        "folger-baptism108-native20261013"
+      ],
+      "catalogue_call_number": "DR243/1,folio5recto",
+      "facsimile_images_not_acquired_or_reviewed": true,
+      "source_record_copying_history": "Institution says pre1600entries copied later from no-longer surviving earlier register; source account not independent palaeographic review"
+    }
+  ],
+  "source_inference_difference": {
+    "sbt": "Uses typical baptism interval to say unlikely earlier than23April",
+    "folger": "Allows earlier21/22April possibilities; prayer-book timing not regularly observed",
+    "not_settled_by_choosing_one_exact_birthday": true
+  },
+  "UN_page": {
+    "source_id": "un.english-language-day",
+    "acquisition_id": "un-english-day-native20261013",
+    "native_status": "403,no content acquired",
+    "English_Language_Day_rationale_not_native_verified_this_batch": true
+  },
+  "instruction_boundary": "Answer from passage versus assert independently established historical birthday must remain separate; no claim textbook already provenwrong",
+  "institution_page_update": "FolgerMay22,2020;SBT precise articleupdate notfound",
+  "rights": {
+    "HTML_commercial_reuse": "not_established",
+    "facsimile_image_notice": "CC BY-NC-SA4.0 label plus personalresearch/additionaluse restrictions; exactscope conflict retained",
+    "image_commercial_or_training_admission": false,
+    "images_not_downloaded": true,
+    "not_contacted": true
+  },
+  "independent_teacher_gold": false,
+  "student_calibration": false
+}
