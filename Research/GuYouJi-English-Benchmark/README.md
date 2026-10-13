@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [第23 SVG原件与真实修订恢复](Studies/2026-10-14-checkpoint23-native-svg-and-control-fix-recovery.md)：6230文件独立恢复，四研究SVG原件/0.6图文包及高一对照修正重放一致，其他最终门槛继续开放。
+
 - [初一完整图文题与SVG保存修正](Studies/2026-10-14-grade7-joint-image-assets-and-persistence.md)：四原创建模图/替代描述实际核读，当前22家族/177点，图片绑定拒绝及SVG发现/恢复探针通过，非学生验证。
 
 - [高一复杂语言变体与实际对照修正](Studies/2026-10-14-grade10-complex-variant-and-control-repair.md)：309词/12句与原308/22，补回工作稿遗漏的未覆盖对照；索引0.5仍21家族/174点，三个版本不重复计样本。
