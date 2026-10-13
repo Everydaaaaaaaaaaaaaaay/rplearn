@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- **当前优先：[初高中首版24小时任务](FirstRelease/README.md)**。以年级取材，接受教材/进度正常差异；争取北京时间10月14日20:12前交付规格、锚题及审核过的原创题组，完整基准库长期验收继续保留。
+
 - [七下末尾附录与119页核验](Studies/2026-10-13-pep-final-appendices-and-sense-safe-links.md)：正文、Reading Plus、脚本和附录的选定数字本完整页集合；页面完整不等于金标准或商用完成。
 - [七上正式第一单元](Studies/2026-10-13-pep-grade7upper-unit1-information-and-function.md)与[三个Starter](Studies/2026-10-13-pep-starter-input-and-image-response-boundaries.md)：信息缺省、语言功能、着色/图片圈画及真实前置输入。
 - [七上第二单元的所有权与证据](Studies/2026-10-13-pep-grade7upper-unit2-ownership-and-evidence.md)：八正文页/配套脚本/词表、23活动块、照片关系与二元判断待裁决；保留邻单元输入误归的观察更正。
