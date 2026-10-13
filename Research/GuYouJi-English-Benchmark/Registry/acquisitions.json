@@ -40122,6 +40122,132 @@
         "tool": "Poppler pdftoppm -scale-to1400",
         "pdf_page": 13
       }
+    },
+    {
+      "id": "snapshot14-report20261013",
+      "url": "urn:lingotrip:research:local-snapshot:14",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot-report-20261013-fourteen.json",
+      "bytes": 3088,
+      "sha256": "1bf29d19d9e46acf223431f7953e52003470eaf57132d380f7254f8cb1f2c416",
+      "format_validation": "json_parsed",
+      "review_scope": "4902file full independent COW restore; hashedfrozenwheels/noindex clean dependencyrebuild with7checks, twofreshreports isolated; not offhost or education/admission",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot12-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "snapshot14-strict-cow-method20261013",
+      "url": "urn:lingotrip:research:local-snapshot:14",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot14_strict_cow20261013.py",
+      "bytes": 900,
+      "sha256": "91a512660fe2c1565abef1a0cb4bd028bf407fb64d7c444823f4af344812b39c",
+      "format_validation": "python_source_saved",
+      "review_scope": "4902file full independent COW restore; hashedfrozenwheels/noindex clean dependencyrebuild with7checks, twofreshreports isolated; not offhost or education/admission",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot12-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "snapshot14-offline-dependency-restore20261013",
+      "url": "urn:lingotrip:research:local-snapshot:14",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot14-full-offline-dependency-restore-audit20261013.json",
+      "bytes": 19717,
+      "sha256": "ae88e1b5eba9d5e6bdfce2edfc8f8bd3b92a6af05de22d47daef746e8bb9d62c",
+      "format_validation": "json_parsed",
+      "review_scope": "4902file full independent COW restore; hashedfrozenwheels/noindex clean dependencyrebuild with7checks, twofreshreports isolated; not offhost or education/admission",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot12-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "snapshot14-restore-method20261013",
+      "url": "urn:lingotrip:research:local-snapshot:14",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot14_offline_deps20261013.py",
+      "bytes": 4825,
+      "sha256": "65dc9fece73f94c3a69b5a5dea2e14f76c1c12e141c84143b4a9d5f0aa71d561",
+      "format_validation": "python_source_saved",
+      "review_scope": "4902file full independent COW restore; hashedfrozenwheels/noindex clean dependencyrebuild with7checks, twofreshreports isolated; not offhost or education/admission",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot12-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "early-snapshot-identical-cow-compaction20261013",
+      "url": "urn:lingotrip:research:snapshot-identical-duplicate-compaction",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/early-snapshot-identical-cow-compaction20261013.json",
+      "bytes": 1179156,
+      "sha256": "80b1445509f43cb2535dc86658cd931695d52814dca8bca2e7cdcb2890370d21",
+      "format_validation": "json_parsed",
+      "review_scope": "Identicalbytes strictCOW atomic replacement only; all3484early files andoriginal manifestdigests verified; not oldversion deletion/offhost recovery",
+      "derivation": {
+        "origin": "project_authored_storage_compaction",
+        "related_acquisition_ids": [
+          "snapshot14-report20261013"
+        ],
+        "tool": "macOS clonefile, streamSHA256, atomicreplace"
+      }
+    },
+    {
+      "id": "compact-identical-early-snapshot-duplicates20261013",
+      "url": "urn:lingotrip:research:snapshot-identical-duplicate-compaction",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/compact_identical_early_snapshot_duplicates20261013.py",
+      "bytes": 3170,
+      "sha256": "b49a6d8a427a7af286dd86aca44fa263274eef37666b763f1556b83c9c257176",
+      "format_validation": "python_source_saved",
+      "review_scope": "Identicalbytes strictCOW atomic replacement only; all3484early files andoriginal manifestdigests verified; not oldversion deletion/offhost recovery",
+      "derivation": {
+        "origin": "project_authored_storage_compaction",
+        "related_acquisition_ids": [
+          "snapshot14-report20261013"
+        ],
+        "tool": "macOS clonefile, streamSHA256, atomicreplace"
+      }
+    },
+    {
+      "id": "register-snapshot-compaction20261013",
+      "url": "urn:lingotrip:research:snapshot-identical-duplicate-compaction",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_snapshot_compaction20261013.py",
+      "bytes": 2491,
+      "sha256": "da81c3d69df2c2b48ca0289b7f3f81138ef1328c23232a4245712371f2cc006c",
+      "format_validation": "python_source_saved",
+      "review_scope": "Identicalbytes strictCOW atomic replacement only; all3484early files andoriginal manifestdigests verified; not oldversion deletion/offhost recovery",
+      "derivation": {
+        "origin": "project_authored_storage_compaction",
+        "related_acquisition_ids": [
+          "snapshot14-report20261013"
+        ],
+        "tool": "macOS clonefile, streamSHA256, atomicreplace"
+      }
     }
   ],
   "updated_on": "2026-10-13"
