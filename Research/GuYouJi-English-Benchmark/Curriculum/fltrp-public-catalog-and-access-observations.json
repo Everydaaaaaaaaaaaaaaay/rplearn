@@ -1,0 +1,68 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "fltrp.textbooks",
+  "booklist_acquisition_id": "fltrp-current-public-booklist",
+  "booklist_current_snapshot_records": 51,
+  "records_with_cover_labels": 41,
+  "non_cover_or_bundle_records": 10,
+  "all_bundle_unique_component_ids": 67,
+  "counts_are_unique_verified_textbook_editions": false,
+  "cover": {
+    "acquisition_id": "fltrp-public-jh1V2-book-cover",
+    "record_key": "jh1_V2",
+    "record_display_label": "英语七年级上册",
+    "visible_title_role": "义务教育教科书英语七年级上册",
+    "visible_ministry_approval_year": 2012,
+    "dimensions": [
+      350,
+      493
+    ],
+    "ISBN_or_printing": "not_visible_or_verified",
+    "actual_body_edition": "not_acquired",
+    "V2_is_current_2024_revision_proof": false,
+    "cover_edition_versus_book_payload_match": "not_verified"
+  },
+  "teacher_sample_entry": {
+    "acquisition_id": "fltrp-legacy-teacher-grade7upper-sample-entry",
+    "URL_date": "2020-08-26",
+    "HTML_comment_publish_date": "2022-05-06",
+    "source_printing_date": "not_established",
+    "response_is_PDF": false,
+    "actual_sample_PDF_acquired": false,
+    "actual_contents_PDF_acquired": false,
+    "login_gate_observed": true,
+    "known_sample_path_not_fetched": "/upload/resources/file/2020/08/26/54386.pdf",
+    "known_contents_path_not_fetched": "/upload/resources/file/2020/08/26/54385.pdf",
+    "download_or_pdf_access_attempted_after_gate": false
+  },
+  "current_revised_training": {
+    "acquisition_id": "fltrp-revised-junior-public-training-catalog",
+    "course_id": "1557",
+    "public_tasks": 8,
+    "public_chapters": 4,
+    "public_price_banner": "免费",
+    "anonymous_native_lock_true_tasks": 8,
+    "anonymous_preview_flag_zero_tasks": 8,
+    "free_price_is_anonymous_playback_or_commercial_permission": false,
+    "actual_videos_or_slides_acquired": false,
+    "registration_or_enrollment_performed": false,
+    "chapter_7AU1_new_title": "A new start",
+    "observed_lesson_title_sections": [
+      "Starting out & understanding ideas",
+      "Developing ideas"
+    ],
+    "source_ISBN_or_full_student_contents": "not_established",
+    "lecturer_or_demo_durations_are_target_student_task_times": false
+  },
+  "observed_limits": [
+    "Publiccatalog mixes book records andactivationcard bundles;component IDs are not verified volumes",
+    "2012approvalcover observed at currentURL/keyV2;cannot conclude underlying protectedpayload is new or old solelyfromcover",
+    "Publisher training metadata gives newunit title/lesson headings,not fullteachingtext/studentmastery",
+    "Teacher-resource sample links require login in publishedpage script;no directPDF workaround",
+    "No attendee identifiers copied intoderivedmetadata"
+  ],
+  "actual_comparison_unit_content_acquired": false,
+  "commercial_rights": "not_cleared",
+  "learner_calibration": false,
+  "production_admission": false
+}
