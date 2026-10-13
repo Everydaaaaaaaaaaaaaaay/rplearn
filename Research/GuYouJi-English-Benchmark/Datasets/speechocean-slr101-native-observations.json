@@ -1,0 +1,307 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "speechocean.corpus-slr101",
+  "archive_acquisition_id": "speechocean-slr101-eu-archive20261013",
+  "paper_acquisition_id": "speechocean-isca2021-paper20261013",
+  "scope": "Source archive structure andcandidate aggregation audit; not audio intelligibility/externalrating calibration",
+  "archive_summary": {
+    "total_members": 5518,
+    "non_wave_files": 18,
+    "wave_files": 5245,
+    "wave_formats": {
+      "(1, 2, 16000, 'NONE')": 5245
+    },
+    "total_seconds": 21520.861999999976,
+    "archive_gzip_CRC_end_verified": true,
+    "all_wave_header_and_PCM_bytes_checked": true
+  },
+  "metadata_audit": {
+    "status": "Native corpus structural/count/aggregation observations; not independent scoretruth or product calibration",
+    "archive_acquisition_id": "speechocean-slr101-eu-archive20261013",
+    "splits": {
+      "train": {
+        "utterances": 2500,
+        "speakers": 125,
+        "utterances_per_speaker_counts": {
+          "20": 125
+        },
+        "speaker_age_min": 6,
+        "speaker_age_max": 37,
+        "speakers_under18": 58,
+        "speakers_atleast18": 67,
+        "gender_counts": {
+          "m": 58,
+          "f": 67
+        },
+        "all_mapping_sets_match": true,
+        "all_selected_wavs_present": true,
+        "selected_seconds": 10354.11
+      },
+      "test": {
+        "utterances": 2500,
+        "speakers": 125,
+        "utterances_per_speaker_counts": {
+          "20": 125
+        },
+        "speaker_age_min": 6,
+        "speaker_age_max": 43,
+        "speakers_under18": 64,
+        "speakers_atleast18": 61,
+        "gender_counts": {
+          "m": 67,
+          "f": 58
+        },
+        "all_mapping_sets_match": true,
+        "all_selected_wavs_present": true,
+        "selected_seconds": 9688.648
+      }
+    },
+    "score_records": 5000,
+    "detail_records": 5000,
+    "all_score_detail_and_split_id_sets_equal": true,
+    "speaker_split_overlap": 0,
+    "utterance_split_overlap": 0,
+    "distinct_transcripts_by_split": {
+      "train": 2500,
+      "test": 2499
+    },
+    "shared_exact_transcript_strings": 52,
+    "transcript_matches": {
+      "scores": 4280,
+      "detail": 4280,
+      "total": 5000
+    },
+    "archive_wav_count": 5245,
+    "selected_wav_count": 5000,
+    "unselected_wav_count": 245,
+    "unselected_wav_seconds": 1478.104,
+    "unselected_not_assumed_labelled_training": true,
+    "sentence_metric_ranges": {
+      "accuracy": {
+        "aggregate_min": 1,
+        "aggregate_max": 10,
+        "detail_min": 0.0,
+        "detail_max": 10.0
+      },
+      "completeness": {
+        "aggregate_min": 0.0,
+        "aggregate_max": 10.0,
+        "detail_min": 0.0,
+        "detail_max": 1.0
+      },
+      "fluency": {
+        "aggregate_min": 0,
+        "aggregate_max": 10,
+        "detail_min": 0.0,
+        "detail_max": 10.0
+      },
+      "prosodic": {
+        "aggregate_min": 0,
+        "aggregate_max": 10,
+        "detail_min": 0.0,
+        "detail_max": 10.0
+      },
+      "total": {
+        "aggregate_min": 0,
+        "aggregate_max": 10,
+        "detail_min": 0.0,
+        "detail_max": 10.0
+      }
+    },
+    "five_rater_vector_counts": {
+      "5": 25000
+    },
+    "candidate_aggregation_matches": {
+      "accuracy": {
+        "median": 5000,
+        "round_mean": 3728,
+        "round_median": 5000,
+        "mean": 1105
+      },
+      "completeness": {
+        "mean_times10": 4586,
+        "median_times10": 5000,
+        "median": 5,
+        "round_mean": 5,
+        "round_median": 5
+      },
+      "fluency": {
+        "mean": 804,
+        "median": 5000,
+        "round_mean": 3492,
+        "round_median": 5000,
+        "median_times10": 8,
+        "mean_times10": 2
+      },
+      "prosodic": {
+        "median": 5000,
+        "round_mean": 3562,
+        "round_median": 5000,
+        "mean": 855,
+        "median_times10": 8,
+        "mean_times10": 2
+      },
+      "total": {
+        "median": 1370,
+        "round_mean": 3005,
+        "round_median": 2905,
+        "mean": 52,
+        "median_times10": 3
+      }
+    },
+    "candidate_aggregation_is_original_code_or_prescribed_rule": false,
+    "sentence_rater_spread": {
+      "accuracy": {
+        "utterances_with_rater_spread": 4678,
+        "maximum_spread": 8.0,
+        "median_spread": 2.0
+      },
+      "completeness": {
+        "utterances_with_rater_spread": 416,
+        "maximum_spread": 1.0,
+        "median_spread": 0.0
+      },
+      "fluency": {
+        "utterances_with_rater_spread": 4992,
+        "maximum_spread": 7.0,
+        "median_spread": 3.0
+      },
+      "prosodic": {
+        "utterances_with_rater_spread": 4994,
+        "maximum_spread": 8.0,
+        "median_spread": 3.0
+      },
+      "total": {
+        "utterances_with_rater_spread": 5000,
+        "maximum_spread": 7.73,
+        "median_spread": 2.3
+      }
+    },
+    "word_records": 31816,
+    "phone_records": 94445,
+    "phone_representation_counts": {
+      "list": 31816
+    },
+    "word_rating_vector_length_violations": 0,
+    "phone_score_length_mismatches": 0,
+    "audio_actually_listened": false,
+    "learner_identifiers_or_verbatim_utterances_in_public_report": false,
+    "no_model_trained": true
+  },
+  "source_scope_audit": {
+    "status": "Scope/normalization observations only; raw originals unchanged",
+    "transcript_pair_categories": {
+      "exact": 4280,
+      "alphanumeric_equivalent_not_semantic_gold": 720
+    },
+    "scores_detail_text_equal_count": 5000,
+    "total": 5000,
+    "raw_texts_or_speaker_ids_not_in_report": true,
+    "unresolved_identity_count": 0,
+    "speaker_age_histogram": {
+      "6": 25,
+      "7": 22,
+      "8": 8,
+      "9": 19,
+      "10": 6,
+      "11": 13,
+      "12": 11,
+      "13": 3,
+      "14": 2,
+      "15": 13,
+      "19": 10,
+      "20": 26,
+      "21": 27,
+      "22": 9,
+      "23": 6,
+      "24": 6,
+      "25": 9,
+      "26": 5,
+      "27": 2,
+      "28": 6,
+      "29": 4,
+      "30": 4,
+      "31": 2,
+      "32": 2,
+      "33": 3,
+      "35": 2,
+      "37": 3,
+      "38": 1,
+      "43": 1
+    },
+    "under18": 122,
+    "atmost18": 122,
+    "official_child_adult_threshold": "Not established by paper/README, so neither inequality relabels speakers",
+    "completeness": {
+      "README_semantics": "Percentage words withgoodpronunciation",
+      "paper_semantics": "Percentage targetwords actuallypronounced",
+      "detail_range": [
+        0,
+        1
+      ],
+      "aggregate_range": [
+        0,
+        10
+      ],
+      "all5000_median_times10_match": true,
+      "formula_match_not_independent_semantic_validation": true
+    },
+    "word_accuracy_30percent_boundary": {
+      "README_wording": "Less than30percent",
+      "paper_wording": "No morethan30percent",
+      "actual_keys_or_issuer_resolution": "not_established"
+    },
+    "total_score_formula": "Not recovered; tested mean/median candidates didnot reproduce all5000 totals",
+    "later_GitHub_version_diff": "Not retrieved or benchmarked inthis audit",
+    "model_training_or_live_evaluation": false
+  },
+  "paper_method_observations": {
+    "actualvisual_pdf_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "printed_pages": [
+      3710,
+      3711,
+      3712,
+      3713,
+      3714
+    ],
+    "task": "Prompted sentence readaloud",
+    "capture": "Phones held20cmfrommouth inquiet3x3mroom",
+    "not_spontaneous_retell_or_dialogue": true,
+    "canonical_phone_choices_voted_before_ratings": true,
+    "ratings_reportedly_independent_given_sharedcanonical_andmetric": true,
+    "experts_required_atleast_three_listens": true,
+    "word_accuracy_not_simplemean_ofphones": true,
+    "phone_score_1_marks_heavyaccent": true,
+    "accent_target_and_intelligibility_require_adjudication_forproduct": true,
+    "wordstress_individual_values": [
+      5,
+      10
+    ],
+    "paper_phone_plot_rescaled_from0to2_to0to10": true,
+    "source_baseline_results": {
+      "target": "phoneme score",
+      "GOP_value": {
+        "MSE": 0.69,
+        "PCC": 0.25
+      },
+      "GOP_feature": {
+        "MSE": 0.16,
+        "PCC": 0.45
+      },
+      "not_our_model_or_acceptance_threshold": true
+    }
+  },
+  "version_scope": "Fixed downloadedOpenSLR archive;no latestGitHubscore orconversion equality established",
+  "extra245_wave_selection_reason": "unknown;notlabelled orbadquality automatically",
+  "shared52_prompts_not_automatically_invalid_split": true,
+  "source_ratings_are_not_new_LingoTrip_teacher_or_student_validation": true,
+  "raw_learner_voices_metadata_remain_private_cache": true,
+  "production_admission": false,
+  "gold_admission": false
+}

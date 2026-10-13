@@ -153,6 +153,31 @@
       "confirmed_source_conflict": false,
       "observation": "Interpretation states objective/subjective50/50; formal written Choice-labelled rows70marks, Listenchoose9. Our79/140 classification is not an official taxonomy anddoesnot silently replace their50% claim.",
       "required_response": "Resolve denominator/type classification withissuer orindependentreviewer; preserve operational definitions before quantitative blueprint use"
+    },
+    {
+      "id": "speechocean-completeness-scale-and-definition",
+      "source_id": "speechocean.corpus-slr101",
+      "acquisition_id": "speechocean-slr101-eu-archive20261013",
+      "additional_evidence_acquisition_ids": [
+        "speechocean-isca2021-paper20261013"
+      ],
+      "locator": "ArchiveREADME completeness;paper PDF2 definition;resource scores/detail all5000",
+      "category": "score_unit_and_construct_mismatch",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": true,
+      "observation": "Detail0-1 vsaggregate0-10;all5000aggregate equal10xmedian,notuniversalmean. READMEgoodpronunciation words vspaperactuallypronounced words:semanticsnotautomatically same.",
+      "required_response": "Retain metric/version/unit/aggregation andsource definitions; noonegeneric completenessfield orsilent rescaling"
+    },
+    {
+      "id": "speechocean-split-and-unselected-audio",
+      "source_id": "speechocean.corpus-slr101",
+      "acquisition_id": "speechocean-slr101-eu-archive20261013",
+      "locator": "All5245WAVs andtrain/test lists with5000 score records",
+      "category": "dataset_membership_and_generalization_scope",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": false,
+      "observation": "Extra245WAVs notinselectedlists/scorekeys;zero speaker overlap but52exactprompt strings sharedbetween splits",
+      "required_response": "Train/test bydeclared membership andintended evaluation scope; do not addunlabelled audio orclaim promptunseen validation"
     }
   ],
   "gold_admission": false

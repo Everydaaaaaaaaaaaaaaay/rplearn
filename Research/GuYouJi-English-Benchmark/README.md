@@ -33,6 +33,7 @@
 - [国际题组与听力配套](Studies/2026-10-13-cambridge-groups-and-media-review.md)：九个题组结构、多解与部分得分、B1当前样卷配套及媒体核验边界。
 - [CEFR-J官方资料复算](Studies/2026-10-13-cefrj-upstream-review.md)：7,801条词性数据、拼写变体与版本差异、2025语法资料及用途范围。
 - [NGSL开放词表与用途边界](Studies/2026-10-13-ngsl-native-files-and-purpose-rights.md)：四类词表的实际计数、未知排名/词形差异、CC BY-SA条件与Oxford API的AI限制，频率分档不直接换年级。
+- [SpeechOcean原始评分与分组](Studies/2026-10-13-speechocean-labels-splits-and-rights.md)：完整公开朗读语料、5000选定条目和五评分者明细、尺度/提示文本隔离及CC BY条件；不是年级/CEFR或产品口语验证。
 - [中间年级官方考试配套](Studies/2026-10-13-domestic-semester-components.md)：郑州高一高二四个学期组合的答案、录音与评分，原卷及教学范围仍缺。
 - [北京机考模式与来源冲突](Studies/2026-10-13-beijing-mode-version-and-source-conflicts.md)：初中四题型/40分与高中五题型/50分、顺序限时，以及题数/分值/日期混淆的具体反例；完整题面与评分仍缺。
 - [日常考试采样与广州新结构](Studies/2026-10-13-exam-policy-sampling-and-guangzhou-blueprint.md)：2025日常考试政策改变非毕业年级采样；2027—2029广州正式附件的题量/分值及项目情境、角色扮演，完整样题与比例口径仍待核。
