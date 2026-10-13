@@ -44156,6 +44156,101 @@
         ],
         "tool": "Python urllib ordinary verifiedTLS"
       }
+    },
+    {
+      "id": "bnu2025-12-grade8upper-abstracts",
+      "url": "https://flts.bnu.edu.cn/node/16785",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "review_scope": "Actually read public abstract/background/metadata; not articlefulltext/teacher efficacy data/studentbody",
+      "request_context": "Anonymous verifiedTLS2MBbound",
+      "http_status": 200,
+      "final_url": "https://flts.bnu.edu.cn/node/16785",
+      "content_type": "text/html; charset=UTF-8",
+      "path": "build/english-benchmark-research-20261012/raw/bnu2025-12-grade8upper-abstracts.html",
+      "bytes": 80160,
+      "sha256": "096685d17141e570324fe00f5917063118997b0e110243bbb36d51a0e15c3c1e",
+      "format_validation": "html_saved",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-grade8-public-pedagogy20261013.json"
+    },
+    {
+      "id": "bnu2025-07-grade8reading-abstracts",
+      "url": "https://flts.bnu.edu.cn/node/16687",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "review_scope": "Actually read public abstract/background/metadata; not articlefulltext/teacher efficacy data/studentbody",
+      "request_context": "Anonymous verifiedTLS2MBbound",
+      "http_status": 200,
+      "final_url": "https://flts.bnu.edu.cn/node/16687",
+      "content_type": "text/html; charset=UTF-8",
+      "path": "build/english-benchmark-research-20261012/raw/bnu2025-07-grade8reading-abstracts.html",
+      "bytes": 81629,
+      "sha256": "34580ad02e70fb82c8073da6f80a91e0e8c3a094bd53fa57e0fa2e8ee592a7df",
+      "format_validation": "html_saved",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-grade8-public-pedagogy20261013.json"
+    },
+    {
+      "id": "shucheng2025-pep-grade8upper-training",
+      "url": "https://www.shucheng.gov.cn/zwzx/ztzl/ztzl/scjyztw/jyky/37991776.html",
+      "accessed_on": "2026-10-13",
+      "status": "blocked",
+      "review_scope": "HTTP403 notice notacquired; no workaround",
+      "request_context": "Anonymous verifiedTLS2MBbound",
+      "error": "HTTP Error 403: Forbidden",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-grade8-public-pedagogy20261013.json"
+    },
+    {
+      "id": "bnu25LB1-article-entry20261013",
+      "url": "https://flts.bnu.edu.cn/node/17093",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/raw/bnu2025-12-grade8upper-article-entry.html",
+      "bytes": 39496,
+      "sha256": "5b167f012e735beb4cbfece0e42c9fad6d0cf9d668e72f025aff24487e6b11d4",
+      "format_validation": "html_saved",
+      "review_scope": "Actually read public abstract/background/metadata; not articlefulltext/teacher efficacy data/studentbody",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-bnu25LB1-entry20261013.json"
+    },
+    {
+      "id": "fetch-grade8-public-pedagogy20261013",
+      "url": "https://flts.bnu.edu.cn/node/16785",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_grade8_public_pedagogy20261013.py",
+      "bytes": 1487,
+      "sha256": "ca99c28b2529f5f1117862f22d8e69f14d7b715086ddad314d48441229e85fe8",
+      "format_validation": "python_source_saved",
+      "review_scope": "Saved publicabstract retrieval/observation method",
+      "derivation": {
+        "acquisition_id": "bnu2025-12-grade8upper-abstracts",
+        "additional_parent_acquisition_ids": [
+          "bnu2025-07-grade8reading-abstracts",
+          "shucheng2025-pep-grade8upper-training",
+          "bnu25LB1-article-entry20261013"
+        ],
+        "tool": "Python/publicHTML read"
+      }
+    },
+    {
+      "id": "record-grade8-pedagogy20261013",
+      "url": "https://flts.bnu.edu.cn/node/16785",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_grade8_pedagogy20261013.py",
+      "bytes": 5551,
+      "sha256": "355ff4fab61183139a946f3b0de123f59859d0e057cc8a1ed5342a6c3dd4bb70",
+      "format_validation": "python_source_saved",
+      "review_scope": "Saved publicabstract retrieval/observation method",
+      "derivation": {
+        "acquisition_id": "bnu2025-12-grade8upper-abstracts",
+        "additional_parent_acquisition_ids": [
+          "bnu2025-07-grade8reading-abstracts",
+          "shucheng2025-pep-grade8upper-training",
+          "bnu25LB1-article-entry20261013"
+        ],
+        "tool": "Python/publicHTML read"
+      }
     }
   ],
   "updated_on": "2026-10-13"
