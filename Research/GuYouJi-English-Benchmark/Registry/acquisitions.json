@@ -59240,6 +59240,100 @@
         ],
         "tool": "validate_current_used_anchor_rationales.py --index current-used-anchor-rationale-index-v0.2.json"
       }
+    },
+    {
+      "id": "current-used-anchor-rationales-complete2520261014-record",
+      "url": "urn:lingotrip:research:actual-used-highschool-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-used-anchor-rationales-complete2520261014.json",
+      "bytes": 113684,
+      "sha256": "298126418eaa2078890d3554c3792c7549f8be8471e71050fc14d070034d2759",
+      "format_validation": "UTF8_saved",
+      "review_scope": "complete25actualusedgroups205sourceitemrationales;7new45actualsourceitems/fullmaterialandkey reread.very...that/setlocated/declined-avoided/concept-title-denominator risks andopenvariants separated;25/205coverage only,no independentgold/student/rights/model admission",
+      "derivation": {
+        "origin": "project_actual_used_highschool_full_source_rationale_completion",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-grade9-expanded20261014-record",
+          "firstrelease-native-page-and-key-scope-audit20261013",
+          "firstrelease-senior-secondsource-selected-private-audit20261014"
+        ],
+        "tool": "actualwholegroup/refkey image reread and sameauthorresolve"
+      }
+    },
+    {
+      "id": "complete-current-used-highschool-rationales20261014-record",
+      "url": "urn:lingotrip:research:actual-used-highschool-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/complete_current_used_highschool_rationales20261014.py",
+      "bytes": 15790,
+      "sha256": "16767ebfd899c00686df37f444293b080a96fa04dabeedc9004cf248860097ce",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_highschool_completion_method;7new45actualsourceitems/fullmaterialandkey reread.very...that/setlocated/declined-avoided/concept-title-denominator risks andopenvariants separated;25/205coverage only,no independentgold/student/rights/model admission",
+      "derivation": {
+        "origin": "project_actual_used_highschool_full_source_rationale_completion",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-grade9-expanded20261014-record",
+          "firstrelease-native-page-and-key-scope-audit20261013",
+          "firstrelease-senior-secondsource-selected-private-audit20261014"
+        ],
+        "tool": "actualwholegroup/refkey image reread and sameauthorresolve"
+      }
+    },
+    {
+      "id": "firstrelease-v010-exact-used-source-validation20261014-record",
+      "url": "urn:lingotrip:research:actual-used-highschool-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-v010-exact-used-source-validation20261014.json",
+      "bytes": 1723,
+      "sha256": "2b75f50b07a7384f459cf8749ec00dd1bead58485a6a456e0946e72d0f615d63",
+      "format_validation": "UTF8_saved",
+      "review_scope": "currentcoreplusallactualusedrationalesbinding_report;25core205authorresponses/53pairedsources/all25used205sourcereasons,135choice labels15mappedvalues and12excluded responses;real18/160case rejected,not independentgold/student/time/commercial/model validation",
+      "derivation": {
+        "origin": "project_complete_actual_usage_rationale_binding_validation",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-complete2520261014-record"
+        ],
+        "tool": "v0.10 core/used-source validators,grade/parent/exclusion/independent-role guards"
+      }
+    },
+    {
+      "id": "current-used-source-complete-vs-real-partial20261014-record",
+      "url": "urn:lingotrip:research:actual-used-highschool-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-used-source-complete-vs-real-partial20261014.json",
+      "bytes": 2622,
+      "sha256": "4881d4d5481e669c520938050b218a3e79431ce1e23cc095a9e294ddd714ec30",
+      "format_validation": "UTF8_saved",
+      "review_scope": "realpartialstrictrejection_and_source_exclusions;25core205authorresponses/53pairedsources/all25used205sourcereasons,135choice labels15mappedvalues and12excluded responses;real18/160case rejected,not independentgold/student/time/commercial/model validation",
+      "derivation": {
+        "origin": "project_complete_actual_usage_rationale_binding_validation",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-complete2520261014-record"
+        ],
+        "tool": "v0.10 core/used-source validators,grade/parent/exclusion/independent-role guards"
+      }
+    },
+    {
+      "id": "register-current-used-complete-validation20261014-record",
+      "url": "urn:lingotrip:research:actual-used-highschool-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_current_used_complete_validation20261014.py",
+      "bytes": 3550,
+      "sha256": "834b7f1428ebb82753064536433f74fc483c78fe5afe03074c5e40c782478267",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_final_validation_registration_method;25core205authorresponses/53pairedsources/all25used205sourcereasons,135choice labels15mappedvalues and12excluded responses;real18/160case rejected,not independentgold/student/time/commercial/model validation",
+      "derivation": {
+        "origin": "project_complete_actual_usage_rationale_binding_validation",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-complete2520261014-record"
+        ],
+        "tool": "v0.10 core/used-source validators,grade/parent/exclusion/independent-role guards"
+      }
     }
   ],
   "updated_on": "2026-10-13"

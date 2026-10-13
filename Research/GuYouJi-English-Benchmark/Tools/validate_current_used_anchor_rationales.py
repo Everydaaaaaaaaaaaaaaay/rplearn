@@ -34,6 +34,9 @@ def check(index, require_complete=False):
         errors.append('public/private group counts differ')
     else:
         for public, detail in zip(index['groups'], private['groups']):
+            source = observations[detail['group_id']]
+            if public['grade'] != detail['grade'] or detail['grade'] != source['grade'] or detail['parent_acquisition_id'] != source['acquisition_id']:
+                errors.append('source grade or parent identity differs')
             if public['group_id'] != detail['group_id'] or public['question_numbers'] != [i['source_number'] for i in detail['items']]:
                 errors.append('public/private source item pairing differs')
             if any(not i['author_analysis'].strip() for i in detail['items']):
@@ -41,6 +44,10 @@ def check(index, require_complete=False):
             excluded = [i['source_number'] for i in detail['items'] if not i['positive_answer_example']]
             if public['positive_answer_examples_excluded_source_numbers'] != excluded:
                 errors.append('source exclusion not preserved')
+            if any(not i['unresolved_editorial_risk'] for i in detail['items'] if not i['positive_answer_example']):
+                errors.append('excluded response has no concrete reason')
+            if any(i['independent_semantic_review'] is not False for i in detail['items']):
+                errors.append('author rationale promoted to independent review')
     answer_values = values.check(private, observations, acquisitions)
     errors += answer_values['errors']
     for field in ['independent_review', 'student_calibration', 'commercial_admission', 'production_admission']:
@@ -58,7 +65,10 @@ def check(index, require_complete=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--index', default=str(core.BASE / 'FirstRelease/current-used-anchor-rationale-index-v0.1.json'))
+    matrix = json.loads((core.BASE / 'FirstRelease/source-matrix.json').read_text())
+    default_index = matrix.get('current_used_anchor_rationale_index_path',
+                               'FirstRelease/current-used-anchor-rationale-index-v0.1.json')
+    parser.add_argument('--index', default=str(core.BASE / default_index))
     parser.add_argument('--require-complete', action='store_true')
     args = parser.parse_args()
     result = check(json.loads(open(args.index).read()), args.require_complete)

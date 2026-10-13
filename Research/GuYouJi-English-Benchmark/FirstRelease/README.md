@@ -8,7 +8,7 @@
 
 累计53个完整配套选定源组、25个原创题组家族（当前25个版本，修订前稿另存，不重复计样本）。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
-可以从[当前审阅包0.4](ReviewPackage-v0.4.md)开始（[19组历史基线](ReviewPackage-v0.1.md)另存）：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
+可以从[当前审阅包0.5](ReviewPackage-v0.5.md)开始（[19组历史基线](ReviewPackage-v0.1.md)另存）：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
@@ -73,3 +73,5 @@
 [初一图文联合题](Generated/grade7-reading-corner-images-v0.1.md)补四幅完整线描/替代描述，当前[索引0.6](review-index-v0.6.json)为22家族/177点/53源组；[检查器0.6](../Tools/validate_firstrelease_v0_6.py)校验四图/题号/引用，保存工具已补SVG原件发现及恢复探针。[记录](../Studies/2026-10-14-grade7-joint-image-assets-and-persistence.md)分清模拟图片与独立/产品验证。
 
 [高二追加语言形式](../Studies/2026-10-14-grade11-fifteen-cloze-three-grammar-and-author-roles.md)补完整15空与三篇3/3/4；当前[索引0.7](review-index-v0.7.json)24家族/202点/53源组，作者区真实条目、两组三篇分配和图片引用由[0.7检查器](../Tools/validate_firstrelease_v0_7.py)校验。[审阅包0.2](ReviewPackage-v0.2.md)列出具体待裁决响应，不当生产键。
+
+[实际用锚理由0.3](current-used-anchor-rationale-index-v0.3.json)已补完7高中组45点，当前25/25组205/205源响应的作者理由覆盖成立；12源风险响应隔离，非独立gold。[索引0.10](review-index-v0.10.json)/[检查器0.10](../Tools/validate_firstrelease_v0_10.py)绑定真实用锚集合并拒绝旧18/160部分覆盖，[审阅包0.5](ReviewPackage-v0.5.md)为现行入口。

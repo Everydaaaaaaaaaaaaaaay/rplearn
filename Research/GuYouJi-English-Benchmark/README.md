@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [当前实际用锚统一理由覆盖成立](Studies/2026-10-14-current-used-highschool-rationales-complete.md)：25使用源组/205响应都有逐项作者理由，12风险响应隔离，实际旧部分集合仍严格拒绝；[审阅包0.5](FirstRelease/ReviewPackage-v0.5.md)不声称独立gold或上线通过。
+
 - [初三三组实际用锚理由](Studies/2026-10-14-current-used-grade9-source-reasons.md)：18/25组160/205点，科学/文化主张与语法开放变体分开；the…month不强制最高级，7高中组45点仍被完整验收拒绝。
 
 - [实际用锚理由四组追加](Studies/2026-10-14-current-used-anchor-first-four-reasons.md)：当前15/25组135/205源响应；原生they强调/2019日历/多词词库及图形不确定性保留，10组70点未完成并被严格验收拒绝。
