@@ -1,0 +1,75 @@
+{
+  "version": "0.1",
+  "grade": 7,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade7-v0.3.md",
+    "sha256": "0d399a44ac86a26fb43e2197899e742eac9006ec45c6d236f1aeb22b98c21989"
+  },
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+    "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+  },
+  "source_group_id": "g7.xicheng2025.matchingA",
+  "source_paper_acquisition_id": "grade7-xicheng2025-public-paper-key20261014",
+  "source_format": {
+    "items": 3,
+    "features": {
+      "activities": 4,
+      "profiles": 3,
+      "one_extra_option_explicit": true,
+      "once_per_entry_explicit": false,
+      "complete_card_layout_present": true,
+      "time_and_room_details_present_but_not_targeted": true
+    }
+  },
+  "target_format": {
+    "items": 3,
+    "activity_cards": 4,
+    "one_extra_option": true,
+    "option_reuse_rule": "at_most_once",
+    "complete_text_cards_and_profiles": true
+  },
+  "authored_once_rule_is_source_explicit": false,
+  "positive_source_reference_numbers": [
+    33,
+    34,
+    35
+  ],
+  "source_reference_list_exhaustive": false,
+  "all_shared_material_required": true,
+  "new_scenario": "Four new after-school workshops with three specific needs",
+  "target_changes_and_justification": [
+    "newstory/map/paper/bird workshops; all4cards and3needs",
+    "textcards replace decorated source layout",
+    "at-most-once explicit original rule; source once not explicit"
+  ],
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_alternatives",
+    "whole_group_solve_or_refill",
+    "actual_revision_evidence_if_changed",
+    "independent_unknowns_separate"
+  ],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade7-workshop-matching-v0.1.md",
+    "sha256": "ae973437e85068a6f7c3f89b68c17af9136c6ecf5f41938e5f166a83966d509f"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade7-workshop-matching-author-check-v0.1.json",
+    "sha256": "01278c63a46850fb31eb1772e7b587cb963ab076a0abc51cd6806fae35896245"
+  },
+  "original_source_republication_admitted": false,
+  "commercial_training_admitted": false,
+  "third_party_source_transmission_admitted": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_factual_gold": false,
+  "fact_strategy": "fictional_context_and_numbers_not_source_claims_as_fact",
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "correct_title_leaked": false
+  }
+}
