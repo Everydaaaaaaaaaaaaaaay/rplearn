@@ -24900,6 +24900,183 @@
         ],
         "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
       }
+    },
+    {
+      "id": "wordnet31-official-download-index20261013",
+      "url": "https://wordnetcode.princeton.edu/",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/official-download-index.html",
+      "bytes": 11594,
+      "sha256": "1904b8b547a491d5d8bfe2024e4a8632c77d1441041c48bc0060fab8db216949",
+      "format_validation": "html_source_saved",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights"
+    },
+    {
+      "id": "wordnet31-original-dictionary-archive20261013",
+      "url": "https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz",
+      "accessed_on": "2026-10-13",
+      "status": "fetched_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/wn3.1.dict.tar.gz",
+      "bytes": 16358468,
+      "sha256": "3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a",
+      "format_validation": "archive_container_tar_gzip_69members",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights"
+    },
+    {
+      "id": "wordnet31-archive-member-manifest20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/archive-member-manifest.json",
+      "bytes": 6510,
+      "sha256": "7d455ab80bb2ce6410879a3dcdbc22087f278e2868286defdaa2352da4a75d56",
+      "format_validation": "json_parsed",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-original-dictionary-archive20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-native-private-inspection20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/private-native-inspection.json",
+      "bytes": 34223,
+      "sha256": "8e8fd315e5946a122b23d84118f7fe34b9436b9d2a923f8754abc23b08d96aa0",
+      "format_validation": "json_parsed",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-original-dictionary-archive20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-native-inspection-summary20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/native-inspection-summary.json",
+      "bytes": 1102,
+      "sha256": "7c1a70bc2ef999184a44303cb876bded3f34b56de8c71c43179c65e2c1abd5aa",
+      "format_validation": "json_parsed",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-original-dictionary-archive20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-native-license-notice20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/native-license-notice.txt",
+      "bytes": 1740,
+      "sha256": "2c49a717fc37fbb8ba153203c93ffc1867b1868e7d24ecf8a93826caddab4398",
+      "format_validation": "text_saved",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-original-dictionary-archive20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-context-queries20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/context-queries.json",
+      "bytes": 1812,
+      "sha256": "7f5b0583ca1d46a0f1843c5f34eb21a47e992e5a8f5eae2661cc630ee855d774",
+      "format_validation": "json_parsed",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "pep-unit1-context-1312001102241-image016",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-native-readonly-audit20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/readonly-and-native-audit.json",
+      "bytes": 1463,
+      "sha256": "5cda1cdb5b9a98a06320937904a42d092e147d07c4ff9bd9fb3b0ac07ba64493",
+      "format_validation": "json_parsed",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-native-private-inspection20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-native-readonly-method20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/check_wordnet31_readonly20261013.py",
+      "bytes": 1553,
+      "sha256": "d178052dfb7f4d1ecefb44a06815c963fbffbd8237cd8bc10a24cbda5e347ef3",
+      "format_validation": "python_source_saved",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-native-private-inspection20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-native-observation-method20261013",
+      "url": "urn:lingotrip:research:wordnet31",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_wordnet31_observations20261013.py",
+      "bytes": 4898,
+      "sha256": "981a6e12a0063a0005b181f6a6735aa94cfe101a96d2cfa255958c276ca6a326",
+      "format_validation": "python_source_saved",
+      "review_scope": "Princeton3.1 native file/offset/index counts andselected query candidates;not semantic gold/CEFR/grade or wholeproductrights",
+      "derivation": {
+        "acquisition_id": "wordnet31-native-private-inspection20261013",
+        "tool": "Pinned nativearchive/std Python/sourceheader/directbytereference checks;not automatically selectedsense"
+      }
+    },
+    {
+      "id": "wordnet31-commercial-license-local-failed20261013",
+      "url": "https://wordnet.princeton.edu/license-and-commercial-use",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "http_status": 403,
+      "error": "Normal verifiedTLScurl --fail returnedHTTP403;no local content saved",
+      "format_validation": "not_checked",
+      "review_scope": "Publicweb extract read separately;nativearchiveheaders provide actual3.1notice"
+    },
+    {
+      "id": "wordnet31-format-document-local-failed20261013",
+      "url": "https://wordnet.princeton.edu/documentation/wndb5wn",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "http_status": 403,
+      "error": "Normal verifiedTLScurl --fail returnedHTTP403;no local content saved",
+      "format_validation": "not_checked",
+      "review_scope": "Publicweb extract read separately;nativearchiveheaders provide actual3.1notice"
+    },
+    {
+      "id": "wordnet31-eight-header-license-audit20261013",
+      "url": "https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/wordnet31/eight-native-license-headers-audit.json",
+      "bytes": 1574,
+      "sha256": "66277333fee352fed7de45432994511a8273aa95b3fa634bba4cff836d746f50",
+      "format_validation": "json_parsed",
+      "review_scope": "All8native data/indexheaders match29line3.1permissionnotice;not all downstream legalreview",
+      "derivation": {
+        "acquisition_id": "wordnet31-original-dictionary-archive20261013",
+        "tool": "tarfile/rawheader equality andSHA"
+      }
     }
   ],
   "updated_on": "2026-10-13"

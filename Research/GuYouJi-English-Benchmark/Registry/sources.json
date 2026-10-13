@@ -3751,6 +3751,40 @@
         "third_party_model_transmission": "only_dependency_MIT_or_PSF2_conditions_observed_no_input_asset_rights_or_full_distribution_audit",
         "redistribution": "only_dependency_MIT_or_PSF2_conditions_observed_no_input_asset_rights_or_full_distribution_audit"
       }
+    },
+    {
+      "id": "princeton.wordnet31",
+      "title": "PrincetonWordNet3.1原生词典与许可义项观察",
+      "url": "https://wordnetcode.princeton.edu/",
+      "category": "lexical_sense_reference",
+      "priority": "P1",
+      "provenance": "official_Princeton_download_and_native_database_headers",
+      "checked_on": "2026-10-13",
+      "verification_status": "native_references_and_notice_checked_not_semantic_or_level_validation",
+      "notes": "69archive members,117791synsets,155467POSlemma entries and207235unique sensekeys verified bynative byteoffset/index membership. Package lacksstandaloneLICENSE;actualheaders give3.1copyright2011/fullnotice. 13explicitcontext queries notWSD,grades orCEFR;can/must modalfunctions andexacthave_to/take_care_of notsupplied bylexical senses. Public3.0weblicense cannot replace native3.1notice;localwebfetch403 retained.",
+      "acquisition_ids": [
+        "wordnet31-official-download-index20261013",
+        "wordnet31-original-dictionary-archive20261013",
+        "wordnet31-archive-member-manifest20261013",
+        "wordnet31-native-private-inspection20261013",
+        "wordnet31-native-inspection-summary20261013",
+        "wordnet31-native-license-notice20261013",
+        "wordnet31-context-queries20261013",
+        "wordnet31-native-readonly-audit20261013",
+        "wordnet31-native-readonly-method20261013",
+        "wordnet31-native-observation-method20261013",
+        "wordnet31-commercial-license-local-failed20261013",
+        "wordnet31-format-document-local-failed20261013",
+        "wordnet31-eight-header-license-audit20261013"
+      ],
+      "rights": {
+        "commercial_publication": "native_3_1_published_any_purpose_grant_subject_to_full_notice_disclaimer_no_Princeton_advertising_and_copyright_preservation;exact_downstream_operation_not_adjudicated;no_textbook_exam_rights",
+        "commercial_model_training": "native_3_1_published_any_purpose_grant_subject_to_full_notice_disclaimer_no_Princeton_advertising_and_copyright_preservation;exact_downstream_operation_not_adjudicated;no_textbook_exam_rights",
+        "bulk_database_reuse": "native_3_1_published_any_purpose_grant_subject_to_full_notice_disclaimer_no_Princeton_advertising_and_copyright_preservation;exact_downstream_operation_not_adjudicated;no_textbook_exam_rights",
+        "adaptation": "native_3_1_published_any_purpose_grant_subject_to_full_notice_disclaimer_no_Princeton_advertising_and_copyright_preservation;exact_downstream_operation_not_adjudicated;no_textbook_exam_rights",
+        "third_party_model_transmission": "native_3_1_published_any_purpose_grant_subject_to_full_notice_disclaimer_no_Princeton_advertising_and_copyright_preservation;exact_downstream_operation_not_adjudicated;no_textbook_exam_rights",
+        "redistribution": "native_3_1_published_any_purpose_grant_subject_to_full_notice_disclaimer_no_Princeton_advertising_and_copyright_preservation;exact_downstream_operation_not_adjudicated;no_textbook_exam_rights"
+      }
     }
   ]
 }

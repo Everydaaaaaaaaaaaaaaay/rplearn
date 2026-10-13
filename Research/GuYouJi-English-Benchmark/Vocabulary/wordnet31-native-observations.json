@@ -1,0 +1,116 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "princeton.wordnet31",
+  "archive_acquisition_id": "wordnet31-original-dictionary-archive20261013",
+  "native_inspection_acquisition_id": "wordnet31-native-private-inspection20261013",
+  "native_notice_acquisition_id": "wordnet31-native-license-notice20261013",
+  "version": "PrincetonWordNet3.1",
+  "source_download_directory": "https://wordnetcode.princeton.edu/",
+  "archive_sha256": "3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a",
+  "archive_members": 69,
+  "standalone_LICENSE_or_README_member_present": false,
+  "license_in_native_data_and_index_headers": true,
+  "native_version_copyright_year": 2011,
+  "directory_file_timestamp_is_release_date": false,
+  "counts": {
+    "n": {
+      "lemmas": 117953,
+      "synsets": 82192,
+      "index_sense_references": 146512
+    },
+    "v": {
+      "lemmas": 11540,
+      "synsets": 13789,
+      "index_sense_references": 25061
+    },
+    "a": {
+      "lemmas": 21499,
+      "synsets": 18185,
+      "index_sense_references": 30070
+    },
+    "r": {
+      "lemmas": 4475,
+      "synsets": 3625,
+      "index_sense_references": 5592
+    }
+  },
+  "unique_sense_keys": 207235,
+  "sum_of_pos_lemma_entries": 155467,
+  "unique_English_word_count": "not_inferred_from_sum_of_POS_entries",
+  "native_byte_offsets_and_membership_checked": true,
+  "all_relation_pointers_and_verb_frames_checked": false,
+  "semantic_truth_or_teaching_appropriateness_validated": false,
+  "context_cases": [
+    {
+      "lemma": "trunk",
+      "pos": "n",
+      "native_senses": 5,
+      "elephant_snout_candidate_ordinal": 5,
+      "native_candidate_offset": "02455598",
+      "first_sense_is_tree_stem": true,
+      "CEFR_or_grade_for_candidate": null
+    },
+    {
+      "lemma": "sweet",
+      "pos": "n",
+      "native_senses": 5,
+      "first_sense_native_word_case": "Sweet",
+      "first_sense_role": "Proper phonetician name",
+      "sugar_food_candidate_ordinal": 3,
+      "native_candidate_offset": "07612255",
+      "case_and_context_resolved": false
+    },
+    {
+      "lemma": "order",
+      "pos": "n",
+      "native_senses": 15,
+      "social_order_candidate_ordinal": 3,
+      "native_candidate_offset": "13991994",
+      "first_sense_is_command": true,
+      "full_unit_sense_mastery_claim": false
+    },
+    {
+      "lemma": "treat",
+      "pos": "v",
+      "native_senses": 8,
+      "interaction_candidate_ordinal": 1,
+      "medical_treatment_candidate_ordinal": 3,
+      "context_is_not_all_senses": true
+    },
+    {
+      "lemma": "close",
+      "noun_or_verb_lookup_is_adjective_or_adverb": false,
+      "sense_role": "Spatial versus relationship meanings require syntax/context;not automatic first lookup"
+    },
+    {
+      "lemma": "can",
+      "pos": "v",
+      "native_senses": 2,
+      "returned_senses_cover_modal_permission_ability_offer": false,
+      "lookup_means": "Canning/preserving and job dismissal lexicalverbs;not modalgrammar"
+    },
+    {
+      "lemma": "have_to",
+      "pos": "v",
+      "exact_native_candidates": 0,
+      "absence_means_out_of_curriculum": false
+    },
+    {
+      "lemma": "take_care_of",
+      "pos": "v",
+      "exact_native_candidates": 0,
+      "automatic_preposition_stripping": false,
+      "phrase_is_invalid_or_C2": false
+    }
+  ],
+  "limitations": [
+    "Sense order uses tagged semantic concordance frequency,not CEFR/Chinesegrade or all-domain frequency",
+    "Byteoffset identities tied to3.1/archive hash;not WordNet3.0/NLTK or another WordNet edition",
+    "Indexes lower-case lemmas whiledata preserve case andadjective syntax markers;not automatic propername identity",
+    "No automated WSD,student calibration,fulllexical/grammar coverage or PEPcommercialrights established"
+  ],
+  "CEFR_mapping_established": false,
+  "independent_context_adjudication": false,
+  "production_admission": false,
+  "native_license_notice": "  1 This software and database is being provided to you, the LICENSEE, by  \n  2 Princeton University under the following license.  By obtaining, using  \n  3 and/or copying this software and database, you agree that you have  \n  4 read, understood, and will comply with these terms and conditions.:  \n  5   \n  6 Permission to use, copy, modify and distribute this software and  \n  7 database and its documentation for any purpose and without fee or  \n  8 royalty is hereby granted, provided that you agree to comply with  \n  9 the following copyright notice and statements, including the disclaimer,  \n  10 and that the same appear on ALL copies of the software, database and  \n  11 documentation, including modifications that you make for internal  \n  12 use or for distribution.  \n  13   \n  14 WordNet 3.1 Copyright 2011 by Princeton University.  All rights reserved.  \n  15   \n  16 THIS SOFTWARE AND DATABASE IS PROVIDED \"AS IS\" AND PRINCETON  \n  17 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  \n  18 IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PRINCETON  \n  19 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES OF MERCHANT-  \n  20 ABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE  \n  21 OF THE LICENSED SOFTWARE, DATABASE OR DOCUMENTATION WILL NOT  \n  22 INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR  \n  23 OTHER RIGHTS.  \n  24   \n  25 The name of Princeton University or Princeton may not be used in  \n  26 advertising or publicity pertaining to distribution of the software  \n  27 and/or database.  Title to copyright in this software, database and  \n  28 any associated documentation shall at all times remain with  \n  29 Princeton University and LICENSEE agrees to preserve same.  \n"
+}
