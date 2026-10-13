@@ -1,0 +1,98 @@
+{
+  "version": "0.1",
+  "scope": "grade7selected narrative body/prompt/options explicit author allocation not national threshold",
+  "prepared_input_acquisition_id": "task-load-grade7-xicheng2025-narrative-prepared20261014-record",
+  "prepared_input_sha256": "ca4bc1146a0a09145b8c3e544893b7cb2c5e7e3bb2d44f849d97859e9b52c88c",
+  "private_report_acquisition_id": "task-load-grade7-xicheng2025-narrative-results20261014-record",
+  "private_report_sha256": "bfab0eb67ad2bf3316f948fde063e1ff9a9baf7a35b91b69861cf56a9efb4294",
+  "tool": {
+    "path": "Tools/profile_task_load.py",
+    "sha256": "d240a3a6c5fc1e5256ffb544dba53ca32cb17dec155f9f8bdb705dfc557ca070"
+  },
+  "records": [
+    {
+      "id": "g7.xicheng2025.readingB",
+      "grade": 7,
+      "origin": "source_reference",
+      "input_sha256": "ba3674563c88e4a00fcd6194597f6d251742f0f9f610ba24e6cc6d2f5599427a",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 3,
+          "han_characters": 30,
+          "components": 1
+        },
+        "material_label": {
+          "english_digit_tokens": 5,
+          "han_characters": 0,
+          "components": 1
+        },
+        "option": {
+          "english_digit_tokens": 49,
+          "han_characters": 0,
+          "components": 12
+        },
+        "passage": {
+          "english_digit_tokens": 297,
+          "han_characters": 6,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 35,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 389,
+        "han_characters": 36
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 30,
+      "passage_sentence_token_lengths": [
+        10,
+        31,
+        6,
+        16,
+        18,
+        10,
+        9,
+        14,
+        4,
+        20,
+        11,
+        15,
+        11,
+        17,
+        11,
+        5,
+        4,
+        6,
+        5,
+        8,
+        8,
+        13,
+        5,
+        3,
+        2,
+        1,
+        6,
+        9,
+        6,
+        13
+      ],
+      "mean_passage_sentence_tokens": 9.9,
+      "maximum_passage_sentence_tokens": 31,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    }
+  ],
+  "limitations": [
+    "Component and sentence allocation supplied by author, not independent gold",
+    "Counts describe selected specimen, not grade distribution or acceptance threshold",
+    "No CEFR/FK/Lexile or student time inference",
+    "Visual layout, emphasis and cognitive task demands require separate review",
+    "Shared material once; options once each; not repeated rereading workload"
+  ]
+}

@@ -1,0 +1,746 @@
+{
+  "version": "0.2",
+  "observed_on": "2026-10-14",
+  "scope": "selected paired source group instances, not unique passages, independent calibration units, whole papers or licensed gold",
+  "catalogues": [
+    {
+      "path": "FirstRelease/source-group-observations.json",
+      "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+    },
+    {
+      "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+      "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+    },
+    {
+      "path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json",
+      "sha256": "f7fe13aa06155e176f4e8e37e26f17a63617a089bf6921cc5b1192694894b479"
+    },
+    {
+      "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+      "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+    }
+  ],
+  "core_group_count": 53,
+  "extension_group_count": 27,
+  "group_instance_count": 80,
+  "source_response_count": 509,
+  "parent_paper_identity_count": 15,
+  "grades": [
+    {
+      "grade": 7,
+      "core_groups": 7,
+      "extension_groups": 10,
+      "group_instances": 17,
+      "source_responses": 96,
+      "parent_paper_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "suzhou-changshu2019-grade7-upper",
+        "xdf-grade7-2021lower-paper-20261013"
+      ]
+    },
+    {
+      "grade": 8,
+      "core_groups": 9,
+      "extension_groups": 0,
+      "group_instances": 9,
+      "source_responses": 50,
+      "parent_paper_ids": [
+        "bj-grade8-xicheng2025upper-20261013",
+        "grade8-fengtai2025upper-candidate20261014"
+      ]
+    },
+    {
+      "grade": 9,
+      "core_groups": 7,
+      "extension_groups": 10,
+      "group_instances": 17,
+      "source_responses": 111,
+      "parent_paper_ids": [
+        "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+        "fuzhou2025-exam-bundle-public-full",
+        "suzhou2024-official-english-paper-image20261014"
+      ]
+    },
+    {
+      "grade": 10,
+      "core_groups": 11,
+      "extension_groups": 0,
+      "group_instances": 11,
+      "source_responses": 70,
+      "parent_paper_ids": [
+        "bj-grade10-shijingshan2024lower-20261013",
+        "grade10-2025yearend-explanation-candidate20261014"
+      ]
+    },
+    {
+      "grade": 11,
+      "core_groups": 8,
+      "extension_groups": 7,
+      "group_instances": 15,
+      "source_responses": 105,
+      "parent_paper_ids": [
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade11-2025lower-crossregion-candidate-20261013",
+        "grade11-spring2024-public-bundle20261014"
+      ]
+    },
+    {
+      "grade": 12,
+      "core_groups": 11,
+      "extension_groups": 0,
+      "group_instances": 11,
+      "source_responses": 77,
+      "parent_paper_ids": [
+        "grade12-anshan2025upper-monitor-candidate20261014",
+        "grade12-jianghuai2024-firstjoint-20261013"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "g7.2021.cloze",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "xdf-grade7-2021lower-paper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g7.2021.readingB",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 5,
+      "parent_paper_id": "xdf-grade7-2021lower-paper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g7.2021.vocabularyA",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "xdf-grade7-2021lower-paper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g7.2021.vocabularyB",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "xdf-grade7-2021lower-paper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025.matchingA",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "bj-grade8-xicheng2025upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025.readingB",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "bj-grade8-xicheng2025upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025.readingC",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "bj-grade8-xicheng2025upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2024.cloze",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "bj-grade10-shijingshan2024lower-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2024.grammar",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "bj-grade10-shijingshan2024lower-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2024.readingA",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "bj-grade10-shijingshan2024lower-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2024.cloze",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "bj-grade11-yanqing2024upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2024.grammar",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "bj-grade11-yanqing2024upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2024.readingA",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "bj-grade11-yanqing2024upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025.cloze",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "bj-grade8-xicheng2025upper-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2024.readingC",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "bj-grade10-shijingshan2024lower-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2024.readingD",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "bj-grade10-shijingshan2024lower-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2023.readingA",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2023.readingB",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2023.cloze",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 15,
+      "parent_paper_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2023.grammar",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2026.cloze",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2026.readingC",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 5,
+      "parent_paper_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2026.grammar",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2025.readingB",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2025.readingC",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2025.readingD",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2025.cloze",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 15,
+      "parent_paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g11.2025.grammar",
+      "grade": 11,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g7.2019.cloze",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "suzhou-changshu2019-grade7-upper",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g7.2019.readingA",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "suzhou-changshu2019-grade7-upper",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g7.2019.readingB",
+      "grade": 7,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "suzhou-changshu2019-grade7-upper",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2025.cloze",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "fuzhou2025-exam-bundle-public-full",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2025.readingA",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 5,
+      "parent_paper_id": "fuzhou2025-exam-bundle-public-full",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2025.grammar",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "fuzhou2025-exam-bundle-public-full",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.2025.insertionE",
+      "grade": 9,
+      "layer": "core",
+      "response_count": 5,
+      "parent_paper_id": "fuzhou2025-exam-bundle-public-full",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025fengtai.language",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 12,
+      "parent_paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025fengtai.cloze",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 8,
+      "parent_paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025fengtai.matchingA",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025fengtai.readingB",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g8.2025fengtai.readingC",
+      "grade": 8,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "grade8-fengtai2025upper-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2025yearend.readingA",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2025yearend.readingB",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2025yearend.readingC",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2025yearend.readingD",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2025yearend.cloze",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 15,
+      "parent_paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g10.2025yearend.grammar",
+      "grade": 10,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "grade10-2025yearend-explanation-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.readingA",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 3,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.readingB",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.readingC",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.readingD",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 4,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.cloze",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 15,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.grammar",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 10,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g12.2025anshan.insertion",
+      "grade": 12,
+      "layer": "core",
+      "response_count": 5,
+      "parent_paper_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "catalogue_path": "FirstRelease/source-group-observations.json"
+    },
+    {
+      "id": "g9.suzhou2024.cloze",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 10,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.readingA",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 3,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.readingB",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.readingC",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.readingD",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.insertion",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 5,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.singleVocabulary",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 8,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.wordBank",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 5,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.grammar",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 10,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g9.suzhou2024.readingResponse",
+      "grade": 9,
+      "layer": "extension",
+      "response_count": 3,
+      "parent_paper_id": "suzhou2024-official-english-paper-image20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.readingA",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 3,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.readingB",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.readingC",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.readingD",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.insertionE",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 5,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.cloze",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 15,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g11.spring2024.grammar",
+      "grade": 11,
+      "layer": "extension",
+      "response_count": 10,
+      "parent_paper_id": "grade11-spring2024-public-bundle20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.language",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 10,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.clozeBank",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.clozeStory",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 6,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.matchingA",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 3,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.readingB",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.readingC",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.phonetic",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.translation",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 3,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.optionalGrammar",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 4,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    },
+    {
+      "id": "g7.xicheng2025.optionalReading",
+      "grade": 7,
+      "layer": "extension",
+      "response_count": 3,
+      "parent_paper_id": "grade7-xicheng2025-public-paper-key20261014",
+      "catalogue_path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json"
+    }
+  ],
+  "cross_passage_deduplication_complete": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false
+}
