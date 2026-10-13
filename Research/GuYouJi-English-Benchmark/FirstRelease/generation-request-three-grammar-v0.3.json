@@ -1,0 +1,82 @@
+{
+  "version": "0.3",
+  "purpose": "local_dual_input_request_no_model_call",
+  "grade": 11,
+  "core_kind": "language",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade11-v0.2.md",
+    "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+  },
+  "anchor_group_id": "g11.2024.grammar",
+  "source_paper_acquisition_id": "bj-grade11-yanqing2024upper-20261013",
+  "source_observation_sha256": "9daea88f56e29b3d2d2b9e08c3b0a35c3985ef1e79019bd3137cf3acde1e9ff9",
+  "rationale_reference": {
+    "path": "FirstRelease/current-used-anchor-rationale-index-v0.5.json",
+    "sha256": "8ccbe746f8f2cfbbda1ae9cf6ff7b8ecb0df53eff5d2836959efe071193d80f4"
+  },
+  "positive_source_answer_example_numbers": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "source_reference_response_list_exhaustive": false,
+  "format": {
+    "items": 10,
+    "options_each": null,
+    "source_features": {
+      "materials": 3,
+      "subgroup_slots": [
+        3,
+        3,
+        4
+      ],
+      "ungiven_limit_words": 1,
+      "given_word_form_change": true,
+      "targets": [
+        "preposition gerund",
+        "infinitive",
+        "pastperfect relative clause",
+        "contrast",
+        "plural",
+        "nonrestrictive relative",
+        "location preposition",
+        "adjective",
+        "past participle",
+        "passive predicate"
+      ]
+    }
+  },
+  "all_shared_material_required": true,
+  "scenario": "Three independent fictional school passages about a model-building club, an exhibition sign and a volunteer rota. Preserve3/3/4 gaps and source response limits; new events/root prompts/keys, justify target changes.",
+  "target_operations": [
+    "full_context_grammar_or_evidence",
+    "referent_and_time_scope",
+    "legal_response_and_alternative_review"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "leak_correct_title": false
+  },
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_all_alternatives",
+    "whole_group_refill_or_solve",
+    "actual_revision_saved_prior_current_if_changed",
+    "source_form_kept_and_target_changes_justified",
+    "independent_review_and_unknowns_separate"
+  ],
+  "source_text_copy_or_republication_admitted": false,
+  "commercial_model_training_admitted": false,
+  "third_party_source_text_transmission_admitted": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "production_admission": false
+}

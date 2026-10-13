@@ -1,0 +1,64 @@
+{
+  "version": "0.3",
+  "purpose": "local_dual_input_request_no_model_call",
+  "grade": 11,
+  "core_kind": "cloze",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade11-v0.2.md",
+    "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+  },
+  "anchor_group_id": "g11.2024.cloze",
+  "source_paper_acquisition_id": "bj-grade11-yanqing2024upper-20261013",
+  "source_observation_sha256": "40e8781094d24c63783a3c5243b169b2035e2bc16b75fddd842bfd48d8ccf967",
+  "rationale_reference": {
+    "path": "FirstRelease/current-used-anchor-rationale-index-v0.5.json",
+    "sha256": "8ccbe746f8f2cfbbda1ae9cf6ff7b8ecb0df53eff5d2836959efe071193d80f4"
+  },
+  "positive_source_answer_example_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9
+  ],
+  "source_reference_response_list_exhaustive": false,
+  "format": {
+    "items": 10,
+    "options_each": 4,
+    "source_features": {
+      "blanks": 10,
+      "options_each": 4,
+      "genre": "rescue event narrative",
+      "idioms_time_order_weak_voice_and_motive": true
+    }
+  },
+  "all_shared_material_required": true,
+  "scenario": "New fictional ten-gap story about lost exercise notes being returned by a classmate. Use complete four-option mode and full ending; known malformed source7 and competing source10 are negative references, not positive answer exemplars.",
+  "target_operations": [
+    "full_context_grammar_or_evidence",
+    "referent_and_time_scope",
+    "legal_response_and_alternative_review"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "leak_correct_title": false
+  },
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_all_alternatives",
+    "whole_group_refill_or_solve",
+    "actual_revision_saved_prior_current_if_changed",
+    "source_form_kept_and_target_changes_justified",
+    "independent_review_and_unknowns_separate"
+  ],
+  "source_text_copy_or_republication_admitted": false,
+  "commercial_model_training_admitted": false,
+  "third_party_source_text_transmission_admitted": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "production_admission": false
+}
