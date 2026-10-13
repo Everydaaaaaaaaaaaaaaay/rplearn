@@ -25715,6 +25715,176 @@
         "acquisition_id": "attempt-response-v02-audit20261013",
         "tool": "check_attempt_relations_contract.py andprior trace/privacy checks; originalfixture generation"
       }
+    },
+    {
+      "id": "oecd-pisa-fla-official-index20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "http_status": 403,
+      "final_url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "content_type": "text/html; charset=UTF-8",
+      "status": "fetch_failed",
+      "format_validation": "not_checked",
+      "review_scope": "Normalcurl403,notvalidHTML;publicconnector bodyread separately;nottransportcircumvention",
+      "request_context": "Normal public OECD navigation andlinkedPDF;verifiedTLS;no login",
+      "error": "403",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-pisa-fla20261013.json"
+    },
+    {
+      "id": "oecd-current-terms20261013",
+      "url": "https://www.oecd.org/en/about/terms-conditions.html",
+      "accessed_on": "2026-10-13",
+      "http_status": 403,
+      "final_url": "https://www.oecd.org/en/about/terms-conditions.html",
+      "content_type": "text/html; charset=UTF-8",
+      "status": "fetch_failed",
+      "format_validation": "not_checked",
+      "review_scope": "Normalcurl403,notvalidHTML;publicconnector bodyread separately;nottransportcircumvention",
+      "request_context": "Normal public OECD navigation andlinkedPDF;verifiedTLS;no login",
+      "error": "403",
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-pisa-fla20261013.json"
+    },
+    {
+      "id": "oecd-pisa-fla-framework2021",
+      "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-sub-issues/foreign-language-learning/PISA-2025-FLA-Framework.pdf",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-sub-issues/foreign-language-learning/PISA-2025-FLA-Framework.pdf",
+      "content_type": "application/pdf",
+      "status": "fetched_unreviewed",
+      "format_validation": "pdf_parsed",
+      "review_scope": "2021citation/licence and14selected sourcepages visually reviewed;187nativepages notallgold",
+      "request_context": "Normal public OECD navigation andlinkedPDF;verifiedTLS;no login",
+      "path": "build/english-benchmark-research-20261012/raw/oecd-pisa-fla-framework2021.pdf",
+      "bytes": 6546254,
+      "sha256": "06681e42c4c7813ac99cc99cde3ac75bca50738d922358638168ca754ae18b81",
+      "pages": 187,
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-pisa-fla20261013.json"
+    },
+    {
+      "id": "oecd-pisa-fla-released2024",
+      "url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/pisa-2025-foreign-language-assessment/pisa_2025_released_field_trial_foreign_language_assessment_items.pdf",
+      "accessed_on": "2026-10-13",
+      "http_status": 200,
+      "final_url": "https://www.oecd.org/content/dam/oecd/en/topics/policy-issue-focus/pisa-2025-foreign-language-assessment/pisa_2025_released_field_trial_foreign_language_assessment_items.pdf",
+      "content_type": "application/pdf",
+      "status": "fetched_unreviewed",
+      "format_validation": "pdf_parsed",
+      "review_scope": "All19sourcepages visually reviewed;8namedtasks,16visible speakingpanels vs13metadatawindows;mandatoryaudio notacquired",
+      "request_context": "Normal public OECD navigation andlinkedPDF;verifiedTLS;no login",
+      "path": "build/english-benchmark-research-20261012/raw/oecd-pisa-fla-released2024.pdf",
+      "bytes": 1686811,
+      "sha256": "122eb5771ab3de18d95d5ef1a76d79a5045db807ca9512ee5725895b5c0945c4",
+      "pages": 19,
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-pisa-fla20261013.json"
+    },
+    {
+      "id": "fetch-pisa-fla20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_pisa_fla20261013.py",
+      "bytes": 2398,
+      "sha256": "c92b65199a361f0f18839c9cf38f7da8f4da6a3ad99c8995fff94f816aa1661d",
+      "format_validation": "python_source_saved",
+      "review_scope": "Private native draft/render/sourcefact methods;single visual review,notfulltranscript,media,rightsorstudentvalidation",
+      "derivation": {
+        "acquisition_id": "oecd-pisa-fla-framework2021",
+        "additional_parent_acquisition_ids": [
+          "oecd-pisa-fla-released2024"
+        ],
+        "tool": "pypdf6.10.0/pdftoppm26.05.0/sourcevisualreview"
+      }
+    },
+    {
+      "id": "record-pisa-fla20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_pisa_fla20261013.py",
+      "bytes": 9115,
+      "sha256": "650b7ebcf4aee9bc67700fd18fd4fbb6b0434a839e8afa9516f743a68c105f5c",
+      "format_validation": "python_source_saved",
+      "review_scope": "Private native draft/render/sourcefact methods;single visual review,notfulltranscript,media,rightsorstudentvalidation",
+      "derivation": {
+        "acquisition_id": "oecd-pisa-fla-framework2021",
+        "additional_parent_acquisition_ids": [
+          "oecd-pisa-fla-released2024"
+        ],
+        "tool": "pypdf6.10.0/pdftoppm26.05.0/sourcevisualreview"
+      }
+    },
+    {
+      "id": "pisa-fla-native-text20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/pisa-fla-native-text20261013.json",
+      "bytes": 537788,
+      "sha256": "aa45d6753f9d641d51a5664abb6f566cd284340540ad37d5bfe0e866a9786d72",
+      "format_validation": "json_parsed",
+      "review_scope": "Private native draft/render/sourcefact methods;single visual review,notfulltranscript,media,rightsorstudentvalidation",
+      "derivation": {
+        "acquisition_id": "oecd-pisa-fla-framework2021",
+        "additional_parent_acquisition_ids": [
+          "oecd-pisa-fla-released2024"
+        ],
+        "tool": "pypdf6.10.0/pdftoppm26.05.0/sourcevisualreview"
+      }
+    },
+    {
+      "id": "pisa-fla-render-manifest20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/pisa-fla-render-manifest20261013.json",
+      "bytes": 16690,
+      "sha256": "89853f2c7f33ea7e02d914c8104bec12497a6df541162b88f93b31923e720c91",
+      "format_validation": "json_parsed",
+      "review_scope": "Private native draft/render/sourcefact methods;single visual review,notfulltranscript,media,rightsorstudentvalidation",
+      "derivation": {
+        "acquisition_id": "oecd-pisa-fla-framework2021",
+        "additional_parent_acquisition_ids": [
+          "oecd-pisa-fla-released2024"
+        ],
+        "tool": "pypdf6.10.0/pdftoppm26.05.0/sourcevisualreview"
+      }
+    },
+    {
+      "id": "verify-pisa-native-extraction20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/verify_pisa_native_extraction20261013.py",
+      "bytes": 1467,
+      "sha256": "6090d8c3c9eec4b768687f3116420c2e51b1dfeb06a43769e6bbd6ee8c160939",
+      "format_validation": "python_source_saved",
+      "review_scope": "Private native draft/render/sourcefact methods;single visual review,notfulltranscript,media,rightsorstudentvalidation",
+      "derivation": {
+        "acquisition_id": "oecd-pisa-fla-framework2021",
+        "additional_parent_acquisition_ids": [
+          "oecd-pisa-fla-released2024"
+        ],
+        "tool": "pypdf6.10.0/pdftoppm26.05.0/sourcevisualreview"
+      }
+    },
+    {
+      "id": "pisa-fla-native-reextract-audit20261013",
+      "url": "https://www.oecd.org/en/topics/sub-issues/foreign-language-learning/pisa-2025-foreign-language-assessment.html",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/pisa-fla-native-reextract-audit20261013.json",
+      "bytes": 719,
+      "sha256": "8ee2ba291b894a41c360b68c3055e6a542dcf6731ca738f7788738b60bb8f7f8",
+      "format_validation": "json_parsed",
+      "review_scope": "Private native draft/render/sourcefact methods;single visual review,notfulltranscript,media,rightsorstudentvalidation",
+      "derivation": {
+        "acquisition_id": "oecd-pisa-fla-framework2021",
+        "additional_parent_acquisition_ids": [
+          "oecd-pisa-fla-released2024"
+        ],
+        "tool": "pypdf6.10.0/pdftoppm26.05.0/sourcevisualreview"
+      }
     }
   ],
   "updated_on": "2026-10-13"
