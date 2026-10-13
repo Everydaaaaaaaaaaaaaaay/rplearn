@@ -2127,11 +2127,14 @@
       "category": "textbook",
       "priority": "P0",
       "provenance": "official_publisher",
-      "checked_on": "2026-10-12",
+      "checked_on": "2026-10-13",
       "verification_status": "partial_primary_review",
-      "notes": "Announcement offers junior7up Starter1-3 excerpts through QR and audio portal; excerpt body not yet acquired.",
+      "notes": "Announcement offers junior7up Starter1-3 excerpts through QR and audio portal; excerpt body not yet acquired. Existing announcementcache explicitlylocatesStarter1-3 QRasset. On2026-10-13 selectedmobile source-relativeQRimage ordinaryverifiedTLS request returned403;image/decodedtarget/excerptbody notacquired; noheader/auth/TLS/client workaround. Failuredoesnotprove allpublisher accessblocked orpaid.",
       "acquisition_ids": [
-        "pep-teacher-excerpts2024"
+        "pep-teacher-excerpts2024",
+        "pep-teacher-starter-qr20261013",
+        "fetch-pep-teacher-starter-qr20261013",
+        "record-pep-teacher-starter-qr-blocked20261013"
       ],
       "rights": {
         "commercial_publication": "unknown",

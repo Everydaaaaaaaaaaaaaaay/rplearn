@@ -47478,6 +47478,47 @@
         "acquisition_id": "pep-g7upper-u5context-1312001101241-image069",
         "tool": "Source actual visualreview/project observation"
       }
+    },
+    {
+      "id": "pep-teacher-starter-qr20261013",
+      "url": "https://m.pep.com.cn/gyrj/rjyw/202409/W020240905344652639364.jpg",
+      "accessed_on": "2026-10-13",
+      "status": "blocked",
+      "request_context": "Anonymous verifiedTLS publicsource-linked QR,3MBbound, no login/header workaround",
+      "review_scope": "Source links junior7upperStarter1-3 teacherexcerpt; QR asset only, not excerptbody/rights",
+      "error": "HTTP Error 403: Forbidden",
+      "http_status": 403,
+      "manifest": "build/english-benchmark-research-20261012/fetch-manifest-pep-teacher-starter-qr20261013.json"
+    },
+    {
+      "id": "fetch-pep-teacher-starter-qr20261013",
+      "url": "https://m.pep.com.cn/gyrj/rjyw/202409/W020240905344652639364.jpg",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_pep_teacher_starter_qr20261013.py",
+      "bytes": 1337,
+      "sha256": "cd93c646130b9f0700a8232cf36a1be96aae9e67bd5360c27ea38792f5965471",
+      "format_validation": "python_source_saved",
+      "review_scope": "Publicannouncement linkedQR returned403; no image/QRdecoded/teacherchapter acquired; noauth/header/client/TLS workaround",
+      "derivation": {
+        "acquisition_id": "pep-teacher-excerpts2024",
+        "tool": "Normal boundedsource image request andfailure recording"
+      }
+    },
+    {
+      "id": "record-pep-teacher-starter-qr-blocked20261013",
+      "url": "https://m.pep.com.cn/gyrj/rjyw/202409/W020240905344652639364.jpg",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_pep_teacher_starter_qr_blocked20261013.py",
+      "bytes": 2576,
+      "sha256": "e23fa95362b05b768ca4885c410c26f2a248382b1bb5569a3c7c8e96c3fcb948",
+      "format_validation": "python_source_saved",
+      "review_scope": "Publicannouncement linkedQR returned403; no image/QRdecoded/teacherchapter acquired; noauth/header/client/TLS workaround",
+      "derivation": {
+        "acquisition_id": "pep-teacher-excerpts2024",
+        "tool": "Normal boundedsource image request andfailure recording"
+      }
     }
   ],
   "updated_on": "2026-10-13"
