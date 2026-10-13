@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [第24当前形式与初二源恢复](Studies/2026-10-14-checkpoint24-current-forms-and-grade8-recovery.md)：6309文件独立COW恢复，25核心/205点及1开放补充/10点、新历史源/错误更正/实际叙事修订重放一致；异机和完整环境门槛仍开放。
+
 - [初二第二卷叙事与实际负荷修订](Studies/2026-10-14-grade8-narrative-real-load-and-revision.md)：真实313/21句，原创349/29→344/23、选项111→56；当前25核心/205点，另1开放补充/10点；[审阅包0.3](FirstRelease/ReviewPackage-v0.3.md)。
 
 - [初二完整开放语言原创闭环](Studies/2026-10-14-grade8-original-open-language-loop.md)：173 token/十空，6给词/4无提示全一词，run/running均回填；另列1补充原创/10点，核心计数不变。
