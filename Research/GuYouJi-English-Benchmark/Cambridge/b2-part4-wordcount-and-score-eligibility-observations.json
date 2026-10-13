@@ -1,0 +1,95 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "cambridge.b2",
+  "acquisition_id": "cambridge-b2-handbook",
+  "evidence_acquisition_ids": [
+    "b2-part4-guidance-pdf15-20261013",
+    "b2-part4-complete-pdf22-20261013",
+    "b2-part4-key-pdf26-20261013"
+  ],
+  "private_audit_acquisition_id": "b2-part4-source-branches-private-audit20261013",
+  "source_roles": {
+    "guidance_pdf_page": 15,
+    "guidance_printed_page": 13,
+    "guidance_digital_example_not_paper_key": true,
+    "paper_pdf_page": 22,
+    "paper_handbook_printed_page": 20,
+    "embedded_paper_booklet_pages": [
+      6,
+      7
+    ],
+    "paper_question_numbers": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "key_pdf_page": 26,
+    "key_printed_page": 24,
+    "key_mode": "paper_based"
+  },
+  "structure": {
+    "items": 6,
+    "lead_sentence_keyword_secondsentence_each": true,
+    "only_gap_words_response": true,
+    "example_not_scored_item": true,
+    "shared_passage": false,
+    "shared_instruction": true,
+    "word_count_min": 2,
+    "word_count_max": 5,
+    "key_word_unchanged": true,
+    "partial_segments": 2,
+    "marks_per_correct_segment": 1,
+    "source_max_marks": 12
+  },
+  "explicit_no_marks_conditions": [
+    "more than five words",
+    "required key word absent",
+    "required key word altered"
+  ],
+  "word_count_policy": {
+    "contracted_words_count_full_form": true,
+    "explicit_exception": "can’t = cannot",
+    "explicit_example": "didn’t counts as did not, two words",
+    "not_whitespace_or_grapheme_count": true,
+    "apostrophe_not_necessarily_contraction": true,
+    "possessive_or_ambiguous_contraction_policy_not_fully_defined_by_selected_source": true,
+    "capital_letters_in_paper_instruction": true,
+    "case_normalisation_penalty_not_invented": true
+  },
+  "key_branch_observations": {
+    "question26_OR_branches": 2,
+    "question26_candidate_expansions": 4,
+    "no_cross_OR_cartesian_product": true,
+    "question28_optional_component": true,
+    "question29_optional_components": true,
+    "question30_explicit_contracted_and_uncontracted_forms": true,
+    "question30_whitespace_counts": [
+      4,
+      5
+    ],
+    "question30_source_counts": [
+      5,
+      5
+    ],
+    "displayed_key_candidate_expansions_total": 15,
+    "candidates_not_exhaustive_semantic_gold": true
+  },
+  "contract_review": {
+    "version": "0.3",
+    "segmented_conditions_word_count_keyword_semantic_and_aggregation_fields_present": true,
+    "word_count_and_aggregation_currently_free_text": true,
+    "structural_schema_pass_not_source_count_or_score_execution": true,
+    "not_claim_missing_all_partial_credit_fields": true
+  },
+  "version_scope": {
+    "frozen_acquired_PDF_sha256": "bc5720f8117aef78d702ebacf774c0886e8c01c92cc4f33dbe26e9a9e086e2d4",
+    "metadata_creation_not_release_or_exam_year": true,
+    "not_for_schools_or_digital_sample_keys": true
+  },
+  "commercial_admission": false,
+  "expert_student_or_production_scoring_validation": false,
+  "not_in_checkpoint20": true
+}

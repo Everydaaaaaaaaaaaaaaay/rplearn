@@ -259,6 +259,28 @@
       ],
       "complete_source_response_import": false,
       "production_admission": false
+    },
+    {
+      "id": "scoring.source-counted-transformation-eligibility",
+      "source_id": "cambridge.b2",
+      "acquisition_id": "cambridge-b2-handbook",
+      "source_locator": "PDF15guidance/PDF22paper/PDF26key",
+      "current_group_schema": "0.3",
+      "existing_partial_support": [
+        "segmented sourceparts/conditions",
+        "word_count_rule andrequired_keyword",
+        "semantic_equivalence_rule andaggregation",
+        "source_key_mapping"
+      ],
+      "reason": "Relevantfieldsarepresentasprose; schemaacceptancedoesnotexecute contractedwordcount,globalzero-markconditions orORbranch compatibility",
+      "next_design_requirements": [
+        "Version source wordcount, count full contractions with documented exception, retain ambiguous cases for review",
+        "Enforce source-global no-markconditions without awarding isolated segmentpoints to ineligible fullresponses",
+        "Preserve ORbranch/optionalcomponent associations and fixedprompt response span; do not multiply unrelatedalternatives",
+        "Independent realresponse scoring/variant adjudication andscorer validation required before productuse"
+      ],
+      "complete_source_response_import": false,
+      "production_admission": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true
