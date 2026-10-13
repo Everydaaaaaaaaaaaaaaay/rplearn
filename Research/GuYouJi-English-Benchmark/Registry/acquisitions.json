@@ -51771,6 +51771,58 @@
         "acquisition_id": "cambridge-b2-handbook",
         "tool": "Python/pypdf/source view/research contract0.2"
       }
+    },
+    {
+      "id": "yilin-ebook-junior-webprovider-timeout20261013",
+      "url": "https://edu.yilin.com/index.php/Category/index?cat_id=31&dt_type1=2&nav_id=14",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "format_validation": "web_provider_failure_no_native_body",
+      "http_status": null,
+      "tool_reported_http_status": 400,
+      "error": "Search service open reported 400 Timeout fetching",
+      "review_scope": "Search index has a publisher catalogue result, but actual open failed; no native response/body/current textbook/ISBN/answer/audio acquired"
+    },
+    {
+      "id": "yilin-current-webprovider40320261013",
+      "url": "https://ylyy.yilin.com/",
+      "accessed_on": "2026-10-13",
+      "status": "fetch_failed",
+      "format_validation": "web_provider_failure_no_native_body",
+      "http_status": null,
+      "tool_reported_http_status": 403,
+      "error": "Search service open reported 403 Forbidden",
+      "review_scope": "No native HTTP response or page body obtained; no alternate client/domain/headers/authentication bypass attempted"
+    },
+    {
+      "id": "record-yilin-provider-failures20261013",
+      "url": "urn:lingotrip:research:yilin:provider-failure",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_yilin_provider_failures20261013.py",
+      "bytes": 3207,
+      "sha256": "d67176ed733d04c011898652eb5132f8ab2943e56812ae43225182b8ab555913",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen actual provider failure and repeat-entry stopping record, not textbook body/version or permission",
+      "derivation": {
+        "origin": "project_authored_access_failure_record",
+        "tool": "actual search service open result/registry inherited failure evidence"
+      }
+    },
+    {
+      "id": "yilin-webprovider-failure-audit20261013",
+      "url": "urn:lingotrip:research:yilin:provider-failure",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/yilin-webprovider-failure-audit20261013.json",
+      "bytes": 1397,
+      "sha256": "5fd48e88653ccc75362175d87865cdfe8952f8aec30f806dee7ad490e03105c5",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen actual provider failure and repeat-entry stopping record, not textbook body/version or permission",
+      "derivation": {
+        "origin": "project_authored_access_failure_record",
+        "tool": "actual search service open result/registry inherited failure evidence"
+      }
     }
   ],
   "updated_on": "2026-10-13"

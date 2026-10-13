@@ -23,6 +23,7 @@
 - [福州教辅跨行条目与学校分组](Studies/2026-10-13-fuzhou-supplementary-merged-rows-and-school-partitions.md)：三官方XLSX的13逻辑英语条目/15物理行，原格片段及两套同120学校分组；教辅范围不替代教材版本或学生能力。
 - [听说声明附件与离线练习边界](Studies/2026-10-13-oral-declared-attachments-and-executable-boundaries.md)：福州2024空下载列表，广州2026引用2022两套练习、当前RAR仅EXE；公告/服务器/成员日期分开，设备故障与语言表现分开。
 - [译林教研与材料边界](Studies/2026-10-13-yilin-pedagogy-chains-and-excerpt-boundaries.md)：新版任务链、文章转载/汇编和教学补充材料，完整教材与教参继续待取得。
+- [译林重复入口失败与切换](Studies/2026-10-13-yilin-repeated-entry-failure-and-stop-rule.md)：搜索索引不能补正文，继承多批失败后停止两入口重复请求，等待新可访问证据。
 - [外研高中42单元与产出支撑](Studies/2026-10-13-fltrp-senior-42units-and-output-support.md)：七册官方目录、三幅公开结构图与课程介绍；教材正文、录音、答案及许可仍缺。
 - [高中必修一Unit1正文与Workbook](Studies/2026-10-13-senior-unit1-core-workbook-and-draft-roles.md)：18页实际核读、短语分类/改写、读者角色与词表标记；[统计事实范围](Studies/2026-10-13-senior-statistics-populations-and-estimate-revisions.md)另保留年份、分母及估计修订。
 - [高中必修一Unit2计划与角色关系](Studies/2026-10-13-senior-travel-plans-functions-and-role-relations.md)：18单元页、29正文/18Workbook活动块、九注释和词表边界；计划/预测/未定及百科/宣传/回信、共享输入与支架分开。
