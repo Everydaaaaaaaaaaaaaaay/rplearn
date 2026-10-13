@@ -59166,6 +59166,80 @@
         ],
         "tool": "validate_current_used_anchor_rationales.py"
       }
+    },
+    {
+      "id": "current-used-anchor-rationales-grade9-expanded20261014-record",
+      "url": "urn:lingotrip:research:actual-used-grade9-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-used-anchor-rationales-grade9-expanded20261014.json",
+      "bytes": 84285,
+      "sha256": "faf629bea048e12ffe95fce08fb8a9371c6128b45a2949b9e26868d45c7d0d66",
+      "format_validation": "UTF8_saved",
+      "review_scope": "18actualusedgroups160responseswithgrade9fullreasons;3newgroups25items/fullsource9page reread, alloneword grammar and concretebusy/connector/determiner candidates pendingadjudication;7highschoolgroups45points missing,not independentgold/student/production/rights validation",
+      "derivation": {
+        "origin": "project_actual_used_source_grade9_rationale_extension",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-firstfour20261014-record",
+          "firstrelease-grade9-reused-selected-private-audit20261013"
+        ],
+        "tool": "fullactualsourceimage/referencekey reread and sameauthorresolve"
+      }
+    },
+    {
+      "id": "extend-current-used-anchor-grade9-2026-rationales20261014-record",
+      "url": "urn:lingotrip:research:actual-used-grade9-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/extend_current_used_anchor_grade9_2026_rationales20261014.py",
+      "bytes": 10024,
+      "sha256": "f1dfae7f35cffe6b01322362455a89b5e5600e19ce9e3029a62b69a040401c5b",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_grade9extension_method;3newgroups25items/fullsource9page reread, alloneword grammar and concretebusy/connector/determiner candidates pendingadjudication;7highschoolgroups45points missing,not independentgold/student/production/rights validation",
+      "derivation": {
+        "origin": "project_actual_used_source_grade9_rationale_extension",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-firstfour20261014-record",
+          "firstrelease-grade9-reused-selected-private-audit20261013"
+        ],
+        "tool": "fullactualsourceimage/referencekey reread and sameauthorresolve"
+      }
+    },
+    {
+      "id": "current-used-anchor-grade9-validation20261014-record",
+      "url": "urn:lingotrip:research:actual-used-grade9-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/current-used-anchor-grade9-validation20261014.json",
+      "bytes": 2050,
+      "sha256": "1d847770cb323bc018dbef425a697db2291948dce9b5e8ba2ad54f0b28c38e4d",
+      "format_validation": "UTF8_saved",
+      "review_scope": "partialbinding_and_strict_rejection_result;18/25groups160/205responses with110choice labels15boundmappings valid,strictreject7remaining45points;not semantic/student/production/rights validation",
+      "derivation": {
+        "origin": "project_partial_actual_source_reason_validation",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-grade9-expanded20261014-record"
+        ],
+        "tool": "validate_current_used_anchor_rationales.py --index current-used-anchor-rationale-index-v0.2.json"
+      }
+    },
+    {
+      "id": "register-grade9-used-rationale-validation20261014-record",
+      "url": "urn:lingotrip:research:actual-used-grade9-reasons",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_grade9_used_rationale_validation20261014.py",
+      "bytes": 2362,
+      "sha256": "56cf95b115911ffc88994e822be185a181ea0cb918411fba87829a7e3dd77687",
+      "format_validation": "UTF8_saved",
+      "review_scope": "saved_validation_registration_method;18/25groups160/205responses with110choice labels15boundmappings valid,strictreject7remaining45points;not semantic/student/production/rights validation",
+      "derivation": {
+        "origin": "project_partial_actual_source_reason_validation",
+        "related_acquisition_ids": [
+          "current-used-anchor-rationales-grade9-expanded20261014-record"
+        ],
+        "tool": "validate_current_used_anchor_rationales.py --index current-used-anchor-rationale-index-v0.2.json"
+      }
     }
   ],
   "updated_on": "2026-10-13"

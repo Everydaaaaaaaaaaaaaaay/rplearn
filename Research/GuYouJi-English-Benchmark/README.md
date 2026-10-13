@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [初三三组实际用锚理由](Studies/2026-10-14-current-used-grade9-source-reasons.md)：18/25组160/205点，科学/文化主张与语法开放变体分开；the…month不强制最高级，7高中组45点仍被完整验收拒绝。
+
 - [实际用锚理由四组追加](Studies/2026-10-14-current-used-anchor-first-four-reasons.md)：当前15/25组135/205源响应；原生they强调/2019日历/多词词库及图形不确定性保留，10组70点未完成并被严格验收拒绝。
 
 - [源答案值错误修正与实际用锚缺口](Studies/2026-10-14-seed-answer-values-and-used-anchor-gap.md)：15个题号误作选项已按冻结映射纠正，112标签/15映射检查与真实旧错误拒绝；当前25使用锚另有14组待统一逐项理由；[审阅包0.4](FirstRelease/ReviewPackage-v0.4.md)。
