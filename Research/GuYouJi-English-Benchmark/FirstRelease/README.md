@@ -6,12 +6,12 @@
 
 ## 当前进展：首版未完成
 
-累计40个完整配套选定源组、11个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
+累计40个完整配套选定源组、13个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
 | 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md) | 7，两卷 | 核心审阅/负荷对照；图文与不变形模式缺口保留 |
-| 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md) | 9，两区卷 | 完形、四选语言形式候选及核心审阅；开放形式缺键 |
+| 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；开放形式缺键 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.1](Specifications/grade10-v0.1.md) | [三篇语法](Generated/grade10-grammar-v0.1.md) | 5，一卷 | 阅读、完形、第二源/复杂输入对照 |
 | 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读](Generated/grade11-commitments-reading-v0.1.md) | 8，两卷 | 语法候选；15空/单篇模式与更多负荷覆盖 |
