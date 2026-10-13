@@ -141,6 +141,37 @@
       ],
       "production_admission": false,
       "complete_source_response_import": false
+    },
+    {
+      "id": "response.image-colouring-and-object-annotation",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-g7upper-starters-1312001101241-image018",
+      "additional_evidence_acquisition_ids": [
+        "pep-g7upper-starters-1312001101241-image026",
+        "pep-g7upper-starters-1312001101241-image027"
+      ],
+      "source_tasks": [
+        "Starter2 A2c",
+        "Starter3 B1b",
+        "Starter3 B1d"
+      ],
+      "observed_requirements": [
+        "Colour three object groups from audio; bicycle can be two-coloured",
+        "Circle mentioned image objects from prose",
+        "Circle learner-selected extra objects then describe their count and colour"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.3",
+      "dedicated_image_colour_or_annotation_payload": false,
+      "reason": "Existing span annotations anchor Unicode text blocks; source image assets do not encode learner colouring or geometric object selections",
+      "next_design_requirements": [
+        "Stable source image/revision/object-region identity and displayed coordinate transform",
+        "Distinct categorical colour choice, painted region and geometric selection payloads; do not invent source colour-region keys",
+        "Retain multiple colours, grouped shoes and selected referents across later responses",
+        "Separate image/colour perception and accessibility accommodations from language inference and listening; verify rubrics and accepted alternatives"
+      ],
+      "complete_source_response_import": false,
+      "production_admission": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true
