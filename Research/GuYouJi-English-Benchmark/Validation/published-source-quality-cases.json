@@ -76,6 +76,17 @@
       "confirmed_source_conflict": false,
       "observation": "adlegend combines adjective/adverb; actualprintedable-v andabout-adj match nativeextract, not OCRonly artifacts",
       "required_response": "Preserve observedlabels andrequire independent sense/POS review; do not use as goldPOS training labels"
+    },
+    {
+      "id": "voa-native-image-only-rights-blindspot",
+      "source_id": "voa.lle1.course",
+      "acquisition_id": "voa-lle1-plans52-pdf20261013",
+      "locator": "PDF13 imagealphabetposter andPDF519copyright",
+      "category": "native_text_missing_component_credit",
+      "confirmed_source_fact": true,
+      "confirmed_source_conflict": false,
+      "observation": "OriginalPDF image13 visibly externalSesameStreet credit; native extracted text lacksit. PDF519 explicitthirdparty songcopyright means publisherPD notwholefileclearance",
+      "required_response": "Use actualimage/context review before component rights admission; no hit orpublisheridentity cannot certify exclusiveproduction"
     }
   ],
   "gold_admission": false

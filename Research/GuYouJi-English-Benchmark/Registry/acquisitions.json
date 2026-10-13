@@ -40248,6 +40248,74 @@
         ],
         "tool": "macOS clonefile, streamSHA256, atomicreplace"
       }
+    },
+    {
+      "id": "voa-lle1-thirdparty-review20261013-514",
+      "url": "https://docs.voanews.eu/en-us-learn/2021/09/09/fccd8340-337b-4d24-a750-f90c6d2d5843.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/voa-lle1-thirdparty-review20261013-514.png",
+      "bytes": 258545,
+      "sha256": "154350cc90563264fad184e87e8c9ee830e143bfa6131a06d574df495612c269",
+      "format_validation": "PNG_render",
+      "review_scope": "Single actual visual review of source songquotation, authorcredit orcopyrightstatement; not thirdparty clearance",
+      "derivation": {
+        "acquisition_id": "voa-lle1-plans52-pdf20261013",
+        "pdf_page": 514,
+        "tool": "Poppler pdftoppm -scale-to1400"
+      }
+    },
+    {
+      "id": "voa-lle1-thirdparty-review20261013-515",
+      "url": "https://docs.voanews.eu/en-us-learn/2021/09/09/fccd8340-337b-4d24-a750-f90c6d2d5843.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/voa-lle1-thirdparty-review20261013-515.png",
+      "bytes": 195605,
+      "sha256": "111f845db7ffd05a6e09c09a4e2d5282028462b02b88d6abcb7695d739213197",
+      "format_validation": "PNG_render",
+      "review_scope": "Single actual visual review of source songquotation, authorcredit orcopyrightstatement; not thirdparty clearance",
+      "derivation": {
+        "acquisition_id": "voa-lle1-plans52-pdf20261013",
+        "pdf_page": 515,
+        "tool": "Poppler pdftoppm -scale-to1400"
+      }
+    },
+    {
+      "id": "voa-lle1-thirdparty-review20261013-519",
+      "url": "https://docs.voanews.eu/en-us-learn/2021/09/09/fccd8340-337b-4d24-a750-f90c6d2d5843.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/voa-lle1-thirdparty-review20261013-519.png",
+      "bytes": 243084,
+      "sha256": "fdd23569fc3bc57cfa7957929277db2afe44e91fe82d2ddfd8e074e1a3999633",
+      "format_validation": "PNG_render",
+      "review_scope": "Single actual visual review of source songquotation, authorcredit orcopyrightstatement; not thirdparty clearance",
+      "derivation": {
+        "acquisition_id": "voa-lle1-plans52-pdf20261013",
+        "pdf_page": 519,
+        "tool": "Poppler pdftoppm -scale-to1400"
+      }
+    },
+    {
+      "id": "record-voa-thirdparty-components20261013",
+      "url": "https://docs.voanews.eu/en-us-learn/2021/09/09/fccd8340-337b-4d24-a750-f90c6d2d5843.pdf",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/record_voa_thirdparty_components20261013.py",
+      "bytes": 5580,
+      "sha256": "de8a4624cee0824acb12d59f1ea46d09f60e631955c21ddd5e7327fa5bb8b720",
+      "format_validation": "python_source_saved",
+      "review_scope": "Context checked sourcecomponent exclusions andnative extraction blindspots; no52lessoncomplete admission",
+      "derivation": {
+        "acquisition_id": "voa-lle1-plans52-pdf20261013",
+        "additional_parent_acquisition_ids": [
+          "voa-lle1-thirdparty-review20261013-514",
+          "voa-lle1-thirdparty-review20261013-515",
+          "voa-lle1-thirdparty-review20261013-519"
+        ],
+        "tool": "Python and sourcePDF actual visual review"
+      }
     }
   ],
   "updated_on": "2026-10-13"
