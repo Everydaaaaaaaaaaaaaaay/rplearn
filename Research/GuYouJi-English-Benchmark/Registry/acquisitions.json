@@ -57131,6 +57131,222 @@
         ],
         "tool": "profile_task_load0.1/profile_cefrj_units1/profile_readability0.2/source-image author transcription"
       }
+    },
+    {
+      "id": "grade11-commitments-v01-prior-language-variant20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade11-commitments-v01-prior-language-variant20261014.md",
+      "bytes": 5548,
+      "sha256": "8dcf89c5cb2d9dde5be2fbaf08f147d9463b1177150e54b68f36fbe538c904bf",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Same original task family v0.1 prior preserved/v0.2 full author resolve and explicit load/clause comparison; no new independent sample or learner/model/commercial verification",
+      "derivation": {
+        "origin": "project_authored_language_variant",
+        "related_acquisition_ids": [
+          "grade11-2025lower-crossregion-candidate-20261013"
+        ],
+        "tool": "Author full resolve/profile_task_load0.1/re/json/hashlib"
+      }
+    },
+    {
+      "id": "grade11-commitments-v02-language-variant-audit20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade11-commitments-v02-language-variant-audit20261014.json",
+      "bytes": 5714,
+      "sha256": "bf2300c6c98fd9ea9e4546cb86bca66e95f78718aa56b4c210e223a2b5bad44e",
+      "format_validation": "JSON_parsed",
+      "review_scope": "Same original task family v0.1 prior preserved/v0.2 full author resolve and explicit load/clause comparison; no new independent sample or learner/model/commercial verification",
+      "derivation": {
+        "origin": "project_authored_language_variant",
+        "related_acquisition_ids": [
+          "grade11-2025lower-crossregion-candidate-20261013"
+        ],
+        "tool": "Author full resolve/profile_task_load0.1/re/json/hashlib"
+      }
+    },
+    {
+      "id": "task-load-grade11-v02-prepared20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/task-load-grade11-v02-prepared20261014.json",
+      "bytes": 8888,
+      "sha256": "4200222fe2dbfd717f0b084f6048ee5b3acf37bb53f2afe367875f2a0b715563",
+      "format_validation": "JSON_parsed",
+      "review_scope": "Same original task family v0.1 prior preserved/v0.2 full author resolve and explicit load/clause comparison; no new independent sample or learner/model/commercial verification",
+      "derivation": {
+        "origin": "project_authored_language_variant",
+        "related_acquisition_ids": [
+          "grade11-2025lower-crossregion-candidate-20261013"
+        ],
+        "tool": "Author full resolve/profile_task_load0.1/re/json/hashlib"
+      }
+    },
+    {
+      "id": "prepare-grade11-language-variant20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/prepare_grade11_language_variant20261014.py",
+      "bytes": 10080,
+      "sha256": "83f076d106f586084982200b3e61281f07476ab539fc195ba4cdb4a6aeaf31de",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Same original task family v0.1 prior preserved/v0.2 full author resolve and explicit load/clause comparison; no new independent sample or learner/model/commercial verification",
+      "derivation": {
+        "origin": "project_authored_language_variant",
+        "related_acquisition_ids": [
+          "grade11-2025lower-crossregion-candidate-20261013"
+        ],
+        "tool": "Author full resolve/profile_task_load0.1/re/json/hashlib"
+      }
+    },
+    {
+      "id": "firstrelease-grade11-language-variant-validation20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-grade11-language-variant-validation20261014.json",
+      "bytes": 514,
+      "sha256": "86e1eadc375a4ca7eca4247ffe411e9a3de43b6a058f2f7e064ad3a4d32ea552",
+      "format_validation": "JSON_parsed",
+      "review_scope": "Index0.4 still21candidate task families/174response points/53groups; prior and actual revision cache included. Structural binding only; no semantic/student/production validation",
+      "derivation": {
+        "origin": "project_firstrelease_variant_validation",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "validate_firstrelease_v0_3.py with index0.4"
+      }
+    },
+    {
+      "id": "grade11-variant-final-firstrelease-v04-default-and-negative-checks20261014-json",
+      "url": "urn:lingotrip:research:grade11-language-variant-checks",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-v04-default-and-negative-checks20261014.json",
+      "bytes": 2551,
+      "sha256": "2c61987e1144b91870a1d78b93679394f9539271f3078513db437ce426917e23",
+      "format_validation": "JSON_parsed",
+      "review_scope": "Default wrapper0.4 reuses frozen0.3 core;21/174/53 and25cache bindings,8negative cases pluscalendar/shared-bank checks pass. No semantic/student/model/commercial validation",
+      "derivation": {
+        "origin": "project_variant_structural_validation",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "validate_firstrelease_v0_4.py/default index0.4"
+      }
+    },
+    {
+      "id": "grade11-variant-final-validate_firstrelease_v04_default_frozen20261014-py",
+      "url": "urn:lingotrip:research:grade11-language-variant-checks",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/validate_firstrelease_v04_default_frozen20261014.py",
+      "bytes": 274,
+      "sha256": "6da51f5389c3185d23f53f4b467e1d6aa3831409fefee8c9f5dfc2d3d30f2a9e",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Default wrapper0.4 reuses frozen0.3 core;21/174/53 and25cache bindings,8negative cases pluscalendar/shared-bank checks pass. No semantic/student/model/commercial validation",
+      "derivation": {
+        "origin": "project_variant_structural_validation",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "validate_firstrelease_v0_4.py/default index0.4"
+      }
+    },
+    {
+      "id": "grade11-variant-final-register_grade11_variant_final_checks20261014-py",
+      "url": "urn:lingotrip:research:grade11-language-variant-checks",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_grade11_variant_final_checks20261014.py",
+      "bytes": 1976,
+      "sha256": "e483962c1e9693bc2e03def41b74cc7b436512fbfa534152485912b2b6679b48",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Default wrapper0.4 reuses frozen0.3 core;21/174/53 and25cache bindings,8negative cases pluscalendar/shared-bank checks pass. No semantic/student/model/commercial validation",
+      "derivation": {
+        "origin": "project_variant_structural_validation",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "validate_firstrelease_v0_4.py/default index0.4"
+      }
+    },
+    {
+      "id": "grade11-variant-initial-author-metadata20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant-metadata",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade11-variant-initial-author-metadata20261014.json",
+      "bytes": 2089,
+      "sha256": "907cd8d50873f4e3feaa4be85014b38f5279adb381bfc498e6b0183ffe46d71e",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Preserves initial inherited no-edit metadata; corrected author declaration only, actual single full saved language revision and answer/load unchanged. Earlier frozen audits/methods untouched",
+      "derivation": {
+        "origin": "project_author_metadata_correction",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "Python/json/hashlib"
+      }
+    },
+    {
+      "id": "grade11-variant-corrected-author-audit20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant-metadata",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade11-variant-corrected-author-audit20261014.json",
+      "bytes": 6101,
+      "sha256": "4cd3c935923fe64d99fad7e12114dcbe2b46886efffccfdbe47ca6d31afb3494",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Preserves initial inherited no-edit metadata; corrected author declaration only, actual single full saved language revision and answer/load unchanged. Earlier frozen audits/methods untouched",
+      "derivation": {
+        "origin": "project_author_metadata_correction",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "Python/json/hashlib"
+      }
+    },
+    {
+      "id": "correct-grade11-variant-author-metadata20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant-metadata",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/correct_grade11_variant_author_metadata20261014.py",
+      "bytes": 4474,
+      "sha256": "922f7751454b69490c6683b00ec9adb6f89543f8b37d17554edf6506636f4efe",
+      "format_validation": "UTF8_saved",
+      "review_scope": "Preserves initial inherited no-edit metadata; corrected author declaration only, actual single full saved language revision and answer/load unchanged. Earlier frozen audits/methods untouched",
+      "derivation": {
+        "origin": "project_author_metadata_correction",
+        "related_acquisition_ids": [
+          "grade11-commitments-v02-language-variant-audit20261014"
+        ],
+        "tool": "Python/json/hashlib"
+      }
+    },
+    {
+      "id": "firstrelease-v04-corrected-author-metadata-validation20261014",
+      "url": "urn:lingotrip:research:grade11-language-variant-metadata",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-v04-corrected-author-metadata-validation20261014.json",
+      "bytes": 2551,
+      "sha256": "2c61987e1144b91870a1d78b93679394f9539271f3078513db437ce426917e23",
+      "format_validation": "JSON_parsed",
+      "review_scope": "Final corrected metadata/index0.4 bind21families174responses53groups25cache refs; eight negative cases/calendar/bank checks pass; no semantic/student/production admission",
+      "derivation": {
+        "origin": "project_validation_after_metadata_correction",
+        "related_acquisition_ids": [
+          "grade11-variant-corrected-author-audit20261014"
+        ],
+        "tool": "validate_firstrelease_v0_4.py"
+      }
     }
   ],
   "updated_on": "2026-10-13"

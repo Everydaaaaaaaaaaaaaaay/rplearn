@@ -6,7 +6,7 @@
 
 ## 当前进展：核心审阅包已形成，扩展与外部验证未完成
 
-累计53个完整配套选定源组、21个原创候选。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
+累计53个完整配套选定源组、21个原创题组家族（当前21个版本，修订前稿另存，不重复计样本）。配套指题面/必要图/参考键范围已核读，不代表源题无错、独立金标准、学生标定或商用准入；同卷多组只有一个卷家族。当前[来源矩阵](source-matrix.json)和[题组观察](source-group-observations.json)是计数/引用入口。
 
 可以从[核心审阅包](ReviewPackage-v0.1.md)开始：六年级各两个选定卷家族，阅读/完形/适用语言形式均有原创和完整参照；[18组种子](seed-anchor-index-v0.1.json)新增162个源作答点的逐项作者理由，[冻结索引](review-index-v0.1.json)绑定19原创/161作答点及实际版本。[流程0.2](GenerationProtocol-v0.2.md)给出双输入/风险排除/修题与复算要求。核心材料准备与全库/商用/独立教师学生验收分开，本长期任务仍未完成。
 
@@ -16,7 +16,7 @@
 | 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；已补模拟开放形式，学校真卷配套仍缺 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读](Generated/grade10-roof-reading-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
-| 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读](Generated/grade11-commitments-reading-v0.1.md)、[单篇语法](Generated/grade11-archive-grammar-v0.1.md) | 8，两卷 | 核心审阅/负荷对照；15空等更多模式待扩 |
+| 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读0.2](Generated/grade11-commitments-reading-v0.2.md)、[单篇语法](Generated/grade11-archive-grammar-v0.1.md) | 8，两卷 | 核心审阅/负荷对照；15空等更多模式待扩 |
 | 高三 | [0.2](Specifications/grade12-v0.2.md) | [四简介阅读](Generated/grade12-archive-v0.1.md)、[论证阅读](Generated/grade12-dashboard-reading-v0.1.md)、[完形](Generated/grade12-bridge-cloze-v0.1.md)、[语法](Generated/grade12-workshop-grammar-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；全年冲刺范围仍缺 |
 
 [初一第二来源对照](Comparisons/grade7-source-comparison-v0.1.md)扩展三选/四选、日历/人物图；[高二第二卷对照](Comparisons/grade11-source-comparison-v0.1.md)扩展10/15空完形、三篇/单篇语法、书评/论证及概念/视角范围。[初二丰台第二来源对照](Comparisons/grade8-source-comparison-v0.1.md)扩展8/10空完形、3/4题阅读和完整单项，保留第20空缺been风险。[初三第二年份对照](Comparisons/grade9-source-comparison-v0.1.md)增加表格行关系、派生名词/物主限定词与共享被动，保留technology…have源一致风险。[高一第二卷](Comparisons/grade10-source-comparison-v0.1.md)与[高三鞍山对照](Comparisons/grade12-source-comparison-v0.1.md)补15空/单篇语法及论证/实验，六年级均已有第二卷。源人名混用、缺词、错印、解析题号错位和措辞风险保留，不悄改原文或当正向范例。
@@ -53,3 +53,5 @@
 [初二开放语言补充](Supplements/grade8-open-language-v0.1.json)核读友果八上**模拟卷**的完整十空篇章/键/解析，[规格](Specifications/grade8-open-language-v0.1.md)保留全一词约束和参考键非穷尽反例；不计核心53选定源组或已施测普通学校锚。详见[取材记录](../Studies/2026-10-14-grade8-open-language-key-boundaries.md)。
 
 [真实锚与原创语言负荷控制](LanguageLoadControls-v0.1.md)新增六阅读配对的正文/题干/选项/标签测量，[摘要](TaskLoadComparison-v0.1.json)关联30语境单元及六可读性副本；实例不是年级分布或学生时间。初一旧partof粘连已在新测量副本更正，旧220含标签计数由221替代，冻结审计不改字节。
+
+[高二实际语言变体](Generated/grade11-commitments-reading-v0.2.md)保存0.1→0.2前后稿及新句法的逐题复解，当前[索引0.4](review-index-v0.4.json)仍选择21题组家族/174点，旧版不重复计样本；[默认检查器0.4](../Tools/validate_firstrelease_v0_4.py)复用冻结0.3算法。[记录](../Studies/2026-10-14-grade11-actual-language-variant.md)说明353 token/15句与教师/学生边界。
