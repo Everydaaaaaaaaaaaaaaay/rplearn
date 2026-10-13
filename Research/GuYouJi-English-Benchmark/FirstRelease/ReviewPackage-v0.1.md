@@ -40,4 +40,6 @@ English/digit token保留apostrophe/hyphen复合，空号/给词排除；初一�
 
 下一步继续补负荷/体裁与版本对照、词汇/句法工具在真实锚题上的误差、扩展16水平/4备考方向、材料用途和必要保存。独立教师、目标学生、商业许可/隐藏集需要真实证据；用户未授权联系/招聘/付费或生产评测，不能用模型互评补齐。
 
-本页为19组核心基线。后续[初一日历扩展](Generated/grade7-calendar-reading-v0.1.md)已追加图文联合模式，最新[索引0.2](review-index-v0.2.json)为20组/164作答点；[记录](../Studies/2026-10-14-firstrelease-calendar-role-extension.md)说明日期/审核表角色检查和保存边界。基线数据不被倒改成扩展后数量。
+本页为19组核心基线。后续[初一日历扩展](Generated/grade7-calendar-reading-v0.1.md)已追加图文联合模式，当时[索引0.2](review-index-v0.2.json)为20组/164作答点；[记录](../Studies/2026-10-14-firstrelease-calendar-role-extension.md)说明日期/审核表角色检查和保存边界。基线数据不被倒改成扩展后数量。
+
+[原形词库扩展](Generated/grade7-reading-bus-bank-v0.1.md)再补A模式，当前[索引0.3](review-index-v0.3.json)为21组/174作答点；[记录](../Studies/2026-10-14-firstrelease-unchanged-bank-extension.md)保存一次分配/不变形与多词短语检查。基线仍保留原19组数量。

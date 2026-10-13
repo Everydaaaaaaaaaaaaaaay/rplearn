@@ -55373,6 +55373,96 @@
         ],
         "tool": "Python/re/hashlib/json/calendar/datetime"
       }
+    },
+    {
+      "id": "firstrelease-grade7-unchanged-bank-private-audit20261014",
+      "url": "urn:lingotrip:research:firstrelease:unchanged-bank",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-grade7-unchanged-bank-private-audit20261014.json",
+      "bytes": 2303,
+      "sha256": "65bc4745ea0c6f0db9bd2995c8e7c2e4be8339a39a175113e95d9db7aefe6724",
+      "format_validation": "json_parsed",
+      "review_scope": "Original grade7 tenunchanged entries/once-assignment, threewordbankphrase and full authorre-solve; A/Bsource modes separate, no student/production validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_bank_extension",
+        "related_acquisition_ids": [
+          "xdf-grade7-2021lower-paper-20261013"
+        ],
+        "tool": "Python/re/hashlib/json/author full-group solve"
+      }
+    },
+    {
+      "id": "extend-firstrelease-unchanged-bank20261014",
+      "url": "urn:lingotrip:research:firstrelease:unchanged-bank",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/extend_firstrelease_unchanged_bank20261014.py",
+      "bytes": 5116,
+      "sha256": "899f304cad5378adfdbf0cfa049e1a11aaf5b79d1b9fb72d135b8473a90cee50",
+      "format_validation": "python_source_saved",
+      "review_scope": "Original grade7 tenunchanged entries/once-assignment, threewordbankphrase and full authorre-solve; A/Bsource modes separate, no student/production validation",
+      "derivation": {
+        "origin": "project_authored_firstrelease_bank_extension",
+        "related_acquisition_ids": [
+          "xdf-grade7-2021lower-paper-20261013"
+        ],
+        "tool": "Python/re/hashlib/json/author full-group solve"
+      }
+    },
+    {
+      "id": "prepare-firstrelease-validator-v03-20261014",
+      "url": "urn:lingotrip:research:firstrelease:unchanged-bank-validation",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/prepare_firstrelease_validator_v03_20261014.py",
+      "bytes": 2934,
+      "sha256": "8e20ef086df2f3cab7550e1c24bcba21d342c3789c08d4dbce5499ef21a0c8e1",
+      "format_validation": "python_source_saved",
+      "review_scope": "Versioned v0.3review-index21candidate174items, unchanged shared-bank once-assignment; accepts3wordentry, rejects takeformchange/repeatedentry. Earliermethods/audits unchanged; no semantic/student/production/rights admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_unchanged_bank_validation",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-unchanged-bank-private-audit20261014"
+        ],
+        "tool": "Python/re/json/hashlib"
+      }
+    },
+    {
+      "id": "firstrelease-unchanged-bank-expanded-validation20261014",
+      "url": "urn:lingotrip:research:firstrelease:unchanged-bank-validation",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-unchanged-bank-expanded-validation20261014.json",
+      "bytes": 2746,
+      "sha256": "30f0c50401b5b6a13b24d70c91b05f240393ce3cff26228af797ea8ab7a35a15",
+      "format_validation": "json_parsed",
+      "review_scope": "Versioned v0.3review-index21candidate174items, unchanged shared-bank once-assignment; accepts3wordentry, rejects takeformchange/repeatedentry. Earliermethods/audits unchanged; no semantic/student/production/rights admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_unchanged_bank_validation",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-unchanged-bank-private-audit20261014"
+        ],
+        "tool": "Python/re/json/hashlib"
+      }
+    },
+    {
+      "id": "register-firstrelease-unchanged-bank-validation20261014",
+      "url": "urn:lingotrip:research:firstrelease:unchanged-bank-validation",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_firstrelease_unchanged_bank_validation20261014.py",
+      "bytes": 2335,
+      "sha256": "8a360e25f953444e9ac87966ad31f054c2d43a3a0cd81d828baa780a4d38563e",
+      "format_validation": "python_source_saved",
+      "review_scope": "Versioned v0.3review-index21candidate174items, unchanged shared-bank once-assignment; accepts3wordentry, rejects takeformchange/repeatedentry. Earliermethods/audits unchanged; no semantic/student/production/rights admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_unchanged_bank_validation",
+        "related_acquisition_ids": [
+          "firstrelease-grade7-unchanged-bank-private-audit20261014"
+        ],
+        "tool": "Python/re/json/hashlib"
+      }
     }
   ],
   "updated_on": "2026-10-13"
