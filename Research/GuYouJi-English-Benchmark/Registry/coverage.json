@@ -121,7 +121,7 @@
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "西城2025与丰台2025两区普通初二期末，选定题面/键完整；丰台完形20缺been，附加解析原机构认证未知。开放篇章语言候选尚缺配套键；不能将错语文题面与已有英语键配对。",
+      "notes": "西城2025与丰台2025两区普通初二期末，选定题面/键完整；丰台完形20缺been，附加解析原机构认证未知。开放篇章语言候选尚缺配套键；不能将错语文题面与已有英语键配对。 另有友果八上模拟卷十空篇章/同文件键和解析完整核读；第57/59/60开放变体需裁决，不计核心真卷锚或金标准。",
       "first_release_evidence": {
         "review_index_path": "FirstRelease/review-index-v0.3.json",
         "source_matrix_path": "FirstRelease/source-matrix.json",
@@ -134,7 +134,10 @@
         "first_release_complete": false,
         "source_key_not_independent_gold": true,
         "commercial_admission": false
-      }
+      },
+      "supplemental_evidence_paths": [
+        "FirstRelease/Supplements/grade8-open-language-v0.1.json"
+      ]
     },
     {
       "level": "junior3",

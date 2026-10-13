@@ -13,7 +13,7 @@
 | 年级 | 当前规格 | 已写并作者核查的原创任务 | 选定源组 | 下一必做 |
 | --- | --- | --- | --- | --- |
 | 初一 | [0.2](Specifications/grade7-v0.2.md) | [阅读](Generated/grade7-library-v0.1.md)、[完形](Generated/grade7-boxes-cloze-v0.1.md)、[词库形式](Generated/grade7-garden-bank-v0.1.md)、[日历](Generated/grade7-calendar-reading-v0.1.md)、[原形词库](Generated/grade7-reading-bus-bank-v0.1.md) | 7，两卷 | 更多负荷、人物图模式待补 |
-| 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；开放形式缺键 |
+| 初二 | [0.2](Specifications/grade8-v0.2.md) | [说明阅读](Generated/grade8-lunch-v0.1.md)、[完形](Generated/grade8-radio-cloze-v0.1.md)、[四选语言](Generated/grade8-language-choice-v0.1.md) | 9，两区卷 | 核心审阅/负荷对照；已补模拟开放形式，学校真卷配套仍缺 |
 | 初三 | [0.2](Specifications/grade9-v0.2.md) | [说明阅读](Generated/grade9-book-repair-v0.1.md)、[完形](Generated/grade9-cycle-shop-cloze-v0.1.md)、[一词填空](Generated/grade9-weather-grammar-v0.1.md) | 7，两年份卷 | 核心审阅/负荷对照；更多地区仍缺 |
 | 高一 | [0.2](Specifications/grade10-v0.2.md) | [三篇语法](Generated/grade10-grammar-v0.1.md)、[完形](Generated/grade10-theatre-cloze-v0.1.md)、[阅读](Generated/grade10-roof-reading-v0.1.md) | 11，两卷 | 核心审阅/负荷对照；第二卷学校/地区身份仍缺 |
 | 高二 | [0.2](Specifications/grade11-v0.2.md) | [10空完形](Generated/grade11-exhibition-cloze-v0.1.md)、[论证阅读](Generated/grade11-commitments-reading-v0.1.md)、[单篇语法](Generated/grade11-archive-grammar-v0.1.md) | 8，两卷 | 核心审阅/负荷对照；15空等更多模式待扩 |
@@ -49,3 +49,5 @@
 缺少必需行时只交付部分结果，不用其他年级替补。核心质量边界是完整题组、答案依据、唯一性、合理干扰项与年级正常范围。工作时间重点用于规格、生成及解题审核；不逐篇扩展与语言/答案无关的百科核查，不反复访问失败入口，不用频繁全量快照取代命题交付。保留必要摘要/引用验证，资产保存按实质新增批次合并执行。
 
 持续任务恢复使用现有`lingotrip`自动续办，不新建重复任务。没有实质变化时保持安静，在首版交付、重要错误、需要用户处理的具体依赖或截止检查时通知。未经授权不联系/付费/登录第三方或运行生产评测。资料/商业/训练用途继续分别记录，参考真题结构不自动授权原题复制或AI改写。
+
+[初二开放语言补充](Supplements/grade8-open-language-v0.1.json)核读友果八上**模拟卷**的完整十空篇章/键/解析，[规格](Specifications/grade8-open-language-v0.1.md)保留全一词约束和参考键非穷尽反例；不计核心53选定源组或已施测普通学校锚。详见[取材记录](../Studies/2026-10-14-grade8-open-language-key-boundaries.md)。

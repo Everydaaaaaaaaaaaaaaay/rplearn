@@ -55463,6 +55463,1007 @@
         ],
         "tool": "Python/re/json/hashlib"
       }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014",
+      "url": "https://cdn.att.tthaoke.com/testpaper/release/4/491401fd5607dddd00f5a6da9a12feb3/%E5%85%AB%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7%E5%8F%8A%E7%AD%94%E6%A1%88.pdf",
+      "accessed_on": "2026-10-14",
+      "status": "fetched_unreviewed",
+      "http_status": 200,
+      "final_url": "https://cdn.att.tthaoke.com/testpaper/release/4/491401fd5607dddd00f5a6da9a12feb3/%E5%85%AB%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7%E5%8F%8A%E7%AD%94%E6%A1%88.pdf",
+      "content_type": "application/pdf",
+      "request_context": "Anonymous public HTTPS; no authentication/payment/TLS bypass",
+      "format_validation": "PDF_parsed",
+      "review_scope": "Two covers visually reviewed; selected Yogor PDF8/25/26 full task/key/explanations reviewed; remaining pages only extraction, not semantic review",
+      "path": "build/english-benchmark-research-20261012/raw/grade8-tthaoke-lower-open-candidate20261014.pdf",
+      "bytes": 393304,
+      "sha256": "71b4baac49a57d4070bb25983fd7fd43959ca74842ab8232b7d974106d0fffc8",
+      "pdf_pages": 11,
+      "printed_paper_identity": "2008-2009 lower grade8; original institution/region unknown, missing listening image placeholders"
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014",
+      "url": "https://yogor.cn/wp-content/uploads/2024/01/%E6%98%86%E5%B1%B1%E5%B8%822023-2024%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E5%85%AB%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E6%A8%A1%E6%8B%9F%E8%AF%95%E9%A2%98.pdf",
+      "accessed_on": "2026-10-14",
+      "status": "fetched_unreviewed",
+      "http_status": 200,
+      "final_url": "https://yogor.cn/wp-content/uploads/2024/01/%E6%98%86%E5%B1%B1%E5%B8%822023-2024%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E5%85%AB%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E6%A8%A1%E6%8B%9F%E8%AF%95%E9%A2%98.pdf",
+      "content_type": "application/pdf",
+      "request_context": "Anonymous public HTTPS; no authentication/payment/TLS bypass",
+      "format_validation": "PDF_parsed",
+      "review_scope": "Two covers visually reviewed; selected Yogor PDF8/25/26 full task/key/explanations reviewed; remaining pages only extraction, not semantic review",
+      "path": "build/english-benchmark-research-20261012/raw/grade8-yogor-kunshan2024upper-candidate20261014.pdf",
+      "bytes": 447650,
+      "sha256": "7f5cfd6741676662762828e14da512067ecd95c19f4222f41038b3db00832bd5",
+      "pdf_pages": 29,
+      "printed_paper_identity": "2023-2024 upper grade8 simulated exam, not administered Kunshan exam"
+    },
+    {
+      "id": "grade8-open-supplement-private-audit20261014-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-open-supplement-private-audit20261014.json",
+      "bytes": 9238,
+      "sha256": "47dcb13a764dcbd47595ad041c14e7c646b128ec04619a11837f822e388bf6b6",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "private_audit; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "register-grade8-open-supplement20261014-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_grade8_open_supplement20261014.py",
+      "bytes": 9038,
+      "sha256": "3482acaac16b4ef8e7842197d95bec7d6203989569d8fa1f0de05b1f5b69037f",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "saved_registration_method; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "fetch-grade8-open-candidates20261014-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch_grade8_open_candidates20261014.py",
+      "bytes": 2065,
+      "sha256": "df77a495898ea3f90f4700028b82addcd2fcee65c6da37f2fea5792ba7024aee",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "saved_fetch_method; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "fetch-grade8-open-candidates20261014-manifest-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/fetch-grade8-open-candidates20261014.json",
+      "bytes": 2369,
+      "sha256": "18083879c71467527ec8886dfb48ed925a0f178fa810cc3c4ff6dd4ced89b15f",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "fetch_manifest; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page1-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page1.txt",
+      "bytes": 2091,
+      "sha256": "59023662d31e00920c9f7b29cd19e845cd23c3a4c3669bae1cd3d3a60c394207",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page10-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page10.txt",
+      "bytes": 1241,
+      "sha256": "7e3afd17ad816f6b9fb79605144f82ef206d353cb8f510bdcc128a165ee567a6",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page11-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page11.txt",
+      "bytes": 1884,
+      "sha256": "cd98f079bb8337b728012b1cf140365af0d6b868114cdea8ebca11af72f9ba1c",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page2-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page2.txt",
+      "bytes": 2849,
+      "sha256": "526c52c1da6a2cfead977df9fd7c0e27afd42c7d6083eb159ebb691cf16e7468",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page3-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page3.txt",
+      "bytes": 3223,
+      "sha256": "18138748c00ca45e9c0c4f6d5189146ee4110b39a0473d1ab1b8e96eabe01b27",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page4-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page4.txt",
+      "bytes": 3311,
+      "sha256": "35aefc672618f92ff13e70f46d5b4505f0b9a66e74ba5026ce6c1601c2fab272",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page5-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page5.txt",
+      "bytes": 3000,
+      "sha256": "5ab4fad39eb89f3469a22c653a835f4dd20cd4be6de7ed78fc5f79d5055d426f",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page6-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page6.txt",
+      "bytes": 1932,
+      "sha256": "4eff89b2dc93cb84e28cfae93f482f57e49911f9ff854bda4ffba1db5ba247c0",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page7-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page7.txt",
+      "bytes": 1330,
+      "sha256": "0ece5fbf8029b7b81300d11029502a7fa52fe386dcfc4d5ad12b1c3732cdee13",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page8-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page8.txt",
+      "bytes": 2079,
+      "sha256": "7e32efa5688a8ce45650c262fb2d29ae9f5658c9bf91f05e0d49c6f0cb52fd82",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-candidate20261014-page9-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-candidate20261014-page9.txt",
+      "bytes": 2547,
+      "sha256": "b52322f5666d754793401f92170752100dec42bd08a1c611febecd0f38096c04",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page1-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page1.txt",
+      "bytes": 1652,
+      "sha256": "4ec86bccf765d9256dc5ecac36d0c4801c1e9240735eb46756781c906838ec8d",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page10-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page10.txt",
+      "bytes": 1502,
+      "sha256": "2061758175c25e28137e28d506118af38929a239efeafc27fcc45e5e4c61b52b",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page11-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page11.txt",
+      "bytes": 2324,
+      "sha256": "768458f909d833cbd06b2e3a76eb7487d1c141f13c9a690e17e94030dfe1c9b4",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page12-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page12.txt",
+      "bytes": 2496,
+      "sha256": "f3916cf616ca8654bc32fe6654527ef52646fa19db952a4786a212dba121f597",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page13-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page13.txt",
+      "bytes": 2387,
+      "sha256": "6d7a46eac8f8d71696dd56229d755608831a58fbb017be50cb0ca92e16030265",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page14-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page14.txt",
+      "bytes": 2144,
+      "sha256": "e5fd91a592e43bdde8018e276209181a2f33919e355682bafb30529a8168b760",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page15-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page15.txt",
+      "bytes": 1938,
+      "sha256": "9106c85dc0a3f0c12fee82eabcb982b2f6ac76fb64b003f16b3e901e3cd29d56",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page16-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page16.txt",
+      "bytes": 1495,
+      "sha256": "388f53f5be5a82f55c1202b58c54370bb8a9706ef29cfa42fbe69e56fa25d75a",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page17-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page17.txt",
+      "bytes": 2065,
+      "sha256": "db3877f57bf54aacf289d6354f9bd25d68a053e4ebd3dfc0c35157e648a2c771",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page18-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page18.txt",
+      "bytes": 2407,
+      "sha256": "4383c29ce49cf3a825df3a1e3284965fd933b9a22a77a7cd3f5f14f524115dd2",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page19-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page19.txt",
+      "bytes": 1739,
+      "sha256": "e1e6640ad80eb7de4a2387d12fd996ba45d09e6fd062ed3e3d2ebcaac67ce72e",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page2-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page2.txt",
+      "bytes": 1916,
+      "sha256": "aec956e63545b68b5eac26509768eb1e84fede92bb7368f7b9199e76d9a2f38a",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page20-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page20.txt",
+      "bytes": 2117,
+      "sha256": "1e79c7393734a12533647ef2cf8e6d5e674bea6798e7c5441388e1bd7cef5c79",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page21-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page21.txt",
+      "bytes": 2457,
+      "sha256": "4e8c0b08666da317b8e1681a6f64e0a02b27ef9817dd3692b240c69da551ce11",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page22-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page22.txt",
+      "bytes": 2323,
+      "sha256": "2e3101c18055c021e4c309f68a212223761f388fe4add72bf8bd856e8869af28",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page23-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page23.txt",
+      "bytes": 1978,
+      "sha256": "7631f5184da988c4df2d6f820721b9591625e33d2090a6ebaa93851ca2e7f551",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page24-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page24.txt",
+      "bytes": 2442,
+      "sha256": "914681e9eb3b709e0f460d19fd1d1e2dce6833c4380195f22ad79831b58a3a13",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page25-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page25.txt",
+      "bytes": 2335,
+      "sha256": "14c8331aedecd3abd674cf7b27607312bb668ab196c3cb66ca5c5d13129c5e50",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page26-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page26.txt",
+      "bytes": 1586,
+      "sha256": "c5aee00706e143122834ba6e0a747f629160140a991e3635aae5c3c5dab92ce5",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page27-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page27.txt",
+      "bytes": 2144,
+      "sha256": "2ffcce61a2cdb2accca64a236a0c61c81795c233db7bf1ccfcecafc06300177b",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page28-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page28.txt",
+      "bytes": 1342,
+      "sha256": "cafc787f606b083b55f8d387f5875e12214d1ce8fae1af2adef20b6bce69f477",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page29-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page29.txt",
+      "bytes": 1956,
+      "sha256": "5d88a6f4f5b745e4992dca3275fb04ae10c8809e4bcc867b684c0f1684825ee3",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page3-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page3.txt",
+      "bytes": 968,
+      "sha256": "dfb3c7c9f821ab44e9037a10e4dae2b84d1a6bde4185261d2950fdf69d9f6489",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page4-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page4.txt",
+      "bytes": 1709,
+      "sha256": "d47fb405058c5f53d8780a809ad3baad23dab139529e976abc605074f7685406",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page5-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page5.txt",
+      "bytes": 2088,
+      "sha256": "0f01807b25e4d60d4a07aac6539da5dc07b155534c4d0dc0a122753a7edf3f45",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page6-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page6.txt",
+      "bytes": 1801,
+      "sha256": "5cc723827a52761c7acca6710a2a350228056038b426c6d8e996a97e1875d9bb",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page7-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page7.txt",
+      "bytes": 1581,
+      "sha256": "927d56c4f8d0ba28a1059a24c736b578c9b0da1a473a2d25ec787fe86ffb963e",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page8-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page8.txt",
+      "bytes": 2537,
+      "sha256": "3620584c6584f653fd531a5018860a2d60a37b3d0993f3b4378e6fde06f4345b",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-candidate20261014-page9-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-candidate20261014-page9.txt",
+      "bytes": 1989,
+      "sha256": "e371ef9373f7ac0587edf5cc98e24d9e7893e176c349515ff3595a93df708b3c",
+      "format_validation": "UTF8_text_saved",
+      "review_scope": "native_text_extraction_unreviewed_except_selected_scope; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-page1-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-page1.png",
+      "bytes": 134322,
+      "sha256": "d8a7f2d732392578a13a94e526d452f32a8dbcfc6aafa5e1f2ad5ed711816526",
+      "format_validation": "PNG_magic_checked",
+      "review_scope": "rendered_selected_page_visually_reviewed; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-page8-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-page8.png",
+      "bytes": 220834,
+      "sha256": "73d7d250dc3b65867bf81633b0eb5468ccc739b9980ab67e1b24b29863923134",
+      "format_validation": "PNG_magic_checked",
+      "review_scope": "rendered_selected_page_visually_reviewed; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-page25-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-page25.png",
+      "bytes": 225758,
+      "sha256": "758b48775b3d51e57d5b75ab67858c3a77953c4be218317602bb7d3d56a6aec9",
+      "format_validation": "PNG_magic_checked",
+      "review_scope": "rendered_selected_page_visually_reviewed; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-yogor-kunshan2024upper-page26-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-yogor-kunshan2024upper-page26.png",
+      "bytes": 179876,
+      "sha256": "ecf9a4b9bef2f203f72c0a2e1355b8e460dd1c99527afbe3968626c43227535c",
+      "format_validation": "PNG_magic_checked",
+      "review_scope": "rendered_selected_page_visually_reviewed; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-tthaoke-lower-open-page1-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-tthaoke-lower-open-page1.png",
+      "bytes": 168124,
+      "sha256": "c15da60bc2bd85074eff4e1e0ee7d6e8e5f800a951d7b0e5ba0e64130bebf3a2",
+      "format_validation": "PNG_magic_checked",
+      "review_scope": "rendered_selected_page_visually_reviewed; only pages1/8/25/26 of Yogor and cover of Tthaoke semantically or visually reviewed",
+      "derivation": {
+        "origin": "project_research_grade8_open_supplement",
+        "related_acquisition_ids": [
+          "grade8-tthaoke-lower-open-candidate20261014",
+          "grade8-yogor-kunshan2024upper-candidate20261014"
+        ],
+        "tool": "pypdf6.10.0/Poppler pdftoppm/author selected task re-solve"
+      }
+    },
+    {
+      "id": "grade8-open-supplement-initial-registration-failure20261014-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement-registration-repair",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/grade8-open-supplement-initial-registration-failure20261014.json",
+      "bytes": 1135,
+      "sha256": "ae15187e5e5500ab484e860500829810d6366508962725db5fd0c3300b04c90b",
+      "format_validation": "UTF8_saved",
+      "review_scope": "initial_registration_failure_retained; no source/candidate/semantic or admission change",
+      "derivation": {
+        "origin": "project_registration_repair",
+        "related_acquisition_ids": [
+          "register-grade8-open-supplement20261014-record"
+        ],
+        "tool": "Python/json/hashlib/registry validator"
+      }
+    },
+    {
+      "id": "repair-grade8-open-supplement-registration20261014-record",
+      "url": "urn:lingotrip:research:grade8-open-supplement-registration-repair",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/repair_grade8_open_supplement_registration20261014.py",
+      "bytes": 2530,
+      "sha256": "84bd9f3fbbd2cdf4027e7626749d13409bdd3eb41b2c13882d1e4464b814b1ef",
+      "format_validation": "UTF8_saved",
+      "review_scope": "registration_repair_method; no source/candidate/semantic or admission change",
+      "derivation": {
+        "origin": "project_registration_repair",
+        "related_acquisition_ids": [
+          "register-grade8-open-supplement20261014-record"
+        ],
+        "tool": "Python/json/hashlib/registry validator"
+      }
     }
   ],
   "updated_on": "2026-10-13"
