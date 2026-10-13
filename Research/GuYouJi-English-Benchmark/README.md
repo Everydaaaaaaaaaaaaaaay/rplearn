@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [初二完整开放语言原创闭环](Studies/2026-10-14-grade8-original-open-language-loop.md)：173 token/十空，6给词/4无提示全一词，run/running均回填；另列1补充原创/10点，核心计数不变。
+
 - [初二学校归属历史开放篇章与作者误判更正](Studies/2026-10-14-grade8-school-attributed-open-and-thesis-scope.md)：十无提示空/同帖键完整，原校身份与开放变体仍待核；论文附录为词库无键，bus题干约束纠正过度双答案观察。
 
 - [高二15空/三篇语法与作者区漏洞修正](Studies/2026-10-14-grade11-fifteen-cloze-three-grammar-and-author-roles.md)：当前24家族/202点，实际干扰项修订、开放变体待裁决与真实作者条目检查；[现行审阅包](FirstRelease/ReviewPackage-v0.2.md)。

@@ -54,6 +54,8 @@
 
 另补[丰泰学校归属历史教师帖](Supplements/grade8-school-attributed-open-v0.1.json)十无提示空/同帖键和解析，[规格0.2](Specifications/grade8-open-language-v0.2.md)区分三种模式及原未明示词数的评分边界。原校身份未认证，不升级普通学校原始档案锚；论文附录词库无键，bus限定修正此前作者双答案误判。[新增核读记录](../Studies/2026-10-14-grade8-school-attributed-open-and-thesis-scope.md)保留版本和错误更正。
 
+[初二原创接力篇章](Generated/grade8-relay-open-grammar-v0.1.md)按完整模拟配套模式写出十空/6给词＋4无提示，所有响应一词，run/running均完整回填。另列[补充候选索引](open-language-supplement-candidates-v0.1.json)1家族/10点，核心24/202/53不变；[补充检查器](../Tools/validate_open_language_supplements_v0_1.py)验证源/版本、实际空位和响应约束。[作者闭环记录](../Studies/2026-10-14-grade8-original-open-language-loop.md)保留非独立评分状态。
+
 [真实锚与原创语言负荷控制](LanguageLoadControls-v0.1.md)新增六阅读配对的正文/题干/选项/标签测量，[摘要](TaskLoadComparison-v0.1.json)关联30语境单元及六可读性副本；实例不是年级分布或学生时间。初一旧partof粘连已在新测量副本更正，旧220含标签计数由221替代，冻结审计不改字节。
 
 [高二实际语言变体](Generated/grade11-commitments-reading-v0.2.md)保存0.1→0.2前后稿及新句法的逐题复解，当前[索引0.4](review-index-v0.4.json)仍选择21题组家族/174点，旧版不重复计样本；[默认检查器0.4](../Tools/validate_firstrelease_v0_4.py)复用冻结0.3算法。[记录](../Studies/2026-10-14-grade11-actual-language-variant.md)说明353 token/15句与教师/学生边界。

@@ -20,3 +20,5 @@
 第23保存验证了截至当时22家族/177点与四SVG原件的独立本机恢复，新两组及0.7在之后，待下一实质批次保存。仅本机恢复，完整工具链/异机和真实教师/学生、材料各用途、隐藏模型验收仍缺。
 
 现在可进入具体教研审阅与继续命题研究。完整16水平/4方向、全年/地区/教材覆盖、语言工具/义项、学生难度/用时与独立模型/商用验收仍按[长期协议](../Acceptance.md)推进，所有必需门槛未全部通过，长期任务未完成。
+
+追加独立口径的[初二开放语言补充原创](Generated/grade8-relay-open-grammar-v0.1.md)：十空、6给词/4无提示、全部一词，run/running均成立并完整回填。[补充索引](open-language-supplement-candidates-v0.1.json)1家族/10点不入冻结核心计数。还取得[学校归属历史教师帖](Supplements/grade8-school-attributed-open-v0.1.json)十无提示空/同帖键；原校认证及响应穷尽性仍缺。[规格0.2](Specifications/grade8-open-language-v0.2.md)区分不同提示和词数制度。
