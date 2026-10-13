@@ -36,3 +36,5 @@
 [第25完整恢复](../Studies/2026-10-14-checkpoint25-current-repairs-and-queue-recovery.md)已纳入截至0.13的修题/种子/理由/请求/17项队列，全部6403文件严格COW与独立根SHA通过。恢复不代替语义、学生或商业验收，后来增量需下一批保存。
 
 [高二春季扩展七组](Expansions/Grade11Spring2024Comparison-v0.1.md)新增45源响应单列，原地区机构/音频未知；不改冻结核心53。高一0.3和这批新来源均在第25之后，待下一实质保存批次。
+
+[第26保存](../Studies/2026-10-14-checkpoint26-new-sources-webp-and-original-recovery.md)已合并高一当前修题、两新源17组101响应、三语境负荷、初三草案/原创1家族3点，全部6489文件从独立根SHA通过；26自身/后来资料下一批，独立语义/学生/商业状态仍未通过。

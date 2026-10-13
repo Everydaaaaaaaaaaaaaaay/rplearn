@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [第26新来源与WebP/原创恢复](Studies/2026-10-14-checkpoint26-new-sources-webp-and-original-recovery.md)：6489文件完整严格COW独立恢复，0.14、两新源17/101、三语境负荷、两WebP/精确像素及初三原创1/3一致，长期门槛继续开放。
+
 - [苏州官方初三笔试与词数作用域](Studies/2026-10-14-suzhou-official-written-format-and-webp-integrity.md)：8题面/1键、10完整组56响应，四选完形/3或4阅读/短语词库等真实差异；URL/MIME为PNG但实际WebP已核字节，写作参考略及口语音频仍缺。
 
 - [高二两源与当前原创负荷](Studies/2026-10-14-grade11-two-source-task-load-review.md)：342/353/324正文与111/143/101选项分开计量，正确选择实际版本而非把首次单组误称对照，实例不定全国阈值。
