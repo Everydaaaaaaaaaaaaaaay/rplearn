@@ -68,6 +68,67 @@
         "Independent rubric/accessibility/task review before treating genericwriting as complete"
       ],
       "production_admission": false
+    },
+    {
+      "id": "response.ordered-members-and-stress-matching",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-unit3-context-1312001102241-image031",
+      "additional_evidence_acquisition_ids": [
+        "pep-unit3-context-1312001102241-image030"
+      ],
+      "source_tasks": [
+        "Unit3GF3a",
+        "Unit3A2d"
+      ],
+      "observed_requirements": [
+        "Identify frequency expressions thenorder themleast-to-most",
+        "Map colouredsentences tovisual stresspatterns thenroleplay"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.2",
+      "dedicated_order_or_pair_mapping_payload": false,
+      "reason": "Optionids array hasno declaredordering semantics;free textdoesnotpreserve versionedmember relations;annotation actionalone doesnotfulfil order/matching",
+      "next_design_requirements": [
+        "Stable ordered member IDs andexact direction;multipleactions remain explicit",
+        "Submission cardinality andunknownsource constraints separated fromanswercorrectness",
+        "Explicit tie/partial-order/accepted-sequences orunknownkey state;no inventedpercentage frequency scale",
+        "Pairmapping relation cardinality andunmatched states;preserve audio/diagram positions andoptional syllables",
+        "Independent sourcekey andrubric beforeadmission"
+      ],
+      "production_admission": false,
+      "complete_source_response_import": false
+    },
+    {
+      "id": "stimulus.shared-table-cells-and-learner-mindmaps",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-unit3-context-1312001102241-image028",
+      "additional_evidence_acquisition_ids": [
+        "pep-unit3-context-1312001102241-image033",
+        "pep-unit3-context-1312001102241-image034"
+      ],
+      "source_tasks": [
+        "Unit3A1c",
+        "Unit3B2a/b/c",
+        "Unit3Project3a/b/c"
+      ],
+      "observed_requirements": [
+        "Sharedsport cell spans2name rows",
+        "Source mindmap4nodes/3edges;learnercreates correspondingmap",
+        "Group interview notes feedreports andcrossreportcomparison"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.2",
+      "dedicated_table_cell_membership_and_learner_graph": false,
+      "reason": "Sourceimage canpreserve appearance butgeneric material/slot doesnotdeclare sharedmembership orlearner graph;linearbodytext loses relationships",
+      "next_design_requirements": [
+        "Table row/column stableIDs,cellrowspan/colspan andanswer-cell membership",
+        "Preserve6actualanswercells vs6names/3sportcells;fixedexample separate fromanswer",
+        "Typed graphnode/edge IDs andlearnercreated-map revisions;material relationships separate fromanswers",
+        "Explicit surveyprovenance,individual/group actors andaggregation/rubric",
+        "Personalexercise claims andexamplecounts are notvalidatedlanguage timing ormastery"
+      ],
+      "production_admission": false,
+      "complete_source_response_import": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true
