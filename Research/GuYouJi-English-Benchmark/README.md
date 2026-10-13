@@ -27,6 +27,8 @@
 - [第十六保存与恢复检查点](Studies/2026-10-13-checkpoint16-support-fltrp-and-beijing-recovery.md)：截至69332f5b的5207文件独立恢复，外研42标题和北京政策冲突重放；保存核验不代替教育或商用验收。
 - [第十七保存与恢复检查点](Studies/2026-10-13-checkpoint17-speech-and-openstory-recovery.md)：截至42dea3c7的5369文件独立恢复、七离线检查及SpeechOcean5000标注/开放故事24正文块重放；完整工具链和异机验证仍缺。
 
+- [第十八保存与恢复检查点](Studies/2026-10-13-checkpoint18-sevenupper-and-date-recovery.md)：截至e56eb8e0的5526文件独立恢复，七离线检查及74正文/164活动块、拓展阅读和验证HTML关系重放；依旧非异机/完整工具链或教育验收。
+
 - [完整资料与工作清单](Checklist.md)：收什么、解决什么问题、记录什么、怎样验收。
 - [长期任务验收协议](Acceptance.md)：自动续办、七个阶段门槛、完成条件与重审规则。
 - [登记迁移与完整恢复](Studies/2026-10-13-registry-portability-and-full-restoration.md)：第九副本的实际路径失败、540处登记修正和3,078文件独立恢复，运行时/异机门槛仍开放。

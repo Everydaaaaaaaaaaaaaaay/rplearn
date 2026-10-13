@@ -48535,6 +48535,78 @@
         ],
         "tool": "Python HTMLParser and native relevant-section reading"
       }
+    },
+    {
+      "id": "snapshot18-report20261013",
+      "url": "urn:lingotrip:research:local-snapshot:18",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot-report-20261013-eighteen.json",
+      "bytes": 3088,
+      "sha256": "125ef946be19c54328952cf9f8d10a8964feebb2df45c1cfa9a05d1e57cd4743",
+      "format_validation": "json_parsed",
+      "review_scope": "5526files strictCOW independentfullrestore;offline7schema checks;74body/164formalblocks/14RPblocks/10grammarheadings13tables and4verificationHTML replay;not independentvisualgold orfulltoolchain/offhost",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot17-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "snapshot18-strict-cow-method20261013",
+      "url": "urn:lingotrip:research:local-snapshot:18",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot18_strict_cow20261013.py",
+      "bytes": 867,
+      "sha256": "c044a0751e84fa6de2f7b75121a8e446ea413a528671baffb34265971225ded2",
+      "format_validation": "python_source_saved",
+      "review_scope": "5526files strictCOW independentfullrestore;offline7schema checks;74body/164formalblocks/14RPblocks/10grammarheadings13tables and4verificationHTML replay;not independentvisualgold orfulltoolchain/offhost",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot17-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "snapshot18-offline-dependency-restore20261013",
+      "url": "urn:lingotrip:research:local-snapshot:18",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot18-full-offline-dependency-restore-audit20261013.json",
+      "bytes": 20090,
+      "sha256": "2d7bdbd9d20f2dc257278bd379037a11d20116affc1f69186552c3816558923a",
+      "format_validation": "json_parsed",
+      "review_scope": "5526files strictCOW independentfullrestore;offline7schema checks;74body/164formalblocks/14RPblocks/10grammarheadings13tables and4verificationHTML replay;not independentvisualgold orfulltoolchain/offhost",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot17-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
+    },
+    {
+      "id": "snapshot18-restore-method20261013",
+      "url": "urn:lingotrip:research:local-snapshot:18",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot18_offline_deps20261013.py",
+      "bytes": 9464,
+      "sha256": "4339d951104d5d38553013fa8acc33430a61bcdb85d1d504b35c99597c3214bd",
+      "format_validation": "python_source_saved",
+      "review_scope": "5526files strictCOW independentfullrestore;offline7schema checks;74body/164formalblocks/14RPblocks/10grammarheadings13tables and4verificationHTML replay;not independentvisualgold orfulltoolchain/offhost",
+      "derivation": {
+        "origin": "project_authored_preservation_and_offline_replay",
+        "related_acquisition_ids": [
+          "snapshot17-offline-dependency-restore20261013"
+        ],
+        "tool": "macOS clonefile/currentPython/pip-noindex-requirehashes"
+      }
     }
   ],
   "updated_on": "2026-10-13"
