@@ -263,19 +263,30 @@
       "source_id": "firstrelease.additional-public-comparison-candidates",
       "file_pages": 13,
       "subject": "English_verified_selected_body_or_key",
-      "role": "candidate_key_with_body_pending",
+      "role": "selected_paired_groups_with_editorial_flags",
       "visually_reviewed_PDF_pages": [
         1,
+        3,
+        4,
+        5,
+        6,
+        7,
         9,
         10,
         11,
         12,
         13
       ],
-      "selected_group_ids": [],
-      "source_key_available_for_selected_groups": false,
+      "selected_group_ids": [
+        "g11.2025.readingB",
+        "g11.2025.readingC",
+        "g11.2025.readingD",
+        "g11.2025.cloze",
+        "g11.2025.grammar"
+      ],
+      "source_key_available_for_selected_groups": true,
       "all_paper_groups_reviewed": false,
-      "limitation": "region/institution not established; explanation63/64 swapped; selected body review pending"
+      "limitation": "Institution/region still unknown; readingA opening unreviewed; grammar explanation numbering and reading semantic-scope flags retained"
     }
   ],
   "grade_progress": [
@@ -360,18 +371,27 @@
       "selected_group_ids": [
         "g11.2024.cloze",
         "g11.2024.grammar",
-        "g11.2024.readingA"
+        "g11.2024.readingA",
+        "g11.2025.readingB",
+        "g11.2025.readingC",
+        "g11.2025.readingD",
+        "g11.2025.cloze",
+        "g11.2025.grammar"
       ],
-      "specification_status": "first_round_v0.1_second_source_pending",
-      "original_generated_groups": 1,
+      "specification_status": "provisional_v0.2_second_source_compared_remaining_types_pending",
+      "original_generated_groups": 2,
       "first_release_complete": false,
-      "specification_path": "FirstRelease/Specifications/grade11-v0.1.md",
+      "specification_path": "FirstRelease/Specifications/grade11-v0.2.md",
       "author_check_paths": [
+        "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.1.json",
         "FirstRelease/Generated/grade11-exhibition-cloze-author-check-v0.1.json"
       ],
       "generated_candidate_paths": [
+        "FirstRelease/Generated/grade11-commitments-reading-v0.1.md",
         "FirstRelease/Generated/grade11-exhibition-cloze-v0.1.md"
-      ]
+      ],
+      "comparison_path": "FirstRelease/Comparisons/grade11-source-comparison-v0.1.md",
+      "second_source_status": "two_paper_families_structural_and_semantic_scope_comparison_not_student_or_hidden_validation"
     },
     {
       "grade": 12,
