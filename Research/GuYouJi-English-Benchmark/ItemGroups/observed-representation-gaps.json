@@ -225,6 +225,38 @@
       ],
       "complete_source_response_import": false,
       "production_admission": false
+    },
+    {
+      "id": "response.timed-spoken-evidence-and-phase-policy",
+      "source_id": "bjeea.beijing-listening-policy",
+      "acquisition_id": "bjeea-senior2026-modefaq",
+      "additional_evidence_acquisition_ids": [
+        "bjeea-junior2026-modefaq",
+        "bjeea-senior2026-candidate-notice"
+      ],
+      "source_task": "Source listening/speaking exam modes, not imported items",
+      "observed_requirements": [
+        "Sequential timed presentation, task-specific playback and no return",
+        "Recorded spoken responses for retell/readaloud/answers",
+        "Preparation/exposure/output/capture/processing intervals separated"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.3",
+      "existing_partial_support": [
+        "Generic groupmode/return policy/replaylimit/timing andmedia segment fields",
+        "Attempt intervals and rawtext/annotation/relations"
+      ],
+      "dedicated_spoken_audio_response_payload": false,
+      "reason": "Generic rawtext/transcript or sourceasset does not preserve learner voice/take/capture quality or phase-transition enforcement",
+      "next_design_requirements": [
+        "Versioned candidate phase graph; no automatic transformation of whole35min into itemlimit",
+        "Audio response/take identity, duration/integrity/capture validity and optionaltranscript origin",
+        "Consent/retention/private evidence andtext-only report rules for learner voice",
+        "Task-specific playback exposure, earlysubmission,timeout and equipmentfailure/replacement distinguish from answerquality",
+        "Independent speaking rubrics and rating/capture validation; ASR accuracy not pronunciationquality"
+      ],
+      "complete_source_response_import": false,
+      "production_admission": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true

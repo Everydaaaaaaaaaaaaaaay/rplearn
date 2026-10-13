@@ -87,6 +87,58 @@
       "confirmed_source_conflict": false,
       "observation": "OriginalPDF image13 visibly externalSesameStreet credit; native extracted text lacksit. PDF519 explicitthirdparty songcopyright means publisherPD notwholefileclearance",
       "required_response": "Use actualimage/context review before component rights admission; no hit orpublisheridentity cannot certify exclusiveproduction"
+    },
+    {
+      "id": "ysxiao2025-senior-mode-score-scope",
+      "source_id": "ysxiao.beijing-senior-mixed2025",
+      "acquisition_id": "ysxiao-senior2025-mode-conflict",
+      "additional_evidence_acquisition_ids": [
+        "beijing-senior2025-modefaq",
+        "bjeea-senior2026-modefaq",
+        "bjeea-senior2026-candidate-notice"
+      ],
+      "locator": "Article title; type-change list; total-score paragraph",
+      "category": "exam_stage_scope_and_internal_score_conflict",
+      "confirmed_source_conflict": true,
+      "observation": "Article titled senior2025 claims recording removed then also says it may remain; displayed fourtype scores9+12+10+9=40 while statedtotal50. Official senior2025/2026 lists recording amongfive types. Do not infer all article timings false or copy fourtype scores as seniorofficial.",
+      "required_response": "Resolve exam stage/region/year/mode against official publication before extracting blueprint; preserve contradictory thirdparty as negative, not canonicalrule"
+    },
+    {
+      "id": "zhongkaobj2025-retell-count",
+      "source_id": "zhongkaobj.beijing-retell-count2025",
+      "acquisition_id": "zhongkaobj2025-mode-summary-conflict",
+      "locator": "Summary sentence and current column of table",
+      "category": "within_page_count_unit_conflict",
+      "confirmed_source_conflict": true,
+      "observation": "Summary says ten retell questions, samepage table says one question worthten marks; native HTML, not OCR. Current displayed publicationtimestamp differs from search snapshot andtitle2025.",
+      "required_response": "Preserve onequestion/tenmarks distinction; do not make table official solelybecause it corrects prose; obtain original reformnotice for typewise marks"
+    },
+    {
+      "id": "gaokzx2026-result-year",
+      "source_id": "gaokzx.beijing-date2026",
+      "acquisition_id": "gaokzx2026-score-date-conflict",
+      "additional_evidence_acquisition_ids": [
+        "bjeea-senior2026-modefaq",
+        "bjeea-senior2026-candidate-notice"
+      ],
+      "locator": "Intro and keydates table",
+      "category": "exam_cohort_calendar_year_conflict",
+      "confirmed_source_conflict": true,
+      "observation": "Thirdparty2026 firsttest scoredate says2027-01-07; both native official2025-11-19 pages say2026-01-07. Firsttest itself2025-12-13; cohortyear noteveryeventcalendar year.",
+      "required_response": "Keep cohortyear,publicationdate,eventdate and observedpage timestamp distinct; defer to matchedofficial record while retaining sourceerror"
+    },
+    {
+      "id": "bjeea2024-teacher-relative-day",
+      "source_id": "bjeea.beijing-listening-policy",
+      "acquisition_id": "bjeea-senior2024-teacher-advice",
+      "additional_evidence_acquisition_ids": [
+        "beijing-senior2025-modefaq"
+      ],
+      "locator": "Article published2024-12-11; opening ten-days claim; official2025 FAQ examdate2024-12-14",
+      "category": "author_advice_deictic_date_mismatch",
+      "confirmed_source_conflict": true,
+      "observation": "Ten days afterdisplayed publication doesnotmatch Dec14 normative firsttest. Production/editorialdate provenance notresolved; do notreplace official examdate or infer2025blueprint change.",
+      "required_response": "Separate author advice from authority of publisher; relative dates and asserted practice effects need independent evidence"
     }
   ],
   "gold_admission": false
