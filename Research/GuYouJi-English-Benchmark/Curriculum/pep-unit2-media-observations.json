@@ -1,0 +1,229 @@
+{
+  "observed_on": "2026-10-13",
+  "source_id": "pep.current-audio-units",
+  "entry_acquisition_id": "pep-official-grade7down-audio",
+  "audit_acquisition_id": "pep-unit2-asr-reference-audit20261013",
+  "timing_failure_acquisition_id": "pep-unit2-asr-timing-failure20261013",
+  "source_recording_count": 9,
+  "body_tracks": 8,
+  "separate_vocabulary_tracks": 1,
+  "book_reader_identity": "1312001102241",
+  "ISBN_or_printing_verified": false,
+  "runtime_source_id": "whisper.cpp.local-runtime",
+  "tracks": [
+    {
+      "track": 1,
+      "label": "A1b",
+      "acquisition_id": "pep-grade7lower-unit2-audio0120261013",
+      "duration_seconds": 65.725147,
+      "raw_sha256": "06184515874271b6e2ec1bedc9d90e165ddb48b39bd386887b023002e6083004",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track01-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 2,
+      "label": "A1c",
+      "acquisition_id": "pep-grade7lower-unit2-audio0220261013",
+      "duration_seconds": 48.320522,
+      "raw_sha256": "e5672ea7e3e5cd808876e0e3db656b01176d6dac54785ebbe2e863da54902ea3",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track02-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 3,
+      "label": "A1d",
+      "acquisition_id": "pep-grade7lower-unit2-audio0320261013",
+      "duration_seconds": 57.612381,
+      "raw_sha256": "cfde42cb5008f54abe50ae9804dc445b274559504a903b0b349b59dbb87869b7",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track03-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 4,
+      "label": "Pronunciation1",
+      "acquisition_id": "pep-grade7lower-unit2-audio0420261013",
+      "duration_seconds": 100.836961,
+      "raw_sha256": "9a59c6836630d2d9310b99967cd3019c2fb19a3a10509dc5747e94a33350b8bc",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track04-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 5,
+      "label": "Pronunciation2",
+      "acquisition_id": "pep-grade7lower-unit2-audio0520261013",
+      "duration_seconds": 46.08712,
+      "raw_sha256": "c713a68ac2bec049e4432b5ca2707a2537dd4d38495a372f4613702c0abb5244",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track05-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 6,
+      "label": "A2a",
+      "acquisition_id": "pep-grade7lower-unit2-audio0620261013",
+      "duration_seconds": 62.576599,
+      "raw_sha256": "cbc26c38bd74567fbd00ffa6f2582416ba44d2ff1c02a82281770a297445409f",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track06-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 7,
+      "label": "A2e",
+      "acquisition_id": "pep-grade7lower-unit2-audio0720261013",
+      "duration_seconds": 65.351746,
+      "raw_sha256": "562b3fcd1a2d67c5b18541cf30abab03115325fdd6b48973506fa4a955f63703",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track07-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 8,
+      "label": "B1b",
+      "acquisition_id": "pep-grade7lower-unit2-audio0820261013",
+      "duration_seconds": 124.007166,
+      "raw_sha256": "27ffdd15132cc070be1e98a3f4fdf4c0bb39235262b86aee2d18a57d8887ff16",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track08-json20261013",
+      "asr_segment_bounds_valid": true,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    },
+    {
+      "track": 9,
+      "label": "VocabularyUnit2",
+      "acquisition_id": "pep-grade7lower-unit2-audio0920261013",
+      "duration_seconds": 237.241134,
+      "raw_sha256": "8091e7e28ece30aca91981afe183a8fd3248630445dd3726b970e8985b5817b9",
+      "container_checked": true,
+      "asr_acquisition_id": "pep-unit2-asr-track09-json20261013",
+      "asr_segment_bounds_valid": false,
+      "cue_admission": false,
+      "full_semantic_listening": false
+    }
+  ],
+  "script_comparisons": [
+    {
+      "track": 1,
+      "reference_label": "Section A, 1b, 1c, and 1d / Part 1",
+      "reference_tokens": 68,
+      "draft_tokens": 68,
+      "body_start_candidate_ms": 27000,
+      "body_end_candidate_ms": 64000,
+      "differences": []
+    },
+    {
+      "track": 2,
+      "reference_label": "Section A, 1b, 1c, and 1d / Part 1",
+      "reference_tokens": 68,
+      "draft_tokens": 68,
+      "body_start_candidate_ms": 9760,
+      "body_end_candidate_ms": 46600,
+      "differences": []
+    },
+    {
+      "track": 3,
+      "reference_label": "Section A, 1b, 1c, and 1d / Part 2",
+      "reference_tokens": 76,
+      "draft_tokens": 76,
+      "body_start_candidate_ms": 16160,
+      "body_end_candidate_ms": 55620,
+      "differences": []
+    },
+    {
+      "track": 6,
+      "reference_label": "Section A, 2a and 2e",
+      "reference_tokens": 110,
+      "draft_tokens": 110,
+      "body_start_candidate_ms": 9000,
+      "body_end_candidate_ms": 61500,
+      "differences": [
+        {
+          "operation": "replace",
+          "reference_range": [
+            22,
+            23
+          ],
+          "asr_range": [
+            22,
+            23
+          ],
+          "reference": "ok",
+          "asr": "okay"
+        },
+        {
+          "operation": "replace",
+          "reference_range": [
+            65,
+            66
+          ],
+          "asr_range": [
+            65,
+            66
+          ],
+          "reference": "ok",
+          "asr": "okay"
+        },
+        {
+          "operation": "replace",
+          "reference_range": [
+            101,
+            102
+          ],
+          "asr_range": [
+            101,
+            102
+          ],
+          "reference": "ok",
+          "asr": "okay"
+        }
+      ]
+    },
+    {
+      "track": 7,
+      "reference_label": "Section A, 2a and 2e",
+      "reference_tokens": 110,
+      "draft_tokens": 110,
+      "body_start_candidate_ms": 12000,
+      "body_end_candidate_ms": 63400,
+      "differences": []
+    }
+  ],
+  "ASR_audio_uploaded_to_external_service": false,
+  "reference_prompt_supplied": false,
+  "normalized_body_tokens_track1_2_identical": true,
+  "normalized_body_tokens_track6_7_identical": false,
+  "actual_acoustic_equivalence": "not_verified",
+  "task_instruction_intros_differ": true,
+  "sourceB1b_still_reading": true,
+  "risk_cases": [
+    "Phonics these/dear become V’s/deer;ordinary spellings do notvalidate phonemes",
+    "PrintedDrKnow becomesDrNo;namehomophones notsemantic orofficialsounderrors",
+    "Queue/Q,Anne/Annie andBritishpractise/Americanpractice candidates require exactorthographic sourceassociation",
+    "Track9last segment240680ms beyond237241.125ms PCM by3438.875ms;rawoutput retained,notclamped"
+  ],
+  "full_semantic_listening": false,
+  "phoneme_or_prosody_validation": false,
+  "official_answer_key_inferred": false,
+  "learner_effective_time": null,
+  "source_commercial_rights": "not_cleared",
+  "production_admission": false
+}
