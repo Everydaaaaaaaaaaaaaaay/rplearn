@@ -172,6 +172,37 @@
       ],
       "complete_source_response_import": false,
       "production_admission": false
+    },
+    {
+      "id": "response.phrase-classification-and-source-draft-edit",
+      "source_id": "pep.textbooks",
+      "acquisition_id": "pep-senior-c1u1-1412001121191-image024",
+      "additional_evidence_acquisition_ids": [
+        "pep-senior-c1u1support-1412001121191-image080",
+        "pep-senior-c1u1support-1412001121191-image081",
+        "pep-senior-c1u1-1412001121191-image027"
+      ],
+      "source_tasks": [
+        "C1U1 DUS1/DUS3",
+        "C1U1 WB.US1/US4",
+        "C1U1 RW3"
+      ],
+      "observed_requirements": [
+        "Mark phrase ranges, classify NP/AdjP/AdvP andexplain functions",
+        "Expand source draft andreplace selected dialogue phrases",
+        "Peerfeedback followedbynewdraft revision; group/person roles distinct"
+      ],
+      "current_group_schema": "0.3",
+      "current_attempt_schema": "0.3",
+      "reason": "Literal source-block annotations andgeneric open_text captureparts; no typed classifiedspan/function orsource-edit relationship validated. Attemptrevision history is not complete peerreview/authoredtext provenance.",
+      "next_design_requirements": [
+        "Stable source/learner draft revision identities; before/after text and changedspan mapping",
+        "Phrasecategory andsentencefunction asdistinct fields withmultispan/nesting/unknownkey evidence",
+        "Preserve supplied phrase constraints, unchanged-source regions and accepted rewriting alternatives",
+        "Peerfeedback actor/exposure/revision linking; handwrittencriterion not applied totypedmode withoutadaptation review"
+      ],
+      "complete_source_response_import": false,
+      "production_admission": false
     }
   ],
   "curriculum_coverage_is_not_contract_coverage": true
