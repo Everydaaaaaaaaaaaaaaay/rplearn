@@ -1,0 +1,869 @@
+{
+  "version": "0.1",
+  "created_on": "2026-10-14",
+  "scope": "one_reading_pair_per_grade_not_population_distribution",
+  "specimen_count": 12,
+  "source_group_count": 6,
+  "authored_group_count": 6,
+  "source_or_author_text_published": false,
+  "prepared_input_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+  "prepared_input_sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f",
+  "private_report_acquisition_id": "task-load-20261014-task-load-six-pairs-results20261014-json",
+  "private_report_sha256": "c674aaad1006dea2f2dd1f602b05f22e72fd52f65a9bf62f6bc735c52ca6ba1b",
+  "tool_path": "Tools/profile_task_load.py",
+  "tool_sha256": "d240a3a6c5fc1e5256ffb544dba53ca32cb17dec155f9f8bdb705dfc557ca070",
+  "records": [
+    {
+      "id": "g7.2021.readingB",
+      "grade": 7,
+      "origin": "source_reference",
+      "input_sha256": "65177b258ead0a7e280475539512f70af1b0b9e291f7bd702bc34917d61be56d",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 9,
+          "han_characters": 0,
+          "components": 3
+        },
+        "option": {
+          "english_digit_tokens": 69,
+          "han_characters": 9,
+          "components": 15
+        },
+        "passage": {
+          "english_digit_tokens": 212,
+          "han_characters": 9,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 40,
+          "han_characters": 4,
+          "components": 5
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 330,
+        "han_characters": 22
+      },
+      "items": 5,
+      "explicit_passage_sentence_units": 24,
+      "passage_sentence_token_lengths": [
+        5,
+        9,
+        16,
+        8,
+        17,
+        10,
+        8,
+        11,
+        12,
+        7,
+        7,
+        5,
+        10,
+        9,
+        4,
+        12,
+        12,
+        6,
+        8,
+        11,
+        9,
+        3,
+        3,
+        10
+      ],
+      "mean_passage_sentence_tokens": 8.833333333333334,
+      "maximum_passage_sentence_tokens": 17,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "g8.2025.readingC",
+      "grade": 8,
+      "origin": "source_reference",
+      "input_sha256": "52eca00e2eeae0cf4935251aa0b6fff061336a23a94da16948dfd2f2c805fae2",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 126,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 400,
+          "han_characters": 15,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 35,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 561,
+        "han_characters": 15
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 27,
+      "passage_sentence_token_lengths": [
+        11,
+        13,
+        13,
+        17,
+        10,
+        10,
+        31,
+        15,
+        11,
+        9,
+        14,
+        22,
+        10,
+        18,
+        25,
+        17,
+        13,
+        13,
+        23,
+        12,
+        19,
+        11,
+        16,
+        10,
+        20,
+        4,
+        13
+      ],
+      "mean_passage_sentence_tokens": 14.814814814814815,
+      "maximum_passage_sentence_tokens": 31,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "g9.2026.readingC",
+      "grade": 9,
+      "origin": "source_reference",
+      "input_sha256": "658aad007ccc71d67f2922b42429dc4370cf03d648870fdb3dd62c5c025e0737",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 94,
+          "han_characters": 0,
+          "components": 20
+        },
+        "passage": {
+          "english_digit_tokens": 292,
+          "han_characters": 5,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 44,
+          "han_characters": 0,
+          "components": 5
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 430,
+        "han_characters": 5
+      },
+      "items": 5,
+      "explicit_passage_sentence_units": 24,
+      "passage_sentence_token_lengths": [
+        12,
+        6,
+        11,
+        8,
+        13,
+        15,
+        5,
+        7,
+        19,
+        11,
+        12,
+        19,
+        16,
+        13,
+        8,
+        10,
+        7,
+        7,
+        11,
+        15,
+        9,
+        23,
+        10,
+        25
+      ],
+      "mean_passage_sentence_tokens": 12.166666666666666,
+      "maximum_passage_sentence_tokens": 25,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "g10.2024.readingD",
+      "grade": 10,
+      "origin": "source_reference",
+      "input_sha256": "0aea2a417441d61727b24a605bd9f6dc8393e32c816fac214d373ed622ada0c0",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 101,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 340,
+          "han_characters": 7,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 39,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 480,
+        "han_characters": 7
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 13,
+      "passage_sentence_token_lengths": [
+        18,
+        20,
+        32,
+        28,
+        26,
+        29,
+        32,
+        21,
+        12,
+        32,
+        37,
+        21,
+        32
+      ],
+      "mean_passage_sentence_tokens": 26.153846153846153,
+      "maximum_passage_sentence_tokens": 37,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "g11.2025.readingD",
+      "grade": 11,
+      "origin": "source_reference",
+      "input_sha256": "ece723e3891aaf79cf41a153b99eda8506da056774f74f1a87a124c19db191da",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 111,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 342,
+          "han_characters": 11,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 30,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 483,
+        "han_characters": 11
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 17,
+      "passage_sentence_token_lengths": [
+        34,
+        12,
+        16,
+        4,
+        12,
+        35,
+        40,
+        25,
+        33,
+        9,
+        11,
+        22,
+        18,
+        19,
+        11,
+        22,
+        19
+      ],
+      "mean_passage_sentence_tokens": 20.11764705882353,
+      "maximum_passage_sentence_tokens": 40,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "g12.2025anshan.readingC",
+      "grade": 12,
+      "origin": "source_reference",
+      "input_sha256": "a4db4f822e2860aec533f035af8b9f37d660c25d1779e49ebdcbba4db71eab52",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 74,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 358,
+          "han_characters": 5,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 45,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 477,
+        "han_characters": 5
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 18,
+      "passage_sentence_token_lengths": [
+        14,
+        22,
+        13,
+        27,
+        27,
+        28,
+        18,
+        21,
+        16,
+        17,
+        15,
+        12,
+        17,
+        22,
+        14,
+        30,
+        28,
+        17
+      ],
+      "mean_passage_sentence_tokens": 19.88888888888889,
+      "maximum_passage_sentence_tokens": 30,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "grade7-library-v0.1",
+      "grade": 7,
+      "origin": "authored_candidate",
+      "input_sha256": "fada89f979520b9161026632c0544f87ac9e6a68efd0ce48132bea6fe8bf0015",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 3,
+          "han_characters": 0,
+          "components": 3
+        },
+        "option": {
+          "english_digit_tokens": 112,
+          "han_characters": 0,
+          "components": 15
+        },
+        "passage": {
+          "english_digit_tokens": 199,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 37,
+          "han_characters": 0,
+          "components": 5
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 351,
+        "han_characters": 0
+      },
+      "items": 5,
+      "explicit_passage_sentence_units": 20,
+      "passage_sentence_token_lengths": [
+        8,
+        17,
+        5,
+        5,
+        7,
+        13,
+        10,
+        8,
+        10,
+        10,
+        14,
+        15,
+        7,
+        7,
+        11,
+        9,
+        11,
+        13,
+        9,
+        10
+      ],
+      "mean_passage_sentence_tokens": 9.95,
+      "maximum_passage_sentence_tokens": 17,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "grade8-lunch-v0.1",
+      "grade": 8,
+      "origin": "authored_candidate",
+      "input_sha256": "6f9b43a33e9a4e24411b23f82f7b184f52c2862721a45f093ca813aa51f73ca3",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 129,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 246,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 40,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 415,
+        "han_characters": 0
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 20,
+      "passage_sentence_token_lengths": [
+        16,
+        7,
+        10,
+        19,
+        11,
+        11,
+        5,
+        13,
+        10,
+        8,
+        14,
+        10,
+        11,
+        8,
+        22,
+        12,
+        17,
+        10,
+        16,
+        16
+      ],
+      "mean_passage_sentence_tokens": 12.3,
+      "maximum_passage_sentence_tokens": 22,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "grade9-book-repair-v0.1",
+      "grade": 9,
+      "origin": "authored_candidate",
+      "input_sha256": "b287a18786baf6725fddf5805cc860a24a84d498256ec17ba58deade4bc72c59",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 126,
+          "han_characters": 0,
+          "components": 20
+        },
+        "passage": {
+          "english_digit_tokens": 277,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 46,
+          "han_characters": 0,
+          "components": 5
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 449,
+        "han_characters": 0
+      },
+      "items": 5,
+      "explicit_passage_sentence_units": 22,
+      "passage_sentence_token_lengths": [
+        12,
+        12,
+        14,
+        12,
+        22,
+        8,
+        9,
+        13,
+        16,
+        13,
+        9,
+        11,
+        5,
+        9,
+        8,
+        20,
+        8,
+        14,
+        8,
+        21,
+        12,
+        21
+      ],
+      "mean_passage_sentence_tokens": 12.590909090909092,
+      "maximum_passage_sentence_tokens": 22,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "grade10-roof-reading-v0.1",
+      "grade": 10,
+      "origin": "authored_candidate",
+      "input_sha256": "5bb117e4d84fc6706b455e8028eccf2059808b759ff7277fd12705ed96b1abba",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 146,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 308,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 36,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 490,
+        "han_characters": 0
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 22,
+      "passage_sentence_token_lengths": [
+        17,
+        12,
+        23,
+        13,
+        19,
+        13,
+        9,
+        10,
+        16,
+        9,
+        6,
+        7,
+        24,
+        16,
+        9,
+        18,
+        10,
+        20,
+        6,
+        19,
+        12,
+        20
+      ],
+      "mean_passage_sentence_tokens": 14.0,
+      "maximum_passage_sentence_tokens": 24,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "grade11-commitments-reading-v0.1",
+      "grade": 11,
+      "origin": "authored_candidate",
+      "input_sha256": "1a5e4ac7dba1f9be179551b2c4ce052034da0132e48d0479a6ae68bf9e9575d0",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 143,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 329,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 35,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 507,
+        "han_characters": 0
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 25,
+      "passage_sentence_token_lengths": [
+        8,
+        15,
+        13,
+        10,
+        19,
+        10,
+        18,
+        10,
+        21,
+        8,
+        11,
+        5,
+        14,
+        9,
+        22,
+        19,
+        11,
+        9,
+        18,
+        14,
+        16,
+        3,
+        19,
+        12,
+        15
+      ],
+      "mean_passage_sentence_tokens": 13.16,
+      "maximum_passage_sentence_tokens": 22,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "grade12-dashboard-reading-v0.1",
+      "grade": 12,
+      "origin": "authored_candidate",
+      "input_sha256": "9980a7982c76fa37db83fcf008c47816d1050557c45f76d5dbbca65f587176c2",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 148,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 348,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 35,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 531,
+        "han_characters": 0
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 23,
+      "passage_sentence_token_lengths": [
+        15,
+        9,
+        16,
+        15,
+        14,
+        10,
+        25,
+        13,
+        4,
+        13,
+        19,
+        12,
+        10,
+        25,
+        8,
+        11,
+        16,
+        29,
+        20,
+        11,
+        24,
+        10,
+        19
+      ],
+      "mean_passage_sentence_tokens": 15.130434782608695,
+      "maximum_passage_sentence_tokens": 29,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    }
+  ],
+  "selected_contextual_lexical_units": 30,
+  "lexical_status_counts": {
+    "exact_pos_reference": 17,
+    "pos_mismatch": 1,
+    "unlisted_form": 12
+  },
+  "readability_formula_emitted_source_group_ids": [
+    "g10.2024.readingD"
+  ],
+  "one_source_formula_not_chinese_grade_or_cefr": true,
+  "negative_checks": {
+    "duplicate_shared_body": {
+      "rejected": true,
+      "reason": "duplicate/empty component; shared material must appear once"
+    },
+    "author_answer_as_student_input": {
+      "rejected": true,
+      "reason": "unknown role; answer/author evidence is not student input"
+    },
+    "missing_option": {
+      "rejected": true,
+      "reason": "incomplete per-item option set"
+    },
+    "omitted_sentence_text": {
+      "rejected": true,
+      "reason": "sentence units omit/change passage content"
+    }
+  },
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "not_full_benchmark_completion": true
+}

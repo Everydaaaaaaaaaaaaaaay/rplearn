@@ -6,6 +6,8 @@
 
 2026-10-13 持续核读入口：
 
+- [真实阅读组件与语言负荷](Studies/2026-10-14-real-reading-component-and-language-load.md)：六真卷/六原创逐部件计量、30语境词汇及六可读性副本；补初一转录粘连更正，未将统计换成年级/时间。
+
 - [初二开放篇章与参考键边界](Studies/2026-10-14-grade8-open-language-key-boundaries.md)：模拟卷题面/键/解释完整，但存在未列出的合理变体；学校真卷评分锚仍缺。
 
 - [当前首版21候选与覆盖同步](Studies/2026-10-14-firstrelease-coverage-reconciliation.md)：六年级53完整配套选定源组/12卷家族，入口已继承最新证据；全国覆盖、独立教师/学生及商用仍未成立。
