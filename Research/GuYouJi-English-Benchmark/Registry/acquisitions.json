@@ -24792,6 +24792,114 @@
         "origin": "project_authored_dependency_audit_or_wheel_notice_extraction",
         "tool": "Pinned Python/pip withnoindex/noextras/hashchecks;PyPI metadata"
       }
+    },
+    {
+      "id": "snapshot12-report20261013",
+      "url": "urn:lingotrip:research:schema-runtime:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot-report-20261013-twelve.json",
+      "bytes": 3088,
+      "sha256": "1073ac8d8c8670dd66520daec5a7346e6ecc6a2a08c167bd21d0d25c2bfce7ac",
+      "format_validation": "json_parsed",
+      "review_scope": "3322file independentstrictCOW restore;frozenwheel offlineinstall excludesoldlibraries;fivechecks;two regeneratedreportsisolated after digestmismatch;notinterpreter/offhost/gold",
+      "derivation": {
+        "origin": "project_authored_full_restore_and_offline_dependency_replay",
+        "related_acquisition_ids": [
+          "snapshot11-missing-dependency-failure20261013"
+        ],
+        "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
+      }
+    },
+    {
+      "id": "snapshot12-strict-cow-method20261013",
+      "url": "urn:lingotrip:research:schema-runtime:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot12_strict_cow20261013.py",
+      "bytes": 898,
+      "sha256": "f2453f3f9161d2c353b17eabc7d27e8eabd2c9d73408b5c0eb578c6fd6c08d3c",
+      "format_validation": "python_source_saved",
+      "review_scope": "3322file independentstrictCOW restore;frozenwheel offlineinstall excludesoldlibraries;fivechecks;two regeneratedreportsisolated after digestmismatch;notinterpreter/offhost/gold",
+      "derivation": {
+        "origin": "project_authored_full_restore_and_offline_dependency_replay",
+        "related_acquisition_ids": [
+          "snapshot11-missing-dependency-failure20261013"
+        ],
+        "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
+      }
+    },
+    {
+      "id": "snapshot12-initial-report-mismatch20261013",
+      "url": "urn:lingotrip:research:schema-runtime:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot12-regenerated-report-mismatch-audit20261013.json",
+      "bytes": 15049,
+      "sha256": "fa8388083e0334ce865cd4ba4dbf2dd7e34d0982999812b0113ac6669d5be263",
+      "format_validation": "json_parsed",
+      "review_scope": "3322file independentstrictCOW restore;frozenwheel offlineinstall excludesoldlibraries;fivechecks;two regeneratedreportsisolated after digestmismatch;notinterpreter/offhost/gold",
+      "derivation": {
+        "origin": "project_authored_full_restore_and_offline_dependency_replay",
+        "related_acquisition_ids": [
+          "snapshot11-missing-dependency-failure20261013"
+        ],
+        "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
+      }
+    },
+    {
+      "id": "snapshot12-initial-method20261013",
+      "url": "urn:lingotrip:research:schema-runtime:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot12_initial_report_paths20261013.py",
+      "bytes": 2914,
+      "sha256": "492244d4a61ed8d3eb6c98b07fba3e99029014c22b2174673c9bfb1628ea9020",
+      "format_validation": "python_source_saved",
+      "review_scope": "3322file independentstrictCOW restore;frozenwheel offlineinstall excludesoldlibraries;fivechecks;two regeneratedreportsisolated after digestmismatch;notinterpreter/offhost/gold",
+      "derivation": {
+        "origin": "project_authored_full_restore_and_offline_dependency_replay",
+        "related_acquisition_ids": [
+          "snapshot11-missing-dependency-failure20261013"
+        ],
+        "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
+      }
+    },
+    {
+      "id": "snapshot12-offline-dependency-restore20261013",
+      "url": "urn:lingotrip:research:schema-runtime:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/snapshot12-full-offline-dependency-restore-audit20261013.json",
+      "bytes": 16001,
+      "sha256": "fa750b7a1ccc95be38b6add2a6b935cbe398f6885e01ce77e1e03e6131008433",
+      "format_validation": "json_parsed",
+      "review_scope": "3322file independentstrictCOW restore;frozenwheel offlineinstall excludesoldlibraries;fivechecks;two regeneratedreportsisolated after digestmismatch;notinterpreter/offhost/gold",
+      "derivation": {
+        "origin": "project_authored_full_restore_and_offline_dependency_replay",
+        "related_acquisition_ids": [
+          "snapshot11-missing-dependency-failure20261013"
+        ],
+        "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
+      }
+    },
+    {
+      "id": "snapshot12-restore-method20261013",
+      "url": "urn:lingotrip:research:schema-runtime:2026-10-13",
+      "accessed_on": "2026-10-13",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/restore_snapshot12_offline_deps20261013.py",
+      "bytes": 4037,
+      "sha256": "357aa66fd3eab31e394216c19b2add0b653d75f01b3ff7df9d0bf938226e908d",
+      "format_validation": "python_source_saved",
+      "review_scope": "3322file independentstrictCOW restore;frozenwheel offlineinstall excludesoldlibraries;fivechecks;two regeneratedreportsisolated after digestmismatch;notinterpreter/offhost/gold",
+      "derivation": {
+        "origin": "project_authored_full_restore_and_offline_dependency_replay",
+        "related_acquisition_ids": [
+          "snapshot11-missing-dependency-failure20261013"
+        ],
+        "tool": "clonefile/current bundledPython/pip withnoindex/requirehashes"
+      }
     }
   ],
   "updated_on": "2026-10-13"
