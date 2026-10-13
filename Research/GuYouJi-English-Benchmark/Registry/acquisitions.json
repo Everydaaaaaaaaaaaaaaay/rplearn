@@ -55067,6 +55067,108 @@
         ],
         "tool": "Python/re/json/hashlib"
       }
+    },
+    {
+      "id": "firstrelease-18-seed-anchor-item-rationales20261014",
+      "url": "urn:lingotrip:research:firstrelease:seed-anchor-rationale",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-18-seed-anchor-item-rationales20261014.json",
+      "bytes": 77827,
+      "sha256": "f607a36fda2bc2a2965f7db030aa128ba1374888bc70a9edcde0e30ad5ba34cf",
+      "format_validation": "json_parsed",
+      "review_scope": "Eighteen complete core reference groups with162 per-source-item author rationales, source keys separate; four item-specific unresolved risks kept out of positive answer examples; no independentgold",
+      "derivation": {
+        "origin": "project_authored_firstrelease_seed_anchor_rationales",
+        "related_acquisition_ids": [
+          "bj-grade8-xicheng2025upper-20261013",
+          "fuzhou2025-exam-bundle-public-full",
+          "grade10-2025yearend-explanation-candidate20261014",
+          "grade11-2025lower-crossregion-candidate-20261013",
+          "grade12-anshan2025upper-monitor-candidate20261014",
+          "grade8-fengtai2025upper-candidate20261014",
+          "xdf-grade7-2021lower-paper-20261013"
+        ],
+        "tool": "Python/json/actual previously acquired body/key views"
+      }
+    },
+    {
+      "id": "annotate-firstrelease-seed-anchors20261014",
+      "url": "urn:lingotrip:research:firstrelease:seed-anchor-rationale",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/annotate_firstrelease_seed_anchors20261014.py",
+      "bytes": 19881,
+      "sha256": "03b7e406cd0839dfc82c57ce00ab8a4c65ee5b08c8f88bbd67277f315dfa4692",
+      "format_validation": "python_source_saved",
+      "review_scope": "Eighteen complete core reference groups with162 per-source-item author rationales, source keys separate; four item-specific unresolved risks kept out of positive answer examples; no independentgold",
+      "derivation": {
+        "origin": "project_authored_firstrelease_seed_anchor_rationales",
+        "related_acquisition_ids": [
+          "bj-grade8-xicheng2025upper-20261013",
+          "fuzhou2025-exam-bundle-public-full",
+          "grade10-2025yearend-explanation-candidate20261014",
+          "grade11-2025lower-crossregion-candidate-20261013",
+          "grade12-anshan2025upper-monitor-candidate20261014",
+          "grade8-fengtai2025upper-candidate20261014",
+          "xdf-grade7-2021lower-paper-20261013"
+        ],
+        "tool": "Python/json/actual previously acquired body/key views"
+      }
+    },
+    {
+      "id": "build-firstrelease-review-index20261014",
+      "url": "urn:lingotrip:research:firstrelease:review-package",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/build_firstrelease_review_index20261014.py",
+      "bytes": 5726,
+      "sha256": "a270974fa732c2510c9f788003702c5d9b7a91265e7678544474cb029fa7526f",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen review package check:19authored groups/161items/53paired source groups/18seed references162source items,23selected cache references,8synthetic bookkeeping rejection cases/request check; no modelcall/independentsemantic/student/production/rights admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_review_package",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales20261014"
+        ],
+        "tool": "Python/re/hashlib/json/versioned Tools/validate_firstrelease.py"
+      }
+    },
+    {
+      "id": "firstrelease-review-package-validation20261014",
+      "url": "urn:lingotrip:research:firstrelease:review-package",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/firstrelease-review-package-validation20261014.json",
+      "bytes": 2684,
+      "sha256": "3b9247eca5a6e2402e421cde13aec4280a4bb1d22d82da3988926a596f9b74cc",
+      "format_validation": "json_parsed",
+      "review_scope": "Frozen review package check:19authored groups/161items/53paired source groups/18seed references162source items,23selected cache references,8synthetic bookkeeping rejection cases/request check; no modelcall/independentsemantic/student/production/rights admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_review_package",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales20261014"
+        ],
+        "tool": "Python/re/hashlib/json/versioned Tools/validate_firstrelease.py"
+      }
+    },
+    {
+      "id": "register-firstrelease-review-package20261014",
+      "url": "urn:lingotrip:research:firstrelease:review-package",
+      "accessed_on": "2026-10-14",
+      "status": "derived_unreviewed",
+      "path": "build/english-benchmark-research-20261012/register_firstrelease_review_package20261014.py",
+      "bytes": 3027,
+      "sha256": "4d005885bf9ec5790fc2ffbadc0436ea6df5d42077b4e17b5ae399c33048237f",
+      "format_validation": "python_source_saved",
+      "review_scope": "Frozen review package check:19authored groups/161items/53paired source groups/18seed references162source items,23selected cache references,8synthetic bookkeeping rejection cases/request check; no modelcall/independentsemantic/student/production/rights admission",
+      "derivation": {
+        "origin": "project_authored_firstrelease_review_package",
+        "related_acquisition_ids": [
+          "firstrelease-18-seed-anchor-item-rationales20261014"
+        ],
+        "tool": "Python/re/hashlib/json/versioned Tools/validate_firstrelease.py"
+      }
     }
   ],
   "updated_on": "2026-10-13"
