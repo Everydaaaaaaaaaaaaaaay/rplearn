@@ -6,7 +6,7 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[审阅包0.18](FirstRelease/ReviewPackage-v0.18.md)、[可执行标准0.9](FirstRelease/PracticalAuthoringStandard-v0.9.md)、[组合索引0.9](FirstRelease/combined-review-index-v0.9.json)**：六年级各三父卷身份，101源组实例/639参考；41现行原创家族/271响应点按[响应模式0.6](FirstRelease/ResponseModeCoverage-v0.6.md)分层；十四请求/28源裁决＋17核心项仍待独立验证。[交付检查0.9](FirstRelease/DeliveryCheck-v0.9.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
+- **当前统一入口：[审阅包0.19](FirstRelease/ReviewPackage-v0.19.md)、[可执行标准0.10](FirstRelease/PracticalAuthoringStandard-v0.10.md)、[组合索引0.10](FirstRelease/combined-review-index-v0.10.json)**：源101实例/639参考/18父身份；原创43家族277响应点，新增初三标题/引述衔接与高一完整两段续写，按[响应方式0.7](FirstRelease/ResponseModeCoverage-v0.7.md)分九类。十四既有请求/28源＋17核心裁决边界不变，见[交付检查0.10](FirstRelease/DeliveryCheck-v0.10.md)。第31覆盖此前41/271，本批待合并保存；独立教师、学生、商用、模型和长期门槛未通过。
 
 当前保存：[第31独立恢复](Studies/2026-10-14-checkpoint31-conditional-lexical-and-sentence-profile-recovery.md)7031文件全严格COW/SHA/不同inode；现41/271八方式/14请求/13源11作者/28源17核心、实际引语纠正/词义探针/22句向量与2未知可恢复。31自身/后来素材留下一批，未异机/完整环境或教育/商业验收。
 
@@ -18,7 +18,7 @@
 
 身份修复：[核心0.16](FirstRelease/review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](FirstRelease/current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
-新增初三衔接：[五空七选/引述2/标题5当前0.2](FirstRelease/Expansions/Grade9HeadingInsertionProtocol-v0.1.md)，真实初稿C3/F4相关交换后补reports/reserved time并正文302→200，七项不变/35位置重解/修订1。扩展0.15全42/276，组合0.9旧41/271和第31边界保留待下批统一。
+新增初三衔接：[五空七选/引述2/标题5当前0.2](FirstRelease/Expansions/Grade9HeadingInsertionProtocol-v0.1.md)，真实初稿C3/F4相关交换后补reports/reserved time并正文302→200，七项不变/35位置重解/修订1。扩展0.15当时42/276；已与新续写一起纳组合0.10的43/277，组合0.9旧41/271和第31边界保留。
 
 新增分布核对：[22个当前句向量的固定token桶](FirstRelease/SentenceTokenBinObservations-v0.1.md)，12源/10作者、两开放句界未知；初一max31/高三max30重叠，旧引语误合在31—40桶产生伪单位，修正后消失。仅描述，不作年级/长句比例门槛。
 
