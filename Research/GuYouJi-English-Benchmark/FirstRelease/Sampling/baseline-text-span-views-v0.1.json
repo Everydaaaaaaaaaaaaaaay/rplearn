@@ -1,0 +1,3819 @@
+{
+  "version": "0.1",
+  "scope": "nine existing source text+required-media views/57responses; no new source count",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-profile-material-views-v0.1.json",
+    "sha256": "11f9403877e603345670be25564343015b589531462b1de5aba7acb6cfb7a205"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-profile-audit20261015p-v0.1.json",
+    "sha256": "8826480f2ff690500da3f922ce827fc310670a7e40319fed3ffec305e37de00a"
+  },
+  "views": [
+    {
+      "group_id": "g7.2019.cloze",
+      "source_parent_id": "suzhou-changshu2019-grade7-upper",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-grade7-upper.html",
+        "sha256": "acbeb10da17abf6320413e97ae61d2e11a92e237f24efc763cd033bc854be5d6"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+        "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+      },
+      "source_page_pointers": [],
+      "joined_text_sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 6655,
+          "end": 7866,
+          "sha256": "db6a6265c5d0376df69e223ff619e64b4bf71600939ad29b7c2a58fd1c3d58d4",
+          "excluded_offsets": [
+            {
+              "start": 121,
+              "end": 123,
+              "literal": "36",
+              "role": "blank_label",
+              "blank_id": 36
+            },
+            {
+              "start": 157,
+              "end": 159,
+              "literal": "37",
+              "role": "blank_label",
+              "blank_id": 37
+            },
+            {
+              "start": 323,
+              "end": 325,
+              "literal": "38",
+              "role": "blank_label",
+              "blank_id": 38
+            },
+            {
+              "start": 421,
+              "end": 423,
+              "literal": "39",
+              "role": "blank_label",
+              "blank_id": 39
+            },
+            {
+              "start": 501,
+              "end": 503,
+              "literal": "40",
+              "role": "blank_label",
+              "blank_id": 40
+            },
+            {
+              "start": 590,
+              "end": 592,
+              "literal": "41",
+              "role": "blank_label",
+              "blank_id": 41
+            },
+            {
+              "start": 750,
+              "end": 752,
+              "literal": "42",
+              "role": "blank_label",
+              "blank_id": 42
+            },
+            {
+              "start": 851,
+              "end": 853,
+              "literal": "43",
+              "role": "blank_label",
+              "blank_id": 43
+            },
+            {
+              "start": 1031,
+              "end": 1033,
+              "literal": "44",
+              "role": "blank_label",
+              "blank_id": 44
+            },
+            {
+              "start": 1198,
+              "end": 1200,
+              "literal": "45",
+              "role": "blank_label",
+              "blank_id": 45
+            }
+          ]
+        },
+        {
+          "id": "q36.A",
+          "role": "option",
+          "start": 7875,
+          "end": 7883,
+          "sha256": "0651863bf5d902262b17c4621ec340544ff016752543d99a92d7d22872d8a455",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q36.B",
+          "role": "option",
+          "start": 7896,
+          "end": 7902,
+          "sha256": "b78e58750d4f05fb33fffc966d320bc268c69ae923a676f8248ab750b84f5c79",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q36.C",
+          "role": "option",
+          "start": 7915,
+          "end": 7919,
+          "sha256": "0e87632cd46bd4907c516317eb6d81fe0f921a23c7643018f21292894b470681",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q36.D",
+          "role": "option",
+          "start": 7935,
+          "end": 7938,
+          "sha256": "944c27e5b97ab7793e4b6e9ff29384890ece0c7c04d2e2bf81c5f763469cc66b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q37.A",
+          "role": "option",
+          "start": 7947,
+          "end": 7950,
+          "sha256": "2f05d4b689d270cafb02285f35f44866f7dc8a2d368a3f9d1124373eeab31fb1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q37.B",
+          "role": "option",
+          "start": 7966,
+          "end": 7970,
+          "sha256": "770e607624d689265ca6c44884d0807d9b054d23c473c106c72be9de08b7376c",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q37.C",
+          "role": "option",
+          "start": 7985,
+          "end": 7996,
+          "sha256": "637ab2808704d851a93ba9a6de8c6b957c5b7e30d4c16bb767df4fb37ff4ddae",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q37.D",
+          "role": "option",
+          "start": 8006,
+          "end": 8011,
+          "sha256": "489f719cadf919094ddb38e7654de153ac33c02febb5de91e5345cbe372cf4a0",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q38.A",
+          "role": "option",
+          "start": 8020,
+          "end": 8025,
+          "sha256": "0a96f1960786d85f9e1270916fbb29224da7fb649ef6adb322124ef7e5000a68",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q38.B",
+          "role": "option",
+          "start": 8039,
+          "end": 8044,
+          "sha256": "489f719cadf919094ddb38e7654de153ac33c02febb5de91e5345cbe372cf4a0",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q38.C",
+          "role": "option",
+          "start": 8058,
+          "end": 8067,
+          "sha256": "c6a1427d7119cd3c049d4fe08cc02f1058d15291fba68a994816ea209af73f0e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q38.D",
+          "role": "option",
+          "start": 8079,
+          "end": 8086,
+          "sha256": "191c415261817259c49f435b1a380bac5cc31c3dfdd3cf0f8bcce446d9992387",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q39.A",
+          "role": "option",
+          "start": 8095,
+          "end": 8098,
+          "sha256": "6201111b83a0cb5b0922cb37cc442b9a40e24e3b1ce100a4bb204f4c63fd2ac0",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q39.B",
+          "role": "option",
+          "start": 8114,
+          "end": 8116,
+          "sha256": "7175517a370b5cd2e664e3fd29c4ea9db5ce17058eb9772fe090a5485e49dad6",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q39.C",
+          "role": "option",
+          "start": 8133,
+          "end": 8136,
+          "sha256": "cdc29937887188ad3702d1831d5b7ec66333a2a909e1f242432eb168d4c7b08b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q39.D",
+          "role": "option",
+          "start": 8153,
+          "end": 8155,
+          "sha256": "935f68319d4f227e02bfd54a0ddf85b8a242e42a4277aa5ef5eaab691710924e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q40.A",
+          "role": "option",
+          "start": 8164,
+          "end": 8169,
+          "sha256": "25b2870aab2e840436ffd62524d3a98b6c7690b541ac242f1200070fd661af13",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q40.B",
+          "role": "option",
+          "start": 8184,
+          "end": 8190,
+          "sha256": "602baefaa33ae82dc87c74f219407d5f3520d90bf1fe8ec13d948b8213983d69",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q40.C",
+          "role": "option",
+          "start": 8203,
+          "end": 8209,
+          "sha256": "831101b26a98c26ea8fe34ecee8b0bd63de7b8db8dfda1ea22988ac8d77ea9c4",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q40.D",
+          "role": "option",
+          "start": 8224,
+          "end": 8230,
+          "sha256": "65083d8b183b313cd39795a05e8ef3e4f44563e18442eef62e0410a56213904d",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q41.A",
+          "role": "option",
+          "start": 8239,
+          "end": 8245,
+          "sha256": "b78e58750d4f05fb33fffc966d320bc268c69ae923a676f8248ab750b84f5c79",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q41.B",
+          "role": "option",
+          "start": 8258,
+          "end": 8263,
+          "sha256": "30fde358b34772de141e11ba599e28f9f44aa80ae89aaf243b73e6b9b9ebc896",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q41.C",
+          "role": "option",
+          "start": 8277,
+          "end": 8281,
+          "sha256": "a7a45ea923c6229b341e2d21ff8fde3a4ca180f38c920a479dcfb7679389841b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q41.D",
+          "role": "option",
+          "start": 8297,
+          "end": 8301,
+          "sha256": "106a5842fc5fce6f663176285ed1516dbb1e3d15c05abab12fdca46d60b539b7",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q42.A",
+          "role": "option",
+          "start": 8310,
+          "end": 8317,
+          "sha256": "c1259f0a1c1044ba0af9b120ed907aa47444aade1256d26b9a8bcba76475a74c",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q42.B",
+          "role": "option",
+          "start": 8330,
+          "end": 8338,
+          "sha256": "0d6ad161c0cf0344a702f867517c475f7f64e21efd388a808005e3860f08ef98",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q42.C",
+          "role": "option",
+          "start": 8351,
+          "end": 8355,
+          "sha256": "2348f998744212575d85959674f9607ab26f67708a917157472832386337c904",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q42.D",
+          "role": "option",
+          "start": 8371,
+          "end": 8376,
+          "sha256": "310ff200149b44a32f124023d7caba19a1a890763a980606813d3a3d4a085d36",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q43.A",
+          "role": "option",
+          "start": 8385,
+          "end": 8389,
+          "sha256": "0967115f2813a3541eaef77de9d9d5773f1c0c04314b0bbfe4ff3b3b1c55b5d5",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q43.B",
+          "role": "option",
+          "start": 8404,
+          "end": 8413,
+          "sha256": "9d6f965ac832e40a5df6c06afe983e3b449c07b843ff51ce76204de05c690d11",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q43.C",
+          "role": "option",
+          "start": 8425,
+          "end": 8429,
+          "sha256": "97c10efe01d5c9c88704a12d361d8429b3a6aa2412290a0773109d5d2d603d5e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q43.D",
+          "role": "option",
+          "start": 8445,
+          "end": 8454,
+          "sha256": "1e4453a98c9d741737a0e881a5da3dc9cc29a5a9b2fc8b3096669f23eb2b31c1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q44.A",
+          "role": "option",
+          "start": 8463,
+          "end": 8467,
+          "sha256": "115dc3606fbf8691fb69f2aefec86f2ecd302362a0502b3a9648bf2c4dc8290f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q44.B",
+          "role": "option",
+          "start": 8482,
+          "end": 8487,
+          "sha256": "66883f202589406ec04acc8fea21ef8c11674dda7dbfc06d9858674affa154f9",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q44.C",
+          "role": "option",
+          "start": 8503,
+          "end": 8507,
+          "sha256": "c6c1c9a9c8543f1e4cd980064cf1625eeb61a90703b2464fff039f21682508b3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q44.D",
+          "role": "option",
+          "start": 8523,
+          "end": 8527,
+          "sha256": "ed5465b9220df9ce176d0bf30d6a317729bd9d37e4ae1cc015cb24c99af1df49",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q45.A",
+          "role": "option",
+          "start": 8536,
+          "end": 8541,
+          "sha256": "e6f07d43b5c21db0fbb9a31feac2dc599787763393dd5acbfad80e247eb02ad5",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q45.B",
+          "role": "option",
+          "start": 8555,
+          "end": 8558,
+          "sha256": "361e48d0308f20e32dba5fb56328baf18d72ef0ccb43b84f5c262d2a6a1fc6c8",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q45.C",
+          "role": "option",
+          "start": 8574,
+          "end": 8578,
+          "sha256": "6c45cb72a36e63d522aa54ed8adbd7a29a989474f2f77e0458af8800564ef3cb",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q45.D",
+          "role": "option",
+          "start": 8594,
+          "end": 8598,
+          "sha256": "aba4cc9b8af82df5d4efaade764d6a77466453f3e4156bb0b4e489710516b1c3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "start": 6593,
+          "end": 6649,
+          "sha256": "404c6b78384f99ded8c639afcb63e8ffdadec39650fb2bbe53cdc6e42ae3be9a",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 36,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q36.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q36.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q36.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q36.D"
+            }
+          ],
+          "blank": {
+            "start": 121,
+            "end": 123,
+            "literal": "36",
+            "role": "blank_label",
+            "blank_id": 36
+          }
+        },
+        {
+          "printed_number": 37,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q37.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q37.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q37.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q37.D"
+            }
+          ],
+          "blank": {
+            "start": 157,
+            "end": 159,
+            "literal": "37",
+            "role": "blank_label",
+            "blank_id": 37
+          }
+        },
+        {
+          "printed_number": 38,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q38.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q38.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q38.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q38.D"
+            }
+          ],
+          "blank": {
+            "start": 323,
+            "end": 325,
+            "literal": "38",
+            "role": "blank_label",
+            "blank_id": 38
+          }
+        },
+        {
+          "printed_number": 39,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q39.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q39.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q39.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q39.D"
+            }
+          ],
+          "blank": {
+            "start": 421,
+            "end": 423,
+            "literal": "39",
+            "role": "blank_label",
+            "blank_id": 39
+          }
+        },
+        {
+          "printed_number": 40,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q40.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q40.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q40.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q40.D"
+            }
+          ],
+          "blank": {
+            "start": 501,
+            "end": 503,
+            "literal": "40",
+            "role": "blank_label",
+            "blank_id": 40
+          }
+        },
+        {
+          "printed_number": 41,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q41.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q41.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q41.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q41.D"
+            }
+          ],
+          "blank": {
+            "start": 590,
+            "end": 592,
+            "literal": "41",
+            "role": "blank_label",
+            "blank_id": 41
+          }
+        },
+        {
+          "printed_number": 42,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q42.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q42.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q42.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q42.D"
+            }
+          ],
+          "blank": {
+            "start": 750,
+            "end": 752,
+            "literal": "42",
+            "role": "blank_label",
+            "blank_id": 42
+          }
+        },
+        {
+          "printed_number": 43,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q43.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q43.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q43.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q43.D"
+            }
+          ],
+          "blank": {
+            "start": 851,
+            "end": 853,
+            "literal": "43",
+            "role": "blank_label",
+            "blank_id": 43
+          }
+        },
+        {
+          "printed_number": 44,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q44.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q44.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q44.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q44.D"
+            }
+          ],
+          "blank": {
+            "start": 1031,
+            "end": 1033,
+            "literal": "44",
+            "role": "blank_label",
+            "blank_id": 44
+          }
+        },
+        {
+          "printed_number": 45,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q45.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q45.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q45.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q45.D"
+            }
+          ],
+          "blank": {
+            "start": 1198,
+            "end": 1200,
+            "literal": "45",
+            "role": "blank_label",
+            "blank_id": 45
+          }
+        }
+      ],
+      "shared_options": [],
+      "required_media": [],
+      "source_family": "choice_cloze",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Retain source names Eric/Tom/Jack and Davis/Green; school sentence lacks a verb; graph not in native; commentary numbering not original exam mapping",
+      "snapshot_processing_run_id": "suzhou-changshu2019-visible-text"
+    },
+    {
+      "group_id": "g7.2019.readingA",
+      "source_parent_id": "suzhou-changshu2019-grade7-upper",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-grade7-upper.html",
+        "sha256": "acbeb10da17abf6320413e97ae61d2e11a92e237f24efc763cd033bc854be5d6"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+        "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+      },
+      "source_page_pointers": [],
+      "joined_text_sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 8698,
+          "end": 9323,
+          "sha256": "9ac50cccecf9eb5879e1b4a7ff5fa7f11d06f83b058e9bb7889939e45833d3d2",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q46",
+          "role": "prompt",
+          "start": 9331,
+          "end": 9393,
+          "sha256": "3131d51538d8b3a9cf9a032e4968522b66113f5b3da187c988d8bb7e7e7cd94d",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q46.A",
+          "role": "option",
+          "start": 9402,
+          "end": 9411,
+          "sha256": "c5633b90a1e81afedbdc88e8fb832e44d7b7eaf83d68f458eb8e56103deac38b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q46.B",
+          "role": "option",
+          "start": 9422,
+          "end": 9431,
+          "sha256": "46b0ada6d022049f52ece082017f8a8ba75cf5f4adc8293b8642ee9ed82800ca",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q46.C",
+          "role": "option",
+          "start": 9446,
+          "end": 9456,
+          "sha256": "e653345a7666f06886527c286f5e2e8f3b5a220246abe74d9454b4af286e67e3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q46.D",
+          "role": "option",
+          "start": 9467,
+          "end": 9477,
+          "sha256": "d4b60425ee3d09a0557a005c78d7e31e7720b3ee85fa72e7de269c0eaf984323",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q47",
+          "role": "prompt",
+          "start": 9483,
+          "end": 9513,
+          "sha256": "ccf486653343b0c341f6f1fdaa5a56fa4bf77af1aad65b2ef64550e0ea1e6f22",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q47.A",
+          "role": "option",
+          "start": 9522,
+          "end": 9530,
+          "sha256": "d224a63eee743e3dc84fecd99c0037a624e5153e3db58548a1eeb78f74ba7903",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q47.B",
+          "role": "option",
+          "start": 9542,
+          "end": 9550,
+          "sha256": "cdfc5c37e81e63205f5f8ac33599844206ed4e4a2857cc2babd888900f40521b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q47.C",
+          "role": "option",
+          "start": 9565,
+          "end": 9573,
+          "sha256": "3583a358a585b13b6d6228f12d2baf3ef937fcf50bed4a521b70f95a520bc933",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q47.D",
+          "role": "option",
+          "start": 9585,
+          "end": 9592,
+          "sha256": "bbb4536a11d1793b3c0a957314a5cce59ee8cb7c3730becfad070c49780af98e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q48",
+          "role": "prompt",
+          "start": 9598,
+          "end": 9632,
+          "sha256": "f08160a2d09be096452ce076a8a4d297a7462a518d2df44dd7e4b7998f721f67",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q48.A",
+          "role": "option",
+          "start": 9641,
+          "end": 9692,
+          "sha256": "ebbcebb1b6e54588819d8b7f31658213d4ddef4ccfdee861772a2fa2fd6502fb",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q48.B",
+          "role": "option",
+          "start": 9701,
+          "end": 9761,
+          "sha256": "f0c14b8b911e8a37631d56d74c9f6944bbe5b2973953c1e001857e55b61a7eb6",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q48.C",
+          "role": "option",
+          "start": 9770,
+          "end": 9829,
+          "sha256": "61c99018f428d929ce352dd99365d77a05f45a7b061562e576ef7642dfb3dab7",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q48.D",
+          "role": "option",
+          "start": 9838,
+          "end": 9873,
+          "sha256": "2dd86f9323b76c3d535658bac8a37fa1734ce5c2ae1cbe55105c3801e1e8e434",
+          "excluded_offsets": []
+        },
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "start": 8633,
+          "end": 8689,
+          "sha256": "d413b6d7b8129dbcc2801abaa1d428707a3e4f78e0f5e76b8e2d799ccb8f52d2",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 46,
+          "prompt_component": "q46",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q46.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q46.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q46.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q46.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 47,
+          "prompt_component": "q47",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q47.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q47.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q47.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q47.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 48,
+          "prompt_component": "q48",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q48.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q48.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q48.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q48.D"
+            }
+          ]
+        }
+      ],
+      "shared_options": [],
+      "required_media": [
+        {
+          "acquisition_id": "suzhou-changshu2019-image05",
+          "asset": {
+            "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-image05.jpg",
+            "sha256": "a641b8aa7748c37e84fc0d69cd9a4a94cd965ab6175a12b4e9eb5ed1fadeb5d6"
+          },
+          "role": "calendar_year2019",
+          "required_for_printed_number": 46,
+          "actually_visual_reviewed_this_batch": true
+        }
+      ],
+      "source_family": "reading_choice",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Retain source names Eric/Tom/Jack and Davis/Green; school sentence lacks a verb; graph not in native; commentary numbering not original exam mapping",
+      "snapshot_processing_run_id": "suzhou-changshu2019-visible-text"
+    },
+    {
+      "group_id": "g7.2019.readingB",
+      "source_parent_id": "suzhou-changshu2019-grade7-upper",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-grade7-upper.html",
+        "sha256": "acbeb10da17abf6320413e97ae61d2e11a92e237f24efc763cd033bc854be5d6"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/suzhou-changshu2019-visible-text.txt",
+        "sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684"
+      },
+      "source_page_pointers": [],
+      "joined_text_sha256": "1fe1215a5dab0a6be1300d4d014e5c444823b71fd3b751ab97c3ff34468da684",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 9882,
+          "end": 10608,
+          "sha256": "ac3c8f25476558c57b415b788f8b3d77539f8d3f9c6130f5e250826a5a49f974",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q49",
+          "role": "prompt",
+          "start": 10614,
+          "end": 10643,
+          "sha256": "eafdad6ecff2937c683737db06286e04e3a2a0df18a2063071558fc1234bff28",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q49.A",
+          "role": "option",
+          "start": 10652,
+          "end": 10676,
+          "sha256": "886aa4fcdce52fcf5a14f8001bdf6753667c46c957ad56e1e4229132ebea4e63",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q49.B",
+          "role": "option",
+          "start": 10691,
+          "end": 10714,
+          "sha256": "1b5923996a2a6ed4a199c68841909cdafd49ddf15e26d738c4dff6ee214943e9",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q49.C",
+          "role": "option",
+          "start": 10723,
+          "end": 10752,
+          "sha256": "ebfb4e01c3ab6676e3735901408b794a95b0adf2e06069c7b17e3c77a53e464d",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q49.D",
+          "role": "option",
+          "start": 10763,
+          "end": 10797,
+          "sha256": "b9b5e5fb5075d8c680e779820105780ebc9f4b5493da273d1f7be765ff3459ce",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q50",
+          "role": "prompt",
+          "start": 10803,
+          "end": 10860,
+          "sha256": "326a6695ab6495935861cc9e22dd16396f89e51879f01f03af1f8e786b834149",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q50.A",
+          "role": "option",
+          "start": 10869,
+          "end": 10894,
+          "sha256": "27fb277b6fb213c0ee22d8542a45b4778ae4abf010b9ed3b683fb591f75460c1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q50.B",
+          "role": "option",
+          "start": 10906,
+          "end": 10934,
+          "sha256": "7352396d566148108ce5b3afff71f4d549d549e19f8f651f2bbf605b38cee323",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q50.C",
+          "role": "option",
+          "start": 10943,
+          "end": 10970,
+          "sha256": "b33b85d222ec93ec9be3fc5e8f898cccffa701815b5f0f246ac05b3ee503530d",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q50.D",
+          "role": "option",
+          "start": 10980,
+          "end": 11006,
+          "sha256": "8a10b3937fb067d100c1bcc32a5ffc5b34493423b738a3bdbd2e6b2584c9b919",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q51",
+          "role": "prompt",
+          "start": 11012,
+          "end": 11085,
+          "sha256": "23ec0a966af24abb21eebeddbd4481a0dbe487c09e77935a8ef86cfcc3896498",
+          "excluded_offsets": []
+        },
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "start": 8633,
+          "end": 8689,
+          "sha256": "d413b6d7b8129dbcc2801abaa1d428707a3e4f78e0f5e76b8e2d799ccb8f52d2",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 49,
+          "prompt_component": "q49",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q49.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q49.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q49.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q49.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 50,
+          "prompt_component": "q50",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q50.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q50.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q50.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q50.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 51,
+          "prompt_component": "q51",
+          "option_components": [],
+          "image_choice_labels": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "shared_options": [],
+      "required_media": [
+        {
+          "acquisition_id": "suzhou-changshu2019-image06",
+          "asset": {
+            "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-image06.jpg",
+            "sha256": "67b205ab3bcbbe13a1481b45c4cdb7956a93d98f7690ba8c05bb45cf77469ca4"
+          },
+          "role": "four_photo_options_ABCD",
+          "required_for_printed_number": 51,
+          "actually_visual_reviewed_this_batch": true
+        }
+      ],
+      "source_family": "reading_choice",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Retain source names Eric/Tom/Jack and Davis/Green; school sentence lacks a verb; graph not in native; commentary numbering not original exam mapping",
+      "snapshot_processing_run_id": "suzhou-changshu2019-visible-text"
+    },
+    {
+      "group_id": "g12.national2025.readingA",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+        "sha256": "61780759c815ee73de2b7a9fd6993669a2cf4d77b6986d2b146df46a6994bd2f"
+      },
+      "text_source_acquisition_id": "grade12-national2025-native-pages20261014-record",
+      "source_page_pointers": [
+        {
+          "PDF_page": 1,
+          "pointer": [
+            0,
+            "text"
+          ],
+          "sha256": "be44076cb738de9391df9ea242999e6c21043a80277ae8dbfd3535744690b5a4"
+        },
+        {
+          "PDF_page": 2,
+          "pointer": [
+            1,
+            "text"
+          ],
+          "sha256": "15b6cc19bccce4d4545151b86a9411b7e5210538b162394a6766dde32e92339d"
+        }
+      ],
+      "joined_text_sha256": "79379bb82ba1bb529b4d7503fd6547272cd7fff689fc7d63616491dd5b347969",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 202,
+          "end": 2119,
+          "sha256": "01cdd48b74c3cd1e889f52deb52dade0a32f888f506672994cf321b9bfea749c",
+          "excluded_offsets": [
+            {
+              "start": 1035,
+              "end": 1045,
+              "literal": "第 2页/共 13页",
+              "role": "page_decoration"
+            },
+            {
+              "start": 1046,
+              "end": 1063,
+              "literal": "学科 网（北 京）股 份有限 公司",
+              "role": "page_decoration"
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "role": "prompt",
+          "start": 2123,
+          "end": 2207,
+          "sha256": "97f40dad94da3648448ea68f36b3f3e00500ec6b5117f9d5221dea9751e87977",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q1.A",
+          "role": "option",
+          "start": 2211,
+          "end": 2217,
+          "sha256": "b606f04c795290109b5fb9f41851aa2c7eda138a9976ee7befdeab8c63db73c3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q1.B",
+          "role": "option",
+          "start": 2221,
+          "end": 2227,
+          "sha256": "1c476c72d4362df5a2f3832d3440c479c6cbee4bbbdde807a2c1924df341ed97",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q1.C",
+          "role": "option",
+          "start": 2231,
+          "end": 2237,
+          "sha256": "870be14ec4d8d1b89da4224386c36336f4eb804af7b3f99a4c02746a60e14344",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q1.D",
+          "role": "option",
+          "start": 2241,
+          "end": 2247,
+          "sha256": "ea93be10e093cebb1118b12004a318ad21c9d550b403034a8ca0ff56fe62cf47",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q2",
+          "role": "prompt",
+          "start": 2251,
+          "end": 2309,
+          "sha256": "7e7b44074d783d5f4fcc36018e2a2a0d7cb9ba5e7f1289591e44366e5f6a358e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q2.A",
+          "role": "option",
+          "start": 2313,
+          "end": 2320,
+          "sha256": "570b26b4e41241ad50e82d7009229f7bc79a9874aca45c4c13cae40574103f1a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q2.B",
+          "role": "option",
+          "start": 2324,
+          "end": 2331,
+          "sha256": "4c13e4107e5ccd36c66f301ad7700b0298f64324b15bc1bea9989ea6b08f0cfd",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q2.C",
+          "role": "option",
+          "start": 2335,
+          "end": 2342,
+          "sha256": "99cbb4a90433460356e862eb5476e25416185c1272ed1e56aaf9fd8484eede2a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q2.D",
+          "role": "option",
+          "start": 2346,
+          "end": 2352,
+          "sha256": "59146d023684fc1351114853db9ecc7d680f5d60dd2e6369766ebb712c2c35c1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q3",
+          "role": "prompt",
+          "start": 2356,
+          "end": 2408,
+          "sha256": "2637fb5d00a031eeea6186e2d62b8a2d766dc649cc348cefd2d2bd27d3dc57c8",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q3.A",
+          "role": "option",
+          "start": 2412,
+          "end": 2438,
+          "sha256": "ea2b674c2a23f9c6a485e0b1693d644294d89aab7e62a128d981fbfb4a905023",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q3.B",
+          "role": "option",
+          "start": 2442,
+          "end": 2478,
+          "sha256": "20247a60024e4806e90d94cff278b106c057ac4d2c63e581ebcf2fb35a791709",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q3.C",
+          "role": "option",
+          "start": 2482,
+          "end": 2510,
+          "sha256": "e70711be3d156ed0812ff1aadacbace59689fa1d147020028e833cfdfcaa396f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q3.D",
+          "role": "option",
+          "start": 2514,
+          "end": 2549,
+          "sha256": "b338966cab2bab1f432efbd9f73cdcb5296744faaf49691cd96e7401d834d25d",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 1,
+          "prompt_component": "q1",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q1.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q1.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q1.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q1.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 2,
+          "prompt_component": "q2",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q2.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q2.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q2.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q2.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 3,
+          "prompt_component": "q3",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q3.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q3.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q3.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q3.D"
+            }
+          ]
+        }
+      ],
+      "shared_options": [],
+      "required_media": [
+        {
+          "acquisition_id": "grade12-national2025-inspection-page0120261014-record",
+          "asset": {
+            "path": "build/english-benchmark-research-20261012/grade12-national2025-inspection-01.png",
+            "sha256": "b8cb07c16a8a5397d2f2520fe0f77f03f0b7f5a0c1fa705c808eca36bc314f7a"
+          },
+          "role": "emissions_chart_and_two_fuel_panels",
+          "required_for_printed_number": 1,
+          "actually_visual_reviewed_this_batch": true
+        }
+      ],
+      "source_family": "reading_choice",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Native spacing/linebreaks and commentary numbering preserved; facts not independently verified",
+      "shared_instruction": {
+        "pointer": [
+          0,
+          "text"
+        ],
+        "PDF_page": 1,
+        "start": 164,
+        "end": 199,
+        "sha256": "46df7b83c0a3658357c01ddd77e70556c0210bbd46b32502daafc3a5f1dc9015"
+      },
+      "snapshot_origin_evidence": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-public-acquisition20261014.json",
+        "sha256": "0b112cc1029a1d3f7c7d8c4cf7006a12a93c74b6c6b9a49fae4a9218ddcc21d5"
+      }
+    },
+    {
+      "group_id": "g12.national2025.readingB",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+        "sha256": "61780759c815ee73de2b7a9fd6993669a2cf4d77b6986d2b146df46a6994bd2f"
+      },
+      "text_source_acquisition_id": "grade12-national2025-native-pages20261014-record",
+      "source_page_pointers": [
+        {
+          "PDF_page": 2,
+          "pointer": [
+            1,
+            "text"
+          ],
+          "sha256": "15b6cc19bccce4d4545151b86a9411b7e5210538b162394a6766dde32e92339d"
+        },
+        {
+          "PDF_page": 3,
+          "pointer": [
+            2,
+            "text"
+          ],
+          "sha256": "6d5441234c5ad965e282daa5560285f4eabea8ffcc9e1e924bd9a4612db172f4"
+        }
+      ],
+      "joined_text_sha256": "a9f33cadd152a13023cab5f9bd15830bad6c59aa9025a51d77b9762f7870cc73",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 1315,
+          "end": 3081,
+          "sha256": "6052b778839d6a87743015b3d4b7fa9c8d8ad3af315ffd31e2fab76d49fc1b14",
+          "excluded_offsets": [
+            {
+              "start": 695,
+              "end": 705,
+              "literal": "第 3页/共 13页",
+              "role": "page_decoration"
+            },
+            {
+              "start": 706,
+              "end": 723,
+              "literal": "学科 网（北 京）股 份有限 公司",
+              "role": "page_decoration"
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "role": "prompt",
+          "start": 3085,
+          "end": 3146,
+          "sha256": "eb7c3d48fc71022236dc40d3988285fe5baa8906ec59fd7f20b6bc31fa409c75",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q4.A",
+          "role": "option",
+          "start": 3150,
+          "end": 3164,
+          "sha256": "2c4c9ab4ae7d0ed0ec129d5a79e841dfac9f697f1f0d455bf201262f5b8b2125",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q4.B",
+          "role": "option",
+          "start": 3168,
+          "end": 3186,
+          "sha256": "907f92e74596bdc3160944316c08e21ccb796172b119b101f33d6d033ad96100",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q4.C",
+          "role": "option",
+          "start": 3190,
+          "end": 3205,
+          "sha256": "9c9a466e9b89a4abe4e47284b36cd6610d5cccc3f0ba691ffd4952124b13bd51",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q4.D",
+          "role": "option",
+          "start": 3209,
+          "end": 3230,
+          "sha256": "d02d154077d3f1f9094c708efc17a3ef4b25b6b358bde08ac9e165182f577d43",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q5",
+          "role": "prompt",
+          "start": 3234,
+          "end": 3299,
+          "sha256": "e334520b7cc7674b7dd7b3df283ddbbdc0a67fa296ec34991d159986e3c57f9e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q5.A",
+          "role": "option",
+          "start": 3303,
+          "end": 3335,
+          "sha256": "2825611c6cacf5fcd7686b4a1e74fd5832a34f01c5f633ddb24c7649e5d61ed9",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q5.B",
+          "role": "option",
+          "start": 3339,
+          "end": 3374,
+          "sha256": "8c1ffd05215d13b56f700d9a402ed0f9d945e396990c801baf9573276151e332",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q5.C",
+          "role": "option",
+          "start": 3378,
+          "end": 3410,
+          "sha256": "7ae5bf26255ab8b6932b143eb130c82c64aef949e3350dad406db5803d78a4ad",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q5.D",
+          "role": "option",
+          "start": 3414,
+          "end": 3452,
+          "sha256": "75db6697c4b00df566ca0e96794adce7005a0815d3b1a9dd58d3695143a3eebf",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q6",
+          "role": "prompt",
+          "start": 3456,
+          "end": 3519,
+          "sha256": "ddb11fb8bab57255dbd6beb2cc7d60d96f8ba769ec09b246d4ade89cd4cb9b56",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q6.A",
+          "role": "option",
+          "start": 3523,
+          "end": 3529,
+          "sha256": "5f94e75d9d08c174218e8878a962794701282d95c360a1cf4612454be7096d5f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q6.B",
+          "role": "option",
+          "start": 3533,
+          "end": 3541,
+          "sha256": "f6c7a20d9df5b162619a3226a6725ecaf78bac1d91a64f125b9e756047cafaf6",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q6.C",
+          "role": "option",
+          "start": 3545,
+          "end": 3553,
+          "sha256": "3c242a71b3389927927e33c57c4156d9928252e3c8dcd36fedcbd28ebe472b10",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q6.D",
+          "role": "option",
+          "start": 3557,
+          "end": 3568,
+          "sha256": "bc20304b7817290a41ff998d2981181ed35cd240fca096533dd6a15b37192c88",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q7",
+          "role": "prompt",
+          "start": 3572,
+          "end": 3611,
+          "sha256": "2c33b715ba17c8d69855dfa3cad907411b7675f1e15a7778c12f86c810bf422c",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q7.A",
+          "role": "option",
+          "start": 3615,
+          "end": 3636,
+          "sha256": "c06452dbf4d2220e8420128b93c1b062fe880d1d07be3614b052fa668275d48f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q7.B",
+          "role": "option",
+          "start": 3640,
+          "end": 3662,
+          "sha256": "727c695cd6a42fe8221a4710f701e46a81a539bc5b3e62d4684e8cea5a85e9d7",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q7.C",
+          "role": "option",
+          "start": 3666,
+          "end": 3685,
+          "sha256": "9d7f4c038ec77f39efe8bac8d3fbbf80c05002582d3cc0da78f1bbc59817e73b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q7.D",
+          "role": "option",
+          "start": 3689,
+          "end": 3712,
+          "sha256": "21f9c35a8cee62eb86b4362a4f81200dc8792c40adcf173e9d967a250ff73484",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 4,
+          "prompt_component": "q4",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q4.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q4.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q4.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q4.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 5,
+          "prompt_component": "q5",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q5.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q5.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q5.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q5.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 6,
+          "prompt_component": "q6",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q6.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q6.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q6.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q6.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 7,
+          "prompt_component": "q7",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q7.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q7.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q7.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q7.D"
+            }
+          ]
+        }
+      ],
+      "shared_options": [],
+      "required_media": [],
+      "source_family": "reading_choice",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Native spacing/linebreaks and commentary numbering preserved; facts not independently verified",
+      "shared_instruction": {
+        "pointer": [
+          0,
+          "text"
+        ],
+        "PDF_page": 1,
+        "start": 164,
+        "end": 199,
+        "sha256": "46df7b83c0a3658357c01ddd77e70556c0210bbd46b32502daafc3a5f1dc9015"
+      },
+      "snapshot_origin_evidence": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-public-acquisition20261014.json",
+        "sha256": "0b112cc1029a1d3f7c7d8c4cf7006a12a93c74b6c6b9a49fae4a9218ddcc21d5"
+      }
+    },
+    {
+      "group_id": "g12.national2025.readingC",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+        "sha256": "61780759c815ee73de2b7a9fd6993669a2cf4d77b6986d2b146df46a6994bd2f"
+      },
+      "text_source_acquisition_id": "grade12-national2025-native-pages20261014-record",
+      "source_page_pointers": [
+        {
+          "PDF_page": 3,
+          "pointer": [
+            2,
+            "text"
+          ],
+          "sha256": "6d5441234c5ad965e282daa5560285f4eabea8ffcc9e1e924bd9a4612db172f4"
+        },
+        {
+          "PDF_page": 4,
+          "pointer": [
+            3,
+            "text"
+          ],
+          "sha256": "8a601dd1e0155b62a8b3f6c25348f95d6eb5be32e52ea4a7d4f01230722f3483"
+        }
+      ],
+      "joined_text_sha256": "f0764c8f2661c066c9ad327c52e4b6a119e778be663aa14fc0ef0295e1e66379",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 1705,
+          "end": 3573,
+          "sha256": "90aa149d77756d88f52133a8dc5f0f52ccdb6540778b91e11897974ef2e525f1",
+          "excluded_offsets": [
+            {
+              "start": 670,
+              "end": 680,
+              "literal": "第 4页/共 13页",
+              "role": "page_decoration"
+            },
+            {
+              "start": 681,
+              "end": 698,
+              "literal": "学科 网（北 京）股 份有限 公司",
+              "role": "page_decoration"
+            }
+          ]
+        },
+        {
+          "id": "q8",
+          "role": "prompt",
+          "start": 3577,
+          "end": 3634,
+          "sha256": "68929a39dca44458137849ee06cbc1b8c48f2d9a9008c7e72e74376fc86e910f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q8.A",
+          "role": "option",
+          "start": 3638,
+          "end": 3671,
+          "sha256": "cff6ada3195a3e538594effa93a01efa4b02503e3fd1fb1daa8f8a20aa5be843",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q8.B",
+          "role": "option",
+          "start": 3675,
+          "end": 3710,
+          "sha256": "113fa4ce2537ca190289f3893d35de6caa0362e95c8b5bd0d8df9bdd48c07173",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q8.C",
+          "role": "option",
+          "start": 3714,
+          "end": 3746,
+          "sha256": "24c8f5763c9293ee759a6e3d6a3ae98b5bd398c37fd5fef9a0ed635343cc5069",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q8.D",
+          "role": "option",
+          "start": 3750,
+          "end": 3787,
+          "sha256": "709eb6230b8ebf15abc1e0cfa6889b9e7be2d342626a1aa78d512312a62301fa",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q9",
+          "role": "prompt",
+          "start": 3791,
+          "end": 3860,
+          "sha256": "80b3c47b056772eea77653a50e27fedb11878c08d51c32c855ea0597945063b1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q9.A",
+          "role": "option",
+          "start": 3864,
+          "end": 3890,
+          "sha256": "105194796c23344a80dfea2a39a2548eb3b50fec1153d3a17421d803c808eddc",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q9.B",
+          "role": "option",
+          "start": 3894,
+          "end": 3921,
+          "sha256": "c5c54cef464cebd6d789fc31edbf36c6c5ac9479cdf6368361b8c405926b5482",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q9.C",
+          "role": "option",
+          "start": 3925,
+          "end": 3949,
+          "sha256": "03c6579f68c5da3e853b572ca944ae9ff774ed2359bb65518adbcf89262195d3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q9.D",
+          "role": "option",
+          "start": 3953,
+          "end": 3981,
+          "sha256": "b4e91ff2a32f1edd9f2657b0fa4c2db539387225fa60f3a7ca66ed6f8097df54",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q10",
+          "role": "prompt",
+          "start": 3986,
+          "end": 4068,
+          "sha256": "4cb7fe347f5f7992357982383b59898016cdcafe649caea6c70c3ae29bcb1e0b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q10.A",
+          "role": "option",
+          "start": 4072,
+          "end": 4103,
+          "sha256": "616c7ebb9457e9293caa5897f65211dd32837e36af839eec5732590f399afb21",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q10.B",
+          "role": "option",
+          "start": 4107,
+          "end": 4143,
+          "sha256": "26b2b6647e6e5edf4708aa906b2355795960c0c9232fa6f366a8030293d69bc3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q10.C",
+          "role": "option",
+          "start": 4147,
+          "end": 4175,
+          "sha256": "e9daf4ba4fbff9bdc0f0073dc3e3bf7f2f42312afa73d21fb0335d55d33d5178",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q10.D",
+          "role": "option",
+          "start": 4179,
+          "end": 4213,
+          "sha256": "78f9ba23b57345926887efc07c9dfb56e264604d588d69bf927f0e5ac5790675",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q11",
+          "role": "prompt",
+          "start": 4218,
+          "end": 4260,
+          "sha256": "17dcd878c95a710176b5b80727d9d86ac3fc97afb73776cfaddbe2c06c6f2de1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q11.A",
+          "role": "option",
+          "start": 4264,
+          "end": 4277,
+          "sha256": "3aa2c4c71a1392ab5deacc33be4431d9721716db6319b5fe95703c62a12dc477",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q11.B",
+          "role": "option",
+          "start": 4281,
+          "end": 4293,
+          "sha256": "285134825b4d9fe3b7f3a6fbdc6208999578901abea363b8dd372e4b853e5768",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q11.C",
+          "role": "option",
+          "start": 4297,
+          "end": 4311,
+          "sha256": "c56e97323ddcce524f6b961ed9536693427dd8dbde65856f4c524d9f701999ef",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q11.D",
+          "role": "option",
+          "start": 4315,
+          "end": 4328,
+          "sha256": "b93816539c8eab41acb39fb50cc31a803b9893fd08c35221170b6ed61e12350d",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 8,
+          "prompt_component": "q8",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q8.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q8.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q8.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q8.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 9,
+          "prompt_component": "q9",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q9.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q9.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q9.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q9.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 10,
+          "prompt_component": "q10",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q10.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q10.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q10.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q10.D"
+            }
+          ]
+        },
+        {
+          "printed_number": 11,
+          "prompt_component": "q11",
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q11.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q11.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q11.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q11.D"
+            }
+          ]
+        }
+      ],
+      "shared_options": [],
+      "required_media": [],
+      "source_family": "reading_choice",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Native spacing/linebreaks and commentary numbering preserved; facts not independently verified",
+      "shared_instruction": {
+        "pointer": [
+          0,
+          "text"
+        ],
+        "PDF_page": 1,
+        "start": 164,
+        "end": 199,
+        "sha256": "46df7b83c0a3658357c01ddd77e70556c0210bbd46b32502daafc3a5f1dc9015"
+      },
+      "snapshot_origin_evidence": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-public-acquisition20261014.json",
+        "sha256": "0b112cc1029a1d3f7c7d8c4cf7006a12a93c74b6c6b9a49fae4a9218ddcc21d5"
+      }
+    },
+    {
+      "group_id": "g12.national2025.insertion",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+        "sha256": "61780759c815ee73de2b7a9fd6993669a2cf4d77b6986d2b146df46a6994bd2f"
+      },
+      "text_source_acquisition_id": "grade12-national2025-native-pages20261014-record",
+      "source_page_pointers": [
+        {
+          "PDF_page": 6,
+          "pointer": [
+            5,
+            "text"
+          ],
+          "sha256": "f0fa99741684372d3fe21dcf12ec323e498581e551ba6df4be317c704eba0cf2"
+        }
+      ],
+      "joined_text_sha256": "f0fa99741684372d3fe21dcf12ec323e498581e551ba6df4be317c704eba0cf2",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 29,
+          "end": 1407,
+          "sha256": "24e4471f59f01808f4c4ab2048965d21d009af3554784bcd44a1771f14febcc2",
+          "excluded_offsets": [
+            {
+              "start": 129,
+              "end": 141,
+              "literal": "_____16_____",
+              "role": "blank_label",
+              "blank_id": 16
+            },
+            {
+              "start": 327,
+              "end": 339,
+              "literal": "_____17_____",
+              "role": "blank_label",
+              "blank_id": 17
+            },
+            {
+              "start": 632,
+              "end": 644,
+              "literal": "_____18_____",
+              "role": "blank_label",
+              "blank_id": 18
+            },
+            {
+              "start": 1134,
+              "end": 1146,
+              "literal": "_____19_____",
+              "role": "blank_label",
+              "blank_id": 19
+            },
+            {
+              "start": 1294,
+              "end": 1306,
+              "literal": "_____20_____",
+              "role": "blank_label",
+              "blank_id": 20
+            }
+          ]
+        },
+        {
+          "id": "shared.A",
+          "role": "shared_option",
+          "start": 1411,
+          "end": 1445,
+          "sha256": "d76b02cee27c8c30b6215b7f6c41ddc57d802e5e914d95410595554a00ab7b1a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "shared.B",
+          "role": "shared_option",
+          "start": 1449,
+          "end": 1490,
+          "sha256": "09113cd8f3e88f6e7329201393356b952d7a930820c293ba8c148a6dfd91d0cc",
+          "excluded_offsets": []
+        },
+        {
+          "id": "shared.C",
+          "role": "shared_option",
+          "start": 1494,
+          "end": 1550,
+          "sha256": "5111dd1e16cf62b4fc1789874f1157f5fd31810b482e9844a26b9ab3f0dc7427",
+          "excluded_offsets": []
+        },
+        {
+          "id": "shared.D",
+          "role": "shared_option",
+          "start": 1554,
+          "end": 1614,
+          "sha256": "5618ffb06456d817bcb303d8e33dd1a903c28fa0ac9324965e582780ae43082c",
+          "excluded_offsets": []
+        },
+        {
+          "id": "shared.E",
+          "role": "shared_option",
+          "start": 1618,
+          "end": 1684,
+          "sha256": "ad66188ff2148add21dfd04ec65bf16e212158f0adcf25a1744544499b1fec4b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "shared.F",
+          "role": "shared_option",
+          "start": 1688,
+          "end": 1759,
+          "sha256": "54b0931c05ced94612badcaed92d5e2e8e530e89b2c64761d8f5b1b27840fc99",
+          "excluded_offsets": []
+        },
+        {
+          "id": "shared.G",
+          "role": "shared_option",
+          "start": 1763,
+          "end": 1836,
+          "sha256": "2543ce3a8571629863d71dc5b935509433ef17b6cd150c121abccdc68f5f69cd",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 16,
+          "blank": {
+            "start": 129,
+            "end": 141,
+            "literal": "_____16_____",
+            "role": "blank_label",
+            "blank_id": 16
+          },
+          "option_components": []
+        },
+        {
+          "printed_number": 17,
+          "blank": {
+            "start": 327,
+            "end": 339,
+            "literal": "_____17_____",
+            "role": "blank_label",
+            "blank_id": 17
+          },
+          "option_components": []
+        },
+        {
+          "printed_number": 18,
+          "blank": {
+            "start": 632,
+            "end": 644,
+            "literal": "_____18_____",
+            "role": "blank_label",
+            "blank_id": 18
+          },
+          "option_components": []
+        },
+        {
+          "printed_number": 19,
+          "blank": {
+            "start": 1134,
+            "end": 1146,
+            "literal": "_____19_____",
+            "role": "blank_label",
+            "blank_id": 19
+          },
+          "option_components": []
+        },
+        {
+          "printed_number": 20,
+          "blank": {
+            "start": 1294,
+            "end": 1306,
+            "literal": "_____20_____",
+            "role": "blank_label",
+            "blank_id": 20
+          },
+          "option_components": []
+        }
+      ],
+      "shared_options": [
+        {
+          "label": "A",
+          "component_id": "shared.A"
+        },
+        {
+          "label": "B",
+          "component_id": "shared.B"
+        },
+        {
+          "label": "C",
+          "component_id": "shared.C"
+        },
+        {
+          "label": "D",
+          "component_id": "shared.D"
+        },
+        {
+          "label": "E",
+          "component_id": "shared.E"
+        },
+        {
+          "label": "F",
+          "component_id": "shared.F"
+        },
+        {
+          "label": "G",
+          "component_id": "shared.G"
+        }
+      ],
+      "required_media": [],
+      "source_family": "shared_insertion",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Native spacing/linebreaks and commentary numbering preserved; facts not independently verified",
+      "shared_instruction": {
+        "pointer": [
+          4,
+          "text"
+        ],
+        "PDF_page": 5,
+        "start": 2489,
+        "end": 2532,
+        "sha256": "fce6173717ab570ef0256a5740a502e7da3c6f486c4e1f2560fc39a21c02baba"
+      },
+      "snapshot_origin_evidence": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-public-acquisition20261014.json",
+        "sha256": "0b112cc1029a1d3f7c7d8c4cf7006a12a93c74b6c6b9a49fae4a9218ddcc21d5"
+      }
+    },
+    {
+      "group_id": "g12.national2025.cloze",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+        "sha256": "61780759c815ee73de2b7a9fd6993669a2cf4d77b6986d2b146df46a6994bd2f"
+      },
+      "text_source_acquisition_id": "grade12-national2025-native-pages20261014-record",
+      "source_page_pointers": [
+        {
+          "PDF_page": 6,
+          "pointer": [
+            5,
+            "text"
+          ],
+          "sha256": "f0fa99741684372d3fe21dcf12ec323e498581e551ba6df4be317c704eba0cf2"
+        },
+        {
+          "PDF_page": 7,
+          "pointer": [
+            6,
+            "text"
+          ],
+          "sha256": "cd75eb1dd904352e7b833182fb9c32a7a35955ddf3554802fa470c49c2943023"
+        }
+      ],
+      "joined_text_sha256": "ce4b73704a331b3fe4a858031608297235c11c94d71990e529082b29f8993769",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 1927,
+          "end": 3273,
+          "sha256": "9a49558270ef744fd74378c06e62180a0c9e934ab26e80234ee82a2997849235",
+          "excluded_offsets": [
+            {
+              "start": 168,
+              "end": 176,
+              "literal": "___21___",
+              "role": "blank_label",
+              "blank_id": 21
+            },
+            {
+              "start": 272,
+              "end": 280,
+              "literal": "___22___",
+              "role": "blank_label",
+              "blank_id": 22
+            },
+            {
+              "start": 353,
+              "end": 361,
+              "literal": "___23___",
+              "role": "blank_label",
+              "blank_id": 23
+            },
+            {
+              "start": 420,
+              "end": 428,
+              "literal": "___24___",
+              "role": "blank_label",
+              "blank_id": 24
+            },
+            {
+              "start": 499,
+              "end": 507,
+              "literal": "___25___",
+              "role": "blank_label",
+              "blank_id": 25
+            },
+            {
+              "start": 659,
+              "end": 667,
+              "literal": "___26___",
+              "role": "blank_label",
+              "blank_id": 26
+            },
+            {
+              "start": 708,
+              "end": 716,
+              "literal": "___27___",
+              "role": "blank_label",
+              "blank_id": 27
+            },
+            {
+              "start": 783,
+              "end": 791,
+              "literal": "___28___",
+              "role": "blank_label",
+              "blank_id": 28
+            },
+            {
+              "start": 905,
+              "end": 913,
+              "literal": "___29___",
+              "role": "blank_label",
+              "blank_id": 29
+            },
+            {
+              "start": 953,
+              "end": 961,
+              "literal": "___30___",
+              "role": "blank_label",
+              "blank_id": 30
+            },
+            {
+              "start": 1065,
+              "end": 1073,
+              "literal": "___31___",
+              "role": "blank_label",
+              "blank_id": 31
+            },
+            {
+              "start": 1143,
+              "end": 1151,
+              "literal": "___32___",
+              "role": "blank_label",
+              "blank_id": 32
+            },
+            {
+              "start": 1201,
+              "end": 1209,
+              "literal": "___33___",
+              "role": "blank_label",
+              "blank_id": 33
+            },
+            {
+              "start": 1245,
+              "end": 1253,
+              "literal": "___34___",
+              "role": "blank_label",
+              "blank_id": 34
+            },
+            {
+              "start": 1300,
+              "end": 1308,
+              "literal": "___35___",
+              "role": "blank_label",
+              "blank_id": 35
+            },
+            {
+              "start": 434,
+              "end": 444,
+              "literal": "第 7页/共 13页",
+              "role": "page_decoration"
+            },
+            {
+              "start": 445,
+              "end": 462,
+              "literal": "学科 网（北 京）股 份有限 公司",
+              "role": "page_decoration"
+            }
+          ]
+        },
+        {
+          "id": "q21.A",
+          "role": "option",
+          "start": 3281,
+          "end": 3294,
+          "sha256": "1b77c2eb90c0ea00709ee05bf084df4d92837ff0b47f63f8719f5eafa80d6e46",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q21.B",
+          "role": "option",
+          "start": 3298,
+          "end": 3312,
+          "sha256": "46e321c3821c6c4f32ca4deadc9eaf14429a3023fa124bdbbb6fa348cff908f6",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q21.C",
+          "role": "option",
+          "start": 3316,
+          "end": 3328,
+          "sha256": "c015f061a699c3a22bef44c59ccb168842569e12800901e3ee7730beaa6a53b7",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q21.D",
+          "role": "option",
+          "start": 3332,
+          "end": 3344,
+          "sha256": "0f13076c3f8f874f989208b776a67d295237c8b8e51e225f2f706bd6d37e018a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q22.A",
+          "role": "option",
+          "start": 3352,
+          "end": 3357,
+          "sha256": "8d53a3e3672946bd802cd2037f1d5da8a61081910cb4054a882b905a51550125",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q22.B",
+          "role": "option",
+          "start": 3361,
+          "end": 3367,
+          "sha256": "5cc3f82838ba7260203e4590ce03d00e1663d41f6a5167144f5c95d6be2166a0",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q22.C",
+          "role": "option",
+          "start": 3371,
+          "end": 3378,
+          "sha256": "11102e6ea692987aa6358753f9d02cae6e853a53df3202b0bfdac11ecdcb6a31",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q22.D",
+          "role": "option",
+          "start": 3382,
+          "end": 3391,
+          "sha256": "6f347b04efac92cf6edc676ee3eb09ffb73c2d1fecf2bb4fdf2072917c8f1238",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q23.A",
+          "role": "option",
+          "start": 3399,
+          "end": 3404,
+          "sha256": "824d80d71985f082a26997a8db88b5d1dd45b777d73585d03d236303e21bde97",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q23.B",
+          "role": "option",
+          "start": 3408,
+          "end": 3415,
+          "sha256": "dfbb889cf19bda82ed8deadf82de232979aa4ecc83238625c6453dc4c597b43a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q23.C",
+          "role": "option",
+          "start": 3419,
+          "end": 3423,
+          "sha256": "c0f21d451463ec3e3254bf2d631b70a46e870f72eca69b2a869625407c22a8b0",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q23.D",
+          "role": "option",
+          "start": 3427,
+          "end": 3433,
+          "sha256": "a1a14ff4aab4f1d3efbe2f3fe8e32ec686289ba95e5b2fc3e1f38052d64da522",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q24.A",
+          "role": "option",
+          "start": 3441,
+          "end": 3448,
+          "sha256": "2d3c822d9399e7ac0eac840fa8567eb0d7a376e8235d38c96529f1c40e647697",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q24.B",
+          "role": "option",
+          "start": 3452,
+          "end": 3461,
+          "sha256": "9d9d94f9b37f2fa37cdfe90befc564a1982cf7f7b18aa17df33ecd3e310bd764",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q24.C",
+          "role": "option",
+          "start": 3465,
+          "end": 3472,
+          "sha256": "cd42e3d4b5a022ea676f1c3213bfe9b07a1302385d0d9c9d0ee647caf07ef179",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q24.D",
+          "role": "option",
+          "start": 3476,
+          "end": 3484,
+          "sha256": "74f66e8c04a6378e3146d4a8079a173ac15328049c3e1dbb533887380fc0f0ca",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q25.A",
+          "role": "option",
+          "start": 3492,
+          "end": 3504,
+          "sha256": "2676e6e68a8ebfb925a7b374db0ea159b01f46324a7879dabf7c20f9773fef15",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q25.B",
+          "role": "option",
+          "start": 3508,
+          "end": 3516,
+          "sha256": "8b6e13fa6c31087cfb3bc8b7c37f57b11f546a0641a14bec1f509b0478bb7c1d",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q25.C",
+          "role": "option",
+          "start": 3520,
+          "end": 3531,
+          "sha256": "69e1b1f7ae9d01694066a17c64f424e82cf5ccb0d430f5d37149bd262da0762d",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q25.D",
+          "role": "option",
+          "start": 3535,
+          "end": 3544,
+          "sha256": "e5d64216c1247c75dbb3a80ce1f00183cb789811dbf434ad1bfc40944e149c10",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q26.A",
+          "role": "option",
+          "start": 3552,
+          "end": 3556,
+          "sha256": "9ca93831c6f31695b1d781de37e7c35f8c6fbdd43ff8fea408728ceb05db7137",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q26.B",
+          "role": "option",
+          "start": 3560,
+          "end": 3566,
+          "sha256": "84a6dae49cf0481203aa97872cc3301b73c406b8ac099ee36d2f849365cec06b",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q26.C",
+          "role": "option",
+          "start": 3570,
+          "end": 3578,
+          "sha256": "3619a1d05b1fe41a17aeede95dca3b2075c283281e17af896b2116f207ee3495",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q26.D",
+          "role": "option",
+          "start": 3582,
+          "end": 3588,
+          "sha256": "8edcc26c0f6c7256a71a8ede6b954ad9ec8dabf88f127c5e9d34f13cadefe11a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q27.A",
+          "role": "option",
+          "start": 3596,
+          "end": 3600,
+          "sha256": "683a62ce15fbabb1ac867022e56e6e4f4f581762d77c3abb2f8dc8b165b3b1b9",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q27.B",
+          "role": "option",
+          "start": 3604,
+          "end": 3607,
+          "sha256": "9350872d712a127c494d7dc35e46b0bc9e62e288239708e581dfc3a1400154a4",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q27.C",
+          "role": "option",
+          "start": 3611,
+          "end": 3617,
+          "sha256": "e4d693d24e646cb7878426225d90d2607fd40e2e7c82f4cf8246b2cc3e0decb8",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q27.D",
+          "role": "option",
+          "start": 3621,
+          "end": 3625,
+          "sha256": "00e13ed7af55b27622f1d6eab5bec0147e68efe28dc2b12461117afa1a5ed40e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q28.A",
+          "role": "option",
+          "start": 3633,
+          "end": 3640,
+          "sha256": "4bd9354bb652233497a0f42647464b81b83a83654fcf1511263a5d0120d74c91",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q28.B",
+          "role": "option",
+          "start": 3644,
+          "end": 3651,
+          "sha256": "1f58b9145b24d108d7ac38887338b3ea3229833b9c1e418250343f907bfd1047",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q28.C",
+          "role": "option",
+          "start": 3655,
+          "end": 3666,
+          "sha256": "c9046f7a37ad0ea7cee73355984fa5428982f8b37c8f7bcec91f7ac71a7cd104",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q28.D",
+          "role": "option",
+          "start": 3670,
+          "end": 3675,
+          "sha256": "5782b18687e6cf8a482fc32d2db5b196d8821c458a0c069c6acf3953446e7bb5",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q29.A",
+          "role": "option",
+          "start": 3683,
+          "end": 3691,
+          "sha256": "ea41abe045db190f060c2b69d66e8bd65483d296aa53e9991ba230574ccba3d3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q29.B",
+          "role": "option",
+          "start": 3695,
+          "end": 3705,
+          "sha256": "bcd30713189cbc1c35b42c834d5e5b19d93a73e84bf4a5ebd8f7847c7e089748",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q29.C",
+          "role": "option",
+          "start": 3709,
+          "end": 3721,
+          "sha256": "0ed294d411183a12acc170bc44303dcb273626d457746aaa9d59040f97e7b941",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q29.D",
+          "role": "option",
+          "start": 3725,
+          "end": 3735,
+          "sha256": "5d9d9127502f07dd8ad71cde126234c08363ba259f9a1fec5d3c4b9c698935d7",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q30.A",
+          "role": "option",
+          "start": 3743,
+          "end": 3749,
+          "sha256": "b944075326e4926e3f0cddfe5b2dc3f3aa77025c5f711b990eca2e8fe682e77a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q30.B",
+          "role": "option",
+          "start": 3753,
+          "end": 3760,
+          "sha256": "7f26104f77a7ce477546cd1ea99b6c99b5eb079e3ec9238583314eccea00440a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q30.C",
+          "role": "option",
+          "start": 3764,
+          "end": 3770,
+          "sha256": "02c97447687b4871b00afe98075a37426dda6be15030c7222033c471491e69f5",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q30.D",
+          "role": "option",
+          "start": 3774,
+          "end": 3779,
+          "sha256": "8d2ac8b58ead9744d77286de9b0bcb7a894f238c3149fc9f3b1e3caff36330fe",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q31.A",
+          "role": "option",
+          "start": 3787,
+          "end": 3793,
+          "sha256": "7e5608ab610017afe6c1894fdd4f56848823dcb1d12302bd49751d16a290f774",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q31.B",
+          "role": "option",
+          "start": 3797,
+          "end": 3802,
+          "sha256": "cf2d9706736982fb261656d2e712344c3c38bd94b34a444ea4f3ce97591cd48f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q31.C",
+          "role": "option",
+          "start": 3806,
+          "end": 3810,
+          "sha256": "e6640de835ad09fb0a7367ee2e0ba99d0142c139db0272146e35538bd07479fc",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q31.D",
+          "role": "option",
+          "start": 3814,
+          "end": 3819,
+          "sha256": "20f65c28671b40937c5bf23acc7c6f37e5a5ec0622e347b57685725df5ba9e50",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q32.A",
+          "role": "option",
+          "start": 3827,
+          "end": 3839,
+          "sha256": "dac32534982881449f21af68852788d1a938360f95641ab0284613953d1d09e2",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q32.B",
+          "role": "option",
+          "start": 3843,
+          "end": 3853,
+          "sha256": "1d2550bc320e6f50e1dd0c569213c9e0d83e10ff060f54bea2fdedf9d813b289",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q32.C",
+          "role": "option",
+          "start": 3857,
+          "end": 3868,
+          "sha256": "b287feba2273ffe6190c8f609547f4b5e2170071c3e727cf95011128f7e11bed",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q32.D",
+          "role": "option",
+          "start": 3872,
+          "end": 3883,
+          "sha256": "dd6d876548037ec722252b45795206575e7040eba1ca076cf1732a4a903cadba",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q33.A",
+          "role": "option",
+          "start": 3891,
+          "end": 3900,
+          "sha256": "629654db237e947e80989c1fe930dee68a71877ec80bf71707bc5d62781fe513",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q33.B",
+          "role": "option",
+          "start": 3904,
+          "end": 3909,
+          "sha256": "a44f1b975171163546d46ba5ca80652f85fcad7f665cf55d00a202ff9d0f7dbe",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q33.C",
+          "role": "option",
+          "start": 3913,
+          "end": 3926,
+          "sha256": "a99e2af60b8c1ace6169fba74be6b9cb5eca5d5a24f28f39e4ec50a265f7f5f4",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q33.D",
+          "role": "option",
+          "start": 3930,
+          "end": 3940,
+          "sha256": "da0f5bb767ed966565e0a35f4b946186573cafee413b57016747a2842e5d3b8a",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q34.A",
+          "role": "option",
+          "start": 3948,
+          "end": 3951,
+          "sha256": "b113405b6f9114b2abac7676f6868df33b0dde53f2e0ddd0f5340392563ab5f3",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q34.B",
+          "role": "option",
+          "start": 3955,
+          "end": 3959,
+          "sha256": "37a680133bd09342f934afb8dd2c7d9e1b624da5f35e3a38adb103e37c055ed1",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q34.C",
+          "role": "option",
+          "start": 3963,
+          "end": 3967,
+          "sha256": "f9ed2b54fd72ac1652579d3726fe310b3984465599a6051909ac4259de8f7aac",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q34.D",
+          "role": "option",
+          "start": 3971,
+          "end": 3975,
+          "sha256": "336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q35.A",
+          "role": "option",
+          "start": 3983,
+          "end": 3995,
+          "sha256": "ec10e11f23efd2457321641563f03b6ea72b2287b966d85bfba3603dd30c17cb",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q35.B",
+          "role": "option",
+          "start": 3999,
+          "end": 4011,
+          "sha256": "0e19a686ea78a9a5921bab0061fbf556883c6c4afc19ee10dd60322a548082fe",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q35.C",
+          "role": "option",
+          "start": 4015,
+          "end": 4025,
+          "sha256": "b9cffc1f341020043183745b54081c2886dd83d869a78f4325f9d416e43ed61c",
+          "excluded_offsets": []
+        },
+        {
+          "id": "q35.D",
+          "role": "option",
+          "start": 4029,
+          "end": 4040,
+          "sha256": "6aa34b615a80152d58f57ebcae67e77d2015ae6f9e456284761052b7bbb9751f",
+          "excluded_offsets": []
+        },
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "start": 1891,
+          "end": 1926,
+          "sha256": "422a0a19c80ada3acb14baa807dd3ed05ab558ab7d2693385caae58c7e6162c9",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 21,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q21.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q21.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q21.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q21.D"
+            }
+          ],
+          "blank": {
+            "start": 168,
+            "end": 176,
+            "literal": "___21___",
+            "role": "blank_label",
+            "blank_id": 21
+          }
+        },
+        {
+          "printed_number": 22,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q22.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q22.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q22.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q22.D"
+            }
+          ],
+          "blank": {
+            "start": 272,
+            "end": 280,
+            "literal": "___22___",
+            "role": "blank_label",
+            "blank_id": 22
+          }
+        },
+        {
+          "printed_number": 23,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q23.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q23.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q23.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q23.D"
+            }
+          ],
+          "blank": {
+            "start": 353,
+            "end": 361,
+            "literal": "___23___",
+            "role": "blank_label",
+            "blank_id": 23
+          }
+        },
+        {
+          "printed_number": 24,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q24.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q24.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q24.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q24.D"
+            }
+          ],
+          "blank": {
+            "start": 420,
+            "end": 428,
+            "literal": "___24___",
+            "role": "blank_label",
+            "blank_id": 24
+          }
+        },
+        {
+          "printed_number": 25,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q25.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q25.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q25.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q25.D"
+            }
+          ],
+          "blank": {
+            "start": 499,
+            "end": 507,
+            "literal": "___25___",
+            "role": "blank_label",
+            "blank_id": 25
+          }
+        },
+        {
+          "printed_number": 26,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q26.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q26.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q26.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q26.D"
+            }
+          ],
+          "blank": {
+            "start": 659,
+            "end": 667,
+            "literal": "___26___",
+            "role": "blank_label",
+            "blank_id": 26
+          }
+        },
+        {
+          "printed_number": 27,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q27.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q27.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q27.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q27.D"
+            }
+          ],
+          "blank": {
+            "start": 708,
+            "end": 716,
+            "literal": "___27___",
+            "role": "blank_label",
+            "blank_id": 27
+          }
+        },
+        {
+          "printed_number": 28,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q28.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q28.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q28.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q28.D"
+            }
+          ],
+          "blank": {
+            "start": 783,
+            "end": 791,
+            "literal": "___28___",
+            "role": "blank_label",
+            "blank_id": 28
+          }
+        },
+        {
+          "printed_number": 29,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q29.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q29.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q29.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q29.D"
+            }
+          ],
+          "blank": {
+            "start": 905,
+            "end": 913,
+            "literal": "___29___",
+            "role": "blank_label",
+            "blank_id": 29
+          }
+        },
+        {
+          "printed_number": 30,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q30.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q30.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q30.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q30.D"
+            }
+          ],
+          "blank": {
+            "start": 953,
+            "end": 961,
+            "literal": "___30___",
+            "role": "blank_label",
+            "blank_id": 30
+          }
+        },
+        {
+          "printed_number": 31,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q31.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q31.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q31.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q31.D"
+            }
+          ],
+          "blank": {
+            "start": 1065,
+            "end": 1073,
+            "literal": "___31___",
+            "role": "blank_label",
+            "blank_id": 31
+          }
+        },
+        {
+          "printed_number": 32,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q32.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q32.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q32.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q32.D"
+            }
+          ],
+          "blank": {
+            "start": 1143,
+            "end": 1151,
+            "literal": "___32___",
+            "role": "blank_label",
+            "blank_id": 32
+          }
+        },
+        {
+          "printed_number": 33,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q33.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q33.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q33.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q33.D"
+            }
+          ],
+          "blank": {
+            "start": 1201,
+            "end": 1209,
+            "literal": "___33___",
+            "role": "blank_label",
+            "blank_id": 33
+          }
+        },
+        {
+          "printed_number": 34,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q34.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q34.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q34.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q34.D"
+            }
+          ],
+          "blank": {
+            "start": 1245,
+            "end": 1253,
+            "literal": "___34___",
+            "role": "blank_label",
+            "blank_id": 34
+          }
+        },
+        {
+          "printed_number": 35,
+          "prompt_component": null,
+          "option_components": [
+            {
+              "label": "A",
+              "component_id": "q35.A"
+            },
+            {
+              "label": "B",
+              "component_id": "q35.B"
+            },
+            {
+              "label": "C",
+              "component_id": "q35.C"
+            },
+            {
+              "label": "D",
+              "component_id": "q35.D"
+            }
+          ],
+          "blank": {
+            "start": 1300,
+            "end": 1308,
+            "literal": "___35___",
+            "role": "blank_label",
+            "blank_id": 35
+          }
+        }
+      ],
+      "shared_options": [],
+      "required_media": [],
+      "source_family": "choice_cloze",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Native spacing/linebreaks and commentary numbering preserved; facts not independently verified",
+      "snapshot_origin_evidence": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-public-acquisition20261014.json",
+        "sha256": "0b112cc1029a1d3f7c7d8c4cf7006a12a93c74b6c6b9a49fae4a9218ddcc21d5"
+      }
+    },
+    {
+      "group_id": "g12.national2025.grammar",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "text_source": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-native-pages20261014.json",
+        "sha256": "61780759c815ee73de2b7a9fd6993669a2cf4d77b6986d2b146df46a6994bd2f"
+      },
+      "text_source_acquisition_id": "grade12-national2025-native-pages20261014-record",
+      "source_page_pointers": [
+        {
+          "PDF_page": 7,
+          "pointer": [
+            6,
+            "text"
+          ],
+          "sha256": "cd75eb1dd904352e7b833182fb9c32a7a35955ddf3554802fa470c49c2943023"
+        },
+        {
+          "PDF_page": 8,
+          "pointer": [
+            7,
+            "text"
+          ],
+          "sha256": "23d6d739a955b3fa66d82913bc8cab581fdb5c24e5c1a0d61ea1702d4dc63b14"
+        }
+      ],
+      "joined_text_sha256": "8c5b7714a02e0726f90ce9747303ce7ea996acfcf57ee58536f5c06fce2c602c",
+      "components": [
+        {
+          "id": "material",
+          "role": "material",
+          "start": 1749,
+          "end": 3250,
+          "sha256": "6620a03a2b0764b2685c1ce145a38039550d81d3b10e162a62363abb880c7514",
+          "excluded_offsets": [
+            {
+              "start": 109,
+              "end": 119,
+              "literal": "____36____",
+              "role": "blank_label",
+              "blank_id": 36
+            },
+            {
+              "start": 180,
+              "end": 190,
+              "literal": "____37____",
+              "role": "blank_label",
+              "blank_id": 37
+            },
+            {
+              "start": 519,
+              "end": 529,
+              "literal": "____38____",
+              "role": "blank_label",
+              "blank_id": 38
+            },
+            {
+              "start": 530,
+              "end": 539,
+              "literal": "(present)",
+              "role": "given_hint",
+              "blank_id": 38
+            },
+            {
+              "start": 805,
+              "end": 815,
+              "literal": "____39____",
+              "role": "blank_label",
+              "blank_id": 39
+            },
+            {
+              "start": 816,
+              "end": 823,
+              "literal": "(guide)",
+              "role": "given_hint",
+              "blank_id": 39
+            },
+            {
+              "start": 939,
+              "end": 949,
+              "literal": "____40____",
+              "role": "blank_label",
+              "blank_id": 40
+            },
+            {
+              "start": 950,
+              "end": 958,
+              "literal": "(reveal)",
+              "role": "given_hint",
+              "blank_id": 40
+            },
+            {
+              "start": 1061,
+              "end": 1071,
+              "literal": "____41____",
+              "role": "blank_label",
+              "blank_id": 41
+            },
+            {
+              "start": 1072,
+              "end": 1077,
+              "literal": "(try)",
+              "role": "given_hint",
+              "blank_id": 41
+            },
+            {
+              "start": 1099,
+              "end": 1109,
+              "literal": "____42____",
+              "role": "blank_label",
+              "blank_id": 42
+            },
+            {
+              "start": 1271,
+              "end": 1281,
+              "literal": "____43____",
+              "role": "blank_label",
+              "blank_id": 43
+            },
+            {
+              "start": 1282,
+              "end": 1292,
+              "literal": "(strategy)",
+              "role": "given_hint",
+              "blank_id": 43
+            },
+            {
+              "start": 1318,
+              "end": 1328,
+              "literal": "____44____",
+              "role": "blank_label",
+              "blank_id": 44
+            },
+            {
+              "start": 1419,
+              "end": 1429,
+              "literal": "____45____",
+              "role": "blank_label",
+              "blank_id": 45
+            },
+            {
+              "start": 1430,
+              "end": 1439,
+              "literal": "(digital)",
+              "role": "given_hint",
+              "blank_id": 45
+            },
+            {
+              "start": 265,
+              "end": 275,
+              "literal": "第 8页/共 13页",
+              "role": "page_decoration"
+            },
+            {
+              "start": 276,
+              "end": 293,
+              "literal": "学科 网（北 京）股 份有限 公司",
+              "role": "page_decoration"
+            }
+          ]
+        },
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "start": 1713,
+          "end": 1748,
+          "sha256": "94408ebe26e5e604ee0d737944d8ca7abc471faf9bafb1ca8b9ac27cbd91f754",
+          "excluded_offsets": []
+        }
+      ],
+      "units": [
+        {
+          "printed_number": 36,
+          "blank": {
+            "start": 109,
+            "end": 119,
+            "literal": "____36____",
+            "role": "blank_label",
+            "blank_id": 36
+          },
+          "given_hint": null,
+          "word_limit": 1,
+          "option_components": []
+        },
+        {
+          "printed_number": 37,
+          "blank": {
+            "start": 180,
+            "end": 190,
+            "literal": "____37____",
+            "role": "blank_label",
+            "blank_id": 37
+          },
+          "given_hint": null,
+          "word_limit": 1,
+          "option_components": []
+        },
+        {
+          "printed_number": 38,
+          "blank": {
+            "start": 519,
+            "end": 529,
+            "literal": "____38____",
+            "role": "blank_label",
+            "blank_id": 38
+          },
+          "given_hint": {
+            "start": 530,
+            "end": 539,
+            "literal": "(present)",
+            "role": "given_hint",
+            "blank_id": 38
+          },
+          "word_limit": null,
+          "option_components": []
+        },
+        {
+          "printed_number": 39,
+          "blank": {
+            "start": 805,
+            "end": 815,
+            "literal": "____39____",
+            "role": "blank_label",
+            "blank_id": 39
+          },
+          "given_hint": {
+            "start": 816,
+            "end": 823,
+            "literal": "(guide)",
+            "role": "given_hint",
+            "blank_id": 39
+          },
+          "word_limit": null,
+          "option_components": []
+        },
+        {
+          "printed_number": 40,
+          "blank": {
+            "start": 939,
+            "end": 949,
+            "literal": "____40____",
+            "role": "blank_label",
+            "blank_id": 40
+          },
+          "given_hint": {
+            "start": 950,
+            "end": 958,
+            "literal": "(reveal)",
+            "role": "given_hint",
+            "blank_id": 40
+          },
+          "word_limit": null,
+          "option_components": []
+        },
+        {
+          "printed_number": 41,
+          "blank": {
+            "start": 1061,
+            "end": 1071,
+            "literal": "____41____",
+            "role": "blank_label",
+            "blank_id": 41
+          },
+          "given_hint": {
+            "start": 1072,
+            "end": 1077,
+            "literal": "(try)",
+            "role": "given_hint",
+            "blank_id": 41
+          },
+          "word_limit": null,
+          "option_components": []
+        },
+        {
+          "printed_number": 42,
+          "blank": {
+            "start": 1099,
+            "end": 1109,
+            "literal": "____42____",
+            "role": "blank_label",
+            "blank_id": 42
+          },
+          "given_hint": null,
+          "word_limit": 1,
+          "option_components": []
+        },
+        {
+          "printed_number": 43,
+          "blank": {
+            "start": 1271,
+            "end": 1281,
+            "literal": "____43____",
+            "role": "blank_label",
+            "blank_id": 43
+          },
+          "given_hint": {
+            "start": 1282,
+            "end": 1292,
+            "literal": "(strategy)",
+            "role": "given_hint",
+            "blank_id": 43
+          },
+          "word_limit": null,
+          "option_components": []
+        },
+        {
+          "printed_number": 44,
+          "blank": {
+            "start": 1318,
+            "end": 1328,
+            "literal": "____44____",
+            "role": "blank_label",
+            "blank_id": 44
+          },
+          "given_hint": null,
+          "word_limit": 1,
+          "option_components": []
+        },
+        {
+          "printed_number": 45,
+          "blank": {
+            "start": 1419,
+            "end": 1429,
+            "literal": "____45____",
+            "role": "blank_label",
+            "blank_id": 45
+          },
+          "given_hint": {
+            "start": 1430,
+            "end": 1439,
+            "literal": "(digital)",
+            "role": "given_hint",
+            "blank_id": 45
+          },
+          "word_limit": null,
+          "option_components": []
+        }
+      ],
+      "shared_options": [],
+      "required_media": [],
+      "source_family": "passage_form",
+      "frozen_input_status_not_upgraded": true,
+      "private_keys_not_student_components": true,
+      "current_text_and_required_media_author_reviewed": true,
+      "source_defects": "Native spacing/linebreaks and commentary numbering preserved; facts not independently verified",
+      "snapshot_origin_evidence": {
+        "path": "build/english-benchmark-research-20261012/grade12-national2025-public-acquisition20261014.json",
+        "sha256": "0b112cc1029a1d3f7c7d8c4cf7006a12a93c74b6c6b9a49fae4a9218ddcc21d5"
+      }
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}

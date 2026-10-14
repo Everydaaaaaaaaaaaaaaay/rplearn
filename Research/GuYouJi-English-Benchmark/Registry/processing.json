@@ -23926,6 +23926,81 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "baseline-text-span-audit20261015q-v0.1",
+      "source_acquisition_ids": [
+        "suzhou-changshu2019-grade7-upper",
+        "grade12-national2025-paper-commentary20261014",
+        "grade12-national2025-native-pages20261014-record",
+        "suzhou-changshu2019-image05",
+        "suzhou-changshu2019-image06",
+        "grade12-national2025-inspection-page0120261014-record"
+      ],
+      "tool": "Tools/audit_baseline_text_spans.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen publisherHTML/nativePDF source spans plus3 existing required images actually viewed; nine existing groups57responses; retain2019calendar and4imagechoices,15cloze/7sharedoptions/6given grammar; no source correction, rendering, download, full snapshot, model or production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-text-span-audit20261015q-v0.1.json",
+          "bytes": 514121,
+          "sha256": "df4d0d5c0bd275ddb7f872f98d17ac43cbc00079eda460ca47ab0292c57249d5",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-text-span-checks20261015q-v0.1",
+      "source_acquisition_ids": [
+        "suzhou-changshu2019-grade7-upper",
+        "grade12-national2025-paper-commentary20261014",
+        "grade12-national2025-native-pages20261014-record",
+        "suzhou-changshu2019-image05",
+        "suzhou-changshu2019-image06",
+        "grade12-national2025-inspection-page0120261014-record"
+      ],
+      "tool": "Tools/audit_baseline_text_spans.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen publisherHTML/nativePDF source spans plus3 existing required images actually viewed; nine existing groups57responses; retain2019calendar and4imagechoices,15cloze/7sharedoptions/6given grammar; no source correction, rendering, download, full snapshot, model or production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-text-span-checks20261015q-v0.1.json",
+          "bytes": 5383,
+          "sha256": "21497935e6cbb7b1c712b0a4e90fc00571d734ed4928dddeca688337b62a4fd1",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-text-span-request20261015q-v0.1",
+      "source_acquisition_ids": [
+        "suzhou-changshu2019-grade7-upper",
+        "grade12-national2025-paper-commentary20261014",
+        "grade12-national2025-native-pages20261014-record",
+        "suzhou-changshu2019-image05",
+        "suzhou-changshu2019-image06",
+        "grade12-national2025-inspection-page0120261014-record"
+      ],
+      "tool": "source_bound_preparation_fixture",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen publisherHTML/nativePDF source spans plus3 existing required images actually viewed; nine existing groups57responses; retain2019calendar and4imagechoices,15cloze/7sharedoptions/6given grammar; no source correction, rendering, download, full snapshot, model or production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-text-span-request20261015q-v0.1.json",
+          "bytes": 8381,
+          "sha256": "2371a11fbbd578ee0615a8c875d5be296470d12e15347597db20ee28c2999618",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
