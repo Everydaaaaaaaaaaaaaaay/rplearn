@@ -10,6 +10,8 @@
 
 新增来源：[2026丰台七组37参考](Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](FirstRelease/Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 
+新增原创：[初二局部概念三题四选](Studies/2026-10-14-grade8-local-concept-reading-and-option-load.md)C/D/B十二位置作者解；源399/24/66对新349/28/106，正文少50但选项多40，不能称等难。扩展18/65、全部44/280，组合0.11仍43/277待下一实质合并；未新增请求/教师/学生/模型验收。
+
 当前保存：[第32独立恢复](Studies/2026-10-14-checkpoint32-new-grade8-sources-and-continuation-recovery.md)7145文件全严格COW/SHA/不同inode；现43/277九方式、117/722/20源、36源/17核心、十四请求及13源11作者阅读卡、26新原生页/PNG与34标签可恢复，响应/源/队列逐字复算。32自身/之后留下一批，未异机/完整环境或教育/商用/模型验收。
 
 此前保存：[第31独立恢复](Studies/2026-10-14-checkpoint31-conditional-lexical-and-sentence-profile-recovery.md)7031文件全严格COW/SHA/不同inode；现41/271八方式/14请求/13源11作者/28源17核心、实际引语纠正/词义探针/22句向量与2未知可恢复。31自身/后来素材留下一批，未异机/完整环境或教育/商业验收。
