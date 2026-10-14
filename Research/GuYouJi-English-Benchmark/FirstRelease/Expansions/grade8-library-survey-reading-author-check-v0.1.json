@@ -1,0 +1,75 @@
+{
+  "version": "0.1",
+  "grade": 8,
+  "kind": "multiselect_survey_three_item_three_option_reading",
+  "candidate_path": "FirstRelease/Expansions/grade8-library-survey-reading-v0.1.md",
+  "candidate_sha256": "79e7a8743a6e8db6f51bff289b935c98d0a91488118c1081dcbda93372c8c403",
+  "specification_path": "FirstRelease/Specifications/grade8-v0.3.md",
+  "specification_sha256": "a4a3e576fd4956e92d4d10e49e29d4b1919239046524a9d2362ebc00a2779d63",
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+    "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+  },
+  "anchor_group_id": "g8.changjun2024.readingA",
+  "questions": 3,
+  "target_format": {
+    "items": 3,
+    "options_each": 3,
+    "categories": 6,
+    "population": 40,
+    "multiple_choices_allowed": true,
+    "denominator_each_category_all_participants": true,
+    "percent_sum_need_not100": true,
+    "complete_numbered_list_axis_and_labels": true
+  },
+  "author_answer_vector": [
+    "C",
+    "B",
+    "A"
+  ],
+  "whole_group_solved": true,
+  "author_reason_location": "candidate ## 作者区, all9 reading options or20 insertion pairings",
+  "task_load": {
+    "passage": 76,
+    "prompts": 23,
+    "options": 42,
+    "definition": "task-load0.1 English/digit runs; blank placeholders/date/Chinese instructions/numbering excluded; shared options once; graph and list separate; not level/minutes",
+    "activity_list": 18,
+    "visible_figure": 23,
+    "figure_alt_not_independent_passage": true
+  },
+  "actual_saved_transition_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "coarse_exposure_cluster": "grade8_fictional_library_survey_or_river_diary_with_changjun2024_form_reference",
+  "options_each": 3,
+  "graph_asset": {
+    "path": "FirstRelease/Expansions/library-activity-survey-v0.1.svg",
+    "sha256": "165e3c77ec36ec38a8eece451d769c35e2eba34b03916caf6d39c4cbafbe933c"
+  },
+  "graph_percentages": [
+    65,
+    45,
+    30,
+    55,
+    20,
+    40
+  ],
+  "graph_counts": [
+    26,
+    18,
+    12,
+    22,
+    8,
+    16
+  ],
+  "graph_population": 40,
+  "graph_percent_sum": 255,
+  "category_choice_total": 102,
+  "not102distinct_students": true,
+  "graph_accessible_desc_no_precomputed_answer": true,
+  "native_render_proof_acquisition_id": "grade8-library-survey-native-render20261014-record",
+  "visual_review": "1600x880Sharp actualfull render read;all6bars/labels/axis/title visible;mobile product not tested"
+}

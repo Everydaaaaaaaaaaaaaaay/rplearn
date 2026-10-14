@@ -6,6 +6,8 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
+最新增量：[初二完整多选调查与四空五选](../Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](../FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。统一包0.10保留此前31/233冻结时点，待下一合并入口。
+
 从[统一审阅包0.10](ReviewPackage-v0.10.md)、[组合索引0.1](combined-review-index-v0.1.json)和[可执行标准0.2](PracticalAuthoringStandard-v0.2.md)开始。当前源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展5/18，合31现行材料家族233响应；七份请求仅有本机文件/声明关系检查。详见[六项交付检查0.2](DeliveryCheck-v0.2.md)。下文旧版进度保留历史口径。
 
 当前[源总览0.5](paired-source-overview-v0.5.json)101题组实例/639参考响应/18父卷身份，核心53＋扩展48，六年级各三父身份；新增[初二C卷七组40](Expansions/Grade8Changjun2024Comparison-v0.1.md)和[草案0.3](Specifications/grade8-v0.3.md)，多选图/三选/四空五选/读答部分分、写作点制与七档缺口保留。原始来源不是独立金标准/全国覆盖，当前原创仍分核心25/205、补充1/10、扩展5/18。

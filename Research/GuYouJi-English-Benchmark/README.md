@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+最新增量：[初二完整多选调查与四空五选](Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。统一包0.10保留此前31/233冻结时点，待下一合并入口。
+
 - **当前统一入口：[审阅包0.10](FirstRelease/ReviewPackage-v0.10.md)、[可执行标准0.2](FirstRelease/PracticalAuthoringStandard-v0.2.md)、[组合索引0.1](FirstRelease/combined-review-index-v0.1.json)**：六年级各三父卷身份，101源组实例/639参考；31现行原创材料家族/233响应分层计量；[交付检查0.2](FirstRelease/DeliveryCheck-v0.2.md)列具体可审阅范围与缺口。
 
 - [初二第三源与多选百分/评分制度](Studies/2026-10-14-grade8-third-source-multiselect-graph-and-scoring-regimes.md)：12页七组40参考，三选/四空五选/50人多选458%及15分点制/七档未决；[总览0.5](FirstRelease/paired-source-overview-v0.5.json)101实例/639源响应/18父卷身份，六年级各三父身份不等总体标定。

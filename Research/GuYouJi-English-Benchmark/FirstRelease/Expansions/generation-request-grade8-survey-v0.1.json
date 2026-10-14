@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "grade": 8,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade8-v0.3.md",
+    "sha256": "a4a3e576fd4956e92d4d10e49e29d4b1919239046524a9d2362ebc00a2779d63"
+  },
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+    "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+  },
+  "source_group_id": "g8.changjun2024.readingA",
+  "source_paper_acquisition_id": "grade8-changjun2024-midterm-paper-key20261014",
+  "source_format": {
+    "items": 3,
+    "features": {
+      "questions": 3,
+      "options_each": 3,
+      "complete_numbered_problem_list_and_graph_required": true,
+      "categories": 11,
+      "population": 50,
+      "multiple_choices_allowed": true,
+      "percent_denominator_each_category_class50": true,
+      "y_axis_students_labels_percent": true,
+      "percent_sum_need_not100": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    21,
+    22,
+    23
+  ],
+  "target_format": {
+    "items": 3,
+    "options_each": 3,
+    "categories": 6,
+    "population": 40,
+    "multiple_choices_allowed": true,
+    "denominator_each_category_all_participants": true,
+    "percent_sum_need_not100": true,
+    "complete_numbered_list_axis_and_labels": true
+  },
+  "new_scenario": "Fictional library activity survey with sixchoices/40participants",
+  "target_changes_and_justification": [
+    "survey categories11to6/population50to40/new numbers, fixedmulti-select semantics preserved"
+  ],
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_alternatives",
+    "whole_group_solve_or_refill",
+    "actual_revision_evidence_if_changed",
+    "independent_unknowns_separate",
+    "accessible_input_no_answer_leak",
+    "graph_units_denominator_and_date"
+  ],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade8-library-survey-reading-v0.1.md",
+    "sha256": "79e7a8743a6e8db6f51bff289b935c98d0a91488118c1081dcbda93372c8c403"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade8-library-survey-reading-author-check-v0.1.json",
+    "sha256": "cae254670212f0ee7e044cae2de57798032ef0f136d3e01658352bff55bbddbc"
+  },
+  "all_shared_material_required": true,
+  "source_reference_list_exhaustive": false,
+  "authored_once_rule_is_source_explicit": false,
+  "fact_strategy": "fictional_context_and_numbers_not_source_claims_as_fact",
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "correct_title_leaked": false
+  },
+  "authored_figure": {
+    "path": "FirstRelease/Expansions/library-activity-survey-v0.1.svg",
+    "sha256": "165e3c77ec36ec38a8eece451d769c35e2eba34b03916caf6d39c4cbafbe933c"
+  },
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "original_source_republication_admitted": false,
+  "commercial_training_admitted": false,
+  "third_party_source_transmission_admitted": false,
+  "source_factual_gold": false
+}
