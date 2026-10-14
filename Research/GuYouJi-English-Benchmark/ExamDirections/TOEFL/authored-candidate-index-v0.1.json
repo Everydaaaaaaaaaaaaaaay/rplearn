@@ -1,0 +1,175 @@
+{
+  "version": "0.1",
+  "scope": "selected_TOEFL2026_author_reading_preparation_not_full_direction_or_operational_gold",
+  "source_index": {
+    "path": "ExamDirections/TOEFL/selected-reading-source-groups-v0.1.json",
+    "sha256": "e4cce5415b179a7bfb8bcb42592c97b25c8b937b983dfbe21198b22ca2d4576f"
+  },
+  "specification": {
+    "path": "ExamDirections/TOEFL/ReadingSpecifications-v0.1.md",
+    "sha256": "97a67e2a7e9119665d430bcb0eb4010de67f79f1a670ba117532bf2aaf720a99"
+  },
+  "family_count": 3,
+  "response_count": 18,
+  "fragment_choice_location_counts": [
+    10,
+    7,
+    1
+  ],
+  "members": [
+    {
+      "id": "field-study-letter-fragments",
+      "direction": "toefl-ibt-2026",
+      "kind": "ten_missing_letter_fragments",
+      "response_count": 10,
+      "candidate": {
+        "path": "ExamDirections/TOEFL/Generated/field-study-letter-fragments-v0.2.md",
+        "sha256": "dd8f1e03dc99a4e87bacf184ea0a69d650ba0875bd7cc87cb5f5734c592d82af"
+      },
+      "source_group_id": "toefl2026.practice1.module2.word_fragments",
+      "author_check_acquisition_id": "toefl-author-field-study-letter-fragments-v0.2-author-check20261015",
+      "actually_used_source_reasons_acquisition_id": "toefl-author-toefl-three-used-source-author-reasons20261015",
+      "author_reference_vector": [
+        "ment",
+        "sure",
+        "perature",
+        "ferent",
+        "ationships",
+        "ause",
+        "ich",
+        "vide",
+        "mation",
+        "clusions"
+      ],
+      "component_counts": {
+        "visible_partial_token_runs_gap_labels_excluded": {
+          "english_digit_tokens": 80,
+          "han_characters": 0
+        },
+        "reconstructed_paragraph": {
+          "english_digit_tokens": 80,
+          "han_characters": 0
+        },
+        "instruction": {
+          "english_digit_tokens": 20,
+          "han_characters": 0
+        }
+      },
+      "revision_count": 1,
+      "independent_teacher_student_or_commercial_admission": false,
+      "previous_version": {
+        "path": "ExamDirections/TOEFL/Generated/field-study-letter-fragments-v0.1.md",
+        "sha256": "358f9b18e80f633efc415879de67519f0893998be023a855d72e924780fc4c7f",
+        "actual_Q1_prefix_and_length_and_fragment_revision": true,
+        "old_local_candidates": [
+          "record",
+          "recite",
+          "recall"
+        ]
+      }
+    },
+    {
+      "id": "equipment-loan-email",
+      "direction": "toefl-ibt-2026",
+      "kind": "daily_email_three_four_choices",
+      "response_count": 3,
+      "candidate": {
+        "path": "ExamDirections/TOEFL/Generated/equipment-loan-email-v0.1.md",
+        "sha256": "dc195d93cea1ed7f07168c2ede11ae9af85198196675de2b58ea3f89ae1a398f"
+      },
+      "source_group_id": "toefl2026.practice1.module1.party_email",
+      "author_check_acquisition_id": "toefl-author-equipment-loan-email-v0.1-author-check20261015",
+      "actually_used_source_reasons_acquisition_id": "toefl-author-toefl-three-used-source-author-reasons20261015",
+      "author_reference_vector": [
+        "B",
+        "D",
+        "A"
+      ],
+      "component_counts": {
+        "instruction": {
+          "english_digit_tokens": 11,
+          "han_characters": 0,
+          "components": 1
+        },
+        "material_label": {
+          "english_digit_tokens": 13,
+          "han_characters": 0,
+          "components": 3
+        },
+        "option": {
+          "english_digit_tokens": 71,
+          "han_characters": 0,
+          "components": 12
+        },
+        "passage": {
+          "english_digit_tokens": 127,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 20,
+          "han_characters": 0,
+          "components": 3
+        }
+      },
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "shared-catalogue-academic-reading",
+      "direction": "toefl-ibt-2026",
+      "kind": "academic_four_choices_one_sentence_location",
+      "response_count": 5,
+      "candidate": {
+        "path": "ExamDirections/TOEFL/Generated/shared-catalogue-academic-reading-v0.1.md",
+        "sha256": "4825034a01c88ac4fd789a6e4fda4175294dcea8f80baf0ee7c61a32adf74532"
+      },
+      "source_group_id": "toefl2026.practice1.module2.photography",
+      "author_check_acquisition_id": "toefl-author-shared-catalogue-academic-reading-v0.1-author-check20261015",
+      "actually_used_source_reasons_acquisition_id": "toefl-author-toefl-three-used-source-author-reasons20261015",
+      "author_reference_vector": [
+        "B",
+        "D",
+        "A",
+        "B",
+        "C"
+      ],
+      "component_counts": {
+        "instruction": {
+          "english_digit_tokens": 23,
+          "han_characters": 0,
+          "components": 1
+        },
+        "material_label": {
+          "english_digit_tokens": 4,
+          "han_characters": 0,
+          "components": 4
+        },
+        "option": {
+          "english_digit_tokens": 112,
+          "han_characters": 0,
+          "components": 20
+        },
+        "passage": {
+          "english_digit_tokens": 192,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 60,
+          "han_characters": 0,
+          "components": 5
+        }
+      },
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    }
+  ],
+  "actually_used_source_group_count": 3,
+  "actually_used_source_response_count": 18,
+  "author_new_and_source_choice_position_counts_each": 32,
+  "author_new_and_source_fragment_reason_counts_each": 10,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}

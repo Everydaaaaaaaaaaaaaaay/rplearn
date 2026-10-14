@@ -6,6 +6,8 @@
 
 2026-10-14至15持续核读入口：
 
+- [托福三完整原创](ExamDirections/TOEFL/ThreeAuthorReadingProtocol-v0.1.md)：3家族18响应（10字母片段/7单选/1位置），完整全回填/四位置版本；rec3→docu4真实修订1，新及用锚各32候选/10片段理由。80partial/full、127邮件、192学术分量，不当自适应/学生/商用。
+
 - [托福八阅读组](ExamDirections/TOEFL/ReadingSpecifications-v0.1.md)：同一官方教师卷八组40参考含旧1/10、净新7/30；20字母片段/19单选/1插入位置分层，六新原图核读。模块身份/词头空长和附件/演讲主题/事实边界保持，未自适应/学生/商用/模型。
 
 - [考研两完整作者阅读](ExamDirections/Entrance/TwoAuthoredReadingProtocol-v0.1.md)：各1家族5响应、40新选项与40用锚作者位置；364/46/148和426/38/138分量，英二Use/Demand范围真实修订1，虚构数据非学生证据。当前大纲正文/更多模式与独立/商用仍缺。
