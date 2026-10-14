@@ -1,0 +1,2306 @@
+{
+  "version": "0.1",
+  "scope": "author-curated structural signatures from selected117 sources; no genre/difficulty/calibration or source117-content rereview claim",
+  "source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "current_bundle": {
+    "path": "FirstRelease/combined-review-index-v0.17.json",
+    "sha256": "3fed374260ff13bf23a65e3ea3a65207312db460b0677fbc990cd1d9595a7971"
+  },
+  "source_count": 117,
+  "authored_family_count": 47,
+  "shape_count": 67,
+  "grades": [
+    {
+      "grade": 7,
+      "observed_shapes": 16,
+      "with_author_example": 9,
+      "without_author_example": 7,
+      "source_groups": 17
+    },
+    {
+      "grade": 8,
+      "observed_shapes": 18,
+      "with_author_example": 8,
+      "without_author_example": 10,
+      "source_groups": 32
+    },
+    {
+      "grade": 9,
+      "observed_shapes": 13,
+      "with_author_example": 7,
+      "without_author_example": 6,
+      "source_groups": 17
+    },
+    {
+      "grade": 10,
+      "observed_shapes": 7,
+      "with_author_example": 4,
+      "without_author_example": 3,
+      "source_groups": 18
+    },
+    {
+      "grade": 11,
+      "observed_shapes": 7,
+      "with_author_example": 6,
+      "without_author_example": 1,
+      "source_groups": 15
+    },
+    {
+      "grade": 12,
+      "observed_shapes": 6,
+      "with_author_example": 6,
+      "without_author_example": 0,
+      "source_groups": 18
+    }
+  ],
+  "shapes": [
+    {
+      "shape": {
+        "grade": 7,
+        "family": "choice_cloze",
+        "responses": 6,
+        "options_each": 3,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.clozeStory"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-first-recording-six-cloze"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode01",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 3,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g7.2021.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-boxes-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode02",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g7.2019.cloze"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode03",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "passage_form",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "given_only_unrestricted"
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.optionalGrammar"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode04",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "phonetic_word_completion",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "response_limit": "not_explicit"
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.phonetic"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode05",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "profile_matching",
+        "responses": 3,
+        "options_each": null,
+        "details": {
+          "cards": 4,
+          "input": "text_cards"
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.matchingA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-workshop-matching"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode06",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "calendar_and_text"
+        }
+      },
+      "source_group_ids": [
+        "g7.2019.readingA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-calendar-reading-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode07",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "image_and_text"
+        }
+      },
+      "source_group_ids": [
+        "g7.2019.readingB"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-reading-corner-images-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode08",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.optionalReading"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode09",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.readingB",
+        "g7.xicheng2025.readingC"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode10",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g7.2021.readingB"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-library-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode11",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "sentence_choice",
+        "responses": 10,
+        "options_each": 3,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.language"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode12",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "sentence_translation",
+        "responses": 3,
+        "options_each": null,
+        "details": {
+          "required_cues": true
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.translation"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode13",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "shared_bank",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "entries": 4,
+          "form_policy": "source_form_change_not_explicit"
+        }
+      },
+      "source_group_ids": [
+        "g7.xicheng2025.clozeBank"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-lost-property-bank"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode14",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "shared_bank",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "entries": 10,
+          "form_policy": "change"
+        }
+      },
+      "source_group_ids": [
+        "g7.2021.vocabularyB"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-garden-bank-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode15",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 7,
+        "family": "shared_bank",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "entries": 10,
+          "form_policy": "unchanged_source_rule"
+        }
+      },
+      "source_group_ids": [
+        "g7.2021.vocabularyA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade7-reading-bus-bank-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode16",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "choice_cloze",
+        "responses": 8,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g8.2025fengtai.cloze",
+        "g8.fengtai2026.cloze"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode17",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g8.2025.cloze",
+        "g8.bnu2026.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-radio-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode18",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 3,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g8.changjun2024.cloze"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode19",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "open_reading_response",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "points": [
+            2,
+            2,
+            2,
+            4
+          ],
+          "last_operation": "action_plus_reason"
+        }
+      },
+      "source_group_ids": [
+        "g8.bnu2026.readingResponse"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode20",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "open_reading_response",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "points": [
+            2,
+            2,
+            2,
+            4
+          ],
+          "last_operation": "opinion_plus_two_reasons"
+        }
+      },
+      "source_group_ids": [
+        "g8.fengtai2026.readingResponse"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode21",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "open_reading_response",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "points": 2,
+          "last_operation": "source_specific_reading_response"
+        }
+      },
+      "source_group_ids": [
+        "g8.changjun2024.readingAnswer"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode22",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "passage_form",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "given_only_unrestricted"
+        }
+      },
+      "source_group_ids": [
+        "g8.bnu2026.optionalGrammar"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode23",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g8.changjun2024.grammar"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode24",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "profile_matching",
+        "responses": 3,
+        "options_each": null,
+        "details": {
+          "cards": 4,
+          "input": "images"
+        }
+      },
+      "source_group_ids": [
+        "g8.fengtai2026.imageMatching",
+        "g8.bnu2026.imageMatching"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode25",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "profile_matching",
+        "responses": 3,
+        "options_each": null,
+        "details": {
+          "cards": 4,
+          "input": "text_cards"
+        }
+      },
+      "source_group_ids": [
+        "g8.2025.matchingA",
+        "g8.2025fengtai.matchingA"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode26",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g8.2025fengtai.readingB",
+        "g8.2025fengtai.readingC",
+        "g8.fengtai2026.readingB",
+        "g8.fengtai2026.readingD",
+        "g8.bnu2026.optionalReading"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-music-afternoon-reading-v0.1",
+        "grade8-maker-club-expectations-reading"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode27",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g8.changjun2024.readingA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-library-survey-reading"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode28",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g8.2025.readingB",
+        "g8.2025.readingC",
+        "g8.fengtai2026.readingC",
+        "g8.bnu2026.readingB",
+        "g8.bnu2026.readingC"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-lunch-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode29",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 3,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g8.changjun2024.readingB",
+        "g8.changjun2024.readingC"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-wayfinding-exhibition-reading"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode30",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "sentence_choice",
+        "responses": 10,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g8.bnu2026.sentenceChoice"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode31",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "sentence_choice",
+        "responses": 12,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g8.2025fengtai.language",
+        "g8.fengtai2026.sentenceChoice"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-language-choice-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode32",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "sentence_translation",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "required_cues": true
+        }
+      },
+      "source_group_ids": [
+        "g8.bnu2026.translation"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-club-sentence-translation"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode33",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 8,
+        "family": "shared_insertion",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "shared_options": 5
+        }
+      },
+      "source_group_ids": [
+        "g8.changjun2024.insertion"
+      ],
+      "directly_anchored_authored_families": [
+        "grade8-river-walk-insertion"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode34",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 3,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g9.2026.cloze",
+        "g9.2025.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-cycle-shop-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode35",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.cloze"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode36",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "context_word_completion",
+        "responses": 8,
+        "options_each": null,
+        "details": {
+          "response_limit": "one_word",
+          "cues": [
+            "Chinese_meaning",
+            "initial_letter"
+          ]
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.singleVocabulary"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode37",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "open_reading_response",
+        "responses": 3,
+        "options_each": null,
+        "details": {
+          "points": [
+            2,
+            2,
+            3
+          ],
+          "last_operation": "source_specific_reading_response"
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.readingResponse"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-garden-map-reading-response"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode38",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "all_oneword"
+        }
+      },
+      "source_group_ids": [
+        "g9.2026.grammar",
+        "g9.2025.grammar"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-weather-grammar-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode39",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.grammar"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode40",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "table_and_text"
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.readingA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-repair-table-reading"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode41",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.readingB",
+        "g9.suzhou2024.readingC",
+        "g9.suzhou2024.readingD"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode42",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "input": "table_and_text"
+        }
+      },
+      "source_group_ids": [
+        "g9.2025.readingA"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode43",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "reading_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g9.2026.readingC"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-book-repair-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode44",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "shared_bank",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "entries": 5,
+          "form_policy": "change"
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.wordBank"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-book-care-bank"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode45",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "shared_insertion",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 5
+        }
+      },
+      "source_group_ids": [
+        "g9.2025.insertionE"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode46",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 9,
+        "family": "shared_insertion",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 7
+        }
+      },
+      "source_group_ids": [
+        "g9.suzhou2024.insertion"
+      ],
+      "directly_anchored_authored_families": [
+        "grade9-group-plan-heading-insertion"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode47",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g10.2024.cloze"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode48",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "choice_cloze",
+        "responses": 15,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g10.2025yearend.cloze",
+        "g10.wenzhou2025.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade10-theatre-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode49",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g10.2025yearend.grammar",
+        "g10.wenzhou2025.grammar"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode50",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 3,
+          "subgroup_slots": [
+            4,
+            3,
+            3
+          ],
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g10.2024.grammar"
+      ],
+      "directly_anchored_authored_families": [
+        "grade10-grammar-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode51",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g10.2024.readingA",
+        "g10.2024.readingC",
+        "g10.2025yearend.readingA",
+        "g10.wenzhou2025.readingA"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode52",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g10.2024.readingD",
+        "g10.2025yearend.readingB",
+        "g10.2025yearend.readingC",
+        "g10.2025yearend.readingD",
+        "g10.wenzhou2025.readingB",
+        "g10.wenzhou2025.readingC",
+        "g10.wenzhou2025.readingD"
+      ],
+      "directly_anchored_authored_families": [
+        "grade10-roof-reading-v0.2",
+        "grade10-library-booking-screen-reading"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode53",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 10,
+        "family": "shared_insertion",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 7
+        }
+      },
+      "source_group_ids": [
+        "g10.wenzhou2025.insertion"
+      ],
+      "directly_anchored_authored_families": [
+        "grade10-club-routines-insertion"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode54",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "choice_cloze",
+        "responses": 10,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g11.2024.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade11-exhibition-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode55",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "choice_cloze",
+        "responses": 15,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g11.2025.cloze",
+        "g11.spring2024.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade11-maps-funding-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode56",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g11.2025.grammar",
+        "g11.spring2024.grammar"
+      ],
+      "directly_anchored_authored_families": [
+        "grade11-archive-grammar-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode57",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 3,
+          "subgroup_slots": [
+            3,
+            3,
+            4
+          ],
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g11.2024.grammar"
+      ],
+      "directly_anchored_authored_families": [
+        "grade11-three-context-grammar-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode58",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g11.2024.readingA",
+        "g11.spring2024.readingA"
+      ],
+      "directly_anchored_authored_families": [],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode59",
+      "author_example_prepared": false,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g11.2025.readingB",
+        "g11.2025.readingC",
+        "g11.2025.readingD",
+        "g11.spring2024.readingB",
+        "g11.spring2024.readingC",
+        "g11.spring2024.readingD"
+      ],
+      "directly_anchored_authored_families": [
+        "grade11-commitments-reading-v0.2",
+        "grade11-small-repairs-book-review"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode60",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 11,
+        "family": "shared_insertion",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 7
+        }
+      },
+      "source_group_ids": [
+        "g11.spring2024.insertionE"
+      ],
+      "directly_anchored_authored_families": [
+        "grade11-investigation-insertion"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode61",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 12,
+        "family": "choice_cloze",
+        "responses": 15,
+        "options_each": 4,
+        "details": {}
+      },
+      "source_group_ids": [
+        "g12.2023.cloze",
+        "g12.2025anshan.cloze",
+        "g12.national2025.cloze"
+      ],
+      "directly_anchored_authored_families": [
+        "grade12-bridge-cloze-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode62",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 12,
+        "family": "passage_form",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "materials": 1,
+          "subgroup_slots": null,
+          "response_policy": "ungiven_one_given_form"
+        }
+      },
+      "source_group_ids": [
+        "g12.2023.grammar",
+        "g12.2025anshan.grammar",
+        "g12.national2025.grammar"
+      ],
+      "directly_anchored_authored_families": [
+        "grade12-workshop-grammar-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode63",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "graph_and_text"
+        }
+      },
+      "source_group_ids": [
+        "g12.national2025.readingA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade12-library-electricity"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode64",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 3,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g12.2023.readingA",
+        "g12.2025anshan.readingA"
+      ],
+      "directly_anchored_authored_families": [
+        "grade12-archive-v0.1"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode65",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 12,
+        "family": "reading_choice",
+        "responses": 4,
+        "options_each": 4,
+        "details": {
+          "input": "text"
+        }
+      },
+      "source_group_ids": [
+        "g12.2023.readingB",
+        "g12.2025anshan.readingB",
+        "g12.2025anshan.readingC",
+        "g12.2025anshan.readingD",
+        "g12.national2025.readingB",
+        "g12.national2025.readingC",
+        "g12.national2025.readingD"
+      ],
+      "directly_anchored_authored_families": [
+        "grade12-dashboard-reading-v0.1",
+        "grade12-parcel-label-trial-reading"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode66",
+      "author_example_prepared": true,
+      "production_supported": false
+    },
+    {
+      "shape": {
+        "grade": 12,
+        "family": "shared_insertion",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 7
+        }
+      },
+      "source_group_ids": [
+        "g12.2025anshan.insertion",
+        "g12.national2025.insertion"
+      ],
+      "directly_anchored_authored_families": [
+        "grade12-print-room-insertion"
+      ],
+      "structural_counterpart_only_not_skill_genre_or_difficulty_coverage": true,
+      "id": "opmode67",
+      "author_example_prepared": true,
+      "production_supported": false
+    }
+  ],
+  "authored_anchor_bindings": [
+    {
+      "candidate_family_id": "grade10-grammar-v0.1",
+      "grade": 10,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-grammar-v0.3.md",
+        "sha256": "e8e9c3ba7a86ed2f6b8c2e225148f89806b9ac3782c0b8c59dc55f4b69f101a8"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-grammar-author-check-v0.3.json",
+        "sha256": "1951a705b510ac164e3743cf67b7bdd527b96138dc6fb0c49f49b2c53f9e237b"
+      },
+      "anchor_group_ids": [
+        "g10.2024.grammar"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade10-roof-reading-v0.2",
+      "grade": 10,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-v0.2.md",
+        "sha256": "1ba7553136ea024bffceec8ea78f6db98c9a6db183d123a55b46cca757a773ee"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-author-check-v0.2.json",
+        "sha256": "4d547765d3c07ff52e835a45f3e2421bb3ce2113c055279cf6ad12e57a89c6a3"
+      },
+      "anchor_group_ids": [
+        "g10.2024.readingD"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade10-theatre-cloze-v0.1",
+      "grade": 10,
+      "responses": 15,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-theatre-cloze-v0.1.md",
+        "sha256": "5d4e5e2c4b573032368dd36541b41db310cde1f5461c5391159f28c7f1263ec0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-theatre-cloze-author-check-v0.1.json",
+        "sha256": "aa6ba54ba18954d54f43e5a9bc2be71ea3d201d7fbe843d1c485cdd48d3c5d21"
+      },
+      "anchor_group_ids": [
+        "g10.2025yearend.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade11-archive-grammar-v0.1",
+      "grade": 11,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-archive-grammar-v0.1.md",
+        "sha256": "586d77e8ca84f88eb89cd1156663bd661950765333a70dc8f72958e19bc5278d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-archive-grammar-author-check-v0.1.json",
+        "sha256": "135d45e110b176965742812779f50c42ad6d1b2d525a83ef3730b25f5bf0cf09"
+      },
+      "anchor_group_ids": [
+        "g11.2025.grammar"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade11-commitments-reading-v0.2",
+      "grade": 11,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+        "sha256": "1a98564304286a4c0d706b1239852fab14a0ea95115b96e2042bb1397ef2eff9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.3.json",
+        "sha256": "5937e3d78965d31b769f1b785c31c4765e504651b08bb927eeb68c757dd5dbf5"
+      },
+      "anchor_group_ids": [
+        "g11.2025.readingD"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade11-exhibition-cloze-v0.1",
+      "grade": 11,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-exhibition-cloze-v0.1.md",
+        "sha256": "113668be23b33c8a777f9884303137d0dcad6c2b589c4f89e9b821aabfc275aa"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-exhibition-cloze-author-check-v0.1.json",
+        "sha256": "5fb919fb502a3ae78137bb3411519b3aeb032c44880c497c4b619a8770d2c628"
+      },
+      "anchor_group_ids": [
+        "g11.2024.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-archive-v0.1",
+      "grade": 12,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-archive-v0.1.md",
+        "sha256": "940bb58732895b08ac16ceabd0c298ce8f22768367adddfee9e7f054132699c5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-archive-author-check-v0.1.json",
+        "sha256": "066de154a72bc5795a9c661ac3aa8db791f6db819aee887976a79b810dea8045"
+      },
+      "anchor_group_ids": [
+        "g12.2023.readingA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-bridge-cloze-v0.1",
+      "grade": 12,
+      "responses": 15,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-bridge-cloze-v0.1.md",
+        "sha256": "d975652cb7c93214ac9cc678874c2c26f7c45b50d4e334a4baad8b7e46d968c1"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-bridge-cloze-author-check-v0.1.json",
+        "sha256": "ec399d728d307632bac777fd6c1684d74d686587bf65e94b2e9903597c74f354"
+      },
+      "anchor_group_ids": [
+        "g12.2025anshan.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-dashboard-reading-v0.1",
+      "grade": 12,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-v0.1.md",
+        "sha256": "947c4e3533b554285999d781740c576accc17808fa3934cfb2344c303cb2532c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-author-check-v0.1.json",
+        "sha256": "30d5323c34ba381ce55917385288a1cd65567a1008963d53350978acbc2a457b"
+      },
+      "anchor_group_ids": [
+        "g12.2025anshan.readingC"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-workshop-grammar-v0.1",
+      "grade": 12,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-workshop-grammar-v0.1.md",
+        "sha256": "64e247c8354cd7271e85ab524b908f9f637d45692f2d6d667b30c0a1c0194f23"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-workshop-grammar-author-check-v0.1.json",
+        "sha256": "4d1bc2831055eac196d11507a5f2d59fee0cdf2bcb6ac7368c665becce92f6af"
+      },
+      "anchor_group_ids": [
+        "g12.2025anshan.grammar"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-boxes-cloze-v0.1",
+      "grade": 7,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-boxes-cloze-v0.1.md",
+        "sha256": "5e5c3cd42ee3f7cbb3a427cf06b6036de37a9f7151e1fd40d1d764e960386416"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-boxes-cloze-author-check-v0.1.json",
+        "sha256": "b0ae70575e2b81afbcdf45e49d1adeae10733438f9f8796f121b958b4cb6f26e"
+      },
+      "anchor_group_ids": [
+        "g7.2021.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-garden-bank-v0.1",
+      "grade": 7,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-garden-bank-v0.1.md",
+        "sha256": "4e64476e182d4a430d5bbbb6573bb5b01a2c46f235ae8a7b22aaa2ffc940564e"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-garden-bank-author-check-v0.1.json",
+        "sha256": "a24eed2a3141326d0cd3e1062de681ced719ae448783ed2c3689663fe05aea3a"
+      },
+      "anchor_group_ids": [
+        "g7.2021.vocabularyB"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-library-v0.1",
+      "grade": 7,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-library-v0.1.md",
+        "sha256": "5a24aeee6b67d23b4bc02fb13c2c05497bb11ac277edcb8ff6e70b21fa08d7ab"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-library-author-check-v0.1.json",
+        "sha256": "728625fd2c88dab5f87654a96c7fc0bfb5c724cc70e8656f3c6c4eee13aeedcb"
+      },
+      "anchor_group_ids": [
+        "g7.2021.readingB"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-language-choice-v0.1",
+      "grade": 8,
+      "responses": 12,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-language-choice-v0.2.md",
+        "sha256": "4acb69d83b1b5d75e6087d589f0dc637d7de2d5aeb00706087e29468a31caa4c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-language-choice-author-check-v0.2.json",
+        "sha256": "e22f3cc6e491eb9ac333f00023ab6f7825840d3591e6a3fa2cf0c92749140a1c"
+      },
+      "anchor_group_ids": [
+        "g8.2025fengtai.language"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-lunch-v0.1",
+      "grade": 8,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-lunch-v0.1.md",
+        "sha256": "96ba31bca24e238201c4699b90dadc723be8545f16f0e201b3f6ce63f4d9c461"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-lunch-author-check-v0.1.json",
+        "sha256": "1659391af49e85fe9e1bb6410f3a85182f0f72f715eff04e1f382f5fb87076c9"
+      },
+      "anchor_group_ids": [
+        "g8.2025.readingC"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-radio-cloze-v0.1",
+      "grade": 8,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-radio-cloze-v0.1.md",
+        "sha256": "f5d634c3bf3a76d6d53bcdc17419e3255915095016e3aeecd6292c430f114377"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-radio-cloze-author-check-v0.1.json",
+        "sha256": "5c0ad425abccfe030bb2e813679588273c66b1940a8a005a3ca897bfe404b2ca"
+      },
+      "anchor_group_ids": [
+        "g8.2025.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade9-book-repair-v0.1",
+      "grade": 9,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-book-repair-v0.1.md",
+        "sha256": "3bda37e304a8abad88accea77d68084d6d7fa91c07aa2737199a9a131426ce00"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json",
+        "sha256": "92a5e105432964305f3b23301300678ea3710e99cf84cffb74c06c14b99a7ad8"
+      },
+      "anchor_group_ids": [
+        "g9.2026.readingC"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade9-cycle-shop-cloze-v0.1",
+      "grade": 9,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-v0.1.md",
+        "sha256": "88754cf5c07e353666bea7c8cc39197db28145e4db44de9a3e1727df47840d68"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-author-check-v0.1.json",
+        "sha256": "ba051f458600cfa3461d6c2e82b82e821060a724126afeabecda0f25e571d6ca"
+      },
+      "anchor_group_ids": [
+        "g9.2026.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade9-weather-grammar-v0.1",
+      "grade": 9,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-weather-grammar-v0.2.md",
+        "sha256": "607b33d1e24f6a021fb38b9dedc232a00f9bf097931fa9ff745ce3a448b092b0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-weather-grammar-author-check-v0.2.json",
+        "sha256": "54629c0986f42a52833a1b310c32e3d36318108ed7cc981de433cbfe2dab1899"
+      },
+      "anchor_group_ids": [
+        "g9.2026.grammar"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-calendar-reading-v0.1",
+      "grade": 7,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-calendar-reading-v0.1.md",
+        "sha256": "3c58f4766def8a1b90b8698e3f56a6c92613d54c1577b62738345e5eb8a10e4c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-calendar-reading-author-check-v0.1.json",
+        "sha256": "231760e04a4f8aa763a7b6ebcc003d87a85d913e8c74aaa1c8a6a41afcea5951"
+      },
+      "anchor_group_ids": [
+        "g7.2019.readingA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-reading-bus-bank-v0.1",
+      "grade": 7,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-reading-bus-bank-v0.1.md",
+        "sha256": "e4ffca7d654168a6e244f252356d523155f7d18c0c4d1e9aca042d19769e2ace"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-reading-bus-bank-author-check-v0.1.json",
+        "sha256": "7534488bfad60531ff5f4df62689d1eec32dd3d2bab19fcb0eb7ba76f6c9e03a"
+      },
+      "anchor_group_ids": [
+        "g7.2021.vocabularyA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-reading-corner-images-v0.1",
+      "grade": 7,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-reading-corner-images-v0.1.md",
+        "sha256": "7f6e0cf4af8da043a369e353d7c3243be16b5b3017fdd537d8446b1d7ac6b1df"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-reading-corner-images-author-check-v0.1.json",
+        "sha256": "d5d82f2cfe1046e26621bcbaaa8a034113f2bafff02a08b260e9563d2877a4e9"
+      },
+      "anchor_group_ids": [
+        "g7.2019.readingB"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade11-maps-funding-cloze-v0.1",
+      "grade": 11,
+      "responses": 15,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-maps-funding-cloze-v0.1.md",
+        "sha256": "3449f56faeb0792b2f7afdfae82c7d5c1921669fc9a52325ef4533e0e3e44c49"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-maps-funding-cloze-author-check-v0.1.json",
+        "sha256": "cda89f8b9668cf6fc7c7860eaefae8d8a2a6f7cab1c4defb04292c7a18492fb9"
+      },
+      "anchor_group_ids": [
+        "g11.2025.cloze"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade11-three-context-grammar-v0.1",
+      "grade": 11,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-three-context-grammar-v0.1.md",
+        "sha256": "60f67c4bf07a7bfac73927a35283521787d50f30afd0469fd4a4aa6d102d06e7"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-three-context-grammar-author-check-v0.1.json",
+        "sha256": "fdfc9add2fc5952d64812a6b5c1d5e54c73439b570bd0fc5c5c6cdd441b0f67b"
+      },
+      "anchor_group_ids": [
+        "g11.2024.grammar"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-music-afternoon-reading-v0.1",
+      "grade": 8,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-music-afternoon-reading-v0.2.md",
+        "sha256": "ef8692222cce099e92eabf14099b890b3f3ca2338a4497f3f7b554e6947efd10"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-music-afternoon-reading-author-check-v0.2.json",
+        "sha256": "a146bebd25d429a4037e38eb44e068eae74626952f03dd94567153b8ee868959"
+      },
+      "anchor_group_ids": [
+        "g8.2025fengtai.readingB"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-relay-open-grammar-v0.1",
+      "grade": 8,
+      "responses": 10,
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-relay-open-grammar-v0.1.md",
+        "sha256": "2df0adcd75aad3a4e636770823a992fbb5df45d0e01fa8d80bfa8b315d4101a8"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-relay-open-grammar-author-check-v0.1.json",
+        "sha256": "e9e3e2b5f409dd7b4ab4e129b74ab80079b77658c514100038e12e445d851ec0"
+      },
+      "anchor_group_ids": [
+        "g8.yogor2024.simulated.grammar"
+      ],
+      "outside_paired117": true
+    },
+    {
+      "candidate_family_id": "grade9-repair-table-reading",
+      "grade": 9,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade9-repair-table-reading-v0.1.md",
+        "sha256": "0b48dcf590737521c8f1186ad6070fcd5a5632b53087f861fd7dcf85a3e26c26"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade9-repair-table-reading-author-check-v0.1.json",
+        "sha256": "37779032e08a1fb9a44b5902e9e0f951a2e3b1b2a2905dfe28b4887d79c97fda"
+      },
+      "anchor_group_ids": [
+        "g9.suzhou2024.readingA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade9-book-care-bank",
+      "grade": 9,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade9-book-care-bank-v0.2.md",
+        "sha256": "0833f72eb7371dafc8a3647759fc74b2b0adda696eb51a612e1d374558900d08"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade9-book-care-bank-author-check-v0.2.json",
+        "sha256": "12624c463815f84f49aad2c1287a7c1e36aaf510ac772e389a8108ce48307271"
+      },
+      "anchor_group_ids": [
+        "g9.suzhou2024.wordBank"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-workshop-matching",
+      "grade": 7,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade7-workshop-matching-v0.1.md",
+        "sha256": "ae973437e85068a6f7c3f89b68c17af9136c6ecf5f41938e5f166a83966d509f"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade7-workshop-matching-author-check-v0.1.json",
+        "sha256": "01278c63a46850fb31eb1772e7b587cb963ab076a0abc51cd6806fae35896245"
+      },
+      "anchor_group_ids": [
+        "g7.xicheng2025.matchingA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-lost-property-bank",
+      "grade": 7,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade7-lost-property-bank-v0.1.md",
+        "sha256": "199aea4b441bdb09f4fe24ac440be7e6ef652ac0afc22c6f39fab5454eaf47c0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade7-lost-property-bank-author-check-v0.1.json",
+        "sha256": "267730cdb9d0a97d5def3ae501c8cce8c480d8e527260196018a29785817a3d1"
+      },
+      "anchor_group_ids": [
+        "g7.xicheng2025.clozeBank"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-library-electricity",
+      "grade": 12,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade12-library-electricity-v0.2.md",
+        "sha256": "477c6f991c2aba107ece1bb5b5f8ae39cce5fdf445e0763a597f953144030803"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade12-library-electricity-author-check-v0.2.json",
+        "sha256": "5e10448fc293164cbcf2936f98503cefc46f7513bc7acf58544860ada46bc6ae"
+      },
+      "anchor_group_ids": [
+        "g12.national2025.readingA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-library-survey-reading",
+      "grade": 8,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-library-survey-reading-v0.1.md",
+        "sha256": "79e7a8743a6e8db6f51bff289b935c98d0a91488118c1081dcbda93372c8c403"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-library-survey-reading-author-check-v0.1.json",
+        "sha256": "cae254670212f0ee7e044cae2de57798032ef0f136d3e01658352bff55bbddbc"
+      },
+      "anchor_group_ids": [
+        "g8.changjun2024.readingA"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-river-walk-insertion",
+      "grade": 8,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-river-walk-insertion-v0.1.md",
+        "sha256": "d3f7da3295422518946af5575e5e71b16084f717725105075d75a6dc42e708bb"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-river-walk-insertion-author-check-v0.1.json",
+        "sha256": "a45b859434e877958d74047227cffe51819600d4525a88d0f4b414535fcd4b4d"
+      },
+      "anchor_group_ids": [
+        "g8.changjun2024.insertion"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade10-club-routines-insertion",
+      "grade": 10,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-club-routines-insertion-v0.1.md",
+        "sha256": "48b2f0b15b87d61a11c86ab2de038b45517212fdae2124c1383de5a57b720cb9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-club-routines-insertion-author-check-v0.1.json",
+        "sha256": "8b808da7c50dee9414e9c2fda7e8bec16fb996e85d0eeac7f73e34f03aca2e23"
+      },
+      "anchor_group_ids": [
+        "g10.wenzhou2025.insertion"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade10-project-advice-email",
+      "grade": 10,
+      "responses": 1,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-project-advice-email-v0.1.md",
+        "sha256": "88401eedcdf6fa0f62017993c07851df72a165ea9f7f0a5ae709ec2319ded955"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-project-advice-email-author-check-v0.1.json",
+        "sha256": "34dbba01eb242e1aacaf68bda788dc80d998898856a18f2822fe3f280797564f"
+      },
+      "anchor_group_ids": [],
+      "outside_paired117": true
+    },
+    {
+      "candidate_family_id": "grade11-investigation-insertion",
+      "grade": 11,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade11-investigation-insertion-v0.2.md",
+        "sha256": "7887a0c1359a0f61671a68493ccb2130bd717be1f3cf95011356b5f65705896d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade11-investigation-insertion-author-check-v0.2.json",
+        "sha256": "daa73ffca41ff1213e3b7ee8b93fc8aa283f8bb93e31d3baed26f1af814544f6"
+      },
+      "anchor_group_ids": [
+        "g11.spring2024.insertionE"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-print-room-insertion",
+      "grade": 12,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade12-print-room-insertion-v0.1.md",
+        "sha256": "89567561ce23efe9a931ae4cb5a2359ef2c534671178a9d9098f7f6ad99e14a0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade12-print-room-insertion-author-check-v0.1.json",
+        "sha256": "b98be207c617812e59856a357dcab4bd5709e214d21378b450ce41981ec234bf"
+      },
+      "anchor_group_ids": [
+        "g12.national2025.insertion"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-wayfinding-exhibition-reading",
+      "grade": 8,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-v0.1.md",
+        "sha256": "76cadcd4e25d8226580335823633ca3769819488926ba9c7ef89d265ed66305d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-author-check-v0.1.json",
+        "sha256": "304be790ea8040b8863c143ccc7f26e30720b33b43a65653e9d01b489a3f8019"
+      },
+      "anchor_group_ids": [
+        "g8.changjun2024.readingC"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade9-garden-map-reading-response",
+      "grade": 9,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade9-garden-map-reading-response-v0.1.md",
+        "sha256": "563b15581ddbf36dafd5ea1f60dca6f93f625851264940daed83cbc5f656c355"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade9-garden-map-reading-response-author-check-v0.1.json",
+        "sha256": "8be11751e9e3cb8ba613db5562c694816d66efc86b080d440c0c1ce419839e16"
+      },
+      "anchor_group_ids": [
+        "g9.suzhou2024.readingResponse"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade10-library-booking-screen-reading",
+      "grade": 10,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-v0.1.md",
+        "sha256": "946ae175b202f11f5d7554b1b081e9de8413a822967551c6d6e855a26dfdfb29"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-author-check-v0.1.json",
+        "sha256": "6bd16276682646cdcb9fd4bc092a86b68cd457a7abab10fe13f5e3af83d7b6ee"
+      },
+      "anchor_group_ids": [
+        "g10.wenzhou2025.readingD"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade12-parcel-label-trial-reading",
+      "grade": 12,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade12-parcel-label-trial-reading-v0.1.md",
+        "sha256": "46365407201373f016a538e3c8c32b51678e3a88206c1df44fd2dfd9053745b5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade12-parcel-label-trial-reading-author-check-v0.1.json",
+        "sha256": "e12f7d75c819d4343e09e7ca36b9bc6026335437a79156505c2e50184f5868bf"
+      },
+      "anchor_group_ids": [
+        "g12.national2025.readingD"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade9-group-plan-heading-insertion",
+      "grade": 9,
+      "responses": 5,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade9-group-plan-heading-insertion-v0.2.md",
+        "sha256": "b5e3ae1212d14ed4dbd439614f081ef7a74c6a452162bea65106ff524129836c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade9-group-plan-heading-insertion-author-check-v0.2.json",
+        "sha256": "e824d87bfc7c91a3039ae7c7ac73a05e6192b2bdbb7f53ac23f32d7bf9b5af0d"
+      },
+      "anchor_group_ids": [
+        "g9.suzhou2024.insertion"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade10-exhibition-map-continuation",
+      "grade": 10,
+      "responses": 1,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-exhibition-map-continuation-v0.1.md",
+        "sha256": "f206e43d86c928983821e3c3426d982ea1e94d70752ee6736b7cc7724d96223f"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-exhibition-map-continuation-author-check-v0.1.json",
+        "sha256": "6d7bc2f6a7e5aaadc695ca475d6ee0938fb6f74e879120fd327885368410490b"
+      },
+      "anchor_group_ids": [],
+      "outside_paired117": true
+    },
+    {
+      "candidate_family_id": "grade8-maker-club-expectations-reading",
+      "grade": 8,
+      "responses": 3,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-maker-club-expectations-reading-v0.1.md",
+        "sha256": "d5b8d40b986569d5a6f5ec416d5f43c34f8b9f2f2d237836c0782e0b7b107c75"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-maker-club-expectations-reading-author-check-v0.1.json",
+        "sha256": "af7c325a7e633bcf96c71cb96754f3f0b6c7efb007465a908daa9ee45e09d88c"
+      },
+      "anchor_group_ids": [
+        "g8.fengtai2026.readingD"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade8-club-sentence-translation",
+      "grade": 8,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-club-sentence-translation-v0.1.md",
+        "sha256": "3d98bd29c9c9d37ceb71f72160fe2c8f3fac15e1faf76006b6bf430f9885a0bd"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-club-sentence-translation-author-check-v0.1.json",
+        "sha256": "38da50d8525f764f1901c86a6df9dcca3be664d74fc45e6087196e59ac4d813a"
+      },
+      "anchor_group_ids": [
+        "g8.bnu2026.translation"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade7-first-recording-six-cloze",
+      "grade": 7,
+      "responses": 6,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade7-first-recording-six-cloze-v0.1.md",
+        "sha256": "f99c3253622c43669387c27b8ddcbb3731a29ead6ca28a9a700650fcc804ae30"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade7-first-recording-six-cloze-author-check-v0.1.json",
+        "sha256": "4fce40fee8c3829aa21969b18813ada9cbd8694e8d9fa82e163eac8536326a96"
+      },
+      "anchor_group_ids": [
+        "g7.xicheng2025.clozeStory"
+      ],
+      "outside_paired117": false
+    },
+    {
+      "candidate_family_id": "grade11-small-repairs-book-review",
+      "grade": 11,
+      "responses": 4,
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-v0.1.md",
+        "sha256": "0d2f5fc4caa678a580444c8c894ef557ff4e6ceabb6ad1716018e16aea7da729"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-author-check-v0.1.json",
+        "sha256": "7c85ec7d50b520114c093a9cc22d0e6052d9cb8f3aa328ef766858dd34c292a8"
+      },
+      "anchor_group_ids": [
+        "g11.2025.readingC"
+      ],
+      "outside_paired117": false
+    }
+  ],
+  "outside_paired117_author_families": [
+    "grade8-relay-open-grammar-v0.1",
+    "grade10-project-advice-email",
+    "grade10-exhibition-map-continuation"
+  ],
+  "shape_rules": {
+    "unknowns_not_zero": true,
+    "three_given_context_subgroup_distribution_retained": true,
+    "all_oneword_distinct_from_ungiven_one_given_form": true,
+    "image_matching_distinct_from_text_cards": true,
+    "five_shared_options_distinct_from_seven": true,
+    "source_wordbank_once_and_new_author_rule_separate": true,
+    "genre_and_question_operator_not_in_signature": true,
+    "source_final_open_response_operations_retained": true
+  },
+  "student_teacher_model_or_rights_admission": false
+}
