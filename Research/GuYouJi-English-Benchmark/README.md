@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+2026-10-15用户看效果后继续授权初高中扩样：[样本主导策略](FirstRelease/SampleBasedModePolicy-v0.1.md)与[标准0.21](FirstRelease/PracticalAuthoringStandard-v0.21.md)明确已观察/未见/未知、具体组合、分层体量和来源错误。本轮六年级六份文字转载进入独立结构层；仍不扩展其他阶段或宣称生产适配。
+
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。
 
 已整理[六年级效果交付](FirstRelease/ShowcaseDelivery-v0.1.md)：六组26题可作答、看解析；命题标准及其他已有题型也从该入口查看。全库与生产验证仍保留未完成状态。

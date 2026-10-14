@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-10-13",
+  "updated_on": "2026-10-15",
   "framework": "OCR outputs are drafts, not gold text; page numbers and score notation require original-image checks.",
   "failed_attempts": [
     {
@@ -17,6 +17,52 @@
       "id": "fuzhou2025-initial-ocr-output-config",
       "engine": "tesseract5.5.3",
       "result": "Exit0andTXTdidnotestablishTSV:customtessdata lackedtxt/tsvconfigfiles;registrydigestcheck rejected missing TSV. Repeated with explicitcreateflags,14TXT+14TSVnowpresent;nooriginalimagechanged."
+    },
+    {
+      "id": "grade7-suzhou2025-21cnjy23303742-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "grade10-shenzhen2026-21cnjy25124289-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade10-shenzhen2026-21cnjy25124289-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "grade9-chengdu2025-21cnjy23208601-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "grade10-shenzhenlower2026-21cnjy26167651-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "grade11-yinchuan2026-21cnjy25860535-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "grade12-tianjin2025-21cnjy24812550-wrong-intro-class-v0.1",
+      "result": "introAll/introAllHide are expand/collapse UI labels, only29bytes; not resource text. Retained; v0.2 uses assets-intro.",
+      "output": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-intro.txt",
+      "sha256": "0b6a7549c181d96caa9728253f2337aa2985af6f6aea8e8bca0bda439e251e69"
+    },
+    {
+      "id": "school-expansion20261015-bs4-unavailable",
+      "result": "Bundled Python lacks bs4; failed before acquisition. Used standard-library extraction, no installation or content inference."
     }
   ],
   "ocr_models": [
@@ -22232,6 +22278,171 @@
         "-r",
         "110",
         "-png"
+      ]
+    },
+    {
+      "id": "grade7-suzhou2025-21cnjy23303742-native-v0.2",
+      "source_acquisition_id": "grade7-suzhou2025-21cnjy23303742",
+      "source_sha256": "61b43f6bbcb7d20f528f0a35c9b9eedeaa8b7971eb2c0f67145d8400a4464911",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade7-suzhou2025-21cnjy23303742.html",
+          "output": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+          "bytes": 29075,
+          "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031-native-v0.2",
+      "source_acquisition_id": "grade8-xiaoshan2025-21cnjy22251031",
+      "source_sha256": "e606d7eb508c9c7d7d62565a52f9ee6364eb8da1129f8be04e0e89ab5d10a693",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade8-xiaoshan2025-21cnjy22251031.html",
+          "output": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+          "bytes": 23965,
+          "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade10-shenzhen2026-21cnjy25124289-native-v0.2",
+      "source_acquisition_id": "grade10-shenzhen2026-21cnjy25124289",
+      "source_sha256": "01c043faffd2206eb044b52a6dc6836fc465de14ebd03039efd02d43c4cee494",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade10-shenzhen2026-21cnjy25124289.html",
+          "output": "build/english-benchmark-research-20261012/grade10-shenzhen2026-21cnjy25124289-resource-v0.2.txt",
+          "bytes": 2257,
+          "sha256": "d28a844dde0b44b476a120dc19f9f2d8710aff06eb95b0460191ec8abe8c8984",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade9-chengdu2025-21cnjy23208601-native-v0.2",
+      "source_acquisition_id": "grade9-chengdu2025-21cnjy23208601",
+      "source_sha256": "28183c3639d731329dddd16325478d45f50af60e09b242401396566b2b14a5d2",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade9-chengdu2025-21cnjy23208601.html",
+          "output": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+          "bytes": 64693,
+          "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade10-shenzhenlower2026-21cnjy26167651-native-v0.2",
+      "source_acquisition_id": "grade10-shenzhenlower2026-21cnjy26167651",
+      "source_sha256": "3a9f6b7f79ac33dedb6152089ff05ec551834df37022b0802540c2cf09941ad3",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade10-shenzhenlower2026-21cnjy26167651.html",
+          "output": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+          "bytes": 27244,
+          "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade11-yinchuan2026-21cnjy25860535-native-v0.2",
+      "source_acquisition_id": "grade11-yinchuan2026-21cnjy25860535",
+      "source_sha256": "8dd0bb80894aaa06c478ca0c10f3d73efd7a818721c3ae03d1239c7aff7d5628",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade11-yinchuan2026-21cnjy25860535.html",
+          "output": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-resource-v0.2.txt",
+          "bytes": 26619,
+          "sha256": "81f0da5e7adc85c609a87d380ccb103ec8bb10fd8bda65e129a0d24575c5c3fb",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade12-tianjin2025-21cnjy24812550-native-v0.2",
+      "source_acquisition_id": "grade12-tianjin2025-21cnjy24812550",
+      "source_sha256": "e0162ad0dcacf2aa2f084cef855376c73740640bf949cd9b2bec5b56edd6df98",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro public HTML block; BR boundaries; no inferred missing image text"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade12-tianjin2025-21cnjy24812550.html",
+          "output": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+          "bytes": 26831,
+          "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "school-cloze-volume-batch20261015-v0.1",
+      "source_acquisition_ids": [
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-tianjin2025-21cnjy24812550"
+      ],
+      "tool": "Tools/profile_cloze_reference_batch.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Seven explicitly bounded unfilled material views; each blank located exactly once; options/instructions/answers excluded; profile_task_load.count"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/cloze-volume-batch20261015-v0.1.json",
+          "bytes": 14920,
+          "sha256": "7c978671b7ac8d947a3793f21b709c7d7a43b3fc1ae0e4000282c2f7cf47e987",
+          "exit_code": 0
+        }
       ]
     }
   ],
