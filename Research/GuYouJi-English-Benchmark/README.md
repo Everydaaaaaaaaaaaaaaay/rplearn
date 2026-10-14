@@ -6,13 +6,15 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[审阅包0.14](FirstRelease/ReviewPackage-v0.14.md)、[可执行标准0.6](FirstRelease/PracticalAuthoringStandard-v0.6.md)、[组合索引0.5](FirstRelease/combined-review-index-v0.5.json)**：六年级各三父卷身份，101源组实例/639参考；38现行原创家族/260响应点按[响应模式0.3](FirstRelease/ResponseModeCoverage-v0.3.md)分层；十四请求/27源裁决＋17核心项仍待独立验证。[交付检查0.6](FirstRelease/DeliveryCheck-v0.6.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
+- **当前统一入口：[审阅包0.15](FirstRelease/ReviewPackage-v0.15.md)、[可执行标准0.7](FirstRelease/PracticalAuthoringStandard-v0.7.md)、[组合索引0.6](FirstRelease/combined-review-index-v0.6.json)**：六年级各三父卷身份，101源组实例/639参考；39现行原创家族/263响应点按[响应模式0.4](FirstRelease/ResponseModeCoverage-v0.4.md)分层；十四请求/27源裁决＋17核心项仍待独立验证。[交付检查0.7](FirstRelease/DeliveryCheck-v0.7.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
 
 当前保存见[第29恢复](Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)：6820文件全COW独立恢复，现行37/256/十三请求/27源与17核心、真实修订和未评分示例可恢复；仍非异机/完整环境或教育许可验收。
 
 以下增量记录保留各自时点的计数和保存边界。
 
-新增初三开放读答：[完整题组与判分边界](Studies/2026-10-14-grade9-open-response-complete-task-and-scoring-boundaries.md)，3响应/7内容分、15合成作者拟判；扩展0.12全分层39/263，当前统一0.14冻结38/260待合并，十四已验证请求不增加。源分析rubric未得，新分点/语言规则暂定；继续独立裁决。
+当前语言与修题：[11源/9原创阅读参照卡](FirstRelease/MeasuredReadingReferenceCards-v0.1.md)，高二当前选项143→114、16项全解，核心0.15仍25/205/53；新增开放短答另列3点，全部39/263分八模式，十四已有请求不增。
+
+新增初三开放读答：[完整题组与判分边界](Studies/2026-10-14-grade9-open-response-complete-task-and-scoring-boundaries.md)，3响应/7内容分、15合成作者拟判；扩展0.12全分层39/263，已纳当前统一0.15/39/263，旧0.14冻结38/260保留，十四已验证请求不增加。源分析rubric未得，新分点/语言规则暂定；继续独立裁决。
 
 
 

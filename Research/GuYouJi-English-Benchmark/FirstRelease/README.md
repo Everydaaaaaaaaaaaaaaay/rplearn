@@ -6,13 +6,15 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-从[统一审阅包0.14](ReviewPackage-v0.14.md)、[组合索引0.5](combined-review-index-v0.5.json)和[可执行标准0.6](PracticalAuthoringStandard-v0.6.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展12/45，合38现行材料家族260响应点；十四请求仅本机文件/声明控制。见[交付检查0.6](DeliveryCheck-v0.6.md)、[响应分母0.3](ResponseModeCoverage-v0.3.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
+从[统一审阅包0.15](ReviewPackage-v0.15.md)、[组合索引0.6](combined-review-index-v0.6.json)和[可执行标准0.7](PracticalAuthoringStandard-v0.7.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展13/48，合39现行材料家族263响应点；十四请求仅本机文件/声明控制。见[交付检查0.7](DeliveryCheck-v0.7.md)、[响应分母0.4](ResponseModeCoverage-v0.4.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
 现行0.13/37材料256点/十三请求/27源队列已纳入[第29完整恢复](../Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)的6820文件严格COW/SHA/独立inode核验；29自身结果及后续素材留下一批，未异机/完整环境或独立教育验收。
 
 下文为各时点增量与保存边界，旧版本不作为当前默认。
 
-新增初三开放读答：[完整题组与判分边界](../Studies/2026-10-14-grade9-open-response-complete-task-and-scoring-boundaries.md)，3响应/7内容分、15合成作者拟判；扩展0.12全分层39/263，当前统一0.14冻结38/260待合并，十四已验证请求不增加。源分析rubric未得，新分点/语言规则暂定；继续独立裁决。
+当前语言与修题：[11源/9原创阅读参照卡](MeasuredReadingReferenceCards-v0.1.md)，高二当前选项143→114、16项全解，核心0.15仍25/205/53；新增开放短答另列3点，全部39/263分八模式，十四已有请求不增。
+
+新增初三开放读答：[完整题组与判分边界](../Studies/2026-10-14-grade9-open-response-complete-task-and-scoring-boundaries.md)，3响应/7内容分、15合成作者拟判；扩展0.12全分层39/263，已纳当前统一0.15/39/263，旧0.14冻结38/260保留，十四已验证请求不增加。源分析rubric未得，新分点/语言规则暂定；继续独立裁决。
 
 新词汇约束：[实际语境/官方别名/义项徽标](../Studies/2026-10-14-actual-context-spelling-alias-and-sense-level-controls.md)，20引文绑定，organiser显式别名与work名词1A1/作品8A2分层；两词表差别/三未知/源结构/403访问限制保留。未推通篇CEFR、年级、百分比或许可；第29后新增。
 
