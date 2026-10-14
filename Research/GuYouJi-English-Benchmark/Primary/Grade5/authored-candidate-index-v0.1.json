@@ -1,0 +1,151 @@
+{
+  "version": "0.1",
+  "scope": "primary5_partial_author_preparation_separate_from_other_levels",
+  "source_index": {
+    "path": "Primary/Grade5/selected-simulation-source-groups-v0.1.json",
+    "sha256": "3a90ba17a685f15134d1e27f9a7f15979690fd24ba3fad12dad4e8587e6bc32c"
+  },
+  "specification": {
+    "path": "Primary/Grade5/SimulationSourceSpecifications-v0.1.md",
+    "sha256": "63a80fc73f638974fe429c25143bd126ee0494302b715cc45f6a6eff62093eb0"
+  },
+  "family_count": 3,
+  "response_count": 15,
+  "choice_response_count": 12,
+  "open_response_count": 3,
+  "members": [
+    {
+      "id": "inside-the-book-reading",
+      "level": "primary5",
+      "kind": "five_three_choice",
+      "response_count": 5,
+      "choice_response_count": 5,
+      "open_response_count": 0,
+      "candidate": {
+        "path": "Primary/Grade5/Generated/inside-the-book-reading-v0.1.md",
+        "sha256": "98bfcf4617ab7ad27595d168c988b06871f12c80854b4807f78baaba32aadb1f"
+      },
+      "author_check_acquisition_id": "primary5-author-inside-the-book-reading-v0.1-author-check20261014",
+      "source_group_id": "primary5.yogor2024.frog",
+      "author_answer_vector": [
+        "B",
+        "A",
+        "C",
+        "B",
+        "C"
+      ],
+      "component_counts": {
+        "passage": {
+          "english_digit_tokens": 149,
+          "han_characters": 0
+        },
+        "table_including_headers_and_all_cells": null,
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 15
+        },
+        "prompts": {
+          "english_digit_tokens": 33,
+          "han_characters": 0
+        },
+        "options": {
+          "english_digit_tokens": 71,
+          "han_characters": 0
+        }
+      },
+      "explicit_sentence_units": 17,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "music-club-mixed-reading",
+      "level": "primary5",
+      "kind": "two_three_choice_three_open_full_answers",
+      "response_count": 5,
+      "choice_response_count": 2,
+      "open_response_count": 3,
+      "candidate": {
+        "path": "Primary/Grade5/Generated/music-club-mixed-reading-v0.1.md",
+        "sha256": "e7f8f60bb85440812ae02e1760b508ee162d52ee93a674e9f38914e1672dbf4f"
+      },
+      "author_check_acquisition_id": "primary5-author-music-club-mixed-reading-v0.1-author-check20261014",
+      "source_group_id": "primary5.yogor2024.mixed",
+      "author_answer_vector": [
+        "B",
+        "A",
+        "Yes, they do.",
+        "She plays the drums.",
+        "He likes swimming."
+      ],
+      "component_counts": {
+        "passage": {
+          "english_digit_tokens": 108,
+          "han_characters": 0
+        },
+        "table_including_headers_and_all_cells": null,
+        "instruction": {
+          "english_digit_tokens": 4,
+          "han_characters": 22
+        },
+        "prompts": {
+          "english_digit_tokens": 34,
+          "han_characters": 0
+        },
+        "options": {
+          "english_digit_tokens": 6,
+          "han_characters": 0
+        }
+      },
+      "explicit_sentence_units": 14,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "open-day-timetable-reading",
+      "level": "primary5",
+      "kind": "table_five_four_choice",
+      "response_count": 5,
+      "choice_response_count": 5,
+      "open_response_count": 0,
+      "candidate": {
+        "path": "Primary/Grade5/Generated/open-day-timetable-reading-v0.1.md",
+        "sha256": "09862c7b0c57ac4053537480db7b86b6f7488b3b8b6b0c6f09a441b858d3cd94"
+      },
+      "author_check_acquisition_id": "primary5-author-open-day-timetable-reading-v0.1-author-check20261014",
+      "source_group_id": "primary5.yogor2024.timetable_bonus",
+      "author_answer_vector": [
+        "C",
+        "A",
+        "B",
+        "D",
+        "A"
+      ],
+      "component_counts": {
+        "passage": null,
+        "table_including_headers_and_all_cells": {
+          "english_digit_tokens": 58,
+          "han_characters": 0
+        },
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 55
+        },
+        "prompts": {
+          "english_digit_tokens": 40,
+          "han_characters": 0
+        },
+        "options": {
+          "english_digit_tokens": 48,
+          "han_characters": 0
+        }
+      },
+      "explicit_sentence_units": null,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    }
+  ],
+  "no_full_primary5_or_other_primary_levels_admission": true,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}
