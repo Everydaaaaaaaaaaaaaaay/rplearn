@@ -23044,6 +23044,92 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "public-preview-review20261015h-v0.1",
+      "source_acquisition_ids": [
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade8-xiaoshan2025-21cnjy22251031-public-preview-01",
+        "grade8-xiaoshan2025-21cnjy22251031-public-preview-02",
+        "grade8-xiaoshan2025-21cnjy22251031-public-preview-03",
+        "grade8-xiaoshan2025-21cnjy22251031-public-preview-04",
+        "grade8-xiaoshan2025-21cnjy22251031-public-preview-05"
+      ],
+      "tool": "manual_visual_review_and_source_binding",
+      "tool_version": "0.1",
+      "parameters": [
+        "Actual source review/input completeness only; no independent gold, original-school authentication, rights or production claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/public-preview-review20261015h-v0.1.json",
+          "bytes": 7107,
+          "sha256": "e4408df47a952bf7add636934f390cc95cd168f7a2a222ab14524aa45180f10a",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "public-preview-bundle-checks20261015h-v0.1",
+      "source_acquisition_ids": [
+        "grade8-xiaoshan2025-21cnjy22251031"
+      ],
+      "tool": "Tools/grade_mode_evidence.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Actual source review/input completeness only; no independent gold, original-school authentication, rights or production claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/public-preview-bundle-checks20261015h-v0.1.json",
+          "bytes": 6802,
+          "sha256": "fff133665930ae5641f1d14ab1501ecfc76489f2565f894d94e925cdb84a5910",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "pattern-negative-review20261015h-v0.1",
+      "source_acquisition_ids": [
+        "grade7-chongqingregional2025-21cnjy22108710"
+      ],
+      "tool": "manual_native_text_pattern_review",
+      "tool_version": "0.1",
+      "parameters": [
+        "Actual source review/input completeness only; no independent gold, original-school authentication, rights or production claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/pattern-negative-review20261015h-v0.1.json",
+          "bytes": 1391,
+          "sha256": "c06ec139defb7e9094ffc30da311de07ee32819e2a008230850f1a5d25769cf7",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "grade7-chongqingregional2025-21cnjy22108710-native-v0.2",
+      "source_acquisition_id": "grade7-chongqingregional2025-21cnjy22108710",
+      "source_sha256": "ee1a48987a548e624b5783ab92fb4e0042eaaae2e1f7249cd405e7bf88011b13",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One public resource block; original instruction/label/duplicate-choice conflicts retained"
+      ],
+      "manifest": "build/english-benchmark-research-20261012/extract-pattern-negative20261015h-v0.2.json",
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade7-chongqingregional2025-21cnjy22108710.html",
+          "output": "build/english-benchmark-research-20261012/grade7-chongqingregional2025-21cnjy22108710-resource-v0.2.txt",
+          "bytes": 35413,
+          "sha256": "1ab17d0a163d25aaa6380bf1a8b718810b4e514c9ae5cf9a62d05c095494ac94",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

@@ -128,16 +128,24 @@ def check_request(request, rows):
         raise ValueError('Reference belongs to a different grade')
     if json.dumps(request.get('shape'), sort_keys=True) != json.dumps(row['shape'], sort_keys=True):
         raise ValueError('Shape differs from actual evidence, including response/option/material/rule details')
-    if request.get('requires_complete_student_input', True) and row['necessary_input_complete'] is not True:
+    supplement = None
+    if request.get('supplemental_bundle'):
+        from check_public_preview_bundle import check_supplement
+        supplement = check_supplement(request['supplemental_bundle'], row)
+    complete_input = row['necessary_input_complete'] is True or bool(supplement)
+    if request.get('requires_complete_student_input', True) and not complete_input:
         raise ValueError('Necessary student input is missing or not explicitly confirmed')
     if request.get('use_as_verified_answer_gold', False):
         raise ValueError('Independent answer admission is not established by this structural inventory')
     if request.get('claim_production_supported', False):
         raise ValueError('Preparation guard is not wired production or model verification')
-    return {'preparation_shape_matches_evidence': True, 'grade': request['grade'],
+    result = {'preparation_shape_matches_evidence': True, 'grade': request['grade'],
             'evidence_group_id': row['id'], 'content_correctness_checked': False,
-            'necessary_input_complete': row['necessary_input_complete'],
+            'necessary_input_complete': True if supplement else row['necessary_input_complete'],
             'independent_answer_gold': False, 'model_called': False, 'production_supported': False}
+    if supplement:
+        result['supplemental_input_bundle'] = supplement
+    return result
 
 
 if __name__ == '__main__':
