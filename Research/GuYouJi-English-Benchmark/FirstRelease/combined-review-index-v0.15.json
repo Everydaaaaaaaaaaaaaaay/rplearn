@@ -1,0 +1,421 @@
+{
+  "version": "0.15",
+  "prepared_on": "2026-10-14",
+  "purpose": "review_bundle_current_refs_not_production_generation_schema",
+  "review_package": {
+    "path": "FirstRelease/ReviewPackage-v0.24.md",
+    "sha256": "b5e7250dcf45b37ad5615685c47837c01a335db536d4ba3f97c9e7d0f7e9b0e2"
+  },
+  "practical_standard": {
+    "path": "FirstRelease/PracticalAuthoringStandard-v0.15.md",
+    "sha256": "dc960375c296eed078d60b4499568729f8783fa47fc12bd3e9ab324e65c96828"
+  },
+  "source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "source_group_instances": 117,
+  "source_response_references": 722,
+  "parent_paper_identities": 20,
+  "core_index": {
+    "path": "FirstRelease/review-index-v0.16.json",
+    "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+  },
+  "supplement_index": {
+    "path": "FirstRelease/open-language-supplement-candidates-v0.1.json",
+    "sha256": "c96a0fba50464630ada8b812738d49b9ca5d528469b27a7ada060e87a232226d"
+  },
+  "authored_extension_index": {
+    "path": "FirstRelease/Expansions/authored-candidate-index-v0.20.json",
+    "sha256": "f11209b60354aef8244820ac56c6192536c59374e337e33979555a215c4a0799"
+  },
+  "core_authored_materials": 25,
+  "core_authored_responses": 205,
+  "supplement_authored_materials": 1,
+  "supplement_authored_responses": 10,
+  "extension_authored_materials": 20,
+  "extension_authored_responses": 75,
+  "total_current_material_families": 46,
+  "total_current_authored_responses": 290,
+  "totals_not_statistical_independence": true,
+  "grades": [
+    {
+      "grade": 7,
+      "core_specification": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "expansion_specification_draft": {
+        "path": "FirstRelease/Specifications/grade7-v0.3.md",
+        "sha256": "0d399a44ac86a26fb43e2197899e742eac9006ec45c6d236f1aeb22b98c21989"
+      },
+      "expansion_specification_status": "separate_v0.3_draft_not_retroactive_to_core",
+      "source_group_instances": 17,
+      "source_response_references": 96,
+      "parent_paper_identity_count": 3,
+      "core_materials": 6,
+      "core_authored_responses": 41,
+      "supplement_materials": 0,
+      "supplement_authored_responses": 0,
+      "expansion_materials": 3,
+      "expansion_authored_responses": 13
+    },
+    {
+      "grade": 8,
+      "core_specification": {
+        "path": "FirstRelease/Specifications/grade8-v0.2.md",
+        "sha256": "8a49569c17ba7561c608616f3a65f4e0f29098e744fe119387e011d4368663a1"
+      },
+      "expansion_specification_draft": {
+        "path": "FirstRelease/Specifications/grade8-v0.5.md",
+        "sha256": "8cc9a8bc800c1ca07d56a45ddb0d8d7fd7af8c6c84f3e9d724717fe79c3422c0"
+      },
+      "expansion_specification_status": "separate_v0.5_draft_not_retroactive_to_core_or_prior_authored_candidates",
+      "source_group_instances": 32,
+      "source_response_references": 173,
+      "parent_paper_identity_count": 5,
+      "core_materials": 4,
+      "core_authored_responses": 29,
+      "supplement_materials": 1,
+      "supplement_authored_responses": 10,
+      "expansion_materials": 5,
+      "expansion_authored_responses": 18
+    },
+    {
+      "grade": 9,
+      "core_specification": {
+        "path": "FirstRelease/Specifications/grade9-v0.2.md",
+        "sha256": "b4e9f9efd4c9834277f92d7d395797df7b291d8f956a01699024600f8a7ac4ae"
+      },
+      "expansion_specification_draft": {
+        "path": "FirstRelease/Specifications/grade9-v0.3.md",
+        "sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe"
+      },
+      "expansion_specification_status": "separate_v0.3_draft_not_retroactive_to_core",
+      "source_group_instances": 17,
+      "source_response_references": 111,
+      "parent_paper_identity_count": 3,
+      "core_materials": 3,
+      "core_authored_responses": 25,
+      "supplement_materials": 0,
+      "supplement_authored_responses": 0,
+      "expansion_materials": 4,
+      "expansion_authored_responses": 16
+    },
+    {
+      "grade": 10,
+      "core_specification": {
+        "path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+      },
+      "expansion_specification_draft": {
+        "path": "FirstRelease/Specifications/grade10-v0.3.md",
+        "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+      },
+      "expansion_specification_status": "separate_v0.3_draft_not_retroactive_to_core",
+      "source_group_instances": 18,
+      "source_response_references": 115,
+      "parent_paper_identity_count": 3,
+      "core_materials": 3,
+      "core_authored_responses": 29,
+      "supplement_materials": 0,
+      "supplement_authored_responses": 0,
+      "expansion_materials": 4,
+      "expansion_authored_responses": 11
+    },
+    {
+      "grade": 11,
+      "core_specification": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "expansion_specification_draft": {
+        "path": "FirstRelease/Specifications/grade11-v0.3.md",
+        "sha256": "548200a07feb63e53d7568cc0008956653fa26c691f32659b384eb4b1922bb25"
+      },
+      "expansion_specification_status": "separate_v0.3_draft_not_retroactive_to_core",
+      "source_group_instances": 15,
+      "source_response_references": 105,
+      "parent_paper_identity_count": 3,
+      "core_materials": 5,
+      "core_authored_responses": 49,
+      "supplement_materials": 0,
+      "supplement_authored_responses": 0,
+      "expansion_materials": 1,
+      "expansion_authored_responses": 5
+    },
+    {
+      "grade": 12,
+      "core_specification": {
+        "path": "FirstRelease/Specifications/grade12-v0.2.md",
+        "sha256": "54a98228198d1838326bc2726d0da1a69b37325ac701951e37395c3a3b0cc764"
+      },
+      "expansion_specification_draft": {
+        "path": "FirstRelease/Specifications/grade12-v0.3.md",
+        "sha256": "62894eccefd96b9c505b758e1e77625e9f40dc46692af846514650f68d7af677"
+      },
+      "expansion_specification_status": "separate_v0.3_draft_not_retroactive_to_core",
+      "source_group_instances": 18,
+      "source_response_references": 122,
+      "parent_paper_identity_count": 3,
+      "core_materials": 4,
+      "core_authored_responses": 32,
+      "supplement_materials": 0,
+      "supplement_authored_responses": 0,
+      "expansion_materials": 3,
+      "expansion_authored_responses": 12
+    }
+  ],
+  "locally_supported_request_controls": [
+    {
+      "request": {
+        "path": "FirstRelease/generation-request-three-grammar-v0.3.json",
+        "sha256": "f52a81ac3f574d191ffce33e7f712f052779de16321730ac115f2eccd7fed4bc"
+      },
+      "validator": {
+        "path": "Tools/validate_authoring_request_v0_3.py",
+        "sha256": "9dc956002d1892fcce3eb063b1831ee2ff8578cab1dfebc259ae7509faf7c407"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/generation-request-quarantined-cloze-v0.3.json",
+        "sha256": "2bc307bcc51df81563e1c16726ebbe81cd0639a5b4654bc5d1827017b31d3fe8"
+      },
+      "validator": {
+        "path": "Tools/validate_authoring_request_v0_3.py",
+        "sha256": "9dc956002d1892fcce3eb063b1831ee2ff8578cab1dfebc259ae7509faf7c407"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade7-matching-v0.1.json",
+        "sha256": "99e0e7078ea473fb18ab3b0e80b5e898be9242c911dd031305b85fea9489c271"
+      },
+      "validator": {
+        "path": "Tools/validate_grade7_extension_request_v0_1.py",
+        "sha256": "f373315c8868473258884723330cf4bf1046cae66e901e68c0ea91c141635b7a"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade7-shortbank-v0.1.json",
+        "sha256": "8aa19d74116eb7a3972ac43cf93b3eaf2280772a98846cf83850c6cda260b5d2"
+      },
+      "validator": {
+        "path": "Tools/validate_grade7_extension_request_v0_1.py",
+        "sha256": "f373315c8868473258884723330cf4bf1046cae66e901e68c0ea91c141635b7a"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade9-table-v0.1.json",
+        "sha256": "c6a96b994d0ef0e52eac1661655b4a6a225e9e05628ad8a549528162ce21d323"
+      },
+      "validator": {
+        "path": "Tools/validate_extension_authoring_request_v0_1.py",
+        "sha256": "85f8f1dec93b6c9fc25a2c6312a9ea807dd89d98f872802e6fe62510ecf5fe47"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade9-wordbank-v0.1.json",
+        "sha256": "7a24b1f379bb1ec8d37f3ecfc13bf16f47f1da90fca831b11829da240001ce72"
+      },
+      "validator": {
+        "path": "Tools/validate_extension_authoring_request_v0_1.py",
+        "sha256": "85f8f1dec93b6c9fc25a2c6312a9ea807dd89d98f872802e6fe62510ecf5fe47"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade12-graph-v0.1.json",
+        "sha256": "f185a6acc1bbdbd037b8dcba3c479e9375a0cc5bb8b812b15054f582c48569af"
+      },
+      "validator": {
+        "path": "Tools/validate_grade12_graph_request_v0_1.py",
+        "sha256": "227dedf774fba55e32f91e7f7b18b191bde3dad6367001b7f5fc6b3ae902b5b4"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade8-survey-v0.1.json",
+        "sha256": "f8e4e46fad319d33ea193d4c783aa07a3641a8c80e5a5fc12de9bfc2426f4a72"
+      },
+      "validator": {
+        "path": "Tools/validate_grade8_extension_request_v0_1.py",
+        "sha256": "c4f48d63991a7dfe50e05d5154de7349c0b36b902537745db5e17870adc7f44b"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade8-insertion-v0.1.json",
+        "sha256": "4746a36678f092ffd65c7fe973514d47997c1158099897ddebc8885a8dcaff73"
+      },
+      "validator": {
+        "path": "Tools/validate_grade8_extension_request_v0_1.py",
+        "sha256": "c4f48d63991a7dfe50e05d5154de7349c0b36b902537745db5e17870adc7f44b"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade10-heading-insertion-v0.1.json",
+        "sha256": "061bef1141324e9d334bf27f3e3734dc994e4929bd176da1fd583d554139fdae"
+      },
+      "validator": {
+        "path": "Tools/validate_grade10_heading_insertion_request_v0_1.py",
+        "sha256": "a578e46fdb4b3d9419e8f56eda73b5054361d91a2ec51a4562cc3b9c30702d92"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade10-advice-email-v0.1.json",
+        "sha256": "4231f33f1aafde3ebd40265afc331ff23745aada2d20076cf6c08cd6a0145cfb"
+      },
+      "validator": {
+        "path": "Tools/validate_grade10_advice_email_request_v0_1.py",
+        "sha256": "82350a9328156abe8ac91ae52d026b0cef535d294a4aecc84ac4160dd1659fd3"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade11-mixed-insertion-v0.1.json",
+        "sha256": "b5e5615754e7810535b2feeaf689fb834e7dab372c511125b2db86917f1b33e9"
+      },
+      "validator": {
+        "path": "Tools/validate_grade11_mixed_insertion_request_v0_1.py",
+        "sha256": "989f54f9a9ccde98ed66244f41674aaf87de509275efa0b493b1ef872f1b2442"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade12-portrait-insertion-v0.1.json",
+        "sha256": "b214f3c79788d5ace616b3b3c85ebd515753bfd78fc84a0695b271c8c955787d"
+      },
+      "validator": {
+        "path": "Tools/validate_grade12_portrait_insertion_request_v0_1.py",
+        "sha256": "b6a872da3b72fbf2b8ca1688f4062f1ca7b2f07c3204c5cf5eda1db70729d478"
+      },
+      "not_model_or_English_validation": true
+    },
+    {
+      "request": {
+        "path": "FirstRelease/Expansions/generation-request-grade8-four-three-reading-v0.1.json",
+        "sha256": "9a36ef468adc0d9bb7860b9e6cca7bda6329cb454427b4d5bae0dc1508d34510"
+      },
+      "validator": {
+        "path": "Tools/validate_grade8_four_three_reading_request_v0_1.py",
+        "sha256": "ab2a5367c5914b966a12e23564ae18f8eb1aaa8d01b9eae532de25e51d2691c2"
+      },
+      "not_model_or_English_validation": true
+    }
+  ],
+  "request_support_not_all_source_formats": true,
+  "open_core_adjudication_queue": {
+    "path": "FirstRelease/open-response-adjudication-queue-v0.1.json",
+    "sha256": "d63a82100c1725e082839045aa6f8ae353b47374c8f38f931e876ba8f9af4c3b"
+  },
+  "independent_teacher_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "full_benchmark_complete": false,
+  "longterm_scope_preserved": "16levels/4paralleldirections/M1-M7/G01-G17",
+  "open_extension_adjudication_queue": {
+    "path": "FirstRelease/Expansions/source-adjudication-queue-v0.4.json",
+    "sha256": "353a99e3bdf9fb20c808276f05063a2443abfc2ce174d7e44b68ef99b1c03a6a"
+  },
+  "response_family_overview": {
+    "path": "FirstRelease/response-family-overview-v0.11.json",
+    "sha256": "31ca21095b32e8b1e0decbbc7e85623f994833e401f4a72f4820b0f61d38d443"
+  },
+  "mixed_response_points_not_choice_accuracy_denominator": true,
+  "whole_productive_task_response_points": 2,
+  "grade11_source_slot_function_annotation": {
+    "path": "FirstRelease/Expansions/grade11-insertion-slot-functions-v0.1.json",
+    "sha256": "30ffa2e01e1e66d99664bc33bbe773b6d9dd4af3fcb611cff314310de7d68b1d"
+  },
+  "grade8_selected_context_lexical_observations": {
+    "path": "Vocabulary/grade8-context-control-observations-v0.1.json",
+    "sha256": "0d1a250404468e7490c746f99442e6fb9d96a3b73d55291312d95a733a4b0891"
+  },
+  "lexical_reference_not_context_or_Chinese_grade_calibration": true,
+  "measured_reading_reference_cards": {
+    "path": "FirstRelease/measured-reading-reference-cards-v0.5.json",
+    "sha256": "62df470906a3a7756cc7084ad953f891eac6d8d37b06de764e0aae91743bd4d8"
+  },
+  "new_open_short_response_not_fully_literal_scoring": true,
+  "new_grade11_options_author_only_review": true,
+  "additional_generation_request_controls": 0,
+  "grade10_finite_unit_annotation": {
+    "path": "FirstRelease/Expansions/Grade10FunctionFiniteUnitAnnotations-v0.1.json",
+    "sha256": "78f6dc15e2ca088b88b3987a79b0ca4cf57b267c98ba7c5e5af1ec1a6feccea9"
+  },
+  "historical_core_family_identity_alias": {
+    "path": "FirstRelease/current-core-family-identity-alias-v0.1.json",
+    "sha256": "714823b1cab68df0c6e0c71ad7ba6e6887f5aca0b5d86b0c28464243765bee8c"
+  },
+  "current_mode_direct_stable_family_ids": true,
+  "grade10_stance_lexical_evidence": {
+    "path": "FirstRelease/Expansions/Grade10UnsupportedStanceEvidence-v0.1.json",
+    "sha256": "fea46a55781e66331353d21aff17e0c4b235a28a0e5592b8c768c328c8b8ef70"
+  },
+  "grade10_stance_lexical_list_probes": {
+    "path": "FirstRelease/Expansions/Grade10SupportStanceLexicalLookup-v0.1.json",
+    "sha256": "49ab4f0d48541de73c97cc8e53b2f8d34f322faa09aa61a20159f73a0757ca32"
+  },
+  "grade9_heading_insertion_protocol": {
+    "path": "FirstRelease/Expansions/Grade9HeadingInsertionProtocol-v0.1.md",
+    "sha256": "69873573b1908c479c1c342bf1dbb80e40ad396e6bf693a0097c48e12c537471"
+  },
+  "grade10_continuation_protocol": {
+    "path": "FirstRelease/Expansions/Grade10ContinuationProtocol-v0.1.md",
+    "sha256": "4465aba360b71d1b19b5f2d37d8a98604d26daee9608bae52389c470ec569673"
+  },
+  "new_heading_continuation_generation_request_support": false,
+  "new_source_component_review_not_generation_request_support": true,
+  "response_overview_source_counts_are_historical_creation_context": false,
+  "grade8_concept_context_lexical_observations": {
+    "path": "Vocabulary/grade8-concept-context-observations-v0.1.json",
+    "sha256": "642eaaa50affa430971564bf50a5f52fbdbb77a06be7d443dfb868546ce26dde"
+  },
+  "grade8_local_concept_protocol": {
+    "path": "FirstRelease/Expansions/Grade8LocalConceptReadingProtocol-v0.1.md",
+    "sha256": "204d2b3d70a4f418b844a29c305c4e52f84f567e334fa68b7b63b6ffc9441ff1"
+  },
+  "new_concept_generation_request_support": false,
+  "grade8_sentence_translation_protocol": {
+    "path": "FirstRelease/Expansions/Grade8SentenceTranslationProtocol-v0.1.md",
+    "sha256": "4b51922c2f71738b52f23b77b5f454125d91195550d6ae4b171ba4347a2d2404"
+  },
+  "grade9_unpaired_publisher_sample": {
+    "path": "FirstRelease/Expansions/grade9-tup-public-sample-unpaired-observations-v0.1.json",
+    "sha256": "a679e24a923a3761ee4ee3e1294589f8abcb53cd10829eca81d004f620696f06"
+  },
+  "unpaired_publisher_task_faces": 8,
+  "unpaired_publisher_response_opportunities": 38,
+  "unpaired_sample_not_in_source_totals": true,
+  "new_translation_generation_request_support": false,
+  "member_total_validator": {
+    "path": "Tools/validate_current_authoring_bundle.py",
+    "sha256": "ac60d0ce1bb9e3b7ca28a8a089714e27c08ee945d6f41d787da9b64709723c98"
+  },
+  "header_repair_no_question_or_quality_admission": true,
+  "grade7_six_cloze_protocol": {
+    "path": "FirstRelease/Expansions/Grade7SixClozeProtocol-v0.1.md",
+    "sha256": "0ac20fbafbffcd714b99a859aa0b51a2e45ab1c9217a58611008e77dc9e44aa5"
+  },
+  "new_grade7_six_cloze_generation_request_support": false
+}
