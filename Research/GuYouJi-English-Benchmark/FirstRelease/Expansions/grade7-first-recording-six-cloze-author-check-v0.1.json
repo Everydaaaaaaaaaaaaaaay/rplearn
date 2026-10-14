@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "grade": 7,
+  "kind": "complete_six_blank_three_option_narrative_cloze",
+  "candidate_path": "FirstRelease/Expansions/grade7-first-recording-six-cloze-v0.1.md",
+  "candidate_sha256": "f99c3253622c43669387c27b8ddcbb3731a29ead6ca28a9a700650fcc804ae30",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade7-v0.3.md",
+    "sha256": "0d399a44ac86a26fb43e2197899e742eac9006ec45c6d236f1aeb22b98c21989"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+    "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+  },
+  "source_group_id": "g7.xicheng2025.clozeStory",
+  "source_paper_acquisition_id": "grade7-xicheng2025-public-paper-key20261014",
+  "source_private_review_acquisition_id": "grade7-xicheng2025-ten-groups-private-review20261014-record",
+  "source_private_review_sha256": "b68b2af8d01b03ecb6afdea25ed5c232ccaaaa872633f5e9ec57f6c52cc188ea",
+  "source_question_key_pages": [
+    [
+      4,
+      5
+    ],
+    [
+      13
+    ]
+  ],
+  "questions": 6,
+  "options_each": 3,
+  "complete_author_vector": [
+    "C",
+    "B",
+    "A",
+    "C",
+    "B",
+    "A"
+  ],
+  "items": [
+    {
+      "item": 1,
+      "author_letter": "C",
+      "author_word": "door",
+      "all_three_options": [
+        "window",
+        "chair",
+        "door"
+      ]
+    },
+    {
+      "item": 2,
+      "author_letter": "B",
+      "author_word": "steps",
+      "all_three_options": [
+        "questions",
+        "steps",
+        "songs"
+      ]
+    },
+    {
+      "item": 3,
+      "author_letter": "A",
+      "author_word": "agreed",
+      "all_three_options": [
+        "agreed",
+        "refused",
+        "forgot"
+      ]
+    },
+    {
+      "item": 4,
+      "author_letter": "C",
+      "author_word": "worried",
+      "all_three_options": [
+        "bored",
+        "proud",
+        "worried"
+      ]
+    },
+    {
+      "item": 5,
+      "author_letter": "B",
+      "author_word": "after",
+      "all_three_options": [
+        "before",
+        "after",
+        "until"
+      ]
+    },
+    {
+      "item": 6,
+      "author_letter": "A",
+      "author_word": "finished",
+      "all_three_options": [
+        "finished",
+        "forgotten",
+        "lost"
+      ]
+    }
+  ],
+  "whole_group_refilled_text": "Our class needed someone to read a short notice at Friday's school meeting. Noah knew all the words, but speaking in front of a crowd made him nervous. During practice on Tuesday, he stood by the door instead of joining the others near the front of the room. I went over to him. He was still standing beside that same door, holding a copy of the notice.\n\n\"I can read it at home,\" he told me, \"but here I keep thinking that everyone will laugh if I make a mistake.\"\n\nI did not ask him to read the whole notice immediately. Instead, I suggested taking smaller steps. We could begin with one sentence, listen to it together, and then decide what to do next. He would not have to read at the meeting unless he wanted to.\n\nI put a recorder on a table and explained that we could delete the recording after listening. No one else would hear it yet. After thinking for a moment, Noah agreed to record the first sentence. He pressed the red button and read the line. His voice was quiet, but every word could be heard. He listened to the recording twice, then said, \"That sounds more like me than I thought.\"\n\nFor the next sentence, he wanted me to sit beside him. His hands began to shake again because he feared getting a word wrong. Though he was still worried, he chose to try. When he stopped at a difficult word, I waited. I spoke only after he asked for help, and then he continued from that word.\n\nWe worked through the other two sentences in the same way. At the end, the recorder held all four sentences of the notice. Noah had finished the whole text, and he was smiling. He still wanted more practice before making a decision about Friday. For now, hearing his own complete recording was enough.",
+  "whole_group_refilled_sha256": "1bd37419ed59df27de7ecc7d6e9a99d261f73e35fbe1da1f94fbcb88f01ba654",
+  "all18_option_positions_reviewed_in_candidate": true,
+  "all6_source_and_all18_new_choices_separate": true,
+  "source_4bank_and6story_not_one10blank_passage": true,
+  "new_context_and_operator_changes": [
+    "voluntary notice recording instead of storm and games",
+    "explicit four sentence incremental completion",
+    "wait until help is requested;before-after order chosen from actual story",
+    "continued fear does not require fear gone or Friday participation"
+  ],
+  "load_reference": {
+    "path": "build/english-benchmark-research-20261012/grade7-six-cloze-source-author-load20261014.json",
+    "sha256": "df57d9f4e1540d5e2cb8f8eb6c2971f569b5717f366174562f9f8f38e2c84c39"
+  },
+  "task_load": {
+    "gapped_body_excluding_slot_labels": {
+      "english_digit_tokens": 312,
+      "han_characters": 0
+    },
+    "options_excluding_letters": {
+      "english_digit_tokens": 18,
+      "han_characters": 0
+    },
+    "instruction": {
+      "english_digit_tokens": 3,
+      "han_characters": 23
+    },
+    "slot_label_count": 6,
+    "option_letter_count": 18,
+    "full_reading_profile_or_sentence_metrics": null,
+    "title": {
+      "english_digit_tokens": 3,
+      "han_characters": 0
+    },
+    "author_fully_refilled_body_not_student_input": {
+      "english_digit_tokens": 318,
+      "han_characters": 0
+    }
+  },
+  "source_task_load": {
+    "gapped_body_excluding_slot_labels": {
+      "english_digit_tokens": 315,
+      "han_characters": 7
+    },
+    "options_excluding_letters": {
+      "english_digit_tokens": 18,
+      "han_characters": 0
+    },
+    "instruction": {
+      "english_digit_tokens": 3,
+      "han_characters": 32
+    },
+    "slot_label_count": 6,
+    "option_letter_count": 18,
+    "full_reading_profile_or_sentence_metrics": null,
+    "image_English_gloss_labels": {
+      "english_digit_tokens": 5,
+      "han_characters": 0
+    }
+  },
+  "actual_saved_transition_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_called": false,
+  "coarse_exposure_cluster": "grade7_original_first_recording_single6cloze_same_source_form"
+}
