@@ -8,6 +8,8 @@
 
 - **当前统一入口：[审阅包0.13](FirstRelease/ReviewPackage-v0.13.md)、[可执行标准0.5](FirstRelease/PracticalAuthoringStandard-v0.5.md)、[组合索引0.4](FirstRelease/combined-review-index-v0.4.json)**：六年级各三父卷身份，101源组实例/639参考；37现行原创材料家族/256响应点按[响应模式0.2](FirstRelease/ResponseModeCoverage-v0.2.md)分层；十三请求/27源裁决＋17核心项仍待独立验证。[交付检查0.5](FirstRelease/DeliveryCheck-v0.5.md)列可审阅范围与缺口。
 
+当前保存见[第29恢复](Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)：6820文件全COW独立恢复，现行37/256/十三请求/27源与17核心、真实修订和未评分示例可恢复；仍非异机/完整环境或教育许可验收。
+
 以下增量记录保留各自时点的计数和保存边界。
 
 最新高三增量：[人物报道五空七选局部/全组闭环](Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。已纳入统一包0.13/组合0.4，旧35/246保留历史。

@@ -8,6 +8,8 @@
 
 从[统一审阅包0.13](ReviewPackage-v0.13.md)、[组合索引0.4](combined-review-index-v0.4.json)和[可执行标准0.5](PracticalAuthoringStandard-v0.5.md)开始。源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展11/41，合37现行材料家族256响应点；十三份请求仅有本机文件/声明关系检查。详见[交付检查0.5](DeliveryCheck-v0.5.md)和[响应模式分母0.2](ResponseModeCoverage-v0.2.md)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
+现行0.13/37材料256点/十三请求/27源队列已纳入[第29完整恢复](../Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)的6820文件严格COW/SHA/独立inode核验；29自身结果及后续素材留下一批，未异机/完整环境或独立教育验收。
+
 下文为各时点增量与保存边界，旧版本不作为当前默认。
 
 最新高三增量：[人物报道五空七选局部/全组闭环](../Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。已纳入统一包0.13/组合0.4，旧35/246保留历史。
