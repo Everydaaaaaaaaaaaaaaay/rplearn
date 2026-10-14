@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [小学中高段](Studies/2026-10-14-primary456-simulation-paired-and-unpaired-assets.md)：五年级显式模拟七组38参考，主28/附加10分开；四年级仅答案三页、六年级仅题面六页/必要图均未配对，24新原图全核。源键与10观察保留，未学校认证或学生/商用验收。
+
 - [第35独立恢复](Studies/2026-10-14-checkpoint35-cet-primary-and-current24-recovery.md)：7573文件/2,698,064,764逻辑字节全严格COW/独立摘要核验，现53/338与24控制、CET和小学另层已保存；35自身及后取三小学PDF候选下批，未异机/独立学生或权利验收。
 
 - [小一/小二非纸笔规格](Primary/Foundation/Grade1Grade2NonPaperSpecifications-v0.1.md)：复用教育部通知，新增学校两方案八模式；卡/媒体/真实表现未得，源题组零增；另[两书面口头原型](Primary/Foundation/TwoOralPrototypeProtocol-v0.1.md)13卡＋共同任务两人记录、B卡真实去提示修订；未执行语音/学生/客户端验收。

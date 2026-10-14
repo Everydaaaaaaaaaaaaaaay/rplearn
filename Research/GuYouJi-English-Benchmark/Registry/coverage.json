@@ -91,24 +91,31 @@
       "label": "小四",
       "priority": "P1",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "not_collected",
+      "semester_exam_groups": "candidate_answer_only_missing_questions",
       "curriculum_alignment": "partial_legacy_evidence_only",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Existing practice units do not establish current textbook scope or student difficulty."
+      "notes": "Existing practice units do not establish current textbook scope or student difficulty. 四上2019-20三页仅答案，全核图但题面/媒体缺，76题号不等76完整题。",
+      "unpaired_source_preparation": {
+        "index_path": "Primary/unpaired-grade4-grade6-candidates-v0.1.json",
+        "source_acquisition_id": "primary4-2019-20-xschu-candidate20261014",
+        "paired_groups": 0,
+        "true_exam_institution_authenticated": false,
+        "no_grade_or_student_or_commercial_admission": true
+      }
     },
     {
       "level": "primary5",
       "label": "小五",
       "priority": "P1",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "not_collected",
+      "semester_exam_groups": "partial_selected_explicit_simulation_paired_groups_true_school_matrix_missing",
       "curriculum_alignment": "partial_legacy_evidence_only",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Existing practice units do not establish current textbook scope or student difficulty. 五下PEP Unit4教研附件的先前工具文本及2015命题分析摘要已观察，原站/工具后续均483且未取原件。仅候选元数据，22活动标题不是22题，24校命题活动不是24施测卷，媒体/键/ISBN缺失，网页2026日期不作原刊期。",
+      "notes": "Existing practice units do not establish current textbook scope or student difficulty. 五下PEP Unit4教研附件的先前工具文本及2015命题分析摘要已观察，原站/工具后续均483且未取原件。仅候选元数据，22活动标题不是22题，24校命题活动不是24施测卷，媒体/键/ISBN缺失，网页2026日期不作原刊期。 新友果五上期中模拟22页取得，15页核图/七配套组38参考，主28附10分开，10问题/9响应暂缓正向；不是学校真卷。原键保留，do/any解释与文本判断/时间/身份范围不外推，独立学生和权利仍缺。",
       "teacher_reference_candidate_evidence": {
         "observations_path": "Curriculum/primary5-bnu-candidate-reference-observations-v0.1.json",
         "grade_text_attribution_seen_but_original_source_bytes_unavailable": true,
@@ -116,6 +123,20 @@
         "source_media_answers_and_ISBN_missing": true,
         "2015_article_summary_not2026_exam": "15WH7 pp39-45",
         "complete_grade_or_curriculum_or_rights_admission": false
+      },
+      "selected_simulation_preparation": {
+        "index_path": "Primary/Grade5/selected-simulation-source-groups-v0.1.json",
+        "specification_path": "Primary/Grade5/SimulationSourceSpecifications-v0.1.md",
+        "complete_selected_groups": 7,
+        "selected_reference_responses": 38,
+        "parent_identity_count": 1,
+        "main_additional_response_counts": [
+          28,
+          10
+        ],
+        "true_exam_authenticated": false,
+        "new_authored_groups": 0,
+        "independent_student_or_commercial_admission": false
       }
     },
     {
@@ -123,12 +144,19 @@
       "label": "小六",
       "priority": "P1",
       "current_textbook_version_matrix": "not_established",
-      "semester_exam_groups": "not_collected",
+      "semester_exam_groups": "candidate_question_pages_only_missing_published_keys_and_media",
       "curriculum_alignment": "partial_legacy_evidence_only",
       "permission_cleared_gold_groups": 0,
       "student_calibration": "not_collected",
       "cefr_mapping": "not_established",
-      "notes": "Existing practice units do not establish current textbook scope or student difficulty."
+      "notes": "Existing practice units do not establish current textbook scope or student difficulty. 六上2022-23六题面页/必要图全核，公布键/音频脚本/rubric未得，给定开头+五续写画面不当五篇作文。",
+      "unpaired_source_preparation": {
+        "index_path": "Primary/unpaired-grade4-grade6-candidates-v0.1.json",
+        "source_acquisition_id": "primary6-2022-23-xdf-upper-candidate20261014",
+        "paired_groups": 0,
+        "true_exam_institution_authenticated": false,
+        "no_grade_or_student_or_commercial_admission": true
+      }
     },
     {
       "level": "junior1",
