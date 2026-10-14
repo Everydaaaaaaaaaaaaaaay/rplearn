@@ -7758,10 +7758,13 @@
       "priority": "P1",
       "provenance": "official_publisher",
       "checked_on": "2026-10-14",
-      "verification_status": "fetch_failed_timeout",
-      "notes": "Open and find returned timeout;search locator not body obtained. No current quality standard admission.",
+      "verification_status": "public_access_failed_timeout_and_HTTP403",
+      "notes": "Open and find returned timeout;search locator not body obtained. No current quality standard admission. Normal bounded direct request also HTTP403 on20261014;no PDFbytes or primary scoringstandard obtained. Prior tooltimeout remains. Stop repeatedroute;no login/proxy/validation bypass,searchsnippet still notprimary text.",
       "acquisition_ids": [
-        "oecd-open-response-1-tool-extract20261014-record"
+        "oecd-open-response-1-tool-extract20261014-record",
+        "acquire-oecd-quality-standards-public20261014-record",
+        "oecd-quality-standards-public-direct-attempt20261014-record",
+        "register-oecd-public-quality-failure20261014-record"
       ],
       "rights": {
         "commercial_publication": "unknown",
