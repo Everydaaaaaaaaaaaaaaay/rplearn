@@ -1,0 +1,114 @@
+{
+  "version": "0.1",
+  "grade": 11,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade11-v0.3.md",
+    "sha256": "548200a07feb63e53d7568cc0008956653fa26c691f32659b384eb4b1922bb25"
+  },
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json",
+    "sha256": "f7fe13aa06155e176f4e8e37e26f17a63617a089bf6921cc5b1192694894b479"
+  },
+  "source_slot_annotation": {
+    "path": "FirstRelease/Expansions/grade11-insertion-slot-functions-v0.1.json",
+    "sha256": "30ffa2e01e1e66d99664bc33bbe773b6d9dd4af3fcb611cff314310de7d68b1d"
+  },
+  "source_group_id": "g11.spring2024.insertionE",
+  "source_paper_acquisition_id": "grade11-spring2024-public-bundle20261014",
+  "source_format": {
+    "items": 5,
+    "features": {
+      "materials": 1,
+      "genre_or_operation": "career guidance hierarchy; five gaps/seven sentences",
+      "gaps": 5,
+      "options": 7,
+      "extra_options": 2,
+      "reuse_rule_explicit": false
+    }
+  },
+  "all_source_reference_numbers": [
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "positive_source_reference_numbers": [
+    36,
+    37,
+    38,
+    40
+  ],
+  "source_reference_exclusions": [
+    39
+  ],
+  "source_function_number_to_target_item": {
+    "36": 1,
+    "37": 2,
+    "38": 3,
+    "39": 4,
+    "40": 5
+  },
+  "target_format": {
+    "items": 5,
+    "shared_options": 7,
+    "two_extra": true,
+    "option_at_most_once": true,
+    "heading_blank_items": [
+      2
+    ],
+    "opening_coordinated_clause_items": [
+      1
+    ],
+    "conditional_clause_items": [
+      4
+    ],
+    "complete_sentence_items": [
+      3,
+      5
+    ],
+    "function_hints_in_student_instruction": false,
+    "complete_single_guidance_text": true
+  },
+  "source_once_rule_explicit": false,
+  "authored_once_rule_is_source_explicit": false,
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade11-investigation-insertion-v0.2.md",
+    "sha256": "7887a0c1359a0f61671a68493ccb2130bd717be1f3cf95011356b5f65705896d"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade11-investigation-insertion-author-check-v0.2.json",
+    "sha256": "daa73ffca41ff1213e3b7ee8b93fc8aa283f8bb93e31d3baed26f1af814544f6"
+  },
+  "new_scenario": "Fictional studentinvestigation question/method/resources/plan,notcareer orborrowedsourcebody",
+  "target_changes_and_justification": [
+    "newtopic/newwording/reorderedanswerletters BFAGD vs sourceGDBAF",
+    "retain37heading-to2/39conditional-to4 andpunctuation suppliedbymaterial",
+    "source39semanticstrength unresolved isolated,conditionform referenceonly;newdistractoropposite equipmentneed clarified",
+    "saved0.1to0.2 instructionalignment removes per-slot hints;body/options unchanged andfullre-solved"
+  ],
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_alternatives",
+    "whole_group_solve_or_refill",
+    "actual_revision_evidence_if_changed",
+    "independent_unknowns_separate",
+    "heading_clause_sentence_and_supplied_punctuation_distinguished",
+    "quarantined_source_semantics_not_positive_gold"
+  ],
+  "all_shared_material_required": true,
+  "source_reference_list_exhaustive": false,
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "correct_title_leaked": false
+  },
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "original_source_republication_admitted": false,
+  "commercial_training_admitted": false,
+  "third_party_source_transmission_admitted": false,
+  "source_factual_gold": false
+}
