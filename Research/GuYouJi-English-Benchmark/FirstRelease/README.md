@@ -6,7 +6,7 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-从[统一审阅包0.13](ReviewPackage-v0.13.md)、[组合索引0.4](combined-review-index-v0.4.json)和[可执行标准0.5](PracticalAuthoringStandard-v0.5.md)开始。源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展11/41，合37现行材料家族256响应点；十三份请求仅有本机文件/声明关系检查。详见[交付检查0.5](DeliveryCheck-v0.5.md)和[响应模式分母0.2](ResponseModeCoverage-v0.2.md)。独立、学生、商用、生产和全部长期门槛仍未通过。
+从[统一审阅包0.14](ReviewPackage-v0.14.md)、[组合索引0.5](combined-review-index-v0.5.json)和[可执行标准0.6](PracticalAuthoringStandard-v0.6.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展12/45，合38现行材料家族260响应点；十四请求仅本机文件/声明控制。见[交付检查0.6](DeliveryCheck-v0.6.md)、[响应分母0.3](ResponseModeCoverage-v0.3.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
 现行0.13/37材料256点/十三请求/27源队列已纳入[第29完整恢复](../Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)的6820文件严格COW/SHA/独立inode核验；29自身结果及后续素材留下一批，未异机/完整环境或独立教育验收。
 
@@ -14,7 +14,7 @@
 
 新词汇约束：[实际语境/官方别名/义项徽标](../Studies/2026-10-14-actual-context-spelling-alias-and-sense-level-controls.md)，20引文绑定，organiser显式别名与work名词1A1/作品8A2分层；两词表差别/三未知/源结构/403访问限制保留。未推通篇CEFR、年级、百分比或许可；第29后新增。
 
-新初二增量：[四题三选说明与同模式语言负荷](../Studies/2026-10-14-grade8-four-three-explanation-and-paired-language-load.md)，源271/36/80与新242/33/75分组件，C/B/A/B全解/12选项/17句。扩展0.11为12材料45点，全分层38/260；源/权限/标定不因文本重算成立，旧0.13/37/256与第29保存边界留存，后续合并。
+新初二增量：[四题三选说明与同模式语言负荷](../Studies/2026-10-14-grade8-four-three-explanation-and-paired-language-load.md)，源271/36/80与新242/33/75分组件，C/B/A/B全解/12选项/17句。扩展0.11为12材料45点，全分层38/260；源/权限/标定不因文本重算成立，已并入当前0.14/38/260，旧0.13/37/256和第29保存边界保留。
 
 最新高三增量：[人物报道五空七选局部/全组闭环](../Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。已纳入统一包0.13/组合0.4，旧35/246保留历史。
 
