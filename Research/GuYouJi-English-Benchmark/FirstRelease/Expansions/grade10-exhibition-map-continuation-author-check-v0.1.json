@@ -1,0 +1,167 @@
+{
+  "version": "0.1",
+  "grade": 10,
+  "kind": "complete_two_paragraph_story_continuation_with_unscored_original_examples",
+  "candidate_path": "FirstRelease/Expansions/grade10-exhibition-map-continuation-v0.1.md",
+  "candidate_sha256": "f206e43d86c928983821e3c3426d982ea1e94d70752ee6736b7cc7724d96223f",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade10-v0.3.md",
+    "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+    "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+  },
+  "source_task_number": 67,
+  "source_paper_acquisition_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+  "source_private_review_acquisition_id": "grade10-wenzhou2025-seven-groups-and-rubrics-private-review20261014-record",
+  "source_private_review_sha256": "cfbd91b0a7d41a218b0e6340c158bc1c2b831b6a71e3c8988d1d0cc554bffb0b",
+  "source_pages": [
+    {
+      "PDF_page": 8,
+      "acquisition_id": "grade10-wenzhou2025-midterm-inspection-page0820261014-record",
+      "sha256": "1ea2af0144d2d0c076e3c1594d94bb002c39f9ddbd07593951f524dc612c535e"
+    },
+    {
+      "PDF_page": 9,
+      "acquisition_id": "grade10-wenzhou2025-midterm-inspection-page0920261014-record",
+      "sha256": "0da52b15930317360c91fcfd6503c0a1a9fb2515028c17f951dcf4d1d66f8c4c"
+    },
+    {
+      "PDF_page": 20,
+      "acquisition_id": "grade10-wenzhou2025-midterm-inspection-page2020261014-record",
+      "sha256": "21377f4968656d005b504aa7022aed540facdbdaf7f03c84e91daa7d540ca28e"
+    }
+  ],
+  "questions": 1,
+  "task_count": 1,
+  "paragraph_count": 2,
+  "given_paragraph_starters": [
+    "Before the others arrived, Mei placed her notebook beside Daniel's map.",
+    "When their teacher came in, the two students were ready to explain their decision."
+  ],
+  "task_load": {
+    "stimulus": {
+      "english_digit_tokens": 291,
+      "han_characters": 0
+    },
+    "given_starters_once": {
+      "english_digit_tokens": 25,
+      "han_characters": 0
+    },
+    "stimulus_and_starters_english_tokens": 316,
+    "sentence_units": null,
+    "sentence_boundary_status": "not_annotated_no_mean_or_max_inferred",
+    "examples": [
+      {
+        "label": "task_fulfilling_author_example",
+        "complete_two_paragraph_text_sha256": "2210147f44f9137140e17f466641bffb91359e0d613448882ec3cd94721c2f56",
+        "added_paragraph_tokens": [
+          72,
+          67
+        ],
+        "added_total_tokens": 139,
+        "given_starters_excluded": true,
+        "observed_teacher_score": false,
+        "numeric_score": null,
+        "band": null
+      },
+      {
+        "label": "fluent_source_contradiction_counterexample",
+        "complete_two_paragraph_text_sha256": "36ebe3d202f7478f92605be5d6d9683dfdc23edcf2a1c56ac0f698782983a7c4",
+        "added_paragraph_tokens": [
+          75,
+          68
+        ],
+        "added_total_tokens": 143,
+        "given_starters_excluded": true,
+        "observed_teacher_score": false,
+        "numeric_score": null,
+        "band": null
+      }
+    ],
+    "count_method_sha256": "d240a3a6c5fc1e5256ffb544dba53ca32cb17dec155f9f8bdb705dfc557ca070",
+    "counts_not_student_minutes_or_grade_calibration": true
+  },
+  "target_format": {
+    "genre": "story_continuation",
+    "approximately_added_words": 150,
+    "given_starters_excluded_by_authored_policy": true,
+    "source_starter_counting_policy_verified": false,
+    "source_word_tolerance_verified": false,
+    "maximum_points": 25,
+    "five_holistic_bands_high_to_low": [
+      [
+        21,
+        25
+      ],
+      [
+        16,
+        20
+      ],
+      [
+        11,
+        15
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        1,
+        5
+      ]
+    ],
+    "band_first_then_within_band": true,
+    "independent_dimension_point_totals": false,
+    "zero_policy_source_observed": [
+      "noanswer",
+      "too_little_or_unreadable_tojudge",
+      "allcopiedfromsource_or_whollyofftopic"
+    ],
+    "authored_application_excludes_given_starters_from_copying": true,
+    "some_contradictions_not_automatically_wholly_offtopic_or_zero": true,
+    "environment_invalid_distinct_from_language_zero": true
+  },
+  "source_second_starter_explanation_conflict": {
+    "actual_prompt": "The next morning, the atmosphere at home was tense(紧张的) and quiet.",
+    "analysis_quote": "The next morning, the atmosphere at the breakfast table was tense and quiet.",
+    "no_prompt_substitution": true
+  },
+  "source_reference_stories_not_copied": true,
+  "authored_examples": [
+    {
+      "label": "task_fulfilling_author_example",
+      "complete_two_paragraph_text_sha256": "2210147f44f9137140e17f466641bffb91359e0d613448882ec3cd94721c2f56",
+      "added_paragraph_tokens": [
+        72,
+        67
+      ],
+      "added_total_tokens": 139,
+      "given_starters_excluded": true,
+      "observed_teacher_score": false,
+      "numeric_score": null,
+      "band": null
+    },
+    {
+      "label": "fluent_source_contradiction_counterexample",
+      "complete_two_paragraph_text_sha256": "36ebe3d202f7478f92605be5d6d9683dfdc23edcf2a1c56ac0f698782983a7c4",
+      "added_paragraph_tokens": [
+        75,
+        68
+      ],
+      "added_total_tokens": 143,
+      "given_starters_excluded": true,
+      "observed_teacher_score": false,
+      "numeric_score": null,
+      "band": null
+    }
+  ],
+  "whole_task_review_location": "candidate 作者任务核读/反例及原创暂定整体评分协议",
+  "actual_saved_transition_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "coarse_exposure_cluster": "grade10_original_exhibition_map_with_Wenzhou2025_writing67_form_reference"
+}
