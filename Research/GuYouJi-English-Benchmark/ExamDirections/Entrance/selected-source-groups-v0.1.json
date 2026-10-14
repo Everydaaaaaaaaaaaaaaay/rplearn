@@ -1,0 +1,186 @@
+{
+  "version": "0.1",
+  "scope": "selected_2026_tagged_repost_pairs_not_authentic_exam_or_official_current_outline",
+  "groups": [
+    {
+      "source_answer_vector": [
+        "A",
+        "A",
+        "C",
+        "B",
+        "D"
+      ],
+      "component_counts": {
+        "passage": {
+          "english_digit_tokens": 317,
+          "han_characters": 0
+        },
+        "prompts": {
+          "english_digit_tokens": 56,
+          "han_characters": 0
+        },
+        "options": {
+          "english_digit_tokens": 132,
+          "han_characters": 0
+        }
+      },
+      "complete_as_printed_not_independently_authenticated_original": true,
+      "id": "entrance2026.kaoyancn.reading-radio",
+      "direction": "entrance-english-1",
+      "kind": "single_five_four_options",
+      "response_count": 5,
+      "source_acquisition_id": "entrance1-2026-kaoyancn-reconstruction20261014",
+      "source_year_claimed": 2026,
+      "independently_authenticated_original_paper": false
+    },
+    {
+      "source_answer_vector": [
+        "C",
+        "B",
+        "A",
+        "C",
+        "A",
+        "D",
+        "B",
+        "D",
+        "C",
+        "A",
+        "B",
+        "D",
+        "A",
+        "D",
+        "C",
+        "A",
+        "D",
+        "B",
+        "C",
+        "B"
+      ],
+      "complete_as_printed_not_independently_authenticated_original": true,
+      "no_automatic_word_or_sentence_metric_on_gap_text": true,
+      "id": "entrance2026.kaoyancn.cloze-personalisation",
+      "direction": "entrance-english-2",
+      "kind": "single_twenty_gaps_four_options",
+      "response_count": 20,
+      "source_acquisition_id": "entrance2-2026-kaoyancn-reconstruction20261014",
+      "source_year_claimed": 2026,
+      "independently_authenticated_original_paper": false
+    },
+    {
+      "source_answer_vector": [
+        "D",
+        "C",
+        "A",
+        "A",
+        "C"
+      ],
+      "component_counts": {
+        "passage": {
+          "english_digit_tokens": 412,
+          "han_characters": 0
+        },
+        "prompts": {
+          "english_digit_tokens": 48,
+          "han_characters": 0
+        },
+        "options": {
+          "english_digit_tokens": 81,
+          "han_characters": 0
+        }
+      },
+      "complete_as_printed_not_independently_authenticated_original": true,
+      "id": "entrance2026.kaoyancn.reading-libraries",
+      "direction": "entrance-english-2",
+      "kind": "single_five_four_options",
+      "response_count": 5,
+      "source_acquisition_id": "entrance2-2026-kaoyancn-reconstruction20261014",
+      "source_year_claimed": 2026,
+      "independently_authenticated_original_paper": false
+    }
+  ],
+  "selected_group_count": 3,
+  "selected_reference_responses": 30,
+  "parent_identity_count": 2,
+  "per_direction_counts": {
+    "entrance-english-1": [
+      1,
+      5
+    ],
+    "entrance-english-2": [
+      2,
+      25
+    ]
+  },
+  "private_observations_acquisition_id": "entrance2026-entrance2026-selected-source-review20261014-record",
+  "source_issue_observations": [
+    {
+      "id": "E1-reading1-Q21-key-not-in-options",
+      "excluded_from_selected_groups": true,
+      "visual_question_page": 6,
+      "visual_key_page": 26,
+      "observation": "Actual C/D duplicate traveller clause, key C describes earlier domestication than horses absent from printed choices; source transcription defect, not student or intended exam error. No crosskey silent repair."
+    },
+    {
+      "id": "E1-reading3-paragraph-citation",
+      "group_id": "entrance2026.kaoyancn.reading-radio",
+      "source_number": 34,
+      "observation": "Printed citation Paragraphs3and6 but phrase only in the earlier anecdotes and printed indented paragraph count differs from expected6; whole printed passage present but original paragraph arrangement unverified. Hold positive citation template."
+    },
+    {
+      "id": "E1-reading3-broad",
+      "group_id": "entrance2026.kaoyancn.reading-radio",
+      "observation": "Printed broad music likely transcription error; preserve original, not canonical language example."
+    },
+    {
+      "id": "E2-reading1-citation23-24",
+      "group_id": "entrance2026.kaoyancn.reading-libraries",
+      "source_numbers": [
+        23,
+        24
+      ],
+      "observation": "Rendered indents create8paragraphs; attention question cites5 though overlooked6; statistics question cites6 though closure statistics7. Preserve original references; do not base generated evidence on wrong paragraph numbers."
+    },
+    {
+      "id": "E2-reading1-preform",
+      "group_id": "entrance2026.kaoyancn.reading-libraries",
+      "source_number": 22,
+      "observation": "QuestionC preform vs key perform; keep raw spelling difference and intended same function reference distinct."
+    },
+    {
+      "id": "E2-cloze-theboth",
+      "group_id": "entrance2026.kaoyancn.cloze-personalisation",
+      "observation": "Printed perhaps the both felt... kept as transcription issue, not standard English."
+    },
+    {
+      "id": "E2-PartB-missing-and-wrong-type",
+      "excluded_from_selected_groups": true,
+      "visual_question_pages": [
+        18,
+        19,
+        20
+      ],
+      "observation": "Published directions subheading/paragraphs41-45 but actual5person names/7opinion choices; numbered source paragraphs1,2,3,5 with missing4 and three named people absent. Two extra subheadings do need contradict intended unused; incomplete material, zero pairedgroupadded."
+    },
+    {
+      "id": "NEEA2022-cover-only",
+      "observation": "Onlyofficialcover/CIP/contents3JPEG acquired/read;HTMLanddirectory ordinary403;bookcontent/actualspecification/appendixexamplesnotacquired. ISBN978-7-04-056667-3;publication2021-08;contents include2020-21sample from157, nofullcontentor2026norm inferred."
+    }
+  ],
+  "positive_anchor_holds": [
+    {
+      "group_id": "entrance2026.kaoyancn.reading-radio",
+      "source_number": 34
+    },
+    {
+      "group_id": "entrance2026.kaoyancn.reading-libraries",
+      "source_number": 23
+    },
+    {
+      "group_id": "entrance2026.kaoyancn.reading-libraries",
+      "source_number": 24
+    }
+  ],
+  "complete_current_official_outline_content": false,
+  "new_authored_groups": 0,
+  "independent_teacher_student_or_commercial_admission": false
+}
