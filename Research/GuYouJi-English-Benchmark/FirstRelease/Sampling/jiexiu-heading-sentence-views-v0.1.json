@@ -1,0 +1,238 @@
+{
+  "version": "0.1",
+  "current_batches": {
+    "path": "FirstRelease/Sampling/current-batches-v0.5.json",
+    "sha256": "7a2b775a0a7a39c7fc958b4d7719d5634581dbf32ad024fdda5f1bcc34e255ca"
+  },
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-text-span-views-v0.1.json",
+    "sha256": "276bd991707d90a2103fcbe87215463e058b6d6fbafd2ce24f3b2bfc09f3b178"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-text-span-audit20261015q-v0.1.json",
+    "sha256": "df4d0d5c0bd275ddb7f872f98d17ac43cbc00079eda460ca47ab0292c57249d5"
+  },
+  "views": [
+    {
+      "group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.headingA",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/heading-candidate-grade7-jiexiu-2507579320261015r-resource-v0.2.txt",
+        "sha256": "3d19e546246f00ddefa6904a7acd2d18de590f7180bc8dacbb703341c5ab9384"
+      },
+      "material_start": 6917,
+      "material_end": 7983,
+      "material_sha256": "17335cafd05f5e6981ec97824316bedd48914a2d833b507e99a46c4b5b865647",
+      "excluded_offsets": [
+        {
+          "start": 101,
+          "end": 105,
+          "literal": "34.\n",
+          "role": "blank_label",
+          "blank_id": 34
+        },
+        {
+          "start": 227,
+          "end": 231,
+          "literal": "35.\n",
+          "role": "blank_label",
+          "blank_id": 35
+        },
+        {
+          "start": 447,
+          "end": 451,
+          "literal": "36.\n",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 595,
+          "end": 599,
+          "literal": "37.\n",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 830,
+          "end": 834,
+          "literal": "38.\n",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 369,
+          "end": 387,
+          "literal": "七年级英语试题第 3页（共 8 页）",
+          "role": "page_decoration"
+        },
+        {
+          "start": 388,
+          "end": 446,
+          "literal": "{#{QQABCYQ55goQkoSACR6qRQ26CgkYsIEhLCgkQQAcuAQCwBNABAA=}#}",
+          "role": "page_decoration"
+        }
+      ],
+      "printed_numbers": [
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "shared_candidates": [
+        {
+          "label": "A",
+          "start": 6846,
+          "end": 6854,
+          "sha256": "ff15e84799743b7e26ef3624de58cea5b85fdbf311642707eb0d990b838d2aba"
+        },
+        {
+          "label": "B",
+          "start": 6858,
+          "end": 6868,
+          "sha256": "3e0392d0ee6ac8e3dcebc1fcbf067cf38aeb6b64eccad31bf32768ac79b28de3"
+        },
+        {
+          "label": "C",
+          "start": 6872,
+          "end": 6886,
+          "sha256": "fbed36d7a3f8dfdabc8039fc83a720d161d2c286238d138418375b05eb326161"
+        },
+        {
+          "label": "D",
+          "start": 6890,
+          "end": 6902,
+          "sha256": "b4b2ee0e6dbd7a62d1780df618f68ae38214b35479e68c8286888a83dc849b15"
+        },
+        {
+          "label": "E",
+          "start": 6906,
+          "end": 6916,
+          "sha256": "a617a64265d1e6b9dcb635795be05d191fa54bfc0abe997dbaf4348da5a6880a"
+        }
+      ],
+      "slot_roles": [
+        "heading",
+        "heading",
+        "heading",
+        "heading",
+        "heading"
+      ],
+      "instruction": {
+        "start": 6795,
+        "end": 6843,
+        "sha256": "03477e23c0ee717e94da609e01254e8c5d32cc25ff1225a15025bf22f04ef149"
+      },
+      "source_paper_id": "heading-candidate-grade7-jiexiu-2507579320261015r",
+      "source_grade": 7,
+      "source_input_or_reference_gold_not_conflated": true
+    },
+    {
+      "group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/heading-candidate-grade7-jiexiu-2507579320261015r-resource-v0.2.txt",
+        "sha256": "3d19e546246f00ddefa6904a7acd2d18de590f7180bc8dacbb703341c5ab9384"
+      },
+      "material_start": 11486,
+      "material_end": 12339,
+      "material_sha256": "0a4fbdf6da690a30c26cb40550021c632fe2b0c6bfdd5a470e31d25b24da1c50",
+      "excluded_offsets": [
+        {
+          "start": 64,
+          "end": 66,
+          "literal": "49",
+          "role": "blank_label",
+          "blank_id": 49
+        },
+        {
+          "start": 155,
+          "end": 157,
+          "literal": "50",
+          "role": "blank_label",
+          "blank_id": 50
+        },
+        {
+          "start": 372,
+          "end": 374,
+          "literal": "51",
+          "role": "blank_label",
+          "blank_id": 51
+        },
+        {
+          "start": 628,
+          "end": 630,
+          "literal": "52",
+          "role": "blank_label",
+          "blank_id": 52
+        },
+        {
+          "start": 782,
+          "end": 784,
+          "literal": "53",
+          "role": "blank_label",
+          "blank_id": 53
+        }
+      ],
+      "printed_numbers": [
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "shared_candidates": [
+        {
+          "label": "A",
+          "start": 12342,
+          "end": 12374,
+          "sha256": "4f4485cd1190818101bb11a2a473423c57e76e57a72ab1d4afd59de265b51859"
+        },
+        {
+          "label": "B",
+          "start": 12378,
+          "end": 12418,
+          "sha256": "b57d3ca5419a2ece1ba537c9ee1ef2aec57b12cf3098bf54e858ad65307bf8b7"
+        },
+        {
+          "label": "C",
+          "start": 12422,
+          "end": 12462,
+          "sha256": "654c1503796b78e0a5c439b417ef8f3f38857a5560fd11cfe63a7164a41f66db"
+        },
+        {
+          "label": "D",
+          "start": 12466,
+          "end": 12510,
+          "sha256": "7c2223a692b22b795f36f5699ba936ee30a04d78336fbb32bdb2edb61ef9a11e"
+        },
+        {
+          "label": "E",
+          "start": 12514,
+          "end": 12562,
+          "sha256": "7a0bf065e798c083156b67f3761bbf1420916a1bcef9a3a55e9e25b6103c4201"
+        },
+        {
+          "label": "F",
+          "start": 12566,
+          "end": 12619,
+          "sha256": "5fad15e28d7361dc310f9e899dccc6f73d8bd949afcbf8c609290b89fb684118"
+        }
+      ],
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ],
+      "instruction": {
+        "start": 11416,
+        "end": 11486,
+        "sha256": "4e1c46068e9215d57565b1c68783ed09d1f97c380a34f17b65cd3e44e01a71ef"
+      },
+      "source_paper_id": "heading-candidate-grade7-jiexiu-2507579320261015r",
+      "source_grade": 7,
+      "source_input_or_reference_gold_not_conflated": true
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}

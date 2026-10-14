@@ -1,0 +1,134 @@
+{
+  "version": "0.1",
+  "observed_on": "2026-10-15",
+  "scope": "grades7_to12_only",
+  "unit": "selected_written_task_structure_records_not_verified_answer_gold",
+  "baseline_mode_inventory": {
+    "path": "FirstRelease/operational-mode-inventory-v0.3.json",
+    "sha256": "0b5222e82085721e2b72bbe950c3996b56d2a1890045a6064f07c76664a80033"
+  },
+  "baseline_source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "papers": [
+    {
+      "id": "heading-candidate-grade7-jiexiu-2507579320261015r",
+      "grade": 7,
+      "province": "山西",
+      "region": "山西晋中介休",
+      "semester": "上",
+      "year": "2025-2026",
+      "exam_kind": "期末质量评估",
+      "minutes": 120,
+      "points": 120,
+      "title": "山西省晋中市介休市2025-2026学年七年级上学期期末质量评估英语试题（图片版，含答案，无听力原文及音频）_21世纪教育网-二一教育",
+      "url": "https://zy.21cnjy.com/25075793",
+      "source_id": "school-mode-expansion.21cnjy.public-reposts",
+      "acquisition_id": "heading-candidate-grade7-jiexiu-2507579320261015r",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/heading-candidate-grade7-jiexiu-2507579320261015r.html",
+        "sha256": "58c7b1959762a6b0bce577cd68c3ede05d4d4d31516228bc0a3dfb496dc84c80"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/heading-candidate-grade7-jiexiu-2507579320261015r-resource-v0.2.txt",
+        "sha256": "3d19e546246f00ddefa6904a7acd2d18de590f7180bc8dacbb703341c5ab9384"
+      },
+      "rows": [
+        {
+          "id": "heading-candidate-grade7-jiexiu-2507579320261015r.headingA",
+          "locator": "七、阅读理解（本题共五篇短文",
+          "locator_line_1based": 177,
+          "shape": {
+            "grade": 7,
+            "family": "paragraph_heading_matching",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "materials": 1,
+              "paragraph_subsections": 5,
+              "shared_options": 5,
+              "observed_candidates_minus_responses": 0,
+              "explicit_spare": null,
+              "reuse_rule": "not_explicit",
+              "headings_are_slots": true,
+              "all_slots_are_headings": true,
+              "slot_roles": [
+                "heading",
+                "heading",
+                "heading",
+                "heading",
+                "heading"
+              ],
+              "points_each": 2,
+              "necessary_input_complete": true
+            }
+          },
+          "structure_observed": true,
+          "answer_semantics_independently_adjudicated": false,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD",
+          "locator": "七、阅读理解（本题共五篇短文",
+          "locator_line_1based": 177,
+          "shape": {
+            "grade": 7,
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "materials": 1,
+              "shared_options": 6,
+              "explicit_spare": 1,
+              "reuse_rule": "not_explicit",
+              "headings_are_slots": false,
+              "slot_roles": [
+                "sentence",
+                "sentence",
+                "sentence",
+                "sentence",
+                "sentence"
+              ],
+              "points_each": 2,
+              "necessary_input_complete": true
+            }
+          },
+          "structure_observed": true,
+          "answer_semantics_independently_adjudicated": false,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "metadata_identity_in_resource_text": true,
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_publisher_title_and_printed_student_header_not_original_authentication",
+      "limitations": [
+        "Onlytwo selected reading modes fully text-reviewed; not whole8page paper or listening input",
+        "Shared5heading candidates are pure titles; not same5of7 mixedheading/sentence mode as Suzhou",
+        "References precede student text; source broken Our interests make us e and join us line retained; source and keys not expert gold",
+        "120minutes/120points printed fullpaper, not selected group time or calibrated difficulty"
+      ]
+    }
+  ],
+  "paper_count": 1,
+  "structural_record_count": 2,
+  "observed_written_response_positions": 10,
+  "excluded_candidates": [
+    {
+      "acquisition_id": "heading-candidate-grade7-changzhi-2599518220261015r",
+      "reason": "Heading candidate box missing; six-sentence insertion is not mixedheading5of7 and key label7of5 differs6candidates"
+    },
+    {
+      "acquisition_id": "heading-candidate-grade7-chongqing1-2608825620261015r",
+      "reason": "Orphan heading/fill answer block; dialogue5gaps41-45/7candidates but one-spare instruction and4answers43-46 mismatch; no correct mixed-mode evidence admitted"
+    }
+  ],
+  "counts_not_added_to_frozen_paired117_or_author53": true,
+  "cross_passage_family_deduplication_complete": false,
+  "exclusive_grade_claims": [],
+  "population_typical_ranges_established": false
+}

@@ -1,0 +1,1241 @@
+{
+  "version": "0.4",
+  "current_batches": {
+    "path": "FirstRelease/Sampling/current-batches-v0.5.json",
+    "sha256": "7a2b775a0a7a39c7fc958b4d7719d5634581dbf32ad024fdda5f1bcc34e255ca"
+  },
+  "region_unit": "province_level_region_or_directly_administered_municipality; city_to_province_normalization_only",
+  "counts_only_known_public_source_labels_not_original_authentication": true,
+  "unknown_labels_not_filled_from_filenames": true,
+  "engineering_plan": {
+    "parents_per_grade": 6,
+    "province_regions_per_grade": 3,
+    "semester_labels": [
+      "上",
+      "下"
+    ],
+    "not_validity_threshold": true
+  },
+  "parents": [
+    {
+      "paper_identity": "bj-grade10-shijingshan2024lower-20261013",
+      "grade": 10,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+      "structural_records": 5,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.beijing-public-exam-reposts",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "北京公开年级卷转载候选及选定题组",
+        "acquisition_review_scope": "Public repost candidate, filename/title is not full source/grade/key/rights verification",
+        "source_url": "https://cdn.gaokzx.com/17205110153662024%E5%8C%97%E4%BA%AC%E7%9F%B3%E6%99%AF%E5%B1%B1%E9%AB%98%E4%B8%80%EF%BC%88%E4%B8%8B%EF%BC%89%E6%9C%9F%E6%9C%AB%E8%8B%B1%E8%AF%AD%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf"
+      },
+      "publisher_title_label": "北京公开年级卷转载候选及选定题组",
+      "province_label": "北京",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "bj-grade11-yanqing2024upper-20261013",
+      "grade": 11,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "bj-grade11-yanqing2024upper-20261013",
+      "structural_records": 3,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.beijing-public-exam-reposts",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "北京公开年级卷转载候选及选定题组",
+        "acquisition_review_scope": "Public repost candidate, filename/title is not full source/grade/key/rights verification",
+        "source_url": "https://cdn.gaokzx.com/zixunzhan/202403/f87e415f-3b31-4a0b-8239-3b0ff2682ae7.pdf"
+      },
+      "publisher_title_label": "北京公开年级卷转载候选及选定题组",
+      "province_label": "北京",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "bj-grade8-xicheng2025upper-20261013",
+      "grade": 8,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "bj-grade8-xicheng2025upper-20261013",
+      "structural_records": 4,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.beijing-public-exam-reposts",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "北京公开年级卷转载候选及选定题组",
+        "acquisition_review_scope": "Public repost candidate, filename/title is not full source/grade/key/rights verification",
+        "source_url": "https://cdn.xschu.com/zixunzhan/1736476913369%E8%A5%BF%E5%9F%8E8%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD.pdf"
+      },
+      "publisher_title_label": "北京公开年级卷转载候选及选定题组",
+      "province_label": "北京",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "grade": 9,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "structural_records": 3,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "fujian.official-exam-bundle2026",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "2026福建中考试题参考答案官方合订本（福州取得/泉州来源互证）",
+        "acquisition_review_scope": "PDF82pages open;English printed22-36 plusbefore21/after37 andTOC actuallyvisuallyreviewed, remainingothersubjects not fullreview; noaudio/rubric/rights/gold",
+        "source_url": "https://jyj.fuzhou.gov.cn/zwgk/cswz/fzygzz/tzgg/202606/P020260623455432491102.pdf"
+      },
+      "publisher_title_label": "2026福建中考试题参考答案官方合订本（福州取得/泉州来源互证）",
+      "province_label": "福建",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "fuzhou2025-exam-bundle-public-full",
+      "grade": 9,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "fuzhou2025-exam-bundle-public-full",
+      "structural_records": 4,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "fuzhou.fujian-exam2025",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "福建省2025初中学业水平考试合订本（福州教育局公开附件）",
+        "acquisition_review_scope": "Cover/index and all English PDF25-38 visually read for group structure/key scope;14-page OCR drafts,not fully corrected transcript;audio/scripts and detailed scoring bands not acquired",
+        "source_url": "https://jyj.fuzhou.gov.cn/zwgk/cswz/fzygzz/zlxz/202506/P020250621484775049990.pdf"
+      },
+      "publisher_title_label": "福建省2025初中学业水平考试合订本（福州教育局公开附件）",
+      "province_label": "福建",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "gaokzx-fengtai2026-paper-key20261014-record",
+      "grade": 8,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "structural_records": 7,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade8-fengtai2026-public-groups-v0.1.json",
+          "sha256": "202e059d3aa52286f39e9f4b07d5d288fa23773d6da4c132c57b5862368bd309"
+        }
+      ],
+      "registry_source_id": "firstrelease.fengtai2026-grade8-upper-public-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "2026丰台初二上公开笔试：七组37参考/写作选择待核",
+        "acquisition_review_scope": "Fengtai11pages visuallyread/8question2reference1advertisement;7groups37references3pendingrisks,noauth/rights",
+        "source_url": "https://cdn.gaokzx.com/zixunzhan/2026%E5%8C%97%E4%BA%AC%E4%B8%B0%E5%8F%B0%E5%88%9D%E4%BA%8C%EF%BC%88%E4%B8%8A%EF%BC%89%E6%9C%9F%E6%9C%AB%E8%8B%B1%E8%AF%AD%20%20%20%E6%9C%89%E7%AD%94%E6%A1%881770615693800.pdf"
+      },
+      "publisher_title_label": "2026 北京丰台初二（上）期末 英语",
+      "province_label": "北京",
+      "semester_label": "上",
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": false
+    },
+    {
+      "paper_identity": "grade10-2025yearend-explanation-candidate20261014",
+      "grade": 10,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade10-2025yearend-explanation-candidate20261014",
+      "structural_records": 6,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.additional-public-comparison-candidates",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "初高中首版第二来源公开候选与配套边界",
+        "acquisition_review_scope": "Native cover/body confirmed English and stated grade; selected-group/key review pending except grade8 Fengtai selected five groups. No source authentication or commercial admission.",
+        "source_url": "https://img.gaokaozhitongche.com/resource/pdf/paper/202508/20250801023323_2eI8DY.pdf"
+      },
+      "publisher_title_label": "初高中首版第二来源公开候选与配套边界",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade10-jinhua2025-21cnjy22399612",
+      "grade": 10,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade10-jinhua2025-21cnjy22399612",
+      "structural_records": 9,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-jinhua2025-21cnjy22399612.html",
+        "sha256": "da99c12dc73ee5a2ce60aee33ccf965d974add732220a39030ddcfe71b4321be"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+        "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+      },
+      "publisher_title_label": "浙江省金华市十校2024_2025学年高一上学期期末英语试题（含答案，有听力音频无听力原文）",
+      "province_label": "浙江",
+      "semester_label": "上",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末调研",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade10-shenzhenlower2026-21cnjy26167651",
+      "grade": 10,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade10-shenzhenlower2026-21cnjy26167651",
+      "structural_records": 11,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-shenzhenlower2026-21cnjy26167651.html",
+        "sha256": "3a9f6b7f79ac33dedb6152089ff05ec551834df37022b0802540c2cf09941ad3"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "publisher_title_label": "广东省深圳市多校联考2025-2026年高一下期末英语试卷（含答案）",
+      "province_label": "广东",
+      "semester_label": "下",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade10-weishi2026-21cnjy25962499",
+      "grade": 10,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade10-weishi2026-21cnjy25962499",
+      "structural_records": 9,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-weishi2026-21cnjy25962499.html",
+        "sha256": "0a60963834328fe3118d4f67a4cf5656fa4af4b26dcee91f57742f2800d99427"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-weishi2026-21cnjy25962499-resource-v0.2.txt",
+        "sha256": "c5448cc7fb844a98f39edfd81ed94577f924a317bd815673d9bff118e9328e8f"
+      },
+      "publisher_title_label": "河南开封市尉氏县第三高级中学2025-2026学年下学期高一第二次月考英语试题（含答案）",
+      "province_label": "河南",
+      "semester_label": "下",
+      "year_label": "2025-2026",
+      "exam_kind_label": "第二次月考",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "grade": 10,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "structural_records": 7,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+          "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+        }
+      ],
+      "registry_source_id": "firstrelease.wenzhou2025-grade10-midterm-public-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "温州2025高一期中公开合订：七笔试组45参考与两整体写作评分",
+        "acquisition_review_scope": "20scannedpages9paper11key/script/explanation/rubric read;7pairedwritten45references;2writingtasks3possibleversions/holistic15and25bands notstudent scores;47option/explanationand67starterquoteconflicts retained,openvariantsnotexhaustive. Originalschools/rightsnotauthenticated,noaudio.",
+        "source_url": "https://img.gaokaozhitongche.com/resource/pdf/paper/202511/20251120064751_bHAY2n.pdf"
+      },
+      "publisher_title_label": "温州2025高一期中公开合订：七笔试组45参考与两整体写作评分",
+      "province_label": "浙江",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade11-2025lower-crossregion-candidate-20261013",
+      "grade": 11,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "structural_records": 5,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.additional-public-comparison-candidates",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "初高中首版第二来源公开候选与配套边界",
+        "acquisition_review_scope": "Selected title/type/end or key/explanation boundaries actually viewed; source body/paired keys and full group scope pending. Grade8 native title attributes Minyuan/adaptive but actual cover only year, attribution not visually authenticated. Grade11 body cover2025.6.26 grade2; institution/region unknown, not confirmed crossregion. Body3-7 now reviewed for five complete selected groups/keys; institution/region still unknown, editorial semantic flags preserved.",
+        "source_url": "https://img.gaokaozhitongche.com/resource/pdf/paper/202508/20250808071504_Qj8eqE.pdf"
+      },
+      "publisher_title_label": "初高中首版第二来源公开候选与配套边界",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade11-heze2026-21cnjy24886046",
+      "grade": 11,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade11-heze2026-21cnjy24886046",
+      "structural_records": 10,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-heze2026-21cnjy24886046.html",
+        "sha256": "b0658b2a5f595ec4ada07cb23bed727cd5a6ad5f6fd96af517bc6476dfd15438"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+        "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+      },
+      "publisher_title_label": "山东省菏泽市第一中学2025-2026学年高二上学期1月质量检测英语试题（含答案，无听力音频有听力原文）",
+      "province_label": "山东",
+      "semester_label": "上",
+      "year_label": "2025-2026",
+      "exam_kind_label": "1月诊断检测",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade11-spring2024-public-bundle20261014",
+      "grade": 11,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade11-spring2024-public-bundle20261014",
+      "structural_records": 7,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json",
+          "sha256": "f7fe13aa06155e176f4e8e37e26f17a63617a089bf6921cc5b1192694894b479"
+        }
+      ],
+      "registry_source_id": "firstrelease.grade11-spring2024-public-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "2024春高二下期末联合检测：15页题面/参考键/脚本对照扩展",
+        "acquisition_review_scope": "15page original bundle visually read:8paper+7answers/scripts;7selected readingA/B/C/D,insertion,cloze,grammar45responses key/author reasons;3positive exclusions23/29/54 and further contextual variants retained; no audio/institution/region authentication/independent/student/rights/model admission",
+        "source_url": "https://cdn.zizzs.com/1720150140546%E9%87%8D%E5%BA%86%E5%B8%822024%E5%B9%B4%E6%98%A5%E9%AB%98%E4%BA%8C(%E4%B8%8B)%E6%9C%9F%E6%9C%AB%E8%81%94%E5%90%88%E6%A3%80%E6%B5%8B%E8%8B%B1%E8%AF%AD%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf"
+      },
+      "publisher_title_label": "2024春高二下期末联合检测：15页题面/参考键/脚本对照扩展",
+      "province_label": null,
+      "semester_label": "下",
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade11-tianjin2026-21cnjy26082071",
+      "grade": 11,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade11-tianjin2026-21cnjy26082071",
+      "structural_records": 7,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-tianjin2026-21cnjy26082071.html",
+        "sha256": "f92ff3a4b79552566ce7879d293d2cd13e100d7a19c941fbd3ebae1b43a45214"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+        "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+      },
+      "publisher_title_label": "天津市第一中学滨海学校2025-2026学年下学期高二年级英语学科第二次质量检测试卷（含答案，无听力原文，无音频）",
+      "province_label": "天津",
+      "semester_label": "下",
+      "year_label": "2025-2026",
+      "exam_kind_label": "阶段检测",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade11-yinchuan2026-21cnjy25860535",
+      "grade": 11,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade11-yinchuan2026-21cnjy25860535",
+      "structural_records": 9,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-yinchuan2026-21cnjy25860535.html",
+        "sha256": "8dd0bb80894aaa06c478ca0c10f3d73efd7a818721c3ae03d1239c7aff7d5628"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-resource-v0.2.txt",
+        "sha256": "81f0da5e7adc85c609a87d380ccb103ec8bb10fd8bda65e129a0d24575c5c3fb"
+      },
+      "publisher_title_label": "2025-2026学年宁夏银川市第二中学下学期高二期中英语试题（含答案，无听力原文，无音频）",
+      "province_label": "宁夏",
+      "semester_label": "下",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期中",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": true,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade12-anshan2025upper-monitor-candidate20261014",
+      "grade": 12,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "structural_records": 7,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.additional-public-comparison-candidates",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "初高中首版第二来源公开候选与配套边界",
+        "acquisition_review_scope": "Native cover/body confirmed English and stated grade; selected-group/key review pending except grade8 Fengtai selected five groups. No source authentication or commercial admission.",
+        "source_url": "https://img.gaokaozhitongche.com/resource/pdf/paper/202509/20250928071347_GBDkjh.pdf"
+      },
+      "publisher_title_label": "初高中首版第二来源公开候选与配套边界",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade12-jianghuai2024-firstjoint-20261013",
+      "grade": 12,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "structural_records": 4,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.gaokzx-public-exam-reposts",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "江淮十校2024届高三首次联考公开转载及选定配套组",
+        "acquisition_review_scope": "Actual pages1,3,4,7,8,10 viewed: 2024 graduating cohort/2023.8 date, complete selected A/B reading/cloze/grammar and same-file key; not all-paper semantic or audio review",
+        "source_url": "https://cdn.gaokzx.com/zixunzhan/202403/ae528ea5-e6d6-450e-aed4-971e929455cc.pdf"
+      },
+      "publisher_title_label": "江淮十校2024届高三首次联考公开转载及选定配套组",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade12-linyi2025-21cnjy24838709",
+      "grade": 12,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade12-linyi2025-21cnjy24838709",
+      "structural_records": 9,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-linyi2025-21cnjy24838709.html",
+        "sha256": "64c9527616b267a0cac26becf0a7f3b214acdae9119a442752700fc37c4542a0"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+        "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+      },
+      "publisher_title_label": "山东省临沂市2025届高三上学期期末学科素养水平监测英语试卷（含答案，无听力原文及音频）",
+      "province_label": "山东",
+      "semester_label": "上",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末监测",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade12-national2025-paper-commentary20261014",
+      "grade": 12,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade12-national2025-paper-commentary20261014",
+      "structural_records": 7,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+          "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+        }
+      ],
+      "registry_source_id": "firstrelease.national2025-grade12-public-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "2025全国一卷标题转载英语组件：必要图表与七组45参考",
+        "acquisition_review_scope": "All13 actualpages visually inspected;7pairedwritten45references withnecessarygraph;readingfrom1/listeningheaderonly,notoriginalcompleteexam orauthenticatedofficialkey.",
+        "source_url": "https://static-gkcx.gaokao.cn/upload/zhenti/20250611/1749605734_7546.pdf"
+      },
+      "publisher_title_label": "2025全国一卷标题转载英语组件：必要图表与七组45参考",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade12-tianjin2025-21cnjy24812550",
+      "grade": 12,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade12-tianjin2025-21cnjy24812550",
+      "structural_records": 8,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-tianjin2025-21cnjy24812550.html",
+        "sha256": "e0162ad0dcacf2aa2f084cef855376c73740640bf949cd9b2bec5b56edd6df98"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+        "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+      },
+      "publisher_title_label": "天津市南开田家炳中学2025-2026学年高三上学期第二次月考英语试题（含答案）",
+      "province_label": "天津",
+      "semester_label": "上",
+      "year_label": "2025-2026",
+      "exam_kind_label": "月考",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade12-tianjinlower2025-21cnjy22402528",
+      "grade": 12,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade12-tianjinlower2025-21cnjy22402528",
+      "structural_records": 8,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-tianjinlower2025-21cnjy22402528.html",
+        "sha256": "d6c69d20cb9ade39da0d082124bf16713f0e75a3d500eb5bb105dbc0120eb9d0"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+        "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+      },
+      "publisher_title_label": "天津市第二十五中学2024-2025年高三下学期开学考英语试题（含答案，无听力原文、答案及音频）",
+      "province_label": "天津",
+      "semester_label": "下",
+      "year_label": "2024-2025",
+      "exam_kind_label": "开学考",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": true,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade12-yali2026-21cnjy25133058",
+      "grade": 12,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade12-yali2026-21cnjy25133058",
+      "structural_records": 9,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-yali2026-21cnjy25133058.html",
+        "sha256": "6aef84a835fbae8472017cc35b6c1be1d8f2c6be1fc9ea53c3039c93aa6375f0"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+        "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+      },
+      "publisher_title_label": "湖南省长沙市雅礼中学2025-2026学年高三上学期2月期末英语试题（含答案，无听力音频有听力原文）",
+      "province_label": "湖南",
+      "semester_label": "上",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade7-hefei2025-21cnjy26607976",
+      "grade": 7,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade7-hefei2025-21cnjy26607976",
+      "structural_records": 12,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-hefei2025-21cnjy26607976.html",
+        "sha256": "585270f1eb229b923045c43c33c1c4340201069751f82d48e066623a4aa3277b"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+        "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+      },
+      "publisher_title_label": "安徽省合肥市第三十中学2025-2026学年七年级上学期10月月考英语试题（含答案，含听力原文及音频）",
+      "province_label": "安徽",
+      "semester_label": "上",
+      "year_label": "2025-2026",
+      "exam_kind_label": "月考",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": true,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade7-jinan2025-21cnjy24695341",
+      "grade": 7,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade7-jinan2025-21cnjy24695341",
+      "structural_records": 10,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-jinan2025-21cnjy24695341.html",
+        "sha256": "22df5766a839c2c2e88da4fba113c2c4a8a9ec21518c242b720b34118b143afb"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "publisher_title_label": "山东省济南市东南片区2025-2026学年七年级上学期期中英语试题（含答案，无听力原文及音频",
+      "province_label": "山东",
+      "semester_label": "上",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期中",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade7-suzhou2025-21cnjy23303742",
+      "grade": 7,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade7-suzhou2025-21cnjy23303742",
+      "structural_records": 11,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-suzhou2025-21cnjy23303742.html",
+        "sha256": "61b43f6bbcb7d20f528f0a35c9b9eedeaa8b7971eb2c0f67145d8400a4464911"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+        "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+      },
+      "publisher_title_label": "江苏省苏州市吴中、吴江、相城区2024-2025学年七年级下学期期末考试英语试卷（含答案，无听力原文及音频）",
+      "province_label": "江苏",
+      "semester_label": "下",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade7-wuhan2025-21cnjy23303148",
+      "grade": 7,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade7-wuhan2025-21cnjy23303148",
+      "structural_records": 8,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-wuhan2025-21cnjy23303148.html",
+        "sha256": "5d050219bcf80edb78dabf1f94c90ab569079fa33bbc7d83ca43660944764eb5"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "publisher_title_label": "湖北省武汉市洪山区2024-2025学年七年级下学期期末质量检测英语试卷（含答案，无听力原文及音频）",
+      "province_label": "湖北",
+      "semester_label": "下",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade7-xicheng2025-public-paper-key20261014",
+      "grade": 7,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade7-xicheng2025-public-paper-key20261014",
+      "structural_records": 10,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+          "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+        }
+      ],
+      "registry_source_id": "firstrelease.xicheng2025-grade7-public-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "西城2025.1七年级公开期末合订本：十选定笔试组45响应",
+        "acquisition_review_scope": "All16PDFpages visually read,12paper4key/scripts;10selected pairedwritten45responses;47omitted/55norubric/listeningnoaudio excluded; printed institution not originalrelease authentication. Publicrelease no reuse permission.",
+        "source_url": "https://cdn.xschu.com/zixunzhan/1761273596303%E8%A5%BF%E5%9F%8E7%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD.pdf"
+      },
+      "publisher_title_label": "西城2025.1七年级公开期末合订本：十选定笔试组45响应",
+      "province_label": "北京",
+      "semester_label": "上",
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": false
+    },
+    {
+      "paper_identity": "grade8-changjun2024-midterm-paper-key20261014",
+      "grade": 8,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "structural_records": 7,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+          "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+        }
+      ],
+      "registry_source_id": "firstrelease.changjun2024-grade8-midterm-public-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "2024秋初二C卷公开合订：七组40参考与多选调查/写作分制",
+        "acquisition_review_scope": "12actualscannedpages10paper2key/scripts;7pairedwritten40references;survey50multiselect11categories458percent/229classcategoryresponsesnotdistinctstudents;writing61referenceomitted,analytic15with0.5errors/sevenbands/floorandroundingundefined. Sourceproblem10phrase/53bigcandidate/52their/51AlthoughThough kept. Noofficialschoolauth/audio/independentlearner/rights admission.",
+        "source_url": "https://cdn.zizzs.com/17313897927322024-2025-1%20%E9%95%BF%E9%83%A1%E6%95%99%E8%82%B2%E9%9B%86%E5%9B%A2%20%E5%88%9D%E4%BA%8C%E6%9C%9F%E4%B8%AD%20%E8%8B%B1%E8%AF%AD%E8%AF%95%E5%8D%B7%EF%BC%88%E5%90%AB%E7%AD%94%E6%A1%88%EF%BC%89.pdf"
+      },
+      "publisher_title_label": "2024秋初二C卷公开合订：七组40参考与多选调查/写作分制",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade8-fengtai2025upper-candidate20261014",
+      "grade": 8,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+      "structural_records": 5,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.additional-public-comparison-candidates",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "初高中首版第二来源公开候选与配套边界",
+        "acquisition_review_scope": "Native cover/body confirmed English and stated grade; selected-group/key review pending except grade8 Fengtai selected five groups. No source authentication or commercial admission.",
+        "source_url": "https://cdn.xschu.com/zixunzhan/1761787180250%E4%B8%B0%E5%8F%B08%E5%B9%B4%E7%BA%A7%E8%8B%B1%E8%AF%AD.pdf"
+      },
+      "publisher_title_label": "初高中首版第二来源公开候选与配套边界",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "grade8-hubei2026-21cnjy26105408",
+      "grade": 8,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade8-hubei2026-21cnjy26105408",
+      "structural_records": 8,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-hubei2026-21cnjy26105408.html",
+        "sha256": "61e189e748b2750353283bde3752b2e0559dfdfe09d4f36b52b2128afec00c16"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "publisher_title_label": "湖北省省直辖县级行政单位2025—2026学年度下学期期末教学质量检测八年级英语试卷（含答案）",
+      "province_label": "湖北",
+      "semester_label": "下",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": true,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": false,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade8-xiaoshan2025-21cnjy22251031",
+      "grade": 8,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade8-xiaoshan2025-21cnjy22251031",
+      "structural_records": 10,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-xiaoshan2025-21cnjy22251031.html",
+        "sha256": "e606d7eb508c9c7d7d62565a52f9ee6364eb8da1129f8be04e0e89ab5d10a693"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "publisher_title_label": "浙江省杭州市萧山区2024-2025学年八年级上学期期末考试英语试卷（含答案，无听力音频及原文）",
+      "province_label": "浙江",
+      "semester_label": "上",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade9-boxing2025-21cnjy24857076",
+      "grade": 9,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade9-boxing2025-21cnjy24857076",
+      "structural_records": 10,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-boxing2025-21cnjy24857076.html",
+        "sha256": "19aa2152bc5ec4ebee0a74be63f1555501962240a47d9bcb24d2d6039c5df9f5"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "publisher_title_label": "山东省滨州市博兴县2024-2025学年九年级上学期1月期末英语试题（含答案，无听力音频及原文）",
+      "province_label": "山东",
+      "semester_label": "上",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade9-chengdu2025-21cnjy23208601",
+      "grade": 9,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade9-chengdu2025-21cnjy23208601",
+      "structural_records": 13,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-chengdu2025-21cnjy23208601.html",
+        "sha256": "28183c3639d731329dddd16325478d45f50af60e09b242401396566b2b14a5d2"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+        "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+      },
+      "publisher_title_label": "2025年四川省成都市中考英语真题(原卷版+解析版)",
+      "province_label": "四川",
+      "semester_label": "毕业",
+      "year_label": "2025",
+      "exam_kind_label": "中考",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": true,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade9-nanshan2026-21cnjy25758947",
+      "grade": 9,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade9-nanshan2026-21cnjy25758947",
+      "structural_records": 8,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-nanshan2026-21cnjy25758947.html",
+        "sha256": "5c46a8ecb4f1431edf5dc68140202ec2875b5f82e3315c767b6d95fb7a5a4a62"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "publisher_title_label": "2025-2026学年广东省北京师范大学南山附属学校九年级（下）期中英语试卷（含答案）",
+      "province_label": "广东",
+      "semester_label": "下",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期中",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": true,
+      "semester_named_in_resource_text": false,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "grade9-zhongshan2025-21cnjy22278047",
+      "grade": 9,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "grade9-zhongshan2025-21cnjy22278047",
+      "structural_records": 8,
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-zhongshan2025-21cnjy22278047.html",
+        "sha256": "f72c90c8ddbda6f87a85e85254a1e3681b3135284cc42aab9dd7913b156ab965"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "publisher_title_label": "广东省中山市2024-2025学年九年级上学期期末水平测试英语试题（含答案）",
+      "province_label": "广东",
+      "semester_label": "上",
+      "year_label": "2024-2025",
+      "exam_kind_label": "期末",
+      "metadata_basis": "read_public_page_title_and_student_text_identity; not original-school authentication",
+      "province_named_in_resource_text": false,
+      "semester_named_in_resource_text": true,
+      "specific_county_or_school_label_available": true,
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false
+    },
+    {
+      "paper_identity": "suzhou-changshu2019-grade7-upper",
+      "grade": 7,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "suzhou-changshu2019-grade7-upper",
+      "structural_records": 3,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "suzhou.changshu-grade7-2019",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "常熟2018–2019上期初一英语试卷及参考答案/听力材料（教科院转载）",
+        "acquisition_review_scope": "Published2019-01-23 legacy grade7 upper exam: cloze36-45,calendar46-48,photo49-51,productive80-82/writing requirements read; names and broken words are unresolved publication/import defects, not silently corrected",
+        "source_url": "https://szteacher.suzhou.edu.cn/News.aspx?ID=100051&NTID=22"
+      },
+      "publisher_title_label": "常熟2018–2019上期初一英语试卷及参考答案/听力材料（教科院转载）",
+      "province_label": "江苏",
+      "semester_label": "上",
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": false
+    },
+    {
+      "paper_identity": "suzhou2024-official-english-paper-image20261014",
+      "grade": 9,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "suzhou2024-official-english-paper-image20261014",
+      "structural_records": 10,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+          "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+        }
+      ],
+      "registry_source_id": "firstrelease.suzhou2024-official-written-extension",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "苏州2024初中学业水平英语：官方八页笔试与一页参考键",
+        "acquisition_review_scope": "Officialeducationbureau2024June20 article/source/title and exactEnglish section2images; actualWebP despitePNGlabel/header,8logicalpaper+1key allvisual,10completegroups56references/authoredreasons. Essay57 omittedkey/rubric andoral30notacquired. New10cloze4options/3or4read/5bankphrases/onewordsubsection8 versusno-explicit-allonewordgrammar10; independent/student/rights/model not admitted",
+        "source_url": "https://jyj.suzhou.gov.cn/szjyj/jyyw/202406/74442c380ce2468eb76107f1a2aa047a/images/6944afd13ad14177b72427eb302d0bc4.png"
+      },
+      "publisher_title_label": "苏州2024初中学业水平英语：官方八页笔试与一页参考键",
+      "province_label": "江苏",
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "xdf-grade7-2021lower-paper-20261013",
+      "grade": 7,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "xdf-grade7-2021lower-paper-20261013",
+      "structural_records": 4,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        }
+      ],
+      "registry_source_id": "firstrelease.xdf-public-exam-candidates",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "新东方公开年级考试候选与选定初一题组",
+        "acquisition_review_scope": "Public repost candidate, filename/title is not full source/grade/key/rights verification",
+        "source_url": "https://file.xdf.cn/uploads/210714/1327_210714152738GufY6UrW0GjObPE6.pdf"
+      },
+      "publisher_title_label": "新东方公开年级考试候选与选定初一题组",
+      "province_label": null,
+      "semester_label": null,
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": true
+    },
+    {
+      "paper_identity": "xschu-bnu2026-paper-key20261014-record",
+      "grade": 8,
+      "layer": "baseline_selected117",
+      "source_acquisition_id": "xschu-bnu2026-paper-key20261014-record",
+      "structural_records": 9,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Expansions/grade8-bnu2026-public-groups-v0.1.json",
+          "sha256": "df2a038bab59e1ceadc7ceb12a5dec9d7233b53b0ab22364c8d20931be26dfa4"
+        }
+      ],
+      "registry_source_id": "firstrelease.bnu2026-grade8-upper-public-candidate",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "2026北师大实验初二上公开转载：九组46参考/必做选做分层",
+        "acquisition_review_scope": "BNU15pages parsed/firstpage identity/native excerpt only;fullvisual/group reviewpending,no coverage/auth/rights",
+        "source_url": "https://cdn.xschu.com/zixunzhan/17690447448912026%E5%8C%97%E4%BA%AC%E5%8C%97%E5%B8%88%E5%A4%A7%E5%AE%9E%E9%AA%8C%E4%B8%AD%E5%AD%A6%E5%88%9D%E4%BA%8C%EF%BC%88%E4%B8%8A%EF%BC%89%E6%9C%9F%E6%9C%AB%E8%8B%B1%E8%AF%AD%20%20%20%E6%9C%89%E7%AD%94%E6%A1%88.pdf"
+      },
+      "publisher_title_label": "2026 北京北师大实验中学初二（上）期末 英语",
+      "province_label": "北京",
+      "semester_label": "上",
+      "year_label": null,
+      "exam_kind_label": null,
+      "metadata_basis": "reused_registered_source_title_or_prior_printed_identity; filename hints not confirmed",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": null,
+      "pending_source_identity_detail": false
+    },
+    {
+      "paper_identity": "heading-candidate-grade7-jiexiu-2507579320261015r",
+      "grade": 7,
+      "layer": "new_structure_only",
+      "source_acquisition_id": "heading-candidate-grade7-jiexiu-2507579320261015r",
+      "structural_records": 2,
+      "metadata_references": [
+        {
+          "path": "FirstRelease/Sampling/grade-mode-batch20261015r-v0.1.json",
+          "sha256": "adc61959213a510020e6c41e20455809a12d43f696b1e40d687ea0d7731e9869"
+        }
+      ],
+      "registry_source_id": "school-mode-expansion.21cnjy.public-reposts",
+      "metadata_claims_snapshot": {
+        "registered_source_title": "山西省晋中市介休市2025-2026学年七年级上学期期末质量评估英语试题（图片版，含答案，无听力原文及音频）_21世纪教育网-二一教育",
+        "acquisition_review_scope": "Onlytwo selected reading groups text reviewed; no original8page paper/listening/authentication",
+        "source_url": "https://zy.21cnjy.com/25075793"
+      },
+      "publisher_title_label": "山西省晋中市介休市2025-2026学年七年级上学期期末质量评估英语试题（图片版，含答案，无听力原文及音频）_21世纪教育网-二一教育",
+      "province_label": "山西",
+      "semester_label": "上",
+      "year_label": "2025-2026",
+      "exam_kind_label": "期末质量评估",
+      "metadata_basis": "printed student grade7 upper2025-2026 and publisher JiexiuShanxi label; not inferred from filename",
+      "original_school_authenticated": false,
+      "whole_original_paper_complete": false,
+      "pending_source_identity_detail": false
+    }
+  ],
+  "grades": [
+    {
+      "grade": 7,
+      "parent_paper_identities": 8,
+      "publicly_labelled_province_regions": [
+        "北京",
+        "安徽",
+        "山东",
+        "山西",
+        "江苏",
+        "湖北"
+      ],
+      "labelled_upper_and_lower_present": true,
+      "unknown_province_parents": 1,
+      "unknown_or_graduation_only_semester_parents": 1,
+      "count_plan_met": true,
+      "region_label_plan_met": true,
+      "semester_label_plan_met": true,
+      "whole_group_and_independent_passage_coverage_complete": false,
+      "education_validity_established": false
+    },
+    {
+      "grade": 8,
+      "parent_paper_identities": 7,
+      "publicly_labelled_province_regions": [
+        "北京",
+        "浙江",
+        "湖北"
+      ],
+      "labelled_upper_and_lower_present": true,
+      "unknown_province_parents": 2,
+      "unknown_or_graduation_only_semester_parents": 3,
+      "count_plan_met": true,
+      "region_label_plan_met": true,
+      "semester_label_plan_met": true,
+      "whole_group_and_independent_passage_coverage_complete": false,
+      "education_validity_established": false
+    },
+    {
+      "grade": 9,
+      "parent_paper_identities": 7,
+      "publicly_labelled_province_regions": [
+        "四川",
+        "山东",
+        "广东",
+        "江苏",
+        "福建"
+      ],
+      "labelled_upper_and_lower_present": true,
+      "unknown_province_parents": 0,
+      "unknown_or_graduation_only_semester_parents": 4,
+      "count_plan_met": true,
+      "region_label_plan_met": true,
+      "semester_label_plan_met": true,
+      "whole_group_and_independent_passage_coverage_complete": false,
+      "education_validity_established": false
+    },
+    {
+      "grade": 10,
+      "parent_paper_identities": 6,
+      "publicly_labelled_province_regions": [
+        "北京",
+        "广东",
+        "河南",
+        "浙江"
+      ],
+      "labelled_upper_and_lower_present": true,
+      "unknown_province_parents": 1,
+      "unknown_or_graduation_only_semester_parents": 3,
+      "count_plan_met": true,
+      "region_label_plan_met": true,
+      "semester_label_plan_met": true,
+      "whole_group_and_independent_passage_coverage_complete": false,
+      "education_validity_established": false
+    },
+    {
+      "grade": 11,
+      "parent_paper_identities": 6,
+      "publicly_labelled_province_regions": [
+        "北京",
+        "天津",
+        "宁夏",
+        "山东"
+      ],
+      "labelled_upper_and_lower_present": true,
+      "unknown_province_parents": 2,
+      "unknown_or_graduation_only_semester_parents": 2,
+      "count_plan_met": true,
+      "region_label_plan_met": true,
+      "semester_label_plan_met": true,
+      "whole_group_and_independent_passage_coverage_complete": false,
+      "education_validity_established": false
+    },
+    {
+      "grade": 12,
+      "parent_paper_identities": 7,
+      "publicly_labelled_province_regions": [
+        "天津",
+        "山东",
+        "湖南"
+      ],
+      "labelled_upper_and_lower_present": true,
+      "unknown_province_parents": 3,
+      "unknown_or_graduation_only_semester_parents": 3,
+      "count_plan_met": true,
+      "region_label_plan_met": true,
+      "semester_label_plan_met": true,
+      "whole_group_and_independent_passage_coverage_complete": false,
+      "education_validity_established": false
+    }
+  ],
+  "all_required_sampling_dimensions_complete": false
+}

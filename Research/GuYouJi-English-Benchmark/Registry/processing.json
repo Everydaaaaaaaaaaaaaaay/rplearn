@@ -24001,6 +24001,179 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "heading-candidate-grade7-changzhi-2599518220261015r-resource",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-changzhi-2599518220261015r"
+      ],
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "Public assets-intro block only; omitted figures not reconstructed; reused cached SHA without repeated downloads"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/heading-candidate-grade7-changzhi-2599518220261015r.html",
+          "output": "build/english-benchmark-research-20261012/heading-candidate-grade7-changzhi-2599518220261015r-resource-v0.2.txt",
+          "bytes": 19866,
+          "sha256": "f5d564d6a8a4b51644aebe18ce108c8db8e11246009318f6aae1811d0d746a11",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "heading-candidate-grade7-chongqing1-2608825620261015r-resource",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-chongqing1-2608825620261015r"
+      ],
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "Public assets-intro block only; omitted figures not reconstructed; reused cached SHA without repeated downloads"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/heading-candidate-grade7-chongqing1-2608825620261015r.html",
+          "output": "build/english-benchmark-research-20261012/heading-candidate-grade7-chongqing1-2608825620261015r-resource-v0.2.txt",
+          "bytes": 23721,
+          "sha256": "a2053dc5538942fb7c5915743b37d7d8c3c00744127bf6f0535f7f8cd21b6b2c",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "heading-candidate-grade7-jiexiu-2507579320261015r-resource",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-jiexiu-2507579320261015r"
+      ],
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "Public assets-intro block only; omitted figures not reconstructed; reused cached SHA without repeated downloads"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/heading-candidate-grade7-jiexiu-2507579320261015r.html",
+          "output": "build/english-benchmark-research-20261012/heading-candidate-grade7-jiexiu-2507579320261015r-resource-v0.2.txt",
+          "bytes": 22210,
+          "sha256": "3d19e546246f00ddefa6904a7acd2d18de590f7180bc8dacbb703341c5ab9384",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "heading-candidate-acquisition20261015r-v0.1",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-changzhi-2599518220261015r",
+        "heading-candidate-grade7-chongqing1-2608825620261015r",
+        "heading-candidate-grade7-jiexiu-2507579320261015r"
+      ],
+      "tool": "public_bounded_fetch_metadata",
+      "tool_version": "0.1",
+      "parameters": [
+        "Three public candidates, two selected Jiexiu modes; count/time/source/input/key/rights separate; unknown mixed-mode replication retained; no paid/login bypass/audio/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/heading-candidate-acquisition20261015r-v0.1.json",
+          "bytes": 3358,
+          "sha256": "3b56352ea2d983ce3e4cc112c90bed486d637548fe95aa3cccbe7acef1cddd4f",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "heading-candidate-review20261015r-v0.1",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-changzhi-2599518220261015r",
+        "heading-candidate-grade7-chongqing1-2608825620261015r",
+        "heading-candidate-grade7-jiexiu-2507579320261015r"
+      ],
+      "tool": "author_resource_body_review",
+      "tool_version": "0.1",
+      "parameters": [
+        "Three public candidates, two selected Jiexiu modes; count/time/source/input/key/rights separate; unknown mixed-mode replication retained; no paid/login bypass/audio/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/heading-candidate-review20261015r-v0.1.json",
+          "bytes": 4423,
+          "sha256": "d83bce1a34b8d7ccc78968588732e7c3a219b349df2d225d41e900fd9b958921",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "jiexiu-selected-mode-audit20261015r-v0.1",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-changzhi-2599518220261015r",
+        "heading-candidate-grade7-chongqing1-2608825620261015r",
+        "heading-candidate-grade7-jiexiu-2507579320261015r"
+      ],
+      "tool": "Tools/audit_jiexiu_selected_modes.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Three public candidates, two selected Jiexiu modes; count/time/source/input/key/rights separate; unknown mixed-mode replication retained; no paid/login bypass/audio/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/jiexiu-selected-mode-audit20261015r-v0.1.json",
+          "bytes": 134224,
+          "sha256": "b7a6c795efd7e05897273952e8e32e5991ffc8202252b7e429dec16017475ef0",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "jiexiu-selected-mode-checks20261015r-v0.1",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-changzhi-2599518220261015r",
+        "heading-candidate-grade7-chongqing1-2608825620261015r",
+        "heading-candidate-grade7-jiexiu-2507579320261015r"
+      ],
+      "tool": "Tools/audit_jiexiu_selected_modes.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Three public candidates, two selected Jiexiu modes; count/time/source/input/key/rights separate; unknown mixed-mode replication retained; no paid/login bypass/audio/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/jiexiu-selected-mode-checks20261015r-v0.1.json",
+          "bytes": 2535,
+          "sha256": "d3b8567953e6be3369f67a9ac664e2df20b2c7408325a33cf482a8e9d0471976",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "jiexiu-selected-mode-request20261015r-v0.1",
+      "source_acquisition_ids": [
+        "heading-candidate-grade7-changzhi-2599518220261015r",
+        "heading-candidate-grade7-chongqing1-2608825620261015r",
+        "heading-candidate-grade7-jiexiu-2507579320261015r"
+      ],
+      "tool": "source_bound_preparation_fixture",
+      "tool_version": "0.1",
+      "parameters": [
+        "Three public candidates, two selected Jiexiu modes; count/time/source/input/key/rights separate; unknown mixed-mode replication retained; no paid/login bypass/audio/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/jiexiu-selected-mode-request20261015r-v0.1.json",
+          "bytes": 2339,
+          "sha256": "b9b48e8128a6c49b48223d824143c1e35721a6a71f18a35575796145aeec6852",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
