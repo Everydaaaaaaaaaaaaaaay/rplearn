@@ -15,6 +15,7 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
 BATCH = BASE / 'FirstRelease/Sampling/grade-mode-batch20261015-v0.1.json'
+CURRENT_BATCHES = BASE / 'FirstRelease/Sampling/current-batches-v0.1.json'
 
 
 def load_ref(ref):
@@ -28,7 +29,9 @@ def load_ref(ref):
 
 
 def evidence():
-    batch = json.loads(BATCH.read_text())
+    manifest = json.loads(CURRENT_BATCHES.read_text())
+    batches = [json.loads(load_ref(ref).read_text()) for ref in manifest['batches']]
+    batch = batches[0]
     overview = json.loads(load_ref(batch['baseline_source_overview']).read_text())
     inventory = json.loads(load_ref(batch['baseline_mode_inventory']).read_text())
     parents = {x['id']: x['parent_paper_id'] for x in overview['groups']}
@@ -38,33 +41,58 @@ def evidence():
             rows.append({'id': gid, 'paper_id': parents[gid], 'shape': mode['shape'],
                          'layer': 'baseline_selected117', 'necessary_input_complete': None,
                          'positive_answer_anchor_admitted': False, 'production_supported': False})
-    new_positions = 0
-    for paper in batch['papers']:
-        load_ref(paper['raw'])
-        text = load_ref(paper['resource_text']).read_text()
-        for observation in paper['rows']:
-            marker = re.search(r'\s+'.join(re.escape(x) for x in observation['locator'].split()), text)
-            if not marker or text[:marker.start()].count('\n') + 1 != observation['locator_line_1based']:
-                raise ValueError('Section locator changed: ' + observation['id'])
-            shape = observation['shape']
-            if shape['grade'] != paper['grade'] or type(shape['responses']) is not int or shape['responses'] < 1:
-                raise ValueError('Invalid grade/response count')
-            if observation['positive_answer_anchor_admitted'] or observation['production_supported']:
-                raise ValueError('New structure observations cannot self-admit answers or production')
-            if 'components' in shape['details']:
-                if sum(x['responses'] for x in shape['details']['components']) != shape['responses']:
+    for current in batches:
+        if any(current[k] != batch[k] for k in ['baseline_source_overview', 'baseline_mode_inventory']):
+            raise ValueError('Batch baselines differ; do not double-count or silently merge')
+        new_positions, new_records = 0, 0
+        for paper in current['papers']:
+            load_ref(paper['raw'])
+            text = load_ref(paper['resource_text']).read_text()
+            for observation in paper['rows']:
+                marker = re.search(r'\s+'.join(re.escape(x) for x in observation['locator'].split()), text)
+                if not marker or text[:marker.start()].count('\n') + 1 != observation['locator_line_1based']:
+                    raise ValueError('Section locator changed: ' + observation['id'])
+                shape = observation['shape']
+                if shape['grade'] != paper['grade'] or type(shape['responses']) is not int or shape['responses'] < 1:
+                    raise ValueError('Invalid grade/response count')
+                if observation['positive_answer_anchor_admitted'] or observation['production_supported']:
+                    raise ValueError('New structure observations cannot self-admit answers or production')
+                if 'components' in shape['details'] and sum(x['responses'] for x in shape['details']['components']) != shape['responses']:
                     raise ValueError('Mixed response count mismatch')
-            rows.append({'id': observation['id'], 'paper_id': paper['id'], 'shape': shape,
-                         'layer': 'new_structure_only',
-                         'necessary_input_complete': shape['details'].get('necessary_input_complete', True),
-                         'positive_answer_anchor_admitted': False, 'production_supported': False})
-            new_positions += shape['responses']
+                rows.append({'id': observation['id'], 'paper_id': paper['id'], 'shape': shape,
+                             'layer': 'new_structure_only',
+                             'source_text_ref': paper['resource_text'],
+                             'necessary_input_complete': shape['details'].get('necessary_input_complete'),
+                             'positive_answer_anchor_admitted': False, 'production_supported': False})
+                new_positions += shape['responses']
+                new_records += 1
+        if len(current['papers']) != current['paper_count'] or new_positions != current['observed_written_response_positions'] or new_records != current['structural_record_count']:
+            raise ValueError('Batch count mismatch')
     if len({x['id'] for x in rows}) != len(rows):
         raise ValueError('Repeated group identity; do not double-count')
-    if len(batch['papers']) != batch['paper_count'] or new_positions != batch['observed_written_response_positions']:
-        raise ValueError('Batch count mismatch')
-    if len(rows) - len(overview['groups']) != batch['structural_record_count']:
+    if len(rows) - len(overview['groups']) != sum(b['structural_record_count'] for b in batches):
         raise ValueError('Structure record mismatch')
+    overlay = json.loads(load_ref(manifest['input_confirmations']).read_text())
+    audit = json.loads(load_ref(overlay['audit']).read_text())
+    audit_rows = {r['group_id']: r for r in audit['records']}
+    row_by_id = {r['id']: r for r in rows}
+    confirmed = set()
+    for confirmation in overlay['confirmations']:
+        gid = confirmation['group_id']
+        if gid in confirmed or gid not in row_by_id or gid not in audit_rows:
+            raise ValueError('Duplicate or missing confirmation group')
+        row, record = row_by_id[gid], audit_rows[gid]
+        if row.get('source_text_ref') != confirmation['source_text'] or record['source_text'] != confirmation['source_text']:
+            raise ValueError('Input confirmation refers to different source text')
+        if any(record[k] != confirmation[k] for k in ['material_sha256', 'options_view_sha256']):
+            raise ValueError('Confirmation span digest differs from audit')
+        if record['responses'] != row['shape']['responses'] or record['options_each'] != row['shape']['options_each']:
+            raise ValueError('Confirmation quantity differs')
+        if row['necessary_input_complete'] is False:
+            raise ValueError('Cannot override known missing input with a blanket confirmation')
+        row['necessary_input_complete'] = confirmation['necessary_input_complete'] is True
+        row['input_confirmation_scope'] = confirmation['scope']
+        confirmed.add(gid)
     return rows
 
 
@@ -96,18 +124,19 @@ def check_request(request, rows):
     if len(matches) != 1:
         raise ValueError('Unknown evidence group; no unobserved default')
     row = matches[0]
-    if request.get('grade') != row['shape']['grade']:
+    if type(request.get('grade')) is not int or request.get('grade') != row['shape']['grade']:
         raise ValueError('Reference belongs to a different grade')
-    if request.get('shape') != row['shape']:
+    if json.dumps(request.get('shape'), sort_keys=True) != json.dumps(row['shape'], sort_keys=True):
         raise ValueError('Shape differs from actual evidence, including response/option/material/rule details')
-    if request.get('requires_complete_student_input', True) and row['necessary_input_complete'] is False:
-        raise ValueError('Necessary student input missing in this evidence')
+    if request.get('requires_complete_student_input', True) and row['necessary_input_complete'] is not True:
+        raise ValueError('Necessary student input is missing or not explicitly confirmed')
     if request.get('use_as_verified_answer_gold', False):
         raise ValueError('Independent answer admission is not established by this structural inventory')
     if request.get('claim_production_supported', False):
         raise ValueError('Preparation guard is not wired production or model verification')
     return {'preparation_shape_matches_evidence': True, 'grade': request['grade'],
             'evidence_group_id': row['id'], 'content_correctness_checked': False,
+            'necessary_input_complete': row['necessary_input_complete'],
             'independent_answer_gold': False, 'model_called': False, 'production_supported': False}
 
 

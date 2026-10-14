@@ -1,6 +1,6 @@
 # GuYouJi English Benchmark
 
-2026-10-15用户看效果后继续授权初高中扩样：[样本主导策略](FirstRelease/SampleBasedModePolicy-v0.1.md)与[标准0.21](FirstRelease/PracticalAuthoringStandard-v0.21.md)明确已观察/未见/未知、具体组合、分层体量和来源错误。本轮六年级六份文字转载进入独立结构层；仍不扩展其他阶段或宣称生产适配。
+2026-10-15用户看效果后继续授权初高中扩样：当前[样本主导策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.22](FirstRelease/PracticalAuthoringStandard-v0.22.md)及[两批清单](FirstRelease/Sampling/current-batches-v0.1.json)累计222分层结构记录/31父卷；旧117只计一次，新105条/669作答位另层。初一15空、高二20空与实际混合模式有新证据；13完形仅确认输入，未知输入不默认完整。地域账本、全库去重与配套继续补，不扩展其他阶段或宣称生产适配。
 
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。
 
