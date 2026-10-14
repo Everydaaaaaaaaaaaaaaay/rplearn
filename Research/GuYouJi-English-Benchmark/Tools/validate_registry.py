@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--check-cache', action='store_true')
     parser.add_argument('--check-processing', action='store_true')
     parser.add_argument('--check-storage', action='store_true')
+    parser.add_argument('--check-current-preservation', action='store_true')
     parser.add_argument('--require-complete', action='store_true')
     args = parser.parse_args()
     errors = []
@@ -134,8 +135,39 @@ def main():
                     processing_checked += 1
 
     storage_checked = 0
+    archive_objects_checked = 0
     if args.check_storage:
-        snapshots = documents.get('Storage/local-snapshots.json', {}).get('snapshots', [])
+        storage = documents.get('Storage/local-snapshots.json', {})
+        snapshots = storage.get('snapshots', [])
+        archives = {}
+        for archive in storage.get('content_archives', []):
+            root = Path(archive['archive_path']).resolve()
+            index_path = Path(archive['index_path']).resolve()
+            if root not in index_path.parents or not index_path.is_file():
+                errors.append('storage archive: missing/out-of-root index')
+                continue
+            if hashlib.sha256(index_path.read_bytes()).hexdigest() != archive['index_sha256']:
+                errors.append('storage archive: changed index')
+                continue
+            index_data = json.loads(index_path.read_text())
+            objects = {}
+            for item in index_data['objects']:
+                digest = item['sha256']
+                if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest) or digest in objects:
+                    errors.append('storage archive: invalid/duplicate object identity')
+                    continue
+                path = root / 'objects' / digest
+                if path.is_symlink() or not path.is_file() or root not in path.resolve().parents:
+                    errors.append('storage archive: missing/out-of-root object')
+                    continue
+                if path.stat().st_size != item['bytes'] or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                    errors.append('storage archive: object size/digest differs')
+                    continue
+                objects[digest] = item['bytes']
+                archive_objects_checked += 1
+            if len(objects) != archive['unique_objects'] or sum(objects.values()) != archive['unique_bytes']:
+                errors.append('storage archive: object summary differs')
+            archives[archive['archive_id']] = {'objects': objects, 'snapshots': {s['snapshot_id']: s for s in index_data['snapshots']}}
         if not snapshots:
             errors.append('storage: no registered local snapshot')
         for snapshot in snapshots:
@@ -155,14 +187,60 @@ def main():
                 errors.append('storage: manifest count/size mismatch')
             for row in files:
                 path = (root / row['path']).resolve()
-                if root not in path.parents or not path.is_file():
+                if root not in path.parents:
                     errors.append(f"storage: missing/out-of-root asset {row['path']}")
                     continue
-                payload = path.read_bytes()
-                if (len(payload) != row['bytes'] or
-                        hashlib.sha256(payload).hexdigest() != row['sha256']):
-                    errors.append(f"storage: asset digest/size mismatch {row['path']}")
+                if snapshot.get('storage_representation') == 'content_addressed_archive':
+                    archive = archives.get(snapshot.get('archive_id'), {})
+                    member = archive.get('snapshots', {}).get(snapshot['snapshot_id'], {})
+                    if member.get('manifest_sha256') != snapshot['manifest_sha256'] or member.get('manifest_path') != snapshot['manifest_path']:
+                        errors.append('storage: snapshot is not bound to the archive')
+                    if archive.get('objects', {}).get(row['sha256']) != row['bytes']:
+                        errors.append('storage: missing verified archived version ' + row['path'])
+                elif not path.is_file():
+                    errors.append(f"storage: missing full snapshot asset {row['path']}")
+                else:
+                    payload = path.read_bytes()
+                    if (len(payload) != row['bytes'] or
+                            hashlib.sha256(payload).hexdigest() != row['sha256']):
+                        errors.append(f"storage: asset digest/size mismatch {row['path']}")
                 storage_checked += 1
+
+    current_preservation_checked = 0
+    if args.check_current_preservation:
+        storage = documents.get('Storage/local-snapshots.json', {})
+        current = storage.get('current_asset_preservation', {})
+        archive = next((a for a in storage.get('content_archives', []) if a['archive_id'] == current.get('archive_id')), None)
+        if archive is None:
+            errors.append('current preservation: no registered archive')
+        else:
+            root = Path(archive['archive_path']).resolve()
+            index_path = Path(current['index_path']).resolve()
+            if root not in index_path.parents or not index_path.is_file() or hashlib.sha256(index_path.read_bytes()).hexdigest() != current['index_sha256']:
+                errors.append('current preservation: missing or changed index')
+            else:
+                current_index = json.loads(index_path.read_text())
+                seen_paths, objects = set(), {}
+                for record in current_index['records']:
+                    if not cache_reference(record['path']) or record['path'] in seen_paths:
+                        errors.append('current preservation: invalid or duplicate path')
+                        continue
+                    seen_paths.add(record['path'])
+                    digest = record['sha256']
+                    if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
+                        errors.append('current preservation: invalid object identity')
+                        continue
+                    path = root / 'objects' / digest
+                    if digest not in objects:
+                        if path.is_symlink() or not path.is_file() or root not in path.resolve().parents or path.stat().st_size != record['bytes'] or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+                            errors.append('current preservation: missing or changed object')
+                            continue
+                        objects[digest] = record['bytes']
+                    if objects[digest] != record['bytes']:
+                        errors.append('current preservation: conflicting size')
+                    current_preservation_checked += 1
+                if len(seen_paths) != current['current_registered_paths'] or len(objects) != current['current_unique_contents'] or sum(objects.values()) != current['current_unique_bytes']:
+                    errors.append('current preservation: summary differs')
 
     coverage = rows('coverage.json', 'coverage')
     identities = [row.get('level') or row.get('direction') for row in coverage]
@@ -221,6 +299,8 @@ def main():
                   acquisition_attempts=len(acquisitions), cache_files_checked=cache_checked,
                   processing_outputs_checked=processing_checked,
                   storage_files_checked=storage_checked,
+                  archive_objects_checked=archive_objects_checked,
+                  current_preservation_paths_checked=current_preservation_checked,
                   scope_rows=len(coverage), incomplete_milestones=incomplete, open_gaps=open_gaps,
                   priority_coverage_cells=len(cells),
                   bookkeeping_valid=not errors, errors=errors,

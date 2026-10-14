@@ -63,6 +63,9 @@ def main():
     parser.add_argument('--destination', type=Path, required=True)
     parser.add_argument('--report', type=Path, required=True)
     args = parser.parse_args()
+    policy_path = BASE / 'Storage/retention-policy.json'
+    if policy_path.exists() and not json.loads(policy_path.read_text()).get('automatic_full_snapshot_creation', False):
+        raise ValueError('Routine full snapshots disabled by owner storage policy; archive new content once instead')
     destination = args.destination.expanduser().resolve()
     if destination == REPO or REPO in destination.parents:
         raise ValueError('Snapshot destination must be outside the repository')

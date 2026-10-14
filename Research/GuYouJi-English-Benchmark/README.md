@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+2026-10-15用户要求避免研究文件膨胀：[存储策略](Storage/README.md)已改为两份近期完整恢复点+去重历史归档，旧33份清单/独有内容保留。目录计量59G→7.7G不等APFS实际释放51G；例行整库快照被工具拒绝，增量重放新增0对象。初高中研究自动任务继续，空间控制不能替代内容验收。
+
 2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.23](FirstRelease/PracticalAuthoringStandard-v0.23.md)与[三批清单](FirstRelease/Sampling/current-batches-v0.2.json)累计277分层结构记录/37父卷；旧117只计一次，新160条/988作答位另层。19完形局部去重、12个非阅读选择组件计量与[地域学期账本](FirstRelease/Sampling/parent-paper-ledger-v0.1.json)已核；[初三普通下学期/高三第三地区等具体缺口](FirstRelease/Sampling/sample-layer-gaps-v0.1.json)继续补，不扩展其他阶段或宣称生产适配。
 
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。

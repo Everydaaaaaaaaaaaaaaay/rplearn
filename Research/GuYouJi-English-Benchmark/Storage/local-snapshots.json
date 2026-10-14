@@ -1,6 +1,6 @@
 {
-  "updated_on": "2026-10-14",
-  "status": "local_preservation_only_final_storage_gate_pending",
+  "updated_on": "2026-10-15",
+  "status": "two_recent_full_snapshots_plus_verified_deduplicated_historical_archive_same_host_only",
   "snapshots": [
     {
       "snapshot_id": "2026-10-12T162852.062798+0000-00f3e787",
@@ -52,7 +52,11 @@
         "Same-host local storage; no disk-loss/off-host restore test",
         "New acquisitions require a new verified snapshot",
         "Existing material rights and transmission limits still apply"
-      ]
+      ],
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T175004.746550+0000-3e8edd86",
@@ -117,7 +121,11 @@
         "New acquisitions require a new verified snapshot",
         "Existing material rights and transmission limits still apply"
       ],
-      "coverage_note": "Includes registered OCR models, processing manifests/input images/crops, current raw acquisitions, outputs and research source files as captured; excludes unrelated environment caches and unregistered experimental outputs."
+      "coverage_note": "Includes registered OCR models, processing manifests/input images/crops, current raw acquisitions, outputs and research source files as captured; excludes unrelated environment caches and unregistered experimental outputs.",
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T182802.884556+0000-1433ae4a",
@@ -191,7 +199,11 @@
         "New acquisitions require a new verified snapshot",
         "Existing material rights and transmission limits still apply"
       ],
-      "coverage_note": "Includes registered newer readability/CSE/private sourcegroup assets; copy-on-write files have independent inode/write behavior but share one physical disk failure domain. Logical bytes do not equal additional physical storage."
+      "coverage_note": "Includes registered newer readability/CSE/private sourcegroup assets; copy-on-write files have independent inode/write behavior but share one physical disk failure domain. Logical bytes do not equal additional physical storage.",
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T192632.274773+0000-2d316e06",
@@ -308,7 +320,11 @@
         ],
         "limitation": "No actual client/scoring execution or off-host disaster recovery;private asset locators not rewritten for deployment"
       },
-      "coverage_note": "Captures all registered asset bytes and research files before later coverage/milestone and preservation-note edits; those metadata edits retained in Git, not retrospectively added to snapshot."
+      "coverage_note": "Captures all registered asset bytes and research files before later coverage/milestone and preservation-note edits; those metadata edits retained in Git, not retrospectively added to snapshot.",
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T201741.966695+0000-6d7cbcbd",
@@ -430,7 +446,11 @@
           "No off-host disaster recovery or full semantic listening",
           "Group source references not rewritten for deployment;structureonly"
         ]
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T205015.215960+0000-467a131d",
@@ -569,7 +589,11 @@
           "Same disk/host;not disaster recovery",
           "Structure/format checks,not independent semantic or scoring validation"
         ]
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T214053.549775+0000-e56d016d",
@@ -880,7 +904,11 @@
           "Reproduced source-boundary checks;not independent semantic or educational validation",
           "Audio container/CRC/duration only;no full listening"
         ]
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T222035.161735+0000-3b7e4243",
@@ -1101,7 +1129,11 @@
         },
         "licence_adjudication_or_student_validation": false,
         "off_host_test": false
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T225313.116439+0000-c0de9423",
@@ -1665,7 +1697,11 @@
         "off_host_or_disk_loss_test": false,
         "educational_or_rights_admission": false
       },
-      "automatic_relocation_without_mapping": false
+      "automatic_relocation_without_mapping": false,
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T231438.845051+0000-517086f0",
@@ -2189,7 +2225,11 @@
         ],
         "off_host_or_disk_loss_test": false,
         "education_or_rights_admission": false
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-12T234050.145024+0000-0006578c",
@@ -2436,7 +2476,11 @@
           "semantic_accuracy_established": false
         }
       },
-      "initial_dependency_failure_retained": true
+      "initial_dependency_failure_retained": true,
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T001257.317025+0000-cc06218c",
@@ -2948,7 +2992,11 @@
           "schema-runtime/offline-rebuild-audit.json",
           "schema-runtime/offline-install.log"
         ]
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T015705.950367+0000-89594b16",
@@ -3492,7 +3540,11 @@
           "schema-runtime/offline-rebuild-audit.json",
           "schema-runtime/offline-install.log"
         ]
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T030606.744738+0000-db4bb121",
@@ -4099,7 +4151,11 @@
           "schema-runtime/offline-rebuild-audit.json",
           "schema-runtime/offline-install.log"
         ]
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T041633.955699+0000-f2caf21e",
@@ -4709,7 +4765,11 @@
           }
         ],
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T045557.296324+0000-5e32665e",
@@ -5295,7 +5355,11 @@
           "thirdparty_result_year_conflict_retained": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T054153.951952+0000-0fe4a6fa",
@@ -5894,7 +5958,11 @@
           "repetition_preserved": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T064631.503888+0000-e2d9164b",
@@ -6518,7 +6586,11 @@
           "not_new_visual_or_education_validation": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T101710.933226+0000-3ac07e93",
@@ -7189,7 +7261,11 @@
           "candidate_platform_not_accessed": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T103845.900069+0000-9af58e49",
@@ -7883,7 +7959,11 @@
           "not_student_grammar_error_or_current_live_probe": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T170855.071075+0000-fbd94198",
@@ -8701,7 +8781,11 @@
           "no_new_independent_key_review": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T181305.397507+0000-d114d2e4",
@@ -9357,7 +9441,11 @@
           "reference_not_exhaustive_and_core_count_not_promoted": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T185019.017267+0000-0b8eb653",
@@ -10033,7 +10121,11 @@
           "same_family_not_three_independent_samples": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T195605.537327+0000-e7b7ad70",
@@ -10229,7 +10321,11 @@
           "no_E_exam_reference_key": true
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T212643.994870+0000-f6ea8f06",
@@ -10447,7 +10543,11 @@
         "corrected15seed_answer_values_recovered": true,
         "source14_original_reference_and_pending_variants_recovered": true,
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T222525.620216+0000-11763445",
@@ -10663,7 +10763,11 @@
           "independent_verdicts": 0
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-13T234630.471065+0000-ea0fcec9",
@@ -10809,7 +10913,11 @@
           "independent_population_or_commercial_gold": false
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T010850.680962+0000-95a9c0ae",
@@ -11074,7 +11182,11 @@
         "32_new_native_PDF_records_replayed_equal_blank_layers_not_body_transcription": true,
         "new_grade8_1600x880_original_render_decoded": true,
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T021337.884179+0000-f08dfb57",
@@ -11426,7 +11538,11 @@
         "grade10_81_79_author_unscored_bodies_and_policy_recovered": true,
         "response_mode_v02_byte_exact_from_independent_restore_reproduced": true,
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T041128.933212+0000-332cb684",
@@ -11846,7 +11962,11 @@
           "open_core_tasks": 17
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T052419.753247+0000-2421f3f8",
@@ -12269,7 +12389,11 @@
           "current_author_profiles": 11
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T072111.037243+0000-05617880",
@@ -12703,7 +12827,11 @@
           "current_author_profiles": 11
         },
         "all_restored_assets_digest_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T092309.723178+0000-4c8aee61",
@@ -13167,7 +13295,11 @@
           ]
         },
         "all_restored_files_size_SHA_distinct_inode_verified": true
-      }
+      },
+      "storage_representation": "content_addressed_archive",
+      "archive_id": "sha256-history-20261015-v1",
+      "current_independent_full_tree": false,
+      "historical_copy_isolation_record_not_current_layout": true
     },
     {
       "snapshot_id": "2026-10-14T110013.504620+0000-a227913a",
@@ -13746,7 +13878,9 @@
           ]
         },
         "all_restored_files_size_SHA_distinct_inode_verified": true
-      }
+      },
+      "storage_representation": "independent_full_snapshot",
+      "current_independent_full_tree": true
     },
     {
       "snapshot_id": "2026-10-14T134453.593480+0000-5a0837ad",
@@ -14029,7 +14163,9 @@
           "longterm_gates_passed": false
         },
         "all_restored_files_size_SHA_distinct_inode_verified": true
-      }
+      },
+      "storage_representation": "independent_full_snapshot",
+      "current_independent_full_tree": true
     }
   ],
   "non_destructive_storage_compaction_events": [
@@ -14055,6 +14191,97 @@
       "source_cache_mutations": 0,
       "all_original_manifests_retained": true,
       "full_event_acquisition_id": "early-snapshot-identical-cow-compaction20261013"
+    },
+    {
+      "observed_on": "2026-10-15",
+      "method": "33 historical payload trees moved into verified content-addressed archive; preserve all original manifests and unique historical bytes; latest2 full trees unchanged",
+      "older_snapshots_archived": 33,
+      "old_payload_entries_removed": 158133,
+      "unique_historical_objects": 7498,
+      "unique_historical_bytes": 2758212020,
+      "original_manifests_retained": 35,
+      "current_cache_mutations": 0,
+      "unknown_files_deleted": 0,
+      "older_only_version_actually_restored": true,
+      "incremental_repeat_new_objects": 0,
+      "new_full_snapshot_creation_disabled": true,
+      "reports": [
+        {
+          "path": "build/english-benchmark-research-20261012/snapshot-compaction20261015-v0.1.json",
+          "sha256": "e2802858bb18e98cdcaa2eb5c6a91ec65ed4ae26f966610d0d1c3ef77027be25"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/older-only-restoration20261015-v0.1.json",
+          "sha256": "fb48aaac2f03abe39e7b4bb09d694d707667ab1d74ecef8c1f2dd8868da2ae60"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/incremental-preservation20261015-v0.1.json",
+          "sha256": "b76a9c2b4c6427f63308832f143b1b2ea2c9b3151c0e4f607631c426e5b0f540"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/incremental-preservation20261015-repeat-v0.1.json",
+          "sha256": "e5017217e84906e959812fdd9b38b055ae068fe955683d5cc95d5e00d8b615d7"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/snapshot-compaction-space-after20261015.json",
+          "sha256": "3fdb19713d2c2e983baf23882ee805cb1e975d34b265ba45e2e9163d0afa40f4"
+        }
+      ],
+      "measured_directory_size_before": "59G",
+      "measured_directory_size_after": "7.7G",
+      "physical_free_space_delta_not_equal_logical_duplicate_bytes": true,
+      "observed_available_delta_bytes": -56938496
     }
-  ]
+  ],
+  "content_archives": [
+    {
+      "archive_id": "sha256-history-20261015-v1",
+      "archive_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/sha256-history-20261015-v1",
+      "index_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/sha256-history-20261015-v1/archive-index.json",
+      "index_sha256": "b1aecd70061b201c81948a42c162d35496a6bf841d9ecf05911818858d6e3e27",
+      "unique_objects": 7498,
+      "unique_bytes": 2758212020,
+      "restore_checks": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "bytes": 7860476
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "bytes": 21441248
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/fetch-manifest-cambridge-core.json",
+          "sha256": "c2c20f8138a170f1404775d2d39964c637591b47a0a8712e8bd0d192ca14aa19",
+          "bytes": 2007
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/ocr/neea-2024-english-page01.txt",
+          "sha256": "5afc364639c65d4e5a14aba7174470e32eb01e3864f25aab889e6cf8cafc3f47",
+          "bytes": 1566
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "bytes": 315792
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "bytes": 1130
+        }
+      ]
+    }
+  ],
+  "current_asset_preservation": {
+    "archive_id": "sha256-history-20261015-v1",
+    "index_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/sha256-history-20261015-v1/current-asset-index.json",
+    "index_sha256": "04eccab6ee55cd860ed1a081a4ea897cbf02cb193420266c0ad390ea131ad448",
+    "current_registered_paths": 6807,
+    "current_unique_contents": 6726,
+    "current_unique_bytes": 2700016784,
+    "same_host_only": true
+  }
 }

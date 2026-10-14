@@ -1,0 +1,14 @@
+{
+  "version": "0.1",
+  "owner_instruction_on": "2026-10-15",
+  "scope": "EnglishBenchmarkResearch_backup_and_generated_research_assets_only",
+  "automatic_full_snapshot_creation": false,
+  "retained_recent_full_snapshots": 2,
+  "historical_versions": "preserve_manifests_and_all_unique_bytes_in_verified_content_addressed_archive",
+  "delete_duplicate_snapshot_payload_only_after_archive_verification": true,
+  "new_assets": "archive_each_new_sha256_once; retain_source_and_required_processed_evidence; use_Git_for_tracked_metadata",
+  "routine_verification": "changed_assets_and_referenced_outputs_only; reuse_unchanged_evidence",
+  "generated_outputs": "render_only_pages_needed_for_review; do_not_expand_full_render_or_copy_trees_for_each_batch",
+  "preserve": ["original_sources", "unique_historical_versions", "current_research_cache", "recent_two_full_restore_points", "unrelated_user_files"],
+  "storage_gate": "check_space_and_duplicate_content_before_any_large_acquisition_or_backup; same_host_archive_not_off_host_backup"
+}
