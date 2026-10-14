@@ -6,7 +6,7 @@
 
 2026-10-14 持续核读入口：
 
-- [小一/小二非纸笔规格](Primary/Foundation/Grade1Grade2NonPaperSpecifications-v0.1.md)：复用教育部通知，新增学校两方案八模式；卡/媒体/真实表现未得，源题组零增，提示/双人贡献与评分空隙保留。
+- [小一/小二非纸笔规格](Primary/Foundation/Grade1Grade2NonPaperSpecifications-v0.1.md)：复用教育部通知，新增学校两方案八模式；卡/媒体/真实表现未得，源题组零增；另[两书面口头原型](Primary/Foundation/TwoOralPrototypeProtocol-v0.1.md)13卡＋共同任务两人记录、B卡真实去提示修订；未执行语音/学生/客户端验收。
 
 - [小三选定规格](Primary/Grade3/SelectedSourceSpecifications-v0.1.md)：四组20参考另层；三下六页/年未知、三上原预览1/6与HTML，IX3/5源键错配保留，另[两完整原创](Primary/Grade3/TwoAuthoredTaskProtocol-v0.1.md)2/10及一次规则全局检查；未完整本级或权利/学生成立。
 

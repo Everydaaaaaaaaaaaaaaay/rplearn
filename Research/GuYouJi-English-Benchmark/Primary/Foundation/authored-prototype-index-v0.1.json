@@ -1,0 +1,61 @@
+{
+  "version": "0.1",
+  "scope": "written_oral_prototypes_only_no_executed_voice_or_grade_admission",
+  "source_plan_index": {
+    "path": "Primary/Foundation/grade1-grade2-plan-observations-v0.1.json",
+    "sha256": "91ec6af64f0f89842e95b9fd3d8311a43f659f79361ba33debf86217a949e057"
+  },
+  "specification": {
+    "path": "Primary/Foundation/Grade1Grade2NonPaperSpecifications-v0.1.md",
+    "sha256": "80a19c426e22f13ad32c65f3810057d19c55a1383c479b70e45c010bd10709c6"
+  },
+  "family_count": 2,
+  "responses_partition": {
+    "oral_card_opportunities": 13,
+    "individual_records_in_one_joint_performance": 2
+  },
+  "members": [
+    {
+      "family_id": "grade1-letter-word-readaloud",
+      "level": "primary1",
+      "source_plan_mode": "grade1_letter_and_word_readaloud",
+      "material_cards": 13,
+      "oral_card_response_opportunities": 13,
+      "observation_fields": 18,
+      "all_unprompted_integer_count_combinations_recordable": 324,
+      "technical_missing_or_unattempted_not_language_error": true,
+      "revision_count": 0,
+      "candidate": {
+        "path": "Primary/Foundation/Generated/grade1-letter-word-readaloud-v0.1.md",
+        "sha256": "5ffd8ba3c7880948643d5a9ed65109f59d841cd4d46048866ad0989ca76511bc"
+      },
+      "author_check_acquisition_id": "foundation-author-foundation-two-oral-prototype-check-results20261014"
+    },
+    {
+      "family_id": "grade2-pencil-request-pair",
+      "level": "primary2",
+      "source_plan_mode": "grade2_paired_conversation",
+      "joint_performance_tasks": 1,
+      "individual_learner_records": 2,
+      "role_function_opportunities": 6,
+      "synthetic_author_case_count": 6,
+      "revision_count": 1,
+      "partner_B_target_not_given_before_A_request": true,
+      "confirmation_question_optional_not_forced": true,
+      "candidate": {
+        "path": "Primary/Foundation/Generated/grade2-pencil-request-pair-v0.2.md",
+        "sha256": "8757d280716d5e9f81f30a7b5f93c8393e69841a04e8a0c422fcdfb8e1fd7e6e"
+      },
+      "author_check_acquisition_id": "foundation-author-foundation-two-oral-prototype-check-results20261014",
+      "previous_candidate": {
+        "path": "Primary/Foundation/Generated/grade2-pencil-request-pair-v0.1.md",
+        "sha256": "f4cad56642503b639775a33e5cbdce85405941d4bb40d5ad3012c8ec871ef1e5",
+        "not_current": true
+      }
+    }
+  ],
+  "complete_source_task_groups_added": 0,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "student_audio_or_font_or_product_or_rights_validation": false
+}
