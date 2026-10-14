@@ -1,0 +1,96 @@
+{
+  "version": "0.1",
+  "grade": 10,
+  "kind": "single_passage_mixed_grammar",
+  "candidate_path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-v0.1.md",
+  "candidate_sha256": "c05a0981065c4fc26748345d07213701397211c58b4a045b883d0b291d3419d2",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade10-v0.3.md",
+    "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+    "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+  },
+  "anchor_group_id": "g10.wenzhou2025.grammar",
+  "questions": 10,
+  "options_each": null,
+  "materials": 1,
+  "given_slots": [
+    1,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10
+  ],
+  "ungiven_oneword_slots": [
+    2,
+    4,
+    8
+  ],
+  "given_response_can_be_multiword": true,
+  "author_answer_vector": [
+    [
+      "costumes"
+    ],
+    [
+      "an"
+    ],
+    [
+      "carefully"
+    ],
+    [
+      "who",
+      "that"
+    ],
+    [
+      "reading"
+    ],
+    [
+      "to put"
+    ],
+    [
+      "be locked"
+    ],
+    [
+      "in"
+    ],
+    [
+      "useful"
+    ],
+    [
+      "returning"
+    ]
+  ],
+  "whole_group_solved": true,
+  "two_relative_pronoun_filled_branches_reviewed": true,
+  "source_rule_Q64_more_not_exhaustive_not_copied": true,
+  "task_load": {
+    "gapped_body": {
+      "english_digit_tokens": 141,
+      "han_characters": 0
+    },
+    "given_root_tokens": 7,
+    "blank_labels": 10,
+    "filled_reference": {
+      "english_digit_tokens": 153,
+      "han_characters": 0
+    },
+    "labels_and_root_prompts_not_in_gapped_body": true,
+    "not_reading_profile_or_student_time": true
+  },
+  "actual_saved_transition_rounds": 0,
+  "author_key_exhaustive": false,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "unknowns": [
+    "Independent open response adjudication and other natural variants",
+    "Student difficulty/time; not same source word count measured",
+    "Grammar-target balance may be simpler than other grade10 tasks"
+  ],
+  "coarse_exposure_cluster": "grade10-theatre-costumes-single-grammar_complete_singlepassage_form"
+}
