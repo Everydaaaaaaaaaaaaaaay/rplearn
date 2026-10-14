@@ -16,6 +16,8 @@
 
 身份修复：[核心0.16](FirstRelease/review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](FirstRelease/current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
+新增词形复核：[高一35B unsupported/解析与词典](FirstRelease/Expansions/Grade10UnsupportedStanceReview-v0.1.md)追加第28源裁决，原C保留；词表supportive adj候选C1另有PDF证据，两未知不拼级，页脚B2属于exhibit。组合0.8所绑27冻结，最新28与核心17分开。
+
 现行语言参照：[13源/10当前作者卡0.3](FirstRelease/MeasuredReadingReferenceCards-v0.3.md)，源13不增，新高一功能组成为第10个配对；core016稳定ID/40材料267点直接纳响应0.5，十四请求仍不增。
 
 新增逐句结构：[高一16源句/20原创句有限单位](FirstRelease/Expansions/Grade10FunctionFiniteUnitControls-v0.1.md)，按明示口径多单位句37.5%/50%、单句最多6/3，不冒长句比例、深度或全国高一阈值；全部位置有摘要，作者分析待独立复核。
