@@ -1,0 +1,41 @@
+{
+  "version": "0.1",
+  "before_core": {
+    "path": "FirstRelease/review-index-v0.15.json",
+    "sha256": "a8c21c3aa690185f9e243f4342f1e8613c8c683008ce53aac6807db01725bd99"
+  },
+  "current_core": {
+    "path": "FirstRelease/review-index-v0.16.json",
+    "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+  },
+  "historical_mode_summary": {
+    "path": "FirstRelease/response-family-overview-v0.4.json",
+    "sha256": "a3d6aa49ac116ad6bc95dcc30ea9336cda28a07b4aac801c2f19dfb70919cb65"
+  },
+  "historical_measured_cards": {
+    "path": "FirstRelease/measured-reading-reference-cards-v0.1.json",
+    "sha256": "3a7494cd0da740107897f49722cf1b69560ac2298ef8ea325817b7240b80c15a"
+  },
+  "family_id_aliases": [
+    {
+      "previous_derivation_id": "grade11-commitments-reading-v0.3",
+      "stable_current_family_id": "grade11-commitments-reading-v0.2",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+        "sha256": "1a98564304286a4c0d706b1239852fab14a0ea95115b96e2042bb1397ef2eff9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.3.json",
+        "sha256": "5937e3d78965d31b769f1b785c31c4765e504651b08bb927eeb68c757dd5dbf5"
+      },
+      "questions_unchanged": 4
+    }
+  ],
+  "same_current_candidate_and_authorcheck_bytes": true,
+  "response_mode_totals_unchanged": true,
+  "current_total_family_response": [
+    39,
+    263
+  ],
+  "alias_is_bookkeeping_correction_not_source_or_semantic_admission": true
+}

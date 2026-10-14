@@ -6,11 +6,13 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-从[统一审阅包0.15](ReviewPackage-v0.15.md)、[组合索引0.6](combined-review-index-v0.6.json)和[可执行标准0.7](PracticalAuthoringStandard-v0.7.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展13/48，合39现行材料家族263响应点；十四请求仅本机文件/声明控制。见[交付检查0.7](DeliveryCheck-v0.7.md)、[响应分母0.4](ResponseModeCoverage-v0.4.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
+从[统一审阅包0.16](ReviewPackage-v0.16.md)、[组合索引0.7](combined-review-index-v0.7.json)和[可执行标准0.7](PracticalAuthoringStandard-v0.7.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展13/48，合39现行材料家族263响应点；十四请求仅本机文件/声明控制。见[交付检查0.7](DeliveryCheck-v0.7.md)、[响应分母0.4](ResponseModeCoverage-v0.4.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
 现行0.13/37材料256点/十三请求/27源队列已纳入[第29完整恢复](../Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)的6820文件严格COW/SHA/独立inode核验；29自身结果及后续素材留下一批，未异机/完整环境或独立教育验收。
 
 下文为各时点增量与保存边界，旧版本不作为当前默认。
+
+身份修复：[核心0.16](review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
 当前语言与修题：[11源/9原创阅读参照卡](MeasuredReadingReferenceCards-v0.1.md)，高二当前选项143→114、16项全解，核心0.15仍25/205/53；新增开放短答另列3点，全部39/263分八模式，十四已有请求不增。
 

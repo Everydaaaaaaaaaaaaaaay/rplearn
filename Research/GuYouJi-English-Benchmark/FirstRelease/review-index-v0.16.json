@@ -1,0 +1,1283 @@
+{
+  "version": "0.16",
+  "created_on": "2026-10-14",
+  "scope": "six_grade_core_author_review_package",
+  "status": "core_review_package_grade10_explicit_than_not_full_benchmark",
+  "candidate_count": 25,
+  "question_count": 205,
+  "source_group_count": 53,
+  "grades": [
+    {
+      "grade": 7,
+      "current_specification": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "comparison": {
+        "path": "FirstRelease/Comparisons/grade7-source-comparison-v0.1.md",
+        "sha256": "cb79d637539c9e4466bc03b3cf5ff641b320782ccfe143c6bf36f7cbc199b0e1"
+      },
+      "paper_family_count": 2,
+      "source_group_count": 7,
+      "candidate_count": 6
+    },
+    {
+      "grade": 8,
+      "current_specification": {
+        "path": "FirstRelease/Specifications/grade8-v0.2.md",
+        "sha256": "8a49569c17ba7561c608616f3a65f4e0f29098e744fe119387e011d4368663a1"
+      },
+      "comparison": {
+        "path": "FirstRelease/Comparisons/grade8-source-comparison-v0.1.md",
+        "sha256": "6ce20317e0b005a3755fad04e4138d257f4cd013f888dd3b4479a0c067e1c760"
+      },
+      "paper_family_count": 2,
+      "source_group_count": 9,
+      "candidate_count": 4
+    },
+    {
+      "grade": 9,
+      "current_specification": {
+        "path": "FirstRelease/Specifications/grade9-v0.2.md",
+        "sha256": "b4e9f9efd4c9834277f92d7d395797df7b291d8f956a01699024600f8a7ac4ae"
+      },
+      "comparison": {
+        "path": "FirstRelease/Comparisons/grade9-source-comparison-v0.1.md",
+        "sha256": "845c453a99fbe95fd9996c9d3df4e272a6578ad2a4e7060e298712aac7e6c400"
+      },
+      "paper_family_count": 2,
+      "source_group_count": 7,
+      "candidate_count": 3
+    },
+    {
+      "grade": 10,
+      "current_specification": {
+        "path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+      },
+      "comparison": {
+        "path": "FirstRelease/Comparisons/grade10-source-comparison-v0.1.md",
+        "sha256": "bcbba10a4279baf01f615c2684a5c02702a6fce9231fec3b0295929fc09829e5"
+      },
+      "paper_family_count": 2,
+      "source_group_count": 11,
+      "candidate_count": 3
+    },
+    {
+      "grade": 11,
+      "current_specification": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "comparison": {
+        "path": "FirstRelease/Comparisons/grade11-source-comparison-v0.1.md",
+        "sha256": "ad515fa57f4c3ac7e7cdeefe37d854fa76baf37122f80c148005cb8c1c206547"
+      },
+      "paper_family_count": 2,
+      "source_group_count": 8,
+      "candidate_count": 5
+    },
+    {
+      "grade": 12,
+      "current_specification": {
+        "path": "FirstRelease/Specifications/grade12-v0.2.md",
+        "sha256": "54a98228198d1838326bc2726d0da1a69b37325ac701951e37395c3a3b0cc764"
+      },
+      "comparison": {
+        "path": "FirstRelease/Comparisons/grade12-source-comparison-v0.1.md",
+        "sha256": "130e8559b619b1a1b70a3808c230d8538cc1e3dc5607c18dfe5c25f57adfd2d8"
+      },
+      "paper_family_count": 2,
+      "source_group_count": 11,
+      "candidate_count": 4
+    }
+  ],
+  "candidates": [
+    {
+      "id": "grade10-grammar-v0.1",
+      "grade": 10,
+      "core_kind": "language",
+      "author_kind": "three_passage_mixed_grammar",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-grammar-v0.3.md",
+        "sha256": "e8e9c3ba7a86ed2f6b8c2e225148f89806b9ac3782c0b8c59dc55f4b69f101a8"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-grammar-author-check-v0.3.json",
+        "sha256": "1951a705b510ac164e3743cf67b7bdd527b96138dc6fb0c49f49b2c53f9e237b"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+      },
+      "anchor_group_ids": [
+        "g10.2024.grammar"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        54,
+        51,
+        49
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade10-roof-reading-v0.2",
+      "grade": 10,
+      "core_kind": "reading",
+      "author_kind": "four_option_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-v0.2.md",
+        "sha256": "1ba7553136ea024bffceec8ea78f6db98c9a6db183d123a55b46cca757a773ee"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-author-check-v0.2.json",
+        "sha256": "4d547765d3c07ff52e835a45f3e2421bb3ce2113c055279cf6ad12e57a89c6a3"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+      },
+      "anchor_group_ids": [
+        "g10.2024.readingD"
+      ],
+      "questions": 4,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        309
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false,
+      "same_task_family_prior_version": "grade10-roof-reading-v0.1"
+    },
+    {
+      "id": "grade10-theatre-cloze-v0.1",
+      "grade": 10,
+      "core_kind": "cloze",
+      "author_kind": "four_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-theatre-cloze-v0.1.md",
+        "sha256": "5d4e5e2c4b573032368dd36541b41db310cde1f5461c5391159f28c7f1263ec0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-theatre-cloze-author-check-v0.1.json",
+        "sha256": "aa6ba54ba18954d54f43e5a9bc2be71ea3d201d7fbe843d1c485cdd48d3c5d21"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+      },
+      "anchor_group_ids": [
+        "g10.2025yearend.cloze"
+      ],
+      "questions": 15,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        355
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade11-archive-grammar-v0.1",
+      "grade": 11,
+      "core_kind": "language",
+      "author_kind": "mixed_given_ungiven_grammar",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-archive-grammar-v0.1.md",
+        "sha256": "586d77e8ca84f88eb89cd1156663bd661950765333a70dc8f72958e19bc5278d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-archive-grammar-author-check-v0.1.json",
+        "sha256": "135d45e110b176965742812779f50c42ad6d1b2d525a83ef3730b25f5bf0cf09"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "anchor_group_ids": [
+        "g11.2025.grammar"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        209
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade11-commitments-reading-v0.2",
+      "grade": 11,
+      "core_kind": "reading",
+      "author_kind": "four_option_argument_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+        "sha256": "1a98564304286a4c0d706b1239852fab14a0ea95115b96e2042bb1397ef2eff9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.3.json",
+        "sha256": "5937e3d78965d31b769f1b785c31c4765e504651b08bb927eeb68c757dd5dbf5"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "anchor_group_ids": [
+        "g11.2025.readingD"
+      ],
+      "questions": 4,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        353
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false,
+      "same_task_family_prior_version": "grade11-commitments-reading-v0.2",
+      "actual_saved_revision_rounds": 2,
+      "current_candidate_revision": "0.3"
+    },
+    {
+      "id": "grade11-exhibition-cloze-v0.1",
+      "grade": 11,
+      "core_kind": "cloze",
+      "author_kind": "four_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-exhibition-cloze-v0.1.md",
+        "sha256": "113668be23b33c8a777f9884303137d0dcad6c2b589c4f89e9b821aabfc275aa"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-exhibition-cloze-author-check-v0.1.json",
+        "sha256": "5fb919fb502a3ae78137bb3411519b3aeb032c44880c497c4b619a8770d2c628"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade11-v0.1.md",
+        "sha256": "7c90804714df9f4e8e53877be55b97be11ee860d98dbad6685e3ef1c7cf6d892"
+      },
+      "anchor_group_ids": [
+        "g11.2024.cloze"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        243
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": true
+    },
+    {
+      "id": "grade12-archive-v0.1",
+      "grade": 12,
+      "core_kind": "reading",
+      "author_kind": "four_option_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-archive-v0.1.md",
+        "sha256": "940bb58732895b08ac16ceabd0c298ce8f22768367adddfee9e7f054132699c5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-archive-author-check-v0.1.json",
+        "sha256": "066de154a72bc5795a9c661ac3aa8db791f6db819aee887976a79b810dea8045"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade12-v0.1.md",
+        "sha256": "53db58eaacc6e4bce9aa9fe4d00250c67a213031d8189f5338c89b1c0cff0be5"
+      },
+      "anchor_group_ids": [
+        "g12.2023.readingA"
+      ],
+      "questions": 3,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        279
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": true
+    },
+    {
+      "id": "grade12-bridge-cloze-v0.1",
+      "grade": 12,
+      "core_kind": "cloze",
+      "author_kind": "four_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-bridge-cloze-v0.1.md",
+        "sha256": "d975652cb7c93214ac9cc678874c2c26f7c45b50d4e334a4baad8b7e46d968c1"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-bridge-cloze-author-check-v0.1.json",
+        "sha256": "ec399d728d307632bac777fd6c1684d74d686587bf65e94b2e9903597c74f354"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade12-v0.2.md",
+        "sha256": "54a98228198d1838326bc2726d0da1a69b37325ac701951e37395c3a3b0cc764"
+      },
+      "anchor_group_ids": [
+        "g12.2025anshan.cloze"
+      ],
+      "questions": 15,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        400
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade12-dashboard-reading-v0.1",
+      "grade": 12,
+      "core_kind": "reading",
+      "author_kind": "four_option_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-v0.1.md",
+        "sha256": "947c4e3533b554285999d781740c576accc17808fa3934cfb2344c303cb2532c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-author-check-v0.1.json",
+        "sha256": "30d5323c34ba381ce55917385288a1cd65567a1008963d53350978acbc2a457b"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade12-v0.2.md",
+        "sha256": "54a98228198d1838326bc2726d0da1a69b37325ac701951e37395c3a3b0cc764"
+      },
+      "anchor_group_ids": [
+        "g12.2025anshan.readingC"
+      ],
+      "questions": 4,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        348
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade12-workshop-grammar-v0.1",
+      "grade": 12,
+      "core_kind": "language",
+      "author_kind": "mixed_given_ungiven_grammar",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-workshop-grammar-v0.1.md",
+        "sha256": "64e247c8354cd7271e85ab524b908f9f637d45692f2d6d667b30c0a1c0194f23"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-workshop-grammar-author-check-v0.1.json",
+        "sha256": "4d1bc2831055eac196d11507a5f2d59fee0cdf2bcb6ac7368c665becce92f6af"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade12-v0.2.md",
+        "sha256": "54a98228198d1838326bc2726d0da1a69b37325ac701951e37395c3a3b0cc764"
+      },
+      "anchor_group_ids": [
+        "g12.2025anshan.grammar"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        238
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade7-boxes-cloze-v0.1",
+      "grade": 7,
+      "core_kind": "cloze",
+      "author_kind": "three_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-boxes-cloze-v0.1.md",
+        "sha256": "5e5c3cd42ee3f7cbb3a427cf06b6036de37a9f7151e1fd40d1d764e960386416"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-boxes-cloze-author-check-v0.1.json",
+        "sha256": "b0ae70575e2b81afbcdf45e49d1adeae10733438f9f8796f121b958b4cb6f26e"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "anchor_group_ids": [
+        "g7.2021.cloze"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        220
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade7-garden-bank-v0.1",
+      "grade": 7,
+      "core_kind": "language",
+      "author_kind": "bank_selection_with_form_change",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-garden-bank-v0.1.md",
+        "sha256": "4e64476e182d4a430d5bbbb6573bb5b01a2c46f235ae8a7b22aaa2ffc940564e"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-garden-bank-author-check-v0.1.json",
+        "sha256": "a24eed2a3141326d0cd3e1062de681ced719ae448783ed2c3689663fe05aea3a"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "anchor_group_ids": [
+        "g7.2021.vocabularyB"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        176
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade7-library-v0.1",
+      "grade": 7,
+      "core_kind": "reading",
+      "author_kind": "three_option_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-library-v0.1.md",
+        "sha256": "5a24aeee6b67d23b4bc02fb13c2c05497bb11ac277edcb8ff6e70b21fa08d7ab"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-library-author-check-v0.1.json",
+        "sha256": "728625fd2c88dab5f87654a96c7fc0bfb5c724cc70e8656f3c6c4eee13aeedcb"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade7-v0.1.md",
+        "sha256": "65ad03cc33f905b1d7757f04111539768ae6b8d9d48bd2d5907db3c4d6571edd"
+      },
+      "anchor_group_ids": [
+        "g7.2021.readingB"
+      ],
+      "questions": 5,
+      "passage_extraction": "legacy_library_unmarked",
+      "passage_token_counts": [
+        199
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": true,
+      "legacy_binding": {
+        "kind": "three_option_reading",
+        "anchor_group_ids": [
+          "g7.2021.readingB"
+        ],
+        "evidence": "explicit_anchor_id_in_candidate_body",
+        "limitation": "Original check omitted kind/anchor fields; additive binding only, original hashes and self-review unchanged"
+      }
+    },
+    {
+      "id": "grade8-language-choice-v0.1",
+      "grade": 8,
+      "core_kind": "language",
+      "author_kind": "sentence_four_option_language",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-language-choice-v0.2.md",
+        "sha256": "4acb69d83b1b5d75e6087d589f0dc637d7de2d5aeb00706087e29468a31caa4c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-language-choice-author-check-v0.2.json",
+        "sha256": "e22f3cc6e491eb9ac333f00023ab6f7825840d3591e6a3fa2cf0c92749140a1c"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade8-v0.2.md",
+        "sha256": "8a49569c17ba7561c608616f3a65f4e0f29098e744fe119387e011d4368663a1"
+      },
+      "anchor_group_ids": [
+        "g8.2025fengtai.language"
+      ],
+      "questions": 12,
+      "passage_extraction": "sentence_collection",
+      "passage_token_counts": [],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade8-lunch-v0.1",
+      "grade": 8,
+      "core_kind": "reading",
+      "author_kind": "four_option_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-lunch-v0.1.md",
+        "sha256": "96ba31bca24e238201c4699b90dadc723be8545f16f0e201b3f6ce63f4d9c461"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-lunch-author-check-v0.1.json",
+        "sha256": "1659391af49e85fe9e1bb6410f3a85182f0f72f715eff04e1f382f5fb87076c9"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade8-v0.1.md",
+        "sha256": "b4e8bbbb2e92d1ccb38758b1f44c18cc237e8813615d12779269a628b1d5f977"
+      },
+      "anchor_group_ids": [
+        "g8.2025.readingC"
+      ],
+      "questions": 4,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        246
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": true
+    },
+    {
+      "id": "grade8-radio-cloze-v0.1",
+      "grade": 8,
+      "core_kind": "cloze",
+      "author_kind": "four_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-radio-cloze-v0.1.md",
+        "sha256": "f5d634c3bf3a76d6d53bcdc17419e3255915095016e3aeecd6292c430f114377"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-radio-cloze-author-check-v0.1.json",
+        "sha256": "5c0ad425abccfe030bb2e813679588273c66b1940a8a005a3ca897bfe404b2ca"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade8-v0.2.md",
+        "sha256": "8a49569c17ba7561c608616f3a65f4e0f29098e744fe119387e011d4368663a1"
+      },
+      "anchor_group_ids": [
+        "g8.2025.cloze"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        259
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade9-book-repair-v0.1",
+      "grade": 9,
+      "core_kind": "reading",
+      "author_kind": "four_option_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-book-repair-v0.1.md",
+        "sha256": "3bda37e304a8abad88accea77d68084d6d7fa91c07aa2737199a9a131426ce00"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json",
+        "sha256": "92a5e105432964305f3b23301300678ea3710e99cf84cffb74c06c14b99a7ad8"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade9-v0.1.md",
+        "sha256": "f16b2fcd226041b578652d9a70d856abac1a0ed743bcea78ccc54b180829c96f"
+      },
+      "anchor_group_ids": [
+        "g9.2026.readingC"
+      ],
+      "questions": 5,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        277
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": true
+    },
+    {
+      "id": "grade9-cycle-shop-cloze-v0.1",
+      "grade": 9,
+      "core_kind": "cloze",
+      "author_kind": "three_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-v0.1.md",
+        "sha256": "88754cf5c07e353666bea7c8cc39197db28145e4db44de9a3e1727df47840d68"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-author-check-v0.1.json",
+        "sha256": "ba051f458600cfa3461d6c2e82b82e821060a724126afeabecda0f25e571d6ca"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade9-v0.1.md",
+        "sha256": "f16b2fcd226041b578652d9a70d856abac1a0ed743bcea78ccc54b180829c96f"
+      },
+      "anchor_group_ids": [
+        "g9.2026.cloze"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        239
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": true
+    },
+    {
+      "id": "grade9-weather-grammar-v0.1",
+      "grade": 9,
+      "core_kind": "language",
+      "author_kind": "oneword_mixed_grammar",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-weather-grammar-v0.2.md",
+        "sha256": "607b33d1e24f6a021fb38b9dedc232a00f9bf097931fa9ff745ce3a448b092b0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-weather-grammar-author-check-v0.2.json",
+        "sha256": "54629c0986f42a52833a1b310c32e3d36318108ed7cc981de433cbfe2dab1899"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade9-v0.2.md",
+        "sha256": "b4e9f9efd4c9834277f92d7d395797df7b291d8f956a01699024600f8a7ac4ae"
+      },
+      "anchor_group_ids": [
+        "g9.2026.grammar"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        167
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade7-calendar-reading-v0.1",
+      "grade": 7,
+      "core_kind": "reading",
+      "author_kind": "four_option_text_calendar_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-calendar-reading-v0.1.md",
+        "sha256": "3c58f4766def8a1b90b8698e3f56a6c92613d54c1577b62738345e5eb8a10e4c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-calendar-reading-author-check-v0.1.json",
+        "sha256": "231760e04a4f8aa763a7b6ebcc003d87a85d913e8c74aaa1c8a6a41afcea5951"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "anchor_group_ids": [
+        "g7.2019.readingA"
+      ],
+      "questions": 3,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        130
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade7-reading-bus-bank-v0.1",
+      "grade": 7,
+      "core_kind": "language",
+      "author_kind": "bank_selection_no_form_change",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-reading-bus-bank-v0.1.md",
+        "sha256": "e4ffca7d654168a6e244f252356d523155f7d18c0c4d1e9aca042d19769e2ace"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-reading-bus-bank-author-check-v0.1.json",
+        "sha256": "7534488bfad60531ff5f4df62689d1eec32dd3d2bab19fcb0eb7ba76f6c9e03a"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "anchor_group_ids": [
+        "g7.2021.vocabularyA"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        162
+      ],
+      "reference_use": "complete_structure_and_author_answer_analysis_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade7-reading-corner-images-v0.1",
+      "grade": 7,
+      "core_kind": "reading",
+      "author_kind": "four_option_text_image_reading",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-reading-corner-images-v0.1.md",
+        "sha256": "7f6e0cf4af8da043a369e353d7c3243be16b5b3017fdd537d8446b1d7ac6b1df"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-reading-corner-images-author-check-v0.1.json",
+        "sha256": "d5d82f2cfe1046e26621bcbaaa8a034113f2bafff02a08b260e9563d2877a4e9"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade7-v0.2.md",
+        "sha256": "83c5866dda39ead51fa98a161a1b8669658b84061d90015436f7ccf91d3278b0"
+      },
+      "anchor_group_ids": [
+        "g7.2019.readingB"
+      ],
+      "questions": 3,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        143
+      ],
+      "reference_use": "complete_text_drawing_task_structure_and_author_answers_not_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade11-maps-funding-cloze-v0.1",
+      "grade": 11,
+      "core_kind": "cloze",
+      "author_kind": "four_option_cloze",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-maps-funding-cloze-v0.1.md",
+        "sha256": "3449f56faeb0792b2f7afdfae82c7d5c1921669fc9a52325ef4533e0e3e44c49"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-maps-funding-cloze-author-check-v0.1.json",
+        "sha256": "cda89f8b9668cf6fc7c7860eaefae8d8a2a6f7cab1c4defb04292c7a18492fb9"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "anchor_group_ids": [
+        "g11.2025.cloze"
+      ],
+      "questions": 15,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        323
+      ],
+      "reference_use": "complete_mode_reference_new_fiction_author_review_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade11-three-context-grammar-v0.1",
+      "grade": 11,
+      "core_kind": "language",
+      "author_kind": "three_passage_mixed_grammar",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-three-context-grammar-v0.1.md",
+        "sha256": "60f67c4bf07a7bfac73927a35283521787d50f30afd0469fd4a4aa6d102d06e7"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-three-context-grammar-author-check-v0.1.json",
+        "sha256": "fdfc9add2fc5952d64812a6b5c1d5e54c73439b570bd0fc5c5c6cdd441b0f67b"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "anchor_group_ids": [
+        "g11.2024.grammar"
+      ],
+      "questions": 10,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        57,
+        57,
+        70
+      ],
+      "reference_use": "complete_mode_reference_new_fiction_author_review_not_independent_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    },
+    {
+      "id": "grade8-music-afternoon-reading-v0.1",
+      "grade": 8,
+      "core_kind": "reading",
+      "author_kind": "narrative_reading_three_item_four_option",
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-music-afternoon-reading-v0.2.md",
+        "sha256": "ef8692222cce099e92eabf14099b890b3f3ca2338a4497f3f7b554e6947efd10"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-music-afternoon-reading-author-check-v0.2.json",
+        "sha256": "a146bebd25d429a4037e38eb44e068eae74626952f03dd94567153b8ee868959"
+      },
+      "specification_at_authoring": {
+        "path": "FirstRelease/Specifications/grade8-v0.2.md",
+        "sha256": "8a49569c17ba7561c608616f3a65f4e0f29098e744fe119387e011d4368663a1"
+      },
+      "anchor_group_ids": [
+        "g8.2025fengtai.readingB"
+      ],
+      "questions": 3,
+      "passage_extraction": "explicit_passage_markers",
+      "passage_token_counts": [
+        344
+      ],
+      "reference_use": "complete_source_form_genre_plus_real_language_load_not_gold",
+      "review_identity": "same_author_not_blind",
+      "current_specification_updated_since_authoring": false
+    }
+  ],
+  "selected_source_groups": [
+    {
+      "id": "g7.2021.cloze",
+      "grade": 7,
+      "canonical_sha256": "4d5ab25026e5b5736d9f89416c066b0905b27fcb1465987d379f5064b5b652f1"
+    },
+    {
+      "id": "g7.2021.readingB",
+      "grade": 7,
+      "canonical_sha256": "d7be37b756a077d55b228ca275cbf628974fa58847cb48d3e97cb07cbdf1e08c"
+    },
+    {
+      "id": "g7.2021.vocabularyA",
+      "grade": 7,
+      "canonical_sha256": "356ce3285a699dd6be60779625d49b35caccdd77da80e5d646386a6591e8dd29"
+    },
+    {
+      "id": "g7.2021.vocabularyB",
+      "grade": 7,
+      "canonical_sha256": "4d7ae6261088cb6ee0e0de1fe72735e1e6236b109c2c99d87a9fd0b27c8b0e21"
+    },
+    {
+      "id": "g8.2025.matchingA",
+      "grade": 8,
+      "canonical_sha256": "1fcd3780ae5b0d832cb2ba6865eab5e46acc881dea77bb16246b048140f30a2f"
+    },
+    {
+      "id": "g8.2025.readingB",
+      "grade": 8,
+      "canonical_sha256": "2f021a375f23286f436cebac8c295038daf33d11480d697c6af346b8bb33174d"
+    },
+    {
+      "id": "g8.2025.readingC",
+      "grade": 8,
+      "canonical_sha256": "35c3e21416ae24594f6f9726c585c4afdb2304a2c7bf54173ba9186d8d899403"
+    },
+    {
+      "id": "g10.2024.cloze",
+      "grade": 10,
+      "canonical_sha256": "f47689b940a6cf4c0377796b3ec4f93991da824277b63dd30fb39d8a4edabb6f"
+    },
+    {
+      "id": "g10.2024.grammar",
+      "grade": 10,
+      "canonical_sha256": "c9086bc9b604054c8f176c8e1f6f19af9c1d05d4570487fa4323df95a458836c"
+    },
+    {
+      "id": "g10.2024.readingA",
+      "grade": 10,
+      "canonical_sha256": "20b4584f0d7ef908e7453f3c2e0935ccc9ad9a9c3cc13f24a63d2cbab5dabddc"
+    },
+    {
+      "id": "g11.2024.cloze",
+      "grade": 11,
+      "canonical_sha256": "40e8781094d24c63783a3c5243b169b2035e2bc16b75fddd842bfd48d8ccf967"
+    },
+    {
+      "id": "g11.2024.grammar",
+      "grade": 11,
+      "canonical_sha256": "9daea88f56e29b3d2d2b9e08c3b0a35c3985ef1e79019bd3137cf3acde1e9ff9"
+    },
+    {
+      "id": "g11.2024.readingA",
+      "grade": 11,
+      "canonical_sha256": "48ee595dcc9f5cc17d88cad12d1bfde2b531cdff6a9b3e40c693428b5c476774"
+    },
+    {
+      "id": "g8.2025.cloze",
+      "grade": 8,
+      "canonical_sha256": "7c3f072d3c5eafdc01e6a62ff218665de4631efacf368a7d88aa74f383c93965"
+    },
+    {
+      "id": "g10.2024.readingC",
+      "grade": 10,
+      "canonical_sha256": "1f4572f88555e795db977e940e893e1f91a009daab0b7c279aacd1df61ad7daf"
+    },
+    {
+      "id": "g10.2024.readingD",
+      "grade": 10,
+      "canonical_sha256": "16c450b66011e6b4e3deffad9b70f4b02c177854e224e8fcc29dbee4fd15b7ba"
+    },
+    {
+      "id": "g12.2023.readingA",
+      "grade": 12,
+      "canonical_sha256": "1c3a20e8c42d201f34ab13a6eccdd02c6895029cdc50d7d5037dde9addc860f3"
+    },
+    {
+      "id": "g12.2023.readingB",
+      "grade": 12,
+      "canonical_sha256": "53c92b5dd39a0080587368e7bd2fcf7eb537f9e595cc479c3e927fe7ec403ff4"
+    },
+    {
+      "id": "g12.2023.cloze",
+      "grade": 12,
+      "canonical_sha256": "5739f5b101b1045e16099ec00cdeaf3d086e5bcb1888b71aeb49f946630ff1a9"
+    },
+    {
+      "id": "g12.2023.grammar",
+      "grade": 12,
+      "canonical_sha256": "3c43b5699523a3fa521f3ba7dc03512b29184bd8e81b8126b23b5d9b88f3ea07"
+    },
+    {
+      "id": "g9.2026.cloze",
+      "grade": 9,
+      "canonical_sha256": "ca911c3ae22ac742fb691bd518e3f82a373c93d86c9e7b362a5e1c82dc15149e"
+    },
+    {
+      "id": "g9.2026.readingC",
+      "grade": 9,
+      "canonical_sha256": "dfa75301e0882ffb54e4281baac983771578f3395e59c267d7ee54868bd32afe"
+    },
+    {
+      "id": "g9.2026.grammar",
+      "grade": 9,
+      "canonical_sha256": "cdba6d33b2f7e83612cebdd060adac24f5b79d84768cb74c0abe79383d7675ba"
+    },
+    {
+      "id": "g11.2025.readingB",
+      "grade": 11,
+      "canonical_sha256": "7142f2ca7ddc6ce511a7b5e60a494abaa5c030fe6580527d65fb8f0a6b86e1d5"
+    },
+    {
+      "id": "g11.2025.readingC",
+      "grade": 11,
+      "canonical_sha256": "77bd58cf895c2859810c6ae9fa161567602cf2f03f611084a9a7ea8f0255fbe1"
+    },
+    {
+      "id": "g11.2025.readingD",
+      "grade": 11,
+      "canonical_sha256": "972ac95e2b2e4445ad4f4920a8d4fd889eff9acd4803dc2153b34ee1239cb1cd"
+    },
+    {
+      "id": "g11.2025.cloze",
+      "grade": 11,
+      "canonical_sha256": "2b4896a9536db20be32e620723ae5d6aa5f3ffa0c293a41f7ecbfc95f6d56138"
+    },
+    {
+      "id": "g11.2025.grammar",
+      "grade": 11,
+      "canonical_sha256": "63651c3c01909b93a5bdafb0b8be6e65d133a221557d21641401c7e877f287b3"
+    },
+    {
+      "id": "g7.2019.cloze",
+      "grade": 7,
+      "canonical_sha256": "43ccae97e99c9aba7b8086e6c12cf33a5ddbcf26b0a6ebbdea258759f556e757"
+    },
+    {
+      "id": "g7.2019.readingA",
+      "grade": 7,
+      "canonical_sha256": "3d8b398d1bd12915ef21c3c58ae882c526db99a7a177ccf59e2eac067d250302"
+    },
+    {
+      "id": "g7.2019.readingB",
+      "grade": 7,
+      "canonical_sha256": "1061fb8f22003a7e2d1cb23b39becc62d1804dc4d2050aecdcd726ad4a859f72"
+    },
+    {
+      "id": "g9.2025.cloze",
+      "grade": 9,
+      "canonical_sha256": "8edd1740d341bb737d9c8b1a5e1cdf5df5cba1ee76357869ca899a86fd22cc1a"
+    },
+    {
+      "id": "g9.2025.readingA",
+      "grade": 9,
+      "canonical_sha256": "49786200f99ceb5428f135dc5d72fa76c80bc1e836205efc6423bd25b04de7d0"
+    },
+    {
+      "id": "g9.2025.grammar",
+      "grade": 9,
+      "canonical_sha256": "fd6dbcadab7200845415a820ed7240a0c182853702550a071363754aca650eef"
+    },
+    {
+      "id": "g9.2025.insertionE",
+      "grade": 9,
+      "canonical_sha256": "397dc16ff8601470fa47204f25316b89296fe3bea2a922163ffaa9e0152ed7f7"
+    },
+    {
+      "id": "g8.2025fengtai.language",
+      "grade": 8,
+      "canonical_sha256": "6b5c60ddfe60cc0bef291aca173a1feb2794d1cd506f714f49fe2b7f023a0795"
+    },
+    {
+      "id": "g8.2025fengtai.cloze",
+      "grade": 8,
+      "canonical_sha256": "f354cccc93c360c670ebfd7eea604593de191be1b40bc1b35f8c7508187b70d1"
+    },
+    {
+      "id": "g8.2025fengtai.matchingA",
+      "grade": 8,
+      "canonical_sha256": "8083352b137d004adcca764cd35ccb9fe2ee1975dc59701fe2a1db0d4e3efa77"
+    },
+    {
+      "id": "g8.2025fengtai.readingB",
+      "grade": 8,
+      "canonical_sha256": "76024cd6009c74589b4cca0e6ad64478b28c67207667f29f2e836e81878b0c10"
+    },
+    {
+      "id": "g8.2025fengtai.readingC",
+      "grade": 8,
+      "canonical_sha256": "b9db77c5acbfc85c663e90bf8eff0fc54b8deeae51663cce793a31b05dfb81c8"
+    },
+    {
+      "id": "g10.2025yearend.readingA",
+      "grade": 10,
+      "canonical_sha256": "da6b88a9f8712bc019b9548dbb4e9460542890547edecf4a59cf5d8afc1e1c5a"
+    },
+    {
+      "id": "g10.2025yearend.readingB",
+      "grade": 10,
+      "canonical_sha256": "4669122b92ee3d0946a79023459506de2efa16a9b989ed7d8b80bf7877c68967"
+    },
+    {
+      "id": "g10.2025yearend.readingC",
+      "grade": 10,
+      "canonical_sha256": "aedb3c49a524ce987a5c45087415b431d40a610bb618e992dfffc4789341e661"
+    },
+    {
+      "id": "g10.2025yearend.readingD",
+      "grade": 10,
+      "canonical_sha256": "c1c00ba223fdabcb87320e74b6a14bc9e5c3713d8628e79d66514633d93be60d"
+    },
+    {
+      "id": "g10.2025yearend.cloze",
+      "grade": 10,
+      "canonical_sha256": "f56453b968659cf6319fe187b9761fa88ff1ea51bfe0cd4041d8d14cfc82bb59"
+    },
+    {
+      "id": "g10.2025yearend.grammar",
+      "grade": 10,
+      "canonical_sha256": "11e72b7790054c182cebb1c563f9f0453d93d7e14391ce7b98bede21df7b6c39"
+    },
+    {
+      "id": "g12.2025anshan.readingA",
+      "grade": 12,
+      "canonical_sha256": "0ff21532c965a72787ae6ec4efea6b6d11ac8331597e92f9f2ed22a0529b4fb9"
+    },
+    {
+      "id": "g12.2025anshan.readingB",
+      "grade": 12,
+      "canonical_sha256": "f8e8838b2d6a5506d9965627fd8bbe9c87d399339b3f6f9d8c386abec87e3bbf"
+    },
+    {
+      "id": "g12.2025anshan.readingC",
+      "grade": 12,
+      "canonical_sha256": "0412898343d2b2129c49bba517790ef1bd85c869b4af488d956785ae7cda5cb1"
+    },
+    {
+      "id": "g12.2025anshan.readingD",
+      "grade": 12,
+      "canonical_sha256": "06e0fd19698e9d4089989f89f5ce3d3e8d735ccfa50924a6ca753f4ff5c69603"
+    },
+    {
+      "id": "g12.2025anshan.cloze",
+      "grade": 12,
+      "canonical_sha256": "10186337d82dad7782d555dee44b9f75f709cd19553d4d2a258bd8d42246e88a"
+    },
+    {
+      "id": "g12.2025anshan.grammar",
+      "grade": 12,
+      "canonical_sha256": "2c0deb14c07c9a335152a94884651bd675424420e634869df17e8f573da0650a"
+    },
+    {
+      "id": "g12.2025anshan.insertion",
+      "grade": 12,
+      "canonical_sha256": "b75bf9d287124bdbc3df898c52177b7e469288b88b54420a5eda1ca06d3f5198"
+    }
+  ],
+  "source_counterexamples": [
+    {
+      "id": "g7.2019.cloze.names",
+      "group_id": "g7.2019.cloze",
+      "question_numbers": [],
+      "reason": "same-story names switch; no silent original-name repair",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g7.2019.readingB.missing-verb",
+      "group_id": "g7.2019.readingB",
+      "question_numbers": [],
+      "reason": "HTML sentence missing verb; not positive generation template",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g8.2025fengtai.cloze.passive",
+      "group_id": "g8.2025fengtai.cloze",
+      "question_numbers": [
+        20
+      ],
+      "reason": "has changed...by lacks been; source changed key cannot repair full clause",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g9.2025.grammar.agreement",
+      "group_id": "g9.2025.grammar",
+      "question_numbers": [
+        87
+      ],
+      "reason": "Modern technology...have source agreement; reference keys not exhaustive",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g10.2024.grammar.source-print",
+      "group_id": "g10.2024.grammar",
+      "question_numbers": [],
+      "reason": "set located source phrase abnormal; not positive clause template",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g10.2025yearend.cloze.lexical-overlap",
+      "group_id": "g10.2025yearend.cloze",
+      "question_numbers": [
+        43,
+        54
+      ],
+      "reason": "uniqueness/charm and uncovered/claimed require alternatives review",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g11.2025.grammar.numbering",
+      "group_id": "g11.2025.grammar",
+      "question_numbers": [
+        63,
+        64
+      ],
+      "reason": "explanation swaps actual63true/64respond; actual body/main key match",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g11.2025.readingC.attitude",
+      "group_id": "g11.2025.readingC",
+      "question_numbers": [
+        30
+      ],
+      "reason": "ending-vs-overall-review attitude scope needs adjudication",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g11.2025.readingD.construct",
+      "group_id": "g11.2025.readingD",
+      "question_numbers": [
+        34
+      ],
+      "reason": "discounting vs other causes of overcommitment mixed in prompt",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g12.2023.grammar.print-and-variants",
+      "group_id": "g12.2023.grammar",
+      "question_numbers": [
+        61,
+        62
+      ],
+      "reason": "lo clean printed; original62 explicitly permits was/is inspired",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g12.2025anshan.readingB.example-object",
+      "group_id": "g12.2025anshan.readingB",
+      "question_numbers": [
+        24
+      ],
+      "reason": "old other dolls cannot prove specificLabubu popularity",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g12.2025anshan.readingC.denominator-and-scope",
+      "group_id": "g12.2025anshan.readingC",
+      "question_numbers": [
+        28,
+        31
+      ],
+      "reason": "totalexpenses/income mixed; beatingrule stronger than incomplete-reflection conclusion",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g12.2025anshan.readingD.lexical-and-title",
+      "group_id": "g12.2025anshan.readingD",
+      "question_numbers": [
+        33,
+        35
+      ],
+      "reason": "contempt keyignorance not synonym; onlyaveragefaces title omits exposure",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    },
+    {
+      "id": "g12.2025anshan.cloze.modesty",
+      "group_id": "g12.2025anshan.cloze",
+      "question_numbers": [
+        53
+      ],
+      "reason": "humbled/affected semantic overlap needs stronger adjudication; sourceC retained as reference",
+      "positive_answer_example": false,
+      "scope": "source_editorial_risk_author_judgment_not_independent_adjudication"
+    }
+  ],
+  "metadata_corrections": [
+    {
+      "candidate_id": "grade8-radio-cloze-v0.1",
+      "correction": "Author-check token-rule label also mentioned sentencecollection; actual259 unfilled passage reproduced with markers/placeholder exclusion. No text, answer or frozen audit changed."
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "production_admission": false,
+  "commercial_admission": false,
+  "full_benchmark_complete": false,
+  "limitations": [
+    "Public source comparison not hidden or blind evaluation",
+    "Author answer vectors not independent gold or necessarily exhaustive allowed sets",
+    "Current/spec-at-authoring versions are intentionally separate",
+    "53 complete paired groups are not53papers nor53errorfree/commercial groups",
+    "No empirical grade, CEFR, duration or product-sublevel calibration",
+    "Long-term16levels/4examdirections andM1-M7 remain pending",
+    "Calendar extension is after checkpoint21 frozen19candidate boundary; v0.1 remains historical base package",
+    "Unchanged bank extension requires once-per-entry and no-form-change semantics; source A/B alternative whole-group identities retained"
+  ],
+  "seed_anchor_index": {
+    "path": "FirstRelease/seed-anchor-index-v0.2.json",
+    "sha256": "9216f2b5de1d2d9ddaf2add2b0c44edbb2b1557052bd3a98d739c0456d119a3b"
+  },
+  "current_used_anchor_rationale_index": {
+    "path": "FirstRelease/current-used-anchor-rationale-index-v0.5.json",
+    "sha256": "8ccbe746f8f2cfbbda1ae9cf6ff7b8ecb0df53eff5d2836959efe071193d80f4"
+  },
+  "same_family_identity_correction": {
+    "old_rejected_index": {
+      "path": "FirstRelease/review-index-v0.15.json",
+      "sha256": "a8c21c3aa690185f9e243f4342f1e8613c8c683008ce53aac6807db01725bd99"
+    },
+    "stable_family_id": "grade11-commitments-reading-v0.2",
+    "current_candidate_path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+    "source_rationale_usage_signature_inherits_core014": true,
+    "new_family_not_created": true
+  }
+}

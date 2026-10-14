@@ -6,11 +6,13 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[审阅包0.15](FirstRelease/ReviewPackage-v0.15.md)、[可执行标准0.7](FirstRelease/PracticalAuthoringStandard-v0.7.md)、[组合索引0.6](FirstRelease/combined-review-index-v0.6.json)**：六年级各三父卷身份，101源组实例/639参考；39现行原创家族/263响应点按[响应模式0.4](FirstRelease/ResponseModeCoverage-v0.4.md)分层；十四请求/27源裁决＋17核心项仍待独立验证。[交付检查0.7](FirstRelease/DeliveryCheck-v0.7.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
+- **当前统一入口：[审阅包0.16](FirstRelease/ReviewPackage-v0.16.md)、[可执行标准0.7](FirstRelease/PracticalAuthoringStandard-v0.7.md)、[组合索引0.7](FirstRelease/combined-review-index-v0.7.json)**：六年级各三父卷身份，101源组实例/639参考；39现行原创家族/263响应点按[响应模式0.4](FirstRelease/ResponseModeCoverage-v0.4.md)分层；十四请求/27源裁决＋17核心项仍待独立验证。[交付检查0.7](FirstRelease/DeliveryCheck-v0.7.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
 
 当前保存见[第29恢复](Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)：6820文件全COW独立恢复，现行37/256/十三请求/27源与17核心、真实修订和未评分示例可恢复；仍非异机/完整环境或教育许可验收。
 
 以下增量记录保留各自时点的计数和保存边界。
+
+身份修复：[核心0.16](FirstRelease/review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](FirstRelease/current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
 当前语言与修题：[11源/9原创阅读参照卡](FirstRelease/MeasuredReadingReferenceCards-v0.1.md)，高二当前选项143→114、16项全解，核心0.15仍25/205/53；新增开放短答另列3点，全部39/263分八模式，十四已有请求不增。
 
