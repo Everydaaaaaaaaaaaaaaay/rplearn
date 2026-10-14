@@ -91,8 +91,13 @@ def audit(manifest):
         blanks = [r for r in case['excluded_offsets'] if r['role'] == 'blank_label']
         if case['expected_blank_ids'] != [r['blank_id'] for r in sorted(blanks, key=lambda r: r['start'])]:
             raise ValueError('Blank sequence differs')
-        if blanks and len(blanks) != row['shape']['responses']:
-            raise ValueError('Blank count differs from shape')
+        if blanks:
+            ordinals = case.get('material_blank_response_ordinals')
+            if ordinals is None and len(blanks) != row['shape']['responses']:
+                raise ValueError('Blank count differs from shape')
+            if ordinals is not None and (len(ordinals) != len(blanks) or len(set(ordinals)) != len(ordinals) or
+                                         any(type(n) is not int or not 1 <= n <= row['shape']['responses'] for n in ordinals)):
+                raise ValueError('Material blank-to-response mapping differs')
         measured = remove_offsets(material, case['excluded_offsets'],
                                   ' ' if case.get('replace_exclusions_with_space') else '')
         norm = normalized(measured)

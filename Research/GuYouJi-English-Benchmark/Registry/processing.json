@@ -23254,6 +23254,126 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "school-material-family-audit20261015j-v0.1",
+      "source_acquisition_ids": [
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-suzhou2025-21cnjy23303742"
+      ],
+      "tool": "Tools/audit_school_material_families.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "17 existing source task layouts/91 responses, no new paper identity or frozen-source rewrite; not gold/rights/student/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/school-material-family-audit20261015j-v0.1.json",
+          "bytes": 959156,
+          "sha256": "eecbc483d334ffc5cd80d1f1023a57d3c44c576a80aec459fa8ce7b116ddd736",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "multitask-layout-checks20261015j-v0.1",
+      "source_acquisition_ids": [
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-suzhou2025-21cnjy23303742"
+      ],
+      "tool": "Tools/check_multitask_layout.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "17 existing source task layouts/91 responses, no new paper identity or frozen-source rewrite; not gold/rights/student/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/multitask-layout-checks20261015j-v0.1.json",
+          "bytes": 11584,
+          "sha256": "71de59ae78f93465f94bb6485d37a5568c7693ad0a395564570b52f78f48ffba",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "multitask-layout-request20261015j-v0.1",
+      "source_acquisition_ids": [
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-suzhou2025-21cnjy23303742"
+      ],
+      "tool": "source_bound_preparation_fixture",
+      "tool_version": "0.1",
+      "parameters": [
+        "17 existing source task layouts/91 responses, no new paper identity or frozen-source rewrite; not gold/rights/student/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/multitask-layout-request20261015j-v0.1.json",
+          "bytes": 4339,
+          "sha256": "ed76c2a0acc936b67b871659e8b33e681a1ff8e1ff6660d004af719a4e4d2434",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "multitask-source-risk-review20261015j-v0.1",
+      "source_acquisition_ids": [
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-suzhou2025-21cnjy23303742"
+      ],
+      "tool": "manual_native_text_scope_review",
+      "tool_version": "0.1",
+      "parameters": [
+        "17 existing source task layouts/91 responses, no new paper identity or frozen-source rewrite; not gold/rights/student/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/multitask-source-risk-review20261015j-v0.1.json",
+          "bytes": 4839,
+          "sha256": "69a0a3cf07c8edf7c2da0d32f31cb6a77c7cc81c23fd47f47597676f38b4020e",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
