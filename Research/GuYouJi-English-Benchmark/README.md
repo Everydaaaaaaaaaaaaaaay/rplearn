@@ -6,7 +6,7 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[审阅包0.17](FirstRelease/ReviewPackage-v0.17.md)、[可执行标准0.8](FirstRelease/PracticalAuthoringStandard-v0.8.md)、[组合索引0.8](FirstRelease/combined-review-index-v0.8.json)**：六年级各三父卷身份，101源组实例/639参考；40现行原创家族/267响应点按[响应模式0.5](FirstRelease/ResponseModeCoverage-v0.5.md)分层；十四请求/27源裁决＋17核心项仍待独立验证。[交付检查0.8](FirstRelease/DeliveryCheck-v0.8.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
+- **当前统一入口：[审阅包0.18](FirstRelease/ReviewPackage-v0.18.md)、[可执行标准0.9](FirstRelease/PracticalAuthoringStandard-v0.9.md)、[组合索引0.9](FirstRelease/combined-review-index-v0.9.json)**：六年级各三父卷身份，101源组实例/639参考；41现行原创家族/271响应点按[响应模式0.6](FirstRelease/ResponseModeCoverage-v0.6.md)分层；十四请求/28源裁决＋17核心项仍待独立验证。[交付检查0.9](FirstRelease/DeliveryCheck-v0.9.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
 
 当前保存：[第30独立恢复](Studies/2026-10-14-checkpoint30-current-lexical-open-and-stable-identity-recovery.md)6929文件严格COW/全SHA/不同inode；当前39/263八方式/十四请求、11源9作者负荷/20词汇语境、core015实际失败与core016来源使用修复可恢复。30自身/后来素材下批，未异机/完整环境或教育许可验收。
 
@@ -16,9 +16,11 @@
 
 身份修复：[核心0.16](FirstRelease/review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](FirstRelease/current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
-新增高三条件研究：[完整标签试验四题](FirstRelease/Expansions/Grade12ConditionalResearchProtocol-v0.1.md)，364/38/120、D/A/C/B全解；真实引号句界21→22/最长39→27更正，正文未改/修订0。扩展0.14全分层41/271，旧组合0.8的40/267留批量合并；虚构卡数不是学生数据。
+现行语言与词义：[13源/11作者卡0.4](FirstRelease/MeasuredReadingReferenceCards-v0.4.md)纳22句/max27高三测量；28源＋17核心队列/41材料271点已统一，十四旧请求未增。
 
-新增词形复核：[高一35B unsupported/解析与词典](FirstRelease/Expansions/Grade10UnsupportedStanceReview-v0.1.md)追加第28源裁决，原C保留；词表supportive adj候选C1另有PDF证据，两未知不拼级，页脚B2属于exhibit。组合0.8所绑27冻结，最新28与核心17分开。
+新增高三条件研究：[完整标签试验四题](FirstRelease/Expansions/Grade12ConditionalResearchProtocol-v0.1.md)，364/38/120、D/A/C/B全解；真实引号句界21→22/最长39→27更正，正文未改/修订0。扩展0.14全分层41/271，已纳组合0.9/41/271，旧0.8的40/267保留；虚构卡数不是学生数据。
+
+新增词形复核：[高一35B unsupported/解析与词典](FirstRelease/Expansions/Grade10UnsupportedStanceReview-v0.1.md)追加第28源裁决，原C保留；词表supportive adj候选C1另有PDF证据，两未知不拼级，页脚B2属于exhibit。组合0.9已纳28，旧0.8所绑27冻结，核心17分开。
 
 现行语言参照：[13源/10当前作者卡0.3](FirstRelease/MeasuredReadingReferenceCards-v0.3.md)，源13不增，新高一功能组成为第10个配对；core016稳定ID/40材料267点直接纳响应0.5，十四请求仍不增。
 

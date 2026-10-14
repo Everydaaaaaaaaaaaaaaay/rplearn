@@ -1,0 +1,760 @@
+{
+  "version": "0.4",
+  "scope": "13sourceprofiles11currentauthorprofiles;11matchedreferences2additionaldifferentmodeanchors;notnationalcaps",
+  "core_index": {
+    "path": "FirstRelease/review-index-v0.16.json",
+    "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+  },
+  "extension_index": {
+    "path": "FirstRelease/Expansions/authored-candidate-index-v0.14.json",
+    "sha256": "9775ef4addc5040a29191c668acf30462b15fff2310ade8a40cb3391d43d15ff"
+  },
+  "measurement_refs": [
+    {
+      "acquisition_id": "task-load-20261014-task-load-six-pairs-results20261014-json",
+      "sha256": "c674aaad1006dea2f2dd1f602b05f22e72fd52f65a9bf62f6bc735c52ca6ba1b"
+    },
+    {
+      "acquisition_id": "task-load-grade8-narrative-v02-results20261014-record",
+      "sha256": "24451cb247bec3ffc252302312aef0a165a4c27930acfb264183da012d5ce583"
+    },
+    {
+      "acquisition_id": "task-load-grade11-three-contexts-results20261014-record",
+      "sha256": "f73340cbc716826e39ca8d5e6da4ecc9405677019746875418f30e7b7d2d3406"
+    },
+    {
+      "acquisition_id": "task-load-grade7-xicheng2025-narrative-results20261014-record",
+      "sha256": "bfab0eb67ad2bf3316f948fde063e1ff9a9baf7a35b91b69861cf56a9efb4294"
+    },
+    {
+      "acquisition_id": "task-load-grade8-wayfinding-results20261014-record",
+      "sha256": "c7987fff159c77e54fd092d3de05e0ec2007c0f16372d815a31efd24ab76cc3d"
+    },
+    {
+      "acquisition_id": "task-load-grade8-changjun-explanation-results20261014-record",
+      "sha256": "53a2deda89084759a51c18d147ed9eba41818b46090eb966fc1a5e3d14f3139d"
+    },
+    {
+      "acquisition_id": "task-load-grade11-options-v03-results20261014-record",
+      "sha256": "d8c06ccb22a1069187a3656ba57fe12ace9b8893b5272a39feb49c4cd9a0ff94"
+    },
+    {
+      "path": "FirstRelease/Supplements/grade10-language-variant-v0.1.json",
+      "sha256": "90057a1855a4083a20cde4e1bff1ab40ca1cc1906f495e46405cabe936d439e3"
+    },
+    {
+      "acquisition_id": "grade9-open-reading-response-source-transcription20261014-record",
+      "sha256": "32c377cdd17e588ff82c93cc4fae42657edc1ff8b12ed4a396cc7e731bbb8c6d"
+    },
+    {
+      "path": "FirstRelease/Expansions/TaskLoadGrade10Grade12SecondSources-v0.1.json",
+      "sha256": "347fe5395908af69e84c292d1b6c20a5511369ebeaec63e4e1887dce3c423b1d"
+    },
+    {
+      "acquisition_id": "task-load-grade10-booking-screen-results20261014-record",
+      "sha256": "3b20bb4af25fe6a35b1751ebdc1036939f288265df12889b623b687206100189"
+    },
+    {
+      "acquisition_id": "task-load-grade12-parcel-trial-results-v02-20261014-record",
+      "sha256": "185e5666dc3750b3f72c8463fa198a6ed00393f0936270de9ce1183b92adfe90"
+    }
+  ],
+  "matched_references": [
+    {
+      "grade": 7,
+      "source_group_id": "g7.2021.readingB",
+      "authored_family_id": "grade7-library-v0.1",
+      "items": 5,
+      "options_each": 3,
+      "operations_not_grade_level_assertion": "人物日常/图书馆活动；定位/词义/整体信息",
+      "source_profile": {
+        "body": 212,
+        "prompt": 40,
+        "options": 69,
+        "labels": 9,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 9,
+          "passage": 9,
+          "prompt": 4
+        },
+        "sentence_units": 24,
+        "mean_sentence_tokens": 8.833333333333334,
+        "maximum_sentence_tokens": 17,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 199,
+        "prompt": 37,
+        "options": 112,
+        "labels": 3,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 20,
+        "mean_sentence_tokens": 9.95,
+        "maximum_sentence_tokens": 17,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": -13,
+        "prompt": -3,
+        "options": 43
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-library-v0.1.md",
+        "sha256": "5a24aeee6b67d23b4bc02fb13c2c05497bb11ac277edcb8ff6e70b21fa08d7ab"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-library-author-check-v0.1.json",
+        "sha256": "728625fd2c88dab5f87654a96c7fc0bfb5c724cc70e8656f3c6c4eee13aeedcb"
+      },
+      "review_action": "复合词/人物标签/中文词义须保留独立负荷",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 8,
+      "source_group_id": "g8.2025.readingC",
+      "authored_family_id": "grade8-lunch-v0.1",
+      "items": 4,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "说明/概念/方法/主旨",
+      "source_profile": {
+        "body": 400,
+        "prompt": 35,
+        "options": 126,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 15,
+          "prompt": 0
+        },
+        "sentence_units": 27,
+        "mean_sentence_tokens": 14.814814814814815,
+        "maximum_sentence_tokens": 31,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 246,
+        "prompt": 40,
+        "options": 129,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 20,
+        "mean_sentence_tokens": 12.3,
+        "maximum_sentence_tokens": 22,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": -154,
+        "prompt": 5,
+        "options": 3
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-lunch-v0.1.md",
+        "sha256": "96ba31bca24e238201c4699b90dadc723be8545f16f0e201b3f6ce63f4d9c461"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-lunch-author-check-v0.1.json",
+        "sha256": "1659391af49e85fe9e1bb6410f3a85182f0f72f715eff04e1f382f5fb87076c9"
+      },
+      "review_action": "当前原创正文比源少154，不因约250词起点当普通初二默认",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 8,
+      "source_group_id": "g8.2025fengtai.readingB",
+      "authored_family_id": "grade8-music-afternoon-reading-v0.1",
+      "items": 3,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "成长叙事/初始状态/行为/主旨",
+      "source_profile": {
+        "body": 313,
+        "prompt": 32,
+        "options": 50,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 19,
+          "prompt": 0
+        },
+        "sentence_units": 21,
+        "mean_sentence_tokens": 14.904761904761905,
+        "maximum_sentence_tokens": 24,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 344,
+        "prompt": 32,
+        "options": 56,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 23,
+        "mean_sentence_tokens": 14.956521739130435,
+        "maximum_sentence_tokens": 21,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": 31,
+        "prompt": 0,
+        "options": 6
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-music-afternoon-reading-v0.2.md",
+        "sha256": "ef8692222cce099e92eabf14099b890b3f3ca2338a4497f3f7b554e6947efd10"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-music-afternoon-reading-author-check-v0.2.json",
+        "sha256": "a146bebd25d429a4037e38eb44e068eae74626952f03dd94567153b8ee868959"
+      },
+      "review_action": "已有真实压缩选项111→56、句法0.1→0.2修订",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 8,
+      "source_group_id": "g8.changjun2024.readingC",
+      "authored_family_id": "grade8-wayfinding-exhibition-reading",
+      "items": 4,
+      "options_each": 3,
+      "operations_not_grade_level_assertion": "解释/段落信息/it/全篇目的",
+      "source_profile": {
+        "body": 271,
+        "prompt": 36,
+        "options": 80,
+        "labels": 17,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 8,
+          "prompt": 0
+        },
+        "sentence_units": 18,
+        "mean_sentence_tokens": 15.055555555555555,
+        "maximum_sentence_tokens": 37,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 242,
+        "prompt": 33,
+        "options": 75,
+        "labels": 20,
+        "han_by_role": {
+          "instruction": 14,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 17,
+        "mean_sentence_tokens": 14.235294117647058,
+        "maximum_sentence_tokens": 18,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": -29,
+        "prompt": -3,
+        "options": -5
+      },
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-v0.1.md",
+        "sha256": "76cadcd4e25d8226580335823633ca3769819488926ba9c7ef89d265ed66305d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-author-check-v0.1.json",
+        "sha256": "304be790ea8040b8863c143ccc7f26e30720b33b43a65653e9d01b489a3f8019"
+      },
+      "review_action": "首题定义→实例机制、段号和it位置已明确改写；不能套原人名",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 9,
+      "source_group_id": "g9.2026.readingC",
+      "authored_family_id": "grade9-book-repair-v0.1",
+      "items": 5,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "说明/方法/指代/焦点/标题",
+      "source_profile": {
+        "body": 292,
+        "prompt": 44,
+        "options": 94,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 5,
+          "prompt": 0
+        },
+        "sentence_units": 24,
+        "mean_sentence_tokens": 12.166666666666666,
+        "maximum_sentence_tokens": 25,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 277,
+        "prompt": 46,
+        "options": 126,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 22,
+        "mean_sentence_tokens": 12.590909090909092,
+        "maximum_sentence_tokens": 22,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": -15,
+        "prompt": 2,
+        "options": 32
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-book-repair-v0.1.md",
+        "sha256": "3bda37e304a8abad88accea77d68084d6d7fa91c07aa2737199a9a131426ce00"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json",
+        "sha256": "92a5e105432964305f3b23301300678ea3710e99cf84cffb74c06c14b99a7ad8"
+      },
+      "review_action": "current名词/词义未知与文化事实不从词表第一义推断",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 9,
+      "source_group_id": "g9.suzhou2024.readingResponse",
+      "authored_family_id": "grade9-garden-map-reading-response",
+      "items": 3,
+      "options_each": null,
+      "operations_not_grade_level_assertion": "事实/习惯或两标准/观点理由",
+      "source_profile": {
+        "body": 277,
+        "prompt": 29,
+        "options": 0,
+        "labels": 0,
+        "han_by_role": {
+          "passage": 2,
+          "prompt": 0,
+          "material_label": 0,
+          "instruction": 37,
+          "option": 0
+        },
+        "sentence_units": null,
+        "mean_sentence_tokens": null,
+        "maximum_sentence_tokens": null,
+        "generic_instruction_in_scope": true
+      },
+      "authored_current_profile": {
+        "body": 248,
+        "prompt": 38,
+        "options": 0,
+        "labels": 4,
+        "han_by_role": {
+          "passage": 0,
+          "prompt": 0,
+          "material_label": 0,
+          "instruction": 89,
+          "option": 0
+        },
+        "sentence_units": null,
+        "mean_sentence_tokens": null,
+        "maximum_sentence_tokens": null,
+        "generic_instruction_in_scope": true
+      },
+      "component_deltas": {
+        "body": -29,
+        "prompt": 9,
+        "options": 0
+      },
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade9-garden-map-reading-response-v0.1.md",
+        "sha256": "563b15581ddbf36dafd5ea1f60dca6f93f625851264940daed83cbc5f656c355"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade9-garden-map-reading-response-author-check-v0.1.json",
+        "sha256": "8be11751e9e3cb8ba613db5562c694816d66efc86b080d440c0c1ce419839e16"
+      },
+      "review_action": "两标准与原单一习惯操作不同；原创2/2/3分析规则暂定",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 10,
+      "source_group_id": "g10.2024.readingD",
+      "authored_family_id": "grade10-roof-reading-v0.2",
+      "items": 4,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "研究说明/机制/推断/条件",
+      "source_profile": {
+        "body": 340,
+        "prompt": 39,
+        "options": 101,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 7,
+          "prompt": 0
+        },
+        "sentence_units": 13,
+        "mean_sentence_tokens": 26.153846153846153,
+        "maximum_sentence_tokens": 37,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 309,
+        "prompt": 36,
+        "options": 146,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 12,
+        "mean_sentence_tokens": 25.75,
+        "maximum_sentence_tokens": 35,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": -31,
+        "prompt": -3,
+        "options": 45
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-v0.2.md",
+        "sha256": "1ba7553136ea024bffceec8ea78f6db98c9a6db183d123a55b46cca757a773ee"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-author-check-v0.2.json",
+        "sha256": "4d547765d3c07ff52e835a45f3e2421bb3ce2113c055279cf6ad12e57a89c6a3"
+      },
+      "review_action": "复杂语言现309/12句，旧308/22不当当前；比较对照未覆盖必须真实存在",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 11,
+      "source_group_id": "g11.2025.readingD",
+      "authored_family_id": "grade11-commitments-reading-v0.2",
+      "items": 4,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "抽象论证/原因区分/例证/段落接续",
+      "source_profile": {
+        "body": 342,
+        "prompt": 30,
+        "options": 111,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 11,
+          "prompt": 0
+        },
+        "sentence_units": 17,
+        "mean_sentence_tokens": 20.11764705882353,
+        "maximum_sentence_tokens": 40,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 353,
+        "prompt": 35,
+        "options": 114,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 15,
+        "mean_sentence_tokens": 23.533333333333335,
+        "maximum_sentence_tokens": 34,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": 11,
+        "prompt": 5,
+        "options": 3
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+        "sha256": "1a98564304286a4c0d706b1239852fab14a0ea95115b96e2042bb1397ef2eff9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.3.json",
+        "sha256": "5937e3d78965d31b769f1b785c31c4765e504651b08bb927eeb68c757dd5dbf5"
+      },
+      "review_action": "当前选项114，不继承0.2的143或0.1的329正文；源推断风险不复制",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 12,
+      "source_group_id": "g12.2025anshan.readingC",
+      "authored_family_id": "grade12-dashboard-reading-v0.1",
+      "items": 4,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "概念/例证/限定观点/标题",
+      "source_profile": {
+        "body": 358,
+        "prompt": 45,
+        "options": 74,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 5,
+          "prompt": 0
+        },
+        "sentence_units": 18,
+        "mean_sentence_tokens": 19.88888888888889,
+        "maximum_sentence_tokens": 30,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 348,
+        "prompt": 35,
+        "options": 148,
+        "labels": 0,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 23,
+        "mean_sentence_tokens": 15.130434782608695,
+        "maximum_sentence_tokens": 29,
+        "generic_instruction_in_scope": false
+      },
+      "component_deltas": {
+        "body": -10,
+        "prompt": -10,
+        "options": 74
+      },
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-v0.1.md",
+        "sha256": "947c4e3533b554285999d781740c576accc17808fa3934cfb2344c303cb2532c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-author-check-v0.1.json",
+        "sha256": "30d5323c34ba381ce55917385288a1cd65567a1008963d53350978acbc2a457b"
+      },
+      "review_action": "数值源项与解释句原创项不同；完美局部分母不能当全部人群",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 10,
+      "source_group_id": "g10.wenzhou2025.readingD",
+      "authored_family_id": "grade10-library-booking-screen-reading",
+      "items": 4,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "functions/explicitNOTcategory/contextword/qualifiedstance",
+      "source_profile": {
+        "body": 256,
+        "prompt": 45,
+        "options": 63,
+        "labels": 1,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 4,
+          "prompt": 0
+        },
+        "sentence_units": 16,
+        "mean_sentence_tokens": 16.0,
+        "maximum_sentence_tokens": 29,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 275,
+        "prompt": 42,
+        "options": 114,
+        "labels": 6,
+        "han_by_role": {
+          "instruction": 14,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 20,
+        "mean_sentence_tokens": 13.75,
+        "maximum_sentence_tokens": 21,
+        "generic_instruction_in_scope": true
+      },
+      "component_deltas": {
+        "body": 19,
+        "prompt": -3,
+        "options": 51
+      },
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-v0.1.md",
+        "sha256": "946ae175b202f11f5d7554b1b081e9de8413a822967551c6d6e855a26dfdfb29"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-author-check-v0.1.json",
+        "sha256": "6bd16276682646cdcb9fd4bc092a86b68cd457a7abab10fe13f5e3af83d7b6ee"
+      },
+      "review_action": "NOT对象和P4词义显式重定位；态度4形容词→4命题增35，总选项增51；16/20句有限单位全部作者标注仍非独立gold",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    },
+    {
+      "grade": 12,
+      "source_group_id": "g12.national2025.readingD",
+      "authored_family_id": "grade12-parcel-label-trial-reading",
+      "items": 4,
+      "options_each": 4,
+      "operations_not_grade_level_assertion": "examples/condition/qualifiedproblemexample/application",
+      "source_profile": {
+        "body": 317,
+        "prompt": 39,
+        "options": 76,
+        "labels": 1,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 8,
+          "prompt": 0
+        },
+        "sentence_units": 15,
+        "mean_sentence_tokens": 21.133333333333333,
+        "maximum_sentence_tokens": 38,
+        "generic_instruction_in_scope": false
+      },
+      "authored_current_profile": {
+        "body": 364,
+        "prompt": 38,
+        "options": 120,
+        "labels": 3,
+        "han_by_role": {
+          "instruction": 25,
+          "material_label": 0,
+          "option": 0,
+          "passage": 0,
+          "prompt": 0
+        },
+        "sentence_units": 22,
+        "mean_sentence_tokens": 16.545454545454547,
+        "maximum_sentence_tokens": 27,
+        "generic_instruction_in_scope": true
+      },
+      "component_deltas": {
+        "body": 47,
+        "prompt": -1,
+        "options": 44
+      },
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade12-parcel-label-trial-reading-v0.1.md",
+        "sha256": "46365407201373f016a538e3c8c32b51678e3a88206c1df44fd2dfd9053745b5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade12-parcel-label-trial-reading-author-check-v0.1.json",
+        "sha256": "e12f7d75c819d4343e09e7ca36b9bc6026335437a79156505c2e50184f5868bf"
+      },
+      "review_action": "364/38/12022句max27；原自动21/max39误合引号结果保留不取当前；虚构卡数不为学生n/送达率，priorapproval例证须新解",
+      "source_and_author_not_independent_or_equal_difficulty": true
+    }
+  ],
+  "additional_source_references": [
+    {
+      "source_group_id": "g7.xicheng2025.readingB",
+      "grade": 7,
+      "items": 4,
+      "options_each": 4,
+      "profile": {
+        "body": 297,
+        "prompt": 35,
+        "options": 49,
+        "labels": 5,
+        "han_by_role": {
+          "instruction": 30,
+          "material_label": 0,
+          "option": 0,
+          "passage": 6,
+          "prompt": 0
+        },
+        "sentence_units": 30,
+        "mean_sentence_tokens": 9.9,
+        "maximum_sentence_tokens": 31,
+        "generic_instruction_in_scope": false
+      },
+      "review_action": "初一成长叙事297/30句；与五题三选人物源不合并成统一初一词数区间，尚无此模式原创匹配负荷"
+    },
+    {
+      "source_group_id": "g11.spring2024.readingD",
+      "grade": 11,
+      "items": 4,
+      "options_each": 4,
+      "profile": {
+        "body": 324,
+        "prompt": 27,
+        "options": 101,
+        "labels": 1,
+        "han_by_role": {
+          "instruction": 0,
+          "material_label": 0,
+          "option": 0,
+          "passage": 7,
+          "prompt": 0
+        },
+        "sentence_units": 15,
+        "mean_sentence_tokens": 21.6,
+        "maximum_sentence_tokens": 36,
+        "generic_instruction_in_scope": false
+      },
+      "review_action": "四题四选研究报道324/15句；与抽象源操作不同，当前论证稿不冒称一一对应"
+    }
+  ],
+  "source_sample_counts_by_grade": {
+    "7": 2,
+    "8": 3,
+    "9": 2,
+    "10": 2,
+    "11": 2,
+    "12": 2
+  },
+  "hard_word_length_or_CEFR_or_student_time_admission": false,
+  "source_transcription_and_sentences_independent": false,
+  "unmeasured_modes_remain_unmeasured": true,
+  "same_current_family_identity_correction_ref": {
+    "path": "FirstRelease/current-core-family-identity-alias-v0.1.json",
+    "sha256": "714823b1cab68df0c6e0c71ad7ba6e6887f5aca0b5d86b0c28464243765bee8c"
+  },
+  "grade10_finite_unit_annotation_ref": {
+    "path": "FirstRelease/Expansions/Grade10FunctionFiniteUnitAnnotations-v0.1.json",
+    "sha256": "78f6dc15e2ca088b88b3987a79b0ca4cf57b267c98ba7c5e5af1ec1a6feccea9"
+  }
+}
