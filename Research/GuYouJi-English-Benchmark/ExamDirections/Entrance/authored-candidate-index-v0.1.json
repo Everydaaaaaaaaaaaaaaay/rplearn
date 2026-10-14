@@ -1,0 +1,129 @@
+{
+  "version": "0.1",
+  "scope": "selected_entrance_english1_2_author_reading_preparation_not_full_direction_or_other_level_gold",
+  "source_index": {
+    "path": "ExamDirections/Entrance/selected-source-groups-v0.1.json",
+    "sha256": "b675647df999da4d0c0b97293f759bcbc5fc00ac976118d3aa8844e12056e1de"
+  },
+  "specification": {
+    "path": "ExamDirections/Entrance/Selected2026RepostSpecifications-v0.1.md",
+    "sha256": "d124fbc94d825c9c7bb5538e80e4956ba8e3397aab39ed5ff58e2020803105db"
+  },
+  "family_count": 2,
+  "response_count": 10,
+  "members": [
+    {
+      "id": "english1-museum-routes-reading",
+      "direction": "entrance-english-1",
+      "kind": "single_five_four_choice",
+      "response_count": 5,
+      "candidate": {
+        "path": "ExamDirections/Entrance/Generated/english1-museum-routes-reading-v0.1.md",
+        "sha256": "22a5811db36187a4afaf8b6e20c28d7956dbee7d8a8704368a237d0079ac77eb"
+      },
+      "author_check_acquisition_id": "entrance-author-english1-museum-routes-reading-v0.1-author-check20261014",
+      "source_group_id": "entrance2026.kaoyancn.reading-radio",
+      "source_author_reasons_acquisition_id": "entrance-author-entrance-two-used-source-reading-author-reasons20261014",
+      "author_answer_vector": [
+        "C",
+        "A",
+        "D",
+        "B",
+        "C"
+      ],
+      "component_counts": {
+        "instruction": {
+          "english_digit_tokens": 11,
+          "han_characters": 0,
+          "components": 1
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 148,
+          "han_characters": 0,
+          "components": 20
+        },
+        "passage": {
+          "english_digit_tokens": 364,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 46,
+          "han_characters": 0,
+          "components": 5
+        }
+      },
+      "explicit_sentence_units": 25,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "english2-repair-centre-reading",
+      "direction": "entrance-english-2",
+      "kind": "single_five_four_choice",
+      "response_count": 5,
+      "candidate": {
+        "path": "ExamDirections/Entrance/Generated/english2-repair-centre-reading-v0.2.md",
+        "sha256": "d2de67ab66c07da1975a89822da9a23fec273e9488b2d65a5f8ee4de1a504e16"
+      },
+      "author_check_acquisition_id": "entrance-author-english2-repair-centre-reading-v0.2-author-check20261014",
+      "source_group_id": "entrance2026.kaoyancn.reading-libraries",
+      "source_author_reasons_acquisition_id": "entrance-author-entrance-two-used-source-reading-author-reasons20261014",
+      "author_answer_vector": [
+        "D",
+        "A",
+        "C",
+        "B",
+        "D"
+      ],
+      "component_counts": {
+        "instruction": {
+          "english_digit_tokens": 11,
+          "han_characters": 0,
+          "components": 1
+        },
+        "material_label": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "option": {
+          "english_digit_tokens": 138,
+          "han_characters": 0,
+          "components": 20
+        },
+        "passage": {
+          "english_digit_tokens": 426,
+          "han_characters": 0,
+          "components": 1
+        },
+        "prompt": {
+          "english_digit_tokens": 38,
+          "han_characters": 0,
+          "components": 5
+        }
+      },
+      "explicit_sentence_units": 26,
+      "revision_count": 1,
+      "independent_teacher_student_or_commercial_admission": false,
+      "previous_version": {
+        "path": "ExamDirections/Entrance/Generated/english2-repair-centre-reading-v0.1.md",
+        "sha256": "53fdcc4538af923425dd68fb27afd029d8657566f71a44f7abfa3691046f3384",
+        "student_Q3_evidence_scope_revised": true,
+        "body_unchanged": true
+      }
+    }
+  ],
+  "actually_used_source_groups": 2,
+  "actually_used_source_responses": 10,
+  "actual_source_author_option_positions": 40,
+  "invented_scenario_or_data_not_real_research": true,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}

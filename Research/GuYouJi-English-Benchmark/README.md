@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [考研两完整作者阅读](ExamDirections/Entrance/TwoAuthoredReadingProtocol-v0.1.md)：各1家族5响应、40新选项与40用锚作者位置；364/46/148和426/38/138分量，英二Use/Demand范围真实修订1，虚构数据非学生证据。当前大纲正文/更多模式与独立/商用仍缺。
+
 - [考研两方向选定来源](ExamDirections/Entrance/Selected2026RepostSpecifications-v0.1.md)：两2026标签重排PDF/19原图、三组30参考（英一1/5、英二2/25）；错项/缺段/三引段暂缓，不当原卷金标。NEEA2022三JPEG只是书封/CIP/目录、HTML403，当前正文规格未得，作者闭环接续。
 
 - [23:00交付收敛](FirstRelease/DeliveryFocus-2026-10-14-2300.md)：原24小时已超期，新12—24小时是全范围首版工作估算；集中补剩余范围/统一规格，减少旁支与重复保存，未取消长期或外部验收。
