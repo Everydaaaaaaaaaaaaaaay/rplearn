@@ -8,6 +8,8 @@
 
 - **当前统一入口：[审阅包0.16](FirstRelease/ReviewPackage-v0.16.md)、[可执行标准0.7](FirstRelease/PracticalAuthoringStandard-v0.7.md)、[组合索引0.7](FirstRelease/combined-review-index-v0.7.json)**：六年级各三父卷身份，101源组实例/639参考；39现行原创家族/263响应点按[响应模式0.4](FirstRelease/ResponseModeCoverage-v0.4.md)分层；十四请求/27源裁决＋17核心项仍待独立验证。[交付检查0.7](FirstRelease/DeliveryCheck-v0.7.md)列可审阅范围与缺口，实际词汇形式/POS/别名/义项控制同时引用。
 
+当前保存：[第30独立恢复](Studies/2026-10-14-checkpoint30-current-lexical-open-and-stable-identity-recovery.md)6929文件严格COW/全SHA/不同inode；当前39/263八方式/十四请求、11源9作者负荷/20词汇语境、core015实际失败与core016来源使用修复可恢复。30自身/后来素材下批，未异机/完整环境或教育许可验收。
+
 当前保存见[第29恢复](Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)：6820文件全COW独立恢复，现行37/256/十三请求/27源与17核心、真实修订和未评分示例可恢复；仍非异机/完整环境或教育许可验收。
 
 以下增量记录保留各自时点的计数和保存边界。

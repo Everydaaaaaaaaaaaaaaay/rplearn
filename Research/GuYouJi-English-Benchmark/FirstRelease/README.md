@@ -8,6 +8,8 @@
 
 从[统一审阅包0.16](ReviewPackage-v0.16.md)、[组合索引0.7](combined-review-index-v0.7.json)和[可执行标准0.7](PracticalAuthoringStandard-v0.7.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展13/48，合39现行材料家族263响应点；十四请求仅本机文件/声明控制。见[交付检查0.7](DeliveryCheck-v0.7.md)、[响应分母0.4](ResponseModeCoverage-v0.4.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
+当前保存：[第30独立恢复](../Studies/2026-10-14-checkpoint30-current-lexical-open-and-stable-identity-recovery.md)6929文件严格COW/全SHA/不同inode；当前39/263八方式/十四请求、11源9作者负荷/20词汇语境、core015实际失败与core016来源使用修复可恢复。30自身/后来素材下批，未异机/完整环境或教育许可验收。
+
 现行0.13/37材料256点/十三请求/27源队列已纳入[第29完整恢复](../Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)的6820文件严格COW/SHA/独立inode核验；29自身结果及后续素材留下一批，未异机/完整环境或独立教育验收。
 
 下文为各时点增量与保存边界，旧版本不作为当前默认。
