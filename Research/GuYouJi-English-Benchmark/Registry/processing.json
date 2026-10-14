@@ -23491,6 +23491,72 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "baseline-material-family-audit20261015l-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade8-xicheng2025upper-20261013",
+        "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "grade11-2025lower-crossregion-candidate-20261013",
+        "grade12-anshan2025upper-monitor-candidate20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade11-spring2024-public-bundle20261014",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade10-wenzhou2025-midterm-paper-key20261014",
+        "grade12-national2025-paper-commentary20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "suzhou2024-official-english-paper-image20261014"
+      ],
+      "tool": "Tools/audit_baseline_prepared_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Reuse frozen source prepared snapshots; explicit two aliases, parent/catalogue/component binding; no raw corpus copies, renders or downloads; source input/independent gold not upgraded"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-material-family-audit20261015l-v0.1.json",
+          "bytes": 699602,
+          "sha256": "561c6c798b57b041f1041ae22ff11e9221820d42fee30e069a4b06c18cc66930",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-prepared-binding-checks20261015l-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade8-xicheng2025upper-20261013",
+        "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "grade11-2025lower-crossregion-candidate-20261013",
+        "grade12-anshan2025upper-monitor-candidate20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade11-spring2024-public-bundle20261014",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade10-wenzhou2025-midterm-paper-key20261014",
+        "grade12-national2025-paper-commentary20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "suzhou2024-official-english-paper-image20261014"
+      ],
+      "tool": "Tools/audit_baseline_prepared_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Reuse frozen source prepared snapshots; explicit two aliases, parent/catalogue/component binding; no raw corpus copies, renders or downloads; source input/independent gold not upgraded"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-prepared-binding-checks20261015l-v0.1.json",
+          "bytes": 1262,
+          "sha256": "313100a90365c570f6e59d5e788814998841ff1c9379d151985f7bf95e587402",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

@@ -1,0 +1,4547 @@
+{
+  "version": "0.1",
+  "scope": "14 pre-existing baseline source instances; no new paper/group or author count",
+  "baseline_source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/writing-material-views-v0.1.json",
+    "sha256": "ed236b11ca4ead64f24e91173d42ba148af84e1e8e9d659c0a46d0b7507ed18a"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/school-material-family-audit20261015k-v0.1.json",
+    "sha256": "3368490d7230f5169754559d0e6e6c640c0106e608a0d2e15ed7d3b2bf851213"
+  },
+  "views": [
+    {
+      "group_id": "g7.2021.readingB",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-prepared-six-pairs20261014.json",
+        "sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f"
+      },
+      "prepared_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+      "prepared_record_index": 0,
+      "prepared_record_id": "g7.2021.readingB",
+      "source_parent_id": "xdf-grade7-2021lower-paper-20261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/xdf-grade7-2021lower-paper-20261013.pdf",
+        "sha256": "346eb9944f3d7ca06bc1bf30561b7014ffabe41ed6fded750d0330607d370b2a"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "printed_source_question_numbers": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "a46005465cc04127db5f54f14e778b8f715f7c73849659f628d7372aa947d291"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "label0",
+          "item_id": null,
+          "sha256": "0c6bd8c4e4c25529330ad2c144455a30a8badd7e7a66f1b638d06b6339b3f843"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "label1",
+          "item_id": null,
+          "sha256": "1b327d44f390fe43fb7890b6d79a7add306ee72481af5b16e789d14bd8e8694a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "label2",
+          "item_id": null,
+          "sha256": "02ae6485cf7f75539eea3a259c217c1e20570160d3b056d97179db405322b477"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "82545f7fb352747ab0a071c94b124a369d3f62f546afc946d826bf93596e896c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "0ea73bf41b01708d5c1dd6b4b4fcec44df1d512c6f3eb1763567596134e546c0"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "10817360cbb72bb8c6d9b58710bef56042423cec579dc36900a1b00587e0461c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "3c190fab2c33ca167095569da58d074d4e268135d53b07c608bc85baa2a7525a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "ad67bec2296151e6010aae2c9133e5298c798e29064cd77224106a3506ce3879"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "0212f0a6e7024b7970f3e4852f6ccbaa7f7f9c3f4a09d7453eb30ce3beddbc3f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "716c7714176addaf79a1aa6d6a5099a736e0c3bd3b79078860126abe7960ba0a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "d87f6b9277d0faa9d43f41b993580fc2d68f2329c39a580eaba1b29b951c3dcc"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "f13105ac70c3b31137dcb078b785413025878e2f2bc9626e9002da0092cb51ed"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "7c92246f42e70472fa6a5d43563d830eaefc7acf865dec03a955bcf16b3d9cdd"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "353682f4d87e9379c0b4fa5bfac294cf1fa04b682f048456675bb55291d071de"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "eb78a346dc46b934ffa9028ee4716d3dd7bf32ed877923ce17da8a49a43b4fde"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q4",
+          "item_id": null,
+          "sha256": "e8293bad4f78f9a19fef355b70ec520d9375915eb5c69eeefd288755d7c7e82b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o0",
+          "item_id": 4,
+          "sha256": "7228df2fd6594bbe5734a322f9b8b301d2b45b88796d438bba3a2133d897713b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o1",
+          "item_id": 4,
+          "sha256": "21a206453a2516e920bb64975ddf3fa64f011466fd5133ade53806f8ee3092e4"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o2",
+          "item_id": 4,
+          "sha256": "498bb204d54474a455fa9f8e78044b248b94dc33c536a34b049cc5ad00a2db1e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q5",
+          "item_id": null,
+          "sha256": "07c9b696e8bae6987f9a27c2d5a45c2c467a03411e4521e856b1e4275ef88a03"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o0",
+          "item_id": 5,
+          "sha256": "70461f9ed1b82635922f62bc294a02e7bdfac7d8259fed2b95b1a83fec866233"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            22,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o1",
+          "item_id": 5,
+          "sha256": "1123cfc6700f481b800acf4ed7b7095c5a6de8270b1064e6c1fc7d21227c70ff"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            23,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o2",
+          "item_id": 5,
+          "sha256": "ea32a313f02efc0ed99263f06f5259033afe588ceebf1ca53e0bd47b8f6d2bc9"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g8.2025.readingC",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-prepared-six-pairs20261014.json",
+        "sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f"
+      },
+      "prepared_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+      "prepared_record_index": 1,
+      "prepared_record_id": "g8.2025.readingC",
+      "source_parent_id": "bj-grade8-xicheng2025upper-20261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade8-xicheng2025upper-20261013.pdf",
+        "sha256": "225516737e0e5cee6be03fb83f02aca25fbee02a207f963d22b3432c679cef32"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "printed_source_question_numbers": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "2764e668f03c43a28122526409d7cd971c7034e68ce766007a600c451c83e8df"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "d8a9a663ea5fa33e4f420ed6fc8e4862d8105b6f9c1f12682904c825e392c869"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "eb95fbdf22183a9d46944fd26072534fea0f827dca395877b6dca35fd5478a6e"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "70faed6a07187018a6b289e0c22793efebd21bd898225b71c7a9abf7aa45d69f"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "a5cc3c10794a59f819ff449332dd5bbdc618e89e24b1056c1db2ae246fae95fb"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o3",
+          "item_id": 1,
+          "sha256": "4b4fa415d67f230b0ac553c117262170918842205e2e95dc2f261cd4ba4c1f77"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "66c3db771a5e085c6fbdd287d6e205685922f0cf401c2ac0e3a6bb67c1219ea8"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "7244c9724ed66885338ac4d5a12d3df96853027b933f17656cb4d27887a6e393"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "fdd133d0112f2495c3303e6cb3320d8b6176d31478d0c55353ea1b0be4522f18"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "16e6fa6fc893a7e6da1a9c2bffa83ac661c99cb1039178b050a6e4300b1cab48"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o3",
+          "item_id": 2,
+          "sha256": "6f1db35ae7bde809f270f8a020efe5919aabce3c48ae24a76e7731da9cde17f9"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "970f22432651ba26943d62460112e628d83464a1f0d189485eed647a6e98f9f9"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "81e440639e59acd4416c33603426aad67ec9cb6cf9d16f09606076b452cd6bc9"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "22943100c7eb9cb350364266aadd9bbfa298940d08b8f25e39df83e6f5d12a2d"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "3c9b346e4504e99cbb2740dd6063baf4585253c61a853688a857f0e308139ec5"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o3",
+          "item_id": 3,
+          "sha256": "1bad87af692923906f241d36d2fc96fb578da0fce4357bd3a5b2b1db2209299a"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q4",
+          "item_id": null,
+          "sha256": "3be332cb1b594e342eff8e7817e16c60872383521c09309a754b70d61364f0f7"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o0",
+          "item_id": 4,
+          "sha256": "f078855768009aaad17155bbf7f9a21ef021eac5b71fb98b32d2195773ad8f71"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o1",
+          "item_id": 4,
+          "sha256": "8ea0419e2b40402ba1d36963e384a834872c50f2efebe8e4fcabf66ef54d8e80"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o2",
+          "item_id": 4,
+          "sha256": "c2dbd099515d8f3f422d028833ea4f8344db55a22a67ac73805654f53c9ed476"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o3",
+          "item_id": 4,
+          "sha256": "e4583b12f6032cef5941194c86892a61b80c58d2f3302eb23bf45cde114d5a8c"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g9.2026.readingC",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-prepared-six-pairs20261014.json",
+        "sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f"
+      },
+      "prepared_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+      "prepared_record_index": 2,
+      "prepared_record_id": "g9.2026.readingC",
+      "source_parent_id": "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/fuzhou-fujian2026-exam-bundle-bounded16020261013.pdf",
+        "sha256": "fcc048ddaf9917ffc946746e2faeaf28ac41b38c744bfc2d9ec7b08dd5202f3b"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "printed_source_question_numbers": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "edc454e9057ac5d6c0d4f5a77b253e8923abb283dbc78278cf4601d84b8337f1"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "da01feefd095fa495ac74431b7258771bebe05adb48c47f546799fa9d365fd67"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "643821813039b129bd187935c2650cfa5c51206336c22ebb49406df73898f93c"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "37967dac04e2cb7a884bce6e8963aa0aa6bb5f0d27f66021ec194fde5a0e15ad"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "b23f055bb3fe4f6cb5e6ff04ebb4a0a3e1f664fbcf7c80267a6c5a3b5aed4348"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o3",
+          "item_id": 1,
+          "sha256": "7ac43bfa91eb853cb89d872d3bd57aef9041f07b8897121d5ff2e6078b97c0ed"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "791cbd061ee97892f4b16d8ef79cc41f32484c8d57988c5af080604964a6a798"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "609cb2b8be70c1eb85d909f3a469eab2b8be39731b6a1eb9c213403accdc659e"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "8b119900ab42344514aab812c3c6298866abb805cdf7868d0fbec03c51ad53b6"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "bbb4e66b2241a0a7225eea4d8299d7454b72fa8baf6aea02d0f587515f4e1c9f"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o3",
+          "item_id": 2,
+          "sha256": "cc2da4c62e87c3a922c48cb28db52be4435b82d9eb007862cf9d45a8688cc3d1"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "293841d804da473189cd754a83789aed2e802f2f9c9db1901cb2aa7fa4a76547"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "ecdbb05a1be607f971290cebc37a2bb40a521c2b6929ba9e8b2ec9d87eb0b342"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "72dd91f46435730d4d2246112d0d7e9bb7f161e44de5ce55929d0b7d3d1ae912"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "67f86c719974d530cb46c62257b11529072c85059fb5c42d5a36ecdd488c2ac5"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o3",
+          "item_id": 3,
+          "sha256": "1feeefd6d6c8de3fb40ac71b865cac8ee4973293ac23c5837fc6f97166f99fa4"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q4",
+          "item_id": null,
+          "sha256": "2b0b5fcac158d4818bf2bcb28413c0bd58b25fbae42676173393cc6429f39279"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o0",
+          "item_id": 4,
+          "sha256": "0abfff810dc0449962a8abcf662efd08f5d1c99f733309b43d6d7daf06074c49"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o1",
+          "item_id": 4,
+          "sha256": "da116f2da95272c741afe7ab9755dd9c42e6861a3e93a9e75a8356ad01d8d8fe"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o2",
+          "item_id": 4,
+          "sha256": "c78ddc8e6893d59fbf122fb010565b98ed67a5eaee98dcd793b4055f97bd5e14"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o3",
+          "item_id": 4,
+          "sha256": "0f51b445d47ca40354ebd390e28e94588ca2cdfa911d48a44b92811e907691a3"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q5",
+          "item_id": null,
+          "sha256": "1845c0b6d944403256cb7f89ad12b3a4aba438c0d204b8847e9783775dbabc68"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            22,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o0",
+          "item_id": 5,
+          "sha256": "8039abdf4975ac8487a3ab72977225c3f1111da8efae6c5db4247f525560b23f"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            23,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o1",
+          "item_id": 5,
+          "sha256": "1be72c23955fba3deaea577eb2c2d78eaa7fd73a3ea34e62182560553bf63a34"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            24,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o2",
+          "item_id": 5,
+          "sha256": "ad1f9296c34a49df9e30329bbf033d9328d05371144e9506e7dae58dafcdb39f"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            25,
+            "text"
+          ],
+          "role": "option",
+          "id": "q5o3",
+          "item_id": 5,
+          "sha256": "e63ba2ba3b87a2bcf1bbb7ffa2ffb9f6d7a49a9f756d942db4a753870bccb43d"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g10.2024.readingD",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-prepared-six-pairs20261014.json",
+        "sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f"
+      },
+      "prepared_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+      "prepared_record_index": 3,
+      "prepared_record_id": "g10.2024.readingD",
+      "source_parent_id": "bj-grade10-shijingshan2024lower-20261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade10-shijingshan2024lower-20261013.pdf",
+        "sha256": "c8e94454eb59173e328c2f1a3dc9f8bb6635c0b6e81cf9a0858eea8bde33175b"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "printed_source_question_numbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "c6b3f709845cd6f540cc7c82e11e8b655bd35f4b0ff0a846f0f820bb0706ed78"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "298c195c53b1f353194fcacee4448cbdac84b752582549c7e57a017cdff6fc3d"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "f148aee615c242baff9939b98e3ddbb03019eb5388ba89e325a75f4ee0afbba7"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "89c5ea6fc48202e5bfe9eaae61dcfc09242fb1014125ff515484347a5aeb08db"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "2c0a1e705662e454edd9fe5cd44c92668efcb6e214dc2f85958af328bf6a4c9d"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o3",
+          "item_id": 1,
+          "sha256": "f2091534938b5b896d6c7e43d1b95fa339c06df87e6845a4e5d5ff8478e17798"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "2139837b416c0ea881febc0229ce2d000879c435fdf70a074d821bfc2f54ecda"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "3174c9ef7ef1d5fa08b64ace9c561b7f252c255c1f8d7ecd0e3959c88cfa044a"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "f1605bec2c79b741ea31e95d900cec995125f0ad3011e6302b19b86dcf9c45bc"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "c1cfdbf288e36ff7e58da2b9dcc8a0c7c8f6079ea25eabd1a782e9b4e4b19b8f"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o3",
+          "item_id": 2,
+          "sha256": "67626b9f28fb14420783a29515934a459998f3baffbbb6bc6304ca311924860f"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "4740ae4c2e1a27653c37dc44c9478d1559aaa4f93c8bcd16ddf638f190ddaff9"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "69f456482bb5ca0229c57cd59b72b144e972e669f3eeb0462d8172eb7a00ad7a"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "0dfa60512e7187a1215a62ac313c4b0195ff295f7a63e4d16086a26c5c59cbac"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "c18e353f91f5b72150939e9a336d5b849cce5252f6a515ee13f2343ad8ce6eee"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o3",
+          "item_id": 3,
+          "sha256": "bf026abfa723a66a7e252cec0a06c50ac8058b257135715536cccf3b6ef8083b"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q4",
+          "item_id": null,
+          "sha256": "09d0dfb720aa18b411b826a85d6371e566146535cfcde278f7cd581eadb765bd"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o0",
+          "item_id": 4,
+          "sha256": "944579423fb290aaec29fb584fa903b9da5d1789b502cd07ae120ae32f2780ba"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o1",
+          "item_id": 4,
+          "sha256": "1317ab53305b0be533c27fda3693734a78575228dc5325955e672d85a04cbcb3"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o2",
+          "item_id": 4,
+          "sha256": "92cccb326ed945625759cb23f71206d0188fd51f4b1e6d23fcbcca2985ca5dd0"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o3",
+          "item_id": 4,
+          "sha256": "c5818abc50d372fabcda5dde61d3652f2d44409d3cb659e2567b0fad9ef5d3a7"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g11.2025.readingD",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-prepared-six-pairs20261014.json",
+        "sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f"
+      },
+      "prepared_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+      "prepared_record_index": 4,
+      "prepared_record_id": "g11.2025.readingD",
+      "source_parent_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-2025lower-crossregion-candidate-20261013.pdf",
+        "sha256": "9605261a2ded835e000858870309c8e4004c0f62bb6afa3431ff2ac01f2d0a23"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "printed_source_question_numbers": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "7497ddb85f95f21af63f8b4e4302add8f916aa9180afb743231b0417da80e526"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "7b84db7d663b384cfca090e78f302051f323999b942ae6ce990478e7f62846f1"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "45d734664bad2f3b7b512f21448e0aafcadb7e3268eb184c2eab9a8c73300eb4"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "5633e9ea3e7416113a7b1f8538974e07381d7d1a2b44232ade5ec1ea0d2a4ee4"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "6ed2e6e0aa36f901dd02a91c959f26d6e65ccb66bfbce10992c1f7039480fccd"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o3",
+          "item_id": 1,
+          "sha256": "cffe815b88c45aa7e1ac5142da7e101c81cda3e85305a953b97005c52b6a4608"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "6251acd9a5488290a0494c24b8e1e7457d5c5432a0165766bd9a137358eaaad7"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "c0d99d3f584ae92bd8d84c34c104760128291478a0e04d1562824425a6e275df"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "ff723a6a4377ecd2bc4e2a7b77f4a47e406bb03e91cf2adf38e8c3c55b379373"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "7e7257dc74a15db6086f1f1b0b885c9fdc85ca901a393f97e1becc977f3f2fe0"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o3",
+          "item_id": 2,
+          "sha256": "2a4aa8f6780cc674dcbddc6d9b58d239526875107aa680e3b77b424d9f329f35"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "cd34c41383a2eecd38ad57d74501ecd163d59e78fc9fafb634db058ae617e410"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "412308a55b53f74fc6413d5c4e2712bad4ede650c593dcb8d51fa1c1a49ffea5"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "85510baef6d0c6160b7db27b73499ada7c7327674128780885e9ba702c6a0a1d"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "2bca1c2e74ac5cb2cbc212ee6f6c3e2035bfa4b2ef9a70ef99730e31f3e07281"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o3",
+          "item_id": 3,
+          "sha256": "6cfb0551529f6564665e03e9f699393153ab81fddd6daef849926b51cd8ea9a7"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q4",
+          "item_id": null,
+          "sha256": "1bac3281d2612319fcf29df2e98e93667f7d5f15156c77e8cce42360a9b0553c"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o0",
+          "item_id": 4,
+          "sha256": "a2939113aed6ba43a7201d509920ead85f5c73b6fc501141f64859d68fa93de0"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o1",
+          "item_id": 4,
+          "sha256": "b7de70dce0e759c28454973bf1a501e4542d39b50741e0619e42f26871814441"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o2",
+          "item_id": 4,
+          "sha256": "859bfa6361744199f56984eeb338ea0567b8dcf42d677921d5a89ebb5a290730"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o3",
+          "item_id": 4,
+          "sha256": "39f1699e0425b4f74de8ef72aa43138828b99229a1ba521f9ce94b2e000be8fd"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g12.2025anshan.readingC",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-prepared-six-pairs20261014.json",
+        "sha256": "7171a9b6da77cec304c5f9d04c045017d82886d10fbcf36f479f3b2494f52b8f"
+      },
+      "prepared_acquisition_id": "task-load-20261014-task-load-prepared-six-pairs20261014-json",
+      "prepared_record_index": 5,
+      "prepared_record_id": "g12.2025anshan.readingC",
+      "source_parent_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-anshan2025upper-monitor-candidate20261014.pdf",
+        "sha256": "00b12f137a37d9e6cdf8b5bc5c6dc8d0edc8160f3b7dee85d6f21ad78ef759b6"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "printed_source_question_numbers": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "ac823382e3ecefab21415d1f78a58128a9a8d75821f4ead963c328d8e2ad9536"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "8c04fd6a0ee849d4ec14b266624a0c52095b549856e2ec0f0c541466c4e64a60"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "26aec5e3978f2efb01861454fe2f8b84c96024ddae859d77c573b90d9d257ee5"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "b62e39a35d546fc0131036126b81227db7760b84bc6096326719da3d8b3de68a"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "389e52d0be05d5c257320b9dc5103f058449a769e202c33d03a1ff4b2ae06eb1"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o3",
+          "item_id": 1,
+          "sha256": "2e78687d5fa007b3bfaf794fbea95bfd8693341db5b7f98da93904fa56ce2ba5"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "7d0e6dbb64e44fb57cf949cd9d2aec480f3932b720ffa64b327bfb5126b6f26a"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "637e7ab4b0a73b4ab8806022a5d4fd19c61ed78bf152fdf349757d2b33506a57"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "e2157b24b9d70de56be56d4b8ceccc87a72773d11a526ea5b11fb8ff24cac4b5"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "3651292d94143071ba8200ac2cf83ec81e19d89f23262cc64c78ae4918142530"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o3",
+          "item_id": 2,
+          "sha256": "518712df8108eda89ce5a512bc974aa36b993b47c1e3387de52bf8495c1ecd67"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "4ce0b1377c2e8b16139efe7291af999175a6329ecbfca46c6d27c2fc0cefc9d8"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "ac00b1bd57df883e11efd99e78a2364a866bcfae5b77ad10e597e8d6f7365a57"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "072e250f9c7dd5c5f9142b81bbcd69edce0a1f198db25afd5a28992785a8f229"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "2c6b67ab9503f49eec382b0ec28ac7c53541cc3ffde343e121e99ea6712fb4d2"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o3",
+          "item_id": 3,
+          "sha256": "ec93f1d6102da0c721a4b8baf031ee40f22432d8321c3d92be100055dbe06509"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q4",
+          "item_id": null,
+          "sha256": "8e41dbc6abb6f0256369bfee168de46babef43c150f4286be920053e324b4ab4"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o0",
+          "item_id": 4,
+          "sha256": "fc685566a68fc8a018fd9c3a3ca880db1906a2bef424eb0b2b6c8e3663893205"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o1",
+          "item_id": 4,
+          "sha256": "e624bd735fa7f86a471e251a47e689498a07b96654050cab63091e2a132a8d76"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o2",
+          "item_id": 4,
+          "sha256": "44072c3675fc477248cf6ba17db9f0d5a2e074f073e24e0d5b3df19e895ea504"
+        },
+        {
+          "pointer": [
+            "records",
+            5,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q4o3",
+          "item_id": 4,
+          "sha256": "ef0f42b6049f238360a91687ee91cb43f0c8f756482b0c4241e6191cb2e03f09"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g8.2025fengtai.readingB",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade8-narrative-v02-prepared20261014.json",
+        "sha256": "bff5fc953186da811225145146ddbf6c89308a698c7b130e9bc988402b57e1de"
+      },
+      "prepared_acquisition_id": "task-load-grade8-narrative-v02-prepared20261014-record",
+      "prepared_record_index": 2,
+      "prepared_record_id": "g8.2025fengtai.readingB",
+      "source_parent_id": "grade8-fengtai2025upper-candidate20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-fengtai2025upper-candidate20261014.pdf",
+        "sha256": "044a92582dd78d7c45682d22a993ccaed22706ea3034b3d7a8e8d61c4e6a892f"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "prepared_item_ids": [
+        1,
+        2,
+        3
+      ],
+      "printed_source_question_numbers": [
+        24,
+        25,
+        26
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "12fd8a534be50a3b9a646bfa1cc831cfe4f97d8fc0937e453a343150593662c1"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "b732066fcd9814720d39581c819348e6ebea149f752b7d4469a6f959bdce7979"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o0",
+          "item_id": 1,
+          "sha256": "dd7f62cd9115fea22242ea257036c61016f264ee041203f1ad22dfe62e39d6a1"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o1",
+          "item_id": 1,
+          "sha256": "b13048c7554bc44a3fc95e5e0487bb533f9a71697fcbb4ed3a7b838c28f41466"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o2",
+          "item_id": 1,
+          "sha256": "5fde3a9873a5d638a712827ae06902d550a8651f8966ec628d7f657bf4bdb396"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q1o3",
+          "item_id": 1,
+          "sha256": "051ad51102e0cf99aa66359bc21b2bfcd25c096a7169903a0007a93e7e03e00d"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "e27c56e849ef5f1c49521db6a791d0a3f57ba141753bfcbe1908be1d48e6ad94"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o0",
+          "item_id": 2,
+          "sha256": "7305269a4f2de18786c817c50c15665a154be0e324f2eb6ac9ef9ecd947e0b0f"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o1",
+          "item_id": 2,
+          "sha256": "46a25b22c88a589487c7babe3f42d2e516936021b98cb7fd84885f782fa8da2c"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o2",
+          "item_id": 2,
+          "sha256": "060626ed4b974746a839362f70104e15a73879a9939c49eda67b8cc5316dac8f"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q2o3",
+          "item_id": 2,
+          "sha256": "dac7153251052dbeb0b12c8e1c299d3e600b66da4021f718a574a3e4f40ebde6"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "8446a7c0a4598f50445fd4d67194435489aa04d0ad3617b237a7d2c1695ac4fe"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o0",
+          "item_id": 3,
+          "sha256": "5258c59ae41909a565e1c16ed248ac098072427d59147d22c519794ab40be2d8"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o1",
+          "item_id": 3,
+          "sha256": "1f9e2df4cecbc0e2c5e944ac69d2fe8c3218b07da50966879dbe5869d126bf3e"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o2",
+          "item_id": 3,
+          "sha256": "82b489ce51ddc5fb391531887dfb38c54a49c08a71315399ab7588910100093a"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q3o3",
+          "item_id": 3,
+          "sha256": "2f7874f0de5e9a8820f9a9d599bec9cacb7b65636fc5d5ad4d0968b5c811032f"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g7.xicheng2025.readingB",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade7-xicheng2025-narrative-prepared20261014.json",
+        "sha256": "ca4bc1146a0a09145b8c3e544893b7cb2c5e7e3bb2d44f849d97859e9b52c88c"
+      },
+      "prepared_acquisition_id": "task-load-grade7-xicheng2025-narrative-prepared20261014-record",
+      "prepared_record_index": 0,
+      "prepared_record_id": "g7.xicheng2025.readingB",
+      "source_parent_id": "grade7-xicheng2025-public-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+        "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+      },
+      "prepared_item_ids": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "printed_source_question_numbers": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "passage",
+          "item_id": null,
+          "sha256": "a16faf61db4fdbcec528548f7cae3cf58b6b4a9698bee5003a3ea2091a62a697"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "labels",
+          "item_id": null,
+          "sha256": "0c274594383c8d82455ef2d716f8e25ff23b89a9f793538a58874308009984a5"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "instruction",
+          "id": "instructions",
+          "item_id": null,
+          "sha256": "a7bebf8529b6b3549e4c52c7ae33160dd9806a6457c8ce51a56381839a81b146"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q36",
+          "item_id": null,
+          "sha256": "ec81ef3afe01d68730d656d045d71e6fc3060aacef1a924b7b6d1c3dcf1f3f90"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q36A",
+          "item_id": 36,
+          "sha256": "34927e9786c5839f86eb6f227b6f39be262cf969212f9fba377f3a568323ad97"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q36B",
+          "item_id": 36,
+          "sha256": "75e0c52941809c7c6725c402291a3488e515a2cd7c5d9ac3df1c4544af7098e3"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "option",
+          "id": "q36C",
+          "item_id": 36,
+          "sha256": "6b0b7d1e5537f925c2cc9099db1135924dc8f040073ac1995bdfd0d933e11d5b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q37",
+          "item_id": null,
+          "sha256": "560273e7dae9e29a364e8a44befddd5d069103929328daa2cf78a90623d3971a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q37A",
+          "item_id": 37,
+          "sha256": "8d1c8a7a12c3739bb3b9988676c4f1ba69cbd7515ca23625e0d929efbc1bc1ac"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q37B",
+          "item_id": 37,
+          "sha256": "2a4baa647f524b2a9e19deb0c8a1b88806eb9bdf550a7b6fa6e7ce8133e3b92b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q37C",
+          "item_id": 37,
+          "sha256": "0a96f1960786d85f9e1270916fbb29224da7fb649ef6adb322124ef7e5000a68"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q38",
+          "item_id": null,
+          "sha256": "889703985dff8f8a4da0df3b3f557d0aa44d1a14aa8bfa4aa6031fbc7fa50489"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q38A",
+          "item_id": 38,
+          "sha256": "6099bc9d2c8c5700ae7077eaf825cd70883dc43a0608aa3191a164a1743e9e66"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q38B",
+          "item_id": 38,
+          "sha256": "26e95c1bc31a14d59446a11428bf2610793d62dbd8e0f91229a92c77b1687f2e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q38C",
+          "item_id": 38,
+          "sha256": "bb2a9f40296537acf527292880aeeaa219f695c37ca3f041958a6342bc12099a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q39",
+          "item_id": null,
+          "sha256": "4222565ea824552be2f4e9744918912ccd4e6eafb3cfd12ae0d43edc6756d716"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "option",
+          "id": "q39A",
+          "item_id": 39,
+          "sha256": "0f63af76cf849d5ca56b9470f267ec33c28b6e2924ea5679bc416120a5e71ee6"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q39B",
+          "item_id": 39,
+          "sha256": "4b250d6210f47b9ab7a6bed28b459821822dfb4513c19ff57a93ca87dbfc115c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q39C",
+          "item_id": 39,
+          "sha256": "37081050cd70884bf8bb8eed06ea8cf0046c4ef450ab5e084a301280955bd5be"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g11.spring2024.readingD",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade11-parking-source-prepared20261014.json",
+        "sha256": "83041bd1dced526cd5b54857f6832a620080ff727ef61bc250d4a5f52c299406"
+      },
+      "prepared_acquisition_id": "task-load-grade11-parking-source-prepared20261014-record",
+      "prepared_record_index": 0,
+      "prepared_record_id": "g11.spring2024.readingD",
+      "source_parent_id": "grade11-spring2024-public-bundle20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-chongqing2024spring-public-bundle20261014.pdf",
+        "sha256": "1437b5250247ea20ac28994ea8e1797b1b4951e7cebe81301e7de0e73c2ce140"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json",
+        "sha256": "f7fe13aa06155e176f4e8e37e26f17a63617a089bf6921cc5b1192694894b479"
+      },
+      "prepared_item_ids": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "printed_source_question_numbers": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "body",
+          "item_id": null,
+          "sha256": "f0c225414d1166b3ddf4378cb76d3605cb670ca1a910d61dd76456a122a10038"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "label",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q32",
+          "item_id": null,
+          "sha256": "2e2e2ab1746a8f4ec05da1e00746f44c398a1561bc23de86fde2e910a39ed158"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32o0",
+          "item_id": 32,
+          "sha256": "5332328fc6d2b9557c9a78a5b0310048d63c4d9b6db10223c597137e7ef3e718"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32o1",
+          "item_id": 32,
+          "sha256": "326fce311765382e96b36a61e3fe2c0847b1a763de045f7c68beaed6c25abb18"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32o2",
+          "item_id": 32,
+          "sha256": "d8b7336b39c5382b13bc36b6dc7dd3653784d207262958107e5c50c8e15eac2c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32o3",
+          "item_id": 32,
+          "sha256": "7f9ccc55b3feb15a39229fba78e0975bdd71decf083c3f6aa423cfc31130d988"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q33",
+          "item_id": null,
+          "sha256": "b0f0a264bc46c8ef1103947dd982ce6f7be0cad1f70626e659ef396c48542c11"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33o0",
+          "item_id": 33,
+          "sha256": "66379f2cd1c8546d8cdf3b470f97c8b89d24ee309947a83658c9a05881108d3b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33o1",
+          "item_id": 33,
+          "sha256": "e9ef92d12062e87e2bb2959672280eb359caa78716e9db6af9a57ea152fcfc88"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33o2",
+          "item_id": 33,
+          "sha256": "41ed6c7499a06a659d4322f3c3928fc117ccf8a29663b260e610a2487524a63b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33o3",
+          "item_id": 33,
+          "sha256": "d1cbd7f45ec390018a28faea2a333a681c7941672b4fe851e3945a35f4503ff9"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q34",
+          "item_id": null,
+          "sha256": "52090413285e50c0655b7275a89dc0f57f68b574c5097bf4fb72e06a5fde74cb"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34o0",
+          "item_id": 34,
+          "sha256": "abaca08146330684cadd5bf64deb30ed2d4ad9b93abe921f6f9e0f7f5c08550c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34o1",
+          "item_id": 34,
+          "sha256": "87661236cd8df9aface12310511f075eb9be9da09250d598c5eaf407d638841e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34o2",
+          "item_id": 34,
+          "sha256": "36e6949404db8dfb228175f2c2e0c9288138be33d3d2b98b46de8e737e250189"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34o3",
+          "item_id": 34,
+          "sha256": "b7f3d9227bcac4bab776eedf0dbdf4c48d4b6d72ae96f045e39db1c6b538cb86"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q35",
+          "item_id": null,
+          "sha256": "a80c3009727734c7074b2ebc9467d463e0030dd1a1a7d6025c38ddebacca5fe6"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35o0",
+          "item_id": 35,
+          "sha256": "2d36772cea670cca000ec8d816f1e6539665d94202d389a6b31c39c7d845bada"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35o1",
+          "item_id": 35,
+          "sha256": "9e7b33e6a78b1efbe434c08d3e6d06de3647e27672fd27d6349d44fcdbe1f047"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35o2",
+          "item_id": 35,
+          "sha256": "be68f66413690d0b3db8211f14a8e517869f0194368e67f65397fa371fa22ad4"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35o3",
+          "item_id": 35,
+          "sha256": "a7ec5ad0bd51444c21021555fe77d767627dac71f6cb57714aba641eaa8953d2"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g8.changjun2024.readingC",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade8-changjun-explanation-prepared20261014.json",
+        "sha256": "3ffd749df254793e241c9a147ba04a0084ba9d2ac92dcb45444947d52f6c5dd0"
+      },
+      "prepared_acquisition_id": "task-load-grade8-changjun-explanation-prepared20261014-record",
+      "prepared_record_index": 0,
+      "prepared_record_id": "grade8-changjun2024-readingC-explanation-actual-text",
+      "source_parent_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-changjun2024-midterm-paper-key20261014.pdf",
+        "sha256": "50fcae7cf123843ce34b2fe9b66134e765fc281537e28d746c79e5b3c7cadec2"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+        "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+      },
+      "prepared_item_ids": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "printed_source_question_numbers": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "sourceparagraph1",
+          "item_id": null,
+          "sha256": "237e66000809bc822bfc1f63416aaa9251a76a416ecceb39a0ac9446ca092562"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "passage",
+          "id": "sourceparagraph2",
+          "item_id": null,
+          "sha256": "0c3294eeba8d203536c0fa6e72e06e12d0fa1fbc70e9711828ddb736eb7d7ee4"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "passage",
+          "id": "sourceparagraph3",
+          "item_id": null,
+          "sha256": "4aff2517c7a6497f73bf0073b83edde3f5ea9655117cdac805e41df6097fc573"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "passage",
+          "id": "sourceparagraph4",
+          "item_id": null,
+          "sha256": "1cbd12eb314aa70ac29b1ae76da2b99c2431bc7ad36be498fa77fdfbc57852bc"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "passage",
+          "id": "sourceparagraph5",
+          "item_id": null,
+          "sha256": "b9b9340511fda9584b13d3490cc84303aa99df4419844aa1f5b1042437aa9c25"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "group-item-option-labels",
+          "item_id": null,
+          "sha256": "45b97158712d2c12a302407433e3bc0b00480344316c46df741888f175f65700"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q28",
+          "item_id": null,
+          "sha256": "ddc3c250257fdecbbe0968e3ad75bda40e05995e7824c70039a0b0e12adfa9d0"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "28A",
+          "item_id": 28,
+          "sha256": "9f67cf42d4e2a1e0ce2fe31cead0d829854a6be0b231968f5880e53fb3282ac7"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "28B",
+          "item_id": 28,
+          "sha256": "61e11f43142c3cfb7b0044e14331a9d9dd4a0f120357494b09a0d575f37a6bbb"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "28C",
+          "item_id": 28,
+          "sha256": "364dc61a785b997fa5fbfc959d3cdbcea9ca3f267deeaafc5b0a02950c14647c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q29",
+          "item_id": null,
+          "sha256": "1a487415fafdeb84dfca3b2186a39a2be105f58855da54f5042b1c7134b6e431"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "option",
+          "id": "29A",
+          "item_id": 29,
+          "sha256": "d38c93d61cbd54d39840caaf4b5e77df28d48ad6e0ad784892f0fdee221aa597"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "29B",
+          "item_id": 29,
+          "sha256": "288fa7c08c6cd359b33e147652b6aca1005fc5faa6cc53d7ab4a562301dd164b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "29C",
+          "item_id": 29,
+          "sha256": "bc5faadfcfcdc13421478fecbf389a73a329be4d738f250215569ab9bc06594e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q30",
+          "item_id": null,
+          "sha256": "2b0e2064a81747f1eef39eb11d7e76e532fa189647f92f126e9bf33fadae3b6f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "30A",
+          "item_id": 30,
+          "sha256": "7b1bc52613068b9bec38d9663dcdada7a6b5ec79db86677e4a84c11f5f4e68fd"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "option",
+          "id": "30B",
+          "item_id": 30,
+          "sha256": "22eae02da4af35e53e6ab6a2c0c51d4fe11e838dd5986d8c43e820f940a5dd71"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "30C",
+          "item_id": 30,
+          "sha256": "4d805ccda62e7b1dc83f6107f3ad0eff6673dbe4594b8ee85e76bfcc6a8ffa45"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q31",
+          "item_id": null,
+          "sha256": "180658d7f2122c53a5d3d06cf545058b3eb4c94b906d167f8404c14f1b6f2685"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "31A",
+          "item_id": 31,
+          "sha256": "3b1e1c35cd3c4c782b572fa91fc0b1a8e3fb69dbc0156dfa4063ef4fd9277d5c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "31B",
+          "item_id": 31,
+          "sha256": "6861fcb2e33f3e5ce5c045325e0d267b8a768e6108ab7f8e0eda700658bf6de7"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "option",
+          "id": "31C",
+          "item_id": 31,
+          "sha256": "c9cc34311b10d47ae13feca4b3a89489f4f8d725e922e233bacbaa2a2ebc73c9"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g10.wenzhou2025.readingD",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade10-grade12-second-sources-prepared20261014.json",
+        "sha256": "350d7325f6bed609c3c26cf0aa03eb2180493ddcd498f69093f27c3638104d7c"
+      },
+      "prepared_acquisition_id": "task-load-grade10-grade12-second-sources-prepared20261014-record",
+      "prepared_record_index": 0,
+      "prepared_record_id": "g10.wenzhou2025.readingD",
+      "source_parent_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-wenzhou2025-midterm-paper-key20261014.pdf",
+        "sha256": "9a92dcfb22731105ff69aa70ffd0c91e9bcf1e625236cda9545d9301570f8858"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+        "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+      },
+      "prepared_item_ids": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "printed_source_question_numbers": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para1",
+          "item_id": null,
+          "sha256": "5275ffac147fb5db1f0eb649df60351234ab3bb8e6cacd99cc712eafc9f91351"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para2",
+          "item_id": null,
+          "sha256": "fbf6f03918dacae981fade6535d9abbcc6ae459240234cd0858b09777907c770"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para3",
+          "item_id": null,
+          "sha256": "214b811ea2ce43d4d3d8b19cf35f4498820137bc262a56758a9acb5884299aef"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para4",
+          "item_id": null,
+          "sha256": "7e04e7cfd9b803ce9e27873f474cbedef9c33d4c44d657087a31f44c2c7b9662"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para5",
+          "item_id": null,
+          "sha256": "951ee48b71e3675b750625bea612cba982615ffaba0266e000deac70c32d8433"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "sectionD",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q32",
+          "item_id": null,
+          "sha256": "eb66a5aa000928cdac8881b41c892e46f3893ea17857317a133b13a8e32e4b91"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32-A",
+          "item_id": 32,
+          "sha256": "7ddf80bc1df853cbbb78dbaa5f56e48d0afa6bf4090bb73ef56017fef6a53193"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32-B",
+          "item_id": 32,
+          "sha256": "fa43d58c5e7329e80f49e3f7fc78231e2879cae915d41b2a111279663552fcd2"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32-C",
+          "item_id": 32,
+          "sha256": "c18a1ee73c0b6f5e7d14652868a748dd60ad7c2e5eb02bdcf9a3a171ab492e28"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q32-D",
+          "item_id": 32,
+          "sha256": "d8e08315c45a71f1b29553233ae6e9b8f5d187856f9b25e3c395eb9060b06fb2"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q33",
+          "item_id": null,
+          "sha256": "df9ab57e0dc3ba75f225f016c0c563cdd20675c199c6cc46c90d57559344f79a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33-A",
+          "item_id": 33,
+          "sha256": "ea5c76877677c5a8036357ed8307b6083724b01089235bd1b610ac39a1b99164"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33-B",
+          "item_id": 33,
+          "sha256": "24884cbecba522f64da4fd462c1aec8abff3600007eeb50ff761df2343009de7"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33-C",
+          "item_id": 33,
+          "sha256": "54f949d93d2221d54afc58607a39a0431c63ac209ba3ac023fc5d205b75adc7a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q33-D",
+          "item_id": 33,
+          "sha256": "ffbb1382ac079df17bf69a1138158906b20e006ab8bf9edef4753fc469e275ed"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q34",
+          "item_id": null,
+          "sha256": "131788b59a03d044a550b2971d215c2eb8cfaa6e7443a906bc1def24ee113819"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34-A",
+          "item_id": 34,
+          "sha256": "bdd21f6e5fee6bb0f3c0f954236e4b25ff3646aafa652b09ec32c6cff9f9631f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34-B",
+          "item_id": 34,
+          "sha256": "ab8deeecfa9739cf23d02c8d546457ac9dec78ab20b025d9fedf9aa3de172817"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34-C",
+          "item_id": 34,
+          "sha256": "c1c67b39b8c07f8fb1e4d7521ae2538a7fd95682a63577d8ff54b6ec9545d6e1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q34-D",
+          "item_id": 34,
+          "sha256": "b2a5ba3d1ea2d787fcd2512710aaa6f1be5253a411912bcf3ae1109b6dffc5dc"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q35",
+          "item_id": null,
+          "sha256": "e9fd11a6eef6c58143c4c40f958aabd59e4021275ded59251cab6b6bb217450f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            22,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35-A",
+          "item_id": 35,
+          "sha256": "34ba04f3932f33e32489260c6df8a0e623f7fe78795bd58f1a71df7d74f3746b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            23,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35-B",
+          "item_id": 35,
+          "sha256": "a1a81d1d0652ee8ad23f37a32612098568054e86ba23eea1c68dbab04490147b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            24,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35-C",
+          "item_id": 35,
+          "sha256": "b5a3dea5b15025f57a66172cd05ea5c0d79730cb5d9be5f406d8bd74e748e9d1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            25,
+            "text"
+          ],
+          "role": "option",
+          "id": "q35-D",
+          "item_id": 35,
+          "sha256": "2f9f26d8129aa5e83463a70a67ab11f28794f6315796da4de14f7ed6f27ded31"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g12.national2025.readingD",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade10-grade12-second-sources-prepared20261014.json",
+        "sha256": "350d7325f6bed609c3c26cf0aa03eb2180493ddcd498f69093f27c3638104d7c"
+      },
+      "prepared_acquisition_id": "task-load-grade10-grade12-second-sources-prepared20261014-record",
+      "prepared_record_index": 1,
+      "prepared_record_id": "g12.national2025.readingD",
+      "source_parent_id": "grade12-national2025-paper-commentary20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+        "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+        "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+      },
+      "prepared_item_ids": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "printed_source_question_numbers": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para1",
+          "item_id": null,
+          "sha256": "acbd3757299e312f52949dc3b3e8181bd21ccd9608b8e997b32f4808fc27a5fa"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para2",
+          "item_id": null,
+          "sha256": "4c875b0818c225dd8317d51637e5ac2216c28ccfc27f7d2890ffcdbf6ac30d86"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para3",
+          "item_id": null,
+          "sha256": "7ee442c76c0458d476f24047ffa4efbc82c81ab32d7a6f650e81a3478937dff4"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para4",
+          "item_id": null,
+          "sha256": "cfb8a176424562ca386f4da9943552df1ad1f9a54831395a5286db4b436f09e8"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "passage",
+          "id": "para5",
+          "item_id": null,
+          "sha256": "ae06c284116bb6c027f979e5320fa407ea90e4e963303e75aacd4f91dbc61c23"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "sectionD",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q12",
+          "item_id": null,
+          "sha256": "c124220d9a2913912146b60d232ec79fbbf28c556e20cecf9af65d59eb533009"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "option",
+          "id": "q12-A",
+          "item_id": 12,
+          "sha256": "9c71906d25dea0c301a0169a170bfde3ccd69f93af3a1c310a52ec0b982de57f"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "option",
+          "id": "q12-B",
+          "item_id": 12,
+          "sha256": "ae94c497971a48a3732186dcfe47571f0002f89f9a1ccc731c58bd0219f23d0c"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "q12-C",
+          "item_id": 12,
+          "sha256": "e2157b24b9d70de56be56d4b8ceccc87a72773d11a526ea5b11fb8ff24cac4b5"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "option",
+          "id": "q12-D",
+          "item_id": 12,
+          "sha256": "06ff789c839c354e6f0a1197e7b7b9bab2c51c4325c136c0554a3573e3a3f23c"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q13",
+          "item_id": null,
+          "sha256": "54441bcc31f8b31b5313e0f128f5a3ae5b570c20210e7030ec6688faf470354b"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "option",
+          "id": "q13-A",
+          "item_id": 13,
+          "sha256": "97b638461967606244eabee6b6ce335139129ad35661d87e99c2a4799ce1e585"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "q13-B",
+          "item_id": 13,
+          "sha256": "165a22e2b0da1469296293b42a6e982a60f74f2223d5a64a206e0203ccc03a93"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "option",
+          "id": "q13-C",
+          "item_id": 13,
+          "sha256": "e8258203f17e7f41ee5c55edbc53d511cab1748d6360c88adca5af4aec1f2360"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "q13-D",
+          "item_id": 13,
+          "sha256": "044e6031353cf9a879989797a26238d55e149c01021bd391f6b04b058d50b971"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q14",
+          "item_id": null,
+          "sha256": "f8a797dcaa392833d5758a5b5cbd8723ac8a8ad939a391ac807ee3e8d0fd3956"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "option",
+          "id": "q14-A",
+          "item_id": 14,
+          "sha256": "a4f6ca252085f43d2cd4e27c72b6634d88801df2882087276ed5f643ca6dc61b"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "option",
+          "id": "q14-B",
+          "item_id": 14,
+          "sha256": "2a005ce6247307510170d396d05b2308cad5bd2042126063e2efd6d27b2cd70a"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "q14-C",
+          "item_id": 14,
+          "sha256": "95e8ebabd1ea8510429d8408d257c762a5782a96cd5605ca0cb798a67d356786"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "option",
+          "id": "q14-D",
+          "item_id": 14,
+          "sha256": "b3f08d9d478cd34e441e4302970fdd185f4050cafd5ebbe68e7a1d4c6ef23c47"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "q15",
+          "item_id": null,
+          "sha256": "0359ecc031af4979bc602c8b8ec863f30cbbe29f65ceedfd44208b344401abb0"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            22,
+            "text"
+          ],
+          "role": "option",
+          "id": "q15-A",
+          "item_id": 15,
+          "sha256": "6b45559499dd62281608550b5f81cd2dce898d3480c32b8f62875acde7297ffc"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            23,
+            "text"
+          ],
+          "role": "option",
+          "id": "q15-B",
+          "item_id": 15,
+          "sha256": "8e2d1126f455d6d86a8c38baa2f70c453fc8fa1c0b9fda72859c9a459a577a42"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            24,
+            "text"
+          ],
+          "role": "option",
+          "id": "q15-C",
+          "item_id": 15,
+          "sha256": "20d5385770a082ab1ad90ed04029997ec144158a1483c0bac61801d7870ba6d5"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            25,
+            "text"
+          ],
+          "role": "option",
+          "id": "q15-D",
+          "item_id": 15,
+          "sha256": "196e8b7af3c42297a8e07babf8780f2ce16b421af1cc528cdb261e6b16addcef"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g8.fengtai2026.readingD",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/task-load-grade8-fengtai2026-argument-prepared20261014.json",
+        "sha256": "1ecc909642d2d0618cc7c8fb7a172436cb3d2429dfbd817629c6997bfd117ecc"
+      },
+      "prepared_acquisition_id": "task-load-grade8-fengtai2026-argument-prepared20261014-record",
+      "prepared_record_index": 0,
+      "prepared_record_id": "g8.fengtai2026.readingD.author_transcription",
+      "source_parent_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/gaokzx-fengtai2026-paper-key20261014.pdf",
+        "sha256": "498bc8f276f6786dee63bfbccdd649fe121f9bd9875b4530bbd989f10d36ee67"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-fengtai2026-public-groups-v0.1.json",
+        "sha256": "202e059d3aa52286f39e9f4b07d5d288fa23773d6da4c132c57b5862368bd309"
+      },
+      "prepared_item_ids": [
+        "31",
+        "32",
+        "33"
+      ],
+      "printed_source_question_numbers": [
+        31,
+        32,
+        33
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "role": "passage",
+          "id": "paragraph1",
+          "item_id": null,
+          "sha256": "221ec12d8a8e8fc4846776cf1345206845467e78e8d536b582ed643e9da8009b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "role": "passage",
+          "id": "paragraph2",
+          "item_id": null,
+          "sha256": "05f43ce5f94e54f08ea273604b5226dfa59d0e647457e1c82982a98396d4b813"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "role": "passage",
+          "id": "paragraph3",
+          "item_id": null,
+          "sha256": "a01c524670ccdf995d89908b12363508b4270f5fb8e87afb8968045f5fbb8e70"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "role": "passage",
+          "id": "paragraph4",
+          "item_id": null,
+          "sha256": "d8bf469a38792ea73f29f2dd6b0b723d9a8ab3d38e4b872d168bd7015308d716"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "role": "passage",
+          "id": "paragraph5",
+          "item_id": null,
+          "sha256": "e13b07b1147647395ce03981e42063d8131bf5d31251bac76a29f6cfc3c46126"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "Dlabel",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "role": "instruction",
+          "id": "instructions",
+          "item_id": null,
+          "sha256": "b2d23d18e0f5ab41f830b3383b6cad79b60bd61b57f4896e5b43448c62d8e2d7"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "prompt31",
+          "item_id": null,
+          "sha256": "d95752d08d0a1161021e3113e6c91c5025ed1662012d774762a5198fda3e5954"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "questionlabel31",
+          "item_id": null,
+          "sha256": "eb1e33e8a81b697b75855af6bfcdbcbf7cbbde9f94962ceaec1ed8af21f5a50f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "role": "option",
+          "id": "option31A",
+          "item_id": "31",
+          "sha256": "4f411bc2288730e20d967653366784714d16ab1f38b94fa21f19adbfba174099"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel31A",
+          "item_id": null,
+          "sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "role": "option",
+          "id": "option31B",
+          "item_id": "31",
+          "sha256": "39529280c4213a16eb40ec9fb8e20dd003646440f39c2573ff83650d2e5dc03c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel31B",
+          "item_id": null,
+          "sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "role": "option",
+          "id": "option31C",
+          "item_id": "31",
+          "sha256": "47fad0f097ea65b03fefe21475ba0b7dbd2b6fcabc210a722166e03d48f90570"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel31C",
+          "item_id": null,
+          "sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "role": "option",
+          "id": "option31D",
+          "item_id": "31",
+          "sha256": "efb1ab8e62adf984f7d15f99f282872d0f2b3bfc297f8dbe51082c52f2076c10"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel31D",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "prompt32",
+          "item_id": null,
+          "sha256": "1da6ee19a661509d0c22afb4d80418e8377ace5def646ebebf3f73a2c3b88337"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "questionlabel32",
+          "item_id": null,
+          "sha256": "e29c9c180c6279b0b02abd6a1801c7c04082cf486ec027aa13515e4f3884bb6b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "role": "option",
+          "id": "option32A",
+          "item_id": "32",
+          "sha256": "e30e1c094cc981d8c2f19315aaac47d486bc11ad0e386840a4c0caaacdc70df8"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel32A",
+          "item_id": null,
+          "sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "role": "option",
+          "id": "option32B",
+          "item_id": "32",
+          "sha256": "3ab1d0feb012966e7c626f72041a5a77ffeb1e12c3b8162ad646d67d074602f3"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            22,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel32B",
+          "item_id": null,
+          "sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            23,
+            "text"
+          ],
+          "role": "option",
+          "id": "option32C",
+          "item_id": "32",
+          "sha256": "49237292033e1df55617d03226429ef84143e01afb042cd7dee5b59a0d6b8b70"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            24,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel32C",
+          "item_id": null,
+          "sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            25,
+            "text"
+          ],
+          "role": "option",
+          "id": "option32D",
+          "item_id": "32",
+          "sha256": "38a07e16914526bb3403eefa5c2214a8eb26aac446a5c6be4caf7d05c58ef74f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            26,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel32D",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            27,
+            "text"
+          ],
+          "role": "prompt",
+          "id": "prompt33",
+          "item_id": null,
+          "sha256": "3be332cb1b594e342eff8e7817e16c60872383521c09309a754b70d61364f0f7"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            28,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "questionlabel33",
+          "item_id": null,
+          "sha256": "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            29,
+            "text"
+          ],
+          "role": "option",
+          "id": "option33A",
+          "item_id": "33",
+          "sha256": "ac17340f718f5bfeab6aa3152315b074016e7961fbb2b49ab30e7be0c983e00f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            30,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel33A",
+          "item_id": null,
+          "sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            31,
+            "text"
+          ],
+          "role": "option",
+          "id": "option33B",
+          "item_id": "33",
+          "sha256": "477c5f77526c126aceb9858af4e59bad1e799a596fc6e9152a000ae88fa74b9f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            32,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel33B",
+          "item_id": null,
+          "sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            33,
+            "text"
+          ],
+          "role": "option",
+          "id": "option33C",
+          "item_id": "33",
+          "sha256": "6057ae2e6b44d7512a7a03936a9fb57b2ef4feddf11b902bd2f1b2ff060cdc75"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            34,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel33C",
+          "item_id": null,
+          "sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            35,
+            "text"
+          ],
+          "role": "option",
+          "id": "option33D",
+          "item_id": "33",
+          "sha256": "f164d6f43fe38767129b84765d8c9c7307d90886fcf7bd3a1f1dfe183d4672f1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            36,
+            "text"
+          ],
+          "role": "material_label",
+          "id": "optionlabel33D",
+          "item_id": null,
+          "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    },
+    {
+      "group_id": "g9.suzhou2024.readingResponse",
+      "prepared_file": {
+        "path": "build/english-benchmark-research-20261012/grade9-open-reading-response-source-transcription20261014.json",
+        "sha256": "32c377cdd17e588ff82c93cc4fae42657edc1ff8b12ed4a396cc7e731bbb8c6d"
+      },
+      "prepared_acquisition_id": "grade9-open-reading-response-source-transcription20261014-record",
+      "prepared_record_index": null,
+      "prepared_record_id": "g9.suzhou2024.readingResponse",
+      "source_parent_id": "suzhou2024-official-english-paper-image20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+        "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "prepared_item_ids": [
+        54,
+        55,
+        56
+      ],
+      "printed_source_question_numbers": [
+        54,
+        55,
+        56
+      ],
+      "components": [
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            0
+          ],
+          "role": "passage",
+          "id": "paragraph1",
+          "item_id": null,
+          "sha256": "95c072fecb4b16ec3e2555d11ad1b6d2206e341f0b885fb707245a93550eeb8e"
+        },
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            1
+          ],
+          "role": "passage",
+          "id": "paragraph2",
+          "item_id": null,
+          "sha256": "ad4289bd870842abce7edc8282a9fa783ab81de564317a85b672c4cd01959cf8"
+        },
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            2
+          ],
+          "role": "passage",
+          "id": "paragraph3",
+          "item_id": null,
+          "sha256": "3b85d2e913950c8e5f184be167d4aea7517250e52c5224ba411bde385799f875"
+        },
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            3
+          ],
+          "role": "passage",
+          "id": "paragraph4",
+          "item_id": null,
+          "sha256": "9b34457907c4cbbb17e95ebbe40212913731bded18c28f510aecb54e306e315d"
+        },
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            4
+          ],
+          "role": "passage",
+          "id": "paragraph5",
+          "item_id": null,
+          "sha256": "435fcc63cb3c53a6bfd4e8d671f86e4174f8bcc7c59d435c0b1f3134f7d0da2f"
+        },
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            5
+          ],
+          "role": "passage",
+          "id": "paragraph6",
+          "item_id": null,
+          "sha256": "b573e3d0c1b4034b3871105dba9aa07b4229a5adc6095d1c8c87d2d361e0b03d"
+        },
+        {
+          "pointer": [
+            "author_transcribed_paragraphs",
+            6
+          ],
+          "role": "passage",
+          "id": "paragraph7",
+          "item_id": null,
+          "sha256": "b54a059d188226ef5e4e6609f83591d91c69ae544c4acede9a04f3d3755dd040"
+        },
+        {
+          "pointer": [
+            "prompts",
+            0
+          ],
+          "role": "prompt",
+          "id": "q1",
+          "item_id": null,
+          "sha256": "05fba56cd3306069feefcc31bf611d656a48eac9cdc9239f4bc96ea9d8710949"
+        },
+        {
+          "pointer": [
+            "prompts",
+            1
+          ],
+          "role": "prompt",
+          "id": "q2",
+          "item_id": null,
+          "sha256": "105efadcf702ee2bc730e57e717c5c7a0cdf10d3e471a3aae2774e85f036b8f0"
+        },
+        {
+          "pointer": [
+            "prompts",
+            2
+          ],
+          "role": "prompt",
+          "id": "q3",
+          "item_id": null,
+          "sha256": "eb211b67d72ab781d7e5a3a2f54fe48d8f083dee6359956622333fbe5adff566"
+        }
+      ],
+      "prepared_text_not_independent_transcription": true,
+      "necessary_input_status_not_upgraded": true,
+      "scope": "frozen prepared passage and companion text; source media/rubric/answer gold not established"
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}
