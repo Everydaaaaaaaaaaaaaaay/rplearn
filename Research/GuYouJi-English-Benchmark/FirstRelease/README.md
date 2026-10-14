@@ -6,11 +6,11 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-最新增量：[初二完整多选调查与四空五选](../Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](../FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。统一包0.10保留此前31/233冻结时点，待下一合并入口。
+最新增量：[初二完整多选调查与四空五选](../Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](../FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。已纳入统一包0.11及组合索引0.2，旧0.10保留此前31/233冻结时点。
 
-从[统一审阅包0.10](ReviewPackage-v0.10.md)、[组合索引0.1](combined-review-index-v0.1.json)和[可执行标准0.2](PracticalAuthoringStandard-v0.2.md)开始。当前源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展5/18，合31现行材料家族233响应；七份请求仅有本机文件/声明关系检查。详见[六项交付检查0.2](DeliveryCheck-v0.2.md)。下文旧版进度保留历史口径。
+从[统一审阅包0.11](ReviewPackage-v0.11.md)、[组合索引0.2](combined-review-index-v0.2.json)和[可执行标准0.3](PracticalAuthoringStandard-v0.3.md)开始。当前源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展7/25，合33现行材料家族240响应；九份请求仅有本机文件/声明关系检查。详见[六项交付检查0.3](DeliveryCheck-v0.3.md)。下文旧版进度保留历史口径。
 
-当前[源总览0.5](paired-source-overview-v0.5.json)101题组实例/639参考响应/18父卷身份，核心53＋扩展48，六年级各三父身份；新增[初二C卷七组40](Expansions/Grade8Changjun2024Comparison-v0.1.md)和[草案0.3](Specifications/grade8-v0.3.md)，多选图/三选/四空五选/读答部分分、写作点制与七档缺口保留。原始来源不是独立金标准/全国覆盖，当前原创仍分核心25/205、补充1/10、扩展5/18。
+当前[源总览0.5](paired-source-overview-v0.5.json)101题组实例/639参考响应/18父卷身份，核心53＋扩展48，六年级各三父身份；新增[初二C卷七组40](Expansions/Grade8Changjun2024Comparison-v0.1.md)和[草案0.3](Specifications/grade8-v0.3.md)，多选图/三选/四空五选/读答部分分、写作点制与七档缺口保留。原始来源不是独立金标准/全国覆盖，本段第三源时点原创分核心25/205、补充1/10、扩展5/18。
 
 最新[源总览0.4](paired-source-overview-v0.4.json)为核心53＋扩展41，共94题组实例/599参考响应/17父卷身份；新增[温州高一期中](Expansions/Grade10Wenzhou2025Comparison-v0.1.md)七笔试组45与两写作整体评分/三范文，[高一草案0.3](Specifications/grade10-v0.3.md)补单篇形式/标题空/产出规则。初二天门匿名登录限制未得卷，不加计；核心和当前原创扩展5/18不变。
 
