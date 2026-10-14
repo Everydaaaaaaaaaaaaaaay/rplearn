@@ -1,0 +1,511 @@
+{
+  "version": "0.1",
+  "observed_on": "2026-10-15",
+  "scope": "grades7_to12_only",
+  "unit": "selected_written_task_structure_records_not_verified_answer_gold",
+  "baseline_mode_inventory": {
+    "path": "FirstRelease/operational-mode-inventory-v0.3.json",
+    "sha256": "0b5222e82085721e2b72bbe950c3996b56d2a1890045a6064f07c76664a80033"
+  },
+  "baseline_source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "papers": [
+    {
+      "id": "grade9-nanshan2026-21cnjy25758947",
+      "grade": 9,
+      "province": "广东",
+      "region": "广东深圳南山",
+      "semester": "下",
+      "year": "2025-2026",
+      "exam_kind": "期中",
+      "minutes": null,
+      "points": 75,
+      "points_basis": "derived_written_section_sum_10+22.5+7.5+10+10+15; not explicitly printed whole-paper total",
+      "metadata_identity_in_resource_text": true,
+      "limitations": [
+        "标题与正文均明确学校/九下/期中，但原校发布未认证",
+        "结构层只有书面转载；没有完整原始PDF或听力配套",
+        "33为版式题号尾数，实际书面回应46；题31五空，题32十空",
+        "选词填空实际5空6句衔接，没明示候选复用/多余规则，不填惯常规则",
+        "阅读A段落/单词粘连；所称Dickens节选未核原文，不能默认原著原版",
+        "阅读B2025在轨医学计划、C摄影效应和15张/日、完形沙漠90%等事实未核；仍非gold"
+      ],
+      "rows": [
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1
+            },
+            "grade": 9
+          },
+          "locator": "一、完形填空",
+          "id": "grade9-nanshan2026-21cnjy25758947.cloze",
+          "locator_line_1based": 2,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text",
+              "text_spacing_and_paragraph_layout_unverified": true
+            },
+            "grade": 9
+          },
+          "locator": "二、阅读理解",
+          "id": "grade9-nanshan2026-21cnjy25758947.readingA",
+          "locator_line_1based": 18,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text",
+              "text_spacing_and_paragraph_layout_unverified": true
+            },
+            "grade": 9
+          },
+          "locator": "二、阅读理解",
+          "id": "grade9-nanshan2026-21cnjy25758947.readingB",
+          "locator_line_1based": 18,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text",
+              "text_spacing_and_paragraph_layout_unverified": true
+            },
+            "grade": 9
+          },
+          "locator": "二、阅读理解",
+          "id": "grade9-nanshan2026-21cnjy25758947.readingC",
+          "locator_line_1based": 18,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "profile_matching",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "left_items": 5,
+              "shared_options": 6,
+              "explicit_spare": null,
+              "observed_candidates_minus_responses": 1,
+              "reuse_rule": "not_explicit",
+              "repeated_A_to_F_answer_rows_not_new_candidate_sets": true
+            },
+            "grade": 9
+          },
+          "locator": "三、信息匹配",
+          "id": "grade9-nanshan2026-21cnjy25758947.profiles",
+          "locator_line_1based": 111,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "shared_options": 6,
+              "explicit_spare": null,
+              "observed_candidates_minus_responses": 1,
+              "reuse_rule": "not_explicit",
+              "printed_big_question_count": 1,
+              "source_label": "word_fill_but_sentence_candidates"
+            },
+            "grade": 9
+          },
+          "locator": "四、选词填空-短文",
+          "id": "grade9-nanshan2026-21cnjy25758947.insertion",
+          "locator_line_1based": 128,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "printed_big_question_count": 1,
+              "response_policy": "ungiven_not_explicit_given_form",
+              "reference_contains_multiword_forms": true,
+              "source_key_multiword_forms": {
+                "5": "be eaten"
+              }
+            },
+            "grade": 9
+          },
+          "locator": "五、阅读填空",
+          "id": "grade9-nanshan2026-21cnjy25758947.grammar",
+          "locator_line_1based": 146,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "teacher_thank_you_letter",
+              "given_opening_closing_excluded": true,
+              "points": 15
+            },
+            "grade": 9
+          },
+          "locator": "六、书面表达",
+          "id": "grade9-nanshan2026-21cnjy25758947.letter",
+          "locator_line_1based": 159,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "title": "2025-2026学年广东省北京师范大学南山附属学校九年级（下）期中英语试卷（含答案）",
+      "url": "https://zy.21cnjy.com/25758947",
+      "source_id": "school-mode-expansion.21cnjy.public-reposts",
+      "acquisition_id": "grade9-nanshan2026-21cnjy25758947",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-nanshan2026-21cnjy25758947.html",
+        "sha256": "5c46a8ecb4f1431edf5dc68140202ec2875b5f82e3315c767b6d95fb7a5a4a62"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    },
+    {
+      "id": "grade12-yali2026-21cnjy25133058",
+      "grade": 12,
+      "province": "湖南",
+      "region": "湖南长沙雅礼",
+      "semester": "上",
+      "year": "2025-2026",
+      "exam_kind": "期末",
+      "minutes": 120,
+      "points": 150,
+      "metadata_identity_in_resource_text": false,
+      "limitations": [
+        "地区/学校/学期/年份取公开页面标题；正文只高三，未认证原校发布",
+        "阅读A关于literacy2024开始、加拿大文凭阶段/地区没指名，官方两页面403未获得正文，事实风险暂停正向沿用",
+        "阅读C29原键D，但原文同时明说相同生理与情感响应，C亦有直接依据；保留候选多解问题，不自动修键",
+        "阅读D海星再生/人类临床前景缺原研究来源，不作真实科学金标",
+        "完形43粘到constant43、54错分scrape d、D pull缺标点；词数视图不能当排版正确",
+        "给词57typical空号粘连、64 _64__不对称，分节满分(5为源错字，按10*1.5与总分保留15计算而不改原文",
+        "写作给定35Mt/6%需要核来源与分母，范文过长不能改80左右要求",
+        "续写五周去石膏不等医生确认可做高风险动作，不能沿用范文鼓励立即冲高坡的事实/行为",
+        "听力两遍且10脚本可见，音频未取得"
+      ],
+      "rows": [
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text",
+              "source_fact_risk": true,
+              "source_candidate_multiple_supported_options": false,
+              "source_key_question29": null
+            },
+            "grade": 12
+          },
+          "locator": "第二部分阅读",
+          "id": "grade12-yali2026-21cnjy25133058.readingA",
+          "locator_line_1based": 85,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text",
+              "source_fact_risk": false,
+              "source_candidate_multiple_supported_options": false,
+              "source_key_question29": null
+            },
+            "grade": 12
+          },
+          "locator": "第二部分阅读",
+          "id": "grade12-yali2026-21cnjy25133058.readingB",
+          "locator_line_1based": 85,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text",
+              "source_fact_risk": true,
+              "source_candidate_multiple_supported_options": true,
+              "source_key_question29": "D"
+            },
+            "grade": 12
+          },
+          "locator": "第二部分阅读",
+          "id": "grade12-yali2026-21cnjy25133058.readingC",
+          "locator_line_1based": 85,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text",
+              "source_fact_risk": true,
+              "source_candidate_multiple_supported_options": false,
+              "source_key_question29": null
+            },
+            "grade": 12
+          },
+          "locator": "第二部分阅读",
+          "id": "grade12-yali2026-21cnjy25133058.readingD",
+          "locator_line_1based": 85,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit",
+              "label_F_has_no_dot": true
+            },
+            "grade": 12
+          },
+          "locator": "第二节(共5小题；每小题2.5分",
+          "id": "grade12-yali2026-21cnjy25133058.insertion",
+          "locator_line_1based": 183,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 15,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "text_spacing_defects": true,
+              "D55_has_no_dot": true
+            },
+            "grade": 12
+          },
+          "locator": "第三部分语言运用",
+          "id": "grade12-yali2026-21cnjy25133058.cloze",
+          "locator_line_1based": 198,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "response_policy": "ungiven_one_word_given_correct_form",
+              "reference_contains_multiword_forms": true,
+              "source_key_alternatives": {
+                "59": [
+                  "Beyond",
+                  "Besides"
+                ]
+              },
+              "section_score_source_typography_defect": true
+            },
+            "grade": 12
+          },
+          "locator": "第二节 (共10小题；每小题1.5分",
+          "id": "grade12-yali2026-21cnjy25133058.grammar",
+          "locator_line_1based": 223,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "campus_radio_food_waste_appeal",
+              "title_given": true,
+              "points": 15,
+              "provided_statistics_unverified": true
+            },
+            "grade": 12
+          },
+          "locator": "第四部分写作",
+          "id": "grade12-yali2026-21cnjy25133058.article",
+          "locator_line_1based": 228,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "read_then_continue",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "paragraphs": 2,
+              "given_paragraph_openings": 2,
+              "word_target": 150,
+              "target_relation": "about",
+              "points": 25,
+              "source_medical_recovery_and_safety_boundary_pending": true
+            },
+            "grade": 12
+          },
+          "locator": "第二节(满分25分)",
+          "id": "grade12-yali2026-21cnjy25133058.continuation",
+          "locator_line_1based": 235,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "title": "湖南省长沙市雅礼中学2025-2026学年高三上学期2月期末英语试题（含答案，无听力音频有听力原文）",
+      "url": "https://zy.21cnjy.com/25133058",
+      "source_id": "school-mode-expansion.21cnjy.public-reposts",
+      "acquisition_id": "grade12-yali2026-21cnjy25133058",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-yali2026-21cnjy25133058.html",
+        "sha256": "6aef84a835fbae8472017cc35b6c1be1d8f2c6be1fc9ea53c3039c93aa6375f0"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+        "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    }
+  ],
+  "paper_count": 2,
+  "structural_record_count": 17,
+  "observed_written_response_positions": 93,
+  "excluded_candidates": [
+    {
+      "id": "grade9-yuexi2025-21cnjy22999755",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-yuexi2025-21cnjy22999755.html",
+        "sha256": "461afa04786e719aa367dca68f1c1d353bf92bc367044ae49fd70b63c7fa6971"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-yuexi2025-21cnjy22999755-resource-v0.2.txt",
+        "sha256": "2aa261de5346ba858bfb2d9a567914dda608a8a91b9d5269dbe9bd9db181da6b"
+      },
+      "publisher_title_label": "安徽省安庆市岳西县部分片区学校2025届九年级下学期5月期中考试英语试卷（含答案，含听力原文，无音频）",
+      "resource_identity_first_line": "2025年安徽省中考英语模拟试题",
+      "reason": "ordinary_school_lower_midterm_title_vs_Anhui_mock_exam_body; do_not_fill_ordinary_school_semester_gap_or_source_authentication",
+      "structural_records_admitted": 0,
+      "simulation_material_may_be_reviewed_separately_not_deleted": true
+    }
+  ],
+  "counts_not_added_to_frozen_paired117_or_author53": true,
+  "cross_passage_family_deduplication_complete": false,
+  "exclusive_grade_claims": [],
+  "population_typical_ranges_established": false
+}

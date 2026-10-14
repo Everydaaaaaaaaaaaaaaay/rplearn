@@ -1,0 +1,109 @@
+{
+  "version": "0.2",
+  "scope": "grades7_to12_current_sample_and_rule_stage_only",
+  "all_required_gaps_satisfied": false,
+  "gaps": [
+    {
+      "id": "S01",
+      "status": "met_at_public_source_label_scope",
+      "grades": [
+        9
+      ],
+      "need": "普通学校下学期期中/期末/月考，不能用毕业考试代替学期身份；至少一份全书面结构核读并登记",
+      "evidence_paper_id": "grade9-nanshan2026-21cnjy25758947",
+      "limitation": "title and student header identify grade9 lower school midterm; original-school release not authenticated; source/rubric quality separate"
+    },
+    {
+      "id": "S02",
+      "status": "met_at_public_source_label_scope",
+      "grades": [
+        12
+      ],
+      "need": "第三省级地区的已核来源标签与普通考试结构；旧江淮/鞍山不能仅凭文件名补省级归属",
+      "evidence_paper_id": "grade12-yali2026-21cnjy25133058",
+      "limitation": "Hunan claimed by reviewed public publisher title; student header confirms high3 only; not original institution authentication or representative sample"
+    },
+    {
+      "id": "S03",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "完整具体模式跨来源/地区/年份证据，特别初一段落五空七选；补全对话不算同模式第二来源"
+    },
+    {
+      "id": "S04",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "补必要图片、词库、下划线/科学符号/选项标识和原始版式；听力保持单独音频/脚本/键配套状态，未取得不能作为完整听力包"
+    },
+    {
+      "id": "S05",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "全部材料家族去重；当前19完形的171对局部筛查不等全库去重，第四批尚未纳材料比较，改否定或换题不能沿用原答案"
+    },
+    {
+      "id": "S06",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "扩展共享候选、语法给词、整句翻译、混合任务、开放短答、写作/续写的组件负荷、考点推理和参考/rubric；选定12视图不是全覆盖"
+    },
+    {
+      "id": "S07",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "本级完整题组准备约束与多题型审阅包，源模式、全部材料/作答点、评分变体和风险绑定；旧后端六题合同未接入，不称线上适配完成"
+    },
+    {
+      "id": "S08",
+      "status": "unverified_separate_validation",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "实际模型批次的整组通过率、重复/多解/错键、年级负荷偏差与修订成本；独立教研、学生用时/难度、商用分别有证据，不能由样本数推稳定产量。雅礼29原键D但C/D都有文段依据，待独立裁决，不升级gold"
+    }
+  ],
+  "current_batches": {
+    "path": "FirstRelease/Sampling/current-batches-v0.3.json",
+    "sha256": "b732d10ca65d18c65b9898730ca9a765e26acbe0d22e811149369dd4b9aa6fe8"
+  }
+}
