@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an offline six-grade reading preview from frozen, authored candidates.
+"""Build an offline six-grade reading/cloze preview from frozen authored candidates.
 
 No source-paper payload or model call. Check digest, full question/option sets and
 answer-table agreement before writing ignored output. This does not calibrate items.
@@ -38,9 +38,10 @@ def extract(row, label, focus):
         raise ValueError('Specification/audit mismatch')
     if audit['grade'] != row['grade'] or audit['questions'] != row['questions']:
         raise ValueError('Grade/count mismatch')
+    kind = row['core_kind']
     first_question = re.search(r'^1\. ', text, re.M)
-    if not first_question:
-        raise ValueError('No first question')
+    if not first_question and not (kind == 'cloze' and '| 空 | A |' in text):
+        raise ValueError('No first question or complete cloze option table')
     if '<!-- passage:start -->' in text:
         passage = text.split('<!-- passage:start -->', 1)[1].split('<!-- passage:end -->', 1)[0].strip()
     else:
@@ -49,15 +50,33 @@ def extract(row, label, focus):
         if row['id'] != 'grade7-library-v0.1':
             raise ValueError('Explicit passage boundary required')
         passage = text[text.index('Last month,'):first_question.start()].strip()
-    questions_text, review = text[first_question.start():].split('\n## ', 1)
+    if kind == 'cloze' and '| 空 | A |' in text:
+        questions_text, review = text[text.index('| 空 | A |'):].split('\n## ', 1)
+    else:
+        questions_text, review = text[first_question.start():].split('\n## ', 1)
     questions = []
-    for match in re.finditer(r'^(\d+)\. (.*?)(?=^\d+\. |\Z)', questions_text, re.M | re.S):
+    if kind == 'cloze' and '| 空 | A |' in text:
+        for line in questions_text.splitlines():
+            cells = [x.strip() for x in line.strip('|').split('|')]
+            if not cells[0].isdigit():
+                continue
+            questions.append({'number': int(cells[0]), 'stem': '第' + cells[0] + '空',
+                              'options': list(zip('ABCD', cells[1:]))})
+    for match in ([] if questions else re.finditer(r'^(\d+)\. (.*?)(?=^\d+\. |\Z)', questions_text, re.M | re.S)):
         number, body = int(match[1]), match[2].strip()
-        options = re.findall(r'^\s*([A-D])\. (.+)$', body, re.M)
-        stem = re.split(r'^\s*A\. ', body, maxsplit=1, flags=re.M)[0].strip()
+        options = (re.findall(r'(?:^|\s)([A-D])\.\s*(.*?)(?=\s+[A-D]\.|$)', body, re.S)
+                   if kind == 'cloze' else re.findall(r'^\s*([A-D])\. (.+)$', body, re.M))
+        stem = ('第' + str(number) + '空' if kind == 'cloze' else
+                re.split(r'^\s*A\. ', body, maxsplit=1, flags=re.M)[0].strip())
         if len(options) != audit['options_each'] or [o[0] for o in options] != list('ABCD')[:len(options)]:
             raise ValueError('Incomplete options')
         questions.append({'number': number, 'stem': stem, 'options': options})
+    if any(len(q['options']) != audit['options_each'] or [o[0] for o in q['options']] != list('ABCD')[:audit['options_each']] for q in questions):
+        raise ValueError('Incomplete option table')
+    if kind == 'cloze':
+        blank_ids = [int(n) for n in re.findall(r'\((\d+)\)\s*_+', passage)]
+        if blank_ids != list(range(1, row['questions'] + 1)):
+            raise ValueError('Cloze material must contain every blank in order')
     if [q['number'] for q in questions] != list(range(1, row['questions'] + 1)):
         raise ValueError('Incomplete/reordered questions')
     table = []
@@ -82,7 +101,8 @@ def extract(row, label, focus):
     if printed and re.findall(r'[A-D]', printed[1]) != audit['author_answer_vector']:
         raise ValueError('Printed answer vector mismatch')
     return {
-        'grade': row['grade'], 'label': label, 'focus': focus,
+        'grade': row['grade'], 'label': label, 'focus': focus, 'kind': kind,
+        'typeLabel': '完形填空' if kind == 'cloze' else '阅读理解',
         'id': row['id'], 'candidate': row['candidate'], 'author_check': row['author_check'],
         'specification_at_authoring': row['specification_at_authoring'],
         'anchor_group_ids': row['anchor_group_ids'],
@@ -106,7 +126,7 @@ main{max-width:1120px;margin:0 auto;padding:0 24px 36px}.task{background:var(--p
 @media(max-width:760px){header{padding:22px 16px 16px}main{padding:0 12px 25px}h1{font-size:24px}.columns{grid-template-columns:1fr}.questions{border-left:0;border-top:1px solid var(--line);padding:20px}.passage{padding:8px 22px 18px}.requirement{padding:16px 20px}nav button{padding:6px 17px}.passage{font-size:17px}}
 label.wrong:has(input:checked){background:#fff1ec;border-color:#bb7661}
 </style>
-<header><div class="brand">LINGOTRIP / LEARNING</div><h1>初高中出题效果</h1><p>六个年级，各一组完整阅读。先作答，再看答案与解析。</p><nav aria-label="选择年级" id="grades"></nav></header>
+<header><div class="brand">LINGOTRIP / LEARNING</div><h1>初高中出题效果</h1><p>六个年级，阅读与完形各一组。先作答，再看答案与解析。</p><nav aria-label="选择年级" id="grades"></nav><nav aria-label="选择题型" id="types"></nav></header>
 <main><section class="task"><div class="requirement"><span class="avatar" aria-hidden="true"><svg viewBox="0 0 40 40"><path fill="#3d6b59" d="M8 38c1-11 23-11 24 0"/><circle cx="20" cy="18" r="11" fill="#efc7a2"/><path fill="#524b42" d="M9 18C6 2 32 2 31 18l-7-8-3 6-8-1z"/><circle cx="16" cy="20" r="1"/><circle cx="24" cy="20" r="1"/><path d="M17 25q3 2 6 0" fill="none" stroke="#785b4b" stroke-width="1.2"/></svg></span><div><h2 id="grade-title"></h2><p id="instruction"></p></div></div><div class="columns"><article class="passage" id="passage" lang="en" aria-label="阅读材料"></article><div class="questions"><form id="quiz"></form><div class="actions"><button class="primary" id="submit" type="button">提交并查看解析</button><button id="reveal" type="button">直接看答案</button><button id="reset" type="button">重新作答</button></div><p id="result" role="status" aria-live="polite"></p></div></div></section>
 <details class="review"><summary>查看本组命题依据</summary><div id="provenance"></div><p>这些是依据真卷结构与年级规格编写、经作者解题检查的样题。实际生产模型效果、独立教研与目标学生难度和用时仍待验证。</p><p>本次只看初一至高三。其他阶段及备考方向不纳入本次交付。</p></details>
 <p class="footnote">题目情境为原创虚构；展示不预设限时。答案仅保存在当前页面，刷新即清除。</p></main>
@@ -117,13 +137,17 @@ const states=items.map(()=>({answers:{},submitted:false}));let active=0;
 const byId=id=>document.getElementById(id);
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function docLink(ref){return '<a href="../../Research/GuYouJi-English-Benchmark/'+encodeURI(ref.path)+'" target="_blank" rel="noopener">'+escapeHtml(ref.path)+'</a>';}
-items.forEach((g,i)=>{const b=document.createElement('button');b.type='button';b.textContent=g.label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>{active=i;render();});byId('grades').append(b);});
-function render(){const g=items[active],s=states[active];[...byId('grades').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===active)));byId('grade-title').textContent=g.label+' · 阅读理解';byId('instruction').textContent='阅读短文，从每题所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。';byId('passage').innerHTML=g.passageHtml;
+const grades=[...new Set(items.map(g=>g.grade))];
+const kinds=[['reading','阅读理解'],['cloze','完形填空']];
+function select(grade,kind){const index=items.findIndex(g=>g.grade===grade&&g.kind===kind);if(index<0)return;active=index;render();}
+grades.forEach(grade=>{const b=document.createElement('button');b.type='button';b.textContent=items.find(g=>g.grade===grade).label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>select(grade,items[active].kind));byId('grades').append(b);});
+kinds.forEach(([kind,label])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>select(items[active].grade,kind));byId('types').append(b);});
+function render(){const g=items[active],s=states[active];[...byId('grades').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(grades[i]===g.grade)));[...byId('types').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(kinds[i][0]===g.kind)));byId('grade-title').textContent=g.label+' · '+g.typeLabel;byId('instruction').textContent='阅读短文，从'+(g.kind==='cloze'?'每空':'每题')+'所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。';byId('passage').innerHTML=g.passageHtml;
 byId('quiz').innerHTML=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+escapeHtml(q.stem)+'</legend>'+q.options.map(([key,text])=>'<label class="'+(s.submitted?(key===q.answer?'correct':s.answers[q.number]===key?'wrong':''):'')+'"><input type="radio" name="q'+q.number+'" value="'+key+'" '+(s.answers[q.number]===key?'checked':'')+' '+(s.submitted?'disabled':'')+'><span lang="en">'+key+'. '+escapeHtml(text)+'</span></label>').join('')+(s.submitted?'<div class="explanation"><p><strong>答案 '+q.answer+'</strong> · '+(s.answers[q.number]?(s.answers[q.number]===q.answer?'答对了':'你的选择：'+s.answers[q.number]):'未作答')+'</p><div>'+escapeHtml(q.rationale)+'</div></div>':'')+'</fieldset>').join('');
 byId('quiz').onchange=e=>{states[active].answers[e.target.name.slice(1)]=e.target.value;byId('result').textContent='';};
 byId('submit').hidden=s.submitted;byId('reveal').hidden=s.submitted;
 if(s.submitted){const attempted=g.questions.filter(q=>s.answers[q.number]).length;const right=g.questions.filter(q=>s.answers[q.number]===q.answer).length;byId('result').textContent='已作答 '+attempted+'/'+g.questions.length+' 题，答对 '+right+' 题。';}else{byId('result').textContent='';}
-byId('provenance').innerHTML='<p>'+escapeHtml(g.focus)+'</p><p>作者版本：'+docLink(g.candidate)+'</p><p>创作时规格：'+docLink(g.specification_at_authoring)+'</p><p>来源锚组：<code>'+escapeHtml(g.anchor_group_ids.join(' / '))+'</code></p><p>完整作者检查：'+docLink(g.author_check)+'</p><p>统一命题标准：<a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/PracticalAuthoringStandard-v0.20.md" target="_blank" rel="noopener">标准0.20</a></p>';
+byId('provenance').innerHTML='<p>'+escapeHtml(g.focus)+'</p><p>作者版本：'+docLink(g.candidate)+'</p><p>创作时规格：'+docLink(g.specification_at_authoring)+'</p><p>来源锚组：<code>'+escapeHtml(g.anchor_group_ids.join(' / '))+'</code></p><p>完整作者检查：'+docLink(g.author_check)+'</p><p>最新样本规则：<a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/PracticalAuthoringStandard-v0.21.md" target="_blank" rel="noopener">标准0.21</a> · <a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/SampleBasedModePolicy-v0.1.md" target="_blank" rel="noopener">年级、题型与体量证据</a></p><p>语法填空、词库、邮件、续写等已有作者稿：<a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/ReviewPackage-v0.29.md" target="_blank" rel="noopener">完整审阅包</a>；本页只交互展示阅读与完形。</p>';
 }
 byId('submit').onclick=()=>{const g=items[active],s=states[active];const missing=g.questions.filter(q=>!s.answers[q.number]);if(missing.length){byId('result').textContent='还有 '+missing.length+' 题未作答：'+missing.map(q=>q.number).join('、')+'。也可以直接看答案。';return;}s.submitted=true;render();};
 byId('reveal').onclick=()=>{states[active].submitted=true;render();};
@@ -133,23 +157,26 @@ byId('quiz').onsubmit=e=>e.preventDefault();render();
 
 
 def build(output):
-    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.1.json').read_text())
+    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.2.json').read_text())
     core = json.loads(load_ref(selection['core_index']).read_text())
     data = []
     for choice in selection['items']:
         row = next(c for c in core['candidates'] if c['id'] == choice['id'])
         data.append(extract(row, choice['label'], choice['focus']))
-    if [g['grade'] for g in data] != list(range(7, 13)):
+    if sorted(set(g['grade'] for g in data)) != list(range(7, 13)):
         raise ValueError('Showcase must cover exactly grades7–12')
+    for grade in range(7, 13):
+        if sorted(g['kind'] for g in data if g['grade'] == grade) != ['cloze', 'reading']:
+            raise ValueError('Each grade must have one complete reading and one complete cloze')
     payload = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     output.mkdir(parents=True, exist_ok=True)
     page = TEMPLATE.replace('__DATA__', payload)
     (output / 'index.html').write_text(page)
     # A human-readable companion keeps the full payload reviewable without JS.
-    md = ['# 初高中阅读效果稿0.1', '', '每年级一组完整原创阅读；为已有作者稿的展示子集，不是生产入口模型实测。', '',
+    md = ['# 初高中阅读与完形效果稿0.2', '', '每年级阅读与完形各一组；为已有作者稿的展示子集，不是生产入口模型实测。', '',
           '先读题，答案和解析放在折叠区。其他题型及标准见资料库FirstRelease统一入口。', '']
     for g in data:
-        md += ['## ' + g['label'], '', '阅读短文，从各题选项中选出最佳答案。', '', g['passage'], '']
+        md += ['## ' + g['label'] + ' · ' + g['typeLabel'], '', '阅读短文，从各题/空选项中选出最佳答案。', '', g['passage'], '']
         for q in g['questions']:
             md += [str(q['number']) + '. ' + q['stem'], '']
             md += [k + '. ' + v + '  ' for k, v in q['options']]
@@ -160,12 +187,12 @@ def build(output):
         md += [g['focus'], '', '来源锚组：' + ' / '.join(g['anchor_group_ids']), '',
                '作者题面：' + g['candidate']['path'], '',
                '创作规格：' + g['specification_at_authoring']['path'], '', '</details>', '']
-    (output / 'ReadingSamples-v0.1.md').write_text('\n'.join(md))
-    report = {'grades': [g['grade'] for g in data], 'groups': len(data),
+    (output / 'SchoolSamples-v0.2.md').write_text('\n'.join(md))
+    report = {'grades': sorted(set(g['grade'] for g in data)), 'groups': len(data),
               'questions': sum(len(g['questions']) for g in data),
               'options': sum(len(q['options']) for g in data for q in g['questions']),
               'production_model_evaluation': False,
-              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'ReadingSamples-v0.1.md']}}
+              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.2.md']}}
     (output / 'build-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False))
 
