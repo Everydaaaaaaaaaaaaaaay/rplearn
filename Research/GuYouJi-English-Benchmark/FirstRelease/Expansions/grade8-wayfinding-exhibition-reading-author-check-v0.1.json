@@ -1,0 +1,111 @@
+{
+  "version": "0.1",
+  "grade": 8,
+  "kind": "four_item_three_option_expository_exhibition_reading",
+  "candidate_path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-v0.1.md",
+  "candidate_sha256": "76cadcd4e25d8226580335823633ca3769819488926ba9c7ef89d265ed66305d",
+  "specification_path": "FirstRelease/Specifications/grade8-v0.3.md",
+  "specification_sha256": "a4a3e576fd4956e92d4d10e49e29d4b1919239046524a9d2362ebc00a2779d63",
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+    "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+  },
+  "anchor_group_id": "g8.changjun2024.readingC",
+  "questions": 4,
+  "target_format": {
+    "items": 4,
+    "options_each": 3,
+    "complete_single_expository_text": true,
+    "body_paragraphs": 4,
+    "operations": [
+      "paragraph1_example_mechanism",
+      "paragraph2_reason_information",
+      "paragraph3_it_reference",
+      "whole_passage_purpose"
+    ],
+    "source_photo_not_reused_or_required_for_new_questions": true
+  },
+  "author_answer_vector": [
+    "C",
+    "B",
+    "A",
+    "B"
+  ],
+  "whole_group_solved": true,
+  "all12_options_reviewed_by_author_only": true,
+  "author_reason_location": "candidate ## 作者区4证据范围与12项排除",
+  "task_load": {
+    "id": "grade8-original-wayfinding-explanation-reading",
+    "grade": 8,
+    "origin": "authored_current",
+    "input_sha256": "f18a0b7bf452d33013d7af240dc0f0b9f4458229850b276f157f36cc239a11fd",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 2,
+        "han_characters": 14,
+        "components": 1
+      },
+      "material_label": {
+        "english_digit_tokens": 20,
+        "han_characters": 0,
+        "components": 2
+      },
+      "option": {
+        "english_digit_tokens": 75,
+        "han_characters": 0,
+        "components": 12
+      },
+      "passage": {
+        "english_digit_tokens": 242,
+        "han_characters": 0,
+        "components": 4
+      },
+      "prompt": {
+        "english_digit_tokens": 33,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 372,
+      "han_characters": 14
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 17,
+    "passage_sentence_token_lengths": [
+      16,
+      16,
+      18,
+      18,
+      9,
+      16,
+      18,
+      16,
+      12,
+      10,
+      12,
+      7,
+      15,
+      17,
+      16,
+      12,
+      14
+    ],
+    "mean_passage_sentence_tokens": 14.235294117647058,
+    "maximum_passage_sentence_tokens": 18,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "actual_saved_transition_rounds": 0,
+  "pronoun_it_highlight_in_actual_paragraph3": true,
+  "source_operator_changes_explicit": "source28definition→authored1specificexample;source29Chenparagraph4→authored2reasonsparagraph2;source30lastpara→authored3para3;source31purpose→authored4purpose",
+  "actual_task_load_input_acquisition_id": "task-load-grade8-wayfinding-prepared20261014-record",
+  "actual_task_load_result_acquisition_id": "task-load-grade8-wayfinding-results20261014-record",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "coarse_exposure_cluster": "grade8_original_wayfinding_exhibition_and_changjun2024_explanation_form"
+}
