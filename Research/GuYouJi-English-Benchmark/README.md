@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+最新高中增量：[高一标题空五空七选闭环](Studies/2026-10-14-grade10-complete-heading-insertion-author-loop.md)，完整五空/七项/三已印标题与35作者配对；扩展0.7为8材料30响应，全分层34/245。旧统一包0.11保留此前33/240冻结时点，待高中产出下一批合并。
+
 - [第28当前审阅与裁决队列恢复](Studies/2026-10-14-checkpoint28-current-review-and-source-queue-recovery.md)：6733文件严格COW/全SHA/独立inode恢复，当前33/240、源101/639/18、九请求/151引用、扩展26与核心17、32新PDF原生记录及初二原比例图恢复；异机/完整环境和教育许可门槛保留。
 
 最新增量：[初二完整多选调查与四空五选](Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。已纳入统一包0.11及组合索引0.2，旧0.10保留此前31/233冻结时点。
