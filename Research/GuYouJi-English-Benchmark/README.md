@@ -6,7 +6,7 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[包0.28](FirstRelease/ReviewPackage-v0.28.md)、[标准0.19](FirstRelease/PracticalAuthoringStandard-v0.19.md)、[组合0.19](FirstRelease/combined-review-index-v0.19.json)**：源117/722/20；作者53/338／十方式，新增三完整四选完形。结构67中46有例21缺例；阅读卡15/13、17本机控制保持。源37＋核心17待裁决，原36不改；第33旧46/290，本批/之后下次保存。见[交付0.19](FirstRelease/DeliveryCheck-v0.19.md)，独立/学生/商用/模型与长期未过。
+- **当前统一入口：[包0.28](FirstRelease/ReviewPackage-v0.28.md)、[标准0.19](FirstRelease/PracticalAuthoringStandard-v0.19.md)、[组合0.19](FirstRelease/combined-review-index-v0.19.json)**：源117/722/20；作者53/338／十方式，新增三完整四选完形。结构67中46有例21缺例；阅读卡15/13、17本机控制保持。源37＋核心17待裁决，原36不改；第34已纳53/338及17控制，34自身/后续下批保存。见[交付0.19](FirstRelease/DeliveryCheck-v0.19.md)，独立/学生/商用/模型与长期未过。
 
 新增来源：[2026丰台七组37参考](Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](FirstRelease/Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 
@@ -16,7 +16,9 @@
 
 新增词表修正：[上标编号附加视图](Vocabulary/OxfordMarkedSpellingOverlay-v0.1.md)39源记录/21普通拼写键，保留POS/等级/编号/括号释义；lie与ring同词性仍有多候选，不取最低级，原索引不覆写。11探针已核，未编号释义/词形/完整语境仍待补。
 
-当前保存：[第33独立恢复](Studies/2026-10-14-checkpoint33-current-expansions-and-seventeen-input-recovery.md)7282文件全严格COW/SHA/不同inode；当前46/290十方式、17请求、源117/722/20、卡14/12、源36/核心17及出版社8原生/8PNG、概念字典8sense和三新作者/负荷可恢复。旧0.13顶层错误仍拒绝，33自身/之后下一批；未异机/完整环境/教育/商用/模型。
+当前保存：[第34独立恢复](Studies/2026-10-14-checkpoint34-current53-and-seven-family-recovery.md)7397文件全严格COW/SHA/不同inode；当前53/338十方式、17控制、源117/722/20、卡15/13、37源/17核心、67结构46有21缺和六coverage成立，7新作者批次/字典6sense20词形/39编号11探针实际重放。旧0.13错误仍拒绝，34自身/后续下批；未异机/完整环境/教育/商业/模型。
+
+此前保存：[第33独立恢复](Studies/2026-10-14-checkpoint33-current-expansions-and-seventeen-input-recovery.md)7282文件全严格COW/SHA/不同inode；当前46/290十方式、17请求、源117/722/20、卡14/12、源36/核心17及出版社8原生/8PNG、概念字典8sense和三新作者/负荷可恢复。旧0.13顶层错误仍拒绝，33自身/之后下一批；未异机/完整环境/教育/商用/模型。
 
 此前保存：[第32独立恢复](Studies/2026-10-14-checkpoint32-new-grade8-sources-and-continuation-recovery.md)7145文件全严格COW/SHA/不同inode；现43/277九方式、117/722/20源、36源/17核心、十四请求及13源11作者阅读卡、26新原生页/PNG与34标签可恢复，响应/源/队列逐字复算。32自身/之后留下一批，未异机/完整环境或教育/商用/模型验收。
 
