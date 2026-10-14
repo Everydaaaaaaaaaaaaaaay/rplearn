@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-10-13",
+  "updated_on": "2026-10-14",
   "status": "local_preservation_only_final_storage_gate_pending",
   "snapshots": [
     {
@@ -12703,6 +12703,470 @@
           "current_author_profiles": 11
         },
         "all_restored_assets_digest_verified": true
+      }
+    },
+    {
+      "snapshot_id": "2026-10-14T092309.723178+0000-4c8aee61",
+      "created_at_utc": "2026-10-14T09:23:09.723178+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-14T092309.723178+0000-4c8aee61",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-14T092309.723178+0000-4c8aee61/snapshot-manifest.json",
+      "manifest_sha256": "dc8be538336203d947efdb77fe70254bec5e8f48fde03beec3dea0de90da1665",
+      "files_verified": 7282,
+      "bytes_verified": 2669977271,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write_required": 7282
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write_required",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/grade7-helper-A-source-frozen20261014.svg",
+          "extension": ".svg",
+          "sha256": "e1832f7ad5f4e3b708162b8710fdaa3e07c777a736b7b72bb184b5a37c2e77d1",
+          "restored_bytes": 1873
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "frozen_revision": "9a748fad",
+      "coverage_note": "Current46_290/tenways/17requests/source117_722_20/cards14_12/queues36_17;newconcept399_24_66_vs349_28_106/translation4responses16syntheticno_teacher55output/sixcloze315_312refill318;two dictionaryHTML8senses/officialpublisher8native8PNG andunpaired8_38;realold013headererror rejected;all7282fullstrictCOW independentroot SHA/size/inodes. Samehost tools reused;oldenvironment/nativeproof inherited32earlier;not offhost/fullenv/teacher/student/model/rights. Own33 and later refuse/weather queries not included.",
+      "independent_current_expansion_input_restore_evidence": {
+        "snapshot_id": "2026-10-14T092309.723178+0000-4c8aee61",
+        "independent_full_files": 7282,
+        "strict_COW_no_byte_fallback": true,
+        "offhost_test": false,
+        "interpreter_or_full_environment_reconstructed": false,
+        "samehost_tools_reused": true,
+        "unchanged_old_native_assets_and_environment_proof_inherited32_and_earlier": true,
+        "teacher_student_model_or_commercial_admission": false,
+        "restored_frozen_registry": {
+          "json_documents": 353,
+          "sources": 216,
+          "acquisition_attempts": 3783,
+          "cache_files_checked": 3662,
+          "processing_outputs_checked": 2507,
+          "storage_files_checked": 0,
+          "scope_rows": 20,
+          "incomplete_milestones": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6",
+            "M7"
+          ],
+          "open_gaps": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "G05",
+            "G06",
+            "G07",
+            "G08",
+            "G09",
+            "G10",
+            "G11",
+            "G12",
+            "G13",
+            "G14",
+            "G15",
+            "G16",
+            "G17"
+          ],
+          "priority_coverage_cells": 36,
+          "bookkeeping_valid": true,
+          "errors": [],
+          "limitation": "Bookkeeping validation does not establish rights, content correctness or educational validity."
+        },
+        "core016_actual_used_source_recovered": {
+          "bindings_and_structure_valid": true,
+          "errors": [],
+          "candidates_checked": 25,
+          "questions_checked": 205,
+          "selected_source_groups": 53,
+          "paper_families_by_grade": {
+            "7": 2,
+            "8": 2,
+            "9": 2,
+            "10": 2,
+            "11": 2,
+            "12": 2
+          },
+          "selected_source_and_revision_cache_files_checked": 37,
+          "independent_semantic_or_learner_validation": false,
+          "limitation": "Structural completeness and digests cannot certify answer validity, difficulty, timing, rights or full benchmark completion.",
+          "local_image_option_assets_checked": 4,
+          "three_material_allocations_checked": 2,
+          "seed_answer_value_validation": {
+            "seed_answer_values_valid": true,
+            "errors": [],
+            "choice_label_values_checked": 112,
+            "explicit_mapped_values_checked": 15,
+            "independent_semantic_validation": false,
+            "limitation": "Value types and bound author transcription mappings do not establish original key authenticity or semantic gold."
+          },
+          "actual_used_anchor_rationale_validation": {
+            "bindings_and_structure_valid": true,
+            "errors": [],
+            "source_groups_with_rationales": 25,
+            "source_items_with_rationales": 205,
+            "required_source_groups": 25,
+            "required_source_items": 205,
+            "missing_group_ids": [],
+            "required_rationale_coverage_complete": true,
+            "answer_value_validation": {
+              "seed_answer_values_valid": true,
+              "errors": [],
+              "choice_label_values_checked": 135,
+              "explicit_mapped_values_checked": 15,
+              "independent_semantic_validation": false,
+              "limitation": "Value types and bound author transcription mappings do not establish original key authenticity or semantic gold."
+            },
+            "independent_semantic_or_student_validation": false
+          }
+        },
+        "current46_290_ten_types_member_count_recovered": {
+          "current_member_and_total_bindings_valid": true,
+          "errors": [],
+          "families": 46,
+          "response_points": 290,
+          "response_family_count": 10,
+          "reference_checks_including_repeats": 454,
+          "model_called": false,
+          "independent_English_student_or_rights_validation": false
+        },
+        "real_prior_header_error_still_rejected_from_restored_root": {
+          "current_member_and_total_bindings_valid": false,
+          "errors": [
+            "extension family_count differs from actual members"
+          ],
+          "reference_checks_including_repeats": 330,
+          "model_called": false,
+          "independent_English_student_or_rights_validation": false
+        },
+        "seventeen_file_request_controls_recovered": [
+          {
+            "request": "FirstRelease/generation-request-three-grammar-v0.3.json",
+            "result": {
+              "request_bindings_valid": true,
+              "errors": [],
+              "rationale_catalog_role": "actual_used",
+              "model_called": false,
+              "original_source_text_transmitted": false,
+              "independent_semantic_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/generation-request-quarantined-cloze-v0.3.json",
+            "result": {
+              "request_bindings_valid": true,
+              "errors": [],
+              "rationale_catalog_role": "actual_used",
+              "model_called": false,
+              "original_source_text_transmitted": false,
+              "independent_semantic_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade7-matching-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade7-xicheng2025-public-paper-key20261014",
+                "grade7-xicheng2025-ten-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade7-shortbank-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade7-xicheng2025-public-paper-key20261014",
+                "grade7-xicheng2025-ten-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade9-table-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "suzhou2024-official-english-paper-image20261014",
+                "suzhou2024-official-english-key-image20261014",
+                "suzhou2024-official-written-ten-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "source_body_transmitted": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade9-wordbank-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "suzhou2024-official-english-paper-image20261014",
+                "suzhou2024-official-english-key-image20261014",
+                "suzhou2024-official-written-ten-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "source_body_transmitted": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade12-graph-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade12-national2025-paper-commentary20261014",
+                "grade12-national2025-seven-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade8-survey-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade8-changjun2024-midterm-paper-key20261014",
+                "grade8-changjun2024-seven-groups-and-survey-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade8-insertion-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade8-changjun2024-midterm-paper-key20261014",
+                "grade8-changjun2024-seven-groups-and-survey-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade10-heading-insertion-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade10-wenzhou2025-midterm-paper-key20261014",
+                "grade10-wenzhou2025-seven-groups-and-rubrics-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_student_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade10-advice-email-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade10-wenzhou2025-midterm-paper-key20261014",
+                "grade10-wenzhou2025-seven-groups-and-rubrics-private-review20261014-record",
+                "grade10-wenzhou2025-midterm-inspection-page0820261014-record",
+                "grade10-wenzhou2025-midterm-inspection-page1820261014-record",
+                "grade10-wenzhou2025-midterm-inspection-page1920261014-record"
+              ],
+              "model_called": false,
+              "numerical_scoring_or_independent_English_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade11-mixed-insertion-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade11-spring2024-public-bundle20261014",
+                "grade11-spring2024-seven-groups-private-review20261014-record",
+                "grade11-chongqing2024spring-p06-20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_student_or_instruction_difficulty_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade12-portrait-insertion-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade12-national2025-paper-commentary20261014",
+                "grade12-national2025-seven-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_global_best_fit_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade8-four-three-reading-v0.1.json",
+            "result": {
+              "metadata_and_source_bindings_valid": true,
+              "errors": [],
+              "actual_cached_source_files_checked": [
+                "grade8-changjun2024-midterm-paper-key20261014",
+                "grade8-changjun2024-seven-groups-and-survey-private-review20261014-record",
+                "task-load-grade8-wayfinding-prepared20261014-record",
+                "task-load-grade8-wayfinding-results20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_or_load_to_difficulty_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade7-six-cloze-v0.1.json",
+            "result": {
+              "metadata_and_local_material_bindings_valid": true,
+              "errors": [],
+              "cached_source_files_checked": [
+                "grade7-xicheng2025-public-paper-key20261014",
+                "grade7-xicheng2025-ten-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_student_or_rights_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade8-local-concept-v0.1.json",
+            "result": {
+              "metadata_and_local_material_bindings_valid": true,
+              "errors": [],
+              "cached_source_files_checked": [
+                "gaokzx-fengtai2026-paper-key20261014-record",
+                "grade8-fengtai2026-seven-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_student_or_rights_validation": false
+            }
+          },
+          {
+            "request": "FirstRelease/Expansions/generation-request-grade8-sentence-translation-v0.1.json",
+            "result": {
+              "metadata_and_local_material_bindings_valid": true,
+              "errors": [],
+              "cached_source_files_checked": [
+                "xschu-bnu2026-paper-key20261014-record",
+                "grade8-bnu2026-nine-groups-private-review20261014-record"
+              ],
+              "model_called": false,
+              "independent_English_student_or_rights_validation": false
+            }
+          }
+        ],
+        "new_publisher_native_and_views": {
+          "native_pages_replayed": 8,
+          "PNG_decoded": 8,
+          "no_key_or_rubric_admitted": true
+        },
+        "new_dictionary_sense_namespace_replay": {
+          "actual_HTML_entries": 2,
+          "sense_nodes_reparsed": 8,
+          "topic_vs_wordlist_namespace_preserved": true
+        },
+        "source_author_components_and_synthetic_score_sets": {
+          "concept_source399_24_66_author349_28_106_recomputed": true,
+          "sixcloze_source315_author312_refill318_recovered": true,
+          "translation4responses16synthetic_no_teacher_scores_output55_recovered": true
+        },
+        "current_review_scope": {
+          "author_families": 46,
+          "author_responses": 290,
+          "response_types": 10,
+          "source_groups": 117,
+          "source_references": 722,
+          "parent_identities": 20,
+          "file_requests": 17,
+          "measured_source_author_profiles": [
+            14,
+            12
+          ],
+          "pending_source_core": [
+            36,
+            17
+          ],
+          "unpaired_publisher_task_faces_opportunities": [
+            8,
+            38
+          ]
+        },
+        "all_restored_files_size_SHA_distinct_inode_verified": true
       }
     }
   ],
