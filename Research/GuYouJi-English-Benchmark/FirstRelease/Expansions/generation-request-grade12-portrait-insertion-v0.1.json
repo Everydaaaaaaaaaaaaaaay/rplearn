@@ -1,0 +1,88 @@
+{
+  "version": "0.1",
+  "grade": 12,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade12-v0.3.md",
+    "sha256": "62894eccefd96b9c505b758e1e77625e9f40dc46692af846514650f68d7af677"
+  },
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+    "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+  },
+  "source_group_id": "g12.national2025.insertion",
+  "source_paper_acquisition_id": "grade12-national2025-paper-commentary20261014",
+  "source_format": {
+    "items": 5,
+    "features": {
+      "blanks": 5,
+      "shared_options": 7,
+      "two_extra_explicit": true,
+      "source_once_explicit": false,
+      "observed_labels_all_distinct": true,
+      "genre": "cafe worker portrait",
+      "all_options_required": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "target_format": {
+    "items": 5,
+    "shared_options": 7,
+    "two_extra": true,
+    "option_at_most_once": true,
+    "all_blank_items_complete_sentences": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "complete_single_person_portrait": true,
+    "whole_group_and_local_cohesion_both_required": true
+  },
+  "source_once_rule_explicit": false,
+  "authored_once_rule_is_source_explicit": false,
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade12-print-room-insertion-v0.1.md",
+    "sha256": "89567561ce23efe9a931ae4cb5a2359ef2c534671178a9d9098f7f6ad99e14a0"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade12-print-room-insertion-author-check-v0.1.json",
+    "sha256": "b98be207c617812e59856a357dcab4bd5709e214d21378b450ce41981ec234bf"
+  },
+  "new_scenario": "Fictional collegeprint room/workerRosa andstudentMina,servicehandover/earlyopening/viewpoint/commitment",
+  "target_changes_and_justification": [
+    "newbody/people/operations/numbers instead of cafearticle",
+    "all7options/full5sentence form kept,targetlettersGCAFD reordered from EDCFG",
+    "explicitatmostonce authored policy;global1G/4F resolves locallyrelatedG without declaring Englishinvalid",
+    "sourceF informal good expression not replicated as formalgrammar template"
+  ],
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_alternatives",
+    "whole_group_solve_or_refill",
+    "actual_revision_evidence_if_changed",
+    "independent_unknowns_separate",
+    "speaker_pronoun_and_full_group_option_reuse_checked"
+  ],
+  "all_shared_material_required": true,
+  "source_reference_list_exhaustive": false,
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "correct_title_leaked": false
+  },
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "original_source_republication_admitted": false,
+  "commercial_training_admitted": false,
+  "third_party_source_transmission_admitted": false,
+  "source_factual_gold": false
+}
