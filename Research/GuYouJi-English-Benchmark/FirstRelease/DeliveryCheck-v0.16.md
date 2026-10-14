@@ -1,6 +1,6 @@
 # 首版交付检查0.16
 
-当前[包0.24](ReviewPackage-v0.25.md)／[组合0.16](combined-review-index-v0.16.json)／[标准0.16](PracticalAuthoringStandard-v0.16.md)整合概念、整句翻译与初一六空完形。长期完成条件继承[Acceptance](../Acceptance.md)，首版准备不等全量验收或上线。
+当前[包0.25](ReviewPackage-v0.25.md)／[组合0.16](combined-review-index-v0.16.json)／[标准0.16](PracticalAuthoringStandard-v0.16.md)整合概念、整句翻译与初一六空完形。长期完成条件继承[Acceptance](../Acceptance.md)，首版准备不等全量验收或上线。
 
 | 交付对象 | 当前证据 | 继续补齐 |
 | --- | --- | --- |
