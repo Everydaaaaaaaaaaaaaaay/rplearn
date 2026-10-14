@@ -8,7 +8,9 @@
 
 从[统一审阅包0.18](ReviewPackage-v0.18.md)、[组合索引0.9](combined-review-index-v0.9.json)和[可执行标准0.9](PracticalAuthoringStandard-v0.9.md)开始。源101实例/639参考/18父卷身份；原创核心25/205、初二补充1/10、扩展15/56，合41现行材料家族271响应点；十四请求仅本机文件/声明控制。见[交付检查0.9](DeliveryCheck-v0.9.md)、[响应分母0.6](ResponseModeCoverage-v0.6.md)及[20实际词汇语境观察](../Vocabulary/grade8-context-control-observations-v0.1.json)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
-当前保存：[第30独立恢复](../Studies/2026-10-14-checkpoint30-current-lexical-open-and-stable-identity-recovery.md)6929文件严格COW/全SHA/不同inode；当前39/263八方式/十四请求、11源9作者负荷/20词汇语境、core015实际失败与core016来源使用修复可恢复。30自身/后来素材下批，未异机/完整环境或教育许可验收。
+当前保存：[第31独立恢复](../Studies/2026-10-14-checkpoint31-conditional-lexical-and-sentence-profile-recovery.md)7031文件全严格COW/SHA/不同inode；现41/271八方式/14请求/13源11作者/28源17核心、实际引语纠正/词义探针/22句向量与2未知可恢复。31自身/后来素材留下一批，未异机/完整环境或教育/商业验收。
+
+此前保存：[第30独立恢复](../Studies/2026-10-14-checkpoint30-current-lexical-open-and-stable-identity-recovery.md)6929文件严格COW/全SHA/不同inode；当前39/263八方式/十四请求、11源9作者负荷/20词汇语境、core015实际失败与core016来源使用修复可恢复。30自身/后来素材下批，未异机/完整环境或教育许可验收。
 
 现行0.13/37材料256点/十三请求/27源队列已纳入[第29完整恢复](../Studies/2026-10-14-checkpoint29-current-mixed-review-and-author-transitions.md)的6820文件严格COW/SHA/独立inode核验；29自身结果及后续素材留下一批，未异机/完整环境或独立教育验收。
 
