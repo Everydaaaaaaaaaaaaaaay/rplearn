@@ -1,0 +1,98 @@
+{
+  "version": "0.1",
+  "mode_registry": {
+    "path": "FirstRelease/Expansions/PreparedSevenInputModes-v0.1.json",
+    "sha256": "b4f040409cc118a1a830c16f542d2ba0564bf76d5f67e9aa74395491619a7208"
+  },
+  "mode": "grade9_ten_four_cloze",
+  "grade": 9,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade9-v0.3.md",
+    "sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+    "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+  },
+  "source_group_id": "g9.suzhou2024.cloze",
+  "source_parent_acquisition_id": "suzhou2024-official-english-paper-image20261014",
+  "source_key_acquisition_id": "suzhou2024-official-english-key-image20261014",
+  "source_rationale_acquisition_id": "suzhou2024-official-written-ten-groups-private-review20261014-record",
+  "source_format": {
+    "kind": "cloze",
+    "question_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "features": {
+      "blanks": 10,
+      "options_each": 4,
+      "full_narrative_with_dog_image": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "excluded_source_semantic_numbers": [],
+  "excluded_source_explanation_numbers": [],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade9-garden-notes-ten-cloze-v0.1.md",
+    "sha256": "7ef13c508d37a5c3eddf282361572fefc12eb7b5444a8b43dbad8aabfb0c3f8a"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade9-garden-notes-ten-cloze-author-check-v0.1.json",
+    "sha256": "45716e465665830ab42b0498881728f2322edd1d4ca57c7ea430625117c64dc2"
+  },
+  "target_contract": {
+    "kind": "choice_cloze",
+    "items": 10,
+    "options_each": 4,
+    "materials": 1,
+    "complete_single_passage": true,
+    "whole_group_refill_required": true,
+    "option_can_be_phrase": true
+  },
+  "authored_input_audit_acquisition_id": "three-cloze-shapes-three-cloze-explicit-inputs-and-refills20261014-record",
+  "authored_input_record_id": "grade9-garden-notes-ten-cloze",
+  "source_reference_set_exhaustive": false,
+  "new_context_and_changes": "Use the bound original fictional complete task; compare source form and scope without copying source body; current bestness exclusions retained. Further generation must make a new complete context and record changes/whole-task solve rather than reuse these labels as universal keys.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "fact_strategy": "fictional_context_not_source_claims_as_fact",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false,
+  "generation_run_occurred": false
+}

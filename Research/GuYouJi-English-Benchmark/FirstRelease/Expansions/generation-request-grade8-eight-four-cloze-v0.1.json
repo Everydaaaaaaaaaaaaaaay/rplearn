@@ -1,0 +1,96 @@
+{
+  "version": "0.1",
+  "mode_registry": {
+    "path": "FirstRelease/Expansions/PreparedSevenInputModes-v0.1.json",
+    "sha256": "b4f040409cc118a1a830c16f542d2ba0564bf76d5f67e9aa74395491619a7208"
+  },
+  "mode": "grade8_eight_four_cloze",
+  "grade": 8,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade8-v0.3.md",
+    "sha256": "a4a3e576fd4956e92d4d10e49e29d4b1919239046524a9d2362ebc00a2779d63"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade8-fengtai2026-public-groups-v0.1.json",
+    "sha256": "202e059d3aa52286f39e9f4b07d5d288fa23773d6da4c132c57b5862368bd309"
+  },
+  "source_group_id": "g8.fengtai2026.cloze",
+  "source_parent_acquisition_id": "gaokzx-fengtai2026-paper-key20261014-record",
+  "source_key_acquisition_id": "gaokzx-fengtai2026-paper-key20261014-record",
+  "source_rationale_acquisition_id": "grade8-fengtai2026-seven-groups-private-review20261014-record",
+  "source_format": {
+    "kind": "cloze",
+    "question_numbers": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "features": {
+      "blanks": 8,
+      "options_each": 4,
+      "body_and_options_page": 2,
+      "title_and_basketball_illustration_gloss_present": true,
+      "story_theme_family_and_work_worry": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "excluded_source_semantic_numbers": [],
+  "excluded_source_explanation_numbers": [],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-v0.1.md",
+    "sha256": "9a93976c320dd5c9fe7be22d778f25d1b48642afbb6324cc7329a383ef67d02d"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-author-check-v0.1.json",
+    "sha256": "5c3b4503d3284679ceeb7b1da24de26aae35a7541b22b589ac7ca767d81bb879"
+  },
+  "target_contract": {
+    "kind": "choice_cloze",
+    "items": 8,
+    "options_each": 4,
+    "materials": 1,
+    "complete_single_passage": true,
+    "whole_group_refill_required": true,
+    "option_can_be_phrase": true
+  },
+  "authored_input_audit_acquisition_id": "three-cloze-shapes-three-cloze-explicit-inputs-and-refills20261014-record",
+  "authored_input_record_id": "grade8-model-boat-labels-eight-cloze",
+  "source_reference_set_exhaustive": false,
+  "new_context_and_changes": "Use the bound original fictional complete task; compare source form and scope without copying source body; current bestness exclusions retained. Further generation must make a new complete context and record changes/whole-task solve rather than reuse these labels as universal keys.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "fact_strategy": "fictional_context_not_source_claims_as_fact",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false,
+  "generation_run_occurred": false
+}

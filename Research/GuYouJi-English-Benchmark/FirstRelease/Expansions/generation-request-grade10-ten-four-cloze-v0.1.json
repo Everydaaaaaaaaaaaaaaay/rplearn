@@ -1,0 +1,100 @@
+{
+  "version": "0.1",
+  "mode_registry": {
+    "path": "FirstRelease/Expansions/PreparedSevenInputModes-v0.1.json",
+    "sha256": "b4f040409cc118a1a830c16f542d2ba0564bf76d5f67e9aa74395491619a7208"
+  },
+  "mode": "grade10_ten_four_cloze",
+  "grade": 10,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade10-v0.3.md",
+    "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/source-group-observations.json",
+    "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+  },
+  "source_group_id": "g10.2024.cloze",
+  "source_parent_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+  "source_key_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+  "source_rationale_acquisition_id": "three-cloze-shapes-three-cloze-source-reference-use20261014-record",
+  "source_format": {
+    "kind": "four_option_cloze",
+    "question_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "features": {
+      "blanks": 10,
+      "options_each": 4,
+      "genre": "judgement revision and charitable act narrative",
+      "discourse_contrast_and_emotional_change": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+  ],
+  "excluded_source_semantic_numbers": [
+    9
+  ],
+  "excluded_source_explanation_numbers": [],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-v0.1.md",
+    "sha256": "a01671685075afcc0ea2f8e913ff15c2a83fb55b4a3a8412dc6dc39857870442"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-author-check-v0.1.json",
+    "sha256": "5d207ce7403311a584bd3c7303cd1dc7c508b39af954d4e11d3d27bdcfb7e2f2"
+  },
+  "target_contract": {
+    "kind": "choice_cloze",
+    "items": 10,
+    "options_each": 4,
+    "materials": 1,
+    "complete_single_passage": true,
+    "whole_group_refill_required": true,
+    "option_can_be_phrase": true
+  },
+  "authored_input_audit_acquisition_id": "three-cloze-shapes-three-cloze-explicit-inputs-and-refills20261014-record",
+  "authored_input_record_id": "grade10-festival-posters-ten-cloze",
+  "source_reference_set_exhaustive": false,
+  "new_context_and_changes": "Use the bound original fictional complete task; compare source form and scope without copying source body; current bestness exclusions retained. Further generation must make a new complete context and record changes/whole-task solve rather than reuse these labels as universal keys.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "fact_strategy": "fictional_context_not_source_claims_as_fact",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false,
+  "generation_run_occurred": false
+}

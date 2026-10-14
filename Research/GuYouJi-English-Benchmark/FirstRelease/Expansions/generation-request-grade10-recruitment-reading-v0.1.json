@@ -1,0 +1,88 @@
+{
+  "version": "0.1",
+  "mode_registry": {
+    "path": "FirstRelease/Expansions/PreparedSevenInputModes-v0.1.json",
+    "sha256": "b4f040409cc118a1a830c16f542d2ba0564bf76d5f67e9aa74395491619a7208"
+  },
+  "mode": "grade10_recruitment_reading",
+  "grade": 10,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade10-v0.2.md",
+    "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/source-group-observations.json",
+    "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+  },
+  "source_group_id": "g10.2024.readingA",
+  "source_parent_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+  "source_key_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+  "source_rationale_acquisition_id": "three-core-shapes-three-core-shapes-source-reference-check20261014-record",
+  "source_format": {
+    "kind": "four_option_reading",
+    "question_numbers": [
+      21,
+      22,
+      23
+    ],
+    "features": {
+      "items": 3,
+      "options_each": 4,
+      "genre": "volunteer advertisement",
+      "functions": [
+        "text function",
+        "primary duty",
+        "preferred experience"
+      ],
+      "required_vs_advantage_conditions": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    21,
+    22,
+    23
+  ],
+  "excluded_source_semantic_numbers": [],
+  "excluded_source_explanation_numbers": [],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade10-film-archive-volunteer-reading-v0.1.md",
+    "sha256": "52e619910e1153a2c305e2df1d2e6284242b3704055134ea51722d4bf552d7b9"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade10-film-archive-volunteer-reading-author-check-v0.1.json",
+    "sha256": "be57f3dc0ad06c8b363de37bb06b89cad9c704355a4f90da628ebefb57ceb1fb"
+  },
+  "target_contract": {
+    "kind": "reading_choice",
+    "items": 3,
+    "options_each": 4,
+    "passage_components": 4,
+    "all_options_review_required": true
+  },
+  "authored_input_audit_acquisition_id": "three-core-shapes-three-core-shape-reading-inputs-v02-20261014-record",
+  "authored_input_record_id": "grade10-film-archive-volunteer-reading-v0.1",
+  "source_reference_set_exhaustive": false,
+  "new_context_and_changes": "Use the bound original fictional complete task; compare source form and scope without copying source body; current bestness exclusions retained. Further generation must make a new complete context and record changes/whole-task solve rather than reuse these labels as universal keys.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "fact_strategy": "fictional_context_not_source_claims_as_fact",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false,
+  "generation_run_occurred": false
+}

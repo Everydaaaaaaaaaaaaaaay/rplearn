@@ -1,0 +1,134 @@
+{
+  "version": "0.1",
+  "mode_registry": {
+    "path": "FirstRelease/Expansions/PreparedSevenInputModes-v0.1.json",
+    "sha256": "b4f040409cc118a1a830c16f542d2ba0564bf76d5f67e9aa74395491619a7208"
+  },
+  "mode": "grade10_single_passage_grammar",
+  "grade": 10,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade10-v0.3.md",
+    "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+    "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+  },
+  "source_group_id": "g10.wenzhou2025.grammar",
+  "source_parent_acquisition_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+  "source_key_acquisition_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+  "source_rationale_acquisition_id": "grade10-wenzhou2025-seven-groups-and-rubrics-private-review20261014-record",
+  "source_format": {
+    "kind": "grammar",
+    "question_numbers": [
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65
+    ],
+    "features": {
+      "blanks": 10,
+      "no_prompt_one_word": true,
+      "given_word_one_word_explicit": false,
+      "given_word_numbers": [
+        56,
+        58,
+        60,
+        61,
+        62,
+        64,
+        65
+      ],
+      "no_prompt_numbers": [
+        57,
+        59,
+        63
+      ],
+      "published_multiple_connector_keys": 59,
+      "passage_HanJing_first_schoolday_textbook_exposure_candidate": true,
+      "full_related_grammar_marking_rules_page": 17
+    }
+  },
+  "positive_source_reference_numbers": [
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    65
+  ],
+  "excluded_source_semantic_numbers": [
+    64
+  ],
+  "excluded_source_explanation_numbers": [
+    64
+  ],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-v0.1.md",
+    "sha256": "c05a0981065c4fc26748345d07213701397211c58b4a045b883d0b291d3419d2"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-author-check-v0.1.json",
+    "sha256": "f86d81405a141787a7fa21e832d575deca922ca8931e0f7f39ecf283a8bc84f9"
+  },
+  "target_contract": {
+    "kind": "passage_form",
+    "items": 10,
+    "materials": 1,
+    "given_slots": [
+      1,
+      3,
+      5,
+      6,
+      7,
+      9,
+      10
+    ],
+    "ungiven_oneword_slots": [
+      2,
+      4,
+      8
+    ],
+    "given_can_be_multiword": true,
+    "reference_set_exhaustive": false,
+    "relative_pronoun_variants": [
+      "who",
+      "that"
+    ]
+  },
+  "authored_input_audit_acquisition_id": "three-core-shapes-three-core-shape-grammar-load20261014-record",
+  "authored_input_record_id": null,
+  "source_reference_set_exhaustive": false,
+  "new_context_and_changes": "Use the bound original fictional complete task; compare source form and scope without copying source body; current bestness exclusions retained. Further generation must make a new complete context and record changes/whole-task solve rather than reuse these labels as universal keys.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "fact_strategy": "fictional_context_not_source_claims_as_fact",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false,
+  "generation_run_occurred": false
+}

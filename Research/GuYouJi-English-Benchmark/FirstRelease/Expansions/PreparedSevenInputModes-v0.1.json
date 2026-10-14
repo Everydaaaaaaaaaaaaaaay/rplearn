@@ -1,0 +1,525 @@
+{
+  "version": "0.1",
+  "scope": "exact_seven_prepared_examples_no_arbitrary_grade_or_mode_admission",
+  "modes": [
+    {
+      "mode": "grade11_book_review",
+      "candidate_family_id": "grade11-small-repairs-book-review",
+      "grade": 11,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_group_id": "g11.2025.readingC",
+      "source_parent_acquisition_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "source_key_acquisition_id": "grade11-2025lower-crossregion-candidate-20261013",
+      "source_rationale_acquisition_id": "grade11-book-review-source-rationales20261014-record",
+      "source_rationale_style": "book_rationales",
+      "source_format": {
+        "kind": "four_option_reading",
+        "question_numbers": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "features": {
+          "items": 4,
+          "options_each": 4,
+          "genre": "science_book_review",
+          "functions": [
+            "example_function",
+            "paragraph_content",
+            "ending_attitude",
+            "context_word"
+          ],
+          "author_vs_book_vs_researcher_roles": true,
+          "Q30_ending_not_overall_attitude_requires_editorial_review": true
+        }
+      },
+      "positive_source_reference_numbers": [
+        28,
+        29,
+        31
+      ],
+      "excluded_source_semantic_numbers": [
+        30
+      ],
+      "excluded_source_explanation_numbers": [],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-v0.1.md",
+        "sha256": "0d2f5fc4caa678a580444c8c894ef557ff4e6ceabb6ad1716018e16aea7da729"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-author-check-v0.1.json",
+        "sha256": "7c85ec7d50b520114c093a9cc22d0e6052d9cb8f3aa328ef766858dd34c292a8"
+      },
+      "target_contract": {
+        "kind": "reading_choice",
+        "items": 4,
+        "options_each": 4,
+        "passage_components": 5,
+        "all_options_review_required": true
+      },
+      "authored_input_audit_acquisition_id": "task-load-grade11-book-review-inputs20261014-record",
+      "authored_input_record_id": "grade11-small-repairs-book-review-v0.1",
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    },
+    {
+      "mode": "grade10_recruitment_reading",
+      "candidate_family_id": "grade10-film-archive-volunteer-reading",
+      "grade": 10,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade10-v0.2.md",
+        "sha256": "f6bdd4f7cf4004b716420fd6dc56059998e6d9568f880cee2f9ad7637590b184"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_group_id": "g10.2024.readingA",
+      "source_parent_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_key_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_rationale_acquisition_id": "three-core-shapes-three-core-shapes-source-reference-check20261014-record",
+      "source_rationale_style": "combined_reading_rationales",
+      "source_format": {
+        "kind": "four_option_reading",
+        "question_numbers": [
+          21,
+          22,
+          23
+        ],
+        "features": {
+          "items": 3,
+          "options_each": 4,
+          "genre": "volunteer advertisement",
+          "functions": [
+            "text function",
+            "primary duty",
+            "preferred experience"
+          ],
+          "required_vs_advantage_conditions": true
+        }
+      },
+      "positive_source_reference_numbers": [
+        21,
+        22,
+        23
+      ],
+      "excluded_source_semantic_numbers": [],
+      "excluded_source_explanation_numbers": [],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade10-film-archive-volunteer-reading-v0.1.md",
+        "sha256": "52e619910e1153a2c305e2df1d2e6284242b3704055134ea51722d4bf552d7b9"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade10-film-archive-volunteer-reading-author-check-v0.1.json",
+        "sha256": "be57f3dc0ad06c8b363de37bb06b89cad9c704355a4f90da628ebefb57ceb1fb"
+      },
+      "target_contract": {
+        "kind": "reading_choice",
+        "items": 3,
+        "options_each": 4,
+        "passage_components": 4,
+        "all_options_review_required": true
+      },
+      "authored_input_audit_acquisition_id": "three-core-shapes-three-core-shape-reading-inputs-v02-20261014-record",
+      "authored_input_record_id": "grade10-film-archive-volunteer-reading-v0.1",
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    },
+    {
+      "mode": "grade11_display_profiles",
+      "candidate_family_id": "grade11-science-display-profiles-reading",
+      "grade": 11,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade11-v0.2.md",
+        "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json",
+        "sha256": "f7fe13aa06155e176f4e8e37e26f17a63617a089bf6921cc5b1192694894b479"
+      },
+      "source_group_id": "g11.spring2024.readingA",
+      "source_parent_acquisition_id": "grade11-spring2024-public-bundle20261014",
+      "source_key_acquisition_id": "grade11-spring2024-public-bundle20261014",
+      "source_rationale_acquisition_id": "three-core-shapes-three-core-shapes-source-reference-check20261014-record",
+      "source_rationale_style": "combined_reading_rationales",
+      "source_format": {
+        "kind": "readingA",
+        "question_numbers": [
+          21,
+          22,
+          23
+        ],
+        "features": {
+          "materials": 4,
+          "genre_or_operation": "four dated art-exhibition descriptions; venue/date/common property",
+          "options_each": 4
+        }
+      },
+      "positive_source_reference_numbers": [
+        21,
+        22
+      ],
+      "excluded_source_semantic_numbers": [
+        23
+      ],
+      "excluded_source_explanation_numbers": [],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade11-science-display-profiles-reading-v0.2.md",
+        "sha256": "18f1ad83528882a1aab45d4a232f969a1dec0f173c0d8431344c303f8a9e5f37"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade11-science-display-profiles-reading-author-check-v0.2.json",
+        "sha256": "1b4e73bbcd02badb2c46688c2db5272a3598424b7f4d2d0efe0d67f9ed08172c"
+      },
+      "target_contract": {
+        "kind": "reading_choice",
+        "items": 3,
+        "options_each": 4,
+        "passage_components": 4,
+        "all_options_review_required": true
+      },
+      "authored_input_audit_acquisition_id": "three-core-shapes-three-core-shape-reading-inputs-v02-20261014-record",
+      "authored_input_record_id": "grade11-science-display-profiles-reading-v0.2",
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    },
+    {
+      "mode": "grade10_single_passage_grammar",
+      "candidate_family_id": "grade10-theatre-costumes-single-grammar",
+      "grade": 10,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade10-v0.3.md",
+        "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+        "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+      },
+      "source_group_id": "g10.wenzhou2025.grammar",
+      "source_parent_acquisition_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "source_key_acquisition_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "source_rationale_acquisition_id": "grade10-wenzhou2025-seven-groups-and-rubrics-private-review20261014-record",
+      "source_rationale_style": "group_private_responses",
+      "source_format": {
+        "kind": "grammar",
+        "question_numbers": [
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65
+        ],
+        "features": {
+          "blanks": 10,
+          "no_prompt_one_word": true,
+          "given_word_one_word_explicit": false,
+          "given_word_numbers": [
+            56,
+            58,
+            60,
+            61,
+            62,
+            64,
+            65
+          ],
+          "no_prompt_numbers": [
+            57,
+            59,
+            63
+          ],
+          "published_multiple_connector_keys": 59,
+          "passage_HanJing_first_schoolday_textbook_exposure_candidate": true,
+          "full_related_grammar_marking_rules_page": 17
+        }
+      },
+      "positive_source_reference_numbers": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        65
+      ],
+      "excluded_source_semantic_numbers": [
+        64
+      ],
+      "excluded_source_explanation_numbers": [
+        64
+      ],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-v0.1.md",
+        "sha256": "c05a0981065c4fc26748345d07213701397211c58b4a045b883d0b291d3419d2"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-author-check-v0.1.json",
+        "sha256": "f86d81405a141787a7fa21e832d575deca922ca8931e0f7f39ecf283a8bc84f9"
+      },
+      "target_contract": {
+        "kind": "passage_form",
+        "items": 10,
+        "materials": 1,
+        "given_slots": [
+          1,
+          3,
+          5,
+          6,
+          7,
+          9,
+          10
+        ],
+        "ungiven_oneword_slots": [
+          2,
+          4,
+          8
+        ],
+        "given_can_be_multiword": true,
+        "reference_set_exhaustive": false,
+        "relative_pronoun_variants": [
+          "who",
+          "that"
+        ]
+      },
+      "authored_input_audit_acquisition_id": "three-core-shapes-three-core-shape-grammar-load20261014-record",
+      "authored_input_record_id": null,
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    },
+    {
+      "mode": "grade10_ten_four_cloze",
+      "candidate_family_id": "grade10-festival-posters-ten-cloze",
+      "grade": 10,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade10-v0.3.md",
+        "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_group_id": "g10.2024.cloze",
+      "source_parent_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_key_acquisition_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_rationale_acquisition_id": "three-cloze-shapes-three-cloze-source-reference-use20261014-record",
+      "source_rationale_style": "grade10_cloze_rationales",
+      "source_format": {
+        "kind": "four_option_cloze",
+        "question_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "features": {
+          "blanks": 10,
+          "options_each": 4,
+          "genre": "judgement revision and charitable act narrative",
+          "discourse_contrast_and_emotional_change": true
+        }
+      },
+      "positive_source_reference_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "excluded_source_semantic_numbers": [
+        9
+      ],
+      "excluded_source_explanation_numbers": [],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-v0.1.md",
+        "sha256": "a01671685075afcc0ea2f8e913ff15c2a83fb55b4a3a8412dc6dc39857870442"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-author-check-v0.1.json",
+        "sha256": "5d207ce7403311a584bd3c7303cd1dc7c508b39af954d4e11d3d27bdcfb7e2f2"
+      },
+      "target_contract": {
+        "kind": "choice_cloze",
+        "items": 10,
+        "options_each": 4,
+        "materials": 1,
+        "complete_single_passage": true,
+        "whole_group_refill_required": true,
+        "option_can_be_phrase": true
+      },
+      "authored_input_audit_acquisition_id": "three-cloze-shapes-three-cloze-explicit-inputs-and-refills20261014-record",
+      "authored_input_record_id": "grade10-festival-posters-ten-cloze",
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    },
+    {
+      "mode": "grade9_ten_four_cloze",
+      "candidate_family_id": "grade9-garden-notes-ten-cloze",
+      "grade": 9,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade9-v0.3.md",
+        "sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "source_group_id": "g9.suzhou2024.cloze",
+      "source_parent_acquisition_id": "suzhou2024-official-english-paper-image20261014",
+      "source_key_acquisition_id": "suzhou2024-official-english-key-image20261014",
+      "source_rationale_acquisition_id": "suzhou2024-official-written-ten-groups-private-review20261014-record",
+      "source_rationale_style": "group_items",
+      "source_format": {
+        "kind": "cloze",
+        "question_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "features": {
+          "blanks": 10,
+          "options_each": 4,
+          "full_narrative_with_dog_image": true
+        }
+      },
+      "positive_source_reference_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "excluded_source_semantic_numbers": [],
+      "excluded_source_explanation_numbers": [],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade9-garden-notes-ten-cloze-v0.1.md",
+        "sha256": "7ef13c508d37a5c3eddf282361572fefc12eb7b5444a8b43dbad8aabfb0c3f8a"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade9-garden-notes-ten-cloze-author-check-v0.1.json",
+        "sha256": "45716e465665830ab42b0498881728f2322edd1d4ca57c7ea430625117c64dc2"
+      },
+      "target_contract": {
+        "kind": "choice_cloze",
+        "items": 10,
+        "options_each": 4,
+        "materials": 1,
+        "complete_single_passage": true,
+        "whole_group_refill_required": true,
+        "option_can_be_phrase": true
+      },
+      "authored_input_audit_acquisition_id": "three-cloze-shapes-three-cloze-explicit-inputs-and-refills20261014-record",
+      "authored_input_record_id": "grade9-garden-notes-ten-cloze",
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    },
+    {
+      "mode": "grade8_eight_four_cloze",
+      "candidate_family_id": "grade8-model-boat-labels-eight-cloze",
+      "grade": 8,
+      "specification": {
+        "path": "FirstRelease/Specifications/grade8-v0.3.md",
+        "sha256": "a4a3e576fd4956e92d4d10e49e29d4b1919239046524a9d2362ebc00a2779d63"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-fengtai2026-public-groups-v0.1.json",
+        "sha256": "202e059d3aa52286f39e9f4b07d5d288fa23773d6da4c132c57b5862368bd309"
+      },
+      "source_group_id": "g8.fengtai2026.cloze",
+      "source_parent_acquisition_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "source_key_acquisition_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "source_rationale_acquisition_id": "grade8-fengtai2026-seven-groups-private-review20261014-record",
+      "source_rationale_style": "group_private_responses",
+      "source_format": {
+        "kind": "cloze",
+        "question_numbers": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "features": {
+          "blanks": 8,
+          "options_each": 4,
+          "body_and_options_page": 2,
+          "title_and_basketball_illustration_gloss_present": true,
+          "story_theme_family_and_work_worry": true
+        }
+      },
+      "positive_source_reference_numbers": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "excluded_source_semantic_numbers": [],
+      "excluded_source_explanation_numbers": [],
+      "authored_example": {
+        "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-v0.1.md",
+        "sha256": "9a93976c320dd5c9fe7be22d778f25d1b48642afbb6324cc7329a383ef67d02d"
+      },
+      "authored_example_check": {
+        "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-author-check-v0.1.json",
+        "sha256": "5c3b4503d3284679ceeb7b1da24de26aae35a7541b22b589ac7ca767d81bb879"
+      },
+      "target_contract": {
+        "kind": "choice_cloze",
+        "items": 8,
+        "options_each": 4,
+        "materials": 1,
+        "complete_single_passage": true,
+        "whole_group_refill_required": true,
+        "option_can_be_phrase": true
+      },
+      "authored_input_audit_acquisition_id": "three-cloze-shapes-three-cloze-explicit-inputs-and-refills20261014-record",
+      "authored_input_record_id": "grade8-model-boat-labels-eight-cloze",
+      "source_reference_set_exhaustive": false,
+      "current_author_only_no_model_or_teacher_or_student_validation": true
+    }
+  ],
+  "source_body_or_full_wordlist_embedded": false,
+  "model_called": false
+}

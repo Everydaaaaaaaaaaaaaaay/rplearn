@@ -1,0 +1,93 @@
+{
+  "version": "0.1",
+  "mode_registry": {
+    "path": "FirstRelease/Expansions/PreparedSevenInputModes-v0.1.json",
+    "sha256": "b4f040409cc118a1a830c16f542d2ba0564bf76d5f67e9aa74395491619a7208"
+  },
+  "mode": "grade11_book_review",
+  "grade": 11,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade11-v0.2.md",
+    "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/source-group-observations.json",
+    "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+  },
+  "source_group_id": "g11.2025.readingC",
+  "source_parent_acquisition_id": "grade11-2025lower-crossregion-candidate-20261013",
+  "source_key_acquisition_id": "grade11-2025lower-crossregion-candidate-20261013",
+  "source_rationale_acquisition_id": "grade11-book-review-source-rationales20261014-record",
+  "source_format": {
+    "kind": "four_option_reading",
+    "question_numbers": [
+      28,
+      29,
+      30,
+      31
+    ],
+    "features": {
+      "items": 4,
+      "options_each": 4,
+      "genre": "science_book_review",
+      "functions": [
+        "example_function",
+        "paragraph_content",
+        "ending_attitude",
+        "context_word"
+      ],
+      "author_vs_book_vs_researcher_roles": true,
+      "Q30_ending_not_overall_attitude_requires_editorial_review": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    28,
+    29,
+    31
+  ],
+  "excluded_source_semantic_numbers": [
+    30
+  ],
+  "excluded_source_explanation_numbers": [],
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-v0.1.md",
+    "sha256": "0d2f5fc4caa678a580444c8c894ef557ff4e6ceabb6ad1716018e16aea7da729"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-author-check-v0.1.json",
+    "sha256": "7c85ec7d50b520114c093a9cc22d0e6052d9cb8f3aa328ef766858dd34c292a8"
+  },
+  "target_contract": {
+    "kind": "reading_choice",
+    "items": 4,
+    "options_each": 4,
+    "passage_components": 5,
+    "all_options_review_required": true
+  },
+  "authored_input_audit_acquisition_id": "task-load-grade11-book-review-inputs20261014-record",
+  "authored_input_record_id": "grade11-small-repairs-book-review-v0.1",
+  "source_reference_set_exhaustive": false,
+  "new_context_and_changes": "Use the bound original fictional complete task; compare source form and scope without copying source body; current bestness exclusions retained. Further generation must make a new complete context and record changes/whole-task solve rather than reuse these labels as universal keys.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "fact_strategy": "fictional_context_not_source_claims_as_fact",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false,
+  "generation_run_occurred": false
+}
