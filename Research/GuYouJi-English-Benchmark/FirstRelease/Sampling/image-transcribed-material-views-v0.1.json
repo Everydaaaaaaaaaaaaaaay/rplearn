@@ -1,0 +1,1124 @@
+{
+  "version": "0.1",
+  "scope": "two existing baseline instances with original-page-reviewed student text; not new groups/papers/gold",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-native-material-views-v0.1.json",
+    "sha256": "ce61c2bcc830025bc0bc0c380451b3586746095950c027685aa8827d76a77735"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-native-family-audit20261015m-v0.1.json",
+    "sha256": "40e2c9744fa02d7f8c45ba35f6292b6f115324af289cf2969cbcbd94621a4fbd"
+  },
+  "views": [
+    {
+      "group_id": "g8.2025.cloze",
+      "source_parent_id": "bj-grade8-xicheng2025upper-20261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade8-xicheng2025upper-20261013.pdf",
+        "sha256": "225516737e0e5cee6be03fb83f02aca25fbee02a207f963d22b3432c679cef32"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/grade8-xicheng2025-two-image-source-transcriptions20261015n-v0.1.json",
+        "sha256": "6111d5e8567307739b8170224e66c30e3e2dd2727e2e474704bab47b3ab94684"
+      },
+      "record_index": 0,
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/firstrelease-bj-grade8-xicheng2025upper-p03-20261013.png",
+          "sha256": "39d56d6d7cc2017ae30406ba58d82e5e58fa4a9d55c982372a4fe7f2cb0f5dbb"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/firstrelease-bj-grade8-xicheng2025upper-p04-20261013.png",
+          "sha256": "9379b1496fb8ff5fdc1d31d93d08ff08170c41afd9be2955420339fca3b779a7"
+        }
+      ],
+      "PDF_pages": [
+        3,
+        4
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "instruction",
+          "role": "instruction",
+          "item_id": null,
+          "sha256": "028227425814b87debf39c6cc4264338e847f49f93c9468d997d54c12490d3b6"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "title",
+          "role": "material_label",
+          "item_id": null,
+          "sha256": "e82bb2369e2e2d80125f6a416350c2663cc14a4520c0c6b8512a282c86c55c93"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "p1",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "0f9f8626a33daafbb3d2099fe5435b85d342608c87bb6d561354d61ed20f65bb"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "p2",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "650b9d478997ed017a6f5006a2349dc7cc77e105f6b96f23fc13e1b0e7bb6095"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "p3",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "538d3d545898a945d188607e9e493ad1d567401e8d6ed0730d008fc7b6d53461"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "p4",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "1a39ccd5d7a3103a4baca0109c5e0665e9e24b04b2b296c85ce1f0602bbe8618"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "p5",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "647c6b0d965fdd42201ef85af2db08f6d8583037c956f033e8ee29671dc3d094"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "p6",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "24d0a188b506eeb59f662dbd3caa454e5f9cd1c0a9d48aef320daffcf44ef3ef"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "p7",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "9fe8b23da2217e376577e82480af3316815cac7344dac3149a01e02527780ed8"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "p8",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "020b76f6e4e86e307352332ff1cef2048fd77e42f6beb385d47b25a5d1938c9c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "p9",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "e1f869b0c2145641e34ff574481d5e4f4edcb2192af0b84231141f719ffc7fdb"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "p10",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "904faaaf8f7148cf3fdd7d1cef21dd2f3d0532443fe7ac555cd04ef5e6d858eb"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "p11",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "2c263fd401991e35bd1ab5834a25dadd965c8496235e5ac5379a1f72d9134ce0"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "q23o0",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "00e13ed7af55b27622f1d6eab5bec0147e68efe28dc2b12461117afa1a5ed40e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "q23o1",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "6f8860eb5103a16b917146f9cbf21aa00fe7d2291b1aad7f4fe83a6db71688cf"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "q23o2",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "fa1eadc4c6995667412681c69ce33adfc9302a2965f521c40908549e670e2e4e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "q23o3",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "51945df720a5a6e216939c07a49713aa1745b28c88a901548d3c499fc34a7057"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "q24o0",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "47a49356720831b66f38bbe12c06e6cf71a67277b1f5e6a28593e73afde6f226"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "q24o1",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "2c6ef0f0d0e4cc6e9c15d05e0480151d4e3d0b8baa0423e660330d47f56e1a66"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "q24o2",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "5489eb1d2a0285016de38986b21749ed5beee9ac3f5097b9a95854dd146b1b07"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "q24o3",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "cf83f0f9828551b6247bfc9288d0740dd5b3ccb8501f8caed37c19b912ae4438"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "q25o0",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "180366dd3b2cc124570a8ebfa33ec9d36cb213ee9b5dd0788b4a38b7eddabcbe"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "q25o1",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "c405760daf9bc32b76f4a57e9c823c39de4645e3ba3dea73d671eee07e152b5d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "q25o2",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "d069c85283b98c2c0ca831cb4fd19356e98813b5d0ee31e7b7a4a894e8aca23c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            24,
+            "text"
+          ],
+          "id": "q25o3",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "c0cafcf0e2d6a236aca78b03f4c33b25ca970788fd6adde4ccc7db6acecb3ee1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            25,
+            "text"
+          ],
+          "id": "q26o0",
+          "role": "option",
+          "item_id": 26,
+          "sha256": "66f9b98dde76ccbacebabd344bf5244fd6bb4a6a5ac62ababfea82d3fcc650b1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            26,
+            "text"
+          ],
+          "id": "q26o1",
+          "role": "option",
+          "item_id": 26,
+          "sha256": "cde48537ca2c28084ff560826d0e6388b7c57a51497a6cb56f397289e52ff41b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            27,
+            "text"
+          ],
+          "id": "q26o2",
+          "role": "option",
+          "item_id": 26,
+          "sha256": "6ee4a469cd4e91053847f5d3fcb61dbcc91e8f0ef10be7748da4c4a1ba382d17"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            28,
+            "text"
+          ],
+          "id": "q26o3",
+          "role": "option",
+          "item_id": 26,
+          "sha256": "b93006774cbdd4b299389a03ac3d88c3a76b460d538795bc12718011a909fba5"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            29,
+            "text"
+          ],
+          "id": "q27o0",
+          "role": "option",
+          "item_id": 27,
+          "sha256": "a8421af85259088be34c76a2d33184ec101ea80c2707b8e12b907f7c48c8ecf1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            30,
+            "text"
+          ],
+          "id": "q27o1",
+          "role": "option",
+          "item_id": 27,
+          "sha256": "1c999646c80ca97ba6029fc744b20b170963b509065b0a4d22b49ff692e35b18"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            31,
+            "text"
+          ],
+          "id": "q27o2",
+          "role": "option",
+          "item_id": 27,
+          "sha256": "8d55a46bf05a132ae9d74a48a196f3e4edbc9dc5737513b458bf93c1ba9daa7d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            32,
+            "text"
+          ],
+          "id": "q27o3",
+          "role": "option",
+          "item_id": 27,
+          "sha256": "2f3df09c4659d320e125ea9f92e41fed93884f6ad03f21999bda22804b30c370"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            33,
+            "text"
+          ],
+          "id": "q28o0",
+          "role": "option",
+          "item_id": 28,
+          "sha256": "8e752bb9817c063245abbe06c58903236866f4ef3934a3d68ce059e06345e67c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            34,
+            "text"
+          ],
+          "id": "q28o1",
+          "role": "option",
+          "item_id": 28,
+          "sha256": "71fc65e90fbc7e30404c6503e28448a7a834609f4372135736aa32c5e848d203"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            35,
+            "text"
+          ],
+          "id": "q28o2",
+          "role": "option",
+          "item_id": 28,
+          "sha256": "bd2555f468f3181c5632bfd3a3257b9f4a02f7dd46413a064900bc173da577c5"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            36,
+            "text"
+          ],
+          "id": "q28o3",
+          "role": "option",
+          "item_id": 28,
+          "sha256": "9c75540d2a68e6b167d8fa3cb998df2976c23b040527a4c6765b3829db449441"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            37,
+            "text"
+          ],
+          "id": "q29o0",
+          "role": "option",
+          "item_id": 29,
+          "sha256": "e3b93359365856652e759ad9ff915402f59cb91358d7d088b0b2e925c9934359"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            38,
+            "text"
+          ],
+          "id": "q29o1",
+          "role": "option",
+          "item_id": 29,
+          "sha256": "fafe97f7def328bbd4f10779b9625a8aa0bfaa143d7ae64e6f5770e47b51cd1d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            39,
+            "text"
+          ],
+          "id": "q29o2",
+          "role": "option",
+          "item_id": 29,
+          "sha256": "12765295db4f1e7911ddb4f051191091a0432570270e1fca2076e718e61ddae0"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            40,
+            "text"
+          ],
+          "id": "q29o3",
+          "role": "option",
+          "item_id": 29,
+          "sha256": "d098ab5e44b9aabb755f76d806598f43573c662b35e4a2eab1e312ec9ad195e2"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            41,
+            "text"
+          ],
+          "id": "q30o0",
+          "role": "option",
+          "item_id": 30,
+          "sha256": "23eeb69c681dfdb8eacc7ce9e55ea007d41c2dd5273848c597f1b3e49dbd86e1"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            42,
+            "text"
+          ],
+          "id": "q30o1",
+          "role": "option",
+          "item_id": 30,
+          "sha256": "3486577cd905f87072a2d812114b5c5c73009e26e2f99d9057f6f719e0859401"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            43,
+            "text"
+          ],
+          "id": "q30o2",
+          "role": "option",
+          "item_id": 30,
+          "sha256": "0c87ed818fb90f3f88faa6b362cf1e99025f3c1248f8fe513cdb38d03d9dce65"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            44,
+            "text"
+          ],
+          "id": "q30o3",
+          "role": "option",
+          "item_id": 30,
+          "sha256": "b718f1354f7247312eca086d9a024afe5fa717ddea5adeddd6f12bcf945b2e8c"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            45,
+            "text"
+          ],
+          "id": "q31o0",
+          "role": "option",
+          "item_id": 31,
+          "sha256": "8fcfccf675b1f0bfd39dcbb13015052fe82bc51c003c165a410945c913dbb2be"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            46,
+            "text"
+          ],
+          "id": "q31o1",
+          "role": "option",
+          "item_id": 31,
+          "sha256": "a1954b15a7459a2f7f6c03d87b73963830616feef7c93853fe5c05be996276bc"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            47,
+            "text"
+          ],
+          "id": "q31o2",
+          "role": "option",
+          "item_id": 31,
+          "sha256": "091e606752615c91da70540d9951464cd898f7c2a420fc7181b4f6793772e723"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            48,
+            "text"
+          ],
+          "id": "q31o3",
+          "role": "option",
+          "item_id": 31,
+          "sha256": "b76c1db1f24b29fe617bf3cf4d9bca1301a3ce446f85e32aa7302bbcc57a3df6"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            49,
+            "text"
+          ],
+          "id": "q32o0",
+          "role": "option",
+          "item_id": 32,
+          "sha256": "6acac34da1c9d8bfed350c53af31271710831828f72e97c9f6d975592f095140"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            50,
+            "text"
+          ],
+          "id": "q32o1",
+          "role": "option",
+          "item_id": 32,
+          "sha256": "68752bf62253f655b49bd5e8d989fc11d439d0e90cccbca77f13180179706cea"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            51,
+            "text"
+          ],
+          "id": "q32o2",
+          "role": "option",
+          "item_id": 32,
+          "sha256": "b4da13b0fdf693ea82d079661748c54d7b9587be9cf26fe11708a116e18f0a5d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            52,
+            "text"
+          ],
+          "id": "q32o3",
+          "role": "option",
+          "item_id": 32,
+          "sha256": "ad8fdaf22c809ba3d2e6af0023697c6ae710362046ed29fae866b74b5ad5f964"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "source_image_scopes": [
+        "page3: The Garden title/first two paragraphs and slots23/24 only; earlier sentence choices13-22 excluded",
+        "page4: remaining The Garden paragraphs/slots25-32 and all40options; footer/watermark excluded"
+      ]
+    },
+    {
+      "group_id": "g8.2025.readingB",
+      "source_parent_id": "bj-grade8-xicheng2025upper-20261013",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade8-xicheng2025upper-20261013.pdf",
+        "sha256": "225516737e0e5cee6be03fb83f02aca25fbee02a207f963d22b3432c679cef32"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/grade8-xicheng2025-two-image-source-transcriptions20261015n-v0.1.json",
+        "sha256": "6111d5e8567307739b8170224e66c30e3e2dd2727e2e474704bab47b3ab94684"
+      },
+      "record_index": 1,
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/firstrelease-bj-grade8-xicheng2025upper-p06-20261013.png",
+          "sha256": "ea2d198a1cd2476c68de56672d86c9c070d5d5c3834a4f84f81042d1e0833c6a"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/firstrelease-bj-grade8-xicheng2025upper-p07-20261013.png",
+          "sha256": "23071726981b6478bc42f0c834b95596eb406ca100e6698080af95fff2d62752"
+        }
+      ],
+      "PDF_pages": [
+        6,
+        7
+      ],
+      "components": [
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "p1",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "a7d49b9d79a2e2065ff32493175d6a2c6e473c03bbcbb9d890886f4dd3b861b0"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "p2",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "fb50e8ccb8905db3987bcb36423ab86b444031d2e26856f80b21f9368ede9691"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "p3",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "44abefc9e4b10cb3ca012d06c6ce6e05cb2e95a8f4e90772d32bc43b3d4989b9"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "p4",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "9931739e6c8c99bad4d6bcdf00716e5b5d175e0520b39ca7fdb153b5ddb722e8"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "p5",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "b043f9b159eb860c97f6a1bf0299ede4a40685b0ff2bedea9962efd133be1eaf"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "p6",
+          "role": "passage",
+          "item_id": null,
+          "sha256": "61346cde715ea4fd2f66a5efe971626550a4ec49b66245c1421673ad644010c7"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "q36",
+          "role": "prompt",
+          "item_id": 36,
+          "sha256": "9c9328e613c0868cbbec507746b827df6af48d5e27c258be74a7920d5dbe2725"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "q36o0",
+          "role": "option",
+          "item_id": 36,
+          "sha256": "989b316c1b93741248beac799dc6b92cc2a52c4ca739b3763962d05b74b1dfca"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "q36o1",
+          "role": "option",
+          "item_id": 36,
+          "sha256": "95a7fb17f929b18cab283723526ab925b3128747b4448478db3c85c6a34fb27b"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "q36o2",
+          "role": "option",
+          "item_id": 36,
+          "sha256": "d68f7c2316fd023a4bf86206a1f13109ec34b742b5a2aa43866887a6aa9bf873"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "q36o3",
+          "role": "option",
+          "item_id": 36,
+          "sha256": "b0707960212e01701b80a2b3007a23b714b57dcf223d5586eec5dd6b22d30855"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "q37",
+          "role": "prompt",
+          "item_id": 37,
+          "sha256": "8aecc0fde57013d6bb514e8200ea624f6a6e3515f16a69c0c98ba56f24d7fee5"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "q37o0",
+          "role": "option",
+          "item_id": 37,
+          "sha256": "a4b30b0ecd4287ad7e512078883b7ddc6cb2d2ab614acf7f13a0462c70732187"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "q37o1",
+          "role": "option",
+          "item_id": 37,
+          "sha256": "79dde82ef8d3cc7926c862eab3eb9b4f88faa0336c620e903ea47d9fd8931772"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "q37o2",
+          "role": "option",
+          "item_id": 37,
+          "sha256": "cd0b3df8a8084a05008f5c4ff77eb6b536a29c540e2ead63287dc004e4885e4f"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "q37o3",
+          "role": "option",
+          "item_id": 37,
+          "sha256": "5ace34ad4795783923c3e4e629f97fdcb77fd3b965b7de9eb09002b4a767a462"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "q38",
+          "role": "prompt",
+          "item_id": 38,
+          "sha256": "d3ceb722bf5a0611dc8523095418d53749f2ab5959c96f57763a28cea3d90a37"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "q38o0",
+          "role": "option",
+          "item_id": 38,
+          "sha256": "ef246328bfb07082e7a1d86abf29b927da70935bf52eff42c166f6905e584586"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "q38o1",
+          "role": "option",
+          "item_id": 38,
+          "sha256": "c75b343171780b67bc5c02229a5a2ccf473d2002a6d12921c7bc5d4c6b446755"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "q38o2",
+          "role": "option",
+          "item_id": 38,
+          "sha256": "54704a8c6bdd5d272b7f9bf6fbc165179f588ccb7db2ad172d55e24bdc857ab4"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "q38o3",
+          "role": "option",
+          "item_id": 38,
+          "sha256": "c0944f444c784080a294d87a998e48f3612f34005517cd992cdcd1a90d03cb28"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "q39",
+          "role": "prompt",
+          "item_id": 39,
+          "sha256": "e180abdc4fdaa53cdf359774895d9b37308309979810939ea81f796f5ca7d28f"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "q39o0",
+          "role": "option",
+          "item_id": 39,
+          "sha256": "10a2429e18c2a24d9526702949f5e057ce9f6072b4e4c2a5bf290f8d8984fbec"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "q39o1",
+          "role": "option",
+          "item_id": 39,
+          "sha256": "6f2de48423a455b84bcdffdb045d64fa0f314ededdba527caa47686d52970d4b"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            24,
+            "text"
+          ],
+          "id": "q39o2",
+          "role": "option",
+          "item_id": 39,
+          "sha256": "8f06cdbf59ff3fe356e3c6c50687fffdedb7ae9336d845152c57c78dd28de728"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            25,
+            "text"
+          ],
+          "id": "q39o3",
+          "role": "option",
+          "item_id": 39,
+          "sha256": "809c4f5bd8e9c804d50900bd93de9d2b43214bc65c1d3f66529921685ee82f9f"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "source_image_scopes": [
+        "page6: readingB full text and question36/four options; footer/watermark excluded",
+        "page7: readingB questions37-39/twelve options only; following readingC excluded"
+      ]
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}

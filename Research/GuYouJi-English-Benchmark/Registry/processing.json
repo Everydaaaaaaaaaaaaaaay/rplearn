@@ -23629,6 +23629,102 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "grade8-xicheng2025-two-image-source-transcriptions20261015n-v0.1",
+      "source_acquisition_ids": [
+        "bj-grade8-xicheng2025upper-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p03-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p04-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p06-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p07-20261013"
+      ],
+      "tool": "manual_original_page_visual_transcription",
+      "tool_version": "0.1",
+      "parameters": [
+        "Four existing original PNG pages actually read; two complete selected student text transcriptions, no keys or adjacent group; source blank glyphs normalized by author; not independent/rights/student/production gold"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/grade8-xicheng2025-two-image-source-transcriptions20261015n-v0.1.json",
+          "bytes": 18824,
+          "sha256": "6111d5e8567307739b8170224e66c30e3e2dd2727e2e474704bab47b3ab94684",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "image-transcribed-family-audit20261015n-v0.1",
+      "source_acquisition_ids": [
+        "bj-grade8-xicheng2025upper-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p03-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p04-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p06-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p07-20261013"
+      ],
+      "tool": "Tools/audit_image_transcribed_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Four existing original PNG pages actually read; two complete selected student text transcriptions, no keys or adjacent group; source blank glyphs normalized by author; not independent/rights/student/production gold"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/image-transcribed-family-audit20261015n-v0.1.json",
+          "bytes": 105974,
+          "sha256": "f67287cf962610bf343b6d7e0d807dc64117e3cf52c4295d7d2993ca054c7514",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "image-transcribed-preparation-checks20261015n-v0.1",
+      "source_acquisition_ids": [
+        "bj-grade8-xicheng2025upper-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p03-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p04-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p06-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p07-20261013"
+      ],
+      "tool": "Tools/audit_image_transcribed_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Four existing original PNG pages actually read; two complete selected student text transcriptions, no keys or adjacent group; source blank glyphs normalized by author; not independent/rights/student/production gold"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/image-transcribed-preparation-checks20261015n-v0.1.json",
+          "bytes": 1984,
+          "sha256": "1f95baae1a444efac9108d4ac48dae69c26e19c748f67be886382c580147d22c",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "image-transcribed-request20261015n-v0.1",
+      "source_acquisition_ids": [
+        "bj-grade8-xicheng2025upper-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p03-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p04-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p06-20261013",
+        "firstrelease-bj-grade8-xicheng2025upper-p07-20261013"
+      ],
+      "tool": "source_bound_preparation_fixture",
+      "tool_version": "0.1",
+      "parameters": [
+        "Four existing original PNG pages actually read; two complete selected student text transcriptions, no keys or adjacent group; source blank glyphs normalized by author; not independent/rights/student/production gold"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/image-transcribed-request20261015n-v0.1.json",
+          "bytes": 1734,
+          "sha256": "1ad25ce198fd14926f55de5aa2233bfee8ff5a50c67b1f09f2edd1d856564162",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
