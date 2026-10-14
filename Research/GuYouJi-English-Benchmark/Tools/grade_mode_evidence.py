@@ -15,7 +15,7 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
 BATCH = BASE / 'FirstRelease/Sampling/grade-mode-batch20261015-v0.1.json'
-CURRENT_BATCHES = BASE / 'FirstRelease/Sampling/current-batches-v0.3.json'
+CURRENT_BATCHES = BASE / 'FirstRelease/Sampling/current-batches-v0.4.json'
 
 
 def load_ref(ref):

@@ -22854,6 +22854,67 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "grade7-jinan2025-21cnjy24695341-native-v0.2",
+      "source_acquisition_id": "grade7-jinan2025-21cnjy24695341",
+      "source_sha256": "22df5766a839c2c2e88da4fba113c2c4a8a9ec21518c242b720b34118b143afb",
+      "tool": "Tools/extract_21cnjy_resource_text.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "One assets-intro; BR boundaries; preserve split candidates and missing images; no source-key repair"
+      ],
+      "manifest": "build/english-benchmark-research-20261012/extract-school-expansion20261015e-v0.2.json",
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/grade7-jinan2025-21cnjy24695341.html",
+          "output": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+          "bytes": 17518,
+          "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "school-material-families20261015e-v0.2",
+      "source_acquisition_id": "grade7-jinan2025-21cnjy24695341",
+      "source_sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe",
+      "tool": "Tools/audit_school_material_families.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen19 replay; tracked9 new source-span views; 28 materials/378 pairs; partial map group text only; no all-library family proof"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+          "output": "build/english-benchmark-research-20261012/school-material-family-audit20261015e-v0.2.json",
+          "bytes": 153803,
+          "sha256": "4876dc4d389a2cb9560df7771a4d2102671b639262ecda79907dd1ff7d910525",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "jinan-preparation20261015e-v0.1",
+      "source_acquisition_id": "grade7-jinan2025-21cnjy24695341",
+      "source_sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe",
+      "tool": "Tools/grade_mode_evidence.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "9 local control checks; exact shape, grade, missing inputs, mixed heading, gold/production claims, changed/overlapping offsets; no model call"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "source": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+          "output": "build/english-benchmark-research-20261012/jinan-preparation-checks20261015e-v0.1.json",
+          "bytes": 1543,
+          "sha256": "11a5afccf387c385ec2d66577b7aa29e24cc416b9dd1cfbbfef5e558c93329e4",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

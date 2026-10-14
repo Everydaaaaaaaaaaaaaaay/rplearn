@@ -1,0 +1,310 @@
+{
+  "version": "0.1",
+  "observed_on": "2026-10-15",
+  "scope": "grades7_to12_only",
+  "unit": "selected_written_task_structure_records_not_verified_answer_gold",
+  "baseline_mode_inventory": {
+    "path": "FirstRelease/operational-mode-inventory-v0.3.json",
+    "sha256": "0b5222e82085721e2b72bbe950c3996b56d2a1890045a6064f07c76664a80033"
+  },
+  "baseline_source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "papers": [
+    {
+      "id": "grade7-jinan2025-21cnjy24695341",
+      "grade": 7,
+      "province": "山东",
+      "region": "山东济南东南片区",
+      "semester": "上",
+      "year": "2025-2026",
+      "exam_kind": "期中",
+      "minutes": 120,
+      "points": 150,
+      "metadata_identity_in_resource_text": true,
+      "limitations": [
+        "正文第一学期期中/七年级/2025.11明示；济南东南片区是公开题名标签，原校发布未认证",
+        "正文原称九页但未取得原DOCX；公开HTML可读不等原九页齐备",
+        "阅读C第33四幅地图缺，写作要求图片缺；下划线和词间断行未原版核验",
+        "插入七项完整可读但E的world被分断，保留原件且不据此测精确词数",
+        "VI实为15句语法空，不是单篇阅读填空；74给go参考to go，不限所有空一词",
+        "翻译十个句子只有首题印76；参考含标点丢失，不当唯一答案",
+        "听力仅题面20响应及源键，无音频/原文；不计完整听力包",
+        "向日葵生长精确时间及农场实体/联系电话未经事实复核；源键未独立裁决"
+      ],
+      "rows": [
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.readingA",
+          "locator": "II. 阅读理解",
+          "locator_line_1based": 68,
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "A",
+              "necessary_input_complete": true,
+              "input": "three_room_profiles",
+              "missing_map_candidates": false,
+              "points_each": 2,
+              "source_underlines_not_preserved": false
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.readingB",
+          "locator": "II. 阅读理解",
+          "locator_line_1based": 68,
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "B",
+              "necessary_input_complete": true,
+              "input": "farm_notice",
+              "missing_map_candidates": false,
+              "points_each": 2,
+              "source_underlines_not_preserved": false
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.readingC",
+          "locator": "II. 阅读理解",
+          "locator_line_1based": 68,
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "C",
+              "necessary_input_complete": false,
+              "input": "text_and_map_options",
+              "missing_map_candidates": true,
+              "points_each": 2,
+              "source_underlines_not_preserved": true
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.readingD",
+          "locator": "II. 阅读理解",
+          "locator_line_1based": 68,
+          "shape": {
+            "grade": 7,
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "D",
+              "necessary_input_complete": true,
+              "input": "text",
+              "missing_map_candidates": false,
+              "points_each": 2,
+              "source_underlines_not_preserved": true
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.insertion",
+          "locator": "III. 阅读理解七选五",
+          "locator_line_1based": 138,
+          "shape": {
+            "grade": 7,
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit",
+              "headings_are_slots": false,
+              "slot_positions": "introduction_and_four_student_paragraphs",
+              "points_each": 2,
+              "candidate_E_word_fragmented_across_lines": true,
+              "candidate_layout_not_original_docx_verified": true
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.dialogue",
+          "locator": ")IV. 补全对话",
+          "locator_line_1based": 172,
+          "shape": {
+            "grade": 7,
+            "family": "dialogue_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "shared_options": null,
+              "options_are_per_blank": true,
+              "source_candidate_C_has_c_or_v_prefix_artifact": true,
+              "points_each": 1
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.cloze",
+          "locator": "V. 完形填空",
+          "locator_line_1based": 196,
+          "shape": {
+            "grade": 7,
+            "family": "choice_cloze",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "points_each": 1.5
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+          "locator": "VI. 阅读填空",
+          "locator_line_1based": 212,
+          "shape": {
+            "grade": 7,
+            "family": "sentence_form",
+            "responses": 15,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 15,
+              "given_word_slots": 10,
+              "ungiven_slots": 5,
+              "response_policy": "ungiven_one_word_given_correct_form",
+              "reference_contains_multiword_forms": true,
+              "source_key_multiword_forms": {
+                "74": "to go"
+              },
+              "source_label_is_not_passage_material": "阅读填空",
+              "points_each": 1,
+              "isolated_context_answer_uniqueness_not_established": true
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.translation",
+          "locator": "A. 汉译英 根据汉语意思",
+          "locator_line_1based": 231,
+          "shape": {
+            "grade": 7,
+            "family": "sentence_translation",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 10,
+              "whole_sentence_outputs": true,
+              "points_each": 2,
+              "only_first_prompt_has_printed_number": true,
+              "reference_set_is_not_exhaustive": true
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade7-jinan2025-21cnjy24695341.writing",
+          "locator": "作文（25分）",
+          "locator_line_1based": 252,
+          "shape": {
+            "grade": 7,
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": false,
+              "missing_required_picture": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "email_introduce_personal_life",
+              "points": 25,
+              "rubric_acquired": false,
+              "model_answer_acquired": false
+            }
+          },
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "title": "山东省济南市东南片区2025-2026学年七年级上学期期中英语试题（含答案，无听力原文及音频",
+      "url": "https://zy.21cnjy.com/24695341",
+      "source_id": "school-mode-expansion.21cnjy.public-reposts",
+      "acquisition_id": "grade7-jinan2025-21cnjy24695341",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-jinan2025-21cnjy24695341.html",
+        "sha256": "22df5766a839c2c2e88da4fba113c2c4a8a9ec21518c242b720b34118b143afb"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication",
+      "listening_companion_status": {
+        "responses_in_question_sheet": 20,
+        "source_key_visible": true,
+        "transcript_acquired": false,
+        "audio_acquired": false,
+        "complete_listening_input": false
+      }
+    }
+  ],
+  "paper_count": 1,
+  "structural_record_count": 10,
+  "observed_written_response_positions": 66,
+  "excluded_candidates": [],
+  "counts_not_added_to_frozen_paired117_or_author53": true,
+  "cross_passage_family_deduplication_complete": false,
+  "exclusive_grade_claims": [],
+  "population_typical_ranges_established": false
+}
