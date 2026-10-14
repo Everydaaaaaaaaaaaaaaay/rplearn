@@ -12,6 +12,8 @@
 
 新增原创：[初二局部概念三题四选](Studies/2026-10-14-grade8-local-concept-reading-and-option-load.md)C/D/B十二位置作者解；源399/24/66对新349/28/106，正文少50但选项多40，不能称等难。扩展18/65、全部44/280，已并组合0.12的44/280，旧0.11保持43/277冻结边界；未新增请求/教师/学生/模型验收。
 
+新增初一词汇：[18选项词性/上标与源weather动词](Studies/2026-10-14-grade7-option-POS-homograph-and-source-weather-verb.md)17精确＋1有据refuse¹，before/after连词A2不取介词A1、lost动词不取形容词；weather v.等级未知不套名词A1/topicC2。选项分布不作全文或中国初一标定，查询在33之后。
+
 当前保存：[第33独立恢复](Studies/2026-10-14-checkpoint33-current-expansions-and-seventeen-input-recovery.md)7282文件全严格COW/SHA/不同inode；当前46/290十方式、17请求、源117/722/20、卡14/12、源36/核心17及出版社8原生/8PNG、概念字典8sense和三新作者/负荷可恢复。旧0.13顶层错误仍拒绝，33自身/之后下一批；未异机/完整环境/教育/商用/模型。
 
 此前保存：[第32独立恢复](Studies/2026-10-14-checkpoint32-new-grade8-sources-and-continuation-recovery.md)7145文件全严格COW/SHA/不同inode；现43/277九方式、117/722/20源、36源/17核心、十四请求及13源11作者阅读卡、26新原生页/PNG与34标签可恢复，响应/源/队列逐字复算。32自身/之后留下一批，未异机/完整环境或教育/商用/模型验收。
