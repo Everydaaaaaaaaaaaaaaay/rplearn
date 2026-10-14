@@ -1,0 +1,2158 @@
+{
+  "version": "0.1",
+  "scope": "187 new-structure source views/20 parents;26writing inputs added;117baseline remains",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+    "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/school-material-family-audit20261015j-v0.1.json",
+    "sha256": "eecbc483d334ffc5cd80d1f1023a57d3c44c576a80aec459fa8ce7b116ddd736"
+  },
+  "views": [
+    {
+      "group_id": "grade7-suzhou2025-21cnjy23303742.writing",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+        "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+      },
+      "start_offset": 18454,
+      "end_offset": 18603,
+      "material_sha256": "53cc39249062300eafcf1661116a05c9521b047ab1e2ece22d740f44d2fc0775",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 18,
+          "end": 22,
+          "literal": "57. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_title",
+          "start_offset": 18664,
+          "end_offset": 18691,
+          "sha256": "958ffabf80b5cd9c678e604128fa2a0d6311dbebde8bc139f572afc2f426a5d4",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_opening",
+          "start_offset": 18692,
+          "end_offset": 18796,
+          "sha256": "5f98e35e6d3003945a9b0340a9e2f3b137c3b857f47d66f0de132a0181d32928",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 19092,
+          "end_offset": 19165,
+          "sha256": "2e8350a418720fb59f535cd1fbce7df3fa7964dc8a8053aaaa041372cd81d69d",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 18604,
+          "end_offset": 18663,
+          "sha256": "de93cd1d950667949175f3c90f766f2e2e4aea565c6bb3a56d35238c4118b4f0",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 18454,
+          "end_offset": 18603,
+          "sha256": "53cc39249062300eafcf1661116a05c9521b047ab1e2ece22d740f44d2fc0775",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 90,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1,
+          2
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Only title/opening explicitly excluded from target; printed closing exclusion unknown"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade8-xiaoshan2025-21cnjy22251031.email",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "start_offset": 16656,
+      "end_offset": 16772,
+      "material_sha256": "4116aff94ace0a688adc5b2907d19bbe8d5a2fe988b680bb4c24b0fc74516a07",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 23,
+          "end": 26,
+          "literal": "76.",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "email_header",
+          "start_offset": 16856,
+          "end_offset": 16866,
+          "sha256": "ed9b945b0c1fee415c0a58fc1face1d8356e9611ef13e9b965c0017e31578243",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "email_header",
+          "start_offset": 16867,
+          "end_offset": 16913,
+          "sha256": "ad5135e728527171f3ca17876b0d1f6b17a814a85eed51ca0cfabe6a77bd1012",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_opening",
+          "start_offset": 16914,
+          "end_offset": 16940,
+          "sha256": "be873aae73b5b9a6c1295606c5a6c0ab12daa79dfc6c9fe3a077314965b6f0d1",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 16964,
+          "end_offset": 17008,
+          "sha256": "a53f10fe635fed7b2dda0c4186ab48015bba938af365cffd400653d1d10cc480",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 16773,
+          "end_offset": 16855,
+          "sha256": "31f46e6ec13c82964349eaa679055d070c20c7ab639347a6ac1e0c4aee65781f",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 16656,
+          "end_offset": 16772,
+          "sha256": "4116aff94ace0a688adc5b2907d19bbe8d5a2fe988b680bb4c24b0fc74516a07",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          4
+        ],
+        "fixed_student_components": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "plan_table",
+          "invitation_card"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade9-chengdu2025-21cnjy23208601.speech",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+        "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+      },
+      "start_offset": 30325,
+      "end_offset": 30434,
+      "material_sha256": "2dc596276488794ff926d07367684e1c6f528f48d106534aa128be2693d1f628",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 13,
+          "end": 17,
+          "literal": "81. ",
+          "role": "material_label"
+        },
+        {
+          "start": 86,
+          "end": 88,
+          "literal": "1．",
+          "role": "material_label"
+        },
+        {
+          "start": 99,
+          "end": 101,
+          "literal": "2．",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "student_instruction",
+          "start_offset": 30435,
+          "end_offset": 30534,
+          "sha256": "e6ccd8fd1e4e5b833e76d6afb574f2a6e823db13ac6095de820e6c07df115a51",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 30325,
+          "end_offset": 30434,
+          "sha256": "2dc596276488794ff926d07367684e1c6f528f48d106534aa128be2693d1f628",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          0
+        ],
+        "fixed_student_components": [],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "survey_chart"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade10-shenzhenlower2026-21cnjy26167651.pictureContinuation",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "start_offset": 22679,
+      "end_offset": 22771,
+      "material_sha256": "b9dc6340b6cbed698e5e2f2adf943adff53aceaa64b8be24529c04834d7afbb4",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "vocabulary_hint",
+          "start_offset": 22799,
+          "end_offset": 22824,
+          "sha256": "c520bf5202749e130aa97a3c1bc90a43143a13b929bfc309833eb96cf53ad435",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_opening",
+          "start_offset": 22825,
+          "end_offset": 22908,
+          "sha256": "d37946e80e46d00c4cf341601c2ea21fc9eeefac7c2e52e310c7a3c113a25245",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_title",
+          "start_offset": 22909,
+          "end_offset": 22923,
+          "sha256": "773680511249b85d3d39964d2c21bf82c016ac0579d2ad36f894ca93b539a5c4",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 22772,
+          "end_offset": 22798,
+          "sha256": "d2dbd3414d36b15b111915c2d759886cd9fa0057eb65188580aa272d364f8c64",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 22679,
+          "end_offset": 22771,
+          "sha256": "b9dc6340b6cbed698e5e2f2adf943adff53aceaa64b8be24529c04834d7afbb4",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 70,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1,
+          2
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "story_panels_and_role_assignments"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade10-shenzhenlower2026-21cnjy26167651.speech",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "start_offset": 22924,
+      "end_offset": 23017,
+      "material_sha256": "81b8f68f65097394301d8be41c696d8ba5825c21f563fcc7d249a2e60853f619",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 74,
+          "end": 77,
+          "literal": "(1)",
+          "role": "material_label"
+        },
+        {
+          "start": 85,
+          "end": 88,
+          "literal": "(2)",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 23060,
+          "end_offset": 23144,
+          "sha256": "59c254c2fbbe5899e9a0ac02837ea110b21cbbd5791c310b969994986e226ac9",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 23149,
+          "end_offset": 23173,
+          "sha256": "313980c3e713c3d4b9c217ed346a3e359403e05b3b426789c005d76f09a54040",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 23018,
+          "end_offset": 23059,
+          "sha256": "b2454db219938d719712ecd167ee6f699e9c692b8a63dd732537b4207a6b9b0c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 22924,
+          "end_offset": 23017,
+          "sha256": "81b8f68f65097394301d8be41c696d8ba5825c21f563fcc7d249a2e60853f619",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          2
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "campus_proposals"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade11-yinchuan2026-21cnjy25860535.application",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-resource-v0.2.txt",
+        "sha256": "81f0da5e7adc85c609a87d380ccb103ec8bb10fd8bda65e129a0d24575c5c3fb"
+      },
+      "start_offset": 18842,
+      "end_offset": 18931,
+      "material_sha256": "fd64b56c7734a7d2c5c3766bd00f0d56cf9d24b6ce904609ba014adc29282491",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 11,
+          "end": 15,
+          "literal": "46. ",
+          "role": "material_label"
+        },
+        {
+          "start": 69,
+          "end": 72,
+          "literal": "1. ",
+          "role": "material_label"
+        },
+        {
+          "start": 78,
+          "end": 81,
+          "literal": "2. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_title",
+          "start_offset": 18970,
+          "end_offset": 19001,
+          "sha256": "3400d1969d420f3c1288b816b8935388bfff7b2d869ad0f7ee04229a165247f1",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 18932,
+          "end_offset": 18969,
+          "sha256": "d1082408bc3e18bc0ce29c0e88ea4cf1bddc21e2a9401095ff59f13c609311de",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 18842,
+          "end_offset": 18931,
+          "sha256": "fd64b56c7734a7d2c5c3766bd00f0d56cf9d24b6ce904609ba014adc29282491",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          1
+        ],
+        "fixed_student_components": [
+          0
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade11-yinchuan2026-21cnjy25860535.continuation",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-resource-v0.2.txt",
+        "sha256": "81f0da5e7adc85c609a87d380ccb103ec8bb10fd8bda65e129a0d24575c5c3fb"
+      },
+      "start_offset": 19523,
+      "end_offset": 21421,
+      "material_sha256": "ed009e913e8a50be01d50209c78789cf88fa90ee66efe0090ff1ea12f67a373a",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": null,
+      "components": [
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 21463,
+          "end_offset": 21526,
+          "sha256": "5d77a087555f65a0752915a6162b24795800018ec37fa3259e26d779d62ac456",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 21936,
+          "end_offset": 22014,
+          "sha256": "873087a1cc8001551f5b897b3d4efdda1a97f2182fd48dba5a6a56507194154f",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "task_brief",
+          "start_offset": 19468,
+          "end_offset": 19523,
+          "sha256": "510d61b186e0c2a7eb477eb44b0c388908c91d85459455f47b8e1dde9b871aa9",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 21422,
+          "end_offset": 21462,
+          "sha256": "8cc3317dc33bb4a490b45f14f90a0eff70e49dd03c54b36b05538fff2e7793d5",
+          "excluded_offsets": []
+        },
+        {
+          "role": "continuation_narrative",
+          "start_offset": 19523,
+          "end_offset": 21421,
+          "sha256": "ed009e913e8a50be01d50209c78789cf88fa90ee66efe0090ff1ea12f67a373a",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 2,
+        "output_paragraphs": 2,
+        "word_target": 150,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [
+          0,
+          1
+        ],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "continuation_narrative",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade12-tianjin2025-21cnjy24812550.writing",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+        "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+      },
+      "start_offset": 18937,
+      "end_offset": 19127,
+      "material_sha256": "56da26ac3f0fbc946aa4382f7994779486bf8d7b2139ef0695a74ac4328c2f65",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 7,
+          "end": 11,
+          "literal": "61. ",
+          "role": "material_label"
+        },
+        {
+          "start": 134,
+          "end": 136,
+          "literal": "1．",
+          "role": "material_label"
+        },
+        {
+          "start": 149,
+          "end": 151,
+          "literal": "2．",
+          "role": "material_label"
+        },
+        {
+          "start": 183,
+          "end": 185,
+          "literal": "3．",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "vocabulary_hint",
+          "start_offset": 19165,
+          "end_offset": 19218,
+          "sha256": "af31e7ec82d78ee06fbb15c52d2a3b7f6c48564e0788a4e653c5be148056b317",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 19128,
+          "end_offset": 19165,
+          "sha256": "c93d3bf3746fc2bed0b454724ac490fe1cbfc4be119d058e99bc87cc3e3a51df",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 18937,
+          "end_offset": 19127,
+          "sha256": "56da26ac3f0fbc946aa4382f7994779486bf8d7b2139ef0695a74ac4328c2f65",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 100,
+        "target_relation": "at_least",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          1
+        ],
+        "fixed_student_components": [
+          0
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade7-wuhan2025-21cnjy23303148.diary",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "start_offset": 14623,
+      "end_offset": 14824,
+      "material_sha256": "fe4eec82a0f160be0b4cc4a9e6767297452f94f3a99b38ec47974b588d7e0fa6",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 14,
+          "end": 18,
+          "literal": "56. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "date_header",
+          "start_offset": 14868,
+          "end_offset": 14891,
+          "sha256": "175b58b40b6e1fdb6bfccccbe171b576e177ccfa40782e5c941d272749d1501f",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_opening",
+          "start_offset": 14892,
+          "end_offset": 14950,
+          "sha256": "4b34a2b78d76378cce5f5bf091dd5b58395b32ad4ad18322e4fef7a8d7e9abbd",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 15241,
+          "end_offset": 15293,
+          "sha256": "7eeb5bab266da46597c0b7b275b5cd0225797cab7c25aaf36f583f16b0b36951",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 14825,
+          "end_offset": 14867,
+          "sha256": "6e4cd25b21593972048da4b043164652c0b74826ba3c90c133651d18c1f26928",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 14623,
+          "end_offset": 14824,
+          "sha256": "fe4eec82a0f160be0b4cc4a9e6767297452f94f3a99b38ec47974b588d7e0fa6",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1,
+          2
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade7-hefei2025-21cnjy26607976.speech",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+        "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+      },
+      "start_offset": 10701,
+      "end_offset": 10816,
+      "material_sha256": "999943436f30241d644ea82099c8677d9af6e675b6e93efb8157dcfc6580c877",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 19,
+          "end": 23,
+          "literal": "81. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_title",
+          "start_offset": 10897,
+          "end_offset": 10921,
+          "sha256": "0026e7eb713708eae5a4e800f4350499d7047481758d4f3d6df9e171790fa76d",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_opening",
+          "start_offset": 10922,
+          "end_offset": 11009,
+          "sha256": "6e10e6a7a258ca7671830ba7be29fed73b4dd4542ede22eb7c76cc287b7895bb",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 11391,
+          "end_offset": 11446,
+          "sha256": "c2d0f49b52fdb69fccb737732598738999806884c1ad4a5f66d82e932776ba9f",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 10817,
+          "end_offset": 10896,
+          "sha256": "ae0c1a46355a6be398e3541657db9d967667bab34fe2c0e7b49578f6c27bd623",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 10701,
+          "end_offset": 10816,
+          "sha256": "999943436f30241d644ea82099c8677d9af6e675b6e93efb8157dcfc6580c877",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 70,
+        "target_relation": "at_least",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1,
+          2
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "advice_prompt_figure"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it",
+        "Opening/closing excluded explicitly; printed title exclusion unknown"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade8-hubei2026-21cnjy26105408.forumReply",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "start_offset": 13276,
+      "end_offset": 13638,
+      "material_sha256": "3682dde3e9e321f2573e89dd1eacbe2b78adb4871a1bc95ddeb5553dc7ff8b13",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": null,
+      "components": [
+        {
+          "role": "task_brief",
+          "start_offset": 13150,
+          "end_offset": 13219,
+          "sha256": "7c694a2ffec23dbd11c10bb88d44435af17e98adfcabfe89e7aacd922021e963",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13219,
+          "end_offset": 13275,
+          "sha256": "6d07290906b9e6ea1aa64391670bb8ebe63127bb3477d16324cce1565845b98c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "response_label",
+          "start_offset": 13639,
+          "end_offset": 13645,
+          "sha256": "5beeef31cf7344eb5ef4090bef6ff1fac6e8cf146a2cd271c9fa3001e9ddabfa",
+          "excluded_offsets": []
+        },
+        {
+          "role": "required_forum_post",
+          "start_offset": 13276,
+          "end_offset": 13638,
+          "sha256": "3682dde3e9e321f2573e89dd1eacbe2b78adb4871a1bc95ddeb5553dc7ff8b13",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 70,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          1
+        ],
+        "fixed_student_components": [],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": true,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "required_forum_post",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Source writing prints49, colliding with previous table49; use group-qualified response identity"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade12-tianjinlower2025-21cnjy22402528.speech",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+        "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+      },
+      "start_offset": 23272,
+      "end_offset": 23439,
+      "material_sha256": "60d6d76a3cfbc403a41159010267d694efaa4300f4869405f06e4bef119b8706",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 17,
+          "end": 21,
+          "literal": "61. ",
+          "role": "material_label"
+        },
+        {
+          "start": 105,
+          "end": 108,
+          "literal": "(1)",
+          "role": "material_label"
+        },
+        {
+          "start": 133,
+          "end": 136,
+          "literal": "(2)",
+          "role": "material_label"
+        },
+        {
+          "start": 149,
+          "end": 152,
+          "literal": "(3)",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "student_instruction",
+          "start_offset": 23440,
+          "end_offset": 23480,
+          "sha256": "c993074a043803e0b1264cc60823080808ec24505ede9fa7837ec803d76741ae",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 23272,
+          "end_offset": 23439,
+          "sha256": "60d6d76a3cfbc403a41159010267d694efaa4300f4869405f06e4bef119b8706",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 120,
+        "target_relation": "at_least",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          0
+        ],
+        "fixed_student_components": [],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade11-tianjin2026-21cnjy26082071.surveyWriting",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+        "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+      },
+      "start_offset": 22159,
+      "end_offset": 22290,
+      "material_sha256": "7b81fcb7fd7702eed3be9a7dc5a4b7cd24865a3645d39f70ead0e49365395cf6",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 16,
+          "end": 20,
+          "literal": "71. ",
+          "role": "material_label"
+        },
+        {
+          "start": 90,
+          "end": 93,
+          "literal": "1. ",
+          "role": "material_label"
+        },
+        {
+          "start": 101,
+          "end": 104,
+          "literal": "2. ",
+          "role": "material_label"
+        },
+        {
+          "start": 117,
+          "end": 120,
+          "literal": "3. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "student_instruction",
+          "start_offset": 22291,
+          "end_offset": 22333,
+          "sha256": "7ce2257a4f83ffcd99491d301d27b8e4d13649f0e2be6e246c9694fd78a58466",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 22159,
+          "end_offset": 22290,
+          "sha256": "7b81fcb7fd7702eed3be9a7dc5a4b7cd24865a3645d39f70ead0e49365395cf6",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 120,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          0
+        ],
+        "fixed_student_components": [],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "survey_bar_chart"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it",
+        "Survey concerns high3 students; paper/task remains grade11; example percentages are not acquired chart"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade9-boxing2025-21cnjy24857076.speech",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "start_offset": 17634,
+      "end_offset": 17760,
+      "material_sha256": "0cda07ac7c9b038c2c973a01ccceb2684030f55b0126ec4aff53966b49f68957",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 17,
+          "end": 21,
+          "literal": "61. ",
+          "role": "material_label"
+        },
+        {
+          "start": 83,
+          "end": 86,
+          "literal": "1. ",
+          "role": "material_label"
+        },
+        {
+          "start": 93,
+          "end": 96,
+          "literal": "2. ",
+          "role": "material_label"
+        },
+        {
+          "start": 117,
+          "end": 120,
+          "literal": "3. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 17829,
+          "end_offset": 17911,
+          "sha256": "131bda0b9a35ca259123959867e9a2e03e063efe63fd206c0a488835963a2213",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 17761,
+          "end_offset": 17828,
+          "sha256": "8057951f9d50e63efc785d7207e630ce06377bef42dd0792ef7bdbeba52f0c60",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 17634,
+          "end_offset": 17760,
+          "sha256": "0cda07ac7c9b038c2c973a01ccceb2684030f55b0126ec4aff53966b49f68957",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          1
+        ],
+        "fixed_student_components": [
+          0
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade9-zhongshan2025-21cnjy22278047.letter",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "start_offset": 15761,
+      "end_offset": 15880,
+      "material_sha256": "74c6d92306ea85492f4766476d63fc8d71fc09198741175bcb1e2943e5d56efb",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 50,
+          "end": 53,
+          "literal": "56.",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 15977,
+          "end_offset": 16005,
+          "sha256": "6743cb82ddba648659b9f0375cfd1356b24c162575412112694650394be56678",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 16006,
+          "end_offset": 16059,
+          "sha256": "1076345e69d9cddc3b3b2cd34c29828e1ab7d9af921e719b968088f91a2009d5",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 15881,
+          "end_offset": 15976,
+          "sha256": "ab9be868649696607648c91d064c0625a531dae6ba73c8b2a2a23fc7f712b0bb",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 15761,
+          "end_offset": 15880,
+          "sha256": "74c6d92306ea85492f4766476d63fc8d71fc09198741175bcb1e2943e5d56efb",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          2
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "travel_mind_map"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade10-jinhua2025-21cnjy22399612.article",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+        "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+      },
+      "start_offset": 19740,
+      "end_offset": 19850,
+      "material_sha256": "f297d14acf76eca9204449cf3b7e236833744263f3f446b20f41ecd8116a7586",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 18,
+          "end": 22,
+          "literal": "71. ",
+          "role": "material_label"
+        },
+        {
+          "start": 95,
+          "end": 97,
+          "literal": "1.",
+          "role": "material_label"
+        },
+        {
+          "start": 103,
+          "end": 105,
+          "literal": "2.",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_title",
+          "start_offset": 19892,
+          "end_offset": 19919,
+          "sha256": "025ced8aa8d722b5709ce89e4f846b3b6f3ab92bdb1a29034f3415c7468e43be",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 19851,
+          "end_offset": 19891,
+          "sha256": "99a00eee7116f185a58302914700ef42f6829357f06e1977b59e51ff8630eb1c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 19740,
+          "end_offset": 19850,
+          "sha256": "f297d14acf76eca9204449cf3b7e236833744263f3f446b20f41ecd8116a7586",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 100,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          1
+        ],
+        "fixed_student_components": [
+          0
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade10-weishi2026-21cnjy25962499.mail",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-weishi2026-21cnjy25962499-resource-v0.2.txt",
+        "sha256": "c5448cc7fb844a98f39edfd81ed94577f924a317bd815673d9bff118e9328e8f"
+      },
+      "start_offset": 14511,
+      "end_offset": 14622,
+      "material_sha256": "62b1e6dadbf6e347bcd5dddf03da3a7f2ebc2ebd3c56856846dc104204e91325",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 0,
+          "end": 4,
+          "literal": "46. ",
+          "role": "material_label"
+        },
+        {
+          "start": 92,
+          "end": 95,
+          "literal": "1. ",
+          "role": "material_label"
+        },
+        {
+          "start": 103,
+          "end": 106,
+          "literal": "2. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 14658,
+          "end_offset": 14669,
+          "sha256": "58985b8a5a5cca49a1daa672274e406ddac2c5eefbd7352114d65e988a23eb2f",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 14962,
+          "end_offset": 14982,
+          "sha256": "0a5f7381d78cddfc930ad25e7748685f182453e599055d27e10f35fd78cb0545",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 14623,
+          "end_offset": 14657,
+          "sha256": "c385941a12801a85eceb2ccfb640e8609fe292eb168417bdbc5a5f5403dac82a",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 14511,
+          "end_offset": 14622,
+          "sha256": "62b1e6dadbf6e347bcd5dddf03da3a7f2ebc2ebd3c56856846dc104204e91325",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          2
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade10-weishi2026-21cnjy25962499.continuation",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-weishi2026-21cnjy25962499-resource-v0.2.txt",
+        "sha256": "c5448cc7fb844a98f39edfd81ed94577f924a317bd815673d9bff118e9328e8f"
+      },
+      "start_offset": 15036,
+      "end_offset": 16572,
+      "material_sha256": "f66d704ec7e87f87fb92b7546b608878ee2bb25cfd35bb72c1172debd96036cf",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": null,
+      "components": [
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 16613,
+          "end_offset": 16661,
+          "sha256": "159536d327519295d008d61411f7206b38a4c77a51171d0db18cc158cb162162",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 16808,
+          "end_offset": 16868,
+          "sha256": "ef1104fe702a4263ba63ad70088bed1aa339c9b8d8283fe54897727dedb8b462",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "task_brief",
+          "start_offset": 14994,
+          "end_offset": 15036,
+          "sha256": "e8131a4e7aa92cfcf7da6f23383d41648871a8faa4316d23c382b9df07c8a9c3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 16573,
+          "end_offset": 16612,
+          "sha256": "211351bdfeb33f693efb3946c9ee836d594c7d651ea81b81e488bc4c9b0c2240",
+          "excluded_offsets": []
+        },
+        {
+          "role": "continuation_narrative",
+          "start_offset": 15036,
+          "end_offset": 16572,
+          "sha256": "f66d704ec7e87f87fb92b7546b608878ee2bb25cfd35bb72c1172debd96036cf",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 2,
+        "output_paragraphs": 2,
+        "word_target": 150,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [
+          0,
+          1
+        ],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "continuation_narrative",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade11-heze2026-21cnjy24886046.mail",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+        "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+      },
+      "start_offset": 20219,
+      "end_offset": 20312,
+      "material_sha256": "70ef4b3c4172a426cb3b99d627bee0e68639a7de0ccd7a4e6661bd17795ec0b4",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 66,
+          "end": 69,
+          "literal": "（2）",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 20353,
+          "end_offset": 20364,
+          "sha256": "9ff4a94554f08b83057073b7c8f81797dbd5f4a72b8eb3aa4568b6e7eba042b1",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 20532,
+          "end_offset": 20545,
+          "sha256": "feb66e9345e78a43fc6c962243c0eefe47fd05933575f8ef63d6a329e34ce2b4",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 20313,
+          "end_offset": 20352,
+          "sha256": "501e9d815116b71cad03feb1fc36d651cb8bf595ed563fc1bb7931cef49ba895",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 20219,
+          "end_offset": 20312,
+          "sha256": "70ef4b3c4172a426cb3b99d627bee0e68639a7de0ccd7a4e6661bd17795ec0b4",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          2
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade11-heze2026-21cnjy24886046.continuation",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+        "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+      },
+      "start_offset": 20595,
+      "end_offset": 22674,
+      "material_sha256": "a5056b5dab3603e6768c6dfaa4b86d1a92069b40dad46c9aa5ad719c5b8f74f3",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": null,
+      "components": [
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 22716,
+          "end_offset": 22775,
+          "sha256": "99a7a0723cf0b9dd75bdc222dea38a3234ca5ea62f7b66c04ee8894b32870f63",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 22944,
+          "end_offset": 23004,
+          "sha256": "4895be66e7a5725932a113071638615f0c88e4b939b37e78725497148e3d45a3",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "task_brief",
+          "start_offset": 20557,
+          "end_offset": 20595,
+          "sha256": "5215aa551810ba1c9384fcd08123cacd75dc00f737ab0baa38656a69d3ffebfe",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 22675,
+          "end_offset": 22715,
+          "sha256": "d2caa6a048cb0d20dc6dcba9def38e2e1554b1f398467ffc6271252200b9aea1",
+          "excluded_offsets": []
+        },
+        {
+          "role": "continuation_narrative",
+          "start_offset": 20595,
+          "end_offset": 22674,
+          "sha256": "a5056b5dab3603e6768c6dfaa4b86d1a92069b40dad46c9aa5ad719c5b8f74f3",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 2,
+        "output_paragraphs": 2,
+        "word_target": 150,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [
+          0,
+          1
+        ],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "continuation_narrative",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade12-linyi2025-21cnjy24838709.mail",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+        "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+      },
+      "start_offset": 20306,
+      "end_offset": 20418,
+      "material_sha256": "1728195454a3a5a23c2fad4fb789508ebdb27057bad39f167720a3e6cbe424f7",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 0,
+          "end": 4,
+          "literal": "46. ",
+          "role": "material_label"
+        },
+        {
+          "start": 74,
+          "end": 77,
+          "literal": "1. ",
+          "role": "material_label"
+        },
+        {
+          "start": 91,
+          "end": 94,
+          "literal": "2. ",
+          "role": "material_label"
+        },
+        {
+          "start": 104,
+          "end": 107,
+          "literal": "3. ",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 20473,
+          "end_offset": 20483,
+          "sha256": "b9f68bfab479e22632541936b586711bb5d342e8c614f9a5379b40ae46ed8bf7",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 20880,
+          "end_offset": 20893,
+          "sha256": "feb66e9345e78a43fc6c962243c0eefe47fd05933575f8ef63d6a329e34ce2b4",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 20419,
+          "end_offset": 20472,
+          "sha256": "8c56beebfb15284283e274f9fe6d329decbd726c7beffbdee2a4409ba5f87464",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 20306,
+          "end_offset": 20418,
+          "sha256": "1728195454a3a5a23c2fad4fb789508ebdb27057bad39f167720a3e6cbe424f7",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          2
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade12-linyi2025-21cnjy24838709.continuation",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+        "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+      },
+      "start_offset": 20947,
+      "end_offset": 22810,
+      "material_sha256": "37956eb2fe7c9d2553a198c33e545ac5a1ee20317c5485bf55625fa4a4c22dd7",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": null,
+      "components": [
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 22849,
+          "end_offset": 22893,
+          "sha256": "6b17f2394c6e9bd808edbed5068cee41f63868d1db758abb8d186e8859d53811",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 23350,
+          "end_offset": 23406,
+          "sha256": "6ff55d8ccae4e5b602c4e61c627637c7b1066c1f0e1ab8f18131371f8e21e304",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "task_brief",
+          "start_offset": 20905,
+          "end_offset": 20947,
+          "sha256": "e8131a4e7aa92cfcf7da6f23383d41648871a8faa4316d23c382b9df07c8a9c3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 22811,
+          "end_offset": 22848,
+          "sha256": "7f1e52583965d062f8d16f6ced654e8b54a94ede3d9abc6fb3ab588826a8c3e1",
+          "excluded_offsets": []
+        },
+        {
+          "role": "continuation_narrative",
+          "start_offset": 20947,
+          "end_offset": 22810,
+          "sha256": "37956eb2fe7c9d2553a198c33e545ac5a1ee20317c5485bf55625fa4a4c22dd7",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 2,
+        "output_paragraphs": 2,
+        "word_target": 150,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [
+          0,
+          1
+        ],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "continuation_narrative",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade9-nanshan2026-21cnjy25758947.letter",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "start_offset": 17417,
+      "end_offset": 17521,
+      "material_sha256": "12f79374e07bbc8670c406bb42873cc974fbcbca5afd5a47e3cc23af8113eebd",
+      "expected_blank_ids": [],
+      "excluded_offsets": [
+        {
+          "start": 21,
+          "end": 24,
+          "literal": "33.",
+          "role": "material_label"
+        },
+        {
+          "start": 81,
+          "end": 84,
+          "literal": "（1）",
+          "role": "material_label"
+        },
+        {
+          "start": 91,
+          "end": 94,
+          "literal": "（2）",
+          "role": "material_label"
+        }
+      ],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_opening",
+          "start_offset": 17612,
+          "end_offset": 17675,
+          "sha256": "6c66ffce9ee434e642f64e7517f49d808878640e3f87a0223b7a19869610b6ae",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "fixed_closing",
+          "start_offset": 17686,
+          "end_offset": 17712,
+          "sha256": "6e1d88e67128c27ccaf56d580c9697db0575761ef2f04a7e20c7830cd2fa63b4",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": true
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 17522,
+          "end_offset": 17611,
+          "sha256": "e73dcc09ce6bda217ad2587460af36fee801794501549e7a2d1b4a37026ce713",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 17417,
+          "end_offset": 17521,
+          "sha256": "12f79374e07bbc8670c406bb42873cc974fbcbca5afd5a47e3cc23af8113eebd",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          2
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade12-yali2026-21cnjy25133058.article",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+        "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+      },
+      "start_offset": 21306,
+      "end_offset": 21437,
+      "material_sha256": "f3ac84b7efab447143bbb46bb89897225f3171d74c45c9c6c79eddd06fb03f51",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "fixed_title",
+          "start_offset": 21480,
+          "end_offset": 21511,
+          "sha256": "99d455b58d51d8f33809ab5537c9d8c0bb485a84397da6d072ae3003c126b427",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 21438,
+          "end_offset": 21479,
+          "sha256": "b57084043803dedc8866ff9e9a9b20f284ba31f60175f7c8ac5b3ef5fff16b85",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 21306,
+          "end_offset": 21437,
+          "sha256": "f3ac84b7efab447143bbb46bb89897225f3171d74c45c9c6c79eddd06fb03f51",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          1
+        ],
+        "fixed_student_components": [
+          0
+        ],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Provided food-waste statistics unverified; fused source title not silently respaced"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade12-yali2026-21cnjy25133058.continuation",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+        "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+      },
+      "start_offset": 21561,
+      "end_offset": 23142,
+      "material_sha256": "4dc6cb784f8068319654c457e65f159a85af72df346f5c8b9f4bb8003c55447e",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": null,
+      "components": [
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 23186,
+          "end_offset": 23271,
+          "sha256": "98ca98bcbd57376fb11facadd4921052f206a3cc7d71142cd6261a357bde7fc9",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "given_paragraph_opening",
+          "start_offset": 23272,
+          "end_offset": 23391,
+          "sha256": "9364e307543e2400320ab7d45b68fd1381a7d199e3bd5d4a9a46beb543e78453",
+          "excluded_offsets": [],
+          "excluded_from_student_word_target": null
+        },
+        {
+          "role": "task_brief",
+          "start_offset": 21512,
+          "end_offset": 21561,
+          "sha256": "0b9893b6f78c015df994a4c13b06bd382c2a97664d1b895f20439e055c4a0545",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 23143,
+          "end_offset": 23185,
+          "sha256": "8e45c6fa335d012dc35eb293995b196dbc11c14d79afa21751c17ac6ae938f6d",
+          "excluded_offsets": []
+        },
+        {
+          "role": "continuation_narrative",
+          "start_offset": 21561,
+          "end_offset": 23142,
+          "sha256": "4dc6cb784f8068319654c457e65f159a85af72df346f5c8b9f4bb8003c55447e",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 2,
+        "output_paragraphs": 2,
+        "word_target": 150,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          3
+        ],
+        "fixed_student_components": [
+          0,
+          1
+        ],
+        "given_paragraph_openings": [
+          0,
+          1
+        ],
+        "missing_required_inputs": [],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "continuation_narrative",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Source5week recovery claim and skating continuation not medical/factual validation"
+      ],
+      "source_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "grade7-jinan2025-21cnjy24695341.writing",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+        "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+      },
+      "start_offset": 14760,
+      "end_offset": 14826,
+      "material_sha256": "9c2dbe6d55b928790faff5a0302a10e3f29aec2830da7f336bd4157ff0ae32ed",
+      "expected_blank_ids": [],
+      "excluded_offsets": [],
+      "replace_exclusions_with_space": true,
+      "normalization": "bilingual_token_view",
+      "components": [
+        {
+          "role": "student_instruction",
+          "start_offset": 14827,
+          "end_offset": 14880,
+          "sha256": "0eeac7a602bc08db0dac99b0aff82bb496e3adc7b6abb882e7fdd6ef0034fa4f",
+          "excluded_offsets": []
+        },
+        {
+          "role": "writing_scenario_and_content_requirements",
+          "start_offset": 14760,
+          "end_offset": 14826,
+          "sha256": "9c2dbe6d55b928790faff5a0302a10e3f29aec2830da7f336bd4157ff0ae32ed",
+          "excluded_offsets": []
+        }
+      ],
+      "writing_contract": {
+        "task_units": 1,
+        "output_fields": 1,
+        "output_paragraphs": null,
+        "word_target": 80,
+        "target_relation": "about",
+        "target_scope": "whole_task",
+        "about_tolerance_established": false,
+        "instruction_components": [
+          0
+        ],
+        "fixed_student_components": [],
+        "given_paragraph_openings": [],
+        "missing_required_inputs": [
+          "personal_life_picture"
+        ],
+        "source_question_id_collision": false,
+        "grade_derived_from_survey_subject": false,
+        "independent_rubric_complete": false
+      },
+      "primary_input_role": "writing_scenario_and_content_requirements",
+      "comparison_scope": "selected_source_writing_input_not_output_or_rubric; required_missing_visuals_excluded_from_family_claim",
+      "source_defects": [
+        "Required visual/table input not acquired; template/sample answer cannot replace it"
+      ],
+      "source_input_status_not_upgraded": true
+    }
+  ],
+  "appended_view_count": 26,
+  "all_benchmark_deduplication_complete": false
+}

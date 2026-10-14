@@ -23374,6 +23374,123 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "school-material-family-audit20261015k-v0.1",
+      "source_acquisition_ids": [
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "Tools/audit_school_material_families.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "26writing tasks31output fields43given components; source-bound target/exclusion policies, Chinese scenario normalization explicit; not rubric/model/student/commercial/production validation"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/school-material-family-audit20261015k-v0.1.json",
+          "bytes": 1527128,
+          "sha256": "3368490d7230f5169754559d0e6e6c640c0106e608a0d2e15ed7d3b2bf851213",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "writing-layout-checks20261015k-v0.1",
+      "source_acquisition_ids": [
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "Tools/check_writing_layout.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "26writing tasks31output fields43given components; source-bound target/exclusion policies, Chinese scenario normalization explicit; not rubric/model/student/commercial/production validation"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/writing-layout-checks20261015k-v0.1.json",
+          "bytes": 16158,
+          "sha256": "fb519de9f8af0fbc53d36b4271946570edceb921e69b90844d366dc1b59de196",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "writing-layout-request20261015k-v0.1",
+      "source_acquisition_ids": [
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "source_bound_preparation_fixture",
+      "tool_version": "0.1",
+      "parameters": [
+        "26writing tasks31output fields43given components; source-bound target/exclusion policies, Chinese scenario normalization explicit; not rubric/model/student/commercial/production validation"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/writing-layout-request20261015k-v0.1.json",
+          "bytes": 2379,
+          "sha256": "253d685cb0e3777095c656ba1c89373cfd355f3d289d2e68b908aa5ef9b32b70",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

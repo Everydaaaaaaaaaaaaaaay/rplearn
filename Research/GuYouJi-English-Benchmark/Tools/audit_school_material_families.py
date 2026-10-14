@@ -7,6 +7,7 @@ only declared blank/label offsets are removed from comparison, never arbitrary n
 import argparse
 import hashlib
 import json
+import re
 from itertools import combinations
 from pathlib import Path
 from grade_mode_evidence import BASE, REPO, evidence, load_ref
@@ -16,6 +17,14 @@ from profile_task_load import count
 
 def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
+
+
+def normalize_view(text, policy=None):
+    if policy == 'bilingual_token_view':
+        return ' '.join(re.findall(r"[A-Za-z]+(?:['’][A-Za-z]+)*|\d+(?:\.\d+)?|[\u4e00-\u9fff]", text.casefold()))
+    if policy is not None:
+        raise ValueError('Unknown material normalization policy')
+    return normalized(text)
 
 
 def remove_offsets(text, offsets, separator=''):
@@ -100,7 +109,7 @@ def audit(manifest):
                 raise ValueError('Material blank-to-response mapping differs')
         measured = remove_offsets(material, case['excluded_offsets'],
                                   ' ' if case.get('replace_exclusions_with_space') else '')
-        norm = normalized(measured)
+        norm = normalize_view(measured, case.get('normalization'))
         components = {}
         for component in case.get('components', []):
             text = view[component['start_offset']:component['end_offset']]
@@ -139,6 +148,8 @@ def audit(manifest):
                      'necessary_student_input_complete': row['necessary_input_complete'],
                      'comparison_scope': case['comparison_scope'], 'source_defects': case['source_defects'],
                      'independent_answer_gold': False, 'student_minutes': None})
+        if case.get('normalization'):
+            rows[-1]['normalization'] = case['normalization']
         if case['group_id'] in bodies:
             raise ValueError('Repeated material view')
         bodies[case['group_id']] = norm
@@ -179,7 +190,7 @@ def audit(manifest):
             'review_candidates': prior_candidates + sum(c['review_candidate'] for c in comparisons),
             'screen_threshold_not_validated_plagiarism_or_family_classifier': True,
             'zero_candidates_not_proof_of_independent_origins': True,
-            'normalization_limits': ['English/digit token view ignores Chinese glosses and punctuation',
+            'normalization_limits': ['Earlier English/digit token views ignore Chinese glosses and punctuation; explicit bilingual writing views retain Chinese',
                                      'Declared blanks/labels removed; source spelling defects remain',
                                      'No semantic paraphrase detection or whole-library independence claim'],
             'all_benchmark_deduplication_complete': False, 'model_called': False}
