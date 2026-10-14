@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [初二第三源与多选百分/评分制度](Studies/2026-10-14-grade8-third-source-multiselect-graph-and-scoring-regimes.md)：12页七组40参考，三选/四空五选/50人多选458%及15分点制/七档未决；[总览0.5](FirstRelease/paired-source-overview-v0.5.json)101实例/639源响应/18父卷身份，六年级各三父身份不等总体标定。
+
 - [高一第三卷与初二免费访问边界](Studies/2026-10-14-grade10-third-source-rubrics-and-grade8-free-gate.md)：温州20页七笔试组45参考及两写作整体评分/三范文，47/67解析冲突和64much候选保留；天门实际需登录未得PDF；[总览0.4](FirstRelease/paired-source-overview-v0.4.json)94组实例/599源响应/17父卷身份。
 
 - [高三完整图文与无障碍泄题修复](Studies/2026-10-14-grade12-complete-graph-and-accessible-answer-leak-repair.md)：335正文/六份额图/五方案/三题，修掉SVGdesc提前合计54.5；当前请求通过、真实旧稿泄露拒绝；扩展原创5材料家族18点，不当独立学生验收。

@@ -6,6 +6,8 @@
 
 ## 当前进展：核心审阅包已形成，扩展与外部验证未完成
 
+当前[源总览0.5](paired-source-overview-v0.5.json)101题组实例/639参考响应/18父卷身份，核心53＋扩展48，六年级各三父身份；新增[初二C卷七组40](Expansions/Grade8Changjun2024Comparison-v0.1.md)和[草案0.3](Specifications/grade8-v0.3.md)，多选图/三选/四空五选/读答部分分、写作点制与七档缺口保留。原始来源不是独立金标准/全国覆盖，当前原创仍分核心25/205、补充1/10、扩展5/18。
+
 最新[源总览0.4](paired-source-overview-v0.4.json)为核心53＋扩展41，共94题组实例/599参考响应/17父卷身份；新增[温州高一期中](Expansions/Grade10Wenzhou2025Comparison-v0.1.md)七笔试组45与两写作整体评分/三范文，[高一草案0.3](Specifications/grade10-v0.3.md)补单篇形式/标题空/产出规则。初二天门匿名登录限制未得卷，不加计；核心和当前原创扩展5/18不变。
 
 当前[扩展原创0.5](Expansions/authored-candidate-index-v0.5.json)5材料家族18点，新增高三[完整图＋五方案阅读0.2](Expansions/grade12-library-electricity-v0.2.md)，作者C/C/B与真实无障碍泄题修复保留；[高三请求](Expansions/Grade12GraphGenerationProtocol-v0.1.md)通过且真实旧稿/九声明风险拒绝。原核心25/205、初二1/10与源87/554/16不变。
