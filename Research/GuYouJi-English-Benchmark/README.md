@@ -6,7 +6,7 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[审阅包0.24](FirstRelease/ReviewPackage-v0.24.md)、[标准0.15](FirstRelease/PracticalAuthoringStandard-v0.15.md)、[组合0.15](FirstRelease/combined-review-index-v0.15.json)**：源117/722/20；原创46家族290响应／十方式，新初一单篇六空三选312/18与源315/18配对、18位置全解。初二翻译/概念、出版社初三8/38未配对层仍保留；十四请求／阅读卡14源12作者／源36＋核心17待裁决保持。顶层计数按实际成员检查，第32纳旧43/277，本批和32自身下次实质保存，见[交付0.15](FirstRelease/DeliveryCheck-v0.15.md)。独立、学生、商用、模型和长期门槛未通过。
+- **当前统一入口：[审阅包0.25](FirstRelease/ReviewPackage-v0.25.md)、[标准0.16](FirstRelease/PracticalAuthoringStandard-v0.16.md)、[组合0.16](FirstRelease/combined-review-index-v0.16.json)**：源117/722/20；作者46/290／十方式。[三新增模式请求](FirstRelease/Expansions/RecentExpansionInputProtocol-v0.1.md)与原14同SHA合17份本机控制，实际3过／5具体误用拒绝，非生成模型结果。阅读卡14/12、源36＋核心17待裁决保持；第32纳旧43/277，本批与32自身下次实质保存。见[交付0.16](FirstRelease/DeliveryCheck-v0.16.md)，独立、学生、商用、模型和长期门槛未通过。
 
 新增来源：[2026丰台七组37参考](Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](FirstRelease/Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 
