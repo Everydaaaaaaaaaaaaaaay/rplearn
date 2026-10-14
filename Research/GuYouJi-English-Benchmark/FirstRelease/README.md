@@ -6,9 +6,9 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-从[统一审阅包0.19](ReviewPackage-v0.19.md)、[组合索引0.10](combined-review-index-v0.10.json)和[可执行标准0.10](PracticalAuthoringStandard-v0.10.md)开始。源101实例/639参考/18父身份；原创核心25/205＋补充1/10＋扩展17/62＝43家族277响应点，最新初三标题/引述衔接和高一完整两段续写已纳九种[响应方式0.7](ResponseModeCoverage-v0.7.md)。十四既有请求、28源＋17核心待裁决、13源/11原创阅读参照保持原范围，见[交付检查0.10](DeliveryCheck-v0.10.md)。第31覆盖此前41/271，本批待合并保存；独立、学生、商用、模型和全部长期门槛未通过。
+从[审阅包0.20](ReviewPackage-v0.20.md)、[可执行标准0.11](PracticalAuthoringStandard-v0.11.md)、[组合索引0.11](combined-review-index-v0.11.json)开始。源117实例/722参考/20父身份；初二新2026两包16/83已合并，分必做/选做与[初二草案0.5](Specifications/grade8-v0.5.md)。原创43家族277点/九方式、十四请求、13源11作者阅读卡不增；36源＋17核心待裁决，见[交付检查0.11](DeliveryCheck-v0.11.md)。第31覆盖旧41/271，本批待保存32；独立、学生、商用、模型及长期门槛未通过。
 
-新增来源：[2026丰台七组37参考](../Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](../Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83待并入当前101源总览；[初二草案0.5](Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与旧28/17分开，43/277作者和十四请求不增。
+新增来源：[2026丰台七组37参考](../Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](../Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 
 当前保存：[第31独立恢复](../Studies/2026-10-14-checkpoint31-conditional-lexical-and-sentence-profile-recovery.md)7031文件全严格COW/SHA/不同inode；现41/271八方式/14请求/13源11作者/28源17核心、实际引语纠正/词义探针/22句向量与2未知可恢复。31自身/后来素材留下一批，未异机/完整环境或教育/商业验收。
 
