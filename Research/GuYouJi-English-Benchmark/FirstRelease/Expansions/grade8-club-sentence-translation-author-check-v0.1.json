@@ -1,0 +1,449 @@
+{
+  "version": "0.1",
+  "grade": 8,
+  "kind": "complete_four_sentence_translation_with_required_inflectable_hints",
+  "candidate_path": "FirstRelease/Expansions/grade8-club-sentence-translation-v0.1.md",
+  "candidate_sha256": "3d98bd29c9c9d37ceb71f72160fe2c8f3fac15e1faf76006b6bf430f9885a0bd",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade8-v0.5.md",
+    "sha256": "8cc9a8bc800c1ca07d56a45ddb0d8d7fd7af8c6c84f3e9d724717fe79c3422c0"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade8-bnu2026-public-groups-v0.1.json",
+    "sha256": "df2a038bab59e1ceadc7ceb12a5dec9d7233b53b0ab22364c8d20931be26dfa4"
+  },
+  "source_group_id": "g8.bnu2026.translation",
+  "source_paper_acquisition_id": "xschu-bnu2026-paper-key20261014-record",
+  "source_private_review_acquisition_id": "grade8-bnu2026-nine-groups-private-review20261014-record",
+  "source_private_review_sha256": "dfc7978902775081ccb84d4e93a32639b7ec27d76e311adfe89c95a6848ce9cc",
+  "source_question_key_pages": [
+    8,
+    14
+  ],
+  "source_four_tasks_eight_points_not_eight_responses": true,
+  "source_analytic_rubric_supplied": false,
+  "source50_takes_take_conflict_preserved_not_copied": true,
+  "protocol": {
+    "path": "FirstRelease/Expansions/Grade8SentenceTranslationProtocol-v0.1.md",
+    "sha256": "4b51922c2f71738b52f23b77b5f454125d91195550d6ae4b171ba4347a2d2404"
+  },
+  "questions": 4,
+  "points_each_provisional": 2,
+  "total_points_provisional": 8,
+  "response_format": "one_whole_sentence_translation_response_per_prompt_not_open_word_form",
+  "public_original_score_dimensions": [
+    "meaning_0_or_1",
+    "sentence_language_and_required_hints_0_or_1"
+  ],
+  "scoring_policy_status": "author_provisional_not_source_official_or_teacher_gold",
+  "items": [
+    {
+      "item": 1,
+      "Chinese_meaning_prompt": "自那以后，丽娜在这个社团学习英语已经两年了，现在仍在学。",
+      "English_prompt_terms": [
+        "since then",
+        "study"
+      ],
+      "author_meaning_requirements": [
+        "丽娜",
+        "学习英语",
+        "此社团",
+        "自那时起",
+        "两年",
+        "仍在学习"
+      ],
+      "input_Chinese_prompt_load": {
+        "english_digit_tokens": 0,
+        "han_characters": 25
+      },
+      "input_hint_load": {
+        "english_digit_tokens": 3,
+        "han_characters": 0
+      },
+      "canonical_author_response": "Since then, Lina has studied English in this club for two years and she is still studying it.",
+      "author_proposed_variants": [
+        "Since then, Lina has been studying English in this club for two years and is still studying it."
+      ],
+      "variants_exhaustive": false
+    },
+    {
+      "item": 2,
+      "Chinese_meaning_prompt": "这份新时间表使我们的小组讨论更有条理。",
+      "English_prompt_terms": [
+        "make",
+        "organized"
+      ],
+      "author_meaning_requirements": [
+        "新时间表",
+        "使",
+        "我们的小组讨论",
+        "更有条理"
+      ],
+      "input_Chinese_prompt_load": {
+        "english_digit_tokens": 0,
+        "han_characters": 18
+      },
+      "input_hint_load": {
+        "english_digit_tokens": 2,
+        "han_characters": 0
+      },
+      "canonical_author_response": "This new timetable makes our group discussions more organized.",
+      "author_proposed_variants": [
+        "Our group discussion is made more organised by this new timetable."
+      ],
+      "variants_exhaustive": false
+    },
+    {
+      "item": 3,
+      "Chinese_meaning_prompt": "我们每天整理这些书要花十五分钟。",
+      "English_prompt_terms": [
+        "take",
+        "minute"
+      ],
+      "author_meaning_requirements": [
+        "我们",
+        "每天",
+        "整理这些书",
+        "十五分钟"
+      ],
+      "input_Chinese_prompt_load": {
+        "english_digit_tokens": 0,
+        "han_characters": 15
+      },
+      "input_hint_load": {
+        "english_digit_tokens": 2,
+        "han_characters": 0
+      },
+      "canonical_author_response": "It takes us fifteen minutes to put these books in order every day.",
+      "author_proposed_variants": [
+        "We take fifteen minutes to organize these books every day."
+      ],
+      "variants_exhaustive": false
+    },
+    {
+      "item": 4,
+      "Chinese_meaning_prompt": "我们的辅导老师经常鼓励我们在讨论前认真听取别人的想法。",
+      "English_prompt_terms": [
+        "encourage",
+        "listen"
+      ],
+      "author_meaning_requirements": [
+        "我们的辅导老师",
+        "经常鼓励我们",
+        "认真听取其他人想法",
+        "讨论前"
+      ],
+      "input_Chinese_prompt_load": {
+        "english_digit_tokens": 0,
+        "han_characters": 26
+      },
+      "input_hint_load": {
+        "english_digit_tokens": 2,
+        "han_characters": 0
+      },
+      "canonical_author_response": "Our tutor often encourages us to listen carefully to other people's ideas before a discussion.",
+      "author_proposed_variants": [
+        "We are often encouraged by our tutor to listen carefully to others' ideas before a discussion."
+      ],
+      "variants_exhaustive": false
+    }
+  ],
+  "synthetic_boundary_cases": [
+    {
+      "item": 1,
+      "response": "Since then, Lina has studied English in this club for two years and she is still studying it.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "全部时间与持续关系、正确提示词形",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 18,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 1,
+      "response": "Since then, Lina has been studying English in this club for two years and is still studying it.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "合理完成进行变体，不能只收一个时态字符串",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 18,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 1,
+      "response": "Since then, Lina has studied English in this club for two years, but she has now stopped.",
+      "author_proposed_content_language_scores": [
+        0,
+        1
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "流畅但反转“现在仍在学”",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 17,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 1,
+      "response": "Since then, Lina have study English in this club for two years and she is still studying it.",
+      "author_proposed_content_language_scores": [
+        1,
+        0
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "主要意义可辨，主谓/完成结构错误",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 18,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 2,
+      "response": "This new timetable makes our group discussions more organized.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "整体因果和比较关系成立",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 9,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 2,
+      "response": "Our group discussion is made more organised by this new timetable.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "被动与英式拼写拟接受；该拼写非独立词典gold",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 11,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 2,
+      "response": "This new timetable makes our group discussions less organized.",
+      "author_proposed_content_language_scores": [
+        0,
+        1
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "更有条理改成更无条理，语法不救题意",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 9,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 2,
+      "response": "This new timetable make our group discussions more organized.",
+      "author_proposed_content_language_scores": [
+        1,
+        0
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "内容可辨，第三人称单数错误",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 9,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 3,
+      "response": "It takes us fifteen minutes to put these books in order every day.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "take据it用takes，宾语us与动作关系成立",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 13,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 3,
+      "response": "We take fifteen minutes to organize these books every day.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "take据we用take，题面没有it开头硬要求",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 10,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 3,
+      "response": "It takes us fifty minutes to put these books in order every day.",
+      "author_proposed_content_language_scores": [
+        0,
+        1
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "十五变五十；即使提示词和语法正确，数量错",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 13,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 3,
+      "response": "It take us fifteen minute to put these books in order every day.",
+      "author_proposed_content_language_scores": [
+        1,
+        0
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "数量和动作可辨，take主谓与minute复数错",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 13,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 4,
+      "response": "Our tutor often encourages us to listen carefully to other people's ideas before a discussion.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "角色、频率、方式、对象与时间完整",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 15,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 4,
+      "response": "We are often encouraged by our tutor to listen carefully to others' ideas before a discussion.",
+      "author_proposed_content_language_scores": [
+        1,
+        1
+      ],
+      "author_proposed_total": 2,
+      "author_reason": "被动角色保留，others'所有格合理",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 16,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 4,
+      "response": "We often encourage our tutor to listen carefully to other people's ideas before a discussion.",
+      "author_proposed_content_language_scores": [
+        0,
+        1
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "鼓励的发起者与接受者反转",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 15,
+        "han_characters": 0
+      }
+    },
+    {
+      "item": 4,
+      "response": "Our tutor often encourages us listen carefully to other people's ideas before a discussion.",
+      "author_proposed_content_language_scores": [
+        1,
+        0
+      ],
+      "author_proposed_total": 1,
+      "author_reason": "主要意义可辨，encourage sb to do缺to",
+      "actual_teacher_score": null,
+      "synthetic_author_case": true,
+      "output_load": {
+        "english_digit_tokens": 14,
+        "han_characters": 0
+      }
+    }
+  ],
+  "author_check_scope": "4tasks/4canonical/4variant/8single_dimension_error_cases;not_exhaustive_equivalent_set",
+  "input_output_load": {
+    "method": "existing_count_only_no_reading_profile_or_fake_options",
+    "count_tool": {
+      "path": "Tools/profile_task_load.py",
+      "sha256": "d240a3a6c5fc1e5256ffb544dba53ca32cb17dec155f9f8bdb705dfc557ca070"
+    },
+    "student_instruction": {
+      "english_digit_tokens": 3,
+      "han_characters": 109
+    },
+    "Chinese_prompt_totals": {
+      "english_digit_tokens": 0,
+      "han_characters": 84
+    },
+    "hint_totals": {
+      "english_digit_tokens": 9,
+      "han_characters": 0
+    },
+    "number_labels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "canonical_response_output_totals": {
+      "english_digit_tokens": 55,
+      "han_characters": 0
+    },
+    "reading_sentence_metrics": null,
+    "student_minutes": null,
+    "CEFR_or_Chinese_grade_calibration": null
+  },
+  "actual_saved_transition_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_called": false,
+  "coarse_exposure_cluster": "grade8_club_sentence_translation_four_local_tasks_same_source_form"
+}
