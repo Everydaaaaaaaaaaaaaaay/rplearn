@@ -1,0 +1,122 @@
+{
+  "version": "0.1",
+  "scope": "primary6_partial_author_preparation_separate_from_other_levels",
+  "source_index": {
+    "path": "Primary/Grade6/selected-excerpt-source-groups-v0.1.json",
+    "sha256": "a408a4f6da075e4fb34f85b96a418657db4a1cc59b4cb2005e5b89e61849545e"
+  },
+  "specification": {
+    "path": "Primary/Grade6/SelectedExcerptSpecifications-v0.1.md",
+    "sha256": "d58af15732ac6b323890b1bb74da1d1593f3d0906a03445dae14e9b64d332cf1"
+  },
+  "family_count": 2,
+  "response_count": 10,
+  "members": [
+    {
+      "id": "book-sale-dialogue",
+      "level": "primary6",
+      "kind": "five_gaps_five_sentences_or_clause",
+      "response_count": 5,
+      "candidate": {
+        "path": "Primary/Grade6/Generated/book-sale-dialogue-v0.1.md",
+        "sha256": "b8da33f44858c97bc7320a3c428fa3344d5d76b2b39b8ece913f98e3c9ef64e6"
+      },
+      "author_check_acquisition_id": "primary6-author-book-sale-dialogue-v0.1-author-check20261014",
+      "source_group_id": "primary6.minzhi2016-17.sentence",
+      "author_answer_vector": [
+        "C",
+        "D",
+        "A",
+        "E",
+        "B"
+      ],
+      "component_counts": {
+        "dialogue_turn_contents_excluding_speaker_and_gap_labels": {
+          "english_digit_tokens": 62,
+          "han_characters": 0
+        },
+        "speaker_labels_shown": {
+          "english_digit_tokens": 10,
+          "han_characters": 0
+        },
+        "shared_options": {
+          "english_digit_tokens": 31,
+          "han_characters": 0
+        },
+        "instruction": {
+          "english_digit_tokens": 3,
+          "han_characters": 44
+        }
+      },
+      "turn_count": 10,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "library-word-bank",
+      "level": "primary6",
+      "kind": "five_gaps_five_words_or_phrase",
+      "response_count": 5,
+      "candidate": {
+        "path": "Primary/Grade6/Generated/library-word-bank-v0.2.md",
+        "sha256": "a3469dc6157af793a97dd294d729b088adc92607a8eb8ffcb2d3e53cb7bbfbfd"
+      },
+      "author_check_acquisition_id": "primary6-author-library-word-bank-v0.2-author-check20261014",
+      "source_group_id": "primary6.minzhi2016-17.bank",
+      "author_answer_vector": [
+        "B",
+        "C",
+        "D",
+        "A",
+        "E"
+      ],
+      "component_counts": {
+        "dialogue_turn_contents_excluding_speaker_and_gap_labels": {
+          "english_digit_tokens": 84,
+          "han_characters": 0
+        },
+        "speaker_labels_shown": {
+          "english_digit_tokens": 8,
+          "han_characters": 0
+        },
+        "shared_options": {
+          "english_digit_tokens": 6,
+          "han_characters": 0
+        },
+        "instruction": {
+          "english_digit_tokens": 2,
+          "han_characters": 23
+        }
+      },
+      "turn_count": 8,
+      "revision_count": 1,
+      "independent_teacher_student_or_commercial_admission": false,
+      "previous_version": {
+        "path": "Primary/Grade6/Generated/library-word-bank-v0.1.md",
+        "sha256": "c2d8d98558ef1aaa886d2b143fb7d495dcb8bf54dc73c5e2d7c5c832f1bc3941",
+        "actual_global_assignments_in_prior_author_matrix": [
+          [
+            "B",
+            "C",
+            "A",
+            "D",
+            "E"
+          ],
+          [
+            "B",
+            "C",
+            "D",
+            "A",
+            "E"
+          ]
+        ],
+        "student_Q4_revised": true
+      }
+    }
+  ],
+  "actual_student_revision_count": 1,
+  "no_full_primary6_or_other_levels_admission": true,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}
