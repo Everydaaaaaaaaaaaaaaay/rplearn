@@ -6,11 +6,15 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-最新高三增量：[人物报道五空七选局部/全组闭环](../Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。旧35/246入口待本高三及高二混合模式/27队列合并。
+从[统一审阅包0.13](ReviewPackage-v0.13.md)、[组合索引0.4](combined-review-index-v0.4.json)和[可执行标准0.5](PracticalAuthoringStandard-v0.5.md)开始。源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展11/41，合37现行材料家族256响应点；十三份请求仅有本机文件/声明关系检查。详见[交付检查0.5](DeliveryCheck-v0.5.md)和[响应模式分母0.2](ResponseModeCoverage-v0.2.md)。独立、学生、商用、生产和全部长期门槛仍未通过。
 
-最新高二增量：[混合标题/分句完整原创及真实提示修订](../Studies/2026-10-14-grade11-mixed-slot-original-and-real-instruction-revision.md)，当前0.2全解BFAGD/35配对，保留0.1前稿、296正文/48共享选项；扩展0.9为10材料36点，全分层36/251，源39待裁决。旧35/246统一入口待本模式/27队列合并。
+下文为各时点增量与保存边界，旧版本不作为当前默认。
 
-新源功能复审：[高二37标题/39条件分句补注](../Studies/2026-10-14-grade11-heading-and-conditional-slot-function-review.md)，高二草案0.3与扩展27项队列已准备；原源/计数不增，旧统一包0.12的26队列保留当时边界，下一高二原创合并。
+最新高三增量：[人物报道五空七选局部/全组闭环](../Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。已纳入统一包0.13/组合0.4，旧35/246保留历史。
+
+最新高二增量：[混合标题/分句完整原创及真实提示修订](../Studies/2026-10-14-grade11-mixed-slot-original-and-real-instruction-revision.md)，当前0.2全解BFAGD/35配对，保留0.1前稿、296正文/48共享选项；扩展0.9为10材料36点，全分层36/251，源39待裁决。已纳入统一包0.13/组合0.4，旧35/246保留历史。
+
+新源功能复审：[高二37标题/39条件分句补注](../Studies/2026-10-14-grade11-heading-and-conditional-slot-function-review.md)，高二草案0.3与扩展27项队列已准备；原源/计数不增，旧0.12的26队列保留当时边界，当前0.13采用27队列。
 
 最新产出增量：[高一完整建议邮件与评分边界](../Studies/2026-10-14-grade10-advice-email-complete-task-and-policy-boundaries.md)，81词正例/79词流畅任务错位作者反例均未被真人评分；原创整体五档/零分政策与源未知分开。扩展0.8为9材料31响应点，全分层35/246；整篇产出点不当选择字母准确率分母，已纳入统一包0.12/组合0.3及响应分母索引，旧33/240入口保留历史。
 
@@ -20,7 +24,6 @@
 
 最新增量：[初二完整多选调查与四空五选](../Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](../FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。已纳入统一包0.11及组合索引0.2，旧0.10保留此前31/233冻结时点。
 
-从[统一审阅包0.12](ReviewPackage-v0.12.md)、[组合索引0.3](combined-review-index-v0.3.json)和[可执行标准0.4](PracticalAuthoringStandard-v0.4.md)开始。当前源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展9/31，合35现行材料家族246响应点；十一份请求仅有本机文件/声明关系检查。详见[六项交付检查0.4](DeliveryCheck-v0.4.md)及[响应模式分母](ResponseModeCoverage-v0.1.md)。下文旧版进度保留历史口径。
 
 当前[源总览0.5](paired-source-overview-v0.5.json)101题组实例/639参考响应/18父卷身份，核心53＋扩展48，六年级各三父身份；新增[初二C卷七组40](Expansions/Grade8Changjun2024Comparison-v0.1.md)和[草案0.3](Specifications/grade8-v0.3.md)，多选图/三选/四空五选/读答部分分、写作点制与七档缺口保留。原始来源不是独立金标准/全国覆盖，本段第三源时点原创分核心25/205、补充1/10、扩展5/18。
 

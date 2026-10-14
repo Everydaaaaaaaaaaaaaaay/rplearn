@@ -6,11 +6,15 @@
 
 2026-10-14 持续核读入口：
 
-最新高三增量：[人物报道五空七选局部/全组闭环](Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。旧35/246入口待本高三及高二混合模式/27队列合并。
+- **当前统一入口：[审阅包0.13](FirstRelease/ReviewPackage-v0.13.md)、[可执行标准0.5](FirstRelease/PracticalAuthoringStandard-v0.5.md)、[组合索引0.4](FirstRelease/combined-review-index-v0.4.json)**：六年级各三父卷身份，101源组实例/639参考；37现行原创材料家族/256响应点按[响应模式0.2](FirstRelease/ResponseModeCoverage-v0.2.md)分层；十三请求/27源裁决＋17核心项仍待独立验证。[交付检查0.5](FirstRelease/DeliveryCheck-v0.5.md)列可审阅范围与缺口。
 
-最新高二增量：[混合标题/分句完整原创及真实提示修订](Studies/2026-10-14-grade11-mixed-slot-original-and-real-instruction-revision.md)，当前0.2全解BFAGD/35配对，保留0.1前稿、296正文/48共享选项；扩展0.9为10材料36点，全分层36/251，源39待裁决。旧35/246统一入口待本模式/27队列合并。
+以下增量记录保留各自时点的计数和保存边界。
 
-新源功能复审：[高二37标题/39条件分句补注](Studies/2026-10-14-grade11-heading-and-conditional-slot-function-review.md)，高二草案0.3与扩展27项队列已准备；原源/计数不增，旧统一包0.12的26队列保留当时边界，下一高二原创合并。
+最新高三增量：[人物报道五空七选局部/全组闭环](Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。已纳入统一包0.13/组合0.4，旧35/246保留历史。
+
+最新高二增量：[混合标题/分句完整原创及真实提示修订](Studies/2026-10-14-grade11-mixed-slot-original-and-real-instruction-revision.md)，当前0.2全解BFAGD/35配对，保留0.1前稿、296正文/48共享选项；扩展0.9为10材料36点，全分层36/251，源39待裁决。已纳入统一包0.13/组合0.4，旧35/246保留历史。
+
+新源功能复审：[高二37标题/39条件分句补注](Studies/2026-10-14-grade11-heading-and-conditional-slot-function-review.md)，高二草案0.3与扩展27项队列已准备；原源/计数不增，旧0.12的26队列保留当时边界，当前0.13采用27队列。
 
 最新产出增量：[高一完整建议邮件与评分边界](Studies/2026-10-14-grade10-advice-email-complete-task-and-policy-boundaries.md)，81词正例/79词流畅任务错位作者反例均未被真人评分；原创整体五档/零分政策与源未知分开。扩展0.8为9材料31响应点，全分层35/246；整篇产出点不当选择字母准确率分母，已纳入统一包0.12/组合0.3及响应分母索引，旧33/240入口保留历史。
 
@@ -20,7 +24,6 @@
 
 最新增量：[初二完整多选调查与四空五选](Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。已纳入统一包0.11及组合索引0.2，旧0.10保留此前31/233冻结时点。
 
-- **当前统一入口：[审阅包0.12](FirstRelease/ReviewPackage-v0.12.md)、[可执行标准0.4](FirstRelease/PracticalAuthoringStandard-v0.4.md)、[组合索引0.3](FirstRelease/combined-review-index-v0.3.json)**：六年级各三父卷身份，101源组实例/639参考；35现行原创材料家族/246响应点按[响应模式](FirstRelease/ResponseModeCoverage-v0.1.md)分层；[交付检查0.4](FirstRelease/DeliveryCheck-v0.4.md)列具体可审阅范围与缺口。
 
 - [初二第三源与多选百分/评分制度](Studies/2026-10-14-grade8-third-source-multiselect-graph-and-scoring-regimes.md)：12页七组40参考，三选/四空五选/50人多选458%及15分点制/七档未决；[总览0.5](FirstRelease/paired-source-overview-v0.5.json)101实例/639源响应/18父卷身份，六年级各三父身份不等总体标定。
 
