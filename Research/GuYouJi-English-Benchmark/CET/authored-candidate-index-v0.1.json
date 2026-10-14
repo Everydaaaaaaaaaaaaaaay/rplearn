@@ -1,0 +1,76 @@
+{
+  "version": "0.1",
+  "scope": "CET_author_preparation_separate_from_firstrelease53",
+  "source_index": {
+    "path": "CET/selected-official-sample-groups-v0.1.json",
+    "sha256": "38b60677ed02999af4117735e0335be87fd5237d6110eba6548729dcffa84ee8"
+  },
+  "specification": {
+    "path": "CET/AuthoringSpecifications-v0.1.md",
+    "sha256": "aaae521cb6328d03249d6d23b9239cf882202df98348946bb631f105d7b82b30"
+  },
+  "family_count": 2,
+  "response_count": 10,
+  "author_option_reason_positions": 40,
+  "members": [
+    {
+      "id": "cet4-evening-bus-bookings",
+      "level": "undergraduate",
+      "kind": "single_reading_five_four_options",
+      "response_count": 5,
+      "candidate": {
+        "path": "CET/Generated/cet4-evening-bus-bookings-v0.1.md",
+        "sha256": "2020905b6709cc808e34aa9a328ef193fbb2cdaadb36b5841f88333bf7738bb1"
+      },
+      "author_check_acquisition_id": "cet-author-cet4-evening-bus-bookings-v0.1-author-check20261014",
+      "source_group_id": "cet4.2016.sample.reading2",
+      "author_answer_vector": [
+        "C",
+        "A",
+        "D",
+        "B",
+        "C"
+      ],
+      "load_english_digit_tokens": {
+        "passage": 326,
+        "prompt": 45,
+        "option": 154
+      },
+      "sentence_units": 22,
+      "maximum_sentence_tokens": 33,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "cet6-recording-restoration",
+      "level": "postgraduate",
+      "kind": "single_reading_five_four_options",
+      "response_count": 5,
+      "candidate": {
+        "path": "CET/Generated/cet6-recording-restoration-v0.1.md",
+        "sha256": "c3149f656ca5cc4b75595e6e3114b112503137af0709385381c0aee0933f5665"
+      },
+      "author_check_acquisition_id": "cet-author-cet6-recording-restoration-v0.1-author-check20261014",
+      "source_group_id": "cet6.2016.sample.reading1",
+      "author_answer_vector": [
+        "D",
+        "A",
+        "B",
+        "C",
+        "A"
+      ],
+      "load_english_digit_tokens": {
+        "passage": 422,
+        "prompt": 46,
+        "option": 193
+      },
+      "sentence_units": 22,
+      "maximum_sentence_tokens": 35,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    }
+  ],
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}

@@ -7,7 +7,7 @@
 2026-10-14 持续核读入口：
 
 - [24小时检查点](FirstRelease/DeadlineCheckpoint-2026-10-14.md)：20:40实际复算，已有初高中作者准备包；无20:12冻结证据，不宣称准时或全范围完成。
-- [四/六级规格0.1](CET/AuthoringSpecifications-v0.1.md)与[六组选定官方阅读](CET/selected-official-sample-groups-v0.1.json)：完整215页原大纲取得、22原图核读，另层6组40参考；零新原创，5响应暂缓正向，未听力/全书/独立/学生/商用验收。
+- [四/六级规格0.1](CET/AuthoringSpecifications-v0.1.md)与[六组选定官方阅读](CET/selected-official-sample-groups-v0.1.json)：完整215页原大纲取得、22原图核读，另层6组40参考；另[两篇完整原创](CET/TwoReadingAuthorProtocol-v0.1.md)2家族10响应、40作者选项理由；源5响应暂缓正向，未听力/全书/独立/学生/商用验收。
 
 
 - **当前统一入口：[包0.29](FirstRelease/ReviewPackage-v0.29.md)、[标准0.20](FirstRelease/PracticalAuthoringStandard-v0.20.md)、[组合0.20](FirstRelease/combined-review-index-v0.20.json)**：源117/722/20、作者53/338／十方式、结构67/46有21缺、卡15/13保持。原17同SHA＋7新增＝24本机控制，7过／11具体声明拒绝；源37＋核心17未决。第34已纳53/338与17旧控制，新输入/34自身下一保存。见[交付0.20](FirstRelease/DeliveryCheck-v0.20.md)，非模型/独立/学生/商用或长期完成。
