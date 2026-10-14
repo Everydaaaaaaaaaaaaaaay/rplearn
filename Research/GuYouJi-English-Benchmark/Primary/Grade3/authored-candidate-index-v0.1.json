@@ -1,0 +1,84 @@
+{
+  "version": "0.1",
+  "scope": "primary3_partial_author_preparation_separate_from_other_levels",
+  "source_index": {
+    "path": "Primary/Grade3/selected-source-groups-v0.1.json",
+    "sha256": "bf2e842dd140644e6169197250ee081754417e5dd0b42aa57b4cbd92bec63fe6"
+  },
+  "specification": {
+    "path": "Primary/Grade3/SelectedSourceSpecifications-v0.1.md",
+    "sha256": "24bebd98f40084d7540928d6cb13b3df4947aca3d6c13b5f6c701cfc59bad3e7"
+  },
+  "family_count": 2,
+  "response_count": 10,
+  "members": [
+    {
+      "id": "bens-bag-reading",
+      "level": "primary3",
+      "kind": "five_true_false",
+      "response_count": 5,
+      "candidate": {
+        "path": "Primary/Grade3/Generated/bens-bag-reading-v0.1.md",
+        "sha256": "2e7716555b16e9ee2cf8cd47093390add631acfa6793979dbfdfa3947bafdbc0"
+      },
+      "author_check_acquisition_id": "primary3-author-bens-bag-reading-v0.1-author-check20261014",
+      "source_group_id": "primary3.lower.undated.roomreading",
+      "author_answer_vector": [
+        "T",
+        "F",
+        "T",
+        "T",
+        "F"
+      ],
+      "component_counts": {
+        "passage": {
+          "english_digit_tokens": 58,
+          "han_characters": 0
+        },
+        "prompts": {
+          "english_digit_tokens": 24,
+          "han_characters": 0
+        },
+        "shared_options": null
+      },
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "five-everyday-responses",
+      "level": "primary3",
+      "kind": "five_shared_response_matching",
+      "response_count": 5,
+      "candidate": {
+        "path": "Primary/Grade3/Generated/five-everyday-responses-v0.1.md",
+        "sha256": "beac5a0f5fe47633a66bb615d2435eff46655dc4fa0206f71bf62591ec67366c"
+      },
+      "author_check_acquisition_id": "primary3-author-five-everyday-responses-v0.1-author-check20261014",
+      "source_group_id": "primary3.lower.undated.responses",
+      "author_answer_vector": [
+        "E",
+        "D",
+        "A",
+        "B",
+        "C"
+      ],
+      "component_counts": {
+        "passage": null,
+        "prompts": {
+          "english_digit_tokens": 25,
+          "han_characters": 0
+        },
+        "shared_options": {
+          "english_digit_tokens": 16,
+          "han_characters": 0
+        }
+      },
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    }
+  ],
+  "no_full_primary3_or_other_primary_levels_admission": true,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}
