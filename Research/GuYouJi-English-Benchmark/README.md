@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- **当前统一入口：[审阅包0.10](FirstRelease/ReviewPackage-v0.10.md)、[可执行标准0.2](FirstRelease/PracticalAuthoringStandard-v0.2.md)、[组合索引0.1](FirstRelease/combined-review-index-v0.1.json)**：六年级各三父卷身份，101源组实例/639参考；31现行原创材料家族/233响应分层计量；[交付检查0.2](FirstRelease/DeliveryCheck-v0.2.md)列具体可审阅范围与缺口。
+
 - [初二第三源与多选百分/评分制度](Studies/2026-10-14-grade8-third-source-multiselect-graph-and-scoring-regimes.md)：12页七组40参考，三选/四空五选/50人多选458%及15分点制/七档未决；[总览0.5](FirstRelease/paired-source-overview-v0.5.json)101实例/639源响应/18父卷身份，六年级各三父身份不等总体标定。
 
 - [高一第三卷与初二免费访问边界](Studies/2026-10-14-grade10-third-source-rubrics-and-grade8-free-gate.md)：温州20页七笔试组45参考及两写作整体评分/三范文，47/67解析冲突和64much候选保留；天门实际需登录未得PDF；[总览0.4](FirstRelease/paired-source-overview-v0.4.json)94组实例/599源响应/17父卷身份。
@@ -32,7 +34,7 @@
 
 - [高二两源与当前原创负荷](Studies/2026-10-14-grade11-two-source-task-load-review.md)：342/353/324正文与111/143/101选项分开计量，正确选择实际版本而非把首次单组误称对照，实例不定全国阈值。
 
-- [高一语义线索不能替代排除的跟进](Studies/2026-10-14-grade10-maximum-cue-not-exclusive-and-than-followup.md)：最大面积仍可与large相容，当前明确than/larger、54/51/49及十空重解；[现行审阅包0.9](FirstRelease/ReviewPackage-v0.9.md)。
+- [高一语义线索不能替代排除的跟进](Studies/2026-10-14-grade10-maximum-cue-not-exclusive-and-than-followup.md)：最大面积仍可与large相容，当前明确than/larger、54/51/49及十空重解；[当时核心审阅包0.9](FirstRelease/ReviewPackage-v0.9.md)。
 
 - [高二春季新公开卷七组](Studies/2026-10-14-grade11-spring-public-paper-seven-group-review.md)：15原页全核、7完整组45点与逐项作者理由，新增借用/频率/主谓反例，地区机构和音频仍缺；与冻结核心53单列。
 
