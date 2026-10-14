@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an offline six-grade complete reading/cloze/language preview.
+"""Build an offline six-grade complete multi-type authored preview.
 
 No source-paper payload or model call. Check digest, full question/option sets and
 answer-table agreement before writing ignored output. This does not calibrate items.
@@ -10,6 +10,7 @@ import html
 import json
 import re
 from pathlib import Path
+from showcase_extended_tasks import extract_extended
 
 BASE = Path(__file__).resolve().parents[1]
 REPO = BASE.parents[1]
@@ -208,51 +209,42 @@ label.wrong:has(input:checked){background:#fff1ec;border-color:#bb7661}
 <p class="footnote">题目情境为原创虚构；展示不预设限时。答案仅保存在当前页面，刷新即清除。</p></main>
 <script id="showcase-data" type="application/json">__DATA__</script>
 <script>
-const items=JSON.parse(document.getElementById('showcase-data').textContent);
-const states=items.map(()=>({answers:{},submitted:false}));let active=0;
-const byId=id=>document.getElementById(id);
-const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function docLink(ref){return '<a href="../../Research/GuYouJi-English-Benchmark/'+encodeURI(ref.path)+'" target="_blank" rel="noopener">'+escapeHtml(ref.path)+'</a>';}
-const grades=[...new Set(items.map(g=>g.grade))];
-const kinds=[['reading','阅读理解'],['cloze','完形填空'],['language','语言运用']];
-const normalizeForm=s=>String(s).trim().replace(/\s+/g,' ').toLowerCase();
-const exceedsLimit=(q,value)=>Boolean(q.maxWords&&String(value).trim().split(/\s+/).length>q.maxWords);
-const matchesForm=(q,value)=>!exceedsLimit(q,value)&&q.knownForms.some(form=>normalizeForm(form)===normalizeForm(value));
-function select(grade,kind){const index=items.findIndex(g=>g.grade===grade&&g.kind===kind);if(index<0)return;active=index;render();}
-grades.forEach(grade=>{const b=document.createElement('button');b.type='button';b.textContent=items.find(g=>g.grade===grade).label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>select(grade,items[active].kind));byId('grades').append(b);});
-kinds.forEach(([kind,label])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>select(items[active].grade,kind));byId('types').append(b);});
-function render(){const g=items[active],s=states[active],free=g.responseMode==='reference_form';[...byId('grades').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(grades[i]===g.grade)));[...byId('types').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(kinds[i][0]===g.kind)));byId('grade-title').textContent=g.label+' · '+g.typeLabel;byId('instruction').textContent=g.instruction||('阅读短文，从'+(g.kind==='cloze'?'每空':'每题')+'所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。');byId('passage').innerHTML=g.passageHtml;
-byId('quiz').innerHTML=g.questions.map(q=>{const value=s.answers[q.number]||'',matched=free&&value&&matchesForm(q,value);const response=free?'<label class="text-response '+(s.submitted?(matched?'matched':'unmatched'):'')+'"><input class="answer-field" type="text" aria-label="第'+q.number+'空" name="q'+q.number+'" value="'+escapeHtml(value)+'" autocomplete="off" spellcheck="false" lang="en" '+(s.submitted?'disabled':'')+'></label>':q.options.map(([key,text])=>'<label class="'+(s.submitted?(key===q.answer?'correct':value===key?'wrong':''):'')+'"><input type="radio" name="q'+q.number+'" value="'+key+'" '+(value===key?'checked':'')+' '+(s.submitted?'disabled':'')+'><span lang="en">'+key+'. '+escapeHtml(text)+'</span></label>').join('');const explanation=free?'<strong>作者参考：'+escapeHtml(q.knownForms.join(' / '))+'</strong> · '+(value?(matched?'与参考形式匹配':exceedsLimit(q,value)?'超过本空明确要求的'+q.maxWords+'词；请修改响应形式':'未匹配参考集合，请结合解析复核；不自动判错'):'未作答'):'<strong>答案 '+q.answer+'</strong> · '+(value?(value===q.answer?'答对了':'你的选择：'+escapeHtml(value)):'未作答');return '<fieldset><legend>'+q.number+'. '+escapeHtml(q.stem)+'</legend>'+response+(s.submitted?'<div class="explanation"><p>'+explanation+'</p><div>'+escapeHtml(q.rationale)+'</div></div>':'')+'</fieldset>';}).join('');
-const saveAnswer=e=>{if(!e.target.name)return;states[active].answers[e.target.name.slice(1)]=e.target.value;byId('result').textContent='';};byId('quiz').onchange=saveAnswer;byId('quiz').oninput=saveAnswer;
-byId('submit').hidden=s.submitted;byId('reveal').hidden=s.submitted;
-if(s.submitted){const attempted=g.questions.filter(q=>String(s.answers[q.number]||'').trim()).length;const right=g.questions.filter(q=>free?matchesForm(q,s.answers[q.number]||''):s.answers[q.number]===q.answer).length;byId('result').textContent=free?'已作答 '+attempted+'/'+g.questions.length+' 空，'+right+' 空与作者参考形式匹配（忽略大小写）。未匹配不自动判错，参考集合尚未认证穷尽。':'已作答 '+attempted+'/'+g.questions.length+' 题，答对 '+right+' 题。';}else{byId('result').textContent=free?'填入完整响应；本页只核对作者参考形式，未匹配答案需结合解析复核。':'';}
-byId('provenance').innerHTML='<p>'+escapeHtml(g.focus)+'</p><p>作者版本：'+docLink(g.candidate)+'</p><p>创作时规格：'+docLink(g.specification_at_authoring)+'</p><p>来源锚组：<code>'+escapeHtml(g.anchor_group_ids.join(' / '))+'</code></p><p>完整作者检查：'+docLink(g.author_check)+'</p><p>当前样本规则：<a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/PracticalAuthoringStandard-v0.24.md" target="_blank" rel="noopener">标准0.24</a> · <a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/SampleBasedModePolicy-v0.2.md" target="_blank" rel="noopener">年级、题型与体量证据</a></p><p>配对、开放短答、邮件、续写等作者稿：<a href="../../Research/GuYouJi-English-Benchmark/FirstRelease/ReviewPackage-v0.29.md" target="_blank" rel="noopener">完整审阅包</a>；本页展示阅读、完形、词库、句子语言选择和短文填空。</p>';
-}
-byId('submit').onclick=()=>{const g=items[active],s=states[active];const missing=g.questions.filter(q=>!String(s.answers[q.number]||'').trim());if(missing.length){byId('result').textContent='还有 '+missing.length+' 题未作答：'+missing.map(q=>q.number).join('、')+'。也可以直接看答案。';return;}s.submitted=true;render();};
-byId('reveal').onclick=()=>{states[active].submitted=true;render();};
-byId('reset').onclick=()=>{states[active]={answers:{},submitted:false};render();};
-byId('quiz').onsubmit=e=>e.preventDefault();render();
+__INTERACTIONS__
 </script></html>'''
 
 
 def build(output):
-    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.3.json').read_text())
+    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.4.json').read_text())
     core = json.loads(load_ref(selection['core_index']).read_text())
+    extension = json.loads(load_ref(selection['extension_index']).read_text())
+    overview = json.loads(load_ref(selection['source_overview']).read_text())
     data = []
     for choice in selection['items']:
-        row = next(c for c in core['candidates'] if c['id'] == choice['id'])
-        data.append(extract_language(row, choice) if choice.get('kind') == 'language' else extract(row, choice['label'], choice['focus']))
+        index = extension if choice.get('index') == 'extension' else core
+        row = next(c for c in index['candidates'] if c['id'] == choice['id'])
+        if choice.get('index') == 'extension':
+            data.append(extract_extended(row, choice, load_ref, overview))
+        else:
+            data.append(extract_language(row, choice) if choice.get('kind') == 'language' else extract(row, choice['label'], choice['focus']))
     if sorted(set(g['grade'] for g in data)) != list(range(7, 13)):
         raise ValueError('Showcase must cover exactly grades7–12')
     for grade in range(7, 13):
-        if sorted(g['kind'] for g in data if g['grade'] == grade) != ['cloze', 'language', 'reading']:
+        if sorted(g['kind'] for g in data if g['grade'] == grade and g['kind'] in ['reading', 'cloze', 'language']) != ['cloze', 'language', 'reading']:
             raise ValueError('Each grade must have one complete reading, cloze and language group')
+    if len({g['id'] for g in data}) != len(data) or len({(g['grade'], g['kind']) for g in data}) != len(data):
+        raise ValueError('Repeated showcase identity or ambiguous grade/type route')
     payload = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     output.mkdir(parents=True, exist_ok=True)
     page = TEMPLATE.replace('__DATA__', payload)
+    interactions = (BASE / 'Tools/school_showcase_interactions.js').read_text()
+    page = page.replace('__INTERACTIONS__', interactions)
+    page = page.replace('六个年级，阅读、完形和语言运用各一组。先作答，再看参考与解析。',
+                        '六个年级，完整阅读、完形、语言运用及选定配对、衔接、开放作答和写作。先作答，再看参考与要求。')
+    page = page.replace('</header>', '<p class="footnote">入口只显示本页该年级的已审阅样题；未展示不表示该年级没有这种题型。</p></header>')
+    page = page.replace('</style>', '.open-response label{display:block}.open-response textarea{display:block;resize:vertical;line-height:1.6}.fixed-opening{font:16px/1.65 Georgia,serif}.full-author-review{border-top:1px solid var(--line);padding-top:16px}.author-review{font:14px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}.table-scroll{overflow-x:auto}.table-scroll table{border-collapse:collapse;width:100%;font:14px/1.6 system-ui,sans-serif}.table-scroll th,.table-scroll td{border:1px solid var(--line);padding:8px;text-align:left;min-width:110px}</style>')
     (output / 'index.html').write_text(page)
     # A human-readable companion keeps the full payload reviewable without JS.
-    md = ['# 初高中多题型效果稿0.3', '', '每年级阅读、完形与语言运用各一组；为已有作者稿的展示子集，不是生产入口模型实测。', '',
+    md = ['# 初高中多题型效果稿0.4', '', '六年级完整核心三类及选定共享候选、开放回答和写作；为已有作者稿的展示子集，不是生产入口模型实测。', '',
           '先读题，答案和解析放在折叠区。其他题型及标准见资料库FirstRelease统一入口。', '']
     for g in data:
         md += ['## ' + g['label'] + ' · ' + g['typeLabel'], '', g.get('instruction', '阅读短文，从各题/空选项中选出最佳答案。'), '']
@@ -265,20 +257,28 @@ def build(output):
             md += ['']
         md += ['<details>', '<summary>答案、解析与命题依据</summary>', '']
         for q in g['questions']:
-            answer = ' / '.join(q['knownForms']) if 'knownForms' in q else q['answer']
+            answer = ' / '.join(q['knownForms']) if 'knownForms' in q else q.get('answer', '开放作答：按完整参考与暂定评分要求复核')
             md += [str(q['number']) + '. **' + answer + '**：' + q['rationale'], '']
-        md += [g['focus'], '', '来源锚组：' + ' / '.join(g['anchor_group_ids']), '',
+        if g.get('reviewHtml'):
+            md += [g['reviewText'], '']
+        source_note = ('形式/评分参考（未配对）：' + g['sourceFormReference']['catalogue']['path'] +
+                       '，源任务' + str(g['sourceFormReference']['task_number'])) if g.get('sourceFormReference') else '来源锚组：' + ' / '.join(g['anchor_group_ids'])
+        md += [g['focus'], '', source_note, '',
                '作者题面：' + g['candidate']['path'], '',
                '创作规格：' + g['specification_at_authoring']['path'], '', '</details>', '']
-    (output / 'SchoolSamples-v0.3.md').write_text('\n'.join(md))
+    (output / 'SchoolSamples-v0.4.md').write_text('\n'.join(md))
     report = {'grades': sorted(set(g['grade'] for g in data)), 'groups': len(data),
               'questions': sum(len(g['questions']) for g in data),
               'reference_form_slots': sum(len(g['questions']) for g in data if g.get('responseMode') == 'reference_form'),
               'shared_bank_entries': sum(len(g.get('sharedBank', [])) for g in data),
+              'shared_choice_entries': sum(len(g.get('sharedChoices', [])) for g in data),
+              'open_response_tasks': sum(len(g['questions']) for g in data if g.get('responseMode') in ['open_review', 'writing_review']),
+              'open_input_fields': sum(len(q['parts']) for g in data if g.get('responseMode') in ['open_review', 'writing_review'] for q in g['questions']),
+              'automatic_semantic_scoring': False,
               'options': sum(len(q['options']) for g in data for q in g['questions']),
               'production_model_evaluation': False,
-              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.3.md']}}
-    (output / 'build-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.4.md']}}
+    (output / 'build-report-v0.4.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False))
 
 
