@@ -23557,6 +23557,78 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "baseline-native-family-audit20261015m-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade12-jianghuai2024-firstjoint-20261013",
+        "bj-grade8-xicheng2025upper-20261013"
+      ],
+      "tool": "Tools/audit_baseline_native_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen native page snapshots/pointers only; nine complete text spans/question-option regions; two empty-native pages not missing original papers; no re-extraction/render/download or input/gold upgrade"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-native-family-audit20261015m-v0.1.json",
+          "bytes": 459392,
+          "sha256": "40e2c9744fa02d7f8c45ba35f6292b6f115324af289cf2969cbcbd94621a4fbd",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-native-binding-checks20261015m-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade12-jianghuai2024-firstjoint-20261013",
+        "bj-grade8-xicheng2025upper-20261013"
+      ],
+      "tool": "Tools/audit_baseline_native_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen native page snapshots/pointers only; nine complete text spans/question-option regions; two empty-native pages not missing original papers; no re-extraction/render/download or input/gold upgrade"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-native-binding-checks20261015m-v0.1.json",
+          "bytes": 1206,
+          "sha256": "844109dabef786cf7e67a3b354458ab4655d39976c395e2646ea4d510d21e2f2",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-native-component-load20261015m-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade12-jianghuai2024-firstjoint-20261013"
+      ],
+      "tool": "Tools/audit_baseline_native_materials.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Source-validated complete question region; isolate printed question numbers/options labels/footers, preserve actual unit order; sparse counts only, no corpus copies or semantic gold",
+        "--components-only --output build/english-benchmark-research-20261012/baseline-native-component-load20261015m-v0.1.json"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-native-component-load20261015m-v0.1.json",
+          "bytes": 54132,
+          "sha256": "49471ab32e6123a61bb1484106fa07bd4acfc70ac06db466b15b452fecd4d4ce",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

@@ -1,0 +1,956 @@
+{
+  "version": "0.1",
+  "scope": "nine existing baseline native text groups; two native-empty instances remain queued",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-prepared-material-views-v0.1.json",
+    "sha256": "fd52b6f4ca7b723c9ca3b169200c8e16b988c9e1fa01710602c5e10823fafa01"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-material-family-audit20261015l-v0.1.json",
+    "sha256": "561c6c798b57b041f1041ae22ff11e9221820d42fee30e069a4b06c18cc66930"
+  },
+  "views": [
+    {
+      "group_id": "g7.2021.cloze",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-grade7-curated-anchor-audit20261013.json",
+        "sha256": "5e2e61a32c3538cb71429f66047f8700514249c34ec1b4076c53422f3a2941ea"
+      },
+      "snapshot_acquisition_id": "firstrelease-grade7-curated-anchor-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 5,
+          "pointer": [
+            "native_pages_private",
+            "5"
+          ],
+          "sha256": "0e8c2e21919b4b6b2186561a1c86b585f9a2a5419102f18162ed32968ad1e046"
+        }
+      ],
+      "joined_text_sha256": "0e8c2e21919b4b6b2186561a1c86b585f9a2a5419102f18162ed32968ad1e046",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/xdf-grade7-2021lower-paper-20261013.pdf",
+        "sha256": "346eb9944f3d7ca06bc1bf30561b7014ffabe41ed6fded750d0330607d370b2a"
+      },
+      "source_parent_id": "xdf-grade7-2021lower-paper-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 641,
+      "material_end_offset": 1729,
+      "material_sha256": "9e6a5eab6a7b9fd1a77e98e9c7a155b88192182ab24b40f9f62664060c4644b4",
+      "excluded_offsets": [
+        {
+          "start": 144,
+          "end": 150,
+          "literal": "__36__",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 209,
+          "end": 215,
+          "literal": "__37__",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 249,
+          "end": 255,
+          "literal": "__38__",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 400,
+          "end": 406,
+          "literal": "__39__",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 478,
+          "end": 484,
+          "literal": "__40__",
+          "role": "blank_label",
+          "blank_id": 40
+        },
+        {
+          "start": 554,
+          "end": 560,
+          "literal": "__41__",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 640,
+          "end": 646,
+          "literal": "__42__",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 834,
+          "end": 840,
+          "literal": "__43__",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 889,
+          "end": 895,
+          "literal": "__44__",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 922,
+          "end": 928,
+          "literal": "__45__",
+          "role": "blank_label",
+          "blank_id": 45
+        }
+      ],
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "question_region": {
+        "start_offset": 1731,
+        "end_offset": 2105,
+        "sha256": "826be3c6085921bec4178fea5c1a5892543a0c0c3fbcec30776d5be105b1efc6",
+        "printed_source_question_numbers": [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45
+        ]
+      },
+      "source_defects": [
+        "Frozen native s chool/t o/8 -year-old spacing retained; not replaced by previously corrected prepared material"
+      ],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g10.2024.cloze",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 1,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade10-shijingshan2024lower-20261013",
+            "1"
+          ],
+          "sha256": "bf216e16de0fe64e3ce9e57836265d7eeaeafe12cd9167a8c02cda956260a4ad"
+        }
+      ],
+      "joined_text_sha256": "bf216e16de0fe64e3ce9e57836265d7eeaeafe12cd9167a8c02cda956260a4ad",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade10-shijingshan2024lower-20261013.pdf",
+        "sha256": "c8e94454eb59173e328c2f1a3dc9f8bb6635c0b6e81cf9a0858eea8bde33175b"
+      },
+      "source_parent_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 280,
+      "material_end_offset": 1423,
+      "material_sha256": "b385bfa08e2e22a17456842a491df33f5566bdf781d2459d2a338c36115173f0",
+      "excluded_offsets": [
+        {
+          "start": 113,
+          "end": 114,
+          "literal": "1",
+          "role": "blank_label",
+          "blank_id": 1
+        },
+        {
+          "start": 274,
+          "end": 275,
+          "literal": "2",
+          "role": "blank_label",
+          "blank_id": 2
+        },
+        {
+          "start": 317,
+          "end": 318,
+          "literal": "3",
+          "role": "blank_label",
+          "blank_id": 3
+        },
+        {
+          "start": 424,
+          "end": 425,
+          "literal": "4",
+          "role": "blank_label",
+          "blank_id": 4
+        },
+        {
+          "start": 550,
+          "end": 551,
+          "literal": "5",
+          "role": "blank_label",
+          "blank_id": 5
+        },
+        {
+          "start": 641,
+          "end": 642,
+          "literal": "6",
+          "role": "blank_label",
+          "blank_id": 6
+        },
+        {
+          "start": 701,
+          "end": 702,
+          "literal": "7",
+          "role": "blank_label",
+          "blank_id": 7
+        },
+        {
+          "start": 807,
+          "end": 808,
+          "literal": "8",
+          "role": "blank_label",
+          "blank_id": 8
+        },
+        {
+          "start": 926,
+          "end": 927,
+          "literal": "9",
+          "role": "blank_label",
+          "blank_id": 9
+        },
+        {
+          "start": 1137,
+          "end": 1139,
+          "literal": "10",
+          "role": "blank_label",
+          "blank_id": 10
+        }
+      ],
+      "expected_blank_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "question_region": {
+        "start_offset": 1425,
+        "end_offset": 1872,
+        "sha256": "c724431cc8192df16949d3539795f56f42149f88048a4da6c207f56bf9d1f757",
+        "printed_source_question_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "source_defects": [],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g10.2024.readingA",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 2,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade10-shijingshan2024lower-20261013",
+            "2"
+          ],
+          "sha256": "9c9f07ff1d800fea25c85edf945dd338a1a8bcf851f16184fc39bc105cc7ebf7"
+        },
+        {
+          "PDF_page": 3,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade10-shijingshan2024lower-20261013",
+            "3"
+          ],
+          "sha256": "6480d00791abb697cd46d8edf1d7e98c232a8c50dd9007e5e801b26979f2a7a8"
+        }
+      ],
+      "joined_text_sha256": "011c61d9aa072eec28e1420a629fcbad67f9556d5ff8f1428dd264ce08be1935",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade10-shijingshan2024lower-20261013.pdf",
+        "sha256": "c8e94454eb59173e328c2f1a3dc9f8bb6635c0b6e81cf9a0858eea8bde33175b"
+      },
+      "source_parent_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 1469,
+      "material_end_offset": 2570,
+      "material_sha256": "42cc5e373aed136f52c4aef5166ec54e85e99f948d0beadc8001932578e9bbce",
+      "excluded_offsets": [],
+      "expected_blank_ids": [],
+      "question_region": {
+        "start_offset": 2573,
+        "end_offset": 3200,
+        "sha256": "3fa27ba70b3c1f720fb879748a8209e061f5a711145e1cbe8a45a70a251632b9",
+        "printed_source_question_numbers": [
+          21,
+          22,
+          23
+        ]
+      },
+      "source_defects": [],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g10.2024.readingC",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 4,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade10-shijingshan2024lower-20261013",
+            "4"
+          ],
+          "sha256": "ea81c836bef8b1f8cc8c0fb575c4ca0284ddf4509497d67e792871b3bbdb6820"
+        },
+        {
+          "PDF_page": 5,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade10-shijingshan2024lower-20261013",
+            "5"
+          ],
+          "sha256": "c5f20a595b22664e988d05faf76f466f35e3eb050c5a6e16eecaca8b6325e462"
+        }
+      ],
+      "joined_text_sha256": "80aa0a04e58dd78d61d624e7b248a1f18bcaa581b286dd87c11fde9938883974",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade10-shijingshan2024lower-20261013.pdf",
+        "sha256": "c8e94454eb59173e328c2f1a3dc9f8bb6635c0b6e81cf9a0858eea8bde33175b"
+      },
+      "source_parent_id": "bj-grade10-shijingshan2024lower-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 528,
+      "material_end_offset": 2017,
+      "material_sha256": "d460923efbc50299e4f14b8a6129f761da866c2ee58ae584c6a04de65d88a633",
+      "excluded_offsets": [],
+      "expected_blank_ids": [],
+      "question_region": {
+        "start_offset": 2019,
+        "end_offset": 2697,
+        "sha256": "8825aec01b393d5e3e7c42e880b109ab218289a6f2423c760f7c49a43d882ca0",
+        "printed_source_question_numbers": [
+          28,
+          29,
+          30
+        ]
+      },
+      "source_defects": [],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g11.2024.cloze",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 1,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade11-yanqing2024upper-20261013",
+            "1"
+          ],
+          "sha256": "a3806d0b9828305ba34a193375f5a8d6b1fab6ace89eb59227751d37cddb3f63"
+        },
+        {
+          "PDF_page": 2,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade11-yanqing2024upper-20261013",
+            "2"
+          ],
+          "sha256": "c597a27b3b30594a3c336d940c68726688f0403edf4d7532e5b4f8ef0129486d"
+        }
+      ],
+      "joined_text_sha256": "99354be13410bf766309b865340b7f7a8fdf7ee08a2b611de68ec91b9372e0a6",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade11-yanqing2024upper-20261013.pdf",
+        "sha256": "8a1ea1bd4264aaeb72c807255366abd56b1006f1b2bdfd851b1591dd0a5429ab"
+      },
+      "source_parent_id": "bj-grade11-yanqing2024upper-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 328,
+      "material_end_offset": 1884,
+      "material_sha256": "417a5b2df08c70c229aca195b96e56f41b17a17e4dc6b2aa8cb77f37bdb9b45d",
+      "excluded_offsets": [
+        {
+          "start": 155,
+          "end": 164,
+          "literal": "____1____",
+          "role": "blank_label",
+          "blank_id": 1
+        },
+        {
+          "start": 302,
+          "end": 311,
+          "literal": "____2____",
+          "role": "blank_label",
+          "blank_id": 2
+        },
+        {
+          "start": 367,
+          "end": 376,
+          "literal": "____3____",
+          "role": "blank_label",
+          "blank_id": 3
+        },
+        {
+          "start": 459,
+          "end": 468,
+          "literal": "____4____",
+          "role": "blank_label",
+          "blank_id": 4
+        },
+        {
+          "start": 766,
+          "end": 775,
+          "literal": "____5____",
+          "role": "blank_label",
+          "blank_id": 5
+        },
+        {
+          "start": 845,
+          "end": 854,
+          "literal": "____6____",
+          "role": "blank_label",
+          "blank_id": 6
+        },
+        {
+          "start": 994,
+          "end": 1003,
+          "literal": "____7____",
+          "role": "blank_label",
+          "blank_id": 7
+        },
+        {
+          "start": 1042,
+          "end": 1051,
+          "literal": "____8____",
+          "role": "blank_label",
+          "blank_id": 8
+        },
+        {
+          "start": 1235,
+          "end": 1244,
+          "literal": "____9____",
+          "role": "blank_label",
+          "blank_id": 9
+        },
+        {
+          "start": 1356,
+          "end": 1368,
+          "literal": "_____10_____",
+          "role": "blank_label",
+          "blank_id": 10
+        }
+      ],
+      "expected_blank_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "question_region": {
+        "start_offset": 1886,
+        "end_offset": 2360,
+        "sha256": "ac2aa57a2227562a79da80d6bdf89f9f873b7713c09703e079e3fea110f6d456",
+        "printed_source_question_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "source_defects": [],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g11.2024.readingA",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 2,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade11-yanqing2024upper-20261013",
+            "2"
+          ],
+          "sha256": "c597a27b3b30594a3c336d940c68726688f0403edf4d7532e5b4f8ef0129486d"
+        },
+        {
+          "PDF_page": 3,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade11-yanqing2024upper-20261013",
+            "3"
+          ],
+          "sha256": "e8fd1ace951bce4c28fb70b6387b9bd7da37ccba2fa54e6301ad747bd61ccb46"
+        }
+      ],
+      "joined_text_sha256": "003ed684571ebdcac7a22c04841a87eb6f71cbaec53cf462aee25cfd27f646c0",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade11-yanqing2024upper-20261013.pdf",
+        "sha256": "8a1ea1bd4264aaeb72c807255366abd56b1006f1b2bdfd851b1591dd0a5429ab"
+      },
+      "source_parent_id": "bj-grade11-yanqing2024upper-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 1974,
+      "material_end_offset": 4172,
+      "material_sha256": "28d288603d1effc186e5b5ce77f0b441a5ac15d52bae1dfef038d914b1359eaa",
+      "excluded_offsets": [
+        {
+          "start": 356,
+          "end": 370,
+          "literal": "\n \n第3页/共18页 \n ",
+          "role": "page_header_or_footer"
+        }
+      ],
+      "expected_blank_ids": [],
+      "question_region": {
+        "start_offset": 4174,
+        "end_offset": 4708,
+        "sha256": "c485987e87120f42822c6de5d88f88aed880589bc5015a37f709f33928df1b4f",
+        "printed_source_question_numbers": [
+          21,
+          22,
+          23
+        ]
+      },
+      "source_defects": [
+        "Frozen V olunteer word spacing retained; Q21ofUN scope and allowance-vs-salary risk remains"
+      ],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g12.2023.cloze",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-grade12-and-extra-private-audit20261013.json",
+        "sha256": "e25553c270b0eba42263427658de85ab6eda29166e23298e332eb518ffec4c34"
+      },
+      "snapshot_acquisition_id": "firstrelease-grade12-and-extra-private-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 7,
+          "pointer": [
+            "grade12_native_pages_private",
+            "7"
+          ],
+          "sha256": "d963c0c73376d51e30541cfd327fcba4b52482e0678d4531ede375cc0854bf07"
+        },
+        {
+          "PDF_page": 8,
+          "pointer": [
+            "grade12_native_pages_private",
+            "8"
+          ],
+          "sha256": "14bdf7b7ffa28a1d9a8b3c012ec66d5baa89fd8c12c8aa986f3b7e09ce9b32c9"
+        }
+      ],
+      "joined_text_sha256": "719a1853284561f1903b8a52f82426df2889956a9e068eb448387e9676f65f3d",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-jianghuai2024-firstjoint-20261013.pdf",
+        "sha256": "430b12ad829244cfaf1ab17bc23710cd9315f1efc350d3eb794b4ed0a697ee7a"
+      },
+      "source_parent_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 483,
+      "material_end_offset": 1986,
+      "material_sha256": "7b595210c62ace9b218b486e3f7ce6555792b3ed2aeefd5a65e31d087d0de1f4",
+      "excluded_offsets": [
+        {
+          "start": 134,
+          "end": 136,
+          "literal": "41",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 225,
+          "end": 227,
+          "literal": "42",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 257,
+          "end": 259,
+          "literal": "43",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 415,
+          "end": 417,
+          "literal": "44",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 495,
+          "end": 497,
+          "literal": "45",
+          "role": "blank_label",
+          "blank_id": 45
+        },
+        {
+          "start": 554,
+          "end": 556,
+          "literal": "46",
+          "role": "blank_label",
+          "blank_id": 46
+        },
+        {
+          "start": 612,
+          "end": 614,
+          "literal": "47",
+          "role": "blank_label",
+          "blank_id": 47
+        },
+        {
+          "start": 697,
+          "end": 699,
+          "literal": "48",
+          "role": "blank_label",
+          "blank_id": 48
+        },
+        {
+          "start": 795,
+          "end": 797,
+          "literal": "49",
+          "role": "blank_label",
+          "blank_id": 49
+        },
+        {
+          "start": 1030,
+          "end": 1032,
+          "literal": "50",
+          "role": "blank_label",
+          "blank_id": 50
+        },
+        {
+          "start": 1058,
+          "end": 1060,
+          "literal": "51",
+          "role": "blank_label",
+          "blank_id": 51
+        },
+        {
+          "start": 1216,
+          "end": 1218,
+          "literal": "52",
+          "role": "blank_label",
+          "blank_id": 52
+        },
+        {
+          "start": 1252,
+          "end": 1254,
+          "literal": "53",
+          "role": "blank_label",
+          "blank_id": 53
+        },
+        {
+          "start": 1303,
+          "end": 1305,
+          "literal": "54",
+          "role": "blank_label",
+          "blank_id": 54
+        },
+        {
+          "start": 1427,
+          "end": 1429,
+          "literal": "55",
+          "role": "blank_label",
+          "blank_id": 55
+        }
+      ],
+      "expected_blank_ids": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "question_region": {
+        "start_offset": 1987,
+        "end_offset": 2802,
+        "sha256": "002f5b7927122a3103dcb324d538c4f5d333ecb77d4eb2c3a6736a7f1d2003b8",
+        "printed_source_question_numbers": [
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55
+        ]
+      },
+      "source_defects": [],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g12.2023.readingA",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-grade12-and-extra-private-audit20261013.json",
+        "sha256": "e25553c270b0eba42263427658de85ab6eda29166e23298e332eb518ffec4c34"
+      },
+      "snapshot_acquisition_id": "firstrelease-grade12-and-extra-private-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 3,
+          "pointer": [
+            "grade12_native_pages_private",
+            "3"
+          ],
+          "sha256": "6da05019554cc43e305d0458e12cb5627900afff51dde3877873be8046968a19"
+        }
+      ],
+      "joined_text_sha256": "6da05019554cc43e305d0458e12cb5627900afff51dde3877873be8046968a19",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-jianghuai2024-firstjoint-20261013.pdf",
+        "sha256": "430b12ad829244cfaf1ab17bc23710cd9315f1efc350d3eb794b4ed0a697ee7a"
+      },
+      "source_parent_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 93,
+      "material_end_offset": 1920,
+      "material_sha256": "ac1c0ff7379efdf0bdc47c170fff4315f81397095258cff56490be1bca456f3a",
+      "excluded_offsets": [],
+      "expected_blank_ids": [],
+      "question_region": {
+        "start_offset": 1921,
+        "end_offset": 2456,
+        "sha256": "de35c620c914f9d5aefa2a17a710717c249a4aca298a30f1ec72d91f511d45cf",
+        "printed_source_question_numbers": [
+          21,
+          22,
+          23
+        ]
+      },
+      "source_defects": [],
+      "necessary_input_status_not_upgraded": true
+    },
+    {
+      "group_id": "g12.2023.readingB",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-grade12-and-extra-private-audit20261013.json",
+        "sha256": "e25553c270b0eba42263427658de85ab6eda29166e23298e332eb518ffec4c34"
+      },
+      "snapshot_acquisition_id": "firstrelease-grade12-and-extra-private-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 4,
+          "pointer": [
+            "grade12_native_pages_private",
+            "4"
+          ],
+          "sha256": "22237cbe64a4a9be22dce8c8e40cd448913add93a56e7134584755d2b7b01cf3"
+        }
+      ],
+      "joined_text_sha256": "22237cbe64a4a9be22dce8c8e40cd448913add93a56e7134584755d2b7b01cf3",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-jianghuai2024-firstjoint-20261013.pdf",
+        "sha256": "430b12ad829244cfaf1ab17bc23710cd9315f1efc350d3eb794b4ed0a697ee7a"
+      },
+      "source_parent_id": "grade12-jianghuai2024-firstjoint-20261013",
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "material_start_offset": 18,
+      "material_end_offset": 1504,
+      "material_sha256": "736e124e7bf5045ec7677d93a5acbd214c44f362a8f2a3b65bad18143276cdfb",
+      "excluded_offsets": [],
+      "expected_blank_ids": [],
+      "question_region": {
+        "start_offset": 1505,
+        "end_offset": 2192,
+        "sha256": "5b2c8c6d67a42ae5cc47e8929be00dc48e20ad8dfca1fe4936fcc7b071b7c58f",
+        "printed_source_question_numbers": [
+          24,
+          25,
+          26,
+          27
+        ]
+      },
+      "source_defects": [
+        "Backpack medical and practical-use claims not factual gold"
+      ],
+      "necessary_input_status_not_upgraded": true
+    }
+  ],
+  "native_empty_instances": [
+    {
+      "group_id": "g8.2025.cloze",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 3,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade8-xicheng2025upper-20261013",
+            "3"
+          ],
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "PDF_page": 4,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade8-xicheng2025upper-20261013",
+            "4"
+          ],
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "joined_text_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade8-xicheng2025upper-20261013.pdf",
+        "sha256": "225516737e0e5cee6be03fb83f02aca25fbee02a207f963d22b3432c679cef32"
+      },
+      "source_parent_id": "bj-grade8-xicheng2025upper-20261013",
+      "reason": "frozen_native_page_strings_empty; original image PDF still retained; no missing-paper or input-completeness inference"
+    },
+    {
+      "group_id": "g8.2025.readingB",
+      "snapshot": {
+        "path": "build/english-benchmark-research-20261012/firstrelease-native-page-and-key-scope-audit20261013.json",
+        "sha256": "37502507b5ebaa344e0b7e7046c7cf164db5f6eb4c7b386b8d0a079d9942af0a"
+      },
+      "snapshot_acquisition_id": "firstrelease-native-page-and-key-scope-audit20261013",
+      "pages": [
+        {
+          "PDF_page": 6,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade8-xicheng2025upper-20261013",
+            "6"
+          ],
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "PDF_page": 7,
+          "pointer": [
+            "native_source_pages_private",
+            "bj-grade8-xicheng2025upper-20261013",
+            "7"
+          ],
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "joined_text_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade8-xicheng2025upper-20261013.pdf",
+        "sha256": "225516737e0e5cee6be03fb83f02aca25fbee02a207f963d22b3432c679cef32"
+      },
+      "source_parent_id": "bj-grade8-xicheng2025upper-20261013",
+      "reason": "frozen_native_page_strings_empty; original image PDF still retained; no missing-paper or input-completeness inference"
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}
