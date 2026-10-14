@@ -1,0 +1,173 @@
+{
+  "version": "0.1",
+  "scope": "selected_repost_text_pairs_not_full_authentic_exam_or_grade_gold",
+  "groups": [
+    {
+      "id": "primary4.xdf.upper.odd",
+      "level": "primary4",
+      "kind": "five_odd_one_out_three_choices",
+      "response_count": 5,
+      "source_acquisition_id": "primary4-xdf-upper2012-13-repost20261014",
+      "source_answer_vector": [
+        "C",
+        "A",
+        "B",
+        "B",
+        "A"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "upper2012-13_unverified_institution"
+    },
+    {
+      "id": "primary4.xdf.upper.chinese_context",
+      "level": "primary4",
+      "kind": "six_chinese_functions_six_shared_responses",
+      "response_count": 6,
+      "source_acquisition_id": "primary4-xdf-upper2012-13-repost20261014",
+      "source_answer_vector": [
+        "D",
+        "F",
+        "B",
+        "A",
+        "C",
+        "E"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "upper2012-13_unverified_institution"
+    },
+    {
+      "id": "primary4.xdf.upper.bag_tf",
+      "level": "primary4",
+      "kind": "single_five_true_false",
+      "response_count": 5,
+      "source_acquisition_id": "primary4-xdf-upper2012-13-repost20261014",
+      "source_answer_vector": [
+        "F",
+        "T",
+        "F",
+        "T",
+        "F"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "upper2012-13_unverified_institution"
+    },
+    {
+      "id": "primary4.xdf.lower.qa",
+      "level": "primary4",
+      "kind": "five_questions_five_shared_answers",
+      "response_count": 5,
+      "source_acquisition_id": "primary4-xdf-lower-undated-repost20261014",
+      "source_answer_vector": [
+        "D",
+        "B",
+        "A",
+        "E",
+        "C"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "lower_undated_unverified_institution"
+    },
+    {
+      "id": "primary4.xdf.lower.bank",
+      "level": "primary4",
+      "kind": "five_sentences_five_shared_words_or_phrase",
+      "response_count": 5,
+      "source_acquisition_id": "primary4-xdf-lower-undated-repost20261014",
+      "source_answer_vector": [
+        "B",
+        "A",
+        "C",
+        "E",
+        "D"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "lower_undated_unverified_institution"
+    },
+    {
+      "id": "primary4.xdf.lower.responses",
+      "level": "primary4",
+      "kind": "five_questions_five_shared_answers",
+      "response_count": 5,
+      "source_acquisition_id": "primary4-xdf-lower-undated-repost20261014",
+      "source_answer_vector": [
+        "C",
+        "A",
+        "B",
+        "D",
+        "E"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "lower_undated_unverified_institution"
+    },
+    {
+      "id": "primary4.xdf.lower.room_tf",
+      "level": "primary4",
+      "kind": "single_five_true_false",
+      "response_count": 5,
+      "source_acquisition_id": "primary4-xdf-lower-undated-repost20261014",
+      "source_answer_vector": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "F"
+      ],
+      "source_answer_semantics": "published_not_independent_gold",
+      "source_rule_each_once_explicit": false,
+      "source_parent_identity": "lower_undated_unverified_institution"
+    }
+  ],
+  "selected_group_count": 7,
+  "selected_reference_responses": 36,
+  "parent_identity_count": 2,
+  "private_observations_acquisition_id": "primary4-xdf-primary4-xdf-selected-paired-observations20261014-record",
+  "source_issue_observations": [
+    {
+      "id": "upper-VI-neighbours-Ss",
+      "outside_selected_groups": true,
+      "observation": "Printed third prompt Ss but published Tt Uu; ordinary alphabet neighbours of Ss would be Rr Tt. Preserve printed prompt and key; no silent repair, independent check pending."
+    },
+    {
+      "id": "upper-XI4-book-exact-number",
+      "group_id": "primary4.xdf.upper.bag_tf",
+      "response_number": 4,
+      "published": "T",
+      "observation": "Three named subjects/books suggest intended3 but singular malformed Theyre... book and nonexhaustive some/list risks; no absolute total without convention. Hold positive reuse."
+    },
+    {
+      "id": "lower-IX5-bed-desk-relation",
+      "group_id": "primary4.xdf.lower.room_tf",
+      "response_number": 5,
+      "published": "F",
+      "observation": "Bed near window, chair near desk; this does not entail bed not near desk. Text-match F and logical counterevidence differ. Hold positive reuse."
+    },
+    {
+      "id": "lower-VI-bank-phrase",
+      "group_id": "primary4.xdf.lower.bank",
+      "observation": "How many is a two-word candidate, source asks serial labels not one literal word; no explicit once restriction found in instruction."
+    },
+    {
+      "id": "upper-lower-images-missing",
+      "observation": "All six HTML image URLs identical site chrome assets for upper/lower; question picture placeholders lack question images. Do not fill image tasks from scripts or unrelated art."
+    }
+  ],
+  "positive_anchor_holds": [
+    {
+      "group_id": "primary4.xdf.upper.bag_tf",
+      "response_number": 4
+    },
+    {
+      "group_id": "primary4.xdf.lower.room_tf",
+      "response_number": 5
+    }
+  ],
+  "question_images_or_audio_acquired": false,
+  "new_authored_groups": 0,
+  "independent_teacher_student_or_commercial_admission": false
+}
