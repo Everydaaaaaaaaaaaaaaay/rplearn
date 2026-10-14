@@ -18,6 +18,8 @@
 
 身份修复：[核心0.16](FirstRelease/review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](FirstRelease/current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
+新增初三衔接：[五空七选/引述2/标题5当前0.2](FirstRelease/Expansions/Grade9HeadingInsertionProtocol-v0.1.md)，真实初稿C3/F4相关交换后补reports/reserved time并正文302→200，七项不变/35位置重解/修订1。扩展0.15全42/276，组合0.9旧41/271和第31边界保留待下批统一。
+
 新增分布核对：[22个当前句向量的固定token桶](FirstRelease/SentenceTokenBinObservations-v0.1.md)，12源/10作者、两开放句界未知；初一max31/高三max30重叠，旧引语误合在31—40桶产生伪单位，修正后消失。仅描述，不作年级/长句比例门槛。
 
 现行语言与词义：[13源/11作者卡0.4](FirstRelease/MeasuredReadingReferenceCards-v0.4.md)纳22句/max27高三测量；28源＋17核心队列/41材料271点已统一，十四旧请求未增。
