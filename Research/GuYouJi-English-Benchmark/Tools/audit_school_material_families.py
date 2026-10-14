@@ -18,7 +18,7 @@ def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
 
 
-def remove_offsets(text, offsets):
+def remove_offsets(text, offsets, separator=''):
     last = 0
     for row in sorted(offsets, key=lambda r: r['start']):
         start, end = row['start'], row['end']
@@ -26,8 +26,30 @@ def remove_offsets(text, offsets):
             raise ValueError('Overlapping or changed exclusion')
         last = end
     for row in sorted(offsets, key=lambda r: r['start'], reverse=True):
-        text = text[:row['start']] + text[row['end']:]
+        text = text[:row['start']] + separator + text[row['end']:]
     return text
+
+
+def material_text(case, view):
+    """Read a continuous passage or ordered student prompts in an interleaved repost."""
+    start, end = case['start_offset'], case['end_offset']
+    envelope = view[start:end]
+    if not 0 <= start < end <= len(view) or digest(envelope) != case['material_sha256']:
+        raise ValueError('Changed material span')
+    if 'material_segments' not in case:
+        return envelope
+    parts, previous_end = [], start
+    for segment in case['material_segments']:
+        a, b = segment['start_offset'], segment['end_offset']
+        text = view[a:b]
+        if not previous_end <= a < b <= end or digest(text) != segment['sha256']:
+            raise ValueError('Changed or overlapping student material segment')
+        parts.append(text)
+        previous_end = b
+    material = '\n'.join(parts)
+    if not parts or digest(material) != case['assembled_material_sha256']:
+        raise ValueError('Changed assembled student material')
+    return material
 
 
 def audit(manifest):
@@ -65,23 +87,22 @@ def audit(manifest):
         view = load_ref(case['source_text']).read_text()
         if row.get('source_text_ref') != case['source_text']:
             raise ValueError('Material belongs to a different source')
-        start, end = case['start_offset'], case['end_offset']
-        material = view[start:end]
-        if not 0 <= start < end <= len(view) or digest(material) != case['material_sha256']:
-            raise ValueError('Changed material span')
+        material = material_text(case, view)
         blanks = [r for r in case['excluded_offsets'] if r['role'] == 'blank_label']
         if case['expected_blank_ids'] != [r['blank_id'] for r in sorted(blanks, key=lambda r: r['start'])]:
             raise ValueError('Blank sequence differs')
         if blanks and len(blanks) != row['shape']['responses']:
             raise ValueError('Blank count differs from shape')
-        measured = remove_offsets(material, case['excluded_offsets'])
+        measured = remove_offsets(material, case['excluded_offsets'],
+                                  ' ' if case.get('replace_exclusions_with_space') else '')
         norm = normalized(measured)
         components = {}
         for component in case.get('components', []):
             text = view[component['start_offset']:component['end_offset']]
             if digest(text) != component['sha256']:
                 raise ValueError('Changed companion component')
-            content = remove_offsets(text, component.get('excluded_offsets', []))
+            content = remove_offsets(text, component.get('excluded_offsets', []),
+                                     ' ' if component.get('replace_exclusions_with_space') else '')
             totals = components.setdefault(component['role'], {'english_digit_tokens': 0, 'han_characters': 0, 'components': 0})
             for key, value in count(content).items():
                 totals[key] += value
