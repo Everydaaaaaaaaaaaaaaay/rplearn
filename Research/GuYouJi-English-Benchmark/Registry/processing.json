@@ -24286,6 +24286,171 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "baseline-sentence-bank-source-text20261015t-v0.1",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade7-xicheng2025-inspection-page0220261014-record",
+        "grade7-xicheng2025-inspection-page0320261014-record",
+        "grade8-fengtai2025upper-candidate20261014-view01",
+        "grade8-fengtai2025upper-candidate20261014-view02",
+        "grade8-fengtai2026-inspection-01-record",
+        "grade8-bnu2026-inspection-02-record",
+        "grade8-bnu2026-inspection-03-record",
+        "grade7-xicheng2025-inspection-page1020261014-record",
+        "grade8-bnu2026-inspection-08-record",
+        "grade7-xicheng2025-inspection-page1120261014-record"
+      ],
+      "tool": "author_source_page_transcription",
+      "tool_version": "0.1",
+      "parameters": [
+        "Nine old groups63responses;10existingPNGpages9actuallyviewed/1unchangedpriorreview reused; no source correction/keys in student text; preserve printed IPAcolon, shared-bank letteroutput, optional total4; failedemptyHan retained and bilingual corrected; no download/render/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-sentence-bank-source-text20261015t-v0.1.json",
+          "bytes": 75624,
+          "sha256": "f0f8dbc3dda2e93c934e1f015629267bc42be90084f973f56277605fe5cdec64",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-sentence-bank-audit20261015t-v0.1",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade7-xicheng2025-inspection-page0220261014-record",
+        "grade7-xicheng2025-inspection-page0320261014-record",
+        "grade8-fengtai2025upper-candidate20261014-view01",
+        "grade8-fengtai2025upper-candidate20261014-view02",
+        "grade8-fengtai2026-inspection-01-record",
+        "grade8-bnu2026-inspection-02-record",
+        "grade8-bnu2026-inspection-03-record",
+        "grade7-xicheng2025-inspection-page1020261014-record",
+        "grade8-bnu2026-inspection-08-record",
+        "grade7-xicheng2025-inspection-page1120261014-record"
+      ],
+      "tool": "failed_English_only_normalization_not_admitted",
+      "tool_version": "0.1",
+      "parameters": [
+        "Nine old groups63responses;10existingPNGpages9actuallyviewed/1unchangedpriorreview reused; no source correction/keys in student text; preserve printed IPAcolon, shared-bank letteroutput, optional total4; failedemptyHan retained and bilingual corrected; no download/render/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-sentence-bank-audit20261015t-v0.1.json",
+          "bytes": 560140,
+          "sha256": "70f3f35c37023a11ca61b695452b38d474058830074c5284352ff7d26a968336",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-sentence-bank-audit20261015t-v0.2",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade7-xicheng2025-inspection-page0220261014-record",
+        "grade7-xicheng2025-inspection-page0320261014-record",
+        "grade8-fengtai2025upper-candidate20261014-view01",
+        "grade8-fengtai2025upper-candidate20261014-view02",
+        "grade8-fengtai2026-inspection-01-record",
+        "grade8-bnu2026-inspection-02-record",
+        "grade8-bnu2026-inspection-03-record",
+        "grade7-xicheng2025-inspection-page1020261014-record",
+        "grade8-bnu2026-inspection-08-record",
+        "grade7-xicheng2025-inspection-page1120261014-record"
+      ],
+      "tool": "Tools/audit_baseline_sentence_banks.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "Nine old groups63responses;10existingPNGpages9actuallyviewed/1unchangedpriorreview reused; no source correction/keys in student text; preserve printed IPAcolon, shared-bank letteroutput, optional total4; failedemptyHan retained and bilingual corrected; no download/render/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-sentence-bank-audit20261015t-v0.2.json",
+          "bytes": 556824,
+          "sha256": "4c856737f9b309ec700ff0d3e007e6f1328b38a70524682ff56a37a9a54cadde",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-sentence-bank-checks20261015t-v0.1",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade7-xicheng2025-inspection-page0220261014-record",
+        "grade7-xicheng2025-inspection-page0320261014-record",
+        "grade8-fengtai2025upper-candidate20261014-view01",
+        "grade8-fengtai2025upper-candidate20261014-view02",
+        "grade8-fengtai2026-inspection-01-record",
+        "grade8-bnu2026-inspection-02-record",
+        "grade8-bnu2026-inspection-03-record",
+        "grade7-xicheng2025-inspection-page1020261014-record",
+        "grade8-bnu2026-inspection-08-record",
+        "grade7-xicheng2025-inspection-page1120261014-record"
+      ],
+      "tool": "Tools/audit_baseline_sentence_banks.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Nine old groups63responses;10existingPNGpages9actuallyviewed/1unchangedpriorreview reused; no source correction/keys in student text; preserve printed IPAcolon, shared-bank letteroutput, optional total4; failedemptyHan retained and bilingual corrected; no download/render/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-sentence-bank-checks20261015t-v0.1.json",
+          "bytes": 6605,
+          "sha256": "8973a50ee9e509d02bc8422bfd957accb3070e74d7d14d9de2a254029080f1f1",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-sentence-bank-request20261015t-v0.1",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "grade8-fengtai2025upper-candidate20261014",
+        "gaokzx-fengtai2026-paper-key20261014-record",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade7-xicheng2025-inspection-page0220261014-record",
+        "grade7-xicheng2025-inspection-page0320261014-record",
+        "grade8-fengtai2025upper-candidate20261014-view01",
+        "grade8-fengtai2025upper-candidate20261014-view02",
+        "grade8-fengtai2026-inspection-01-record",
+        "grade8-bnu2026-inspection-02-record",
+        "grade8-bnu2026-inspection-03-record",
+        "grade7-xicheng2025-inspection-page1020261014-record",
+        "grade8-bnu2026-inspection-08-record",
+        "grade7-xicheng2025-inspection-page1120261014-record"
+      ],
+      "tool": "source_bound_preparation_fixture",
+      "tool_version": "0.1",
+      "parameters": [
+        "Nine old groups63responses;10existingPNGpages9actuallyviewed/1unchangedpriorreview reused; no source correction/keys in student text; preserve printed IPAcolon, shared-bank letteroutput, optional total4; failedemptyHan retained and bilingual corrected; no download/render/model/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-sentence-bank-request20261015t-v0.1.json",
+          "bytes": 2592,
+          "sha256": "0befa8cabbb47258d5ec1215e6b05f991bf12449d85a16d9f1bc8f844704976c",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

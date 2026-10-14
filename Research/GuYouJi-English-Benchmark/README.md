@@ -2,7 +2,7 @@
 
 2026-10-15用户要求避免研究文件膨胀：[存储策略](Storage/README.md)已改为两份近期完整恢复点+去重历史归档，旧33份清单/独有内容保留。目录计量59G→7.7G不等APFS实际释放51G；例行整库快照被工具拒绝，增量重放新增0对象。初高中研究自动任务继续，空间控制不能替代内容验收。
 
-2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.39](FirstRelease/PracticalAuthoringStandard-v0.39.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构记录/41父卷/70年级家族单元；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)初一新增山东5空7句家族观察，但与苏州小标题空不同，不拼完整模式；六年级8/7/7/6/6/7，仅来源标签采样计划达到。[配套、关键模式、材料家族去重与完整组审阅](FirstRelease/Sampling/sample-layer-gaps-v0.18.json)仍缺。238受限文字视图/39父卷/28,203对＝189新结构+49既有基线；旧233组27,028对复用，本批五基线/27已有响应新增1,175对，21准备控制通过。开放回应的观点+两理由/做法+理由分别绑定，原总分/每题分值与未知的分析评分分开；选做语法总4分不虚构每空1分，给词变形不套一词。冻结输入状态/原生空历史和13既有参照向量不变，零候选不当家族独立；剩68基线见[队列0.13](FirstRelease/Sampling/material-screen-queue-v0.13.json)，局部零候选不等全库独立家族，不扩其他阶段或宣称效度/生产适配。
+2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.40](FirstRelease/PracticalAuthoringStandard-v0.40.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构记录/41父卷/70年级家族单元；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一苏州含小标题空、济南全句空，不能拼完整模式。[配套、关键模式、材料家族去重与完整组审阅](FirstRelease/Sampling/sample-layer-gaps-v0.19.json)仍缺。247受限文字视图/39父卷/30,381组对＝189新结构+58既有基线；本批九基线/63已有响应新增2,178组对，30本机控制通过，另55题干片段14,575对单列。中文翻译首轮空视图造成假候选，失败报告保留，双语视图修复后组/片段零候选，未当独立家族。三选四选、整句翻译、音标、字母词库和选做总4分/未知逐空明确分开。冻结输入/原生空历史和源作者总量不变，剩59基线见[队列0.14](FirstRelease/Sampling/material-screen-queue-v0.14.json)，不扩其他阶段或宣称效度/生产适配。
 
 2026-10-15补齐萧山初二[四阅读图文输入包](FirstRelease/Sampling/public-preview-bundles-v0.1.json)：五张网页公开原版预览实际核读，共15个已有响应，不增加结构/父卷/作者计数。三海报、下划线和跨页题面必须随包绑定，14个本机准备控制通过；原文字缺图/未知状态保留，未当全卷、答案金标或生产适配。重庆“小标题”候选说明与实际七句/段内空冲突，不计具体模式第二来源；图内文本去重及其他配套仍缺。见[本批记录](Studies/2026-10-15-public-preview-reading-bundles-and-heading-label-counterexample.md)。
 
@@ -27,6 +27,8 @@
 2026-10-15新增[年级题型证据矩阵](FirstRelease/GradeTaskAppearance-v0.1.md)：24任务家族/144格，70正向、74未知，逐格列源组/父卷及输入分层；未知不当该年级没有，家族不当完整模式。新[介休两模式与三个候选核读](Studies/2026-10-15-heading-candidates-distinct-patterns-and-grade-appearance.md)保留资料/键反例，当前学校原版认证/混合模式第二地区仍缺。
 
 2026-10-15新增[开放读答与选做语法核读](Studies/2026-10-15-open-response-operations-optional-grammar-and-score-scope.md)：六已有原页复看、五既有组，三个开放末题操作和4/10语法给词模式分开；不从单题4分推分析性拆分、不从总4分推逐空评分。标题/正文/题干/给词/说明/评分分别计量，源减重与文化/音乐事实未经独立核证。
+
+2026-10-15新增[九基线与双语归一化修复](Studies/2026-10-15-baseline-sentence-bank-bilingual-empty-view-repair.md)：独立句44、音标4、整句翻译7、共享字母词库4、选做语法4回应；原印音标/日期与中文不丢，首轮假重复不准入。仅增量保存失败与修复证据，零新增原图/下载/全库快照。
 
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。
 

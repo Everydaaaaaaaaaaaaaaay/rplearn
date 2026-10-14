@@ -78,7 +78,8 @@ def open_form_views(manifest):
             blanks = [int(n) for n in re.findall(r'_+(\d+)_+', raw_body)]
             if blanks != record['printed_numbers'] or [s['printed_number'] for s in slots] != blanks or 'prompt' in counts:
                 raise ValueError('Whole grammar blank sequence differs')
-            expected_given = obs['features'].get('given_word_numbers', blanks if obs['features'].get('given_words_each') else None)
+            all_given = obs['features'].get('given_words_each') or obs['features'].get('all_blanks_given_word')
+            expected_given = obs['features'].get('given_word_numbers', blanks if all_given else None)
             if [c['item_id'] for c in hint_components] != expected_given:
                 raise ValueError('Given/ungiven source pattern differs')
             for slot in slots:
@@ -92,7 +93,8 @@ def open_form_views(manifest):
                     c = by_id[hint]
                     if c['role'] != 'given_hint' or c['item_id'] != n or not raw_body[b:].lstrip().startswith('(' + c['text'] + ')'):
                         raise ValueError('Given word belongs to another gap')
-            if record['source_optional'] != obs.get('optional_source_layer', False):
+            source_optional = obs.get('optional_source_layer', obs['features'].get('optional_score_component', False))
+            if record['source_optional'] != source_optional:
                 raise ValueError('Source optional grammar became compulsory')
             if record['source_optional']:
                 if record['points_total'] != 4 or record['points_each'] is not None or record['equal_points_per_blank_explicit'] or 'optional_declaration' not in counts:
