@@ -12,6 +12,10 @@
 
 以下增量记录保留各自时点的计数和保存边界。
 
+新增初三开放读答：[完整题组与判分边界](Studies/2026-10-14-grade9-open-response-complete-task-and-scoring-boundaries.md)，3响应/7内容分、15合成作者拟判；扩展0.12全分层39/263，当前统一0.14冻结38/260待合并，十四已验证请求不增加。源分析rubric未得，新分点/语言规则暂定；继续独立裁决。
+
+
+
 新词汇约束：[实际语境/官方别名/义项徽标](Studies/2026-10-14-actual-context-spelling-alias-and-sense-level-controls.md)，20引文绑定，organiser显式别名与work名词1A1/作品8A2分层；两词表差别/三未知/源结构/403访问限制保留。未推通篇CEFR、年级、百分比或许可；第29后新增。
 
 新初二增量：[四题三选说明与同模式语言负荷](Studies/2026-10-14-grade8-four-three-explanation-and-paired-language-load.md)，源271/36/80与新242/33/75分组件，C/B/A/B全解/12选项/17句。扩展0.11为12材料45点，全分层38/260；源/权限/标定不因文本重算成立，已并入当前0.14/38/260，旧0.13/37/256和第29保存边界保留。

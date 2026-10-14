@@ -1,0 +1,215 @@
+{
+  "version": "0.1",
+  "grade": 9,
+  "kind": "open_short_reading_response",
+  "candidate_path": "FirstRelease/Expansions/grade9-garden-map-reading-response-v0.1.md",
+  "candidate_sha256": "563b15581ddbf36dafd5ea1f60dca6f93f625851264940daed83cbc5f656c355",
+  "specification": {
+    "path": "FirstRelease/Specifications/grade9-v0.3.md",
+    "sha256": "65c2324d2e6a01aea53ad22adbf1b49842235f5d58b4b9d143e7e205ed6ce3fe"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+    "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+  },
+  "anchor_group_id": "g9.suzhou2024.readingResponse",
+  "source_numbers": [
+    54,
+    55,
+    56
+  ],
+  "questions": 3,
+  "maximum_score": 7,
+  "score_units_not_response_points": true,
+  "target_format": {
+    "items": 3,
+    "source_points": [
+      2,
+      2,
+      3
+    ],
+    "source_analytic_rubric_acquired": false,
+    "new_rubric_is_author_provisional": true,
+    "question1_atomic_scores": [
+      0,
+      2
+    ],
+    "question2_two_criteria_scores": [
+      0,
+      1,
+      2
+    ],
+    "question3_evaluation_and_grounded_reason_scores": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "full_sentences_required": false,
+    "literal_reference_matching": false,
+    "positive_view_required": false,
+    "reading_construct_not_hidden_grammar_marks": true
+  },
+  "task_load": {
+    "passage": {
+      "english_digit_tokens": 248,
+      "han_characters": 0
+    },
+    "prompt": {
+      "english_digit_tokens": 38,
+      "han_characters": 0
+    },
+    "material_label": {
+      "english_digit_tokens": 4,
+      "han_characters": 0
+    },
+    "instruction": {
+      "english_digit_tokens": 0,
+      "han_characters": 89
+    },
+    "option": {
+      "english_digit_tokens": 0,
+      "han_characters": 0
+    },
+    "items": 3,
+    "options_each": null,
+    "reading_response_maximum_points": 7,
+    "shared_body_counted_once": true,
+    "student_minutes": null,
+    "CEFR_or_grade_inference": null,
+    "transcription_independent": false
+  },
+  "whole_group_solved_by_author": true,
+  "new_source_question2_operator_change_explicit": true,
+  "author_synthetic_scoring_examples": [
+    {
+      "id": "synthetic-1",
+      "question": 1,
+      "response": "The team's map.",
+      "author_proposed_content_score": 2,
+      "author_reason": "等义短答",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-2",
+      "question": 1,
+      "response": "She use a map.",
+      "author_proposed_content_score": 2,
+      "author_reason": "use形式错误不改变查找手段，另给语言反馈",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-3",
+      "question": 1,
+      "response": "A plant label.",
+      "author_proposed_content_score": 0,
+      "author_reason": "标签当时不可读，不是实际手段",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-4",
+      "question": 1,
+      "response": "She used a map, or perhaps she just guessed.",
+      "author_proposed_content_score": 0,
+      "author_reason": "并列未定猜测破坏明确事实",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-5",
+      "question": 2,
+      "response": "Whether people can read the labels and whether the plants are where the map says they are.",
+      "author_proposed_content_score": 2,
+      "author_reason": "两标准完整",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-6",
+      "question": 2,
+      "response": "She checks if the words are readable.",
+      "author_proposed_content_score": 1,
+      "author_reason": "只有可读性",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-7",
+      "question": 2,
+      "response": "She checks the labels and the map.",
+      "author_proposed_content_score": 0,
+      "author_reason": "只有对象，没有任一标准",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-8",
+      "question": 2,
+      "response": "She looks for labels people cannot read and places where the map is wrong.",
+      "author_proposed_content_score": 2,
+      "author_reason": "否定表述准确描述问题检查",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-9",
+      "question": 2,
+      "response": "She checks whether the labels are readable and makes sure no plant has ever moved.",
+      "author_proposed_content_score": 1,
+      "author_reason": "第一项正确，第二项错误地要求不许移动",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-10",
+      "question": 3,
+      "response": "It is useful because readable labels and a correct map can help new visitors find plants.",
+      "author_proposed_content_score": 3,
+      "author_reason": "评价、两文本细节及访客机制",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-11",
+      "question": 3,
+      "response": "Once a week may not be enough. A plant could move before Friday, leaving visitors with an old map.",
+      "author_proposed_content_score": 3,
+      "author_reason": "合理限制性评价，由文内搬移/旧图机制提出可能情境，不声称原文说已发生新事故",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-12",
+      "question": 3,
+      "response": "It is useful. She checks every Friday.",
+      "author_proposed_content_score": 2,
+      "author_reason": "评价＋真实细节，但没解释该频率如何支持效用",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-13",
+      "question": 3,
+      "response": "I like it.",
+      "author_proposed_content_score": 1,
+      "author_reason": "只有评价",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-14",
+      "question": 3,
+      "response": "This wonderful habit proves that the garden will never have another problem.",
+      "author_proposed_content_score": 1,
+      "author_reason": "正面评价成立，但理由与not perfect矛盾，流畅不补内容分",
+      "human_score": null
+    },
+    {
+      "id": "synthetic-15",
+      "question": 3,
+      "response": "New visitors can find plants more easily when the labels and map are correct.",
+      "author_proposed_content_score": 3,
+      "author_reason": "隐含正面评价清楚，文本机制完整，不强制I think/because关键词",
+      "human_score": null
+    }
+  ],
+  "unknown_unlisted_answer_policy": "needs_review_not_automatic0",
+  "environment_invalid_score": null,
+  "response_language_mismatch_policy": "pending_no_automaticformal_score",
+  "actual_saved_transition_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "coarse_exposure_cluster": "grade9_original_garden_labels_and_Suzhou2024_open_response_form"
+}
