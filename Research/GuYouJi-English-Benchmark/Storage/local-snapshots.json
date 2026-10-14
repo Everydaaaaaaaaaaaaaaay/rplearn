@@ -13747,6 +13747,289 @@
         },
         "all_restored_files_size_SHA_distinct_inode_verified": true
       }
+    },
+    {
+      "snapshot_id": "2026-10-14T134453.593480+0000-5a0837ad",
+      "created_at_utc": "2026-10-14T13:44:53.593480+00:00",
+      "snapshot_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-14T134453.593480+0000-5a0837ad",
+      "manifest_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/2026-10-14T134453.593480+0000-5a0837ad/snapshot-manifest.json",
+      "manifest_sha256": "ad8b45051657b80fd9726c557f454abd94751ca1cf038ee8fbe0169b13b3643e",
+      "files_verified": 7573,
+      "bytes_verified": 2698064764,
+      "copy_methods": {
+        "macos_clonefile_copy_on_write_required": 7573
+      },
+      "copy_isolation": {
+        "method": "macos_clonefile_copy_on_write_required",
+        "distinct_inodes": true,
+        "source_write_isolated": true,
+        "copy_write_isolated": true
+      },
+      "restore_evidence": [
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-handbook.pdf",
+          "extension": ".pdf",
+          "sha256": "ebd74b6103c0a06276c6459f5eb947531b49f365bc4df2d52fc7bec85bbd9f0c",
+          "restored_bytes": 7860476
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/neea-2024-english-page03.jpg",
+          "extension": ".jpg",
+          "sha256": "7fd23537801da28b91f1e55ffc7467ac919e17258340a2129a7e0b6612d8f437",
+          "restored_bytes": 216927
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/fuzhou2025-english-25.png",
+          "extension": ".png",
+          "sha256": "97b4bab323001f76e806c57a3041aab740ef5744b724886ab7c19df42fc5386f",
+          "restored_bytes": 315792
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cambridge-a2-sample-listening-audio.mp3",
+          "extension": ".mp3",
+          "sha256": "98381382915d3a1dc5c76f01d2b92c2d841358bb35cd5cb75bb1d44a9ed81c80",
+          "restored_bytes": 21441248
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/cefrj-upstream/CEFR-J Wordlist Ver1.6.xlsx",
+          "extension": ".xlsx",
+          "sha256": "e41033a12f92983012a0a6b201d4f1f860b7ba3de700c2c3b89660ea21a390e1",
+          "restored_bytes": 1097188
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/raw/cmudict-cmudict.dict-pinned.txt",
+          "extension": ".txt",
+          "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22",
+          "restored_bytes": 3618488
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/ocr-revisions/aku-junior2025-page001.tsv",
+          "extension": ".tsv",
+          "sha256": "4bb2dba03b4dcb9852a1d55d8db0e6674021ab701aee89a5de72c30426d0a21a",
+          "restored_bytes": 1130
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/tessdata/chi_sim.traineddata",
+          "extension": ".traineddata",
+          "sha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730",
+          "restored_bytes": 2469156
+        },
+        {
+          "source": "build/english-benchmark-research-20261012/grade7-helper-A-source-frozen20261014.svg",
+          "extension": ".svg",
+          "sha256": "e1832f7ad5f4e3b708162b8710fdaa3e07c777a736b7b72bb184b5a37c2e77d1",
+          "restored_bytes": 1873
+        }
+      ],
+      "limitations": [
+        "Same-host local storage; no disk-loss/off-host restore test",
+        "New acquisitions require a new verified snapshot",
+        "Existing material rights and transmission limits still apply"
+      ],
+      "frozen_revision": "ce21be80",
+      "coverage_note": "Current53_338/24controls/532refs recovered;separateCET6source40 and2author10,primary3source4_20/2author10,foundation2oralprototypes13cards2personrecords;8modeplans andrealcue/keymismatches preserved;215+6nativepages/sourceandplan+sixnewauthoredfamilymethods replayed. Samehost strictCOW/allSHA/distinctinode;not offhost/environment/student/rights/model. Snapshot35 ownresults and later primary456raw candidates nextbatch.",
+      "independent_current_scope_restore_evidence": {
+        "snapshot_id": "2026-10-14T134453.593480+0000-5a0837ad",
+        "independent_full_files": 7573,
+        "strict_COW_no_byte_fallback": true,
+        "offhost_test": false,
+        "interpreter_or_full_environment_reconstructed": false,
+        "samehost_tools_reused": true,
+        "unchanged_processing_environment_and_old_domain_checks_inherited34": true,
+        "teacher_student_model_or_commercial_admission": false,
+        "restored_registry": {
+          "json_documents": 394,
+          "sources": 223,
+          "acquisition_attempts": 3965,
+          "cache_files_checked": 3842,
+          "processing_outputs_checked": 0,
+          "storage_files_checked": 0,
+          "scope_rows": 20,
+          "incomplete_milestones": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6",
+            "M7"
+          ],
+          "open_gaps": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "G05",
+            "G06",
+            "G07",
+            "G08",
+            "G09",
+            "G10",
+            "G11",
+            "G12",
+            "G13",
+            "G14",
+            "G15",
+            "G16",
+            "G17"
+          ],
+          "priority_coverage_cells": 36,
+          "bookkeeping_valid": true,
+          "errors": [],
+          "limitation": "Bookkeeping validation does not establish rights, content correctness or educational validity."
+        },
+        "current_core": {
+          "bindings_and_structure_valid": true,
+          "errors": [],
+          "candidates_checked": 25,
+          "questions_checked": 205,
+          "selected_source_groups": 53,
+          "paper_families_by_grade": {
+            "7": 2,
+            "8": 2,
+            "9": 2,
+            "10": 2,
+            "11": 2,
+            "12": 2
+          },
+          "selected_source_and_revision_cache_files_checked": 37,
+          "independent_semantic_or_learner_validation": false,
+          "limitation": "Structural completeness and digests cannot certify answer validity, difficulty, timing, rights or full benchmark completion.",
+          "local_image_option_assets_checked": 4,
+          "three_material_allocations_checked": 2,
+          "seed_answer_value_validation": {
+            "seed_answer_values_valid": true,
+            "errors": [],
+            "choice_label_values_checked": 112,
+            "explicit_mapped_values_checked": 15,
+            "independent_semantic_validation": false,
+            "limitation": "Value types and bound author transcription mappings do not establish original key authenticity or semantic gold."
+          },
+          "actual_used_anchor_rationale_validation": {
+            "bindings_and_structure_valid": true,
+            "errors": [],
+            "source_groups_with_rationales": 25,
+            "source_items_with_rationales": 205,
+            "required_source_groups": 25,
+            "required_source_items": 205,
+            "missing_group_ids": [],
+            "required_rationale_coverage_complete": true,
+            "answer_value_validation": {
+              "seed_answer_values_valid": true,
+              "errors": [],
+              "choice_label_values_checked": 135,
+              "explicit_mapped_values_checked": 15,
+              "independent_semantic_validation": false,
+              "limitation": "Value types and bound author transcription mappings do not establish original key authenticity or semantic gold."
+            },
+            "independent_semantic_or_student_validation": false
+          }
+        },
+        "current_bundle": {
+          "current_member_and_total_bindings_valid": true,
+          "errors": [],
+          "families": 53,
+          "response_points": 338,
+          "response_family_count": 10,
+          "reference_checks_including_repeats": 532,
+          "model_called": false,
+          "independent_English_student_or_rights_validation": false
+        },
+        "twentyfour_request_paths": [
+          "FirstRelease/generation-request-three-grammar-v0.3.json",
+          "FirstRelease/generation-request-quarantined-cloze-v0.3.json",
+          "FirstRelease/Expansions/generation-request-grade7-matching-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade7-shortbank-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade9-table-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade9-wordbank-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade12-graph-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade8-survey-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade8-insertion-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade10-heading-insertion-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade10-advice-email-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade11-mixed-insertion-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade12-portrait-insertion-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade8-four-three-reading-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade7-six-cloze-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade8-local-concept-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade8-sentence-translation-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade11-book-review-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade10-recruitment-reading-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade11-display-profiles-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade10-single-passage-grammar-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade10-ten-four-cloze-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade9-ten-four-cloze-v0.1.json",
+          "FirstRelease/Expansions/generation-request-grade8-eight-four-cloze-v0.1.json"
+        ],
+        "source_and_plan_replays": [
+          {
+            "method": "derive_cet_selected_groups20261014.py",
+            "method_sha256": "c837bdf4e2ae10bb970fb2db7ed64a25d084923f557e9fcde9ac686480019af5",
+            "same_data": true
+          },
+          {
+            "method": "derive_primary3_selected_groups20261014.py",
+            "method_sha256": "ead9a513210b2800b7d59ce4693b407835e99ec23211c05fa293b52d8bd8d6a3",
+            "same_data": true
+          },
+          {
+            "method": "derive_primary12_school_plan_observations20261014.py",
+            "method_sha256": "b89a4590233635ecd87324d6491fe38a8d38ad8408ee691c5616720a1626372a",
+            "same_data": true
+          }
+        ],
+        "author_replays": [
+          {
+            "method": "check_cet_two_authored_readings20261014.py",
+            "method_sha256": "337fd7a55e8c331cde0ca83135dc7f499a4054d21e156933a33fb18f9bdd56e1",
+            "two_current_candidate_and_author_data_equal": true
+          },
+          {
+            "method": "check_primary3_two_authored_tasks20261014.py",
+            "method_sha256": "3f7d35264437038f0114d2cc5a655e37d7509c76e04b85f100696bc17c6c4f05",
+            "two_current_candidate_and_author_data_equal": true
+          }
+        ],
+        "foundation_oral_prototypes_replayed": true,
+        "native_PDF_replays": [
+          {
+            "file": "cet2016-official-outline20261014",
+            "pages": 215,
+            "original_native_extraction_identical": true
+          },
+          {
+            "file": "primary3lower-jiajiaoban-public2019path20261014",
+            "pages": 6,
+            "original_native_extraction_identical": true
+          }
+        ],
+        "separate_level_layers": {
+          "junior_senior_families_responses": [
+            53,
+            338
+          ],
+          "CET_source_author": [
+            6,
+            40,
+            2,
+            10
+          ],
+          "primary3_source_author": [
+            4,
+            20,
+            2,
+            10
+          ],
+          "foundation_written_prototypes": 2,
+          "foundation_oral_cards_pair_person_records": [
+            13,
+            2
+          ],
+          "all_scope_rows": 20,
+          "longterm_gates_passed": false
+        },
+        "all_restored_files_size_SHA_distinct_inode_verified": true
+      }
     }
   ],
   "non_destructive_storage_compaction_events": [
