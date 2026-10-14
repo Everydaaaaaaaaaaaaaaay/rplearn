@@ -1,12 +1,14 @@
 # 初高中命题首版：24小时交付任务
 
+- **当前统一入口：[审阅包0.26](ReviewPackage-v0.26.md)、[标准0.17](PracticalAuthoringStandard-v0.17.md)、[组合0.17](combined-review-index-v0.17.json)**：47家族294响应，源117/722/20保持。高二新增[完整书评](Expansions/Grade11BookReviewProtocol-v0.1.md)，卡15/13；17本机控制保持，36源与17核心待裁决，作者准备不当独立/学生/商用或模型验收。
+
 用户于2026-10-13明确接受以年级定位的首版，并授权启动长期任务。启动：北京时间2026-10-13 20:12；争取交付：2026-10-14 20:12（Asia/Shanghai）。截止时按实际证据报告完成与缺口，时间到不表示完成。
 
 优先初一至高三六年级的阅读、完形、适用语言/语法填空规格、配套锚题、原创生成与作者解题检查。教材版本、学期和进度只作元数据；接受正常差异，收学校期中期末月考/教研统测，排除明确竞赛/奥赛/选拔卷。完整16水平、4备考方向和长期M1—M7仍保留，首版与全库/上线分别验收。
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-从[审阅包0.25](ReviewPackage-v0.25.md)、[标准0.16](PracticalAuthoringStandard-v0.16.md)、[组合0.16](combined-review-index-v0.16.json)开始。源117/722/20；作者46/290／十方式。[三新增模式请求](Expansions/RecentExpansionInputProtocol-v0.1.md)与原14同SHA合17份本机控制，实际3过／5具体误用拒绝，非生成模型结果。阅读卡14/12、源36＋核心17待裁决保持；第33已纳46/290及17控制；33自身/之后下一批。见[交付0.16](DeliveryCheck-v0.16.md)，独立、学生、商用、模型和长期门槛未通过。
+此前0.25冻结入口从[审阅包0.25](ReviewPackage-v0.25.md)、[标准0.16](PracticalAuthoringStandard-v0.16.md)、[组合0.16](combined-review-index-v0.16.json)开始。源117/722/20；作者46/290／十方式。[三新增模式请求](Expansions/RecentExpansionInputProtocol-v0.1.md)与原14同SHA合17份本机控制，实际3过／5具体误用拒绝，非生成模型结果。阅读卡14/12、源36＋核心17待裁决保持；第33已纳46/290及17控制；33自身/之后下一批。见[交付0.16](DeliveryCheck-v0.16.md)，独立、学生、商用、模型和长期门槛未通过。
 
 新增来源：[2026丰台七组37参考](../Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](../Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 

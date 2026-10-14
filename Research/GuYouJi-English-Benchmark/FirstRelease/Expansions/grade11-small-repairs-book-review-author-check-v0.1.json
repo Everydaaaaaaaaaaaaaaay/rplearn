@@ -1,0 +1,189 @@
+{
+  "version": "0.1",
+  "grade": 11,
+  "kind": "four_item_four_option_fictional_book_review",
+  "candidate_path": "FirstRelease/Expansions/grade11-small-repairs-book-review-v0.1.md",
+  "candidate_sha256": "0d2f5fc4caa678a580444c8c894ef557ff4e6ceabb6ad1716018e16aea7da729",
+  "source_catalogue": {
+    "path": "FirstRelease/source-group-observations.json",
+    "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+  },
+  "specification": {
+    "path": "FirstRelease/Specifications/grade11-v0.2.md",
+    "sha256": "3e0315a5840cd3c0e1b402d5b60a4e39e5f693493a153452c9a9d9e738a1e7c5"
+  },
+  "anchor_group_id": "g11.2025.readingC",
+  "source_rationale": {
+    "path": "build/english-benchmark-research-20261012/grade11-book-review-source-rationales20261014.json",
+    "sha256": "c5929db7f1359ec04cbc6eedc4064025fdeb4463215b8f288e4b60358bab1d3a"
+  },
+  "questions": 4,
+  "options_each": 4,
+  "body_paragraphs": 5,
+  "author_answer_vector": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "whole_group_solved": true,
+  "all16_options_reviewed_by_author": true,
+  "task_load": {
+    "id": "grade11-small-repairs-book-review-v0.1",
+    "grade": 11,
+    "origin": "authored_current",
+    "input_sha256": "aa1a97cc1b88dcb2645ca102d813c0904d67963ff81e2124e6a61e5e6e671112",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 2,
+        "han_characters": 14,
+        "components": 1
+      },
+      "material_label": {
+        "english_digit_tokens": 2,
+        "han_characters": 0,
+        "components": 1
+      },
+      "option": {
+        "english_digit_tokens": 127,
+        "han_characters": 0,
+        "components": 16
+      },
+      "passage": {
+        "english_digit_tokens": 368,
+        "han_characters": 0,
+        "components": 5
+      },
+      "prompt": {
+        "english_digit_tokens": 39,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 538,
+      "han_characters": 14
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 21,
+    "passage_sentence_token_lengths": [
+      28,
+      11,
+      18,
+      10,
+      19,
+      14,
+      23,
+      16,
+      21,
+      12,
+      20,
+      17,
+      5,
+      23,
+      10,
+      21,
+      20,
+      18,
+      21,
+      19,
+      22
+    ],
+    "mean_passage_sentence_tokens": 17.523809523809526,
+    "maximum_passage_sentence_tokens": 28,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "source_task_load": {
+    "id": "g11.2025.readingC.book-review",
+    "grade": 11,
+    "origin": "source_visual_author_transcription",
+    "input_sha256": "02c8bc848bf84f15dafc4d6f1b64ff1291f9dd3014f958ecf1924afdf8539428",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 2,
+        "han_characters": 14,
+        "components": 1
+      },
+      "material_label": {
+        "english_digit_tokens": 0,
+        "han_characters": 0,
+        "components": 0
+      },
+      "option": {
+        "english_digit_tokens": 51,
+        "han_characters": 0,
+        "components": 16
+      },
+      "passage": {
+        "english_digit_tokens": 357,
+        "han_characters": 0,
+        "components": 5
+      },
+      "prompt": {
+        "english_digit_tokens": 32,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 442,
+      "han_characters": 14
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 23,
+    "passage_sentence_token_lengths": [
+      3,
+      3,
+      11,
+      6,
+      22,
+      6,
+      22,
+      17,
+      19,
+      13,
+      21,
+      20,
+      6,
+      25,
+      9,
+      13,
+      36,
+      8,
+      19,
+      17,
+      10,
+      33,
+      18
+    ],
+    "mean_passage_sentence_tokens": 15.521739130434783,
+    "maximum_passage_sentence_tokens": 36,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "actual_saved_transition_rounds": 0,
+  "source_Q30_not_positive_attitude_template": true,
+  "question_operators": [
+    "example_function",
+    "paragraph_contents",
+    "ending_evaluation_not_whole_review",
+    "actual_word_context"
+  ],
+  "fictional_book_author_reviewer_and_projects": true,
+  "coarse_exposure_cluster": "grade11_fictional_small_repairs_book_review_with_existing2025_source_form",
+  "unknowns": [
+    "Independent all-option best-answer and perspective review",
+    "Naturalness and vocabulary/context review",
+    "Student time/difficulty/discrimination",
+    "SourceQ30 adjudication; not closed by author rewrite"
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false
+}
