@@ -16,6 +16,8 @@
 
 身份修复：[核心0.16](FirstRelease/review-index-v0.16.json)恢复同一家族稳定ID；0.15完整来源签名检查失败已保留，当前实际验收通过。[旧模式/卡与当前身份映射](FirstRelease/current-core-family-identity-alias-v0.1.json)逐项证明39成员/263点载荷不变。
 
+新增高一功能说明：[完整预约屏幕四题](FirstRelease/Expansions/Grade10FunctionReadingProtocol-v0.1.md)，275/42/114、B/D/A/C与16项作者闭环；态度由四形容词改四命题多35token，不称同负荷。扩展0.13全分层40/267，当前组合0.7仍冻39/263待批量合并，十四既有请求不增。
+
 新增语言参照：[13源/9当前作者卡0.2](FirstRelease/MeasuredReadingReferenceCards-v0.2.md)，高一手表256/45/63、高三研究317/39/76两完整源实测，六年级源2/3/2/2/2/2；组合0.7所绑旧卡0.1保留，新增测量不增加101源组或39原创，第30之后待下批保存。
 
 当前语言与修题：[11源/9原创阅读参照卡](FirstRelease/MeasuredReadingReferenceCards-v0.1.md)，高二当前选项143→114、16项全解，核心0.15仍25/205/53；新增开放短答另列3点，全部39/263分八模式，十四已有请求不增。

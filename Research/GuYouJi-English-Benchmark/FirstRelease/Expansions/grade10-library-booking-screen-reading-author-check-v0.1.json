@@ -1,0 +1,111 @@
+{
+  "version": "0.1",
+  "grade": 10,
+  "kind": "four_item_four_option_practical_function_explanation",
+  "candidate_path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-v0.1.md",
+  "candidate_sha256": "946ae175b202f11f5d7554b1b081e9de8413a822967551c6d6e855a26dfdfb29",
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+    "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+  },
+  "specification": {
+    "path": "FirstRelease/Specifications/grade10-v0.3.md",
+    "sha256": "48c62407b19c3a40ce50165d6b2a06b0be8a10ef130ef99cb174808abdb9faaa"
+  },
+  "anchor_group_id": "g10.wenzhou2025.readingD",
+  "questions": 4,
+  "options_each": 4,
+  "body_paragraphs": 5,
+  "author_answer_vector": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "whole_group_solved": true,
+  "all16_options_reviewed_by_author": true,
+  "task_load": {
+    "id": "grade10-library-booking-screen-reading-v0.1",
+    "grade": 10,
+    "origin": "authored_current",
+    "input_sha256": "47cab0ffcbc0151cad9651ad986d1845cb7185ded930744f58b89a55d28d54d1",
+    "by_role": {
+      "instruction": {
+        "english_digit_tokens": 2,
+        "han_characters": 14,
+        "components": 1
+      },
+      "material_label": {
+        "english_digit_tokens": 6,
+        "han_characters": 0,
+        "components": 1
+      },
+      "option": {
+        "english_digit_tokens": 114,
+        "han_characters": 0,
+        "components": 16
+      },
+      "passage": {
+        "english_digit_tokens": 275,
+        "han_characters": 0,
+        "components": 5
+      },
+      "prompt": {
+        "english_digit_tokens": 42,
+        "han_characters": 0,
+        "components": 4
+      }
+    },
+    "total_scoped_text": {
+      "english_digit_tokens": 439,
+      "han_characters": 14
+    },
+    "items": 4,
+    "explicit_passage_sentence_units": 20,
+    "passage_sentence_token_lengths": [
+      10,
+      13,
+      17,
+      6,
+      20,
+      10,
+      19,
+      11,
+      13,
+      9,
+      21,
+      4,
+      12,
+      18,
+      11,
+      21,
+      12,
+      18,
+      12,
+      18
+    ],
+    "mean_passage_sentence_tokens": 13.75,
+    "maximum_passage_sentence_tokens": 21,
+    "source_factual_gold": false,
+    "independent_transcription_or_boundary_review": false,
+    "student_minutes": null,
+    "cefr_or_chinese_grade_inference": null
+  },
+  "actual_saved_transition_rounds": 0,
+  "question_operator_changes_explicit": [
+    "sourcehealthNOT→authorParagraph2bookingNOT",
+    "sourceparagraph4distract→authorparagraph4interrupt",
+    "sourceattitudeadjectives→authorqualifiedstancepropositions"
+  ],
+  "source_printed_unsupported_not_copied_as_ordinary_stance": true,
+  "unknowns": [
+    "Independent bestanswer/distraction/negativecategory review pending",
+    "Student timing/difficulty/discrimination unmeasured",
+    "Crossquestioncue andscanability pending"
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "coarse_exposure_cluster": "grade10_fictional_library_screen_and_Wenzhou2025_function_source"
+}
