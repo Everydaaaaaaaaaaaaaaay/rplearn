@@ -12,6 +12,8 @@
 
 以下增量记录保留各自时点的计数和保存边界。
 
+新词汇约束：[实际语境/官方别名/义项徽标](Studies/2026-10-14-actual-context-spelling-alias-and-sense-level-controls.md)，20引文绑定，organiser显式别名与work名词1A1/作品8A2分层；两词表差别/三未知/源结构/403访问限制保留。未推通篇CEFR、年级、百分比或许可；第29后新增。
+
 新初二增量：[四题三选说明与同模式语言负荷](Studies/2026-10-14-grade8-four-three-explanation-and-paired-language-load.md)，源271/36/80与新242/33/75分组件，C/B/A/B全解/12选项/17句。扩展0.11为12材料45点，全分层38/260；源/权限/标定不因文本重算成立，旧0.13/37/256与第29保存边界留存，后续合并。
 
 最新高三增量：[人物报道五空七选局部/全组闭环](Studies/2026-10-14-grade12-portrait-insertion-global-and-local-cohesion.md)，GCAFD/35作者配对、278正文/79共享选项；扩展0.10为11材料41点，全分层37/256。已纳入统一包0.13/组合0.4，旧35/246保留历史。
