@@ -1,0 +1,203 @@
+{
+  "version": "0.1",
+  "scope": "two_more_selected_existing_source_groups_component_andselectedsyntax_review_notnewpapers",
+  "records": [
+    {
+      "id": "g10.wenzhou2025.readingD",
+      "grade": 10,
+      "origin": "source_author_transcription",
+      "input_sha256": "a028ae977ac150ba450630873b9f6ddbf06ddc50947bae6ac5c6028e7aeb02a9",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 1,
+          "han_characters": 0,
+          "components": 1
+        },
+        "option": {
+          "english_digit_tokens": 63,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 256,
+          "han_characters": 4,
+          "components": 5
+        },
+        "prompt": {
+          "english_digit_tokens": 45,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 365,
+        "han_characters": 4
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 16,
+      "passage_sentence_token_lengths": [
+        16,
+        25,
+        13,
+        17,
+        22,
+        14,
+        6,
+        14,
+        29,
+        7,
+        16,
+        16,
+        19,
+        11,
+        15,
+        16
+      ],
+      "mean_passage_sentence_tokens": 16.0,
+      "maximum_passage_sentence_tokens": 29,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    },
+    {
+      "id": "g12.national2025.readingD",
+      "grade": 12,
+      "origin": "source_author_transcription",
+      "input_sha256": "968bbdf6eb4f567cd183d5b934d1bb8ab69d810ed61740277223e6af2b5f32a1",
+      "by_role": {
+        "instruction": {
+          "english_digit_tokens": 0,
+          "han_characters": 0,
+          "components": 0
+        },
+        "material_label": {
+          "english_digit_tokens": 1,
+          "han_characters": 0,
+          "components": 1
+        },
+        "option": {
+          "english_digit_tokens": 76,
+          "han_characters": 0,
+          "components": 16
+        },
+        "passage": {
+          "english_digit_tokens": 317,
+          "han_characters": 8,
+          "components": 5
+        },
+        "prompt": {
+          "english_digit_tokens": 39,
+          "han_characters": 0,
+          "components": 4
+        }
+      },
+      "total_scoped_text": {
+        "english_digit_tokens": 433,
+        "han_characters": 8
+      },
+      "items": 4,
+      "explicit_passage_sentence_units": 15,
+      "passage_sentence_token_lengths": [
+        38,
+        6,
+        25,
+        37,
+        15,
+        21,
+        21,
+        9,
+        26,
+        18,
+        19,
+        18,
+        14,
+        36,
+        14
+      ],
+      "mean_passage_sentence_tokens": 21.133333333333333,
+      "maximum_passage_sentence_tokens": 38,
+      "source_factual_gold": false,
+      "independent_transcription_or_boundary_review": false,
+      "student_minutes": null,
+      "cefr_or_chinese_grade_inference": null
+    }
+  ],
+  "source_catalogues": [
+    {
+      "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+      "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+    },
+    {
+      "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+      "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+    }
+  ],
+  "prepared_input_acquisition_id": "task-load-grade10-grade12-second-sources-prepared20261014-record",
+  "result_acquisition_id": "task-load-grade10-grade12-second-sources-results20261014-record",
+  "author_selected_syntax_observations": [
+    {
+      "grade": 10,
+      "group_id": "g10.wenzhou2025.readingD",
+      "source_sentence_refs": [
+        "P1S2",
+        "P3S3",
+        "P4S3",
+        "P4S4",
+        "P5S3"
+      ],
+      "author_syntax_scope_observations": [
+        "wrist-worn modifier plus offering participle;not all short strings simple clauses",
+        "P3S3 when/time plus relative which plus busy circumstances;time it rings not relative pronoun",
+        "P4S3 says-that complement,using gerundsubject andmodal may;distract lexical meaning distinct from confidence/relax",
+        "P4S4 relative which refers preceding highprice situation;not generic person referent",
+        "P5S3 as time/change circumstance,expect watchesto become;favorable closingafter drawbacks"
+      ],
+      "source_option35_B_printed": "unsupported",
+      "not_silently_repaired_to_unsupportive": true,
+      "overall_available_choice35C_not_universal_bothsides_rule": true,
+      "scientific_device_claims_source_only": true,
+      "new_independent_language_gold": false
+    },
+    {
+      "grade": 12,
+      "group_id": "g12.national2025.readingD",
+      "source_sentence_refs": [
+        "P1S1",
+        "P2S1",
+        "P2S2",
+        "P3S1",
+        "P3S2",
+        "P3S3",
+        "P3S5",
+        "P5S3",
+        "P5S4"
+      ],
+      "author_syntax_scope_observations": [
+        "P1S1 long enumeration shares have across distributed items;length not necessarily multiple subordinate depth",
+        "P2S1 suggests-that with may significantlyreduce,boiling/filtering detail;not universal guarantee",
+        "P2S2 journal name continues acrosspages4→5;published participle andthen filtering afteritcools;one full sentence",
+        "P3S1 rely on containing-enough-to condition;P3S2/P3S3 contrast300 versusless60,almost90 versus25within source;missingvolumeunit not supply mg/L",
+        "P3S5 three testedplastictypes anddidnot study otherchemicals;scope not allpollutants",
+        "P5S3 reporting quote plus apposition andwho-relative scopes toexternal engineer;not partofstudy",
+        "P5S4 should plus sotheyremove linksplantupgrading topracticalapplication,not merely recruit/furtherstudy"
+      ],
+      "source_relative_date_Wednesday_not_current_date": true,
+      "scientific_effect_or_medical_advice_independently_verified": false,
+      "alltypes_effect_equal_not_inferred": true,
+      "bottled10_to1000times_reference_is_previous_estimate_not_tapwater_ratio": true,
+      "new_independent_language_gold": false
+    }
+  ],
+  "independent_review": false,
+  "national_grade_bounds_or_ratios": false,
+  "CEFR_alignment": false,
+  "student_minutes": null,
+  "commercial_admission": false,
+  "model_called": false
+}
