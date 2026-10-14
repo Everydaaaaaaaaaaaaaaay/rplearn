@@ -1,0 +1,101 @@
+{
+  "version": "0.1",
+  "scope": "primary4_partial_author_preparation_separate_from_other_levels",
+  "source_index": {
+    "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+    "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+  },
+  "specification": {
+    "path": "Primary/Grade4/SelectedRepostSpecifications-v0.1.md",
+    "sha256": "85ad6dc43729e9053be9d9f9bd0130978a04d5aaa94d540b02738fa755889863"
+  },
+  "family_count": 2,
+  "response_count": 10,
+  "members": [
+    {
+      "id": "class-garden-reading",
+      "level": "primary4",
+      "kind": "five_true_false",
+      "response_count": 5,
+      "candidate": {
+        "path": "Primary/Grade4/Generated/class-garden-reading-v0.1.md",
+        "sha256": "3950400cad1d89a126e5c07cee8f5d1c60b4c68703c61e032756d1a2ef48b140"
+      },
+      "author_check_acquisition_id": "primary4-author-class-garden-reading-v0.1-author-check20261014",
+      "source_group_id": "primary4.xdf.lower.room_tf",
+      "author_answer_vector": [
+        "T",
+        "F",
+        "T",
+        "F",
+        "T"
+      ],
+      "component_counts": {
+        "passage": {
+          "english_digit_tokens": 80,
+          "han_characters": 0
+        },
+        "prompts": {
+          "english_digit_tokens": 37,
+          "han_characters": 0
+        },
+        "shared_options": null,
+        "instruction": {
+          "english_digit_tokens": 2,
+          "han_characters": 21
+        }
+      },
+      "explicit_sentence_units": 10,
+      "revision_count": 0,
+      "independent_teacher_student_or_commercial_admission": false
+    },
+    {
+      "id": "five-classroom-bank",
+      "level": "primary4",
+      "kind": "five_gaps_five_shared_words_or_phrase",
+      "response_count": 5,
+      "candidate": {
+        "path": "Primary/Grade4/Generated/five-classroom-bank-v0.2.md",
+        "sha256": "e2262ee78bbadc99a09f82051eba555f939b6e4375519bb58b64eb13dde5b72c"
+      },
+      "author_check_acquisition_id": "primary4-author-five-classroom-bank-v0.2-author-check20261014",
+      "source_group_id": "primary4.xdf.lower.bank",
+      "author_answer_vector": [
+        "B",
+        "C",
+        "D",
+        "A",
+        "E"
+      ],
+      "component_counts": {
+        "passage": null,
+        "prompts": {
+          "english_digit_tokens": 69,
+          "han_characters": 0
+        },
+        "shared_options": {
+          "english_digit_tokens": 6,
+          "han_characters": 0
+        },
+        "instruction": {
+          "english_digit_tokens": 2,
+          "han_characters": 26
+        }
+      },
+      "explicit_sentence_units": null,
+      "revision_count": 1,
+      "independent_teacher_student_or_commercial_admission": false,
+      "previous_version": {
+        "path": "Primary/Grade4/Generated/five-classroom-bank-v0.1.md",
+        "sha256": "3f8b4db4aaee4db4ceb0c9e5f84ae8a69d17736564380f885755f102b96b2a4f",
+        "student_input_unchanged": true,
+        "author_rationale_and_admissibility_corrected": true
+      }
+    }
+  ],
+  "actual_author_rationale_revision_count": 1,
+  "no_full_primary4_or_other_levels_admission": true,
+  "model_called": false,
+  "source_body_transmitted": false,
+  "independent_teacher_student_or_commercial_admission": false
+}
