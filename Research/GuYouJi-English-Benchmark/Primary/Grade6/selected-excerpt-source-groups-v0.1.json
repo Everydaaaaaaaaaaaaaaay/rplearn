@@ -1,0 +1,213 @@
+{
+  "version": "0.1",
+  "scope": "selected_paired_legacy_excerpt_not_whole_authenticated_exam_or_grade_gold",
+  "groups": [
+    {
+      "id": "primary6.minzhi2016-17.phon",
+      "level": "primary6",
+      "kind": "four_marked_span_phonology_TF",
+      "response_count": 4,
+      "source_number_ids": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4"
+      ],
+      "source_answer_vector": [
+        "T",
+        "T",
+        "F",
+        "F"
+      ],
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "published_not_independent_gold": true,
+      "source_rule_each_once_explicit": false
+    },
+    {
+      "id": "primary6.minzhi2016-17.grammar",
+      "level": "primary6",
+      "kind": "ten_three_choice_sentence_or_dialogue_completion",
+      "response_count": 10,
+      "source_number_ids": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "source_answer_vector": [
+        "B",
+        "B",
+        "C",
+        "A",
+        "A",
+        "C",
+        "A",
+        "B",
+        "C",
+        "B"
+      ],
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "published_not_independent_gold": true,
+      "source_rule_each_once_explicit": false
+    },
+    {
+      "id": "primary6.minzhi2016-17.bank",
+      "level": "primary6",
+      "kind": "five_dialogue_gaps_five_words_or_phrase",
+      "response_count": 5,
+      "source_number_ids": [
+        "12.1",
+        "12.2",
+        "12.3",
+        "12.4",
+        "12.5"
+      ],
+      "source_answer_vector": [
+        "different",
+        "favorite",
+        "best",
+        "more than",
+        "amazing"
+      ],
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "published_not_independent_gold": true,
+      "source_rule_each_once_explicit": false,
+      "candidate_list_from_visual_page": 2,
+      "logical_candidates": [
+        "amazing",
+        "more than",
+        "best",
+        "different",
+        "favorite"
+      ]
+    },
+    {
+      "id": "primary6.minzhi2016-17.sentence",
+      "level": "primary6",
+      "kind": "five_dialogue_gaps_five_shared_sentence_or_clause",
+      "response_count": 5,
+      "source_number_ids": [
+        "13.1",
+        "13.2",
+        "13.3",
+        "13.4",
+        "13.5"
+      ],
+      "source_answer_vector": [
+        "C",
+        "B",
+        "E",
+        "D",
+        "A"
+      ],
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "published_not_independent_gold": true,
+      "source_rule_each_once_explicit": false
+    },
+    {
+      "id": "primary6.minzhi2016-17.contexts",
+      "level": "primary6",
+      "kind": "five_chinese_functions_three_choices",
+      "response_count": 5,
+      "source_number_ids": [
+        "14.1",
+        "14.2",
+        "14.3",
+        "14.4",
+        "14.5"
+      ],
+      "source_answer_vector": [
+        "B",
+        "C",
+        "B",
+        "A",
+        "A"
+      ],
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "published_not_independent_gold": true,
+      "source_rule_each_once_explicit": false
+    }
+  ],
+  "selected_group_count": 5,
+  "selected_reference_responses": 29,
+  "parent_identity_count": 1,
+  "private_observations_acquisition_id": "primary6-minzhi-primary6-minzhi-selected-observations-v2-20261014-record",
+  "all_four_physical_pages_visually_read": true,
+  "actual_native_component_allocation_revision_count": 1,
+  "source_issue_observations": [
+    {
+      "id": "grammar7-whale-comparison",
+      "group_id": "primary6.minzhi2016-17.grammar",
+      "source_number": "7",
+      "observation": "Published C more than; less than and more than both grammatical; source question lacks intended lifespan context and species scope. Do not use grammar alone to make C unique or treat generalized whales longevity factual truth."
+    },
+    {
+      "id": "grammar5-You",
+      "group_id": "primary6.minzhi2016-17.grammar",
+      "source_number": "5",
+      "observation": "Printed You dictionary, not Your; preserve typo with publishedA, not teach literal source syntax."
+    },
+    {
+      "id": "context14-2-truncated-and-politeness",
+      "group_id": "primary6.minzhi2016-17.contexts",
+      "source_number": "14.2",
+      "observation": "B printed only Thats; A Thank you can accept greeting though C reciprocal reply preferred. Full source distractor likely truncated; holdpositive."
+    },
+    {
+      "id": "context14-5-functions-overlap",
+      "group_id": "primary6.minzhi2016-17.contexts",
+      "source_number": "14.5",
+      "observation": "Published A asks favourite hobby; B sparetimeactivity and C what do you like can also elicit hobbies with differing scope. General Chinese prompt insufficient to declare all alternatives pragmaticallywrong."
+    },
+    {
+      "id": "sentence13-mixed-slots",
+      "group_id": "primary6.minzhi2016-17.sentence",
+      "observation": "ChoiceB when you came over is subordinate clause with punctuation, not independent sentence; preserve both printed instructions and real slot type."
+    },
+    {
+      "id": "wordbank12-delim-and-factual",
+      "group_id": "primary6.minzhi2016-17.bank",
+      "observation": "Five logical candidates amazing/more than/best/different/favorite, with no delimiter between first2 in rendered bank; more than phrase. Whales live longest claim not verified zoology or universal fact."
+    }
+  ],
+  "positive_anchor_hold_numbers": [
+    "7",
+    "14.2",
+    "14.5"
+  ],
+  "marked_phonology_spans": [
+    [
+      "farm",
+      "ar",
+      "start",
+      "ar"
+    ],
+    [
+      "window",
+      "ow",
+      "slowly",
+      "ow"
+    ],
+    [
+      "bread",
+      "ea",
+      "seat",
+      "ea"
+    ],
+    [
+      "magazine",
+      "first_a",
+      "amazing",
+      "initial_a"
+    ]
+  ],
+  "complete_whole_original_exam": false,
+  "new_authored_groups": 0,
+  "independent_teacher_student_or_commercial_admission": false
+}
