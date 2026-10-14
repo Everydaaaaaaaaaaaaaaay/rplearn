@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [小三选定规格](Primary/Grade3/SelectedSourceSpecifications-v0.1.md)：四组20参考另层；三下六页/年未知、三上原预览1/6与HTML，IX3/5源键错配保留，未完整本级或权利/学生成立。
+
 - [24小时检查点](FirstRelease/DeadlineCheckpoint-2026-10-14.md)：20:40实际复算，已有初高中作者准备包；无20:12冻结证据，不宣称准时或全范围完成。
 - [四/六级规格0.1](CET/AuthoringSpecifications-v0.1.md)与[六组选定官方阅读](CET/selected-official-sample-groups-v0.1.json)：完整215页原大纲取得、22原图核读，另层6组40参考；另[两篇完整原创](CET/TwoReadingAuthorProtocol-v0.1.md)2家族10响应、40作者选项理由；源5响应暂缓正向，未听力/全书/独立/学生/商用验收。
 
