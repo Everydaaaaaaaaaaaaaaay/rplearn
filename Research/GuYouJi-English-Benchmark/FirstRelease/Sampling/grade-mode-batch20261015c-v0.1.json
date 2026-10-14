@@ -1,0 +1,1407 @@
+{
+  "version": "0.1",
+  "observed_on": "2026-10-15",
+  "scope": "grades7_to12_only",
+  "unit": "selected_written_task_structure_records_not_verified_answer_gold",
+  "baseline_mode_inventory": {
+    "path": "FirstRelease/operational-mode-inventory-v0.3.json",
+    "sha256": "0b5222e82085721e2b72bbe950c3996b56d2a1890045a6064f07c76664a80033"
+  },
+  "baseline_source_overview": {
+    "path": "FirstRelease/paired-source-overview-v0.6.json",
+    "sha256": "b7ba9633a35f1b76a474410dc95f197c170e44c7283ce123c84301ef51b4a726"
+  },
+  "papers": [
+    {
+      "id": "grade9-boxing2025-21cnjy24857076",
+      "grade": 9,
+      "province": "山东",
+      "region": "山东滨州博兴",
+      "semester": "上",
+      "year": "2024-2025",
+      "exam_kind": "期末",
+      "minutes": 90,
+      "points": 90,
+      "rows": [
+        {
+          "shape": {
+            "family": "sentence_choice",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 10
+            },
+            "grade": 9
+          },
+          "locator": "一、选择填空",
+          "id": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+          "locator_line_1based": 9,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1
+            },
+            "grade": 9
+          },
+          "locator": "二、完形填空",
+          "id": "grade9-boxing2025-21cnjy24857076.cloze",
+          "locator_line_1based": 38,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": false,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 9
+          },
+          "locator": "三、阅读理解",
+          "id": "grade9-boxing2025-21cnjy24857076.readingA",
+          "locator_line_1based": 55,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 9
+          },
+          "locator": "三、阅读理解",
+          "id": "grade9-boxing2025-21cnjy24857076.readingB",
+          "locator_line_1based": 55,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 9
+          },
+          "locator": "三、阅读理解",
+          "id": "grade9-boxing2025-21cnjy24857076.readingC",
+          "locator_line_1based": 55,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 9
+          },
+          "locator": "三、阅读理解",
+          "id": "grade9-boxing2025-21cnjy24857076.readingD",
+          "locator_line_1based": 55,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit"
+            },
+            "grade": 9
+          },
+          "locator": "四、短文还原",
+          "id": "grade9-boxing2025-21cnjy24857076.insertion",
+          "locator_line_1based": 151,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": false,
+              "materials": 1,
+              "all_given": true,
+              "extra_auxiliary_or_modal_explicitly_allowed": true
+            },
+            "grade": 9
+          },
+          "locator": "五、词汇应用",
+          "id": "grade9-boxing2025-21cnjy24857076.grammar",
+          "locator_line_1based": 164,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "open_reading_response",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "source_anecdote_historical_authenticity_unknown": true
+            },
+            "grade": 9
+          },
+          "locator": "六、阅读表达",
+          "id": "grade9-boxing2025-21cnjy24857076.open",
+          "locator_line_1based": 169,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "given_opening_excluded": true,
+              "genre": "graduation_speech"
+            },
+            "grade": 9
+          },
+          "locator": "七、书面表达",
+          "id": "grade9-boxing2025-21cnjy24857076.speech",
+          "locator_line_1based": 189,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "limitations": [
+        "地域仅网页标题；正文教育集团未具名",
+        "阅读24下划线句未定位；23把一个月作30天，语义近似问题保留",
+        "词汇应用指向的孟浩然原诗缺；题面与多词参考另存，不作完整输入",
+        "Einstein轶事没有历史原始来源，不生成真实人物事实；产品/统计来源需事实复核"
+      ],
+      "title": "山东省滨州市博兴县2024-2025学年九年级上学期1月期末英语试题（含答案，无听力音频及原文）",
+      "url": "https://zy.21cnjy.com/24857076",
+      "acquisition_id": "grade9-boxing2025-21cnjy24857076",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-boxing2025-21cnjy24857076.html",
+        "sha256": "19aa2152bc5ec4ebee0a74be63f1555501962240a47d9bcb24d2d6039c5df9f5"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    },
+    {
+      "id": "grade9-zhongshan2025-21cnjy22278047",
+      "grade": 9,
+      "province": "广东",
+      "region": "广东中山",
+      "semester": "上",
+      "year": "2024-2025",
+      "exam_kind": "期末",
+      "minutes": 70,
+      "points": 95,
+      "rows": [
+        {
+          "shape": {
+            "family": "grammar_choice_cloze",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "primary_focus": "grammar_and_coherence"
+            },
+            "grade": 9
+          },
+          "locator": "一、语法选择 (本大题共10小题",
+          "id": "grade9-zhongshan2025-21cnjy22278047.grammarChoice",
+          "locator_line_1based": 32,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 15,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1
+            },
+            "grade": 9
+          },
+          "locator": "二、完形填空(本大题共15小题",
+          "id": "grade9-zhongshan2025-21cnjy22278047.cloze",
+          "locator_line_1based": 48,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": false,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 9
+          },
+          "locator": "三、阅读理解 (本大题共15小题",
+          "id": "grade9-zhongshan2025-21cnjy22278047.readingA",
+          "locator_line_1based": 71,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 9
+          },
+          "locator": "三、阅读理解 (本大题共15小题",
+          "id": "grade9-zhongshan2025-21cnjy22278047.readingB",
+          "locator_line_1based": 71,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "profile_matching",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "left_items": 5,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit",
+              "source_columns_interleaved": true
+            },
+            "grade": 9
+          },
+          "locator": "配对阅读，左边",
+          "id": "grade9-zhongshan2025-21cnjy22278047.profiles",
+          "locator_line_1based": 132,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_bank",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "entries": 12,
+              "explicit_spare": 2,
+              "form_policy": "change_as_needed",
+              "response_policy": "one_word",
+              "reuse_rule": "each_word_once"
+            },
+            "grade": 9
+          },
+          "locator": "四、短文填空 (本大题共10小题",
+          "id": "grade9-zhongshan2025-21cnjy22278047.bank",
+          "locator_line_1based": 135,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "open_reading_response",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "full_sentence_required": false,
+              "source_key_allows_short_and_full_answers": true,
+              "semantic_complete_and_grammatical": true
+            },
+            "grade": 9
+          },
+          "locator": "A.  回答问题(本题有5小题",
+          "id": "grade9-zhongshan2025-21cnjy22278047.open",
+          "locator_line_1based": 144,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": false,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "travel_recommendation_letter",
+              "given_opening_closing_excluded": true,
+              "reading_and_writing_section_same_parent": true
+            },
+            "grade": 9
+          },
+          "locator": "B.书面表达 (本题15分)",
+          "id": "grade9-zhongshan2025-21cnjy22278047.letter",
+          "locator_line_1based": 155,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "limitations": [
+        "95笔试+25听说=120总分，70分钟本笔试；不称95总分或听说也70分钟",
+        "参考先于题文，取题文区结构不能重复计数",
+        "阅读A网址粘连断裂；书面表达必要思维导图缺",
+        "五开放回答有简答/整句允许原文，具体rubric由评卷组另定且未取",
+        "五项新闻/七项感受为配对，不是单篇段落衔接"
+      ],
+      "title": "广东省中山市2024-2025学年九年级上学期期末水平测试英语试题（含答案）",
+      "url": "https://zy.21cnjy.com/22278047",
+      "acquisition_id": "grade9-zhongshan2025-21cnjy22278047",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade9-zhongshan2025-21cnjy22278047.html",
+        "sha256": "f72c90c8ddbda6f87a85e85254a1e3681b3135284cc42aab9dd7913b156ab965"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    },
+    {
+      "id": "grade10-jinhua2025-21cnjy22399612",
+      "grade": 10,
+      "province": "浙江",
+      "region": "浙江金华十校",
+      "semester": "上",
+      "year": "2024-2025",
+      "exam_kind": "期末调研",
+      "minutes": 120,
+      "points": 150,
+      "rows": [
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "第二部分 阅读理解",
+          "id": "grade10-jinhua2025-21cnjy22399612.readingA",
+          "locator_line_1based": 64,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "第二部分 阅读理解",
+          "id": "grade10-jinhua2025-21cnjy22399612.readingB",
+          "locator_line_1based": 64,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "第二部分 阅读理解",
+          "id": "grade10-jinhua2025-21cnjy22399612.readingC",
+          "locator_line_1based": 64,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "第二部分 阅读理解",
+          "id": "grade10-jinhua2025-21cnjy22399612.readingD",
+          "locator_line_1based": 64,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit"
+            },
+            "grade": 10
+          },
+          "locator": "第二节 (共5小题；每小题2.5分",
+          "id": "grade10-jinhua2025-21cnjy22399612.insertion",
+          "locator_line_1based": 154,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 15,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1
+            },
+            "grade": 10
+          },
+          "locator": "第三部分 语言运用",
+          "id": "grade10-jinhua2025-21cnjy22399612.cloze",
+          "locator_line_1based": 167,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "response_policy": "ungiven_one_word_given_correct_form"
+            },
+            "grade": 10
+          },
+          "locator": "第二节 (共10小题；每小题1.5分",
+          "id": "grade10-jinhua2025-21cnjy22399612.grammar",
+          "locator_line_1based": 191,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "sentence_translation",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 5,
+              "whole_sentence_outputs": true,
+              "keywords_and_grammar_constraints": true,
+              "points_each": 3
+            },
+            "grade": 10
+          },
+          "locator": "第一节 单句翻译",
+          "id": "grade10-jinhua2025-21cnjy22399612.translation",
+          "locator_line_1based": 199,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 100,
+              "target_relation": "about",
+              "genre": "school_newspaper_volunteering_article",
+              "title_given": true,
+              "points": 25
+            },
+            "grade": 10
+          },
+          "locator": "第二节 应用文写作",
+          "id": "grade10-jinhua2025-21cnjy22399612.article",
+          "locator_line_1based": 210,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "limitations": [
+        "听力题面20响应/30分，未取音频脚本；不把网上含音频标题当配套取得",
+        "整句翻译可有多正确表达，未取得分析评分rubric",
+        "阅读A书籍概要、C产品性能/价格、D研究/疗效界限需另核事实，结构完整不等事实许可",
+        "本写作两节为5翻译+1投稿，没有从另卷续写套入；仅本卷未见续写"
+      ],
+      "title": "浙江省金华市十校2024_2025学年高一上学期期末英语试题（含答案，有听力音频无听力原文）",
+      "url": "https://zy.21cnjy.com/22399612",
+      "acquisition_id": "grade10-jinhua2025-21cnjy22399612",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-jinhua2025-21cnjy22399612.html",
+        "sha256": "da99c12dc73ee5a2ce60aee33ccf965d974add732220a39030ddcfe71b4321be"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+        "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    },
+    {
+      "id": "grade10-weishi2026-21cnjy25962499",
+      "grade": 10,
+      "province": "河南",
+      "region": "河南开封尉氏第三高中",
+      "semester": "下",
+      "year": "2025-2026",
+      "exam_kind": "第二次月考",
+      "minutes": null,
+      "points": null,
+      "rows": [
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "一、阅读理解",
+          "id": "grade10-weishi2026-21cnjy25962499.readingA",
+          "locator_line_1based": 2,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "一、阅读理解",
+          "id": "grade10-weishi2026-21cnjy25962499.readingB",
+          "locator_line_1based": 2,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "一、阅读理解",
+          "id": "grade10-weishi2026-21cnjy25962499.readingC",
+          "locator_line_1based": 2,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": false,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "locator": "一、阅读理解",
+          "id": "grade10-weishi2026-21cnjy25962499.readingD",
+          "locator_line_1based": 2,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit"
+            },
+            "grade": 10
+          },
+          "locator": "第二节（共5小题；每小题2分",
+          "id": "grade10-weishi2026-21cnjy25962499.insertion",
+          "locator_line_1based": 114,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 15,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "source_history_claim_unverified": true
+            },
+            "grade": 10
+          },
+          "locator": "第一节 完形填空",
+          "id": "grade10-weishi2026-21cnjy25962499.cloze",
+          "locator_line_1based": 128,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "response_policy": "ungiven_one_word_given_correct_form",
+              "source_key_alternatives": {
+                "40": [
+                  "farther",
+                  "further"
+                ],
+                "41": [
+                  "that",
+                  "which"
+                ]
+              }
+            },
+            "grade": 10
+          },
+          "locator": "第二节 语法填空",
+          "id": "grade10-weishi2026-21cnjy25962499.grammar",
+          "locator_line_1based": 150,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "advice_request_email",
+              "points": 15
+            },
+            "grade": 10
+          },
+          "locator": "46. 假定你是李华",
+          "id": "grade10-weishi2026-21cnjy25962499.mail",
+          "locator_line_1based": 159,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "read_then_continue",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "paragraphs": 2,
+              "given_paragraph_openings": 2,
+              "word_target": 150,
+              "target_relation": "about",
+              "points": 20
+            },
+            "grade": 10
+          },
+          "locator": "47. 阅读下面材料",
+          "id": "grade10-weishi2026-21cnjy25962499.continuation",
+          "locator_line_1based": 171,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "limitations": [
+        "地域/学校来自标题，正文仅年月/年级；未核原校发布",
+        "未给总分/分钟；语言运用总45但分节15+15仅30，整卷分区40+45+35不能静默认证120总分",
+        "阅读D CO/O/N下标丢失；完整科学符号版式未得",
+        "完形王命令给愚人别死鱼的历史说法未经史料核实；仅结构用途"
+      ],
+      "title": "河南开封市尉氏县第三高级中学2025-2026学年下学期高一第二次月考英语试题（含答案）",
+      "url": "https://zy.21cnjy.com/25962499",
+      "acquisition_id": "grade10-weishi2026-21cnjy25962499",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-weishi2026-21cnjy25962499.html",
+        "sha256": "0a60963834328fe3118d4f67a4cf5656fa4af4b26dcee91f57742f2800d99427"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-weishi2026-21cnjy25962499-resource-v0.2.txt",
+        "sha256": "c5448cc7fb844a98f39edfd81ed94577f924a317bd815673d9bff118e9328e8f"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    },
+    {
+      "id": "grade11-heze2026-21cnjy24886046",
+      "grade": 11,
+      "province": "山东",
+      "region": "山东菏泽第一中学",
+      "semester": "上",
+      "year": "2025-2026",
+      "exam_kind": "1月诊断检测",
+      "minutes": 120,
+      "points": 150,
+      "rows": [
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade11-heze2026-21cnjy24886046.readingA",
+          "locator_line_1based": 57,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade11-heze2026-21cnjy24886046.readingB",
+          "locator_line_1based": 57,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade11-heze2026-21cnjy24886046.readingC",
+          "locator_line_1based": 57,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade11-heze2026-21cnjy24886046.readingD",
+          "locator_line_1based": 57,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": false,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit",
+              "labels_A_to_F_absent": true
+            },
+            "grade": 11
+          },
+          "locator": "第二节（共5小题；每小题2分",
+          "id": "grade11-heze2026-21cnjy24886046.insertion",
+          "locator_line_1based": 136,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 15,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1
+            },
+            "grade": 11
+          },
+          "locator": "第三部分 语言运用",
+          "id": "grade11-heze2026-21cnjy24886046.cloze",
+          "locator_line_1based": 150,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "response_policy": "ungiven_one_word_given_correct_form"
+            },
+            "grade": 11
+          },
+          "locator": "第二节（共10小题；每小题1.5分",
+          "id": "grade11-heze2026-21cnjy24886046.grammar",
+          "locator_line_1based": 174,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "context_word_completion",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 10,
+              "initial_and_Chinese_given": true,
+              "initial_vs_suffix_scoring_unknown": true
+            },
+            "grade": 11
+          },
+          "locator": "第三节 单词拼写",
+          "id": "grade11-heze2026-21cnjy24886046.words",
+          "locator_line_1based": 180,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "food_information_and_invitation_email",
+              "points": 15
+            },
+            "grade": 11
+          },
+          "locator": "假定你是李华，你的英国好友David",
+          "id": "grade11-heze2026-21cnjy24886046.mail",
+          "locator_line_1based": 193,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "read_then_continue",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "paragraphs": 2,
+              "given_paragraph_openings": 2,
+              "word_target": 150,
+              "target_relation": "about",
+              "points": 25
+            },
+            "grade": 11
+          },
+          "locator": "阅读下面材料，根据其内容和所给段落开头语续写两段",
+          "id": "grade11-heze2026-21cnjy24886046.continuation",
+          "locator_line_1based": 201,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "limitations": [
+        "地区/学年/学期来自标题，正文仅1月；保留身份信度",
+        "七项内容可见但A-F字母未呈现，仅G有字母，不能按顺序修原件后冒全输入",
+        "阅读C东方多数语言象形等概括缺乏证据，保留反例不正向继承；阅读D实验/对照设计与键33另需核读",
+        "听力20题/30分与10脚本可见，但音频未知；第一节写读两遍，与金华/临沂一遍不同，不套默认"
+      ],
+      "title": "山东省菏泽市第一中学2025-2026学年高二上学期1月质量检测英语试题（含答案，无听力音频有听力原文）",
+      "url": "https://zy.21cnjy.com/24886046",
+      "acquisition_id": "grade11-heze2026-21cnjy24886046",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-heze2026-21cnjy24886046.html",
+        "sha256": "b0658b2a5f595ec4ada07cb23bed727cd5a6ad5f6fd96af517bc6476dfd15438"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+        "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    },
+    {
+      "id": "grade12-linyi2025-21cnjy24838709",
+      "grade": 12,
+      "province": "山东",
+      "region": "山东临沂",
+      "semester": "上",
+      "year": "2024-2025",
+      "exam_kind": "期末监测",
+      "minutes": null,
+      "points": 150,
+      "rows": [
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 12
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade12-linyi2025-21cnjy24838709.readingA",
+          "locator_line_1based": 58,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 12
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade12-linyi2025-21cnjy24838709.readingB",
+          "locator_line_1based": 58,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 12
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade12-linyi2025-21cnjy24838709.readingC",
+          "locator_line_1based": 58,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 12
+          },
+          "locator": "第二部分 阅读",
+          "id": "grade12-linyi2025-21cnjy24838709.readingD",
+          "locator_line_1based": 58,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "shared_insertion",
+            "responses": 5,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "shared_options": 7,
+              "explicit_spare": 2,
+              "reuse_rule": "not_explicit"
+            },
+            "grade": 12
+          },
+          "locator": "第二节（共5小题；每小题2.5分",
+          "id": "grade12-linyi2025-21cnjy24838709.insertion",
+          "locator_line_1based": 149,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 15,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "source_self_medication_narrative_not_health_advice": true
+            },
+            "grade": 12
+          },
+          "locator": "第三部分 语言运用",
+          "id": "grade12-linyi2025-21cnjy24838709.cloze",
+          "locator_line_1based": 163,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "passage_form",
+            "responses": 10,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "response_policy": "ungiven_one_word_given_correct_form"
+            },
+            "grade": 12
+          },
+          "locator": "第二节（共10小题：每小题1.5分",
+          "id": "grade12-linyi2025-21cnjy24838709.grammar",
+          "locator_line_1based": 188,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "application_writing",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "word_target": 80,
+              "target_relation": "about",
+              "genre": "cultural_gift_advice_email",
+              "given_opening_closing_excluded": true,
+              "points": 15
+            },
+            "grade": 12
+          },
+          "locator": "46. 假定你是李华",
+          "id": "grade12-linyi2025-21cnjy24838709.mail",
+          "locator_line_1based": 196,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        },
+        {
+          "shape": {
+            "family": "read_then_continue",
+            "responses": 1,
+            "options_each": null,
+            "details": {
+              "necessary_input_complete": true,
+              "materials": 1,
+              "paragraphs": 2,
+              "given_paragraph_openings": 2,
+              "word_target": 150,
+              "target_relation": "about",
+              "points": 25
+            },
+            "grade": 12
+          },
+          "locator": "47. 阅读下面材料",
+          "id": "grade12-linyi2025-21cnjy24838709.continuation",
+          "locator_line_1based": 208,
+          "structure_observed": true,
+          "positive_answer_anchor_admitted": false,
+          "answer_semantics_independently_adjudicated": false,
+          "production_supported": false
+        }
+      ],
+      "limitations": [
+        "地区来自标题，正文高三/2025.1；上学期题名另记，分钟未知",
+        "总分150由30+50+30+40分区相加，不是卷首明示",
+        "听力和阅读都从1编号，不混命名空间；音频脚本未取",
+        "完形止痛药咖啡叙述不重构成健康建议；天气车2030与洞穴排名需原事实核读",
+        "续写范文让幼童进入明示维修危险地下室，不能把源范文视为安全金标"
+      ],
+      "title": "山东省临沂市2025届高三上学期期末学科素养水平监测英语试卷（含答案，无听力原文及音频）",
+      "url": "https://zy.21cnjy.com/24838709",
+      "acquisition_id": "grade12-linyi2025-21cnjy24838709",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-linyi2025-21cnjy24838709.html",
+        "sha256": "64c9527616b267a0cac26becf0a7f3b214acdae9119a442752700fc37c4542a0"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+        "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+      },
+      "whole_original_paper_acquired": false,
+      "nationally_representative": false,
+      "competition_label_present": false,
+      "provenance": "public_text_repost_not_official_original_authentication"
+    }
+  ],
+  "paper_count": 6,
+  "structural_record_count": 55,
+  "observed_written_response_positions": 319,
+  "excluded_candidates": [
+    {
+      "id": "grade11-jinan2025-21cnjy22245932",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-jinan2025-21cnjy22245932.html",
+        "sha256": "d7d3357e40d0367760fca4d9f6724d22f4d0d4b7c066be197fb592a9cf0373be"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-jinan2025-21cnjy22245932-resource-v0.2.txt",
+        "sha256": "baa0d30cef1d9c56eed6da6be6431696c4559d9cce8a7f1924d17437f8647b4e"
+      },
+      "reason": "only_first_two_pages_listening_excerpt; no_written_groups",
+      "structural_records_admitted": 0
+    },
+    {
+      "id": "grade12-henan2026-21cnjy25103875",
+      "raw": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-henan2026-21cnjy25103875.html",
+        "sha256": "76e235cd8b229dfa3ee0033021a862a28578e7fd9b9ea4dc6e56e4aa2bd49ca4"
+      },
+      "resource_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-henan2026-21cnjy25103875-resource-v0.2.txt",
+        "sha256": "15e16ec5ac8265201fe28f0bfa55ac200026f3f3c3707b33cc6659c8270fb13c"
+      },
+      "reason": "answer_ocr_with_UI_and_column_fragments_not_paired_student_paper",
+      "structural_records_admitted": 0
+    }
+  ],
+  "counts_not_added_to_frozen_paired117_or_author53": true,
+  "cross_passage_family_deduplication_complete": false,
+  "exclusive_grade_claims": [],
+  "population_typical_ranges_established": false
+}
