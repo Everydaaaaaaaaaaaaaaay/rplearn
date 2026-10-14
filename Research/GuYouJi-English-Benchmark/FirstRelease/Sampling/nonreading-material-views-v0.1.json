@@ -1,0 +1,5246 @@
+{
+  "version": "0.1",
+  "scope": "129 selected material views: all current new reading/cloze and 32 further nonreading views; 117baseline and 58new records remain",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/school-material-views-v0.2.json",
+    "sha256": "ecb88d90405bde52c9372a6698f6e924d6a32924346f236255cd41735217f78c"
+  },
+  "views": [
+    {
+      "group_id": "grade7-suzhou2025-21cnjy23303742.passageForm",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+        "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+      },
+      "start_offset": 15899,
+      "end_offset": 16849,
+      "material_sha256": "a6e5540db66c92bad38364386aa1b4b2ae959fd9559164d3d3f81e493a929e60",
+      "expected_blank_ids": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "excluded_offsets": [
+        {
+          "start": 76,
+          "end": 84,
+          "literal": "___44___",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 85,
+          "end": 90,
+          "literal": "(use)",
+          "role": "given_hint"
+        },
+        {
+          "start": 163,
+          "end": 171,
+          "literal": "___45___",
+          "role": "blank_label",
+          "blank_id": 45
+        },
+        {
+          "start": 172,
+          "end": 176,
+          "literal": "(he)",
+          "role": "given_hint"
+        },
+        {
+          "start": 244,
+          "end": 252,
+          "literal": "___46___",
+          "role": "blank_label",
+          "blank_id": 46
+        },
+        {
+          "start": 253,
+          "end": 259,
+          "literal": "(good)",
+          "role": "given_hint"
+        },
+        {
+          "start": 328,
+          "end": 336,
+          "literal": "___47___",
+          "role": "blank_label",
+          "blank_id": 47
+        },
+        {
+          "start": 337,
+          "end": 343,
+          "literal": "(fall)",
+          "role": "given_hint"
+        },
+        {
+          "start": 492,
+          "end": 500,
+          "literal": "___48___",
+          "role": "blank_label",
+          "blank_id": 48
+        },
+        {
+          "start": 501,
+          "end": 512,
+          "literal": "(tradition)",
+          "role": "given_hint"
+        },
+        {
+          "start": 518,
+          "end": 526,
+          "literal": "___49___",
+          "role": "blank_label",
+          "blank_id": 49
+        },
+        {
+          "start": 575,
+          "end": 583,
+          "literal": "___50___",
+          "role": "blank_label",
+          "blank_id": 50
+        },
+        {
+          "start": 584,
+          "end": 591,
+          "literal": "(build)",
+          "role": "given_hint"
+        },
+        {
+          "start": 770,
+          "end": 778,
+          "literal": "___51___",
+          "role": "blank_label",
+          "blank_id": 51
+        },
+        {
+          "start": 849,
+          "end": 857,
+          "literal": "___52___",
+          "role": "blank_label",
+          "blank_id": 52
+        },
+        {
+          "start": 858,
+          "end": 864,
+          "literal": "(work)",
+          "role": "given_hint"
+        },
+        {
+          "start": 918,
+          "end": 928,
+          "literal": "____53____",
+          "role": "blank_label",
+          "blank_id": 53
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 44,
+          "start_offset": 15984,
+          "end_offset": 15989,
+          "sha256": "d905cd2ceba8ded3a57b144f5cc24c6440654475496f305c9a1e61a62c336930",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 45,
+          "start_offset": 16071,
+          "end_offset": 16075,
+          "sha256": "95461a4076e34b0b391894145dfd9646d53500068f8275f07651d9eee8f6256e",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 46,
+          "start_offset": 16152,
+          "end_offset": 16158,
+          "sha256": "cd519857d9066969f16e2041e57a78f2161e53b35be87ae548ba5c0fd6be3c16",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 47,
+          "start_offset": 16236,
+          "end_offset": 16242,
+          "sha256": "00e02665fba120bf2b6e00ca9d85cd5d23d06c6452ccd34ad806bafa67bb06d5",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 48,
+          "start_offset": 16400,
+          "end_offset": 16411,
+          "sha256": "48a9a0435d41be103fc7e8ef9cfb7d8cd0ef928e42c4853c91f2994afbb32841",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 50,
+          "start_offset": 16483,
+          "end_offset": 16490,
+          "sha256": "f6adf57695a042dad6f60ef521e22be93da0117c28ad6e97f7bad065add937b5",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 52,
+          "start_offset": 16757,
+          "end_offset": 16763,
+          "sha256": "dabc68acbd67493edda8e5a648b0a31a233f467853a760aeadc8ebba6838c91c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 15854,
+          "end_offset": 15898,
+          "sha256": "742efa032ce4163e414637197ef34fa1ca4a23256a37222e78b5a2294370f63f",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        50,
+        52
+      ],
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade8-xiaoshan2025-21cnjy22251031.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "start_offset": 15651,
+      "end_offset": 16655,
+      "material_sha256": "8699dc6e980453e814df1945580cd8867d3df6274fbae4388688c5d0d052d369",
+      "expected_blank_ids": [
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "excluded_offsets": [
+        {
+          "start": 63,
+          "end": 77,
+          "literal": "66.           ",
+          "role": "blank_label",
+          "blank_id": 66
+        },
+        {
+          "start": 77,
+          "end": 82,
+          "literal": "(win)",
+          "role": "given_hint"
+        },
+        {
+          "start": 164,
+          "end": 179,
+          "literal": "67.            ",
+          "role": "blank_label",
+          "blank_id": 67
+        },
+        {
+          "start": 179,
+          "end": 189,
+          "literal": "(anything)",
+          "role": "given_hint"
+        },
+        {
+          "start": 270,
+          "end": 285,
+          "literal": "68.            ",
+          "role": "blank_label",
+          "blank_id": 68
+        },
+        {
+          "start": 410,
+          "end": 425,
+          "literal": "69.            ",
+          "role": "blank_label",
+          "blank_id": 69
+        },
+        {
+          "start": 483,
+          "end": 499,
+          "literal": "70.             ",
+          "role": "blank_label",
+          "blank_id": 70
+        },
+        {
+          "start": 499,
+          "end": 505,
+          "literal": "(play)",
+          "role": "given_hint"
+        },
+        {
+          "start": 602,
+          "end": 618,
+          "literal": "71.             ",
+          "role": "blank_label",
+          "blank_id": 71
+        },
+        {
+          "start": 618,
+          "end": 626,
+          "literal": "(talent)",
+          "role": "given_hint"
+        },
+        {
+          "start": 667,
+          "end": 684,
+          "literal": "72.              ",
+          "role": "blank_label",
+          "blank_id": 72
+        },
+        {
+          "start": 745,
+          "end": 762,
+          "literal": "73.              ",
+          "role": "blank_label",
+          "blank_id": 73
+        },
+        {
+          "start": 872,
+          "end": 887,
+          "literal": "74.            ",
+          "role": "blank_label",
+          "blank_id": 74
+        },
+        {
+          "start": 887,
+          "end": 896,
+          "literal": "(success)",
+          "role": "given_hint"
+        },
+        {
+          "start": 982,
+          "end": 993,
+          "literal": "75.        ",
+          "role": "blank_label",
+          "blank_id": 75
+        },
+        {
+          "start": 993,
+          "end": 1003,
+          "literal": "(surprise)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 66,
+          "start_offset": 15728,
+          "end_offset": 15733,
+          "sha256": "734c3e800bd4a0eb34d3a947d37454b1f76ceeb72402c760ee3828d4d28507df",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 67,
+          "start_offset": 15830,
+          "end_offset": 15840,
+          "sha256": "2b350c480ebcfe5583c1f1a0cafc4beb8a7bc826b5d40fd66486d1dac1b3e2d6",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 70,
+          "start_offset": 16150,
+          "end_offset": 16156,
+          "sha256": "71645547398a715735fa56a3f597ba122bae22be2edd4929cb1052be3d074b09",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 71,
+          "start_offset": 16269,
+          "end_offset": 16277,
+          "sha256": "16318b06af69247997ff8508372843ce4d30c643aa17529a0883a1e27a66b105",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 74,
+          "start_offset": 16538,
+          "end_offset": 16547,
+          "sha256": "78e03874d7d2356ae8c0bb3b0e1dde9a79a3afdf23f7eacd7e0bb7c39c995d64",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 75,
+          "start_offset": 16644,
+          "end_offset": 16654,
+          "sha256": "bf7c9ed022380e6e0bbfe22605b0e7416527bd6f8f30940da0d4a2b46201bb22",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 15616,
+          "end_offset": 15650,
+          "sha256": "c5b48724c4ff1019cac1902a0cfabfc0b3885e2d62ea6e8523b8a9e08c98a0e3",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        66,
+        67,
+        70,
+        71,
+        74,
+        75
+      ],
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade10-shenzhenlower2026-21cnjy26167651.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "start_offset": 19742,
+      "end_offset": 21264,
+      "material_sha256": "4d0c841b36f64f63232a4b95665e7c172b30e3a369830f3b3926a1064e893902",
+      "expected_blank_ids": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "excluded_offsets": [
+        {
+          "start": 185,
+          "end": 187,
+          "literal": "56",
+          "role": "blank_label",
+          "blank_id": 56
+        },
+        {
+          "start": 193,
+          "end": 202,
+          "literal": "(combine)",
+          "role": "given_hint"
+        },
+        {
+          "start": 339,
+          "end": 341,
+          "literal": "57",
+          "role": "blank_label",
+          "blank_id": 57
+        },
+        {
+          "start": 343,
+          "end": 352,
+          "literal": "(explore)",
+          "role": "given_hint"
+        },
+        {
+          "start": 390,
+          "end": 392,
+          "literal": "58",
+          "role": "blank_label",
+          "blank_id": 58
+        },
+        {
+          "start": 398,
+          "end": 404,
+          "literal": "(know)",
+          "role": "given_hint"
+        },
+        {
+          "start": 580,
+          "end": 582,
+          "literal": "59",
+          "role": "blank_label",
+          "blank_id": 59
+        },
+        {
+          "start": 588,
+          "end": 596,
+          "literal": "(create)",
+          "role": "given_hint"
+        },
+        {
+          "start": 680,
+          "end": 682,
+          "literal": "60",
+          "role": "blank_label",
+          "blank_id": 60
+        },
+        {
+          "start": 689,
+          "end": 696,
+          "literal": "(begin)",
+          "role": "given_hint"
+        },
+        {
+          "start": 742,
+          "end": 744,
+          "literal": "61",
+          "role": "blank_label",
+          "blank_id": 61
+        },
+        {
+          "start": 888,
+          "end": 890,
+          "literal": "62",
+          "role": "blank_label",
+          "blank_id": 62
+        },
+        {
+          "start": 968,
+          "end": 970,
+          "literal": "63",
+          "role": "blank_label",
+          "blank_id": 63
+        },
+        {
+          "start": 973,
+          "end": 979,
+          "literal": "(full)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1249,
+          "end": 1251,
+          "literal": "64",
+          "role": "blank_label",
+          "blank_id": 64
+        },
+        {
+          "start": 1255,
+          "end": 1264,
+          "literal": "(element)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1430,
+          "end": 1432,
+          "literal": "65",
+          "role": "blank_label",
+          "blank_id": 65
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated",
+        "Following printed part heading/points excluded from article span"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 56,
+          "start_offset": 19935,
+          "end_offset": 19944,
+          "sha256": "806b9de6bd294dcfb060d309063ffb64ab34199777cac2d7cce8d0bb0bd1a79b",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 57,
+          "start_offset": 20085,
+          "end_offset": 20094,
+          "sha256": "25fee3475a1a095c2e4103991592b03e07e9acd9e00aee1290c002ca35eb8792",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 58,
+          "start_offset": 20140,
+          "end_offset": 20146,
+          "sha256": "b0cdc8e5507b6cd7b6491b023f90c424324d88679f836bae3deaad379c1e15e7",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 59,
+          "start_offset": 20330,
+          "end_offset": 20338,
+          "sha256": "4e5244f7fd8f9ad548ebc51b24b30069be93830b0972a56de85a6d522036491e",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 60,
+          "start_offset": 20431,
+          "end_offset": 20438,
+          "sha256": "ea1e70a28c606985170e803a5ac893392b625a652b656f8521cb9bcc89fbaaba",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 63,
+          "start_offset": 20715,
+          "end_offset": 20721,
+          "sha256": "2a8a111024156d5a8410379e1b42788d1044a04a4b86ef4e4b9671b1072b04a2",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 64,
+          "start_offset": 20997,
+          "end_offset": 21006,
+          "sha256": "52995554607f04a5e54f710a110559c1487b982769a54ca5621f0eaacf77fa1d",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 19709,
+          "end_offset": 19741,
+          "sha256": "cfacaac2ad2f8b8dfbf6470ea855de7631449ea688b004e6cb12268c6dfe3aa3",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        63,
+        64
+      ],
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade11-yinchuan2026-21cnjy25860535.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-resource-v0.2.txt",
+        "sha256": "81f0da5e7adc85c609a87d380ccb103ec8bb10fd8bda65e129a0d24575c5c3fb"
+      },
+      "start_offset": 17530,
+      "end_offset": 18826,
+      "material_sha256": "7ca1c18c07403776051bff57f9fbc70e29ea99069c0d22b3140e70495028cf03",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "excluded_offsets": [
+        {
+          "start": 110,
+          "end": 120,
+          "literal": "____36____",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 121,
+          "end": 128,
+          "literal": "(serve)",
+          "role": "given_hint"
+        },
+        {
+          "start": 245,
+          "end": 255,
+          "literal": "____37____",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 430,
+          "end": 440,
+          "literal": "____38____",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 441,
+          "end": 447,
+          "literal": "(draw)",
+          "role": "given_hint"
+        },
+        {
+          "start": 483,
+          "end": 493,
+          "literal": "____39____",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 643,
+          "end": 653,
+          "literal": "____40____",
+          "role": "blank_label",
+          "blank_id": 40
+        },
+        {
+          "start": 654,
+          "end": 660,
+          "literal": "(show)",
+          "role": "given_hint"
+        },
+        {
+          "start": 718,
+          "end": 728,
+          "literal": "____41____",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 729,
+          "end": 738,
+          "literal": "(connect)",
+          "role": "given_hint"
+        },
+        {
+          "start": 853,
+          "end": 863,
+          "literal": "____42____",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 864,
+          "end": 873,
+          "literal": "(extreme)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1025,
+          "end": 1035,
+          "literal": "____43____",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 1036,
+          "end": 1046,
+          "literal": "(discover)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1130,
+          "end": 1140,
+          "literal": "____44____",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 1236,
+          "end": 1246,
+          "literal": "____45____",
+          "role": "blank_label",
+          "blank_id": 45
+        },
+        {
+          "start": 1141,
+          "end": 1148,
+          "literal": "(bining",
+          "role": "unresolved_source_fragment"
+        }
+      ],
+      "comparison_scope": "partial_material_text_missing_hint44_and_context; no_original_repair_or_gold",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated",
+        "Blank44 follows typical with fragment (bining; missing closing parenthesis/given noun/context, not a complete original given-word input",
+        "Following printed part heading/points excluded from article span"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 36,
+          "start_offset": 17651,
+          "end_offset": 17658,
+          "sha256": "1e07e1a53b727b5f14728b30ee70c5dc2bf42011d3748357351dd1a63923e4f6",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 38,
+          "start_offset": 17971,
+          "end_offset": 17977,
+          "sha256": "5824d41d2f916558a8027381610b2ee79b6908335573faad23f70c80957bd297",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 40,
+          "start_offset": 18184,
+          "end_offset": 18190,
+          "sha256": "b2d044216fdb738b51cce2606e1fa4cc709ad5a46583af5d5dcf105e7f19c29b",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 41,
+          "start_offset": 18259,
+          "end_offset": 18268,
+          "sha256": "52d1193e93ef0b2a6b1bed054322fe02d26d49ab41521f43c488c91300a59ab3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 42,
+          "start_offset": 18394,
+          "end_offset": 18403,
+          "sha256": "9b2664b49e2f15db9b480795ceca333da714766fa3931972a752c9cf62c97608",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 43,
+          "start_offset": 18566,
+          "end_offset": 18576,
+          "sha256": "1a8de5271b156c240105fedd3596a5982e9e787df1e665f75d099360b0cfeeae",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 17497,
+          "end_offset": 17529,
+          "sha256": "cfacaac2ad2f8b8dfbf6470ea855de7631449ea688b004e6cb12268c6dfe3aa3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "unresolved_source_fragment",
+          "start_offset": 18671,
+          "end_offset": 18678,
+          "sha256": "e4215137494e9ce10c7c8841a5b3c1a7911fbbd3be80f967d9efdc7695402b3d",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        36,
+        38,
+        40,
+        41,
+        42,
+        43
+      ],
+      "source_input_status_not_upgraded": false,
+      "unknown_hint_or_given_state_slots": [
+        44
+      ],
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade7-wuhan2025-21cnjy23303148.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "start_offset": 13507,
+      "end_offset": 14564,
+      "material_sha256": "64800638b74c74a08128b47442f11f0a82e4e0259ca20808448cb9b53cf0f9d5",
+      "expected_blank_ids": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "excluded_offsets": [
+        {
+          "start": 126,
+          "end": 134,
+          "literal": "___46___",
+          "role": "blank_label",
+          "blank_id": 46
+        },
+        {
+          "start": 135,
+          "end": 143,
+          "literal": "(become)",
+          "role": "given_hint"
+        },
+        {
+          "start": 192,
+          "end": 200,
+          "literal": "___47___",
+          "role": "blank_label",
+          "blank_id": 47
+        },
+        {
+          "start": 311,
+          "end": 319,
+          "literal": "___48___",
+          "role": "blank_label",
+          "blank_id": 48
+        },
+        {
+          "start": 320,
+          "end": 328,
+          "literal": "(sudden)",
+          "role": "given_hint"
+        },
+        {
+          "start": 347,
+          "end": 355,
+          "literal": "___49___",
+          "role": "blank_label",
+          "blank_id": 49
+        },
+        {
+          "start": 356,
+          "end": 360,
+          "literal": "(he)",
+          "role": "given_hint"
+        },
+        {
+          "start": 543,
+          "end": 551,
+          "literal": "___50___",
+          "role": "blank_label",
+          "blank_id": 50
+        },
+        {
+          "start": 588,
+          "end": 596,
+          "literal": "___51___",
+          "role": "blank_label",
+          "blank_id": 51
+        },
+        {
+          "start": 597,
+          "end": 602,
+          "literal": "(get)",
+          "role": "given_hint"
+        },
+        {
+          "start": 658,
+          "end": 666,
+          "literal": "___52___",
+          "role": "blank_label",
+          "blank_id": 52
+        },
+        {
+          "start": 667,
+          "end": 672,
+          "literal": "(fan)",
+          "role": "given_hint"
+        },
+        {
+          "start": 702,
+          "end": 710,
+          "literal": "___53___",
+          "role": "blank_label",
+          "blank_id": 53
+        },
+        {
+          "start": 711,
+          "end": 718,
+          "literal": "(shout)",
+          "role": "given_hint"
+        },
+        {
+          "start": 783,
+          "end": 791,
+          "literal": "___54___",
+          "role": "blank_label",
+          "blank_id": 54
+        },
+        {
+          "start": 973,
+          "end": 983,
+          "literal": "____55____",
+          "role": "blank_label",
+          "blank_id": 55
+        },
+        {
+          "start": 984,
+          "end": 990,
+          "literal": "(have)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 46,
+          "start_offset": 13642,
+          "end_offset": 13650,
+          "sha256": "fab334dd2a0997802b98977c4127890bd6098d22d742354f4b3b9c972e3bd86f",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 48,
+          "start_offset": 13827,
+          "end_offset": 13835,
+          "sha256": "108a187e0d45d9568604af5b64b440482d5a466fe31cc6888203c082ac92bef3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 49,
+          "start_offset": 13863,
+          "end_offset": 13867,
+          "sha256": "95461a4076e34b0b391894145dfd9646d53500068f8275f07651d9eee8f6256e",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 51,
+          "start_offset": 14104,
+          "end_offset": 14109,
+          "sha256": "d0b72a69d6aef787b715f8a979363ec72cf8c48c7528032f21be91538b74b744",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 52,
+          "start_offset": 14174,
+          "end_offset": 14179,
+          "sha256": "dcac1dde72707a7969ee3e7586a5d2f89edfdd3a445006ddd0a5c13d648550bb",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 53,
+          "start_offset": 14218,
+          "end_offset": 14225,
+          "sha256": "97b688f4a7ec7b3aabc71477e49271c08b5f7baf32c28cb35c60a3b9ea60812c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 55,
+          "start_offset": 14491,
+          "end_offset": 14497,
+          "sha256": "d38e7f1eb46634d8b3c2f2b0388bd58248d51bd91acc2d844a2660d6d9f26282",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13461,
+          "end_offset": 13506,
+          "sha256": "419e95e88da25660dadf06521a2837c772e5f8e4ca7e9ccbdd98cc73756d4985",
+          "excluded_offsets": []
+        },
+        {
+          "role": "material_gloss",
+          "start_offset": 14565,
+          "end_offset": 14622,
+          "sha256": "7e7476c05dd692e34de8c78a20619e33dcbef2db12236beca5f65918ed43f5a0",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        46,
+        48,
+        49,
+        51,
+        52,
+        53,
+        55
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade9-boxing2025-21cnjy24857076.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "start_offset": 14305,
+      "end_offset": 15511,
+      "material_sha256": "6ecbc555bd5fcd49d487b2bd62f3d35a4c99a7699461c52e97116f3707ac86a2",
+      "expected_blank_ids": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "excluded_offsets": [
+        {
+          "start": 39,
+          "end": 49,
+          "literal": "____46____",
+          "role": "blank_label",
+          "blank_id": 46
+        },
+        {
+          "start": 50,
+          "end": 57,
+          "literal": "(write)",
+          "role": "given_hint"
+        },
+        {
+          "start": 142,
+          "end": 152,
+          "literal": "____47____",
+          "role": "blank_label",
+          "blank_id": 47
+        },
+        {
+          "start": 153,
+          "end": 161,
+          "literal": "(famous)",
+          "role": "given_hint"
+        },
+        {
+          "start": 289,
+          "end": 299,
+          "literal": "____48____",
+          "role": "blank_label",
+          "blank_id": 48
+        },
+        {
+          "start": 300,
+          "end": 311,
+          "literal": "(beautiful)",
+          "role": "given_hint"
+        },
+        {
+          "start": 393,
+          "end": 403,
+          "literal": "____49____",
+          "role": "blank_label",
+          "blank_id": 49
+        },
+        {
+          "start": 404,
+          "end": 412,
+          "literal": "(direct)",
+          "role": "given_hint"
+        },
+        {
+          "start": 584,
+          "end": 594,
+          "literal": "____50____",
+          "role": "blank_label",
+          "blank_id": 50
+        },
+        {
+          "start": 595,
+          "end": 599,
+          "literal": "(we)",
+          "role": "given_hint"
+        },
+        {
+          "start": 640,
+          "end": 650,
+          "literal": "____51____",
+          "role": "blank_label",
+          "blank_id": 51
+        },
+        {
+          "start": 651,
+          "end": 659,
+          "literal": "(choose)",
+          "role": "given_hint"
+        },
+        {
+          "start": 723,
+          "end": 733,
+          "literal": "____52____",
+          "role": "blank_label",
+          "blank_id": 52
+        },
+        {
+          "start": 734,
+          "end": 741,
+          "literal": "(paint)",
+          "role": "given_hint"
+        },
+        {
+          "start": 858,
+          "end": 868,
+          "literal": "____53____",
+          "role": "blank_label",
+          "blank_id": 53
+        },
+        {
+          "start": 869,
+          "end": 877,
+          "literal": "(become)",
+          "role": "given_hint"
+        },
+        {
+          "start": 900,
+          "end": 910,
+          "literal": "____54____",
+          "role": "blank_label",
+          "blank_id": 54
+        },
+        {
+          "start": 911,
+          "end": 919,
+          "literal": "(talent)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1083,
+          "end": 1093,
+          "literal": "____55____",
+          "role": "blank_label",
+          "blank_id": 55
+        },
+        {
+          "start": 1094,
+          "end": 1102,
+          "literal": "(travel)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated",
+        "Required poem not acquired; article starts this poem; material view does not establish complete student input"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 46,
+          "start_offset": 14355,
+          "end_offset": 14362,
+          "sha256": "b2f87380a74881957ca8c5858e314c0e59c71ea9fd4575bc510a81dc406b9f71",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 47,
+          "start_offset": 14458,
+          "end_offset": 14466,
+          "sha256": "c2a61d1841642b80dcdec6f89792aa6a34c01c1ee2f922551120bc43c9acdc99",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 48,
+          "start_offset": 14605,
+          "end_offset": 14616,
+          "sha256": "046e83d51c17cbbe807d89780ae7d6a082fce50157eae56e5837b727c39575f9",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 49,
+          "start_offset": 14709,
+          "end_offset": 14717,
+          "sha256": "3823dd2b66f1a358fcf52725ef974218e9bb6e7382f2dfaa6920617332cc7722",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 50,
+          "start_offset": 14900,
+          "end_offset": 14904,
+          "sha256": "88cf98a6469c54328d12408717c4457361463f45ce6b2aeb002f6a2e74532da3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 51,
+          "start_offset": 14956,
+          "end_offset": 14964,
+          "sha256": "0aa75b01488d1d09b923dcd3b5a8c99dab34cfbc8b9b8511682f6bf4a714b62a",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 52,
+          "start_offset": 15039,
+          "end_offset": 15046,
+          "sha256": "182b49a92a8d1b604cc289b8179e1ce835c6cd6f26b54d445f173051fe8e55e2",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 53,
+          "start_offset": 15174,
+          "end_offset": 15182,
+          "sha256": "fab334dd2a0997802b98977c4127890bd6098d22d742354f4b3b9c972e3bd86f",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 54,
+          "start_offset": 15216,
+          "end_offset": 15224,
+          "sha256": "16318b06af69247997ff8508372843ce4d30c643aa17529a0883a1e27a66b105",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 55,
+          "start_offset": 15399,
+          "end_offset": 15407,
+          "sha256": "1f8d1f969ffd00e4f9b0c47bba3093e8a8dc0f2fb061409f54f173d77228e55b",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 14268,
+          "end_offset": 14304,
+          "sha256": "be6b34ac4321af2524c3fc66f071f4ac84c718c5a0df24a86f062487a0c1c006",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "source_input_status_not_upgraded": false,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade10-jinhua2025-21cnjy22399612.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+        "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+      },
+      "start_offset": 17564,
+      "end_offset": 19013,
+      "material_sha256": "fedf762dbf8f23267b33da12f806cb2a9ba78cce0633c5e3b7e3c3e06a556bd2",
+      "expected_blank_ids": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "excluded_offsets": [
+        {
+          "start": 216,
+          "end": 224,
+          "literal": "___56___",
+          "role": "blank_label",
+          "blank_id": 56
+        },
+        {
+          "start": 225,
+          "end": 231,
+          "literal": "(they)",
+          "role": "given_hint"
+        },
+        {
+          "start": 333,
+          "end": 341,
+          "literal": "___57___",
+          "role": "blank_label",
+          "blank_id": 57
+        },
+        {
+          "start": 342,
+          "end": 350,
+          "literal": "(divide)",
+          "role": "given_hint"
+        },
+        {
+          "start": 410,
+          "end": 418,
+          "literal": "___58___",
+          "role": "blank_label",
+          "blank_id": 58
+        },
+        {
+          "start": 479,
+          "end": 487,
+          "literal": "___59___",
+          "role": "blank_label",
+          "blank_id": 59
+        },
+        {
+          "start": 488,
+          "end": 494,
+          "literal": "(hunt)",
+          "role": "given_hint"
+        },
+        {
+          "start": 741,
+          "end": 749,
+          "literal": "___60___",
+          "role": "blank_label",
+          "blank_id": 60
+        },
+        {
+          "start": 750,
+          "end": 757,
+          "literal": "(shape)",
+          "role": "given_hint"
+        },
+        {
+          "start": 858,
+          "end": 866,
+          "literal": "___61___",
+          "role": "blank_label",
+          "blank_id": 61
+        },
+        {
+          "start": 925,
+          "end": 933,
+          "literal": "___62___",
+          "role": "blank_label",
+          "blank_id": 62
+        },
+        {
+          "start": 934,
+          "end": 943,
+          "literal": "(survive)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1018,
+          "end": 1026,
+          "literal": "___63___",
+          "role": "blank_label",
+          "blank_id": 63
+        },
+        {
+          "start": 1027,
+          "end": 1038,
+          "literal": "(tradition)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1068,
+          "end": 1076,
+          "literal": "___64___",
+          "role": "blank_label",
+          "blank_id": 64
+        },
+        {
+          "start": 1298,
+          "end": 1306,
+          "literal": "___65___",
+          "role": "blank_label",
+          "blank_id": 65
+        },
+        {
+          "start": 1307,
+          "end": 1313,
+          "literal": "(keep)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated",
+        "Following printed part heading/points excluded from article span"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 56,
+          "start_offset": 17789,
+          "end_offset": 17795,
+          "sha256": "65fa00861cd9be979a3cc0f5fb79eba4800d68e73a52c910b8a745e9b5644684",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 57,
+          "start_offset": 17906,
+          "end_offset": 17914,
+          "sha256": "39602d20bc777bcddbd829a43877538d3aa2b976a36de42ff02658ffe1b52b3c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 59,
+          "start_offset": 18052,
+          "end_offset": 18058,
+          "sha256": "dbc82610d7582eb0a8e657b3787dfe232411cbb013a041332223a2c451a32d27",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 60,
+          "start_offset": 18314,
+          "end_offset": 18321,
+          "sha256": "3a57d8cbbc53e908004605faa82c256601e477f527121b38e0a5b527d1e05cf1",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 62,
+          "start_offset": 18498,
+          "end_offset": 18507,
+          "sha256": "e4303b3855ab379fac3b40ab65b6ee6b2083b8cfc38b0ceab4f77211af871157",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 63,
+          "start_offset": 18591,
+          "end_offset": 18602,
+          "sha256": "48a9a0435d41be103fc7e8ef9cfb7d8cd0ef928e42c4853c91f2994afbb32841",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 65,
+          "start_offset": 18871,
+          "end_offset": 18877,
+          "sha256": "d72d7fc4f6245608f50286aae02a9989a4808ad8eaa6957dfbffcbbce4d8f161",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 17531,
+          "end_offset": 17563,
+          "sha256": "cfacaac2ad2f8b8dfbf6470ea855de7631449ea688b004e6cb12268c6dfe3aa3",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        56,
+        57,
+        59,
+        60,
+        62,
+        63,
+        65
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade10-weishi2026-21cnjy25962499.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-weishi2026-21cnjy25962499-resource-v0.2.txt",
+        "sha256": "c5448cc7fb844a98f39edfd81ed94577f924a317bd815673d9bff118e9328e8f"
+      },
+      "start_offset": 13411,
+      "end_offset": 14481,
+      "material_sha256": "31bcd3067bf84ab5d03bbd8e3d34fe276920f99d226d9f6e4c8db365d5120073",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "excluded_offsets": [
+        {
+          "start": 204,
+          "end": 212,
+          "literal": "___36___",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 213,
+          "end": 219,
+          "literal": "(find)",
+          "role": "given_hint"
+        },
+        {
+          "start": 239,
+          "end": 247,
+          "literal": "___37___",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 248,
+          "end": 257,
+          "literal": "(obvious)",
+          "role": "given_hint"
+        },
+        {
+          "start": 315,
+          "end": 323,
+          "literal": "___38___",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 324,
+          "end": 327,
+          "literal": "(I)",
+          "role": "given_hint"
+        },
+        {
+          "start": 430,
+          "end": 438,
+          "literal": "___39___",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 520,
+          "end": 528,
+          "literal": "___40___",
+          "role": "blank_label",
+          "blank_id": 40
+        },
+        {
+          "start": 529,
+          "end": 534,
+          "literal": "(far)",
+          "role": "given_hint"
+        },
+        {
+          "start": 553,
+          "end": 561,
+          "literal": "___41___",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 634,
+          "end": 642,
+          "literal": "___42___",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 643,
+          "end": 653,
+          "literal": "(frighten)",
+          "role": "given_hint"
+        },
+        {
+          "start": 816,
+          "end": 824,
+          "literal": "___43___",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 825,
+          "end": 834,
+          "literal": "(rescuer)",
+          "role": "given_hint"
+        },
+        {
+          "start": 942,
+          "end": 950,
+          "literal": "___44___",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 951,
+          "end": 957,
+          "literal": "(look)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1033,
+          "end": 1041,
+          "literal": "___45___",
+          "role": "blank_label",
+          "blank_id": 45
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated",
+        "Next written-part heading/points excluded"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 36,
+          "start_offset": 13624,
+          "end_offset": 13630,
+          "sha256": "514492a81d0e7bdf4a510f00d7249032857de7961568abd123ea3566361dd95a",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 37,
+          "start_offset": 13659,
+          "end_offset": 13668,
+          "sha256": "e094ebe7d2251e76c77440963e00e060b785806702255332fb051372b4caec11",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 38,
+          "start_offset": 13735,
+          "end_offset": 13738,
+          "sha256": "9d58b6116e218cab06c1da46ce4820f68172c81f321dc491b51c080cbcb9fe10",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 40,
+          "start_offset": 13940,
+          "end_offset": 13945,
+          "sha256": "1e59c61709678c0a11254d84b4b36fa0701a822636ec807411db1da8fbf52fb8",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 42,
+          "start_offset": 14054,
+          "end_offset": 14064,
+          "sha256": "f3111bd117063945938a5d5c33d9cd052ec3dfa22a997f029c4759a559eda233",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 43,
+          "start_offset": 14236,
+          "end_offset": 14245,
+          "sha256": "0ede28b2dbefa5129264e1407a444cf969acce80303aed0f6ad10b24906f6094",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 44,
+          "start_offset": 14362,
+          "end_offset": 14368,
+          "sha256": "752978361bded55bf67ef83d7be4092d7e54da635310ca789218d5ace67da5b3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13372,
+          "end_offset": 13410,
+          "sha256": "3c82e4e0cf41d84c52172854b0b61c6b047653f0fbae4099c3015ee547675215",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        36,
+        37,
+        38,
+        40,
+        42,
+        43,
+        44
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade11-heze2026-21cnjy24886046.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+        "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+      },
+      "start_offset": 17881,
+      "end_offset": 19176,
+      "material_sha256": "b2a302c490ab29aa67327f9aae4c855da3cc84e14a682d3f50206154fe518583",
+      "expected_blank_ids": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "excluded_offsets": [
+        {
+          "start": 202,
+          "end": 221,
+          "literal": "56.________________",
+          "role": "blank_label",
+          "blank_id": 56
+        },
+        {
+          "start": 222,
+          "end": 232,
+          "literal": "(announce)",
+          "role": "given_hint"
+        },
+        {
+          "start": 355,
+          "end": 368,
+          "literal": "57.__________",
+          "role": "blank_label",
+          "blank_id": 57
+        },
+        {
+          "start": 369,
+          "end": 376,
+          "literal": "(begin)",
+          "role": "given_hint"
+        },
+        {
+          "start": 447,
+          "end": 462,
+          "literal": "58. ___________",
+          "role": "blank_label",
+          "blank_id": 58
+        },
+        {
+          "start": 462,
+          "end": 468,
+          "literal": "(they)",
+          "role": "given_hint"
+        },
+        {
+          "start": 517,
+          "end": 530,
+          "literal": "59.__________",
+          "role": "blank_label",
+          "blank_id": 59
+        },
+        {
+          "start": 531,
+          "end": 538,
+          "literal": "(young)",
+          "role": "given_hint"
+        },
+        {
+          "start": 620,
+          "end": 630,
+          "literal": "60._______",
+          "role": "blank_label",
+          "blank_id": 60
+        },
+        {
+          "start": 680,
+          "end": 690,
+          "literal": "61._______",
+          "role": "blank_label",
+          "blank_id": 61
+        },
+        {
+          "start": 800,
+          "end": 813,
+          "literal": "62.__________",
+          "role": "blank_label",
+          "blank_id": 62
+        },
+        {
+          "start": 814,
+          "end": 822,
+          "literal": "(devote)",
+          "role": "given_hint"
+        },
+        {
+          "start": 869,
+          "end": 881,
+          "literal": "63. ________",
+          "role": "blank_label",
+          "blank_id": 63
+        },
+        {
+          "start": 977,
+          "end": 992,
+          "literal": "64. ___________",
+          "role": "blank_label",
+          "blank_id": 64
+        },
+        {
+          "start": 992,
+          "end": 998,
+          "literal": "(find)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1100,
+          "end": 1118,
+          "literal": "65._______________",
+          "role": "blank_label",
+          "blank_id": 65
+        },
+        {
+          "start": 1119,
+          "end": 1132,
+          "literal": "(appropriate)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 56,
+          "start_offset": 18103,
+          "end_offset": 18113,
+          "sha256": "13640b2f053bd54902bbfcb77e9468a9736759ac79d651e9748770ce42da1ba5",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 57,
+          "start_offset": 18250,
+          "end_offset": 18257,
+          "sha256": "ea1e70a28c606985170e803a5ac893392b625a652b656f8521cb9bcc89fbaaba",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 58,
+          "start_offset": 18343,
+          "end_offset": 18349,
+          "sha256": "65fa00861cd9be979a3cc0f5fb79eba4800d68e73a52c910b8a745e9b5644684",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 59,
+          "start_offset": 18412,
+          "end_offset": 18419,
+          "sha256": "73c7e513e3fa256485a1766b5d4668ba17fa1623affcb4494908e3e70abc51a7",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 62,
+          "start_offset": 18695,
+          "end_offset": 18703,
+          "sha256": "7b57f0e3638c3bad3a7788ecc6fb38ab7d5d1dcaf7ccbb1aced3ffbf633d2ae3",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 64,
+          "start_offset": 18873,
+          "end_offset": 18879,
+          "sha256": "514492a81d0e7bdf4a510f00d7249032857de7961568abd123ea3566361dd95a",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 65,
+          "start_offset": 19000,
+          "end_offset": 19013,
+          "sha256": "1b36e68df582f34fe8ab6561638053af250805e19bd5c95c0a4bafb828882258",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 17848,
+          "end_offset": 17880,
+          "sha256": "cfacaac2ad2f8b8dfbf6470ea855de7631449ea688b004e6cb12268c6dfe3aa3",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        56,
+        57,
+        58,
+        59,
+        62,
+        64,
+        65
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade12-linyi2025-21cnjy24838709.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+        "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+      },
+      "start_offset": 18804,
+      "end_offset": 20275,
+      "material_sha256": "e250393ceafc23f2d89425522a80b0e4b1f3dbfafa1bee651c3d560bced5da81",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "excluded_offsets": [
+        {
+          "start": 215,
+          "end": 225,
+          "literal": "____36____",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 225,
+          "end": 231,
+          "literal": "(date)",
+          "role": "given_hint"
+        },
+        {
+          "start": 446,
+          "end": 456,
+          "literal": "____37____",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 456,
+          "end": 465,
+          "literal": "(upgrade)",
+          "role": "given_hint"
+        },
+        {
+          "start": 512,
+          "end": 522,
+          "literal": "____38____",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 725,
+          "end": 735,
+          "literal": "____39____",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 735,
+          "end": 744,
+          "literal": "(replace)",
+          "role": "given_hint"
+        },
+        {
+          "start": 787,
+          "end": 797,
+          "literal": "____40____",
+          "role": "blank_label",
+          "blank_id": 40
+        },
+        {
+          "start": 902,
+          "end": 912,
+          "literal": "____41____",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 912,
+          "end": 924,
+          "literal": "(remarkable)",
+          "role": "given_hint"
+        },
+        {
+          "start": 961,
+          "end": 971,
+          "literal": "____42____",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 1016,
+          "end": 1026,
+          "literal": "____43____",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 1026,
+          "end": 1036,
+          "literal": "(preserve)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1078,
+          "end": 1088,
+          "literal": "____44____",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 1088,
+          "end": 1098,
+          "literal": "(activity)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1449,
+          "end": 1459,
+          "literal": "____45____",
+          "role": "blank_label",
+          "blank_id": 45
+        },
+        {
+          "start": 1459,
+          "end": 1470,
+          "literal": "(recognize)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated",
+        "Following printed part heading/points excluded from article span"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 36,
+          "start_offset": 19029,
+          "end_offset": 19035,
+          "sha256": "750a322f4559d6689425f56991c13ad398ac7c5c44550752c2894d124c863f62",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 37,
+          "start_offset": 19260,
+          "end_offset": 19269,
+          "sha256": "1e3b09d4cd0ce41add2e6a96cfe2be3e2416985ad1f9bce89cf6747cfe239f07",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 39,
+          "start_offset": 19539,
+          "end_offset": 19548,
+          "sha256": "5f55a862215d421ef022d4f1226654504e3341afe772e0852bfd4dfd924f233a",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 41,
+          "start_offset": 19716,
+          "end_offset": 19728,
+          "sha256": "7938d0cb6ec6b1dc147b71fb889b8c0dc7e91551ebdd2ba0607dd96f079b8d4f",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 43,
+          "start_offset": 19830,
+          "end_offset": 19840,
+          "sha256": "75dd839d001cd371258f39808558a449a399cfac6b848a78693c4ee697813f0c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 44,
+          "start_offset": 19892,
+          "end_offset": 19902,
+          "sha256": "75e4da191c0bf6d93b96ee1911c8f4fe6f058a447cdc98c81b87be2779a37850",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 45,
+          "start_offset": 20263,
+          "end_offset": 20274,
+          "sha256": "6a98cfa2b766b497b8d718ac3eaad6510b9337f1612b328c832e177bcbf87da1",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 18771,
+          "end_offset": 18803,
+          "sha256": "cfacaac2ad2f8b8dfbf6470ea855de7631449ea688b004e6cb12268c6dfe3aa3",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        36,
+        37,
+        39,
+        41,
+        43,
+        44,
+        45
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade9-nanshan2026-21cnjy25758947.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "start_offset": 16140,
+      "end_offset": 17305,
+      "material_sha256": "3864b69e0cf54ad052e244638f63ded870dfe7dbf25bd56ab83e65ced9c20bbd",
+      "expected_blank_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "excluded_offsets": [
+        {
+          "start": 71,
+          "end": 74,
+          "literal": "(1)",
+          "role": "blank_label",
+          "blank_id": 1
+        },
+        {
+          "start": 76,
+          "end": 83,
+          "literal": "（eight）",
+          "role": "given_hint"
+        },
+        {
+          "start": 136,
+          "end": 139,
+          "literal": "(2)",
+          "role": "blank_label",
+          "blank_id": 2
+        },
+        {
+          "start": 251,
+          "end": 254,
+          "literal": "(3)",
+          "role": "blank_label",
+          "blank_id": 3
+        },
+        {
+          "start": 435,
+          "end": 438,
+          "literal": "(4)",
+          "role": "blank_label",
+          "blank_id": 4
+        },
+        {
+          "start": 551,
+          "end": 554,
+          "literal": "(5)",
+          "role": "blank_label",
+          "blank_id": 5
+        },
+        {
+          "start": 556,
+          "end": 561,
+          "literal": "（eat）",
+          "role": "given_hint"
+        },
+        {
+          "start": 637,
+          "end": 640,
+          "literal": "(6)",
+          "role": "blank_label",
+          "blank_id": 6
+        },
+        {
+          "start": 642,
+          "end": 650,
+          "literal": "（custom）",
+          "role": "given_hint"
+        },
+        {
+          "start": 743,
+          "end": 746,
+          "literal": "(7)",
+          "role": "blank_label",
+          "blank_id": 7
+        },
+        {
+          "start": 837,
+          "end": 840,
+          "literal": "(8)",
+          "role": "blank_label",
+          "blank_id": 8
+        },
+        {
+          "start": 842,
+          "end": 848,
+          "literal": "（boil）",
+          "role": "given_hint"
+        },
+        {
+          "start": 906,
+          "end": 909,
+          "literal": "(9)",
+          "role": "blank_label",
+          "blank_id": 9
+        },
+        {
+          "start": 911,
+          "end": 918,
+          "literal": "（usual）",
+          "role": "given_hint"
+        },
+        {
+          "start": 1002,
+          "end": 1006,
+          "literal": "(10)",
+          "role": "blank_label",
+          "blank_id": 10
+        },
+        {
+          "start": 1008,
+          "end": 1017,
+          "literal": "（prepare）",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 1,
+          "start_offset": 16216,
+          "end_offset": 16223,
+          "sha256": "729a5a09686336424c560744af50e882698204a404b92304685ae1e53fa8b52c",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 5,
+          "start_offset": 16696,
+          "end_offset": 16701,
+          "sha256": "015e1bbab0a6ad1554558dfcc742544fac516a8b0bf57481baf54a39f3b25698",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 6,
+          "start_offset": 16782,
+          "end_offset": 16790,
+          "sha256": "cf295334f90f39db98b1cd3c6cb015bb248d1079da83115d73cebf15d7ab9ae7",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 8,
+          "start_offset": 16982,
+          "end_offset": 16988,
+          "sha256": "428a7e63aafc70d5cb4eac89a3fe821602f8e4ea0a4e81ea2a024c946d71db1d",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 9,
+          "start_offset": 17051,
+          "end_offset": 17058,
+          "sha256": "3744c69c3e568fcdb291db50a3642eff42dec924516581c40f875fe7d602cfed",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 10,
+          "start_offset": 17148,
+          "end_offset": 17157,
+          "sha256": "4e1b956fbafd782ea23a5cbb1f70f24050e5333db36707c9563446b54ac77305",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        1,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade12-yali2026-21cnjy25133058.grammar",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+        "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+      },
+      "start_offset": 19692,
+      "end_offset": 21305,
+      "material_sha256": "a7e6a5af95d3bb31970327edc7ac8edf9c8a6387ededa4159e4771f8e9bd1950",
+      "expected_blank_ids": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "excluded_offsets": [
+        {
+          "start": 244,
+          "end": 250,
+          "literal": "56____",
+          "role": "blank_label",
+          "blank_id": 56
+        },
+        {
+          "start": 250,
+          "end": 257,
+          "literal": "(shape)",
+          "role": "given_hint"
+        },
+        {
+          "start": 340,
+          "end": 342,
+          "literal": "57",
+          "role": "blank_label",
+          "blank_id": 57
+        },
+        {
+          "start": 556,
+          "end": 558,
+          "literal": "58",
+          "role": "blank_label",
+          "blank_id": 58
+        },
+        {
+          "start": 559,
+          "end": 566,
+          "literal": "(inlay)",
+          "role": "given_hint"
+        },
+        {
+          "start": 652,
+          "end": 654,
+          "literal": "59",
+          "role": "blank_label",
+          "blank_id": 59
+        },
+        {
+          "start": 881,
+          "end": 883,
+          "literal": "60",
+          "role": "blank_label",
+          "blank_id": 60
+        },
+        {
+          "start": 1015,
+          "end": 1017,
+          "literal": "61",
+          "role": "blank_label",
+          "blank_id": 61
+        },
+        {
+          "start": 1111,
+          "end": 1113,
+          "literal": "62",
+          "role": "blank_label",
+          "blank_id": 62
+        },
+        {
+          "start": 1113,
+          "end": 1125,
+          "literal": "( modernize)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1242,
+          "end": 1244,
+          "literal": "63",
+          "role": "blank_label",
+          "blank_id": 63
+        },
+        {
+          "start": 1244,
+          "end": 1252,
+          "literal": "(steady)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1410,
+          "end": 1415,
+          "literal": "_64__",
+          "role": "blank_label",
+          "blank_id": 64
+        },
+        {
+          "start": 1416,
+          "end": 1423,
+          "literal": "(carry)",
+          "role": "given_hint"
+        },
+        {
+          "start": 1530,
+          "end": 1532,
+          "literal": "65",
+          "role": "blank_label",
+          "blank_id": 65
+        },
+        {
+          "start": 1532,
+          "end": 1540,
+          "literal": "(bridge)",
+          "role": "given_hint"
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Original spelling, hint and factual accuracy not independently adjudicated"
+      ],
+      "components": [
+        {
+          "role": "given_hints",
+          "blank_id": 56,
+          "start_offset": 19942,
+          "end_offset": 19949,
+          "sha256": "3a57d8cbbc53e908004605faa82c256601e477f527121b38e0a5b527d1e05cf1",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 58,
+          "start_offset": 20251,
+          "end_offset": 20258,
+          "sha256": "4ed167a8e5f2ba534139b21bfb8238be36ac939f4c3c36e946c9c7c845ad20df",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 62,
+          "start_offset": 20805,
+          "end_offset": 20817,
+          "sha256": "cbaa492fca9d60a823e67ccaf6331e2311ea848bc0c211cbe26f7b20caf8ecbc",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 63,
+          "start_offset": 20936,
+          "end_offset": 20944,
+          "sha256": "fce28fa170c09af290510befd72ee5b843901bc167de66d972fb9645e60a8cf5",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 64,
+          "start_offset": 21108,
+          "end_offset": 21115,
+          "sha256": "267d6d3ede988cb820f528f71e3be41b424184033d3a51edf32acddc2667d263",
+          "excluded_offsets": []
+        },
+        {
+          "role": "given_hints",
+          "blank_id": 65,
+          "start_offset": 21224,
+          "end_offset": 21232,
+          "sha256": "2be2e8dfa13233bd501470b4df59e2de45fe2c65b6ca0bebb98462ac985f3399",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 19659,
+          "end_offset": 19691,
+          "sha256": "cfacaac2ad2f8b8dfbf6470ea855de7631449ea688b004e6cb12268c6dfe3aa3",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": [
+        56,
+        58,
+        62,
+        63,
+        64,
+        65
+      ],
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade7-suzhou2025-21cnjy23303742.wordBank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+        "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+      },
+      "start_offset": 15234,
+      "end_offset": 15827,
+      "material_sha256": "59301748e41b88fbd42f7014e544dc1bb646abec0f878f1dad6e9001960f2cb3",
+      "expected_blank_ids": [
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "excluded_offsets": [
+        {
+          "start": 123,
+          "end": 131,
+          "literal": "___39___",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 214,
+          "end": 222,
+          "literal": "___40___",
+          "role": "blank_label",
+          "blank_id": 40
+        },
+        {
+          "start": 274,
+          "end": 282,
+          "literal": "___41___",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 389,
+          "end": 397,
+          "literal": "___42___",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 427,
+          "end": 435,
+          "literal": "___43___",
+          "role": "blank_label",
+          "blank_id": 43
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count"
+      ],
+      "components": [
+        {
+          "role": "shared_bank",
+          "start_offset": 15179,
+          "end_offset": 15233,
+          "sha256": "613b293399b7caa7a65f64c0edb14b50e96d2d46c5aaab5f2d2fd664d04476b1",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 15121,
+          "end_offset": 15178,
+          "sha256": "9e19195f582de5fbe4346dbcdb7c6bbd540c363236bb2d981e7094394556f2b4",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": [
+        "lose",
+        "be home to",
+        "in danger",
+        "problem",
+        "produce"
+      ]
+    },
+    {
+      "group_id": "grade8-xiaoshan2025-21cnjy22251031.wordBank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+        "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+      },
+      "start_offset": 13914,
+      "end_offset": 14436,
+      "material_sha256": "02b2d37992e87426871a87901f5924a1ca325fc69f9b5316437c01d1758417cc",
+      "expected_blank_ids": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "excluded_offsets": [
+        {
+          "start": 90,
+          "end": 106,
+          "literal": "51.             ",
+          "role": "blank_label",
+          "blank_id": 51
+        },
+        {
+          "start": 200,
+          "end": 216,
+          "literal": "52.             ",
+          "role": "blank_label",
+          "blank_id": 52
+        },
+        {
+          "start": 263,
+          "end": 279,
+          "literal": "53.             ",
+          "role": "blank_label",
+          "blank_id": 53
+        },
+        {
+          "start": 416,
+          "end": 432,
+          "literal": "54.             ",
+          "role": "blank_label",
+          "blank_id": 54
+        },
+        {
+          "start": 472,
+          "end": 488,
+          "literal": "55.             ",
+          "role": "blank_label",
+          "blank_id": 55
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count",
+        "Required word bank absent, cannot reconstruct it from source answers"
+      ],
+      "components": [
+        {
+          "role": "student_instruction",
+          "start_offset": 13886,
+          "end_offset": 13913,
+          "sha256": "453482ce718f70d2e85b6ae158eb7efe621fac0ea5dd251b9bafefa833f647df",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 2,
+              "literal": "A.",
+              "role": "section_label"
+            }
+          ]
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": false,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": null
+    },
+    {
+      "group_id": "grade9-chengdu2025-21cnjy23208601.bank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+        "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+      },
+      "start_offset": 20684,
+      "end_offset": 22273,
+      "material_sha256": "c608f2d77bce7cd6e1b45d4e36cde43d45541db98c0c83523f86cac93081b372",
+      "expected_blank_ids": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ],
+      "excluded_offsets": [
+        {
+          "start": 74,
+          "end": 82,
+          "literal": "___61___",
+          "role": "blank_label",
+          "blank_id": 61
+        },
+        {
+          "start": 387,
+          "end": 395,
+          "literal": "___62___",
+          "role": "blank_label",
+          "blank_id": 62
+        },
+        {
+          "start": 487,
+          "end": 495,
+          "literal": "___63___",
+          "role": "blank_label",
+          "blank_id": 63
+        },
+        {
+          "start": 638,
+          "end": 646,
+          "literal": "___64___",
+          "role": "blank_label",
+          "blank_id": 64
+        },
+        {
+          "start": 693,
+          "end": 701,
+          "literal": "___65___",
+          "role": "blank_label",
+          "blank_id": 65
+        },
+        {
+          "start": 751,
+          "end": 759,
+          "literal": "___66___",
+          "role": "blank_label",
+          "blank_id": 66
+        },
+        {
+          "start": 879,
+          "end": 887,
+          "literal": "___67___",
+          "role": "blank_label",
+          "blank_id": 67
+        },
+        {
+          "start": 1019,
+          "end": 1027,
+          "literal": "___68___",
+          "role": "blank_label",
+          "blank_id": 68
+        },
+        {
+          "start": 1206,
+          "end": 1214,
+          "literal": "___69___",
+          "role": "blank_label",
+          "blank_id": 69
+        },
+        {
+          "start": 1487,
+          "end": 1495,
+          "literal": "___70___",
+          "role": "blank_label",
+          "blank_id": 70
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count"
+      ],
+      "components": [
+        {
+          "role": "shared_bank",
+          "start_offset": 20600,
+          "end_offset": 20683,
+          "sha256": "4b0daa0025467bb32859143085e921e2b9b884e8316ed60b565dda4cc11fc657",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 20556,
+          "end_offset": 20599,
+          "sha256": "573a1b7a34b09989ea36426011d10af89e4d6dbb5204b5ed3b830eca8c393345",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": [
+        "after",
+        "busy",
+        "choose",
+        "direct",
+        "enjoy",
+        "expect",
+        "notice",
+        "offer",
+        "outside",
+        "rule",
+        "run",
+        "they"
+      ]
+    },
+    {
+      "group_id": "grade10-shenzhenlower2026-21cnjy26167651.literatureBank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "start_offset": 21510,
+      "end_offset": 22678,
+      "material_sha256": "9d674170c6f3465e2f2909eeaf15ad5331cdf7a29c1818655830035c84a8fabe",
+      "expected_blank_ids": [
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "excluded_offsets": [
+        {
+          "start": 127,
+          "end": 129,
+          "literal": "66",
+          "role": "blank_label",
+          "blank_id": 66
+        },
+        {
+          "start": 285,
+          "end": 287,
+          "literal": "67",
+          "role": "blank_label",
+          "blank_id": 67
+        },
+        {
+          "start": 461,
+          "end": 463,
+          "literal": "68",
+          "role": "blank_label",
+          "blank_id": 68
+        },
+        {
+          "start": 526,
+          "end": 528,
+          "literal": "69",
+          "role": "blank_label",
+          "blank_id": 69
+        },
+        {
+          "start": 705,
+          "end": 707,
+          "literal": "70",
+          "role": "blank_label",
+          "blank_id": 70
+        },
+        {
+          "start": 788,
+          "end": 790,
+          "literal": "71",
+          "role": "blank_label",
+          "blank_id": 71
+        },
+        {
+          "start": 857,
+          "end": 859,
+          "literal": "72",
+          "role": "blank_label",
+          "blank_id": 72
+        },
+        {
+          "start": 993,
+          "end": 995,
+          "literal": "73",
+          "role": "blank_label",
+          "blank_id": 73
+        },
+        {
+          "start": 1065,
+          "end": 1067,
+          "literal": "74",
+          "role": "blank_label",
+          "blank_id": 74
+        },
+        {
+          "start": 1135,
+          "end": 1137,
+          "literal": "75",
+          "role": "blank_label",
+          "blank_id": 75
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count"
+      ],
+      "components": [
+        {
+          "role": "shared_bank",
+          "start_offset": 21341,
+          "end_offset": 21479,
+          "sha256": "3d3b965f2e80353a4086f5301776c45e5d4a32013f6f8f7b342bca4f61beda47",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 2,
+              "literal": "A.",
+              "role": "option_label"
+            },
+            {
+              "start": 9,
+              "end": 11,
+              "literal": "B.",
+              "role": "option_label"
+            },
+            {
+              "start": 21,
+              "end": 23,
+              "literal": "C.",
+              "role": "option_label"
+            },
+            {
+              "start": 31,
+              "end": 33,
+              "literal": "D.",
+              "role": "option_label"
+            },
+            {
+              "start": 51,
+              "end": 53,
+              "literal": "E.",
+              "role": "option_label"
+            },
+            {
+              "start": 61,
+              "end": 63,
+              "literal": "F.",
+              "role": "option_label"
+            },
+            {
+              "start": 76,
+              "end": 78,
+              "literal": "G.",
+              "role": "option_label"
+            },
+            {
+              "start": 84,
+              "end": 86,
+              "literal": "H.",
+              "role": "option_label"
+            },
+            {
+              "start": 95,
+              "end": 97,
+              "literal": "I.",
+              "role": "option_label"
+            },
+            {
+              "start": 114,
+              "end": 116,
+              "literal": "J.",
+              "role": "option_label"
+            },
+            {
+              "start": 126,
+              "end": 128,
+              "literal": "K.",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 21310,
+          "end_offset": 21340,
+          "sha256": "c189ff3dab2be1671ee2b855be05bd8dda208adc3d3c196cfabecd82d9c16fc7",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": [
+        "Drawn",
+        "clearing",
+        "sprang",
+        "charging forward",
+        "Aboard",
+        "immediately",
+        "back",
+        "falling",
+        "circling around",
+        "pressing",
+        "strangely"
+      ]
+    },
+    {
+      "group_id": "grade7-wuhan2025-21cnjy23303148.bank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+        "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+      },
+      "start_offset": 13032,
+      "end_offset": 13434,
+      "material_sha256": "284cd81cf127ccf58e4860253fefa6086d67773c2f7967db25c79efda8d7a4ff",
+      "expected_blank_ids": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "excluded_offsets": [
+        {
+          "start": 80,
+          "end": 88,
+          "literal": "___41___",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 134,
+          "end": 142,
+          "literal": "___42___",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 190,
+          "end": 198,
+          "literal": "___43___",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 268,
+          "end": 276,
+          "literal": "___44___",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 314,
+          "end": 322,
+          "literal": "___45___",
+          "role": "blank_label",
+          "blank_id": 45
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count"
+      ],
+      "components": [
+        {
+          "role": "shared_bank",
+          "start_offset": 12970,
+          "end_offset": 13031,
+          "sha256": "bde912d7c733a739f8ee7e99bc449d4e75b8eb72c8dcbbc06480b4fb8a8fee22",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 12911,
+          "end_offset": 12969,
+          "sha256": "1f78af02d7f897d8d48a53862dd1cbe87e9a51b7f02b3f5a57c17937e1e5528b",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": [
+        "turned",
+        "feel like",
+        "snowman",
+        "magical",
+        "meet up",
+        "laughing",
+        "fresh"
+      ]
+    },
+    {
+      "group_id": "grade8-hubei2026-21cnjy26105408.bank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "start_offset": 9826,
+      "end_offset": 11075,
+      "material_sha256": "0de2a9330b71be41e71b174a98fcc0010ece4b824fc25ab164ac89b376c3a52b",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "excluded_offsets": [
+        {
+          "start": 71,
+          "end": 79,
+          "literal": "___36___",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 165,
+          "end": 173,
+          "literal": "___37___",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 304,
+          "end": 312,
+          "literal": "___38___",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 457,
+          "end": 465,
+          "literal": "___39___",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 743,
+          "end": 751,
+          "literal": "___40___",
+          "role": "blank_label",
+          "blank_id": 40
+        },
+        {
+          "start": 803,
+          "end": 811,
+          "literal": "___41___",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 946,
+          "end": 954,
+          "literal": "___42___",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 1007,
+          "end": 1015,
+          "literal": "___43___",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 1074,
+          "end": 1082,
+          "literal": "___44___",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 1144,
+          "end": 1152,
+          "literal": "___45___",
+          "role": "blank_label",
+          "blank_id": 45
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count"
+      ],
+      "components": [
+        {
+          "role": "shared_bank",
+          "start_offset": 9773,
+          "end_offset": 9825,
+          "sha256": "1e79b289a1dfbe1505ae567cc0fc5a471c3b25d6ea81c30ef44c19ec3b588e23",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 9721,
+          "end_offset": 9772,
+          "sha256": "1c4c4404d22d7c86b02a4d8921190cd2f2fc672de232331455ee7349fca02042",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": [
+        "although",
+        "fly",
+        "grow",
+        "his",
+        "hour",
+        "or",
+        "poor",
+        "quiet",
+        "share",
+        "young"
+      ]
+    },
+    {
+      "group_id": "grade9-zhongshan2025-21cnjy22278047.bank",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "start_offset": 12723,
+      "end_offset": 13944,
+      "material_sha256": "8e88adfecccf4166d7af976541a15b76801608c7a5ffb04c742567be69b96e46",
+      "expected_blank_ids": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "excluded_offsets": [
+        {
+          "start": 195,
+          "end": 197,
+          "literal": "41",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 311,
+          "end": 313,
+          "literal": "42",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 409,
+          "end": 411,
+          "literal": "43",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 584,
+          "end": 586,
+          "literal": "44",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 656,
+          "end": 658,
+          "literal": "45",
+          "role": "blank_label",
+          "blank_id": 45
+        },
+        {
+          "start": 755,
+          "end": 757,
+          "literal": "46",
+          "role": "blank_label",
+          "blank_id": 46
+        },
+        {
+          "start": 843,
+          "end": 845,
+          "literal": "47",
+          "role": "blank_label",
+          "blank_id": 47
+        },
+        {
+          "start": 975,
+          "end": 977,
+          "literal": "48",
+          "role": "blank_label",
+          "blank_id": 48
+        },
+        {
+          "start": 1026,
+          "end": 1028,
+          "literal": "49",
+          "role": "blank_label",
+          "blank_id": 49
+        },
+        {
+          "start": 1116,
+          "end": 1118,
+          "literal": "50",
+          "role": "blank_label",
+          "blank_id": 50
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Bank phrases/forms/reuse use bound source shape, not inferred from token count",
+        "Next written-part heading/points excluded"
+      ],
+      "components": [
+        {
+          "role": "shared_bank",
+          "start_offset": 12615,
+          "end_offset": 12722,
+          "sha256": "71114b1a6c4d97b8675b4ece32155cae5de5a8c322e755e9575dec8ea7b2eaec",
+          "excluded_offsets": []
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 12532,
+          "end_offset": 12614,
+          "sha256": "59ddb8b05a8552cfb025cd9c6a09d8bba20d19fce7065041943a376ee6bcd8f5",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1,
+      "source_bank_entries_observed": [
+        "leave",
+        "read",
+        "hard",
+        "love",
+        "if",
+        "though",
+        "popular",
+        "other",
+        "for",
+        "afford",
+        "I",
+        "great"
+      ]
+    },
+    {
+      "group_id": "grade7-suzhou2025-21cnjy23303742.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+        "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+      },
+      "start_offset": 13075,
+      "end_offset": 14110,
+      "material_sha256": "6d7df0917f1ea9d6fe8539f4630cf6b72b8d2ab633116efd8e5cc9e9d321730a",
+      "expected_blank_ids": [
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "excluded_offsets": [
+        {
+          "start": 253,
+          "end": 261,
+          "literal": "___26___",
+          "role": "blank_label",
+          "blank_id": 26
+        },
+        {
+          "start": 383,
+          "end": 391,
+          "literal": "___27___",
+          "role": "blank_label",
+          "blank_id": 27
+        },
+        {
+          "start": 599,
+          "end": 607,
+          "literal": "___28___",
+          "role": "blank_label",
+          "blank_id": 28
+        },
+        {
+          "start": 709,
+          "end": 717,
+          "literal": "___29___",
+          "role": "blank_label",
+          "blank_id": 29
+        },
+        {
+          "start": 927,
+          "end": 935,
+          "literal": "___30___",
+          "role": "blank_label",
+          "blank_id": 30
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 14111,
+          "end_offset": 14517,
+          "sha256": "72c100624188be92f7865f9ab77106d31e74ae166ad4021cc13a4aa73831c2eb",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 67,
+              "end": 70,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 94,
+              "end": 97,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 163,
+              "end": 166,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 213,
+              "end": 216,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 304,
+              "end": 306,
+              "literal": "F ",
+              "role": "option_label"
+            },
+            {
+              "start": 344,
+              "end": 347,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13018,
+          "end_offset": 13074,
+          "sha256": "936b97dd30d0db0c027f38b58084e37fb05edb45689eb553cad1e412babd6fb9",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade9-chengdu2025-21cnjy23208601.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+        "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+      },
+      "start_offset": 24180,
+      "end_offset": 25417,
+      "material_sha256": "34bb6c87ee9202f71252221a40ae36556de8da5f3142958bd523d2a6e1d8a382",
+      "expected_blank_ids": [
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "excluded_offsets": [
+        {
+          "start": 121,
+          "end": 129,
+          "literal": "___71___",
+          "role": "blank_label",
+          "blank_id": 71
+        },
+        {
+          "start": 293,
+          "end": 301,
+          "literal": "___72___",
+          "role": "blank_label",
+          "blank_id": 72
+        },
+        {
+          "start": 640,
+          "end": 648,
+          "literal": "___73___",
+          "role": "blank_label",
+          "blank_id": 73
+        },
+        {
+          "start": 940,
+          "end": 948,
+          "literal": "___74___",
+          "role": "blank_label",
+          "blank_id": 74
+        },
+        {
+          "start": 1175,
+          "end": 1183,
+          "literal": "___75___",
+          "role": "blank_label",
+          "blank_id": 75
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 25418,
+          "end_offset": 25680,
+          "sha256": "46291caaffb6c23f799aece93b314f49d83da52238b8cdb34171f70c81dd5ee7",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 69,
+              "end": 72,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 112,
+              "end": 115,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 160,
+              "end": 163,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 209,
+              "end": 212,
+              "literal": "F. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 24146,
+          "end_offset": 24179,
+          "sha256": "7e0b10d3ab07362f7b3d4b5de018e40f3c857828c9735b616bf97f36047cb3b1",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade10-shenzhenlower2026-21cnjy26167651.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "start_offset": 15230,
+      "end_offset": 16677,
+      "material_sha256": "e449c5e39ea02e7204ee288225b09caeffd22b309f1a25d2828d3763aaa8203c",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "excluded_offsets": [
+        {
+          "start": 89,
+          "end": 92,
+          "literal": "3 6",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 375,
+          "end": 377,
+          "literal": "37",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 512,
+          "end": 514,
+          "literal": "38",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 1206,
+          "end": 1208,
+          "literal": "39",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 1372,
+          "end": 1374,
+          "literal": "40",
+          "role": "blank_label",
+          "blank_id": 40
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule",
+        "Source first blank label is 3 6; declared one position36, original bytes preserved"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 16678,
+          "end_offset": 17012,
+          "sha256": "51c4a2507c9f4259e45dbbc85555c56fedbb0e9558d2415dbd4259116ee74905",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 34,
+              "end": 37,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 72,
+              "end": 75,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 110,
+              "end": 113,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 153,
+              "end": 156,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 205,
+              "end": 208,
+              "literal": "F. ",
+              "role": "option_label"
+            },
+            {
+              "start": 266,
+              "end": 269,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 15187,
+          "end_offset": 15229,
+          "sha256": "90ea565ea6580d71f852457a03fc1f3da4327628853ac775a81f5b1d5257f947",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade11-yinchuan2026-21cnjy25860535.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-yinchuan2026-21cnjy25860535-resource-v0.2.txt",
+        "sha256": "81f0da5e7adc85c609a87d380ccb103ec8bb10fd8bda65e129a0d24575c5c3fb"
+      },
+      "start_offset": 13239,
+      "end_offset": 14686,
+      "material_sha256": "6bdf745b759353f042bd03105cc8e0e349bd848b7e5c30924f46d5aea8011b73",
+      "expected_blank_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "excluded_offsets": [
+        {
+          "start": 146,
+          "end": 156,
+          "literal": "____16____",
+          "role": "blank_label",
+          "blank_id": 16
+        },
+        {
+          "start": 313,
+          "end": 323,
+          "literal": "____17____",
+          "role": "blank_label",
+          "blank_id": 17
+        },
+        {
+          "start": 854,
+          "end": 864,
+          "literal": "____18____",
+          "role": "blank_label",
+          "blank_id": 18
+        },
+        {
+          "start": 1071,
+          "end": 1081,
+          "literal": "____19____",
+          "role": "blank_label",
+          "blank_id": 19
+        },
+        {
+          "start": 1302,
+          "end": 1312,
+          "literal": "____20____",
+          "role": "blank_label",
+          "blank_id": 20
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 14687,
+          "end_offset": 15130,
+          "sha256": "05e296955dcd81d9ed6daf5432a7ca8adc955f580c3865fa887fbbadb33aa149",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 38,
+              "end": 41,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 93,
+              "end": 96,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 154,
+              "end": 157,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 217,
+              "end": 220,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 282,
+              "end": 285,
+              "literal": "F. ",
+              "role": "option_label"
+            },
+            {
+              "start": 359,
+              "end": 362,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13196,
+          "end_offset": 13238,
+          "sha256": "90ea565ea6580d71f852457a03fc1f3da4327628853ac775a81f5b1d5257f947",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": null,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade8-hubei2026-21cnjy26105408.insertionD",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+        "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+      },
+      "start_offset": 8029,
+      "end_offset": 9418,
+      "material_sha256": "e2d5a0a5ff4872150ed56dc2c67552c5b5b22a333a76e64e0d5904ecb9041e70",
+      "expected_blank_ids": [
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "excluded_offsets": [
+        {
+          "start": 153,
+          "end": 161,
+          "literal": "___31___",
+          "role": "blank_label",
+          "blank_id": 31
+        },
+        {
+          "start": 274,
+          "end": 282,
+          "literal": "___32___",
+          "role": "blank_label",
+          "blank_id": 32
+        },
+        {
+          "start": 711,
+          "end": 719,
+          "literal": "___33___",
+          "role": "blank_label",
+          "blank_id": 33
+        },
+        {
+          "start": 919,
+          "end": 927,
+          "literal": "___34___",
+          "role": "blank_label",
+          "blank_id": 34
+        },
+        {
+          "start": 1124,
+          "end": 1132,
+          "literal": "___35___",
+          "role": "blank_label",
+          "blank_id": 35
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 9419,
+          "end_offset": 9707,
+          "sha256": "42a58415224c79a82261cca4d1e1b4db4d8e2c4454fcc70794c3078d5941c593",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 2,
+              "literal": "A．",
+              "role": "option_label"
+            },
+            {
+              "start": 24,
+              "end": 26,
+              "literal": "B．",
+              "role": "option_label"
+            },
+            {
+              "start": 49,
+              "end": 51,
+              "literal": "C．",
+              "role": "option_label"
+            },
+            {
+              "start": 95,
+              "end": 97,
+              "literal": "D．",
+              "role": "option_label"
+            },
+            {
+              "start": 145,
+              "end": 147,
+              "literal": "E．",
+              "role": "option_label"
+            },
+            {
+              "start": 216,
+              "end": 218,
+              "literal": "F．",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 7983,
+          "end_offset": 8028,
+          "sha256": "b8bbcde0aa2e8bdb2ac67539aae8eaa0303901188d52128d6778d90d91312e1e",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade9-boxing2025-21cnjy24857076.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "start_offset": 12794,
+      "end_offset": 13824,
+      "material_sha256": "e173cdf966eb5c19634e967c23439524e7aba220159b2b9c025eb2bbc1f20d0a",
+      "expected_blank_ids": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "excluded_offsets": [
+        {
+          "start": 141,
+          "end": 151,
+          "literal": "____41____",
+          "role": "blank_label",
+          "blank_id": 41
+        },
+        {
+          "start": 290,
+          "end": 300,
+          "literal": "____42____",
+          "role": "blank_label",
+          "blank_id": 42
+        },
+        {
+          "start": 659,
+          "end": 669,
+          "literal": "____43____",
+          "role": "blank_label",
+          "blank_id": 43
+        },
+        {
+          "start": 774,
+          "end": 784,
+          "literal": "____44____",
+          "role": "blank_label",
+          "blank_id": 44
+        },
+        {
+          "start": 935,
+          "end": 945,
+          "literal": "____45____",
+          "role": "blank_label",
+          "blank_id": 45
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 13825,
+          "end_offset": 14232,
+          "sha256": "847910eeef5a22a0495cd8ad5f6b0330d3fe315ff8d70b5d1e3f69e94316238b",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 45,
+              "end": 48,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 100,
+              "end": 103,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 156,
+              "end": 159,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 213,
+              "end": 216,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 279,
+              "end": 282,
+              "literal": "F. ",
+              "role": "option_label"
+            },
+            {
+              "start": 351,
+              "end": 354,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 12756,
+          "end_offset": 12793,
+          "sha256": "dbea6ab9da28bdb7789ce9be8b69d136e7dd20915065050ad964ed9a176303dd",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade10-jinhua2025-21cnjy22399612.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+        "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+      },
+      "start_offset": 13304,
+      "end_offset": 14675,
+      "material_sha256": "4e6b219de406e8cdf989da8e0c2bd29a94ea34a9467c79cbe8c656fb2131fe59",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "excluded_offsets": [
+        {
+          "start": 235,
+          "end": 243,
+          "literal": "___36___",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 368,
+          "end": 376,
+          "literal": "___37___",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 903,
+          "end": 911,
+          "literal": "___38___",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 1033,
+          "end": 1041,
+          "literal": "___39___",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 1255,
+          "end": 1263,
+          "literal": "___40___",
+          "role": "blank_label",
+          "blank_id": 40
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 14676,
+          "end_offset": 15188,
+          "sha256": "98b28dd3e88930c1203bbaa07407ce25d379f088108974dce8bd29a1e580a0d6",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 54,
+              "end": 57,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 114,
+              "end": 117,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 178,
+              "end": 181,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 256,
+              "end": 259,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 341,
+              "end": 344,
+              "literal": "F. ",
+              "role": "option_label"
+            },
+            {
+              "start": 421,
+              "end": 424,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13261,
+          "end_offset": 13303,
+          "sha256": "90ea565ea6580d71f852457a03fc1f3da4327628853ac775a81f5b1d5257f947",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade10-weishi2026-21cnjy25962499.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade10-weishi2026-21cnjy25962499-resource-v0.2.txt",
+        "sha256": "c5448cc7fb844a98f39edfd81ed94577f924a317bd815673d9bff118e9328e8f"
+      },
+      "start_offset": 9606,
+      "end_offset": 10740,
+      "material_sha256": "09f22c281d05140df83cf6bd4f71481c529e50dfc805701dc360be120a3c998c",
+      "expected_blank_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "excluded_offsets": [
+        {
+          "start": 257,
+          "end": 265,
+          "literal": "___16___",
+          "role": "blank_label",
+          "blank_id": 16
+        },
+        {
+          "start": 415,
+          "end": 423,
+          "literal": "___17___",
+          "role": "blank_label",
+          "blank_id": 17
+        },
+        {
+          "start": 485,
+          "end": 493,
+          "literal": "___18___",
+          "role": "blank_label",
+          "blank_id": 18
+        },
+        {
+          "start": 758,
+          "end": 766,
+          "literal": "___19___",
+          "role": "blank_label",
+          "blank_id": 19
+        },
+        {
+          "start": 1125,
+          "end": 1133,
+          "literal": "___20___",
+          "role": "blank_label",
+          "blank_id": 20
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 10741,
+          "end_offset": 11250,
+          "sha256": "866718c460d414d0e8e6a770d8b59e17bc07a684de4a04c47cf415b1b61a76c5",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 2,
+              "literal": "A．",
+              "role": "option_label"
+            },
+            {
+              "start": 37,
+              "end": 39,
+              "literal": "B．",
+              "role": "option_label"
+            },
+            {
+              "start": 84,
+              "end": 86,
+              "literal": "C．",
+              "role": "option_label"
+            },
+            {
+              "start": 162,
+              "end": 164,
+              "literal": "D．",
+              "role": "option_label"
+            },
+            {
+              "start": 245,
+              "end": 247,
+              "literal": "E．",
+              "role": "option_label"
+            },
+            {
+              "start": 331,
+              "end": 333,
+              "literal": "F．",
+              "role": "option_label"
+            },
+            {
+              "start": 417,
+              "end": 419,
+              "literal": "G．",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 9564,
+          "end_offset": 9605,
+          "sha256": "ffb00ee50b8eadfb2dbedbba6e7defb2dbfc4a130adaaffa0db0a9f85fe6a94b",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade11-heze2026-21cnjy24886046.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+        "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+      },
+      "start_offset": 13256,
+      "end_offset": 14836,
+      "material_sha256": "60288ecfd1e252f534a864d13cc2facec27103da6e42ffd1f83617b51a8460cc",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "excluded_offsets": [
+        {
+          "start": 117,
+          "end": 130,
+          "literal": "36.__________",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 756,
+          "end": 772,
+          "literal": "37._____________",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 909,
+          "end": 922,
+          "literal": "38.__________",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 1036,
+          "end": 1047,
+          "literal": "39.________",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 1374,
+          "end": 1385,
+          "literal": "40.________",
+          "role": "blank_label",
+          "blank_id": 40
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule",
+        "A-F candidate identifiers absent; compare literal candidate lines without inventing labels"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 14837,
+          "end_offset": 15126,
+          "sha256": "7f15bb30a2e52a810db0c975691dc54f3c87c162bb1ef7fcbec29d6f485171a5",
+          "excluded_offsets": [
+            {
+              "start": 215,
+              "end": 218,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13213,
+          "end_offset": 13255,
+          "sha256": "90ea565ea6580d71f852457a03fc1f3da4327628853ac775a81f5b1d5257f947",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": false,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade12-linyi2025-21cnjy24838709.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+        "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+      },
+      "start_offset": 13961,
+      "end_offset": 15693,
+      "material_sha256": "75dd7511eb99ce9145b726b52f2abfb9234682f4aee8d47646cb481ac6c1e8e8",
+      "expected_blank_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "excluded_offsets": [
+        {
+          "start": 90,
+          "end": 100,
+          "literal": "____16____",
+          "role": "blank_label",
+          "blank_id": 16
+        },
+        {
+          "start": 508,
+          "end": 518,
+          "literal": "____17____",
+          "role": "blank_label",
+          "blank_id": 17
+        },
+        {
+          "start": 734,
+          "end": 744,
+          "literal": "____18____",
+          "role": "blank_label",
+          "blank_id": 18
+        },
+        {
+          "start": 870,
+          "end": 880,
+          "literal": "____19____",
+          "role": "blank_label",
+          "blank_id": 19
+        },
+        {
+          "start": 1722,
+          "end": 1732,
+          "literal": "____20____",
+          "role": "blank_label",
+          "blank_id": 20
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 15694,
+          "end_offset": 16222,
+          "sha256": "d68d2d33c7377d63a633ee66a8f3a91cda0549e03fb63a6ee5230ac5798ca9e2",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 49,
+              "end": 52,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 114,
+              "end": 117,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 182,
+              "end": 185,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 258,
+              "end": 261,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 336,
+              "end": 339,
+              "literal": "F. ",
+              "role": "option_label"
+            },
+            {
+              "start": 426,
+              "end": 429,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 13919,
+          "end_offset": 13960,
+          "sha256": "ffb00ee50b8eadfb2dbedbba6e7defb2dbfc4a130adaaffa0db0a9f85fe6a94b",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade9-nanshan2026-21cnjy25758947.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-nanshan2026-21cnjy25758947-resource-v0.2.txt",
+        "sha256": "a90d8dd1e36affbf7ad94511db5b318e3747b26b7cd2171c29d022c06bc920e3"
+      },
+      "start_offset": 14672,
+      "end_offset": 16056,
+      "material_sha256": "6b7da09b572f3f01262230654ef3526fcf033415c26ca0418e41046b746876fd",
+      "expected_blank_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "excluded_offsets": [
+        {
+          "start": 108,
+          "end": 117,
+          "literal": "（1）______",
+          "role": "blank_label",
+          "blank_id": 1
+        },
+        {
+          "start": 283,
+          "end": 292,
+          "literal": "（2）______",
+          "role": "blank_label",
+          "blank_id": 2
+        },
+        {
+          "start": 613,
+          "end": 622,
+          "literal": "（3）______",
+          "role": "blank_label",
+          "blank_id": 3
+        },
+        {
+          "start": 988,
+          "end": 997,
+          "literal": "（4）______",
+          "role": "blank_label",
+          "blank_id": 4
+        },
+        {
+          "start": 1375,
+          "end": 1384,
+          "literal": "（5）______",
+          "role": "blank_label",
+          "blank_id": 5
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 14368,
+          "end_offset": 14671,
+          "sha256": "e0d2d7d7c6e8891529b0b6eca248cd607d87c607fe1ffca598846e65c1b6c8cb",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 2,
+              "literal": "A.",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 39,
+              "end": 41,
+              "literal": "B.",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 82,
+              "end": 84,
+              "literal": "C.",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 131,
+              "end": 133,
+              "literal": "D.",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 185,
+              "end": 187,
+              "literal": "E.",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 238,
+              "end": 240,
+              "literal": "F.",
+              "role": "option_or_item_label"
+            }
+          ]
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade12-yali2026-21cnjy25133058.insertion",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+        "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+      },
+      "start_offset": 14645,
+      "end_offset": 16462,
+      "material_sha256": "4511c1771c688a74c63b941b112029ed1bf4be230a7870921289c2a9bf840447",
+      "expected_blank_ids": [
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "excluded_offsets": [
+        {
+          "start": 188,
+          "end": 190,
+          "literal": "36",
+          "role": "blank_label",
+          "blank_id": 36
+        },
+        {
+          "start": 853,
+          "end": 855,
+          "literal": "37",
+          "role": "blank_label",
+          "blank_id": 37
+        },
+        {
+          "start": 991,
+          "end": 993,
+          "literal": "38",
+          "role": "blank_label",
+          "blank_id": 38
+        },
+        {
+          "start": 1573,
+          "end": 1575,
+          "literal": "39",
+          "role": "blank_label",
+          "blank_id": 39
+        },
+        {
+          "start": 1811,
+          "end": 1817,
+          "literal": "40____",
+          "role": "blank_label",
+          "blank_id": 40
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Source shared-candidate spare/reuse and slot functions not normalized to an assumed universal rule"
+      ],
+      "components": [
+        {
+          "role": "shared_options",
+          "start_offset": 16463,
+          "end_offset": 16935,
+          "sha256": "4a6e2ac1367cde6ac2ca0ba147651a7e150310410cbf6ec94c8e0dc725bc53f1",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "A. ",
+              "role": "option_label"
+            },
+            {
+              "start": 49,
+              "end": 52,
+              "literal": "B. ",
+              "role": "option_label"
+            },
+            {
+              "start": 103,
+              "end": 106,
+              "literal": "C. ",
+              "role": "option_label"
+            },
+            {
+              "start": 163,
+              "end": 166,
+              "literal": "D. ",
+              "role": "option_label"
+            },
+            {
+              "start": 244,
+              "end": 247,
+              "literal": "E. ",
+              "role": "option_label"
+            },
+            {
+              "start": 293,
+              "end": 295,
+              "literal": "F ",
+              "role": "option_label"
+            },
+            {
+              "start": 378,
+              "end": 381,
+              "literal": "G. ",
+              "role": "option_label"
+            }
+          ]
+        },
+        {
+          "role": "student_instruction",
+          "start_offset": 14602,
+          "end_offset": 14644,
+          "sha256": "90ea565ea6580d71f852457a03fc1f3da4327628853ac775a81f5b1d5257f947",
+          "excluded_offsets": []
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    },
+    {
+      "group_id": "grade9-zhongshan2025-21cnjy22278047.grammarChoice",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-zhongshan2025-21cnjy22278047-resource-v0.2.txt",
+        "sha256": "2b732327f8b7a110db11e2ed974299e856f5a70b7fa37a3e01afabfab81568a0"
+      },
+      "start_offset": 1299,
+      "end_offset": 2453,
+      "material_sha256": "8121238fa44b96ac6b61db91d50aa3d5eb1a240db83e26e6f4ab5574fc94fe2b",
+      "expected_blank_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "excluded_offsets": [
+        {
+          "start": 48,
+          "end": 49,
+          "literal": "1",
+          "role": "blank_label",
+          "blank_id": 1
+        },
+        {
+          "start": 200,
+          "end": 201,
+          "literal": "2",
+          "role": "blank_label",
+          "blank_id": 2
+        },
+        {
+          "start": 281,
+          "end": 282,
+          "literal": "3",
+          "role": "blank_label",
+          "blank_id": 3
+        },
+        {
+          "start": 347,
+          "end": 348,
+          "literal": "4",
+          "role": "blank_label",
+          "blank_id": 4
+        },
+        {
+          "start": 489,
+          "end": 490,
+          "literal": "5",
+          "role": "blank_label",
+          "blank_id": 5
+        },
+        {
+          "start": 592,
+          "end": 593,
+          "literal": "6",
+          "role": "blank_label",
+          "blank_id": 6
+        },
+        {
+          "start": 717,
+          "end": 718,
+          "literal": "7",
+          "role": "blank_label",
+          "blank_id": 7
+        },
+        {
+          "start": 789,
+          "end": 790,
+          "literal": "8",
+          "role": "blank_label",
+          "blank_id": 8
+        },
+        {
+          "start": 895,
+          "end": 896,
+          "literal": "9",
+          "role": "blank_label",
+          "blank_id": 9
+        },
+        {
+          "start": 1017,
+          "end": 1019,
+          "literal": "10",
+          "role": "blank_label",
+          "blank_id": 10
+        }
+      ],
+      "comparison_scope": "complete_selected_material_text_only_not_answer_or_full_visual_admission",
+      "source_defects": [
+        "Grammar choice remains 10 slots/4 options each, no free-word-form scoring"
+      ],
+      "components": [
+        {
+          "role": "per_blank_options",
+          "start_offset": 2454,
+          "end_offset": 3168,
+          "sha256": "99e357ecdae60d6a3cc3474934949ddfcfd84c370f4e76648b9ab03c66b2ab8e",
+          "excluded_offsets": [
+            {
+              "start": 0,
+              "end": 3,
+              "literal": "1. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 3,
+              "end": 6,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 21,
+              "end": 24,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 41,
+              "end": 44,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 61,
+              "end": 64,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 76,
+              "end": 79,
+              "literal": "2. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 79,
+              "end": 82,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 96,
+              "end": 99,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 117,
+              "end": 120,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 136,
+              "end": 138,
+              "literal": "D.",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 140,
+              "end": 143,
+              "literal": "3. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 143,
+              "end": 146,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 162,
+              "end": 165,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 182,
+              "end": 185,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 202,
+              "end": 205,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 217,
+              "end": 220,
+              "literal": "4. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 220,
+              "end": 223,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 238,
+              "end": 241,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 258,
+              "end": 261,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 278,
+              "end": 281,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 289,
+              "end": 292,
+              "literal": "5. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 292,
+              "end": 295,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 309,
+              "end": 312,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 330,
+              "end": 333,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 350,
+              "end": 353,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 358,
+              "end": 361,
+              "literal": "6. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 361,
+              "end": 364,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 379,
+              "end": 382,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 399,
+              "end": 402,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 419,
+              "end": 422,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 431,
+              "end": 434,
+              "literal": "7. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 434,
+              "end": 437,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 451,
+              "end": 454,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 472,
+              "end": 475,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 492,
+              "end": 495,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 499,
+              "end": 502,
+              "literal": "8. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 502,
+              "end": 505,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 519,
+              "end": 522,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 540,
+              "end": 543,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 560,
+              "end": 563,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 571,
+              "end": 574,
+              "literal": "9. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 574,
+              "end": 577,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 591,
+              "end": 594,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 611,
+              "end": 614,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 631,
+              "end": 634,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 639,
+              "end": 643,
+              "literal": "10. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 643,
+              "end": 646,
+              "literal": "A. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 660,
+              "end": 663,
+              "literal": "B. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 680,
+              "end": 683,
+              "literal": "C. ",
+              "role": "option_or_item_label"
+            },
+            {
+              "start": 700,
+              "end": 703,
+              "literal": "D. ",
+              "role": "option_or_item_label"
+            }
+          ]
+        }
+      ],
+      "observed_given_hint_slots": null,
+      "source_input_status_not_upgraded": true,
+      "material_count_observed": 1
+    }
+  ],
+  "all_benchmark_deduplication_complete": false,
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/school-material-family-audit20261015f-v0.1.json",
+    "sha256": "7097c905c1aa580bdfdd45573764b4cb3acb355b5e63d014c1ac6247408a2718"
+  },
+  "appended_view_count": 32
+}

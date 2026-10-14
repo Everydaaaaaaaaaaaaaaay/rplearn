@@ -22958,6 +22958,92 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "school-material-families20261015g-v0.1",
+      "source_acquisition_ids": [
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-jinan2025-21cnjy24695341",
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047"
+      ],
+      "tool": "Tools/audit_school_material_families.py",
+      "tool_version": "0.2",
+      "input_manifest": {
+        "path": "FirstRelease/Sampling/nonreading-material-views-v0.1.json",
+        "sha256": "c03331b145fcc77c30cee8392f83cacdc4e72ffbf3e5acd4586d604732bd5204"
+      },
+      "parameters": [
+        "32new nonreading views; material/hints/bank/instruction separated; original97 stable; incremental family or source-layout controls only; no gold/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/school-material-family-audit20261015g-v0.1.json",
+          "bytes": 1170792,
+          "sha256": "dbe4edf44b02c9c270f4709e0add3a5d36050361d307b737e11b808431644307",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "nonreading-layout-checks20261015g-v0.1",
+      "source_acquisition_ids": [
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-jinan2025-21cnjy24695341",
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047"
+      ],
+      "tool": "Tools/check_nonreading_layout.py",
+      "tool_version": "0.1",
+      "input_manifest": {
+        "path": "FirstRelease/Sampling/nonreading-material-views-v0.1.json",
+        "sha256": "c03331b145fcc77c30cee8392f83cacdc4e72ffbf3e5acd4586d604732bd5204"
+      },
+      "parameters": [
+        "32new nonreading views; material/hints/bank/instruction separated; original97 stable; incremental family or source-layout controls only; no gold/production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/nonreading-layout-checks20261015g-v0.1.json",
+          "bytes": 45486,
+          "sha256": "eb8e230589bde60233c61f34205b3ac864a726fa9d9ef3a2fed7734d5002855a",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

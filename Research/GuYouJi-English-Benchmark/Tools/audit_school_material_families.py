@@ -31,7 +31,18 @@ def remove_offsets(text, offsets):
 
 
 def audit(manifest):
-    old = json.loads(load_ref(manifest['frozen_nineteen_audit']).read_text())
+    layers, seen = [manifest], set()
+    while layers[-1].get('prior_view_manifest'):
+        ref = layers[-1]['prior_view_manifest']
+        identity = (ref['path'], ref['sha256'])
+        if identity in seen:
+            raise ValueError('Repeated/cyclic material view ancestry')
+        seen.add(identity)
+        layers.append(json.loads(load_ref(ref).read_text()))
+    frozen = layers[-1]['frozen_nineteen_audit']
+    if any(layer.get('frozen_nineteen_audit', frozen) != frozen for layer in layers):
+        raise ValueError('Different frozen material baselines')
+    old = json.loads(load_ref(frozen).read_text())
     rows, bodies = [], {}
     for record in old['records']:
         view = load_ref(record['source_text']).read_text()
@@ -49,7 +60,7 @@ def audit(manifest):
                          frozen_measurement_reproduced=True))
         bodies[record['group_id']] = norm
     by_id = {r['id']: r for r in evidence()}
-    for case in manifest['views']:
+    for case in [case for layer in reversed(layers) for case in layer['views']]:
         row = by_id[case['group_id']]
         view = load_ref(case['source_text']).read_text()
         if row.get('source_text_ref') != case['source_text']:
@@ -105,8 +116,28 @@ def audit(manifest):
         if case['group_id'] in bodies:
             raise ValueError('Repeated material view')
         bodies[case['group_id']] = norm
+    prior_ids, prior_pair_count = set(), 0
+    prior_exact = prior_candidates = 0
+    if manifest.get('prior_material_audit'):
+        previous = json.loads(load_ref(manifest['prior_material_audit']).read_text())
+        current = {r['group_id']: r for r in rows}
+        for earlier in previous['records']:
+            gid = earlier['group_id']
+            if gid in prior_ids or gid not in current:
+                raise ValueError('Duplicate or missing prior material')
+            for key in ['material_sha256', 'normalized_material_sha256', 'material_counts', 'companion_counts']:
+                if key in earlier and earlier[key] != current[gid].get(key):
+                    raise ValueError('Prior material changed; cannot reuse comparisons')
+            prior_ids.add(gid)
+        prior_pair_count = previous.get('pair_count_total', len(previous['comparisons']))
+        if prior_pair_count != len(prior_ids) * (len(prior_ids) - 1) // 2:
+            raise ValueError('Prior comparison coverage differs')
+        prior_exact = previous['exact_repeat_pairs']
+        prior_candidates = previous['review_candidates']
     comparisons = []
     for left, right in combinations(bodies, 2):
+        if left in prior_ids and right in prior_ids:
+            continue
         a, b = shingles(bodies[left]), shingles(bodies[right])
         jaccard = len(a & b) / len(a | b) if a | b else 0
         containment = len(a & b) / min(len(a), len(b)) if a and b else 0
@@ -114,15 +145,22 @@ def audit(manifest):
                             'exact_normalized_match': bodies[left] == bodies[right],
                             'fivegram_jaccard': jaccard, 'fivegram_containment': containment,
                             'review_candidate': bodies[left] == bodies[right] or jaccard >= .5 or containment >= .8})
-    return {'version': '0.1', 'scope': manifest['scope'], 'records': rows, 'comparisons': comparisons,
-            'frozen19_reproduced': True, 'exact_repeat_pairs': sum(c['exact_normalized_match'] for c in comparisons),
-            'review_candidates': sum(c['review_candidate'] for c in comparisons),
+    total_pairs = len(rows) * (len(rows) - 1) // 2
+    if len(comparisons) + prior_pair_count != total_pairs:
+        raise ValueError('Incremental comparison coverage differs')
+    result = {'version': '0.2' if prior_pair_count else '0.1', 'scope': manifest['scope'], 'records': rows, 'comparisons': comparisons,
+            'frozen19_reproduced': True, 'exact_repeat_pairs': prior_exact + sum(c['exact_normalized_match'] for c in comparisons),
+            'review_candidates': prior_candidates + sum(c['review_candidate'] for c in comparisons),
             'screen_threshold_not_validated_plagiarism_or_family_classifier': True,
             'zero_candidates_not_proof_of_independent_origins': True,
             'normalization_limits': ['English/digit token view ignores Chinese glosses and punctuation',
                                      'Declared blanks/labels removed; source spelling defects remain',
                                      'No semantic paraphrase detection or whole-library independence claim'],
             'all_benchmark_deduplication_complete': False, 'model_called': False}
+    if prior_pair_count:
+        result.update(prior_material_audit=manifest['prior_material_audit'], prior_pairs_reused=prior_pair_count,
+                      pair_count_total=total_pairs, new_pair_count=len(comparisons))
+    return result
 
 
 if __name__ == '__main__':
@@ -139,5 +177,7 @@ if __name__ == '__main__':
     if not args.output.exists():
         args.output.write_text(payload)
     print(json.dumps({'materials': len(result['records']), 'parents': len({r['paper_identity'] for r in result['records']}),
-                      'pairs': len(result['comparisons']), 'exact_repeat_pairs': result['exact_repeat_pairs'],
+                      'pairs': result.get('pair_count_total', len(result['comparisons'])),
+                      'new_pairs': result.get('new_pair_count', len(result['comparisons'])),
+                      'prior_pairs_reused': result.get('prior_pairs_reused', 0), 'exact_repeat_pairs': result['exact_repeat_pairs'],
                       'review_candidates': result['review_candidates'], 'frozen19_reproduced': True}))
