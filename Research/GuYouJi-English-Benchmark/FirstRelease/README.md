@@ -6,11 +6,13 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-从[审阅包0.20](ReviewPackage-v0.20.md)、[可执行标准0.11](PracticalAuthoringStandard-v0.11.md)、[组合索引0.11](combined-review-index-v0.11.json)开始。源117实例/722参考/20父身份；初二新2026两包16/83已合并，分必做/选做与[初二草案0.5](Specifications/grade8-v0.5.md)。原创43家族277点/九方式、十四请求、13源11作者阅读卡不增；36源＋17核心待裁决，见[交付检查0.11](DeliveryCheck-v0.11.md)。第31覆盖旧41/271，本批待保存32；独立、学生、商用、模型及长期门槛未通过。
+从[审阅包0.20](ReviewPackage-v0.20.md)、[可执行标准0.11](PracticalAuthoringStandard-v0.11.md)、[组合索引0.11](combined-review-index-v0.11.json)开始。源117实例/722参考/20父身份；初二新2026两包16/83已合并，分必做/选做与[初二草案0.5](Specifications/grade8-v0.5.md)。原创43家族277点/九方式、十四请求、13源11作者阅读卡不增；36源＋17核心待裁决，见[交付检查0.11](DeliveryCheck-v0.11.md)。第32已覆盖现行43/277与117/722，32自身/后来增量下一批；独立、学生、商用、模型及长期门槛未通过。
 
 新增来源：[2026丰台七组37参考](../Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](../Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 
-当前保存：[第31独立恢复](../Studies/2026-10-14-checkpoint31-conditional-lexical-and-sentence-profile-recovery.md)7031文件全严格COW/SHA/不同inode；现41/271八方式/14请求/13源11作者/28源17核心、实际引语纠正/词义探针/22句向量与2未知可恢复。31自身/后来素材留下一批，未异机/完整环境或教育/商业验收。
+当前保存：[第32独立恢复](../Studies/2026-10-14-checkpoint32-new-grade8-sources-and-continuation-recovery.md)7145文件全严格COW/SHA/不同inode；现43/277九方式、117/722/20源、36源/17核心、十四请求及13源11作者阅读卡、26新原生页/PNG与34标签可恢复，响应/源/队列逐字复算。32自身/之后留下一批，未异机/完整环境或教育/商用/模型验收。
+
+此前保存：[第31独立恢复](../Studies/2026-10-14-checkpoint31-conditional-lexical-and-sentence-profile-recovery.md)7031文件全严格COW/SHA/不同inode；现41/271八方式/14请求/13源11作者/28源17核心、实际引语纠正/词义探针/22句向量与2未知可恢复。31自身/后来素材留下一批，未异机/完整环境或教育/商业验收。
 
 此前保存：[第30独立恢复](../Studies/2026-10-14-checkpoint30-current-lexical-open-and-stable-identity-recovery.md)6929文件严格COW/全SHA/不同inode；当前39/263八方式/十四请求、11源9作者负荷/20词汇语境、core015实际失败与core016来源使用修复可恢复。30自身/后来素材下批，未异机/完整环境或教育许可验收。
 
