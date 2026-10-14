@@ -23725,6 +23725,75 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "baseline-bank-form-audit20261015o-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade12-jianghuai2024-firstjoint-20261013"
+      ],
+      "tool": "Tools/audit_baseline_bank_forms.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen native source spans/shared banks/hints, actualAorB and3passage grouping; separate9atomic screen, no rewrite/download/render; input/gold/student/rights/production not upgraded"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-bank-form-audit20261015o-v0.1.json",
+          "bytes": 269445,
+          "sha256": "8bc0aa26147240f189d796d5a2bc63d24cf1b0abe30d5a3cfb6216a45ee6966c",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-bank-form-checks20261015o-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade12-jianghuai2024-firstjoint-20261013"
+      ],
+      "tool": "Tools/audit_baseline_bank_forms.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen native source spans/shared banks/hints, actualAorB and3passage grouping; separate9atomic screen, no rewrite/download/render; input/gold/student/rights/production not upgraded"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-bank-form-checks20261015o-v0.1.json",
+          "bytes": 3432,
+          "sha256": "f231bcd4be399eaa7cd0beffd9a17400c9aaae2e34334b4c95b46aed41b0e330",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "baseline-bank-form-request20261015o-v0.1",
+      "source_acquisition_ids": [
+        "xdf-grade7-2021lower-paper-20261013",
+        "bj-grade10-shijingshan2024lower-20261013",
+        "bj-grade11-yanqing2024upper-20261013",
+        "grade12-jianghuai2024-firstjoint-20261013"
+      ],
+      "tool": "Tools/audit_baseline_bank_forms.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "Frozen native source spans/shared banks/hints, actualAorB and3passage grouping; separate9atomic screen, no rewrite/download/render; input/gold/student/rights/production not upgraded"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/baseline-bank-form-request20261015o-v0.1.json",
+          "bytes": 4901,
+          "sha256": "d805acbf218284a8de9c50a4be2aaf81b06b7102a410de85f77e912a31529aa6",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
