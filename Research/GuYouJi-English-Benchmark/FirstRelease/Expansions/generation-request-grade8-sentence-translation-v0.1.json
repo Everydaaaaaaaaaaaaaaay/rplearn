@@ -1,0 +1,74 @@
+{
+  "version": "0.1",
+  "mode": "grade8_sentence_translation",
+  "grade": 8,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade8-v0.5.md",
+    "sha256": "8cc9a8bc800c1ca07d56a45ddb0d8d7fd7af8c6c84f3e9d724717fe79c3422c0"
+  },
+  "source_catalogue": {
+    "path": "FirstRelease/Expansions/grade8-bnu2026-public-groups-v0.1.json",
+    "sha256": "df2a038bab59e1ceadc7ceb12a5dec9d7233b53b0ab22364c8d20931be26dfa4"
+  },
+  "source_group_id": "g8.bnu2026.translation",
+  "source_parent_acquisition_id": "xschu-bnu2026-paper-key20261014-record",
+  "source_format": {
+    "items": 4,
+    "features": {
+      "questions": 4,
+      "points_each": 2,
+      "Chinese_meanings_and_English_prompt_terms_required": "wordinggivespromptwords_noexhaustivevariantpolicy",
+      "sample_forms_not_string_exact_gold": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    48,
+    49,
+    50,
+    51
+  ],
+  "excluded_source_explanation_numbers": [
+    50
+  ],
+  "target_contract": {
+    "items": 4,
+    "response_unit": "one_complete_sentence_translation_per_prompt",
+    "hints_required_inflection_allowed": true,
+    "exact_string_gold": false,
+    "provisional_meaning_language_points_each": [
+      1,
+      1
+    ],
+    "scoring_is_original_provisional_not_source_analytic_rubric": true
+  },
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade8-club-sentence-translation-v0.1.md",
+    "sha256": "3d98bd29c9c9d37ceb71f72160fe2c8f3fac15e1faf76006b6bf430f9885a0bd"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade8-club-sentence-translation-author-check-v0.1.json",
+    "sha256": "38da50d8525f764f1901c86a6df9dcca3be664d74fc45e6087196e59ac4d813a"
+  },
+  "new_context_and_changes": "New club contexts/actions/durations/hints;whole sentence units,requiredinflectablehints and equivalents;original provisional meaning1 language1 not source analyticrubric;it takes or we take depends actual subject,source50 erroneous explanation excluded while correct published reference retained;16synthetic author proposed scores not teacher ratings.",
+  "author_output_required": [
+    "complete_student_input",
+    "whole_task_author_solve_or_refill",
+    "all_choices_or_equivalent_response_review",
+    "source_to_target_changes",
+    "separate_input_output_load",
+    "actual_revision_if_changed",
+    "unknowns_and_independent_review_separate"
+  ],
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false
+  },
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "source_reference_set_exhaustive": false,
+  "source_original_republication_admitted": false,
+  "source_third_party_model_transmission_admitted": false,
+  "source_commercial_training_admitted": false
+}
