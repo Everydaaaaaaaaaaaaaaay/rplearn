@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "grade": 12,
+  "specification": {
+    "path": "FirstRelease/Specifications/grade12-v0.3.md",
+    "sha256": "62894eccefd96b9c505b758e1e77625e9f40dc46692af846514650f68d7af677"
+  },
+  "source_extension_ref": {
+    "path": "FirstRelease/Expansions/grade12-national2025-public-groups-v0.1.json",
+    "sha256": "b34a95e2e5a5f422fbcb0459ef997c083f7148768564602e2c3730d94393119a"
+  },
+  "source_group_id": "g12.national2025.readingA",
+  "source_paper_acquisition_id": "grade12-national2025-paper-commentary20261014",
+  "source_format": {
+    "items": 3,
+    "features": {
+      "questions": 3,
+      "options_each": 4,
+      "complete_graph_and_five_transport_cards_required": true,
+      "graph_reference_year": 2018,
+      "chart_denominator": "global transport emissions",
+      "graph_addition_required": true,
+      "five_solutions_and_final_engineer_quote": true
+    }
+  },
+  "positive_source_reference_numbers": [
+    1,
+    2,
+    3
+  ],
+  "source_original_official_number_mapping_verified": false,
+  "target_format": {
+    "items": 3,
+    "options_each": 4,
+    "solution_cards": 5,
+    "graph_categories": 6,
+    "complete_graph_cards_and_final_quote": true,
+    "equivalent_accessible_values_without_precomputed_answer": true
+  },
+  "authored_example": {
+    "path": "FirstRelease/Expansions/grade12-library-electricity-v0.2.md",
+    "sha256": "477c6f991c2aba107ece1bb5b5f8ae39cce5fdf445e0763a597f953144030803"
+  },
+  "authored_example_check": {
+    "path": "FirstRelease/Expansions/grade12-library-electricity-author-check-v0.2.json",
+    "sha256": "5e10448fc293164cbcf2936f98503cefc46f7513bc7acf58544860ada46bc6ae"
+  },
+  "authored_figure": {
+    "path": "FirstRelease/Expansions/library-electricity-2025-v0.2.svg",
+    "sha256": "f9d7bb6cf417c083d7ebf6cc795cc755edc595bf293ffb38e47ef5b9055d48ac"
+  },
+  "source_reference_list_exhaustive": false,
+  "all_shared_material_required": true,
+  "new_scenario": "imagined library electricity chart, five readiness/service trial proposals, coordinator evidence requirement",
+  "target_changes_and_justification": [
+    "2018transportemissions to2025fictionallibraryelectricity:denominatorsanddatesexplicit",
+    "sixfictionalshares100.0 not normalizedsource99.9;study aggregation andwrongstorageadded choice",
+    "comparativeease changed to explicitlyexistingcontrollers",
+    "allfivecards/finalconditions kept",
+    "accessible rawshares/group kept; actualv0.1 aggregateanswer leakage repaired"
+  ],
+  "author_output_required": [
+    "complete_student_material",
+    "per_item_evidence_and_alternatives",
+    "whole_group_solve_or_refill",
+    "actual_revision_evidence_if_changed",
+    "independent_unknowns_separate",
+    "accessible_input_no_answer_leak",
+    "graph_units_denominator_and_date"
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "original_source_republication_admitted": false,
+  "commercial_training_admitted": false,
+  "third_party_source_transmission_admitted": false,
+  "source_factual_gold": false,
+  "fact_strategy": "fictional_context_and_numbers_not_source_claims_as_fact",
+  "student_display": {
+    "avatar_next_to_instruction_only": true,
+    "independent_character_opening_story": false,
+    "correct_title_leaked": false
+  }
+}

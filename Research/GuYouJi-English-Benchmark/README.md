@@ -6,6 +6,8 @@
 
 2026-10-14 持续核读入口：
 
+- [高三完整图文与无障碍泄题修复](Studies/2026-10-14-grade12-complete-graph-and-accessible-answer-leak-repair.md)：335正文/六份额图/五方案/三题，修掉SVGdesc提前合计54.5；当前请求通过、真实旧稿泄露拒绝；扩展原创5材料家族18点，不当独立学生验收。
+
 - [第27当前扩展恢复](Studies/2026-10-14-checkpoint27-grade7-grade12-and-extended-requests-recovery.md)：6597文件严格COW独立恢复，纳初一/高三17新源组90响应、29原生页重放、现行扩展4/15及四请求/SVG，源87/554/16与核心25/205/53保持分层。
 
 - [高三新源必要图与转载组件边界](Studies/2026-10-14-grade12-national-graph-and-repost-component-boundaries.md)：13页全核、七组45参考；图道路74.5/显示99.9、听力仅标题、写作范文124与题面约80分开，源10推断待裁决；[总览0.3](FirstRelease/paired-source-overview-v0.3.json)87组实例/554源响应/16父卷身份。
