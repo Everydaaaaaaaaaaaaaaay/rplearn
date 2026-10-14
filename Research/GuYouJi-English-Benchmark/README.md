@@ -6,7 +6,7 @@
 
 2026-10-14 持续核读入口：
 
-- **当前统一入口：[审阅包0.21](FirstRelease/ReviewPackage-v0.21.md)、[可执行标准0.12](FirstRelease/PracticalAuthoringStandard-v0.12.md)、[组合索引0.12](FirstRelease/combined-review-index-v0.12.json)**：源117/722/20；原创44家族280响应／九方式，新增初二局部概念完整稿及10语境词义控制。[阅读卡0.5](FirstRelease/MeasuredReadingReferenceCards-v0.5.md)为14源12作者；十四旧请求、源36＋核心17待裁决保持。第32覆盖旧43/277，本批及32自身待下次实质保存，见[交付检查0.12](FirstRelease/DeliveryCheck-v0.12.md)。非作者、学生、商用、模型和长期门槛未通过。
+- **当前统一入口：[审阅包0.22](FirstRelease/ReviewPackage-v0.22.md)、[标准0.13](FirstRelease/PracticalAuthoringStandard-v0.13.md)、[组合0.13](FirstRelease/combined-review-index-v0.13.json)**：源117/722/20；原创45家族284响应／十方式，新增初二四题整句翻译及16作者拟评分例。出版社初三样章8题面组38机会无键，单列未配对。十四请求／阅读卡14源12作者／源36＋核心17待裁决保持；第32覆盖旧43/277，本批和32自身下次实质保存，见[交付检查0.13](FirstRelease/DeliveryCheck-v0.13.md)。非作者、学生、商用、模型和长期门槛未通过。
 
 新增来源：[2026丰台七组37参考](Studies/2026-10-14-grade8-2026-argument-scope-and-writing-choice-gap.md)与[北师大实验九组46参考](Studies/2026-10-14-grade8-bnu2026-optional-cap-and-editorial-boundaries.md)已各全页核读，合16/83已并入当前117源总览；[初二草案0.5](FirstRelease/Specifications/grade8-v0.5.md)保留观点/图/整句产出与必做选做分层，8新风险与原28合36源项、核心17另列，43/277作者和十四请求不增。
 
