@@ -75,7 +75,10 @@ def audit(manifest):
             for key, value in count(content).items():
                 totals[key] += value
             totals['components'] += 1
-        if row['shape']['family'] == 'reading_choice':
+        if (row['shape']['family'] == 'reading_choice' and not case.get('components') and
+                case.get('reviewed_material_only_not_component_profile') is not True):
+            raise ValueError('Material-only reading view must explicitly declare its limited scope')
+        if row['shape']['family'] == 'reading_choice' and case.get('components'):
             prompts = [c for c in case['components'] if c['role'] == 'prompt']
             options = [c for c in case['components'] if c['role'] == 'option']
             ids = {c['item_id'] for c in prompts}
@@ -95,6 +98,7 @@ def audit(manifest):
                      'excluded_label_counts': count(' '.join(r['literal'] for r in case['excluded_offsets']
                                                            if r['role'] == 'material_label')),
                      'responses': row['shape']['responses'], 'options_each': row['shape']['options_each'],
+                     'reading_text_component_allocation_present': row['shape']['family'] == 'reading_choice' and bool(case.get('components')),
                      'necessary_student_input_complete': row['necessary_input_complete'],
                      'comparison_scope': case['comparison_scope'], 'source_defects': case['source_defects'],
                      'independent_answer_gold': False, 'student_minutes': None})

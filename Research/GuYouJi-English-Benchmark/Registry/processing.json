@@ -22915,6 +22915,49 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "school-material-families20261015f-v0.1",
+      "source_acquisition_ids": [
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade12-tianjin2025-21cnjy24812550",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-jinan2025-21cnjy24695341",
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-hubei2026-21cnjy26105408",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade9-zhongshan2025-21cnjy22278047"
+      ],
+      "tool": "Tools/audit_school_material_families.py",
+      "tool_version": "0.1",
+      "input_manifest": {
+        "path": "FirstRelease/Sampling/school-material-views-v0.2.json",
+        "sha256": "ecb88d90405bde52c9372a6698f6e924d6a32924346f236255cd41735217f78c"
+      },
+      "parameters": [
+        "All73 new public-text reading choice material spans; total97views/4656pairs; original28replay; 5first-question boundary corrections; no all-library independence claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/school-material-family-audit20261015f-v0.1.json",
+          "bytes": 1402472,
+          "sha256": "7097c905c1aa580bdfdd45573764b4cb3acb355b5e63d014c1ac6247408a2718",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
