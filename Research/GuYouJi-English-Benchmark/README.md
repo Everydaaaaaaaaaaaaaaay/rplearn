@@ -6,15 +6,15 @@
 
 2026-10-14 持续核读入口：
 
-最新产出增量：[高一完整建议邮件与评分边界](Studies/2026-10-14-grade10-advice-email-complete-task-and-policy-boundaries.md)，81词正例/79词流畅任务错位作者反例均未被真人评分；原创整体五档/零分政策与源未知分开。扩展0.8为9材料31响应点，全分层35/246；整篇产出点不当选择字母准确率分母，旧33/240统一入口待两高一模式合并。
+最新产出增量：[高一完整建议邮件与评分边界](Studies/2026-10-14-grade10-advice-email-complete-task-and-policy-boundaries.md)，81词正例/79词流畅任务错位作者反例均未被真人评分；原创整体五档/零分政策与源未知分开。扩展0.8为9材料31响应点，全分层35/246；整篇产出点不当选择字母准确率分母，已纳入统一包0.12/组合0.3及响应分母索引，旧33/240入口保留历史。
 
-最新高中增量：[高一标题空五空七选闭环](Studies/2026-10-14-grade10-complete-heading-insertion-author-loop.md)，完整五空/七项/三已印标题与35作者配对；扩展0.7为8材料30响应，全分层34/245。旧统一包0.11保留此前33/240冻结时点，待高中产出下一批合并。
+最新高中增量：[高一标题空五空七选闭环](Studies/2026-10-14-grade10-complete-heading-insertion-author-loop.md)，完整五空/七项/三已印标题与35作者配对；扩展0.7为8材料30响应，全分层34/245。已纳入统一包0.12，旧0.11保留此前33/240冻结时点。
 
 - [第28当前审阅与裁决队列恢复](Studies/2026-10-14-checkpoint28-current-review-and-source-queue-recovery.md)：6733文件严格COW/全SHA/独立inode恢复，当前33/240、源101/639/18、九请求/151引用、扩展26与核心17、32新PDF原生记录及初二原比例图恢复；异机/完整环境和教育许可门槛保留。
 
 最新增量：[初二完整多选调查与四空五选](Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。已纳入统一包0.11及组合索引0.2，旧0.10保留此前31/233冻结时点。
 
-- **当前统一入口：[审阅包0.11](FirstRelease/ReviewPackage-v0.11.md)、[可执行标准0.3](FirstRelease/PracticalAuthoringStandard-v0.3.md)、[组合索引0.2](FirstRelease/combined-review-index-v0.2.json)**：六年级各三父卷身份，101源组实例/639参考；33现行原创材料家族/240响应分层计量；[交付检查0.3](FirstRelease/DeliveryCheck-v0.3.md)列具体可审阅范围与缺口。
+- **当前统一入口：[审阅包0.12](FirstRelease/ReviewPackage-v0.12.md)、[可执行标准0.4](FirstRelease/PracticalAuthoringStandard-v0.4.md)、[组合索引0.3](FirstRelease/combined-review-index-v0.3.json)**：六年级各三父卷身份，101源组实例/639参考；35现行原创材料家族/246响应点按[响应模式](FirstRelease/ResponseModeCoverage-v0.1.md)分层；[交付检查0.4](FirstRelease/DeliveryCheck-v0.4.md)列具体可审阅范围与缺口。
 
 - [初二第三源与多选百分/评分制度](Studies/2026-10-14-grade8-third-source-multiselect-graph-and-scoring-regimes.md)：12页七组40参考，三选/四空五选/50人多选458%及15分点制/七档未决；[总览0.5](FirstRelease/paired-source-overview-v0.5.json)101实例/639源响应/18父卷身份，六年级各三父身份不等总体标定。
 

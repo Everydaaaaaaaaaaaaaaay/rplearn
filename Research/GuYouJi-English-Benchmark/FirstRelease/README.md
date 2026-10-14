@@ -6,15 +6,15 @@
 
 ## 当前进展：统一审阅入口已形成，扩展与外部验证未完成
 
-最新产出增量：[高一完整建议邮件与评分边界](../Studies/2026-10-14-grade10-advice-email-complete-task-and-policy-boundaries.md)，81词正例/79词流畅任务错位作者反例均未被真人评分；原创整体五档/零分政策与源未知分开。扩展0.8为9材料31响应点，全分层35/246；整篇产出点不当选择字母准确率分母，旧33/240统一入口待两高一模式合并。
+最新产出增量：[高一完整建议邮件与评分边界](../Studies/2026-10-14-grade10-advice-email-complete-task-and-policy-boundaries.md)，81词正例/79词流畅任务错位作者反例均未被真人评分；原创整体五档/零分政策与源未知分开。扩展0.8为9材料31响应点，全分层35/246；整篇产出点不当选择字母准确率分母，已纳入统一包0.12/组合0.3及响应分母索引，旧33/240入口保留历史。
 
-最新高中增量：[高一标题空五空七选闭环](../Studies/2026-10-14-grade10-complete-heading-insertion-author-loop.md)，完整五空/七项/三已印标题与35作者配对；扩展0.7为8材料30响应，全分层34/245。旧统一包0.11保留此前33/240冻结时点，待高中产出下一批合并。
+最新高中增量：[高一标题空五空七选闭环](../Studies/2026-10-14-grade10-complete-heading-insertion-author-loop.md)，完整五空/七项/三已印标题与35作者配对；扩展0.7为8材料30响应，全分层34/245。已纳入统一包0.12，旧0.11保留此前33/240冻结时点。
 
 当前保存边界见[第28恢复](../Studies/2026-10-14-checkpoint28-current-review-and-source-queue-recovery.md)：当前0.11/33材料240响应/九请求/扩展26项队列已纳入6733文件完整COW独立恢复。旧包中第27边界叙述保留当时事实；28自身结果及以后素材仍待下一批，异机与完整环境未通过。
 
 最新增量：[初二完整多选调查与四空五选](../Studies/2026-10-14-grade8-complete-survey-and-four-five-insertion.md)，两完整原创7响应/两请求；[扩展原创0.6](../FirstRelease/Expansions/authored-candidate-index-v0.6.json)为7材料25响应，全分层33/240。已纳入统一包0.11及组合索引0.2，旧0.10保留此前31/233冻结时点。
 
-从[统一审阅包0.11](ReviewPackage-v0.11.md)、[组合索引0.2](combined-review-index-v0.2.json)和[可执行标准0.3](PracticalAuthoringStandard-v0.3.md)开始。当前源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展7/25，合33现行材料家族240响应；九份请求仅有本机文件/声明关系检查。详见[六项交付检查0.3](DeliveryCheck-v0.3.md)。下文旧版进度保留历史口径。
+从[统一审阅包0.12](ReviewPackage-v0.12.md)、[组合索引0.3](combined-review-index-v0.3.json)和[可执行标准0.4](PracticalAuthoringStandard-v0.4.md)开始。当前源101题组实例/639参考响应/18父卷身份；原创分核心25/205、初二补充1/10、扩展9/31，合35现行材料家族246响应点；十一份请求仅有本机文件/声明关系检查。详见[六项交付检查0.4](DeliveryCheck-v0.4.md)及[响应模式分母](ResponseModeCoverage-v0.1.md)。下文旧版进度保留历史口径。
 
 当前[源总览0.5](paired-source-overview-v0.5.json)101题组实例/639参考响应/18父卷身份，核心53＋扩展48，六年级各三父身份；新增[初二C卷七组40](Expansions/Grade8Changjun2024Comparison-v0.1.md)和[草案0.3](Specifications/grade8-v0.3.md)，多选图/三选/四空五选/读答部分分、写作点制与七档缺口保留。原始来源不是独立金标准/全国覆盖，本段第三源时点原创分核心25/205、补充1/10、扩展5/18。
 
