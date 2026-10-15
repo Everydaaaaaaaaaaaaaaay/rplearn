@@ -19,6 +19,19 @@ def extract(page):
 
 def check(page):
     data=extract(page);policy=json.loads(load_ref(data['current_scope_policy']).read_text())
+    holds=json.loads(load_ref(data['concrete_group_holds']).read_text()) if data.get('concrete_group_holds') else {'records':[]}
+    held={r['id']:r for r in holds['records']}
+    def preserved(prior):
+        for key,value in prior['groups'].items():
+            if key in held:
+                assert key not in data['groups']
+                assert value['candidate']==held[key]['candidate'] and value['author_check']==held[key]['author_check']
+                cells=[c for c in data['cells']if c['grade']==value['grade']and c['family']==value['kind']]
+                assert len(cells)==1 and cells[0]['observed'] and cells[0]['groupId'] is None
+                assert cells[0]['state']=='paused_requires_semantic_adjudication' and cells[0]['pauseReason']
+            else:
+                assert data['groups'][key]==value,'Unpaused full input changed: '+key
+        return True
     assert len(data['grades'])==len(set(data['grades']))==16
     assert len(data['cells'])==16*len(set(c['family']for c in data['cells']))
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
@@ -29,21 +42,32 @@ def check(page):
     frozen=next(r for r in old_record['page_records']if r['output'].endswith('.html'))
     prior_page=REPO/frozen['output'];assert hashlib.sha256(prior_page.read_bytes()).hexdigest()==frozen['sha256']
     old=extract(prior_page)
-    assert all(data['groups'][key]==value for key,value in old['groups'].items()),'inherited49 complete payload changed'
+    preserved(old)
     first_run=next((r for r in json.loads((BASE/'Registry/processing.json').read_text())['runs']
                     if r['id']=='all16-first-nonmiddle-objective-batch20261016-v0.1'),None)
     if first_run:
         frozen60=next(r for r in first_run['page_records']if r['output'].endswith('.html'))
         p60=REPO/frozen60['output']
         assert hashlib.sha256(p60.read_bytes()).hexdigest()==frozen60['sha256']
-        assert all(data['groups'][key]==value for key,value in extract(p60)['groups'].items()),'previous60 full inputs changed'
+        preserved(extract(p60))
     second_run=next((r for r in json.loads((BASE/'Registry/processing.json').read_text())['runs']
                      if r['id']=='all16-second-official-advanced-primary12-20261016-v0.1'),None)
     if second_run:
         frozen62=next(r for r in second_run['page_records']if r['output'].endswith('.html'))
         p62=REPO/frozen62['output']
         assert hashlib.sha256(p62.read_bytes()).hexdigest()==frozen62['sha256']
-        assert all(data['groups'][key]==value for key,value in extract(p62)['groups'].items()),'previous62 full inputs changed'
+        preserved(extract(p62))
+    third_run=next((r for r in json.loads((BASE/'Registry/processing.json').read_text())['runs']
+                    if r['id']=='all16-third-primary2-fullpictures-and-matching20261016-v0.1'),None)
+    if third_run:
+        frozen64=next(r for r in third_run['page_records']if r['output'].endswith('.html'))
+        p64=REPO/frozen64['output']
+        assert hashlib.sha256(p64.read_bytes()).hexdigest()==frozen64['sha256']
+        preserved(extract(p64))
+    if held:
+        assert set(held)<=set(old['groups']) and len(held)==data['paused_concrete_groups']==holds['paused_groups']
+        assert sum(r['responses']for r in held.values())==holds['paused_responses']
+        assert all(r['whole_group_paused'] and r['counterexamples']for r in held.values())
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
@@ -51,8 +75,9 @@ def check(page):
         assert not any(q.get('parts')or q.get('referenceAnswers')for q in group['questions'])
         assert all(q.get('answer')in [p[0]for p in q['options']]for q in group['questions']if q['options'])
     additions=json.loads(load_ref(data['extra_authored_index']).read_text())
-    if additions.get('this_batch_source_index'):
-        source_batch=json.loads(load_ref(additions['this_batch_source_index']).read_text())
+    source_batch_ref=data.get('selected_source_batch') or additions.get('this_batch_source_index')
+    if source_batch_ref:
+        source_batch=json.loads(load_ref(source_batch_ref).read_text())
         assert len(source_batch['groups'])==source_batch['new_selected_groups']
         assert sum(g['responses']for g in source_batch['groups'])==source_batch['new_response_positions']
         assert len({g['source_parent_id']for g in source_batch['groups']})==source_batch['new_parent_identities']
@@ -67,6 +92,15 @@ def check(page):
         for image in official['visuals']:
             load_ref(image)
         assert official['source_key_not_independent_gold']
+        for group in source_batch['groups']:
+            if group.get('part')=='5':
+                native=json.loads(load_ref(group['source_native']).read_text())
+                assert [q['number'] for q in native['questions']]==list(range(31,37))
+                assert len(native['questions'])==group['responses']==6
+                assert all([p[0]for p in q['options']]==list('ABCD')for q in native['questions'])
+                assert [q['printed_key']for q in native['questions']]==group['printed_source_vector']
+                for image in group['visuals']:load_ref(image)
+                assert group['source_key_not_independent_gold'] and group['full_input_complete']
     for meta in additions['candidates']:
         group=data['groups'][meta['id']];audit=json.loads(load_ref(meta['author_check']).read_text());text=load_ref(meta['candidate']).read_text()
         assert text.split('<!-- responses:start -->')[1].split('<!-- responses:end -->')[0].strip()==response_markdown(group['questions'])
@@ -120,7 +154,9 @@ def check(page):
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     return {'levels':16,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
-            'old49_payload_unchanged':True,'no_subjective_or_partial_mixed_groups':True,'new_authored_groups':len(additions['candidates']),
+            'unpaused_inherited_payload_unchanged':True,'specific_complete_groups_paused':len(held),
+            'paused_responses':sum(r['responses']for r in held.values()),
+            'no_subjective_or_partial_mixed_groups':True,'new_authored_groups':len(additions['candidates']),
             'middle_source_totals_unchanged':True,'simulated_primary5_source_warning_bound':True,
             'source_unknown_early_levels_not_filled_with_adult_text':True,'independent_student_commercial_production_admission':False}
 

@@ -1,0 +1,172 @@
+{
+  "version": "0.1",
+  "scope": "specific_complete_groups_paused_under_owner_objective_only_rule",
+  "prior_inventory": {
+    "path": "FirstRelease/DeterministicMarking/baseline49-admissibility-inventory-v0.1.json",
+    "sha256": "cf2fcbd3e9f5dc693eea6dd8c9a3918904a75b74bc8555935befb5e672760d8b"
+  },
+  "paused_groups": 5,
+  "paused_responses": 48,
+  "records": [
+    {
+      "id": "grade9-context-word-forms",
+      "grade": 9,
+      "family": "context_word_completion",
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-context-word-forms-v0.1.md",
+        "sha256": "c40fbcb4a9d3ac1b3e3df8699340bdce88a1458300c8dcf7b596591dd98468b5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-context-word-forms-author-check-v0.1.json",
+        "sha256": "86f12ea27a177151edc8c722f75c45e2884223a702f144c636ebda83f433c79e"
+      },
+      "responses": 8,
+      "state": "paused_requires_semantic_adjudication",
+      "reason": "汉语/语境提示允许未封闭的同义词，当前参考集合不足以可靠确定性判分。",
+      "counterexamples": [
+        {
+          "number": 1,
+          "unlisted_response": "rehearsing",
+          "full_substitution": "Keep rehearsing, and the steps will become easier.",
+          "reason": "与练习及熟悉步骤相容；不在practising/practicing参考集合内，题面未限定给定词或词库。"
+        }
+      ],
+      "whole_group_paused": true,
+      "source_observation_preserved": true,
+      "history_immutable": true,
+      "independent_review": false
+    },
+    {
+      "id": "grade11-context-spelling",
+      "grade": 11,
+      "family": "context_word_completion",
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade11-context-spelling-v0.1.md",
+        "sha256": "06f25128e8bc008e42fcbec7ff9b41ae684f5728494dd97f1f53763205204344"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade11-context-spelling-author-check-v0.1.json",
+        "sha256": "0abf71c0357e507f25b8c69057bb362e79f0aa73214dfb82a293babd45550fe2"
+      },
+      "responses": 10,
+      "state": "paused_requires_semantic_adjudication",
+      "reason": "作者原说明保留合法近义词的人工语义复核，暂不提供这一完整组。",
+      "counterexamples": [
+        {
+          "number": 9,
+          "unlisted_response": "means",
+          "full_substitution": "The teacher demonstrated a new means for organising the interview notes.",
+          "reason": "means可作单数方法，符合a new、m首字母及方法提示；原稿明确要求对means/manner人工结合语境复核。"
+        }
+      ],
+      "whole_group_paused": true,
+      "source_observation_preserved": true,
+      "history_immutable": true,
+      "independent_review": false
+    },
+    {
+      "id": "grade8-village-trip-Chinese-cues",
+      "grade": 8,
+      "family": "passage_chinese_completion",
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade8-village-trip-Chinese-cues-v0.1.md",
+        "sha256": "4e2268660529ab0a56bc0b129c3df2131033f827f23bba1d7ba466a8137fadb5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade8-village-trip-Chinese-cues-author-check-v0.1.json",
+        "sha256": "9fc58579879ad328c31444fc270ba2ed795a47ce3f6550c6d1caac078cb96fa1"
+      },
+      "responses": 10,
+      "state": "paused_requires_semantic_adjudication",
+      "reason": "中文提示补全包含自由词义选择，不能用少量同义参考作为全部答案。",
+      "counterexamples": [
+        {
+          "number": 1,
+          "unlisted_response": "excursion",
+          "full_substitution": "Last summer, our class went on a short excursion to a village near the city.",
+          "reason": "short excursion表达短途旅行，符合汉语提示；参考只有trip/journey，题面无封闭词库。"
+        },
+        {
+          "number": 5,
+          "unlisted_response": "tranquil",
+          "full_substitution": "It was a tranquil place, with only a few birds in the trees.",
+          "reason": "tranquil与安静及少有鸟声的场景相容；参考仅quiet/peaceful。"
+        }
+      ],
+      "whole_group_paused": true,
+      "source_observation_preserved": true,
+      "history_immutable": true,
+      "independent_review": false
+    },
+    {
+      "id": "grade7-paper-cards-passage-form",
+      "grade": 7,
+      "family": "passage_form",
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-paper-cards-passage-form-v0.1.md",
+        "sha256": "2b46ea3b08b061804435a7e4d2e53a454a30e97ced055672f0e44aba1ebef62b"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-paper-cards-passage-form-author-check-v0.1.json",
+        "sha256": "77921b2d1f41351f2c7cd19cdef99e198496eb56887d364b123f3bb79a5763d8"
+      },
+      "responses": 10,
+      "state": "paused_requires_semantic_adjudication",
+      "reason": "无给词空仍可作多种语义上成立的补全；整组暂停，不能只截去这些空。",
+      "counterexamples": [
+        {
+          "number": 6,
+          "unlisted_response": "On",
+          "full_substitution": "On finishing her first good card, Eva put it beside a family photo.",
+          "reason": "On+动名词可表示完成后紧接的事件，满足一词限制，参考只有After。"
+        },
+        {
+          "number": 10,
+          "unlisted_response": "some",
+          "full_substitution": "One of her friends has taken some interest in paper art too.",
+          "reason": "take some interest为自然合法表达，句意与原情境相容；无法只因预期an就拒绝。"
+        }
+      ],
+      "whole_group_paused": true,
+      "source_observation_preserved": true,
+      "history_immutable": true,
+      "independent_review": false
+    },
+    {
+      "id": "grade8-town-model-passage-form",
+      "grade": 8,
+      "family": "passage_form",
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade8-town-model-passage-form-v0.1.md",
+        "sha256": "22750f5ddbfd5eb3e3e7b1018e9ea8d8e83b8a055384ebce9b6cfb38ce63996d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade8-town-model-passage-form-author-check-v0.1.json",
+        "sha256": "ae48fce25f71add882999914b47e8cd92a3edf0e01cc36ac932dfb00b0e54e8a"
+      },
+      "responses": 10,
+      "state": "paused_requires_semantic_adjudication",
+      "reason": "冠词/衔接允许参考外合理表达，尚无可靠封闭判分协议。",
+      "counterexamples": [
+        {
+          "number": 7,
+          "unlisted_response": "a",
+          "full_substitution": "Amy checked his drawing against a photograph, and then she built a station from a food box.",
+          "reason": "a station可引入模型中的车站复制品，与先前旧站的指称不冲突；不是the的拼写变体，需指称语义判断。"
+        }
+      ],
+      "whole_group_paused": true,
+      "source_observation_preserved": true,
+      "history_immutable": true,
+      "independent_review": false
+    }
+  ],
+  "other_current_groups_are_not_automatically_production_admitted": true,
+  "no_ai_semantic_marking_or_production_eval_run": true,
+  "remaining_middle_constrained_positions_unverified": 89,
+  "limitations": [
+    "Counterexamples are author linguistic re-review,not independent experts or student evidence",
+    "Do not add a new word-bank/one-word/source restriction merely to exclude otherwise legal answers",
+    "History and source-positive grade/type evidence remain intact;only current preview eligibility changes"
+  ]
+}

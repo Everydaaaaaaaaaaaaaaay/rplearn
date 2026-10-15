@@ -92,9 +92,20 @@ def main(output):
                       'dialogue_matching' if kind in ['five_shared_response_matching', 'five_gaps_five_sentences_or_clause'] else 'shared_bank')
             group = inherited(meta, acquisitions, family); added.append((group, family)); inherited_count += 1
     plan = json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
+    holds = json.loads(load_ref(plan['current_concrete_group_holds']).read_text()) if plan.get('current_concrete_group_holds') else {'records': []}
+    for hold in holds['records']:
+        group = data['groups'].pop(hold['id'])
+        if group['candidate'] != hold['candidate'] or group['author_check'] != hold['author_check']:
+            raise ValueError('Concrete hold must be reviewed again for a changed author version')
+        cell = next(c for c in data['cells'] if c['groupId'] == hold['id'])
+        cell.update(groupId=None, state=hold['state'], pauseReason=hold['reason'])
+    data['concrete_group_holds'] = plan.get('current_concrete_group_holds')
+    data['paused_concrete_groups'] = len(holds['records'])
     additions_path = load_ref(plan['current_authored_additions'])
     additions = json.loads(additions_path.read_text())
-    source_batch = json.loads(load_ref(additions['this_batch_source_index']).read_text()) if additions.get('this_batch_source_index') else {}
+    source_batch_ref = plan.get('latest_selected_source_batch') or additions.get('this_batch_source_index')
+    source_batch = json.loads(load_ref(source_batch_ref).read_text()) if source_batch_ref else {}
+    data['selected_source_batch'] = source_batch_ref
     for meta in additions['candidates']:
         group = full_markdown_candidate(meta)
         group['instruction'] = {'letter_completion':'选择正确的字母组合。', 'shared_bank':'从共享词或短语中选择合适的一项。',
@@ -139,6 +150,7 @@ def main(output):
               'latest_selected_source_groups': source_batch.get('new_selected_groups', 0),
               'latest_selected_source_parent_identities': source_batch.get('new_parent_identities', 0),
               'middle_source_totals_unchanged': True,
+              'paused_complete_groups_with_open_legal_sets': len(holds['records']),
               'source_mode_and_age_calibration_not_established_for_unobserved_cells': True,
               'independent_student_commercial_production_admission': False, 'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
     (output/'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')

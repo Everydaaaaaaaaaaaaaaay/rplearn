@@ -3,7 +3,7 @@ const labels={7:'初一',8:'初二',9:'初三',10:'高一',11:'高二',12:'高�
 Object.assign(labels,reviewData.levelLabels||{});
 const el=id=>document.getElementById(id),escapeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let activeGrade=7,activeFamily='reading_choice';const drafts={};
-const titleState=cell=>cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?'可预览':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
+const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'暂停·需语义判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?'可预览':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
 function select(grade,family){activeGrade=grade;activeFamily=family;if(!reviewData.cells.find(c=>c.grade===grade&&c.family===family).observed)el('show-unknown').checked=true;render();}
 function makeButton(label,pressed,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(pressed));b.onclick=fn;return b;}
 function inputFor(g,q){
@@ -22,7 +22,7 @@ function render(){
  const instruction=g?.instruction||(g&&['reading','cloze'].includes(g.kind)?'阅读短文，从'+(g.kind==='cloze'?'每空':'每题')+'所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。':'');
  el('task-instruction').textContent=instruction;el('task-instruction').hidden=!instruction;
  el('answer-toggle').hidden=!g;el('reset').hidden=!g;el('answer-toggle').textContent='查看参考与解析';
- if(!g){el('student').innerHTML='<p class="empty">'+(!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
+ if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本完整题组已暂停：'+escapeText(cell.pauseReason)+' 不截去部分空格后冒充完整组；来源观察仍保留。':!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
  const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
@@ -32,7 +32,7 @@ function render(){
   el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
-el('coverage').textContent=reviewData.current_scope_policy?'当前范围展示 '+reviewData.preview_cells+' 道完整大题；需AI判断的主观题已暂停，不计当前覆盖缺口。':'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
+el('coverage').textContent=reviewData.current_scope_policy?'当前范围展示 '+reviewData.preview_cells+' 道完整大题；需AI判断的主观题已暂停，不计当前覆盖缺口。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 组填空因合法表达未封闭而暂停，具体原因见矩阵。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
 const families=[...new Set(reviewData.cells.map(c=>c.family))];
 el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(reviewData.cells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=reviewData.cells.find(c=>c.grade===grade&&c.family===f);return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
 el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(reviewData.grades.find(g=>String(g)===b.dataset.grade),b.dataset.family);};

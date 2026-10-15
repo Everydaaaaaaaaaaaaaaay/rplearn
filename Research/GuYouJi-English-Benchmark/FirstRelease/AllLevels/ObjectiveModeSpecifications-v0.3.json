@@ -1,0 +1,154 @@
+{
+  "version": "0.3",
+  "scope": "selected_complete_concrete_modes_only_not_national_level_ranges",
+  "source_batch": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.2.json",
+    "sha256": "ca78bbe8986d1212afe792c22da40c17d685072c5949bc11d200b57e8cde7442"
+  },
+  "author_index": {
+    "path": "FirstRelease/AllLevels/authored-additions-v0.3.json",
+    "sha256": "fccbb6b8f04449db054c9354e24b9f32bf091d83913110b89ec3d7c3c451784f"
+  },
+  "mode_bindings": [
+    {
+      "level": "primary1",
+      "family": "number_word_completion",
+      "source_group_id": "primary1.xuehai.upper.numberwords",
+      "student_inputs": {
+        "number_words": 8,
+        "necessary_media": false
+      },
+      "responses": 8,
+      "source_key": "not_obtained;do not claimsourcegold",
+      "author_response_protocol": "digits only;NFKC/trim/decimal digits/int;leadingzeros allowed;whole number value compared",
+      "parser_for_research": {
+        "path": "Tools/research_number_marking.py",
+        "sha256": "d9deb3e1cf09cb55cde77ea0a6a98b8bea711e46c27ba417327d6db53b6276df"
+      },
+      "national_grade_or_current_cohort_adapted": false,
+      "author_extra_instruction_example": "one → 1;instruction example only,not a scored response"
+    },
+    {
+      "level": "primary2",
+      "family": "word_picture_choice",
+      "source_group_id": "primary2.bzxz.upper.wordpictures",
+      "student_inputs": {
+        "printed_words": 6,
+        "necessary_picture_candidates": 18,
+        "source_physical_pages": [
+          1,
+          2
+        ]
+      },
+      "responses": 6,
+      "options_each": 3,
+      "source_key_hold_numbers": [
+        1,
+        4
+      ],
+      "design_guard": "Use objectively identifiable objects;do not infer family roles from appearance or impose unspecified holiday convention",
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/primary2-six-word-pictures-v0.1.md",
+        "sha256": "36830bed623216791b07dc00a3ef9b3edabc1881a053e68bb37af604cb019ff9"
+      },
+      "author_response_protocol": "chooseoneoftheprintedlabelsonly;noAIsemanticjudgment"
+    },
+    {
+      "level": "primary2",
+      "family": "dialogue_matching",
+      "source_group_id": "primary2.bzxz.upper.questionmatching",
+      "student_inputs": {
+        "questions": 5,
+        "unique_shared_answers": 5,
+        "media": 0
+      },
+      "responses": 5,
+      "source_reuse_rule": "unknown_not_inferred_from_distinct_key",
+      "new_author_guard": "Do not rely on an unstated once rule to disambiguate responses",
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/primary2-five-question-matching-v0.1.md",
+        "sha256": "79fdde8034aa75e559dfbc4d4f90891dcbb60d5da73e455f9566e41c12259718"
+      },
+      "author_response_protocol": "chooseoneoftheprintedlabelsonly;noAIsemanticjudgment"
+    },
+    {
+      "level": "advanced",
+      "family": "choice_cloze",
+      "source_group_id": "advanced.cambridge.c1.paper1.2022.part1",
+      "student_inputs": {
+        "passages": 1,
+        "solved_examples": 1,
+        "example_choices": 4,
+        "source_pages": [
+          2,
+          3
+        ]
+      },
+      "responses": 8,
+      "options_each": 4,
+      "example_is_response": false,
+      "source_body_word_observation": 154,
+      "authored_body_words_first": 210,
+      "authored_body_words_current": 152,
+      "word_metric": "English alphabetic words with apostrophe;gap labels excluded;source example0 bodyblank vs author givenword separately noted",
+      "source_word_observation_is_universal_limit": false,
+      "product_advanced_equals_C1": false,
+      "source_question6_semantic_adjudication": "pending_independent;not reused asnewgold"
+    },
+    {
+      "level": "advanced",
+      "family": "reading_choice",
+      "source_group_id": "advanced.cambridge.c1.paper1.2022.part5",
+      "student_inputs": {
+        "passages": 1,
+        "paragraphs": 5,
+        "source_physical_pages": [
+          8,
+          9
+        ],
+        "necessary_illustrations": false,
+        "audio": false
+      },
+      "responses": 6,
+      "options_each": 4,
+      "load_measure": {
+        "body_English_words_native_raw": 763,
+        "stem_English_words": 90,
+        "option_English_words": 212,
+        "metric": "alphabeticEnglishwordswithapostrophe;rawPDFsplittokensnotnormalized;instructionsandtitleexcluded;notagraphiclayoutmeasure"
+      },
+      "response_operations": [
+        "paragraph-problem paraphrase",
+        "source-reliability explanation",
+        "methodological priority inference",
+        "concept/term anachronism caution",
+        "explicit research-gap scope",
+        "recurring stance synthesis"
+      ],
+      "current_author_representative": "not_yet_written",
+      "body_word_observation_not_universal_limit": true,
+      "product_advanced_equals_C1": false
+    }
+  ],
+  "cross_mode_rules": [
+    "Keep complete groups/examples/options/media;no fixed six-response cut",
+    "Discrete labels or a formally specified closed parser;knownForms alone is not exhaustive legal-set proof",
+    "Separate source answer claims from author reasoned key and independent review",
+    "Source original/archive/body/metadata dates stay separate",
+    "Keep unique shared options and repeated UI controls distinct in load metrics",
+    "No pupil timing/difficulty/CEFR/commercial or production claims from small-source preparation"
+  ],
+  "independent_teacher_student_commercial_production_validated": false,
+  "previous_version": {
+    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.2.json",
+    "sha256": "37a40665f05c953d25706caac1fe6c1ca98ca6cc01c476205ee84886a3436a00"
+  },
+  "kindergarten_candidate_not_admitted": {
+    "path": "FirstRelease/AllLevels/kindergarten-greenman-pointing-candidate-v0.1.json",
+    "sha256": "72fee6eaf4ca5bef972dc0c9aca5c81860ab67a1db1ea6a3e7195c57b17d62d6"
+  },
+  "concrete_group_hold_policy": {
+    "path": "FirstRelease/DeterministicMarking/concrete-group-holds-v0.1.json",
+    "sha256": "681d83593f00c8c619a3d42a36011ebc4583b67fecc962e257fe9500da98adc6"
+  }
+}
