@@ -25924,6 +25924,72 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "chengdu-writing-chart-review20261015ac-v0.1",
+      "source_acquisition_ids": [
+        "grade9-chengdu2025-21cnjy23208601",
+        "chengdu2025-writing-chart-mirror20261015ac",
+        "chengdu2025-writing-chart-image20261015ac"
+      ],
+      "tool": "author actual visual review and HTML prompt/image-link inspection",
+      "tool_version": "0.2",
+      "parameters": [
+        "one selected chart supplement;four category/percentage pairs;given greeting/vocabulary separate;frozen text false preserved;no new parent/structure/author;not independent rubric,rights or production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/chengdu-writing-chart-review20261015ac-v0.1.json",
+          "bytes": 2880,
+          "sha256": "1bf4ef1cb6c57e278db9c6f657a79028b14be9f8cd994e8cb72e8b43fdb33acb",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "chengdu-writing-chart-checks20261015ac-v0.1",
+      "source_acquisition_ids": [
+        "grade9-chengdu2025-21cnjy23208601",
+        "chengdu2025-writing-chart-mirror20261015ac",
+        "chengdu2025-writing-chart-image20261015ac"
+      ],
+      "tool": "Tools/check_writing_layout.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "one selected chart supplement;four category/percentage pairs;given greeting/vocabulary separate;frozen text false preserved;no new parent/structure/author;not independent rubric,rights or production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/chengdu-writing-chart-checks20261015ac-v0.1.json",
+          "bytes": 6241,
+          "sha256": "235b14462c490cffa2967911378130c296d4f6a468c6ad8fd685702cc022d468",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "chengdu-writing-chart-request20261015ac-v0.1",
+      "source_acquisition_ids": [
+        "grade9-chengdu2025-21cnjy23208601",
+        "chengdu2025-writing-chart-mirror20261015ac",
+        "chengdu2025-writing-chart-image20261015ac"
+      ],
+      "tool": "Tools/check_writing_layout.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "one selected chart supplement;four category/percentage pairs;given greeting/vocabulary separate;frozen text false preserved;no new parent/structure/author;not independent rubric,rights or production"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/chengdu-writing-chart-request20261015ac-v0.1.json",
+          "bytes": 3127,
+          "sha256": "63b4179c22d7e96b7e099765615c264bf39bf760971e4f622aa678f86beb58ca",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

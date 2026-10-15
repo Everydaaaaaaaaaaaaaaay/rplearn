@@ -1,0 +1,71 @@
+{
+  "version": "0.1",
+  "scope": "selected linked public visual supplement;no source count or frozen input state upgrade",
+  "bundles": [
+    {
+      "id": "chengdu2025-survey-speech-chart-supplement-v0.1",
+      "evidence_group_id": "grade9-chengdu2025-21cnjy23208601.speech",
+      "source_text": {
+        "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+        "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+      },
+      "writing_view_manifest": {
+        "path": "FirstRelease/Sampling/writing-material-views-v0.2.json",
+        "sha256": "39a16c286725b170a89e08f16ebef202b046ff867a8b913479aa3af0bde31409"
+      },
+      "visual_review": {
+        "path": "build/english-benchmark-research-20261012/chengdu-writing-chart-review20261015ac-v0.1.json",
+        "sha256": "1bf4ef1cb6c57e278db9c6f657a79028b14be9f8cd994e8cb72e8b43fdb33acb"
+      },
+      "mirror_html": {
+        "path": "build/english-benchmark-research-20261012/raw/chengdu2025-writing-chart-mirror20261015ac.html",
+        "sha256": "0273280f7d67f7eace979b044bca4cf2dc64c1742f6e094affa82a8a149e8cf5"
+      },
+      "required_student_assets": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/chengdu2025-writing-chart-mirror20261015ac.webp",
+          "sha256": "cac3230ca4e4e17354cf843ccffe8c1f5ef2a21f38bd842db497bbc0e8fb254a"
+        }
+      ],
+      "resolved_required_inputs": [
+        "survey_chart"
+      ],
+      "graph": {
+        "kind": "bar_chart",
+        "category_value_pairs": [
+          {
+            "category": "在本校",
+            "value": 62
+          },
+          {
+            "category": "在家",
+            "value": 6
+          },
+          {
+            "category": "在大学",
+            "value": 18
+          },
+          {
+            "category": "其它",
+            "value": 14
+          }
+        ],
+        "printed_values_unit": "percent",
+        "printed_numeric_y_axis_ticks": null,
+        "survey_population_from_prompt": "本校八年级学生",
+        "sample_size": null,
+        "survey_date": null,
+        "exclusive_choice_rule_explicit": null,
+        "derived_sum_percent": 100,
+        "sum_not_survey_method_proof": true
+      },
+      "source_text_alone_complete": false,
+      "author_prepared_student_bundle_complete": true,
+      "frozen_source_input_complete_preserved": false,
+      "original_edition_authenticated": false,
+      "source_key_gold": false,
+      "independent_rubric_complete": false,
+      "commercial_admission": false
+    }
+  ]
+}
