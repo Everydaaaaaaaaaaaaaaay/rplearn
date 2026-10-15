@@ -29,7 +29,11 @@ def transcribed_views(manifest):
         load_ref(case['parent_document'])
         catalogue = json.loads(load_ref(case['source_catalogue']).read_text())
         obs = next(r for r in catalogue['groups'] if r['id'] == case['group_id'])
-        if obs.get('acquisition_id', obs.get('source_paper_acquisition_id')) != case['source_parent_id'] or obs['material_and_question_PDF_pages'] != case['PDF_pages']:
+        logical_image = case.get('source_page_kind', 'PDF') == 'logical_paper_image'
+        page_key = 'logical_paper_page' if logical_image else 'PDF_page'
+        source_pages = case['logical_paper_pages'] if logical_image else case['PDF_pages']
+        observed_pages = obs['logical_paper_pages'] if logical_image else obs['material_and_question_PDF_pages']
+        if obs.get('acquisition_id', obs.get('source_paper_acquisition_id')) != case['source_parent_id'] or observed_pages != source_pages:
             raise ValueError('Original page scope differs')
         data = json.loads(load_ref(case['transcription']).read_text())
         record = data['records'][case['record_index']]
@@ -41,17 +45,17 @@ def transcribed_views(manifest):
             raise ValueError('Reviewed image binding missing')
         if case['student_text_reviewed_complete'] is not True or case['independent_transcription'] is not False or record['independent_gold']:
             raise ValueError('Review scope or gold status differs')
-        if len(case['source_images']) != len(case['PDF_pages']):
+        if len(case['source_images']) != len(source_pages):
             raise ValueError('Original page/image allocation incomplete')
         shared = case.get('shared_context_images', [])
         shared_pages = case.get('shared_context_pages', [])
-        if len(shared) != len(shared_pages) or set(shared_pages) & set(case['PDF_pages']):
+        if len(shared) != len(shared_pages) or set(shared_pages) & set(source_pages):
             raise ValueError('Shared instruction page allocation differs')
         all_images = case['source_images'] + shared
-        all_pages = case['PDF_pages'] + shared_pages
+        all_pages = source_pages + shared_pages
         author_bindings = case.get('author_page_bindings')
         if author_bindings is not None:
-            expected_bindings = [{'parent_id': case['source_parent_id'], 'PDF_page': page, 'image': image}
+            expected_bindings = [{'parent_id': case['source_parent_id'], page_key: page, 'image': image}
                                  for page, image in zip(all_pages, all_images)]
             if author_bindings != expected_bindings or record.get('author_page_bindings') != author_bindings:
                 raise ValueError('Explicit author-reviewed parent/page binding differs')
@@ -60,21 +64,39 @@ def transcribed_views(manifest):
             if len(matches) != 1:
                 raise ValueError('Unregistered source image')
             provenance = matches[0].get('derivation', {})
-            page_provenance = 'acquisition_id' in provenance or 'PDF_page' in provenance
-            if page_provenance and (provenance.get('acquisition_id') != case['source_parent_id'] or provenance.get('PDF_page') != page):
+            page_provenance = 'acquisition_id' in provenance or 'PDF_page' in provenance or 'pdf_page' in provenance
+            declared_page = provenance.get('PDF_page', provenance.get('pdf_page'))
+            if 'PDF_page' in provenance and 'pdf_page' in provenance and provenance['PDF_page'] != provenance['pdf_page']:
+                raise ValueError('Conflicting registered physical PDF page fields')
+            if page_provenance and (provenance.get('acquisition_id') != case['source_parent_id'] or declared_page != page):
                 raise ValueError('Image belongs to another original source/page')
             if provenance.get('related_acquisition_ids') and case['source_parent_id'] not in provenance['related_acquisition_ids']:
                 raise ValueError('Image origin names a different source parent')
             if not page_provenance and author_bindings is None:
                 raise ValueError('Missing render provenance or explicit author page binding')
             load_ref(image)
+        if logical_image:
+            from PIL import Image
+            pixels = case['source_image_pixel_bindings']
+            if pixels != record.get('source_image_pixel_bindings') or len(pixels) != len(all_images):
+                raise ValueError('Original image crop bindings omitted or changed')
+            with Image.open(load_ref(case['parent_document'])) as original:
+                original_rgb = original.convert('RGB')
+                for image, binding in zip(all_images, pixels):
+                    acquired = next(a for a in acquisitions.values() if a.get('path') == image['path'])
+                    box = acquired.get('source_pixel_box')
+                    if binding != {'image': image, 'parent_id': case['source_parent_id'], 'pixel_box': box} or acquired.get('source_parent_acquisition_id') != case['source_parent_id'] or not box or not (0 <= box[0] < box[2] <= original_rgb.width and 0 <= box[1] < box[3] <= original_rgb.height):
+                        raise ValueError('Crop rectangle differs from registered original image')
+                    with Image.open(load_ref(image)) as tile:
+                        if tile.size != (box[2] - box[0], box[3] - box[1]) or tile.convert('RGB').tobytes() != original_rgb.crop(tuple(box)).tobytes():
+                            raise ValueError('Existing tile pixels differ from original image crop')
         if [c['pointer'] for c in case['components']] != [['records', case['record_index'], 'components', i, 'text'] for i in range(len(record['components']))]:
             raise ValueError('Student components missing/reordered/foreign')
         totals = {};parts = []
         for binding, c in zip(case['components'], record['components']):
             if any(binding.get(k) != c.get(k) for k in ['id', 'role', 'item_id']) or digest(c['text']) != binding['sha256']:
                 raise ValueError('Source component binding differs')
-            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
+            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
                 raise ValueError('Private key/author reason is not student input')
             text = c['text']
             if c['role'] == 'passage':
@@ -92,7 +114,25 @@ def transcribed_views(manifest):
             raise ValueError('Cloze blank sequence incomplete')
         if row['shape']['family'] == 'reading_choice' and totals.get('prompt', {}).get('components') != row['shape']['responses']:
             raise ValueError('Reading prompts incomplete')
-        if row['shape']['family'] == 'passage_form':
+        if row['shape']['family'] == 'shared_insertion':
+            candidates = [c for c in record['components'] if c['role'] == 'shared_option']
+            slots = record['slots'];policy = case['source_policy']
+            if blanks != record['item_ids'] or [s['printed_number'] for s in slots] != blanks or len(parts) != 1 or any(totals.get(k) for k in ['option', 'prompt', 'given_hint']):
+                raise ValueError('Shared insertion is one complete material with shared candidates')
+            expected_count = row['shape']['details']['shared_options']
+            if len(candidates) != expected_count or [c['option_label'] for c in candidates] != list('ABCDEFG'[:expected_count]) or any(not c['text'] for c in candidates):
+                raise ValueError('Whole shared sentence candidate set differs')
+            headings = policy['heading_slot_numbers']
+            if [s['printed_number'] for s in slots if s['role'] == 'section_heading'] != headings or record['response_policy'] != 'letter_from_shared_options' or policy['reuse_rule_explicit'] is not None or record['reuse_rule_explicit'] is not None:
+                raise ValueError('Heading/sentence roles or unsupported once-only policy differ')
+            for slot in slots:
+                if slot['role'] not in ['section_heading', 'sentence_gap'] or slot['response_fields'] != 1:
+                    raise ValueError('Insertion gap role/response allocation differs')
+                n = slot['printed_number']
+                isolated = bool(re.search(r'(?m)^\s*(?:[•●]\s*)?_+' + str(n) + r'_+\s*$', body))
+                if n in headings and not isolated:
+                    raise ValueError('Declared heading slot differs from source layout')
+        elif row['shape']['family'] == 'passage_form':
             hints = [c for c in record['components'] if c['role'] == 'given_hint']
             slots = record['slots']
             if blanks != record['item_ids'] or [s['printed_number'] for s in slots] != blanks or totals.get('option') or totals.get('prompt'):
@@ -142,8 +182,12 @@ def transcribed_views(manifest):
                 raise ValueError('Source score/media/gloss scope omitted or changed')
             layouts[gid].update(source_images=all_images, author_page_bindings=author_bindings, source_policy=policy)
             records[-1].update(source_policy=policy, image_parent_page_binding='author_visual_binding_not_registered_derivation')
-        if row['shape']['family'] == 'passage_form':
+        if row['shape']['family'] in ['passage_form', 'shared_insertion']:
             layouts[gid]['slots'] = slots
+        if logical_image:
+            layouts[gid].update(source_page_kind='logical_paper_image', logical_paper_pages=source_pages,
+                                source_image_pixel_bindings=pixels)
+            records[-1]['existing_crop_pixels_verified_against_original'] = True
     return records, bodies, layouts
 
 

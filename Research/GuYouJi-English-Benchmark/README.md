@@ -2,7 +2,7 @@
 
 2026-10-15用户要求避免研究文件膨胀：[存储策略](Storage/README.md)已改为两份近期完整恢复点+去重历史归档，旧33份清单/独有内容保留。目录计量59G→7.7G不等APFS实际释放51G；例行整库快照被工具拒绝，增量重放新增0对象。初高中研究自动任务继续，空间控制不能替代内容验收。
 
-2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.42](FirstRelease/PracticalAuthoringStandard-v0.42.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷/70年级家族单元；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一含小标题空/全句空不拼模式。[配套、模式、材料家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.21.json)仍缺。262受限文字视图/40父卷/34,191组对＝189新结构+73基线；本批十高中完形/语法125回应、300选项、34给词提示，十一原页复用，新增2,565组对，33本机控制通过。15空四选、单篇10空及各卷7/3或6/4给词分配整组绑定，无给词限1词不套给词形式；共享评分页、教材曝光及源键风险保留。0.2仅更正三处下面/下列指令异文，前稿保留。冻结输入/原生空历史和源作者总量不变，剩44基线见[队列0.16](FirstRelease/Sampling/material-screen-queue-v0.16.json)，不扩其他阶段或宣称效度/生产适配。
+2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.43](FirstRelease/PracticalAuthoringStandard-v0.43.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷/70年级家族单元；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一小标题/句空具体模式仍缺第二地区。[配套、模式、家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.22.json)仍缺。268受限文字视图/41父卷/35,778组对＝189新结构+79基线；本批六插入29回应/38共享候选、七必要图，新增1,587组对，29本机控制通过。4空5候选、5空5候选及5空7候选整组绑定，初三已有标题空，段首句不一概算标题，未明示的复用规则不猜。苏州逻辑长图两裁片实测像素一致，重叠只计一次；新云南初一候选目标版式未得，不纳结构/第二地区。冻结输入、源作者总量不变，剩38基线见[队列0.17](FirstRelease/Sampling/material-screen-queue-v0.17.json)，不扩其他阶段或宣称效度/生产适配。
 
 2026-10-15补齐萧山初二[四阅读图文输入包](FirstRelease/Sampling/public-preview-bundles-v0.1.json)：五张网页公开原版预览实际核读，共15个已有响应，不增加结构/父卷/作者计数。三海报、下划线和跨页题面必须随包绑定，14个本机准备控制通过；原文字缺图/未知状态保留，未当全卷、答案金标或生产适配。重庆“小标题”候选说明与实际七句/段内空冲突，不计具体模式第二来源；图内文本去重及其他配套仍缺。见[本批记录](Studies/2026-10-15-public-preview-reading-bundles-and-heading-label-counterexample.md)。
 
@@ -33,6 +33,8 @@
 2026-10-15新增[五初中完形的跨页与图片提示](Studies/2026-10-15-junior-cloze-page-endings-three-four-options-and-glosses.md)：完整42回应、152选项，三/四选、6/8/10空与1/1.5分按组保留；丰台2025缺been继续评分暂缓。仅复用十原页，零新下载/渲染/全库快照。
 
 2026-10-15新增[十高中完整形式与递归证据](Studies/2026-10-15-senior-fifteen-choice-ten-grammar-and-recursive-evidence.md)：五完形75回应、五语法50回应，所有候选/给词/跨页说明绑定；旧31,626对复用，六个重算摘要的错误输入实测拒绝。Han Jing/Peru曝光及解析错标/多解继续待核，无新下载/渲染/整库快照。
+
+2026-10-15新增[六插入与官方长图裁片](Studies/2026-10-15-shared-insertion-heading-gaps-and-official-image-crops.md)：5/5仍不补一次规则，初三/高中标题空有逐槽位证据；苏州实际WebP长图及逻辑页、福建物理/印刷页分开。只取得一个小体量云南候选页面/公开预览，目标E版式仍未得，不升级覆盖；零新渲染/整库快照。
 
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。
 

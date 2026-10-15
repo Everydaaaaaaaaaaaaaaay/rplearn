@@ -1,0 +1,1192 @@
+{
+  "version": "0.1",
+  "scope": "six existing shared insertion groups29positions38sharedcandidates;not newsource/authors",
+  "prior_view_kind": "image_transcription",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-senior-form-image-views-v0.2.json",
+    "sha256": "6fcba1e3493b2be03538c1208a058b4b22db05c2ca369cf6e783ef58b6485d7e"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-senior-form-image-audit20261015v-v0.2.json",
+    "sha256": "9ded8edd8a7c7644bc6c3eb6349f20dc145b3ebe5b999851b6ab304996c1edbe"
+  },
+  "audit_records_scope": "six existing shared insertion profiles; previous262 via frozen references",
+  "views": [
+    {
+      "group_id": "g8.changjun2024.insertion",
+      "source_parent_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-changjun2024-midterm-paper-key20261014.pdf",
+        "sha256": "50fcae7cf123843ce34b2fe9b66134e765fc281537e28d746c79e5b3c7cadec2"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+        "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+      },
+      "record_index": 0,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-changjun2024-midterm-inspection-06.png",
+          "sha256": "f88faa4621d108e250cbe66f252e7985e97612e506363559d6578cab9a5381a2"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade8-changjun2024-midterm-paper-key20261014",
+          "PDF_page": 6,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-changjun2024-midterm-inspection-06.png",
+            "sha256": "f88faa4621d108e250cbe66f252e7985e97612e506363559d6578cab9a5381a2"
+          }
+        }
+      ],
+      "source_policy": {
+        "materials": 1,
+        "source_points_each": 2,
+        "source_total": 8,
+        "shared_candidates": 5,
+        "explicit_spare": 1,
+        "reuse_rule_explicit": null,
+        "heading_slot_numbers": [],
+        "title": null,
+        "other_label": "July 16th",
+        "whole_source_score_not_analytic_rubric": true,
+        "original_source_defects_or_limits": [
+          "diary month/day without year;do not fill year from exam year",
+          "historical/hiking claims not factual or safety gold"
+        ],
+        "source_facts_keys_and_student_calibration_not_established": true
+      },
+      "source_image_scopes": [
+        "page6: full dated diary/4gaps/all5candidates/instruction/score; previous readingC questions excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "3d86960cd6005de151c7e7f2fdb1708b6320939d7fe338d6dba71cf593749322"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "ac11f15af8b408ea046c2194298eb788eb67640481369d958a190539a3310a79"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "93bd35b7f78b609b35f0185c4fdfdf63e80f8e7c0d7a023df90b429d4f2ff35b"
+        },
+        {
+          "id": "label",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "cd58d37227242dff5ffcce3f89e35ef2a6f20de7f1490616f37c58c1dafc1ed8"
+        },
+        {
+          "id": "candidateA",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "09465bf4e6a4f575c8fbd60b3d5d7c1bb74712ffec228e8849512464409fa7c0"
+        },
+        {
+          "id": "candidateB",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "ab813a9aa1d6f1d7a9ef2601804f47463a4e626784aeda8ec904c88c4735efb2"
+        },
+        {
+          "id": "candidateC",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "0534db9f493612de52370b4c74e70ed37d9783b38d499a818a31de40f0d8b95d"
+        },
+        {
+          "id": "candidateD",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "606ad294c6c3ae80ca948adf5056416aa46e3f09580b29a52163b1ca945efae3"
+        },
+        {
+          "id": "candidateE",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "f705ddc009beafaa51812481395aea369f76d9e685c4bc538dd6d0a12e269db5"
+        }
+      ],
+      "PDF_pages": [
+        6
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-insertion-image-source-text20261015w-v0.1.json",
+        "sha256": "02a99d705fc73891bf474f5c02b325ae69567dda31b9028201f28066f3ef02b2"
+      }
+    },
+    {
+      "group_id": "g9.2025.insertionE",
+      "source_parent_id": "fuzhou2025-exam-bundle-public-full",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/fuzhou2025-exam-bundle-public-full.pdf",
+        "sha256": "d058fd4db0d94266bca4420b4749c2aa2e2c783d8e41a179d55989abdf0fee06"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "record_index": 1,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/fuzhou2025-english-34.png",
+          "sha256": "2f0dd011e8751f1fb60914a1c8e98984b5603f2742f6f8b0b6eb3c25d8217894"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "fuzhou2025-exam-bundle-public-full",
+          "PDF_page": 34,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/fuzhou2025-english-34.png",
+            "sha256": "2f0dd011e8751f1fb60914a1c8e98984b5603f2742f6f8b0b6eb3c25d8217894"
+          }
+        }
+      ],
+      "source_policy": {
+        "materials": 1,
+        "source_points_each": 1,
+        "source_total": 5,
+        "shared_candidates": 5,
+        "explicit_spare": null,
+        "reuse_rule_explicit": null,
+        "heading_slot_numbers": [
+          67
+        ],
+        "title": null,
+        "other_label": "E",
+        "whole_source_score_not_analytic_rubric": true,
+        "original_source_defects_or_limits": [
+          "five candidates/five gaps does not establish explicit once-only use",
+          "health/social-effect claims not independent factual gold"
+        ],
+        "source_facts_keys_and_student_calibration_not_established": true
+      },
+      "source_image_scopes": [
+        "physicalPDFpage34/printed33: whole E passage/5gaps/all5candidates/sectioninstruction/score; previous readingD64/65 excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "f43585b9461d36ee0eff8eb5d6c6f2131d80ac4ad5505e2e1e179e74196eef82"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "c0bdae4081d6f050a35135e38bb2ddda677f9ff319eb05014f569fc5c2384e5b"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "f7bb422984a10526774bfbe8ed02896e68de4a14583a9036735f37003e77d844"
+        },
+        {
+          "id": "label",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": "candidateA",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "50a36b482779f64b3a7d2c50300b16611fc6a8f2ff66a33b9711cc3ee702b072"
+        },
+        {
+          "id": "candidateB",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "cb87138ee1a63167f21664ad0ca408b18623c5cded19ff64b0e956192c3893d9"
+        },
+        {
+          "id": "candidateC",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "fe9569a89502fe83f4d7df0200dd1fb0ddc9eb316bc6ab0aeb722bb86b2351b9"
+        },
+        {
+          "id": "candidateD",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "1828f0a0047594801376cf97aaa433c67f0197dc8331b6d453563d755b51633b"
+        },
+        {
+          "id": "candidateE",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "2cec9b9343d90c1642af4733a4871d0a58b01c831d8d8fd933e2682f25909525"
+        }
+      ],
+      "PDF_pages": [
+        34
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-insertion-image-source-text20261015w-v0.1.json",
+        "sha256": "02a99d705fc73891bf474f5c02b325ae69567dda31b9028201f28066f3ef02b2"
+      }
+    },
+    {
+      "group_id": "g9.suzhou2024.insertion",
+      "source_parent_id": "suzhou2024-official-english-paper-image20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+        "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "record_index": 2,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0420261014.png",
+          "sha256": "257518c85e17a713984e193424ca3bf2c14c28be67073c6972b7b8da8cce152a"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0520261014.png",
+          "sha256": "8f4cc50cee377bc56156efe8dd5a5b50f84926fd000263caa37440154651930d"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_page": 5,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0420261014.png",
+            "sha256": "257518c85e17a713984e193424ca3bf2c14c28be67073c6972b7b8da8cce152a"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_page": 6,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0520261014.png",
+            "sha256": "8f4cc50cee377bc56156efe8dd5a5b50f84926fd000263caa37440154651930d"
+          }
+        }
+      ],
+      "source_policy": {
+        "materials": 1,
+        "source_points_each": 1,
+        "source_total": 5,
+        "shared_candidates": 7,
+        "explicit_spare": 2,
+        "reuse_rule_explicit": null,
+        "heading_slot_numbers": [
+          30
+        ],
+        "title": "Recharge (充电) Your Body’s Battery",
+        "other_label": null,
+        "whole_source_score_not_analytic_rubric": true,
+        "original_source_defects_or_limits": [
+          "parent is decodedWEBP despitePNGURL;logicalpages not PDF pages",
+          "tile overlap150pixels;gap30/end text transcribed only once",
+          "source stress/physiology claims not independent factual gold"
+        ],
+        "source_facts_keys_and_student_calibration_not_established": true
+      },
+      "source_image_scopes": [
+        "registeredcrop6150-8350: logicalpaper5/insertioninstruction/title/paragraphs26-29; logical4 readingtail and overlapping start30 not copied twice",
+        "registeredcrop8200-10400: logicalpaper6/heading30/lastparagraphs/all7candidates only; vocabulary/bank/grammar excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "48dc8ae356596e9deb34fcb7faad07d593978ddbcc1d3a98020b3c2282f96dc2"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "81c05ad017154b306f358accda0e8f96eb3c15c20bd477f0309603a6666f8af7"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "04e8d9852ed302bc6657d3432c1f4b14efba3ae1e49aefea904df58c048f2522"
+        },
+        {
+          "id": "title",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "bc3d025afd85f8ff84e315d18c0bbaa27b075cd35307d933b7856754131ce3a5"
+        },
+        {
+          "id": "candidateA",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "62c793f880a98d6a99c4a5e22bf232525150431fba666db306966be432a0ad62"
+        },
+        {
+          "id": "candidateB",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "6b6e1da16539e18512905af6dfbdd46d844fdaa2fcd10c06979efaa46942de4f"
+        },
+        {
+          "id": "candidateC",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "aacda91c077934b6ca1da70eaa80ad7b9cda95d27d66751fdda7ebca45f1bb7a"
+        },
+        {
+          "id": "candidateD",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "5017381efa680cc7a6d600d8a9b9c59355e46282f16455c4585db51e5680e802"
+        },
+        {
+          "id": "candidateE",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "725d45ec80c4602b7f4ace86823b4842b01b168fd841f02ab31ede5d9fe9b24d"
+        },
+        {
+          "id": "candidateF",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "ac5bcc4811f5ce3510bfb7bcc89e8ca08c154c8dddb10398d8492b6c20ad8046"
+        },
+        {
+          "id": "candidateG",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "9daa832a64d32cd936244b882e1539f8e32688959d59d2bf8911df28a9be4e91"
+        }
+      ],
+      "source_page_kind": "logical_paper_image",
+      "logical_paper_pages": [
+        5,
+        6
+      ],
+      "source_image_pixel_bindings": [
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0420261014.png",
+            "sha256": "257518c85e17a713984e193424ca3bf2c14c28be67073c6972b7b8da8cce152a"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            6150,
+            1080,
+            8350
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0520261014.png",
+            "sha256": "8f4cc50cee377bc56156efe8dd5a5b50f84926fd000263caa37440154651930d"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            8200,
+            1080,
+            10400
+          ]
+        }
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-insertion-image-source-text20261015w-v0.1.json",
+        "sha256": "02a99d705fc73891bf474f5c02b325ae69567dda31b9028201f28066f3ef02b2"
+      }
+    },
+    {
+      "group_id": "g10.wenzhou2025.insertion",
+      "source_parent_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade10-wenzhou2025-midterm-paper-key20261014.pdf",
+        "sha256": "9a92dcfb22731105ff69aa70ffd0c91e9bcf1e625236cda9545d9301570f8858"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade10-wenzhou2025-public-groups-v0.1.json",
+        "sha256": "a8faf8b5802e9e07386d5dd1a567106af1ff4715ad6724a6ed7a178b17026c4a"
+      },
+      "record_index": 3,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade10-wenzhou2025-midterm-inspection-06.png",
+          "sha256": "422c4816b36e2dfe44f61c1b249d76853bfa50dbc4d480e964f02294da9ba4e6"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade10-wenzhou2025-midterm-paper-key20261014",
+          "PDF_page": 6,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade10-wenzhou2025-midterm-inspection-06.png",
+            "sha256": "422c4816b36e2dfe44f61c1b249d76853bfa50dbc4d480e964f02294da9ba4e6"
+          }
+        }
+      ],
+      "source_policy": {
+        "materials": 1,
+        "source_points_each": 2.5,
+        "source_total": 12.5,
+        "shared_candidates": 7,
+        "explicit_spare": 2,
+        "reuse_rule_explicit": null,
+        "heading_slot_numbers": [
+          40
+        ],
+        "title": "Practicing Self Care",
+        "other_label": null,
+        "whole_source_score_not_analytic_rubric": true,
+        "original_source_defects_or_limits": [
+          "after an hour/half-hour examples are not app cadence or student time calibration",
+          "source sleep/stress advice not independently health validated"
+        ],
+        "source_facts_keys_and_student_calibration_not_established": true
+      },
+      "source_image_scopes": [
+        "page6: full selfcare passage/fixedheadings/headinggap40/other4gaps/all7candidates/instruction/score; preceding smart-watch questions excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "90ea565ea6580d71f852457a03fc1f3da4327628853ac775a81f5b1d5257f947"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "8d409768f69b7d00920e316f87469269d6fadab0cf8367f72b879b2acf5f824f"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "818ebf1d5185d031160cbca660b0fc70e90ede28b5c48efb989fc522f74e4f09"
+        },
+        {
+          "id": "title",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "b3e96437f106ee3603e5692c37fa3f559827e8f99e54db5807788c9bdbed9999"
+        },
+        {
+          "id": "candidateA",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "bf431f4f408c33d3f07bea103d03a7096d13b7dd929bc4efe484a79b99ddb0e5"
+        },
+        {
+          "id": "candidateB",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "623422bc1651537da945990d05745f4b3fb946d52c10a862472a78c17d457988"
+        },
+        {
+          "id": "candidateC",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "e607108255861a4be05a1ebe6e7298fc302b7240e9fcace8f57e3b80b27c8792"
+        },
+        {
+          "id": "candidateD",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "8c7bce3eedb520b0603af845a5a4b7ad801ef9244304cacfdae79a750986ab54"
+        },
+        {
+          "id": "candidateE",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "261ef5ab6f863d469f49d65f0fa1697d358f1982abada110345acdc04d0de552"
+        },
+        {
+          "id": "candidateF",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "da248e4a5967cf306afe126041c4665f67025790c7bb604598aea32158995148"
+        },
+        {
+          "id": "candidateG",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "a54c09a895df5a83769ef3888a0b04113865c461c213808dffdaec5f0bb2adbf"
+        }
+      ],
+      "PDF_pages": [
+        6
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-insertion-image-source-text20261015w-v0.1.json",
+        "sha256": "02a99d705fc73891bf474f5c02b325ae69567dda31b9028201f28066f3ef02b2"
+      }
+    },
+    {
+      "group_id": "g11.spring2024.insertionE",
+      "source_parent_id": "grade11-spring2024-public-bundle20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade11-chongqing2024spring-public-bundle20261014.pdf",
+        "sha256": "1437b5250247ea20ac28994ea8e1797b1b4951e7cebe81301e7de0e73c2ce140"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade11-spring2024-public-groups-v0.1.json",
+        "sha256": "f7fe13aa06155e176f4e8e37e26f17a63617a089bf6921cc5b1192694894b479"
+      },
+      "record_index": 4,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade11-chongqing2024spring-p06-20261014.png",
+          "sha256": "665a1a2ca00ed49fdddfdddd95daef26f5fb9b1708b9656c6cd033f78ac4e419"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade11-spring2024-public-bundle20261014",
+          "PDF_page": 6,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade11-chongqing2024spring-p06-20261014.png",
+            "sha256": "665a1a2ca00ed49fdddfdddd95daef26f5fb9b1708b9656c6cd033f78ac4e419"
+          }
+        }
+      ],
+      "source_policy": {
+        "materials": 1,
+        "source_points_each": 2.5,
+        "source_total": 12.5,
+        "shared_candidates": 7,
+        "explicit_spare": 2,
+        "reuse_rule_explicit": null,
+        "heading_slot_numbers": [
+          37
+        ],
+        "title": "How to Find Your Dream Career?",
+        "other_label": null,
+        "whole_source_score_not_analytic_rubric": true,
+        "original_source_defects_or_limits": [
+          "source career/happiness claims not independently validated",
+          "paragraphleading40 is a sentence gap not isolated heading37"
+        ],
+        "source_facts_keys_and_student_calibration_not_established": true
+      },
+      "source_image_scopes": [
+        "page6: career passage/fixedheadings/headinggap37/4sentencegaps/all7candidates/instruction/score; preceding readingD35 and following cloze excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "ffb00ee50b8eadfb2dbedbba6e7defb2dbfc4a130adaaffa0db0a9f85fe6a94b"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "8d409768f69b7d00920e316f87469269d6fadab0cf8367f72b879b2acf5f824f"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "d3f6576837b79912f45fcc39d6cd3b08d00354ace2c549f351f65c7690904142"
+        },
+        {
+          "id": "title",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "7042fbb2477e8e882ee18e24069199ba53cde0e27b3bb228e1d5f19f90471e44"
+        },
+        {
+          "id": "candidateA",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "1bebc034bbb76a5f09b12638dfd5b0e913dd4f8a77ae749cf5b29accd99bd7ba"
+        },
+        {
+          "id": "candidateB",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "5a40503f12516feeaf4a4939ecaad7e7e5263e2fff8a3f01d123f03ebeff34b2"
+        },
+        {
+          "id": "candidateC",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "4f97fdc888bed467b1f82ca5b4ae658b7290bf667394af6502782855198da68b"
+        },
+        {
+          "id": "candidateD",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "38782b479222a328e9fe851114aa756cc32aa6ea3fbfc11b2ead48296a7c098e"
+        },
+        {
+          "id": "candidateE",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "fe0f475bd29c1b65ada800d1f1a54dae9b10c3bbbcf7ab265c6b65d8415b333b"
+        },
+        {
+          "id": "candidateF",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "4c94d5195f912bb59a923977900a7fde6e1684b577ec267b4208d8328b17e609"
+        },
+        {
+          "id": "candidateG",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "582297df28b56cfd3fe46a81ed73f8541cbcdc13729c8d535aa6b8940f03fabc"
+        }
+      ],
+      "PDF_pages": [
+        6
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-insertion-image-source-text20261015w-v0.1.json",
+        "sha256": "02a99d705fc73891bf474f5c02b325ae69567dda31b9028201f28066f3ef02b2"
+      }
+    },
+    {
+      "group_id": "g12.2025anshan.insertion",
+      "source_parent_id": "grade12-anshan2025upper-monitor-candidate20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade12-anshan2025upper-monitor-candidate20261014.pdf",
+        "sha256": "00b12f137a37d9e6cdf8b5bc5c6dc8d0edc8160f3b7dee85d6f21ad78ef759b6"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "record_index": 5,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade12-anshan2025upper-monitor-candidate20261014-view07.png",
+          "sha256": "2310a86ee7a1e6f08d36c80281a340e819a6501b5cb192d4081711cc726ac4d4"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade12-anshan2025upper-monitor-candidate20261014",
+          "PDF_page": 7,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade12-anshan2025upper-monitor-candidate20261014-view07.png",
+            "sha256": "2310a86ee7a1e6f08d36c80281a340e819a6501b5cb192d4081711cc726ac4d4"
+          }
+        }
+      ],
+      "source_policy": {
+        "materials": 1,
+        "source_points_each": 2.5,
+        "source_total": 12.5,
+        "shared_candidates": 7,
+        "explicit_spare": 2,
+        "reuse_rule_explicit": null,
+        "heading_slot_numbers": [
+          40
+        ],
+        "title": "How to Be a More Active, Sports-Loving Person",
+        "other_label": null,
+        "whole_source_score_not_analytic_rubric": true,
+        "original_source_defects_or_limits": [
+          "10-minute example/studies claim not student/use-time or independently verified health data"
+        ],
+        "source_facts_keys_and_student_calibration_not_established": true
+      },
+      "source_image_scopes": [
+        "page7: complete sports passage/fixedheadings/headinggap40/4sentencegaps/all7candidates/instruction/score; following cloze instruction excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "33f5ad824a22570cb7304960ee65d9d6e022fe40c35e2a68a5720aad0daf8c3c"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "8d409768f69b7d00920e316f87469269d6fadab0cf8367f72b879b2acf5f824f"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "a3ac2d719784422eebf8466f904ee98a7318ebc4fb159a2f1e4095fa3a599941"
+        },
+        {
+          "id": "title",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "533ed6b2b9579bc9a524b6bed184c6a8f2237613f6df67b65478667d353408c1"
+        },
+        {
+          "id": "candidateA",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "71e11c5655540bbc8bc33566f4c2202af3f252c47a784ccfedeaca2d02e8374b"
+        },
+        {
+          "id": "candidateB",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "9250ffc59cc66d5ed31f2b1cf7d0896b9403bc5b753f1c8cc6e9a7a06ffbb540"
+        },
+        {
+          "id": "candidateC",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "93f713f45346de746876159fa6397a0c08bfa4172ebf73c30dcf4217fc9c5ad3"
+        },
+        {
+          "id": "candidateD",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "d203585c26b9b69b40fe0f6c05637f5a8f4ebe294a508761a036e28f4f20017e"
+        },
+        {
+          "id": "candidateE",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "3df7ca226309b278b53b866133bd15d872cac58fbdc562aa910f0cdb4e8c4e50"
+        },
+        {
+          "id": "candidateF",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "7e37b0d64918c90069204458f469897cba932222c4aaae27cd818edfa138341a"
+        },
+        {
+          "id": "candidateG",
+          "role": "shared_option",
+          "pointer": [
+            "records",
+            5,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "9be1e079a6e7078c33068a93ba12a42fabb65ce5bf746bdaa18d508bd53e2ef5"
+        }
+      ],
+      "PDF_pages": [
+        7
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-insertion-image-source-text20261015w-v0.1.json",
+        "sha256": "02a99d705fc73891bf474f5c02b325ae69567dda31b9028201f28066f3ef02b2"
+      }
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}
