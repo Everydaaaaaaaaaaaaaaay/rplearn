@@ -107,7 +107,7 @@ def transcribed_views(manifest):
         for binding, c in zip(case['components'], record['components']):
             if any(binding.get(k) != c.get(k) for k in ['id', 'role', 'item_id']) or digest(c['text']) != binding['sha256']:
                 raise ValueError('Source component binding differs')
-            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option', 'bank_entry', 'diagram_label', 'Chinese_meaning', 'initial_letter', 'survey_prompt', 'survey_category'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
+            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option', 'bank_entry', 'diagram_label', 'Chinese_meaning', 'initial_letter', 'survey_prompt', 'survey_category', 'table_header', 'table_cell'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
                 raise ValueError('Private key/author reason is not student input')
             text = c['text']
             if c['role'] == 'passage':
@@ -144,8 +144,13 @@ def transcribed_views(manifest):
                 marks = policy['required_marks']
                 for mark in marks:
                     component = by_id.get(mark['component_id'], {})
-                    if mark['kind'] not in ['underline', 'heading_blank'] or component.get('role') != 'passage' or component.get('text', '').count(mark['text']) != 1 or mark['question_number'] not in record['item_ids']:
+                    if mark['kind'] not in ['underline', 'heading_blank', 'quoted_target'] or component.get('role') != 'passage' or component.get('text', '').count(mark['text']) != 1 or mark['question_number'] not in record['item_ids']:
                         raise ValueError('Required reading mark belongs to another material/question')
+                for style in policy.get('question_target_styles', []):
+                    targets = [m for m in marks if m['question_number'] == style['question_number'] and m['text'] == style['target_text']]
+                    expected_kind = 'underline' if style['printed_underline_confirmed'] is True else 'quoted_target'
+                    if len(targets) != 1 or targets[0]['kind'] != expected_kind or style['question_claims_underline'] is not True:
+                        raise ValueError('Question wording cannot certify an unconfirmed printed underline')
                 heading_marks = [m for m in marks if m['kind'] == 'heading_blank']
                 heading = obs['features'].get('placeholder_heading_number')
                 if heading is not None and [m['question_number'] for m in heading_marks] != [heading]:
@@ -169,6 +174,36 @@ def transcribed_views(manifest):
                     expected_ids = [c['id'] for c in record['components'] if c['role'] in ['passage', 'survey_prompt', 'survey_category']]
                     if material_ids != expected_ids:
                         raise ValueError('Survey material omits/reorders questionnaire inputs')
+                    body = '\n'.join(by_id[cid]['text'] for cid in material_ids)
+                table = policy.get('source_table')
+                if table:
+                    material_ids = table['material_component_ids']
+                    expected_ids = [c['id'] for c in record['components'] if c['role'] in ['passage', 'table_header', 'table_cell']]
+                    if len(material_ids) != len(set(material_ids)) or set(material_ids) != set(expected_ids):
+                        raise ValueError('Table/prose material components omitted or repeated')
+                    if table['kind'] == 'climate_matrix':
+                        cells = [c for c in record['components'] if c['role'] == 'table_cell']
+                        headers = [c for c in record['components'] if c['role'] == 'table_header']
+                        if not obs['features'].get('six_row_climate_table_with_text') or table['row_count'] != 6 or table['column_count'] != 3 or table['units_by_column'] != [None, '°C', 'cm'] or [c['text'] for c in headers] != table['headers'] or len(headers) != 3 or len(cells) != 18:
+                            raise ValueError('Climate table dimensions/header/units differ')
+                        if [(c['row_index'], c['column_index'], c['text']) for c in cells] != [(i, j, text) for i, row_values in enumerate(table['rows']) for j, text in enumerate(row_values)] or len(table['rows']) != 6 or any(len(values) != 3 for values in table['rows']):
+                            raise ValueError('Climate table month/temperature/rainfall association differs')
+                    elif table['kind'] == 'numbered_advice':
+                        ids = table['row_ids'];labels = table['label_component_ids'];advice = table['advice_component_ids']
+                        if not obs['features'].get('numbered_rows_required') or ids != [1, 2, 3, 4, 5] or table['row_count'] != 5 or len(labels) != 5 or len(advice) != 5 or table['circled_labels'] != list('①②③④⑤'):
+                            raise ValueError('Numbered advice table row labels omitted')
+                        for n, label, cell in zip(ids, labels, advice):
+                            if by_id[label]['role'] != 'table_header' or by_id[cell]['role'] != 'table_cell' or by_id[label]['row_index'] != n or by_id[cell]['row_index'] != n:
+                                raise ValueError('Advice heading/content belongs to another row')
+                        pairs = table['option_row_pairs']
+                        options = [c for c in record['components'] if c['role'] == 'option' and c['item_id'] == table['crossrow_question']]
+                        if table['crossrow_question'] not in record['item_ids'] or len(pairs) != 4 or any(len(pair) != 2 or any(n not in ids for n in pair) for pair in pairs) or [c['text'] for c in options] != [''.join(table['circled_labels'][n - 1] for n in pair) for pair in pairs]:
+                            raise ValueError('Circled option pairs detached from advice rows')
+                    else:
+                        raise ValueError('Unreviewed reading table mode')
+                    for symbol in policy.get('scientific_symbols', []):
+                        if symbol['source_subscript'] not in symbol['text'] or by_id[symbol['component_id']]['text'].count(symbol['text']) != 1:
+                            raise ValueError('Original scientific subscript omitted or changed')
                     body = '\n'.join(by_id[cid]['text'] for cid in material_ids)
         if row['shape']['family'] == 'context_word_completion':
             units = record['units'];by_id = {c['id']: c for c in record['components']}

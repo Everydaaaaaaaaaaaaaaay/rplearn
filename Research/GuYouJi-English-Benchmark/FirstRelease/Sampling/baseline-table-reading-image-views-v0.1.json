@@ -1,0 +1,2753 @@
+{
+  "version": "0.1",
+  "scope": "five baselinegrade9readinggroups20responses80options;notnewparents/authors",
+  "prior_view_kind": "image_transcription",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-bnu-reading-image-views-v0.1.json",
+    "sha256": "209bb4d93e118681f44d7857193f7aaa9c3ed008aadbd8f188dcd0783366386c"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-bnu-reading-image-audit20261015z-v0.1.json",
+    "sha256": "6b037633f92f3abc5d0c1380a28763dc4f2ff6e1c71749469f506076f9695272"
+  },
+  "audit_records_scope": "five grade9readingprofiles;previous286 viafrozenrefs",
+  "views": [
+    {
+      "group_id": "g9.suzhou2024.readingA",
+      "source_parent_id": "suzhou2024-official-english-paper-image20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+        "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-table-reading-source-text20261015z-v0.1.json",
+        "sha256": "8ab384b578c15a54c86de2af862cff9bd32c34bad3f3ae3dbf2a537f847a4205"
+      },
+      "record_index": 0,
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+          "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0220261014.png",
+          "sha256": "835044ded68f0a13bedacbafa9c201fd756a74b38c1492f395144e0662110fec"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            2
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            2
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0220261014.png",
+            "sha256": "835044ded68f0a13bedacbafa9c201fd756a74b38c1492f395144e0662110fec"
+          }
+        }
+      ],
+      "source_policy": {
+        "required_marks": [],
+        "source_table": {
+          "kind": "climate_matrix",
+          "headers": [
+            "Months",
+            "Average (平均) Temperature",
+            "Average Rainfall"
+          ],
+          "rows": [
+            [
+              "January - February",
+              "2-10°C",
+              "5-7cm"
+            ],
+            [
+              "March",
+              "7-13°C",
+              "9-10cm"
+            ],
+            [
+              "April - May",
+              "12-24°C",
+              "7-9cm"
+            ],
+            [
+              "June - August",
+              "22-31°C",
+              "19-22cm"
+            ],
+            [
+              "September - October",
+              "17-28°C",
+              "5-7cm"
+            ],
+            [
+              "November - December",
+              "5-17°C",
+              "4-5cm"
+            ]
+          ],
+          "row_count": 6,
+          "column_count": 3,
+          "units_by_column": [
+            null,
+            "°C",
+            "cm"
+          ],
+          "material_component_ids": [
+            "body0",
+            "head0",
+            "head1",
+            "head2",
+            "cell00",
+            "cell01",
+            "cell02",
+            "cell10",
+            "cell11",
+            "cell12",
+            "cell20",
+            "cell21",
+            "cell22",
+            "cell30",
+            "cell31",
+            "cell32",
+            "cell40",
+            "cell41",
+            "cell42",
+            "cell50",
+            "cell51",
+            "cell52",
+            "body1",
+            "body2"
+          ]
+        },
+        "source_defects": [
+          "climate ranges lack time-series/provenance;not modern meteorology gold;one table plus prose not six responsegroups"
+        ],
+        "reading_layout_version": "0.1",
+        "source_features": {
+          "materials": 1,
+          "six_row_climate_table_with_text": true,
+          "items": 3,
+          "options_each": 4
+        },
+        "optional_source_component": false,
+        "source_points_each_explicit": 2,
+        "source_own_total_explicit": null,
+        "parent_reading_points": 30,
+        "parent_reading_responses": 15,
+        "source_facts_keys_not_validated": true
+      },
+      "components": [
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "body0",
+          "role": "passage",
+          "sha256": "8747635570a3fdab569db7b02cc0b21c382f06b04977e8bd2388c493e1020bf8"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "body1",
+          "role": "passage",
+          "sha256": "3305c96291ef90eea2294d2dfa21bf6d953220d48eabf6b466c9d7ed0227fd7b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "body2",
+          "role": "passage",
+          "sha256": "b4fd4c4638f85f536818dce79dbddeb06ba6d8fa7af4ec99b2b69b2bb39ee60f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "head0",
+          "role": "table_header",
+          "sha256": "09ca7551b3e906263974f25ca72053311851786e094889ad85e3edcfbc0c237b"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "head1",
+          "role": "table_header",
+          "sha256": "2bf31c7613e940e0cc0467e2641ecb03150fb25d5a50043ec4d185ad72a69311"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "head2",
+          "role": "table_header",
+          "sha256": "76ae66404c456fbc2302515db52945743da79885ff5908de1f71c3cc1685e08f"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "cell00",
+          "role": "table_cell",
+          "sha256": "67375a807410342cf796c9a4d12278a2f15f58e18de6ea915ff2c70e45a77d14"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "cell01",
+          "role": "table_cell",
+          "sha256": "c1aaa0f6bc63a59cd1468e0d399a24a5990b138c4c67c83013842fd3002399e8"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "cell02",
+          "role": "table_cell",
+          "sha256": "b0c64b50b4fc8af84b6942c427f3b7ca43fad36c68728401860ce9fbe8cea1ee"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "cell10",
+          "role": "table_cell",
+          "sha256": "9d95a2cf0d7180b5089691163b188a7203b0cde179346b8cfaa8ab6c2c3e6414"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "cell11",
+          "role": "table_cell",
+          "sha256": "a8c05f640777ce2b787a8203ad492f9ba63305ab72d47602ee61d30fb3660636"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "cell12",
+          "role": "table_cell",
+          "sha256": "1779271e3682fb9531f6245130cf02a43ac7b97df9fdefa40c34d49c22648444"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "cell20",
+          "role": "table_cell",
+          "sha256": "395f486ec29330213dd54bc503055bf9989f572b7eb8350a8d9bc4da803a0654"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "cell21",
+          "role": "table_cell",
+          "sha256": "b640b6013bea3f909578956aae49dda6a9f2972d054788e1292abe4a1225022e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "cell22",
+          "role": "table_cell",
+          "sha256": "38b22fa5eabcaa3bac17e706bc436ecbc198a1643b1a92f461fc3583e36770f7"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "cell30",
+          "role": "table_cell",
+          "sha256": "a93a05364c2c056279527e36fb8526f433aaf77b68c6761f9db46cd98b5b86bf"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "cell31",
+          "role": "table_cell",
+          "sha256": "8f479cfee5d8846f9dcde9c556b326a07d6b638a9fd8798020c032e88b7a4f96"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "cell32",
+          "role": "table_cell",
+          "sha256": "d07119cb0fe6f05d45557bf4a3fff75f98e15d4a43574824f482c65bb4813450"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "cell40",
+          "role": "table_cell",
+          "sha256": "ff5d351605fbe2dbca55276d0e58a3e7f538915f4c09e1c62ff66619c3387361"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "cell41",
+          "role": "table_cell",
+          "sha256": "96f7e796706bc26fb512646d70b77517bd6bdc8cde27fb4bd4ab2722bec22aad"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "cell42",
+          "role": "table_cell",
+          "sha256": "b0c64b50b4fc8af84b6942c427f3b7ca43fad36c68728401860ce9fbe8cea1ee"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "cell50",
+          "role": "table_cell",
+          "sha256": "b8eff6f21f89dabddff9096d0401ae6fd75658aade5eb94b049d6c735e6cfd14"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "cell51",
+          "role": "table_cell",
+          "sha256": "959ec60dacbc4cf1fe1a69478bdcca4fbc02f3c5436a70145dacefd6d8b3df79"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "cell52",
+          "role": "table_cell",
+          "sha256": "3d501a743e8a7b55abef624e741d8b8b3a1281ec5e0570d4c21fdbaf7f5adafe"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            24,
+            "text"
+          ],
+          "id": "q11",
+          "role": "prompt",
+          "item_id": 11,
+          "sha256": "9d4bab63ccae772f7fe87c2485980732fd56ef05e22722c3e92440226acdf2eb"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            25,
+            "text"
+          ],
+          "id": "q11A",
+          "role": "option",
+          "item_id": 11,
+          "sha256": "4e5c2b546eede8b0ff85bdef6e4f2d8537e89269239b83a501da5f0524cf2520"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            26,
+            "text"
+          ],
+          "id": "q11B",
+          "role": "option",
+          "item_id": 11,
+          "sha256": "7e082819e565294faf479262515d381f8537735e83a89a3bcc57e56af15ae89a"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            27,
+            "text"
+          ],
+          "id": "q11C",
+          "role": "option",
+          "item_id": 11,
+          "sha256": "c8c835a9b38cb7013a3df812a75eb3e4a0a14fbd3962d9c25dc71109f2eef512"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            28,
+            "text"
+          ],
+          "id": "q11D",
+          "role": "option",
+          "item_id": 11,
+          "sha256": "41653127e19fc86a22c890ac84f306536df66c4ed6df86ec5d499999e7f89b9e"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            29,
+            "text"
+          ],
+          "id": "q12",
+          "role": "prompt",
+          "item_id": 12,
+          "sha256": "ec14552c4674968f20e676deef844882ec65c151877cede835d050c293203b81"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            30,
+            "text"
+          ],
+          "id": "q12A",
+          "role": "option",
+          "item_id": 12,
+          "sha256": "1632bef27d49bd9280373094e4b7deeffa31c3ef2d95f5da63db308f321bd918"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            31,
+            "text"
+          ],
+          "id": "q12B",
+          "role": "option",
+          "item_id": 12,
+          "sha256": "a2a3ea2935addf89fa3d96959e060959b2b1a0d4a82e6cb9052e274e32cb85a6"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            32,
+            "text"
+          ],
+          "id": "q12C",
+          "role": "option",
+          "item_id": 12,
+          "sha256": "43c3278f64e2d001aabc63e5d92248d79c2eec8c3f58ad4af84d290c10f14d85"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            33,
+            "text"
+          ],
+          "id": "q12D",
+          "role": "option",
+          "item_id": 12,
+          "sha256": "0418965db057c69de452011097b895416393333b40a0f6b792499b8cbe496996"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            34,
+            "text"
+          ],
+          "id": "q13",
+          "role": "prompt",
+          "item_id": 13,
+          "sha256": "bb4835e0435fc694aa48b9eda75eca7524e91826e9cb627f2dfc9d890c4ed01d"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            35,
+            "text"
+          ],
+          "id": "q13A",
+          "role": "option",
+          "item_id": 13,
+          "sha256": "9c8a36acd240ed49bc0fcf539fe56a5ad1b96fecad68a29b49f311177d4ba781"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            36,
+            "text"
+          ],
+          "id": "q13B",
+          "role": "option",
+          "item_id": 13,
+          "sha256": "e09a44a3a154f3dea1825de1cdba4f9a763f12e8774d95a4147558fbb60324be"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            37,
+            "text"
+          ],
+          "id": "q13C",
+          "role": "option",
+          "item_id": 13,
+          "sha256": "2ff4a004e8c2e45fb468ce37ff7eb532b6c18e94f675492a2bb286d0514172bc"
+        },
+        {
+          "pointer": [
+            "records",
+            0,
+            "components",
+            38,
+            "text"
+          ],
+          "id": "q13D",
+          "role": "option",
+          "item_id": 13,
+          "sha256": "a78699a40655f55d42c5e9bcc4fbfdd1b34dab16838fcdb1cacf17a0cb025840"
+        }
+      ],
+      "source_image_scopes": [
+        {
+          "page_mapping": [
+            2
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": [
+            2
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "source_page_kind": "logical_paper_image",
+      "logical_paper_pages": [
+        2
+      ],
+      "image_logical_page_sets": [
+        [
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "source_image_pixel_bindings": [
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            0,
+            1080,
+            2200
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0220261014.png",
+            "sha256": "835044ded68f0a13bedacbafa9c201fd756a74b38c1492f395144e0662110fec"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            2050,
+            1080,
+            4250
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "g9.suzhou2024.readingB",
+      "source_parent_id": "suzhou2024-official-english-paper-image20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+        "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-table-reading-source-text20261015z-v0.1.json",
+        "sha256": "8ab384b578c15a54c86de2af862cff9bd32c34bad3f3ae3dbf2a537f847a4205"
+      },
+      "record_index": 1,
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+          "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0220261014.png",
+          "sha256": "835044ded68f0a13bedacbafa9c201fd756a74b38c1492f395144e0662110fec"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+          "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            2
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            2,
+            3
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0220261014.png",
+            "sha256": "835044ded68f0a13bedacbafa9c201fd756a74b38c1492f395144e0662110fec"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            3
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+            "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+          }
+        }
+      ],
+      "source_policy": {
+        "required_marks": [
+          {
+            "kind": "underline",
+            "component_id": "body2",
+            "text": "unique",
+            "question_number": 16
+          }
+        ],
+        "original_picture_required": true,
+        "source_defects": [
+          "film success/quotations sourceclaims not independently factchecked;picture retained;crosscropQ16/Q17 complete"
+        ],
+        "reading_layout_version": "0.1",
+        "source_features": {
+          "materials": 1,
+          "drama_review_and_picture": true,
+          "items": 4,
+          "options_each": 4,
+          "underlined_unique_required": true
+        },
+        "optional_source_component": false,
+        "source_points_each_explicit": 2,
+        "source_own_total_explicit": null,
+        "parent_reading_points": 30,
+        "parent_reading_responses": 15,
+        "source_facts_keys_not_validated": true
+      },
+      "components": [
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "body0",
+          "role": "passage",
+          "sha256": "6c80e5c914647e6891cb1b5541084a71194a6a6f607b65e6ddb78cd211789fe7"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "body1",
+          "role": "passage",
+          "sha256": "47e4f7312ff3922add5e5f6e9cd24916d05e375eb146fdcb681d18705819a09c"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "body2",
+          "role": "passage",
+          "sha256": "031d7d430625d3aa412e1c21654dd5cb84f00135197b7b79faf3b45ce1c36d9b"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "body3",
+          "role": "passage",
+          "sha256": "089e521ab0440f9bcedd976afd4630f5fe9985bb13567f92ba37b50f73998b9d"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "q14",
+          "role": "prompt",
+          "item_id": 14,
+          "sha256": "fbf9fba2f9561bc837e1b75e786ea149f132af476b84d579a089ca9ec727d431"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "q14A",
+          "role": "option",
+          "item_id": 14,
+          "sha256": "bf8ed459bdc0b78e0b848882fc355229b60cbf2ff014c0ea6023562f7a7f990d"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "q14B",
+          "role": "option",
+          "item_id": 14,
+          "sha256": "83a6287af6a36dec4c364e0bc9789c8a6f2162e2b3c25cba7f401c938bf8db22"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "q14C",
+          "role": "option",
+          "item_id": 14,
+          "sha256": "3e4c9476f8bb3db15420ca9721d343f3835bf1add5ef1fb7c38a4fe24e5db17a"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "q14D",
+          "role": "option",
+          "item_id": 14,
+          "sha256": "84777a8fe0307fc414ef18f2f14975ac520ccb304d60fa3ab94d1fc0d03f59ad"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "q15",
+          "role": "prompt",
+          "item_id": 15,
+          "sha256": "c6d806bb5d4cb2b8f035430c0ce1eafd9d0e7202f43570ddf8d949a264c3fe8f"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "q15A",
+          "role": "option",
+          "item_id": 15,
+          "sha256": "0a49d58444100693f4694cdfaf0acedb8822802c3c5cd8dffe24cf4902525eb9"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "q15B",
+          "role": "option",
+          "item_id": 15,
+          "sha256": "977ecdce39fe155b51852b110d23f4d45167bf2595c563779e2db1a58730c4d7"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "q15C",
+          "role": "option",
+          "item_id": 15,
+          "sha256": "2b56f6e04f395cdb496cd9d9539b0acf3877d802b7bfe3185240f96f0b276a1e"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "q15D",
+          "role": "option",
+          "item_id": 15,
+          "sha256": "ad908aed43da669d8d63cf194ff0dcf727f71b056dcd1ed83388ec09423ea596"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "q16",
+          "role": "prompt",
+          "item_id": 16,
+          "sha256": "169329b0dc4d6c7a45fb427200dad11eed4a19f651f71b9e4267e6bd016b5191"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "q16A",
+          "role": "option",
+          "item_id": 16,
+          "sha256": "645dfcb4d1d2d7f1fa00f60e45541f33dfafc3a7ce1dc4bb1901bf409e4edd60"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "q16B",
+          "role": "option",
+          "item_id": 16,
+          "sha256": "92a5dc04bd6f9fb8f29f8066fed8a5c1e81bc59ad48a11283b63736867e4f2a8"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "q16C",
+          "role": "option",
+          "item_id": 16,
+          "sha256": "7d4c5c8894e016e772e9b7acab04d2b775ad4e7861d162ca5a48de7a7151a6a2"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "q16D",
+          "role": "option",
+          "item_id": 16,
+          "sha256": "41b3ab146fd067194352ee20901347a73366adfdf94122d428c3260a1b689ee2"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "q17",
+          "role": "prompt",
+          "item_id": 17,
+          "sha256": "ad163e2ae6153f56c5013760c25186e30614583c1a33af407ecb790c0db5688c"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "q17A",
+          "role": "option",
+          "item_id": 17,
+          "sha256": "d70b37133460046fc45ad7df583f91d096be43b4185f6afcf42d245c3a8ad0e1"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "q17B",
+          "role": "option",
+          "item_id": 17,
+          "sha256": "d306840f5e8f4b9dcf72029cb3de22730770289a191e7e1c76971044102d6dd0"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "q17C",
+          "role": "option",
+          "item_id": 17,
+          "sha256": "3c543664c313e7c6eafd76293a052e5f47bbf032126f3b9855a0a3c5096a6088"
+        },
+        {
+          "pointer": [
+            "records",
+            1,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "q17D",
+          "role": "option",
+          "item_id": 17,
+          "sha256": "3e314d5b1f9ec8c00a2768cd1e680a196f64d0e32f06817e571f595cce04f105"
+        }
+      ],
+      "source_image_scopes": [
+        {
+          "page_mapping": [
+            2
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": [
+            2,
+            3
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": [
+            3
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "source_page_kind": "logical_paper_image",
+      "logical_paper_pages": [
+        2,
+        3
+      ],
+      "image_logical_page_sets": [
+        [
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3
+        ]
+      ],
+      "source_image_pixel_bindings": [
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            0,
+            1080,
+            2200
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0220261014.png",
+            "sha256": "835044ded68f0a13bedacbafa9c201fd756a74b38c1492f395144e0662110fec"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            2050,
+            1080,
+            4250
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+            "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            4100,
+            1080,
+            6300
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "g9.suzhou2024.readingC",
+      "source_parent_id": "suzhou2024-official-english-paper-image20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+        "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-table-reading-source-text20261015z-v0.1.json",
+        "sha256": "8ab384b578c15a54c86de2af862cff9bd32c34bad3f3ae3dbf2a537f847a4205"
+      },
+      "record_index": 2,
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+          "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+        }
+      ],
+      "shared_context_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+          "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+        }
+      ],
+      "shared_context_pages": [
+        2
+      ],
+      "author_page_bindings": [
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            3,
+            4
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+            "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": 2,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          }
+        }
+      ],
+      "source_policy": {
+        "required_marks": [],
+        "source_quantity_scopes": {
+          "year": 2023,
+          "production_million": "9.58",
+          "total_sales_million": "9.49",
+          "exports_subset_million": "1.2",
+          "domestic_sales_inference_operation": "total_sales_minus_exports_not_production_minus_exports"
+        },
+        "source_defects": [
+          "reported counts and futurelead forecast not independentfacts;domestic8.29 derived fromsales9.49minus exports1.2,notproduction9.58;no studentgold upgrade"
+        ],
+        "reading_layout_version": "0.1",
+        "source_features": {
+          "materials": 1,
+          "industry_data_and_prediction": true,
+          "items": 4,
+          "options_each": 4,
+          "domestic_sales_infer_by_subtraction": true
+        },
+        "optional_source_component": false,
+        "source_points_each_explicit": 2,
+        "source_own_total_explicit": null,
+        "parent_reading_points": 30,
+        "parent_reading_responses": 15,
+        "source_facts_keys_not_validated": true
+      },
+      "components": [
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "body0",
+          "role": "passage",
+          "sha256": "2c98776fcbeca42c54452051b17f1396949d8eb8ee93cf3ce10373a5802d3788"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "body1",
+          "role": "passage",
+          "sha256": "f1555482ca70842523ce9bf14d2fc2b6ef08d85b3f61bff016b61e14876e8319"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "body2",
+          "role": "passage",
+          "sha256": "4c281873014b995a975d49343ba8717ce8cc5343ddcca54296ebaa026e20e7ce"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "body3",
+          "role": "passage",
+          "sha256": "79358b713ea14ad967f6271e56ccaeb75cfb6fdf46a63c344e9fb757b9ca3c97"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "q18",
+          "role": "prompt",
+          "item_id": 18,
+          "sha256": "20928a374d241e070eaea9deaf465dd144c35975fc0c47dec3879498f1d6a3cc"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "q18A",
+          "role": "option",
+          "item_id": 18,
+          "sha256": "fe3345c678e19518424928beceb29704700deab2d6af611bca4222208b55b8b3"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "q18B",
+          "role": "option",
+          "item_id": 18,
+          "sha256": "c724fff6acc716840720905d522fc3ede97fb0cc112f044c1d53cfcf89e1f628"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "q18C",
+          "role": "option",
+          "item_id": 18,
+          "sha256": "8a2da4139d9d7bfa24cd7a833b3121472bd822f94b6b149fbc48f9f0ee2e9764"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "q18D",
+          "role": "option",
+          "item_id": 18,
+          "sha256": "05e86e91259c72c6c6d479367c6a53d4235c6ea5193fc7214ac7abcd9974d6fe"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "q19",
+          "role": "prompt",
+          "item_id": 19,
+          "sha256": "eaccd27d3c8067ddae1036e04005d7b4269e4d7804214090b1c4f6d3d0513a5f"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "q19A",
+          "role": "option",
+          "item_id": 19,
+          "sha256": "2f7103f2544ec696ba10172e32e0f654703b92e0ef9f072f0e9e13a0a7399279"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "q19B",
+          "role": "option",
+          "item_id": 19,
+          "sha256": "66e340a7de0a6087c46a8763f1c3501ba6acde576b5bce1cb68063fc2508610d"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "q19C",
+          "role": "option",
+          "item_id": 19,
+          "sha256": "5724bf6acfa3a5e270c559b7b8b326da0e108e172c92479d151513a438e57369"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "q19D",
+          "role": "option",
+          "item_id": 19,
+          "sha256": "24d3911953c113b37e05dbb9394341f1fe4ba3d68ec05a6fb14eaffa75431ac0"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "q20",
+          "role": "prompt",
+          "item_id": 20,
+          "sha256": "940edadd7ebb7e6d7a016ffe9ddf82efe12ab978b943655321f30d06a2fc725a"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "q20A",
+          "role": "option",
+          "item_id": 20,
+          "sha256": "e227e9123fa83cdabe72186387feaf636148270d8051ef92b2e22840d3abeb9d"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "q20B",
+          "role": "option",
+          "item_id": 20,
+          "sha256": "1c7e84bcc0a4b837fa0e8b430b7db5b8205fde38b787ca0a76ae8fde141a1466"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "q20C",
+          "role": "option",
+          "item_id": 20,
+          "sha256": "59d7b5f9b2cb9c1f567a58f9b1924805d08b02a3f783b9275cedaa9521a74903"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "q20D",
+          "role": "option",
+          "item_id": 20,
+          "sha256": "8753dcb26a0cb6467a6bc2d2b72adc5e820f80fe7313f517adc0a312c796c102"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "q21",
+          "role": "prompt",
+          "item_id": 21,
+          "sha256": "21dc0652d3b5018adf6444c7f5383e6e37f68f401ca6c74f0f45a010f915d7ba"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "q21A",
+          "role": "option",
+          "item_id": 21,
+          "sha256": "91be3e9c2194c8d63e369ca04a52a20262b3ff2392e5649fe677eda72a7117ce"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "q21B",
+          "role": "option",
+          "item_id": 21,
+          "sha256": "b5df4e916e183dc686b4f264a6a80c9ae010281231f4633e2e120f2f6ab53a1e"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "q21C",
+          "role": "option",
+          "item_id": 21,
+          "sha256": "f4f021b9fc58332c3119b0698a896c86c5e3b91e70ef816215d4d647e23ecad2"
+        },
+        {
+          "pointer": [
+            "records",
+            2,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "q21D",
+          "role": "option",
+          "item_id": 21,
+          "sha256": "ffc3657adbe15029421a75c958936b300334743d3bbeb3f5bb3627f8116b871e"
+        }
+      ],
+      "source_image_scopes": [
+        {
+          "page_mapping": [
+            3,
+            4
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": 2,
+          "student_input_scope": "parentreading2points/15questions/30total only;no cloze copied"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "source_page_kind": "logical_paper_image",
+      "logical_paper_pages": [
+        3,
+        4
+      ],
+      "image_logical_page_sets": [
+        [
+          3,
+          4
+        ]
+      ],
+      "source_image_pixel_bindings": [
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+            "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            4100,
+            1080,
+            6300
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            0,
+            1080,
+            2200
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "g9.suzhou2024.readingD",
+      "source_parent_id": "suzhou2024-official-english-paper-image20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+        "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-table-reading-source-text20261015z-v0.1.json",
+        "sha256": "8ab384b578c15a54c86de2af862cff9bd32c34bad3f3ae3dbf2a537f847a4205"
+      },
+      "record_index": 3,
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade9-suzhou2024-official-written-groups-v0.1.json",
+        "sha256": "dada955bd4da16c1caf330f606183b481731a1f2bb2b68736379109667f7b4d2"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+          "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0420261014.png",
+          "sha256": "257518c85e17a713984e193424ca3bf2c14c28be67073c6972b7b8da8cce152a"
+        }
+      ],
+      "shared_context_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+          "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+        }
+      ],
+      "shared_context_pages": [
+        2
+      ],
+      "author_page_bindings": [
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            4
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+            "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": [
+            4,
+            5
+          ],
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0420261014.png",
+            "sha256": "257518c85e17a713984e193424ca3bf2c14c28be67073c6972b7b8da8cce152a"
+          }
+        },
+        {
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "logical_paper_pages": 2,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          }
+        }
+      ],
+      "source_policy": {
+        "required_marks": [],
+        "original_picture_required": true,
+        "section_headings": [
+          "Sleep",
+          "Home"
+        ],
+        "source_defects": [
+          "two named sections are one narrative and fourresponses;48hours/onehour narrative not application studytime;literary reuse rights not implied by officialexam release"
+        ],
+        "reading_layout_version": "0.1",
+        "source_features": {
+          "materials": 1,
+          "two_named_story_sections": true,
+          "items": 4,
+          "options_each": 4,
+          "picture_in_original": true
+        },
+        "optional_source_component": false,
+        "source_points_each_explicit": 2,
+        "source_own_total_explicit": null,
+        "parent_reading_points": 30,
+        "parent_reading_responses": 15,
+        "source_facts_keys_not_validated": true
+      },
+      "components": [
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "body0",
+          "role": "passage",
+          "sha256": "4cdaa78e29392b72d97f2b2abd7cb004ec0882656bf255d39320a8833697ab05"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "body1",
+          "role": "passage",
+          "sha256": "763b5e044e898f002f76b926b684c962da94e8891162a1b9b35659b38eba52d4"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "body2",
+          "role": "passage",
+          "sha256": "d44d1f87fe0dc4be6cbffd634110e2accd17033242f74c5d212803891434a09c"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "body3",
+          "role": "passage",
+          "sha256": "99bbc4882b0b8f2962cdd9682912922f995ce1cae00a91a1bbee02eba1a1eaf3"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "body4",
+          "role": "passage",
+          "sha256": "ee40709857cd31150116566dc0a9cba476f7802019ff5038a71423693ea42fb5"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "title",
+          "role": "material_label",
+          "sha256": "e032406c9449d0adc2ee1133ca6f90ca6145dcb545382b43f1ca60efb6c12137"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "q22",
+          "role": "prompt",
+          "item_id": 22,
+          "sha256": "341766fd43f120f1503278e684e37137098e7e018866d4c79fb186ae2b4654d6"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "q22A",
+          "role": "option",
+          "item_id": 22,
+          "sha256": "d155719d511f4878c573e6327d8935e67950567d8dcc1a24cb578fdc5c9af56b"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "q22B",
+          "role": "option",
+          "item_id": 22,
+          "sha256": "13bd20c990033222544378cb63fb28e74bb5c15a600061842a6499485946de8b"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "q22C",
+          "role": "option",
+          "item_id": 22,
+          "sha256": "b30d34bb58d38aea526eadfa7f1cacaea9ffeab0c8d7749cc6ce7064cc4b8374"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "q22D",
+          "role": "option",
+          "item_id": 22,
+          "sha256": "79151b61ed46c853c0b987f1f10cfd693dcb2086a9a6824cdd4e4490506296bc"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "q23",
+          "role": "prompt",
+          "item_id": 23,
+          "sha256": "19bb59a872f080790acb658c8d75c1329d9dddc564ca05b31edbf11b56b8d998"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "q23A",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "05b85362ccc6479938ac8854012964fa6b496e27bcea2bcd9d88ca5954ea7dbb"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "q23B",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "28149fffba6b49152411b59d4a0f16306181415a2d854e42163ea8ec3709b15e"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "q23C",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "f47768abc3d3a37f410f4035442e31d53227a538c61756a56be495486a745d7a"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "q23D",
+          "role": "option",
+          "item_id": 23,
+          "sha256": "27145936cf368f4efbbd94dfb7210fc00d5803783de81abb109bfd26b7099f14"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "q24",
+          "role": "prompt",
+          "item_id": 24,
+          "sha256": "155dfb52cd59f56eac30dfe9839136bf93e67f3aad8dc9b866a6922e5ac01482"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "q24A",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "6feae25f2eb816f3c4b118ebc6bb0666d8d6e7d310e19031837803d26fa0df6c"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "q24B",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "a431dfbe6459905001e76c259bc1872f6233b23450492a599ff8540ad0f957f6"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "q24C",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "814561b6a55bfd260522191585630d87f124c39be929a8252965ea9ebaad3f52"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "q24D",
+          "role": "option",
+          "item_id": 24,
+          "sha256": "5271584956d7af9ed286634fb8a572e41fcb5c59ce31957d51a7e6910243464a"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "q25",
+          "role": "prompt",
+          "item_id": 25,
+          "sha256": "0696f1834f15c61c4fd42c1b46a27b88dc1d783236f00ef35d5257e8a23178a2"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "q25A",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "5fb48912401bc4b2673bf972751d4350852790748754abe6504ad142c65072b4"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "q25B",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "615777b29e0df0abf5ccd657308c86b240842c5e62216bd7235d62617909c21d"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            24,
+            "text"
+          ],
+          "id": "q25C",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "84d53a970b853ab71f65c3380861256710b31dcb7ec067ef8f4bd2b729988f3c"
+        },
+        {
+          "pointer": [
+            "records",
+            3,
+            "components",
+            25,
+            "text"
+          ],
+          "id": "q25D",
+          "role": "option",
+          "item_id": 25,
+          "sha256": "9481c96b9c29a27b58bdcc6467388d4ed2b8cdd264ebcf99bca9b9a41b1d3dd0"
+        }
+      ],
+      "source_image_scopes": [
+        {
+          "page_mapping": [
+            4
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": [
+            4,
+            5
+          ],
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": 2,
+          "student_input_scope": "parentreading2points/15questions/30total only;no cloze copied"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "source_page_kind": "logical_paper_image",
+      "logical_paper_pages": [
+        4,
+        5
+      ],
+      "image_logical_page_sets": [
+        [
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "source_image_pixel_bindings": [
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0320261014.png",
+            "sha256": "6dc0085008a9fd07612a2b8579a6695fb2b9ed204b9f8da231e0d53969705c2f"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            4100,
+            1080,
+            6300
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0420261014.png",
+            "sha256": "257518c85e17a713984e193424ca3bf2c14c28be67073c6972b7b8da8cce152a"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            6150,
+            1080,
+            8350
+          ]
+        },
+        {
+          "image": {
+            "path": "build/english-benchmark-research-20261012/suzhou2024-official-paper-inspection-tile0120261014.png",
+            "sha256": "9fb3d0b415525abe7d5d9d34e6280e753b46028280106e503600fd2e2eca0d25"
+          },
+          "parent_id": "suzhou2024-official-english-paper-image20261014",
+          "pixel_box": [
+            0,
+            0,
+            1080,
+            2200
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "g9.2025.readingA",
+      "source_parent_id": "fuzhou2025-exam-bundle-public-full",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/fuzhou2025-exam-bundle-public-full.pdf",
+        "sha256": "d058fd4db0d94266bca4420b4749c2aa2e2c783d8e41a179d55989abdf0fee06"
+      },
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-table-reading-source-text20261015z-v0.1.json",
+        "sha256": "8ab384b578c15a54c86de2af862cff9bd32c34bad3f3ae3dbf2a537f847a4205"
+      },
+      "record_index": 4,
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/fuzhou2025-english-29.png",
+          "sha256": "564985d950660e7b23a816a79b65932a8e99ea303cbaa18b98610e34ca9cba7e"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/fuzhou2025-english-30.png",
+          "sha256": "d6595a2f2bf9adebeed112d706be71f35d6499c3cc0ba0838fd420504b9c0e2b"
+        }
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "fuzhou2025-exam-bundle-public-full",
+          "PDF_page": 29,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/fuzhou2025-english-29.png",
+            "sha256": "564985d950660e7b23a816a79b65932a8e99ea303cbaa18b98610e34ca9cba7e"
+          }
+        },
+        {
+          "parent_id": "fuzhou2025-exam-bundle-public-full",
+          "PDF_page": 30,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/fuzhou2025-english-30.png",
+            "sha256": "d6595a2f2bf9adebeed112d706be71f35d6499c3cc0ba0838fd420504b9c0e2b"
+          }
+        }
+      ],
+      "source_policy": {
+        "required_marks": [],
+        "source_table": {
+          "kind": "numbered_advice",
+          "row_count": 5,
+          "row_ids": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "label_component_ids": [
+            "label1",
+            "label2",
+            "label3",
+            "label4",
+            "label5"
+          ],
+          "advice_component_ids": [
+            "advice1",
+            "advice2",
+            "advice3",
+            "advice4",
+            "advice5"
+          ],
+          "circled_labels": [
+            "①",
+            "②",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "crossrow_question": 49,
+          "option_row_pairs": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ],
+          "material_component_ids": [
+            "body0",
+            "label1",
+            "advice1",
+            "label2",
+            "advice2",
+            "label3",
+            "advice3",
+            "label4",
+            "advice4",
+            "label5",
+            "advice5"
+          ]
+        },
+        "scientific_symbols": [
+          {
+            "component_id": "advice3",
+            "text": "CO₂",
+            "source_subscript": "₂"
+          }
+        ],
+        "source_defects": [
+          "five rows not five independentpassages;Q49pairs/circledids linked to table not romantextzero options",
+          "waterminutes/foodfraction/carbon advice not independentlyfactualgold;sourceCO2subscript retained"
+        ],
+        "reading_layout_version": "0.1",
+        "source_features": {
+          "items": 5,
+          "options_each": 4,
+          "genre": "five_numbered_environment_advice_rows",
+          "functions": [
+            "explicit_detail",
+            "conditional_repair",
+            "advice",
+            "cross_row_category",
+            "publication_domain"
+          ],
+          "numbered_rows_required": true,
+          "existing_private_group": "research.fujian2025.readingA"
+        },
+        "optional_source_component": false,
+        "source_points_each_explicit": 2,
+        "source_own_total_explicit": null,
+        "parent_reading_points": 40,
+        "parent_reading_responses": 20,
+        "source_facts_keys_not_validated": true
+      },
+      "components": [
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            0,
+            "text"
+          ],
+          "id": "body0",
+          "role": "passage",
+          "sha256": "454f9ffba8176872f5084edda3fed3c7665c9f4405b38e52381b8391ce77a970"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            1,
+            "text"
+          ],
+          "id": "label1",
+          "role": "table_header",
+          "sha256": "4276e56518eef162e9d0c1caa0f575c6c786b185a2795c9d5781c930c3bc45ba"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            2,
+            "text"
+          ],
+          "id": "advice1",
+          "role": "table_cell",
+          "sha256": "c5003c858269b9dfff095ba0300e3c50992b5ec3eaf4c58fc1302c5202139aed"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            3,
+            "text"
+          ],
+          "id": "label2",
+          "role": "table_header",
+          "sha256": "782e224164dff399e99f6b8fe496aff6119f91837897ad47cf02987b426e2e19"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            4,
+            "text"
+          ],
+          "id": "advice2",
+          "role": "table_cell",
+          "sha256": "4ded2d40668ac52f3e73ab2a9ee42b1ce5010c176da52c047ebbb445f08d1a34"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            5,
+            "text"
+          ],
+          "id": "label3",
+          "role": "table_header",
+          "sha256": "908692d0cd2e05c6ddfe1b1b2391f5d815f3549c4a074b6646c01394a572ea7d"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            6,
+            "text"
+          ],
+          "id": "advice3",
+          "role": "table_cell",
+          "sha256": "9f22ae0d1727ee3996b5a051b39a3dab464c82f619a58ea5a623295ffd2d6113"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            7,
+            "text"
+          ],
+          "id": "label4",
+          "role": "table_header",
+          "sha256": "fc82a956ce554e58bb253e552a1ce5567fb12f434001d9fd3d23481134cba04c"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            8,
+            "text"
+          ],
+          "id": "advice4",
+          "role": "table_cell",
+          "sha256": "94ebd00d4297add29e80bf7e6691dad32d6e8a14556436c80af2820ee8ba95df"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            9,
+            "text"
+          ],
+          "id": "label5",
+          "role": "table_header",
+          "sha256": "0dcc32c759381ba24fd8bb3b30102bfb432dbfa7716611b3ce574f6b9b566545"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            10,
+            "text"
+          ],
+          "id": "advice5",
+          "role": "table_cell",
+          "sha256": "ed1dd9317c17cb764ff06be7c949a09f0a3c913fcee9027ed6d55f0446cd0aba"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            11,
+            "text"
+          ],
+          "id": "q46",
+          "role": "prompt",
+          "item_id": 46,
+          "sha256": "a514f26105bc4df7bfb838fd8e2c6c02da8a1cd8312b6fbc7839942d6c2e1b67"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            12,
+            "text"
+          ],
+          "id": "q46A",
+          "role": "option",
+          "item_id": 46,
+          "sha256": "c207d84ea29836394298c29ef28093078a59c4aeb25a8d0bf80817f7e88b86b7"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            13,
+            "text"
+          ],
+          "id": "q46B",
+          "role": "option",
+          "item_id": 46,
+          "sha256": "221e9d701289a1fa3db8588de265dec356eeb91582194affac64edb6f9fc5b1c"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            14,
+            "text"
+          ],
+          "id": "q46C",
+          "role": "option",
+          "item_id": 46,
+          "sha256": "6db936ccb519a69c1047b35cb62e67727fe0d450082043d9b829a5167f5e9532"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            15,
+            "text"
+          ],
+          "id": "q46D",
+          "role": "option",
+          "item_id": 46,
+          "sha256": "4845815d5040789a1e45d378deb9db4ff84b66c7feab30c1f68aac802f8ccbbb"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            16,
+            "text"
+          ],
+          "id": "q47",
+          "role": "prompt",
+          "item_id": 47,
+          "sha256": "59ae9121fcd9b9c9c8a2f4074c123f8acf5980f876adbe8276486137b2297469"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            17,
+            "text"
+          ],
+          "id": "q47A",
+          "role": "option",
+          "item_id": 47,
+          "sha256": "16136d621780f54fc0ee18235aa3b1ebe861e9165ebd9903080076093b2e9453"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            18,
+            "text"
+          ],
+          "id": "q47B",
+          "role": "option",
+          "item_id": 47,
+          "sha256": "58d316a5e203939385f4a094b6751e6a0e07085752f6cf29efeaf1f6d6394094"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            19,
+            "text"
+          ],
+          "id": "q47C",
+          "role": "option",
+          "item_id": 47,
+          "sha256": "2b426e5d1f706475a247ae764003de19cdfb55b32bea86d7e857258fdf5b15e2"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            20,
+            "text"
+          ],
+          "id": "q47D",
+          "role": "option",
+          "item_id": 47,
+          "sha256": "a4cce2192ff9def478a791d64af042a1bdf46d3c065e445cc3acfc56a86b3cd1"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            21,
+            "text"
+          ],
+          "id": "q48",
+          "role": "prompt",
+          "item_id": 48,
+          "sha256": "9fc5d3979f671f0c7239f5a4dbe2b848e1ce9f8cea4399ffa8853966d6c0e3b1"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            22,
+            "text"
+          ],
+          "id": "q48A",
+          "role": "option",
+          "item_id": 48,
+          "sha256": "b9b828f88f67f03bb26fe5e85332ac07428647994e563e8ef80c9b8fea227edf"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            23,
+            "text"
+          ],
+          "id": "q48B",
+          "role": "option",
+          "item_id": 48,
+          "sha256": "cedf40c1508a7fb24e876b67b88d4e9d8ed9a7eee19bd1f20a5aaedecea14023"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            24,
+            "text"
+          ],
+          "id": "q48C",
+          "role": "option",
+          "item_id": 48,
+          "sha256": "0b30c3e2cfc6d88b7b2b0da519cac7822942802f1e03ea8ecc883e4e585751b6"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            25,
+            "text"
+          ],
+          "id": "q48D",
+          "role": "option",
+          "item_id": 48,
+          "sha256": "c4a1c9c4be4c247a79c5bb3b1ed38e4ab70ead5e5305bc5865e7f42fdc02b953"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            26,
+            "text"
+          ],
+          "id": "q49",
+          "role": "prompt",
+          "item_id": 49,
+          "sha256": "f22ba177611f0ad1d37033f9c1bcd178a991146949d024093720633ef076fcd5"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            27,
+            "text"
+          ],
+          "id": "q49A",
+          "role": "option",
+          "item_id": 49,
+          "sha256": "791d01f52c859960c40aaa545914e7a1bd28a61e561e15713bc3f94367a7857c"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            28,
+            "text"
+          ],
+          "id": "q49B",
+          "role": "option",
+          "item_id": 49,
+          "sha256": "fbd2ad97742115e167ee2d3aadc565cec3b2fe6db2b50f1bbc2b032aa3f8ab48"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            29,
+            "text"
+          ],
+          "id": "q49C",
+          "role": "option",
+          "item_id": 49,
+          "sha256": "7a9099a0935af204dd261f67e67d358e2a072afc373e08bee30c854c98f00899"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            30,
+            "text"
+          ],
+          "id": "q49D",
+          "role": "option",
+          "item_id": 49,
+          "sha256": "c2f9d7706fe394ee7d0ddce729358498441b50201805d8b0673a079b339b4196"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            31,
+            "text"
+          ],
+          "id": "q50",
+          "role": "prompt",
+          "item_id": 50,
+          "sha256": "6b434d6ad424462a9b7c9093ec81d12abe15f916635be7c9a2048f378a1e4b56"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            32,
+            "text"
+          ],
+          "id": "q50A",
+          "role": "option",
+          "item_id": 50,
+          "sha256": "f337cb01471d61e621e97eb201264412ffdb1b61e4b38fa6fc2111de3f63897d"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            33,
+            "text"
+          ],
+          "id": "q50B",
+          "role": "option",
+          "item_id": 50,
+          "sha256": "9fa9f14bb78dd3b02d649d80584c81d7e570ee80bfef3e7d0052f5c749088518"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            34,
+            "text"
+          ],
+          "id": "q50C",
+          "role": "option",
+          "item_id": 50,
+          "sha256": "e4b25ac6a9ba9eeb063ce09e068fb8a7f48a1de3516f367c803d4b910162bd08"
+        },
+        {
+          "pointer": [
+            "records",
+            4,
+            "components",
+            35,
+            "text"
+          ],
+          "id": "q50D",
+          "role": "option",
+          "item_id": 50,
+          "sha256": "1de4d5e45470f6ed73c69f78c4e5256d0566f076a437a352085552547f0a103e"
+        }
+      ],
+      "source_image_scopes": [
+        {
+          "page_mapping": 29,
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        },
+        {
+          "page_mapping": 30,
+          "student_input_scope": "complete selected text/table/questions/options and ownillustration;cropoverlap transcribedonce;neighbors excluded"
+        }
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "PDF_pages": [
+        29,
+        30
+      ]
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}
