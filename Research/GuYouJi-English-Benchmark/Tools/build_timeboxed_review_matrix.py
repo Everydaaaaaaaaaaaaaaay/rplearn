@@ -73,6 +73,8 @@ def build(additional_indexes=(), version='0.1'):
                 raise ValueError('Ambiguous/crossgrade authored mapping')
             if any(s and '.simulated.' in s for s in anchors):
                 support = 'simulated_source_form_reference_not_ordinary_school_replication'
+            if row.get('prototype_required_source_panels_missing'):
+                support = 'author_designed_prototype_not_source_full_mode_verified'
             family = next(iter(found))[1]
             candidates.append({'id': row['id'], 'grade': grade, 'family': family,
                                'questions': row.get('questions', audit['questions']),
@@ -91,7 +93,7 @@ def build(additional_indexes=(), version='0.1'):
         cell = {k: original[k] for k in ['grade', 'family', 'observation_state', 'source_group_ids', 'input_states']}
         cell['label'] = LABELS[cell['family']]
         matched = [c for c in candidates if c['grade'] == cell['grade'] and c['family'] == cell['family']]
-        matched.sort(key=lambda c: (c['source_form_support'].startswith('simulated_'), not c['in_previous_showcase'], c['id']))
+        matched.sort(key=lambda c: (c['source_form_support'].startswith(('simulated_', 'author_designed_prototype_')), not c['in_previous_showcase'], c['id']))
         cell['existing_authored_candidates'] = matched
         if original['observation_state'] != 'observed':
             if matched:
@@ -101,6 +103,8 @@ def build(additional_indexes=(), version='0.1'):
             cell['delivery_state'] = 'needs_complete_original_representative'
         elif all(c['source_form_support'].startswith('simulated_') for c in matched):
             cell['delivery_state'] = 'existing_simulated_anchor_candidate_needs_ordinary_source_form_review'
+        elif all(c['source_form_support'].startswith('author_designed_prototype_') for c in matched):
+            cell['delivery_state'] = 'author_prototype_source_mode_pending'
         else:
             cell['delivery_state'] = 'existing_complete_candidate_needs_review_UI'
         cell['selected_representative_id'] = matched[0]['id'] if matched else None

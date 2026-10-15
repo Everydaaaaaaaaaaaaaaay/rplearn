@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "status": "in_progress_bounded_delivery",
+  "status": "closeout_bounded_delivery",
   "scope": "grades7_to12_only",
   "user_authorized_maximum_hours": 12,
   "started_at_utc": "2026-10-15T16:18:47Z",
@@ -22,8 +22,8 @@
   ],
   "completion_unit": "one complete major task group per grade and observed task family;not one subquestion",
   "review_matrix": {
-    "path": "FirstRelease/timeboxed-review-matrix-v0.8.json",
-    "sha256": "f56104fc9a90f6d2d6f7c60540b700a942a0a77fc18c60ca291b53e0a2899173"
+    "path": "FirstRelease/timeboxed-review-matrix-v0.9.json",
+    "sha256": "9ad2e764973190d42efd05e08ddfbaf0926617cf00f8c1e2f51b252abfc76c14"
   },
   "current_standard": {
     "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
@@ -43,36 +43,38 @@
   "automatic_wakeup_interval_minutes": 30,
   "finish_action": "deliver consolidated report and review page,delete automation,wait for user quality review",
   "next_actions": [
-    "Use remaining1 missing originals plus0simulated cells; prioritize complete open reading/forms/profiles/continuations",
-    "Ordinary-source grade8 grammar representative now delivered; keep original simulated candidate and source input states unchanged",
-    "Missing required picture panels/counts must not be guessed; seek only targeted needed source evidence or label remaining gap/prototype distinctly",
-    "Preserve old69payloads and reuse unchanged browser evidence",
-    "Begin closeout by the saved cutoff regardless of remaining gaps"
+    "No further searching/new source acquisition or authored families; early closeout now begins before saved maximum cutoff",
+    "Refine review usability and recheck affected shared controls/remaining actual UI",
+    "Audit final reference and source-mode boundaries,authorial quality/duplication/load;freeze standard plus authored list",
+    "Deliver70preview tasks with69source-form/1pending prototype distinction;list hearing and independent/commercial/production gaps;delete automation"
   ],
   "new_author_index": {
-    "path": "FirstRelease/Timeboxed/authored-review-index-v0.7.json",
-    "sha256": "0c5722922327121940120779a23caee1f2e75030d22bdc5a4aa787d861626526"
+    "path": "FirstRelease/Timeboxed/authored-review-index-v0.8.json",
+    "sha256": "e25df2e0ad79cf30d17ecb94ceec6d9264d056acc88297cc342dcfc829a5146c"
   },
   "review_page_url": "http://127.0.0.1:8766/build/english-benchmark-quality-review/index.html",
-  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.8.json",
+  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.9.json",
   "current_progress": {
     "baseline_authors": 53,
-    "new_authors": 40,
-    "combined_authored_groups": 93,
-    "combined_response_positions": 600,
-    "preview_grade_family_cells": 69,
-    "preview_response_positions": 451,
+    "new_authors": 41,
+    "combined_authored_groups": 94,
+    "combined_response_positions": 601,
+    "preview_grade_family_cells": 70,
+    "preview_response_positions": 452,
     "source_positive_cells": 70,
-    "missing_original_cells": 1,
+    "missing_original_cells": 0,
     "simulated_anchor_only_cells_pending": 0,
     "source_unknown_cells": 74,
-    "all_current_preview_cells_browser_checked": 69,
-    "individual_browser_behavior_records": 101,
+    "all_current_preview_cells_browser_checked": 70,
+    "individual_browser_behavior_records": 103,
     "final_delivery_complete": false,
     "browser_evidence_reuse": {
-      "unchanged_prior_cells": 65,
-      "new_cells": 4,
-      "latest_specific_records": 10
-    }
-  }
+      "unchanged_prior_cells": 69,
+      "new_cells": 1,
+      "latest_specific_records": 2
+    },
+    "source_form_representative_cells": 69,
+    "prototype_source_mode_pending_cells": 1
+  },
+  "early_closeout_started_at_utc": "2026-10-15T18:21:23Z"
 }

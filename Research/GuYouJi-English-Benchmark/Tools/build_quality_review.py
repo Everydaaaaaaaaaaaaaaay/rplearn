@@ -115,7 +115,7 @@ def build(matrix_path, output):
     previous = {g['id']: g for g in prior}; groups, cells = {}, []
     for cell in matrix['cells']:
         state, group = cell['delivery_state'], None
-        if state == 'existing_complete_candidate_needs_review_UI':
+        if state in ['existing_complete_candidate_needs_review_UI', 'author_prototype_source_mode_pending']:
             meta = next(c for c in cell['existing_authored_candidates'] if c['id'] == cell['selected_representative_id'])
             load_ref(meta['candidate']); load_ref(meta['author_check'])
             if meta['id'] in previous:
@@ -132,7 +132,9 @@ def build(matrix_path, output):
                       'groupId': group['id'] if group else None})
     payload = {'version': '0.1', 'matrix_version': matrix['version'], 'cells': cells, 'groups': groups,
                'grades': list(range(7, 13)), 'preview_cells': len(groups), 'source_positive_cells': 70,
-               'preview_is_not_independent_quality_pass': True}
+               'preview_is_not_independent_quality_pass': True,
+               'source_form_representative_cells': sum(c['state']=='existing_complete_candidate_needs_review_UI' for c in cells),
+               'prototype_source_mode_pending_cells': sum(c['state']=='author_prototype_source_mode_pending' for c in cells)}
     encoded = json.dumps(payload, ensure_ascii=False).replace('<', '\u003c').replace('>', '\u003e').replace('&', '\u0026')
     template = (BASE / 'Tools/quality_review_template.html').read_text()
     page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE / 'Tools/quality_review_interactions.js').read_text())
@@ -141,7 +143,9 @@ def build(matrix_path, output):
               'unknown_grade_family_cells': 74, 'complete_authored_tasks': len(groups),
               'response_positions': sum(len(g['questions']) for g in groups.values()),
               'new_timeboxed_authored_groups': matrix.get('new_timeboxed_authored_groups', 0),
-              'all_required_cells_delivered': len(groups) == 70,
+              'source_form_representative_cells': payload['source_form_representative_cells'],
+              'prototype_source_mode_pending_cells': payload['prototype_source_mode_pending_cells'],
+              'all_required_cells_delivered': len(groups) == 70 and not payload['prototype_source_mode_pending_cells'],
               'independent_student_commercial_or_production_validated': False,
               'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
     (output / 'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')

@@ -1,0 +1,94 @@
+{
+  "version": "0.1",
+  "id": "grade10-future-plans-picture-prototype",
+  "grade": 10,
+  "family": "picture_continuation",
+  "questions": 1,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade10-shenzhenlower2026-21cnjy26167651.pictureContinuation"
+  ],
+  "source_shape": {
+    "family": "picture_continuation",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "word_target": 70,
+      "target_relation": "about",
+      "supplied_openings": 1,
+      "necessary_input_complete": false
+    },
+    "grade": 10
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/writing-material-views-v0.2.json",
+      "sha256": "39a16c286725b170a89e08f16ebef202b046ff867a8b913479aa3af0bde31409"
+    },
+    "group_id": "grade10-shenzhenlower2026-21cnjy26167651.pictureContinuation",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+      "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+    },
+    "start_offset": 22679,
+    "end_offset": 22771,
+    "material_sha256": "b9dc6340b6cbed698e5e2f2adf943adff53aceaa64b8be24529c04834d7afbb4"
+  },
+  "source_frozen_input_state": false,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "使用给定首句，猜测并写出第三幅图的完整情节",
+      "options": [],
+      "parts": [
+        {
+          "label": "续写正文（不重复输入首句）",
+          "opening": "Mum tasted the soup I had made and asked what I planned to do next."
+        }
+      ],
+      "referenceAnswers": [
+        "Mum tasted the soup I had made and asked what I planned to do next. I told her about the college open day and showed her the course information. It included both classroom lessons and time in a training kitchen. I wanted to visit again and ask the tutor which skills I should practise first. Mum read the page, then offered to help me make a list of questions. I knew that enjoying cooking was only a beginning, but I now had a practical step to take."
+      ],
+      "rationale": "参考把培训信息、下一步行动与妈妈回应衔接；不要求必须成为厨师或凭一次展示立即获得职业资格。首句不计入约70词。此为作者设计图题原型，未核源原图的面板和角色。"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "本格是**作者设计原型，源完整图示模式待核**。已有高一源确有看图续写、猜测第三幅图、约70词和首句不计词数；但必要原图/角色未取得。这里由作者明确设计两幅已给＋第三幅留白和三人物，不能称为找回原图、源面板数已确认或经样本验证的完整模式；不升级冻结源necessary_input_complete=false。\n\n本稿自身学生输入完整：原创SVG、等价图示、角色、给定首句、词汇和一个完整输出域均绑定。可供用户看这种图题的出题效果，仍与69个有完整模式参照的普通代表分开计量。源参考示例称117字并与70左右不一致，也未作为新稿的合格长度标准。\n\n### 未评分参考续文\n\nMum tasted the soup I had made and asked what I planned to do next. I told her about the college open day and showed her the course information. It included both classroom lessons and time in a training kitchen. I wanted to visit again and ask the tutor which skills I should practise first. Mum read the page, then offered to help me make a list of questions. I knew that enjoying cooking was only a beginning, but I now had a practical step to take.\n\n### 作者检查点与反例\n\n续文应用第一人称，联系图2课程的学习与实践信息，说明下一步及家庭对话；结尾可有分歧，只要与人物行为和首句衔接。若只写“我立即成了著名厨师”，没有培训或行动桥梁，则不能用词汇华丽掩盖因果缺口。源总15分不能倒推出已验证的分析rubric。\n",
+  "figure_asset": {
+    "path": "FirstRelease/Timeboxed/grade10-future-plans-picture-prototype-v0.1.svg",
+    "sha256": "4990ac1e4fb1c046c05e022baa590d21d64d7b49ec04e8c1af5c79312d54ae44"
+  },
+  "prototype_required_source_panels_missing": true,
+  "author_designed_panel_count": 3,
+  "author_designed_given_panels": 2,
+  "source_panel_count": "unknown",
+  "source_role_assignments": "unknown",
+  "authored_student_inputs_complete": true,
+  "word_target": 70,
+  "target_relation": "about",
+  "given_opening_excluded_from_word_target": true,
+  "reference_new_body": "I told her about the college open day and showed her the course information. It included both classroom lessons and time in a training kitchen. I wanted to visit again and ask the tutor which skills I should practise first. Mum read the page, then offered to help me make a list of questions. I knew that enjoying cooking was only a beginning, but I now had a practical step to take.",
+  "reference_new_body_words": 72,
+  "reference_given_opening_words": 15,
+  "review_status": "author_prototype_source_mode_pending",
+  "canonical_response_block_sha256": "76801ef01c599a802858e6acc2014a709c9c3309cd2916f47a97cda0db7dc97f",
+  "candidate_path": "FirstRelease/Timeboxed/grade10-future-plans-picture-prototype-v0.1.md",
+  "candidate_sha256": "37f9f994d5435e3c60d5d59cdb56fb1af5636a9c8709f701ec5a7f4715f298da",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 34,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

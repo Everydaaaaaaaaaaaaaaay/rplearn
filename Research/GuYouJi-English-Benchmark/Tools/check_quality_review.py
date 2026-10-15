@@ -21,12 +21,12 @@ def check(page, matrix_path):
     assert len(data['cells']) == len(matrix['cells']) == 144
     assert len({(c['grade'], c['family']) for c in data['cells']}) == 144
     assert sum(c['observed'] for c in data['cells']) == 70
-    expected_preview_cells = sum(c['delivery_state'] == 'existing_complete_candidate_needs_review_UI' for c in matrix['cells'])
+    expected_preview_cells = sum(c['delivery_state'] in ['existing_complete_candidate_needs_review_UI','author_prototype_source_mode_pending'] for c in matrix['cells'])
     assert len(groups) == data['preview_cells'] == expected_preview_cells
     for cell, original in zip(data['cells'], matrix['cells']):
         assert (cell['grade'], cell['family'], cell['state']) == (original['grade'], original['family'], original['delivery_state'])
         if cell['groupId'] is None:
-            assert not original['delivery_state'] == 'existing_complete_candidate_needs_review_UI'
+            assert original['delivery_state'] not in ['existing_complete_candidate_needs_review_UI','author_prototype_source_mode_pending']
             continue
         g = groups[cell['groupId']]
         meta = next(c for c in original['existing_authored_candidates'] if c['id'] == cell['groupId'])
@@ -53,6 +53,7 @@ def check(page, matrix_path):
     return {'cases': cases, 'complete_task_controls': len(cases), 'preview_cells':len(groups),'source_positive_cells':70,
             'unknown_cells':74,'missing_authored_cells':sum(c['delivery_state']=='needs_complete_original_representative' for c in matrix['cells']),
             'simulated_source_only_cells_not_delivered':sum(c['delivery_state'].startswith('existing_simulated') for c in matrix['cells']),
+            'prototype_source_mode_pending_cells':sum(c['delivery_state']=='author_prototype_source_mode_pending' for c in matrix['cells']),
             'response_positions':sum(len(g['questions']) for g in groups.values()),'writing_grade_coverage':list(range(7,13)),
             'required_embedded_passage_images_SHA_checked':images,'source_count_increment':0,
             'independent_teacher_student_commercial_or_production':False}
