@@ -77,6 +77,14 @@ def check(page):
         group_sha=lambda value:hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
         assert all(group_sha(base['groups'][key])==value for key,value in delta['unchanged_group_sha256'].items())
         preserved(base);preserved({'groups':delta['new_groups']})
+        # Incremental freezes retain prior new groups by reference, without copying their payloads.
+        seen=set()
+        while delta.get('previous_delta'):
+            previous=delta['previous_delta']
+            assert previous['sha256'] not in seen, 'Cyclic review delta chain'
+            seen.add(previous['sha256'])
+            delta=json.loads(load_ref(previous).read_text())
+            preserved({'groups':delta['new_groups']})
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
@@ -171,6 +179,17 @@ def check(page):
             assert len({tuple(tuple(p) for p in q['options']) for q in group['questions']})==1
             assert audit['source_observation']['source_reuse_rule']=='not_explicit'
             assert '只用一次' not in text.split('## 作者核对')[0]
+        if meta['grade']=='primary5' and meta['family']=='sentence_choice':
+            source=next(g for g in source_batch['groups'] if g['id']==audit['source_group_id'])
+            native=json.loads(load_ref(source['source_native']).read_text())
+            load_ref(source['source_html'])
+            assert [q['number'] for q in native['selected_questions']]==source['source_numbers']==list(range(4,9))
+            assert len(group['questions'])==source['responses']==5
+            assert all([p[0] for p in q['options']]==list('ABC') for q in group['questions'])
+            assert [q['stem'].count('____') for q in group['questions']]==audit['authored_blank_counts']==source['source_blank_counts']
+            assert [q['answer'] for q in group['questions']]==audit['author_answer_vector']
+            assert source['source_key_not_independent_gold'] and not source['school_exam_authentication']
+            assert not group['requiredPassageImages'] and group['sourceFormNotice']
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     return {'levels':16,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),

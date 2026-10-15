@@ -1,0 +1,171 @@
+{
+  "version": "0.1",
+  "id": "primary5-five-situation-choices",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "f57f0fa72ae21bd8345919b8c97a2a1065befd3b29f73234e5ad6a19f07b1d81",
+  "canonical_response_block_sha256": "ad493f6ba481fa90e7855796d62a4ac05dee1547de2b15802728bfe95613edac",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "After lunch, please ____ these cups: put them in their box.",
+      "options": [
+        [
+          "A",
+          "wake up"
+        ],
+        [
+          "B",
+          "put away"
+        ],
+        [
+          "C",
+          "take off"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "后文明确要求把杯子放进盒子，put away表示收好。A唤醒不能用于此处杯子收纳；C脱下/起飞不表达放进盒子。"
+    },
+    {
+      "number": 2,
+      "stem": "The bus leaves at 8:00 and arrives at 8:30. It leaves ____ eight, and the journey takes ____ minutes.",
+      "options": [
+        [
+          "A",
+          "at, thirty"
+        ],
+        [
+          "B",
+          "in, thirty"
+        ],
+        [
+          "C",
+          "at, sixty"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "具体钟点前用at，8:00到8:30为30分钟，A两项同时成立；B把钟点介词误为in；C的60分钟与明确时间差冲突。两个空合为一次选择。"
+    },
+    {
+      "number": 3,
+      "stem": "I have one brother. This blue coat belongs to him. It is ____, not ____.",
+      "options": [
+        [
+          "A",
+          "his, my"
+        ],
+        [
+          "B",
+          "him, mine"
+        ],
+        [
+          "C",
+          "his, mine"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "belongs to him明确所有人为兄弟，独立作表语用his；not后没有名词，用mine。A的my缺后接名词；B的him是宾格，不是所有格。两个空合为一次选择。"
+    },
+    {
+      "number": 4,
+      "stem": "Our school play starts next Friday. I ____ ready by then.",
+      "options": [
+        [
+          "A",
+          "was"
+        ],
+        [
+          "B",
+          "will be"
+        ],
+        [
+          "C",
+          "will have"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "by then指向明确的未来演出时间，will be ready表示届时准备好。A的was是过去时，与该未来时间不合；C的will have后不能直接用形容词ready充当完整谓语，此处没有宾语。"
+    },
+    {
+      "number": 5,
+      "stem": "—Thank you for carrying my heavy bag.\n—____.",
+      "options": [
+        [
+          "A",
+          "You're welcome"
+        ],
+        [
+          "B",
+          "I'm sorry I'm late"
+        ],
+        [
+          "C",
+          "Happy birthday"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A直接回应感谢；B为迟到致歉，题面无迟到信息且未回应谢意；C为生日祝福，题面无生日信息。仅在所给候选内比较最佳回应。"
+    }
+  ],
+  "source_index": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+    "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+  },
+  "source_group_id": "primary5.luohu2026.monthly.public.singlechoice",
+  "source_observation": {
+    "source_responses": 5,
+    "source_numbers": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "options_each": 3,
+    "source_blank_counts": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "original_section_title": "not_visible;contiguous independent block",
+    "score": "unknown",
+    "source_key_not_gold": true
+  },
+  "authored_blank_counts": [
+    1,
+    2,
+    2,
+    1,
+    1
+  ],
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_words": 0,
+    "stem_English_words": 55,
+    "candidate_English_words": 31,
+    "instruction_English_words": 0,
+    "metric": "alphabeticEnglishwordswithapostrophes;stemsincludeallsituationmaterial;digitsnotcounted;noindependentpassage"
+  },
+  "authored_student_inputs_complete": true,
+  "necessary_media": false,
+  "response_protocol": "one printed A/B/C per independent task;double gaps one compound label;no free prose",
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "source_identity_not_school_authentication": true,
+  "all_candidates_reviewed": true,
+  "pre_freeze_editorial_corrections": [
+    "put away before full noun phrase;do not insert put away before pronoun them",
+    "future adjective predicate removes optional prop-possession reading"
+  ]
+}

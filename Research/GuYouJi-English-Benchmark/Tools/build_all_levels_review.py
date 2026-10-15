@@ -112,6 +112,7 @@ def main(output):
                                 'number_word_completion':'看单词，填对应的阿拉伯数字。',
                                 'word_picture_choice':'看单词，从同号行的三个图片中选择对应的一项。',
                                 'dialogue_matching':'为每个问句选择合适的答句。',
+                                'sentence_choice':'选择每题最合适的一项；两个空的题目仍只选择一次。',
                                 'reading_choice':'阅读短文，选择每题最合适的一项。',
                                 'choice_cloze':'阅读短文，为第1—8空选择最合适的一项。例0已答，不计作答点。'}[meta['family']]
         if meta['grade']=='advanced':
@@ -120,6 +121,8 @@ def main(output):
             group['sourceFormNotice']='来源为一年级旧公开练习的完整数字词题组，原学校与年份未知；本稿数字规范化协议不代表源卷阅卷规则。'
         if meta['grade']=='primary2':
             group['sourceFormNotice']='参考二年级公开转载的完整形式，原学校、考试年份及源键未知；图片词汇有明确适配改编，未建立全国年级或学生难度标定。'
+        if meta['grade']=='primary5':
+            group['sourceFormNotice']='参考第三方五年级下学期月考练习标签中的连续五道三选题；原校、实际施测与原分值未知，不当学校认证或全国难度标准。'
         added.append((group, meta['family']))
     cells = {(c['grade'], c['family']): c for c in data['cells']}
     labels = {c['family']: c['label'] for c in data['cells']}
