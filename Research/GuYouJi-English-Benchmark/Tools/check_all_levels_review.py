@@ -26,7 +26,9 @@ def check(page):
             if key in held:
                 assert key not in data['groups']
                 assert value['candidate']==held[key]['candidate'] and value['author_check']==held[key]['author_check']
-                cells=[c for c in data['cells']if c['grade']==value['grade']and c['family']==value['kind']]
+                # Legacy generated grammar payloads use kind=language; the matrix
+                # retains their concrete passage_form family in the pinned hold.
+                cells=[c for c in data['cells']if c['grade']==value['grade']and c['family']==held[key]['family']]
                 assert len(cells)==1 and cells[0]['observed'] and cells[0]['groupId'] is None
                 assert cells[0]['state']=='paused_requires_semantic_adjudication' and cells[0]['pauseReason']
             else:
