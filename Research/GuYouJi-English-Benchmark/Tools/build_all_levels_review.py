@@ -123,6 +123,10 @@ def main(output):
             group['sourceFormNotice']='参考二年级公开转载的完整形式，原学校、考试年份及源键未知；图片词汇有明确适配改编，未建立全国年级或学生难度标定。'
         if meta['grade']=='primary5':
             group['sourceFormNotice']='参考第三方五年级下学期月考练习标签中的连续五道三选题；原校、实际施测与原分值未知，不当学校认证或全国难度标准。'
+        if meta['grade']=='postgraduate' and meta['family']=='shared_bank':
+            group['fixedSharedBank']=True
+            group['instruction']='从15个固定词项中为完整10空选择字母；每项最多一次，词形不变。'
+            group['sourceFormNotice']='形式复用已核官方2016六级样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。'
         added.append((group, meta['family']))
     cells = {(c['grade'], c['family']): c for c in data['cells']}
     labels = {c['family']: c['label'] for c in data['cells']}
@@ -134,6 +138,14 @@ def main(output):
         data['groups'][group['id']] = group
         cells[key] = {'grade': group['grade'], 'family': family, 'label': labels[family], 'observed': True,
                       'state': 'existing_complete_candidate_needs_review_UI', 'groupId': group['id']}
+    cet_index_path = BASE/'CET/selected-official-sample-groups-v0.1.json'
+    data['existing_CET_source_index'] = ref(cet_index_path)
+    for source in json.loads(cet_index_path.read_text())['groups']:
+        if source['kind'] == 'word_bank_cloze':
+            key = (source['level'], 'shared_bank')
+            cells.setdefault(key, {'grade': source['level'], 'family': 'shared_bank', 'label': labels['shared_bank'],
+                                   'observed': True, 'state': 'source_observed_author_pending', 'groupId': None,
+                                   'source_group_ids': [source['id']]})
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
                      'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
                      for level in data['grades'] for family, label in labels.items()]

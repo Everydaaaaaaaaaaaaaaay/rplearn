@@ -2,7 +2,9 @@
 
 **最新授权（2026-10-16）：** 用户要求删除全部旧定时任务并新建全档位任务。已删除`12`、`12-2`、`lingotrip-13`，启用`lingotrip-16-13`；执行[全16档限时计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)与[全档客观题范围策略](FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json)。覆盖启蒙、小一至高三、大学英语四级/六级、高级英语；主观题仍不收集不出题。今天12:00转收尾、13:00前交付并删除任务。中学49组/390回应为继承基线，其他档位尚须重新筛选和扩充，不称全部已交付。下方仅中学限制/任务状态是历史，已由本授权取代。
 
-当前全档第七批：[暂停清单0.2](FirstRelease/DeterministicMarking/concrete-group-holds-v0.2.json)新增4完整组45回应暂停：过去习惯、隐含比较/习惯will、完成被动分词均有原参考外合法回填；不补一词限制、不截组。当前15档57完整大题/390回应，累计9组93回应暂停，中学40组297回应；其余44中学填空位仍未认证穷尽。全档累计8新原创组/48回应及来源6选定组/38回应/4父源标签不变，源观察、原稿和历史保留。见[模式0.6](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.6.json)与[本批研究](Studies/2026-10-16-tense-aspect-counterexamples-and-whole-group-holds.md)。
+当前全档第八批：[新作者索引0.7](FirstRelease/AllLevels/authored-additions-v0.7.json)增加六级一篇272英文词、10空/15固定词项完整原创词库选择；复用已核官方源，不新增来源计数。当前15档58完整大题/400回应，累计9新原创组/58回应；9组93回应暂停不变。词形不变/每项最多一次/五项不用，完整回填与同类干扰反证绑定；页面以10个选择框保留15共享候选，已实际核验选择、切换保留、解析与重置。四级相同已核源型改为“待补题”，不再误记未知。学前两个定向官方入口仍缺原音频/脚本，不凑完整稿。见[模式0.7](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.7.json)与[本批研究](Studies/2026-10-16-CET6-fixed-bank-and-preschool-audio-boundary.md)。
+
+历史全档第七批：[暂停清单0.2](FirstRelease/DeterministicMarking/concrete-group-holds-v0.2.json)新增4完整组45回应暂停：过去习惯、隐含比较/习惯will、完成被动分词均有原参考外合法回填；不补一词限制、不截组。当时15档57完整大题/390回应，累计9组93回应暂停，中学40组297回应；其余44中学填空位仍未认证穷尽。全档累计8新原创组/48回应及来源6选定组/38回应/4父源标签不变，源观察、原稿和历史保留。见[模式0.6](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.6.json)与[本批研究](Studies/2026-10-16-tense-aspect-counterexamples-and-whole-group-holds.md)。
 
 历史全档第六批：[新作者索引0.6](FirstRelease/AllLevels/authored-additions-v0.6.json)增加小五连续五情境三选完整代表，当时15档61组/435回应；全档累计8新原创组/48回应。来源[批次0.3](FirstRelease/AllLevels/selected-source-batch-v0.3.json)累计6选定组/38回应/4父源标签；本批月考练习转载不当原校施测认证，缺原段落标题/分值不补造，源键歧义及混合主观组分开暂缓。小五新组与高级阅读均已实际浏览器切换、选答、展开解析核验，当时五暂停组仍停；学前原音频/脚本仍缺。见[模式0.5](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.5.json)与[本批研究](Studies/2026-10-16-primary5-situation-choices-and-source-key-boundaries.md)。
 

@@ -39,6 +39,14 @@ def check(page):
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
     assert not(set(c['family']for c in data['cells']) & set(policy['paused_families']))
     assert {c['groupId']for c in data['cells']if c['groupId']}==set(data['groups'])
+    if data.get('existing_CET_source_index'):
+        cet=json.loads(load_ref(data['existing_CET_source_index']).read_text())
+        for source in cet['groups']:
+            if source['kind']=='word_bank_cloze':
+                cell=next(c for c in data['cells'] if c['grade']==source['level'] and c['family']=='shared_bank')
+                assert cell['observed'], 'Existing complete source cannot become unknown merely because no author is delivered'
+                if not cell['groupId']:
+                    assert cell['state']=='source_observed_author_pending' and source['id'] in cell['source_group_ids']
     acqs=json.loads((BASE/'Registry/acquisitions.json').read_text())['acquisitions']
     old_record=next(a for a in json.loads((BASE/'Registry/processing.json').read_text())['runs'] if a['id']=='objective-scope-owner-correction-20261016-v0.1')
     frozen=next(r for r in old_record['page_records']if r['output'].endswith('.html'))
@@ -129,11 +137,24 @@ def check(page):
             for q in group['questions']:
                 filled={label:q['prefix']+value+q['suffix']for label,value in q['options']}
                 assert [label for label,value in filled.items()if value==q['completion_target']]==[q['answer']]
-        if meta['family']=='shared_bank':
+        if meta['family']=='shared_bank' and meta['grade']=='primary4':
             assert audit['source_observation']['source_reuse_rule']=='not_explicit'
             student=text.split('## 学生题面')[1].split('## 作者核对')[0]
             assert '只用一次'not in student
             assert all(len(q['options'])==5 for q in group['questions'])
+        if meta['family']=='shared_bank' and meta['grade']=='postgraduate':
+            assert len(group['questions'])==10 and all(len(q['options'])==15 for q in group['questions'])
+            assert len(audit['shared_bank'])==15 and audit['fixed_bank_forms']
+            assert audit['source_observation']['source_reuse_rule']=='explicit_max_once'
+            assert len(set(audit['author_answer_vector']))==10
+            assert [q['answer'] for q in group['questions']]==audit['author_answer_vector']
+            assert set(audit['unused_bank_labels'])==set('ABCDEFGHIJKLMNO')-set(audit['author_answer_vector'])
+            assert all(q['options']==audit['shared_bank'] for q in group['questions'])
+            assert re.findall(r'\((\d+)\)',audit['student_passage'])==[str(n) for n in range(1,11)]
+            assert audit['student_passage'] in text and len(audit['all150_candidate_pairs'])==10
+            assert all(len(row['candidate_review'])==15 for row in audit['all150_candidate_pairs'])
+            load_ref(audit['source_observation']['source_input_preparation'])
+            assert group['sourceFormNotice'] and audit['source_level_equivalence_established'] is False
         if meta['family']=='number_word_completion':
             assert len(group['questions'])==8
             assert all(not q['options'] and q['knownForms'] for q in group['questions'])
