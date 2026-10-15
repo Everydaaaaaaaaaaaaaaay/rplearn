@@ -1,10 +1,10 @@
 {
   "version": "0.1",
-  "status": "active",
+  "status": "superseded_by_all16_owner_scope",
   "owner_authorized_on": "2026-10-16",
   "scope": "grades7to12_deterministically_markable_tasks_only",
   "automation_id": "lingotrip-13",
-  "automation_status": "ACTIVE",
+  "automation_status": "DELETED",
   "stop_expansion_local": "2026-10-16 12:00:00",
   "deliver_by_local": "2026-10-16 13:00:00",
   "timezone": "Asia/Shanghai",
@@ -32,5 +32,6 @@
     "path": "FirstRelease/DeterministicMarking/baseline49-admissibility-inventory-v0.1.json",
     "sha256": "cf2fcbd3e9f5dc693eea6dd8c9a3918904a75b74bc8555935befb5e672760d8b"
   },
-  "latest_progress": "subjective scope correction applied;49 preview groups/390responses;253choice and137form positions classified with grading admission still pending;priority fill contract audit"
+  "latest_progress": "user expanded to all16 and replaced every automation;this grades7to12-only plan is historical",
+  "successor_plan": "FirstRelease/AllLevelsObjectiveRun-2026-10-16.json"
 }
