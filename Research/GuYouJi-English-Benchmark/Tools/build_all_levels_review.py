@@ -123,10 +123,11 @@ def main(output):
             group['sourceFormNotice']='参考二年级公开转载的完整形式，原学校、考试年份及源键未知；图片词汇有明确适配改编，未建立全国年级或学生难度标定。'
         if meta['grade']=='primary5':
             group['sourceFormNotice']='参考第三方五年级下学期月考练习标签中的连续五道三选题；原校、实际施测与原分值未知，不当学校认证或全国难度标准。'
-        if meta['grade']=='postgraduate' and meta['family']=='shared_bank':
+        if meta['grade'] in ['undergraduate', 'postgraduate'] and meta['family']=='shared_bank':
             group['fixedSharedBank']=True
             group['instruction']='从15个固定词项中为完整10空选择字母；每项最多一次，词形不变。'
-            group['sourceFormNotice']='形式复用已核官方2016六级样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。'
+            cet_label='四级' if meta['grade']=='undergraduate' else '六级'
+            group['sourceFormNotice']='形式复用已核官方2016'+cet_label+'样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。'
         added.append((group, meta['family']))
     cells = {(c['grade'], c['family']): c for c in data['cells']}
     labels = {c['family']: c['label'] for c in data['cells']}

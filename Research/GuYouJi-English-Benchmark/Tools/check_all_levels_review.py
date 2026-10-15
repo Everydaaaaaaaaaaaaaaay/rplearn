@@ -142,7 +142,7 @@ def check(page):
             student=text.split('## 学生题面')[1].split('## 作者核对')[0]
             assert '只用一次'not in student
             assert all(len(q['options'])==5 for q in group['questions'])
-        if meta['family']=='shared_bank' and meta['grade']=='postgraduate':
+        if meta['family']=='shared_bank' and meta['grade'] in ['undergraduate','postgraduate']:
             assert len(group['questions'])==10 and all(len(q['options'])==15 for q in group['questions'])
             assert len(audit['shared_bank'])==15 and audit['fixed_bank_forms']
             assert audit['source_observation']['source_reuse_rule']=='explicit_max_once'
