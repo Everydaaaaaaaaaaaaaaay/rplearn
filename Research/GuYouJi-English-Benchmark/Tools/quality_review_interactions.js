@@ -31,7 +31,7 @@ function render(){
   el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
-el('coverage').textContent='当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
+el('coverage').textContent=reviewData.current_scope_policy?'当前范围展示 '+reviewData.preview_cells+' 道完整大题；需AI判断的主观题已暂停，不计当前覆盖缺口。':'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
 const families=[...new Set(reviewData.cells.map(c=>c.family))];
 el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(reviewData.cells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=reviewData.cells.find(c=>c.grade===grade&&c.family===f);return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
 el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(Number(b.dataset.grade),b.dataset.family);};

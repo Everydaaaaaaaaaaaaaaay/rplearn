@@ -26875,6 +26875,42 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "objective-scope-owner-correction-20261016-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "build_quality_review + check_quality_review + actual browser",
+      "tool_version": "0.1",
+      "parameters": [
+        "owner paused AI-marked subjective families;49full tasks390responses;21historicalpreviewgroups excluded;originals immutable;UI and refs checked;no production marking admission"
+      ],
+      "pages": 4,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/objective-scope-controls20261016-v0.1.json",
+          "bytes": 5134,
+          "sha256": "9b820575beae69757c78c59c75ddff116e6e16f76aed995f07bf646f638edeb2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/objective-scope-browser20261016-v0.1.txt",
+          "bytes": 4847,
+          "sha256": "4c73840a61c4b6ce0b5cb6cb0260432fa654b5d909bfe7988d097f23ae85da47",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/objective-scope-preview20261016-v0.1.png",
+          "bytes": 70790,
+          "sha256": "318736ad8b01201d0dee69629d0c29dad9bb7ca7102ae33361d85b6d05d927d1",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/objective-scope-page20261016-v0.1.html",
+          "bytes": 652823,
+          "sha256": "ac40491987f485abc8e73f823922ed8be3bd016123c11c9408417c978fa2218e",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

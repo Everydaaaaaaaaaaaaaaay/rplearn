@@ -106,14 +106,19 @@ def full_markdown_candidate(meta):
             'reviewText': teacher, 'requiredPassageImages': images, 'author_review_not_independent': True}
 
 
-def build(matrix_path, output):
+def build(matrix_path, output, historical_scope=False):
     matrix = json.loads(matrix_path.read_text())
     if matrix['scope'] != 'grades7_to12_timeboxed_quality_review_inventory' or len(matrix['cells']) != 144:
         raise ValueError('Review matrix scope differs')
+    policy_path = BASE / 'FirstRelease/CurrentTaskScope-2026-10-16.json'
+    policy = None if historical_scope else json.loads(policy_path.read_text())
+    paused = set(policy['paused_families']) if policy else set()
     frozen = load_ref(FROZEN_PAGE).read_text()
     prior = json.loads(re.search(r'<script id="showcase-data" type="application/json">(.*?)</script>', frozen, re.S)[1])
     previous = {g['id']: g for g in prior}; groups, cells = {}, []
     for cell in matrix['cells']:
+        if cell['family'] in paused:
+            continue
         state, group = cell['delivery_state'], None
         if state in ['existing_complete_candidate_needs_review_UI', 'author_prototype_source_mode_pending']:
             meta = next(c for c in cell['existing_authored_candidates'] if c['id'] == cell['selected_representative_id'])
@@ -131,7 +136,9 @@ def build(matrix_path, output):
                       'observed': cell['observation_state'] == 'observed', 'state': state,
                       'groupId': group['id'] if group else None})
     payload = {'version': '0.1', 'matrix_version': matrix['version'], 'cells': cells, 'groups': groups,
-               'grades': list(range(7, 13)), 'preview_cells': len(groups), 'source_positive_cells': 70,
+               'grades': list(range(7, 13)), 'preview_cells': len(groups), 'source_positive_cells': sum(c['observed'] for c in cells),
+               'current_scope_policy': {'path': str(policy_path.relative_to(BASE)), 'sha256': hashlib.sha256(policy_path.read_bytes()).hexdigest()} if policy else None,
+               'paused_subjective_families': sorted(paused),
                'preview_is_not_independent_quality_pass': True,
                'source_form_representative_cells': sum(c['state']=='existing_complete_candidate_needs_review_UI' for c in cells),
                'prototype_source_mode_pending_cells': sum(c['state']=='author_prototype_source_mode_pending' for c in cells)}
@@ -139,13 +146,16 @@ def build(matrix_path, output):
     template = (BASE / 'Tools/quality_review_template.html').read_text()
     page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE / 'Tools/quality_review_interactions.js').read_text())
     output.mkdir(parents=True, exist_ok=True); (output / 'index.html').write_text(page)
-    report = {'preview_grade_family_cells': len(groups), 'source_positive_grade_family_cells': 70,
-              'unknown_grade_family_cells': 74, 'complete_authored_tasks': len(groups),
+    report = {'preview_grade_family_cells': len(groups), 'source_positive_grade_family_cells': payload['source_positive_cells'],
+              'unknown_grade_family_cells': sum(not c['observed'] for c in cells), 'complete_authored_tasks': len(groups),
+              'paused_subjective_families': sorted(paused),
+              'paused_historical_preview_cells': sum(c['family'] in paused and c['observation_state']=='observed' for c in matrix['cells']),
               'response_positions': sum(len(g['questions']) for g in groups.values()),
-              'new_timeboxed_authored_groups': matrix.get('new_timeboxed_authored_groups', 0),
+              'historical_timeboxed_authored_groups': matrix.get('new_timeboxed_authored_groups', 0),
               'source_form_representative_cells': payload['source_form_representative_cells'],
               'prototype_source_mode_pending_cells': payload['prototype_source_mode_pending_cells'],
-              'all_required_cells_delivered': len(groups) == 70 and not payload['prototype_source_mode_pending_cells'],
+              'all_current_source_observed_cells_have_preview': len(groups) == payload['source_positive_cells'] and not payload['prototype_source_mode_pending_cells'],
+              'deterministic_marking_production_validated': False,
               'independent_student_commercial_or_production_validated': False,
               'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
     (output / 'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
@@ -156,4 +166,5 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--matrix', type=Path, required=True)
     p.add_argument('--output', type=Path, default=REPO / 'build/english-benchmark-quality-review')
-    args = p.parse_args(); build(args.matrix.resolve(), args.output.resolve())
+    p.add_argument('--historical-scope', action='store_true', help='Reproduce the historical unfiltered delivery only')
+    args = p.parse_args(); build(args.matrix.resolve(), args.output.resolve(), args.historical_scope)

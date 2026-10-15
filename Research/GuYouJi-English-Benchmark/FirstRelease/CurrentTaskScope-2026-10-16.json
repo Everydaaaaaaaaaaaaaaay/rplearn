@@ -1,0 +1,27 @@
+{
+  "version": "0.1",
+  "owner_instruction": "作文这一类需要AI判断对错的主观题，暂时不收集、不出题、不纳入当前交付要求。",
+  "scope": "grades7to12_tasks_amenable_to_deterministic_marking",
+  "paused_families": [
+    "application_writing",
+    "read_then_continue",
+    "picture_continuation",
+    "sentence_translation",
+    "open_reading_response",
+    "mixed_reading_response",
+    "open_table_completion",
+    "dialogue_open_completion"
+  ],
+  "pause_rationale": "这些现有完整组包含自由表达、语义等价、开放观点或非穷尽答案集合；不能把少量参考答案当作全部合法答案，也不裁掉主观子题冒充原完整组。",
+  "retained_tasks": "选择、配对、判断、受约束词汇/语法/词库填空；具体新题须先有可靠确定性答案和允许变体规则。",
+  "admission_rule": "仅有knownForms或参考答案不构成确定性判分已验证；若合法答案无法可靠列举、需语义或整体质量判断，则暂停该具体模式或完整组。",
+  "pause_actions": [
+    "no_new_acquisition",
+    "no_new_authoring",
+    "exclude_from_current_preview",
+    "exclude_from_current_required_gaps"
+  ],
+  "historical_files": "preserve_unchanged_as_inactive_reference;not_current_work_or_coverage_requirements",
+  "remaining_preview_is_not_production_marking_verified": true,
+  "automation": "new_owner_authorization:lingotrip-13 active through 2026-10-16 13:00 Asia/Shanghai;subjective pause remains"
+}

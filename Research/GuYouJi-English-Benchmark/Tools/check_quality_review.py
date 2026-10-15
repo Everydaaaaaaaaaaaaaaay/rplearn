@@ -18,17 +18,27 @@ def check(page, matrix_path):
     data = extract(page); matrix = json.loads(matrix_path.read_text())
     previous = json.loads(re.search(r'<script id="showcase-data" type="application/json">(.*?)</script>', load_ref(FROZEN_PAGE).read_text(), re.S)[1])
     old = {g['id']: g for g in previous}; cases = []; groups = data['groups']; images = 0
-    assert len(data['cells']) == len(matrix['cells']) == 144
-    assert len({(c['grade'], c['family']) for c in data['cells']}) == 144
-    assert sum(c['observed'] for c in data['cells']) == 70
-    expected_preview_cells = sum(c['delivery_state'] in ['existing_complete_candidate_needs_review_UI','author_prototype_source_mode_pending'] for c in matrix['cells'])
+    paused = set()
+    if data.get('current_scope_policy'):
+        policy = json.loads(load_ref(data['current_scope_policy']).read_text())
+        paused = set(policy['paused_families'])
+        assert set(data['paused_subjective_families']) == paused
+    matrix_cells = [c for c in matrix['cells'] if c['family'] not in paused]
+    assert len(matrix['cells']) == 144
+    assert len(data['cells']) == len(matrix_cells)
+    assert len({(c['grade'], c['family']) for c in data['cells']}) == len(matrix_cells)
+    assert sum(c['observed'] for c in data['cells']) == data['source_positive_cells']
+    expected_preview_cells = sum(c['delivery_state'] in ['existing_complete_candidate_needs_review_UI','author_prototype_source_mode_pending'] for c in matrix_cells)
     assert len(groups) == data['preview_cells'] == expected_preview_cells
-    for cell, original in zip(data['cells'], matrix['cells']):
+    for cell, original in zip(data['cells'], matrix_cells):
         assert (cell['grade'], cell['family'], cell['state']) == (original['grade'], original['family'], original['delivery_state'])
         if cell['groupId'] is None:
             assert original['delivery_state'] not in ['existing_complete_candidate_needs_review_UI','author_prototype_source_mode_pending']
             continue
         g = groups[cell['groupId']]
+        if paused:
+            assert all(q.get('options') or q.get('knownForms') for q in g['questions'])
+            assert not any(q.get('parts') or q.get('referenceAnswers') for q in g['questions'])
         meta = next(c for c in original['existing_authored_candidates'] if c['id'] == cell['groupId'])
         audit = json.loads(load_ref(meta['author_check']).read_text())
         assert g['grade'] == cell['grade'] == audit['grade']
@@ -49,12 +59,12 @@ def check(page, matrix_path):
             images += 1
         cases.append({'case': str(cell['grade'])+'/'+cell['family']+' complete pinned task', 'passed': True})
     assert {g['grade'] for g in groups.values()} == set(range(7,13))
-    assert all(any(c['grade']==grade and c['family']=='application_writing' and c['groupId'] for c in data['cells']) for grade in range(7,13))
-    return {'cases': cases, 'complete_task_controls': len(cases), 'preview_cells':len(groups),'source_positive_cells':70,
-            'unknown_cells':74,'missing_authored_cells':sum(c['delivery_state']=='needs_complete_original_representative' for c in matrix['cells']),
-            'simulated_source_only_cells_not_delivered':sum(c['delivery_state'].startswith('existing_simulated') for c in matrix['cells']),
-            'prototype_source_mode_pending_cells':sum(c['delivery_state']=='author_prototype_source_mode_pending' for c in matrix['cells']),
-            'response_positions':sum(len(g['questions']) for g in groups.values()),'writing_grade_coverage':list(range(7,13)),
+    assert not any(c['family'] in paused for c in data['cells'])
+    return {'cases': cases, 'complete_task_controls': len(cases), 'preview_cells':len(groups),'source_positive_cells':data['source_positive_cells'],
+            'unknown_cells':sum(not c['observed'] for c in data['cells']),'missing_authored_cells':sum(c['delivery_state']=='needs_complete_original_representative' for c in matrix_cells),
+            'simulated_source_only_cells_not_delivered':sum(c['delivery_state'].startswith('existing_simulated') for c in matrix_cells),
+            'prototype_source_mode_pending_cells':sum(c['delivery_state']=='author_prototype_source_mode_pending' for c in matrix_cells),
+            'response_positions':sum(len(g['questions']) for g in groups.values()),'paused_subjective_families':sorted(paused),
             'required_embedded_passage_images_SHA_checked':images,'source_count_increment':0,
             'independent_teacher_student_commercial_or_production':False}
 
