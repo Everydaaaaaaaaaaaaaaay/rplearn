@@ -71580,6 +71580,100 @@
       "bytes_saved": 0,
       "error": "Transfer manually cancelled while reading;no sample body saved or verified.",
       "review_scope": "official preparation page links paper1 zip;do not pair independent digital key or infer bodyyear;no source group admission"
+    },
+    {
+      "id": "cambridge-c1-container-sizebound20261016",
+      "url": "https://www.cambridgeenglish.org/Images/174025-advanced-2015-sample-papers-1.zip",
+      "accessed_on": "2026-10-16",
+      "status": "not_acquired",
+      "review_scope": "26MB request cap rejected36912182byte archive before body saved;then public ranges select objective members only",
+      "attempt": "ordinary_public_request_max45seconds26MB",
+      "bytes_saved": 0,
+      "error": "curl56 maximum file size exceeded"
+    },
+    {
+      "id": "cambridge-c1-rue2022-member20261016",
+      "url": "https://www.cambridgeenglish.org/Images/174025-advanced-2015-sample-papers-1.zip",
+      "accessed_on": "2026-10-16",
+      "status": "acquired",
+      "review_scope": "Exact original zip member,CRC32 and stable ETag checked via public byte ranges;bodycopyright2022,metadata2023;only Part1 pp2-3 visually reviewed,no whole56gold",
+      "retrieval": "ordinary_public_HTTP206_IfMatch_member_original_bytes",
+      "source_zip_member": "advanced-sample-papers-1/advanced-sample-papers-1/C1 Advanced sample paper 1 RUE 2022.pdf",
+      "whole_container_sha256": "not_obtained",
+      "format_validation": "PDFmagic_pypdf16pages",
+      "page_count": 16,
+      "path": "build/english-benchmark-research-20261012/c1-paper1-RUE2022-original20261016.pdf",
+      "bytes": 468949,
+      "sha256": "041d57d2784e54d32f67964a64d8a1bf753bd899f7a4964e99bd0fbbb94ae98b"
+    },
+    {
+      "id": "cambridge-c1-objective-keypage20261016",
+      "url": "https://www.cambridgeenglish.org/Images/174025-advanced-2015-sample-papers-1.zip",
+      "accessed_on": "2026-10-16",
+      "status": "derived_selected_source_page",
+      "review_scope": "Physical page1 of same-container answer-key member;keymetadata2014;Part1 vector checked against2022paper;Q6 nearsemantic A/B pending independent review;subjective scripts fromuninspected newmember not retained",
+      "source_member_sha256": "0a6ed96e6eb4f5b7ff5c963d58b6170caed9d8634c8bf45e81b48e60147d7bf1",
+      "source_physical_page": 1,
+      "format_validation": "PDFmagic_pypdf1page",
+      "page_count": 1,
+      "path": "build/english-benchmark-research-20261012/c1-paper1-objective-key-page1-extract20261016.pdf",
+      "bytes": 40203,
+      "sha256": "fb8749d3b3fff047adf2cef581996112f90cd22a4ec1f5e08294f620bd048611"
+    },
+    {
+      "id": "primary1-xuehai-native-request20261016",
+      "url": "https://doc.xuehai.net/b9dc901952219f78b4b63a585.html",
+      "accessed_on": "2026-10-16",
+      "status": "not_acquired",
+      "review_scope": "Direct nativeHTTP426;no bypass;rendered public selectednumber section available through connector",
+      "bytes_saved": 0,
+      "error": "HTTP426"
+    },
+    {
+      "id": "primary1-xuehai-number-section20261016",
+      "url": "https://doc.xuehai.net/b9dc901952219f78b4b63a585.html",
+      "accessed_on": "2026-10-16",
+      "status": "derived_connector_selected_section",
+      "review_scope": "Complete8word textsection observed from publicrender;not nativeHTML or authenticatedschool/key;yearunknown",
+      "path": "build/english-benchmark-research-20261012/primary1-xuehai-selected-section20261016-v0.1.json",
+      "bytes": 821,
+      "sha256": "a7fc658a958bacbe714875353cf5c1a8dd42ff520a6432e5c5e30e6a6ca4b4c6",
+      "format_validation": "UTF8_JSON_selected_connector_observation_not_native_page"
+    },
+    {
+      "id": "primary2-bzxz-upper-native20261016",
+      "url": "https://www.bzxz.net/tech/d16fc562464579b60.html",
+      "accessed_on": "2026-10-16",
+      "status": "acquired",
+      "review_scope": "Publicheader and5previewlinks;paperbodygrade2upper and PEPnewstartingpoint;webdate2026notexamyear;not schoolauthenticated",
+      "path": "build/english-benchmark-research-20261012/primary2-bzxz-upper-native20261016.html",
+      "bytes": 20480,
+      "sha256": "1d351708d3d2f5251afd828dfa63f773118bcff716f4735c79f387ef7776019c",
+      "format_validation": "HTML_UTF8_title_and_linked_previews_checked"
+    },
+    {
+      "id": "primary2-bzxz-upper-preview01-20261016",
+      "url": "https://www.bzxz.net/files/img/20260129/20260129120237262.jpg",
+      "accessed_on": "2026-10-16",
+      "status": "acquired",
+      "review_scope": "Actual printedpages1/2of5 reviewed;selectedwordpicture6threeoptions plus matching5full inputs;fatherrole/NewYear visualrisk held;no sourcekey/wholepaper claim",
+      "format_validation": "JPEG_opened_visual_review",
+      "physical_page": 1,
+      "path": "build/english-benchmark-research-20261012/primary2-bzxz-upper-preview01-20261016.jpg",
+      "bytes": 88193,
+      "sha256": "df467dcf0727d6d182253e8e23e48cc8a592ec1f449a5021e489ef2644c9c8ee"
+    },
+    {
+      "id": "primary2-bzxz-upper-preview02-20261016",
+      "url": "https://www.bzxz.net/files/img/20260129/20260129120241597.jpg",
+      "accessed_on": "2026-10-16",
+      "status": "acquired",
+      "review_scope": "Actual printedpages1/2of5 reviewed;selectedwordpicture6threeoptions plus matching5full inputs;fatherrole/NewYear visualrisk held;no sourcekey/wholepaper claim",
+      "format_validation": "JPEG_opened_visual_review",
+      "physical_page": 2,
+      "path": "build/english-benchmark-research-20261012/primary2-bzxz-upper-preview02-20261016.jpg",
+      "bytes": 93076,
+      "sha256": "632d4a4c1bb4ad6d9c5259eecbb362ab4bf94b2d3ab19523684f03e475701833"
     }
   ],
   "updated_on": "2026-10-15"

@@ -91,15 +91,23 @@ def main(output):
                       'reading_choice' if 'choice' in kind or 'four_options' in kind else
                       'dialogue_matching' if kind in ['five_shared_response_matching', 'five_gaps_five_sentences_or_clause'] else 'shared_bank')
             group = inherited(meta, acquisitions, family); added.append((group, family)); inherited_count += 1
-    additions_path = BASE/'FirstRelease/AllLevels/authored-additions-v0.1.json'
+    plan = json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
+    additions_path = load_ref(plan['current_authored_additions'])
     additions = json.loads(additions_path.read_text())
+    source_batch = json.loads(load_ref(additions['this_batch_source_index']).read_text()) if additions.get('this_batch_source_index') else {}
     for meta in additions['candidates']:
         group = full_markdown_candidate(meta)
-        group['instruction'] = '选择正确的字母组合。' if meta['family'] == 'letter_completion' else '从共享词或短语中选择合适的一项。'
+        group['instruction'] = {'letter_completion':'选择正确的字母组合。', 'shared_bank':'从共享词或短语中选择合适的一项。',
+                                'number_word_completion':'看单词，填对应的阿拉伯数字。',
+                                'choice_cloze':'阅读短文，为第1—8空选择最合适的一项。例0已答，不计作答点。'}[meta['family']]
+        if meta['grade']=='advanced':
+            group['sourceFormNotice']='高级档候选模式：参考已核C1样卷完整形式，尚未建立产品高级档与C1等值或目标人群难度标定。'
+        if meta['grade']=='primary1':
+            group['sourceFormNotice']='来源为一年级旧公开练习的完整数字词题组，原学校与年份未知；本稿数字规范化协议不代表源卷阅卷规则。'
         added.append((group, meta['family']))
     cells = {(c['grade'], c['family']): c for c in data['cells']}
     labels = {c['family']: c['label'] for c in data['cells']}
-    labels.update(letter_completion='字母组合补全', table_reading_choice='表格信息单选')
+    labels.update(letter_completion='字母组合补全', table_reading_choice='表格信息单选', number_word_completion='数字词转数字')
     for group, family in added:
         key = (group['grade'], family)
         if key in cells and cells[key].get('groupId'):
@@ -123,7 +131,10 @@ def main(output):
     report = {'version': '0.1', 'level_count': 16, 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
               'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
               'new_authored_groups': additions['new_authored_groups'], 'new_authored_responses': additions['new_response_positions'],
-              'historical_nonmiddle_authors_newly_displayed': inherited_count, 'source_parent_increment': 0,
+              'historical_nonmiddle_authors_newly_displayed': inherited_count,
+              'latest_selected_source_groups': source_batch.get('new_selected_groups', 0),
+              'latest_selected_source_parent_identities': source_batch.get('new_parent_identities', 0),
+              'middle_source_totals_unchanged': True,
               'source_mode_and_age_calibration_not_established_for_unobserved_cells': True,
               'independent_student_commercial_production_admission': False, 'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
     (output/'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')

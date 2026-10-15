@@ -1,0 +1,253 @@
+{
+  "version": "0.1",
+  "id": "advanced-catalogue-evidence-cloze",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "b2bcfbb930823f31e481f31b3b600285cd7304f96a9418756cb99900f3998f1b",
+  "canonical_response_block_sha256": "13d91fdd0ffea2f6facb4d61c2a8dd3cc5b4e376ec2cd07dc13e0121d1ebf896",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "sketch"
+        ],
+        [
+          "B",
+          "draw"
+        ],
+        [
+          "C",
+          "pull"
+        ],
+        [
+          "D",
+          "trace"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "draw a distinction为作出区分；sketch/pull/trace不能表达这里的固定区分操作。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "drop"
+        ],
+        [
+          "B",
+          "hang"
+        ],
+        [
+          "C",
+          "cast"
+        ],
+        [
+          "D",
+          "hold"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "cast doubt on为使人怀疑；其余动词不构成本句常规搭配。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "credit"
+        ],
+        [
+          "B",
+          "notice"
+        ],
+        [
+          "C",
+          "explanation"
+        ],
+        [
+          "D",
+          "account"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "take...into account表示纳入考量；其他名词不与本句take/into组成该结构。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "short"
+        ],
+        [
+          "B",
+          "small"
+        ],
+        [
+          "C",
+          "brief"
+        ],
+        [
+          "D",
+          "low"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "fall short of an aim表示达不到目标；small/brief/low不构成本结构。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "charge"
+        ],
+        [
+          "B",
+          "line"
+        ],
+        [
+          "C",
+          "control"
+        ],
+        [
+          "D",
+          "order"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "bring...into line with表示与证据保持一致；charge/control/order不能接with evidence表达同一关系。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "carry"
+        ],
+        [
+          "B",
+          "wear"
+        ],
+        [
+          "C",
+          "load"
+        ],
+        [
+          "D",
+          "bear"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "bear in mind为记住/考虑；carry/wear/load在此不能替代此固定短语。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "extent"
+        ],
+        [
+          "B",
+          "balance"
+        ],
+        [
+          "C",
+          "proportion"
+        ],
+        [
+          "D",
+          "relation"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "out of proportion to表示反应与问题不成比例；extent/balance/relation不能替代此惯用程度关系。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "tentative"
+        ],
+        [
+          "B",
+          "arbitrary"
+        ],
+        [
+          "C",
+          "incidental"
+        ],
+        [
+          "D",
+          "conclusive"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "尚有部分未抽样且可修改，因此结论是暂定tentative；arbitrary称随意、incidental称附带，不表达证据暂缺；conclusive与rather than final及可修订矛盾。"
+    }
+  ],
+  "source_index": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.1.json",
+    "sha256": "e2b8119d9d0ca34f8725d70537423194a4b44b33f40fbe5975d28704d19e346a"
+  },
+  "source_group_id": "advanced.cambridge.c1.paper1.2022.part1",
+  "source_observation": {
+    "source_responses": 8,
+    "source_options_each": 4,
+    "source_passages": 1,
+    "source_solved_examples": 1,
+    "source_physical_pages": [
+      2,
+      3
+    ],
+    "source_body_copyright": 2022,
+    "source_key_Q6_near_semantic_risk_not_used_as_new_answer": true
+  },
+  "authored_student_inputs_complete": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "answered_examples": 1,
+  "example_options": [
+    [
+      "A",
+      "undertake"
+    ],
+    [
+      "B",
+      "occupy"
+    ],
+    [
+      "C",
+      "engage"
+    ],
+    [
+      "D",
+      "follow"
+    ]
+  ],
+  "example_key": "A",
+  "student_passage": "Rivergate Archive decided to (0) undertake a review of its public catalogue. The committee was asked to (1) ______ a distinction between factual errors and disagreements about interpretation. A disputed view could not simply be treated as a typing mistake.\n\nSeveral inaccurate dates did (2) ______ doubt on the checking process, but did not show that every description was unreliable. The committee took their number and distribution into (3) ______ before proposing a remedy. Checking only the most popular records would fall (4) ______ of assessing the catalogue as a whole.\n\nStaff proposed sampling every section and bringing their recommendations into (5) ______ with the evidence. Readers should (6) ______ in mind that short entries cannot reproduce whole documents. An omission was not automatically an attempt at concealment.\n\nThe committee wanted neither to dismiss criticism nor to respond out of (7) ______ to demonstrated problems. With several sections still unsampled, its conclusions remained (8) ______ rather than final. Further findings could justify revision without making the completed work worthless.",
+  "source_level_equivalence_established": false,
+  "revision_count": 1,
+  "previous_candidate": {
+    "path": "FirstRelease/AllLevels/advanced-catalogue-evidence-cloze-v0.1.md",
+    "sha256": "106b31b819bc96cb0b9051c6eb8242dede8f2ba5c28a47b4ad648445c218a3f9"
+  },
+  "revision_reason": "Closer workload to selected154-word source body;210-word first author body reduced while retaining8gaps,example0,all options and arguments;single-source length is a reference not a universal range"
+}

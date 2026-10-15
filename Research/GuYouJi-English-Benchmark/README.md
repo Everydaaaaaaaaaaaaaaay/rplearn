@@ -2,7 +2,9 @@
 
 **最新授权（2026-10-16）：** 用户要求删除全部旧定时任务并新建全档位任务。已删除`12`、`12-2`、`lingotrip-13`，启用`lingotrip-16-13`；执行[全16档限时计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)与[全档客观题范围策略](FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json)。覆盖启蒙、小一至高三、大学英语四级/六级、高级英语；主观题仍不收集不出题。今天12:00转收尾、13:00前交付并删除任务。中学49组/390回应为继承基线，其他档位尚须重新筛选和扩充，不称全部已交付。下方仅中学限制/任务状态是历史，已由本授权取代。
 
-当前全档审阅增量：[新作者索引0.1](FirstRelease/AllLevels/authored-additions-v0.1.json)，全16档入口/12档有完整展示，共60组445回应；新增小三字母补全和小四共享词库2组10回应，另外9组小学/四级六级作者为历史复用，源父卷/结构不增。启蒙、小一、小二、高级仍明确缺口，小五模拟来源不冒称学校真卷。构建与核验以[全档计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)最新命令为准；本批见[研究记录](Studies/2026-10-16-all16-first-primary-objectives-and-inherited-review.md)。
+当前全档第二批：[新作者索引0.2](FirstRelease/AllLevels/authored-additions-v0.2.json)，14档有62完整组/461回应；本轮累计新增4原创组/26回应。本批新增小一数字词8项、高级C1形式参照8空；新核4完整来源组/27回应、3父源身份另层登记，中学306/41不变。高级不等C1产品标定，小一为旧公开练习参照；启蒙、小二仍缺原创代表，小二已取得必要原图但角色/节日题键暂缓。见[本批研究](Studies/2026-10-16-official-c1-range-selection-and-primary12-objectives.md)。
+
+历史首批全档审阅增量：[新作者索引0.1](FirstRelease/AllLevels/authored-additions-v0.1.json)，全16档入口/12档有完整展示，共60组445回应；新增小三字母补全和小四共享词库2组10回应，另外9组小学/四级六级作者为历史复用，源父卷/结构不增。启蒙、小一、小二、高级仍明确缺口，小五模拟来源不冒称学校真卷。构建与核验以[全档计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)最新命令为准；本批见[研究记录](Studies/2026-10-16-all16-first-primary-objectives-and-inherited-review.md)。
 
 **当前范围（2026-10-16用户重申）：** [确定性判分范围策略](FirstRelease/CurrentTaskScope-2026-10-16.json)优先于历史完整题型覆盖要求。作文、读后/看图续写、整句翻译、开放读答及含开放表达的混合组、非穷尽答案对话/表格均暂不收集、不编题，不列当前必补缺口。当前审阅页仅展示49完整组/390作答点，16类×6年级中的49观察格/47证据不足格；保留选择/配对/判断及受约束填空，不代表这些题已通过生产确定性判分验证。历史70组交付及原件保留为非活动参考。用户随后授权继续仅客观题扩样/出题至今天13:00，新[限时巩固计划](FirstRelease/ObjectiveReliabilityRun-2026-10-16.json)与自动任务`lingotrip-13`已启用，12:00起专门收尾；主观题暂停不变。
 

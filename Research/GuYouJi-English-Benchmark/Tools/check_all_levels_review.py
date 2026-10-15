@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 from grade_mode_evidence import BASE, REPO, load_ref
 from quality_review_contract import response_markdown
+from research_number_marking import correct_number
 
 
 def extract(page):
@@ -27,6 +28,13 @@ def check(page):
     prior_page=REPO/frozen['output'];assert hashlib.sha256(prior_page.read_bytes()).hexdigest()==frozen['sha256']
     old=extract(prior_page)
     assert all(data['groups'][key]==value for key,value in old['groups'].items()),'inherited49 complete payload changed'
+    first_run=next((r for r in json.loads((BASE/'Registry/processing.json').read_text())['runs']
+                    if r['id']=='all16-first-nonmiddle-objective-batch20261016-v0.1'),None)
+    if first_run:
+        frozen60=next(r for r in first_run['page_records']if r['output'].endswith('.html'))
+        p60=REPO/frozen60['output']
+        assert hashlib.sha256(p60.read_bytes()).hexdigest()==frozen60['sha256']
+        assert all(data['groups'][key]==value for key,value in extract(p60)['groups'].items()),'previous60 full inputs changed'
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
@@ -34,10 +42,26 @@ def check(page):
         assert not any(q.get('parts')or q.get('referenceAnswers')for q in group['questions'])
         assert all(q.get('answer')in [p[0]for p in q['options']]for q in group['questions']if q['options'])
     additions=json.loads(load_ref(data['extra_authored_index']).read_text())
+    if additions.get('this_batch_source_index'):
+        source_batch=json.loads(load_ref(additions['this_batch_source_index']).read_text())
+        assert len(source_batch['groups'])==source_batch['new_selected_groups']
+        assert sum(g['responses']for g in source_batch['groups'])==source_batch['new_response_positions']
+        assert len({g['source_parent_id']for g in source_batch['groups']})==source_batch['new_parent_identities']
+        official=next(g for g in source_batch['groups']if g['level']=='advanced')
+        load_ref(official['original_paper']);load_ref(official['objective_key_page'])
+        native=json.loads(load_ref(official['source_native']).read_text())
+        assert '2022' in native['paper_pages']['1'] and 'Copyright' in native['paper_pages']['1']
+        block=re.search(r'Q Part 1\s*(.*?)Q Part 2',native['key_text'],re.S)[1]
+        vector=re.findall(r'(?m)^([1-8])\s+([ABCD])\s*$',block)
+        assert [int(n)for n,_ in vector]==list(range(1,9))
+        assert [v for _,v in vector]==official['printed_source_vector']
+        for image in official['visuals']:
+            load_ref(image)
+        assert official['source_key_not_independent_gold']
     for meta in additions['candidates']:
         group=data['groups'][meta['id']];audit=json.loads(load_ref(meta['author_check']).read_text());text=load_ref(meta['candidate']).read_text()
         assert text.split('<!-- responses:start -->')[1].split('<!-- responses:end -->')[0].strip()==response_markdown(group['questions'])
-        assert audit['source_observation']['source_responses']==len(group['questions'])==5
+        assert audit['source_observation']['source_responses']==len(group['questions'])==meta['questions']
         load_ref(audit['source_index'])
         if meta['family']=='letter_completion':
             for q in group['questions']:
@@ -48,11 +72,26 @@ def check(page):
             student=text.split('## 学生题面')[1].split('## 作者核对')[0]
             assert '只用一次'not in student
             assert all(len(q['options'])==5 for q in group['questions'])
+        if meta['family']=='number_word_completion':
+            assert len(group['questions'])==8
+            assert all(not q['options'] and q['knownForms'] for q in group['questions'])
+            for q in group['questions']:
+                expected=q['knownForms'][0]
+                assert expected=={'seven':'7','two':'2','ten':'10','four':'4','nine':'9','three':'3','eight':'8','five':'5'}[q['stem']]
+                assert correct_number(' 00'+expected+' ',expected)
+                assert not correct_number(str(int(expected)+1),expected)
+            assert correct_number('２','2') and correct_number('٢','2')
+            assert not any(correct_number(value,'2') for value in ['', 'two', '2.0', '2 0', '2/1', '-2'])
+        if meta['family']=='choice_cloze':
+            assert len(group['questions'])==8 and all(len(q['options'])==4 for q in group['questions'])
+            assert audit['answered_examples']==1 and len(audit['example_options'])==4
+            assert re.findall(r'\((\d+)\)',audit['student_passage'])==[str(n)for n in range(9)]
+            assert audit['source_level_equivalence_established'] is False and group['sourceFormNotice']
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     return {'levels':16,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
             'old49_payload_unchanged':True,'no_subjective_or_partial_mixed_groups':True,'new_authored_groups':len(additions['candidates']),
-            'source_parent_or_group_increment':0,'simulated_primary5_source_warning_bound':True,
+            'middle_source_totals_unchanged':True,'simulated_primary5_source_warning_bound':True,
             'source_unknown_early_levels_not_filled_with_adult_text':True,'independent_student_commercial_production_admission':False}
 
 
