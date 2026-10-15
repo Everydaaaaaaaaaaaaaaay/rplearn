@@ -45,14 +45,24 @@ def transcribed_views(manifest):
             raise ValueError('Reviewed image binding missing')
         if case['student_text_reviewed_complete'] is not True or case['independent_transcription'] is not False or record['independent_gold']:
             raise ValueError('Review scope or gold status differs')
-        if len(case['source_images']) != len(source_pages):
+        page_sets = case.get('image_logical_page_sets') if logical_image else None
+        if page_sets is not None:
+            page_key = 'logical_paper_pages'
+            if not isinstance(page_sets, list) or any(not isinstance(group, list) or not group or any(type(p) is not int or p < 1 for p in group) for group in page_sets):
+                raise ValueError('Empty logical page coverage')
+            image_pages = page_sets
+            covered_pages = {p for group in page_sets for p in group}
+        else:
+            image_pages = case.get('image_logical_paper_pages', source_pages) if logical_image else source_pages
+            covered_pages = set(image_pages)
+        if len(case['source_images']) != len(image_pages) or covered_pages != set(source_pages):
             raise ValueError('Original page/image allocation incomplete')
         shared = case.get('shared_context_images', [])
         shared_pages = case.get('shared_context_pages', [])
         if len(shared) != len(shared_pages) or set(shared_pages) & set(source_pages):
             raise ValueError('Shared instruction page allocation differs')
         all_images = case['source_images'] + shared
-        all_pages = source_pages + shared_pages
+        all_pages = image_pages + shared_pages
         author_bindings = case.get('author_page_bindings')
         if author_bindings is not None:
             expected_bindings = [{'parent_id': case['source_parent_id'], page_key: page, 'image': image}
@@ -64,9 +74,10 @@ def transcribed_views(manifest):
             if len(matches) != 1:
                 raise ValueError('Unregistered source image')
             provenance = matches[0].get('derivation', {})
-            page_provenance = 'acquisition_id' in provenance or 'PDF_page' in provenance or 'pdf_page' in provenance
-            declared_page = provenance.get('PDF_page', provenance.get('pdf_page'))
-            if 'PDF_page' in provenance and 'pdf_page' in provenance and provenance['PDF_page'] != provenance['pdf_page']:
+            registered_pages = [provenance[k] for k in ['PDF_page', 'pdf_page', 'file_page'] if k in provenance]
+            page_provenance = 'acquisition_id' in provenance or bool(registered_pages)
+            declared_page = registered_pages[0] if registered_pages else None
+            if len(set(registered_pages)) > 1:
                 raise ValueError('Conflicting registered physical PDF page fields')
             if page_provenance and (provenance.get('acquisition_id') != case['source_parent_id'] or declared_page != page):
                 raise ValueError('Image belongs to another original source/page')
@@ -96,13 +107,15 @@ def transcribed_views(manifest):
         for binding, c in zip(case['components'], record['components']):
             if any(binding.get(k) != c.get(k) for k in ['id', 'role', 'item_id']) or digest(c['text']) != binding['sha256']:
                 raise ValueError('Source component binding differs')
-            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
+            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option', 'bank_entry', 'diagram_label', 'Chinese_meaning', 'initial_letter'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
                 raise ValueError('Private key/author reason is not student input')
             text = c['text']
             if c['role'] == 'passage':
                 parts.append(text)
                 if row['shape']['family'] == 'passage_form':
                     text = re.sub(r'_+\d+_+\s*\([^()]+\)', ' ', text)
+                text = re.sub(r'_+\d+_+', ' ', text)
+            if c['role'] == 'prompt' and row['shape']['family'] == 'context_word_completion':
                 text = re.sub(r'_+\d+_+', ' ', text)
             role = totals.setdefault(c['role'], {'english_digit_tokens': 0, 'han_characters': 0, 'components': 0})
             for k, v in count(text).items():
@@ -114,7 +127,31 @@ def transcribed_views(manifest):
             raise ValueError('Cloze blank sequence incomplete')
         if row['shape']['family'] == 'reading_choice' and totals.get('prompt', {}).get('components') != row['shape']['responses']:
             raise ValueError('Reading prompts incomplete')
-        if row['shape']['family'] == 'shared_insertion':
+        if row['shape']['family'] == 'context_word_completion':
+            units = record['units'];by_id = {c['id']: c for c in record['components']}
+            if parts or [u['printed_number'] for u in units] != record['item_ids'] or case['source_policy']['all_responses_limit_words'] != 1 or obs['features']['all_responses_limit_words'] != 1:
+                raise ValueError('One-word independent contexts differ')
+            used = []
+            for u in units:
+                n = u['printed_number'];prompt = by_id[u['prompt_component']];cue = by_id[u['cue_component']]
+                if prompt['role'] != 'prompt' or prompt['item_id'] != n or cue['item_id'] != n or u['word_limit'] != 1 or re.findall(r'_+(\d+)_+', prompt['text']) != [str(n)]:
+                    raise ValueError('Independent word prompt/cue/limit differs')
+                expected_role = 'Chinese_meaning' if n in obs['features']['Chinese_meaning_slots'] else 'initial_letter'
+                if cue['role'] != expected_role or (expected_role == 'initial_letter' and (cue['text'] != case['source_policy']['initial_letters'][str(n)] or cue['text'] + '__' + str(n) + '__' not in prompt['text'])):
+                    raise ValueError('Chinese/initial-letter cue belongs to another unit')
+                used += [prompt['id'], cue['id']]
+            if len(set(used)) != len(used) or set(used) != {c['id'] for c in record['components'] if c['role'] in ['prompt', 'Chinese_meaning', 'initial_letter']}:
+                raise ValueError('Word input omitted/reused')
+            body = '\n'.join(by_id[u['prompt_component']]['text'] for u in units)
+        elif row['shape']['family'] == 'shared_bank':
+            bank = [c for c in record['components'] if c['role'] == 'bank_entry'];policy = case['source_policy'];features = obs['features']
+            if len(parts) != 1 or blanks != record['item_ids'] or len(bank) != row['shape']['details']['entries'] or [c['text'] for c in bank] != policy['entries'] or not features['entry_once'] or policy['max_use_per_entry'] != 1 or not policy['correct_form_required'] or policy['all_responses_oneword'] or record['response_policy'] != 'word_or_phrase_correct_form_from_bank':
+                raise ValueError('Once-only word/phrase/form bank differs')
+            if totals.get('option') or totals.get('prompt') or totals.get('given_hint'):
+                raise ValueError('Bank is not per-response choice or grammar hints')
+            if features.get('illustrated_food_chain_required') and (not policy.get('necessary_food_chain_visual') or not totals.get('diagram_label')):
+                raise ValueError('Necessary food-chain visual/labels omitted')
+        elif row['shape']['family'] == 'shared_insertion':
             candidates = [c for c in record['components'] if c['role'] == 'shared_option']
             slots = record['slots'];policy = case['source_policy']
             if blanks != record['item_ids'] or [s['printed_number'] for s in slots] != blanks or len(parts) != 1 or any(totals.get(k) for k in ['option', 'prompt', 'given_hint']):
@@ -143,13 +180,14 @@ def transcribed_views(manifest):
             catalogue_ungiven = features.get('no_prompt_numbers', features.get('ungiven_slots'))
             if (catalogue_given is not None and expected_given != catalogue_given) or (catalogue_ungiven is not None and [n for n in blanks if n not in expected_given] != catalogue_ungiven):
                 raise ValueError('Grammar cue pattern conflicts with source catalogue')
-            if len(parts) != row['shape']['details']['materials'] or case['source_policy']['ungiven_word_limit'] != 1 or case['source_policy']['given_word_limit_explicit'] is not None:
+            given_limit = 1 if features.get('all_responses_limit_words') == 1 else None
+            if len(parts) != row['shape']['details']['materials'] or case['source_policy']['ungiven_word_limit'] != 1 or case['source_policy']['given_word_limit_explicit'] != given_limit:
                 raise ValueError('Whole grammar material/response policy differs')
             if [c['item_id'] for c in hints] != expected_given:
                 raise ValueError('Given word pattern differs')
             for slot in slots:
                 n = slot['printed_number'];given = n in expected_given
-                if slot['word_limit'] != (None if given else 1) or bool(slot['given_hint']) != given:
+                if slot['word_limit'] != (given_limit if given else 1) or bool(slot['given_hint']) != given:
                     raise ValueError('Given forms must not inherit the ungiven one-word limit')
                 if given:
                     cue = next(c for c in hints if c['id'] == slot['given_hint'])
@@ -184,9 +222,15 @@ def transcribed_views(manifest):
             records[-1].update(source_policy=policy, image_parent_page_binding='author_visual_binding_not_registered_derivation')
         if row['shape']['family'] in ['passage_form', 'shared_insertion']:
             layouts[gid]['slots'] = slots
+        if row['shape']['family'] == 'context_word_completion':
+            layouts[gid]['units'] = units
         if logical_image:
             layouts[gid].update(source_page_kind='logical_paper_image', logical_paper_pages=source_pages,
                                 source_image_pixel_bindings=pixels)
+            if 'image_logical_paper_pages' in case:
+                layouts[gid]['image_logical_paper_pages'] = image_pages
+            if page_sets is not None:
+                layouts[gid]['image_logical_page_sets'] = page_sets
             records[-1]['existing_crop_pixels_verified_against_original'] = True
     return records, bodies, layouts
 
