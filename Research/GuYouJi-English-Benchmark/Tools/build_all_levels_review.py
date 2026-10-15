@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""Extend the pinned middle-school review with complete objective author groups.
+
+Existing authors are reused, never counted as newly authored or new sources.
+Unobserved level/task cells stay unknown; subjective mixed groups stay inactive.
+"""
+import argparse
+import hashlib
+import json
+import re
+from pathlib import Path
+from build_quality_review import build, full_markdown_candidate
+from grade_mode_evidence import BASE, REPO, load_ref
+from showcase_rich_reading import material_view
+
+
+def ref(path):
+    return {'path': str(path.relative_to(BASE)) if path.is_relative_to(BASE) else str(path.relative_to(REPO)),
+            'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+
+
+def inherited(meta, acquisitions, family):
+    text = load_ref(meta['candidate']).read_text()
+    record = acquisitions[meta['author_check_acquisition_id']]
+    audit_path = REPO / record['path']
+    if hashlib.sha256(audit_path.read_bytes()).hexdigest() != record['sha256']:
+        raise ValueError('Changed historical audit')
+    a = json.loads(audit_path.read_text())
+    if a['candidate_sha256'] != meta['candidate']['sha256'] or meta.get('open_response_count', 0):
+        raise ValueError('Unbound candidate or subjective mixed group')
+    student, teacher = text.split('## 学生区', 1)[1].split('## 作者区', 1)
+    instruction = next(line.strip() for line in student.splitlines() if line.strip())
+    material = a.get('student_passage') or a.get('student_material') or ''
+    if a.get('student_turns'):
+        material = '\n\n'.join(speaker+': '+turn for speaker, turn in a['student_turns'])
+    if a.get('student_table_all_cells'):
+        table = a['student_table_all_cells']
+        material += '\n\n'+'\n'.join(['| '+' | '.join(table[0])+' |', '| '+' | '.join(['---']*len(table[0]))+' |']+
+                                    ['| '+' | '.join(row)+' |' for row in table[1:]])
+    shared = a.get('shared_options') or a.get('shared_candidates') or []
+    if shared:
+        material += '\n\n'+'\n'.join(letter+'. '+value for letter, value in shared)
+    vector = a['author_answer_vector']; questions = []
+    if a.get('student_items'):
+        for item, reason in zip(a['student_items'], a['reason_rows']):
+            questions.append({'number': item['number'], 'stem': item['prompt'], 'options': list(item['options'].items()),
+                              'answer': item['author_answer'], 'rationale': reason['support']+' '+reason['other_options']})
+    else:
+        prompts = a.get('student_prompts') or [[str(n), '第'+str(n)+'空'] for n in range(1, len(vector)+1)]
+        reasons = a.get('author_reason_rows') or a.get('author_choice_reason_rows') or a.get('author_25_candidate_pairs') or []
+        for n, ((_, prompt), answer) in enumerate(zip(prompts, vector), 1):
+            options = [(x['label'], x['text']) for x in a.get('student_options', []) if int(x['item_id']) == n]
+            if not options:
+                options = shared or [('T', '与短文一致'), ('F', '与短文不一致')]
+            reason = reasons[n-1] if len(reasons) == len(vector) else '完整逐候选作者核对见下方原稿。'
+            questions.append({'number': n, 'stem': re.sub(r'\(\s*\)\s*$', '', prompt).strip(),
+                              'options': options, 'answer': answer,
+                              'rationale': '；'.join(map(str, reason[1:])) if isinstance(reason, list) else str(reason)})
+    if len(questions) != meta['response_count'] or any(not q['options'] for q in questions):
+        raise ValueError('Incomplete objective response group')
+    return {'id': meta['id'], 'grade': meta['level'], 'kind': family, 'candidate': meta['candidate'],
+            'sourceFormNotice': '来源形式为公开模拟题，尚缺普通学校样本复现；不计真实考试认证。' if meta['level']=='primary5' else '',
+            'author_check': ref(audit_path), 'anchor_group_ids': [meta['source_group_id']], 'instruction': instruction,
+            'responseMode': 'complete_objective_historical_author', 'passageHtml': material_view(material),
+            'questions': questions, 'reviewHtml': material_view(teacher), 'reviewText': teacher,
+            'requiredPassageImages': [], 'author_review_not_independent': True}
+
+
+def main(output):
+    build(BASE/'FirstRelease/timeboxed-review-matrix-v0.9.json', output)
+    page = (output/'index.html').read_text()
+    data = json.loads(re.search(r'<script id="quality-data" type="application/json">(.*?)</script>', page, re.S)[1])
+    policy_path = BASE/'FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json'
+    policy = json.loads(policy_path.read_text())
+    aliases = {**{'junior'+str(i): i+6 for i in range(1, 4)}, **{'senior'+str(i): i+9 for i in range(1, 4)}}
+    data['grades'] = [aliases.get(row['id'], row['id']) for row in policy['product_levels']]
+    data['levelLabels'] = {str(aliases.get(row['id'], row['id'])): row['label'] for row in policy['product_levels']}
+    data['current_scope_policy'] = ref(policy_path)
+    data['scope'] = 'all16_objective_review_partial_coverage'
+    acquisitions = {a['id']: a for a in json.loads((BASE/'Registry/acquisitions.json').read_text())['acquisitions']}
+    paths = ['Primary/Grade3/authored-candidate-index-v0.1.json', 'Primary/Grade4/authored-candidate-index-v0.1.json',
+             'Primary/Grade5/authored-candidate-index-v0.1.json', 'Primary/Grade6/authored-candidate-index-v0.1.json',
+             'CET/authored-candidate-index-v0.1.json']
+    added = []; inherited_count = 0
+    for filename in paths:
+        for meta in json.loads((BASE/filename).read_text())['members']:
+            if meta.get('open_response_count', 0) or meta['id'] == 'five-classroom-bank':
+                continue  # Keep full mixed group inactive; newer no-once-required bank represents primary4.
+            kind = meta['kind']
+            family = ('reading_tf' if kind == 'five_true_false' else 'table_reading_choice' if kind.startswith('table_') else
+                      'reading_choice' if 'choice' in kind or 'four_options' in kind else
+                      'dialogue_matching' if kind in ['five_shared_response_matching', 'five_gaps_five_sentences_or_clause'] else 'shared_bank')
+            group = inherited(meta, acquisitions, family); added.append((group, family)); inherited_count += 1
+    additions_path = BASE/'FirstRelease/AllLevels/authored-additions-v0.1.json'
+    additions = json.loads(additions_path.read_text())
+    for meta in additions['candidates']:
+        group = full_markdown_candidate(meta)
+        group['instruction'] = '选择正确的字母组合。' if meta['family'] == 'letter_completion' else '从共享词或短语中选择合适的一项。'
+        added.append((group, meta['family']))
+    cells = {(c['grade'], c['family']): c for c in data['cells']}
+    labels = {c['family']: c['label'] for c in data['cells']}
+    labels.update(letter_completion='字母组合补全', table_reading_choice='表格信息单选')
+    for group, family in added:
+        key = (group['grade'], family)
+        if key in cells and cells[key].get('groupId'):
+            raise ValueError('Conflicting representative selection')
+        data['groups'][group['id']] = group
+        cells[key] = {'grade': group['grade'], 'family': family, 'label': labels[family], 'observed': True,
+                      'state': 'existing_complete_candidate_needs_review_UI', 'groupId': group['id']}
+    data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
+                     'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
+                     for level in data['grades'] for family, label in labels.items()]
+    data['preview_cells'] = len(data['groups'])
+    data['source_positive_cells'] = sum(c['observed'] for c in data['cells'])
+    data['source_form_representative_cells'] = len(data['groups'])
+    data['extra_authored_index'] = ref(additions_path)
+    encoded = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
+    template = (BASE/'Tools/quality_review_template.html').read_text()
+    header = '<th scope="col">题型</th>'+''.join('<th scope="col">'+data['levelLabels'][str(level)]+'</th>' for level in data['grades'])
+    template = re.sub(r'<thead><tr><th scope="col">题型</th>.*?</tr></thead>', '<thead><tr>'+header+'</tr></thead>', template)
+    page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE/'Tools/quality_review_interactions.js').read_text())
+    (output/'index.html').write_text(page)
+    report = {'version': '0.1', 'level_count': 16, 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
+              'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
+              'new_authored_groups': additions['new_authored_groups'], 'new_authored_responses': additions['new_response_positions'],
+              'historical_nonmiddle_authors_newly_displayed': inherited_count, 'source_parent_increment': 0,
+              'source_mode_and_age_calibration_not_established_for_unobserved_cells': True,
+              'independent_student_commercial_production_admission': False, 'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
+    (output/'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
+    print(json.dumps(report))
+
+
+if __name__ == '__main__':
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--output', type=Path, default=REPO/'build/english-benchmark-quality-review')
+    main(p.parse_args().output)

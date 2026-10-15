@@ -1,0 +1,170 @@
+{
+  "version": "0.1",
+  "id": "primary4-school-day-shared-bank",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "fcc2860522a50b707f4b195f460b59d90aa501d3ac9a4a670cb03983fa6327b1",
+  "canonical_response_block_sha256": "4dd636fc157c0b190d3b51eaa6ded7da50422c026f8d5b4be7e571c6aec733f3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "______ is the art room? It is on the second floor.",
+      "options": [
+        [
+          "A",
+          "hungry"
+        ],
+        [
+          "B",
+          "How many"
+        ],
+        [
+          "C",
+          "under"
+        ],
+        [
+          "D",
+          "Where"
+        ],
+        [
+          "E",
+          "drink"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：hungry形容词不能作本句问地点的疑问词。；B：How many后接is the art room不构成数量问句。；C：under介词不能作本句疑问词。；D：Where问地点，与on the second floor对应。；E：drink不能作本句疑问词。"
+    },
+    {
+      "number": 2,
+      "stem": "______ bags are on the desk? There are four.",
+      "options": [
+        [
+          "A",
+          "hungry"
+        ],
+        [
+          "B",
+          "How many"
+        ],
+        [
+          "C",
+          "under"
+        ],
+        [
+          "D",
+          "Where"
+        ],
+        [
+          "E",
+          "drink"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：hungry bags are on the desk不是本句问句结构。；B：How many bags are on the desk与four对应。；C：under bags are on the desk缺本句问句结构。；D：Where bags are on the desk不构成位置问句所需词序。；E：drink bags are on the desk不构成数量问句。"
+    },
+    {
+      "number": 3,
+      "stem": "We are ______. We want some rice.",
+      "options": [
+        [
+          "A",
+          "hungry"
+        ],
+        [
+          "B",
+          "How many"
+        ],
+        [
+          "C",
+          "under"
+        ],
+        [
+          "D",
+          "Where"
+        ],
+        [
+          "E",
+          "drink"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：hungry作are后的表语，与want some rice联系。；B：How many不能独立作此句表语。；C：under缺参照名词，不能在句点前形成完整短语。；D：Where不能作此陈述句的完整形容词或地点表语。；E：drink为原形动词，are drink不构成此时态谓语。"
+    },
+    {
+      "number": 4,
+      "stem": "These pupils ______ water after PE.",
+      "options": [
+        [
+          "A",
+          "hungry"
+        ],
+        [
+          "B",
+          "How many"
+        ],
+        [
+          "C",
+          "under"
+        ],
+        [
+          "D",
+          "Where"
+        ],
+        [
+          "E",
+          "drink"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "A：hungry形容词不能作These pupils后的本句谓语。；B：How many不能作本句谓语。；C：under介词不能连接主语与water作本句谓语。；D：Where不能作本句谓语。；E：drink作复数主语后的现在时谓语，与water搭配。"
+    },
+    {
+      "number": 5,
+      "stem": "The cat is ______ the bed. Look down to see it.",
+      "options": [
+        [
+          "A",
+          "hungry"
+        ],
+        [
+          "B",
+          "How many"
+        ],
+        [
+          "C",
+          "under"
+        ],
+        [
+          "D",
+          "Where"
+        ],
+        [
+          "E",
+          "drink"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：is hungry the bed缺介词且与the bed不构成本句。；B：How many不能置于is与the bed间构成本句。；C：under the bed构成地点短语，Look down呼应。；D：Where不能置于is与the bed间构成本句。；E：is drink the bed不构成本句谓语。"
+    }
+  ],
+  "source_index": {
+    "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+    "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+  },
+  "source_group_id": "primary4.xdf.lower.bank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_shared_candidates": 5,
+    "source_contains_multiword_candidate": true,
+    "source_reuse_rule": "not_explicit",
+    "exam_year": "unknown",
+    "authenticated_institution": false
+  },
+  "authored_student_inputs_complete": true,
+  "answers_are_discrete_labels": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

@@ -1,0 +1,147 @@
+{
+  "version": "0.1",
+  "id": "primary3-five-letter-completions",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "32a4e8d1bdf64d187a3e63079f2b37d28e7e8144470b18a6404cf3d948b61543",
+  "canonical_response_block_sha256": "786a8621b2ff9d447a3d823578ff4c69dcb5c3172c44d5006cf3b199b2491948",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "苹果 app____",
+      "options": [
+        [
+          "A",
+          "le"
+        ],
+        [
+          "B",
+          "el"
+        ],
+        [
+          "C",
+          "la"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "按给定中文词义补全为apple；三个候选回填分别为apple, appel, appla，仅A形成该目标单词。",
+      "completion_target": "apple",
+      "prefix": "app",
+      "suffix": ""
+    },
+    {
+      "number": 2,
+      "stem": "橙子 oran____",
+      "options": [
+        [
+          "A",
+          "eg"
+        ],
+        [
+          "B",
+          "ga"
+        ],
+        [
+          "C",
+          "ge"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "按给定中文词义补全为orange；三个候选回填分别为oraneg, oranga, orange，仅C形成该目标单词。",
+      "completion_target": "orange",
+      "prefix": "oran",
+      "suffix": ""
+    },
+    {
+      "number": 3,
+      "stem": "妈妈 moth____",
+      "options": [
+        [
+          "A",
+          "re"
+        ],
+        [
+          "B",
+          "er"
+        ],
+        [
+          "C",
+          "ar"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "按给定中文词义补全为mother；三个候选回填分别为mothre, mother, mothar，仅B形成该目标单词。",
+      "completion_target": "mother",
+      "prefix": "moth",
+      "suffix": ""
+    },
+    {
+      "number": 4,
+      "stem": "铅笔 penc____",
+      "options": [
+        [
+          "A",
+          "li"
+        ],
+        [
+          "B",
+          "al"
+        ],
+        [
+          "C",
+          "il"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "按给定中文词义补全为pencil；三个候选回填分别为pencli, pencal, pencil，仅C形成该目标单词。",
+      "completion_target": "pencil",
+      "prefix": "penc",
+      "suffix": ""
+    },
+    {
+      "number": 5,
+      "stem": "在……下面 ____der",
+      "options": [
+        [
+          "A",
+          "un"
+        ],
+        [
+          "B",
+          "nu"
+        ],
+        [
+          "C",
+          "on"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "按给定中文词义补全为under；三个候选回填分别为under, nuder, onder，仅A形成该目标单词。",
+      "completion_target": "under",
+      "prefix": "",
+      "suffix": "der"
+    }
+  ],
+  "source_index": {
+    "path": "Primary/Grade3/selected-source-groups-v0.1.json",
+    "sha256": "bf2e842dd140644e6169197250ee081754417e5dd0b42aa57b4cbd92bec63fe6"
+  },
+  "source_group_id": "primary3.lower.undated.spelling",
+  "source_observation": {
+    "physical_pages": [
+      1,
+      2
+    ],
+    "source_responses": 5,
+    "source_options_each": 3,
+    "exam_year": "unknown",
+    "authenticated_institution": false
+  },
+  "authored_student_inputs_complete": true,
+  "answers_are_discrete_labels": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

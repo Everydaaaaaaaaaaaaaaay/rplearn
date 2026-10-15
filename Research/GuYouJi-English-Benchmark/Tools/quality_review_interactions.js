@@ -1,5 +1,6 @@
 const reviewData=JSON.parse(document.getElementById('quality-data').textContent);
 const labels={7:'初一',8:'初二',9:'初三',10:'高一',11:'高二',12:'高三'};
+Object.assign(labels,reviewData.levelLabels||{});
 const el=id=>document.getElementById(id),escapeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let activeGrade=7,activeFamily='reading_choice';const drafts={};
 const titleState=cell=>cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?'可预览':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
@@ -16,7 +17,7 @@ function render(){
  const cell=reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily),g=reviewData.groups[cell.groupId];
  el('grades').innerHTML='';reviewData.grades.forEach(grade=>el('grades').append(makeButton(labels[grade],grade===activeGrade,()=>select(grade,activeFamily))));
  el('families').innerHTML='';reviewData.cells.filter(c=>c.grade===activeGrade&&(c.observed||el('show-unknown').checked)).forEach(c=>el('families').append(makeButton(c.label+' · '+titleState(c),c.family===activeFamily,()=>select(activeGrade,c.family))));
- const prototypeNotice=cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':'';
+ const prototypeNotice=cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||'');
  el('task-title').textContent=labels[activeGrade]+' · '+cell.label;el('teacher').hidden=true;el('teacher-content').innerHTML='';el('notice').textContent='';
  const instruction=g?.instruction||(g&&['reading','cloze'].includes(g.kind)?'阅读短文，从'+(g.kind==='cloze'?'每空':'每题')+'所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。':'');
  el('task-instruction').textContent=instruction;el('task-instruction').hidden=!instruction;
@@ -34,5 +35,5 @@ function render(){
 el('coverage').textContent=reviewData.current_scope_policy?'当前范围展示 '+reviewData.preview_cells+' 道完整大题；需AI判断的主观题已暂停，不计当前覆盖缺口。':'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
 const families=[...new Set(reviewData.cells.map(c=>c.family))];
 el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(reviewData.cells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=reviewData.cells.find(c=>c.grade===grade&&c.family===f);return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
-el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(Number(b.dataset.grade),b.dataset.family);};
+el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(reviewData.grades.find(g=>String(g)===b.dataset.grade),b.dataset.family);};
 el('show-unknown').onchange=()=>{if(!el('show-unknown').checked&&!reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily).observed)activeFamily='reading_choice';render();};render();

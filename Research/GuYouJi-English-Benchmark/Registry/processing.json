@@ -26911,6 +26911,62 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "all16-first-nonmiddle-objective-batch20261016-v0.1",
+      "source_acquisition_ids": [
+        "cambridge-c1-paper1-container-transfer20261016"
+      ],
+      "tool": "build_all_levels_review + check_all_levels_review + actual browser + source original page reuse",
+      "tool_version": "0.1",
+      "parameters": [
+        "16level navigation;12levels have60groups445responses;49middle payload unchanged;9historical nonmiddle authors reused;2newprimary3/4authors10responses;no new source parents/groups;subjective mixed excludedwhole;primary5 simulated boundary visible;no production marking admission"
+      ],
+      "pages": 7,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-source-review20261016-v0.1.json",
+          "bytes": 1924,
+          "sha256": "5da6f0bd8c331777679e5a7fba64e784cce0454fc1f43e0a7eb2757f6db3dd88",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-controls20261016-v0.1.json",
+          "bytes": 427,
+          "sha256": "2d0e9ac0f7adc8ca5d2a8358f3ca10d7dc6502aaf0fcf8af4f9edeaddc775b0b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-browser20261016-v0.1.json",
+          "bytes": 178697,
+          "sha256": "27ecee7bf060d81526707e4571f3f5c7624fa2222d21752cdf62e8a896604586",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-navigation20261016-v0.1.json",
+          "bytes": 36993,
+          "sha256": "a32ca2d128edcec71a104ad136e4aa7dc58a36ed05da3f37dcb015af9c11b785",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-preview20261016-v0.1.png",
+          "bytes": 36777,
+          "sha256": "04347b4ab981ba176d3f8aef5b17fd254bfc31b9e3a020814ddc613907fba308",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-page20261016-v0.1.html",
+          "bytes": 815000,
+          "sha256": "6065b1c0bc984dd1d8520fcde297ee783682ec26cb6c7f2a475ccddb4ffdef1b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-first-build20261016-v0.1.json",
+          "bytes": 506,
+          "sha256": "fab277c6748317236c39a93569e9735400e4f6a80d744a290207ba769e786fea",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
