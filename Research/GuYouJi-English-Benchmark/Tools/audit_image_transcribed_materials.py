@@ -160,6 +160,17 @@ def transcribed_views(manifest):
                 for cid in policy.get('source_figure_component_ids', []):
                     if by_id.get(cid, {}).get('role') not in ['diagram_label', 'illustrated_gloss_label']:
                         raise ValueError('Figure labels omitted from complete reading input')
+                panels = policy.get('source_panels')
+                if panels is not None:
+                    expected_panels = obs['features'].get('intro_cards')
+                    if obs['features'].get('genre') == 'four_AI_profiles':
+                        expected_panels = 4
+                    if expected_panels is None or len(panels) != expected_panels or len({p['component_id'] for p in panels}) != len(panels):
+                        raise ValueError('Reading panels are not response units or shared options')
+                    for panel in panels:
+                        component = by_id.get(panel['component_id'], {})
+                        if component.get('role') != 'passage' or component.get('text', '').splitlines().count(panel['heading']) != 1 or any(component.get('text', '').count(text) != 1 for text in panel['protected_snippets']):
+                            raise ValueError('Card heading/address/time/price belongs to another panel')
                 if obs['features'].get('complete_numbered_problem_list_and_graph_required'):
                     categories = [c for c in record['components'] if c['role'] == 'survey_category']
                     if [c['category_id'] for c in categories] != policy['survey_category_ids'] or len(categories) != obs['features']['categories'] or policy['survey_population'] != obs['features']['population'] or policy['survey_multiple_choices_allowed'] is not True or policy['survey_percent_denominator'] != 'class50_per_category' or policy['survey_y_axis'] != 'students' or policy['survey_bar_labels_unit'] != 'percent' or policy['survey_x_axis'] != 'problems':
