@@ -107,7 +107,7 @@ def transcribed_views(manifest):
         for binding, c in zip(case['components'], record['components']):
             if any(binding.get(k) != c.get(k) for k in ['id', 'role', 'item_id']) or digest(c['text']) != binding['sha256']:
                 raise ValueError('Source component binding differs')
-            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option', 'bank_entry', 'diagram_label', 'Chinese_meaning', 'initial_letter'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
+            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint', 'shared_option', 'bank_entry', 'diagram_label', 'Chinese_meaning', 'initial_letter', 'survey_prompt', 'survey_category'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
                 raise ValueError('Private key/author reason is not student input')
             text = c['text']
             if c['role'] == 'passage':
@@ -125,8 +125,51 @@ def transcribed_views(manifest):
         blanks = [int(n) for n in re.findall(r'_+(\d+)_+', body)]
         if blanks != record['blank_numbers'] or (row['shape']['family'] == 'choice_cloze' and blanks != obs['question_numbers']):
             raise ValueError('Cloze blank sequence incomplete')
-        if row['shape']['family'] == 'reading_choice' and totals.get('prompt', {}).get('components') != row['shape']['responses']:
-            raise ValueError('Reading prompts incomplete')
+        if row['shape']['family'] == 'reading_choice':
+            prompts = [c for c in record['components'] if c['role'] == 'prompt']
+            if [c['item_id'] for c in prompts] != record['item_ids']:
+                raise ValueError('Reading prompt order/identity incomplete')
+            if totals.get('option', {}).get('components') != row['shape']['responses'] * record['options_each']:
+                raise ValueError('Reading option count incomplete or foreign')
+            policy = case.get('source_policy', {})
+            if policy.get('reading_layout_version') == '0.1':
+                if record.get('source_policy') != policy or policy['source_features'] != obs['features']:
+                    raise ValueError('Reading source marks/selection/catalogue differ')
+                optional = bool(obs.get('optional_source_layer') or obs['features'].get('optional_score_component') or obs['features'].get('optional6points'))
+                if policy['optional_source_component'] is not optional:
+                    raise ValueError('Optional reading cannot become mandatory by default')
+                by_id = {c['id']: c for c in record['components']}
+                if len(by_id) != len(record['components']):
+                    raise ValueError('Repeated reading component identity')
+                marks = policy['required_marks']
+                for mark in marks:
+                    component = by_id.get(mark['component_id'], {})
+                    if mark['kind'] not in ['underline', 'heading_blank'] or component.get('role') != 'passage' or component.get('text', '').count(mark['text']) != 1 or mark['question_number'] not in record['item_ids']:
+                        raise ValueError('Required reading mark belongs to another material/question')
+                heading_marks = [m for m in marks if m['kind'] == 'heading_blank']
+                heading = obs['features'].get('placeholder_heading_number')
+                if heading is not None and [m['question_number'] for m in heading_marks] != [heading]:
+                    raise ValueError('Printed heading blank is not a shared insertion group')
+                if obs['features'].get('first_section_heading_blank_with_four_choice_question_not_sentence_insertion') and (len(heading_marks) != 1 or heading_marks[0]['question_number'] != record['item_ids'][0] or blanks):
+                    raise ValueError('Unnumbered heading blank must bind one four-choice question')
+                for cid in policy.get('source_figure_component_ids', []):
+                    if by_id.get(cid, {}).get('role') not in ['diagram_label', 'illustrated_gloss_label']:
+                        raise ValueError('Figure labels omitted from complete reading input')
+                if obs['features'].get('complete_numbered_problem_list_and_graph_required'):
+                    categories = [c for c in record['components'] if c['role'] == 'survey_category']
+                    if [c['category_id'] for c in categories] != policy['survey_category_ids'] or len(categories) != obs['features']['categories'] or policy['survey_population'] != obs['features']['population'] or policy['survey_multiple_choices_allowed'] is not True or policy['survey_percent_denominator'] != 'class50_per_category' or policy['survey_y_axis'] != 'students' or policy['survey_bar_labels_unit'] != 'percent' or policy['survey_x_axis'] != 'problems':
+                        raise ValueError('Survey categories/population/multiselect/axis units differ')
+                    review = acquisitions[catalogue['private_review_acquisition_id']]
+                    if review['sha256'] != catalogue['private_review_sha256']:
+                        raise ValueError('Prior visual survey review version differs')
+                    graph = json.loads(load_ref({'path': review['path'], 'sha256': review['sha256']}).read_text())['survey_graph']
+                    if policy['survey_percentages'] != graph['percentages'] or policy['survey_category_ids'] != graph['category_ids'] or by_id['surveyBars']['text'] != ' '.join(str(p) + '%' for p in graph['percentages']):
+                        raise ValueError('Survey bars do not match earlier source-page observation')
+                    material_ids = policy['material_component_ids']
+                    expected_ids = [c['id'] for c in record['components'] if c['role'] in ['passage', 'survey_prompt', 'survey_category']]
+                    if material_ids != expected_ids:
+                        raise ValueError('Survey material omits/reorders questionnaire inputs')
+                    body = '\n'.join(by_id[cid]['text'] for cid in material_ids)
         if row['shape']['family'] == 'context_word_completion':
             units = record['units'];by_id = {c['id']: c for c in record['components']}
             if parts or [u['printed_number'] for u in units] != record['item_ids'] or case['source_policy']['all_responses_limit_words'] != 1 or obs['features']['all_responses_limit_words'] != 1:
