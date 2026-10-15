@@ -26110,6 +26110,152 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "bilingual-material-correction20261015ae-v0.1",
+      "source_acquisition_ids": [
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "Tools/audit_material_view_corrections.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "one group comparison repair only;10Chinese translation prompts64Han+Emma;existing163atomic/13203pairs retained;other305views unchanged;20below-English briefs reviewed;no acquisition/render/OCR/model/production or fullsnapshot"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/bilingual-material-correction20261015ae-v0.1.json",
+          "bytes": 82696,
+          "sha256": "370d22204fee9460aede7f24230e724de4af8dab30ace1bd48ef5149f1d63aea",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "bilingual-material-correction-controls20261015ae-v0.1",
+      "source_acquisition_ids": [
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "Tools/audit_material_view_corrections.py focused controls",
+      "tool_version": "0.1",
+      "parameters": [
+        "one group comparison repair only;10Chinese translation prompts64Han+Emma;existing163atomic/13203pairs retained;other305views unchanged;20below-English briefs reviewed;no acquisition/render/OCR/model/production or fullsnapshot"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/bilingual-material-correction-controls20261015ae-v0.1.json",
+          "bytes": 1267,
+          "sha256": "81aa0ac1266d36a58509b8468c9656b086c5e4bb24a8572042452e84e60b7f54",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "short-Chinese-material-review20261015ae-v0.1",
+      "source_acquisition_ids": [
+        "grade7-jinan2025-21cnjy24695341",
+        "grade7-suzhou2025-21cnjy23303742",
+        "grade9-chengdu2025-21cnjy23208601",
+        "grade10-shenzhenlower2026-21cnjy26167651",
+        "grade11-yinchuan2026-21cnjy25860535",
+        "grade7-hefei2025-21cnjy26607976",
+        "grade12-tianjinlower2025-21cnjy22402528",
+        "grade11-tianjin2026-21cnjy26082071",
+        "grade9-boxing2025-21cnjy24857076",
+        "grade9-zhongshan2025-21cnjy22278047",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade10-weishi2026-21cnjy25962499",
+        "grade11-heze2026-21cnjy24886046",
+        "grade12-linyi2025-21cnjy24838709",
+        "grade9-nanshan2026-21cnjy25758947",
+        "grade12-yali2026-21cnjy25133058",
+        "grade7-xicheng2025-public-paper-key20261014",
+        "xschu-bnu2026-paper-key20261014-record"
+      ],
+      "tool": "author reading of selected20 existing short/Chinese group briefs",
+      "tool_version": "0.1",
+      "parameters": [
+        "one group comparison repair only;10Chinese translation prompts64Han+Emma;existing163atomic/13203pairs retained;other305views unchanged;20below-English briefs reviewed;no acquisition/render/OCR/model/production or fullsnapshot"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/short-Chinese-material-review20261015ae-v0.1.json",
+          "bytes": 20042,
+          "sha256": "5f77eefda9b200060d152406c73b06d8b6d8f662ef341aea4d371ab5b4244ab3",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "bilingual-material-correction20261015ae-v0.2",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "Tools/audit_material_view_corrections.py",
+      "tool_version": "0.2",
+      "parameters": [
+        "two correctedgroups15responses216Han9English maininputtokens;all4translationgroups22unitsretainChinese;reuse304views/46056pairs,replace609 not add;existingatomicChineseproofpreserved;no downloads/render/OCR/model/production or fullsnapshot"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/bilingual-material-correction20261015ae-v0.2.json",
+          "bytes": 165134,
+          "sha256": "6b042d33313cb78771a3a8445af7cdedb64523627032249ee938da28f294d3c5",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "bilingual-material-correction-controls20261015ae-v0.2",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "Tools/audit_material_view_corrections.py focused controls",
+      "tool_version": "0.2",
+      "parameters": [
+        "two correctedgroups15responses216Han9English maininputtokens;all4translationgroups22unitsretainChinese;reuse304views/46056pairs,replace609 not add;existingatomicChineseproofpreserved;no downloads/render/OCR/model/production or fullsnapshot"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/bilingual-material-correction-controls20261015ae-v0.2.json",
+          "bytes": 1525,
+          "sha256": "6c58dd2f4ac115bc00fe41f5bd60daa34d814b3dc1f29d359e8b73207c574a23",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "short-Chinese-material-review20261015ae-v0.2",
+      "source_acquisition_ids": [
+        "grade7-xicheng2025-public-paper-key20261014",
+        "xschu-bnu2026-paper-key20261014-record",
+        "grade10-jinhua2025-21cnjy22399612",
+        "grade7-jinan2025-21cnjy24695341"
+      ],
+      "tool": "author review20shortbriefs plus entire4translation-family Chinese-retention check",
+      "tool_version": "0.2",
+      "parameters": [
+        "two correctedgroups15responses216Han9English maininputtokens;all4translationgroups22unitsretainChinese;reuse304views/46056pairs,replace609 not add;existingatomicChineseproofpreserved;no downloads/render/OCR/model/production or fullsnapshot"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/short-Chinese-material-review20261015ae-v0.2.json",
+          "bytes": 21697,
+          "sha256": "9e9c8a1ec36ffa0f528b84522ae0eb19eff688063fababf9959a34ec4dc8bce7",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

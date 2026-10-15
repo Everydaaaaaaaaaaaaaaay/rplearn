@@ -1,0 +1,50 @@
+{
+  "version": "0.2",
+  "scope": "two corrected translation group-family comparison views;all4translation groups22responseunits checked;original sources and frozen reports unchanged",
+  "prior_inventory": {
+    "path": "FirstRelease/Sampling/material-screen-queue-v0.22.json",
+    "sha256": "1ad7372e30227693afc6fd4f3691f60fbdae31199403887fda6a3f13c8fe093d"
+  },
+  "prior_group_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-final-reading-image-audit20261015ab-v0.1.json",
+    "sha256": "ae19b6e0c63bc5a4b9d3eacd7fbad25f891dd67410d6a30b0ea19971dc0df501"
+  },
+  "existing_atomic_sentence_audit": {
+    "path": "build/english-benchmark-research-20261012/sentence-material-audit20261015i-v0.1.json",
+    "sha256": "215b38f74ec84dc76f8a5f32e43e1aacc547b1ecc11cc4c592f1dd113e911aeb"
+  },
+  "corrections": [
+    {
+      "group_id": "grade7-jinan2025-21cnjy24695341.translation",
+      "source_view_manifest": {
+        "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+        "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+      },
+      "old_normalized_material_sha256": "f4aa0655cdb8d4fcf6f719c7a786de10556783c70bfb8ef1d78923482fe6ebbc",
+      "normalization": "bilingual_token_view",
+      "corrected_normalized_material_sha256": "3f6be331674023b1f401a09b9034ddf215486c4f8a7f6c95ac36d52f573a2406",
+      "responses": 10,
+      "preserved_Han_characters": 64,
+      "preserved_English_digit_tokens": 1,
+      "original_source_text_and_item_spans_unchanged": true,
+      "reason": "Missing group-level bilingual policy retained onlyEmma;earlier163-item atomic audit already preserved all10Chinese prompts;repair group view without recounting source items"
+    },
+    {
+      "group_id": "grade10-jinhua2025-21cnjy22399612.translation",
+      "source_view_manifest": {
+        "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+        "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+      },
+      "old_normalized_material_sha256": "dae9b36d2b4f94d6a5a7aaccc30a2de1dd91716d14f58f38a928edd74eaa0be8",
+      "normalization": "bilingual_token_view",
+      "corrected_normalized_material_sha256": "64b5b99c2406d1abb5a9981d16409149fb07108ce98f45851dfed928a8723c0b",
+      "responses": 5,
+      "preserved_Han_characters": 152,
+      "preserved_English_digit_tokens": 8,
+      "original_source_text_and_item_spans_unchanged": true,
+      "reason": "Same missing bilingual policy left onlyEnglish propername/requiredcues;preserve fivewholeChinese prompts andgrammarhints;atomic evidence already complete"
+    }
+  ],
+  "all_semantic_visual_screen_complete": false,
+  "model_called": false
+}

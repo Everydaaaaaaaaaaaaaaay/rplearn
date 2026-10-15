@@ -36,6 +36,11 @@ def reference(path):
 
 
 def current_bodies():
+    """Reconstruct the frozen queue0.22 base; later corrections layer separately.
+
+    Use audit_material_view_corrections.corrected_bodies for the active repaired
+    view; retaining this base keeps the earlier English report reproducible.
+    """
     manifest = json.loads(MANIFEST.read_text())
     bodies, records, _ = continuation_ancestors(manifest)
     new_records, new, _ = transcribed_views(manifest)

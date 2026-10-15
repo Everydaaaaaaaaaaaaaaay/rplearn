@@ -2,7 +2,7 @@
 
 2026-10-15用户要求避免研究文件膨胀：[存储策略](Storage/README.md)已改为两份近期完整恢复点+去重历史归档，旧33份清单/独有内容保留。目录计量59G→7.7G不等APFS实际释放51G；例行整库快照被工具拒绝，增量重放新增0对象。初高中研究自动任务继续，空间控制不能替代内容验收。
 
-2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.50](FirstRelease/PracticalAuthoringStandard-v0.50.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一小标题/句空具体模式仍缺第二地区。当前[队列0.22](FirstRelease/Sampling/material-screen-queue-v0.22.json)306受限文字视图＝189新结构＋117基线、41父卷/46,665组对，文字视图库存待办归零。本批八高二/高三阅读30已有回应/120逐题候选，九复用学生图＋一必要共用说明页定向渲染，35本机控制通过；四展览/三专业完整配置、跨页/下划线/源键风险分开绑定。原冻结缺/未知和源/作者总数不变，零文字候选不证明视觉/语义独立。[配套、模式、家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.29.json)仍缺，未确认本阶段完成或扩到其他阶段。
+2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.51](FirstRelease/PracticalAuthoringStandard-v0.51.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一小标题/句空具体模式仍缺第二地区。当前[队列0.23](FirstRelease/Sampling/material-screen-queue-v0.23.json)306受限文字视图＝189新结构＋117基线、41父卷/46,665组对，文字视图库存待办归零。本批八高二/高三阅读30已有回应/120逐题候选，九复用学生图＋一必要共用说明页定向渲染，35本机控制通过；四展览/三专业完整配置、跨页/下划线/源键风险分开绑定。原冻结缺/未知和源/作者总数不变，零文字候选不证明视觉/语义独立。[配套、模式、家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.30.json)仍缺，未确认本阶段完成或扩到其他阶段。
 
 2026-10-15补齐萧山初二[四阅读图文输入包](FirstRelease/Sampling/public-preview-bundles-v0.1.json)：五张网页公开原版预览实际核读，共15个已有响应，不增加结构/父卷/作者计数。三海报、下划线和跨页题面必须随包绑定，14个本机准备控制通过；原文字缺图/未知状态保留，未当全卷、答案金标或生产适配。重庆“小标题”候选说明与实际七句/段内空冲突，不计具体模式第二来源；图内文本去重及其他配套仍缺。见[本批记录](Studies/2026-10-15-public-preview-reading-bundles-and-heading-label-counterexample.md)。
 
@@ -49,6 +49,8 @@
 2026-10-15新增[成都调查写作补图及固定开头修正](Studies/2026-10-15-chengdu-survey-chart-supplement-and-given-opening.md)：取得题干实际链接的四柱百分比图，原冻结缺图保留、带补件准备包通过；给定开头/词汇从说明分开，其他25写作profile不变。未增源卷/题组/作者，41本机控制通过，其他配套仍缺。
 
 2026-10-15新增[跨年级知音故事曝光家族](Studies/2026-10-15-crossgrade-boya-narrative-exposure-and-overlap-blindspot.md)：新增英语内容词提名286视图/40,755组对，六候选全核后发现初一选择与初二开放读答共享具名叙事，原五词片段重叠为0。按家族避免研究分组泄漏，不能互借答案或认等难；另四对主题/框架相近、一对短缺图视图不作同文结论。20短/中文视图、视觉及其他改写仍未完成，不把306记录当306独立素材。19本机控制通过，未改真实划分/运行模型。
+
+2026-10-15新增[中文整组比较修复与20简报复查](Studies/2026-10-15-Chinese-group-normalization-repair-and-short-brief-review.md)：济南十题与金华五题原文/逐题双语证据完整，整组比较却丢了中文；修正保留216汉字及9英语token，只替换609对，其余46,056复用，总数不增。20简报及全四翻译组22回应核读，按旅行/感谢/建议的不同操作保持规格，16本机控制通过；图文、模式和作者准备仍缺。
 
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。
 
