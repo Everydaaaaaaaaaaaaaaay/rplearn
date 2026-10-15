@@ -26304,6 +26304,41 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "related-repost-material-version-audit20261015ag-v0.1",
+      "source_acquisition_ids": [
+        "related-chunan22271202-public-html20261015ag",
+        "related-chunan22271202-public-preview0320261015ag",
+        "wuhan-hongshan-wh11180975-public-page20261015ag",
+        "wuhan-hongshan-wh11180975-login-response20261015ag"
+      ],
+      "tool": "Tools/audit_related_repost_version.py + author public-preview and task/version review",
+      "tool_version": "0.1",
+      "parameters": [
+        "10existinggroups61responses related not independent;35top-levelnumbers not35responses;cloze15vs22.5,bank5vs10,writing20vs15,keyFvsE;variantbank5entries includesphrase;original unknowns retained;19local controls;no OCR/render/model/production/fullsnapshot"
+      ],
+      "pages": 3,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/xiaoshan-related-chunan22271202-resource20261015ag-v0.1.txt",
+          "bytes": 17635,
+          "sha256": "f9d60ec561792d7cad81334881eb26f300604e8ab024cb3ee12ac359c3a4edb3",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/related-repost-version-audit20261015ag-v0.1.json",
+          "bytes": 8084,
+          "sha256": "76ecab29c1b11193e291c243c2c66809dc68c3c23b274c4e5588d17a36095a30",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/related-repost-version-controls20261015ag-v0.1.json",
+          "bytes": 3096,
+          "sha256": "1f2f1b8df57462b4a1b5a1599691443a7b10288e4e8c53a01bd76e7116576c1d",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
