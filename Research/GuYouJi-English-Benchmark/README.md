@@ -2,7 +2,7 @@
 
 2026-10-15用户要求避免研究文件膨胀：[存储策略](Storage/README.md)已改为两份近期完整恢复点+去重历史归档，旧33份清单/独有内容保留。目录计量59G→7.7G不等APFS实际释放51G；例行整库快照被工具拒绝，增量重放新增0对象。初高中研究自动任务继续，空间控制不能替代内容验收。
 
-2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.47](FirstRelease/PracticalAuthoringStandard-v0.47.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷/70年级家族单元；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一小标题/句空具体模式仍缺第二地区。[配套、模式、家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.26.json)仍缺。298受限文字视图/41父卷/44,253组对＝189新结构+109基线；本批七高一阅读26已有回应/104逐题候选，九必要既存图、35本机控制通过。四AI分区/四景点卡各三题，地址/电话/时段/分龄£票价与节目日逐卡绑定；跨页材料、下划线和共用计分页完整。云南候选公开04仍只有B/C不含E，不升级混合模式第二地区。冻结输入、源作者总量不变，剩八均高二/高三阅读见[队列0.21](FirstRelease/Sampling/material-screen-queue-v0.21.json)；配套/图文语义/答案仍缺，不扩其他阶段或宣称效度/生产适配。
+2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.48](FirstRelease/PracticalAuthoringStandard-v0.48.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一小标题/句空具体模式仍缺第二地区。当前[队列0.22](FirstRelease/Sampling/material-screen-queue-v0.22.json)306受限文字视图＝189新结构＋117基线、41父卷/46,665组对，文字视图库存待办归零。本批八高二/高三阅读30已有回应/120逐题候选，九复用学生图＋一必要共用说明页定向渲染，35本机控制通过；四展览/三专业完整配置、跨页/下划线/源键风险分开绑定。原冻结缺/未知和源/作者总数不变，零文字候选不证明视觉/语义独立。[配套、模式、家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.27.json)仍缺，未确认本阶段完成或扩到其他阶段。
 
 2026-10-15补齐萧山初二[四阅读图文输入包](FirstRelease/Sampling/public-preview-bundles-v0.1.json)：五张网页公开原版预览实际核读，共15个已有响应，不增加结构/父卷/作者计数。三海报、下划线和跨页题面必须随包绑定，14个本机准备控制通过；原文字缺图/未知状态保留，未当全卷、答案金标或生产适配。重庆“小标题”候选说明与实际七句/段内空冲突，不计具体模式第二来源；图内文本去重及其他配套仍缺。见[本批记录](Studies/2026-10-15-public-preview-reading-bundles-and-heading-label-counterexample.md)。
 
@@ -43,6 +43,8 @@
 2026-10-15新增[八阅读表格关系与样式未知](Studies/2026-10-15-bnu-and-grade9-table-relations-source-style-uncertainty.md)：表行/列/单位/编号选项整组绑定，两个故事分区不拆两任务；源题干对版式的声称不当已核印刷事实。旧原件/冻结状态保留，零新下载/渲染/整库快照。
 
 2026-10-15新增[七高一四分区/卡片与候选预览边界](Studies/2026-10-15-grade10-four-panel-bindings-and-limited-heading-preview.md)：四介绍不等四响应，历史价格/年龄/地点/时间不串卡；正常标题在正文重提可保留。仅取得一张61KB已列公开候选图，目标E仍缺；未新渲染或整库快照。
+
+2026-10-15新增[最后八基线阅读与源键隔离](Studies/2026-10-15-final-baseline-reading-views-and-source-key-separation.md)：原材料、题干、逐题候选分量及场馆日期/论述角色绑定；文字库存归零，保留源键编辑风险和视觉/语义等剩余缺口。
 
 **当前交付仅初一至高三的命题标准与出题效果。** 用户2026-10-15纠正后，停止小学、大学/高级英语及全部备考方向扩展；完整长期目录保留为未来参考。见[范围纠正与本次完成条件](FirstRelease/ScopeCorrection-2026-10-15.md)。下列超范围研究是历史已存材料，不是当前待办。
 

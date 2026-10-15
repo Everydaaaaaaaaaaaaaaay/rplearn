@@ -162,9 +162,11 @@ def transcribed_views(manifest):
                         raise ValueError('Figure labels omitted from complete reading input')
                 panels = policy.get('source_panels')
                 if panels is not None:
-                    expected_panels = obs['features'].get('intro_cards')
+                    expected_panels = obs['features'].get('intro_cards', obs['features'].get('materials'))
                     if obs['features'].get('genre') == 'four_AI_profiles':
                         expected_panels = 4
+                    if obs['features'].get('genre') == 'degree_choice_advice_profiles':
+                        expected_panels = 3
                     if expected_panels is None or len(panels) != expected_panels or len({p['component_id'] for p in panels}) != len(panels):
                         raise ValueError('Reading panels are not response units or shared options')
                     for panel in panels:
