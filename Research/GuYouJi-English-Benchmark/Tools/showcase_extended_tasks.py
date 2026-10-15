@@ -54,6 +54,60 @@ def markdown_view(text):
     return ''.join(result)
 
 
+def extract_variable_cloze(student, review, audit, count):
+    """Keep the complete printed cloze; reject truncation and key/table drift."""
+    first = re.search(r'^1\. ', student, re.M)
+    if not first:
+        raise ValueError('Missing cloze choices')
+    if '<!-- passage:start -->' in student:
+        if student.count('<!-- passage:start -->') != 1 or student.count('<!-- passage:end -->') != 1:
+            raise ValueError('Ambiguous cloze material boundaries')
+        start = student.index('<!-- passage:start -->') + len('<!-- passage:start -->')
+        end = student.index('<!-- passage:end -->')
+        if not start < end < first.start() or student[end + len('<!-- passage:end -->'):first.start()].strip():
+            raise ValueError('Cloze material/choice boundary order differs')
+        material = student[start:end].strip()
+    else:
+        heading = re.search(r'^### .+$', student, re.M)
+        if not heading or heading.start() > first.start():
+            raise ValueError('Explicit cloze heading boundary required')
+        material = student[heading.start():first.start()].strip()
+    slots = [int(a or b) for a, b in re.findall(r'\((\d+)\)\s*_+|_+(\d+)_+', material)]
+    expected = list(range(1, count + 1))
+    if slots != expected:
+        raise ValueError('Missing/reordered/extra cloze material slots')
+    size = audit['options_each']
+    if size not in [3, 4]:
+        raise ValueError('Unsupported per-question candidate count')
+    vector = audit.get('author_answer_vector', audit.get('complete_author_vector'))
+    if not isinstance(vector, list) or len(vector) != count:
+        raise ValueError('Incomplete cloze author vector')
+    questions = []
+    for m in re.finditer(r'^(\d+)\. (.*?)(?=^\d+\. |\Z)', student[first.start():], re.M | re.S):
+        number, body = int(m[1]), m[2].strip()
+        options = re.findall(r'(?:^|\s)([A-D])\.\s*(.*?)(?=\s+[A-D]\.|$)', body, re.S)
+        if [k for k, _ in options] != list('ABCD')[:size] or any(not v.strip() for _, v in options):
+            raise ValueError('Incomplete per-question cloze candidates')
+        questions.append({'number': number, 'stem': '第' + str(number) + '空', 'options': options})
+    if [q['number'] for q in questions] != expected:
+        raise ValueError('Incomplete cloze response list')
+    rows = []
+    for line in review.splitlines():
+        cells = [v.strip() for v in line.strip('|').split('|')]
+        if line.startswith('|') and re.match(r'^\d+ [A-D](?:\s|$)', cells[0]):
+            rows.append(cells)
+    if len(rows) != count:
+        raise ValueError('Incomplete cloze rationale rows')
+    for q, answer, cells in zip(questions, vector, rows):
+        identity = cells[0].split(maxsplit=2)
+        if int(identity[0]) != q['number'] or identity[1] != answer or answer not in dict(q['options']):
+            raise ValueError('Cloze key/rationale/choice differs')
+        if len(cells) < 3 or not cells[1] or not cells[2]:
+            raise ValueError('Missing cloze evidence or distractor explanation')
+        q.update(answer=answer, rationale='；'.join(cells[1:]))
+    return material, questions
+
+
 def extract_extended(row, choice, load_ref, overview):
     text = load_ref(row['candidate']).read_text()
     audit = json.loads(load_ref(row['author_check']).read_text())
@@ -91,7 +145,12 @@ def extract_extended(row, choice, load_ref, overview):
     questions, mode = [], choice['response_mode']
     first_prompt = re.search(r'^1\. ', student, re.M)
     bank = []
-    if mode == 'shared_choice':
+    if mode == 'per_question_choice':
+        if choice['kind'] != 'cloze':
+            raise ValueError('Only reviewed variable cloze mode supported')
+        material, questions = extract_variable_cloze(student, review, audit, row['questions'])
+        rule = None
+    elif mode == 'shared_choice':
         vector = audit['author_answer_vector']
         if len(vector) != row['questions']:
             raise ValueError('Incomplete extension answer vector')

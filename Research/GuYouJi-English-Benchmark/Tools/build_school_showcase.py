@@ -203,7 +203,7 @@ main{max-width:1120px;margin:0 auto;padding:0 24px 36px}.task{background:var(--p
 label.wrong:has(input:checked){background:#fff1ec;border-color:#bb7661}
 .text-response{display:block}.answer-field{width:100%;margin:0;padding:9px 12px;font:inherit;border:1px solid var(--line);border-radius:7px;background:white;color:var(--ink)}.matched{background:#edf5e9;border-color:#528243}.unmatched{background:#fff8e7;border-color:#bda56a}.bank{font:15px/1.6 system-ui,sans-serif;border:1px solid var(--line);background:#f0f5ed;border-radius:10px;padding:12px 16px;margin:15px 0}.bank p{margin:6px 0 0}
 </style>
-<header><div class="brand">LINGOTRIP / LEARNING</div><h1>初高中出题效果</h1><p>六个年级，阅读、完形和语言运用各一组。先作答，再看参考与解析。</p><nav aria-label="选择年级" id="grades"></nav><nav aria-label="选择题型" id="types"></nav></header>
+<header><div class="brand">LINGOTRIP / LEARNING</div><h1>初高中出题效果</h1><p>六个年级，阅读、完形和语言运用各一组。先作答，再看参考与解析。</p><nav aria-label="选择年级" id="grades"></nav><nav aria-label="选择题型" id="types"></nav><nav aria-label="选择完整题组" id="groups" hidden></nav></header>
 <main><section class="task"><div class="requirement"><span class="avatar" aria-hidden="true"><svg viewBox="0 0 40 40"><path fill="#3d6b59" d="M8 38c1-11 23-11 24 0"/><circle cx="20" cy="18" r="11" fill="#efc7a2"/><path fill="#524b42" d="M9 18C6 2 32 2 31 18l-7-8-3 6-8-1z"/><circle cx="16" cy="20" r="1"/><circle cx="24" cy="20" r="1"/><path d="M17 25q3 2 6 0" fill="none" stroke="#785b4b" stroke-width="1.2"/></svg></span><div><h2 id="grade-title"></h2><p id="instruction"></p></div></div><div class="columns"><article class="passage" id="passage" lang="en" aria-label="阅读材料"></article><div class="questions"><form id="quiz"></form><div class="actions"><button class="primary" id="submit" type="button">提交并查看解析</button><button id="reveal" type="button">直接看答案</button><button id="reset" type="button">重新作答</button></div><p id="result" role="status" aria-live="polite"></p></div></div></section>
 <details class="review"><summary>查看本组命题依据</summary><div id="provenance"></div><p>这些是依据真卷结构与年级规格编写、经作者解题检查的样题。实际生产模型效果、独立教研与目标学生难度和用时仍待验证。</p><p>本次只看初一至高三。其他阶段及备考方向不纳入本次交付。</p></details>
 <p class="footnote">题目情境为原创虚构；展示不预设限时。答案仅保存在当前页面，刷新即清除。</p></main>
@@ -214,7 +214,7 @@ __INTERACTIONS__
 
 
 def build(output):
-    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.4.json').read_text())
+    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.5.json').read_text())
     core = json.loads(load_ref(selection['core_index']).read_text())
     extension = json.loads(load_ref(selection['extension_index']).read_text())
     overview = json.loads(load_ref(selection['source_overview']).read_text())
@@ -229,10 +229,10 @@ def build(output):
     if sorted(set(g['grade'] for g in data)) != list(range(7, 13)):
         raise ValueError('Showcase must cover exactly grades7–12')
     for grade in range(7, 13):
-        if sorted(g['kind'] for g in data if g['grade'] == grade and g['kind'] in ['reading', 'cloze', 'language']) != ['cloze', 'language', 'reading']:
-            raise ValueError('Each grade must have one complete reading, cloze and language group')
-    if len({g['id'] for g in data}) != len(data) or len({(g['grade'], g['kind']) for g in data}) != len(data):
-        raise ValueError('Repeated showcase identity or ambiguous grade/type route')
+        if not {'cloze', 'language', 'reading'} <= {g['kind'] for g in data if g['grade'] == grade}:
+            raise ValueError('Each grade must have complete reading, cloze and language groups')
+    if len({g['id'] for g in data}) != len(data):
+        raise ValueError('Repeated showcase identity')
     payload = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     output.mkdir(parents=True, exist_ok=True)
     page = TEMPLATE.replace('__DATA__', payload)
@@ -244,7 +244,7 @@ def build(output):
     page = page.replace('</style>', '.open-response label{display:block}.open-response textarea{display:block;resize:vertical;line-height:1.6}.fixed-opening{font:16px/1.65 Georgia,serif}.full-author-review{border-top:1px solid var(--line);padding-top:16px}.author-review{font:14px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}.table-scroll{overflow-x:auto}.table-scroll table{border-collapse:collapse;width:100%;font:14px/1.6 system-ui,sans-serif}.table-scroll th,.table-scroll td{border:1px solid var(--line);padding:8px;text-align:left;min-width:110px}</style>')
     (output / 'index.html').write_text(page)
     # A human-readable companion keeps the full payload reviewable without JS.
-    md = ['# 初高中多题型效果稿0.4', '', '六年级完整核心三类及选定共享候选、开放回答和写作；为已有作者稿的展示子集，不是生产入口模型实测。', '',
+    md = ['# 初高中多题型效果稿0.5', '', '六年级完整核心三类及选定共享候选、开放回答和写作；为已有作者稿的展示子集，不是生产入口模型实测。', '',
           '先读题，答案和解析放在折叠区。其他题型及标准见资料库FirstRelease统一入口。', '']
     for g in data:
         md += ['## ' + g['label'] + ' · ' + g['typeLabel'], '', g.get('instruction', '阅读短文，从各题/空选项中选出最佳答案。'), '']
@@ -266,7 +266,7 @@ def build(output):
         md += [g['focus'], '', source_note, '',
                '作者题面：' + g['candidate']['path'], '',
                '创作规格：' + g['specification_at_authoring']['path'], '', '</details>', '']
-    (output / 'SchoolSamples-v0.4.md').write_text('\n'.join(md))
+    (output / 'SchoolSamples-v0.5.md').write_text('\n'.join(md))
     report = {'grades': sorted(set(g['grade'] for g in data)), 'groups': len(data),
               'questions': sum(len(g['questions']) for g in data),
               'reference_form_slots': sum(len(g['questions']) for g in data if g.get('responseMode') == 'reference_form'),
@@ -277,8 +277,8 @@ def build(output):
               'automatic_semantic_scoring': False,
               'options': sum(len(q['options']) for g in data for q in g['questions']),
               'production_model_evaluation': False,
-              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.4.md']}}
-    (output / 'build-report-v0.4.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.5.md']}}
+    (output / 'build-report-v0.5.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False))
 
 
