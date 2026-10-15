@@ -1,0 +1,805 @@
+{
+  "version": "0.20",
+  "scope": "grades7_to12_current_sample_and_rule_stage_only",
+  "all_required_gaps_satisfied": false,
+  "gaps": [
+    {
+      "id": "S01",
+      "status": "met_at_public_source_label_scope",
+      "grades": [
+        9
+      ],
+      "need": "普通学校下学期期中/期末/月考，不能用毕业考试代替学期身份；至少一份全书面结构核读并登记",
+      "evidence_paper_id": "grade9-nanshan2026-21cnjy25758947",
+      "limitation": "title and student header identify grade9 lower school midterm; original-school release not authenticated; source/rubric quality separate"
+    },
+    {
+      "id": "S02",
+      "status": "met_at_public_source_label_scope",
+      "grades": [
+        12
+      ],
+      "need": "第三省级地区的已核来源标签与普通考试结构；旧江淮/鞍山不能仅凭文件名补省级归属",
+      "evidence_paper_id": "grade12-yali2026-21cnjy25133058",
+      "limitation": "Hunan claimed by reviewed public publisher title; student header confirms high3 only; not original institution authentication or representative sample"
+    },
+    {
+      "id": "S03",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "完整具体模式跨来源/地区/年份证据；初一5空7句家族已有苏州/济南两地区，但苏州含小标题空、济南全段内句空，不能当具体模式全部复现；补全对话不算段落衔接第二来源",
+      "subcase_progress": {
+        "grade7_five_slots_seven_sentence_candidates_two_regions": "observed_at_public_source_label_scope",
+        "sources": [
+          "grade7-suzhou2025-21cnjy23303742.insertion",
+          "grade7-jinan2025-21cnjy24695341.insertion"
+        ],
+        "grade7_heading_plus_sentence_slot_mode_second_region": "open",
+        "exclusive_grade_claim_established": false,
+        "profile_four_text_cards_three_responses_grades7and8": "observed_in_three_Beijing_source_parents;not_cross_province_or_exclusive_grade_evidence"
+      },
+      "candidate_counterexample": {
+        "path": "build/english-benchmark-research-20261012/pattern-negative-review20261015h-v0.1.json",
+        "sha256": "c06ec139defb7e9094ffc30da311de07ee32819e2a008230850f1a5d25769cf7"
+      },
+      "candidate_counterexample_scope": "Chongqing generic regional candidate: printed heading/6of5/A-F labels conflict with actual seven sentence candidates and in-paragraph question response; zero current structural admission; Changzhi only searched candidate, not admitted",
+      "additional_specific_modes": {
+        "jiexiu_grade7_pure_five_heading_slots_and_five_candidates": "observed_complete_selected_text_configuration;not Suzhoumixedmode",
+        "jiexiu_grade7_five_sentence_slots_six_candidates": "observed_complete_selected_text_configuration;not seven options",
+        "specific_suzhou_mixed_mode_second_region": "open",
+        "candidate_review": {
+          "path": "build/english-benchmark-research-20261012/heading-candidate-review20261015r-v0.1.json",
+          "sha256": "d83bce1a34b8d7ccc78968588732e7c3a219b349df2d225d41e900fd9b958921"
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "补必要图片、词库、下划线/科学符号/选项标识和原始版式；听力保持单独音频/脚本/键配套状态，未取得不能作为完整听力包；济南初一第33四图/写作图片缺，HTML资源块无原图标签，翻译参考和源键不代rubric",
+      "reviewed_visual_supplements": {
+        "definition": {
+          "path": "FirstRelease/Sampling/public-preview-bundles-v0.1.json",
+          "sha256": "8c753e5642ebf9b24cb56ee7f72fecbad3841ca47415f12f75a1dd52219a3cbb"
+        },
+        "visual_review": {
+          "path": "build/english-benchmark-research-20261012/public-preview-review20261015h-v0.1.json",
+          "sha256": "e4408df47a952bf7add636934f390cc95cd168f7a2a222ab14524aa45180f10a"
+        },
+        "groups": 4,
+        "existing_response_positions": 15,
+        "frozen_text_input_states_preserved": {
+          "readingA": false,
+          "readingB": null,
+          "readingC": null,
+          "readingD": null
+        },
+        "whole_paper_complete": false,
+        "independent_gold": false,
+        "remaining_dependencies": [
+          "Xiaoshan mixed Q35 and answer conflict33F vs A-E",
+          "Xiaoshan word bank51-55",
+          "Xiaoshan writing plan table",
+          "complete matched listening audio/script/key"
+        ]
+      },
+      "writing_missing_assets": {
+        "grade8-xiaoshan2025-21cnjy22251031.email": [
+          "plan_table",
+          "invitation_card"
+        ],
+        "grade9-chengdu2025-21cnjy23208601.speech": [
+          "survey_chart"
+        ],
+        "grade10-shenzhenlower2026-21cnjy26167651.pictureContinuation": [
+          "story_panels_and_role_assignments"
+        ],
+        "grade10-shenzhenlower2026-21cnjy26167651.speech": [
+          "campus_proposals"
+        ],
+        "grade7-hefei2025-21cnjy26607976.speech": [
+          "advice_prompt_figure"
+        ],
+        "grade11-tianjin2026-21cnjy26082071.surveyWriting": [
+          "survey_bar_chart"
+        ],
+        "grade9-zhongshan2025-21cnjy22278047.letter": [
+          "travel_mind_map"
+        ],
+        "grade7-jinan2025-21cnjy24695341.writing": [
+          "personal_life_picture"
+        ]
+      },
+      "profile_visual_supplements": {
+        "definition": {
+          "path": "FirstRelease/Sampling/baseline-profile-material-views-v0.1.json",
+          "sha256": "11f9403877e603345670be25564343015b589531462b1de5aba7acb6cfb7a205"
+        },
+        "groups": 5,
+        "existing_responses": 15,
+        "original_PNG_pages_actually_read": 9,
+        "text_candidate_cards": 12,
+        "necessary_image_candidate_cards": 8,
+        "current_author_prepared_bundles_complete": true,
+        "frozen_source_input_states_preserved": "all five null",
+        "whole_papers_complete": false,
+        "independent_transcription_or_gold": false,
+        "image_deduplication_complete": false
+      },
+      "baseline_text_media_progress": {
+        "definition": {
+          "path": "FirstRelease/Sampling/baseline-text-span-views-v0.1.json",
+          "sha256": "276bd991707d90a2103fcbe87215463e058b6d6fbafd2ce24f3b2bfc09f3b178"
+        },
+        "source_groups": 9,
+        "existing_responses": 57,
+        "reused_necessary_assets_actually_viewed": 3,
+        "calendar_year_fixed2019": true,
+        "four_photograph_choice_labels_not_zero_choices": true,
+        "national_repost_graph_not_in_native": true,
+        "original_exam_question_number_mapping_unknown": true,
+        "whole_papers_listening_or_independent_gold_not_established": true
+      },
+      "baseline_cloze_visual_progress": {
+        "definition": {
+          "path": "FirstRelease/Sampling/baseline-cloze-image-views-v0.1.json",
+          "sha256": "bf2496ae5baa056fafec212ff6f506cc762eee348d27eadad41a8d5a47f1cfc8"
+        },
+        "existing_groups": 5,
+        "response_positions": 42,
+        "original_PNG_pages_actually_read": 10,
+        "required_shared_instruction_score_page": 3,
+        "glosses_bound": [
+          "a lightning bolt",
+          "a trophy",
+          "shoot hoops",
+          "summit"
+        ],
+        "unlabelled_camp_illustration_bound": true,
+        "all_original_PDF_pages_preserved": true,
+        "author_parent_page_binding_not_independent_render_authentication": true,
+        "frozen_native_empty_and_input_states_preserved": true
+      }
+    },
+    {
+      "id": "S05",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "全部材料家族去重；189新结构+63基线=252文字视图/39父卷/31,626组对，旧30,381复用、新1,245组对。零候选不证独立；剩54基线和必要视觉/共享候选/语义。既有55题干片段14,575对单列不混组分母；总体306结构/41父卷不等独立文章",
+      "latest_audit": {
+        "path": "build/english-benchmark-research-20261012/baseline-cloze-image-audit20261015u-v0.1.json",
+        "sha256": "8987c9248b2731ef31bde3dc30994f3595a0d697740a3de682ae13548c411298"
+      },
+      "span_manifest": {
+        "path": "FirstRelease/Sampling/baseline-cloze-image-views-v0.1.json",
+        "sha256": "bf2496ae5baa056fafec212ff6f506cc762eee348d27eadad41a8d5a47f1cfc8"
+      },
+      "remaining_queue": {
+        "path": "FirstRelease/Sampling/material-screen-queue-v0.15.json",
+        "sha256": "8f623f0c9669355818248904994de0fbefa71ec41ba6da809ebe340e70fd125a"
+      },
+      "new_reading_input_states_preserved": {
+        "explicitly_confirmed": 44,
+        "known_missing": 10,
+        "unknown": 19
+      },
+      "visual_material_screening_pending": "Xiaoshan3posters,8matching-imagecards and fixed2019calendar/4photochoices/emissionsgraph still need complete visual/text family screening;54baseline and semantic work remain;newclozeillustrations/glosses bound but not visualfamilydeduplicated",
+      "isolated_sentence_item_audit": {
+        "path": "build/english-benchmark-research-20261012/sentence-material-audit20261015i-v0.1.json",
+        "sha256": "215b38f74ec84dc76f8a5f32e43e1aacc547b1ecc11cc4c592f1dd113e911aeb"
+      },
+      "baseline_prepared_progress": {
+        "instances": 14,
+        "response_positions": 55,
+        "frozen_source_card_vectors_reused": 13,
+        "source_and_parent_and_catalogue_bound": true,
+        "new_source_papers_or_authors": 0,
+        "records_material_scope_not_full_media": true
+      },
+      "baseline_native_progress": {
+        "instances": 9,
+        "source_response_positions": 61,
+        "native_empty_not_missing_paper": [
+          "g8.2025.cloze",
+          "g8.2025.readingB"
+        ],
+        "ordinary_source_numbers_preserved": true,
+        "page_decorations_explicitly_excluded": true,
+        "native_spacing_not_source_word_count_gold": true
+      },
+      "bilingual_normalization_progress": {
+        "failed_report_retained_not_admitted": {
+          "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-audit20261015t-v0.1.json",
+          "sha256": "70f3f35c37023a11ca61b695452b38d474058830074c5284352ff7d26a968336"
+        },
+        "accepted_report": {
+          "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-audit20261015t-v0.2.json",
+          "sha256": "4c856737f9b309ec700ff0d3e007e6f1328b38a70524682ff56a37a9a54cadde"
+        },
+        "failed_group_candidates": 1,
+        "failed_prompt_candidates": 21,
+        "han_prompts_now_nonempty": true,
+        "empty_comparison_rejected": true,
+        "individual_prompts": 55,
+        "atomic_pairs_separate": 14575,
+        "group_and_atomic_review_candidates": 0,
+        "not_full_options_cues_or_semantic_deduplication": true
+      }
+    },
+    {
+      "id": "S06",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "扩展共享候选、语法给词、整句翻译、混合任务、开放短答、写作/续写的组件负荷、考点推理和参考/rubric；选定12视图不是全覆盖；新增济南七组正文/题干/候选与标签计量，缺图/断词不作完整负荷或年级阈值，15独立句空/10全句翻译另型",
+      "new_nonreading_progress": {
+        "material_views": 32,
+        "source_response_positions": 245,
+        "categories": {
+          "shared_sentence_insertion": 12,
+          "passage_form": 12,
+          "shared_bank": 7,
+          "grammar_choice_cloze": 1
+        },
+        "input_states": {
+          "explicitly_confirmed": 18,
+          "known_missing": 4,
+          "unknown": 10
+        },
+        "hint_bank_instruction_counts_separate": true,
+        "source_semantic_scoring_or_facts_validated": false
+      },
+      "sentence_component_progress": {
+        "group_views": 15,
+        "response_units": 163,
+        "printed_blank_positions": 155,
+        "families": {
+          "sentence_choice": 8,
+          "context_word_completion": 4,
+          "sentence_form": 1,
+          "sentence_translation": 2
+        },
+        "input_states": {
+          "confirmed": 9,
+          "missing": 1,
+          "unknown": 5
+        },
+        "private_keys_and_explanations_excluded": true,
+        "hint_counts_overlap_prompt_counts_not_additive": true,
+        "item_level_semantics_or_scoring_validated": false
+      },
+      "multitask_component_progress": {
+        "group_views": 17,
+        "source_response_positions": 91,
+        "input_states": {
+          "confirmed": 8,
+          "missing": 1,
+          "unknown": 8
+        },
+        "source_exact_and_max_word_operators_separate": true,
+        "mixed_tasks_bind5_response_units_not3_headings": true,
+        "shared_profile_controls_not_candidate_materials": true,
+        "source_key_risk_review": {
+          "path": "build/english-benchmark-research-20261012/multitask-source-risk-review20261015j-v0.1.json",
+          "sha256": "69a0a3cf07c8edf7c2da0d32f31cb6a77c7cc81c23fd47f47597676f38b4020e"
+        },
+        "rubric_or_facts_independently_validated": false
+      },
+      "writing_component_progress": {
+        "tasks": 26,
+        "output_fields": 31,
+        "application_writing": 20,
+        "two_paragraph_continuation_tasks": 5,
+        "picture_continuation": 1,
+        "given_student_components": 43,
+        "input_states": {
+          "confirmed": 14,
+          "missing": 8,
+          "unknown": 4
+        },
+        "about_vs_minimum_targets_separate": true,
+        "about_tolerance_established": false,
+        "unstated_fixed_text_exclusion_kept_unknown": true,
+        "fixed_openings_and_closings_or_source_model_answers_not_rubric_gold": true
+      },
+      "native_component_progress": {
+        "source_groups": 9,
+        "responses": 61,
+        "option_positions": 234,
+        "sparse_profile": {
+          "path": "build/english-benchmark-research-20261012/baseline-native-component-load20261015m-v0.1.json",
+          "sha256": "49471ab32e6123a61bb1484106fa07bd4acfc70ac06db466b15b452fecd4d4ce"
+        },
+        "cloze_primary_passage_not_zero_load_when_stems_empty": true,
+        "native_word_accuracy_not_established": true
+      },
+      "image_transcription_component_progress": {
+        "groups": 2,
+        "responses": 14,
+        "choice_positions": 56,
+        "cloze_body_tokens_without_blank_numbers": 352,
+        "reading_body_tokens": 366,
+        "reading_prompt_tokens": 39,
+        "reading_option_tokens": 102,
+        "image_pages_actually_reviewed": [
+          3,
+          4,
+          6,
+          7
+        ],
+        "transcription_independent": false,
+        "frozen_native_empty_history_preserved": true
+      },
+      "baseline_bank_form_progress": {
+        "source_groups": 5,
+        "actual_materials": 9,
+        "catalogue_response_positions": 50,
+        "mandatory_positions_in_selected_scope_AorB": 40,
+        "three_material_subgroups": {
+          "grade10": [
+            4,
+            3,
+            3
+          ],
+          "grade11": [
+            3,
+            3,
+            4
+          ]
+        },
+        "given_hint_counts": {
+          "grade10": 6,
+          "grade11": 7,
+          "grade12": 7
+        },
+        "bank_phrase_entries_not_split": true,
+        "bankA_direct_selection_no_explicit_strict_no_form_change_quote": true,
+        "source_input_or_key_quality_not_upgraded": true
+      },
+      "baseline_profile_progress": {
+        "source_groups": 5,
+        "responses": 15,
+        "text_candidate_cards": 12,
+        "necessary_image_candidate_cards": 8,
+        "atomic_text_units_card_or_profile": 27,
+        "candidate_text_tokens": 379,
+        "profile_text_tokens": 301,
+        "schedules_tokens_separate": 27,
+        "material_label_tokens_separate": 23,
+        "max_use_per_candidate_explicit": null,
+        "one_spare_not_once_only": true,
+        "author_prepared_bundle_not_independent_validation": true,
+        "image_glyph_load_not_measured": true,
+        "app_marketing_facts_unverified": true
+      },
+      "baseline_text_span_component_progress": {
+        "source_groups": 9,
+        "responses": 57,
+        "reading_choice_responses": 17,
+        "choice_cloze_responses": 25,
+        "shared_insertion_responses": 5,
+        "passage_form_responses": 10,
+        "text_option_positions": 164,
+        "visual_option_positions": 4,
+        "shared_option_positions": 7,
+        "given_grammar_hints": 6,
+        "ungiven_oneword_gaps": 4,
+        "material_counts_include_source_titles_and_panel_labels": true,
+        "not_body_only_difficulty_threshold": true,
+        "ordinary23years_and10dollars_not_removed": true,
+        "source_names_and_missing_verb_not_silently_repaired": true,
+        "image_glyphs_and_visual_load_not_measured": true
+      },
+      "jiexiu_selected_progress": {
+        "source_groups": 2,
+        "responses": 10,
+        "pure_heading_candidate_positions": 5,
+        "sentence_candidate_positions": 6,
+        "source_reuse_rule": "not_explicit",
+        "source_closing_typo_kept": true,
+        "source_reference_not_independent_gold": true
+      },
+      "baseline_open_form_progress": {
+        "source_groups": 5,
+        "responses": 27,
+        "open_response_positions": 13,
+        "grammar_positions": 14,
+        "open_points_whole_questions_not_analytic_rubrics": true,
+        "opinion_two_reasons_vs_action_reason_separate": true,
+        "optional_grammar_total4_not_explicit1each": true,
+        "given_grammar_counts": [
+          4,
+          7
+        ],
+        "ungiven_grammar_counts": [
+          0,
+          3
+        ],
+        "body_tokens_separate": [
+          373,
+          375,
+          176,
+          83,
+          226
+        ],
+        "prompts_open_tokens": [
+          41,
+          42,
+          45
+        ],
+        "given_hint_tokens_separate": [
+          4,
+          7
+        ],
+        "source_facts_keys_and_input_frozen_states_not_upgraded": true
+      },
+      "baseline_sentence_bank_progress": {
+        "source_groups": 9,
+        "responses": 63,
+        "sentence_choice_responses": 44,
+        "three_choice_response_positions": 10,
+        "four_choice_response_positions": 34,
+        "phonetic_responses": 4,
+        "whole_translation_responses": 7,
+        "bank_letter_responses": 4,
+        "optional_grammar_responses": 4,
+        "text_option_positions": 166,
+        "shared_word_candidates": 4,
+        "phonetic_prompt_count": 4,
+        "phonetic_ASCII_fragments_not_phoneme_or_word_count": 5,
+        "source_IPA_colon_preserved": true,
+        "translation_Han_prompt_counts": [
+          29,
+          52
+        ],
+        "translation_English_hint_tokens": [
+          9,
+          10
+        ],
+        "bank_four_subgroup_not_parent_ten_or_choosable_AorB": true,
+        "bank_once_only_rule_explicit": null,
+        "optional_group_points_total": 4,
+        "optional_points_each_explicit": null,
+        "frozen_input_states_and_source_key_quality_not_upgraded": true
+      },
+      "baseline_cloze_component_progress": {
+        "source_groups": 5,
+        "responses": 42,
+        "options": 152,
+        "source_configurations": [
+          {
+            "grade": 7,
+            "gaps": 6,
+            "choices_each": 3
+          },
+          {
+            "grade": 8,
+            "gaps": 8,
+            "choices_each": 4
+          },
+          {
+            "grade": 8,
+            "gaps": 8,
+            "choices_each": 4
+          },
+          {
+            "grade": 8,
+            "gaps": 10,
+            "choices_each": 4
+          },
+          {
+            "grade": 8,
+            "gaps": 10,
+            "choices_each": 3
+          }
+        ],
+        "body_token_counts_without_blank_numbers": [
+          316,
+          258,
+          278,
+          329,
+          239
+        ],
+        "option_token_counts": [
+          18,
+          32,
+          32,
+          40,
+          30
+        ],
+        "body_Han_counts": [
+          7,
+          16,
+          7,
+          5,
+          9
+        ],
+        "titles_token_counts": [
+          0,
+          0,
+          4,
+          3,
+          0
+        ],
+        "illustrated_gloss_label_tokens": [
+          5,
+          0,
+          2,
+          1,
+          0
+        ],
+        "source_point_each": [
+          1,
+          1,
+          1,
+          1,
+          1.5
+        ],
+        "first_six_is_subgroup_of_parent_ten": true,
+        "source_passive_auxiliary_missing_preserved": true,
+        "positive_scoring_admission_not_upgraded": true,
+        "facts_and_visual_semantics_not_validated": true
+      }
+    },
+    {
+      "id": "S07",
+      "status": "open",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "本级完整题组准备约束与多题型审阅包；选定28组现有共享候选、开放读答、翻译、邮件和两段续写交互已核，全源模式/全部作者组的完整输入、风险和准备约束仍需核对；后端固定六题未接入，不能称线上适配",
+      "selected_showcase_progress": {
+        "delivery": {
+          "path": "FirstRelease/ShowcaseDelivery-v0.4.md",
+          "sha256": "c74154b26e708c1da867134e6d6fad42b2453662d05cdb4bdf683e25c925bff8"
+        },
+        "selection": {
+          "path": "FirstRelease/showcase-selection-v0.4.json",
+          "sha256": "79b3cd66ac2322d3cd57c44666a45bfe755f2bf2275e0de9a9873d66f3309346"
+        },
+        "selected_complete_authored_groups": 28,
+        "response_positions": 194,
+        "new_shared_choice_groups": 6,
+        "new_open_or_writing_tasks": 9,
+        "continuation_inputs2_not_tasks2": true,
+        "all_authored_or_source_modes_interactive": false,
+        "source_writing_refs_unpaired_not_added_to117": true,
+        "production_supported": false
+      },
+      "nonreading_layout_preparation_progress": {
+        "tool": "Tools/check_nonreading_layout.py",
+        "views": {
+          "path": "FirstRelease/Sampling/nonreading-material-views-v0.1.json",
+          "sha256": "c03331b145fcc77c30cee8392f83cacdc4e72ffbf3e5acd4586d604732bd5204"
+        },
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/nonreading-layout-checks20261015g-v0.1.json",
+          "sha256": "eb8e230589bde60233c61f34205b3ac864a726fa9d9ef3a2fed7734d5002855a"
+        },
+        "local_controls": 16,
+        "all_mode_preparation_or_production_supported": false
+      },
+      "visual_bundle_preparation_progress": {
+        "definition": {
+          "path": "FirstRelease/Sampling/public-preview-bundles-v0.1.json",
+          "sha256": "8c753e5642ebf9b24cb56ee7f72fecbad3841ca47415f12f75a1dd52219a3cbb"
+        },
+        "tool": "Tools/check_public_preview_bundle.py",
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/public-preview-bundle-checks20261015h-v0.1.json",
+          "sha256": "fff133665930ae5641f1d14ab1501ecfc76489f2565f894d94e925cdb84a5910"
+        },
+        "local_controls": 14,
+        "reviewed_visual_groups": 4,
+        "frozen_text_alone_not_promoted": true,
+        "model_called": false,
+        "production_supported": false
+      },
+      "sentence_preparation_progress": {
+        "tool": "Tools/check_sentence_layout.py",
+        "views": {
+          "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+          "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+        },
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/sentence-layout-checks20261015i-v0.1.json",
+          "sha256": "53b595c1e825912b093d0b7c95f4f36550fa4ef8eee8241866dd80d22cb1d492"
+        },
+        "controls": 32,
+        "all_input_or_semantics_complete": false,
+        "production_supported": false
+      },
+      "multitask_preparation_progress": {
+        "tool": "Tools/check_multitask_layout.py",
+        "views": {
+          "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+          "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+        },
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/multitask-layout-checks20261015j-v0.1.json",
+          "sha256": "71de59ae78f93465f94bb6485d37a5568c7693ad0a395564570b52f78f48ffba"
+        },
+        "controls": 40,
+        "all_complete_input": false,
+        "production_supported": false
+      },
+      "writing_preparation_progress": {
+        "tool": "Tools/check_writing_layout.py",
+        "views": {
+          "path": "FirstRelease/Sampling/writing-material-views-v0.1.json",
+          "sha256": "ed236b11ca4ead64f24e91173d42ba148af84e1e8e9d659c0a46d0b7507ed18a"
+        },
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/writing-layout-checks20261015k-v0.1.json",
+          "sha256": "fb519de9f8af0fbc53d36b4271946570edceb921e69b90844d366dc1b59de196"
+        },
+        "controls": 53,
+        "production_supported": false,
+        "all_source_inputs_complete": false
+      },
+      "baseline_binding_controls": {
+        "tool": "Tools/audit_baseline_prepared_materials.py",
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/baseline-prepared-binding-checks20261015l-v0.1.json",
+          "sha256": "313100a90365c570f6e59d5e788814998841ff1c9379d151985f7bf95e587402"
+        },
+        "controls": 9,
+        "input_status_not_upgraded": true,
+        "production_supported": false
+      },
+      "baseline_native_controls": {
+        "tool": "Tools/audit_baseline_native_materials.py",
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/baseline-native-binding-checks20261015m-v0.1.json",
+          "sha256": "844109dabef786cf7e67a3b354458ab4655d39976c395e2646ea4d510d21e2f2"
+        },
+        "controls": 9,
+        "input_status_not_upgraded": true,
+        "production_supported": false
+      },
+      "image_transcription_preparation": {
+        "tool": "Tools/audit_image_transcribed_materials.py",
+        "views": {
+          "path": "FirstRelease/Sampling/image-transcribed-material-views-v0.1.json",
+          "sha256": "3fc136ea197d0880b16c2e01b17235c21de075241addfd05b4a27fe5d073189d"
+        },
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/image-transcribed-preparation-checks20261015n-v0.1.json",
+          "sha256": "1f95baae1a444efac9108d4ac48dae69c26e19c748f67be886382c580147d22c"
+        },
+        "controls": 10,
+        "reviewed_student_text_complete": true,
+        "frozen_baseline_inventory_status_not_rewritten": true,
+        "independent_gold": false,
+        "production_supported": false
+      },
+      "bank_form_preparation": {
+        "tool": "Tools/audit_baseline_bank_forms.py",
+        "views": {
+          "path": "FirstRelease/Sampling/baseline-bank-form-views-v0.1.json",
+          "sha256": "f51717e3f0b80ac47e4b078d270be2bb4f700dcf742c06689b85c1806b1cd677"
+        },
+        "check_report": {
+          "path": "build/english-benchmark-research-20261012/baseline-bank-form-checks20261015o-v0.1.json",
+          "sha256": "f231bcd4be399eaa7cd0beffd9a17400c9aaae2e34334b4c95b46aed41b0e330"
+        },
+        "controls": 17,
+        "frozen_source_input_state_not_upgraded": true,
+        "production_supported": false
+      },
+      "baseline_profile_controls": {
+        "report": {
+          "path": "build/english-benchmark-research-20261012/baseline-profile-checks20261015p-v0.1.json",
+          "sha256": "41a5a7046a6e927efb7912126d2e7040e9f4c283d1a9fbc91028e1a8e7111afe"
+        },
+        "positive_current_author_bundles": 5,
+        "rejected_incorrect_bindings_or_claims": 15,
+        "model_or_production_called": false,
+        "source_frozen_input_states_preserved": true
+      },
+      "baseline_text_span_controls": {
+        "report": {
+          "path": "build/english-benchmark-research-20261012/baseline-text-span-checks20261015q-v0.1.json",
+          "sha256": "21497935e6cbb7b1c712b0a4e90fc00571d734ed4928dddeca688337b62a4fd1"
+        },
+        "positive_source_layouts": 9,
+        "rejected_incorrect_layouts_or_claims": 17,
+        "production_or_model_called": false,
+        "frozen_source_input_states_preserved": true
+      },
+      "jiexiu_preparation_progress": {
+        "report": {
+          "path": "build/english-benchmark-research-20261012/jiexiu-selected-mode-checks20261015r-v0.1.json",
+          "sha256": "d3b8567953e6be3369f67a9ac664e2df20b2c7408325a33cf482a8e9d0471976"
+        },
+        "positive_complete_selected_text_modes": 2,
+        "rejected_incorrect_configs_or_claims": 10,
+        "model_or_production_called": false
+      },
+      "baseline_open_form_controls": {
+        "report": {
+          "path": "build/english-benchmark-research-20261012/baseline-open-form-checks20261015s-v0.1.json",
+          "sha256": "5a03c87ed5e4eca28ac9848868c614068b7260c1049b3976cedbd3d349196f7c"
+        },
+        "positive_complete_selected_layouts": 5,
+        "rejected_incorrect_configs_or_claims": 16,
+        "model_or_production_called": false
+      },
+      "baseline_sentence_bank_controls": {
+        "report": {
+          "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-checks20261015t-v0.1.json",
+          "sha256": "8973a50ee9e509d02bc8422bfd957accb3070e74d7d14d9de2a254029080f1f1"
+        },
+        "positive_complete_selected_layouts": 9,
+        "rejected_incorrect_configs_or_claims": 20,
+        "bilingual_probe_group": 1,
+        "bilingual_probe_cases": 5,
+        "model_or_production_called": false,
+        "all_sources_or_authors_ready": false
+      },
+      "baseline_cloze_image_controls": {
+        "report": {
+          "path": "build/english-benchmark-research-20261012/baseline-cloze-image-checks20261015u-v0.1.json",
+          "sha256": "31743cdb533c8203526bb54322d1d88a050f860a5692e084a1240f177cc427e7"
+        },
+        "positive_complete_layouts": 5,
+        "unchanged_old_source_profile_regression": 1,
+        "rejected_incorrect_bindings_or_claims": 20,
+        "source_reader_structural_rejections": 2,
+        "total_controls": 26,
+        "model_or_production_called": false
+      }
+    },
+    {
+      "id": "S08",
+      "status": "unverified_separate_validation",
+      "grades": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "need": "实际模型批次的整组通过率、重复/多解/错键、年级负荷偏差与修订成本；独立教研、学生用时/难度、商用分别有证据，不能由样本数推稳定产量。雅礼29原键D但C/D都有文段依据，待独立裁决，不升级gold",
+      "additional_source_risk": "Chengdu dialogue59 acquired key fragment mon, explanation common; native reference not repaired or promoted by model/self-review. Source binaryTF32B explanation uses not-mentioned rationale, no invented third option or gold."
+    }
+  ],
+  "current_batches": {
+    "path": "FirstRelease/Sampling/current-batches-v0.5.json",
+    "sha256": "7a2b775a0a7a39c7fc958b4d7719d5634581dbf32ad024fdda5f1bcc34e255ca"
+  }
+}

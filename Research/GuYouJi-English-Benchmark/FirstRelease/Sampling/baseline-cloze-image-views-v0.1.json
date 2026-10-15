@@ -1,0 +1,2613 @@
+{
+  "version": "0.1",
+  "scope": "five existing junior cloze groups42responses;not new sources or gold",
+  "prior_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-sentence-bank-views-v0.1.json",
+    "sha256": "01b979e4804a435bfbf8e0d2677584301591ba488e6fb1a6afc58af6ee40a9e9"
+  },
+  "prior_material_audit": {
+    "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-audit20261015t-v0.2.json",
+    "sha256": "4c856737f9b309ec700ff0d3e007e6f1328b38a70524682ff56a37a9a54cadde"
+  },
+  "views": [
+    {
+      "group_id": "g7.xicheng2025.clozeStory",
+      "source_parent_id": "grade7-xicheng2025-public-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+        "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+      },
+      "record_index": 0,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-04.png",
+          "sha256": "a2fe339f0816777aefc192b2a5d2132b029e5b0181e2e97e5fd6c43b52b6a871"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-05.png",
+          "sha256": "26571e80114403151ae2e4a060e01bc780b4b431518eaaf16cd3a186ba6f2750"
+        }
+      ],
+      "PDF_pages": [
+        4,
+        5
+      ],
+      "shared_context_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-03.png",
+          "sha256": "60eb5c13e3f18a109e9f405234d41442219961f1fff96efe8fdb94be9989cdbb"
+        }
+      ],
+      "shared_context_pages": [
+        3
+      ],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade7-xicheng2025-public-paper-key20261014",
+          "PDF_page": 4,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-04.png",
+            "sha256": "a2fe339f0816777aefc192b2a5d2132b029e5b0181e2e97e5fd6c43b52b6a871"
+          }
+        },
+        {
+          "parent_id": "grade7-xicheng2025-public-paper-key20261014",
+          "PDF_page": 5,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-05.png",
+            "sha256": "26571e80114403151ae2e4a060e01bc780b4b431518eaaf16cd3a186ba6f2750"
+          }
+        },
+        {
+          "parent_id": "grade7-xicheng2025-public-paper-key20261014",
+          "PDF_page": 3,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade7-xicheng2025-inspection-03.png",
+            "sha256": "60eb5c13e3f18a109e9f405234d41442219961f1fff96efe8fdb94be9989cdbb"
+          }
+        }
+      ],
+      "source_policy": {
+        "source_points_each": 1,
+        "source_group_total_explicit": null,
+        "parent_cloze_total": 10,
+        "parent_responses": 10,
+        "selected_story_responses": 6,
+        "selected_story_not_AorB_choice": true,
+        "title": null,
+        "illustrated_glosses": [
+          "a lightning bolt",
+          "a trophy"
+        ],
+        "source_defects": [
+          "Bill final name differs from earlier Billy;preserve",
+          "funderstorm deliberate wordplay not spelling correction"
+        ],
+        "fact_or_health_validation": false
+      },
+      "source_image_scopes": [
+        "page4: complete story except final speech; gaps27-32; two illustrated English glosses; page furniture excluded",
+        "page5: final Bill speech and all18options only; following readingA excluded",
+        "page3: parent cloze score declaration only; bank subgroup not copied"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "aad1769d935d86162ec475f32aae2746ee1cf6a5a1a86114989036934ad8e44a"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "9bc6fce62c693807353a340a36823f5502e9a49b66d136e2300edf4a8c3cd083"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "148232dc273e9f9c94670830c7e2ef850e741f85bce0b614899d8a6af25c9dea"
+        },
+        {
+          "id": "q27.A",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "c5052532c2206140dfdc3b0d756cce0831ac00fd978f2bfd150858e7ee217a8c"
+        },
+        {
+          "id": "q27.B",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "0d4fc4a78d3706edccafb665a8b2fdd9309e82c78625bb0f2b8e7bb9e1c4d21c"
+        },
+        {
+          "id": "q27.C",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "3d7eb3d3dab17ee509a6911e0feb928eb46e956adcada792493614bfb97a7a9c"
+        },
+        {
+          "id": "q28.A",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "d67e2e944994496c8d8ec76eed0cf9f09679448d584b532bebf941852a37f5ed"
+        },
+        {
+          "id": "q28.B",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "8e260bd854566e0d924de6d699bd6f9679797f7a0c86e94175410b9816b8e536"
+        },
+        {
+          "id": "q28.C",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "63d04dee7c50f6fb120287649c32b5e32d4e8e4fc90a9083adc98f9baac63691"
+        },
+        {
+          "id": "q29.A",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "823a0d7c971a484181890084bdb5ffe885d1b038fecc7156c9f78bfca56edb86"
+        },
+        {
+          "id": "q29.B",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "3e55a6f922a87ff131afc9c10c116e9e06b8a35195eece72126d2b838d9ec059"
+        },
+        {
+          "id": "q29.C",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            11,
+            "text"
+          ],
+          "sha256": "ac4d6871e85a3f6f3e999b6723dcab59f1706ab4ef1a700d2aebcff0f8639bf0"
+        },
+        {
+          "id": "q30.A",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            12,
+            "text"
+          ],
+          "sha256": "45c9a6614fccd4f9592d8283a4f25bff84076fd43ee9f90eaa07746ebbed02ca"
+        },
+        {
+          "id": "q30.B",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            13,
+            "text"
+          ],
+          "sha256": "1cb0f5a9e3a8e4ddd72322c677990833aa4c67ff300b3ebfbfb726894f1a1058"
+        },
+        {
+          "id": "q30.C",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            14,
+            "text"
+          ],
+          "sha256": "13d9ead0ef6e1b24eacabb65db1c00f4c6ea709eb5e1279f1c7381477576aacd"
+        },
+        {
+          "id": "q31.A",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            15,
+            "text"
+          ],
+          "sha256": "00c4285274fcc5d6fba2ee58daf0d8c2b9b825b68d35d65d0e90a9bb333a51b5"
+        },
+        {
+          "id": "q31.B",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            16,
+            "text"
+          ],
+          "sha256": "9a105749cfcbac2e07d7640697861f62dfcc7c02bc24519e9c287431bc493f9d"
+        },
+        {
+          "id": "q31.C",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            17,
+            "text"
+          ],
+          "sha256": "176473d7313395b6e209bc6b1d57aa160b628706860aa0554d7af60a1d40ab87"
+        },
+        {
+          "id": "q32.A",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            18,
+            "text"
+          ],
+          "sha256": "292234b2b07702a5261af654dc10c64d57aab915b7e1d4be979d4d55a11fcaeb"
+        },
+        {
+          "id": "q32.B",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            19,
+            "text"
+          ],
+          "sha256": "0266a143d4d04392435431eea1f5d960e1e9a13af49bc7e54d79463b88f8a144"
+        },
+        {
+          "id": "q32.C",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            0,
+            "components",
+            20,
+            "text"
+          ],
+          "sha256": "ca8c522af0a0dfc10c8747ed205c4a650df4ccb350adbd450bbce753f6385c51"
+        },
+        {
+          "id": "gloss0",
+          "role": "illustrated_gloss_label",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            21,
+            "text"
+          ],
+          "sha256": "2dcfa1c0a7cbb8434277696f43a8569764fc43f9a40ed351dd3ace9b3b7cd25c"
+        },
+        {
+          "id": "gloss1",
+          "role": "illustrated_gloss_label",
+          "pointer": [
+            "records",
+            0,
+            "components",
+            22,
+            "text"
+          ],
+          "sha256": "adf889653a25f501ed170d78415773505f3630d48180e7139407745a819d50df"
+        }
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-cloze-image-source-text20261015u-v0.1.json",
+        "sha256": "62bfdc60981248792d2d341615f1155efc45baf9768ee8305cde1eb451d538c5"
+      }
+    },
+    {
+      "group_id": "g8.2025fengtai.cloze",
+      "source_parent_id": "grade8-fengtai2025upper-candidate20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-fengtai2025upper-candidate20261014.pdf",
+        "sha256": "044a92582dd78d7c45682d22a993ccaed22706ea3034b3d7a8e8d61c4e6a892f"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "record_index": 1,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-fengtai2025upper-candidate20261014-view02.png",
+          "sha256": "79c177bf779f35561aeeeeedfbfb62f0d699d1c53041b05d699dfb805d8d4d9e"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-fengtai2025upper-candidate20261014-view03.png",
+          "sha256": "61b85495236a07efbe4e5a5d93fa68ee9d9deb8c6c365a9193986ab8095fce16"
+        }
+      ],
+      "PDF_pages": [
+        2,
+        3
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade8-fengtai2025upper-candidate20261014",
+          "PDF_page": 2,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-fengtai2025upper-candidate20261014-view02.png",
+            "sha256": "79c177bf779f35561aeeeeedfbfb62f0d699d1c53041b05d699dfb805d8d4d9e"
+          }
+        },
+        {
+          "parent_id": "grade8-fengtai2025upper-candidate20261014",
+          "PDF_page": 3,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-fengtai2025upper-candidate20261014-view03.png",
+            "sha256": "61b85495236a07efbe4e5a5d93fa68ee9d9deb8c6c365a9193986ab8095fce16"
+          }
+        }
+      ],
+      "source_policy": {
+        "source_points_each": 1,
+        "source_group_total_explicit": 8,
+        "title": null,
+        "illustration": "camp_people_scene",
+        "source_defects": [
+          "Lily’s life has __20__ forever by... lacks passive auxiliary been;not scoring-admitted",
+          "comfort zone gloss 地区 incomplete;retain"
+        ],
+        "positive_scoring_admission": false,
+        "fact_or_health_validation": false
+      },
+      "source_image_scopes": [
+        "page2: instruction/score/story start and gaps13-18 plus camp illustration; earlier choices excluded",
+        "page3: story ending/gaps19-20/all32options; following profile matching excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "fe51bca98cfc5d95c646cb2acca9d00e25f9a89ae540fd886bd3bde8cac38a22"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "ac148c08f8d58e601fb90f9b8e15d7243bb0d097b13867907d39d0a0fd0cabdb"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            1,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "b24ae164de47eda530b0561d67d0aa7e515949999e0553a639b463cfd1734028"
+        },
+        {
+          "id": "q13.A",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "ccefcd91405c728f09cfdfd196e7f74c79a7b3eb193bdaec780c4e61274b0ee4"
+        },
+        {
+          "id": "q13.B",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "cc2585df74ecdb8b43e3d9f1f793ee9ccd21d617a49e8e5698cb5e052c453dac"
+        },
+        {
+          "id": "q13.C",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "2c6ed1182b4176016ebb10fdc541e61c92c45c8d37e04ec8481a5d398b6e460e"
+        },
+        {
+          "id": "q13.D",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "a908043ed469f361cd516f3bdd781341912b731a6ea3a5385af8514ec9ec02cc"
+        },
+        {
+          "id": "q14.A",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "acd85c97bf4d40bd2747f60b6be2700cce781987b7a96e7375616d318ce3c0bb"
+        },
+        {
+          "id": "q14.B",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "74e0a141ec41799adf303842992587ac174692b7b873d4ceb9ef223e7a100092"
+        },
+        {
+          "id": "q14.C",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "13d9ead0ef6e1b24eacabb65db1c00f4c6ea709eb5e1279f1c7381477576aacd"
+        },
+        {
+          "id": "q14.D",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "8d1c8a7a12c3739bb3b9988676c4f1ba69cbd7515ca23625e0d929efbc1bc1ac"
+        },
+        {
+          "id": "q15.A",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            11,
+            "text"
+          ],
+          "sha256": "c405760daf9bc32b76f4a57e9c823c39de4645e3ba3dea73d671eee07e152b5d"
+        },
+        {
+          "id": "q15.B",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            12,
+            "text"
+          ],
+          "sha256": "a87b3e348ccb598ecb71bb83300a2bf8d91b780d0717aec6c91fb46ce6fbe3d8"
+        },
+        {
+          "id": "q15.C",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            13,
+            "text"
+          ],
+          "sha256": "9807eb6ec753a5173bda500e52497ef0c62b0dd7d51891731b39d6dafd9315ae"
+        },
+        {
+          "id": "q15.D",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            14,
+            "text"
+          ],
+          "sha256": "5f5f253e21ebcc86a4d254f168b5a4fbf13b3ac1f002233c250b6e3862adae9c"
+        },
+        {
+          "id": "q16.A",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            15,
+            "text"
+          ],
+          "sha256": "a20f6f9419f532136fc52d02e13fb6e194821d6289cbaf84d6e0884b4240d0da"
+        },
+        {
+          "id": "q16.B",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            16,
+            "text"
+          ],
+          "sha256": "e93a15eab4b9bca2ead5eca86ec5263ba6373e7138828fb81b3778ee85538327"
+        },
+        {
+          "id": "q16.C",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            17,
+            "text"
+          ],
+          "sha256": "c5fc2700317a19855c32a32706ba78d1121391cc9e54bedff689c2a3c00cb5b8"
+        },
+        {
+          "id": "q16.D",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            18,
+            "text"
+          ],
+          "sha256": "9b2bbce6c72dd9bbd9c7a9976d5d76d1fcc2bb9832dec246375bb92006beccc3"
+        },
+        {
+          "id": "q17.A",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            19,
+            "text"
+          ],
+          "sha256": "2b4b2eadf7b2aece598d2f2ad4637361614a738a7cdf1a457d8b46db072184d5"
+        },
+        {
+          "id": "q17.B",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            20,
+            "text"
+          ],
+          "sha256": "8c0706c0a8dcb82cc8c75ddec93575eb98da65d86c67d219eae90059a4e64b6f"
+        },
+        {
+          "id": "q17.C",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            21,
+            "text"
+          ],
+          "sha256": "d4cc56aa47e0b5c789d492c0b1363ec44b73cd41adfdaa02860ed36d523ebf4c"
+        },
+        {
+          "id": "q17.D",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            22,
+            "text"
+          ],
+          "sha256": "42f38c12577ba328f23ac4b46572a0ff91e24b00069f6da60ce80058e51a0117"
+        },
+        {
+          "id": "q18.A",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            23,
+            "text"
+          ],
+          "sha256": "c454a455918b652d3cf538899c457100ffa79ef029aada6b20f54ae8d3166c82"
+        },
+        {
+          "id": "q18.B",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            24,
+            "text"
+          ],
+          "sha256": "ad8fdaf22c809ba3d2e6af0023697c6ae710362046ed29fae866b74b5ad5f964"
+        },
+        {
+          "id": "q18.C",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            25,
+            "text"
+          ],
+          "sha256": "b4da13b0fdf693ea82d079661748c54d7b9587be9cf26fe11708a116e18f0a5d"
+        },
+        {
+          "id": "q18.D",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            26,
+            "text"
+          ],
+          "sha256": "b3cebf40b6c091af81c9751816cfe974debf2a19974cfb6ce3adf3019300031d"
+        },
+        {
+          "id": "q19.A",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            27,
+            "text"
+          ],
+          "sha256": "ff0139d07c592e9ae929bd63ee9f24bb555ae6f97b6d8891af8213944126be80"
+        },
+        {
+          "id": "q19.B",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            28,
+            "text"
+          ],
+          "sha256": "92719fe0cf8cd51592af31ee8a5736d79f7273777fa3f7b70bfe993a4cd32180"
+        },
+        {
+          "id": "q19.C",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            29,
+            "text"
+          ],
+          "sha256": "4d4c7eee2e28d03cb2dbf3df639c3290ade66e18755e83caade2d8f37bd8c044"
+        },
+        {
+          "id": "q19.D",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            30,
+            "text"
+          ],
+          "sha256": "828408e40d4fe651488b14696b60b613c9683ab9862e03f4e72aec7c1fda7635"
+        },
+        {
+          "id": "q20.A",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            31,
+            "text"
+          ],
+          "sha256": "03494afd4248c42f5fa1237bf2eeebe751ab8d9c977d55405fcb17469dbd91f8"
+        },
+        {
+          "id": "q20.B",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            32,
+            "text"
+          ],
+          "sha256": "e87ba7a0b779d8b797f86d19604504496f23b4d1e31ed4721d9dc8634172b723"
+        },
+        {
+          "id": "q20.C",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            33,
+            "text"
+          ],
+          "sha256": "0b306c276d8463e3ab38e11ac1910418356c6c71c5829c817180d96b02f1d071"
+        },
+        {
+          "id": "q20.D",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            1,
+            "components",
+            34,
+            "text"
+          ],
+          "sha256": "d67e2e944994496c8d8ec76eed0cf9f09679448d584b532bebf941852a37f5ed"
+        }
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-cloze-image-source-text20261015u-v0.1.json",
+        "sha256": "62bfdc60981248792d2d341615f1155efc45baf9768ee8305cde1eb451d538c5"
+      }
+    },
+    {
+      "group_id": "g8.fengtai2026.cloze",
+      "source_parent_id": "gaokzx-fengtai2026-paper-key20261014-record",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/gaokzx-fengtai2026-paper-key20261014.pdf",
+        "sha256": "498bc8f276f6786dee63bfbccdd649fe121f9bd9875b4530bbd989f10d36ee67"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-fengtai2026-public-groups-v0.1.json",
+        "sha256": "202e059d3aa52286f39e9f4b07d5d288fa23773d6da4c132c57b5862368bd309"
+      },
+      "record_index": 2,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-fengtai2026-inspection-01.png",
+          "sha256": "caa4101d9c853af8a15384e0d8ff7a291d135a08fd2cf73db4b1bd43da2e5ab6"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-fengtai2026-inspection-02.png",
+          "sha256": "0c2f8ba16b43443a8bfe73f6c17d17a9a531c20d761d7d7f87fccc8c2955a83b"
+        }
+      ],
+      "PDF_pages": [
+        1,
+        2
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "gaokzx-fengtai2026-paper-key20261014-record",
+          "PDF_page": 1,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-fengtai2026-inspection-01.png",
+            "sha256": "caa4101d9c853af8a15384e0d8ff7a291d135a08fd2cf73db4b1bd43da2e5ab6"
+          }
+        },
+        {
+          "parent_id": "gaokzx-fengtai2026-paper-key20261014-record",
+          "PDF_page": 2,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-fengtai2026-inspection-02.png",
+            "sha256": "0c2f8ba16b43443a8bfe73f6c17d17a9a531c20d761d7d7f87fccc8c2955a83b"
+          }
+        }
+      ],
+      "source_policy": {
+        "source_points_each": 1,
+        "source_group_total_explicit": 8,
+        "title": "Shooting Hoops with Dad",
+        "illustrated_glosses": [
+          "shoot hoops"
+        ],
+        "source_defects": [
+          "It looked like he was a chicken...Then he swung the ball forward and back before dropping...source subject attachment retained"
+        ],
+        "fact_or_health_validation": false
+      },
+      "source_image_scopes": [
+        "page1: cloze instruction/score/title only; earlier language choices excluded",
+        "page2: illustration/gloss/full story/gaps13-20/all32options; following matching instruction excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "fe51bca98cfc5d95c646cb2acca9d00e25f9a89ae540fd886bd3bde8cac38a22"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "ac148c08f8d58e601fb90f9b8e15d7243bb0d097b13867907d39d0a0fd0cabdb"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "e30021d2f5cd2b5977917b0b9532c99757bae57289cd10b5462ea00447de75af"
+        },
+        {
+          "id": "q13.A",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "f55101cb5e7453c770d2a062a242f13479743de0c24329462d3cbf3f2d6bc7e1"
+        },
+        {
+          "id": "q13.B",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "3be7a505483c0050243c5cbad4700da13925aa4137a55e9e33efd8bc4d05850f"
+        },
+        {
+          "id": "q13.C",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "404355522396b92953086038cf05a41b27a9f1368be92c0e6b71a1e8c93f420a"
+        },
+        {
+          "id": "q13.D",
+          "role": "option",
+          "item_id": 13,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "66f62d1807d3821a3865f2573b69c74be033f1341240ac861fefc6d430bff5e0"
+        },
+        {
+          "id": "q14.A",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "fb3a7850111f293bfc97a5dd065fae84cf4e7d234451afc8712407936cee2d78"
+        },
+        {
+          "id": "q14.B",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "13d9ead0ef6e1b24eacabb65db1c00f4c6ea709eb5e1279f1c7381477576aacd"
+        },
+        {
+          "id": "q14.C",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "46fd05f35b5591e22afacd79c3060afe18120b359df5d42c98e9d0273d100cd5"
+        },
+        {
+          "id": "q14.D",
+          "role": "option",
+          "item_id": 14,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "489f719cadf919094ddb38e7654de153ac33c02febb5de91e5345cbe372cf4a0"
+        },
+        {
+          "id": "q15.A",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            11,
+            "text"
+          ],
+          "sha256": "1c6333509debf060200eb6bbe28db307508da67c0e3c58088393e4cf09de596d"
+        },
+        {
+          "id": "q15.B",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            12,
+            "text"
+          ],
+          "sha256": "008231aaf99956982ffbb132c5fe9d79272f6f109abdefb723afe455a4213765"
+        },
+        {
+          "id": "q15.C",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            13,
+            "text"
+          ],
+          "sha256": "1f5bb9791a310e136d1564ee23d2a3cc32ea7ce6fa26cb8734ec18b4607ad79e"
+        },
+        {
+          "id": "q15.D",
+          "role": "option",
+          "item_id": 15,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            14,
+            "text"
+          ],
+          "sha256": "babc1bd8ec812c742b4598d05a104f582c7d9b824022f4972aa0c2d4a3b0c85e"
+        },
+        {
+          "id": "q16.A",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            15,
+            "text"
+          ],
+          "sha256": "19051351bb6df8bf1e980843c7cd1d7b38f8f677e7700b3a05572aeebd252e1d"
+        },
+        {
+          "id": "q16.B",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            16,
+            "text"
+          ],
+          "sha256": "4311902217ad5aa4d9664f8dbacaa8bf6fe6b78ff9b5b512599f0b62da19d8d6"
+        },
+        {
+          "id": "q16.C",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            17,
+            "text"
+          ],
+          "sha256": "5b612edb571c479d1a33c2355b8933ef943bd5715b25116aaf91dbf3a842c2bd"
+        },
+        {
+          "id": "q16.D",
+          "role": "option",
+          "item_id": 16,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            18,
+            "text"
+          ],
+          "sha256": "7edb360f06acaef2cc80dba16cf563f199d347db4443da04da0c8173e3f9e4ed"
+        },
+        {
+          "id": "q17.A",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            19,
+            "text"
+          ],
+          "sha256": "645dfcb4d1d2d7f1fa00f60e45541f33dfafc3a7ce1dc4bb1901bf409e4edd60"
+        },
+        {
+          "id": "q17.B",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            20,
+            "text"
+          ],
+          "sha256": "2c810fd03484ce327b8424680058543822cd88b577809c73529104583a936627"
+        },
+        {
+          "id": "q17.C",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            21,
+            "text"
+          ],
+          "sha256": "f953f70b9132340e2782cba8feef678642693d5fa6acccaebfbc452c5bb358a5"
+        },
+        {
+          "id": "q17.D",
+          "role": "option",
+          "item_id": 17,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            22,
+            "text"
+          ],
+          "sha256": "b22d1d8fe5752533954028172c9bf3ac01b57f40c82946a3e7b1eaff389e2b87"
+        },
+        {
+          "id": "q18.A",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            23,
+            "text"
+          ],
+          "sha256": "26f8567f2569182294c3fa5b9f9cb2270b554eef628b4c149cf82a42888ff4ae"
+        },
+        {
+          "id": "q18.B",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            24,
+            "text"
+          ],
+          "sha256": "c018019b6a8b01ab5868cf4be8db327a7549ae03202548b9ffcd2671c4c2b624"
+        },
+        {
+          "id": "q18.C",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            25,
+            "text"
+          ],
+          "sha256": "fa76d99ad957d952fb3738ae1ed7282a18d3bca1531c7efc273d52e16b774bd6"
+        },
+        {
+          "id": "q18.D",
+          "role": "option",
+          "item_id": 18,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            26,
+            "text"
+          ],
+          "sha256": "0304523efff53f243d76dc81b7c271f922292543cead846ee714f066c3331e5f"
+        },
+        {
+          "id": "q19.A",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            27,
+            "text"
+          ],
+          "sha256": "37bb4c5a45f3a73e9931df7af598ee77fba50cb25c603f9ab63d433d99818918"
+        },
+        {
+          "id": "q19.B",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            28,
+            "text"
+          ],
+          "sha256": "18bbb0eb17ad1b4a3878e1465e3d35dff11431c8e9f8c152c2a287e1ff14db8f"
+        },
+        {
+          "id": "q19.C",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            29,
+            "text"
+          ],
+          "sha256": "efad137e1f9224a51687fb9c12ee5a226a5f0cbb140f4d41fd54f37692f2fe9c"
+        },
+        {
+          "id": "q19.D",
+          "role": "option",
+          "item_id": 19,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            30,
+            "text"
+          ],
+          "sha256": "e0b0f9500d62f8944b90971ec6789606e47ceb37db93673899a63aa57c977c31"
+        },
+        {
+          "id": "q20.A",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            31,
+            "text"
+          ],
+          "sha256": "da4270e3735a3418c9d462af2e17d045132dede43df058e85b1f0399fcf96f1b"
+        },
+        {
+          "id": "q20.B",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            32,
+            "text"
+          ],
+          "sha256": "f948c4eb7f17fdb77ade313d3d443d3842c693cfeb676eb92cff8b50540e11d8"
+        },
+        {
+          "id": "q20.C",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            33,
+            "text"
+          ],
+          "sha256": "618d663af0f1ec88a5a19defa65a2f80d06582a832510b12f475d80870bdb3ab"
+        },
+        {
+          "id": "q20.D",
+          "role": "option",
+          "item_id": 20,
+          "pointer": [
+            "records",
+            2,
+            "components",
+            34,
+            "text"
+          ],
+          "sha256": "76720b4a11848dbb511a929709ba636154883e9196dfa40457a5621ced5e5f26"
+        },
+        {
+          "id": "gloss0",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            35,
+            "text"
+          ],
+          "sha256": "37c49ae6814eb9721d131ce346b09f1fa1ece278bcb160e597d8ee1f570b4214"
+        },
+        {
+          "id": "gloss1",
+          "role": "illustrated_gloss_label",
+          "pointer": [
+            "records",
+            2,
+            "components",
+            36,
+            "text"
+          ],
+          "sha256": "1f78f46595cebfc6bd2adc3b2c67835b9589fdee31b9061c0b57eebef123858f"
+        }
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-cloze-image-source-text20261015u-v0.1.json",
+        "sha256": "62bfdc60981248792d2d341615f1155efc45baf9768ee8305cde1eb451d538c5"
+      }
+    },
+    {
+      "group_id": "g8.bnu2026.cloze",
+      "source_parent_id": "xschu-bnu2026-paper-key20261014-record",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/xschu-bnu2026-paper-key20261014.pdf",
+        "sha256": "36f2bf8cc8678076380cfd71207c64bc9ff4a71e5d1778167cc3615c85033761"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-bnu2026-public-groups-v0.1.json",
+        "sha256": "df2a038bab59e1ceadc7ceb12a5dec9d7233b53b0ab22364c8d20931be26dfa4"
+      },
+      "record_index": 3,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-03.png",
+          "sha256": "0359ced35e0a24ed135df1d5a9af6d2c8f1775e9cbeb26347818c48a9e39fd70"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-04.png",
+          "sha256": "45a8d528d6aa171d421fc69d51c371d4d581522b9e72e994400a496333d4eabd"
+        }
+      ],
+      "PDF_pages": [
+        3,
+        4
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "xschu-bnu2026-paper-key20261014-record",
+          "PDF_page": 3,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-03.png",
+            "sha256": "0359ced35e0a24ed135df1d5a9af6d2c8f1775e9cbeb26347818c48a9e39fd70"
+          }
+        },
+        {
+          "parent_id": "xschu-bnu2026-paper-key20261014-record",
+          "PDF_page": 4,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-04.png",
+            "sha256": "45a8d528d6aa171d421fc69d51c371d4d581522b9e72e994400a496333d4eabd"
+          }
+        }
+      ],
+      "source_policy": {
+        "source_points_each": 1,
+        "source_group_total_explicit": 10,
+        "title": "The Final Push",
+        "illustrated_glosses": [
+          "summit"
+        ],
+        "source_defects": [
+          "source punctuation/spacing retained apart from line wraps"
+        ],
+        "fact_or_health_validation": false
+      },
+      "source_image_scopes": [
+        "page3: cloze instruction/score/title/summit illustration/story/gaps23-31; earlier independent sentences excluded",
+        "page4: final paragraph/gap32/all40options; following electronic-product matching excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "349b4dd7141cbe5a6bc3465f9c2c315c15622a66eee438248851eb44d401676d"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "9bc6fce62c693807353a340a36823f5502e9a49b66d136e2300edf4a8c3cd083"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "8495043d9eda594d04aa23ba3651858806618a5db5faad47160e3f154bf185d6"
+        },
+        {
+          "id": "q23.A",
+          "role": "option",
+          "item_id": 23,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "d392b04f522b7082cfec3f6722689dab96f042fe7432ca8dfacbe29941631ecd"
+        },
+        {
+          "id": "q23.B",
+          "role": "option",
+          "item_id": 23,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "2bf61a3bc850596a77a73c6a9fd279d593974b093bf223fd591e6f052dcaf0e0"
+        },
+        {
+          "id": "q23.C",
+          "role": "option",
+          "item_id": 23,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "1c168adb00d208e42f93314529f1fa9c0427eb63233ceda95a5db52b7012a719"
+        },
+        {
+          "id": "q23.D",
+          "role": "option",
+          "item_id": 23,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "5f40adcebbde4df07cbe0c8c995d6a8a2b538edb838313103acedd7ac6e68b32"
+        },
+        {
+          "id": "q24.A",
+          "role": "option",
+          "item_id": 24,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "42f38c12577ba328f23ac4b46572a0ff91e24b00069f6da60ce80058e51a0117"
+        },
+        {
+          "id": "q24.B",
+          "role": "option",
+          "item_id": 24,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "4bcef3de76eaf574c6bac3fc98f364793a73aa3e31fe45a7d1dcc0239ed2a5c4"
+        },
+        {
+          "id": "q24.C",
+          "role": "option",
+          "item_id": 24,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "9e720e53885580b1e0c5866c98e04988f0b0d071037fb54621a5180ba29e72e7"
+        },
+        {
+          "id": "q24.D",
+          "role": "option",
+          "item_id": 24,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "686f746a95b6f836d7d70567c302c3f9ebb5ee0def3d1220ee9d4e9f34f5e131"
+        },
+        {
+          "id": "q25.A",
+          "role": "option",
+          "item_id": 25,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            11,
+            "text"
+          ],
+          "sha256": "a46dce8d265ce7dacc59b8f75b5a6cafa762199cca0f2ce3132b5e6bef5d358f"
+        },
+        {
+          "id": "q25.B",
+          "role": "option",
+          "item_id": 25,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            12,
+            "text"
+          ],
+          "sha256": "305b00e96c4f0c3efbe92d6afd6d6affb041eda0ca6c55080813268ba069bd7b"
+        },
+        {
+          "id": "q25.C",
+          "role": "option",
+          "item_id": 25,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            13,
+            "text"
+          ],
+          "sha256": "1298a63b90dc1097df9c8d2dcaffad1b13cd33cef761dade7b68418ed474280e"
+        },
+        {
+          "id": "q25.D",
+          "role": "option",
+          "item_id": 25,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            14,
+            "text"
+          ],
+          "sha256": "f77470ce4f1959e593487d617f0153a32f3a8382bbd9aca73c1ab17138530428"
+        },
+        {
+          "id": "q26.A",
+          "role": "option",
+          "item_id": 26,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            15,
+            "text"
+          ],
+          "sha256": "c1002291915ca21a2dc34f76a10f4669d9f1f2119cfb04846187d7f70a15ee77"
+        },
+        {
+          "id": "q26.B",
+          "role": "option",
+          "item_id": 26,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            16,
+            "text"
+          ],
+          "sha256": "36296059cca8b7c7c7a52ff12abe53eb374d509d480f69bb673ac2566ea0b53f"
+        },
+        {
+          "id": "q26.C",
+          "role": "option",
+          "item_id": 26,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            17,
+            "text"
+          ],
+          "sha256": "f58940a313992e6838ac3fc1f2356916cf8b53c42920a3f59cabc510f1236ec9"
+        },
+        {
+          "id": "q26.D",
+          "role": "option",
+          "item_id": 26,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            18,
+            "text"
+          ],
+          "sha256": "b991a49b1b0aa2cc5850845fe440abdd1ac7965c65fe1ad6fc8d62efa42a1dd5"
+        },
+        {
+          "id": "q27.A",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            19,
+            "text"
+          ],
+          "sha256": "a7a45ea923c6229b341e2d21ff8fde3a4ca180f38c920a479dcfb7679389841b"
+        },
+        {
+          "id": "q27.B",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            20,
+            "text"
+          ],
+          "sha256": "ada750e3f8464e9e1fd6a882b1a3b46cad39a1876c3fb7b85abe47a887c977fb"
+        },
+        {
+          "id": "q27.C",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            21,
+            "text"
+          ],
+          "sha256": "106a5842fc5fce6f663176285ed1516dbb1e3d15c05abab12fdca46d60b539b7"
+        },
+        {
+          "id": "q27.D",
+          "role": "option",
+          "item_id": 27,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            22,
+            "text"
+          ],
+          "sha256": "4492aabd733f37cb76fc0ed1fd75a11c5dd05ba8977988e28487739a20975b85"
+        },
+        {
+          "id": "q28.A",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            23,
+            "text"
+          ],
+          "sha256": "d93bcabfad59e1dacb9bc2e32938cd106ddf2a1259b3f3b1e355a7efc4a35f84"
+        },
+        {
+          "id": "q28.B",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            24,
+            "text"
+          ],
+          "sha256": "a47a2e1872852966caf818c682a89d18bb7819d45c2c9d1d73c58613b99ad0ef"
+        },
+        {
+          "id": "q28.C",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            25,
+            "text"
+          ],
+          "sha256": "17b669561c95d3ac83bd5f4cbf7dea0041b3fe8b2302efaa4e7fc1582c591c4e"
+        },
+        {
+          "id": "q28.D",
+          "role": "option",
+          "item_id": 28,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            26,
+            "text"
+          ],
+          "sha256": "ea0890697a77af0a2e054cccec587c8a42feb5cf38e778c6c6e2a96bfb945c0b"
+        },
+        {
+          "id": "q29.A",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            27,
+            "text"
+          ],
+          "sha256": "c8fc6bf296faa18d058b23f9a467243a6f0a176f8d2c407e9c9ea06165da95f6"
+        },
+        {
+          "id": "q29.B",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            28,
+            "text"
+          ],
+          "sha256": "78ee12c65d407ba0694df910c6b815938bf6119f7288bd720a48c98e11af57bc"
+        },
+        {
+          "id": "q29.C",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            29,
+            "text"
+          ],
+          "sha256": "339efeab70b4cc6e2755ec57d2290484ef2363f955c16df3900ad44382227429"
+        },
+        {
+          "id": "q29.D",
+          "role": "option",
+          "item_id": 29,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            30,
+            "text"
+          ],
+          "sha256": "2c158582949f34c9ef03daee0949fda374fcaa77dff2af611c96a027fbd30832"
+        },
+        {
+          "id": "q30.A",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            31,
+            "text"
+          ],
+          "sha256": "be8dff00b0d468b29d804886729be5b430163ad625b1b621d943c2f80005281a"
+        },
+        {
+          "id": "q30.B",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            32,
+            "text"
+          ],
+          "sha256": "5589aa5863c2d85622d06d651add002416e5513afdbb455666cdde01bb3e257d"
+        },
+        {
+          "id": "q30.C",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            33,
+            "text"
+          ],
+          "sha256": "5fde095c479bdfd93ade7d58a479c076ab540d173b2aafee95c1c0f1341433dc"
+        },
+        {
+          "id": "q30.D",
+          "role": "option",
+          "item_id": 30,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            34,
+            "text"
+          ],
+          "sha256": "8656aa55d393b032b7f05fd40daac127c4862315017072b231d726ccf0d686e6"
+        },
+        {
+          "id": "q31.A",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            35,
+            "text"
+          ],
+          "sha256": "4e0d8a13b2c75bd879419cfb5dba6513a76e125598a4e7b98e29f60a23c04299"
+        },
+        {
+          "id": "q31.B",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            36,
+            "text"
+          ],
+          "sha256": "55faf5eb0a3b57e2c21160a5c8a8c7eb053264c41aea5ad52c3faeaa791c896d"
+        },
+        {
+          "id": "q31.C",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            37,
+            "text"
+          ],
+          "sha256": "90c0d99050e146cffec10182537344ebfca264570d55cde2cafb3a03fd517b26"
+        },
+        {
+          "id": "q31.D",
+          "role": "option",
+          "item_id": 31,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            38,
+            "text"
+          ],
+          "sha256": "f62e5ba3a351a809a988e0cf0e21571abab991dbe618e7369f7d9c6850d227cd"
+        },
+        {
+          "id": "q32.A",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            39,
+            "text"
+          ],
+          "sha256": "4d8bdc3cf29a231607cb18ba93954cf804b427f6318de019a986d6db0324a9df"
+        },
+        {
+          "id": "q32.B",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            40,
+            "text"
+          ],
+          "sha256": "b5a24f5aa24ebbf9bae21eff53016a737a6e099424308933438dd37392b62f63"
+        },
+        {
+          "id": "q32.C",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            41,
+            "text"
+          ],
+          "sha256": "28d8747931a8ff5ddf76c7bf206208418aad6889010e3e4770864ad6a1df7600"
+        },
+        {
+          "id": "q32.D",
+          "role": "option",
+          "item_id": 32,
+          "pointer": [
+            "records",
+            3,
+            "components",
+            42,
+            "text"
+          ],
+          "sha256": "aa0407547d598b7ca8860003269e98063f226f8004e4958634d6332483a2d61e"
+        },
+        {
+          "id": "gloss0",
+          "role": "material_label",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            43,
+            "text"
+          ],
+          "sha256": "127b17fa7eca13df68b75166528375d4b0cdf6f9d05fc6576fdc5e5e377e51f7"
+        },
+        {
+          "id": "gloss1",
+          "role": "illustrated_gloss_label",
+          "pointer": [
+            "records",
+            3,
+            "components",
+            44,
+            "text"
+          ],
+          "sha256": "13984a4e7e0edce830a005d227b04ad31cd1056020fd0a7b9760364161735aa4"
+        }
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-cloze-image-source-text20261015u-v0.1.json",
+        "sha256": "62bfdc60981248792d2d341615f1155efc45baf9768ee8305cde1eb451d538c5"
+      }
+    },
+    {
+      "group_id": "g8.changjun2024.cloze",
+      "source_parent_id": "grade8-changjun2024-midterm-paper-key20261014",
+      "parent_document": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-changjun2024-midterm-paper-key20261014.pdf",
+        "sha256": "50fcae7cf123843ce34b2fe9b66134e765fc281537e28d746c79e5b3c7cadec2"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+        "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+      },
+      "record_index": 4,
+      "source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-changjun2024-midterm-inspection-07.png",
+          "sha256": "8500a2c7ec9d6042aeac9bb244b5981a65f2177ecb9426a82e33007879672038"
+        }
+      ],
+      "PDF_pages": [
+        7
+      ],
+      "shared_context_images": [],
+      "shared_context_pages": [],
+      "author_page_bindings": [
+        {
+          "parent_id": "grade8-changjun2024-midterm-paper-key20261014",
+          "PDF_page": 7,
+          "image": {
+            "path": "build/english-benchmark-research-20261012/grade8-changjun2024-midterm-inspection-07.png",
+            "sha256": "8500a2c7ec9d6042aeac9bb244b5981a65f2177ecb9426a82e33007879672038"
+          }
+        }
+      ],
+      "source_policy": {
+        "source_points_each": 1.5,
+        "source_group_total_explicit": 15,
+        "title": null,
+        "illustrated_glosses": [],
+        "source_defects": [],
+        "fiction_not_animalbiology_fact_template": true,
+        "fact_or_health_validation": false
+      },
+      "source_image_scopes": [
+        "page7: full fable10gaps/all30options/instruction/score; header/footer/watermark excluded"
+      ],
+      "student_text_reviewed_complete": true,
+      "independent_transcription": false,
+      "necessary_input_status_not_upgraded_in_frozen_inventory": true,
+      "native_empty_history_preserved": true,
+      "components": [
+        {
+          "id": "instruction",
+          "role": "instruction",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            0,
+            "text"
+          ],
+          "sha256": "b9df2584c14ee13843867cf2b782aae2058d383178ca4f225a3b2dac3e5fb3aa"
+        },
+        {
+          "id": "score",
+          "role": "scoring_declaration",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            1,
+            "text"
+          ],
+          "sha256": "d3b49c222b7eb99dc204c645cf6402eae80be4054818afe2e14081140b64b91e"
+        },
+        {
+          "id": "body",
+          "role": "passage",
+          "pointer": [
+            "records",
+            4,
+            "components",
+            2,
+            "text"
+          ],
+          "sha256": "c14df638129fbc3f5ef271a4877f0456c1d685dc1e3ab7f9a51821c1a4600468"
+        },
+        {
+          "id": "q36.A",
+          "role": "option",
+          "item_id": 36,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            3,
+            "text"
+          ],
+          "sha256": "e6eac82a189f455371b8dd0b08bb4828c655dcaac87fb43ceb39c5b2692d6003"
+        },
+        {
+          "id": "q36.B",
+          "role": "option",
+          "item_id": 36,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            4,
+            "text"
+          ],
+          "sha256": "d81c55f49c5bb0d36bc11e3966ec4efab66f8dfefbbc1761161ca9d230e5466a"
+        },
+        {
+          "id": "q36.C",
+          "role": "option",
+          "item_id": 36,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            5,
+            "text"
+          ],
+          "sha256": "309074dc4898c3d17a5e7bc8294d0b0d9e69d7e4b7f6ef05674d3ce596b0a629"
+        },
+        {
+          "id": "q37.A",
+          "role": "option",
+          "item_id": 37,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            6,
+            "text"
+          ],
+          "sha256": "77f2f036726eaa17f75c9a6bdd9f613862b1a17951469921026e482e66ea046a"
+        },
+        {
+          "id": "q37.B",
+          "role": "option",
+          "item_id": 37,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            7,
+            "text"
+          ],
+          "sha256": "3eeb7e96e59ce40f9cb1a089daba079fd699f6867a30f6634af8570967b2375a"
+        },
+        {
+          "id": "q37.C",
+          "role": "option",
+          "item_id": 37,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            8,
+            "text"
+          ],
+          "sha256": "e6640de835ad09fb0a7367ee2e0ba99d0142c139db0272146e35538bd07479fc"
+        },
+        {
+          "id": "q38.A",
+          "role": "option",
+          "item_id": 38,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            9,
+            "text"
+          ],
+          "sha256": "13d9ead0ef6e1b24eacabb65db1c00f4c6ea709eb5e1279f1c7381477576aacd"
+        },
+        {
+          "id": "q38.B",
+          "role": "option",
+          "item_id": 38,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            10,
+            "text"
+          ],
+          "sha256": "0040953a08da7b8f09eb30b49911420a07db773387a292f290c494b76ec21ecc"
+        },
+        {
+          "id": "q38.C",
+          "role": "option",
+          "item_id": 38,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            11,
+            "text"
+          ],
+          "sha256": "fbbb377ea6dd918f1dd2900de1b8c7ee9e582f622f28d54184eb446c96995275"
+        },
+        {
+          "id": "q39.A",
+          "role": "option",
+          "item_id": 39,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            12,
+            "text"
+          ],
+          "sha256": "00e13ed7af55b27622f1d6eab5bec0147e68efe28dc2b12461117afa1a5ed40e"
+        },
+        {
+          "id": "q39.B",
+          "role": "option",
+          "item_id": 39,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            13,
+            "text"
+          ],
+          "sha256": "1c48f6310f1c849b4ac338d340ee667bf3b6d59b589348eaa2b8a0698ff73481"
+        },
+        {
+          "id": "q39.C",
+          "role": "option",
+          "item_id": 39,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            14,
+            "text"
+          ],
+          "sha256": "64879f7d6b960a01909762d911a32d4582c20010c5641ee90278b644a9e3b525"
+        },
+        {
+          "id": "q40.A",
+          "role": "option",
+          "item_id": 40,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            15,
+            "text"
+          ],
+          "sha256": "6ee16429668c2d8207707407c8c3ee4285a9e26eef5bd0c17ff00efe090808e2"
+        },
+        {
+          "id": "q40.B",
+          "role": "option",
+          "item_id": 40,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            16,
+            "text"
+          ],
+          "sha256": "0db79e63c5179b1263619f693ca7125017237cec447946bdb40a8d3175c1773d"
+        },
+        {
+          "id": "q40.C",
+          "role": "option",
+          "item_id": 40,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            17,
+            "text"
+          ],
+          "sha256": "3f901602db02e2515a55dcecb094a522d71ed5e27d1565d8967cfbf64b44156f"
+        },
+        {
+          "id": "q41.A",
+          "role": "option",
+          "item_id": 41,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            18,
+            "text"
+          ],
+          "sha256": "fdf9c202a7a1381b69f12872fc0fd2404d7b093a33e4457ca070dde8e90fe832"
+        },
+        {
+          "id": "q41.B",
+          "role": "option",
+          "item_id": 41,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            19,
+            "text"
+          ],
+          "sha256": "aee4b1a642fad65951e45dfd5a44787dbbe2ab89c9d2ad64f93cb45fbe7d348e"
+        },
+        {
+          "id": "q41.C",
+          "role": "option",
+          "item_id": 41,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            20,
+            "text"
+          ],
+          "sha256": "a093d3f5ecffec653f683e9abf3879067ff9ddd28a14f24949c975864ca83322"
+        },
+        {
+          "id": "q42.A",
+          "role": "option",
+          "item_id": 42,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            21,
+            "text"
+          ],
+          "sha256": "ca4176138ea4086faada5ec84e0867418f7aa79a5a7269b16f0c2026fb8714f2"
+        },
+        {
+          "id": "q42.B",
+          "role": "option",
+          "item_id": 42,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            22,
+            "text"
+          ],
+          "sha256": "60e6aa4ad2d315ff8ab59a827637d123fdb7af4107f97c9344a1863a59568aca"
+        },
+        {
+          "id": "q42.C",
+          "role": "option",
+          "item_id": 42,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            23,
+            "text"
+          ],
+          "sha256": "c405760daf9bc32b76f4a57e9c823c39de4645e3ba3dea73d671eee07e152b5d"
+        },
+        {
+          "id": "q43.A",
+          "role": "option",
+          "item_id": 43,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            24,
+            "text"
+          ],
+          "sha256": "484aab2f2cd0f77b3c30f91521ba9a76c8c501112a53e100154a098c274f03d3"
+        },
+        {
+          "id": "q43.B",
+          "role": "option",
+          "item_id": 43,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            25,
+            "text"
+          ],
+          "sha256": "0b27c158feb36ab18a10ff687909ec730ece6280581dd407e2672359be7725dd"
+        },
+        {
+          "id": "q43.C",
+          "role": "option",
+          "item_id": 43,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            26,
+            "text"
+          ],
+          "sha256": "45c9a6614fccd4f9592d8283a4f25bff84076fd43ee9f90eaa07746ebbed02ca"
+        },
+        {
+          "id": "q44.A",
+          "role": "option",
+          "item_id": 44,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            27,
+            "text"
+          ],
+          "sha256": "ae0a9ad3227c5420c07dd79abe119876db3d234a066344bd4c90b8f189cd2606"
+        },
+        {
+          "id": "q44.B",
+          "role": "option",
+          "item_id": 44,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            28,
+            "text"
+          ],
+          "sha256": "2c70e12b7a0646f92279f427c7b38e7334d8e5389cff167a1dc30e73f826b683"
+        },
+        {
+          "id": "q44.C",
+          "role": "option",
+          "item_id": 44,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            29,
+            "text"
+          ],
+          "sha256": "09aee23b1fd4f638918d2c392100518a3472890366a833e4ee09a230a80f1805"
+        },
+        {
+          "id": "q45.A",
+          "role": "option",
+          "item_id": 45,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            30,
+            "text"
+          ],
+          "sha256": "cdc29937887188ad3702d1831d5b7ec66333a2a909e1f242432eb168d4c7b08b"
+        },
+        {
+          "id": "q45.B",
+          "role": "option",
+          "item_id": 45,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            31,
+            "text"
+          ],
+          "sha256": "a1d9890884c1b4b960c279cfe7554a900d169422d6cec980beef67761487d3b9"
+        },
+        {
+          "id": "q45.C",
+          "role": "option",
+          "item_id": 45,
+          "pointer": [
+            "records",
+            4,
+            "components",
+            32,
+            "text"
+          ],
+          "sha256": "a9bbc0222075becade1088ce1e976ae12e2411c4e7e9ebb2a0e82a0d1d73178f"
+        }
+      ],
+      "transcription": {
+        "path": "build/english-benchmark-research-20261012/baseline-cloze-image-source-text20261015u-v0.1.json",
+        "sha256": "62bfdc60981248792d2d341615f1155efc45baf9768ee8305cde1eb451d538c5"
+      }
+    }
+  ],
+  "all_benchmark_deduplication_complete": false
+}
