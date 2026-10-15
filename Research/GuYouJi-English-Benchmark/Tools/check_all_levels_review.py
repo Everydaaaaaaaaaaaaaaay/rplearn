@@ -68,6 +68,15 @@ def check(page):
         assert set(held)<=set(old['groups']) and len(held)==data['paused_concrete_groups']==holds['paused_groups']
         assert sum(r['responses']for r in held.values())==holds['paused_responses']
         assert all(r['whole_group_paused'] and r['counterexamples']for r in held.values())
+    plan=json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
+    if plan.get('latest_review_delta'):
+        delta=json.loads(load_ref(plan['latest_review_delta']).read_text())
+        base=extract(load_ref(delta['base_frozen_page']))
+        assert delta['scope']=='incremental_quality_review_group_snapshot' and not delta['fullpage_copy_created']
+        assert set(delta['unchanged_group_sha256'])==set(base['groups']) and not delta['removed_group_ids']
+        group_sha=lambda value:hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+        assert all(group_sha(base['groups'][key])==value for key,value in delta['unchanged_group_sha256'].items())
+        preserved(base);preserved({'groups':delta['new_groups']})
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
@@ -130,6 +139,17 @@ def check(page):
             assert audit['answered_examples']==1 and len(audit['example_options'])==4
             assert re.findall(r'\((\d+)\)',audit['student_passage'])==[str(n)for n in range(9)]
             assert audit['source_level_equivalence_established'] is False and group['sourceFormNotice']
+        if meta['grade']=='advanced' and meta['family']=='reading_choice':
+            assert len(group['questions'])==6 and all(len(q['options'])==4 for q in group['questions'])
+            assert len(audit['paragraphs'])==5 and audit['student_passage']=='\n\n'.join(audit['paragraphs'])
+            assert len(audit['response_operations'])==6 and len(set(audit['response_operations']))==6
+            assert audit['source_level_equivalence_established'] is False and audit['fictional_content_not_empirical_fact_gold']
+            assert group['requiredPassageImages']==[]
+            assert audit['student_passage'] in text
+            words=lambda value:len(re.findall(r"[A-Za-z]+(?:['’][A-Za-z]+)?",value))
+            assert audit['load_measure']['body_English_words']==words(audit['student_passage'])
+            assert audit['load_measure']['stem_English_words']==sum(words(q['stem'])for q in group['questions'])
+            assert audit['load_measure']['option_English_words']==sum(words(v)for q in group['questions']for _,v in q['options'])
         if meta['family']=='word_picture_choice':
             assert len(group['questions'])==6 and all(len(q['options'])==3 for q in group['questions'])
             assert len(group['requiredPassageImages'])==1

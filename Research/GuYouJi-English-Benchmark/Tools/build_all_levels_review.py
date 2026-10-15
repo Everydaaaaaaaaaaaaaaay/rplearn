@@ -112,6 +112,7 @@ def main(output):
                                 'number_word_completion':'看单词，填对应的阿拉伯数字。',
                                 'word_picture_choice':'看单词，从同号行的三个图片中选择对应的一项。',
                                 'dialogue_matching':'为每个问句选择合适的答句。',
+                                'reading_choice':'阅读短文，选择每题最合适的一项。',
                                 'choice_cloze':'阅读短文，为第1—8空选择最合适的一项。例0已答，不计作答点。'}[meta['family']]
         if meta['grade']=='advanced':
             group['sourceFormNotice']='高级档候选模式：参考已核C1样卷完整形式，尚未建立产品高级档与C1等值或目标人群难度标定。'

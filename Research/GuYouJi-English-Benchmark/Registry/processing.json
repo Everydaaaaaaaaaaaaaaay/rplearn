@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-10-15",
+  "updated_on": "2026-10-16",
   "framework": "OCR outputs are drafts, not gold text; page numbers and score notation require original-image checks.",
   "failed_attempts": [
     {
@@ -27245,6 +27245,72 @@
           "output": "build/english-benchmark-research-20261012/all16-cache-space20261016-v0.1.json",
           "bytes": 758,
           "sha256": "03c1b1dd2d151a230ff9150320f454302eca40f665e0368a2be752ec8d6c7a01",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "all16-fifth-advanced-reading-and-preschool-partial20261016-v0.1",
+      "source_acquisition_ids": [
+        "cambridge-c1-rue2022-member20261016",
+        "cambridge-c1-objective-keypage20261016",
+        "kindergarten-super-safari-ab1-excerpt20261016",
+        "kindergarten-super-safari-tb1-excerpt20261016",
+        "kindergarten-super-safari-resources-native20261016"
+      ],
+      "tool": "full_authored_reading_contract,loadseparation,59pair_fivegramandmanualfamilyreview,sourcePDFvisuals,closedformholds,incremental_snapshot,localHTTPlinks",
+      "tool_version": "0.1",
+      "parameters": [
+        "1newadvancedgroup6responses24options;body721/stem69/options341to234actualrevision;newtotal7authors43responses;current15levels60groups430responses;5holds48stillinactive;source5/33/3unchanged;kindergartenonechoice2imagesonlypartial:noaudio/T96script;newbrowserreadingbehaviortocheckatwrapup;noexternalmodelevalorproduction"
+      ],
+      "pages": 8,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/all16-fifth-controls20261016-v0.3.json",
+          "bytes": 507,
+          "sha256": "f602e40f4e53c1abbbba61e1f9725e03b09e8ed97881e18f868a2da6e16fcac1",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-fifth-referencecheck20261016-v0.1.json",
+          "bytes": 164,
+          "sha256": "67bae0840f336233a6e68b5d427a4a25c584bd2d8050856413c4cd43267e5dac",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-fifth-review-delta20261016-v0.1.json",
+          "bytes": 24933,
+          "sha256": "be799747c84fbdc337ed0b5a9436d9041ac957b6315e38f431fe490983e7431f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-fifth-build20261016-v0.1.json",
+          "bytes": 655,
+          "sha256": "1e30d92f1fdd4dd7dffa0f2579cc65c8b8dd23283b34948f4bdf0fea41661a21",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/all16-fifth-local-links20261016-v0.1.json",
+          "bytes": 592,
+          "sha256": "762218d12583472de22d315b66912c0d481919d89950a22fa1d92cb7bfaed94b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/advanced-recipe-load-and-family20261016-v0.1.json",
+          "bytes": 1407,
+          "sha256": "a2e9f0e7ecd980347fdfdc6586e6583edf5d72fe6aa1df748eedd8852cd89041",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/super-safari-AB1-p18-20261016.png",
+          "bytes": 553395,
+          "sha256": "eb65e883b7ab90c49aee63cc3227740d75bc2c975d4be60ab9c831e86946892d",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/super-safari-TB1-pT18-20261016.png",
+          "bytes": 650165,
+          "sha256": "98c337ee1c93a652aaaa3b94f92228c7063e273c3a1ff441ff08a2cead659c1f",
           "exit_code": 0
         }
       ]

@@ -2,7 +2,9 @@
 
 **最新授权（2026-10-16）：** 用户要求删除全部旧定时任务并新建全档位任务。已删除`12`、`12-2`、`lingotrip-13`，启用`lingotrip-16-13`；执行[全16档限时计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)与[全档客观题范围策略](FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json)。覆盖启蒙、小一至高三、大学英语四级/六级、高级英语；主观题仍不收集不出题。今天12:00转收尾、13:00前交付并删除任务。中学49组/390回应为继承基线，其他档位尚须重新筛选和扩充，不称全部已交付。下方仅中学限制/任务状态是历史，已由本授权取代。
 
-当前全档第四批：[五完整组暂停清单](FirstRelease/DeterministicMarking/concrete-group-holds-v0.1.json)发现参考外合理补全，依用户客观判分要求移出5组/48回应，当前15档有59完整组/424回应；源观察与历史保留，其余89中学填空位未自动认定穷尽。新增核读C1 Part5完整六题/24候选及键，见[来源批次0.2](FirstRelease/AllLevels/selected-source-batch-v0.2.json)，全档源层5组33回应/3父源，尚未新增该模式作者；中学306/41不变。见[本批研究](Studies/2026-10-16-concrete-fill-holds-and-advanced-critical-reading.md)。
+当前全档第五批：[新作者索引0.5](FirstRelease/AllLevels/authored-additions-v0.5.json)增加高级五段六题完整原创阅读，当前15档60组/430回应；全档累计7新原创组/43回应。候选冗余实修341→234英文词，五暂停组仍停；高级阅读的新浏览器行为待收尾核验。学前Super Safari已核一响应/两图及对应教参，但原音频/T96脚本仍缺，不算完整交付。见[模式0.4](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.4.json)与[本批研究](Studies/2026-10-16-advanced-recipe-reading-and-preschool-input-holds.md)。
+
+历史全档第四批：[五完整组暂停清单](FirstRelease/DeterministicMarking/concrete-group-holds-v0.1.json)发现参考外合理补全，依用户客观判分要求移出5组/48回应，当前15档有59完整组/424回应；源观察与历史保留，其余89中学填空位未自动认定穷尽。新增核读C1 Part5完整六题/24候选及键，见[来源批次0.2](FirstRelease/AllLevels/selected-source-batch-v0.2.json)，全档源层5组33回应/3父源，尚未新增该模式作者；中学306/41不变。见[本批研究](Studies/2026-10-16-concrete-fill-holds-and-advanced-critical-reading.md)。
 
 历史全档第三批：[新作者索引0.3](FirstRelease/AllLevels/authored-additions-v0.3.json)，15档有64完整组/472回应；本轮累计新增6原创组/37回应。小二新增六词三图选择（18必要原创图）和五问五答配对，全部输入/答案/逐项依据已进审阅页。复用已核来源，来源组/父源不增；启蒙新查官方课前游戏，但缺固定响应数、原卡阵与音频，只列候选，不凑完整代表。见[本批研究](Studies/2026-10-16-primary2-full-picture-and-response-groups.md)。
 
