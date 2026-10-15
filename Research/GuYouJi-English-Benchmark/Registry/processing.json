@@ -26561,6 +26561,48 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "timeboxed-five-sentence-choice-groups20261016d-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "Tools/check_timeboxed_choices.py + Tools/build_quality_review.py + actual_Codex_browser",
+      "tool_version": "0.1",
+      "parameters": [
+        "5newgroups70responses270options76visiblegaps;preview46/314;old41payload unchanged;25contractcontrols/46payloads/12actualbrowserrecords;source306/41unchanged;no new source acquisition/render/fulltree snapshot/independent or production evaluation"
+      ],
+      "pages": 5,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-choice-controls20261016d-v0.1.json",
+          "bytes": 3947,
+          "sha256": "5205f2b18cb17292a21c8c27df8bb6bb38f72e3233362ecd67884a07793f71b2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-controls20261016d-v0.1.json",
+          "bytes": 4713,
+          "sha256": "189fec72fa132ec6b6c36acfcc358c869765fe51adfb06a4535dd44647252ae0",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-choice-browser20261016d-v0.1.json",
+          "bytes": 164047,
+          "sha256": "e3356aa4ccbb16cb672147c48faecff346d80968ee38ea18c064f354a5b50f4f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-page20261016d-v0.1.html",
+          "bytes": 580413,
+          "sha256": "3706e96204a4ac6446d297bd1a6bb2103b907e759d98bd3a5f6b05d2eef50bff",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-build20261016d-v0.1.json",
+          "bytes": 294,
+          "sha256": "bcc29aa3ac1e87c091cf2e6aeb0759ebb3571ad3608f3cef052c133326f40edf",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

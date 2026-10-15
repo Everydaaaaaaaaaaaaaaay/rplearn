@@ -1,0 +1,830 @@
+{
+  "version": "0.1",
+  "id": "grade11-fifteen-sentence-choices",
+  "grade": 11,
+  "family": "sentence_choice",
+  "questions": 15,
+  "options_each": 4,
+  "candidate_path": "FirstRelease/Timeboxed/grade11-fifteen-sentence-choices-v0.1.md",
+  "candidate_sha256": "13a77b9a377c810c2fa626319bddbab640d0c46c30c4152b2bc9e973c899a4e4",
+  "anchor_group_ids": [
+    "grade11-tianjin2026-21cnjy26082071.sentenceChoice"
+  ],
+  "source_shape": {
+    "family": "sentence_choice",
+    "responses": 15,
+    "options_each": 4,
+    "details": {
+      "materials": 15,
+      "necessary_input_complete": true
+    },
+    "grade": 11
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+      "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+      "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+    },
+    "primary_input_sha256": "84d003f827afcf79d1ab428e253ab9931761b5326d5f8bdf07e9aab429b79b1c"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "—We have finished checking every file, and it is getting late.\n—Then ________. We can start the next task tomorrow.",
+      "options": [
+        [
+          "A",
+          "it couldn’t be better"
+        ],
+        [
+          "B",
+          "let’s call it a day"
+        ],
+        [
+          "C",
+          "you’ve got me there"
+        ],
+        [
+          "D",
+          "don’t mention it"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：已完成且明日再继续，表示今天到此为止。；A：赞叹很好并不提出到此为止；C：表示被问住，不是结束今天工作；D：用于回应感谢，不合此议题",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "赞叹很好并不提出到此为止"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "已完成且明日再继续，表示今天到此为止。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "表示被问住，不是结束今天工作"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "用于回应感谢，不合此议题"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 2,
+      "stem": "We should judge the proposal by ________ it achieves, rather than by its attractive title.",
+      "options": [
+        [
+          "A",
+          "that"
+        ],
+        [
+          "B",
+          "why"
+        ],
+        [
+          "C",
+          "what"
+        ],
+        [
+          "D",
+          "whether"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：what兼任从句中achieves宾语，表示所实现的内容。；A：that不补achieves所需的内容宾语；B：why问原因，不指实现的内容；D：是否不等这里所实现的内容",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "that不补achieves所需的内容宾语"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "why问原因，不指实现的内容"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "what兼任从句中achieves宾语，表示所实现的内容。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "是否不等这里所实现的内容"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 3,
+      "stem": "Explaining an idea in your own words can reveal your ________ of it.",
+      "options": [
+        [
+          "A",
+          "comprehension"
+        ],
+        [
+          "B",
+          "compensation"
+        ],
+        [
+          "C",
+          "compassion"
+        ],
+        [
+          "D",
+          "consumption"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：用自己的话解释显露理解程度comprehension。；B：补偿不合语义；C：同情不等理解概念的程度；D：消耗/摄入不等理解程度",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "用自己的话解释显露理解程度comprehension。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "补偿不合语义"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "同情不等理解概念的程度"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "消耗/摄入不等理解程度"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 4,
+      "stem": "The cabinet was locked, and only Sam had the key. With the notebook now on the desk, we conclude that he ________ it out.",
+      "options": [
+        [
+          "A",
+          "might take"
+        ],
+        [
+          "B",
+          "must have taken"
+        ],
+        [
+          "C",
+          "should have taken"
+        ],
+        [
+          "D",
+          "could take"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：已发生的拿出动作、明确conclude及唯一钥匙线索，强推测过去must have taken。；A：原形形式不表达这次已完成的过去动作；C：表达原应当拿出，不是正在作事实结论；D：泛能力/可能不表达这里对过去事实的强推断",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "原形形式不表达这次已完成的过去动作"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "已发生的拿出动作、明确conclude及唯一钥匙线索，强推测过去must have taken。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "表达原应当拿出，不是正在作事实结论"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "泛能力/可能不表达这里对过去事实的强推断"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 5,
+      "stem": "The notes ________ from the first trial, most of ________ were damaged, are still readable.",
+      "options": [
+        [
+          "A",
+          "dating; them"
+        ],
+        [
+          "B",
+          "dating; which"
+        ],
+        [
+          "C",
+          "dated; whom"
+        ],
+        [
+          "D",
+          "dated; them"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：dating主动后置修饰；most of which引非限制关系从句，整项同时配合。；A：首空可以，them处仍缺从句连接；C：whom指人而非notes，整项不合；D：them不能在此无连接嵌入独立有限句",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "首空可以，them处仍缺从句连接"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "dating主动后置修饰；most of which引非限制关系从句，整项同时配合。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "whom指人而非notes，整项不合"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "them不能在此无连接嵌入独立有限句"
+        }
+      ],
+      "visible_gap_count": 2,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 6,
+      "stem": "Dust had ________ on the unused shelves during the long closure.",
+      "options": [
+        [
+          "A",
+          "accumulated"
+        ],
+        [
+          "B",
+          "anticipated"
+        ],
+        [
+          "C",
+          "assessed"
+        ],
+        [
+          "D",
+          "analyzed"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：灰尘在未用书架上逐渐积聚，accumulated可不及物。；B：预期不是灰尘自己实施的积聚行为；C：评估需相应施事和对象，不是灰尘积聚；D：分析不是灰尘的行为",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "灰尘在未用书架上逐渐积聚，accumulated可不及物。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "预期不是灰尘自己实施的积聚行为"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "评估需相应施事和对象，不是灰尘积聚"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "分析不是灰尘的行为"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 7,
+      "stem": "As a precaution, save a copy on the local drive ________ the internet connection fails.",
+      "options": [
+        [
+          "A",
+          "in case"
+        ],
+        [
+          "B",
+          "so that"
+        ],
+        [
+          "C",
+          "even though"
+        ],
+        [
+          "D",
+          "now that"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：as a precaution表预防可能发生的故障，用in case。；B：保存副本不是为了使网络失败；C：没有让步转折的意图；D：把故障当已成立原因，不是预防可能情况",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "as a precaution表预防可能发生的故障，用in case。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "保存副本不是为了使网络失败"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "没有让步转折的意图"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "把故障当已成立原因，不是预防可能情况"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 8,
+      "stem": "Maya’s action was intentional rather than automatic; she placed the label upside down ________.",
+      "options": [
+        [
+          "A",
+          "deliberately"
+        ],
+        [
+          "B",
+          "automatically"
+        ],
+        [
+          "C",
+          "ultimately"
+        ],
+        [
+          "D",
+          "instinctively"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：intentional与automatic对照，需要有意地deliberately。；B：正是前句排除的自动行为；C：只说明最终时序，没有回答有意/自动的对照；D：凭本能不表达经过意图的行动",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "intentional与automatic对照，需要有意地deliberately。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "正是前句排除的自动行为"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "只说明最终时序，没有回答有意/自动的对照"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "凭本能不表达经过意图的行动"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 9,
+      "stem": "The briefing ________ by the project leaders next Tuesday will introduce the new borrowing rules.",
+      "options": [
+        [
+          "A",
+          "to hold"
+        ],
+        [
+          "B",
+          "to be held"
+        ],
+        [
+          "C",
+          "to be holding"
+        ],
+        [
+          "D",
+          "having held"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：briefing为被举办者，明示by施事、将来日期，to be held。；A：主动不能在此与by施事共同表示被举办；C：主动进行把briefing当举行活动的施事，角色不合；D：主动完成分词把briefing当举办者",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "主动不能在此与by施事共同表示被举办"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "briefing为被举办者，明示by施事、将来日期，to be held。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "主动进行把briefing当举行活动的施事，角色不合"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "主动完成分词把briefing当举办者"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 10,
+      "stem": "The procedure follows long-established routines without any new approach. It is strictly ________.",
+      "options": [
+        [
+          "A",
+          "conventional"
+        ],
+        [
+          "B",
+          "innovative"
+        ],
+        [
+          "C",
+          "contemporary"
+        ],
+        [
+          "D",
+          "progressive"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：沿用既有惯例的conventional最切合所述特征。；B：创新与没有新方法相反；C：当代只表时代，不说明遵循传统惯例；D：进步/革新取向不是这里的严格旧例",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "沿用既有惯例的conventional最切合所述特征。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "创新与没有新方法相反"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "当代只表时代，不说明遵循传统惯例"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "进步/革新取向不是这里的严格旧例"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 11,
+      "stem": "None of our usual solutions worked, so we need to ________ by looking at the problem in a completely new way.",
+      "options": [
+        [
+          "A",
+          "pave the way"
+        ],
+        [
+          "B",
+          "shun the spotlight"
+        ],
+        [
+          "C",
+          "keep it at bay"
+        ],
+        [
+          "D",
+          "think outside the box"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：以全新视角思考对应think outside the box。；A：铺路/创造条件不等所释的全新思考方式；B：避开关注不等创新解题；C：阻挡/控制不等全新思考",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "铺路/创造条件不等所释的全新思考方式"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "避开关注不等创新解题"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "阻挡/控制不等全新思考"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "以全新视角思考对应think outside the box。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 12,
+      "stem": "After leaving the football team, Mei ________ pottery and attended her first class.",
+      "options": [
+        [
+          "A",
+          "held up"
+        ],
+        [
+          "B",
+          "took up"
+        ],
+        [
+          "C",
+          "made up"
+        ],
+        [
+          "D",
+          "turned up"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：开始新的业余活动用take up。；A：举起/耽搁不合开始课程；C：编造/组成不表达开始该爱好；D：出现/调大不能表示开始陶艺爱好",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "举起/耽搁不合开始课程"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "开始新的业余活动用take up。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "编造/组成不表达开始该爱好"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "出现/调大不能表示开始陶艺爱好"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 13,
+      "stem": "We should thank the volunteers, without ________ help the event would not have been possible.",
+      "options": [
+        [
+          "A",
+          "where"
+        ],
+        [
+          "B",
+          "which"
+        ],
+        [
+          "C",
+          "whom"
+        ],
+        [
+          "D",
+          "whose"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：whose作help的限定词，表示志愿者们的帮助。；A：地点副词不限定help；B：which不表达这里人的所有关系；C：whom不能直接作help的所有格限定",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "地点副词不限定help"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "which不表达这里人的所有关系"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "whom不能直接作help的所有格限定"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "whose作help的限定词，表示志愿者们的帮助。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 14,
+      "stem": "The instructions must remain clear. We must not improve speed ________ clarity.",
+      "options": [
+        [
+          "A",
+          "at the mercy of"
+        ],
+        [
+          "B",
+          "by means of"
+        ],
+        [
+          "C",
+          "at the expense of"
+        ],
+        [
+          "D",
+          "in favour of"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：不能以牺牲清晰为代价换速度，at the expense of。；A：受其摆布不合此取舍；B：借助不表达代价；D：赞成/有利于不是牺牲的关系",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "受其摆布不合此取舍"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "借助不表达代价"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "不能以牺牲清晰为代价换速度，at the expense of。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "赞成/有利于不是牺牲的关系"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 15,
+      "stem": "—Let’s keep the two records separate; they measure different things.\n—________. Combining them would confuse everyone.",
+      "options": [
+        [
+          "A",
+          "Not at all"
+        ],
+        [
+          "B",
+          "That makes sense"
+        ],
+        [
+          "C",
+          "You’re welcome"
+        ],
+        [
+          "D",
+          "Don’t mention it"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：后句解释赞同分开记录，That makes sense表达认为有道理。；A：一般否定/客套，不表达此明确赞同；C：不是回应感谢；D：也非回应感谢的场合",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "一般否定/客套，不表达此明确赞同"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "后句解释赞同分开记录，That makes sense表达认为有道理。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "不是回应感谢"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "也非回应感谢的场合"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    }
+  ],
+  "canonical_response_block_sha256": "45cdebae42204557c93be0cf134181e1f0913bbbd605c9b5a2cfc4433ed0cd53",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "B",
+    "B",
+    "A",
+    "A",
+    "A",
+    "B",
+    "A",
+    "D",
+    "B",
+    "D",
+    "C",
+    "B"
+  ],
+  "target_constraints": {
+    "independent_contexts": 15,
+    "per_question_candidates": 4,
+    "composite_gap_questions": [
+      5
+    ],
+    "visible_gaps": 16,
+    "response_count_not_visible_gap_count": 15,
+    "shared_options": false
+  },
+  "source_printed_question_numbers": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "authored_display_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "all_option_positions_same_author_reviewed": 60,
+  "actual_frozen_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "prefreeze_author_revisions": [
+    "2026-10-16:完整逐项复看；修正初一原号13–22与单数they干扰风险；高一1/11、高三13加强语境约束。尚未冻结稿内修订，不伪计独立复核。"
+  ]
+}

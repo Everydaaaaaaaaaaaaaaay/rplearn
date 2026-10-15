@@ -1,0 +1,828 @@
+{
+  "version": "0.1",
+  "id": "grade12-fifteen-sentence-choices",
+  "grade": 12,
+  "family": "sentence_choice",
+  "questions": 15,
+  "options_each": 4,
+  "candidate_path": "FirstRelease/Timeboxed/grade12-fifteen-sentence-choices-v0.1.md",
+  "candidate_sha256": "d878a7acc694405995e92086c176afa1e4be765b22b15261b1156ad24106f4cd",
+  "anchor_group_ids": [
+    "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice"
+  ],
+  "source_shape": {
+    "family": "sentence_choice",
+    "responses": 15,
+    "options_each": 4,
+    "details": {
+      "materials": 15,
+      "necessary_input_complete": true
+    },
+    "grade": 12
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+      "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+      "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+    },
+    "primary_input_sha256": "a5c574a25cf50fecc66da4e05263f9ee54e9bd50b1ac61f8fd7c05f38c9a9d12"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "—The visit we were looking forward to has been cancelled.\n—________! I really wanted to go.",
+      "options": [
+        [
+          "A",
+          "What a pity"
+        ],
+        [
+          "B",
+          "With pleasure"
+        ],
+        [
+          "C",
+          "Help yourself"
+        ],
+        [
+          "D",
+          "Congratulations"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：期待的访问取消且失望，对应遗憾。；B：接受请求的乐意回应，不合这里的坏消息；C：招呼自取不合情境；D：不是值得祝贺的结果",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "期待的访问取消且失望，对应遗憾。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "接受请求的乐意回应，不合这里的坏消息"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "招呼自取不合情境"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "不是值得祝贺的结果"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 2,
+      "stem": "Before every workshop, the technician performs the same ________ check of the tools.",
+      "options": [
+        [
+          "A",
+          "routine"
+        ],
+        [
+          "B",
+          "fictional"
+        ],
+        [
+          "C",
+          "retired"
+        ],
+        [
+          "D",
+          "remote"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：每次都按同样流程的常规检查，routine。；B：题内实际执行的检查，不是虚构文本的类别；C：退休的不能说明检查性质；D：远程不由每次相同的流程支持",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "每次都按同样流程的常规检查，routine。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "题内实际执行的检查，不是虚构文本的类别"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "退休的不能说明检查性质"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "远程不由每次相同的流程支持"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 3,
+      "stem": "The weight of the blue model is equal to ________ of the red one.",
+      "options": [
+        [
+          "A",
+          "those"
+        ],
+        [
+          "B",
+          "it"
+        ],
+        [
+          "C",
+          "that"
+        ],
+        [
+          "D",
+          "what"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：that替代不可数抽象weight，后接of限定。；A：复数代词不配weight；B：it不能在此按that of结构接受of后置限定来替代weight；D：what不构成该名词替代比较结构",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "复数代词不配weight"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "it不能在此按that of结构接受of后置限定来替代weight"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "that替代不可数抽象weight，后接of限定。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "what不构成该名词替代比较结构"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 4,
+      "stem": "She was clearly ________ at the repeated interruptions and asked everyone to listen for a moment.",
+      "options": [
+        [
+          "A",
+          "strict"
+        ],
+        [
+          "B",
+          "sensitive"
+        ],
+        [
+          "C",
+          "normal"
+        ],
+        [
+          "D",
+          "annoyed"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：反复被打断而要求大家听，annoyed at表示恼怒。；A：strict通常不以at该事件表达被惹恼；B：sensitive to而非此处annoyed at的情绪搭配；C：正常不表达对打断的不满",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "strict通常不以at该事件表达被惹恼"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "sensitive to而非此处annoyed at的情绪搭配"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "正常不表达对打断的不满"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "反复被打断而要求大家听，annoyed at表示恼怒。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 5,
+      "stem": "As a student, he ________ spend his lunch breaks in the library; it was his daily routine.",
+      "options": [
+        [
+          "A",
+          "had better"
+        ],
+        [
+          "B",
+          "might"
+        ],
+        [
+          "C",
+          "would"
+        ],
+        [
+          "D",
+          "should"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：would表过去反复发生的习惯；daily routine明确。；A：劝告不等过去习惯；B：不确定可能与明确每日惯常记录不合；D：应当不是陈述既成习惯",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "劝告不等过去习惯"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "不确定可能与明确每日惯常记录不合"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "would表过去反复发生的习惯；daily routine明确。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "应当不是陈述既成习惯"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 6,
+      "stem": "The pattern is the same ________ the one we used last year.",
+      "options": [
+        [
+          "A",
+          "what"
+        ],
+        [
+          "B",
+          "when"
+        ],
+        [
+          "C",
+          "as"
+        ],
+        [
+          "D",
+          "where"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：the same as表达与……相同。；A：what不能直接接the one构成该比较结构；B：时间关系不合；D：地点关系不合",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "what不能直接接the one构成该比较结构"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "时间关系不合"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "the same as表达与……相同。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "地点关系不合"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 7,
+      "stem": "The project has just been approved. The old noticeboard ________ next Monday.",
+      "options": [
+        [
+          "A",
+          "is to be replaced"
+        ],
+        [
+          "B",
+          "was replacing"
+        ],
+        [
+          "C",
+          "has just replaced"
+        ],
+        [
+          "D",
+          "replaces"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：刚批准、未来日期，被替换对象noticeboard用计划被动。；B：主动过去进行不合板的受事角色；C：主动把板当替换者且缺所替换对象；D：主动第三人称不表达将被替换",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "刚批准、未来日期，被替换对象noticeboard用计划被动。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "主动过去进行不合板的受事角色"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "主动把板当替换者且缺所替换对象"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "主动第三人称不表达将被替换"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 8,
+      "stem": "I ________ the final page when the lights suddenly went out last night.",
+      "options": [
+        [
+          "A",
+          "am reading"
+        ],
+        [
+          "B",
+          "have read"
+        ],
+        [
+          "C",
+          "will read"
+        ],
+        [
+          "D",
+          "was reading"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：过去正在读时发生停电，过去进行作背景。；A：现在进行不合昨晚；B：现在完成与last night过去事件框架不合；C：将来不合作过去背景",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "现在进行不合昨晚"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "现在完成与last night过去事件框架不合"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "将来不合作过去背景"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "过去正在读时发生停电，过去进行作背景。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 9,
+      "stem": "To match the five-pointed outline, the badge was made ________ a star.",
+      "options": [
+        [
+          "A",
+          "in the company of"
+        ],
+        [
+          "B",
+          "in the shape of"
+        ],
+        [
+          "C",
+          "in the hope of"
+        ],
+        [
+          "D",
+          "in the name of"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：五角轮廓指定形状，in the shape of。；A：与某人在一起不表达轮廓；C：怀着希望不表达形状；D：以……名义不表达轮廓",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "与某人在一起不表达轮廓"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "五角轮廓指定形状，in the shape of。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "怀着希望不表达形状"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "以……名义不表达轮廓"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 10,
+      "stem": "The board includes a diagram ________ how the parts fit together.",
+      "options": [
+        [
+          "A",
+          "showing"
+        ],
+        [
+          "B",
+          "shows"
+        ],
+        [
+          "C",
+          "having shown by"
+        ],
+        [
+          "D",
+          "shown"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：diagram为展示内容者，showing引主动后置修饰。；B：有限动词与includes无连接；C：主动完成后不能这样接被动施事by；D：被展示的diagram不能在此直接以how从句作其所展示对象",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "diagram为展示内容者，showing引主动后置修饰。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "有限动词与includes无连接"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "主动完成后不能这样接被动施事by"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "被展示的diagram不能在此直接以how从句作其所展示对象"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 11,
+      "stem": "The project has reached the stage ________ every decision has to be recorded.",
+      "options": [
+        [
+          "A",
+          "whom"
+        ],
+        [
+          "B",
+          "which"
+        ],
+        [
+          "C",
+          "where"
+        ],
+        [
+          "D",
+          "what"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：stage为抽象进程点，从句成分完整，以where表在此阶段。；A：不是人，亦缺其宾语位置；B：从句不缺which可充当的主语/宾语；D：已有stage先行词，what不能作此关系副词",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "不是人，亦缺其宾语位置"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "从句不缺which可充当的主语/宾语"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "stage为抽象进程点，从句成分完整，以where表在此阶段。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "已有stage先行词，what不能作此关系副词"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 12,
+      "stem": "—We cannot decide yet; we still need the cost figures.\n—________. Let’s get those first.",
+      "options": [
+        [
+          "A",
+          "That’s a good point"
+        ],
+        [
+          "B",
+          "Help yourself"
+        ],
+        [
+          "C",
+          "You’re welcome"
+        ],
+        [
+          "D",
+          "Congratulations"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：承认所指出的必要信息，后句同意先取数据。；B：自取东西的客套不合；C：不是回应感谢；D：尚未决定，没有祝贺结果",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "承认所指出的必要信息，后句同意先取数据。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "自取东西的客套不合"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "不是回应感谢"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "尚未决定，没有祝贺结果"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 13,
+      "stem": "The list shows only who attended; it does not ________ that every visitor agreed to the change.",
+      "options": [
+        [
+          "A",
+          "approve"
+        ],
+        [
+          "B",
+          "meet"
+        ],
+        [
+          "C",
+          "resolve"
+        ],
+        [
+          "D",
+          "prove"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：名单只证明到场，不证明所有人同意；prove that表达证明该主张；A：approve that不表示证实该命题；B：meet不这样接that命题；C：resolve that作为决议不等证实，记录也非作决议的施事",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "approve that不表示证实该命题"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "meet不这样接that命题"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "resolve that作为决议不等证实，记录也非作决议的施事"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "名单只证明到场，不证明所有人同意；prove that表达证明该主张"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 14,
+      "stem": "Already ________ by the team to lead the project, Nora began by listening to everyone’s suggestions.",
+      "options": [
+        [
+          "A",
+          "choosing"
+        ],
+        [
+          "B",
+          "to choose"
+        ],
+        [
+          "C",
+          "having chosen"
+        ],
+        [
+          "D",
+          "chosen"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：Nora被团队选为负责人，用过去分词chosen及by施事。；A：主动把Nora当正在作选择的人，by施事不合；B：already及已被选身份不合这个不定式主动表达；C：主动完成仍缺被选的被动关系",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "主动把Nora当正在作选择的人，by施事不合"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "already及已被选身份不合这个不定式主动表达"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "主动完成仍缺被选的被动关系"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "Nora被团队选为负责人，用过去分词chosen及by施事。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 15,
+      "stem": "The new display is intended to meet the audience’s high standards and ________ the promises made in our invitation.",
+      "options": [
+        [
+          "A",
+          "run out of"
+        ],
+        [
+          "B",
+          "give in to"
+        ],
+        [
+          "C",
+          "walk out on"
+        ],
+        [
+          "D",
+          "live up to"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：达到标准并兑现承诺，live up to。；A：用尽不是兑现承诺；B：屈服不是达到承诺标准；C：抛弃不合有意兑现的方向",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "用尽不是兑现承诺"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "屈服不是达到承诺标准"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "抛弃不合有意兑现的方向"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "达到标准并兑现承诺，live up to。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    }
+  ],
+  "canonical_response_block_sha256": "bda434ce32262d83f58d75592f3c6883cbc3ef34398daa47468f3d5e2a32b60a",
+  "author_answer_vector": [
+    "A",
+    "A",
+    "C",
+    "D",
+    "C",
+    "C",
+    "A",
+    "D",
+    "B",
+    "A",
+    "C",
+    "A",
+    "D",
+    "D",
+    "D"
+  ],
+  "target_constraints": {
+    "independent_contexts": 15,
+    "per_question_candidates": 4,
+    "composite_gap_questions": [],
+    "visible_gaps": 15,
+    "response_count_not_visible_gap_count": 15,
+    "shared_options": false
+  },
+  "source_printed_question_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "authored_display_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "all_option_positions_same_author_reviewed": 60,
+  "actual_frozen_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "prefreeze_author_revisions": [
+    "2026-10-16:完整逐项复看；修正初一原号13–22与单数they干扰风险；高一1/11、高三13加强语境约束。尚未冻结稿内修订，不伪计独立复核。"
+  ]
+}

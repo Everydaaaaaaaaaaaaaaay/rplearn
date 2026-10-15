@@ -1,0 +1,576 @@
+{
+  "version": "0.1",
+  "id": "grade9-four-option-sentences",
+  "grade": 9,
+  "family": "sentence_choice",
+  "questions": 10,
+  "options_each": 4,
+  "candidate_path": "FirstRelease/Timeboxed/grade9-four-option-sentences-v0.1.md",
+  "candidate_sha256": "1c567ed854c7394305e1301f0baf172ea52b13d4eeb051f22c441b9346afa7a5",
+  "anchor_group_ids": [
+    "grade9-boxing2025-21cnjy24857076.sentenceChoice"
+  ],
+  "source_shape": {
+    "family": "sentence_choice",
+    "responses": 10,
+    "options_each": 4,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 10
+    },
+    "grade": 9
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+      "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+      "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+    },
+    "primary_input_sha256": "3de3df1cefa586fdaa2409b64de072eedc249b62a27cb98745d3f7c14274cc6a"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "This is ________ unusual idea, but it may become ________ useful tool.",
+      "options": [
+        [
+          "A",
+          "a; an"
+        ],
+        [
+          "B",
+          "a; a"
+        ],
+        [
+          "C",
+          "an; an"
+        ],
+        [
+          "D",
+          "an; a"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：unusual起始为元音音素，useful起始为辅音/j/；整项an;a同时填两空。；A：两空均把字母外形当音素判断；B：首空unusual前需an；C：第二空useful前需a",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "两空均把字母外形当音素判断"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "首空unusual前需an"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "第二空useful前需a"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "unusual起始为元音音素，useful起始为辅音/j/；整项an;a同时填两空。"
+        }
+      ],
+      "visible_gap_count": 2,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 2,
+      "stem": "Our teacher controls access to the camera. If I ________ to use it, I will take the photos.",
+      "options": [
+        [
+          "A",
+          "allow"
+        ],
+        [
+          "B",
+          "will allow"
+        ],
+        [
+          "C",
+          "am allowed"
+        ],
+        [
+          "D",
+          "allowed"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：if从句表将来条件用一般现在时，I为获准者，用现在被动。；A：主动allow缺少被许可对象且角色反了；B：既为主动角色，又不合该条件从句表达；D：过去时不合这里未来条件的常规现在表达",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "主动allow缺少被许可对象且角色反了"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "既为主动角色，又不合该条件从句表达"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "if从句表将来条件用一般现在时，I为获准者，用现在被动。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "过去时不合这里未来条件的常规现在表达"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 3,
+      "stem": "Read the ________ in the box before putting the model together; they explain each step.",
+      "options": [
+        [
+          "A",
+          "competitions"
+        ],
+        [
+          "B",
+          "invitations"
+        ],
+        [
+          "C",
+          "instructions"
+        ],
+        [
+          "D",
+          "vacations"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：explain each step限定装配说明instructions。；A：比赛而非操作文本；B：邀请而非装配步骤说明；D：假期而非步骤文本",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "比赛而非操作文本"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "邀请而非装配步骤说明"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "explain each step限定装配说明instructions。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "假期而非步骤文本"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 4,
+      "stem": "Please speak ________ so that every word can be understood in the recording.",
+      "options": [
+        [
+          "A",
+          "nearly"
+        ],
+        [
+          "B",
+          "clearly"
+        ],
+        [
+          "C",
+          "only"
+        ],
+        [
+          "D",
+          "hardly"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：录音中每个词可听懂要求说清楚，clearly。；A：nearly不能在这里表达说话清晰程度；C：only不表达清楚这一方式要求；D：几乎不说反而不能录全每个词",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "nearly不能在这里表达说话清晰程度"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "录音中每个词可听懂要求说清楚，clearly。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "only不表达清楚这一方式要求"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "几乎不说反而不能录全每个词"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 5,
+      "stem": "The notebook ________ belong to Nora, but I'm not certain. I'll ask her.",
+      "options": [
+        [
+          "A",
+          "can't"
+        ],
+        [
+          "B",
+          "may"
+        ],
+        [
+          "C",
+          "need"
+        ],
+        [
+          "D",
+          "must"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：不确定且要询问表示可能性，用may。；A：否定不可能不合目前尚不确定归属；C：need作情态时不表达此肯定推测；D：must表达确信推测，不合not certain",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "否定不可能不合目前尚不确定归属"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "不确定且要询问表示可能性，用may。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "need作情态时不表达此肯定推测"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "must表达确信推测，不合not certain"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 6,
+      "stem": "The club printed exactly ________ tickets, not two hundred and ninety-nine.",
+      "options": [
+        [
+          "A",
+          "three hundred of"
+        ],
+        [
+          "B",
+          "three hundred"
+        ],
+        [
+          "C",
+          "three hundreds"
+        ],
+        [
+          "D",
+          "three hundreds of"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：确数three后hundred不加s、不加of。；A：此处直接修饰tickets，不插of；C：确数后hundred不加复数s；D：确数与hundreds of模糊量结构不能混用",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "此处直接修饰tickets，不插of"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "确数three后hundred不加s、不加of。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "确数后hundred不加复数s"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "确数与hundreds of模糊量结构不能混用"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 7,
+      "stem": "________ he had never used the tool before, he managed to finish the simple repair.",
+      "options": [
+        [
+          "A",
+          "So that"
+        ],
+        [
+          "B",
+          "Until"
+        ],
+        [
+          "C",
+          "Even though"
+        ],
+        [
+          "D",
+          "Unless"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：没有使用经验却修好形成让步关系。；A：不是以没有经验作为修好工具的目的；B：until的时间终点关系不合前后反预期；D：除非与已经发生的成功事实不构成所需让步",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "不是以没有经验作为修好工具的目的"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "until的时间终点关系不合前后反预期"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "没有使用经验却修好形成让步关系。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "除非与已经发生的成功事实不构成所需让步"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 8,
+      "stem": "Don't ________ to close the window. If you ________ it open, the papers may blow away.",
+      "options": [
+        [
+          "A",
+          "forgot; left"
+        ],
+        [
+          "B",
+          "forget; left"
+        ],
+        [
+          "C",
+          "leave; forget"
+        ],
+        [
+          "D",
+          "forget; leave"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：forget to do别忘了做；leave it open让它开着，if从句用现在式。；A：祈使句原形及将来条件现在式均被破坏；B：首空对，但if这里不能用left表达未来条件的常规现在；C：leave to close不表达别忘关，forget it open也不构成使其开着",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "祈使句原形及将来条件现在式均被破坏"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "首空对，但if这里不能用left表达未来条件的常规现在"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "leave to close不表达别忘关，forget it open也不构成使其开着"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "forget to do别忘了做；leave it open让它开着，if从句用现在式。"
+        }
+      ],
+      "visible_gap_count": 2,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 9,
+      "stem": "In our club, a volunteer is someone ________ gives their time without asking for payment.",
+      "options": [
+        [
+          "A",
+          "what"
+        ],
+        [
+          "B",
+          "who"
+        ],
+        [
+          "C",
+          "whom"
+        ],
+        [
+          "D",
+          "which"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：someone为人，关系词在从句作gives主语，用who。；A：已有先行词someone，不用what重复兼任；C：从句缺主语，不能用宾格whom；D：此处不是物的先行词",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "已有先行词someone，不用what重复兼任"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "someone为人，关系词在从句作gives主语，用who。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "从句缺主语，不能用宾格whom"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "此处不是物的先行词"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 10,
+      "stem": "—Could you tell me ________?\n—At three o’clock.",
+      "options": [
+        [
+          "A",
+          "how the class start"
+        ],
+        [
+          "B",
+          "what time the class starts"
+        ],
+        [
+          "C",
+          "what time does the class start"
+        ],
+        [
+          "D",
+          "whether the class starts"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：间接问句陈述语序，答语为时点，选what time the class starts。；A：how问方式且单数class后的start形式错误；C：嵌入问句不能保留独立疑问倒装；D：是否开课不由At three o’clock直接回答",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "how问方式且单数class后的start形式错误"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "间接问句陈述语序，答语为时点，选what time the class starts。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "嵌入问句不能保留独立疑问倒装"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "是否开课不由At three o’clock直接回答"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    }
+  ],
+  "canonical_response_block_sha256": "ca078d0079a9437155d5feba21d683c9a14e03435a8e5a1e20a0c448a05f7fb0",
+  "author_answer_vector": [
+    "D",
+    "C",
+    "C",
+    "B",
+    "B",
+    "B",
+    "C",
+    "D",
+    "B",
+    "B"
+  ],
+  "target_constraints": {
+    "independent_contexts": 10,
+    "per_question_candidates": 4,
+    "composite_gap_questions": [
+      1,
+      8
+    ],
+    "visible_gaps": 12,
+    "response_count_not_visible_gap_count": 10,
+    "shared_options": false
+  },
+  "source_printed_question_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "authored_display_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "all_option_positions_same_author_reviewed": 40,
+  "actual_frozen_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "prefreeze_author_revisions": [
+    "2026-10-16:完整逐项复看；修正初一原号13–22与单数they干扰风险；高一1/11、高三13加强语境约束。尚未冻结稿内修订，不伪计独立复核。"
+  ]
+}

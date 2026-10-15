@@ -1,0 +1,1087 @@
+{
+  "version": "0.1",
+  "id": "grade10-twenty-sentence-choices",
+  "grade": 10,
+  "family": "sentence_choice",
+  "questions": 20,
+  "options_each": 4,
+  "candidate_path": "FirstRelease/Timeboxed/grade10-twenty-sentence-choices-v0.1.md",
+  "candidate_sha256": "222174d988da1d76121859a9ea708240af49c42d15b819979ae9c650fafa6f25",
+  "anchor_group_ids": [
+    "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice"
+  ],
+  "source_shape": {
+    "family": "sentence_choice",
+    "responses": 20,
+    "options_each": 4,
+    "details": {
+      "materials": 20,
+      "some_options_fill_multiple_blanks": true
+    },
+    "grade": 10
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+      "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+      "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+    },
+    "primary_input_sha256": "3eed1892fa514e98dc9d74609678afb6eeece7e752390873fa3daa1be1498a05"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Calling a classmate careless in front of everyone is a way to ________ that person, not to praise them.",
+      "options": [
+        [
+          "A",
+          "adjust"
+        ],
+        [
+          "B",
+          "justify"
+        ],
+        [
+          "C",
+          "obtain"
+        ],
+        [
+          "D",
+          "criticize"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：公开说同学粗心是在批评criticize，与praise构成明确对照；A：调整事物不表达公开批评同学；B：justify表示为人或行为辩护，不能表示公开指责同学粗心；C：获得与人作此宾语和语境不合",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "调整事物不表达公开批评同学"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "justify表示为人或行为辩护，不能表示公开指责同学粗心"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "获得与人作此宾语和语境不合"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "公开说同学粗心是在批评criticize，与praise构成明确对照"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 2,
+      "stem": "Lena meant to keep the plan secret, but she mentioned it ________ during lunch and immediately regretted it.",
+      "options": [
+        [
+          "A",
+          "at ease"
+        ],
+        [
+          "B",
+          "by accident"
+        ],
+        [
+          "C",
+          "on purpose"
+        ],
+        [
+          "D",
+          "in return"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：本想保密而失言并后悔，表非故意by accident。；A：自在不表达失言的非故意性质；C：故意与原打算保密、立即后悔的失言语境相反；D：没有作为交换/回报的对应关系",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "自在不表达失言的非故意性质"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "本想保密而失言并后悔，表非故意by accident。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "故意与原打算保密、立即后悔的失言语境相反"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "没有作为交换/回报的对应关系"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 3,
+      "stem": "After a frustrating afternoon, Ben went for a quiet walk to ________ rather than arguing with his friends.",
+      "options": [
+        [
+          "A",
+          "let his friends down"
+        ],
+        [
+          "B",
+          "break into a smile"
+        ],
+        [
+          "C",
+          "let off steam"
+        ],
+        [
+          "D",
+          "rise to his feet"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：通过平静活动释放怒气，对应let off steam。；A：令朋友失望不合避免争吵的缓和意图；B：突然笑起来不是此处释放郁闷的目的表达；D：从坐姿站起来与去散步目的不合",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "令朋友失望不合避免争吵的缓和意图"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "突然笑起来不是此处释放郁闷的目的表达"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "通过平静活动释放怒气，对应let off steam。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "从坐姿站起来与去散步目的不合"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 4,
+      "stem": "Before the team could solve the problem, its leader had to ________ that her original plan was mistaken.",
+      "options": [
+        [
+          "A",
+          "admit"
+        ],
+        [
+          "B",
+          "adjust"
+        ],
+        [
+          "C",
+          "evaluate"
+        ],
+        [
+          "D",
+          "obtain"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：承认计划有错后才便于解决，用admit that。；B：调整不能直接替代承认该事实的admit that；C：evaluate that不是此处承认错误的正常搭配；D：obtain通常不直接接此that内容从句",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "承认计划有错后才便于解决，用admit that。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "调整不能直接替代承认该事实的admit that"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "evaluate that不是此处承认错误的正常搭配"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "obtain通常不直接接此that内容从句"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 5,
+      "stem": "The library used ________ shelves during the repairs and removed them when the permanent ones were ready.",
+      "options": [
+        [
+          "A",
+          "temporary"
+        ],
+        [
+          "B",
+          "typical"
+        ],
+        [
+          "C",
+          "solar"
+        ],
+        [
+          "D",
+          "royal"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：与permanent相对且修好即撤，temporary。；B：典型的不表达临时性；C：太阳能/太阳的与使用期限无关；D：王室的与期限无关",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "与permanent相对且修好即撤，temporary。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "典型的不表达临时性"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "太阳能/太阳的与使用期限无关"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "王室的与期限无关"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 6,
+      "stem": "In the adventure story, a violent tropical storm called a ________ forces the sailors to return to port.",
+      "options": [
+        [
+          "A",
+          "landscape"
+        ],
+        [
+          "B",
+          "hurricane"
+        ],
+        [
+          "C",
+          "breeze"
+        ],
+        [
+          "D",
+          "shower"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：题干直接释为猛烈热带风暴，hurricane。；A：风景不是风暴种类；C：微风与violent tropical storm相反；D：阵雨不等这种强烈热带风暴",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "风景不是风暴种类"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "题干直接释为猛烈热带风暴，hurricane。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "微风与violent tropical storm相反"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "阵雨不等这种强烈热带风暴"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 7,
+      "stem": "The students held a charity fair to ________ money for new books, asking visitors for small donations.",
+      "options": [
+        [
+          "A",
+          "hide"
+        ],
+        [
+          "B",
+          "spend"
+        ],
+        [
+          "C",
+          "raise"
+        ],
+        [
+          "D",
+          "owe"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：义卖并征集捐款是在筹款raise money。；A：隐藏钱不是筹购新书的义卖目的；B：现场征集捐款是筹集而非花掉钱；D：欠款不是征集小额捐款的行为",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "隐藏钱不是筹购新书的义卖目的"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "现场征集捐款是筹集而非花掉钱"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "义卖并征集捐款是在筹款raise money。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "欠款不是征集小额捐款的行为"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 8,
+      "stem": "The notice calls the change “significant”. Here “significant” is closest in meaning to ________.",
+      "options": [
+        [
+          "A",
+          "frequent"
+        ],
+        [
+          "B",
+          "important"
+        ],
+        [
+          "C",
+          "sensitive"
+        ],
+        [
+          "D",
+          "minor"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：significant在此指重要、有意义，对应important。；A：频繁不是重要程度；C：敏感不是重要程度；D：次要与significant反义",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "频繁不是重要程度"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "significant在此指重要、有意义，对应important。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "敏感不是重要程度"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "次要与significant反义"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 9,
+      "stem": "Removing every shelter from the garden could ________ the small animals that depend on those hiding places.",
+      "options": [
+        [
+          "A",
+          "ensure"
+        ],
+        [
+          "B",
+          "protect"
+        ],
+        [
+          "C",
+          "threaten"
+        ],
+        [
+          "D",
+          "assist"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：失去依赖的藏身处对其构成威胁，用threaten。；A：ensure不直接以这些动物作所确保的事件；B：与移除全部藏身处的风险方向相反；D：援助不合失去庇护处的后果",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "ensure不直接以这些动物作所确保的事件"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "与移除全部藏身处的风险方向相反"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "失去依赖的藏身处对其构成威胁，用threaten。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "援助不合失去庇护处的后果"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 10,
+      "stem": "The club wants to ________ waste, so members reuse the same display boards whenever possible.",
+      "options": [
+        [
+          "A",
+          "consume"
+        ],
+        [
+          "B",
+          "reduce"
+        ],
+        [
+          "C",
+          "ignore"
+        ],
+        [
+          "D",
+          "produce"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：重复利用板材意在减少废弃量，reduce。；A：此处不是消费废弃物的搭配；C：不是忽视废弃物而是采取减量行动；D：与减少丢弃、重复利用方向相反",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "此处不是消费废弃物的搭配"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "重复利用板材意在减少废弃量，reduce。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "不是忽视废弃物而是采取减量行动"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "与减少丢弃、重复利用方向相反"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 11,
+      "stem": "In the 1980 story, the rain had just begun, and the workers did not yet know that it ________ for three more days.",
+      "options": [
+        [
+          "A",
+          "is lasting"
+        ],
+        [
+          "B",
+          "has lasted"
+        ],
+        [
+          "C",
+          "had lasted"
+        ],
+        [
+          "D",
+          "would last"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：刚开始下雨，过去视点向后持续三天，用过去将来would last；A：当前进行式不合明确过去叙事视点；B：现在完成时不合1980过去视点的将来延续；C：had just begun排除已经持续三天的过去完成解释",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "当前进行式不合明确过去叙事视点"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "现在完成时不合1980过去视点的将来延续"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "had just begun排除已经持续三天的过去完成解释"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "刚开始下雨，过去视点向后持续三天，用过去将来would last"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 12,
+      "stem": "The club offers an atmosphere ________ beginners can ask questions without embarrassment.",
+      "options": [
+        [
+          "A",
+          "which"
+        ],
+        [
+          "B",
+          "where"
+        ],
+        [
+          "C",
+          "when"
+        ],
+        [
+          "D",
+          "that"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：从句主谓宾完整，缺在这种环境中的状语，用where。；A：从句不缺主语/宾语供which充当；C：先行词是atmosphere，非时间；D：此处需环境状语，不能用that作所需成分",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "从句不缺主语/宾语供which充当"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "从句主谓宾完整，缺在这种环境中的状语，用where。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "先行词是atmosphere，非时间"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "此处需环境状语，不能用that作所需成分"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 13,
+      "stem": "The bench ________ beside the gate ________ as a waiting place for visitors.",
+      "options": [
+        [
+          "A",
+          "stood; serves"
+        ],
+        [
+          "B",
+          "stood; serving"
+        ],
+        [
+          "C",
+          "standing; serving"
+        ],
+        [
+          "D",
+          "standing; serves"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：standing后置修饰bench；主句仍需单数谓语serves，一项填两空。；A：两个有限动词无连接，不能当一个主句；B：首空若作谓语，后面serving不能充当所需主句结构；C：两处均非谓语，整句没有有限谓语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "两个有限动词无连接，不能当一个主句"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "首空若作谓语，后面serving不能充当所需主句结构"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "两处均非谓语，整句没有有限谓语"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "standing后置修饰bench；主句仍需单数谓语serves，一项填两空。"
+        }
+      ],
+      "visible_gap_count": 2,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 14,
+      "stem": "The club ________ ten new members since September, and it is still growing.",
+      "options": [
+        [
+          "A",
+          "has welcomed"
+        ],
+        [
+          "B",
+          "is welcoming"
+        ],
+        [
+          "C",
+          "welcomed"
+        ],
+        [
+          "D",
+          "welcomes"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：since September延续到现在，用现在完成时has welcomed。；B：当前进行不覆盖since起点至今的既成数量；C：未表达本句从九月延续到现在的时间跨度；D：一般习惯式不合已加入十人的累计量",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "since September延续到现在，用现在完成时has welcomed。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "当前进行不覆盖since起点至今的既成数量"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "未表达本句从九月延续到现在的时间跨度"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "一般习惯式不合已加入十人的累计量"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 15,
+      "stem": "The notes ________ by the librarian yesterday explain how each display should be stored.",
+      "options": [
+        [
+          "A",
+          "to writing"
+        ],
+        [
+          "B",
+          "written"
+        ],
+        [
+          "C",
+          "wrote"
+        ],
+        [
+          "D",
+          "writing"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：notes是被写对象，written by后置被动修饰。；A：to writing不能构成该名词的正常后置修饰；C：有限动词与主句explain无连接；D：主动现在分词会把notes当写作者",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "to writing不能构成该名词的正常后置修饰"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "notes是被写对象，written by后置被动修饰。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "有限动词与主句explain无连接"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "主动现在分词会把notes当写作者"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 16,
+      "stem": "The video clearly shows Nora entering the room before closing time, so she ________ inside before the door was locked.",
+      "options": [
+        [
+          "A",
+          "must be"
+        ],
+        [
+          "B",
+          "must have been"
+        ],
+        [
+          "C",
+          "can be"
+        ],
+        [
+          "D",
+          "should be"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：对已完成过去事件的强推测用must have been。；A：不能表达该过去时点已发生的状态；C：一般可能性不表达这次过去事实的强推断；D：表示应当或预期，不是由过去视频作完成推断",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "不能表达该过去时点已发生的状态"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "对已完成过去事件的强推测用must have been。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "一般可能性不表达这次过去事实的强推断"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "表示应当或预期，不是由过去视频作完成推断"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 17,
+      "stem": "Unless ________ firmly, the frame may fall, ________ the display incomplete.",
+      "options": [
+        [
+          "A",
+          "to secure; leaves"
+        ],
+        [
+          "B",
+          "secured; leaving"
+        ],
+        [
+          "C",
+          "securing; left"
+        ],
+        [
+          "D",
+          "secure; to leave"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：frame为被固定对象，Unless secured；后半leaving表可能后果。；A：unless后不以此不定式代条件结构，后半leaves与may fall无连接；C：frame不是固定者，后半left也不能作此结果分词；D：secure形容词虽可表示牢固，firmly不能正常修饰此表语；to leave也不表达这里的自然后果",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "unless后不以此不定式代条件结构，后半leaves与may fall无连接"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "frame为被固定对象，Unless secured；后半leaving表可能后果。"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "frame不是固定者，后半left也不能作此结果分词"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "secure形容词虽可表示牢固，firmly不能正常修饰此表语；to leave也不表达这里的自然后果"
+        }
+      ],
+      "visible_gap_count": 2,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 18,
+      "stem": "Two of the novels in this series ________ already been chosen for our book club.",
+      "options": [
+        [
+          "A",
+          "has"
+        ],
+        [
+          "B",
+          "was"
+        ],
+        [
+          "C",
+          "is"
+        ],
+        [
+          "D",
+          "have"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：主语Two of the novels复数，have been chosen构成现在完成被动。；A：不配复数主语Two；B：不能接been chosen构成此完成式；C：不能与already been构成该谓语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "不配复数主语Two"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "不能接been chosen构成此完成式"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "不能与already been构成该谓语"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "主语Two of the novels复数，have been chosen构成现在完成被动。"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 19,
+      "stem": "We use this logbook ________ an accurate record of every change.",
+      "options": [
+        [
+          "A",
+          "keeping"
+        ],
+        [
+          "B",
+          "kept"
+        ],
+        [
+          "C",
+          "to keep"
+        ],
+        [
+          "D",
+          "keeps"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：use sth to do表达使用目的，不定式to keep。；A：use this logbook keeping不构成此目的补足结构；B：过去分词不表达使用该本记录的目的；D：第二有限谓语没有连接",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "use this logbook keeping不构成此目的补足结构"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "过去分词不表达使用该本记录的目的"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "use sth to do表达使用目的，不定式to keep。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "第二有限谓语没有连接"
+        }
+      ],
+      "visible_gap_count": 1,
+      "one_response_for_all_gaps": true
+    },
+    {
+      "number": 20,
+      "stem": "________ with young children for a year, Maya now mentors two new volunteers, ________ are eager to learn.",
+      "options": [
+        [
+          "A",
+          "Worked; whom"
+        ],
+        [
+          "B",
+          "Working; which"
+        ],
+        [
+          "C",
+          "Having worked; who"
+        ],
+        [
+          "D",
+          "To work; they"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：先前经历到现在，Having worked；volunteers为人且从句缺主语，who。一项同时满足两空。；A：Worked不表达Maya主动工作经历，whom也不能作are主语；B：Working本身可能表达伴随，但which不合这里的人的关系主语；D：they使逗号后成为无连接的另一有限句，整项不合正式结构",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "Worked不表达Maya主动工作经历，whom也不能作are主语"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "Working本身可能表达伴随，但which不合这里的人的关系主语"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "先前经历到现在，Having worked；volunteers为人且从句缺主语，who。一项同时满足两空。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "they使逗号后成为无连接的另一有限句，整项不合正式结构"
+        }
+      ],
+      "visible_gap_count": 2,
+      "one_response_for_all_gaps": true
+    }
+  ],
+  "canonical_response_block_sha256": "712fb91fb92dd3a6a973af0552efd5f3898b702888293314f31d1f918004101e",
+  "author_answer_vector": [
+    "D",
+    "B",
+    "C",
+    "A",
+    "A",
+    "B",
+    "C",
+    "B",
+    "C",
+    "B",
+    "D",
+    "B",
+    "D",
+    "A",
+    "B",
+    "B",
+    "B",
+    "D",
+    "C",
+    "C"
+  ],
+  "target_constraints": {
+    "independent_contexts": 20,
+    "per_question_candidates": 4,
+    "composite_gap_questions": [
+      13,
+      17,
+      20
+    ],
+    "visible_gaps": 23,
+    "response_count_not_visible_gap_count": 20,
+    "shared_options": false
+  },
+  "source_printed_question_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "authored_display_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "all_option_positions_same_author_reviewed": 80,
+  "actual_frozen_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "prefreeze_author_revisions": [
+    "2026-10-16:完整逐项复看；修正初一原号13–22与单数they干扰风险；高一1/11、高三13加强语境约束。尚未冻结稿内修订，不伪计独立复核。"
+  ]
+}
