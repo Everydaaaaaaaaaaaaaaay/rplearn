@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "id": "grade9-play-recording-open-dialogue",
+  "grade": 9,
+  "family": "dialogue_open_completion",
+  "questions": 10,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade9-chengdu2025-21cnjy23208601.dialogueOpen"
+  ],
+  "source_shape": {
+    "family": "dialogue_open_completion",
+    "responses": 10,
+    "options_each": null,
+    "details": {
+      "response_policy": "one_word_contractions_allowed",
+      "materials": 1
+    },
+    "grade": 9
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "wrong"
+      ],
+      "maxWords": 1,
+      "rationale": "go wrong表示出问题；后文澄清演出没错，问题在录音"
+    },
+    {
+      "number": 2,
+      "stem": "第2空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "turn"
+      ],
+      "maxWords": 1,
+      "rationale": "turn up the volume提高音量，后文also louder呼应"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "to"
+      ],
+      "maxWords": 1,
+      "rationale": "too close to固定距离关系"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "instead"
+      ],
+      "maxWords": 1,
+      "rationale": "instead of结构表替代购买"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "never"
+      ],
+      "maxWords": 1,
+      "rationale": "No, never回答是否曾使用；No前后与后句不会操作一致"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "advice",
+        "help",
+        "guidance",
+        "suggestions",
+        "tips"
+      ],
+      "maxWords": 1,
+      "rationale": "ask sb for advice/help等均可；后文说明老师可能提供帮助；不穷尽合理名词"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "until",
+        "unless"
+      ],
+      "maxWords": 1,
+      "rationale": "until强调保存前不改；unless在未满足保存条件时不改，也可成立；不能机械只收until"
+    },
+    {
+      "number": 8,
+      "stem": "第8空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "compare",
+        "contrast"
+      ],
+      "maxWords": 1,
+      "rationale": "compare/contrast A with B均可引出两版本比较"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "as"
+      ],
+      "maxWords": 1,
+      "rationale": "as...as等比结构，第二as不能省"
+    },
+    {
+      "number": 10,
+      "stem": "第10空（只填一个词，可用缩写）",
+      "options": [],
+      "knownForms": [
+        "ourselves"
+      ],
+      "maxWords": 1,
+      "rationale": "by ourselves表示仅凭两人自己；双方共同决策用第一人称复数反身代词"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "same_author_all_responses_reviewed": true,
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+      "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+    },
+    "source_view_group_id": "grade9-chengdu2025-21cnjy23208601.dialogueOpen",
+    "material_sha256": "82c82aec245c4d49b41506c06fc8c738daffba97610d5ba227fa73d520896e2c",
+    "start_offset": 17610,
+    "end_offset": 19171
+  },
+  "source_material_words_including_speaker_labels": 260,
+  "author_reference_set_exhaustive": false,
+  "author_notes": "一篇完整双人对话十空，每空一个词含缩写，不改为十个独立句或整句输出。第6/7/8空有多条成立表达，作者已列已识别分支；开放词表不是穷尽答案，页面不自动判分。设备判断属于虚构角色的推测，不当实测声学结论。",
+  "canonical_response_block_sha256": "1172c4add128663f5bda5e16b0b2ce13d7bd68a40d293837eb5600923dfa15e7",
+  "candidate_path": "FirstRelease/Timeboxed/grade9-play-recording-open-dialogue-v0.1.md",
+  "candidate_sha256": "9a3b2f269ae4c68a32f1bead4c6c4be1d082bc9a16ab64d1bfa82592f275d4a3",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic words;internal apostrophe/hyphen retained;speaker labels included;Chinese not measured in these counts",
+    "material_English_tokens": 244,
+    "response_prompt_English_tokens": 0,
+    "candidate_English_tokens_unique_shared_set": 0,
+    "candidate_English_tokens_per_question_total": 0,
+    "requirements_English_tokens": 0,
+    "shared_option_UI_repetition_not_independent_material": false
+  }
+}

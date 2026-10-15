@@ -1,0 +1,880 @@
+{
+  "version": "0.4",
+  "scope": "grades7to12_timeboxed_missing_family_representatives_only",
+  "baseline_authored_groups": 53,
+  "baseline_authored_responses": 338,
+  "new_authored_groups": 23,
+  "new_authored_responses": 165,
+  "prior_new_index": {
+    "path": "FirstRelease/Timeboxed/authored-review-index-v0.3.json",
+    "sha256": "aa687d4641fcbb7be9aebcd1c53bc6a36f9ed3b40e2abea5fa8d19a257d37ce4"
+  },
+  "candidates": [
+    {
+      "id": "grade7-town-visit-plan",
+      "grade": 7,
+      "family": "application_writing",
+      "questions": 1,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-town-visit-plan-v0.1.md",
+        "sha256": "d080294d51eb709e37a3344e427f90202c932f0b27700046e93a995f9583a195"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-town-visit-plan-author-check-v0.1.json",
+        "sha256": "1f003422e78febfbcb6b9d7395b653e24fc92e609f8f6e0e337a04a716166716"
+      },
+      "anchor_group_ids": [
+        "grade7-suzhou2025-21cnjy23303742.writing"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "application_writing",
+        "responses": 1,
+        "options_each": null,
+        "details": {
+          "word_target": 90,
+          "target_relation": "about",
+          "genre": "tour_plan",
+          "points": 25
+        },
+        "grade": 7
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade8-hobby-forum-reply",
+      "grade": 8,
+      "family": "application_writing",
+      "questions": 1,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade8-hobby-forum-reply-v0.1.md",
+        "sha256": "88ba8493d7cb2dc5f7d44940b12b29aba86b267868d76ba5fe4a6a39ed961aa9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade8-hobby-forum-reply-author-check-v0.1.json",
+        "sha256": "1339541d78d62292d2e12ebcf99ee0a022aea2e5d51df511ecbe518f5eed5c2a"
+      },
+      "anchor_group_ids": [
+        "grade8-hubei2026-21cnjy26105408.forumReply"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "application_writing",
+        "responses": 1,
+        "options_each": null,
+        "details": {
+          "word_target": 70,
+          "target_relation": "about",
+          "genre": "hobby_forum_reply",
+          "source_question_number": 49,
+          "question_id_collision": true,
+          "necessary_input_complete": true
+        },
+        "grade": 8
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-graduation-speech",
+      "grade": 9,
+      "family": "application_writing",
+      "questions": 1,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-graduation-speech-v0.1.md",
+        "sha256": "ac9d80d0a0dcfb22647536cc92a4f4f8bd0886db59f6430d0b7f52a69680f7fc"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-graduation-speech-author-check-v0.1.json",
+        "sha256": "b3d4ba8257d4fb8bebeb9f2386e9cc9504ee5a3b1f151d6bad394a4c1439a72f"
+      },
+      "anchor_group_ids": [
+        "grade9-boxing2025-21cnjy24857076.speech"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "application_writing",
+        "responses": 1,
+        "options_each": null,
+        "details": {
+          "necessary_input_complete": true,
+          "word_target": 80,
+          "target_relation": "about",
+          "given_opening_excluded": true,
+          "genre": "graduation_speech"
+        },
+        "grade": 9
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade11-family-dish-invitation",
+      "grade": 11,
+      "family": "application_writing",
+      "questions": 1,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade11-family-dish-invitation-v0.1.md",
+        "sha256": "314c8b5470e996997a3254bc3660bab1864283c61bf086d7549a4ce982760fed"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade11-family-dish-invitation-author-check-v0.1.json",
+        "sha256": "40b8fcaf46f501100f200d1f47d7acfecf72dea0763ff25f155f90680d3ccf26"
+      },
+      "anchor_group_ids": [
+        "grade11-heze2026-21cnjy24886046.mail"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "application_writing",
+        "responses": 1,
+        "options_each": null,
+        "details": {
+          "necessary_input_complete": true,
+          "word_target": 80,
+          "target_relation": "about",
+          "genre": "food_information_and_invitation_email",
+          "points": 15
+        },
+        "grade": 11
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade12-cultural-gift-advice",
+      "grade": 12,
+      "family": "application_writing",
+      "questions": 1,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade12-cultural-gift-advice-v0.1.md",
+        "sha256": "91955a8479dc3aefa8dc88d2aa7e081b5274ad13cc25635cabf6fa5b64ea4181"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade12-cultural-gift-advice-author-check-v0.1.json",
+        "sha256": "cce085ce3bec26575a11c2611881401bc32730785aaed49b7f4da36c6493931b"
+      },
+      "anchor_group_ids": [
+        "grade12-linyi2025-21cnjy24838709.mail"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "application_writing",
+        "responses": 1,
+        "options_each": null,
+        "details": {
+          "necessary_input_complete": true,
+          "word_target": 80,
+          "target_relation": "about",
+          "genre": "cultural_gift_advice_email",
+          "given_opening_closing_excluded": true,
+          "points": 15
+        },
+        "grade": 12
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-context-spelling",
+      "grade": 7,
+      "family": "context_word_completion",
+      "questions": 5,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-context-spelling-v0.1.md",
+        "sha256": "62627bcbc1ad84a5e5158a1a7558fe53bf2b7c55ebc74893475a845a5e8119e9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-context-spelling-author-check-v0.1.json",
+        "sha256": "4b513e282311286148b903ae65275ae670cb398596af5b44641448708e147c37"
+      },
+      "anchor_group_ids": [
+        "grade7-hefei2025-21cnjy26607976.initialWords"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "context_word_completion",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "materials": 5,
+          "response_policy": "initial_and_Chinese_given_full_vs_suffix_variants",
+          "necessary_input_complete": true
+        },
+        "grade": 7
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-context-word-forms",
+      "grade": 9,
+      "family": "context_word_completion",
+      "questions": 8,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-context-word-forms-v0.1.md",
+        "sha256": "c40fbcb4a9d3ac1b3e3df8699340bdce88a1458300c8dcf7b596591dd98468b5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-context-word-forms-author-check-v0.1.json",
+        "sha256": "86f12ea27a177151edc8c722f75c45e2884223a702f144c636ebda83f433c79e"
+      },
+      "anchor_group_ids": [
+        "g9.suzhou2024.singleVocabulary"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "grade": 9,
+        "family": "context_word_completion",
+        "responses": 8,
+        "options_each": null,
+        "details": {
+          "response_limit": "one_word",
+          "cues": [
+            "Chinese_meaning",
+            "initial_letter"
+          ]
+        }
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade11-context-spelling",
+      "grade": 11,
+      "family": "context_word_completion",
+      "questions": 10,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade11-context-spelling-v0.1.md",
+        "sha256": "06f25128e8bc008e42fcbec7ff9b41ae684f5728494dd97f1f53763205204344"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade11-context-spelling-author-check-v0.1.json",
+        "sha256": "0abf71c0357e507f25b8c69057bb362e79f0aa73214dfb82a293babd45550fe2"
+      },
+      "anchor_group_ids": [
+        "grade11-heze2026-21cnjy24886046.words"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "context_word_completion",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "necessary_input_complete": true,
+          "materials": 10,
+          "initial_and_Chinese_given": true,
+          "initial_vs_suffix_scoring_unknown": true
+        },
+        "grade": 11
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-phonetic-word-completion",
+      "grade": 7,
+      "family": "phonetic_word_completion",
+      "questions": 4,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-v0.1.md",
+        "sha256": "72f868aba4fa72fe303e01aa7e50f8051926776228ebe6978a9c4372bde1238d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-author-check-v0.1.json",
+        "sha256": "1d8684fc13d3d58140cdb897ef7a7866f5838516a5205db2aad7d152f52d76b8"
+      },
+      "anchor_group_ids": [
+        "g7.xicheng2025.phonetic"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "grade": 7,
+        "family": "phonetic_word_completion",
+        "responses": 4,
+        "options_each": null,
+        "details": {
+          "response_limit": "not_explicit"
+        }
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-isolated-word-forms",
+      "grade": 7,
+      "family": "sentence_form",
+      "questions": 15,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-isolated-word-forms-v0.1.md",
+        "sha256": "cb7a49bbe3aa08a0e77f8bd87ed2c1848999a4ee633b2759b3efbae82b2ada49"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-isolated-word-forms-author-check-v0.1.json",
+        "sha256": "3f0fb088dc9169e3e64a4f5180bf82936253aa660e20cae606ec2ea4c43cac06"
+      },
+      "anchor_group_ids": [
+        "grade7-jinan2025-21cnjy24695341.sentenceForms"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "grade": 7,
+        "family": "sentence_form",
+        "responses": 15,
+        "options_each": null,
+        "details": {
+          "necessary_input_complete": true,
+          "materials": 15,
+          "given_word_slots": 10,
+          "ungiven_slots": 5,
+          "response_policy": "ungiven_one_word_given_correct_form",
+          "reference_contains_multiword_forms": true,
+          "source_key_multiword_forms": {
+            "74": "to go"
+          },
+          "source_label_is_not_passage_material": "阅读填空",
+          "points_each": 1,
+          "isolated_context_answer_uniqueness_not_established": true
+        }
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-cued-sentence-translation",
+      "grade": 7,
+      "family": "sentence_translation",
+      "questions": 3,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-cued-sentence-translation-v0.1.md",
+        "sha256": "a12146c3c22c69fde4e9abd5bad22a733cd95f28039e079b4fb3be5d65cd342e"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-cued-sentence-translation-author-check-v0.1.json",
+        "sha256": "d089a6865d0fd76c1594dc78d57c66ca47903c03524d1beee3147abe736c4066"
+      },
+      "anchor_group_ids": [
+        "g7.xicheng2025.translation"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "grade": 7,
+        "family": "sentence_translation",
+        "responses": 3,
+        "options_each": null,
+        "details": {
+          "required_cues": true
+        }
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade10-constrained-sentence-translation",
+      "grade": 10,
+      "family": "sentence_translation",
+      "questions": 5,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade10-constrained-sentence-translation-v0.1.md",
+        "sha256": "aba6a5c2116364cf6ce904cd2600ec29988e1eb62da1694ed9793e844c546cb7"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade10-constrained-sentence-translation-author-check-v0.1.json",
+        "sha256": "99a8a21735081151bd196a25ab286bedd98e988f94f7f0f256f524921357a98d"
+      },
+      "anchor_group_ids": [
+        "grade10-jinhua2025-21cnjy22399612.translation"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "sentence_translation",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "necessary_input_complete": true,
+          "materials": 5,
+          "whole_sentence_outputs": true,
+          "keywords_and_grammar_constraints": true,
+          "points_each": 3
+        },
+        "grade": 10
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-three-option-sentences",
+      "grade": 7,
+      "family": "sentence_choice",
+      "questions": 10,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-three-option-sentences-v0.1.md",
+        "sha256": "911947a6f01b8bb006b9d74ffda20ed3a002abc64bb8bb4bbc73d2eb03a60bd2"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-three-option-sentences-author-check-v0.1.json",
+        "sha256": "e473de1b8f46682fd90e5175e29fa0c854caf0556011ab130909e115c97adc49"
+      },
+      "anchor_group_ids": [
+        "g7.xicheng2025.language"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "grade": 7,
+        "family": "sentence_choice",
+        "responses": 10,
+        "options_each": 3,
+        "details": {}
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-four-option-sentences",
+      "grade": 9,
+      "family": "sentence_choice",
+      "questions": 10,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-four-option-sentences-v0.1.md",
+        "sha256": "1c567ed854c7394305e1301f0baf172ea52b13d4eeb051f22c441b9346afa7a5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-four-option-sentences-author-check-v0.1.json",
+        "sha256": "230a80562a30664e3d92f0651929dcea652f5065b574c7b83b66111b7c6b1f47"
+      },
+      "anchor_group_ids": [
+        "grade9-boxing2025-21cnjy24857076.sentenceChoice"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "sentence_choice",
+        "responses": 10,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "materials": 10
+        },
+        "grade": 9
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade10-twenty-sentence-choices",
+      "grade": 10,
+      "family": "sentence_choice",
+      "questions": 20,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade10-twenty-sentence-choices-v0.1.md",
+        "sha256": "222174d988da1d76121859a9ea708240af49c42d15b819979ae9c650fafa6f25"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade10-twenty-sentence-choices-author-check-v0.1.json",
+        "sha256": "818133e85b9491e11e2ae26b40f59ab31fc391f4ecff198fd1222a2d8fcc1319"
+      },
+      "anchor_group_ids": [
+        "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "sentence_choice",
+        "responses": 20,
+        "options_each": 4,
+        "details": {
+          "materials": 20,
+          "some_options_fill_multiple_blanks": true
+        },
+        "grade": 10
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade11-fifteen-sentence-choices",
+      "grade": 11,
+      "family": "sentence_choice",
+      "questions": 15,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade11-fifteen-sentence-choices-v0.1.md",
+        "sha256": "13a77b9a377c810c2fa626319bddbab640d0c46c30c4152b2bc9e973c899a4e4"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade11-fifteen-sentence-choices-author-check-v0.1.json",
+        "sha256": "e0ddd5ed0364cd4a3bf41d08230591c843ba2769f309fdbdb6417387bd099b3c"
+      },
+      "anchor_group_ids": [
+        "grade11-tianjin2026-21cnjy26082071.sentenceChoice"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "sentence_choice",
+        "responses": 15,
+        "options_each": 4,
+        "details": {
+          "materials": 15,
+          "necessary_input_complete": true
+        },
+        "grade": 11
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade12-fifteen-sentence-choices",
+      "grade": 12,
+      "family": "sentence_choice",
+      "questions": 15,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade12-fifteen-sentence-choices-v0.1.md",
+        "sha256": "d878a7acc694405995e92086c176afa1e4be765b22b15261b1156ad24106f4cd"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade12-fifteen-sentence-choices-author-check-v0.1.json",
+        "sha256": "5b6a1ac2d6fb84c5aedb3fdbf4ae65ef0022a3229c7142a5591a46c0c769b882"
+      },
+      "anchor_group_ids": [
+        "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "sentence_choice",
+        "responses": 15,
+        "options_each": 4,
+        "details": {
+          "materials": 15,
+          "necessary_input_complete": true
+        },
+        "grade": 12
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-zoo-photo-dialogue",
+      "grade": 7,
+      "family": "dialogue_choice",
+      "questions": 5,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-zoo-photo-dialogue-v0.1.md",
+        "sha256": "bb829a38dc5c7eecdefb08b0ef7b5194450e06813599c0e0ff10a7178315daca"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-zoo-photo-dialogue-author-check-v0.1.json",
+        "sha256": "f48bc3827662432ccde290b87b68f1fe924d67bd4f3427cfe8d50b26dd915852"
+      },
+      "anchor_group_ids": [
+        "grade7-jinan2025-21cnjy24695341.dialogue"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "grade": 7,
+        "family": "dialogue_choice",
+        "responses": 5,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "materials": 1,
+          "shared_options": null,
+          "options_are_per_blank": true,
+          "source_candidate_C_has_c_or_v_prefix_artifact": true,
+          "points_each": 1
+        }
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade7-map-shared-dialogue",
+      "grade": 7,
+      "family": "dialogue_matching",
+      "questions": 5,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-map-shared-dialogue-v0.1.md",
+        "sha256": "873fe3217f19ec7d477286f1cace813b78b09a215d700afdafd46a49181a9851"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-map-shared-dialogue-author-check-v0.1.json",
+        "sha256": "0803af260478378b6a9093e8c22313b1785d1856ed915fc7a24aba9f81e1314d"
+      },
+      "anchor_group_ids": [
+        "grade7-hefei2025-21cnjy26607976.dialogue"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "dialogue_matching",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 7,
+          "explicit_spare": 2,
+          "reuse_rule": "not_explicit",
+          "necessary_input_complete": true
+        },
+        "grade": 7
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-soup-shared-dialogue",
+      "grade": 9,
+      "family": "dialogue_matching",
+      "questions": 5,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-soup-shared-dialogue-v0.1.md",
+        "sha256": "2eb353dfa6ddb688515b6cf6f7a71ad4496a5a0443c7c2f5c5c156941b369523"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-soup-shared-dialogue-author-check-v0.1.json",
+        "sha256": "6b5c60de4d3c2d47db3150182723f8efa2bbcccaf55bd3431e2ec75c359a9e72"
+      },
+      "anchor_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.dialogueChoice"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "dialogue_matching",
+        "responses": 5,
+        "options_each": null,
+        "details": {
+          "shared_options": 5,
+          "reuse_rule": "not_explicit"
+        },
+        "grade": 9
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-play-recording-open-dialogue",
+      "grade": 9,
+      "family": "dialogue_open_completion",
+      "questions": 10,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-play-recording-open-dialogue-v0.1.md",
+        "sha256": "9a3b2f269ae4c68a32f1bead4c6c4be1d082bc9a16ab64d1bfa82592f275d4a3"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-play-recording-open-dialogue-author-check-v0.1.json",
+        "sha256": "2664f4eb85f054a30ce963952b15b0af50cf2693b37a30d9d9e5e70630169fd0"
+      },
+      "anchor_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.dialogueOpen"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "dialogue_open_completion",
+        "responses": 10,
+        "options_each": null,
+        "details": {
+          "response_policy": "one_word_contractions_allowed",
+          "materials": 1
+        },
+        "grade": 9
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-chess-room-true-false",
+      "grade": 9,
+      "family": "reading_tf",
+      "questions": 5,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-chess-room-true-false-v0.1.md",
+        "sha256": "d23801021e29036fc2eb11192940fd164e60b5394f1dea1c04064fe761ed3989"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-chess-room-true-false-author-check-v0.1.json",
+        "sha256": "86af1d7e72eedc3191e14a6ea598270a25bf40971b0321f771db0afa9be096c6"
+      },
+      "anchor_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.trueFalse"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "reading_tf",
+        "responses": 5,
+        "options_each": 2,
+        "details": {
+          "response_policy": "correct_A_wrong_B"
+        },
+        "grade": 9
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    },
+    {
+      "id": "grade9-repair-club-grammar-choice",
+      "grade": 9,
+      "family": "grammar_choice_cloze",
+      "questions": 10,
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-repair-club-grammar-choice-v0.1.md",
+        "sha256": "7c5e5892da77a320b7f3a831ffba536a14201f0d4b82dc300b202e18e0c7c6bb"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-repair-club-grammar-choice-author-check-v0.1.json",
+        "sha256": "3c8079b4086c4829b9e53fe0fe8c1ff629b6414b317bb7be69a5993ee765c25c"
+      },
+      "anchor_group_ids": [
+        "grade9-zhongshan2025-21cnjy22278047.grammarChoice"
+      ],
+      "specification_at_authoring": {
+        "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+        "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+      },
+      "source_shape": {
+        "family": "grammar_choice_cloze",
+        "responses": 10,
+        "options_each": 4,
+        "details": {
+          "necessary_input_complete": true,
+          "materials": 1,
+          "primary_focus": "grammar_and_coherence"
+        },
+        "grade": 9
+      },
+      "new_quality_review_UI_verified": false,
+      "independent_review": false,
+      "student_calibration": false,
+      "commercial_admission": false,
+      "production_admission": false
+    }
+  ],
+  "source_group_count_increment": 0,
+  "independent_student_commercial_or_production_validation": false
+}

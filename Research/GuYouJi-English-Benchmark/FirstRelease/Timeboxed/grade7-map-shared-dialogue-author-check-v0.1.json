@@ -1,0 +1,459 @@
+{
+  "version": "0.1",
+  "id": "grade7-map-shared-dialogue",
+  "grade": 7,
+  "family": "dialogue_matching",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade7-hefei2025-21cnjy26607976.dialogue"
+  ],
+  "source_shape": {
+    "family": "dialogue_matching",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "shared_options": 7,
+      "explicit_spare": 2,
+      "reuse_rule": "not_explicit",
+      "necessary_input_complete": true
+    },
+    "grade": 7
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "What’s this in English?"
+        ],
+        [
+          "B",
+          "Is it your map?"
+        ],
+        [
+          "C",
+          "What colour is your map?"
+        ],
+        [
+          "D",
+          "Can you spell “yellow”?"
+        ],
+        [
+          "E",
+          "Thank you for your help."
+        ],
+        [
+          "F",
+          "How old are you?"
+        ],
+        [
+          "G",
+          "Where is your sister?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：问物品英文名，It’s a map回答；B：与本空后续答语不衔接；该项适配第2空；C：与本空后续答语不衔接；该项适配第3空；D：与本空后续答语不衔接；该项适配第4空；E：与本空后续答语不衔接；该项适配第5空；F：没有年龄信息，不能承接本空答语；G：没有人物地点信息，不能承接本空答语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "问物品英文名，It’s a map回答"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第2空"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第3空"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第4空"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第5空"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "没有年龄信息，不能承接本空答语"
+        },
+        {
+          "label": "G",
+          "valid": false,
+          "reason": "没有人物地点信息，不能承接本空答语"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "What’s this in English?"
+        ],
+        [
+          "B",
+          "Is it your map?"
+        ],
+        [
+          "C",
+          "What colour is your map?"
+        ],
+        [
+          "D",
+          "Can you spell “yellow”?"
+        ],
+        [
+          "E",
+          "Thank you for your help."
+        ],
+        [
+          "F",
+          "How old are you?"
+        ],
+        [
+          "G",
+          "Where is your sister?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：问归属才能回答No,it isn’t；A：与本空后续答语不衔接；该项适配第1空；C：与本空后续答语不衔接；该项适配第3空；D：与本空后续答语不衔接；该项适配第4空；E：与本空后续答语不衔接；该项适配第5空；F：没有年龄信息，不能承接本空答语；G：没有人物地点信息，不能承接本空答语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第1空"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "问归属才能回答No,it isn’t"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第3空"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第4空"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第5空"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "没有年龄信息，不能承接本空答语"
+        },
+        {
+          "label": "G",
+          "valid": false,
+          "reason": "没有人物地点信息，不能承接本空答语"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "What’s this in English?"
+        ],
+        [
+          "B",
+          "Is it your map?"
+        ],
+        [
+          "C",
+          "What colour is your map?"
+        ],
+        [
+          "D",
+          "Can you spell “yellow”?"
+        ],
+        [
+          "E",
+          "Thank you for your help."
+        ],
+        [
+          "F",
+          "How old are you?"
+        ],
+        [
+          "G",
+          "Where is your sister?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：问颜色才能回答yellow；A：与本空后续答语不衔接；该项适配第1空；B：与本空后续答语不衔接；该项适配第2空；D：与本空后续答语不衔接；该项适配第4空；E：与本空后续答语不衔接；该项适配第5空；F：没有年龄信息，不能承接本空答语；G：没有人物地点信息，不能承接本空答语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第1空"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第2空"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "问颜色才能回答yellow"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第4空"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第5空"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "没有年龄信息，不能承接本空答语"
+        },
+        {
+          "label": "G",
+          "valid": false,
+          "reason": "没有人物地点信息，不能承接本空答语"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "What’s this in English?"
+        ],
+        [
+          "B",
+          "Is it your map?"
+        ],
+        [
+          "C",
+          "What colour is your map?"
+        ],
+        [
+          "D",
+          "Can you spell “yellow”?"
+        ],
+        [
+          "E",
+          "Thank you for your help."
+        ],
+        [
+          "F",
+          "How old are you?"
+        ],
+        [
+          "G",
+          "Where is your sister?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：拼读答语只对应spell；A：与本空后续答语不衔接；该项适配第1空；B：与本空后续答语不衔接；该项适配第2空；C：与本空后续答语不衔接；该项适配第3空；E：与本空后续答语不衔接；该项适配第5空；F：没有年龄信息，不能承接本空答语；G：没有人物地点信息，不能承接本空答语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第1空"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第2空"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第3空"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "拼读答语只对应spell"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第5空"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "没有年龄信息，不能承接本空答语"
+        },
+        {
+          "label": "G",
+          "valid": false,
+          "reason": "没有人物地点信息，不能承接本空答语"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "What’s this in English?"
+        ],
+        [
+          "B",
+          "Is it your map?"
+        ],
+        [
+          "C",
+          "What colour is your map?"
+        ],
+        [
+          "D",
+          "Can you spell “yellow”?"
+        ],
+        [
+          "E",
+          "Thank you for your help."
+        ],
+        [
+          "F",
+          "How old are you?"
+        ],
+        [
+          "G",
+          "Where is your sister?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E：致谢与You’re welcome构成应答；A：与本空后续答语不衔接；该项适配第1空；B：与本空后续答语不衔接；该项适配第2空；C：与本空后续答语不衔接；该项适配第3空；D：与本空后续答语不衔接；该项适配第4空；F：没有年龄信息，不能承接本空答语；G：没有人物地点信息，不能承接本空答语",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第1空"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第2空"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第3空"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "与本空后续答语不衔接；该项适配第4空"
+        },
+        {
+          "label": "E",
+          "valid": true,
+          "reason": "致谢与You’re welcome构成应答"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "没有年龄信息，不能承接本空答语"
+        },
+        {
+          "label": "G",
+          "valid": false,
+          "reason": "没有人物地点信息，不能承接本空答语"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "same_author_all_responses_reviewed": true,
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+      "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+    },
+    "source_view_group_id": "grade7-hefei2025-21cnjy26607976.dialogue",
+    "material_sha256": "2abc115a4321f150305bd3d13075a04e006123d998fd8ba68d22972a6a09720f",
+    "start_offset": 5040,
+    "end_offset": 5300
+  },
+  "source_material_words_including_speaker_labels": 40,
+  "shared_candidates": [
+    [
+      "A",
+      "What’s this in English?"
+    ],
+    [
+      "B",
+      "Is it your map?"
+    ],
+    [
+      "C",
+      "What colour is your map?"
+    ],
+    [
+      "D",
+      "Can you spell “yellow”?"
+    ],
+    [
+      "E",
+      "Thank you for your help."
+    ],
+    [
+      "F",
+      "How old are you?"
+    ],
+    [
+      "G",
+      "Where is your sister?"
+    ]
+  ],
+  "reuse_rule": "not_explicit",
+  "author_notes": "十话轮、五空、七共享句/两多余项。共享集合只是一套语言输入，作答栏重复展示并不算35条独立素材。源未明示一次规则，原创不额外补上；当前各槽位有局部明确的问答依据，无需依靠强制使用一次才能得到作者向量。",
+  "canonical_response_block_sha256": "fc1ac15174fccb9b5337521a4c1e0e7b81213a4e8ef27d96f24d74cba1af5e14",
+  "candidate_path": "FirstRelease/Timeboxed/grade7-map-shared-dialogue-v0.1.md",
+  "candidate_sha256": "873fe3217f19ec7d477286f1cace813b78b09a215d700afdafd46a49181a9851",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic words;internal apostrophe/hyphen retained;speaker labels included;Chinese not measured in these counts",
+    "material_English_tokens": 33,
+    "response_prompt_English_tokens": 0,
+    "candidate_English_tokens_unique_shared_set": 30,
+    "candidate_English_tokens_per_question_total": 0,
+    "requirements_English_tokens": 0,
+    "shared_option_UI_repetition_not_independent_material": true
+  }
+}

@@ -26603,6 +26603,48 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "timeboxed-six-dialogue-and-passage-groups-20261016e-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "Tools/build_quality_review.py + focused input contract checks + actual_Codex_browser",
+      "tool_version": "0.1",
+      "parameters": [
+        "preview52cells/354responses;old46payload unchanged;source306/41unchanged;no new original acquisition/paper render/fulltree snapshot/independent or production evaluation"
+      ],
+      "pages": 5,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-dialogue-controls20261016e-v0.1.json",
+          "bytes": 3627,
+          "sha256": "0795a8e151fc15bffaf4e8a08041e710a15bd970ba6a8feaa4a7f8ea3134949c",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-controls20261016e-v0.1.json",
+          "bytes": 5264,
+          "sha256": "06ff2f47e4e6e1f4e0ebbbfc1d5388bb96fc516baac7500ea42649dd9e993686",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-dialogue-browser20261016e-v0.1.json",
+          "bytes": 119072,
+          "sha256": "72825119172ab79d10376e9306c669b2e3ceaa1de4dc9e5d36263d8326301a2f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-page20261016e-v0.1.html",
+          "bytes": 644907,
+          "sha256": "34834165ecc34b35d762790b7d90465b52c5488403b69a57767a1210fae07c94",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-build20261016e-v0.1.json",
+          "bytes": 419,
+          "sha256": "684b3a387cec5a181f9805ede86015e66aef8125bdd6ff9a6fc9b9202057e0b5",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

@@ -1,0 +1,359 @@
+{
+  "version": "0.1",
+  "id": "grade9-soup-shared-dialogue",
+  "grade": 9,
+  "family": "dialogue_matching",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade9-chengdu2025-21cnjy23208601.dialogueChoice"
+  ],
+  "source_shape": {
+    "family": "dialogue_matching",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "shared_options": 5,
+      "reuse_rule": "not_explicit"
+    },
+    "grade": 9
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "How about making vegetable soup?"
+        ],
+        [
+          "B",
+          "First, wash the carrots and potatoes."
+        ],
+        [
+          "C",
+          "Not yet. Cut them into small pieces first."
+        ],
+        [
+          "D",
+          "Yes. Cover the pot and bring the water to the boil."
+        ],
+        [
+          "E",
+          "Now let it cook slowly until the vegetables are soft."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：答语A vegetable soup回指菜品建议；B：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；C：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；D：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；E：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "答语A vegetable soup回指菜品建议"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "How about making vegetable soup?"
+        ],
+        [
+          "B",
+          "First, wash the carrots and potatoes."
+        ],
+        [
+          "C",
+          "Not yet. Cut them into small pieces first."
+        ],
+        [
+          "D",
+          "Yes. Cover the pot and bring the water to the boil."
+        ],
+        [
+          "E",
+          "Now let it cook slowly until the vegetables are soft."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：first顺序词与下一句Done承接清洗动作；A：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；C：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；D：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；E：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "first顺序词与下一句Done承接清洗动作"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "How about making vegetable soup?"
+        ],
+        [
+          "B",
+          "First, wash the carrots and potatoes."
+        ],
+        [
+          "C",
+          "Not yet. Cut them into small pieces first."
+        ],
+        [
+          "D",
+          "Yes. Cover the pot and bring the water to the boil."
+        ],
+        [
+          "E",
+          "Now let it cook slowly until the vegetables are soft."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：Not yet响应现在是否开灶；下一句确认切好；A：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；B：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；D：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；E：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "Not yet响应现在是否开灶；下一句确认切好"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "How about making vegetable soup?"
+        ],
+        [
+          "B",
+          "First, wash the carrots and potatoes."
+        ],
+        [
+          "C",
+          "Not yet. Cut them into small pieces first."
+        ],
+        [
+          "D",
+          "Yes. Cover the pot and bring the water to the boil."
+        ],
+        [
+          "E",
+          "Now let it cook slowly until the vegetables are soft."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：Yes响应Can I start heating；下一句已烧开；A：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；B：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；C：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；E：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "Yes响应Can I start heating；下一句已烧开"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "How about making vegetable soup?"
+        ],
+        [
+          "B",
+          "First, wash the carrots and potatoes."
+        ],
+        [
+          "C",
+          "Not yet. Cut them into small pieces first."
+        ],
+        [
+          "D",
+          "Yes. Cover the pot and bring the water to the boil."
+        ],
+        [
+          "E",
+          "Now let it cook slowly until the vegetables are soft."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E：降火后继续慢煮对应最后步骤；A：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；B：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；C：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符；D：该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该项的菜品/清洗/切块/烧开/慢煮指向其他步骤，与本空前后动作不符"
+        },
+        {
+          "label": "E",
+          "valid": true,
+          "reason": "降火后继续慢煮对应最后步骤"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "same_author_all_responses_reviewed": true,
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+      "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+    },
+    "source_view_group_id": "grade9-chengdu2025-21cnjy23208601.dialogueChoice",
+    "material_sha256": "f2861c39ea60f1e917c9bb02cfcbf8339b10954f5246f63c14a55a4f83739b44",
+    "start_offset": 2751,
+    "end_offset": 3250
+  },
+  "source_material_words_including_speaker_labels": 78,
+  "shared_candidates": [
+    [
+      "A",
+      "How about making vegetable soup?"
+    ],
+    [
+      "B",
+      "First, wash the carrots and potatoes."
+    ],
+    [
+      "C",
+      "Not yet. Cut them into small pieces first."
+    ],
+    [
+      "D",
+      "Yes. Cover the pot and bring the water to the boil."
+    ],
+    [
+      "E",
+      "Now let it cook slowly until the vegetables are soft."
+    ]
+  ],
+  "reuse_rule": "not_explicit",
+  "author_notes": "完整五空五共享句，没有多余选项这一数量关系不等于源明示禁止复用；不额外写每项只能一次。各步骤由局部动作和照应锁定，而非只靠排剩的字母。虚构对话不是完整烹饪安全教程。",
+  "canonical_response_block_sha256": "e3cc05a3217388562763f603800fcbffd37059c80f1a3c4ae298b01f1b93e167",
+  "candidate_path": "FirstRelease/Timeboxed/grade9-soup-shared-dialogue-v0.1.md",
+  "candidate_sha256": "2eb353dfa6ddb688515b6cf6f7a71ad4496a5a0443c7c2f5c5c156941b369523",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic words;internal apostrophe/hyphen retained;speaker labels included;Chinese not measured in these counts",
+    "material_English_tokens": 73,
+    "response_prompt_English_tokens": 0,
+    "candidate_English_tokens_unique_shared_set": 40,
+    "candidate_English_tokens_per_question_total": 0,
+    "requirements_English_tokens": 0,
+    "shared_option_UI_repetition_not_independent_material": true
+  }
+}

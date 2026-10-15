@@ -1,0 +1,295 @@
+{
+  "version": "0.1",
+  "id": "grade7-zoo-photo-dialogue",
+  "grade": 7,
+  "family": "dialogue_choice",
+  "questions": 5,
+  "options_each": 4,
+  "anchor_group_ids": [
+    "grade7-jinan2025-21cnjy24695341.dialogue"
+  ],
+  "source_shape": {
+    "grade": 7,
+    "family": "dialogue_choice",
+    "responses": 5,
+    "options_each": 4,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 1,
+      "shared_options": null,
+      "options_are_per_blank": true,
+      "source_candidate_C_has_c_or_v_prefix_artifact": true,
+      "points_each": 1
+    }
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Where do you live?"
+        ],
+        [
+          "B",
+          "What are you doing?"
+        ],
+        [
+          "C",
+          "When is your next trip?"
+        ],
+        [
+          "D",
+          "Who is your art teacher?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：答语正在看照片，询问当前活动；A：未回答住址；C：答语是过去旅行照片，非下一次时间；D：未回答人物身份",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "未回答住址"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "答语正在看照片，询问当前活动"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "答语是过去旅行照片，非下一次时间"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "未回答人物身份"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "How many photos do you have?"
+        ],
+        [
+          "B",
+          "Why are you drawing?"
+        ],
+        [
+          "C",
+          "Where did you go?"
+        ],
+        [
+          "D",
+          "Who can use the camera?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：答语给出旅行地点Green Park Zoo；A：没有给照片数量；B：Mia正在看照片而非画画；D：没有回答谁能使用相机",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "没有给照片数量"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "Mia正在看照片而非画画"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "答语给出旅行地点Green Park Zoo"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "没有回答谁能使用相机"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Which animals did you like best?"
+        ],
+        [
+          "B",
+          "What time did you leave school?"
+        ],
+        [
+          "C",
+          "How did you get there?"
+        ],
+        [
+          "D",
+          "Where did you buy the ball?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：The monkeys给出喜爱的动物，because解释原因；B：没有给离校时间；C：没有给交通方式；D：没有说买球地点",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "The monkeys给出喜爱的动物，because解释原因"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "没有给离校时间"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "没有给交通方式"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "没有说买球地点"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Are you eating lunch now?"
+        ],
+        [
+          "B",
+          "Was the zoo far from school?"
+        ],
+        [
+          "C",
+          "Did the monkeys eat your sandwiches?"
+        ],
+        [
+          "D",
+          "Did you have lunch there?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：Yes和We ate sandwiches near the lake回答是否在那里吃午餐；A：与回顾上周旅行冲突，答语不是现在吃；B：答语未谈远近，前文还明说near；C：We ate不是monkeys吃",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "与回顾上周旅行冲突，答语不是现在吃"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "答语未谈远近，前文还明说near"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "We ate不是monkeys吃"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "Yes和We ate sandwiches near the lake回答是否在那里吃午餐"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Good luck!"
+        ],
+        [
+          "B",
+          "See you!"
+        ],
+        [
+          "C",
+          "Excuse me."
+        ],
+        [
+          "D",
+          "Never mind."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：双方约定后回应道别；A：不是祝即将考试/比赛顺利的语境；C：并非请求注意或打断；D：没有道歉或遗憾需要宽慰",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "不是祝即将考试/比赛顺利的语境"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "双方约定后回应道别"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "并非请求注意或打断"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "没有道歉或遗憾需要宽慰"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "same_author_all_responses_reviewed": true,
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/school-material-views-v0.2.json",
+      "sha256": "ecb88d90405bde52c9372a6698f6e924d6a32924346f236255cd41735217f78c"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+      "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+    },
+    "source_view_group_id": "grade7-jinan2025-21cnjy24695341.dialogue",
+    "material_sha256": "0d6fe5d34dbc70b30a472dd343420fccc1be880cff35c6e105e2133c154d2bb7",
+    "start_offset": 10316,
+    "end_offset": 10999
+  },
+  "source_material_words_including_speaker_labels": 126,
+  "author_notes": "五空、每空独立四选，共20候选；完整12话轮不拆成五段无上下文句子。过去旅行＋当前照片＋约定三个时间视点明确；不把该模式当全体初一的统一教学进度。源候选c/v前缀异常保留在源层，原创使用规范A—D。",
+  "canonical_response_block_sha256": "cf7cdebc81e2fdc1724b68bef6a428a54422386ec9a9823a80d114c23b5d4e19",
+  "candidate_path": "FirstRelease/Timeboxed/grade7-zoo-photo-dialogue-v0.1.md",
+  "candidate_sha256": "bb829a38dc5c7eecdefb08b0ef7b5194450e06813599c0e0ff10a7178315daca",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic words;internal apostrophe/hyphen retained;speaker labels included;Chinese not measured in these counts",
+    "material_English_tokens": 92,
+    "response_prompt_English_tokens": 0,
+    "candidate_English_tokens_unique_shared_set": 0,
+    "candidate_English_tokens_per_question_total": 90,
+    "requirements_English_tokens": 0,
+    "shared_option_UI_repetition_not_independent_material": false
+  }
+}

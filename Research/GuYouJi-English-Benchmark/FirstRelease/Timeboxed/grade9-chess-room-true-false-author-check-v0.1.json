@@ -1,0 +1,140 @@
+{
+  "version": "0.1",
+  "id": "grade9-chess-room-true-false",
+  "grade": 9,
+  "family": "reading_tf",
+  "questions": 5,
+  "options_each": 2,
+  "anchor_group_ids": [
+    "grade9-chengdu2025-21cnjy23208601.trueFalse"
+  ],
+  "source_shape": {
+    "family": "reading_tf",
+    "responses": 5,
+    "options_each": 2,
+    "details": {
+      "response_policy": "correct_A_wrong_B"
+    },
+    "grade": 9
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Leo chose Room 3 because he had seen its number on an old poster.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第一段明确copied that number from an old poster。"
+    },
+    {
+      "number": 2,
+      "stem": "The empty room showed that the chess club meeting had been cancelled.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "只是Leo起初猜测；后文meeting already under way直接反证取消。"
+    },
+    {
+      "number": 3,
+      "stem": "The volunteer told Leo that the club was now meeting in Room 8.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第二段解释已搬至Room8，并带他过去。"
+    },
+    {
+      "number": 4,
+      "stem": "Leo missed the whole meeting and was unable to play chess.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第三段明确able to join a beginners’ game反证全部错过。"
+    },
+    {
+      "number": 5,
+      "stem": "Leo decided to use the new timetable on his next visit.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "末句planned to check timetable instead of old poster。"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "same_author_all_responses_reviewed": true,
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+      "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+    },
+    "source_view_group_id": "grade9-chengdu2025-21cnjy23208601.trueFalse",
+    "material_sha256": "edbdca300ff0a89ab95587091242b2aa281e580a03be3ef936946a215a1ba875",
+    "start_offset": 8343,
+    "end_offset": 9114
+  },
+  "source_material_words_including_speaker_labels": 136,
+  "author_notes": "完整一篇/五判断/仅A正确B错误，不自添Not Given。两条错误句均有正文明确反证，不把未提及直接判假；区别角色一度猜测和后来证实的事实。无需外查真实社区活动，均属虚构叙事。",
+  "canonical_response_block_sha256": "c10f0609a549adda5c1a507288281cfe35bf69de54362e7a2bad2057361d143c",
+  "candidate_path": "FirstRelease/Timeboxed/grade9-chess-room-true-false-v0.1.md",
+  "candidate_sha256": "d23801021e29036fc2eb11192940fd164e60b5394f1dea1c04064fe761ed3989",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic words;internal apostrophe/hyphen retained;speaker labels included;Chinese not measured in these counts",
+    "material_English_tokens": 139,
+    "response_prompt_English_tokens": 59,
+    "candidate_English_tokens_unique_shared_set": 0,
+    "candidate_English_tokens_per_question_total": 0,
+    "requirements_English_tokens": 2,
+    "shared_option_UI_repetition_not_independent_material": false
+  }
+}
