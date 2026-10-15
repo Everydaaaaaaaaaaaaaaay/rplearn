@@ -25990,6 +25990,126 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "content-overlap-nominations20261015ad-v0.1",
+      "source_acquisition_ids": [
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "xschu-bnu2026-paper-key20261014-record"
+      ],
+      "tool": "Tools/rank_material_overlap.py initial output without explicit inventory pointer;superseded by v0.2",
+      "tool_version": "0.1",
+      "parameters": [
+        "No downloads,renders,OCR,external model or production eval;existing306material views;English heuristic286eligible40755pairs;6candidate textual reviews;1named narrative family;no exact-copy or independent-family count claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/content-overlap-nominations20261015ad-v0.1.json",
+          "bytes": 135654,
+          "sha256": "a7eda1605c5c230b0a5e414ff47a1c31884fecd97a59af8f2943fb1562117dab",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "content-overlap-nominations20261015ad-v0.2",
+      "source_acquisition_ids": [
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "xschu-bnu2026-paper-key20261014-record"
+      ],
+      "tool": "Tools/rank_material_overlap.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "No downloads,renders,OCR,external model or production eval;existing306material views;English heuristic286eligible40755pairs;6candidate textual reviews;1named narrative family;no exact-copy or independent-family count claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/content-overlap-nominations20261015ad-v0.2.json",
+          "bytes": 135839,
+          "sha256": "b6e5663e34b7f0775f1be370d1b0c8a571509571fbb579f903f16fe6c124c8f6",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "material-family-author-review20261015ad-v0.1",
+      "source_acquisition_ids": [
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "xschu-bnu2026-paper-key20261014-record"
+      ],
+      "tool": "author reading of full selected normalized materials and Boya source prompts",
+      "tool_version": "0.1",
+      "parameters": [
+        "No downloads,renders,OCR,external model or production eval;existing306material views;English heuristic286eligible40755pairs;6candidate textual reviews;1named narrative family;no exact-copy or independent-family count claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/material-family-author-review20261015ad-v0.1.json",
+          "bytes": 9814,
+          "sha256": "50d19bf5a538bc16051cac0e38cc5b6c5c820f75c9f3ff98b1d30842151186b9",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "material-family-controls20261015ad-v0.1",
+      "source_acquisition_ids": [
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "xschu-bnu2026-paper-key20261014-record"
+      ],
+      "tool": "Tools/check_material_family_split.py and nomination controls",
+      "tool_version": "0.1",
+      "parameters": [
+        "No downloads,renders,OCR,external model or production eval;existing306material views;English heuristic286eligible40755pairs;6candidate textual reviews;1named narrative family;no exact-copy or independent-family count claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/material-family-controls20261015ad-v0.1.json",
+          "bytes": 1855,
+          "sha256": "703b98eccef11c23546d2266ffc2264459fd630f1986299676fada679f0ed124",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "material-family-valid-request20261015ad-v0.1",
+      "source_acquisition_ids": [
+        "grade7-hefei2025-21cnjy26607976",
+        "grade7-wuhan2025-21cnjy23303148",
+        "grade8-changjun2024-midterm-paper-key20261014",
+        "grade8-xiaoshan2025-21cnjy22251031",
+        "xschu-bnu2026-paper-key20261014-record"
+      ],
+      "tool": "Tools/check_material_family_split.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "No downloads,renders,OCR,external model or production eval;existing306material views;English heuristic286eligible40755pairs;6candidate textual reviews;1named narrative family;no exact-copy or independent-family count claim"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/material-family-valid-request20261015ad-v0.1.json",
+          "bytes": 404,
+          "sha256": "85a306cf1e9050ea42964ecb3b908bdff6437966fb973642d2766ee6bac1fa8b",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

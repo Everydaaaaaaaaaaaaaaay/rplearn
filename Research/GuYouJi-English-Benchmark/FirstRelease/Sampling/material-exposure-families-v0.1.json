@@ -1,0 +1,64 @@
+{
+  "version": "0.1",
+  "scope": "conservative shared-narrative exposure constraints;not exact-copy equivalence or complete independent-family inventory",
+  "nomination_report": {
+    "path": "build/english-benchmark-research-20261012/content-overlap-nominations20261015ad-v0.2.json",
+    "sha256": "b6e5663e34b7f0775f1be370d1b0c8a571509571fbb579f903f16fe6c124c8f6"
+  },
+  "author_review": {
+    "path": "build/english-benchmark-research-20261012/material-family-author-review20261015ad-v0.1.json",
+    "sha256": "50d19bf5a538bc16051cac0e38cc5b6c5c820f75c9f3ff98b1d30842151186b9"
+  },
+  "exposure_families": [
+    {
+      "id": "narrative.zhiyin.yu-boya-zhong-ziqi",
+      "kind": "shared_named_narrative_exposure",
+      "source_group_ids": [
+        "grade7-wuhan2025-21cnjy23303148.readingC",
+        "g8.changjun2024.readingAnswer"
+      ],
+      "grades_observed": [
+        7,
+        8
+      ],
+      "response_modes_observed": [
+        "reading_choice",
+        "open_reading_response"
+      ],
+      "same_translation_or_direct_source_reuse_proven": false,
+      "avoid_cross_partition_research_exposure": true,
+      "answers_or_rubrics_transferable": false
+    }
+  ],
+  "nonfamily_candidate_dispositions": [
+    {
+      "left": "grade7-hefei2025-21cnjy26607976.readingB",
+      "right": "grade7-hefei2025-21cnjy26607976.readingD",
+      "disposition": "topic_or_schema_overlap_not_same_named_narrative"
+    },
+    {
+      "left": "grade7-hefei2025-21cnjy26607976.readingB",
+      "right": "grade7-hefei2025-21cnjy26607976.readingE",
+      "disposition": "topic_or_schema_overlap_not_same_named_narrative"
+    },
+    {
+      "left": "grade7-hefei2025-21cnjy26607976.readingD",
+      "right": "grade7-hefei2025-21cnjy26607976.readingE",
+      "disposition": "topic_or_schema_overlap_not_same_named_narrative"
+    },
+    {
+      "left": "grade7-hefei2025-21cnjy26607976.clozeB",
+      "right": "grade7-hefei2025-21cnjy26607976.readingC",
+      "disposition": "topic_or_schema_overlap_not_same_named_narrative"
+    },
+    {
+      "left": "grade8-xiaoshan2025-21cnjy22251031.readingA",
+      "right": "g8.bnu2026.readingC",
+      "disposition": "incomplete_short_view_no_family_conclusion"
+    }
+  ],
+  "all_material_families_reviewed": false,
+  "independent_family_count_established": false,
+  "source_structure_records_unchanged": 306,
+  "independent_review_or_gold": false
+}
