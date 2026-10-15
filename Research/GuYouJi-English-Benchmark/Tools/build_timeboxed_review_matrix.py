@@ -30,7 +30,8 @@ def ref(path):
     return {'path': str(path.relative_to(BASE)), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
 
 
-def build():
+def build(additional_indexes=(), version='0.1'):
+    additional_indexes = [p.resolve() for p in additional_indexes]
     appearance = BASE / 'FirstRelease/Sampling/grade-task-appearance-v0.1.json'
     source = json.loads(appearance.read_text())
     source_map = {s: (c['grade'], c['family']) for c in source['cells'] for s in c['source_group_ids']}
@@ -40,6 +41,8 @@ def build():
                BASE / 'FirstRelease/Expansions/authored-candidate-index-v0.23.json',
                BASE / 'FirstRelease/open-language-supplement-candidates-v0.1.json']
     candidates = []
+    baseline_indexes = len(indexes)
+    indexes.extend(additional_indexes)
     for index in indexes:
         for row in json.loads(index.read_text())['candidates']:
             candidate = load_ref(row['candidate'])
@@ -77,8 +80,12 @@ def build():
                                'index': ref(index), 'source_group_ids': [s for s in anchors if s],
                                'source_form_support': support, 'in_previous_showcase': row['id'] in displayed,
                                'new_review_UI_verified': False})
-    if len(candidates) != 53 or sum(c['questions'] for c in candidates) != 338:
+    baseline_refs = {ref(p)['path'] for p in indexes[:baseline_indexes]}
+    baseline = [c for c in candidates if c['index']['path'] in baseline_refs]
+    if len(baseline) != 53 or sum(c['questions'] for c in baseline) != 338:
         raise ValueError('Existing author inventory count differs')
+    if len({c['id'] for c in candidates}) != len(candidates):
+        raise ValueError('Repeated author identity')
     cells = []
     for original in source['cells']:
         cell = {k: original[k] for k in ['grade', 'family', 'observation_state', 'source_group_ids', 'input_states']}
@@ -99,7 +106,7 @@ def build():
         cell['selected_representative_id'] = matched[0]['id'] if matched else None
         cells.append(cell)
     states = {s: sum(c['delivery_state'] == s for c in cells) for s in sorted({c['delivery_state'] for c in cells})}
-    return {'version': '0.1', 'scope': 'grades7_to12_timeboxed_quality_review_inventory',
+    result = {'version': version, 'scope': 'grades7_to12_timeboxed_quality_review_inventory',
             'source_appearance': ref(appearance), 'previous_showcase': ref(BASE / 'FirstRelease/showcase-selection-v0.7.json'),
             'existing_authored_groups': len(candidates), 'existing_authored_responses': sum(c['questions'] for c in candidates),
             'source_positive_cells': sum(c['observation_state'] == 'observed' for c in cells),
@@ -110,13 +117,21 @@ def build():
             'listening': {'included_in_written_matrix': False, 'current_complete_review_package_verified': False,
                           'delivery_rule': 'must_report_separately;no_text_only_task_claimed_as_complete_audio_task'},
             'independent_student_commercial_or_production_admission': False}
+    if additional_indexes:
+        result.update(baseline_authored_groups=53, baseline_authored_responses=338,
+                      new_timeboxed_authored_groups=len(candidates)-53,
+                      new_timeboxed_authored_responses=sum(c['questions'] for c in candidates)-338,
+                      additional_author_indexes=[ref(p) for p in additional_indexes])
+    return result
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--additional-index', type=Path, action='append', default=[])
+    parser.add_argument('--version', default='0.1')
     args = parser.parse_args()
-    result = build()
+    result = build(args.additional_index, args.version)
     payload = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
     if args.output.exists() and args.output.read_text() != payload:
         raise ValueError('Refuse changed frozen review inventory')

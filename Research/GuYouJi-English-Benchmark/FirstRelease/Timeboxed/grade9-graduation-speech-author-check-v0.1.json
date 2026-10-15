@@ -1,0 +1,90 @@
+{
+  "version": "0.1",
+  "id": "grade9-graduation-speech",
+  "grade": 9,
+  "family": "application_writing",
+  "questions": 1,
+  "candidate_path": "FirstRelease/Timeboxed/grade9-graduation-speech-v0.1.md",
+  "candidate_sha256": "ac9d80d0a0dcfb22647536cc92a4f4f8bd0886db59f6430d0b7f52a69680f7fc",
+  "source_group_ids": [
+    "grade9-boxing2025-21cnjy24857076.speech"
+  ],
+  "source_shape": {
+    "family": "application_writing",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "word_target": 80,
+      "target_relation": "about",
+      "given_opening_excluded": true,
+      "genre": "graduation_speech"
+    },
+    "grade": 9
+  },
+  "source_text": {
+    "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+    "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/writing-material-views-v0.1.json",
+    "sha256": "ed236b11ca4ead64f24e91173d42ba148af84e1e8e9d659c0a46d0b7507ed18a"
+  },
+  "source_primary_input_sha256": "0cda07ac7c9b038c2c973a01ccceb2684030f55b0126ec4aff53966b49f68957",
+  "source_independent_rubric_complete": false,
+  "source_maximum_points": 20,
+  "target_format": {
+    "genre": "graduation_speech",
+    "tasks": 1,
+    "body_words_about": 80,
+    "word_target_is_not_hard_limit": true,
+    "required_content_goals": [
+      "回顾三年具体成长",
+      "分别感谢老师、家长、同学",
+      "典礼语气和祝愿"
+    ],
+    "fixed_title": "",
+    "fixed_opening": "Good morning, everyone. I'm Lin, and I'm pleased to speak at our graduation ceremony.",
+    "fixed_closing": "",
+    "fixed_closing_in_body_count": false,
+    "fixed_text_exclusion_policy_authored_not_inherited": true
+  },
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "author_positive_body": "During these three years, I have learned more than school subjects. I can now ask for help and work with others. Our teachers patiently explained difficult ideas and encouraged us to try again. Our parents listened when we felt worried and supported our choices. My classmates shared their notes and helped me practise for presentations. Thank you all for making this journey meaningful. I hope everyone will keep learning, stay curious and meet the next challenge with confidence.",
+  "author_negative_body": "Our school is the best school in the world. It has a huge playground, many bright classrooms and a beautiful garden. Every morning, students arrive early and read their books carefully. The library is my favourite place because there are many interesting stories to read. Our classrooms are clean, and the food in the dining hall is delicious. Next year, I want to buy a new bicycle and join a sports club. I am sure I will be very happy.",
+  "author_positive_body_word_count": 78,
+  "author_negative_body_word_count": 80,
+  "author_positive_goal_support": [
+    {
+      "goal": "回顾三年具体成长",
+      "evidence": "ask for help/work with others，收获不限考试成绩。"
+    },
+    {
+      "goal": "分别感谢老师、家长、同学",
+      "evidence": "解释难点/鼓励；倾听/支持；笔记/展示练习，各有行为。"
+    },
+    {
+      "goal": "典礼语气和祝愿",
+      "evidence": "Thank you all及对everyone未来学习/挑战的祝愿与场合一致。"
+    }
+  ],
+  "negative_task_failure": "主要介绍校园设施和个人来年购物/社团计划，缺少三年收获、对三类人的感谢及面向大家的祝愿。",
+  "qualitative_scoring_guidance_only": true,
+  "teacher_scored_examples": false,
+  "actual_saved_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "source_selected_text_bundle_complete_for_form_review": true,
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "source_points_evidence": {
+    "text": "七、书面表达（共1题，计20分）",
+    "start_offset": 17634,
+    "end_offset": 17650,
+    "sha256": "d0b3022dc6f84c450a731bb0966f5874a38d61805f1190c223edeaa6993eac08"
+  }
+}

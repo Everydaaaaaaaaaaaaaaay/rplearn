@@ -26453,6 +26453,60 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "timeboxed-five-writing-grade-family-review20261016b-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "Tools/check_timeboxed_writing.py + Tools/build_quality_review.py + Tools/check_quality_review.py + actual_Codex_browser",
+      "tool_version": "0.1",
+      "parameters": [
+        "5new originalwriting groups5responses;baseline53/338 frozen;combined58/343;review34grade-familycells/194responses;25writingmechanicalcontrols;34completepayloadcontrols;actualbrowser34cells+20specificrecords;all6grades writing;one15blankcloze/onewhole2paragraph continuation;ordinary-source and simulated-only/unknown states separate;no new download/source groups/paper render/fulltree snapshot/model/production;2necessaryscreenshots"
+      ],
+      "pages": 7,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-writing-controls20261016b-v0.1.json",
+          "bytes": 4442,
+          "sha256": "bca1d0ad35031619194537e7f0ae9a438e76feffedebb1d26ec6c01d31034bbc",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-controls20261016b-v0.1.json",
+          "bytes": 3544,
+          "sha256": "216d6e7f61688562047a55ffc8f830832dcd7e7311554266a1dda94ecce68b18",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-browser20261016b-v0.1.json",
+          "bytes": 45488,
+          "sha256": "bbbb7402125dbdb9e78453a2a3b9239e2cc1a3005816bed85b3ff018851dfc90",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-writing20261016b-v0.1.png",
+          "bytes": 112686,
+          "sha256": "b5e5b54da7569c073a67a6a5fdc4f27d496d4ecc714c5b47b6891765f942dc6f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-bank20261016b-v0.1.png",
+          "bytes": 217138,
+          "sha256": "e3dab80a2d68947ac5a140e9a7ed738307dfc44c7d6f8cb5ed8765e3002d85f6",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-page20261016b-v0.1.html",
+          "bytes": 420298,
+          "sha256": "318f84e060e469d00ec6cecfa97dc92f0783a410ca525ad9393aaf5ff619c49c",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-build20261016b-v0.1.json",
+          "bytes": 418,
+          "sha256": "f491a1339cbef69c5e5b5baef3b9a34690c8e657d069c42db8f44671b5f55c2b",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

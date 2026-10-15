@@ -22,8 +22,8 @@
   ],
   "completion_unit": "one complete major task group per grade and observed task family;not one subquestion",
   "review_matrix": {
-    "path": "FirstRelease/timeboxed-review-matrix-v0.1.json",
-    "sha256": "1ba2cbf0aa64151a3422fce2dd30f647344c6389af9a28ae612564b82090ab7f"
+    "path": "FirstRelease/timeboxed-review-matrix-v0.2.json",
+    "sha256": "2d891bca6c35d5d8e45503eeb7681026e9929e81cd228f31467a0aaa19d7d488"
   },
   "current_standard": {
     "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
@@ -43,9 +43,31 @@
   "automatic_wakeup_interval_minutes": 30,
   "finish_action": "deliver consolidated report and review page,delete automation,wait for user quality review",
   "next_actions": [
-    "bind 40 missing grade-family cells to complete already reviewed source configurations",
-    "review grade8 simulated grammar candidate against ordinary-source form rather than silently upgrading it",
-    "create missing writing/short-answer/dialogue/sentence and matching representatives",
-    "build quality-review matrix page and preserve full student/author boundaries"
-  ]
+    "Use current matrix missing35 cells: prioritize complete dialogue/sentence/open-response/profile representatives using existing source evidence",
+    "Create ordinary-source grade8 passage-form representative or keep simulated-only cell explicitly unfulfilled",
+    "Extend full-Markdown renderer only with complete response/option/media contracts for each new task family",
+    "Rebuild the review page and verify affected cells; preserve existing payloads and source counts",
+    "Begin closeout by the saved cutoff even if some cells remain incomplete"
+  ],
+  "new_author_index": {
+    "path": "FirstRelease/Timeboxed/authored-review-index-v0.1.json",
+    "sha256": "1d986b18a374ff625dfca4769a5f183199b8bf336db410d9a7a57e8009448dee"
+  },
+  "review_page_url": "http://127.0.0.1:8766/build/english-benchmark-quality-review/index.html",
+  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.2.json",
+  "current_progress": {
+    "baseline_authors": 53,
+    "new_authors": 5,
+    "combined_authored_groups": 58,
+    "combined_response_positions": 343,
+    "preview_grade_family_cells": 34,
+    "preview_response_positions": 194,
+    "source_positive_cells": 70,
+    "missing_original_cells": 35,
+    "simulated_anchor_only_cells_pending": 1,
+    "source_unknown_cells": 74,
+    "all_current_preview_cells_browser_checked": 34,
+    "individual_browser_behavior_records": 20,
+    "final_delivery_complete": false
+  }
 }

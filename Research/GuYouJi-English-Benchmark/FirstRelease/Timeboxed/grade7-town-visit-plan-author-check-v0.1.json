@@ -1,0 +1,83 @@
+{
+  "version": "0.1",
+  "id": "grade7-town-visit-plan",
+  "grade": 7,
+  "family": "application_writing",
+  "questions": 1,
+  "candidate_path": "FirstRelease/Timeboxed/grade7-town-visit-plan-v0.1.md",
+  "candidate_sha256": "d080294d51eb709e37a3344e427f90202c932f0b27700046e93a995f9583a195",
+  "source_group_ids": [
+    "grade7-suzhou2025-21cnjy23303742.writing"
+  ],
+  "source_shape": {
+    "family": "application_writing",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "word_target": 90,
+      "target_relation": "about",
+      "genre": "tour_plan",
+      "points": 25
+    },
+    "grade": 7
+  },
+  "source_text": {
+    "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+    "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/writing-material-views-v0.1.json",
+    "sha256": "ed236b11ca4ead64f24e91173d42ba148af84e1e8e9d659c0a46d0b7507ed18a"
+  },
+  "source_primary_input_sha256": "53cc39249062300eafcf1661116a05c9521b047ab1e2ece22d740f44d2fc0775",
+  "source_independent_rubric_complete": false,
+  "source_maximum_points": 25,
+  "target_format": {
+    "genre": "tour_plan",
+    "tasks": 1,
+    "body_words_about": 90,
+    "word_target_is_not_hard_limit": true,
+    "required_content_goals": [
+      "2—3处具体地点及位置",
+      "特色/活动/理由与地点对应",
+      "形成可执行的游览方案"
+    ],
+    "fixed_title": "A Day in Our Town",
+    "fixed_opening": "I'm glad you are coming to visit our town. Here is my plan for your day.",
+    "fixed_closing": "I hope you will enjoy your visit.",
+    "fixed_closing_in_body_count": true,
+    "fixed_text_exclusion_policy_authored_not_inherited": true
+  },
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "author_positive_body": "First, you can visit West Park beside the river. There are many trees and a small lake. We can walk along the water and take photos. After lunch, let's go to the old toy museum opposite the station. It is small, but you can see how children played in the past. You can also try making a wooden toy there. These two places are close, so we can walk between them. Please bring comfortable shoes and some water. I hope you will enjoy your visit.",
+  "author_negative_body": "Our town is a wonderful place to live. I usually get up at seven and have breakfast with my family. Then I go to school by bus. My favourite subject is English because our teacher is very kind. At weekends, I often play basketball with my friends. There are many shops and restaurants here. People in our town are friendly. The weather is usually nice in summer. You can buy lots of things when you come. I hope you will enjoy your visit.",
+  "author_positive_body_word_count": 85,
+  "author_negative_body_word_count": 83,
+  "author_positive_goal_support": [
+    {
+      "goal": "2—3处具体地点及位置",
+      "evidence": "West Park beside the river；toy museum opposite the station，恰两处。"
+    },
+    {
+      "goal": "特色/活动/理由与地点对应",
+      "evidence": "公园树木/湖/沿水步行；博物馆旧玩具/制作木玩具，未将两地信息串用。"
+    },
+    {
+      "goal": "形成可执行的游览方案",
+      "evidence": "先公园、午餐后博物馆、两地可步行及携带物品，信息自洽。"
+    }
+  ],
+  "negative_task_failure": "主要写自己的上学和周末生活，没有2—3处具体游览地点及位置；泛称shops/restaurants不能替代任务要求。",
+  "qualitative_scoring_guidance_only": true,
+  "teacher_scored_examples": false,
+  "actual_saved_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "source_selected_text_bundle_complete_for_form_review": true,
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true
+}

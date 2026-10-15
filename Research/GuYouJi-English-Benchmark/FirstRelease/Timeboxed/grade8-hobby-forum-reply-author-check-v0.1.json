@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "id": "grade8-hobby-forum-reply",
+  "grade": 8,
+  "family": "application_writing",
+  "questions": 1,
+  "candidate_path": "FirstRelease/Timeboxed/grade8-hobby-forum-reply-v0.1.md",
+  "candidate_sha256": "88ba8493d7cb2dc5f7d44940b12b29aba86b267868d76ba5fe4a6a39ed961aa9",
+  "source_group_ids": [
+    "grade8-hubei2026-21cnjy26105408.forumReply"
+  ],
+  "source_shape": {
+    "family": "application_writing",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "word_target": 70,
+      "target_relation": "about",
+      "genre": "hobby_forum_reply",
+      "source_question_number": 49,
+      "question_id_collision": true,
+      "necessary_input_complete": true
+    },
+    "grade": 8
+  },
+  "source_text": {
+    "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+    "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/writing-material-views-v0.1.json",
+    "sha256": "ed236b11ca4ead64f24e91173d42ba148af84e1e8e9d659c0a46d0b7507ed18a"
+  },
+  "source_primary_input_sha256": "3682dde3e9e321f2573e89dd1eacbe2b78adb4871a1bc95ddeb5553dc7ff8b13",
+  "source_independent_rubric_complete": false,
+  "source_maximum_points": null,
+  "target_format": {
+    "genre": "hobby_forum_reply",
+    "tasks": 1,
+    "body_words_about": 70,
+    "word_target_is_not_hard_limit": true,
+    "required_content_goals": [
+      "明确课余活动",
+      "说明开始时间和方式",
+      "解释喜欢的原因"
+    ],
+    "fixed_title": "",
+    "fixed_opening": "",
+    "fixed_closing": "",
+    "fixed_closing_in_body_count": false,
+    "fixed_text_exclusion_policy_authored_not_inherited": true
+  },
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "author_positive_body": "Hi Riley! My favourite activity is drawing small comics. I started last autumn when my cousin gave me a notebook. At first, I copied simple faces from her drawings. Now I make short stories about everyday surprises. Drawing helps me notice little things around me, and sharing a funny page can make my friends smile. You don't need expensive tools, so you could try it with a pencil and paper.",
+  "author_negative_body": "Hi Riley! Our school has a large playground and a bright library. We have six lessons on most school days. My favourite subject is history, and I always finish my homework before dinner. My best friend sits beside me in class. We often eat lunch together and help each other with difficult questions. I think you would enjoy studying at our school because the teachers are helpful and the students are friendly.",
+  "author_positive_body_word_count": 70,
+  "author_negative_body_word_count": 72,
+  "author_positive_goal_support": [
+    {
+      "goal": "明确课余活动",
+      "evidence": "drawing small comics，非仅报学校学科。"
+    },
+    {
+      "goal": "说明开始时间和方式",
+      "evidence": "last autumn；cousin gave notebook；先从简单脸部练起。"
+    },
+    {
+      "goal": "解释喜欢的原因",
+      "evidence": "留意生活小事、分享使朋友开心；建议铅笔纸属合理补充，非必答新要点。"
+    }
+  ],
+  "negative_task_failure": "篇幅和语法不能弥补任务错位：写学校生活，没有回答课余活动、开始时间/方式和喜欢原因。",
+  "qualitative_scoring_guidance_only": true,
+  "teacher_scored_examples": false,
+  "actual_saved_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "source_selected_text_bundle_complete_for_form_review": true,
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true
+}

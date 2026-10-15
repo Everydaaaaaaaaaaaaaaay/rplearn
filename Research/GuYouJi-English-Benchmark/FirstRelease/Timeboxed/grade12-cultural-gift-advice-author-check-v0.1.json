@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "id": "grade12-cultural-gift-advice",
+  "grade": 12,
+  "family": "application_writing",
+  "questions": 1,
+  "candidate_path": "FirstRelease/Timeboxed/grade12-cultural-gift-advice-v0.1.md",
+  "candidate_sha256": "91955a8479dc3aefa8dc88d2aa7e081b5274ad13cc25635cabf6fa5b64ea4181",
+  "source_group_ids": [
+    "grade12-linyi2025-21cnjy24838709.mail"
+  ],
+  "source_shape": {
+    "family": "application_writing",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "word_target": 80,
+      "target_relation": "about",
+      "genre": "cultural_gift_advice_email",
+      "given_opening_closing_excluded": true,
+      "points": 15
+    },
+    "grade": 12
+  },
+  "source_text": {
+    "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+    "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/writing-material-views-v0.1.json",
+    "sha256": "ed236b11ca4ead64f24e91173d42ba148af84e1e8e9d659c0a46d0b7507ed18a"
+  },
+  "source_primary_input_sha256": "1728195454a3a5a23c2fad4fb789508ebdb27057bad39f167720a3e6cbe424f7",
+  "source_independent_rubric_complete": false,
+  "source_maximum_points": 15,
+  "target_format": {
+    "genre": "cultural_gift_advice_email",
+    "tasks": 1,
+    "body_words_about": 80,
+    "word_target_is_not_hard_limit": true,
+    "required_content_goals": [
+      "具体且有文化特色的礼物",
+      "礼物与收礼人关联的理由",
+      "对人/旅程的祝愿"
+    ],
+    "fixed_title": "",
+    "fixed_opening": "Dear Alex,",
+    "fixed_closing": "Best wishes,\nLin",
+    "fixed_closing_in_body_count": false,
+    "fixed_text_exclusion_policy_authored_not_inherited": true
+  },
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "author_positive_body": "I would recommend a paper-cut picture of flowers for your mother. Paper-cutting is a traditional Chinese craft, and a flower design would connect it with her interest in gardening. Choose one mounted on a simple card, so it will be easy to carry home. You could add a short note explaining why you chose the pattern. That personal message may matter as much as the gift itself. I hope she enjoys it and that you have a pleasant journey home.",
+  "author_negative_body": "Buying gifts is an important part of travelling. There are many shops near the station, and they often stay open until late in the evening. You should compare prices carefully and check how much space is left in your suitcase. Remember to keep your passport and ticket somewhere safe. If the weather is cold, wear a warm coat on the way to the airport. I think travelling abroad is a useful experience because it helps us understand different ways of life.",
+  "author_positive_body_word_count": 80,
+  "author_negative_body_word_count": 81,
+  "author_positive_goal_support": [
+    {
+      "goal": "具体且有文化特色的礼物",
+      "evidence": "paper-cut picture of flowers；纸艺特色不依赖伪历史年代或功效。"
+    },
+    {
+      "goal": "礼物与收礼人关联的理由",
+      "evidence": "花卉图案对应母亲园艺兴趣；卡片便携属合理附加。"
+    },
+    {
+      "goal": "对人/旅程的祝愿",
+      "evidence": "hope she enjoys it及pleasant journey，未只泛谈旅行。"
+    }
+  ],
+  "negative_task_failure": "购物和旅行建议代替具体文化礼物推荐，没有解释适合母亲的原因，也缺针对收礼人与返程的祝愿。",
+  "qualitative_scoring_guidance_only": true,
+  "teacher_scored_examples": false,
+  "actual_saved_revision_rounds": 0,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "source_selected_text_bundle_complete_for_form_review": true,
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true
+}
