@@ -1,0 +1,105 @@
+{
+  "version": "0.1",
+  "id": "grade11-bakery-order-continuation",
+  "grade": 11,
+  "family": "read_then_continue",
+  "questions": 1,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade11-heze2026-21cnjy24886046.continuation"
+  ],
+  "source_shape": {
+    "family": "read_then_continue",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 1,
+      "paragraphs": 2,
+      "given_paragraph_openings": 2,
+      "word_target": 150,
+      "target_relation": "about",
+      "points": 25
+    },
+    "grade": 11
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/writing-material-views-v0.2.json",
+      "sha256": "39a16c286725b170a89e08f16ebef202b046ff867a8b913479aa3af0bde31409"
+    },
+    "group_id": "grade11-heze2026-21cnjy24886046.continuation",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+      "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+    },
+    "start_offset": 20595,
+    "end_offset": 22674,
+    "material_sha256": "a5056b5dab3603e6768c6dfaa4b86d1a92069b40dad46c9aa5ad719c5b8f74f3"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "使用两个给定段首，完成同一篇两段续文",
+      "options": [],
+      "parts": [
+        {
+          "label": "第一段续写正文",
+          "opening": "I took a breath and told Mrs Chen what I had done."
+        },
+        {
+          "label": "第二段续写正文",
+          "opening": "When the family returned later that afternoon, I was still expecting angry words."
+        }
+      ],
+      "referenceAnswers": [
+        "I took a breath and told Mrs Chen what I had done. She listened without interrupting, then opened the order book. “Let's call them before they cut it,” she said. I explained the mistake to Mr Lewis while she checked the other order. Fortunately, he was still nearby. He brought the unopened box back, and I checked both labels with Mrs Chen before handing him the lemon cake. My hands were shaking, but the two orders were finally correct. When the family returned later that afternoon, I was still expecting angry words. Instead, Mr Lewis smiled and showed me a photograph of the celebration. His mother had enjoyed the lemon cake, and he wanted to thank us for sorting out the problem so quickly. I started to apologise again, but he pointed to the order book. “You used it when it mattered,” he said. After they left, I checked the next label slowly, reading the name aloud."
+      ],
+      "rationale": "同一任务两段合约150词；段首已给，不需要在作答框再次输入。完整参考、冲突处理与修订反例见下方。"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "一完整续写任务、两给定段首、两段合约150词，不拆两题或两段各150。源未明确段首计词是否排除，本文参考同时报告含段首与新增正文数量，不借其他卷口径；约数不是私造精确区间。源明示25分不等已得分析rubric。\n\n作者关注：保留第一人称/过去叙事、两盒蛋糕和订单本的线索；第一段主动告知并合理解决调换，第二段衔接family returned与叙述者预期；不能让所有错误凭空消失或由客户主动不明就里地解决。结尾行动体现改变即可，不必喊口号。\n\n### 未评分参考续文\n\n本参考实际计量：新增正文132词，给定段首25词，合计157词。源段首是否排除未明示，此处同时披露，不据此伪造精确合格区间。\n\nI took a breath and told Mrs Chen what I had done. She listened without interrupting, then opened the order book. “Let's call them before they cut it,” she said. I explained the mistake to Mr Lewis while she checked the other order. Fortunately, he was still nearby. He brought the unopened box back, and I checked both labels with Mrs Chen before handing him the lemon cake. My hands were shaking, but the two orders were finally correct.\n\nWhen the family returned later that afternoon, I was still expecting angry words. Instead, Mr Lewis smiled and showed me a photograph of the celebration. His mother had enjoyed the lemon cake, and he wanted to thank us for sorting out the problem so quickly. I started to apologise again, but he pointed to the order book. “You used it when it mattered,” he said. After they left, I checked the next label slowly, reading the name aloud.\n\n### 待修订反例\n\n如果第一段写“我把剩下蛋糕卖掉，隐瞒错误”，第二段只写家属无缘无故赞美我，则没有解决两订单的冲突，也缺少与段首预期的因果桥。问题在叙事一致性，不因是否使用某个高级词来决定。\n",
+  "continuation_reference_paragraphs": [
+    {
+      "opening": "I took a breath and told Mrs Chen what I had done.",
+      "new_body": "She listened without interrupting, then opened the order book. “Let's call them before they cut it,” she said. I explained the mistake to Mr Lewis while she checked the other order. Fortunately, he was still nearby. He brought the unopened box back, and I checked both labels with Mrs Chen before handing him the lemon cake. My hands were shaking, but the two orders were finally correct."
+    },
+    {
+      "opening": "When the family returned later that afternoon, I was still expecting angry words.",
+      "new_body": "Instead, Mr Lewis smiled and showed me a photograph of the celebration. His mother had enjoyed the lemon cake, and he wanted to thank us for sorting out the problem so quickly. I started to apologise again, but he pointed to the order book. “You used it when it mattered,” he said. After they left, I checked the next label slowly, reading the name aloud."
+    }
+  ],
+  "source_given_opening_count_policy": "not_explicit",
+  "word_target": 150,
+  "target_relation": "about",
+  "source_points": 25,
+  "whole_task_responses": 1,
+  "canonical_response_block_sha256": "5e63ec87fa771221b004c76a85abd2bd375951f546efeae39114c2232eb7558e",
+  "candidate_path": "FirstRelease/Timeboxed/grade11-bakery-order-continuation-v0.1.md",
+  "candidate_sha256": "b408de31cf39956888e9bb1332202fb34c5358830c2a19ac0d896ef73e5653af",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 373,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  },
+  "reference_word_counts": {
+    "method": "whitespace-separated tokens;given openings reported separately;no invented tolerance band",
+    "given_openings": 25,
+    "new_body": 132,
+    "including_openings": 157
+  }
+}

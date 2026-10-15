@@ -1,0 +1,222 @@
+{
+  "version": "0.1",
+  "id": "grade8-learner-tools-profile-matching",
+  "grade": 8,
+  "family": "profile_matching",
+  "questions": 3,
+  "options_each": null,
+  "anchor_group_ids": [
+    "g8.2025fengtai.matchingA"
+  ],
+  "source_shape": {
+    "grade": 8,
+    "family": "profile_matching",
+    "responses": 3,
+    "options_each": null,
+    "details": {
+      "cards": 4,
+      "input": "text_cards"
+    }
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/baseline-profile-material-views-v0.1.json",
+      "sha256": "11f9403877e603345670be25564343015b589531462b1de5aba7acb6cfb7a205"
+    },
+    "group_id": "g8.2025fengtai.matchingA",
+    "transcription": {
+      "path": "build/english-benchmark-research-20261012/baseline-profile-source-text20261015p-v0.1.json",
+      "sha256": "fd813eade5066b7de7f976500e060b9e6f4f953ea0fa613c54115b3d64b16044"
+    },
+    "record_index": 2,
+    "parent_document": {
+      "path": "build/english-benchmark-research-20261012/raw/grade8-fengtai2025upper-candidate20261014.pdf",
+      "sha256": "044a92582dd78d7c45682d22a993ccaed22706ea3034b3d7a8e8d61c4e6a892f"
+    },
+    "record_sha256": "021ad0fe1d57a9216e76887697c4c5a34c63fa660567b63c9b7d3922dc75a896"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Ada often misses words in recorded conversations. She wants to hear a short part several times and read what was said after trying to understand it.",
+      "options": [
+        [
+          "A",
+          "StoryTrack offers short stories in several levels. You can read one page at a time and tap an unfamiliar word for a simple meaning. There are questions after each story, but this tool does not provide spoken conversations or correct your writing."
+        ],
+        [
+          "B",
+          "SpeakPair gives you everyday situations to talk about. You record a short answer, listen to it and try again. Its main aim is to get you speaking. It is not a spelling checker, and the activities are not a collection of storybooks."
+        ],
+        [
+          "C",
+          "ListenReplay contains short recorded dialogues. You can slow a dialogue down, replay one part and then check the written script. It is useful when you want to hear where one word ends and the next begins, rather than practise writing a long text."
+        ],
+        [
+          "D",
+          "WriteFix helps you look again at your own written sentences. It marks possible spelling mistakes and explains them with examples. You decide whether to make each change. It does not offer audio stories or let you practise a conversation with a partner."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：需要录音分段重放、慢速和对照脚本，C全满足；并非主要阅读或写作工具。；A：本候选的主要功能不能同时满足该人物的具体需求：分级阅读；B：本候选的主要功能不能同时满足该人物的具体需求：口语录制；D：本候选的主要功能不能同时满足该人物的具体需求：写作拼写",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：分级阅读"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：口语录制"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "需要录音分段重放、慢速和对照脚本，C全满足；并非主要阅读或写作工具。"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：写作拼写"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "Leo enjoys reading stories, but a few unfamiliar words often stop him. He wants short reading material with simple explanations of new words.",
+      "options": [
+        [
+          "A",
+          "StoryTrack offers short stories in several levels. You can read one page at a time and tap an unfamiliar word for a simple meaning. There are questions after each story, but this tool does not provide spoken conversations or correct your writing."
+        ],
+        [
+          "B",
+          "SpeakPair gives you everyday situations to talk about. You record a short answer, listen to it and try again. Its main aim is to get you speaking. It is not a spelling checker, and the activities are not a collection of storybooks."
+        ],
+        [
+          "C",
+          "ListenReplay contains short recorded dialogues. You can slow a dialogue down, replay one part and then check the written script. It is useful when you want to hear where one word ends and the next begins, rather than practise writing a long text."
+        ],
+        [
+          "D",
+          "WriteFix helps you look again at your own written sentences. It marks possible spelling mistakes and explains them with examples. You decide whether to make each change. It does not offer audio stories or let you practise a conversation with a partner."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：需要分级短故事＋词义解释，A明确提供；没有听力或写作修订需求。；B：本候选的主要功能不能同时满足该人物的具体需求：口语录制；C：本候选的主要功能不能同时满足该人物的具体需求：听力回放；D：本候选的主要功能不能同时满足该人物的具体需求：写作拼写",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "需要分级短故事＋词义解释，A明确提供；没有听力或写作修订需求。"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：口语录制"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：听力回放"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：写作拼写"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "stem": "Mina writes short English messages. Her ideas are clear, but she often spells words incorrectly and wants to understand how to correct them.",
+      "options": [
+        [
+          "A",
+          "StoryTrack offers short stories in several levels. You can read one page at a time and tap an unfamiliar word for a simple meaning. There are questions after each story, but this tool does not provide spoken conversations or correct your writing."
+        ],
+        [
+          "B",
+          "SpeakPair gives you everyday situations to talk about. You record a short answer, listen to it and try again. Its main aim is to get you speaking. It is not a spelling checker, and the activities are not a collection of storybooks."
+        ],
+        [
+          "C",
+          "ListenReplay contains short recorded dialogues. You can slow a dialogue down, replay one part and then check the written script. It is useful when you want to hear where one word ends and the next begins, rather than practise writing a long text."
+        ],
+        [
+          "D",
+          "WriteFix helps you look again at your own written sentences. It marks possible spelling mistakes and explains them with examples. You decide whether to make each change. It does not offer audio stories or let you practise a conversation with a partner."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：需要检查自己的句子拼写并懂修改，D提供解释，不能只匹配speaking关键词。；A：本候选的主要功能不能同时满足该人物的具体需求：分级阅读；B：本候选的主要功能不能同时满足该人物的具体需求：口语录制；C：本候选的主要功能不能同时满足该人物的具体需求：听力回放",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：分级阅读"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：口语录制"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "本候选的主要功能不能同时满足该人物的具体需求：听力回放"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "需要检查自己的句子拼写并懂修改，D提供解释，不能只匹配speaking关键词。"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "三人物/四文字卡/一多余项完整保留；源未明复用次数，不额外强制一次。虚构工具只是阅读材料，没有真实产品改进承诺；不继承原应用数百万书籍等未独立核事实。人物头像属装饰，无需靠图识别答案。",
+  "shared_candidates": [
+    [
+      "A",
+      "StoryTrack offers short stories in several levels. You can read one page at a time and tap an unfamiliar word for a simple meaning. There are questions after each story, but this tool does not provide spoken conversations or correct your writing."
+    ],
+    [
+      "B",
+      "SpeakPair gives you everyday situations to talk about. You record a short answer, listen to it and try again. Its main aim is to get you speaking. It is not a spelling checker, and the activities are not a collection of storybooks."
+    ],
+    [
+      "C",
+      "ListenReplay contains short recorded dialogues. You can slow a dialogue down, replay one part and then check the written script. It is useful when you want to hear where one word ends and the next begins, rather than practise writing a long text."
+    ],
+    [
+      "D",
+      "WriteFix helps you look again at your own written sentences. It marks possible spelling mistakes and explains them with examples. You decide whether to make each change. It does not offer audio stories or let you practise a conversation with a partner."
+    ]
+  ],
+  "reuse_rule": "not_explicit",
+  "left_items": 3,
+  "explicit_spare": 1,
+  "canonical_response_block_sha256": "5461b4dde60fba724d538ee0bd195270f69496da18d9a547e1cba4b26c8941bf",
+  "candidate_path": "FirstRelease/Timeboxed/grade8-learner-tools-profile-matching-v0.1.md",
+  "candidate_sha256": "478d7d6fdc4404c0be6e7bd787031bfcc6fb0d28edd67bce609eda6db3ed7ae6",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 9,
+    "response_prompt_English_tokens": 72,
+    "shared_set_English_tokens_once": 169,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

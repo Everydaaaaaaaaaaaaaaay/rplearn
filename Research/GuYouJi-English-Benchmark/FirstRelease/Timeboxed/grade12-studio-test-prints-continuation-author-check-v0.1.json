@@ -1,0 +1,105 @@
+{
+  "version": "0.1",
+  "id": "grade12-studio-test-prints-continuation",
+  "grade": 12,
+  "family": "read_then_continue",
+  "questions": 1,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade12-linyi2025-21cnjy24838709.continuation"
+  ],
+  "source_shape": {
+    "family": "read_then_continue",
+    "responses": 1,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 1,
+      "paragraphs": 2,
+      "given_paragraph_openings": 2,
+      "word_target": 150,
+      "target_relation": "about",
+      "points": 25
+    },
+    "grade": 12
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/writing-material-views-v0.2.json",
+      "sha256": "39a16c286725b170a89e08f16ebef202b046ff867a8b913479aa3af0bde31409"
+    },
+    "group_id": "grade12-linyi2025-21cnjy24838709.continuation",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade12-linyi2025-21cnjy24838709-resource-v0.2.txt",
+      "sha256": "0d891ed0859287f5a60d5891ff3eef5202af5170015acb33ea8eff3febfa7dda"
+    },
+    "start_offset": 20947,
+    "end_offset": 22810,
+    "material_sha256": "37956eb2fe7c9d2553a198c33e545ac5a1ee20317c5485bf55625fa4a4c22dd7"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "使用两个给定段首，完成同一篇两段续文",
+      "options": [],
+      "parts": [
+        {
+          "label": "第一段续写正文",
+          "opening": "I lifted the cloth and found a row of carefully labelled envelopes."
+        },
+        {
+          "label": "第二段续写正文",
+          "opening": "By the time my brother returned, the empty wall no longer looked abandoned."
+        }
+      ],
+      "referenceAnswers": [
+        "I lifted the cloth and found a row of carefully labelled envelopes. Inside were notes from customers, each attached to a test print. One woman had chosen the picture of a hand because it showed her father's familiar way of holding his hat. Another liked a blurred smile that the camera had almost missed. I read the names, then matched the notes to the photographs on the table. Instead of packing them immediately, I placed a few on the wall, with their stories underneath. By the time my brother returned, the empty wall no longer looked abandoned. He stopped in the doorway and read the first note. Neither of us spoke for a moment. Then he put down the empty box and helped me photograph the small display. We would still clear the room, but we could take this record to our father and ask him about the other pictures. I packed the envelopes carefully. The studio was closing; the conversation did not have to end."
+      ],
+      "rationale": "两段共同构成一个任务；续写内容衔接段首及原材料线索。参考分段、检查点与修订反例见下方。"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整材料/两段首/同一150左右续写任务；不把两段各当150词或两个独立作文。源未明示段首排除计词，新稿给出两种实际计量以供核读，不捏造容许区间。源25分仅属明示总分，不冒充专家评分。\n\n作者关注：第一人称过去时；照片/试印/父亲纸条/顾客文字必须衔接，第一段把envelopes与test prints建立合理关系；第二段返回时墙的改变必须在第一段有行动铺垫；仍需收拾旧房间，不能无原因取消搬迁或让父亲突然去世。可采用其他成立内容和结尾。\n\n### 未评分参考续文\n\n本参考实际计量：新增正文141词，给定段首25词，合计166词。源段首是否排除未明示，此处同时披露，不据此伪造精确合格区间。\n\nI lifted the cloth and found a row of carefully labelled envelopes. Inside were notes from customers, each attached to a test print. One woman had chosen the picture of a hand because it showed her father's familiar way of holding his hat. Another liked a blurred smile that the camera had almost missed. I read the names, then matched the notes to the photographs on the table. Instead of packing them immediately, I placed a few on the wall, with their stories underneath.\n\nBy the time my brother returned, the empty wall no longer looked abandoned. He stopped in the doorway and read the first note. Neither of us spoke for a moment. Then he put down the empty box and helped me photograph the small display. We would still clear the room, but we could take this record to our father and ask him about the other pictures. I packed the envelopes carefully. The studio was closing; the conversation did not have to end.\n\n### 待修订反例\n\n若信封里突然有大量金钱，叙述者买下整栋楼、父亲当场恢复青春，则缺正文因果依据，且回避了试印与顾客文字的核心线索。不能靠夸张结局代替线索闭合。\n",
+  "continuation_reference_paragraphs": [
+    {
+      "opening": "I lifted the cloth and found a row of carefully labelled envelopes.",
+      "new_body": "Inside were notes from customers, each attached to a test print. One woman had chosen the picture of a hand because it showed her father's familiar way of holding his hat. Another liked a blurred smile that the camera had almost missed. I read the names, then matched the notes to the photographs on the table. Instead of packing them immediately, I placed a few on the wall, with their stories underneath."
+    },
+    {
+      "opening": "By the time my brother returned, the empty wall no longer looked abandoned.",
+      "new_body": "He stopped in the doorway and read the first note. Neither of us spoke for a moment. Then he put down the empty box and helped me photograph the small display. We would still clear the room, but we could take this record to our father and ask him about the other pictures. I packed the envelopes carefully. The studio was closing; the conversation did not have to end."
+    }
+  ],
+  "source_given_opening_count_policy": "not_explicit",
+  "word_target": 150,
+  "target_relation": "about",
+  "source_points": 25,
+  "whole_task_responses": 1,
+  "canonical_response_block_sha256": "e9f6583aecf865b44287b6791143ca83111aada84ccd73ef668a139326a42b2c",
+  "candidate_path": "FirstRelease/Timeboxed/grade12-studio-test-prints-continuation-v0.1.md",
+  "candidate_sha256": "90197be6eba9a3b58e410222b215a6441d1964b3c268d4236ac219d1fd413e95",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 384,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  },
+  "reference_word_counts": {
+    "method": "whitespace-separated tokens;given openings reported separately;no invented tolerance band",
+    "given_openings": 25,
+    "new_body": 141,
+    "including_openings": 166
+  }
+}
