@@ -1,0 +1,199 @@
+{
+  "version": "0.1",
+  "id": "grade8-rainy-fair-word-bank",
+  "grade": 8,
+  "family": "shared_bank",
+  "questions": 10,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade8-hubei2026-21cnjy26105408.bank"
+  ],
+  "source_shape": {
+    "family": "shared_bank",
+    "responses": 10,
+    "options_each": null,
+    "details": {
+      "entries": 10,
+      "form_policy": "change",
+      "reuse_rule": "once",
+      "response_policy": "all_oneword",
+      "necessary_input_complete": true
+    },
+    "grade": 8
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/nonreading-material-views-v0.1.json",
+      "sha256": "c03331b145fcc77c30cee8392f83cacdc4e72ffbf3e5acd4586d604732bd5204"
+    },
+    "group_id": "grade8-hubei2026-21cnjy26105408.bank",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+      "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+    },
+    "start_offset": 9826,
+    "end_offset": 11075,
+    "material_sha256": "0de2a9330b71be41e71b174a98fcc0010ece4b824fc25ab164ac89b376c3a52b"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [],
+      "knownForms": [
+        "earlier"
+      ],
+      "rationale": "than usual比较级earlier",
+      "maxWords": 1,
+      "bank_entry": "early"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "knownForms": [
+        "their"
+      ],
+      "rationale": "修饰stall需their",
+      "maxWords": 1,
+      "bank_entry": "they"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "knownForms": [
+        "began"
+      ],
+      "rationale": "叙事过去时began",
+      "maxWords": 1,
+      "bank_entry": "begin"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "knownForms": [
+        "carefully"
+      ],
+      "rationale": "修饰opened副词carefully",
+      "maxWords": 1,
+      "bank_entry": "careful"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [],
+      "knownForms": [
+        "found"
+      ],
+      "rationale": "过去叙事found",
+      "maxWords": 1,
+      "bank_entry": "find"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [],
+      "knownForms": [
+        "twice"
+      ],
+      "rationale": "not once but twice固定次数对照，two→twice",
+      "maxWords": 1,
+      "bank_entry": "two"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [],
+      "knownForms": [
+        "decision"
+      ],
+      "rationale": "a good后需名词decision",
+      "maxWords": 1,
+      "bank_entry": "decide"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [],
+      "knownForms": [
+        "warmth"
+      ],
+      "rationale": "with后接抽象名词warmth，喻同学情谊",
+      "maxWords": 1,
+      "bank_entry": "warm"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [],
+      "knownForms": [
+        "smiled"
+      ],
+      "rationale": "all three friends为动作主体，过去式smiled",
+      "maxWords": 1,
+      "bank_entry": "smile"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [],
+      "knownForms": [
+        "dried"
+      ],
+      "rationale": "had后过去分词dried",
+      "maxWords": 1,
+      "bank_entry": "dry"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "十条共享词库、十空、允许变形、一词一用、每空一词全部绑定。词库不是十个逐空给词提示；two→twice、decide→decision等按完整回填检查。不借用缺词库的萧山五空源；后者缺项状态保留。",
+  "bank_entries": [
+    "smile",
+    "dry",
+    "early",
+    "find",
+    "they",
+    "begin",
+    "two",
+    "warm",
+    "decide",
+    "careful"
+  ],
+  "bank_form_policy": "change",
+  "reuse_rule": "once",
+  "bank_assignment": [
+    "early",
+    "they",
+    "begin",
+    "careful",
+    "find",
+    "two",
+    "decide",
+    "warm",
+    "smile",
+    "dry"
+  ],
+  "canonical_response_block_sha256": "ad31f8f2bed38490e7a2617b28d2b6ea9761aff142cf20514e0625e21cc3a61e",
+  "candidate_path": "FirstRelease/Timeboxed/grade8-rainy-fair-word-bank-v0.1.md",
+  "candidate_sha256": "e732b5c9d559fb32856d21a2677552950b8883218738a75160296b5f9d5a163c",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 189,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

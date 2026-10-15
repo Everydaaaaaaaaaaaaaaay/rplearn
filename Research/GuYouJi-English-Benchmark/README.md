@@ -1,6 +1,6 @@
 # GuYouJi English Benchmark
 
-当前限时审阅进度：[矩阵0.5](FirstRelease/timeboxed-review-matrix-v0.5.json)有52/70正向来源格可看完整题，另17格待原创、1格仅模拟参照待核，74格证据不足。本轮新增23组165回应，与冻结53/338合76/503；审阅页52格/354回应。新增四对话、十空语法与正误判断已作者核读、24合同检查和14浏览器记录，原46载荷不变复用证据。入口与原截止见[时间状态](FirstRelease/TimeboxedDelivery-2026-10-16.json)，尚未最终交付。
+当前限时审阅进度：[矩阵0.6](FirstRelease/timeboxed-review-matrix-v0.6.json)59/70正向格可看完整题，另11待原创、零仅模拟参照待核，74未知。本轮新增30组225回应，与原53/338合83/563；审阅页59格/414回应。普通学校初二语法代表已补，旧模拟稿保留；新七格29准备控制、16浏览器记录及原52载荷不变通过。入口与原截止见[时间状态](FirstRelease/TimeboxedDelivery-2026-10-16.json)，尚未最终交付。
 
 2026-10-16用户重新授权**至多再做12小时并提前收尾**：[本轮交付计划](FirstRelease/TimeboxedDelivery-2026-10-16.md)与[时间状态](FirstRelease/TimeboxedDelivery-2026-10-16.json)取代无限期续办。北京时间10:18:47起只收尾，12:18:47前交付已有成果。优先补“年级×题型”代表稿供用户查质量；[库存0.1](FirstRelease/timeboxed-review-matrix-v0.1.json)查明70正向格中29已有非模拟参照作者、1模拟参照待核、40缺原创代表，74未知不擅补。交付后结束自动任务，不称历史全部缺口已解决。
 

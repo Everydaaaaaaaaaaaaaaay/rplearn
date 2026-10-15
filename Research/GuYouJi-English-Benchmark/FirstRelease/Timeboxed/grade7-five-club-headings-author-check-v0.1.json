@@ -1,0 +1,380 @@
+{
+  "version": "0.1",
+  "id": "grade7-five-club-headings",
+  "grade": 7,
+  "family": "paragraph_heading_matching",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "heading-candidate-grade7-jiexiu-2507579320261015r.headingA"
+  ],
+  "source_shape": {
+    "grade": 7,
+    "family": "paragraph_heading_matching",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "materials": 1,
+      "paragraph_subsections": 5,
+      "shared_options": 5,
+      "observed_candidates_minus_responses": 0,
+      "explicit_spare": null,
+      "reuse_rule": "not_explicit",
+      "headings_are_slots": true,
+      "all_slots_are_headings": true,
+      "slot_roles": [
+        "heading",
+        "heading",
+        "heading",
+        "heading",
+        "heading"
+      ],
+      "points_each": 2,
+      "necessary_input_complete": true
+    }
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/jiexiu-heading-sentence-views-v0.1.json",
+      "sha256": "3dd778fae1bfebe20f10d9414de65b76d21e3ee32177efc981c32b960ed0621b"
+    },
+    "group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.headingA",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/heading-candidate-grade7-jiexiu-2507579320261015r-resource-v0.2.txt",
+      "sha256": "3d19e546246f00ddefa6904a7acd2d18de590f7180bc8dacbb703341c5ab9384"
+    },
+    "start_offset": 6917,
+    "end_offset": 7983,
+    "material_sha256": "17335cafd05f5e6981ec97824316bedd48914a2d833b507e99a46c4b5b865647"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1段小标题",
+      "options": [
+        [
+          "A",
+          "Make music together"
+        ],
+        [
+          "B",
+          "Learn about plants"
+        ],
+        [
+          "C",
+          "Tell a story aloud"
+        ],
+        [
+          "D",
+          "Draw animals"
+        ],
+        [
+          "E",
+          "Play thinking games"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：观察动物图片并画眼脚，不需要相机；核心是画动物；A：该标题的主要活动与本段不符：Make music together；B：该标题的主要活动与本段不符：Learn about plants；C：该标题的主要活动与本段不符：Tell a story aloud；E：该标题的主要活动与本段不符：Play thinking games",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Make music together"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Learn about plants"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Tell a story aloud"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "观察动物图片并画眼脚，不需要相机；核心是画动物"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Play thinking games"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "第2段小标题",
+      "options": [
+        [
+          "A",
+          "Make music together"
+        ],
+        [
+          "B",
+          "Learn about plants"
+        ],
+        [
+          "C",
+          "Tell a story aloud"
+        ],
+        [
+          "D",
+          "Draw animals"
+        ],
+        [
+          "E",
+          "Play thinking games"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：日常物件/乐器共同演奏歌曲，核心是音乐合作；B：该标题的主要活动与本段不符：Learn about plants；C：该标题的主要活动与本段不符：Tell a story aloud；D：该标题的主要活动与本段不符：Draw animals；E：该标题的主要活动与本段不符：Play thinking games",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "日常物件/乐器共同演奏歌曲，核心是音乐合作"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Learn about plants"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Tell a story aloud"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Draw animals"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Play thinking games"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "stem": "第3段小标题",
+      "options": [
+        [
+          "A",
+          "Make music together"
+        ],
+        [
+          "B",
+          "Learn about plants"
+        ],
+        [
+          "C",
+          "Tell a story aloud"
+        ],
+        [
+          "D",
+          "Draw animals"
+        ],
+        [
+          "E",
+          "Play thinking games"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：把短故事讲给搭档听，不是朗读乐谱或棋局；A：该标题的主要活动与本段不符：Make music together；B：该标题的主要活动与本段不符：Learn about plants；D：该标题的主要活动与本段不符：Draw animals；E：该标题的主要活动与本段不符：Play thinking games",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Make music together"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Learn about plants"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "把短故事讲给搭档听，不是朗读乐谱或棋局"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Draw animals"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Play thinking games"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "stem": "第4段小标题",
+      "options": [
+        [
+          "A",
+          "Make music together"
+        ],
+        [
+          "B",
+          "Learn about plants"
+        ],
+        [
+          "C",
+          "Tell a story aloud"
+        ],
+        [
+          "D",
+          "Draw animals"
+        ],
+        [
+          "E",
+          "Play thinking games"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：种豆、观察叶子和花，核心是植物；A：该标题的主要活动与本段不符：Make music together；C：该标题的主要活动与本段不符：Tell a story aloud；D：该标题的主要活动与本段不符：Draw animals；E：该标题的主要活动与本段不符：Play thinking games",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Make music together"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "种豆、观察叶子和花，核心是植物"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Tell a story aloud"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Draw animals"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Play thinking games"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "stem": "第5段小标题",
+      "options": [
+        [
+          "A",
+          "Make music together"
+        ],
+        [
+          "B",
+          "Learn about plants"
+        ],
+        [
+          "C",
+          "Tell a story aloud"
+        ],
+        [
+          "D",
+          "Draw animals"
+        ],
+        [
+          "E",
+          "Play thinking games"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E：棋盘双方预测落子并讨论，核心是思考游戏；A：该标题的主要活动与本段不符：Make music together；B：该标题的主要活动与本段不符：Learn about plants；C：该标题的主要活动与本段不符：Tell a story aloud；D：该标题的主要活动与本段不符：Draw animals",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Make music together"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Learn about plants"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Tell a story aloud"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "该标题的主要活动与本段不符：Draw animals"
+        },
+        {
+          "label": "E",
+          "valid": true,
+          "reason": "棋盘双方预测落子并讨论，核心是思考游戏"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "五个段落小标题槽位、五共享标题，不是段内句子空；源未明示复用次数，不擅加一次限制。没有多余项的数量关系单独记录；每段主要活动支持本段标题，而非只靠逐项排剩。单地区完整具体模式仍不等全国常见模式已验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "Make music together"
+    ],
+    [
+      "B",
+      "Learn about plants"
+    ],
+    [
+      "C",
+      "Tell a story aloud"
+    ],
+    [
+      "D",
+      "Draw animals"
+    ],
+    [
+      "E",
+      "Play thinking games"
+    ]
+  ],
+  "reuse_rule": "not_explicit",
+  "slot_roles": [
+    "heading",
+    "heading",
+    "heading",
+    "heading",
+    "heading"
+  ],
+  "canonical_response_block_sha256": "3b164f3291c36365af91ad076a6b1fd5091932719445376c429a2cb49f5c3387",
+  "candidate_path": "FirstRelease/Timeboxed/grade7-five-club-headings-v0.1.md",
+  "candidate_sha256": "355c27b9c7596ee37fb87703a0a33b6a92d7f8fb4fcb96803970a599d60b6658",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 198,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 15,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

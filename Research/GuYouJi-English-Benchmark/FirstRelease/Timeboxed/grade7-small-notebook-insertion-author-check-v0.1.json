@@ -1,0 +1,426 @@
+{
+  "version": "0.1",
+  "id": "grade7-small-notebook-insertion",
+  "grade": 7,
+  "family": "shared_insertion",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD"
+  ],
+  "source_shape": {
+    "grade": 7,
+    "family": "shared_insertion",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "materials": 1,
+      "shared_options": 6,
+      "explicit_spare": 1,
+      "reuse_rule": "not_explicit",
+      "headings_are_slots": false,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ],
+      "points_each": 2,
+      "necessary_input_complete": true
+    }
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/jiexiu-heading-sentence-views-v0.1.json",
+      "sha256": "3dd778fae1bfebe20f10d9414de65b76d21e3ee32177efc981c32b960ed0621b"
+    },
+    "group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/heading-candidate-grade7-jiexiu-2507579320261015r-resource-v0.2.txt",
+      "sha256": "3d19e546246f00ddefa6904a7acd2d18de590f7180bc8dacbb703341c5ab9384"
+    },
+    "start_offset": 11486,
+    "end_offset": 12339,
+    "material_sha256": "0a4fbdf6da690a30c26cb40550021c632fe2b0c6bfdd5a470e31d25b24da1c50"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "It only has forty pages."
+        ],
+        [
+          "B",
+          "First, it helps me remember small jobs."
+        ],
+        [
+          "C",
+          "I do not need to use only words."
+        ],
+        [
+          "D",
+          "Last, it keeps small parts of my past."
+        ],
+        [
+          "E",
+          "I will start a new one when it is full."
+        ],
+        [
+          "F",
+          "Every page must be neat and perfect."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：后文Those forty pages需要先引入四十页；选A；B：本句的四十页/First/图画/过去/新本照应不属于该槽位；C：本句的四十页/First/图画/过去/新本照应不属于该槽位；D：本句的四十页/First/图画/过去/新本照应不属于该槽位；E：本句的四十页/First/图画/过去/新本照应不属于该槽位；F：F要求完美与结尾do not look perfect、yet story直接相反",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": true,
+          "reason": "后文Those forty pages需要先引入四十页；选A"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "F要求完美与结尾do not look perfect、yet story直接相反"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "It only has forty pages."
+        ],
+        [
+          "B",
+          "First, it helps me remember small jobs."
+        ],
+        [
+          "C",
+          "I do not need to use only words."
+        ],
+        [
+          "D",
+          "Last, it keeps small parts of my past."
+        ],
+        [
+          "E",
+          "I will start a new one when it is full."
+        ],
+        [
+          "F",
+          "Every page must be neat and perfect."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：后文Second与此处First顺序对应；归还书单是小事备忘；A：本句的四十页/First/图画/过去/新本照应不属于该槽位；C：本句的四十页/First/图画/过去/新本照应不属于该槽位；D：本句的四十页/First/图画/过去/新本照应不属于该槽位；E：本句的四十页/First/图画/过去/新本照应不属于该槽位；F：F要求完美与结尾do not look perfect、yet story直接相反",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "B",
+          "valid": true,
+          "reason": "后文Second与此处First顺序对应；归还书单是小事备忘"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "F要求完美与结尾do not look perfect、yet story直接相反"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "It only has forty pages."
+        ],
+        [
+          "B",
+          "First, it helps me remember small jobs."
+        ],
+        [
+          "C",
+          "I do not need to use only words."
+        ],
+        [
+          "D",
+          "Last, it keeps small parts of my past."
+        ],
+        [
+          "E",
+          "I will start a new one when it is full."
+        ],
+        [
+          "F",
+          "Every page must be neat and perfect."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：后文picture/maps对应不只使用文字；A：本句的四十页/First/图画/过去/新本照应不属于该槽位；B：本句的四十页/First/图画/过去/新本照应不属于该槽位；D：本句的四十页/First/图画/过去/新本照应不属于该槽位；E：本句的四十页/First/图画/过去/新本照应不属于该槽位；F：F要求完美与结尾do not look perfect、yet story直接相反",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "C",
+          "valid": true,
+          "reason": "后文picture/maps对应不只使用文字"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "F要求完美与结尾do not look perfect、yet story直接相反"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "It only has forty pages."
+        ],
+        [
+          "B",
+          "First, it helps me remember small jobs."
+        ],
+        [
+          "C",
+          "I do not need to use only words."
+        ],
+        [
+          "D",
+          "Last, it keeps small parts of my past."
+        ],
+        [
+          "E",
+          "I will start a new one when it is full."
+        ],
+        [
+          "F",
+          "Every page must be neat and perfect."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：后文old page/remember/with father说明保存过往；A：本句的四十页/First/图画/过去/新本照应不属于该槽位；B：本句的四十页/First/图画/过去/新本照应不属于该槽位；C：本句的四十页/First/图画/过去/新本照应不属于该槽位；E：本句的四十页/First/图画/过去/新本照应不属于该槽位；F：F要求完美与结尾do not look perfect、yet story直接相反",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "D",
+          "valid": true,
+          "reason": "后文old page/remember/with father说明保存过往"
+        },
+        {
+          "label": "E",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "F要求完美与结尾do not look perfect、yet story直接相反"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "It only has forty pages."
+        ],
+        [
+          "B",
+          "First, it helps me remember small jobs."
+        ],
+        [
+          "C",
+          "I do not need to use only words."
+        ],
+        [
+          "D",
+          "Last, it keeps small parts of my past."
+        ],
+        [
+          "E",
+          "I will start a new one when it is full."
+        ],
+        [
+          "F",
+          "Every page must be neat and perfect."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E：后文But keep this old one与新旧对照，先说用完换新；A：本句的四十页/First/图画/过去/新本照应不属于该槽位；B：本句的四十页/First/图画/过去/新本照应不属于该槽位；C：本句的四十页/First/图画/过去/新本照应不属于该槽位；D：本句的四十页/First/图画/过去/新本照应不属于该槽位；F：F要求完美与结尾do not look perfect、yet story直接相反",
+      "author_option_checks": [
+        {
+          "label": "A",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "B",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "C",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "D",
+          "valid": false,
+          "reason": "本句的四十页/First/图画/过去/新本照应不属于该槽位"
+        },
+        {
+          "label": "E",
+          "valid": true,
+          "reason": "后文But keep this old one与新旧对照，先说用完换新"
+        },
+        {
+          "label": "F",
+          "valid": false,
+          "reason": "F要求完美与结尾do not look perfect、yet story直接相反"
+        }
+      ]
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "单篇五句空/六共享候选/一个多余项；所有空均为句子，不因First/Last充当衔接就改称五个标题。源复用未明示，不加一次规则；代词、确指页数、序列和新旧对照逐空约束，不拼接其他样本的七候选模式。",
+  "shared_candidates": [
+    [
+      "A",
+      "It only has forty pages."
+    ],
+    [
+      "B",
+      "First, it helps me remember small jobs."
+    ],
+    [
+      "C",
+      "I do not need to use only words."
+    ],
+    [
+      "D",
+      "Last, it keeps small parts of my past."
+    ],
+    [
+      "E",
+      "I will start a new one when it is full."
+    ],
+    [
+      "F",
+      "Every page must be neat and perfect."
+    ]
+  ],
+  "reuse_rule": "not_explicit",
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence"
+  ],
+  "canonical_response_block_sha256": "16494473a9ceb15efb69146457090414cdcf3c18beba55cd6ee1569727d781be",
+  "candidate_path": "FirstRelease/Timeboxed/grade7-small-notebook-insertion-v0.1.md",
+  "candidate_sha256": "cb5c748fcedcb6c0a7bae20c72afd022aba1c3d12afc99ff256c8646c165518e",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 157,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 45,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

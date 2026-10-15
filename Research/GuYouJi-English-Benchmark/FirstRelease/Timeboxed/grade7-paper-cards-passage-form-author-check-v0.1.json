@@ -1,0 +1,176 @@
+{
+  "version": "0.1",
+  "id": "grade7-paper-cards-passage-form",
+  "grade": 7,
+  "family": "passage_form",
+  "questions": 10,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade7-suzhou2025-21cnjy23303742.passageForm"
+  ],
+  "source_shape": {
+    "family": "passage_form",
+    "responses": 10,
+    "options_each": null,
+    "details": {
+      "materials": 1,
+      "response_policy": "ungiven_one_given_form"
+    },
+    "grade": 7
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/nonreading-material-views-v0.1.json",
+      "sha256": "c03331b145fcc77c30cee8392f83cacdc4e72ffbf3e5acd4586d604732bd5204"
+    },
+    "group_id": "grade7-suzhou2025-21cnjy23303742.passageForm",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+      "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+    },
+    "start_offset": 15899,
+    "end_offset": 16849,
+    "material_sha256": "a6e5540db66c92bad38364386aa1b4b2ae959fd9559164d3d3f81e493a929e60"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [],
+      "knownForms": [
+        "useful"
+      ],
+      "rationale": "it is useful to do结构需形容词",
+      "given_word": "use"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "knownForms": [
+        "her"
+      ],
+      "rationale": "动词helps后的宾格her",
+      "given_word": "she"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "knownForms": [
+        "quickly"
+      ],
+      "rationale": "修饰learns用副词quickly",
+      "given_word": "quick"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "knownForms": [
+        "started"
+      ],
+      "rationale": "Last spring明确过去，started",
+      "given_word": "start"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [],
+      "knownForms": [
+        "colourful",
+        "colorful"
+      ],
+      "rationale": "修饰cards用colourful；同样接受美式colorful",
+      "given_word": "colour"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [],
+      "knownForms": [
+        "After"
+      ],
+      "rationale": "finishing之前用After表示完成之后，句首需大写",
+      "maxWords": 1
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [],
+      "knownForms": [
+        "showed"
+      ],
+      "rationale": "The next day沿用过去故事，showed",
+      "given_word": "show"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [],
+      "knownForms": [
+        "so",
+        "and"
+      ],
+      "rationale": "so表受到鼓励后的后续行动；and并列高兴与教朋友也成立。不能把语篇偏好的因果解释当唯一合法连接。",
+      "maxWords": 1
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [],
+      "knownForms": [
+        "cards"
+      ],
+      "rationale": "her后受each one等信息支持复数作品cards",
+      "given_word": "card"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [],
+      "knownForms": [
+        "an"
+      ],
+      "rationale": "take an interest in固定表达，interest元音起首",
+      "maxWords": 1
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整单篇十空；给词1/2/3/4/5/7/9、无给词6/8/10分别保留，给词不一概限制一词。当前参考全部一词，不把它提升为所有给词题的规则；句首和英美拼写分别复核。新叙事未宣称与源逐词或等难。",
+  "given_slots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    9
+  ],
+  "ungiven_one_word_slots": [
+    6,
+    8,
+    10
+  ],
+  "canonical_response_block_sha256": "ad31f8f2bed38490e7a2617b28d2b6ea9761aff142cf20514e0625e21cc3a61e",
+  "candidate_path": "FirstRelease/Timeboxed/grade7-paper-cards-passage-form-v0.1.md",
+  "candidate_sha256": "2b46ea3b08b061804435a7e4d2e53a454a30e97ced055672f0e44aba1ebef62b",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 167,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

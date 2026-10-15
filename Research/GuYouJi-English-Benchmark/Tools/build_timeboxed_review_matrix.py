@@ -91,7 +91,7 @@ def build(additional_indexes=(), version='0.1'):
         cell = {k: original[k] for k in ['grade', 'family', 'observation_state', 'source_group_ids', 'input_states']}
         cell['label'] = LABELS[cell['family']]
         matched = [c for c in candidates if c['grade'] == cell['grade'] and c['family'] == cell['family']]
-        matched.sort(key=lambda c: (not c['in_previous_showcase'], c['id']))
+        matched.sort(key=lambda c: (c['source_form_support'].startswith('simulated_'), not c['in_previous_showcase'], c['id']))
         cell['existing_authored_candidates'] = matched
         if original['observation_state'] != 'observed':
             if matched:

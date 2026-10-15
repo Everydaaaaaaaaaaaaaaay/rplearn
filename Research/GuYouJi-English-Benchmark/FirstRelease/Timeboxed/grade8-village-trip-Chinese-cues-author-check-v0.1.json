@@ -1,0 +1,175 @@
+{
+  "version": "0.1",
+  "id": "grade8-village-trip-Chinese-cues",
+  "grade": 8,
+  "family": "passage_chinese_completion",
+  "questions": 10,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade8-xiaoshan2025-21cnjy22251031.passageChinese"
+  ],
+  "source_shape": {
+    "family": "passage_chinese_completion",
+    "responses": 10,
+    "options_each": null,
+    "details": {
+      "response_policy": "one_word_in_key_section",
+      "materials": 1
+    },
+    "grade": 8
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "group_id": "grade8-xiaoshan2025-21cnjy22251031.passageChinese",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+      "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+    },
+    "start_offset": 14468,
+    "end_offset": 15586,
+    "material_sha256": "54a5ccedfb570033917eb41c03865443a632119a72757403c7fb0f6c0d3d6435"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [],
+      "knownForms": [
+        "trip",
+        "journey"
+      ],
+      "rationale": "a short trip/journey均可",
+      "meaning": "旅行"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "knownForms": [
+        "father’s",
+        "father's"
+      ],
+      "rationale": "名词map前所属关系，父亲的用father’s，直/弯撇号都可",
+      "meaning": "父亲"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "knownForms": [
+        "arrived"
+      ],
+      "rationale": "arrived at地点，过去叙事",
+      "meaning": "到达"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "knownForms": [
+        "through"
+      ],
+      "rationale": "从园内穿过用through；across常指横跨开阔面，当前语境需结合园内行进判断",
+      "meaning": "穿过"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [],
+      "knownForms": [
+        "quiet",
+        "peaceful"
+      ],
+      "rationale": "quiet/peaceful修饰place都吻合中文和鸟声少的情境",
+      "meaning": "安静的"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [],
+      "knownForms": [
+        "suddenly"
+      ],
+      "rationale": "副词suddenly表达事件突然发生",
+      "meaning": "突然"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [],
+      "knownForms": [
+        "lost"
+      ],
+      "rationale": "had后lost，完成体过去分词",
+      "meaning": "丢失"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [],
+      "knownForms": [
+        "decided"
+      ],
+      "rationale": "We过去动作decided to do",
+      "meaning": "决定"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [],
+      "knownForms": [
+        "ourselves"
+      ],
+      "rationale": "by ourselves反身复数，含自主完成意味",
+      "meaning": "我们自己"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [],
+      "knownForms": [
+        "returned"
+      ],
+      "rationale": "returned to the bus，过去式",
+      "meaning": "返回"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整单篇十空、十中文提示；当前作者参考各一词，保留源一词表述在答案节的归属，不把答案长度泛化成所有此类题的题面规则。第1/5已识别同义参考、所属撇号变体单列；未穷尽答案，不自动评分。",
+  "Chinese_hint_slots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "canonical_response_block_sha256": "ad31f8f2bed38490e7a2617b28d2b6ea9761aff142cf20514e0625e21cc3a61e",
+  "candidate_path": "FirstRelease/Timeboxed/grade8-village-trip-Chinese-cues-v0.1.md",
+  "candidate_sha256": "4e2268660529ab0a56bc0b129c3df2131033f827f23bba1d7ba466a8137fadb5",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 144,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}

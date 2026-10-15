@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "grade8-town-model-passage-form",
+  "grade": 8,
+  "family": "passage_form",
+  "questions": 10,
+  "options_each": null,
+  "anchor_group_ids": [
+    "g8.changjun2024.grammar"
+  ],
+  "source_shape": {
+    "grade": 8,
+    "family": "passage_form",
+    "responses": 10,
+    "options_each": null,
+    "details": {
+      "materials": 1,
+      "subgroup_slots": null,
+      "response_policy": "ungiven_one_given_form"
+    }
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/baseline-open-form-views-v0.1.json",
+      "sha256": "05cc338667d085642ccd72504b8bc1c7321a1a31c6070dc23e6424ea6a8c5a9b"
+    },
+    "group_id": "g8.changjun2024.grammar",
+    "transcription": {
+      "path": "build/english-benchmark-research-20261012/baseline-open-form-source-text20261015s-v0.1.json",
+      "sha256": "3405c2e92c029bba50b411bfa77baea7dadb8c707403da48f5dc492ae6ece1a3"
+    },
+    "record_index": 4,
+    "parent_document": {
+      "path": "build/english-benchmark-research-20261012/raw/grade8-changjun2024-midterm-paper-key20261014.pdf",
+      "sha256": "50fcae7cf123843ce34b2fe9b66134e765fc281537e28d746c79e5b3c7cadec2"
+    },
+    "record_sha256": "ecaf0bb9200eae747b6ba477d50d8e4de1580cac36826caccbb69e395a9777ed"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [],
+      "knownForms": [
+        "patient"
+      ],
+      "rationale": "修饰students需形容词patient，patience为名词",
+      "given_word": "patience"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "knownForms": [
+        "was"
+      ],
+      "rationale": "that afternoon叙述过去，单数hall配was",
+      "given_word": "be"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "knownForms": [
+        "clearly"
+      ],
+      "rationale": "修饰explained用clearly",
+      "given_word": "clear"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "knownForms": [
+        "anything"
+      ],
+      "rationale": "否定didn’t下不定代词anything",
+      "given_word": "something"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [],
+      "knownForms": [
+        "of"
+      ],
+      "rationale": "full of固定搭配",
+      "maxWords": 1
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [],
+      "knownForms": [
+        "Although",
+        "Though",
+        "While"
+      ],
+      "rationale": "主从句形成偏好对照，Although/Though或对比While成立，句首大写",
+      "maxWords": 1
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [],
+      "knownForms": [
+        "the"
+      ],
+      "rationale": "前句已介绍the old station，后文特指同一车站用the",
+      "maxWords": 1
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [],
+      "knownForms": [
+        "easier"
+      ],
+      "rationale": "than触发比较级easier",
+      "given_word": "easy"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [],
+      "knownForms": [
+        "town’s",
+        "town's"
+      ],
+      "rationale": "town与story所属关系，用town’s，接受直/弯撇号",
+      "given_word": "town"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [],
+      "knownForms": [
+        "to share"
+      ],
+      "rationale": "expect sb to do，用to share两词；给词槽不能套无给词一词限制",
+      "given_word": "share"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "以长郡普通校卷十空完整模式补本格，原relay模拟来源不升级。给词1/2/3/4/8/9/10、无给词5/6/7；第10空两词to share合法，第9空所属撇号两形接受；源具体事实、音乐流量和DNA类比不继承到新叙事。只建立形式参照，未独立校准难度。",
+  "given_slots": [
+    1,
+    2,
+    3,
+    4,
+    8,
+    9,
+    10
+  ],
+  "ungiven_one_word_slots": [
+    5,
+    6,
+    7
+  ],
+  "canonical_response_block_sha256": "ad31f8f2bed38490e7a2617b28d2b6ea9761aff142cf20514e0625e21cc3a61e",
+  "candidate_path": "FirstRelease/Timeboxed/grade8-town-model-passage-form-v0.1.md",
+  "candidate_sha256": "22750f5ddbfd5eb3e3e7b1018e9ea8d8e83b8a055384ebce9b6cfb38ce63996d",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 210,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0
+  }
+}
