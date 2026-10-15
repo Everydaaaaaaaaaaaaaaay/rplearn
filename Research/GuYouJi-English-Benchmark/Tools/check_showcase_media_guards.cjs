@@ -10,7 +10,7 @@ function setup(imageStates,visual=true){
  const element=()=>({children:[],hidden:false,textContent:'',_html:'',set innerHTML(v){this._html=v;this.children=[];},get innerHTML(){return this._html;},append(v){this.children.push(v);},after(){},setAttribute(){},addEventListener(){}});
  for(const key of ['showcase-data','grades','types','groups','grade-title','instruction','passage','quiz','result','submit','reveal','reset','full-review','provenance'])nodes.set(key,element());
  nodes.get('showcase-data').textContent=data;
- const document={getElementById:id=>nodes.get(id)||null,createElement:()=>element(),querySelectorAll:()=>imageStates};
+ const document={getElementById:id=>nodes.get(id)||null,createElement:()=>element(),querySelectorAll:selector=>selector==='#quiz img.option-image'?imageStates:[]};
  const context=vm.createContext({document});vm.runInContext(code,context);
  if(visual)vm.runInContext("active=items.findIndex(g=>g.id==='grade7-reading-corner-images-v0.1');render();",context);
  return {nodes,context};

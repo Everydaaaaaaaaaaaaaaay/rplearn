@@ -215,7 +215,7 @@ __INTERACTIONS__
 
 
 def build(output):
-    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.6.json').read_text())
+    selection = json.loads((BASE / 'FirstRelease/showcase-selection-v0.7.json').read_text())
     core = json.loads(load_ref(selection['core_index']).read_text())
     extension = json.loads(load_ref(selection['extension_index']).read_text())
     overview = json.loads(load_ref(selection['source_overview']).read_text())
@@ -245,16 +245,16 @@ def build(output):
     page = page.replace('六个年级，阅读、完形和语言运用各一组。先作答，再看参考与解析。',
                         '六个年级，完整阅读、完形、语言运用及选定配对、衔接、开放作答和写作。先作答，再看参考与要求。')
     page = page.replace('</header>', '<p class="footnote">入口只显示本页该年级的已审阅样题；未展示不表示该年级没有这种题型。</p></header>')
-    page = page.replace('</style>', '.open-response label{display:block}.open-response textarea{display:block;resize:vertical;line-height:1.6}.fixed-opening{font:16px/1.65 Georgia,serif}.full-author-review{border-top:1px solid var(--line);padding-top:16px}.option-content{display:block;min-width:0;flex:1}.option-image{display:block;width:100%;max-width:360px;height:auto;margin-top:6px}.calendar-reading .table-scroll th,.calendar-reading .table-scroll td{min-width:45px;padding:5px;text-align:center;font-size:12px}.author-review{font:14px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}.table-scroll{overflow-x:auto}.table-scroll table{border-collapse:collapse;width:100%;font:14px/1.6 system-ui,sans-serif}.table-scroll th,.table-scroll td{border:1px solid var(--line);padding:8px;text-align:left;min-width:110px}</style>')
+    page = page.replace('</style>', '.open-response label{display:block}.open-response textarea{display:block;resize:vertical;line-height:1.6}.fixed-opening{font:16px/1.65 Georgia,serif}.full-author-review{border-top:1px solid var(--line);padding-top:16px}.option-content{display:block;min-width:0;flex:1}.option-image{display:block;width:100%;max-width:360px;height:auto;margin-top:6px}.reading-graph{margin:18px 0}.passage-image{display:block;width:100%;height:auto}.calendar-reading .table-scroll th,.calendar-reading .table-scroll td{min-width:45px;padding:5px;text-align:center;font-size:12px}.author-review{font:14px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}.table-scroll{overflow-x:auto}.table-scroll table{border-collapse:collapse;width:100%;font:14px/1.6 system-ui,sans-serif}.table-scroll th,.table-scroll td{border:1px solid var(--line);padding:8px;text-align:left;min-width:110px}</style>')
     (output / 'index.html').write_text(page)
     # A human-readable companion keeps the full payload reviewable without JS.
-    md = ['# 初高中多题型效果稿0.6', '', '六年级完整核心三类及选定共享候选、开放回答和写作；为已有作者稿的展示子集，不是生产入口模型实测。', '',
+    md = ['# 初高中多题型效果稿0.7', '', '六年级完整核心三类及选定共享候选、开放回答和写作；为已有作者稿的展示子集，不是生产入口模型实测。', '',
           '先读题，答案和解析放在折叠区。其他题型及标准见资料库FirstRelease统一入口。', '']
     for g in data:
         md += ['## ' + g['label'] + ' · ' + g['typeLabel'], '', g.get('instruction', '阅读短文，从各题/空选项中选出最佳答案。'), '']
         if g.get('sharedBank'):
             md += ['词库：' + ' · '.join(g['sharedBank']), '']
-        md += [g['passage'], '']
+        md += [g.get('passageMarkdown', g['passage']), '']
         for q in g['questions']:
             md += [str(q['number']) + '. ' + q['stem'], '']
             md += [k + '. ' + ('![' + q['optionImages'][k]['alt'] + '](' + q['optionImages'][k]['src'] + ')' if 'optionImages' in q else v) + '  ' for k, v in q['options']]
@@ -270,7 +270,7 @@ def build(output):
         md += [g['focus'], '', source_note, '',
                '作者题面：' + g['candidate']['path'], '',
                '创作规格：' + g['specification_at_authoring']['path'], '', '</details>', '']
-    (output / 'SchoolSamples-v0.6.md').write_text('\n'.join(md))
+    (output / 'SchoolSamples-v0.7.md').write_text('\n'.join(md))
     report = {'grades': sorted(set(g['grade'] for g in data)), 'groups': len(data),
               'questions': sum(len(g['questions']) for g in data),
               'reference_form_slots': sum(len(g['questions']) for g in data if g.get('responseMode') == 'reference_form'),
@@ -281,8 +281,8 @@ def build(output):
               'automatic_semantic_scoring': False,
               'options': sum(len(q['options']) for g in data for q in g['questions']),
               'production_model_evaluation': False,
-              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.6.md']}}
-    (output / 'build-report-v0.6.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+              'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir() if p.is_file() and p.name in ['index.html', 'SchoolSamples-v0.7.md']}}
+    (output / 'build-report-v0.7.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False))
 
 

@@ -143,9 +143,16 @@ def extract_extended(row, choice, load_ref, overview):
         displayed_student = displayed_student.replace(note, '')
     review = text[author_heading.end():].strip()
     questions, mode = [], choice['response_mode']
+    rich_input = {}
     first_prompt = re.search(r'^1\. ', student, re.M)
     bank = []
-    if mode == 'per_question_choice':
+    if mode == 'reading_choice':
+        from showcase_rich_reading import extract_rich_reading
+        if choice['kind'] != 'reading':
+            raise ValueError('Reading input used by another task kind')
+        material, questions, rich_input = extract_rich_reading(student, review, audit, choice, row['candidate'], load_ref)
+        rule = None
+    elif mode == 'per_question_choice':
         if choice['kind'] != 'cloze':
             raise ValueError('Only reviewed variable cloze mode supported')
         material, questions = extract_variable_cloze(student, review, audit, row['questions'])
@@ -224,4 +231,4 @@ def extract_extended(row, choice, load_ref, overview):
             'studentSliceSHA256': hashlib.sha256(student.encode()).hexdigest(),
             'presentationNotesExcludedFromStudentUI': presentation_notes,
             'sourceFormReference': source_form_reference,
-            'independent_scoring': False, 'automatic_semantic_scoring': False}
+            'independent_scoring': False, 'automatic_semantic_scoring': False, **rich_input}
