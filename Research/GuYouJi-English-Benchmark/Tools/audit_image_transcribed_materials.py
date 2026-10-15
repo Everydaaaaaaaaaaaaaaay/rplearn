@@ -60,9 +60,12 @@ def transcribed_views(manifest):
             if len(matches) != 1:
                 raise ValueError('Unregistered source image')
             provenance = matches[0].get('derivation', {})
-            if provenance and (provenance.get('acquisition_id') != case['source_parent_id'] or provenance.get('PDF_page') != page):
+            page_provenance = 'acquisition_id' in provenance or 'PDF_page' in provenance
+            if page_provenance and (provenance.get('acquisition_id') != case['source_parent_id'] or provenance.get('PDF_page') != page):
                 raise ValueError('Image belongs to another original source/page')
-            if not provenance and author_bindings is None:
+            if provenance.get('related_acquisition_ids') and case['source_parent_id'] not in provenance['related_acquisition_ids']:
+                raise ValueError('Image origin names a different source parent')
+            if not page_provenance and author_bindings is None:
                 raise ValueError('Missing render provenance or explicit author page binding')
             load_ref(image)
         if [c['pointer'] for c in case['components']] != [['records', case['record_index'], 'components', i, 'text'] for i in range(len(record['components']))]:
@@ -71,11 +74,13 @@ def transcribed_views(manifest):
         for binding, c in zip(case['components'], record['components']):
             if any(binding.get(k) != c.get(k) for k in ['id', 'role', 'item_id']) or digest(c['text']) != binding['sha256']:
                 raise ValueError('Source component binding differs')
-            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
+            if c['role'] not in ['passage', 'material_label', 'instruction', 'prompt', 'option', 'scoring_declaration', 'illustrated_gloss_label', 'given_hint'] or any(t in c['text'] for t in ['【答案】', '【解析】']):
                 raise ValueError('Private key/author reason is not student input')
             text = c['text']
             if c['role'] == 'passage':
                 parts.append(text)
+                if row['shape']['family'] == 'passage_form':
+                    text = re.sub(r'_+\d+_+\s*\([^()]+\)', ' ', text)
                 text = re.sub(r'_+\d+_+', ' ', text)
             role = totals.setdefault(c['role'], {'english_digit_tokens': 0, 'han_characters': 0, 'components': 0})
             for k, v in count(text).items():
@@ -87,10 +92,36 @@ def transcribed_views(manifest):
             raise ValueError('Cloze blank sequence incomplete')
         if row['shape']['family'] == 'reading_choice' and totals.get('prompt', {}).get('components') != row['shape']['responses']:
             raise ValueError('Reading prompts incomplete')
-        for number in record['item_ids']:
-            options = [c for c in record['components'] if c['role'] == 'option' and c['item_id'] == number]
-            if [c['option_label'] for c in options] != list('ABCD'[:record['options_each']]) or any(not c['text'] for c in options):
-                raise ValueError('Original per-response option set incomplete')
+        if row['shape']['family'] == 'passage_form':
+            hints = [c for c in record['components'] if c['role'] == 'given_hint']
+            slots = record['slots']
+            if blanks != record['item_ids'] or [s['printed_number'] for s in slots] != blanks or totals.get('option') or totals.get('prompt'):
+                raise ValueError('Grammar passage/hint/response sequence differs')
+            expected_given = case['source_policy']['given_word_numbers']
+            features = obs['features']
+            catalogue_given = features.get('given_word_numbers', features.get('given_slots'))
+            catalogue_ungiven = features.get('no_prompt_numbers', features.get('ungiven_slots'))
+            if (catalogue_given is not None and expected_given != catalogue_given) or (catalogue_ungiven is not None and [n for n in blanks if n not in expected_given] != catalogue_ungiven):
+                raise ValueError('Grammar cue pattern conflicts with source catalogue')
+            if len(parts) != row['shape']['details']['materials'] or case['source_policy']['ungiven_word_limit'] != 1 or case['source_policy']['given_word_limit_explicit'] is not None:
+                raise ValueError('Whole grammar material/response policy differs')
+            if [c['item_id'] for c in hints] != expected_given:
+                raise ValueError('Given word pattern differs')
+            for slot in slots:
+                n = slot['printed_number'];given = n in expected_given
+                if slot['word_limit'] != (None if given else 1) or bool(slot['given_hint']) != given:
+                    raise ValueError('Given forms must not inherit the ungiven one-word limit')
+                if given:
+                    cue = next(c for c in hints if c['id'] == slot['given_hint'])
+                    match = re.search(r'_+' + str(n) + r'_+\s*\(([^()]+)\)', body)
+                    if cue['item_id'] != n or not match or match.group(1) != cue['text']:
+                        raise ValueError('Grammar hint belongs to another blank')
+            body = re.sub(r'_+\d+_+\s*\([^()]+\)', ' ', body)
+        else:
+            for number in record['item_ids']:
+                options = [c for c in record['components'] if c['role'] == 'option' and c['item_id'] == number]
+                if [c['option_label'] for c in options] != list('ABCD'[:record['options_each']]) or any(not c['text'] for c in options):
+                    raise ValueError('Original per-response option set incomplete')
         gid = row['id']
         if gid in bodies:
             raise ValueError('Duplicate transcription is not a new instance')
@@ -111,6 +142,8 @@ def transcribed_views(manifest):
                 raise ValueError('Source score/media/gloss scope omitted or changed')
             layouts[gid].update(source_images=all_images, author_page_bindings=author_bindings, source_policy=policy)
             records[-1].update(source_policy=policy, image_parent_page_binding='author_visual_binding_not_registered_derivation')
+        if row['shape']['family'] == 'passage_form':
+            layouts[gid]['slots'] = slots
     return records, bodies, layouts
 
 
@@ -163,13 +196,19 @@ def audit():
             'zero_candidates_not_independent_families': True, 'independent_transcription': False, 'model_called': False}
 
 
-def continuation_audit(manifest):
-    """Reuse the frozen sentence-view ancestors; compare only new image groups."""
+def continuation_ancestors(manifest):
+    """Rebuild referenced views without recomparing any old pair."""
     from audit_baseline_sentence_banks import old_views, sentence_views
-    from audit_baseline_bank_forms import compare
     previous = json.loads(load_ref(manifest['prior_view_manifest']).read_text())
-    old, old_records, _ = old_views(previous)
-    recent_records, recent, _, _ = sentence_views(previous)
+    kind = manifest.get('prior_view_kind', 'sentence_bank')
+    if kind == 'image_transcription':
+        old, old_records, _ = continuation_ancestors(previous)
+        recent_records, recent, _ = transcribed_views(previous)
+    elif kind == 'sentence_bank':
+        old, old_records, _ = old_views(previous)
+        recent_records, recent, _, _ = sentence_views(previous)
+    else:
+        raise ValueError('Unsupported prior view kind')
     if set(old) & set(recent):
         raise ValueError('Duplicate prior source')
     old.update(recent);old_records += recent_records
@@ -177,6 +216,13 @@ def continuation_audit(manifest):
     # The latest audit records only its delta; ancestors validate their own hashes.
     if len(old) != prior['material_count_total'] or any(digest(old[r['group_id']]) != r['normalized_material_sha256'] for r in prior['records']):
         raise ValueError('Frozen previous image audit inputs changed')
+    return old, old_records, prior
+
+
+def continuation_audit(manifest):
+    """Compare only new source groups; keep prior frozen report references."""
+    from audit_baseline_bank_forms import compare
+    old, old_records, prior = continuation_ancestors(manifest)
     records, new, _ = transcribed_views(manifest)
     if set(old) & set(new):
         raise ValueError('Repeated source is not a new group')
@@ -185,7 +231,8 @@ def continuation_audit(manifest):
     total = len(old) + len(new);pairs = total * (total - 1) // 2
     if pairs != prior['pair_count_total'] + len(comparisons):
         raise ValueError('Incremental pair coverage differs')
-    return {'version': '0.1', 'records_scope': 'new image-transcribed groups; previous247 via frozen references',
+    scope = manifest.get('audit_records_scope', 'new image-transcribed groups; previous247 via frozen references')
+    return {'version': '0.1', 'records_scope': scope,
             'prior_records_and_comparisons': manifest['prior_material_audit'], 'records': records,
             'material_count_total': total, 'parent_count_total': len({r['paper_identity'] for r in old_records + records}),
             'pair_count_total': pairs, 'prior_pairs_reused': prior['pair_count_total'], 'new_pair_count': len(comparisons),
