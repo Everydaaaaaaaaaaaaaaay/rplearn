@@ -1,0 +1,234 @@
+{
+  "version": "0.1",
+  "id": "grade7-isolated-word-forms",
+  "grade": 7,
+  "family": "sentence_form",
+  "questions": 15,
+  "candidate_path": "FirstRelease/Timeboxed/grade7-isolated-word-forms-v0.1.md",
+  "candidate_sha256": "cb7a49bbe3aa08a0e77f8bd87ed2c1848999a4ee633b2759b3efbae82b2ada49",
+  "anchor_group_ids": [
+    "grade7-jinan2025-21cnjy24695341.sentenceForms"
+  ],
+  "source_shape": {
+    "grade": 7,
+    "family": "sentence_form",
+    "responses": 15,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 15,
+      "given_word_slots": 10,
+      "ungiven_slots": 5,
+      "response_policy": "ungiven_one_word_given_correct_form",
+      "reference_contains_multiword_forms": true,
+      "source_key_multiword_forms": {
+        "74": "to go"
+      },
+      "source_label_is_not_passage_material": "阅读填空",
+      "points_each": 1,
+      "isolated_context_answer_uniqueness_not_established": true
+    }
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+    "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+  },
+  "source_reference": {
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade7-jinan2025-21cnjy24695341-resource-v0.2.txt",
+      "sha256": "71575f020818d7f59fbf7ef9f672aeccf53437a872cc2ab66de26fe70447f6fe"
+    },
+    "primary_input_sha256": "9ed2828132d1abad20a5f5a69133dc41d164a466bbf9534aa4f1848c50cd2633"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "Jack ________ his sister are in the same music club.",
+      "options": [],
+      "knownForms": [
+        "and"
+      ],
+      "rationale": "两个单数人称由and连接构成复数主语，与are一致。",
+      "maxWords": 1,
+      "number": 1
+    },
+    {
+      "stem": "Is this ________ (I) red notebook?",
+      "options": [],
+      "knownForms": [
+        "my"
+      ],
+      "rationale": "名词notebook前用形容词性物主代词my；mine不直接修饰其后的名词。",
+      "given_word": "I",
+      "number": 2
+    },
+    {
+      "stem": "Look! Here ________ (be) three maps of the farm.",
+      "options": [],
+      "knownForms": [
+        "are"
+      ],
+      "rationale": "当前呈现的three maps复数要求are，不按Here作主语选is。",
+      "given_word": "be",
+      "number": 3
+    },
+    {
+      "stem": "The postcard is ________ the two books, with one book on each side.",
+      "options": [],
+      "knownForms": [
+        "between"
+      ],
+      "rationale": "two books与one on each side共同限定在两者之间；不是in/under。",
+      "maxWords": 1,
+      "number": 4
+    },
+    {
+      "stem": "Our teacher ________ (greet) us every Monday.",
+      "options": [],
+      "knownForms": [
+        "greets"
+      ],
+      "rationale": "every Monday一般现在时、teacher单数，greet加s。",
+      "given_word": "greet",
+      "number": 5
+    },
+    {
+      "stem": "This is ________ (Dana) bicycle. She rides it to the library.",
+      "options": [],
+      "knownForms": [
+        "Dana's",
+        "Dana’s"
+      ],
+      "rationale": "名字后加所有格，直/弯撇号为同一形式；Dana不能直接表达自行车归属。",
+      "given_word": "Dana",
+      "number": 6
+    },
+    {
+      "stem": "We put three ________ (notice) on the board this morning.",
+      "options": [],
+      "knownForms": [
+        "notices"
+      ],
+      "rationale": "three要求复数notices；时间短语不决定这个名词的数。",
+      "given_word": "notice",
+      "number": 7
+    },
+    {
+      "stem": "Can you ________ (see) the tiny picture in the corner?",
+      "options": [],
+      "knownForms": [
+        "see"
+      ],
+      "rationale": "can后用动词原形see，不因you改sees。",
+      "given_word": "see",
+      "number": 8
+    },
+    {
+      "stem": "—________ notebook is this?\n—It's Leo's.",
+      "options": [],
+      "knownForms": [
+        "Whose"
+      ],
+      "rationale": "答语Leo的说明问归属，Whose；Who只问人，不能直接修饰notebook。",
+      "maxWords": 1,
+      "number": 9
+    },
+    {
+      "stem": "Lin can speak ________ (China).",
+      "options": [],
+      "knownForms": [
+        "Chinese"
+      ],
+      "rationale": "这里为国名转语言名Chinese，不能用China直接作speak的语言宾语。",
+      "given_word": "China",
+      "number": 10
+    },
+    {
+      "stem": "That idea sounds ________ (real) interesting.",
+      "options": [],
+      "knownForms": [
+        "really"
+      ],
+      "rationale": "修饰形容词interesting用副词really，sounds后整个really interesting仍作表语。",
+      "given_word": "real",
+      "number": 11
+    },
+    {
+      "stem": "Today's route is ________ same as yesterday's.",
+      "options": [],
+      "knownForms": [
+        "the"
+      ],
+      "rationale": "the same as固定表达相同关系；没有另一个名词可供my/our等直接修饰。",
+      "maxWords": 1,
+      "number": 12
+    },
+    {
+      "stem": "The guide showed ________ (we) the way to the garden.",
+      "options": [],
+      "knownForms": [
+        "us"
+      ],
+      "rationale": "showed后的间接宾语用宾格us；we是主格，our需后接名词。",
+      "given_word": "we",
+      "number": 13
+    },
+    {
+      "stem": "Would you like ________ (visit) our art room this Sunday?",
+      "options": [],
+      "knownForms": [
+        "to visit"
+      ],
+      "rationale": "邀请意图的would like to do，用to visit两词；不能强制把有给词空截成一词。",
+      "given_word": "visit",
+      "number": 14
+    },
+    {
+      "stem": "We can't play outside ________ of the heavy rain.",
+      "options": [],
+      "knownForms": [
+        "because"
+      ],
+      "rationale": "because of后接名词短语heavy rain；本空只填because，不能把of重复输入。",
+      "maxWords": 1,
+      "number": 15
+    }
+  ],
+  "target_constraints": {
+    "given_word_slots": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      13,
+      14
+    ],
+    "ungiven_one_word_slots": [
+      1,
+      4,
+      9,
+      12,
+      15
+    ],
+    "given_word_responses_can_contain_multiple_words": true
+  },
+  "canonical_response_block_sha256": "66be59df61c9e2e742b988c6650d993277410b62aa750f762d0a051ff0d76b7b",
+  "whole_sentence_output": false,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

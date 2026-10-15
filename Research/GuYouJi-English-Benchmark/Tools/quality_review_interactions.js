@@ -26,7 +26,7 @@ function render(){
  const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
  el('source-note').innerHTML='<p>完整作者稿：<a href="../../Research/GuYouJi-English-Benchmark/'+encodeURI(g.candidate.path)+'" target="_blank" rel="noopener">'+escapeText(g.id)+'</a></p><p>来源形式参照：'+escapeText((g.anchor_group_ids||[]).join(' / ')||'原卷未配对写作任务，详见作者稿')+'</p>';
  el('answer-toggle').onclick=()=>{if(!mediaReady(g)){el('notice').textContent='必要图片尚未完整显示，请等待加载完成后查看参考。';return;}el('notice').textContent='';el('teacher').hidden=!el('teacher').hidden;el('answer-toggle').textContent=el('teacher').hidden?'查看参考与解析':'收起参考与解析';
-  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
+  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
 el('coverage').textContent='当前 '+reviewData.preview_cells+'/'+reviewData.source_positive_cells+' 个有样本证据的年级/题型格可预览；其余格的状态逐项列明。';

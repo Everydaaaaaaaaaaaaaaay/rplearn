@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from grade_mode_evidence import BASE, REPO, load_ref
 from showcase_rich_reading import material_view
+from quality_review_contract import response_markdown
 
 FROZEN_PAGE = {'path': 'build/english-benchmark-research-20261012/showcase-rich-page20261016a-v0.1.html',
                'sha256': 'b79899a6d4ca0fc6cc6262677d1cd592032cb9e81bb268e7b213233020fdc99d'}
@@ -26,6 +27,19 @@ def full_markdown_candidate(meta):
         raise ValueError('Explicit unique student/author boundaries required')
     student = text[student_start[0].end():author_start[0].start()].strip()
     teacher = text[author_start[0].end():].strip()
+    typed_tasks = audit.get('review_response_tasks')
+    if typed_tasks is not None:
+        if student.count('<!-- responses:start -->') != 1 or student.count('<!-- responses:end -->') != 1:
+            raise ValueError('Unique canonical response boundary required')
+        left, tail = student.split('<!-- responses:start -->')
+        printed, right = tail.split('<!-- responses:end -->')
+        if printed.strip() != response_markdown(typed_tasks):
+            raise ValueError('Printed full response list and interactive contract differ')
+        if [q['number'] for q in typed_tasks] != list(range(1, audit['questions']+1)):
+            raise ValueError('Incomplete/reordered canonical task list')
+        student = left.strip()
+        if right.strip():
+            raise ValueError('Unbound student input after response list')
     student = re.sub(r'<!-- (?:passage|table):(?:start|end) -->\s*', '', student)
     if '<!--' in student:
         raise ValueError('Unknown input marker')
@@ -55,7 +69,11 @@ def full_markdown_candidate(meta):
 
     before = after = None
     closing = audit.get('target_format', {}).get('fixed_closing', '')
-    if meta['family'] == 'application_writing':
+    if typed_tasks is not None:
+        passage_html = render_input(student)
+        questions = typed_tasks
+        mode = 'quality_review_complete_tasks'
+    elif meta['family'] == 'application_writing':
         if student.count('[在此写完整正文]') != 1 or audit['questions'] != 1:
             raise ValueError('One complete writing field required')
         left, right = student.split('[在此写完整正文]')

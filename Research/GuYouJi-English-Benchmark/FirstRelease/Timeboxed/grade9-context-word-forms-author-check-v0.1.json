@@ -1,0 +1,172 @@
+{
+  "version": "0.1",
+  "id": "grade9-context-word-forms",
+  "grade": 9,
+  "family": "context_word_completion",
+  "questions": 8,
+  "candidate_path": "FirstRelease/Timeboxed/grade9-context-word-forms-v0.1.md",
+  "candidate_sha256": "c40fbcb4a9d3ac1b3e3df8699340bdce88a1458300c8dcf7b596591dd98468b5",
+  "anchor_group_ids": [
+    "g9.suzhou2024.singleVocabulary"
+  ],
+  "source_shape": {
+    "grade": 9,
+    "family": "context_word_completion",
+    "responses": 8,
+    "options_each": null,
+    "details": {
+      "response_limit": "one_word",
+      "cues": [
+        "Chinese_meaning",
+        "initial_letter"
+      ]
+    }
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-grade9-form-image-views-v0.2.json",
+    "sha256": "80f6f3a98d449e1c6212a4cfb22593effe3e087c25168505370726d8878514d7"
+  },
+  "source_reference": {
+    "parent_document": {
+      "path": "build/english-benchmark-research-20261012/raw/suzhou2024-official-english-image1-typechecked20261014.response",
+      "sha256": "82f37e0d1d611c6cba8a8c1fba569c3e22655569da34ad30aa0279993006f196"
+    },
+    "transcription": {
+      "path": "build/english-benchmark-research-20261012/baseline-grade9-form-source-text20261015x-v0.2.json",
+      "sha256": "d96db7a6e11c4d282bbf9b003fea5abf558a0230f461eb5b6890f977bffbbb07"
+    },
+    "record_index": 6,
+    "record_sha256": "0348036a6f241c610cfc1dab7b0b1310fad09daa35498c7a059a13192255f418"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "Keep ________ (练习), and the steps will become easier.",
+      "options": [],
+      "knownForms": [
+        "practising",
+        "practicing"
+      ],
+      "rationale": "keep后用动名词；英式practising/美式practicing均接受，不把拼写变体计成两个响应。",
+      "meaning": "练习",
+      "number": 1,
+      "maxWords": 1
+    },
+    {
+      "stem": "We keep these old ________ (照片) in a dry box.",
+      "options": [],
+      "knownForms": [
+        "photos",
+        "photographs"
+      ],
+      "rationale": "these要求复数，photo的复数photos不加es；photographs为同义可接受表达。",
+      "meaning": "照片",
+      "number": 2,
+      "maxWords": 1
+    },
+    {
+      "stem": "The volunteers have ________ (收集) enough empty jars for the project.",
+      "options": [],
+      "knownForms": [
+        "collected",
+        "gathered"
+      ],
+      "rationale": "have后用过去分词；collected与gathered在收集空罐语境均成立，不能机械只认一个词。",
+      "meaning": "收集",
+      "number": 3,
+      "maxWords": 1
+    },
+    {
+      "stem": "Please wait ________ (耐心地) while we check your ticket.",
+      "options": [],
+      "knownForms": [
+        "patiently"
+      ],
+      "rationale": "修饰wait用patiently；patient通常为形容词或名词，不能充当此处方式副词。",
+      "meaning": "耐心地",
+      "number": 4,
+      "maxWords": 1
+    },
+    {
+      "stem": "The two sides of the scale are level now. The scale is in b________.",
+      "options": [],
+      "knownForms": [
+        "balance"
+      ],
+      "rationale": "in balance表示处于平衡状态；balanced不能放进此处in＋名词结构。",
+      "initial": "b",
+      "number": 5,
+      "maxWords": 1
+    },
+    {
+      "stem": "The assistant c________ each box aloud: one, two, three, and so on.",
+      "options": [],
+      "knownForms": [
+        "counts"
+      ],
+      "rationale": "逐件报数支持count；一般现在时单数assistant用counts。",
+      "initial": "c",
+      "number": 6,
+      "maxWords": 1
+    },
+    {
+      "stem": "We meet every Friday without missing a week, so the club has a r________ meeting schedule.",
+      "options": [],
+      "knownForms": [
+        "regular"
+      ],
+      "rationale": "every Friday且不间断给出regular的规律性依据；random与此相反。",
+      "initial": "r",
+      "number": 7,
+      "maxWords": 1
+    },
+    {
+      "stem": "Before choosing a cover, we will m________ the width of the table with a ruler.",
+      "options": [],
+      "knownForms": [
+        "measure"
+      ],
+      "rationale": "will后用原形measure，尺子与width限定测量宽度；measurement为名词不合此结构。",
+      "initial": "m",
+      "number": 8,
+      "maxWords": 1
+    }
+  ],
+  "target_constraints": {
+    "full_word_with_initial": true,
+    "Chinese_hint_slots": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "initial_hint_slots": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "initial_letters": {
+      "5": "b",
+      "6": "c",
+      "7": "r",
+      "8": "m"
+    },
+    "all_responses_words": 1
+  },
+  "canonical_response_block_sha256": "95755fb27b153be4e14cb2a9fcf57a6fd9b7366fced0767215d69e2b64803182",
+  "whole_sentence_output": false,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

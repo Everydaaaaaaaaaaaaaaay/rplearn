@@ -1,0 +1,179 @@
+{
+  "version": "0.1",
+  "id": "grade11-context-spelling",
+  "grade": 11,
+  "family": "context_word_completion",
+  "questions": 10,
+  "candidate_path": "FirstRelease/Timeboxed/grade11-context-spelling-v0.1.md",
+  "candidate_sha256": "06f25128e8bc008e42fcbec7ff9b41ae684f5728494dd97f1f53763205204344",
+  "anchor_group_ids": [
+    "grade11-heze2026-21cnjy24886046.words"
+  ],
+  "source_shape": {
+    "family": "context_word_completion",
+    "responses": 10,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 10,
+      "initial_and_Chinese_given": true,
+      "initial_vs_suffix_scoring_unknown": true
+    },
+    "grade": 11
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+    "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+  },
+  "source_reference": {
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+      "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+    },
+    "primary_input_sha256": "da07e86ddea43cb4908c375c924a30ccbcb27e216ac167d3d5861935b65a5feb"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "The figures in the final report must be a________ (准确的), so please check them again.",
+      "options": [],
+      "knownForms": [
+        "accurate"
+      ],
+      "rationale": "be后用形容词accurate；accuracy是名词，accurately为副词。",
+      "initial": "a",
+      "meaning": "准确的",
+      "number": 1,
+      "maxWords": 1
+    },
+    {
+      "stem": "The club hopes to r________ (减少) the amount of paper used in its weekly notices.",
+      "options": [],
+      "knownForms": [
+        "reduce"
+      ],
+      "rationale": "to后接原形reduce，减少amount不是把所有纸移除；reduction不合动词位置。",
+      "initial": "r",
+      "meaning": "减少",
+      "number": 2,
+      "maxWords": 1
+    },
+    {
+      "stem": "Each team member is r________ (负责的) for checking one part of the display.",
+      "options": [],
+      "knownForms": [
+        "responsible"
+      ],
+      "rationale": "be responsible for为承担责任的搭配；responsibility不能直接作此形容词表语。",
+      "initial": "r",
+      "meaning": "负责的",
+      "number": 3,
+      "maxWords": 1
+    },
+    {
+      "stem": "Living away from home helped her become more i________ (独立的) in making everyday decisions.",
+      "options": [],
+      "knownForms": [
+        "independent"
+      ],
+      "rationale": "more后用形容词independent，independence是名词；此句说日常决策能力。",
+      "initial": "i",
+      "meaning": "独立的",
+      "number": 4,
+      "maxWords": 1
+    },
+    {
+      "stem": "The visit is on our s________ (日程安排), but the starting time has not been confirmed.",
+      "options": [],
+      "knownForms": [
+        "schedule"
+      ],
+      "rationale": "on our schedule表示已列入日程；拼写schedule，非只填写缺失后缀。",
+      "initial": "s",
+      "meaning": "日程安排",
+      "number": 5,
+      "maxWords": 1
+    },
+    {
+      "stem": "Keeping a clear record is e________ (必不可少的) when several people share the same equipment.",
+      "options": [],
+      "knownForms": [
+        "essential"
+      ],
+      "rationale": "is后用essential形容词，essence不是同一语法形式。",
+      "initial": "e",
+      "meaning": "必不可少的",
+      "number": 6,
+      "maxWords": 1
+    },
+    {
+      "stem": "The designer offered a p________ (切实可行的) way to repair the stand using tools we already had.",
+      "options": [],
+      "knownForms": [
+        "practical"
+      ],
+      "rationale": "practical修饰way并由现成工具的可实施性支撑；practically不修饰名词way。",
+      "initial": "p",
+      "meaning": "切实可行的",
+      "number": 7,
+      "maxWords": 1
+    },
+    {
+      "stem": "We cannot accept more than forty visitors. Forty is the m________ (最大限度).",
+      "options": [],
+      "knownForms": [
+        "maximum"
+      ],
+      "rationale": "定冠词后作上限名词maximum；minimum意为下限，与cannot accept more than不合。",
+      "initial": "m",
+      "meaning": "最大限度",
+      "number": 8,
+      "maxWords": 1
+    },
+    {
+      "stem": "The teacher demonstrated a new m________ (方法) for organising the interview notes.",
+      "options": [],
+      "knownForms": [
+        "method"
+      ],
+      "rationale": "a new后接单数method，for说明方法用途；不同语义的manner或means须按完整语境复核，参考集合未认证穷尽。",
+      "initial": "m",
+      "meaning": "方法",
+      "number": 9,
+      "maxWords": 1
+    },
+    {
+      "stem": "Completing the first exhibition together was an important a________ (成就) for the new club.",
+      "options": [],
+      "knownForms": [
+        "achievement",
+        "accomplishment"
+      ],
+      "rationale": "两词均为a开头可数成就名词，an important后单数，均与完成首次展览相容。",
+      "initial": "a",
+      "meaning": "成就",
+      "number": 10,
+      "maxWords": 1
+    }
+  ],
+  "target_constraints": {
+    "full_word_with_initial": true,
+    "initial_and_Chinese_given": true,
+    "all_responses_words": 1
+  },
+  "canonical_response_block_sha256": "24a88b085f99744bcbcd6c22767c8a78101227d1fe6c4b40a9424221aed69891",
+  "whole_sentence_output": false,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

@@ -22,8 +22,8 @@
   ],
   "completion_unit": "one complete major task group per grade and observed task family;not one subquestion",
   "review_matrix": {
-    "path": "FirstRelease/timeboxed-review-matrix-v0.2.json",
-    "sha256": "2d891bca6c35d5d8e45503eeb7681026e9929e81cd228f31467a0aaa19d7d488"
+    "path": "FirstRelease/timeboxed-review-matrix-v0.3.json",
+    "sha256": "e3ab792d7b8bf55042f7f8cf36d7bd7323a6649a6491123b688f8b2044a8f384"
   },
   "current_standard": {
     "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
@@ -43,31 +43,36 @@
   "automatic_wakeup_interval_minutes": 30,
   "finish_action": "deliver consolidated report and review page,delete automation,wait for user quality review",
   "next_actions": [
-    "Use current matrix missing35 cells: prioritize complete dialogue/sentence/open-response/profile representatives using existing source evidence",
-    "Create ordinary-source grade8 passage-form representative or keep simulated-only cell explicitly unfulfilled",
-    "Extend full-Markdown renderer only with complete response/option/media contracts for each new task family",
-    "Rebuild the review page and verify affected cells; preserve existing payloads and source counts",
-    "Begin closeout by the saved cutoff even if some cells remain incomplete"
+    "Use current missing28 cells plus1simulated-only cell; prioritize sentence choices/dialogues/open response/profiles",
+    "Create ordinary-source grade8 passage-form representative instead of silently upgrading simulated-only evidence",
+    "Missing required picture panels/counts must not be guessed; seek only targeted needed source evidence or label remaining gap/prototype distinctly",
+    "Extend full-Markdown renderer with complete task contracts;preserve old41payloads and affected browser evidence",
+    "Begin closeout by the saved cutoff regardless of remaining gaps"
   ],
   "new_author_index": {
-    "path": "FirstRelease/Timeboxed/authored-review-index-v0.1.json",
-    "sha256": "1d986b18a374ff625dfca4769a5f183199b8bf336db410d9a7a57e8009448dee"
+    "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+    "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
   },
   "review_page_url": "http://127.0.0.1:8766/build/english-benchmark-quality-review/index.html",
-  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.2.json",
+  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.3.json",
   "current_progress": {
     "baseline_authors": 53,
-    "new_authors": 5,
-    "combined_authored_groups": 58,
-    "combined_response_positions": 343,
-    "preview_grade_family_cells": 34,
-    "preview_response_positions": 194,
+    "new_authors": 12,
+    "combined_authored_groups": 65,
+    "combined_response_positions": 393,
+    "preview_grade_family_cells": 41,
+    "preview_response_positions": 244,
     "source_positive_cells": 70,
-    "missing_original_cells": 35,
+    "missing_original_cells": 28,
     "simulated_anchor_only_cells_pending": 1,
     "source_unknown_cells": 74,
-    "all_current_preview_cells_browser_checked": 34,
-    "individual_browser_behavior_records": 20,
-    "final_delivery_complete": false
+    "all_current_preview_cells_browser_checked": 41,
+    "individual_browser_behavior_records": 37,
+    "final_delivery_complete": false,
+    "browser_evidence_reuse": {
+      "unchanged_prior_cells": 34,
+      "new_cells": 7,
+      "latest_specific_records": 17
+    }
   }
 }

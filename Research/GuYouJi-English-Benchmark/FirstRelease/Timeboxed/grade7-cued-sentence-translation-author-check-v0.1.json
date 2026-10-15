@@ -1,0 +1,106 @@
+{
+  "version": "0.1",
+  "id": "grade7-cued-sentence-translation",
+  "grade": 7,
+  "family": "sentence_translation",
+  "questions": 3,
+  "candidate_path": "FirstRelease/Timeboxed/grade7-cued-sentence-translation-v0.1.md",
+  "candidate_sha256": "a12146c3c22c69fde4e9abd5bad22a733cd95f28039e079b4fb3be5d65cd342e",
+  "anchor_group_ids": [
+    "g7.xicheng2025.translation"
+  ],
+  "source_shape": {
+    "grade": 7,
+    "family": "sentence_translation",
+    "responses": 3,
+    "options_each": null,
+    "details": {
+      "required_cues": true
+    }
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-sentence-bank-views-v0.1.json",
+    "sha256": "01b979e4804a435bfbf8e0d2677584301591ba488e6fb1a6afc58af6ee40a9e9"
+  },
+  "source_reference": {
+    "parent_document": {
+      "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+      "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+    },
+    "transcription": {
+      "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-source-text20261015t-v0.1.json",
+      "sha256": "f0f8dbc3dda2e93c934e1f015629267bc42be90084f973f56277605fe5cdec64"
+    },
+    "record_index": 5,
+    "record_sha256": "7ee17964e95543e4152b1203962fde7cd9478a7c9fb113a799eaf9f8d60a8395"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "这次练习对我们有帮助。（good for, us）",
+      "options": [],
+      "referenceAnswers": [
+        "This exercise is good for us.",
+        "This practice is good for us."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "主语/谓语完整，be good for us表达有益/帮助；只写good for us不是完整句。",
+      "number": 1
+    },
+    {
+      "stem": "在团队活动中，倾听很重要。（important, in group activities）",
+      "options": [],
+      "referenceAnswers": [
+        "Listening is important in group activities.",
+        "It is important to listen in group activities."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "动名词主语或It形式主语均可，important与规定介词短语保留；不能写Listen is important。",
+      "number": 2
+    },
+    {
+      "stem": "志愿者们总是尽力保持房间整洁。（try their best）",
+      "options": [],
+      "referenceAnswers": [
+        "The volunteers always try their best to keep the room tidy.",
+        "Volunteers always try their best to keep the room neat."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "复数主语搭配try their best to do，keep＋宾语＋形容词；只报尽力而丢保持房间整洁未完成全部意思。",
+      "number": 3
+    }
+  ],
+  "target_constraints": {
+    "whole_sentence_outputs": true,
+    "required_cues": true,
+    "word_limit": null,
+    "source_points_each": 2
+  },
+  "canonical_response_block_sha256": "5ee87c7b3bb707f3e89a024a6e96635e2ae7a2e5180b9ca3a91c0876d40bc4cd",
+  "whole_sentence_output": true,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

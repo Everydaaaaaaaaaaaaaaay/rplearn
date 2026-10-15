@@ -1,0 +1,123 @@
+{
+  "version": "0.1",
+  "id": "grade7-context-spelling",
+  "grade": 7,
+  "family": "context_word_completion",
+  "questions": 5,
+  "candidate_path": "FirstRelease/Timeboxed/grade7-context-spelling-v0.1.md",
+  "candidate_sha256": "62627bcbc1ad84a5e5158a1a7558fe53bf2b7c55ebc74893475a845a5e8119e9",
+  "anchor_group_ids": [
+    "grade7-hefei2025-21cnjy26607976.initialWords"
+  ],
+  "source_shape": {
+    "family": "context_word_completion",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "materials": 5,
+      "response_policy": "initial_and_Chinese_given_full_vs_suffix_variants",
+      "necessary_input_complete": true
+    },
+    "grade": 7
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+    "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+  },
+  "source_reference": {
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+      "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+    },
+    "primary_input_sha256": "8bde77a7037b5478f545dd5b60e693d5a66ed545832622c613325d1167242d33"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "Our town has a small m________ (博物馆) near the river.",
+      "options": [],
+      "knownForms": [
+        "museum"
+      ],
+      "rationale": "a small后接单数可数名词museum，与博物馆提示及m一致。",
+      "initial": "m",
+      "meaning": "博物馆",
+      "number": 1,
+      "maxWords": 1
+    },
+    {
+      "stem": "This part of the river is very d________ (深的), so please stay behind the fence.",
+      "options": [],
+      "knownForms": [
+        "deep"
+      ],
+      "rationale": "is very后形容词deep，depth是名词不能直接放在此处。",
+      "initial": "d",
+      "meaning": "深的",
+      "number": 2,
+      "maxWords": 1
+    },
+    {
+      "stem": "You can borrow this coat u________ (直到……为止) Friday.",
+      "options": [],
+      "knownForms": [
+        "until"
+      ],
+      "rationale": "until Friday表示借用持续到周五；unless不能直接以Friday作从句。",
+      "initial": "u",
+      "meaning": "直到……为止",
+      "number": 3,
+      "maxWords": 1
+    },
+    {
+      "stem": "Please write the two a________ (地址) on different cards.",
+      "options": [],
+      "knownForms": [
+        "addresses"
+      ],
+      "rationale": "two要求复数；address以ss结尾，复数加es成addresses，不是addresss。",
+      "initial": "a",
+      "meaning": "地址",
+      "number": 4,
+      "maxWords": 1
+    },
+    {
+      "stem": "Mia usually f________ (完成) her reading before dinner.",
+      "options": [],
+      "knownForms": [
+        "finishes"
+      ],
+      "rationale": "Mia第三人称单数、usually给一般现在时习惯，finish加es；不写finishs。",
+      "initial": "f",
+      "meaning": "完成",
+      "number": 5,
+      "maxWords": 1
+    }
+  ],
+  "target_constraints": {
+    "full_word_with_initial": true,
+    "initial_letters": [
+      "m",
+      "d",
+      "u",
+      "a",
+      "f"
+    ],
+    "all_responses_words": 1
+  },
+  "canonical_response_block_sha256": "921d3fdf80e4b7fea468131e0c2ae33950adbb163b5b70a7ccdd7fd6bf53d5a6",
+  "whole_sentence_output": false,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

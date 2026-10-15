@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "grade10-constrained-sentence-translation",
+  "grade": 10,
+  "family": "sentence_translation",
+  "questions": 5,
+  "candidate_path": "FirstRelease/Timeboxed/grade10-constrained-sentence-translation-v0.1.md",
+  "candidate_sha256": "aba6a5c2116364cf6ce904cd2600ec29988e1eb62da1694ed9793e844c546cb7",
+  "anchor_group_ids": [
+    "grade10-jinhua2025-21cnjy22399612.translation"
+  ],
+  "source_shape": {
+    "family": "sentence_translation",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "necessary_input_complete": true,
+      "materials": 5,
+      "whole_sentence_outputs": true,
+      "keywords_and_grammar_constraints": true,
+      "points_each": 3
+    },
+    "grade": 10
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+    "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+  },
+  "source_reference": {
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+      "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+    },
+    "primary_input_sha256": "9a076c86cccbc277e8137e247516bd73306d12aba878df98925311bc70cb43ce"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "学校正在用数字设备保存这批旧照片。（现在进行时的被动语态；preserve）",
+      "options": [],
+      "referenceAnswers": [
+        "These old photographs are being preserved with digital equipment by the school.",
+        "These old photos are being preserved by the school using digital equipment."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "旧照片作承受者，are being preserved体现正在进行的被动；The school preserves虽然近义却不满足指定结构。",
+      "number": 1
+    },
+    {
+      "stem": "虽然腿受伤了，Nora依然完成了比赛，这使她的家人感到自豪。（定语从句；injure）",
+      "options": [],
+      "referenceAnswers": [
+        "Although her leg was injured, Nora still finished the race, which made her family proud.",
+        "Although Nora had injured her leg, she still finished the race, which made her family proud."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "injure的恰当形式与让步关系保留，which从句指完成比赛这件事；仅用and made改写没有满足定语从句要求。",
+      "number": 2
+    },
+    {
+      "stem": "许多初学者发现清楚地解释这个过程很有挑战性。（find＋宾语＋宾语补足语；challenge）",
+      "options": [],
+      "referenceAnswers": [
+        "Many beginners find it challenging to explain this process clearly.",
+        "Many beginners find explaining this process clearly a challenge."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "it＋形容词补语＋真正宾语，或动名词宾语＋名词补语均满足find结构；challenge可转challenging，不能find it is challenging冒充该宾补结构。",
+      "number": 3
+    },
+    {
+      "stem": "我仍记得那个下午，你的鼓励打消了我的疑虑。（定语从句；sweep）",
+      "options": [],
+      "referenceAnswers": [
+        "I still remember the afternoon when your encouragement swept away my doubts.",
+        "I still remember that afternoon, when your encouragement swept my doubts away."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "when引导修饰afternoon的定语从句，swept away表达打消疑虑；时点与鼓励行为相连，不能仅并列两句而漏规定结构。",
+      "number": 4
+    },
+    {
+      "stem": "老师们担心练习时间的减少可能影响学生的进步。（concern, loss）",
+      "options": [],
+      "referenceAnswers": [
+        "Teachers are concerned that the loss of practice time may affect students' progress.",
+        "The teachers are concerned that a loss of practice time might affect the students' progress."
+      ],
+      "parts": [
+        {
+          "label": "完整英文句子"
+        }
+      ],
+      "rationale": "be concerned与loss都须保留，may/might表达可能性；绝对断言一定毁掉进步改变原意，lost不能代替规定的名词loss。",
+      "number": 5
+    }
+  ],
+  "target_constraints": {
+    "whole_sentence_outputs": true,
+    "keywords_and_grammar_constraints": true,
+    "word_limit": null,
+    "source_points_each": 3
+  },
+  "canonical_response_block_sha256": "796fcd5e6adbdacb17776a6c93fd632995e9455feca10756633f949f14123434",
+  "whole_sentence_output": true,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false
+}

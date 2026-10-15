@@ -1,0 +1,4177 @@
+{
+  "version": "0.3",
+  "scope": "grades7_to12_timeboxed_quality_review_inventory",
+  "source_appearance": {
+    "path": "FirstRelease/Sampling/grade-task-appearance-v0.1.json",
+    "sha256": "19c86ac955a0238ab5c71d54b57ab61c89a828b846e338b0b8802aa7f5bcc883"
+  },
+  "previous_showcase": {
+    "path": "FirstRelease/showcase-selection-v0.7.json",
+    "sha256": "18f72974f0a5a2b89bf5ab3f933cbd9fa6dcb8b0ee500b66dd18dd17856a415d"
+  },
+  "existing_authored_groups": 65,
+  "existing_authored_responses": 393,
+  "source_positive_cells": 70,
+  "cell_delivery_states": {
+    "existing_complete_candidate_needs_review_UI": 41,
+    "existing_simulated_anchor_candidate_needs_ordinary_source_form_review": 1,
+    "needs_complete_original_representative": 28,
+    "source_evidence_unknown_do_not_invent_grade_adaptation": 74
+  },
+  "cells": [
+    {
+      "grade": 7,
+      "family": "application_writing",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-hefei2025-21cnjy26607976.speech",
+        "grade7-jinan2025-21cnjy24695341.writing",
+        "grade7-suzhou2025-21cnjy23303742.writing",
+        "grade7-wuhan2025-21cnjy23303148.diary"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 2,
+        "unknown": 1
+      },
+      "label": "应用写作",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-town-visit-plan",
+          "grade": 7,
+          "family": "application_writing",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade7-town-visit-plan-v0.1.md",
+            "sha256": "d080294d51eb709e37a3344e427f90202c932f0b27700046e93a995f9583a195"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade7-town-visit-plan-author-check-v0.1.json",
+            "sha256": "1f003422e78febfbcb6b9d7395b653e24fc92e609f8f6e0e337a04a716166716"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade7-suzhou2025-21cnjy23303742.writing"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-town-visit-plan"
+    },
+    {
+      "grade": 8,
+      "family": "application_writing",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade8-hubei2026-21cnjy26105408.forumReply",
+        "grade8-xiaoshan2025-21cnjy22251031.email"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 1,
+        "unknown": 0
+      },
+      "label": "应用写作",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-hobby-forum-reply",
+          "grade": 8,
+          "family": "application_writing",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade8-hobby-forum-reply-v0.1.md",
+            "sha256": "88ba8493d7cb2dc5f7d44940b12b29aba86b267868d76ba5fe4a6a39ed961aa9"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade8-hobby-forum-reply-author-check-v0.1.json",
+            "sha256": "1339541d78d62292d2e12ebcf99ee0a022aea2e5d51df511ecbe518f5eed5c2a"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade8-hubei2026-21cnjy26105408.forumReply"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade8-hobby-forum-reply"
+    },
+    {
+      "grade": 9,
+      "family": "application_writing",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-boxing2025-21cnjy24857076.speech",
+        "grade9-chengdu2025-21cnjy23208601.speech",
+        "grade9-nanshan2026-21cnjy25758947.letter",
+        "grade9-zhongshan2025-21cnjy22278047.letter"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 2,
+        "unknown": 0
+      },
+      "label": "应用写作",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-graduation-speech",
+          "grade": 9,
+          "family": "application_writing",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade9-graduation-speech-v0.1.md",
+            "sha256": "ac9d80d0a0dcfb22647536cc92a4f4f8bd0886db59f6430d0b7f52a69680f7fc"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade9-graduation-speech-author-check-v0.1.json",
+            "sha256": "b3d4ba8257d4fb8bebeb9f2386e9cc9504ee5a3b1f151d6bad394a4c1439a72f"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade9-boxing2025-21cnjy24857076.speech"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-graduation-speech"
+    },
+    {
+      "grade": 10,
+      "family": "application_writing",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade10-jinhua2025-21cnjy22399612.article",
+        "grade10-shenzhenlower2026-21cnjy26167651.speech",
+        "grade10-weishi2026-21cnjy25962499.mail"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 1,
+        "unknown": 0
+      },
+      "label": "应用写作",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-project-advice-email",
+          "grade": 10,
+          "family": "application_writing",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-project-advice-email-v0.1.md",
+            "sha256": "88401eedcdf6fa0f62017993c07851df72a165ea9f7f0a5ae709ec2319ded955"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-project-advice-email-author-check-v0.1.json",
+            "sha256": "34dbba01eb242e1aacaf68bda788dc80d998898856a18f2822fe3f280797564f"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [],
+          "source_form_support": "unpaired_source_form_and_rubric_reference_not_new_source_record",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-project-advice-email"
+    },
+    {
+      "grade": 11,
+      "family": "application_writing",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade11-heze2026-21cnjy24886046.mail",
+        "grade11-tianjin2026-21cnjy26082071.surveyWriting",
+        "grade11-yinchuan2026-21cnjy25860535.application"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 1,
+        "unknown": 1
+      },
+      "label": "应用写作",
+      "existing_authored_candidates": [
+        {
+          "id": "grade11-family-dish-invitation",
+          "grade": 11,
+          "family": "application_writing",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade11-family-dish-invitation-v0.1.md",
+            "sha256": "314c8b5470e996997a3254bc3660bab1864283c61bf086d7549a4ce982760fed"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade11-family-dish-invitation-author-check-v0.1.json",
+            "sha256": "40b8fcaf46f501100f200d1f47d7acfecf72dea0763ff25f155f90680d3ccf26"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade11-heze2026-21cnjy24886046.mail"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade11-family-dish-invitation"
+    },
+    {
+      "grade": 12,
+      "family": "application_writing",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade12-linyi2025-21cnjy24838709.mail",
+        "grade12-tianjin2025-21cnjy24812550.writing",
+        "grade12-tianjinlower2025-21cnjy22402528.speech",
+        "grade12-yali2026-21cnjy25133058.article"
+      ],
+      "input_states": {
+        "confirmed": 3,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "应用写作",
+      "existing_authored_candidates": [
+        {
+          "id": "grade12-cultural-gift-advice",
+          "grade": 12,
+          "family": "application_writing",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade12-cultural-gift-advice-v0.1.md",
+            "sha256": "91955a8479dc3aefa8dc88d2aa7e081b5274ad13cc25635cabf6fa5b64ea4181"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade12-cultural-gift-advice-author-check-v0.1.json",
+            "sha256": "cce085ce3bec26575a11c2611881401bc32730785aaed49b7f4da36c6493931b"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade12-linyi2025-21cnjy24838709.mail"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade12-cultural-gift-advice"
+    },
+    {
+      "grade": 7,
+      "family": "choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.2019.cloze",
+        "g7.2021.cloze",
+        "g7.xicheng2025.clozeStory",
+        "grade7-hefei2025-21cnjy26607976.clozeA",
+        "grade7-hefei2025-21cnjy26607976.clozeB",
+        "grade7-jinan2025-21cnjy24695341.cloze",
+        "grade7-suzhou2025-21cnjy23303742.cloze",
+        "grade7-wuhan2025-21cnjy23303148.cloze"
+      ],
+      "input_states": {
+        "confirmed": 5,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "单选完形",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-boxes-cloze-v0.1",
+          "grade": 7,
+          "family": "choice_cloze",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade7-boxes-cloze-v0.1.md",
+            "sha256": "5e5c3cd42ee3f7cbb3a427cf06b6036de37a9f7151e1fd40d1d764e960386416"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade7-boxes-cloze-author-check-v0.1.json",
+            "sha256": "b0ae70575e2b81afbcdf45e49d1adeae10733438f9f8796f121b958b4cb6f26e"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g7.2021.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade7-first-recording-six-cloze",
+          "grade": 7,
+          "family": "choice_cloze",
+          "questions": 6,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade7-first-recording-six-cloze-v0.1.md",
+            "sha256": "f99c3253622c43669387c27b8ddcbb3731a29ead6ca28a9a700650fcc804ae30"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade7-first-recording-six-cloze-author-check-v0.1.json",
+            "sha256": "4fce40fee8c3829aa21969b18813ada9cbd8694e8d9fa82e163eac8536326a96"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g7.xicheng2025.clozeStory"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-boxes-cloze-v0.1"
+    },
+    {
+      "grade": 8,
+      "family": "choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.2025.cloze",
+        "g8.2025fengtai.cloze",
+        "g8.bnu2026.cloze",
+        "g8.changjun2024.cloze",
+        "g8.fengtai2026.cloze",
+        "grade8-hubei2026-21cnjy26105408.cloze",
+        "grade8-xiaoshan2025-21cnjy22251031.cloze"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 5
+      },
+      "label": "单选完形",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-model-boat-labels-eight-cloze",
+          "grade": 8,
+          "family": "choice_cloze",
+          "questions": 8,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-v0.1.md",
+            "sha256": "9a93976c320dd5c9fe7be22d778f25d1b48642afbb6324cc7329a383ef67d02d"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-author-check-v0.1.json",
+            "sha256": "5c3b4503d3284679ceeb7b1da24de26aae35a7541b22b589ac7ca767d81bb879"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g8.fengtai2026.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade8-radio-cloze-v0.1",
+          "grade": 8,
+          "family": "choice_cloze",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade8-radio-cloze-v0.1.md",
+            "sha256": "f5d634c3bf3a76d6d53bcdc17419e3255915095016e3aeecd6292c430f114377"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade8-radio-cloze-author-check-v0.1.json",
+            "sha256": "5c0ad425abccfe030bb2e813679588273c66b1940a8a005a3ca897bfe404b2ca"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g8.2025.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade8-model-boat-labels-eight-cloze"
+    },
+    {
+      "grade": 9,
+      "family": "choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.2025.cloze",
+        "g9.2026.cloze",
+        "g9.suzhou2024.cloze",
+        "grade9-boxing2025-21cnjy24857076.cloze",
+        "grade9-chengdu2025-21cnjy23208601.clozeA",
+        "grade9-chengdu2025-21cnjy23208601.clozeB",
+        "grade9-nanshan2026-21cnjy25758947.cloze",
+        "grade9-zhongshan2025-21cnjy22278047.cloze"
+      ],
+      "input_states": {
+        "confirmed": 5,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "单选完形",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-cycle-shop-cloze-v0.1",
+          "grade": 9,
+          "family": "choice_cloze",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-v0.1.md",
+            "sha256": "88754cf5c07e353666bea7c8cc39197db28145e4db44de9a3e1727df47840d68"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-author-check-v0.1.json",
+            "sha256": "ba051f458600cfa3461d6c2e82b82e821060a724126afeabecda0f25e571d6ca"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g9.2026.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade9-garden-notes-ten-cloze",
+          "grade": 9,
+          "family": "choice_cloze",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade9-garden-notes-ten-cloze-v0.1.md",
+            "sha256": "7ef13c508d37a5c3eddf282361572fefc12eb7b5444a8b43dbad8aabfb0c3f8a"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade9-garden-notes-ten-cloze-author-check-v0.1.json",
+            "sha256": "45716e465665830ab42b0498881728f2322edd1d4ca57c7ea430625117c64dc2"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g9.suzhou2024.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-cycle-shop-cloze-v0.1"
+    },
+    {
+      "grade": 10,
+      "family": "choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g10.2024.cloze",
+        "g10.2025yearend.cloze",
+        "g10.wenzhou2025.cloze",
+        "grade10-jinhua2025-21cnjy22399612.cloze",
+        "grade10-shenzhenlower2026-21cnjy26167651.cloze",
+        "grade10-weishi2026-21cnjy25962499.cloze"
+      ],
+      "input_states": {
+        "confirmed": 3,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "单选完形",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-festival-posters-ten-cloze",
+          "grade": 10,
+          "family": "choice_cloze",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-v0.1.md",
+            "sha256": "a01671685075afcc0ea2f8e913ff15c2a83fb55b4a3a8412dc6dc39857870442"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-author-check-v0.1.json",
+            "sha256": "5d207ce7403311a584bd3c7303cd1dc7c508b39af954d4e11d3d27bdcfb7e2f2"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g10.2024.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade10-theatre-cloze-v0.1",
+          "grade": 10,
+          "family": "choice_cloze",
+          "questions": 15,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade10-theatre-cloze-v0.1.md",
+            "sha256": "5d4e5e2c4b573032368dd36541b41db310cde1f5461c5391159f28c7f1263ec0"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade10-theatre-cloze-author-check-v0.1.json",
+            "sha256": "aa6ba54ba18954d54f43e5a9bc2be71ea3d201d7fbe843d1c485cdd48d3c5d21"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g10.2025yearend.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-festival-posters-ten-cloze"
+    },
+    {
+      "grade": 11,
+      "family": "choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g11.2024.cloze",
+        "g11.2025.cloze",
+        "g11.spring2024.cloze",
+        "grade11-heze2026-21cnjy24886046.cloze",
+        "grade11-tianjin2026-21cnjy26082071.cloze",
+        "grade11-yinchuan2026-21cnjy25860535.cloze"
+      ],
+      "input_states": {
+        "confirmed": 3,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "单选完形",
+      "existing_authored_candidates": [
+        {
+          "id": "grade11-exhibition-cloze-v0.1",
+          "grade": 11,
+          "family": "choice_cloze",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade11-exhibition-cloze-v0.1.md",
+            "sha256": "113668be23b33c8a777f9884303137d0dcad6c2b589c4f89e9b821aabfc275aa"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade11-exhibition-cloze-author-check-v0.1.json",
+            "sha256": "5fb919fb502a3ae78137bb3411519b3aeb032c44880c497c4b619a8770d2c628"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g11.2024.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade11-maps-funding-cloze-v0.1",
+          "grade": 11,
+          "family": "choice_cloze",
+          "questions": 15,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade11-maps-funding-cloze-v0.1.md",
+            "sha256": "3449f56faeb0792b2f7afdfae82c7d5c1921669fc9a52325ef4533e0e3e44c49"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade11-maps-funding-cloze-author-check-v0.1.json",
+            "sha256": "cda89f8b9668cf6fc7c7860eaefae8d8a2a6f7cab1c4defb04292c7a18492fb9"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g11.2025.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade11-exhibition-cloze-v0.1"
+    },
+    {
+      "grade": 12,
+      "family": "choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g12.2023.cloze",
+        "g12.2025anshan.cloze",
+        "g12.national2025.cloze",
+        "grade12-linyi2025-21cnjy24838709.cloze",
+        "grade12-tianjin2025-21cnjy24812550.cloze",
+        "grade12-tianjinlower2025-21cnjy22402528.cloze",
+        "grade12-yali2026-21cnjy25133058.cloze"
+      ],
+      "input_states": {
+        "confirmed": 4,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "单选完形",
+      "existing_authored_candidates": [
+        {
+          "id": "grade12-bridge-cloze-v0.1",
+          "grade": 12,
+          "family": "choice_cloze",
+          "questions": 15,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade12-bridge-cloze-v0.1.md",
+            "sha256": "d975652cb7c93214ac9cc678874c2c26f7c45b50d4e334a4baad8b7e46d968c1"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade12-bridge-cloze-author-check-v0.1.json",
+            "sha256": "ec399d728d307632bac777fd6c1684d74d686587bf65e94b2e9903597c74f354"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g12.2025anshan.cloze"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade12-bridge-cloze-v0.1"
+    },
+    {
+      "grade": 7,
+      "family": "context_word_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-hefei2025-21cnjy26607976.initialWords",
+        "grade7-suzhou2025-21cnjy23303742.wordSentences"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "语境词汇补全",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-context-spelling",
+          "grade": 7,
+          "family": "context_word_completion",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade7-context-spelling-v0.1.md",
+            "sha256": "62627bcbc1ad84a5e5158a1a7558fe53bf2b7c55ebc74893475a845a5e8119e9"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade7-context-spelling-author-check-v0.1.json",
+            "sha256": "4b513e282311286148b903ae65275ae670cb398596af5b44641448708e147c37"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade7-hefei2025-21cnjy26607976.initialWords"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-context-spelling"
+    },
+    {
+      "grade": 8,
+      "family": "context_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语境词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "context_word_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.suzhou2024.singleVocabulary",
+        "grade9-chengdu2025-21cnjy23208601.initialWords"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 2
+      },
+      "label": "语境词汇补全",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-context-word-forms",
+          "grade": 9,
+          "family": "context_word_completion",
+          "questions": 8,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade9-context-word-forms-v0.1.md",
+            "sha256": "c40fbcb4a9d3ac1b3e3df8699340bdce88a1458300c8dcf7b596591dd98468b5"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade9-context-word-forms-author-check-v0.1.json",
+            "sha256": "86f12ea27a177151edc8c722f75c45e2884223a702f144c636ebda83f433c79e"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "g9.suzhou2024.singleVocabulary"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-context-word-forms"
+    },
+    {
+      "grade": 10,
+      "family": "context_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语境词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "context_word_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade11-heze2026-21cnjy24886046.words"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语境词汇补全",
+      "existing_authored_candidates": [
+        {
+          "id": "grade11-context-spelling",
+          "grade": 11,
+          "family": "context_word_completion",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade11-context-spelling-v0.1.md",
+            "sha256": "06f25128e8bc008e42fcbec7ff9b41ae684f5728494dd97f1f53763205204344"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade11-context-spelling-author-check-v0.1.json",
+            "sha256": "0abf71c0357e507f25b8c69057bb362e79f0aa73214dfb82a293babd45550fe2"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade11-heze2026-21cnjy24886046.words"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade11-context-spelling"
+    },
+    {
+      "grade": 12,
+      "family": "context_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语境词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "dialogue_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-jinan2025-21cnjy24695341.dialogue"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "情境对话单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "dialogue_choice",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "情境对话单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "dialogue_choice",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "情境对话单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "dialogue_choice",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "情境对话单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "dialogue_choice",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "情境对话单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "dialogue_choice",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "情境对话单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "dialogue_matching",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-hefei2025-21cnjy26607976.dialogue"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享候选对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "dialogue_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享候选对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "dialogue_matching",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.dialogueChoice"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "共享候选对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "dialogue_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享候选对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "dialogue_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享候选对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "dialogue_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享候选对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "dialogue_open_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "dialogue_open_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "dialogue_open_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.dialogueOpen"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "开放对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "dialogue_open_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "dialogue_open_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "dialogue_open_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放对话补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "grammar_choice_cloze",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语法选择语篇",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "grammar_choice_cloze",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语法选择语篇",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "grammar_choice_cloze",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-zhongshan2025-21cnjy22278047.grammarChoice"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语法选择语篇",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "grammar_choice_cloze",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语法选择语篇",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "grammar_choice_cloze",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语法选择语篇",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "grammar_choice_cloze",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "语法选择语篇",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "mixed_reading_response",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "混合阅读任务",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "mixed_reading_response",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade8-hubei2026-21cnjy26105408.hybridResponse",
+        "grade8-xiaoshan2025-21cnjy22251031.hybridReading"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "混合阅读任务",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "mixed_reading_response",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "混合阅读任务",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "mixed_reading_response",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "混合阅读任务",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "mixed_reading_response",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "混合阅读任务",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "mixed_reading_response",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "混合阅读任务",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "open_reading_response",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-hefei2025-21cnjy26607976.readingF",
+        "grade7-suzhou2025-21cnjy23303742.readingResponse"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "开放阅读表达",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "open_reading_response",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.bnu2026.readingResponse",
+        "g8.changjun2024.readingAnswer",
+        "g8.fengtai2026.readingResponse"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "开放阅读表达",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "open_reading_response",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.suzhou2024.readingResponse",
+        "grade9-boxing2025-21cnjy24857076.open",
+        "grade9-zhongshan2025-21cnjy22278047.open"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "开放阅读表达",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-garden-map-reading-response",
+          "grade": 9,
+          "family": "open_reading_response",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade9-garden-map-reading-response-v0.1.md",
+            "sha256": "563b15581ddbf36dafd5ea1f60dca6f93f625851264940daed83cbc5f656c355"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade9-garden-map-reading-response-author-check-v0.1.json",
+            "sha256": "8be11751e9e3cb8ba613db5562c694816d66efc86b080d440c0c1ce419839e16"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g9.suzhou2024.readingResponse"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-garden-map-reading-response"
+    },
+    {
+      "grade": 10,
+      "family": "open_reading_response",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放阅读表达",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "open_reading_response",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade11-tianjin2026-21cnjy26082071.readingResponse"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放阅读表达",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "open_reading_response",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade12-tianjin2025-21cnjy24812550.shortAnswer",
+        "grade12-tianjinlower2025-21cnjy22402528.readingResponse"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 1,
+        "unknown": 1
+      },
+      "label": "开放阅读表达",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "open_table_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放表格填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "open_table_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放表格填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "open_table_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.table"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "开放表格填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "open_table_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放表格填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "open_table_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放表格填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "open_table_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "开放表格填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "paragraph_heading_matching",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "heading-candidate-grade7-jiexiu-2507579320261015r.headingA"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "段落标题配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "paragraph_heading_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "段落标题配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "paragraph_heading_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "段落标题配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "paragraph_heading_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "段落标题配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "paragraph_heading_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "段落标题配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "paragraph_heading_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "段落标题配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "passage_chinese_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读后中文补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "passage_chinese_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade8-xiaoshan2025-21cnjy22251031.passageChinese"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "阅读后中文补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "passage_chinese_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读后中文补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "passage_chinese_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读后中文补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "passage_chinese_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读后中文补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "passage_chinese_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读后中文补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "passage_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.xicheng2025.optionalGrammar",
+        "grade7-suzhou2025-21cnjy23303742.passageForm",
+        "grade7-wuhan2025-21cnjy23303148.grammar"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 2
+      },
+      "label": "语篇语法/词形填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "passage_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.bnu2026.optionalGrammar",
+        "g8.changjun2024.grammar",
+        "grade8-xiaoshan2025-21cnjy22251031.grammar"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "语篇语法/词形填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-relay-open-grammar-v0.1",
+          "grade": 8,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade8-relay-open-grammar-v0.1.md",
+            "sha256": "2df0adcd75aad3a4e636770823a992fbb5df45d0e01fa8d80bfa8b315d4101a8"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade8-relay-open-grammar-author-check-v0.1.json",
+            "sha256": "e9e3e2b5f409dd7b4ab4e129b74ab80079b77658c514100038e12e445d851ec0"
+          },
+          "index": {
+            "path": "FirstRelease/open-language-supplement-candidates-v0.1.json",
+            "sha256": "c96a0fba50464630ada8b812738d49b9ca5d528469b27a7ada060e87a232226d"
+          },
+          "source_group_ids": [
+            "g8.yogor2024.simulated.grammar"
+          ],
+          "source_form_support": "simulated_source_form_reference_not_ordinary_school_replication",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_simulated_anchor_candidate_needs_ordinary_source_form_review",
+      "selected_representative_id": "grade8-relay-open-grammar-v0.1"
+    },
+    {
+      "grade": 9,
+      "family": "passage_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.2025.grammar",
+        "g9.2026.grammar",
+        "g9.suzhou2024.grammar",
+        "grade9-boxing2025-21cnjy24857076.grammar",
+        "grade9-nanshan2026-21cnjy25758947.grammar"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 1,
+        "unknown": 3
+      },
+      "label": "语篇语法/词形填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-weather-grammar-v0.1",
+          "grade": 9,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade9-weather-grammar-v0.2.md",
+            "sha256": "607b33d1e24f6a021fb38b9dedc232a00f9bf097931fa9ff745ce3a448b092b0"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade9-weather-grammar-author-check-v0.2.json",
+            "sha256": "54629c0986f42a52833a1b310c32e3d36318108ed7cc981de433cbfe2dab1899"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g9.2026.grammar"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-weather-grammar-v0.1"
+    },
+    {
+      "grade": 10,
+      "family": "passage_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g10.2024.grammar",
+        "g10.2025yearend.grammar",
+        "g10.wenzhou2025.grammar",
+        "grade10-jinhua2025-21cnjy22399612.grammar",
+        "grade10-shenzhenlower2026-21cnjy26167651.grammar",
+        "grade10-weishi2026-21cnjy25962499.grammar"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 4
+      },
+      "label": "语篇语法/词形填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-grammar-v0.1",
+          "grade": 10,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade10-grammar-v0.3.md",
+            "sha256": "e8e9c3ba7a86ed2f6b8c2e225148f89806b9ac3782c0b8c59dc55f4b69f101a8"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade10-grammar-author-check-v0.3.json",
+            "sha256": "1951a705b510ac164e3743cf67b7bdd527b96138dc6fb0c49f49b2c53f9e237b"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g10.2024.grammar"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade10-theatre-costumes-single-grammar",
+          "grade": 10,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-v0.1.md",
+            "sha256": "c05a0981065c4fc26748345d07213701397211c58b4a045b883d0b291d3419d2"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-theatre-costumes-single-grammar-author-check-v0.1.json",
+            "sha256": "f86d81405a141787a7fa21e832d575deca922ca8931e0f7f39ecf283a8bc84f9"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g10.wenzhou2025.grammar"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-grammar-v0.1"
+    },
+    {
+      "grade": 11,
+      "family": "passage_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g11.2024.grammar",
+        "g11.2025.grammar",
+        "g11.spring2024.grammar",
+        "grade11-heze2026-21cnjy24886046.grammar",
+        "grade11-yinchuan2026-21cnjy25860535.grammar"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 1,
+        "unknown": 3
+      },
+      "label": "语篇语法/词形填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade11-archive-grammar-v0.1",
+          "grade": 11,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade11-archive-grammar-v0.1.md",
+            "sha256": "586d77e8ca84f88eb89cd1156663bd661950765333a70dc8f72958e19bc5278d"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade11-archive-grammar-author-check-v0.1.json",
+            "sha256": "135d45e110b176965742812779f50c42ad6d1b2d525a83ef3730b25f5bf0cf09"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g11.2025.grammar"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade11-three-context-grammar-v0.1",
+          "grade": 11,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade11-three-context-grammar-v0.1.md",
+            "sha256": "60f67c4bf07a7bfac73927a35283521787d50f30afd0469fd4a4aa6d102d06e7"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade11-three-context-grammar-author-check-v0.1.json",
+            "sha256": "fdfc9add2fc5952d64812a6b5c1d5e54c73439b570bd0fc5c5c6cdd441b0f67b"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g11.2024.grammar"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade11-archive-grammar-v0.1"
+    },
+    {
+      "grade": 12,
+      "family": "passage_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g12.2023.grammar",
+        "g12.2025anshan.grammar",
+        "g12.national2025.grammar",
+        "grade12-linyi2025-21cnjy24838709.grammar",
+        "grade12-yali2026-21cnjy25133058.grammar"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "语篇语法/词形填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade12-workshop-grammar-v0.1",
+          "grade": 12,
+          "family": "passage_form",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade12-workshop-grammar-v0.1.md",
+            "sha256": "64e247c8354cd7271e85ab524b908f9f637d45692f2d6d667b30c0a1c0194f23"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade12-workshop-grammar-author-check-v0.1.json",
+            "sha256": "4d1bc2831055eac196d11507a5f2d59fee0cdf2bcb6ac7368c665becce92f6af"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g12.2025anshan.grammar"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade12-workshop-grammar-v0.1"
+    },
+    {
+      "grade": 7,
+      "family": "phonetic_word_completion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.xicheng2025.phonetic"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "音标提示词汇补全",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-phonetic-word-completion",
+          "grade": 7,
+          "family": "phonetic_word_completion",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-v0.1.md",
+            "sha256": "72f868aba4fa72fe303e01aa7e50f8051926776228ebe6978a9c4372bde1238d"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-author-check-v0.1.json",
+            "sha256": "1d8684fc13d3d58140cdb897ef7a7866f5838516a5205db2aad7d152f52d76b8"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "g7.xicheng2025.phonetic"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-phonetic-word-completion"
+    },
+    {
+      "grade": 8,
+      "family": "phonetic_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "音标提示词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "phonetic_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "音标提示词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "phonetic_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "音标提示词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "phonetic_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "音标提示词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "phonetic_word_completion",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "音标提示词汇补全",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "picture_continuation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "看图续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "picture_continuation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "看图续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "picture_continuation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "看图续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "picture_continuation",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade10-shenzhenlower2026-21cnjy26167651.pictureContinuation"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 1,
+        "unknown": 0
+      },
+      "label": "看图续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "picture_continuation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "看图续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "picture_continuation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "看图续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "profile_matching",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.xicheng2025.matchingA"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "人物需求/候选配对",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-workshop-matching",
+          "grade": 7,
+          "family": "profile_matching",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade7-workshop-matching-v0.1.md",
+            "sha256": "ae973437e85068a6f7c3f89b68c17af9136c6ecf5f41938e5f166a83966d509f"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade7-workshop-matching-author-check-v0.1.json",
+            "sha256": "01278c63a46850fb31eb1772e7b587cb963ab076a0abc51cd6806fae35896245"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g7.xicheng2025.matchingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-workshop-matching"
+    },
+    {
+      "grade": 8,
+      "family": "profile_matching",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.2025.matchingA",
+        "g8.2025fengtai.matchingA",
+        "g8.bnu2026.imageMatching",
+        "g8.fengtai2026.imageMatching"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 4
+      },
+      "label": "人物需求/候选配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "profile_matching",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-nanshan2026-21cnjy25758947.profiles",
+        "grade9-zhongshan2025-21cnjy22278047.profiles"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "人物需求/候选配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "profile_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "人物需求/候选配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "profile_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "人物需求/候选配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "profile_matching",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "人物需求/候选配对",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "read_then_continue",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "读后续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "read_then_continue",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "读后续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "read_then_continue",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "读后续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "read_then_continue",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade10-weishi2026-21cnjy25962499.continuation"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "读后续写",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-exhibition-map-continuation",
+          "grade": 10,
+          "family": "read_then_continue",
+          "questions": 1,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-exhibition-map-continuation-v0.1.md",
+            "sha256": "f206e43d86c928983821e3c3426d982ea1e94d70752ee6736b7cc7724d96223f"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-exhibition-map-continuation-author-check-v0.1.json",
+            "sha256": "6d7bc2f6a7e5aaadc695ca475d6ee0938fb6f74e879120fd327885368410490b"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [],
+          "source_form_support": "unpaired_source_form_and_rubric_reference_not_new_source_record",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-exhibition-map-continuation"
+    },
+    {
+      "grade": 11,
+      "family": "read_then_continue",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade11-heze2026-21cnjy24886046.continuation",
+        "grade11-yinchuan2026-21cnjy25860535.continuation"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "读后续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "read_then_continue",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade12-linyi2025-21cnjy24838709.continuation",
+        "grade12-yali2026-21cnjy25133058.continuation"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "读后续写",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "reading_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.2019.readingA",
+        "g7.2019.readingB",
+        "g7.2021.readingB",
+        "g7.xicheng2025.optionalReading",
+        "g7.xicheng2025.readingB",
+        "g7.xicheng2025.readingC",
+        "grade7-hefei2025-21cnjy26607976.readingA",
+        "grade7-hefei2025-21cnjy26607976.readingB",
+        "grade7-hefei2025-21cnjy26607976.readingC",
+        "grade7-hefei2025-21cnjy26607976.readingD",
+        "grade7-hefei2025-21cnjy26607976.readingE",
+        "grade7-jinan2025-21cnjy24695341.readingA",
+        "grade7-jinan2025-21cnjy24695341.readingB",
+        "grade7-jinan2025-21cnjy24695341.readingC",
+        "grade7-jinan2025-21cnjy24695341.readingD",
+        "grade7-suzhou2025-21cnjy23303742.readingA",
+        "grade7-suzhou2025-21cnjy23303742.readingB",
+        "grade7-suzhou2025-21cnjy23303742.readingC",
+        "grade7-suzhou2025-21cnjy23303742.readingD",
+        "grade7-wuhan2025-21cnjy23303148.readingA",
+        "grade7-wuhan2025-21cnjy23303148.readingB",
+        "grade7-wuhan2025-21cnjy23303148.readingC"
+      ],
+      "input_states": {
+        "confirmed": 10,
+        "known_missing": 2,
+        "unknown": 10
+      },
+      "label": "阅读单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-calendar-reading-v0.1",
+          "grade": 7,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade7-calendar-reading-v0.1.md",
+            "sha256": "3c58f4766def8a1b90b8698e3f56a6c92613d54c1577b62738345e5eb8a10e4c"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade7-calendar-reading-author-check-v0.1.json",
+            "sha256": "231760e04a4f8aa763a7b6ebcc003d87a85d913e8c74aaa1c8a6a41afcea5951"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g7.2019.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade7-library-v0.1",
+          "grade": 7,
+          "family": "reading_choice",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade7-library-v0.1.md",
+            "sha256": "5a24aeee6b67d23b4bc02fb13c2c05497bb11ac277edcb8ff6e70b21fa08d7ab"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade7-library-author-check-v0.1.json",
+            "sha256": "728625fd2c88dab5f87654a96c7fc0bfb5c724cc70e8656f3c6c4eee13aeedcb"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g7.2021.readingB"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade7-reading-corner-images-v0.1",
+          "grade": 7,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade7-reading-corner-images-v0.1.md",
+            "sha256": "7f6e0cf4af8da043a369e353d7c3243be16b5b3017fdd537d8446b1d7ac6b1df"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade7-reading-corner-images-author-check-v0.1.json",
+            "sha256": "d5d82f2cfe1046e26621bcbaaa8a034113f2bafff02a08b260e9563d2877a4e9"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g7.2019.readingB"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-calendar-reading-v0.1"
+    },
+    {
+      "grade": 8,
+      "family": "reading_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.2025.readingB",
+        "g8.2025.readingC",
+        "g8.2025fengtai.readingB",
+        "g8.2025fengtai.readingC",
+        "g8.bnu2026.optionalReading",
+        "g8.bnu2026.readingB",
+        "g8.bnu2026.readingC",
+        "g8.changjun2024.readingA",
+        "g8.changjun2024.readingB",
+        "g8.changjun2024.readingC",
+        "g8.fengtai2026.readingB",
+        "g8.fengtai2026.readingC",
+        "g8.fengtai2026.readingD",
+        "grade8-hubei2026-21cnjy26105408.readingA",
+        "grade8-hubei2026-21cnjy26105408.readingB",
+        "grade8-hubei2026-21cnjy26105408.readingC",
+        "grade8-xiaoshan2025-21cnjy22251031.readingA",
+        "grade8-xiaoshan2025-21cnjy22251031.readingB",
+        "grade8-xiaoshan2025-21cnjy22251031.readingC",
+        "grade8-xiaoshan2025-21cnjy22251031.readingD"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 3,
+        "unknown": 16
+      },
+      "label": "阅读单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-library-survey-reading",
+          "grade": 8,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade8-library-survey-reading-v0.1.md",
+            "sha256": "79e7a8743a6e8db6f51bff289b935c98d0a91488118c1081dcbda93372c8c403"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade8-library-survey-reading-author-check-v0.1.json",
+            "sha256": "cae254670212f0ee7e044cae2de57798032ef0f136d3e01658352bff55bbddbc"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g8.changjun2024.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade8-lunch-v0.1",
+          "grade": 8,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade8-lunch-v0.1.md",
+            "sha256": "96ba31bca24e238201c4699b90dadc723be8545f16f0e201b3f6ce63f4d9c461"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade8-lunch-author-check-v0.1.json",
+            "sha256": "1659391af49e85fe9e1bb6410f3a85182f0f72f715eff04e1f382f5fb87076c9"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g8.2025.readingC"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade8-maker-club-expectations-reading",
+          "grade": 8,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade8-maker-club-expectations-reading-v0.1.md",
+            "sha256": "d5b8d40b986569d5a6f5ec416d5f43c34f8b9f2f2d237836c0782e0b7b107c75"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade8-maker-club-expectations-reading-author-check-v0.1.json",
+            "sha256": "af7c325a7e633bcf96c71cb96754f3f0b6c7efb007465a908daa9ee45e09d88c"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g8.fengtai2026.readingD"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade8-music-afternoon-reading-v0.1",
+          "grade": 8,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade8-music-afternoon-reading-v0.2.md",
+            "sha256": "ef8692222cce099e92eabf14099b890b3f3ca2338a4497f3f7b554e6947efd10"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade8-music-afternoon-reading-author-check-v0.2.json",
+            "sha256": "a146bebd25d429a4037e38eb44e068eae74626952f03dd94567153b8ee868959"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g8.2025fengtai.readingB"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade8-wayfinding-exhibition-reading",
+          "grade": 8,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-v0.1.md",
+            "sha256": "76cadcd4e25d8226580335823633ca3769819488926ba9c7ef89d265ed66305d"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade8-wayfinding-exhibition-reading-author-check-v0.1.json",
+            "sha256": "304be790ea8040b8863c143ccc7f26e30720b33b43a65653e9d01b489a3f8019"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g8.changjun2024.readingC"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade8-library-survey-reading"
+    },
+    {
+      "grade": 9,
+      "family": "reading_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.2025.readingA",
+        "g9.2026.readingC",
+        "g9.suzhou2024.readingA",
+        "g9.suzhou2024.readingB",
+        "g9.suzhou2024.readingC",
+        "g9.suzhou2024.readingD",
+        "grade9-boxing2025-21cnjy24857076.readingA",
+        "grade9-boxing2025-21cnjy24857076.readingB",
+        "grade9-boxing2025-21cnjy24857076.readingC",
+        "grade9-boxing2025-21cnjy24857076.readingD",
+        "grade9-chengdu2025-21cnjy23208601.readingA",
+        "grade9-chengdu2025-21cnjy23208601.readingB",
+        "grade9-nanshan2026-21cnjy25758947.readingA",
+        "grade9-nanshan2026-21cnjy25758947.readingB",
+        "grade9-nanshan2026-21cnjy25758947.readingC",
+        "grade9-zhongshan2025-21cnjy22278047.readingA",
+        "grade9-zhongshan2025-21cnjy22278047.readingB"
+      ],
+      "input_states": {
+        "confirmed": 7,
+        "known_missing": 2,
+        "unknown": 8
+      },
+      "label": "阅读单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-book-repair-v0.1",
+          "grade": 9,
+          "family": "reading_choice",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade9-book-repair-v0.1.md",
+            "sha256": "3bda37e304a8abad88accea77d68084d6d7fa91c07aa2737199a9a131426ce00"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json",
+            "sha256": "92a5e105432964305f3b23301300678ea3710e99cf84cffb74c06c14b99a7ad8"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g9.2026.readingC"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade9-repair-table-reading",
+          "grade": 9,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade9-repair-table-reading-v0.1.md",
+            "sha256": "0b48dcf590737521c8f1186ad6070fcd5a5632b53087f861fd7dcf85a3e26c26"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade9-repair-table-reading-author-check-v0.1.json",
+            "sha256": "37779032e08a1fb9a44b5902e9e0f951a2e3b1b2a2905dfe28b4887d79c97fda"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g9.suzhou2024.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-book-repair-v0.1"
+    },
+    {
+      "grade": 10,
+      "family": "reading_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g10.2024.readingA",
+        "g10.2024.readingC",
+        "g10.2024.readingD",
+        "g10.2025yearend.readingA",
+        "g10.2025yearend.readingB",
+        "g10.2025yearend.readingC",
+        "g10.2025yearend.readingD",
+        "g10.wenzhou2025.readingA",
+        "g10.wenzhou2025.readingB",
+        "g10.wenzhou2025.readingC",
+        "g10.wenzhou2025.readingD",
+        "grade10-jinhua2025-21cnjy22399612.readingA",
+        "grade10-jinhua2025-21cnjy22399612.readingB",
+        "grade10-jinhua2025-21cnjy22399612.readingC",
+        "grade10-jinhua2025-21cnjy22399612.readingD",
+        "grade10-shenzhenlower2026-21cnjy26167651.readingA",
+        "grade10-shenzhenlower2026-21cnjy26167651.readingB",
+        "grade10-shenzhenlower2026-21cnjy26167651.readingC",
+        "grade10-shenzhenlower2026-21cnjy26167651.readingD",
+        "grade10-weishi2026-21cnjy25962499.readingA",
+        "grade10-weishi2026-21cnjy25962499.readingB",
+        "grade10-weishi2026-21cnjy25962499.readingC",
+        "grade10-weishi2026-21cnjy25962499.readingD"
+      ],
+      "input_states": {
+        "confirmed": 7,
+        "known_missing": 2,
+        "unknown": 14
+      },
+      "label": "阅读单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-roof-reading-v0.2",
+          "grade": 10,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade10-roof-reading-v0.2.md",
+            "sha256": "1ba7553136ea024bffceec8ea78f6db98c9a6db183d123a55b46cca757a773ee"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade10-roof-reading-author-check-v0.2.json",
+            "sha256": "4d547765d3c07ff52e835a45f3e2421bb3ce2113c055279cf6ad12e57a89c6a3"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g10.2024.readingD"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade10-film-archive-volunteer-reading",
+          "grade": 10,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-film-archive-volunteer-reading-v0.1.md",
+            "sha256": "52e619910e1153a2c305e2df1d2e6284242b3704055134ea51722d4bf552d7b9"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-film-archive-volunteer-reading-author-check-v0.1.json",
+            "sha256": "be57f3dc0ad06c8b363de37bb06b89cad9c704355a4f90da628ebefb57ceb1fb"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g10.2024.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade10-library-booking-screen-reading",
+          "grade": 10,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-v0.1.md",
+            "sha256": "946ae175b202f11f5d7554b1b081e9de8413a822967551c6d6e855a26dfdfb29"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-library-booking-screen-reading-author-check-v0.1.json",
+            "sha256": "6bd16276682646cdcb9fd4bc092a86b68cd457a7abab10fe13f5e3af83d7b6ee"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g10.wenzhou2025.readingD"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-roof-reading-v0.2"
+    },
+    {
+      "grade": 11,
+      "family": "reading_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g11.2024.readingA",
+        "g11.2025.readingB",
+        "g11.2025.readingC",
+        "g11.2025.readingD",
+        "g11.spring2024.readingA",
+        "g11.spring2024.readingB",
+        "g11.spring2024.readingC",
+        "g11.spring2024.readingD",
+        "grade11-heze2026-21cnjy24886046.readingA",
+        "grade11-heze2026-21cnjy24886046.readingB",
+        "grade11-heze2026-21cnjy24886046.readingC",
+        "grade11-heze2026-21cnjy24886046.readingD",
+        "grade11-tianjin2026-21cnjy26082071.readingA",
+        "grade11-tianjin2026-21cnjy26082071.readingB",
+        "grade11-tianjin2026-21cnjy26082071.readingC",
+        "grade11-yinchuan2026-21cnjy25860535.readingA",
+        "grade11-yinchuan2026-21cnjy25860535.readingB",
+        "grade11-yinchuan2026-21cnjy25860535.readingC",
+        "grade11-yinchuan2026-21cnjy25860535.readingD"
+      ],
+      "input_states": {
+        "confirmed": 7,
+        "known_missing": 0,
+        "unknown": 12
+      },
+      "label": "阅读单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade11-commitments-reading-v0.2",
+          "grade": 11,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+            "sha256": "1a98564304286a4c0d706b1239852fab14a0ea95115b96e2042bb1397ef2eff9"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.3.json",
+            "sha256": "5937e3d78965d31b769f1b785c31c4765e504651b08bb927eeb68c757dd5dbf5"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g11.2025.readingD"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade11-science-display-profiles-reading",
+          "grade": 11,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade11-science-display-profiles-reading-v0.2.md",
+            "sha256": "18f1ad83528882a1aab45d4a232f969a1dec0f173c0d8431344c303f8a9e5f37"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade11-science-display-profiles-reading-author-check-v0.2.json",
+            "sha256": "1b4e73bbcd02badb2c46688c2db5272a3598424b7f4d2d0efe0d67f9ed08172c"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g11.spring2024.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade11-small-repairs-book-review",
+          "grade": 11,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-v0.1.md",
+            "sha256": "0d2f5fc4caa678a580444c8c894ef557ff4e6ceabb6ad1716018e16aea7da729"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade11-small-repairs-book-review-author-check-v0.1.json",
+            "sha256": "7c85ec7d50b520114c093a9cc22d0e6052d9cb8f3aa328ef766858dd34c292a8"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g11.2025.readingC"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade11-commitments-reading-v0.2"
+    },
+    {
+      "grade": 12,
+      "family": "reading_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g12.2023.readingA",
+        "g12.2023.readingB",
+        "g12.2025anshan.readingA",
+        "g12.2025anshan.readingB",
+        "g12.2025anshan.readingC",
+        "g12.2025anshan.readingD",
+        "g12.national2025.readingA",
+        "g12.national2025.readingB",
+        "g12.national2025.readingC",
+        "g12.national2025.readingD",
+        "grade12-linyi2025-21cnjy24838709.readingA",
+        "grade12-linyi2025-21cnjy24838709.readingB",
+        "grade12-linyi2025-21cnjy24838709.readingC",
+        "grade12-linyi2025-21cnjy24838709.readingD",
+        "grade12-tianjin2025-21cnjy24812550.readingA",
+        "grade12-tianjin2025-21cnjy24812550.readingB",
+        "grade12-tianjin2025-21cnjy24812550.readingC",
+        "grade12-tianjin2025-21cnjy24812550.readingD",
+        "grade12-tianjinlower2025-21cnjy22402528.readingA",
+        "grade12-tianjinlower2025-21cnjy22402528.readingB",
+        "grade12-tianjinlower2025-21cnjy22402528.readingC",
+        "grade12-tianjinlower2025-21cnjy22402528.readingD",
+        "grade12-yali2026-21cnjy25133058.readingA",
+        "grade12-yali2026-21cnjy25133058.readingB",
+        "grade12-yali2026-21cnjy25133058.readingC",
+        "grade12-yali2026-21cnjy25133058.readingD"
+      ],
+      "input_states": {
+        "confirmed": 12,
+        "known_missing": 1,
+        "unknown": 13
+      },
+      "label": "阅读单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade12-dashboard-reading-v0.1",
+          "grade": 12,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade12-dashboard-reading-v0.1.md",
+            "sha256": "947c4e3533b554285999d781740c576accc17808fa3934cfb2344c303cb2532c"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade12-dashboard-reading-author-check-v0.1.json",
+            "sha256": "30d5323c34ba381ce55917385288a1cd65567a1008963d53350978acbc2a457b"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g12.2025anshan.readingC"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade12-library-electricity",
+          "grade": 12,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade12-library-electricity-v0.2.md",
+            "sha256": "477c6f991c2aba107ece1bb5b5f8ae39cce5fdf445e0763a597f953144030803"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade12-library-electricity-author-check-v0.2.json",
+            "sha256": "5e10448fc293164cbcf2936f98503cefc46f7513bc7acf58544860ada46bc6ae"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g12.national2025.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade12-archive-v0.1",
+          "grade": 12,
+          "family": "reading_choice",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade12-archive-v0.1.md",
+            "sha256": "940bb58732895b08ac16ceabd0c298ce8f22768367adddfee9e7f054132699c5"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade12-archive-author-check-v0.1.json",
+            "sha256": "066de154a72bc5795a9c661ac3aa8db791f6db819aee887976a79b810dea8045"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g12.2023.readingA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade12-parcel-label-trial-reading",
+          "grade": 12,
+          "family": "reading_choice",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade12-parcel-label-trial-reading-v0.1.md",
+            "sha256": "46365407201373f016a538e3c8c32b51678e3a88206c1df44fd2dfd9053745b5"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade12-parcel-label-trial-reading-author-check-v0.1.json",
+            "sha256": "e12f7d75c819d4343e09e7ca36b9bc6026335437a79156505c2e50184f5868bf"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g12.national2025.readingD"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade12-dashboard-reading-v0.1"
+    },
+    {
+      "grade": 7,
+      "family": "reading_tf",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读正误判断",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "reading_tf",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读正误判断",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "reading_tf",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-chengdu2025-21cnjy23208601.trueFalse"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "阅读正误判断",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "reading_tf",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读正误判断",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "reading_tf",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读正误判断",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "reading_tf",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "阅读正误判断",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "sentence_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.xicheng2025.language",
+        "grade7-hefei2025-21cnjy26607976.sentenceChoice",
+        "grade7-wuhan2025-21cnjy23303148.sentenceChoice"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 1,
+        "unknown": 1
+      },
+      "label": "独立句单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "sentence_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.2025fengtai.language",
+        "g8.bnu2026.sentenceChoice",
+        "g8.fengtai2026.sentenceChoice"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "独立句单选",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-language-choice-v0.1",
+          "grade": 8,
+          "family": "sentence_choice",
+          "questions": 12,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade8-language-choice-v0.2.md",
+            "sha256": "4acb69d83b1b5d75e6087d589f0dc637d7de2d5aeb00706087e29468a31caa4c"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade8-language-choice-author-check-v0.2.json",
+            "sha256": "e22f3cc6e491eb9ac333f00023ab6f7825840d3591e6a3fa2cf0c92749140a1c"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g8.2025fengtai.language"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade8-language-choice-v0.1"
+    },
+    {
+      "grade": 9,
+      "family": "sentence_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+        "grade9-chengdu2025-21cnjy23208601.sentenceChoice"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "独立句单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "sentence_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "独立句单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "sentence_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade11-tianjin2026-21cnjy26082071.sentenceChoice"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "独立句单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "sentence_choice",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade12-tianjin2025-21cnjy24812550.sentenceChoice",
+        "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "独立句单选",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "sentence_form",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-jinan2025-21cnjy24695341.sentenceForms"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "句中语法/词形填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-isolated-word-forms",
+          "grade": 7,
+          "family": "sentence_form",
+          "questions": 15,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade7-isolated-word-forms-v0.1.md",
+            "sha256": "cb7a49bbe3aa08a0e77f8bd87ed2c1848999a4ee633b2759b3efbae82b2ada49"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade7-isolated-word-forms-author-check-v0.1.json",
+            "sha256": "3f0fb088dc9169e3e64a4f5180bf82936253aa660e20cae606ec2ea4c43cac06"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade7-jinan2025-21cnjy24695341.sentenceForms"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-isolated-word-forms"
+    },
+    {
+      "grade": 8,
+      "family": "sentence_form",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "句中语法/词形填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "sentence_form",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "句中语法/词形填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "sentence_form",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "句中语法/词形填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "sentence_form",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "句中语法/词形填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "sentence_form",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "句中语法/词形填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "sentence_translation",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.xicheng2025.translation",
+        "grade7-jinan2025-21cnjy24695341.translation"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "整句翻译",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-cued-sentence-translation",
+          "grade": 7,
+          "family": "sentence_translation",
+          "questions": 3,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade7-cued-sentence-translation-v0.1.md",
+            "sha256": "a12146c3c22c69fde4e9abd5bad22a733cd95f28039e079b4fb3be5d65cd342e"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade7-cued-sentence-translation-author-check-v0.1.json",
+            "sha256": "d089a6865d0fd76c1594dc78d57c66ca47903c03524d1beee3147abe736c4066"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "g7.xicheng2025.translation"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-cued-sentence-translation"
+    },
+    {
+      "grade": 8,
+      "family": "sentence_translation",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.bnu2026.translation"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "整句翻译",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-club-sentence-translation",
+          "grade": 8,
+          "family": "sentence_translation",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade8-club-sentence-translation-v0.1.md",
+            "sha256": "3d98bd29c9c9d37ceb71f72160fe2c8f3fac15e1faf76006b6bf430f9885a0bd"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade8-club-sentence-translation-author-check-v0.1.json",
+            "sha256": "38da50d8525f764f1901c86a6df9dcca3be664d74fc45e6087196e59ac4d813a"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g8.bnu2026.translation"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade8-club-sentence-translation"
+    },
+    {
+      "grade": 9,
+      "family": "sentence_translation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "整句翻译",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 10,
+      "family": "sentence_translation",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade10-jinhua2025-21cnjy22399612.translation"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "整句翻译",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-constrained-sentence-translation",
+          "grade": 10,
+          "family": "sentence_translation",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Timeboxed/grade10-constrained-sentence-translation-v0.1.md",
+            "sha256": "aba6a5c2116364cf6ce904cd2600ec29988e1eb62da1694ed9793e844c546cb7"
+          },
+          "author_check": {
+            "path": "FirstRelease/Timeboxed/grade10-constrained-sentence-translation-author-check-v0.1.json",
+            "sha256": "99a8a21735081151bd196a25ab286bedd98e988f94f7f0f256f524921357a98d"
+          },
+          "index": {
+            "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+            "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+          },
+          "source_group_ids": [
+            "grade10-jinhua2025-21cnjy22399612.translation"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-constrained-sentence-translation"
+    },
+    {
+      "grade": 11,
+      "family": "sentence_translation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "整句翻译",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "sentence_translation",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "整句翻译",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "shared_bank",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g7.2021.vocabularyA",
+        "g7.2021.vocabularyB",
+        "g7.xicheng2025.clozeBank",
+        "grade7-suzhou2025-21cnjy23303742.wordBank",
+        "grade7-wuhan2025-21cnjy23303148.bank"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 4
+      },
+      "label": "共享词库填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade7-garden-bank-v0.1",
+          "grade": 7,
+          "family": "shared_bank",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade7-garden-bank-v0.1.md",
+            "sha256": "4e64476e182d4a430d5bbbb6573bb5b01a2c46f235ae8a7b22aaa2ffc940564e"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade7-garden-bank-author-check-v0.1.json",
+            "sha256": "a24eed2a3141326d0cd3e1062de681ced719ae448783ed2c3689663fe05aea3a"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g7.2021.vocabularyB"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade7-lost-property-bank",
+          "grade": 7,
+          "family": "shared_bank",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade7-lost-property-bank-v0.1.md",
+            "sha256": "199aea4b441bdb09f4fe24ac440be7e6ef652ac0afc22c6f39fab5454eaf47c0"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade7-lost-property-bank-author-check-v0.1.json",
+            "sha256": "267730cdb9d0a97d5def3ae501c8cce8c480d8e527260196018a29785817a3d1"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g7.xicheng2025.clozeBank"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        },
+        {
+          "id": "grade7-reading-bus-bank-v0.1",
+          "grade": 7,
+          "family": "shared_bank",
+          "questions": 10,
+          "candidate": {
+            "path": "FirstRelease/Generated/grade7-reading-bus-bank-v0.1.md",
+            "sha256": "e4ffca7d654168a6e244f252356d523155f7d18c0c4d1e9aca042d19769e2ace"
+          },
+          "author_check": {
+            "path": "FirstRelease/Generated/grade7-reading-bus-bank-author-check-v0.1.json",
+            "sha256": "7534488bfad60531ff5f4df62689d1eec32dd3d2bab19fcb0eb7ba76f6c9e03a"
+          },
+          "index": {
+            "path": "FirstRelease/review-index-v0.16.json",
+            "sha256": "e99a8f10e48592378662058dc3ed7eada0fc151adf7376c3e44998bb7c234fc0"
+          },
+          "source_group_ids": [
+            "g7.2021.vocabularyA"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade7-garden-bank-v0.1"
+    },
+    {
+      "grade": 8,
+      "family": "shared_bank",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade8-hubei2026-21cnjy26105408.bank",
+        "grade8-xiaoshan2025-21cnjy22251031.wordBank"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 1,
+        "unknown": 0
+      },
+      "label": "共享词库填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 9,
+      "family": "shared_bank",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.suzhou2024.wordBank",
+        "grade9-chengdu2025-21cnjy23208601.bank",
+        "grade9-zhongshan2025-21cnjy22278047.bank"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 2
+      },
+      "label": "共享词库填空",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-book-care-bank",
+          "grade": 9,
+          "family": "shared_bank",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade9-book-care-bank-v0.2.md",
+            "sha256": "0833f72eb7371dafc8a3647759fc74b2b0adda696eb51a612e1d374558900d08"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade9-book-care-bank-author-check-v0.2.json",
+            "sha256": "12624c463815f84f49aad2c1287a7c1e36aaf510ac772e389a8108ce48307271"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g9.suzhou2024.wordBank"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": false,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-book-care-bank"
+    },
+    {
+      "grade": 10,
+      "family": "shared_bank",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade10-shenzhenlower2026-21cnjy26167651.literatureBank"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "共享词库填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 11,
+      "family": "shared_bank",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享词库填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 12,
+      "family": "shared_bank",
+      "observation_state": "unknown_no_selected_positive_evidence",
+      "source_group_ids": [],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 0,
+        "unknown": 0
+      },
+      "label": "共享词库填空",
+      "existing_authored_candidates": [],
+      "delivery_state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 7,
+      "family": "shared_insertion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "grade7-jinan2025-21cnjy24695341.insertion",
+        "grade7-suzhou2025-21cnjy23303742.insertion",
+        "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "共享句空衔接",
+      "existing_authored_candidates": [],
+      "delivery_state": "needs_complete_original_representative",
+      "selected_representative_id": null
+    },
+    {
+      "grade": 8,
+      "family": "shared_insertion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g8.changjun2024.insertion",
+        "grade8-hubei2026-21cnjy26105408.insertionD"
+      ],
+      "input_states": {
+        "confirmed": 1,
+        "known_missing": 0,
+        "unknown": 1
+      },
+      "label": "共享句空衔接",
+      "existing_authored_candidates": [
+        {
+          "id": "grade8-river-walk-insertion",
+          "grade": 8,
+          "family": "shared_insertion",
+          "questions": 4,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade8-river-walk-insertion-v0.1.md",
+            "sha256": "d3f7da3295422518946af5575e5e71b16084f717725105075d75a6dc42e708bb"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade8-river-walk-insertion-author-check-v0.1.json",
+            "sha256": "a45b859434e877958d74047227cffe51819600d4525a88d0f4b414535fcd4b4d"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g8.changjun2024.insertion"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade8-river-walk-insertion"
+    },
+    {
+      "grade": 9,
+      "family": "shared_insertion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g9.2025.insertionE",
+        "g9.suzhou2024.insertion",
+        "grade9-boxing2025-21cnjy24857076.insertion",
+        "grade9-chengdu2025-21cnjy23208601.insertion",
+        "grade9-nanshan2026-21cnjy25758947.insertion"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 3
+      },
+      "label": "共享句空衔接",
+      "existing_authored_candidates": [
+        {
+          "id": "grade9-group-plan-heading-insertion",
+          "grade": 9,
+          "family": "shared_insertion",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade9-group-plan-heading-insertion-v0.2.md",
+            "sha256": "b5e3ae1212d14ed4dbd439614f081ef7a74c6a452162bea65106ff524129836c"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade9-group-plan-heading-insertion-author-check-v0.2.json",
+            "sha256": "e824d87bfc7c91a3039ae7c7ac73a05e6192b2bdbb7f53ac23f32d7bf9b5af0d"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g9.suzhou2024.insertion"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade9-group-plan-heading-insertion"
+    },
+    {
+      "grade": 10,
+      "family": "shared_insertion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g10.wenzhou2025.insertion",
+        "grade10-jinhua2025-21cnjy22399612.insertion",
+        "grade10-shenzhenlower2026-21cnjy26167651.insertion",
+        "grade10-weishi2026-21cnjy25962499.insertion"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 2
+      },
+      "label": "共享句空衔接",
+      "existing_authored_candidates": [
+        {
+          "id": "grade10-club-routines-insertion",
+          "grade": 10,
+          "family": "shared_insertion",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade10-club-routines-insertion-v0.1.md",
+            "sha256": "48b2f0b15b87d61a11c86ab2de038b45517212fdae2124c1383de5a57b720cb9"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade10-club-routines-insertion-author-check-v0.1.json",
+            "sha256": "8b808da7c50dee9414e9c2fda7e8bec16fb996e85d0eeac7f73e34f03aca2e23"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g10.wenzhou2025.insertion"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade10-club-routines-insertion"
+    },
+    {
+      "grade": 11,
+      "family": "shared_insertion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g11.spring2024.insertionE",
+        "grade11-heze2026-21cnjy24886046.insertion",
+        "grade11-yinchuan2026-21cnjy25860535.insertion"
+      ],
+      "input_states": {
+        "confirmed": 0,
+        "known_missing": 1,
+        "unknown": 2
+      },
+      "label": "共享句空衔接",
+      "existing_authored_candidates": [
+        {
+          "id": "grade11-investigation-insertion",
+          "grade": 11,
+          "family": "shared_insertion",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade11-investigation-insertion-v0.2.md",
+            "sha256": "7887a0c1359a0f61671a68493ccb2130bd717be1f3cf95011356b5f65705896d"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade11-investigation-insertion-author-check-v0.2.json",
+            "sha256": "daa73ffca41ff1213e3b7ee8b93fc8aa283f8bb93e31d3baed26f1af814544f6"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g11.spring2024.insertionE"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade11-investigation-insertion"
+    },
+    {
+      "grade": 12,
+      "family": "shared_insertion",
+      "observation_state": "observed",
+      "source_group_ids": [
+        "g12.2025anshan.insertion",
+        "g12.national2025.insertion",
+        "grade12-linyi2025-21cnjy24838709.insertion",
+        "grade12-yali2026-21cnjy25133058.insertion"
+      ],
+      "input_states": {
+        "confirmed": 2,
+        "known_missing": 0,
+        "unknown": 2
+      },
+      "label": "共享句空衔接",
+      "existing_authored_candidates": [
+        {
+          "id": "grade12-print-room-insertion",
+          "grade": 12,
+          "family": "shared_insertion",
+          "questions": 5,
+          "candidate": {
+            "path": "FirstRelease/Expansions/grade12-print-room-insertion-v0.1.md",
+            "sha256": "89567561ce23efe9a931ae4cb5a2359ef2c534671178a9d9098f7f6ad99e14a0"
+          },
+          "author_check": {
+            "path": "FirstRelease/Expansions/grade12-print-room-insertion-author-check-v0.1.json",
+            "sha256": "b98be207c617812e59856a357dcab4bd5709e214d21378b450ce41981ec234bf"
+          },
+          "index": {
+            "path": "FirstRelease/Expansions/authored-candidate-index-v0.23.json",
+            "sha256": "0448b23eb6efa5bb37ad323cb0be6ca15d4915403acb43e0d942ba62db4b3023"
+          },
+          "source_group_ids": [
+            "g12.national2025.insertion"
+          ],
+          "source_form_support": "selected_source_group_form_reference",
+          "in_previous_showcase": true,
+          "new_review_UI_verified": false
+        }
+      ],
+      "delivery_state": "existing_complete_candidate_needs_review_UI",
+      "selected_representative_id": "grade12-print-room-insertion"
+    }
+  ],
+  "required_unit": "one_complete_authored_task_group_per_observed_grade_family_not_one_subquestion",
+  "one_representative_is_not_all_concrete_mode_combinations": true,
+  "unknown_not_grade_absence": true,
+  "candidate_presence_not_quality_pass": true,
+  "listening": {
+    "included_in_written_matrix": false,
+    "current_complete_review_package_verified": false,
+    "delivery_rule": "must_report_separately;no_text_only_task_claimed_as_complete_audio_task"
+  },
+  "independent_student_commercial_or_production_admission": false,
+  "baseline_authored_groups": 53,
+  "baseline_authored_responses": 338,
+  "new_timeboxed_authored_groups": 12,
+  "new_timeboxed_authored_responses": 55,
+  "additional_author_indexes": [
+    {
+      "path": "FirstRelease/Timeboxed/authored-review-index-v0.2.json",
+      "sha256": "6e5770af3766729ad84de52d5a0be85ec10f7d0e593b758255b7b044a8688e4f"
+    }
+  ]
+}

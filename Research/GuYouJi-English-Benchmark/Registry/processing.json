@@ -26507,6 +26507,60 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "timeboxed-seven-sentence-family-groups20261016c-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "Tools/quality_review_contract.py + Tools/build_quality_review.py + Tools/check_timeboxed_sentence_tasks.py + Tools/check_quality_review.py + actual_Codex_browser",
+      "tool_version": "0.2",
+      "parameters": [
+        "7newauthoredgroups50responses;context5/8/10+phonetic4+isolatedforms15given10/ungiven5+wholetranslation3/5;combined65/393;preview41/244;old34payload unchanged;28preparationcontrols/41payloadchecks;actual7newcells17records;2neededScreenshots;source306/41notincremented;no new original acquisition/OCR/paper render/fulltree snapshot/model/production;Cambridge lookup403not acquired/not evidenceupgrade"
+      ],
+      "pages": 7,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-sentence-controls20261016c-v0.1.json",
+          "bytes": 4500,
+          "sha256": "71ee2f0466d96f714f1215946d01db24288359bce6e5edc47391855b66925280",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-controls20261016c-v0.1.json",
+          "bytes": 4258,
+          "sha256": "bd308b0c28f21980ef530f6c755a89ff2db651a3cacc9a7ef8028c521c7e200a",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-sentence-browser20261016c-v0.1.json",
+          "bytes": 34684,
+          "sha256": "a15289cb3219ea498e93215280c7ba5c2a0e66cacd47fe291ad6ac18bd3532c0",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-translation20261016c-v0.1.png",
+          "bytes": 137358,
+          "sha256": "c2de4836475e3335f33d831da54369709f19d16976a3de4035bf5ad8c87d9ee6",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-phonetic20261016c-v0.1.png",
+          "bytes": 113308,
+          "sha256": "022e196899e0f64cf87850a3fc40a02ad08271f81c7221c9237fb01756c0420b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-page20261016c-v0.1.html",
+          "bytes": 470524,
+          "sha256": "6d45953024983e81d64569956702fe2e2bf9a787a9d286820868e0cd5f0f6d69",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-build20261016c-v0.1.json",
+          "bytes": 419,
+          "sha256": "405beadbbdeb2ae8aab606b4b60d42a53f86887899e4ef38738328aff4a59587",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
