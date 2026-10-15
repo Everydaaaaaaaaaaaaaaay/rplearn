@@ -1,0 +1,158 @@
+{
+  "version": "0.1",
+  "id": "grade11-repair-workshop-open-reading",
+  "grade": 11,
+  "family": "open_reading_response",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade11-tianjin2026-21cnjy26082071.readingResponse"
+  ],
+  "source_shape": {
+    "family": "open_reading_response",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "per_response_word_limits": [
+        20,
+        1,
+        15,
+        10,
+        20
+      ],
+      "source_section_name_misleading": true,
+      "necessary_input_complete": true
+    },
+    "grade": 11
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "group_id": "grade11-tianjin2026-21cnjy26082071.readingResponse",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+      "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+    },
+    "start_offset": 19341,
+    "end_offset": 21444,
+    "material_sha256": "0e2561030cbdcee58e1b97b85fbee3092ce8631e70c74a69b8c5d1c6fdd4916b"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What did the writer notice about the boy near the doorway?（不超过20词）",
+      "options": [],
+      "referenceAnswers": [
+        "He held a broken model boat, stepped aside for others, and seemed uncertain about joining."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "需注意地点和观察视点，选出持破船/让路/犹豫等实际观察，不臆测性格或疾病。",
+      "maxWords": 20,
+      "operation": "source_information"
+    },
+    {
+      "number": 2,
+      "stem": "What does the bold word “bewildered” probably mean?（仅填1词）",
+      "options": [],
+      "referenceAnswers": [
+        "Confused.",
+        "Puzzled."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "来回看不同桌子又看出口表现迷惑，接受一词近义confused/puzzled；不是把后续熟练等情绪带回。",
+      "maxWords": 1,
+      "operation": "one_word_contextual_synonym"
+    },
+    {
+      "number": 3,
+      "stem": "How did Mei help the boy become involved?（不超过15词）",
+      "options": [],
+      "referenceAnswers": [
+        "She invited him to sort wooden pieces and share what he noticed."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "邀请排序并分享发现是具体帮助，不仅重复she helped him。",
+      "maxWords": 15,
+      "operation": "source_information"
+    },
+    {
+      "number": 4,
+      "stem": "In the writer’s view, why might Mei have given the boy a job?（不超过10词）",
+      "options": [],
+      "referenceAnswers": [
+        "To help others see that he could contribute."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "作者I suspect的视角推测，不能说Mei明确确认此唯一动机。",
+      "maxWords": 10,
+      "operation": "author_inference"
+    },
+    {
+      "number": 5,
+      "stem": "Would you use Mei’s approach to welcome a newcomer? Why?（不超过20词）",
+      "options": [],
+      "referenceAnswers": [
+        "Yes. A small useful task can give a newcomer a comfortable reason to join in.",
+        "Not immediately. I would first ask what the newcomer wanted, because an assigned task might feel uncomfortable."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "态度与理由须一致；两方向参考都可，不能按赞同作者才判对。",
+      "maxWords": 20,
+      "operation": "opinion_plus_reason"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "五问上限依次20/1/15/10/20，材料中的bewildered明确加粗，避免题干指向不存在版式。观察/一词释义/帮助方式/作者视点推断/个人态度理由分层；各自一个完整回应。源 misleading节名不使它变独立句填空；原购物/贫困等判断不继承。",
+  "response_word_limits": [
+    20,
+    1,
+    15,
+    10,
+    20
+  ],
+  "canonical_response_block_sha256": "94726cc74680b8612ab6f5639687c737ecd8881904bb413bbb2d834095b39745",
+  "candidate_path": "FirstRelease/Timeboxed/grade11-repair-workshop-open-reading-v0.1.md",
+  "candidate_sha256": "fbaf3b578aecdf4611d7aebdf88ac936473d78dc531228370c87a1bb61c4e63f",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 406,
+    "response_prompt_English_tokens": 50,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0,
+    "table_English_tokens": 0,
+    "output_requirements_English_tokens": 50
+  }
+}

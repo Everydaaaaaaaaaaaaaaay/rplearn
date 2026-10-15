@@ -1,0 +1,120 @@
+{
+  "version": "0.1",
+  "id": "grade9-art-prize-open-table",
+  "grade": 9,
+  "family": "open_table_completion",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade9-chengdu2025-21cnjy23208601.table"
+  ],
+  "source_shape": {
+    "family": "open_table_completion",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "materials": 1,
+      "reference_includes_multiword_answers": true
+    },
+    "grade": 9
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "group_id": "grade9-chengdu2025-21cnjy23208601.table",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+      "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+    },
+    "start_offset": 26432,
+    "end_offset": 26709,
+    "material_sha256": "7244d4789b6733b5e48256bc80220e2af580b3854eea8f015020ae7e5d555c7f"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [],
+      "knownForms": [
+        "confidence"
+      ],
+      "rationale": "正方第二段明确winning can build confidence。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "knownForms": [
+        "new challenge"
+      ],
+      "rationale": "one new challenge与a final judgment对照，允许完整短语。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "knownForms": [
+        "competition"
+      ],
+      "rationale": "反方担忧competition成为活动中心。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "knownForms": [
+        "their own progress",
+        "their progress"
+      ],
+      "rationale": "比较新旧作品来察觉自身进步，不是排名；两短语均可。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [],
+      "knownForms": [
+        "useful feedback",
+        "helpful feedback"
+      ],
+      "rationale": "反方希望每人获具体反馈帮助下次改进，useful/helpful同义可接受。"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整同题正反立场材料及六行表，正方一行已给、两空；反方三空，共五响应；允许多词，不擅设源未明确的每空一词上限。作者观点表述为讨论者的主张，不把奖项必然提升自信等说法当实证科学结论。表格任务不是额外单选阅读。",
+  "response_word_limits": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "table_response_distribution": {
+    "YES": 2,
+    "NO": 3
+  },
+  "canonical_response_block_sha256": "eccbc4f16ed0d0cc816a634e041eef67fcec4a82adf0a8131438730ac009c7da",
+  "candidate_path": "FirstRelease/Timeboxed/grade9-art-prize-open-table-v0.1.md",
+  "candidate_sha256": "d5231c92f585f89fe0fdcd4d6edf31afca4b25ecadb14b80780b942e84963f4d",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 288,
+    "response_prompt_English_tokens": 0,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0,
+    "table_English_tokens": 68,
+    "output_requirements_English_tokens": 0
+  }
+}

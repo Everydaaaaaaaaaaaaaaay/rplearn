@@ -1,0 +1,148 @@
+{
+  "version": "0.1",
+  "id": "grade8-garden-plan-open-reading",
+  "grade": 8,
+  "family": "open_reading_response",
+  "questions": 4,
+  "options_each": null,
+  "anchor_group_ids": [
+    "g8.bnu2026.readingResponse"
+  ],
+  "source_shape": {
+    "grade": 8,
+    "family": "open_reading_response",
+    "responses": 4,
+    "options_each": null,
+    "details": {
+      "points": [
+        2,
+        2,
+        2,
+        4
+      ],
+      "last_operation": "action_plus_reason"
+    }
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/baseline-open-form-views-v0.1.json",
+      "sha256": "05cc338667d085642ccd72504b8bc1c7321a1a31c6070dc23e6424ea6a8c5a9b"
+    },
+    "group_id": "g8.bnu2026.readingResponse",
+    "transcription": {
+      "path": "build/english-benchmark-research-20261012/baseline-open-form-source-text20261015s-v0.1.json",
+      "sha256": "3405c2e92c029bba50b411bfa77baea7dadb8c707403da48f5dc492ae6ece1a3"
+    },
+    "record_index": 1,
+    "parent_document": {
+      "path": "build/english-benchmark-research-20261012/xschu-bnu2026-paper-key20261014.pdf",
+      "sha256": "36f2bf8cc8678076380cfd71207c64bc9ff4a71e5d1778167cc3615c85033761"
+    },
+    "record_sha256": "a618d180b37f2ba5ae8796aebcdc08e2f88028869058931809a0b5057c003292"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Why did the writer avoid asking questions?",
+      "options": [],
+      "referenceAnswers": [
+        "The writer was afraid of looking less clever than the other students."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "提取第一段担心显得不够聪明，不能只说喜欢安静。",
+      "maxWords": null,
+      "operation": "source_information"
+    },
+    {
+      "number": 2,
+      "stem": "How did the writer feel after finding the problem in the drawing?",
+      "options": [],
+      "referenceAnswers": [
+        "The writer felt embarrassed and wanted to hide the drawing."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "第三段明确embarrassed及想藏图；不把后来释然当此时情绪。",
+      "maxWords": null,
+      "operation": "source_information"
+    },
+    {
+      "number": 3,
+      "stem": "What did the writer realise after asking the teacher with Sam?",
+      "options": [],
+      "referenceAnswers": [
+        "Asking a question could help other people as well as the writer."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "第四段转折领悟：问题能帮助别人和自己，不等于停止思考；合理同义表述可成立。",
+      "maxWords": null,
+      "operation": "source_information"
+    },
+    {
+      "number": 4,
+      "stem": "What can you do when you are unsure about a group task? Why?",
+      "options": [],
+      "referenceAnswers": [
+        "I can explain what I have checked and then ask my group, because this may help everyone solve the problem.",
+        "I can check the instructions first and ask about the unclear part, because guessing could cause mistakes."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "需可执行行动及与行动相连的理由；自主查证、与组员讨论等多方案可成立。源末题4分并未证明行动/理由各2分，不捏造分析分值。",
+      "maxWords": null,
+      "operation": "action_plus_reason"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整四问，前三源信息/领悟，末问一个完整回应同时给行动和理由；不拆成两题，不自定源未给的字数上限。源明示2/2/2/4分只记源事实，新稿不伪造已验证评分或真人得分；身体健康叙事未继承。",
+  "response_word_limits": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "source_points_each": [
+    2,
+    2,
+    2,
+    4
+  ],
+  "analytic_point_split_established": false,
+  "canonical_response_block_sha256": "4ff7db2f93540ada4ab9f1dc46f382ad4e6be75065e97f66a185be7271f85b7e",
+  "candidate_path": "FirstRelease/Timeboxed/grade8-garden-plan-open-reading-v0.1.md",
+  "candidate_sha256": "1ce85ad946bb584833824f85c3db19082f7eefb20b02da5a6a9d37fd11859953",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 355,
+    "response_prompt_English_tokens": 43,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0,
+    "table_English_tokens": 0,
+    "output_requirements_English_tokens": 43
+  }
+}

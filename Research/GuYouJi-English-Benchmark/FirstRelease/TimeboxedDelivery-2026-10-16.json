@@ -22,8 +22,8 @@
   ],
   "completion_unit": "one complete major task group per grade and observed task family;not one subquestion",
   "review_matrix": {
-    "path": "FirstRelease/timeboxed-review-matrix-v0.6.json",
-    "sha256": "4243a8091f897188d90509eceadb1400489c4543b058beb54716f4bf47fcdcc3"
+    "path": "FirstRelease/timeboxed-review-matrix-v0.7.json",
+    "sha256": "6f869d631a650092833387d220055e14553bc4cd80e0deac623c73d8a88b49c7"
   },
   "current_standard": {
     "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
@@ -43,36 +43,36 @@
   "automatic_wakeup_interval_minutes": 30,
   "finish_action": "deliver consolidated report and review page,delete automation,wait for user quality review",
   "next_actions": [
-    "Use remaining11 missing originals plus0simulated cells; prioritize complete open reading/forms/profiles/continuations",
+    "Use remaining5 missing originals plus0simulated cells; prioritize complete open reading/forms/profiles/continuations",
     "Ordinary-source grade8 grammar representative now delivered; keep original simulated candidate and source input states unchanged",
     "Missing required picture panels/counts must not be guessed; seek only targeted needed source evidence or label remaining gap/prototype distinctly",
-    "Preserve old59payloads and reuse unchanged browser evidence",
+    "Preserve old65payloads and reuse unchanged browser evidence",
     "Begin closeout by the saved cutoff regardless of remaining gaps"
   ],
   "new_author_index": {
-    "path": "FirstRelease/Timeboxed/authored-review-index-v0.5.json",
-    "sha256": "d21ce87fd77a2b231180e4e0a2120230730f391765cd9701d7ed4cefd1949306"
+    "path": "FirstRelease/Timeboxed/authored-review-index-v0.6.json",
+    "sha256": "1ac541fda6f18eed88fffdb4f2027fd8ec86b4d3d134e92e0ad11dc37047b327"
   },
   "review_page_url": "http://127.0.0.1:8766/build/english-benchmark-quality-review/index.html",
-  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.6.json",
+  "quality_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_quality_review.py --matrix Research/GuYouJi-English-Benchmark/FirstRelease/timeboxed-review-matrix-v0.7.json",
   "current_progress": {
     "baseline_authors": 53,
-    "new_authors": 30,
-    "combined_authored_groups": 83,
-    "combined_response_positions": 563,
-    "preview_grade_family_cells": 59,
-    "preview_response_positions": 414,
+    "new_authors": 36,
+    "combined_authored_groups": 89,
+    "combined_response_positions": 590,
+    "preview_grade_family_cells": 65,
+    "preview_response_positions": 441,
     "source_positive_cells": 70,
-    "missing_original_cells": 11,
+    "missing_original_cells": 5,
     "simulated_anchor_only_cells_pending": 0,
     "source_unknown_cells": 74,
-    "all_current_preview_cells_browser_checked": 59,
-    "individual_browser_behavior_records": 79,
+    "all_current_preview_cells_browser_checked": 65,
+    "individual_browser_behavior_records": 91,
     "final_delivery_complete": false,
     "browser_evidence_reuse": {
-      "unchanged_prior_cells": 52,
-      "new_cells": 7,
-      "latest_specific_records": 16
+      "unchanged_prior_cells": 59,
+      "new_cells": 6,
+      "latest_specific_records": 12
     }
   }
 }

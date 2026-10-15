@@ -26687,6 +26687,48 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "timeboxed-six-open-and-mixed-reading-groups-20261016g-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "Tools/build_quality_review.py + focused input contract checks + actual_Codex_browser",
+      "tool_version": "0.1",
+      "parameters": [
+        "preview65cells/441responses;old59payload unchanged;source306/41unchanged;no new original acquisition/paper render/fulltree snapshot/independent or production evaluation"
+      ],
+      "pages": 5,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-open-controls20261016g-v0.1.json",
+          "bytes": 3877,
+          "sha256": "011215ad293724c98af9c1754495cda1909cd4618616f28e96bfdc5c7495254a",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-controls20261016g-v0.1.json",
+          "bytes": 6482,
+          "sha256": "fdc64516385158d7c4ca81deb5e1668743fd05805b6079c1cf02a929d2dec4ce",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-open-browser20261016g-v0.1.json",
+          "bytes": 82454,
+          "sha256": "b86445f2f2f523452d14fd35924f1c29bd43184198e5e7dce8e77146b69e7e0f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-page20261016g-v0.1.html",
+          "bytes": 785965,
+          "sha256": "866e5cde231704b2c1d82c2a0c8c09c6466a1a914001b022a122efb4d518881d",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-research-20261012/timeboxed-quality-build20261016g-v0.1.json",
+          "bytes": 419,
+          "sha256": "d7c1fc7ae043f9f49b34d0596458a5e13399c5878d4bc96c8091ea643c5c40b2",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

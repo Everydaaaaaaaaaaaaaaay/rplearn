@@ -1,0 +1,172 @@
+{
+  "version": "0.1",
+  "id": "grade8-class-trip-mixed-reading",
+  "grade": 8,
+  "family": "mixed_reading_response",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade8-hubei2026-21cnjy26105408.hybridResponse"
+  ],
+  "source_shape": {
+    "family": "mixed_reading_response",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "prompt_units": 3,
+      "components": [
+        {
+          "mode": "open_main_idea",
+          "responses": 1,
+          "word_max": 10
+        },
+        {
+          "mode": "table_fill",
+          "responses": 3,
+          "word_limits": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "mode": "personal_opinion",
+          "responses": 1,
+          "word_max": 20
+        }
+      ],
+      "necessary_input_complete": true
+    },
+    "grade": 8
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "group_id": "grade8-hubei2026-21cnjy26105408.hybridResponse",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade8-hubei2026-21cnjy26105408-resource-v0.2.txt",
+      "sha256": "b08451bf5b73fb3e02f28097c4e3dc0471a23292f0f1b930feac5ce6ad96f594"
+    },
+    "start_offset": 11118,
+    "end_offset": 12436,
+    "material_sha256": "4243e7c20d67f3645a6483cd95bf912ada600e7235cb42b187f7c5792464f36b"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What does the passage mainly compare?（不超过10词）",
+      "options": [],
+      "referenceAnswers": [
+        "Two ways to plan a class trip.",
+        "Individual and shared plans for a class trip."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "概括两种班级出行计划，不把地点或天气当主题。",
+      "maxWords": 10,
+      "operation": "open_main_idea"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "knownForms": [
+        "shared"
+      ],
+      "rationale": "shared plan为ClassB模式名；只填一词。",
+      "maxWords": 1
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "knownForms": [
+        "trip leader"
+      ],
+      "rationale": "明确由trip leader先询问偏好；不超过2词。",
+      "maxWords": 2
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "knownForms": [
+        "listening to others"
+      ],
+      "rationale": "leader明示决策前重视倾听别人，3词，注意与表后before a decision衔接。",
+      "maxWords": 3
+    },
+    {
+      "number": 5,
+      "stem": "Which plan would you prefer for your class? Give a reason.（不超过20词）",
+      "options": [],
+      "referenceAnswers": [
+        "I prefer the shared plan because spending time together helps us learn about one another.",
+        "I prefer the individual plan because I can explore the activity that interests me most."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "联系自己给选择和相连理由，不能以选定某一种才正确。",
+      "maxWords": 20,
+      "operation": "personal_opinion"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "三任务单位、五响应：主题1≤10词，比较表3格分别=1/≤2/≤3词，个人选择1≤20词。不将五响应误算五独立大题，不将一种限词复制给全表。源中西餐泛化未继承，新稿两个虚构班级的有限做法不推全国文化结论。",
+  "response_word_limits": [
+    10,
+    1,
+    2,
+    3,
+    20
+  ],
+  "exact_one_word_slots": [
+    2
+  ],
+  "prompt_units": 3,
+  "response_components": [
+    {
+      "mode": "open_main_idea",
+      "responses": 1
+    },
+    {
+      "mode": "table_fill",
+      "responses": 3
+    },
+    {
+      "mode": "personal_opinion",
+      "responses": 1
+    }
+  ],
+  "canonical_response_block_sha256": "b028862d90f1e45c5b199b533562d1d442373f6e5c1ec7f172e99a84195613a7",
+  "candidate_path": "FirstRelease/Timeboxed/grade8-class-trip-mixed-reading-v0.1.md",
+  "candidate_sha256": "c9e5b1068bb975b0bd685490318f71e43940bb9a79ed7b1ad2bc725778edd9b1",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 233,
+    "response_prompt_English_tokens": 17,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0,
+    "table_English_tokens": 36,
+    "output_requirements_English_tokens": 17
+  }
+}

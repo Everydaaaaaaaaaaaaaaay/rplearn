@@ -1,0 +1,127 @@
+{
+  "version": "0.1",
+  "id": "grade7-music-room-open-reading",
+  "grade": 7,
+  "family": "open_reading_response",
+  "questions": 3,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade7-hefei2025-21cnjy26607976.readingF"
+  ],
+  "source_shape": {
+    "family": "open_reading_response",
+    "responses": 3,
+    "options_each": null,
+    "details": {
+      "part": "F",
+      "per_response_word_limits": [
+        5,
+        5,
+        5
+      ],
+      "section_mixed_responses": [
+        17,
+        3
+      ],
+      "necessary_input_complete": true
+    },
+    "grade": 7
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "group_id": "grade7-hefei2025-21cnjy26607976.readingF",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+      "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+    },
+    "start_offset": 9527,
+    "end_offset": 10033,
+    "material_sha256": "afd148d9f68742efb20835bbf18b1b536a47de1b3b005dc33bb1ebe9719b2aba"
+  },
+  "source_frozen_input_state": true,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "When do the four students visit the music room?（不超过5词）",
+      "options": [],
+      "referenceAnswers": [
+        "Every Wednesday.",
+        "On Wednesdays."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "明确每周三；不把at home或after class的别处信息混入。",
+      "maxWords": 5,
+      "operation": "source_information"
+    },
+    {
+      "number": 2,
+      "stem": "Why does Max not play the drums?（不超过5词）",
+      "options": [],
+      "referenceAnswers": [
+        "They are too loud.",
+        "Because they are too loud."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "问Max不打鼓的原因，正文直接说明；最多5词。",
+      "maxWords": 5,
+      "operation": "source_information"
+    },
+    {
+      "number": 3,
+      "stem": "Who is Ben?（不超过5词）",
+      "options": [],
+      "referenceAnswers": [
+        "Judy’s younger brother.",
+        "Judy's younger brother."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "问人物关系；Ben是Judy弟弟，不是四位固定成员之一。",
+      "maxWords": 5,
+      "operation": "source_information"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整单篇三回答，逐题上限均5词，不借初三/高中一词释义模式。片语与完整句只要信息准确且不超限均可；作者参考不是穷尽集合。",
+  "response_word_limits": [
+    5,
+    5,
+    5
+  ],
+  "canonical_response_block_sha256": "8880151d21744439a0aff315178121df7e7418d6414b9d430b7a24c029d6ce87",
+  "candidate_path": "FirstRelease/Timeboxed/grade7-music-room-open-reading-v0.1.md",
+  "candidate_sha256": "fb131ab1aa706154c512662329656d003cf75663734dcaec9215b412eb125590",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 104,
+    "response_prompt_English_tokens": 19,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0,
+    "table_English_tokens": 0,
+    "output_requirements_English_tokens": 19
+  }
+}

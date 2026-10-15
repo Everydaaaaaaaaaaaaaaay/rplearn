@@ -1,0 +1,158 @@
+{
+  "version": "0.1",
+  "id": "grade12-remote-gallery-open-reading",
+  "grade": 12,
+  "family": "open_reading_response",
+  "questions": 5,
+  "options_each": null,
+  "anchor_group_ids": [
+    "grade12-tianjin2025-21cnjy24812550.shortAnswer"
+  ],
+  "source_shape": {
+    "family": "open_reading_response",
+    "responses": 5,
+    "options_each": null,
+    "details": {
+      "per_response_word_limits": [
+        10,
+        1,
+        10,
+        10,
+        20
+      ],
+      "last_operation": "opinion_plus_reason"
+    },
+    "grade": 12
+  },
+  "source_reference": {
+    "source_view_manifest": {
+      "path": "FirstRelease/Sampling/multitask-material-views-v0.1.json",
+      "sha256": "a00472128e9ed2f0f1bc0f5c49e8dfbefcd57d0d83c4b10ef382cc86bba459c5"
+    },
+    "group_id": "grade12-tianjin2025-21cnjy24812550.shortAnswer",
+    "source_text": {
+      "path": "build/english-benchmark-research-20261012/grade12-tianjin2025-21cnjy24812550-resource-v0.2.txt",
+      "sha256": "1d668a8f1a9ca02a97fa50e897864688c529d835eedae348e2f593847289263f"
+    },
+    "start_offset": 16481,
+    "end_offset": 18344,
+    "material_sha256": "6cc0c7025c1b8ae3c5c2ac7aff6ae798d966d719439fb24a6c669b43ccfb10c3"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What has helped WindowWalk move beyond its first trial?（不超过10词）",
+      "options": [],
+      "referenceAnswers": [
+        "Affordable cameras and a shared booking platform."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "第二段明确两项因素；不是只说technology。",
+      "maxWords": 10,
+      "operation": "source_information"
+    },
+    {
+      "number": 2,
+      "stem": "What does the bold word “replicate” mean in this context?（仅填1词）",
+      "options": [],
+      "referenceAnswers": [
+        "Reproduce.",
+        "Copy.",
+        "Duplicate."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "不能复制亲临体验，三一词近义可成立；只允许一个词。",
+      "maxWords": 1,
+      "operation": "one_word_contextual_synonym"
+    },
+    {
+      "number": 3,
+      "stem": "Why did Elena find the remote tour convenient?（不超过10词）",
+      "options": [],
+      "referenceAnswers": [
+        "She could ask questions without arranging travel and childcare."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "同时保留问问题和免安排出行/托管的便利，合理压缩可接受。",
+      "maxWords": 10,
+      "operation": "source_information"
+    },
+    {
+      "number": 4,
+      "stem": "Why has the programme expanded slowly?（不超过10词）",
+      "options": [],
+      "referenceAnswers": [
+        "Too few trained guides are available."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "明确训练导览人员不足，不错用已改善的设备连接原因。",
+      "maxWords": 10,
+      "operation": "source_information"
+    },
+    {
+      "number": 5,
+      "stem": "What do you think of WindowWalk’s future? Why?（不超过20词）",
+      "options": [],
+      "referenceAnswers": [
+        "It may grow because it offers a useful option, provided enough guides are trained.",
+        "Growth may stay limited because the programme requires guides with several skills."
+      ],
+      "parts": [
+        {
+          "label": "完整回答"
+        }
+      ],
+      "rationale": "未来判断必须有文本相连理由，乐观/谨慎均可；不得把虚构计划说成已实现。",
+      "maxWords": 20,
+      "operation": "opinion_plus_reason"
+    }
+  ],
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "actual_frozen_revision_rounds": 0,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "same_author_all_responses_reviewed": true,
+  "author_notes": "完整五问，限词10/1/10/10/20。明确加粗释义目标；信息源因素/语境词义/便利原因/发展约束/意见理由对应不同操作。本文项目与人名均虚构，不继承源远程医疗的药品、比例、价格或地区执照事实风险。",
+  "response_word_limits": [
+    10,
+    1,
+    10,
+    10,
+    20
+  ],
+  "canonical_response_block_sha256": "67dc7d1a3c6478b93e3e4dfb163d3b97c2f9bd93d26269c3c93efee1595f152e",
+  "candidate_path": "FirstRelease/Timeboxed/grade12-remote-gallery-open-reading-v0.1.md",
+  "candidate_sha256": "b8257913f32a2d40ae5089aa1db9a41fcfbb6181dd81a71c3b60dc25ee62d3b7",
+  "authored_load_components": {
+    "tokenizer": "English alphabetic tokens;internal apostrophe/hyphen retained;labels included;Chinese separate",
+    "material_English_tokens": 338,
+    "response_prompt_English_tokens": 41,
+    "shared_set_English_tokens_once": 0,
+    "per_question_candidates_English_tokens": 0,
+    "requirement_English_tokens": 0,
+    "table_English_tokens": 0,
+    "output_requirements_English_tokens": 41
+  }
+}
