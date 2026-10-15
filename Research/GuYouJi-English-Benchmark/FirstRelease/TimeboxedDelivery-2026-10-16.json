@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "status": "closeout_bounded_delivery",
+  "status": "bounded_review_delivery_finished_with_disclosed_gaps",
   "scope": "grades7_to12_only",
   "user_authorized_maximum_hours": 12,
   "started_at_utc": "2026-10-15T16:18:47Z",
@@ -39,14 +39,11 @@
   "listening": "separate declared gap unless complete audio/script/student input/key package verified;do not label a text prompt as complete listening",
   "quality_evidence": "author review/local checks only;independent teacher/student/commercial/production remain unverified",
   "automation_id": "lingotrip",
-  "automation_state_confirmed": "ACTIVE",
+  "automation_state_confirmed": "DELETED",
   "automatic_wakeup_interval_minutes": 30,
   "finish_action": "deliver consolidated report and review page,delete automation,wait for user quality review",
   "next_actions": [
-    "No further searching/new source acquisition or authored families; early closeout now begins before saved maximum cutoff",
-    "Refine review usability and recheck affected shared controls/remaining actual UI",
-    "Audit final reference and source-mode boundaries,authorial quality/duplication/load;freeze standard plus authored list",
-    "Deliver70preview tasks with69source-form/1pending prototype distinction;list hearing and independent/commercial/production gaps;delete automation"
+    "Wait for user review of complete grade/family author tasks;no automatic new research"
   ],
   "new_author_index": {
     "path": "FirstRelease/Timeboxed/authored-review-index-v0.8.json",
@@ -67,7 +64,7 @@
     "source_unknown_cells": 74,
     "all_current_preview_cells_browser_checked": 70,
     "individual_browser_behavior_records": 103,
-    "final_delivery_complete": false,
+    "final_delivery_complete": true,
     "browser_evidence_reuse": {
       "unchanged_prior_cells": 69,
       "new_cells": 1,
@@ -76,5 +73,21 @@
     "source_form_representative_cells": 69,
     "prototype_source_mode_pending_cells": 1
   },
-  "early_closeout_started_at_utc": "2026-10-15T18:21:23Z"
+  "early_closeout_started_at_utc": "2026-10-15T18:21:23Z",
+  "completed_at_utc": "2026-10-15T18:43:47Z",
+  "completed_local": "2026-10-16 02:43:47",
+  "automation_deleted_at_utc": "2026-10-15T18:43:47Z",
+  "completion_scope": "limited authored quality review delivery with disclosed gaps;not original full benchmark acceptance or all source modes",
+  "delivery_manifest": {
+    "path": "FirstRelease/TimeboxedDeliveryManifest-2026-10-16.json",
+    "sha256": "e1a7d46163f1369bc2cd6bea991a40ff3415b9f83ced7b3a01ef27d7521647ba"
+  },
+  "delivery_report": {
+    "path": "FirstRelease/TimeboxedDeliveryReport-2026-10-16.md",
+    "sha256": "c73456147dfdf7a45ff9ab69010fdd44c93f683eeaf6d39584057aafc965c558"
+  },
+  "final_incremental_archive_report": {
+    "path": "build/english-benchmark-research-20261012/archive-increment20261016-final-v0.1.json",
+    "sha256": "40dfe64633580b2b12068ee40ee38414aea696c149b3d9315fd3b341873b116e"
+  }
 }
