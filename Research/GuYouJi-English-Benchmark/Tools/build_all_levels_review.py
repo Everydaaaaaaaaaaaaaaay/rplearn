@@ -99,15 +99,19 @@ def main(output):
         group = full_markdown_candidate(meta)
         group['instruction'] = {'letter_completion':'选择正确的字母组合。', 'shared_bank':'从共享词或短语中选择合适的一项。',
                                 'number_word_completion':'看单词，填对应的阿拉伯数字。',
+                                'word_picture_choice':'看单词，从同号行的三个图片中选择对应的一项。',
+                                'dialogue_matching':'为每个问句选择合适的答句。',
                                 'choice_cloze':'阅读短文，为第1—8空选择最合适的一项。例0已答，不计作答点。'}[meta['family']]
         if meta['grade']=='advanced':
             group['sourceFormNotice']='高级档候选模式：参考已核C1样卷完整形式，尚未建立产品高级档与C1等值或目标人群难度标定。'
         if meta['grade']=='primary1':
             group['sourceFormNotice']='来源为一年级旧公开练习的完整数字词题组，原学校与年份未知；本稿数字规范化协议不代表源卷阅卷规则。'
+        if meta['grade']=='primary2':
+            group['sourceFormNotice']='参考二年级公开转载的完整形式，原学校、考试年份及源键未知；图片词汇有明确适配改编，未建立全国年级或学生难度标定。'
         added.append((group, meta['family']))
     cells = {(c['grade'], c['family']): c for c in data['cells']}
     labels = {c['family']: c['label'] for c in data['cells']}
-    labels.update(letter_completion='字母组合补全', table_reading_choice='表格信息单选', number_word_completion='数字词转数字')
+    labels.update(letter_completion='字母组合补全', table_reading_choice='表格信息单选', number_word_completion='数字词转数字', word_picture_choice='单词选图片')
     for group, family in added:
         key = (group['grade'], family)
         if key in cells and cells[key].get('groupId'):

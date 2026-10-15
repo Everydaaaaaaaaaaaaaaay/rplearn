@@ -1,0 +1,224 @@
+{
+  "version": "0.1",
+  "id": "primary2-six-word-pictures",
+  "grade": "primary2",
+  "questions": 6,
+  "candidate_sha256": "36830bed623216791b07dc00a3ef9b3edabc1881a053e68bb37af604cb019ff9",
+  "canonical_response_block_sha256": "5e58467acf4d511149e54795e5fc82af1f8a5508f06626fe213ac418092e63a3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "ruler（第1行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第1行：A是pencil；B是ruler；C是book。仅B与ruler对应。"
+    },
+    {
+      "number": 2,
+      "stem": "bird（第2行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第2行：A是bird；B是cat；C是fish。仅A与bird对应。"
+    },
+    {
+      "number": 3,
+      "stem": "car（第3行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "第3行：A是train；B是bus；C是car。仅C与car对应。"
+    },
+    {
+      "number": 4,
+      "stem": "book（第4行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第4行：A是schoolbag；B是book；C是pencil。仅B与book对应。"
+    },
+    {
+      "number": 5,
+      "stem": "plane（第5行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "第5行：A是boat；B是bike；C是plane。仅C与plane对应。"
+    },
+    {
+      "number": 6,
+      "stem": "lake（第6行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第6行：A是lake；B是hill；C是tree。仅A与lake对应。"
+    }
+  ],
+  "source_index": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.1.json",
+    "sha256": "e2b8119d9d0ca34f8725d70537423194a4b44b33f40fbe5975d28704d19e346a"
+  },
+  "source_group_id": "primary2.bzxz.upper.wordpictures",
+  "source_observation": {
+    "source_responses": 6,
+    "options_each": 3,
+    "necessary_picture_candidates": 18,
+    "source_physical_pages": [
+      1,
+      2
+    ],
+    "source_key": "not_obtained;source1and4held",
+    "lexical_adaptation": "ruler/bird/car/lake from source picture group;book/plane from same paper next matching group;no claim identical lexicon or validated grade difficulty"
+  },
+  "authored_student_inputs_complete": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "figure_asset": {
+    "path": "FirstRelease/AllLevels/primary2-six-word-pictures-v0.1.svg",
+    "sha256": "2159f688dae6641fcb8591ec41bd3295f3245f9f6293959eec66c3fb31d6bd40"
+  },
+  "visual_candidate_objects": [
+    {
+      "number": 1,
+      "word": "ruler",
+      "candidate_objects": [
+        "pencil",
+        "ruler",
+        "book"
+      ],
+      "answer": "B"
+    },
+    {
+      "number": 2,
+      "word": "bird",
+      "candidate_objects": [
+        "bird",
+        "cat",
+        "fish"
+      ],
+      "answer": "A"
+    },
+    {
+      "number": 3,
+      "word": "car",
+      "candidate_objects": [
+        "train",
+        "bus",
+        "car"
+      ],
+      "answer": "C"
+    },
+    {
+      "number": 4,
+      "word": "book",
+      "candidate_objects": [
+        "schoolbag",
+        "book",
+        "pencil"
+      ],
+      "answer": "B"
+    },
+    {
+      "number": 5,
+      "word": "plane",
+      "candidate_objects": [
+        "boat",
+        "bike",
+        "plane"
+      ],
+      "answer": "C"
+    },
+    {
+      "number": 6,
+      "word": "lake",
+      "candidate_objects": [
+        "lake",
+        "hill",
+        "tree"
+      ],
+      "answer": "A"
+    }
+  ],
+  "visual_accessibility": "image-dependent task;generic positional alt does not supply a nonvisual equivalent;not accessible production admission",
+  "answer_label_distribution": {
+    "A": 2,
+    "B": 2,
+    "C": 2
+  }
+}

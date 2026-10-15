@@ -5,6 +5,8 @@ import hashlib
 import itertools
 import json
 import re
+import base64
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from grade_mode_evidence import BASE, REPO, load_ref
 from quality_review_contract import response_markdown
@@ -35,6 +37,13 @@ def check(page):
         p60=REPO/frozen60['output']
         assert hashlib.sha256(p60.read_bytes()).hexdigest()==frozen60['sha256']
         assert all(data['groups'][key]==value for key,value in extract(p60)['groups'].items()),'previous60 full inputs changed'
+    second_run=next((r for r in json.loads((BASE/'Registry/processing.json').read_text())['runs']
+                     if r['id']=='all16-second-official-advanced-primary12-20261016-v0.1'),None)
+    if second_run:
+        frozen62=next(r for r in second_run['page_records']if r['output'].endswith('.html'))
+        p62=REPO/frozen62['output']
+        assert hashlib.sha256(p62.read_bytes()).hexdigest()==frozen62['sha256']
+        assert all(data['groups'][key]==value for key,value in extract(p62)['groups'].items()),'previous62 full inputs changed'
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
@@ -87,6 +96,27 @@ def check(page):
             assert audit['answered_examples']==1 and len(audit['example_options'])==4
             assert re.findall(r'\((\d+)\)',audit['student_passage'])==[str(n)for n in range(9)]
             assert audit['source_level_equivalence_established'] is False and group['sourceFormNotice']
+        if meta['family']=='word_picture_choice':
+            assert len(group['questions'])==6 and all(len(q['options'])==3 for q in group['questions'])
+            assert len(group['requiredPassageImages'])==1
+            asset=load_ref(audit['figure_asset']);root=ET.fromstring(asset.read_bytes())
+            ns={'s':'http://www.w3.org/2000/svg'}
+            uses=root.findall('s:use',ns)
+            assert len(uses)==18
+            assert not root.findall('.//s:script',ns)
+            assert not root.findall('.//s:image',ns),'original vector input must not depend on remote media'
+            href='{http://www.w3.org/1999/xlink}href'
+            assert [u.attrib[href] for u in uses]==['#'+obj for row in audit['visual_candidate_objects'] for obj in row['candidate_objects']]
+            for q,row in zip(group['questions'],audit['visual_candidate_objects']):
+                assert [label for label,obj in zip('ABC',row['candidate_objects']) if obj==row['word']]==[q['answer']]
+            image=group['requiredPassageImages'][0]
+            assert base64.b64decode(image['src'].split(',',1)[1])==asset.read_bytes()
+            assert group['sourceFormNotice'] and audit['authored_student_inputs_complete']
+        if meta['grade']=='primary2' and meta['family']=='dialogue_matching':
+            assert len(group['questions'])==5 and all(len(q['options'])==5 for q in group['questions'])
+            assert len({tuple(tuple(p) for p in q['options']) for q in group['questions']})==1
+            assert audit['source_observation']['source_reuse_rule']=='not_explicit'
+            assert '只用一次' not in text.split('## 作者核对')[0]
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     return {'levels':16,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),

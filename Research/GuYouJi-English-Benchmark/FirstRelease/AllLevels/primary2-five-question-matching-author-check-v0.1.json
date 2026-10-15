@@ -1,0 +1,169 @@
+{
+  "version": "0.1",
+  "id": "primary2-five-question-matching",
+  "grade": "primary2",
+  "questions": 5,
+  "candidate_sha256": "79fdde8034aa75e559dfbc4d4f90891dcbb60d5da73e455f9566e41c12259718",
+  "canonical_response_block_sha256": "cc1f5bed8232b3c97db3058ad927b751d5a67929cdc22308f88b29544cf7620f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Who is that woman?",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "She is my aunt."
+        ],
+        [
+          "D",
+          "It is small and blue."
+        ],
+        [
+          "E",
+          "I am going to the library."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Who询问人物身份，C回答aunt；A偏好、B位置、D外观、E目的地均未答身份。"
+    },
+    {
+      "number": 2,
+      "stem": "What does your bag look like?",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "She is my aunt."
+        ],
+        [
+          "D",
+          "It is small and blue."
+        ],
+        [
+          "E",
+          "I am going to the library."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "look like询问包的外观，D的small and blue合适；A态度、B位置、C身份、E目的地均未描述外观。"
+    },
+    {
+      "number": 3,
+      "stem": "Where is your ball?",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "She is my aunt."
+        ],
+        [
+          "D",
+          "It is small and blue."
+        ],
+        [
+          "E",
+          "I am going to the library."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Where is询问球所在位置，B的under the chair合适；A态度、C人物、D外观、E将去的目的地均未答球的位置。"
+    },
+    {
+      "number": 4,
+      "stem": "Where are you going?",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "She is my aunt."
+        ],
+        [
+          "D",
+          "It is small and blue."
+        ],
+        [
+          "E",
+          "I am going to the library."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "Where are you going询问去向，E的going to the library合适；B是物体静态位置，A/C/D为态度/身份/外观。"
+    },
+    {
+      "number": 5,
+      "stem": "Do you like the kite?",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "She is my aunt."
+        ],
+        [
+          "D",
+          "It is small and blue."
+        ],
+        [
+          "E",
+          "I am going to the library."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Do you like询问喜好，A的Yes,I do回应同一助动词；B/C/D/E均未回答偏好。"
+    }
+  ],
+  "source_index": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.1.json",
+    "sha256": "e2b8119d9d0ca34f8725d70537423194a4b44b33f40fbe5975d28704d19e346a"
+  },
+  "source_group_id": "primary2.bzxz.upper.questionmatching",
+  "source_observation": {
+    "source_responses": 5,
+    "unique_shared_answers": 5,
+    "source_reuse_rule": "not_explicit",
+    "source_key": "not_obtained",
+    "necessary_media": false
+  },
+  "authored_student_inputs_complete": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "whole_group_admissibility": "Each of the five prompts has exactly one appropriate answer independent of reuse;no unstated once-only rule required."
+}
