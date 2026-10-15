@@ -1,0 +1,51 @@
+{
+  "version": "0.1",
+  "status": "in_progress_bounded_delivery",
+  "scope": "grades7_to12_only",
+  "user_authorized_maximum_hours": 12,
+  "started_at_utc": "2026-10-15T16:18:47Z",
+  "stop_expansion_at_utc": "2026-10-16T02:18:47Z",
+  "deliver_by_utc": "2026-10-16T04:18:47Z",
+  "timezone": "Asia/Shanghai",
+  "started_local": "2026-10-16 00:18:47",
+  "stop_expansion_local": "2026-10-16 10:18:47",
+  "deliver_by_local": "2026-10-16 12:18:47",
+  "time_limit_is_upper_bound_not_minimum": true,
+  "reserved_closeout_hours": 2,
+  "stop_expansion_rule": "Once cutoff reached: no new searches/downloads/families/authored tasks;only prepare/check/freeze/deliver current work. If deadline already passed,report actual current state and stop automation without further research.",
+  "priority_order": [
+    "grade-by-family review inventory and one complete representative per source-observed cell",
+    "complete missing authored task families using already reviewed full ordinary-source patterns",
+    "review UI with complete material/responses/options/media and hidden answer/rubric",
+    "targeted source repair only when needed for current representative correctness",
+    "final necessary checks/focused commits/storage increment/review page delivery and unresolved report"
+  ],
+  "completion_unit": "one complete major task group per grade and observed task family;not one subquestion",
+  "review_matrix": {
+    "path": "FirstRelease/timeboxed-review-matrix-v0.1.json",
+    "sha256": "1ba2cbf0aa64151a3422fce2dd30f647344c6389af9a28ae612564b82090ab7f"
+  },
+  "current_standard": {
+    "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+    "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+  },
+  "historical_gaps_retained": {
+    "path": "FirstRelease/Sampling/sample-layer-gaps-v0.33.json",
+    "sha256": "fe0fb20ce0559ed7942248a0cdd499f8334a6436a891c5d157c912d366fdc8ec"
+  },
+  "original_longterm_all_gaps_complete": false,
+  "new_deliverable_must_not_claim_original_longterm_complete": true,
+  "unknown_cells": "show evidence insufficient,not this grade lacks type;do not synthesize missing grade/type combinations",
+  "listening": "separate declared gap unless complete audio/script/student input/key package verified;do not label a text prompt as complete listening",
+  "quality_evidence": "author review/local checks only;independent teacher/student/commercial/production remain unverified",
+  "automation_id": "lingotrip",
+  "automation_state_confirmed": "ACTIVE",
+  "automatic_wakeup_interval_minutes": 30,
+  "finish_action": "deliver consolidated report and review page,delete automation,wait for user quality review",
+  "next_actions": [
+    "bind 40 missing grade-family cells to complete already reviewed source configurations",
+    "review grade8 simulated grammar candidate against ordinary-source form rather than silently upgrading it",
+    "create missing writing/short-answer/dialogue/sentence and matching representatives",
+    "build quality-review matrix page and preserve full student/author boundaries"
+  ]
+}

@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+2026-10-16用户重新授权**至多再做12小时并提前收尾**：[本轮交付计划](FirstRelease/TimeboxedDelivery-2026-10-16.md)与[时间状态](FirstRelease/TimeboxedDelivery-2026-10-16.json)取代无限期续办。北京时间10:18:47起只收尾，12:18:47前交付已有成果。优先补“年级×题型”代表稿供用户查质量；[库存0.1](FirstRelease/timeboxed-review-matrix-v0.1.json)查明70正向格中29已有非模拟参照作者、1模拟参照待核、40缺原创代表，74未知不擅补。交付后结束自动任务，不称历史全部缺口已解决。
+
 2026-10-15用户要求避免研究文件膨胀：[存储策略](Storage/README.md)已改为两份近期完整恢复点+去重历史归档，旧33份清单/独有内容保留。目录计量59G→7.7G不等APFS实际释放51G；例行整库快照被工具拒绝，增量重放新增0对象。初高中研究自动任务继续，空间控制不能替代内容验收。
 
 2026-10-15用户看效果后继续授权初高中扩样：当前[样本策略0.2](FirstRelease/SampleBasedModePolicy-v0.2.md)、[标准0.54](FirstRelease/PracticalAuthoringStandard-v0.54.md)与[六批清单](FirstRelease/Sampling/current-batches-v0.5.json)累计306分层结构/41父卷；旧117只计一次，新189条/1,157作答位另层。[账本0.4](FirstRelease/Sampling/parent-paper-ledger-v0.4.json)六年级8/7/7/6/6/7，仅来源标签采样计划达到；初一小标题/句空具体模式仍缺第二地区。当前[队列0.24](FirstRelease/Sampling/material-screen-queue-v0.24.json)306受限文字视图＝189新结构＋117基线、41父卷/46,665组对，文字视图库存待办归零。本批八高二/高三阅读30已有回应/120逐题候选，九复用学生图＋一必要共用说明页定向渲染，35本机控制通过；四展览/三专业完整配置、跨页/下划线/源键风险分开绑定。原冻结缺/未知和源/作者总数不变，零文字候选不证明视觉/语义独立。[配套、模式、家族去重与完整准备](FirstRelease/Sampling/sample-layer-gaps-v0.33.json)仍缺，未确认本阶段完成或扩到其他阶段。
