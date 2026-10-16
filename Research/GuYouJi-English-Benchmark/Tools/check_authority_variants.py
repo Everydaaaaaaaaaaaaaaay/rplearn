@@ -64,6 +64,10 @@ def check(data, plan):
             assert not root.findall('.//{http://www.w3.org/2000/svg}script')
         else:
             assert not group['requiredPassageImages']
+        if meta['family'] in {'listening_news_choice', 'listening_long_conversation_choice',
+                              'listening_passage_choice', 'listening_lecture_choice'}:
+            from cet_listening_contract import check as check_cet
+            check_cet(meta, group, audit, source)
         if meta['family'] in {'listening_extract_choice','listening_interview_choice','listening_double_matching'}:
             manuscript=json.loads(load_ref(audit['manuscript']).read_text())
             generation=json.loads(load_ref(audit['audio_generation']).read_text())

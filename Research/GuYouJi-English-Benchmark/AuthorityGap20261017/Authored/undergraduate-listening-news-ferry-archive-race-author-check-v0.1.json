@@ -1,0 +1,483 @@
+{
+  "version": "0.1",
+  "id": "undergraduate-listening-news-ferry-archive-race",
+  "grade": "undergraduate",
+  "questions": 7,
+  "candidate_sha256": "a1005a0b12b0e43fa18a19d3629057f98388304ecb7e3baaf9c22c9acae29e51",
+  "canonical_response_block_sha256": "d85b3c0205ef2f70b9269a1c1e718fd7cddf02def9684f4a1f0a792a9cbaf973",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "To reduce mistakes when passengers collect their bags."
+        ],
+        [
+          "B",
+          "To track luggage after passengers leave the boat."
+        ],
+        [
+          "C",
+          "To record the home addresses of regular travelers."
+        ],
+        [
+          "D",
+          "To provide a cheaper ticket for morning passengers."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：开头明确相似行李被错取。B：明确不在离船后追踪；C：明确不记录地址；D：票价不变，早班只是试点。"
+    },
+    {
+      "number": 2,
+      "stem": "第2题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "Passengers often forgot to return them."
+        ],
+        [
+          "B",
+          "The numbers could not be matched to cards."
+        ],
+        [
+          "C",
+          "They were too expensive to offer on every crossing."
+        ],
+        [
+          "D",
+          "Rain made the writing difficult to read."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：纸标签文字受雨影响，直接支持；A把可归还的新标签条件移给纸标签；B是新制不存在的问题；C未称价格为原因。"
+    },
+    {
+      "number": 3,
+      "stem": "第3题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "To identify the dates when public buildings opened."
+        ],
+        [
+          "B",
+          "To show visitors how familiar places once sounded."
+        ],
+        [
+          "C",
+          "To display the town's largest collection of photographs."
+        ],
+        [
+          "D",
+          "To celebrate only the town's most famous events."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：where/being inside sounded是声音展目的；A是书面记录能做到的事；C是已放弃方向；D与ordinary equally welcome相反。"
+    },
+    {
+      "number": 4,
+      "stem": "第4题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "A promise to donate the original tape."
+        ],
+        [
+          "B",
+          "A photograph of the building concerned."
+        ],
+        [
+          "C",
+          "A note about its location and approximate date."
+        ],
+        [
+          "D",
+          "A ticket purchased before the exhibition opens."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：每份附何地、约何时录制的短说明；A：原件归还；B：未要求照片；D：未要求门票，展后仍可投稿。"
+    },
+    {
+      "number": 5,
+      "stem": "第5题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "The sports center cannot be used for the finish."
+        ],
+        [
+          "B",
+          "Traffic cannot be stopped at the road bridge."
+        ],
+        [
+          "C",
+          "A footbridge needs repairs before it can be used."
+        ],
+        [
+          "D",
+          "The original route was longer than ten kilometers."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：木桥松板、修不及为原因；A终点未变；B明确可停交通；D全程仍十公里，不是纠正原长度。"
+    },
+    {
+      "number": 6,
+      "stem": "第6题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "Obtain the revised route map."
+        ],
+        [
+          "B",
+          "Start later with the family walkers."
+        ],
+        [
+          "C",
+          "Shorten the old route by themselves."
+        ],
+        [
+          "D",
+          "Finish their run in the riverside park."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：下载更新图；B起点时间未变，家庭走路另项目；C明确不要自行调整；D终点仍体育中心。"
+    },
+    {
+      "number": 7,
+      "stem": "第7题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "It will be moved to the road bridge."
+        ],
+        [
+          "B",
+          "It has been canceled because of loose boards."
+        ],
+        [
+          "C",
+          "It will begin at the same time as the run."
+        ],
+        [
+          "D",
+          "It is unaffected by the change to the running route."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：步行不用任一桥，明确不受影响；A相反；B未取消；C later in morning，并非同时。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.5.json",
+    "sha256": "0225afb50ec45eab5003a7ec841f78795953b4690b57d0bc6a54b40f326947bc"
+  },
+  "source_group_id": "cet4.2024121.listening.sectionA",
+  "source_observation": {
+    "source_responses": 7,
+    "source_reuse_rule": "independent_AtoD_per_question;no_sharedbank_reuse_limit",
+    "source_material": {
+      "section": "A",
+      "pieces": 3,
+      "responses_per_piece": [
+        2,
+        2,
+        3
+      ],
+      "response_numbers_per_piece": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          6,
+          7
+        ]
+      ],
+      "source_hear_each_piece_once": true,
+      "source_repeat_count": 1,
+      "questions_spoken_after_each_piece": true,
+      "student_paper_prints_questions": false,
+      "transcript_in_teacher_only": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  },
+  "manuscript": {
+    "path": "AuthorityGap20261017/ListeningScripts/undergraduate-listening-news-ferry-archive-race-v0.1.json",
+    "sha256": "e94d40e4fe009dee02f9c22b2627ed7678d8a39abff99d50f4c8f1ce60e17db2"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/undergraduate-listening-news-ferry-archive-race-audio-v0.2.json",
+    "sha256": "c57bde3b6a9b6dc2f275bec3c8e616e136a8fb1702fb401ede6be8a477c5c254"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/undergraduate-listening-news-ferry-archive-race-section-v0.2.m4a",
+      "sha256": "8d97a020a829a15ea66ec3bac8bae292ec38a5cf0bfcad81cb829b4558003fd6",
+      "seconds": 327.2778684807256,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "student_passage": "[完整本节音频（材料和问题均一遍，问题后留15秒作答）](../../../../build/english-benchmark-authority-20261017/original-audio/undergraduate-listening-news-ferry-archive-race-section-v0.2.m4a)\n\n第1段：第1—2题。\n\n第2段：第3—4题。\n\n第3段：第5—7题。",
+  "body_load_text": "第1段：第1—2题。\n\n第2段：第3—4题。\n\n第3段：第5—7题。",
+  "original_transcript_sections": [
+    {
+      "turns": [
+        {
+          "speaker": "R",
+          "text": "Passengers using the Eastport island ferry will be offered reusable luggage tags from Monday. The scheme follows several occasions when similar bags were taken by the wrong owners. The ferry company first considered asking passengers to write their names on paper labels, but staff found that rain quickly made the writing difficult to read. Under the new system, a passenger chooses a numbered waterproof tag and receives a matching card. The tag is returned at the end of the crossing. Staff will not record passengers' addresses, and the scheme does not change the price of a ticket. A company spokesperson said the numbers are intended to help people identify their bags, rather than to create a system for tracking luggage after it leaves the boat. The tags will initially be available only on the morning service. If passengers find them useful, the company will extend the scheme to later crossings."
+        }
+      ],
+      "questions": [
+        {
+          "spoken_question": "Why is the ferry company introducing reusable luggage tags?",
+          "options": [
+            [
+              "A",
+              "To reduce mistakes when passengers collect their bags."
+            ],
+            [
+              "B",
+              "To track luggage after passengers leave the boat."
+            ],
+            [
+              "C",
+              "To record the home addresses of regular travelers."
+            ],
+            [
+              "D",
+              "To provide a cheaper ticket for morning passengers."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：开头明确相似行李被错取。B：明确不在离船后追踪；C：明确不记录地址；D：票价不变，早班只是试点。"
+        },
+        {
+          "spoken_question": "What problem did staff find with the paper labels?",
+          "options": [
+            [
+              "A",
+              "Passengers often forgot to return them."
+            ],
+            [
+              "B",
+              "The numbers could not be matched to cards."
+            ],
+            [
+              "C",
+              "They were too expensive to offer on every crossing."
+            ],
+            [
+              "D",
+              "Rain made the writing difficult to read."
+            ]
+          ],
+          "answer": "D",
+          "rationale": "D：纸标签文字受雨影响，直接支持；A把可归还的新标签条件移给纸标签；B是新制不存在的问题；C未称价格为原因。"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "R",
+          "text": "The Westford town archive is inviting residents to share recordings of everyday sounds for a new exhibition. Organizers are interested in such things as the bell of a former school or the noise of machines at an old factory. They say written records can tell visitors when a building opened, but rarely show what being inside it sounded like. Residents do not have to donate their original tapes. Archive staff will make digital copies and return the recordings to their owners. Each contribution should include a short note explaining where and approximately when it was made. The archive originally planned a display of photographs, but changed direction after a resident brought in a recording of a railway station that no longer exists. The exhibition will open in November, although the archive will continue accepting contributions afterwards. Staff stress that recordings of ordinary activities are just as welcome as recordings of famous events."
+        }
+      ],
+      "questions": [
+        {
+          "spoken_question": "What is the main purpose of the new exhibition?",
+          "options": [
+            [
+              "A",
+              "To identify the dates when public buildings opened."
+            ],
+            [
+              "B",
+              "To show visitors how familiar places once sounded."
+            ],
+            [
+              "C",
+              "To display the town's largest collection of photographs."
+            ],
+            [
+              "D",
+              "To celebrate only the town's most famous events."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "B：where/being inside sounded是声音展目的；A是书面记录能做到的事；C是已放弃方向；D与ordinary equally welcome相反。"
+        },
+        {
+          "spoken_question": "What are residents asked to provide with a recording?",
+          "options": [
+            [
+              "A",
+              "A promise to donate the original tape."
+            ],
+            [
+              "B",
+              "A photograph of the building concerned."
+            ],
+            [
+              "C",
+              "A note about its location and approximate date."
+            ],
+            [
+              "D",
+              "A ticket purchased before the exhibition opens."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "C：每份附何地、约何时录制的短说明；A：原件归还；B：未要求照片；D：未要求门票，展后仍可投稿。"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "R",
+          "text": "Organizers of Sunday's Riverside Run have announced a late change to the route. Runners will still cover ten kilometers, but they will no longer cross the wooden footbridge near the park. A routine inspection found several loose boards, and repairs cannot be completed before the event. Instead, the course will turn along the east bank and cross the river at the road bridge. Traffic there will be stopped while runners pass. The start time and the finish at the sports center remain unchanged. Organizers have emailed registered runners a revised map and will place volunteers at the turning point. People who printed the old map are being asked to download the new one rather than make their own adjustments. The shorter family walk, which takes place later in the morning, does not use either bridge and is unaffected. Spectators can still watch from the park, but they should leave the riverside path clear so that competitors and event staff can move safely."
+        }
+      ],
+      "questions": [
+        {
+          "spoken_question": "Why has the route of the Riverside Run been changed?",
+          "options": [
+            [
+              "A",
+              "The sports center cannot be used for the finish."
+            ],
+            [
+              "B",
+              "Traffic cannot be stopped at the road bridge."
+            ],
+            [
+              "C",
+              "A footbridge needs repairs before it can be used."
+            ],
+            [
+              "D",
+              "The original route was longer than ten kilometers."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "C：木桥松板、修不及为原因；A终点未变；B明确可停交通；D全程仍十公里，不是纠正原长度。"
+        },
+        {
+          "spoken_question": "What are registered runners asked to do?",
+          "options": [
+            [
+              "A",
+              "Obtain the revised route map."
+            ],
+            [
+              "B",
+              "Start later with the family walkers."
+            ],
+            [
+              "C",
+              "Shorten the old route by themselves."
+            ],
+            [
+              "D",
+              "Finish their run in the riverside park."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：下载更新图；B起点时间未变，家庭走路另项目；C明确不要自行调整；D终点仍体育中心。"
+        },
+        {
+          "spoken_question": "What does the report say about the family walk?",
+          "options": [
+            [
+              "A",
+              "It will be moved to the road bridge."
+            ],
+            [
+              "B",
+              "It has been canceled because of loose boards."
+            ],
+            [
+              "C",
+              "It will begin at the same time as the run."
+            ],
+            [
+              "D",
+              "It is unaffected by the change to the running route."
+            ]
+          ],
+          "answer": "D",
+          "rationale": "D：步行不用任一桥，明确不受影响；A相反；B未取消；C later in morning，并非同时。"
+        }
+      ]
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "spoken_questions_in_teacher_only": true,
+  "author_answer_vector": [
+    "A",
+    "D",
+    "B",
+    "C",
+    "C",
+    "A",
+    "D"
+  ],
+  "source_original_key_not_gold": true,
+  "questions_per_extract": [
+    2,
+    2,
+    3
+  ],
+  "extracts": 3,
+  "source_level_equivalence_established": false,
+  "authored_student_inputs_complete": true,
+  "fictional_content_not_empirical_fact_gold": true,
+  "synthetic_audio_not_natural_listening_calibration": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 216,
+    "audio_dialogue_English_words_once": 464,
+    "audio_question_English_words_once": 62,
+    "audio_spoken_words_including_repetition_and_introductions": 591,
+    "audio_seconds_including_repetition_and_pauses": 327.2778684807256,
+    "artifact_URLs_excluded_from_reading_load": true,
+    "output_response_positions": 7,
+    "output_mode": "closed_letter_selection"
+  }
+}

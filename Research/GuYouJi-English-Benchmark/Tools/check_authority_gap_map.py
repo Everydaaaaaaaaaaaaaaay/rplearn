@@ -44,8 +44,17 @@ def source_contracts(groups):
     for group in groups:
         assert group['full_student_input']
         assert not group['is_independent_gold']
-        assert group['responses'] == len(group['question_numbers'])
-        assert len(set(group['question_numbers'])) == group['responses']
+        if group['question_numbers'] is None:
+            # This source prints rank blanks, without question identifiers.
+            # Keep that unknown identity rather than inventing question numbers.
+            assert group['id'] == 'p3.panshi2023.dialogue-ordering'
+            assert group['whole_groups'] == group['material']['independent_sorting_tasks'] == 1
+            assert group['responses'] == len(group['material']['blank_rows']) == 5
+            assert group['material']['printed_sentence_rows'] == 6
+            assert group['material']['given_position_rows'] == [1]
+        else:
+            assert group['responses'] == len(group['question_numbers'])
+            assert len(set(group['question_numbers'])) == group['responses']
         counts = group['candidates'].get('per_response')
         if counts:
             assert len(counts) == group['responses'] and all(c >= 2 for c in counts)

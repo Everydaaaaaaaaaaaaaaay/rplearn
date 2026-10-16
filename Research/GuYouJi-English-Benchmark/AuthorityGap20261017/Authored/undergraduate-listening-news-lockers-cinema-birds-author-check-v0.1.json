@@ -1,0 +1,483 @@
+{
+  "version": "0.1",
+  "id": "undergraduate-listening-news-lockers-cinema-birds",
+  "grade": "undergraduate",
+  "questions": 7,
+  "candidate_sha256": "a374dc814badeff6649f03e1a40cac061491f7a8390e8d039c5c99acaee7613c",
+  "canonical_response_block_sha256": "33fbd1b648eb3f9c7fe6285d582403ad6fbf3ed46bec2e4478280bb043c1d937",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "Customers who want advice about ingredients."
+        ],
+        [
+          "B",
+          "Travelers who leave before the shop opens."
+        ],
+        [
+          "C",
+          "People who cannot pay until they collect their food."
+        ],
+        [
+          "D",
+          "Customers who want a hot breakfast on the train."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：早出行、等不及开门的常客促成；A需开店咨询；C订时付钱；D柜不加热，不售热早饭。"
+    },
+    {
+      "number": 2,
+      "stem": "第2题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "They will replace all counter service next month."
+        ],
+        [
+          "B",
+          "They can be used without ordering in advance."
+        ],
+        [
+          "C",
+          "They keep customers' food hot throughout the morning."
+        ],
+        [
+          "D",
+          "They will carry no extra collection fee at first."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：首月无额外取餐费；A不替代柜台；B前一下午预订；C不加热，与保温不等于热食。"
+    },
+    {
+      "number": 3,
+      "stem": "第3题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "To make it easier for people with daytime jobs to attend."
+        ],
+        [
+          "B",
+          "To reduce the ticket price for afternoon customers."
+        ],
+        [
+          "C",
+          "To allow a local organization to choose the films."
+        ],
+        [
+          "D",
+          "To introduce a membership scheme for regular visitors."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：工作日白天不能离岗者反馈；B晚场常价；C影院自选片；D不要求会员。"
+    },
+    {
+      "number": 4,
+      "stem": "第4题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "It will compare the cost of captions with membership income."
+        ],
+        [
+          "B",
+          "It will wait until Wednesday afternoon films are canceled."
+        ],
+        [
+          "C",
+          "It will review attendance and customer comments after a trial."
+        ],
+        [
+          "D",
+          "It will ask the local organization to make the decision immediately."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：八周试行后看attendance和comments；A会员收入未有；B周三普通场继续；D不是外部组织即时决策。"
+    },
+    {
+      "number": 5,
+      "stem": "第5题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "Every bird they see while walking around the whole reserve."
+        ],
+        [
+          "B",
+          "Only birds that remain in a tree for twenty minutes."
+        ],
+        [
+          "C",
+          "The total of all sightings made during the entire weekend."
+        ],
+        [
+          "D",
+          "The highest number of each species seen together in one area."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D：定区20分钟、同时可见最大数；A是旧方式；B把观察时长错给鸟停留时间；C会重计，非总和。"
+    },
+    {
+      "number": 6,
+      "stem": "第6题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "To keep beginners away from experienced birdwatchers."
+        ],
+        [
+          "B",
+          "To reduce the risk of recording the same bird repeatedly."
+        ],
+        [
+          "C",
+          "To measure how far birds move between different reserves."
+        ],
+        [
+          "D",
+          "To identify birds without using binoculars."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B：鸟在树间移动可能重复计数；A新手可参加且有人帮助；C无跨保护区距离研究；D可带/可借望远镜，不是取消工具。"
+    },
+    {
+      "number": 7,
+      "stem": "第7题（问题在录音中）",
+      "options": [
+        [
+          "A",
+          "All public walking paths will close for the weekend."
+        ],
+        [
+          "B",
+          "The count will continue, but only experts may take part."
+        ],
+        [
+          "C",
+          "The count will be postponed, with a notice posted online."
+        ],
+        [
+          "D",
+          "Volunteers will be asked to count birds from their homes."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C：强风延期、网站公告；A即便延期步道仍开；B无专家专场；D无居家替代。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.5.json",
+    "sha256": "0225afb50ec45eab5003a7ec841f78795953b4690b57d0bc6a54b40f326947bc"
+  },
+  "source_group_id": "cet4.2024121.listening.sectionA",
+  "source_observation": {
+    "source_responses": 7,
+    "source_reuse_rule": "independent_AtoD_per_question;no_sharedbank_reuse_limit",
+    "source_material": {
+      "section": "A",
+      "pieces": 3,
+      "responses_per_piece": [
+        2,
+        2,
+        3
+      ],
+      "response_numbers_per_piece": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          6,
+          7
+        ]
+      ],
+      "source_hear_each_piece_once": true,
+      "source_repeat_count": 1,
+      "questions_spoken_after_each_piece": true,
+      "student_paper_prints_questions": false,
+      "transcript_in_teacher_only": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  },
+  "manuscript": {
+    "path": "AuthorityGap20261017/ListeningScripts/undergraduate-listening-news-lockers-cinema-birds-v0.1.json",
+    "sha256": "1d7b33cee0b61dfd359bea9a7d39b8da36c3e420ae0912afebc920e2cbf2fbcb"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/undergraduate-listening-news-lockers-cinema-birds-audio-v0.2.json",
+    "sha256": "0b59e4fe1f64c5473d379426033dfbbf7be5de57844b981ec39a9672370f03b8"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/undergraduate-listening-news-lockers-cinema-birds-section-v0.2.m4a",
+      "sha256": "bab65ea6f91ba67223280d74b3ebbbbdfd6daefe886c0ed9bddc4a4057fbe68b",
+      "seconds": 329.4454875283447,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "student_passage": "[完整本节音频（材料和问题均一遍，问题后留15秒作答）](../../../../build/english-benchmark-authority-20261017/original-audio/undergraduate-listening-news-lockers-cinema-birds-section-v0.2.m4a)\n\n第1段：第1—2题。\n\n第2段：第3—4题。\n\n第3段：第5—7题。",
+  "body_load_text": "第1段：第1—2题。\n\n第2段：第3—4题。\n\n第3段：第5—7题。",
+  "original_transcript_sections": [
+    {
+      "turns": [
+        {
+          "speaker": "R",
+          "text": "A bakery beside Northgate railway station has introduced collection lockers for customers who travel before the shop opens. Customers can place an order the previous afternoon and receive a code for a locker outside the building. The first collections will be available from six in the morning, an hour before staff begin serving at the counter. The lockers are insulated, but they do not heat the food, so the bakery is offering bread and packaged biscuits rather than hot breakfasts. The owner says the idea came from regular customers who could see staff preparing orders inside but had no time to wait for the doors to open. The lockers are not intended to replace the counter service. Customers who need advice about ingredients should continue visiting during shop hours. During the first month, there will be no extra collection charge, although customers must pay for their food when they order."
+        }
+      ],
+      "questions": [
+        {
+          "spoken_question": "Who is the bakery's new collection service mainly intended for?",
+          "options": [
+            [
+              "A",
+              "Customers who want advice about ingredients."
+            ],
+            [
+              "B",
+              "Travelers who leave before the shop opens."
+            ],
+            [
+              "C",
+              "People who cannot pay until they collect their food."
+            ],
+            [
+              "D",
+              "Customers who want a hot breakfast on the train."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "B：早出行、等不及开门的常客促成；A需开店咨询；C订时付钱；D柜不加热，不售热早饭。"
+        },
+        {
+          "spoken_question": "What does the owner say about the collection lockers?",
+          "options": [
+            [
+              "A",
+              "They will replace all counter service next month."
+            ],
+            [
+              "B",
+              "They can be used without ordering in advance."
+            ],
+            [
+              "C",
+              "They keep customers' food hot throughout the morning."
+            ],
+            [
+              "D",
+              "They will carry no extra collection fee at first."
+            ]
+          ],
+          "answer": "D",
+          "rationale": "D：首月无额外取餐费；A不替代柜台；B前一下午预订；C不加热，与保温不等于热食。"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "R",
+          "text": "The Crescent cinema will move its weekly film with on-screen captions from Wednesday afternoon to Thursday evening. The change follows comments from people who wanted to attend but could not leave work during the day. Captions display dialogue as well as information about important sounds, making the showing accessible to a wider audience. The cinema manager says no special membership is required and everyone is welcome to buy a ticket. The price will be the same as for other evening showings. A local organization offered to help advertise the event, but the cinema will continue choosing the films itself. Wednesday afternoon will still have a regular showing, without captions. The new Thursday arrangement will run for eight weeks before the cinema asks customers for further comments. The manager hopes the evening time will be more convenient, but says the cinema will examine attendance figures before deciding whether to keep it permanently."
+        }
+      ],
+      "questions": [
+        {
+          "spoken_question": "Why is the cinema changing the time of its captioned showing?",
+          "options": [
+            [
+              "A",
+              "To make it easier for people with daytime jobs to attend."
+            ],
+            [
+              "B",
+              "To reduce the ticket price for afternoon customers."
+            ],
+            [
+              "C",
+              "To allow a local organization to choose the films."
+            ],
+            [
+              "D",
+              "To introduce a membership scheme for regular visitors."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：工作日白天不能离岗者反馈；B晚场常价；C影院自选片；D不要求会员。"
+        },
+        {
+          "spoken_question": "How will the cinema decide whether to keep the new arrangement?",
+          "options": [
+            [
+              "A",
+              "It will compare the cost of captions with membership income."
+            ],
+            [
+              "B",
+              "It will wait until Wednesday afternoon films are canceled."
+            ],
+            [
+              "C",
+              "It will review attendance and customer comments after a trial."
+            ],
+            [
+              "D",
+              "It will ask the local organization to make the decision immediately."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "C：八周试行后看attendance和comments；A会员收入未有；B周三普通场继续；D不是外部组织即时决策。"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "R",
+          "text": "The Hillmere nature reserve has changed the way it runs its annual bird-counting weekend. Previously, visitors were asked to report every bird they saw anywhere in the reserve. This year, volunteers will each watch one marked area for twenty minutes. They will record the highest number of each species visible at the same time, rather than add together every sighting. The reserve's coordinator says the change should reduce the chance of counting a bird several times as it moves between trees. Beginners can join an introductory walk before collecting a record sheet, and experienced volunteers will be available to help with identification. Participants are asked to bring binoculars if they have them, but the reserve can lend a limited number. The event will go ahead in light rain. However, if strong winds are forecast, the count will be postponed and a notice will appear on the reserve's website. The public walking paths will remain open even if the counting activity is delayed."
+        }
+      ],
+      "questions": [
+        {
+          "spoken_question": "What will volunteers be asked to record this year?",
+          "options": [
+            [
+              "A",
+              "Every bird they see while walking around the whole reserve."
+            ],
+            [
+              "B",
+              "Only birds that remain in a tree for twenty minutes."
+            ],
+            [
+              "C",
+              "The total of all sightings made during the entire weekend."
+            ],
+            [
+              "D",
+              "The highest number of each species seen together in one area."
+            ]
+          ],
+          "answer": "D",
+          "rationale": "D：定区20分钟、同时可见最大数；A是旧方式；B把观察时长错给鸟停留时间；C会重计，非总和。"
+        },
+        {
+          "spoken_question": "What is the reason for the new counting method?",
+          "options": [
+            [
+              "A",
+              "To keep beginners away from experienced birdwatchers."
+            ],
+            [
+              "B",
+              "To reduce the risk of recording the same bird repeatedly."
+            ],
+            [
+              "C",
+              "To measure how far birds move between different reserves."
+            ],
+            [
+              "D",
+              "To identify birds without using binoculars."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "B：鸟在树间移动可能重复计数；A新手可参加且有人帮助；C无跨保护区距离研究；D可带/可借望远镜，不是取消工具。"
+        },
+        {
+          "spoken_question": "What will happen if strong winds are forecast?",
+          "options": [
+            [
+              "A",
+              "All public walking paths will close for the weekend."
+            ],
+            [
+              "B",
+              "The count will continue, but only experts may take part."
+            ],
+            [
+              "C",
+              "The count will be postponed, with a notice posted online."
+            ],
+            [
+              "D",
+              "Volunteers will be asked to count birds from their homes."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "C：强风延期、网站公告；A即便延期步道仍开；B无专家专场；D无居家替代。"
+        }
+      ]
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "spoken_questions_in_teacher_only": true,
+  "author_answer_vector": [
+    "B",
+    "D",
+    "A",
+    "C",
+    "D",
+    "B",
+    "C"
+  ],
+  "source_original_key_not_gold": true,
+  "questions_per_extract": [
+    2,
+    2,
+    3
+  ],
+  "extracts": 3,
+  "source_level_equivalence_established": false,
+  "authored_student_inputs_complete": true,
+  "fictional_content_not_empirical_fact_gold": true,
+  "synthetic_audio_not_natural_listening_calibration": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 252,
+    "audio_dialogue_English_words_once": 465,
+    "audio_question_English_words_once": 67,
+    "audio_spoken_words_including_repetition_and_introductions": 597,
+    "audio_seconds_including_repetition_and_pauses": 329.4454875283447,
+    "artifact_URLs_excluded_from_reading_load": true,
+    "output_response_positions": 7,
+    "output_mode": "closed_letter_selection"
+  }
+}
