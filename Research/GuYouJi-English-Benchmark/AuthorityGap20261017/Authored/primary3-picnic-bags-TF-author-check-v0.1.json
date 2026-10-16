@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "id": "primary3-picnic-bags-TF",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "c4486cbf9b90c99746ca301528ca6d6edfd136ae9c9b4f16f7fc05381366981d",
+  "canonical_response_block_sha256": "c3054b8583fdbadcce919c5d015ee92bf204b5f3dd81a8a7945dc4d8c01f0f6f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "May's bag is yellow.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "May bag明确yellow，T；green属Tom。"
+    },
+    {
+      "number": 2,
+      "stem": "Tom has three apples.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "I为Tom，four apples与three数目明确不同，F。"
+    },
+    {
+      "number": 3,
+      "stem": "The bread is in May's bag.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "May hassomebread inherbag明示T。"
+    },
+    {
+      "number": 4,
+      "stem": "Tom and May have bananas.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "We havenobananas直接否定，F不能只靠物品列举。"
+    },
+    {
+      "number": 5,
+      "stem": "Tom and May sit under a big tree.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "We指TomandMay，situnderbigtree直接T，不需原图。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary3TextBridge-v0.1.json",
+    "sha256": "40cc617be3ca6111a318648ad4d452c1230fcee09244a6bcedc13bae701fbaad"
+  },
+  "source_group_id": "primary3.lower.undated.roomreading",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF",
+    "source_material": {
+      "passages": 1,
+      "binary_TF": 5,
+      "source_Q5identity_singularplural_location_hold": true
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false,
+      "unique_shared_entries": null
+    }
+  },
+  "student_passage": "I am Tom. I go to the park with my sister, May. We have two bags. My bag is green. May's bag is yellow. I have four apples in my bag. May has some bread in her bag. We have no bananas. We sit under a big tree. May likes the bread. I like the apples.",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "T",
+    "F",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 56,
+    "stem_English_words": 27,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "I am Tom. I go to the park with my sister, May. We have two bags. My bag is green. May's bag is yellow. I have four apples in my bag. May has some bread in her bag. We have no bananas. We sit under a big tree. May likes the bread. I like the apples.",
+  "passage_count": 1,
+  "all_false_explicitly_contradicted_not_unknown": true,
+  "source_hold_Q5_notreproduced": true,
+  "no_necessary_image_or_audio": true
+}

@@ -1,0 +1,127 @@
+{
+  "version": "0.1",
+  "scope": "two_textcomplete_existing_primary3_modes",
+  "groups": [
+    {
+      "id": "primary3.lower.undated.roomreading",
+      "level": "primary3",
+      "kind": "reading_tf",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary3lower-jiajiaoban-public2019path20261014.pdf",
+        "sha256": "cbd6ca893b5f592385d738d9b234e4c76473584eab79dfeda816151ad1ac9096"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade3/selected-source-groups-v0.1.json",
+        "sha256": "bf2e842dd140644e6169197250ee081754417e5dd0b42aa57b4cbd92bec63fe6"
+      },
+      "source_acquisition_id": "primary3lower-jiajiaoban-public2019path20261014",
+      "responses": 5,
+      "question_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "physical_pages": [
+        4
+      ],
+      "key_pages": [
+        6
+      ],
+      "material": {
+        "passages": 1,
+        "binary_TF": 5,
+        "source_Q5identity_singularplural_location_hold": true
+      },
+      "candidates": {
+        "per_response": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "shared_bank": false,
+        "unique_shared_entries": null
+      },
+      "reuse_rule": "independent_binary_TF",
+      "full_student_input": true,
+      "published_key": [
+        "T",
+        "F",
+        "F",
+        "T",
+        "F"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "identity_boundary": "lowerheader_year/institutionunknown;URL2019notpaperdate;noShenzhenuniformexam_authentication",
+      "source_key_hold_numbers": [
+        5
+      ]
+    },
+    {
+      "id": "primary3.lower.undated.responses",
+      "level": "primary3",
+      "kind": "dialogue_matching",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary3lower-jiajiaoban-public2019path20261014.pdf",
+        "sha256": "cbd6ca893b5f592385d738d9b234e4c76473584eab79dfeda816151ad1ac9096"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade3/selected-source-groups-v0.1.json",
+        "sha256": "bf2e842dd140644e6169197250ee081754417e5dd0b42aa57b4cbd92bec63fe6"
+      },
+      "source_acquisition_id": "primary3lower-jiajiaoban-public2019path20261014",
+      "responses": 5,
+      "question_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "physical_pages": [
+        3,
+        4
+      ],
+      "key_pages": [
+        6
+      ],
+      "material": {
+        "independent_utterances": 5,
+        "shared_responses": 5,
+        "source_function_mix": "locations/yesno/preference/suggestion/foodoffer;notfixedauthoredfunctionquota"
+      },
+      "candidates": {
+        "per_response": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "shared_bank": true,
+        "unique_shared_entries": 5
+      },
+      "reuse_rule": "not_explicit_no_added_once",
+      "full_student_input": true,
+      "published_key": [
+        "B",
+        "C",
+        "A",
+        "E",
+        "D"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "identity_boundary": "lowerheader_year/institutionunknown;URL2019notpaperdate;noShenzhenuniformexam_authentication",
+      "source_key_hold_numbers": []
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0,
+  "old_author_extra_once_and_local_OKoverlap": "five-everyday-responsesfirsthistoricalauthoraddsprintedonce;sourceitselfnotexplicit;retainedasdistinctauthorprotocol_not3sameconcreteusecontracts",
+  "new_authors_no_once_and_each_slot_independently_supported": true
+}

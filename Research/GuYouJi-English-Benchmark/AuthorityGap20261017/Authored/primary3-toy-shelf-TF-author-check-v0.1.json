@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "id": "primary3-toy-shelf-TF",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "283a381f345b123958a7a6c211490d3ec660a4d9f00a1e3173a7114ed3069b1c",
+  "canonical_response_block_sha256": "5b4d99a4ea10eeb0d11ccdb75258b1a72bb55eae193da31e204445808e933bc0",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Lily has a brown toy bear.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "I为Lily，bear后明确brown，T；white属于rabbit，不移给bear。"
+    },
+    {
+      "number": 2,
+      "stem": "The toy rabbit is black.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "rabbit iswhite与black直接矛盾，F。"
+    },
+    {
+      "number": 3,
+      "stem": "The red ball is on the bed.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "redball isunderthebed，与on相反位置，F；玩偶onbed不能代给ball。"
+    },
+    {
+      "number": 4,
+      "stem": "There are three toy cars in the blue box.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "three toy cars后They areinbluebox，数量与复数指代双重支持T。"
+    },
+    {
+      "number": 5,
+      "stem": "Lily puts her toys on the chair.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "I do not putmy toysonthechair明确否定，F非从未提chair推断。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary3TextBridge-v0.1.json",
+    "sha256": "40cc617be3ca6111a318648ad4d452c1230fcee09244a6bcedc13bae701fbaad"
+  },
+  "source_group_id": "primary3.lower.undated.roomreading",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF",
+    "source_material": {
+      "passages": 1,
+      "binary_TF": 5,
+      "source_Q5identity_singularplural_location_hold": true
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false,
+      "unique_shared_entries": null
+    }
+  },
+  "student_passage": "Hello! I am Lily. I have a toy bear and a toy rabbit. The bear is brown. The rabbit is white. They are on my bed. My red ball is under the bed. I have three toy cars. They are in a blue box. The box is on the desk. I do not put my toys on the chair.",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "F",
+    "T",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 59,
+    "stem_English_words": 34,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Hello! I am Lily. I have a toy bear and a toy rabbit. The bear is brown. The rabbit is white. They are on my bed. My red ball is under the bed. I have three toy cars. They are in a blue box. The box is on the desk. I do not put my toys on the chair.",
+  "passage_count": 1,
+  "all_false_explicitly_contradicted_not_unknown": true,
+  "source_hold_Q5_notreproduced": true,
+  "no_necessary_image_or_audio": true
+}

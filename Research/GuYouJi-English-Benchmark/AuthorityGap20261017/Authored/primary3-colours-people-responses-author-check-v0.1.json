@@ -1,0 +1,226 @@
+{
+  "version": "0.1",
+  "id": "primary3-colours-people-responses",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "52ebbd3cc46d8f8770a151b7b054ad2d5d9dd9381ca0e4061f1497a0dde3df9b",
+  "canonical_response_block_sha256": "64eeb9da32fc21b4bd87253b32ec1f04934ca79c9181ce6b0e791cc6978ad8fe",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What colour is your cap?",
+      "options": [
+        [
+          "A",
+          "No, I do not."
+        ],
+        [
+          "B",
+          "You are welcome."
+        ],
+        [
+          "C",
+          "It is blue."
+        ],
+        [
+          "D",
+          "She is my sister."
+        ],
+        [
+          "E",
+          "I have four."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "问颜色，Itisblue只给颜色；NoIdonot是否定do问句，Youarewelcome回应感谢，Sheismysister给人物关系，Ihavefour给数量。"
+    },
+    {
+      "number": 2,
+      "stem": "Who is that girl?",
+      "options": [
+        [
+          "A",
+          "No, I do not."
+        ],
+        [
+          "B",
+          "You are welcome."
+        ],
+        [
+          "C",
+          "It is blue."
+        ],
+        [
+          "D",
+          "She is my sister."
+        ],
+        [
+          "E",
+          "I have four."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "Who问girl身份，Sheismysister用she与sister回应；其余否定/感谢回应/颜色/数量均非人物身份。"
+    },
+    {
+      "number": 3,
+      "stem": "How many balls do you have?",
+      "options": [
+        [
+          "A",
+          "No, I do not."
+        ],
+        [
+          "B",
+          "You are welcome."
+        ],
+        [
+          "C",
+          "It is blue."
+        ],
+        [
+          "D",
+          "She is my sister."
+        ],
+        [
+          "E",
+          "I have four."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "Howmany问持有数量，Ihavefour直接对应；其余项未给持有数。"
+    },
+    {
+      "number": 4,
+      "stem": "Thank you!",
+      "options": [
+        [
+          "A",
+          "No, I do not."
+        ],
+        [
+          "B",
+          "You are welcome."
+        ],
+        [
+          "C",
+          "It is blue."
+        ],
+        [
+          "D",
+          "She is my sister."
+        ],
+        [
+          "E",
+          "I have four."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Youarewelcome回应感谢；NoIdonot是否定助动词，颜色/人物/数量陈述均非礼貌回应。"
+    },
+    {
+      "number": 5,
+      "stem": "Do you like pears?",
+      "options": [
+        [
+          "A",
+          "No, I do not."
+        ],
+        [
+          "B",
+          "You are welcome."
+        ],
+        [
+          "C",
+          "It is blue."
+        ],
+        [
+          "D",
+          "She is my sister."
+        ],
+        [
+          "E",
+          "I have four."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "NoIdonot匹配Doyou喜好问的否定回答；其他项不陈述是否喜欢，不借一次排除。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary3TextBridge-v0.1.json",
+    "sha256": "40cc617be3ca6111a318648ad4d452c1230fcee09244a6bcedc13bae701fbaad"
+  },
+  "source_group_id": "primary3.lower.undated.responses",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_once",
+    "source_material": {
+      "independent_utterances": 5,
+      "shared_responses": 5,
+      "source_function_mix": "locations/yesno/preference/suggestion/foodoffer;notfixedauthoredfunctionquota"
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "共享应答：\n\nA. No, I do not.\nB. You are welcome.\nC. It is blue.\nD. She is my sister.\nE. I have four.",
+  "author_answer_vector": [
+    "C",
+    "D",
+    "E",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 21,
+    "options_English_words_with_repeated_bank": 85,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5,
+    "shared_response_words_once": 17
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "independent_utterance_count": 5,
+  "shared_responses": [
+    [
+      "A",
+      "No, I do not."
+    ],
+    [
+      "B",
+      "You are welcome."
+    ],
+    [
+      "C",
+      "It is blue."
+    ],
+    [
+      "D",
+      "She is my sister."
+    ],
+    [
+      "E",
+      "I have four."
+    ]
+  ],
+  "each_slot_locally_unique_without_once": true,
+  "no_added_once_limit": true,
+  "source_content_function_mix_not_claimed_exhaustively_repeated": true,
+  "legacy_first_author_extra_once_not_source_requirement": true
+}
