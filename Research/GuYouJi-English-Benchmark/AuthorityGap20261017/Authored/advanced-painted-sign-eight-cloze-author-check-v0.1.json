@@ -1,0 +1,530 @@
+{
+  "version": "0.1",
+  "id": "advanced-painted-sign-eight-cloze",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "1c0750edb2626b73acc71439cbadc8fef79690c2d1bfa3b3fb894521818f0810",
+  "canonical_response_block_sha256": "ab17d674f74da156211b065807b0f02636ff7ee7378b71377fefe371ec99b373",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "obliterate"
+        ],
+        [
+          "B",
+          "preserve"
+        ],
+        [
+          "C",
+          "reinforce"
+        ],
+        [
+          "D",
+          "reveal"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "newpaint遮掉仍存痕迹的风险，obliterate抹除；reveal显露、reinforce加强、preserve保留均与随后强调保留旧lettering/禁止抹证的风险方向相反。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "consequently"
+        ],
+        [
+          "B",
+          "however"
+        ],
+        [
+          "C",
+          "therefore"
+        ],
+        [
+          "D",
+          "similarly"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "client强调远处易读而conservators重保留，however引关注重点转折；therefore/consequently错误把第二方目标当第一方目标结果；similarly弱化实际不同焦点。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "postpone"
+        ],
+        [
+          "B",
+          "disguise"
+        ],
+        [
+          "C",
+          "reconcile"
+        ],
+        [
+          "D",
+          "reject"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "clearer lighting提升易读且不改漆，同时满足两目标，reconcile调和；postpone推迟未解决矛盾，disguise掩饰不落实双方目标，reject放弃目标与同时改善/保留冲突。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "threshold"
+        ],
+        [
+          "B",
+          "forecast"
+        ],
+        [
+          "C",
+          "route"
+        ],
+        [
+          "D",
+          "deadline"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "crossathreshold表越过干预程度界线，与cleaning比较；deadline截止时间、route路径、forecast预报不表达操作性质的升级界限。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "assume"
+        ],
+        [
+          "B",
+          "assess"
+        ],
+        [
+          "C",
+          "conceal"
+        ],
+        [
+          "D",
+          "evade"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "小范围trial用来assess清洁方法效果，再决定全表面；assume假定未经试验、evade回避、conceal隐藏均不体现试验获取效果证据。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "superior"
+        ],
+        [
+          "B",
+          "tantamount"
+        ],
+        [
+          "C",
+          "immune"
+        ],
+        [
+          "D",
+          "hostile"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "be tantamount to等同于，因暗部含早期design残留，全去暗部相当抹证；immune to对...免疫、hostileto敌视、superiorto优于都不表达该操作后果等价。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "inquiries"
+        ],
+        [
+          "B",
+          "owners"
+        ],
+        [
+          "C",
+          "interventions"
+        ],
+        [
+          "D",
+          "premises"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "区别originalmaterial与later interventions修复干预，与末句conservatorswork对应；owners人、premises地点、inquiries询问不能与原材料作此后加操作区分。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "rehearse"
+        ],
+        [
+          "B",
+          "prolong"
+        ],
+        [
+          "C",
+          "reconstruct"
+        ],
+        [
+          "D",
+          "manufacture"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "researchers依记录重建signhistory，reconstruct；manufacture制造、prolong延长、rehearse排练均不是从旧材料/干预记录推回历史的研究操作。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedAdvancedClozeBridge-v0.1.json",
+    "sha256": "e5d97ccc20b9d939b25e43e22b3a2d3879094f4ac447cbe372dd2e9581fe1621"
+  },
+  "source_group_id": "advanced.cambridge.c1.paper1.2022.part1",
+  "source_observation": {
+    "source_responses": 8,
+    "source_reuse_rule": "independent_per_gap",
+    "source_material": {
+      "passages": 1,
+      "gaps": 8,
+      "answered_examples": 1,
+      "example_candidates": 4,
+      "source_gapped_body_words_observed": 154
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "The conservation team (0) undertook a review before repainting an old shop sign. A bright new surface might look impressive, but it could also (1) ____ the traces that made the object historically informative.\n\nThe client wanted a sign that could be read from across the street. Conservators, (2) ____, were concerned with preserving the surviving lettering. The team found a way to (3) ____ the two aims: clearer lighting could improve legibility without altering the paint. Yet extensive repainting would cross a (4) ____ that cleaning alone would not.\n\nBefore proposing any treatment, the team examined a small area that was normally hidden by the frame. This trial allowed them to (5) ____ the effect of a cleaning method without exposing the whole surface to it. They found that the apparent dirt included remnants of an earlier design. Removing everything dark would therefore be (6) ____ to erasing evidence.\n\nThe final plan called for limited cleaning and a separate reproduction for outdoor display. A written record would distinguish original material from later (7) ____. That distinction was essential if future researchers were to (8) ____ the sign's history without mistaking the conservators' work for the maker's.\n\n例0（已答，不计作答）：A. undertook　B. occupied　C. enjoyed　D. inhabited；答案 A。",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "A",
+    "B",
+    "B",
+    "C",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 180,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 32,
+    "output_response_positions": 8,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 188,
+    "requirement_English_words": 0,
+    "example_candidate_words": 4,
+    "example_words_not_added_to8_response_positions": true,
+    "output_letter_count": 8
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "The conservation team (0) undertook a review before repainting an old shop sign. A bright new surface might look impressive, but it could also (1) ____ the traces that made the object historically informative.\n\nThe client wanted a sign that could be read from across the street. Conservators, (2) ____, were concerned with preserving the surviving lettering. The team found a way to (3) ____ the two aims: clearer lighting could improve legibility without altering the paint. Yet extensive repainting would cross a (4) ____ that cleaning alone would not.\n\nBefore proposing any treatment, the team examined a small area that was normally hidden by the frame. This trial allowed them to (5) ____ the effect of a cleaning method without exposing the whole surface to it. They found that the apparent dirt included remnants of an earlier design. Removing everything dark would therefore be (6) ____ to erasing evidence.\n\nThe final plan called for limited cleaning and a separate reproduction for outdoor display. A written record would distinguish original material from later (7) ____. That distinction was essential if future researchers were to (8) ____ the sign's history without mistaking the conservators' work for the maker's.",
+  "completed_passage": "The conservation team (0) undertook a review before repainting an old shop sign. A bright new surface might look impressive, but it could also obliterate the traces that made the object historically informative.\n\nThe client wanted a sign that could be read from across the street. Conservators, however, were concerned with preserving the surviving lettering. The team found a way to reconcile the two aims: clearer lighting could improve legibility without altering the paint. Yet extensive repainting would cross a threshold that cleaning alone would not.\n\nBefore proposing any treatment, the team examined a small area that was normally hidden by the frame. This trial allowed them to assess the effect of a cleaning method without exposing the whole surface to it. They found that the apparent dirt included remnants of an earlier design. Removing everything dark would therefore be tantamount to erasing evidence.\n\nThe final plan called for limited cleaning and a separate reproduction for outdoor display. A written record would distinguish original material from later interventions. That distinction was essential if future researchers were to reconstruct the sign's history without mistaking the conservators' work for the maker's.",
+  "passage_count": 1,
+  "gap_count": 8,
+  "answered_examples": 1,
+  "example_options": [
+    [
+      "A",
+      "undertook"
+    ],
+    [
+      "B",
+      "occupied"
+    ],
+    [
+      "C",
+      "enjoyed"
+    ],
+    [
+      "D",
+      "inhabited"
+    ]
+  ],
+  "example_key": "A",
+  "example_rationale": "undertook a review表示着手承担审查；occupied/inhabited用于占据/居住，不指开展review；enjoyed强调享受不表达为修复事先开展审查。",
+  "printed_example_block": "例0（已答，不计作答）：A. undertook　B. occupied　C. enjoyed　D. inhabited；答案 A。",
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "obliterate"
+        ],
+        [
+          "B",
+          "reveal"
+        ],
+        [
+          "C",
+          "reinforce"
+        ],
+        [
+          "D",
+          "preserve"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "newpaint遮掉仍存痕迹的风险，obliterate抹除；reveal显露、reinforce加强、preserve保留均与随后强调保留旧lettering/禁止抹证的风险方向相反。",
+      "old_to_new": {
+        "A": "A",
+        "D": "B",
+        "C": "C",
+        "B": "D"
+      },
+      "accepted_text": "obliterate"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "however"
+        ],
+        [
+          "B",
+          "therefore"
+        ],
+        [
+          "C",
+          "similarly"
+        ],
+        [
+          "D",
+          "consequently"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "client强调远处易读而conservators重保留，however引关注重点转折；therefore/consequently错误把第二方目标当第一方目标结果；similarly弱化实际不同焦点。",
+      "old_to_new": {
+        "D": "A",
+        "A": "B",
+        "B": "C",
+        "C": "D"
+      },
+      "accepted_text": "however"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "postpone"
+        ],
+        [
+          "B",
+          "disguise"
+        ],
+        [
+          "C",
+          "reconcile"
+        ],
+        [
+          "D",
+          "reject"
+        ]
+      ],
+      "before_key": "C",
+      "before_reason": "clearer lighting提升易读且不改漆，同时满足两目标，reconcile调和；postpone推迟未解决矛盾，disguise掩饰不落实双方目标，reject放弃目标与同时改善/保留冲突。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "accepted_text": "reconcile"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "threshold"
+        ],
+        [
+          "B",
+          "deadline"
+        ],
+        [
+          "C",
+          "route"
+        ],
+        [
+          "D",
+          "forecast"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "crossathreshold表越过干预程度界线，与cleaning比较；deadline截止时间、route路径、forecast预报不表达操作性质的升级界限。",
+      "old_to_new": {
+        "A": "A",
+        "D": "B",
+        "C": "C",
+        "B": "D"
+      },
+      "accepted_text": "threshold"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "assess"
+        ],
+        [
+          "B",
+          "assume"
+        ],
+        [
+          "C",
+          "evade"
+        ],
+        [
+          "D",
+          "conceal"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "小范围trial用来assess清洁方法效果，再决定全表面；assume假定未经试验、evade回避、conceal隐藏均不体现试验获取效果证据。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "D": "C",
+        "C": "D"
+      },
+      "accepted_text": "assess"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "tantamount"
+        ],
+        [
+          "B",
+          "immune"
+        ],
+        [
+          "C",
+          "hostile"
+        ],
+        [
+          "D",
+          "superior"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "be tantamount to等同于，因暗部含早期design残留，全去暗部相当抹证；immune to对...免疫、hostileto敌视、superiorto优于都不表达该操作后果等价。",
+      "old_to_new": {
+        "D": "A",
+        "A": "B",
+        "B": "C",
+        "C": "D"
+      },
+      "accepted_text": "tantamount"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "interventions"
+        ],
+        [
+          "B",
+          "owners"
+        ],
+        [
+          "C",
+          "premises"
+        ],
+        [
+          "D",
+          "inquiries"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "区别originalmaterial与later interventions修复干预，与末句conservatorswork对应；owners人、premises地点、inquiries询问不能与原材料作此后加操作区分。",
+      "old_to_new": {
+        "D": "A",
+        "B": "B",
+        "A": "C",
+        "C": "D"
+      },
+      "accepted_text": "interventions"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "reconstruct"
+        ],
+        [
+          "B",
+          "manufacture"
+        ],
+        [
+          "C",
+          "prolong"
+        ],
+        [
+          "D",
+          "rehearse"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "researchers依记录重建signhistory，reconstruct；manufacture制造、prolong延长、rehearse排练均不是从旧材料/干预记录推回历史的研究操作。",
+      "old_to_new": {
+        "D": "A",
+        "C": "B",
+        "A": "C",
+        "B": "D"
+      },
+      "accepted_text": "reconstruct"
+    }
+  ],
+  "professional_context_not_empiricalcase_gold": true,
+  "pre_freeze_rejected_distractor_set": "negativeincompatible/identical/indistinguishable/interchangeableallowedmultiplelogicalreadings_replacedexplicitbothgoals_reconcile"
+}

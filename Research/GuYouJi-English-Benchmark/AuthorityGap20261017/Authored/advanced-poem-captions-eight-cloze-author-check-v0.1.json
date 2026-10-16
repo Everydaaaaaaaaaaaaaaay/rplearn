@@ -1,0 +1,529 @@
+{
+  "version": "0.1",
+  "id": "advanced-poem-captions-eight-cloze",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "ceded65af17076b0674ba1ff909597976fecaa5ca1f900397d4ce99235fe6366",
+  "canonical_response_block_sha256": "5e29c0c2ae038608890c00b794b984234fc582a0cc1cac2c99bcc4e2aaedce5f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "dignity"
+        ],
+        [
+          "B",
+          "merit"
+        ],
+        [
+          "C",
+          "justice"
+        ],
+        [
+          "D",
+          "fairness"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "do justice to为充分体现/呈现；后文不能容纳全部features而保留centralimages给该搭配语义。do dignity/fairness/merit to不组成此惯用表达。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "away"
+        ],
+        [
+          "B",
+          "over"
+        ],
+        [
+          "C",
+          "out"
+        ],
+        [
+          "D",
+          "back"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "fall back on表示困难时求助于既有手段；fall away/over/out不能与on rhyming phrases构成这里退而依赖的短语。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "recovered"
+        ],
+        [
+          "B",
+          "recorded"
+        ],
+        [
+          "C",
+          "condensed"
+        ],
+        [
+          "D",
+          "distorted"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "为bleak诗添加cheerful images改变了情绪方向，distorted歪曲；condensed压缩不涉及反向加图，recorded记录和recovered恢复不说明被加内容扭转。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "permission"
+        ],
+        [
+          "B",
+          "chronology"
+        ],
+        [
+          "C",
+          "location"
+        ],
+        [
+          "D",
+          "rationale"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "explain...behind eachdeparture要求说明改动的理由rationale；permission许可是是否获准非理由，chronology先后、location位置都非why改动。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "rehearsal"
+        ],
+        [
+          "B",
+          "compromise"
+        ],
+        [
+          "C",
+          "prediction"
+        ],
+        [
+          "D",
+          "diagnosis"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "口语保更多细节/字幕短句是在要求间达成compromise折中；diagnosis诊断、prediction预测、rehearsal排练不指此双方功能协调方案。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "accompany"
+        ],
+        [
+          "B",
+          "complement"
+        ],
+        [
+          "C",
+          "supplant"
+        ],
+        [
+          "D",
+          "support"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确wanted versions to complement而不是替代，supplant为取代；accompany陪伴、complement互补、support支持均属共同存在/互助的相容方向，不是被对照排除的替代行为。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "outline"
+        ],
+        [
+          "B",
+          "scope"
+        ],
+        [
+          "C",
+          "caption"
+        ],
+        [
+          "D",
+          "schedule"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "说明wholecareer超出briefcaptions的内容范围，beyondscope；schedule进度、outline提纲、caption字幕本身都不表达任务边界。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "explicit"
+        ],
+        [
+          "B",
+          "exclusive"
+        ],
+        [
+          "C",
+          "incidental"
+        ],
+        [
+          "D",
+          "obsolete"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "要求note指出被删ambiguity，与ratherthanconcealed相对是explicit明示；incidental附带、obsolete过时、exclusive排他的均不说明从隐藏到明确。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedAdvancedClozeBridge-v0.1.json",
+    "sha256": "e5d97ccc20b9d939b25e43e22b3a2d3879094f4ac447cbe372dd2e9581fe1621"
+  },
+  "source_group_id": "advanced.cambridge.c1.paper1.2022.part1",
+  "source_observation": {
+    "source_responses": 8,
+    "source_reuse_rule": "independent_per_gap",
+    "source_material": {
+      "passages": 1,
+      "gaps": 8,
+      "answered_examples": 1,
+      "example_candidates": 4,
+      "source_gapped_body_words_observed": 154
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "A literary festival (0) commissioned new translations of poems for a public reading. The translators also had to supply short captions. These could not do (1) ____ to every feature of the originals, but they had to preserve the central images.\n\nOne translator initially fell (2) ____ on rhyming phrases whenever a literal version sounded awkward. The results were fluent, yet some introduced cheerful images into an otherwise bleak poem. Such additions (3) ____ its tone rather than merely changing its wording. The editor therefore asked her to explain the (4) ____ behind each departure from the original.\n\nThe team eventually reached a (5) ____: the spoken translation would retain more detail, while the captions would use shorter sentences. The organisers explicitly wanted the versions to complement each other, not for either to (6) ____ the other. Both would be available together. The editor rejected an explanation of the poet's entire career as beyond the (7) ____ of these brief captions. Instead, she required a note identifying where compression had removed a meaningful ambiguity. That would make the limitations (8) ____ to readers rather than leave them concealed.\n\n例0（已答，不计作答）：A. commissioned　B. consented　C. committed　D. confirmed；答案 A。",
+  "author_answer_vector": [
+    "C",
+    "D",
+    "D",
+    "D",
+    "B",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 171,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 32,
+    "output_response_positions": 8,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 179,
+    "requirement_English_words": 0,
+    "example_candidate_words": 4,
+    "example_words_not_added_to8_response_positions": true,
+    "output_letter_count": 8
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A literary festival (0) commissioned new translations of poems for a public reading. The translators also had to supply short captions. These could not do (1) ____ to every feature of the originals, but they had to preserve the central images.\n\nOne translator initially fell (2) ____ on rhyming phrases whenever a literal version sounded awkward. The results were fluent, yet some introduced cheerful images into an otherwise bleak poem. Such additions (3) ____ its tone rather than merely changing its wording. The editor therefore asked her to explain the (4) ____ behind each departure from the original.\n\nThe team eventually reached a (5) ____: the spoken translation would retain more detail, while the captions would use shorter sentences. The organisers explicitly wanted the versions to complement each other, not for either to (6) ____ the other. Both would be available together. The editor rejected an explanation of the poet's entire career as beyond the (7) ____ of these brief captions. Instead, she required a note identifying where compression had removed a meaningful ambiguity. That would make the limitations (8) ____ to readers rather than leave them concealed.",
+  "completed_passage": "A literary festival (0) commissioned new translations of poems for a public reading. The translators also had to supply short captions. These could not do justice to every feature of the originals, but they had to preserve the central images.\n\nOne translator initially fell back on rhyming phrases whenever a literal version sounded awkward. The results were fluent, yet some introduced cheerful images into an otherwise bleak poem. Such additions distorted its tone rather than merely changing its wording. The editor therefore asked her to explain the rationale behind each departure from the original.\n\nThe team eventually reached a compromise: the spoken translation would retain more detail, while the captions would use shorter sentences. The organisers explicitly wanted the versions to complement each other, not for either to supplant the other. Both would be available together. The editor rejected an explanation of the poet's entire career as beyond the scope of these brief captions. Instead, she required a note identifying where compression had removed a meaningful ambiguity. That would make the limitations explicit to readers rather than leave them concealed.",
+  "passage_count": 1,
+  "gap_count": 8,
+  "answered_examples": 1,
+  "example_options": [
+    [
+      "A",
+      "commissioned"
+    ],
+    [
+      "B",
+      "consented"
+    ],
+    [
+      "C",
+      "committed"
+    ],
+    [
+      "D",
+      "confirmed"
+    ]
+  ],
+  "example_key": "A",
+  "example_rationale": "commissioned...from/for表示委托创作；consented需to而非直接宾语，committed非委托翻译，confirmed确认既存内容不指派创作。",
+  "printed_example_block": "例0（已答，不计作答）：A. commissioned　B. consented　C. committed　D. confirmed；答案 A。",
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "justice"
+        ],
+        [
+          "B",
+          "dignity"
+        ],
+        [
+          "C",
+          "fairness"
+        ],
+        [
+          "D",
+          "merit"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "do justice to为充分体现/呈现；后文不能容纳全部features而保留centralimages给该搭配语义。do dignity/fairness/merit to不组成此惯用表达。",
+      "old_to_new": {
+        "B": "A",
+        "D": "B",
+        "A": "C",
+        "C": "D"
+      },
+      "accepted_text": "justice"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "back"
+        ],
+        [
+          "B",
+          "away"
+        ],
+        [
+          "C",
+          "over"
+        ],
+        [
+          "D",
+          "out"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "fall back on表示困难时求助于既有手段；fall away/over/out不能与on rhyming phrases构成这里退而依赖的短语。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "D": "C",
+        "A": "D"
+      },
+      "accepted_text": "back"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "distorted"
+        ],
+        [
+          "B",
+          "condensed"
+        ],
+        [
+          "C",
+          "recorded"
+        ],
+        [
+          "D",
+          "recovered"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "为bleak诗添加cheerful images改变了情绪方向，distorted歪曲；condensed压缩不涉及反向加图，recorded记录和recovered恢复不说明被加内容扭转。",
+      "old_to_new": {
+        "D": "A",
+        "C": "B",
+        "B": "C",
+        "A": "D"
+      },
+      "accepted_text": "distorted"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "rationale"
+        ],
+        [
+          "B",
+          "permission"
+        ],
+        [
+          "C",
+          "chronology"
+        ],
+        [
+          "D",
+          "location"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "explain...behind eachdeparture要求说明改动的理由rationale；permission许可是是否获准非理由，chronology先后、location位置都非why改动。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "D": "C",
+        "A": "D"
+      },
+      "accepted_text": "rationale"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "compromise"
+        ],
+        [
+          "B",
+          "diagnosis"
+        ],
+        [
+          "C",
+          "prediction"
+        ],
+        [
+          "D",
+          "rehearsal"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "口语保更多细节/字幕短句是在要求间达成compromise折中；diagnosis诊断、prediction预测、rehearsal排练不指此双方功能协调方案。",
+      "old_to_new": {
+        "D": "A",
+        "A": "B",
+        "C": "C",
+        "B": "D"
+      },
+      "accepted_text": "compromise"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "supplant"
+        ],
+        [
+          "B",
+          "accompany"
+        ],
+        [
+          "C",
+          "complement"
+        ],
+        [
+          "D",
+          "support"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "明确wanted versions to complement而不是替代，supplant为取代；accompany陪伴、complement互补、support支持均属共同存在/互助的相容方向，不是被对照排除的替代行为。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C",
+        "D": "D"
+      },
+      "accepted_text": "supplant"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "scope"
+        ],
+        [
+          "B",
+          "schedule"
+        ],
+        [
+          "C",
+          "outline"
+        ],
+        [
+          "D",
+          "caption"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "说明wholecareer超出briefcaptions的内容范围，beyondscope；schedule进度、outline提纲、caption字幕本身都不表达任务边界。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "D": "C",
+        "B": "D"
+      },
+      "accepted_text": "scope"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "explicit"
+        ],
+        [
+          "B",
+          "incidental"
+        ],
+        [
+          "C",
+          "obsolete"
+        ],
+        [
+          "D",
+          "exclusive"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "要求note指出被删ambiguity，与ratherthanconcealed相对是explicit明示；incidental附带、obsolete过时、exclusive排他的均不说明从隐藏到明确。",
+      "old_to_new": {
+        "A": "A",
+        "D": "B",
+        "B": "C",
+        "C": "D"
+      },
+      "accepted_text": "explicit"
+    }
+  ],
+  "professional_context_not_empiricalcase_gold": true
+}
