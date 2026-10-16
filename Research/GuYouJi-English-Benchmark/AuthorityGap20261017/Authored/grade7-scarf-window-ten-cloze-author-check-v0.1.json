@@ -1,0 +1,535 @@
+{
+  "version": "0.1",
+  "id": "grade7-scarf-window-ten-cloze",
+  "grade": 7,
+  "questions": 10,
+  "candidate_sha256": "20c6a3726d0e68ab7700f3411437e4790f6b50961b25fab3b767fda34dff5e50",
+  "canonical_response_block_sha256": "a506cb0affcf5d7b1f02d3b8dd04d0f5e328e46c875d57eca2a1cce2172c75f7",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "carry"
+        ],
+        [
+          "B",
+          "buy"
+        ],
+        [
+          "C",
+          "cook"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "CLOSED且cannot进入营业购买，buy bread对应去面包店目的；cook是烹饪并非店内购物，carry搬运不说明关店阻止交易。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "through"
+        ],
+        [
+          "B",
+          "beside"
+        ],
+        [
+          "C",
+          "without"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "围巾留bench且后来回找，left without it表示未携；beside it表示一直在旁不合后来离开忘取，through it不构成穿围巾而行。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "off"
+        ],
+        [
+          "B",
+          "on"
+        ],
+        [
+          "C",
+          "back"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "remembered后回先前bench，turned back；turned off关闭设备、turned on开启设备都不表示返回地点。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "boat"
+        ],
+        [
+          "B",
+          "bench"
+        ],
+        [
+          "C",
+          "bus"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "上段placed it on bench，现据男孩发现处回指bench；无乘bus或上boat经历，不能将河中鸭推成围巾在boat上。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "wear"
+        ],
+        [
+          "B",
+          "wash"
+        ],
+        [
+          "C",
+          "see"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "window/from outside为失主看见，see；洗wash、穿戴wear不能只从外面通过展示窗完成找物目的。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "foot"
+        ],
+        [
+          "B",
+          "neck"
+        ],
+        [
+          "C",
+          "hand"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "前文cold wind touched my neck，scarf围neck；围hand/foot不回应颈部受冷及put on scarf常见明确场景。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "followed"
+        ],
+        [
+          "B",
+          "forgotten"
+        ],
+        [
+          "C",
+          "helped"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "男孩将遗失物交店主展示，行动帮助找回，helped；forgotten忘记叙述者、followed跟踪叙述者均非交失物功能。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "but"
+        ],
+        [
+          "B",
+          "so"
+        ],
+        [
+          "C",
+          "because"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "想买cake而男孩摇头拒绝，but转折；because把拒绝当赠礼原因，so把拒绝当赠礼成功后果，均错连两件事。"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [
+        [
+          "A",
+          "it"
+        ],
+        [
+          "B",
+          "them"
+        ],
+        [
+          "C",
+          "him"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "两人都喜watching ducks，talked about them复数回指ducks；it单数不合，him指单一男性而不是共喜欢看的鸭。"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [
+        [
+          "A",
+          "friend"
+        ],
+        [
+          "B",
+          "coat"
+        ],
+        [
+          "C",
+          "ticket"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "互通姓名与共同爱好得新friend；无购票或新coat情节，物品不是人物交往结果。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedJuniorClozeBridge-v0.1.json",
+    "sha256": "ca710e4456a4ee0c8deac8514be426193ffdc29c69e2faf93c2c848eaedd236b"
+  },
+  "source_group_id": "g7.2021.cloze",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent_per_gap",
+    "source_material": {
+      "passages": 1,
+      "gaps": 10,
+      "source_features": {
+        "options_each": 3,
+        "blanks": 10,
+        "genre": "charitable action narrative",
+        "tokens_gapped": 191,
+        "lexical_and_multiword_options": true,
+        "referent_and_cross_sentence_evidence": true,
+        "source_presentperfect_input_not_blank_target": true
+      },
+      "given_words": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "It was cold on Saturday. I put on my red scarf and went to the bakery. A sign on the door said CLOSED, so I could not (1) ____ any bread there. I walked towards home along the river.\n\nOn the way, I stopped to watch some ducks. I took off my scarf because I felt hot and placed it on a bench. A few minutes later, I left the bench (2) ____ it. When the cold wind touched my neck, I remembered the scarf and turned (3) ____.\n\nThe bench was empty. Then I saw something red in the window of a small shop. It was my scarf! The shopkeeper came to the door. “A boy brought it to me,” she said. “He found it on the (4) ____. I put it here so its owner could (5) ____ it from outside.”\n\nI thanked her and put the scarf around my (6) ____. At that moment, a boy came out of the next shop. “You found your scarf!” he said. I knew he was the person who had (7) ____ me. I wanted to buy him a cake, (8) ____ he shook his head. “I'm happy you have it back,” he said.\n\nBefore leaving, I asked his name. It was Leo. We both liked watching the ducks, so we talked about (9) ____ for a while. The bakery was closed that morning, but I went home with my scarf and a new (10) ____.",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "C",
+    "B",
+    "C",
+    "B",
+    "C",
+    "A",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 225,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 235,
+    "requirement_English_words": 0,
+    "output_letter_count": 10
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "It was cold on Saturday. I put on my red scarf and went to the bakery. A sign on the door said CLOSED, so I could not (1) ____ any bread there. I walked towards home along the river.\n\nOn the way, I stopped to watch some ducks. I took off my scarf because I felt hot and placed it on a bench. A few minutes later, I left the bench (2) ____ it. When the cold wind touched my neck, I remembered the scarf and turned (3) ____.\n\nThe bench was empty. Then I saw something red in the window of a small shop. It was my scarf! The shopkeeper came to the door. “A boy brought it to me,” she said. “He found it on the (4) ____. I put it here so its owner could (5) ____ it from outside.”\n\nI thanked her and put the scarf around my (6) ____. At that moment, a boy came out of the next shop. “You found your scarf!” he said. I knew he was the person who had (7) ____ me. I wanted to buy him a cake, (8) ____ he shook his head. “I'm happy you have it back,” he said.\n\nBefore leaving, I asked his name. It was Leo. We both liked watching the ducks, so we talked about (9) ____ for a while. The bakery was closed that morning, but I went home with my scarf and a new (10) ____.",
+  "completed_passage": "It was cold on Saturday. I put on my red scarf and went to the bakery. A sign on the door said CLOSED, so I could not buy any bread there. I walked towards home along the river.\n\nOn the way, I stopped to watch some ducks. I took off my scarf because I felt hot and placed it on a bench. A few minutes later, I left the bench without it. When the cold wind touched my neck, I remembered the scarf and turned back.\n\nThe bench was empty. Then I saw something red in the window of a small shop. It was my scarf! The shopkeeper came to the door. “A boy brought it to me,” she said. “He found it on the bench. I put it here so its owner could see it from outside.”\n\nI thanked her and put the scarf around my neck. At that moment, a boy came out of the next shop. “You found your scarf!” he said. I knew he was the person who had helped me. I wanted to buy him a cake, but he shook his head. “I'm happy you have it back,” he said.\n\nBefore leaving, I asked his name. It was Leo. We both liked watching the ducks, so we talked about them for a while. The bakery was closed that morning, but I went home with my scarf and a new friend.",
+  "passage_count": 1,
+  "gap_count": 10,
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "buy"
+        ],
+        [
+          "B",
+          "cook"
+        ],
+        [
+          "C",
+          "carry"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "CLOSED且cannot进入营业购买，buy bread对应去面包店目的；cook是烹饪并非店内购物，carry搬运不说明关店阻止交易。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "buy"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "without"
+        ],
+        [
+          "B",
+          "beside"
+        ],
+        [
+          "C",
+          "through"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "围巾留bench且后来回找，left without it表示未携；beside it表示一直在旁不合后来离开忘取，through it不构成穿围巾而行。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "without"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "back"
+        ],
+        [
+          "B",
+          "off"
+        ],
+        [
+          "C",
+          "on"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "remembered后回先前bench，turned back；turned off关闭设备、turned on开启设备都不表示返回地点。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "back"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "bench"
+        ],
+        [
+          "B",
+          "bus"
+        ],
+        [
+          "C",
+          "boat"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "上段placed it on bench，现据男孩发现处回指bench；无乘bus或上boat经历，不能将河中鸭推成围巾在boat上。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "bench"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "see"
+        ],
+        [
+          "B",
+          "wash"
+        ],
+        [
+          "C",
+          "wear"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "window/from outside为失主看见，see；洗wash、穿戴wear不能只从外面通过展示窗完成找物目的。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "see"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "neck"
+        ],
+        [
+          "B",
+          "hand"
+        ],
+        [
+          "C",
+          "foot"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "前文cold wind touched my neck，scarf围neck；围hand/foot不回应颈部受冷及put on scarf常见明确场景。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "neck"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "helped"
+        ],
+        [
+          "B",
+          "forgotten"
+        ],
+        [
+          "C",
+          "followed"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "男孩将遗失物交店主展示，行动帮助找回，helped；forgotten忘记叙述者、followed跟踪叙述者均非交失物功能。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "helped"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "but"
+        ],
+        [
+          "B",
+          "because"
+        ],
+        [
+          "C",
+          "so"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "想买cake而男孩摇头拒绝，but转折；because把拒绝当赠礼原因，so把拒绝当赠礼成功后果，均错连两件事。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "but"
+    },
+    {
+      "number": 9,
+      "before_options": [
+        [
+          "A",
+          "them"
+        ],
+        [
+          "B",
+          "it"
+        ],
+        [
+          "C",
+          "him"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "两人都喜watching ducks，talked about them复数回指ducks；it单数不合，him指单一男性而不是共喜欢看的鸭。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "them"
+    },
+    {
+      "number": 10,
+      "before_options": [
+        [
+          "A",
+          "friend"
+        ],
+        [
+          "B",
+          "ticket"
+        ],
+        [
+          "C",
+          "coat"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "互通姓名与共同爱好得新friend；无购票或新coat情节，物品不是人物交往结果。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "friend"
+    }
+  ],
+  "source_illustration_not_required_for_new_fiction": true,
+  "source_form_count_not_grade_invariant": true
+}

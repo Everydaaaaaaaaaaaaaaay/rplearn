@@ -1,0 +1,539 @@
+{
+  "version": "0.1",
+  "id": "grade7-nightrace-ten-cloze",
+  "grade": 7,
+  "questions": 10,
+  "candidate_sha256": "26ec5bf652ffae5510e56ab40ee431f19bbb56a8c46c80b9adc8c08758d2349c",
+  "canonical_response_block_sha256": "72569a904714972b7f68e527a29727b9d16cee26ce6120af22753b96edf466fd",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "shoes"
+        ],
+        [
+          "B",
+          "backs"
+        ],
+        [
+          "C",
+          "chests"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "fronts of shirts明示躯干正前的chests；backs在背后与front矛盾，shoes在脚上不在shirts。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "clear"
+        ],
+        [
+          "B",
+          "heavy"
+        ],
+        [
+          "C",
+          "sweet"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "从hill越过人头看跑者是clear view；heavy重量、sweet味觉不描述此可见性。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "paid"
+        ],
+        [
+          "B",
+          "cooked"
+        ],
+        [
+          "C",
+          "looked"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "waited and looked for number24是寻找父亲号码；paid for是支付、cooked for是做饭，均非观看。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "before"
+        ],
+        [
+          "B",
+          "because"
+        ],
+        [
+          "C",
+          "although"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "数字看不清的原因是lamps off，because；although使应相反的两事让步，before错误地用时间取代已给因果。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "bags"
+        ],
+        [
+          "B",
+          "eyes"
+        ],
+        [
+          "C",
+          "hands"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "shine light into anyone’s eyes为避免照眼而改照卡，eyes；bags或hands不与向下照卡形成同一避免刺目目的。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "more quickly"
+        ],
+        [
+          "B",
+          "more slowly"
+        ],
+        [
+          "C",
+          "earlier"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Several runners passed him as we watched给同一时刻相对超越证据，more slowly符合；more quickly与被这些跑者超越冲突，earlier是时间而非本句速度比较。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "ticket"
+        ],
+        [
+          "B",
+          "medal"
+        ],
+        [
+          "C",
+          "card"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "saw our card而wave且加油，thanks for card；并未颁medal或买ticket，不能用比赛常识替代文内实际物。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "smiling"
+        ],
+        [
+          "B",
+          "running"
+        ],
+        [
+          "C",
+          "stopping"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "last time stopped twice与today all the way构成连续跑对比，without stopping；without smiling与前文smiling冲突，without running与ran all way冲突。"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [
+        [
+          "A",
+          "water"
+        ],
+        [
+          "B",
+          "paper"
+        ],
+        [
+          "C",
+          "bread"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "because thirsty指向补水water；paper非饮食，bread是食物不直接解渴。"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [
+        [
+          "A",
+          "card"
+        ],
+        [
+          "B",
+          "bicycle"
+        ],
+        [
+          "C",
+          "umbrella"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "carrying little light and our card回收文内已持道具；全程步行，没有bicycle/umbrella在前文交付。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedJuniorClozeBridge-v0.1.json",
+    "sha256": "ca710e4456a4ee0c8deac8514be426193ffdc29c69e2faf93c2c848eaedd236b"
+  },
+  "source_group_id": "g7.2021.cloze",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent_per_gap",
+    "source_material": {
+      "passages": 1,
+      "gaps": 10,
+      "source_features": {
+        "options_each": 3,
+        "blanks": 10,
+        "genre": "charitable action narrative",
+        "tokens_gapped": 191,
+        "lexical_and_multiword_options": true,
+        "referent_and_cross_sentence_evidence": true,
+        "source_presentperfect_input_not_blank_target": true
+      },
+      "given_words": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Our town had a short fun run on Friday evening. My sister and I went to watch. The runners had numbers pinned to the fronts of their shirts, on their (1) ____. We could read them as they came towards us. I wanted to see number 24. That was my father.\n\nAt first, there were many people beside the road. We could not see over their heads, so we stood on a small hill. From there, we had a (2) ____ view of the runners. A woman said the first runners would arrive soon. We waited and (3) ____ for number 24.\n\nSoon the sky became dark. The numbers were hard to read, (4) ____ the lamps along this part of the road were off. My sister took a small light out of her bag. She did not shine it into anyone's (5) ____. She pointed it down at a card we were holding. The card said, “Go, Dad!”\n\nA runner waved when he saw our card. It was Dad. Several other runners passed him as we watched. He was moving (6) ____ than those runners, but he was smiling. We shouted his name. At the finish, he thanked us for the (7) ____.\n\n“Did you win?” I asked. “No,” he said, “but last time I stopped twice. Today I ran all the way without (8) ____.” He was happy about that. My sister and I gave him some (9) ____ because he was thirsty. Then we walked home together, carrying the little light and our (10) ____.",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "C",
+    "B",
+    "B",
+    "B",
+    "C",
+    "C",
+    "A",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 236,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 32,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 247,
+    "requirement_English_words": 0,
+    "output_letter_count": 10
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Our town had a short fun run on Friday evening. My sister and I went to watch. The runners had numbers pinned to the fronts of their shirts, on their (1) ____. We could read them as they came towards us. I wanted to see number 24. That was my father.\n\nAt first, there were many people beside the road. We could not see over their heads, so we stood on a small hill. From there, we had a (2) ____ view of the runners. A woman said the first runners would arrive soon. We waited and (3) ____ for number 24.\n\nSoon the sky became dark. The numbers were hard to read, (4) ____ the lamps along this part of the road were off. My sister took a small light out of her bag. She did not shine it into anyone's (5) ____. She pointed it down at a card we were holding. The card said, “Go, Dad!”\n\nA runner waved when he saw our card. It was Dad. Several other runners passed him as we watched. He was moving (6) ____ than those runners, but he was smiling. We shouted his name. At the finish, he thanked us for the (7) ____.\n\n“Did you win?” I asked. “No,” he said, “but last time I stopped twice. Today I ran all the way without (8) ____.” He was happy about that. My sister and I gave him some (9) ____ because he was thirsty. Then we walked home together, carrying the little light and our (10) ____.",
+  "completed_passage": "Our town had a short fun run on Friday evening. My sister and I went to watch. The runners had numbers pinned to the fronts of their shirts, on their chests. We could read them as they came towards us. I wanted to see number 24. That was my father.\n\nAt first, there were many people beside the road. We could not see over their heads, so we stood on a small hill. From there, we had a clear view of the runners. A woman said the first runners would arrive soon. We waited and looked for number 24.\n\nSoon the sky became dark. The numbers were hard to read, because the lamps along this part of the road were off. My sister took a small light out of her bag. She did not shine it into anyone's eyes. She pointed it down at a card we were holding. The card said, “Go, Dad!”\n\nA runner waved when he saw our card. It was Dad. Several other runners passed him as we watched. He was moving more slowly than those runners, but he was smiling. We shouted his name. At the finish, he thanked us for the card.\n\n“Did you win?” I asked. “No,” he said, “but last time I stopped twice. Today I ran all the way without stopping.” He was happy about that. My sister and I gave him some water because he was thirsty. Then we walked home together, carrying the little light and our card.",
+  "passage_count": 1,
+  "gap_count": 10,
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "chests"
+        ],
+        [
+          "B",
+          "backs"
+        ],
+        [
+          "C",
+          "shoes"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "fronts of shirts明示躯干正前的chests；backs在背后与front矛盾，shoes在脚上不在shirts。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "chests"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "clear"
+        ],
+        [
+          "B",
+          "heavy"
+        ],
+        [
+          "C",
+          "sweet"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "从hill越过人头看跑者是clear view；heavy重量、sweet味觉不描述此可见性。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "clear"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "looked"
+        ],
+        [
+          "B",
+          "paid"
+        ],
+        [
+          "C",
+          "cooked"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "waited and looked for number24是寻找父亲号码；paid for是支付、cooked for是做饭，均非观看。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "looked"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "because"
+        ],
+        [
+          "B",
+          "although"
+        ],
+        [
+          "C",
+          "before"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "数字看不清的原因是lamps off，because；although使应相反的两事让步，before错误地用时间取代已给因果。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "because"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "eyes"
+        ],
+        [
+          "B",
+          "bags"
+        ],
+        [
+          "C",
+          "hands"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "shine light into anyone’s eyes为避免照眼而改照卡，eyes；bags或hands不与向下照卡形成同一避免刺目目的。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "eyes"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "more slowly"
+        ],
+        [
+          "B",
+          "more quickly"
+        ],
+        [
+          "C",
+          "earlier"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "Several runners passed him as we watched给同一时刻相对超越证据，more slowly符合；more quickly与被这些跑者超越冲突，earlier是时间而非本句速度比较。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "more slowly"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "card"
+        ],
+        [
+          "B",
+          "medal"
+        ],
+        [
+          "C",
+          "ticket"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "saw our card而wave且加油，thanks for card；并未颁medal或买ticket，不能用比赛常识替代文内实际物。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "card"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "stopping"
+        ],
+        [
+          "B",
+          "smiling"
+        ],
+        [
+          "C",
+          "running"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "last time stopped twice与today all the way构成连续跑对比，without stopping；without smiling与前文smiling冲突，without running与ran all way冲突。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "stopping"
+    },
+    {
+      "number": 9,
+      "before_options": [
+        [
+          "A",
+          "water"
+        ],
+        [
+          "B",
+          "paper"
+        ],
+        [
+          "C",
+          "bread"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "because thirsty指向补水water；paper非饮食，bread是食物不直接解渴。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "water"
+    },
+    {
+      "number": 10,
+      "before_options": [
+        [
+          "A",
+          "card"
+        ],
+        [
+          "B",
+          "bicycle"
+        ],
+        [
+          "C",
+          "umbrella"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "carrying little light and our card回收文内已持道具；全程步行，没有bicycle/umbrella在前文交付。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "card"
+    }
+  ],
+  "source_illustration_not_required_for_new_fiction": true,
+  "source_form_count_not_grade_invariant": true,
+  "pre_freeze_clarifications": [
+    "numberfrontsofshirtsnotassumedraceconvention",
+    "passingobservednotinferredspeedfromcurrentrank"
+  ]
+}
