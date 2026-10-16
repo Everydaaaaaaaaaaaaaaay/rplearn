@@ -1,0 +1,235 @@
+{
+  "version": "0.1",
+  "id": "primary3-dialogue-ordering-blue-car",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "708ffd1ca879fc434a4377eb0d8483191a3a67d91409b80f7c93d5fcefe80b30",
+  "canonical_response_block_sha256": "e8eb106f2737d54ddb8c65bb6ad20f153297e417af9cc37e0ac408c91f467f71",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "题面第2行：Thank you. Here is your blue toy car.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "6",
+      "rationale": "第6步：先收第5步付款，再致谢并交付已在第3步选定的蓝车，交易闭合。"
+    },
+    {
+      "number": 2,
+      "stem": "题面第3行：The blue one, please. How much is it?",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "3",
+      "rationale": "第3步：the blue one回答第2步二选提问，随后问价带出第4步。"
+    },
+    {
+      "number": 3,
+      "stem": "题面第4行：Here is ten yuan.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "5",
+      "rationale": "第5步：递交与第4步报价相同的ten yuan，供第6步收款致谢。"
+    },
+    {
+      "number": 4,
+      "stem": "题面第5行：This red one or that blue one?",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "2",
+      "rationale": "第2步：首句只提出toy car需求，此时询问两车颜色偏好，不能在已选好之后重问。"
+    },
+    {
+      "number": 5,
+      "stem": "题面第6行：Ten yuan.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "4",
+      "rationale": "第4步：Ten yuan是第3步How much的报价，不是第5步付款动作。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.4.json",
+    "sha256": "0ee077c62895d25725ace18aafbd4f948f08d571fefc327f46da41a9ef52284e"
+  },
+  "source_group_id": "p3.panshi2023.dialogue-ordering",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "ordering_rank_permutation;given1_fixed;five_remaining_ranks2to6;not_five_independent_tasks",
+    "source_material": {
+      "dialogues": 1,
+      "printed_sentence_rows": 6,
+      "given_position_rows": [
+        1
+      ],
+      "given_rank": 1,
+      "blank_rows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "independent_sorting_tasks": 1,
+      "source_printed_student_words": null
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "candidate_kind": "interactive_numeric_rank_domain_2to6_not_source_printed_multiple_choice",
+      "source_printed_options": 0
+    }
+  },
+  "student_passage": "(1) I'd like a toy car, please.\n\n(____) Thank you. Here is your blue toy car.\n\n(____) The blue one, please. How much is it?\n\n(____) Here is ten yuan.\n\n(____) This red one or that blue one?\n\n(____) Ten yuan.",
+  "body_load_text": "(1) I'd like a toy car, please.\n\n(____) Thank you. Here is your blue toy car.\n\n(____) The blue one, please. How much is it?\n\n(____) Here is ten yuan.\n\n(____) This red one or that blue one?\n\n(____) Ten yuan.",
+  "author_answer_vector": [
+    "6",
+    "3",
+    "5",
+    "2",
+    "4"
+  ],
+  "load_measure": {
+    "body_English_words": 35,
+    "stem_English_words": 29,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_mode": "five_numeric_rank_entries_one_whole_ordering_group",
+    "printed_response_stems_repeat_material": true
+  },
+  "displayed_sentence_rows": [
+    "I'd like a toy car, please.",
+    "Thank you. Here is your blue toy car.",
+    "The blue one, please. How much is it?",
+    "Here is ten yuan.",
+    "This red one or that blue one?",
+    "Ten yuan."
+  ],
+  "whole_correct_sequence": [
+    "I'd like a toy car, please.",
+    "This red one or that blue one?",
+    "The blue one, please. How much is it?",
+    "Ten yuan.",
+    "Here is ten yuan.",
+    "Thank you. Here is your blue toy car."
+  ],
+  "given_sentence_row": 1,
+  "given_rank": 1,
+  "rank_domain": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "whole_ordering_groups": 1,
+  "not_five_independent_dialogues": true,
+  "source_original_key_not_gold": true,
+  "source_no_published_key": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

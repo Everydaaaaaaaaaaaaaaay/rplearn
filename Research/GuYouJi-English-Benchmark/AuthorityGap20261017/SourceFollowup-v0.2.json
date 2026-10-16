@@ -1,0 +1,98 @@
+{
+  "version": "0.2",
+  "previous_followup": {
+    "path": "AuthorityGap20261017/SourceFollowup-v0.1.json",
+    "sha256": "58f5c9fc848228d9468a7b3610768e4bfa06a3c80d136d0a7c119e7b4ecfc876"
+  },
+  "purpose": "target actual nonpaper,unadapted ordering,ordinarycloze gaps;not genericreading expansion",
+  "discovery_logs": [
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-01-v0.1.json",
+      "sha256": "3290fcc0161315aa03e6b5e68a3a3d1c95c75f69a6497e18bc7fd1906e0f910e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-02-v0.1.json",
+      "sha256": "89eb136f6764b57fcb781c6eb51efa18211bd6c0533f96b32773976f32c21f02"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-03-v0.1.json",
+      "sha256": "2f8c7d43c6096f85ca3633d29c2b42c97ba733f538ae1e265229b4bc83b7bf47"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-04-v0.1.json",
+      "sha256": "da7a1f205b80c4830a7a560315bcba7205aaed4d57df7e2458558bf213532416"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-05-v0.1.json",
+      "sha256": "4dbe835137e7f4e94782eb647c07c23a212582fc3110c11e07b3c4fabe60de98"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-06-v0.1.json",
+      "sha256": "655d7a9c63c6086e278c649e8ae4b69aa144823b32537c06d94de4288ae46421"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-07-v0.1.json",
+      "sha256": "a366c8251b7b9ed881910a633a330c446330691a6306e701ca04dc0951a052ac"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-08-v0.1.json",
+      "sha256": "2b816d36685632a2ed180534d2d323f300bd7200a5ce0867fa4c8641977a1356"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-09-v0.1.json",
+      "sha256": "db08147ad58796030a80d5cabddaa06cdaa98826297501f3473ff8d891d4ab61"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-10-v0.1.json",
+      "sha256": "42a0587a1919b8bf0b76d93e8e52c5739fc02ab263adb87b1dc2451754ebb9ca"
+    }
+  ],
+  "selected_complete_source_groups_added": 1,
+  "selected_responses_added": 5,
+  "findings": [
+    {
+      "id": "p3_panshi_ordering",
+      "status": "selected_complete_public_text_only",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/p3-panshi15151078-public-original-v0.1.html",
+        "sha256": "d05328a9ba902d930cbafa75859e1f1010965ee363a6d62cb262105edb92e39c"
+      },
+      "native": {
+        "path": "build/english-benchmark-authority-20261017/p3-panshi-ordering-native-v0.2.json",
+        "sha256": "d38043858a520d0d5e0324723e0f8ba19a712324f9a63a1ae66fa3f12ad4ca22"
+      },
+      "limits": "grade/termconfirmedpreview1;regiontitleonly;onlyfirst2of4previewpages;orderingtextallvisibleinHTML;sourcekeynone;notwholepaperorvisualgold"
+    },
+    {
+      "id": "p6_feixian_jyeoo",
+      "url": "https://www.jyeoo.com/pp/cb86125e-b44b-4dda-9c50-61e1a9391813",
+      "status": "not_admitted_grade_task_identity_mismatch",
+      "evidence": "headingsandbodiesmismatch:sectionIwordphrasebutHelloGirls/Boys;IIjobsandhobbiesbutgrape/great/green;VIII2poemsbutJennySaturdaystory;Vstoryheading/dialoguebody;notcrediblefulloriginalgrade6paper"
+    },
+    {
+      "id": "nonpaper_schoolplan",
+      "url": "https://www.nsfz.cn/primary/articlelists/details/pid/99/article_cate_id/100/article_id/10002981.html",
+      "status": "searchreportonly_repeatedtimeout;singing/freespeechnotclosedtaskbundle"
+    },
+    {
+      "id": "zjg_nonpaper",
+      "url": "https://wgyxx.zjgedu.cn/syxb/xxb/content_207723",
+      "status": "officialschoolnews_only;imagecarddrawingreported_butactualfullcardsets/instructionsnotpublished"
+    },
+    {
+      "id": "p5_taizhou",
+      "status": "samepaidboundary19/20stillmissing;notredownloaded"
+    },
+    {
+      "id": "p5_guangming2023",
+      "url": "https://max.book118.com/html/2024/0120/8022015132006027.shtm",
+      "status": "previewendsatclozeheading;nofullinput;notadmitted"
+    },
+    {
+      "id": "p5_erqi_tesoon",
+      "url": "https://www.tesoon.com/resource/detail?rid=190314",
+      "status": "publisheraudio_scriptkeyresource;actualstudentpictures/candidatesnotshown;notcompleteinput"
+    }
+  ],
+  "source_unknown_not_filled_with_simulation": true
+}

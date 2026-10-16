@@ -1,0 +1,235 @@
+{
+  "version": "0.1",
+  "id": "primary3-dialogue-ordering-green-pencil",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "dece6ab63f1e9114f914816c851029c7c6e3a6f9648a5783897ec5f8b1b5aa72",
+  "canonical_response_block_sha256": "e59415a50ecf2d3e10a68b60d8f8a94b80d189008152d00cf89a8be4b3207181",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "题面第2行：Yes, it is. Thank you.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "5",
+      "rationale": "第5步：Yes it is直接回答第4步Is this...yours并致谢，不能先于找到并询问。"
+    },
+    {
+      "number": 2,
+      "stem": "题面第3行：What colour is it?",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "2",
+      "rationale": "第2步：首句丢铅笔后先问颜色，下一句It is green回答；it回指铅笔。"
+    },
+    {
+      "number": 3,
+      "stem": "题面第4行：You're welcome.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "6",
+      "rationale": "第6步：承接第5步Thank you的礼貌应答；若提前则无所谢。"
+    },
+    {
+      "number": 4,
+      "stem": "题面第5行：Look! Is this green pencil yours?",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "4",
+      "rationale": "第4步：第3步已确定green后指出绿色铅笔并问归属，衔接第5步Yes。"
+    },
+    {
+      "number": 5,
+      "stem": "题面第6行：It is green.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "3",
+      "rationale": "第3步：回应第2步What colour；green又为第4步this green pencil提供线索。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.4.json",
+    "sha256": "0ee077c62895d25725ace18aafbd4f948f08d571fefc327f46da41a9ef52284e"
+  },
+  "source_group_id": "p3.panshi2023.dialogue-ordering",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "ordering_rank_permutation;given1_fixed;five_remaining_ranks2to6;not_five_independent_tasks",
+    "source_material": {
+      "dialogues": 1,
+      "printed_sentence_rows": 6,
+      "given_position_rows": [
+        1
+      ],
+      "given_rank": 1,
+      "blank_rows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "independent_sorting_tasks": 1,
+      "source_printed_student_words": null
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "candidate_kind": "interactive_numeric_rank_domain_2to6_not_source_printed_multiple_choice",
+      "source_printed_options": 0
+    }
+  },
+  "student_passage": "(1) I can't find my pencil.\n\n(____) Yes, it is. Thank you.\n\n(____) What colour is it?\n\n(____) You're welcome.\n\n(____) Look! Is this green pencil yours?\n\n(____) It is green.",
+  "body_load_text": "(1) I can't find my pencil.\n\n(____) Yes, it is. Thank you.\n\n(____) What colour is it?\n\n(____) You're welcome.\n\n(____) Look! Is this green pencil yours?\n\n(____) It is green.",
+  "author_answer_vector": [
+    "5",
+    "2",
+    "6",
+    "4",
+    "3"
+  ],
+  "load_measure": {
+    "body_English_words": 25,
+    "stem_English_words": 20,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_mode": "five_numeric_rank_entries_one_whole_ordering_group",
+    "printed_response_stems_repeat_material": true
+  },
+  "displayed_sentence_rows": [
+    "I can't find my pencil.",
+    "Yes, it is. Thank you.",
+    "What colour is it?",
+    "You're welcome.",
+    "Look! Is this green pencil yours?",
+    "It is green."
+  ],
+  "whole_correct_sequence": [
+    "I can't find my pencil.",
+    "What colour is it?",
+    "It is green.",
+    "Look! Is this green pencil yours?",
+    "Yes, it is. Thank you.",
+    "You're welcome."
+  ],
+  "given_sentence_row": 1,
+  "given_rank": 1,
+  "rank_domain": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "whole_ordering_groups": 1,
+  "not_five_independent_dialogues": true,
+  "source_original_key_not_gold": true,
+  "source_no_published_key": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

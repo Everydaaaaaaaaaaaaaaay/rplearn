@@ -1,0 +1,235 @@
+{
+  "version": "0.1",
+  "id": "primary3-dialogue-ordering-paper-bird",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "1ba21ae2c0df4866fc8c02024ff14d8df6c715c692c871952a7328fe331d7bc6",
+  "canonical_response_block_sha256": "2daad0daa1e11b318cd29bbde5e99ae17f655383b844a91a4a2c9f681ebc3cc3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "题面第2行：Here is the yellow paper.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "4",
+      "rationale": "第4步：yellow已经在第3步确定，递黄色纸后第5步Thank you才有承接。"
+    },
+    {
+      "number": 2,
+      "stem": "题面第3行：Yes. Here you are.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "6",
+      "rationale": "第6步：Yes回应第5步Can I use...，Here you are承诺借剪刀；不能在请求前。"
+    },
+    {
+      "number": 3,
+      "stem": "题面第4行：Let's use yellow.",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "3",
+      "rationale": "第3步：用yellow直接回答第2步What colour，并为递纸提供颜色。"
+    },
+    {
+      "number": 4,
+      "stem": "题面第5行：Thank you. Can I use your scissors too?",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "5",
+      "rationale": "第5步：感谢第4步递纸，too把剪刀请求连接到已获纸；随后第6步许可。"
+    },
+    {
+      "number": 5,
+      "stem": "题面第6行：OK. What colour shall we use?",
+      "options": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "3",
+          "3"
+        ],
+        [
+          "4",
+          "4"
+        ],
+        [
+          "5",
+          "5"
+        ],
+        [
+          "6",
+          "6"
+        ]
+      ],
+      "answer": "2",
+      "rationale": "第2步：OK承接第一句提议，再问用什么颜色，引出第3步yellow。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.4.json",
+    "sha256": "0ee077c62895d25725ace18aafbd4f948f08d571fefc327f46da41a9ef52284e"
+  },
+  "source_group_id": "p3.panshi2023.dialogue-ordering",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "ordering_rank_permutation;given1_fixed;five_remaining_ranks2to6;not_five_independent_tasks",
+    "source_material": {
+      "dialogues": 1,
+      "printed_sentence_rows": 6,
+      "given_position_rows": [
+        1
+      ],
+      "given_rank": 1,
+      "blank_rows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "independent_sorting_tasks": 1,
+      "source_printed_student_words": null
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "candidate_kind": "interactive_numeric_rank_domain_2to6_not_source_printed_multiple_choice",
+      "source_printed_options": 0
+    }
+  },
+  "student_passage": "(1) Let's make a paper bird.\n\n(____) Here is the yellow paper.\n\n(____) Yes. Here you are.\n\n(____) Let's use yellow.\n\n(____) Thank you. Can I use your scissors too?\n\n(____) OK. What colour shall we use?",
+  "body_load_text": "(1) Let's make a paper bird.\n\n(____) Here is the yellow paper.\n\n(____) Yes. Here you are.\n\n(____) Let's use yellow.\n\n(____) Thank you. Can I use your scissors too?\n\n(____) OK. What colour shall we use?",
+  "author_answer_vector": [
+    "4",
+    "6",
+    "3",
+    "5",
+    "2"
+  ],
+  "load_measure": {
+    "body_English_words": 31,
+    "stem_English_words": 26,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_mode": "five_numeric_rank_entries_one_whole_ordering_group",
+    "printed_response_stems_repeat_material": true
+  },
+  "displayed_sentence_rows": [
+    "Let's make a paper bird.",
+    "Here is the yellow paper.",
+    "Yes. Here you are.",
+    "Let's use yellow.",
+    "Thank you. Can I use your scissors too?",
+    "OK. What colour shall we use?"
+  ],
+  "whole_correct_sequence": [
+    "Let's make a paper bird.",
+    "OK. What colour shall we use?",
+    "Let's use yellow.",
+    "Here is the yellow paper.",
+    "Thank you. Can I use your scissors too?",
+    "Yes. Here you are."
+  ],
+  "given_sentence_row": 1,
+  "given_rank": 1,
+  "rank_domain": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "whole_ordering_groups": 1,
+  "not_five_independent_dialogues": true,
+  "source_original_key_not_gold": true,
+  "source_no_published_key": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

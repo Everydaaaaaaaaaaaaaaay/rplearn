@@ -117,6 +117,25 @@ def check(data, plan):
             assert all(q['options'] == audit['shared_paragraphs'] for q in group['questions'])
             assert audit['reuse_rule'] == 'one_extra_paragraph_explicit;no_added_unprinted_max_once_rule'
             assert '最多用一次' not in meta['instruction']
+        if meta['family']=='dialogue_ordering':
+            native=json.loads(load_ref(source['source_native']).read_text())
+            assert native['selected_heading_and_rows'].startswith('X、读一读')
+            assert len(re.findall(r'^\(.*?\)',native['selected_heading_and_rows'],re.M))==6
+            assert native['all_material_text_visible'] and native['visual_page4_not_available']
+            assert native['blank_response_positions']==5 and native['source_key'] is None
+            assert source['material']['printed_sentence_rows']==len(audit['displayed_sentence_rows'])==6
+            assert source['material']['given_rank']==audit['given_rank']==audit['given_sentence_row']==1
+            assert audit['whole_ordering_groups']==source['whole_groups']==1 and audit['not_five_independent_dialogues']
+            assert source['responses']==len(group['questions'])==5 and group['fixedSharedBank']
+            assert audit['rank_domain']==list(range(2,7)) and sorted(map(int,audit['author_answer_vector']))==list(range(2,7))
+            assert all(q['options']==[[str(n),str(n)] for n in range(2,7)] for q in group['questions'])
+            ranks=[1]+list(map(int,audit['author_answer_vector']))
+            assert len(audit['whole_correct_sequence'])==6
+            assert [audit['whole_correct_sequence'][n-1] for n in ranks]==audit['displayed_sentence_rows']
+            assert all(s in group['reviewText'] for s in audit['whole_correct_sequence'])
+            assert source['published_key'] is None and audit['source_no_published_key']
+            assert source['candidates']['source_printed_options']==0
+            assert 'not_source_printed_multiple_choice' in source['candidates']['candidate_kind']
         if meta['family'] == 'multiple_text_information_matching':
             assert audit['consultant_section_count'] == len(audit['consultant_sections']) == 5
             assert audit['material_article_count'] == 1 and len(group['questions']) == 10
