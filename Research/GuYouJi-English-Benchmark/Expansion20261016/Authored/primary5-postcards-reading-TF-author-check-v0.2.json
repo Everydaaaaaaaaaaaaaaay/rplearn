@@ -1,0 +1,123 @@
+{
+  "version": "0.2",
+  "id": "primary5-postcards-reading-TF",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "baef9835aaa331689cd5524348f06cbe69313fe472be2f13066c0e31257fc83c",
+  "canonical_response_block_sha256": "28b000945250410265d2275180b4d15220da0daa533fb58bb499596031cc8c6f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The class wrote postcards on Friday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "首句明确Friday。"
+    },
+    {
+      "number": 2,
+      "stem": "Ms Lin planned to post the cards before school.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "原文after school，与before school相反。"
+    },
+    {
+      "number": 3,
+      "stem": "Leo found Mia’s card near the office door.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "office door处发现卡，后句确认Mia。"
+    },
+    {
+      "number": 4,
+      "stem": "The class used a new envelope after finding the card.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "明确did not need a new envelope。"
+    },
+    {
+      "number": 5,
+      "stem": "Ms Lin posted the complete set that afternoon.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "结句给出that afternoon与complete set。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.3.json",
+    "sha256": "f6c4abf8602574d7d6a095824c010b8947808462754295da48f634e0a3acde32"
+  },
+  "source_group_id": "p5.fangshan2025.readingTF",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 2,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "On Friday, Leo's class wrote postcards to a class on Green Island. Their teacher, Ms Lin, put the finished cards in a large envelope. She planned to post it after school. Leo offered to carry it to the office, where a member of staff would collect the school mail.\n\nAt the office door, Leo found a card on the floor. It was Mia's postcard. He returned to the classroom with it before giving the envelope to the office. Mia thanked him and added her card to the others. The class did not need a new envelope. Leo then took the complete set to the office, and Ms Lin posted it that afternoon.",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "T",
+    "F",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 112,
+    "stem_English_words": 42,
+    "options_English_words_with_repeated_bank": 10
+  },
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "previous_candidate": {
+    "path": "Expansion20261016/Authored/primary5-postcards-reading-TF-v0.1.md",
+    "sha256": "028be28cc6337475fd6842827211333fc9762b3ab5f7dff04b15ec18ff236ede"
+  },
+  "previous_author_check": {
+    "path": "Expansion20261016/Authored/primary5-postcards-reading-TF-author-check-v0.1.json",
+    "sha256": "4fbe785d40d0783716e2a92d40a0ce28699476daeeffe7b1c9aaea66b9e8f732"
+  }
+}

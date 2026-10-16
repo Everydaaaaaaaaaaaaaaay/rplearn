@@ -1,0 +1,106 @@
+{
+  "version": "0.1",
+  "id": "grade11-engineering-studio-table",
+  "grade": 11,
+  "questions": 3,
+  "candidate_sha256": "fe565da2133fcafec66933429609a846a734e6c51286ddf0d1c65b842aba9883",
+  "canonical_response_block_sha256": "509fae664f7bed2f32972e029ac9a6ac2f8ad4ad756b2bab95d4d1908c27cedd",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which applicant meets all the stated attendance and permission requirements?",
+      "options": [
+        [
+          "A",
+          "A Year 11 student with guardian permission who can attend every listed session."
+        ],
+        [
+          "B",
+          "A Year 10 student with parent permission who must miss the final feedback workshop."
+        ],
+        [
+          "C",
+          "A Year 12 student with parent permission who can attend every listed session."
+        ],
+        [
+          "D",
+          "A Year 11 student without guardian permission who has previous design experience."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A同时满足年级、许可、全勤；B缺最终必修、C年级超界、D缺许可，经验不能替代许可。没有从未说明的条件默认满足。"
+    },
+    {
+      "number": 2,
+      "stem": "How many compulsory hours must a participant attend?",
+      "options": [
+        [
+          "A",
+          "28."
+        ],
+        [
+          "B",
+          "31."
+        ],
+        [
+          "C",
+          "34."
+        ],
+        [
+          "D",
+          "40."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "28核心+两次各3小时=34，表注明确另加；A漏两次、B漏一次、D无文本依据。"
+    },
+    {
+      "number": 3,
+      "stem": "What does the programme explicitly offer?",
+      "options": [
+        [
+          "A",
+          "Installation of each model as a real public structure."
+        ],
+        [
+          "B",
+          "Feedback from professional designers and a chance to revise a model."
+        ],
+        [
+          "C",
+          "A professional design qualification after completion."
+        ],
+        [
+          "D",
+          "Guaranteed admission to another technical course."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "正文承诺专业反馈及首轮后修订；A明确不安装真实结构，C/D明确不提供或保证。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.2.json",
+    "sha256": "073e0eceea2de6f2fcc6005bd60b61a4446bba17fe31d06739133c8141f48554"
+  },
+  "source_group_id": "g11.shenzhen2026.programmeA",
+  "source_observation": {
+    "source_responses": 3,
+    "options_each": 4,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "The following programme is fictional.\n\n## Riverside Engineering Studio\n\nRiverside Technical Centre invites students to a summer studio on designing useful objects for public spaces. Teams will examine how a noticeboard, a bicycle stand or a movable screen is used, then develop and test a small model. This is a design programme; no real structures will be installed during the course.\n\n### Who can apply?\n\nApplicants must be in school Year 10 or Year 11 and must have a parent or guardian's permission. They must be available for every compulsory session below. Previous design experience is welcome but is not required. A student who cannot attend either feedback workshop should choose a later programme instead.\n\n### Application\n\nSend an online form and a short statement explaining a public-space problem you would like to explore. Attach a recommendation from an adult who is not a member of your family. The recommendation should describe how you work with other people; it does not need to assess your artistic ability.\n\n### Compulsory attendance\n\n| Activity | Schedule | Hours |\n| --- | --- | --- |\n| Core studio | 6—17 July | 28 hours in total |\n| First feedback workshop | 20 July, 14:00—17:00 | 3 hours |\n| Final feedback workshop | 27 July, 14:00—17:00 | 3 hours |\n\nThe two feedback workshops are additional to the 28 core hours.\n\n### What participants receive\n\nProfessional designers will discuss each team's choices and suggest ways to test a model. Participants can revise their designs after the first feedback workshop and explain those revisions at the final one. Finishing the programme does not provide a professional qualification or guarantee entry to another course.",
+  "author_answer_vector": [
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 244,
+    "stem_English_words": 24,
+    "options_English_words": 80
+  },
+  "full_input_complete": true,
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

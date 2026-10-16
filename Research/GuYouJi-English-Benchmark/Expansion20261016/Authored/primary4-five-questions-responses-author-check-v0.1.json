@@ -1,0 +1,175 @@
+{
+  "version": "0.1",
+  "id": "primary4-five-questions-responses",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "ad30e83ca9baf41928c1942b269f6776e244727e96a23c6d41fcb4f27a644f12",
+  "canonical_response_block_sha256": "500d346e171c1cfff5657edb802cf13d2dab7b9af5301cfcfa4a60841a4f1300",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where is the ball?",
+      "options": [
+        [
+          "A",
+          "It's under the chair."
+        ],
+        [
+          "B",
+          "Three."
+        ],
+        [
+          "C",
+          "It's Lily's."
+        ],
+        [
+          "D",
+          "Yes, I can."
+        ],
+        [
+          "E",
+          "Some noodles, please."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A答地点；其余是数量/所属/能力/点餐，不回答Where。"
+    },
+    {
+      "number": 2,
+      "stem": "How many bags can you see?",
+      "options": [
+        [
+          "A",
+          "It's under the chair."
+        ],
+        [
+          "B",
+          "Three."
+        ],
+        [
+          "C",
+          "It's Lily's."
+        ],
+        [
+          "D",
+          "Yes, I can."
+        ],
+        [
+          "E",
+          "Some noodles, please."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B答数量three；其余不回答How many。"
+    },
+    {
+      "number": 3,
+      "stem": "Whose cap is this?",
+      "options": [
+        [
+          "A",
+          "It's under the chair."
+        ],
+        [
+          "B",
+          "Three."
+        ],
+        [
+          "C",
+          "It's Lily's."
+        ],
+        [
+          "D",
+          "Yes, I can."
+        ],
+        [
+          "E",
+          "Some noodles, please."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C答所属Lily；地点或数量等都不回答Whose。"
+    },
+    {
+      "number": 4,
+      "stem": "Can you swim?",
+      "options": [
+        [
+          "A",
+          "It's under the chair."
+        ],
+        [
+          "B",
+          "Three."
+        ],
+        [
+          "C",
+          "It's Lily's."
+        ],
+        [
+          "D",
+          "Yes, I can."
+        ],
+        [
+          "E",
+          "Some noodles, please."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D回答can能力；其余不回答能否游泳。"
+    },
+    {
+      "number": 5,
+      "stem": "What would you like?",
+      "options": [
+        [
+          "A",
+          "It's under the chair."
+        ],
+        [
+          "B",
+          "Three."
+        ],
+        [
+          "C",
+          "It's Lily's."
+        ],
+        [
+          "D",
+          "Yes, I can."
+        ],
+        [
+          "E",
+          "Some noodles, please."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E是点餐请求；其余没有说明想要什么。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p4.repost.qa",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 5,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "共享答句：\n\nA. It's under the chair.\nB. Three.\nC. It's Lily's.\nD. Yes, I can.\nE. Some noodles, please.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 18,
+    "stem_English_words": 21,
+    "options_English_words_with_repeated_bank": 65
+  }
+}

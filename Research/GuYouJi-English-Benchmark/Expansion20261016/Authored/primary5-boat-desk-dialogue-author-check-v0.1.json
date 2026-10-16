@@ -1,0 +1,195 @@
+{
+  "version": "0.1",
+  "id": "primary5-boat-desk-dialogue",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "0e68a60cd3c0c37008c1796500756f009325c07f0b3e71f7a4fffa3f3b287f1e",
+  "canonical_response_block_sha256": "3db8f57751a414de8ecf2218ff4a037636f853e371c07bd72149ae17c3bd0fc2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "The trip takes twenty minutes."
+        ],
+        [
+          "D",
+          "How many tickets would you like?"
+        ],
+        [
+          "E",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "F",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D询问人数，后答Two adult tickets；B问时间，A问等候位置，其他不承接人数。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "The trip takes twenty minutes."
+        ],
+        [
+          "D",
+          "How many tickets would you like?"
+        ],
+        [
+          "E",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "F",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B问出发时间，后答three；D人数、A位置及C时长均不接此答。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "The trip takes twenty minutes."
+        ],
+        [
+          "D",
+          "How many tickets would you like?"
+        ],
+        [
+          "E",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "F",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F对三点无票提出两点半，后句明确接受half past two；C只给时长，其余不解释改时。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "The trip takes twenty minutes."
+        ],
+        [
+          "D",
+          "How many tickets would you like?"
+        ],
+        [
+          "E",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "F",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A答等待位置blue flag；其余不提供地点。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "The trip takes twenty minutes."
+        ],
+        [
+          "D",
+          "How many tickets would you like?"
+        ],
+        [
+          "E",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "F",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E说明不能带动物，后答把狗留家；其余不回应携犬请求。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p5.sim.dialogue",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 6,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "Mara: Hello. I would like some tickets for the boat trip.\n\nHelper: (1) ____\n\nMara: Two adult tickets, please.\n\nHelper: (2) ____\n\nMara: At three o'clock, if possible.\n\nHelper: (3) ____\n\nMara: Half past two is fine. Where should we wait?\n\nHelper: (4) ____\n\nMara: Can we bring our dog?\n\nHelper: (5) ____\n\nMara: I see. We will leave him at home with Grandma. Thank you.\n\n共享句子：\n\nA. Please wait beside the blue flag.\nB. What time would you like to leave?\nC. The trip takes twenty minutes.\nD. How many tickets would you like?\nE. Sorry, animals are not allowed on the boat.\nF. That trip is full, but there are places at half past two.",
+  "author_answer_vector": [
+    "D",
+    "B",
+    "F",
+    "A",
+    "E"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 106,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 220
+  }
+}

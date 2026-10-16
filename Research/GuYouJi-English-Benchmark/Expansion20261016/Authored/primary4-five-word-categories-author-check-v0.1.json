@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "primary4-five-word-categories",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "e7b903748a19bdae16b60cf09be5e767ffb7abee408c3b679d9f5c528f70312b",
+  "canonical_response_block_sha256": "30819a7004c21a271f2a82cd3281a56b998e126d90152179bdfdffd2277ed21e",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "动物",
+      "options": [
+        [
+          "A",
+          "tiger"
+        ],
+        [
+          "B",
+          "ruler"
+        ],
+        [
+          "C",
+          "rabbit"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "tiger/rabbit是动物；ruler是文具，只有B不属于动物。"
+    },
+    {
+      "number": 2,
+      "stem": "颜色",
+      "options": [
+        [
+          "A",
+          "green"
+        ],
+        [
+          "B",
+          "purple"
+        ],
+        [
+          "C",
+          "table"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "green/purple是颜色，table是家具。"
+    },
+    {
+      "number": 3,
+      "stem": "食物",
+      "options": [
+        [
+          "A",
+          "bread"
+        ],
+        [
+          "B",
+          "coat"
+        ],
+        [
+          "C",
+          "rice"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "bread/rice是食物，coat是衣物。"
+    },
+    {
+      "number": 4,
+      "stem": "身体部位",
+      "options": [
+        [
+          "A",
+          "hand"
+        ],
+        [
+          "B",
+          "nose"
+        ],
+        [
+          "C",
+          "chair"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "hand/nose为身体部位，chair为家具。"
+    },
+    {
+      "number": 5,
+      "stem": "交通工具",
+      "options": [
+        [
+          "A",
+          "bus"
+        ],
+        [
+          "B",
+          "train"
+        ],
+        [
+          "C",
+          "banana"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "bus/train为交通工具，banana为水果。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p4.repost.odd",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 3,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "B",
+    "C",
+    "C"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 15
+  }
+}

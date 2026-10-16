@@ -1,0 +1,98 @@
+{
+  "version": "0.1",
+  "id": "primary6-four-marked-sounds",
+  "grade": "primary6",
+  "questions": 4,
+  "candidate_sha256": "6b10c13358ac5e95157999db895a56db5220f0fd44bc1380b0a8c4bd1267e216",
+  "canonical_response_block_sha256": "02cafc3cf0cd07fca7df87386a430bc3d535ef00709a37159435adc1c64d504b",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "sh[i]p / m[i]lk",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "两i均/ɪ/；比较的是给定字母部分。"
+    },
+    {
+      "number": 2,
+      "stem": "c[a]ke / n[a]me",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "两a均/eɪ/。"
+    },
+    {
+      "number": 3,
+      "stem": "b[oo]k / m[oo]n",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "book的oo为/ʊ/，moon的oo为/uː/。"
+    },
+    {
+      "number": 4,
+      "stem": "b[ea]d / h[ea]d",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "bead的ea为/iː/，head的ea为/e/。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p6.minzhi.sound",
+  "source_observation": {
+    "source_responses": 4,
+    "options_each": 2,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "T",
+    "T",
+    "F",
+    "F"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 24,
+    "options_English_words_with_repeated_bank": 8
+  }
+}

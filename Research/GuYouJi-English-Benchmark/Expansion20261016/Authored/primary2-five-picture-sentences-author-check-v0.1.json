@@ -1,0 +1,139 @@
+{
+  "version": "0.1",
+  "id": "primary2-five-picture-sentences",
+  "grade": "primary2",
+  "questions": 5,
+  "candidate_sha256": "d92898eb87841d15827c071d9abe4428c44369e586de26edf6a954a190d9a975",
+  "canonical_response_block_sha256": "53d0d21bd5655c8ab2211a36b74415986f111721a0b41084e4cb16d9ca4e30ca",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1图",
+      "options": [
+        [
+          "A",
+          "It is a green star."
+        ],
+        [
+          "B",
+          "It is a red star."
+        ],
+        [
+          "C",
+          "It is a green ball."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "图形是绿色五角星，A同时符合颜色与形状；B颜色错，C物体错。"
+    },
+    {
+      "number": 2,
+      "stem": "第2图",
+      "options": [
+        [
+          "A",
+          "I can see one blue ball."
+        ],
+        [
+          "B",
+          "I can see two blue balls."
+        ],
+        [
+          "C",
+          "I can see two red balls."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "图有两个蓝球；A数量错、C颜色错。"
+    },
+    {
+      "number": 3,
+      "stem": "第3图",
+      "options": [
+        [
+          "A",
+          "This is a yellow pencil."
+        ],
+        [
+          "B",
+          "This is a blue cup."
+        ],
+        [
+          "C",
+          "This is a red book."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "图为红书；A物体及颜色错，B也非图示。"
+    },
+    {
+      "number": 4,
+      "stem": "第4图",
+      "options": [
+        [
+          "A",
+          "The cup is under the table."
+        ],
+        [
+          "B",
+          "The cup is on the table."
+        ],
+        [
+          "C",
+          "The book is on the table."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "杯底在桌面上，B正确；A位置相反，C把杯子说成书。"
+    },
+    {
+      "number": 5,
+      "stem": "第5图",
+      "options": [
+        [
+          "A",
+          "There are three yellow pencils."
+        ],
+        [
+          "B",
+          "There are two yellow pencils."
+        ],
+        [
+          "C",
+          "There are three red pencils."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "三支黄铅笔；B数量错，C颜色错。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p2.2021shanghai.picture_sentences",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 3,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "![五幅编号物品图](primary2-five-picture-prompts.svg)",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "B",
+    "A"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 5,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 81
+  },
+  "figure_asset": {
+    "path": "Expansion20261016/Authored/primary2-five-picture-prompts.svg",
+    "sha256": "3ff5cda4179057a8b7f8eb8cb4b851132616e44a689d54178c564aac0ea46d66"
+  }
+}

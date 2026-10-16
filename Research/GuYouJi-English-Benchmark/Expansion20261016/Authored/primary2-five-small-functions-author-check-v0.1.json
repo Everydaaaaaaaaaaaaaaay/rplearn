@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "primary2-five-small-functions",
+  "grade": "primary2",
+  "questions": 5,
+  "candidate_sha256": "ac7931123abe4170e0a4d0ed31fc19a1942de98affc74e8867cb34c8cd498253",
+  "canonical_response_block_sha256": "9c2f4e2897cc805672c526059f3df6272c1c2c1a8f564f90d5ce4f224bc5eec2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "— What are those? — ____",
+      "options": [
+        [
+          "A",
+          "It is a kite."
+        ],
+        [
+          "B",
+          "They are kites."
+        ],
+        [
+          "C",
+          "I am fine."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "those问复数物品，用They are；A单数，C回答状态。"
+    },
+    {
+      "number": 2,
+      "stem": "— What colour is your bag? — ____",
+      "options": [
+        [
+          "A",
+          "It is blue."
+        ],
+        [
+          "B",
+          "It is a bag."
+        ],
+        [
+          "C",
+          "They are blue."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "问单数bag的颜色；A同时符合，B不答颜色，C主语数不符。"
+    },
+    {
+      "number": 3,
+      "stem": "— Do you like apples? — No. ____",
+      "options": [
+        [
+          "A",
+          "I like apples."
+        ],
+        [
+          "B",
+          "I like bananas."
+        ],
+        [
+          "C",
+          "Yes, I do."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "No后改说喜欢香蕉与拒绝苹果相容；A/C与明确否定相冲突。"
+    },
+    {
+      "number": 4,
+      "stem": "— What can the bird do? — ____",
+      "options": [
+        [
+          "A",
+          "It can fly."
+        ],
+        [
+          "B",
+          "It is yellow."
+        ],
+        [
+          "C",
+          "It is a bird."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "can do问能力，A回答飞；B颜色、C物类不回答问题。"
+    },
+    {
+      "number": 5,
+      "stem": "— Would you like some water? — ____",
+      "options": [
+        [
+          "A",
+          "I can jump."
+        ],
+        [
+          "B",
+          "They are cups."
+        ],
+        [
+          "C",
+          "Yes, please."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C接受饮水邀请；A能力、B物品识别均不回答邀请。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p2.2021shanghai.function",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 3,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "B",
+    "A",
+    "C"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 23,
+    "options_English_words_with_repeated_bank": 47
+  }
+}

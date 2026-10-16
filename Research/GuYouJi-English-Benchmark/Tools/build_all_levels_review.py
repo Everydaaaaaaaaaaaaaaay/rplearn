@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import re
+import tempfile
 from pathlib import Path
 from build_quality_review import build, full_markdown_candidate
 from grade_mode_evidence import BASE, REPO, load_ref
@@ -67,7 +68,7 @@ def inherited(meta, acquisitions, family):
             'requiredPassageImages': [], 'author_review_not_independent': True}
 
 
-def main(output):
+def build_current(output):
     build(BASE/'FirstRelease/timeboxed-review-matrix-v0.9.json', output)
     page = (output/'index.html').read_text()
     data = json.loads(re.search(r'<script id="quality-data" type="application/json">(.*?)</script>', page, re.S)[1])
@@ -110,13 +111,13 @@ def main(output):
     data['selected_source_batch'] = source_batch_ref
     for meta in additions['candidates']:
         group = full_markdown_candidate(meta)
-        group['instruction'] = {'letter_completion':'选择正确的字母组合。', 'shared_bank':'从共享词或短语中选择合适的一项。',
+        group['instruction'] = meta.get('instruction') or {'letter_completion':'选择正确的字母组合。', 'shared_bank':'从共享词或短语中选择合适的一项。',
                                 'number_word_completion':'看单词，填对应的阿拉伯数字。',
                                 'word_picture_choice':'看单词，从同号行的三个图片中选择对应的一项。',
                                 'dialogue_matching':'为每个问句选择合适的答句。',
                                 'sentence_choice':'选择每题最合适的一项；两个空的题目仍只选择一次。',
                                 'reading_choice':'阅读短文，选择每题最合适的一项。',
-                                'choice_cloze':'阅读短文，为第1—8空选择最合适的一项。例0已答，不计作答点。'}[meta['family']]
+                                'choice_cloze':'阅读短文，为第1—8空选择最合适的一项。例0已答，不计作答点。'}.get(meta['family'],'按完整题面要求选择最合适的一项。')
         if meta['grade']=='advanced':
             group['sourceFormNotice']='高级档候选模式：参考已核C1样卷完整形式，尚未建立产品高级档与C1等值或目标人群难度标定。'
         if meta['grade']=='primary1':
@@ -130,10 +131,15 @@ def main(output):
             group['instruction']='从15个固定词项中为完整10空选择字母；每项最多一次，词形不变。'
             cet_label='四级' if meta['grade']=='undergraduate' else '六级'
             group['sourceFormNotice']='形式复用已核官方2016'+cet_label+'样卷，一篇10空/15词；不是新增来源或年度真卷，也未建立产品难度/CEFR标定。'
+        if meta.get('source_form_notice'):
+            group['sourceFormNotice']=meta['source_form_notice']
+        if meta.get('use_select_controls'):
+            group['fixedSharedBank']=True
         added.append((group, meta['family']))
     cells = {(c['grade'], c['family']): c for c in data['cells']}
     labels = {c['family']: c['label'] for c in data['cells']}
     labels.update(letter_completion='字母组合补全', table_reading_choice='表格信息单选', number_word_completion='数字词转数字', word_picture_choice='单词选图片')
+    labels.update({m['family']:m['family_label'] for m in additions['candidates'] if m.get('family_label')})
     for group, family in added:
         key = (group['grade'], family)
         if key in cells and cells[key].get('groupId'):
@@ -164,7 +170,8 @@ def main(output):
     (output/'index.html').write_text(page)
     report = {'version': '0.1', 'level_count': len(data['grades']), 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
               'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
-              'new_authored_groups': additions['new_authored_groups'], 'new_authored_responses': additions['new_response_positions'],
+              'new_authored_groups': additions.get('current_run_new_authored_groups',additions['new_authored_groups']),
+              'new_authored_responses': additions.get('current_run_new_response_positions',additions['new_response_positions']),
               'historical_nonmiddle_authors_newly_displayed': inherited_count,
               'latest_selected_source_groups': source_batch.get('new_selected_groups', 0),
               'latest_selected_source_parent_identities': source_batch.get('new_parent_identities', 0),
@@ -174,6 +181,19 @@ def main(output):
               'independent_student_commercial_production_admission': False, 'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
     (output/'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
     print(json.dumps(report))
+
+
+def main(output):
+    output.mkdir(parents=True,exist_ok=True)
+    # Validate a temporary render before replacing the user's current preview.
+    # This is a disposable working page, never a research-tree snapshot.
+    with tempfile.TemporaryDirectory(prefix='.review-stage-',dir=output.parent) as scratch:
+        staging=Path(scratch)
+        build_current(staging)
+        from check_all_levels_review import check
+        check(staging/'index.html')
+        for name in ['index.html','build-report-v0.1.json']:
+            (staging/name).replace(output/name)
 
 
 if __name__ == '__main__':

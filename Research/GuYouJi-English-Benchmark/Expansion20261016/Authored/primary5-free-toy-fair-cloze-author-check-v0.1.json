@@ -1,0 +1,198 @@
+{
+  "version": "0.1",
+  "id": "primary5-free-toy-fair-cloze",
+  "grade": "primary5",
+  "questions": 8,
+  "candidate_sha256": "fde78583b70b5829b33f93158c330aac353ad5258fa6f9be6b078fb46be6db01",
+  "canonical_response_block_sha256": "ee4f23e634124d015ca4dbfd86145c29947a2c75c899ce12ec711a6f6200acfe",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "but"
+        ],
+        [
+          "B",
+          "or"
+        ],
+        [
+          "C",
+          "because"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "旧归属与不再玩形成转折，but；or不表此转折，because会把所属说成不玩的结果。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "listened"
+        ],
+        [
+          "B",
+          "looked"
+        ],
+        [
+          "C",
+          "slept"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "at a blue car支持looked at；slept at不能表达关注车，listen at缺声音对象且搭配不合。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "drawing"
+        ],
+        [
+          "B",
+          "running"
+        ],
+        [
+          "C",
+          "paying"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Free与不需要付款对应paying；其他动作不是价格问题。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "do"
+        ],
+        [
+          "B",
+          "break"
+        ],
+        [
+          "C",
+          "forget"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "do something useful为做有用的事；break/forget不表达回报帮助。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "careless"
+        ],
+        [
+          "B",
+          "kind"
+        ],
+        [
+          "C",
+          "angry"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "主动帮忙的offer是kind；其余负面形容与情节冲突。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "heavily"
+        ],
+        [
+          "B",
+          "quietly"
+        ],
+        [
+          "C",
+          "easily"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "because light解释搬得轻松easily；heavily反向，quietly未由重量关系支持。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "made"
+        ],
+        [
+          "B",
+          "closed"
+        ],
+        [
+          "C",
+          "worn"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "make a new friend为交朋友；close/wear不能以friend作此结果宾语。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "broken"
+        ],
+        [
+          "B",
+          "next"
+        ],
+        [
+          "C",
+          "last"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "决定保留供未来另次fair，对应next；last过去、broken破损均不合未来使用。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p5.sim.cloze",
+  "source_observation": {
+    "source_responses": 8,
+    "options_each": 3,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "Last Saturday, Nora took a box of toy cars to the school fair. The cars had belonged to her brother, (1) ____ he no longer played with them. Nora wanted to give them to younger children. Before the fair, she put a small price card on the box: “Free.”\n\nAt first, nobody took a car. “Perhaps they cannot see your card,” her friend said. Nora moved the card to the front. A little boy stopped and (2) ____ at a blue car. “How much is it?” he asked. Nora showed him the sign and explained that he could take it without (3) ____.\n\nThe boy smiled, but he did not leave at once. He wanted to (4) ____ something useful in return. He noticed that the box was nearly empty and offered to carry it to Nora's classroom later. Nora thanked him for his (5) ____ offer.\n\nBy noon, all the cars had new owners. Nora and the boy carried the box (6) ____ because it was light. They put it on a shelf for another fair. Nora had expected to lose a few old toys that day. Instead, she had (7) ____ a new friend. She decided to keep the same clear sign for the (8) ____ fair.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "A",
+    "B",
+    "C",
+    "A",
+    "B"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 193,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 24
+  }
+}

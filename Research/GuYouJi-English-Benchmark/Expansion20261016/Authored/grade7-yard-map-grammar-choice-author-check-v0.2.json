@@ -1,0 +1,285 @@
+{
+  "version": "0.2",
+  "id": "grade7-yard-map-grammar-choice",
+  "grade": 7,
+  "questions": 10,
+  "candidate_sha256": "55f32ef8dc959ba5e8366b430e60236fb76fce9053ae9cc74fa185fbf409713e",
+  "canonical_response_block_sha256": "6ab70d389ce3b706f48d9f06a067eb1aa60a833e421416b12f7300d90dd94cf6",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "a"
+        ],
+        [
+          "B",
+          "an"
+        ],
+        [
+          "C",
+          "the"
+        ],
+        [
+          "D",
+          "/"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "large sheet首次引入单数可数且large辅音起首，用a；an音不合、the无特指、零冠词不合单数。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "pencil"
+        ],
+        [
+          "B",
+          "pencils"
+        ],
+        [
+          "C",
+          "pencilling"
+        ],
+        [
+          "D",
+          "pencilled"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "two后可数名词复数pencils；其余不是该复数物品。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "measure"
+        ],
+        [
+          "B",
+          "measures"
+        ],
+        [
+          "C",
+          "measured"
+        ],
+        [
+          "D",
+          "will measure"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Last Tuesday固定过去事件，需要measured；其他为当前或未来。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "as"
+        ],
+        [
+          "B",
+          "from"
+        ],
+        [
+          "C",
+          "than"
+        ],
+        [
+          "D",
+          "for"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "longer后比较连接than；as不是此比较级结构，其余无比较功能。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "but"
+        ],
+        [
+          "B",
+          "so"
+        ],
+        [
+          "C",
+          "or"
+        ],
+        [
+          "D",
+          "although"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "短尺不够所以改长线为结果so；but转折、or选择、although让步不合句间因果。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "we"
+        ],
+        [
+          "B",
+          "our"
+        ],
+        [
+          "C",
+          "us"
+        ],
+        [
+          "D",
+          "ours"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "回答notes所属且后无名词，用ours；our需名词，we/us人称非所属。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "make"
+        ],
+        [
+          "B",
+          "to make"
+        ],
+        [
+          "C",
+          "makes"
+        ],
+        [
+          "D",
+          "made"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "showed us how to make为疑问词不定式；其余在此不能形成完整从句。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "short"
+        ],
+        [
+          "B",
+          "shorter"
+        ],
+        [
+          "C",
+          "shortest"
+        ],
+        [
+          "D",
+          "shortly"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "the与后文shorter than all说明最高级shortest；shorter比较两个，shortly副词。"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [
+        [
+          "A",
+          "sharing"
+        ],
+        [
+          "B",
+          "shares"
+        ],
+        [
+          "C",
+          "been shared"
+        ],
+        [
+          "D",
+          "will share"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "we后需要限定谓语；D will share完整且与Tomorrow相合。sharing缺助动词，shares与we人称数不符，been shared也缺限定助动词。"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [
+        [
+          "A",
+          "corrects"
+        ],
+        [
+          "B",
+          "correcting"
+        ],
+        [
+          "C",
+          "will correct"
+        ],
+        [
+          "D",
+          "to correcting"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "条件发生后主句we will correct完整；corrects与we数不合，correcting缺助动词，to correcting非限定谓语。没有靠未来语境排除可能的习惯性原形。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.4.json",
+    "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+  },
+  "source_group_id": "g7.liwan2025.grammar_choice",
+  "source_observation": {
+    "source_responses": 10,
+    "options_each": 4,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "Last Tuesday, our class made a map of the school yard. Ms Reed gave us (1) ____ large sheet of paper and asked us to mark the paths. We worked in pairs. My partner, June, carried a ruler, and I brought two (2) ____.\n\nWe started beside the gate. June (3) ____ the distance to the first tree while I wrote it down. It was longer (4) ____ we had expected. We could not measure it with one short ruler, (5) ____ we used a long string instead.\n\nBefore we drew the lines, Ms Reed asked, “Whose notes are these?” “They are (6) ____,” we answered. She reminded us to put both our names on the page. Then she showed us how (7) ____ the lengths smaller for the map.\n\nBy the end of the lesson, every pair had a map. June pointed to ours and said, “Look! The path by the wall is the (8) ____ one.” It was shorter than all the other paths we had measured. Tomorrow we (9) ____ the maps with another class. If we find a mistake, we (10) ____ it before putting our work on the wall.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "C",
+    "B",
+    "D",
+    "B",
+    "C",
+    "D",
+    "C"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 174,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 45
+  },
+  "previous_author_check": {
+    "path": "Expansion20261016/Authored/grade7-yard-map-grammar-choice-author-check-v0.1.json",
+    "sha256": "87cc2732cd53a4f1a2fdb003d765d10e7a4fdcd853349cb37a6b2c0981ed2404"
+  },
+  "taxonomy_note": "Normalize duplicate family alias to existing grammar_choice_cloze;studentpassage/questions/options/keys unchanged;not new mode or new author"
+}

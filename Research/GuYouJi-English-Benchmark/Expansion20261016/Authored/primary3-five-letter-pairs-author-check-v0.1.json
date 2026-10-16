@@ -1,0 +1,115 @@
+{
+  "version": "0.1",
+  "id": "primary3-five-letter-pairs",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "899ccc7cc42519bbc46628258caa186cea80266f93629842543f97dd5db41f1f",
+  "canonical_response_block_sha256": "51332ba5590055c1d701b739958934a53253de0b70b52b87e64d775023a3a666",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "B / b",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "B与b为同一字母大小写。"
+    },
+    {
+      "number": 2,
+      "stem": "D / p",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "D的小写d，不是p；P才对应p。"
+    },
+    {
+      "number": 3,
+      "stem": "R / r",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "R与r为同一字母大小写。"
+    },
+    {
+      "number": 4,
+      "stem": "M / w",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "M的小写m，不是w；W才对应w。"
+    },
+    {
+      "number": 5,
+      "stem": "G / g",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "G与g为同一字母大小写。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p3.shangyu.lettercase",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 2,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "T",
+    "F",
+    "T"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 10,
+    "options_English_words_with_repeated_bank": 10
+  }
+}

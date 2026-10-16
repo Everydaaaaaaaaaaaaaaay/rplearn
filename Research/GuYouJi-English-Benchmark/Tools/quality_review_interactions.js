@@ -5,6 +5,7 @@ const el=id=>document.getElementById(id),escapeText=v=>String(v).replace(/[&<>"'
 let activeGrade=7,activeFamily='reading_choice';const drafts={};
 const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'暂停·需语义判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?'可预览':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
 function select(grade,family){activeGrade=grade;activeFamily=family;if(!reviewData.cells.find(c=>c.grade===grade&&c.family===family).observed)el('show-unknown').checked=true;render();}
+function selectGrade(grade){const current=reviewData.cells.find(c=>c.grade===grade&&c.family===activeFamily),available=reviewData.cells.find(c=>c.grade===grade&&c.groupId);select(grade,current?.groupId?activeFamily:available?.family||activeFamily);}
 function makeButton(label,pressed,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(pressed));b.onclick=fn;return b;}
 function inputFor(g,q){
  const saved=drafts[g.id]||{};
@@ -16,7 +17,7 @@ function inputFor(g,q){
 function mediaReady(g){const images=[...el('student').querySelectorAll('img')],expected=[...(g.requiredPassageImages||[]),...g.questions.flatMap(q=>q.optionImages?Object.values(q.optionImages):[])],count=(g.requiredImageAssets?.length||0)+(g.requiredPassageImages?.length||0);return expected.length===count&&images.length===count&&images.every((img,i)=>img.complete&&img.naturalWidth>0&&img.getAttribute('src')===expected[i].src&&img.getAttribute('alt')===expected[i].alt);}
 function render(){
  const cell=reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily),g=reviewData.groups[cell.groupId];
- el('grades').innerHTML='';reviewData.grades.forEach(grade=>el('grades').append(makeButton(labels[grade],grade===activeGrade,()=>select(grade,activeFamily))));
+ el('grades').innerHTML='';reviewData.grades.forEach(grade=>el('grades').append(makeButton(labels[grade],grade===activeGrade,()=>selectGrade(grade))));
  el('families').innerHTML='';reviewData.cells.filter(c=>c.grade===activeGrade&&(c.observed||el('show-unknown').checked)).forEach(c=>el('families').append(makeButton(c.label+' · '+titleState(c),c.family===activeFamily,()=>select(activeGrade,c.family))));
  const prototypeNotice=cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||'');
  el('task-title').textContent=labels[activeGrade]+' · '+cell.label;el('teacher').hidden=true;el('teacher-content').innerHTML='';el('notice').textContent='';

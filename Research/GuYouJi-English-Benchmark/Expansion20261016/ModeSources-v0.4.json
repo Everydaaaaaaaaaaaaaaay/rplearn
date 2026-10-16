@@ -1,0 +1,638 @@
+{
+  "version": "0.4",
+  "scope": "concrete_pattern_bindings_not_national_levels",
+  "modes": [
+    {
+      "id": "p1.2016lower.classification",
+      "level": "primary1",
+      "family": "word_classification",
+      "responses": 11,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p1-2016lower.html",
+          "sha256": "ec5ae2e4c11242ff51178240040cf99c783e405475d66d230723daaee7a2b6ab"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p1-category-bank.jpg",
+          "sha256": "0d09bebe45754bfc3f6d77b063bf8fa5ee28e41689026db9cd7ee3640c3427f3"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p1-source-key.png",
+          "sha256": "e5e29f6d93f960ad6b9a669f956e81fa2cf8c974dd0a39f5eaad2cd56312280f"
+        }
+      ],
+      "source_quality_note": "2016 spring grade1 printed label;original school unknown;Food/Drink/Clothes11items;eachwordonecategory",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "source_reuse": "category_reused",
+      "input_complete": true
+    },
+    {
+      "id": "p1.2016lower.picturematching",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "responses": 4,
+      "options_each": 4,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p1-2016lower.html",
+          "sha256": "ec5ae2e4c11242ff51178240040cf99c783e405475d66d230723daaee7a2b6ab"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p1-word-picture.png",
+          "sha256": "ac1b5fc06e7426d558827be3bd67588f37de3f5178375a46ba8716c348c3996e"
+        }
+      ],
+      "source_quality_note": "Fourprintedwords/fourpictures;sourcefirstword is in but corresponding picture is bag,not repaired or sourcegold;structure-onlyreference;newauthorlexemesindependentlyaligned",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "source_reuse": "not_explicit",
+      "input_complete": true,
+      "key_quality": "held_first_pair_mismatch"
+    },
+    {
+      "id": "p2.2021shanghai.picture_sentences",
+      "level": "primary2",
+      "family": "picture_sentence_choice",
+      "responses": 5,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p2-shanghai2021.html",
+          "sha256": "4efdf3088efe2bf0ab9e295376f639c8d3517859e2635ca403edffcc27fa961d"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p2-five-picture-sentences.png",
+          "sha256": "6d27cbd0b6cacc7dfeb24e8ac5ed7a846572771e00e9a6acb58600108026a3af"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p2-five-picture-gaps.png",
+          "sha256": "6f4544ab287aef35f6e879dabd6d945432ae250f9fcd44617ba0e7dffa123290"
+        }
+      ],
+      "source_quality_note": "PrintedsectionII5items,3textoptionsperpicture;twoimagefilesjointlycontain5items2-6;secondimageisnotsectionIII",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p2.2021shanghai.function",
+      "level": "primary2",
+      "family": "function_choice",
+      "responses": 5,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p2-shanghai2021.html",
+          "sha256": "4efdf3088efe2bf0ab9e295376f639c8d3517859e2635ca403edffcc27fa961d"
+        }
+      ],
+      "source_quality_note": "PrintedsectionIVitems12-16;olderrepostschoolunknown",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p3.shangyu.lettercase",
+      "level": "primary3",
+      "family": "letter_case_tf",
+      "responses": 5,
+      "options_each": 2,
+      "references": [
+        {
+          "path": "Primary/Grade3/selected-source-groups-v0.1.json",
+          "sha256": "bf2e842dd140644e6169197250ee081754417e5dd0b42aa57b4cbd92bec63fe6"
+        }
+      ],
+      "source_quality_note": "Existingpairedsource;fivecasepairsTF",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary3.upper.shangyu2023-24.lettercase",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p4.repost.odd",
+      "level": "primary4",
+      "family": "word_category_choice",
+      "responses": 5,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+          "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+        }
+      ],
+      "source_quality_note": "Existingrepost;notauthenticatedschool",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary4.xdf.upper.odd",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p4.repost.functions",
+      "level": "primary4",
+      "family": "function_matching",
+      "responses": 6,
+      "options_each": 6,
+      "references": [
+        {
+          "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+          "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+        }
+      ],
+      "source_quality_note": "SixChinesecontexts/sixsharedresponses;reuseunspecified",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary4.xdf.upper.chinese_context",
+      "source_reuse": "not_explicit"
+    },
+    {
+      "id": "p4.repost.qa",
+      "level": "primary4",
+      "family": "dialogue_matching",
+      "responses": 5,
+      "options_each": 5,
+      "references": [
+        {
+          "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+          "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+        }
+      ],
+      "source_quality_note": "Fivequestions/fivesharedresponses;reuseunspecified",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary4.xdf.lower.qa",
+      "source_reuse": "not_explicit"
+    },
+    {
+      "id": "p5.sim.dialogue",
+      "level": "primary5",
+      "family": "dialogue_matching",
+      "responses": 5,
+      "options_each": 6,
+      "references": [
+        {
+          "path": "Primary/Grade5/selected-simulation-source-groups-v0.1.json",
+          "sha256": "3a90ba17a685f15134d1e27f9a7f15979690fd24ba3fad12dad4e8587e6bc32c"
+        }
+      ],
+      "source_quality_note": "Explicitsimulationsecondaryreference;ordinaryschoolreplicationpending",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary5.yogor2024.dialogue",
+      "source_reuse": "not_explicit"
+    },
+    {
+      "id": "p5.sim.cloze",
+      "level": "primary5",
+      "family": "choice_cloze",
+      "responses": 8,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "Primary/Grade5/selected-simulation-source-groups-v0.1.json",
+          "sha256": "3a90ba17a685f15134d1e27f9a7f15979690fd24ba3fad12dad4e8587e6bc32c"
+        }
+      ],
+      "source_quality_note": "Explicitsimulationsecondaryreference;eightgaps/threeoptionsnotadvanced8x4",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary5.yogor2024.cloze",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p5.sim.tf",
+      "level": "primary5",
+      "family": "reading_tf",
+      "responses": 5,
+      "options_each": 2,
+      "references": [
+        {
+          "path": "Primary/Grade5/selected-simulation-source-groups-v0.1.json",
+          "sha256": "3a90ba17a685f15134d1e27f9a7f15979690fd24ba3fad12dad4e8587e6bc32c"
+        }
+      ],
+      "source_quality_note": "Explicitsimulationsecondaryreference;5TFnotNG",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary5.yogor2024.cat_tf",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p6.minzhi.sound",
+      "level": "primary6",
+      "family": "marked_sound_tf",
+      "responses": 4,
+      "options_each": 2,
+      "references": [
+        {
+          "path": "Primary/Grade6/selected-excerpt-source-groups-v0.1.json",
+          "sha256": "a408a4f6da075e4fb34f85b96a418657db4a1cc59b4cb2005e5b89e61849545e"
+        }
+      ],
+      "source_quality_note": "Markedspansmustbindsourceandnewauthor",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary6.minzhi2016-17.phon",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p6.minzhi.grammar",
+      "level": "primary6",
+      "family": "sentence_choice",
+      "responses": 10,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "Primary/Grade6/selected-excerpt-source-groups-v0.1.json",
+          "sha256": "a408a4f6da075e4fb34f85b96a418657db4a1cc59b4cb2005e5b89e61849545e"
+        }
+      ],
+      "source_quality_note": "10individual3choicenotsix",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary6.minzhi2016-17.grammar",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "p6.minzhi.functions",
+      "level": "primary6",
+      "family": "function_choice",
+      "responses": 5,
+      "options_each": 3,
+      "references": [
+        {
+          "path": "Primary/Grade6/selected-excerpt-source-groups-v0.1.json",
+          "sha256": "a408a4f6da075e4fb34f85b96a418657db4a1cc59b4cb2005e5b89e61849545e"
+        }
+      ],
+      "source_quality_note": "5Chinesecontexts3choices",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "existing_source_anchor": "primary6.minzhi2016-17.contexts",
+      "source_reuse": "independent"
+    },
+    {
+      "id": "g7.liwan2025.grammar_choice",
+      "level": 7,
+      "family": "grammar_choice_cloze",
+      "responses": 10,
+      "options_each": 4,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/g7-liwan2025.html",
+          "sha256": "f4efb235cebce2daf7bf48f85140d07216d72183d070c72fb00575124cef56cf"
+        }
+      ],
+      "source_quality_note": "Title/bodyboth2024-2025LiwanG7upperfinal;singlepapercuttingpassage10gapsitems16-25complete;schooloriginalnotauthenticated",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "passages": 1,
+      "source_reuse": "independent",
+      "taxonomy_previous_alias": "grammar_choice"
+    },
+    {
+      "id": "cet4.2016.longmatching",
+      "level": "undergraduate",
+      "family": "paragraph_matching",
+      "responses": 10,
+      "options_each": 11,
+      "references": [
+        {
+          "path": "CET/selected-official-sample-groups-v0.1.json",
+          "sha256": "38b60677ed02999af4117735e0335be87fd5237d6110eba6548729dcffa84ee8"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/cet2016-official-outline20261014-native-pages.json",
+          "sha256": "8f3893ce25c7436866704b04db824259e3b4f957a03c273fa0c7fa0f973b296e"
+        }
+      ],
+      "source_quality_note": "Newselectedsectionofexistingofficialparent;nativewordsjoinednotusedasexactwordcount;originalkeynotindependentgold",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "passages": 1,
+      "paragraphs": 11,
+      "source_reuse": "explicit_allowed",
+      "source_physical_pages": [
+        155,
+        156,
+        157,
+        158
+      ]
+    },
+    {
+      "id": "cet6.2016.longmatching",
+      "level": "postgraduate",
+      "family": "paragraph_matching",
+      "responses": 10,
+      "options_each": 15,
+      "references": [
+        {
+          "path": "CET/selected-official-sample-groups-v0.1.json",
+          "sha256": "38b60677ed02999af4117735e0335be87fd5237d6110eba6548729dcffa84ee8"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/cet2016-official-outline20261014-native-pages.json",
+          "sha256": "8f3893ce25c7436866704b04db824259e3b4f957a03c273fa0c7fa0f973b296e"
+        }
+      ],
+      "source_quality_note": "Newselectedsectionofexistingofficialparent;nativewordsjoinednotusedasexactwordcount;originalkeynotindependentgold",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "passages": 1,
+      "paragraphs": 15,
+      "source_reuse": "explicit_allowed",
+      "source_physical_pages": [
+        177,
+        178,
+        179,
+        180
+      ]
+    },
+    {
+      "id": "advanced.c1.2022.part6",
+      "level": "advanced",
+      "family": "cross_text_matching",
+      "responses": 4,
+      "options_each": 4,
+      "references": [
+        {
+          "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+          "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/c1-paper1-RUE2022-original20261016.pdf",
+          "sha256": "041d57d2784e54d32f67964a64d8a1bf753bd899f7a4964e99bd0fbbb94ae98b"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/c1-paper1-selected-native20261016-v0.1.json",
+          "sha256": "4074b470201e7c1482d4094cf3f12e93e9e4102909fbd31df3552875dddf8c98"
+        }
+      ],
+      "source_quality_note": "Official2022samplepages10-11ArchitectureofHappiness;4reviews4crossopinionprompts37-40;reuseallowed;2008artsguideisauxiliarynotthissamepaper",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false,
+      "input_complete": true,
+      "passages": 4,
+      "source_reuse": "explicit_allowed",
+      "source_key": [
+        "B",
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "g11.shenzhen2026.programmeA",
+      "level": 11,
+      "family": "table_reading_choice",
+      "responses": 3,
+      "options_each": 4,
+      "passages": 1,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/g11-shenzhen2026.html",
+          "sha256": "197f84f2c212fccae828239c672587cb7a35bab5d0db73d03f759807c58dc71a"
+        }
+      ],
+      "source_reuse": "independent",
+      "input_complete": true,
+      "source_quality_note": "Title claims ShenzhenSecondSenior2025-26lower;studentblockAfullMetmuseuminternship/requirements/application/date-hourtable/benefits+3fourchoices;bodydoesnot independently identify school/term;sourceeligibilityQ1incompleteconditionchoicesnotgold;tabletotal40+2x2=44",
+      "source_answer_not_gold": true,
+      "independent_teacher_student_commercial_production_validated": false
+    },
+    {
+      "id": "p5.fangshan2025.bank",
+      "level": "primary5",
+      "family": "shared_bank",
+      "responses": 5,
+      "options_each": 5,
+      "source_reuse": "not_explicit",
+      "input_complete": true,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/primary5-fangshan2025upper.pdf",
+          "sha256": "b001b81cf2d6d34ef0015871f4f928707358142a61cff2a20d47a2318d5baa0f"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-header-1.png",
+          "sha256": "f3781b33edc37cb7addb21f5e55181980d35c9bbd3273b5a2e55af91fdfc7ce5"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-selected-5.png",
+          "sha256": "c36422a686e27eec5741781c67c34bf99ba11104c52d4bd8d4477566b8444575"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-key-9.png",
+          "sha256": "bdd2713023a24b7740063940817b737aa41f4b82b179d98271e5e6cfeec33467"
+        }
+      ],
+      "source_question_numbers": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "source_published_vector": [
+        "C",
+        "B",
+        "D",
+        "A",
+        "E"
+      ],
+      "source_answer_not_gold": true,
+      "source_quality_note": "ActualpaperheaderFangshan2024-2025firsttermG5confirmed;publicthirdpartycopy,originalinstitutionreleaseunknown;PDF9pages=8student+1key;selectedclosedsectionscomplete;no listening/writing selected",
+      "independent_teacher_student_commercial_production_validated": false
+    },
+    {
+      "id": "p5.fangshan2025.dialogue",
+      "level": "primary5",
+      "family": "dialogue_matching",
+      "responses": 5,
+      "options_each": 5,
+      "source_reuse": "not_explicit",
+      "input_complete": true,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/primary5-fangshan2025upper.pdf",
+          "sha256": "b001b81cf2d6d34ef0015871f4f928707358142a61cff2a20d47a2318d5baa0f"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-header-1.png",
+          "sha256": "f3781b33edc37cb7addb21f5e55181980d35c9bbd3273b5a2e55af91fdfc7ce5"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-selected-5.png",
+          "sha256": "c36422a686e27eec5741781c67c34bf99ba11104c52d4bd8d4477566b8444575"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-selected-6.png",
+          "sha256": "f1f649d94890130f1e34392760784dd8bb3b07a83af03c94a6f4b0244d7e38a7"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-key-9.png",
+          "sha256": "bdd2713023a24b7740063940817b737aa41f4b82b179d98271e5e6cfeec33467"
+        }
+      ],
+      "source_question_numbers": [
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "source_published_vector": [
+        "B",
+        "E",
+        "D",
+        "A",
+        "C"
+      ],
+      "source_answer_not_gold": true,
+      "source_quality_note": "ActualpaperheaderFangshan2024-2025firsttermG5confirmed;publicthirdpartycopy,originalinstitutionreleaseunknown;PDF9pages=8student+1key;selectedclosedsectionscomplete;no listening/writing selected",
+      "independent_teacher_student_commercial_production_validated": false
+    },
+    {
+      "id": "p5.fangshan2025.readingTF",
+      "level": "primary5",
+      "family": "reading_tf",
+      "responses": 5,
+      "options_each": 2,
+      "source_reuse": "not_explicit",
+      "input_complete": true,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/primary5-fangshan2025upper.pdf",
+          "sha256": "b001b81cf2d6d34ef0015871f4f928707358142a61cff2a20d47a2318d5baa0f"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-header-1.png",
+          "sha256": "f3781b33edc37cb7addb21f5e55181980d35c9bbd3273b5a2e55af91fdfc7ce5"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-selected-6.png",
+          "sha256": "f1f649d94890130f1e34392760784dd8bb3b07a83af03c94a6f4b0244d7e38a7"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-key-9.png",
+          "sha256": "bdd2713023a24b7740063940817b737aa41f4b82b179d98271e5e6cfeec33467"
+        }
+      ],
+      "source_question_numbers": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "source_published_vector": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "T"
+      ],
+      "source_answer_not_gold": true,
+      "source_quality_note": "ActualpaperheaderFangshan2024-2025firsttermG5confirmed;publicthirdpartycopy,originalinstitutionreleaseunknown;PDF9pages=8student+1key;selectedclosedsectionscomplete;no listening/writing selected",
+      "independent_teacher_student_commercial_production_validated": false
+    },
+    {
+      "id": "p5.dongcheng2025.fourcards",
+      "level": "primary5",
+      "family": "card_reading_tf",
+      "responses": 5,
+      "options_each": 2,
+      "source_reuse": "not_explicit",
+      "input_complete": true,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/primary5-dongcheng2025upper.pdf",
+          "sha256": "b03498c66d88f6d41ef2c214bea17bb72be6a75481415925fdfc989d8b502626"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-header-1.png",
+          "sha256": "ec2573aac2962b47ecdf1c6ba5e4fc7a5c44aa9a12b702f548fd01a158dc6674"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-selected-4.png",
+          "sha256": "75bd7c88aa34230090e6f1a594bd74acc31253fdbbb9a0dea87af9b0b3d588fb"
+        }
+      ],
+      "source_published_vector": null,
+      "source_answer_not_gold": true,
+      "source_quality_note": "Dongcheng2024-25firsttermG5paper;6studentpages,no key obtained;fourclosedcards/5TF,or onepassage/2sentencegaps3sharedoptions+3MC3choices;wholeclosedmixedkept;openextraction+writingsectiononp6paused,notselected",
+      "subgroups": [
+        {
+          "materials": 4,
+          "responses": 5,
+          "operation": "text_card_TF"
+        }
+      ],
+      "source_fact_risk": "holiday/dateclaimsnotindependentlyverified;notsourcegold",
+      "independent_teacher_student_commercial_production_validated": false
+    },
+    {
+      "id": "p5.dongcheng2025.closedmixed",
+      "level": "primary5",
+      "family": "closed_mixed_reading",
+      "responses": 5,
+      "options_each": 3,
+      "source_reuse": "not_explicit",
+      "input_complete": true,
+      "references": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/primary5-dongcheng2025upper.pdf",
+          "sha256": "b03498c66d88f6d41ef2c214bea17bb72be6a75481415925fdfc989d8b502626"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-header-1.png",
+          "sha256": "ec2573aac2962b47ecdf1c6ba5e4fc7a5c44aa9a12b702f548fd01a158dc6674"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-selected-5.png",
+          "sha256": "e662840856921bc9d794eedda02ff3e1107075dc74fab87f7868d43e3d87fbe6"
+        }
+      ],
+      "source_published_vector": null,
+      "source_answer_not_gold": true,
+      "source_quality_note": "Dongcheng2024-25firsttermG5paper;6studentpages,no key obtained;fourclosedcards/5TF,or onepassage/2sentencegaps3sharedoptions+3MC3choices;wholeclosedmixedkept;openextraction+writingsectiononp6paused,notselected",
+      "subgroups": [
+        {
+          "responses": 2,
+          "shared_candidates": 3,
+          "operation": "sentence_insertion"
+        },
+        {
+          "responses": 3,
+          "options_each": 3,
+          "operation": "reading_choice"
+        }
+      ],
+      "source_fact_risk": "holiday/dateclaimsnotindependentlyverified;notsourcegold",
+      "independent_teacher_student_commercial_production_validated": false
+    }
+  ],
+  "all_references_preserve_originals": true,
+  "new_selected_sections_do_not_equal_new_parent_papers": true,
+  "previous_version": {
+    "path": "Expansion20261016/ModeSources-v0.3.json",
+    "sha256": "f6c4abf8602574d7d6a095824c010b8947808462754295da48f634e0a3acde32"
+  }
+}

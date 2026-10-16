@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "primary6-five-functional-choices",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "03e4473745990dc6ee8493dffbe3bdd725ed653f89d52585de7e276e9bf5fb54",
+  "canonical_response_block_sha256": "1765d2c541da4df4cebcac6e1f2568927a5f9bd5fef2fd9befb36e88249fd05a",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "你想知道去邮局的路，先向路人问路。",
+      "options": [
+        [
+          "A",
+          "How much is the stamp?"
+        ],
+        [
+          "B",
+          "Could you tell me the way to the post office?"
+        ],
+        [
+          "C",
+          "What time do you finish work?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B询问去邮局的路线；A问价格，C问下班时间。"
+    },
+    {
+      "number": 2,
+      "stem": "你想知道朋友昨天做了什么。",
+      "options": [
+        [
+          "A",
+          "What did you do yesterday?"
+        ],
+        [
+          "B",
+          "What are you doing now?"
+        ],
+        [
+          "C",
+          "What will you do tomorrow?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "yesterday要求过去问句A；B当前、C未来。"
+    },
+    {
+      "number": 3,
+      "stem": "你没有听清对方的话，请他再说一遍。",
+      "options": [
+        [
+          "A",
+          "You are welcome."
+        ],
+        [
+          "B",
+          "Never mind."
+        ],
+        [
+          "C",
+          "Could you say that again, please?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C请求重复；A回应感谢、B宽慰不表达重复请求。"
+    },
+    {
+      "number": 4,
+      "stem": "朋友建议周六一起骑车，你同意这个建议。",
+      "options": [
+        [
+          "A",
+          "That sounds like a good idea."
+        ],
+        [
+          "B",
+          "I am sorry to hear that."
+        ],
+        [
+          "C",
+          "Where is your bike?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A接受建议；B遗憾、C问地点均不表达同意。"
+    },
+    {
+      "number": 5,
+      "stem": "你想知道这本书是谁的。",
+      "options": [
+        [
+          "A",
+          "What is the book about?"
+        ],
+        [
+          "B",
+          "Whose book is this?"
+        ],
+        [
+          "C",
+          "How many books do you have?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B问所属；A内容，C数量。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p6.minzhi.functions",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 3,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "A",
+    "B"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 78
+  }
+}

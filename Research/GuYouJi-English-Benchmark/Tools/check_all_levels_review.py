@@ -40,6 +40,52 @@ def pinned_revision(prior,current,record):
     return True
 
 
+def expansion_modes(data,plan,additions):
+    if not plan.get('current_expansion_sources'):
+        return 0
+    sources=json.loads(load_ref(plan['current_expansion_sources']).read_text())['modes']
+    by_id={r['id']:r for r in sources}
+    assert len(by_id)==len(sources)
+    current_ids=set(additions['current_run_author_ids'])
+    current=[m for m in additions['candidates'] if m['id'] in current_ids]
+    assert len(current)==len(current_ids)==additions['current_run_new_authored_groups']
+    assert sum(m['questions'] for m in current)==additions['current_run_new_response_positions']
+    for meta in current:
+        source=by_id[meta['current_expansion_source_id']]
+        group=data['groups'][meta['id']]
+        audit=json.loads(load_ref(meta['author_check']).read_text())
+        assert source['level']==meta['grade'] and source['family']==meta['family']
+        assert source['input_complete'] and source['source_answer_not_gold']
+        for reference in source['references']:
+            load_ref(reference)
+        assert source['id'] in group['anchor_group_ids']
+        assert source['responses']==len(group['questions'])==audit['questions']
+        assert all(len(q['options'])==source['options_each'] for q in group['questions'])
+        if source['family']=='paragraph_matching':
+            assert len(audit['paragraphs'])==source['paragraphs']==source['options_each']
+            assert source['source_reuse']=='explicit_allowed'
+            assert '重复' in group['instruction'] and '不是每项只用一次' in group['instruction']
+        if source['family']=='cross_text_matching':
+            assert len(audit['paragraphs'])==source['passages']==4
+            assert source['source_reuse']=='explicit_allowed' and '重复' in group['instruction']
+            opinions=audit['opinion_relation_matrix']
+            assert [k for k,v in opinions['manual_alone_transfer'].items() if v]==['D']
+            assert [k for k,v in opinions['unfinished_public_work_educational'].items() if k!='A' and v is True]==['C']
+            assert [k for k,v in opinions['evidence_sufficient_for_crosscraft_model'].items() if k!='B' and v is False]==['A']
+            assert [k for k,v in opinions['historical_opening_suitable'].items() if v is False]==['D']
+            assert audit['author_answer_vector']==list('DCAD')
+        if source['family']=='closed_mixed_reading':
+            assert audit['subgroups']==[
+                {'response_numbers':[1,2],'operation':'sentence_insertion','shared_candidates':3},
+                {'response_numbers':[3,4,5],'operation':'reading_choice','options_each':3}]
+            assert group['questions'][0]['options']==group['questions'][1]['options']
+            assert source['subgroups'][0]['responses']==2 and source['subgroups'][1]['responses']==3
+        if source['family']=='card_reading_tf':
+            assert audit['materials']==source['subgroups'][0]['materials']==4
+            assert all([label for label,_ in q['options']]==['T','F'] for q in group['questions'])
+    return len(current)
+
+
 def check(page):
     data=extract(page);policy=json.loads(load_ref(data['current_scope_policy']).read_text())
     _,plan=resolve_plan(data.get('active_run_plan','FirstRelease/AllLevelsObjectiveRun-2026-10-16.json'))
@@ -69,6 +115,7 @@ def check(page):
     assert len(data['grades'])==len(set(data['grades']))==level_count
     assert not(set(data['grades']) & set(policy.get('excluded_levels',[])))
     assert len(data['cells'])==level_count*len(set(c['family']for c in data['cells']))
+    assert len({c['label'] for c in data['cells']})==len({c['family'] for c in data['cells']}), 'Duplicate display family alias'
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
     assert not(set(c['family']for c in data['cells']) & set(policy['paused_families']))
     assert {c['groupId']for c in data['cells']if c['groupId']}==set(data['groups'])
@@ -196,7 +243,7 @@ def check(page):
                 assert not correct_number(str(int(expected)+1),expected)
             assert correct_number('２','2') and correct_number('٢','2')
             assert not any(correct_number(value,'2') for value in ['', 'two', '2.0', '2 0', '2/1', '-2'])
-        if meta['family']=='choice_cloze':
+        if meta['family']=='choice_cloze' and meta['grade']=='advanced':
             assert len(group['questions'])==8 and all(len(q['options'])==4 for q in group['questions'])
             assert audit['answered_examples']==1 and len(audit['example_options'])==4
             assert re.findall(r'\((\d+)\)',audit['student_passage'])==[str(n)for n in range(9)]
@@ -245,12 +292,15 @@ def check(page):
             assert source['source_key_not_independent_gold'] and not source['school_exam_authentication']
             assert not group['requiredPassageImages'] and group['sourceFormNotice']
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
+    checked_expansion_modes=expansion_modes(data,plan,additions)
     return {'levels':level_count,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
             'payload_preservation_or_pinned_revision_passed':True,'pinned_author_revisions':len(revised),
             'specific_complete_groups_paused':len(held),
             'paused_responses':sum(r['responses']for r in held.values()),
-            'no_subjective_or_partial_mixed_groups':True,'new_authored_groups':len(additions['candidates']),
+            'no_subjective_or_partial_mixed_groups':True,
+            'new_authored_groups':additions.get('current_run_new_authored_groups',len(additions['candidates'])),
+            'source_bound_expansion_modes_checked':checked_expansion_modes,
             'middle_source_totals_unchanged':True,'simulated_primary5_source_warning_bound':True,
             'source_unknown_early_levels_not_filled_with_adult_text':True,'independent_student_commercial_production_admission':False}
 

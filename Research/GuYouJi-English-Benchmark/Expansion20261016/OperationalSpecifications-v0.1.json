@@ -1,0 +1,737 @@
+{
+  "version": "0.1",
+  "scope": "15levels_selected_concrete_objective_modes",
+  "source_catalog": {
+    "path": "Expansion20261016/ModeSources-v0.4.json",
+    "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+  },
+  "prior_middle_standard": {
+    "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+    "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+  },
+  "prior_nonmiddle_specifications": {
+    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.11.json",
+    "sha256": "5851a8e2b12738d846eb459603d4a5fa2e030170c2d6d15a6802c8f7bb2a86f8"
+  },
+  "standards": [
+    {
+      "id": "primary1-eleven-category-cards",
+      "level": "primary1",
+      "family": "word_classification",
+      "source_observation_id": "p1.2016lower.classification",
+      "responses": 11,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "category_reused",
+      "student_instruction": "把每张词卡放进合适的一类。每张卡选一次；同一类别可接收多张卡。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary1-eleven-category-cards-v0.1.md",
+        "sha256": "ef338303124848390bd1078d4932fd4e88b8d2cab35798bde765556e26e3eea2"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary1-eleven-category-cards-author-check-v0.1.json",
+        "sha256": "3b000a12404c51e8a3255b50865ebd01ca4027fc1cd6e4ffe513ae21505e8a73"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 6,
+        "stem_English_words": 11,
+        "options_English_words_with_repeated_bank": 33
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary1-four-picture-matches",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "source_observation_id": "p1.2016lower.picturematching",
+      "responses": 4,
+      "candidate_options_per_response": 4,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "看四张图片，为每个单词选择对应图片的字母。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary1-four-picture-matches-v0.1.md",
+        "sha256": "77a7a1f5b7807635e837eeb28729774c43018c8336d1ff6ff38a20202b8eacf9"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary1-four-picture-matches-author-check-v0.1.json",
+        "sha256": "624765106e27e36615fd19aa0cf28b608af6e0b5319ae52ad5ae2a5eff48eed7"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": {
+        "path": "Expansion20261016/Authored/primary1-four-picture-cards.svg",
+        "sha256": "bccf77828955b59dae3f54b703019ab90da55826116877c234aad0bfb5870542"
+      },
+      "author_load_measure": {
+        "body_English_words": 7,
+        "stem_English_words": 4,
+        "options_English_words_with_repeated_bank": 16
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary2-five-picture-sentences",
+      "level": "primary2",
+      "family": "picture_sentence_choice",
+      "source_observation_id": "p2.2021shanghai.picture_sentences",
+      "responses": 5,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "看每幅图，从同号的三个句子中选出符合图片的一句。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary2-five-picture-sentences-v0.1.md",
+        "sha256": "d92898eb87841d15827c071d9abe4428c44369e586de26edf6a954a190d9a975"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary2-five-picture-sentences-author-check-v0.1.json",
+        "sha256": "a921d10b4d502e530ef69e1c373b298b3e764d05bd67c60bbeab85fd235dc9c9"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": {
+        "path": "Expansion20261016/Authored/primary2-five-picture-prompts.svg",
+        "sha256": "3ff5cda4179057a8b7f8eb8cb4b851132616e44a689d54178c564aac0ea46d66"
+      },
+      "author_load_measure": {
+        "body_English_words": 5,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 81
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary2-five-small-functions",
+      "level": "primary2",
+      "family": "function_choice",
+      "source_observation_id": "p2.2021shanghai.function",
+      "responses": 5,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "选择能完成这段小对话的一项。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary2-five-small-functions-v0.1.md",
+        "sha256": "ac7931123abe4170e0a4d0ed31fc19a1942de98affc74e8867cb34c8cd498253"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary2-five-small-functions-author-check-v0.1.json",
+        "sha256": "fbc793e4587e8b5315873385dc1208c79f7f2d235a58ae47de688b734d627121"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 0,
+        "stem_English_words": 23,
+        "options_English_words_with_repeated_bank": 47
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary3-five-letter-pairs",
+      "level": "primary3",
+      "family": "letter_case_tf",
+      "source_observation_id": "p3.shangyu.lettercase",
+      "responses": 5,
+      "candidate_options_per_response": 2,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "判断左右两个字母是否为同一字母的大小写。选T（是）或F（不是）。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary3-five-letter-pairs-v0.1.md",
+        "sha256": "899ccc7cc42519bbc46628258caa186cea80266f93629842543f97dd5db41f1f"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary3-five-letter-pairs-author-check-v0.1.json",
+        "sha256": "ce8765640f6b432c9bde6b87d7f0e1c776a2e8eceb758a3fcde903585dc88614"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 0,
+        "stem_English_words": 10,
+        "options_English_words_with_repeated_bank": 10
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary4-five-word-categories",
+      "level": "primary4",
+      "family": "word_category_choice",
+      "source_observation_id": "p4.repost.odd",
+      "responses": 5,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "每组有两项属于题目指定的类别，选出不属于这一类的一项。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary4-five-word-categories-v0.1.md",
+        "sha256": "e7b903748a19bdae16b60cf09be5e767ffb7abee408c3b679d9f5c528f70312b"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary4-five-word-categories-author-check-v0.1.json",
+        "sha256": "5651b2380ee042a695d782ba24f00667c10ca3a120953e6228511afc98cd7b6c"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 0,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 15
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary4-six-Chinese-functions",
+      "level": "primary4",
+      "family": "function_matching",
+      "source_observation_id": "p4.repost.functions",
+      "responses": 6,
+      "candidate_options_per_response": 6,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "根据六个情境，从A至F中选择合适的英语表达。原参照未明示每项只用一次；请按每句意思独立选择。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary4-six-Chinese-functions-v0.1.md",
+        "sha256": "d97bed0f88242873f1e9e1f0baf2e485fee83500c1690df3b4f2dff7dc1c8c42"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary4-six-Chinese-functions-author-check-v0.1.json",
+        "sha256": "d9b74a999b521616eb8a2388d22b52b4cc00e747816d08ff22becee5a4778c18"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 24,
+        "stem_English_words": 2,
+        "options_English_words_with_repeated_bank": 108
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary4-five-questions-responses",
+      "level": "primary4",
+      "family": "dialogue_matching",
+      "source_observation_id": "p4.repost.qa",
+      "responses": 5,
+      "candidate_options_per_response": 5,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "为每个问句选择合适的答句。按问答关系独立选择。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary4-five-questions-responses-v0.1.md",
+        "sha256": "ad30e83ca9baf41928c1942b269f6776e244727e96a23c6d41fcb4f27a644f12"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary4-five-questions-responses-author-check-v0.1.json",
+        "sha256": "108d45cb2a27cc4a7fd986d268ad5250a8fee3e6f634f826e54f3f44d52fbfa3"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 18,
+        "stem_English_words": 21,
+        "options_English_words_with_repeated_bank": 65
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary5-boat-desk-dialogue",
+      "level": "primary5",
+      "family": "dialogue_matching",
+      "source_observation_id": "p5.fangshan2025.dialogue",
+      "responses": 5,
+      "candidate_options_per_response": 5,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "从A至E选择合适的句子补全完整五空对话。按上下文独立选择；原参照未明确每项只用一次。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary5-boat-desk-dialogue-v0.2.md",
+        "sha256": "1a7ad4b42317ebf88b1ddb350e8518eb2876165bcc3216974ddee392304355f5"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary5-boat-desk-dialogue-author-check-v0.2.json",
+        "sha256": "4a056888dc61dde2b020cc297dea6edb5bc4a2e9d3a628783e9f7b72a9904a23"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 100,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 195
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary5-free-toy-fair-cloze",
+      "level": "primary5",
+      "family": "choice_cloze",
+      "source_observation_id": "p5.sim.cloze",
+      "responses": 8,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "读短文，为八个空各选一项。每空三个选项；没有已答例题。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary5-free-toy-fair-cloze-v0.1.md",
+        "sha256": "fde78583b70b5829b33f93158c330aac353ad5258fa6f9be6b078fb46be6db01"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary5-free-toy-fair-cloze-author-check-v0.1.json",
+        "sha256": "3c8d0c4b06c38963be997f1c3e37c2b15067e496fca686f520992240f06aaee0"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 193,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 24
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary5-postcards-reading-TF",
+      "level": "primary5",
+      "family": "reading_tf",
+      "source_observation_id": "p5.fangshan2025.readingTF",
+      "responses": 5,
+      "candidate_options_per_response": 2,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "读短文，选T（与短文相符）或F（与短文不符）。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary5-postcards-reading-TF-v0.2.md",
+        "sha256": "baef9835aaa331689cd5524348f06cbe69313fe472be2f13066c0e31257fc83c"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary5-postcards-reading-TF-author-check-v0.2.json",
+        "sha256": "8d734b2cf3b40b563ed097c598892ad86c1627db9b2d69ffede44cc973fe0532"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 112,
+        "stem_English_words": 42,
+        "options_English_words_with_repeated_bank": 10
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary6-four-marked-sounds",
+      "level": "primary6",
+      "family": "marked_sound_tf",
+      "source_observation_id": "p6.minzhi.sound",
+      "responses": 4,
+      "candidate_options_per_response": 2,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "比较方括号标出的字母部分的通常英语读音，选T（相同）或F（不同）。不比较整个单词。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary6-four-marked-sounds-v0.1.md",
+        "sha256": "6b10c13358ac5e95157999db895a56db5220f0fd44bc1380b0a8c4bd1267e216"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary6-four-marked-sounds-author-check-v0.1.json",
+        "sha256": "85007f95c50826172e1973543ec451bf17291bbcad34f3a5752a0995684d1609"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 0,
+        "stem_English_words": 24,
+        "options_English_words_with_repeated_bank": 8
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary6-ten-sentence-choices",
+      "level": "primary6",
+      "family": "sentence_choice",
+      "source_observation_id": "p6.minzhi.grammar",
+      "responses": 10,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "从每题三个选项中选择合适的一项。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary6-ten-sentence-choices-v0.1.md",
+        "sha256": "934798c35531f89251d0f3fd3f2d60538d1e405d207316474ba513561c3070a3"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary6-ten-sentence-choices-author-check-v0.1.json",
+        "sha256": "353527010869c2715d5dd9833523c4dc3d68bf69d20cbbce545e7b5d4a1606b3"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 0,
+        "stem_English_words": 71,
+        "options_English_words_with_repeated_bank": 31
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary6-five-functional-choices",
+      "level": "primary6",
+      "family": "function_choice",
+      "source_observation_id": "p6.minzhi.functions",
+      "responses": 5,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "根据中文情境选择最合适的一句英语。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary6-five-functional-choices-v0.1.md",
+        "sha256": "03e4473745990dc6ee8493dffbe3bdd725ed653f89d52585de7e276e9bf5fb54"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary6-five-functional-choices-author-check-v0.1.json",
+        "sha256": "577b1ac0263b6f1704479c56554f50e95544fa16b70ade5767b251aae647e2dd"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 0,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 78
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "grade7-yard-map-grammar-choice",
+      "level": 7,
+      "family": "grammar_choice_cloze",
+      "source_observation_id": "g7.liwan2025.grammar_choice",
+      "responses": 10,
+      "candidate_options_per_response": 4,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "阅读短文，从每空四个选项中选择最合适的一项。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/grade7-yard-map-grammar-choice-v0.1.md",
+        "sha256": "55f32ef8dc959ba5e8366b430e60236fb76fce9053ae9cc74fa185fbf409713e"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/grade7-yard-map-grammar-choice-author-check-v0.2.json",
+        "sha256": "9757bd7928434a978d0252fbeebde5c75b5240851925fb2ba9191ab403ee73e8"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 174,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 45
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "cet4-pools-public-rooms-matching",
+      "level": "undergraduate",
+      "family": "paragraph_matching",
+      "source_observation_id": "cet4.2016.longmatching",
+      "responses": 10,
+      "candidate_options_per_response": 11,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "explicit_allowed",
+      "student_instruction": "阅读整篇文章，为十个陈述选择信息所在段落A—K。同一段可以重复使用，也可不用；不是每项只用一次。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/cet4-pools-public-rooms-matching-v0.1.md",
+        "sha256": "8c763d426aa69945911df0b8ef61717fe8c617476b43620a8bd8659e0ea1e8fd"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/cet4-pools-public-rooms-matching-author-check-v0.1.json",
+        "sha256": "276bb375e84e87a3803427910fb3226b51dae83f0e3cf355a69b828ba049a95b"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 1023,
+        "stem_English_words": 137,
+        "options_English_words_with_repeated_bank": 220
+      },
+      "source_wordcount_from_joined_native": "unknown_not_derived_from_word_merged_CET_text",
+      "exclusive_to_level": false,
+      "independent_validation": false,
+      "paragraph_candidates": 11,
+      "material_unit_note": "One long reading passage divided into lettered paragraphs; paragraphs are candidates, not independent passages."
+    },
+    {
+      "id": "cet6-editorial-change-records-matching",
+      "level": "postgraduate",
+      "family": "paragraph_matching",
+      "source_observation_id": "cet6.2016.longmatching",
+      "responses": 10,
+      "candidate_options_per_response": 15,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "explicit_allowed",
+      "student_instruction": "阅读整篇文章，为十个陈述选择信息所在段落A—O。同一段可以重复使用，也可不用；不是每项只用一次。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/cet6-editorial-change-records-matching-v0.1.md",
+        "sha256": "380f74de3339c1a8e0cb25729660830629ce04afd915c604fedae50692064281"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/cet6-editorial-change-records-matching-author-check-v0.1.json",
+        "sha256": "839528b231f33437228011a59059224260e1470a88e0e9cdb4b4a0cf9a6d6773"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 1294,
+        "stem_English_words": 141,
+        "options_English_words_with_repeated_bank": 300
+      },
+      "source_wordcount_from_joined_native": "unknown_not_derived_from_word_merged_CET_text",
+      "exclusive_to_level": false,
+      "independent_validation": false,
+      "paragraph_candidates": 15,
+      "material_unit_note": "One long reading passage divided into lettered paragraphs; paragraphs are candidates, not independent passages."
+    },
+    {
+      "id": "advanced-workshop-book-cross-reviews",
+      "level": "advanced",
+      "family": "cross_text_matching",
+      "source_observation_id": "advanced.c1.2022.part6",
+      "responses": 4,
+      "candidate_options_per_response": 4,
+      "material_groups": 4,
+      "subgroups": [],
+      "printed_reuse": "explicit_allowed",
+      "student_instruction": "阅读四篇评论，为每个问题选择A至D。同一评论可重复使用；比较题中要求的观点及其关系，不按关键词相同直接配对。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/advanced-workshop-book-cross-reviews-v0.1.md",
+        "sha256": "05d6f546998da3cd620373fdb5d8278bb9f685fb03cc1ad541f17828acbcc278"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/advanced-workshop-book-cross-reviews-author-check-v0.1.json",
+        "sha256": "df2c26ab6d3298b2285bef33c216d840dfcfe9082189df7ca4d5142e31b55f8a"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 573,
+        "stem_English_words": 75,
+        "options_English_words_with_repeated_bank": 32
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "grade11-engineering-studio-table",
+      "level": 11,
+      "family": "table_reading_choice",
+      "source_observation_id": "g11.shenzhen2026.programmeA",
+      "responses": 3,
+      "candidate_options_per_response": 4,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "independent",
+      "student_instruction": "阅读全部项目说明与日程表，从每题四个选项中选择最佳答案。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/grade11-engineering-studio-table-v0.1.md",
+        "sha256": "fe565da2133fcafec66933429609a846a734e6c51286ddf0d1c65b842aba9883"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/grade11-engineering-studio-table-author-check-v0.1.json",
+        "sha256": "7cbfa0419498bfcc0d5a7ff48642a085d7707da700ccd8630a16b482e23b28de"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 244,
+        "stem_English_words": 24,
+        "options_English_words": 80
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary5-five-fixed-bank-trip",
+      "level": "primary5",
+      "family": "shared_bank",
+      "source_observation_id": "p5.fangshan2025.bank",
+      "responses": 5,
+      "candidate_options_per_response": 5,
+      "material_groups": 1,
+      "subgroups": [],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "阅读短文，从A至E中选出合适的原词并填字母，词形不变。按每空上下文选择，不额外添加一次限制。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary5-five-fixed-bank-trip-v0.1.md",
+        "sha256": "17235b498436b89082e9da76e07608f8242c53ccf71c4bdd68f0b69a8a179afe"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary5-five-fixed-bank-trip-author-check-v0.1.json",
+        "sha256": "bf08e1ee00bbb591fb3be8d6942004c56a8d98ab4446fca11a962bee28d5628a"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 83,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 25
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary5-four-club-cards-TF",
+      "level": "primary5",
+      "family": "card_reading_tf",
+      "source_observation_id": "p5.dongcheng2025.fourcards",
+      "responses": 5,
+      "candidate_options_per_response": 2,
+      "material_groups": 4,
+      "subgroups": [
+        {
+          "materials": 4,
+          "responses": 5,
+          "operation": "text_card_TF"
+        }
+      ],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "阅读全部四张社团卡，判断每句话是否与信息相符，选T或F。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary5-four-club-cards-TF-v0.1.md",
+        "sha256": "968ccc7c85babb2cd4cda1dfaa456e7590593bbddce8aa5e2e72d220c7fed2ee"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary5-four-club-cards-TF-author-check-v0.1.json",
+        "sha256": "408c018a5c6b250370b5af76d830626e960bf52e95c44eeb03a7b3f96d2b6ab9"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 80,
+        "stem_English_words": 39,
+        "options_English_words_with_repeated_bank": 10
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    },
+    {
+      "id": "primary5-repair-time-closed-mixed",
+      "level": "primary5",
+      "family": "closed_mixed_reading",
+      "source_observation_id": "p5.dongcheng2025.closedmixed",
+      "responses": 5,
+      "candidate_options_per_response": 3,
+      "material_groups": 1,
+      "subgroups": [
+        {
+          "response_numbers": [
+            1,
+            2
+          ],
+          "operation": "sentence_insertion",
+          "shared_candidates": 3
+        },
+        {
+          "response_numbers": [
+            3,
+            4,
+            5
+          ],
+          "operation": "reading_choice",
+          "options_each": 3
+        }
+      ],
+      "printed_reuse": "not_explicit",
+      "student_instruction": "先为第1—2空从三个共享句子中选择合适的一句（有一句不用），再回答第3—5题，每题三个选项。保留完整五响应组。",
+      "candidate": {
+        "path": "Expansion20261016/Authored/primary5-repair-time-closed-mixed-v0.1.md",
+        "sha256": "9ba893935bfb1e298bc759862cd2523cb2171259be9730f5aece9b8d9639976b"
+      },
+      "author_check": {
+        "path": "Expansion20261016/Authored/primary5-repair-time-closed-mixed-author-check-v0.1.json",
+        "sha256": "6ea524c86428e9dcbbce1342d9276929fb5c95751098b9175145925e48bd7a0f"
+      },
+      "new_answer_protocol": "one_of_printed_labels_only",
+      "necessary_image_asset": null,
+      "author_load_measure": {
+        "body_English_words": 170,
+        "stem_English_words": 23,
+        "options_English_words_with_repeated_bank": 88
+      },
+      "source_wordcount_from_joined_native": "not_generalized_grade_rule",
+      "exclusive_to_level": false,
+      "independent_validation": false
+    }
+  ],
+  "whole_group_invariants": [
+    "allmaterials/subgroups/responses/candidates/media bound",
+    "no fixed six cutoff",
+    "no answer fragments or missing inputs as gold",
+    "unknown reuse never becomes once-only",
+    "closed mixed2+3 retained as one task;subjective mixed paused",
+    "lowprimary concrete pictures/card operations differ from adult multi-text/scanning relations"
+  ],
+  "CET_normative_reference": {
+    "original": {
+      "path": "build/english-benchmark-research-20261012/raw/cet2016-official-outline20261014.pdf",
+      "sha256": "9166d3c03b7bc43abd9d9df91bd2ef8085b4419286f1e5ca100dea68f3cfd1f1"
+    },
+    "physical_pages": [
+      11,
+      13
+    ],
+    "CET4_long_approx_words": 1000,
+    "CET6_long_approx_words": 1200,
+    "current_authored_body_words": [
+      1012,
+      1279
+    ],
+    "not_student_difficulty_equivalence": true
+  }
+}

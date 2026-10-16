@@ -1,0 +1,176 @@
+{
+  "version": "0.1",
+  "id": "primary5-five-fixed-bank-trip",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "17235b498436b89082e9da76e07608f8242c53ccf71c4bdd68f0b69a8a179afe",
+  "canonical_response_block_sha256": "b9b59934b855d5e3ffa77fcf6acf40c08aa78960d8936072f1377f651f6cae9c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "early"
+        ],
+        [
+          "B",
+          "train"
+        ],
+        [
+          "C",
+          "ticket"
+        ],
+        [
+          "D",
+          "station"
+        ],
+        [
+          "E",
+          "window"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "在station候车，其他项不表交通场所。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "early"
+        ],
+        [
+          "B",
+          "train"
+        ],
+        [
+          "C",
+          "ticket"
+        ],
+        [
+          "D",
+          "station"
+        ],
+        [
+          "E",
+          "window"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "early作arrive的时间方式修饰；其他候选不构成此句时间关系。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "early"
+        ],
+        [
+          "B",
+          "train"
+        ],
+        [
+          "C",
+          "ticket"
+        ],
+        [
+          "D",
+          "station"
+        ],
+        [
+          "E",
+          "window"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "buy a ticket为购票，其他项不能构成交通登车前柜台购买的该对象。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "early"
+        ],
+        [
+          "B",
+          "train"
+        ],
+        [
+          "C",
+          "ticket"
+        ],
+        [
+          "D",
+          "station"
+        ],
+        [
+          "E",
+          "window"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明确comes in与此前waiting for train衔接，选train；station固定不驶入。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "early"
+        ],
+        [
+          "B",
+          "train"
+        ],
+        [
+          "C",
+          "ticket"
+        ],
+        [
+          "D",
+          "station"
+        ],
+        [
+          "E",
+          "window"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "look outside支持坐在window旁；其他候选不提供这项看外部景色的关系。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.3.json",
+    "sha256": "f6c4abf8602574d7d6a095824c010b8947808462754295da48f634e0a3acde32"
+  },
+  "source_group_id": "p5.fangshan2025.bank",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 5,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "Every Friday, Rosa visits her aunt. She waits for the train at a small (1) ____. She likes to arrive (2) ____ because she does not want to miss it. Before getting on, she buys a (3) ____ at the desk.\n\nAt nine, the (4) ____ comes in. Rosa finds her seat and puts her bag under it. She sits beside the (5) ____ so that she can look outside. Her aunt meets her at the next stop. Their weekend together is beginning.\n\n共享词库：\n\nA. early\nB. train\nC. ticket\nD. station\nE. window",
+  "author_answer_vector": [
+    "D",
+    "A",
+    "C",
+    "B",
+    "E"
+  ],
+  "load_measure": {
+    "body_English_words": 83,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 25
+  },
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "fixed_bank_forms": true
+}

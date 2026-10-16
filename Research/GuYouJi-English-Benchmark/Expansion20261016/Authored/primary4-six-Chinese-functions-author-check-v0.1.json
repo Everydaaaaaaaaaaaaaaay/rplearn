@@ -1,0 +1,228 @@
+{
+  "version": "0.1",
+  "id": "primary4-six-Chinese-functions",
+  "grade": "primary4",
+  "questions": 6,
+  "candidate_sha256": "d97bed0f88242873f1e9e1f0baf2e485fee83500c1690df3b4f2dff7dc1c8c42",
+  "canonical_response_block_sha256": "fb27694579585c4c64a623e12596fc1e8fc9a050a7dd9d93702342f37f235537",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "下午见到老师，你先向老师问候。",
+      "options": [
+        [
+          "A",
+          "Good afternoon."
+        ],
+        [
+          "B",
+          "May I use your ruler, please?"
+        ],
+        [
+          "C",
+          "Thank you."
+        ],
+        [
+          "D",
+          "Happy birthday!"
+        ],
+        [
+          "E",
+          "I am sorry."
+        ],
+        [
+          "F",
+          "You are welcome."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "下午问候对应A；B是请求、C是感谢、D生日祝福、E道歉、F回应感谢。"
+    },
+    {
+      "number": 2,
+      "stem": "你想借用同学的尺子，先礼貌地提出请求。",
+      "options": [
+        [
+          "A",
+          "Good afternoon."
+        ],
+        [
+          "B",
+          "May I use your ruler, please?"
+        ],
+        [
+          "C",
+          "Thank you."
+        ],
+        [
+          "D",
+          "Happy birthday!"
+        ],
+        [
+          "E",
+          "I am sorry."
+        ],
+        [
+          "F",
+          "You are welcome."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B明确请求使用尺子，其他表达未提出该请求。"
+    },
+    {
+      "number": 3,
+      "stem": "同学帮你把掉在地上的书捡起来，你感谢他。",
+      "options": [
+        [
+          "A",
+          "Good afternoon."
+        ],
+        [
+          "B",
+          "May I use your ruler, please?"
+        ],
+        [
+          "C",
+          "Thank you."
+        ],
+        [
+          "D",
+          "Happy birthday!"
+        ],
+        [
+          "E",
+          "I am sorry."
+        ],
+        [
+          "F",
+          "You are welcome."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C直接表达感谢；F是接收感谢后的回应，角色相反。"
+    },
+    {
+      "number": 4,
+      "stem": "今天是朋友的生日，你送上祝福。",
+      "options": [
+        [
+          "A",
+          "Good afternoon."
+        ],
+        [
+          "B",
+          "May I use your ruler, please?"
+        ],
+        [
+          "C",
+          "Thank you."
+        ],
+        [
+          "D",
+          "Happy birthday!"
+        ],
+        [
+          "E",
+          "I am sorry."
+        ],
+        [
+          "F",
+          "You are welcome."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D是生日祝福，其他表达无生日功能。"
+    },
+    {
+      "number": 5,
+      "stem": "你不小心踩到了朋友的脚，你道歉。",
+      "options": [
+        [
+          "A",
+          "Good afternoon."
+        ],
+        [
+          "B",
+          "May I use your ruler, please?"
+        ],
+        [
+          "C",
+          "Thank you."
+        ],
+        [
+          "D",
+          "Happy birthday!"
+        ],
+        [
+          "E",
+          "I am sorry."
+        ],
+        [
+          "F",
+          "You are welcome."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E为道歉；C感谢、F回应感谢均不合该角色。"
+    },
+    {
+      "number": 6,
+      "stem": "别人对你说“Thank you.”，你回应。",
+      "options": [
+        [
+          "A",
+          "Good afternoon."
+        ],
+        [
+          "B",
+          "May I use your ruler, please?"
+        ],
+        [
+          "C",
+          "Thank you."
+        ],
+        [
+          "D",
+          "Happy birthday!"
+        ],
+        [
+          "E",
+          "I am sorry."
+        ],
+        [
+          "F",
+          "You are welcome."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F回应对方感谢；C会再说谢谢，A/B/D/E是其他功能。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p4.repost.functions",
+  "source_observation": {
+    "source_responses": 6,
+    "options_each": 6,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "共享表达：\n\nA. Good afternoon.\nB. May I use your ruler, please?\nC. Thank you.\nD. Happy birthday!\nE. I am sorry.\nF. You are welcome.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 24,
+    "stem_English_words": 2,
+    "options_English_words_with_repeated_bank": 108
+  }
+}

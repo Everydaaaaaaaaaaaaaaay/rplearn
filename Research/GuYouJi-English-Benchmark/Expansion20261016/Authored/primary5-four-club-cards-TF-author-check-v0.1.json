@@ -1,0 +1,116 @@
+{
+  "version": "0.1",
+  "id": "primary5-four-club-cards-TF",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "968ccc7c85babb2cd4cda1dfaa456e7590593bbddce8aa5e2e72d220c7fed2ee",
+  "canonical_response_block_sha256": "ca4f5adbadf40e3e0277792c51767c06a6bb62c5ffb34940eb714ab03f9bf88f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Pupils in Paper Models make small things from paper.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "A卡明确纸房子和桥。"
+    },
+    {
+      "number": 2,
+      "stem": "Rhythm Room meets only on Friday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "B卡为周一及周四，非只周五。"
+    },
+    {
+      "number": 3,
+      "stem": "Nature Notes takes place in the school garden.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "C卡地点明确School Garden。"
+    },
+    {
+      "number": 4,
+      "stem": "Puzzle Partners asks pupils to work alone.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "D卡明确in pairs，非独自。"
+    },
+    {
+      "number": 5,
+      "stem": "All four cards give information about after-school clubs.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "四卡均有适合兴趣、放学后15:30时段、校内地点及活动，为社团信息卡。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.3.json",
+    "sha256": "f6c4abf8602574d7d6a095824c010b8947808462754295da48f634e0a3acde32"
+  },
+  "source_group_id": "p5.dongcheng2025.fourcards",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 2,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "| A. Paper Models | B. Rhythm Room |\n| --- | --- |\n| For pupils who enjoy making things. | For pupils who enjoy music. |\n| Tuesday, 15:30—16:15 | Monday and Thursday, 15:30—16:15 |\n| Room 2 | Music Room |\n| Build small paper houses and bridges. Work with a partner. | Learn short songs. Try simple rhythms on drums. |\n\n| C. Nature Notes | D. Puzzle Partners |\n| --- | --- |\n| For pupils who enjoy observing plants. | For pupils who enjoy solving puzzles. |\n| Wednesday, 15:30—16:15 | Friday, 15:30—16:15 |\n| School Garden | Library |\n| Draw leaves and keep a simple plant diary. | Solve number and word puzzles in pairs. |",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "T",
+    "F",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 80,
+    "stem_English_words": 39,
+    "options_English_words_with_repeated_bank": 10
+  },
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "materials": 4
+}

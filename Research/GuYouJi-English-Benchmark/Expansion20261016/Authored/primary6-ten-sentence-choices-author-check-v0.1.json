@@ -1,0 +1,240 @@
+{
+  "version": "0.1",
+  "id": "primary6-ten-sentence-choices",
+  "grade": "primary6",
+  "questions": 10,
+  "candidate_sha256": "934798c35531f89251d0f3fd3f2d60538d1e405d207316474ba513561c3070a3",
+  "canonical_response_block_sha256": "6141b61c31465f7f3cce989834e6e1ee85ecc55f4913074bc5ef28514736ae50",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "There are two ____ on the desk.",
+      "options": [
+        [
+          "A",
+          "box"
+        ],
+        [
+          "B",
+          "boxes"
+        ],
+        [
+          "C",
+          "boxs"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "two要求复数boxes；A单数，C复数拼写错。"
+    },
+    {
+      "number": 2,
+      "stem": "We visited the museum ____ Sunday.",
+      "options": [
+        [
+          "A",
+          "on"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "in"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "具体星期用on；at/in不合此日名搭配。"
+    },
+    {
+      "number": 3,
+      "stem": "Look! The children ____ a kite now.",
+      "options": [
+        [
+          "A",
+          "fly"
+        ],
+        [
+          "B",
+          "flew"
+        ],
+        [
+          "C",
+          "are flying"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Look与now标当前正在做，复数主语are flying；其余时体不合。"
+    },
+    {
+      "number": 4,
+      "stem": "Mina is twelve. Her sister is ten. Mina is ____ than her sister.",
+      "options": [
+        [
+          "A",
+          "old"
+        ],
+        [
+          "B",
+          "older"
+        ],
+        [
+          "C",
+          "oldest"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "than与给定年龄比较要求older；old未比较，oldest最高级。"
+    },
+    {
+      "number": 5,
+      "stem": "Yesterday I ____ to the park with Dad.",
+      "options": [
+        [
+          "A",
+          "go"
+        ],
+        [
+          "B",
+          "went"
+        ],
+        [
+          "C",
+          "going"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Yesterday明确过去，went为go过去式；going缺助动词，go不合过去时间。"
+    },
+    {
+      "number": 6,
+      "stem": "This ruler is mine. That one is ____.",
+      "options": [
+        [
+          "A",
+          "her"
+        ],
+        [
+          "B",
+          "she"
+        ],
+        [
+          "C",
+          "hers"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "独立表语表示所属用hers；her需名词，she是人称主格。"
+    },
+    {
+      "number": 7,
+      "stem": "I am thirsty. I would like ____ water.",
+      "options": [
+        [
+          "A",
+          "some"
+        ],
+        [
+          "B",
+          "many"
+        ],
+        [
+          "C",
+          "a"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "water不可数，肯定请求some water；many配可数复数，a配单数可数。"
+    },
+    {
+      "number": 8,
+      "stem": "Tom cannot find his pen. Please help ____.",
+      "options": [
+        [
+          "A",
+          "he"
+        ],
+        [
+          "B",
+          "him"
+        ],
+        [
+          "C",
+          "his"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "help后宾格him；he主格、his所属不适用。"
+    },
+    {
+      "number": 9,
+      "stem": "There ____ a small lake near our school.",
+      "options": [
+        [
+          "A",
+          "is"
+        ],
+        [
+          "B",
+          "are"
+        ],
+        [
+          "C",
+          "be"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "a small lake为单数，there is；are复数，be非限定。"
+    },
+    {
+      "number": 10,
+      "stem": "We must ____ quietly in the reading room.",
+      "options": [
+        [
+          "A",
+          "talking"
+        ],
+        [
+          "B",
+          "talks"
+        ],
+        [
+          "C",
+          "talk"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "must后动词原形talk；另两项为非原形。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "p6.minzhi.grammar",
+  "source_observation": {
+    "source_responses": 10,
+    "options_each": 3,
+    "source_reuse_rule": "independent"
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "B",
+    "B",
+    "C",
+    "A",
+    "B",
+    "A",
+    "C"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 71,
+    "options_English_words_with_repeated_bank": 31
+  }
+}

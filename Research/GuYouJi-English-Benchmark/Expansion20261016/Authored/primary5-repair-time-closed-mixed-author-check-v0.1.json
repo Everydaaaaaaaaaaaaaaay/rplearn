@@ -1,0 +1,154 @@
+{
+  "version": "0.1",
+  "id": "primary5-repair-time-closed-mixed",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "9ba893935bfb1e298bc759862cd2523cb2171259be9730f5aece9b8d9639976b",
+  "canonical_response_block_sha256": "34391101c3782b8e02d9276bcbd8e252b903ddb15b098a10601f5b3b39f93d16",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空：选择合适的句子",
+      "options": [
+        [
+          "A",
+          "An adult is always there to help."
+        ],
+        [
+          "B",
+          "The library closes early on Friday."
+        ],
+        [
+          "C",
+          "At the end, everyone explains what was repaired."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "紧接This person需要前句引入单一成人，A提供该对象；B只有图书馆，C为everyone集体及结束环节，不提供该单一先行对象。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空：选择合适的句子",
+      "options": [
+        [
+          "A",
+          "An adult is always there to help."
+        ],
+        [
+          "B",
+          "The library closes early on Friday."
+        ],
+        [
+          "C",
+          "At the end, everyone explains what was repaired."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "前句明确结束动手并向全组发言，后句These short explanations指向C的解释修理内容；A仅说成人在场、B转图书馆，都未提供这些说明的先行内容。"
+    },
+    {
+      "number": 3,
+      "stem": "What was wrong with Ella’s toy train?",
+      "options": [
+        [
+          "A",
+          "One wheel kept coming off."
+        ],
+        [
+          "B",
+          "It had no card."
+        ],
+        [
+          "C",
+          "Its colour was too dark."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第二段明示轮子松脱；B说明卡是修理后写的，C无文本支持。"
+    },
+    {
+      "number": 4,
+      "stem": "What should pupils do when using sharp tools?",
+      "options": [
+        [
+          "A",
+          "Work in the library alone."
+        ],
+        [
+          "B",
+          "Have an adult beside them."
+        ],
+        [
+          "C",
+          "Finish before asking anyone."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "never use...without an adult等价B；A/C违背明确安全规则。"
+    },
+    {
+      "number": 5,
+      "stem": "Why does Mr Chen keep the cards?",
+      "options": [
+        [
+          "A",
+          "To sell the repaired toys."
+        ],
+        [
+          "B",
+          "To collect pupils’ home addresses."
+        ],
+        [
+          "C",
+          "To help later pupils learn from the examples."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "keeps...so that next week pupils learn明确C；A/B没有该目的且卡内容非地址。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.3.json",
+    "sha256": "f6c4abf8602574d7d6a095824c010b8947808462754295da48f634e0a3acde32"
+  },
+  "source_group_id": "p5.dongcheng2025.closedmixed",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 3,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "At Maple School, Friday afternoon is Repair Time. Pupils bring simple toys with loose parts to the activity room. (1) ____ This person checks the toys with them before they try any repairs.\n\nThis Friday, Ella brings a toy train. One wheel keeps falling off. Mr Chen shows her how to put the wheel back safely, and Ella tries it herself. The train can move again. It is ready before the end of the club.\n\nEveryone now stops working and speaks to the group. (2) ____ These short explanations go on small cards beside the repaired toys. Ella writes, “My train had a loose wheel. Now it can move.” Mr Chen keeps the cards so that next week's pupils can learn from earlier examples. Pupils never use sharp tools without an adult beside them. Repair Time is a chance to learn how things work and to care for familiar objects.\n\n前两空共享句子：\n\nA. An adult is always there to help.\nB. The library closes early on Friday.\nC. At the end, everyone explains what was repaired.",
+  "author_answer_vector": [
+    "A",
+    "C",
+    "A",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 170,
+    "stem_English_words": 23,
+    "options_English_words_with_repeated_bank": 88
+  },
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "subgroups": [
+    {
+      "response_numbers": [
+        1,
+        2
+      ],
+      "operation": "sentence_insertion",
+      "shared_candidates": 3
+    },
+    {
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "operation": "reading_choice",
+      "options_each": 3
+    }
+  ]
+}

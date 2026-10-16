@@ -1,0 +1,163 @@
+{
+  "version": "0.1",
+  "id": "advanced-workshop-book-cross-reviews",
+  "grade": "advanced",
+  "questions": 4,
+  "candidate_sha256": "05d6f546998da3cd620373fdb5d8278bb9f685fb03cc1ad541f17828acbcc278",
+  "canonical_response_block_sha256": "3d3e3c09f589d32d7291c08c1398f1271cbcf39a7655e6183f084b876916b1b1",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which reviewer has a different opinion from the others about whether a sufficiently explicit manual can transfer expertise without a resident expert?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D明确manual可单独传递；A/B/C均要求当地判断或随师实践，只有D异于其余三人。需读四文而非只找manual一词。"
+    },
+    {
+      "number": 2,
+      "stem": "Which other reviewer shares reviewer A’s view of the educational value of displaying unfinished work?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A认为未完成作品仍有教育价值，C同意不确定性更有启发；B要求完成，D未讨论公开展示未完成作品。题干other排除锚A。"
+    },
+    {
+      "number": 3,
+      "stem": "Which other reviewer shares reviewer B’s opinion about the adequacy of the evidence for applying the workshop model across different crafts?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "B认为单一有利地点不足推广，A同样反对从一处推所有技艺；C/D均认为跨技艺适用证据充分。other排除B，唯一A。"
+    },
+    {
+      "number": 4,
+      "stem": "Which reviewer has a different view from reviewer C on the suitability of the book’s historical opening?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "C欢迎历史开头，A认为有用、B认为组织上最强；只有D主张先从当代工坊开始而否定当前位置。D不等否定历史材料本身。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.1.json",
+    "sha256": "574ee9a8b2ad964c2bffa42ffab51fb340fad200a24223e924204d0990e16872"
+  },
+  "source_group_id": "advanced.c1.2022.part6",
+  "source_observation": {
+    "source_responses": 4,
+    "options_each": 4,
+    "source_reuse_rule": "explicit_allowed"
+  },
+  "student_passage": "四位虚构评论者讨论一本虚构专业著作；观点仅以这些评论为依据。\n\n### A — Rowan Vale\n\nKnowing Through the Hands is most persuasive when it allows a failed demonstration to remain a failure. Visitors who see an unfinished object can recognise that a craft involves decisions, rather than merely watching a performer produce something admirable. That educational opportunity survives even when nobody leaves with a saleable object. The book's opening history is useful too: it explains why apparently natural workshop routines came to be organised as they are. My reservation concerns the author's ambition to export the approach. Evidence from one unusually well-supported workshop cannot establish that it will work in every craft. Nor can a handbook carry expertise intact between settings; written instructions leave too much of the maker's judgment unstated. The book deserves attention for revealing those judgments, rather than for providing the standardised assessment checklist the author occasionally appears to promise.\n\n### B — Leena Ward\n\nThe historical opening is the volume's strongest organisational decision. Readers need that context before they can understand the modern workshop's rules. I am less enthusiastic about the recommendation to display unfinished projects to paying visitors. A public session has made a promise of completion, and abandoning that promise risks making the audience responsible for a demonstration that has gone wrong. The author's detailed field notes are engaging but remain tied to one exceptionally favourable location. They do not justify the broader claim that the model will succeed across unrelated crafts. Written manuals would not solve this problem, since their directions also require local interpretation. A universal skills checklist is equally unconvincing: selecting visible actions for a test does not capture the practical judgment that allows a maker to act differently when conditions change.\n\n### C — Amir Holt\n\nThe author makes a convincing case for a workshop method that can travel beyond its original setting. The account describes relationships between observation, explanation and practice, rather than a fixed collection of tools; those relationships can be reproduced in other crafts. This does not mean that a manual alone can transport expertise. Learners still need to work alongside someone who knows the practice. They should also be allowed to see unfinished work displayed publicly: uncertainty can make a demonstration more informative than an effortless final performance. I welcome the historical opening, which gives these present-day decisions a necessary background. Unlike some colleagues, however, I see real promise in the proposed common assessment checklist. Applied by trained observers, it can capture the important judgments shared by different makers, and can offer a sound basis for comparing competence across workshops.\n\n### D — Beth Crane\n\nThe book begins in the wrong place. A present-day workshop should have introduced the problem; the historical discussion could have followed once readers knew what needed explaining. The final chapters nevertheless contain a stronger argument than the author seems prepared to make. A sufficiently explicit manual can transfer a craft's essential know-how from one setting to another without a resident expert: procedures can specify how to respond when materials or conditions change. For that reason I regard the author's exportable workshop model as well supported, although not quite for the reasons offered in the book. This should not be confused with enthusiasm for a common assessment checklist. Different crafts require different standards of success, and checking a list of shared visible actions cannot tell us whether those standards have been met. A portable description of a practice and a universal test of its quality are quite different proposals.",
+  "author_answer_vector": [
+    "D",
+    "C",
+    "A",
+    "D"
+  ],
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 573,
+    "stem_English_words": 75,
+    "options_English_words_with_repeated_bank": 32
+  },
+  "paragraphs": [
+    "A — Rowan Vale\n\nKnowing Through the Hands is most persuasive when it allows a failed demonstration to remain a failure. Visitors who see an unfinished object can recognise that a craft involves decisions, rather than merely watching a performer produce something admirable. That educational opportunity survives even when nobody leaves with a saleable object. The book's opening history is useful too: it explains why apparently natural workshop routines came to be organised as they are. My reservation concerns the author's ambition to export the approach. Evidence from one unusually well-supported workshop cannot establish that it will work in every craft. Nor can a handbook carry expertise intact between settings; written instructions leave too much of the maker's judgment unstated. The book deserves attention for revealing those judgments, rather than for providing the standardised assessment checklist the author occasionally appears to promise.",
+    "B — Leena Ward\n\nThe historical opening is the volume's strongest organisational decision. Readers need that context before they can understand the modern workshop's rules. I am less enthusiastic about the recommendation to display unfinished projects to paying visitors. A public session has made a promise of completion, and abandoning that promise risks making the audience responsible for a demonstration that has gone wrong. The author's detailed field notes are engaging but remain tied to one exceptionally favourable location. They do not justify the broader claim that the model will succeed across unrelated crafts. Written manuals would not solve this problem, since their directions also require local interpretation. A universal skills checklist is equally unconvincing: selecting visible actions for a test does not capture the practical judgment that allows a maker to act differently when conditions change.",
+    "C — Amir Holt\n\nThe author makes a convincing case for a workshop method that can travel beyond its original setting. The account describes relationships between observation, explanation and practice, rather than a fixed collection of tools; those relationships can be reproduced in other crafts. This does not mean that a manual alone can transport expertise. Learners still need to work alongside someone who knows the practice. They should also be allowed to see unfinished work displayed publicly: uncertainty can make a demonstration more informative than an effortless final performance. I welcome the historical opening, which gives these present-day decisions a necessary background. Unlike some colleagues, however, I see real promise in the proposed common assessment checklist. Applied by trained observers, it can capture the important judgments shared by different makers, and can offer a sound basis for comparing competence across workshops.",
+    "D — Beth Crane\n\nThe book begins in the wrong place. A present-day workshop should have introduced the problem; the historical discussion could have followed once readers knew what needed explaining. The final chapters nevertheless contain a stronger argument than the author seems prepared to make. A sufficiently explicit manual can transfer a craft's essential know-how from one setting to another without a resident expert: procedures can specify how to respond when materials or conditions change. For that reason I regard the author's exportable workshop model as well supported, although not quite for the reasons offered in the book. This should not be confused with enthusiasm for a common assessment checklist. Different crafts require different standards of success, and checking a list of shared visible actions cannot tell us whether those standards have been met. A portable description of a practice and a universal test of its quality are quite different proposals."
+  ],
+  "opinion_relation_matrix": {
+    "manual_alone_transfer": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true
+    },
+    "unfinished_public_work_educational": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": null
+    },
+    "evidence_sufficient_for_crosscraft_model": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": true
+    },
+    "historical_opening_suitable": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false
+    }
+  },
+  "source_level_equivalence_established": false
+}

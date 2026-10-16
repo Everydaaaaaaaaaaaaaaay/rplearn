@@ -1,0 +1,183 @@
+{
+  "version": "0.2",
+  "id": "primary5-boat-desk-dialogue",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "1a7ad4b42317ebf88b1ddb350e8518eb2876165bcc3216974ddee392304355f5",
+  "canonical_response_block_sha256": "7e5b5c0b431d871e9bf1a8a81a37afa0647c6ea548c74de2410fbace54209c8b",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "How many tickets would you like?"
+        ],
+        [
+          "D",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "E",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C问票数，后答Two adult tickets；其余问时间或给地点、禁犬、改班次，均不匹配该答。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "How many tickets would you like?"
+        ],
+        [
+          "D",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "E",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B问出发时刻，后答three；C人数不匹配，A/D/E是别的回答。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "How many tickets would you like?"
+        ],
+        [
+          "D",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "E",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E说三点满额而两点半有位，后句明确接受half past two；其他选项不包含该改时关系。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "How many tickets would you like?"
+        ],
+        [
+          "D",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "E",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A给blue flag候船地点，其他选项不回答Where。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Please wait beside the blue flag."
+        ],
+        [
+          "B",
+          "What time would you like to leave?"
+        ],
+        [
+          "C",
+          "How many tickets would you like?"
+        ],
+        [
+          "D",
+          "Sorry, animals are not allowed on the boat."
+        ],
+        [
+          "E",
+          "That trip is full, but there are places at half past two."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D说不能携犬，后句明确狗留家；其余不解释这项安排。"
+    }
+  ],
+  "source_index": {
+    "path": "Expansion20261016/ModeSources-v0.3.json",
+    "sha256": "f6c4abf8602574d7d6a095824c010b8947808462754295da48f634e0a3acde32"
+  },
+  "source_group_id": "p5.fangshan2025.dialogue",
+  "source_observation": {
+    "source_responses": 5,
+    "options_each": 5,
+    "source_reuse_rule": "not_explicit"
+  },
+  "student_passage": "Mara: Hello. I would like some tickets for the boat trip.\n\nHelper: (1) ____\n\nMara: Two adult tickets, please.\n\nHelper: (2) ____\n\nMara: At three o'clock, if possible.\n\nHelper: (3) ____\n\nMara: Half past two is fine. Where should we wait?\n\nHelper: (4) ____\n\nMara: Can we bring our dog?\n\nHelper: (5) ____\n\nMara: I see. We will leave him at home with Grandma. Thank you.\n\n共享句子：\n\nA. Please wait beside the blue flag.\nB. What time would you like to leave?\nC. How many tickets would you like?\nD. Sorry, animals are not allowed on the boat.\nE. That trip is full, but there are places at half past two.",
+  "author_answer_vector": [
+    "C",
+    "B",
+    "E",
+    "A",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 100,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 195
+  },
+  "source_original_key_not_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "previous_candidate": {
+    "path": "Expansion20261016/Authored/primary5-boat-desk-dialogue-v0.1.md",
+    "sha256": "0e68a60cd3c0c37008c1796500756f009325c07f0b3e71f7a4fffa3f3b287f1e"
+  },
+  "previous_author_check": {
+    "path": "Expansion20261016/Authored/primary5-boat-desk-dialogue-author-check-v0.1.json",
+    "sha256": "04904b9ce5e7350ab173c835f30c7b612476d0c1a7b0c9503f9b574a17af8f2f"
+  }
+}
