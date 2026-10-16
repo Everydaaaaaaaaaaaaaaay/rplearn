@@ -1,0 +1,311 @@
+{
+  "version": "0.11",
+  "scope": "selected_complete_concrete_modes_only_not_national_level_ranges",
+  "source_batch": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+    "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+  },
+  "author_index": {
+    "path": "FirstRelease/AllLevels/authored-additions-v0.9.json",
+    "sha256": "890a3969b23ac664bb9781b50e9c54cbfaa3149909b18398525462da92ad03da"
+  },
+  "mode_bindings": [
+    {
+      "level": "primary1",
+      "family": "number_word_completion",
+      "source_group_id": "primary1.xuehai.upper.numberwords",
+      "student_inputs": {
+        "number_words": 8,
+        "necessary_media": false
+      },
+      "responses": 8,
+      "source_key": "not_obtained;do not claimsourcegold",
+      "author_response_protocol": "digits only;NFKC/trim/decimal digits/int;leadingzeros allowed;whole number value compared",
+      "parser_for_research": {
+        "path": "Tools/research_number_marking.py",
+        "sha256": "d9deb3e1cf09cb55cde77ea0a6a98b8bea711e46c27ba417327d6db53b6276df"
+      },
+      "national_grade_or_current_cohort_adapted": false,
+      "author_extra_instruction_example": "one → 1;instruction example only,not a scored response"
+    },
+    {
+      "level": "primary2",
+      "family": "word_picture_choice",
+      "source_group_id": "primary2.bzxz.upper.wordpictures",
+      "student_inputs": {
+        "printed_words": 6,
+        "necessary_picture_candidates": 18,
+        "source_physical_pages": [
+          1,
+          2
+        ]
+      },
+      "responses": 6,
+      "options_each": 3,
+      "source_key_hold_numbers": [
+        1,
+        4
+      ],
+      "design_guard": "Use objectively identifiable objects;do not infer family roles from appearance or impose unspecified holiday convention",
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/primary2-six-word-pictures-v0.1.md",
+        "sha256": "36830bed623216791b07dc00a3ef9b3edabc1881a053e68bb37af604cb019ff9"
+      },
+      "author_response_protocol": "chooseoneoftheprintedlabelsonly;noAIsemanticjudgment"
+    },
+    {
+      "level": "primary2",
+      "family": "dialogue_matching",
+      "source_group_id": "primary2.bzxz.upper.questionmatching",
+      "student_inputs": {
+        "questions": 5,
+        "unique_shared_answers": 5,
+        "media": 0
+      },
+      "responses": 5,
+      "source_reuse_rule": "unknown_not_inferred_from_distinct_key",
+      "new_author_guard": "Do not rely on an unstated once rule to disambiguate responses",
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/primary2-five-question-matching-v0.1.md",
+        "sha256": "79fdde8034aa75e559dfbc4d4f90891dcbb60d5da73e455f9566e41c12259718"
+      },
+      "author_response_protocol": "chooseoneoftheprintedlabelsonly;noAIsemanticjudgment"
+    },
+    {
+      "level": "advanced",
+      "family": "choice_cloze",
+      "source_group_id": "advanced.cambridge.c1.paper1.2022.part1",
+      "student_inputs": {
+        "passages": 1,
+        "solved_examples": 1,
+        "example_choices": 4,
+        "source_pages": [
+          2,
+          3
+        ]
+      },
+      "responses": 8,
+      "options_each": 4,
+      "example_is_response": false,
+      "source_body_word_observation": 154,
+      "authored_body_words_first": 210,
+      "authored_body_words_current": 152,
+      "word_metric": "English alphabetic words with apostrophe;gap labels excluded;source example0 bodyblank vs author givenword separately noted",
+      "source_word_observation_is_universal_limit": false,
+      "product_advanced_equals_C1": false,
+      "source_question6_semantic_adjudication": "pending_independent;not reused asnewgold"
+    },
+    {
+      "level": "advanced",
+      "family": "reading_choice",
+      "source_group_id": "advanced.cambridge.c1.paper1.2022.part5",
+      "student_inputs": {
+        "passages": 1,
+        "paragraphs": 5,
+        "source_physical_pages": [
+          8,
+          9
+        ],
+        "necessary_illustrations": false,
+        "audio": false
+      },
+      "responses": 6,
+      "options_each": 4,
+      "load_measure": {
+        "body_English_words_native_raw": 763,
+        "stem_English_words": 90,
+        "option_English_words": 212,
+        "metric": "alphabeticEnglishwordswithapostrophe;rawPDFsplittokensnotnormalized;instructionsandtitleexcluded;notagraphiclayoutmeasure"
+      },
+      "response_operations": [
+        "paragraph-problem paraphrase",
+        "source-reliability explanation",
+        "methodological priority inference",
+        "concept/term anachronism caution",
+        "explicit research-gap scope",
+        "recurring stance synthesis"
+      ],
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/advanced-recipe-evidence-reading-v0.2.md",
+        "sha256": "fcebf0711c360417f30ce39fd214cca83526a0793c0973a18979d5e76a8ae500"
+      },
+      "body_word_observation_not_universal_limit": true,
+      "product_advanced_equals_C1": false,
+      "current_author_check": {
+        "path": "FirstRelease/AllLevels/advanced-recipe-evidence-reading-author-check-v0.2.json",
+        "sha256": "345bea3ef9eae5d43f1ebea3a8672d40129822cf7a32e9cc32537bee1cbab0dc"
+      },
+      "authored_load_measure": {
+        "body_English_words": 721,
+        "title_English_words": 5,
+        "instruction_English_words": 27,
+        "stem_English_words": 69,
+        "option_English_words": 234,
+        "source_body_native_raw_words": 763,
+        "metric": "alphabeticEnglishwordswithapostrophes;instructions/title/stems/optionsseparate;sourcenativesplitwordartifactsmayremain;singleobservationnotuniversallimit",
+        "first_draft_option_English_words": 341
+      },
+      "author_response_protocol": "oneprintedletterA/B/C/D;noAIsemanticgradingofstudenttext"
+    },
+    {
+      "level": "primary5",
+      "family": "sentence_choice",
+      "source_group_id": "primary5.luohu2026.monthly.public.singlechoice",
+      "student_inputs": {
+        "independent_situations": 5,
+        "passages": 0,
+        "necessary_media": false
+      },
+      "responses": 5,
+      "options_each": 3,
+      "source_blank_counts": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "source_group_title": "not_visible;contiguous five-task block",
+      "original_score": "unknown",
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/primary5-five-situation-choices-v0.1.md",
+        "sha256": "f57f0fa72ae21bd8345919b8c97a2a1065befd3b29f73234e5ad6a19f07b1d81"
+      },
+      "current_author_check": {
+        "path": "FirstRelease/AllLevels/primary5-five-situation-choices-author-check-v0.1.json",
+        "sha256": "2cda308585b78fd37743884e922f6c761a7b28fc4c49fb511e53d5c1fe863bc6"
+      },
+      "source_school_administration_verified": false,
+      "author_response_protocol": "one printed A/B/C per independent task;double gaps one compound label;no free prose",
+      "authored_load_measure": {
+        "body_words": 0,
+        "stem_English_words": 55,
+        "candidate_English_words": 31,
+        "instruction_English_words": 0,
+        "metric": "alphabeticEnglishwordswithapostrophes;stemsincludeallsituationmaterial;digitsnotcounted;noindependentpassage"
+      },
+      "source_key_not_gold": true
+    },
+    {
+      "level": "postgraduate",
+      "label": "大学英语六级",
+      "family": "shared_bank",
+      "source_index": {
+        "path": "CET/selected-official-sample-groups-v0.1.json",
+        "sha256": "38b60677ed02999af4117735e0335be87fd5237d6110eba6548729dcffa84ee8"
+      },
+      "source_group_id": "cet6.2016.sample.wordbank",
+      "student_inputs": {
+        "passages": 1,
+        "shared_wordbank_unique_entries": 15,
+        "necessary_media": false
+      },
+      "responses": 10,
+      "source_reuse_rule": "explicit_max_once",
+      "source_word_forms": "printedformsunchanged",
+      "source_is_newly_acquired": false,
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/cet6-computing-allocation-bank-v0.1.md",
+        "sha256": "4999b545bd5109fa5ec33b122742c1acceaf07869cf328a514b39fea3ace71e2"
+      },
+      "current_author_check": {
+        "path": "FirstRelease/AllLevels/cet6-computing-allocation-bank-author-check-v0.1.json",
+        "sha256": "53ddc97db19ab36ae79e074acd9d12028ec11df317c2de2422ba01df3613dc59"
+      },
+      "authored_load_measure": {
+        "body_English_words": 272,
+        "title_English_words": 0,
+        "stem_English_words": 0,
+        "unique_bank_English_words": 15,
+        "student_English_instruction_words": 0,
+        "rendered_option_controls": 150,
+        "unique_bank_entries": 15,
+        "scored_response_positions": 10,
+        "printed_gap_positions": 10,
+        "metric": "alphabeticEnglishwordswithapostrophes;gapnumbersnotwords;ChineseinstructionsandEnglishbankuniqueonce;interfaceoptionrepetitionsseparate"
+      },
+      "author_response_protocol": "exactoneletterAtoOpergap;eachatmostonce;fiveunused;noAIsemanticstudentgrading",
+      "product_or_CEFR_equivalence_established": false
+    },
+    {
+      "level": "undergraduate",
+      "label": "大学英语四级",
+      "family": "shared_bank",
+      "source_index": {
+        "path": "CET/selected-official-sample-groups-v0.1.json",
+        "sha256": "38b60677ed02999af4117735e0335be87fd5237d6110eba6548729dcffa84ee8"
+      },
+      "source_group_id": "cet4.2016.sample.wordbank",
+      "student_inputs": {
+        "passages": 1,
+        "shared_wordbank_unique_entries": 15,
+        "necessary_media": false
+      },
+      "responses": 10,
+      "source_reuse_rule": "explicit_max_once",
+      "source_word_forms": "printedformsunchanged",
+      "source_is_newly_acquired": false,
+      "source_key_hold_numbers": [
+        28,
+        32
+      ],
+      "current_author_representative": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-v0.3.md",
+        "sha256": "db4460b0e953216e353087ba7a72c17db14bc5c29dbb5a6a97536a7425bf6f42"
+      },
+      "current_author_check": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-author-check-v0.3.json",
+        "sha256": "b601b23cc49281bbec47f71dc776bffb8aa622036258a3934e27403d92dd99dc"
+      },
+      "authored_load_measure": {
+        "body_English_words": 208,
+        "title_English_words": 0,
+        "stem_English_words": 0,
+        "unique_bank_English_words": 15,
+        "student_English_instruction_words": 0,
+        "response_controls": 10,
+        "nonempty_option_nodes_in_controls": 150,
+        "unique_bank_entries": 15,
+        "scored_response_positions": 10,
+        "printed_gap_positions": 10,
+        "metric": "alphabeticEnglishwordswithapostrophes;hyphenatedsubwordsseparate;gapnumbers/Chineseinstructions/letterlabelsnotwords;bankonce;controlrepetitionseparate"
+      },
+      "author_response_protocol": "exactoneletterAtoOpergap;eachatmostonce;fiveunused;noAIsemanticstudentgrading",
+      "product_or_CEFR_equivalence_established": false
+    }
+  ],
+  "cross_mode_rules": [
+    "Keep complete groups/examples/options/media;no fixed six-response cut",
+    "Discrete labels or a formally specified closed parser;knownForms alone is not exhaustive legal-set proof",
+    "Separate source answer claims from author reasoned key and independent review",
+    "Source original/archive/body/metadata dates stay separate",
+    "Keep unique shared options and repeated UI controls distinct in load metrics",
+    "No pupil timing/difficulty/CEFR/commercial or production claims from small-source preparation",
+    "Given-word instructions allowing multiple words do not exclude perfect passive participles,habitual modal will or contextual comparison;knownForms alone does not close the legal set.",
+    "A printed root bank plus max-once does not exhaust its legal multiword/derived forms;distinguish actual attested word from independently settled contextual acceptability.",
+    "Final eligibility:past habitual tense remains possible under usually plus initial/Chinese cue;unresolved multiword legal-form sets pause whole group without inventing counterexamples."
+  ],
+  "independent_teacher_student_commercial_production_validated": false,
+  "previous_version": {
+    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.10.json",
+    "sha256": "2dbb788df26a763ca3d322f81f0805b2ed8a5f4dffc92b133d93c9a74a724ab2"
+  },
+  "kindergarten_candidate_not_admitted": {
+    "path": "FirstRelease/AllLevels/kindergarten-greenman-pointing-candidate-v0.1.json",
+    "sha256": "72fee6eaf4ca5bef972dc0c9aca5c81860ab67a1db1ea6a3e7195c57b17d62d6"
+  },
+  "concrete_group_hold_policy": {
+    "path": "FirstRelease/DeterministicMarking/concrete-group-holds-v0.4.json",
+    "sha256": "8976d15f524fe66503b32ce2ac7f2526106142567e9dee555623f6e1563834ea"
+  },
+  "kindergarten_partial_candidates": [
+    {
+      "path": "FirstRelease/AllLevels/kindergarten-greenman-pointing-candidate-v0.1.json",
+      "sha256": "72fee6eaf4ca5bef972dc0c9aca5c81860ab67a1db1ea6a3e7195c57b17d62d6"
+    },
+    {
+      "path": "FirstRelease/AllLevels/kindergarten-super-safari-listening-candidate-v0.1.json",
+      "sha256": "7b43cccc83155aed760f8b4ff28d1cc9725e7ae78022a2d8f147208f2193995e"
+    }
+  ]
+}

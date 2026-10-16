@@ -1,9 +1,9 @@
 {
   "version": "0.1",
-  "status": "active",
+  "status": "delivered_waiting_owner_quality_review",
   "scope": "all16_product_levels_objective_tasks",
   "automation_id": "lingotrip-16-13",
-  "automation_status": "ACTIVE",
+  "automation_status": "DELETED",
   "deleted_previous_automations": [
     "12",
     "12-2",
@@ -611,58 +611,54 @@
     }
   ],
   "storage": "no full snapshots,eachSHAonce;reuse unchanged evidence;preserve originals,unique history,two restore points;regenerable trash may be cleared",
-  "latest_progress": "15levels56groups380responses;10cumulativenewauthors68responses;CET4wordbankversion0.3replacesunusedavailablewithfragiletoavoidpracticalcompetition;12holds123responsesunchanged;no sourceornewauthorincrements",
+  "latest_progress": "finalclosing:15levels54completegroups370responses;14wholegroups133responsespaused;10newauthors68responses;0newsourceorauthorafterclose;2finalholds10responses:pastusualfinishedandunresolvedmultiwordset;kindergartenmissingoriginalaudio/script",
   "current_authored_additions": {
     "path": "FirstRelease/AllLevels/authored-additions-v0.9.json",
     "sha256": "890a3969b23ac664bb9781b50e9c54cbfaa3149909b18398525462da92ad03da"
   },
   "current_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_all_levels_review.py",
   "current_review_checker_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/check_all_levels_review.py --report <new-version-output>",
-  "current_preview_groups": 56,
-  "current_preview_responses": 380,
+  "current_preview_groups": 54,
+  "current_preview_responses": 370,
   "nonmiddle_groups_newly_displayed": 19,
   "current_levels_with_preview": 15,
   "levels_without_current_complete_objective_preview": [
     "kindergarten"
   ],
-  "next_batch_priorities": [
-    "Review remaining14middlepositions:5initial/Chinese context,4phonetic and5phrasebank;do not call current knownForms exhaustive",
-    "Inspect weak best-choice distractors and preserve narrative/genre diversity,using complete fixed-label groups",
-    "Kindergarten original audio/script stillmissing;no repeatedblockedrequests or fabricated child input"
-  ],
+  "next_batch_priorities": [],
   "latest_controls": {
-    "path": "build/english-benchmark-research-20261012/all16-eleventh-controls20261016-v0.1.json",
-    "sha256": "e56ab5ada438a101bafb5ce5b4b5e65a03058ca7759d0e5ed75426e43a359927"
+    "path": "build/english-benchmark-research-20261012/all16-final-controls20261016-v0.1.json",
+    "sha256": "d95a84420c8d887cbf025a89f6a725fdef7d9a4ab620b99836f69666e95e53c6"
   },
   "latest_selected_source_batch": {
     "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
     "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
   },
   "current_nonmiddle_mode_specifications": {
-    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.10.json",
-    "sha256": "2dbb788df26a763ca3d322f81f0805b2ed8a5f4dffc92b133d93c9a74a724ab2"
+    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.11.json",
+    "sha256": "5851a8e2b12738d846eb459603d4a5fa2e030170c2d6d15a6802c8f7bb2a86f8"
   },
   "current_concrete_group_holds": {
-    "path": "FirstRelease/DeterministicMarking/concrete-group-holds-v0.3.json",
-    "sha256": "b81b5eab3f725615afaadfc79cb18d43c4faa89bccca60f958fa5e968d0ae657"
+    "path": "FirstRelease/DeterministicMarking/concrete-group-holds-v0.4.json",
+    "sha256": "8976d15f524fe66503b32ce2ac7f2526106142567e9dee555623f6e1563834ea"
   },
-  "current_middle_preview_groups": 37,
-  "current_middle_preview_responses": 267,
-  "paused_concrete_groups": 12,
-  "paused_concrete_responses": 123,
+  "current_middle_preview_groups": 35,
+  "current_middle_preview_responses": 257,
+  "paused_concrete_groups": 14,
+  "paused_concrete_responses": 133,
   "latest_review_delta": {
     "path": "build/english-benchmark-research-20261012/all16-eleventh-review-delta20261016-v0.1.json",
     "sha256": "21b960c83db3ad16714c404675d18fa4892043249f2d073bd1e5a1f8430fe8fb"
   },
   "pending_browser_review_group_ids": [],
-  "last_completed_batch": "eleventh_CET4_pinned_distractor_revision",
+  "last_completed_batch": "final_objective_delivery_freeze",
   "latest_browser_review": {
     "path": "build/english-benchmark-research-20261012/all16-eleventh-behavior20261016-v0.1.json",
     "sha256": "2945988084bd0519820c3eb18ceda1b92c355141325317aad9cec60377d644e6"
   },
   "latest_eligibility_audit": {
-    "path": "build/english-benchmark-research-20261012/all16-tenth-form-eligibility20261016-v0.1.json",
-    "sha256": "7ccb064ad88161154eb5a3fcbb00c1606ebdf1671458b62ba243ac8d33317ba1"
+    "path": "build/english-benchmark-research-20261012/all16-final-eligibility20261016-v0.1.json",
+    "sha256": "28e11b26d9b0b5c85009ff835ca9629cf2cf88e0a355604c61ed75b63f6b46b7"
   },
   "latest_kindergarten_input_followup": {
     "path": "build/english-benchmark-research-20261012/kindergarten-official-audio-followup20261016-v0.1.json",
@@ -671,5 +667,32 @@
   "current_authored_revisions": {
     "path": "FirstRelease/AllLevels/authored-revisions-v0.1.json",
     "sha256": "db92db9665bf38324e0ff8e0a4b50e9d647609cfac707d453a66f1c56d1b7a53"
-  }
+  },
+  "expansion_frozen_at_utc": "2026-10-16T03:58:57Z",
+  "delivery_manifest": {
+    "path": "FirstRelease/AllLevelsDeliveryManifest-2026-10-16.json",
+    "sha256": "1cd9219fbf67f995aedaf6939060e94fbc8381e5874f244bd50bcb89dbc0b333"
+  },
+  "delivery_report": {
+    "path": "FirstRelease/AllLevelsDeliveryReport-2026-10-16.md",
+    "sha256": "4c75f3c02743ec7c3abf81ec05fd47741914d5b6cbda7501762e47f642e40f5c"
+  },
+  "latest_runtime_validation": {
+    "path": "build/english-benchmark-research-20261012/all16-final-runtime20261016-v0.1.json",
+    "sha256": "8c9567045180db2fee50272d5cdee18d243a1b67c17ce8fa39ce21d6ce6d5783"
+  },
+  "latest_binding_validation": {
+    "path": "build/english-benchmark-research-20261012/all16-final-bindings20261016-v0.1.json",
+    "sha256": "7ef9671f99c842779ced4062dc293262dd0e858e010346ea051af4c426de95a7"
+  },
+  "latest_incremental_archive": {
+    "path": "build/english-benchmark-research-20261012/all16-final-incremental-archive20261016-v0.1.json",
+    "sha256": "7a938e5f771dda29463421ae634278d483981eebf3be1116260f320f90ceaa4b"
+  },
+  "final_browser_validation": "Reused prior actual browser evidence for identical UI;new final eligibility data checked via actual JS minimal DOM + localHTTP + SHA;no new real-browser run claimed",
+  "wait_for_owner_quality_review": true,
+  "old_full_library_goal_complete": false,
+  "automation_deleted_at_utc": "2026-10-16T04:03:33Z",
+  "delivered_at_utc": "2026-10-16T04:03:33Z",
+  "automation_delete_result": "app_tool_confirmed_deleteStatus_deleted"
 }

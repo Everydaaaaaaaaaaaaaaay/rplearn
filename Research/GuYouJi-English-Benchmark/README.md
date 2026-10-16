@@ -1,6 +1,8 @@
 # GuYouJi English Benchmark
 
-**最新授权（2026-10-16）：** 用户要求删除全部旧定时任务并新建全档位任务。已删除`12`、`12-2`、`lingotrip-13`，启用`lingotrip-16-13`；执行[全16档限时计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)与[全档客观题范围策略](FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json)。覆盖启蒙、小一至高三、大学英语四级/六级、高级英语；主观题仍不收集不出题。今天12:00转收尾、13:00前交付并删除任务。中学49组/390回应为继承基线，其他档位尚须重新筛选和扩充，不称全部已交付。下方仅中学限制/任务状态是历史，已由本授权取代。
+**本轮已收尾（2026-10-16）：** [全16档客观题交付报告](FirstRelease/AllLevelsDeliveryReport-2026-10-16.md)与[冻结清单](FirstRelease/AllLevelsDeliveryManifest-2026-10-16.json)为当前入口。审阅页15档54完整大题/370回应，14整组133回应暂停、启蒙未交付；累计10新原创组68回应，来源与历史分层复用。主观题继续暂停，独立教研/学生/商用/生产均未通过；已于北京时间12:03:33删除`lingotrip-16-13`，结束扩展，等待用户查质量。下方批次数量/任务状态为对应时点历史。
+
+**本轮历史授权（2026-10-16）：** 用户要求删除全部旧定时任务并新建全档位任务。已删除`12`、`12-2`、`lingotrip-13`，启用`lingotrip-16-13`；执行[全16档限时计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)与[全档客观题范围策略](FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json)。覆盖启蒙、小一至高三、大学英语四级/六级、高级英语；主观题仍不收集不出题。今天12:00转收尾、13:00前交付并删除任务。中学49组/390回应为继承基线，其他档位尚须重新筛选和扩充，不称全部已交付。下方仅中学限制/任务状态是历史，已由本授权取代。
 
 当前全档第十一批：[作者版本修订0.1](FirstRelease/AllLevels/authored-revisions-v0.1.json)将四级词库未用available替换为fragile，避免与practical竞争；208词正文/10键/15固定项不变，修订不计新题。15档56完整组380回应、累计10新原创组68回应、12暂停组123回应保持；旧冻结保留，明确SHA许可与五个错误拒绝控制、本机浏览器全十空/解析/重置已核。见[模式0.10](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.10.json)与[本批研究](Studies/2026-10-16-CET4-distractor-revision-and-pinned-history.md)。
 

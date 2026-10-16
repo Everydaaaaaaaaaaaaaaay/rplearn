@@ -105,7 +105,7 @@ def check(page):
     if held:
         assert set(held)<=set(old['groups']) and len(held)==data['paused_concrete_groups']==holds['paused_groups']
         assert sum(r['responses']for r in held.values())==holds['paused_responses']
-        assert all(r['whole_group_paused'] and r['counterexamples']for r in held.values())
+        assert all(r['whole_group_paused'] and (r.get('counterexamples') or r.get('unresolved_acceptance_checks'))for r in held.values())
     if plan.get('latest_review_delta'):
         delta=json.loads(load_ref(plan['latest_review_delta']).read_text())
         base=extract(load_ref(delta['base_frozen_page']))

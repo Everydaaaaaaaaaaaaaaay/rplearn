@@ -1,0 +1,4191 @@
+{
+  "version": "0.1",
+  "scope": "all16_objective_timeboxed_review_delivery_not_full_research_completion",
+  "frozen_at_utc": "2026-10-16T04:01:00.745585+00:00",
+  "hard_deadline_utc": "2026-10-16T05:00:00Z",
+  "review_page": "http://127.0.0.1:8766/build/english-benchmark-quality-review/index.html",
+  "rendered_page_sha256": "b89e2a908d4da80563a1780b50af6a0c88442961897b7ee30532e74c3a64d3fa",
+  "no_fullpage_snapshot_created": true,
+  "scope_policy": {
+    "path": "FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json",
+    "sha256": "7f3672804538a9d12d5c7a8be6ddc9f35afc33c690185e0de050bd394b41c7d6"
+  },
+  "governing_references": {
+    "current_authored_additions": {
+      "path": "FirstRelease/AllLevels/authored-additions-v0.9.json",
+      "sha256": "890a3969b23ac664bb9781b50e9c54cbfaa3149909b18398525462da92ad03da"
+    },
+    "current_authored_revisions": {
+      "path": "FirstRelease/AllLevels/authored-revisions-v0.1.json",
+      "sha256": "db92db9665bf38324e0ff8e0a4b50e9d647609cfac707d453a66f1c56d1b7a53"
+    },
+    "current_nonmiddle_mode_specifications": {
+      "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.11.json",
+      "sha256": "5851a8e2b12738d846eb459603d4a5fa2e030170c2d6d15a6802c8f7bb2a86f8"
+    },
+    "current_concrete_group_holds": {
+      "path": "FirstRelease/DeterministicMarking/concrete-group-holds-v0.4.json",
+      "sha256": "8976d15f524fe66503b32ce2ac7f2526106142567e9dee555623f6e1563834ea"
+    },
+    "latest_selected_source_batch": {
+      "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+      "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+    },
+    "latest_review_delta": {
+      "path": "build/english-benchmark-research-20261012/all16-eleventh-review-delta20261016-v0.1.json",
+      "sha256": "21b960c83db3ad16714c404675d18fa4892043249f2d073bd1e5a1f8430fe8fb"
+    }
+  },
+  "inherited_middle_standard": {
+    "path": "FirstRelease/PracticalAuthoringStandard-v0.54.md",
+    "sha256": "b954f64f1d3b3f470eee03f01eccba5f7a79add4e5f574ff44144a848b984f93"
+  },
+  "inherited_sample_batches": {
+    "path": "FirstRelease/Sampling/current-batches-v0.5.json",
+    "sha256": "7a2b775a0a7a39c7fc958b4d7719d5634581dbf32ad024fdda5f1bcc34e255ca"
+  },
+  "inherited_parent_ledger": {
+    "path": "FirstRelease/Sampling/parent-paper-ledger-v0.4.json",
+    "sha256": "4fa84d364ca2848b2505a7b9c8bcddb7810bf2c56833ac36a31583a5fb842290"
+  },
+  "inherited_sample_gaps": {
+    "path": "FirstRelease/Sampling/sample-layer-gaps-v0.33.json",
+    "sha256": "fe0fb20ce0559ed7942248a0cdd499f8334a6436a891c5d157c912d366fdc8ec"
+  },
+  "review_UI_script": {
+    "path": "Tools/quality_review_interactions.js",
+    "sha256": "3d52d9ee09398c6ecaa59d925d93f9c546d0e0b0d6e1020da9b14f7fb87ebfe1"
+  },
+  "review_builder": {
+    "path": "Tools/build_all_levels_review.py",
+    "sha256": "e8bdd38fbc16d95f03a23e74bb90b923feb878053935fdef60c2c3b3b7f41614"
+  },
+  "review_checker": {
+    "path": "Tools/check_all_levels_review.py",
+    "sha256": "67a11282317545e067c643905bd79fa49bbca4ede9a59b313637939247920cb7"
+  },
+  "totals": {
+    "product_levels": 16,
+    "levels_with_complete_group": 15,
+    "complete_groups": 54,
+    "responses": 370,
+    "middle_groups": 35,
+    "middle_responses": 257,
+    "nonmiddle_groups": 19,
+    "nonmiddle_responses": 113,
+    "new_authored_groups_this_run": 10,
+    "new_authored_responses_this_run": 68,
+    "reused_nonmiddle_groups": 9,
+    "reused_nonmiddle_responses": 45,
+    "whole_groups_paused": 14,
+    "paused_responses": 133,
+    "selected_new_source_groups": 6,
+    "selected_new_source_responses": 38,
+    "selected_new_source_parent_labels": 4,
+    "inherited_middle_source_structures": 306,
+    "inherited_middle_parent_labels": 41,
+    "fixed_choice_groups": 52,
+    "fixed_choice_responses": 358,
+    "numeric_protocol_groups": 1,
+    "numeric_protocol_responses": 8,
+    "phonetic_cued_spelling_groups": 1,
+    "phonetic_cued_spelling_responses": 4,
+    "matrix_cells": 320,
+    "source_observed_cells": 68,
+    "unknown_cells": 252
+  },
+  "levels": [
+    {
+      "level": "kindergarten",
+      "label": "幼儿启蒙",
+      "complete_groups": 0,
+      "response_positions": 0,
+      "delivered_families": [],
+      "paused_groups": 0,
+      "unknown_cells": 20
+    },
+    {
+      "level": "primary1",
+      "label": "小学1年级",
+      "complete_groups": 1,
+      "response_positions": 8,
+      "delivered_families": [
+        {
+          "family": "number_word_completion",
+          "label": "数字词转数字",
+          "group_id": "primary1-eight-number-words"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 19
+    },
+    {
+      "level": "primary2",
+      "label": "小学2年级",
+      "complete_groups": 2,
+      "response_positions": 11,
+      "delivered_families": [
+        {
+          "family": "dialogue_matching",
+          "label": "共享候选对话补全",
+          "group_id": "primary2-five-question-matching"
+        },
+        {
+          "family": "word_picture_choice",
+          "label": "单词选图片",
+          "group_id": "primary2-six-word-pictures"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 18
+    },
+    {
+      "level": "primary3",
+      "label": "小学3年级",
+      "complete_groups": 3,
+      "response_positions": 15,
+      "delivered_families": [
+        {
+          "family": "dialogue_matching",
+          "label": "共享候选对话补全",
+          "group_id": "five-everyday-responses"
+        },
+        {
+          "family": "reading_tf",
+          "label": "阅读正误判断",
+          "group_id": "bens-bag-reading"
+        },
+        {
+          "family": "letter_completion",
+          "label": "字母组合补全",
+          "group_id": "primary3-five-letter-completions"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 17
+    },
+    {
+      "level": "primary4",
+      "label": "小学4年级",
+      "complete_groups": 2,
+      "response_positions": 10,
+      "delivered_families": [
+        {
+          "family": "reading_tf",
+          "label": "阅读正误判断",
+          "group_id": "class-garden-reading"
+        },
+        {
+          "family": "shared_bank",
+          "label": "共享词库填空",
+          "group_id": "primary4-school-day-shared-bank"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 18
+    },
+    {
+      "level": "primary5",
+      "label": "小学5年级",
+      "complete_groups": 3,
+      "response_positions": 15,
+      "delivered_families": [
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "inside-the-book-reading"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "primary5-five-situation-choices"
+        },
+        {
+          "family": "table_reading_choice",
+          "label": "表格信息单选",
+          "group_id": "open-day-timetable-reading"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 17
+    },
+    {
+      "level": "primary6",
+      "label": "小学6年级",
+      "complete_groups": 2,
+      "response_positions": 10,
+      "delivered_families": [
+        {
+          "family": "dialogue_matching",
+          "label": "共享候选对话补全",
+          "group_id": "book-sale-dialogue"
+        },
+        {
+          "family": "shared_bank",
+          "label": "共享词库填空",
+          "group_id": "library-word-bank"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 18
+    },
+    {
+      "level": 7,
+      "label": "初中1年级",
+      "complete_groups": 9,
+      "response_positions": 50,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "grade7-boxes-cloze-v0.1"
+        },
+        {
+          "family": "dialogue_choice",
+          "label": "情境对话单选",
+          "group_id": "grade7-zoo-photo-dialogue"
+        },
+        {
+          "family": "dialogue_matching",
+          "label": "共享候选对话补全",
+          "group_id": "grade7-map-shared-dialogue"
+        },
+        {
+          "family": "paragraph_heading_matching",
+          "label": "段落标题配对",
+          "group_id": "grade7-five-club-headings"
+        },
+        {
+          "family": "phonetic_word_completion",
+          "label": "音标提示词汇补全",
+          "group_id": "grade7-phonetic-word-completion"
+        },
+        {
+          "family": "profile_matching",
+          "label": "人物需求/候选配对",
+          "group_id": "grade7-workshop-matching"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "grade7-calendar-reading-v0.1"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "grade7-three-option-sentences"
+        },
+        {
+          "family": "shared_insertion",
+          "label": "共享句空衔接",
+          "group_id": "grade7-small-notebook-insertion"
+        }
+      ],
+      "paused_groups": 4,
+      "unknown_cells": 7
+    },
+    {
+      "level": 8,
+      "label": "初中2年级",
+      "complete_groups": 5,
+      "response_positions": 30,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "grade8-model-boat-labels-eight-cloze"
+        },
+        {
+          "family": "profile_matching",
+          "label": "人物需求/候选配对",
+          "group_id": "grade8-learner-tools-profile-matching"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "grade8-library-survey-reading"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "grade8-language-choice-v0.1"
+        },
+        {
+          "family": "shared_insertion",
+          "label": "共享句空衔接",
+          "group_id": "grade8-river-walk-insertion"
+        }
+      ],
+      "paused_groups": 3,
+      "unknown_cells": 12
+    },
+    {
+      "level": 9,
+      "label": "初中3年级",
+      "complete_groups": 8,
+      "response_positions": 55,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "grade9-cycle-shop-cloze-v0.1"
+        },
+        {
+          "family": "dialogue_matching",
+          "label": "共享候选对话补全",
+          "group_id": "grade9-soup-shared-dialogue"
+        },
+        {
+          "family": "grammar_choice_cloze",
+          "label": "语法选择语篇",
+          "group_id": "grade9-repair-club-grammar-choice"
+        },
+        {
+          "family": "profile_matching",
+          "label": "人物需求/候选配对",
+          "group_id": "grade9-weekend-needs-profile-matching"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "grade9-book-repair-v0.1"
+        },
+        {
+          "family": "reading_tf",
+          "label": "阅读正误判断",
+          "group_id": "grade9-chess-room-true-false"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "grade9-four-option-sentences"
+        },
+        {
+          "family": "shared_insertion",
+          "label": "共享句空衔接",
+          "group_id": "grade9-group-plan-heading-insertion"
+        }
+      ],
+      "paused_groups": 3,
+      "unknown_cells": 9
+    },
+    {
+      "level": 10,
+      "label": "高中1年级",
+      "complete_groups": 5,
+      "response_positions": 49,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "grade10-festival-posters-ten-cloze"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "grade10-roof-reading-v0.2"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "grade10-twenty-sentence-choices"
+        },
+        {
+          "family": "shared_bank",
+          "label": "共享词库填空",
+          "group_id": "grade10-platform-sketchbook-bank"
+        },
+        {
+          "family": "shared_insertion",
+          "label": "共享句空衔接",
+          "group_id": "grade10-club-routines-insertion"
+        }
+      ],
+      "paused_groups": 1,
+      "unknown_cells": 14
+    },
+    {
+      "level": 11,
+      "label": "高中2年级",
+      "complete_groups": 4,
+      "response_positions": 34,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "grade11-exhibition-cloze-v0.1"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "grade11-commitments-reading-v0.2"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "grade11-fifteen-sentence-choices"
+        },
+        {
+          "family": "shared_insertion",
+          "label": "共享句空衔接",
+          "group_id": "grade11-investigation-insertion"
+        }
+      ],
+      "paused_groups": 2,
+      "unknown_cells": 14
+    },
+    {
+      "level": 12,
+      "label": "高中3年级",
+      "complete_groups": 4,
+      "response_positions": 39,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "grade12-bridge-cloze-v0.1"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "grade12-dashboard-reading-v0.1"
+        },
+        {
+          "family": "sentence_choice",
+          "label": "独立句单选",
+          "group_id": "grade12-fifteen-sentence-choices"
+        },
+        {
+          "family": "shared_insertion",
+          "label": "共享句空衔接",
+          "group_id": "grade12-print-room-insertion"
+        }
+      ],
+      "paused_groups": 1,
+      "unknown_cells": 15
+    },
+    {
+      "level": "undergraduate",
+      "label": "大学英语四级",
+      "complete_groups": 2,
+      "response_positions": 15,
+      "delivered_families": [
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "cet4-evening-bus-bookings"
+        },
+        {
+          "family": "shared_bank",
+          "label": "共享词库填空",
+          "group_id": "cet4-photo-verification-bank"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 18
+    },
+    {
+      "level": "postgraduate",
+      "label": "大学英语六级",
+      "complete_groups": 2,
+      "response_positions": 15,
+      "delivered_families": [
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "cet6-recording-restoration"
+        },
+        {
+          "family": "shared_bank",
+          "label": "共享词库填空",
+          "group_id": "cet6-computing-allocation-bank"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 18
+    },
+    {
+      "level": "advanced",
+      "label": "高级英语（专业与学术）",
+      "complete_groups": 2,
+      "response_positions": 14,
+      "delivered_families": [
+        {
+          "family": "choice_cloze",
+          "label": "单选完形",
+          "group_id": "advanced-catalogue-evidence-cloze"
+        },
+        {
+          "family": "reading_choice",
+          "label": "阅读单选",
+          "group_id": "advanced-recipe-evidence-reading"
+        }
+      ],
+      "paused_groups": 0,
+      "unknown_cells": 18
+    }
+  ],
+  "matrix": [
+    {
+      "grade": "kindergarten",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "kindergarten",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary1",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "primary1-eight-number-words"
+    },
+    {
+      "grade": "primary1",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "primary2-five-question-matching"
+    },
+    {
+      "grade": "primary2",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary2",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "primary2-six-word-pictures"
+    },
+    {
+      "grade": "primary3",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "five-everyday-responses"
+    },
+    {
+      "grade": "primary3",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "bens-bag-reading"
+    },
+    {
+      "grade": "primary3",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "primary3-five-letter-completions"
+    },
+    {
+      "grade": "primary3",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary3",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "class-garden-reading"
+    },
+    {
+      "grade": "primary4",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "primary4-school-day-shared-bank"
+    },
+    {
+      "grade": "primary4",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary4",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "inside-the-book-reading"
+    },
+    {
+      "grade": "primary5",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "primary5-five-situation-choices"
+    },
+    {
+      "grade": "primary5",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "open-day-timetable-reading"
+    },
+    {
+      "grade": "primary5",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary5",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "book-sale-dialogue"
+    },
+    {
+      "grade": "primary6",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "library-word-bank"
+    },
+    {
+      "grade": "primary6",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "primary6",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-boxes-cloze-v0.1"
+    },
+    {
+      "grade": 7,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "首字母及汉语提示没有限定现在时，usually也可描述过去习惯；原参考形式不足以直接确定性判分，整组暂停。"
+    },
+    {
+      "grade": 7,
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-zoo-photo-dialogue"
+    },
+    {
+      "grade": 7,
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-map-shared-dialogue"
+    },
+    {
+      "grade": 7,
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-five-club-headings"
+    },
+    {
+      "grade": 7,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "无给词空仍可作多种语义上成立的补全；整组暂停，不能只截去这些空。"
+    },
+    {
+      "grade": 7,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-phonetic-word-completion"
+    },
+    {
+      "grade": 7,
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-workshop-matching"
+    },
+    {
+      "grade": 7,
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-calendar-reading-v0.1"
+    },
+    {
+      "grade": 7,
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-three-option-sentences"
+    },
+    {
+      "grade": 7,
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "独立句未限定现在时，every Monday可描述过去习惯；原稿还明确留人工语境复核。"
+    },
+    {
+      "grade": 7,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "给词允许必要多词动词形式，hope后可用进行不定式；当前只收to help未封闭。"
+    },
+    {
+      "grade": 7,
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade7-small-notebook-insertion"
+    },
+    {
+      "grade": 7,
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 7,
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade8-model-boat-labels-eight-cloze"
+    },
+    {
+      "grade": 8,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "中文提示补全包含自由词义选择，不能用少量同义参考作为全部答案。"
+    },
+    {
+      "grade": 8,
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "冠词/衔接允许参考外合理表达，尚无可靠封闭判分协议。"
+    },
+    {
+      "grade": 8,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade8-learner-tools-profile-matching"
+    },
+    {
+      "grade": 8,
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade8-library-survey-reading"
+    },
+    {
+      "grade": 8,
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade8-language-choice-v0.1"
+    },
+    {
+      "grade": 8,
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "warm的派生名词warmness实际存在；本句情感义及词库适当形式范围需语义裁决，暂缓整组。"
+    },
+    {
+      "grade": 8,
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade8-river-walk-insertion"
+    },
+    {
+      "grade": 8,
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 8,
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-cycle-shop-cloze-v0.1"
+    },
+    {
+      "grade": 9,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "汉语/语境提示允许未封闭的同义词，当前参考集合不足以可靠确定性判分。"
+    },
+    {
+      "grade": 9,
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-soup-shared-dialogue"
+    },
+    {
+      "grade": 9,
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-repair-club-grammar-choice"
+    },
+    {
+      "grade": 9,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "无给词冠词位置可作数量限定，不能只因预期固定词组把合理的一词补全判错。"
+    },
+    {
+      "grade": 9,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-weekend-needs-profile-matching"
+    },
+    {
+      "grade": 9,
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-book-repair-v0.1"
+    },
+    {
+      "grade": 9,
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-chess-room-true-false"
+    },
+    {
+      "grade": 9,
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-four-option-sentences"
+    },
+    {
+      "grade": 9,
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "给词允许多词组合形式；原作者明确说明更广时体分支未穷尽，不能把finishing/having finished少数参考当全部合法形式。收尾时暂停整组，待可靠边界核定。"
+    },
+    {
+      "grade": 9,
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade9-group-plan-heading-insertion"
+    },
+    {
+      "grade": 9,
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 9,
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade10-festival-posters-ten-cloze"
+    },
+    {
+      "grade": 10,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "给词允许多词，方式比较与习惯will存在参考外合理补全，当前集合未封闭。"
+    },
+    {
+      "grade": 10,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade10-roof-reading-v0.2"
+    },
+    {
+      "grade": 10,
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade10-twenty-sentence-choices"
+    },
+    {
+      "grade": 10,
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade10-platform-sketchbook-bank"
+    },
+    {
+      "grade": 10,
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade10-club-routines-insertion"
+    },
+    {
+      "grade": 10,
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 10,
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade11-exhibition-cloze-v0.1"
+    },
+    {
+      "grade": 11,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "作者原说明保留合法近义词的人工语义复核，暂不提供这一完整组。"
+    },
+    {
+      "grade": 11,
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "多词给词空可用完成被动分词，旧核对只排除了主动Having established而漏掉被动形式。"
+    },
+    {
+      "grade": 11,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade11-commitments-reading-v0.2"
+    },
+    {
+      "grade": 11,
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade11-fifteen-sentence-choices"
+    },
+    {
+      "grade": 11,
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade11-investigation-insertion"
+    },
+    {
+      "grade": 11,
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 11,
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade12-bridge-cloze-v0.1"
+    },
+    {
+      "grade": 12,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": true,
+      "state": "paused_requires_semantic_adjudication",
+      "groupId": null,
+      "pauseReason": "多词给词空允许完成被动分词，不能把未列出的合法时体变化直接判错。"
+    },
+    {
+      "grade": 12,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade12-dashboard-reading-v0.1"
+    },
+    {
+      "grade": 12,
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade12-fifteen-sentence-choices"
+    },
+    {
+      "grade": 12,
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "grade12-print-room-insertion"
+    },
+    {
+      "grade": 12,
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": 12,
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "cet4-evening-bus-bookings"
+    },
+    {
+      "grade": "undergraduate",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "cet4-photo-verification-bank"
+    },
+    {
+      "grade": "undergraduate",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "undergraduate",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "cet6-recording-restoration"
+    },
+    {
+      "grade": "postgraduate",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "cet6-computing-allocation-bank"
+    },
+    {
+      "grade": "postgraduate",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "postgraduate",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "advanced-catalogue-evidence-cloze"
+    },
+    {
+      "grade": "advanced",
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "dialogue_choice",
+      "label": "情境对话单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "dialogue_matching",
+      "label": "共享候选对话补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "grammar_choice_cloze",
+      "label": "语法选择语篇",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "passage_form",
+      "label": "语篇语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "profile_matching",
+      "label": "人物需求/候选配对",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "reading_choice",
+      "label": "阅读单选",
+      "observed": true,
+      "state": "existing_complete_candidate_needs_review_UI",
+      "groupId": "advanced-recipe-evidence-reading"
+    },
+    {
+      "grade": "advanced",
+      "family": "reading_tf",
+      "label": "阅读正误判断",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "sentence_choice",
+      "label": "独立句单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "sentence_form",
+      "label": "句中语法/词形填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "shared_insertion",
+      "label": "共享句空衔接",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "table_reading_choice",
+      "label": "表格信息单选",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    },
+    {
+      "grade": "advanced",
+      "family": "word_picture_choice",
+      "label": "单词选图片",
+      "observed": false,
+      "state": "source_evidence_unknown_do_not_invent_grade_adaptation",
+      "groupId": null
+    }
+  ],
+  "group_manifest": [
+    {
+      "id": "grade7-boxes-cloze-v0.1",
+      "grade": 7,
+      "kind": "cloze",
+      "responses": 10,
+      "source_anchors": [
+        "g7.2021.cloze"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-boxes-cloze-v0.1.md",
+        "sha256": "5e5c3cd42ee3f7cbb3a427cf06b6036de37a9f7151e1fd40d1d764e960386416"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-boxes-cloze-author-check-v0.1.json",
+        "sha256": "b0ae70575e2b81afbcdf45e49d1adeae10733438f9f8796f121b958b4cb6f26e"
+      },
+      "payload_sha256": "821c0466cd4dfbac28bb85107e05d905452dd46fc6c0bafb4d90f396611eea08",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade8-model-boat-labels-eight-cloze",
+      "grade": 8,
+      "kind": "cloze",
+      "responses": 8,
+      "source_anchors": [
+        "g8.fengtai2026.cloze"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-v0.1.md",
+        "sha256": "9a93976c320dd5c9fe7be22d778f25d1b48642afbb6324cc7329a383ef67d02d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-model-boat-labels-eight-cloze-author-check-v0.1.json",
+        "sha256": "5c3b4503d3284679ceeb7b1da24de26aae35a7541b22b589ac7ca767d81bb879"
+      },
+      "payload_sha256": "289de3a787fa7cec95ac06edcd74a556d8822d907deb6b6cf6f66e6bcac1bdfb",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-cycle-shop-cloze-v0.1",
+      "grade": 9,
+      "kind": "cloze",
+      "responses": 10,
+      "source_anchors": [
+        "g9.2026.cloze"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-v0.1.md",
+        "sha256": "88754cf5c07e353666bea7c8cc39197db28145e4db44de9a3e1727df47840d68"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-cycle-shop-cloze-author-check-v0.1.json",
+        "sha256": "ba051f458600cfa3461d6c2e82b82e821060a724126afeabecda0f25e571d6ca"
+      },
+      "payload_sha256": "1de32b9bbe2f93dc3a4fe317e9af940158a5b08e463dfcdd1dbef51e14e25a76",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade10-festival-posters-ten-cloze",
+      "grade": 10,
+      "kind": "cloze",
+      "responses": 10,
+      "source_anchors": [
+        "g10.2024.cloze"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-v0.1.md",
+        "sha256": "a01671685075afcc0ea2f8e913ff15c2a83fb55b4a3a8412dc6dc39857870442"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-festival-posters-ten-cloze-author-check-v0.1.json",
+        "sha256": "5d207ce7403311a584bd3c7303cd1dc7c508b39af954d4e11d3d27bdcfb7e2f2"
+      },
+      "payload_sha256": "7925d7f97706bf131642dcb8b8ba81fbcc74566400ad1a7ffbc52ba09212c767",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade11-exhibition-cloze-v0.1",
+      "grade": 11,
+      "kind": "cloze",
+      "responses": 10,
+      "source_anchors": [
+        "g11.2024.cloze"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-exhibition-cloze-v0.1.md",
+        "sha256": "113668be23b33c8a777f9884303137d0dcad6c2b589c4f89e9b821aabfc275aa"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-exhibition-cloze-author-check-v0.1.json",
+        "sha256": "5fb919fb502a3ae78137bb3411519b3aeb032c44880c497c4b619a8770d2c628"
+      },
+      "payload_sha256": "5a9ece7e85d041edd29e0ef334eab847271f12355d57fa775f638bb2f7a0bead",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade12-bridge-cloze-v0.1",
+      "grade": 12,
+      "kind": "cloze",
+      "responses": 15,
+      "source_anchors": [
+        "g12.2025anshan.cloze"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-bridge-cloze-v0.1.md",
+        "sha256": "d975652cb7c93214ac9cc678874c2c26f7c45b50d4e334a4baad8b7e46d968c1"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-bridge-cloze-author-check-v0.1.json",
+        "sha256": "ec399d728d307632bac777fd6c1684d74d686587bf65e94b2e9903597c74f354"
+      },
+      "payload_sha256": "8ffca37c0e6cbca8eb18f867338e17ae95d6b9ecae4abed27358a272a3499551",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-zoo-photo-dialogue",
+      "grade": 7,
+      "kind": "dialogue_choice",
+      "responses": 5,
+      "source_anchors": [
+        "grade7-jinan2025-21cnjy24695341.dialogue"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-zoo-photo-dialogue-v0.1.md",
+        "sha256": "bb829a38dc5c7eecdefb08b0ef7b5194450e06813599c0e0ff10a7178315daca"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-zoo-photo-dialogue-author-check-v0.1.json",
+        "sha256": "f48bc3827662432ccde290b87b68f1fe924d67bd4f3427cfe8d50b26dd915852"
+      },
+      "payload_sha256": "cc840db19ca263543e742d5833120db03484443fb760ee5930d05009114a4891",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-map-shared-dialogue",
+      "grade": 7,
+      "kind": "dialogue_matching",
+      "responses": 5,
+      "source_anchors": [
+        "grade7-hefei2025-21cnjy26607976.dialogue"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-map-shared-dialogue-v0.1.md",
+        "sha256": "873fe3217f19ec7d477286f1cace813b78b09a215d700afdafd46a49181a9851"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-map-shared-dialogue-author-check-v0.1.json",
+        "sha256": "0803af260478378b6a9093e8c22313b1785d1856ed915fc7a24aba9f81e1314d"
+      },
+      "payload_sha256": "4b6fc87f41631ecbd9eabb3f9b7e8c617c15d8eb762cba0563e912f0eb4e26b1",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-soup-shared-dialogue",
+      "grade": 9,
+      "kind": "dialogue_matching",
+      "responses": 5,
+      "source_anchors": [
+        "grade9-chengdu2025-21cnjy23208601.dialogueChoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-soup-shared-dialogue-v0.1.md",
+        "sha256": "2eb353dfa6ddb688515b6cf6f7a71ad4496a5a0443c7c2f5c5c156941b369523"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-soup-shared-dialogue-author-check-v0.1.json",
+        "sha256": "6b5c60de4d3c2d47db3150182723f8efa2bbcccaf55bd3431e2ec75c359a9e72"
+      },
+      "payload_sha256": "ef15deeaedf81df74f4a345e5927ce063c1b9aa787811b3c2b94dda6552c3915",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-repair-club-grammar-choice",
+      "grade": 9,
+      "kind": "grammar_choice_cloze",
+      "responses": 10,
+      "source_anchors": [
+        "grade9-zhongshan2025-21cnjy22278047.grammarChoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-repair-club-grammar-choice-v0.1.md",
+        "sha256": "7c5e5892da77a320b7f3a831ffba536a14201f0d4b82dc300b202e18e0c7c6bb"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-repair-club-grammar-choice-author-check-v0.1.json",
+        "sha256": "3c8079b4086c4829b9e53fe0fe8c1ff629b6414b317bb7be69a5993ee765c25c"
+      },
+      "payload_sha256": "69d5bd7893d27efdcb857d86f809fcdb2272c9596fb401016247624de2df745c",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-five-club-headings",
+      "grade": 7,
+      "kind": "paragraph_heading_matching",
+      "responses": 5,
+      "source_anchors": [
+        "heading-candidate-grade7-jiexiu-2507579320261015r.headingA"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-five-club-headings-v0.1.md",
+        "sha256": "355c27b9c7596ee37fb87703a0a33b6a92d7f8fb4fcb96803970a599d60b6658"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-five-club-headings-author-check-v0.1.json",
+        "sha256": "bbcd8cd1735a5db71f5f466a43ea7bfe820c457706b8e6cae99c267dd9d6513c"
+      },
+      "payload_sha256": "d4cbb602a043f4d5718de8e967974b24d9a57c8645e573adc0925a1e4771613b",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-phonetic-word-completion",
+      "grade": 7,
+      "kind": "phonetic_word_completion",
+      "responses": 4,
+      "source_anchors": [
+        "g7.xicheng2025.phonetic"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-v0.1.md",
+        "sha256": "72f868aba4fa72fe303e01aa7e50f8051926776228ebe6978a9c4372bde1238d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-author-check-v0.1.json",
+        "sha256": "1d8684fc13d3d58140cdb897ef7a7866f5838516a5205db2aad7d152f52d76b8"
+      },
+      "payload_sha256": "1a14049fcfa5697f57c65bdb014e798021a97d555af11d1f00bf0a06f4a5d875",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-workshop-matching",
+      "grade": 7,
+      "kind": "matching",
+      "responses": 3,
+      "source_anchors": [
+        "g7.xicheng2025.matchingA"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade7-workshop-matching-v0.1.md",
+        "sha256": "ae973437e85068a6f7c3f89b68c17af9136c6ecf5f41938e5f166a83966d509f"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade7-workshop-matching-author-check-v0.1.json",
+        "sha256": "01278c63a46850fb31eb1772e7b587cb963ab076a0abc51cd6806fae35896245"
+      },
+      "payload_sha256": "371d4e8f26be653d55e4b0c5b8bc78ee1f15dffeab92738a2eb403637cb362b7",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade8-learner-tools-profile-matching",
+      "grade": 8,
+      "kind": "profile_matching",
+      "responses": 3,
+      "source_anchors": [
+        "g8.2025fengtai.matchingA"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade8-learner-tools-profile-matching-v0.1.md",
+        "sha256": "478d7d6fdc4404c0be6e7bd787031bfcc6fb0d28edd67bce609eda6db3ed7ae6"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade8-learner-tools-profile-matching-author-check-v0.1.json",
+        "sha256": "a2817c94ab2d553f8aec52f359d6eaf87d0acf3f8de2f42dfc11dab675fd0f97"
+      },
+      "payload_sha256": "05b8052893c4fbad169487b208662e31f2cb96000f1d101a6cc603c4f5b5d587",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-weekend-needs-profile-matching",
+      "grade": 9,
+      "kind": "profile_matching",
+      "responses": 5,
+      "source_anchors": [
+        "grade9-nanshan2026-21cnjy25758947.profiles"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-weekend-needs-profile-matching-v0.1.md",
+        "sha256": "6b7b261ceee136d0ee31da795b0d72000b9f78e9c23d9d318a6ff43c87bb6741"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-weekend-needs-profile-matching-author-check-v0.1.json",
+        "sha256": "68b2e046c28e561c316314bf5377cfb01c534b9356acaad4ad500f51e507e051"
+      },
+      "payload_sha256": "a7b2ee54965e26ae68c5e90b32d1ba97d61ddbc980484812d85d672a7ee6b014",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-calendar-reading-v0.1",
+      "grade": 7,
+      "kind": "reading",
+      "responses": 3,
+      "source_anchors": [
+        "g7.2019.readingA"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade7-calendar-reading-v0.1.md",
+        "sha256": "3c58f4766def8a1b90b8698e3f56a6c92613d54c1577b62738345e5eb8a10e4c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade7-calendar-reading-author-check-v0.1.json",
+        "sha256": "231760e04a4f8aa763a7b6ebcc003d87a85d913e8c74aaa1c8a6a41afcea5951"
+      },
+      "payload_sha256": "7b661e5bf4ca0a1a839649d47aff79ffb94573e69ec9b4561e9306955540c28f",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade8-library-survey-reading",
+      "grade": 8,
+      "kind": "reading",
+      "responses": 3,
+      "source_anchors": [
+        "g8.changjun2024.readingA"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-library-survey-reading-v0.1.md",
+        "sha256": "79e7a8743a6e8db6f51bff289b935c98d0a91488118c1081dcbda93372c8c403"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-library-survey-reading-author-check-v0.1.json",
+        "sha256": "cae254670212f0ee7e044cae2de57798032ef0f136d3e01658352bff55bbddbc"
+      },
+      "payload_sha256": "cc9053c5d7a5a851ad233cf8bdad89a7960d502db1c6fde8ed72e50666abeabb",
+      "necessary_embedded_images": 1
+    },
+    {
+      "id": "grade9-book-repair-v0.1",
+      "grade": 9,
+      "kind": "reading",
+      "responses": 5,
+      "source_anchors": [
+        "g9.2026.readingC"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade9-book-repair-v0.1.md",
+        "sha256": "3bda37e304a8abad88accea77d68084d6d7fa91c07aa2737199a9a131426ce00"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade9-book-repair-author-check-v0.1.json",
+        "sha256": "92a5e105432964305f3b23301300678ea3710e99cf84cffb74c06c14b99a7ad8"
+      },
+      "payload_sha256": "60350fd6f4ac889a9204b07f9bf68ff89f52e4c06eee2a788e53ea053e9147e7",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade10-roof-reading-v0.2",
+      "grade": 10,
+      "kind": "reading",
+      "responses": 4,
+      "source_anchors": [
+        "g10.2024.readingD"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-v0.2.md",
+        "sha256": "1ba7553136ea024bffceec8ea78f6db98c9a6db183d123a55b46cca757a773ee"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade10-roof-reading-author-check-v0.2.json",
+        "sha256": "4d547765d3c07ff52e835a45f3e2421bb3ce2113c055279cf6ad12e57a89c6a3"
+      },
+      "payload_sha256": "2d39bf8ccc1803fab3449f24f7f899b95735067fe6880f5d4f6d9a054783c11b",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade11-commitments-reading-v0.2",
+      "grade": 11,
+      "kind": "reading",
+      "responses": 4,
+      "source_anchors": [
+        "g11.2025.readingD"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-v0.3.md",
+        "sha256": "1a98564304286a4c0d706b1239852fab14a0ea95115b96e2042bb1397ef2eff9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade11-commitments-reading-author-check-v0.3.json",
+        "sha256": "5937e3d78965d31b769f1b785c31c4765e504651b08bb927eeb68c757dd5dbf5"
+      },
+      "payload_sha256": "2e3c440488452469202016afd04238194319876bce4a605a51edcac5de27fbbc",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade12-dashboard-reading-v0.1",
+      "grade": 12,
+      "kind": "reading",
+      "responses": 4,
+      "source_anchors": [
+        "g12.2025anshan.readingC"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-v0.1.md",
+        "sha256": "947c4e3533b554285999d781740c576accc17808fa3934cfb2344c303cb2532c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade12-dashboard-reading-author-check-v0.1.json",
+        "sha256": "30d5323c34ba381ce55917385288a1cd65567a1008963d53350978acbc2a457b"
+      },
+      "payload_sha256": "01fed966a44c506cd949655cc901da4dbd1ec06630ccac9ffb7c80fd9bc2b218",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-chess-room-true-false",
+      "grade": 9,
+      "kind": "reading_tf",
+      "responses": 5,
+      "source_anchors": [
+        "grade9-chengdu2025-21cnjy23208601.trueFalse"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-chess-room-true-false-v0.1.md",
+        "sha256": "d23801021e29036fc2eb11192940fd164e60b5394f1dea1c04064fe761ed3989"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-chess-room-true-false-author-check-v0.1.json",
+        "sha256": "86af1d7e72eedc3191e14a6ea598270a25bf40971b0321f771db0afa9be096c6"
+      },
+      "payload_sha256": "0cda95b88d648975eea58aaa234e359fa4ea2e8393d75e58e09754256c436318",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-three-option-sentences",
+      "grade": 7,
+      "kind": "sentence_choice",
+      "responses": 10,
+      "source_anchors": [
+        "g7.xicheng2025.language"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-three-option-sentences-v0.1.md",
+        "sha256": "911947a6f01b8bb006b9d74ffda20ed3a002abc64bb8bb4bbc73d2eb03a60bd2"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-three-option-sentences-author-check-v0.1.json",
+        "sha256": "e473de1b8f46682fd90e5175e29fa0c854caf0556011ab130909e115c97adc49"
+      },
+      "payload_sha256": "2c6d4afb1bfa4a597cb50a8fd26cac51b33fe267954a275d3d2ae60f79930b85",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade8-language-choice-v0.1",
+      "grade": 8,
+      "kind": "language",
+      "responses": 12,
+      "source_anchors": [
+        "g8.2025fengtai.language"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Generated/grade8-language-choice-v0.2.md",
+        "sha256": "4acb69d83b1b5d75e6087d589f0dc637d7de2d5aeb00706087e29468a31caa4c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Generated/grade8-language-choice-author-check-v0.2.json",
+        "sha256": "e22f3cc6e491eb9ac333f00023ab6f7825840d3591e6a3fa2cf0c92749140a1c"
+      },
+      "payload_sha256": "1550c6b9e6579871ad0c5d56db881bc1e5d5dc0d2dfa2646592eb18fdb6cbcd7",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-four-option-sentences",
+      "grade": 9,
+      "kind": "sentence_choice",
+      "responses": 10,
+      "source_anchors": [
+        "grade9-boxing2025-21cnjy24857076.sentenceChoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade9-four-option-sentences-v0.1.md",
+        "sha256": "1c567ed854c7394305e1301f0baf172ea52b13d4eeb051f22c441b9346afa7a5"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade9-four-option-sentences-author-check-v0.1.json",
+        "sha256": "230a80562a30664e3d92f0651929dcea652f5065b574c7b83b66111b7c6b1f47"
+      },
+      "payload_sha256": "ea69bdcd8d20c92ec4331447fc49297ea3824ff3cbcd5ca47e4b7821c32a322d",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade10-twenty-sentence-choices",
+      "grade": 10,
+      "kind": "sentence_choice",
+      "responses": 20,
+      "source_anchors": [
+        "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade10-twenty-sentence-choices-v0.1.md",
+        "sha256": "222174d988da1d76121859a9ea708240af49c42d15b819979ae9c650fafa6f25"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade10-twenty-sentence-choices-author-check-v0.1.json",
+        "sha256": "818133e85b9491e11e2ae26b40f59ab31fc391f4ecff198fd1222a2d8fcc1319"
+      },
+      "payload_sha256": "8671008f73bfe33c4134ed11573bc8ce94375d09401ce616cbb64b1bbdacce82",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade11-fifteen-sentence-choices",
+      "grade": 11,
+      "kind": "sentence_choice",
+      "responses": 15,
+      "source_anchors": [
+        "grade11-tianjin2026-21cnjy26082071.sentenceChoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade11-fifteen-sentence-choices-v0.1.md",
+        "sha256": "13a77b9a377c810c2fa626319bddbab640d0c46c30c4152b2bc9e973c899a4e4"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade11-fifteen-sentence-choices-author-check-v0.1.json",
+        "sha256": "e0ddd5ed0364cd4a3bf41d08230591c843ba2769f309fdbdb6417387bd099b3c"
+      },
+      "payload_sha256": "0e9b35b174f08458aba4e9dd15bc8a4110e36f227c0e669fbf387a07c4d07ad9",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade12-fifteen-sentence-choices",
+      "grade": 12,
+      "kind": "sentence_choice",
+      "responses": 15,
+      "source_anchors": [
+        "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade12-fifteen-sentence-choices-v0.1.md",
+        "sha256": "d878a7acc694405995e92086c176afa1e4be765b22b15261b1156ad24106f4cd"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade12-fifteen-sentence-choices-author-check-v0.1.json",
+        "sha256": "5b6a1ac2d6fb84c5aedb3fdbf4ae65ef0022a3229c7142a5591a46c0c769b882"
+      },
+      "payload_sha256": "a7f24991827ac012bc660d0f82880167466c203bf81f59e4c94ab67903702822",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade10-platform-sketchbook-bank",
+      "grade": 10,
+      "kind": "shared_bank",
+      "responses": 10,
+      "source_anchors": [
+        "grade10-shenzhenlower2026-21cnjy26167651.literatureBank"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade10-platform-sketchbook-bank-v0.1.md",
+        "sha256": "f5e5f3d587ee23f3252f2c5b9e8f76a43ad0fd3d286be66e8cbfeb7c1e0b97ef"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade10-platform-sketchbook-bank-author-check-v0.1.json",
+        "sha256": "c82ca996f273ca20ccf15fb7d6351e7c044c48c13ab36e95c415a6e5a5ef0635"
+      },
+      "payload_sha256": "85267f7c9abecd094f300c44fca8ca197295eba6c87dcaa54592161f0a8c0086",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade7-small-notebook-insertion",
+      "grade": 7,
+      "kind": "shared_insertion",
+      "responses": 5,
+      "source_anchors": [
+        "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Timeboxed/grade7-small-notebook-insertion-v0.1.md",
+        "sha256": "cb5c748fcedcb6c0a7bae20c72afd022aba1c3d12afc99ff256c8646c165518e"
+      },
+      "author_check": {
+        "path": "FirstRelease/Timeboxed/grade7-small-notebook-insertion-author-check-v0.1.json",
+        "sha256": "ee86c2376dbb96f48acc1f922b9cf017c3e8ce9425a138127c350a2ee9ad6383"
+      },
+      "payload_sha256": "4a33eabf2d7a1aa19c0491630eaa6988faa445e578c38d91064e7ee4d5e326de",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade8-river-walk-insertion",
+      "grade": 8,
+      "kind": "insertion",
+      "responses": 4,
+      "source_anchors": [
+        "g8.changjun2024.insertion"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade8-river-walk-insertion-v0.1.md",
+        "sha256": "d3f7da3295422518946af5575e5e71b16084f717725105075d75a6dc42e708bb"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade8-river-walk-insertion-author-check-v0.1.json",
+        "sha256": "a45b859434e877958d74047227cffe51819600d4525a88d0f4b414535fcd4b4d"
+      },
+      "payload_sha256": "143522c92ce9e8e9d841add4f6c6426559bebe68c24c445d258455e9ca661fd1",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade9-group-plan-heading-insertion",
+      "grade": 9,
+      "kind": "insertion",
+      "responses": 5,
+      "source_anchors": [
+        "g9.suzhou2024.insertion"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade9-group-plan-heading-insertion-v0.2.md",
+        "sha256": "b5e3ae1212d14ed4dbd439614f081ef7a74c6a452162bea65106ff524129836c"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade9-group-plan-heading-insertion-author-check-v0.2.json",
+        "sha256": "e824d87bfc7c91a3039ae7c7ac73a05e6192b2bdbb7f53ac23f32d7bf9b5af0d"
+      },
+      "payload_sha256": "2384a1028974ec473e30d1026b8140173d835d6a6489a3f1e8c1e5a5bc12ba4f",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade10-club-routines-insertion",
+      "grade": 10,
+      "kind": "insertion",
+      "responses": 5,
+      "source_anchors": [
+        "g10.wenzhou2025.insertion"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade10-club-routines-insertion-v0.1.md",
+        "sha256": "48b2f0b15b87d61a11c86ab2de038b45517212fdae2124c1383de5a57b720cb9"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade10-club-routines-insertion-author-check-v0.1.json",
+        "sha256": "8b808da7c50dee9414e9c2fda7e8bec16fb996e85d0eeac7f73e34f03aca2e23"
+      },
+      "payload_sha256": "d575c685cb97daa49d41d53e113106532d4605b0e5bca8ad6b2248db9f1b44a6",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade11-investigation-insertion",
+      "grade": 11,
+      "kind": "insertion",
+      "responses": 5,
+      "source_anchors": [
+        "g11.spring2024.insertionE"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade11-investigation-insertion-v0.2.md",
+        "sha256": "7887a0c1359a0f61671a68493ccb2130bd717be1f3cf95011356b5f65705896d"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade11-investigation-insertion-author-check-v0.2.json",
+        "sha256": "daa73ffca41ff1213e3b7ee8b93fc8aa283f8bb93e31d3baed26f1af814544f6"
+      },
+      "payload_sha256": "4d0e0a4736ae9a32f401132e466e5ad0caf9ef98fdbd5efc7e82a8befb95951b",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "grade12-print-room-insertion",
+      "grade": 12,
+      "kind": "insertion",
+      "responses": 5,
+      "source_anchors": [
+        "g12.national2025.insertion"
+      ],
+      "candidate": {
+        "path": "FirstRelease/Expansions/grade12-print-room-insertion-v0.1.md",
+        "sha256": "89567561ce23efe9a931ae4cb5a2359ef2c534671178a9d9098f7f6ad99e14a0"
+      },
+      "author_check": {
+        "path": "FirstRelease/Expansions/grade12-print-room-insertion-author-check-v0.1.json",
+        "sha256": "b98be207c617812e59856a357dcab4bd5709e214d21378b450ce41981ec234bf"
+      },
+      "payload_sha256": "59ce91d17e55070110e9deb535ac35230a147bdc75c1fe3c90ff0c38f7d18991",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "bens-bag-reading",
+      "grade": "primary3",
+      "kind": "reading_tf",
+      "responses": 5,
+      "source_anchors": [
+        "primary3.lower.undated.roomreading"
+      ],
+      "candidate": {
+        "path": "Primary/Grade3/Generated/bens-bag-reading-v0.1.md",
+        "sha256": "2e7716555b16e9ee2cf8cd47093390add631acfa6793979dbfdfa3947bafdbc0"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/bens-bag-reading-v0.1-author-check20261014.json",
+        "sha256": "edbdf7c92de5cf9b4079c614b7b526654e7ec2779537a1b569efdbb6fc9852dc"
+      },
+      "payload_sha256": "d256f3a08b5f112e774ed2333a7dcbc68217fa338b9449e2efff405e38274adf",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "five-everyday-responses",
+      "grade": "primary3",
+      "kind": "dialogue_matching",
+      "responses": 5,
+      "source_anchors": [
+        "primary3.lower.undated.responses"
+      ],
+      "candidate": {
+        "path": "Primary/Grade3/Generated/five-everyday-responses-v0.1.md",
+        "sha256": "beac5a0f5fe47633a66bb615d2435eff46655dc4fa0206f71bf62591ec67366c"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/five-everyday-responses-v0.1-author-check20261014.json",
+        "sha256": "6469089991c1283194451dd23bfc90c5d2c65971e5fa896fe7c1f53edc58960a"
+      },
+      "payload_sha256": "f62c677f2ad196aea16c6a9d342e409002139929bca2e3dd075a7641e37edf68",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "class-garden-reading",
+      "grade": "primary4",
+      "kind": "reading_tf",
+      "responses": 5,
+      "source_anchors": [
+        "primary4.xdf.lower.room_tf"
+      ],
+      "candidate": {
+        "path": "Primary/Grade4/Generated/class-garden-reading-v0.1.md",
+        "sha256": "3950400cad1d89a126e5c07cee8f5d1c60b4c68703c61e032756d1a2ef48b140"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/class-garden-reading-v0.1-author-check20261014.json",
+        "sha256": "d525a89a62402473b7f1e1c01fc1bdbc22388f7ddc70a507eca1f77c12884928"
+      },
+      "payload_sha256": "6223165c3faf465366810910d4c4dee53b6558bae71ce86fde8e6c4417ad0b45",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "inside-the-book-reading",
+      "grade": "primary5",
+      "kind": "reading_choice",
+      "responses": 5,
+      "source_anchors": [
+        "primary5.yogor2024.frog"
+      ],
+      "candidate": {
+        "path": "Primary/Grade5/Generated/inside-the-book-reading-v0.1.md",
+        "sha256": "98bfcf4617ab7ad27595d168c988b06871f12c80854b4807f78baaba32aadb1f"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/inside-the-book-reading-v0.1-author-check20261014.json",
+        "sha256": "bffddcb249c8f40e0495eb8f7610c173d372f0cfc3b45a08b5a8578700a69136"
+      },
+      "payload_sha256": "43b7758974408fcdbdf0851e806278ecfe2bfc9b7dc811570f3fc2d953458b45",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "open-day-timetable-reading",
+      "grade": "primary5",
+      "kind": "table_reading_choice",
+      "responses": 5,
+      "source_anchors": [
+        "primary5.yogor2024.timetable_bonus"
+      ],
+      "candidate": {
+        "path": "Primary/Grade5/Generated/open-day-timetable-reading-v0.1.md",
+        "sha256": "09862c7b0c57ac4053537480db7b86b6f7488b3b8b6b0c6f09a441b858d3cd94"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/open-day-timetable-reading-v0.1-author-check20261014.json",
+        "sha256": "86de6f9b062824503059cc5766f53cfd31d6628647beaadda8cdbea20d0e4185"
+      },
+      "payload_sha256": "a163451cd91e3feebcd7d4e0fd7d7680ffb6df568b8ca22187a8c3894c7f2410",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "book-sale-dialogue",
+      "grade": "primary6",
+      "kind": "dialogue_matching",
+      "responses": 5,
+      "source_anchors": [
+        "primary6.minzhi2016-17.sentence"
+      ],
+      "candidate": {
+        "path": "Primary/Grade6/Generated/book-sale-dialogue-v0.1.md",
+        "sha256": "b8da33f44858c97bc7320a3c428fa3344d5d76b2b39b8ece913f98e3c9ef64e6"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/book-sale-dialogue-v0.1-author-check20261014.json",
+        "sha256": "02f42ed50d6b2a2d0ab3ed545ecdd5b07ff96617885655e55887b059e79964a7"
+      },
+      "payload_sha256": "873c5470ae09bc9eb943f6cd51ec762c69182e8505248f6bcd9daf84fe191c43",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "library-word-bank",
+      "grade": "primary6",
+      "kind": "shared_bank",
+      "responses": 5,
+      "source_anchors": [
+        "primary6.minzhi2016-17.bank"
+      ],
+      "candidate": {
+        "path": "Primary/Grade6/Generated/library-word-bank-v0.2.md",
+        "sha256": "a3469dc6157af793a97dd294d729b088adc92607a8eb8ffcb2d3e53cb7bbfbfd"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/library-word-bank-v0.2-author-check20261014.json",
+        "sha256": "eb6b45c4b91b0bd2bb8b9cb42e90e51cbdc437954e7805731b1e362b3270705a"
+      },
+      "payload_sha256": "94df572596778c9abbef631fcbde01778c29453dd9f87f25d68cad5f48f60bf9",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "cet4-evening-bus-bookings",
+      "grade": "undergraduate",
+      "kind": "reading_choice",
+      "responses": 5,
+      "source_anchors": [
+        "cet4.2016.sample.reading2"
+      ],
+      "candidate": {
+        "path": "CET/Generated/cet4-evening-bus-bookings-v0.1.md",
+        "sha256": "2020905b6709cc808e34aa9a328ef193fbb2cdaadb36b5841f88333bf7738bb1"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/cet4-evening-bus-bookings-v0.1-author-check20261014.json",
+        "sha256": "ff07877217a2322a63669b240dd11168419072e4ba3f9e6d1326cba4bd17a0f9"
+      },
+      "payload_sha256": "0954114fa6f66617567ff921102d7d83e077e65fb58152b2ff4e24425e420527",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "cet6-recording-restoration",
+      "grade": "postgraduate",
+      "kind": "reading_choice",
+      "responses": 5,
+      "source_anchors": [
+        "cet6.2016.sample.reading1"
+      ],
+      "candidate": {
+        "path": "CET/Generated/cet6-recording-restoration-v0.1.md",
+        "sha256": "c3149f656ca5cc4b75595e6e3114b112503137af0709385381c0aee0933f5665"
+      },
+      "author_check": {
+        "path": "build/english-benchmark-research-20261012/cet6-recording-restoration-v0.1-author-check20261014.json",
+        "sha256": "593158b9f0519098708d563c8953ab8572ca067c97580f4ac444960288b7a36e"
+      },
+      "payload_sha256": "3e318032a8b42550ba6979d0aac1f2d4c0c100e32d80d374db80084de14080be",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "primary3-five-letter-completions",
+      "grade": "primary3",
+      "kind": "letter_completion",
+      "responses": 5,
+      "source_anchors": [
+        "primary3.lower.undated.spelling"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/primary3-five-letter-completions-v0.1.md",
+        "sha256": "32a4e8d1bdf64d187a3e63079f2b37d28e7e8144470b18a6404cf3d948b61543"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/primary3-five-letter-completions-author-check-v0.1.json",
+        "sha256": "b37d81e2cbf0a002c65e9007a1ee38795ca42a903fd36942f1f70ff3ab6ddd1e"
+      },
+      "payload_sha256": "33b95e306f9fbedd167488265cd144a1a58f5c2c9612a8d6c7b3d514658a1d0e",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "primary4-school-day-shared-bank",
+      "grade": "primary4",
+      "kind": "shared_bank",
+      "responses": 5,
+      "source_anchors": [
+        "primary4.xdf.lower.bank"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/primary4-school-day-shared-bank-v0.1.md",
+        "sha256": "fcc2860522a50b707f4b195f460b59d90aa501d3ac9a4a670cb03983fa6327b1"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/primary4-school-day-shared-bank-author-check-v0.1.json",
+        "sha256": "b84cc72a3e30b0c53ce42266aa24776add737c3ae9c14b31d39f79e3415e71f0"
+      },
+      "payload_sha256": "6e08d5a0b44cbb5df310be557ce9aebe06344181a21c508415c1bebf2d40e4b1",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "primary1-eight-number-words",
+      "grade": "primary1",
+      "kind": "number_word_completion",
+      "responses": 8,
+      "source_anchors": [
+        "primary1.xuehai.upper.numberwords"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/primary1-eight-number-words-v0.1.md",
+        "sha256": "957af2243b242bb3783146567ce0307218c350e76f9b15a1372209a92fd00212"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/primary1-eight-number-words-author-check-v0.1.json",
+        "sha256": "733a3db17877267fcf9b89f7c665de74aa221fbd39b7c10e1259238e0c9d7376"
+      },
+      "payload_sha256": "699a5582178f54456c826e27094578423717e6d0d2776b8746ad7a2ebb0a52cd",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "advanced-catalogue-evidence-cloze",
+      "grade": "advanced",
+      "kind": "choice_cloze",
+      "responses": 8,
+      "source_anchors": [
+        "advanced.cambridge.c1.paper1.2022.part1"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/advanced-catalogue-evidence-cloze-v0.2.md",
+        "sha256": "b2bcfbb930823f31e481f31b3b600285cd7304f96a9418756cb99900f3998f1b"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/advanced-catalogue-evidence-cloze-author-check-v0.2.json",
+        "sha256": "6551b9207d2caa26641c30b2f760e829ce1081665e926aa08295333bafcbfb1b"
+      },
+      "payload_sha256": "1baf0aedc98cf38e832dcb8b2d72725b0ed395d997926cdf761b06f715f2959c",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "primary2-six-word-pictures",
+      "grade": "primary2",
+      "kind": "word_picture_choice",
+      "responses": 6,
+      "source_anchors": [
+        "primary2.bzxz.upper.wordpictures"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/primary2-six-word-pictures-v0.1.md",
+        "sha256": "36830bed623216791b07dc00a3ef9b3edabc1881a053e68bb37af604cb019ff9"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/primary2-six-word-pictures-author-check-v0.1.json",
+        "sha256": "982edc90bf68a0f7d2cdda091418216e0bb6b0c6c878ff4f6bb0d7ad42e42964"
+      },
+      "payload_sha256": "85e7e661dc6c5322e285bc75cd95e446841414ec885d12e1a39e70084946b901",
+      "necessary_embedded_images": 1
+    },
+    {
+      "id": "primary2-five-question-matching",
+      "grade": "primary2",
+      "kind": "dialogue_matching",
+      "responses": 5,
+      "source_anchors": [
+        "primary2.bzxz.upper.questionmatching"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/primary2-five-question-matching-v0.1.md",
+        "sha256": "79fdde8034aa75e559dfbc4d4f90891dcbb60d5da73e455f9566e41c12259718"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/primary2-five-question-matching-author-check-v0.1.json",
+        "sha256": "1585358a6a1368d9b5bdf78ad5928a6d3b8b546928d9402629f69c8f03a69109"
+      },
+      "payload_sha256": "4ce3cbc75cce34be27416acb16feaa35548093927bf9e8a0eac5a139a39aa8c8",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "advanced-recipe-evidence-reading",
+      "grade": "advanced",
+      "kind": "reading_choice",
+      "responses": 6,
+      "source_anchors": [
+        "advanced.cambridge.c1.paper1.2022.part5"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/advanced-recipe-evidence-reading-v0.2.md",
+        "sha256": "fcebf0711c360417f30ce39fd214cca83526a0793c0973a18979d5e76a8ae500"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/advanced-recipe-evidence-reading-author-check-v0.2.json",
+        "sha256": "345bea3ef9eae5d43f1ebea3a8672d40129822cf7a32e9cc32537bee1cbab0dc"
+      },
+      "payload_sha256": "5543dd041c695212a40f681a2838a921ddb9465e888054ef9b894ce0d8ec0554",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "primary5-five-situation-choices",
+      "grade": "primary5",
+      "kind": "sentence_choice",
+      "responses": 5,
+      "source_anchors": [
+        "primary5.luohu2026.monthly.public.singlechoice"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/primary5-five-situation-choices-v0.1.md",
+        "sha256": "f57f0fa72ae21bd8345919b8c97a2a1065befd3b29f73234e5ad6a19f07b1d81"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/primary5-five-situation-choices-author-check-v0.1.json",
+        "sha256": "2cda308585b78fd37743884e922f6c761a7b28fc4c49fb511e53d5c1fe863bc6"
+      },
+      "payload_sha256": "1571dbd187f01521d892882e37d452b24bd5a3bcc38fef57d87619bb777913e2",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "cet6-computing-allocation-bank",
+      "grade": "postgraduate",
+      "kind": "shared_bank",
+      "responses": 10,
+      "source_anchors": [
+        "cet6.2016.sample.wordbank"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/cet6-computing-allocation-bank-v0.1.md",
+        "sha256": "4999b545bd5109fa5ec33b122742c1acceaf07869cf328a514b39fea3ace71e2"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/cet6-computing-allocation-bank-author-check-v0.1.json",
+        "sha256": "53ddc97db19ab36ae79e074acd9d12028ec11df317c2de2422ba01df3613dc59"
+      },
+      "payload_sha256": "b24ba6475667f1f585f7f69506dbc5a5fc906ccbc5c2b511fe20fff75ac1f43d",
+      "necessary_embedded_images": 0
+    },
+    {
+      "id": "cet4-photo-verification-bank",
+      "grade": "undergraduate",
+      "kind": "shared_bank",
+      "responses": 10,
+      "source_anchors": [
+        "cet4.2016.sample.wordbank"
+      ],
+      "candidate": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-v0.3.md",
+        "sha256": "db4460b0e953216e353087ba7a72c17db14bc5c29dbb5a6a97536a7425bf6f42"
+      },
+      "author_check": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-author-check-v0.3.json",
+        "sha256": "b601b23cc49281bbec47f71dc776bffb8aa622036258a3934e27403d92dd99dc"
+      },
+      "payload_sha256": "1998755169a45fb2e813e411d9770fad88c6d2d260009f1445d98b6137b1f187",
+      "necessary_embedded_images": 0
+    }
+  ],
+  "validation": {
+    "final_contract": {
+      "path": "build/english-benchmark-research-20261012/all16-final-controls20261016-v0.1.json",
+      "sha256": "d95a84420c8d887cbf025a89f6a725fdef7d9a4ab620b99836f69666e95e53c6"
+    },
+    "final_local_script_behavior": {
+      "path": "build/english-benchmark-research-20261012/all16-final-runtime20261016-v0.1.json",
+      "sha256": "8c9567045180db2fee50272d5cdee18d243a1b67c17ce8fa39ce21d6ce6d5783"
+    },
+    "final_eligibility": {
+      "path": "build/english-benchmark-research-20261012/all16-final-eligibility20261016-v0.1.json",
+      "sha256": "28e11b26d9b0b5c85009ff835ca9629cf2cf88e0a355604c61ed75b63f6b46b7"
+    },
+    "reused_latest_real_browser": {
+      "path": "build/english-benchmark-research-20261012/all16-eleventh-behavior20261016-v0.1.json",
+      "sha256": "2945988084bd0519820c3eb18ceda1b92c355141325317aad9cec60377d644e6"
+    },
+    "reused_prior_12hold_real_browser": {
+      "path": "build/english-benchmark-research-20261012/all16-tenth-behavior20261016-v0.1.json",
+      "sha256": "ed7054069666bc21cf31b8de67e949f013567de67890141e1fc5b0490af94653"
+    },
+    "final_bindings": {
+      "path": "build/english-benchmark-research-20261012/all16-final-bindings20261016-v0.1.json",
+      "sha256": "7ef9671f99c842779ced4062dc293262dd0e858e010346ea051af4c426de95a7"
+    },
+    "final_incremental_archive": {
+      "path": "build/english-benchmark-research-20261012/all16-final-incremental-archive20261016-v0.1.json",
+      "sha256": "7a938e5f771dda29463421ae634278d483981eebf3be1116260f320f90ceaa4b"
+    }
+  },
+  "unresolved": [
+    "kindergarten missing full original source audio and T96 script;not delivered",
+    "phonetic four slots have source/author anchors only;no independent lexical/learner validation",
+    "source titles/labels not authenticated school exams or national adaptation",
+    "remaining sample-layer S03-S07 and full library M1-M7 unchanged",
+    "independent teacher,student,commercial rights and production model validation absent",
+    "backend fixed six questions not connected to complete review groups"
+  ],
+  "no_subjective_collection_or_authoring_resumed": true,
+  "production_or_commercial_admission": false,
+  "storage_result": {
+    "current_preservation": {
+      "archive_id": "sha256-history-20261015-v1",
+      "index_path": "/Users/tiantian/Library/Application Support/LingoTrip/EnglishBenchmarkResearch/sha256-history-20261015-v1/current-asset-index.json",
+      "index_sha256": "f6078f962b8d91805ffd9f209b53a6a93c5a789185683f72e2b4e31bdcd890f1",
+      "current_registered_paths": 7149,
+      "current_unique_contents": 7063,
+      "current_unique_bytes": 2748188276,
+      "same_host_only": true
+    },
+    "new_objects_created": 4,
+    "new_bytes_created": 10794,
+    "source_hashes_checked": 10473,
+    "archive_hashes_checked": 7063,
+    "unchanged_verified_fingerprints_reused": true,
+    "new_full_snapshots": 0,
+    "restore_verified": true,
+    "current_cache_mutations": 0
+  }
+}
