@@ -1,0 +1,261 @@
+{
+  "version": "0.1",
+  "id": "grade7-shadow-show-insertion",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "9bb95d2d368559ad9f1a8e7f8a8ec5140ba2966617e411914d1b979377d8a441",
+  "canonical_response_block_sha256": "2ad07b61f455e1b00b99fe2ced1508b9b18cf8bb26b505dd1d94d2194d447850",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1句空",
+      "options": [
+        [
+          "A",
+          "A familiar word at the end of one line was the signal for the next person."
+        ],
+        [
+          "B",
+          "She showed us how our hands could make shapes on the sheet."
+        ],
+        [
+          "C",
+          "The whole story was written in a language none of us knew."
+        ],
+        [
+          "D",
+          "We cut another bird from a thicker card."
+        ],
+        [
+          "E",
+          "We agreed to let only one paper animal appear at a time."
+        ],
+        [
+          "F",
+          "We needed a list of jobs, not just another practice of the story."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B中的She承接teacher，hands/shapes/sheet解释后文dark shapes的由来。A的台词交接、D换鸟、E单角色安排、F分工在此均无相应问题；C与后文all knew words冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "第2句空",
+      "options": [
+        [
+          "A",
+          "A familiar word at the end of one line was the signal for the next person."
+        ],
+        [
+          "B",
+          "She showed us how our hands could make shapes on the sheet."
+        ],
+        [
+          "C",
+          "The whole story was written in a language none of us knew."
+        ],
+        [
+          "D",
+          "We cut another bird from a thicker card."
+        ],
+        [
+          "E",
+          "We agreed to let only one paper animal appear at a time."
+        ],
+        [
+          "F",
+          "We needed a list of jobs, not just another practice of the story."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E明确解决多个动物同现难跟的情节，后文this new plan与only one character直接回指。A仅声音信号不限定只一动物；B手影示范不解决同现；D鸟未引入；F只泛分工不对应one；C与皆懂故事冲突。"
+    },
+    {
+      "number": 3,
+      "stem": "第3句空",
+      "options": [
+        [
+          "A",
+          "A familiar word at the end of one line was the signal for the next person."
+        ],
+        [
+          "B",
+          "She showed us how our hands could make shapes on the sheet."
+        ],
+        [
+          "C",
+          "The whole story was written in a language none of us knew."
+        ],
+        [
+          "D",
+          "We cut another bird from a thicker card."
+        ],
+        [
+          "E",
+          "We agreed to let only one paper animal appear at a time."
+        ],
+        [
+          "F",
+          "We needed a list of jobs, not just another practice of the story."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D的thicker card引出With the stronger piece，解决薄鸟弯折。A台词、B手影、E角色次序、F工作列表均无更硬纸片；C与语言熟悉矛盾。"
+    },
+    {
+      "number": 4,
+      "stem": "第4句空",
+      "options": [
+        [
+          "A",
+          "A familiar word at the end of one line was the signal for the next person."
+        ],
+        [
+          "B",
+          "She showed us how our hands could make shapes on the sheet."
+        ],
+        [
+          "C",
+          "The whole story was written in a language none of us knew."
+        ],
+        [
+          "D",
+          "We cut another bird from a thicker card."
+        ],
+        [
+          "E",
+          "We agreed to let only one paper animal appear at a time."
+        ],
+        [
+          "F",
+          "We needed a list of jobs, not just another practice of the story."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A的end of one line/signal衔接后句that final word与waited。B手影示范、D厚鸟、E单动物、F分工均不引入最后单词这个信号；C直接否定已知台词。"
+    },
+    {
+      "number": 5,
+      "stem": "第5句空",
+      "options": [
+        [
+          "A",
+          "A familiar word at the end of one line was the signal for the next person."
+        ],
+        [
+          "B",
+          "She showed us how our hands could make shapes on the sheet."
+        ],
+        [
+          "C",
+          "The whole story was written in a language none of us knew."
+        ],
+        [
+          "D",
+          "We cut another bird from a thicker card."
+        ],
+        [
+          "E",
+          "We agreed to let only one paper animal appear at a time."
+        ],
+        [
+          "F",
+          "We needed a list of jobs, not just another practice of the story."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F回应无人开灯因为职责不明，后句wrote everyone’s job承接工作表。A台词信号、B手影、D厚卡、E单动物不能解决开灯责任；C与all knew words矛盾。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedLanguageModeBridge-v0.1.json",
+    "sha256": "55aba32ce8578bc140ccd9abf83f627517febee54f2ad861efcf57790e0e4b31"
+  },
+  "source_group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "shared_entries": 6
+    }
+  },
+  "student_passage": "Four friends in our class wanted to put on a short show, but we had no costumes. Our teacher placed a lamp behind a white sheet. (1) ____ We decided to tell a story using the dark shapes instead of dressing up.\n\nAt first, each person tried to move a different paper animal at once. Nobody could follow the story. (2) ____ After this new plan, the audience saw only one character at a time, and the speaker had time to say its name.\n\nA thin paper bird kept bending and falling. Holding it closer to the lamp did not help. (3) ____ With the stronger piece, it stood straight, so we could move it across the sheet without stopping the story.\n\nWe all knew the words in our story well. Each child read the lines live and listened for a cue. (4) ____ The others waited for that final word before moving their figures. We did not need recorded music.\n\nDuring the last practice, nobody turned the lamp on. We had all thought it was someone else's job. (5) ____ The next day, we wrote everyone's job on paper and tested the show quietly before the visitors came.\n\n共享句子：\nA. A familiar word at the end of one line was the signal for the next person.\nB. She showed us how our hands could make shapes on the sheet.\nC. The whole story was written in a language none of us knew.\nD. We cut another bird from a thicker card.\nE. We agreed to let only one paper animal appear at a time.\nF. We needed a list of jobs, not just another practice of the story.",
+  "author_answer_vector": [
+    "B",
+    "E",
+    "D",
+    "A",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 189,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 365,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "required_output_letter_count": 5,
+    "options_English_words_unique_shared_bank": 73
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "completed_passage": "Four friends in our class wanted to put on a short show, but we had no costumes. Our teacher placed a lamp behind a white sheet. She showed us how our hands could make shapes on the sheet. We decided to tell a story using the dark shapes instead of dressing up.\n\nAt first, each person tried to move a different paper animal at once. Nobody could follow the story. We agreed to let only one paper animal appear at a time. After this new plan, the audience saw only one character at a time, and the speaker had time to say its name.\n\nA thin paper bird kept bending and falling. Holding it closer to the lamp did not help. We cut another bird from a thicker card. With the stronger piece, it stood straight, so we could move it across the sheet without stopping the story.\n\nWe all knew the words in our story well. Each child read the lines live and listened for a cue. A familiar word at the end of one line was the signal for the next person. The others waited for that final word before moving their figures. We did not need recorded music.\n\nDuring the last practice, nobody turned the lamp on. We had all thought it was someone else's job. We needed a list of jobs, not just another practice of the story. The next day, we wrote everyone's job on paper and tested the show quietly before the visitors came.",
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence"
+  ],
+  "shared_bank": [
+    [
+      "A",
+      "A familiar word at the end of one line was the signal for the next person."
+    ],
+    [
+      "B",
+      "She showed us how our hands could make shapes on the sheet."
+    ],
+    [
+      "C",
+      "The whole story was written in a language none of us knew."
+    ],
+    [
+      "D",
+      "We cut another bird from a thicker card."
+    ],
+    [
+      "E",
+      "We agreed to let only one paper animal appear at a time."
+    ],
+    [
+      "F",
+      "We needed a list of jobs, not just another practice of the story."
+    ]
+  ],
+  "explicit_spare": 1,
+  "reuse_rule": "not_explicit_do_not_assume_once",
+  "all30local_candidate_fits_counterchecked": true,
+  "body_load_text": "Four friends in our class wanted to put on a short show, but we had no costumes. Our teacher placed a lamp behind a white sheet. (1) ____ We decided to tell a story using the dark shapes instead of dressing up.\n\nAt first, each person tried to move a different paper animal at once. Nobody could follow the story. (2) ____ After this new plan, the audience saw only one character at a time, and the speaker had time to say its name.\n\nA thin paper bird kept bending and falling. Holding it closer to the lamp did not help. (3) ____ With the stronger piece, it stood straight, so we could move it across the sheet without stopping the story.\n\nWe all knew the words in our story well. Each child read the lines live and listened for a cue. (4) ____ The others waited for that final word before moving their figures. We did not need recorded music.\n\nDuring the last practice, nobody turned the lamp on. We had all thought it was someone else's job. (5) ____ The next day, we wrote everyone's job on paper and tested the show quietly before the visitors came."
+}

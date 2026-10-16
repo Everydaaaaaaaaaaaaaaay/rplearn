@@ -1,0 +1,261 @@
+{
+  "version": "0.1",
+  "id": "grade7-question-box-insertion",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "cf24a6148cbb5a3ab3b831f381923d2a48b28bdf5b6c14089463b95e8531d2f9",
+  "canonical_response_block_sha256": "561d70c3058a3007f79ce3d57b9bfedc1242d764b4cf8e6353ce71693b2fd8be",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1句空",
+      "options": [
+        [
+          "A",
+          "We sorted the slips into those two groups before sharing them with the teacher."
+        ],
+        [
+          "B",
+          "Only children who wrote their names were allowed to use the box."
+        ],
+        [
+          "C",
+          "The box was a place to ask for information, not to give orders to the teacher."
+        ],
+        [
+          "D",
+          "This helped pupils who did not want other people to know they had asked."
+        ],
+        [
+          "E",
+          "I put a small box at the back of the room."
+        ],
+        [
+          "F",
+          "The teacher answered that question once for the whole class."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E引入box，后文lid及put it through hole有明确箱体。A需已有纸条组别，C解释用途但尚未引入实体，D需匿名措施，F需重复具体问题，B与后文不需名字冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "第2句空",
+      "options": [
+        [
+          "A",
+          "We sorted the slips into those two groups before sharing them with the teacher."
+        ],
+        [
+          "B",
+          "Only children who wrote their names were allowed to use the box."
+        ],
+        [
+          "C",
+          "The box was a place to ask for information, not to give orders to the teacher."
+        ],
+        [
+          "D",
+          "This helped pupils who did not want other people to know they had asked."
+        ],
+        [
+          "E",
+          "I put a small box at the back of the room."
+        ],
+        [
+          "F",
+          "The teacher answered that question once for the whole class."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A中的those two groups承接lesson/everyday life，后文先后看两组对应分类。C用途、D匿名、E摆箱、F一次回答不解释两组；B与匿名规则冲突。"
+    },
+    {
+      "number": 3,
+      "stem": "第3句空",
+      "options": [
+        [
+          "A",
+          "We sorted the slips into those two groups before sharing them with the teacher."
+        ],
+        [
+          "B",
+          "Only children who wrote their names were allowed to use the box."
+        ],
+        [
+          "C",
+          "The box was a place to ask for information, not to give orders to the teacher."
+        ],
+        [
+          "D",
+          "This helped pupils who did not want other people to know they had asked."
+        ],
+        [
+          "E",
+          "I put a small box at the back of the room."
+        ],
+        [
+          "F",
+          "The teacher answered that question once for the whole class."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D解释不写名字帮助不想被知道的学生，后句They和without...know回指。A分类、C问答非命令、E位置、F一次回答不引出匿名担忧对象；B直接矛盾。"
+    },
+    {
+      "number": 4,
+      "stem": "第4句空",
+      "options": [
+        [
+          "A",
+          "We sorted the slips into those two groups before sharing them with the teacher."
+        ],
+        [
+          "B",
+          "Only children who wrote their names were allowed to use the box."
+        ],
+        [
+          "C",
+          "The box was a place to ask for information, not to give orders to the teacher."
+        ],
+        [
+          "D",
+          "This helped pupils who did not want other people to know they had asked."
+        ],
+        [
+          "E",
+          "I put a small box at the back of the room."
+        ],
+        [
+          "F",
+          "The teacher answered that question once for the whole class."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F的that question指开放时段重复问题，once/whole class解释后文saved time/same information。A分组、C用途、D匿名、E箱位置不保证只答一次人人同知；B违匿名规则。"
+    },
+    {
+      "number": 5,
+      "stem": "第5句空",
+      "options": [
+        [
+          "A",
+          "We sorted the slips into those two groups before sharing them with the teacher."
+        ],
+        [
+          "B",
+          "Only children who wrote their names were allowed to use the box."
+        ],
+        [
+          "C",
+          "The box was a place to ask for information, not to give orders to the teacher."
+        ],
+        [
+          "D",
+          "This helped pupils who did not want other people to know they had asked."
+        ],
+        [
+          "E",
+          "I put a small box at the back of the room."
+        ],
+        [
+          "F",
+          "The teacher answered that question once for the whole class."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C对比提问信息与命令，承接不能保证同意取消测试，后文difference...school rules概括。A分类、D匿名、E摆箱、F一次答复不解释请求非决定权；B违匿名规定。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedLanguageModeBridge-v0.1.json",
+    "sha256": "55aba32ce8578bc140ccd9abf83f627517febee54f2ad861efcf57790e0e4b31"
+  },
+  "source_group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.insertionD",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "shared_entries": 6
+    }
+  },
+  "student_passage": "Some pupils in our class wanted to ask questions about school, but they felt nervous speaking in front of everybody. I tried a simple idea. (1) ____ Anyone could write a question on a slip of paper and put it through a hole in the lid.\n\nBy Friday, the box was full. We found questions about lessons as well as questions about everyday school life. (2) ____ On Monday, our teacher looked first at the lesson questions, then at those about school life.\n\nWe told the class that names were not needed on the slips. (3) ____ They could ask without worrying that everyone would know who had written the question. We did not try to guess whose writing it was.\n\nSeveral pupils asked the same question about the library's opening hours. (4) ____ This saved time and gave everyone the same information. Nobody needed to ask it again that week.\n\nOne slip asked for the next maths test to be cancelled. Our teacher explained that she could answer questions but could not promise to agree to every request. (5) ____ It helped us understand the difference between getting information and deciding school rules.\n\n共享句子：\nA. We sorted the slips into those two groups before sharing them with the teacher.\nB. Only children who wrote their names were allowed to use the box.\nC. The box was a place to ask for information, not to give orders to the teacher.\nD. This helped pupils who did not want other people to know they had asked.\nE. I put a small box at the back of the room.\nF. The teacher answered that question once for the whole class.",
+  "author_answer_vector": [
+    "E",
+    "A",
+    "D",
+    "F",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 184,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 385,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "required_output_letter_count": 5,
+    "options_English_words_unique_shared_bank": 77
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "completed_passage": "Some pupils in our class wanted to ask questions about school, but they felt nervous speaking in front of everybody. I tried a simple idea. I put a small box at the back of the room. Anyone could write a question on a slip of paper and put it through a hole in the lid.\n\nBy Friday, the box was full. We found questions about lessons as well as questions about everyday school life. We sorted the slips into those two groups before sharing them with the teacher. On Monday, our teacher looked first at the lesson questions, then at those about school life.\n\nWe told the class that names were not needed on the slips. This helped pupils who did not want other people to know they had asked. They could ask without worrying that everyone would know who had written the question. We did not try to guess whose writing it was.\n\nSeveral pupils asked the same question about the library's opening hours. The teacher answered that question once for the whole class. This saved time and gave everyone the same information. Nobody needed to ask it again that week.\n\nOne slip asked for the next maths test to be cancelled. Our teacher explained that she could answer questions but could not promise to agree to every request. The box was a place to ask for information, not to give orders to the teacher. It helped us understand the difference between getting information and deciding school rules.",
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence"
+  ],
+  "shared_bank": [
+    [
+      "A",
+      "We sorted the slips into those two groups before sharing them with the teacher."
+    ],
+    [
+      "B",
+      "Only children who wrote their names were allowed to use the box."
+    ],
+    [
+      "C",
+      "The box was a place to ask for information, not to give orders to the teacher."
+    ],
+    [
+      "D",
+      "This helped pupils who did not want other people to know they had asked."
+    ],
+    [
+      "E",
+      "I put a small box at the back of the room."
+    ],
+    [
+      "F",
+      "The teacher answered that question once for the whole class."
+    ]
+  ],
+  "explicit_spare": 1,
+  "reuse_rule": "not_explicit_do_not_assume_once",
+  "all30local_candidate_fits_counterchecked": true,
+  "body_load_text": "Some pupils in our class wanted to ask questions about school, but they felt nervous speaking in front of everybody. I tried a simple idea. (1) ____ Anyone could write a question on a slip of paper and put it through a hole in the lid.\n\nBy Friday, the box was full. We found questions about lessons as well as questions about everyday school life. (2) ____ On Monday, our teacher looked first at the lesson questions, then at those about school life.\n\nWe told the class that names were not needed on the slips. (3) ____ They could ask without worrying that everyone would know who had written the question. We did not try to guess whose writing it was.\n\nSeveral pupils asked the same question about the library's opening hours. (4) ____ This saved time and gave everyone the same information. Nobody needed to ask it again that week.\n\nOne slip asked for the next maths test to be cancelled. Our teacher explained that she could answer questions but could not promise to agree to every request. (5) ____ It helped us understand the difference between getting information and deciding school rules."
+}
