@@ -178,6 +178,10 @@ def build_current(output):
                              'observed': True, 'state': 'source_observed_deterministic_admission_pending',
                              'groupId': None, 'groupIds': [],
                              'pauseReason': '已核完整给词构形源组，但合法词形与规范化尚未审准，暂不出题或自动判分。'})
+    for pending in plan.get('pending_authority_cells', []):
+        key = (pending['grade'], pending['family'])
+        labels[pending['family']] = pending['label']
+        cells.setdefault(key, {**pending, 'observed': True, 'groupId': None, 'groupIds': []})
     cet_index_path = BASE/'CET/selected-official-sample-groups-v0.1.json'
     data['existing_CET_source_index'] = ref(cet_index_path)
     for source in json.loads(cet_index_path.read_text())['groups']:

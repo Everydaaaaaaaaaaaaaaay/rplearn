@@ -119,6 +119,15 @@ def check(page):
     assert len({c['label'] for c in data['cells']})==len({c['family'] for c in data['cells']}), 'Duplicate display family alias'
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
     assert not(set(c['family']for c in data['cells']) & set(policy['paused_families']))
+    if plan.get('pending_authority_cells'):
+        current_sources=json.loads(load_ref(plan['current_authority_sources']).read_text())['groups']
+        current_source_ids={s['id'] for s in current_sources}
+        for pending in plan['pending_authority_cells']:
+            cell=next(c for c in data['cells'] if c['grade']==pending['grade'] and c['family']==pending['family'])
+            assert cell['observed'] and set(pending['source_group_ids']) <= current_source_ids
+            if not cell['groupId']:
+                assert cell['state']==pending['state'] and cell['pauseReason']==pending['pauseReason']
+                assert not cell['groupIds'], 'Source-only evidence cannot count as an authored variant'
     reachable = [ident for c in data['cells'] for ident in c.get('groupIds', [c['groupId']] if c['groupId'] else [])]
     assert len(reachable)==len(set(reachable)) and set(reachable)==set(data['groups'])
     for cell in data['cells']:
