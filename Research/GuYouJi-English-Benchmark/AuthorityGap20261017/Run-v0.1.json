@@ -1,0 +1,101 @@
+{
+  "version": "0.1",
+  "status": "first_authority_and_source_batch_verified_continue_sources_and_multi_originals",
+  "owner_authorized_on": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "hard_deadline_local": "2026-10-17T12:00:00+08:00",
+  "hard_deadline_utc": "2026-10-17T04:00:00Z",
+  "closing_only_from_local": "2026-10-17T11:00:00+08:00",
+  "closing_only_from_utc": "2026-10-17T03:00:00Z",
+  "automation_id": "17-12",
+  "goal_is_active": true,
+  "scope_policy": {
+    "path": "Expansion20261016/ScopePolicy-v0.1.json",
+    "sha256": "8bb36afc0c3473d8867820f244cf8650ff7f1627d7f47cdb3c9a21c3108d2ce7"
+  },
+  "authority_atlas": {
+    "path": "AuthorityGap20261017/AuthorityAtlas-v0.1.json",
+    "sha256": "2cd1204efaa6ad2846ee84c9ed90d4c353ad97b9eaf0c1137c8f64ec26050ecb"
+  },
+  "selected_source_modes": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "baseline_coverage": {
+    "path": "Expansion20261016/Coverage-v0.1.json",
+    "sha256": "dbfaf8b6855cf0bc2ba2b6453635d584d1dde18dd27dde31f7b0342e1d674997"
+  },
+  "active_review_run": {
+    "path": "FirstRelease/ActiveReviewRun.json",
+    "sha256": "2e8e1ad1a254a9952e8d996cc74edad9221810a43c3651cd995c5b64fb23fe71"
+  },
+  "baseline_complete_groups": 76,
+  "baseline_responses": 505,
+  "baseline_paused_groups": 14,
+  "baseline_paused_responses": 133,
+  "target_originals_per_confirmed_level_type": 3,
+  "priorities": [
+    "finish authority-first level/type and approximate-requirement atlas",
+    "separate no source/no full input/no key/source exists but no author/no3authors",
+    "target genuine ordinary papers and official complete reference samples;retain identity conflicts",
+    "fill confirmed eligible types before more variants;then at least3whole originalsperleveltype wherepossible",
+    "multi-variant page,whole-input/key/behaviorchecks,versionedfreeze,incrementalarchive,focusedcommit,deliverby12anddeleteautomation"
+  ],
+  "new_selected_source_groups": 15,
+  "new_source_responses": 93,
+  "new_authored_groups": 0,
+  "page_version_still_prior76": true,
+  "required_outputs_pending": [
+    "authoring_expansion",
+    "multi_variant_review_page",
+    "final_delivery_report_and_manifest"
+  ],
+  "do_not_recover_subjective_or_kindergarten": true,
+  "current_cache": "build/english-benchmark-authority-20261017",
+  "last_completed_step": "authority_visual_review_and15_complete_source_modes",
+  "followup_notes": [
+    "p3Dongchengwebtitle saysrealbutstudentheader says样卷andregionnotinbody;do_not_countasordinarytrueexam",
+    "Kunshan21636201explicitlyadaptedtolatesttextbook;notoriginalexam",
+    "p5Taizhoucloze16—20missing19/20candidatesatpaymentboundary;notfull,do_notpayortruncate",
+    "CET2016questionpapers/transcripts/keysalreadyonhand,originalaudiomissing;notnosource",
+    "p4Fangshanmixedreading54—59includesopen59;wholegrouppaused,no5MCextractupgrade",
+    "p5old8gap3choicepatternstillsimulationonly;new5/6banksnotcorroboration",
+    "C1Part3fullstemadmissibilitypendingbeforeauthoring;Part7paragraphinsertionnotmiddlesentencegap"
+  ],
+  "teacher_student_commercial_production_unverified": true,
+  "storage_policy": {
+    "path": "Storage/retention-policy.json",
+    "sha256": "0e4644dc6109aa18e804eb42087fb845963393666d1d24b9c51e57381cf5ca40"
+  },
+  "gap_queue": {
+    "path": "AuthorityGap20261017/GapQueue-v0.1.json",
+    "sha256": "bfd6bb0367cd89be714848383cafeb3b758405c6652e227a81fccfc813966d41"
+  },
+  "original_coverage_target": {
+    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.1.json",
+    "sha256": "86a76e523960ca7ed8f9bc6539f4ce1530060d6f3ea27fa2cd548dcdea3f1ca7"
+  },
+  "inherits_content_scope_not_old_automation_metadata": true,
+  "minimum_new_groups_for3target_if_all_source_modes_admitted": 179,
+  "registered_first_batch": {
+    "processing_run_id": "authority17-map-and15-targeted-source-modes-v0.1",
+    "raw_acquisitions": 14,
+    "processing_outputs": 46
+  },
+  "human_type_map": {
+    "path": "AuthorityGap20261017/AuthorityTypeMap-v0.1.md",
+    "sha256": "0a7dec1edfb9f4d1220fa38dfc42d99e5b3b4ee1779f934d7a50739a32f82239"
+  },
+  "latest_study": {
+    "path": "Studies/2026-10-17-authority-first-type-map-and-targeted-source-gaps.md",
+    "sha256": "f24985c21f4679c84392a69772455298b28f775bf4898b2b3fdf5503096c9295"
+  },
+  "latest_incremental_archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.1.json",
+    "sha256": "621aaaa37207532e9521dafbd2332eca87d9b60008f78b47c094dbd4749617bd"
+  },
+  "authority_layer_check": {
+    "path": "build/english-benchmark-authority-20261017/authority-layer-check-v0.1.json",
+    "sha256": "d0263d6e8952d6febddfa302650bbb275895afc2ce6bbda13ac97dcf5b7574fb"
+  }
+}

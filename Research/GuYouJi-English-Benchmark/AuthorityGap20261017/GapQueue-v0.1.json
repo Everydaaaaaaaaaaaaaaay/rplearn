@@ -1,0 +1,211 @@
+{
+  "version": "0.1",
+  "authority_atlas": {
+    "path": "AuthorityGap20261017/AuthorityAtlas-v0.1.json",
+    "sha256": "2cd1204efaa6ad2846ee84c9ed90d4c353ad97b9eaf0c1137c8f64ec26050ecb"
+  },
+  "selected_source_modes": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "original_targets": {
+    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.1.json",
+    "sha256": "86a76e523960ca7ed8f9bc6539f4ce1530060d6f3ea27fa2cd548dcdea3f1ca7"
+  },
+  "gaps": [
+    {
+      "id": "A01",
+      "levels": [
+        "primary1",
+        "primary2"
+      ],
+      "type": "nonpaper_closed_listen_identify_and_command",
+      "authority_ids": [
+        "moe-assessment2025",
+        "revision2025-selected"
+      ],
+      "state": "full_card_prompt_audio_or_teacher-script_bundle_missing",
+      "priority": 1,
+      "action": "Find actual nonpaper assessment task cards with closed observable response;news plans alone not full sample;free speech/performance stays paused."
+    },
+    {
+      "id": "A02",
+      "levels": [
+        "primary3",
+        "primary6"
+      ],
+      "type": "dialogue_or_reading_sequence_ordering",
+      "authority_ids": [
+        "luxu-school2024"
+      ],
+      "state": "official_school_type_observed_but_full_unadapted_task_missing",
+      "priority": 1,
+      "action": "Find genuine ordinary full ordering groups and preserve given start/end,all sentences/pictures,one ordering task vs number of placements;do not accept adapted Kunshan as unmodified paper."
+    },
+    {
+      "id": "A03",
+      "levels": [
+        "primary4"
+      ],
+      "type": "full_closed_reading_choice",
+      "authority_ids": [
+        "luxu-school2024"
+      ],
+      "state": "targeted_Fangshan_section_contains_open_question59_whole_group_paused",
+      "priority": 1,
+      "action": "Seek another genuinely complete closed group,not the first5choices of mixed54—59."
+    },
+    {
+      "id": "A04",
+      "levels": [
+        "primary5"
+      ],
+      "type": "ordinary_school_choice_cloze_and_old8gap3choice_specific_mode",
+      "authority_ids": [
+        "luxu-school2024"
+      ],
+      "state": "Taizhou5gapcloze_has_last2candidates_missing;old8gapmode_simulation_only",
+      "priority": 1,
+      "action": "Find complete ordinary source body/all per-gap options/key;new5/6sharedbanks do not validate8gap3choice;no paid access or guessed options."
+    },
+    {
+      "id": "A05",
+      "levels": [
+        "undergraduate",
+        "postgraduate"
+      ],
+      "type": "CET_six_listening_subtypes",
+      "authority_ids": [
+        "cet4-format",
+        "cet6-format"
+      ],
+      "state": "original_questionpaper_transcript_key_already_cached_original_recording_missing",
+      "priority": 2,
+      "action": "Find matching original audio for the existing exact2016sample or genuine new fully paired sample;do not swap scripts and unrelated audio or synthesize source recording.",
+      "existing_pdf": "build/english-benchmark-research-20261012/raw/cet2016-official-outline20261014.pdf",
+      "question_spans": {
+        "CET4": [
+          150,
+          151,
+          152,
+          153,
+          154
+        ],
+        "CET6": [
+          172,
+          173,
+          174,
+          175
+        ]
+      },
+      "script_spans": {
+        "CET4": [
+          162,
+          163,
+          164,
+          165,
+          166,
+          167
+        ],
+        "CET6": [
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190
+        ]
+      },
+      "key_pages": {
+        "CET4": 168,
+        "CET6": [
+          190,
+          191
+        ]
+      },
+      "full_listening_input_claimed": false
+    },
+    {
+      "id": "A06",
+      "levels": [
+        "advanced"
+      ],
+      "type": "C1_reference_listening4parts",
+      "authority_ids": [
+        "c1-format"
+      ],
+      "state": "official_format_known_complete_matching_audio_script_paper_key_not_yet_selected",
+      "priority": 2,
+      "action": "Collect only full reference bundles;selected_parts1and3MC,part4double_matching,part2constrained_completion_needs_admission;no productequivalence."
+    },
+    {
+      "id": "A07",
+      "levels": [
+        "junior1",
+        "junior2",
+        "junior3",
+        "senior1",
+        "senior2",
+        "senior3"
+      ],
+      "type": "middle_listening_and_exact_local_variants",
+      "authority_ids": [
+        "moe-curriculum2022",
+        "bjeea-listening",
+        "shmeea-junior2025",
+        "zhejiang-senior2025"
+      ],
+      "state": "written_family_coverage_relatively_broad_not_all_types_or_inputs_complete",
+      "priority": 2,
+      "action": "Reuse306/41 source inventory and sample-layer-gapsS03—S07;target necessarymedia/specificmode secondsource;do not relaunch broad duplicate reading downloads."
+    },
+    {
+      "id": "A08",
+      "levels": [
+        "advanced"
+      ],
+      "type": "professional_academic_level_boundary",
+      "authority_ids": [
+        "cse2024",
+        "c1-format"
+      ],
+      "state": "ability_framework_available_no_single_product_wide_fixed_exam_taxonomy",
+      "priority": 2,
+      "action": "Keep C1 source-specific modes,broaden professional/academic task evidence without mechanical CEFR/product mapping;do not invent fixed nationwide format."
+    },
+    {
+      "id": "A09",
+      "levels": [
+        "primary3"
+      ],
+      "type": "claimed_real_Dongcheng_candidate",
+      "authority_ids": [
+        "moe-curriculum2022"
+      ],
+      "state": "web_title_real_but_student_body_says_sample;region_not_in_studentheader",
+      "priority": 4,
+      "action": "Retain original/candidate conflict;not ordinary real-paper gap closure.",
+      "evidence": {
+        "path": "build/english-benchmark-authority-20261017/p3-physical1.png",
+        "sha256": "7e30fe9b6ec34b525eeed86bfb44b8bd56a321861859c0be8e568e5d1f3949f5"
+      }
+    },
+    {
+      "id": "A10",
+      "levels": [
+        "advanced"
+      ],
+      "type": "stem_form_and_open_form_admission",
+      "authority_ids": [
+        "c1-format"
+      ],
+      "state": "Part3fullsource_ready_but_legal_forms_need_audit;Part2andPart4not_authorized_as_auto_markable_from_key_alone",
+      "priority": 2,
+      "action": "Retain source mode knowledge;do not restore open semantic/partial-credit tasks;prove bounded legal responses before authoring Part3."
+    }
+  ],
+  "fifteen_source_modes_ready_not_fifteen_unique_new_families": true,
+  "observed_not_in_this_paper_unknown_distinct": true,
+  "subjective_and_kindergarten_not_required": true
+}
