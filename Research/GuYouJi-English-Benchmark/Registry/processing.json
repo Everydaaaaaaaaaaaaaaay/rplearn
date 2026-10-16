@@ -29821,6 +29821,81 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "authority17-inherited-zhengzhou-audio-pairing-discovery-v0.1",
+      "source_acquisition_ids": [
+        "zhengzhou-index6-english-page1-asset1",
+        "zhengzhou-index6-english-page2-asset1",
+        "zhengzhou-index6-english-page3-asset1",
+        "zhengzhou-index6-english-page4-asset1"
+      ],
+      "tool": "readcachedofficialpage/key;boundedlocalcachedWhisperASRdiscoveryonly;targetedwebsearch;noauthoring",
+      "tool_version": "0.1",
+      "parameters": [
+        "0newsource/media/download;officialupperGrade10/11originaltracksandkeyPDFsreused;no_original/frozenoverwrite",
+        "two60—240sprobes;Grade10sourcequestions2—5alignasautomaticdraft;firstdialoguecut/extraASRrepeatsnotverified;Grade11stdoutUTF8decodeinterruptedtxtpreserved;noASRgold",
+        "actualGrade10questionpreview22187416first5wholeSectionA;extendedpartonly13/fullscriptmissing;generic21962082firstquestiondiff/lower23380202notpaired;21962065webfailed",
+        "oldofficialkeyPDF3/4pagesnoverifiedfullscript;do_notnewcollectsubjectiverubrics;no_new_admission_or_author",
+        "onlyboundedtxt/logresults;temporaryPCMremoved;noexternalAIorproductioneval;138/890/96cells21at3;27source180/13guidanceunchanged"
+      ],
+      "pages": 9,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/primary-gap-followup-web52-v0.1.json",
+          "bytes": 26500,
+          "sha256": "3b3343f190036edada06f940e52c3ccb9509739dce5d38bcaf5f2a4b89713c50",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/primary-gap-followup-web53-v0.1.json",
+          "bytes": 28529,
+          "sha256": "1eead45a92efd20df9048f03b4fc2e860d44943ea433c5f66bb63c9bafd2a9f5",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/primary-gap-followup-web54-v0.1.json",
+          "bytes": 26008,
+          "sha256": "9bdc5e4de843bf0955615717f45f5d0f0beeb5967f8e0b0919508b12b08b8e1d",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/primary-gap-followup-web55-v0.1.json",
+          "bytes": 27502,
+          "sha256": "4534f59d6b1433d2b285efb6cdd3788a465337f4a122d4d3706000d5dcebff33",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/zhengzhou-index6-english-page2-180s-automatic-probe-v0.1.txt",
+          "bytes": 995,
+          "sha256": "673309ccde448627d7a0f18555e6dfd96364b694135ff9d880fafb40dd609262",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/zhengzhou-index6-english-page4-180s-automatic-probe-v0.1.log",
+          "bytes": 4570,
+          "sha256": "f044d7e31ffd5e0e650714ccf8086b383f2fe7f0464ccbe27a49e51df2d95f35",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/zhengzhou-index6-english-page4-180s-automatic-probe-v0.1.txt",
+          "bytes": 969,
+          "sha256": "d1c584189df81376ac5d074b6cbe4c36b7c22b9d16961c200ce9db902332edd7",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/inherited-zhengzhou-audio-followup-v0.1.json",
+          "bytes": 6279,
+          "sha256": "a8b1d1d621147a819ca9dfb159fa89022158bcbbfedaf1c6f08725e883b54cf5",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/zhengzhou-pending-layer-check-v0.1.json",
+          "bytes": 489,
+          "sha256": "76afda5006d2823758aa8044b5d49e81e49296cc9d06a54c945b9498887ec95a",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
