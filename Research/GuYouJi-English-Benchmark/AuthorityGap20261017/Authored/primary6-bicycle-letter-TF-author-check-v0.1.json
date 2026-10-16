@@ -1,0 +1,149 @@
+{
+  "version": "0.1",
+  "id": "primary6-bicycle-letter-TF",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "4de049d1509bb3df69a01747dc1bb411c628a5d7f5acc60aa4f5369f60e9a3be",
+  "canonical_response_block_sha256": "5a436bc0b9634c715deea1201b6cc7840d5f26a3572c05439a243a276d54247b",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Alex is spending the weekend with his parents.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "开头明确staying with Aunt May且You are at home；F有父母不同行的显式证据，非把未提当假。"
+    },
+    {
+      "number": 2,
+      "stem": "The blue bicycle had a broken front light.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "A man brought it in because its front light was broken，it接blue bicycle；T与明确故障相符。"
+    },
+    {
+      "number": 3,
+      "stem": "Aunt May painted the blue bicycle.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "She changed the light,but she did not paint the bicycle明示未涂漆，F。"
+    },
+    {
+      "number": 4,
+      "stem": "Alex is writing at the kitchen table.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Now...writing...at her kitchen table直述，T；不是从午饭地点猜书写地点。"
+    },
+    {
+      "number": 5,
+      "stem": "Alex and Aunt May will ride bicycles to the museum tomorrow.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "We will go by bus because...rain明确交通为bus，F与ride bicycles冲突。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.6.json",
+    "sha256": "75e7d4971573da09d556637e68d4cc67a8477154e7eb6249fcd2d696ba4b56f5"
+  },
+  "source_group_id": "p6.wuwei2024.readingTF",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "letters": 1,
+      "passages": 1,
+      "source_letter_signature": "Mary",
+      "response_operation": "binary_TF",
+      "score_total_printed": 10,
+      "per_response_score": "not_printed_do_not_infer"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "labels": [
+        "T",
+        "F"
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Dear Mum and Dad,\nI am staying with Aunt May this weekend. You are at home, and I miss you. This morning, we went to her bicycle workshop. She repairs bicycles there. I counted the tools while she worked on a blue bicycle. A man brought it in because its front light was broken. Aunt May changed the light, but she did not paint the bicycle. We had sandwiches in the small kitchen at noon. Now I am writing this letter at her kitchen table. Aunt May is checking a red bicycle in the workshop. Tomorrow, we will visit a bicycle museum. We will go by bus because it is going to rain. I will bring my raincoat.\nLove,\nAlex",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "F",
+    "T",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 120,
+    "stem_English_words": 40,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Dear Mum and Dad,\nI am staying with Aunt May this weekend. You are at home, and I miss you. This morning, we went to her bicycle workshop. She repairs bicycles there. I counted the tools while she worked on a blue bicycle. A man brought it in because its front light was broken. Aunt May changed the light, but she did not paint the bicycle. We had sandwiches in the small kitchen at noon. Now I am writing this letter at her kitchen table. Aunt May is checking a red bicycle in the workshop. Tomorrow, we will visit a bicycle museum. We will go by bus because it is going to rain. I will bring my raincoat.\nLove,\nAlex",
+  "letter_count": 1,
+  "passage_count": 1,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "no_image_or_audio_required": true,
+  "source_Q1implicit_negative_not_reproduced": true
+}

@@ -1,0 +1,149 @@
+{
+  "version": "0.1",
+  "id": "primary6-train-letter-TF",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "4060c568715103581a0c3f7e7d313b1ae18f2d4a03c2723067d51723f6118eb1",
+  "canonical_response_block_sha256": "d256397b6ca38db5ed273108966f56f7132ebef2f075c205e0273cd56eabffab",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Dad is travelling with Robin and Mum today.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "首句Mum and I及Dad...cannot travel with us today直接否定，F。"
+    },
+    {
+      "number": 2,
+      "stem": "Their lunch is in the small green bag.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "small green bag has our lunch明示，T；blue bag装clothes，不混袋。"
+    },
+    {
+      "number": 3,
+      "stem": "Mum bought the tickets at the station this morning.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "bought tickets online yesterday明确方式和时间均不同，F。"
+    },
+    {
+      "number": 4,
+      "stem": "Robin is reading a comic while Mum checks the seats.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "wanted to buy comic但bookshop closed；I am writing this letter instead明示当前写信而非读comic。"
+    },
+    {
+      "number": 5,
+      "stem": "They need to go to platform four.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "worker...platform number four,not number two as first thought明确更正后的站台，T。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.6.json",
+    "sha256": "75e7d4971573da09d556637e68d4cc67a8477154e7eb6249fcd2d696ba4b56f5"
+  },
+  "source_group_id": "p6.wuwei2024.readingTF",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "letters": 1,
+      "passages": 1,
+      "source_letter_signature": "Mary",
+      "response_operation": "binary_TF",
+      "score_total_printed": 10,
+      "per_response_score": "not_printed_do_not_infer"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "labels": [
+        "T",
+        "F"
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Dear Dad,\nMum and I are at the station. You are working in another city, so you cannot travel with us today. Our train leaves at ten twenty, and it is only nine fifty now. We have two bags. The blue bag has our clothes, and the small green bag has our lunch. Mum bought the tickets online yesterday. She is checking our seats on her phone. I wanted to buy a comic, but the bookshop is closed. I am writing this letter instead. A worker has just told us that our platform is number four, not number two as we first thought. We will find it after I finish writing. Grandma will meet us at the other station this afternoon.\nLove,\nRobin",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "F",
+    "F",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 123,
+    "stem_English_words": 42,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Dear Dad,\nMum and I are at the station. You are working in another city, so you cannot travel with us today. Our train leaves at ten twenty, and it is only nine fifty now. We have two bags. The blue bag has our clothes, and the small green bag has our lunch. Mum bought the tickets online yesterday. She is checking our seats on her phone. I wanted to buy a comic, but the bookshop is closed. I am writing this letter instead. A worker has just told us that our platform is number four, not number two as we first thought. We will find it after I finish writing. Grandma will meet us at the other station this afternoon.\nLove,\nRobin",
+  "letter_count": 1,
+  "passage_count": 1,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "no_image_or_audio_required": true,
+  "source_Q1implicit_negative_not_reproduced": true
+}

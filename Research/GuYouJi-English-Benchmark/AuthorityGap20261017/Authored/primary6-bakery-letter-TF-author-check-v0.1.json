@@ -1,0 +1,149 @@
+{
+  "version": "0.1",
+  "id": "primary6-bakery-letter-TF",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "32900125f25e8967c67d2e55e8ecf778a4490b30369dbe9c819a403584b9255a",
+  "canonical_response_block_sha256": "a21454d376acb970d77e0fd18b58a06656a552d15b5f7268f6f8d650d17f73cb",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Rose wrote the price cards before the bakery opened.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "helped before it opened结合Rose wrote prices on small cards，T支持任务与时序。"
+    },
+    {
+      "number": 2,
+      "stem": "Jamie and Rose made the bread in the morning.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Her father made bread；We did not make any bread ourselves双重明确反证，F。"
+    },
+    {
+      "number": 3,
+      "stem": "The bakery opened at eight o’clock.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "opened at half past eight明确8:30，与8:00不同，F。"
+    },
+    {
+      "number": 4,
+      "stem": "Rose returned the woman’s umbrella to her.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "woman left umbrella；Rose ran outside with it；woman thanked her形成完整归还链，不误认rolls遗失。"
+    },
+    {
+      "number": 5,
+      "stem": "Jamie and Rose plan to walk to their neighbour after lunch.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "末两句after lunch take rolls to neighbour且will walk there together明确T，不需要外部地理知识。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.6.json",
+    "sha256": "75e7d4971573da09d556637e68d4cc67a8477154e7eb6249fcd2d696ba4b56f5"
+  },
+  "source_group_id": "p6.wuwei2024.readingTF",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "letters": 1,
+      "passages": 1,
+      "source_letter_signature": "Mary",
+      "response_operation": "binary_TF",
+      "score_total_printed": 10,
+      "per_response_score": "not_printed_do_not_infer"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "labels": [
+        "T",
+        "F"
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Dear Grandpa,\nI am visiting my cousin Rose today. You are resting at home, so I will tell you about our morning. Her family has a bakery. Rose and I helped before it opened. I put paper bags by the door, and Rose wrote the prices on small cards. Her father made the bread. We did not make any bread ourselves. The shop opened at half past eight. A woman bought six rolls, but she left her umbrella by the counter. Rose saw her through the window and ran outside with it. The woman thanked her. Now we are having lunch upstairs. After lunch, we will take a box of rolls to our neighbour. We will walk there together.\nLove,\nJamie",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "F",
+    "T",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 121,
+    "stem_English_words": 42,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Dear Grandpa,\nI am visiting my cousin Rose today. You are resting at home, so I will tell you about our morning. Her family has a bakery. Rose and I helped before it opened. I put paper bags by the door, and Rose wrote the prices on small cards. Her father made the bread. We did not make any bread ourselves. The shop opened at half past eight. A woman bought six rolls, but she left her umbrella by the counter. Rose saw her through the window and ran outside with it. The woman thanked her. Now we are having lunch upstairs. After lunch, we will take a box of rolls to our neighbour. We will walk there together.\nLove,\nJamie",
+  "letter_count": 1,
+  "passage_count": 1,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "no_image_or_audio_required": true,
+  "source_Q1implicit_negative_not_reproduced": true
+}

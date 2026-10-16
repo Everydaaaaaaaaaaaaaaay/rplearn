@@ -1,0 +1,198 @@
+{
+  "version": "0.7",
+  "previous_followup": {
+    "path": "AuthorityGap20261017/SourceFollowup-v0.6.json",
+    "sha256": "8e4c24e04f40f771ff4b9c7cc71731695bb123b4a0c3ad207912244ccccf4afc"
+  },
+  "purpose": "target actual nonpaper,unadapted ordering,ordinarycloze gaps;not genericreading expansion",
+  "discovery_logs": [
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-01-v0.1.json",
+      "sha256": "3290fcc0161315aa03e6b5e68a3a3d1c95c75f69a6497e18bc7fd1906e0f910e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-02-v0.1.json",
+      "sha256": "89eb136f6764b57fcb781c6eb51efa18211bd6c0533f96b32773976f32c21f02"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-03-v0.1.json",
+      "sha256": "2f8c7d43c6096f85ca3633d29c2b42c97ba733f538ae1e265229b4bc83b7bf47"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-04-v0.1.json",
+      "sha256": "da7a1f205b80c4830a7a560315bcba7205aaed4d57df7e2458558bf213532416"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-05-v0.1.json",
+      "sha256": "4dbe835137e7f4e94782eb647c07c23a212582fc3110c11e07b3c4fabe60de98"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-06-v0.1.json",
+      "sha256": "655d7a9c63c6086e278c649e8ae4b69aa144823b32537c06d94de4288ae46421"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-07-v0.1.json",
+      "sha256": "a366c8251b7b9ed881910a633a330c446330691a6306e701ca04dc0951a052ac"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-08-v0.1.json",
+      "sha256": "2b816d36685632a2ed180534d2d323f300bd7200a5ce0867fa4c8641977a1356"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-09-v0.1.json",
+      "sha256": "db08147ad58796030a80d5cabddaa06cdaa98826297501f3473ff8d891d4ab61"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-10-v0.1.json",
+      "sha256": "42a0587a1919b8bf0b76d93e8e52c5739fc02ab263adb87b1dc2451754ebb9ca"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/source-gap-followup-v24.json",
+      "sha256": "4c55547881489c94d73eaace5fc06928f98371c35c3a6b959d949c9e401f1577"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/source-gap-followup-v25.json",
+      "sha256": "0ed5be9c4d09ee305aafe16cd03305a8e2e2af5783ee4201dcb8e31ee067db03"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/source-gap-followup-v26.json",
+      "sha256": "92c8c1002298ea33df0fbc59778e7d63bd68d555f9dbbb10ba7f9c842fcaf3d5"
+    }
+  ],
+  "selected_complete_source_groups_added": 1,
+  "selected_responses_added": 5,
+  "findings": [
+    {
+      "id": "p3_panshi_ordering",
+      "status": "selected_complete_public_text_only",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/p3-panshi15151078-public-original-v0.1.html",
+        "sha256": "d05328a9ba902d930cbafa75859e1f1010965ee363a6d62cb262105edb92e39c"
+      },
+      "native": {
+        "path": "build/english-benchmark-authority-20261017/p3-panshi-ordering-native-v0.2.json",
+        "sha256": "d38043858a520d0d5e0324723e0f8ba19a712324f9a63a1ae66fa3f12ad4ca22"
+      },
+      "limits": "grade/termconfirmedpreview1;regiontitleonly;onlyfirst2of4previewpages;orderingtextallvisibleinHTML;sourcekeynone;notwholepaperorvisualgold"
+    },
+    {
+      "id": "p6_feixian_jyeoo",
+      "url": "https://www.jyeoo.com/pp/cb86125e-b44b-4dda-9c50-61e1a9391813",
+      "status": "not_admitted_grade_task_identity_mismatch",
+      "evidence": "headingsandbodiesmismatch:sectionIwordphrasebutHelloGirls/Boys;IIjobsandhobbiesbutgrape/great/green;VIII2poemsbutJennySaturdaystory;Vstoryheading/dialoguebody;notcrediblefulloriginalgrade6paper"
+    },
+    {
+      "id": "nonpaper_schoolplan",
+      "url": "https://www.nsfz.cn/primary/articlelists/details/pid/99/article_cate_id/100/article_id/10002981.html",
+      "status": "searchreportonly_repeatedtimeout;singing/freespeechnotclosedtaskbundle"
+    },
+    {
+      "id": "zjg_nonpaper",
+      "url": "https://wgyxx.zjgedu.cn/syxb/xxb/content_207723",
+      "status": "officialschoolnews_only;imagecarddrawingreported_butactualfullcardsets/instructionsnotpublished"
+    },
+    {
+      "id": "p5_taizhou",
+      "status": "samepaidboundary19/20stillmissing;notredownloaded"
+    },
+    {
+      "id": "p5_guangming2023",
+      "url": "https://max.book118.com/html/2024/0120/8022015132006027.shtm",
+      "status": "previewendsatclozeheading;nofullinput;notadmitted"
+    },
+    {
+      "id": "p5_erqi_tesoon",
+      "url": "https://www.tesoon.com/resource/detail?rid=190314",
+      "status": "publisheraudio_scriptkeyresource;actualstudentpictures/candidatesnotshown;notcompleteinput"
+    },
+    {
+      "id": "p6_wuwei20786088_readingTF",
+      "status": "selected_complete_public_transcription_not_original_visual",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/p6-wuwei20786088-public-v0.1.html",
+        "sha256": "cf7cc76780d1a89eee4da771f3c44a53bad77c23bdf045e308e7396e4911a8f0"
+      },
+      "native": {
+        "path": "build/english-benchmark-authority-20261017/p6-wuwei20786088-readingTF-native-v0.1.json",
+        "sha256": "4fee85d6d793877f7245b3b907f970f2312dbeee35cef1e7b4a3f27fe9177903"
+      },
+      "limits": "grade6/studentheader;termunknownupperwebtitleonly;ordinaryrepostlabelnotauthenticated;HTMLtwocolumninterleavingpreserved;noPDFvisual;Q1implicitabsence_notgold;5x3oddwordpolysemynotadmitted",
+      "desktop_attempt": "publicpagelinkgzipwireanddecodedchallengepreserved;notexecutedorbypassed;IABexternalpage2timeouts_thenlocalbrowserrecovered;nooriginalPDFobtained"
+    }
+  ],
+  "source_unknown_not_filled_with_simulation": true,
+  "this_batch_added_source_modes": 0,
+  "this_batch_added_source_positions": 0,
+  "this_batch_added_authors": 0,
+  "this_batch_added_authored_positions": 0,
+  "primary_followup_this_batch": {
+    "logs": [
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web47-v0.1.json",
+        "sha256": "84faec03841766c7dffc3747891ed23bf95acc961e0fc878958192d2a6ca94a3"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web48-v0.1.json",
+        "sha256": "00a1bf139f5b20049b88489cdd2d30723168e2eaab66f637a598ca55be590f38"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web49-v0.1.json",
+        "sha256": "2038ec57b7525c899750a06c8e69638fd9606c028424936c61216e28c76b1d76"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web50-v0.1.json",
+        "sha256": "fa7b896ec15ff5bf14fb1e62f913b10c42f8ccc35279fd4cb7e42407bb542633"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web51-v0.1.json",
+        "sha256": "3c33fb8dc109271ac92912e50a203579cede29c735a9d7c1bfd10d844185a218"
+      }
+    ],
+    "new_authority_document": {
+      "path": "build/english-benchmark-authority-20261017/primary12-hpe-guide-review-v0.1.json",
+      "sha256": "fb07bc81cc0383550684e698a39643e268b2de9f230a0f6e5e1f3d6a29820bfa"
+    },
+    "new_authority_document_not_closed_mode": true,
+    "nsfz": "samearticle10002981asalreadyregistered20261014_differentroute;no_duplicate_download_or_newsourcecount",
+    "primary5": "sameTaizhou40812stillcutsafter18/19and20candidatesmissing;exactphrasefollowupnopeercompanionfound;do_notguess",
+    "primary6": "newPingshanJyeoosearchpreviewheading/itemidentitymismatchsamefailureclassasFeixian;otherresultsordinaryidentitynotproven_orpractice/simulation/listeningnotwrittenordering;noneadmitted",
+    "official_primary2_textbook": "searchfoundCbernofficial2lowertextbook;notdownloaded_or_claimedasassessment;teacheractivitycouldinformboundary_butnotactualfixedclosedassessment",
+    "no_invented_source_key": true
+  },
+  "inherited_followup_selected_groups": 1,
+  "inherited_followup_selected_positions": 5,
+  "senior_audio_followup_this_batch": {
+    "logs": [
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web52-v0.1.json",
+        "sha256": "3b3343f190036edada06f940e52c3ccb9509739dce5d38bcaf5f2a4b89713c50"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web53-v0.1.json",
+        "sha256": "1eead45a92efd20df9048f03b4fc2e860d44943ea433c5f66bb63c9bafd2a9f5"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web54-v0.1.json",
+        "sha256": "9bdc5e4de843bf0955615717f45f5d0f0beeb5967f8e0b0919508b12b08b8e1d"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web55-v0.1.json",
+        "sha256": "4534f59d6b1433d2b285efb6cdd3788a465337f4a122d4d3706000d5dcebff33"
+      }
+    ],
+    "inherited_official_audio_and_key_report": {
+      "path": "build/english-benchmark-authority-20261017/inherited-zhengzhou-audio-followup-v0.1.json",
+      "sha256": "a8b1d1d621147a819ca9dfb159fa89022158bcbbfedaf1c6f08725e883b54cf5"
+    },
+    "state": "officialupperaudioandkeysreused;Grade10first5questiontextfound;verifiedscriptsstillmissing;notadmitted",
+    "new_downloads": 0,
+    "new_source_modes": 0,
+    "no_cross_term_or_generic_year_pairing": true,
+    "ASR_partial_hallucinations_not_gold": true
+  },
+  "targeted_public_index_followup": {
+    "path": "build/english-benchmark-authority-20261017/source-gap-new-candidate-attempts-v0.1.json",
+    "sha256": "e9824e648fc15ed69cdfc4d88cd406ee7af5e1b8ec281f9faebf3b799b14448f"
+  },
+  "no_upgrade_from_title_or_searchsnippet": true
+}
