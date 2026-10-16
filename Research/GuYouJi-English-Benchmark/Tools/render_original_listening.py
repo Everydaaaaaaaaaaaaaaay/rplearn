@@ -59,9 +59,23 @@ def read_pcm(path):
 def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
-    assert draft['family'] == 'listening_extract_choice'
-    assert len(draft['clips']) == draft['extracts'] == 3
-    assert [len(c['questions']) for c in draft['clips']] == [2, 2, 2]
+    family=draft['family']
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching'}
+    if family=='listening_extract_choice':
+        assert len(draft['clips']) == draft['extracts'] == 3
+        assert [len(c['questions']) for c in draft['clips']] == [2,2,2]
+    else:
+        assert len(draft['clips'])==1
+        clip=draft['clips'][0]
+        if family=='listening_interview_choice':
+            assert len(clip['questions'])==6
+            assert set(t['speaker'] for t in clip['turns'])=={'I','G1','G2'}
+            assert all(len(q['options'])==4 for q in clip['questions'])
+        else:
+            assert len(clip['questions'])==10
+            assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
+            assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
+            assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
     assert draft['source_hear_each_piece_twice']
     assert output.resolve().is_relative_to((REPO/'build').resolve())
     output.mkdir(parents=True, exist_ok=True)
@@ -104,19 +118,27 @@ def render(manuscript, output, version='0.1'):
             def pause(seconds):
                 append(b'\0\0'*int(seconds*RATE), 'silence')
 
-            intro=f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
+            response_numbers=([2*number-1,2*number] if family=='listening_extract_choice'
+                              else list(range(1,len(clip['questions'])+1)))
+            intro=(f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
+                   if family=='listening_extract_choice' else draft['audio_introduction'])
             append(speech(intro,'Daniel',165),'introduction',intro)
-            pause(8)
+            pause(clip.get('preview_seconds',8))
+            repeat_prompt=('Now you will hear the extract again.' if family=='listening_extract_choice'
+                           else 'Now you will hear the whole recording again.')
             for repeat in [1,2]:
                 if repeat == 2:
-                    prompt='Now you will hear the extract again.'
-                    append(speech(prompt,'Daniel',165),'repeat_instruction',prompt)
+                    append(speech(repeat_prompt,'Daniel',165),'repeat_instruction',repeat_prompt)
                     pause(1)
                 for turn in clip['turns']:
+                    if family=='listening_double_matching':
+                        prompt='Speaker '+turn['speaker'][1:]+'.'
+                        append(speech(prompt,'Daniel',165),'speaker_announcement',prompt,repeat=repeat)
+                        pause(.6)
                     voice=draft['speakers'][turn['speaker']]
                     data=speech(turn['text'],voice['voice'],voice['words_per_minute'])
                     append(data,'dialogue',turn['text'],turn['speaker'],repeat)
-                    pause(.35)
+                    pause(2 if family=='listening_double_matching' else .35)
                 pause(2)
             combined=scratch/f'extract{number}.wav'
             with wave.open(str(combined),'wb') as stream:
@@ -130,12 +152,14 @@ def render(manuscript, output, version='0.1'):
             peak=audioop.max(decoded_data,2)
             assert abs(decoded_frames-frame) <= 4096 and peak>0
             spoken_once=' '.join(t['text'] for t in clip['turns'])
-            track=dict(label=f'音频{number}（第{2*number-1}—{2*number}题）',
+            announcement_words=(sum(words('Speaker '+t['speaker'][1:]+'.') for t in clip['turns'])*2
+                                if family=='listening_double_matching' else 0)
+            track=dict(label=f'音频{number}（第{response_numbers[0]}—{response_numbers[-1]}题）',
                        path=str(target.relative_to(REPO)), sha256=digest(target), bytes=target.stat().st_size,
                        mime_type='audio/mp4', seconds=decoded_frames/RATE,
-                       response_numbers=[2*number-1,2*number], repeat_count=2,
+                       response_numbers=response_numbers, repeat_count=2,
                        dialogue_words_once=words(spoken_once),
-                       spoken_words_with_instructions=2*words(spoken_once)+words(intro)+words('Now you will hear the extract again.'),
+                       spoken_words_with_instructions=2*words(spoken_once)+words(intro)+words(repeat_prompt)+announcement_words,
                        sample_rate=RATE, pcm_frames_before_encoding=frame,
                        decoded_frames=decoded_frames, peak_abs_sample=peak, segments=segments)
             tracks.append(track)

@@ -138,6 +138,8 @@ def full_markdown_candidate(meta):
             'reviewText': teacher, 'requiredPassageImages': images, 'author_review_not_independent': True}
     if audio_tracks:
         group['requiredAudioAssets'] = audio_tracks
+    if meta['family']=='listening_double_matching':
+        group['fixedSharedBank'] = True
     return group
 
 

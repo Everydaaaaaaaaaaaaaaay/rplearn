@@ -64,24 +64,28 @@ def check(data, plan):
             assert not root.findall('.//{http://www.w3.org/2000/svg}script')
         else:
             assert not group['requiredPassageImages']
-        if meta['family'] == 'listening_extract_choice':
+        if meta['family'] in {'listening_extract_choice','listening_interview_choice','listening_double_matching'}:
             manuscript=json.loads(load_ref(audit['manuscript']).read_text())
             generation=json.loads(load_ref(audit['audio_generation']).read_text())
             assert generation['manuscript']==audit['manuscript']
             assert generation['whole_final_audio_decode_passed'] and generation['no_source_recording_reused']
             assert not generation['independent_listening_pronunciation_prosody_student_commercial_production_validated']
-            assert audit['extracts']==len(audit['audio_assets'])==len(group['requiredAudioAssets'])==len(manuscript['clips'])==3
-            assert audit['questions_per_extract']==[2,2,2] and len(group['questions'])==6
+            family=meta['family']
+            expected_tracks=3 if family=='listening_extract_choice' else 1
+            assert audit['extracts']==len(audit['audio_assets'])==len(group['requiredAudioAssets'])==len(manuscript['clips'])==expected_tracks
+            expected_counts=[2,2,2] if family=='listening_extract_choice' else [source['responses']]
+            assert audit['questions_per_extract']==expected_counts
             assert audit['audio_transcript_in_teacher_only'] and audit['synthetic_audio_not_natural_listening_calibration']
-            assert [n for a in group['requiredAudioAssets'] for n in a['response_numbers']]==list(range(1,7))
+            assert [n for a in group['requiredAudioAssets'] for n in a['response_numbers']]==list(range(1,source['responses']+1))
             for n,(asset,track,clip,display) in enumerate(zip(audit['audio_assets'],generation['tracks'],manuscript['clips'],group['requiredAudioAssets']),1):
                 load_ref(asset)
                 assert asset['sha256']==track['sha256'] and asset['repeat_count']==track['repeat_count']==2
                 assert display['asset']=={k:asset[k] for k in ['path','sha256']}
                 assert display['src']=='../../'+quote(asset['path']) and display['repeat_count']==2
                 assert asset['sha256'] not in {a['sha256'] for a in source['original_audio_assets']}
-                assert asset['response_numbers']==[2*n-1,2*n] and abs(asset['seconds']-track['seconds'])<.01
-                assert [q['answer'] for q in clip['questions']]==audit['author_answer_vector'][2*n-2:2*n]
+                numbers=[2*n-1,2*n] if family=='listening_extract_choice' else list(range(1,source['responses']+1))
+                assert asset['response_numbers']==numbers and abs(asset['seconds']-track['seconds'])<.01
+                assert [q['answer'] for q in clip['questions']]==[audit['author_answer_vector'][i-1] for i in numbers]
                 assert all(t['text'] in group['reviewText'] for t in clip['turns'])
                 assert all(t['text'] not in group['passageHtml'] for t in clip['turns'])
                 for repeat in [1,2]:
@@ -89,6 +93,21 @@ def check(data, plan):
                     assert [(s['speaker'],s['text']) for s in segments]==[(t['speaker'],t['text']) for t in clip['turns']]
             assert audit['load_measure']['audio_dialogue_English_words_once']==sum(t['dialogue_words_once'] for t in generation['tracks'])
             assert audit['load_measure']['audio_spoken_words_including_repetition_and_introductions']==sum(t['spoken_words_with_instructions'] for t in generation['tracks'])
+            if family=='listening_interview_choice':
+                assert source['material']['interview']==1 and source['material']['interviewees']==2
+                assert set(t['speaker'] for t in manuscript['clips'][0]['turns'])=={'I','G1','G2'}
+                assert len(group['questions'])==6 and all(len(q['options'])==4 for q in group['questions'])
+            if family=='listening_double_matching':
+                assert group['fixedSharedBank']
+                assert audit['same_five_speakers_for_both_tasks'] and audit['two_tasks_one_whole_group']
+                assert audit['no_unprinted_once_rule_added'] and source['material']['monologues']==5
+                assert [t['speaker'] for t in manuscript['clips'][0]['turns']]==['S1','S2','S3','S4','S5']
+                assert len(group['questions'])==10 and len(audit['shared_banks'])==2
+                assert all(len(b['options'])==8 for b in audit['shared_banks'])
+                assert audit['shared_banks'][0]['options']!=audit['shared_banks'][1]['options']
+                assert all(q['options']==audit['shared_banks'][i//5]['options'] for i,q in enumerate(group['questions']))
+                assert '最多' not in group['instruction'] and 'once' not in group['instruction']
+                assert audit['load_measure']['options_English_words_unique_shared_banks']==sum(words(v) for b in audit['shared_banks'] for _,v in b['options'])
         if meta['family'] == 'paragraph_gap_insertion':
             assert len(audit['shared_paragraphs']) == 7
             assert audit['removed_paragraph_count'] == 6 and audit['material_article_count'] == 1
