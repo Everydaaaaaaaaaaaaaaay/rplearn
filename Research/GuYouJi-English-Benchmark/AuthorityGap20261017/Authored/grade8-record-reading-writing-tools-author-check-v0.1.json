@@ -1,0 +1,149 @@
+{
+  "version": "0.1",
+  "id": "grade8-record-reading-writing-tools",
+  "grade": 8,
+  "questions": 3,
+  "candidate_sha256": "7c01eb29db4eb1321234ae7643d1253b9aa879d0a314337ee839433a499c5df5",
+  "canonical_response_block_sha256": "3bbfda89cfb0576426e8bcd74e77ce8b6317abe2aa5f9f9fd6a5f2c0ad26d848",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Louis wants to notice how his own spoken sentences differ from a model. He would like to keep several attempts and listen to them again, without calling another learner.",
+      "options": [
+        [
+          "A",
+          "PocketTalk lets you record your voice after hearing a short model sentence. You can play your recording beside the model and try again. The recordings stay in your own folder. There are no live partner calls, books or checks on typed paragraphs."
+        ],
+        [
+          "B",
+          "BookNest offers short stories in several levels. You can bookmark a page and tap an unfamiliar word for a meaning. It is for quiet reading: it has no model recordings and does not mark mistakes in your own messages."
+        ],
+        [
+          "C",
+          "MessageMender looks at short messages you type. It points out possible word-order and spelling problems and gives an explanation beside each one. You can compare your first draft with your changes. It does not teach through recorded speech or storybooks."
+        ],
+        [
+          "D",
+          "SoundRoutes contains recorded conversations from different public places. Hear each conversation, then open its written script. You can pause and replay it. There is no microphone button, so you cannot record yourself, and it does not check typed messages."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A录自己的声音、与范句并听且保留多次。B无录音；C只改键入消息；D虽有对话音频却明确不能录自己。"
+    },
+    {
+      "number": 2,
+      "stem": "Sana writes short English messages. She needs explanations of word-order mistakes and wants to compare her first version with a corrected draft.",
+      "options": [
+        [
+          "A",
+          "PocketTalk lets you record your voice after hearing a short model sentence. You can play your recording beside the model and try again. The recordings stay in your own folder. There are no live partner calls, books or checks on typed paragraphs."
+        ],
+        [
+          "B",
+          "BookNest offers short stories in several levels. You can bookmark a page and tap an unfamiliar word for a meaning. It is for quiet reading: it has no model recordings and does not mark mistakes in your own messages."
+        ],
+        [
+          "C",
+          "MessageMender looks at short messages you type. It points out possible word-order and spelling problems and gives an explanation beside each one. You can compare your first draft with your changes. It does not teach through recorded speech or storybooks."
+        ],
+        [
+          "D",
+          "SoundRoutes contains recorded conversations from different public places. Hear each conversation, then open its written script. You can pause and replay it. There is no microphone button, so you cannot record yourself, and it does not check typed messages."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C查词序/拼写且解释并比较草稿。A只声录范句；B故事阅读不改自己消息；D听对话脚本不查键入文字。"
+    },
+    {
+      "number": 3,
+      "stem": "Wei enjoys stories but wants easier books and a quick meaning for a new word. He prefers reading quietly and does not need listening practice.",
+      "options": [
+        [
+          "A",
+          "PocketTalk lets you record your voice after hearing a short model sentence. You can play your recording beside the model and try again. The recordings stay in your own folder. There are no live partner calls, books or checks on typed paragraphs."
+        ],
+        [
+          "B",
+          "BookNest offers short stories in several levels. You can bookmark a page and tap an unfamiliar word for a meaning. It is for quiet reading: it has no model recordings and does not mark mistakes in your own messages."
+        ],
+        [
+          "C",
+          "MessageMender looks at short messages you type. It points out possible word-order and spelling problems and gives an explanation beside each one. You can compare your first draft with your changes. It does not teach through recorded speech or storybooks."
+        ],
+        [
+          "D",
+          "SoundRoutes contains recorded conversations from different public places. Hear each conversation, then open its written script. You can pause and replay it. There is no microphone button, so you cannot record yourself, and it does not check typed messages."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B分级短故事与点词释义，且静默阅读。A录音模仿无书；C改个人消息无故事；D录音对话主旨非分级阅读。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleSourceBridge-v0.1.json",
+    "sha256": "6c9f0f822df1bf7d95b78b1f51e205afae27835f5fa3271a50d4f98878a4e19b"
+  },
+  "source_group_id": "g8.2025fengtai.matchingA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "profiles": 3,
+      "shared_text_cards": 4,
+      "portrait_decorative": true,
+      "one_extra_explicit": true
+    },
+    "source_candidates": {
+      "shared_entries": 4,
+      "per_response": [
+        4,
+        4,
+        4
+      ]
+    }
+  },
+  "student_passage": "The four learning apps below are fictional.\n\nA. PocketTalk lets you record your voice after hearing a short model sentence. You can play your recording beside the model and try again. The recordings stay in your own folder. There are no live partner calls, books or checks on typed paragraphs.\n\nB. BookNest offers short stories in several levels. You can bookmark a page and tap an unfamiliar word for a meaning. It is for quiet reading: it has no model recordings and does not mark mistakes in your own messages.\n\nC. MessageMender looks at short messages you type. It points out possible word-order and spelling problems and gives an explanation beside each one. You can compare your first draft with your changes. It does not teach through recorded speech or storybooks.\n\nD. SoundRoutes contains recorded conversations from different public places. Hear each conversation, then open its written script. You can pause and replay it. There is no microphone button, so you cannot record yourself, and it does not check typed messages.",
+  "author_answer_vector": [
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 77,
+    "options_English_words_with_repeated_bank": 483,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "options_English_words_unique_shared_bank": 161
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "shared_bank": [
+    [
+      "A",
+      "PocketTalk lets you record your voice after hearing a short model sentence. You can play your recording beside the model and try again. The recordings stay in your own folder. There are no live partner calls, books or checks on typed paragraphs."
+    ],
+    [
+      "B",
+      "BookNest offers short stories in several levels. You can bookmark a page and tap an unfamiliar word for a meaning. It is for quiet reading: it has no model recordings and does not mark mistakes in your own messages."
+    ],
+    [
+      "C",
+      "MessageMender looks at short messages you type. It points out possible word-order and spelling problems and gives an explanation beside each one. You can compare your first draft with your changes. It does not teach through recorded speech or storybooks."
+    ],
+    [
+      "D",
+      "SoundRoutes contains recorded conversations from different public places. Hear each conversation, then open its written script. You can pause and replay it. There is no microphone button, so you cannot record yourself, and it does not check typed messages."
+    ]
+  ],
+  "profile_count": 3,
+  "text_card_count": 4,
+  "explicit_spare": 1,
+  "reuse_rule": "not_explicit_do_not_assume_once",
+  "virtual_apps_not_real_product_claims": true,
+  "body_load_text": "",
+  "closed_response_letter_set_only": true
+}

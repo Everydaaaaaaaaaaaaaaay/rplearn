@@ -1,0 +1,229 @@
+{
+  "version": "0.1",
+  "id": "grade7-new-area-headings",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "1089758e8141c249940bfeda719a9ce67a0f193b2ad5254a2f0442abb65a26f9",
+  "canonical_response_block_sha256": "3ea700d31bf3cb5214856eac4686422d6270236c69969dcd4ab365b0619c45cb",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1段标题",
+      "options": [
+        [
+          "A",
+          "Keep a record of what you find"
+        ],
+        [
+          "B",
+          "Learn from people who live there"
+        ],
+        [
+          "C",
+          "Begin with a simple map"
+        ],
+        [
+          "D",
+          "Travel safely"
+        ],
+        [
+          "E",
+          "Notice the signs"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "画主要道路和熟悉地点形成简图，C概括目的。A虽也可含记录但本段明确是地图起步，B不访人、D非安全操作、E不读标识。"
+    },
+    {
+      "number": 2,
+      "stem": "第2段标题",
+      "options": [
+        [
+          "A",
+          "Keep a record of what you find"
+        ],
+        [
+          "B",
+          "Learn from people who live there"
+        ],
+        [
+          "C",
+          "Begin with a simple map"
+        ],
+        [
+          "D",
+          "Travel safely"
+        ],
+        [
+          "E",
+          "Notice the signs"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "本段核心是读图示/公告获取路线和开放时间。A非保存个人发现、B无人访谈、C不制地图、D只泛安全不能概括图示和公告两例。"
+    },
+    {
+      "number": 3,
+      "stem": "第3段标题",
+      "options": [
+        [
+          "A",
+          "Keep a record of what you find"
+        ],
+        [
+          "B",
+          "Learn from people who live there"
+        ],
+        [
+          "C",
+          "Begin with a simple map"
+        ],
+        [
+          "D",
+          "Travel safely"
+        ],
+        [
+          "E",
+          "Notice the signs"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "向邻居/店员礼貌询问，B统摄两种当地人。A不记日志、C现成地图仅对照、D非出行安全、E不是书面标识。"
+    },
+    {
+      "number": 4,
+      "stem": "第4段标题",
+      "options": [
+        [
+          "A",
+          "Keep a record of what you find"
+        ],
+        [
+          "B",
+          "Learn from people who live there"
+        ],
+        [
+          "C",
+          "Begin with a simple map"
+        ],
+        [
+          "D",
+          "Travel safely"
+        ],
+        [
+          "E",
+          "Notice the signs"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "征求成人同意、守路、过街不看屏幕，中心为安全探索。A不记录、B非询问信息、C不画图、E无读公告主旨。"
+    },
+    {
+      "number": 5,
+      "stem": "第5段标题",
+      "options": [
+        [
+          "A",
+          "Keep a record of what you find"
+        ],
+        [
+          "B",
+          "Learn from people who live there"
+        ],
+        [
+          "C",
+          "Begin with a simple map"
+        ],
+        [
+          "D",
+          "Travel safely"
+        ],
+        [
+          "E",
+          "Notice the signs"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "散步后写/画、记日期并回看变化，是留个人记录。B未访人、C非空间地图、D非途中安全、E非公共标识阅读。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleSourceBridge-v0.1.json",
+    "sha256": "6c9f0f822df1bf7d95b78b1f51e205afae27835f5fa3271a50d4f98878a4e19b"
+  },
+  "source_group_id": "heading-candidate-grade7-jiexiu-2507579320261015r.headingA",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "heading_subsections": 5,
+      "all_slots_are_headings": true
+    },
+    "source_candidates": {
+      "shared_entries": 5,
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    }
+  },
+  "student_passage": "Read the five sections of the article and choose a heading for each one.\n\n### (1) ____\n\nStart with the main roads around your home. Draw them on paper and add your school, the nearest park and a shop you know. You do not need every small street. A few clear lines will help you see how the places are connected.\n\n### (2) ____\n\nWords and pictures on walls can tell you useful things. A small picture may show where bicycles can go. A notice outside a library may give its opening hours. Read before you enter, rather than finding a locked door and feeling surprised.\n\n### (3) ____\n\nA neighbour may know why an old building has an unusual name. A shop worker may know when the street market opens. Ask politely and choose a moment when people are not busy. You can learn things that are not written on your map.\n\n### (4) ____\n\nAsk an adult before you explore a new route. Stay on paths you are allowed to use and cross roads at proper places. Do not look at a screen while crossing. Knowing a place better should help you feel comfortable, but you still need to take care.\n\n### (5) ____\n\nAfter your walk, choose one interesting place to remember. Write a few words about it or draw a picture in a notebook. Add the date. Next month, look again and see what has changed. Your own notes can help you notice more each time.\n\n共享标题：\nA. Keep a record of what you find\nB. Learn from people who live there\nC. Begin with a simple map\nD. Travel safely\nE. Notice the signs",
+  "author_answer_vector": [
+    "C",
+    "E",
+    "B",
+    "D",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 235,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 115,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "options_English_words_unique_shared_bank": 23
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "heading_subsections": 5,
+  "slot_roles": [
+    "heading",
+    "heading",
+    "heading",
+    "heading",
+    "heading"
+  ],
+  "shared_bank": [
+    [
+      "A",
+      "Keep a record of what you find"
+    ],
+    [
+      "B",
+      "Learn from people who live there"
+    ],
+    [
+      "C",
+      "Begin with a simple map"
+    ],
+    [
+      "D",
+      "Travel safely"
+    ],
+    [
+      "E",
+      "Notice the signs"
+    ]
+  ],
+  "source_genre_club_descriptions_author_adaptation_advice_article": true,
+  "not_intrasentence_insertion": true,
+  "body_load_text": "Read the five sections of the article and choose a heading for each one.\n\n### (1) ____\n\nStart with the main roads around your home. Draw them on paper and add your school, the nearest park and a shop you know. You do not need every small street. A few clear lines will help you see how the places are connected.\n\n### (2) ____\n\nWords and pictures on walls can tell you useful things. A small picture may show where bicycles can go. A notice outside a library may give its opening hours. Read before you enter, rather than finding a locked door and feeling surprised.\n\n### (3) ____\n\nA neighbour may know why an old building has an unusual name. A shop worker may know when the street market opens. Ask politely and choose a moment when people are not busy. You can learn things that are not written on your map.\n\n### (4) ____\n\nAsk an adult before you explore a new route. Stay on paths you are allowed to use and cross roads at proper places. Do not look at a screen while crossing. Knowing a place better should help you feel comfortable, but you still need to take care.\n\n### (5) ____\n\nAfter your walk, choose one interesting place to remember. Write a few words about it or draw a picture in a notebook. Add the date. Next month, look again and see what has changed. Your own notes can help you notice more each time.",
+  "closed_response_letter_set_only": true
+}
