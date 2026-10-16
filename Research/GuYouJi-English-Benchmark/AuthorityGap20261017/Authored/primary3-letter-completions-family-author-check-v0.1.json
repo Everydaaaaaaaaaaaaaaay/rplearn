@@ -1,0 +1,171 @@
+{
+  "version": "0.1",
+  "id": "primary3-letter-completions-family",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "f92529b905113211d2425d97f18dec3de538efcfadea1fba17fcc591d71407d5",
+  "canonical_response_block_sha256": "6cb459cb3b3b3efc415764e0a128886c6ee84a5733e7322f9d0f44432b0a08c0",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "姐姐 s____ter",
+      "options": [
+        [
+          "A",
+          "is"
+        ],
+        [
+          "B",
+          "si"
+        ],
+        [
+          "C",
+          "es"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "根据所给中文词义，目标为sister。全部候选回填：A→sister；B→ssiter；C→sester。只有A符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "sister",
+      "prefix": "s",
+      "suffix": "ter"
+    },
+    {
+      "number": 2,
+      "stem": "窗户 win____w",
+      "options": [
+        [
+          "A",
+          "ad"
+        ],
+        [
+          "B",
+          "od"
+        ],
+        [
+          "C",
+          "do"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "根据所给中文词义，目标为window。全部候选回填：A→winadw；B→winodw；C→window。只有C符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "window",
+      "prefix": "win",
+      "suffix": "w"
+    },
+    {
+      "number": 3,
+      "stem": "黄色的 y____low",
+      "options": [
+        [
+          "A",
+          "el"
+        ],
+        [
+          "B",
+          "le"
+        ],
+        [
+          "C",
+          "al"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "根据所给中文词义，目标为yellow。全部候选回填：A→yellow；B→ylelow；C→yallow。只有A符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "yellow",
+      "prefix": "y",
+      "suffix": "low"
+    },
+    {
+      "number": 4,
+      "stem": "兔子 rab____t",
+      "options": [
+        [
+          "A",
+          "ti"
+        ],
+        [
+          "B",
+          "bi"
+        ],
+        [
+          "C",
+          "it"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "根据所给中文词义，目标为rabbit。全部候选回填：A→rabtit；B→rabbit；C→rabitt。只有B符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "rabbit",
+      "prefix": "rab",
+      "suffix": "t"
+    },
+    {
+      "number": 5,
+      "stem": "七 s____en",
+      "options": [
+        [
+          "A",
+          "ve"
+        ],
+        [
+          "B",
+          "av"
+        ],
+        [
+          "C",
+          "ev"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "根据所给中文词义，目标为seven。全部候选回填：A→sveen；B→saven；C→seven。只有C符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "seven",
+      "prefix": "s",
+      "suffix": "en"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedSourceBridge-v0.1.json",
+    "sha256": "0d4f4b846b6f955d53020c3e31fa2890f2482091e14f3a4a2648b20d6cf12d26"
+  },
+  "source_group_id": "p3.lower.spelling",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "separate_word_completion_items": 5,
+      "Chinese_gloss": true,
+      "prefix_suffix_and_three_letter_strings": true,
+      "underline_length_not_letter_count": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "A",
+    "C",
+    "A",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 10,
+    "options_English_words_with_repeated_bank": 15,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "all_candidate_strings_refilled": true,
+  "open_spelling_not_introduced": true
+}

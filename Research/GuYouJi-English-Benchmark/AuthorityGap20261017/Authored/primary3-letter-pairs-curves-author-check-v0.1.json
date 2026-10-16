@@ -1,0 +1,154 @@
+{
+  "version": "0.1",
+  "id": "primary3-letter-pairs-curves",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "b0e0725a785f3004d477815bb97a0dd176749bf52c500191d09a0491b9deac26",
+  "canonical_response_block_sha256": "5d49427ec59ac96c954c1086683ec72499299a8436720a1920a44a75ae047e35",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A / a",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "A的小写是a；本组两字母对应，选T；F会否认这一大小写对应。"
+    },
+    {
+      "number": 2,
+      "stem": "E / e",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "E的小写是e；本组两字母对应，选T；F会否认这一大小写对应。"
+    },
+    {
+      "number": 3,
+      "stem": "H / n",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "H的小写是h；题中n是N的小写，非H的小写，选F；T会把两个不同字母当同一字母。"
+    },
+    {
+      "number": 4,
+      "stem": "Q / q",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Q的小写是q；本组两字母对应，选T；F会否认这一大小写对应。"
+    },
+    {
+      "number": 5,
+      "stem": "N / m",
+      "options": [
+        [
+          "T",
+          "T：是"
+        ],
+        [
+          "F",
+          "F：不是"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "N的小写是n；题中m是M的小写，非N的小写，选F；T会把两个不同字母当同一字母。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedSourceBridge-v0.1.json",
+    "sha256": "0d4f4b846b6f955d53020c3e31fa2890f2482091e14f3a4a2648b20d6cf12d26"
+  },
+  "source_group_id": "p3.shangyu.lettercase",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "letter_pairs": 5
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "T",
+    "T",
+    "F",
+    "T",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 10,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "letter_pairs": [
+    [
+      "A",
+      "a"
+    ],
+    [
+      "E",
+      "e"
+    ],
+    [
+      "H",
+      "n"
+    ],
+    [
+      "Q",
+      "q"
+    ],
+    [
+      "N",
+      "m"
+    ]
+  ],
+  "not_handwriting_or_four_line_grid_assessment": true
+}

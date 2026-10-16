@@ -1,0 +1,155 @@
+{
+  "version": "0.1",
+  "id": "primary4-word-categories-around-us",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "04ee1054c9d77f30a43e4802328bf4a63eabd75daf02310a58b29a70b544ed66",
+  "canonical_response_block_sha256": "27e2b628cb8f2a26d2b4d823909e437aea6bb61aee2c4ce33cd483b6a138de52",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "不属于“星期名称”的是哪项？",
+      "options": [
+        [
+          "A",
+          "Monday"
+        ],
+        [
+          "B",
+          "Friday"
+        ],
+        [
+          "C",
+          "garden"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C garden不属于题干指定类别“星期名称”；A Monday、B Friday均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 2,
+      "stem": "不属于“职业”的是哪项？",
+      "options": [
+        [
+          "A",
+          "nurse"
+        ],
+        [
+          "B",
+          "kitchen"
+        ],
+        [
+          "C",
+          "driver"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B kitchen不属于题干指定类别“职业”；A nurse、C driver均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 3,
+      "stem": "不属于“月份名称”的是哪项？",
+      "options": [
+        [
+          "A",
+          "January"
+        ],
+        [
+          "B",
+          "June"
+        ],
+        [
+          "C",
+          "juice"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C juice不属于题干指定类别“月份名称”；A January、B June均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 4,
+      "stem": "不属于“身体部位”的是哪项？",
+      "options": [
+        [
+          "A",
+          "elephant"
+        ],
+        [
+          "B",
+          "mouth"
+        ],
+        [
+          "C",
+          "ear"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A elephant不属于题干指定类别“身体部位”；B mouth、C ear均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 5,
+      "stem": "不属于“天气形容词”的是哪项？",
+      "options": [
+        [
+          "A",
+          "rainy"
+        ],
+        [
+          "B",
+          "snowy"
+        ],
+        [
+          "C",
+          "sandwich"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C sandwich不属于题干指定类别“天气形容词”；A rainy、B snowy均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedSourceBridge-v0.1.json",
+    "sha256": "0d4f4b846b6f955d53020c3e31fa2890f2482091e14f3a4a2648b20d6cf12d26"
+  },
+  "source_group_id": "p4.repost.odd",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "separate_word_sets": 5,
+      "source_prints_category_hint": false
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "C",
+    "B",
+    "C",
+    "A",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 15,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "author_added_explicit_category_hints": true,
+  "source_has_no_category_hints": true,
+  "adaptation_not_source_exact_instruction": true
+}

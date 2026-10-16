@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-plant-watch-full-mixed",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "0c95a31eef5187217a3064a69e8b451931f6aed8ab9edcb36e5632a9d168f932",
+  "canonical_response_block_sha256": "a065a500ce0279dc1c01e1cd28de01000240bd5727df3c28c5889364276a74be",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The two plants were kept in different kinds of pots.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "首段Both plants same kind of pot，T与明确same相反。"
+    },
+    {
+      "number": 2,
+      "stem": "The group measured from the soil to the top leaf.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "第二段逐字说明测量两端；F否认明确操作。"
+    },
+    {
+      "number": 3,
+      "stem": "The teacher praised the group because its plants were the tallest.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "末句praise clear record, not height；未说tallest，T无依据且误改表扬理由。"
+    },
+    {
+      "number": 4,
+      "stem": "Why did the pupils use the same way of measuring?",
+      "options": [
+        [
+          "A",
+          "To avoid writing dates."
+        ],
+        [
+          "B",
+          "To compare the numbers in their table."
+        ],
+        [
+          "C",
+          "To make every plant the same height."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第二段so that numbers could be compared支持B。A他们实际需记日期；C同测量法不能令植物等高且未提出该目标。"
+    },
+    {
+      "number": 5,
+      "stem": "What did the group do about the missing date?",
+      "options": [
+        [
+          "A",
+          "They threw away every earlier record."
+        ],
+        [
+          "B",
+          "They invented new numbers for Monday."
+        ],
+        [
+          "C",
+          "They added a note about when the numbers were recorded."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "末段added note explaining when即C。A未丢所有记录；B被did not invent直接否定。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.closedmixed",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage": 1,
+      "subgroups": [
+        {
+          "numbers": [
+            66,
+            67,
+            68
+          ],
+          "operation": "TF",
+          "options_each": 2
+        },
+        {
+          "numbers": [
+            69,
+            70
+          ],
+          "operation": "choice",
+          "options_each": 3
+        }
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "In May, Class Six started a plant diary. Each group put two bean plants beside the classroom window. Both plants had the same kind of pot. The pupils gave them the same amount of water each morning. Their task was to record what they could see, not to decide which group had the best plants.\n\nElla's group measured their plants every Friday. They put a ruler beside each pot and measured from the soil to the top leaf. They wrote the date and height in a table, then drew a picture. They always used the same way of measuring so that the numbers in their table could be compared.\n\nOne Friday, Ella was away. Tom made the measurements, but forgot to write the date. On Monday, the group added a note explaining when those numbers had been recorded. They did not invent a new set of numbers for Monday. At the end of May, they showed their diary to another group. They explained how they had measured the plants and mentioned the missing date. The teacher praised their clear record, not the height of their plants.",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "F",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 186,
+    "stem_English_words": 50,
+    "options_English_words_with_repeated_bank": 40,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "subgroups": [
+    {
+      "response_numbers": [
+        1,
+        2,
+        3
+      ],
+      "operation": "TF",
+      "options_each": 2
+    },
+    {
+      "response_numbers": [
+        4,
+        5
+      ],
+      "operation": "choice",
+      "options_each": 3
+    }
+  ]
+}

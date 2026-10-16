@@ -1,0 +1,155 @@
+{
+  "version": "0.1",
+  "id": "primary4-word-categories-everyday",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "e72077f61d54d6b37040a0e0e86963efa8b81dce8aa40620410b161381630bc0",
+  "canonical_response_block_sha256": "7b328e6bc2cab4016e3de66aff1ec6c1c994e1e6bf92fbcdfaa6e8e618f45933",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "不属于“衣物”的是哪项？",
+      "options": [
+        [
+          "A",
+          "dress"
+        ],
+        [
+          "B",
+          "jacket"
+        ],
+        [
+          "C",
+          "spoon"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C spoon不属于题干指定类别“衣物”；A dress、B jacket均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 2,
+      "stem": "不属于“学校文具”的是哪项？",
+      "options": [
+        [
+          "A",
+          "pencil"
+        ],
+        [
+          "B",
+          "rabbit"
+        ],
+        [
+          "C",
+          "eraser"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B rabbit不属于题干指定类别“学校文具”；A pencil、C eraser均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 3,
+      "stem": "不属于“数词（表示数量）”的是哪项？",
+      "options": [
+        [
+          "A",
+          "eleven"
+        ],
+        [
+          "B",
+          "seven"
+        ],
+        [
+          "C",
+          "window"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C window不属于题干指定类别“数词（表示数量）”；A eleven、B seven均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 4,
+      "stem": "不属于“家庭成员”的是哪项？",
+      "options": [
+        [
+          "A",
+          "aunt"
+        ],
+        [
+          "B",
+          "uncle"
+        ],
+        [
+          "C",
+          "train"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C train不属于题干指定类别“家庭成员”；A aunt、B uncle均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    },
+    {
+      "number": 5,
+      "stem": "不属于“水果”的是哪项？",
+      "options": [
+        [
+          "A",
+          "lemon"
+        ],
+        [
+          "B",
+          "giraffe"
+        ],
+        [
+          "C",
+          "grape"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B giraffe不属于题干指定类别“水果”；A lemon、C grape均属于该类别。按给定常用词义分类，不以字母、长短等其他维度分类。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedSourceBridge-v0.1.json",
+    "sha256": "0d4f4b846b6f955d53020c3e31fa2890f2482091e14f3a4a2648b20d6cf12d26"
+  },
+  "source_group_id": "p4.repost.odd",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "separate_word_sets": 5,
+      "source_prints_category_hint": false
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "C",
+    "B",
+    "C",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 15,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "author_added_explicit_category_hints": true,
+  "source_has_no_category_hints": true,
+  "adaptation_not_source_exact_instruction": true
+}

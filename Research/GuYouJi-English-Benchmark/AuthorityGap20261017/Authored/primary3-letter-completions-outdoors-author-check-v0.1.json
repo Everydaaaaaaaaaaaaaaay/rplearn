@@ -1,0 +1,171 @@
+{
+  "version": "0.1",
+  "id": "primary3-letter-completions-outdoors",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "da08ce5743377074ce7ad87f5ed0210b1e62e4280a677df791cef60305130c33",
+  "canonical_response_block_sha256": "501731a577a4d1a7c2d5f04b3d3209c066beadaeee63ba97dbd1cf9794485ef1",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "花 fl____er",
+      "options": [
+        [
+          "A",
+          "ow"
+        ],
+        [
+          "B",
+          "wo"
+        ],
+        [
+          "C",
+          "aw"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "根据所给中文词义，目标为flower。全部候选回填：A→flower；B→flwoer；C→flawer。只有A符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "flower",
+      "prefix": "fl",
+      "suffix": "er"
+    },
+    {
+      "number": 2,
+      "stem": "熊猫 pan____",
+      "options": [
+        [
+          "A",
+          "ad"
+        ],
+        [
+          "B",
+          "da"
+        ],
+        [
+          "C",
+          "de"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "根据所给中文词义，目标为panda。全部候选回填：A→panad；B→panda；C→pande。只有B符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "panda",
+      "prefix": "pan",
+      "suffix": ""
+    },
+    {
+      "number": 3,
+      "stem": "鱼 f____h",
+      "options": [
+        [
+          "A",
+          "si"
+        ],
+        [
+          "B",
+          "as"
+        ],
+        [
+          "C",
+          "is"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "根据所给中文词义，目标为fish。全部候选回填：A→fsih；B→fash；C→fish。只有C符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "fish",
+      "prefix": "f",
+      "suffix": "h"
+    },
+    {
+      "number": 4,
+      "stem": "门 d____r",
+      "options": [
+        [
+          "A",
+          "oa"
+        ],
+        [
+          "B",
+          "oo"
+        ],
+        [
+          "C",
+          "ou"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "根据所给中文词义，目标为door。全部候选回填：A→doar；B→door；C→dour。只有B符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "door",
+      "prefix": "d",
+      "suffix": "r"
+    },
+    {
+      "number": 5,
+      "stem": "水 wa____",
+      "options": [
+        [
+          "A",
+          "tre"
+        ],
+        [
+          "B",
+          "tar"
+        ],
+        [
+          "C",
+          "ter"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "根据所给中文词义，目标为water。全部候选回填：A→watre；B→watar；C→water。只有C符合目标拼写，其余不是该中文词义的目标单词。",
+      "completion_target": "water",
+      "prefix": "wa",
+      "suffix": ""
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedSourceBridge-v0.1.json",
+    "sha256": "0d4f4b846b6f955d53020c3e31fa2890f2482091e14f3a4a2648b20d6cf12d26"
+  },
+  "source_group_id": "p3.lower.spelling",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "separate_word_completion_items": 5,
+      "Chinese_gloss": true,
+      "prefix_suffix_and_three_letter_strings": true,
+      "underline_length_not_letter_count": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 8,
+    "options_English_words_with_repeated_bank": 15,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "all_candidate_strings_refilled": true,
+  "open_spelling_not_introduced": true
+}

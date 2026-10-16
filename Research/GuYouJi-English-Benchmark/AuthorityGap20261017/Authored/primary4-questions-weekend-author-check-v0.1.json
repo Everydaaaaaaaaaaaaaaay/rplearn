@@ -1,0 +1,219 @@
+{
+  "version": "0.1",
+  "id": "primary4-questions-weekend",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "9b4a509799783923ea896de26b5885507fd2d717ef92d979040d628a7f6b0301",
+  "canonical_response_block_sha256": "bbd15468d4841d4242419039036d69fd611584b1407640a5fb4563da2773a6e8",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What colour is your kite?",
+      "options": [
+        [
+          "A",
+          "I would like some milk."
+        ],
+        [
+          "B",
+          "It is snowy."
+        ],
+        [
+          "C",
+          "There are eight."
+        ],
+        [
+          "D",
+          "No, I cannot."
+        ],
+        [
+          "E",
+          "It is red."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E直接回答颜色。A回答所需饮料，不回答本题的颜色；B回答天气，不回答本题的颜色；C回答数量，不回答本题的颜色；D回答能力一般疑问，不回答本题的颜色；"
+    },
+    {
+      "number": 2,
+      "stem": "Can you ride a bike?",
+      "options": [
+        [
+          "A",
+          "I would like some milk."
+        ],
+        [
+          "B",
+          "It is snowy."
+        ],
+        [
+          "C",
+          "There are eight."
+        ],
+        [
+          "D",
+          "No, I cannot."
+        ],
+        [
+          "E",
+          "It is red."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D直接回答能力一般疑问。A回答所需饮料，不回答本题的能力一般疑问；B回答天气，不回答本题的能力一般疑问；C回答数量，不回答本题的能力一般疑问；E回答颜色，不回答本题的能力一般疑问；"
+    },
+    {
+      "number": 3,
+      "stem": "What would you like to drink?",
+      "options": [
+        [
+          "A",
+          "I would like some milk."
+        ],
+        [
+          "B",
+          "It is snowy."
+        ],
+        [
+          "C",
+          "There are eight."
+        ],
+        [
+          "D",
+          "No, I cannot."
+        ],
+        [
+          "E",
+          "It is red."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A直接回答所需饮料。B回答天气，不回答本题的所需饮料；C回答数量，不回答本题的所需饮料；D回答能力一般疑问，不回答本题的所需饮料；E回答颜色，不回答本题的所需饮料；"
+    },
+    {
+      "number": 4,
+      "stem": "How many ducks are there?",
+      "options": [
+        [
+          "A",
+          "I would like some milk."
+        ],
+        [
+          "B",
+          "It is snowy."
+        ],
+        [
+          "C",
+          "There are eight."
+        ],
+        [
+          "D",
+          "No, I cannot."
+        ],
+        [
+          "E",
+          "It is red."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C直接回答数量。A回答所需饮料，不回答本题的数量；B回答天气，不回答本题的数量；D回答能力一般疑问，不回答本题的数量；E回答颜色，不回答本题的数量；"
+    },
+    {
+      "number": 5,
+      "stem": "What is the weather like?",
+      "options": [
+        [
+          "A",
+          "I would like some milk."
+        ],
+        [
+          "B",
+          "It is snowy."
+        ],
+        [
+          "C",
+          "There are eight."
+        ],
+        [
+          "D",
+          "No, I cannot."
+        ],
+        [
+          "E",
+          "It is red."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B直接回答天气。A回答所需饮料，不回答本题的天气；C回答数量，不回答本题的天气；D回答能力一般疑问，不回答本题的天气；E回答颜色，不回答本题的天气；"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedSourceBridge-v0.1.json",
+    "sha256": "0d4f4b846b6f955d53020c3e31fa2890f2482091e14f3a4a2648b20d6cf12d26"
+  },
+  "source_group_id": "p4.repost.qa",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "separate_questions": 5,
+      "shared_responses": 5,
+      "not_one_continuous_dialogue": true
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_responses": 5
+    }
+  },
+  "student_passage": "共享答句：\n\nA. I would like some milk.\nB. It is snowy.\nC. There are eight.\nD. No, I cannot.\nE. It is red.",
+  "author_answer_vector": [
+    "E",
+    "D",
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 26,
+    "options_English_words_with_repeated_bank": 85,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "options_English_words_unique_shared_bank": 17
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "shared_bank": [
+    [
+      "A",
+      "I would like some milk."
+    ],
+    [
+      "B",
+      "It is snowy."
+    ],
+    [
+      "C",
+      "There are eight."
+    ],
+    [
+      "D",
+      "No, I cannot."
+    ],
+    [
+      "E",
+      "It is red."
+    ]
+  ],
+  "five_independent_questions_not_continuous_dialogue": true,
+  "body_load_text": ""
+}

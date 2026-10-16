@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-lost-found-full-mixed",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "a40099e7c1b79b76d7b67bb384cd3f1f8246f534095ef18dc5047d6b1e999cad",
+  "canonical_response_block_sha256": "c03f38d6af162b42132e7eb30317088b02c080462ac9079cdbbb5bcb52ac248c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The desk opens at lunch time every school day.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "首段只周二周四午餐时开，不是每个上学日；T与only指定日期矛盾。"
+    },
+    {
+      "number": 2,
+      "stem": "Mei opened the bag before taking it to the desk.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "第二段明确Mei did not open；T与否定相反。"
+    },
+    {
+      "number": 3,
+      "stem": "Arun described things inside the bag before he got it back.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "第三段Before showing及describe two things，检查后归还；F否认明确先后。"
+    },
+    {
+      "number": 4,
+      "stem": "Why did the helper ask Arun to describe things in the bag?",
+      "options": [
+        [
+          "A",
+          "To help check that it was his bag."
+        ],
+        [
+          "B",
+          "To choose a gift for Mei."
+        ],
+        [
+          "C",
+          "To write a lunch menu."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "物品描述与实物经Mr Chen核查后才归还，支持A。B未说送礼；C没有菜单，午餐只是服务时间。"
+    },
+    {
+      "number": 5,
+      "stem": "What did Arun do after the bag was returned?",
+      "options": [
+        [
+          "A",
+          "He put it outside the closed desk."
+        ],
+        [
+          "B",
+          "He signed the record book."
+        ],
+        [
+          "C",
+          "He changed the card to blue."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "末段returned后signed the record book，B有明文。A违反首段要求且未发生；C蓝色指包，未说改卡色。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.closedmixed",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage": 1,
+      "subgroups": [
+        {
+          "numbers": [
+            66,
+            67,
+            68
+          ],
+          "operation": "TF",
+          "options_each": 2
+        },
+        {
+          "numbers": [
+            69,
+            70
+          ],
+          "operation": "choice",
+          "options_each": 3
+        }
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "Our school has a lost-property desk near the main gate. It opens at lunch time on Tuesday and Thursday. Pupils can leave things there on other school days by giving them to Mr Chen in the office. They must not put anything outside the desk when it is closed.\n\nLast Tuesday, Mei found a blue sports bag beside the playground. She took it to the desk. The pupil helper asked where and when she had found it. Mei did not open the bag. The helper wrote a short description on a card: “Blue sports bag, found beside the playground before lunch.” He did not put a pupil's name on the public card.\n\nOn Thursday, Arun came to ask about a lost bag. Before showing it to him, the helper asked him to describe two things inside it. Arun said there was a green towel and a small red ball. The helper checked these details with Mr Chen, then returned the bag. Arun signed the record book to show that he had collected it. He thanked Mei the next day.",
+  "author_answer_vector": [
+    "F",
+    "F",
+    "T",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 180,
+    "stem_English_words": 51,
+    "options_English_words_with_repeated_bank": 37,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "subgroups": [
+    {
+      "response_numbers": [
+        1,
+        2,
+        3
+      ],
+      "operation": "TF",
+      "options_each": 2
+    },
+    {
+      "response_numbers": [
+        4,
+        5
+      ],
+      "operation": "choice",
+      "options_each": 3
+    }
+  ]
+}
