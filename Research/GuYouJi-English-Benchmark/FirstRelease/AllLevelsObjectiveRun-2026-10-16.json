@@ -611,10 +611,10 @@
     }
   ],
   "storage": "no full snapshots,eachSHAonce;reuse unchanged evidence;preserve originals,unique history,two restore points;regenerable trash may be cleared",
-  "latest_progress": "15levels56activecompletegroups380responses;10cumulativenewauthors68responsesunchanged;12wholegroups123responsespaused;new3holds30responsesforprogressiveinfinitive/one-result/attestedwarmness-contextunresolved;remaining14middlefillpositionsnotcertified;source6/38/4andmiddle306/41unchanged;kindergartenstillmissingoriginalaudio/script",
+  "latest_progress": "15levels56groups380responses;10cumulativenewauthors68responses;CET4wordbankversion0.3replacesunusedavailablewithfragiletoavoidpracticalcompetition;12holds123responsesunchanged;no sourceornewauthorincrements",
   "current_authored_additions": {
-    "path": "FirstRelease/AllLevels/authored-additions-v0.8.json",
-    "sha256": "7968b8a674b4a0161adcbdb467240bd3a4fc73dc36ca5c571fe37cab38a97412"
+    "path": "FirstRelease/AllLevels/authored-additions-v0.9.json",
+    "sha256": "890a3969b23ac664bb9781b50e9c54cbfaa3149909b18398525462da92ad03da"
   },
   "current_review_builder_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/build_all_levels_review.py",
   "current_review_checker_command": "python3 -B Research/GuYouJi-English-Benchmark/Tools/check_all_levels_review.py --report <new-version-output>",
@@ -631,16 +631,16 @@
     "Kindergarten original audio/script stillmissing;no repeatedblockedrequests or fabricated child input"
   ],
   "latest_controls": {
-    "path": "build/english-benchmark-research-20261012/all16-tenth-controls20261016-v0.1.json",
-    "sha256": "c86a8578374689bb0c51e4c723bc2e6c6f73bca8696051f77c5684b71dfe583e"
+    "path": "build/english-benchmark-research-20261012/all16-eleventh-controls20261016-v0.1.json",
+    "sha256": "e56ab5ada438a101bafb5ce5b4b5e65a03058ca7759d0e5ed75426e43a359927"
   },
   "latest_selected_source_batch": {
     "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
     "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
   },
   "current_nonmiddle_mode_specifications": {
-    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.9.json",
-    "sha256": "d79819812afd82324bb7b74cf596e4f8a84549897c4b0ded042da61669e1f610"
+    "path": "FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.10.json",
+    "sha256": "2dbb788df26a763ca3d322f81f0805b2ed8a5f4dffc92b133d93c9a74a724ab2"
   },
   "current_concrete_group_holds": {
     "path": "FirstRelease/DeterministicMarking/concrete-group-holds-v0.3.json",
@@ -651,14 +651,14 @@
   "paused_concrete_groups": 12,
   "paused_concrete_responses": 123,
   "latest_review_delta": {
-    "path": "build/english-benchmark-research-20261012/all16-ninth-review-delta20261016-v0.1.json",
-    "sha256": "87072d24c5c81b31352d811154e98746d64f2bd10e8258eefa96500f9a852e6a"
+    "path": "build/english-benchmark-research-20261012/all16-eleventh-review-delta20261016-v0.1.json",
+    "sha256": "21b960c83db3ad16714c404675d18fa4892043249f2d073bd1e5a1f8430fe8fb"
   },
   "pending_browser_review_group_ids": [],
-  "last_completed_batch": "tenth_sharedbank_and_article_legal_forms",
+  "last_completed_batch": "eleventh_CET4_pinned_distractor_revision",
   "latest_browser_review": {
-    "path": "build/english-benchmark-research-20261012/all16-tenth-behavior20261016-v0.1.json",
-    "sha256": "ed7054069666bc21cf31b8de67e949f013567de67890141e1fc5b0490af94653"
+    "path": "build/english-benchmark-research-20261012/all16-eleventh-behavior20261016-v0.1.json",
+    "sha256": "2945988084bd0519820c3eb18ceda1b92c355141325317aad9cec60377d644e6"
   },
   "latest_eligibility_audit": {
     "path": "build/english-benchmark-research-20261012/all16-tenth-form-eligibility20261016-v0.1.json",
@@ -667,5 +667,9 @@
   "latest_kindergarten_input_followup": {
     "path": "build/english-benchmark-research-20261012/kindergarten-official-audio-followup20261016-v0.1.json",
     "sha256": "36a5f48bcad337dded0c44a6977844f0c8d8374d3d71dab2fb3517a23e800540"
+  },
+  "current_authored_revisions": {
+    "path": "FirstRelease/AllLevels/authored-revisions-v0.1.json",
+    "sha256": "db92db9665bf38324e0ff8e0a4b50e9d647609cfac707d453a66f1c56d1b7a53"
   }
 }

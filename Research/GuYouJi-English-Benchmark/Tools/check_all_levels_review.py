@@ -17,8 +17,34 @@ def extract(page):
     return json.loads(re.search(r'<script id="quality-data" type="application/json">(.*?)</script>',page.read_text(),re.S)[1])
 
 
+def group_sha(value):
+    return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def pinned_revision(prior,current,record):
+    """Permit only an explicitly frozen old payload and its exact approved successor."""
+    assert prior['id']==current['id']==record['id']
+    origin=next(v for v in record['from_versions'] if v['payload_sha256']==group_sha(prior))
+    snapshot=json.loads(load_ref(origin['snapshot']).read_text())
+    assert snapshot['new_groups'][record['id']]==prior
+    assert prior['candidate']==origin['candidate'] and prior['author_check']==origin['author_check']
+    assert current['candidate']==record['to_candidate'] and current['author_check']==record['to_author_check']
+    assert group_sha(current)==record['to_payload_sha256']
+    for group in [prior,current]:
+        load_ref(group['candidate']);load_ref(group['author_check'])
+    assert len(prior['questions'])==len(current['questions'])==record['response_count']
+    for key in ['grade','kind','anchor_group_ids','responseMode','instruction','fixedSharedBank','sourceFormNotice','requiredPassageImages']:
+        assert prior[key]==current[key], 'Revision altered source form: '+key
+    assert record['source_form_kept'] and record['reason']
+    return True
+
+
 def check(page):
     data=extract(page);policy=json.loads(load_ref(data['current_scope_policy']).read_text())
+    plan=json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
+    revisions=json.loads(load_ref(plan['current_authored_revisions']).read_text())['records'] if plan.get('current_authored_revisions') else []
+    revised={r['id']:r for r in revisions}
+    assert len(revised)==len(revisions)
     holds=json.loads(load_ref(data['concrete_group_holds']).read_text()) if data.get('concrete_group_holds') else {'records':[]}
     held={r['id']:r for r in holds['records']}
     def preserved(prior):
@@ -32,7 +58,9 @@ def check(page):
                 assert len(cells)==1 and cells[0]['observed'] and cells[0]['groupId'] is None
                 assert cells[0]['state']=='paused_requires_semantic_adjudication' and cells[0]['pauseReason']
             else:
-                assert data['groups'][key]==value,'Unpaused full input changed: '+key
+                if data['groups'][key]!=value:
+                    assert key in revised,'Unregistered full input changed: '+key
+                    pinned_revision(value,data['groups'][key],revised[key])
         return True
     assert len(data['grades'])==len(set(data['grades']))==16
     assert len(data['cells'])==16*len(set(c['family']for c in data['cells']))
@@ -78,13 +106,11 @@ def check(page):
         assert set(held)<=set(old['groups']) and len(held)==data['paused_concrete_groups']==holds['paused_groups']
         assert sum(r['responses']for r in held.values())==holds['paused_responses']
         assert all(r['whole_group_paused'] and r['counterexamples']for r in held.values())
-    plan=json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
     if plan.get('latest_review_delta'):
         delta=json.loads(load_ref(plan['latest_review_delta']).read_text())
         base=extract(load_ref(delta['base_frozen_page']))
         assert delta['scope']=='incremental_quality_review_group_snapshot' and not delta['fullpage_copy_created']
         assert set(delta['unchanged_group_sha256'])==set(base['groups']) and not delta['removed_group_ids']
-        group_sha=lambda value:hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
         assert all(group_sha(base['groups'][key])==value for key,value in delta['unchanged_group_sha256'].items())
         preserved(base);preserved({'groups':delta['new_groups']})
         # Incremental freezes retain prior new groups by reference, without copying their payloads.
@@ -216,7 +242,8 @@ def check(page):
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     return {'levels':16,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
-            'unpaused_inherited_payload_unchanged':True,'specific_complete_groups_paused':len(held),
+            'payload_preservation_or_pinned_revision_passed':True,'pinned_author_revisions':len(revised),
+            'specific_complete_groups_paused':len(held),
             'paused_responses':sum(r['responses']for r in held.values()),
             'no_subjective_or_partial_mixed_groups':True,'new_authored_groups':len(additions['candidates']),
             'middle_source_totals_unchanged':True,'simulated_primary5_source_warning_bound':True,

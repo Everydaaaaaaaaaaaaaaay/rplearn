@@ -1,0 +1,38 @@
+{
+  "version": "0.1",
+  "scope": "exact_frozen_payload_to_exact_authored_successor",
+  "records": [
+    {
+      "id": "cet4-photo-verification-bank",
+      "from_versions": [
+        {
+          "snapshot": {
+            "path": "build/english-benchmark-research-20261012/all16-ninth-review-delta20261016-v0.1.json",
+            "sha256": "87072d24c5c81b31352d811154e98746d64f2bd10e8258eefa96500f9a852e6a"
+          },
+          "payload_sha256": "64475bf98e2efa4e1f8416ae5afaf0040993ca66e9188e1b78750e2fd9c7f042",
+          "candidate": {
+            "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-v0.2.md",
+            "sha256": "62704d7488baa24347d44ca959b1ef7b97843528ea8b37b2e26ebeb5d480ac9e"
+          },
+          "author_check": {
+            "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-author-check-v0.2.json",
+            "sha256": "747863a57384e1e86ec7bb922c82fc1b5c57471d1a84c57d4517d30dd6b2492e"
+          }
+        }
+      ],
+      "to_candidate": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-v0.3.md",
+        "sha256": "db4460b0e953216e353087ba7a72c17db14bc5c29dbb5a6a97536a7425bf6f42"
+      },
+      "to_author_check": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-author-check-v0.3.json",
+        "sha256": "b601b23cc49281bbec47f71dc776bffb8aa622036258a3934e27403d92dd99dc"
+      },
+      "to_payload_sha256": "1998755169a45fb2e813e411d9770fad88c6d2d260009f1445d98b6137b1f187",
+      "response_count": 10,
+      "source_form_kept": true,
+      "reason": "Replace unused B available with fragile to avoid competing with practical at slot6;update reasons4/6;no new author or source;old originals and snapshot immutable."
+    }
+  ]
+}
