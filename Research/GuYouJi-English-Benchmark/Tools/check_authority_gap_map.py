@@ -102,7 +102,8 @@ def check(run_path):
     checked = walk_refs(run)
     atlas = read(reference(run['authority_atlas']))
     source = read(reference(run['selected_source_modes']))
-    targets = read(reference(run['original_coverage_target']))
+    current_targets = run.get('current_original_coverage_target')
+    targets = read(reference(current_targets or run['original_coverage_target']))
     gaps = read(reference(run['gap_queue']))
     for value in [atlas, source, targets, gaps]:
         checked += walk_refs(value)
@@ -118,7 +119,20 @@ def check(run_path):
     assert source['new_selected_source_groups'] == len(source['groups'])
     assert source['new_source_responses'] == sum(g['responses'] for g in source['groups'])
     assert source['new_authored_groups'] == 0
-    assert targets['currently_complete_originals'] == 76
+    if current_targets:
+        assert targets['currently_complete_originals'] == run['current_preview_groups']
+        assert targets['current_responses'] == run['current_preview_responses']
+        assert targets['new_original_groups'] == run['new_authored_groups']
+        assert sum(r['current_complete_originals'] for r in targets['rows']) == run['current_preview_groups']
+        assert sum(r['current_complete_originals'] > 0 for r in targets['rows']) == run['current_complete_level_type_cells']
+        assert sum(r['current_complete_originals'] >= 3 for r in targets['rows']) == run['current_three_original_cells']
+        authored_ids = [ident for r in targets['rows'] for ident in r['current_authored_ids']]
+        assert len(set(authored_ids)) == len(authored_ids) == run['current_preview_groups']
+        assert all(len(r['current_authored_ids']) == r['current_complete_originals'] for r in targets['rows'])
+        source_ids = {g['id'] for g in source['groups']}
+        assert all(set(r['selected_source_ids']) <= source_ids for r in targets['rows'])
+    else:
+        assert targets['currently_complete_originals'] == 76
     assert targets['supported_level_type_cells'] == len(targets['rows'])
     assert len({(r['level'], r['family']) for r in targets['rows']}) == len(targets['rows'])
     assert targets['minimum_new_groups_to_reach_target_if_all_admitted'] == sum(
@@ -151,6 +165,11 @@ def check(run_path):
             'new_complete_input_modes': len(source['groups']),
             'new_source_responses': source['new_source_responses'],
             'new_authored_groups': 0, 'references_checked': checked,
+            'current_preview_groups': targets['currently_complete_originals'],
+            'current_conditional_target_cells': targets['supported_level_type_cells'],
+            'current_target_remaining': targets['minimum_new_groups_to_reach_target_if_all_admitted'],
+            'current_run_authored_groups': targets.get('new_original_groups', 0),
+            'checker_created_no_new_authors': True,
             'rejected_bad_contracts': negative_checks,
             'all_passed': True,
             'not_independent_gold_or_student_commercial_production_validation': True}
