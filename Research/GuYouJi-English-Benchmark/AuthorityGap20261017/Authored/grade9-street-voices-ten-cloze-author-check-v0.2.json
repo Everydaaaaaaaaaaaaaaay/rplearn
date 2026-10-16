@@ -1,0 +1,542 @@
+{
+  "version": "0.2",
+  "id": "grade9-street-voices-ten-cloze",
+  "grade": 9,
+  "questions": 10,
+  "candidate_sha256": "4f1302cbc0cb1830a619ac9b7b7ebc3012e7da4c00847d9611ab262cc3a8df7f",
+  "canonical_response_block_sha256": "527c5ff584e77a7e702d0f17c179662d32fc20e6dc31ab424e4f5f7f84035473",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "complete"
+        ],
+        [
+          "B",
+          "protect"
+        ],
+        [
+          "C",
+          "reconsider"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "简单查牌问话计划被首访新信息改变，reconsider重想；complete完成与随后尚需档案/再访相反，protect保护原计划不合改变取向。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "built"
+        ],
+        [
+          "B",
+          "painted"
+        ],
+        [
+          "C",
+          "removed"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "bridge that was no longer there明示桥已不存在，removed解释桥消失而旧名保留；built建成、painted涂色均不能说明桥已不在。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "whole"
+        ],
+        [
+          "B",
+          "false"
+        ],
+        [
+          "C",
+          "same"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "currentmapnotwrong但只覆盖正式现称，nottellwhole story；false把地图内容当假故事与notwrong冲突，same无第二个已给故事作为相同对象。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "interrupting"
+        ],
+        [
+          "B",
+          "recording"
+        ],
+        [
+          "C",
+          "listening"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "前次corrected atonce使沉默，对照此次听完才问，withoutinterrupting；withoutrecording与获准录音和后文添加recording冲突，withoutlistening自相矛盾。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "reduce"
+        ],
+        [
+          "B",
+          "ignore"
+        ],
+        [
+          "C",
+          "capture"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "samewords onpaper不能完整再现声音温暖，capture；reduce减少、ignore忽视不是文字相对原声的表达保真能力。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "invitation"
+        ],
+        [
+          "B",
+          "schedule"
+        ],
+        [
+          "C",
+          "transcript"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "给不能听者的书面逐语记录transcript，对照recording；invitation邀请、schedule日程不能提供同一采访的可读内容。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "prediction"
+        ],
+        [
+          "B",
+          "correction"
+        ],
+        [
+          "C",
+          "question"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "correctedyear后旁注标明事实correction，同时保留原话；prediction预测、question提问不表示确认后的年份改正。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "understanding"
+        ],
+        [
+          "B",
+          "location"
+        ],
+        [
+          "C",
+          "ownership"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "streethadnotmoved而加旧照片/回忆，改变understanding；location位置被未移否定，ownership所有权无转移。"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [
+        [
+          "A",
+          "forget"
+        ],
+        [
+          "B",
+          "confirm"
+        ],
+        [
+          "C",
+          "discover"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "whatIalreadybelieved期待别人证实既有想法，confirm；discover发现意味着新知不是alreadybelieved，forget忘记不是访谈求证预设。"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [
+        [
+          "A",
+          "argue"
+        ],
+        [
+          "B",
+          "ask"
+        ],
+        [
+          "C",
+          "complain"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "notknowntoaskabout表示原本未知该问的事；argue争论/complain抱怨不合倾听陌生信息的采访目的。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedJuniorClozeBridge-v0.1.json",
+    "sha256": "ca710e4456a4ee0c8deac8514be426193ffdc29c69e2faf93c2c848eaedd236b"
+  },
+  "source_group_id": "g9.2026.cloze",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent_per_gap",
+    "source_material": {
+      "passages": 1,
+      "gaps": 10,
+      "source_features": {
+        "blanks": 10,
+        "options_each": 3,
+        "genre": "artist_growth_and_community_action_narrative",
+        "lexical_phrasal_and_cross_sentence_evidence": true
+      },
+      "given_words": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Our group recorded stories behind local street names. We expected a simple project: read the signs, ask questions and write a report. Our first interview made us (1) ____ that plan.\n\nMr Hu, a resident of Willow Street for sixty years, used a name absent from our map. I corrected him at once. He fell silent. My partner asked about the name's history. Mr Hu described a bridge that was no longer there. People had kept using its name after the bridge was (2) ____.\n\nWe found an old photograph of the bridge in the archive. The current map was not wrong, but it did not tell the (3) ____ story. We now wanted the memories as well as the printed names.\n\nMr Hu agreed to let us record his voice. This time, I listened without (4) ____. Afterwards, I asked about unfamiliar details. He spoke freely and laughed at a memory. The same words on paper could not fully (5) ____ his voice's warmth.\n\nWe included the recording in our report. Readers unable to hear it could read a (6) ____. Mr Hu checked the text and corrected one event's year. We kept his original words but marked that factual (7) ____ in a separate note.\n\nAt the presentation, I showed both photograph and map. The street had not moved; our (8) ____ had changed. Interviewing was no longer about making people (9) ____ what I already believed. It offered a chance to hear something I had not known to (10) ____ about.",
+  "author_answer_vector": [
+    "C",
+    "C",
+    "A",
+    "A",
+    "C",
+    "C",
+    "B",
+    "A",
+    "B",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 234,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 244,
+    "requirement_English_words": 0,
+    "output_letter_count": 10
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Our group recorded stories behind local street names. We expected a simple project: read the signs, ask questions and write a report. Our first interview made us (1) ____ that plan.\n\nMr Hu, a resident of Willow Street for sixty years, used a name absent from our map. I corrected him at once. He fell silent. My partner asked about the name's history. Mr Hu described a bridge that was no longer there. People had kept using its name after the bridge was (2) ____.\n\nWe found an old photograph of the bridge in the archive. The current map was not wrong, but it did not tell the (3) ____ story. We now wanted the memories as well as the printed names.\n\nMr Hu agreed to let us record his voice. This time, I listened without (4) ____. Afterwards, I asked about unfamiliar details. He spoke freely and laughed at a memory. The same words on paper could not fully (5) ____ his voice's warmth.\n\nWe included the recording in our report. Readers unable to hear it could read a (6) ____. Mr Hu checked the text and corrected one event's year. We kept his original words but marked that factual (7) ____ in a separate note.\n\nAt the presentation, I showed both photograph and map. The street had not moved; our (8) ____ had changed. Interviewing was no longer about making people (9) ____ what I already believed. It offered a chance to hear something I had not known to (10) ____ about.",
+  "completed_passage": "Our group recorded stories behind local street names. We expected a simple project: read the signs, ask questions and write a report. Our first interview made us reconsider that plan.\n\nMr Hu, a resident of Willow Street for sixty years, used a name absent from our map. I corrected him at once. He fell silent. My partner asked about the name's history. Mr Hu described a bridge that was no longer there. People had kept using its name after the bridge was removed.\n\nWe found an old photograph of the bridge in the archive. The current map was not wrong, but it did not tell the whole story. We now wanted the memories as well as the printed names.\n\nMr Hu agreed to let us record his voice. This time, I listened without interrupting. Afterwards, I asked about unfamiliar details. He spoke freely and laughed at a memory. The same words on paper could not fully capture his voice's warmth.\n\nWe included the recording in our report. Readers unable to hear it could read a transcript. Mr Hu checked the text and corrected one event's year. We kept his original words but marked that factual correction in a separate note.\n\nAt the presentation, I showed both photograph and map. The street had not moved; our understanding had changed. Interviewing was no longer about making people confirm what I already believed. It offered a chance to hear something I had not known to ask about.",
+  "passage_count": 1,
+  "gap_count": 10,
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "reconsider"
+        ],
+        [
+          "B",
+          "complete"
+        ],
+        [
+          "C",
+          "protect"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "简单查牌问话计划被首访新信息改变，reconsider重想；complete完成与随后尚需档案/再访相反，protect保护原计划不合改变取向。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "reconsider"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "removed"
+        ],
+        [
+          "B",
+          "built"
+        ],
+        [
+          "C",
+          "painted"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "bridge that was no longer there明示桥已不存在，removed解释桥消失而旧名保留；built建成、painted涂色均不能说明桥已不在。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "removed"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "whole"
+        ],
+        [
+          "B",
+          "false"
+        ],
+        [
+          "C",
+          "same"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "currentmapnotwrong但只覆盖正式现称，nottellwhole story；false把地图内容当假故事与notwrong冲突，same无第二个已给故事作为相同对象。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "whole"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "interrupting"
+        ],
+        [
+          "B",
+          "recording"
+        ],
+        [
+          "C",
+          "listening"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "前次corrected atonce使沉默，对照此次听完才问，withoutinterrupting；withoutrecording与获准录音和后文添加recording冲突，withoutlistening自相矛盾。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "interrupting"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "capture"
+        ],
+        [
+          "B",
+          "reduce"
+        ],
+        [
+          "C",
+          "ignore"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "samewords onpaper不能完整再现声音温暖，capture；reduce减少、ignore忽视不是文字相对原声的表达保真能力。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "capture"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "transcript"
+        ],
+        [
+          "B",
+          "invitation"
+        ],
+        [
+          "C",
+          "schedule"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "给不能听者的书面逐语记录transcript，对照recording；invitation邀请、schedule日程不能提供同一采访的可读内容。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "transcript"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "correction"
+        ],
+        [
+          "B",
+          "prediction"
+        ],
+        [
+          "C",
+          "question"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "correctedyear后旁注标明事实correction，同时保留原话；prediction预测、question提问不表示确认后的年份改正。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "correction"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "understanding"
+        ],
+        [
+          "B",
+          "location"
+        ],
+        [
+          "C",
+          "ownership"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "streethadnotmoved而加旧照片/回忆，改变understanding；location位置被未移否定，ownership所有权无转移。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "understanding"
+    },
+    {
+      "number": 9,
+      "before_options": [
+        [
+          "A",
+          "confirm"
+        ],
+        [
+          "B",
+          "discover"
+        ],
+        [
+          "C",
+          "forget"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "whatIalreadybelieved期待别人证实既有想法，confirm；discover发现意味着新知不是alreadybelieved，forget忘记不是访谈求证预设。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "confirm"
+    },
+    {
+      "number": 10,
+      "before_options": [
+        [
+          "A",
+          "ask"
+        ],
+        [
+          "B",
+          "argue"
+        ],
+        [
+          "C",
+          "complain"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "notknowntoaskabout表示原本未知该问的事；argue争论/complain抱怨不合倾听陌生信息的采访目的。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "ask"
+    }
+  ],
+  "source_form_count_not_grade_invariant": true,
+  "pre_freeze_revision": {
+    "initial_body_words": 306,
+    "revised_body_words": 234,
+    "purpose": "reduceincidentalreadingload_keepall10crosssentencegaps;notnationalgradebound",
+    "source_initial_template_retained_in_generation_script": true
+  },
+  "previous_author_check": {
+    "path": "AuthorityGap20261017/Authored/grade9-street-voices-ten-cloze-author-check-v0.1.json",
+    "sha256": "0a393862114a140f77683c61a8a13e69dd2d3682f0731220141e5454b45b222d"
+  },
+  "revision_reason": "rationale-onlysynchronization_afterbodyshortening;removeunprintedpens/room/everydaydetails;keysandstudentinputunchanged"
+}

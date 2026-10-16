@@ -1,0 +1,537 @@
+{
+  "version": "0.1",
+  "id": "grade9-clay-bowl-ten-cloze",
+  "grade": 9,
+  "questions": 10,
+  "candidate_sha256": "6ca6d9855dc2b7961002c05cf3bf8cdddb5805f76b593de0cd2ad4f95cd10b67",
+  "canonical_response_block_sha256": "842d0741f309340d7f85985360f53e7424b2e5287f2c8596eb4d43b134835d88",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "separated"
+        ],
+        [
+          "B",
+          "compared"
+        ],
+        [
+          "C",
+          "collected"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "beside teacher bowl且自己每次看更差，是compared两者比较；separated分离、collected收集不导致对照下觉得自己的更差。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "weight"
+        ],
+        [
+          "B",
+          "appearance"
+        ],
+        [
+          "C",
+          "price"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "round/smooth/leaned为外观比较，appearance；weight重量从未测，price无交易报价，不能替代最初自卑维度。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "soft"
+        ],
+        [
+          "B",
+          "frozen"
+        ],
+        [
+          "C",
+          "finished"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "untilreadyafterfiring才nolongersoft，当前soft clay受按会变形；finished已完工与后续烧制不符，frozen冻结无此场景。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "favourite"
+        ],
+        [
+          "B",
+          "problem"
+        ],
+        [
+          "C",
+          "surprise"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "always blue shirts/bags/pens具体重复偏好支持favourite；problem问题、surprise意外不能说明习惯性选蓝。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "free"
+        ],
+        [
+          "B",
+          "absent"
+        ],
+        [
+          "C",
+          "different"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "画家犬tiny picture是个人细节使different from other bowls；absent缺席不合inroom存在，free from无摆脱其他碗关系。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "name"
+        ],
+        [
+          "B",
+          "rule"
+        ],
+        [
+          "C",
+          "use"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "装paper clips且useeveryday，practical use实际用途；name命名、rule规则不是物品的盛放功能。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "perfect"
+        ],
+        [
+          "B",
+          "personal"
+        ],
+        [
+          "C",
+          "valuable"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "stilluneven与最初smoothperfectround比较，notperfect；valuable有兄弟每日用且寄家中物的价值，personal已有自家狗细节，两者不能被边缘不齐否定。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "forgotten"
+        ],
+        [
+          "B",
+          "met"
+        ],
+        [
+          "C",
+          "followed"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "专盯缺点而忽略赠送对象，almost forgotten personitwasfor；met遇到、followed跟随不表达注意力被外观占据而忽略接受者。"
+    },
+    {
+      "number": 9,
+      "stem": "第9空",
+      "options": [
+        [
+          "A",
+          "describing"
+        ],
+        [
+          "B",
+          "noticing"
+        ],
+        [
+          "C",
+          "removing"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "improve without removing everythingmadweitmine，保留个人印记；noticing注意或describing描述不会损掉这些印记，不能承接保留个人特点的领悟。"
+    },
+    {
+      "number": 10,
+      "stem": "第10空",
+      "options": [
+        [
+          "A",
+          "copying"
+        ],
+        [
+          "B",
+          "keeping"
+        ],
+        [
+          "C",
+          "selling"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Ikeptmynextbowl too直述保留未完美作品作学习，keeping；selling无出售，copying不是保留自己当次作品。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedJuniorClozeBridge-v0.1.json",
+    "sha256": "ca710e4456a4ee0c8deac8514be426193ffdc29c69e2faf93c2c848eaedd236b"
+  },
+  "source_group_id": "g9.2026.cloze",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent_per_gap",
+    "source_material": {
+      "passages": 1,
+      "gaps": 10,
+      "source_features": {
+        "blanks": 10,
+        "options_each": 3,
+        "genre": "artist_growth_and_community_action_narrative",
+        "lexical_phrasal_and_cross_sentence_evidence": true
+      },
+      "given_words": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "My first pottery bowl leaned to one side. The teacher's bowl was smooth and round. Mine looked worse whenever I (1) ____ them. I wanted to throw it away.\n\nMs Green asked what I had planned to do with it. “Give it to my brother,” I said. He had moved away to study, and I wanted him to have something from home. “Don't judge its value only by its (2) ____,” she replied.\n\nA deep thumb mark remained where I had lifted the clay too early. Ms Green showed me how to smooth it. The clay was still (3) ____, so pressing hard would change its shape. I worked slowly until only a faint line remained.\n\nAfter firing, the bowl was hard but still uneven. I painted it blue, my brother's (4) ____. He always chose blue clothes and bags. Inside, I drew our dog. That detail made it (5) ____ from the other bowls.\n\nMy brother sent me a photograph after receiving it. The bowl held paper clips on his desk. He had found a practical (6) ____ for it instead of merely displaying it.\n\nI could see the uneven edge. The bowl had not suddenly become (7) ____. Yet I no longer wanted to hide it. By focusing on mistakes, I had almost (8) ____ the person it was for. I kept my next bowl, too, hoping to improve it without (9) ____ everything that made it mine. Learning could include (10) ____ work I was still learning from.",
+  "author_answer_vector": [
+    "B",
+    "B",
+    "A",
+    "A",
+    "C",
+    "C",
+    "A",
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 231,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 241,
+    "requirement_English_words": 0,
+    "output_letter_count": 10
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "My first pottery bowl leaned to one side. The teacher's bowl was smooth and round. Mine looked worse whenever I (1) ____ them. I wanted to throw it away.\n\nMs Green asked what I had planned to do with it. “Give it to my brother,” I said. He had moved away to study, and I wanted him to have something from home. “Don't judge its value only by its (2) ____,” she replied.\n\nA deep thumb mark remained where I had lifted the clay too early. Ms Green showed me how to smooth it. The clay was still (3) ____, so pressing hard would change its shape. I worked slowly until only a faint line remained.\n\nAfter firing, the bowl was hard but still uneven. I painted it blue, my brother's (4) ____. He always chose blue clothes and bags. Inside, I drew our dog. That detail made it (5) ____ from the other bowls.\n\nMy brother sent me a photograph after receiving it. The bowl held paper clips on his desk. He had found a practical (6) ____ for it instead of merely displaying it.\n\nI could see the uneven edge. The bowl had not suddenly become (7) ____. Yet I no longer wanted to hide it. By focusing on mistakes, I had almost (8) ____ the person it was for. I kept my next bowl, too, hoping to improve it without (9) ____ everything that made it mine. Learning could include (10) ____ work I was still learning from.",
+  "completed_passage": "My first pottery bowl leaned to one side. The teacher's bowl was smooth and round. Mine looked worse whenever I compared them. I wanted to throw it away.\n\nMs Green asked what I had planned to do with it. “Give it to my brother,” I said. He had moved away to study, and I wanted him to have something from home. “Don't judge its value only by its appearance,” she replied.\n\nA deep thumb mark remained where I had lifted the clay too early. Ms Green showed me how to smooth it. The clay was still soft, so pressing hard would change its shape. I worked slowly until only a faint line remained.\n\nAfter firing, the bowl was hard but still uneven. I painted it blue, my brother's favourite. He always chose blue clothes and bags. Inside, I drew our dog. That detail made it different from the other bowls.\n\nMy brother sent me a photograph after receiving it. The bowl held paper clips on his desk. He had found a practical use for it instead of merely displaying it.\n\nI could see the uneven edge. The bowl had not suddenly become perfect. Yet I no longer wanted to hide it. By focusing on mistakes, I had almost forgotten the person it was for. I kept my next bowl, too, hoping to improve it without removing everything that made it mine. Learning could include keeping work I was still learning from.",
+  "passage_count": 1,
+  "gap_count": 10,
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "compared"
+        ],
+        [
+          "B",
+          "separated"
+        ],
+        [
+          "C",
+          "collected"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "beside teacher bowl且自己每次看更差，是compared两者比较；separated分离、collected收集不导致对照下觉得自己的更差。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "compared"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "appearance"
+        ],
+        [
+          "B",
+          "weight"
+        ],
+        [
+          "C",
+          "price"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "round/smooth/leaned为外观比较，appearance；weight重量从未测，price无交易报价，不能替代最初自卑维度。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "appearance"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "soft"
+        ],
+        [
+          "B",
+          "finished"
+        ],
+        [
+          "C",
+          "frozen"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "untilreadyafterfiring才nolongersoft，当前soft clay受按会变形；finished已完工与后续烧制不符，frozen冻结无此场景。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "soft"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "favourite"
+        ],
+        [
+          "B",
+          "problem"
+        ],
+        [
+          "C",
+          "surprise"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "always blue shirts/bags/pens具体重复偏好支持favourite；problem问题、surprise意外不能说明习惯性选蓝。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "favourite"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "different"
+        ],
+        [
+          "B",
+          "absent"
+        ],
+        [
+          "C",
+          "free"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "画家犬tiny picture是个人细节使different from other bowls；absent缺席不合inroom存在，free from无摆脱其他碗关系。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "different"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "use"
+        ],
+        [
+          "B",
+          "name"
+        ],
+        [
+          "C",
+          "rule"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "装paper clips且useeveryday，practical use实际用途；name命名、rule规则不是物品的盛放功能。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "use"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "perfect"
+        ],
+        [
+          "B",
+          "valuable"
+        ],
+        [
+          "C",
+          "personal"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "stilluneven与最初smoothperfectround比较，notperfect；valuable有兄弟每日用且寄家中物的价值，personal已有自家狗细节，两者不能被边缘不齐否定。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "perfect"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "forgotten"
+        ],
+        [
+          "B",
+          "met"
+        ],
+        [
+          "C",
+          "followed"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "专盯缺点而忽略赠送对象，almost forgotten personitwasfor；met遇到、followed跟随不表达注意力被外观占据而忽略接受者。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "forgotten"
+    },
+    {
+      "number": 9,
+      "before_options": [
+        [
+          "A",
+          "removing"
+        ],
+        [
+          "B",
+          "noticing"
+        ],
+        [
+          "C",
+          "describing"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "improve without removing everythingmadweitmine，保留个人印记；noticing注意或describing描述不会损掉这些印记，不能承接保留个人特点的领悟。",
+      "old_to_new": {
+        "C": "A",
+        "B": "B",
+        "A": "C"
+      },
+      "accepted_text": "removing"
+    },
+    {
+      "number": 10,
+      "before_options": [
+        [
+          "A",
+          "keeping"
+        ],
+        [
+          "B",
+          "selling"
+        ],
+        [
+          "C",
+          "copying"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "Ikeptmynextbowl too直述保留未完美作品作学习，keeping；selling无出售，copying不是保留自己当次作品。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "keeping"
+    }
+  ],
+  "source_form_count_not_grade_invariant": true,
+  "pre_freeze_revision": {
+    "initial_body_words": 335,
+    "revised_body_words": 231,
+    "purpose": "reduceincidentalreadingload_keepall10crosssentencegaps;notnationalgradebound",
+    "source_initial_template_retained_in_generation_script": true
+  }
+}

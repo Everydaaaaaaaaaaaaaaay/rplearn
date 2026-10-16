@@ -36,7 +36,11 @@ def pinned_revision(prior,current,record):
         load_ref(group['candidate']);load_ref(group['author_check'])
     assert len(prior['questions'])==len(current['questions'])==record['response_count']
     for key in ['grade','kind','anchor_group_ids','responseMode','instruction','fixedSharedBank','sourceFormNotice','requiredPassageImages']:
-        assert prior[key]==current[key], 'Revision altered source form: '+key
+        # Per-question radio groups omit this optional flag; an omitted flag has
+        # the same renderer behavior as false. Keep every other field required.
+        old_value = prior.get(key, False) if key == 'fixedSharedBank' else prior[key]
+        new_value = current.get(key, False) if key == 'fixedSharedBank' else current[key]
+        assert old_value == new_value, 'Revision altered source form: '+key
     assert record['source_form_kept'] and record['reason']
     return True
 
