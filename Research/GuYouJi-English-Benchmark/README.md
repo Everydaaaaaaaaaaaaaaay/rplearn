@@ -2,7 +2,9 @@
 
 **最新授权（2026-10-16）：** 用户要求删除全部旧定时任务并新建全档位任务。已删除`12`、`12-2`、`lingotrip-13`，启用`lingotrip-16-13`；执行[全16档限时计划](FirstRelease/AllLevelsObjectiveRun-2026-10-16.json)与[全档客观题范围策略](FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json)。覆盖启蒙、小一至高三、大学英语四级/六级、高级英语；主观题仍不收集不出题。今天12:00转收尾、13:00前交付并删除任务。中学49组/390回应为继承基线，其他档位尚须重新筛选和扩充，不称全部已交付。下方仅中学限制/任务状态是历史，已由本授权取代。
 
-当前全档第九批：[新作者索引0.8](FirstRelease/AllLevels/authored-additions-v0.8.json)增加四级一篇208英文词、10空/15固定词项完整原创，当前15档59完整大题/410回应；累计10新原创组/68回应，9组93回应仍暂停。午餐盒初稿的“方案—试行—谨慎推广”结构与既有稿过近，已保留初稿并重写为校园报道核实图片的事件叙事，不把修订多计作者。复用已核官方源，源原键风险独立保留，来源数量不增；十空/15项、完整回填、候选反证、字面/家族筛查及浏览器选答/解析/重置已核。见[模式0.8](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.8.json)与[本批研究](Studies/2026-10-16-CET4-fixed-bank-and-event-genre-revision.md)。
+当前全档第十批：[暂停清单0.3](FirstRelease/DeterministicMarking/concrete-group-holds-v0.3.json)新增3完整组30回应暂停：进行不定式、one result两实际回填与warmness派生名词的语境未决分开记录，不把词典登记冒称独立判分认可。当前15档56完整大题/380回应，中学37组267回应，12组123回应暂停；另14中学填空位仍未认证穷尽。累计10新原创组/68回应、考试来源计数不变，未截组或改原指令。见[模式0.9](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.9.json)与[本批研究](Studies/2026-10-16-bank-infinitives-derived-nouns-and-article-boundaries.md)。
+
+历史全档第九批：[新作者索引0.8](FirstRelease/AllLevels/authored-additions-v0.8.json)增加四级一篇208英文词、10空/15固定词项完整原创，当时15档59完整大题/410回应；累计10新原创组/68回应，当时9组93回应仍暂停。午餐盒初稿的“方案—试行—谨慎推广”结构与既有稿过近，已保留初稿并重写为校园报道核实图片的事件叙事，不把修订多计作者。复用已核官方源，源原键风险独立保留，来源数量不增；十空/15项、完整回填、候选反证、字面/家族筛查及浏览器选答/解析/重置已核。见[模式0.8](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.8.json)与[本批研究](Studies/2026-10-16-CET4-fixed-bank-and-event-genre-revision.md)。
 
 历史全档第八批：[新作者索引0.7](FirstRelease/AllLevels/authored-additions-v0.7.json)增加六级一篇272英文词、10空/15固定词项完整原创词库选择；复用已核官方源，不新增来源计数。当时15档58完整大题/400回应，累计9新原创组/58回应；9组93回应暂停不变。词形不变/每项最多一次/五项不用，完整回填与同类干扰反证绑定；页面以10个选择框保留15共享候选，已实际核验选择、切换保留、解析与重置。四级相同已核源型改为“待补题”，不再误记未知。学前两个定向官方入口仍缺原音频/脚本，不凑完整稿。见[模式0.7](FirstRelease/AllLevels/ObjectiveModeSpecifications-v0.7.json)与[本批研究](Studies/2026-10-16-CET6-fixed-bank-and-preschool-audio-boundary.md)。
 
