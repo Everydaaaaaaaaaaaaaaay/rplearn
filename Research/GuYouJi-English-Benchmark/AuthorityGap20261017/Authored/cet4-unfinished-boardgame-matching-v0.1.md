@@ -1,0 +1,227 @@
+# 四级：旧棋盒里的规则与记忆
+
+## 学生题面
+
+阅读完整A—K十一段长文，为全部十条陈述选择最符合信息所在段落的字母。同一段可以被多条陈述选中，也可以没有陈述对应；不要按用过即排除。情境与人物均虚构。
+
+### A
+
+When Nia inherited a box from her aunt in the imaginary town of Halewick, she expected to find the board game they had played during childhood visits. The lid showed a river, four bridges and a row of houses, but there was no publisher's name. Inside were wooden pieces, a folded booklet and several blank cards. Rather than put the box straight into a display cabinet, she invited three cousins to spend a weekend finding out what had actually been handed down.
+
+### B
+
+Their first list recorded objects rather than presumed rules. There were four large pieces and twelve small ones, but the picture in the booklet showed sixteen small pieces. This was evidence of a possible shortage. The blank cards presented a different question. A note in the lid instructed players to write their own events on them, so their emptiness was intentional. The cousins kept those findings separate: one set might be incomplete, while another was waiting to be created. Treating every unmarked space as something lost would have misunderstood part of the design before a game even began.
+
+### C
+
+Two versions of the booklet were tucked together. One called the large pieces “boats”; the other called them “travellers” and described a different final move. The cousins initially combined the clearest sentences from each into a single set of instructions. That produced a turn which could never legally end, because the starting condition came from one version and the ending condition from the other. They began again, labelling the versions with different dates and copying each separately. Clear individual sentences had not guaranteed a workable combined procedure. Preserving their relationship to a particular version mattered too.
+
+### D
+
+The cousins agreed to start with the earlier booklet, but it said nothing about who should play first. Their childhood memories offered no shared answer. They adopted a household rule: the starting player would move one seat to the left after each game. Nia wrote that decision on a separate sheet, rather than inserting it into a copy of her aunt's instructions. This let another group see exactly where the surviving document ended and the cousins' agreement began. Their choice could help them play without being presented as a historical discovery about what their aunt had intended.
+
+### E
+
+The phrase “move past a bridge” caused the longest argument. One cousin counted stopping on the bridge as passing it; another required the piece to go beyond it. Both could produce an example that seemed to support his reading. Since their aunt was no longer available to ask, the group could not settle the intended meaning by appealing to her. They tried both interpretations and wrote down the consequences. Eventually they selected one for their weekend, while keeping the other in the record. Reaching an agreement for play did not prove that only one interpretation had ever been possible.
+
+### F
+
+A page in an old notebook listed scores from visits many years earlier. The cousins hoped it would explain the winning condition, but the entries recorded only names and numbers, with no account of how points were awarded. A high total might have represented good play, a penalty, or even several games added together. The record answered who had been present on certain evenings more readily than it answered how the game had worked.
+
+### G
+
+The cousins then invited a neighbour who had never seen the game. As they explained the first turn, they realised they had been relying on a shared childhood habit: each person knew which small pieces belonged to which large one, but neither booklet stated the relationship. They added a diagram to their household notes. The neighbour's difficulty had exposed an assumption that experienced players had stopped noticing. This did not show that the original game was badly designed. It showed that the surviving written instructions did not contain everything that this particular family had learned by watching others.
+
+### H
+
+Colour created another obstacle for one visitor, who found two sets of painted pieces difficult to distinguish. The group added removable shaped labels to the bases so that ownership could also be identified by touch and shape. It did not change how far the pieces could move or how points were counted. The labels were described in the household notes as a change to identification, with a photograph showing where they had been placed. A practical alteration could make play easier to follow while leaving the currently chosen movement rules intact. Nobody claimed it solved every possible access difficulty.
+
+### I
+
+One cousin wanted to make new blank cards immediately, but Nia kept a small selection of her aunt's handwritten examples separate. One mentioned a cancelled ferry; another sent a traveller back for a forgotten bag. Some cards named places the younger players did not recognise. Nia asked her father about those names and added his explanations in a different colour of ink. His memories were identified as later comments, not as words that had been on the cards from the beginning. The physical cards and the new explanations could then be read together without being confused.
+
+### J
+
+At the end of the weekend, the neighbour asked to borrow the box. Nia lent it with copies of both dated booklets, the inventory and the cousins' household notes. She could have supplied only the version they had just played, which would have been simpler to carry. Instead, she wanted the borrower to know why some decisions had been made and which questions remained unanswered. He was free to adopt different household rules, provided he recorded them as his choices. The box travelled with an account of its uncertainties, rather than with a promise that every surviving document agreed.
+
+### K
+
+A month later, two different groups returned reports of enjoyable games. They had not used exactly the same rules. Nia placed their notes in separate envelopes, labelled by date and group, and stored them beside the older booklets. She no longer thought that repairing the game's history required removing every variation. Her aim was to keep enough information for a new group to choose a playable version consciously. The box remained unfinished in one sense, because its records still contained questions. It had nevertheless become easier to use, since those questions were now visible instead of hidden inside an apparently complete set of instructions.
+
+<!-- responses:start -->
+
+1. Blank components were distinguished from items that might actually have been lost.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+2. Clear sentences from different editions formed an impossible combined procedure.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+3. An agreement for current play was not treated as proof of a single original meaning.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+4. A new procedure was labelled as the present group’s choice rather than the designer’s instruction.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+5. Numerical records were insufficient to recover the way points had been awarded.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+6. A newcomer helped reveal information that regular players had learned without written instructions.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+7. An adjustment changed the recognition of pieces while preserving their chosen movement rules.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+8. A borrower received earlier alternatives and the reasons behind current choices.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+9. Two readings of a disputed phrase were tested before the group selected one for immediate use.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+10. The number of small playing pieces in the box was lower than the number shown in a booklet.
+   A. Paragraph A
+   B. Paragraph B
+   C. Paragraph C
+   D. Paragraph D
+   E. Paragraph E
+   F. Paragraph F
+   G. Paragraph G
+   H. Paragraph H
+   I. Paragraph I
+   J. Paragraph J
+   K. Paragraph K
+
+<!-- responses:end -->
+
+## 作者核对
+
+### 1：B
+
+B清点小棋子不足但空卡有明确自写说明，区分缺件与待创作。A只列箱中物；I讲已有手写卡；其他段讨论版本、规则、分数、指认和借出，无该清点对照。
+
+### 2：C
+
+C混用两个booklet起终条件导致turn不能合法结束，后分开誊录。D只补起手顺序；E词义争议而非版本混拼；其余段无两版本合并矛盾。
+
+### 3：E
+
+E bridge两种可行理解，试后本周选一但保留另一，不证明原来唯一。D新起手规则也分层但未有一个原句的两个解释；C是版本冲突；其余段不涉及该词义争论。
+
+### 4：D
+
+D新定轮换起手者，另纸写明非姨妈原印指令。H是识别标签非玩法顺序；J允许借方改规则但不是本次确立起手程序；其他段无这一具体程序制定。
+
+### 5：F
+
+F旧分数只姓名数字，无得分规则，可能奖励/罚分/多局和，不能重建计分。B数字是件数，C版本步骤不计分；其余段无旧得分记录限制。
+
+### 6：G
+
+G邻居不懂大小棋子归属，老玩家靠童年观察学得，说明书未写。H另一访客分不清颜色属感知障碍；E是原文字义争议；其余段无共享习惯被新手揭示。
+
+### 7：H
+
+H底座加可移除形状标签、不改步数或计分。G补图但非标签触觉改造；D/E改变本地玩法约定；其他段没有识别改善且保持移动规则。
+
+### 8：J
+
+J借出连两份dated booklets和inventory/household notes，要借方明白决策缘由与问题。K后来存报告不是出借包；C先分版本但无借出；其他段无此完整交接。
+
+### 9：E
+
+E先tried both interpretations并记录后果，再选周末用法，是“先试两种，再作本地决定”的顺序证据。D补规则时没有试两种原句解释，C按版本拆开而非逐解释试玩；其他段无该试验顺序。与第3题同段但本题问测试和决策先后，第3题问原意唯一性的证明限度，非同一事实重复陈述。
+
+### 10：B
+
+B实物12小件、booklet图16小件，明确小件数量差；大件为4，空卡是有意留白。F也有数字但属于旧分数而非件数；A不列件数，其他段无此清点对比。与第1题同段但本题问12/16数量对照，第1题问空卡与遗失不同状态，保留复用且避免陈述同一事实。
+
+全部十一段和十条陈述为一整组；原型明确允许段落复用，未被选中的三段仍保留。重复选段的陈述分别考查不同事实/关系，不以选过即排除。不涉及自由表达判分。人物/事件均原创虚构，不作真实机构、历史或声学事实证据。形式复用已核官方2016四级样卷；作者核对不等独立教研、学生、商用、生产或产品难度验证。
