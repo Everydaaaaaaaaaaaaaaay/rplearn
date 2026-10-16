@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "status": "102completegroups660responses;primary3wholeordering3authors_added;continue_remainingactualsourcegaps_and_variants",
+  "status": "106completegroups692responses;all3advancedlisteningfamilies3authors;continue_missingactualsources_and_remainingvariants",
   "owner_authorized_on": "2026-10-17",
   "timezone": "Asia/Shanghai",
   "hard_deadline_local": "2026-10-17T12:00:00+08:00",
@@ -27,7 +27,7 @@
   },
   "active_review_run": {
     "path": "FirstRelease/ActiveReviewRun.json",
-    "sha256": "7dbc14474bcb2fddd53f6f96f6948a422b8b7ab5afe79b291298dc9571ae0a05"
+    "sha256": "524f02b6d3f05480df91d414b6b69c9e2d23f80f2a9635c9ec40361b6a060449"
   },
   "baseline_complete_groups": 76,
   "baseline_responses": 505,
@@ -43,7 +43,7 @@
   ],
   "new_selected_source_groups": 21,
   "new_source_responses": 130,
-  "new_authored_groups": 26,
+  "new_authored_groups": 30,
   "page_version_still_prior76": false,
   "required_outputs_pending": [
     "target_remaining_source_gaps_prioritized",
@@ -52,7 +52,7 @@
   ],
   "do_not_recover_subjective_or_kindergarten": true,
   "current_cache": "build/english-benchmark-authority-20261017",
-  "last_completed_step": "ordinaryreposttextcompleteprimary3ordering6sentences1given5ranks;3newauthors15responses;IABall3variantsreferencesreset;4badcontrols;old99preserved;19SHAobjects0.44MBincrementalarchive",
+  "last_completed_step": "4wholelisteningvariants32responses4AAC;all3advancedlisteningfamilies3authors;IABall32references/scripts/reset;old102preserved;20SHA17.9MBincrementalarchive;CEToldaudioentrysoftredirectnotadmitted",
   "followup_notes": [
     "p3Dongchengwebtitle saysrealbutstudentheader says样卷andregionnotinbody;do_not_countasordinarytrueexam",
     "Kunshan21636201explicitlyadaptedtolatesttextbook;notoriginalexam",
@@ -80,7 +80,7 @@
     "sha256": "86a76e523960ca7ed8f9bc6539f4ce1530060d6f3ea27fa2cd548dcdea3f1ca7"
   },
   "inherits_content_scope_not_old_automation_metadata": true,
-  "minimum_new_groups_for3target_if_all_source_modes_admitted": 171,
+  "minimum_new_groups_for3target_if_all_source_modes_admitted": 167,
   "registered_first_batch": {
     "processing_run_id": "authority17-map-and15-targeted-source-modes-v0.1",
     "raw_acquisitions": 14,
@@ -92,48 +92,48 @@
   },
   "latest_study": {
     "path": "Studies/2026-10-17-authority-first-type-map-and-targeted-source-gaps.md",
-    "sha256": "b917e2f39f2198b091b87f7ddbf8290a775705c9b1e964009504efc394f0c259"
+    "sha256": "78e8bc76c3ab25bba3df0b362a8d320ce473503c5f2c26e5fc0bb809b9d911e9"
   },
   "latest_incremental_archive": {
-    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.7.json",
-    "sha256": "041a088b7f4c2382cd60628e8e9b3aec8392b9a8f078fa33f92f8f9158936b87"
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.8.json",
+    "sha256": "7b004f9a9645e7d86b9d6da8333432fa0049284c9d8d451f89b60b6cd98d0660"
   },
   "authority_layer_check": {
     "path": "build/english-benchmark-authority-20261017/authority-layer-check-v0.1.json",
     "sha256": "d0263d6e8952d6febddfa302650bbb275895afc2ce6bbda13ac97dcf5b7574fb"
   },
-  "new_authored_responses": 155,
-  "current_preview_groups": 102,
-  "current_preview_responses": 660,
+  "new_authored_responses": 187,
+  "current_preview_groups": 106,
+  "current_preview_responses": 692,
   "current_complete_level_type_cells": 90,
-  "current_three_original_cells": 6,
+  "current_three_original_cells": 8,
   "current_review_plan": {
-    "path": "AuthorityGap20261017/ReviewPlan-v0.5.json",
-    "sha256": "dcb30a9af9f94ebe9cb5b93d4d125d290f1c6f3302d0e152550a0befaa282f22"
+    "path": "AuthorityGap20261017/ReviewPlan-v0.6.json",
+    "sha256": "70be72b5cf30dcf7bae7973347fe710f2d39fd59d3053779349d022cf74b0a4e"
   },
   "current_authored_index": {
-    "path": "AuthorityGap20261017/AuthoredIndex-v0.4.json",
-    "sha256": "fe71ab839dede534d707fabf3768be646a6dfe99d78ca2289016bf5c1d2193c1"
+    "path": "AuthorityGap20261017/AuthoredIndex-v0.5.json",
+    "sha256": "34dbe825177b0a28b996e90c583f1892652038cea67dc086ea4d07bc1b355934"
   },
   "current_original_coverage_target": {
-    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.6.json",
-    "sha256": "0d3a82c98c265e89b6cc8ca584815436c0d04ab9442acad5f18f90315bd5dafc"
+    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.7.json",
+    "sha256": "496816953c0597f5dc93f518eafdda13f3765c22820a6fd512697a1497fce953"
   },
   "latest_source_followup": {
     "path": "AuthorityGap20261017/SourceFollowup-v0.2.json",
     "sha256": "4ae2f33eadb68c397a69eda5257800600e3c96a569f8bc4fba08f142d4613ae6"
   },
   "latest_controls": {
-    "path": "build/english-benchmark-authority-20261017/ordering3-contract-controls-v0.1.json",
-    "sha256": "a6bc3200719bc3f5652428cc6edef439d295cd2902006517848bfe73869c8673"
+    "path": "build/english-benchmark-authority-20261017/listening4-contract-family-check-v0.1.json",
+    "sha256": "98ca4fc4b2864c2bda47ace011f496c91ed3033ff921b8d3b53aa7e524840fed"
   },
   "latest_browser_review": {
-    "path": "build/english-benchmark-authority-20261017/browser-ordering3-v0.1.json",
-    "sha256": "46cec994e18512365a257f83d077a4e3ed295e0ed04a0d22fae307f9160589ea"
+    "path": "build/english-benchmark-authority-20261017/browser-listening4-variants-v0.1.json",
+    "sha256": "d6347bbfa2967f611cb06dd24a2adf24b48749d20669f0faea73e8d3820cef21"
   },
   "latest_review_check": {
-    "path": "build/english-benchmark-authority-20261017/review102-postfreeze-check-v0.1.json",
-    "sha256": "a54e1e46a9d4421f38b41c5247e6cbdca801a4345fe253a4a2c9371e3bfb4dfa"
+    "path": "build/english-benchmark-authority-20261017/review106-postfreeze-check-v0.1.json",
+    "sha256": "4ce714cd24429871dc1e2f2d7b7d9499f676cb052030e41b7b66245e9f9db2d1"
   },
   "latest_source_contract_check": {
     "path": "build/english-benchmark-authority-20261017/c1-listening-source-contract-check-v0.1.json",
@@ -151,13 +151,13 @@
     "no_original_listening_delivered": false,
     "local_offline_voice_probe": "macOS say -v Daniel -r165 -o probe.aiff works;probe not author/test;do not use sourceaudio as original",
     "implementation_pending": [
-      "Part3andPart4firstwholeauthorsdelivered;extendeachto3variantsafterprioritysourcegaps",
+      "allthreeC1referenceclosedlisteningfamilieshave3fulloriginals;donotkeepaddingthissamefamilybeforeothergaps",
       "independentvoice/pronunciation/prosody/difficultyremainpending"
     ],
     "delivered_families": [
       "listening_extract_choice:3groups/18responses/9AACtracks",
-      "listening_interview_choice:1group/6responses/1AACtrack",
-      "listening_double_matching:1group/10responses/1AACtrack"
+      "listening_interview_choice:3groups/18responses/3AACtracks",
+      "listening_double_matching:3groups/30responses/3AACtracks"
     ]
   },
   "remaining_source_priorities": [
@@ -174,33 +174,34 @@
     "IAB_current_deliverable_tab": "4",
     "browser_handle_in_cua_repl": "freshReview",
     "original_tab3_had_connection_error_do_not_treat_as_current94page": "old user tab was stale54;fresh4now94;server8766restarted",
-    "current_review_plan": "AuthorityGap20261017/ReviewPlan-v0.5.json",
+    "current_review_plan": "AuthorityGap20261017/ReviewPlan-v0.6.json",
     "next_plan_use_current_atlas_v02": "fixed in ReviewPlan-v0.3",
-    "frozen_authored_index": "AuthorityGap20261017/AuthoredIndex-v0.4.json;26authors;preserveolderindexes",
+    "frozen_authored_index": "AuthorityGap20261017/AuthoredIndex-v0.5.json;30newrunoriginals;preserveolderindexes",
     "registered_cache_immutable": "allRegistryprocessingpage_records;do_notreuseexistingfilenames;appendversionwithassert_not_exists",
     "next_audio_implementation_notes": [
-      "renderer/compiler/checkernowsupportPart1/3/4;11completeAAC9v0.2and2v0.1immutable",
-      "Part3oneinterviewer2guests6x4;Part4onewhole5voicepiece2independent8banks10responses;noinventedonce-rule;fullrecordingtwice",
-      "newdoublematchinguses10selectswithitsowntaskbank;all16responses/references/resetIABpassed;prior97payloadsunchanged",
-      "90conditionalcells270groupstarget;99shownincludingearlyhistoricalforms;171remainingnotnationalexhaustiveness;wordformationadmissionpendingonlycurrentauthoritysource-onlycell"
+      "renderer/compiler/checkerPart1/3/4allready;15completeAAC9extractsv0.2+6extendedv0.1immutable",
+      "Part3now3authors6responses4each1host2guests;Part4now3authorssame5voices2x8banks10responsesonegroup;alltwice",
+      "newPart4topicsvolunteer/studyexplicitlyadaptednotpretendedsourcejobs;all32inputs/references/scripts/resetrealIABpassed",
+      "otherlevelsCETmustpreservehearONCE/spokenquestions/15secpausesifnewfullcontractsadmitted;do_notmechanicallyreuseC1twiceorprintedquestionstemforms"
     ],
     "latest_source_selection": "SelectedSourceModes-v0.4;21/130;newp3sortingpublicHTMLtextcompletebutpage4visualabsent;noanswers;grade/termimage1confirmedregiontitleonly",
-    "remaining_original_gap": "91conditionalcells273groups;102shown/660responses90cells6cells3drafts;171remainingnotnationalexhaustiveness",
+    "remaining_original_gap": "91conditionalcells273groups;106shown/692responses90cells8cells3drafts;167remainingnotnationalexhaustiveness",
     "next_priorities": [
-      "2morePart3and2morePart4wholelisteningauthors_to3each;renderer/compilerready",
-      "actualnonpapercompleteclosedcardbundlesprimary1/2;do_notreusehistoricalpaperformsascurrentblueprint",
-      "primary6ordinaryorderingtitlebodyidentity;FeixianJyeooINVALIDDONOTADMIT;primary5ordinarycompleteclozenonewclosure",
-      "CETmatchoriginalrecording;existingpaper/script/keycached;nosourceaudioguess",
-      "remainingconfirmednonlisteningtypes3drafts;topic/genrefamiliesvaried;noopenwordformswithoutadmission"
+      "matchingCET2016originalaudio_finduniversity/publishermirrorfromactuallinks;Nairobi/Woolworths/Cairo_CET4;DenysHawtin/GiffordSchool_CET6;cachedpaper/script/keyknown_notallnosource",
+      "actualprimary1/2closednonpapercompletecards/teacherprompts;noage-to-gradeinferencefromACCEVpreschoolsample",
+      "ordinaryprimary6ordering_identitynotFeixianmisalignedJyeoo;ordinaryprimary5fullclozemissing19/20notguessed",
+      "morecomplete3draftsforremainingconfirmednonlisteningcells;varythemes/genres;do_notexpandadvanced3listeningfamiliespasttargetfirst",
+      "middlelisteningspecificordinarysampleinputandmediaonly_withcompleteform;avoidgenericduplicatewrittenreading"
     ],
-    "lowprimary_latest_attempt": "lowprimary-web28/29;ACCE-V2022uses3.1—7.7age preschool sample;grade2booksnotparticipantgradeproof;do_notrestorekindergartenorinferprimary2;fullclosednonpaperschoolcardsstillmissing"
+    "lowprimary_latest_attempt": "lowprimary-web28/29;ACCE-V2022uses3.1—7.7age preschool sample;grade2booksnotparticipantgradeproof;do_notrestorekindergartenorinferprimary2;fullclosednonpaperschoolcardsstillmissing",
+    "latest_CET_attempt": "cet-listening-followup-web30—35/result;currentofficialdirectoryEnglishlinkonlyoutline;oldaudiohttps://cet4.koolearn.com/20151230/798831.htmlreturnsHTTP200genericcoursehome_noaudio;do_notcallsoftredirectsuccess"
   },
   "browser_source_only_check": {
     "path": "build/english-benchmark-authority-20261017/browser3-source-only-v0.1.json",
     "sha256": "c514cf86d853e3190856301189dbbe31a57ea83dddec3a9e04b9869bb78567c9"
   },
   "latest_audio_script_family_check": {
-    "path": "build/english-benchmark-authority-20261017/listening3-script-family-check-v0.1.json",
-    "sha256": "655544f976a35b5632c9282eee9e2025be27d64bcdcc274b1f80357d2cdc060e"
+    "path": "build/english-benchmark-authority-20261017/listening4-contract-family-check-v0.1.json",
+    "sha256": "98ca4fc4b2864c2bda47ace011f496c91ed3033ff921b8d3b53aa7e524840fed"
   }
 }
