@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import xml.etree.ElementTree as ET
+from urllib.parse import quote
 from grade_mode_evidence import load_ref
 from quality_review_contract import response_markdown
 
@@ -47,7 +48,7 @@ def check(data, plan):
         assert printed == response_markdown(group['questions'])
         assert hashlib.sha256(printed.encode()).hexdigest() == audit['canonical_response_block_sha256']
         assert audit['student_passage'] in text
-        assert audit['load_measure']['body_English_words'] == words(audit['student_passage'])
+        assert audit['load_measure']['body_English_words'] == words(audit.get('body_load_text',audit['student_passage']))
         assert audit['load_measure']['stem_English_words'] == sum(words(q['stem']) for q in group['questions'])
         assert audit['load_measure']['options_English_words_with_repeated_bank'] == sum(words(v) for q in group['questions'] for _,v in q['options'])
         assert audit['load_measure']['output_response_positions'] == len(group['questions'])
@@ -63,6 +64,31 @@ def check(data, plan):
             assert not root.findall('.//{http://www.w3.org/2000/svg}script')
         else:
             assert not group['requiredPassageImages']
+        if meta['family'] == 'listening_extract_choice':
+            manuscript=json.loads(load_ref(audit['manuscript']).read_text())
+            generation=json.loads(load_ref(audit['audio_generation']).read_text())
+            assert generation['manuscript']==audit['manuscript']
+            assert generation['whole_final_audio_decode_passed'] and generation['no_source_recording_reused']
+            assert not generation['independent_listening_pronunciation_prosody_student_commercial_production_validated']
+            assert audit['extracts']==len(audit['audio_assets'])==len(group['requiredAudioAssets'])==len(manuscript['clips'])==3
+            assert audit['questions_per_extract']==[2,2,2] and len(group['questions'])==6
+            assert audit['audio_transcript_in_teacher_only'] and audit['synthetic_audio_not_natural_listening_calibration']
+            assert [n for a in group['requiredAudioAssets'] for n in a['response_numbers']]==list(range(1,7))
+            for n,(asset,track,clip,display) in enumerate(zip(audit['audio_assets'],generation['tracks'],manuscript['clips'],group['requiredAudioAssets']),1):
+                load_ref(asset)
+                assert asset['sha256']==track['sha256'] and asset['repeat_count']==track['repeat_count']==2
+                assert display['asset']=={k:asset[k] for k in ['path','sha256']}
+                assert display['src']=='../../'+quote(asset['path']) and display['repeat_count']==2
+                assert asset['sha256'] not in {a['sha256'] for a in source['original_audio_assets']}
+                assert asset['response_numbers']==[2*n-1,2*n] and abs(asset['seconds']-track['seconds'])<.01
+                assert [q['answer'] for q in clip['questions']]==audit['author_answer_vector'][2*n-2:2*n]
+                assert all(t['text'] in group['reviewText'] for t in clip['turns'])
+                assert all(t['text'] not in group['passageHtml'] for t in clip['turns'])
+                for repeat in [1,2]:
+                    segments=[s for s in track['segments'] if s['role']=='dialogue' and s['repeat']==repeat]
+                    assert [(s['speaker'],s['text']) for s in segments]==[(t['speaker'],t['text']) for t in clip['turns']]
+            assert audit['load_measure']['audio_dialogue_English_words_once']==sum(t['dialogue_words_once'] for t in generation['tracks'])
+            assert audit['load_measure']['audio_spoken_words_including_repetition_and_introductions']==sum(t['spoken_words_with_instructions'] for t in generation['tracks'])
         if meta['family'] == 'paragraph_gap_insertion':
             assert len(audit['shared_paragraphs']) == 7
             assert audit['removed_paragraph_count'] == 6 and audit['material_article_count'] == 1

@@ -6,6 +6,7 @@ import hashlib
 import html
 import json
 import re
+from urllib.parse import quote
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from grade_mode_evidence import BASE, REPO, load_ref
@@ -45,8 +46,10 @@ def full_markdown_candidate(meta):
         raise ValueError('Unknown input marker')
     assets = [audit[k] for k in ['graph_asset', 'figure_asset'] if audit.get(k)]
     images = []
+    audio_assets = audit.get('audio_assets', [])
+    audio_tracks = []
 
-    def render_input(value):
+    def render_images(value):
         result, cursor = [], 0
         for embed in re.finditer(r'^!\[([^\]]+)\]\(([^)]+)\)\s*$', value, re.M):
             path = (Path(meta['candidate']['path']).parent / embed[2]).as_posix()
@@ -65,6 +68,33 @@ def full_markdown_candidate(meta):
                           '" width="'+str(width)+'" height="'+str(height)+'"></figure>')
             cursor = embed.end()
         result.append(material_view(value[cursor:]))
+        return ''.join(result)
+
+    def render_input(value):
+        if not audio_assets:
+            return render_images(value)
+        result, cursor = [], 0
+        for embed in re.finditer(r'^\[([^\]]+)\]\(([^)]+\.m4a)\)\s*$', value, re.M):
+            target = (BASE / Path(meta['candidate']['path']).parent / embed[2]).resolve()
+            matches = [a for a in audio_assets if load_ref(a).resolve() == target]
+            if len(matches) != 1:
+                raise ValueError('Unbound required original audio')
+            asset = matches[0]
+            relative = Path(asset['path'])
+            if relative.is_absolute() or '..' in relative.parts or relative.parts[0] != 'build':
+                raise ValueError('Original audio must remain in the local research cache')
+            track = {'src': '../../'+quote(relative.as_posix()), 'label': embed[1],
+                     'asset': {'path': asset['path'], 'sha256': asset['sha256']},
+                     'seconds': asset['seconds'], 'response_numbers': asset['response_numbers'],
+                     'repeat_count': asset['repeat_count']}
+            audio_tracks.append(track)
+            result.append(render_images(value[cursor:embed.start()]))
+            result.append('<figure class="listening-track"><figcaption>'+html.escape(embed[1])+
+                          '</figcaption><audio class="listening-audio" controls preload="metadata" src="'+
+                          html.escape(track['src'], quote=True)+'" aria-label="'+html.escape(embed[1], quote=True)+
+                          '">浏览器不能播放此音频，请使用支持AAC的浏览器。</audio></figure>')
+            cursor = embed.end()
+        result.append(render_images(value[cursor:]))
         return ''.join(result)
 
     before = after = None
@@ -96,14 +126,19 @@ def full_markdown_candidate(meta):
         raise ValueError('Unprepared Markdown task family: '+meta['id'])
     if len(images) != len(assets):
         raise ValueError('Missing or duplicated audited graph input')
+    if len(audio_tracks) != len(audio_assets):
+        raise ValueError('Missing or duplicated original listening input')
     teacher_html = material_view(teacher)
     if '\n' in closing:
         teacher_html = teacher_html.replace(html.escape(closing), html.escape(closing).replace('\n', '<br>'))
-    return {'id': meta['id'], 'grade': meta['grade'], 'kind': meta['family'], 'typeLabel': '',
+    group = {'id': meta['id'], 'grade': meta['grade'], 'kind': meta['family'], 'typeLabel': '',
             'candidate': meta['candidate'], 'author_check': meta['author_check'], 'anchor_group_ids': meta['source_group_ids'],
             'responseMode': mode, 'passageHtml': passage_html, 'questions': questions,
             'studentBeforeHtml': before, 'studentAfterHtml': after, 'reviewHtml': teacher_html,
             'reviewText': teacher, 'requiredPassageImages': images, 'author_review_not_independent': True}
+    if audio_tracks:
+        group['requiredAudioAssets'] = audio_tracks
+    return group
 
 
 def build(matrix_path, output, historical_scope=False):

@@ -1,0 +1,263 @@
+{
+  "version": "0.1",
+  "id": "advanced-listening-extracts-fieldwork-rooms-comments",
+  "grade": "advanced",
+  "family": "listening_extract_choice",
+  "family_label": "三段短录音听力选择",
+  "title": "高级听力三：野外研究、空间与报道",
+  "source_group_id": "advanced.c1.sample1.listening.part1",
+  "source_index": "AuthorityGap20261017/SelectedSourceModes-v0.3.json",
+  "instruction": "听三段不同的录音，每段对应两题。各段录音内已播放两遍。从每题三个选项中选择最佳答案。",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "words_per_minute": 165
+    },
+    "F": {
+      "voice": "Samantha",
+      "words_per_minute": 170
+    }
+  },
+  "clips": [
+    {
+      "context": "You hear two researchers discussing equipment for a field project.",
+      "turns": [
+        {
+          "speaker": "F",
+          "text": "The smaller recorder would be easier to carry, but I'm not ready to order it. The supplier's demonstration was in a quiet room. Our recordings will be made beside working boats."
+        },
+        {
+          "speaker": "M",
+          "text": "They sent a graph showing how it performs with background noise."
+        },
+        {
+          "speaker": "F",
+          "text": "Yes, though that tells us about the conditions they selected. I want to know whether we can still distinguish the calls we're studying when an engine starts halfway through one."
+        },
+        {
+          "speaker": "M",
+          "text": "The larger model has a stronger reputation. Shall we choose that and avoid the risk?"
+        },
+        {
+          "speaker": "F",
+          "text": "Reputation doesn't answer the question either. If it filters out the sound we're interested in along with the engine, a cleaner recording could actually be less useful."
+        },
+        {
+          "speaker": "M",
+          "text": "Then we should borrow both for an afternoon at the harbour, using the same settings and position."
+        },
+        {
+          "speaker": "F",
+          "text": "Exactly. I'm not trying to buy the most expensive device or the one with the most impressive graph. I want a comparison tied to the recording decision we'll have to make."
+        },
+        {
+          "speaker": "M",
+          "text": "I'll ask for a loan. Better to find the awkward case now than after we've spent a week collecting material we can't use."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why is the woman reluctant to order the smaller recorder?",
+          "options": [
+            [
+              "A",
+              "Its weight would make fieldwork impractical."
+            ],
+            [
+              "B",
+              "Its performance in relevant conditions is uncertain."
+            ],
+            [
+              "C",
+              "The supplier has refused to provide any specifications."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "展示安静、噪声图不说明研究船边特定声响能否区分，B。A反而更易携带；C已给图表，非拒绝一切规格。"
+        },
+        {
+          "stem": "What do the researchers agree to do?",
+          "options": [
+            [
+              "A",
+              "Select the established model on reputation alone."
+            ],
+            [
+              "B",
+              "Postpone fieldwork until all noise can be eliminated."
+            ],
+            [
+              "C",
+              "Compare both devices in the intended setting."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "借两机同位置同设置在港口测试，C。A被女人否定；B任务场景本有船，并未要消除所有噪声再研究。"
+        }
+      ]
+    },
+    {
+      "context": "You hear an architect and a client discussing a meeting space.",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Everyone liked the photographs of the finished room. Now that we're holding meetings in it, people at the back say they can't hear the discussion near the window."
+        },
+        {
+          "speaker": "F",
+          "text": "We tested a presentation with a single speaker, and that worked. We didn't test six people interrupting one another around a table. That's the use we need to look at now."
+        },
+        {
+          "speaker": "M",
+          "text": "The manager wants a microphone for every seat. It sounds decisive, though I'm not sure anyone has asked how those meetings are actually run."
+        },
+        {
+          "speaker": "F",
+          "text": "More equipment might help, but it could also make the room harder to use. Before choosing a remedy, I'd sit through an ordinary meeting and note where people turn away, move their chairs, or try to speak at once."
+        },
+        {
+          "speaker": "M",
+          "text": "You think we should change the way we work rather than the room?"
+        },
+        {
+          "speaker": "F",
+          "text": "Not necessarily. We may need to change both. I'd just rather not treat a description of the problem as though it were already a diagnosis."
+        },
+        {
+          "speaker": "M",
+          "text": "I'll arrange a visit during Tuesday's planning meeting. A room can look finished before we've understood how people are going to occupy it."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What limitation in the earlier test does the woman identify?",
+          "options": [
+            [
+              "A",
+              "It covered a different pattern of communication."
+            ],
+            [
+              "B",
+              "It relied entirely on photographs of the room."
+            ],
+            [
+              "C",
+              "It involved more speakers than the room could hold."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "此前只测单人presentation，实际为多人抢话讨论，A。B照片是外界评价非测试方法；C实际需求六人但未说人数超容量。"
+        },
+        {
+          "stem": "What does the woman want to avoid?",
+          "options": [
+            [
+              "A",
+              "Allowing the client to observe a normal meeting."
+            ],
+            [
+              "B",
+              "Assuming a particular solution before examining the activity."
+            ],
+            [
+              "C",
+              "Considering changes to the room’s physical arrangement."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "先看日常活动再诊断，不先把麦克风当定案，B。A正要求旁听；C明确可能两边都改，不排除物理布局。"
+        }
+      ]
+    },
+    {
+      "context": "You hear two journalists discussing comments received after an article.",
+      "turns": [
+        {
+          "speaker": "F",
+          "text": "The readers' comments are more useful than I expected. One person spotted that we'd described the bus stop as being outside the station when it's across the square. We should correct that promptly."
+        },
+        {
+          "speaker": "M",
+          "text": "Agreed. I'm less convinced by the demand that we remove the whole article because one interviewee disliked how her hesitation came across."
+        },
+        {
+          "speaker": "F",
+          "text": "Neither am I, but I want to speak to her before we decide. She may be objecting to a detail we can check rather than asking us to make her sound more certain."
+        },
+        {
+          "speaker": "M",
+          "text": "So you wouldn't offer to rewrite her remarks immediately?"
+        },
+        {
+          "speaker": "F",
+          "text": "No. I'd ask which part she thinks fails to represent what she meant, then compare that with our recording. Listening seriously doesn't require promising the requested change in advance."
+        },
+        {
+          "speaker": "M",
+          "text": "That's worth saying in our reply. Otherwise asking for clarification could sound like a polite way of refusing to act."
+        },
+        {
+          "speaker": "F",
+          "text": "Exactly. We should explain what we're checking and when we'll get back to her. It's possible to be open about the process without pretending we already know the outcome."
+        },
+        {
+          "speaker": "M",
+          "text": "I'll draft that response, and fix the location error now. We needn't delay the straightforward correction while we consider the more complicated complaint."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How does the woman view the interviewee’s complaint?",
+          "options": [
+            [
+              "A",
+              "It deserves clarification before its merits are decided."
+            ],
+            [
+              "B",
+              "It proves that the article must be withdrawn."
+            ],
+            [
+              "C",
+              "It should be ignored because hesitation was recorded."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "她要先明确争议点再对录音，未先判正误，A。B不认同全撤；C即使有录音仍需听清何意，不是忽略。"
+        },
+        {
+          "stem": "What do the speakers agree about their response?",
+          "options": [
+            [
+              "A",
+              "They should promise the wording will be changed."
+            ],
+            [
+              "B",
+              "They should postpone every correction until the complaint is settled."
+            ],
+            [
+              "C",
+              "They should explain the review while making the clear factual correction."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "解释核查及回复时间，同时立改公交位置，C。A明确不预先承诺改字；B明确不拖延straightforward correction。"
+        }
+      ]
+    }
+  ],
+  "whole_groups": 1,
+  "responses": 6,
+  "extracts": 3,
+  "questions_per_extract": [
+    2,
+    2,
+    2
+  ],
+  "source_hear_each_piece_twice": true,
+  "fictional_content": true,
+  "source_level_equivalence_established": false,
+  "synthetic_audio_not_natural_listening_calibration": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

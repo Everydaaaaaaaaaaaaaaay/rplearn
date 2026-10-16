@@ -1,0 +1,267 @@
+{
+  "version": "0.1",
+  "id": "advanced-listening-extracts-music-photo-teaching",
+  "grade": "advanced",
+  "family": "listening_extract_choice",
+  "family_label": "三段短录音听力选择",
+  "title": "高级听力二：音乐、摄影与教学",
+  "source_group_id": "advanced.c1.sample1.listening.part1",
+  "source_index": "AuthorityGap20261017/SelectedSourceModes-v0.3.json",
+  "instruction": "听三段不同的录音，每段对应两题。各段录音内已播放两遍。从每题三个选项中选择最佳答案。",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "words_per_minute": 165
+    },
+    "F": {
+      "voice": "Samantha",
+      "words_per_minute": 170
+    }
+  },
+  "clips": [
+    {
+      "context": "You hear two musicians discussing a change to their concert programme.",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "The organiser wants us to replace the unfamiliar opening piece with something the audience can recognise. I understand the concern: people have bought tickets for an evening out, not a lesson."
+        },
+        {
+          "speaker": "F",
+          "text": "I don't object to recognising that. What bothers me is the assumption that unfamiliar automatically means difficult to enjoy. The opening is short, lively, and leads naturally into the piece everyone knows."
+        },
+        {
+          "speaker": "M",
+          "text": "Then perhaps the problem is how we've described it. The programme note reads as if listeners need a qualification before they can hear the first bar."
+        },
+        {
+          "speaker": "F",
+          "text": "I'd happily lose that note. A few words from the stage about the rhythm would give people a way in without apologising for our choice."
+        },
+        {
+          "speaker": "M",
+          "text": "Would that be enough for the organiser?"
+        },
+        {
+          "speaker": "F",
+          "text": "We could offer a brief rehearsal clip for the booking page. Let people hear the energy rather than asking them to trust our adjectives."
+        },
+        {
+          "speaker": "M",
+          "text": "I like that. It addresses the worry about the audience without turning the programme into a sequence of greatest hits."
+        },
+        {
+          "speaker": "F",
+          "text": "Exactly. Making an invitation clearer isn't the same as removing everything that might be new."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What assumption does the woman question?",
+          "options": [
+            [
+              "A",
+              "That the audience wants any familiar music."
+            ],
+            [
+              "B",
+              "That a new piece is unlikely to engage listeners."
+            ],
+            [
+              "C",
+              "That a concert can contain more than one style."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "她质疑unfamiliar自动等于难享受，B。A她接受观众有熟悉曲目期待；C并未讨论风格数量不能并存。"
+        },
+        {
+          "stem": "Why do they favour providing a rehearsal clip?",
+          "options": [
+            [
+              "A",
+              "It would let the music itself answer a concern."
+            ],
+            [
+              "B",
+              "It would remove the need for a live introduction."
+            ],
+            [
+              "C",
+              "It would test whether the performers can play the opening."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "让观众hear energy，直接回应陌生作品吸引力忧虑，A。B台上介绍仍可保留；C未质疑演奏能力，也非考核乐手。"
+        }
+      ]
+    },
+    {
+      "context": "You hear a photographer and an editor discussing a magazine feature.",
+      "turns": [
+        {
+          "speaker": "F",
+          "text": "You've chosen the photograph of the empty workshop. It's striking, but the article is about the people keeping the craft alive. Why not lead with the portrait?"
+        },
+        {
+          "speaker": "M",
+          "text": "Because the empty room made me stop. The portrait is warmer, certainly, but it tells me what I expect a feature like this to say before I've read a word."
+        },
+        {
+          "speaker": "F",
+          "text": "The room was empty only because everyone had gone to lunch. I worry that putting it first suggests a trade that's already disappeared. We spent a week documenting the opposite."
+        },
+        {
+          "speaker": "M",
+          "text": "The caption could explain that."
+        },
+        {
+          "speaker": "F",
+          "text": "It could, if people read it before forming an impression. I'm not asking you to use a cheerful image merely to please the workshop. I want the visual opening to be consistent with what our reporting found."
+        },
+        {
+          "speaker": "M",
+          "text": "That's a stronger objection than saying the portrait is friendlier. What about beginning with the hands at work, then using the empty room later, beside the explanation of the daily routine?"
+        },
+        {
+          "speaker": "F",
+          "text": "That would keep the surprising image without making it carry a story it doesn't tell."
+        },
+        {
+          "speaker": "M",
+          "text": "I'll try the sequence that way. We can be arresting without being misleading."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is the woman’s principal objection to the editor’s choice?",
+          "options": [
+            [
+              "A",
+              "The image may imply something their reporting contradicts."
+            ],
+            [
+              "B",
+              "The workshop owners have prohibited publication of it."
+            ],
+            [
+              "C",
+              "The photograph is less technically accomplished than the portrait."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "空屋只因午餐，首图会暗示行业消失而报道相反，A。B无禁发要求；C她承认striking，未比技术水平。"
+        },
+        {
+          "stem": "How does the man respond to her argument?",
+          "options": [
+            [
+              "A",
+              "He dismisses it because a caption can solve every problem."
+            ],
+            [
+              "B",
+              "He accepts a different sequence while retaining the image."
+            ],
+            [
+              "C",
+              "He abandons the feature’s visual opening altogether."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "他改先工作中的手，空屋移到说明日常段落，B。A他从最初caption辩护转为认可stronger objection；C仍有图片开篇并未放弃。"
+        }
+      ]
+    },
+    {
+      "context": "You hear two lecturers reflecting on an online seminar.",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "The silence after my question felt endless. In a classroom I'd have called on someone. Online I couldn't tell whether people were thinking or whether I'd lost them."
+        },
+        {
+          "speaker": "F",
+          "text": "I was watching the shared notes. Several students were drafting an answer there, then deleting it when somebody else started typing. They were engaged, but the arrangement made their engagement almost invisible to you."
+        },
+        {
+          "speaker": "M",
+          "text": "So I shouldn't have made the question easier? I assumed the pause meant it was beyond them."
+        },
+        {
+          "speaker": "F",
+          "text": "Not on that evidence alone. Try giving everyone a minute to write privately, then invite a few responses. Otherwise the quickest typist can determine which idea the rest of the group gets to consider."
+        },
+        {
+          "speaker": "M",
+          "text": "I like the private minute. I don't want another activity simply to keep the screen busy, though."
+        },
+        {
+          "speaker": "F",
+          "text": "Nor do I. The point is to make room for different speeds of forming an answer. You can still ask the same demanding question."
+        },
+        {
+          "speaker": "M",
+          "text": "And I need a better way of noticing the work before I decide nobody is doing any."
+        },
+        {
+          "speaker": "F",
+          "text": "Exactly. Quietness and absence aren't the same thing, whichever room you're teaching in."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the woman’s observation suggest?",
+          "options": [
+            [
+              "A",
+              "The question had already been answered in a previous class."
+            ],
+            [
+              "B",
+              "The students were unwilling to contribute in any form."
+            ],
+            [
+              "C",
+              "The lecturer had misread the apparent lack of activity."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "共享笔记中有人起草又删，说明表面沉默非未参与，C。A无前课信息；B有起草即反证任何形式均不愿参与。"
+        },
+        {
+          "stem": "What is the purpose of the change she recommends?",
+          "options": [
+            [
+              "A",
+              "To replace difficult questions with faster exercises."
+            ],
+            [
+              "B",
+              "To allow students time to develop ideas before sharing."
+            ],
+            [
+              "C",
+              "To identify the person who can type most quickly."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "先私写一分钟再分享让不同思考速度有空间，B。A明确保留demanding question；C恰避免最快打字者主导。"
+        }
+      ]
+    }
+  ],
+  "whole_groups": 1,
+  "responses": 6,
+  "extracts": 3,
+  "questions_per_extract": [
+    2,
+    2,
+    2
+  ],
+  "source_hear_each_piece_twice": true,
+  "fictional_content": true,
+  "source_level_equivalence_established": false,
+  "synthetic_audio_not_natural_listening_calibration": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

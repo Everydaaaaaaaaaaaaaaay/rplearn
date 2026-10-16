@@ -1,0 +1,461 @@
+{
+  "version": "0.1",
+  "id": "advanced-listening-extracts-theatre-design-translation",
+  "grade": "advanced",
+  "questions": 6,
+  "candidate_sha256": "a2f19c675cb5745158eeb4d4dcf1cb1cf36e165c5f6d342c393708199d06e358",
+  "canonical_response_block_sha256": "f4a6e430010087fe9a1c3451fcfd6462d73f6a77628bea16ad4458f5740deec2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What do the friends disagree about?",
+      "options": [
+        [
+          "A",
+          "Whether the new plays are sufficiently adventurous."
+        ],
+        [
+          "B",
+          "Whether the theatre has become more welcoming."
+        ],
+        [
+          "C",
+          "Whether the reopening tickets are reasonably priced."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "女方以开放日体验认为待客有具体改变，男方质疑普通工作日能否维持，故B。A男方明说剧目不是障碍，未批评冒险程度；C男方明确价格从不是反对理由。"
+    },
+    {
+      "number": 2,
+      "stem": "What does the man finally suggest doing?",
+      "options": [
+        [
+          "A",
+          "Testing the theatre with a less demanding visit."
+        ],
+        [
+          "B",
+          "Waiting until the ticket prices fall."
+        ],
+        [
+          "C",
+          "Attending the next open afternoon with his friend."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "他提先看short production，再视当晚感受尝试长剧，A为有限试探。B被Price never objection否定；C未提再去开放日，他恰质疑该活动的代表性。"
+    },
+    {
+      "number": 3,
+      "stem": "What disappointed the woman about her placement?",
+      "options": [
+        [
+          "A",
+          "She was excluded from proposing designs."
+        ],
+        [
+          "B",
+          "Her work was never considered for publication."
+        ],
+        [
+          "C",
+          "The responses to her work gave her little guidance."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "她获准提案和展示，但只知选中哪版、无可用于下次的指导，C。A与generous about present ideas矛盾；B既无never事实，且发表量不是她最后要问的问题。"
+    },
+    {
+      "number": 4,
+      "stem": "What does the man recommend she investigate?",
+      "options": [
+        [
+          "A",
+          "The way a studio supports learning through revision."
+        ],
+        [
+          "B",
+          "The public reputation of the studio’s designers."
+        ],
+        [
+          "C",
+          "The number of projects she would be allowed to lead."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "他建议接受前问how discuss revisions与help beginner improve，A。B明确famous name不能证明指导质量；C责任数量被说明不是问题。"
+    },
+    {
+      "number": 5,
+      "stem": "What risk do the speakers identify?",
+      "options": [
+        [
+          "A",
+          "Fluent wording may conceal a change in meaning."
+        ],
+        [
+          "B",
+          "Unpolished wording is impossible to evaluate."
+        ],
+        [
+          "C",
+          "The software consistently reverses the order of sentences."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "两人说流利可能掩盖承诺关系变化，A。B粗糙句反而会促使检查，并非不可能评估；C只举语义关系改变，未说总倒置语序。"
+    },
+    {
+      "number": 6,
+      "stem": "Why does the woman propose an exercise for trainees?",
+      "options": [
+        [
+          "A",
+          "To measure how rapidly they can complete a draft."
+        ],
+        [
+          "B",
+          "To reveal the reasoning behind their choices."
+        ],
+        [
+          "C",
+          "To prove that all automatic suggestions should be rejected."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "要求各解释一个接受和拒绝项，目的显露判断依据，B。A未计时；C她明确不禁止工具，也非全拒绝。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.3.json",
+    "sha256": "eaeda01b0c834afa54f994d07ceffc6f03e5d68859f0fa3cea0aa773238b2e60"
+  },
+  "source_group_id": "advanced.c1.sample1.listening.part1",
+  "source_observation": {
+    "source_responses": 6,
+    "source_reuse_rule": "per_item_choices_or_independent_bank_selection;no_unprinted_once_rule",
+    "source_material": {
+      "extracts": 3,
+      "questions_per_extract": [
+        2,
+        2,
+        2
+      ],
+      "speakers_per_extract": [
+        2,
+        2,
+        2
+      ],
+      "source_hear_each_piece_twice": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "manuscript": {
+    "path": "AuthorityGap20261017/ListeningScripts/advanced-listening-extracts-theatre-design-translation-v0.1.json",
+    "sha256": "9f2bce967721454fb587f0ab258753015af5464587be9d47a6288d618113eec6"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-audio-v0.2.json",
+    "sha256": "fa0164d92839d0bd22042d2eece806e04e83844e5fc1919d0f03b68dc22ec9db"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-extract1-v0.2.m4a",
+      "sha256": "57b1ac428571aaecd9306c03e69dc86899e0d167cb4077dfbdc8a1fb5f1ecfd0",
+      "seconds": 145.17165532879818,
+      "response_numbers": [
+        1,
+        2
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-extract2-v0.2.m4a",
+      "sha256": "a3d9149b6fc9e19f98d9414ca681ae1fca9c4405367505abd3d1d9deeb080767",
+      "seconds": 154.1885260770975,
+      "response_numbers": [
+        3,
+        4
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-extract3-v0.2.m4a",
+      "sha256": "af6d8b24d023b72c8f7da3ea93f6409e6ac9b048105c9ac6862d1469fb14c769",
+      "seconds": 152.46054421768707,
+      "response_numbers": [
+        5,
+        6
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "student_passage": "### Extract 1\n\nYou hear two friends discussing the reopening of a local theatre.\n\n[音频1（第1—2题；内含两遍）](../../../../build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-extract1-v0.2.m4a)\n\n### Extract 2\n\nYou hear two design students talking about a work placement.\n\n[音频2（第3—4题；内含两遍）](../../../../build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-extract2-v0.2.m4a)\n\n### Extract 3\n\nYou hear two translators discussing software that suggests draft wording.\n\n[音频3（第5—6题；内含两遍）](../../../../build/english-benchmark-authority-20261017/original-audio/advanced-listening-extracts-theatre-design-translation-extract3-v0.2.m4a)",
+  "body_load_text": "### Extract 1\n\nYou hear two friends discussing the reopening of a local theatre.\n\n### Extract 2\n\nYou hear two design students talking about a work placement.\n\n### Extract 3\n\nYou hear two translators discussing software that suggests draft wording.",
+  "original_transcript_sections": [
+    {
+      "context": "You hear two friends discussing the reopening of a local theatre.",
+      "turns": [
+        {
+          "speaker": "F",
+          "text": "I booked for the reopening. The programme looks adventurous: three new plays and hardly a familiar title. I thought that would finally persuade you to come."
+        },
+        {
+          "speaker": "M",
+          "text": "The plays aren't what puts me off. Before the closure, the place made newcomers feel they were interrupting a private club. A fresh programme won't necessarily change the welcome at the door."
+        },
+        {
+          "speaker": "F",
+          "text": "I went to their open afternoon. Nobody assumed I knew where anything was, and the staff actually asked what would make a first visit easier. That seemed a fairly concrete change."
+        },
+        {
+          "speaker": "M",
+          "text": "Encouraging, but an open afternoon is designed to impress. I'd rather hear from someone who turns up on an ordinary wet Tuesday, when the staff have three things to do at once."
+        },
+        {
+          "speaker": "F",
+          "text": "Fair enough. I wouldn't call one afternoon proof of a permanent transformation either. But I think it's worth giving them a chance. Besides, the cheaper seats are still available."
+        },
+        {
+          "speaker": "M",
+          "text": "Price was never my objection. Perhaps I could start with the short production you mentioned. If the evening feels different, I might try one of the longer plays later."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What do the friends disagree about?",
+          "options": [
+            [
+              "A",
+              "Whether the new plays are sufficiently adventurous."
+            ],
+            [
+              "B",
+              "Whether the theatre has become more welcoming."
+            ],
+            [
+              "C",
+              "Whether the reopening tickets are reasonably priced."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "女方以开放日体验认为待客有具体改变，男方质疑普通工作日能否维持，故B。A男方明说剧目不是障碍，未批评冒险程度；C男方明确价格从不是反对理由。"
+        },
+        {
+          "stem": "What does the man finally suggest doing?",
+          "options": [
+            [
+              "A",
+              "Testing the theatre with a less demanding visit."
+            ],
+            [
+              "B",
+              "Waiting until the ticket prices fall."
+            ],
+            [
+              "C",
+              "Attending the next open afternoon with his friend."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "他提先看short production，再视当晚感受尝试长剧，A为有限试探。B被Price never objection否定；C未提再去开放日，他恰质疑该活动的代表性。"
+        }
+      ]
+    },
+    {
+      "context": "You hear two design students talking about a work placement.",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "How was the studio placement? You were worried they'd have you making coffee all month."
+        },
+        {
+          "speaker": "F",
+          "text": "I did make plenty, but that wasn't the problem. They asked me to prepare three versions of a poster, then selected one without telling me why. I could see which version they'd chosen; I couldn't work out what I'd learnt from the choice."
+        },
+        {
+          "speaker": "M",
+          "text": "Perhaps they expected you to ask. Designers can't explain every decision when a deadline is approaching."
+        },
+        {
+          "speaker": "F",
+          "text": "I did ask, and the answer was simply that it felt right. I'm not claiming there should have been a lecture after every sketch. A sentence about the intended audience would have given me something to try next time."
+        },
+        {
+          "speaker": "M",
+          "text": "So it wasn't the amount of responsibility. It was the lack of anything you could carry into the next task."
+        },
+        {
+          "speaker": "F",
+          "text": "Exactly. They were generous about letting me present ideas. I just needed feedback that went beyond approval or rejection."
+        },
+        {
+          "speaker": "M",
+          "text": "For your next placement, why not ask how they discuss revisions before you accept? A famous studio name doesn't tell you how someone will help a beginner improve."
+        },
+        {
+          "speaker": "F",
+          "text": "That's the question I'll be taking to the interview, rather than asking how much of my work gets published."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What disappointed the woman about her placement?",
+          "options": [
+            [
+              "A",
+              "She was excluded from proposing designs."
+            ],
+            [
+              "B",
+              "Her work was never considered for publication."
+            ],
+            [
+              "C",
+              "The responses to her work gave her little guidance."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "她获准提案和展示，但只知选中哪版、无可用于下次的指导，C。A与generous about present ideas矛盾；B既无never事实，且发表量不是她最后要问的问题。"
+        },
+        {
+          "stem": "What does the man recommend she investigate?",
+          "options": [
+            [
+              "A",
+              "The way a studio supports learning through revision."
+            ],
+            [
+              "B",
+              "The public reputation of the studio’s designers."
+            ],
+            [
+              "C",
+              "The number of projects she would be allowed to lead."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "他建议接受前问how discuss revisions与help beginner improve，A。B明确famous name不能证明指导质量；C责任数量被说明不是问题。"
+        }
+      ]
+    },
+    {
+      "context": "You hear two translators discussing software that suggests draft wording.",
+      "turns": [
+        {
+          "speaker": "F",
+          "text": "The new drafting tool has made our first pass much quicker. I'm less certain about the time it saves over an entire job. Some suggestions are so fluent that you have to stop yourself accepting them before you've checked who is promising what."
+        },
+        {
+          "speaker": "M",
+          "text": "I've noticed that. A rough sentence practically asks to be inspected. A polished one can persuade you the thinking has already been done."
+        },
+        {
+          "speaker": "F",
+          "text": "Which is why I keep the source beside the draft, even for passages that seem routine. Yesterday an elegant phrase turned a possibility into an undertaking. Nothing sounded awkward, but the relationship between the parties had changed."
+        },
+        {
+          "speaker": "M",
+          "text": "Would you stop trainees using the tool, then?"
+        },
+        {
+          "speaker": "F",
+          "text": "No. I'd ask them to explain one accepted suggestion and one rejected suggestion. If they can only say that one sounds better, we haven't yet taught the judgement the job requires."
+        },
+        {
+          "speaker": "M",
+          "text": "That would also stop us treating every correction as a failure of the software. Choosing when not to use a suggestion is part of the translator's work."
+        },
+        {
+          "speaker": "F",
+          "text": "Exactly. I want the tool to make room for that work, not to give a convincing appearance that it has disappeared."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What risk do the speakers identify?",
+          "options": [
+            [
+              "A",
+              "Fluent wording may conceal a change in meaning."
+            ],
+            [
+              "B",
+              "Unpolished wording is impossible to evaluate."
+            ],
+            [
+              "C",
+              "The software consistently reverses the order of sentences."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "两人说流利可能掩盖承诺关系变化，A。B粗糙句反而会促使检查，并非不可能评估；C只举语义关系改变，未说总倒置语序。"
+        },
+        {
+          "stem": "Why does the woman propose an exercise for trainees?",
+          "options": [
+            [
+              "A",
+              "To measure how rapidly they can complete a draft."
+            ],
+            [
+              "B",
+              "To reveal the reasoning behind their choices."
+            ],
+            [
+              "C",
+              "To prove that all automatic suggestions should be rejected."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "要求各解释一个接受和拒绝项，目的显露判断依据，B。A未计时；C她明确不禁止工具，也非全拒绝。"
+        }
+      ]
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "A",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 34,
+    "stem_English_words": 42,
+    "options_English_words_with_repeated_bank": 137,
+    "audio_dialogue_English_words_once": 568,
+    "audio_spoken_words_including_repetition_and_introductions": 1197,
+    "audio_seconds_including_repetition_and_pauses": 451.82072562358275,
+    "artifact_URLs_excluded_from_reading_load": true,
+    "output_response_positions": 6,
+    "output_mode": "closed_letter_selection"
+  },
+  "extracts": 3,
+  "questions_per_extract": [
+    2,
+    2,
+    2
+  ],
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "synthetic_audio_not_natural_listening_calibration": true
+}
