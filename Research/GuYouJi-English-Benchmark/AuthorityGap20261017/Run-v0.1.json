@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "status": "150wholegroups1010responses;27cells3drafts;continue_actualmissingtypesandremainingmultidrafts",
+  "status": "154wholegroups1050responses;29cells3drafts;continue_actualmissingtypesandremainingmultidrafts",
   "owner_authorized_on": "2026-10-17",
   "timezone": "Asia/Shanghai",
   "hard_deadline_local": "2026-10-17T12:00:00+08:00",
@@ -14,8 +14,8 @@
     "sha256": "8bb36afc0c3473d8867820f244cf8650ff7f1627d7f47cdb3c9a21c3108d2ce7"
   },
   "authority_atlas": {
-    "path": "AuthorityGap20261017/AuthorityAtlas-v0.11.json",
-    "sha256": "80c9575842d2f9514af9016b2f81042e0bafbb71bd745e4e8fd295804c56da19"
+    "path": "AuthorityGap20261017/AuthorityAtlas-v0.12.json",
+    "sha256": "d2c9b4fb66588419849f1a73f18d0e330568ffd876a1f4b216ce6ee5b9d79dfc"
   },
   "selected_source_modes": {
     "path": "AuthorityGap20261017/SelectedSourceModes-v0.5.json",
@@ -27,7 +27,7 @@
   },
   "active_review_run": {
     "path": "FirstRelease/ActiveReviewRun.json",
-    "sha256": "325c6c19e3e913d5de8adab995072e35502b8135667967f911f187bb7d9a3e83"
+    "sha256": "891993c5272b945adb3f719cbb1a603c57763de09625e8489de54d1494ce6c49"
   },
   "baseline_complete_groups": 76,
   "baseline_responses": 505,
@@ -43,7 +43,7 @@
   ],
   "new_selected_source_groups": 27,
   "new_source_responses": 180,
-  "new_authored_groups": 74,
+  "new_authored_groups": 78,
   "page_version_still_prior76": false,
   "required_outputs_pending": [
     "target_remaining_actual_source_gaps",
@@ -52,7 +52,7 @@
   ],
   "do_not_recover_subjective_or_kindergarten": true,
   "current_cache": "build/english-benchmark-authority-20261017",
-  "last_completed_step": "2Grade12actual15gap4choicewholeclozes30responses;all30refill120candidates30IAB;0newsourceparent;old148/14heldunchanged",
+  "last_completed_step": "4CETwhole10gap15fixedbank40responses;filled214/215_CET4_277/280_CET6;40IAB;600candidatepositionsauthorcheck;0newsourceparent;old150/14heldunchanged",
   "followup_notes": [
     "p3Dongchengwebtitle saysrealbutstudentheader says样卷andregionnotinbody;do_not_countasordinarytrueexam",
     "Kunshan21636201explicitlyadaptedtolatesttextbook;notoriginalexam",
@@ -72,68 +72,68 @@
     "sha256": "0e4644dc6109aa18e804eb42087fb845963393666d1d24b9c51e57381cf5ca40"
   },
   "gap_queue": {
-    "path": "AuthorityGap20261017/GapQueue-v0.13.json",
-    "sha256": "3d4ec6bde6175237c564ae16db41380569f30d7b98ec8b035bfd643e9049d99a"
+    "path": "AuthorityGap20261017/GapQueue-v0.14.json",
+    "sha256": "85bf6cb7e0622bd96328908648303488510d130698aa5cbabd475b262865e757"
   },
   "original_coverage_target": {
     "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.1.json",
     "sha256": "86a76e523960ca7ed8f9bc6539f4ce1530060d6f3ea27fa2cd548dcdea3f1ca7"
   },
   "inherits_content_scope_not_old_automation_metadata": true,
-  "minimum_new_groups_for3target_if_all_source_modes_admitted": 141,
+  "minimum_new_groups_for3target_if_all_source_modes_admitted": 137,
   "registered_first_batch": {
     "processing_run_id": "authority17-map-and15-targeted-source-modes-v0.1",
     "raw_acquisitions": 14,
     "processing_outputs": 46
   },
   "human_type_map": {
-    "path": "AuthorityGap20261017/AuthorityTypeMap-v0.10.md",
-    "sha256": "9e9241d4e3419f02a8d8d4bc1bca3dbb6916fa43ce05d5a397791616be600ded"
+    "path": "AuthorityGap20261017/AuthorityTypeMap-v0.11.md",
+    "sha256": "d450fcabe9494cac28b1d19f77b407c6cb57571d59dcea1dba1fbfa2abb524f4"
   },
   "latest_study": {
     "path": "Studies/2026-10-17-authority-first-type-map-and-targeted-source-gaps.md",
-    "sha256": "f50e41f0c20795d09901ed51299fb5fe55131bff2a72f9fddcab0227ce012fc4"
+    "sha256": "a58305bf657a727eb2e7b01d0f770fdbd530bbe6a4d29b415a11c89734aa3f76"
   },
   "latest_incremental_archive": {
-    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.18.json",
-    "sha256": "5c16dec5d027e54d27d4f3dfe0ae9cfac49f7db21a148c543e547abcb1fef55a"
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.19.json",
+    "sha256": "229176eb19e1eada308a32a15e8f5cd7abf7f5352667ceb9453a748bf26cdbc1"
   },
   "authority_layer_check": {
-    "path": "build/english-benchmark-authority-20261017/authority150-layer-check-v0.1.json",
-    "sha256": "6c7984528ddee2528a25a8e3c72de64d69a597def5fa5612a41e82d232daf2d0"
+    "path": "build/english-benchmark-authority-20261017/authority154-layer-check-v0.1.json",
+    "sha256": "795cee78bb199e67c183f759be7e92235ca1a000914a85d62f07ace2827adef9"
   },
-  "new_authored_responses": 505,
-  "current_preview_groups": 150,
-  "current_preview_responses": 1010,
+  "new_authored_responses": 545,
+  "current_preview_groups": 154,
+  "current_preview_responses": 1050,
   "current_complete_level_type_cells": 96,
-  "current_three_original_cells": 27,
+  "current_three_original_cells": 29,
   "current_review_plan": {
-    "path": "AuthorityGap20261017/ReviewPlan-v0.16.json",
-    "sha256": "5be2877c59cf28eaeabf21923e1734a7a52c32e7e252335e8b00fbef56378e54"
+    "path": "AuthorityGap20261017/ReviewPlan-v0.17.json",
+    "sha256": "dc91dcba72b24fdd241f5d5c95da14ee8613436e386f3944f1d4370124860fd7"
   },
   "current_authored_index": {
-    "path": "AuthorityGap20261017/AuthoredIndex-v0.13.json",
-    "sha256": "145b17f53da46d9545c63677b34c4635391e559dd56f55a70083bed523fb4f77"
+    "path": "AuthorityGap20261017/AuthoredIndex-v0.14.json",
+    "sha256": "1d50856856f7a046b192a702d9b4e0a4b5badccf5983359a9b0f8fff2b69f6bd"
   },
   "current_original_coverage_target": {
-    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.16.json",
-    "sha256": "a6132025f62be8d43c0bc3f6fbbd722ac57e3f516d6d4ac7b6a374e7808f4246"
+    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.17.json",
+    "sha256": "f117d0d3b1bc3809ae348f8c9b90fd33fec29f06571dbe991672e06ee4580782"
   },
   "latest_source_followup": {
     "path": "AuthorityGap20261017/SourceFollowup-v0.5.json",
     "sha256": "14e591c7e0c03399a758d317f10af15a79a8dfa9178c453b908922fe98cec8d8"
   },
   "latest_controls": {
-    "path": "build/english-benchmark-authority-20261017/senior15-cloze2-full-contract-check-v0.1.json",
-    "sha256": "8df0b38d95f1a593e1050b79e4892b09b233242d0ff4db7402b275d022daa319"
+    "path": "build/english-benchmark-authority-20261017/CET-bank4-full-contract-check-v0.1.json",
+    "sha256": "3359273165e8834b3a22a42b1eeffb5c2cdd9a0836e0d74bf45b9b24501268f0"
   },
   "latest_browser_review": {
-    "path": "build/english-benchmark-authority-20261017/senior15-cloze2-browser-v0.1.json",
-    "sha256": "9b3c694c75293ff8224ea6226a3c0c23f8913fd07990d040e236c958c9b62f29"
+    "path": "build/english-benchmark-authority-20261017/CET-bank4-browser-v0.1.json",
+    "sha256": "fa653ec7b774b3a4022e294dec265bc129abae7b3b77de7f2b87f9b88cdfa151"
   },
   "latest_review_check": {
-    "path": "build/english-benchmark-authority-20261017/review150-postfreeze-check-v0.2.json",
-    "sha256": "82d967435edfc3d97cd298e860044f9c8d7f021b2947252ee97d4f101c3d3199"
+    "path": "build/english-benchmark-authority-20261017/review154-postfreeze-check-v0.1.json",
+    "sha256": "d3b5c7e3aa90d57d245360e92d57cc4a29a81f41061bb655416f20e358faa31f"
   },
   "latest_source_contract_check": {
     "path": "build/english-benchmark-authority-20261017/c1-listening-source-contract-check-v0.1.json",
@@ -174,9 +174,9 @@
     "IAB_current_deliverable_tab": "4",
     "browser_handle_in_cua_repl": "freshReview",
     "original_tab3_had_connection_error_do_not_treat_as_current94page": "old user tab was stale54;fresh4now94;server8766restarted",
-    "current_review_plan": "AuthorityGap20261017/ReviewPlan-v0.16.json",
+    "current_review_plan": "AuthorityGap20261017/ReviewPlan-v0.17.json",
     "next_plan_use_current_atlas_v02": "fixed in ReviewPlan-v0.3",
-    "frozen_authored_index": "AuthorityGap20261017/AuthoredIndex-v0.13.json",
+    "frozen_authored_index": "AuthorityGap20261017/AuthoredIndex-v0.14.json",
     "registered_cache_immutable": "allRegistryprocessingpage_records;do_notreuseexistingfilenames;appendversionwithassert_not_exists",
     "next_audio_implementation_notes": [
       "renderer/compiler/checkerPart1/3/4allready;15completeAAC9extractsv0.2+6extendedv0.1immutable",
@@ -185,10 +185,10 @@
       "otherlevelsCETmustpreservehearONCE/spokenquestions/15secpausesifnewfullcontractsadmitted;do_notmechanicallyreuseC1twiceorprintedquestionstemforms"
     ],
     "latest_source_selection": "SelectedSourceModes-v0.5still27/180;guideframework13authorities_notnewclosedsource",
-    "remaining_original_gap": "97conditionalcells291target;150shown1010positions96cells27at3;141missing;notnationaltaxonomy",
+    "remaining_original_gap": "97conditionalcells291target;154shown1050positions96cells29at3;137missing;notnationaltaxonomy",
     "next_priorities": [
       "actualmissingtype_sourcegaps_lowprimaryclosed/P5ordinarycloze/P6ordering/middlelistening_completeverifiedscript;avoidrepeatedfailedgenericsearch",
-      "CETfullwritten10gap15bank/10matching/2text10MC_and_other1draftcells;27at3cellsdo_notexpandfirst",
+      "CET10matching/2text10MC_and_other1draftcells;29at3cellsdo_notexpandfirst",
       "retainZhengzhouofficialaudio/keypartialpairing_unknownscript;do_notpairgeneric21962082/lower23380202withupper",
       "11localcloseonly12deliver;helpermetadataonlynoteducationvalidation"
     ],
@@ -200,8 +200,8 @@
       "CET-other5-full-contract-check records browserduration_vs_decodedPCM0.11—0.14secAACpadding;within4096frames@22050;do_notrewritedecodedmanifesttofakebrowserduration",
       "currentmapv0.3/atlasv0.4/targetv0.10/gapv0.5;sourceindexstillv0.5_27/180_unchanged;sourceidentity/transcription/auralcontentrisksretained"
     ],
-    "latest_incremental_archive": "incremental-archive-v0.18.json;12newSHA/139481bytes;restoreverified;0fullsnapshots",
-    "current_review_page_count": "150/1010;96completecells;27at3;14held133unchanged",
+    "latest_incremental_archive": "incremental-archive-v0.19.json;15newSHA/253034bytes;restoreverified;0fullsnapshots",
+    "current_review_page_count": "154/1050;96completecells;29at3;14held133unchanged",
     "latest_primary_visual_notes": [
       "p4wordpicture2independent5banks,p6wordpicture9actions,p6fourbooktable5MC3choices_noweach3drafts;do_notexpandthese3first",
       "6SVG46panels_actualIABreview15panelscorrected:cap/behindocclusion/pencil/keycontact/activehands/liftedsuitcase/scopetouchingeye;4preSVG+5oldauthorrecordsexactSHApreserved;newartandold114notalteredafterfreeze",
@@ -234,6 +234,11 @@
       "Grade12actual15gap4choice3drafts;Grade10/11actual10gap3each;allthreecellscompletevarianttarget",
       "source41to55author1to15;all30refill120candidateauthorchecks30actualIAB;body352/399notnewnationalwordrule",
       "rolesafteranallvowelinitial/explicitinvitation;coarselifelonglearningoverlapretained"
+    ],
+    "latest_CET_bank4_notes": [
+      "CET4/6fixedbanknow3each;filled214/215vs277/280;once/unchanged/5unusedfromactualsource",
+      "localcompatibleidentify/correspondenceglobalonceseparated;Meiinevitabilityherjudgmentnotlanguageproof",
+      "40wholeIABinputsreferencesreset;old150/14unchanged;source0newparent;29cells3drafts"
     ]
   },
   "browser_source_only_check": {
@@ -283,5 +288,9 @@
   "inherited_senior15_cloze_bridge": {
     "path": "AuthorityGap20261017/InheritedSenior15ClozeBridge-v0.1.json",
     "sha256": "9a69ea481bad979fffdf88559b9522a8e67f2716036203603f222025fc2c0f0f"
+  },
+  "inherited_CET_bank_bridge": {
+    "path": "AuthorityGap20261017/InheritedCETBankBridge-v0.1.json",
+    "sha256": "88ce9c4cd52c243b8f6dedfcd5ad51969a44a8f80995b3bc592afcc6bfed701c"
   }
 }
