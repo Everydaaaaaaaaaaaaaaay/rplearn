@@ -1,0 +1,295 @@
+{
+  "version": "0.1",
+  "id": "primary5-message-walk-mixed",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "4c3a9b394bbea030a49851e7d494e0dc57326f08e06bf38abae4def5d1181aef",
+  "canonical_response_block_sha256": "5fd9b9e26f92c95690b0b5d42fc552040d997eb133f649815040a0cffb41f7a1",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空：选择合适的句子",
+      "options": [
+        [
+          "A",
+          "There are short notes on the board."
+        ],
+        [
+          "B",
+          "The paper box stands beside the door."
+        ],
+        [
+          "C",
+          "He carries the note to Class Three."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "We readthem需要前句引入复数notes，A给明确先行词；B单数box且与后文on table notbesidedoor冲突，C单一note/Ben行动不是前述全班读notes的引入。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空：选择合适的句子",
+      "options": [
+        [
+          "A",
+          "There are short notes on the board."
+        ],
+        [
+          "B",
+          "The paper box stands beside the door."
+        ],
+        [
+          "C",
+          "He carries the note to Class Three."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "前文Ben核ClassThree教室，后文When he arrives there/shorttrip要求去ClassThree的具体行动，C补齐；A仅重复board上有notes不能承接抵达该教室，B又与明确箱子位置相反。不添加词库最多一次规则。"
+    },
+    {
+      "number": 3,
+      "stem": "What does the note ask Class Three to bring?",
+      "options": [
+        [
+          "A",
+          "A lunch box."
+        ],
+        [
+          "B",
+          "Extra paper."
+        ],
+        [
+          "C",
+          "Picture books."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "引语Pleasebringpicturebooks支持C；B是备用纸，A lunch只是时间不是需带物。"
+    },
+    {
+      "number": 4,
+      "stem": "What does Ben do before leaving his classroom?",
+      "options": [
+        [
+          "A",
+          "He checks the classroom number."
+        ],
+        [
+          "B",
+          "He puts the note on an empty desk."
+        ],
+        [
+          "C",
+          "He goes to the hall for lunch."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第二段checks classroomnumber beforehe leaves支持A；B文末否随放，C afterlunch为图书活动时间非Ben出发前动作。"
+    },
+    {
+      "number": 5,
+      "stem": "What does the tick on the list mean?",
+      "options": [
+        [
+          "A",
+          "Ben must take the same note there again."
+        ],
+        [
+          "B",
+          "The message has reached Class Three."
+        ],
+        [
+          "C",
+          "The classroom needs more paper."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "末段tick记messagearrivedClassThree，B；C无补纸请求，A明确donottakesamenoteagain。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary5ReadingBridge-v0.1.json",
+    "sha256": "f1ead99acc0760a534d1116d3caceacc424f467b2d8cfd19aa4c03eed54a7347"
+  },
+  "source_group_id": "p5.dongcheng2025.closedmixed",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "one_extra_printed_no_added_max_once",
+    "source_material": {
+      "passages": 1,
+      "paragraphs_observed": 3,
+      "sentence_gaps": 2,
+      "shared_sentence_candidates": 3,
+      "unused_sentence_candidates": 1,
+      "following_MC": 3,
+      "MC_options_each": 3
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": true,
+      "shared_bank_response_numbers": [
+        1,
+        2
+      ],
+      "unique_shared_entries": 3,
+      "independent_response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "independent_options_each": 3
+    }
+  },
+  "student_passage": "On Monday morning, our classroom becomes a small post office. (1) ____ We read them together before we begin. Each note has the name of a class and a short message. Our teacher puts a box on the table, not beside the door. The extra paper stays in that box.\n\nBen has one note to deliver. It says, “Please bring your picture books to the hall after lunch.” He checks the classroom number before he leaves. (2) ____ When he arrives there, he gives the note to the teacher. The walk takes only two minutes. He does not leave the note on a desk without asking anyone.\n\nBen returns to our classroom after the short trip. Our teacher asks him which class received his message. Ben says, “Class Three.” He then writes a tick beside that class on our list. The tick helps us remember that the message has arrived. We do not take the same note there again.\n\n前两空共享句子（有一项不用）：\n\nA. There are short notes on the board.\nB. The paper box stands beside the door.\nC. He carries the note to Class Three.",
+  "author_answer_vector": [
+    "A",
+    "C",
+    "C",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 155,
+    "stem_English_words": 25,
+    "options_English_words_with_repeated_bank": 88,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "required_output_letter_count": 5,
+    "shared_sentence_bank_words_once": 21,
+    "shared_bank_words_repeated_in_controls": 42,
+    "MC_candidate_words": 46
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "On Monday morning, our classroom becomes a small post office. (1) ____ We read them together before we begin. Each note has the name of a class and a short message. Our teacher puts a box on the table, not beside the door. The extra paper stays in that box.\n\nBen has one note to deliver. It says, “Please bring your picture books to the hall after lunch.” He checks the classroom number before he leaves. (2) ____ When he arrives there, he gives the note to the teacher. The walk takes only two minutes. He does not leave the note on a desk without asking anyone.\n\nBen returns to our classroom after the short trip. Our teacher asks him which class received his message. Ben says, “Class Three.” He then writes a tick beside that class on our list. The tick helps us remember that the message has arrived. We do not take the same note there again.",
+  "completed_passage": "On Monday morning, our classroom becomes a small post office. There are short notes on the board. We read them together before we begin. Each note has the name of a class and a short message. Our teacher puts a box on the table, not beside the door. The extra paper stays in that box.\n\nBen has one note to deliver. It says, “Please bring your picture books to the hall after lunch.” He checks the classroom number before he leaves. He carries the note to Class Three. When he arrives there, he gives the note to the teacher. The walk takes only two minutes. He does not leave the note on a desk without asking anyone.\n\nBen returns to our classroom after the short trip. Our teacher asks him which class received his message. Ben says, “Class Three.” He then writes a tick beside that class on our list. The tick helps us remember that the message has arrived. We do not take the same note there again.",
+  "passage_count": 1,
+  "paragraph_count": 3,
+  "sentence_gaps": 2,
+  "shared_sentence_bank": [
+    [
+      "A",
+      "There are short notes on the board."
+    ],
+    [
+      "B",
+      "The paper box stands beside the door."
+    ],
+    [
+      "C",
+      "He carries the note to Class Three."
+    ]
+  ],
+  "unused_sentence_candidates": 1,
+  "subgroups": [
+    {
+      "response_numbers": [
+        1,
+        2
+      ],
+      "operation": "sentence_insertion",
+      "shared_candidates": 3
+    },
+    {
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "operation": "reading_choice",
+      "options_each": 3
+    }
+  ],
+  "reuse_rule": "one_extra_printed_no_added_max_once",
+  "no_open_or_semantic_free_response": true,
+  "all15candidate_positions_author_counterchecked": true,
+  "option_order_trace_MC": [
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "Extra paper."
+        ],
+        [
+          "B",
+          "Picture books."
+        ],
+        [
+          "C",
+          "A lunch box."
+        ]
+      ],
+      "before_key": "B",
+      "before_reason": "引语Pleasebringpicturebooks支持B；A是备用纸，C lunch只是时间不是需带物。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "Picture books."
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "He puts the note on an empty desk."
+        ],
+        [
+          "B",
+          "He goes to the hall for lunch."
+        ],
+        [
+          "C",
+          "He checks the classroom number."
+        ]
+      ],
+      "before_key": "C",
+      "before_reason": "第二段checks classroomnumber beforehe leaves支持C；A文末否随放，B afterlunch为图书活动时间非Ben出发前动作。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "He checks the classroom number."
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "The message has reached Class Three."
+        ],
+        [
+          "B",
+          "The classroom needs more paper."
+        ],
+        [
+          "C",
+          "Ben must take the same note there again."
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "末段tick记messagearrivedClassThree，A；B无补纸请求，C明确donottakesamenoteagain。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "The message has reached Class Three."
+    }
+  ],
+  "source_no_published_key_not_upgraded": true,
+  "pre_freeze_clarification": "DestinationClassThreeintroducedbychosenbankbeforethere/arrival;laterdeliveryconfirmationretained;noimplicitonceconstraint."
+}

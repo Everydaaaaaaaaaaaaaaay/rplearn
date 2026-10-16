@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "id": "primary5-colourful-window-TF",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "2939485acd511c3115687412389664a94caa0d3ab64d4fcc2a9136328e1068af",
+  "canonical_response_block_sha256": "3033a93ec71f4516a26e0c09ce8f4c2cbd61c0c3ba3ba9998500966291e5169e",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "May goes to the art room with Leo on Wednesday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "第一段明确Wednesday afterschool与friendLeo一起，T相符；F否定已印时间和同行者。"
+    },
+    {
+      "number": 2,
+      "stem": "May's mother gave her the coloured pencils last month.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "彩铅为father lastmonth；mother昨天买drawingbook。F有明确赠物/人物对照，不因文中未见就判假。"
+    },
+    {
+      "number": 3,
+      "stem": "May uses her new drawing book in the art room.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "原文明说use it at home,not in artroom，F；T与地点否定冲突。"
+    },
+    {
+      "number": 4,
+      "stem": "May plans to take three cat pictures to the show.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "第二段I willtake three picturesofcats直接支持T，F与计划不符。"
+    },
+    {
+      "number": 5,
+      "stem": "Leo will take a picture of a cat to the show.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Leo willtake pictureofhis dog明确非cat，F。无需真实看画，全部信息在文内。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary5ReadingBridge-v0.1.json",
+    "sha256": "f1ead99acc0760a534d1116d3caceacc424f467b2d8cfd19aa4c03eed54a7347"
+  },
+  "source_group_id": "p5.fangshan2025.readingTF",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "passages": 1,
+      "paragraphs_observed": 2,
+      "response_operation": "binary_TF"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "My name is May. I am eleven years old. I like drawing, and my favourite things to draw are animals. I go to the art room after school on Wednesday. My friend Leo goes with me. Last month, my father gave me a box of coloured pencils. Yesterday, my mother bought a new drawing book for me. I use it at home, not in the art room. There is a small table by my window, and I draw there after I finish my homework.\n\nNext Friday, our class will have a little art show. I will take three pictures of cats. Leo will take a picture of his dog. We will put our names under our pictures. My little sister wants to come to the show. She likes the orange cat in my first picture. I hope she will enjoy the show.",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "F",
+    "T",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 142,
+    "stem_English_words": 50,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "required_output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "My name is May. I am eleven years old. I like drawing, and my favourite things to draw are animals. I go to the art room after school on Wednesday. My friend Leo goes with me. Last month, my father gave me a box of coloured pencils. Yesterday, my mother bought a new drawing book for me. I use it at home, not in the art room. There is a small table by my window, and I draw there after I finish my homework.\n\nNext Friday, our class will have a little art show. I will take three pictures of cats. Leo will take a picture of his dog. We will put our names under our pictures. My little sister wants to come to the show. She likes the orange cat in my first picture. I hope she will enjoy the show.",
+  "passage_count": 1,
+  "paragraph_count": 2,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "all10binary_candidate_positions_author_counterchecked": true,
+  "given_visual_required": false
+}

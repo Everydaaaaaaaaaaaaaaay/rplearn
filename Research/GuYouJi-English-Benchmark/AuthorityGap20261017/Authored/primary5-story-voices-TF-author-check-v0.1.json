@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "id": "primary5-story-voices-TF",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "565c860cc9caba0caea1715c193233b08c4e5c840f8d4b069df5ccd8e5faad3e",
+  "canonical_response_block_sha256": "47f5b744c998438a57ee3489831e3038756b29ed0d7b9792c5f47d848ba380d2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Owen reads stories to his classmates before lunch.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "第一段after lunch与before lunch明确冲突，F，不以沉默当假。"
+    },
+    {
+      "number": 2,
+      "stem": "Nina draws while Owen reads the story.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "原文whileIread她draws且doesnot readwithme，T表示角色分工。"
+    },
+    {
+      "number": 3,
+      "stem": "Owen's uncle gave him the bear book last week.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "unclegavebook lastweek直述，T；F否定已给事实。"
+    },
+    {
+      "number": 4,
+      "stem": "Nina will draw a red hat for the second story.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "第二段secondstorybluebag，Nina drawbag nothat，F；红帽属第一story。"
+    },
+    {
+      "number": 5,
+      "stem": "Owen will practise at home this evening.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "第二段Iwillpractise at home thisevening支持T，不推断弟弟会读。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary5ReadingBridge-v0.1.json",
+    "sha256": "f1ead99acc0760a534d1116d3caceacc424f467b2d8cfd19aa4c03eed54a7347"
+  },
+  "source_group_id": "p5.fangshan2025.readingTF",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "passages": 1,
+      "paragraphs_observed": 2,
+      "response_operation": "binary_TF"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "I am Owen, and I am eleven. I like reading funny stories. On Monday and Thursday, I read a story to my classmates after lunch. We sit in our classroom. My friend Nina draws a picture on the board while I read. She does not read the story with me. Last week, my uncle gave me a book about a little bear. I read the first story on Monday. It was about the bear's red hat. My classmates laughed when I used a deep voice for the bear.\n\nTomorrow is Thursday. I will read the second story from the same book. In this story, the bear looks for his blue bag. Nina will draw the bag, not the hat. I will practise the story at home this evening. My younger brother wants to listen. He cannot read the book yet, but he likes hearing the bear's voice.",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "T",
+    "F",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 147,
+    "stem_English_words": 41,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "required_output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "I am Owen, and I am eleven. I like reading funny stories. On Monday and Thursday, I read a story to my classmates after lunch. We sit in our classroom. My friend Nina draws a picture on the board while I read. She does not read the story with me. Last week, my uncle gave me a book about a little bear. I read the first story on Monday. It was about the bear's red hat. My classmates laughed when I used a deep voice for the bear.\n\nTomorrow is Thursday. I will read the second story from the same book. In this story, the bear looks for his blue bag. Nina will draw the bag, not the hat. I will practise the story at home this evening. My younger brother wants to listen. He cannot read the book yet, but he likes hearing the bear's voice.",
+  "passage_count": 1,
+  "paragraph_count": 2,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "all10binary_candidate_positions_author_counterchecked": true,
+  "given_visual_required": false
+}

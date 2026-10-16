@@ -1,0 +1,184 @@
+{
+  "version": "0.1",
+  "id": "primary5-small-makers-cards-TF",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "a8f9678426d9624dd5f2c86786aa54431fd9f30fed9cb770d1b65a868fe7669c",
+  "canonical_response_block_sha256": "c59b68189d85b21966850d058dce766ee761d8d87d923df48788ee4682dd424a",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Little Bakers meets in the dining hall.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "A地点DiningHall明确，T；其余小组地点不互借。"
+    },
+    {
+      "number": 2,
+      "stem": "Ball Friends meets on Tuesday and Thursday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "B时间Tuesday andFriday，Thursday属D，F为明确错配。"
+    },
+    {
+      "number": 3,
+      "stem": "Pupils in Paper Zoo make animals from paper.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "C活动paperbirds/fish支持T，非实养动物推断。"
+    },
+    {
+      "number": 4,
+      "stem": "Pupils in Story Circle learn to bake cakes.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "D听故事聊人物，做cake属A，F有不同卡活动反证。"
+    },
+    {
+      "number": 5,
+      "stem": "All four cards describe after-school clubs.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "四卡均校内地点、15:30课后时段、兴趣/活动完整，T；不冒称真实学校时刻表。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary5ReadingBridge-v0.1.json",
+    "sha256": "f1ead99acc0760a534d1116d3caceacc424f467b2d8cfd19aa4c03eed54a7347"
+  },
+  "source_group_id": "p5.dongcheng2025.fourcards",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "text_cards": 4,
+      "layout": "two_by_two",
+      "fields": [
+        "title",
+        "For Kids",
+        "Time",
+        "Place",
+        "Activities"
+      ],
+      "response_operation": "binary_TF"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "These are our after-school clubs.\n\n| A. Little Bakers | B. Ball Friends |\n| --- | --- |\n| For pupils who like making food. | For pupils who enjoy ball games. |\n| Monday, 15:30—16:10 | Tuesday and Friday, 15:30—16:10 |\n| Dining Hall | Playground |\n| Make small cakes. Read a simple recipe together. | Pass a ball to a partner. Play short team games. |\n\n| C. Paper Zoo | D. Story Circle |\n| --- | --- |\n| For pupils who like animals and paper work. | For pupils who like listening to stories. |\n| Wednesday, 15:30—16:10 | Thursday, 15:30—16:10 |\n| Art Room | Library |\n| Make paper birds and fish. Give each animal a name. | Listen to a short story. Talk about favourite characters. |",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "T",
+    "F",
+    "T"
+  ],
+  "load_measure": {
+    "body_English_words": 94,
+    "stem_English_words": 37,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "required_output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "These are our after-school clubs.\n\n| A. Little Bakers | B. Ball Friends |\n| --- | --- |\n| For pupils who like making food. | For pupils who enjoy ball games. |\n| Monday, 15:30—16:10 | Tuesday and Friday, 15:30—16:10 |\n| Dining Hall | Playground |\n| Make small cakes. Read a simple recipe together. | Pass a ball to a partner. Play short team games. |\n\n| C. Paper Zoo | D. Story Circle |\n| --- | --- |\n| For pupils who like animals and paper work. | For pupils who like listening to stories. |\n| Wednesday, 15:30—16:10 | Thursday, 15:30—16:10 |\n| Art Room | Library |\n| Make paper birds and fish. Give each animal a name. | Listen to a short story. Talk about favourite characters. |",
+  "card_count": 4,
+  "cards": [
+    {
+      "title": "A. Little Bakers",
+      "for_kids": "For pupils who like making food.",
+      "time": "Monday, 15:30—16:10",
+      "place": "Dining Hall",
+      "activities": "Make small cakes. Read a simple recipe together."
+    },
+    {
+      "title": "B. Ball Friends",
+      "for_kids": "For pupils who enjoy ball games.",
+      "time": "Tuesday and Friday, 15:30—16:10",
+      "place": "Playground",
+      "activities": "Pass a ball to a partner. Play short team games."
+    },
+    {
+      "title": "C. Paper Zoo",
+      "for_kids": "For pupils who like animals and paper work.",
+      "time": "Wednesday, 15:30—16:10",
+      "place": "Art Room",
+      "activities": "Make paper birds and fish. Give each animal a name."
+    },
+    {
+      "title": "D. Story Circle",
+      "for_kids": "For pupils who like listening to stories.",
+      "time": "Thursday, 15:30—16:10",
+      "place": "Library",
+      "activities": "Listen to a short story. Talk about favourite characters."
+    }
+  ],
+  "two_by_two_tables": true,
+  "table_count": 2,
+  "table_rows_each_including_header": 5,
+  "table_columns_each": 2,
+  "all20card_fields_present": true,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "all10binary_candidate_positions_author_counterchecked": true,
+  "source_no_published_key_not_upgraded": true,
+  "pre_freeze_clarification": "After-school status explicit in printed material,notinferredfromclocktimesonly."
+}

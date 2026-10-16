@@ -1,0 +1,184 @@
+{
+  "version": "0.1",
+  "id": "primary5-green-camera-cards-TF",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "87cdbef36f4d61c866d97520451b2223891150e85134db5b6745767983bf158b",
+  "canonical_response_block_sha256": "9f077e6d618e95d0085282fad7f7328ee396c722a53acf775b8f493371fa3b50",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Green Hands meets only on Monday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "A Monday andThursday，onlyMonday与双日明确冲突F。"
+    },
+    {
+      "number": 2,
+      "stem": "Puppet Pals takes place in Classroom 3.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "B地点Classroom3支持T，F与印文反。"
+    },
+    {
+      "number": 3,
+      "stem": "Camera Club asks pupils to photograph small classroom objects.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "C活动takepictures ofsmallclassroomobjects支持T，不假定到户外摄影。"
+    },
+    {
+      "number": 4,
+      "stem": "Pupils in Song Steps make paper puppets.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "D学歌随音乐动，纸偶属B，F不同卡角色错配。"
+    },
+    {
+      "number": 5,
+      "stem": "Green Hands and Puppet Pals both meet on Wednesday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "A Monday/Thursday，B Wednesday；bothWednesday不成立，有A明确时段反证F。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary5ReadingBridge-v0.1.json",
+    "sha256": "f1ead99acc0760a534d1116d3caceacc424f467b2d8cfd19aa4c03eed54a7347"
+  },
+  "source_group_id": "p5.dongcheng2025.fourcards",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF_responses",
+    "source_material": {
+      "text_cards": 4,
+      "layout": "two_by_two",
+      "fields": [
+        "title",
+        "For Kids",
+        "Time",
+        "Place",
+        "Activities"
+      ],
+      "response_operation": "binary_TF"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "These are our after-school clubs.\n\n| A. Green Hands | B. Puppet Pals |\n| --- | --- |\n| For pupils who enjoy growing plants. | For pupils who enjoy telling stories. |\n| Monday and Thursday, 15:20—16:00 | Wednesday, 15:20—16:00 |\n| School Garden | Classroom 3 |\n| Water the plants. Draw one leaf in a notebook. | Make paper puppets. Tell a story in pairs. |\n\n| C. Camera Club | D. Song Steps |\n| --- | --- |\n| For pupils who like taking pictures. | For pupils who enjoy singing. |\n| Friday, 15:20—16:00 | Tuesday, 15:20—16:00 |\n| Art Room | Music Room |\n| Take pictures of small classroom objects. Choose one picture to show. | Learn a new song. Move to the music together. |",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "T",
+    "F",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 91,
+    "stem_English_words": 37,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "required_output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "These are our after-school clubs.\n\n| A. Green Hands | B. Puppet Pals |\n| --- | --- |\n| For pupils who enjoy growing plants. | For pupils who enjoy telling stories. |\n| Monday and Thursday, 15:20—16:00 | Wednesday, 15:20—16:00 |\n| School Garden | Classroom 3 |\n| Water the plants. Draw one leaf in a notebook. | Make paper puppets. Tell a story in pairs. |\n\n| C. Camera Club | D. Song Steps |\n| --- | --- |\n| For pupils who like taking pictures. | For pupils who enjoy singing. |\n| Friday, 15:20—16:00 | Tuesday, 15:20—16:00 |\n| Art Room | Music Room |\n| Take pictures of small classroom objects. Choose one picture to show. | Learn a new song. Move to the music together. |",
+  "card_count": 4,
+  "cards": [
+    {
+      "title": "A. Green Hands",
+      "for_kids": "For pupils who enjoy growing plants.",
+      "time": "Monday and Thursday, 15:20—16:00",
+      "place": "School Garden",
+      "activities": "Water the plants. Draw one leaf in a notebook."
+    },
+    {
+      "title": "B. Puppet Pals",
+      "for_kids": "For pupils who enjoy telling stories.",
+      "time": "Wednesday, 15:20—16:00",
+      "place": "Classroom 3",
+      "activities": "Make paper puppets. Tell a story in pairs."
+    },
+    {
+      "title": "C. Camera Club",
+      "for_kids": "For pupils who like taking pictures.",
+      "time": "Friday, 15:20—16:00",
+      "place": "Art Room",
+      "activities": "Take pictures of small classroom objects. Choose one picture to show."
+    },
+    {
+      "title": "D. Song Steps",
+      "for_kids": "For pupils who enjoy singing.",
+      "time": "Tuesday, 15:20—16:00",
+      "place": "Music Room",
+      "activities": "Learn a new song. Move to the music together."
+    }
+  ],
+  "two_by_two_tables": true,
+  "table_count": 2,
+  "table_rows_each_including_header": 5,
+  "table_columns_each": 2,
+  "all20card_fields_present": true,
+  "all_false_statements_explicitly_contradicted_not_unknown": true,
+  "all10binary_candidate_positions_author_counterchecked": true,
+  "source_no_published_key_not_upgraded": true,
+  "pre_freeze_clarification": "After-school status explicit in printed material,notinferredfromclocktimesonly."
+}

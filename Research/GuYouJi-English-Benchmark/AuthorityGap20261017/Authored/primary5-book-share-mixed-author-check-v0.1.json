@@ -1,0 +1,294 @@
+{
+  "version": "0.1",
+  "id": "primary5-book-share-mixed",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "201f002766f8560ab0eb1c85b64fb6db7f62e3caa527b0373adc06e12152ac6b",
+  "canonical_response_block_sha256": "bd06728dc5807c5caa60c77275c9519b0c0805f004dbff2f05331b187ef77099",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空：选择合适的句子",
+      "options": [
+        [
+          "A",
+          "Some pupils like playing basketball."
+        ],
+        [
+          "B",
+          "Our teacher, Miss Liu, is there to help."
+        ],
+        [
+          "C",
+          "We write each book owner’s name on a card."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "下一句She与looksatbooks/help介绍单一女性成人，B MissLiu提供指代；A pupils复数且篮球无上下文，C we与卡片不提供该She先行对象。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空：选择合适的句子",
+      "options": [
+        [
+          "A",
+          "Some pupils like playing basketball."
+        ],
+        [
+          "B",
+          "Our teacher, Miss Liu, is there to help."
+        ],
+        [
+          "C",
+          "We write each book owner’s name on a card."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "后句These cards tellwhomtoask要求卡片上是owner姓名，C正好给内容；B只介绍老师没有卡片姓名，A篮球无关。各空独立按衔接判断，不借未印的最多一次限制。"
+    },
+    {
+      "number": 3,
+      "stem": "Where does Book Share take place?",
+      "options": [
+        [
+          "A",
+          "In the library."
+        ],
+        [
+          "B",
+          "In the dining hall."
+        ],
+        [
+          "C",
+          "On the playground."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "首句library支持A；C/B为其他校园地点，题内未作为本次地点。"
+    },
+    {
+      "number": 4,
+      "stem": "What will Amy do next Friday?",
+      "options": [
+        [
+          "A",
+          "Give Ben a train as a gift."
+        ],
+        [
+          "B",
+          "Return the borrowed train book."
+        ],
+        [
+          "C",
+          "Keep the dog book at home."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第二段Amy借trainbook nextFriday归还支持B；A train非真玩具馈赠，C她借的非dog且不可当礼物留。"
+    },
+    {
+      "number": 5,
+      "stem": "Why does the class keep a list of borrowed books?",
+      "options": [
+        [
+          "A",
+          "To help find the books when they should be returned."
+        ],
+        [
+          "B",
+          "To choose a new name for the library."
+        ],
+        [
+          "C",
+          "To give every book to Miss Liu."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "末句listhelpsfind when giveback支持A；B无改馆名，Bowner仍学生非全部送老师。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary5ReadingBridge-v0.1.json",
+    "sha256": "f1ead99acc0760a534d1116d3caceacc424f467b2d8cfd19aa4c03eed54a7347"
+  },
+  "source_group_id": "p5.dongcheng2025.closedmixed",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "one_extra_printed_no_added_max_once",
+    "source_material": {
+      "passages": 1,
+      "paragraphs_observed": 3,
+      "sentence_gaps": 2,
+      "shared_sentence_candidates": 3,
+      "unused_sentence_candidates": 1,
+      "following_MC": 3,
+      "MC_options_each": 3
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": true,
+      "shared_bank_response_numbers": [
+        1,
+        2
+      ],
+      "unique_shared_entries": 3,
+      "independent_response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "independent_options_each": 3
+    }
+  },
+  "student_passage": "On Friday afternoon, our class has Book Share in the library. We bring books that we can lend to friends. (1) ____ She looks at the books with us and helps us put them on a long table. We do not put them on the floor.\n\nBen brings two picture books. One is about a train, and the other is about a little dog. Amy wants to borrow the train book. She asks Ben first, and he says yes. She will return it next Friday. She is borrowing the book, not keeping it as a gift.\n\nBefore our friends choose books, we make small cards. (2) ____ These cards tell readers whom to ask before borrowing. We put a card beside each book. At the end, we write down which books our friends have borrowed. The list will help us find them when it is time to give them back.\n\n前两空共享句子（有一项不用）：\n\nA. Some pupils like playing basketball.\nB. Our teacher, Miss Liu, is there to help.\nC. We write each book owner’s name on a card.",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 146,
+    "stem_English_words": 22,
+    "options_English_words_with_repeated_bank": 97,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "required_output_letter_count": 5,
+    "shared_sentence_bank_words_once": 22,
+    "shared_bank_words_repeated_in_controls": 44,
+    "MC_candidate_words": 53
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "On Friday afternoon, our class has Book Share in the library. We bring books that we can lend to friends. (1) ____ She looks at the books with us and helps us put them on a long table. We do not put them on the floor.\n\nBen brings two picture books. One is about a train, and the other is about a little dog. Amy wants to borrow the train book. She asks Ben first, and he says yes. She will return it next Friday. She is borrowing the book, not keeping it as a gift.\n\nBefore our friends choose books, we make small cards. (2) ____ These cards tell readers whom to ask before borrowing. We put a card beside each book. At the end, we write down which books our friends have borrowed. The list will help us find them when it is time to give them back.",
+  "completed_passage": "On Friday afternoon, our class has Book Share in the library. We bring books that we can lend to friends. Our teacher, Miss Liu, is there to help. She looks at the books with us and helps us put them on a long table. We do not put them on the floor.\n\nBen brings two picture books. One is about a train, and the other is about a little dog. Amy wants to borrow the train book. She asks Ben first, and he says yes. She will return it next Friday. She is borrowing the book, not keeping it as a gift.\n\nBefore our friends choose books, we make small cards. We write each book owner’s name on a card. These cards tell readers whom to ask before borrowing. We put a card beside each book. At the end, we write down which books our friends have borrowed. The list will help us find them when it is time to give them back.",
+  "passage_count": 1,
+  "paragraph_count": 3,
+  "sentence_gaps": 2,
+  "shared_sentence_bank": [
+    [
+      "A",
+      "Some pupils like playing basketball."
+    ],
+    [
+      "B",
+      "Our teacher, Miss Liu, is there to help."
+    ],
+    [
+      "C",
+      "We write each book owner’s name on a card."
+    ]
+  ],
+  "unused_sentence_candidates": 1,
+  "subgroups": [
+    {
+      "response_numbers": [
+        1,
+        2
+      ],
+      "operation": "sentence_insertion",
+      "shared_candidates": 3
+    },
+    {
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "operation": "reading_choice",
+      "options_each": 3
+    }
+  ],
+  "reuse_rule": "one_extra_printed_no_added_max_once",
+  "no_open_or_semantic_free_response": true,
+  "all15candidate_positions_author_counterchecked": true,
+  "option_order_trace_MC": [
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "In the library."
+        ],
+        [
+          "B",
+          "On the playground."
+        ],
+        [
+          "C",
+          "In the dining hall."
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "首句library支持A；B/C为其他校园地点，题内未作为本次地点。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "In the library."
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "Give Ben a train as a gift."
+        ],
+        [
+          "B",
+          "Return the borrowed train book."
+        ],
+        [
+          "C",
+          "Keep the dog book at home."
+        ]
+      ],
+      "before_key": "B",
+      "before_reason": "第二段Amy借trainbook nextFriday归还支持B；A train非真玩具馈赠，C她借的非dog且不可当礼物留。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "Return the borrowed train book."
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "To choose a new name for the library."
+        ],
+        [
+          "B",
+          "To give every book to Miss Liu."
+        ],
+        [
+          "C",
+          "To help find the books when they should be returned."
+        ]
+      ],
+      "before_key": "C",
+      "before_reason": "末句listhelpsfind when giveback支持C；A无改馆名，Bowner仍学生非全部送老师。",
+      "old_to_new": {
+        "C": "A",
+        "A": "B",
+        "B": "C"
+      },
+      "accepted_text": "To help find the books when they should be returned."
+    }
+  ],
+  "source_no_published_key_not_upgraded": true
+}

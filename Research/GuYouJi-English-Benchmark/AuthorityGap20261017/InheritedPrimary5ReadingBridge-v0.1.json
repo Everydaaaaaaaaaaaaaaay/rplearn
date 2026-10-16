@@ -1,0 +1,201 @@
+{
+  "version": "0.1",
+  "scope": "three_existing_complete_primary5_source_modes_two_repost_papers",
+  "groups": [
+    {
+      "id": "p5.fangshan2025.readingTF",
+      "level": "primary5",
+      "kind": "reading_tf",
+      "source": {
+        "path": "build/english-benchmark-expansion-20261016/primary5-fangshan2025upper.pdf",
+        "sha256": "b001b81cf2d6d34ef0015871f4f928707358142a61cff2a20d47a2318d5baa0f"
+      },
+      "inherited_source_catalogue": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "question_numbers": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "responses": 5,
+      "material": {
+        "passages": 1,
+        "paragraphs_observed": 2,
+        "response_operation": "binary_TF"
+      },
+      "candidates": {
+        "per_response": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_binary_TF_responses",
+      "full_student_input": true,
+      "published_key": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "T"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "ActualpaperheaderFangshan2024-2025firsttermG5confirmed;publicthirdpartycopy,originalinstitutionreleaseunknown;PDF9pages=8student+1key;selectedclosedsectionscomplete;no listening/writing selected",
+      "source_fact_risk": "source_hobby/nationalclaims_notindependentlyvalidated",
+      "cached_visuals": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-header-1.png",
+          "sha256": "f3781b33edc37cb7addb21f5e55181980d35c9bbd3273b5a2e55af91fdfc7ce5"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-selected-6.png",
+          "sha256": "f1f649d94890130f1e34392760784dd8bb3b07a83af03c94a6f4b0244d7e38a7"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-fangshan-key-9.png",
+          "sha256": "bdd2713023a24b7740063940817b737aa41f4b82b179d98271e5e6cfeec33467"
+        }
+      ]
+    },
+    {
+      "id": "p5.dongcheng2025.fourcards",
+      "level": "primary5",
+      "kind": "card_reading_tf",
+      "source": {
+        "path": "build/english-benchmark-expansion-20261016/primary5-dongcheng2025upper.pdf",
+        "sha256": "b03498c66d88f6d41ef2c214bea17bb72be6a75481415925fdfc989d8b502626"
+      },
+      "inherited_source_catalogue": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "question_numbers": [
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "responses": 5,
+      "material": {
+        "text_cards": 4,
+        "layout": "two_by_two",
+        "fields": [
+          "title",
+          "For Kids",
+          "Time",
+          "Place",
+          "Activities"
+        ],
+        "response_operation": "binary_TF"
+      },
+      "candidates": {
+        "per_response": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_binary_TF_responses",
+      "full_student_input": true,
+      "published_key": null,
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "Dongcheng2024-25firsttermG5paper;6studentpages,no key obtained;fourclosedcards/5TF,or onepassage/2sentencegaps3sharedoptions+3MC3choices;wholeclosedmixedkept;openextraction+writingsectiononp6paused,notselected",
+      "source_fact_risk": "holiday/dateclaimsnotindependentlyverified;notsourcegold",
+      "cached_visuals": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-header-1.png",
+          "sha256": "ec2573aac2962b47ecdf1c6ba5e4fc7a5c44aa9a12b702f548fd01a158dc6674"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-selected-4.png",
+          "sha256": "75bd7c88aa34230090e6f1a594bd74acc31253fdbbb9a0dea87af9b0b3d588fb"
+        }
+      ]
+    },
+    {
+      "id": "p5.dongcheng2025.closedmixed",
+      "level": "primary5",
+      "kind": "closed_mixed_reading",
+      "source": {
+        "path": "build/english-benchmark-expansion-20261016/primary5-dongcheng2025upper.pdf",
+        "sha256": "b03498c66d88f6d41ef2c214bea17bb72be6a75481415925fdfc989d8b502626"
+      },
+      "inherited_source_catalogue": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "question_numbers": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "responses": 5,
+      "material": {
+        "passages": 1,
+        "paragraphs_observed": 3,
+        "sentence_gaps": 2,
+        "shared_sentence_candidates": 3,
+        "unused_sentence_candidates": 1,
+        "following_MC": 3,
+        "MC_options_each": 3
+      },
+      "candidates": {
+        "per_response": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "shared_bank": true,
+        "shared_bank_response_numbers": [
+          1,
+          2
+        ],
+        "unique_shared_entries": 3,
+        "independent_response_numbers": [
+          3,
+          4,
+          5
+        ],
+        "independent_options_each": 3
+      },
+      "reuse_rule": "one_extra_printed_no_added_max_once",
+      "full_student_input": true,
+      "published_key": null,
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "Dongcheng2024-25firsttermG5paper;6studentpages,no key obtained;fourclosedcards/5TF,or onepassage/2sentencegaps3sharedoptions+3MC3choices;wholeclosedmixedkept;openextraction+writingsectiononp6paused,notselected",
+      "source_fact_risk": "holiday/dateclaimsnotindependentlyverified;notsourcegold",
+      "cached_visuals": [
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-header-1.png",
+          "sha256": "ec2573aac2962b47ecdf1c6ba5e4fc7a5c44aa9a12b702f548fd01a158dc6674"
+        },
+        {
+          "path": "build/english-benchmark-expansion-20261016/p5-dongcheng-selected-5.png",
+          "sha256": "e662840856921bc9d794eedda02ff3e1107075dc74fab87f7868d43e3d87fbe6"
+        }
+      ]
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0,
+  "source_keys_not_gold_or_missing": true,
+  "oldsource_necessary_visuals_reused_not_rerendered": true
+}
