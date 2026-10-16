@@ -1,0 +1,146 @@
+{
+  "version": "0.3",
+  "previous_followup": {
+    "path": "AuthorityGap20261017/SourceFollowup-v0.2.json",
+    "sha256": "4ae2f33eadb68c397a69eda5257800600e3c96a569f8bc4fba08f142d4613ae6"
+  },
+  "purpose": "target actual nonpaper,unadapted ordering,ordinarycloze gaps;not genericreading expansion",
+  "discovery_logs": [
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-01-v0.1.json",
+      "sha256": "3290fcc0161315aa03e6b5e68a3a3d1c95c75f69a6497e18bc7fd1906e0f910e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-02-v0.1.json",
+      "sha256": "89eb136f6764b57fcb781c6eb51efa18211bd6c0533f96b32773976f32c21f02"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-03-v0.1.json",
+      "sha256": "2f8c7d43c6096f85ca3633d29c2b42c97ba733f538ae1e265229b4bc83b7bf47"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-04-v0.1.json",
+      "sha256": "da7a1f205b80c4830a7a560315bcba7205aaed4d57df7e2458558bf213532416"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-05-v0.1.json",
+      "sha256": "4dbe835137e7f4e94782eb647c07c23a212582fc3110c11e07b3c4fabe60de98"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-06-v0.1.json",
+      "sha256": "655d7a9c63c6086e278c649e8ae4b69aa144823b32537c06d94de4288ae46421"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-07-v0.1.json",
+      "sha256": "a366c8251b7b9ed881910a633a330c446330691a6306e701ca04dc0951a052ac"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-08-v0.1.json",
+      "sha256": "2b816d36685632a2ed180534d2d323f300bd7200a5ce0867fa4c8641977a1356"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-09-v0.1.json",
+      "sha256": "db08147ad58796030a80d5cabddaa06cdaa98826297501f3473ff8d891d4ab61"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/targeted-batch3-web-10-v0.1.json",
+      "sha256": "42a0587a1919b8bf0b76d93e8e52c5739fc02ab263adb87b1dc2451754ebb9ca"
+    }
+  ],
+  "selected_complete_source_groups_added": 0,
+  "selected_responses_added": 0,
+  "findings": [
+    {
+      "id": "p3_panshi_ordering",
+      "status": "selected_complete_public_text_only",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/p3-panshi15151078-public-original-v0.1.html",
+        "sha256": "d05328a9ba902d930cbafa75859e1f1010965ee363a6d62cb262105edb92e39c"
+      },
+      "native": {
+        "path": "build/english-benchmark-authority-20261017/p3-panshi-ordering-native-v0.2.json",
+        "sha256": "d38043858a520d0d5e0324723e0f8ba19a712324f9a63a1ae66fa3f12ad4ca22"
+      },
+      "limits": "grade/termconfirmedpreview1;regiontitleonly;onlyfirst2of4previewpages;orderingtextallvisibleinHTML;sourcekeynone;notwholepaperorvisualgold"
+    },
+    {
+      "id": "p6_feixian_jyeoo",
+      "url": "https://www.jyeoo.com/pp/cb86125e-b44b-4dda-9c50-61e1a9391813",
+      "status": "not_admitted_grade_task_identity_mismatch",
+      "evidence": "headingsandbodiesmismatch:sectionIwordphrasebutHelloGirls/Boys;IIjobsandhobbiesbutgrape/great/green;VIII2poemsbutJennySaturdaystory;Vstoryheading/dialoguebody;notcrediblefulloriginalgrade6paper"
+    },
+    {
+      "id": "nonpaper_schoolplan",
+      "url": "https://www.nsfz.cn/primary/articlelists/details/pid/99/article_cate_id/100/article_id/10002981.html",
+      "status": "searchreportonly_repeatedtimeout;singing/freespeechnotclosedtaskbundle"
+    },
+    {
+      "id": "zjg_nonpaper",
+      "url": "https://wgyxx.zjgedu.cn/syxb/xxb/content_207723",
+      "status": "officialschoolnews_only;imagecarddrawingreported_butactualfullcardsets/instructionsnotpublished"
+    },
+    {
+      "id": "p5_taizhou",
+      "status": "samepaidboundary19/20stillmissing;notredownloaded"
+    },
+    {
+      "id": "p5_guangming2023",
+      "url": "https://max.book118.com/html/2024/0120/8022015132006027.shtm",
+      "status": "previewendsatclozeheading;nofullinput;notadmitted"
+    },
+    {
+      "id": "p5_erqi_tesoon",
+      "url": "https://www.tesoon.com/resource/detail?rid=190314",
+      "status": "publisheraudio_scriptkeyresource;actualstudentpictures/candidatesnotshown;notcompleteinput"
+    }
+  ],
+  "source_unknown_not_filled_with_simulation": true,
+  "this_batch_added_source_modes": 0,
+  "this_batch_added_source_positions": 0,
+  "this_batch_added_authors": 6,
+  "this_batch_added_authored_positions": 48,
+  "primary_followup_this_batch": {
+    "logs": [
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web43-v0.1.json",
+        "sha256": "d9d3b73c67eb8b09890e28a7e964842598a1a3d5d7b36aabe2824a7db68aeaed"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web44-v0.1.json",
+        "sha256": "13f089db5ffced7e401fb89927af6ac0ccf917e7f8aeca0777cfb2971dd89ed3"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web45-v0.1.json",
+        "sha256": "0abd304b753d65280797b7fd8b312ff51ec87f0741316b59e109ec658410eb56"
+      },
+      {
+        "path": "build/english-benchmark-authority-20261017/primary-gap-followup-web46-v0.1.json",
+        "sha256": "5fd49e55643c6dd7a8e6d7e636c27985cd1672f114a6c9c2a86cf711e1a04e37"
+      }
+    ],
+    "search_queries": 8,
+    "direct_opened_pages": 3,
+    "lowprimary": {
+      "url": "https://www.wenjuan.com/s/UZBZJvA82FN/",
+      "state": "searchsnippet_describes_privategrade2teacherentry_but_livepage_collectionpaused_noactual5pairsprompts",
+      "not_authority_or_ordinary_school_paper": true,
+      "admitted": false
+    },
+    "primary6_nanjing": {
+      "url": "https://www.jiangsu100.com/40727.html",
+      "state": "publictextstopswithinlanguageknowledge_beforeordinarywrittenordering;download2pointloginboundary;images/scriptsmissing;no_pay_or_bypass",
+      "admitted": false
+    },
+    "primary6_shenzhen": {
+      "url": "https://appsj.szxuexiao.com/html/6633.html",
+      "state": "complete5sentence_writtenordering_text_visible;webgrade6year2024labelonly;school/ordinaryadministration/studentheaderunconfirmed",
+      "not_ordinary_identity_gap_closure": true,
+      "admitted": false
+    },
+    "primary5_candidates": "manyexplicitpractice/mock/targetedsheets;Yogorfilenameexplicitmock;nonepromotedordinary;Taizhouoldlast2candidatesstillmissing",
+    "no_originals_claimed_from_snippets": true,
+    "no_new_originals_for_unadmitted_lowprimary_or_ordering": true
+  },
+  "inherited_followup_selected_groups": 1,
+  "inherited_followup_selected_positions": 5
+}

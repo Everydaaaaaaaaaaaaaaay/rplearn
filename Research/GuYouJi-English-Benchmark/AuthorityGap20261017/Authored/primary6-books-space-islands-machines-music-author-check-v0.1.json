@@ -1,0 +1,190 @@
+{
+  "version": "0.1",
+  "id": "primary6-books-space-islands-machines-music",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "9ca288dc6d168dfbe847af92633b70832c336c4c347ca6cdab2f1aae06c1641c",
+  "canonical_response_block_sha256": "5794b47e6ebe8e657daf0580090ae1220972adca516278844c7e6f39ced56d77",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which book contains a child's notes about traveling between islands?",
+      "options": [
+        [
+          "A",
+          "Space Trips"
+        ],
+        [
+          "B",
+          "Festival Music"
+        ],
+        [
+          "C",
+          "Island Journal"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C是岛间船行日记及每日小图；A虚构星际故事非海岛，B节庆歌曲非旅行日记。"
+    },
+    {
+      "number": 2,
+      "stem": "Which book gives instructions for building moving toys?",
+      "options": [
+        [
+          "A",
+          "Tiny Machines"
+        ],
+        [
+          "B",
+          "Space Trips"
+        ],
+        [
+          "C",
+          "Island Journal"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A小车纸卡与轮子、零件图示；B星际故事不是制作指南，C旅行日记不是组装说明。"
+    },
+    {
+      "number": 3,
+      "stem": "Which of these books has the most pages?",
+      "options": [
+        [
+          "A",
+          "Island Journal"
+        ],
+        [
+          "B",
+          "Tiny Machines"
+        ],
+        [
+          "C",
+          "Festival Music"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A48、B72、C40页，B最大；价格26/34/22不是所问页数。"
+    },
+    {
+      "number": 4,
+      "stem": "On Friday, how much are Space Trips and Festival Music together, including one delivery fee?",
+      "options": [
+        [
+          "A",
+          "31 yuan."
+        ],
+        [
+          "B",
+          "26 yuan."
+        ],
+        [
+          "C",
+          "36 yuan."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "30/2+22/2+5=31选A；B漏配送；C两次配送，多收5。"
+    },
+    {
+      "number": 5,
+      "stem": "How should pupils order books from this shop?",
+      "options": [
+        [
+          "A",
+          "Telephone the writers."
+        ],
+        [
+          "B",
+          "Go to the islands in the story."
+        ],
+        [
+          "C",
+          "Use the stated shop website."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "页脚明确在线地址与不打给作者，C。A被否定；B故事目的地不是现实订购点。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.booktable",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "table": 1,
+      "book_columns": 4,
+      "cover_images": 4,
+      "pricing_and_discount_footer_required": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "### New titles for the reading corner\n\n![四本原创虚构图书封面A至D](primary6-books-space-islands-machines-music.svg)\n\n| Book | A: Space Trips | B: Island Journal | C: Tiny Machines | D: Festival Music |\n| --- | --- | --- | --- | --- |\n| About | A fictional crew visits three planets. A story told in pictures. | Read a child's notes about a boat journey between three islands. Each day has a small map. | Build small moving toys with card and wheels. Diagrams show how the parts fit. | Sing eight new songs for school celebrations. Each song has notes for a keyboard. |\n| Pages | 56 | 48 | 72 | 40 |\n| Usual price | 30 yuan | 26 yuan | 34 yuan | 22 yuan |\n\n**Friday offer:** All four books are half price on Friday. Pay the usual price on other days. Delivery costs 5 yuan per order, whatever the number of books. Order at **cornerbooks.example**, a fictional classroom-shop address. Do not telephone the writers to order. All titles, stories and prices are fictional.\n",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "B",
+    "A",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 139,
+    "stem_English_words": 49,
+    "options_English_words_with_repeated_bank": 36,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "asset_URL_alt_and_sharedbank_candidates_excluded_from_body": true,
+    "figure_English_words_included_in_body": 8
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "figure_asset": {
+    "path": "AuthorityGap20261017/Authored/primary6-books-space-islands-machines-music.svg",
+    "sha256": "9ab85c11cb3ca9fccadd199e5be718ca66d19043ab99db8026667019b401b710"
+  },
+  "required_visual_panels": 4,
+  "visual_panel_semantics": [
+    "Space Trips",
+    "Island Journal",
+    "Tiny Machines",
+    "Festival Music"
+  ],
+  "svg_is_original": true,
+  "remote_media_dependencies": false,
+  "body_load_text": "### New titles for the reading corner\n\n\n| Book | A: Space Trips | B: Island Journal | C: Tiny Machines | D: Festival Music |\n| --- | --- | --- | --- | --- |\n| About | A fictional crew visits three planets. A story told in pictures. | Read a child's notes about a boat journey between three islands. Each day has a small map. | Build small moving toys with card and wheels. Diagrams show how the parts fit. | Sing eight new songs for school celebrations. Each song has notes for a keyboard. |\n| Pages | 56 | 48 | 72 | 40 |\n| Usual price | 30 yuan | 26 yuan | 34 yuan | 22 yuan |\n\n**Friday offer:** All four books are half price on Friday. Pay the usual price on other days. Delivery costs 5 yuan per order, whatever the number of books. Order at ****, a fictional classroom-shop address. Do not telephone the writers to order. All titles, stories and prices are fictional.\n\nSpace Trips Island Journal Tiny Machines Festival Music",
+  "book_columns": 4,
+  "pricing_and_discount_footer_required": true,
+  "table_includes_all_cells": true,
+  "fictional_address_not_live_service": true,
+  "numeric_input_cells": {
+    "pages": [
+      56,
+      48,
+      72,
+      40
+    ],
+    "prices": [
+      30,
+      26,
+      34,
+      22
+    ],
+    "discount_fraction": 0.5,
+    "delivery_per_order": 5
+  }
+}

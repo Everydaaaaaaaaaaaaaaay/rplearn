@@ -1,0 +1,190 @@
+{
+  "version": "0.1",
+  "id": "primary6-books-tracks-magic-comics-poems",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "ab22efafe087766a41db55d2100cd3e2cfce7f9b1bf4384dc5071842088bbae9",
+  "canonical_response_block_sha256": "dad9588c3624ac9d9636761225928e1128d9b4ffc04e4f2129d2726285806720",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which book helps pupils draw characters and add speech bubbles?",
+      "options": [
+        [
+          "A",
+          "Animal Tracks"
+        ],
+        [
+          "B",
+          "Make a Comic"
+        ],
+        [
+          "C",
+          "Easy Magic"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B有draw characters/add speech bubbles；A辨认脚印、C纸线小魔术都非制作漫画。"
+    },
+    {
+      "number": 2,
+      "stem": "Which book can help a pupil identify animal footprints?",
+      "options": [
+        [
+          "A",
+          "Funny Poems"
+        ],
+        [
+          "B",
+          "Easy Magic"
+        ],
+        [
+          "C",
+          "Animal Tracks"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C将脚印图与动物匹配；A短诗、B纸线小戏法不教辨脚印。"
+    },
+    {
+      "number": 3,
+      "stem": "Which of these books has the fewest pages?",
+      "options": [
+        [
+          "A",
+          "Animal Tracks"
+        ],
+        [
+          "B",
+          "Make a Comic"
+        ],
+        [
+          "C",
+          "Funny Poems"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A32页小于B44和C36；不把价格数字误当页数，也不比较不在选项中的60页书。"
+    },
+    {
+      "number": 4,
+      "stem": "On Wednesday, how much are Easy Magic and Funny Poems together, including one delivery fee?",
+      "options": [
+        [
+          "A",
+          "19 yuan."
+        ],
+        [
+          "B",
+          "25 yuan."
+        ],
+        [
+          "C",
+          "22 yuan."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "20/2+18/2=19，一单配送3，总22选C。A漏配送；B多收一次配送。"
+    },
+    {
+      "number": 5,
+      "stem": "When can pupils buy these books at half their usual price?",
+      "options": [
+        [
+          "A",
+          "On Friday."
+        ],
+        [
+          "B",
+          "On Wednesday."
+        ],
+        [
+          "C",
+          "On Tuesday."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "页脚明确Wednesday半价，B；A/C其他日常价，不因熟悉历史稿的日期作答。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.booktable",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "table": 1,
+      "book_columns": 4,
+      "cover_images": 4,
+      "pricing_and_discount_footer_required": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "### Books to try this term\n\n![四本原创虚构图书封面A至D](primary6-books-tracks-magic-comics-poems.svg)\n\n| Book | A: Animal Tracks | B: Easy Magic | C: Make a Comic | D: Funny Poems |\n| --- | --- | --- | --- | --- |\n| About | Match drawings of footprints to common animals. Learn where to look for tracks. | Try simple tricks with paper and string. Every step has a picture. | Draw characters and add speech bubbles. Finish a short comic of your own. | Read twelve short poems about rainy days, muddy shoes and funny pets. |\n| Pages | 32 | 60 | 44 | 36 |\n| Usual price | 12 yuan | 20 yuan | 16 yuan | 18 yuan |\n\n**Wednesday offer:** All four books are half price on Wednesday. Pay the usual price on other days. Delivery costs 3 yuan per order, regardless of how many books it contains. Order at **readingshelf.example**, a fictional shop address. Orders are made online, not by telephone. These are fictional classroom-shop prices.\n",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 134,
+    "stem_English_words": 53,
+    "options_English_words_with_repeated_bank": 29,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "asset_URL_alt_and_sharedbank_candidates_excluded_from_body": true,
+    "figure_English_words_included_in_body": 9
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "figure_asset": {
+    "path": "AuthorityGap20261017/Authored/primary6-books-tracks-magic-comics-poems.svg",
+    "sha256": "8353941b514c4cacf6c28a036b1f293ca50b9b010ceb965ee2c818b60a64235d"
+  },
+  "required_visual_panels": 4,
+  "visual_panel_semantics": [
+    "Animal Tracks",
+    "Easy Magic",
+    "Make a Comic",
+    "Funny Poems"
+  ],
+  "svg_is_original": true,
+  "remote_media_dependencies": false,
+  "body_load_text": "### Books to try this term\n\n\n| Book | A: Animal Tracks | B: Easy Magic | C: Make a Comic | D: Funny Poems |\n| --- | --- | --- | --- | --- |\n| About | Match drawings of footprints to common animals. Learn where to look for tracks. | Try simple tricks with paper and string. Every step has a picture. | Draw characters and add speech bubbles. Finish a short comic of your own. | Read twelve short poems about rainy days, muddy shoes and funny pets. |\n| Pages | 32 | 60 | 44 | 36 |\n| Usual price | 12 yuan | 20 yuan | 16 yuan | 18 yuan |\n\n**Wednesday offer:** All four books are half price on Wednesday. Pay the usual price on other days. Delivery costs 3 yuan per order, regardless of how many books it contains. Order at ****, a fictional shop address. Orders are made online, not by telephone. These are fictional classroom-shop prices.\n\nAnimal Tracks Easy Magic Make a Comic Funny Poems",
+  "book_columns": 4,
+  "pricing_and_discount_footer_required": true,
+  "table_includes_all_cells": true,
+  "fictional_address_not_live_service": true,
+  "numeric_input_cells": {
+    "pages": [
+      32,
+      60,
+      44,
+      36
+    ],
+    "prices": [
+      12,
+      20,
+      16,
+      18
+    ],
+    "discount_fraction": 0.5,
+    "delivery_per_order": 3
+  }
+}
