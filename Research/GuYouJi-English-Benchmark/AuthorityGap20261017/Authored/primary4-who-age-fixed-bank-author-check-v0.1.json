@@ -1,0 +1,256 @@
+{
+  "version": "0.1",
+  "id": "primary4-who-age-fixed-bank",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "38bc9ce7bdd36dcefb943e05875bb2f96e8c1a3ed39a932a5268b58b4a59d0ef",
+  "canonical_response_block_sha256": "ffd6fbe4d0c0b4f77ab20b815c8904117462a124a43be2b73f7baa37ee496faf",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The chair is in front of the bag. The bag is ____ the chair.",
+      "options": [
+        [
+          "A",
+          "Who"
+        ],
+        [
+          "B",
+          "How old"
+        ],
+        [
+          "C",
+          "tired"
+        ],
+        [
+          "D",
+          "behind"
+        ],
+        [
+          "E",
+          "eat"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "椅在包前明确逆关系包在椅后behind；Who/Howold是疑问表达，tired形容词和eat动词不能连thechair构成此空间介词关系。"
+    },
+    {
+      "number": 2,
+      "stem": "____ are you? I am ten.",
+      "options": [
+        [
+          "A",
+          "Who"
+        ],
+        [
+          "B",
+          "How old"
+        ],
+        [
+          "C",
+          "tired"
+        ],
+        [
+          "D",
+          "behind"
+        ],
+        [
+          "E",
+          "eat"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Howold问年龄与ten对应；Whoareyou问身份不能用I am ten回答身份；tired/behind/eat不构成给出的年龄疑问结构。"
+    },
+    {
+      "number": 3,
+      "stem": "Please ____ this apple. It is for you.",
+      "options": [
+        [
+          "A",
+          "Who"
+        ],
+        [
+          "B",
+          "How old"
+        ],
+        [
+          "C",
+          "tired"
+        ],
+        [
+          "D",
+          "behind"
+        ],
+        [
+          "E",
+          "eat"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "eat是吃苹果的动词，可接thisapple；Who/Howold非祈使谓语，tired形容词，behind介词也不是Please后的本句动作谓语。"
+    },
+    {
+      "number": 4,
+      "stem": "____ is that girl? She is my sister.",
+      "options": [
+        [
+          "A",
+          "Who"
+        ],
+        [
+          "B",
+          "How old"
+        ],
+        [
+          "C",
+          "tired"
+        ],
+        [
+          "D",
+          "behind"
+        ],
+        [
+          "E",
+          "eat"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Who问人物身份，与sister对应；Howold问年龄缺areyou式年龄结构，tired形容词、behind介词、eat动词不形成这一身份问句。"
+    },
+    {
+      "number": 5,
+      "stem": "I am ____. I want to go to bed.",
+      "options": [
+        [
+          "A",
+          "Who"
+        ],
+        [
+          "B",
+          "How old"
+        ],
+        [
+          "C",
+          "tired"
+        ],
+        [
+          "D",
+          "behind"
+        ],
+        [
+          "E",
+          "eat"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "tired为累且想睡，C；Who疑问代词、Howold疑问短语、behind缺参照物、eat动词不作此am后的疲倦表语。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary4TextBridge-v0.1.json",
+    "sha256": "63507a2c4d7ccbc456ec07d8b8b98372f713a49512557a827ee41e7760cdd1aa"
+  },
+  "source_group_id": "primary4.xdf.lower.bank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_max_once",
+    "source_material": {
+      "independent_sentences": 5,
+      "shared_entries": 5,
+      "two_word_entry_present": true,
+      "printed_response": "candidate_serial_label_not_one_literal_word"
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "共享词或短语：\n\nA. Who\nB. How old\nC. tired\nD. behind\nE. eat",
+  "author_answer_vector": [
+    "D",
+    "B",
+    "E",
+    "A",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 40,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5,
+    "shared_bank_words_once": 6,
+    "English_microcontext_words": 40
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "independent_sentence_count": 5,
+  "shared_bank": [
+    [
+      "A",
+      "Who"
+    ],
+    [
+      "B",
+      "How old"
+    ],
+    [
+      "C",
+      "tired"
+    ],
+    [
+      "D",
+      "behind"
+    ],
+    [
+      "E",
+      "eat"
+    ]
+  ],
+  "word_or_phrase_forms_fixed": true,
+  "two_word_entry_count": 1,
+  "no_added_once_limit": true,
+  "all5microcontexts_refilled": [
+    "The chair is in front of the bag. The bag is behind the chair.",
+    "How old are you? I am ten.",
+    "Please eat this apple. It is for you.",
+    "Who is that girl? She is my sister.",
+    "I am tired. I want to go to bed."
+  ],
+  "author_independent_prompt_order_trace": [
+    {
+      "new_response": 1,
+      "initial_author_prompt": 4
+    },
+    {
+      "new_response": 2,
+      "initial_author_prompt": 2
+    },
+    {
+      "new_response": 3,
+      "initial_author_prompt": 5
+    },
+    {
+      "new_response": 4,
+      "initial_author_prompt": 1
+    },
+    {
+      "new_response": 5,
+      "initial_author_prompt": 3
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "version": "0.1",
+  "id": "primary4-morning-water-functions",
+  "grade": "primary4",
+  "questions": 6,
+  "candidate_sha256": "15ba78478cffd9c1190ad8529df37713e22852c0201d0a7241036e68aae87e94",
+  "canonical_response_block_sha256": "4379255e309f2acd6761efc649c7e249dcf20c106bb7e8d62b2a41eec762aacc",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "同学把你需要的橡皮借给你，你向他表示感谢。",
+      "options": [
+        [
+          "A",
+          "Good morning."
+        ],
+        [
+          "B",
+          "May I have a glass of water, please?"
+        ],
+        [
+          "C",
+          "See you tomorrow."
+        ],
+        [
+          "D",
+          "Here you are."
+        ],
+        [
+          "E",
+          "You are welcome."
+        ],
+        [
+          "F",
+          "Thank you."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "FThankyou直接致谢；E是被感谢一方回应，D是递物一方用语，A/B/C均非表达感谢。"
+    },
+    {
+      "number": 2,
+      "stem": "放学告别时，你想对朋友说“明天见”。",
+      "options": [
+        [
+          "A",
+          "Good morning."
+        ],
+        [
+          "B",
+          "May I have a glass of water, please?"
+        ],
+        [
+          "C",
+          "See you tomorrow."
+        ],
+        [
+          "D",
+          "Here you are."
+        ],
+        [
+          "E",
+          "You are welcome."
+        ],
+        [
+          "F",
+          "Thank you."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "CSee you tomorrow对应未来再见；A早晨招呼，B饮水请求，D递物，E不客气，F谢谢，不表达明天见。"
+    },
+    {
+      "number": 3,
+      "stem": "早晨见到老师，你向老师说“早上好”。",
+      "options": [
+        [
+          "A",
+          "Good morning."
+        ],
+        [
+          "B",
+          "May I have a glass of water, please?"
+        ],
+        [
+          "C",
+          "See you tomorrow."
+        ],
+        [
+          "D",
+          "Here you are."
+        ],
+        [
+          "E",
+          "You are welcome."
+        ],
+        [
+          "F",
+          "Thank you."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A早晨问候；B请求饮水，C说明天见，D递物，E回应感谢，F表达感谢，都不是早上好。"
+    },
+    {
+      "number": 4,
+      "stem": "同学对你说“Thank you”，你回答“不客气”。",
+      "options": [
+        [
+          "A",
+          "Good morning."
+        ],
+        [
+          "B",
+          "May I have a glass of water, please?"
+        ],
+        [
+          "C",
+          "See you tomorrow."
+        ],
+        [
+          "D",
+          "Here you are."
+        ],
+        [
+          "E",
+          "You are welcome."
+        ],
+        [
+          "F",
+          "Thank you."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "EYouarewelcome用于回应感谢；F再次说谢谢不是不客气，A/B/C/D各属问候/请求/告别/递交。"
+    },
+    {
+      "number": 5,
+      "stem": "你口渴，想礼貌地向主人请求一杯水。",
+      "options": [
+        [
+          "A",
+          "Good morning."
+        ],
+        [
+          "B",
+          "May I have a glass of water, please?"
+        ],
+        [
+          "C",
+          "See you tomorrow."
+        ],
+        [
+          "D",
+          "Here you are."
+        ],
+        [
+          "E",
+          "You are welcome."
+        ],
+        [
+          "F",
+          "Thank you."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B明确MayIhaveaglassofwater提出饮水请求；A/C问候告别，D递交物品，E回应感谢，F致谢，均未提出此请求。"
+    },
+    {
+      "number": 6,
+      "stem": "同学请你递一本书。你把书递给他，同时说“给你”。",
+      "options": [
+        [
+          "A",
+          "Good morning."
+        ],
+        [
+          "B",
+          "May I have a glass of water, please?"
+        ],
+        [
+          "C",
+          "See you tomorrow."
+        ],
+        [
+          "D",
+          "Here you are."
+        ],
+        [
+          "E",
+          "You are welcome."
+        ],
+        [
+          "F",
+          "Thank you."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "DHereyouare递交时用；B是自己索取饮水，A/C问候告别，E/F感谢往返，都不表达当前递物。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary4TextBridge-v0.1.json",
+    "sha256": "63507a2c4d7ccbc456ec07d8b8b98372f713a49512557a827ee41e7760cdd1aa"
+  },
+  "source_group_id": "primary4.xdf.upper.chinese_context",
+  "source_observation": {
+    "source_responses": 6,
+    "source_reuse_rule": "not_explicit_no_added_max_once",
+    "source_material": {
+      "Chinese_contexts": 6,
+      "shared_English_expressions": 6
+    },
+    "source_candidates": {
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 6
+    }
+  },
+  "student_passage": "共享英语表达：\n\nA. Good morning.\nB. May I have a glass of water, please?\nC. See you tomorrow.\nD. Here you are.\nE. You are welcome.\nF. Thank you.",
+  "author_answer_vector": [
+    "F",
+    "C",
+    "A",
+    "E",
+    "B",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 2,
+    "options_English_words_with_repeated_bank": 126,
+    "output_response_positions": 6,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 6,
+    "shared_expressions_words_once": 21,
+    "stem_total_characters_including_English_and_punctuation": 124,
+    "stem_Chinese_hanzi_count": 92
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "Chinese_context_count": 6,
+  "shared_English_expressions": [
+    [
+      "A",
+      "Good morning."
+    ],
+    [
+      "B",
+      "May I have a glass of water, please?"
+    ],
+    [
+      "C",
+      "See you tomorrow."
+    ],
+    [
+      "D",
+      "Here you are."
+    ],
+    [
+      "E",
+      "You are welcome."
+    ],
+    [
+      "F",
+      "Thank you."
+    ]
+  ],
+  "no_added_once_limit": true,
+  "context_roles_explicit": true,
+  "English_forms_not_semantic_open_marking": true,
+  "author_independent_prompt_order_trace": [
+    {
+      "new_response": 1,
+      "initial_author_prompt": 6
+    },
+    {
+      "new_response": 2,
+      "initial_author_prompt": 3
+    },
+    {
+      "new_response": 3,
+      "initial_author_prompt": 1
+    },
+    {
+      "new_response": 4,
+      "initial_author_prompt": 5
+    },
+    {
+      "new_response": 5,
+      "initial_author_prompt": 2
+    },
+    {
+      "new_response": 6,
+      "initial_author_prompt": 4
+    }
+  ]
+}

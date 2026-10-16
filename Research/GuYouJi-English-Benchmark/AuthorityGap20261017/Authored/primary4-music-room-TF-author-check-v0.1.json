@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "id": "primary4-music-room-TF",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "520920a10f672424f72f5cd366d979527fe8ddd366b4c75de86773079eed2e4c",
+  "canonical_response_block_sha256": "78f63e629b4de08e4985bbf2d8657acf3b25e2c0cf3172ac2a6c9df30938dda1",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The music room is on the second floor.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "首句后明示first floor，与second不同；F为楼层明确冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "There are two pianos in the music room.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "There are two pianos直述，T有明确数量支持。"
+    },
+    {
+      "number": 3,
+      "stem": "Lily plays a white piano.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "no white pianos且Lily playsblackpiano，F双处明确反证，不把未列白色当无。"
+    },
+    {
+      "number": 4,
+      "stem": "The writer sings beside Lily.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "I singbesideher且先行Lily，T明确人物与动作。"
+    },
+    {
+      "number": 5,
+      "stem": "The children have a music lesson on Friday.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "We do not have music lesson Friday且artthat afternoon直接反证F，不从teacherFriday推孩子也上音乐。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary4TextBridge-v0.1.json",
+    "sha256": "63507a2c4d7ccbc456ec07d8b8b98372f713a49512557a827ee41e7760cdd1aa"
+  },
+  "source_group_id": "primary4.xdf.lower.room_tf",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF",
+    "source_material": {
+      "passages": 1,
+      "responses": "binary_TF",
+      "source_text_match_F_vs_logical_F_at5": "defect_retained_notgold"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false,
+      "unique_shared_entries": null
+    }
+  },
+  "student_passage": "This is our music room. It is on the first floor. I go there on Tuesday afternoon with my friend Lily. There are two pianos in the room. One is black, and one is brown. There are no white pianos. Lily plays the black piano. I sing beside her. Our music teacher plays the brown piano on Friday. We do not have a music lesson on Friday. We have art that afternoon. I like singing with Lily.",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "F",
+    "T",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 77,
+    "stem_English_words": 34,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "This is our music room. It is on the first floor. I go there on Tuesday afternoon with my friend Lily. There are two pianos in the room. One is black, and one is brown. There are no white pianos. Lily plays the black piano. I sing beside her. Our music teacher plays the brown piano on Friday. We do not have a music lesson on Friday. We have art that afternoon. I like singing with Lily.",
+  "passage_count": 1,
+  "all_false_explicitly_contradicted_not_unknown": true,
+  "source_unknown_not_F_error_not_reproduced": true,
+  "no_media_required": true
+}

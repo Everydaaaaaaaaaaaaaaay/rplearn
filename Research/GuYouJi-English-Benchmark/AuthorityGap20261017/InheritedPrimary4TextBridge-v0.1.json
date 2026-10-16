@@ -1,0 +1,166 @@
+{
+  "version": "0.1",
+  "scope": "three_existing_textcomplete_historicalprimary4_modes",
+  "groups": [
+    {
+      "id": "primary4.xdf.lower.room_tf",
+      "level": "primary4",
+      "kind": "reading_tf",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary4-xdf-lower-undated-repost20261014.html",
+        "sha256": "0641eea0b4d28c3125aa2014a27017b5c689586314537db6272baa9881dcef67"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+        "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+      },
+      "source_acquisition_id": "primary4-xdf-lower-undated-repost20261014",
+      "responses": 5,
+      "question_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "physical_pages": [],
+      "material": {
+        "passages": 1,
+        "responses": "binary_TF",
+        "source_text_match_F_vs_logical_F_at5": "defect_retained_notgold"
+      },
+      "candidates": {
+        "per_response": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "shared_bank": false,
+        "unique_shared_entries": null
+      },
+      "reuse_rule": "independent_binary_TF",
+      "full_student_input": true,
+      "published_key": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "F"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "historicalHTMLrepost;institutionunverified;upper2012-13vsweb2021/lowerundated;missingimagegroupsnotused;TFFromabsencecounterexamplekept"
+    },
+    {
+      "id": "primary4.xdf.lower.bank",
+      "level": "primary4",
+      "kind": "shared_bank",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary4-xdf-lower-undated-repost20261014.html",
+        "sha256": "0641eea0b4d28c3125aa2014a27017b5c689586314537db6272baa9881dcef67"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+        "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+      },
+      "source_acquisition_id": "primary4-xdf-lower-undated-repost20261014",
+      "responses": 5,
+      "question_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "physical_pages": [],
+      "material": {
+        "independent_sentences": 5,
+        "shared_entries": 5,
+        "two_word_entry_present": true,
+        "printed_response": "candidate_serial_label_not_one_literal_word"
+      },
+      "candidates": {
+        "per_response": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "shared_bank": true,
+        "unique_shared_entries": 5
+      },
+      "reuse_rule": "not_explicit_no_added_max_once",
+      "full_student_input": true,
+      "published_key": [
+        "B",
+        "A",
+        "C",
+        "E",
+        "D"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "historicalHTMLrepost;institutionunverified;upper2012-13vsweb2021/lowerundated;missingimagegroupsnotused;TFFromabsencecounterexamplekept"
+    },
+    {
+      "id": "primary4.xdf.upper.chinese_context",
+      "level": "primary4",
+      "kind": "function_matching",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary4-xdf-upper2012-13-repost20261014.html",
+        "sha256": "073e49481eca8a792ba8caf78f5a5c46d24d7947aef5a7fca194a743ffc0e1d5"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade4/selected-repost-source-groups-v0.1.json",
+        "sha256": "067b08d66912d9ce34c22efcb1298e557724e79f3d3dc1feb101ff84261b8420"
+      },
+      "source_acquisition_id": "primary4-xdf-upper2012-13-repost20261014",
+      "responses": 6,
+      "question_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "physical_pages": [],
+      "material": {
+        "Chinese_contexts": 6,
+        "shared_English_expressions": 6
+      },
+      "candidates": {
+        "per_response": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "shared_bank": true,
+        "unique_shared_entries": 6
+      },
+      "reuse_rule": "not_explicit_no_added_max_once",
+      "full_student_input": true,
+      "published_key": [
+        "D",
+        "F",
+        "B",
+        "A",
+        "C",
+        "E"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "historicalHTMLrepost;institutionunverified;upper2012-13vsweb2021/lowerundated;missingimagegroupsnotused;TFFromabsencecounterexamplekept"
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0,
+  "not_current_national_grade4_or_schoolauthentication": true,
+  "source_problematic_logicalF_not_reproduced": true
+}

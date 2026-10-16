@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "id": "primary4-fruit-shop-TF",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "ee1b1208187d2f62e117d2f4632c85f59dfe18bb584a72ab4659972a5a28e689",
+  "canonical_response_block_sha256": "129ade73a5d412b2c3cbf7954cc5aacf27699488f3e9bef51eacde7320cbc225",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The fruit shop is near the bus stop.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "第二句nearbusstop直接支持T，不需要地图。"
+    },
+    {
+      "number": 2,
+      "stem": "The writer helps at the shop on Sunday morning.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "help onSaturdaymorning明示日子不同，F。"
+    },
+    {
+      "number": 3,
+      "stem": "The shop sells toys.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "sellfruit,nottoys明确否定，F非从只提fruit猜不卖其他。"
+    },
+    {
+      "number": 4,
+      "stem": "The apples are in blue boxes.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "uncleputsapples inblueboxes，T；bananas的longtable不借到苹果。"
+    },
+    {
+      "number": 5,
+      "stem": "The writer and the uncle eat the bread in front of the shop.",
+      "options": [
+        [
+          "T",
+          "T：相符"
+        ],
+        [
+          "F",
+          "F：不符"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "eat it inbackroom且do not eatinfront明确反证F。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary4TextBridge-v0.1.json",
+    "sha256": "63507a2c4d7ccbc456ec07d8b8b98372f713a49512557a827ee41e7760cdd1aa"
+  },
+  "source_group_id": "primary4.xdf.lower.room_tf",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_binary_TF",
+    "source_material": {
+      "passages": 1,
+      "responses": "binary_TF",
+      "source_text_match_F_vs_logical_F_at5": "defect_retained_notgold"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false,
+      "unique_shared_entries": null
+    }
+  },
+  "student_passage": "My uncle has a small fruit shop. It is near the bus stop. I help him on Saturday morning. There are red apples and yellow bananas in the shop. We sell fruit, not toys. My uncle puts the apples in blue boxes. I put the bananas on a long table. At ten, my aunt brings us some bread. We eat it in the back room. We do not eat in front of the shop. I go home before lunch.",
+  "author_answer_vector": [
+    "T",
+    "F",
+    "F",
+    "T",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 79,
+    "stem_English_words": 40,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "My uncle has a small fruit shop. It is near the bus stop. I help him on Saturday morning. There are red apples and yellow bananas in the shop. We sell fruit, not toys. My uncle puts the apples in blue boxes. I put the bananas on a long table. At ten, my aunt brings us some bread. We eat it in the back room. We do not eat in front of the shop. I go home before lunch.",
+  "passage_count": 1,
+  "all_false_explicitly_contradicted_not_unknown": true,
+  "source_unknown_not_F_error_not_reproduced": true,
+  "no_media_required": true
+}

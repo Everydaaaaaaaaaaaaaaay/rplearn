@@ -1,0 +1,311 @@
+{
+  "version": "0.1",
+  "id": "primary4-apology-play-functions",
+  "grade": "primary4",
+  "questions": 6,
+  "candidate_sha256": "e80fec09cf60dc037e40baa3b22fcdadfaa03a237179b42a327b6f25e0f90435",
+  "canonical_response_block_sha256": "8fbb37a9362c920932cd5819a8793931f2d069b9f02c76413af62471016de381",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "你不小心踩到同学的脚，主动说“对不起”。",
+      "options": [
+        [
+          "A",
+          "Welcome to our school."
+        ],
+        [
+          "B",
+          "Do not run in the classroom."
+        ],
+        [
+          "C",
+          "I am sorry."
+        ],
+        [
+          "D",
+          "Happy New Year!"
+        ],
+        [
+          "E",
+          "Let us play table tennis."
+        ],
+        [
+          "F",
+          "That is all right."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "I am sorry主动表达对自己踩到别人脚的歉意；That is all right是被道歉者回应。欢迎、提醒不跑、新年祝福或邀运动均不表达此道歉。"
+    },
+    {
+      "number": 2,
+      "stem": "外校同学第一次来参观，你代表学校说“欢迎来我们学校”。",
+      "options": [
+        [
+          "A",
+          "Welcome to our school."
+        ],
+        [
+          "B",
+          "Do not run in the classroom."
+        ],
+        [
+          "C",
+          "I am sorry."
+        ],
+        [
+          "D",
+          "Happy New Year!"
+        ],
+        [
+          "E",
+          "Let us play table tennis."
+        ],
+        [
+          "F",
+          "That is all right."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Welcome to our school明确欢迎来本校；其他项分别禁止奔跑、致歉、新年祝福、运动邀请或回应道歉，均不表达欢迎到校。"
+    },
+    {
+      "number": 3,
+      "stem": "同学为刚才不小心碰到你说了对不起，你回答“没关系”。",
+      "options": [
+        [
+          "A",
+          "Welcome to our school."
+        ],
+        [
+          "B",
+          "Do not run in the classroom."
+        ],
+        [
+          "C",
+          "I am sorry."
+        ],
+        [
+          "D",
+          "Happy New Year!"
+        ],
+        [
+          "E",
+          "Let us play table tennis."
+        ],
+        [
+          "F",
+          "That is all right."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "That is all right用于接受刚发生的道歉、表示没关系；I am sorry为道歉一方说的话，其余四项不表达接受道歉。"
+    },
+    {
+      "number": 4,
+      "stem": "同学在教室里奔跑，你提醒他“不要在教室里跑”。",
+      "options": [
+        [
+          "A",
+          "Welcome to our school."
+        ],
+        [
+          "B",
+          "Do not run in the classroom."
+        ],
+        [
+          "C",
+          "I am sorry."
+        ],
+        [
+          "D",
+          "Happy New Year!"
+        ],
+        [
+          "E",
+          "Let us play table tennis."
+        ],
+        [
+          "F",
+          "That is all right."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Do not run in the classroom明确提醒禁止在教室跑；欢迎到校、致歉、祝福、邀请及没关系都没有发出该禁止提醒。"
+    },
+    {
+      "number": 5,
+      "stem": "你想邀请朋友一起打乒乓球。",
+      "options": [
+        [
+          "A",
+          "Welcome to our school."
+        ],
+        [
+          "B",
+          "Do not run in the classroom."
+        ],
+        [
+          "C",
+          "I am sorry."
+        ],
+        [
+          "D",
+          "Happy New Year!"
+        ],
+        [
+          "E",
+          "Let us play table tennis."
+        ],
+        [
+          "F",
+          "That is all right."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "Let us play table tennis明确邀请共同打乒乓球；其余表达均未发出共同运动邀请。"
+    },
+    {
+      "number": 6,
+      "stem": "新年到来，你向家人说“新年快乐”。",
+      "options": [
+        [
+          "A",
+          "Welcome to our school."
+        ],
+        [
+          "B",
+          "Do not run in the classroom."
+        ],
+        [
+          "C",
+          "I am sorry."
+        ],
+        [
+          "D",
+          "Happy New Year!"
+        ],
+        [
+          "E",
+          "Let us play table tennis."
+        ],
+        [
+          "F",
+          "That is all right."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "Happy New Year明确新年祝福；欢迎到校、教室行为提醒、道歉、运动邀请和回应道歉均不是此祝福。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary4TextBridge-v0.1.json",
+    "sha256": "63507a2c4d7ccbc456ec07d8b8b98372f713a49512557a827ee41e7760cdd1aa"
+  },
+  "source_group_id": "primary4.xdf.upper.chinese_context",
+  "source_observation": {
+    "source_responses": 6,
+    "source_reuse_rule": "not_explicit_no_added_max_once",
+    "source_material": {
+      "Chinese_contexts": 6,
+      "shared_English_expressions": 6
+    },
+    "source_candidates": {
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 6
+    }
+  },
+  "student_passage": "共享英语表达：\n\nA. Welcome to our school.\nB. Do not run in the classroom.\nC. I am sorry.\nD. Happy New Year!\nE. Let us play table tennis.\nF. That is all right.",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "F",
+    "B",
+    "E",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 150,
+    "output_response_positions": 6,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 6,
+    "shared_expressions_words_once": 25,
+    "stem_total_characters_including_English_and_punctuation": 126,
+    "stem_Chinese_hanzi_count": 105
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "Chinese_context_count": 6,
+  "shared_English_expressions": [
+    [
+      "A",
+      "Welcome to our school."
+    ],
+    [
+      "B",
+      "Do not run in the classroom."
+    ],
+    [
+      "C",
+      "I am sorry."
+    ],
+    [
+      "D",
+      "Happy New Year!"
+    ],
+    [
+      "E",
+      "Let us play table tennis."
+    ],
+    [
+      "F",
+      "That is all right."
+    ]
+  ],
+  "no_added_once_limit": true,
+  "context_roles_explicit": true,
+  "English_forms_not_semantic_open_marking": true,
+  "pre_freeze_rejected_shared_expression": "ExcusemeandIamsorryoverlapinafterbumpingapology_removedExcuseme_replacedexplicitwelcomecontext",
+  "author_independent_prompt_order_trace": [
+    {
+      "new_response": 1,
+      "initial_author_prompt": 3
+    },
+    {
+      "new_response": 2,
+      "initial_author_prompt": 1
+    },
+    {
+      "new_response": 3,
+      "initial_author_prompt": 6
+    },
+    {
+      "new_response": 4,
+      "initial_author_prompt": 2
+    },
+    {
+      "new_response": 5,
+      "initial_author_prompt": 5
+    },
+    {
+      "new_response": 6,
+      "initial_author_prompt": 4
+    }
+  ]
+}

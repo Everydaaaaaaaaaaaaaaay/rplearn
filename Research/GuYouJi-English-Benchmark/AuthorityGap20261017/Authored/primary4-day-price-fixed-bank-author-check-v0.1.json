@@ -1,0 +1,256 @@
+{
+  "version": "0.1",
+  "id": "primary4-day-price-fixed-bank",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "47fca6761dc6e57ef4715132ee8a405fd069df7ac71ecf8de182968fda4d0503",
+  "canonical_response_block_sha256": "e45a9c8a34213b5141dd7c70e428cd1908d42d913bd3f84029f2a7c3a524eea9",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "I am ____. I want some water.",
+      "options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "How much"
+        ],
+        [
+          "C",
+          "thirsty"
+        ],
+        [
+          "D",
+          "buy"
+        ],
+        [
+          "E",
+          "between"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "thirsty口渴与wantwater对应；When/Howmuch为疑问表达，buy为动词，between缺两个参照物，不是本句am后口渴表语。"
+    },
+    {
+      "number": 2,
+      "stem": "Sue is in the middle. Ben is on her left and May is on her right. Sue is ____ Ben and May.",
+      "options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "How much"
+        ],
+        [
+          "C",
+          "thirsty"
+        ],
+        [
+          "D",
+          "buy"
+        ],
+        [
+          "E",
+          "between"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "左右两人+inmiddle明确between...and；When/Howmuch疑问形式，thirsty形容词、buy动词不能连接BenandMay构成中间位置。"
+    },
+    {
+      "number": 3,
+      "stem": "____ is the school show? It is on Friday.",
+      "options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "How much"
+        ],
+        [
+          "C",
+          "thirsty"
+        ],
+        [
+          "D",
+          "buy"
+        ],
+        [
+          "E",
+          "between"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "When问时间，onFriday作答；Howmuch问价格，thirsty形容词/buy动词/between介词不构成此问时间句。"
+    },
+    {
+      "number": 4,
+      "stem": "I want to ____ a new pencil. Here is my money.",
+      "options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "How much"
+        ],
+        [
+          "C",
+          "thirsty"
+        ],
+        [
+          "D",
+          "buy"
+        ],
+        [
+          "E",
+          "between"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "buy购买接pencil且有付款money；When/Howmuch不是to后原形动词，thirsty形容词，between介词不表达购买。"
+    },
+    {
+      "number": 5,
+      "stem": "____ is this ruler? It is two yuan.",
+      "options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "How much"
+        ],
+        [
+          "C",
+          "thirsty"
+        ],
+        [
+          "D",
+          "buy"
+        ],
+        [
+          "E",
+          "between"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Howmuch问价，与twoyuan对应；When问时间而非金额；thirsty/buy/between不能组成此问价结构。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary4TextBridge-v0.1.json",
+    "sha256": "63507a2c4d7ccbc456ec07d8b8b98372f713a49512557a827ee41e7760cdd1aa"
+  },
+  "source_group_id": "primary4.xdf.lower.bank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_max_once",
+    "source_material": {
+      "independent_sentences": 5,
+      "shared_entries": 5,
+      "two_word_entry_present": true,
+      "printed_response": "candidate_serial_label_not_one_literal_word"
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "共享词或短语：\n\nA. When\nB. How much\nC. thirsty\nD. buy\nE. between",
+  "author_answer_vector": [
+    "C",
+    "E",
+    "A",
+    "D",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 52,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5,
+    "shared_bank_words_once": 6,
+    "English_microcontext_words": 52
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "independent_sentence_count": 5,
+  "shared_bank": [
+    [
+      "A",
+      "When"
+    ],
+    [
+      "B",
+      "How much"
+    ],
+    [
+      "C",
+      "thirsty"
+    ],
+    [
+      "D",
+      "buy"
+    ],
+    [
+      "E",
+      "between"
+    ]
+  ],
+  "word_or_phrase_forms_fixed": true,
+  "two_word_entry_count": 1,
+  "no_added_once_limit": true,
+  "all5microcontexts_refilled": [
+    "I am thirsty. I want some water.",
+    "Sue is in the middle. Ben is on her left and May is on her right. Sue is between Ben and May.",
+    "When is the school show? It is on Friday.",
+    "I want to buy a new pencil. Here is my money.",
+    "How much is this ruler? It is two yuan."
+  ],
+  "author_independent_prompt_order_trace": [
+    {
+      "new_response": 1,
+      "initial_author_prompt": 3
+    },
+    {
+      "new_response": 2,
+      "initial_author_prompt": 5
+    },
+    {
+      "new_response": 3,
+      "initial_author_prompt": 1
+    },
+    {
+      "new_response": 4,
+      "initial_author_prompt": 4
+    },
+    {
+      "new_response": 5,
+      "initial_author_prompt": 2
+    }
+  ]
+}
