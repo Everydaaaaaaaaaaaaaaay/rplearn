@@ -1,0 +1,154 @@
+{
+  "version": "0.1",
+  "id": "primary4-wet-sports-day",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "79ed0ce3c80d5a4a9630b711a923d605455e53ab959c1ede144e8735c830a805",
+  "canonical_response_block_sha256": "a583ceb82de7336ad5fdf3b32b3b254d5fc75c02d5b269dd5be3fc85144a7eee",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Why will the pupils use the hall tomorrow?",
+      "options": [
+        [
+          "A",
+          "There are no teams."
+        ],
+        [
+          "B",
+          "The field is wet."
+        ],
+        [
+          "C",
+          "The hall is bigger than the field."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "首段明确field too wet；A有four teams；C不仅无据且hall太小不能跑赛。"
+    },
+    {
+      "number": 2,
+      "stem": "What is planned for next Friday if the field is dry?",
+      "options": [
+        [
+          "A",
+          "The running race."
+        ],
+        [
+          "B",
+          "A drawing class."
+        ],
+        [
+          "C",
+          "A ball sale."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "推迟的it指running race且附干燥条件；B/C未安排。"
+    },
+    {
+      "number": 3,
+      "stem": "How many pupils will play in the four teams altogether?",
+      "options": [
+        [
+          "A",
+          "Six."
+        ],
+        [
+          "B",
+          "Ten."
+        ],
+        [
+          "C",
+          "Twenty-four."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "four teams×six each=24；A单队数；B将4和6相加而非按每队相乘。"
+    },
+    {
+      "number": 4,
+      "stem": "What should pupils bring or wear?",
+      "options": [
+        [
+          "A",
+          "Their own balls."
+        ],
+        [
+          "B",
+          "Clean sports shoes."
+        ],
+        [
+          "C",
+          "Umbrellas inside the hall."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Wear clean sports shoes支持B；A学校提供球；C明确伞留场外。"
+    },
+    {
+      "number": 5,
+      "stem": "When should pupils arrive?",
+      "options": [
+        [
+          "A",
+          "At nine."
+        ],
+        [
+          "B",
+          "At quarter past nine."
+        ],
+        [
+          "C",
+          "At quarter to nine."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "At nine回答arrive；B为games begin；C未要求。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
+  },
+  "source_group_id": "p4.shijingshan2025.dialoguereading",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "per_item_independent_choices",
+    "source_material": {
+      "dialogue": 1,
+      "independently_instructed_subsection": "VII.C",
+      "all_five_questions_included": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "Amy: Are we having Sports Day outside tomorrow, Mr Green?\nMr Green: No. The field is too wet. We will use the sports hall instead.\nAmy: Can we still have the running race?\nMr Green: Not tomorrow. The hall is too small for that race. We will have it next Friday if the field is dry.\nAmy: What will we do in the hall?\nMr Green: Play team games with soft balls. There will be four teams. Each team will have six pupils.\nAmy: Do we need to bring balls?\nMr Green: No. The school has them. Wear clean sports shoes. Leave your umbrellas outside the hall so that the floor stays dry.\nAmy: When should we arrive?\nMr Green: At nine. The games begin at quarter past nine. Parents may watch from the seats beside the door.",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 138,
+    "stem_English_words": 39,
+    "options_English_words_with_repeated_bank": 48,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "source_key_defect_not_reproduced": "SourceVII.CQ1AandCarethe_sameperson;authoroptionsaredistinctreferents"
+}

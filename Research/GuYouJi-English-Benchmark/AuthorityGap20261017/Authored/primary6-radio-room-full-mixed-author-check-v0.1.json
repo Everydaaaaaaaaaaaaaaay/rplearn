@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-radio-room-full-mixed",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "fac9848d01549cba2b03bd07f2aa22c71813f79902fc63761736efda0fca5c63",
+  "canonical_response_block_sha256": "fad8234f8234ed8d759e9c4809c910b8a6f9e6aeec1c3df4be41bd3510be5bd2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The radio room is inside the library.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "首段明确next to music room且not inside library；T与明确地点否定相反。"
+    },
+    {
+      "number": 2,
+      "stem": "Pupils practise before the day of the programme.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "周三练习、周五节目，同周周三早于周五；F否认了该先后关系。"
+    },
+    {
+      "number": 3,
+      "stem": "The programme finishes with a song.",
+      "options": [
+        [
+          "T",
+          "与短文一致"
+        ],
+        [
+          "F",
+          "与短文不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "结尾读下周午餐菜单且No songs；T与两处明确说明矛盾。"
+    },
+    {
+      "number": 4,
+      "stem": "What helped Ben continue when he forgot a word?",
+      "options": [
+        [
+          "A",
+          "His next note."
+        ],
+        [
+          "B",
+          "A new lunch menu."
+        ],
+        [
+          "C",
+          "A song from the music room."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "末段looked at the next note and continued支持A；B菜单是节目环节未说救场；C明确不播放歌曲。"
+    },
+    {
+      "number": 5,
+      "stem": "Why did Ben want to speak more slowly?",
+      "options": [
+        [
+          "A",
+          "To add another story."
+        ],
+        [
+          "B",
+          "To help listeners hear every word."
+        ],
+        [
+          "C",
+          "To make the programme longer."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "末句easy to hear明确B；A未提增故事；C被did not want...longer直接否定。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.closedmixed",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage": 1,
+      "subgroups": [
+        {
+          "numbers": [
+            66,
+            67,
+            68
+          ],
+          "operation": "TF",
+          "options_each": 2
+        },
+        {
+          "numbers": [
+            69,
+            70
+          ],
+          "operation": "choice",
+          "options_each": 3
+        }
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "On Monday, our school opened a small radio room. It is next to the music room, not inside the library. Six pupils make a ten-minute programme every Friday. They practise on Wednesday, but no programme is played that day.\n\nThe first part of the programme is called School News. Pupils report things that have already happened at school. The second part is a short story. At the end, one pupil reads next week's lunch menu. No songs are played because the group wants more time for speaking.\n\nBen was nervous before the first programme. He put his notes on the desk in the order he needed them. When he forgot a word, he looked at the next note and continued. After the programme, his classmates said they could hear him clearly. Ben decided to practise speaking more slowly next time. He did not want to make the programme longer; he wanted every word to be easy to hear.",
+  "author_answer_vector": [
+    "F",
+    "T",
+    "F",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 159,
+    "stem_English_words": 38,
+    "options_English_words_with_repeated_bank": 28,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "subgroups": [
+    {
+      "response_numbers": [
+        1,
+        2,
+        3
+      ],
+      "operation": "TF",
+      "options_each": 2
+    },
+    {
+      "response_numbers": [
+        4,
+        5
+      ],
+      "operation": "choice",
+      "options_each": 3
+    }
+  ]
+}

@@ -147,6 +147,37 @@ def build_current(output):
         data['groups'][group['id']] = group
         cells[key] = {'grade': group['grade'], 'family': family, 'label': labels[family], 'observed': True,
                       'state': 'existing_complete_candidate_needs_review_UI', 'groupId': group['id']}
+    # Keep the inherited representative and every complete variant. A later draft
+    # must not silently replace the payload or answers of an earlier draft.
+    for cell in cells.values():
+        cell['groupIds'] = [cell['groupId']] if cell.get('groupId') else []
+    variant_index = json.loads(load_ref(plan['current_authority_variants']).read_text()) if plan.get('current_authority_variants') else {'candidates': []}
+    for meta in variant_index['candidates']:
+        group = full_markdown_candidate(meta)
+        group.update(instruction=meta['instruction'], sourceFormNotice=meta['source_form_notice'], title=meta['title'])
+        if meta.get('use_select_controls'):
+            group['fixedSharedBank'] = True
+        if group['id'] in data['groups']:
+            raise ValueError('Variant id collides with a frozen author')
+        key = (group['grade'], meta['family'])
+        labels[meta['family']] = meta['family_label']
+        cell = cells.setdefault(key, {'grade': group['grade'], 'family': meta['family'], 'label': meta['family_label'],
+                                     'observed': True, 'state': 'existing_complete_candidate_needs_review_UI',
+                                     'groupId': None, 'groupIds': []})
+        if cell['state'] == 'paused_requires_semantic_adjudication':
+            raise ValueError('A variant cannot bypass a paused whole-group contract')
+        cell['observed'] = True
+        cell['groupIds'].append(group['id'])
+        cell['groupId'] = cell['groupId'] or group['id']
+        data['groups'][group['id']] = group
+    if variant_index['candidates']:
+        data['variant_authored_index'] = plan['current_authority_variants']
+        labels['passage_form'] = labels.get('passage_form', '语篇语法/词形填空')
+        key = ('advanced', 'passage_form')
+        cells.setdefault(key, {'grade': 'advanced', 'family': 'passage_form', 'label': labels['passage_form'],
+                             'observed': True, 'state': 'source_observed_deterministic_admission_pending',
+                             'groupId': None, 'groupIds': [],
+                             'pauseReason': '已核完整给词构形源组，但合法词形与规范化尚未审准，暂不出题或自动判分。'})
     cet_index_path = BASE/'CET/selected-official-sample-groups-v0.1.json'
     data['existing_CET_source_index'] = ref(cet_index_path)
     for source in json.loads(cet_index_path.read_text())['groups']:
@@ -160,7 +191,9 @@ def build_current(output):
                      for level in data['grades'] for family, label in labels.items()]
     data['preview_cells'] = len(data['groups'])
     data['source_positive_cells'] = sum(c['observed'] for c in data['cells'])
-    data['source_form_representative_cells'] = len(data['groups'])
+    data['source_form_representative_cells'] = sum(bool(c.get('groupId')) for c in data['cells'])
+    data['multi_variant_cells'] = sum(len(c.get('groupIds', [])) > 1 for c in data['cells'])
+    data['three_variant_cells'] = sum(len(c.get('groupIds', [])) >= 3 for c in data['cells'])
     data['extra_authored_index'] = ref(additions_path)
     encoded = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     template = (BASE/'Tools/quality_review_template.html').read_text()
@@ -170,11 +203,14 @@ def build_current(output):
     (output/'index.html').write_text(page)
     report = {'version': '0.1', 'level_count': len(data['grades']), 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
               'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
-              'new_authored_groups': additions.get('current_run_new_authored_groups',additions['new_authored_groups']),
-              'new_authored_responses': additions.get('current_run_new_response_positions',additions['new_response_positions']),
+              'new_authored_groups': len(variant_index['candidates']) if variant_index['candidates'] else additions.get('current_run_new_authored_groups',additions['new_authored_groups']),
+              'new_authored_responses': sum(m['questions'] for m in variant_index['candidates']) if variant_index['candidates'] else additions.get('current_run_new_response_positions',additions['new_response_positions']),
+              'complete_level_type_cells': data['source_form_representative_cells'],
+              'multi_variant_cells': data['multi_variant_cells'], 'three_variant_cells': data['three_variant_cells'],
               'historical_nonmiddle_authors_newly_displayed': inherited_count,
               'latest_selected_source_groups': source_batch.get('new_selected_groups', 0),
               'latest_selected_source_parent_identities': source_batch.get('new_parent_identities', 0),
+              'authority_selected_source_index': plan.get('current_authority_sources'),
               'middle_source_totals_unchanged': True,
               'paused_complete_groups_with_open_legal_sets': len(holds['records']),
               'source_mode_and_age_calibration_not_established_for_unobserved_cells': True,

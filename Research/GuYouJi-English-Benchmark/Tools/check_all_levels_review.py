@@ -12,6 +12,7 @@ from grade_mode_evidence import BASE, REPO, load_ref
 from quality_review_contract import response_markdown
 from research_number_marking import correct_number
 from review_run_plan import resolve_plan
+from check_authority_variants import check as authority_variants
 
 
 def extract(page):
@@ -118,7 +119,12 @@ def check(page):
     assert len({c['label'] for c in data['cells']})==len({c['family'] for c in data['cells']}), 'Duplicate display family alias'
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
     assert not(set(c['family']for c in data['cells']) & set(policy['paused_families']))
-    assert {c['groupId']for c in data['cells']if c['groupId']}==set(data['groups'])
+    reachable = [ident for c in data['cells'] for ident in c.get('groupIds', [c['groupId']] if c['groupId'] else [])]
+    assert len(reachable)==len(set(reachable)) and set(reachable)==set(data['groups'])
+    for cell in data['cells']:
+        ids=cell.get('groupIds',[cell['groupId']] if cell['groupId'] else [])
+        assert (cell['groupId']==ids[0]) if ids else cell['groupId'] is None
+        assert all(data['groups'][ident]['grade']==cell['grade'] for ident in ids)
     if data.get('existing_CET_source_index'):
         cet=json.loads(load_ref(data['existing_CET_source_index']).read_text())
         for source in cet['groups']:
@@ -293,14 +299,17 @@ def check(page):
             assert not group['requiredPassageImages'] and group['sourceFormNotice']
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     checked_expansion_modes=expansion_modes(data,plan,additions)
+    variants=authority_variants(data,plan)
     return {'levels':level_count,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
             'payload_preservation_or_pinned_revision_passed':True,'pinned_author_revisions':len(revised),
             'specific_complete_groups_paused':len(held),
             'paused_responses':sum(r['responses']for r in held.values()),
             'no_subjective_or_partial_mixed_groups':True,
-            'new_authored_groups':additions.get('current_run_new_authored_groups',len(additions['candidates'])),
+            'new_authored_groups':variants['groups'] if plan.get('current_authority_variants') else additions.get('current_run_new_authored_groups',len(additions['candidates'])),
+            'inherited_expansion_authors_checked':checked_expansion_modes,
             'source_bound_expansion_modes_checked':checked_expansion_modes,
+            'authority_variants': variants,
             'middle_source_totals_unchanged':True,'simulated_primary5_source_warning_bound':True,
             'source_unknown_early_levels_not_filled_with_adult_text':True,'independent_student_commercial_production_admission':False}
 

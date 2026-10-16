@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "primary4-garden-note-cloze",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "cb1f401343ca086b8fa872bd2fa67ee71d9e261ffde07d1b0d1d75a5af53c458",
+  "canonical_response_block_sha256": "232410453d57ac4a1bbc56d02070dbabaff5f31c5ec232e2e0305a579ece7c42",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "noise"
+        ],
+        [
+          "B",
+          "sign"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B可写日期并立种子旁；A声音不能承载书写日期并放在土旁。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "happy"
+        ],
+        [
+          "B",
+          "hungry"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A承接期待种子出叶的感受；B饥饿与见叶惊喜无因果且无食物语境。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "sand"
+        ],
+        [
+          "B",
+          "water"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B是干土需浇的物；A沙子不提供缓解干燥所需水分。此为虚构种植日常，不给现实植物照护处方。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "before"
+        ],
+        [
+          "B",
+          "after"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "前句look first、touch second明确先看后触，所以A before。B after会把顺序颠倒，并非仅凭一般园艺常识定键。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "grown"
+        ],
+        [
+          "B",
+          "flown"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A为植物叶子增长，前文new leaves支持；B飞行不符合种在地里的该植物。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
+  },
+  "source_group_id": "p4.shijingshan2025.choicecloze",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "per_item_independent_choices",
+    "source_material": {
+      "passage": 1,
+      "gaps": 5,
+      "answered_examples": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  },
+  "student_passage": "Our class has a small garden behind the school. On Monday, we put seeds in the ground. We make a (1) ____ with the date on it and put it beside the seeds.\n\nOn Friday, we see a little green leaf. “It is here!” says Bo. We are very (2) ____. The ground is dry, so we give the plant some (3) ____. We do not step on it. We look first and touch second. We look at the plant (4) ____ we touch it. At the end of the month, we draw its new leaves in our books. Our pictures help us see how the plant has (5) ____.",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "B",
+    "A",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 100,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "answered_examples": 0,
+  "options_each": 2
+}

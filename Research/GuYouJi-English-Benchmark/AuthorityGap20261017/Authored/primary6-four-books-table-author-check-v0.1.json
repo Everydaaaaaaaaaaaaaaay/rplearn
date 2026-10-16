@@ -1,0 +1,171 @@
+{
+  "version": "0.1",
+  "id": "primary6-four-books-table",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "fc810ac81255babcb2bc37cd8f8e5f2ce9cd65dd4b4424ac16de28b7e5162f9e",
+  "canonical_response_block_sha256": "bf22664dda7a8db5baf0609de64895235da94d8c8ba668ef4a4d3ca97be83826",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Luca wants to make a model bridge. Which book should he choose?",
+      "options": [
+        [
+          "A",
+          "City Birds"
+        ],
+        [
+          "B",
+          "Puzzle Patrol"
+        ],
+        [
+          "C",
+          "Paper Worlds"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C逐步做纸房船桥；A认鸟不做桥；B是破案小说非做模型指南。"
+    },
+    {
+      "number": 2,
+      "stem": "Which book is a story about children finding something that is missing?",
+      "options": [
+        [
+          "A",
+          "Puzzle Patrol"
+        ],
+        [
+          "B",
+          "Kitchen Garden"
+        ],
+        [
+          "C",
+          "City Birds"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A六章寻找失钟的mystery；B种香草记生长；C认鸟指南不叙事失物。"
+    },
+    {
+      "number": 3,
+      "stem": "Which of these books has the most pages?",
+      "options": [
+        [
+          "A",
+          "City Birds"
+        ],
+        [
+          "B",
+          "Paper Worlds"
+        ],
+        [
+          "C",
+          "Kitchen Garden"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "候选三者48/40/56页，C56最大。注意本题限定these，不误选全表64页的Puzzle Patrol（不在选项）。"
+    },
+    {
+      "number": 4,
+      "stem": "On Tuesday, how much do City Birds and Paper Worlds cost together, including one delivery fee?",
+      "options": [
+        [
+          "A",
+          "18 yuan."
+        ],
+        [
+          "B",
+          "22 yuan."
+        ],
+        [
+          "C",
+          "26 yuan."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "半价20/2+16/2=18，再一单配送4，总22为B。A漏配送；C多算一次配送4。"
+    },
+    {
+      "number": 5,
+      "stem": "How can pupils place an order according to this table?",
+      "options": [
+        [
+          "A",
+          "Telephone the bird park."
+        ],
+        [
+          "B",
+          "Visit the school bell room."
+        ],
+        [
+          "C",
+          "Use the stated shop website."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "页脚明确网站且not telephone，C；A电话被否定，B故事地点不是订购点。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.booktable",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "table": 1,
+      "book_columns": 4,
+      "cover_images": 4,
+      "pricing_and_discount_footer_required": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "### Books for our class reading corner\n\n![四本原创虚构图书封面A至D](primary6-four-book-covers.svg)\n\n| Book | A: City Birds | B: Puzzle Patrol | C: Paper Worlds | D: Kitchen Garden |\n| --- | --- | --- | --- | --- |\n| About | Learn to recognise common birds in a city park. Includes clear drawings. | Two children solve a mystery about a missing school bell. A story in six chapters. | Make paper models of houses, boats and bridges. Pictures show every step. | Grow herbs in small pots. Includes a weekly record page for your plants. |\n| Pages | 48 | 64 | 40 | 56 |\n| Usual price | 20 yuan | 24 yuan | 16 yuan | 28 yuan |\n\n**Tuesday offer:** All four titles are half price on Tuesday. On other days, pay the usual price. Delivery costs 4 yuan per order, whatever the number of books. These prices are for this fictional classroom shop only. Order from **classbooks.example** (a fictional address), not by telephone.\n",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "C",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 132,
+    "stem_English_words": 58,
+    "options_English_words_with_repeated_bank": 35,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "visual_panel_semantics": [
+    "City Birds",
+    "Puzzle Patrol",
+    "Paper Worlds",
+    "Kitchen Garden"
+  ],
+  "book_columns": 4,
+  "pricing_and_discount_footer_required": true,
+  "table_includes_all_cells": true,
+  "fictional_address_not_live_service": true,
+  "figure_asset": {
+    "path": "AuthorityGap20261017/Authored/primary6-four-book-covers.svg",
+    "sha256": "483e76b45f1f3f7a56a6b275c666e5d188665db1941385d0a1a5bd6689465063"
+  },
+  "required_visual_panels": 4,
+  "svg_is_original": true,
+  "remote_media_dependencies": false
+}

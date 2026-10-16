@@ -1,0 +1,268 @@
+{
+  "version": "0.1",
+  "id": "primary6-six-scene-statements",
+  "grade": "primary6",
+  "questions": 6,
+  "candidate_sha256": "9f6b96bafb6151336ec7f303edc27814d6ad1b7f7d6f8dc91f5a48b4776cfa3c",
+  "canonical_response_block_sha256": "f3c6612d268a3b72ed268145c9d6f961fc721611ef8297caee523cea3d8c8de6",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "This sign tells people not to ride a bicycle here.",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ],
+        [
+          "F",
+          "图F"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F自行车图加红斜杠是禁止骑车；A棋、B浇水、C地图、D时钟、E狗不是禁行符号。"
+    },
+    {
+      "number": 2,
+      "stem": "The museum is north of the library.",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ],
+        [
+          "F",
+          "图F"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C带N向上箭头，museum在library上方，故北；A/B动作、D时钟、E狗、F禁骑不含此方位。"
+    },
+    {
+      "number": 3,
+      "stem": "The dog is under the chair.",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ],
+        [
+          "F",
+          "图F"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E狗位于座面下、椅腿间；A棋、B植物、C楼图、D时钟、F标志均不含狗与椅关系。"
+    },
+    {
+      "number": 4,
+      "stem": "The clock shows a quarter past nine.",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ],
+        [
+          "F",
+          "图F"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D分针指3、时针刚过9，对应9:15；A/B活动、C地图、E宠物、F禁行无钟点。"
+    },
+    {
+      "number": 5,
+      "stem": "Two people are playing chess.",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ],
+        [
+          "F",
+          "图F"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A棋盘棋子且两人对坐；B浇植物不是棋，C/D/E/F分别地图钟狗标志。"
+    },
+    {
+      "number": 6,
+      "stem": "A person is watering a plant.",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ],
+        [
+          "F",
+          "图F"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B水壶水滴向盆栽；A为对弈，C地图、D钟、E椅下狗、F禁止骑行。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p6.dongcheng2025.sentencepictures",
+  "source_observation": {
+    "source_responses": 6,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "picture_candidates": 6,
+      "sentence_stems": 6
+    },
+    "source_candidates": {
+      "shared_images": 6,
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    }
+  },
+  "student_passage": "![六幅候选情境图，标为A至F](primary6-six-shared-scenes.svg)",
+  "author_answer_vector": [
+    "F",
+    "C",
+    "E",
+    "D",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 7,
+    "stem_English_words": 41,
+    "options_English_words_with_repeated_bank": 36,
+    "output_response_positions": 6,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "visual_panel_semantics": [
+    "two people playing chess",
+    "watering plant",
+    "museum north of library",
+    "9:15 analog clock",
+    "dog under chair",
+    "no cycling sign"
+  ],
+  "shared_visual_components_with_other_originals": [
+    "chess",
+    "watering plant"
+  ],
+  "not_independent_visual_family_claim": true,
+  "figure_asset": {
+    "path": "AuthorityGap20261017/Authored/primary6-six-shared-scenes.svg",
+    "sha256": "5099ed3e9f8f31b6cbf03c7fd44b61b05a45c106b54283070b4d130a4343c00b"
+  },
+  "required_visual_panels": 6,
+  "svg_is_original": true,
+  "remote_media_dependencies": false,
+  "visual_review_correction": "8x8chessboard_withking_andpawn_not_generic_checkers;violin_has_waist_neck_strings_bow_at_shoulder"
+}

@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "id": "primary5-aquarium-trip-dialogue",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "8514829b4d30c65e29accec52a5f291cae038f0fc587d52858d65ca8a4634c2a",
+  "canonical_response_block_sha256": "c9adf28d924c0e1f6a6f1075af00700b4f251261fdb9e90023a4e7136f74dc3b",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Who is coming with you?"
+        ],
+        [
+          "B",
+          "How are you getting there?"
+        ],
+        [
+          "C",
+          "What are you going to see?"
+        ],
+        [
+          "D",
+          "What time will you leave?"
+        ],
+        [
+          "E",
+          "Where are you going on Sunday?"
+        ],
+        [
+          "F",
+          "Why did you stay at home?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E问周日目的地，答aquarium。A人物/B交通/C观看对象/D出发时间/F过去居家原因都不能引出To+目的地的完整答。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Who is coming with you?"
+        ],
+        [
+          "B",
+          "How are you getting there?"
+        ],
+        [
+          "C",
+          "What are you going to see?"
+        ],
+        [
+          "D",
+          "What time will you leave?"
+        ],
+        [
+          "E",
+          "Where are you going on Sunday?"
+        ],
+        [
+          "F",
+          "Why did you stay at home?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A问同伴，答cousins及姓名。B交通/C对象/D时间/E地点/F原因均不是人物问。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Who is coming with you?"
+        ],
+        [
+          "B",
+          "How are you getting there?"
+        ],
+        [
+          "C",
+          "What are you going to see?"
+        ],
+        [
+          "D",
+          "What time will you leave?"
+        ],
+        [
+          "E",
+          "Where are you going on Sunday?"
+        ],
+        [
+          "F",
+          "Why did you stay at home?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B问交通，By underground直接回答；A人物/C所看/D何时/E目的地/F过去原因不合。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Who is coming with you?"
+        ],
+        [
+          "B",
+          "How are you getting there?"
+        ],
+        [
+          "C",
+          "What are you going to see?"
+        ],
+        [
+          "D",
+          "What time will you leave?"
+        ],
+        [
+          "E",
+          "Where are you going on Sunday?"
+        ],
+        [
+          "F",
+          "Why did you stay at home?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D问出发时间，At half past eight作答；A人物/B交通/C对象/E地点/F原因不合该钟点。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Who is coming with you?"
+        ],
+        [
+          "B",
+          "How are you getting there?"
+        ],
+        [
+          "C",
+          "What are you going to see?"
+        ],
+        [
+          "D",
+          "What time will you leave?"
+        ],
+        [
+          "E",
+          "Where are you going on Sunday?"
+        ],
+        [
+          "F",
+          "Why did you stay at home?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C问将看什么，答sharks/sea turtles；A问谁一起不应将动物当同伴，B交通/D出发时间/E地点/F居家原因皆不符。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p5.taizhou2025.dialoguebank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage_or_dialogue": 1,
+      "separate_repeated_instruction_marks_whole_group": true
+    },
+    "source_candidates": {
+      "shared_entries": 6,
+      "unused_entries": 1,
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    }
+  },
+  "student_passage": "Sam: (1) ____\nJill: To the new aquarium beside the river.\nSam: (2) ____\nJill: My cousins, Emma and Jack. They like sea animals too.\nSam: (3) ____\nJill: By underground. The Blue Line stops near the door.\nSam: (4) ____\nJill: At half past eight. The journey takes about thirty minutes.\nSam: (5) ____\nJill: Sharks and sea turtles. We want to watch the animals, but we won't touch them.\n\n共享句子：\nA. Who is coming with you?\nB. How are you getting there?\nC. What are you going to see?\nD. What time will you leave?\nE. Where are you going on Sunday?\nF. Why did you stay at home?",
+  "author_answer_vector": [
+    "E",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 100,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 165,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "shared_bank": [
+    [
+      "A",
+      "Who is coming with you?"
+    ],
+    [
+      "B",
+      "How are you getting there?"
+    ],
+    [
+      "C",
+      "What are you going to see?"
+    ],
+    [
+      "D",
+      "What time will you leave?"
+    ],
+    [
+      "E",
+      "Where are you going on Sunday?"
+    ],
+    [
+      "F",
+      "Why did you stay at home?"
+    ]
+  ],
+  "unused_bank_labels": [
+    "F"
+  ]
+}

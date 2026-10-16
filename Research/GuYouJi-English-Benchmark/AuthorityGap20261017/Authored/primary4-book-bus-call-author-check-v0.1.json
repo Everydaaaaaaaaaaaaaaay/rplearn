@@ -1,0 +1,154 @@
+{
+  "version": "0.1",
+  "id": "primary4-book-bus-call",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "610aba2089e369f35747e7105b8426dd4b8918c6937cf868039b336a17b89814",
+  "canonical_response_block_sha256": "3df1807d9c393956259beef00e57008787e3144d9e243f556e2b6118a9cb61fb",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Who is Nora talking to?",
+      "options": [
+        [
+          "A",
+          "Her music teacher."
+        ],
+        [
+          "B",
+          "Her father."
+        ],
+        [
+          "C",
+          "A bus driver."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Dad自称接她且Nora称Dad；A/C虽是场景可能人物均未加入对话。"
+    },
+    {
+      "number": 2,
+      "stem": "When will Nora leave school today?",
+      "options": [
+        [
+          "A",
+          "At four."
+        ],
+        [
+          "B",
+          "At five."
+        ],
+        [
+          "C",
+          "At half past four."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Nora请父亲四点半来接；A是平常音乐课结束；B从未约定。"
+    },
+    {
+      "number": 3,
+      "stem": "What must Nora take to borrow a book?",
+      "options": [
+        [
+          "A",
+          "Her school card."
+        ],
+        [
+          "B",
+          "A ticket for tomorrow."
+        ],
+        [
+          "C",
+          "Money for a new book."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "must bring school cards明确A；B不存在预约车票；C明确not selling故不收买书款。"
+    },
+    {
+      "number": 4,
+      "stem": "Where will Dad wait?",
+      "options": [
+        [
+          "A",
+          "Beside the book bus."
+        ],
+        [
+          "B",
+          "At the school gate."
+        ],
+        [
+          "C",
+          "Inside the music room."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "末句明确at gate/not beside bus；A被否定；C无约定。"
+    },
+    {
+      "number": 5,
+      "stem": "Which pupils can visit the bus today?",
+      "options": [
+        [
+          "A",
+          "All the classes."
+        ],
+        [
+          "B",
+          "Only pupils with a music book."
+        ],
+        [
+          "C",
+          "Nora’s class."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Only our class明确C；A其他班明天；B把music lesson误成借书资格。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
+  },
+  "source_group_id": "p4.shijingshan2025.dialoguereading",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "per_item_independent_choices",
+    "source_material": {
+      "dialogue": 1,
+      "independently_instructed_subsection": "VII.C",
+      "all_five_questions_included": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "Nora: Hello, Dad. This is Nora. Can you collect me at the school gate today?\nDad: Yes. Your music lesson usually ends at four. Shall I come then?\nNora: Not today. A book bus is coming to school after the lesson. I want to choose a book, so please come at half past four.\nDad: All right. Is the bus selling books?\nNora: No. We can borrow one book for a week. We must bring our school cards.\nDad: Your card is in the small pocket of your bag.\nNora: Yes, I have it. The bus will be beside the playground. Only our class is visiting it today; other classes will go tomorrow.\nDad: Fine. I'll wait at the gate, not beside the bus.\nNora: Thank you. See you there.",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 130,
+    "stem_English_words": 30,
+    "options_English_words_with_repeated_bank": 51,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "source_key_defect_not_reproduced": "SourceVII.CQ1AandCarethe_sameperson;authoroptionsaredistinctreferents"
+}

@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "primary4-library-sign-cloze",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "aa6571651bdd4adc7dc37d92131a7be52c5830f2bca517f6bf17aed44a6723f7",
+  "canonical_response_block_sha256": "3b4d87ac5d0431bbd845890c20d3f55a5dae6133ebb6ec1117c335f0646d5966",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "books"
+        ],
+        [
+          "B",
+          "boots"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A为图书馆可读之物；B靴子不可read，后文亦有book。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "quietly"
+        ],
+        [
+          "B",
+          "quick"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A为方式副词且对应Please be quiet；B形容词不能作本句speak的方式修饰，也不表安静。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "with"
+        ],
+        [
+          "B",
+          "under"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A表示共同读，与sit together一致；B under you表示在你下面，不能表达共同阅读。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "dirty"
+        ],
+        [
+          "B",
+          "clean"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B对应借用公共图书保持整洁的关照；A与so引出的爱护行为矛盾。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "shelf"
+        ],
+        [
+          "B",
+          "shoe"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A图书放回书架供他人找；B鞋子不是此处图书归还位置。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
+  },
+  "source_group_id": "p4.shijingshan2025.choicecloze",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "per_item_independent_choices",
+    "source_material": {
+      "passage": 1,
+      "gaps": 5,
+      "answered_examples": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  },
+  "student_passage": "Eva goes to a new library with her brother. They want to read some (1) ____. At the door, they see a sign: “Please be quiet.” They speak very (2) ____.\n\nEva finds a book about birds. Her brother likes it too. “Can I read it (3) ____ you?” he asks. They sit together and look at the pictures. The book is not theirs, so they keep it (4) ____. Before they go home, they put it back on the right (5) ____. Then another child can find it.",
+  "author_answer_vector": [
+    "A",
+    "A",
+    "A",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 79,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "answered_examples": 0,
+  "options_each": 2
+}

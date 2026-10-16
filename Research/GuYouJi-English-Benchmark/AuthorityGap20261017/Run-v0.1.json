@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "status": "first_authority_and_source_batch_verified_continue_sources_and_multi_originals",
+  "status": "first18authors_and_multivariant_review_verified_continue_targeted_gaps_and3originals",
   "owner_authorized_on": "2026-10-17",
   "timezone": "Asia/Shanghai",
   "hard_deadline_local": "2026-10-17T12:00:00+08:00",
@@ -18,8 +18,8 @@
     "sha256": "2cd1204efaa6ad2846ee84c9ed90d4c353ad97b9eaf0c1137c8f64ec26050ecb"
   },
   "selected_source_modes": {
-    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
-    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
   },
   "baseline_coverage": {
     "path": "Expansion20261016/Coverage-v0.1.json",
@@ -27,7 +27,7 @@
   },
   "active_review_run": {
     "path": "FirstRelease/ActiveReviewRun.json",
-    "sha256": "2e8e1ad1a254a9952e8d996cc74edad9221810a43c3651cd995c5b64fb23fe71"
+    "sha256": "6ce2a0ec12ab34041cfddef3f730471ce6ee8f7852180d06e445ae501684ae53"
   },
   "baseline_complete_groups": 76,
   "baseline_responses": 505,
@@ -41,18 +41,18 @@
     "fill confirmed eligible types before more variants;then at least3whole originalsperleveltype wherepossible",
     "multi-variant page,whole-input/key/behaviorchecks,versionedfreeze,incrementalarchive,focusedcommit,deliverby12anddeleteautomation"
   ],
-  "new_selected_source_groups": 15,
-  "new_source_responses": 93,
-  "new_authored_groups": 0,
-  "page_version_still_prior76": true,
+  "new_selected_source_groups": 17,
+  "new_source_responses": 103,
+  "new_authored_groups": 18,
+  "page_version_still_prior76": false,
   "required_outputs_pending": [
-    "authoring_expansion",
-    "multi_variant_review_page",
+    "target_remaining_source_gaps_prioritized",
+    "expand_original_variants_toward3perconfirmedtype",
     "final_delivery_report_and_manifest"
   ],
   "do_not_recover_subjective_or_kindergarten": true,
   "current_cache": "build/english-benchmark-authority-20261017",
-  "last_completed_step": "authority_visual_review_and15_complete_source_modes",
+  "last_completed_step": "18completeauthors106responses;10newtypecells;94/611multivariantpage;17sourcegroups103responses;realbrowser18checks",
   "followup_notes": [
     "p3Dongchengwebtitle saysrealbutstudentheader says样卷andregionnotinbody;do_not_countasordinarytrueexam",
     "Kunshan21636201explicitlyadaptedtolatesttextbook;notoriginalexam",
@@ -60,7 +60,11 @@
     "CET2016questionpapers/transcripts/keysalreadyonhand,originalaudiomissing;notnosource",
     "p4Fangshanmixedreading54—59includesopen59;wholegrouppaused,no5MCextractupgrade",
     "p5old8gap3choicepatternstillsimulationonly;new5/6banksnotcorroboration",
-    "C1Part3fullstemadmissibilitypendingbeforeauthoring;Part7paragraphinsertionnotmiddlesentencegap"
+    "C1Part3fullstemadmissibilitypendingbeforeauthoring;Part7paragraphinsertionnotmiddlesentencegap",
+    "ShijingshanVII.Ccomplete5MCsourcehasQ1equivalentA/Coptions;formreferenceonly;newauthorsdonotrepeatdefect",
+    "primary4choiceclozeandreadingchoiceeach3originals;primary5sharedbankanddialogueeach3;othercellsmostly1",
+    "advancedPart7sourceonlyprintsoneextra;removedunprintedmax-onceinstruction;all6slotsindependentlycounterchecked",
+    "twooldwebLogNamesaccidentallyreused_restoredfromverifiedarchive;newlogsnowfollowupWebversioned;noUniqueLoss"
   ],
   "teacher_student_commercial_production_unverified": true,
   "storage_policy": {
@@ -76,7 +80,7 @@
     "sha256": "86a76e523960ca7ed8f9bc6539f4ce1530060d6f3ea27fa2cd548dcdea3f1ca7"
   },
   "inherits_content_scope_not_old_automation_metadata": true,
-  "minimum_new_groups_for3target_if_all_source_modes_admitted": 179,
+  "minimum_new_groups_for3target_if_all_source_modes_admitted": 167,
   "registered_first_batch": {
     "processing_run_id": "authority17-map-and15-targeted-source-modes-v0.1",
     "raw_acquisitions": 14,
@@ -88,14 +92,47 @@
   },
   "latest_study": {
     "path": "Studies/2026-10-17-authority-first-type-map-and-targeted-source-gaps.md",
-    "sha256": "f24985c21f4679c84392a69772455298b28f775bf4898b2b3fdf5503096c9295"
+    "sha256": "6b602f6790578816368f23f791e4ebea9167766817a52b17480b236764690620"
   },
   "latest_incremental_archive": {
-    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.1.json",
-    "sha256": "621aaaa37207532e9521dafbd2332eca87d9b60008f78b47c094dbd4749617bd"
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.2.json",
+    "sha256": "9703c92075f6405d6829669303ffd3c05afaed7e9fe55594edd6a1adcca1589a"
   },
   "authority_layer_check": {
     "path": "build/english-benchmark-authority-20261017/authority-layer-check-v0.1.json",
     "sha256": "d0263d6e8952d6febddfa302650bbb275895afc2ce6bbda13ac97dcf5b7574fb"
+  },
+  "new_authored_responses": 106,
+  "current_preview_groups": 94,
+  "current_preview_responses": 611,
+  "current_complete_level_type_cells": 86,
+  "current_three_original_cells": 4,
+  "current_review_plan": {
+    "path": "AuthorityGap20261017/ReviewPlan-v0.1.json",
+    "sha256": "d14835a48880a62a4cf1df70e899f06d888303dfeff420ef3f8b6718e2e343d7"
+  },
+  "current_authored_index": {
+    "path": "AuthorityGap20261017/AuthoredIndex-v0.1.json",
+    "sha256": "3fa232fbc6a12c9589adae740323214c34314494e58834d6be6abe9d43e3b67e"
+  },
+  "current_original_coverage_target": {
+    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.2.json",
+    "sha256": "3cfbd8b7cbe99bce6abb5ca51f29dd586d335ff9555d5a0958a06a7ffe792cf0"
+  },
+  "latest_source_followup": {
+    "path": "AuthorityGap20261017/SourceFollowup-v0.1.json",
+    "sha256": "58f5c9fc848228d9468a7b3610768e4bfa06a3c80d136d0a7c119e7b4ecfc876"
+  },
+  "latest_controls": {
+    "path": "build/english-benchmark-authority-20261017/author18-controls-and-families-v0.1.json",
+    "sha256": "4475e46d543c806d95dcc697e6516129f280bc98661fcfe1f401e7b33ae2350d"
+  },
+  "latest_browser_review": {
+    "path": "build/english-benchmark-authority-20261017/browser18-behavior-v0.1.json",
+    "sha256": "10b8e9b9556b5e8801ac03e364546a2369a49ef5bc765776cb690e83d09fb37e"
+  },
+  "latest_review_check": {
+    "path": "build/english-benchmark-authority-20261017/review94-check-v0.3.json",
+    "sha256": "8364bab66bd450ff4f01950af797c758c254f17e2fee9e4a18cb1d53d38edfa5"
   }
 }

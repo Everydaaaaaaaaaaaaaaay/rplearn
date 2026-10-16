@@ -1,0 +1,154 @@
+{
+  "version": "0.1",
+  "id": "primary4-pet-room-plan",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "e50f4d68a7f5faa26d28ed8051769bf441b2dce03bc015f4bc5bbd15bd551b25",
+  "canonical_response_block_sha256": "8e7522aa69ad53027a4031309ea769ee9ac611d1176c2b85d9ad4c7ec1fcd320",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Why can’t Toby come on Saturday?",
+      "options": [
+        [
+          "A",
+          "He is visiting his grandparents."
+        ],
+        [
+          "B",
+          "He has lost the room key."
+        ],
+        [
+          "C",
+          "He is cleaning the cupboard."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Toby明说看祖父母；B钥匙本就由老师保管非丢失；C橱柜是食物地点非冲突安排。"
+    },
+    {
+      "number": 2,
+      "stem": "What should Toby check first on Sunday?",
+      "options": [
+        [
+          "A",
+          "The lunch box."
+        ],
+        [
+          "B",
+          "The water bowl."
+        ],
+        [
+          "C",
+          "The shelf."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Ella明确check water bowl first；A不能喂个人午餐；C是昨日食物处不再是当前优先事项。"
+    },
+    {
+      "number": 3,
+      "stem": "Where is the rabbit food now?",
+      "options": [
+        [
+          "A",
+          "On the shelf."
+        ],
+        [
+          "B",
+          "In Toby’s bag."
+        ],
+        [
+          "C",
+          "In the cupboard."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "has put in cupboard支持C；A为昨天位置；B未给。"
+    },
+    {
+      "number": 4,
+      "stem": "Who will open the room?",
+      "options": [
+        [
+          "A",
+          "Ella’s brother."
+        ],
+        [
+          "B",
+          "Miss Lin."
+        ],
+        [
+          "C",
+          "Toby’s grandfather."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "She回指Miss Lin且will open；A小弟未准来；C祖父未参与。"
+    },
+    {
+      "number": 5,
+      "stem": "What must Toby do before bringing his brother?",
+      "options": [
+        [
+          "A",
+          "Ask Miss Lin."
+        ],
+        [
+          "B",
+          "Give him his lunch."
+        ],
+        [
+          "C",
+          "Move the rabbit outside."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "ask...first明确A；B错把午餐当许可条件；C并未提出且无必要。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
+  },
+  "source_group_id": "p4.shijingshan2025.dialoguereading",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "per_item_independent_choices",
+    "source_material": {
+      "dialogue": 1,
+      "independently_instructed_subsection": "VII.C",
+      "all_five_questions_included": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "student_passage": "Ella: We need to look after the class rabbit this weekend. Can you come on Saturday, Toby?\nToby: I can't. I'm visiting my grandparents that day. I can come on Sunday morning.\nElla: Good. I'll give it food and clean water on Saturday. On Sunday, please check the water bowl first.\nToby: Is the bag of rabbit food on the shelf?\nElla: It was there yesterday. Miss Lin has put it in the cupboard beside the door. Please use that food, not your lunch.\nToby: I understand. Who has the room key?\nElla: Miss Lin. She will open the room at nine on both days.\nToby: I'll meet her then. Can my little brother come?\nElla: Ask Miss Lin first. We can't invite visitors without asking her.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 127,
+    "stem_English_words": 32,
+    "options_English_words_with_repeated_bank": 50,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "source_key_defect_not_reproduced": "SourceVII.CQ1AandCarethe_sameperson;authoroptionsaredistinctreferents"
+}

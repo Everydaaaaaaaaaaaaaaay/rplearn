@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "id": "primary5-drawing-workshop-dialogue",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "f9202b137ad427c25691a92fcfa3f500a49eba5335ee3c820b902343358c4ea7",
+  "canonical_response_block_sha256": "f4679fac091d617e9e20f4e608dfcd689e4f99bc34d212bf6a046be08a373631",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "What time does it start?"
+        ],
+        [
+          "B",
+          "Can I borrow one here?"
+        ],
+        [
+          "C",
+          "How much is a ticket?"
+        ],
+        [
+          "D",
+          "Where shall we meet?"
+        ],
+        [
+          "E",
+          "What should I bring?"
+        ],
+        [
+          "F",
+          "Did you enjoy the film?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A问开始时间，答At ten。B借铅笔应答yes/no；C问价应答金额；D问见面地点；E问携带物；F问过去电影感受，均不引出十点开始。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "What time does it start?"
+        ],
+        [
+          "B",
+          "Can I borrow one here?"
+        ],
+        [
+          "C",
+          "How much is a ticket?"
+        ],
+        [
+          "D",
+          "Where shall we meet?"
+        ],
+        [
+          "E",
+          "What should I bring?"
+        ],
+        [
+          "F",
+          "Did you enjoy the film?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C问费用，Nothing/free回答零费用。A时间、D地点、E物品、B借物许可、F过去感受不对应价格答复。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "What time does it start?"
+        ],
+        [
+          "B",
+          "Can I borrow one here?"
+        ],
+        [
+          "C",
+          "How much is a ticket?"
+        ],
+        [
+          "D",
+          "Where shall we meet?"
+        ],
+        [
+          "E",
+          "What should I bring?"
+        ],
+        [
+          "F",
+          "Did you enjoy the film?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E问应带物，答Bring pencil。A时间、B许可、C费用、D会面地、F过去感受都不引出携带清单。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "What time does it start?"
+        ],
+        [
+          "B",
+          "Can I borrow one here?"
+        ],
+        [
+          "C",
+          "How much is a ticket?"
+        ],
+        [
+          "D",
+          "Where shall we meet?"
+        ],
+        [
+          "E",
+          "What should I bring?"
+        ],
+        [
+          "F",
+          "Did you enjoy the film?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B中one回指pencil且答Yes/centre has pencils说明可借。A/C/D/E皆为信息问句非此Yes许可答复；F虽yes/no却是过去电影，与pencils不合。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "What time does it start?"
+        ],
+        [
+          "B",
+          "Can I borrow one here?"
+        ],
+        [
+          "C",
+          "How much is a ticket?"
+        ],
+        [
+          "D",
+          "Where shall we meet?"
+        ],
+        [
+          "E",
+          "What should I bring?"
+        ],
+        [
+          "F",
+          "Did you enjoy the film?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D问会面地且答front door附时间。A只问活动开始时间，答句front door首要位置与已知start time不合；B借物/C票价/E物品/F电影均不合会面答复。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p5.taizhou2025.dialoguebank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage_or_dialogue": 1,
+      "separate_repeated_instruction_marks_whole_group": true
+    },
+    "source_candidates": {
+      "shared_entries": 6,
+      "unused_entries": 1,
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    }
+  },
+  "student_passage": "Mia: There is a drawing workshop at the art centre tomorrow. Let's go together.\nLeo: Good idea. (1) ____\nMia: At ten in the morning. It finishes at eleven.\nLeo: (2) ____\nMia: Nothing. It's free for pupils.\nLeo: (3) ____\nMia: Bring your own pencil. Paper is provided.\nLeo: I can't find my pencil. (4) ____\nMia: Yes. The centre has pencils for visitors to use during the workshop.\nLeo: (5) ____\nMia: At the centre's front door, five minutes before it starts.\n\n共享句子：\nA. What time does it start?\nB. Can I borrow one here?\nC. How much is a ticket?\nD. Where shall we meet?\nE. What should I bring?\nF. Did you enjoy the film?",
+  "author_answer_vector": [
+    "A",
+    "C",
+    "E",
+    "B",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 108,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 140,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "shared_bank": [
+    [
+      "A",
+      "What time does it start?"
+    ],
+    [
+      "B",
+      "Can I borrow one here?"
+    ],
+    [
+      "C",
+      "How much is a ticket?"
+    ],
+    [
+      "D",
+      "Where shall we meet?"
+    ],
+    [
+      "E",
+      "What should I bring?"
+    ],
+    [
+      "F",
+      "Did you enjoy the film?"
+    ]
+  ],
+  "unused_bank_labels": [
+    "F"
+  ]
+}

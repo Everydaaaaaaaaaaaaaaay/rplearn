@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "id": "primary5-aunt-school-phrase-bank",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "93d60eb13ac5c5bddbccc3cd0374d998e218ac52bbc322adcec69203e5e3772b",
+  "canonical_response_block_sha256": "bf41093ec74673c8ea9e3903a08024b7b369165b012f69ea614c7b330594e109",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "in the morning"
+        ],
+        [
+          "B",
+          "by bus"
+        ],
+        [
+          "C",
+          "in front of"
+        ],
+        [
+          "D",
+          "after school"
+        ],
+        [
+          "E",
+          "on foot"
+        ],
+        [
+          "F",
+          "at night"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B由pointing to the number 8 bus明确交通，且No回答是否步行。E on foot与No矛盾；A/D/F均表时间，不回答所问交通方式且不对应指车动作；C缺参照物。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "in the morning"
+        ],
+        [
+          "B",
+          "by bus"
+        ],
+        [
+          "C",
+          "in front of"
+        ],
+        [
+          "D",
+          "after school"
+        ],
+        [
+          "E",
+          "on foot"
+        ],
+        [
+          "F",
+          "at night"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A in the morning与not in the evening构成同一钟点的早晚对照。B by bus/E on foot是交通，lessons不能以这种方式开始；C in front of须有名词参照；D after school与课在放学之后才开始矛盾；F at night与题面的日常八点早课语境及not evening冲突。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "in the morning"
+        ],
+        [
+          "B",
+          "by bus"
+        ],
+        [
+          "C",
+          "in front of"
+        ],
+        [
+          "D",
+          "after school"
+        ],
+        [
+          "E",
+          "on foot"
+        ],
+        [
+          "F",
+          "at night"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C树在办公楼前，与下一句楼在树后完全对应；A/B/D/E/F均不能引出the office building作这一空间关系。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "in the morning"
+        ],
+        [
+          "B",
+          "by bus"
+        ],
+        [
+          "C",
+          "in front of"
+        ],
+        [
+          "D",
+          "after school"
+        ],
+        [
+          "E",
+          "on foot"
+        ],
+        [
+          "F",
+          "at night"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D由all lessons have finished明确放学后；A早晨与四点末课后矛盾；F夜间与六点回家之前的club不符；B/E是交通，不是此处俱乐部时间；C缺参照物。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "in the morning"
+        ],
+        [
+          "B",
+          "by bus"
+        ],
+        [
+          "C",
+          "in front of"
+        ],
+        [
+          "D",
+          "after school"
+        ],
+        [
+          "E",
+          "on foot"
+        ],
+        [
+          "F",
+          "at night"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F at night与during the day构成明确昼夜对照。A in the morning与work during the day冲突；D after school只表课后不能对应完整夜间且她先在club，未立即睡觉；B by bus/E on foot是交通，sleep on foot无此睡眠方式，sleep by bus也不构成正常搭配；C缺参照物。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p5.taizhou2025.phrasebank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage_or_dialogue": 1,
+      "separate_repeated_instruction_marks_whole_group": true
+    },
+    "source_candidates": {
+      "shared_entries": 6,
+      "unused_entries": 1,
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    }
+  },
+  "student_passage": "My aunt lives far from her school. “Do you walk to work?” I ask. “No, I go (1) ____,” she says, pointing to the number 8 bus. Her lessons begin at eight (2) ____, not in the evening. At the school gate, there is a large tree (3) ____ the office building. The building is behind the tree.\n\nMy aunt finishes her last lesson at four. She stays for the painting club (4) ____, when all lessons have finished. At six, her friend drives her home. She has dinner, reads a book and goes to bed. She sleeps (5) ____ and works during the day.\n\n词库：A. in the morning　B. by bus　C. in front of　D. after school　E. on foot　F. at night（有一项不用）",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "D",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 114,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 70,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "shared_bank": [
+    [
+      "A",
+      "in the morning"
+    ],
+    [
+      "B",
+      "by bus"
+    ],
+    [
+      "C",
+      "in front of"
+    ],
+    [
+      "D",
+      "after school"
+    ],
+    [
+      "E",
+      "on foot"
+    ],
+    [
+      "F",
+      "at night"
+    ]
+  ],
+  "unused_bank_labels": [
+    "E"
+  ]
+}

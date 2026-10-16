@@ -1,0 +1,244 @@
+{
+  "version": "0.1",
+  "id": "primary5-shop-fixed-bank",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "723ba4bea14f245b50effe2544248717e4c331f72e3d46c7fd5a62473529fa6f",
+  "canonical_response_block_sha256": "d49a87e0011f6415d43265afbdc258895eff34a66fd7086ffc35cc5e1d8c0dd3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "quiet"
+        ],
+        [
+          "B",
+          "loudly"
+        ],
+        [
+          "C",
+          "open"
+        ],
+        [
+          "D",
+          "carefully"
+        ],
+        [
+          "E",
+          "empty"
+        ],
+        [
+          "F",
+          "late"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C open是可接shop的此处开门营业动词。A quiet、E empty作动词虽可见于别义，但quiet the shop/empty the shop不等开门，且nine后customers arrive的流程支持开门；B/D/F为副词不能独立作此谓语。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "quiet"
+        ],
+        [
+          "B",
+          "loudly"
+        ],
+        [
+          "C",
+          "open"
+        ],
+        [
+          "D",
+          "carefully"
+        ],
+        [
+          "E",
+          "empty"
+        ],
+        [
+          "F",
+          "late"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E empty与nothing on it同义。A quiet描述声音不说明物件为零；B slowly/D carefully/F late均不描述空架；C open描述开闭而非数量。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "quiet"
+        ],
+        [
+          "B",
+          "loudly"
+        ],
+        [
+          "C",
+          "open"
+        ],
+        [
+          "D",
+          "carefully"
+        ],
+        [
+          "E",
+          "empty"
+        ],
+        [
+          "F",
+          "late"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D carefully表达仔细查裂缝。B loudly指发声响亮，目视检查碗裂缝没有发声行为；F late表迟到而不是检查方式且未有延迟情境；A quiet、C open、E empty不作此处方式副词。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "quiet"
+        ],
+        [
+          "B",
+          "loudly"
+        ],
+        [
+          "C",
+          "open"
+        ],
+        [
+          "D",
+          "carefully"
+        ],
+        [
+          "E",
+          "empty"
+        ],
+        [
+          "F",
+          "late"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F late与always arrive before nine及never构成守时说明；A quiet、C open、E empty不表迟到；B slowly、D carefully是方式副词，不作are后的迟到评价。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "quiet"
+        ],
+        [
+          "B",
+          "loudly"
+        ],
+        [
+          "C",
+          "open"
+        ],
+        [
+          "D",
+          "carefully"
+        ],
+        [
+          "E",
+          "empty"
+        ],
+        [
+          "F",
+          "late"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A quiet由no customers和hear clock提供安静场景。E empty会过度说明整店全空，父女仍在店里且有货；C open不说明可听时钟的安静；B/D/F不作此处描述声音的表语。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.1.json",
+    "sha256": "378d105ab72a3c9477be172d3aea26a60f9f7e1a4cba9a06b4a0a86313e9fbae"
+  },
+  "source_group_id": "p5.taizhou2025.storybank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passage_or_dialogue": 1,
+      "separate_repeated_instruction_marks_whole_group": true
+    },
+    "source_candidates": {
+      "shared_entries": 6,
+      "unused_entries": 1,
+      "per_response": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    }
+  },
+  "student_passage": "On Saturday, Nia helps her father at a small shop. They (1) ____ the shop at nine. Before customers arrive, Nia puts paper bags on the shelf. The shelf is (2) ____ at first, with nothing on it.\n\nA customer buys a glass bowl. Nia checks the bowl (3) ____ for cracks before she puts it down. She puts it in a bag and places the bag on the counter. Her father is happy: “You are never (4) ____ for work. You always arrive before nine.” At noon, there are no customers. There is no music and no one is talking. The shop is very (5) ____. Nia and her father can hear the clock. They eat lunch together.\n\n词库：A. quiet　B. loudly　C. open　D. carefully　E. empty　F. late（有一项不用）",
+  "author_answer_vector": [
+    "C",
+    "E",
+    "D",
+    "F",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 121,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "shared_bank": [
+    [
+      "A",
+      "quiet"
+    ],
+    [
+      "B",
+      "loudly"
+    ],
+    [
+      "C",
+      "open"
+    ],
+    [
+      "D",
+      "carefully"
+    ],
+    [
+      "E",
+      "empty"
+    ],
+    [
+      "F",
+      "late"
+    ]
+  ],
+  "unused_bank_labels": [
+    "B"
+  ],
+  "rejected_draft_overlap": "slowly/carefully both possible in movement/checking slots; final bank uses loudly and explicit quiet/end context"
+}

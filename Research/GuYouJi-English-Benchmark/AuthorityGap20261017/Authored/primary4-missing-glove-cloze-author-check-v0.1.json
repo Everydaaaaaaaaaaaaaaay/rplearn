@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "primary4-missing-glove-cloze",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "52316c40a79cb1642d018175020c28d5284c3af13f49031b0baf0fc79000f8c4",
+  "canonical_response_block_sha256": "827d8518f3af279055d63af87c8a52ecdf678f6ecfb32d76aab025e543e8ffff",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "right"
+        ],
+        [
+          "B",
+          "left"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A与left已戴手套的手相对；B会把同一左手同时说暖和冷，与but对照矛盾。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "you"
+        ],
+        [
+          "B",
+          "yours"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B为独立物主代词，问是否你的手套；A人称you不能指示这只手套归属。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "home"
+        ],
+        [
+          "B",
+          "yesterday"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A take...home表示带回家；B过去时间与do not一般现在时叙事所需地点不合。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "ask"
+        ],
+        [
+          "B",
+          "sleep"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A ask for表示来找回失物；B sleep for后需时长，不表寻找手套。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "sky"
+        ],
+        [
+          "B",
+          "bag"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B与放在lunch box旁相容；A天空不可能是他此前放手套和饭盒的容器。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.2.json",
+    "sha256": "5d582ddde791f226b369cea39d6570e4a2fc67bc7f49e3527e9a83f28ed72667"
+  },
+  "source_group_id": "p4.shijingshan2025.choicecloze",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "per_item_independent_choices",
+    "source_material": {
+      "passage": 1,
+      "gaps": 5,
+      "answered_examples": 0
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  },
+  "student_passage": "After the game, Finn cannot find one of his gloves. His left hand is warm, but his (1) ____ hand is cold. He looks under the seat. There is no glove there.\n\nHis friend May sees a red glove near the gate. “Is this (2) ____?” she asks. Finn looks at it and says, “No. Mine is blue.” They do not take the red glove (3) ____. They give it to their teacher. The teacher puts it in the lost-property box. Later, a girl comes to (4) ____ for it. She is pleased to get it back. Finn keeps looking and finds his own glove in his (5) ____. He had put it beside his lunch box.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "A",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 108,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 10,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection"
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "answered_examples": 0,
+  "options_each": 2
+}
