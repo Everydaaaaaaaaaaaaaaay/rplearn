@@ -11,6 +11,7 @@ from pathlib import Path
 from grade_mode_evidence import BASE, REPO, load_ref
 from quality_review_contract import response_markdown
 from research_number_marking import correct_number
+from review_run_plan import resolve_plan
 
 
 def extract(page):
@@ -41,7 +42,7 @@ def pinned_revision(prior,current,record):
 
 def check(page):
     data=extract(page);policy=json.loads(load_ref(data['current_scope_policy']).read_text())
-    plan=json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
+    _,plan=resolve_plan(data.get('active_run_plan','FirstRelease/AllLevelsObjectiveRun-2026-10-16.json'))
     revisions=json.loads(load_ref(plan['current_authored_revisions']).read_text())['records'] if plan.get('current_authored_revisions') else []
     revised={r['id']:r for r in revisions}
     assert len(revised)==len(revisions)
@@ -62,8 +63,12 @@ def check(page):
                     assert key in revised,'Unregistered full input changed: '+key
                     pinned_revision(value,data['groups'][key],revised[key])
         return True
-    assert len(data['grades'])==len(set(data['grades']))==16
-    assert len(data['cells'])==16*len(set(c['family']for c in data['cells']))
+    level_count=len(policy['product_levels'])
+    aliases={**{'junior'+str(i):i+6 for i in range(1,4)},**{'senior'+str(i):i+9 for i in range(1,4)}}
+    assert data['grades']==[aliases.get(r['id'],r['id']) for r in policy['product_levels']]
+    assert len(data['grades'])==len(set(data['grades']))==level_count
+    assert not(set(data['grades']) & set(policy.get('excluded_levels',[])))
+    assert len(data['cells'])==level_count*len(set(c['family']for c in data['cells']))
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
     assert not(set(c['family']for c in data['cells']) & set(policy['paused_families']))
     assert {c['groupId']for c in data['cells']if c['groupId']}==set(data['groups'])
@@ -240,7 +245,7 @@ def check(page):
             assert source['source_key_not_independent_gold'] and not source['school_exam_authentication']
             assert not group['requiredPassageImages'] and group['sourceFormNotice']
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
-    return {'levels':16,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
+    return {'levels':level_count,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
             'payload_preservation_or_pinned_revision_passed':True,'pinned_author_revisions':len(revised),
             'specific_complete_groups_paused':len(held),

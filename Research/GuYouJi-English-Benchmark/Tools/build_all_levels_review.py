@@ -12,6 +12,7 @@ from pathlib import Path
 from build_quality_review import build, full_markdown_candidate
 from grade_mode_evidence import BASE, REPO, load_ref
 from showcase_rich_reading import material_view
+from review_run_plan import resolve_plan
 
 
 def ref(path):
@@ -70,13 +71,15 @@ def main(output):
     build(BASE/'FirstRelease/timeboxed-review-matrix-v0.9.json', output)
     page = (output/'index.html').read_text()
     data = json.loads(re.search(r'<script id="quality-data" type="application/json">(.*?)</script>', page, re.S)[1])
-    policy_path = BASE/'FirstRelease/CurrentTaskScope-all-levels-2026-10-16.json'
+    plan_path,plan=resolve_plan()
+    policy_path = load_ref(plan['current_scope_policy'])
     policy = json.loads(policy_path.read_text())
     aliases = {**{'junior'+str(i): i+6 for i in range(1, 4)}, **{'senior'+str(i): i+9 for i in range(1, 4)}}
     data['grades'] = [aliases.get(row['id'], row['id']) for row in policy['product_levels']]
     data['levelLabels'] = {str(aliases.get(row['id'], row['id'])): row['label'] for row in policy['product_levels']}
     data['current_scope_policy'] = ref(policy_path)
-    data['scope'] = 'all16_objective_review_partial_coverage'
+    data['active_run_plan'] = str(plan_path.relative_to(BASE))
+    data['scope'] = 'active_product_levels_objective_review_partial_coverage'
     acquisitions = {a['id']: a for a in json.loads((BASE/'Registry/acquisitions.json').read_text())['acquisitions']}
     paths = ['Primary/Grade3/authored-candidate-index-v0.1.json', 'Primary/Grade4/authored-candidate-index-v0.1.json',
              'Primary/Grade5/authored-candidate-index-v0.1.json', 'Primary/Grade6/authored-candidate-index-v0.1.json',
@@ -91,7 +94,6 @@ def main(output):
                       'reading_choice' if 'choice' in kind or 'four_options' in kind else
                       'dialogue_matching' if kind in ['five_shared_response_matching', 'five_gaps_five_sentences_or_clause'] else 'shared_bank')
             group = inherited(meta, acquisitions, family); added.append((group, family)); inherited_count += 1
-    plan = json.loads((BASE/'FirstRelease/AllLevelsObjectiveRun-2026-10-16.json').read_text())
     holds = json.loads(load_ref(plan['current_concrete_group_holds']).read_text()) if plan.get('current_concrete_group_holds') else {'records': []}
     for hold in holds['records']:
         group = data['groups'].pop(hold['id'])
@@ -160,7 +162,7 @@ def main(output):
     template = re.sub(r'<thead><tr><th scope="col">题型</th>.*?</tr></thead>', '<thead><tr>'+header+'</tr></thead>', template)
     page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE/'Tools/quality_review_interactions.js').read_text())
     (output/'index.html').write_text(page)
-    report = {'version': '0.1', 'level_count': 16, 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
+    report = {'version': '0.1', 'level_count': len(data['grades']), 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
               'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
               'new_authored_groups': additions['new_authored_groups'], 'new_authored_responses': additions['new_response_positions'],
               'historical_nonmiddle_authors_newly_displayed': inherited_count,
