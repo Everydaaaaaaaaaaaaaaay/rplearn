@@ -1,0 +1,326 @@
+{
+  "version": "0.1",
+  "id": "advanced-kwt-timing",
+  "grade": "advanced",
+  "questions": 6,
+  "candidate_sha256": "c80d5dcd5a76e121c660ab088ce802f9232a0845b79e3673d4995546fa583bb8",
+  "source_binding": "advancedkwt6sample2022",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.2.json",
+    "sha256": "99313a736ff22c0f524eebf26f9bc0737b76ee4f3f824a043158abda3b103623"
+  },
+  "source_group_id": "advanced.c1.sample1.keywordtransformation",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1句（关键词HARDLY，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "hardly ever forgets",
+        "hardly ever fails to remember"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "HARDLY",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "hardly never forgets"
+        ]
+      },
+      "rationale": "hardly ever表达几乎从不，fails to remember在此同义于forgets。"
+    },
+    {
+      "number": 2,
+      "stem": "第2句（关键词POINT，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "was on the point of boarding"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "POINT",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "was on the point to board"
+        ]
+      },
+      "rationale": "be on the point of doing表示正要发生，六词上限保持。"
+    },
+    {
+      "number": 3,
+      "stem": "第3句（关键词WHETHER，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "whether the replacement part arrives"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "WHETHER",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "whether the replacement part will arrives"
+        ]
+      },
+      "rationale": "whether...or not将两种条件均不能周五完成显明；不加入额外假设结果。"
+    },
+    {
+      "number": 4,
+      "stem": "第4句（关键词ALLOW，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "would not allow anyone to change",
+        "did not allow anyone to change"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "ALLOW",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "would not allow anyone changing"
+        ]
+      },
+      "rationale": "would not保留过去拒绝；did not allow以不给许可转述拒绝，均6词，allow后宾语+to不定式。"
+    },
+    {
+      "number": 5,
+      "stem": "第5句（关键词INTENT，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "were intent on finishing",
+        "were intent upon finishing",
+        "were intent on completing",
+        "were intent upon completing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "INTENT",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "were intent to finishing"
+        ]
+      },
+      "rationale": "intent on/upon doing表达坚定打算，finish/complete在壁画语境同义，四参考均允许。"
+    },
+    {
+      "number": 6,
+      "stem": "第6句（关键词PROSPECT，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "little prospect of the road reopening"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "PROSPECT",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "no prospect of the road reopening"
+        ]
+      },
+      "rationale": "little prospect of +名词主语+动名词表示重新开放可能性低，六词；没有把unlikely说成完全无可能。"
+    }
+  ],
+  "canonical_response_block_sha256": "9e87742daf858aa8faf5dc4f361e29a20e787d07a14b35736cf115eb9e96e24d",
+  "student_passage": "### 示例0（已解）\n\nMira was unable to attend because she was ill.\n\n关键词：PREVENTED\n\nMira ____ because she was ill.\n\n填入：WAS PREVENTED FROM ATTENDING（4词）\n\n### 1\n\nNora almost never forgets a customer's name.\n\n关键词：HARDLY\n\nNora ____ a customer's name.\n\n### 2\n\nRavi was about to board the train when his phone rang.\n\n关键词：POINT\n\nRavi ____ the train when his phone rang.\n\n### 3\n\nEven if the replacement part arrives today, we cannot finish by Friday.\n\n关键词：WHETHER\n\nWe cannot finish by Friday, ____ today or not.\n\n### 4\n\nThe editor refused to let anyone change the final paragraph.\n\n关键词：ALLOW\n\nThe editor ____ the final paragraph.\n\n### 5\n\nThe volunteers were determined to finish the mural before the hall reopened.\n\n关键词：INTENT\n\nThe volunteers ____ the mural before the hall reopened.\n\n### 6\n\nIt is unlikely that the road will reopen before Monday.\n\n关键词：PROSPECT\n\nThere is ____ before Monday.",
+  "author_answer_vector": [
+    [
+      "hardly ever forgets",
+      "hardly ever fails to remember"
+    ],
+    [
+      "was on the point of boarding"
+    ],
+    [
+      "whether the replacement part arrives"
+    ],
+    [
+      "would not allow anyone to change",
+      "did not allow anyone to change"
+    ],
+    [
+      "were intent on finishing",
+      "were intent upon finishing",
+      "were intent on completing",
+      "were intent upon completing"
+    ],
+    [
+      "little prospect of the road reopening"
+    ]
+  ],
+  "keyword_transformation": true,
+  "worked_examples": 1,
+  "worked_example_count": 4,
+  "transformation_rows": [
+    {
+      "number": 1,
+      "lead_in": "Nora almost never forgets a customer's name.",
+      "keyword": "HARDLY",
+      "target_frame": "Nora ____ a customer's name.",
+      "accepted_full_sentences": [
+        "Nora hardly ever forgets a customer's name.",
+        "Nora hardly ever fails to remember a customer's name."
+      ],
+      "word_counts": [
+        3,
+        5
+      ],
+      "reference_scoring_segments": [
+        "hardly ever",
+        "forgets"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "hardly ever表达几乎从不，fails to remember在此同义于forgets。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 2,
+      "lead_in": "Ravi was about to board the train when his phone rang.",
+      "keyword": "POINT",
+      "target_frame": "Ravi ____ the train when his phone rang.",
+      "accepted_full_sentences": [
+        "Ravi was on the point of boarding the train when his phone rang."
+      ],
+      "word_counts": [
+        6
+      ],
+      "reference_scoring_segments": [
+        "was on the point of",
+        "boarding"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "be on the point of doing表示正要发生，六词上限保持。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 3,
+      "lead_in": "Even if the replacement part arrives today, we cannot finish by Friday.",
+      "keyword": "WHETHER",
+      "target_frame": "We cannot finish by Friday, ____ today or not.",
+      "accepted_full_sentences": [
+        "We cannot finish by Friday, whether the replacement part arrives today or not."
+      ],
+      "word_counts": [
+        5
+      ],
+      "reference_scoring_segments": [
+        "whether",
+        "the replacement part arrives"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "whether...or not将两种条件均不能周五完成显明；不加入额外假设结果。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 4,
+      "lead_in": "The editor refused to let anyone change the final paragraph.",
+      "keyword": "ALLOW",
+      "target_frame": "The editor ____ the final paragraph.",
+      "accepted_full_sentences": [
+        "The editor would not allow anyone to change the final paragraph.",
+        "The editor did not allow anyone to change the final paragraph."
+      ],
+      "word_counts": [
+        6,
+        6
+      ],
+      "reference_scoring_segments": [
+        "would not allow",
+        "anyone to change"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "would not保留过去拒绝；did not allow以不给许可转述拒绝，均6词，allow后宾语+to不定式。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 5,
+      "lead_in": "The volunteers were determined to finish the mural before the hall reopened.",
+      "keyword": "INTENT",
+      "target_frame": "The volunteers ____ the mural before the hall reopened.",
+      "accepted_full_sentences": [
+        "The volunteers were intent on finishing the mural before the hall reopened.",
+        "The volunteers were intent upon finishing the mural before the hall reopened.",
+        "The volunteers were intent on completing the mural before the hall reopened.",
+        "The volunteers were intent upon completing the mural before the hall reopened."
+      ],
+      "word_counts": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "reference_scoring_segments": [
+        "were intent on",
+        "finishing"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "intent on/upon doing表达坚定打算，finish/complete在壁画语境同义，四参考均允许。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 6,
+      "lead_in": "It is unlikely that the road will reopen before Monday.",
+      "keyword": "PROSPECT",
+      "target_frame": "There is ____ before Monday.",
+      "accepted_full_sentences": [
+        "There is little prospect of the road reopening before Monday."
+      ],
+      "word_counts": [
+        6
+      ],
+      "reference_scoring_segments": [
+        "little prospect of",
+        "the road reopening"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "little prospect of +名词主语+动名词表示重新开放可能性低，六词；没有把unlikely说成完全无可能。",
+      "unlisted_forms_not_exhausted": true
+    }
+  ],
+  "full_response_variant_combinations": 16,
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 123,
+    "stem_English_words": 6,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 6,
+    "source_sentence_words": 62,
+    "target_sentence_words_without_gap": 36,
+    "keyword_prompt_words": 6,
+    "accepted_output_words_range": [
+      30,
+      32
+    ]
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_level_equivalence_established": false
+}

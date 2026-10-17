@@ -1,0 +1,346 @@
+{
+  "version": "0.1",
+  "id": "advanced-kwt-decisions",
+  "grade": "advanced",
+  "questions": 6,
+  "candidate_sha256": "5883197391b5c6b3c3dc2b161200002e671b580ad728ba5367ecae161a0fabb2",
+  "source_binding": "advancedkwt6sample2022",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.2.json",
+    "sha256": "99313a736ff22c0f524eebf26f9bc0737b76ee4f3f824a043158abda3b103623"
+  },
+  "source_group_id": "advanced.c1.sample1.keywordtransformation",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1句（关键词UNTIL，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "until the ferry had left",
+        "until the ferry left"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "UNTIL",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "until had the ferry left"
+        ]
+      },
+      "rationale": "Not until时间从句后主句倒装；两种过去时表达均保留离港后才察觉的顺序。"
+    },
+    {
+      "number": 2,
+      "stem": "第2句（关键词CAME，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "came as no surprise to",
+        "came as absolutely no surprise to",
+        "came as no surprise whatsoever to"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "CAME",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "came as a surprise to"
+        ]
+      },
+      "rationale": "come as no surprise to表达完全不惊讶；绝对否定加强语absolutely/whatsoever不改变核心意思，三个参考均在词限内。"
+    },
+    {
+      "number": 3,
+      "stem": "第3句（关键词ACCOUNT，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "no account may you reproduce",
+        "no account can you reproduce",
+        "no account are you to reproduce"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "ACCOUNT",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "no account you may reproduce"
+        ]
+      },
+      "rationale": "On no account置首触发倒装；may/can在此表许可，are you to表达禁止规范。should强度是否等同未核，不自动判错。"
+    },
+    {
+      "number": 4,
+      "stem": "第4句（关键词REGRET，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "regret not having checked",
+        "regret not checking",
+        "regret having failed to check",
+        "regret failing to check"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "REGRET",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "regret to have checked"
+        ]
+      },
+      "rationale": "regret doing表示对既往的遗憾；否定checking或肯定failed均保留未检查这一事实，四种形式不人为限三种。"
+    },
+    {
+      "number": 5,
+      "stem": "第5句（关键词AGAINST，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "decided against cancelling",
+        "decided against canceling",
+        "decided against the cancellation of"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "AGAINST",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "decided against to cancel"
+        ]
+      },
+      "rationale": "decide against doing或against the cancellation of均表达最终不取消；英美cancel双写变体同等接受。"
+    },
+    {
+      "number": 6,
+      "stem": "第6句（关键词RATHER，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "would rather you did not discuss"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "RATHER",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "would rather you do not discuss"
+        ]
+      },
+      "rationale": "would rather加他人主语、过去式表当前/将来偏好；六词全形符合上限。未列didn’t形式计词待复核，未采用手册禁缩写。"
+    }
+  ],
+  "canonical_response_block_sha256": "5d6b0bd3c88eda7785c3bdaf00998fd150374823be4d969875d048ebda990280",
+  "student_passage": "### 示例0（已解）\n\nMira was unable to attend because she was ill.\n\n关键词：PREVENTED\n\nMira ____ because she was ill.\n\n填入：WAS PREVENTED FROM ATTENDING（4词）\n\n### 1\n\nIt was only when the ferry had left that Lea realised she was at the wrong port.\n\n关键词：UNTIL\n\nNot ____ did Lea realise she was at the wrong port.\n\n### 2\n\nThe curator was not at all surprised by the delay.\n\n关键词：CAME\n\nThe delay ____ the curator.\n\n### 3\n\nYou are not allowed to reproduce these photographs without written permission.\n\n关键词：ACCOUNT\n\nOn ____ these photographs without written permission.\n\n### 4\n\nI wish I had checked the route before setting off.\n\n关键词：REGRET\n\nI ____ the route before setting off.\n\n### 5\n\nIn the end, the committee decided not to cancel the rehearsal.\n\n关键词：AGAINST\n\nThe committee finally ____ the rehearsal.\n\n### 6\n\nI would prefer you not to discuss the budget at tomorrow's meeting.\n\n关键词：RATHER\n\nI ____ the budget at tomorrow's meeting.",
+  "author_answer_vector": [
+    [
+      "until the ferry had left",
+      "until the ferry left"
+    ],
+    [
+      "came as no surprise to",
+      "came as absolutely no surprise to",
+      "came as no surprise whatsoever to"
+    ],
+    [
+      "no account may you reproduce",
+      "no account can you reproduce",
+      "no account are you to reproduce"
+    ],
+    [
+      "regret not having checked",
+      "regret not checking",
+      "regret having failed to check",
+      "regret failing to check"
+    ],
+    [
+      "decided against cancelling",
+      "decided against canceling",
+      "decided against the cancellation of"
+    ],
+    [
+      "would rather you did not discuss"
+    ]
+  ],
+  "keyword_transformation": true,
+  "worked_examples": 1,
+  "worked_example_count": 4,
+  "transformation_rows": [
+    {
+      "number": 1,
+      "lead_in": "It was only when the ferry had left that Lea realised she was at the wrong port.",
+      "keyword": "UNTIL",
+      "target_frame": "Not ____ did Lea realise she was at the wrong port.",
+      "accepted_full_sentences": [
+        "Not until the ferry had left did Lea realise she was at the wrong port.",
+        "Not until the ferry left did Lea realise she was at the wrong port."
+      ],
+      "word_counts": [
+        5,
+        4
+      ],
+      "reference_scoring_segments": [
+        "until the ferry",
+        "had left"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "Not until时间从句后主句倒装；两种过去时表达均保留离港后才察觉的顺序。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 2,
+      "lead_in": "The curator was not at all surprised by the delay.",
+      "keyword": "CAME",
+      "target_frame": "The delay ____ the curator.",
+      "accepted_full_sentences": [
+        "The delay came as no surprise to the curator.",
+        "The delay came as absolutely no surprise to the curator.",
+        "The delay came as no surprise whatsoever to the curator."
+      ],
+      "word_counts": [
+        5,
+        6,
+        6
+      ],
+      "reference_scoring_segments": [
+        "came as no surprise",
+        "to"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "come as no surprise to表达完全不惊讶；绝对否定加强语absolutely/whatsoever不改变核心意思，三个参考均在词限内。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 3,
+      "lead_in": "You are not allowed to reproduce these photographs without written permission.",
+      "keyword": "ACCOUNT",
+      "target_frame": "On ____ these photographs without written permission.",
+      "accepted_full_sentences": [
+        "On no account may you reproduce these photographs without written permission.",
+        "On no account can you reproduce these photographs without written permission.",
+        "On no account are you to reproduce these photographs without written permission."
+      ],
+      "word_counts": [
+        5,
+        5,
+        6
+      ],
+      "reference_scoring_segments": [
+        "no account",
+        "may you reproduce"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "On no account置首触发倒装；may/can在此表许可，are you to表达禁止规范。should强度是否等同未核，不自动判错。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 4,
+      "lead_in": "I wish I had checked the route before setting off.",
+      "keyword": "REGRET",
+      "target_frame": "I ____ the route before setting off.",
+      "accepted_full_sentences": [
+        "I regret not having checked the route before setting off.",
+        "I regret not checking the route before setting off.",
+        "I regret having failed to check the route before setting off.",
+        "I regret failing to check the route before setting off."
+      ],
+      "word_counts": [
+        4,
+        3,
+        5,
+        4
+      ],
+      "reference_scoring_segments": [
+        "regret",
+        "not having checked"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "regret doing表示对既往的遗憾；否定checking或肯定failed均保留未检查这一事实，四种形式不人为限三种。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 5,
+      "lead_in": "In the end, the committee decided not to cancel the rehearsal.",
+      "keyword": "AGAINST",
+      "target_frame": "The committee finally ____ the rehearsal.",
+      "accepted_full_sentences": [
+        "The committee finally decided against cancelling the rehearsal.",
+        "The committee finally decided against canceling the rehearsal.",
+        "The committee finally decided against the cancellation of the rehearsal."
+      ],
+      "word_counts": [
+        3,
+        3,
+        5
+      ],
+      "reference_scoring_segments": [
+        "decided against",
+        "cancelling"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "decide against doing或against the cancellation of均表达最终不取消；英美cancel双写变体同等接受。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 6,
+      "lead_in": "I would prefer you not to discuss the budget at tomorrow's meeting.",
+      "keyword": "RATHER",
+      "target_frame": "I ____ the budget at tomorrow's meeting.",
+      "accepted_full_sentences": [
+        "I would rather you did not discuss the budget at tomorrow's meeting."
+      ],
+      "word_counts": [
+        6
+      ],
+      "reference_scoring_segments": [
+        "would rather",
+        "you did not discuss"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "would rather加他人主语、过去式表当前/将来偏好；六词全形符合上限。未列didn’t形式计词待复核，未采用手册禁缩写。",
+      "unlisted_forms_not_exhausted": true
+    }
+  ],
+  "full_response_variant_combinations": 216,
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 133,
+    "stem_English_words": 6,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 6,
+    "source_sentence_words": 71,
+    "target_sentence_words_without_gap": 37,
+    "keyword_prompt_words": 6,
+    "accepted_output_words_range": [
+      26,
+      33
+    ]
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_level_equivalence_established": false
+}

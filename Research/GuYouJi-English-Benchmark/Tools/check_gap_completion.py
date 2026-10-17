@@ -37,6 +37,27 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'keyword_transformation_six3to6':
+                selected=json.loads(load_ref(source['selected_native']).read_text())
+                assert selected['original']==source['source'] and selected['key']==source['key_reference']
+                raw=' '.join(' '.join(selected['selected_task_pages']).split())
+                assert 'between three and six words' in raw and 'Do not change the word given.' in raw
+                assert re.findall(r'^\s*(2[5-9]|30)\s', '\n'.join(selected['selected_task_pages']), re.M)==[str(n)for n in range(25,31)]
+                assert b['source_features']==source['features']
+                assert a['keyword_transformation'] and a['worked_examples']==1 and a['worked_example_count']==4
+                assert len(a['transformation_rows'])==b['responses']==6
+                for row,q in zip(a['transformation_rows'],a['review_response_tasks']):
+                    assert row['number']==q['number'] and row['target_frame'].count('____')==1
+                    assert row['keyword']==q['fillMarking']['requiredWord']
+                    assert q['fillMarking']['minWords']==3 and q['fillMarking']['maxWords']==6
+                    assert q['fillMarking']['wordCountAmbiguity']=='review'
+                    assert row['word_counts']==[len(v.split())for v in q['acceptedAnswers']]
+                    assert all(3<=n<=6 for n in row['word_counts'])
+                    assert all(row['keyword'].lower() in v.lower().split() for v in q['acceptedAnswers'])
+                    assert row['accepted_full_sentences']==[row['target_frame'].replace('____',v)for v in q['acceptedAnswers']]
+                    assert row['scoring_segments_count']==len(row['reference_scoring_segments'])==2
+                    assert ' '.join(row['reference_scoring_segments'])==q['acceptedAnswers'][0]
+                    assert row['lead_in'] in a['student_passage'] and row['target_frame'] in a['student_passage']
             if b.get('task_mode') == 'single_passage_mixed_grammar_slot_exceptions':
                 selected=json.loads(load_ref(source['selected_native']).read_text())
                 raw=selected['student_grammar']
@@ -145,7 +166,7 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])

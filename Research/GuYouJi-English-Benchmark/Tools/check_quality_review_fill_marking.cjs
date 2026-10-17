@@ -58,6 +58,19 @@ assert.equal(compare([exactTwo],{'1.1':'because of'}).different,1);
 assert.equal(compare([exactTwo],{'1.1':' '}).unanswered,1);
 assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,minWords:3}}]).available,false);
 assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,minWords:0}}]).available,false);
+// Source-bound transformations retain the unchanged keyword as a whole word.
+const kwt={number:1,options:[],acceptedAnswers:['did not dawn on me'],fillMarking:{...exactTwo.fillMarking,minWords:3,maxWords:6,requiredWord:'DAWN',rejectedAnswers:['did not dawn to me']}};
+assert.equal(compare([kwt],{'1.1':' DID  NOT DAWN ON ME '}).matched,1);
+assert.equal(compare([kwt],{'1.1':'never dawned on me'}).different,1);
+assert.equal(compare([kwt],{'1.1':'never dawn on me'}).review,1);
+assert.equal(compare([kwt],{'1.1':'dawn on'}).different,1);
+assert.equal(compare([kwt],{'1.1':'it did not dawn on me then'}).different,1);
+assert.equal(compare([kwt],{'1.1':"didn't dawn on me"}).review,1);
+assert.equal(compare([kwt],{'1.1':'did not dawn to me'}).different,1);
+assert.equal(compare([kwt],{'1.1':'did not dawner on me'}).different,1);
+assert.equal(compare([{...kwt,fillMarking:{...kwt.fillMarking,requiredWord:'DAWNED'}}]).available,false);
+assert.equal(compare([{...kwt,fillMarking:{...kwt.fillMarking,requiredWord:'DAWN ON'}}]).available,false);
+assert.equal(compare([{...kwt,fillMarking:{...kwt.fillMarking,requiredWord:123}}]).available,false);
 assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,wordCountAmbiguity:undefined}}]).available,false);
 assert.equal(compare([{...exactTwo,acceptedAnswers:['instead']}]).available,false);
 // Integrate with every actual new complete group; exercise all alternate forms.
@@ -87,4 +100,4 @@ for(const [id,clauses]of [
  const pastForm={'grade10-grammar-library-cinema-neighbour':'carried','grade10-grammar-bakery-watercolour-train':'pushed','grade10-grammar-hospital-birdwalk-bus':'stood'}[id];
  const pastResult=compare(g.questions,{...saved,'8.1':pastForm});assert.equal(pastResult.matched,9);assert.equal(pastResult.review,1);assert.equal(pastResult.different,0);pendingPastForms++;
 }
-console.log(JSON.stringify({passed:true,cases:44+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));
+console.log(JSON.stringify({passed:true,cases:55+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unchanged_whole_keyword:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));

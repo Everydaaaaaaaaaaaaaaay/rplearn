@@ -1,0 +1,69 @@
+{
+  "version": "0.2",
+  "scope": "specific_version_wordcount_and_contraction_conflict_not_exclude_wholefamily",
+  "handbook_selection": {
+    "path": "build/english-benchmark-authority-20261017/c1handbook-kwt-selected-native-v0.1.json",
+    "sha256": "660124ef97f9eb08808c1d60288765ecc85735fe18cfa30bdea1725ece554840"
+  },
+  "paper": {
+    "path": "build/english-benchmark-research-20261012/c1-paper1-RUE2022-original20261016.pdf",
+    "sha256": "041d57d2784e54d32f67964a64d8a1bf753bd899f7a4964e99bd0fbbb94ae98b"
+  },
+  "paper_physical_pages": [
+    6,
+    7
+  ],
+  "key": {
+    "path": "build/english-benchmark-research-20261012/c1-paper1-objective-key-page1-extract20261016.pdf",
+    "sha256": "fb8749d3b3fff047adf2cef581996112f90cd22a4ec1f5e08294f620bd048611"
+  },
+  "key_visual": {
+    "path": "build/english-benchmark-research-20261012/c1-key-selected20261016-1.png",
+    "sha256": "23d2ae8d6bd51c37f2d64837f95c08ef4d23ddeec3517dd88fd9282074e8666a"
+  },
+  "confirmed_shared_task": {
+    "responses": 6,
+    "source_question_numbers": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "solved_examples": 1,
+    "input_each": [
+      "lead_in_sentence",
+      "unchanged_key_word",
+      "gapped_second_sentence"
+    ],
+    "min_words": 3,
+    "max_words": 6,
+    "keyword_must_not_change": true,
+    "source_mark_scheme_two_segments_per_response_not12responses": true
+  },
+  "conflicting_statements": {
+    "handbook_task": "Contractedformsnotacceptable;fullwordformsonly",
+    "handbook_samepage_advice": "Contractionscountastwowords",
+    "older_paper_key": "doesnot/doesntbothlistedQ25"
+  },
+  "selected_version_not_yet_bound": false,
+  "new_author_groups": 3,
+  "not_paused_merely_because_multiple_answers": true,
+  "next_action": "listeningcompletionand15-levelsource-backedunfilledfamilies;preservecurrenthandbookconflict;noautomaticpartialcredit",
+  "source_gold": false,
+  "previous": {
+    "path": "CompleteCoverage20261017/KeywordTransformationVersionReview-v0.1.json",
+    "sha256": "990f74fc889481194658bebdc4654f4a98c034960ee91464d75456efa5cb3e62"
+  },
+  "selected_version": "2022officialpaper1withmatchingolderkey;currenthandbookconflictnotmerged",
+  "current_selected_mode": {
+    "path": "CompleteCoverage20261017/AdvancedSourceModes-v0.2.json",
+    "sha256": "bb80e917d8ba1ca804d9117b8d17c2c978d3e6b2d2ea6e700d1915ab6f8c9230"
+  },
+  "new_authors": [
+    "advanced-kwt-accounts",
+    "advanced-kwt-decisions",
+    "advanced-kwt-timing"
+  ]
+}

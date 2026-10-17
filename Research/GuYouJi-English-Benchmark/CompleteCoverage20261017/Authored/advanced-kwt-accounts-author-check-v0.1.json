@@ -1,0 +1,332 @@
+{
+  "version": "0.1",
+  "id": "advanced-kwt-accounts",
+  "grade": "advanced",
+  "questions": 6,
+  "candidate_sha256": "95fb185216d9891581d07409e21848579a0be9e647278b6557321cb4398a06c5",
+  "source_binding": "advancedkwt6sample2022",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.2.json",
+    "sha256": "99313a736ff22c0f524eebf26f9bc0737b76ee4f3f824a043158abda3b103623"
+  },
+  "source_group_id": "advanced.c1.sample1.keywordtransformation",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1句（关键词DAWN，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "did not dawn on me"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "DAWN",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "did not dawn to me"
+        ]
+      },
+      "rationale": "it dawns on someone表达突然明白；not...until对应丢弃之后才明白。never dawned虽可成句但改变给定DAWN，不收。"
+    },
+    {
+      "number": 2,
+      "stem": "第2句（关键词PREVENTED，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "was prevented from concentrating by",
+        "was prevented from focusing by",
+        "was prevented from concentrating because of"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "PREVENTED",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "was prevented to concentrate by"
+        ]
+      },
+      "rationale": "prevented from doing被动保留无法集中及外因；focus/concentrate在此语境相通，by与because of均连接反复打断。"
+    },
+    {
+      "number": 3,
+      "stem": "第3句（关键词HAVE，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "cannot have approved",
+        "could not have approved"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "HAVE",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "must have approved"
+        ]
+      },
+      "rationale": "对已发生事件的强否定推断用cannot/could not have done，未改成实际能力不足。can not分写及缩写尚未收入，待复核。"
+    },
+    {
+      "number": 4,
+      "stem": "第4句（关键词AS，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "as the guide was",
+        "as it was"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "AS",
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "形容词前置的as让步结构，guide/it两先行表达均保持指南虽简洁仍全面。"
+    },
+    {
+      "number": 5,
+      "stem": "第5句（关键词SUCH，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "was such a compelling documentary"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "SUCH",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "was such compelling a documentary"
+        ]
+      },
+      "rationale": "so+形容词与such+a+形容词+名词转换，冠词顺序与documentary单数保持。"
+    },
+    {
+      "number": 6,
+      "stem": "第6句（关键词DENIED，填3—6词）",
+      "options": [],
+      "acceptedAnswers": [
+        "denied responsibility for damaging",
+        "denied being responsible for damaging",
+        "denied having been responsible for damaging",
+        "denied responsibility for the damage to"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "minWords": 3,
+        "maxWords": 6,
+        "wordCountAmbiguity": "review",
+        "requiredWord": "DENIED",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "denied to be responsible for damaging"
+        ]
+      },
+      "rationale": "deny加名词/动名词；责任否认而非断言没有损坏。四参考各3—6词，完成式保留先前损坏。"
+    }
+  ],
+  "canonical_response_block_sha256": "106417580af7ddb7778d4e9ead19bb600b1c7baba5b0bbab78271fb693e87aa0",
+  "student_passage": "### 示例0（已解）\n\nMira was unable to attend because she was ill.\n\n关键词：PREVENTED\n\nMira ____ because she was ill.\n\n填入：WAS PREVENTED FROM ATTENDING（4词）\n\n### 1\n\nI only realised how valuable the notebook was after I had thrown it away.\n\n关键词：DAWN\n\nIt ____ how valuable the notebook was until I had thrown it away.\n\n### 2\n\nThe repeated interruptions made it impossible for Farah to concentrate.\n\n关键词：PREVENTED\n\nFarah ____ the repeated interruptions.\n\n### 3\n\nI am certain that the committee did not approve that proposal.\n\n关键词：HAVE\n\nThe committee ____ that proposal.\n\n### 4\n\nAlthough the guide was concise, it covered every safety procedure.\n\n关键词：AS\n\nConcise ____, it covered every safety procedure.\n\n### 5\n\nThe documentary was so compelling that I watched it twice in one evening.\n\n关键词：SUCH\n\nIt ____ that I watched it twice in one evening.\n\n### 6\n\nThe builder said he was not responsible for damaging the fence.\n\n关键词：DENIED\n\nThe builder ____ the fence.",
+  "author_answer_vector": [
+    [
+      "did not dawn on me"
+    ],
+    [
+      "was prevented from concentrating by",
+      "was prevented from focusing by",
+      "was prevented from concentrating because of"
+    ],
+    [
+      "cannot have approved",
+      "could not have approved"
+    ],
+    [
+      "as the guide was",
+      "as it was"
+    ],
+    [
+      "was such a compelling documentary"
+    ],
+    [
+      "denied responsibility for damaging",
+      "denied being responsible for damaging",
+      "denied having been responsible for damaging",
+      "denied responsibility for the damage to"
+    ]
+  ],
+  "keyword_transformation": true,
+  "worked_examples": 1,
+  "worked_example_count": 4,
+  "transformation_rows": [
+    {
+      "number": 1,
+      "lead_in": "I only realised how valuable the notebook was after I had thrown it away.",
+      "keyword": "DAWN",
+      "target_frame": "It ____ how valuable the notebook was until I had thrown it away.",
+      "accepted_full_sentences": [
+        "It did not dawn on me how valuable the notebook was until I had thrown it away."
+      ],
+      "word_counts": [
+        5
+      ],
+      "reference_scoring_segments": [
+        "did not dawn",
+        "on me"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "it dawns on someone表达突然明白；not...until对应丢弃之后才明白。never dawned虽可成句但改变给定DAWN，不收。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 2,
+      "lead_in": "The repeated interruptions made it impossible for Farah to concentrate.",
+      "keyword": "PREVENTED",
+      "target_frame": "Farah ____ the repeated interruptions.",
+      "accepted_full_sentences": [
+        "Farah was prevented from concentrating by the repeated interruptions.",
+        "Farah was prevented from focusing by the repeated interruptions.",
+        "Farah was prevented from concentrating because of the repeated interruptions."
+      ],
+      "word_counts": [
+        5,
+        5,
+        6
+      ],
+      "reference_scoring_segments": [
+        "was prevented from concentrating",
+        "by"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "prevented from doing被动保留无法集中及外因；focus/concentrate在此语境相通，by与because of均连接反复打断。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 3,
+      "lead_in": "I am certain that the committee did not approve that proposal.",
+      "keyword": "HAVE",
+      "target_frame": "The committee ____ that proposal.",
+      "accepted_full_sentences": [
+        "The committee cannot have approved that proposal.",
+        "The committee could not have approved that proposal."
+      ],
+      "word_counts": [
+        3,
+        4
+      ],
+      "reference_scoring_segments": [
+        "cannot have",
+        "approved"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "对已发生事件的强否定推断用cannot/could not have done，未改成实际能力不足。can not分写及缩写尚未收入，待复核。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 4,
+      "lead_in": "Although the guide was concise, it covered every safety procedure.",
+      "keyword": "AS",
+      "target_frame": "Concise ____, it covered every safety procedure.",
+      "accepted_full_sentences": [
+        "Concise as the guide was, it covered every safety procedure.",
+        "Concise as it was, it covered every safety procedure."
+      ],
+      "word_counts": [
+        4,
+        3
+      ],
+      "reference_scoring_segments": [
+        "as",
+        "the guide was"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "形容词前置的as让步结构，guide/it两先行表达均保持指南虽简洁仍全面。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 5,
+      "lead_in": "The documentary was so compelling that I watched it twice in one evening.",
+      "keyword": "SUCH",
+      "target_frame": "It ____ that I watched it twice in one evening.",
+      "accepted_full_sentences": [
+        "It was such a compelling documentary that I watched it twice in one evening."
+      ],
+      "word_counts": [
+        5
+      ],
+      "reference_scoring_segments": [
+        "was such",
+        "a compelling documentary"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "so+形容词与such+a+形容词+名词转换，冠词顺序与documentary单数保持。",
+      "unlisted_forms_not_exhausted": true
+    },
+    {
+      "number": 6,
+      "lead_in": "The builder said he was not responsible for damaging the fence.",
+      "keyword": "DENIED",
+      "target_frame": "The builder ____ the fence.",
+      "accepted_full_sentences": [
+        "The builder denied responsibility for damaging the fence.",
+        "The builder denied being responsible for damaging the fence.",
+        "The builder denied having been responsible for damaging the fence.",
+        "The builder denied responsibility for the damage to the fence."
+      ],
+      "word_counts": [
+        4,
+        5,
+        6,
+        6
+      ],
+      "reference_scoring_segments": [
+        "denied responsibility",
+        "for damaging"
+      ],
+      "scoring_segments_count": 2,
+      "semantic_equivalence_author_review": "deny加名词/动名词；责任否认而非断言没有损坏。四参考各3—6词，完成式保留先前损坏。",
+      "unlisted_forms_not_exhausted": true
+    }
+  ],
+  "full_response_variant_combinations": 48,
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 133,
+    "stem_English_words": 6,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 6,
+    "source_sentence_words": 69,
+    "target_sentence_words_without_gap": 39,
+    "keyword_prompt_words": 6,
+    "accepted_output_words_range": [
+      25,
+      30
+    ]
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_level_equivalence_established": false
+}
