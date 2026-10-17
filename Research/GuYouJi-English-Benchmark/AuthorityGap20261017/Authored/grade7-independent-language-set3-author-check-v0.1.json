@@ -1,0 +1,287 @@
+{
+  "version": "0.1",
+  "id": "grade7-independent-language-set3",
+  "grade": 7,
+  "questions": 10,
+  "candidate_sha256": "53e179e1d81285a83cf340e79aa031d88d4c59a88113ea649d6da8d034d46c07",
+  "canonical_response_block_sha256": "1c1550ba6b17f3a93643cfb9863be883df89c60b6c0c1d0101dc1c1276ec5a0e",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "These are my cousins. ____ live near the river.",
+      "options": [
+        [
+          "A",
+          "Their"
+        ],
+        [
+          "B",
+          "They"
+        ],
+        [
+          "C",
+          "Them"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "They：主语复数They；Them宾格，Their需名词，不作此live主语。"
+    },
+    {
+      "number": 2,
+      "stem": "The family usually has a picnic ____ spring.",
+      "options": [
+        [
+          "A",
+          "in"
+        ],
+        [
+          "B",
+          "on"
+        ],
+        [
+          "C",
+          "at"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "in：spring季节搭配in；on具体日、at时点不合。"
+    },
+    {
+      "number": 3,
+      "stem": "The answer is not sixteen ____ sixty.",
+      "options": [
+        [
+          "A",
+          "so"
+        ],
+        [
+          "B",
+          "because"
+        ],
+        [
+          "C",
+          "but"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "but：not sixteen but sixty纠正两个数；so/because后不接单独数字完成该并列。"
+    },
+    {
+      "number": 4,
+      "stem": "—How often does Jo visit the library? —____.",
+      "options": [
+        [
+          "A",
+          "On the second floor"
+        ],
+        [
+          "B",
+          "Twice a week"
+        ],
+        [
+          "C",
+          "At three o’clock"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Twice a week：Twiceaweek频率；atthree时点，secondfloor地点，不答howoften。"
+    },
+    {
+      "number": 5,
+      "stem": "____ your sister play the piano after dinner?",
+      "options": [
+        [
+          "A",
+          "Does"
+        ],
+        [
+          "B",
+          "Do"
+        ],
+        [
+          "C",
+          "Are"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Does：sister单数实义play问句Does；Do数不合，Are不能接play且数不合。"
+    },
+    {
+      "number": 6,
+      "stem": "There ____ a red umbrella behind the door.",
+      "options": [
+        [
+          "A",
+          "are"
+        ],
+        [
+          "B",
+          "have"
+        ],
+        [
+          "C",
+          "is"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "is：aredumbrella单数用is；are数不符，have不构成该therebe句。"
+    },
+    {
+      "number": 7,
+      "stem": "—____ is the school trip? —On Friday.",
+      "options": [
+        [
+          "A",
+          "Who"
+        ],
+        [
+          "B",
+          "When"
+        ],
+        [
+          "C",
+          "Where"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "When：OnFriday时间答When；Where地点、Who人物不合。"
+    },
+    {
+      "number": 8,
+      "stem": "Our teacher ____ us a story every Monday.",
+      "options": [
+        [
+          "A",
+          "tells"
+        ],
+        [
+          "B",
+          "tell"
+        ],
+        [
+          "C",
+          "telling"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "tells：teacher单数习惯tells；tell数不合，telling缺限定助动词。"
+    },
+    {
+      "number": 9,
+      "stem": "Please be quiet. The baby ____ now.",
+      "options": [
+        [
+          "A",
+          "sleep"
+        ],
+        [
+          "B",
+          "slept"
+        ],
+        [
+          "C",
+          "is sleeping"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "is sleeping：安静提示现在睡，is sleeping；sleep单数谓语不合，slept过去不合now。"
+    },
+    {
+      "number": 10,
+      "stem": "Next week I ____ take these books back.",
+      "options": [
+        [
+          "A",
+          "does"
+        ],
+        [
+          "B",
+          "will"
+        ],
+        [
+          "C",
+          "am"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "will：will+take原形；am不能接原形take，does与I数不合且非本句将来陈述。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleSentenceBridge-v0.1.json",
+    "sha256": "9d9716e2fd734f22f7a2853e2df2923e225844a95718fe4e0bd96f2491c89de2"
+  },
+  "source_group_id": "g7.xicheng2025.language",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "independent_microcontexts": 10,
+      "multi_gap_single_response_items": []
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "各题语境独立。",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "B",
+    "A",
+    "C",
+    "B",
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 68,
+    "options_English_words_with_repeated_bank": 38,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "microcontext_stems_not_counted_as_body": true,
+    "blank_slots": 10,
+    "output_letter_count": 10,
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 29,
+    "requirement_total_characters": 34
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "independent_microcontexts": 10,
+  "blank_count_per_response": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "source_bound_response_count_not_fixed6": true,
+  "multiple_blanks_one_response": false,
+  "contextual_lexical_items": [],
+  "all_options_counterchecked": true
+}

@@ -1,0 +1,361 @@
+{
+  "version": "0.1",
+  "groups": [
+    {
+      "id": "g7.xicheng2025.language",
+      "level": 7,
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "source_reference": {
+        "source_view_manifest": {
+          "path": "FirstRelease/Sampling/baseline-sentence-bank-views-v0.1.json",
+          "sha256": "01b979e4804a435bfbf8e0d2677584301591ba488e6fb1a6afc58af6ee40a9e9"
+        },
+        "parent_document": {
+          "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+          "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+        },
+        "transcription": {
+          "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-source-text20261015t-v0.1.json",
+          "sha256": "f0f8dbc3dda2e93c934e1f015629267bc42be90084f973f56277605fe5cdec64"
+        },
+        "record_index": 0
+      },
+      "inherited_author_evidence": {
+        "path": "FirstRelease/Timeboxed/grade7-three-option-sentences-author-check-v0.1.json",
+        "sha256": "e473de1b8f46682fd90e5175e29fa0c854caf0556011ab130909e115c97adc49"
+      },
+      "responses": 10,
+      "material": {
+        "independent_microcontexts": 10,
+        "multi_gap_single_response_items": []
+      },
+      "candidates": {
+        "per_response": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "not_reextracted_or_upgraded",
+      "is_independent_gold": false,
+      "source_count_increment": 0
+    },
+    {
+      "id": "g8.2025fengtai.language",
+      "level": 8,
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-fengtai2025upper-candidate20261014.pdf",
+        "sha256": "044a92582dd78d7c45682d22a993ccaed22706ea3034b3d7a8e8d61c4e6a892f"
+      },
+      "source_reference": {
+        "inherited_source_catalogue": {
+          "path": "FirstRelease/source-group-observations.json",
+          "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+        },
+        "source_acquisition_id": "grade8-fengtai2025upper-candidate20261014",
+        "physical_pages": [
+          1,
+          2
+        ],
+        "key_pages": [
+          11,
+          12
+        ],
+        "source_features": {
+          "items": 12,
+          "options_each": 4,
+          "targets": [
+            "possessive",
+            "year_preposition",
+            "cause_result",
+            "comparative",
+            "modal_obligation",
+            "question_word",
+            "present_agreement",
+            "past",
+            "past_progressive",
+            "conditional_future",
+            "superlative",
+            "infinitive"
+          ],
+          "Q10_present_progressive_future_not_blanket_impossible": true
+        }
+      },
+      "inherited_author_evidence": {
+        "path": "FirstRelease/Generated/grade8-language-choice-author-check-v0.2.json",
+        "sha256": "e22f3cc6e491eb9ac333f00023ab6f7825840d3591e6a3fa2cf0c92749140a1c"
+      },
+      "responses": 12,
+      "material": {
+        "independent_microcontexts": 12,
+        "multi_gap_single_response_items": []
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "not_reextracted_or_upgraded",
+      "is_independent_gold": false,
+      "source_count_increment": 0
+    },
+    {
+      "id": "grade9-boxing2025-21cnjy24857076.sentenceChoice",
+      "level": 9,
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+        "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+      },
+      "source_reference": {
+        "source_view_manifest": {
+          "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+          "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+        },
+        "source_text": {
+          "path": "build/english-benchmark-research-20261012/grade9-boxing2025-21cnjy24857076-resource-v0.2.txt",
+          "sha256": "952dc913f67de45445d10e52c5fd64e3b89fca298fa3621afd7a19308a6fd33e"
+        },
+        "primary_input_sha256": "3de3df1cefa586fdaa2409b64de072eedc249b62a27cb98745d3f7c14274cc6a"
+      },
+      "inherited_author_evidence": {
+        "path": "FirstRelease/Timeboxed/grade9-four-option-sentences-author-check-v0.1.json",
+        "sha256": "230a80562a30664e3d92f0651929dcea652f5065b574c7b83b66111b7c6b1f47"
+      },
+      "responses": 10,
+      "material": {
+        "independent_microcontexts": 10,
+        "multi_gap_single_response_items": []
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "not_reextracted_or_upgraded",
+      "is_independent_gold": false,
+      "source_count_increment": 0
+    },
+    {
+      "id": "grade10-shenzhenlower2026-21cnjy26167651.sentenceChoice",
+      "level": 10,
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+        "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+      },
+      "source_reference": {
+        "source_view_manifest": {
+          "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+          "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+        },
+        "source_text": {
+          "path": "build/english-benchmark-research-20261012/grade10-shenzhenlower2026-21cnjy26167651-resource-v0.2.txt",
+          "sha256": "699609f3201439b8fb51d55e4025e9e4a11b5e831411f8424fe29e3d0e51da51"
+        },
+        "primary_input_sha256": "3eed1892fa514e98dc9d74609678afb6eeece7e752390873fa3daa1be1498a05"
+      },
+      "inherited_author_evidence": {
+        "path": "FirstRelease/Timeboxed/grade10-twenty-sentence-choices-author-check-v0.1.json",
+        "sha256": "818133e85b9491e11e2ae26b40f59ab31fc391f4ecff198fd1222a2d8fcc1319"
+      },
+      "responses": 20,
+      "material": {
+        "independent_microcontexts": 20,
+        "multi_gap_single_response_items": [
+          13,
+          17,
+          20
+        ]
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "not_reextracted_or_upgraded",
+      "is_independent_gold": false,
+      "source_count_increment": 0
+    },
+    {
+      "id": "grade11-tianjin2026-21cnjy26082071.sentenceChoice",
+      "level": 11,
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+        "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+      },
+      "source_reference": {
+        "source_view_manifest": {
+          "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+          "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+        },
+        "source_text": {
+          "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+          "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+        },
+        "primary_input_sha256": "84d003f827afcf79d1ab428e253ab9931761b5326d5f8bdf07e9aab429b79b1c"
+      },
+      "inherited_author_evidence": {
+        "path": "FirstRelease/Timeboxed/grade11-fifteen-sentence-choices-author-check-v0.1.json",
+        "sha256": "e0ddd5ed0364cd4a3bf41d08230591c843ba2769f309fdbdb6417387bd099b3c"
+      },
+      "responses": 15,
+      "material": {
+        "independent_microcontexts": 15,
+        "multi_gap_single_response_items": []
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "not_reextracted_or_upgraded",
+      "is_independent_gold": false,
+      "source_count_increment": 0
+    },
+    {
+      "id": "grade12-tianjinlower2025-21cnjy22402528.sentenceChoice",
+      "level": 12,
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+        "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+      },
+      "source_reference": {
+        "source_view_manifest": {
+          "path": "FirstRelease/Sampling/sentence-material-views-v0.1.json",
+          "sha256": "48b867c55990104e878df3cba23d49e17ca54cc01fe11b6fe6f54d34860ff6e6"
+        },
+        "source_text": {
+          "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+          "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+        },
+        "primary_input_sha256": "a5c574a25cf50fecc66da4e05263f9ee54e9bd50b1ac61f8fd7c05f38c9a9d12"
+      },
+      "inherited_author_evidence": {
+        "path": "FirstRelease/Timeboxed/grade12-fifteen-sentence-choices-author-check-v0.1.json",
+        "sha256": "5b6a1ac2d6fb84c5aedb3fdbf4ae65ef0022a3229c7142a5591a46c0c769b882"
+      },
+      "responses": 15,
+      "material": {
+        "independent_microcontexts": 15,
+        "multi_gap_single_response_items": []
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "not_reextracted_or_upgraded",
+      "is_independent_gold": false,
+      "source_count_increment": 0
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0,
+  "no_source_level_exclusivity_inferred": true
+}
