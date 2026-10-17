@@ -1,0 +1,109 @@
+{
+  "version": "0.1",
+  "scope": "source_quality_and_repost_identity_not_new_type_or_complete_sample",
+  "known_source_correction": {
+    "path": "CompleteCoverage20261017/SourceInputQualityCorrections-v0.1.json",
+    "sha256": "1848282e3010e5d900796f1583e67101f471d3e4d782e499052a32eeab25ed91"
+  },
+  "existing_original_pages_reused": [
+    2,
+    3,
+    4
+  ],
+  "new_original_or_render_bytes": 0,
+  "question_page_correction": "Five-context section spans physical2–3; its key is physical4. Old bridge pages1–2/key3–4 are not current locators.",
+  "original_input_defect_still_missing": "14.2.B",
+  "source_key_hold": [
+    "14.2",
+    "14.5"
+  ],
+  "new_second_complete_ordinary_source": false,
+  "candidates": [
+    {
+      "url": "https://www.jyeoo.com/pp/503af5d5-9ab9-4474-9d24-494692b73f0a",
+      "layer": "public_search_reader",
+      "observation": "标题宝安2023–24六上；情境问答头称五题，读者实际混入数图/拼写/时间填空；其他听力头与内容亦不对齐，两次读者顺序也不同。不能据题头补成五题三选。",
+      "actual_original_document_same_defect_verified": false,
+      "whole_source_admitted": false
+    },
+    {
+      "url": "https://max.book118.com/html/2024/0120/5003023330011043.shtm",
+      "layer": "public_reader",
+      "observation": "同标签26页DOCX的公开文字只到前十道听力的一部分，无完整情境五题；不取付费或未公开正文。",
+      "whole_source_admitted": false
+    },
+    {
+      "url": "https://book.21cnjy.com/store/233976.shtml?source=msjk259",
+      "layer": "normal_public_HTTP",
+      "observation": "读者超时后正常HTTP200目录找到六年级18714324实际详情链接；正文资源正常HTTP200 gzip经正常解压后7373bytes但无可读正文或图链接。首次未处理gzip解码失败不是资源访问失败。未取得原页，不判断为特定验证/支付限制。",
+      "observed_detail_url": "https://www.21cnjy.com/H/99/49360/18714324.shtml?bkid=233976&f=&type=0",
+      "whole_source_admitted": false
+    },
+    {
+      "url": "https://doc.xuehai.net/b48b14e15f6d45a9adfb4f69b.html",
+      "layer": "public_search_reader_and_normal_HTTP",
+      "observation": "学校期中题标签候选，读者超时、普通HTTP426，未取得原页，不旁路。",
+      "whole_source_admitted": false
+    }
+  ],
+  "current_lowprimary_new_whole_closed_sources": 0,
+  "lowprimary_followup": "定向结果仍主要为已核的活动说明/口头综合评价及新教材教学练习，未得现行完整卡池/全指令/计数/键，不新增稿。",
+  "research_tool_outputs": [
+    {
+      "path": "build/english-benchmark-authority-20261017/followup611search-v0.1.json",
+      "sha256": "e9e823b05394694fd8d20ec6063bce59e4296d5cd3d4e12292b9174a4c60036b"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/lowprimary611target-v0.1.json",
+      "sha256": "ff974e230ca2ccea2b18bbe84b030cf898446b8e7e824f9bc870d39626abeb54"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6function611search-v0.1.json",
+      "sha256": "e73ac041050952d9566cdf754558c3f49067f24f8daf6009ff680971ee76b793"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6baoan611reader-v0.1.json",
+      "sha256": "f6c410f261103c308f712ba1142e13db91bc79e9e616156893ea50747137a4ae"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6baoan611cross-v0.1.json",
+      "sha256": "cf0f1bd62a9b0bd3470fa3c1cd37f14c06d2de4495ecc62863aa2f50770a6f05"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6baoan611docreader-v0.1.json",
+      "sha256": "a14f431247c7764fdbf40c94b86f7a168f25f519e2bdee0512ed03ddc77c5177"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6baoan611series-v0.1.json",
+      "sha256": "94e3b976b672eab1d6b0abf6c33dfb94df397f685cc8879058e431074880e6bc"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6baoan611book-v0.1.json",
+      "sha256": "daf223e006724da44d8c30f3256475f3afb47062fb5ef273509692b3b240a151"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6baoan611resource-v0.1.json",
+      "sha256": "4175be0cf5ed70a5509ad7f8f10bf95ae1b1c88e8a5b9a7fcf16af21b4e45b5a"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6functions611pdfsearch-v0.1.json",
+      "sha256": "62d21c367f10604cd8d6ac1614455bd92eceefefbffee32689525306e2e54a54"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6functions611xuehai-v0.1.json",
+      "sha256": "4a4a26546f079d600106df17941c7a442a6a4b3685245034f18e4581939b6352"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p6functions611targettext-v0.1.json",
+      "sha256": "321ca8d50acbce9d54035ba7cd25bbf5a95cddfd8318391920a4cc990230d651"
+    }
+  ],
+  "tool_output_IP_banner_omitted": true,
+  "actual_browser_followup": "External navigation timed out; later existing tab unavailable and inventory timed out. Local preview opening queued through app; no actual click verification claimed for this source-notice correction. Earlier article-revision six-response UI proof retained separately.",
+  "static_full_page_and_refs_verified": true,
+  "current_groups": 610,
+  "current_responses": 4034,
+  "new_source_groups": 0,
+  "new_authors": 0,
+  "goal_complete": false
+}

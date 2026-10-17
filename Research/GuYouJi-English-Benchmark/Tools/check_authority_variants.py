@@ -19,6 +19,7 @@ def check(data, plan):
     index = json.loads(load_ref(plan['current_authority_variants']).read_text())
     assert data['variant_authored_index'] == plan['current_authority_variants']
     seen = set()
+    source_input_holds = set()
     for meta in index['candidates']:
         assert meta['id'] not in seen
         seen.add(meta['id'])
@@ -27,7 +28,11 @@ def check(data, plan):
         text = load_ref(meta['candidate']).read_text()
         sources = json.loads(load_ref(audit['source_index']).read_text())['groups']
         source = next(s for s in sources if s['id'] == audit['source_group_id'])
-        assert source['full_student_input'] and not source['is_independent_gold']
+        from source_input_quality_corrections import source_status,expected_notice
+        status=source_status(plan,source,source['full_student_input'])
+        assert status['structure_reference'] and not source['is_independent_gold']
+        if not status['full_source_input_verified']:
+            source_input_holds.add(source['id'])
         load_ref(source['source'])
         assert meta['source_index'] == audit['source_index']
         assert audit['source_observation']['source_material'] == source['material']
@@ -37,7 +42,7 @@ def check(data, plan):
         assert group['grade'] == source['level'] == meta['grade']
         assert group['kind'] == meta['family']
         assert group['instruction'] == meta['instruction']
-        assert group['sourceFormNotice'] == meta['source_form_notice']
+        assert group['sourceFormNotice'] == expected_notice(plan,group['id'],meta['source_form_notice'])
         assert len(group['questions']) == audit['questions'] == source['responses'] == meta['questions']
         assert [q['number'] for q in group['questions']] == list(range(1, meta['questions']+1))
         assert [len(q['options']) for q in group['questions']] == source['candidates']['per_response']
@@ -165,4 +170,6 @@ def check(data, plan):
     responses = sum(m['questions'] for m in index['candidates'])
     assert responses == index['new_response_positions']
     return {'groups': len(seen), 'responses': responses,
-            'full_source_specific_contracts': True, 'not_independent_content_or_student_validation': True}
+            'source_specific_structure_contracts_checked': True,
+            'known_source_input_hold_ids': sorted(source_input_holds),
+            'not_independent_content_or_student_validation': True}

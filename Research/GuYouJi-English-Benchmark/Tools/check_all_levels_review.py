@@ -74,7 +74,9 @@ def expansion_modes(data,plan,additions):
         group=data['groups'][meta['id']]
         audit=json.loads(load_ref(meta['author_check']).read_text())
         assert source['level']==meta['grade'] and source['family']==meta['family']
-        assert source['input_complete'] and source['source_answer_not_gold']
+        from source_input_quality_corrections import source_status
+        status=source_status(plan,source,source['input_complete'])
+        assert status['structure_reference'] and source['source_answer_not_gold']
         for reference in source['references']:
             load_ref(reference)
         assert source['id'] in group['anchor_group_ids']
@@ -108,6 +110,8 @@ def expansion_modes(data,plan,additions):
 def check(page):
     data=extract(page);policy=json.loads(load_ref(data['current_scope_policy']).read_text())
     _,plan=resolve_plan(data.get('active_run_plan','FirstRelease/AllLevelsObjectiveRun-2026-10-16.json'))
+    from source_input_quality_corrections import check as check_source_quality
+    check_source_quality(data,plan)
     if plan.get('current_band_phonics_originals'):
         from build_band_phonics_review import check as check_band
         supplemental=data['supplemental_band_review']

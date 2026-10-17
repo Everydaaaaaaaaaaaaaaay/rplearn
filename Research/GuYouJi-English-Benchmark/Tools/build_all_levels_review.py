@@ -221,6 +221,9 @@ def build_current(output):
             cell['groupId'] = cell['groupId'] or group['id']
             data['groups'][group['id']] = group
         data['gap_completion_index'] = plan['current_gap_completion']
+    if plan.get('current_source_input_quality_corrections'):
+        from source_input_quality_corrections import apply as apply_source_quality
+        apply_source_quality(data,plan)
     if plan.get('current_pending_source_modes'):
         from pending_source_modes import records as pending_records, attach as attach_pending
         modes = pending_records(plan, data['groups'], data['grades'])

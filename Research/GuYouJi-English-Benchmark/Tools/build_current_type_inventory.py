@@ -107,6 +107,7 @@ def build(page,version="0.1"):
         additional_media_and_current_nonpaper_gaps_retained=True,unknown_cartesian_product_not_required=True,
         original_paused_groups=data['paused_concrete_groups'],
         pending_specific_modes=data.get('pending_specific_modes',[]),unfilled_specific_modes=data.get('unfilled_specific_modes',0),
+        current_source_input_quality_corrections=plan.get('current_source_input_quality_corrections'),
         full_source_and_author_count_separate=True,all_required_types_complete=False,independent_teacher_student_commercial_production=False)
 
 
