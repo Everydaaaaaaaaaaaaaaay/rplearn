@@ -1,0 +1,334 @@
+{
+  "version": "0.1",
+  "id": "grade9-mixedlisten-film-seed",
+  "title": "初三四材料：字幕与种子",
+  "grade": 9,
+  "family": "listening_multi_question_choice",
+  "family_label": "长对话/独白多题单选",
+  "source_group_id": "zz.g9.25123674.listening.sectionB",
+  "source_binding": "g9listenB",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.11.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 150
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 150
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    }
+  },
+  "source_notice": "初三公开普通期末转载完整题面/印本脚本/参考键已核，原音轨明确缺；地域学年学期只在标题，正文只见九年级英语，原校认证未建立，不当gold。本稿完整原创配套不补平原录音缺口。",
+  "timing_notice": "每段两遍；原卷未印精确停顿，本机听前后每题5秒及重播提示属审阅编排",
+  "instruction": "听四段材料，依次回答1—2、3—4、5—7、8—10题，从A、B、C中选最佳答案。第三段为独白，其他为对话。每段两遍；本机按每题前后5秒留时，不冒充原卷未印时序。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Have you finished the subtitles for our class film, Priya?"
+        },
+        {
+          "speaker": "W",
+          "text": "Almost. I checked the spelling yesterday. Today I need to shorten a few lines because they disappear before people can read them."
+        },
+        {
+          "speaker": "M",
+          "text": "Should we slow the film down?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, the pictures are fine. We can say the same thing in fewer words."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is Priya doing now?",
+          "options": [
+            [
+              "A",
+              "Correcting the camera colours."
+            ],
+            [
+              "B",
+              "Shortening subtitle lines."
+            ],
+            [
+              "C",
+              "Choosing a film topic."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未调颜色；B：明确shorten few lines；C：已经拍成无需选题"
+        },
+        {
+          "stem": "Why does she need to change the lines?",
+          "options": [
+            [
+              "A",
+              "They are hard to read in time."
+            ],
+            [
+              "B",
+              "They contain too many spelling mistakes."
+            ],
+            [
+              "C",
+              "They are in the wrong language."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：消失过快来不及读；B：拼写昨天已核；C：没说语言错误"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "My brother wants me to join his running club, but I would rather go swimming."
+        },
+        {
+          "speaker": "M",
+          "text": "Have you told him?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not yet. He bought me running shoes, so I feel I should agree."
+        },
+        {
+          "speaker": "M",
+          "text": "Thank him for the shoes, but explain what you enjoy. You can still go for an occasional run together."
+        },
+        {
+          "speaker": "W",
+          "text": "That is a good way to put it. I will talk to him tonight."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Which activity does the girl prefer?",
+          "options": [
+            [
+              "A",
+              "Running."
+            ],
+            [
+              "B",
+              "Cycling."
+            ],
+            [
+              "C",
+              "Swimming."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：哥哥建议跑步；B：未提骑车；C：明确rather go swimming"
+        },
+        {
+          "stem": "What does the boy advise?",
+          "options": [
+            [
+              "A",
+              "Hide the shoes."
+            ],
+            [
+              "B",
+              "Explain her preference kindly."
+            ],
+            [
+              "C",
+              "Stop speaking to her brother."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：不建议藏礼物；B：感谢再解释所好；C：不让断绝交流"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Welcome to the seed library in West Hall. Unlike a normal library, we lend packets of seeds rather than books. Each packet has a picture and planting instructions. You may take up to three packets on your first visit. At the end of the growing season, bring back dry seeds from your own plants if you can. Please do not return fresh fruit or wet seeds, as they may spoil in storage. Our volunteers sort new donations on Tuesdays. On Thursday evenings they run a short class for beginners. All the classes are free, but please book a place because the room is small."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How many packets can a first-time visitor take?",
+          "options": [
+            [
+              "A",
+              "Three at most."
+            ],
+            [
+              "B",
+              "Exactly five."
+            ],
+            [
+              "C",
+              "As many as they want."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确up to three；B：无五包规定；C：有数量上限"
+        },
+        {
+          "stem": "What should people avoid returning?",
+          "options": [
+            [
+              "A",
+              "Dry seeds."
+            ],
+            [
+              "B",
+              "Labelled seed packets."
+            ],
+            [
+              "C",
+              "Wet seeds."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：鼓励返干种子；B：没有禁止标签袋；C：明确湿种子可能变质"
+        },
+        {
+          "stem": "Why must people book a class?",
+          "options": [
+            [
+              "A",
+              "The classes are expensive."
+            ],
+            [
+              "B",
+              "The room has limited space."
+            ],
+            [
+              "C",
+              "Only Tuesday classes are available."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：课程免费；B：明确because room small；C：课在周四而非周二"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I have to interview someone about an unusual job. Would your aunt be willing?"
+        },
+        {
+          "speaker": "W",
+          "text": "Possibly. She repairs clocks, but she is busy in her shop this week."
+        },
+        {
+          "speaker": "M",
+          "text": "I could send my questions by email."
+        },
+        {
+          "speaker": "W",
+          "text": "She prefers talking. Why not phone her on Sunday, when the shop is closed?"
+        },
+        {
+          "speaker": "M",
+          "text": "All right. I want to ask how she finds replacement parts."
+        },
+        {
+          "speaker": "W",
+          "text": "Ask about her training too. She first studied jewellery, then learned clock repair from her grandfather."
+        },
+        {
+          "speaker": "M",
+          "text": "I did not know that. May I record the call?"
+        },
+        {
+          "speaker": "W",
+          "text": "Ask her permission first. I will give you her number after I check that she is happy to be interviewed."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the girl's aunt do?",
+          "options": [
+            [
+              "A",
+              "She teaches music."
+            ],
+            [
+              "B",
+              "She designs houses."
+            ],
+            [
+              "C",
+              "She repairs clocks."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：无音乐教学；B：无建筑设计；C：明确修钟"
+        },
+        {
+          "stem": "Why does the girl suggest Sunday?",
+          "options": [
+            [
+              "A",
+              "The shop will be closed."
+            ],
+            [
+              "B",
+              "The aunt will have new parts."
+            ],
+            [
+              "C",
+              "The interview is due that morning."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确周日闭店；B：未说新零件到货；C：无周日截止"
+        },
+        {
+          "stem": "What did the aunt study first?",
+          "options": [
+            [
+              "A",
+              "Clock repair."
+            ],
+            [
+              "B",
+              "Jewellery."
+            ],
+            [
+              "C",
+              "Photography."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：是后学技能；B：明确first studied jewellery；C：未学摄影"
+        }
+      ]
+    }
+  ]
+}

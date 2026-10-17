@@ -1,0 +1,165 @@
+{
+  "version": "0.2",
+  "id": "grade9-tablelisten-sound-walk",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "d76d4c088a76762eab249f0cc5b7906f40693fc05622f3a06e4d05654eaa55ea",
+  "source_binding": "g9listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_group_id": "zz.g9.25123674.listening.sectionC",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空：消息中活动的结束时间（p.m.已印出）",
+      "options": [],
+      "acceptedAnswers": [
+        "4",
+        "04",
+        "four",
+        "4:00",
+        "04:00",
+        "4.00",
+        "04.00"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "clock_hour_v1",
+        "clockFrame": "p.m.",
+        "unknownSyntax": "review",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "1",
+          "1:00"
+        ],
+        "wholeHour": 4
+      },
+      "rationale": "录音结束时刻为four o'clock。表中已印p.m.；整点数字/英文数词及列出的时分写法同等接受，不限定最多三种。1是开始时间，不能填结束空；未核其他格式待复核。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空：Learn about local ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "history"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "science"
+        ]
+      },
+      "rationale": "录音原句learn about local history，主题为街巷过去的声音；science不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空：Speak ____ near the gardens.",
+      "options": [],
+      "acceptedAnswers": [
+        "quietly"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "loudly"
+        ]
+      },
+      "rationale": "录音要求speak quietly，副词修饰speak；loudly不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空：The guides will provide ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "maps"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "phones"
+        ]
+      },
+      "rationale": "录音明确提供标出各站的maps，不要求自印；phones不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空：Build ____ in interviewing people.",
+      "options": [],
+      "acceptedAnswers": [
+        "confidence"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "competition"
+        ]
+      },
+      "rationale": "录音明确build your confidence；空前无your，无需把它再填入；competition不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    }
+  ],
+  "canonical_response_block_sha256": "f0317e2c806e70e3d259a17de09d14480037a8bfa0f41367b24fd4bd5d371e58",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-sound-walk-extract1-v0.1.m4a)\n\n### Old Street Sound Walk\n| Item | Information |\n| --- | --- |\n| Time | From 1:00 p.m. to (1) ____ p.m. |\n| Aim | Learn about local (2) ____. |\n| Rule | Speak (3) ____ near the gardens. |\n| Resources | The guides will provide (4) ____. |\n| Benefit | Build (5) ____ in interviewing people. |",
+  "body_load_text": "Old Street Sound Walk Time From 1:00 p.m. to (1) ____ p.m. Aim Learn about local (2) ____. Rule Speak (3) ____ near the gardens. Resources The guides will provide (4) ____. Benefit Build (5) ____ in interviewing people.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-tablelisten-sound-walk-manuscript-v0.2.json",
+    "sha256": "5f97558bb2f5db707cb62fa758a582d86b49430b172644bb2762bba4c6404842"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-sound-walk-audio-v0.2.json",
+    "sha256": "d925e95a6a618738801c2b817f99d7e598b9964c5a11687e3b652e58b8918000"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-sound-walk-extract1-v0.1.m4a",
+      "sha256": "3f2613756e1aafe7dd5323dd6a1c89cc84c09fc5e27aab8e7d2e6d35143da1fb",
+      "seconds": 157.0990022675737,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 30,
+    "stem_English_words": 17,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 145,
+    "audio_spoken_words_with_instructions": 302,
+    "audio_seconds_with_pauses": 157.0990022675737,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 7
+}

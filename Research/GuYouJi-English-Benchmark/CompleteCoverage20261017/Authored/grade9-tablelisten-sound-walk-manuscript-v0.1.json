@@ -1,0 +1,150 @@
+{
+  "version": "0.1",
+  "id": "grade9-tablelisten-sound-walk",
+  "title": "初三信息表：街巷声音",
+  "grade": 9,
+  "family": "listening_table_completion",
+  "family_label": "听信息表填词/数字",
+  "source_group_id": "zz.g9.25123674.listening.sectionC",
+  "source_binding": "g9listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.11.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 150
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 150
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    }
+  },
+  "source_notice": "初三公开普通期末转载完整题面/印本脚本/参考键已核，原音轨明确缺；地域学年学期只在标题，正文只见九年级英语，原校认证未建立，不当gold。本稿完整原创配套不补平原录音缺口。",
+  "timing_notice": "每段两遍；原卷未印精确停顿，本机听前后每题5秒及重播提示属审阅编排",
+  "instruction": "听一则消息，用听到的信息补全全部五空。每空一词或一个数字，时间单位p.m.已印在表中。消息读两遍；听前后各25秒是本机审阅编排。可核写法同等接受，未核形式待复核。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Here is a message about our Old Street Sound Walk this Saturday. The walk will begin at one in the afternoon and end at four. Meet outside the school gate. We will listen to familiar streets in a new way and learn about local history. A former shopkeeper will tell us what the market sounded like when she was a child. Some stops are next to people's gardens, so please speak quietly there. Do not record anyone's conversation without asking. The guides will provide maps showing all the stops. You do not need to print your own. Bring a pencil to add notes to the map. In the last part of the walk, we will practise interviewing a volunteer about one sound they remember. We hope this will build your confidence in interviewing people. You can use a school recorder; a phone is not required."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1空：消息中活动的结束时间（p.m.已印出）",
+          "options": [],
+          "acceptedAnswers": [
+            "4",
+            "04",
+            "four",
+            "4:00",
+            "04:00",
+            "4.00",
+            "04.00"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "clock_hour_v1",
+            "clockFrame": "p.m.",
+            "unknownSyntax": "review",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "1",
+              "1:00"
+            ]
+          },
+          "rationale": "录音结束时刻为four o'clock。表中已印p.m.；整点数字/英文数词及列出的时分写法同等接受，不限定最多三种。1是开始时间，不能填结束空；未核其他格式待复核。"
+        },
+        {
+          "stem": "第2空：Learn about local ____.",
+          "options": [],
+          "acceptedAnswers": [
+            "history"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "science"
+            ]
+          },
+          "rationale": "录音原句learn about local history，主题为街巷过去的声音；science不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第3空：Speak ____ near the gardens.",
+          "options": [],
+          "acceptedAnswers": [
+            "quietly"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "loudly"
+            ]
+          },
+          "rationale": "录音要求speak quietly，副词修饰speak；loudly不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第4空：The guides will provide ____.",
+          "options": [],
+          "acceptedAnswers": [
+            "maps"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "phones"
+            ]
+          },
+          "rationale": "录音明确提供标出各站的maps，不要求自印；phones不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第5空：Build ____ in interviewing people.",
+          "options": [],
+          "acceptedAnswers": [
+            "confidence"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "competition"
+            ]
+          },
+          "rationale": "录音明确build your confidence；空前无your，无需把它再填入；competition不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        }
+      ]
+    }
+  ],
+  "student_table": "### Old Street Sound Walk\n| Item | Information |\n| --- | --- |\n| Time | From 1:00 p.m. to (1) ____ p.m. |\n| Aim | Learn about local (2) ____. |\n| Rule | Speak (3) ____ near the gardens. |\n| Resources | The guides will provide (4) ____. |\n| Benefit | Build (5) ____ in interviewing people. |",
+  "table_load_text": "Old Street Sound Walk Time From 1:00 p.m. to (1) ____ p.m. Aim Learn about local (2) ____. Rule Speak (3) ____ near the gardens. Resources The guides will provide (4) ____. Benefit Build (5) ____ in interviewing people."
+}

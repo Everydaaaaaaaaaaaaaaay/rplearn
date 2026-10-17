@@ -1,0 +1,164 @@
+{
+  "version": "0.1",
+  "id": "grade9-tablelisten-story-radio",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "4f2d88019f6c21480cac83078823c69f1afe617f79293c62516dc7181101fa56",
+  "source_binding": "g9listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_group_id": "zz.g9.25123674.listening.sectionC",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空：消息中活动的结束时间（p.m.已印出）",
+      "options": [],
+      "acceptedAnswers": [
+        "6",
+        "06",
+        "six",
+        "6:00",
+        "06:00",
+        "6.00",
+        "06.00"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "clock_hour_v1",
+        "clockFrame": "p.m.",
+        "unknownSyntax": "review",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "4",
+          "4:00"
+        ]
+      },
+      "rationale": "录音结束时刻为six o'clock。表中已印p.m.；整点数字/英文数词及列出的时分写法同等接受，不限定最多三种。4是开始时间，不能填结束空；未核其他格式待复核。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空：Read stories ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "clearly"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "quietly"
+        ]
+      },
+      "rationale": "明确read stories clearly以便听者跟上情节，非刻意小声；quietly不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空：Keep ____ outside the recording room.",
+      "options": [],
+      "acceptedAnswers": [
+        "phones"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "recorders"
+        ]
+      },
+      "rationale": "明确手机留在房外，校录音机在桌上；recorders不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空：Use ____ for story ideas.",
+      "options": [],
+      "acceptedAnswers": [
+        "pictures"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "tickets"
+        ]
+      },
+      "rationale": "明确从门边盒中选图片找故事灵感；tickets不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空：Send ____ about future programmes.",
+      "options": [],
+      "acceptedAnswers": [
+        "questions"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "answers"
+        ]
+      },
+      "rationale": "录音结尾说listeners can send questions，不是回答；answers不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    }
+  ],
+  "canonical_response_block_sha256": "563a54bddb41e28fc08d07c93dc54adb3fe43601c1ed35ccf51046b4d9785f8e",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-story-radio-extract1-v0.1.m4a)\n\n### Story Radio Workshop\n| Item | Information |\n| --- | --- |\n| Time | From 4:00 p.m. to (1) ____ p.m. |\n| Aim | Help students read stories (2) ____. |\n| Rule | Keep (3) ____ outside the recording room. |\n| Resources | Students may use (4) ____ for story ideas. |\n| Afterwards | Listeners can send (5) ____ about future programmes. |",
+  "body_load_text": "Story Radio Workshop Time From 4:00 p.m. to (1) ____ p.m. Aim Help students read stories (2) ____. Rule Keep (3) ____ outside the recording room. Resources Students may use (4) ____ for story ideas. Afterwards Listeners can send (5) ____ about future programmes.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-tablelisten-story-radio-manuscript-v0.1.json",
+    "sha256": "edfa994b0ebdfa1988267b0e53bd15e03581c13b6a31cea395552b2ad4aad6e8"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-story-radio-audio-v0.1.json",
+    "sha256": "904454a95f9d5027f016d423c07a87d1e393ab65f552f95e818eb138d0b81aeb"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-story-radio-extract1-v0.1.m4a",
+      "sha256": "feb83641d5161a07f4ccc738e0dcc5743b8d386e6961b3ce8ff1f17acc72ea63",
+      "seconds": 162.68249433106575,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 35,
+    "stem_English_words": 17,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 148,
+    "audio_spoken_words_with_instructions": 308,
+    "audio_seconds_with_pauses": 162.68249433106575,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 7
+}

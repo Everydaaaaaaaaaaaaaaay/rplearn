@@ -1,0 +1,155 @@
+{
+  "version": "0.2",
+  "id": "grade9-tablelisten-story-radio",
+  "title": "初三信息表：故事广播",
+  "grade": 9,
+  "family": "listening_table_completion",
+  "family_label": "听信息表填词/数字",
+  "source_group_id": "zz.g9.25123674.listening.sectionC",
+  "source_binding": "g9listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.11.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 150
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 150
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    }
+  },
+  "source_notice": "初三公开普通期末转载完整题面/印本脚本/参考键已核，原音轨明确缺；地域学年学期只在标题，正文只见九年级英语，原校认证未建立，不当gold。本稿完整原创配套不补平原录音缺口。",
+  "timing_notice": "每段两遍；原卷未印精确停顿，本机听前后每题5秒及重播提示属审阅编排",
+  "instruction": "听一则消息，用听到的信息补全全部五空。每空一词或一个数字，时间单位p.m.已印在表中。消息读两遍；听前后各25秒是本机审阅编排。可核写法同等接受，未核形式待复核。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "This is a message from the school radio club. Our Story Radio workshop will be on Thursday, from four in the afternoon until six. It is open to students who have never made a radio programme before. The aim is to help you read stories clearly, so a listener can follow them without seeing your face. We will try short passages first and then work in pairs on a longer story. To avoid interruptions, keep phones outside the recording room. School recorders will be ready on the desks. If you cannot think of a story, you may use pictures from the box beside the door for ideas. Choose one and imagine what happened just before the moment in it. After the workshop, one story from each pair will be played at lunchtime on Friday. Listeners can send questions about future programmes to the club through the school website."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1空：消息中活动的结束时间（p.m.已印出）",
+          "options": [],
+          "acceptedAnswers": [
+            "6",
+            "06",
+            "six",
+            "6:00",
+            "06:00",
+            "6.00",
+            "06.00"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "clock_hour_v1",
+            "clockFrame": "p.m.",
+            "unknownSyntax": "review",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "4",
+              "4:00"
+            ],
+            "wholeHour": 6
+          },
+          "rationale": "录音结束时刻为six o'clock。表中已印p.m.；整点数字/英文数词及列出的时分写法同等接受，不限定最多三种。4是开始时间，不能填结束空；未核其他格式待复核。"
+        },
+        {
+          "stem": "第2空：Read stories ____.",
+          "options": [],
+          "acceptedAnswers": [
+            "clearly"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "quietly"
+            ]
+          },
+          "rationale": "明确read stories clearly以便听者跟上情节，非刻意小声；quietly不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第3空：Keep ____ outside the recording room.",
+          "options": [],
+          "acceptedAnswers": [
+            "phones"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "recorders"
+            ]
+          },
+          "rationale": "明确手机留在房外，校录音机在桌上；recorders不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第4空：Use ____ for story ideas.",
+          "options": [],
+          "acceptedAnswers": [
+            "pictures"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "tickets"
+            ]
+          },
+          "rationale": "明确从门边盒中选图片找故事灵感；tickets不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第5空：Send ____ about future programmes.",
+          "options": [],
+          "acceptedAnswers": [
+            "questions"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "answers"
+            ]
+          },
+          "rationale": "录音结尾说listeners can send questions，不是回答；answers不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        }
+      ]
+    }
+  ],
+  "student_table": "### Story Radio Workshop\n| Item | Information |\n| --- | --- |\n| Time | From 4:00 p.m. to (1) ____ p.m. |\n| Aim | Help students read stories (2) ____. |\n| Rule | Keep (3) ____ outside the recording room. |\n| Resources | Students may use (4) ____ for story ideas. |\n| Afterwards | Listeners can send (5) ____ about future programmes. |",
+  "table_load_text": "Story Radio Workshop Time From 4:00 p.m. to (1) ____ p.m. Aim Help students read stories (2) ____. Rule Keep (3) ____ outside the recording room. Resources Students may use (4) ____ for story ideas. Afterwards Listeners can send (5) ____ about future programmes.",
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-tablelisten-story-radio-manuscript-v0.1.json",
+    "sha256": "edfa994b0ebdfa1988267b0e53bd15e03581c13b6a31cea395552b2ad4aad6e8"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "version": "0.2",
+  "id": "grade9-tablelisten-bread-afternoon",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "eb0102f4071c131533f00b4c82877b00c00b8c5ec95dd5165c3c3e592691754d",
+  "source_binding": "g9listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_group_id": "zz.g9.25123674.listening.sectionC",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空：消息中活动的结束时间（p.m.已印出）",
+      "options": [],
+      "acceptedAnswers": [
+        "5",
+        "05",
+        "five",
+        "5:00",
+        "05:00",
+        "5.00",
+        "05.00"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "clock_hour_v1",
+        "clockFrame": "p.m.",
+        "unknownSyntax": "review",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "2",
+          "2:00"
+        ],
+        "wholeHour": 5
+      },
+      "rationale": "录音结束时刻为five o'clock。表中已印p.m.；整点数字/英文数词及列出的时分写法同等接受，不限定最多三种。2是开始时间，不能填结束空；未核其他格式待复核。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空：Practise ____ in the kitchen.",
+      "options": [],
+      "acceptedAnswers": [
+        "teamwork"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "homework"
+        ]
+      },
+      "rationale": "录音明确aim is to practise teamwork，不是课后作业；homework不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空：Carry the trays ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "carefully"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "carelessly"
+        ]
+      },
+      "rationale": "录音carry them carefully，与双手端托盘要求一致；carelessly不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空：The helpers will provide recipe ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "cards"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "books"
+        ]
+      },
+      "rationale": "录音recipe cards，cookery book明确不需自带；books不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空：Learn useful cooking ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "skills"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "rules"
+        ]
+      },
+      "rationale": "录音结尾明确cooking skills；rules不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+    }
+  ],
+  "canonical_response_block_sha256": "088979e6cf3a2ca05d547414d7a3ecc9751d6b725cdc65f15ba41ba797660bdf",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-bread-afternoon-extract1-v0.1.m4a)\n\n### School Bread Afternoon\n| Item | Information |\n| --- | --- |\n| Time | From 2:00 p.m. to (1) ____ p.m. |\n| Aim | Practise (2) ____ in the kitchen. |\n| Rule | Carry the trays (3) ____. |\n| Resources | The helpers will provide recipe (4) ____. |\n| Benefit | Learn useful cooking (5) ____. |",
+  "body_load_text": "School Bread Afternoon Time From 2:00 p.m. to (1) ____ p.m. Aim Practise (2) ____ in the kitchen. Rule Carry the trays (3) ____. Resources The helpers will provide recipe (4) ____. Benefit Learn useful cooking (5) ____.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-tablelisten-bread-afternoon-manuscript-v0.2.json",
+    "sha256": "5b922d2982537e7c8182706baf6983d965ebec6484f842d6189dfb7dbb90fd14"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-bread-afternoon-audio-v0.2.json",
+    "sha256": "3579e429e71b9730f044f33b6e19a388b0ce45584512b94c8bbfef191fc20042"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade9-tablelisten-bread-afternoon-extract1-v0.1.m4a",
+      "sha256": "1d54ca518d2a51f280e50f911b13deb44b5c57d901f40c6c557719b49be26700",
+      "seconds": 161.18897959183673,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 29,
+    "stem_English_words": 17,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 153,
+    "audio_spoken_words_with_instructions": 318,
+    "audio_seconds_with_pauses": 161.18897959183673,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 7
+}

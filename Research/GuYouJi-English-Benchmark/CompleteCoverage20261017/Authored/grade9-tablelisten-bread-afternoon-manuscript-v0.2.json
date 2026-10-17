@@ -1,0 +1,155 @@
+{
+  "version": "0.2",
+  "id": "grade9-tablelisten-bread-afternoon",
+  "title": "初三信息表：面包下午场",
+  "grade": 9,
+  "family": "listening_table_completion",
+  "family_label": "听信息表填词/数字",
+  "source_group_id": "zz.g9.25123674.listening.sectionC",
+  "source_binding": "g9listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.11.json",
+    "sha256": "a5c9e4121ea71802018c00d342426106e84430fe62fd52e2a9aee70e0b98de76"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.11.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 150
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 150
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    }
+  },
+  "source_notice": "初三公开普通期末转载完整题面/印本脚本/参考键已核，原音轨明确缺；地域学年学期只在标题，正文只见九年级英语，原校认证未建立，不当gold。本稿完整原创配套不补平原录音缺口。",
+  "timing_notice": "每段两遍；原卷未印精确停顿，本机听前后每题5秒及重播提示属审阅编排",
+  "instruction": "听一则消息，用听到的信息补全全部五空。每空一词或一个数字，时间单位p.m.已印在表中。消息读两遍；听前后各25秒是本机审阅编排。可核写法同等接受，未核形式待复核。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Good morning. Here is news about the School Bread Afternoon next Wednesday. It starts at two in the afternoon and finishes at five. Small groups will make bread rolls together. The aim is to practise teamwork in the kitchen: everyone will have a different job, and no one should try to do everything alone. Before we begin, please wash your hands and put on an apron. When you move the trays, carry them carefully with both hands. Only the adult helpers will put trays into the hot ovens or take them out. The helpers will provide recipe cards, so there is no need to bring a cookery book. At the end, you can take your bread home in a paper bag. As well as enjoying the afternoon, we hope you will learn useful cooking skills that you can practise with an adult at home. Please sign up at the school office by Monday."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1空：消息中活动的结束时间（p.m.已印出）",
+          "options": [],
+          "acceptedAnswers": [
+            "5",
+            "05",
+            "five",
+            "5:00",
+            "05:00",
+            "5.00",
+            "05.00"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "clock_hour_v1",
+            "clockFrame": "p.m.",
+            "unknownSyntax": "review",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "2",
+              "2:00"
+            ],
+            "wholeHour": 5
+          },
+          "rationale": "录音结束时刻为five o'clock。表中已印p.m.；整点数字/英文数词及列出的时分写法同等接受，不限定最多三种。2是开始时间，不能填结束空；未核其他格式待复核。"
+        },
+        {
+          "stem": "第2空：Practise ____ in the kitchen.",
+          "options": [],
+          "acceptedAnswers": [
+            "teamwork"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "homework"
+            ]
+          },
+          "rationale": "录音明确aim is to practise teamwork，不是课后作业；homework不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第3空：Carry the trays ____.",
+          "options": [],
+          "acceptedAnswers": [
+            "carefully"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "carelessly"
+            ]
+          },
+          "rationale": "录音carry them carefully，与双手端托盘要求一致；carelessly不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第4空：The helpers will provide recipe ____.",
+          "options": [],
+          "acceptedAnswers": [
+            "cards"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "books"
+            ]
+          },
+          "rationale": "录音recipe cards，cookery book明确不需自带；books不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        },
+        {
+          "stem": "第5空：Learn useful cooking ____.",
+          "options": [],
+          "acceptedAnswers": [
+            "skills"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "review": "author_context_checked",
+            "normalization": "english_phrase_v1",
+            "maxWords": 1,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "rules"
+            ]
+          },
+          "rationale": "录音结尾明确cooking skills；rules不匹配录音及本空语境，其他未核词形待复核，不自动视为错误。"
+        }
+      ]
+    }
+  ],
+  "student_table": "### School Bread Afternoon\n| Item | Information |\n| --- | --- |\n| Time | From 2:00 p.m. to (1) ____ p.m. |\n| Aim | Practise (2) ____ in the kitchen. |\n| Rule | Carry the trays (3) ____. |\n| Resources | The helpers will provide recipe (4) ____. |\n| Benefit | Learn useful cooking (5) ____. |",
+  "table_load_text": "School Bread Afternoon Time From 2:00 p.m. to (1) ____ p.m. Aim Practise (2) ____ in the kitchen. Rule Carry the trays (3) ____. Resources The helpers will provide recipe (4) ____. Benefit Learn useful cooking (5) ____.",
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-tablelisten-bread-afternoon-manuscript-v0.1.json",
+    "sha256": "ce9040c13d141f13045d786e3e2e128c585e775fc8001e19a8f7d55aefe36d34"
+  }
+}

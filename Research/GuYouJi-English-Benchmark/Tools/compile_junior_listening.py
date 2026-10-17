@@ -21,6 +21,16 @@ def check(group, audit, binding, source):
         key_span=next(s for s in selected['spans'] if s['role']=='published_key_including_conflicting_header')
         keys={int(n):k for n,k in re.findall(r'(\d+)\.\s*([ABC])',raw[key_span['start']:key_span['end']])}
         assert selected['reference_keys']==[keys[n] for n in selected['source_question_numbers']]
+    else:
+        key_span=next(s for s in selected['spans'] if s['role']=='published_key')
+        key_text=raw[key_span['start']:key_span['end']]
+        if source['kind']=='listening_table_completion':
+            keys=dict((int(n),v) for n,v in re.findall(r'(1[6-9]|20)\.\s*(\S+)',key_text))
+            assert selected['reference_keys']==[keys[n] for n in selected['source_question_numbers']]
+        else:
+            chunks=re.findall(r'(?:1-5|6-10|11-15) ([ABC]{5})',key_text);keys=dict(zip(range(1,16),''.join(chunks)))
+            assert selected['reference_keys']==[keys[n] for n in selected['source_question_numbers']]
+        assert selected['source_question_images']==source['source_images']
     assert selected['source'] == source['source']
     assert not selected['source_original_audio_acquired'] and not source['source_full_input_verified']
     assert not source['original_school_authenticated'] and not source['source_original_key_is_gold']
@@ -35,6 +45,13 @@ def check(group, audit, binding, source):
     assert source['features']['points_each'] == points
     generation = json.loads(load_ref(audit['audio_generation']).read_text())
     assert generation['manuscript'] == audit['manuscript'] and generation['whole_final_audio_decode_passed'] and generation['no_source_recording_reused']
+    if generation.get('marking_only_metadata_revision'):
+        old_generation=json.loads(load_ref(generation['previous_audio_manifest']).read_text())
+        old_draft=json.loads(load_ref(old_generation['manuscript']).read_text())
+        assert generation['tracks']==old_generation['tracks'] and generation['spoken_content_and_audio_bytes_unchanged']
+        assert draft['speakers']==old_draft['speakers']
+        assert [(c['turns'],c['preview_seconds'],c['answer_seconds']) for c in draft['clips']]==[(c['turns'],c['preview_seconds'],c['answer_seconds']) for c in old_draft['clips']]
+        assert draft['source_repeat_count']==old_draft['source_repeat_count']
     assert len(draft['clips']) == len(generation['tracks']) == len(audit['audio_assets']) == len(group['requiredAudioAssets']) == len(counts)
     assert len(group['questions']) == binding['responses'] == source['responses'] == sum(counts)
     cursor = 1
@@ -58,6 +75,13 @@ def check(group, audit, binding, source):
         for t in clip['turns']:
             assert t['text'] in group['reviewText'] and t['text'] not in group['passageHtml']
         cursor += len(numbers)
+    if family=='listening_table_completion':
+        assert re.findall(r'\((\d+)\) ____',draft['student_table'])==[str(n) for n in range(1,6)]
+        assert draft['student_table'] in audit['student_passage']
+        assert group['questions'][0]['fillMarking']['normalization']=='clock_hour_v1'
+        assert all(q['fillMarking']['maxWords']==1 for q in group['questions'])
+        assert all(q['fillMarking']['normalization']=='english_phrase_v1' for q in group['questions'][1:])
+        assert audit['full_fill_variant_combinations']==__import__('math').prod(len(q['acceptedAnswers']) for q in group['questions'])
     assert audit['audio_transcript_in_teacher_only'] and audit['source_companion_gap_visible']
     return True
 
@@ -81,6 +105,7 @@ def compile_author(manuscript, version='0.1', audio_version='0.1'):
     p=manuscript.parent/(draft['id']+'-v'+version+'.md'); ap=manuscript.parent/(draft['id']+'-author-check-v'+version+'.json'); assert not p.exists() and not ap.exists()
     p.write_text('# '+draft['title']+'\n\n## 学生题面\n\n'+draft['instruction']+'\n\n'+body+'\n\n<!-- responses:start -->\n\n'+block+'\n\n<!-- responses:end -->\n\n## 作者核对\n\n'+'\n\n'.join(teacher)+'\n')
     a=dict(version=version,id=draft['id'],grade=grade,questions=len(tasks),candidate_sha256=ref(p)['sha256'],source_binding=binding['id'],source_bindings=ref(bp),source_group_id=draft['source_group_id'],review_response_tasks=tasks,canonical_response_block_sha256=hashlib.sha256(block.encode()).hexdigest(),student_passage=body,body_load_text=draft.get('table_load_text',''),manuscript=ref(manuscript),audio_generation=ref(manifest),audio_assets=assets,audio_transcript_in_teacher_only=True,junior_source_bound=True,source_companion_gap_visible=True,load_measure=dict(body_English_words=words(draft.get('table_load_text','')),stem_English_words=sum(words(q['stem']) for q in tasks),options_English_words_with_repeated_bank=sum(words(v) for q in tasks for _,v in q['options']),output_response_positions=len(tasks),audio_dialogue_English_words_once=sum(t['dialogue_words_once'] for t in generation['tracks']),audio_spoken_words_with_instructions=sum(t['spoken_words_with_instructions'] for t in generation['tracks']),audio_seconds_with_pauses=sum(t['seconds'] for t in generation['tracks']),artifact_URLs_excluded_from_reading_load=True),source_count_increment=0,authored_student_inputs_complete=True,source_level_equivalence_established=False,independent_teacher_student_commercial_production_validated=False)
+    if family=='listening_table_completion':a['full_fill_variant_combinations']=__import__('math').prod(len(q['acceptedAnswers']) for q in tasks)
     ap.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n')
     return dict(id=draft['id'],grade=grade,family=family,family_label=draft['family_label'],title=draft['title'],questions=len(tasks),candidate=ref(p),author_check=ref(ap),source_group_ids=[draft['source_group_id']],instruction=draft['instruction'],source_form_notice=draft['source_notice'],format_summary=str(len(counts))+'材料 / '+'+'.join(map(str,counts))+'回应 / '+('五空信息表' if family=='listening_table_completion' else '每题三选')+' / 每段'+str(repeats)+'遍 / '+draft['timing_notice'])
 

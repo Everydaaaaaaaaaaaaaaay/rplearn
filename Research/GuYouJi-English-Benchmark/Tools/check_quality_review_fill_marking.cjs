@@ -86,6 +86,17 @@ assert.equal(compare([bankHelp,{...bankChild,bankEntry:'HELP'}]).available,false
 assert.equal(compare([bankHelp,{...bankChild,acceptedAnswers:['to help']}]).available,false);
 assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,wordCountAmbiguity:undefined}}]).available,false);
 assert.equal(compare([{...exactTwo,acceptedAnswers:['instead']}]).available,false);
+// A clock gap already followed by p.m. accepts bound hour formats, not
+// punctuation-erased arbitrary text. Unknown plausible syntax needs review.
+const clock={number:1,options:[],acceptedAnswers:['4','04','four','4:00','04:00','4.00','04.00'],fillMarking:{version:1,review:'author_context_checked',normalization:'clock_hour_v1',clockFrame:'p.m.',wholeHour:4,unknownSyntax:'review',maxWords:1,unlisted:'review',rejectedAnswers:['5','five','5:00','4:30','04.30','9','twelve']}};
+for(const v of ['4','04',' FOUR ','4:00','04:00','4.00','04.00','４：００','０４．００'])assert.equal(compare([clock],{'1.1':v}).matched,1);
+for(const v of ['5','five','5:00','4:30','04.30','9','twelve'])assert.equal(compare([clock],{'1.1':v}).different,1);
+for(const v of ['four o’clock','4 pm','16:00','4.000','4/00','+4','4:00!'])assert.equal(compare([clock],{'1.1':v}).review,1);
+assert.equal(compare([clock],{'1.1':''}).unanswered,1);
+assert.equal(compare([{...clock,fillMarking:{...clock.fillMarking,clockFrame:undefined}}]).available,false);
+assert.equal(compare([{...clock,fillMarking:{...clock.fillMarking,unknownSyntax:undefined}}]).available,false);
+assert.equal(compare([{...clock,acceptedAnswers:['4:00','４：００']}]).available,false);
+
 // Integrate with every actual new complete group; exercise all alternate forms.
 const page=fs.readFileSync(path.join(__dirname,'../../../build/english-benchmark-quality-review/index.html'),'utf8');
 const data=JSON.parse(page.match(/<script id="quality-data" type="application\/json">(.*?)<\/script>/s)[1]);
@@ -118,4 +129,4 @@ for(const [id,clauses]of [
  const pastForm={'grade10-grammar-library-cinema-neighbour':'carried','grade10-grammar-bakery-watercolour-train':'pushed','grade10-grammar-hospital-birdwalk-bus':'stood'}[id];
  const pastResult=compare(g.questions,{...saved,'8.1':pastForm});assert.equal(pastResult.matched,9);assert.equal(pastResult.review,1);assert.equal(pastResult.different,0);pendingPastForms++;
 }
-console.log(JSON.stringify({passed:true,cases:64+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,actual_once_banks_reuse_checked:actualOnceBanks,known_variants_reuse_same_root:true,no_unknown_root_stemming:true,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unchanged_whole_keyword:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));
+console.log(JSON.stringify({passed:true,cases:91+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,actual_once_banks_reuse_checked:actualOnceBanks,known_variants_reuse_same_root:true,no_unknown_root_stemming:true,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,clock_hour_bound_variants:true,unknown_clock_formats_need_review:true,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unchanged_whole_keyword:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));

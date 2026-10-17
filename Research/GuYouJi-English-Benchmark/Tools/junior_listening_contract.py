@@ -22,6 +22,7 @@ def validate_draft(draft):
         for q in clip['questions']:
             if family == 'listening_table_completion':
                 assert not q['options'] and q['acceptedAnswers'] and q['fillMarking']
+                assert q['fillMarking']['maxWords']==1 and q['fillMarking']['unlisted']=='review'
             else:
                 assert [k for k, _ in q['options']] == ['A','B','C'] and q['answer'] in 'ABC'
                 assert all(k+'：' in q['rationale'] for k in 'ABC')
