@@ -1,0 +1,316 @@
+{
+  "version": "0.1",
+  "id": "grade11-multilisten-display-and-sharing",
+  "title": "高二多题听力：展览与共享设备",
+  "grade": 11,
+  "family": "listening_multi_question_choice",
+  "family_label": "长对话/独白多题单选",
+  "source_group_id": "grade11-tianjin2026-21cnjy26082071.listening.sectionB",
+  "source_binding": "g11multi334",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.3.json",
+    "sha256": "0a4ef11cbdafc4e9627d38a3cb1faf61aae1143b72ca18db4aa1ec8f3737623b"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.3.json",
+  "source_questions_per_clip": [
+    3,
+    3,
+    4
+  ],
+  "source_hear_each_piece_twice": true,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 80
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 80
+    },
+    "N": {
+      "voice": "Alex",
+      "rate_parameter": 80
+    }
+  },
+  "audio_introduction": "Listen to the recording.",
+  "instruction": "听两段较长对话和一段独白，三组分别回答3、3、4题，共10题，每题三选。每段听两遍，听前每题5秒读题，听后每题5秒作答。音轨已含两遍与对应时间；本机可重播供审阅。来源原音频与脚本未取得，此处提供完整原创配套，不替来源补造。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "The old photographs look good on the display board, but visitors keep asking when they were taken."
+        },
+        {
+          "speaker": "M",
+          "text": "We know the year of most of them. For the two street scenes, we have only a likely decade."
+        },
+        {
+          "speaker": "W",
+          "text": "Then let us say that. An uncertain date is better than a confident wrong one."
+        },
+        {
+          "speaker": "M",
+          "text": "Should we remove those two pictures?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, they still show how the street changed. Add a question mark to the date and explain why we are unsure."
+        },
+        {
+          "speaker": "M",
+          "text": "I can put the explanation on a small card below them."
+        },
+        {
+          "speaker": "W",
+          "text": "Good. And keep the original prints in their envelopes. Only the copies should go on the board, where light and fingers may damage them."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What information are visitors asking for?",
+          "options": [
+            [
+              "A",
+              "Who owns the boards."
+            ],
+            [
+              "B",
+              "When the photographs were taken."
+            ],
+            [
+              "C",
+              "How much the prints cost."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "开头when they were taken直接支持B；A/C未询问。"
+        },
+        {
+          "stem": "What does the woman suggest for the uncertain dates?",
+          "options": [
+            [
+              "A",
+              "Showing the uncertainty clearly."
+            ],
+            [
+              "B",
+              "Choosing an exact year at random."
+            ],
+            [
+              "C",
+              "Removing every photograph."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "保留两图，日期加问号解释；B错误精确，C过度扩大删除。"
+        },
+        {
+          "stem": "What should be displayed on the board?",
+          "options": [
+            [
+              "A",
+              "The original prints."
+            ],
+            [
+              "B",
+              "The empty envelopes."
+            ],
+            [
+              "C",
+              "Copies of the photographs."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "只copies上板，originals留封套；A有损坏风险，B非照片展示。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Can I borrow the club projector for Saturday afternoon?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is available, but the small room has no screen. You would need the portable one from the cupboard."
+        },
+        {
+          "speaker": "M",
+          "text": "I can carry it. I will return both items on Monday morning."
+        },
+        {
+          "speaker": "W",
+          "text": "Please return the projector by Sunday evening instead. Another group is testing it first thing on Monday. The screen can wait until Monday."
+        },
+        {
+          "speaker": "M",
+          "text": "All right. Do I leave the projector at the main office?"
+        },
+        {
+          "speaker": "W",
+          "text": "The office is closed on Sundays. Give it to the caretaker at the side entrance and ask him to mark it as returned."
+        },
+        {
+          "speaker": "M",
+          "text": "I will put a reminder on my phone so I do not forget the earlier deadline."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why does the man need a portable screen?",
+          "options": [
+            [
+              "A",
+              "The projector has no power cable."
+            ],
+            [
+              "B",
+              "The small room has no screen."
+            ],
+            [
+              "C",
+              "The cupboard is being repaired."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "W直接说明小房间无屏；A/C没有设备或柜子损坏信息。"
+        },
+        {
+          "stem": "When must the projector be returned?",
+          "options": [
+            [
+              "A",
+              "Saturday afternoon."
+            ],
+            [
+              "B",
+              "Monday morning."
+            ],
+            [
+              "C",
+              "Sunday evening."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "原提周一被更正为周日晚，另组周一先测试；A为借用时间，B已不适用投影仪。"
+        },
+        {
+          "stem": "Who should receive the projector?",
+          "options": [
+            [
+              "A",
+              "The caretaker at the side entrance."
+            ],
+            [
+              "B",
+              "The worker in the main office."
+            ],
+            [
+              "C",
+              "The leader of the Monday group."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "星期天办公室关闭，交侧门caretaker并登记；B/C非指定接收者。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 20,
+      "answer_seconds": 20,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Our new seed library opens next week. Unlike a shop, it lets neighbours take small amounts of seed without paying. We hope people will later return seed from healthy plants, but a return is an invitation, not a condition of borrowing. If nothing grows, please tell us what happened instead of feeling that you owe us a packet.\n\nEvery envelope has a label with the plant name, the year the seed was collected and the space the plant needs. Keep that label with your pot until you are sure which plant it is. We cannot identify every young plant from a photograph.\n\nThe library will open on Wednesday afternoons in the community room. On the first day, volunteers will explain how the labels work. They will not give advice about eating wild plants. If you are unsure whether a plant is safe to eat, do not use this library as your source of advice. Our purpose is to share garden seed and records of growing it."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the speaker emphasise about returning seeds?",
+          "options": [
+            [
+              "A",
+              "It is required before borrowing."
+            ],
+            [
+              "B",
+              "It is an invitation rather than a condition."
+            ],
+            [
+              "C",
+              "It must be done within a week."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "开头明确invitation notcondition；A/C把希望误作硬性限期。"
+        },
+        {
+          "stem": "What information is on the envelope label?",
+          "options": [
+            [
+              "A",
+              "The seed collector's address."
+            ],
+            [
+              "B",
+              "The price of a mature plant."
+            ],
+            [
+              "C",
+              "The year the seed was collected."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "列植物名、采集年、空间需求；A/C之外的B售价均未印。"
+        },
+        {
+          "stem": "When will the library open?",
+          "options": [
+            [
+              "A",
+              "On Wednesday afternoons."
+            ],
+            [
+              "B",
+              "On Monday mornings."
+            ],
+            [
+              "C",
+              "Every evening."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "直接Wednesday afternoons；B/C与开放时间冲突。"
+        },
+        {
+          "stem": "What is outside the volunteers' role?",
+          "options": [
+            [
+              "A",
+              "Explaining the labels."
+            ],
+            [
+              "B",
+              "Providing seed envelopes."
+            ],
+            [
+              "C",
+              "Advising on eating wild plants."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "末段明确不提供野生植物食用建议；A是首日工作，B为种子库范围。"
+        }
+      ]
+    }
+  ]
+}

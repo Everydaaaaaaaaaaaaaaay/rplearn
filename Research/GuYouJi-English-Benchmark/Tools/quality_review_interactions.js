@@ -113,6 +113,13 @@ function render(){
    tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='对话'+(i+1))heading.remove();fields[i].querySelector('legend').after(track);});
   }
  }
+ // A long section keeps each player next to the first of its printed questions.
+ if(g.kind==='listening_multi_question_choice'){
+  const tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')],assets=g.requiredAudioAssets||[];
+  if(tracks.length===assets.length&&assets.flatMap(a=>a.response_numbers).join(',')===g.questions.map(q=>q.number).join(',')){
+   tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='材料'+(i+1))heading.remove();fields[assets[i].response_numbers[0]-1].querySelector('legend').after(track);});
+  }
+ }
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});

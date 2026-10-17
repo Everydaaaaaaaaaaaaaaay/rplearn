@@ -1,0 +1,308 @@
+{
+  "version": "0.1",
+  "id": "grade11-multilisten-workshop-and-screening",
+  "title": "高二多题听力：工坊与放映室",
+  "grade": 11,
+  "family": "listening_multi_question_choice",
+  "family_label": "长对话/独白多题单选",
+  "source_group_id": "grade11-tianjin2026-21cnjy26082071.listening.sectionB",
+  "source_binding": "g11multi334",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.3.json",
+    "sha256": "0a4ef11cbdafc4e9627d38a3cb1faf61aae1143b72ca18db4aa1ec8f3737623b"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.3.json",
+  "source_questions_per_clip": [
+    3,
+    3,
+    4
+  ],
+  "source_hear_each_piece_twice": true,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 80
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 80
+    },
+    "N": {
+      "voice": "Alex",
+      "rate_parameter": 80
+    }
+  },
+  "audio_introduction": "Listen to the recording.",
+  "instruction": "听两段较长对话和一段独白，三组分别回答3、3、4题，共10题，每题三选。每段听两遍，听前每题5秒读题，听后每题5秒作答。音轨已含两遍与对应时间；本机可重播供审阅。来源原音频与脚本未取得，此处提供完整原创配套，不替来源补造。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I thought the print workshop was for people who already knew how to use the machine."
+        },
+        {
+          "speaker": "M",
+          "text": "That was the plan last month, but the tutor has changed it. Beginners can now join on Saturday morning. The afternoon session is still for experienced users."
+        },
+        {
+          "speaker": "W",
+          "text": "Then I should choose the morning. Do I need to bring my own paper?"
+        },
+        {
+          "speaker": "M",
+          "text": "No. Paper and ink are included in the fee. Bring an old shirt, though. The ink can be difficult to wash out."
+        },
+        {
+          "speaker": "W",
+          "text": "I can do that. Will I make a poster to take home?"
+        },
+        {
+          "speaker": "M",
+          "text": "You will try several small designs first. If there is time, you can use one on a poster. The tutor wants people to learn the process, rather than leave with one perfect piece."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Which session is suitable for the woman?",
+          "options": [
+            [
+              "A",
+              "Saturday morning."
+            ],
+            [
+              "B",
+              "Saturday afternoon."
+            ],
+            [
+              "C",
+              "Friday evening."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "她是初学者，M说明改后的morning对初学者开放；B仍需经验，C未安排。"
+        },
+        {
+          "stem": "What should the woman bring?",
+          "options": [
+            [
+              "A",
+              "Paper."
+            ],
+            [
+              "B",
+              "Ink."
+            ],
+            [
+              "C",
+              "An old shirt."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "纸墨含费；带旧衬衣以免难洗的墨弄脏衣物。A/B与已提供相反。"
+        },
+        {
+          "stem": "What does the tutor value most?",
+          "options": [
+            [
+              "A",
+              "Completing one perfect poster."
+            ],
+            [
+              "B",
+              "Learning how printing works."
+            ],
+            [
+              "C",
+              "Selling the finished designs."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "结尾明确learn process rather than one perfect piece；A为对立，C未提销售。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "We have only twelve seats for the film club tonight. Shall we move the screening to the dining hall?"
+        },
+        {
+          "speaker": "W",
+          "text": "It has more chairs, but the sound from the kitchen would spoil the quiet scenes. Let us keep the small room and show the film again on Thursday."
+        },
+        {
+          "speaker": "M",
+          "text": "The people on the waiting list might not like waiting."
+        },
+        {
+          "speaker": "W",
+          "text": "We should tell them before they travel here. They can choose Thursday, or have their money returned. We must not promise everyone a seat tonight."
+        },
+        {
+          "speaker": "M",
+          "text": "I will send a message now. What about the discussion after the film?"
+        },
+        {
+          "speaker": "W",
+          "text": "Keep it short tonight. Ask viewers to write one question on a card. We can begin Thursday's discussion with those questions, so the second group has something to respond to."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why does the woman reject the dining hall?",
+          "options": [
+            [
+              "A",
+              "It has too few chairs."
+            ],
+            [
+              "B",
+              "It costs more to hire."
+            ],
+            [
+              "C",
+              "It would be too noisy."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "厨房声音会影响安静场景；A相反椅子更多，B无费用信息。"
+        },
+        {
+          "stem": "What should people on the waiting list be offered?",
+          "options": [
+            [
+              "A",
+              "A later screening or a refund."
+            ],
+            [
+              "B",
+              "A guaranteed seat tonight."
+            ],
+            [
+              "C",
+              "A free meal in the hall."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "W明确Thursday或money returned；B明确不可承诺，C未提。"
+        },
+        {
+          "stem": "How will the viewers' cards be used?",
+          "options": [
+            [
+              "A",
+              "To choose the next film."
+            ],
+            [
+              "B",
+              "To start a later discussion."
+            ],
+            [
+              "C",
+              "To count the empty seats."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "Thursday discussion将从问题卡开始；A无选片，C无数席用途。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 20,
+      "answer_seconds": 20,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Welcome to the school costume store. This room holds clothes from earlier productions, and our aim is to help new groups reuse them. Please work in pairs today. One person can check the label while the other records the size. Do not guess a size from the number alone: the same label may have been used by different makers. Use the measuring tape on the desk if necessary.\n\nWe used to put damaged clothes in a box by the door. That made them easy to forget, so there is now a red rail for anything needing repair. Hang such items there, with a note describing the problem. Do not try to repair them during this session; that is a separate job for next week.\n\nBefore you leave, save your list on the shared computer. You do not need to print it. The next group will use the digital list to check what is available before planning their play."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is the main aim of the costume store?",
+          "options": [
+            [
+              "A",
+              "To sell new theatre clothes."
+            ],
+            [
+              "B",
+              "To teach professional acting."
+            ],
+            [
+              "C",
+              "To help groups reuse costumes."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "开头help new groups reuse them直接支持C；A无销售，B无表演教学。"
+        },
+        {
+          "stem": "Why may a measuring tape be needed?",
+          "options": [
+            [
+              "A",
+              "Labels from different makers may differ."
+            ],
+            [
+              "B",
+              "All labels have been removed."
+            ],
+            [
+              "C",
+              "Every costume must be made smaller."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "同一号可能来自不同makers，不能仅猜尺寸；B没有全移标签，C无缩小要求。"
+        },
+        {
+          "stem": "Where should damaged clothes go?",
+          "options": [
+            [
+              "A",
+              "In the box by the door."
+            ],
+            [
+              "B",
+              "On the red rail with a note."
+            ],
+            [
+              "C",
+              "Straight into the repair room."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "旧门边盒已废改红架附问题说明；A旧做法，C本次不修。"
+        },
+        {
+          "stem": "What should volunteers do before leaving?",
+          "options": [
+            [
+              "A",
+              "Print a list for each actor."
+            ],
+            [
+              "B",
+              "Plan the next school play."
+            ],
+            [
+              "C",
+              "Save a digital list."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "结尾save on shared computer、不用打印；A相反，B后续组职责。"
+        }
+      ]
+    }
+  ]
+}
