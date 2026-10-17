@@ -1,0 +1,163 @@
+{
+  "version": "0.1",
+  "id": "grade10-garden-translation-reading",
+  "grade": 10,
+  "questions": 4,
+  "candidate_sha256": "9c8e856f76fe1d3d8a5ed36614b958833ca3cda614385d414746c62e7dcc125d",
+  "canonical_response_block_sha256": "e06a355a227d38a0afb07bd7dabee697806ca2d45b31868550327f01aeb2836f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Why did the first signs sometimes mislead visitors?",
+      "options": [
+        [
+          "A",
+          "The printer had combined descriptions from different places."
+        ],
+        [
+          "B",
+          "Every plant name had been removed."
+        ],
+        [
+          "C",
+          "Visitors were required to translate the signs themselves."
+        ],
+        [
+          "D",
+          "The garden had no paths between the beds."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "首段printer合并不同location句使here错指，A；B/C/D均不在原因且无全删、强制翻译或无路。"
+    },
+    {
+      "number": 2,
+      "stem": "Who was responsible for checking a sign’s reference at its site?",
+      "options": [
+        [
+          "A",
+          "The visitor arriving for the first time."
+        ],
+        [
+          "B",
+          "The printer working from any draft."
+        ],
+        [
+          "C",
+          "The software choosing the smoothest sentence."
+        ],
+        [
+          "D",
+          "The person reviewing the sign there."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "第二段responsibility person reviewing actualsite，D；A未转给游客，B只收approved，C建议不承担审核。"
+    },
+    {
+      "number": 3,
+      "stem": "Why is the photograph compared to an “anchor”?",
+      "options": [
+        [
+          "A",
+          "It replaces both language versions."
+        ],
+        [
+          "B",
+          "It ties the wording to a specific viewpoint."
+        ],
+        [
+          "C",
+          "It lists every object that a sign must mention."
+        ],
+        [
+          "D",
+          "It guarantees that visitors will like the sign."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第三段on your right绑定viewpoint，B；A不供translation本身，C明说非全描述，D未验证游客使用。"
+    },
+    {
+      "number": 4,
+      "stem": "What can be concluded about the new procedure?",
+      "options": [
+        [
+          "A",
+          "It eliminated the need for human review."
+        ],
+        [
+          "B",
+          "It proved that translation tools have no value."
+        ],
+        [
+          "C",
+          "It used software suggestions within a more careful checking process."
+        ],
+        [
+          "D",
+          "It established that all visitors found the signs easy to follow."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "保留工具建议加定位核对，C；A审核加强，B明确不当useless，D需later feedback。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleReadingBridge-v0.1.json",
+    "sha256": "4aa73942184833ff5037d2f65267c014dcc6e3fac66ce93f1507126e1cd89b1c"
+  },
+  "source_group_id": "g10.2024.readingD",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "genre_observed": "education_research_explanation",
+      "source_functions": [
+        "cause",
+        "role_relation",
+        "context_metaphor",
+        "qualified_conclusion"
+      ],
+      "source_editorial_flags_retained": []
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "This fictional account concerns a small public garden preparing signs in two languages. Its volunteers initially fed short plant descriptions into a translation tool and printed the results. The difficulty was not simply that a few words were wrong. Some descriptions used “here” and “this corner” even though the printer had combined sentences from different locations. A fluent sentence could therefore point a visitor towards the wrong bed.\n\nThe garden manager, Rosa, changed the process. A volunteer first photographed the intended location and wrote a short explanation of what a visitor should learn there. A translator then used that explanation and the draft text together. The software could suggest wording, but responsibility for checking the reference remained with the person reviewing the sign at its actual site. The printer received only the approved version.\n\nRosa called the photograph “an anchor for the words”. She did not mean that every object in the image had to be described. The image kept a phrase such as “on your right” attached to a particular viewpoint. Without that link, a sentence could be correct in grammar and still give incorrect guidance. Nor did the photograph supply the translation itself; it helped a reviewer ask whether the translation referred to the right thing.\n\nThe new procedure took longer before printing. It also caught several mismatches that a check of spelling alone had missed. Rosa did not treat those examples as proof that the tool was useless. The volunteers still used its suggestions, especially when comparing short alternatives. They had simply stopped treating a smooth first draft as a finished sign. Later feedback from visitors would be needed to find out whether the approved signs were easy to use as well as correctly located.",
+  "author_answer_vector": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 288,
+    "stem_English_words": 35,
+    "options_English_words_with_repeated_bank": 121,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 27,
+    "requirement_total_characters": 30,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "This fictional account concerns a small public garden preparing signs in two languages. Its volunteers initially fed short plant descriptions into a translation tool and printed the results. The difficulty was not simply that a few words were wrong. Some descriptions used “here” and “this corner” even though the printer had combined sentences from different locations. A fluent sentence could therefore point a visitor towards the wrong bed.\n\nThe garden manager, Rosa, changed the process. A volunteer first photographed the intended location and wrote a short explanation of what a visitor should learn there. A translator then used that explanation and the draft text together. The software could suggest wording, but responsibility for checking the reference remained with the person reviewing the sign at its actual site. The printer received only the approved version.\n\nRosa called the photograph “an anchor for the words”. She did not mean that every object in the image had to be described. The image kept a phrase such as “on your right” attached to a particular viewpoint. Without that link, a sentence could be correct in grammar and still give incorrect guidance. Nor did the photograph supply the translation itself; it helped a reviewer ask whether the translation referred to the right thing.\n\nThe new procedure took longer before printing. It also caught several mismatches that a check of spelling alone had missed. Rosa did not treat those examples as proof that the tool was useless. The volunteers still used its suggestions, especially when comparing short alternatives. They had simply stopped treating a smooth first draft as a finished sign. Later feedback from visitors would be needed to find out whether the approved signs were easy to use as well as correctly located.",
+  "material_article_count": 1,
+  "paragraph_count": 4,
+  "source_functions_bound_not_national_requirement": true,
+  "all_distractors_counterchecked": true
+}

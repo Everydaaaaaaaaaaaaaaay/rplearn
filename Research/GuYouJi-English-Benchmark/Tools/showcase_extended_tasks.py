@@ -16,6 +16,8 @@ def markdown_view(text):
     """Escape source text and support only the authored headings/lists/tables used here."""
     def inline(value):
         value = html.escape(value)
+        # Permit plain word underlines while keeping attributes and HTML escaped.
+        value = re.sub(r'&lt;u&gt;([A-Za-z][A-Za-z -]*)&lt;/u&gt;', r'<u>\1</u>', value)
         value = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', value)
         return re.sub(r'`([^`]+)`', r'<code>\1</code>', value)
     result, paragraph, table = [], [], []

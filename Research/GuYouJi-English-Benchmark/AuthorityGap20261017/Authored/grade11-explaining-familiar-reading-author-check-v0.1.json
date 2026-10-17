@@ -1,0 +1,163 @@
+{
+  "version": "0.1",
+  "id": "grade11-explaining-familiar-reading",
+  "grade": 11,
+  "questions": 4,
+  "candidate_sha256": "c4354449ca0a6a33de05ca26ec791b017adf66e563e85faf306f293ea76cce67",
+  "canonical_response_block_sha256": "661cf4cfc6db4bffa5bb8f9561c415a4e4679e90e1883aa24fff079e44b336ad",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What is meant by “the disappearing staircase”?",
+      "options": [
+        [
+          "A",
+          "Beginners need no clear sequence."
+        ],
+        [
+          "B",
+          "An expert may overlook steps a learner still needs."
+        ],
+        [
+          "C",
+          "An instrument loses parts during use."
+        ],
+        [
+          "D",
+          "Simple vocabulary always prevents confusion."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "熟练者心理越级不见必要步骤，B；A步骤仍需，C比喻非坏器材，Dreset简单也藏流程。"
+    },
+    {
+      "number": 2,
+      "stem": "How does the columnist describe the difference between speaker and beginner?",
+      "options": [
+        [
+          "A",
+          "As proof of a permanent gap in intelligence."
+        ],
+        [
+          "B",
+          "As a refusal by the speaker to offer help."
+        ],
+        [
+          "C",
+          "As different amounts of relevant knowledge."
+        ],
+        [
+          "D",
+          "As a difficulty found only in technical words."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确difference availableknowledge非intelligence，C；B非unwilling，D普通词也发生。"
+    },
+    {
+      "number": 3,
+      "stem": "Why was copying the first result an unreliable sign of full understanding?",
+      "options": [
+        [
+          "A",
+          "It did not show the pupil could handle another example independently."
+        ],
+        [
+          "B",
+          "It proved the pupil had not watched the demonstration."
+        ],
+        [
+          "C",
+          "It required a different instrument from the one being explained."
+        ],
+        [
+          "D",
+          "It showed the volunteer had used no sequence at all."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "首例能跟非独立掌握，第二例不能复现，A；B明看/复制，C没换设备，D有procedure。"
+    },
+    {
+      "number": 4,
+      "stem": "What is the next section most likely to discuss?",
+      "options": [
+        [
+          "A",
+          "The history of staircase construction."
+        ],
+        [
+          "B",
+          "Reasons to make every explanation longer."
+        ],
+        [
+          "C",
+          "A ranking of learners by intelligence."
+        ],
+        [
+          "D",
+          "Ways to identify what a listener already knows."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "末段明确finding learner startingpoint/whichstepsneed，D；A字面错，B非普遍加长，C反智力排序。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleReadingBridge-v0.1.json",
+    "sha256": "4aa73942184833ff5037d2f65267c014dcc6e3fac66ce93f1507126e1cd89b1c"
+  },
+  "source_group_id": "g11.2025.readingD",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "genre_observed": "psychological_argument_and_advice_transition",
+      "source_functions": [
+        "concept_paraphrase",
+        "concept_degree",
+        "claimed_cause",
+        "next_paragraph_prediction"
+      ],
+      "source_editorial_flags_retained": []
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "In this fictional advice column, a science-club organiser describes a familiar frustration. After mastering a new instrument, she gives newcomers a quick explanation and is surprised when they cannot repeat the procedure. She remembers the correct sequence so easily that its difficult transitions no longer seem to require explanation. The problem is not an unwillingness to help; she has lost sight of what knowing less was like.\n\nThe columnist calls this “the disappearing staircase”. Each step remains necessary for the beginner, but the experienced person can mentally travel from the bottom to the top without noticing it. This is a difference in available knowledge, rather than evidence that either person is more intelligent. It can arise even when the explanation uses simple words: an ordinary word such as “reset” may conceal several operations that only the speaker already knows.\n\nGood intentions alone will not expose every missing step. Asking “Do you understand?” may produce a polite yes from a newcomer who does not yet know what to ask. In the account, one volunteer discovered this when a pupil copied his final result but could not repeat the process with a second example. The successful copy had shown the ability to follow that particular demonstration, not an independent grasp of all its choices.\n\nThe columnist does not recommend returning every conversation to its simplest possible starting point. That would waste time and could make a knowledgeable listener feel ignored. Instead, the speaker needs some way of discovering the listener's present starting point. The next section of the column will therefore turn from describing the missing staircase to practical ways of finding which of its steps a particular learner still needs.",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 280,
+    "stem_English_words": 39,
+    "options_English_words_with_repeated_bank": 121,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 27,
+    "requirement_total_characters": 30,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "In this fictional advice column, a science-club organiser describes a familiar frustration. After mastering a new instrument, she gives newcomers a quick explanation and is surprised when they cannot repeat the procedure. She remembers the correct sequence so easily that its difficult transitions no longer seem to require explanation. The problem is not an unwillingness to help; she has lost sight of what knowing less was like.\n\nThe columnist calls this “the disappearing staircase”. Each step remains necessary for the beginner, but the experienced person can mentally travel from the bottom to the top without noticing it. This is a difference in available knowledge, rather than evidence that either person is more intelligent. It can arise even when the explanation uses simple words: an ordinary word such as “reset” may conceal several operations that only the speaker already knows.\n\nGood intentions alone will not expose every missing step. Asking “Do you understand?” may produce a polite yes from a newcomer who does not yet know what to ask. In the account, one volunteer discovered this when a pupil copied his final result but could not repeat the process with a second example. The successful copy had shown the ability to follow that particular demonstration, not an independent grasp of all its choices.\n\nThe columnist does not recommend returning every conversation to its simplest possible starting point. That would waste time and could make a knowledgeable listener feel ignored. Instead, the speaker needs some way of discovering the listener's present starting point. The next section of the column will therefore turn from describing the missing staircase to practical ways of finding which of its steps a particular learner still needs.",
+  "material_article_count": 1,
+  "paragraph_count": 4,
+  "source_functions_bound_not_national_requirement": true,
+  "all_distractors_counterchecked": true
+}

@@ -1,0 +1,163 @@
+{
+  "version": "0.1",
+  "id": "grade11-collecting-drafts-reading",
+  "grade": 11,
+  "questions": 4,
+  "candidate_sha256": "cda2636357dc79ec77c98ca8a60f553a998ddc9139723a5de0a8f0542b065e4c",
+  "canonical_response_block_sha256": "2ad63bcd11c5ec456cf48d955f4f64307575b9893460488cde4eabe879622cbb",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What makes the folder a “shelter” in this account?",
+      "options": [
+        [
+          "A",
+          "It holds photographs rather than words."
+        ],
+        [
+          "B",
+          "It contains advice from successful writers."
+        ],
+        [
+          "C",
+          "Its contents have all been used already."
+        ],
+        [
+          "D",
+          "Adding to it becomes a reason to postpone an available attempt."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "定义each new item reason delay attempt alreadypossible，D；A/B类型不定问题，C未用完且blank。"
+    },
+    {
+      "number": 2,
+      "stem": "What distinction does paragraph 2 make?",
+      "options": [
+        [
+          "A",
+          "A large collection is always worse than a small one."
+        ],
+        [
+          "B",
+          "The value of collecting depends on what it helps a person do."
+        ],
+        [
+          "C",
+          "Advice is useful only when saved on paper."
+        ],
+        [
+          "D",
+          "Gathering information and writing are the same activity."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "not size but enablingfunction，B；A明否仅大问题，C媒介未规定，D正是区分非等同。"
+    },
+    {
+      "number": 3,
+      "stem": "Why may further collecting feel safer than starting a draft?",
+      "options": [
+        [
+          "A",
+          "It guarantees the final story will be original."
+        ],
+        [
+          "B",
+          "It removes all need for essential information."
+        ],
+        [
+          "C",
+          "It keeps attractive possibilities from being tested in imperfect sentences."
+        ],
+        [
+          "D",
+          "It ensures every future reader will approve the writing."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "第三段未写保全部可能性，写则窄且不完美受评，C；A/D保证无证，B信息缺可合理等。"
+    },
+    {
+      "number": 4,
+      "stem": "What will probably follow this passage?",
+      "options": [
+        [
+          "A",
+          "An exercise for making a small start with one saved item."
+        ],
+        [
+          "B",
+          "A demand to finish a novel before reading any advice."
+        ],
+        [
+          "C",
+          "A list showing that all delayed projects lack information."
+        ],
+        [
+          "D",
+          "An instruction to delete every collection permanently."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "末句explicit imperfectparagraphoneitem，A；Bfinishednovel非small，C限定not everydelay，D不建议单删。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleReadingBridge-v0.1.json",
+    "sha256": "4aa73942184833ff5037d2f65267c014dcc6e3fac66ce93f1507126e1cd89b1c"
+  },
+  "source_group_id": "g11.2025.readingD",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "genre_observed": "psychological_argument_and_advice_transition",
+      "source_functions": [
+        "concept_paraphrase",
+        "concept_degree",
+        "claimed_cause",
+        "next_paragraph_prediction"
+      ],
+      "source_editorial_flags_retained": []
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "The writer of this fictional column keeps a folder called “For my next story”. It contains advice about openings, interviews with novelists and photographs of possible settings. For a while, adding to the folder feels like progress. Yet the first page of the story remains blank. The writer is preparing to make a choice while carefully postponing the experience of making one.\n\nThere is a useful distinction here between gathering material and using the possibility of gathering more as a shelter. A folder is not a problem merely because it is large. It becomes a shelter when each new item supplies a reason to delay an attempt that could already be made. The relevant question is what the collection is enabling, not whether collecting is in itself a respectable activity.\n\nWhy might the shelter be attractive? According to the columnist's account, an unwritten story can still contain every appealing possibility. A first draft will be narrower and visibly imperfect. Saving another piece of advice preserves the pleasant image of the future story without exposing a particular sentence to criticism. This explanation does not apply to every delayed project; missing essential information can be a perfectly good reason to wait.\n\nSimply deleting the folder would not necessarily address the hesitation. Nor does the columnist propose a rule that every piece of advice must immediately produce a finished scene. The task is to create a small encounter with the work while leaving room for later learning. In the next section, the writer will offer a short exercise that lets a reader turn one collected item into an imperfect paragraph, without first having to decide the whole story.",
+  "author_answer_vector": [
+    "D",
+    "B",
+    "C",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 275,
+    "stem_English_words": 30,
+    "options_English_words_with_repeated_bank": 139,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 27,
+    "requirement_total_characters": 30,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "The writer of this fictional column keeps a folder called “For my next story”. It contains advice about openings, interviews with novelists and photographs of possible settings. For a while, adding to the folder feels like progress. Yet the first page of the story remains blank. The writer is preparing to make a choice while carefully postponing the experience of making one.\n\nThere is a useful distinction here between gathering material and using the possibility of gathering more as a shelter. A folder is not a problem merely because it is large. It becomes a shelter when each new item supplies a reason to delay an attempt that could already be made. The relevant question is what the collection is enabling, not whether collecting is in itself a respectable activity.\n\nWhy might the shelter be attractive? According to the columnist's account, an unwritten story can still contain every appealing possibility. A first draft will be narrower and visibly imperfect. Saving another piece of advice preserves the pleasant image of the future story without exposing a particular sentence to criticism. This explanation does not apply to every delayed project; missing essential information can be a perfectly good reason to wait.\n\nSimply deleting the folder would not necessarily address the hesitation. Nor does the columnist propose a rule that every piece of advice must immediately produce a finished scene. The task is to create a small encounter with the work while leaving room for later learning. In the next section, the writer will offer a short exercise that lets a reader turn one collected item into an imperfect paragraph, without first having to decide the whole story.",
+  "material_article_count": 1,
+  "paragraph_count": 4,
+  "source_functions_bound_not_national_requirement": true,
+  "all_distractors_counterchecked": true
+}

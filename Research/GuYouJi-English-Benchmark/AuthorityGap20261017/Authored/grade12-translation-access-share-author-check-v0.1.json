@@ -1,0 +1,169 @@
+{
+  "version": "0.1",
+  "id": "grade12-translation-access-share",
+  "grade": 12,
+  "questions": 4,
+  "candidate_sha256": "e079488e8b50c427f9ef75089c05d8651b012247a1c0e131f78e89513b25e043",
+  "canonical_response_block_sha256": "1c52e5ac307f831d734d3680f10863184b6756af67b522b45ca50750aa58afad",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which calculation follows the project’s definition?",
+      "options": [
+        [
+          "A",
+          "30 ÷ 40 × 100."
+        ],
+        [
+          "B",
+          "18 ÷ 12 × 100."
+        ],
+        [
+          "C",
+          "18 ÷ 40 × 100."
+        ],
+        [
+          "D",
+          "40 ÷ 18 × 100."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "18newbilingual/40allnew=45%，C；A把12old混分子，B旧译作分母错群体，D倒置。"
+    },
+    {
+      "number": 2,
+      "stem": "What is the purpose of the example in paragraph 2?",
+      "options": [
+        [
+          "A",
+          "To show why all old articles should be discarded."
+        ],
+        [
+          "B",
+          "To demonstrate how mixing populations changes the meaning of a measure."
+        ],
+        [
+          "C",
+          "To prove that longer articles are harder to translate."
+        ],
+        [
+          "D",
+          "To establish how many readers use each language."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "18new+12old但只40new分母错群，B；A未弃old只是另记，C页数非例论点，D未测读者人数。"
+    },
+    {
+      "number": 3,
+      "stem": "What does “the two” in paragraph 4 refer to?",
+      "options": [
+        [
+          "A",
+          "The old and new articles."
+        ],
+        [
+          "B",
+          "The two language versions of every article."
+        ],
+        [
+          "C",
+          "The numerator and denominator."
+        ],
+        [
+          "D",
+          "Reader feedback and the percentage."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "同句feedback besidepercentage ratherthan turnthetwo one mark最近完整关系；A/B在别处，Cunderlyingcounts非thetwo句内并置对象。"
+    },
+    {
+      "number": 4,
+      "stem": "Which statement best expresses the central argument?",
+      "options": [
+        [
+          "A",
+          "A limited access indicator needs transparent counts and other evidence."
+        ],
+        [
+          "B",
+          "Every bilingual article guarantees an inclusive reading experience."
+        ],
+        [
+          "C",
+          "Translation-access shares must rise whenever publication increases."
+        ],
+        [
+          "D",
+          "Reader feedback should be replaced by a numerical certificate."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "definedindicator+counts+feedback+limits主题A；B显式difficulty反，C可分母变不单调，D保留feedback且反certificate。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleReadingBridge-v0.1.json",
+    "sha256": "4aa73942184833ff5037d2f65267c014dcc6e3fac66ce93f1507126e1cd89b1c"
+  },
+  "source_group_id": "g12.2025anshan.readingC",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "genre_observed": "economic_indicator_and_cultural_argument",
+      "source_functions": [
+        "numeric_rule",
+        "argument_method",
+        "referent",
+        "whole_theme"
+      ],
+      "source_editorial_flags_retained": [
+        "income_vs_expenses_denominator",
+        "Q31title_scope"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "A fictional local history project has proposed a new figure for its annual report. It defines its translation-access share as the number of newly published articles offered in two languages divided by all the articles newly published that year, multiplied by 100. An article counts once in both numerator and denominator, however many pages it contains. Older articles translated during the year are recorded separately and do not enter this particular share.\n\nSuppose the project publishes 40 new articles, of which 18 appear in both languages. Its translation-access share is 45 per cent. The team also translates 12 older articles, but adding those to the numerator while leaving the denominator at 40 would mix two different populations. The larger figure might look encouraging while no longer measuring what the report says it measures.\n\nThe proposal's supporters argue that the share draws attention to a publishing choice that total article counts obscure. Yet a reader cannot infer from a rising share that the number of bilingual articles has risen: the total number of new articles may instead have fallen. Nor does the figure establish whether either version is easy to understand. Publishing two difficult versions is different from enabling two groups of readers to use them.\n\nFor this reason, the proposed report would print the underlying counts and explain which articles were included. It would place reader feedback beside the percentage rather than turn the two into a single mark. The figure can reveal one aspect of access while leaving important questions open. Used with that restraint, it could make the project more answerable for its choices. Used as a complete certificate of inclusion, it would encourage the very confusion between visible activity and experienced benefit that the report is intended to avoid.",
+  "author_answer_vector": [
+    "C",
+    "B",
+    "D",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 288,
+    "stem_English_words": 30,
+    "options_English_words_with_repeated_bank": 93,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 27,
+    "requirement_total_characters": 30,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A fictional local history project has proposed a new figure for its annual report. It defines its translation-access share as the number of newly published articles offered in two languages divided by all the articles newly published that year, multiplied by 100. An article counts once in both numerator and denominator, however many pages it contains. Older articles translated during the year are recorded separately and do not enter this particular share.\n\nSuppose the project publishes 40 new articles, of which 18 appear in both languages. Its translation-access share is 45 per cent. The team also translates 12 older articles, but adding those to the numerator while leaving the denominator at 40 would mix two different populations. The larger figure might look encouraging while no longer measuring what the report says it measures.\n\nThe proposal's supporters argue that the share draws attention to a publishing choice that total article counts obscure. Yet a reader cannot infer from a rising share that the number of bilingual articles has risen: the total number of new articles may instead have fallen. Nor does the figure establish whether either version is easy to understand. Publishing two difficult versions is different from enabling two groups of readers to use them.\n\nFor this reason, the proposed report would print the underlying counts and explain which articles were included. It would place reader feedback beside the percentage rather than turn the two into a single mark. The figure can reveal one aspect of access while leaving important questions open. Used with that restraint, it could make the project more answerable for its choices. Used as a complete certificate of inclusion, it would encourage the very confusion between visible activity and experienced benefit that the report is intended to avoid.",
+  "material_article_count": 1,
+  "paragraph_count": 4,
+  "source_functions_bound_not_national_requirement": true,
+  "all_distractors_counterchecked": true,
+  "explicit_formula_population_time_window": true,
+  "numeric_rule_recomputed": true,
+  "source_denominator_and_title_flags_not_copied": true
+}

@@ -1,0 +1,193 @@
+{
+  "version": "0.1",
+  "id": "grade9-lunchbox-label-reading",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "ecd472504bb91294f0cd5fac92898840d8bd4b192eb5ecd6cc2d2337d65aa893",
+  "canonical_response_block_sha256": "fa4d9a901956515776d5542c5989643ebb0fc1cc318096eb878f0fcea79c34e4",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Why was a name on the lid sometimes unhelpful?",
+      "options": [
+        [
+          "A",
+          "All the pupils had the same name."
+        ],
+        [
+          "B",
+          "The shelf had been removed."
+        ],
+        [
+          "C",
+          "A lid could become separated from its box."
+        ],
+        [
+          "D",
+          "Helpers were forbidden to read names."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "首段lids and boxes separated直接C；A同名未述，B架存在，D非禁读名单，只不公开。"
+    },
+    {
+      "number": 2,
+      "stem": "How did the number system help protect pupils’ names?",
+      "options": [
+        [
+          "A",
+          "It put every name on the public board."
+        ],
+        [
+          "B",
+          "It linked numbers to names on a cupboard list."
+        ],
+        [
+          "C",
+          "It removed all records of ownership."
+        ],
+        [
+          "D",
+          "It used a different owner every day."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "名单在柜内，找到编号再查名，B；A方向反，C仍有list，D无换主流程。"
+    },
+    {
+      "number": 3,
+      "stem": "What does the underlined “it” in paragraph 2 refer to?",
+      "options": [
+        [
+          "A",
+          "The cupboard."
+        ],
+        [
+          "B",
+          "A public board."
+        ],
+        [
+          "C",
+          "The list of pupils."
+        ],
+        [
+          "D",
+          "The number on the found box."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "check it find owner在编号系统中核盒号；A柜是存表处非用于查姓名的编码，B公开板未存名字，C把用于匹配的号码和名单混淆，D与前句same small number回扣。"
+    },
+    {
+      "number": 4,
+      "stem": "What was the main change described in paragraph 3?",
+      "options": [
+        [
+          "A",
+          "Using labels that could remain readable after washing."
+        ],
+        [
+          "B",
+          "Making paper numbers larger on every box."
+        ],
+        [
+          "C",
+          "Asking pupils never to wash their boxes."
+        ],
+        [
+          "D",
+          "Writing the owners’ names on the shelf."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "ordinary paper洗后糊，larger未解决，再换耐洗标签，A；B明确失败，C未要求不洗，D非所换标签。"
+    },
+    {
+      "number": 5,
+      "stem": "What is the main lesson of the passage?",
+      "options": [
+        [
+          "A",
+          "A good label can locate every missing object."
+        ],
+        [
+          "B",
+          "Public names are always necessary for returning things."
+        ],
+        [
+          "C",
+          "Finding lost items needs both identification and a collection routine."
+        ],
+        [
+          "D",
+          "Schools should replace lunch boxes every week."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "末段identify+agreed place主旨C；A明确不能告诉丢在哪，B柜内名单可用，D一周是测试标签非换盒周期。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleReadingBridge-v0.1.json",
+    "sha256": "4aa73942184833ff5037d2f65267c014dcc6e3fac66ce93f1507126e1cd89b1c"
+  },
+  "source_group_id": "g9.2026.readingC",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "genre_observed": "problem_methods_limits_and_actions_explanation",
+      "source_functions": [
+        "detail",
+        "method_direction",
+        "referent",
+        "paragraph_focus",
+        "whole_title"
+      ],
+      "source_editorial_flags_retained": []
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "In a fictional school, pupils often left lunch boxes on a shelf after eating. Helpers wanted to return the boxes quickly, but several looked exactly alike. A name written on the lid did not always solve the problem, because lids and boxes sometimes became separated.\n\nThe helpers tried giving each box and its lid the same small number. They put a list of numbers and owners inside a cupboard. To find the owner's name, a helper read the number and checked <u>it</u> against the list. Everyone's name did not need to appear on a public board. Pupils could still recognise their own numbers.\n\nAt first, the numbers were printed on ordinary paper. The writing became difficult to read after washing. Putting larger numbers on the same kind of paper did not solve that problem. The helpers then used labels intended to stay readable after washing. They tested a few for a week before changing all the boxes.\n\nThe new labels made matching easier, but they did not tell the helpers where a missing box had been left. So the school kept one collection point near the dining room and asked pupils to bring found boxes there. A clear system needed both a way to identify an item and an agreed place to look for it. The helpers continued to check the system with pupils instead of assuming that every difficulty had disappeared.",
+  "author_answer_vector": [
+    "C",
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 232,
+    "stem_English_words": 43,
+    "options_English_words_with_repeated_bank": 133,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 31,
+    "requirement_total_characters": 34,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "In a fictional school, pupils often left lunch boxes on a shelf after eating. Helpers wanted to return the boxes quickly, but several looked exactly alike. A name written on the lid did not always solve the problem, because lids and boxes sometimes became separated.\n\nThe helpers tried giving each box and its lid the same small number. They put a list of numbers and owners inside a cupboard. To find the owner's name, a helper read the number and checked it against the list. Everyone's name did not need to appear on a public board. Pupils could still recognise their own numbers.\n\nAt first, the numbers were printed on ordinary paper. The writing became difficult to read after washing. Putting larger numbers on the same kind of paper did not solve that problem. The helpers then used labels intended to stay readable after washing. They tested a few for a week before changing all the boxes.\n\nThe new labels made matching easier, but they did not tell the helpers where a missing box had been left. So the school kept one collection point near the dining room and asked pupils to bring found boxes there. A clear system needed both a way to identify an item and an agreed place to look for it. The helpers continued to check the system with pupils instead of assuming that every difficulty had disappeared.",
+  "material_article_count": 1,
+  "paragraph_count": 4,
+  "source_functions_bound_not_national_requirement": true,
+  "all_distractors_counterchecked": true,
+  "required_underlined_it": true,
+  "paragraph_reference_numbers_required": true,
+  "prefreeze_referent_correction": "changedcheckitafterbox_to_readnumbercheckitagainstlist;unambiguouslynumbernotbox"
+}

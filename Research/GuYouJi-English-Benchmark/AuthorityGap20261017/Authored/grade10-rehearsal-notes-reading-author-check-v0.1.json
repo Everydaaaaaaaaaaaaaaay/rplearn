@@ -1,0 +1,163 @@
+{
+  "version": "0.1",
+  "id": "grade10-rehearsal-notes-reading",
+  "grade": 10,
+  "questions": 4,
+  "candidate_sha256": "f9375e56890e3cb3ede58e9e72c97f958f4b92b3446cf11ef46efe004b4a3267",
+  "canonical_response_block_sha256": "4d50fe11feb7d9ebe2179266e8500001e2c30338494c5a69b07b0c42c6d1eb90",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What problem prompted Mara to change the rehearsal notes?",
+      "options": [
+        [
+          "A",
+          "Actors could not remember any spoken words."
+        ],
+        [
+          "B",
+          "Comments had become detached from the actions they concerned."
+        ],
+        [
+          "C",
+          "The workshop lacked a room for recording."
+        ],
+        [
+          "D",
+          "Felix had chosen all the wrong interpretations."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "首段保留words但丢action联系，B；A能复述非不记词，C无缺房，D解释选择不属Felix。"
+    },
+    {
+      "number": 2,
+      "stem": "What was Felix responsible for?",
+      "options": [
+        [
+          "A",
+          "Making recorded moments easy to find."
+        ],
+        [
+          "B",
+          "Deciding the final artistic interpretation."
+        ],
+        [
+          "C",
+          "Rewriting every actor’s performance."
+        ],
+        [
+          "D",
+          "Removing all disagreements from rehearsal."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第二段job locate，not decide interpretation明确A/B；C非工作，D分歧被当可用对话。"
+    },
+    {
+      "number": 3,
+      "stem": "What does “a set of handles” suggest?",
+      "options": [
+        [
+          "A",
+          "A complete substitute for live rehearsal."
+        ],
+        [
+          "B",
+          "A collection of rules requiring identical acting."
+        ],
+        [
+          "C",
+          "A record containing only physical movements."
+        ],
+        [
+          "D",
+          "Points from which unfinished work can be resumed."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "pick up interrupted work说明入口D；A非finished performance，B两actor不同notes允许，C不是只录肢体。"
+    },
+    {
+      "number": 4,
+      "stem": "Which conclusion is best supported by the trial?",
+      "options": [
+        [
+          "A",
+          "All actors preferred writing longer notes."
+        ],
+        [
+          "B",
+          "The system proved that performances were better."
+        ],
+        [
+          "C",
+          "The record could aid rehearsal if kept useful to actors."
+        ],
+        [
+          "D",
+          "Searching no longer took any rehearsal time."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "少搜时+写太多风险/可选复核，限定C；A写多难用，B未证，D fewer不等zero。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleReadingBridge-v0.1.json",
+    "sha256": "4aa73942184833ff5037d2f65267c014dcc6e3fac66ce93f1507126e1cd89b1c"
+  },
+  "source_group_id": "g10.2024.readingD",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "genre_observed": "education_research_explanation",
+      "source_functions": [
+        "cause",
+        "role_relation",
+        "context_metaphor",
+        "qualified_conclusion"
+      ],
+      "source_editorial_flags_retained": []
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "The following account describes a fictional drama workshop. Its director, Mara, noticed that actors could repeat her instructions accurately and still seem uncertain about the next rehearsal. They remembered comments such as “leave more space” but no longer recalled which moment of the scene each comment concerned. Her notes had preserved the words while losing their connection to an action.\n\nMara asked an assistant, Felix, to divide a recording into short scenes. Actors could attach a written note to a particular moment and explain what they hoped to try next. Felix's job was to make those moments easy to locate; he was not asked to decide whether an interpretation was dramatically convincing. That judgement remained with the people rehearsing together.\n\nThe workshop described the new record as “a set of handles, not a finished performance”. The handles helped actors pick up an interrupted line of work. A marked moment could remind them where an idea had arisen, but it could not make the artistic choice for them. Two actors might attach different notes to the same pause, and that difference could start a useful conversation rather than indicate an error in the system.\n\nDuring a trial, fewer rehearsal minutes were spent searching for the scene under discussion. The director did not conclude that every performance had therefore improved. Some actors wrote too much and found their own notes hard to use. Mara consequently kept the system optional and introduced a short review at the end of each session, when actors could remove notes that no longer helped. The record was valuable when it supported their attention, not when maintaining it became a second performance demanding attention of its own.",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "D",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 279,
+    "stem_English_words": 29,
+    "options_English_words_with_repeated_bank": 107,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 27,
+    "requirement_total_characters": 30,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "The following account describes a fictional drama workshop. Its director, Mara, noticed that actors could repeat her instructions accurately and still seem uncertain about the next rehearsal. They remembered comments such as “leave more space” but no longer recalled which moment of the scene each comment concerned. Her notes had preserved the words while losing their connection to an action.\n\nMara asked an assistant, Felix, to divide a recording into short scenes. Actors could attach a written note to a particular moment and explain what they hoped to try next. Felix's job was to make those moments easy to locate; he was not asked to decide whether an interpretation was dramatically convincing. That judgement remained with the people rehearsing together.\n\nThe workshop described the new record as “a set of handles, not a finished performance”. The handles helped actors pick up an interrupted line of work. A marked moment could remind them where an idea had arisen, but it could not make the artistic choice for them. Two actors might attach different notes to the same pause, and that difference could start a useful conversation rather than indicate an error in the system.\n\nDuring a trial, fewer rehearsal minutes were spent searching for the scene under discussion. The director did not conclude that every performance had therefore improved. Some actors wrote too much and found their own notes hard to use. Mara consequently kept the system optional and introduced a short review at the end of each session, when actors could remove notes that no longer helped. The record was valuable when it supported their attention, not when maintaining it became a second performance demanding attention of its own.",
+  "material_article_count": 1,
+  "paragraph_count": 4,
+  "source_functions_bound_not_national_requirement": true,
+  "all_distractors_counterchecked": true
+}
