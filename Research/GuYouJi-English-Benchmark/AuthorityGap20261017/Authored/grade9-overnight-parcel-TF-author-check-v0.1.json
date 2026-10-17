@@ -1,0 +1,141 @@
+{
+  "version": "0.1",
+  "id": "grade9-overnight-parcel-TF",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "b0a593c935f7ce012cff1741c5fb15766ed723550656869954199b95e8696ae9",
+  "canonical_response_block_sha256": "fa9acf7244baa60d2faea7e6d5f91fa9c364eb0e23a00ba5e2afde60425217f2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Jess reached the shop before the collection time in her message had ended.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "seven前可领而到时six twenty，A由同日时点比较支持；B否认先后与两时点冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "The shop had stopped serving customers when Jess arrived.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "still open、侧门接待和实际领件反证停业；A把落帘等同停止服务，违背明确解释。"
+    },
+    {
+      "number": 3,
+      "stem": "The assistant first found a parcel whose number ended in 81.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "first找到18，正确才81；A把两次检索倒置，文内明确反证。"
+    },
+    {
+      "number": 4,
+      "stem": "Jess checked both the name and the number before signing.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "After checking name as well as number才signed，A顺序明示；B与两个字段核验冲突。"
+    },
+    {
+      "number": 5,
+      "stem": "The assistant moved the notice after Jess made her suggestion.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Jess问能否近人行道，assistant moved immediately，A有行动及次序依据；B与移牌明叙冲突。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.trueFalse",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 1,
+      "statements": 5,
+      "response_policy": "correct_A_wrong_B"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "When Jess arrived at the small collection shop, the metal shutter was down. Her message said that she could collect her parcel until seven, and it was only six twenty. At first she thought she had misunderstood the time. Then she noticed a handwritten notice pointing to the side door.\n\nInside, the assistant explained that rain was getting through the front window. The shutter had been lowered to keep the boxes dry, but the shop was still open. Jess showed the number on her phone. The assistant checked it and found a parcel with a similar number, ending in 18. Jess's number ended in 81, so she asked him to look again before taking it.\n\nThe correct parcel was on a higher shelf. After checking the name as well as the number, Jess signed for it. On her way out, she asked whether the notice could be moved closer to the pavement. The assistant moved it there immediately. Jess was pleased that the next visitor would be less likely to mistake the closed shutter for a closed shop.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "B",
+    "A",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 176,
+    "stem_English_words": 52,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 24,
+    "requirement_total_characters": 30,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "When Jess arrived at the small collection shop, the metal shutter was down. Her message said that she could collect her parcel until seven, and it was only six twenty. At first she thought she had misunderstood the time. Then she noticed a handwritten notice pointing to the side door.\n\nInside, the assistant explained that rain was getting through the front window. The shutter had been lowered to keep the boxes dry, but the shop was still open. Jess showed the number on her phone. The assistant checked it and found a parcel with a similar number, ending in 18. Jess's number ended in 81, so she asked him to look again before taking it.\n\nThe correct parcel was on a higher shelf. After checking the name as well as the number, Jess signed for it. On her way out, she asked whether the notice could be moved closer to the pavement. The assistant moved it there immediately. Jess was pleased that the next visitor would be less likely to mistake the closed shutter for a closed shop.",
+  "all_false_statements_have_explicit_counterevidence": true,
+  "source_AB_not_TF_letters": true
+}

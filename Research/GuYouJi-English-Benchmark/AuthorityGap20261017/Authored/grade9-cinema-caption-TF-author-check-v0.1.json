@@ -1,0 +1,141 @@
+{
+  "version": "0.1",
+  "id": "grade9-cinema-caption-TF",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "6b3f27b86fe943cbee3f843869951cfcc0245a2c19116439cbf44ec818f33ea4",
+  "canonical_response_block_sha256": "a6b3be90c90792f0b6f3dca5611564c0ec1967813d5a7074cbd5262c0693bf2a",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The film started at a different time after the change of screen.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "starting time unchanged明否改时；A把换场误读成改时。"
+    },
+    {
+      "number": 2,
+      "stem": "Ravi contacted the cinema before he left home.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "He phoned before leaving home直接支持A；B与明确时序冲突。"
+    },
+    {
+      "number": 3,
+      "stem": "Ravi had to buy a replacement ticket for Screen 2.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "original ticket有效且did not have to buy another，A被显式否定。"
+    },
+    {
+      "number": 4,
+      "stem": "Ravi solved the reflection problem by watching without his glasses.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Instead of removing glasses，他换座，A与实际方案明确相反。"
+    },
+    {
+      "number": 5,
+      "stem": "The seat Ravi moved to had not been sold to anyone.",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "because no ticket had been sold for it支持A，不从仅empty猜未售；B否定明确未售。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.trueFalse",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 1,
+      "statements": 5,
+      "response_policy": "correct_A_wrong_B"
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Ravi had booked a seat for a short film with English captions at a local cinema. On the afternoon of the visit, a message told him that the film would be shown in Screen 2 instead of Screen 1. The starting time was unchanged. Ravi read only the first line and assumed that the captioned version had been cancelled.\n\nHe phoned the cinema before leaving home. A staff member explained that Screen 1 needed a repair, so the same film had simply been moved. The captions would still appear. Ravi went to the cinema and showed his original ticket at the entrance to Screen 2. He did not have to buy another one.\n\nDuring the film, he found that a lamp near his seat reflected on his glasses. Instead of removing his glasses and losing a clear view, he asked to use an empty seat in the next row. The staff member agreed because no ticket had been sold for it. After changing seats, Ravi could read the captions comfortably. Later he wrote to thank the cinema for keeping the captioned screening available and helping him find a better place to watch.",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "B",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 188,
+    "stem_English_words": 50,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 24,
+    "requirement_total_characters": 30,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Ravi had booked a seat for a short film with English captions at a local cinema. On the afternoon of the visit, a message told him that the film would be shown in Screen 2 instead of Screen 1. The starting time was unchanged. Ravi read only the first line and assumed that the captioned version had been cancelled.\n\nHe phoned the cinema before leaving home. A staff member explained that Screen 1 needed a repair, so the same film had simply been moved. The captions would still appear. Ravi went to the cinema and showed his original ticket at the entrance to Screen 2. He did not have to buy another one.\n\nDuring the film, he found that a lamp near his seat reflected on his glasses. Instead of removing his glasses and losing a clear view, he asked to use an empty seat in the next row. The staff member agreed because no ticket had been sold for it. After changing seats, Ravi could read the captions comfortably. Later he wrote to thank the cinema for keeping the captioned screening available and helping him find a better place to watch.",
+  "all_false_statements_have_explicit_counterevidence": true,
+  "source_AB_not_TF_letters": true
+}

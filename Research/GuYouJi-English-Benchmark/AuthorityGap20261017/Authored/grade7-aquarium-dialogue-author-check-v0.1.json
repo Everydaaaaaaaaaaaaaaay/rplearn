@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "grade7-aquarium-dialogue",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "5557e71496aead02797fb13ad15d20993fd33b1ca6cd1333eae76908b780df0d",
+  "canonical_response_block_sha256": "aa3799ce6a0c7436a5144a2125d86af3b8449b602e92ab01c9f3402475d33fcc",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "What are you drawing?"
+        ],
+        [
+          "B",
+          "Where is your classroom?"
+        ],
+        [
+          "C",
+          "When is your birthday?"
+        ],
+        [
+          "D",
+          "How old is your uncle?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "答语正在画昨天见的鱼，A问当前画什么；B教室地点、C生日时间、D叔叔年龄均未获回答。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "How many notebooks do you have?"
+        ],
+        [
+          "B",
+          "Who went there with you?"
+        ],
+        [
+          "C",
+          "What colour is the station?"
+        ],
+        [
+          "D",
+          "Where is your new coat?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "With my uncle回答同行者，B正确；A数量、C车站颜色、D衣服地点均不对应。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "When do you draw?"
+        ],
+        [
+          "B",
+          "How does your uncle travel?"
+        ],
+        [
+          "C",
+          "Which fish do you like best?"
+        ],
+        [
+          "D",
+          "How much is your notebook?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "答The blue fish并补长尾，对应C选择哪条鱼；A问时间、B交通、D价格都无法接该答语。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Why is it near the station?"
+        ],
+        [
+          "B",
+          "Who works at the gate?"
+        ],
+        [
+          "C",
+          "How many fish are blue?"
+        ],
+        [
+          "D",
+          "What time does it open?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "At nine every morning为每天开馆时间，D正确；A原因、B人物、C鱼数均不对应。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Yes, I would love to."
+        ],
+        [
+          "B",
+          "I am sorry, I cannot come."
+        ],
+        [
+          "C",
+          "It is a blue one."
+        ],
+        [
+          "D",
+          "You are welcome."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "后接I am free且下句约见，A接受邀请；B拒绝与后续冲突，C颜色不答邀请，D回应感谢而此处无人道谢。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade7-jinan2025-21cnjy24695341.dialogue",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "whole_dialogues": 1
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Amy: Hi, Ben. You have a little notebook. (1) ____\nBen: I'm drawing a fish I saw at the aquarium yesterday.\nAmy: Really? (2) ____\nBen: With my uncle. He likes sea animals too.\nAmy: (3) ____\nBen: The blue fish. It has a long tail.\nAmy: Is the aquarium far from your home?\nBen: No. It's near the bus station.\nAmy: (4) ____\nBen: At nine every morning.\nAmy: I'd like to visit it on Saturday. Can you come with me?\nBen: (5) ____ I'm free that day.\nAmy: Great. Let's meet at the gate.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 86,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 98,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 31,
+    "requirement_total_characters": 37,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Amy: Hi, Ben. You have a little notebook. (1) ____\nBen: I'm drawing a fish I saw at the aquarium yesterday.\nAmy: Really? (2) ____\nBen: With my uncle. He likes sea animals too.\nAmy: (3) ____\nBen: The blue fish. It has a long tail.\nAmy: Is the aquarium far from your home?\nBen: No. It's near the bus station.\nAmy: (4) ____\nBen: At nine every morning.\nAmy: I'd like to visit it on Saturday. Can you come with me?\nBen: (5) ____ I'm free that day.\nAmy: Great. Let's meet at the gate.",
+  "per_blank_options_not_shared": true,
+  "whole_dialogues": 1
+}

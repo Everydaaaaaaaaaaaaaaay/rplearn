@@ -1,0 +1,229 @@
+{
+  "version": "0.1",
+  "id": "grade9-telescope-case-dialogue",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "c2c1f28072ed3efca6e603f525c31ee38db4661fff54cb417f63772df23e51c7",
+  "canonical_response_block_sha256": "35915bf294d0302428e36ba532391432894334477036c407d59f7453438fa90c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Put it in the lower space."
+        ],
+        [
+          "B",
+          "What words shall I put on the label?"
+        ],
+        [
+          "C",
+          "Now the packing is finished."
+        ],
+        [
+          "D",
+          "Can you show me how to put it all back?"
+        ],
+        [
+          "E",
+          "Which eyepiece do you want at the top?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D请求教归位，与First put long tube构成指导开端；A直接下格但未指定余镜，E问上格镜、B问标签字、C结束均不能引出整体起手指导。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Put it in the lower space."
+        ],
+        [
+          "B",
+          "What words shall I put on the label?"
+        ],
+        [
+          "C",
+          "Now the packing is finished."
+        ],
+        [
+          "D",
+          "Can you show me how to put it all back?"
+        ],
+        [
+          "E",
+          "Which eyepiece do you want at the top?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E询问上格用哪个目镜，对应round one/silver edge及后句Put that eyepiece upper；A下格指令、B标签、C完成、D整体求助均不是此处选择目镜问句。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Put it in the lower space."
+        ],
+        [
+          "B",
+          "What words shall I put on the label?"
+        ],
+        [
+          "C",
+          "Now the packing is finished."
+        ],
+        [
+          "D",
+          "Can you show me how to put it all back?"
+        ],
+        [
+          "E",
+          "Which eyepiece do you want at the top?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A将unused eyepiece放下格，与上格已放及Both spaces full连续；E重问已选上格、D重启、B标签、C完成过早，均不答what about unused eyepiece。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Put it in the lower space."
+        ],
+        [
+          "B",
+          "What words shall I put on the label?"
+        ],
+        [
+          "C",
+          "Now the packing is finished."
+        ],
+        [
+          "D",
+          "Can you show me how to put it all back?"
+        ],
+        [
+          "E",
+          "Which eyepiece do you want at the top?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B问标签写什么，Garden telescope和written it回扣；E目镜选择/A下格/D归位求助/C结束均不能引出该文字回答。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Put it in the lower space."
+        ],
+        [
+          "B",
+          "What words shall I put on the label?"
+        ],
+        [
+          "C",
+          "Now the packing is finished."
+        ],
+        [
+          "D",
+          "Can you show me how to put it all back?"
+        ],
+        [
+          "E",
+          "Which eyepiece do you want at the top?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C在合盒扣两夹后说明整理完成，对应可安全携带；A/E镜位置、B标签、D整体求助都不合末句完成感谢的时序。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.dialogueChoice",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "whole_dialogues": 1
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "shared_entries": 5,
+      "explicit_spare": 0
+    }
+  },
+  "student_passage": "Owen: You have taken everything out of the telescope case, Gran.\nGran: Yes. (1) ____\nOwen: First, put the long tube in the largest space.\nGran: Done. There are two little spaces on the left.\nOwen: (2) ____\nGran: The round one with a silver edge. I use it most often.\nOwen: OK. Put that eyepiece in the upper space.\nGran: What about the unused eyepiece?\nOwen: (3) ____\nGran: All right. Both small spaces are full now.\nOwen: We should label the outside next. (4) ____\nGran: “Garden telescope”, please. That will help me find it.\nOwen: I've written it. Close the case and fasten both clips. (5) ____\nGran: Thanks. Now I can carry it safely.\n\n共享候选：\n\nA. Put it in the lower space.\nB. What words shall I put on the label?\nC. Now the packing is finished.\nD. Can you show me how to put it all back?\nE. Which eyepiece do you want at the top?",
+  "author_answer_vector": [
+    "D",
+    "E",
+    "A",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 108,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 185,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 33,
+    "requirement_total_characters": 37,
+    "output_letter_count": 5,
+    "shared_bank_English_words_once": 37,
+    "filled_dialogue_English_words": 145
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Owen: You have taken everything out of the telescope case, Gran.\nGran: Yes. (1) ____\nOwen: First, put the long tube in the largest space.\nGran: Done. There are two little spaces on the left.\nOwen: (2) ____\nGran: The round one with a silver edge. I use it most often.\nOwen: OK. Put that eyepiece in the upper space.\nGran: What about the unused eyepiece?\nOwen: (3) ____\nGran: All right. Both small spaces are full now.\nOwen: We should label the outside next. (4) ____\nGran: “Garden telescope”, please. That will help me find it.\nOwen: I've written it. Close the case and fasten both clips. (5) ____\nGran: Thanks. Now I can carry it safely.",
+  "shared_bank": [
+    [
+      "A",
+      "Put it in the lower space."
+    ],
+    [
+      "B",
+      "What words shall I put on the label?"
+    ],
+    [
+      "C",
+      "Now the packing is finished."
+    ],
+    [
+      "D",
+      "Can you show me how to put it all back?"
+    ],
+    [
+      "E",
+      "Which eyepiece do you want at the top?"
+    ]
+  ],
+  "unused_bank_labels": [],
+  "filled_dialogue": "Owen: You have taken everything out of the telescope case, Gran.\nGran: Yes. Can you show me how to put it all back?\nOwen: First, put the long tube in the largest space.\nGran: Done. There are two little spaces on the left.\nOwen: Which eyepiece do you want at the top?\nGran: The round one with a silver edge. I use it most often.\nOwen: OK. Put that eyepiece in the upper space.\nGran: What about the unused eyepiece?\nOwen: Put it in the lower space.\nGran: All right. Both small spaces are full now.\nOwen: We should label the outside next. What words shall I put on the label?\nGran: “Garden telescope”, please. That will help me find it.\nOwen: I've written it. Close the case and fasten both clips. Now the packing is finished.\nGran: Thanks. Now I can carry it safely.",
+  "whole_dialogues": 1,
+  "no_added_once_limit": true
+}

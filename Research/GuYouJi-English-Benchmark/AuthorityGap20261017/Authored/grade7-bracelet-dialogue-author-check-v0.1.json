@@ -1,0 +1,280 @@
+{
+  "version": "0.1",
+  "id": "grade7-bracelet-dialogue",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "23bc3d587b018d6d64b48e462a3f5705c974b17a80533225cbf48a0000575b1d",
+  "canonical_response_block_sha256": "37c87c73f5d2a504934fa4bf7b36b726a18f22371c9d1adb53262c678b39e109",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Thank you for spelling it."
+        ],
+        [
+          "B",
+          "How do you spell her name?"
+        ],
+        [
+          "C",
+          "Is the blue bracelet yours?"
+        ],
+        [
+          "D",
+          "Can you spell the colour word for her?"
+        ],
+        [
+          "E",
+          "What is it called in English?"
+        ],
+        [
+          "F",
+          "Why is your bracelet blue?"
+        ],
+        [
+          "G",
+          "Where is your classroom?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E问物件英文名，对应bracelet并解释佩戴；C归属应是非、F原因、D颜色拼写、A感谢、B人名拼写、G教室地点都不符此命名回答。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Thank you for spelling it."
+        ],
+        [
+          "B",
+          "How do you spell her name?"
+        ],
+        [
+          "C",
+          "Is the blue bracelet yours?"
+        ],
+        [
+          "D",
+          "Can you spell the colour word for her?"
+        ],
+        [
+          "E",
+          "What is it called in English?"
+        ],
+        [
+          "F",
+          "Why is your bracelet blue?"
+        ],
+        [
+          "G",
+          "Where is your classroom?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C问蓝链归属，Yes及blue mine/red yours逐项回答；E命名、F颜色原因、D颜色拼写、A感谢、B人名拼写、G地点均不能接Yes后的归属对比。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Thank you for spelling it."
+        ],
+        [
+          "B",
+          "How do you spell her name?"
+        ],
+        [
+          "C",
+          "Is the blue bracelet yours?"
+        ],
+        [
+          "D",
+          "Can you spell the colour word for her?"
+        ],
+        [
+          "E",
+          "What is it called in English?"
+        ],
+        [
+          "F",
+          "Why is your bracelet blue?"
+        ],
+        [
+          "G",
+          "Where is your classroom?"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F问为什么蓝色，对应because favourite colour；C仅问归属、E命名、D拼写、A感谢、B姓名、G地点均未问原因。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Thank you for spelling it."
+        ],
+        [
+          "B",
+          "How do you spell her name?"
+        ],
+        [
+          "C",
+          "Is the blue bracelet yours?"
+        ],
+        [
+          "D",
+          "Can you spell the colour word for her?"
+        ],
+        [
+          "E",
+          "What is it called in English?"
+        ],
+        [
+          "F",
+          "Why is your bracelet blue?"
+        ],
+        [
+          "G",
+          "Where is your classroom?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D紧接表妹不会拼颜色并获B-L-U-E；B虽问拼写但问her name不是颜色，A感谢/E名称/C归属/F原因/G地点都不要求这四字母。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Thank you for spelling it."
+        ],
+        [
+          "B",
+          "How do you spell her name?"
+        ],
+        [
+          "C",
+          "Is the blue bracelet yours?"
+        ],
+        [
+          "D",
+          "Can you spell the colour word for her?"
+        ],
+        [
+          "E",
+          "What is it called in English?"
+        ],
+        [
+          "F",
+          "Why is your bracelet blue?"
+        ],
+        [
+          "G",
+          "Where is your classroom?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A感谢拼写帮助，对应You are welcome；B/C/D/E/F/G都是提问，不能与该致谢回应形成同类邻接。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.dialogue",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "whole_dialogues": 1
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_bank": true,
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "Ivy: Mum sent me this little thing. (1) ____\nNoah: It's a bracelet in English. You wear it on your arm.\nIvy: (2) ____\nNoah: Yes. This blue one is mine, and the red one is yours.\nIvy: I like your blue one. (3) ____\nNoah: It's blue because blue is my favourite colour.\nIvy: My little cousin can't spell that colour word. (4) ____\nNoah: Yes. B-L-U-E. She can copy these four letters.\nIvy: (5) ____\nNoah: You're welcome.\n\n共享候选（有两项不用）：\n\nA. Thank you for spelling it.\nB. How do you spell her name?\nC. Is the blue bracelet yours?\nD. Can you spell the colour word for her?\nE. What is it called in English?\nF. Why is your bracelet blue?\nG. Where is your classroom?",
+  "author_answer_vector": [
+    "E",
+    "C",
+    "F",
+    "D",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 73,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 195,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 38,
+    "requirement_total_characters": 43,
+    "output_letter_count": 5,
+    "shared_bank_English_words_once": 39,
+    "filled_dialogue_English_words": 102
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Ivy: Mum sent me this little thing. (1) ____\nNoah: It's a bracelet in English. You wear it on your arm.\nIvy: (2) ____\nNoah: Yes. This blue one is mine, and the red one is yours.\nIvy: I like your blue one. (3) ____\nNoah: It's blue because blue is my favourite colour.\nIvy: My little cousin can't spell that colour word. (4) ____\nNoah: Yes. B-L-U-E. She can copy these four letters.\nIvy: (5) ____\nNoah: You're welcome.",
+  "shared_bank": [
+    [
+      "A",
+      "Thank you for spelling it."
+    ],
+    [
+      "B",
+      "How do you spell her name?"
+    ],
+    [
+      "C",
+      "Is the blue bracelet yours?"
+    ],
+    [
+      "D",
+      "Can you spell the colour word for her?"
+    ],
+    [
+      "E",
+      "What is it called in English?"
+    ],
+    [
+      "F",
+      "Why is your bracelet blue?"
+    ],
+    [
+      "G",
+      "Where is your classroom?"
+    ]
+  ],
+  "unused_bank_labels": [
+    "B",
+    "G"
+  ],
+  "filled_dialogue": "Ivy: Mum sent me this little thing. What is it called in English?\nNoah: It's a bracelet in English. You wear it on your arm.\nIvy: Is the blue bracelet yours?\nNoah: Yes. This blue one is mine, and the red one is yours.\nIvy: I like your blue one. Why is your bracelet blue?\nNoah: It's blue because blue is my favourite colour.\nIvy: My little cousin can't spell that colour word. Can you spell the colour word for her?\nNoah: Yes. B-L-U-E. She can copy these four letters.\nIvy: Thank you for spelling it.\nNoah: You're welcome.",
+  "whole_dialogues": 1,
+  "no_added_once_limit": true
+}

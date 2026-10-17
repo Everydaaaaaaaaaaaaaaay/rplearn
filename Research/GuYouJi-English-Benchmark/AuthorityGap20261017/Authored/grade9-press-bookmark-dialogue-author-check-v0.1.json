@@ -1,0 +1,229 @@
+{
+  "version": "0.1",
+  "id": "grade9-press-bookmark-dialogue",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "850c541db9c78fa53ff38b5be48d9c8677adc83916cbf42f9424faf5d112292e",
+  "canonical_response_block_sha256": "0c5d3beba331d8bf7bd50773df21683ffe6e3784bfa4c50d7973c6336149df57",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Pass me that short ribbon, please."
+        ],
+        [
+          "B",
+          "I do not know how to start."
+        ],
+        [
+          "C",
+          "Which of these three marked points shall I use?"
+        ],
+        [
+          "D",
+          "Put a small piece of tape on each corner."
+        ],
+        [
+          "E",
+          "That is the final step."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B说明不知起手，承接I will show you及first；D虽也是操作却已假定花夹好，A要丝带、C问孔位、E宣告最后步，均与开端求助/示范方向不同。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Pass me that short ribbon, please."
+        ],
+        [
+          "B",
+          "I do not know how to start."
+        ],
+        [
+          "C",
+          "Which of these three marked points shall I use?"
+        ],
+        [
+          "D",
+          "Put a small piece of tape on each corner."
+        ],
+        [
+          "E",
+          "That is the final step."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D明确each corner，对应All four corners；A丝带/C标点/B不会开端/E完成都没有四角固定这一对象。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Pass me that short ribbon, please."
+        ],
+        [
+          "B",
+          "I do not know how to start."
+        ],
+        [
+          "C",
+          "Which of these three marked points shall I use?"
+        ],
+        [
+          "D",
+          "Put a small piece of tape on each corner."
+        ],
+        [
+          "E",
+          "That is the final step."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C询问三个标点用哪一个，答nearest top edge及where hole逐项定位；A要丝带、D胶角、B不会起手、E最后一步都不能引出三个点中哪一个。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Pass me that short ribbon, please."
+        ],
+        [
+          "B",
+          "I do not know how to start."
+        ],
+        [
+          "C",
+          "Which of these three marked points shall I use?"
+        ],
+        [
+          "D",
+          "Put a small piece of tape on each corner."
+        ],
+        [
+          "E",
+          "That is the final step."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A索取丝带，对应long enough to tie/Here you are，并回答穿孔材料；B不知开端、C孔位、D角胶、E最后步均不是此处所递的可绑物。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Pass me that short ribbon, please."
+        ],
+        [
+          "B",
+          "I do not know how to start."
+        ],
+        [
+          "C",
+          "Which of these three marked points shall I use?"
+        ],
+        [
+          "D",
+          "Put a small piece of tape on each corner."
+        ],
+        [
+          "E",
+          "That is the final step."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E在tie ends后说明最后步，下文ready回应完成；B开端、D四角、C选点和A递丝带均会倒退已有流程，不合已经绑完的结尾。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.dialogueChoice",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "whole_dialogues": 1
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "shared_entries": 5,
+      "explicit_spare": 0
+    }
+  },
+  "student_passage": "Nina: You look busy, Dad. Are you making something?\nDad: Yes, a pressed-flower bookmark. (1) ____\nNina: I will show you. Put the dry flower between these two clear sheets first.\nDad: Like this?\nNina: Yes. Now we need to stop it moving. (2) ____\nDad: All four corners? All right. Done.\nNina: (3) ____\nDad: The one nearest the top edge, please. That's where I want the hole.\nNina: OK. I will use this tool to make a hole there.\nDad: What goes through it?\nNina: (4) ____\nDad: It's long enough to tie. Here you are.\nNina: Now tie the ends together. (5) ____\nDad: Great. The bookmark is ready.\n\n共享候选：\n\nA. Pass me that short ribbon, please.\nB. I do not know how to start.\nC. Which of these three marked points shall I use?\nD. Put a small piece of tape on each corner.\nE. That is the final step.",
+  "author_answer_vector": [
+    "B",
+    "D",
+    "C",
+    "A",
+    "E"
+  ],
+  "load_measure": {
+    "body_English_words": 103,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 180,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 33,
+    "requirement_total_characters": 37,
+    "output_letter_count": 5,
+    "shared_bank_English_words_once": 36,
+    "filled_dialogue_English_words": 139
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Nina: You look busy, Dad. Are you making something?\nDad: Yes, a pressed-flower bookmark. (1) ____\nNina: I will show you. Put the dry flower between these two clear sheets first.\nDad: Like this?\nNina: Yes. Now we need to stop it moving. (2) ____\nDad: All four corners? All right. Done.\nNina: (3) ____\nDad: The one nearest the top edge, please. That's where I want the hole.\nNina: OK. I will use this tool to make a hole there.\nDad: What goes through it?\nNina: (4) ____\nDad: It's long enough to tie. Here you are.\nNina: Now tie the ends together. (5) ____\nDad: Great. The bookmark is ready.",
+  "shared_bank": [
+    [
+      "A",
+      "Pass me that short ribbon, please."
+    ],
+    [
+      "B",
+      "I do not know how to start."
+    ],
+    [
+      "C",
+      "Which of these three marked points shall I use?"
+    ],
+    [
+      "D",
+      "Put a small piece of tape on each corner."
+    ],
+    [
+      "E",
+      "That is the final step."
+    ]
+  ],
+  "unused_bank_labels": [],
+  "filled_dialogue": "Nina: You look busy, Dad. Are you making something?\nDad: Yes, a pressed-flower bookmark. I do not know how to start.\nNina: I will show you. Put the dry flower between these two clear sheets first.\nDad: Like this?\nNina: Yes. Now we need to stop it moving. Put a small piece of tape on each corner.\nDad: All four corners? All right. Done.\nNina: Which of these three marked points shall I use?\nDad: The one nearest the top edge, please. That's where I want the hole.\nNina: OK. I will use this tool to make a hole there.\nDad: What goes through it?\nNina: Pass me that short ribbon, please.\nDad: It's long enough to tie. Here you are.\nNina: Now tie the ends together. That is the final step.\nDad: Great. The bookmark is ready.",
+  "whole_dialogues": 1,
+  "no_added_once_limit": true
+}

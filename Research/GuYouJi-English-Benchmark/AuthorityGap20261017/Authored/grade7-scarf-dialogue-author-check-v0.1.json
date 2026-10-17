@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "grade7-scarf-dialogue",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "ff7204a05c60fb3c21c30d649763c82082416ae117d6c8fcca8d682ee88464ed",
+  "canonical_response_block_sha256": "5e1fc837d0c6424090de43c6187b099336381823ac5eadd7003e3a0f95264e12",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Where is your sister?"
+        ],
+        [
+          "B",
+          "Who made it?"
+        ],
+        [
+          "C",
+          "How do you go to school?"
+        ],
+        [
+          "D",
+          "Why is the door open?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "答My sister made it明确制作者；A地点、C交通、D开门原因未被答，只有B。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "What colour are the stars?"
+        ],
+        [
+          "B",
+          "How much is the bag?"
+        ],
+        [
+          "C",
+          "When did she give it to you?"
+        ],
+        [
+          "D",
+          "Which room is yours?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Last Sunday/in evening回答赠送时间，C；A颜色、B价钱、D房间不能接此时间。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Are they yellow?"
+        ],
+        [
+          "B",
+          "Where is the scarf?"
+        ],
+        [
+          "C",
+          "Do you like stars?"
+        ],
+        [
+          "D",
+          "How many stars are there?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "Five及two big/three small是数量明答，D；A/C是是非，B地点，不与数量答语衔接。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Where do we have the meeting?"
+        ],
+        [
+          "B",
+          "When is your birthday?"
+        ],
+        [
+          "C",
+          "Who is your sister?"
+        ],
+        [
+          "D",
+          "How much are the stars?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "In Room 6直接答开会地点，A；B时间、C身份、D价格不符。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "I am sorry I lost it."
+        ],
+        [
+          "B",
+          "OK, I will."
+        ],
+        [
+          "C",
+          "No, I cannot bring it."
+        ],
+        [
+          "D",
+          "It is on Sunday."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "放包准备明天带来说明承诺照办，B；A丢失与现在放包冲突，C拒绝和准备行动冲突，D时间不答请求。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade7-jinan2025-21cnjy24695341.dialogue",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "whole_dialogues": 1
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "Lin: That scarf looks nice, Jo. (1) ____\nJo: My sister made it for me.\nLin: (2) ____\nJo: Last Sunday. She gave it to me in the evening.\nLin: I can see stars on it. (3) ____\nJo: Five. Two are big and three are small.\nLin: Would you like to show it at our class meeting?\nJo: Yes, of course.\nLin: (4) ____\nJo: In Room 6. The meeting is there every week.\nLin: Please bring the scarf tomorrow.\nJo: (5) ____ I will put it in my bag now.",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "D",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 81,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 92,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 31,
+    "requirement_total_characters": 37,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Lin: That scarf looks nice, Jo. (1) ____\nJo: My sister made it for me.\nLin: (2) ____\nJo: Last Sunday. She gave it to me in the evening.\nLin: I can see stars on it. (3) ____\nJo: Five. Two are big and three are small.\nLin: Would you like to show it at our class meeting?\nJo: Yes, of course.\nLin: (4) ____\nJo: In Room 6. The meeting is there every week.\nLin: Please bring the scarf tomorrow.\nJo: (5) ____ I will put it in my bag now.",
+  "per_blank_options_not_shared": true,
+  "whole_dialogues": 1
+}

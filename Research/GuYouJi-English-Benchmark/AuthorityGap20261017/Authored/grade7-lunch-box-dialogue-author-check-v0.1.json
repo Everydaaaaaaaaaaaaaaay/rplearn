@@ -1,0 +1,280 @@
+{
+  "version": "0.1",
+  "id": "grade7-lunch-box-dialogue",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "eb5f279331a2e0f616447dc2ee484dd45b0d3ea1e7e67caa02e055760f2af49d",
+  "canonical_response_block_sha256": "04400f50878674c0c483bb4180949f1b3ce244c3ce6940c0f3b0f7c1691e0984",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "Can you spell the colour word?"
+        ],
+        [
+          "B",
+          "How many apples are there?"
+        ],
+        [
+          "C",
+          "What is this in English?"
+        ],
+        [
+          "D",
+          "Thank you for your help."
+        ],
+        [
+          "E",
+          "Is it your lunch box?"
+        ],
+        [
+          "F",
+          "What colour is it?"
+        ],
+        [
+          "G",
+          "Where is your brother?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C询问英文名对应It is a lunch box in English；E问归属要yes/no，F问色要orange，A要拼写，D为道谢，B数量/G人物地点均不对应。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "Can you spell the colour word?"
+        ],
+        [
+          "B",
+          "How many apples are there?"
+        ],
+        [
+          "C",
+          "What is this in English?"
+        ],
+        [
+          "D",
+          "Thank you for your help."
+        ],
+        [
+          "E",
+          "Is it your lunch box?"
+        ],
+        [
+          "F",
+          "What colour is it?"
+        ],
+        [
+          "G",
+          "Where is your brother?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E询问是否她的午餐盒，对应Yes及I bring it；C名词、F颜色、A拼写、D感谢、B数量、G人物地点都不能接该是非答语。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "Can you spell the colour word?"
+        ],
+        [
+          "B",
+          "How many apples are there?"
+        ],
+        [
+          "C",
+          "What is this in English?"
+        ],
+        [
+          "D",
+          "Thank you for your help."
+        ],
+        [
+          "E",
+          "Is it your lunch box?"
+        ],
+        [
+          "F",
+          "What colour is it?"
+        ],
+        [
+          "G",
+          "Where is your brother?"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F问颜色对应orange及水果类比；C问名称、E归属、A拼写、D感谢、B数量、G人物地点均不问颜色。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "Can you spell the colour word?"
+        ],
+        [
+          "B",
+          "How many apples are there?"
+        ],
+        [
+          "C",
+          "What is this in English?"
+        ],
+        [
+          "D",
+          "Thank you for your help."
+        ],
+        [
+          "E",
+          "Is it your lunch box?"
+        ],
+        [
+          "F",
+          "What colour is it?"
+        ],
+        [
+          "G",
+          "Where is your brother?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A紧接cannot spell并获O-R-A-N-G-E；F仅问颜色而前已说会说颜色不会拼，C/E/D/B/G分别为名称/归属/感谢/数量/地点，均不能解释拼读答语。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "Can you spell the colour word?"
+        ],
+        [
+          "B",
+          "How many apples are there?"
+        ],
+        [
+          "C",
+          "What is this in English?"
+        ],
+        [
+          "D",
+          "Thank you for your help."
+        ],
+        [
+          "E",
+          "Is it your lunch box?"
+        ],
+        [
+          "F",
+          "What colour is it?"
+        ],
+        [
+          "G",
+          "Where is your brother?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D道谢与You are welcome构成邻接对；A/C/E/F/B/G都是问题，不是答语所回应的感谢。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleDialogueTFBridge-v0.1.json",
+    "sha256": "1ee151d407d38749e70f32aed00d01a89a62933d27cac992c59dfb61b7feda01"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.dialogue",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "passages": 1,
+      "gaps": 5,
+      "whole_dialogues": 1
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_bank": true,
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "Tao: Look at this thing in my bag. (1) ____\nMay: It's a lunch box in English.\nTao: (2) ____\nMay: Yes. I bring it to school every day.\nTao: (3) ____\nMay: It is orange, like an orange fruit.\nTao: I can say the colour, but I cannot spell it. (4) ____\nMay: Of course. O-R-A-N-G-E, orange.\nTao: (5) ____\nMay: You're welcome.\n\n共享候选（有两项不用）：\n\nA. Can you spell the colour word?\nB. How many apples are there?\nC. What is this in English?\nD. Thank you for your help.\nE. Is it your lunch box?\nF. What colour is it?\nG. Where is your brother?",
+  "author_answer_vector": [
+    "C",
+    "E",
+    "F",
+    "A",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 59,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 170,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 38,
+    "requirement_total_characters": 43,
+    "output_letter_count": 5,
+    "shared_bank_English_words_once": 34,
+    "filled_dialogue_English_words": 84
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Tao: Look at this thing in my bag. (1) ____\nMay: It's a lunch box in English.\nTao: (2) ____\nMay: Yes. I bring it to school every day.\nTao: (3) ____\nMay: It is orange, like an orange fruit.\nTao: I can say the colour, but I cannot spell it. (4) ____\nMay: Of course. O-R-A-N-G-E, orange.\nTao: (5) ____\nMay: You're welcome.",
+  "shared_bank": [
+    [
+      "A",
+      "Can you spell the colour word?"
+    ],
+    [
+      "B",
+      "How many apples are there?"
+    ],
+    [
+      "C",
+      "What is this in English?"
+    ],
+    [
+      "D",
+      "Thank you for your help."
+    ],
+    [
+      "E",
+      "Is it your lunch box?"
+    ],
+    [
+      "F",
+      "What colour is it?"
+    ],
+    [
+      "G",
+      "Where is your brother?"
+    ]
+  ],
+  "unused_bank_labels": [
+    "B",
+    "G"
+  ],
+  "filled_dialogue": "Tao: Look at this thing in my bag. What is this in English?\nMay: It's a lunch box in English.\nTao: Is it your lunch box?\nMay: Yes. I bring it to school every day.\nTao: What colour is it?\nMay: It is orange, like an orange fruit.\nTao: I can say the colour, but I cannot spell it. Can you spell the colour word?\nMay: Of course. O-R-A-N-G-E, orange.\nTao: Thank you for your help.\nMay: You're welcome.",
+  "whole_dialogues": 1,
+  "no_added_once_limit": true
+}
