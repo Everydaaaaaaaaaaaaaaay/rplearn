@@ -1,0 +1,247 @@
+{
+  "version": "0.1",
+  "id": "primary5-picturechoice-club-tools",
+  "title": "小五听音二选图：社团与工具",
+  "grade": "primary5",
+  "family": "listening_picture_choice",
+  "family_label": "听音选图",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part2",
+  "source_binding": "primary5illustrated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.17.json",
+    "sha256": "12f9cd8733d7864377b06a7b809e2c1addd75a158b60ae7f44c981e139b5a0c7"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.17.json",
+  "illustrated_listening": true,
+  "render_repeat_count": 2,
+  "source_form_notice": "小五同卷五段完整对话各二选图，学生明文每题两遍；教参本题标题省略遍数，差别保留。印本脚本/参考键AABAB可读，但原十候选图与录音仍缺；地区仅公开标题，原校未认证。本稿为完整原创配套，图候选按SHA逐一绑定，不把图省略或改成文字名，不当来源gold/年龄难度验证。",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 120
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 120
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 120
+    }
+  },
+  "audio_introduction": "Read all five questions. Listen to the whole passage.",
+  "instruction": "听五段完整对话，每段两遍，从该题A、B两幅图中选与对话相符的一幅。全部5题，不能把二选加成三选；本机每题前后5秒只作审阅编排。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What are you doing at the desk?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am writing a letter to my friend. I will post it tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture5-v0.1.svg",
+              "sha256": "8744bc87c55e968f7c7021facf68e736e2ceddc9b3e67e5c117c82c14063f4ec"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture1-v0.1.svg",
+              "sha256": "fd0b0582b98d34096f23e1be6760fce2d1ed62561855f0b1b5f2210653fb14a1"
+            }
+          },
+          "answer": "B",
+          "rationale": "B图为用笔写字，与writing a letter一致；A是双手捧书阅读，不符。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "How does your brother usually get to school?"
+        },
+        {
+          "speaker": "W",
+          "text": "He rides his bicycle. There is a safe path all the way to the school gate."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第2段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture2-v0.1.svg",
+              "sha256": "10096b1766e0d6e754abf5e6cd9e8eea3cca107a276e705a60bc3187634c9978"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture3-v0.1.svg",
+              "sha256": "1420828839de45ceb8252f93ced481b519eaf1652031cafc6c1ed2ec1054c5c8"
+            }
+          },
+          "answer": "A",
+          "rationale": "A图骑自行车对应rides his bicycle；B为公交，录音未说乘公交。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why do you need that can?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am giving the flowers some water. The soil is very dry today."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第3段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture7-v0.1.svg",
+              "sha256": "9bddd69863f3ce33f1f37c0208120fee731c0ecb37c41d91eb0aef24a86b86ad"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture1-v0.1.svg",
+              "sha256": "0f08c94c7eb15ebc0439030d416ace6cf4e65e47de7a7e020dfb622ddfabf8af"
+            }
+          },
+          "answer": "B",
+          "rationale": "B图浇花且有水壶水滴；A图扫地，无浇花动作。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are you ready to eat?"
+        },
+        {
+          "speaker": "W",
+          "text": "In a moment. I am washing my hands under the tap first."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第4段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture4-v0.1.svg",
+              "sha256": "147a93c3b6cac3e2447c8e6ff6d626da21d3cdc360f9b36e4c24b52473dd36d6"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture2-v0.2.svg",
+              "sha256": "08cafdbd639b82fdae3bf0fff002016ea9d8a90ea124f0fb30363a1085b645fe"
+            }
+          },
+          "answer": "B",
+          "rationale": "B图水龙头下洗手支持回答；A图戴厨师帽搅锅不是洗手。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What are you doing with the camera?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am taking a photograph of the garden for our class display."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第5段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture8-v0.1.svg",
+              "sha256": "f9308fd94bfbe5006e7efdbd723de886120ef32059f0cbfb7d1696d30afc0624"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture6-v0.1.svg",
+              "sha256": "d31f50430f117fbfdd5f4d996bb46d2aacce42ea327cd915b02796fc040d7196"
+            }
+          },
+          "answer": "A",
+          "rationale": "A图举相机拍照；B图持钓竿，不符camera/photograph。"
+        }
+      ]
+    }
+  ],
+  "source_repeat_count": 2
+}

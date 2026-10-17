@@ -2,6 +2,7 @@
 """Build the timeboxed grade/family quality-review page from pinned authors."""
 import argparse
 import base64
+import copy
 import hashlib
 import html
 import json
@@ -109,7 +110,7 @@ def full_markdown_candidate(meta):
     closing = audit.get('target_format', {}).get('fixed_closing', '')
     if typed_tasks is not None:
         passage_html = render_input(student)
-        questions = typed_tasks
+        questions = copy.deepcopy(typed_tasks)
         mode = 'quality_review_complete_tasks'
     elif meta['family'] == 'application_writing':
         if student.count('[在此写完整正文]') != 1 or audit['questions'] != 1:
@@ -144,6 +145,9 @@ def full_markdown_candidate(meta):
             'responseMode': mode, 'passageHtml': passage_html, 'questions': questions,
             'studentBeforeHtml': before, 'studentAfterHtml': after, 'reviewHtml': teacher_html,
             'reviewText': teacher, 'requiredPassageImages': images, 'author_review_not_independent': True}
+    if any(q.get('optionImageAssets')for q in questions):
+        from quality_review_images import attach_option_images
+        attach_option_images(group)
     if audio_tracks:
         group['requiredAudioAssets'] = audio_tracks
     if meta['family']=='listening_double_matching':

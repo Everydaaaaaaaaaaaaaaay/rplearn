@@ -52,6 +52,9 @@ def check(data, plan):
             if b.get('task_mode') == 'primary_wordphrase10twice':
                 from compile_word_listening import check as check_word_listening
                 check_word_listening(g,a,b,source)
+            if b.get('task_mode') == 'illustrated_listening':
+                from compile_illustrated_listening import check as check_illustrated
+                check_illustrated(g,a,b,source)
             if b.get('task_mode') == 'primary_passageTF5':
                 from compile_primary_passage_listening import check as check_primary_passage
                 check_primary_passage(g,a,b,source)
@@ -285,7 +288,12 @@ def check(data, plan):
         assert g['instruction'] == meta['instruction'] and g['sourceFormNotice'] == meta['source_form_notice']
         if meta.get('format_summary'):
             assert g['formatSummary']==meta['format_summary']
-        assert g['questions'] == a['review_response_tasks']
+        if a.get('illustrated_listening'):
+            from quality_review_images import check_option_images,without_derived_images
+            check_option_images(g)
+            assert without_derived_images(g['questions'])==a['review_response_tasks']
+        else:
+            assert g['questions'] == a['review_response_tasks']
         assert len(g['questions']) == b['responses'] == a['questions'] == meta['questions']
         assert [len(q['options']) for q in g['questions']] == [b['options_each']] * b['responses']
         assert a['authored_student_inputs_complete'] and not a['independent_teacher_student_commercial_production_validated']
@@ -295,7 +303,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') or a.get('senior_short_source_bound') or a.get('primary_passage_listening') else a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') or a.get('senior_short_source_bound') or a.get('primary_passage_listening') or a.get('illustrated_listening') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])

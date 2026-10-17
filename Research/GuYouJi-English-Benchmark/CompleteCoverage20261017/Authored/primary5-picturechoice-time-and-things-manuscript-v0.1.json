@@ -1,0 +1,247 @@
+{
+  "version": "0.1",
+  "id": "primary5-picturechoice-time-and-things",
+  "title": "小五听音二选图：时间与物品",
+  "grade": "primary5",
+  "family": "listening_picture_choice",
+  "family_label": "听音选图",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part2",
+  "source_binding": "primary5illustrated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.17.json",
+    "sha256": "12f9cd8733d7864377b06a7b809e2c1addd75a158b60ae7f44c981e139b5a0c7"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.17.json",
+  "illustrated_listening": true,
+  "render_repeat_count": 2,
+  "source_form_notice": "小五同卷五段完整对话各二选图，学生明文每题两遍；教参本题标题省略遍数，差别保留。印本脚本/参考键AABAB可读，但原十候选图与录音仍缺；地区仅公开标题，原校未认证。本稿为完整原创配套，图候选按SHA逐一绑定，不把图省略或改成文字名，不当来源gold/年龄难度验证。",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 120
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 120
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 120
+    }
+  },
+  "audio_introduction": "Read all five questions. Listen to the whole passage.",
+  "instruction": "听五段完整对话，每段两遍，从该题A、B两幅图中选与对话相符的一幅。全部5题，不能把二选加成三选；本机每题前后5秒只作审阅编排。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What time does your lesson start?"
+        },
+        {
+          "speaker": "W",
+          "text": "At a quarter to seven. I need to leave home soon."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/illustrated-clock645-v0.1.svg",
+              "sha256": "b0bd83c896ee1ac2b26313c5429c9318b8f71e5943e6023c83701717dccc3f10"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/illustrated-clock715-v0.1.svg",
+              "sha256": "b38fba736cc790a2c26f2a5935097bc78203d36a7183c064b6701251bc2798bc"
+            }
+          },
+          "answer": "A",
+          "rationale": "quarter to seven为6:45，A分针9时针6/7间；B为7:15，把to误作past。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Which animal is sitting below the table?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is a cat. It has just found a quiet place to rest."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第2段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture8-v0.1.svg",
+              "sha256": "241fa42f3a1cd4961aaf18806dca79f66e485af54f14c1235854b9290d55e8bc"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture6-v0.1.svg",
+              "sha256": "6c5fdf22c1738484892218eff60e07fe7fb244b3a10e7b10f944a33cf779c553"
+            }
+          },
+          "answer": "B",
+          "rationale": "B图桌下猫，与cat一致；A为鸭，不凭位置以外猜源键。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What is swimming in that water?"
+        },
+        {
+          "speaker": "W",
+          "text": "A fish. Look at its tail moving from side to side."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第3段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-nature-and-bags-picture4-v0.1.svg",
+              "sha256": "09439478bc41276cb46cfd3a13a243d0bea529a2d230768b3e451b5669575551"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture1-v0.1.svg",
+              "sha256": "e3a75d3dd106b6cbdcd93addaec992ed655740254503f521dedcf865d10f5373"
+            }
+          },
+          "answer": "A",
+          "rationale": "A图鱼有鳍尾；B为苹果，无游泳对象。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Where will you put your school books?"
+        },
+        {
+          "speaker": "W",
+          "text": "In my bag. It has a handle and a little pocket on the front."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第4段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-nature-and-bags-picture3-v0.1.svg",
+              "sha256": "184a108ef556a27dc7dd4830aedaaef5684643d0fda8fe5210dea1f1cc2818c6"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture3-v0.1.svg",
+              "sha256": "3791352762ee8858ccc6c56dea327ac4bb6cb10c2964e98febd716f60ee05c01"
+            }
+          },
+          "answer": "A",
+          "rationale": "A图包有提手和前袋；B图是人搬箱子，不能把箱子当包。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why have you opened your umbrella?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is raining. I do not want my clothes to get wet."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第5段对话与哪幅图相符？",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture9-v0.1.svg",
+              "sha256": "15922d5fad3d2aea32ba88faf369b241ee069313192bcf7551868a88830f499e"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture8-v0.1.svg",
+              "sha256": "f9308fd94bfbe5006e7efdbd723de886120ef32059f0cbfb7d1696d30afc0624"
+            }
+          },
+          "answer": "A",
+          "rationale": "A图雨线与打开的伞；B图举相机，没有伞。"
+        }
+      ]
+    }
+  ],
+  "source_repeat_count": 2
+}

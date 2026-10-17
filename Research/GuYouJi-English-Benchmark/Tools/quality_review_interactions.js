@@ -11,7 +11,7 @@ function makeButton(label,pressed,fn){const b=document.createElement('button');b
 function inputFor(g,q){
  const saved=drafts[g.id]||{};
  if(g.fixedSharedBank)return '<select class="short-answer" name="'+q.number+'" aria-label="'+escapeText(q.stem)+'"><option value="">请选择</option>'+q.options.map(([letter,text])=>'<option value="'+letter+'" '+(saved[q.number]===letter?'selected':'')+'>'+(g.kind==='dialogue_ordering'?escapeText(text):letter+'. '+escapeText(text))+'</option>').join('')+'</select>';
- if(q.options.length)return q.options.map(([letter,text])=>'<label class="choice"><input type="radio" name="'+q.number+'" value="'+letter+'" '+(saved[q.number]===letter?'checked':'')+'><span>'+letter+'. '+(q.optionImages?'<img class="option-image" src="'+escapeText(q.optionImages[letter].src)+'" alt="'+escapeText(q.optionImages[letter].alt)+'" width="300" height="180">':escapeText(text))+'</span></label>').join('');
+ if(q.options.length)return q.options.map(([letter,text])=>'<label class="choice"><input type="radio" name="'+q.number+'" value="'+letter+'" '+(saved[q.number]===letter?'checked':'')+'><span>'+letter+'. '+(q.optionImages?'<img class="option-image" src="'+escapeText(q.optionImages[letter].src)+'" alt="'+escapeText(q.optionImages[letter].alt)+'" width="'+(q.optionImages[letter].width||300)+'" height="'+(q.optionImages[letter].height||180)+'">':escapeText(text))+'</span></label>').join('');
  if(q.acceptedAnswers||q.knownForms){const key=String(q.number)+'.1';return '<input class="short-answer" type="text" name="'+key+'" aria-label="'+escapeText(q.stem)+'" value="'+escapeText(saved[key]||'')+'" autocomplete="off" lang="en">';}
  const parts=q.parts||[{label:q.stem}];return parts.map((part,i)=>{const key=String(q.number)+'.'+(i+1);return (part.opening?'<p class="fixed" lang="en">'+escapeText(part.opening)+'</p>':'')+'<label class="written">'+escapeText(part.label)+'<textarea name="'+key+'" rows="'+(g.responseMode==='writing_review'?9:3)+'" lang="en">'+escapeText(saved[key]||'')+'</textarea></label>';}).join('');
 }
@@ -121,10 +121,10 @@ function render(){
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
  // Each short conversation has one printed question. Keep its player beside
  // that question without changing the frozen five-part material or its order.
- if(['listening_short_conversation_choice','listening_word_phrase_choice'].includes(g.kind)){
+ if(['listening_short_conversation_choice','listening_word_phrase_choice','listening_picture_choice'].includes(g.kind)){
   const tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')];
   if(tracks.length===g.questions.length&&fields.length===tracks.length&&g.requiredAudioAssets?.every((a,i)=>a.response_numbers.length===1&&a.response_numbers[0]===g.questions[i].number)){
-   tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&['对话'+(i+1),'句子'+(i+1)].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(track);});
+   tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&['对话'+(i+1),'句子'+(i+1),'材料'+(i+1)].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(track);});
   }
  }
  // A long section keeps each player next to the first of its printed questions.
