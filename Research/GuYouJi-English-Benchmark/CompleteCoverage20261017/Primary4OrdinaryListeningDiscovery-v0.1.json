@@ -1,0 +1,284 @@
+{
+  "version": "0.1",
+  "scope": "existing_ordinary_primary4_paper_full_listening_printed_structure_discovery",
+  "source": {
+    "path": "build/english-benchmark-authority-20261017/primary4-fangshan.pdf",
+    "sha256": "ee48ceeac39d01ec48ecf941d7b25109d5b0ff47365d54729384769087b57d5d"
+  },
+  "source_images": [
+    {
+      "path": "build/english-benchmark-authority-20261017/p4-physical1.png",
+      "sha256": "0d8846c91006e668085b4a7e391de4457875d813be1e79a1ddce1b908d358bd7"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/p4-fangshan-physical2-v0.1.png",
+      "sha256": "5b696f719e5cb8bf5a4e610f557de08c13a6bb84c174316be6ca40c56dd90600"
+    }
+  ],
+  "source_native": {
+    "path": "build/english-benchmark-authority-20261017/primary4-fangshan-selected-native.json",
+    "sha256": "63ac8125c25399cccedb665a7686799e4ad867752fcde10872f6ff9537b0f303"
+  },
+  "body_identity": {
+    "region": "北京市房山区",
+    "academic_year": "2024—2025",
+    "term": "第一学期",
+    "grade": "四年级"
+  },
+  "school_administration_authenticated": false,
+  "original_source_papers_increment": 0,
+  "original_source_downloads": 0,
+  "only_new_rendered_physical_page": 2,
+  "render_command": "pdftoppm -f 2 -l 2 -scale-to 1900 -png -singlefile <existing PDF> <new prefix>",
+  "render_warning": "ExtGState KSPE186 unknown;PNG visually reviewed for full questions12—25 and pictures",
+  "source_original_audio_script_key_missing": true,
+  "source_key_note": "physical7 native: 一~五、听力略",
+  "all_source_repeat_counts_unknown": true,
+  "observations": [
+    {
+      "id": "primary4.fangshan2024-25upper.listening.part1",
+      "grade": "primary4",
+      "family": "listening_picture_true_false",
+      "label": "听句看图判断",
+      "title": "小四五句五图符合/不符",
+      "source_group_id": "primary4.fangshan2024-25upper.listening.part1",
+      "target_whole_originals": 3,
+      "configuration": {
+        "materials": 5,
+        "responses": 5,
+        "pictures": 5,
+        "response_symbols": [
+          "√",
+          "×"
+        ],
+        "repeat_count": null
+      },
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan.pdf",
+          "sha256": "ee48ceeac39d01ec48ecf941d7b25109d5b0ff47365d54729384769087b57d5d"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-physical1.png",
+          "sha256": "0d8846c91006e668085b4a7e391de4457875d813be1e79a1ddce1b908d358bd7"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-fangshan-physical2-v0.1.png",
+          "sha256": "5b696f719e5cb8bf5a4e610f557de08c13a6bb84c174316be6ca40c56dd90600"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan-selected-native.json",
+          "sha256": "63ac8125c25399cccedb665a7686799e4ad867752fcde10872f6ff9537b0f303"
+        }
+      ],
+      "source_structure_observed": true,
+      "source_full_inputs_verified": false,
+      "source_key_is_gold": false,
+      "source_gap": "正文区/学年/学期/年级已印，原校施测未认证；原必要图/25题完整，原音轨/脚本缺，答案页一至五均写听力略，不能猜键；各节未印遍数/精确停顿。",
+      "grade_exclusivity_established": false,
+      "author_count_requires_same_specific_source_group": true
+    },
+    {
+      "id": "primary4.fangshan2024-25upper.listening.part2",
+      "grade": "primary4",
+      "family": "listening_picture_matching",
+      "label": "听对话标号配图",
+      "title": "小四五对话A—E配五图",
+      "source_group_id": "primary4.fangshan2024-25upper.listening.part2",
+      "target_whole_originals": 3,
+      "configuration": {
+        "dialogues": 5,
+        "responses": 5,
+        "pictures": 5,
+        "repeat_count": null,
+        "reuse_rule": "not_printed",
+        "operation": "each_numbered_picture_receives_dialogue_order_letter_A_first_to_E_fifth;source_audio_announcements_unknown",
+        "response_rank_labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "audio_label_announcement_unknown": true
+      },
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan.pdf",
+          "sha256": "ee48ceeac39d01ec48ecf941d7b25109d5b0ff47365d54729384769087b57d5d"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-physical1.png",
+          "sha256": "0d8846c91006e668085b4a7e391de4457875d813be1e79a1ddce1b908d358bd7"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-fangshan-physical2-v0.1.png",
+          "sha256": "5b696f719e5cb8bf5a4e610f557de08c13a6bb84c174316be6ca40c56dd90600"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan-selected-native.json",
+          "sha256": "63ac8125c25399cccedb665a7686799e4ad867752fcde10872f6ff9537b0f303"
+        }
+      ],
+      "source_structure_observed": true,
+      "source_full_inputs_verified": false,
+      "source_key_is_gold": false,
+      "source_gap": "正文区/学年/学期/年级已印，原校施测未认证；原必要图/25题完整，原音轨/脚本缺，答案页一至五均写听力略，不能猜键；各节未印遍数/精确停顿。第二节题面只要求用A—E排列对话次序，不证明原音轨报Dialogue A—E。",
+      "grade_exclusivity_established": false,
+      "author_count_requires_same_specific_source_group": true
+    },
+    {
+      "id": "primary4.fangshan2024-25upper.listening.part3",
+      "grade": "primary4",
+      "family": "listening_dialogue_choice",
+      "label": "听对话回答问题",
+      "title": "小四三对话1/2/2图文混选",
+      "source_group_id": "primary4.fangshan2024-25upper.listening.part3",
+      "target_whole_originals": 3,
+      "configuration": {
+        "materials": 3,
+        "responses": 5,
+        "subgroup_responses": [
+          1,
+          2,
+          2
+        ],
+        "options_each": 3,
+        "picture_response_positions": [
+          4
+        ],
+        "text_response_positions": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "repeat_count": null
+      },
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan.pdf",
+          "sha256": "ee48ceeac39d01ec48ecf941d7b25109d5b0ff47365d54729384769087b57d5d"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-physical1.png",
+          "sha256": "0d8846c91006e668085b4a7e391de4457875d813be1e79a1ddce1b908d358bd7"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-fangshan-physical2-v0.1.png",
+          "sha256": "5b696f719e5cb8bf5a4e610f557de08c13a6bb84c174316be6ca40c56dd90600"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan-selected-native.json",
+          "sha256": "63ac8125c25399cccedb665a7686799e4ad867752fcde10872f6ff9537b0f303"
+        }
+      ],
+      "source_structure_observed": true,
+      "source_full_inputs_verified": false,
+      "source_key_is_gold": false,
+      "source_gap": "正文区/学年/学期/年级已印，原校施测未认证；原必要图/25题完整，原音轨/脚本缺，答案页一至五均写听力略，不能猜键；各节未印遍数/精确停顿。第三材料第14题三图候选、第15题文字；中间两题和首题文字，不改为全图或全字。",
+      "grade_exclusivity_established": false,
+      "author_count_requires_same_specific_source_group": true
+    },
+    {
+      "id": "primary4.fangshan2024-25upper.listening.part4",
+      "grade": "primary4",
+      "family": "listening_picture_ordering",
+      "label": "听短文图片排序",
+      "title": "小四五图填写A—E事件次序",
+      "source_group_id": "primary4.fangshan2024-25upper.listening.part4",
+      "target_whole_originals": 3,
+      "configuration": {
+        "materials": 1,
+        "responses": 5,
+        "pictures": 5,
+        "order_labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "operation": "each_numbered_picture_receives_its_event_rank_letter_A_first_to_E_fifth",
+        "repeat_count": null
+      },
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan.pdf",
+          "sha256": "ee48ceeac39d01ec48ecf941d7b25109d5b0ff47365d54729384769087b57d5d"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-physical1.png",
+          "sha256": "0d8846c91006e668085b4a7e391de4457875d813be1e79a1ddce1b908d358bd7"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-fangshan-physical2-v0.1.png",
+          "sha256": "5b696f719e5cb8bf5a4e610f557de08c13a6bb84c174316be6ca40c56dd90600"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan-selected-native.json",
+          "sha256": "63ac8125c25399cccedb665a7686799e4ad867752fcde10872f6ff9537b0f303"
+        }
+      ],
+      "source_structure_observed": true,
+      "source_full_inputs_verified": false,
+      "source_key_is_gold": false,
+      "source_gap": "正文区/学年/学期/年级已印，原校施测未认证；原必要图/25题完整，原音轨/脚本缺，答案页一至五均写听力略，不能猜键；各节未印遍数/精确停顿。图片编号16—20接收A—E顺序标记，不把候选图字母与时序字母混为一方向。",
+      "grade_exclusivity_established": false,
+      "author_count_requires_same_specific_source_group": true
+    },
+    {
+      "id": "primary4.fangshan2024-25upper.listening.part5",
+      "grade": "primary4",
+      "family": "listening_passage_choice",
+      "label": "篇章听力单选",
+      "title": "小四完整短文五文字题",
+      "source_group_id": "primary4.fangshan2024-25upper.listening.part5",
+      "target_whole_originals": 3,
+      "configuration": {
+        "materials": 1,
+        "responses": 5,
+        "options_each": 3,
+        "picture_response_positions": [],
+        "repeat_count": null
+      },
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan.pdf",
+          "sha256": "ee48ceeac39d01ec48ecf941d7b25109d5b0ff47365d54729384769087b57d5d"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-physical1.png",
+          "sha256": "0d8846c91006e668085b4a7e391de4457875d813be1e79a1ddce1b908d358bd7"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/p4-fangshan-physical2-v0.1.png",
+          "sha256": "5b696f719e5cb8bf5a4e610f557de08c13a6bb84c174316be6ca40c56dd90600"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/primary4-fangshan-selected-native.json",
+          "sha256": "63ac8125c25399cccedb665a7686799e4ad867752fcde10872f6ff9537b0f303"
+        }
+      ],
+      "source_structure_observed": true,
+      "source_full_inputs_verified": false,
+      "source_key_is_gold": false,
+      "source_gap": "正文区/学年/学期/年级已印，原校施测未认证；原必要图/25题完整，原音轨/脚本缺，答案页一至五均写听力略，不能猜键；各节未印遍数/精确停顿。",
+      "grade_exclusivity_established": false,
+      "author_count_requires_same_specific_source_group": true
+    }
+  ],
+  "other_primary4_paper_boundary": {
+    "source": {
+      "path": "build/english-benchmark-authority-20261017/primary4-shijingshan.pdf",
+      "sha256": "97996cf19d1bd3c0b9a6f02bfc8946de4da9bb6d27a8f59e03cc634343dbc796"
+    },
+    "image": {
+      "path": "build/english-benchmark-authority-20261017/p4s-physical1.png",
+      "sha256": "9d2188252240fe74475da7a79f6f5088fc07ff31c8457188e80550d403f1e2cb"
+    },
+    "first_page_is_written_language_knowledge": true,
+    "no_listening_inferred_from_frontpage": true
+  },
+  "all_required_types_complete": false
+}
