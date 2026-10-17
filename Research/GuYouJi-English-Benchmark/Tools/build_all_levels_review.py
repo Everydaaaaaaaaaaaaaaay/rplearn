@@ -69,10 +69,11 @@ def inherited(meta, acquisitions, family):
 
 
 def build_current(output):
-    build(BASE/'FirstRelease/timeboxed-review-matrix-v0.9.json', output)
+    plan_path,plan=resolve_plan()
+    matrix_path=load_ref(plan['current_review_matrix']) if plan.get('current_review_matrix') else BASE/'FirstRelease/timeboxed-review-matrix-v0.9.json'
+    build(matrix_path, output)
     page = (output/'index.html').read_text()
     data = json.loads(re.search(r'<script id="quality-data" type="application/json">(.*?)</script>', page, re.S)[1])
-    plan_path,plan=resolve_plan()
     policy_path = load_ref(plan['current_scope_policy'])
     policy = json.loads(policy_path.read_text())
     aliases = {**{'junior'+str(i): i+6 for i in range(1, 4)}, **{'senior'+str(i): i+9 for i in range(1, 4)}}
@@ -245,6 +246,9 @@ def build_current(output):
         data['unfilled_specific_modes'] = sum(bool(m['remainingWholeOriginals']) for m in modes)
     if plan.get('current_coverage_audit'):
         data['coverage_audit'] = json.loads(load_ref(plan['current_coverage_audit']).read_text())
+        for issue in data['coverage_audit']['issues']:
+            if not isinstance(issue.get('levels'),list) or not issue['levels'] or not set(issue['levels']) <= set(data['grades']) or not all(isinstance(issue.get(k),str) and issue[k].strip() for k in ['id','label','state_label','detail']):
+                raise ValueError('Incomplete coverage issue display contract')
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
                      'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
                      for level in data['grades'] for family, label in labels.items()]

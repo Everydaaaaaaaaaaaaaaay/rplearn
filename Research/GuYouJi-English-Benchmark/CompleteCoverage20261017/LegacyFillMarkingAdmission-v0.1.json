@@ -1,0 +1,61 @@
+{
+  "version": "0.1",
+  "scope": "two_legacy_objective_groups_local_fill_admission_only",
+  "existing_groups_revised": 2,
+  "existing_response_positions": 12,
+  "new_authored_groups": 0,
+  "new_response_positions": 0,
+  "current_groups": 631,
+  "current_responses": 4211,
+  "current_family_cells": 187,
+  "revision_index": {
+    "path": "CompleteCoverage20261017/AuthoredRevisions-v0.8.json",
+    "sha256": "556c6d399533832b49da4ee07e6ca57290ec5a8f8df9ecf78785096f5d1920a3"
+  },
+  "before": {
+    "path": "build/english-benchmark-authority-20261017/legacy631-marking-before-v0.1.json",
+    "sha256": "eb539886da115a9f77e3dda24237c9d18961d59282ee2fb74b49d5bbb4eefb7f"
+  },
+  "revisions": {
+    "path": "build/english-benchmark-authority-20261017/legacy631-marking-revisions-v0.1.json",
+    "sha256": "ab33ec23cb771237285dead2726223f66fd6b10a36848f40f03416c2735107d9"
+  },
+  "tests": {
+    "path": "build/english-benchmark-authority-20261017/legacy631-marking-tests-v0.1.json",
+    "sha256": "178c63358db26d4c94c10e3026736700de264763be25b4c9d42ad582d1c4fe5e"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/legacy631-marking-browser-v0.1.json",
+    "sha256": "8a4df2acb1a9bde7a1309cf30c520fd7de1a5cf3921ac3e6968babb2f8278ea3"
+  },
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/legacy631-marking-result-v0.1.png",
+    "sha256": "4083f3310d0a140ec7d8d7b00677f9969f2ae229108467ecb44c859c94c45390"
+  },
+  "pinned_controls": {
+    "path": "build/english-benchmark-authority-20261017/legacy631-pinned-controls-v0.1.json",
+    "sha256": "f9aa677e0bfe21cdcfef51b9592f37287224e194467d18a339feed969cdd82bc"
+  },
+  "actual_final_correct_responses": 12,
+  "actual_wrong_blank_unknown_states": 7,
+  "rationale_reset_groups": 2,
+  "focused_cases": 60,
+  "decimal_oracle_cases": 1300,
+  "python_oracle_Unicode_version": "13.0.0",
+  "normalization_scope": "Legacy NFKC followed by explicitly supported Unicode13decimal blocks and Python13whitespace;browser host NFKC version is not universal Unicode correctness certification. Other ascii_integer_v1 groups unchanged.",
+  "regression": {
+    "cases": 100,
+    "actual_fill_groups": 126,
+    "actual_fill_positions": 963,
+    "accepted_forms_checked": 1355,
+    "once_banks": 12
+  },
+  "student_materials_stems_known_answers_source_form_unchanged": true,
+  "source_identity_key_dictionary_independence_not_upgraded": true,
+  "source_grade7_reference": "Source4lexemes_and_phonetic_cues_reused;dictionary403notreplacedwithclaimedindependentdictionaryverification",
+  "unlisted_lexical_and_unknown_syntax": "review_not_wrong_or_match",
+  "prefreeze_failures_preserved": "Absolute-reference staging failure rejected before plan/page replacement;failed draft artifacts preserved in ignored cache. Optional missing legacy display fields preserved exactly. Initial v0.2 protocol retained as proposed predecessor;v0.3 adds explicit unknownSyntax review.",
+  "fill_protocol_presence_gaps_after": 0,
+  "goal_complete": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

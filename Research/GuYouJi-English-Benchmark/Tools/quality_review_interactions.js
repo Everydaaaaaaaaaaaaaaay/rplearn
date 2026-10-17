@@ -88,6 +88,16 @@ function normalizeFill(value,protocol){
   const digits=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
   return /^[0-9]+$/.test(digits)?digits.replace(/^0+(?=\d)/,''):null;
  }
+ if(protocol==='unicode_decimal_integer_v1'){
+  // Preserve the legacy number-word task's NFKC/decimal-value contract.
+  // Unicode 13 decimal blocks are explicit; unsupported syntax stays review.
+  const zeros=[48,1632,1776,1984,2406,2534,2662,2790,2918,3046,3174,3302,3430,3558,3664,3792,3872,4160,4240,6112,6160,6470,6608,6784,6800,6992,7088,7232,7248,42528,43216,43264,43472,43504,43600,44016,65296,66720,68912,69734,69872,69942,70096,70384,70736,70864,71248,71360,71472,71904,72016,72784,73040,73120,92768,93008,120782,120792,120802,120812,120822,123200,123632,125264,130032];
+  const normalized=value.normalize('NFKC').replace(/^[\u0009-\u000d\u001c-\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]+|[\u0009-\u000d\u001c-\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]+$/g,'');
+  if(!normalized)return null;
+  let digits='';
+  for(const character of normalized){const cp=character.codePointAt(0),zero=zeros.find(z=>cp>=z&&cp<z+10);if(zero===undefined)return null;digits+=String(cp-zero);}
+  return digits.replace(/^0+(?=\d)/,'');
+ }
  if(protocol==='small_count_v1'){
   const count=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
   return /^[0-9]+$/.test(count)?count.replace(/^0+(?=\d)/,''):/^[A-Za-z]+$/.test(count)?count.toUpperCase():null;
@@ -152,7 +162,7 @@ function answerComparison(questions,saved={}){
    rows.push(selection.rows[0]);continue;
   }
   const contract=q.fillMarking,accepted=q.acceptedAnswers;
-  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','source_excerpt_v1','source_list_v1','ascii_integer_v1','clock_hour_v1','small_count_v1','uk_postcode_v1','metric_length_v1','sterling_amount_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','source_excerpt_v1','source_list_v1','ascii_integer_v1','unicode_decimal_integer_v1','clock_hour_v1','small_count_v1','uk_postcode_v1','metric_length_v1','sterling_amount_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
   const formQuantity=['metric_length_v1','sterling_amount_v1'].includes(contract.normalization),formValue=formQuantity||contract.normalization==='uk_postcode_v1';
   if(formValue&&(contract.sourceBound!==true||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==3||contract.numberAllowance!=='one'))return {available:false,reason:'表单空的输入范围、限词/数字或未知格式规则未绑定。'};
   if(contract.normalization==='metric_length_v1'&&(!Number.isSafeInteger(contract.metricMillimetres)||contract.metricMillimetres<=0||contract.metricMillimetres>1e7||!['width','height'].includes(contract.dimensionAxis)||accepted.some(a=>{const p=metricLength(normalizeFill(a,contract.normalization));return p===null||p.numerator*1000!==contract.metricMillimetres*p.denominator||p.axis&&!((contract.dimensionAxis==='width'?['WIDE']:['HIGH','DEEP']).includes(p.axis));})))return {available:false,reason:'尺寸空的单位、方向或等值形式不一致。'};
@@ -167,7 +177,7 @@ function answerComparison(questions,saved={}){
   if(contract.normalization==='metric_length_v1'&&rejected.some(v=>{const p=metricLength(v);return p!==null&&p.numerator*1000===contract.metricMillimetres*p.denominator&&(!p.axis||(contract.dimensionAxis==='width'?['WIDE']:['HIGH','DEEP']).includes(p.axis));})||contract.normalization==='sterling_amount_v1'&&rejected.some(v=>sterlingPence(v)===contract.sterlingPence))return {available:false,reason:'尺寸或金额的正确等值形式被列为错答，暂不核对。'};
   if(contract.requiredInitial!==undefined&&(!['latin_word_v1','english_phrase_v1'].includes(contract.normalization)||contract.maxWords!==1||typeof contract.requiredInitial!=='string'||!/^[A-Za-z]$/.test(contract.requiredInitial)||forms.some(a=>!a.startsWith(contract.requiredInitial.toUpperCase()))))return {available:false,reason:'首字母与一词答案范围未一致绑定。'};
   if(contract.requiredWord!==undefined&&(contract.normalization!=='english_phrase_v1'||typeof contract.requiredWord!=='string'||!/^[A-Za-z]+$/.test(contract.requiredWord)||forms.some(a=>!a.split(' ').includes(contract.requiredWord.toUpperCase()))))return {available:false,reason:'关键词原形与可接受答案未一致绑定。'};
-  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>formWordCount(a,contract)>contract.maxWords)||contract.minWords&&forms.some(a=>a.split(' ').length<contract.minWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
+  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&!['ascii_integer_v1','unicode_decimal_integer_v1'].includes(contract.normalization)||contract.maxWords&&forms.some(a=>formWordCount(a,contract)>contract.maxWords)||contract.minWords&&forms.some(a=>a.split(' ').length<contract.minWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
   const chosen=saved[String(q.number)+'.1']??'';
   if(typeof chosen!=='string')return {available:false,reason:'填写值格式无效。'};
   const normalized=normalizeFill(chosen,contract.normalization);
@@ -182,7 +192,7 @@ function answerComparison(questions,saved={}){
   const sameMetric=quantity!==null&&quantity.numerator*1000===contract.metricMillimetres*quantity.denominator&&(!quantity.axis||(contract.dimensionAxis==='width'?['WIDE']:['HIGH','DEEP']).includes(quantity.axis));
   const sameMoney=money!==null&&money===contract.sterlingPence;
   const differentForm=quantity!==null&&!sameMetric||money!==null&&!sameMoney||contract.normalization==='uk_postcode_v1'&&normalized!==null&&!forms.includes(normalized);
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)||sameMetric||sameMoney?'match':normalized===null?(['clock_hour_v1','small_count_v1','source_excerpt_v1','source_list_v1'].includes(contract.normalization)||formValue?'review':'different'):differentForm||differentClock||differentCount||differentList||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)||sameMetric||sameMoney?'match':normalized===null?(contract.unknownSyntax==='review'||['clock_hour_v1','small_count_v1','source_excerpt_v1','source_list_v1'].includes(contract.normalization)||formValue?'review':'different'):differentForm||differentClock||differentCount||differentList||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
  const usedBankRoots=new Map();
  if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}

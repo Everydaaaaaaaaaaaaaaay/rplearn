@@ -1,0 +1,153 @@
+{
+  "version": "0.2",
+  "id": "grade7-phonetic-word-completion",
+  "grade": 7,
+  "family": "phonetic_word_completion",
+  "questions": 4,
+  "candidate_path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-v0.2.md",
+  "candidate_sha256": "ff196b24e1e25c9a88004b1b82aba047b6fe49933c3b63ead22ef213aca8426e",
+  "anchor_group_ids": [
+    "g7.xicheng2025.phonetic"
+  ],
+  "source_shape": {
+    "grade": 7,
+    "family": "phonetic_word_completion",
+    "responses": 4,
+    "options_each": null,
+    "details": {
+      "response_limit": "not_explicit"
+    }
+  },
+  "source_view_manifest": {
+    "path": "FirstRelease/Sampling/baseline-sentence-bank-views-v0.1.json",
+    "sha256": "01b979e4804a435bfbf8e0d2677584301591ba488e6fb1a6afc58af6ee40a9e9"
+  },
+  "source_reference": {
+    "parent_document": {
+      "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+      "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+    },
+    "transcription": {
+      "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-source-text20261015t-v0.1.json",
+      "sha256": "f0f8dbc3dda2e93c934e1f015629267bc42be90084f973f56277605fe5cdec64"
+    },
+    "record_index": 4,
+    "record_sha256": "2fc2aac992e22d64392fead798170073f29ab6f48d296fc808685307495a3879"
+  },
+  "source_frozen_input_state": null,
+  "source_frozen_state_not_upgraded": true,
+  "student_heading": "## 学生题面",
+  "author_heading": "## 作者核对",
+  "review_response_tasks": [
+    {
+      "stem": "After the long walk, we sat on a bench for a short ________ [rest].",
+      "options": [],
+      "knownForms": [
+        "rest"
+      ],
+      "rationale": "[rest]对应rest，a short后用休息这一名词；句意和音标共同支持。",
+      "phonetic": "[rest]",
+      "number": 1,
+      "acceptedAnswers": [
+        "rest"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "stem": "The cook put the rice on a clean ________ [dɪʃ].",
+      "options": [],
+      "knownForms": [
+        "dish"
+      ],
+      "rationale": "[dɪʃ]对应dish；plate虽可容纳米饭，但不符合给定音标。",
+      "phonetic": "[dɪʃ]",
+      "number": 2,
+      "acceptedAnswers": [
+        "dish"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "stem": "We use this small spoon to ________ [fiːd] the baby.",
+      "options": [],
+      "knownForms": [
+        "feed"
+      ],
+      "rationale": "to后原形feed；所给[fiːd]不等fed [fed]，不能只按语境忽略音标。",
+      "phonetic": "[fiːd]",
+      "number": 3,
+      "acceptedAnswers": [
+        "feed"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "stem": "The flowers have a sweet ________ [smel].",
+      "options": [],
+      "knownForms": [
+        "smell"
+      ],
+      "rationale": "[smel]对应smell，a sweet后单数名词；smile音标及语义均不同。",
+      "phonetic": "[smel]",
+      "number": 4,
+      "acceptedAnswers": [
+        "smell"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    }
+  ],
+  "target_constraints": {
+    "phonetic_cues_required": true,
+    "word_limit_explicit_in_source": null,
+    "audio_required": false,
+    "source_lexemes_reused": [
+      "rest",
+      "dish",
+      "feed",
+      "smell"
+    ]
+  },
+  "canonical_response_block_sha256": "92b924ebe422ed3bf798537122f7a20b762e5a5f07ce3b6ac6d2dd241c72ce62",
+  "whole_sentence_output": false,
+  "source_count_increment": 0,
+  "author_reference_set_exhaustive": false,
+  "qualitative_reference_review_only": true,
+  "actual_frozen_revision_rounds": 0,
+  "same_author_all_responses_reviewed": true,
+  "independent_review": false,
+  "student_calibration": false,
+  "commercial_admission": false,
+  "production_admission": false,
+  "model_or_production_evaluation_called": false,
+  "previous_author_check": {
+    "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-author-check-v0.1.json",
+    "sha256": "1d8684fc13d3d58140cdb897ef7a7866f5838516a5205db2aad7d152f52d76b8"
+  },
+  "marking_admission_only_revision": true,
+  "student_inputs_and_known_answer_values_unchanged": true,
+  "new_authored_groups": 0
+}

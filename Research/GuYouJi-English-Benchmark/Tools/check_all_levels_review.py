@@ -39,6 +39,9 @@ def pinned_revision(prior,current,record):
         assert prior['questions']==current['questions']
         assert prior.get('requiredAudioAssets')==current.get('requiredAudioAssets')
     for key in ['grade','kind','anchor_group_ids','responseMode','instruction','fixedSharedBank','sourceFormNotice','requiredPassageImages']:
+        if key in ['instruction','sourceFormNotice'] and key not in prior:
+            assert key not in current, 'Revision added an unbound legacy display field: '+key
+            continue
         # Per-question radio groups omit this optional flag; an omitted flag has
         # the same renderer behavior as false. Keep every other field required.
         old_value = prior.get(key, False) if key == 'fixedSharedBank' else prior[key]
