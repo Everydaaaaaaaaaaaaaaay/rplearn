@@ -1,0 +1,202 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguelisten-book-and-birthday",
+  "title": "小六听对话：借书与生日",
+  "grade": "primary6",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+  "source_binding": "p6dialogue122",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.5.json",
+    "sha256": "36af0823b77a5db297c55472725f5ddcc2c3109c2f010a68f52860946edc9fc9"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.5.json",
+  "source_questions_per_clip": [
+    1,
+    2,
+    2
+  ],
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen to the conversation.",
+  "instruction": "听三段对话回答5题，分别1、2、2题，每题三选。原卷未印重播遍数与停顿秒数；本机演示各一遍、听前听后每题5秒，可自主重播，不作为原卷限制。源录音/脚本/参考键未取得，本稿提供完整原创配套。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I thought your sister wanted a toy train for her birthday."
+        },
+        {
+          "speaker": "W",
+          "text": "She did, but now she wants a book about trains. I bought one yesterday."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What did the woman buy?",
+          "options": [
+            [
+              "A",
+              "A toy train."
+            ],
+            [
+              "B",
+              "A train ticket."
+            ],
+            [
+              "C",
+              "A book about trains."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "改主意后买火车书；A旧愿望，B无。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "The library closes at five today, Leo. Can you return my book after school?"
+        },
+        {
+          "speaker": "M",
+          "text": "I finish at four. I can take it back before my swimming lesson at half past four."
+        },
+        {
+          "speaker": "W",
+          "text": "Thank you. The book is in the blue bag, not the red one."
+        },
+        {
+          "speaker": "M",
+          "text": "All right. I will take the blue bag."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What will Leo do before swimming?",
+          "options": [
+            [
+              "A",
+              "Return a library book."
+            ],
+            [
+              "B",
+              "Buy a red bag."
+            ],
+            [
+              "C",
+              "Finish a music lesson."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "答应游泳前还书；B/C无。"
+        },
+        {
+          "stem": "Which bag will Leo take?",
+          "options": [
+            [
+              "A",
+              "The red one."
+            ],
+            [
+              "B",
+              "The blue one."
+            ],
+            [
+              "C",
+              "The green one."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "书在蓝袋，明确不是红；C未说。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are we making a cake for Mum this afternoon?"
+        },
+        {
+          "speaker": "W",
+          "text": "Dad has already made one. Let us make a birthday card instead."
+        },
+        {
+          "speaker": "M",
+          "text": "I can draw the flowers. Can you write the words?"
+        },
+        {
+          "speaker": "W",
+          "text": "Sure. We should finish it before Mum comes home at six."
+        },
+        {
+          "speaker": "M",
+          "text": "I will get the paper and pencils now."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What will the children make?",
+          "options": [
+            [
+              "A",
+              "A cake."
+            ],
+            [
+              "B",
+              "A birthday card."
+            ],
+            [
+              "C",
+              "A paper boat."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "爸爸已有蛋糕，孩子改做卡；A非孩子新任务，C无。"
+        },
+        {
+          "stem": "What will the boy do on the card?",
+          "options": [
+            [
+              "A",
+              "Write all the words."
+            ],
+            [
+              "B",
+              "Paste a family photo."
+            ],
+            [
+              "C",
+              "Draw flowers."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "M画花W写字；A角色交换，B无。"
+        }
+      ]
+    }
+  ]
+}

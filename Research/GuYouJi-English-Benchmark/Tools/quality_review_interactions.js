@@ -114,7 +114,7 @@ function render(){
   }
  }
  // A long section keeps each player next to the first of its printed questions.
- if(g.kind==='listening_multi_question_choice'){
+ if(['listening_multi_question_choice','listening_dialogue_choice'].includes(g.kind)){
   const tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')],assets=g.requiredAudioAssets||[];
   if(tracks.length===assets.length&&assets.flatMap(a=>a.response_numbers).join(',')===g.questions.map(q=>q.number).join(',')){
    tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='材料'+(i+1))heading.remove();fields[assets[i].response_numbers[0]-1].querySelector('legend').after(track);});

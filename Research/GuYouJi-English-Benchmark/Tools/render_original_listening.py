@@ -60,8 +60,15 @@ def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice'}
-    if family=='listening_multi_question_choice':
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice'}
+    if family=='listening_dialogue_choice':
+        assert [len(c['questions'])for c in draft['clips']]==draft['source_questions_per_clip']==[1,2,2]
+        assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
+        for c in draft['clips']:
+            assert set(t['speaker']for t in c['turns'])=={'M','W'}
+            assert c['preview_seconds']==c['answer_seconds']==5*len(c['questions'])
+            assert all(len(q['options'])==3 for q in c['questions'])
+    elif family=='listening_multi_question_choice':
         assert [len(c['questions'])for c in draft['clips']]==draft['source_questions_per_clip']
         assert len(draft['clips'])>=2 and draft['source_hear_each_piece_twice']
         for i,c in enumerate(draft['clips']):
@@ -95,7 +102,9 @@ def render(manuscript, output, version='0.1'):
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if family=='listening_short_conversation_choice':
+    if family=='listening_dialogue_choice':
+        repeat_count=1
+    elif family=='listening_short_conversation_choice':
         assert draft['source_hear_each_piece_once'] and draft['source_answer_seconds']==10
         repeat_count=1
     elif family=='listening_true_false':
@@ -146,9 +155,9 @@ def render(manuscript, output, version='0.1'):
                 append(b'\0\0'*int(seconds*RATE), 'silence')
 
             start_response=sum(len(c['questions'])for c in draft['clips'][:number-1])+1
-            response_numbers=(list(range(start_response,start_response+len(clip['questions'])))if family=='listening_multi_question_choice'else [number] if family=='listening_short_conversation_choice' else [2*number-1,2*number] if family=='listening_extract_choice'
+            response_numbers=(list(range(start_response,start_response+len(clip['questions'])))if family in {'listening_multi_question_choice','listening_dialogue_choice'}else [number] if family=='listening_short_conversation_choice' else [2*number-1,2*number] if family=='listening_extract_choice'
                               else list(range(1,len(clip['questions'])+1)))
-            intro=(f'Part {number}. Read questions {response_numbers[0]} to {response_numbers[-1]}.'if family=='listening_multi_question_choice'else f'Text {number}.' if family=='listening_short_conversation_choice' else f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
+            intro=(f'Part {number}. Read questions {response_numbers[0]} to {response_numbers[-1]}.'if family in {'listening_multi_question_choice','listening_dialogue_choice'}else f'Text {number}.' if family=='listening_short_conversation_choice' else f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
                    if family=='listening_extract_choice' else draft['audio_introduction'])
             append(speech(intro,'Daniel',165),'introduction',intro)
             pause(clip.get('preview_seconds',8))

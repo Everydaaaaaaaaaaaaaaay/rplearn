@@ -1,0 +1,206 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguelisten-market-and-play",
+  "title": "小六听对话：集市与演出",
+  "grade": "primary6",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+  "source_binding": "p6dialogue122",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.5.json",
+    "sha256": "36af0823b77a5db297c55472725f5ddcc2c3109c2f010a68f52860946edc9fc9"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.5.json",
+  "source_questions_per_clip": [
+    1,
+    2,
+    2
+  ],
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen to the conversation.",
+  "instruction": "听三段对话回答5题，分别1、2、2题，每题三选。原卷未印重播遍数与停顿秒数；本机演示各一遍、听前听后每题5秒，可自主重播，不作为原卷限制。源录音/脚本/参考键未取得，本稿提供完整原创配套。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Tom, is your bike outside?"
+        },
+        {
+          "speaker": "M",
+          "text": "No. My bike has a flat tyre. I walked to school today, but I will take the bus home if it rains."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How did Tom get to school today?",
+          "options": [
+            [
+              "A",
+              "On foot."
+            ],
+            [
+              "B",
+              "By bike."
+            ],
+            [
+              "C",
+              "By bus."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "已发生去程步行；B轮胎瘪，C为若下雨返程打算。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "We need tomatoes and rice for dinner. Shall we go to the market?"
+        },
+        {
+          "speaker": "W",
+          "text": "The market is closed on Mondays. We can get both at the shop near the station."
+        },
+        {
+          "speaker": "M",
+          "text": "Do we need milk too?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. There is a full bottle in the fridge."
+        },
+        {
+          "speaker": "M",
+          "text": "Then I will write tomatoes and rice on the list."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where will they shop?",
+          "options": [
+            [
+              "A",
+              "At the Monday market."
+            ],
+            [
+              "B",
+              "At the shop near the station."
+            ],
+            [
+              "C",
+              "At the school cafe."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "市场周一关，改车站旁店；A不可，C无。"
+        },
+        {
+          "stem": "What do they need to buy?",
+          "options": [
+            [
+              "A",
+              "Tomatoes and rice."
+            ],
+            [
+              "B",
+              "Rice and milk."
+            ],
+            [
+              "C",
+              "Tomatoes and milk."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "米和番茄要买，奶已足；B/C混入不用买的奶。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "The play starts at three, but we should arrive at half past two."
+        },
+        {
+          "speaker": "M",
+          "text": "Why so early, Lucy?"
+        },
+        {
+          "speaker": "W",
+          "text": "I need to put on my costume. You can help me with my hat after that."
+        },
+        {
+          "speaker": "M",
+          "text": "I thought you were watching the play."
+        },
+        {
+          "speaker": "W",
+          "text": "No, I am in it this time. I play a shopkeeper."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When should the speakers arrive?",
+          "options": [
+            [
+              "A",
+              "At three."
+            ],
+            [
+              "B",
+              "At a quarter to three."
+            ],
+            [
+              "C",
+              "At half past two."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "2:30到、3点开；A混开场，B无。"
+        },
+        {
+          "stem": "What will Lucy do in the play?",
+          "options": [
+            [
+              "A",
+              "Watch it as a visitor."
+            ],
+            [
+              "B",
+              "Act as a shopkeeper."
+            ],
+            [
+              "C",
+              "Sell the tickets at the door."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "明确参演店主；A先前误以为，C非戏角色。"
+        }
+      ]
+    }
+  ]
+}

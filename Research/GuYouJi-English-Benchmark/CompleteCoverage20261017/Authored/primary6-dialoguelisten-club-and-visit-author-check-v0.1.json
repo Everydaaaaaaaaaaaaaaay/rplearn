@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguelisten-club-and-visit",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "bfd137b7d108e41013f932d4d23fdba83403537418ab2c12ec95d3062109f64d",
+  "source_binding": "p6dialogue122",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.5.json",
+    "sha256": "36af0823b77a5db297c55472725f5ddcc2c3109c2f010a68f52860946edc9fc9"
+  },
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "How did Ben go to the park?",
+      "options": [
+        [
+          "A",
+          "By bus."
+        ],
+        [
+          "B",
+          "By car."
+        ],
+        [
+          "C",
+          "On foot."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "去程爸爸开车，返程才乘公交；C无步行。"
+    },
+    {
+      "number": 2,
+      "stem": "Which club will Amy join?",
+      "options": [
+        [
+          "A",
+          "The football club."
+        ],
+        [
+          "B",
+          "The music club."
+        ],
+        [
+          "C",
+          "The art club."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "实际决定周五美术；A与音乐课冲突，B是课非所选社团。"
+    },
+    {
+      "number": 3,
+      "stem": "What does Amy need to bring?",
+      "options": [
+        [
+          "A",
+          "An old shirt."
+        ],
+        [
+          "B",
+          "Some paint."
+        ],
+        [
+          "C",
+          "A football."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "俱乐部有颜料，只需旧衬衣；B已供，C非美术所需。"
+    },
+    {
+      "number": 4,
+      "stem": "When should the children meet?",
+      "options": [
+        [
+          "A",
+          "At a quarter past nine."
+        ],
+        [
+          "B",
+          "At half past nine."
+        ],
+        [
+          "C",
+          "At nine."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "9点集合、9:15发车；A混发车时间，B未安排。"
+    },
+    {
+      "number": 5,
+      "stem": "Why should they bring lunch?",
+      "options": [
+        [
+          "A",
+          "They will spend all day on the bus."
+        ],
+        [
+          "B",
+          "The museum cafe is closed."
+        ],
+        [
+          "C",
+          "There is no garden at the museum."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "咖啡厅本周关闭；A不符参观，C明确有花园。"
+    }
+  ],
+  "canonical_response_block_sha256": "a3df249156039453765509920ee3121cd1d54852d995d9c285af49e3ffaf5301",
+  "student_passage": "### 材料1\n\n[对话1（第1题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-extract1-v0.1.m4a)\n\n### 材料2\n\n[对话2（第2、3题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-extract2-v0.1.m4a)\n\n### 材料3\n\n[对话3（第4、5题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-extract3-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-dialoguelisten-club-and-visit-manuscript-v0.1.json",
+    "sha256": "a729c0375e87556f3206ea56e2dc197b85fc8c571af55c9a665be1f474767317"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-audio-v0.1.json",
+    "sha256": "136bf34f9bb4fcb61df5160a2ed40a4709c598f02f74ca91f5269d437026c2a5"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-extract1-v0.1.m4a",
+      "sha256": "4a7215a2a65131c53508a34eddafce158a5515bd6900bf876bdeaf738ec178dd",
+      "seconds": 22.78267573696145,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-extract2-v0.1.m4a",
+      "sha256": "56990870277e21f532f571e3c21992a852ec60fae6955efd8c2e62ea44c37faf",
+      "seconds": 43.63210884353742,
+      "response_numbers": [
+        2,
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-club-and-visit-extract3-v0.1.m4a",
+      "sha256": "e9906f0aa1f0550bfdd8d6f5e3cda9976d216d9c5d8881bbb08c58a7472bb14a",
+      "seconds": 45.34453514739229,
+      "response_numbers": [
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_dialogue_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 28,
+    "options_English_words_with_repeated_bank": 53,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 125,
+    "audio_spoken_words_with_instructions": 137,
+    "audio_seconds_with_pauses": 111.75931972789115,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

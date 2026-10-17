@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguelisten-book-and-birthday",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "28ecee16689888974d7537f24c5c74a8138099eca8de92777b59ad36f4a11d1d",
+  "source_binding": "p6dialogue122",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.5.json",
+    "sha256": "36af0823b77a5db297c55472725f5ddcc2c3109c2f010a68f52860946edc9fc9"
+  },
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What did the woman buy?",
+      "options": [
+        [
+          "A",
+          "A toy train."
+        ],
+        [
+          "B",
+          "A train ticket."
+        ],
+        [
+          "C",
+          "A book about trains."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "改主意后买火车书；A旧愿望，B无。"
+    },
+    {
+      "number": 2,
+      "stem": "What will Leo do before swimming?",
+      "options": [
+        [
+          "A",
+          "Return a library book."
+        ],
+        [
+          "B",
+          "Buy a red bag."
+        ],
+        [
+          "C",
+          "Finish a music lesson."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "答应游泳前还书；B/C无。"
+    },
+    {
+      "number": 3,
+      "stem": "Which bag will Leo take?",
+      "options": [
+        [
+          "A",
+          "The red one."
+        ],
+        [
+          "B",
+          "The blue one."
+        ],
+        [
+          "C",
+          "The green one."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "书在蓝袋，明确不是红；C未说。"
+    },
+    {
+      "number": 4,
+      "stem": "What will the children make?",
+      "options": [
+        [
+          "A",
+          "A cake."
+        ],
+        [
+          "B",
+          "A birthday card."
+        ],
+        [
+          "C",
+          "A paper boat."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "爸爸已有蛋糕，孩子改做卡；A非孩子新任务，C无。"
+    },
+    {
+      "number": 5,
+      "stem": "What will the boy do on the card?",
+      "options": [
+        [
+          "A",
+          "Write all the words."
+        ],
+        [
+          "B",
+          "Paste a family photo."
+        ],
+        [
+          "C",
+          "Draw flowers."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "M画花W写字；A角色交换，B无。"
+    }
+  ],
+  "canonical_response_block_sha256": "de7f71d0abcd9c1e72013fb31534a69ef2e40acd2bd358b73786821c56669038",
+  "student_passage": "### 材料1\n\n[对话1（第1题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-extract1-v0.1.m4a)\n\n### 材料2\n\n[对话2（第2、3题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-extract2-v0.1.m4a)\n\n### 材料3\n\n[对话3（第4、5题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-extract3-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-dialoguelisten-book-and-birthday-manuscript-v0.1.json",
+    "sha256": "7b9d101570ea254b1325006064259d041b241a587d752370488e1fa650c98eb0"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-audio-v0.1.json",
+    "sha256": "8ec3d1076d78d7c384955c7e3b553da2245456aa9baae993d4a60129403a5bc1"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-extract1-v0.1.m4a",
+      "sha256": "c66d3e6b254e4e214eba9e035133d0b428d4ba51e7f579ae36d0ed938a31f72f",
+      "seconds": 23.397006802721087,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-extract2-v0.1.m4a",
+      "sha256": "399f687b55ede41457117e00e954b2787e3986f8dd537632b701c2e456bc8a6c",
+      "seconds": 45.547165532879816,
+      "response_numbers": [
+        2,
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-book-and-birthday-extract3-v0.1.m4a",
+      "sha256": "0f246f141102f31a58edae4b8b626723e162318d7eb2996a0a633c9c3079d247",
+      "seconds": 44.9847619047619,
+      "response_numbers": [
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_dialogue_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 29,
+    "options_English_words_with_repeated_bank": 49,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 127,
+    "audio_spoken_words_with_instructions": 139,
+    "audio_seconds_with_pauses": 113.92893424036282,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

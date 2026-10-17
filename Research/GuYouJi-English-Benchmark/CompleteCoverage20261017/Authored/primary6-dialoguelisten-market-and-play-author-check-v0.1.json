@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguelisten-market-and-play",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "0461e54f4af0aea44741aa1d92a14d86faf56fe2f3836a9a8944b0643ba38d2b",
+  "source_binding": "p6dialogue122",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.5.json",
+    "sha256": "36af0823b77a5db297c55472725f5ddcc2c3109c2f010a68f52860946edc9fc9"
+  },
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "How did Tom get to school today?",
+      "options": [
+        [
+          "A",
+          "On foot."
+        ],
+        [
+          "B",
+          "By bike."
+        ],
+        [
+          "C",
+          "By bus."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "已发生去程步行；B轮胎瘪，C为若下雨返程打算。"
+    },
+    {
+      "number": 2,
+      "stem": "Where will they shop?",
+      "options": [
+        [
+          "A",
+          "At the Monday market."
+        ],
+        [
+          "B",
+          "At the shop near the station."
+        ],
+        [
+          "C",
+          "At the school cafe."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "市场周一关，改车站旁店；A不可，C无。"
+    },
+    {
+      "number": 3,
+      "stem": "What do they need to buy?",
+      "options": [
+        [
+          "A",
+          "Tomatoes and rice."
+        ],
+        [
+          "B",
+          "Rice and milk."
+        ],
+        [
+          "C",
+          "Tomatoes and milk."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "米和番茄要买，奶已足；B/C混入不用买的奶。"
+    },
+    {
+      "number": 4,
+      "stem": "When should the speakers arrive?",
+      "options": [
+        [
+          "A",
+          "At three."
+        ],
+        [
+          "B",
+          "At a quarter to three."
+        ],
+        [
+          "C",
+          "At half past two."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "2:30到、3点开；A混开场，B无。"
+    },
+    {
+      "number": 5,
+      "stem": "What will Lucy do in the play?",
+      "options": [
+        [
+          "A",
+          "Watch it as a visitor."
+        ],
+        [
+          "B",
+          "Act as a shopkeeper."
+        ],
+        [
+          "C",
+          "Sell the tickets at the door."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明确参演店主；A先前误以为，C非戏角色。"
+    }
+  ],
+  "canonical_response_block_sha256": "6af72667f3433915e03150c13e384884abcb6e1fe4129c966b7464dd34dfc0d3",
+  "student_passage": "### 材料1\n\n[对话1（第1题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-extract1-v0.1.m4a)\n\n### 材料2\n\n[对话2（第2、3题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-extract2-v0.1.m4a)\n\n### 材料3\n\n[对话3（第4、5题；本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-extract3-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-dialoguelisten-market-and-play-manuscript-v0.1.json",
+    "sha256": "e12081885c86cbe73ff6d0344e69b0ed29bbaa8b073801fd76fd5ca9514e22cc"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-audio-v0.1.json",
+    "sha256": "1f54327d8985beb46d5436e7f5c7cd25e541166087e975fcf87a488f8f652f1b"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-extract1-v0.1.m4a",
+      "sha256": "852ec776774e3dbf87e13978516cd930062f5c912c34644eb36b18206b88a634",
+      "seconds": 24.656507936507936,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-extract2-v0.1.m4a",
+      "sha256": "f92b68e09d8c1e46cf4b0b6c0621c01af504095b433638905d0b9356fca8124c",
+      "seconds": 44.06312925170068,
+      "response_numbers": [
+        2,
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-dialoguelisten-market-and-play-extract3-v0.1.m4a",
+      "sha256": "59c4360d230ea6d84a31bb05c450b6a08da8bb5616947f11ecc1d9f877081f55",
+      "seconds": 43.919274376417235,
+      "response_numbers": [
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_dialogue_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 29,
+    "options_English_words_with_repeated_bank": 55,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 131,
+    "audio_spoken_words_with_instructions": 143,
+    "audio_seconds_with_pauses": 112.63891156462586,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

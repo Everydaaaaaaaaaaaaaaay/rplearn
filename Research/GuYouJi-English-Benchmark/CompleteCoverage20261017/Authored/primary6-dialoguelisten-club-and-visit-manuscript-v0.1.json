@@ -1,0 +1,202 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguelisten-club-and-visit",
+  "title": "小六听对话：社团与参观",
+  "grade": "primary6",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+  "source_binding": "p6dialogue122",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.5.json",
+    "sha256": "36af0823b77a5db297c55472725f5ddcc2c3109c2f010a68f52860946edc9fc9"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.5.json",
+  "source_questions_per_clip": [
+    1,
+    2,
+    2
+  ],
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen to the conversation.",
+  "instruction": "听三段对话回答5题，分别1、2、2题，每题三选。原卷未印重播遍数与停顿秒数；本机演示各一遍、听前听后每题5秒，可自主重播，不作为原卷限制。源录音/脚本/参考键未取得，本稿提供完整原创配套。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Did you go to the park by bus, Ben?"
+        },
+        {
+          "speaker": "M",
+          "text": "No. Dad drove me there. We came home by bus because he went to work."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How did Ben go to the park?",
+          "options": [
+            [
+              "A",
+              "By bus."
+            ],
+            [
+              "B",
+              "By car."
+            ],
+            [
+              "C",
+              "On foot."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "去程爸爸开车，返程才乘公交；C无步行。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are you joining the football club, Amy?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not this term. I have a music lesson on Tuesdays, when the football club meets. I will join the art club on Fridays."
+        },
+        {
+          "speaker": "M",
+          "text": "Do you need to bring paint?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, the club has paint. I only need an old shirt."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Which club will Amy join?",
+          "options": [
+            [
+              "A",
+              "The football club."
+            ],
+            [
+              "B",
+              "The music club."
+            ],
+            [
+              "C",
+              "The art club."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "实际决定周五美术；A与音乐课冲突，B是课非所选社团。"
+        },
+        {
+          "stem": "What does Amy need to bring?",
+          "options": [
+            [
+              "A",
+              "An old shirt."
+            ],
+            [
+              "B",
+              "Some paint."
+            ],
+            [
+              "C",
+              "A football."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "俱乐部有颜料，只需旧衬衣；B已供，C非美术所需。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Where shall we meet for the museum trip, Jack?"
+        },
+        {
+          "speaker": "M",
+          "text": "At the school gate at nine. The bus leaves at a quarter past nine."
+        },
+        {
+          "speaker": "W",
+          "text": "Should we bring our lunches?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes. The museum cafe is closed this week. We can eat in the garden if it is dry."
+        },
+        {
+          "speaker": "W",
+          "text": "I will bring a sandwich and some water."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When should the children meet?",
+          "options": [
+            [
+              "A",
+              "At a quarter past nine."
+            ],
+            [
+              "B",
+              "At half past nine."
+            ],
+            [
+              "C",
+              "At nine."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "9点集合、9:15发车；A混发车时间，B未安排。"
+        },
+        {
+          "stem": "Why should they bring lunch?",
+          "options": [
+            [
+              "A",
+              "They will spend all day on the bus."
+            ],
+            [
+              "B",
+              "The museum cafe is closed."
+            ],
+            [
+              "C",
+              "There is no garden at the museum."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "咖啡厅本周关闭；A不符参观，C明确有花园。"
+        }
+      ]
+    }
+  ]
+}
