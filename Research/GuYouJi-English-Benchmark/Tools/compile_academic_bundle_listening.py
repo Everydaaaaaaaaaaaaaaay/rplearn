@@ -32,6 +32,22 @@ def draw_plan(d,path):
         for j,line in enumerate(lines):raw+=text(561,y+j*17,(k+'. 'if j==0 else'    ')+line,15)
     raw+='</g></svg>';assert not path.exists();path.write_text(raw);return ref(path)
 
+def draw_flowchart(d,path):
+    from textwrap import wrap
+    esc=html.escape
+    raw='<svg xmlns="http://www.w3.org/2000/svg" width="930" height="1060" viewBox="0 0 930 1060"><rect width="930" height="1060" fill="white"/><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#244a3d"/></marker></defs><g font-family="Arial,sans-serif" fill="#152e25">'
+    raw+='<text x="35" y="38" font-size="23" font-weight="bold">'+esc(d['flow_title'])+'</text>'
+    for n,node in enumerate(d['flow_nodes']):
+        y=72+138*n
+        raw+='<rect x="35" y="'+str(y)+'" width="510" height="90" rx="4" fill="#f8fbf8" stroke="#315c4d" stroke-width="2"/>'
+        lines=wrap(node,width=47)
+        for j,line in enumerate(lines):raw+='<text x="55" y="'+str(y+34+j*25)+'" font-size="19">'+esc(line)+'</text>'
+        if n<6:raw+='<path d="M290 '+str(y+94)+' V'+str(y+130)+'" stroke="#244a3d" stroke-width="3" marker-end="url(#arrow)"/>'
+    raw+='<rect x="580" y="72" width="315" height="710" fill="#f1f6f2" stroke="#567769"/><text x="600" y="108" font-size="20" font-weight="bold">Choose A–I</text>'
+    for n,(k,v)in enumerate(d['candidates']):
+        for j,line in enumerate(wrap(k+'. '+v,width=26)):raw+='<text x="600" y="'+str(155+n*65+j*23)+'" font-size="18">'+esc(line)+'</text>'
+    raw+='</g></svg>';assert not path.exists();path.write_text(raw);return ref(path)
+
 def compile_author(manuscript,manifest,version='0.1'):
     d=json.loads(manuscript.read_text());validate_draft(d);gen=json.loads(manifest.read_text());assert gen['manuscript']==ref(manuscript) and gen['whole_final_audio_decode_passed'] and gen['no_source_recording_reused']
     bp=load_ref(d['source_bindings']);b=next(b for b in json.loads(bp.read_text())['bindings']if b['id']==d['source_binding']);s=next(s for s in json.loads(load_ref(b['source_index']).read_text())['groups']if s['id']==d['source_group_id']);kind=d['family'];c=d['clips'][0];track=gen['tracks'][0];audio=load_ref(track);qs=[]
@@ -78,17 +94,24 @@ def compile_author(manuscript,manifest,version='0.1'):
     if kind=='listening_multiselect':
         body+='\n\n### '+d['prompt']+'\n\n'+'\n\n'.join(k+'. '+v for k,v in d['candidates']);body_load=d['prompt']
         extra.update(unique_prompt_candidates=8,correct_choices=3,source_partial_credit_rule_verified=False)
+    if kind=='listening_flowchart_matching':
+        fp=manuscript.parent/(d['id']+'-figure-v'+version+'.svg');fig=draw_flowchart(d,fp)
+        body+='\n\n!['+d['flow_alt']+']('+str(fp)+')';body_load='\n'.join(d['flow_nodes'])
+        extra.update(figure_asset=fig,flow_structure=dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards'),figure_English_words=words(d['flow_title']+' Choose'),image_alt_English_words=words(d['flow_alt']))
     teacher='\n\n'.join(t['speaker']+': '+t['text']for t in c['turns'])+'\n\n'+d['source_notice'];block=response_markdown(qs);p=manuscript.parent/(d['id']+'-v'+version+'.md');ap=manuscript.parent/(d['id']+'-author-check-v'+version+'.json');assert not p.exists()and not ap.exists()
     p.write_text('# '+d['title']+'\n\n## 学生题面\n\n'+d['instruction']+'\n\n'+body+'\n\n<!-- responses:start -->\n\n'+block+'\n\n<!-- responses:end -->\n\n## 作者核对\n\n'+teacher+'\n')
     a=dict(version=version,id=d['id'],grade='advanced',questions=len(qs),candidate_sha256=ref(p)['sha256'],source_binding=b['id'],source_bindings=ref(bp),source_group_id=s['id'],manuscript=ref(manuscript),audio_generation=ref(manifest),audio_assets=[{k:track[k]for k in ['path','sha256','seconds','response_numbers','repeat_count','mime_type']}],audio_transcript_in_teacher_only=True,academic_bundle_listening=True,review_response_tasks=qs,canonical_response_block_sha256=hashlib.sha256(block.encode()).hexdigest(),student_passage=body,body_load_text=body_load,source_count_increment=0,authored_student_inputs_complete=True,load_measure=dict(body_English_words=words(body_load),stem_English_words=sum(words(q['stem'])for q in qs),options_English_words_with_repeated_bank=sum(words(v)for q in qs for k,v in q['options']),output_instruction_English_words=words(d['instruction']),output_response_positions=len(qs),audio_dialogue_English_words_once=track['dialogue_words_once'],audio_spoken_words_with_instructions=track['spoken_words_with_instructions'],audio_seconds_with_pauses=track['seconds']),source_level_equivalence_established=False,independent_teacher_student_commercial_production_validated=False,**extra);ap.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n')
     m=dict(id=d['id'],grade='advanced',family=kind,family_label=d['family_label'],title=d['title'],questions=len(qs),candidate=ref(p),author_check=ref(ap),source_group_ids=[s['id']],instruction=d['instruction'],source_form_notice=d['source_notice'],format_summary=d['format_summary'])
-    if kind in {'listening_plan_label_matching','listening_multiselect'}:m['use_select_controls']=True
+    if kind in {'listening_plan_label_matching','listening_multiselect','listening_flowchart_matching'}:m['use_select_controls']=True
     return m
 
 def check(g,a,b,s):
     d=json.loads(load_ref(a['manuscript']).read_text());validate_draft(d);gen=json.loads(load_ref(a['audio_generation']).read_text());track=gen['tracks'][0]
     assert gen['manuscript']==a['manuscript'] and gen['whole_final_audio_decode_passed'] and gen['no_source_recording_reused']
-    assert s['source_full_printed_input_and_script_verified'] and not s['source_original_key_is_gold']
+    if d['family']=='listening_flowchart_matching':
+        assert s['source_full_printed_input_verified'] and not s['source_original_script_verified'] and not s['source_original_key_verified']
+    else:assert s['source_full_printed_input_and_script_verified']
+    assert not s['source_original_key_is_gold']
     assert len(g['requiredAudioAssets'])==1 and g['requiredAudioAssets'][0]['asset']=={k:track[k]for k in ['path','sha256']}
     assert g['requiredAudioAssets'][0]['src']=='../../'+quote(track['path'])
     assert track['response_numbers']==list(range(1,b['responses']+1)) and track['repeat_count']==1
@@ -96,7 +119,12 @@ def check(g,a,b,s):
     assert all(t['text']in g['reviewText']and t['text']not in g['passageHtml']for t in d['clips'][0]['turns'])
     assert g['questions']==a['review_response_tasks']
     native=None
-    if d['family'] in {'listening_research_table_completion','listening_multiselect'}:
+    if d['family']=='listening_flowchart_matching':
+        assert s['selected_pages_all_visually_reviewed'] and s['source_original_audio_acquired']
+        assert s['original_audio_complete_stream_decode_checked'] and not s['original_audio_script_semantic_match_verified']
+        for original in s['original_audio_assets']:load_ref(original)
+        load_ref(s['source_native_index'])
+    elif d['family'] in {'listening_research_table_completion','listening_multiselect'}:
         assert s['source_visual_verified'] and s['source_full_printed_input_and_script_verified'] and not s['source_original_audio_acquired']
         load_ref(s['source_visual'])
     elif d['family']=='listening_note_table_completion':
@@ -122,6 +150,11 @@ def check(g,a,b,s):
         assert a['note_table_structure']==dict(notes=6,table=4,rows=3,columns=5,one_whole_track=True)
         assert g['questions'][8]['fillMarking']['sterlingPence']==d['ticket_pence']
         assert g['passageHtml'].count('<table')==2
+    elif d['family']=='listening_flowchart_matching':
+        assert s['features']['nodes']==7 and s['features']['responses']==6 and s['features']['shared_candidates']==9
+        assert a['flow_structure']==dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards')
+        assert g['fixedSharedBank'] and len(g['requiredPassageImages'])==1
+        assert s['source_whole_ten_response_section_complete'] is False
     elif d['family']=='listening_multiselect':
         assert s['features']['shared_candidates']==8 and s['features']['choose']==3 and g['fixedSharedBank']
         assert len(g['questions'])==3 and a['unique_prompt_candidates']==8 and a['correct_choices']==3

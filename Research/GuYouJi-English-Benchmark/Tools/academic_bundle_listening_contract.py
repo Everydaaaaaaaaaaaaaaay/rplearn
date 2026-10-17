@@ -1,16 +1,16 @@
 """Complete two-choice extracts, four sentence gaps and five spatial labels."""
 import re
-COUNTS={'listening_multiselect':3,'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
+COUNTS={'listening_flowchart_matching':6,'listening_multiselect':3,'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
 ROLES=['lower_left_room','inner_right_room','far_wall_shelves','upper_middle_room','right_annex']
 
 def validate_draft(d):
     kind=d['family'];assert kind in COUNTS and d['grade']=='advanced' and d['academic_bundle_listening']
-    assert d['source_repeat_count'] is None and d['render_repeat_count']==1
+    assert d['source_repeat_count']==(1 if kind=='listening_flowchart_matching'else None) and d['render_repeat_count']==1
     assert len(d['clips'])==1 and d['fictional_illustrative_case']
     c=d['clips'][0];assert len(c['questions'])==COUNTS[kind]
     assert c['preview_seconds']==c['answer_seconds']==5*COUNTS[kind]
     assert all(t['text'].strip() for t in c['turns'])
-    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion'}else{'M','W'})
+    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion'}else{'M','W','S'}if kind=='listening_flowchart_matching'else{'M','W'})
     text=' '.join(t['text']for t in c['turns']);fold=lambda v:re.sub(r'[-‐‑–]',' ',v).lower()
     if kind=='listening_plan_label_matching':
         assert len(c['turns'])==1 and d['plan_roles']==ROLES
@@ -32,7 +32,7 @@ def validate_draft(d):
             if kind!='listening_note_table_completion' or n!=9:
                 assert all(re.fullmatch("[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*",v)for v in q['acceptedAnswers']+q['rejected'])
         else:
-            labels=list('ABCDEFGHI'if kind=='listening_plan_label_matching'else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
+            labels=list('ABCDEFGHI'if kind in {'listening_plan_label_matching','listening_flowchart_matching'}else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
             assert [k for k,v in q['options']]==labels and q['answer']in labels
             assert set(q['candidate_reasons'])==set(labels) and all(q['candidate_reasons'].values())
             if kind=='listening_plan_label_matching':assert q['options']==d['candidates'] and q['answer']==d['answers_by_position'][n-1]
@@ -59,6 +59,17 @@ def validate_draft(d):
         assert c['questions'][3]['acceptedAnswers']==[str(d['opening_year']),str(d['opening_year']//10*10)+'s','the '+str(d['opening_year']//10*10)+'s']
         assert c['questions'][5]['acceptedAnswers'][0]==str(d['open_days'])
         assert d['ticket_pence']>0 and c['questions'][8]['value_kind']=='sterling'
+    if kind=='listening_flowchart_matching':
+        assert set(d['speakers'])=={'M','W','S'} and all(v['voice']for v in d['speakers'].values())
+        assert len(d['flow_nodes'])==7 and len(c['turns'])>=2
+        assert [k for k,v in d['candidates']]==list('ABCDEFGHI') and len({v for k,v in d['candidates']})==9
+        assert len(d['answers_by_position'])==6 and len(set(d['answers_by_position']))==6
+        assert d['source_scope']=='whole_printed_six_response_subtask_not_complete_ten_response_section'
+        assert d['source_original_script_and_key_unknown'] and d['printed_stage_index']==5
+        assert '____'not in d['flow_nodes'][5]
+        assert [int(re.search(r'(\d) ____',v)[1])for v in d['flow_nodes']if '____'in v]==list(range(1,7))
+        assert d['arrows']=='linear_downwards' and d['source_reuse_rule']=='three_unused_in_advice_not_explicit_once_instruction'
+        for n,q in enumerate(c['questions']):assert q['answer']==d['answers_by_position'][n] and q['options']==d['candidates']
     if kind=='listening_multiselect':
         assert len(d['correct'])==3 and len(set(d['correct']))==3
         assert [k for k,v in d['candidates']]==list('ABCDEFGH') and len({v for k,v in d['candidates']})==8
