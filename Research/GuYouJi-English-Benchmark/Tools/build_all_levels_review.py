@@ -196,6 +196,8 @@ def build_current(output):
         for meta in continuation['candidates']:
             group = full_markdown_candidate(meta)
             group.update(instruction=meta['instruction'], sourceFormNotice=meta['source_form_notice'], title=meta['title'])
+            if meta.get('format_summary'):
+                group['formatSummary'] = meta['format_summary']
             if meta.get('use_select_controls'):
                 group['fixedSharedBank'] = True
             if group['id'] in data['groups']:
@@ -203,13 +205,17 @@ def build_current(output):
             key = (group['grade'], meta['family'])
             cell = cells[key]
             if cell['state'] == 'paused_requires_semantic_adjudication':
-                raise ValueError('Continuation cannot bypass a whole-group hold')
+                if meta['id'] not in plan.get('held_family_replacement_authors', []):
+                    raise ValueError('Continuation cannot bypass a whole-group hold')
+                cell['pausedPriorGroupIds'] = [h['id'] for h in holds['records'] if h['grade'] == group['grade'] and h['family'] == meta['family']]
             cell.update(observed=True, state='existing_complete_candidate_needs_review_UI')
             cell.pop('pauseReason', None)
             cell['groupIds'].append(group['id'])
             cell['groupId'] = cell['groupId'] or group['id']
             data['groups'][group['id']] = group
         data['gap_completion_index'] = plan['current_gap_completion']
+    if plan.get('current_coverage_audit'):
+        data['coverage_audit'] = json.loads(load_ref(plan['current_coverage_audit']).read_text())
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
                      'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
                      for level in data['grades'] for family, label in labels.items()]

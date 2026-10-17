@@ -107,8 +107,16 @@ def check(page):
                 # Legacy generated grammar payloads use kind=language; the matrix
                 # retains their concrete passage_form family in the pinned hold.
                 cells=[c for c in data['cells']if c['grade']==value['grade']and c['family']==held[key]['family']]
-                assert len(cells)==1 and cells[0]['observed'] and cells[0]['groupId'] is None
-                assert cells[0]['state']=='paused_requires_semantic_adjudication' and cells[0]['pauseReason']
+                assert len(cells)==1 and cells[0]['observed']
+                cell=cells[0]
+                if cell['groupId'] is None:
+                    assert cell['state']=='paused_requires_semantic_adjudication' and cell['pauseReason']
+                else:
+                    # A newly authored whole group can fill this family while the
+                    # exact historical payload remains held. This is not a release
+                    # of the held author's answer contract.
+                    assert key in cell.get('pausedPriorGroupIds', [])
+                    assert set(cell['groupIds']) <= set(plan.get('held_family_replacement_authors', []))
             else:
                 if data['groups'][key]!=value:
                     assert key in revised,'Unregistered full input changed: '+key

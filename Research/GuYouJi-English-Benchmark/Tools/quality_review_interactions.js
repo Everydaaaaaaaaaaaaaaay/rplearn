@@ -34,6 +34,7 @@ function normalizeFill(value,protocol){
  if(typeof value!=='string')return null;
  const text=value.trim();
  if(protocol==='latin_word_v1')return /^[A-Za-z]+$/.test(text)?text.toUpperCase():null;
+ if(protocol==='english_phrase_v1')return /^[A-Za-z]+(?:['’-][A-Za-z]+)*(?:\s+[A-Za-z]+(?:['’-][A-Za-z]+)*)*$/.test(text)?text.replace(/’/g,"'").replace(/\s+/g,' ').toUpperCase():null;
  if(protocol==='ascii_integer_v1'){
   const digits=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
   return /^[0-9]+$/.test(digits)?digits.replace(/^0+(?=\d)/,''):null;
@@ -52,13 +53,15 @@ function answerComparison(questions,saved={}){
    rows.push(selection.rows[0]);continue;
   }
   const contract=q.fillMarking,accepted=q.acceptedAnswers;
-  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','ascii_integer_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','ascii_integer_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(contract.normalization==='english_phrase_v1'&&!(contract.maxWords===null||Number.isInteger(contract.maxWords)&&contract.maxWords>0))return {available:false,reason:'单空限词规则未绑定。'};
   const forms=accepted.map(a=>normalizeFill(a,contract.normalization)),rejected=contract.rejectedAnswers.map(a=>normalizeFill(a,contract.normalization));
-  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1')return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
+  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>a.split(' ').length>contract.maxWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
   const chosen=saved[String(q.number)+'.1']??'';
   if(typeof chosen!=='string')return {available:false,reason:'填写值格式无效。'};
   const normalized=normalizeFill(chosen,contract.normalization);
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null||rejected.includes(normalized)||contract.unlisted==='different'?'different':'review'});
+  const overLimit=normalized!==null&&contract.maxWords&&normalized.split(' ').length>contract.maxWords;
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':overLimit||normalized===null||rejected.includes(normalized)||contract.unlisted==='different'?'different':'review'});
  }
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,rows};
 }
@@ -76,7 +79,7 @@ function render(){
  el('variants').innerHTML=ids.map((id,i)=>'<option value="'+escapeText(id)+'" '+(id===selected?'selected':'')+'>'+escapeText('第'+(i+1)+'稿 · '+(reviewData.groups[id].title||id))+'</option>').join('');
  el('variants').onchange=e=>{selectedVariants[variantKey]=e.target.value;render();};
  const instruction=g?.instruction||(g&&['reading','cloze'].includes(g.kind)?'阅读短文，从'+(g.kind==='cloze'?'每空':'每题')+'所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。':'');
- el('task-instruction').textContent=instruction;el('task-instruction').hidden=!instruction;
+ el('task-instruction').textContent=instruction+(g?.formatSummary?' 完整配置：'+g.formatSummary:'');el('task-instruction').hidden=!instruction;
  el('answer-toggle').hidden=!g;el('reset').hidden=!g;el('answer-toggle').textContent='查看参考与解析';
  el('compare-selections').hidden=!g;
  const comparisonEligibility=answerComparison(g?.questions);
@@ -103,8 +106,13 @@ function render(){
  };
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
-el('coverage').textContent=reviewData.current_scope_policy?'当前范围展示 '+reviewData.preview_cells+' 道完整大题，覆盖 '+reviewData.source_form_representative_cells+' 个档位/题型格，其中 '+(reviewData.three_variant_cells||0)+' 格达到三稿。需AI判断的主观题已暂停，不计当前覆盖缺口。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 组填空因合法表达未封闭而暂停，具体原因见矩阵。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
+el('coverage').textContent=reviewData.current_scope_policy?'当前展示 '+reviewData.preview_cells+' 道完整大题，已有稿件涉及 '+reviewData.source_form_representative_cells+' 个档位/题型格，其中 '+(reviewData.three_variant_cells||0)+' 格达到三稿数量目标。此数量不代表题型已经收全，听力、地方具体模式及配套仍在补核。需AI整体语义评分的主观题仍暂停。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 个历史完整填空组暂缓，新编组不替其解除暂停。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
 const families=[...new Set(reviewData.cells.map(c=>c.family))];
+if(el('coverage-audit')){
+ const audit=reviewData.coverage_audit;
+ el('coverage-audit').hidden=!audit;
+ if(audit)el('coverage-audit-body').innerHTML='<p>'+escapeText(audit.scope_notice)+'</p><ul>'+audit.issues.map(i=>'<li>'+escapeText(i.levels.map(l=>labels[l]||l).join('、')+'：'+i.label+' — '+i.state_label+'。'+i.detail)+'</li>').join('')+'</ul>';
+}
 el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(reviewData.cells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=reviewData.cells.find(c=>c.grade===grade&&c.family===f);return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
 el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(reviewData.grades.find(g=>String(g)===b.dataset.grade),b.dataset.family);};
 el('show-unknown').onchange=()=>{if(!el('show-unknown').checked&&!reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily).observed)activeFamily=reviewData.cells.find(c=>c.grade===activeGrade&&c.groupId)?.family||activeFamily;render();};render();

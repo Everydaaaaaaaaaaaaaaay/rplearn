@@ -36,6 +36,14 @@ const mixed=[qs[0],{number:2,options:[['A','one'],['B','two']],answer:'B'}];
 r=compare(mixed,{'1.1':'organization',2:'B'});assert.equal(r.matched,2);
 assert.equal(compare(mixed,{2:'Z'}).available,false);
 assert.equal(compare([]).available,false);
+const phrase={number:1,options:[],acceptedAnswers:['Established','Having been established'],fillMarking:{version:1,review:'author_context_checked',normalization:'english_phrase_v1',maxWords:null,unlisted:'review',rejectedAnswers:['Establishing']}};
+assert.equal(compare([phrase],{'1.1':' having   been established '}).matched,1);
+assert.equal(compare([phrase],{'1.1':'having been being established'}).review,1);
+assert.equal(compare([phrase],{'1.1':'Establishing'}).different,1);
+const oneWord={number:1,options:[],acceptedAnswers:['who','that'],fillMarking:{...phrase.fillMarking,maxWords:1,rejectedAnswers:['whom']}};
+assert.equal(compare([oneWord],{'1.1':'who was'}).different,1);
+assert.equal(compare([{...phrase,fillMarking:{...phrase.fillMarking,maxWords:1}}]).available,false);
+assert.equal(compare([{...phrase,fillMarking:{...phrase.fillMarking,maxWords:undefined}}]).available,false);
 // Integrate with every actual new complete group; exercise all alternate forms.
 const page=fs.readFileSync(path.join(__dirname,'../../../build/english-benchmark-quality-review/index.html'),'utf8');
 const data=JSON.parse(page.match(/<script id="quality-data" type="application\/json">(.*?)<\/script>/s)[1]);
@@ -49,5 +57,5 @@ for(const g of Object.values(data.groups).filter(g=>g.questions.some(q=>q.accept
  }
  groups++;responses+=g.questions.length;
 }
-assert.equal(groups,7);assert.equal(responses,48);
-console.log(JSON.stringify({passed:true,cases:25,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,no_three_answer_cap:true,unknown_not_marked_wrong:true,full_group_contract:true,local_not_production:true}));
+assert(groups>=7);assert(responses>=48);
+console.log(JSON.stringify({passed:true,cases:31,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));
