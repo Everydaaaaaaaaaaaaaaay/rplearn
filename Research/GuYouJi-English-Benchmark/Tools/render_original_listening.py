@@ -61,7 +61,10 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     draft = json.loads(manuscript.read_text())
     family=draft['family']
     assert family in {'listening_sentence_choice','listening_summary_completion','listening_flowchart_matching','listening_multiselect','listening_research_table_completion','listening_note_table_completion','listening_form_completion','listening_short_answer_pairs','listening_plan_label_matching','listening_dialogue_sentence_completion','listening_intention_classification','listening_description_matching','listening_letter_completion','listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
-    if draft.get('lowprimary_lexical_listening'):
+    if draft.get('lowprimary_picture_listening'):
+        from lowprimary_picture_listening_contract import validate_draft
+        validate_draft(draft)
+    elif draft.get('lowprimary_lexical_listening'):
         from lowprimary_lexical_listening_contract import validate_draft
         validate_draft(draft)
     elif draft.get('academic_shared_audio_matching'):
@@ -164,7 +167,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if draft.get('academic_form_listening') or draft.get('academic_bundle_listening') or draft.get('academic_shared_audio_matching') or draft.get('band_reference_only') or draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
+    if draft.get('lowprimary_picture_listening') or draft.get('academic_form_listening') or draft.get('academic_bundle_listening') or draft.get('academic_shared_audio_matching') or draft.get('band_reference_only') or draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
         repeat_count=draft['render_repeat_count']
     elif draft.get('junior_source_bound') or draft.get('senior_short_source_bound'):
         repeat_count=draft['source_repeat_count']
@@ -255,6 +258,9 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             if draft.get('lowprimary_lexical_listening'):
                 response_numbers=[number]
                 intro='Text '+str(number)+'.'
+            if draft.get('lowprimary_picture_listening'):
+                response_numbers=[number]
+                intro=str(number)+'.'
             if draft.get('shared_picture_listening'):intro=draft['audio_introduction'] if len(draft['clips'])==1 else 'Description '+str(number)+'.'
             if draft.get('academic_form_listening') or draft.get('academic_bundle_listening'):intro=draft['audio_introduction']
             if draft.get('illustrated_listening'):intro='Text '+str(number)+'.'if draft['grade']in ['primary5',7]else draft['audio_introduction']
@@ -276,9 +282,12 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             pause(clip.get('preview_seconds',8))
             repeat_prompt=('Now you will hear the extract again.' if family=='listening_extract_choice'
                            else 'Now you will hear the whole recording again.')
+            if draft.get('lowprimary_picture_listening'):
+                repeat_prompt=''
             for repeat in range(1,repeat_count+1):
                 if repeat > 1:
-                    append(speech(repeat_prompt,'Daniel',165),'repeat_instruction',repeat_prompt)
+                    if repeat_prompt:
+                        append(speech(repeat_prompt,'Daniel',165),'repeat_instruction',repeat_prompt)
                     pause(1)
                 for turn_index,turn in enumerate(clip['turns']):
                     if family=='listening_double_matching':

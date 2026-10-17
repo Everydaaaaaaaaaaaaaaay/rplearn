@@ -228,6 +228,11 @@ def build_current(output):
         for cell in cells.values():
             if cell['family'] == 'listening_word_phrase_choice':
                 cell['label'] = '听辨词语'
+    if 'listening_picture_true_false' in labels:
+        labels['listening_picture_true_false'] = '听音判断图意'
+        for cell in cells.values():
+            if cell['family'] == 'listening_picture_true_false':
+                cell['label'] = '听音判断图意'
     if plan.get('current_source_input_quality_corrections'):
         from source_input_quality_corrections import apply as apply_source_quality
         apply_source_quality(data,plan)

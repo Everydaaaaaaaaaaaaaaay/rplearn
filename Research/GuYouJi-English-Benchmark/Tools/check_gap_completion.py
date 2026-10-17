@@ -37,6 +37,9 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'lowprimary_picture_listening':
+                from compile_lowprimary_picture_listening import check as check_lowprimary_picture
+                check_lowprimary_picture(g,a,b,source)
             if b.get('task_mode') == 'lowprimary_lexical_listening':
                 from compile_lowprimary_lexical_listening import check as check_lowprimary_lexical
                 check_lowprimary_lexical(g,a,b,source)
@@ -366,7 +369,10 @@ def check(data, plan):
         else:
             assert g['questions'] == a['review_response_tasks']
         assert len(g['questions']) == b['responses'] == a['questions'] == meta['questions']
-        assert [len(q['options']) for q in g['questions']] == (b['options_per_response'] if a.get('academic_multi_response_multi_select') else [b['options_each']] * b['responses'])
+        options_each = b.get('options_each')
+        if b.get('task_mode') == 'lowprimary_picture_listening':
+            options_each = source['features']['options_each']
+        assert [len(q['options']) for q in g['questions']] == (b['options_per_response'] if a.get('academic_multi_response_multi_select') else [options_each] * b['responses'])
         assert a['authored_student_inputs_complete'] and not a['independent_teacher_student_commercial_production_validated']
         assert meta['candidate']['sha256'] == a['candidate_sha256']
         printed = text.split('<!-- responses:start -->')[1].split('<!-- responses:end -->')[0].strip()
@@ -382,7 +388,7 @@ def check(data, plan):
             assert q['rationale']
             if q['options']:
                 assert q['answer'] in dict(q['options'])
-                assert len(set(k for k, _ in q['options'])) == (b['options_per_response'][q['number']-1] if a.get('academic_multi_response_multi_select') else b['options_each'])
+                assert len(set(k for k, _ in q['options'])) == (b['options_per_response'][q['number']-1] if a.get('academic_multi_response_multi_select') else options_each)
             else:
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']

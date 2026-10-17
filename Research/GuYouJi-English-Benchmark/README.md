@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+**2026-10-18小一六词听图各三稿：** [本批与全部验证](CompleteCoverage20261017/Primary1PictureJudgementOriginalBatch-v0.1.json)新增3完整组18回应/18两遍自有音轨，当前628/4181、186有稿格。六孤立词、六图、√×，不套六句判断；15自有图18图位，逐题图音邻接，题号以外不加长英语重播指令。18实际回应/18播放暂停、6错答未答、三解析重置、72反向契约及旧小四五题回归通过。公开单元练习原音/原PDF/答案页缺，三四节公开图与脚本不对应，非全资源/认证校考/现行非纸笔；另十句二选图三稿明确待补。新核浙江省2023案例集也无完整英语闭集，保留缺口，任务继续。
+
 **2026-10-18小六新增三词辨类：** [三稿与实测](CompleteCoverage20261017/Primary6CategoryOriginalBatch-v0.1.json)、[核验归档](CompleteCoverage20261017/Primary6CategoryVerification-v0.1.json)新增3完整组15回应，小六新增单词类别辨别家族格，当前625/4163、185有稿格。原公开预览第2页第五节整五组三选，词义/词形区别保留；45反向契约、15实际回应/6错答未答状态、三稿解析重置通过。原键只核文字层、saw/hurt多义风险保留，原答案PDF/原校/实际施测未知，0认证父卷。另[源版面追查](CompleteCoverage20261017/SourceReliabilityFollowup-v0.3.json)取得实际公开第1—3页SVG：情境5B在第3页也有字距/拼写异常，不只是读者OCR，未冒干净五情境补件；未取未公开后页。低小完整闭集及其他配套、独立验证仍继续。
 
 **2026-10-18小六十情境各三完整稿：** [本批与来源分层](CompleteCoverage20261017/Primary6TenContextOriginalBatch-v0.1.json)、[核验归档](CompleteCoverage20261017/Primary6TenContextVerification-v0.1.json)新增3完整组30回应，当前622/4148、184有稿格。全十中文情境/每题三独立英语候选，不以五题旧稿充数；公开转载全节文字/参考键齐备，原校/年/学期/地区未知，0新增认证父卷，旧五情境截断仍未补。45反向契约、30最终实际回应、6错答未答状态、三稿解析重置通过；运动稿第8题改一般时钟点比较后10回应复验。另核[来源追查](CompleteCoverage20261017/SourceReliabilityFollowup-v0.2.json)：垫江Q5B仍OCR不齐；表现性文章实际小三涂色加口头说明整组暂停，不误算低小。现行低小闭集输入、源配套与独立验证仍缺，任务继续。

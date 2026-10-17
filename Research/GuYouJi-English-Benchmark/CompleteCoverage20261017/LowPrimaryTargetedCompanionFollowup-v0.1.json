@@ -1,0 +1,45 @@
+{
+  "version": "0.1",
+  "scope": "targeted_lowprimary_sources_not_whole_English_closed_inputs",
+  "zhejiang": {
+    "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web3099/site/attach/0/b5fb7480b52b4ddd8b76717383a3984b.pdf",
+    "original": {
+      "path": "build/english-benchmark-authority-20261017/low626-zhejiang-school-evaluation-v0.1.pdf",
+      "sha256": "c743b69c5500341ace94921f2d3e5554daf882a4e04ef1638e9075f99f43277c"
+    },
+    "fetch": {
+      "path": "build/english-benchmark-authority-20261017/low626-zhejiang-fetch-v0.1.json",
+      "sha256": "53953f537655fdc2046befeb4cf525fbdc424b489dac9f4100f3b05eaf5391e1"
+    },
+    "locators": {
+      "path": "build/english-benchmark-authority-20261017/low626-zhejiang-nonpaper-locators-v0.1.json",
+      "sha256": "b27cb4bd63a65d8e4d4b6fc5d8bbbde0beba74e60a22afc0c04b19d666a3fa0b"
+    },
+    "necessary_render": {
+      "path": "build/english-benchmark-authority-20261017/low626-zhejiang-physical111-v0.1.png",
+      "sha256": "55fa99d2646c6685f54e5a0b490a78f030e652701e72581b039f91749da0e83c"
+    },
+    "title": "浙江省第十九、二十批“双减”优秀实践案例集",
+    "date": "2023-07",
+    "physical_pages": 169,
+    "correct_case": "龙泉市东升教育集团，重构与赋能，物理109–114/印刷106–111",
+    "finding": "P1/P2 nonpaper comprehensive assessment; physical111/printed108 Figure3 card/station photos do not supply full English command/card pool/script/key. Provincial collected practice case, not fixed national English blueprint.",
+    "complete_English_closed_task": false,
+    "wrong_case_locator_preserved": {
+      "path": "build/english-benchmark-authority-20261017/low626-zhejiang-dongsheng-native-v0.1.json",
+      "sha256": "8ea4725eeb37419148fa11a394f164de9cf2df032fb00dc1a2d8d07ddb690e1e"
+    }
+  },
+  "other_candidates": [
+    {
+      "url": "https://www.wenjuan.com/s/UZBZJvA82FN/",
+      "status": "actual page says assessment paused; search-snippet counts not admitted as questions; not school authenticated"
+    },
+    {
+      "url": "https://www.wujiang.edu.cn/html/99/2024-01-18/content-56347.html",
+      "status": "苏州湾实验小学 school-news nonpaper P1/P2 overview; no full English closed command/card pool/key; no child-photo bulk download"
+    }
+  ],
+  "new_closed_nonpaper_tasks": 0,
+  "new_authenticated_parent_papers": 0
+}
