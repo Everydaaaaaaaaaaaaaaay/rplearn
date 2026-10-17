@@ -46,6 +46,9 @@ def check(data, plan):
             if b.get('task_mode') == 'controlled_sentence_transformation':
                 from compile_controlled_transformations import check as check_transformations
                 check_transformations(g,a,b,source)
+            if b.get('task_mode') == 'academic_form_listening':
+                from compile_academic_form_listening import check as check_academic_form
+                check_academic_form(g,a,b,source)
             if b.get('task_mode') == 'academic_bundle_listening':
                 from compile_academic_bundle_listening import check as check_academic_bundle
                 check_academic_bundle(g,a,b,source)
@@ -359,7 +362,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['body_load_text'] if a.get('academic_bundle_listening') or a.get('academic_shared_audio_matching') or a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') or a.get('senior_short_source_bound') or a.get('primary_passage_listening') or a.get('illustrated_listening') or a.get('shared_picture_listening') or a.get('sequence_table_listening') else a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('academic_form_listening') or a.get('academic_bundle_listening') or a.get('academic_shared_audio_matching') or a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') or a.get('senior_short_source_bound') or a.get('primary_passage_listening') or a.get('illustrated_listening') or a.get('shared_picture_listening') or a.get('sequence_table_listening') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])
@@ -379,12 +382,15 @@ def check(data, plan):
                 if a.get('academic_bundle_listening') or a.get('academic_extracted_completion') or a.get('academic_text_extraction') or a.get('academic_summary_or_diagram'):expected_protocol='source_excerpt_v1'
                 if a.get('cambridge_additional_academic'):
                     expected_protocol='source_list_v1' if q['number']==2 else 'source_excerpt_v1'
+                if a.get('academic_form_listening'):expected_protocol={3:'uk_postcode_v1',4:'metric_length_v1',5:'metric_length_v1',8:'sterling_amount_v1'}.get(q['number'],'source_excerpt_v1')
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
                 pattern='(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)' if c['normalization']=='clock_hour_v1' else '(?:[0-9]+|[A-Za-z]+)' if c['normalization']=='small_count_v1' else '[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
                 if c['normalization']=='source_excerpt_v1':pattern="[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*"
                 if c['normalization']=='source_list_v1':pattern='[A-Za-z]+(?: [A-Za-z]+)*'
+                if c['normalization']=='uk_postcode_v1':pattern='[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][A-Z]{2}'
+                if c['normalization']in {'metric_length_v1','sterling_amount_v1'}:pattern='[A-Za-z0-9£½¾][A-Za-z0-9£½¾.,/ -]*'
                 assert all(re.fullmatch(pattern, value) for value in q['acceptedAnswers'] + c['rejectedAnswers'])
                 if c['normalization']=='small_count_v1':
                     names='zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split()

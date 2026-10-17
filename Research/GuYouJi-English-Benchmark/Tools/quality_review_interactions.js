@@ -68,6 +68,14 @@ function normalizeFill(value,protocol){
   // Keep malformed punctuation unknown; never strip punctuation from other fills.
   return /^[A-Za-z]+(?:(?:\s*,\s*|\s+)[A-Za-z]+)*$/.test(text)?text.toUpperCase().split(/\s*,\s*|\s+/).sort().join(' '):null;
  }
+ if(protocol==='uk_postcode_v1'){
+  const code=text.toUpperCase().replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
+  return /^[A-Z]{1,2}[0-9][A-Z0-9]?\s*[0-9][A-Z]{2}$/.test(code)?code.replace(/\s/g,''):null;
+ }
+ if(['metric_length_v1','sterling_amount_v1'].includes(protocol)){
+  const form=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10)).replace(/．/g,'.').replace(/，/g,',').replace(/[‐‑–−]/g,'-').replace(/\s+/g,' ').toUpperCase();
+  return /^[A-Z0-9£½¾][A-Z0-9£½¾.,/ -]*$/.test(form)?form:null;
+ }
  if(protocol==='clock_hour_v1'){
   const clock=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10)).replace(/：/g,':').replace(/．/g,'.');
   return /^(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)$/.test(clock)?clock.toUpperCase():null;
@@ -81,6 +89,28 @@ function normalizeFill(value,protocol){
   return /^[0-9]+$/.test(count)?count.replace(/^0+(?=\d)/,''):/^[A-Za-z]+$/.test(count)?count.toUpperCase():null;
  }
  return null;
+}
+function formNumber(value){
+ if(!/^[0-9]+(?:\.[0-9]{1,6})?$/.test(value))return null;
+ const parts=value.split('.'),denominator=10**(parts[1]?.length||0),numerator=Number(parts.join(''));
+ return Number.isSafeInteger(numerator)&&numerator<=1e9?[numerator,denominator]:null;
+}
+function metricLength(value){
+ if(typeof value!=='string')return null;
+ const m=value.match(/^(\d+(?:\.\d{1,6})?|\d+\/\d+|½|¾)\s*(M|METRE|METRES|METER|METERS|CM|CMS|CENTIMETRE|CENTIMETRES|CENTIMETER|CENTIMETERS)(?:\s+(WIDE|HIGH|DEEP))?$/);
+ if(!m)return null;let fraction;
+ if(m[1]==='½')fraction=[1,2];else if(m[1]==='¾')fraction=[3,4];else if(m[1].includes('/')){fraction=m[1].split('/').map(Number);if(!fraction.every(n=>Number.isSafeInteger(n)&&n<=1e6)||fraction[1]===0)return null;}else fraction=formNumber(m[1]);
+ if(!fraction)return null;
+ return {numerator:fraction[0],denominator:fraction[1]*(m[2].startsWith('C')?100:1),axis:m[3]||null};
+}
+function sterlingPence(value){
+ if(typeof value!=='string')return null;
+ const m=value.match(/^£?\s*(\d+|[1-9]\d{0,2}(?:,\d{3})+)(?:\.(\d{1,2}))?(?:\s+(?:POUND|POUNDS|GBP))?$/);
+ if(!m)return null;const pence=Number(m[1].replace(/,/g,''))*100+Number((m[2]||'').padEnd(2,'0'));
+ return Number.isSafeInteger(pence)&&pence<=1e11?pence:null;
+}
+function formWordCount(value,contract){
+ return ['metric_length_v1','sterling_amount_v1'].includes(contract.normalization)?(value.match(/[A-Z]+(?:-[A-Z]+)*/g)||[]).length:value.split(' ').length;
 }
 function clockMinutes(value){
  const names=['ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN','EIGHT','NINE','TEN','ELEVEN','TWELVE'];
@@ -118,7 +148,11 @@ function answerComparison(questions,saved={}){
    rows.push(selection.rows[0]);continue;
   }
   const contract=q.fillMarking,accepted=q.acceptedAnswers;
-  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','source_excerpt_v1','source_list_v1','ascii_integer_v1','clock_hour_v1','small_count_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','source_excerpt_v1','source_list_v1','ascii_integer_v1','clock_hour_v1','small_count_v1','uk_postcode_v1','metric_length_v1','sterling_amount_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  const formQuantity=['metric_length_v1','sterling_amount_v1'].includes(contract.normalization),formValue=formQuantity||contract.normalization==='uk_postcode_v1';
+  if(formValue&&(contract.sourceBound!==true||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==3||contract.numberAllowance!=='one'))return {available:false,reason:'表单空的输入范围、限词/数字或未知格式规则未绑定。'};
+  if(contract.normalization==='metric_length_v1'&&(!Number.isSafeInteger(contract.metricMillimetres)||contract.metricMillimetres<=0||contract.metricMillimetres>1e7||!['width','height'].includes(contract.dimensionAxis)||accepted.some(a=>{const p=metricLength(normalizeFill(a,contract.normalization));return p===null||p.numerator*1000!==contract.metricMillimetres*p.denominator||p.axis&&!((contract.dimensionAxis==='width'?['WIDE']:['HIGH','DEEP']).includes(p.axis));})))return {available:false,reason:'尺寸空的单位、方向或等值形式不一致。'};
+  if(contract.normalization==='sterling_amount_v1'&&(!Number.isSafeInteger(contract.sterlingPence)||contract.sterlingPence<0||contract.currencyPrinted!=='£'||accepted.some(a=>sterlingPence(normalizeFill(a,contract.normalization))!==contract.sterlingPence)))return {available:false,reason:'金额空的币种、已印符号或等值形式不一致。'};
   if(contract.normalization==='source_list_v1'&&(contract.sourceBound!==true||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==3||contract.listSize!==3||contract.listOrder!=='any'||contract.listMembersDistinct!==true||accepted.some(a=>{const tokens=normalizeFill(a,'source_list_v1').split(' ');return tokens.length!==3||new Set(tokens).size!==3;})))return {available:false,reason:'三成员摘词答案的数量、不同成员或无序规则尚未完整绑定。'};
   if(contract.normalization==='source_excerpt_v1'&&(contract.sourceBound!==true||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||!Number.isInteger(contract.maxWords)||contract.maxWords<1||contract.hyphenatedWordCount!=='one'))return {available:false,reason:'摘词填空的材料边界、限词或未知格式规则未绑定。'};
   if(contract.normalization==='clock_hour_v1'&&(contract.clockFrame!=='p.m.'||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==1||!Number.isInteger(contract.wholeHour)||contract.wholeHour<1||contract.wholeHour>12||accepted.some(a=>clockMinutes(normalizeFill(a,'clock_hour_v1'))!==contract.wholeHour*60)))return {available:false,reason:'时间空的单位、限词或未知格式复核规则未绑定。'};
@@ -126,20 +160,25 @@ function answerComparison(questions,saved={}){
   if(contract.normalization==='english_phrase_v1'&&!(contract.maxWords===null||Number.isInteger(contract.maxWords)&&contract.maxWords>0))return {available:false,reason:'单空限词规则未绑定。'};
   if(contract.minWords!==undefined&&(contract.normalization!=='english_phrase_v1'||!Number.isInteger(contract.minWords)||contract.minWords<1||contract.maxWords!==null&&contract.minWords>contract.maxWords||contract.wordCountAmbiguity!=='review'))return {available:false,reason:'最少词数或未核计词形式的处理规则尚未绑定。'};
   const forms=accepted.map(a=>normalizeFill(a,contract.normalization)),rejected=contract.rejectedAnswers.map(a=>normalizeFill(a,contract.normalization));
+  if(contract.normalization==='metric_length_v1'&&rejected.some(v=>{const p=metricLength(v);return p!==null&&p.numerator*1000===contract.metricMillimetres*p.denominator&&(!p.axis||(contract.dimensionAxis==='width'?['WIDE']:['HIGH','DEEP']).includes(p.axis));})||contract.normalization==='sterling_amount_v1'&&rejected.some(v=>sterlingPence(v)===contract.sterlingPence))return {available:false,reason:'尺寸或金额的正确等值形式被列为错答，暂不核对。'};
   if(contract.requiredInitial!==undefined&&(!['latin_word_v1','english_phrase_v1'].includes(contract.normalization)||contract.maxWords!==1||typeof contract.requiredInitial!=='string'||!/^[A-Za-z]$/.test(contract.requiredInitial)||forms.some(a=>!a.startsWith(contract.requiredInitial.toUpperCase()))))return {available:false,reason:'首字母与一词答案范围未一致绑定。'};
   if(contract.requiredWord!==undefined&&(contract.normalization!=='english_phrase_v1'||typeof contract.requiredWord!=='string'||!/^[A-Za-z]+$/.test(contract.requiredWord)||forms.some(a=>!a.split(' ').includes(contract.requiredWord.toUpperCase()))))return {available:false,reason:'关键词原形与可接受答案未一致绑定。'};
-  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>a.split(' ').length>contract.maxWords)||contract.minWords&&forms.some(a=>a.split(' ').length<contract.minWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
+  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>formWordCount(a,contract)>contract.maxWords)||contract.minWords&&forms.some(a=>a.split(' ').length<contract.minWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
   const chosen=saved[String(q.number)+'.1']??'';
   if(typeof chosen!=='string')return {available:false,reason:'填写值格式无效。'};
   const normalized=normalizeFill(chosen,contract.normalization);
-  const outsideLimit=normalized!==null&&(contract.maxWords&&normalized.split(' ').length>contract.maxWords||contract.minWords&&normalized.split(' ').length<contract.minWords);
+  const outsideLimit=normalized!==null&&(contract.maxWords&&formWordCount(normalized,contract)>contract.maxWords||contract.minWords&&normalized.split(' ').length<contract.minWords);
   const uncertainWordCount=normalized!==null&&contract.wordCountAmbiguity==='review'&&/['-]/.test(normalized);
   const missingKeyword=normalized!==null&&contract.requiredWord!==undefined&&!normalized.split(' ').includes(contract.requiredWord.toUpperCase());
   const wrongInitial=normalized!==null&&contract.requiredInitial!==undefined&&!normalized.startsWith(contract.requiredInitial.toUpperCase());
   const differentClock=contract.normalization==='clock_hour_v1'&&clockMinutes(normalized)!==null&&clockMinutes(normalized)!==contract.wholeHour*60;
   const differentCount=contract.normalization==='small_count_v1'&&smallCount(normalized)!==null&&String(smallCount(normalized))!==String(contract.wholeCount);
   const differentList=contract.normalization==='source_list_v1'&&normalized!==null&&(normalized.split(' ').length!==contract.listSize||new Set(normalized.split(' ')).size!==contract.listSize);
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(['clock_hour_v1','small_count_v1','source_excerpt_v1','source_list_v1'].includes(contract.normalization)?'review':'different'):differentClock||differentCount||differentList||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
+  const quantity=contract.normalization==='metric_length_v1'?metricLength(normalized):null,money=contract.normalization==='sterling_amount_v1'?sterlingPence(normalized):null;
+  const sameMetric=quantity!==null&&quantity.numerator*1000===contract.metricMillimetres*quantity.denominator&&(!quantity.axis||(contract.dimensionAxis==='width'?['WIDE']:['HIGH','DEEP']).includes(quantity.axis));
+  const sameMoney=money!==null&&money===contract.sterlingPence;
+  const differentForm=quantity!==null&&!sameMetric||money!==null&&!sameMoney||contract.normalization==='uk_postcode_v1'&&normalized!==null&&!forms.includes(normalized);
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)||sameMetric||sameMoney?'match':normalized===null?(['clock_hour_v1','small_count_v1','source_excerpt_v1','source_list_v1'].includes(contract.normalization)||formValue?'review':'different'):differentForm||differentClock||differentCount||differentList||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
  const usedBankRoots=new Map();
  if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}
