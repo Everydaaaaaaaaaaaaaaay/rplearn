@@ -1,0 +1,195 @@
+{
+  "version": "0.1",
+  "id": "primary4-picturelisten-things-near-us",
+  "title": "小四五图听句：身边物品",
+  "grade": "primary4",
+  "family": "listening_picture_true_false",
+  "family_label": "听句看图判断",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part1",
+  "source_binding": "p4pictureTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.20.json",
+    "sha256": "3e986710c2689bbad52c5fc8418ac1b4492d8051cd3469926f4a3829471c9513"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.20.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "source_sentences": 5,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    }
+  },
+  "instruction": "看全部5幅图，听每图对应句子，相符选√，不相符选×。原卷未印遍数/停顿；本机每句一遍、前2秒后3秒，可重播，仅为审阅安排。",
+  "source_form_notice": "小四房山普通期末卷原页完整五图/五句，用√相符、×不符，正文区/学年/学期已核；原校施测未认证，原音轨/脚本缺，答案听力略。源遍数时序未印。本稿全自有图音，图复用既有已核224图，不当十五独立视觉曝光或儿童难度校准。",
+  "teacher_source_notices": [
+    "小四房山普通期末卷原页完整五图/五句，用√相符、×不符，正文区/学年/学期已核；原校施测未认证，原音轨/脚本缺，答案听力略。源遍数时序未印。本稿全自有图音，图复用既有已核224图，不当十五独立视觉曝光或儿童难度校准。",
+    "完整五图五句五响应，不截一子题算大题；图形与句框/主题部分复用，作者自审不当独立识图、学生、商用或生产验证。脚本只在教师解析展开，不能把原无键升级gold。"
+  ],
+  "format_summary": "5独立句 / 5图 / 5个√-×回应 / 源遍数时序未知 / 本机每句1遍",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture8-v0.1.svg",
+      "sha256": "f9308fd94bfbe5006e7efdbd723de886120ef32059f0cbfb7d1696d30afc0624"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture7-v0.1.svg",
+      "sha256": "9728d0a6b47fed021f5825f9683b9ff13dccd5f486c7a36e25a4b7b7fb4b1b99"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture8-v0.1.svg",
+      "sha256": "6fd6c335f4923ce2831835762b7499c5b2cbce916ecaa8667fe3216f0e555a4e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture6-v0.1.svg",
+      "sha256": "6c5fdf22c1738484892218eff60e07fe7fb244b3a10e7b10f944a33cf779c553"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture2-v0.2.svg",
+      "sha256": "055f79236c4586ed6cf5b0b649fa41ba32771815ed00cd7254a14c354b92bb22"
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The person has a camera near the face."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图与所听句子相符吗？",
+          "options": [
+            [
+              "√",
+              "相符"
+            ],
+            [
+              "×",
+              "不相符"
+            ]
+          ],
+          "answer": "√",
+          "rationale": "相机被双手举到脸前。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "It is six o'clock on this clock."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第2图与所听句子相符吗？",
+          "options": [
+            [
+              "√",
+              "相符"
+            ],
+            [
+              "×",
+              "不相符"
+            ]
+          ],
+          "answer": "×",
+          "rationale": "图时针4、分针12，四点不是六点。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Two books are open in the picture."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第3图与所听句子相符吗？",
+          "options": [
+            [
+              "√",
+              "相符"
+            ],
+            [
+              "×",
+              "不相符"
+            ]
+          ],
+          "answer": "√",
+          "rationale": "图明确两本打开书，不需猜未画物体。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The cat is sitting above the table."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第4图与所听句子相符吗？",
+          "options": [
+            [
+              "√",
+              "相符"
+            ],
+            [
+              "×",
+              "不相符"
+            ]
+          ],
+          "answer": "×",
+          "rationale": "猫完整处在桌面下面。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "There is a cup under the table."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第5图与所听句子相符吗？",
+          "options": [
+            [
+              "√",
+              "相符"
+            ],
+            [
+              "×",
+              "不相符"
+            ]
+          ],
+          "answer": "×",
+          "rationale": "当前已修订图中杯在桌面上，而非下面。"
+        }
+      ]
+    }
+  ]
+}

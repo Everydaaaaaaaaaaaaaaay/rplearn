@@ -64,7 +64,7 @@ def check(data, plan):
             if b.get('task_mode') == 'primary_passageTF5':
                 from compile_primary_passage_listening import check as check_primary_passage
                 check_primary_passage(g,a,b,source)
-            if b.get('task_mode') in {'primary_pictureTF10','primary_pictureTF9'}:
+            if b.get('task_mode') in {'primary_pictureTF10','primary_pictureTF9','primary_pictureTF5'}:
                 from compile_picture_listening import check as check_picture_listening
                 check_picture_listening(g,a,b,source)
             if b.get('task_mode') == 'primary_dialogue122':

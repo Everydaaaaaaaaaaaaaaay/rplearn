@@ -13,9 +13,10 @@ from compile_short_dialogue_listening import ref
 
 def check(group,audit,binding,source):
     size=source['responses']
-    assert (source['level'],size)in {('primary3',10),('primary6',9)}
+    assert (source['level'],size)in {('primary3',10),('primary4',5),('primary6',9)}
     selected=json.loads(load_ref(source['selected_native']).read_text());assert selected['source']==source['source']and selected['source_images']==source['source_images']
-    assert selected['question_numbers']==source['source_question_numbers']==list(range(1,size+1))and selected['options']==['T','F']and selected['pictures_per_response']==1
+    assert selected['question_numbers']==source['source_question_numbers']==list(range(1,size+1))and selected['options']==source['features']['options']and selected['pictures_per_response']==1
+    if source['level']=='primary4':assert source['features']['options']==['√','×']and selected['printed_symbols_preserved']
     if source['level']=='primary3':assert source['sample_paper_not_confirmed_administered']and selected['source_sample_label_preserved']and not source['region_in_body']
     else:assert source['region_in_body']and selected['body_grade_region_term_observed']and not source['sample_paper_not_confirmed_administered']
     assert source['features']['repeats']is None and selected['repeats_and_timing_not_printed']
@@ -39,7 +40,7 @@ def check(group,audit,binding,source):
         assert img['asset']==fig and img['alt']=='第'+str(n)+'图'
         svg=ET.fromstring(load_ref(fig).read_bytes());assert svg.attrib['viewBox']=='0 0 224 224'
         assert ''.join(svg.itertext()).strip() not in {'T','F'}
-        q=clip['questions'][0];assert group['questions'][n-1]==dict(number=n,**q)and [k for k,_ in q['options']]==['T','F']
+        q=clip['questions'][0];assert group['questions'][n-1]==dict(number=n,**q)and [k for k,_ in q['options']]==source['features']['options']
         assert clip['turns'][0]['text']in group['reviewText']and clip['turns'][0]['text']not in group['passageHtml']
     assert audit['picture_listening']and audit['audio_transcript_in_teacher_only']and audit['source_timing_unknown_preserved']
     return True
