@@ -1,0 +1,110 @@
+{
+  "version": "0.1",
+  "groups": [
+    {
+      "id": "g7.2019.readingA",
+      "level": 7,
+      "kind": "reading_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-grade7-upper.html",
+        "sha256": "acbeb10da17abf6320413e97ae61d2e11a92e237f24efc763cd033bc854be5d6"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/source-group-observations.json",
+        "sha256": "f1288380e5014b56e9455f3d18241374ea57acd214270eed7560d086aee2df95"
+      },
+      "source_features": {
+        "items": 3,
+        "options_each": 4,
+        "genre": "calendar_and_parent_day_explanation",
+        "calendar_explicit_year": 2019,
+        "third_sunday_not_runtime_date": true,
+        "functions": [
+          "text_calendar_join",
+          "referent",
+          "supported_statement"
+        ],
+        "source_gender_study_claims_not_verified": true
+      },
+      "required_source_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/suzhou-changshu2019-image05.jpg",
+          "sha256": "a641b8aa7748c37e84fc0d69cd9a4a94cd965ab6175a12b4e9eb5ed1fadeb5d6"
+        }
+      ],
+      "responses": 3,
+      "material": {
+        "passages": 1,
+        "required_calendar": true,
+        "required_numbered_categories": null,
+        "graph_population": null,
+        "multiple_choice_survey": false
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "inherited_repost_not_independent_gold",
+      "source_count_increment": 0,
+      "is_independent_gold": false
+    },
+    {
+      "id": "g8.changjun2024.readingA",
+      "level": 8,
+      "kind": "reading_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-changjun2024-midterm-paper-key20261014.pdf",
+        "sha256": "50fcae7cf123843ce34b2fe9b66134e765fc281537e28d746c79e5b3c7cadec2"
+      },
+      "source_catalogue": {
+        "path": "FirstRelease/Expansions/grade8-changjun2024-public-groups-v0.1.json",
+        "sha256": "e47461cc8a3ef0bf788d3d32a16dca8b743f6b63c3c001206378443a33fb7a33"
+      },
+      "source_features": {
+        "questions": 3,
+        "options_each": 3,
+        "complete_numbered_problem_list_and_graph_required": true,
+        "categories": 11,
+        "population": 50,
+        "multiple_choices_allowed": true,
+        "percent_denominator_each_category_class50": true,
+        "y_axis_students_labels_percent": true,
+        "percent_sum_need_not100": true
+      },
+      "required_source_images": [],
+      "responses": 3,
+      "material": {
+        "passages": 1,
+        "required_calendar": false,
+        "required_numbered_categories": 11,
+        "graph_population": 50,
+        "multiple_choice_survey": true
+      },
+      "candidates": {
+        "per_response": [
+          3,
+          3,
+          3
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent_per_question",
+      "full_student_input": true,
+      "published_key": null,
+      "key_status": "inherited_repost_not_independent_gold",
+      "source_count_increment": 0,
+      "is_independent_gold": false
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0,
+  "legacy_grade8_author_uses6_categories_vs_source11": true,
+  "new_grade8_variants_restore11_category_shape": true
+}

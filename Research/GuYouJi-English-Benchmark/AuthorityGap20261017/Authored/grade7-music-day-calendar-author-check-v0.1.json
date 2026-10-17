@@ -1,0 +1,188 @@
+{
+  "version": "0.1",
+  "id": "grade7-music-day-calendar",
+  "grade": 7,
+  "questions": 3,
+  "candidate_sha256": "dea846774ce8185733d443431d2d42e5cbf803f018fdf4997f64060b4e9e7af5",
+  "canonical_response_block_sha256": "7df03f53fccc8aceae16ea8e5867808e9f2cdf909ce2c152de72549084f228ec",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "On which date is the family music afternoon?",
+      "options": [
+        [
+          "A",
+          "September 12."
+        ],
+        [
+          "B",
+          "September 18."
+        ],
+        [
+          "C",
+          "September 19."
+        ],
+        [
+          "D",
+          "September 26."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "September2027的Sunday列5/12/19/26，第三个19；12第二，18Saturday，26第四。"
+    },
+    {
+      "number": 2,
+      "stem": "What does the bold word it refer to?",
+      "options": [
+        [
+          "A",
+          "A coloured ticket."
+        ],
+        [
+          "B",
+          "The entrance."
+        ],
+        [
+          "C",
+          "The opening song."
+        ],
+        [
+          "D",
+          "The visitor’s name."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "keepit承接giveeachvisitoracolouredticket，颜色指房间；B地方非拿票，C歌非所保留实体，D名字明确不印。"
+    },
+    {
+      "number": 3,
+      "stem": "Which statement agrees with the notice?",
+      "options": [
+        [
+          "A",
+          "Only people who already play music may attend."
+        ],
+        [
+          "B",
+          "All visitors need to bring their own drums."
+        ],
+        [
+          "C",
+          "Food may be eaten in either practice room."
+        ],
+        [
+          "D",
+          "Both groups will play together in the hall near the end."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "最后半小时两组回hall合奏；A初学welcome，Bschooldrums，Cfoodnotallowed。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleVisualReadingBridge-v0.1.json",
+    "sha256": "db6f82df3e4fa454f47a0f737303dce7ac6640de73f0ed096e911850b705c5b3"
+  },
+  "source_group_id": "g7.2019.readingA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "required_calendar": true,
+      "required_numbered_categories": null,
+      "graph_population": null,
+      "multiple_choice_survey": false
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "## September 2027\n\n| Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  |  | 1 | 2 | 3 | 4 |\n| 5 | 6 | 7 | 8 | 9 | 10 | 11 |\n| 12 | 13 | 14 | 15 | 16 | 17 | 18 |\n| 19 | 20 | 21 | 22 | 23 | 24 | 25 |\n| 26 | 27 | 28 | 29 | 30 |  |  |\n\nThe school will hold a family music afternoon on the third Sunday of September 2027. It starts at two and ends at four. Families should arrive at the main hall ten minutes before the start. There is no need to play an instrument already: beginners are welcome.\n\nAt the entrance, a helper will give each visitor a coloured ticket. Please keep **it** until the end. The colour shows which practice room the visitor should use after the opening song. A blue ticket means Room 1 and a yellow ticket means Room 2. The visitor’s name will not be printed on the ticket.\n\nThe school has small drums for everyone, so visitors do not have to bring an instrument. During the final half-hour, the two groups will return to the hall to play together. Food is not allowed in the practice rooms. Families can eat in the garden after the afternoon ends.",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 149,
+    "stem_English_words": 22,
+    "options_English_words_with_repeated_bank": 50,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "calendar_words_separate": 8,
+    "calendar_numeric_entries": 30
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "required_calendar": {
+    "year": 2027,
+    "month": 9,
+    "dates": [
+      [
+        0,
+        0,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      [
+        26,
+        27,
+        28,
+        29,
+        30,
+        0,
+        0
+      ]
+    ],
+    "third_sunday": 19,
+    "current_clock_used": false
+  },
+  "calendar_English_words": 8,
+  "calendar_numeric_entries": 30,
+  "body_load_text": "The school will hold a family music afternoon on the third Sunday of September 2027. It starts at two and ends at four. Families should arrive at the main hall ten minutes before the start. There is no need to play an instrument already: beginners are welcome.\n\nAt the entrance, a helper will give each visitor a coloured ticket. Please keep **it** until the end. The colour shows which practice room the visitor should use after the opening song. A blue ticket means Room 1 and a yellow ticket means Room 2. The visitor’s name will not be printed on the ticket.\n\nThe school has small drums for everyone, so visitors do not have to bring an instrument. During the final half-hour, the two groups will return to the hall to play together. Food is not allowed in the practice rooms. Families can eat in the garden after the afternoon ends.",
+  "source_functions_preserved": [
+    "text_calendar_join",
+    "referent",
+    "supported_statement"
+  ],
+  "fictional_notice": true
+}

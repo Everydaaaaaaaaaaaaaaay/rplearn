@@ -1,0 +1,160 @@
+{
+  "version": "0.1",
+  "id": "grade8-learning-problems-graph",
+  "grade": 8,
+  "questions": 3,
+  "candidate_sha256": "142994ee5ee9abb3573d35d68c0976a45093eea84588df1c19c2f478671ac637",
+  "canonical_response_block_sha256": "1d47c4e17dbe06b2329480f1ea7ab17a55c95117c3be218a6983c245435b91dd",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which problem did the largest number of students choose?",
+      "options": [
+        [
+          "A",
+          "Planning revision time."
+        ],
+        [
+          "B",
+          "Understanding new words."
+        ],
+        [
+          "C",
+          "Reading long instructions."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "2号56%为28人最大；10号48%=24人，4号40%=20人均较少。"
+    },
+    {
+      "number": 2,
+      "stem": "How many students chose concentrating in a noisy room?",
+      "options": [
+        [
+          "A",
+          "36."
+        ],
+        [
+          "B",
+          "28."
+        ],
+        [
+          "C",
+          "18."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "6号36%×50=18；36为百分数，28是2号56%人数。"
+    },
+    {
+      "number": 3,
+      "stem": "Which statement must be true?",
+      "options": [
+        [
+          "A",
+          "The number of problem choices was greater than 50."
+        ],
+        [
+          "B",
+          "Every student chose exactly the same number of problems."
+        ],
+        [
+          "C",
+          "No student chose more than one problem."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "总160选择>50，A；B160/50=3.2非整数，不能人人相同整数选择数；C若至多一人一选至多50，违160。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleVisualReadingBridge-v0.1.json",
+    "sha256": "db6f82df3e4fa454f47a0f737303dce7ac6640de73f0ed096e911850b705c5b3"
+  },
+  "source_group_id": "g8.changjun2024.readingA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "required_calendar": false,
+      "required_numbered_categories": 11,
+      "graph_population": 50,
+      "multiple_choice_survey": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "The school asked 50 Grade Eight students which problems they had during the school week. Each student could choose several different problems from the list, but could choose each problem only once. The chart shows the results. The number below each bar matches a problem number in the list. The height of a bar shows how many students chose that problem. Its top label shows the percentage of all 50 students.\n\n1. Keeping a tidy desk\n2. Understanding new words\n3. Remembering homework dates\n4. Reading long instructions\n5. Choosing a study partner\n6. Concentrating in a noisy room\n7. Packing the right books\n8. Finding online information\n9. Checking written work\n10. Planning revision time\n11. Asking for help\n\n![完整调查图：11编号类别、人数纵轴和百分比标签](build/english-benchmark-authority-20261017/grade8-learning-problems-graph.svg)\n\n图表文字替代：纵轴Students，0至50，每10人一格；横轴Problem number，1—11依次对应上表。各柱顶百分标签依次为32%、56%、24%、40%、16%、36%、20%、12%、28%、48%、8%。各比例均以同50人为分母，允许一人选不同问题。",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 107,
+    "stem_English_words": 23,
+    "options_English_words_with_repeated_bank": 33,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "graph_English_words_separate": 6,
+    "graph_numeric_labels_separate": {
+      "axis": 6,
+      "category": 11,
+      "percent": 11
+    }
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "figure_asset": {
+    "path": "build/english-benchmark-authority-20261017/grade8-learning-problems-graph.svg",
+    "sha256": "fcc55206b49929d1d40c155578bb0ce62330ecef3a9f491b7d0996f9e456df62"
+  },
+  "required_visual_panels": 1,
+  "figure_counts": [
+    16,
+    28,
+    12,
+    20,
+    8,
+    18,
+    10,
+    6,
+    14,
+    24,
+    4
+  ],
+  "figure_percentages": [
+    32,
+    56,
+    24,
+    40,
+    16,
+    36,
+    20,
+    12,
+    28,
+    48,
+    8
+  ],
+  "figure_population": 50,
+  "figure_numbered_categories": 11,
+  "total_category_choices": 160,
+  "body_load_text": "The school asked 50 Grade Eight students which problems they had during the school week. Each student could choose several different problems from the list, but could choose each problem only once. The chart shows the results. The number below each bar matches a problem number in the list. The height of a bar shows how many students chose that problem. Its top label shows the percentage of all 50 students.\n1. Keeping a tidy desk\n2. Understanding new words\n3. Remembering homework dates\n4. Reading long instructions\n5. Choosing a study partner\n6. Concentrating in a noisy room\n7. Packing the right books\n8. Finding online information\n9. Checking written work\n10. Planning revision time\n11. Asking for help",
+  "graph_numeric_entries_separate": true,
+  "no_forced_percent_sum100": true,
+  "figure_is_original": true,
+  "source_category_count_preserved": true,
+  "visual_panel_semantics": [
+    "50人多选11问题，纵轴人数0—50，横轴1—11；柱高人数[16, 28, 12, 20, 8, 18, 10, 6, 14, 24, 4]，柱顶百分[32, 56, 24, 40, 16, 36, 20, 12, 28, 48, 8]"
+  ]
+}

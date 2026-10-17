@@ -1,0 +1,160 @@
+{
+  "version": "0.1",
+  "id": "grade8-school-day-problems-graph",
+  "grade": 8,
+  "questions": 3,
+  "candidate_sha256": "947a1319089aaa2735839834c12fe4e2d889c4dd79c95f504f81e63961765d29",
+  "canonical_response_block_sha256": "29a10f247cca232a7da5149f793b39ff2e879c259fe66f79b4401725e4c72b1b",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which problem was chosen by the largest number of students?",
+      "options": [
+        [
+          "A",
+          "Getting up early."
+        ],
+        [
+          "B",
+          "Finishing homework on time."
+        ],
+        [
+          "C",
+          "Carrying a heavy schoolbag."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "1号30/50=60%最大；4号50%=25，2号40%=20。"
+    },
+    {
+      "number": 2,
+      "stem": "How many students chose taking notes in class?",
+      "options": [
+        [
+          "A",
+          "36."
+        ],
+        [
+          "B",
+          "18."
+        ],
+        [
+          "C",
+          "12."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "7号36%×50=18；36把百分数当人数，12为8号24%的计数。"
+    },
+    {
+      "number": 3,
+      "stem": "Which statement must be true?",
+      "options": [
+        [
+          "A",
+          "Every student chose exactly three problems."
+        ],
+        [
+          "B",
+          "Exactly 163 different students took part."
+        ],
+        [
+          "C",
+          "The total number of problem choices exceeded the number of students."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "11项总163选择>50人，所以C；A50×3=150不等163，B分母明确50，不能将类别选择当不同人。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleVisualReadingBridge-v0.1.json",
+    "sha256": "db6f82df3e4fa454f47a0f737303dce7ac6640de73f0ed096e911850b705c5b3"
+  },
+  "source_group_id": "g8.changjun2024.readingA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "passages": 1,
+      "required_calendar": false,
+      "required_numbered_categories": 11,
+      "graph_population": 50,
+      "multiple_choice_survey": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "The school asked 50 Grade Eight students which problems they had during the school week. Each student could choose several different problems from the list, but could choose each problem only once. The chart shows the results. The number below each bar matches a problem number in the list. The height of a bar shows how many students chose that problem. Its top label shows the percentage of all 50 students.\n\n1. Getting up early\n2. Carrying a heavy schoolbag\n3. Finding a quiet place to read\n4. Finishing homework on time\n5. Remembering names\n6. Choosing books\n7. Taking notes in class\n8. Getting enough exercise\n9. Finding lost things\n10. Speaking in a group\n11. Planning weekend activities\n\n![完整调查图：11编号类别、人数纵轴和百分比标签](build/english-benchmark-authority-20261017/grade8-school-day-problems-graph.svg)\n\n图表文字替代：纵轴Students，0至50，每10人一格；横轴Problem number，1—11依次对应上表。各柱顶百分标签依次为60%、40%、30%、50%、20%、10%、36%、24%、16%、12%、28%。各比例均以同50人为分母，允许一人选不同问题。",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 107,
+    "stem_English_words": 23,
+    "options_English_words_with_repeated_bank": 33,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "graph_English_words_separate": 6,
+    "graph_numeric_labels_separate": {
+      "axis": 6,
+      "category": 11,
+      "percent": 11
+    }
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "figure_asset": {
+    "path": "build/english-benchmark-authority-20261017/grade8-school-day-problems-graph.svg",
+    "sha256": "22003cfa2996d9d283358c4b3eb865b7497d5889157cee5d547fb4de22b6a455"
+  },
+  "required_visual_panels": 1,
+  "figure_counts": [
+    30,
+    20,
+    15,
+    25,
+    10,
+    5,
+    18,
+    12,
+    8,
+    6,
+    14
+  ],
+  "figure_percentages": [
+    60,
+    40,
+    30,
+    50,
+    20,
+    10,
+    36,
+    24,
+    16,
+    12,
+    28
+  ],
+  "figure_population": 50,
+  "figure_numbered_categories": 11,
+  "total_category_choices": 163,
+  "body_load_text": "The school asked 50 Grade Eight students which problems they had during the school week. Each student could choose several different problems from the list, but could choose each problem only once. The chart shows the results. The number below each bar matches a problem number in the list. The height of a bar shows how many students chose that problem. Its top label shows the percentage of all 50 students.\n1. Getting up early\n2. Carrying a heavy schoolbag\n3. Finding a quiet place to read\n4. Finishing homework on time\n5. Remembering names\n6. Choosing books\n7. Taking notes in class\n8. Getting enough exercise\n9. Finding lost things\n10. Speaking in a group\n11. Planning weekend activities",
+  "graph_numeric_entries_separate": true,
+  "no_forced_percent_sum100": true,
+  "figure_is_original": true,
+  "source_category_count_preserved": true,
+  "visual_panel_semantics": [
+    "50人多选11问题，纵轴人数0—50，横轴1—11；柱高人数[30, 20, 15, 25, 10, 5, 18, 12, 8, 6, 14]，柱顶百分[60, 40, 30, 50, 20, 10, 36, 24, 16, 12, 28]"
+  ]
+}
