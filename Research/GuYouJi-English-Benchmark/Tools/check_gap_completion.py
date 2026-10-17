@@ -43,6 +43,9 @@ def check(data, plan):
             if b.get('task_mode') == 'junior_source_bound_listening':
                 from compile_junior_listening import check as check_junior_listening
                 check_junior_listening(g,a,b,source)
+            if b.get('task_mode') == 'inherited_complete_cloze':
+                from compile_inherited_cloze import check as check_inherited_cloze
+                check_inherited_cloze(g,a,b,source)
             if b.get('task_mode') in {'primary_dialogue_pictures5','primary_dialogue_pictures6','primary_dialogue_rank_pictures5'}:
                 from compile_dialogue_picture_matching import check as check_dialogue_pictures
                 check_dialogue_pictures(g,a,b,source)

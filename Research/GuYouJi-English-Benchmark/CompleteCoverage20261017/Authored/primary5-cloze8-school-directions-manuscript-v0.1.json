@@ -1,0 +1,177 @@
+{
+  "id": "primary5-cloze8-school-directions",
+  "title": "小五：给新同学的路线卡",
+  "grade": "primary5",
+  "family": "choice_cloze",
+  "source_group_id": "p5.gcyls2024.attributed.yangzhou2022.monkey8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.1.json",
+    "sha256": "f7981f89963e36cc641ca7288cc04bb37d9fd69de43efc1724f055ff1af944ff"
+  },
+  "source_binding": "inherited-cloze-8",
+  "instruction": "阅读短文，为每一空选择最合适的一项。每空独立选择，不设每项只能用一次。",
+  "source_notice": "结构参照已核教辅中的完整例题：一篇、每空3个独立候选；六空例含多词候选，八空例为单词候选。原书标注2022普通期末卷来源，但原校卷及原整节范围未认证，原参考键有歧义，不当gold。本稿完整原创，逐候选回填为作者自审；独立教研、学生难度、商用和生产未验证。",
+  "passage": "A new pupil comes (1) ____ our classroom on Monday. His name is Ben. At lunch time, he asks where the (2) ____ is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is (3) ____ the music room and the art room. Both rooms are on the ground floor. The card says, “Turn (4) ____ at the stairs, not right or back.” The walk is (5) ____: it takes only one minute. I draw two arrows and colour (6) ____ green. Ben (7) ____ at the card carefully. He can follow it easily (8) ____ the words and arrows show every turn. At the door, he waves and thanks me.",
+  "questions": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "into"
+        ],
+        [
+          "B",
+          "under"
+        ],
+        [
+          "C",
+          "about"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：comes into表示进入教室；B：comes under our classroom表示到教室下方，不合新生入班情节；C：comes about不能带our classroom作此处目的地"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "kitchen"
+        ],
+        [
+          "B",
+          "library"
+        ],
+        [
+          "C",
+          "toilet"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：kitchen供做饭，不能由借书目的支持；B：借书目的指向library，后文book room再次限定；C：toilet不提供借书功能"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "on"
+        ],
+        [
+          "B",
+          "through"
+        ],
+        [
+          "C",
+          "between"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：on不能和the music room and the art room构成两室之间的位置；B：through表示穿过，不能在is后表达两室之间；C：between A and B明确表示在两个房间之间"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "back"
+        ],
+        [
+          "B",
+          "left"
+        ],
+        [
+          "C",
+          "right"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：back为折返，与限定的左右二选指令不一致；B：not right且指令明确左转，left符合；C：not right直接排除right"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "short"
+        ],
+        [
+          "B",
+          "old"
+        ],
+        [
+          "C",
+          "hungry"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：only one minute说明距离短；B：old描述年代，不由一分钟支持；C：hungry不描述路线步行长度"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "him"
+        ],
+        [
+          "B",
+          "it"
+        ],
+        [
+          "C",
+          "them"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：him指男生，不能承接two arrows；B：two arrows为复数，不用it；C：them承接两支箭头"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "looks"
+        ],
+        [
+          "B",
+          "look"
+        ],
+        [
+          "C",
+          "looking"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：Ben为单数主语，一般现在时用looks；B：Ben作主语不用原形look；C：无be，looking不能独立作谓语"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "before"
+        ],
+        [
+          "B",
+          "because"
+        ],
+        [
+          "C",
+          "or"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：before引入时间先后，不能解释指令易懂的原因；B：明确的文字箭头是容易跟随的原因，用because；C：or不能在此引出完整解释原因的从句"
+    }
+  ]
+}

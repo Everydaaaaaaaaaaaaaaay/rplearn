@@ -1,0 +1,388 @@
+{
+  "version": "0.1",
+  "id": "primary5-cloze8-school-directions",
+  "grade": "primary5",
+  "questions": 8,
+  "candidate_sha256": "639d61242594bf5f0a819548b5204de2b1c6684e7a85b11988060c541ba3b0b5",
+  "source_binding": "inherited-cloze-8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.1.json",
+    "sha256": "f7981f89963e36cc641ca7288cc04bb37d9fd69de43efc1724f055ff1af944ff"
+  },
+  "source_group_id": "p5.gcyls2024.attributed.yangzhou2022.monkey8",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-cloze8-school-directions-manuscript-v0.1.json",
+    "sha256": "0719a7db5200c6eab0b23bdf3c8c786b75b9c0c2d350c41dc33cb54dd7e3ffd4"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "into"
+        ],
+        [
+          "B",
+          "under"
+        ],
+        [
+          "C",
+          "about"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：comes into表示进入教室；B：comes under our classroom表示到教室下方，不合新生入班情节；C：comes about不能带our classroom作此处目的地"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "kitchen"
+        ],
+        [
+          "B",
+          "library"
+        ],
+        [
+          "C",
+          "toilet"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：kitchen供做饭，不能由借书目的支持；B：借书目的指向library，后文book room再次限定；C：toilet不提供借书功能"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "on"
+        ],
+        [
+          "B",
+          "through"
+        ],
+        [
+          "C",
+          "between"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：on不能和the music room and the art room构成两室之间的位置；B：through表示穿过，不能在is后表达两室之间；C：between A and B明确表示在两个房间之间"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "back"
+        ],
+        [
+          "B",
+          "left"
+        ],
+        [
+          "C",
+          "right"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：back为折返，与限定的左右二选指令不一致；B：not right且指令明确左转，left符合；C：not right直接排除right"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "short"
+        ],
+        [
+          "B",
+          "old"
+        ],
+        [
+          "C",
+          "hungry"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：only one minute说明距离短；B：old描述年代，不由一分钟支持；C：hungry不描述路线步行长度"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "him"
+        ],
+        [
+          "B",
+          "it"
+        ],
+        [
+          "C",
+          "them"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：him指男生，不能承接two arrows；B：two arrows为复数，不用it；C：them承接两支箭头"
+    },
+    {
+      "number": 7,
+      "stem": "第7空",
+      "options": [
+        [
+          "A",
+          "looks"
+        ],
+        [
+          "B",
+          "look"
+        ],
+        [
+          "C",
+          "looking"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：Ben为单数主语，一般现在时用looks；B：Ben作主语不用原形look；C：无be，looking不能独立作谓语"
+    },
+    {
+      "number": 8,
+      "stem": "第8空",
+      "options": [
+        [
+          "A",
+          "before"
+        ],
+        [
+          "B",
+          "because"
+        ],
+        [
+          "C",
+          "or"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：before引入时间先后，不能解释指令易懂的原因；B：明确的文字箭头是容易跟随的原因，用because；C：or不能在此引出完整解释原因的从句"
+    }
+  ],
+  "canonical_response_block_sha256": "73fb5690ff72836e58a6a80a4620babb051e19d2acc8af40474fdc9a179b590e",
+  "student_passage": "A new pupil comes (1) ____ our classroom on Monday. His name is Ben. At lunch time, he asks where the (2) ____ is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is (3) ____ the music room and the art room. Both rooms are on the ground floor. The card says, “Turn (4) ____ at the stairs, not right or back.” The walk is (5) ____: it takes only one minute. I draw two arrows and colour (6) ____ green. Ben (7) ____ at the card carefully. He can follow it easily (8) ____ the words and arrows show every turn. At the door, he waves and thanks me.",
+  "filled_passage": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me.",
+  "inherited_complete_cloze": true,
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "text": "into",
+      "is_best": true,
+      "reason": "comes into表示进入教室",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "text": "under",
+      "is_best": false,
+      "reason": "comes under our classroom表示到教室下方，不合新生入班情节",
+      "full_group_substitution": "A new pupil comes under our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "text": "about",
+      "is_best": false,
+      "reason": "comes about不能带our classroom作此处目的地",
+      "full_group_substitution": "A new pupil comes about our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "text": "kitchen",
+      "is_best": false,
+      "reason": "kitchen供做饭，不能由借书目的支持",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the kitchen is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "text": "library",
+      "is_best": true,
+      "reason": "借书目的指向library，后文book room再次限定",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "text": "toilet",
+      "is_best": false,
+      "reason": "toilet不提供借书功能",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the toilet is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "text": "on",
+      "is_best": false,
+      "reason": "on不能和the music room and the art room构成两室之间的位置",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is on the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "text": "through",
+      "is_best": false,
+      "reason": "through表示穿过，不能在is后表达两室之间",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is through the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "text": "between",
+      "is_best": true,
+      "reason": "between A and B明确表示在两个房间之间",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "text": "back",
+      "is_best": false,
+      "reason": "back为折返，与限定的左右二选指令不一致",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn back at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "text": "left",
+      "is_best": true,
+      "reason": "not right且指令明确左转，left符合",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "text": "right",
+      "is_best": false,
+      "reason": "not right直接排除right",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn right at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "text": "short",
+      "is_best": true,
+      "reason": "only one minute说明距离短",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "text": "old",
+      "is_best": false,
+      "reason": "old描述年代，不由一分钟支持",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is old: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "text": "hungry",
+      "is_best": false,
+      "reason": "hungry不描述路线步行长度",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is hungry: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 6,
+      "candidate": "A",
+      "text": "him",
+      "is_best": false,
+      "reason": "him指男生，不能承接two arrows",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour him green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 6,
+      "candidate": "B",
+      "text": "it",
+      "is_best": false,
+      "reason": "two arrows为复数，不用it",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour it green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 6,
+      "candidate": "C",
+      "text": "them",
+      "is_best": true,
+      "reason": "them承接两支箭头",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 7,
+      "candidate": "A",
+      "text": "looks",
+      "is_best": true,
+      "reason": "Ben为单数主语，一般现在时用looks",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 7,
+      "candidate": "B",
+      "text": "look",
+      "is_best": false,
+      "reason": "Ben作主语不用原形look",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben look at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 7,
+      "candidate": "C",
+      "text": "looking",
+      "is_best": false,
+      "reason": "无be，looking不能独立作谓语",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looking at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 8,
+      "candidate": "A",
+      "text": "before",
+      "is_best": false,
+      "reason": "before引入时间先后，不能解释指令易懂的原因",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily before the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 8,
+      "candidate": "B",
+      "text": "because",
+      "is_best": true,
+      "reason": "明确的文字箭头是容易跟随的原因，用because",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily because the words and arrows show every turn. At the door, he waves and thanks me."
+    },
+    {
+      "number": 8,
+      "candidate": "C",
+      "text": "or",
+      "is_best": false,
+      "reason": "or不能在此引出完整解释原因的从句",
+      "full_group_substitution": "A new pupil comes into our classroom on Monday. His name is Ben. At lunch time, he asks where the library is. “I want to borrow a book,” he says. I write a route (路线) card for him. The book room is between the music room and the art room. Both rooms are on the ground floor. The card says, “Turn left at the stairs, not right or back.” The walk is short: it takes only one minute. I draw two arrows and colour them green. Ben looks at the card carefully. He can follow it easily or the words and arrows show every turn. At the door, he waves and thanks me."
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 104,
+    "body_Han_characters": 2,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 24,
+    "output_response_positions": 8
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_original_exam_whole_section_authenticated": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

@@ -1,0 +1,300 @@
+{
+  "version": "0.1",
+  "id": "primary5-cloze6-clock-shop",
+  "grade": "primary5",
+  "questions": 6,
+  "candidate_sha256": "408ea2668e346749794ef1d31232199d8030a40b52f3666df64a981095142d2f",
+  "source_binding": "inherited-cloze-6",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.1.json",
+    "sha256": "f7981f89963e36cc641ca7288cc04bb37d9fd69de43efc1724f055ff1af944ff"
+  },
+  "source_group_id": "p5.gcyls2024.attributed.suzhou2022.volunteers6",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-cloze6-clock-shop-manuscript-v0.1.json",
+    "sha256": "9269266aed6debb81fa1d409b93a3c3c1e427772dc17a301f763adfc82c06c14"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "have"
+        ],
+        [
+          "B",
+          "has"
+        ],
+        [
+          "C",
+          "having"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：单数aunt作主语，不用have；B：单数主语在一般现在时用has；C：无be支撑，having不作此句谓语"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "feet"
+        ],
+        [
+          "B",
+          "eyes"
+        ],
+        [
+          "C",
+          "hands"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：钟表长指针不叫feet；B：eyes不能表示钟表指针；C：hands是钟表指针，后接show the time限定词义"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "it"
+        ],
+        [
+          "B",
+          "they"
+        ],
+        [
+          "C",
+          "we"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：指前文单数clock，用it；B：clock为单数，不能用they；C：叙述故障钟，we改变主语为我们"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "listening to"
+        ],
+        [
+          "B",
+          "looking at"
+        ],
+        [
+          "C",
+          "talking to"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：tick-tock是声音，listening to符合听觉；B：looking at不能以声音tick-tock为视觉对象；C：talking to不能以tick-tock为对话对象"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "after"
+        ],
+        [
+          "B",
+          "before"
+        ],
+        [
+          "C",
+          "without"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：盖子打开才能安装内部电池，合盖后安装倒置动作顺序；B：先装电池再合后盖，before符合操作顺序；C：without后不能接you close the back这一完整从句"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "water"
+        ],
+        [
+          "B",
+          "paper"
+        ],
+        [
+          "C",
+          "money"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：water不能用于支付电池费用；B：普通paper不表示支付款，语境未给纸币，money最合适；C：to pay for the battery明确需要钱"
+    }
+  ],
+  "canonical_response_block_sha256": "a74172cf06a4a25795845fb295b40e6eac1a6c836d1fee5808879a680a31c1b2",
+  "student_passage": "My aunt (1) ____ a small clock shop. I visit her on Saturday mornings. A clock has two long (2) ____ to show the time. Today a boy brings in a clock, but (3) ____ does not work. My aunt opens the back. I like (4) ____ the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) (5) ____ you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some (6) ____ to pay for the battery. My aunt lets me keep the old one for our class display.",
+  "filled_passage": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display.",
+  "inherited_complete_cloze": true,
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "text": "have",
+      "is_best": false,
+      "reason": "单数aunt作主语，不用have",
+      "full_group_substitution": "My aunt have a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "text": "has",
+      "is_best": true,
+      "reason": "单数主语在一般现在时用has",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "text": "having",
+      "is_best": false,
+      "reason": "无be支撑，having不作此句谓语",
+      "full_group_substitution": "My aunt having a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "text": "feet",
+      "is_best": false,
+      "reason": "钟表长指针不叫feet",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long feet to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "text": "eyes",
+      "is_best": false,
+      "reason": "eyes不能表示钟表指针",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long eyes to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "text": "hands",
+      "is_best": true,
+      "reason": "hands是钟表指针，后接show the time限定词义",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "text": "it",
+      "is_best": true,
+      "reason": "指前文单数clock，用it",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "text": "they",
+      "is_best": false,
+      "reason": "clock为单数，不能用they",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but they does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "text": "we",
+      "is_best": false,
+      "reason": "叙述故障钟，we改变主语为我们",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but we does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "text": "listening to",
+      "is_best": true,
+      "reason": "tick-tock是声音，listening to符合听觉",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "text": "looking at",
+      "is_best": false,
+      "reason": "looking at不能以声音tick-tock为视觉对象",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like looking at the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "text": "talking to",
+      "is_best": false,
+      "reason": "talking to不能以tick-tock为对话对象",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like talking to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "text": "after",
+      "is_best": false,
+      "reason": "盖子打开才能安装内部电池，合盖后安装倒置动作顺序",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) after you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "text": "before",
+      "is_best": true,
+      "reason": "先装电池再合后盖，before符合操作顺序",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "text": "without",
+      "is_best": false,
+      "reason": "without后不能接you close the back这一完整从句",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) without you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 6,
+      "candidate": "A",
+      "text": "water",
+      "is_best": false,
+      "reason": "water不能用于支付电池费用",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some water to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 6,
+      "candidate": "B",
+      "text": "paper",
+      "is_best": false,
+      "reason": "普通paper不表示支付款，语境未给纸币，money最合适",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some paper to pay for the battery. My aunt lets me keep the old one for our class display."
+    },
+    {
+      "number": 6,
+      "candidate": "C",
+      "text": "money",
+      "is_best": true,
+      "reason": "to pay for the battery明确需要钱",
+      "full_group_substitution": "My aunt has a small clock shop. I visit her on Saturday mornings. A clock has two long hands to show the time. Today a boy brings in a clock, but it does not work. My aunt opens the back. I like listening to the quiet tick-tock when she finishes a job. This clock makes no sound yet. “Put in a new battery (电池) before you close the back,” she tells me. I do that, and it starts ticking. The boy smiles and gives her some money to pay for the battery. My aunt lets me keep the old one for our class display."
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 97,
+    "body_Han_characters": 2,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 21,
+    "output_response_positions": 6
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_original_exam_whole_section_authenticated": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
