@@ -1,0 +1,132 @@
+{
+  "version": "0.7",
+  "bindings": [
+    {
+      "id": "g7publisherTF4",
+      "level": 7,
+      "family": "listening_true_false",
+      "task_mode": "publisher_conversation_tf4",
+      "responses": 4,
+      "options_each": 2,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.1.json",
+        "sha256": "7a9b7f34d4d17e02de0253f6ab529fee2298ed85722a66aa0e1b70e17f4a464e"
+      },
+      "collection": "groups",
+      "source_group_id": "pep.g7lower.u1.sectionA.1c",
+      "source_record_sha256": "ef6b4c2c79a44e39c12c8831d433ad2c276911f4ccc0cb631b5c8a071944ee64",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g10short5once",
+      "level": 10,
+      "family": "listening_short_conversation_choice",
+      "task_mode": "ordinary_short_dialogues5once",
+      "responses": 5,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.2.json",
+        "sha256": "16e98057bef9a6967055ef59b3270715d2489019f5017f9538dc5349a55163f3"
+      },
+      "collection": "groups",
+      "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionA",
+      "source_record_sha256": "624b2db0a16b80c582c6887710061c2c6d4774092abfa0f1299cbae69e36e885",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true,
+      "source_script_still_pending": true
+    },
+    {
+      "id": "g11multi334",
+      "level": 11,
+      "family": "listening_multi_question_choice",
+      "task_mode": "source_bound_multi_question_listening",
+      "responses": 10,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.3.json",
+        "sha256": "db475b03486ea3bd054620842c9ea7feb84492be57402d2182cc1a81e87c4419"
+      },
+      "collection": "groups",
+      "source_group_id": "grade11-tianjin2026-21cnjy26082071.listening.sectionB",
+      "source_record_sha256": "696532d0ce2c38e766068388929baab7dbeac903b94b08eb77ce3a5e6c7abf79",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true,
+      "source_script_and_audio_still_pending": true
+    },
+    {
+      "id": "g12multi23343",
+      "level": 12,
+      "family": "listening_multi_question_choice",
+      "task_mode": "source_bound_multi_question_listening",
+      "responses": 15,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.4.json",
+        "sha256": "357ddff0b675647f1e09fa0041b2175266d529905be2b63cc1d2622e6d5376ba"
+      },
+      "collection": "groups",
+      "source_group_id": "grade12-yali2026-21cnjy25133058.listening.sectionB",
+      "source_record_sha256": "1f415068c5c2f7a8af099ca5a4bd99cb81a11ee6cde244b6e853fb4ec3a02876",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true,
+      "source_original_audio_still_pending": true,
+      "source_script_is_annotated_OCR": true
+    },
+    {
+      "id": "p6dialogue122",
+      "level": "primary6",
+      "family": "listening_dialogue_choice",
+      "task_mode": "primary_dialogue122",
+      "responses": 5,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.5.json",
+        "sha256": "db60706a7893825cc4ae9cf760016b6637a15b467c99d686240aa4b468f4331f"
+      },
+      "collection": "groups",
+      "source_group_id": "primary6.dongcheng2024-25upper.listening.part3",
+      "source_record_sha256": "6f0b55e4c08595ccbd39547dcb86f07ef6da2b23fae789bc40fb040d7f421d1a",
+      "new_source_count": 0,
+      "source_script_audio_and_key_missing": true
+    },
+    {
+      "id": "p3pictureTF10",
+      "level": "primary3",
+      "family": "listening_picture_true_false",
+      "task_mode": "primary_pictureTF10",
+      "responses": 10,
+      "options_each": 2,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.6.json",
+        "sha256": "514f8f02561920d84775e49b548f6c57f3be5469ae66b6da711d87d66d7b88e1"
+      },
+      "collection": "groups",
+      "source_group_id": "primary3.dongcheng2025-26upper.listening.part1",
+      "source_record_sha256": "73c646931fa90587950a0537f6d5ccd68e78d8c4702eb9f4a908705fe45e2512",
+      "new_source_count": 0,
+      "source_script_audio_and_key_missing": true
+    },
+    {
+      "id": "p5wordphrase10twice",
+      "level": "primary5",
+      "family": "listening_word_phrase_choice",
+      "task_mode": "primary_wordphrase10twice",
+      "responses": 10,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.7.json",
+        "sha256": "c80bb5c2bad7d88ee32c441874e1626be8da6547c083e5556b9ba873a31870c0"
+      },
+      "collection": "groups",
+      "source_group_id": "primary5.guilin2024-25lower.listening.part1",
+      "source_record_sha256": "ed5e588dfb54b6c952b7093b797f0ee1c7f2ef1bcc225061cc6f5e9f37ff516f",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    }
+  ],
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.6.json",
+    "sha256": "2a8d22dfc6781d82ea1bfe358df6adcb54fc00c973788084dc41eff7cb73f7b8"
+  }
+}

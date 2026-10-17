@@ -107,10 +107,10 @@ function render(){
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
  // Each short conversation has one printed question. Keep its player beside
  // that question without changing the frozen five-part material or its order.
- if(g.kind==='listening_short_conversation_choice'){
+ if(['listening_short_conversation_choice','listening_word_phrase_choice'].includes(g.kind)){
   const tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')];
   if(tracks.length===g.questions.length&&fields.length===tracks.length&&g.requiredAudioAssets?.every((a,i)=>a.response_numbers.length===1&&a.response_numbers[0]===g.questions[i].number)){
-   tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='对话'+(i+1))heading.remove();fields[i].querySelector('legend').after(track);});
+   tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&['对话'+(i+1),'句子'+(i+1)].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(track);});
   }
  }
  // A long section keeps each player next to the first of its printed questions.
