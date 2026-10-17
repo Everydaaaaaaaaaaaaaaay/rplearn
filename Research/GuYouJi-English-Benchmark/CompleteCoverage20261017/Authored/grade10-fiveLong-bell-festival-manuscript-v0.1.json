@@ -1,0 +1,462 @@
+{
+  "version": "0.1",
+  "id": "grade10-fiveLong-bell-festival",
+  "title": "高一十五题：钟声与海报节",
+  "grade": 10,
+  "family": "listening_multi_question_choice",
+  "family_label": "长对话/独白多题单选",
+  "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionB",
+  "source_binding": "g10fiveLong",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.13.json",
+    "sha256": "9546aa80208c22ea0aedca85a4fc2d7e34bc9ac3d5a556a317f2988b22318aed"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.13.json",
+  "source_questions_per_clip": [
+    2,
+    3,
+    3,
+    3,
+    4
+  ],
+  "source_hear_each_piece_twice": true,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 155
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 155
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 155
+    }
+  },
+  "source_form_notice": "高一公开普通期末五材料2/3/3/3/4已核，文字预览止于12题，后续题以已有原页图绑定；原音轨/官方键在库但源脚本未全核，原校认证未建立。源逐段声音角色未独立听核，本稿4对话1独白为允许的本机实现，不冒称源原录音角色全已核。本稿完整原创配套非gold或独立难度验证。",
+  "teacher_source_notice": "高一公开普通期末五材料2/3/3/3/4已核，文字预览止于12题，后续题以已有原页图绑定；原音轨/官方键在库但源脚本未全核，原校认证未建立。源逐段声音角色未独立听核，本稿4对话1独白为允许的本机实现，不冒称源原录音角色全已核。本稿完整原创配套非gold或独立难度验证。",
+  "source_scoring_notice": "该源节15题、每题1.5分，共22.5分。每段两遍，听前听后每题5秒；间隔一秒与重播提示属本机编排。",
+  "format_summary": "5材料 / 2+3+3+3+4共15回应 / 三选 / 每段2遍 / 本稿4对话1独白（源逐段角色未独立核证）",
+  "instruction": "听全部五段材料，按2题、3题、3题、3题、4题的顺序完成全部15题，从A、B、C中选最佳答案。每段两遍，听前、听后各按每题5秒留时。审阅可重播，非正式次数控制。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I cannot hear the doorbell from the back room. Should we buy a louder one?"
+        },
+        {
+          "speaker": "W",
+          "text": "Before spending any money, let us move the receiver to the hallway. The cupboard may be blocking the sound."
+        },
+        {
+          "speaker": "M",
+          "text": "Good idea. I will try that this evening."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What problem does the man have?",
+          "options": [
+            [
+              "A",
+              "The bell is hard to hear."
+            ],
+            [
+              "B",
+              "The door will not lock."
+            ],
+            [
+              "C",
+              "The light is broken."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：后屋听不到铃；B：没说锁坏；C：没说灯坏"
+        },
+        {
+          "stem": "What does the woman suggest first?",
+          "options": [
+            [
+              "A",
+              "Buying a new bell."
+            ],
+            [
+              "B",
+              "Moving the receiver."
+            ],
+            [
+              "C",
+              "Replacing the door."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：建议先不花钱；B：明确移至走廊；C：未换门"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I am making posters for the film club, but the room number has changed again."
+        },
+        {
+          "speaker": "M",
+          "text": "It is Room Fourteen now. The big screen in Room Nine is being repaired."
+        },
+        {
+          "speaker": "W",
+          "text": "I will correct that. Do we still start at half past four?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes. The film lasts an hour, and we will discuss it for twenty minutes afterwards."
+        },
+        {
+          "speaker": "W",
+          "text": "Then I will put five fifty as the finishing time. Can you check the poster before I print it?"
+        },
+        {
+          "speaker": "M",
+          "text": "Certainly. Send me a copy tonight."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why was the room changed?",
+          "options": [
+            [
+              "A",
+              "A class needed the old room."
+            ],
+            [
+              "B",
+              "The screen needed repair."
+            ],
+            [
+              "C",
+              "The club had too many members."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未被课程占用；B：明确旧屏维修；C：未说人数多"
+        },
+        {
+          "stem": "When will the event finish?",
+          "options": [
+            [
+              "A",
+              "At 5:30."
+            ],
+            [
+              "B",
+              "At 5:40."
+            ],
+            [
+              "C",
+              "At 5:50."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：只计电影一小时；B：讨论二十不是十分钟；C：4:30加80分"
+        },
+        {
+          "stem": "What will the man do tonight?",
+          "options": [
+            [
+              "A",
+              "Check the poster."
+            ],
+            [
+              "B",
+              "Repair the screen."
+            ],
+            [
+              "C",
+              "Print all the tickets."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确看电子样稿；B：未修屏；C：没印票安排"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I saw you leaving the market with an empty basket. Were the vegetables sold out?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. I had left my wallet at home. I did not realise until I tried to pay."
+        },
+        {
+          "speaker": "M",
+          "text": "Couldn't you use your phone?"
+        },
+        {
+          "speaker": "W",
+          "text": "The battery was flat. The stallholder offered to keep my vegetables until noon, which was kind."
+        },
+        {
+          "speaker": "M",
+          "text": "I am driving past your house. I can take you there and back."
+        },
+        {
+          "speaker": "W",
+          "text": "Thank you. I have plenty of time; it is only ten thirty now."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why did the woman leave without vegetables?",
+          "options": [
+            [
+              "A",
+              "She disliked the prices."
+            ],
+            [
+              "B",
+              "The market was closed."
+            ],
+            [
+              "C",
+              "She had no way to pay."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：没有价格异议；B：摊主留菜说明营业；C：忘钱包且手机没电"
+        },
+        {
+          "stem": "What did the stallholder offer?",
+          "options": [
+            [
+              "A",
+              "To keep the vegetables."
+            ],
+            [
+              "B",
+              "To lend a phone."
+            ],
+            [
+              "C",
+              "To deliver the vegetables free."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：保留到中午；B：没借电话；C：没有送货承诺"
+        },
+        {
+          "stem": "How will the man help?",
+          "options": [
+            [
+              "A",
+              "By lending his wallet."
+            ],
+            [
+              "B",
+              "By giving her a lift."
+            ],
+            [
+              "C",
+              "By buying a new battery."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未借钱包；B：明确开车送回取再返；C：不买电池"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "You have three photographs of the old bridge. Which will you put in the display?"
+        },
+        {
+          "speaker": "M",
+          "text": "I like the one at sunset, but it hides the repair work. The photograph from the riverbank shows the new stone clearly."
+        },
+        {
+          "speaker": "W",
+          "text": "Then use that one. Visitors need to understand what changed."
+        },
+        {
+          "speaker": "M",
+          "text": "I agree. I will keep the sunset picture for the cover of our club magazine."
+        },
+        {
+          "speaker": "W",
+          "text": "Remember to ask the photographer before printing either picture."
+        },
+        {
+          "speaker": "M",
+          "text": "She has already agreed, as long as we include her name."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why is the sunset photo unsuitable for the display?",
+          "options": [
+            [
+              "A",
+              "It is out of focus."
+            ],
+            [
+              "B",
+              "It hides the repair work."
+            ],
+            [
+              "C",
+              "It belongs to another club."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未说模糊；B：明确看不清修缮；C：没有另一社团所有权"
+        },
+        {
+          "stem": "Which photo will go in the display?",
+          "options": [
+            [
+              "A",
+              "The sunset photo."
+            ],
+            [
+              "B",
+              "The aerial photo."
+            ],
+            [
+              "C",
+              "The riverbank photo."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：留作杂志封面；B：未提航拍；C：能展示新石料"
+        },
+        {
+          "stem": "What condition did the photographer set?",
+          "options": [
+            [
+              "A",
+              "Her name must be included."
+            ],
+            [
+              "B",
+              "All copies must be sold."
+            ],
+            [
+              "C",
+              "The photos must remain unedited."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确署名；B：无销售要求；C：无不准编辑条件"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 20,
+      "answer_seconds": 20,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Welcome to the school poster festival. You will find the posters in the covered playground, rather than the hall. The hall is being used for a music rehearsal. There are twenty-four entries this year, but only twelve display boards. Two posters therefore share each board. The small number in the corner belongs to the poster, not to the board, so check it carefully when voting. Every visitor may vote for one poster. Please write its number on the paper slip and put the slip in the red box by the entrance. Voting closes at a quarter past three. Our art teacher will announce the winner at half past three. After that, please leave all the posters in place until four, so the school photographer can take a picture of the complete display. You may collect your own work from four to four thirty."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where is the festival?",
+          "options": [
+            [
+              "A",
+              "In the hall."
+            ],
+            [
+              "B",
+              "In the library."
+            ],
+            [
+              "C",
+              "In the covered playground."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：大厅排练音乐；B：未用图书馆；C：明确有顶操场"
+        },
+        {
+          "stem": "Why do two posters share each board?",
+          "options": [
+            [
+              "A",
+              "Some posters have no numbers."
+            ],
+            [
+              "B",
+              "There are fewer boards than posters."
+            ],
+            [
+              "C",
+              "The posters must be compared in pairs."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：作品都有编号；B：24作品12展板；C：未规定成对比较"
+        },
+        {
+          "stem": "When does voting close?",
+          "options": [
+            [
+              "A",
+              "At 3:15."
+            ],
+            [
+              "B",
+              "At 3:30."
+            ],
+            [
+              "C",
+              "At 4:00."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确quarter past three；B：宣布优胜时间；C：作品可取起始时间"
+        },
+        {
+          "stem": "Why must posters remain until four?",
+          "options": [
+            [
+              "A",
+              "The judges arrive late."
+            ],
+            [
+              "B",
+              "The boards need painting."
+            ],
+            [
+              "C",
+              "The photographer needs the complete display."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：没有评委迟到；B：没有油漆任务；C：明确先拍全展照片"
+        }
+      ]
+    }
+  ]
+}

@@ -12,6 +12,8 @@ from compile_short_dialogue_listening import ref
 
 
 def check(group, audit, binding, source):
+    if source.get('five_material_extension'):
+        return check_five_material_extension(group,audit,binding,source)
     selected = json.loads(load_ref(source['selected_native']).read_text())
     raw = load_ref(selected['source']).read_text()
     for name in ['student_span', 'key_span']:
@@ -73,6 +75,48 @@ def check(group, audit, binding, source):
     return True
 
 
+def check_five_material_extension(group,audit,binding,source):
+    configs={'zhengzhou.g10.2024-25upper.listening.sectionB':(10,[2,3,3,3,4]),'grade11-yinchuan2026-21cnjy25860535.listening.sectionB':(11,[2,3,3,4,3])}
+    grade,counts=configs[source['id']]
+    selected=json.loads(load_ref(source['selected_native']).read_text());raw=load_ref(selected['source']).read_text()
+    for span in selected['spans']:
+        assert hashlib.sha256(raw[span['start']:span['end']].encode()).hexdigest()==span['sha256']
+    for image in selected.get('source_images',[]):load_ref(image)
+    assert selected['source']==source['source'] and selected['features']==source['features']
+    assert selected['source_audio_acquired']==source['source_original_audio_acquired']
+    for asset in source.get('original_audio_assets',[]):load_ref(asset)
+    if source.get('key_reference'):load_ref(source['key_reference'])
+    assert source['features']['subgroup_responses']==counts and source['features']['repeat_count']==2
+    assert source['source_structure_verified'] and not source['source_full_input_verified'] and not source['source_original_key_is_gold']
+    assert not source['source_per_clip_voice_roles_verified'] and source['author_voice_roles_are_local_realization']
+    d=json.loads(load_ref(audit['manuscript']).read_text());gen=json.loads(load_ref(audit['audio_generation']).read_text())
+    assert d['grade']==group['grade']==binding['level']==grade and d['source_group_id']==source['id']
+    assert d['source_questions_per_clip']==counts and [len(c['questions'])for c in d['clips']]==counts
+    assert gen['manuscript']==audit['manuscript'] and gen['whole_final_audio_decode_passed'] and gen['no_source_recording_reused']
+    assert len(d['clips'])==len(gen['tracks'])==len(audit['audio_assets'])==len(group['requiredAudioAssets'])==5
+    assert len(group['questions'])==binding['responses']==source['responses']==15
+    cursor=1
+    for i,(clip,track,asset,shown)in enumerate(zip(d['clips'],gen['tracks'],audit['audio_assets'],group['requiredAudioAssets'])):
+        assert set(t['speaker']for t in clip['turns'])==({'N'}if i==4 else {'M','W'})
+        numbers=list(range(cursor,cursor+len(clip['questions'])))
+        assert clip['preview_seconds']==clip['answer_seconds']==5*len(numbers)
+        assert track['response_numbers']==asset['response_numbers']==shown['response_numbers']==numbers
+        assert track['repeat_count']==asset['repeat_count']==shown['repeat_count']==2
+        assert track['sha256']==asset['sha256']==shown['asset']['sha256'];load_ref(asset)
+        heard=[s for s in track['segments']if s['role']=='dialogue'];assert [(s['speaker'],s['text'],s['repeat'])for s in heard]==[(t['speaker'],t['text'],r)for r in[1,2]for t in clip['turns']]
+        assert len([s for s in track['segments']if s['role']=='repeat_instruction'])==1
+        preview,last=track['segments'][1],track['segments'][-1]
+        assert preview['role']==last['role']=='silence'
+        assert preview['end_frame']-preview['start_frame']==last['end_frame']-last['start_frame']==clip['preview_seconds']*track['sample_rate']
+        assert track['peak_abs_sample']>0 and track['dialogue_words_once']==sum(words(t['text'])for t in clip['turns'])
+        for n,q in zip(numbers,clip['questions']):
+            assert group['questions'][n-1]==dict(number=n,**q) and [k for k,_ in q['options']]==['A','B','C']
+            assert q['answer']in'ABC' and all(k+'：'in q['rationale']for k in'ABC')
+        for t in clip['turns']:assert t['text']in group['reviewText'] and t['text']not in group['passageHtml']
+        cursor+=len(numbers)
+    return True
+
+
 def compile_author(manuscript, version='0.1', audio_version='0.1'):
     manuscript = manuscript.resolve(); draft = json.loads(manuscript.read_text())
     manifest = REPO/'build/english-benchmark-authority-20261017/original-audio'/(draft['id']+'-audio-v'+audio_version+'.json')
@@ -95,7 +139,7 @@ def compile_author(manuscript, version='0.1', audio_version='0.1'):
     p.write_text('# '+draft['title']+'\n\n## 学生题面\n\n'+draft['instruction']+'\n\n'+body+'\n\n<!-- responses:start -->\n\n'+block+'\n\n<!-- responses:end -->\n\n## 作者核对\n\n'+'\n\n'.join(teacher)+'\n')
     audit = dict(version=version, id=draft['id'], grade=draft['grade'], questions=len(tasks), candidate_sha256=ref(p)['sha256'], source_binding=binding['id'], source_bindings=ref(bp), source_group_id=draft['source_group_id'], review_response_tasks=tasks, canonical_response_block_sha256=hashlib.sha256(block.encode()).hexdigest(), student_passage=body, body_load_text='', manuscript=ref(manuscript), audio_generation=ref(manifest), audio_assets=assets, audio_transcript_in_teacher_only=True, multi_question_listening=True, source_companion_gap_visible=True, load_measure=dict(body_English_words=0, stem_English_words=sum(words(q['stem']) for q in tasks), options_English_words_with_repeated_bank=sum(words(v) for q in tasks for _, v in q['options']), output_response_positions=len(tasks), audio_dialogue_English_words_once=sum(t['dialogue_words_once'] for t in generation['tracks']), audio_spoken_words_with_instructions=sum(t['spoken_words_with_instructions'] for t in generation['tracks']), audio_seconds_with_pauses=sum(t['seconds'] for t in generation['tracks']), artifact_URLs_excluded_from_reading_load=True), source_count_increment=0, authored_student_inputs_complete=True, source_level_equivalence_established=False, independent_teacher_student_commercial_production_validated=False)
     ap.write_text(json.dumps(audit, ensure_ascii=False, indent=2)+'\n')
-    return dict(id=draft['id'], grade=draft['grade'], family=draft['family'], family_label=draft['family_label'], title=draft['title'], questions=len(tasks), candidate=ref(p), author_check=ref(ap), source_group_ids=[draft['source_group_id']], instruction=draft['instruction'], source_form_notice=draft.get('source_form_notice', '高二公开阶段卷三材料3/3/4、三选、两遍结构已核；源音频/脚本缺，学校/地域学期仍未核证，不当gold。本稿提供完整原创配套；非独立难度或施测验证。'), format_summary=str(len(draft['clips'])-1)+'长对话+1独白 / '+'+'.join(map(str,draft['source_questions_per_clip']))+'共'+str(len(tasks))+'回应 / 每题三选 / 每段2遍 / 听前听后每题5秒')
+    return dict(id=draft['id'], grade=draft['grade'], family=draft['family'], family_label=draft['family_label'], title=draft['title'], questions=len(tasks), candidate=ref(p), author_check=ref(ap), source_group_ids=[draft['source_group_id']], instruction=draft['instruction'], source_form_notice=draft.get('source_form_notice', '高二公开阶段卷三材料3/3/4、三选、两遍结构已核；源音频/脚本缺，学校/地域学期仍未核证，不当gold。本稿提供完整原创配套；非独立难度或施测验证。'), format_summary=draft.get('format_summary',str(len(draft['clips'])-1)+'长对话+1独白 / '+'+'.join(map(str,draft['source_questions_per_clip']))+'共'+str(len(tasks))+'回应 / 每题三选 / 每段2遍 / 听前听后每题5秒'))
 
 
 if __name__ == '__main__':
