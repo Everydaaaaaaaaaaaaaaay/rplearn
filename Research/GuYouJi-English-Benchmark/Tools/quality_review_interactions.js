@@ -223,7 +223,7 @@ el('coverage').textContent=reviewData.current_scope_policy?'当前展示 '+revie
 if(reviewData.pending_specific_modes?.length&&el('pending-modes')){
  const pending=reviewData.pending_specific_modes.filter(m=>m.remainingWholeOriginals);
  el('pending-modes').hidden=!pending.length;
- el('pending-modes-body').innerHTML='<p>以下已观察到完整结构，原始配套状态逐项保留；待补稿数只计同一具体来源模式的完整原创，不用同题型另一配置抵数。</p><ul>'+pending.map(m=>'<li><strong>'+escapeText(labels[m.grade]+' · '+m.title)+'</strong>：已有'+m.currentGroupIds.length+' / 目标'+m.target_whole_originals+'完整组。'+escapeText(m.source_gap)+'</li>').join('')+'</ul>';
+ el('pending-modes-body').innerHTML='<p>以下已观察到题组结构或读者层骨架；完整题面、必要媒体及配套的缺口逐项列明。待补稿数只计同一具体来源模式的完整原创，不用同题型另一配置抵数。</p><ul>'+pending.map(m=>'<li><strong>'+escapeText(labels[m.grade]+' · '+m.title)+'</strong>：已有'+m.currentGroupIds.length+' / 目标'+m.target_whole_originals+'完整组。'+escapeText(m.source_gap)+'</li>').join('')+'</ul>';
 }
 const families=[...new Set(reviewData.cells.map(c=>c.family))];
 if(el('coverage-audit')){

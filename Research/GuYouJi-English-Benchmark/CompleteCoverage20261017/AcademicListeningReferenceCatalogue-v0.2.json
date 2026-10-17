@@ -1,0 +1,266 @@
+{
+  "version": "0.2",
+  "scope": "general_academic_listening_reference_not_advanced_product_or_exam_direction_equivalence",
+  "official_format_URL": "https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-listening",
+  "format_reader": {
+    "path": "build/english-benchmark-authority-20261017/academic-listening559-format-reader-v0.1.json",
+    "sha256": "159f7f406e7c103b7f63f1c4c81b6df0b45d18357c3edb537a5c86141758945d"
+  },
+  "packet_public_reader": {
+    "path": "build/english-benchmark-authority-20261017/academic-listening559-packet-tail-reader-v0.1.json",
+    "sha256": "f578ca68036828b1995ed7cfc3f87d91c3ad83d6b2cac49f5000ff2d676de14e"
+  },
+  "packet_original_binary_acquired": false,
+  "packet_direct_public_requests_all403": true,
+  "web_screenshot_responses_only_placeholders_not_images": true,
+  "ordinary_parent_increment": 0,
+  "individual_format_categories": [
+    "single_choice",
+    "multiple_choice_multiple_answers",
+    "matching",
+    "plan_map_diagram_labelling",
+    "form_completion",
+    "note_completion",
+    "table_completion",
+    "flow_chart_completion",
+    "summary_completion",
+    "sentence_completion",
+    "short_answers"
+  ],
+  "current_format_grouped_headings": 6,
+  "reference_packet_sample_forms": 8,
+  "sample_rows": [
+    {
+      "id": "form8",
+      "label": "表单八空与已解示例",
+      "packet_pdf_pages": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "responses": 8,
+      "configuration": {
+        "max_words": 3,
+        "number_allowed": true,
+        "example": 1,
+        "unordered_answer_pair": [
+          6,
+          7
+        ],
+        "units_and_fraction_variants": true
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": null,
+      "same_exposure_as_classroom_pdf": false,
+      "whole_original_target": 3,
+      "current_authors": 0,
+      "next_action": "confirm_complete_native_question_layout_media_script_key_before_same_mode_authoring",
+      "reader_not_original_pdf_bytes": true
+    },
+    {
+      "id": "choice2",
+      "label": "完整两题三选",
+      "packet_pdf_pages": [
+        8,
+        9,
+        10
+      ],
+      "responses": 2,
+      "configuration": {
+        "options_each": 3
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": null,
+      "same_exposure_as_classroom_pdf": false,
+      "whole_original_target": 3,
+      "current_authors": 0,
+      "next_action": "confirm_complete_native_question_layout_media_script_key_before_same_mode_authoring",
+      "reader_not_original_pdf_bytes": true
+    },
+    {
+      "id": "shortanswer6",
+      "label": "三提示各双回答",
+      "packet_pdf_pages": [
+        11,
+        12,
+        13
+      ],
+      "responses": 6,
+      "configuration": {
+        "max_words": 3,
+        "number_allowed": true,
+        "unordered_pairs": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        "printed_example_member": "theatre_not_response"
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": null,
+      "same_exposure_as_classroom_pdf": false,
+      "whole_original_target": 3,
+      "current_authors": 0,
+      "next_action": "confirm_complete_native_question_layout_media_script_key_before_same_mode_authoring",
+      "reader_not_original_pdf_bytes": true
+    },
+    {
+      "id": "sentence4",
+      "label": "整对话四句摘填",
+      "packet_pdf_pages": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "responses": 4,
+      "configuration": {
+        "max_words": 2,
+        "speakers": 2
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": null,
+      "same_exposure_as_classroom_pdf": false,
+      "whole_original_target": 3,
+      "current_authors": 0,
+      "next_action": "confirm_complete_native_question_layout_media_script_key_before_same_mode_authoring",
+      "reader_not_original_pdf_bytes": true
+    },
+    {
+      "id": "matching1",
+      "label": "五项目三意向归类",
+      "packet_pdf_pages": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "responses": 5,
+      "configuration": {
+        "shared_candidates": 3,
+        "reuse": "explicit"
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": {
+        "path": "CompleteCoverage20261017/AcademicListeningSourceModes-v0.1.json",
+        "sha256": "4f881b7e59fe3027ecd5b278d90fcfdee4fda368c50b7d4143831a406eff692e"
+      },
+      "same_exposure_as_classroom_pdf": true,
+      "whole_original_target": 3,
+      "current_authors": 3,
+      "next_action": "retain_source_noaudio_design_own_synthesis_independent_validation_boundaries",
+      "reader_not_original_pdf_bytes": true,
+      "current_author_ids": [
+        "advanced-audio-module-design",
+        "advanced-audio-module-language",
+        "advanced-audio-module-environment"
+      ],
+      "source_group_id": "cambridge2009.listening.matching1"
+    },
+    {
+      "id": "matching2",
+      "label": "四描述五候选匹配",
+      "packet_pdf_pages": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "responses": 4,
+      "configuration": {
+        "shared_candidates": 5,
+        "reuse": "not_printed"
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": {
+        "path": "CompleteCoverage20261017/AcademicListeningSourceModes-v0.1.json",
+        "sha256": "4f881b7e59fe3027ecd5b278d90fcfdee4fda368c50b7d4143831a406eff692e"
+      },
+      "same_exposure_as_classroom_pdf": true,
+      "whole_original_target": 3,
+      "current_authors": 3,
+      "next_action": "retain_source_noaudio_design_own_synthesis_independent_validation_boundaries",
+      "reader_not_original_pdf_bytes": true,
+      "current_author_ids": [
+        "advanced-audio-guesthouse-rehearsal",
+        "advanced-audio-hotel-rail-trip",
+        "advanced-audio-inn-coastal-study"
+      ],
+      "source_group_id": "cambridge2009.listening.matching2"
+    },
+    {
+      "id": "plan5",
+      "label": "完整平面图五处九选",
+      "packet_pdf_pages": [
+        26,
+        27,
+        28
+      ],
+      "responses": 5,
+      "configuration": {
+        "shared_candidates": 9,
+        "necessary_plan": true,
+        "plan_and_bank_not_yet_visually_available": true
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": null,
+      "same_exposure_as_classroom_pdf": false,
+      "whole_original_target": 3,
+      "current_authors": 0,
+      "next_action": "confirm_complete_native_question_layout_media_script_key_before_same_mode_authoring",
+      "reader_not_original_pdf_bytes": true
+    },
+    {
+      "id": "notes_table10",
+      "label": "六笔记四表格完整十空",
+      "packet_pdf_pages": [
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "responses": 10,
+      "configuration": {
+        "subgroups": [
+          6,
+          4
+        ],
+        "max_words": 3,
+        "number_allowed": true,
+        "one_whole_recording_not_two_independent_tasks": true
+      },
+      "reader_structure_observed": true,
+      "current_selected_raw_source": null,
+      "same_exposure_as_classroom_pdf": false,
+      "whole_original_target": 3,
+      "current_authors": 0,
+      "next_action": "confirm_complete_native_question_layout_media_script_key_before_same_mode_authoring",
+      "reader_not_original_pdf_bytes": true
+    }
+  ],
+  "format_only_without_complete_sample_in_packet": [
+    "multiple_choice_multiple_answers",
+    "table_completion_standalone",
+    "flow_chart_completion",
+    "summary_completion"
+  ],
+  "source_no_audio_by_design_not_equivalent_to_exam_recording_validation": true,
+  "all_advanced_types_complete": false,
+  "independent_teacher_student_commercial_production": false,
+  "previous_catalogue": {
+    "path": "CompleteCoverage20261017/AcademicListeningReferenceCatalogue-v0.1.json",
+    "sha256": "f5b853b360568cacb149f0475285b832ae3977620eb8e46098d44a497f6c0cf5"
+  }
+}

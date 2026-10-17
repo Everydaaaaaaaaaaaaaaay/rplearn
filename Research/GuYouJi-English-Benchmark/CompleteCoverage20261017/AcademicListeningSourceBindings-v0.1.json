@@ -1,0 +1,39 @@
+{
+  "version": "0.1",
+  "bindings": [
+    {
+      "id": "academic_audio_matching1",
+      "level": "advanced",
+      "family": "listening_intention_classification",
+      "task_mode": "academic_shared_audio_matching",
+      "responses": 5,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicListeningSourceModes-v0.1.json",
+        "sha256": "4f881b7e59fe3027ecd5b278d90fcfdee4fda368c50b7d4143831a406eff692e"
+      },
+      "collection": "groups",
+      "source_group_id": "cambridge2009.listening.matching1",
+      "source_record_sha256": "9915b56b2818a8f6ad5ed551e11f4ab5c665ad3b67d496fc688c47f2361242ce",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "academic_audio_matching2",
+      "level": "advanced",
+      "family": "listening_description_matching",
+      "task_mode": "academic_shared_audio_matching",
+      "responses": 4,
+      "options_each": 5,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicListeningSourceModes-v0.1.json",
+        "sha256": "4f881b7e59fe3027ecd5b278d90fcfdee4fda368c50b7d4143831a406eff692e"
+      },
+      "collection": "groups",
+      "source_group_id": "cambridge2009.listening.matching2",
+      "source_record_sha256": "820f96f0dedacf05c08248e860191fc98ac9bd59dcd7301095268cf58f308ef8",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    }
+  ]
+}
