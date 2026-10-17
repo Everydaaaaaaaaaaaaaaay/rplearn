@@ -1,0 +1,294 @@
+{
+  "version": "0.2",
+  "id": "grade10-grammar-bakery-watercolour-train",
+  "grade": 10,
+  "questions": 10,
+  "candidate_sha256": "21d0a2432ede6a06385caeaee143d2dcc9415a25672ba8b5f0ffc2746bdacacb",
+  "source_binding": "seniorgrammar10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.1.json",
+    "sha256": "2c14f01b24af4abfbf284c833df2d14dbf8d0cf2ceba5d73e83f5b98603194f3"
+  },
+  "source_group_id": "g10.2024.grammar",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "which",
+        "that"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "where"
+        ]
+      },
+      "rationale": "限定关系从句指bakery并缺主语，which/that可互换。",
+      "givenLemma": null
+    },
+    {
+      "number": 2,
+      "stem": "第2空（cake）",
+      "options": [],
+      "acceptedAnswers": [
+        "cakes"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "cake"
+        ]
+      },
+      "rationale": "three要求可数复数cakes。",
+      "givenLemma": "cake"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（cheap）",
+      "options": [],
+      "acceptedAnswers": [
+        "cheaper"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "cheap",
+          "cheapest"
+        ]
+      },
+      "rationale": "than明确要求比较级。",
+      "givenLemma": "cheap"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（clear）",
+      "options": [],
+      "acceptedAnswers": [
+        "clearly"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "clear",
+          "more clearly"
+        ]
+      },
+      "rationale": "wrote的方式副词且as...as正级结构。",
+      "givenLemma": "clear"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（bright）",
+      "options": [],
+      "acceptedAnswers": [
+        "brighter"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "bright",
+          "brightest"
+        ]
+      },
+      "rationale": "than引出形容词比较级。",
+      "givenLemma": "bright"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "to"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "for"
+        ]
+      },
+      "rationale": "told us to look。",
+      "givenLemma": null
+    },
+    {
+      "number": 7,
+      "stem": "第7空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "of"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "at"
+        ]
+      },
+      "rationale": "afraid of doing固定搭配。",
+      "givenLemma": null
+    },
+    {
+      "number": 8,
+      "stem": "第8空（push）",
+      "options": [],
+      "acceptedAnswers": [
+        "pushing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "pushed"
+        ]
+      },
+      "rationale": "本空接受所给词的现在分词pushing。新增关系代词的who was pushing / that was pushing虽能组成句子，但现有“所给词正确形式”证据不足以支持将整从句自动接收，改为待复核；不直接判错。给词可用必要助动词/不定式等多词形式，不等于任意增加从句成分。",
+      "givenLemma": "push"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "whose"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "who"
+        ]
+      },
+      "rationale": "whose ticket中whose作所属限定词，指man的票。",
+      "givenLemma": null
+    },
+    {
+      "number": 10,
+      "stem": "第10空（return）",
+      "options": [],
+      "acceptedAnswers": [
+        "returning",
+        "having returned"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "return",
+          "to return"
+        ]
+      },
+      "rationale": "for后动名词，两种体形式均与已归还动作相容。",
+      "givenLemma": "return"
+    }
+  ],
+  "canonical_response_block_sha256": "5d72b18ac55c2f6667c8f3e53b416795934735c377bf111736e911b92e2982e7",
+  "student_passage": "### A\n\nMy aunt runs a bakery (1) ____ opens at seven every morning. Yesterday she put three small (2) ____ (cake) in the window. They were (3) ____ (cheap) than the large cakes on the shelf. I wrote their prices as (4) ____ (clear) as I could. Before leaving, I checked that each price was beside the correct cake.\n\n### B\n\nOur art teacher brought an old painting to class. The colours were (5) ____ (bright) than I had expected. She told us (6) ____ look at the shadows before mixing our paints. I had always been afraid (7) ____ making mistakes, but she explained that we could let the paper dry and try again on another sheet.\n\n### C\n\nAt the station we saw a passenger (8) ____ (push) a red bicycle towards the lift. He was the man (9) ____ ticket my brother had found on a bench. We returned it to him before the train arrived. He thanked us for (10) ____ (return) it. We were glad that a small discovery had solved his problem.",
+  "author_answer_vector": [
+    [
+      "which",
+      "that"
+    ],
+    [
+      "cakes"
+    ],
+    [
+      "cheaper"
+    ],
+    [
+      "clearly"
+    ],
+    [
+      "brighter"
+    ],
+    [
+      "to"
+    ],
+    [
+      "of"
+    ],
+    [
+      "pushing"
+    ],
+    [
+      "whose"
+    ],
+    [
+      "returning",
+      "having returned"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "mixed_given_ungiven_grammar": true,
+  "subgroup_counts": [
+    4,
+    3,
+    3
+  ],
+  "given_positions": [
+    2,
+    3,
+    4,
+    5,
+    8,
+    10
+  ],
+  "filled_passage": "### A\n\nMy aunt runs a bakery (1) which opens at seven every morning. Yesterday she put three small (2) cakes (cake) in the window. They were (3) cheaper (cheap) than the large cakes on the shelf. I wrote their prices as (4) clearly (clear) as I could. Before leaving, I checked that each price was beside the correct cake.\n\n### B\n\nOur art teacher brought an old painting to class. The colours were (5) brighter (bright) than I had expected. She told us (6) to look at the shadows before mixing our paints. I had always been afraid (7) of making mistakes, but she explained that we could let the paper dry and try again on another sheet.\n\n### C\n\nAt the station we saw a passenger (8) pushing (push) a red bicycle towards the lift. He was the man (9) whose ticket my brother had found on a bench. We returned it to him before the train arrived. He thanked us for (10) returning (return) it. We were glad that a small discovery had solved his problem.",
+  "load_measure": {
+    "body_English_words": 156,
+    "stem_English_words": 6,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 4,
+  "source_level_equivalence_established": false,
+  "given_form_scope_pending_answers": {
+    "8": [
+      "who was pushing",
+      "that was pushing"
+    ]
+  },
+  "previous_author_check": {
+    "path": "CompleteCoverage20261017/Authored/grade10-grammar-bakery-watercolour-train-author-check-v0.1.json",
+    "sha256": "5b69fd3763a16a67ae380de07f6eb2dae8986c11c39be25a9e76a2799c075242"
+  },
+  "revision_reason": "Do not autoaccept newly introduced relative clauses merely because they contain a form of the given lemma;route six uncertain scope forms to review,notdifferent;genuine participles and supported multiverb forms remain accepted."
+}

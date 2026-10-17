@@ -44,6 +44,22 @@ const oneWord={number:1,options:[],acceptedAnswers:['who','that'],fillMarking:{.
 assert.equal(compare([oneWord],{'1.1':'who was'}).different,1);
 assert.equal(compare([{...phrase,fillMarking:{...phrase.fillMarking,maxWords:1}}]).available,false);
 assert.equal(compare([{...phrase,fillMarking:{...phrase.fillMarking,maxWords:undefined}}]).available,false);
+// A source's explicit two-word slot is different from an ordinary one-word
+// ungiven slot. Unlisted contractions/hyphenation cannot settle word counting.
+const exactTwo={number:1,options:[],acceptedAnswers:['rather than','instead of'],fillMarking:{version:1,review:'author_context_checked',normalization:'english_phrase_v1',minWords:2,maxWords:2,wordCountAmbiguity:'review',unlisted:'review',rejectedAnswers:['because of']}};
+assert.equal(compare([exactTwo],{'1.1':' INSTEAD   OF '}).matched,1);
+assert.equal(compare([exactTwo],{'1.1':'rather than'}).matched,1);
+assert.equal(compare([exactTwo],{'1.1':'instead'}).different,1);
+assert.equal(compare([exactTwo],{'1.1':'in place of'}).different,1);
+assert.equal(compare([exactTwo],{'1.1':'as against'}).review,1);
+assert.equal(compare([exactTwo],{'1.1':'rather-than'}).review,1);
+assert.equal(compare([exactTwo],{'1.1':"don't"}).review,1);
+assert.equal(compare([exactTwo],{'1.1':'because of'}).different,1);
+assert.equal(compare([exactTwo],{'1.1':' '}).unanswered,1);
+assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,minWords:3}}]).available,false);
+assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,minWords:0}}]).available,false);
+assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,wordCountAmbiguity:undefined}}]).available,false);
+assert.equal(compare([{...exactTwo,acceptedAnswers:['instead']}]).available,false);
 // Integrate with every actual new complete group; exercise all alternate forms.
 const page=fs.readFileSync(path.join(__dirname,'../../../build/english-benchmark-quality-review/index.html'),'utf8');
 const data=JSON.parse(page.match(/<script id="quality-data" type="application\/json">(.*?)<\/script>/s)[1]);
@@ -58,4 +74,17 @@ for(const g of Object.values(data.groups).filter(g=>g.questions.some(q=>q.accept
  groups++;responses+=g.questions.length;
 }
 assert(groups>=7);assert(responses>=48);
-console.log(JSON.stringify({passed:true,cases:31,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));
+let pendingClauses=0;
+let pendingPastForms=0;
+for(const [id,clauses]of [
+ ['grade10-grammar-library-cinema-neighbour',['who was carrying','that was carrying']],
+ ['grade10-grammar-bakery-watercolour-train',['who was pushing','that was pushing']],
+ ['grade10-grammar-hospital-birdwalk-bus',['who was standing','that was standing']]
+]){
+ const g=data.groups[id];assert(g);
+ const saved=Object.fromEntries(g.questions.map(q=>[q.number+'.1',q.acceptedAnswers[0]]));
+ for(const clause of clauses){const row=compare(g.questions,{...saved,'8.1':clause});assert.equal(row.matched,9);assert.equal(row.review,1);assert.equal(row.different,0);pendingClauses++;}
+ const pastForm={'grade10-grammar-library-cinema-neighbour':'carried','grade10-grammar-bakery-watercolour-train':'pushed','grade10-grammar-hospital-birdwalk-bus':'stood'}[id];
+ const pastResult=compare(g.questions,{...saved,'8.1':pastForm});assert.equal(pastResult.matched,9);assert.equal(pastResult.review,1);assert.equal(pastResult.different,0);pendingPastForms++;
+}
+console.log(JSON.stringify({passed:true,cases:44+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));

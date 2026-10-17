@@ -37,6 +37,27 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'single_passage_mixed_grammar_slot_exceptions':
+                selected=json.loads(load_ref(source['selected_native']).read_text())
+                raw=selected['student_grammar']
+                assert selected['original']==source['source_html']
+                assert source['complete_selected_group_reviewed'] and source['kind']==b['family']=='passage_form'
+                slots=re.findall(r'_{3,}(\d+)_{3,}\s*(?:\(([^)]+)\))?', raw)
+                assert [int(n)for n,_ in slots]==source['source_question_numbers']
+                assert [i for i,(_,hint)in enumerate(slots,1)if re.fullmatch('[A-Za-z]+',hint)]==b['given_positions']
+                assert b['slot_rules']==source['slot_rules']==a['slot_rules']
+                assert source['responses']==b['responses']==10 and source['materials']==1
+                assert 'use one word that best fits each blank' in ' '.join(raw.split())
+                for i,(_,hint)in enumerate(slots,1):
+                    exception=re.fullmatch(r'填(\d+)词',hint)
+                    rule=b['slot_rules'][i-1]
+                    if exception:
+                        assert rule['exact_words']==int(exception[1])==2 and rule['kind']=='word_count_exception'
+                        assert '(10) ____ (填2词)' in a['student_passage']
+                    elif hint:
+                        assert rule['kind']=='given_lemma' and rule['max_words'] is None
+                    else:
+                        assert rule['kind']=='ungiven_one_word' and rule['max_words']==1
             if b.get('task_mode') == 'four_of_six_sentence_insertion':
                 selected=json.loads(load_ref(source['selected_native']).read_text())
                 raw=selected['selected_student_insertion']
@@ -133,7 +154,14 @@ def check(data, plan):
                 if a.get('one_word_open_cloze'):
                     assert c['maxWords']==1 and all(len(v.split())==1 for v in q['acceptedAnswers'])
                 if a.get('mixed_given_ungiven_grammar'):
-                    assert c['maxWords']==(None if q['number'] in b['given_positions'] else 1)
+                    rule=b.get('slot_rules',[None]*b['responses'])[q['number']-1]
+                    assert c['maxWords']==(rule['max_words'] if rule else None if q['number'] in b['given_positions'] else 1)
+                    if rule and rule['kind']=='word_count_exception':
+                        assert c['minWords']==rule['exact_words']==c['maxWords']==2
+                        assert c['wordCountAmbiguity']=='review' and not q['givenLemma']
+                        assert all(len(value.split())==2 for value in q['acceptedAnswers'])
+                    else:
+                        assert 'minWords' not in c
                     assert bool(q['givenLemma'])==(q['number'] in b['given_positions'])
                     assert all(c['maxWords'] is None or len(value.split())<=c['maxWords'] for value in q['acceptedAnswers'])
         if a.get('mixed_given_ungiven_grammar'):

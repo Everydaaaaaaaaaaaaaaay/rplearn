@@ -55,13 +55,15 @@ function answerComparison(questions,saved={}){
   const contract=q.fillMarking,accepted=q.acceptedAnswers;
   if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','ascii_integer_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
   if(contract.normalization==='english_phrase_v1'&&!(contract.maxWords===null||Number.isInteger(contract.maxWords)&&contract.maxWords>0))return {available:false,reason:'单空限词规则未绑定。'};
+  if(contract.minWords!==undefined&&(contract.normalization!=='english_phrase_v1'||!Number.isInteger(contract.minWords)||contract.minWords<1||contract.maxWords!==null&&contract.minWords>contract.maxWords||contract.wordCountAmbiguity!=='review'))return {available:false,reason:'最少词数或未核计词形式的处理规则尚未绑定。'};
   const forms=accepted.map(a=>normalizeFill(a,contract.normalization)),rejected=contract.rejectedAnswers.map(a=>normalizeFill(a,contract.normalization));
-  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>a.split(' ').length>contract.maxWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
+  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>a.split(' ').length>contract.maxWords)||contract.minWords&&forms.some(a=>a.split(' ').length<contract.minWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
   const chosen=saved[String(q.number)+'.1']??'';
   if(typeof chosen!=='string')return {available:false,reason:'填写值格式无效。'};
   const normalized=normalizeFill(chosen,contract.normalization);
-  const overLimit=normalized!==null&&contract.maxWords&&normalized.split(' ').length>contract.maxWords;
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':overLimit||normalized===null||rejected.includes(normalized)||contract.unlisted==='different'?'different':'review'});
+  const outsideLimit=normalized!==null&&(contract.maxWords&&normalized.split(' ').length>contract.maxWords||contract.minWords&&normalized.split(' ').length<contract.minWords);
+  const uncertainWordCount=normalized!==null&&contract.wordCountAmbiguity==='review'&&/['-]/.test(normalized);
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null||rejected.includes(normalized)||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,rows};
 }

@@ -1,0 +1,299 @@
+{
+  "version": "0.3",
+  "id": "grade10-grammar-library-cinema-neighbour",
+  "grade": 10,
+  "questions": 10,
+  "candidate_sha256": "03c6310cf73d809f13d348ff6262676d1ee214c46de2988b0ed9342e96656277",
+  "source_binding": "seniorgrammar10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.1.json",
+    "sha256": "2c14f01b24af4abfbf284c833df2d14dbf8d0cf2ceba5d73e83f5b98603194f3"
+  },
+  "source_group_id": "g10.2024.grammar",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "who",
+        "that"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "whom",
+          "which"
+        ]
+      },
+      "rationale": "限定关系从句指volunteer并缺主语，who/that均可。",
+      "givenLemma": null
+    },
+    {
+      "number": 2,
+      "stem": "第2空（shelf）",
+      "options": [],
+      "acceptedAnswers": [
+        "shelves"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "shelf",
+          "shelfs"
+        ]
+      },
+      "rationale": "two明确要求复数，shelf变shelves。",
+      "givenLemma": "shelf"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（wide）",
+      "options": [],
+      "acceptedAnswers": [
+        "wider"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "wide",
+          "widest"
+        ]
+      },
+      "rationale": "than引出比较，wider为比较级。",
+      "givenLemma": "wide"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（careful）",
+      "options": [],
+      "acceptedAnswers": [
+        "carefully"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "careful",
+          "more carefully"
+        ]
+      },
+      "rationale": "as...as possible中修饰moved的正级方式副词；不能换比较级。",
+      "givenLemma": "careful"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（many）",
+      "options": [],
+      "acceptedAnswers": [
+        "more"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "many",
+          "most"
+        ]
+      },
+      "rationale": "than words要求many比较级more。",
+      "givenLemma": "many"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "to"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "for"
+        ]
+      },
+      "rationale": "asked us to listen，不定式补足语。",
+      "givenLemma": null
+    },
+    {
+      "number": 7,
+      "stem": "第7空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "in"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "at"
+        ]
+      },
+      "rationale": "interested in astronomy固定搭配。",
+      "givenLemma": null
+    },
+    {
+      "number": 8,
+      "stem": "第8空（carry）",
+      "options": [],
+      "acceptedAnswers": [
+        "carrying"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "本空接受所给词的现在分词carrying。新增关系代词的who was carrying / that was carrying虽能组成句子，但现有“所给词正确形式”证据不足以支持将整从句自动接收，改为待复核；不直接判错。给词可用必要助动词/不定式等多词形式，不等于任意增加从句成分。 原先排除的carried涉及过去式、状态分词或感知/认知动词补语范围的不同分析，当前未核到可排他的评分证据，也转为待复核；不据预期分词答案直接判错。",
+      "givenLemma": "carry"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "whose"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "who"
+        ]
+      },
+      "rationale": "whose daughter表达先行词woman与daughter的所属，whose作限定词。",
+      "givenLemma": null
+    },
+    {
+      "number": 10,
+      "stem": "第10空（help）",
+      "options": [],
+      "acceptedAnswers": [
+        "helping",
+        "having helped"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "help",
+          "to help"
+        ]
+      },
+      "rationale": "for后动名词；helping和强调已完成的having helped均合感谢此前帮助。",
+      "givenLemma": "help"
+    }
+  ],
+  "canonical_response_block_sha256": "62a10aa786b86e2dcfb76545dd99569b0b8702030e02acf825c24a4cfae4268d",
+  "student_passage": "### A\n\nLast Friday, I worked with a volunteer (1) ____ showed me around our school library. We carried two empty (2) ____ (shelf) into the reading room. One shelf was (3) ____ (wide) than the doorway, so we turned it sideways. We moved as (4) ____ (careful) as possible because the floor had just been cleaned. By lunchtime, there was space for the new books.\n\n### B\n\nOur class watched a short film about the night sky. It contained (5) ____ (many) pictures than words, but each picture was important. Before the film, our teacher asked us (6) ____ listen for the names of three planets. My friend became interested (7) ____ astronomy and borrowed a book afterwards. We plan to watch the next film together.\n\n### C\n\nOn Sunday I met a neighbour (8) ____ (carry) a heavy suitcase. She was the woman (9) ____ daughter had helped me find my lost cat. I offered to carry the case upstairs. She thanked me for (10) ____ (help) her. It only took a few minutes, but we both felt happier after our short conversation.",
+  "author_answer_vector": [
+    [
+      "who",
+      "that"
+    ],
+    [
+      "shelves"
+    ],
+    [
+      "wider"
+    ],
+    [
+      "carefully"
+    ],
+    [
+      "more"
+    ],
+    [
+      "to"
+    ],
+    [
+      "in"
+    ],
+    [
+      "carrying"
+    ],
+    [
+      "whose"
+    ],
+    [
+      "helping",
+      "having helped"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "mixed_given_ungiven_grammar": true,
+  "subgroup_counts": [
+    4,
+    3,
+    3
+  ],
+  "given_positions": [
+    2,
+    3,
+    4,
+    5,
+    8,
+    10
+  ],
+  "filled_passage": "### A\n\nLast Friday, I worked with a volunteer (1) who showed me around our school library. We carried two empty (2) shelves (shelf) into the reading room. One shelf was (3) wider (wide) than the doorway, so we turned it sideways. We moved as (4) carefully (careful) as possible because the floor had just been cleaned. By lunchtime, there was space for the new books.\n\n### B\n\nOur class watched a short film about the night sky. It contained (5) more (many) pictures than words, but each picture was important. Before the film, our teacher asked us (6) to listen for the names of three planets. My friend became interested (7) in astronomy and borrowed a book afterwards. We plan to watch the next film together.\n\n### C\n\nOn Sunday I met a neighbour (8) carrying (carry) a heavy suitcase. She was the woman (9) whose daughter had helped me find my lost cat. I offered to carry the case upstairs. She thanked me for (10) helping (help) her. It only took a few minutes, but we both felt happier after our short conversation.",
+  "load_measure": {
+    "body_English_words": 162,
+    "stem_English_words": 6,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 4,
+  "source_level_equivalence_established": false,
+  "given_form_scope_pending_answers": {
+    "8": [
+      "who was carrying",
+      "that was carrying"
+    ]
+  },
+  "previous_author_check": {
+    "path": "CompleteCoverage20261017/Authored/grade10-grammar-library-cinema-neighbour-author-check-v0.2.json",
+    "sha256": "c2e160853c0c0437e0fa5edc2dd4695ff1c48fc33fcbaf9c31e65c77a3f0bab4"
+  },
+  "revision_reason": "Move unproven pastform exclusions at slot8 to review;do not confuse expected participle with exhaustive legal syntax;keep newly added relative clauses unaccepted pending scope evidence.",
+  "given_form_past_form_pending_answers": {
+    "8": [
+      "carried"
+    ]
+  }
+}
