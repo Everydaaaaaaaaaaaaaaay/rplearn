@@ -16,6 +16,21 @@ function inputFor(g,q){
  const parts=q.parts||[{label:q.stem}];return parts.map((part,i)=>{const key=String(q.number)+'.'+(i+1);return (part.opening?'<p class="fixed" lang="en">'+escapeText(part.opening)+'</p>':'')+'<label class="written">'+escapeText(part.label)+'<textarea name="'+key+'" rows="'+(g.responseMode==='writing_review'?9:3)+'" lang="en">'+escapeText(saved[key]||'')+'</textarea></label>';}).join('');
 }
 function mediaReady(g){const images=[...el('student').querySelectorAll('img')],expected=[...(g.requiredPassageImages||[]),...g.questions.flatMap(q=>q.optionImages?Object.values(q.optionImages):[])],count=(g.requiredImageAssets?.length||0)+(g.requiredPassageImages?.length||0),audio=[...el('student').querySelectorAll('audio')],tracks=g.requiredAudioAssets||[];return expected.length===count&&images.length===count&&images.every((img,i)=>img.complete&&img.naturalWidth>0&&img.getAttribute('src')===expected[i].src&&img.getAttribute('alt')===expected[i].alt)&&audio.length===tracks.length&&audio.every((a,i)=>!a.error&&a.readyState>=1&&Number.isFinite(a.duration)&&a.duration>0&&a.getAttribute('src')===tracks[i].src);}
+function closedSelectionComparison(questions,saved={}){
+ if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};
+ const numbers=new Set();
+ for(const q of questions){
+  if(!Number.isInteger(q.number)||numbers.has(q.number)||!Array.isArray(q.options)||q.options.length<2)return {available:false,reason:'此组包含未封闭的填写答案，暂不自动核对。'};
+  numbers.add(q.number);
+  const letters=q.options.map(o=>Array.isArray(o)?o[0]:null);
+  if(letters.some(l=>typeof l!=='string'||!l)||new Set(letters).size!==letters.length||typeof q.answer!=='string'||!letters.includes(q.answer))return {available:false,reason:'参考与候选尚未完整绑定，暂不核对。'};
+  const chosen=saved[q.number]||'';
+  if(chosen&&!letters.includes(chosen))return {available:false,reason:'所选答案不在当前候选中，请重新填写。'};
+ }
+ const rows=questions.map(q=>{const chosen=saved[q.number]||'';return {number:q.number,chosen,reference:q.answer,state:!chosen?'unanswered':chosen===q.answer?'match':'different'};});
+ return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,rows};
+}
+function clearSelectionComparison(){el('selection-comparison').hidden=true;el('selection-comparison').textContent='';}
 function render(){
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=null;a.pause();});
  const cell=reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily),ids=groupIds(cell),variantKey=String(activeGrade)+':'+activeFamily;
@@ -24,13 +39,17 @@ function render(){
  el('families').innerHTML='';reviewData.cells.filter(c=>c.grade===activeGrade&&(c.observed||el('show-unknown').checked)).forEach(c=>el('families').append(makeButton(c.label+' · '+titleState(c),c.family===activeFamily,()=>select(activeGrade,c.family))));
  const earlyNotice=['primary1','primary2'].includes(activeGrade)?'现行要求小学一二年级不进行纸笔考试；这里保留的历史纸笔形式稿仅供形式审阅，非现行年级测评标准。非纸笔闭集活动仍在补完整样本。 ':'';
  const prototypeNotice=earlyNotice+(cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||''));
- el('task-title').textContent=labels[activeGrade]+' · '+cell.label;el('teacher').hidden=true;el('teacher-content').innerHTML='';el('notice').textContent='';
+ el('task-title').textContent=labels[activeGrade]+' · '+cell.label;el('teacher').hidden=true;el('teacher-content').innerHTML='';el('notice').textContent='';clearSelectionComparison();
  el('variant-picker').hidden=ids.length<2;
  el('variants').innerHTML=ids.map((id,i)=>'<option value="'+escapeText(id)+'" '+(id===selected?'selected':'')+'>'+escapeText('第'+(i+1)+'稿 · '+(reviewData.groups[id].title||id))+'</option>').join('');
  el('variants').onchange=e=>{selectedVariants[variantKey]=e.target.value;render();};
  const instruction=g?.instruction||(g&&['reading','cloze'].includes(g.kind)?'阅读短文，从'+(g.kind==='cloze'?'每空':'每题')+'所给的'+(g.questions[0].options.length===3?'三个':'四个')+'选项中选出最佳答案。':'');
  el('task-instruction').textContent=instruction;el('task-instruction').hidden=!instruction;
  el('answer-toggle').hidden=!g;el('reset').hidden=!g;el('answer-toggle').textContent='查看参考与解析';
+ el('compare-selections').hidden=!g;
+ const comparisonEligibility=closedSelectionComparison(g?.questions);
+ el('compare-selections').disabled=!comparisonEligibility.available;
+ el('compare-selections').title=comparisonEligibility.reason||'仅对照作者参考，不代表独立质量验收。';
  if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本完整题组已暂停：'+escapeText(cell.pauseReason)+' 不截去部分空格后冒充完整组；来源观察仍保留。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
  const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
@@ -38,10 +57,18 @@ function render(){
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});
- const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
+ const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;clearSelectionComparison();}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
  el('source-note').innerHTML='<p>完整作者稿：<a href="../../Research/GuYouJi-English-Benchmark/'+encodeURI(g.candidate.path)+'" target="_blank" rel="noopener">'+escapeText(g.id)+'</a></p><p>来源形式参照：'+escapeText((g.anchor_group_ids||[]).join(' / ')||'原卷未配对写作任务，详见作者稿')+'</p>';
  el('answer-toggle').onclick=()=>{if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后查看参考。';return;}el('notice').textContent=prototypeNotice;el('teacher').hidden=!el('teacher').hidden;el('answer-toggle').textContent=el('teacher').hidden?'查看参考与解析':'收起参考与解析';
   el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
+ el('compare-selections').onclick=()=>{
+  if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后核对。';return;}
+  const result=closedSelectionComparison(g.questions,drafts[g.id]);
+  if(!result.available){el('notice').textContent=result.reason;return;}
+  el('notice').textContent=prototypeNotice;
+  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答。</strong><p>这是本机字母对照，作者参考仍可能有误，不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'所选 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答'}[r.state])+'）</li>').join('')+'</ol>';
+  el('selection-comparison').hidden=false;
+ };
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
 el('coverage').textContent=reviewData.current_scope_policy?'当前范围展示 '+reviewData.preview_cells+' 道完整大题，覆盖 '+reviewData.source_form_representative_cells+' 个档位/题型格，其中 '+(reviewData.three_variant_cells||0)+' 格达到三稿。需AI判断的主观题已暂停，不计当前覆盖缺口。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 组填空因合法表达未封闭而暂停，具体原因见矩阵。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';

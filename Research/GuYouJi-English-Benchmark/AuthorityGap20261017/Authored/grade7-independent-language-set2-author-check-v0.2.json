@@ -1,0 +1,636 @@
+{
+  "version": "0.2",
+  "id": "grade7-independent-language-set2",
+  "grade": 7,
+  "questions": 10,
+  "candidate_sha256": "18ab7404aac157c847e19ffb440d994973b971b41d8a826cc02cc74571b59223",
+  "canonical_response_block_sha256": "1f648a19098259215ec9dd5f8a0460d0c83551bae9ae1b1f653c55e95a6d664f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "This is my uncle. ____ works in a bookshop.",
+      "options": [
+        [
+          "A",
+          "His"
+        ],
+        [
+          "B",
+          "He"
+        ],
+        [
+          "C",
+          "Him"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "He：主语位置用He；Him为宾格，His是物主形式，不能单独作此work的主语。"
+    },
+    {
+      "number": 2,
+      "stem": "We often skate ____ winter.",
+      "options": [
+        [
+          "A",
+          "on"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "in"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "in：季节winter前用in；on用于具体日，at用于时点，不构成本句季节搭配。"
+    },
+    {
+      "number": 3,
+      "stem": "The bag is not black ____ brown.",
+      "options": [
+        [
+          "A",
+          "because"
+        ],
+        [
+          "B",
+          "but"
+        ],
+        [
+          "C",
+          "so"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "but：not...but...并列black/brown，but表纠正；because/so不能连接这里两个并列颜色形容词。"
+    },
+    {
+      "number": 4,
+      "stem": "—How often do you water the plant? —____.",
+      "options": [
+        [
+          "A",
+          "My sister"
+        ],
+        [
+          "B",
+          "Every two days"
+        ],
+        [
+          "C",
+          "In the garden"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Every two days：Every two days答频率；In garden答地点，My sister答人物，不答how often。"
+    },
+    {
+      "number": 5,
+      "stem": "____ your parents work in this school?",
+      "options": [
+        [
+          "A",
+          "Do"
+        ],
+        [
+          "B",
+          "Does"
+        ],
+        [
+          "C",
+          "Is"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Do：parents复数且work实义动词，用Do；Does三单不符，Is不能接原形work作此一般问句。"
+    },
+    {
+      "number": 6,
+      "stem": "There ____ four chairs near the window.",
+      "options": [
+        [
+          "A",
+          "are"
+        ],
+        [
+          "B",
+          "has"
+        ],
+        [
+          "C",
+          "is"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "are：复数fourchairs存在句are；is数不合，has不能作此therebe结构。"
+    },
+    {
+      "number": 7,
+      "stem": "—____ is the music room? —Next to the library.",
+      "options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "Who"
+        ],
+        [
+          "C",
+          "Where"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Where：Nexttolibrary答位置，Where；When问时，Who问人。"
+    },
+    {
+      "number": 8,
+      "stem": "My brother ____ his bike to school every day.",
+      "options": [
+        [
+          "A",
+          "rides"
+        ],
+        [
+          "B",
+          "ride"
+        ],
+        [
+          "C",
+          "riding"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "rides：everyday习惯、brother单数，rides；ride数不合，riding缺限定助动词。"
+    },
+    {
+      "number": 9,
+      "stem": "Look! The children ____ a snowman now.",
+      "options": [
+        [
+          "A",
+          "are making"
+        ],
+        [
+          "B",
+          "made"
+        ],
+        [
+          "C",
+          "makes"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "are making：Look/now现场进行，children复数are making；makes三单数不合，made过去不合现场。"
+    },
+    {
+      "number": 10,
+      "stem": "Tomorrow we ____ visit our grandparents.",
+      "options": [
+        [
+          "A",
+          "is"
+        ],
+        [
+          "B",
+          "will"
+        ],
+        [
+          "C",
+          "are"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "will：will后接visit原形组成将来；are/is不能直接接visit构成此谓语，is还与we不合。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleSentenceBridge-v0.1.json",
+    "sha256": "9d9716e2fd734f22f7a2853e2df2923e225844a95718fe4e0bd96f2491c89de2"
+  },
+  "source_group_id": "g7.xicheng2025.language",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "independent_microcontexts": 10,
+      "multi_gap_single_response_items": []
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "各题语境独立。",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "B",
+    "B",
+    "A",
+    "A",
+    "C",
+    "A",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 64,
+    "options_English_words_with_repeated_bank": 36,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "microcontext_stems_not_counted_as_body": true,
+    "blank_slots": 10,
+    "output_letter_count": 10,
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 29,
+    "requirement_total_characters": 34
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "independent_microcontexts": 10,
+  "blank_count_per_response": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "source_bound_response_count_not_fixed6": true,
+  "multiple_blanks_one_response": false,
+  "contextual_lexical_items": [],
+  "all_options_counterchecked": true,
+  "previous_author_check": {
+    "path": "AuthorityGap20261017/Authored/grade7-independent-language-set2-author-check-v0.1.json",
+    "sha256": "49abbcf46dc57d3e55ba6ea8bcc033adb0384eb849fbb32ddc2a8ef96a6367fe"
+  },
+  "revision_reason": "remove_deterministic_cyclic_answer_positions_only;correcttexts/stems/rationales/sourceformunchanged",
+  "option_order_revision_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "Him"
+        ],
+        [
+          "B",
+          "His"
+        ],
+        [
+          "C",
+          "He"
+        ]
+      ],
+      "before_key": "C",
+      "correct_text": "He",
+      "after_options": [
+        [
+          "A",
+          "His"
+        ],
+        [
+          "B",
+          "He"
+        ],
+        [
+          "C",
+          "Him"
+        ]
+      ],
+      "after_key": "B"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "at"
+        ],
+        [
+          "B",
+          "in"
+        ],
+        [
+          "C",
+          "on"
+        ]
+      ],
+      "before_key": "B",
+      "correct_text": "in",
+      "after_options": [
+        [
+          "A",
+          "on"
+        ],
+        [
+          "B",
+          "at"
+        ],
+        [
+          "C",
+          "in"
+        ]
+      ],
+      "after_key": "C"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "but"
+        ],
+        [
+          "B",
+          "because"
+        ],
+        [
+          "C",
+          "so"
+        ]
+      ],
+      "before_key": "A",
+      "correct_text": "but",
+      "after_options": [
+        [
+          "A",
+          "because"
+        ],
+        [
+          "B",
+          "but"
+        ],
+        [
+          "C",
+          "so"
+        ]
+      ],
+      "after_key": "B"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "In the garden"
+        ],
+        [
+          "B",
+          "My sister"
+        ],
+        [
+          "C",
+          "Every two days"
+        ]
+      ],
+      "before_key": "C",
+      "correct_text": "Every two days",
+      "after_options": [
+        [
+          "A",
+          "My sister"
+        ],
+        [
+          "B",
+          "Every two days"
+        ],
+        [
+          "C",
+          "In the garden"
+        ]
+      ],
+      "after_key": "B"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "Is"
+        ],
+        [
+          "B",
+          "Do"
+        ],
+        [
+          "C",
+          "Does"
+        ]
+      ],
+      "before_key": "B",
+      "correct_text": "Do",
+      "after_options": [
+        [
+          "A",
+          "Do"
+        ],
+        [
+          "B",
+          "Does"
+        ],
+        [
+          "C",
+          "Is"
+        ]
+      ],
+      "after_key": "A"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "are"
+        ],
+        [
+          "B",
+          "is"
+        ],
+        [
+          "C",
+          "has"
+        ]
+      ],
+      "before_key": "A",
+      "correct_text": "are",
+      "after_options": [
+        [
+          "A",
+          "are"
+        ],
+        [
+          "B",
+          "has"
+        ],
+        [
+          "C",
+          "is"
+        ]
+      ],
+      "after_key": "A"
+    },
+    {
+      "number": 7,
+      "before_options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "Who"
+        ],
+        [
+          "C",
+          "Where"
+        ]
+      ],
+      "before_key": "C",
+      "correct_text": "Where",
+      "after_options": [
+        [
+          "A",
+          "When"
+        ],
+        [
+          "B",
+          "Who"
+        ],
+        [
+          "C",
+          "Where"
+        ]
+      ],
+      "after_key": "C"
+    },
+    {
+      "number": 8,
+      "before_options": [
+        [
+          "A",
+          "riding"
+        ],
+        [
+          "B",
+          "rides"
+        ],
+        [
+          "C",
+          "ride"
+        ]
+      ],
+      "before_key": "B",
+      "correct_text": "rides",
+      "after_options": [
+        [
+          "A",
+          "rides"
+        ],
+        [
+          "B",
+          "ride"
+        ],
+        [
+          "C",
+          "riding"
+        ]
+      ],
+      "after_key": "A"
+    },
+    {
+      "number": 9,
+      "before_options": [
+        [
+          "A",
+          "are making"
+        ],
+        [
+          "B",
+          "makes"
+        ],
+        [
+          "C",
+          "made"
+        ]
+      ],
+      "before_key": "A",
+      "correct_text": "are making",
+      "after_options": [
+        [
+          "A",
+          "are making"
+        ],
+        [
+          "B",
+          "made"
+        ],
+        [
+          "C",
+          "makes"
+        ]
+      ],
+      "after_key": "A"
+    },
+    {
+      "number": 10,
+      "before_options": [
+        [
+          "A",
+          "are"
+        ],
+        [
+          "B",
+          "is"
+        ],
+        [
+          "C",
+          "will"
+        ]
+      ],
+      "before_key": "C",
+      "correct_text": "will",
+      "after_options": [
+        [
+          "A",
+          "is"
+        ],
+        [
+          "B",
+          "will"
+        ],
+        [
+          "C",
+          "are"
+        ]
+      ],
+      "after_key": "B"
+    }
+  ],
+  "correct_text_stems_and_rationales_unchanged": true,
+  "deterministic_local_shuffle_not_difficulty_calibration": true
+}
