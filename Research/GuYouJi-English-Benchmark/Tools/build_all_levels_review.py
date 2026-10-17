@@ -221,6 +221,13 @@ def build_current(output):
             cell['groupId'] = cell['groupId'] or group['id']
             data['groups'][group['id']] = group
         data['gap_completion_index'] = plan['current_gap_completion']
+    # The family includes isolated words and contextual sentence recognition.
+    # The full source-specific form remains in each group's format summary.
+    if 'listening_word_phrase_choice' in labels:
+        labels['listening_word_phrase_choice'] = '听辨词语'
+        for cell in cells.values():
+            if cell['family'] == 'listening_word_phrase_choice':
+                cell['label'] = '听辨词语'
     if plan.get('current_source_input_quality_corrections'):
         from source_input_quality_corrections import apply as apply_source_quality
         apply_source_quality(data,plan)

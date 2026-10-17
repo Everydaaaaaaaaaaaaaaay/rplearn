@@ -60,8 +60,11 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_summary_completion','listening_flowchart_matching','listening_multiselect','listening_research_table_completion','listening_note_table_completion','listening_form_completion','listening_short_answer_pairs','listening_plan_label_matching','listening_dialogue_sentence_completion','listening_intention_classification','listening_description_matching','listening_letter_completion','listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
-    if draft.get('academic_shared_audio_matching'):
+    assert family in {'listening_sentence_choice','listening_summary_completion','listening_flowchart_matching','listening_multiselect','listening_research_table_completion','listening_note_table_completion','listening_form_completion','listening_short_answer_pairs','listening_plan_label_matching','listening_dialogue_sentence_completion','listening_intention_classification','listening_description_matching','listening_letter_completion','listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
+    if draft.get('lowprimary_lexical_listening'):
+        from lowprimary_lexical_listening_contract import validate_draft
+        validate_draft(draft)
+    elif draft.get('academic_shared_audio_matching'):
         from academic_shared_audio_matching_contract import validate_draft
         validate_draft(draft)
     elif draft.get('academic_form_listening'):
@@ -249,6 +252,9 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
                               else list(range(1,len(clip['questions'])+1)))
             intro=(f'Part {number}. Read questions {response_numbers[0]} to {response_numbers[-1]}.'if draft.get('shared_picture_listening') or draft.get('illustrated_listening') or draft.get('junior_source_bound') or family in {'listening_multi_question_choice','listening_dialogue_choice'}else f'Text {number}.' if family in {'listening_short_conversation_choice','listening_picture_true_false','listening_word_phrase_choice'} else f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
                    if family=='listening_extract_choice' else draft['audio_introduction'])
+            if draft.get('lowprimary_lexical_listening'):
+                response_numbers=[number]
+                intro='Text '+str(number)+'.'
             if draft.get('shared_picture_listening'):intro=draft['audio_introduction'] if len(draft['clips'])==1 else 'Description '+str(number)+'.'
             if draft.get('academic_form_listening') or draft.get('academic_bundle_listening'):intro=draft['audio_introduction']
             if draft.get('illustrated_listening'):intro='Text '+str(number)+'.'if draft['grade']in ['primary5',7]else draft['audio_introduction']
@@ -285,7 +291,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
                     append(data,'dialogue',turn['text'],turn['speaker'],repeat)
                     if family!='listening_short_conversation_choice' or turn_index<len(clip['turns'])-1:
                         pause(2 if family=='listening_double_matching' else .35)
-                pause(1 if (draft.get('junior_source_bound') or family in {'listening_multi_question_choice','listening_word_phrase_choice','listening_passage_completion','listening_dialogue_choice'})and repeat<repeat_count else clip.get('answer_seconds',2))
+                pause(1 if (draft.get('lowprimary_lexical_listening') or draft.get('junior_source_bound') or family in {'listening_multi_question_choice','listening_word_phrase_choice','listening_passage_completion','listening_dialogue_choice'})and repeat<repeat_count else clip.get('answer_seconds',2))
             combined=scratch/f'extract{number}.wav'
             with wave.open(str(combined),'wb') as stream:
                 stream.setparams((1,2,RATE,0,'NONE','not compressed'))

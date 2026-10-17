@@ -247,9 +247,9 @@ function render(){
    printed.remove();form.innerHTML='<div class="table-scroll"><table class="listening-assignment-table"><caption>'+escapeText(t.caption)+'</caption><thead><tr><th scope="col">人物 / 物品</th>'+t.columns.map((c,i)=>'<th scope="col">'+(i+1)+'. '+escapeText(c)+'</th>').join('')+'</tr></thead><tbody>'+t.people.map(([letter,name])=>'<tr><th scope="row">'+escapeText(name)+'</th>'+g.questions.map(q=>'<td><label><input type="radio" name="'+q.number+'" value="'+letter+'" aria-label="'+escapeText(q.stem+' — '+name)+'" '+(saved[q.number]===letter?'checked':'')+'></label></td>').join('')+'</tr>').join('')+'</tbody></table></div>';
   }
  }
- // Each short conversation has one printed question. Keep its player beside
- // that question without changing the frozen five-part material or its order.
- if(['listening_short_conversation_choice','listening_word_phrase_choice','listening_picture_choice'].includes(g.kind)){
+ // Keep each single-response player beside its printed question. Bind by
+ // the recorded response numbers so independent clips retain their order.
+ if(['listening_short_conversation_choice','listening_word_phrase_choice','listening_sentence_choice','listening_picture_choice'].includes(g.kind)){
   const tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')];
   if(tracks.length===g.questions.length&&fields.length===tracks.length&&g.requiredAudioAssets?.every((a,i)=>a.response_numbers.length===1&&a.response_numbers[0]===g.questions[i].number)){
    tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&['对话'+(i+1),'句子'+(i+1),'材料'+(i+1)].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(track);});
