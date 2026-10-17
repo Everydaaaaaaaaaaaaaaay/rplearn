@@ -1,0 +1,229 @@
+{
+  "version": "0.2",
+  "id": "advanced-opencloze-oral-accounts",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "0be316e87e4bdc6c5d365d495eb64fd7ef2975180d3a540fed9283607edf94cc",
+  "source_binding": "advancedopencloze8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.1.json",
+    "sha256": "54172aa85c0bec48032f089c6d653a068aec4227a63989a862fb69dcc27230d0"
+  },
+  "source_group_id": "advanced.c1.sample1.opencloze",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "such"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "so"
+        ]
+      },
+      "rationale": "to such an extent that引出改动内部隔板后仪器能够移动的程度结果。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "only",
+        "just",
+        "simply",
+        "merely"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "alone"
+        ]
+      },
+      "rationale": "not only/just/simply/merely because...but because均表达问题不只出在衬垫薄；四种同收，不硬限三种。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "spite"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "despite"
+        ]
+      },
+      "rationale": "in spite of固定介词短语。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "no"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "not"
+        ]
+      },
+      "rationale": "by no means否定这是一项常规工作，下文说明必须逐个可取出的特殊约束。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "regard",
+        "respect",
+        "reference"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "regarding"
+        ]
+      },
+      "rationale": "with regard/respect/reference to均引出关于较小部件的安排。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "not"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "no"
+        ]
+      },
+      "rationale": "whether or not固定选择结构。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "own"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "owns"
+        ]
+      },
+      "rationale": "a code of its own表示每个口袋各有自己的编号。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "which"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "that",
+          "where"
+        ]
+      },
+      "rationale": "agree on something对应on which从句，先行词the final briefing。"
+    }
+  ],
+  "canonical_response_block_sha256": "cc55c637bfb3eee374d963d805f17364661455d55b2c97c4275eb02453cb53d5",
+  "student_passage": "The first case (0) WAS designed for a laboratory, not for a week on a research vessel. To fit the available storage space, the crew removed internal divisions to (1) ____ an extent that the instruments could move between compartments. The problem was not (2) ____ because the foam lining had become thinner, but because the case no longer held each item in a fixed position.\n\nThe equipment technician proposed a removable frame. In (3) ____ of initial objections about its weight, she persuaded the crew to try it. Fitting the frame was by (4) ____ means a routine job: every instrument had to be accessible without lifting out the others. With (5) ____ to the smaller components, she suggested fabric pockets attached to the underside of the lid.\n\nThe crew had to decide whether or (6) ____ to retain the old numbering system. They eventually gave each pocket a code of its (7) ____, printed both inside the case and on a separate checklist. A trial run then revealed that two cables could not be coiled into their assigned spaces. The pockets were altered before departure, and the technician demonstrated the packing sequence during the final briefing on (8) ____ the crew had agreed. Once at sea, they would have to pack the case without her help.",
+  "author_answer_vector": [
+    [
+      "such"
+    ],
+    [
+      "only",
+      "just",
+      "simply",
+      "merely"
+    ],
+    [
+      "spite"
+    ],
+    [
+      "no"
+    ],
+    [
+      "regard",
+      "respect",
+      "reference"
+    ],
+    [
+      "not"
+    ],
+    [
+      "own"
+    ],
+    [
+      "which"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "one_word_open_cloze": true,
+  "answered_examples": 1,
+  "subgroup_counts": [
+    8
+  ],
+  "given_positions": [],
+  "filled_passage": "The first case (0) WAS designed for a laboratory, not for a week on a research vessel. To fit the available storage space, the crew removed internal divisions to (1) such an extent that the instruments could move between compartments. The problem was not (2) only because the foam lining had become thinner, but because the case no longer held each item in a fixed position.\n\nThe equipment technician proposed a removable frame. In (3) spite of initial objections about its weight, she persuaded the crew to try it. Fitting the frame was by (4) no means a routine job: every instrument had to be accessible without lifting out the others. With (5) regard to the smaller components, she suggested fabric pockets attached to the underside of the lid.\n\nThe crew had to decide whether or (6) not to retain the old numbering system. They eventually gave each pocket a code of its (7) own, printed both inside the case and on a separate checklist. A trial run then revealed that two cables could not be coiled into their assigned spaces. The pockets were altered before departure, and the technician demonstrated the packing sequence during the final briefing on (8) which the crew had agreed. Once at sea, they would have to pack the case without her help.",
+  "full_fill_variant_combinations": 12,
+  "load_measure": {
+    "body_English_words": 201,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_level_equivalence_established": false,
+  "previous_author_check": {
+    "path": "CompleteCoverage20261017/Authored/advanced-opencloze-oral-accounts-author-check-v0.1.json",
+    "sha256": "8e7ceb3af159106173f320e709f81ddb9d0a8160e3ae9a678b0b6bfbc777b225"
+  },
+  "revision_reason": "Original witness-conflict passage too close in discourse/family to existing recipe-evidence reading;replace with a fictional equipment-packing sequence and constrained design decisions;old version retained not displayed."
+}

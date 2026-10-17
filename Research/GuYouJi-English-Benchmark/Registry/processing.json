@@ -34953,6 +34953,132 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "complete-coverage-advanced-opencloze3-v0.1",
+      "source_acquisition_ids": [
+        "cambridge-c1-rue2022-member20261016",
+        "cambridge-c1-objective-keypage20261016"
+      ],
+      "tool": "source_bound_one_word_opencloze+IAB+variant_contract",
+      "tool_version": "0.1",
+      "parameters": [
+        "3newwholegroups24responses;315total2184;312reused",
+        "1newselectedmode0newpaper;8onewordslots_nohints1solvedexample",
+        "24realIABresponses;fouranswersnotcappedatthree;semanticfamilyrewrite",
+        "22fillgroups192positions253acceptedforms31controls;localonly"
+      ],
+      "pages": 15,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/author-advanced-opencloze-v0.1.py",
+          "bytes": 14373,
+          "sha256": "55dbc60bfc5ffad1037d3c29dc9fa67385241d80016a3737cc2641f2e08c6d76",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/refine-advanced-opencloze-v0.1.py",
+          "bytes": 5508,
+          "sha256": "57feb5508ba1276c5d6716e1e9f2d292c9f0b027f5eaa49d26bc2ac5302bd26e",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/checkpoint-advanced-opencloze-v0.1.py",
+          "bytes": 6065,
+          "sha256": "81722f7c5078dd91718736bfb13234cb5542fe1efc558ffd4e992cb635fff304",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/c1-part2-native-and-key-selection-v0.1.json",
+          "bytes": 2339,
+          "sha256": "71b14bd67d90d1129369e74e3bb1baa5342657fdabba2f1a300b8b6c830a2bd2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/c1-part2-physical4-v0.1.png",
+          "bytes": 139457,
+          "sha256": "3f55f9d9721087cb603af23949feb0e40a233af81e6f2d4adddb7731bdb457e2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-review-check-v0.1.json",
+          "bytes": 1053,
+          "sha256": "d93aecea637993fdd9c571fb660b2efaa4511be562e2ff34b752866a8090c3a2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-review-check-v0.2.json",
+          "bytes": 1053,
+          "sha256": "d93aecea637993fdd9c571fb660b2efaa4511be562e2ff34b752866a8090c3a2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-final-check-v0.1.json",
+          "bytes": 1119,
+          "sha256": "2f3715f46a50df6c27457f52ecb5df704b96ee86e100086fa7464cee1f2ba738",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-fill-core-check-v0.1.json",
+          "bytes": 283,
+          "sha256": "400fc5eb0a96160eea20560a253d656d1302392e3771777d69017e4ee4ff5ce0",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-fill-core-check-v0.2.json",
+          "bytes": 283,
+          "sha256": "400fc5eb0a96160eea20560a253d656d1302392e3771777d69017e4ee4ff5ce0",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-selection-core-check-v0.1.json",
+          "bytes": 225,
+          "sha256": "f491817de5609efdbfec47c5436220249a740aeca411f64ad651d26d3a1b9ccd",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-selection-core-check-v0.2.json",
+          "bytes": 225,
+          "sha256": "f491817de5609efdbfec47c5436220249a740aeca411f64ad651d26d3a1b9ccd",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen3-body-family-screen-v0.1.json",
+          "bytes": 1411,
+          "sha256": "a62c973d0e5f02d6e13f6e84d81ea6cc29841a20bf4628bbb9bba874b918cbf8",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen3-browser-v0.1.json",
+          "bytes": 779,
+          "sha256": "807965fe2688432de7096e2580f463345e77ea7c308ca9092258dc0ed70f3e2e",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review315-advanced-opencloze-delta-v0.1.json",
+          "bytes": 36642,
+          "sha256": "b2a54218efcad887bd774f2573a3b3b5472395fdd7fd7291074e0d8f790720aa",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "complete-coverage-advanced-opencloze-frozen-check-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "check_all_levels_review.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "frozen_delta_chain315_completegroups2184responses1newselectedmode0newpaper"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/advancedopen315-frozen-check-v0.1.json",
+          "bytes": 1119,
+          "sha256": "2f3715f46a50df6c27457f52ecb5df704b96ee86e100086fa7464cee1f2ba738",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

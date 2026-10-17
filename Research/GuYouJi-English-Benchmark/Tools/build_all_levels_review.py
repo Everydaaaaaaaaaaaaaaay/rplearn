@@ -203,6 +203,13 @@ def build_current(output):
             if group['id'] in data['groups']:
                 raise ValueError('Continuation cannot replace a frozen author')
             key = (group['grade'], meta['family'])
+            if key not in cells:
+                if not meta.get('family_label') or not meta.get('source_group_ids'):
+                    raise ValueError('A new continuation family needs an explicit source and display label')
+                labels[meta['family']] = meta['family_label']
+                cells[key] = {'grade': group['grade'], 'family': meta['family'], 'label': meta['family_label'],
+                              'observed': True, 'state': 'source_observed_author_pending',
+                              'groupId': None, 'groupIds': []}
             cell = cells[key]
             if cell['state'] == 'paused_requires_semantic_adjudication':
                 if meta['id'] not in plan.get('held_family_replacement_authors', []):
@@ -231,7 +238,10 @@ def build_current(output):
     template = re.sub(r'<thead><tr><th scope="col">题型</th>.*?</tr></thead>', '<thead><tr>'+header+'</tr></thead>', template)
     page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE/'Tools/quality_review_interactions.js').read_text())
     (output/'index.html').write_text(page)
+    complete_sources = json.loads(load_ref(plan['current_complete_coverage_source_modes']).read_text()) if plan.get('current_complete_coverage_source_modes') else {}
     report = {'version': '0.1', 'level_count': len(data['grades']), 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
+              'complete_coverage_new_source_papers': complete_sources.get('new_source_papers', 0),
+              'complete_coverage_new_selected_specific_modes': complete_sources.get('new_selected_specific_modes', 0),
               'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
               'new_authored_groups': len(variant_index['candidates']) if variant_index['candidates'] else additions.get('current_run_new_authored_groups',additions['new_authored_groups']),
               'new_authored_responses': sum(m['questions'] for m in variant_index['candidates']) if variant_index['candidates'] else additions.get('current_run_new_response_positions',additions['new_response_positions']),

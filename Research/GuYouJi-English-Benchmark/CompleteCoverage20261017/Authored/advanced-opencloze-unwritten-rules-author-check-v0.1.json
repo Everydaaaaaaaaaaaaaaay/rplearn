@@ -1,0 +1,215 @@
+{
+  "version": "0.1",
+  "id": "advanced-opencloze-unwritten-rules",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "f77bea39c057e669946fc4a752381981ce70f3aee1dbecb1b20f01017cae787e",
+  "source_binding": "advancedopencloze8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.1.json",
+    "sha256": "54172aa85c0bec48032f089c6d653a068aec4227a63989a862fb69dcc27230d0"
+  },
+  "source_group_id": "advanced.c1.sample1.opencloze",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "that"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "what"
+        ]
+      },
+      "rationale": "on the grounds that引出提出反对的理由。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "far"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "long"
+        ]
+      },
+      "rationale": "so far as...is concerned限定书面协议范围。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "nor"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "or"
+        ]
+      },
+      "rationale": "neither...nor连接两个不希望的极端。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "how"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "what"
+        ]
+      },
+      "rationale": "no matter how carefully，无论规则起草多仔细。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "alone"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "lonely"
+        ]
+      },
+      "rationale": "let alone表示更不用说敢于质疑行为。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "until",
+        "till"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "since"
+        ]
+      },
+      "rationale": "it is not until/till...that均引出期待显现的时间，till不因语体较口语自动错。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "than"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "then"
+        ]
+      },
+      "rationale": "rather than连接解释习惯与把习惯当明显要求两种行为。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "for"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "as"
+        ]
+      },
+      "rationale": "take something for granted固定结构。"
+    }
+  ],
+  "canonical_response_block_sha256": "cc55c637bfb3eee374d963d805f17364661455d55b2c97c4275eb02453cb53d5",
+  "student_passage": "In a shared workroom, the rule (0) IS that anyone may use an empty desk. Yet newcomers soon discover that permission on paper is only part of the story. One member objects to telephone calls on the grounds (1) ____ they interrupt concentration; another points out that the room was never intended to be a library. So (2) ____ as the written agreement is concerned, neither is doing anything wrong.\n\nThe manager resists choosing between them. She wants neither a permanently silent room (3) ____ a space in which the loudest person determines everyone else's working conditions. No matter (4) ____ carefully a rule is drafted, she argues, it cannot anticipate every combination of activities. Members must notice what others are doing before deciding what is reasonable themselves.\n\nThat sounds straightforward, but new arrivals may not know anybody's name, let (5) ____ feel able to challenge their behaviour. It is not (6) ____ a disagreement occurs that the unwritten expectations become visible. The manager therefore asks established members to explain their habits rather (7) ____ present them as obvious requirements. What has long been taken (8) ____ granted by one group can then become something that everyone is able to discuss.",
+  "author_answer_vector": [
+    [
+      "that"
+    ],
+    [
+      "far"
+    ],
+    [
+      "nor"
+    ],
+    [
+      "how"
+    ],
+    [
+      "alone"
+    ],
+    [
+      "until",
+      "till"
+    ],
+    [
+      "than"
+    ],
+    [
+      "for"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "one_word_open_cloze": true,
+  "answered_examples": 1,
+  "subgroup_counts": [
+    8
+  ],
+  "given_positions": [],
+  "filled_passage": "In a shared workroom, the rule (0) IS that anyone may use an empty desk. Yet newcomers soon discover that permission on paper is only part of the story. One member objects to telephone calls on the grounds (1) that they interrupt concentration; another points out that the room was never intended to be a library. So (2) far as the written agreement is concerned, neither is doing anything wrong.\n\nThe manager resists choosing between them. She wants neither a permanently silent room (3) nor a space in which the loudest person determines everyone else's working conditions. No matter (4) how carefully a rule is drafted, she argues, it cannot anticipate every combination of activities. Members must notice what others are doing before deciding what is reasonable themselves.\n\nThat sounds straightforward, but new arrivals may not know anybody's name, let (5) alone feel able to challenge their behaviour. It is not (6) until a disagreement occurs that the unwritten expectations become visible. The manager therefore asks established members to explain their habits rather (7) than present them as obvious requirements. What has long been taken (8) for granted by one group can then become something that everyone is able to discuss.",
+  "full_fill_variant_combinations": 2,
+  "load_measure": {
+    "body_English_words": 184,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_level_equivalence_established": false
+}

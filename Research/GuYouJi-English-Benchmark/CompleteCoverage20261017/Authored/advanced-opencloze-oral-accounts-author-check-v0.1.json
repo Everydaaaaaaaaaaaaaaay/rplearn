@@ -1,0 +1,224 @@
+{
+  "version": "0.1",
+  "id": "advanced-opencloze-oral-accounts",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "900962ffa8521908817624f16680534a8fa931fe51694dfc829a3728036dfb94",
+  "source_binding": "advancedopencloze8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.1.json",
+    "sha256": "54172aa85c0bec48032f089c6d653a068aec4227a63989a862fb69dcc27230d0"
+  },
+  "source_group_id": "advanced.c1.sample1.opencloze",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "such"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "so"
+        ]
+      },
+      "rationale": "to such an extent that表示程度导致细节意义变化。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "only",
+        "just",
+        "simply",
+        "merely"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "alone"
+        ]
+      },
+      "rationale": "not only/just/simply/merely because...but because均可保留非唯一原因对比，四种均收，不硬限三种。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "spite"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "despite"
+        ]
+      },
+      "rationale": "in spite of固定介词短语。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "no"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "not"
+        ]
+      },
+      "rationale": "by no means否定一致就能证明正确，下文给共同阅读同一报告的反证。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "regard",
+        "respect",
+        "reference"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "regarding"
+        ]
+      },
+      "rationale": "with regard/respect/reference to均可引出关于会议目的这一争点。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "not"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "no"
+        ]
+      },
+      "rationale": "whether or not固定选择结构。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "own"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "owns"
+        ]
+      },
+      "rationale": "a judgement of their own表达读者自己的判断。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空（只填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "which"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "that",
+          "where"
+        ]
+      },
+      "rationale": "on which中介词后的关系代词，先行词evidence。"
+    }
+  ],
+  "canonical_response_block_sha256": "cc55c637bfb3eee374d963d805f17364661455d55b2c97c4275eb02453cb53d5",
+  "student_passage": "The first account (0) WAS persuasive enough to make the editor believe that the story was settled. Then a second witness described the same meeting differently, to (1) ____ an extent that several apparently minor details acquired a new significance. The problem was not (2) ____ because one speaker had forgotten a date, but because the two speakers disagreed about why the meeting had taken place at all.\n\nThe editor created a table showing the points on which the accounts converged. Without this table, she would have found it hard to compare them; without the recordings, from which every entry was drawn, she would have had no way to check what each speaker had actually said. In (3) ____ of these precautions, however, a neat table could still give a misleading impression of certainty.\n\nAgreement was by (4) ____ means proof that a detail was correct: both witnesses might have read the same later report. With (5) ____ to the disputed purpose of the meeting, neither account could be confirmed. The editor had to decide whether or (6) ____ to publish the disagreement itself. She chose to do so, making it clear that the reader would have to form a judgement of their (7) ____. The account was less tidy as a result, but more faithful to the limits of the evidence on (8) ____ it depended.",
+  "author_answer_vector": [
+    [
+      "such"
+    ],
+    [
+      "only",
+      "just",
+      "simply",
+      "merely"
+    ],
+    [
+      "spite"
+    ],
+    [
+      "no"
+    ],
+    [
+      "regard",
+      "respect",
+      "reference"
+    ],
+    [
+      "not"
+    ],
+    [
+      "own"
+    ],
+    [
+      "which"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "one_word_open_cloze": true,
+  "answered_examples": 1,
+  "subgroup_counts": [
+    8
+  ],
+  "given_positions": [],
+  "filled_passage": "The first account (0) WAS persuasive enough to make the editor believe that the story was settled. Then a second witness described the same meeting differently, to (1) such an extent that several apparently minor details acquired a new significance. The problem was not (2) only because one speaker had forgotten a date, but because the two speakers disagreed about why the meeting had taken place at all.\n\nThe editor created a table showing the points on which the accounts converged. Without this table, she would have found it hard to compare them; without the recordings, from which every entry was drawn, she would have had no way to check what each speaker had actually said. In (3) spite of these precautions, however, a neat table could still give a misleading impression of certainty.\n\nAgreement was by (4) no means proof that a detail was correct: both witnesses might have read the same later report. With (5) regard to the disputed purpose of the meeting, neither account could be confirmed. The editor had to decide whether or (6) not to publish the disagreement itself. She chose to do so, making it clear that the reader would have to form a judgement of their (7) own. The account was less tidy as a result, but more faithful to the limits of the evidence on (8) which it depended.",
+  "full_fill_variant_combinations": 12,
+  "load_measure": {
+    "body_English_words": 210,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_level_equivalence_established": false
+}

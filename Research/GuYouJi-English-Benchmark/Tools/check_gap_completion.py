@@ -37,6 +37,19 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'one_word_open_cloze':
+                assert source['complete_selected_group_reviewed'] and source['kind']==b['family']=='open_cloze'
+                selected=json.loads(load_ref(source['selected_native']).read_text())
+                assert selected['original']==source['source'] and selected['key']==source['key_reference']
+                assert selected['physical_page']==source['source_physical_pages'][0]==4
+                assert 'For questions 9' in selected['selected_task_text']
+                assert 'Use only one word in each gap.' in ' '.join(selected['selected_task_text'].split())
+                assert len(selected['original_key_forms'])==8 and all(selected['original_key_forms'])
+                assert source['features']==b['source_features']=={'materials':1,'solved_examples':1,'responses':8,'hints':0,'word_limit_each':1,'shared_candidates':0}
+                assert a['one_word_open_cloze'] and a['answered_examples']==1
+                assert re.findall(r'\((\d+)\) ____', a['student_passage'])==list('12345678')
+                assert '(0)' in a['student_passage'] and '____' not in a['filled_passage']
+                assert a['subgroup_counts']==[8] and a['given_positions']==[]
             if b.get('source_view'):
                 view=next(v for v in json.loads(load_ref(b['source_view']).read_text())['views'] if v['group_id']==b['source_group_id'])
                 load_ref(view['parent_document'])
@@ -87,12 +100,14 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
                 pattern='[0-9]+' if c['normalization']=='ascii_integer_v1' else '[A-Za-z]+(?: [A-Za-z]+)*' if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
                 assert all(re.fullmatch(pattern, value) for value in q['acceptedAnswers'] + c['rejectedAnswers'])
+                if a.get('one_word_open_cloze'):
+                    assert c['maxWords']==1 and all(len(v.split())==1 for v in q['acceptedAnswers'])
                 if a.get('mixed_given_ungiven_grammar'):
                     assert c['maxWords']==(None if q['number'] in b['given_positions'] else 1)
                     assert bool(q['givenLemma'])==(q['number'] in b['given_positions'])
@@ -139,6 +154,9 @@ def check(data, plan):
             assert variants == a['full_fill_variant_combinations_context_reviewed']
     assert len(seen) == index['new_complete_groups']
     assert sum(m['questions'] for m in index['candidates']) == index['new_response_positions']
+    selected_modes = json.loads(load_ref(plan['current_complete_coverage_source_modes']).read_text()) if plan.get('current_complete_coverage_source_modes') else {}
     return {'groups': len(seen), 'responses': index['new_response_positions'], 'new_sources': 0,
+            'new_source_papers': selected_modes.get('new_source_papers', 0),
+            'new_selected_specific_modes': selected_modes.get('new_selected_specific_modes', 0),
             'accepted_forms_bound': True, 'unlisted_lexical_forms_need_review': True,
             'teacher_student_commercial_production_verified': False}
