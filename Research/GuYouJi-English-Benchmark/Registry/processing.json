@@ -35079,6 +35079,90 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "completecoverage-shanghai-modes-and-source-gates-v0.1",
+      "source_acquisition_ids": [
+        "completecoverage-discovery-shanghai-g10-public26002103",
+        "completecoverage-discovery-shanghai-g11-public23262830",
+        "completecoverage-discovery-qgets-index",
+        "completecoverage-discovery-sierxing-index",
+        "completecoverage-discovery-qgets-public-htmlscript",
+        "completecoverage-discovery-qgets-g11-audio-gate",
+        "completecoverage-discovery-qgets-g11-key-gate",
+        "completecoverage-discovery-shiyan-paid-audio-entry"
+      ],
+      "tool": "publicHTTP+staticHTMLliteralread+selected_source_spans+pypdf+visualreview",
+      "tool_version": "0.1",
+      "parameters": [
+        "2publicschoollabelcandidates;4completewrittenmodecandidates_authorpending",
+        "G10bankkeycarefulvsrationalecarefully;G11bankmissing34held",
+        "2passwordgateHTMLresponses_notMP3orPDF;noexternalcontactoraccessbypass",
+        "C1handbookphysical15visuallyconfirmedcontractionpolicyconflict"
+      ],
+      "pages": 10,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/fetch-shanghai-senior-modes-v0.1.py",
+          "bytes": 1130,
+          "sha256": "41f5e7e0aee5fc8a45f328b7f8fdd4e7eca1103b38a4b800ac70504c661a8291",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/record-completecoverage-discovery-v0.1.py",
+          "bytes": 7720,
+          "sha256": "839cb93582646c752a6055c38bcc24646ba9d633c91111e375786b2b9d0bd2a4",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/shanghai-senior-mode-fetch-v0.1.json",
+          "bytes": 1097,
+          "sha256": "814e36eca0348f3bfc574d361a5726b26f06b298ce6dddc5ae4130ff4aea5545",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/shanghai-g10-public26002103-resource-v0.1.txt",
+          "bytes": 27114,
+          "sha256": "8c4e61d3956433c6c7c2f29d468445ad1a0eaa016f98486fd2637263e9f215fb",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/shanghai-g11-public23262830-resource-v0.1.txt",
+          "bytes": 33959,
+          "sha256": "fcef59d73a3c48f88ede8c3bba05a7f36b189ac869d06f2d99f0b6b98f98d68a",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/shanghai-g10-selected-objective-modes-v0.1.json",
+          "bytes": 11042,
+          "sha256": "354fe49b69064d84f861246c591808513158832ced4e2a905c18e0df453ebbfa",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/shanghai-g11-selected-objective-modes-v0.1.json",
+          "bytes": 11070,
+          "sha256": "a76cd59e20ecdb22b41aec2b3b9374f6031d0baf5cb8740f91a9d4ae3655d9a8",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/qgets-g11-paired-fetch-v0.1.json",
+          "bytes": 928,
+          "sha256": "e39f11eb0a16d8a495bdf9d4ab9a4894c720e2f8fd62b7753eda7c39715f57fb",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/c1handbook-kwt-selected-native-v0.1.json",
+          "bytes": 1885,
+          "sha256": "660124ef97f9eb08808c1d60288765ecc85735fe18cfa30bdea1725ece554840",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/c1handbook-physical15-kwt-v0.1.png",
+          "bytes": 178174,
+          "sha256": "9006a4006d1015d4fb379f108768c474af220aaa1ddaff2d29ef7e2f5d3d155c",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

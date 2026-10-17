@@ -1,0 +1,202 @@
+{
+  "version": "0.1",
+  "scope": "newly_read_concrete_candidates_not_current_page_or_gold",
+  "sources": [
+    {
+      "level": 10,
+      "source_url": "https://zy.21cnjy.com/26002103",
+      "selected": {
+        "path": "build/english-benchmark-authority-20261017/shanghai-g10-selected-objective-modes-v0.1.json",
+        "sha256": "354fe49b69064d84f861246c591808513158832ced4e2a905c18e0df453ebbfa"
+      },
+      "identity": {
+        "publisher_title": "上海市洋泾中学2025-2026学年高一下学期英语期末考试试卷（含解析）",
+        "body_header": "2025-2026学年高一下学期英语期末考试试卷",
+        "school_in_publisher_title": "上海市洋泾中学",
+        "school_in_student_header": "unknown",
+        "region_in_student_header": "unknown",
+        "year_term_grade_from_body": true,
+        "original_school_authentication": false
+      },
+      "details": {
+        "grammar": {
+          "materials": 1,
+          "responses": 10,
+          "given_lemma_positions": [
+            1,
+            2,
+            3,
+            4,
+            8
+          ],
+          "ungiven_default_words": 1,
+          "explicit_two_word_exception_positions": [
+            10
+          ],
+          "special_hint": "填2词_is_not_a_lemma",
+          "mode_first_author_pending": true
+        },
+        "bank": {
+          "materials": 1,
+          "response_numbers": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "shared_candidates": 11,
+          "use_each_once_explicit": true,
+          "one_extra_explicit": true,
+          "key_risk": "C is careful in candidatebox;Q12 key labels C careful but its own rationale requires carefully;notgold;formchangeexplicit_unknown"
+        },
+        "insertion": {
+          "materials": 1,
+          "response_numbers": [
+            44,
+            45,
+            46,
+            47
+          ],
+          "shared_candidates": 6,
+          "key_labels": [
+            "C",
+            "F",
+            "B",
+            "D"
+          ],
+          "reuse_instruction": "not_visible_not_inferred_from_key",
+          "whole_selected_input_complete": true,
+          "first_concrete_mode_author_pending": true
+        }
+      }
+    },
+    {
+      "level": 11,
+      "source_url": "https://zy.21cnjy.com/23262830",
+      "selected": {
+        "path": "build/english-benchmark-authority-20261017/shanghai-g11-selected-objective-modes-v0.1.json",
+        "sha256": "a76cd59e20ecdb22b41aec2b3b9374f6031d0baf5cb8740f91a9d4ae3655d9a8"
+      },
+      "identity": {
+        "publisher_title": "上海市静安区2024-2025学年高二下学期期末英语试题（含答案，无听力原文含音频）",
+        "body_header": "静安区2024学年第二学期期末教学质量调研 高二英语试卷",
+        "district": "静安区",
+        "grade": 11,
+        "semester": "下",
+        "school": "unknown_district_paper",
+        "schoolyear": "2024学年",
+        "publisher_schoolyear": "2024-2025",
+        "original_school_authentication": false
+      },
+      "details": {
+        "grammar": {
+          "materials": 1,
+          "response_numbers": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "given_lemma_source_numbers": [
+            17,
+            20,
+            21,
+            23,
+            25
+          ],
+          "ungiven_words": 1,
+          "given_word_max_words_not_stated": true,
+          "whole_selected_input_complete": true,
+          "first_concrete_mode_author_pending": true
+        },
+        "bank": {
+          "materials": 1,
+          "expected_response_numbers": [
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36
+          ],
+          "visible_body_numbers": [
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            35,
+            36
+          ],
+          "shared_candidates": 11,
+          "use_each_once_explicit": true,
+          "one_extra_explicit": true,
+          "known_missing_body_slot": 34,
+          "whole_selected_input_complete": false,
+          "hold": "Do not insert missing34 from keyororiginalarticle;seekactualpage"
+        },
+        "insertion": {
+          "materials": 1,
+          "response_numbers": [
+            62,
+            63,
+            64,
+            65
+          ],
+          "shared_candidates": 6,
+          "use_each_once_explicit": true,
+          "two_extra_explicit": true,
+          "key_labels": [
+            "C",
+            "B",
+            "A",
+            "E"
+          ],
+          "whole_selected_input_complete": true,
+          "first_concrete_mode_author_pending": true
+        },
+        "listening": {
+          "labelled_instruction": "one_short_passage_and_one_longer_conversation",
+          "two_student_subgroup_labels": "both_called_monologue",
+          "material_types": "unresolved_without_scripts/audio;do_notinferfromlabels",
+          "not_selected_complete_listening": true
+        }
+      }
+    }
+  ],
+  "new_source_papers_at_public_repost_label_scope": 2,
+  "actual_school_publication_authenticated": false,
+  "new_authored_groups": 0,
+  "current_page_groups": 315,
+  "current_page_responses": 2184,
+  "current_source_mode_index_unchanged": true,
+  "next_ready": [
+    "G11 four_of_six insertion explicit once+2extra",
+    "G10 four_of_six insertion reuse_unknown",
+    "G11 single10grammar fivegivenfiveungiven",
+    "G10 single10grammar explicit2wordslot10"
+  ],
+  "not_ready": [
+    "G11 bankmissingbody34",
+    "G10 bankCcarefulkeycarefullyrisk",
+    "alllisteningaudio/scriptsnotpaired"
+  ]
+}

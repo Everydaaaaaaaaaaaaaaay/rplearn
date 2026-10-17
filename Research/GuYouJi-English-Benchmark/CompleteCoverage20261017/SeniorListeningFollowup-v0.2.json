@@ -1,0 +1,73 @@
+{
+  "version": "0.2",
+  "previous_followup": {
+    "path": "CompleteCoverage20261017/SeniorListeningFollowup-v0.1.json",
+    "sha256": "b2666d94eecdc5a7d8416da8ceff7c307270f8e264a1745be9a3634242b773a8"
+  },
+  "new_public_index": "https://www.qg-ets.com/gzzq",
+  "index": {
+    "path": "build/english-benchmark-authority-20261017/qgets-audio-index-v0.1.html",
+    "sha256": "b2550fa127270e4099af72a042806d21f7495efafa0faff8149ce09cef40842c"
+  },
+  "public_static_HTML_script": {
+    "path": "build/english-benchmark-authority-20261017/qgets-public-body-script-v0.1.js",
+    "sha256": "5f9481d6e063952e207c13d90ea1901fb6ac70cc46a562e2f5799e362285b748"
+  },
+  "discovery_method": "Readordinarypublicdocument.writeHTMLstringwithliteralparser;noJSexecutionorsecuritychallengecode",
+  "new_candidates": [
+    {
+      "request_url": "https://www.qg-ets.com/filedownload/2990626",
+      "response": {
+        "path": "build/english-benchmark-authority-20261017/qgets-g11-2026upper-listening-original-v0.1.mp3",
+        "sha256": "118c2b84238113bbfb690ce148cd7370badd1f042bd45fdbb2f7365ccf0b7243"
+      },
+      "response_content_type": "text/html; charset=utf-8",
+      "redirect_url": "https://www.qg-ets.com/Customer/FileDownloadVerifyPass?fileid=2990626&type=pwd",
+      "observed_format": "HTML_password_gate_not_mp3_or_pdf",
+      "requested_artifact_acquired": false,
+      "gate_form_present": true,
+      "no_password_guessed_or_submitted": true
+    },
+    {
+      "request_url": "https://www.qg-ets.com/filedownload/2990785",
+      "response": {
+        "path": "build/english-benchmark-authority-20261017/qgets-g11-2026upper-key-script-original-v0.1.pdf",
+        "sha256": "5b83ed532099d8eda271c03868973c355eb63b31a076c0dd7286d6f536efbede"
+      },
+      "response_content_type": "text/html; charset=utf-8",
+      "redirect_url": "https://www.qg-ets.com/Customer/FileDownloadVerifyPass?fileid=2990785&type=pwd",
+      "observed_format": "HTML_password_gate_not_mp3_or_pdf",
+      "requested_artifact_acquired": false,
+      "gate_form_present": true,
+      "no_password_guessed_or_submitted": true
+    }
+  ],
+  "negative_other_sources": [
+    {
+      "url": "https://www.tihai5.com/xz/182787ssmf/",
+      "reason": "humanmathverificationgate;notattempted"
+    },
+    {
+      "url": "https://www.wh111.com/yingyu/jingxuanshiti/gaozhongyingyu/gaoyiyingyuqimo/2024-02-22/69381.html",
+      "response": {
+        "path": "build/english-benchmark-authority-20261017/shiyan-g10-2024upper-audio-entry-v0.1.html",
+        "sha256": "415f4836f92d63f851fe31a6a48b7ae1cc7768931f9d67132a77a1049248c8ba"
+      },
+      "reason": "titlecan_downloadbutactual5pointpaymentgate;notinvoked"
+    },
+    {
+      "url": "https://www.sierxingjy.com/ypxz",
+      "response": {
+        "path": "build/english-benchmark-authority-20261017/sierxing-audio-index-v0.1.html",
+        "sha256": "0e3f355c697c46fb4069fa24268b0ae2cf691960d4d8b1d93a283d56223d5a81"
+      },
+      "reason": "publicscriptindexnotmedia;notacquired"
+    }
+  ],
+  "normal_browser_qgets": "30screate_tabtimeout;notrepeated",
+  "new_complete_audio_bundles": 0,
+  "new_authored_listening_groups": 0,
+  "current_page_groups": 315,
+  "current_page_responses": 2184,
+  "goal_still_active": true
+}
