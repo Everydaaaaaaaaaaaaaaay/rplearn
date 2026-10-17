@@ -1,0 +1,159 @@
+# 高级：一张地图容不下的旅程
+
+## 学生题面
+
+阅读完整文章，将A—G中合适的完整段落填入第1—6处。有一段不用，请同时核对每处前后文。
+
+### The journeys outside the line
+
+When the fictional travel writer Owen came back from the island of Bellan, his editor asked for a map of the route. Owen could draw the roads without difficulty. What troubled him was the smooth line that would connect them. On the page it looked like a journey planned from the beginning, whereas much of his actual movement had depended on invitations, misunderstandings and changes of mind.
+
+(1) ____
+
+The two accounts agreed about where he had slept, but they disagreed about what counted as an event. The appointments filled his diary; a missed turning occupied three pages of his letters. Owen began to suspect that a faithful route would not necessarily produce a faithful account of the experience of travelling it.
+
+He tested that suspicion by writing the first afternoon twice. One version followed the order of the places he had visited. The other began with an unsuccessful attempt to buy a bus ticket and arranged the remaining scenes around what he had misunderstood during that encounter. He sent both versions to a reader who knew nothing about the trip.
+
+(2) ____
+
+Her question showed him what the rearranged version had concealed. It offered a satisfying explanation for his later choices but made knowledge acquired late in the day appear to have guided him from the start. Owen restored the moment of discovery to its original place, while retaining the earlier scene as an unresolved puzzle rather than explaining it immediately.
+
+A different difficulty arose around a woman he had met at the harbour. In his notes she appeared chiefly as the person who had told him where the ferry stopped. Reading the draft, Owen realised that he had turned a lengthy conversation into a convenient piece of directional advice. He could remember other things she had said, but not her exact words.
+
+(3) ____
+
+Keeping those limits visible made the encounter less polished. It also prevented a remembered impression from acquiring the authority of a transcript. Owen could describe how the conversation had affected him without supplying the woman with sentences that happened to serve his argument particularly well.
+
+The editor still wanted a clear route through the book. His concern was practical: a reader should not need to reconstruct the geography from scattered references. Owen now accepted that a conventional map could do useful work, provided it was not asked to represent everything the narrative was trying to convey.
+
+(4) ____
+
+In that division of labour, the line helped readers locate the scenes without explaining why those scenes had mattered. The notes could acknowledge a changed plan or an interval of waiting that a continuous route made invisible. Neither element was complete on its own, and the design did not invite readers to mistake one for the other.
+
+Before printing, a friend noticed that a hill named in the draft did not appear in the same position on a recent tourist map. Owen was tempted to trust the map because it looked authoritative. Yet the apparent disagreement might have involved the name rather than the hill, and he no longer had his original guide beside him to ask.
+
+(5) ____
+
+The correction therefore changed a label, not the journey. Owen left a brief note explaining why the earlier draft had used the other name. It was a small admission, but concealing it would have implied that he had always possessed the clarity which the process of writing had only gradually produced.
+
+As publication approached, the editor suggested ending with Owen's last glimpse of the harbour. It would neatly return the reader to the place where the trip had begun. Owen remembered the view, but it was not the final thing that had occupied his attention after leaving the island.
+
+(6) ____
+
+That unanswered message became the ending. It gave up the elegance of a completed circle in exchange for a connection whose future Owen could not predict. The book still contained a route and a departure. It no longer pretended that either of them had brought every encounter to a conclusion.
+
+### 待插入的完整段落 A—G（有一段不用）
+
+**A**
+
+He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+
+**B**
+
+Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+
+**C**
+
+The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+
+**D**
+
+She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+
+**E**
+
+He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+
+**F**
+
+He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+
+**G**
+
+He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+<!-- responses:start -->
+
+1. 第1处：选择一整个段落
+   A. He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+   B. Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+   C. The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+   D. She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+   E. He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+   F. He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+   G. He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+2. 第2处：选择一整个段落
+   A. He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+   B. Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+   C. The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+   D. She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+   E. He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+   F. He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+   G. He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+3. 第3处：选择一整个段落
+   A. He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+   B. Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+   C. The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+   D. She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+   E. He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+   F. He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+   G. He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+4. 第4处：选择一整个段落
+   A. He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+   B. Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+   C. The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+   D. She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+   E. He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+   F. He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+   G. He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+5. 第5处：选择一整个段落
+   A. He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+   B. Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+   C. The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+   D. She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+   E. He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+   F. He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+   G. He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+6. 第6处：选择一整个段落
+   A. He placed the numbered route on one page and a set of short, separately dated notes on the facing page. The numbers linked locations to scenes. The notes recorded interruptions and uncertainties without pretending to alter the roads themselves. A reader could use the map for orientation and the notes for a different purpose.
+   B. Rather than quote from memory, he marked the passage as his recollection and described the uncertainty surrounding it. He removed the invented dialogue that had made the first draft flow so easily. The woman would remain a person he had incompletely understood, rather than a perfectly articulate guide to his emerging theme.
+   C. The island's oldest guesthouse had once belonged to a shipping family. Its present manager kept a collection of ferry timetables in a locked cupboard and occasionally lent them to local historians. Owen had stayed there for two nights, although the room overlooking the quay was already occupied when he arrived.
+   D. She preferred the second account because its misunderstandings held her attention. But she asked why Owen had bought the ticket if he already knew that the service had been cancelled. Her assumption startled him: he had not learnt of the cancellation until hours after buying it, a fact that the new arrangement had obscured.
+   E. He had sent the harbour woman a letter asking whether he could mention their conversation. Her reply had arrived after his return, describing something quite unrelated to his manuscript. He had answered with another question and was still waiting. To end with a view would leave that continuing exchange outside the story.
+   F. He checked his notebook's drawing against an older local map and a photograph of the sign. All three placed the path beside the same hill, but the sign used an older name absent from the tourist edition. He revised the draft to give both names and made the relationship between them explicit.
+   G. He set the appointments in his pocket diary against the letters he had sent home. The diary gave a compact record of destinations and times. The letters lingered over delays and unexpected meetings, often giving more space to something he had failed to do than to the visit recorded neatly beside it.
+
+<!-- responses:end -->
+
+## 作者核对
+
+### 1：G
+
+G明确对照行程日记和家信，承接地图线无法表现经历，下文The two accounts、diary和letters逐一回扣。A是出版双页地图设计尚未到设计讨论；B/C/D/E/F分别处理引语、旅舍、读者意见、结尾、地名核查，不能提供两个记录。
+
+### 2：D
+
+D给出读者误以为先知停运的具体问题；下文Her question、knowledge acquired late和restored discovery回扣它。G只是日记家信对照、没有读者问题；A/B/C/E/F均不说明重排为何造成时间知识错位。
+
+### 3：B
+
+B以注明回忆并删虚构对白应对无法记得原话，下文limits visible、authority of a transcript和不为对方编句子呼应。G虽然也是书信材料但不解决原话不可靠；A/C/D/E/F分别为地图、旅舍、叙事次序、书信结尾、名字，并非引用边界。
+
+### 4：A
+
+A将编号路线和另页日期笔记并置，分别定位场景与记录中断；下文division of labour、line、notes逐项承接。G对比原始记录但没提出地图版式；F核查地名却没有双载体分工，B/C/D/E同样不能满足地图设计问题。
+
+### 5：F
+
+F用笔记图、旧地图和路牌照片确定同山异名，给出两名并说明关系，下文changed a label, not the journey及earlier draft直接承接。C旅舍史含旧时刻表但非山名证据；A/B/D/E/G均没有解决同一山的地名冲突。
+
+### 6：E
+
+E说明离岛后仍在继续的通信而未等到答复，拒绝把海港回望当终结；下文That unanswered message和connection future unknown回扣。B是回忆引用处理不涉及未回信；C/D/F/G/A均不给出此结尾所需的持续关系。
+
+原创虚构材料；参照已核完整源模式，不沿用源正文或把原键当gold。所有候选逐空独立检查，不依赖排除已用项。作者自审不等独立教研、学生、商用或生产验证。
