@@ -2,10 +2,14 @@
 import re
 COUNTS={'listening_summary_completion':6,'listening_flowchart_matching':6,'listening_multiselect':3,'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
 ROLES=['lower_left_room','inner_right_room','far_wall_shelves','upper_middle_room','right_annex']
+FIVE_GAP_FLOWS={
+ 'idp.listening.flow5of8':(8,'whole_printed_five_response_eight_candidate_flow'),
+ 'ielts-computer.listening.flow5of9':(9,'whole_interactive_five_response_nine_candidate_flow'),
+}
 
 def validate_draft(d):
     kind=d['family'];assert kind in COUNTS and d['grade']=='advanced' and d['academic_bundle_listening']
-    flow5=kind=='listening_flowchart_matching' and d['source_group_id']=='idp.listening.flow5of8'
+    flow5=kind=='listening_flowchart_matching' and d['source_group_id'] in FIVE_GAP_FLOWS
     count=5 if flow5 else COUNTS[kind]
     assert d['source_repeat_count']==(1 if kind=='listening_flowchart_matching' and not flow5 else None) and d['render_repeat_count']==1
     assert len(d['clips'])==1 and d['fictional_illustrative_case']
@@ -34,7 +38,7 @@ def validate_draft(d):
             if kind!='listening_note_table_completion' or n!=9:
                 assert all(re.fullmatch("[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*",v)for v in q['acceptedAnswers']+q['rejected'])
         else:
-            labels=list('ABCDEFGH'if flow5 else'ABCDEFGHI'if kind in {'listening_plan_label_matching','listening_flowchart_matching'}else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
+            labels=list('ABCDEFGHI'[:FIVE_GAP_FLOWS[d['source_group_id']][0]] if flow5 else'ABCDEFGHI'if kind in {'listening_plan_label_matching','listening_flowchart_matching'}else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
             assert [k for k,v in q['options']]==labels and q['answer']in labels
             assert set(q['candidate_reasons'])==set(labels) and all(q['candidate_reasons'].values())
             if kind=='listening_plan_label_matching':assert q['options']==d['candidates'] and q['answer']==d['answers_by_position'][n-1]
@@ -74,11 +78,12 @@ def validate_draft(d):
         assert c['questions'][3]['rejected']==c['questions'][4]['rejected']
         assert d['source_task_form_only'] and not d['source_B1_is_advanced_norm']
     if flow5:
+        candidate_count,source_scope=FIVE_GAP_FLOWS[d['source_group_id']]
         assert set(d['speakers'])=={'M','W'} and all(v['voice']for v in d['speakers'].values())
         assert len(d['flow_nodes'])==8 and len(c['turns'])>=2
-        assert [k for k,v in d['candidates']]==list('ABCDEFGH') and len({v for k,v in d['candidates']})==8
+        assert [k for k,v in d['candidates']]==list('ABCDEFGHI'[:candidate_count]) and len({v for k,v in d['candidates']})==candidate_count
         assert len(d['answers_by_position'])==5 and len(set(d['answers_by_position']))==5
-        assert d['source_scope']=='whole_printed_five_response_eight_candidate_flow'
+        assert d['source_scope']==source_scope
         assert d['printed_stage_indices']==[0,3,4] and all('____' not in d['flow_nodes'][i]for i in [0,3,4])
         assert [int(re.search(r'(\d) ____',v)[1])for v in d['flow_nodes']if '____'in v]==list(range(1,6))
         assert d['arrows']=='linear_downwards' and d['source_reuse_rule']=='not_printed'

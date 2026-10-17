@@ -6,7 +6,7 @@ from grade_mode_evidence import load_ref,REPO
 from quality_review_contract import response_markdown
 from compile_short_dialogue_listening import ref
 from render_original_listening import words
-from academic_bundle_listening_contract import validate_draft,ROLES
+from academic_bundle_listening_contract import validate_draft,ROLES,FIVE_GAP_FLOWS
 
 def draw_plan(d,path):
     fixed=d['fixed_labels'];escape=html.escape
@@ -137,7 +137,17 @@ def check(g,a,b,s):
         load_ref(s['source'])
         assert s['features']['max_words']==2 and s['features']['responses']==6
     elif d['family']=='listening_flowchart_matching':
-        if d['source_group_id']=='idp.listening.flow5of8':
+        if d['source_group_id']=='ielts-computer.listening.flow5of9':
+            assert s['source_visual_verified'] and s['source_complete_DOM_verified'] and not s['source_original_audio_acquired']
+            native=load_ref(s['source']).read_text()
+            assert 'Complete the flow-chart. Choose the correct answer and move it into the gap.' in native
+            assert 'A spacecraft lands on a planet and sends out a rover.' in native
+            assert 'The 5 are compared with existing data from Earth.' in native
+            assert s['features']['shared_candidates']==9 and s['features']['nodes']==8
+            for value in s['unlettered_original_candidates']:assert '- generic: '+value+'\n' in native
+            for asset in s['source_visuals']:load_ref(asset)
+            load_ref(s['companion_reader'])
+        elif d['source_group_id']=='idp.listening.flow5of8':
             assert s['source_visual_verified'] and not s['source_original_audio_acquired']
             load_ref(s['source_visual']);load_ref(s['companion_reader'])
         else:
@@ -178,8 +188,9 @@ def check(g,a,b,s):
         assert all(q['fillMarking']['maxWords']==2 and q['fillMarking']['numberAllowance']=='one'for q in g['questions'])
         assert d['summary_text']in a['student_passage']
     elif d['family']=='listening_flowchart_matching':
-        if d['source_group_id']=='idp.listening.flow5of8':
-            assert a['flow_structure']==dict(nodes=8,responses=5,shared_candidates=8,printed_stage_indices=[0,3,4],arrows='linear_downwards')
+        if d['source_group_id'] in FIVE_GAP_FLOWS:
+            count,_=FIVE_GAP_FLOWS[d['source_group_id']]
+            assert a['flow_structure']==dict(nodes=8,responses=5,shared_candidates=count,printed_stage_indices=[0,3,4],arrows='linear_downwards')
             assert all(s['features'][k]==v for k,v in a['flow_structure'].items())
         else:
             assert s['features']['nodes']==7 and s['features']['responses']==6 and s['features']['shared_candidates']==9
