@@ -251,7 +251,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
                    if family=='listening_extract_choice' else draft['audio_introduction'])
             if draft.get('shared_picture_listening'):intro=draft['audio_introduction'] if len(draft['clips'])==1 else 'Description '+str(number)+'.'
             if draft.get('academic_form_listening') or draft.get('academic_bundle_listening'):intro=draft['audio_introduction']
-            if draft.get('illustrated_listening'):intro='Text '+str(number)+'.'if draft['grade']=='primary5'else draft['audio_introduction']
+            if draft.get('illustrated_listening'):intro='Text '+str(number)+'.'if draft['grade']in ['primary5',7]else draft['audio_introduction']
             example_words=0
             if number==1 and draft.get('worked_example'):
                 example=draft['worked_example'];q=example['question']

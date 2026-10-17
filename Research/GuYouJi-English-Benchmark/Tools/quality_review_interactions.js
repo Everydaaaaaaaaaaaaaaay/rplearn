@@ -12,7 +12,11 @@ function makeButton(label,pressed,fn){const b=document.createElement('button');b
 function inputFor(g,q){
  const saved=drafts[g.id]||{};
  if(g.fixedSharedBank)return '<select class="short-answer" name="'+q.number+'" aria-label="'+escapeText(q.stem)+'"><option value="">请选择</option>'+q.options.map(([letter,text])=>'<option value="'+letter+'" '+(saved[q.number]===letter?'selected':'')+'>'+(g.kind==='dialogue_ordering'?escapeText(text):letter+'. '+escapeText(text))+'</option>').join('')+'</select>';
- if(q.options.length)return q.options.map(([letter,text])=>'<label class="choice"><input type="radio" name="'+q.number+'" value="'+letter+'" '+(saved[q.number]===letter?'checked':'')+'><span>'+letter+'. '+(q.optionImages?'<img class="option-image" src="'+escapeText(q.optionImages[letter].src)+'" alt="'+escapeText(q.optionImages[letter].alt)+'" width="'+(q.optionImages[letter].width||300)+'" height="'+(q.optionImages[letter].height||180)+'">':escapeText(text))+'</span></label>').join('');
+ if(q.options.length){
+  const choices=q.options.map(([letter,text])=>'<label class="choice"><input type="radio" name="'+q.number+'" value="'+letter+'" '+(saved[q.number]===letter?'checked':'')+'><span>'+letter+'. '+(q.optionImages?'<img class="option-image" src="'+escapeText(q.optionImages[letter].src)+'" alt="'+escapeText(q.optionImages[letter].alt)+'" width="'+(q.optionImages[letter].width||300)+'" height="'+(q.optionImages[letter].height||180)+'">':escapeText(text))+'</span></label>').join('');
+  const compact=q.optionImages&&q.options.length<=3&&Object.values(q.optionImages).every(image=>image.width<=300&&image.height<=300);
+  return compact?'<div class="picture-choices" style="--picture-choice-count:'+q.options.length+'">'+choices+'</div>':choices;
+ }
  if(q.acceptedAnswers||q.knownForms){const key=String(q.number)+'.1';return '<input class="short-answer" type="text" name="'+key+'" aria-label="'+escapeText(q.stem)+'" value="'+escapeText(saved[key]||'')+'" autocomplete="off" lang="en">';}
  const parts=q.parts||[{label:q.stem}];return parts.map((part,i)=>{const key=String(q.number)+'.'+(i+1);return (part.opening?'<p class="fixed" lang="en">'+escapeText(part.opening)+'</p>':'')+'<label class="written">'+escapeText(part.label)+'<textarea name="'+key+'" rows="'+(g.responseMode==='writing_review'?9:3)+'" lang="en">'+escapeText(saved[key]||'')+'</textarea></label>';}).join('');
 }
