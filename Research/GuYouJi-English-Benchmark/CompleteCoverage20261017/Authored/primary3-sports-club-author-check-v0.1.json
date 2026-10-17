@@ -1,0 +1,204 @@
+{
+  "version": "0.1",
+  "id": "primary3-sports-club",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "33d304838981a5fdcad161d9e10739194b3d172161a36b92ea064adc2f50eb33",
+  "source_binding": "p3sports",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.18.json",
+    "sha256": "7bfb511de1c14f4b2c69e808e2f15450690383a8159f2686c9c59ab688f510df"
+  },
+  "source_group_id": "primary3.dongcheng2025-26upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Finn",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "Finn的完整描述：Finn has a rope. He likes skipping. He will skip today. 对应图D（skipping）；其他图分别为A basketball, B running, C table tennis, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 2,
+      "stem": "Grace",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Grace的完整描述：Grace has a basketball. She will play basketball with her team. 对应图A（basketball）；其他图分别为B running, C table tennis, D skipping, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 3,
+      "stem": "Hugo",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "Hugo的完整描述：Hugo has a football. He will play football on the grass. 对应图E（football）；其他图分别为A basketball, B running, C table tennis, D skipping，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 4,
+      "stem": "Iris",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Iris的完整描述：Iris likes running. She will run with her sister. 对应图B（running）；其他图分别为A basketball, C table tennis, D skipping, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 5,
+      "stem": "Jack",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Jack的完整描述：Jack likes table tennis. He will play table tennis with his friend. 对应图C（table tennis）；其他图分别为A basketball, B running, D skipping, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    }
+  ],
+  "canonical_response_block_sha256": "133d7e28ad572b3fe36bfd71431cf0e437caec0adbcd7cf50b6d84a60e6951ab",
+  "student_passage": "### 共享候选图A—E\n\n![共享候选图A—E](../../../../build/english-benchmark-authority-20261017/shared-sports-bank-v0.1.svg)\n\n### 材料1\n\n[材料1（第1—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary3-sports-club-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary3-sports-club-manuscript-v0.1.json",
+    "sha256": "7249bcf41d49c49ba03b95ecd4d0ab40dee4e4ad7ae69d715b804326e6cc3193"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary3-sports-club-audio-v0.1.json",
+    "sha256": "2c3ad39fa9c207957a9fc3927bead892e483d54157c54ee254e79cadf393ddd3"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary3-sports-club-extract1-v0.1.m4a",
+      "sha256": "0741b0648aaeddfbafee9ceef29c7d021dbcbe9177dc914f20d2b66f86716d90",
+      "seconds": 56.980045351473926,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "figure_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/shared-sports-bank-v0.1.svg",
+      "sha256": "69f8a38fdf58cf916bf4f10970122009b6a866832224787aafc548c16265bc5a"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "shared_picture_listening": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 5,
+    "options_English_words_with_repeated_bank": 25,
+    "shared_visual_panels": 5,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 54,
+    "audio_spoken_words_with_instructions": 68,
+    "audio_seconds_with_pauses": 56.980045351473926
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

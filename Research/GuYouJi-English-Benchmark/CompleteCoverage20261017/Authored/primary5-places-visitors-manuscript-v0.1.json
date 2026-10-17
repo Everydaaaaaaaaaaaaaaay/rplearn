@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "id": "primary5-places-visitors",
+  "title": "小五场所描述：访客遇见的人",
+  "grade": "primary5",
+  "family": "listening_description_picture_matching",
+  "family_label": "听描述选场所图",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part3",
+  "source_binding": "p5places",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.18.json",
+    "sha256": "7bfb511de1c14f4b2c69e808e2f15450690383a8159f2686c9c59ab688f510df"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.18.json",
+  "shared_picture_listening": true,
+  "render_repeat_count": 2,
+  "source_repeat_count": 2,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 115
+    }
+  },
+  "audio_introduction": "Look at pictures A to E. Listen and choose a picture for each person.",
+  "instruction": "看A—E共享场所图，听五段描述，每段两遍，为五个人名各选工作场所图。本机每段前后5秒、两遍间5秒另有提示，只作审阅安排。没有额外规定每字母只能用一次。",
+  "source_form_notice": "小五公开卷五人名/五描述各两遍配A—E场所图，脚本/参考键可核但原图/音轨缺；来源语病不当正确语言金标，标题身份未认证。本稿全图音为自有原创，复用同一图组不当独立视觉曝光；无每项一次附加限制。",
+  "format_summary": "5人名 / 共享A—E五图 / 5回应 / 5描述各2遍 / 源复用规则未知",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/shared-places-bank-v0.1.svg",
+      "sha256": "0b3cc86f9f992c0900b78c6f5c11c87369fac008912ff6e1ae11c77f87cfde9b"
+    }
+  ],
+  "visual_panel_semantics": {
+    "A": "library",
+    "B": "theatre",
+    "C": "factory",
+    "D": "airport",
+    "E": "shop"
+  },
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Zara puts things on shelves for customers to buy. At the end of the day, she closes the till."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Zara",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "Zara的完整描述：Zara puts things on shelves for customers to buy. At the end of the day, she closes the till. 对应图E（shop）；其他图分别为A library, B theatre, C factory, D airport，不是其描述的活动/地点；不靠排除已用标签。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Adam works in a building with noisy machines. The machines turn wood into chairs for schools."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Adam",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "Adam的完整描述：Adam works in a building with noisy machines. The machines turn wood into chairs for schools. 对应图C（factory）；其他图分别为A library, B theatre, D airport, E shop，不是其描述的活动/地点；不靠排除已用标签。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Bella works beside the passenger gates. She tells travellers when their plane is ready for boarding."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Bella",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "Bella的完整描述：Bella works beside the passenger gates. She tells travellers when their plane is ready for boarding. 对应图D（airport）；其他图分别为A library, B theatre, C factory, E shop，不是其描述的活动/地点；不靠排除已用标签。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Carl works behind a curtain on a stage. Tonight he will act in a play for families."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Carl",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "Carl的完整描述：Carl works behind a curtain on a stage. Tonight he will act in a play for families. 对应图B（theatre）；其他图分别为A library, C factory, D airport, E shop，不是其描述的活动/地点；不靠排除已用标签。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dora helps people find books to borrow. She puts returned books back on their shelves."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Dora",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "Dora的完整描述：Dora helps people find books to borrow. She puts returned books back on their shelves. 对应图A（library）；其他图分别为B theatre, C factory, D airport, E shop，不是其描述的活动/地点；不靠排除已用标签。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "version": "0.1",
+  "id": "primary3-sports-saturday",
+  "grade": "primary3",
+  "questions": 5,
+  "candidate_sha256": "40326e6b2ed84cb7862b7e9e2747c10c62a0265a6452417dd6c2770ca21e65b0",
+  "source_binding": "p3sports",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.18.json",
+    "sha256": "7bfb511de1c14f4b2c69e808e2f15450690383a8159f2686c9c59ab688f510df"
+  },
+  "source_group_id": "primary3.dongcheng2025-26upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Kate",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Kate的完整描述：Kate runs every day. She will run in the school race. 对应图B（running）；其他图分别为A basketball, C table tennis, D skipping, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 2,
+      "stem": "Leo",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "Leo的完整描述：Leo likes football. He will play football on Saturday. 对应图E（football）；其他图分别为A basketball, B running, C table tennis, D skipping，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 3,
+      "stem": "Mina",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "Mina的完整描述：Mina likes skipping. She will skip with a rope. 对应图D（skipping）；其他图分别为A basketball, B running, C table tennis, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 4,
+      "stem": "Noah",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Noah的完整描述：Noah likes table tennis. He will play table tennis after school. 对应图C（table tennis）；其他图分别为A basketball, B running, D skipping, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    },
+    {
+      "number": 5,
+      "stem": "Owen",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ],
+        [
+          "D",
+          "图D"
+        ],
+        [
+          "E",
+          "图E"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Owen的完整描述：Owen likes basketball. He will play basketball in the playground. 对应图A（basketball）；其他图分别为B running, C table tennis, D skipping, E football，不是其描述的活动/地点；不靠排除已用标签。"
+    }
+  ],
+  "canonical_response_block_sha256": "9e6652af0f53f4c6f0b3dd6473e75363f1716fd931959aeb94c41cbe7003a169",
+  "student_passage": "### 共享候选图A—E\n\n![共享候选图A—E](../../../../build/english-benchmark-authority-20261017/shared-sports-bank-v0.1.svg)\n\n### 材料1\n\n[材料1（第1—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary3-sports-saturday-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary3-sports-saturday-manuscript-v0.1.json",
+    "sha256": "e8872a26047527c5f5924225ebbed68e181f079c36339335466820a92f6d704e"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary3-sports-saturday-audio-v0.1.json",
+    "sha256": "defb10e08ac849eab4c36663c0461d6a68cdb8ab2b81a15e2dea3106e35f3b0d"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary3-sports-saturday-extract1-v0.1.m4a",
+      "sha256": "c65e53a0a91a3eb7942e2d17ff7f3d878ddf0df71311d294d3d5a94730331238",
+      "seconds": 56.28131519274376,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "figure_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/shared-sports-bank-v0.1.svg",
+      "sha256": "69f8a38fdf58cf916bf4f10970122009b6a866832224787aafc548c16265bc5a"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "shared_picture_listening": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 5,
+    "options_English_words_with_repeated_bank": 25,
+    "shared_visual_panels": 5,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 50,
+    "audio_spoken_words_with_instructions": 64,
+    "audio_seconds_with_pauses": 56.28131519274376
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
