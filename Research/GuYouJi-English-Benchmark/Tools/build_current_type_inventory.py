@@ -65,17 +65,31 @@ def build(page,version="0.1"):
         'postgraduate':{'reading_choice','shared_bank','paragraph_matching','listening_long_conversation_choice','listening_passage_choice','listening_lecture_choice'},
         'advanced':{'choice_cloze','open_cloze','passage_form','keyword_transformation','reading_choice','cross_text_matching','paragraph_gap_insertion','multiple_text_information_matching','listening_extract_choice','listening_sentence_completion','listening_interview_choice','listening_double_matching'}}
     adult=[]
+    academic_catalogue = json.loads(load_ref(plan['current_academic_reference_catalogue']).read_text()) if plan.get('current_academic_reference_catalogue') else None
     for level in ['undergraduate','postgraduate','advanced']:
         r=next(r for r in rows if r['level']==level)
         adult.append(dict(level=level,displayed_families=[c['family']for c in r['current_types']],
-            authoritative_type_count=12 if level=='advanced'else 6,
+            reference_framework_type_count=12 if level=='advanced'else 6,
             boundary='C1reference8reading_use+4listening;notproductadvanced_equivalence'if level=='advanced'else'CETspecificblueprint;notdegreepopulation',
             known_missing=sorted(required[level]-{c['family']for c in r['current_types']}),
             school_writing_and_translation_excluded=True))
+        if level=='advanced' and academic_catalogue:
+            missing=[]
+            for form in academic_catalogue['sample_rows']:
+                source_id=form.get('source_group_id',form['id'])
+                authors=[g['id'] for g in data['groups'].values() if g['grade']=='advanced' and source_id in g['anchor_group_ids']]
+                assert len(authors)==form['current_exact_mode_authors']
+                if len(authors)<form['current_author_target']:missing.append(form['id'])
+            adult[-1].update(boundary='C1baseline_plus_general_academic_task_references;notproductadvanced_or_exam_score_equivalence',
+                C1_baseline_known_missing=adult[-1]['known_missing'],academic_sample_concrete_modes=len(academic_catalogue['sample_rows']),
+                academic_sample_modes_without_three_originals=missing,
+                academic_format_only_without_complete_sample=academic_catalogue['format_types_without_complete_sample_in_this_packet'],
+                known_missing=adult[-1]['known_missing']+missing+academic_catalogue['format_types_without_complete_sample_in_this_packet'],
+                advanced_domain_complete=False)
     return dict(version=version,scope='15levels_current_source_author_configuration_inventory',current_plan=ref(load_ref(data['active_run_plan']) if isinstance(data['active_run_plan'],dict) else BASE/data['active_run_plan']),
         authority_atlas=plan['current_authority_atlas'],middle_appearance=ref(appearance),
         groups=len(data['groups']),responses=sum(len(g['questions'])for g in data['groups'].values()),display_cells=data['source_form_representative_cells'],
-        levels=rows,adult_blueprint_comparison=adult,
+        levels=rows,adult_blueprint_comparison=adult,academic_reference_catalogue=plan.get('current_academic_reference_catalogue'),
         observed_source_cells_without_author=sum(len(r['observed_source_cells_without_current_author'])for r in rows),
         additional_media_and_current_nonpaper_gaps_retained=True,unknown_cartesian_product_not_required=True,
         original_paused_groups=data['paused_concrete_groups'],

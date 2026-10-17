@@ -1,0 +1,132 @@
+{
+  "version": "0.1",
+  "id": "advanced-tristate-pottery-register",
+  "grade": "advanced",
+  "questions": 3,
+  "candidate_sha256": "55b8adbaecbabc9a067c7c1c5ee93fdb05794614d472d475a072c91fa2e86a44",
+  "source_binding": "academic_info_tristate3",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AcademicReadingSourceBindings-v0.1.json",
+    "sha256": "6b99f2c6b9e450ce0b6b34d3cd1b67c9aca26f4c4d78f04f5b03b489144ea314"
+  },
+  "source_group_id": "advanced.official-academic-reference.information-tristate3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The register’s first owner had wanted to become an archaeologist from childhood.",
+      "options": [
+        [
+          "TRUE",
+          "陈述与材料信息一致"
+        ],
+        [
+          "FALSE",
+          "材料给出与陈述矛盾的信息"
+        ],
+        [
+          "NOT GIVEN",
+          "材料既未支持也未反驳该陈述"
+        ]
+      ],
+      "answer": "NOT GIVEN",
+      "rationale": "TRUE：成年研究多个藏品并不能证明童年志向；FALSE：没有童年相反志向或放弃考古的记录；NOT GIVEN：全文从复核登记册开始，未叙述童年志向，既不支持也不反驳"
+    },
+    {
+      "number": 2,
+      "stem": "Shared crate numbers helped the team connect field sketches with register entries.",
+      "options": [
+        [
+          "TRUE",
+          "陈述与材料信息一致"
+        ],
+        [
+          "FALSE",
+          "材料给出与陈述矛盾的信息"
+        ],
+        [
+          "NOT GIVEN",
+          "材料既未支持也未反驳该陈述"
+        ]
+      ],
+      "answer": "TRUE",
+      "rationale": "TRUE：相同箱号作为配对依据，明确支持陈述；FALSE：配对方法并未被否定；NOT GIVEN：same crate numbers直接给出方法，非未说明"
+    },
+    {
+      "number": 3,
+      "stem": "In the published revision, the original wording was replaced throughout with modern labels.",
+      "options": [
+        [
+          "TRUE",
+          "陈述与材料信息一致"
+        ],
+        [
+          "FALSE",
+          "材料给出与陈述矛盾的信息"
+        ],
+        [
+          "NOT GIVEN",
+          "材料既未支持也未反驳该陈述"
+        ]
+      ],
+      "answer": "FALSE",
+      "rationale": "TRUE：原文旧描述与新解释并列且拒绝全替换，不支持陈述；FALSE：明确保留旧文并拒绝uniform replacement，与throughout替换矛盾；NOT GIVEN：出版处理明示，不属于缺信息"
+    }
+  ],
+  "canonical_response_block_sha256": "4b105a20a44c5b1c5a030a89ce350ac0ca44094a32a0ae5d18fac0ee3af8521c",
+  "student_passage": "### An archaeological register reconsidered\n\nIn a fictional account of a small archaeological survey, an old pottery register became the starting point for a new investigation. Each entry gave a crate number, a brief description and the depth at which a fragment was reportedly found. The register’s first owner had studied several different collections, but the account began with the decision to re-examine this particular set of entries. It did not trace the owner’s childhood or early education. The research question concerned whether the recorded depth categories were consistent enough to support a comparison between excavation areas.\n\nThe new team found that two excavators had used different meanings for one depth label. To establish this, they compared dated field sketches with register entries that referred to the same crate numbers. The sketches preserved measurements that had been reduced to a single descriptive term in the register. Matching the numbers made it possible to recover the distinction without assuming that identical wording necessarily indicated identical practice. Entries without a corresponding sketch were kept in the catalogue, but the team marked their interpretation as provisional.\n\nWhen publishing the revised catalogue, the team retained the old descriptions beside the proposed interpretations. Readers could therefore see which changes depended on additional evidence and which entries remained unresolved. The authors rejected a suggestion that they should replace the original wording throughout with a uniform modern label, since doing so would conceal the uncertainty they had uncovered. They also warned against treating a tidier catalogue as evidence that every fragment’s original position had become known. The revised document was intended to expose the limits of the record as much as to improve its usefulness.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/advanced-tristate-pottery-register-manuscript-v0.1.json",
+    "sha256": "05831b6486585cc4f4464285635118a329e88e388ec0c236098560eaafe923c6"
+  },
+  "three_way_information_judgement": true,
+  "one_whole_authored_passage": true,
+  "outside_knowledge_not_used": true,
+  "relation_review": [
+    {
+      "stem": "The register’s first owner had wanted to become an archaeologist from childhood.",
+      "answer": "NOT GIVEN",
+      "evidence_quote": "",
+      "relation": "not_reported",
+      "unreported_dimension": "first_owner_childhood_career_ambition",
+      "all_paragraphs_checked": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "stem": "Shared crate numbers helped the team connect field sketches with register entries.",
+      "answer": "TRUE",
+      "evidence_quote": "they compared dated field sketches with register entries that referred to the same crate numbers.",
+      "relation": "agreement",
+      "unreported_dimension": null,
+      "all_paragraphs_checked": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "stem": "In the published revision, the original wording was replaced throughout with modern labels.",
+      "answer": "FALSE",
+      "evidence_quote": "the team retained the old descriptions beside the proposed interpretations.",
+      "relation": "contradiction",
+      "unreported_dimension": null,
+      "all_paragraphs_checked": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 278,
+    "stem_English_words": 37,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 3
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
