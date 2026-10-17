@@ -56,12 +56,15 @@ def read_pcm(path):
     return data
 
 
-def render(manuscript, output, version='0.1'):
+def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=None):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
     assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion'}
-    if draft.get('junior_source_bound'):
+    if draft.get('senior_short_source_bound'):
+        from senior_short_listening_contract import validate_draft
+        validate_draft(draft)
+    elif draft.get('junior_source_bound'):
         from junior_listening_contract import validate_draft
         validate_draft(draft)
     elif family=='listening_picture_matching':
@@ -130,7 +133,7 @@ def render(manuscript, output, version='0.1'):
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if draft.get('junior_source_bound'):
+    if draft.get('junior_source_bound') or draft.get('senior_short_source_bound'):
         repeat_count=draft['source_repeat_count']
     elif family=='listening_passage_completion' or family=='listening_dialogue_choice' and draft['grade']=='primary5':
         assert draft['source_repeat_count']==3
@@ -151,6 +154,13 @@ def render(manuscript, output, version='0.1'):
     assert re.fullmatch(r'\d+\.\d+',version)
     manifest_path = output/(draft['id']+f'-audio-v{version}.json')
     assert not manifest_path.exists(), 'Versioned audio manifests are immutable'
+    prior=None
+    if reuse_manifest is not None:
+        reuse_manifest=Path(reuse_manifest).resolve();prior=json.loads(reuse_manifest.read_text())
+        assert prior['id']==draft['id'] and prior['manuscript']==dict(path=str(manuscript.relative_to(BASE)),sha256=digest(manuscript))
+        assert prior['whole_final_audio_decode_passed'] and len(prior['tracks'])==len(draft['clips'])
+        assert render_only and set(render_only)<=set(range(1,len(draft['clips'])+1))
+    else:assert render_only is None
     tracks = []
     with tempfile.TemporaryDirectory(prefix='speech-work-', dir=output) as scratch:
         scratch = Path(scratch)
@@ -171,6 +181,10 @@ def render(manuscript, output, version='0.1'):
             return utterance_cache[key]
 
         for number, clip in enumerate(draft['clips'], 1):
+            if prior is not None and number not in render_only:
+                reused=prior['tracks'][number-1];oldpath=REPO/reused['path']
+                assert oldpath.stat().st_size==reused['bytes'] and digest(oldpath)==reused['sha256']
+                tracks.append(reused);continue
             target = output/(draft['id']+f'-extract{number}-v{version}.m4a')
             assert not target.exists(), 'Versioned audio assets are immutable'
             parts, segments, frame = [], [], 0
@@ -192,6 +206,20 @@ def render(manuscript, output, version='0.1'):
                               else list(range(1,len(clip['questions'])+1)))
             intro=(f'Part {number}. Read questions {response_numbers[0]} to {response_numbers[-1]}.'if draft.get('junior_source_bound') or family in {'listening_multi_question_choice','listening_dialogue_choice'}else f'Text {number}.' if family in {'listening_short_conversation_choice','listening_picture_true_false','listening_word_phrase_choice'} else f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
                    if family=='listening_extract_choice' else draft['audio_introduction'])
+            example_words=0
+            if number==1 and draft.get('worked_example'):
+                example=draft['worked_example'];q=example['question']
+                example_intro='Here is an example.'
+                append(speech(example_intro,'Daniel',165),'worked_example_instruction',example_intro)
+                example_words+=words(example_intro)
+                for turn in example['turns']:
+                    voice=draft['speakers'][turn['speaker']]
+                    speed=voice['rate_parameter'] if 'rate_parameter'in voice else voice['words_per_minute']
+                    append(speech(turn['text'],voice['voice'],speed),'worked_example',turn['text'],turn['speaker'],1)
+                    example_words+=words(turn['text']);pause(.35)
+                solution=q['stem']+' '+ ' '.join(k+'. '+v for k,v in q['options'])+' The answer is '+q['answer']+'.'
+                append(speech(solution,'Daniel',150),'worked_example_solution',solution)
+                example_words+=words(solution);pause(2)
             append(speech(intro,'Daniel',165),'introduction',intro)
             pause(clip.get('preview_seconds',8))
             repeat_prompt=('Now you will hear the extract again.' if family=='listening_extract_choice'
@@ -236,9 +264,10 @@ def render(manuscript, output, version='0.1'):
                        dialogue_seconds_excluding_added_pauses=speech_frames/RATE,
                        observed_English_word_tokens_per_minute=estimated_word_rate,
                        rate_parameter_not_actual_word_rate_or_difficulty=True,
-                       spoken_words_with_instructions=repeat_count*words(spoken_once)+words(intro)+(repeat_count-1)*words(repeat_prompt)+announcement_words,
+                       spoken_words_with_instructions=repeat_count*words(spoken_once)+words(intro)+(repeat_count-1)*words(repeat_prompt)+announcement_words+example_words,
                        sample_rate=RATE, pcm_frames_before_encoding=frame,
                        decoded_frames=decoded_frames, peak_abs_sample=peak, segments=segments)
+            if example_words:track.update(worked_example_spoken_words=example_words,worked_example_assessed_responses=0)
             tracks.append(track)
             combined.unlink(); decoded.unlink()
             print(json.dumps({'id':draft['id'],'extract':number,'seconds':track['seconds'],'bytes':track['bytes']}),flush=True)
@@ -246,6 +275,7 @@ def render(manuscript, output, version='0.1'):
                   tool='macOS say + afconvert;local synthesis only',voices=draft['speakers'],tracks=tracks,
                   no_source_recording_reused=True,temporary_PCM_not_retained=True,whole_final_audio_decode_passed=True,
                   independent_listening_pronunciation_prosody_student_commercial_production_validated=False)
+    if prior is not None:manifest.update(reused_verified_audio_manifest=dict(path=str(reuse_manifest.relative_to(REPO)),sha256=digest(reuse_manifest)),rerendered_track_numbers=list(render_only),unchanged_tracks_reused_without_copy=True)
     manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     return manifest_path
 
