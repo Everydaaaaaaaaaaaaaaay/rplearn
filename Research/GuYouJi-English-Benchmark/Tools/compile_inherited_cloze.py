@@ -20,7 +20,7 @@ def validate(draft, binding, source):
     assert source['full_student_input'] and not source['is_independent_gold']
     assert source['material']['passages']==1 and source['original_exam_section_complete']=='unknown'
     assert source['source_origin_not_verified'] and binding['new_source_count']==0
-    count=source['responses'];assert count in [6,8] and binding['responses']==count
+    count=source['responses'];assert count in [6,8,10] and binding['responses']==count
     assert source['candidates']['per_response']==[3]*count and binding['options_each']==3
     native=json.loads(load_ref(source['source_native']).read_text())
     observed=next(g for g in native['groups'] if g['id']==source['id'])
