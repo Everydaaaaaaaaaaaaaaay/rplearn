@@ -30,6 +30,29 @@ function closedSelectionComparison(questions,saved={}){
  const rows=questions.map(q=>{const chosen=saved[q.number]||'';return {number:q.number,chosen,reference:q.answer,state:!chosen?'unanswered':chosen===q.answer?'match':'different'};});
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,rows};
 }
+function selectionSetComparison(questions,saved={}){
+ const base=closedSelectionComparison(questions,saved);
+ if(!base.available)return base;
+ const sets=new Map();
+ for(const q of questions){
+  const c=q.selectionSet;
+  if(!c||c.version!==1||typeof c.id!=='string'||!c.id||c.order!=='either'||c.distinct!==true||c.localMatchingRule!=='distinct_correct_options_once'||!Array.isArray(c.positions)||c.positions.length!==2||new Set(c.positions).size!==2||!c.positions.every(Number.isInteger)||!Array.isArray(c.correct)||c.correct.length!==2||new Set(c.correct).size!==2||!c.correct.every(k=>q.options.some(([label])=>label===k))||!c.positions.includes(q.number))return {available:false,reason:'多选提示的完整双响应、无序集合或不重复规则未绑定。'};
+  const prior=sets.get(c.id)||[];prior.push(q);sets.set(c.id,prior);
+ }
+ const rows=[],selectionConflicts=[];
+ for(const [id,qs] of sets){
+  const c=qs[0].selectionSet;
+  if(qs.length!==2||!c.positions.every((n,i)=>qs[i]?.number===n)||qs.some((q,i)=>JSON.stringify(q.selectionSet)!==JSON.stringify(c)||JSON.stringify(q.options)!==JSON.stringify(qs[0].options)||q.answer!==c.correct[i]))return {available:false,reason:'多选提示被截断、重排或候选集合不一致，暂不核对。'};
+  const used=new Set();
+  for(const q of qs){
+   const chosen=saved[q.number]||'',duplicate=chosen&&used.has(chosen);
+   if(chosen)used.add(chosen);
+   if(duplicate)selectionConflicts.push({id,number:q.number,chosen});
+   rows.push({number:q.number,chosen,reference:c.correct.join(' / ')+'（两项，顺序任意）',state:!chosen?'unanswered':!duplicate&&c.correct.includes(chosen)?'match':'different'});
+  }
+ }
+ return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:0,selectionConflicts,rows};
+}
 function normalizeFill(value,protocol){
  if(typeof value!=='string')return null;
  const text=value.trim();
@@ -67,6 +90,7 @@ function smallCount(value){
  return typeof value==='string'&&/^[0-9]+$/.test(value)?value:null;
 }
 function answerComparison(questions,saved={}){
+ if(Array.isArray(questions)&&questions.some(q=>q.selectionSet))return selectionSetComparison(questions,saved);
  if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};
  const onceBank=questions.some(q=>q.bankReuse!==undefined),knownBankRoots=new Map(),bankEntries=new Set();
  if(onceBank){
@@ -176,13 +200,13 @@ function render(){
  const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;clearSelectionComparison();}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
  el('source-note').innerHTML='<p>完整作者稿：<a href="../../Research/GuYouJi-English-Benchmark/'+encodeURI(g.candidate.path)+'" target="_blank" rel="noopener">'+escapeText(g.id)+'</a></p><p>来源形式参照：'+escapeText((g.anchor_group_ids||[]).join(' / ')||'原卷未配对写作任务，详见作者稿')+'</p>';
  el('answer-toggle').onclick=()=>{if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后查看参考。';return;}el('notice').textContent=prototypeNotice;el('teacher').hidden=!el('teacher').hidden;el('answer-toggle').textContent=el('teacher').hidden?'查看参考与解析':'收起参考与解析';
-  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.acceptedAnswers?'可接受形式 '+escapeText(q.acceptedAnswers.join(' / ')):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
+  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.selectionSet?'作者参考集合 '+escapeText(q.selectionSet.correct.join(' / '))+'（本提示内顺序任意）':q.answer?'作者参考 '+escapeText(q.answer):q.acceptedAnswers?'可接受形式 '+escapeText(q.acceptedAnswers.join(' / ')):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('compare-selections').onclick=()=>{
   if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后核对。';return;}
   const result=answerComparison(g.questions,drafts[g.id]);
   if(!result.available){el('notice').textContent=result.reason;return;}
   el('notice').textContent=prototypeNotice;
-  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong>'+(result.bankConflicts?.length?'<p class="bank-conflict">词库复用冲突：'+result.bankConflicts.map(c=>escapeText(c.entry)+'（第'+c.numbers.join('、')+'空）').join('；')+'。这些作答重复使用同一词库项，整组尚未符合每项一次的规则；不据此擅自分配部分分。未列词形仍待复核，不自动猜词根。</p>':'')+'<p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
+  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong>'+(result.selectionConflicts?.length?'<p>同一多选提示中重复选择不重复计入；各提示之间独立。此处按作者定义核对不同正确选项，不冒称原考试部分给分规则。</p>':'')+(result.bankConflicts?.length?'<p class="bank-conflict">词库复用冲突：'+result.bankConflicts.map(c=>escapeText(c.entry)+'（第'+c.numbers.join('、')+'空）').join('；')+'。这些作答重复使用同一词库项，整组尚未符合每项一次的规则；不据此擅自分配部分分。未列词形仍待复核，不自动猜词根。</p>':'')+'<p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
   el('selection-comparison').hidden=false;
  };
  el('reset').onclick=()=>{delete drafts[g.id];render();};

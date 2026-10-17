@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'academic_information_tristate':
                 from compile_academic_information import check as check_academic_information
                 check_academic_information(g,a,b,source)
+            if b.get('task_mode') == 'academic_reading_choice_sets':
+                from compile_academic_choice_sets import check as check_academic_choice_sets
+                check_academic_choice_sets(g,a,b,source)
             if b.get('task_mode') == 'academic_shared_pairing':
                 from compile_academic_pairing import check as check_academic_pairing
                 check_academic_pairing(g,a,b,source)
@@ -333,7 +336,7 @@ def check(data, plan):
         else:
             assert g['questions'] == a['review_response_tasks']
         assert len(g['questions']) == b['responses'] == a['questions'] == meta['questions']
-        assert [len(q['options']) for q in g['questions']] == [b['options_each']] * b['responses']
+        assert [len(q['options']) for q in g['questions']] == (b['options_per_response'] if a.get('academic_multi_response_multi_select') else [b['options_each']] * b['responses'])
         assert a['authored_student_inputs_complete'] and not a['independent_teacher_student_commercial_production_validated']
         assert meta['candidate']['sha256'] == a['candidate_sha256']
         printed = text.split('<!-- responses:start -->')[1].split('<!-- responses:end -->')[0].strip()
@@ -349,7 +352,7 @@ def check(data, plan):
             assert q['rationale']
             if q['options']:
                 assert q['answer'] in dict(q['options'])
-                assert len(set(k for k, _ in q['options'])) == b['options_each']
+                assert len(set(k for k, _ in q['options'])) == (b['options_per_response'][q['number']-1] if a.get('academic_multi_response_multi_select') else b['options_each'])
             else:
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
