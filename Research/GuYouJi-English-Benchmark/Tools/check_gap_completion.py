@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'academic_information_tristate':
                 from compile_academic_information import check as check_academic_information
                 check_academic_information(g,a,b,source)
+            if b.get('task_mode') == 'cambridge_additional_academic_modes':
+                from compile_cambridge_additional import check as check_cambridge_additional
+                check_cambridge_additional(g,a,b,source)
             if b.get('task_mode') == 'academic_summary_or_diagram':
                 from compile_academic_visual import check as check_academic_visual
                 check_academic_visual(g,a,b,source)
@@ -368,11 +371,14 @@ def check(data, plan):
                     if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
                     elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'
                 if a.get('academic_extracted_completion') or a.get('academic_text_extraction') or a.get('academic_summary_or_diagram'):expected_protocol='source_excerpt_v1'
+                if a.get('cambridge_additional_academic'):
+                    expected_protocol='source_list_v1' if q['number']==2 else 'source_excerpt_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
                 pattern='(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)' if c['normalization']=='clock_hour_v1' else '(?:[0-9]+|[A-Za-z]+)' if c['normalization']=='small_count_v1' else '[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
                 if c['normalization']=='source_excerpt_v1':pattern="[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*"
+                if c['normalization']=='source_list_v1':pattern='[A-Za-z]+(?: [A-Za-z]+)*'
                 assert all(re.fullmatch(pattern, value) for value in q['acceptedAnswers'] + c['rejectedAnswers'])
                 if c['normalization']=='small_count_v1':
                     names='zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split()

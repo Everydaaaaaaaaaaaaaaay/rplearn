@@ -75,16 +75,17 @@ def build(page,version="0.1"):
             school_writing_and_translation_excluded=True))
         if level=='advanced' and academic_catalogue:
             missing=[]
-            for form in academic_catalogue['sample_rows']:
+            academic_forms=academic_catalogue['sample_rows']+academic_catalogue.get('additional_official_source_rows',[])
+            for form in academic_forms:
                 source_id=form.get('source_group_id',form['id'])
                 authors=[g['id'] for g in data['groups'].values() if g['grade']=='advanced' and source_id in g['anchor_group_ids']]
                 assert len(authors)==form['current_exact_mode_authors']
                 if len(authors)<form['current_author_target']:missing.append(form['id'])
             adult[-1].update(boundary='C1baseline_plus_general_academic_task_references;notproductadvanced_or_exam_score_equivalence',
-                C1_baseline_known_missing=adult[-1]['known_missing'],academic_sample_concrete_modes=len(academic_catalogue['sample_rows']),
+                C1_baseline_known_missing=adult[-1]['known_missing'],academic_sample_concrete_modes=len(academic_forms),
                 academic_sample_modes_without_three_originals=missing,
-                academic_format_only_without_complete_sample=academic_catalogue['format_types_without_complete_sample_in_this_packet'],
-                known_missing=adult[-1]['known_missing']+missing+academic_catalogue['format_types_without_complete_sample_in_this_packet'],
+                academic_format_only_without_complete_sample=academic_catalogue.get('format_types_without_complete_sample_in_selected_sources',academic_catalogue['format_types_without_complete_sample_in_this_packet']),
+                known_missing=adult[-1]['known_missing']+missing+academic_catalogue.get('format_types_without_complete_sample_in_selected_sources',academic_catalogue['format_types_without_complete_sample_in_this_packet']),
                 advanced_domain_complete=False)
     return dict(version=version,scope='15levels_current_source_author_configuration_inventory',current_plan=ref(load_ref(data['active_run_plan']) if isinstance(data['active_run_plan'],dict) else BASE/data['active_run_plan']),
         authority_atlas=plan['current_authority_atlas'],middle_appearance=ref(appearance),
