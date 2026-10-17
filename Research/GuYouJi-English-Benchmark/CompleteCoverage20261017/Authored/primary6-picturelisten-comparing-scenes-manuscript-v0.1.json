@@ -1,0 +1,323 @@
+{
+  "version": "0.1",
+  "id": "primary6-picturelisten-comparing-scenes",
+  "title": "小六听句看图：比较与位置",
+  "grade": "primary6",
+  "family": "listening_picture_true_false",
+  "family_label": "听句看图判断",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part1",
+  "source_binding": "p6pictureTF9",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.14.json",
+    "sha256": "ead5c333085d192fff5fd06e643ee1d57bc85abc93864fbd4965c068396d08a3"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.14.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "source_sentences": 9,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 120
+    }
+  },
+  "instruction": "看全部9幅图，听每幅图对应句子，选T（一致）或F（不一致）。原卷未印遍数和停顿；本机每句一遍、听前2秒后3秒，可重播，不当原卷规则。",
+  "source_form_notice": "小六东城区公开期末原页完整九图听句T/F已核，地区/学年/学期在正文，不凭文件名补；原校施测认证未建立。源音轨/脚本/键缺、遍数时序未印。本稿完整原创图音，几何与部分动作语汇复用；儿童识图、听辨及独立难度未验证。",
+  "teacher_source_notices": [
+    "小六东城区公开期末原页完整九图听句T/F已核，地区/学年/学期在正文，不凭文件名补；原校施测认证未建立。源音轨/脚本/键缺、遍数时序未印。本稿完整原创图音，几何与部分动作语汇复用；儿童识图、听辨及独立难度未验证。",
+    "全9图/9句/9判断，不拆9组。动作/物品几何为自有代码绘制，多个图位复用基元不等独立主题或曝光；题图无英文名或答案标记，完整脚本默认隐藏。源题型结构、源配套、原创图音与独立识图验证分层。"
+  ],
+  "format_summary": "9独立句+9图 / 共9个T-F回应 / 原遍数时序未知 / 本机每句一遍可重播",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture1-v0.1.svg",
+      "sha256": "8259069314c3eb209ed8fc00388f136a4f0334a2f0ba9ccd7968a901c27112df"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture2-v0.1.svg",
+      "sha256": "25640bb4b33ee1644445200d1fcd8ef3e025c8bacd9618c326332be4e9611791"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture3-v0.1.svg",
+      "sha256": "26320ef32b321cdb8ea8b1369094e8c761020881504ae7c333f7db2dfb5ec771"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture4-v0.1.svg",
+      "sha256": "83b52187fba1270affd711b80b9c23d9ff6fda1876f6a44009a6601844a7dd26"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture5-v0.1.svg",
+      "sha256": "2084a6b4fefc70c02cf30ccab912bd0b597beb07819365f54859a0e832e9a0a6"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture6-v0.1.svg",
+      "sha256": "cc1e2f8225253ccfb792053cf2ef5a1511e09dd2e8210c6e6aa7a0530cad6818"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture7-v0.1.svg",
+      "sha256": "60184af218afc13dcd7dbc108628a253c208722affb4be0b7269f825fbf19589"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture8-v0.1.svg",
+      "sha256": "ea3eba79eda14e97e97497a7646faa34bdd22c477345a49018d7d563dad2ab35"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-comparing-scenes-picture9-v0.1.svg",
+      "sha256": "15922d5fad3d2aea32ba88faf369b241ee069313192bcf7551868a88830f499e"
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Both people are reading books."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "左人在用笔书写，只有右人读书。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The cup is on the table, not under it."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第2图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "杯子在桌面上方，桌腿在下。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "One person is watering a plant, and one is sweeping."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第3图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "两动作分别可见。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The clock shows ten o'clock."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第4图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "分针12时针8，非十点。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The person is carrying an open umbrella."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第5图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "所持为方形箱，无伞顶或柄。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The person is washing hands under running water."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第6图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "手在水龙头水流下。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "There are fewer than three fish in the picture."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第7图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "恰好两条，2小于3；不需猜其他动物。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Both pictures show bicycles."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第8图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "左为自行车，右为公交，不能both。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The person is carrying a closed umbrella."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第9图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "伞顶明显打开遮雨，不是收拢伞。"
+        }
+      ]
+    }
+  ]
+}

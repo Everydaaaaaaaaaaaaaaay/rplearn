@@ -52,7 +52,7 @@ def check(data, plan):
             if b.get('task_mode') == 'primary_wordphrase10twice':
                 from compile_word_listening import check as check_word_listening
                 check_word_listening(g,a,b,source)
-            if b.get('task_mode') == 'primary_pictureTF10':
+            if b.get('task_mode') in {'primary_pictureTF10','primary_pictureTF9'}:
                 from compile_picture_listening import check as check_picture_listening
                 check_picture_listening(g,a,b,source)
             if b.get('task_mode') == 'primary_dialogue122':

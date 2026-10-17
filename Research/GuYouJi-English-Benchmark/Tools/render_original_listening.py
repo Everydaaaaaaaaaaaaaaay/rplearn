@@ -85,7 +85,8 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
         assert len(draft['clips'])==draft['source_sentences']==10 and draft['source_hear_each_piece_twice']
         assert all(len(c['questions'])==len(c['turns'])==1 and c['turns'][0]['speaker']=='N' and [k for k,_ in c['questions'][0]['options']]==['A','B','C'] and c['preview_seconds']==2 and c['answer_seconds']==3 for c in draft['clips'])
     elif family=='listening_picture_true_false':
-        assert len(draft['clips'])==draft['source_sentences']==10
+        assert (draft['grade'],draft['source_sentences'])in {('primary3',10),('primary6',9)}
+        assert len(draft['clips'])==draft['source_sentences']
         assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
         assert all(len(c['questions'])==len(c['turns'])==1 and c['turns'][0]['speaker']=='N' and [k for k,_ in c['questions'][0]['options']]==['T','F'] and c['preview_seconds']==2 and c['answer_seconds']==3 for c in draft['clips'])
     elif family=='listening_dialogue_choice':
