@@ -1,0 +1,191 @@
+{
+  "version": "0.1",
+  "id": "primary6-categories5-c",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "f49136c570878bf95dd0ba7f7e233240ad11455d6ce9f18744cd07be2b149d09",
+  "canonical_response_block_sha256": "c23e77e76e8c5b2b2c600812c0c27cf9239747562f7e174b0d6b58179dfcc6be",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "wider"
+        ],
+        [
+          "B",
+          "colder"
+        ],
+        [
+          "C",
+          "farmer"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：wider与colder同为比较级形式，不是类别不同的一项。 B：colder与wider同为比较级形式，不是类别不同的一项。 C：farmer是表示职业的名词；另两词是比较级形式。"
+    },
+    {
+      "number": 2,
+      "stem": "第2组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "window"
+        ],
+        [
+          "B",
+          "bought"
+        ],
+        [
+          "C",
+          "ran"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：window是名词；另两词为动词过去式。 B：bought与ran都可表示相应动词的过去式，不是类别不同的一项。 C：ran与bought都可表示相应动词的过去式，不是类别不同的一项。"
+    },
+    {
+      "number": 3,
+      "stem": "第3组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "zoo"
+        ],
+        [
+          "B",
+          "wallet"
+        ],
+        [
+          "C",
+          "airport"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：zoo与airport都表示地点，不是类别不同的一项。 B：wallet表示可携带的物品；另两词表示地点。 C：airport与zoo都表示地点，不是类别不同的一项。"
+    },
+    {
+      "number": 4,
+      "stem": "第4组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "smaller"
+        ],
+        [
+          "B",
+          "soon"
+        ],
+        [
+          "C",
+          "now"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：smaller为比较级形式；另两词表示时间。 B：soon与now都表示时间，不是类别不同的一项。 C：now与soon都表示时间，不是类别不同的一项。"
+    },
+    {
+      "number": 5,
+      "stem": "第5组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "spoke"
+        ],
+        [
+          "B",
+          "grew"
+        ],
+        [
+          "C",
+          "write"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：spoke与grew都为不规则动词过去式，不是词形不同的一项。 B：grew与spoke都为不规则动词过去式，不是词形不同的一项。 C：write为动词原形；另两词为不规则动词过去式。"
+    }
+  ],
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6CategorySourceBindings-v0.1.json",
+    "sha256": "30baf655d6069b5450a674d25a221c41c0e1d6011059169c54369fe1d28cd215"
+  },
+  "source_binding": "primary6_dianjiang_categories5",
+  "source_count_increment": 0,
+  "student_passage": "",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "B",
+    "A",
+    "C"
+  ],
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "no_necessary_image_or_audio": true,
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "C",
+      "grounds": {
+        "A": "wider与colder同为比较级形式，不是类别不同的一项。",
+        "B": "colder与wider同为比较级形式，不是类别不同的一项。",
+        "C": "farmer是表示职业的名词；另两词是比较级形式。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "A",
+      "grounds": {
+        "A": "window是名词；另两词为动词过去式。",
+        "B": "bought与ran都可表示相应动词的过去式，不是类别不同的一项。",
+        "C": "ran与bought都可表示相应动词的过去式，不是类别不同的一项。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "B",
+      "grounds": {
+        "A": "zoo与airport都表示地点，不是类别不同的一项。",
+        "B": "wallet表示可携带的物品；另两词表示地点。",
+        "C": "airport与zoo都表示地点，不是类别不同的一项。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "A",
+      "grounds": {
+        "A": "smaller为比较级形式；另两词表示时间。",
+        "B": "soon与now都表示时间，不是类别不同的一项。",
+        "C": "now与soon都表示时间，不是类别不同的一项。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "C",
+      "grounds": {
+        "A": "spoke与grew都为不规则动词过去式，不是词形不同的一项。",
+        "B": "grew与spoke都为不规则动词过去式，不是词形不同的一项。",
+        "C": "write为动词原形；另两词为不规则动词过去式。"
+      }
+    }
+  ],
+  "source_key_not_copied": true,
+  "category_criteria": [
+    "comparative_forms_vs_occupation_noun",
+    "past_forms_vs_noun",
+    "printed_item_vs_places",
+    "time_words_vs_comparative",
+    "past_forms_vs_base_verb"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 15,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "output_letter_count": 5,
+    "requirement_English_words": 3
+  }
+}

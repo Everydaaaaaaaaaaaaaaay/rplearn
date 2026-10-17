@@ -43,6 +43,9 @@ def check(data, plan):
             if b.get('task_mode') == 'complete_function_contexts':
                 from function_context_contract import check as check_function_contexts
                 check_function_contexts(g,a,b,source)
+            if b.get('task_mode') == 'complete_word_category_choice':
+                from word_category_contract import check as check_word_categories
+                check_word_categories(g,a,b,source)
             if b.get('task_mode') == 'shop_grid_reading':
                 from compile_shop_grid_reading import check as check_shop_grid
                 check_shop_grid(g,a,b,source)

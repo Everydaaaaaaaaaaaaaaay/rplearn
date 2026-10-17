@@ -1,0 +1,191 @@
+{
+  "version": "0.1",
+  "id": "primary6-categories5-b",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "7fc6c046b2d634918e01124eb9ab88600897d316e0535e289334219ea0823c92",
+  "canonical_response_block_sha256": "7a839708dc5c79bb410a140dca4e8f5717cffa01e0232e8852bf474a63866fa2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "bigger"
+        ],
+        [
+          "B",
+          "teacher"
+        ],
+        [
+          "C",
+          "faster"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：bigger与faster同为比较级形式，不是类别不同的一项。 B：teacher是表示职业的名词；另两词是比较级形式。 C：faster与bigger同为比较级形式，不是类别不同的一项。"
+    },
+    {
+      "number": 2,
+      "stem": "第2组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "drank"
+        ],
+        [
+          "B",
+          "went"
+        ],
+        [
+          "C",
+          "ruler"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：drank与went都可表示相应动词的过去式，不是类别不同的一项。 B：went与drank都可表示相应动词的过去式，不是类别不同的一项。 C：ruler是名词；另两词为动词过去式。"
+    },
+    {
+      "number": 3,
+      "stem": "第3组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "passport"
+        ],
+        [
+          "B",
+          "cinema"
+        ],
+        [
+          "C",
+          "station"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：passport表示可携带的物品；另两词表示地点。 B：cinema与station都表示地点，不是类别不同的一项。 C：station与cinema都表示地点，不是类别不同的一项。"
+    },
+    {
+      "number": 4,
+      "stem": "第4组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "today"
+        ],
+        [
+          "B",
+          "tonight"
+        ],
+        [
+          "C",
+          "heavier"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：today与tonight都表示时间，不是类别不同的一项。 B：tonight与today都表示时间，不是类别不同的一项。 C：heavier为比较级形式；另两词表示时间。"
+    },
+    {
+      "number": 5,
+      "stem": "第5组，选出不同类的一项。",
+      "options": [
+        [
+          "A",
+          "slept"
+        ],
+        [
+          "B",
+          "forget"
+        ],
+        [
+          "C",
+          "swam"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：slept与swam都为不规则动词过去式，不是词形不同的一项。 B：forget为动词原形；另两词为不规则动词过去式。 C：swam与slept都为不规则动词过去式，不是词形不同的一项。"
+    }
+  ],
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6CategorySourceBindings-v0.1.json",
+    "sha256": "30baf655d6069b5450a674d25a221c41c0e1d6011059169c54369fe1d28cd215"
+  },
+  "source_binding": "primary6_dianjiang_categories5",
+  "source_count_increment": 0,
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "C",
+    "B"
+  ],
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "no_necessary_image_or_audio": true,
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "B",
+      "grounds": {
+        "A": "bigger与faster同为比较级形式，不是类别不同的一项。",
+        "B": "teacher是表示职业的名词；另两词是比较级形式。",
+        "C": "faster与bigger同为比较级形式，不是类别不同的一项。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "C",
+      "grounds": {
+        "A": "drank与went都可表示相应动词的过去式，不是类别不同的一项。",
+        "B": "went与drank都可表示相应动词的过去式，不是类别不同的一项。",
+        "C": "ruler是名词；另两词为动词过去式。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "A",
+      "grounds": {
+        "A": "passport表示可携带的物品；另两词表示地点。",
+        "B": "cinema与station都表示地点，不是类别不同的一项。",
+        "C": "station与cinema都表示地点，不是类别不同的一项。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "C",
+      "grounds": {
+        "A": "today与tonight都表示时间，不是类别不同的一项。",
+        "B": "tonight与today都表示时间，不是类别不同的一项。",
+        "C": "heavier为比较级形式；另两词表示时间。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "B",
+      "grounds": {
+        "A": "slept与swam都为不规则动词过去式，不是词形不同的一项。",
+        "B": "forget为动词原形；另两词为不规则动词过去式。",
+        "C": "swam与slept都为不规则动词过去式，不是词形不同的一项。"
+      }
+    }
+  ],
+  "source_key_not_copied": true,
+  "category_criteria": [
+    "comparative_forms_vs_occupation_noun",
+    "past_forms_vs_noun",
+    "printed_item_vs_places",
+    "time_words_vs_comparative",
+    "past_forms_vs_base_verb"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 15,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "output_letter_count": 5,
+    "requirement_English_words": 3
+  }
+}
