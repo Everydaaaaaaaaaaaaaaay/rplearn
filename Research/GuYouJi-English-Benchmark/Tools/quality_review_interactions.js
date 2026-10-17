@@ -37,19 +37,19 @@ function selectionSetComparison(questions,saved={}){
  const sets=new Map();
  for(const q of questions){
   const c=q.selectionSet;
-  if(!c||c.version!==1||typeof c.id!=='string'||!c.id||c.order!=='either'||c.distinct!==true||c.localMatchingRule!=='distinct_correct_options_once'||!Array.isArray(c.positions)||c.positions.length!==2||new Set(c.positions).size!==2||!c.positions.every(Number.isInteger)||!Array.isArray(c.correct)||c.correct.length!==2||new Set(c.correct).size!==2||!c.correct.every(k=>q.options.some(([label])=>label===k))||!c.positions.includes(q.number))return {available:false,reason:'多选提示的完整双响应、无序集合或不重复规则未绑定。'};
+  if(!c||c.version!==1||typeof c.id!=='string'||!c.id||c.order!=='either'||c.distinct!==true||c.localMatchingRule!=='distinct_correct_options_once'||!Array.isArray(c.positions)||c.positions.length<2||new Set(c.positions).size!==c.positions.length||!c.positions.every(Number.isInteger)||!Array.isArray(c.correct)||c.correct.length!==c.positions.length||new Set(c.correct).size!==c.correct.length||!c.correct.every(k=>q.options.some(([label])=>label===k))||!c.positions.includes(q.number))return {available:false,reason:'多选提示的完整响应、无序集合或不重复规则未绑定。'};
   const prior=sets.get(c.id)||[];prior.push(q);sets.set(c.id,prior);
  }
  const rows=[],selectionConflicts=[];
  for(const [id,qs] of sets){
   const c=qs[0].selectionSet;
-  if(qs.length!==2||!c.positions.every((n,i)=>qs[i]?.number===n)||qs.some((q,i)=>JSON.stringify(q.selectionSet)!==JSON.stringify(c)||JSON.stringify(q.options)!==JSON.stringify(qs[0].options)||q.answer!==c.correct[i]))return {available:false,reason:'多选提示被截断、重排或候选集合不一致，暂不核对。'};
+  if(qs.length!==c.positions.length||!c.positions.every((n,i)=>qs[i]?.number===n)||qs.some((q,i)=>JSON.stringify(q.selectionSet)!==JSON.stringify(c)||JSON.stringify(q.options)!==JSON.stringify(qs[0].options)||q.answer!==c.correct[i]))return {available:false,reason:'多选提示被截断、重排或候选集合不一致，暂不核对。'};
   const used=new Set();
   for(const q of qs){
    const chosen=saved[q.number]||'',duplicate=chosen&&used.has(chosen);
    if(chosen)used.add(chosen);
    if(duplicate)selectionConflicts.push({id,number:q.number,chosen});
-   rows.push({number:q.number,chosen,reference:c.correct.join(' / ')+'（两项，顺序任意）',state:!chosen?'unanswered':!duplicate&&c.correct.includes(chosen)?'match':'different'});
+   rows.push({number:q.number,chosen,reference:c.correct.join(' / ')+'（'+c.positions.length+'项，顺序任意）',state:!chosen?'unanswered':!duplicate&&c.correct.includes(chosen)?'match':'different'});
   }
  }
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:0,selectionConflicts,rows};

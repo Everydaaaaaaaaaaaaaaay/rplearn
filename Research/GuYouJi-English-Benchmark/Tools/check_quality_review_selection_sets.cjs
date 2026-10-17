@@ -10,4 +10,11 @@ assert.equal(ctx.compare(questions,{1:'Z'}).available,false);cases++;
 for(const mutation of [q=>q.pop(),q=>delete q[0].selectionSet,q=>q[1].selectionSet.correct.reverse(),q=>q[0].selectionSet.order='fixed',q=>q[1].options.pop(),q=>q.reverse(),q=>q[0].selectionSet.positions=[1,1],q=>q[1].selectionSet.id='other',q=>q[1].answer='B']){const q=structuredClone(questions);mutation(q);assert.equal(ctx.compare(q).available,false);cases++;}
 // A letter may occur in both independent prompts without a global reuse ban.
 const independent=[...make('one',[1,2],['A','B'],'ABC'),...make('two',[3,4],['A','B'],'ABC')];assert.equal(ctx.compare(independent,{1:'A',2:'B',3:'B',4:'A'}).matched,4);cases++;
+// The actual listening sample has eight candidates and three unordered choices.
+const triple=make('triple',[1,2,3],['A','E','F'],'ABCDEFGH');
+for(const order of [['A','E','F'],['A','F','E'],['E','A','F'],['E','F','A'],['F','A','E'],['F','E','A']]){assert.equal(ctx.compare(triple,{1:order[0],2:order[1],3:order[2]}).matched,3);cases++;}
+for(const data of [{1:'A',2:'A',3:'F'},{1:'E',2:'F',3:'F'}]){const r=ctx.compare(triple,data);assert.equal(r.matched,2);assert.equal(r.different,1);assert.equal(r.selectionConflicts.length,1);cases++;}
+assert.equal(ctx.compare(triple,{1:'E',2:'F'}).unanswered,1);cases++;
+assert.equal(ctx.compare(triple,{1:'A',2:'B',3:'E'}).different,1);cases++;
+for(const mutation of [q=>q.pop(),q=>q[2].selectionSet.positions.pop(),q=>q[0].selectionSet.correct.push('G'),q=>q[2].answer='A',q=>q[1].options.pop()]){const q=structuredClone(triple);mutation(q);assert.equal(ctx.compare(q).available,false);cases++;}
 console.log(JSON.stringify({passed:true,cases,pair_order_independent:true,duplicates_not_double_matched:true,no_cross_prompt_once_rule:true,source_partial_credit_not_inferred:true}));

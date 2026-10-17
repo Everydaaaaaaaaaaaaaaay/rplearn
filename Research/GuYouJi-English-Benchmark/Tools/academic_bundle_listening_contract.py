@@ -1,6 +1,6 @@
 """Complete two-choice extracts, four sentence gaps and five spatial labels."""
 import re
-COUNTS={'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
+COUNTS={'listening_multiselect':3,'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
 ROLES=['lower_left_room','inner_right_room','far_wall_shelves','upper_middle_room','right_annex']
 
 def validate_draft(d):
@@ -32,7 +32,7 @@ def validate_draft(d):
             if kind!='listening_note_table_completion' or n!=9:
                 assert all(re.fullmatch("[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*",v)for v in q['acceptedAnswers']+q['rejected'])
         else:
-            labels=list('ABCDEFGHI'if kind=='listening_plan_label_matching'else'ABC')
+            labels=list('ABCDEFGHI'if kind=='listening_plan_label_matching'else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
             assert [k for k,v in q['options']]==labels and q['answer']in labels
             assert set(q['candidate_reasons'])==set(labels) and all(q['candidate_reasons'].values())
             if kind=='listening_plan_label_matching':assert q['options']==d['candidates'] and q['answer']==d['answers_by_position'][n-1]
@@ -59,6 +59,13 @@ def validate_draft(d):
         assert c['questions'][3]['acceptedAnswers']==[str(d['opening_year']),str(d['opening_year']//10*10)+'s','the '+str(d['opening_year']//10*10)+'s']
         assert c['questions'][5]['acceptedAnswers'][0]==str(d['open_days'])
         assert d['ticket_pence']>0 and c['questions'][8]['value_kind']=='sterling'
+    if kind=='listening_multiselect':
+        assert len(d['correct'])==3 and len(set(d['correct']))==3
+        assert [k for k,v in d['candidates']]==list('ABCDEFGH') and len({v for k,v in d['candidates']})==8
+        assert d['selection_order']=='either' and d['distinct_choices']
+        for n,q in enumerate(c['questions']):
+            assert q['options']==d['candidates'] and q['answer']==d['correct'][n]
+            assert q['stem'].endswith(d['prompt'])
     if kind=='listening_research_table_completion':
         assert len(c['turns'])==1 and len(d['table_rows'])==3
         assert d['table_columns']==['Importance','Social and Environmental Factors','Other Factors','Personal Characteristics']
