@@ -1,0 +1,166 @@
+{
+  "version": "0.1",
+  "id": "primary5-bird-walk-notice",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "62a13ea6290ee33cb52dc9956fef6a4eed9b73aafb280290ba36a6575605aabc",
+  "canonical_response_block_sha256": "9a7e9aa09cb6a4cdf81ac21ee09ca27f95272ce3db6b6e38f4be0a66101247a2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where will the group meet?",
+      "options": [
+        [
+          "A",
+          "At Green Park's East Gate."
+        ],
+        [
+          "B",
+          "At Green Park's West Gate."
+        ],
+        [
+          "C",
+          "At the school gate."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Place明示Green Park East Gate，A；B东门改西门，C公园改学校，均与设定不同。"
+    },
+    {
+      "number": 2,
+      "stem": "When will the bird walk take place?",
+      "options": [
+        [
+          "A",
+          "On Saturday, December 13th."
+        ],
+        [
+          "B",
+          "On Sunday, December 13th."
+        ],
+        [
+          "C",
+          "On Sunday, November 13th."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Date给SundayDecember13，B；A星期不同，C月份不同。设定2026-12-13实核为Sunday。"
+    },
+    {
+      "number": 3,
+      "stem": "How long will the bird walk last?",
+      "options": [
+        [
+          "A",
+          "One hour."
+        ],
+        [
+          "B",
+          "Three hours."
+        ],
+        [
+          "C",
+          "Two hours."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "8:00至10:00为两小时C；A少一小时，B多一小时。仅用通知内时段，不假设额外集合时间。"
+    },
+    {
+      "number": 4,
+      "stem": "What should pupils do?",
+      "options": [
+        [
+          "A",
+          "Leave the path to follow a bird."
+        ],
+        [
+          "B",
+          "Stay on the path with their teacher."
+        ],
+        [
+          "C",
+          "Give food to the birds."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Stay on path/Follow teacher共同支持B；A离路与第一条冲突，C喂食与第三条明确禁止冲突。没有借生物学外部常识判键。"
+    },
+    {
+      "number": 5,
+      "stem": "What does “Notice” mean in this text?",
+      "options": [
+        [
+          "A",
+          "通知"
+        ],
+        [
+          "B",
+          "故事"
+        ],
+        [
+          "C",
+          "信"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Notice在此为介绍活动安排和规则的通知A；B故事不符公告功能，C信不符该字段形式。词在题面标题与问题都明确提供。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.8.json",
+    "sha256": "1fd7b08d686337b49c619187f5f2090265394ac92650578b0dabed573d95ed96"
+  },
+  "source_group_id": "p5.guilinxiangshan2025.notice5",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "notices": 1,
+      "input_form": "five_labelled_fields_in_nativeHTML_not_tablegrid_or_original_visual",
+      "labelled_fields": 5,
+      "complete_section": "XIII_five3choice_questions67to71",
+      "no_necessary_graphics": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "## Notice\n\nPlace: Green Park, East Gate\n\nDate: Sunday, December 13th, 2026\n\nTime: 8:00 a.m.—10:00 a.m.\n\nActivities: Watch birds and draw them in a notebook.\n\nRules: Stay on the path. Follow your teacher. Do not feed the birds.",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 37,
+    "stem_English_words": 30,
+    "options_English_words_with_repeated_bank": 51,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5,
+    "body_field_labels_and_heading_included": true
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "## Notice\n\nPlace: Green Park, East Gate\n\nDate: Sunday, December 13th, 2026\n\nTime: 8:00 a.m.—10:00 a.m.\n\nActivities: Watch birds and draw them in a notebook.\n\nRules: Stay on the path. Follow your teacher. Do not feed the birds.",
+  "material_notice_count": 1,
+  "labelled_fields": 5,
+  "date_weekday_checked": true,
+  "time_duration_recalculated": true,
+  "no_necessary_picture_or_audio": true,
+  "notice_is_not_a_tablegrid": true
+}

@@ -1,0 +1,166 @@
+{
+  "version": "0.1",
+  "id": "primary5-toy-repair-notice",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "bc0918df9cc4e42951c69a31aac73955cbfd44ae4d274182fc9c9487ab1311de",
+  "canonical_response_block_sha256": "ace5befb5c800a6b3a22cd404cbe529d9c64ed0f89e3f5ca0df8249377eb986f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where will the activity take place?",
+      "options": [
+        [
+          "A",
+          "In the music shop."
+        ],
+        [
+          "B",
+          "In the school activity room."
+        ],
+        [
+          "C",
+          "In the dining room."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Place明确School activity room，B对应；A换成校外音乐商店，C换成餐厅，材料均未指定。"
+    },
+    {
+      "number": 2,
+      "stem": "When will the activity take place?",
+      "options": [
+        [
+          "A",
+          "On Saturday, November 14th."
+        ],
+        [
+          "B",
+          "On Sunday, November 14th."
+        ],
+        [
+          "C",
+          "On Saturday, December 14th."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Date同时给Saturday与November14，A两项相符；B星期不同，C月份不同。设定2026-11-14实核为Saturday。"
+    },
+    {
+      "number": 3,
+      "stem": "How long will the activity last?",
+      "options": [
+        [
+          "A",
+          "Two hours."
+        ],
+        [
+          "B",
+          "Three hours."
+        ],
+        [
+          "C",
+          "Two hours and thirty minutes."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "9:15至11:45为2小时30分，C；A少30分，B多30分。不会沿用原源三小时错键。"
+    },
+    {
+      "number": 4,
+      "stem": "Which action follows the rules?",
+      "options": [
+        [
+          "A",
+          "Eating a sandwich in the room."
+        ],
+        [
+          "B",
+          "Keeping small parts on a tray."
+        ],
+        [
+          "C",
+          "Coming without an adult."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B逐字符合Keep small parts on a tray；A违反不吃东西，C违反Bring an adult。三选项均按同一通知规则比较。"
+    },
+    {
+      "number": 5,
+      "stem": "What does the word “Notice” mean here?",
+      "options": [
+        [
+          "A",
+          "信"
+        ],
+        [
+          "B",
+          "诗"
+        ],
+        [
+          "C",
+          "通知"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "结构给地点/日期/时间/活动/规则，Notice为通知C；信A通常有称呼/结尾而非此通知结构，诗B非本公告用途。英语词在标题和本题均可见，不靠缺失图面。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.8.json",
+    "sha256": "1fd7b08d686337b49c619187f5f2090265394ac92650578b0dabed573d95ed96"
+  },
+  "source_group_id": "p5.guilinxiangshan2025.notice5",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent_per_question",
+    "source_material": {
+      "notices": 1,
+      "input_form": "five_labelled_fields_in_nativeHTML_not_tablegrid_or_original_visual",
+      "labelled_fields": 5,
+      "complete_section": "XIII_five3choice_questions67to71",
+      "no_necessary_graphics": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "## Notice\n\nPlace: School activity room\n\nDate: Saturday, November 14th, 2026\n\nTime: 9:15 a.m.—11:45 a.m.\n\nActivities: Repair toy cars and sew (缝制) small bags.\n\nRules: Bring an adult. Keep small parts on a tray (托盘). Do not eat in the room.",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 38,
+    "stem_English_words": 30,
+    "options_English_words_with_repeated_bank": 50,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5,
+    "body_field_labels_and_heading_included": true
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "## Notice\n\nPlace: School activity room\n\nDate: Saturday, November 14th, 2026\n\nTime: 9:15 a.m.—11:45 a.m.\n\nActivities: Repair toy cars and sew (缝制) small bags.\n\nRules: Bring an adult. Keep small parts on a tray (托盘). Do not eat in the room.",
+  "material_notice_count": 1,
+  "labelled_fields": 5,
+  "date_weekday_checked": true,
+  "time_duration_recalculated": true,
+  "no_necessary_picture_or_audio": true,
+  "notice_is_not_a_tablegrid": true
+}
