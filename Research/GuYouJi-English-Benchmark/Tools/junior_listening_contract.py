@@ -28,7 +28,7 @@ def validate_draft(draft):
                 assert not q['options'] and q['acceptedAnswers'] and q['fillMarking']
                 assert q['fillMarking']['maxWords']==1 and q['fillMarking']['unlisted']=='review'
             else:
-                assert [k for k, _ in q['options']] == ['A','B','C'] and q['answer'] in 'ABC'
+                assert [k for k, _ in q['options']] == ['A','B','C'] and q['answer'] in ['A', 'B', 'C']
                 assert len({v.strip().casefold() for _,v in q['options']})==3 and all(v.strip() for _,v in q['options'])
                 assert all(k+'：' in q['rationale'] for k in 'ABC')
     return grade, family, counts, roles, repeats, points

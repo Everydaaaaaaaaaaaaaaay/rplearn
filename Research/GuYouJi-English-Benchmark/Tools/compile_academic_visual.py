@@ -15,7 +15,7 @@ def validate(d,s):
         assert re.findall(r'\((\d+)\) ____',d['frame'])==list('1234')
         assert d['reuse_rule']==s['features']['reuse_rule']=='not_explicit_in_sample'
         assert '不额外规定' in d['instruction']
-        for i in d['items']:assert i['answer']in'ABCDEFG' and set(i['candidate_reasons'])==set('ABCDEFG') and all(i['candidate_reasons'].values()) and i['evidence_quote']in d['passage']
+        for i in d['items']:assert i['answer'] in list('ABCDEFG') and set(i['candidate_reasons'])==set('ABCDEFG') and all(i['candidate_reasons'].values()) and i['evidence_quote']in d['passage']
     else:
         assert d['max_words']==s['features']['max_words']==3 and s['features']['necessary_diagram']
         assert d['authored_layout_not_source_machine_replica'] and len(d['spatial_roles'])==5

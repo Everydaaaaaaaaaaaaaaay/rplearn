@@ -1,0 +1,44 @@
+{
+  "version": "0.1",
+  "scope": "exact_single_choice_labels_only_not_fill_answer_sets",
+  "observed_bug": "Substring membership admitted empty and contiguous multi-letter strings as single-choice labels.",
+  "changed_validator_modules": [
+    "junior_listening_contract",
+    "senior_short_listening_contract",
+    "shared_picture_listening_contract",
+    "compile_multi_question_listening",
+    "compile_inherited_reading",
+    "compile_inherited_cloze",
+    "compile_academic_features",
+    "compile_academic_visual"
+  ],
+  "checks": {
+    "path": "build/english-benchmark-authority-20261017/choice-label601-regression-v0.1.json",
+    "sha256": "1be3bbcd569553b019605c04bdcde974962d30e779ee23ad3655006809009612"
+  },
+  "positive_whole_drafts": 67,
+  "positive_contract_paths": 70,
+  "negative_controls": 700,
+  "invalid_keys": [
+    "",
+    "AB",
+    "BC",
+    "ABC",
+    "A ",
+    "a",
+    "Z",
+    null,
+    0,
+    [
+      "A"
+    ]
+  ],
+  "worked_examples_included": true,
+  "current_groups": 601,
+  "current_responses": 3995,
+  "new_authors": 0,
+  "new_source_modes": 0,
+  "fill_alternative_answers_changed": false,
+  "source_gaps_resolved": false,
+  "independent_teacher_student_commercial_production": false
+}

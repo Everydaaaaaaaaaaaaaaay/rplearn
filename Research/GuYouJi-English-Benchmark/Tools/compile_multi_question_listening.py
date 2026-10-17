@@ -67,7 +67,7 @@ def check(group, audit, binding, source):
         assert track['dialogue_words_once'] == sum(words(t['text']) for t in clip['turns'])
         for n, q in zip(numbers, clip['questions']):
             assert group['questions'][n-1] == dict(number=n, **q)
-            assert [k for k, _ in q['options']] == ['A', 'B', 'C'] and q['answer'] in 'ABC' and q['rationale']
+            assert [k for k, _ in q['options']] == ['A', 'B', 'C'] and q['answer'] in ['A', 'B', 'C'] and q['rationale']
         for t in clip['turns']:
             assert t['text'] in group['reviewText'] and t['text'] not in group['passageHtml']
         cursor += len(numbers)
@@ -111,7 +111,7 @@ def check_five_material_extension(group,audit,binding,source):
         assert track['peak_abs_sample']>0 and track['dialogue_words_once']==sum(words(t['text'])for t in clip['turns'])
         for n,q in zip(numbers,clip['questions']):
             assert group['questions'][n-1]==dict(number=n,**q) and [k for k,_ in q['options']]==['A','B','C']
-            assert q['answer']in'ABC' and all(k+'：'in q['rationale']for k in'ABC')
+            assert q['answer'] in ['A', 'B', 'C'] and all(k+'：'in q['rationale']for k in'ABC')
         for t in clip['turns']:assert t['text']in group['reviewText'] and t['text']not in group['passageHtml']
         cursor+=len(numbers)
     return True

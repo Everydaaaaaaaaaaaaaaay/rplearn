@@ -16,6 +16,6 @@ def validate_draft(d):
   assert c['preview_seconds']==c['answer_seconds']==(15 if grade=='primary3'else 5)
   assert len(c['turns'])==len(c['questions']) and all(t['speaker']=='N'for t in c['turns'])
  for q in tasks:
-  assert q['options']==[[k,'图'+k]for k in'ABCDE'] and q['answer']in'ABCDE' and 'bankReuse'not in q
+  assert q['options']==[[k,'图'+k]for k in'ABCDE'] and q['answer'] in list('ABCDE') and 'bankReuse'not in q
  assert '没有额外规定'in d['instruction']
  return grade,counts,repeats

@@ -14,7 +14,7 @@ def validate(d,s):
     assert '可重复使用' in d['instruction'] and '只能使用一次'not in d['instruction']
     assert set(d['candidate_roles'])==set('ABCDE')
     for item in d['items']:
-        assert item['answer']in'ABCDE' and item['evidence_quote']in d['passage'] and item['evidence_quote']
+        assert item['answer'] in list('ABCDE') and item['evidence_quote']in d['passage'] and item['evidence_quote']
         assert set(item['candidate_reasons'])==set('ABCDE') and all(item['candidate_reasons'].values())
     return True
 

@@ -33,7 +33,7 @@ def validate(draft, binding, source):
     assert re.findall(r'\((\d+)\) ____',draft['passage'])==list(map(str,range(1,count+1)))
     assert len(draft['questions'])==count and [q['number'] for q in draft['questions']]==list(range(1,count+1))
     for q in draft['questions']:
-        assert [k for k,_ in q['options']]==list('ABC') and q['answer'] in 'ABC'
+        assert [k for k,_ in q['options']]==list('ABC') and q['answer'] in list('ABC')
         assert len(set(v for _,v in q['options']))==3
         assert all(k+'：' in q['rationale'] for k in 'ABC')
         reasons=dict(part.split('：',1) for part in q['rationale'].split('；'))

@@ -23,7 +23,7 @@ def validate(d,b,s):
         assert limits[0]<=words(p['text'])<=limits[1],(d['id'],i,words(p['text']))
         assert len(p['questions'])==5 and [q['number']for q in p['questions']]==list(range(5*i+1,5*i+6))
         for q in p['questions']:
-            assert [k for k,v in q['options']]==list('ABCD') and q['answer']in 'ABCD'
+            assert [k for k,v in q['options']]==list('ABCD') and q['answer'] in list('ABCD')
             assert len(set(v for k,v in q['options']))==4
             assert set(q['candidate_reasons'])==set('ABCD') and all(q['candidate_reasons'].values())
             assert q['evidence'] in p['text'] and len(q['evidence'].split())>=3

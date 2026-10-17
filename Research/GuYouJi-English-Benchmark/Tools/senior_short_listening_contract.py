@@ -17,10 +17,10 @@ def validate_draft(draft):
  for c in draft['clips']:
   assert len(c['questions'])==1 and set(t['speaker']for t in c['turns'])=={'M','W'}
   assert c['preview_seconds']==0 and c['answer_seconds']==10
-  q=c['questions'][0];assert [k for k,_ in q['options']]==['A','B','C'] and q['answer']in'ABC'
+  q=c['questions'][0];assert [k for k,_ in q['options']]==['A','B','C'] and q['answer'] in ['A', 'B', 'C']
   assert all(k+'：'in q['rationale']for k in'ABC')
  assert bool(draft.get('worked_example'))==example
  if example:
   e=draft['worked_example'];assert [t['speaker']for t in e['turns']]==['M','W'] and [k for k,_ in e['question']['options']]==['A','B','C']
-  assert e['question']['answer']in'ABC' and e['render_repeat_count']==1 and e['not_an_assessed_response']
+  assert e['question']['answer'] in ['A', 'B', 'C'] and e['render_repeat_count']==1 and e['not_an_assessed_response']
  return grade,example
