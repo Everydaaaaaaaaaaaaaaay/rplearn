@@ -60,9 +60,12 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_intention_classification','listening_description_matching','listening_letter_completion','listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
+    assert family in {'listening_plan_label_matching','listening_dialogue_sentence_completion','listening_intention_classification','listening_description_matching','listening_letter_completion','listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
     if draft.get('academic_shared_audio_matching'):
         from academic_shared_audio_matching_contract import validate_draft
+        validate_draft(draft)
+    elif draft.get('academic_bundle_listening'):
+        from academic_bundle_listening_contract import validate_draft
         validate_draft(draft)
     elif draft.get('band_reference_only'):
         from band_phonics_contract import validate_draft
@@ -155,7 +158,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if draft.get('academic_shared_audio_matching') or draft.get('band_reference_only') or draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
+    if draft.get('academic_bundle_listening') or draft.get('academic_shared_audio_matching') or draft.get('band_reference_only') or draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
         repeat_count=draft['render_repeat_count']
     elif draft.get('junior_source_bound') or draft.get('senior_short_source_bound'):
         repeat_count=draft['source_repeat_count']
@@ -244,6 +247,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             intro=(f'Part {number}. Read questions {response_numbers[0]} to {response_numbers[-1]}.'if draft.get('shared_picture_listening') or draft.get('illustrated_listening') or draft.get('junior_source_bound') or family in {'listening_multi_question_choice','listening_dialogue_choice'}else f'Text {number}.' if family in {'listening_short_conversation_choice','listening_picture_true_false','listening_word_phrase_choice'} else f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
                    if family=='listening_extract_choice' else draft['audio_introduction'])
             if draft.get('shared_picture_listening'):intro=draft['audio_introduction'] if len(draft['clips'])==1 else 'Description '+str(number)+'.'
+            if draft.get('academic_bundle_listening'):intro=draft['audio_introduction']
             if draft.get('illustrated_listening'):intro='Text '+str(number)+'.'if draft['grade']=='primary5'else draft['audio_introduction']
             example_words=0
             if number==1 and draft.get('worked_example'):
