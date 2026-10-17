@@ -1,0 +1,126 @@
+{
+  "version": "0.1",
+  "scope": "two_existing_fivegapfivecandidate_dialogue_modes",
+  "groups": [
+    {
+      "id": "primary6.minzhi2016-17.bank",
+      "level": "primary6",
+      "kind": "shared_bank",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary6-minzhi2016-17-lower-excerpt20261014.pdf",
+        "sha256": "a170164f6fb904bb01926c62c96999782dd0e037301e9611177787ee5f3fc121"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade6/selected-excerpt-source-groups-v0.1.json",
+        "sha256": "a408a4f6da075e4fb34f85b96a418657db4a1cc59b4cb2005e5b89e61849545e"
+      },
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "responses": 5,
+      "question_numbers": [
+        "12.1",
+        "12.2",
+        "12.3",
+        "12.4",
+        "12.5"
+      ],
+      "physical_pages": [
+        2
+      ],
+      "key_pages": [
+        4
+      ],
+      "material": {
+        "dialogues": 1,
+        "gaps": 5,
+        "shared_words_or_phrase": 5,
+        "multiple_word_entry": "more than",
+        "nativebankallocationvisuallyrepaired_inherited": true
+      },
+      "candidates": {
+        "per_response": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "shared_bank": true,
+        "unique_shared_entries": 5
+      },
+      "reuse_rule": "not_explicit_no_added_once",
+      "full_student_input": true,
+      "published_key": [
+        "different",
+        "favorite",
+        "best",
+        "more than",
+        "amazing"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "2016-17keyidentitynotURL2019;4pageexcerptnotwholeauthenticexam;bankdelimiter/nativeallocationriskandwhalefactriskretained;sentencebankincludeswhenclause;noexplicitonce"
+    },
+    {
+      "id": "primary6.minzhi2016-17.sentence",
+      "level": "primary6",
+      "kind": "dialogue_matching",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary6-minzhi2016-17-lower-excerpt20261014.pdf",
+        "sha256": "a170164f6fb904bb01926c62c96999782dd0e037301e9611177787ee5f3fc121"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade6/selected-excerpt-source-groups-v0.1.json",
+        "sha256": "a408a4f6da075e4fb34f85b96a418657db4a1cc59b4cb2005e5b89e61849545e"
+      },
+      "source_acquisition_id": "primary6-minzhi2016-17-lower-excerpt20261014",
+      "responses": 5,
+      "question_numbers": [
+        "13.1",
+        "13.2",
+        "13.3",
+        "13.4",
+        "13.5"
+      ],
+      "physical_pages": [
+        2
+      ],
+      "key_pages": [
+        4
+      ],
+      "material": {
+        "dialogues": 1,
+        "gaps": 5,
+        "shared_sentences_or_clause": 5,
+        "subordinate_clause_entry": "when you came over",
+        "not_five_independent_complete_sentences": true
+      },
+      "candidates": {
+        "per_response": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "shared_bank": true,
+        "unique_shared_entries": 5
+      },
+      "reuse_rule": "not_explicit_no_added_once",
+      "full_student_input": true,
+      "published_key": [
+        "C",
+        "B",
+        "E",
+        "D",
+        "A"
+      ],
+      "is_independent_gold": false,
+      "source_count_increment": 0,
+      "source_quality_note": "2016-17keyidentitynotURL2019;4pageexcerptnotwholeauthenticexam;bankdelimiter/nativeallocationriskandwhalefactriskretained;sentencebankincludeswhenclause;noexplicitonce"
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0,
+  "historical_first_authors_have_added_once": "library-word-bank/book-sale-dialogue printed once authorprotocolnotexplicitinsource;new2eachnoaddedonce",
+  "new_each_slot_locally_supported": true
+}

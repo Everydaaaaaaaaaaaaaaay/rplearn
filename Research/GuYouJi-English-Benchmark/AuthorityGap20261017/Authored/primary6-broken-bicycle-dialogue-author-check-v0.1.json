@@ -1,0 +1,242 @@
+{
+  "version": "0.1",
+  "id": "primary6-broken-bicycle-dialogue",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "a325533573d377f6323b568feb074b58837bc1565669252e4426ef1232271fa1",
+  "canonical_response_block_sha256": "b15396b2712fbaf5f210ae367a6a6155143c053b1aa878eb4417b813eb4d40ff",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "How did you get home?"
+        ],
+        [
+          "B",
+          "while I was riding to school"
+        ],
+        [
+          "C",
+          "I am glad you are safe."
+        ],
+        [
+          "D",
+          "What happened to your bicycle?"
+        ],
+        [
+          "E",
+          "Did anyone help you?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D问自行车发生什么，front wheel broke回答具体故障。B while分句不能独立作这句完整发问；E是否有人帮助应引出yes/no帮助，A回家方式应引出交通，C安全宽慰应引出回应关心，均不能在此引出首次车轮故障信息。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "How did you get home?"
+        ],
+        [
+          "B",
+          "while I was riding to school"
+        ],
+        [
+          "C",
+          "I am glad you are safe."
+        ],
+        [
+          "D",
+          "What happened to your bicycle?"
+        ],
+        [
+          "E",
+          "Did anyone help you?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B while I was riding to school是从句，接It happened后说明发生时正在上学途中。D/E/A是问句，C独立完整陈述，都不能作为这个happened后的时间从句直接插入。此空与另外四空句法槽不同。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "How did you get home?"
+        ],
+        [
+          "B",
+          "while I was riding to school"
+        ],
+        [
+          "C",
+          "I am glad you are safe."
+        ],
+        [
+          "D",
+          "What happened to your bicycle?"
+        ],
+        [
+          "E",
+          "Did anyone help you?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E问是否有人帮助，Yes及mechanic stopped to help直接对应。D问故障/A问回家方式均非该Yes帮助答，C是宽慰非帮助问句；B为分句不能独立放该话轮。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "How did you get home?"
+        ],
+        [
+          "B",
+          "while I was riding to school"
+        ],
+        [
+          "C",
+          "I am glad you are safe."
+        ],
+        [
+          "D",
+          "What happened to your bicycle?"
+        ],
+        [
+          "E",
+          "Did anyone help you?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A问回家方式，Dad drove me...in his car给出方式及同伴。D问车故障、E问有无人帮助、C宽慰均不以该交通说明作最直接回答，B分句不构成该独立问题。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "How did you get home?"
+        ],
+        [
+          "B",
+          "while I was riding to school"
+        ],
+        [
+          "C",
+          "I am glad you are safe."
+        ],
+        [
+          "D",
+          "What happened to your bicycle?"
+        ],
+        [
+          "E",
+          "Did anyone help you?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C表达庆幸平安，Thank you/I am safe回应关心。D的故障问已由首轮回答，此处不引出具体损坏；E是否有人帮助/A交通方式均不被当前谢意和平安陈述回答；B不是完整话轮。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary6DialogueBridge-v0.1.json",
+    "sha256": "a350262f93fc2434f0018083c7b516d920940b138d52a7cfe0402b1a65077748"
+  },
+  "source_group_id": "primary6.minzhi2016-17.sentence",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_once",
+    "source_material": {
+      "dialogues": 1,
+      "gaps": 5,
+      "shared_sentences_or_clause": 5,
+      "subordinate_clause_entry": "when you came over",
+      "not_five_independent_complete_sentences": true
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "Nina: You are home early today. (1) ____\n\nOwen: The front wheel broke.\n\nNina: When did it happen?\n\nOwen: It happened (2) ____.\n\nNina: (3) ____\n\nOwen: Yes. A mechanic (修车师傅) from the bike shop stopped to help me.\n\nNina: (4) ____\n\nOwen: Dad drove me here with my bicycle in his car.\n\nNina: (5) ____\n\nOwen: Thank you. I am safe, and the bike can be repaired tomorrow.\n\n共享句子或分句：\n\nA. How did you get home?\nB. while I was riding to school\nC. I am glad you are safe.\nD. What happened to your bicycle?\nE. Did anyone help you?",
+  "author_answer_vector": [
+    "D",
+    "B",
+    "E",
+    "A",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 58,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 130,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_words_once": 26,
+    "completed_body_English_words": 84,
+    "requirement_English_words": 0,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Nina: You are home early today. (1) ____\nOwen: The front wheel broke.\nNina: When did it happen?\nOwen: It happened (2) ____.\nNina: (3) ____\nOwen: Yes. A mechanic (修车师傅) from the bike shop stopped to help me.\nNina: (4) ____\nOwen: Dad drove me here with my bicycle in his car.\nNina: (5) ____\nOwen: Thank you. I am safe, and the bike can be repaired tomorrow.",
+  "completed_passage": "Nina: You are home early today. What happened to your bicycle?\nOwen: The front wheel broke.\nNina: When did it happen?\nOwen: It happened while I was riding to school.\nNina: Did anyone help you?\nOwen: Yes. A mechanic (修车师傅) from the bike shop stopped to help me.\nNina: How did you get home?\nOwen: Dad drove me here with my bicycle in his car.\nNina: I am glad you are safe.\nOwen: Thank you. I am safe, and the bike can be repaired tomorrow.",
+  "shared_bank": [
+    [
+      "A",
+      "How did you get home?"
+    ],
+    [
+      "B",
+      "while I was riding to school"
+    ],
+    [
+      "C",
+      "I am glad you are safe."
+    ],
+    [
+      "D",
+      "What happened to your bicycle?"
+    ],
+    [
+      "E",
+      "Did anyone help you?"
+    ]
+  ],
+  "clause_candidate_label": "B",
+  "clause_candidate_text": "while I was riding to school",
+  "four_complete_sentences_one_subordinate_clause": true,
+  "no_added_once_limit": true,
+  "each_slot_locally_supported_without_once": true,
+  "dialogue_count": 1,
+  "prefreeze_presentation_correction": "Eachspeakerturnownparagraph;content/keysunchanged",
+  "prefreeze_option_order": {
+    "old_to_new": {
+      "D": "A",
+      "B": "B",
+      "E": "C",
+      "A": "D",
+      "C": "E"
+    },
+    "accepted_word_content_unchanged": true
+  }
+}

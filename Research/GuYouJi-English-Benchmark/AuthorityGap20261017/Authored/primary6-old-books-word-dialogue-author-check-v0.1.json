@@ -1,0 +1,240 @@
+{
+  "version": "0.1",
+  "id": "primary6-old-books-word-dialogue",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "48b624f874133eb41127431fa77d013944e72e2497de902d53963023164b2c67",
+  "canonical_response_block_sha256": "c408999f4363cb2f9894b8d5fc960cc8bf3c733924168e8d0b19b34373d31efc",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "best"
+        ],
+        [
+          "B",
+          "careful"
+        ],
+        [
+          "C",
+          "quiet"
+        ],
+        [
+          "D",
+          "different"
+        ],
+        [
+          "E",
+          "less than"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C quiet形成keep quiet保持安静，与禁止说话一致。D different需对应差异而非保持安静，A best是最高级/副词不合keep后的该状态，E less than缺比较量，B careful不能构成这里keep careful的常规表达；不靠一次规则。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "best"
+        ],
+        [
+          "B",
+          "careful"
+        ],
+        [
+          "C",
+          "quiet"
+        ],
+        [
+          "D",
+          "different"
+        ],
+        [
+          "E",
+          "less than"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D different与from each other构成差异搭配，后面boat/train明示不同。C quiet from、A best from、B careful from不表达两幅画的差异；E less than from不成此句。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "best"
+        ],
+        [
+          "B",
+          "careful"
+        ],
+        [
+          "C",
+          "quiet"
+        ],
+        [
+          "D",
+          "different"
+        ],
+        [
+          "E",
+          "less than"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A best修饰like，问三故事最喜欢哪篇且答more than other two。C quiet/D different/B careful均非修饰like的此处副词或最喜程度；E less than缺比较对象，且不能构成Which did you like less than这一完整问句。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "best"
+        ],
+        [
+          "B",
+          "careful"
+        ],
+        [
+          "C",
+          "quiet"
+        ],
+        [
+          "D",
+          "different"
+        ],
+        [
+          "E",
+          "less than"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E less than十五分钟，12<15。C quiet/D different/A best/B careful均不能直接连接fifteen minutes表达这个大小比较。多词短语仍一选项一回应。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "best"
+        ],
+        [
+          "B",
+          "careful"
+        ],
+        [
+          "C",
+          "quiet"
+        ],
+        [
+          "D",
+          "different"
+        ],
+        [
+          "E",
+          "less than"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B careful与rather than careless直接形成小心/粗心对照，贴合易破旧纸。C quiet虽可用于安静，但不与careless形成此处反向操作要求；D different不说明谨慎，A best需the等且不对应careless，E less than缺比较量。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary6DialogueBridge-v0.1.json",
+    "sha256": "a350262f93fc2434f0018083c7b516d920940b138d52a7cfe0402b1a65077748"
+  },
+  "source_group_id": "primary6.minzhi2016-17.bank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_once",
+    "source_material": {
+      "dialogues": 1,
+      "gaps": 5,
+      "shared_words_or_phrase": 5,
+      "multiple_word_entry": "more than",
+      "nativebankallocationvisuallyrepaired_inherited": true
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "Mia: Is the reading room open today?\n\nLeo: Yes. Everyone must keep (1) ____ in that room. Nobody is allowed to talk there.\n\nMia: Are the pictures on these two book covers the same?\n\nLeo: No, they are (2) ____ from each other. One has a boat and the other has a train.\n\nMia: You read three stories yesterday. Which did you like (3) ____?\n\nLeo: The last story. I liked it more than the other two.\n\nMia: How long did it take to read that story?\n\nLeo: Only twelve minutes, (4) ____ fifteen minutes.\n\nMia: Can I turn the pages of that old book?\n\nLeo: Yes, but be (5) ____ rather than careless. The old paper tears easily.\n\n共享词库：\n\nA. best\nB. careful\nC. quiet\nD. different\nE. less than",
+  "author_answer_vector": [
+    "C",
+    "D",
+    "A",
+    "E",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 109,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_words_once": 6,
+    "completed_body_English_words": 115,
+    "requirement_English_words": 0,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Mia: Is the reading room open today?\nLeo: Yes. Everyone must keep (1) ____ in that room. Nobody is allowed to talk there.\nMia: Are the pictures on these two book covers the same?\nLeo: No, they are (2) ____ from each other. One has a boat and the other has a train.\nMia: You read three stories yesterday. Which did you like (3) ____?\nLeo: The last story. I liked it more than the other two.\nMia: How long did it take to read that story?\nLeo: Only twelve minutes, (4) ____ fifteen minutes.\nMia: Can I turn the pages of that old book?\nLeo: Yes, but be (5) ____ rather than careless. The old paper tears easily.",
+  "completed_passage": "Mia: Is the reading room open today?\nLeo: Yes. Everyone must keep quiet in that room. Nobody is allowed to talk there.\nMia: Are the pictures on these two book covers the same?\nLeo: No, they are different from each other. One has a boat and the other has a train.\nMia: You read three stories yesterday. Which did you like best?\nLeo: The last story. I liked it more than the other two.\nMia: How long did it take to read that story?\nLeo: Only twelve minutes, less than fifteen minutes.\nMia: Can I turn the pages of that old book?\nLeo: Yes, but be careful rather than careless. The old paper tears easily.",
+  "shared_bank": [
+    [
+      "A",
+      "best"
+    ],
+    [
+      "B",
+      "careful"
+    ],
+    [
+      "C",
+      "quiet"
+    ],
+    [
+      "D",
+      "different"
+    ],
+    [
+      "E",
+      "less than"
+    ]
+  ],
+  "no_added_once_limit": true,
+  "each_slot_locally_supported_without_once": true,
+  "dialogue_count": 1,
+  "has_multiword_entry": true,
+  "prefreeze_presentation_correction": "Eachspeakerturnownparagraph;content/keysunchanged",
+  "prefreeze_option_order": {
+    "old_to_new": {
+      "C": "A",
+      "E": "B",
+      "A": "C",
+      "B": "D",
+      "D": "E"
+    },
+    "accepted_word_content_unchanged": true
+  }
+}

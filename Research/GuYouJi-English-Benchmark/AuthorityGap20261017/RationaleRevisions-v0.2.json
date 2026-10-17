@@ -1,0 +1,141 @@
+{
+  "version": "0.2-authority17-rationale",
+  "scope": "exact_frozen_payload_to_exact_authored_successor",
+  "records": [
+    {
+      "id": "cet4-photo-verification-bank",
+      "from_versions": [
+        {
+          "snapshot": {
+            "path": "build/english-benchmark-research-20261012/all16-ninth-review-delta20261016-v0.1.json",
+            "sha256": "87072d24c5c81b31352d811154e98746d64f2bd10e8258eefa96500f9a852e6a"
+          },
+          "payload_sha256": "64475bf98e2efa4e1f8416ae5afaf0040993ca66e9188e1b78750e2fd9c7f042",
+          "candidate": {
+            "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-v0.2.md",
+            "sha256": "62704d7488baa24347d44ca959b1ef7b97843528ea8b37b2e26ebeb5d480ac9e"
+          },
+          "author_check": {
+            "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-author-check-v0.2.json",
+            "sha256": "747863a57384e1e86ec7bb922c82fc1b5c57471d1a84c57d4517d30dd6b2492e"
+          }
+        }
+      ],
+      "to_candidate": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-v0.3.md",
+        "sha256": "db4460b0e953216e353087ba7a72c17db14bc5c29dbb5a6a97536a7425bf6f42"
+      },
+      "to_author_check": {
+        "path": "FirstRelease/AllLevels/cet4-photo-verification-bank-author-check-v0.3.json",
+        "sha256": "b601b23cc49281bbec47f71dc776bffb8aa622036258a3934e27403d92dd99dc"
+      },
+      "to_payload_sha256": "1998755169a45fb2e813e411d9770fad88c6d2d260009f1445d98b6137b1f187",
+      "response_count": 10,
+      "source_form_kept": true,
+      "reason": "Replace unused B available with fragile to avoid competing with practical at slot6;update reasons4/6;no new author or source;old originals and snapshot immutable."
+    },
+    {
+      "id": "grade9-clay-bowl-ten-cloze",
+      "from_versions": [
+        {
+          "payload_sha256": "609e710a3d66c08752f6f6da83158f26d9e70388e7a92d540d5cabc509ee7bd5",
+          "snapshot": {
+            "path": "build/english-benchmark-authority-20261017/review177-incremental-delta-v0.1.json",
+            "sha256": "dcac8a74d2f9ee7b0c6e4c78208f0f9a8856890dfd0ff33b455c3d80ed6181bf"
+          },
+          "candidate": {
+            "path": "AuthorityGap20261017/Authored/grade9-clay-bowl-ten-cloze-v0.1.md",
+            "sha256": "6ca6d9855dc2b7961002c05cf3bf8cdddb5805f76b593de0cd2ad4f95cd10b67"
+          },
+          "author_check": {
+            "path": "AuthorityGap20261017/Authored/grade9-clay-bowl-ten-cloze-author-check-v0.1.json",
+            "sha256": "9535158aaac8829dfe9746c48d54955b97a34995fe000d5d37c41b299525e0b9"
+          }
+        }
+      ],
+      "to_candidate": {
+        "path": "AuthorityGap20261017/Authored/grade9-clay-bowl-ten-cloze-v0.2.md",
+        "sha256": "25f8d17e25ebb7d9b44b4e709cec22a0cd72119d5a36e3bfce118b3d71d0954c"
+      },
+      "to_author_check": {
+        "path": "AuthorityGap20261017/Authored/grade9-clay-bowl-ten-cloze-author-check-v0.2.json",
+        "sha256": "655e6f60542090eebf53ef4a2c97f260d0d392d4647f23e4e4633796ea9b15f2"
+      },
+      "to_payload_sha256": "30e6b70c123056f912b29aef462ec66c74c175c0fa99f0a8066499d44c1572dc",
+      "response_count": 10,
+      "source_form_kept": true,
+      "reason": "rationale-onlysynchronization_afterbodyshortening;removeunprintedpens/room/everydaydetails;keysandstudentinputunchanged",
+      "student_body_stem_options_key_unchanged": true
+    },
+    {
+      "id": "grade9-street-voices-ten-cloze",
+      "from_versions": [
+        {
+          "payload_sha256": "de2bb293f24462f48f2d717f599039b03c776dd89e1aebe76d21d9df3e8d6150",
+          "snapshot": {
+            "path": "build/english-benchmark-authority-20261017/review177-incremental-delta-v0.1.json",
+            "sha256": "dcac8a74d2f9ee7b0c6e4c78208f0f9a8856890dfd0ff33b455c3d80ed6181bf"
+          },
+          "candidate": {
+            "path": "AuthorityGap20261017/Authored/grade9-street-voices-ten-cloze-v0.1.md",
+            "sha256": "7acc5ba417cf56ef7d09973b842036da5d0779e0c4a9eacba57308f855efc05a"
+          },
+          "author_check": {
+            "path": "AuthorityGap20261017/Authored/grade9-street-voices-ten-cloze-author-check-v0.1.json",
+            "sha256": "0a393862114a140f77683c61a8a13e69dd2d3682f0731220141e5454b45b222d"
+          }
+        }
+      ],
+      "to_candidate": {
+        "path": "AuthorityGap20261017/Authored/grade9-street-voices-ten-cloze-v0.2.md",
+        "sha256": "4f1302cbc0cb1830a619ac9b7b7ebc3012e7da4c00847d9611ab262cc3a8df7f"
+      },
+      "to_author_check": {
+        "path": "AuthorityGap20261017/Authored/grade9-street-voices-ten-cloze-author-check-v0.2.json",
+        "sha256": "1c1329c1a02a525c0199505c9c4cfb50512b444607cbc29338ede29908db9999"
+      },
+      "to_payload_sha256": "3cab6c082895d0691df03f6a656d9f5c7a2e3a70e549c23ab27c84094ef7b1b0",
+      "response_count": 10,
+      "source_form_kept": true,
+      "reason": "rationale-onlysynchronization_afterbodyshortening;removeunprintedpens/room/everydaydetails;keysandstudentinputunchanged",
+      "student_body_stem_options_key_unchanged": true
+    },
+    {
+      "id": "primary6-blue-sleeve-dialogue",
+      "from_versions": [
+        {
+          "payload_sha256": "b07241bc070a066986aa2e0403d4087bc8987561fe1eab44a70caf01a42b3929",
+          "snapshot": {
+            "path": "build/english-benchmark-authority-20261017/review205-incremental-delta-v0.1.json",
+            "sha256": "6a472e4705aa93c2eaa53f893b4a1809fa49878b5e74861ed1d776d5242763ba"
+          },
+          "candidate": {
+            "path": "AuthorityGap20261017/Authored/primary6-blue-sleeve-dialogue-v0.1.md",
+            "sha256": "09b47d1c759f8229f403a456ea1f470236e41207e081511661101f71717799f3"
+          },
+          "author_check": {
+            "path": "AuthorityGap20261017/Authored/primary6-blue-sleeve-dialogue-author-check-v0.1.json",
+            "sha256": "04443095f9eb558323e2bcae107ad633f39610084742b411e54a38e9f8f1cc32"
+          }
+        }
+      ],
+      "to_candidate": {
+        "path": "AuthorityGap20261017/Authored/primary6-blue-sleeve-dialogue-v0.2.md",
+        "sha256": "9bbd2709202517d76c93fd3976940b482e33dcd2c0caefd04f547e69e9dfcfba"
+      },
+      "to_author_check": {
+        "path": "AuthorityGap20261017/Authored/primary6-blue-sleeve-dialogue-author-check-v0.2.json",
+        "sha256": "72fe99e6e43e638baf95f3b500ae460c43dd09804178ab59428f12a24ba3e656"
+      },
+      "to_payload_sha256": "7cd6401020f04173ce94087c358f754e46085b3d37514123a75fd2a0748f73b5",
+      "response_count": 5,
+      "source_form_kept": true,
+      "reason": "rationaleonly_restoreEnglisharticleA_insidequotedanswer_aftercandidateletterpermutation;studentinputkeysunchanged",
+      "student_body_stem_options_key_unchanged": true
+    }
+  ],
+  "previous_revision_index": {
+    "path": "AuthorityGap20261017/RationaleRevisions-v0.1.json",
+    "sha256": "791955c4cd743d324929688a90077980a2d88854a19721bff7341932df6667ad"
+  }
+}

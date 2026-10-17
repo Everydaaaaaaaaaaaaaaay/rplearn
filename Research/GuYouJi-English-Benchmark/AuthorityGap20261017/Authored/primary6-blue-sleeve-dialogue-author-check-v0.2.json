@@ -1,0 +1,247 @@
+{
+  "version": "0.2",
+  "id": "primary6-blue-sleeve-dialogue",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "9bbd2709202517d76c93fd3976940b482e33dcd2c0caefd04f547e69e9dfcfba",
+  "canonical_response_block_sha256": "26a581a5cecf20af1f82504e3bd7b45cdc9808a02aee835a30b2607531398982",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "What were you making?"
+        ],
+        [
+          "B",
+          "Can I see it?"
+        ],
+        [
+          "C",
+          "before the hall opened"
+        ],
+        [
+          "D",
+          "Why is there paint on your sleeve?"
+        ],
+        [
+          "E",
+          "Where is the sign now?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D就袖上油漆问原因，回答帮美术社给事件来源。A问制作物应引出物品而非仅I helped，E问sign位置但sign还未引入且当前答不含位置，B能否看不被此因由陈述作许可答；C为依附从句非完整问话。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "What were you making?"
+        ],
+        [
+          "B",
+          "Can I see it?"
+        ],
+        [
+          "C",
+          "before the hall opened"
+        ],
+        [
+          "D",
+          "Why is there paint on your sleeve?"
+        ],
+        [
+          "E",
+          "Where is the sign now?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A问正在制作什么，答句“A long sign for the school show”直接给出制作品。D为何有油漆不是问作品身份，E询问位置不应答一件标牌的名词短语，B许可问不应答制作物；C是从句。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "What were you making?"
+        ],
+        [
+          "B",
+          "Can I see it?"
+        ],
+        [
+          "C",
+          "before the hall opened"
+        ],
+        [
+          "D",
+          "Why is there paint on your sleeve?"
+        ],
+        [
+          "E",
+          "Where is the sign now?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C before the hall opened接finished it说明按时完成于礼堂开放前。D/A/E/B均为完整问句，不能直接接入该陈述形成这个时间状语。保留源句库含一个分句的具体形式。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "What were you making?"
+        ],
+        [
+          "B",
+          "Can I see it?"
+        ],
+        [
+          "C",
+          "before the hall opened"
+        ],
+        [
+          "D",
+          "Why is there paint on your sleeve?"
+        ],
+        [
+          "E",
+          "Where is the sign now?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E问标牌现在哪，It is hanging above main entrance明示位置。D问油漆缘由、A制作物、B看物许可都不以此地点回答为主；C从句不构成独立问。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "What were you making?"
+        ],
+        [
+          "B",
+          "Can I see it?"
+        ],
+        [
+          "C",
+          "before the hall opened"
+        ],
+        [
+          "D",
+          "Why is there paint on your sleeve?"
+        ],
+        [
+          "E",
+          "Where is the sign now?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B请求看标牌，Yes和come with me/I will show you直接准许。D原因/A制作/E位置三个信息问都不能由Yes许可直接作答，C分句也非请求。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary6DialogueBridge-v0.1.json",
+    "sha256": "a350262f93fc2434f0018083c7b516d920940b138d52a7cfe0402b1a65077748"
+  },
+  "source_group_id": "primary6.minzhi2016-17.sentence",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_once",
+    "source_material": {
+      "dialogues": 1,
+      "gaps": 5,
+      "shared_sentences_or_clause": 5,
+      "subordinate_clause_entry": "when you came over",
+      "not_five_independent_complete_sentences": true
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "Ella: Look, there is blue paint on your sleeve. (1) ____\n\nMax: I helped the art club this morning.\n\nElla: (2) ____\n\nMax: A long sign for the school show.\n\nElla: Did you finish it in time?\n\nMax: Yes, we finished it (3) ____.\n\nElla: (4) ____\n\nMax: It is hanging above the main entrance.\n\nElla: (5) ____\n\nMax: Yes. Come with me and I will show you.\n\n共享句子或分句：\n\nA. What were you making?\nB. Can I see it?\nC. before the hall opened\nD. Why is there paint on your sleeve?\nE. Where is the sign now?",
+  "author_answer_vector": [
+    "D",
+    "A",
+    "C",
+    "E",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 58,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 120,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_words_once": 24,
+    "completed_body_English_words": 82,
+    "requirement_English_words": 0,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Ella: Look, there is blue paint on your sleeve. (1) ____\nMax: I helped the art club this morning.\nElla: (2) ____\nMax: A long sign for the school show.\nElla: Did you finish it in time?\nMax: Yes, we finished it (3) ____.\nElla: (4) ____\nMax: It is hanging above the main entrance.\nElla: (5) ____\nMax: Yes. Come with me and I will show you.",
+  "completed_passage": "Ella: Look, there is blue paint on your sleeve. Why is there paint on your sleeve?\nMax: I helped the art club this morning.\nElla: What were you making?\nMax: A long sign for the school show.\nElla: Did you finish it in time?\nMax: Yes, we finished it before the hall opened.\nElla: Where is the sign now?\nMax: It is hanging above the main entrance.\nElla: Can I see it?\nMax: Yes. Come with me and I will show you.",
+  "shared_bank": [
+    [
+      "A",
+      "What were you making?"
+    ],
+    [
+      "B",
+      "Can I see it?"
+    ],
+    [
+      "C",
+      "before the hall opened"
+    ],
+    [
+      "D",
+      "Why is there paint on your sleeve?"
+    ],
+    [
+      "E",
+      "Where is the sign now?"
+    ]
+  ],
+  "clause_candidate_label": "C",
+  "clause_candidate_text": "before the hall opened",
+  "four_complete_sentences_one_subordinate_clause": true,
+  "no_added_once_limit": true,
+  "each_slot_locally_supported_without_once": true,
+  "dialogue_count": 1,
+  "prefreeze_presentation_correction": "Eachspeakerturnownparagraph;content/keysunchanged",
+  "prefreeze_option_order": {
+    "old_to_new": {
+      "C": "A",
+      "E": "B",
+      "B": "C",
+      "A": "D",
+      "D": "E"
+    },
+    "accepted_word_content_unchanged": true
+  },
+  "previous_author_check": {
+    "path": "AuthorityGap20261017/Authored/primary6-blue-sleeve-dialogue-author-check-v0.1.json",
+    "sha256": "04443095f9eb558323e2bcae107ad633f39610084742b411e54a38e9f8f1cc32"
+  },
+  "revision_reason": "rationaleonly_restoreEnglisharticleA_insidequotedanswer_aftercandidateletterpermutation;studentinputkeysunchanged"
+}

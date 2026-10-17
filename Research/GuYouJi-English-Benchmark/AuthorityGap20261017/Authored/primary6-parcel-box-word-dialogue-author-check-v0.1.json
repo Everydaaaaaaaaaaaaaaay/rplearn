@@ -1,0 +1,240 @@
+{
+  "version": "0.1",
+  "id": "primary6-parcel-box-word-dialogue",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "9ed353b565f54d0ca62efb31293430241d20024852694dc6f228af605cff2a1f",
+  "canonical_response_block_sha256": "956609e44cde805951bf94c89e3fee5e5c98c522999a5e1195f7106c91bd852d",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "cheap"
+        ],
+        [
+          "B",
+          "empty"
+        ],
+        [
+          "C",
+          "next to"
+        ],
+        [
+          "D",
+          "heavy"
+        ],
+        [
+          "E",
+          "highest"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B empty由nothing in it明示为空。E highest是比较高低而非内容物为空，C next to缺其后参照物，A cheap价格/D heavy重量都不表达当前没有物件；最佳项由紧接定义确定。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "cheap"
+        ],
+        [
+          "B",
+          "empty"
+        ],
+        [
+          "C",
+          "next to"
+        ],
+        [
+          "D",
+          "heavy"
+        ],
+        [
+          "E",
+          "highest"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D heavy与not light重量反义直接对应。E highest说高度、B empty说是否装物、A cheap说价格，均不能表达题干不是轻这一重量要求；C next to缺后接参照物。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "cheap"
+        ],
+        [
+          "B",
+          "empty"
+        ],
+        [
+          "C",
+          "next to"
+        ],
+        [
+          "D",
+          "heavy"
+        ],
+        [
+          "E",
+          "highest"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E highest在the和shelf之间修饰最高层，top shelf与above my head共同支持。B empty/A cheap/D heavy也可修饰货架但不表达top和above的层级；C next to不在这里作the后的这一最高层形容词。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "cheap"
+        ],
+        [
+          "B",
+          "empty"
+        ],
+        [
+          "C",
+          "next to"
+        ],
+        [
+          "D",
+          "heavy"
+        ],
+        [
+          "E",
+          "highest"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C next to后接the door给空间关系，on left side进一步定位。E highest/B empty/A cheap/D heavy不能直接引出the door形成这里的完整系表位置结构。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "cheap"
+        ],
+        [
+          "B",
+          "empty"
+        ],
+        [
+          "C",
+          "next to"
+        ],
+        [
+          "D",
+          "heavy"
+        ],
+        [
+          "E",
+          "highest"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A cheap对应No否定expensive并给仅两元的本情境价格评价。E highest高低/B empty空满/D heavy重量未回答贵不贵且不受价格说明支持；C next to缺参照物。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary6DialogueBridge-v0.1.json",
+    "sha256": "a350262f93fc2434f0018083c7b516d920940b138d52a7cfe0402b1a65077748"
+  },
+  "source_group_id": "primary6.minzhi2016-17.bank",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_no_added_once",
+    "source_material": {
+      "dialogues": 1,
+      "gaps": 5,
+      "shared_words_or_phrase": 5,
+      "multiple_word_entry": "more than",
+      "nativebankallocationvisuallyrepaired_inherited": true
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 5
+    }
+  },
+  "student_passage": "Mia: Can I put these cups in this box?\n\nLeo: Yes. The box is (1) ____. There is nothing in it now.\n\nMia: Will it be easy to carry after we put all those cups inside?\n\nLeo: No. It will be (2) ____, not light.\n\nMia: Can we put the full box on the top shelf?\n\nLeo: No. The (3) ____ shelf is above my head. Use the bottom shelf instead.\n\nMia: Where is that bottom shelf?\n\nLeo: It is (4) ____ the door, on the left side of the door.\n\nMia: Do we have to buy an expensive roll of tape?\n\nLeo: No. This roll is (5) ____. It costs only two yuan.\n\n共享词库：\n\nA. cheap\nB. empty\nC. next to\nD. heavy\nE. highest",
+  "author_answer_vector": [
+    "B",
+    "D",
+    "E",
+    "C",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 104,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 30,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_words_once": 6,
+    "completed_body_English_words": 110,
+    "requirement_English_words": 0,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Mia: Can I put these cups in this box?\nLeo: Yes. The box is (1) ____. There is nothing in it now.\nMia: Will it be easy to carry after we put all those cups inside?\nLeo: No. It will be (2) ____, not light.\nMia: Can we put the full box on the top shelf?\nLeo: No. The (3) ____ shelf is above my head. Use the bottom shelf instead.\nMia: Where is that bottom shelf?\nLeo: It is (4) ____ the door, on the left side of the door.\nMia: Do we have to buy an expensive roll of tape?\nLeo: No. This roll is (5) ____. It costs only two yuan.",
+  "completed_passage": "Mia: Can I put these cups in this box?\nLeo: Yes. The box is empty. There is nothing in it now.\nMia: Will it be easy to carry after we put all those cups inside?\nLeo: No. It will be heavy, not light.\nMia: Can we put the full box on the top shelf?\nLeo: No. The highest shelf is above my head. Use the bottom shelf instead.\nMia: Where is that bottom shelf?\nLeo: It is next to the door, on the left side of the door.\nMia: Do we have to buy an expensive roll of tape?\nLeo: No. This roll is cheap. It costs only two yuan.",
+  "shared_bank": [
+    [
+      "A",
+      "cheap"
+    ],
+    [
+      "B",
+      "empty"
+    ],
+    [
+      "C",
+      "next to"
+    ],
+    [
+      "D",
+      "heavy"
+    ],
+    [
+      "E",
+      "highest"
+    ]
+  ],
+  "no_added_once_limit": true,
+  "each_slot_locally_supported_without_once": true,
+  "dialogue_count": 1,
+  "has_multiword_entry": true,
+  "prefreeze_presentation_correction": "Eachspeakerturnownparagraph;content/keysunchanged",
+  "prefreeze_option_order": {
+    "old_to_new": {
+      "D": "A",
+      "C": "B",
+      "B": "C",
+      "E": "D",
+      "A": "E"
+    },
+    "accepted_word_content_unchanged": true
+  }
+}
