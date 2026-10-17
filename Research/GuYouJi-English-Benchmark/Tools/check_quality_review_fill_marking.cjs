@@ -71,18 +71,36 @@ assert.equal(compare([kwt],{'1.1':'did not dawner on me'}).different,1);
 assert.equal(compare([{...kwt,fillMarking:{...kwt.fillMarking,requiredWord:'DAWNED'}}]).available,false);
 assert.equal(compare([{...kwt,fillMarking:{...kwt.fillMarking,requiredWord:'DAWN ON'}}]).available,false);
 assert.equal(compare([{...kwt,fillMarking:{...kwt.fillMarking,requiredWord:123}}]).available,false);
+const bankHelp={number:1,options:[],acceptedAnswers:['to help','to be helping'],bankEntry:'help',bankReuse:'once',fillMarking:{version:1,review:'author_context_checked',normalization:'english_phrase_v1',maxWords:null,unlisted:'review',rejectedAnswers:[]}};
+const bankChild={...bankHelp,number:2,acceptedAnswers:['children'],bankEntry:'child'};
+assert.equal(compare([bankHelp,bankChild],{'1.1':'to help','2.1':'children'}).bankConflicts.length,0);
+let reused=compare([bankHelp,bankChild],{'1.1':'to help','2.1':'to be helping'});
+assert.equal(JSON.stringify(reused.bankConflicts),JSON.stringify([{entry:'help',numbers:[1,2]}]));
+assert.equal(reused.matched,1);assert.equal(reused.review,1);
+assert.equal(compare([bankHelp,bankChild],{'1.1':' TO  HELP ','2.1':'to BE helping'}).bankConflicts.length,1);
+assert.equal(compare([bankHelp,bankChild],{'1.1':'helpful','2.1':'helpful'}).bankConflicts.length,0);
+assert.equal(compare([bankHelp,{...bankChild,bankReuse:undefined}]).available,false);
+assert.equal(compare([{...bankHelp,bankReuse:'unknown'},bankChild]).available,false);
+assert.equal(compare([bankHelp,{...bankChild,bankEntry:'help'}]).available,false);
+assert.equal(compare([bankHelp,{...bankChild,bankEntry:'HELP'}]).available,false);
+assert.equal(compare([bankHelp,{...bankChild,acceptedAnswers:['to help']}]).available,false);
 assert.equal(compare([{...exactTwo,fillMarking:{...exactTwo.fillMarking,wordCountAmbiguity:undefined}}]).available,false);
 assert.equal(compare([{...exactTwo,acceptedAnswers:['instead']}]).available,false);
 // Integrate with every actual new complete group; exercise all alternate forms.
 const page=fs.readFileSync(path.join(__dirname,'../../../build/english-benchmark-quality-review/index.html'),'utf8');
 const data=JSON.parse(page.match(/<script id="quality-data" type="application\/json">(.*?)<\/script>/s)[1]);
-let groups=0,responses=0,alternatives=0;
+let groups=0,responses=0,alternatives=0,actualOnceBanks=0;
 for(const g of Object.values(data.groups).filter(g=>g.questions.some(q=>q.acceptedAnswers))){
  const saved=Object.fromEntries(g.questions.map(q=>[q.number+'.1',q.acceptedAnswers[0]]));
  assert.equal(compare(g.questions,saved).matched,g.questions.length);
  for(const q of g.questions){
   for(const form of q.acceptedAnswers){assert.equal(compare(g.questions,{...saved,[q.number+'.1']:form.toLowerCase()}).matched,g.questions.length);alternatives++;}
   for(const wrong of q.fillMarking.rejectedAnswers)assert.equal(compare(g.questions,{...saved,[q.number+'.1']:wrong}).different,1);
+ }
+ if(g.questions[0].bankReuse==='once'){
+  const repeated=compare(g.questions,{...saved,'2.1':g.questions[0].acceptedAnswers[0]});
+  assert.equal(repeated.bankConflicts.length,1);assert.equal(repeated.bankConflicts[0].entry,g.questions[0].bankEntry);
+  assert.equal(repeated.bankConflicts[0].numbers.join(','),'1,2');assert(repeated.matched<g.questions.length);actualOnceBanks++;
  }
  groups++;responses+=g.questions.length;
 }
@@ -100,4 +118,4 @@ for(const [id,clauses]of [
  const pastForm={'grade10-grammar-library-cinema-neighbour':'carried','grade10-grammar-bakery-watercolour-train':'pushed','grade10-grammar-hospital-birdwalk-bus':'stood'}[id];
  const pastResult=compare(g.questions,{...saved,'8.1':pastForm});assert.equal(pastResult.matched,9);assert.equal(pastResult.review,1);assert.equal(pastResult.different,0);pendingPastForms++;
 }
-console.log(JSON.stringify({passed:true,cases:55+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unchanged_whole_keyword:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));
+console.log(JSON.stringify({passed:true,cases:64+pendingClauses+pendingPastForms,actual_fill_groups:groups,actual_fill_positions:responses,accepted_forms_checked:alternatives,actual_once_banks_reuse_checked:actualOnceBanks,known_variants_reuse_same_root:true,no_unknown_root_stemming:true,given_form_scope_clauses_need_review:pendingClauses,past_form_exclusions_need_review:pendingPastForms,no_three_answer_cap:true,unknown_not_marked_wrong:true,per_slot_word_limits:true,minimum_word_limits:true,unchanged_whole_keyword:true,unlisted_contraction_hyphen_wordcounts_need_review:true,multiword_forms_preserved:true,full_group_contract:true,local_not_production:true}));

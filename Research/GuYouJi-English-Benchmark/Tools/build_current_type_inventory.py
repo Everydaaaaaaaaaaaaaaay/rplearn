@@ -44,13 +44,14 @@ def build(page,version="0.1"):
                 group_ids=ids,source_group_ids=sorted({a for g in groups for a in g['anchor_group_ids']}),
                 configurations=[dict(id=g['id'],payload_sha256=group_sha(g),responses=len(g['questions']),options_per_response=[len(q['options'])for q in g['questions']],
                     format_summary=g.get('formatSummary'),instruction=g.get('instruction'),fixed_shared_bank=g.get('fixedSharedBank',False),
-                    word_limits=[{'number':q['number'],'given_lemma':q.get('givenLemma'),'min_words':q['fillMarking'].get('minWords'),'max_words':q['fillMarking'].get('maxWords'),'required_keyword':q['fillMarking'].get('requiredWord')}
+                    word_limits=[{'number':q['number'],'given_lemma':q.get('givenLemma'),'min_words':q['fillMarking'].get('minWords'),'max_words':q['fillMarking'].get('maxWords'),'required_keyword':q['fillMarking'].get('requiredWord'),'bank_entry':q.get('bankEntry'),'bank_reuse_rule':q.get('bankReuse')}
                                  for q in g['questions']if q.get('fillMarking')],
                     audio_tracks=len(g.get('requiredAudioAssets',[])),required_images=len(g.get('requiredPassageImages',[]))+len(g.get('requiredImageAssets',[])),
                     candidate=g['candidate'],author_check=g['author_check'])for g in groups],
                 author_configurations_not_independent_source_count=True,three_drafts_not_type_completeness=True))
         issues=[dict(id=i['id'],label=i['label'],state=i['state_label'],detail=i['detail'],evidence=i['evidence'])for i in data['coverage_audit']['issues']if level in i['levels'] or aliases.get(str(level)) in i['levels']]
-        rows.append(dict(level=level,label=data['levelLabels'][str(level)],authority_ids=authority['authority_ids'],authority_requirements=authority['requirements_summary'],
+        rows.append(dict(level=level,label=data['levelLabels'][str(level)],authority_ids=authority['authority_ids'],historical_atlas_summary=authority['requirements_summary'],
+            authority_reference_findings=[{'id':v['id'],'role':v['role'],'finding':v['finding']}for v in atlas['authorities']if v['id']in authority['authority_ids']],
             current_types=current,observed_source_cells_without_current_author=unfilled,open_audit_issues=issues,
             complete_groups=sum(r['complete_groups']for r in current),responses=sum(r['responses']for r in current),
             current_type_count=len(current),old_atlas_counts_replaced_by_this_snapshot=True,exhaustive_type_catalogue_proven=False))

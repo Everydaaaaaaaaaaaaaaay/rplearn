@@ -43,6 +43,15 @@ function normalizeFill(value,protocol){
 }
 function answerComparison(questions,saved={}){
  if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};
+ const onceBank=questions.some(q=>q.bankReuse!==undefined),knownBankRoots=new Map(),bankEntries=new Set();
+ if(onceBank){
+  for(const q of questions){
+   const root=normalizeFill(q.bankEntry,'english_phrase_v1');
+   if(q.bankReuse!=='once'||root===null||bankEntries.has(root)||q.fillMarking?.normalization!=='english_phrase_v1'||!Array.isArray(q.acceptedAnswers))return {available:false,reason:'完整词库的复用规则或根项对应尚未绑定。'};
+   bankEntries.add(root);
+   for(const value of q.acceptedAnswers){const form=normalizeFill(value,'english_phrase_v1');if(form===null||knownBankRoots.has(form)&&knownBankRoots.get(form)!==q.bankEntry)return {available:false,reason:'同一参考形式对应多个词库项，暂不自动核对。'};knownBankRoots.set(form,q.bankEntry);}
+  }
+ }
  const rows=[],numbers=new Set();
  for(const q of questions){
   if(!Number.isInteger(q.number)||numbers.has(q.number)||!Array.isArray(q.options))return {available:false,reason:'题号或完整作答协议未绑定。'};
@@ -67,7 +76,10 @@ function answerComparison(questions,saved={}){
   const missingKeyword=normalized!==null&&contract.requiredWord!==undefined&&!normalized.split(' ').includes(contract.requiredWord.toUpperCase());
   rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
- return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,rows};
+ const usedBankRoots=new Map();
+ if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}
+ const bankConflicts=[...usedBankRoots].filter(([,positions])=>positions.length>1).map(([entry,numbers])=>({entry,numbers}));
+ return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,bankConflicts,rows};
 }
 function clearSelectionComparison(){el('selection-comparison').hidden=true;el('selection-comparison').textContent='';}
 function render(){
@@ -105,7 +117,7 @@ function render(){
   const result=answerComparison(g.questions,drafts[g.id]);
   if(!result.available){el('notice').textContent=result.reason;return;}
   el('notice').textContent=prototypeNotice;
-  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong><p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
+  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong>'+(result.bankConflicts?.length?'<p class="bank-conflict">词库复用冲突：'+result.bankConflicts.map(c=>escapeText(c.entry)+'（第'+c.numbers.join('、')+'空）').join('；')+'。这些作答重复使用同一词库项，整组尚未符合每项一次的规则；不据此擅自分配部分分。未列词形仍待复核，不自动猜词根。</p>':'')+'<p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
   el('selection-comparison').hidden=false;
  };
  el('reset').onclick=()=>{delete drafts[g.id];render();};

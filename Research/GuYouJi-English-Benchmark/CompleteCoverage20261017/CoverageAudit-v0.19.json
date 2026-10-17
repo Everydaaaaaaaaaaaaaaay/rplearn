@@ -1,0 +1,229 @@
+{
+  "version": "0.19",
+  "scope_notice": "正在补全题型覆盖。稿数目标与类型完整性分别核验；未知不表示没有，缺配套不从待办消失，主观题/启蒙不恢复。",
+  "all_required_types_complete": false,
+  "national_taxonomy_exhaustive": false,
+  "issues": [
+    {
+      "id": "type-audit15",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "权威与普通样本题型清单复核",
+      "state_label": "当前库存重算，仍有5个已见无当前稿格",
+      "detail": "当前354组2520回应/112展示家族格；初一/初二/初三词库已有当前代表。初一句中词形/语境词汇、初二汉语提示语篇、初三/高二语境词汇五格仍待具体模式复核；中小学与高中听力、低小现行闭集活动和地方模式另有缺口。数量不证明等值、全国穷尽或生产通过。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/AuthoredIndex-v0.23.json",
+          "sha256": "0d02d98abd2b86955408df0d5a36fcb0177565fc97e94c3ab536ff68da8f70c8"
+        },
+        {
+          "path": "CompleteCoverage20261017/JuniorBankSourceModes-v0.1.json",
+          "sha256": "cb4bbf632d8bd392ac67ac58c2267b8b455a0749a6f47ea64f071d4b8b83ae3c"
+        },
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.3.json",
+          "sha256": "4ab945e38643bc7a56bce9ab7e3fb98574f94c58797c5ee12fea0ca918bdcbe5"
+        }
+      ]
+    },
+    {
+      "id": "senior-grammar",
+      "levels": [
+        10,
+        11,
+        12
+      ],
+      "label": "语法填空代表",
+      "state_label": "新补两种五给词单篇，各3组",
+      "detail": "本批高一4处各1词/第10空恰好2词，高二5处无给词各1词；不以无提示一律1词抹掉明文例外。给词正确形式与任意新增从句分开；旧三稿6关系从句候选已改待复核，历史暂停14组仍保留。 另3个未核实的过去词形排除也改待复核，不将预期分词等同合法集穷尽。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.3.json",
+          "sha256": "fdbeb9ff82424432148374c493d7f474f77fae971c2e1edacbfa33b33b8e38b9"
+        },
+        {
+          "path": "CompleteCoverage20261017/AuthoredIndex-v0.14.json",
+          "sha256": "ed7fca0231a310955142589502df3df7dcebd42027f40fede156ddd20b885425"
+        },
+        {
+          "path": "CompleteCoverage20261017/AuthoredRevisions-v0.2.json",
+          "sha256": "24a8654b6388f729d213a06a059a7a733d3347a06c283cb1429c41d41cc7a047"
+        }
+      ]
+    },
+    {
+      "id": "senior-listening",
+      "levels": [
+        10,
+        11,
+        12
+      ],
+      "label": "听力完整形式与配套",
+      "state_label": "缺口未补齐",
+      "detail": "已有高一/高二官方音频与键，题面/完整可靠脚本仍须匹配；高三另核配套，不把高考格式直接套给全部普通卷。",
+      "evidence": [
+        {
+          "path": "AuthorityGap20261017/SourceFollowup-v0.15.json",
+          "sha256": "884b10342adc3f778b754e2cd6a3c35e7b72774b06f172afde8a8b33eafa3832"
+        }
+      ]
+    },
+    {
+      "id": "middle-rest-grammar",
+      "levels": [
+        7,
+        8,
+        9
+      ],
+      "label": "受约束语法与词库填空",
+      "state_label": "初中语法与词库已有新完整代表，其他形式继续",
+      "detail": "本批12词库完整组120回应，初一A/B各三套十空互选，A变形未见明确指令不改成禁止；初二每空一词、初三十二选十分别绑定。旧稿不解封，句中词形与语境词汇/汉语提示等继续核具体约束。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/JuniorBankSourceBindings-v0.1.json",
+          "sha256": "aed8d7f0d20b38cc170932932670b3ee91d8abaa0bd5e1c3c96d02fb88046a94"
+        },
+        {
+          "path": "CompleteCoverage20261017/AuthoredIndex-v0.23.json",
+          "sha256": "0d02d98abd2b86955408df0d5a36fcb0177565fc97e94c3ab536ff68da8f70c8"
+        }
+      ]
+    },
+    {
+      "id": "g11-3passage",
+      "levels": [
+        11
+      ],
+      "label": "三篇3/3/4语法具体模式",
+      "state_label": "已补3完整原创组，仍须独立审阅",
+      "detail": "对应已核延庆普通卷三篇3/3/4、7给词3无提示；与单篇十空同时保留。稿数达标不证明同族全部地方模式穷尽。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.2.json",
+          "sha256": "92003aa71b538afb1ed26083c960746f9270e774925c3a0c6b478b3e547aa4d7"
+        },
+        {
+          "path": "CompleteCoverage20261017/AuthoredIndex-v0.5.json",
+          "sha256": "12aa9a9c45213a9a1f3f1a464ba9f046a5a1521e35171bc34c24702a7abe22d4"
+        }
+      ]
+    },
+    {
+      "id": "primary-listening",
+      "levels": [
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9
+      ],
+      "label": "听力/图音频任务分档核查",
+      "state_label": "仍待补完整输入",
+      "detail": "逐档查实际样本中的选图、判断、排序、匹配、信息填空等形式；这些是待查方向，不凭邻档样本断言本档都有。",
+      "evidence": [
+        {
+          "path": "AuthorityGap20261017/AuthorityAtlas-v0.45.json",
+          "sha256": "77fcd7aa4bba30d39f1da2be0f4497957343c3ccd92d208a3cc1ce8291c65478"
+        }
+      ]
+    },
+    {
+      "id": "early-nonpaper",
+      "levels": [
+        "primary1",
+        "primary2"
+      ],
+      "label": "现行低小闭集活动",
+      "state_label": "必要实际配套仍缺",
+      "detail": "旧纸笔稿仅作历史形式候选；真实学校方案中的歌曲、朗读和自由对话继续排除，另找可客观闭集响应的完整卡阵与指令。",
+      "evidence": [
+        {
+          "path": "AuthorityGap20261017/SourceFollowup-v0.15.json",
+          "sha256": "884b10342adc3f778b754e2cd6a3c35e7b72774b06f172afde8a8b33eafa3832"
+        }
+      ]
+    },
+    {
+      "id": "advanced-format",
+      "levels": [
+        "advanced"
+      ],
+      "label": "C1参照中未交付的受约束形式",
+      "state_label": "已补三稿听句补全，C1参照12类有当前稿",
+      "detail": "一独白八句各一空、按录音顺序、听两遍与45秒读题；原题词或短语不附统一3词上限。三完整原创及本机合成音频已入页；C1参照十二家族有稿，不等于专业/学术全域、等值、自然听辨或独立验收。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/AdvancedSourceModes-v0.3.json",
+          "sha256": "efb315403d8bb1a82abd8f11a695d4960d193dfea252f3c3687c2ad617345b4e"
+        },
+        {
+          "path": "CompleteCoverage20261017/AuthoredIndex-v0.19.json",
+          "sha256": "2f3b589402bc6493f2191cbd34f5164b68b2e177fced0272e29ec55337c6e9bc"
+        }
+      ]
+    },
+    {
+      "id": "specific-local",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "地方具体模式与来源复现",
+      "state_label": "新补高一/高二六选四，其余仍未验收",
+      "detail": "两档各3完整组、一篇四空六共享句；高二明确每项一次/两项不用，高一未见次数明文，不移借。其他地方具体模式和第二来源仍分别补核。",
+      "evidence": [
+        {
+          "path": "FirstRelease/Sampling/sample-layer-gaps-v0.33.json",
+          "sha256": "fe0fb20ce0559ed7942248a0cdd499f8334a6436a891c5d157c912d366fdc8ec"
+        },
+        {
+          "path": "CompleteCoverage20261017/SelectedSourceModes-v0.1.json",
+          "sha256": "ee8459dd82d1a0958bcf6030afe1b5ab6f4a67e6d61771a2b4b220ee4aa824bb"
+        },
+        {
+          "path": "CompleteCoverage20261017/AuthoredIndex-v0.10.json",
+          "sha256": "7581ab28dd6d3c75bed9fc0d5ccab7028e933e3ce23a72b98dfcfc835765a7ba"
+        }
+      ]
+    }
+  ],
+  "prior_frozen_delivery": {
+    "path": "GapCompletion20261017/DeliveryManifest-v0.2.json",
+    "sha256": "0194839fe4ce763f6dfc2fff2b402ae87dfa8efbfe5d6dbf1719b01b2a4e02b5"
+  },
+  "current_media_and_answer_checks_not_independent_educational_validation": true,
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/CoverageAudit-v0.18.json",
+    "sha256": "9ad8a650903ccd7dbf5b501d10acc3f2a41051f6d7f5e48292df8892746460e0"
+  }
+}

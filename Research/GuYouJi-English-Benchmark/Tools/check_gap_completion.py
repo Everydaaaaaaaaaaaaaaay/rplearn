@@ -37,6 +37,50 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'complete_root_word_bank':
+                view=next(v for v in json.loads(load_ref(source['source_view_manifest']).read_text())['views']if v['group_id']==source['id'])
+                assert hashlib.sha256(json.dumps(view,ensure_ascii=False,sort_keys=True).encode()).hexdigest()==source['inherited_view_record_sha256']
+                if b['level']==7:
+                    raw=json.loads(load_ref(view['snapshot']).read_text())['native_pages_private'][view['page_pointer'][-1]]
+                    assert hashlib.sha256(raw.encode()).hexdigest()==view['native_page_sha256']
+                    instruction=raw[view['student_instruction']['start_offset']:view['student_instruction']['end_offset']]
+                    original_bank=view['shared_bank']['entries']
+                    pair=view['alternative_choice'];assert pair['required_choice_count']==1 and pair['mandatory_responses_across_pair']==10
+                    assert not view['strict_no_form_change_explicit']
+                    assert view['form_change_explicit']==(source['form_policy']=='change')
+                    if source['form_policy']=='not_explicit':
+                        assert '未明确' in meta['instruction'] and '不得变形' not in meta['instruction']
+                        assert all(q['fillMarking']['unlisted']=='review' for q in a['review_response_tasks'])
+                else:
+                    raw=load_ref(view['source_text']).read_text()
+                    component=next(c for c in view['components']if c['role']=='student_instruction')
+                    instruction=raw[component['start_offset']:component['end_offset']]
+                    assert hashlib.sha256(instruction.encode()).hexdigest()==component['sha256']
+                    original_bank=view['source_bank_entries_observed']
+                    body=raw[view['start_offset']:view['end_offset']]
+                    assert hashlib.sha256(body.encode()).hexdigest()==view['material_sha256']
+                    assert [int(n)for n in re.findall(r'_{3,}(\d+)_{3,}',body)]==view['expected_blank_ids']
+                    assert len(view['expected_blank_ids'])==10
+                assert '只用一次' in instruction or '仅用一次' in instruction or '限用一次' in instruction
+                assert len(original_bank)==source['entries']==len(a['bank_entries'])
+                assert source['responses']==10 and a['word_bank_completion'] and source['materials']==1
+                assert source['form_policy']==a['form_policy'] and source['max_words_each']==a['max_words_each']
+                if b['level']==8: assert '每空仅填一词' in instruction and a['max_words_each']==1
+                else: assert a['max_words_each'] is None
+                assert a['reuse_rule']==source['reuse_rule']=='once'
+                assert len(a['used_root_entries'])==len(set(a['used_root_entries']))==10
+                assert set(a['used_root_entries'])<=set(a['bank_entries'])
+                assert a['unused_root_entries']==[r for r in a['bank_entries']if r not in a['used_root_entries']]
+                assert len(a['unused_root_entries'])==(2 if b['level']==9 else 0)
+                assert [q['bankEntry']for q in a['review_response_tasks']]==a['used_root_entries']
+                assert all(q['bankReuse']=='once'for q in a['review_response_tasks'])
+                forms=[v.casefold()for q in a['review_response_tasks']for v in q['acceptedAnswers']]
+                assert len(forms)==len(set(forms)), 'Reference forms cannot silently map to two different reused roots'
+                assert all(q['fillMarking']['maxWords']==a['max_words_each']for q in a['review_response_tasks'])
+                assert a['load_measure']['word_bank_English_words_once']==sum(words(v)for v in a['bank_entries'])
+                assert a['full_fill_variant_combinations']==__import__('math').prod(len(q['acceptedAnswers'])for q in a['review_response_tasks'])
+                assert re.findall(r'\((\d+)\) ____',a['student_passage'])==[str(n)for n in range(1,11)]
+                assert '____' not in a['filled_passage']
             if b.get('task_mode') == 'listening_sentence_completion8':
                 selected=json.loads(load_ref(source['selected_native']).read_text())
                 assert selected['paper']==source['source'] and selected['paper_page']==4
@@ -205,7 +249,7 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
