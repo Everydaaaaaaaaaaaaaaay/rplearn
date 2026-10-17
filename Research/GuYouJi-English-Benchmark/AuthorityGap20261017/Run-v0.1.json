@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "status": "281wholegroups1920responses;91cells3drafts;continue_actualmissingtypesandremainingmultidrafts",
+  "status": "delivered_281wholegroups1920responses_99cells91at3;automation17-12deleted;await_user_quality_review",
   "owner_authorized_on": "2026-10-17",
   "timezone": "Asia/Shanghai",
   "hard_deadline_local": "2026-10-17T12:00:00+08:00",
@@ -8,7 +8,7 @@
   "closing_only_from_local": "2026-10-17T11:00:00+08:00",
   "closing_only_from_utc": "2026-10-17T03:00:00Z",
   "automation_id": "17-12",
-  "goal_is_active": true,
+  "goal_is_active": false,
   "scope_policy": {
     "path": "Expansion20261016/ScopePolicy-v0.1.json",
     "sha256": "8bb36afc0c3473d8867820f244cf8650ff7f1627d7f47cdb3c9a21c3108d2ce7"
@@ -27,7 +27,7 @@
   },
   "active_review_run": {
     "path": "FirstRelease/ActiveReviewRun.json",
-    "sha256": "da4714936163d7c5909c536879ec5c37a65b4419470bfd50777500ac7aea430d"
+    "sha256": "e818d826cb19039cc75a45f87ee94da05370c38bcf9e6710d6abd3e9d7cafa73"
   },
   "baseline_complete_groups": 76,
   "baseline_responses": 505,
@@ -45,14 +45,10 @@
   "new_source_responses": 224,
   "new_authored_groups": 205,
   "page_version_still_prior76": false,
-  "required_outputs_pending": [
-    "target_remaining_actual_source_gaps",
-    "expand_original_variants_toward3perconfirmedtype",
-    "final_delivery_report_and_manifest"
-  ],
+  "required_outputs_pending": [],
   "do_not_recover_subjective_or_kindergarten": true,
   "current_cache": "build/english-benchmark-authority-20261017",
-  "last_completed_step": "14orderrevisions182IABcorrecttextsame;localclosedselectioncomparison12controls;281/1920unchanged",
+  "last_completed_step": "final281/1920;15levelmatrixand562refs_verified;19conditionaldraftsopen;automationdeleted;handoff_user",
   "followup_notes": [
     "p3Dongchengwebtitle saysrealbutstudentheader says样卷andregionnotinbody;do_not_countasordinarytrueexam",
     "Kunshan21636201explicitlyadaptedtolatesttextbook;notoriginalexam",
@@ -92,15 +88,15 @@
   },
   "latest_study": {
     "path": "Studies/2026-10-17-authority-first-type-map-and-targeted-source-gaps.md",
-    "sha256": "5394ae8f348ce8216b6d205ce230841867f2ccebed0312e27677bccd057eb947"
+    "sha256": "06f9c394745e2a74ca29fd81c9d130db7cf184af31a27b5df77122b0cbd29a46"
   },
   "latest_incremental_archive": {
-    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.60.json",
-    "sha256": "6a38d46f74f6722abee8e8dc5d0985521b454fc21026b85084e852896842cb38"
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.61.json",
+    "sha256": "8c311ae65fd4b500a426b845f2b45e230e42033a6ac551e5ea3eaca4625caf81"
   },
   "authority_layer_check": {
-    "path": "build/english-benchmark-authority-20261017/authority281-order-ui-check-v0.1.json",
-    "sha256": "63fecb6e4da43341f72cc8525a939e893f58e9dc32323b13e01f87703b93e81e"
+    "path": "build/english-benchmark-authority-20261017/delivery-final-authority-check-v0.1.json",
+    "sha256": "9c784894c41143ad61e7ed371c212e64031754aec5c3b10e347da52aa7046fc5"
   },
   "new_authored_responses": 1415,
   "current_preview_groups": 281,
@@ -108,8 +104,8 @@
   "current_complete_level_type_cells": 99,
   "current_three_original_cells": 91,
   "current_review_plan": {
-    "path": "AuthorityGap20261017/ReviewPlan-v0.54.json",
-    "sha256": "6367f1d773b372858201853136aecf54560d20cbeb5692d4b964bf604f2dd07f"
+    "path": "AuthorityGap20261017/ReviewPlan-v0.55.json",
+    "sha256": "306c66df869a2ef157caa0fbceb47c0b2bbe09bae74804fc69e85e887a62db8b"
   },
   "current_authored_index": {
     "path": "AuthorityGap20261017/AuthoredIndex-v0.50.json",
@@ -132,7 +128,7 @@
     "sha256": "d943d129332ddc4a921ffa809f221324a2cc90de4a550636ccc078ee7dfcc17d"
   },
   "latest_review_check": {
-    "path": "build/english-benchmark-authority-20261017/review281-order-ui-check-v0.1.json",
+    "path": "build/english-benchmark-authority-20261017/delivery-final-review-check-v0.1.json",
     "sha256": "fe8a4b6adfd8206e153d24f49d8aec2e0f84f6e7ecf3bb486aa46c9db93be63b"
   },
   "latest_source_contract_check": {
@@ -174,7 +170,7 @@
     "IAB_current_deliverable_tab": "4",
     "browser_handle_in_cua_repl": "freshReview",
     "original_tab3_had_connection_error_do_not_treat_as_current94page": "old user tab was stale54;fresh4now94;server8766restarted",
-    "current_review_plan": "AuthorityGap20261017/ReviewPlan-v0.54.json",
+    "current_review_plan": "AuthorityGap20261017/ReviewPlan-v0.55.json",
     "next_plan_use_current_atlas_v02": "fixed in ReviewPlan-v0.3",
     "frozen_authored_index": "AuthorityGap20261017/AuthoredIndex-v0.50.json",
     "registered_cache_immutable": "allRegistryprocessingpage_records;do_notreuseexistingfilenames;appendversionwithassert_not_exists",
@@ -187,8 +183,7 @@
     "latest_source_selection": "AuthorityGap20261017/SelectedSourceModes-v0.10.json",
     "remaining_original_gap": "100conditionalcells300target;281shown1920positions99cells91at3;19missing;notnationaltaxonomy",
     "next_priorities": [
-      "no_broad_more_same_families;closingchecklists_and_quality_risks",
-      "11closingonly12deliver;sourcegapsremainunknown"
+      "stop_research_and_wait_user_feedback_noautomatic_expansion"
     ],
     "lowprimary_latest_attempt": "lowprimary-web28/29;ACCE-V2022uses3.1—7.7age preschool sample;grade2booksnotparticipantgradeproof;do_notrestorekindergartenorinferprimary2;fullclosednonpaperschoolcardsstillmissing",
     "latest_CET_attempt": "CET2024samepageHLSunencstreamcopy_twofullm4a1427.748571/1664.847551seconds;8paperpages/all200optionschecked;noindependentauralreview;2016oldmediaunresolvednotpaired",
@@ -198,7 +193,7 @@
       "CET-other5-full-contract-check records browserduration_vs_decodedPCM0.11—0.14secAACpadding;within4096frames@22050;do_notrewritedecodedmanifesttofakebrowserduration",
       "currentmapv0.3/atlasv0.4/targetv0.10/gapv0.5;sourceindexstillv0.5_27/180_unchanged;sourceidentity/transcription/auralcontentrisksretained"
     ],
-    "latest_incremental_archive": "v0.60;20newSHArestoreverified;0fullsnapshots",
+    "latest_incremental_archive": "v0.61;8newSHA/10pathsrestoreverified;0fullsnapshots",
     "current_review_page_count": "281/1920;99completecells;91at3;14held133unchanged",
     "latest_primary_visual_notes": [
       "p4wordpicture2independent5banks,p6wordpicture9actions,p6fourbooktable5MC3choices_noweach3drafts;do_notexpandthese3first",
@@ -614,5 +609,34 @@
   "current_authored_revisions": {
     "path": "AuthorityGap20261017/AuthoredRevisions-v0.4.json",
     "sha256": "a90245cfe510fb68a5e6adfffc49bde9192e837875f6fc9b0ed6d816bdff1b56"
+  },
+  "closing_only": true,
+  "closing_started_utc": "2026-10-17T02:44:19Z",
+  "new_source_search_and_authoring_closed": true,
+  "final_inventory": {
+    "path": "AuthorityGap20261017/FinalInventory-v0.1.json",
+    "sha256": "a0a9ce16f47cef90281d663d2f69ab9b764d4c5d4f2877c72819fc6e073d7734"
+  },
+  "latest_local_delivery_check": {
+    "path": "build/english-benchmark-authority-20261017/delivery-final-local-check-v0.1.json",
+    "sha256": "22a097413a86fa4504eab874c1360a0747160036ff26e927b0c8bdb6f9279aa4"
+  },
+  "automation_deletion_receipt": {
+    "path": "build/english-benchmark-authority-20261017/automation17-12-deletion-receipt-v0.1.json",
+    "sha256": "a8b0974eee300fd5bbdb9e809442a7f624fc9388ed169bca793d9b501f7ff301"
+  },
+  "delivered_at_utc": "2026-10-17T02:49:30Z",
+  "delivery_report": {
+    "path": "AuthorityGap20261017/DeliveryReport-v0.1.md",
+    "sha256": "ad441c151e0251c270b5609ad233c5b31825431d9cb824727c3852af95dfff17"
+  },
+  "delivery_manifest": {
+    "path": "AuthorityGap20261017/DeliveryManifest-v0.1.json",
+    "sha256": "e945cc9d4707a8097b50169ee987792e7f7c6b089e6874ea46ca6e62df638c01"
+  },
+  "automation_status": "deleted",
+  "latest_screenshot": {
+    "path": "build/english-benchmark-authority-20261017/final-quality-page-20261017-v0.1.png",
+    "sha256": "8d4cc3efcc615d8b3d7ce47ad2a722c6e2b5cb5879d1c3301de5e4a9037c545e"
   }
 }
