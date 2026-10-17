@@ -1,0 +1,229 @@
+{
+  "version": "0.1",
+  "id": "primary5-weekend-centre-table",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "b4b61c5a9209b1a2b244539829b695ba2958d1197b6b0c2153778ab334733708",
+  "canonical_response_block_sha256": "af60eba7c0f09dc9158170d666eef98e4e264b5b533801615dc635be57248d9c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where is the paper craft activity?",
+      "options": [
+        [
+          "A",
+          "In the garden."
+        ],
+        [
+          "B",
+          "In the art room."
+        ],
+        [
+          "C",
+          "In Room 3."
+        ],
+        [
+          "D",
+          "In Room 6."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Papercraft的Artroom，B；garden访园、Room3木偶、Room6摄影讲座。"
+    },
+    {
+      "number": 2,
+      "stem": "How long does the paper craft activity last?",
+      "options": [
+        [
+          "A",
+          "Fifteen minutes."
+        ],
+        [
+          "B",
+          "Twenty minutes."
+        ],
+        [
+          "C",
+          "Thirty minutes."
+        ],
+        [
+          "D",
+          "Twenty-five minutes."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "9:40—10:05跨整点=25分，D；15/20/30均不合此差值，不把分钟数05当时长。"
+    },
+    {
+      "number": 3,
+      "stem": "When does the photo talk finish?",
+      "options": [
+        [
+          "A",
+          "At 14:15."
+        ],
+        [
+          "B",
+          "At 13:30."
+        ],
+        [
+          "C",
+          "At 10:50."
+        ],
+        [
+          "D",
+          "At 11:20."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "End14:15，A；13:30为Start，10:50花园终，11:20木偶终。"
+    },
+    {
+      "number": 4,
+      "stem": "An adult is busy all morning but free after lunch. Which activity can the adult join?",
+      "options": [
+        [
+          "A",
+          "Paper craft."
+        ],
+        [
+          "B",
+          "Garden visit."
+        ],
+        [
+          "C",
+          "Photo talk."
+        ],
+        [
+          "D",
+          "Puppet show."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Photo13:30下午且Adultsandchildren可成人，C；其余上午，不因Gardenonlyadults误选。"
+    },
+    {
+      "number": 5,
+      "stem": "Which activity can children NOT join according to the table?",
+      "options": [
+        [
+          "A",
+          "Welcome."
+        ],
+        [
+          "B",
+          "Garden visit."
+        ],
+        [
+          "C",
+          "Puppet show."
+        ],
+        [
+          "D",
+          "Photo talk."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "GardenAdults only明禁儿童，B；A/C/D写Adultsandchildren。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedTableProfileBridge-v0.1.json",
+    "sha256": "78d77366f24665ecc57695652d6209f8952d2770da69ad51fd49c5da20e2f1eb"
+  },
+  "source_group_id": "primary5.yogor2024.timetable_bonus",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "tables": 1,
+      "table_task": "start_end_activity_place_participant_timetable",
+      "all_cells_required": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "All activities are on the same day. The following timetable is fictional.\n\n| Start | End | Activity | Place | Who can join |\n| --- | --- | --- | --- | --- |\n| 9:10 | 9:25 | Welcome | Hall | Adults and children |\n| 9:40 | 10:05 | Paper craft | Art room | Adults and children |\n| 10:20 | 10:50 | Garden visit | Garden | Adults only |\n| 11:00 | 11:20 | Puppet show | Room 3 | Adults and children |\n| 13:30 | 14:15 | Photo talk | Room 6 | Adults and children |",
+  "author_answer_vector": [
+    "B",
+    "D",
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 48,
+    "stem_English_words": 46,
+    "options_English_words_with_repeated_bank": 39,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 31,
+    "requirement_total_characters": 34,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "All activities are on the same day. The following timetable is fictional.\n\n| Start | End | Activity | Place | Who can join |\n| --- | --- | --- | --- | --- |\n| 9:10 | 9:25 | Welcome | Hall | Adults and children |\n| 9:40 | 10:05 | Paper craft | Art room | Adults and children |\n| 10:20 | 10:50 | Garden visit | Garden | Adults only |\n| 11:00 | 11:20 | Puppet show | Room 3 | Adults and children |\n| 13:30 | 14:15 | Photo talk | Room 6 | Adults and children |",
+  "table_all_cells": [
+    [
+      "Start",
+      "End",
+      "Activity",
+      "Place",
+      "Who can join"
+    ],
+    [
+      "9:10",
+      "9:25",
+      "Welcome",
+      "Hall",
+      "Adults and children"
+    ],
+    [
+      "9:40",
+      "10:05",
+      "Paper craft",
+      "Art room",
+      "Adults and children"
+    ],
+    [
+      "10:20",
+      "10:50",
+      "Garden visit",
+      "Garden",
+      "Adults only"
+    ],
+    [
+      "11:00",
+      "11:20",
+      "Puppet show",
+      "Room 3",
+      "Adults and children"
+    ],
+    [
+      "13:30",
+      "14:15",
+      "Photo talk",
+      "Room 6",
+      "Adults and children"
+    ]
+  ],
+  "table_columns": 5,
+  "table_data_rows": 5,
+  "minutes_recomputed": [
+    25
+  ],
+  "source_is_simulation_not_true_exam": true
+}

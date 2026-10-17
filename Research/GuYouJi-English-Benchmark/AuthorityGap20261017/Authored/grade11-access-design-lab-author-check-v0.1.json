@@ -1,0 +1,161 @@
+{
+  "version": "0.1",
+  "id": "grade11-access-design-lab",
+  "grade": 11,
+  "questions": 3,
+  "candidate_sha256": "79a61fe6d426083e5b6690345a7bee5a2dbc4f856251ff6e72ba40ed54cbc036",
+  "canonical_response_block_sha256": "c8faaa1953fad57c459f2cd3c8ed94912ce724b1adcf118eababa4b4644df970",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which applicant meets all the stated permission and attendance conditions?",
+      "options": [
+        [
+          "A",
+          "A Year 10 pupil with guardian permission and full availability."
+        ],
+        [
+          "B",
+          "A Year 11 pupil with software experience but no permission."
+        ],
+        [
+          "C",
+          "A Year 12 pupil with permission and full availability."
+        ],
+        [
+          "D",
+          "A Year 10 pupil with permission who misses the trial workshop."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A同时年级许可全勤；B软件不能代permission，C年级错，D缺compulsorytrial。"
+    },
+    {
+      "number": 2,
+      "stem": "What is the total compulsory attendance?",
+      "options": [
+        [
+          "A",
+          "30 hours."
+        ],
+        [
+          "B",
+          "33 hours."
+        ],
+        [
+          "C",
+          "39 hours."
+        ],
+        [
+          "D",
+          "36 hours."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "30+3+3=36，D；A漏两次，B漏一次，C多加一次。"
+    },
+    {
+      "number": 3,
+      "stem": "Which benefit is actually promised?",
+      "options": [
+        [
+          "A",
+          "Guaranteed publication of every guide."
+        ],
+        [
+          "B",
+          "Tutor comments followed by a chance to revise."
+        ],
+        [
+          "C",
+          "Automatic entry to a later course."
+        ],
+        [
+          "D",
+          "A professional equipment-design certificate."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "末段tutorcomments/teamsrevise，B；A/C/D分别明确不保证或不认证。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedTableProfileBridge-v0.1.json",
+    "sha256": "78d77366f24665ecc57695652d6209f8952d2770da69ad51fd49c5da20e2f1eb"
+  },
+  "source_group_id": "g11.shenzhen2026.programmeA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "whole_programmes": 1,
+      "eligibility": true,
+      "application": true,
+      "schedule_table": 1,
+      "benefits": true,
+      "table_total_plus_two_additional_sessions": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "### Clear Instructions Lab\n\nThe fictional Clear Instructions Lab invites pupils to redesign everyday instructions. Teams will choose a simple classroom process, write a short guide and ask another team to try it. This is a learning activity, not certification to design safety-critical equipment.\n\n### Who may apply?\n\nApplicants must be in Year 10 or Year 11 and have a parent or guardian's permission. Attendance at all listed sessions is compulsory. Experience with design software is optional. It cannot replace attendance or permission.\n\n### Application\n\nSend a form, a short account of one confusing set of instructions, and a recommendation from an adult who is not a family member. The recommendation should give an example of working with others. Applicants do not need to submit a finished guide.\n\n### Compulsory sessions\n\n| Activity | Schedule | Hours |\n| --- | --- | --- |\n| Design lab | 7—18 September | 30 hours in total |\n| Trial workshop | 21 September, 13:00—16:00 | 3 hours |\n| Revision review | 28 September, 13:00—16:00 | 3 hours |\n\nThe two workshops add to, rather than form part of, the 30 lab hours.\n\n### What participants receive\n\nA writing tutor will comment on draft guides after the trial. Teams then revise and explain what they changed. Completing the lab does not guarantee publication of a guide, admission to another course or a professional qualification.",
+  "author_answer_vector": [
+    "A",
+    "D",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 196,
+    "stem_English_words": 21,
+    "options_English_words_with_repeated_bank": 64,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 28,
+    "requirement_total_characters": 30,
+    "output_letter_count": 3
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "### Clear Instructions Lab\n\nThe fictional Clear Instructions Lab invites pupils to redesign everyday instructions. Teams will choose a simple classroom process, write a short guide and ask another team to try it. This is a learning activity, not certification to design safety-critical equipment.\n\n### Who may apply?\n\nApplicants must be in Year 10 or Year 11 and have a parent or guardian's permission. Attendance at all listed sessions is compulsory. Experience with design software is optional. It cannot replace attendance or permission.\n\n### Application\n\nSend a form, a short account of one confusing set of instructions, and a recommendation from an adult who is not a family member. The recommendation should give an example of working with others. Applicants do not need to submit a finished guide.\n\n### Compulsory sessions\n\n| Activity | Schedule | Hours |\n| --- | --- | --- |\n| Design lab | 7—18 September | 30 hours in total |\n| Trial workshop | 21 September, 13:00—16:00 | 3 hours |\n| Revision review | 28 September, 13:00—16:00 | 3 hours |\n\nThe two workshops add to, rather than form part of, the 30 lab hours.\n\n### What participants receive\n\nA writing tutor will comment on draft guides after the trial. Teams then revise and explain what they changed. Completing the lab does not guarantee publication of a guide, admission to another course or a professional qualification.",
+  "whole_programme_sections": [
+    "eligibility",
+    "application",
+    "compulsory_table",
+    "benefits"
+  ],
+  "table_all_cells": [
+    [
+      "Activity",
+      "Schedule",
+      "Hours"
+    ],
+    [
+      "Design lab",
+      "7—18 September",
+      "30 hours in total"
+    ],
+    [
+      "Trial workshop",
+      "21 September, 13:00—16:00",
+      "3 hours"
+    ],
+    [
+      "Revision review",
+      "28 September, 13:00—16:00",
+      "3 hours"
+    ]
+  ],
+  "total_compulsory_hours": 36,
+  "eligibility_all_conditions_explicit": true,
+  "table_additional_not_included_hours": true
+}

@@ -1,0 +1,127 @@
+{
+  "version": "0.1",
+  "groups": [
+    {
+      "id": "primary5.yogor2024.timetable_bonus",
+      "level": "primary5",
+      "kind": "table_reading_choice",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/primary5-kunshan2024-yogor-simulation-candidate20261014.pdf",
+        "sha256": "748114d3053e85e43ad3e9745414591110b2a9ee57859bba2037933900f6e5f3"
+      },
+      "inherited_source_catalogue": {
+        "path": "Primary/Grade5/selected-simulation-source-groups-v0.1.json",
+        "sha256": "3a90ba17a685f15134d1e27f9a7f15979690fd24ba3fad12dad4e8587e6bc32c"
+      },
+      "source_acquisition_id": "primary5-kunshan2024-yogor-simulation-candidate20261014",
+      "physical_pages": [
+        6
+      ],
+      "responses": 5,
+      "material": {
+        "tables": 1,
+        "table_task": "start_end_activity_place_participant_timetable",
+        "all_cells_required": true
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent",
+      "full_student_input": true,
+      "published_key": [
+        "C",
+        "D",
+        "C",
+        "C",
+        "A"
+      ],
+      "is_independent_gold": false,
+      "source_role": "simulation_not_ordinary_school_exam",
+      "source_count_increment": 0
+    },
+    {
+      "id": "g11.shenzhen2026.programmeA",
+      "level": 11,
+      "kind": "table_reading_choice",
+      "source": {
+        "path": "build/english-benchmark-expansion-20261016/g11-shenzhen2026.html",
+        "sha256": "197f84f2c212fccae828239c672587cb7a35bab5d0db73d03f759807c58dc71a"
+      },
+      "inherited_source_catalogue": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "responses": 3,
+      "material": {
+        "whole_programmes": 1,
+        "eligibility": true,
+        "application": true,
+        "schedule_table": 1,
+        "benefits": true,
+        "table_total_plus_two_additional_sessions": true
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4
+        ],
+        "shared_bank": false
+      },
+      "reuse_rule": "independent",
+      "full_student_input": true,
+      "published_key": null,
+      "is_independent_gold": false,
+      "source_quality_note": "Title claims ShenzhenSecondSenior2025-26lower;studentblockAfullMetmuseuminternship/requirements/application/date-hourtable/benefits+3fourchoices;bodydoesnot independently identify school/term;sourceeligibilityQ1incompleteconditionchoicesnotgold;tabletotal40+2x2=44",
+      "source_count_increment": 0
+    },
+    {
+      "id": "g7.xicheng2025.matchingA",
+      "level": 7,
+      "kind": "profile_matching",
+      "source": {
+        "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+        "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+      },
+      "inherited_source_catalogue": {
+        "path": "FirstRelease/Expansions/grade7-xicheng2025-public-groups-v0.1.json",
+        "sha256": "0e1dd06ca448e7f68b6f68ee0140186e53d7655d0dc97f5c632a4460467e8e8e"
+      },
+      "source_acquisition_id": "grade7-xicheng2025-public-paper-key20261014",
+      "physical_pages": [
+        5,
+        6
+      ],
+      "responses": 3,
+      "material": {
+        "activity_cards": 4,
+        "profiles": 3,
+        "all_card_time_and_room_details_retained": true
+      },
+      "candidates": {
+        "per_response": [
+          4,
+          4,
+          4
+        ],
+        "shared_entries": 4,
+        "explicit_spare": 1
+      },
+      "reuse_rule": "not_explicit_do_not_assume_once",
+      "full_student_input": true,
+      "published_key": null,
+      "is_independent_gold": false,
+      "legacy_first_author_added_once_not_source_rule": true,
+      "source_count_increment": 0
+    }
+  ],
+  "new_source_modes": 0,
+  "new_parent_papers": 0
+}

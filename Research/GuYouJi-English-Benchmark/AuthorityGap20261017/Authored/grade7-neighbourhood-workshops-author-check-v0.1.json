@@ -1,0 +1,164 @@
+{
+  "version": "0.1",
+  "id": "grade7-neighbourhood-workshops",
+  "grade": 7,
+  "questions": 3,
+  "candidate_sha256": "e4fbd1d3b6bf490506484788888754c7184304b1b2e5b5dc77114672fc6eb1cf",
+  "canonical_response_block_sha256": "216035a3c2f8b8717226958469dde548ac03a1cdd698923db59e9c308440ea93",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Ari: I want to go outside, draw places and help new visitors find nearby buildings.",
+      "options": [
+        [
+          "A",
+          "Walking Map"
+        ],
+        [
+          "B",
+          "Sound Stories"
+        ],
+        [
+          "C",
+          "Paper Buildings"
+        ],
+        [
+          "D",
+          "Sign Makers"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A户外步行画map给newvisitors，A；D也help却室内single rule不画places，B声音，C屋模无map。"
+    },
+    {
+      "number": 2,
+      "stem": "Ben: I like stories and want to choose sounds that represent people in a story.",
+      "options": [
+        [
+          "A",
+          "Walking Map"
+        ],
+        [
+          "B",
+          "Sound Stories"
+        ],
+        [
+          "C",
+          "Paper Buildings"
+        ],
+        [
+          "D",
+          "Sign Makers"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B听story用物体为character配声且解释，B；A地图/C模型/D标牌均不含故事配声。"
+    },
+    {
+      "number": 3,
+      "stem": "Cara: I want to build a house with paper and carry the model home.",
+      "options": [
+        [
+          "A",
+          "Walking Map"
+        ],
+        [
+          "B",
+          "Sound Stories"
+        ],
+        [
+          "C",
+          "Paper Buildings"
+        ],
+        [
+          "D",
+          "Sign Makers"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C foldjoinmodelhouse/takehome，C；A画map不是立体屋，B声音，Dsign无paperhouse。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedTableProfileBridge-v0.1.json",
+    "sha256": "78d77366f24665ecc57695652d6209f8952d2770da69ad51fd49c5da20e2f1eb"
+  },
+  "source_group_id": "g7.xicheng2025.matchingA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "activity_cards": 4,
+      "profiles": 3,
+      "all_card_time_and_room_details_retained": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4
+      ],
+      "shared_entries": 4,
+      "explicit_spare": 1
+    }
+  },
+  "student_passage": "### A · Walking Map\n\nWalk around the community centre with a teacher and draw a map of nearby places. Add names and directions to help first-time visitors.\n\nTime: 16:00, May 6 · Place: Main Gate\n\n### B · Sound Stories\n\nListen to a short recorded story and make sounds for its characters with simple objects. Tell the group why you chose each sound.\n\nTime: 16:00, May 7 · Place: Music Room\n\n### C · Paper Buildings\n\nFold and join paper to make a small model house. You will take the model home. We do not make maps in this workshop.\n\nTime: 16:00, May 8 · Place: Room 105\n\n### D · Sign Makers\n\nRead examples of clear notices and design one sign for the centre. Use words and colours to explain one rule. We stay inside throughout.\n\nTime: 16:00, May 9 · Place: Room 106",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 125,
+    "stem_English_words": 44,
+    "options_English_words_with_repeated_bank": 24,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 40,
+    "requirement_total_characters": 44,
+    "output_letter_count": 3
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "### A · Walking Map\n\nWalk around the community centre with a teacher and draw a map of nearby places. Add names and directions to help first-time visitors.\n\nTime: 16:00, May 6 · Place: Main Gate\n\n### B · Sound Stories\n\nListen to a short recorded story and make sounds for its characters with simple objects. Tell the group why you chose each sound.\n\nTime: 16:00, May 7 · Place: Music Room\n\n### C · Paper Buildings\n\nFold and join paper to make a small model house. You will take the model home. We do not make maps in this workshop.\n\nTime: 16:00, May 8 · Place: Room 105\n\n### D · Sign Makers\n\nRead examples of clear notices and design one sign for the centre. Use words and colours to explain one rule. We stay inside throughout.\n\nTime: 16:00, May 9 · Place: Room 106",
+  "activity_cards": [
+    [
+      "A",
+      "Walking Map",
+      "Walk around the community centre with a teacher and draw a map of nearby places. Add names and directions to help first-time visitors.",
+      "16:00, May 6",
+      "Main Gate"
+    ],
+    [
+      "B",
+      "Sound Stories",
+      "Listen to a short recorded story and make sounds for its characters with simple objects. Tell the group why you chose each sound.",
+      "16:00, May 7",
+      "Music Room"
+    ],
+    [
+      "C",
+      "Paper Buildings",
+      "Fold and join paper to make a small model house. You will take the model home. We do not make maps in this workshop.",
+      "16:00, May 8",
+      "Room 105"
+    ],
+    [
+      "D",
+      "Sign Makers",
+      "Read examples of clear notices and design one sign for the centre. Use words and colours to explain one rule. We stay inside throughout.",
+      "16:00, May 9",
+      "Room 106"
+    ]
+  ],
+  "profile_count": 3,
+  "activity_count": 4,
+  "time_room_details_not_used_to_invent_profile_availability": true,
+  "no_added_once_limit": true,
+  "legacy_first_author_added_once_separate": true,
+  "prefreeze_profile_scope_correction": "removedinteriorrooms_notpromisedbyoutdoormapcard"
+}

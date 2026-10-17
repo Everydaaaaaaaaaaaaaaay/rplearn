@@ -1,0 +1,163 @@
+{
+  "version": "0.1",
+  "id": "grade7-garden-workshops-matching",
+  "grade": 7,
+  "questions": 3,
+  "candidate_sha256": "3442a05f4ef965324a3be4831cac4db29c17ad98ae6232ccf803244160d1dbca",
+  "canonical_response_block_sha256": "7e5d49db46a5eb3b54fee872e5b94fcfb1086f54142125a0f68655bcf66f2ec3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Lily: I want to grow a real plant and record how it changes.",
+      "options": [
+        [
+          "A",
+          "Seed Pictures"
+        ],
+        [
+          "B",
+          "Growing Notes"
+        ],
+        [
+          "C",
+          "Recipe Readers"
+        ],
+        [
+          "D",
+          "Quiet Drawing"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B种bean、keeprecord全满足；A用dryseeds不plant，C食谱讨论无种植，D画fruit不种。"
+    },
+    {
+      "number": 2,
+      "stem": "Sam: I want to practise speaking English by explaining how to make food. I do not need to cook it.",
+      "options": [
+        [
+          "A",
+          "Seed Pictures"
+        ],
+        [
+          "B",
+          "Growing Notes"
+        ],
+        [
+          "C",
+          "Recipe Readers"
+        ],
+        [
+          "D",
+          "Quiet Drawing"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C Englishrecipe/stepsaloud不做饭，C；A/D艺术无英语步骤，B种植记录非食谱。"
+    },
+    {
+      "number": 3,
+      "stem": "Nina: I want to make a picture from seeds, not draw with pencils or grow a plant.",
+      "options": [
+        [
+          "A",
+          "Seed Pictures"
+        ],
+        [
+          "B",
+          "Growing Notes"
+        ],
+        [
+          "C",
+          "Recipe Readers"
+        ],
+        [
+          "D",
+          "Quiet Drawing"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A arrange dryseeds gluepicture，A；D铅笔被排，B种植被排，C朗读不制作图。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedTableProfileBridge-v0.1.json",
+    "sha256": "78d77366f24665ecc57695652d6209f8952d2770da69ad51fd49c5da20e2f1eb"
+  },
+  "source_group_id": "g7.xicheng2025.matchingA",
+  "source_observation": {
+    "source_responses": 3,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "activity_cards": 4,
+      "profiles": 3,
+      "all_card_time_and_room_details_retained": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4
+      ],
+      "shared_entries": 4,
+      "explicit_spare": 1
+    }
+  },
+  "student_passage": "### A · Seed Pictures\n\nMake a picture using dry seeds and glue. You will arrange shapes on card and take home a finished picture. We will not plant or cook the seeds.\n\nTime: 15:30, April 8 · Place: Art Room\n\n### B · Growing Notes\n\nPlant a bean in a small pot and learn to keep a record of its changes. You can bring the pot home and add a short note each week.\n\nTime: 15:30, April 9 · Place: Greenhouse\n\n### C · Recipe Readers\n\nRead a short English recipe with a teacher. Work in pairs to explain the steps aloud. We will talk about cooking but will not prepare food.\n\nTime: 15:30, April 10 · Place: Room 204\n\n### D · Quiet Drawing\n\nLook at a bowl of fruit and draw it with pencils. The fruit will stay on the table; this is an art activity, not a cooking lesson.\n\nTime: 15:30, April 11 · Place: Art Room",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 140,
+    "stem_English_words": 50,
+    "options_English_words_with_repeated_bank": 24,
+    "output_response_positions": 3,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "requirement_Chinese_Han": 40,
+    "requirement_total_characters": 44,
+    "output_letter_count": 3
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "### A · Seed Pictures\n\nMake a picture using dry seeds and glue. You will arrange shapes on card and take home a finished picture. We will not plant or cook the seeds.\n\nTime: 15:30, April 8 · Place: Art Room\n\n### B · Growing Notes\n\nPlant a bean in a small pot and learn to keep a record of its changes. You can bring the pot home and add a short note each week.\n\nTime: 15:30, April 9 · Place: Greenhouse\n\n### C · Recipe Readers\n\nRead a short English recipe with a teacher. Work in pairs to explain the steps aloud. We will talk about cooking but will not prepare food.\n\nTime: 15:30, April 10 · Place: Room 204\n\n### D · Quiet Drawing\n\nLook at a bowl of fruit and draw it with pencils. The fruit will stay on the table; this is an art activity, not a cooking lesson.\n\nTime: 15:30, April 11 · Place: Art Room",
+  "activity_cards": [
+    [
+      "A",
+      "Seed Pictures",
+      "Make a picture using dry seeds and glue. You will arrange shapes on card and take home a finished picture. We will not plant or cook the seeds.",
+      "15:30, April 8",
+      "Art Room"
+    ],
+    [
+      "B",
+      "Growing Notes",
+      "Plant a bean in a small pot and learn to keep a record of its changes. You can bring the pot home and add a short note each week.",
+      "15:30, April 9",
+      "Greenhouse"
+    ],
+    [
+      "C",
+      "Recipe Readers",
+      "Read a short English recipe with a teacher. Work in pairs to explain the steps aloud. We will talk about cooking but will not prepare food.",
+      "15:30, April 10",
+      "Room 204"
+    ],
+    [
+      "D",
+      "Quiet Drawing",
+      "Look at a bowl of fruit and draw it with pencils. The fruit will stay on the table; this is an art activity, not a cooking lesson.",
+      "15:30, April 11",
+      "Art Room"
+    ]
+  ],
+  "profile_count": 3,
+  "activity_count": 4,
+  "time_room_details_not_used_to_invent_profile_availability": true,
+  "no_added_once_limit": true,
+  "legacy_first_author_added_once_separate": true
+}
