@@ -1,0 +1,241 @@
+{
+  "version": "0.1",
+  "id": "grade7-hefei-art-book",
+  "title": "初一图文短听力：书本与长发人物",
+  "grade": 7,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionI",
+  "source_binding": "g7hefeimixedshort5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.29.json",
+    "sha256": "fc2d193c955853a3e272b75d72106fc6164fe51693de0fe37732c9cb7dfc6d1f"
+  },
+  "illustrated_listening": true,
+  "render_repeat_count": 2,
+  "source_repeat_count": 2,
+  "source_form_notice": "旧合肥来源前两图已从资源主页面的公开首张SVG预览补核：原页自署安徽省合肥市第三十中学2025—2026七上10月月考，五短对话各一题、三候选、各1分/每段两遍；第1物品图、第2人物图，后三题文字。只取公开首张预览，不登录或付费获取后七页；原件与旧缺图文字层均保留。既有完整脚本/参考键文字与原图对应，非独立原音核验或gold，学校/实际施测未认证。全部图、脚本、题面、音轨原创，人物仅按听到的可见特征识别，不以外貌推真实亲属身份。M/W声音及每段前后5秒是本机安排，精确源时序未知；独立教研、识图/听辨、学生、商用、生产未验证。",
+  "local_timing_notice": "本机每段前后各5秒、每段两遍且可重播，原精确停顿未知。",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 95
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 95
+    }
+  },
+  "instruction": "听五段独立短对话，每段一题，每段两遍。第1题看三幅物品图、第2题看三幅人物图，分别选最佳答案；第3—5题各有三个文字候选。本机每段前后各5秒为审阅编排，可重播。",
+  "format_summary": "5独立短对话 / 5回应 / 物品图三选＋人物图三选＋3题文字三选 / 各两遍 / 源精确停顿未知",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Have you got a pen in your hand, Holly?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is an open book. My pen and eraser are in the pencil case."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is in Holly’s hand?",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ],
+            [
+              "C",
+              ""
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：A为钢笔，在文具盒。；B：B为橡皮，也在文具盒。；C：C是翻开的书，对应It is an open book。",
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/g7-hefei607-pen-v0.1.svg",
+              "sha256": "87d81c3dbd2660d33d8efc4a527bc8a4a538c7b7bb6973c86860a29f8ef04349"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/g7-hefei607-eraser-v0.1.svg",
+              "sha256": "a007a37c70403e3498aed0aa012e165c7673ae808ef2a464c7f1d01b5295ce78"
+            },
+            "C": {
+              "path": "build/english-benchmark-authority-20261017/g7-hefei607-book-v0.1.svg",
+              "sha256": "8cb2797844aef102ca775b3cf96f3fe19b487a6bac6dd66d3d98185b07d8c349"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Can you see the woman with long dark hair?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes. She is standing near the two boys. One boy has glasses, and the other has a green shirt."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Who does the woman ask about?",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ],
+            [
+              "C",
+              ""
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：A戴眼镜的短发人物是后文提到的男孩，不是所问人物。；B：B为长深发人物，与woman with long dark hair一致。；C：C穿绿色上衣，是另一个男孩。",
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/g7-hefei607-boy-glasses-blue-v0.1.svg",
+              "sha256": "56ee719644fa40809ce9f734e5f18a65d11e3eeab0316ed78706f7f24820a103"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/g7-hefei607-woman-longhair-v0.1.svg",
+              "sha256": "ef3d51c92b8bef0f34db57a29f17147c981de0b865dbe5c99faeb1cda205e96d"
+            },
+            "C": {
+              "path": "build/english-benchmark-authority-20261017/g7-hefei607-boy-green-v0.1.svg",
+              "sha256": "6b28b964264586d2f06643e09c42bb020aa5fdb2bb1409ef8c4017e698a3e33b"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Please write your name here. Is it Nina Hill?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is Nina Wood. Hill is my teacher’s family name, and Nina is my first name."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is Nina’s family name?",
+          "options": [
+            [
+              "A",
+              "Wood."
+            ],
+            [
+              "B",
+              "Hill."
+            ],
+            [
+              "C",
+              "Nina."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：自述Nina Wood并区分first name，姓Wood。；B：Hill是教师的姓。；C：Nina明确是first name。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Is Ben your cousin, Oscar?"
+        },
+        {
+          "speaker": "M",
+          "text": "No, he is my classmate. We sit next to each other. My cousin is in a different school."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Who is Ben?",
+          "options": [
+            [
+              "A",
+              "Oscar’s cousin."
+            ],
+            [
+              "B",
+              "Oscar’s brother."
+            ],
+            [
+              "C",
+              "Oscar’s classmate."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：明确No，表亲在另一学校。；B：未把Ben称为兄弟。；C：明确he is my classmate，二人邻座。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Tell me about your toy shelf, Emma."
+        },
+        {
+          "speaker": "W",
+          "text": "There are five dolls and three little cars. I keep my two books on the shelf below it."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How many dolls are on Emma’s toy shelf?",
+          "options": [
+            [
+              "A",
+              "Five."
+            ],
+            [
+              "B",
+              "Three."
+            ],
+            [
+              "C",
+              "Two."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确five dolls。；B：Three是小汽车的数量。；C：Two是下层书的数量。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 """Source-bound whole sections; image positions, if present, are exact."""
 CONFIGS={
+ 'grade7-hefei2025-21cnjy26607976.listening.sectionI':(7,'listening_short_conversation_choice',[1]*5,3,2,[1,2]),
  'grade7.dingyuan2025-26upper.listening.part1':(7,'listening_short_conversation_choice',[1]*5,3,2,[1,2]),
  'primary4.fangshan2024-25upper.listening.part3':('primary4','listening_dialogue_choice',[1,2,2],3,1,[4]),
  'primary4.fangshan2024-25upper.listening.part5':('primary4','listening_passage_choice',[5],3,1,[]),
