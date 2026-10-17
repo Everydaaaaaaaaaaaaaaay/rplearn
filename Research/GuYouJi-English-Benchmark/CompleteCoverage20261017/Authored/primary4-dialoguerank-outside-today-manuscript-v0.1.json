@@ -1,0 +1,343 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialoguerank-outside-today",
+  "title": "小四五对话配图：今天在外面",
+  "grade": "primary4",
+  "family": "listening_picture_matching",
+  "family_label": "听对话标号配图",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part2",
+  "source_binding": "p4dialoguerankpictures5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.21.json",
+    "sha256": "618b485e6b5b157ba4e1d10d7dad56ead3778b0945955f9d94918f499c1ab152"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.21.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 110
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 110
+    }
+  },
+  "audio_introduction": "Listen to five dialogues. A is the first dialogue. Match every picture to its dialogue.",
+  "instruction": "听五段完整对话，为全部5幅编号图各选对应对话次序：A第1段、B第2段、C第3段、D第4段、E第5段。本机按此顺序报Dialogue A—E，原报号方式未知。没有额外规定每字母只能用一次。源遍数/时序未知；本机全组一遍、前后15秒，可重播，仅为审阅安排。",
+  "source_form_notice": "小四房山普通期末原页6—10五图片接收A—E对话次序字母，正文区/学年/学期已核；原校未认证。原音脚本键缺，题面不证明原音报Dialogue A—E；本机报号只提示第1—5段，不是图片身份。源遍数/时序/明确复用次数未知，本机一整轨一遍，前后15秒。",
+  "teacher_source_notice": "\n\n小四房山普通期末原页6—10五图片接收A—E对话次序字母，正文区/学年/学期已核；原校未认证。原音脚本键缺，题面不证明原音报Dialogue A—E；本机报号只提示第1—5段，不是图片身份。源遍数/时序/明确复用次数未知，本机一整轨一遍，前后15秒。\n\n五图完整绑定五段M/W问答，每图按该段序号填A—E，不改成短文事件排序；自有报号不当源录音证据。图复用已有自有动作图，不计十五独立视觉曝光或三独立词汇题域。每项一次限制未印不附加重复扣分。源配套、结构、自有全输入与独立识图/听辨分层；独立教研、学生、商用和生产未验证。",
+  "format_summary": "5完整对话 / 5编号图选A—E对话次序 / 5回应 / 源报号及遍数未知 / 本机整轨1遍",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture9-v0.1.svg",
+      "sha256": "15922d5fad3d2aea32ba88faf369b241ee069313192bcf7551868a88830f499e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture6-v0.1.svg",
+      "sha256": "d31f50430f117fbfdd5f4d996bb46d2aacce42ea327cd915b02796fc040d7196"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture2-v0.1.svg",
+      "sha256": "10096b1766e0d6e754abf5e6cd9e8eea3cca107a276e705a60bc3187634c9978"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture3-v0.1.svg",
+      "sha256": "1420828839de45ceb8252f93ced481b519eaf1652031cafc6c1ed2ec1054c5c8"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture8-v0.1.svg",
+      "sha256": "f9308fd94bfbe5006e7efdbd723de886120ef32059f0cbfb7d1696d30afc0624"
+    }
+  ],
+  "visual_panel_semantics": [
+    "图为rain；录音第4段完整问答描述该活动，应填D。其他段分别是A cycle, B photo, C bus, E fish，不匹配本图；不靠已用标签推断。",
+    "图为fish；录音第5段完整问答描述该活动，应填E。其他段分别是A cycle, B photo, C bus, D rain，不匹配本图；不靠已用标签推断。",
+    "图为cycle；录音第1段完整问答描述该活动，应填A。其他段分别是B photo, C bus, D rain, E fish，不匹配本图；不靠已用标签推断。",
+    "图为bus；录音第3段完整问答描述该活动，应填C。其他段分别是A cycle, B photo, D rain, E fish，不匹配本图；不靠已用标签推断。",
+    "图为photo；录音第2段完整问答描述该活动，应填B。其他段分别是A cycle, C bus, D rain, E fish，不匹配本图；不靠已用标签推断。"
+  ],
+  "audio_dialogue_units": [
+    {
+      "label": "A",
+      "scene": "cycle",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "How are you going to the park?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am riding my bicycle. It is not far from here."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "scene": "photo",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What are you doing with your camera?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am taking a picture of this place to show my family."
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "scene": "bus",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Is that your train over there?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. It is a bus. You can see its wheels and wide windows."
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "scene": "rain",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why are you opening your umbrella?"
+        },
+        {
+          "speaker": "W",
+          "text": "It has started to rain, and I do not want to get wet."
+        }
+      ]
+    },
+    {
+      "label": "E",
+      "scene": "fish",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What are you holding by the lake?"
+        },
+        {
+          "speaker": "W",
+          "text": "A fishing rod. I am trying to catch a fish."
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dialogue A."
+        },
+        {
+          "speaker": "M",
+          "text": "How are you going to the park?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am riding my bicycle. It is not far from here."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue B."
+        },
+        {
+          "speaker": "M",
+          "text": "What are you doing with your camera?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am taking a picture of this place to show my family."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue C."
+        },
+        {
+          "speaker": "M",
+          "text": "Is that your train over there?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. It is a bus. You can see its wheels and wide windows."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue D."
+        },
+        {
+          "speaker": "M",
+          "text": "Why are you opening your umbrella?"
+        },
+        {
+          "speaker": "W",
+          "text": "It has started to rain, and I do not want to get wet."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue E."
+        },
+        {
+          "speaker": "M",
+          "text": "What are you holding by the lake?"
+        },
+        {
+          "speaker": "W",
+          "text": "A fishing rod. I am trying to catch a fish."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "图为rain；录音第4段完整问答描述该活动，应填D。其他段分别是A cycle, B photo, C bus, E fish，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第2图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "图为fish；录音第5段完整问答描述该活动，应填E。其他段分别是A cycle, B photo, C bus, D rain，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第3图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "图为cycle；录音第1段完整问答描述该活动，应填A。其他段分别是B photo, C bus, D rain, E fish，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第4图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "图为bus；录音第3段完整问答描述该活动，应填C。其他段分别是A cycle, B photo, D rain, E fish，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第5图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "图为photo；录音第2段完整问答描述该活动，应填B。其他段分别是A cycle, C bus, D rain, E fish，不匹配本图；不靠已用标签推断。"
+        }
+      ]
+    }
+  ]
+}

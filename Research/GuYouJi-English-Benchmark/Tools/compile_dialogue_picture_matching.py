@@ -12,12 +12,13 @@ from compile_short_dialogue_listening import ref
 
 
 def check(group,audit,binding,source):
-    size=source['responses'];assert (source['level'],size)in {('primary3',5),('primary6',6)};labels=list('ABCDEF'[:size])
+    size=source['responses'];assert (source['level'],size)in {('primary3',5),('primary4',5),('primary6',6)};labels=list('ABCDEF'[:size])
     selected=json.loads(load_ref(source['selected_native']).read_text())
     assert selected['source']==source['source']and selected['source_images']==source['source_images']
-    assert selected['question_numbers']==source['source_question_numbers']==list(range(11,16)if size==5 else range(10,16))and selected['audio_labels']==labels and selected['picture_positions']==size
+    assert selected['question_numbers']==source['source_question_numbers']==list(range(6,11)if source['level']=='primary4'else range(11,16)if size==5 else range(10,16))and selected.get('audio_labels',selected.get('response_rank_labels'))==labels and selected['picture_positions']==size
     assert selected['source_once_only_reuse_not_printed']and selected['source_picture_roles_not_inferred']
-    if size==5:assert selected['source_sample_label_preserved']and not source['region_in_body']
+    if source['level']=='primary4':assert selected['source_audio_label_announcements_unknown']and selected['source_response_letter_order_not_image_identity']
+    if source['level']=='primary3':assert selected['source_sample_label_preserved']and not source['region_in_body']
     else:assert selected['body_grade_region_term_observed']and source['region_in_body']
     assert not any(source[k]for k in ['source_key_acquired','source_script_acquired','source_original_audio_acquired','source_full_input_verified','original_school_authenticated'])
     d=json.loads(load_ref(audit['manuscript']).read_text());generation=json.loads(load_ref(audit['audio_generation']).read_text());clip=d['clips'][0];track=generation['tracks'][0];asset=audit['audio_assets'][0];display=group['requiredAudioAssets'][0]

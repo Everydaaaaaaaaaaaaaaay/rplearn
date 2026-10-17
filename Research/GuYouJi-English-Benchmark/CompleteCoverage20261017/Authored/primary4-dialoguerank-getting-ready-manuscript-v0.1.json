@@ -1,0 +1,343 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialoguerank-getting-ready",
+  "title": "小四五对话配图：准备出门",
+  "grade": "primary4",
+  "family": "listening_picture_matching",
+  "family_label": "听对话标号配图",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part2",
+  "source_binding": "p4dialoguerankpictures5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.21.json",
+    "sha256": "618b485e6b5b157ba4e1d10d7dad56ead3778b0945955f9d94918f499c1ab152"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.21.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 110
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 110
+    }
+  },
+  "audio_introduction": "Listen to five dialogues. A is the first dialogue. Match every picture to its dialogue.",
+  "instruction": "听五段完整对话，为全部5幅编号图各选对应对话次序：A第1段、B第2段、C第3段、D第4段、E第5段。本机按此顺序报Dialogue A—E，原报号方式未知。没有额外规定每字母只能用一次。源遍数/时序未知；本机全组一遍、前后15秒，可重播，仅为审阅安排。",
+  "source_form_notice": "小四房山普通期末原页6—10五图片接收A—E对话次序字母，正文区/学年/学期已核；原校未认证。原音脚本键缺，题面不证明原音报Dialogue A—E；本机报号只提示第1—5段，不是图片身份。源遍数/时序/明确复用次数未知，本机一整轨一遍，前后15秒。",
+  "teacher_source_notice": "\n\n小四房山普通期末原页6—10五图片接收A—E对话次序字母，正文区/学年/学期已核；原校未认证。原音脚本键缺，题面不证明原音报Dialogue A—E；本机报号只提示第1—5段，不是图片身份。源遍数/时序/明确复用次数未知，本机一整轨一遍，前后15秒。\n\n五图完整绑定五段M/W问答，每图按该段序号填A—E，不改成短文事件排序；自有报号不当源录音证据。图复用已有自有动作图，不计十五独立视觉曝光或三独立词汇题域。每项一次限制未印不附加重复扣分。源配套、结构、自有全输入与独立识图/听辨分层；独立教研、学生、商用和生产未验证。",
+  "format_summary": "5完整对话 / 5编号图选A—E对话次序 / 5回应 / 源报号及遍数未知 / 本机整轨1遍",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture3-v0.1.svg",
+      "sha256": "3791352762ee8858ccc6c56dea327ac4bb6cb10c2964e98febd716f60ee05c01"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture5-v0.1.svg",
+      "sha256": "8744bc87c55e968f7c7021facf68e736e2ceddc9b3e67e5c117c82c14063f4ec"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture2-v0.2.svg",
+      "sha256": "08cafdbd639b82fdae3bf0fff002016ea9d8a90ea124f0fb30363a1085b645fe"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture1-v0.1.svg",
+      "sha256": "0f08c94c7eb15ebc0439030d416ace6cf4e65e47de7a7e020dfb622ddfabf8af"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture8-v0.1.svg",
+      "sha256": "f9308fd94bfbe5006e7efdbd723de886120ef32059f0cbfb7d1696d30afc0624"
+    }
+  ],
+  "visual_panel_semantics": [
+    "图为carry；录音第3段完整问答描述该活动，应填C。其他段分别是A photo, B wash, D water, E read，不匹配本图；不靠已用标签推断。",
+    "图为read；录音第5段完整问答描述该活动，应填E。其他段分别是A photo, B wash, C carry, D water，不匹配本图；不靠已用标签推断。",
+    "图为wash；录音第2段完整问答描述该活动，应填B。其他段分别是A photo, C carry, D water, E read，不匹配本图；不靠已用标签推断。",
+    "图为water；录音第4段完整问答描述该活动，应填D。其他段分别是A photo, B wash, C carry, E read，不匹配本图；不靠已用标签推断。",
+    "图为photo；录音第1段完整问答描述该活动，应填A。其他段分别是B wash, C carry, D water, E read，不匹配本图；不靠已用标签推断。"
+  ],
+  "audio_dialogue_units": [
+    {
+      "label": "A",
+      "scene": "photo",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why do you have a camera?"
+        },
+        {
+          "speaker": "W",
+          "text": "I want to take a photo of the flowers before we leave."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "scene": "wash",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are you ready to eat your sandwich?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not yet. I need to wash my hands under the tap first."
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "scene": "carry",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Can I help you with that box?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, please. I am carrying it, and it is quite heavy."
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "scene": "water",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What is the watering can for?"
+        },
+        {
+          "speaker": "W",
+          "text": "The plant needs a drink, so I am watering it now."
+        }
+      ]
+    },
+    {
+      "label": "E",
+      "scene": "read",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Is that a new book?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. I am reading the first page while I wait."
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dialogue A."
+        },
+        {
+          "speaker": "M",
+          "text": "Why do you have a camera?"
+        },
+        {
+          "speaker": "W",
+          "text": "I want to take a photo of the flowers before we leave."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue B."
+        },
+        {
+          "speaker": "M",
+          "text": "Are you ready to eat your sandwich?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not yet. I need to wash my hands under the tap first."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue C."
+        },
+        {
+          "speaker": "M",
+          "text": "Can I help you with that box?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, please. I am carrying it, and it is quite heavy."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue D."
+        },
+        {
+          "speaker": "M",
+          "text": "What is the watering can for?"
+        },
+        {
+          "speaker": "W",
+          "text": "The plant needs a drink, so I am watering it now."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue E."
+        },
+        {
+          "speaker": "M",
+          "text": "Is that a new book?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. I am reading the first page while I wait."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "图为carry；录音第3段完整问答描述该活动，应填C。其他段分别是A photo, B wash, D water, E read，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第2图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "图为read；录音第5段完整问答描述该活动，应填E。其他段分别是A photo, B wash, C carry, D water，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第3图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "图为wash；录音第2段完整问答描述该活动，应填B。其他段分别是A photo, C carry, D water, E read，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第4图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "图为water；录音第4段完整问答描述该活动，应填D。其他段分别是A photo, B wash, C carry, E read，不匹配本图；不靠已用标签推断。"
+        },
+        {
+          "stem": "第5图对应录音中的哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "图为photo；录音第1段完整问答描述该活动，应填A。其他段分别是B wash, C carry, D water, E read，不匹配本图；不靠已用标签推断。"
+        }
+      ]
+    }
+  ]
+}
