@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'academic_information_tristate':
                 from compile_academic_information import check as check_academic_information
                 check_academic_information(g,a,b,source)
+            if b.get('task_mode') == 'academic_text_extraction':
+                from compile_academic_text_extraction import check as check_academic_text_extraction
+                check_academic_text_extraction(g,a,b,source)
             if b.get('task_mode') == 'academic_reading_choice_sets':
                 from compile_academic_choice_sets import check as check_academic_choice_sets
                 check_academic_choice_sets(g,a,b,source)
@@ -361,7 +364,7 @@ def check(data, plan):
                 if meta['family']=='listening_table_completion' and a.get('junior_source_bound'):
                     if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
                     elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'
-                if a.get('academic_extracted_completion'):expected_protocol='source_excerpt_v1'
+                if a.get('academic_extracted_completion') or a.get('academic_text_extraction'):expected_protocol='source_excerpt_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])

@@ -110,6 +110,16 @@ def full_markdown_candidate(meta):
     closing = audit.get('target_format', {}).get('fixed_closing', '')
     if typed_tasks is not None:
         passage_html = render_input(student)
+        if audit.get('academic_text_extraction') and meta['family'] == 'note_text_completion':
+            manuscript = json.loads(load_ref(audit['manuscript']).read_text())
+            frame = manuscript['frame']
+            lines = frame.splitlines()
+            if student.count(frame) != 1 or len(lines) != 6 or not all(line.startswith('- ') for line in lines):
+                raise ValueError('Six complete bound note bullets required')
+            left, right = student.split(frame)
+            passage_html = (render_input(left) + '<ul class="extraction-notes">' +
+                            ''.join('<li>' + html.escape(line[2:]) + '</li>' for line in lines) +
+                            '</ul>' + render_input(right))
         questions = copy.deepcopy(typed_tasks)
         mode = 'quality_review_complete_tasks'
     elif meta['family'] == 'application_writing':
