@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "id": "grade8-longlisten-bus-card",
+  "grade": 8,
+  "questions": 5,
+  "candidate_sha256": "fb7f0b62d7248843a21b0dc98d9be66a9f49251a4f023f348539d344be9d2acc",
+  "source_binding": "g8listenB",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.10.json",
+    "sha256": "62c89370b882589b2b955411d06a4777465bf6e0e2b76badc018b8b9ac779867"
+  },
+  "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.listening.sectionB",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What is the relationship between the speakers?",
+      "options": [
+        [
+          "A",
+          "Teacher and pupil."
+        ],
+        [
+          "B",
+          "Mother and son."
+        ],
+        [
+          "C",
+          "Brother and sister."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：厨房卡片与Mum不支持师生；B：明确称Mum；C：不是姐弟"
+    },
+    {
+      "number": 2,
+      "stem": "What does the woman ask Leo to do before getting his bag?",
+      "options": [
+        [
+          "A",
+          "Wash the carrots."
+        ],
+        [
+          "B",
+          "Cook the rice."
+        ],
+        [
+          "C",
+          "Borrow some money."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：明确先洗胡萝卜；B：米已经在煮；C：借钱是已发生的事"
+    },
+    {
+      "number": 3,
+      "stem": "Who will teach them to make puppets?",
+      "options": [
+        [
+          "A",
+          "Jo's brother."
+        ],
+        [
+          "B",
+          "The boy's teacher."
+        ],
+        [
+          "C",
+          "The boy's cousin."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：弟弟是参与者；B：未提老师；C：明确my cousin"
+    },
+    {
+      "number": 4,
+      "stem": "What will they use to make the puppets?",
+      "options": [
+        [
+          "A",
+          "Wood."
+        ],
+        [
+          "B",
+          "Thick paper."
+        ],
+        [
+          "C",
+          "Cloth."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：女方原先猜想被纠正；B：明确we will use thick paper；C：未提布料"
+    },
+    {
+      "number": 5,
+      "stem": "When should they arrive?",
+      "options": [
+        [
+          "A",
+          "At 1:45."
+        ],
+        [
+          "B",
+          "At 2:00."
+        ],
+        [
+          "C",
+          "At 2:15."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：两点前15分钟是1:45；B：是开始时间；C：把提前算成推后"
+    }
+  ],
+  "canonical_response_block_sha256": "96e91d3b92560688dd4f44fa43af12adfce5a26257e19ff73094d3e38d05d776",
+  "student_passage": "### 材料1\n\n[材料1（第1—2题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-bus-card-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第3—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-bus-card-extract2-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade8-longlisten-bus-card-manuscript-v0.1.json",
+    "sha256": "0ae607d8a5a1e3a5796bacf65f8c07217515205ca6ee508751454b983a97d668"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-bus-card-audio-v0.1.json",
+    "sha256": "3e3a2a586ff20dc67ce38340d85515521ab5767e457c5206d936bd0ff6f9a95b"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-bus-card-extract1-v0.1.m4a",
+      "sha256": "30072fcde7d483e277acc0ec8cf515751e965e049fc9fa9d44c90a015e21e620",
+      "seconds": 76.0544671201814,
+      "response_numbers": [
+        1,
+        2
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-bus-card-extract2-v0.1.m4a",
+      "sha256": "37cb61e25c2c3f12afd202fb0a3cea9a8fe144038f1082e912402fbc79dc8c09",
+      "seconds": 92.40920634920634,
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 38,
+    "options_English_words_with_repeated_bank": 33,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 142,
+    "audio_spoken_words_with_instructions": 308,
+    "audio_seconds_with_pauses": 168.46367346938774,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

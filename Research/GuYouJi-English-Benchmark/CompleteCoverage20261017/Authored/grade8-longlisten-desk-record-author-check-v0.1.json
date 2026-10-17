@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "id": "grade8-longlisten-desk-record",
+  "grade": 8,
+  "questions": 5,
+  "candidate_sha256": "ad08f56660be0c8ded64422ee16c3dcf0896968c9ecab5ea22bd104755f13e71",
+  "source_binding": "g8listenB",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.10.json",
+    "sha256": "62c89370b882589b2b955411d06a4777465bf6e0e2b76badc018b8b9ac779867"
+  },
+  "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.listening.sectionB",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where are the speakers?",
+      "options": [
+        [
+          "A",
+          "In their classroom."
+        ],
+        [
+          "B",
+          "In a clothes shop."
+        ],
+        [
+          "C",
+          "At a station."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：班级课桌与老师要求支持；B：未涉及衣物；C：未涉及交通"
+    },
+    {
+      "number": 2,
+      "stem": "What will Nina do?",
+      "options": [
+        [
+          "A",
+          "Move the desks."
+        ],
+        [
+          "B",
+          "Write team names."
+        ],
+        [
+          "C",
+          "Choose the questions."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：男方负责移动；B：女方回答Yes接受写组名；C：没有让她选题"
+    },
+    {
+      "number": 3,
+      "stem": "What did Adam's grandfather do in his first job?",
+      "options": [
+        [
+          "A",
+          "He drove trains."
+        ],
+        [
+          "B",
+          "He taught children."
+        ],
+        [
+          "C",
+          "He repaired buses."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：未说火车；B：未说教学；C：明确repaired buses"
+    },
+    {
+      "number": 4,
+      "stem": "Why could Adam not scan the photos at home?",
+      "options": [
+        [
+          "A",
+          "The machine was broken."
+        ],
+        [
+          "B",
+          "He had lost the photos."
+        ],
+        [
+          "C",
+          "His grandfather refused."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：明确机器坏了；B：照片已经找到；C：祖父同意借至周五"
+    },
+    {
+      "number": 5,
+      "stem": "When will Adam take the photos to school?",
+      "options": [
+        [
+          "A",
+          "On Friday."
+        ],
+        [
+          "B",
+          "On Wednesday."
+        ],
+        [
+          "C",
+          "On Monday."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：是归还期限；B：明确bring them in on Wednesday；C：没有周一安排"
+    }
+  ],
+  "canonical_response_block_sha256": "8e2b03e1c39fd754e694cf0168a14e1e6836bd1229530f4841de98b9a6dc7cb5",
+  "student_passage": "### 材料1\n\n[材料1（第1—2题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-desk-record-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第3—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-desk-record-extract2-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade8-longlisten-desk-record-manuscript-v0.1.json",
+    "sha256": "1522af462455ed4cb329c7d612c38c6833b1244770277a9b3c2c02a4586ce1b3"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-desk-record-audio-v0.1.json",
+    "sha256": "fc81252200c2be664e1cb344e11258598ce1f11920bee5309ef2eea7b6a76923"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-desk-record-extract1-v0.1.m4a",
+      "sha256": "cce8ce78da5407731f5befe9875c6c1a1d813ad6c1a2d853c32d1832e58ba624",
+      "seconds": 75.8317006802721,
+      "response_numbers": [
+        1,
+        2
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade8-longlisten-desk-record-extract2-v0.1.m4a",
+      "sha256": "1c0d312c0b23bdccf93278dfafe1ea3ea045067b32f9808cecbe5866b64038d4",
+      "seconds": 104.22952380952381,
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 34,
+    "options_English_words_with_repeated_bank": 46,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 164,
+    "audio_spoken_words_with_instructions": 352,
+    "audio_seconds_with_pauses": 180.0612244897959,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

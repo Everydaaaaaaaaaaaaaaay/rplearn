@@ -1,0 +1,197 @@
+{
+  "version": "0.1",
+  "id": "grade8-longlisten-keys-kites",
+  "title": "初二长对话：钥匙与风筝线",
+  "grade": 8,
+  "family": "listening_long_conversation_choice",
+  "family_label": "两长对话听力单选",
+  "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.listening.sectionB",
+  "source_binding": "g8listenB",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.10.json",
+    "sha256": "62c89370b882589b2b955411d06a4777465bf6e0e2b76badc018b8b9ac779867"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.10.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 145
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 142
+    }
+  },
+  "source_notice": "初二普通期末公开卷具体结构已核；主卷三节5/5/5与参考键合写后10题标题冲突保留。正文地域未知、学校原版未认证；首5脚本完整而后段截断，原录音缺，不当gold。本稿为完整原创配套，未通过独立教研/学生/商用或生产验证。",
+  "timing_notice": "每段两遍，听前听后每题5秒；间隔和重播提示为本机编排",
+  "instruction": "听两段长对话，第一段回答第1—2题，第二段回答第3—5题，从A、B、C中选最佳答案。每段两遍，听前、听后按每题5秒留时。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Good evening. I am staying in Room Twenty-One, but my key does not work."
+        },
+        {
+          "speaker": "M",
+          "text": "I am sorry. Let me check it at the desk. Is your name Mrs Green?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. I have tried the key twice."
+        },
+        {
+          "speaker": "M",
+          "text": "The card is damaged. I will give you a new one. Please return the old card to me now."
+        },
+        {
+          "speaker": "W",
+          "text": "Here it is. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where does the conversation probably happen?",
+          "options": [
+            [
+              "A",
+              "In a school office."
+            ],
+            [
+              "B",
+              "At a hotel desk."
+            ],
+            [
+              "C",
+              "In a garden centre."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：住宿房号和钥匙卡不支持学校；B：房间入住、前台换卡支持酒店；C：无园艺用品"
+        },
+        {
+          "stem": "What will the man do?",
+          "options": [
+            [
+              "A",
+              "Give the woman another key card."
+            ],
+            [
+              "B",
+              "Move her to a different room."
+            ],
+            [
+              "C",
+              "Ask her to pay for another night."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确give you a new one；B：房间未改；C：无额外付费"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why are you putting the kite away, Sara? The wind is still strong."
+        },
+        {
+          "speaker": "W",
+          "text": "The string broke twice yesterday. I need a stronger one before I fly it again."
+        },
+        {
+          "speaker": "M",
+          "text": "There is a shop by the bridge. I bought some string there last month."
+        },
+        {
+          "speaker": "W",
+          "text": "Is it open on Sunday?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes, until four. It is only half past two now. We can walk there."
+        },
+        {
+          "speaker": "W",
+          "text": "Good. I will take the kite with me, so the shopkeeper can see what I need."
+        },
+        {
+          "speaker": "M",
+          "text": "I will come too. I need some glue for my model boat."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why does Sara need new string?",
+          "options": [
+            [
+              "A",
+              "She gave hers away."
+            ],
+            [
+              "B",
+              "The wind has stopped."
+            ],
+            [
+              "C",
+              "Her string broke."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：没有送人；B：风仍强；C：明确断过两次"
+        },
+        {
+          "stem": "Where is the shop?",
+          "options": [
+            [
+              "A",
+              "Next to the bridge."
+            ],
+            [
+              "B",
+              "Behind the school."
+            ],
+            [
+              "C",
+              "Across from the cinema."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确by the bridge；B：无学校方位；C：无影院方位"
+        },
+        {
+          "stem": "Why will Sara take her kite to the shop?",
+          "options": [
+            [
+              "A",
+              "To sell it."
+            ],
+            [
+              "B",
+              "To help choose suitable string."
+            ],
+            [
+              "C",
+              "To enter a competition."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未出售；B：让店主看需要什么线；C：未提比赛"
+        }
+      ]
+    }
+  ]
+}

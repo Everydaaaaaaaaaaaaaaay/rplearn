@@ -1,0 +1,144 @@
+{
+  "version": "0.1",
+  "id": "grade8-monolisten-night-museum",
+  "title": "初二独白：夜间展厅",
+  "grade": 8,
+  "family": "listening_passage_choice",
+  "family_label": "篇章听力单选",
+  "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.listening.sectionC",
+  "source_binding": "g8listenC",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.10.json",
+    "sha256": "62c89370b882589b2b955411d06a4777465bf6e0e2b76badc018b8b9ac779867"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.10.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 145
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 142
+    }
+  },
+  "source_notice": "初二普通期末公开卷具体结构已核；主卷三节5/5/5与参考键合写后10题标题冲突保留。正文地域未知、学校原版未认证；首5脚本完整而后段截断，原录音缺，不当gold。本稿为完整原创配套，未通过独立教研/学生/商用或生产验证。",
+  "timing_notice": "每段两遍，听前听后每题5秒；间隔和重播提示为本机编排",
+  "instruction": "听一段独白，完成全部五题，从A、B、C中选最佳答案。独白两遍，听前25秒、听后25秒。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Good afternoon, everyone. I am Eva, your guide for the museum's evening visit. Our group will meet at the side entrance at six thirty, not at the main door. The front hall is being painted. Please bring a small torch. We will use it in the old kitchen, where the electric lights will be turned off for part of the visit. You do not need to bring food: the museum cafe will give each visitor a sandwich. Last month our evening group visited the boat room. Tonight we will spend most of our time in the kitchen, learning how families cooked a hundred years ago. You may take photographs, but please do not use a flash. At the end, we will leave through the garden gate. The visit finishes at eight. If your parents are collecting you, tell them to wait by that gate, rather than outside the ticket office."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where will the group meet?",
+          "options": [
+            [
+              "A",
+              "At the side entrance."
+            ],
+            [
+              "B",
+              "At the garden gate."
+            ],
+            [
+              "C",
+              "At the main door."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确集合点；B：结束离开处；C：因粉刷不用正门"
+        },
+        {
+          "stem": "Why should visitors bring a torch?",
+          "options": [
+            [
+              "A",
+              "They will walk home in the dark."
+            ],
+            [
+              "B",
+              "Some lights will be off."
+            ],
+            [
+              "C",
+              "They will repair the lights."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未安排步行回家；B：厨房部分时间关灯；C：未要求维修"
+        },
+        {
+          "stem": "What food will the cafe provide?",
+          "options": [
+            [
+              "A",
+              "Soup."
+            ],
+            [
+              "B",
+              "Cake."
+            ],
+            [
+              "C",
+              "A sandwich."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：未提供汤；B：未提供蛋糕；C：明确each visitor a sandwich"
+        },
+        {
+          "stem": "Which room will be the main focus tonight?",
+          "options": [
+            [
+              "A",
+              "The boat room."
+            ],
+            [
+              "B",
+              "The old kitchen."
+            ],
+            [
+              "C",
+              "The front hall."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：是上月的重点；B：今晚大部分时间在厨房；C：正在粉刷"
+        },
+        {
+          "stem": "When will the visit finish?",
+          "options": [
+            [
+              "A",
+              "At 6:30."
+            ],
+            [
+              "B",
+              "At 7:00."
+            ],
+            [
+              "C",
+              "At 8:00."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：是集合时间；B：未给七点结束；C：明确finishes at eight"
+        }
+      ]
+    }
+  ]
+}

@@ -37,6 +37,9 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'junior_source_bound_listening':
+                from compile_junior_listening import check as check_junior_listening
+                check_junior_listening(g,a,b,source)
             if b.get('task_mode') == 'primary_dialogue_pictures5':
                 from compile_dialogue_picture_matching import check as check_dialogue_pictures
                 check_dialogue_pictures(g,a,b,source)
@@ -286,7 +289,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') else a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') or a.get('dialogue_picture_matching') or a.get('junior_source_bound') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])

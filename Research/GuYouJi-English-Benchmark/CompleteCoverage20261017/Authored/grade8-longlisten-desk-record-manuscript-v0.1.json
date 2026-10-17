@@ -1,0 +1,197 @@
+{
+  "version": "0.1",
+  "id": "grade8-longlisten-desk-record",
+  "title": "初二长对话：课桌与老照片",
+  "grade": 8,
+  "family": "listening_long_conversation_choice",
+  "family_label": "两长对话听力单选",
+  "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.listening.sectionB",
+  "source_binding": "g8listenB",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.10.json",
+    "sha256": "62c89370b882589b2b955411d06a4777465bf6e0e2b76badc018b8b9ac779867"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.10.json",
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 145
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 145
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 142
+    }
+  },
+  "source_notice": "初二普通期末公开卷具体结构已核；主卷三节5/5/5与参考键合写后10题标题冲突保留。正文地域未知、学校原版未认证；首5脚本完整而后段截断，原录音缺，不当gold。本稿为完整原创配套，未通过独立教研/学生/商用或生产验证。",
+  "timing_notice": "每段两遍，听前听后每题5秒；间隔和重播提示为本机编排",
+  "instruction": "听两段长对话，第一段回答第1—2题，第二段回答第3—5题，从A、B、C中选最佳答案。每段两遍，听前、听后按每题5秒留时。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Nina, the front of our classroom is ready, but the desks are still in rows."
+        },
+        {
+          "speaker": "W",
+          "text": "We need them in groups of four for tomorrow's quiz. The teacher asked us to move them after lunch."
+        },
+        {
+          "speaker": "M",
+          "text": "I will move them. Can you write the team names on these cards?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. We are both in the Blue Team, aren't we?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes. I will put the blue card on the table nearest the door."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where are the speakers?",
+          "options": [
+            [
+              "A",
+              "In their classroom."
+            ],
+            [
+              "B",
+              "In a clothes shop."
+            ],
+            [
+              "C",
+              "At a station."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：班级课桌与老师要求支持；B：未涉及衣物；C：未涉及交通"
+        },
+        {
+          "stem": "What will Nina do?",
+          "options": [
+            [
+              "A",
+              "Move the desks."
+            ],
+            [
+              "B",
+              "Write team names."
+            ],
+            [
+              "C",
+              "Choose the questions."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：男方负责移动；B：女方回答Yes接受写组名；C：没有让她选题"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "How was your visit to your grandfather, Adam?"
+        },
+        {
+          "speaker": "M",
+          "text": "Great. We found a box of photos from his first job. He repaired buses then."
+        },
+        {
+          "speaker": "W",
+          "text": "Were there photos of the buses?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes, and of the people he worked with. I wanted to scan them, but the machine at home was broken."
+        },
+        {
+          "speaker": "W",
+          "text": "You can use the one in the school library."
+        },
+        {
+          "speaker": "M",
+          "text": "Good idea. He said I could borrow the photos until Friday. I will bring them in on Wednesday."
+        },
+        {
+          "speaker": "W",
+          "text": "Ask him to write the names on a separate sheet. It will help you remember who everyone is."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What did Adam's grandfather do in his first job?",
+          "options": [
+            [
+              "A",
+              "He drove trains."
+            ],
+            [
+              "B",
+              "He taught children."
+            ],
+            [
+              "C",
+              "He repaired buses."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：未说火车；B：未说教学；C：明确repaired buses"
+        },
+        {
+          "stem": "Why could Adam not scan the photos at home?",
+          "options": [
+            [
+              "A",
+              "The machine was broken."
+            ],
+            [
+              "B",
+              "He had lost the photos."
+            ],
+            [
+              "C",
+              "His grandfather refused."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确机器坏了；B：照片已经找到；C：祖父同意借至周五"
+        },
+        {
+          "stem": "When will Adam take the photos to school?",
+          "options": [
+            [
+              "A",
+              "On Friday."
+            ],
+            [
+              "B",
+              "On Wednesday."
+            ],
+            [
+              "C",
+              "On Monday."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：是归还期限；B：明确bring them in on Wednesday；C：没有周一安排"
+        }
+      ]
+    }
+  ]
+}
