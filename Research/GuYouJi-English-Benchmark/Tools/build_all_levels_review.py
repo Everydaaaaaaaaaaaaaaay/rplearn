@@ -190,6 +190,26 @@ def build_current(output):
             cells.setdefault(key, {'grade': source['level'], 'family': 'shared_bank', 'label': labels['shared_bank'],
                                    'observed': True, 'state': 'source_observed_author_pending', 'groupId': None,
                                    'source_group_ids': [source['id']]})
+    continuation = {'candidates': []}
+    if plan.get('current_gap_completion'):
+        continuation = json.loads(load_ref(plan['current_gap_completion']).read_text())
+        for meta in continuation['candidates']:
+            group = full_markdown_candidate(meta)
+            group.update(instruction=meta['instruction'], sourceFormNotice=meta['source_form_notice'], title=meta['title'])
+            if meta.get('use_select_controls'):
+                group['fixedSharedBank'] = True
+            if group['id'] in data['groups']:
+                raise ValueError('Continuation cannot replace a frozen author')
+            key = (group['grade'], meta['family'])
+            cell = cells[key]
+            if cell['state'] == 'paused_requires_semantic_adjudication':
+                raise ValueError('Continuation cannot bypass a whole-group hold')
+            cell.update(observed=True, state='existing_complete_candidate_needs_review_UI')
+            cell.pop('pauseReason', None)
+            cell['groupIds'].append(group['id'])
+            cell['groupId'] = cell['groupId'] or group['id']
+            data['groups'][group['id']] = group
+        data['gap_completion_index'] = plan['current_gap_completion']
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
                      'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
                      for level in data['grades'] for family, label in labels.items()]
@@ -209,6 +229,8 @@ def build_current(output):
               'preview_groups': len(data['groups']), 'response_positions': sum(len(g['questions']) for g in data['groups'].values()),
               'new_authored_groups': len(variant_index['candidates']) if variant_index['candidates'] else additions.get('current_run_new_authored_groups',additions['new_authored_groups']),
               'new_authored_responses': sum(m['questions'] for m in variant_index['candidates']) if variant_index['candidates'] else additions.get('current_run_new_response_positions',additions['new_response_positions']),
+              'continuation_new_groups': len(continuation['candidates']),
+              'continuation_new_responses': sum(m['questions'] for m in continuation['candidates']),
               'complete_level_type_cells': data['source_form_representative_cells'],
               'multi_variant_cells': data['multi_variant_cells'], 'three_variant_cells': data['three_variant_cells'],
               'historical_nonmiddle_authors_newly_displayed': inherited_count,

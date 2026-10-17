@@ -1,0 +1,166 @@
+{
+  "version": "0.1",
+  "id": "primary2-picture-sentences-2",
+  "grade": "primary2",
+  "questions": 5,
+  "candidate_sha256": "449cb01784cd9862a76a0c8ad79a184b6d1023a20c45a384e4fc2ff7aa138cd5",
+  "source_binding": "p2sentences",
+  "source_bindings": {
+    "path": "GapCompletion20261017/SourceBindings-v0.1.json",
+    "sha256": "73afab62746787130244a5b4a5987fe1a2043f3bbf4ceb814372fa25ddd8346c"
+  },
+  "source_group_id": "p2.2021shanghai.picture_sentences",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1图",
+      "options": [
+        [
+          "A",
+          "It is a red cup."
+        ],
+        [
+          "B",
+          "It is a blue ball."
+        ],
+        [
+          "C",
+          "It is a blue cup."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "图示cup，颜色#7eb6dd。C同时符合；另两项分别错在颜色或物品，详见逐项句面。"
+    },
+    {
+      "number": 2,
+      "stem": "第2图",
+      "options": [
+        [
+          "A",
+          "It is a red pencil."
+        ],
+        [
+          "B",
+          "It is a green pencil."
+        ],
+        [
+          "C",
+          "It is a red book."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "图示pencil，颜色#dd6969。A同时符合；另两项分别错在颜色或物品，详见逐项句面。"
+    },
+    {
+      "number": 3,
+      "stem": "第3图",
+      "options": [
+        [
+          "A",
+          "I can see a yellow star."
+        ],
+        [
+          "B",
+          "I can see a green star."
+        ],
+        [
+          "C",
+          "I can see a green ball."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "图示star，颜色#77ba7a。B同时符合；另两项分别错在颜色或物品，详见逐项句面。"
+    },
+    {
+      "number": 4,
+      "stem": "第4图",
+      "options": [
+        [
+          "A",
+          "This is a yellow book."
+        ],
+        [
+          "B",
+          "This is a blue book."
+        ],
+        [
+          "C",
+          "This is a yellow cup."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "图示book，颜色#e9bc38。A同时符合；另两项分别错在颜色或物品，详见逐项句面。"
+    },
+    {
+      "number": 5,
+      "stem": "第5图",
+      "options": [
+        [
+          "A",
+          "It is a red star."
+        ],
+        [
+          "B",
+          "It is a green ball."
+        ],
+        [
+          "C",
+          "It is a red ball."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "图示ball，颜色#dd6969。C同时符合；另两项分别错在颜色或物品，详见逐项句面。"
+    }
+  ],
+  "canonical_response_block_sha256": "ff0f5f3b16596b7442b3d1b536ba22c314ef4e38995a4a2ac05b92e745a8c321",
+  "student_passage": "![五幅编号物品图](primary2-picture-sentences-2.svg)",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "B",
+    "A",
+    "C"
+  ],
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 4,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 78,
+    "output_response_positions": 5
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "figure_asset": {
+    "path": "GapCompletion20261017/Authored/primary2-picture-sentences-2.svg",
+    "sha256": "ef4f8d1a7c9379b9237a9655bfc96d4a88fb427b44f4f68dead0e97f6bdd5afd"
+  },
+  "visual_semantics": [
+    {
+      "object": "cup",
+      "color": "#7eb6dd",
+      "correct_sentence": "It is a blue cup."
+    },
+    {
+      "object": "pencil",
+      "color": "#dd6969",
+      "correct_sentence": "It is a red pencil."
+    },
+    {
+      "object": "star",
+      "color": "#77ba7a",
+      "correct_sentence": "I can see a green star."
+    },
+    {
+      "object": "book",
+      "color": "#e9bc38",
+      "correct_sentence": "This is a yellow book."
+    },
+    {
+      "object": "ball",
+      "color": "#dd6969",
+      "correct_sentence": "It is a red ball."
+    }
+  ],
+  "visual_panels": 5,
+  "exposure_family": "colour_object_combinations;shared_icon_designs_not_independent_images"
+}

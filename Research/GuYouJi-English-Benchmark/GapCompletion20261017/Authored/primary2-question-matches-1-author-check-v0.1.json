@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "primary2-question-matches-1",
+  "grade": "primary2",
+  "questions": 5,
+  "candidate_sha256": "c27b287664cdc12154b68ee7d1a7c197cde8512c73c1b70e8e8c4d2bfbd8efe1",
+  "source_binding": "p2matching",
+  "source_bindings": {
+    "path": "GapCompletion20261017/SourceBindings-v0.1.json",
+    "sha256": "73afab62746787130244a5b4a5987fe1a2043f3bbf4ceb814372fa25ddd8346c"
+  },
+  "source_group_id": "primary2.bzxz.upper.questionmatching",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Do you like pears?",
+      "options": [
+        [
+          "A",
+          "She is my sister."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "I am going to the park."
+        ],
+        [
+          "D",
+          "He has short hair."
+        ],
+        [
+          "E",
+          "Yes, I do."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "问句对应一般疑问回应，E直接作答；其余项分别回答人物关系, 位置, 去向, 外貌，不回答此问。"
+    },
+    {
+      "number": 2,
+      "stem": "Who is she?",
+      "options": [
+        [
+          "A",
+          "She is my sister."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "I am going to the park."
+        ],
+        [
+          "D",
+          "He has short hair."
+        ],
+        [
+          "E",
+          "Yes, I do."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "问句对应人物关系，A直接作答；其余项分别回答位置, 去向, 外貌, 一般疑问回应，不回答此问。"
+    },
+    {
+      "number": 3,
+      "stem": "Where is the ball?",
+      "options": [
+        [
+          "A",
+          "She is my sister."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "I am going to the park."
+        ],
+        [
+          "D",
+          "He has short hair."
+        ],
+        [
+          "E",
+          "Yes, I do."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "问句对应位置，B直接作答；其余项分别回答人物关系, 去向, 外貌, 一般疑问回应，不回答此问。"
+    },
+    {
+      "number": 4,
+      "stem": "Where are you going?",
+      "options": [
+        [
+          "A",
+          "She is my sister."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "I am going to the park."
+        ],
+        [
+          "D",
+          "He has short hair."
+        ],
+        [
+          "E",
+          "Yes, I do."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "问句对应去向，C直接作答；其余项分别回答人物关系, 位置, 外貌, 一般疑问回应，不回答此问。"
+    },
+    {
+      "number": 5,
+      "stem": "What does Ben look like?",
+      "options": [
+        [
+          "A",
+          "She is my sister."
+        ],
+        [
+          "B",
+          "It is under the chair."
+        ],
+        [
+          "C",
+          "I am going to the park."
+        ],
+        [
+          "D",
+          "He has short hair."
+        ],
+        [
+          "E",
+          "Yes, I do."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "问句对应外貌，D直接作答；其余项分别回答人物关系, 位置, 去向, 一般疑问回应，不回答此问。"
+    }
+  ],
+  "canonical_response_block_sha256": "cfa9f30986661bf9eb3ab05486a36d93ae74a5be7f8e0a696d8cefae02861749",
+  "student_passage": "答句：A. She is my sister.　B. It is under the chair.　C. I am going to the park.　D. He has short hair.　E. Yes, I do.",
+  "author_answer_vector": [
+    "E",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 27,
+    "stem_English_words": 20,
+    "options_English_words_with_repeated_bank": 110,
+    "output_response_positions": 5
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_reuse": "not_explicit",
+  "source_operations": [
+    "person_identity",
+    "appearance",
+    "object_location",
+    "destination",
+    "preference"
+  ]
+}

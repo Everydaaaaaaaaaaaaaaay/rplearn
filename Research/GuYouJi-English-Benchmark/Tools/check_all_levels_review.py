@@ -195,7 +195,7 @@ def check(page):
     for group in data['groups'].values():
         load_ref(group['candidate']);load_ref(group['author_check'])
         assert [q['number']for q in group['questions']]==list(range(1,len(group['questions'])+1))
-        assert all(q.get('options')or q.get('knownForms')for q in group['questions'])
+        assert all(q.get('options')or q.get('knownForms')or q.get('acceptedAnswers')for q in group['questions'])
         assert not any(q.get('parts')or q.get('referenceAnswers')for q in group['questions'])
         assert all(q.get('answer')in [p[0]for p in q['options']]for q in group['questions']if q['options'])
     additions=json.loads(load_ref(data['extra_authored_index']).read_text())
@@ -313,6 +313,8 @@ def check(page):
     assert all(g.get('sourceFormNotice')for g in data['groups'].values()if g['grade']=='primary5')
     checked_expansion_modes=expansion_modes(data,plan,additions)
     variants=authority_variants(data,plan)
+    from check_gap_completion import check as check_gap_completion
+    continuation=check_gap_completion(data,plan)
     return {'levels':level_count,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
             'payload_preservation_or_pinned_revision_passed':True,'pinned_author_revisions':len(revised),
@@ -323,6 +325,7 @@ def check(page):
             'inherited_expansion_authors_checked':checked_expansion_modes,
             'source_bound_expansion_modes_checked':checked_expansion_modes,
             'authority_variants': variants,
+            'gap_completion': continuation,
             'middle_source_totals_unchanged':True,'simulated_primary5_source_warning_bound':True,
             'source_unknown_early_levels_not_filled_with_adult_text':True,'independent_student_commercial_production_admission':False}
 

@@ -1,0 +1,210 @@
+{
+  "version": "0.1",
+  "id": "primary2-word-pictures-2",
+  "grade": "primary2",
+  "questions": 6,
+  "candidate_sha256": "ec6e0218c6681ea62c6f0c7a5a351c211c746fae8e333627bc5c97228e0e297d",
+  "source_binding": "p2words",
+  "source_bindings": {
+    "path": "GapCompletion20261017/SourceBindings-v0.1.json",
+    "sha256": "73afab62746787130244a5b4a5987fe1a2043f3bbf4ceb814372fa25ddd8346c"
+  },
+  "source_group_id": "primary2.bzxz.upper.wordpictures",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "cup（第1行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第1行：A=ball, B=cup, C=ruler；只有B符合cup。"
+    },
+    {
+      "number": 2,
+      "stem": "star（第2行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "第2行：A=book, B=pencil, C=star；只有C符合star。"
+    },
+    {
+      "number": 3,
+      "stem": "ball（第3行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "第3行：A=cup, B=ruler, C=ball；只有C符合ball。"
+    },
+    {
+      "number": 4,
+      "stem": "pencil（第4行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "第4行：A=star, B=ball, C=pencil；只有C符合pencil。"
+    },
+    {
+      "number": 5,
+      "stem": "book（第5行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "第5行：A=pencil, B=book, C=cup；只有B符合book。"
+    },
+    {
+      "number": 6,
+      "stem": "ruler（第6行）",
+      "options": [
+        [
+          "A",
+          "图A"
+        ],
+        [
+          "B",
+          "图B"
+        ],
+        [
+          "C",
+          "图C"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "第6行：A=ruler, B=star, C=book；只有A符合ruler。"
+    }
+  ],
+  "canonical_response_block_sha256": "5f40b63f89d98b51e30eb6a22894adb230a24882294f3b4dfc60571e80564f0a",
+  "student_passage": "![六行图片，每行A、B、C三项](primary2-word-pictures-2.svg)",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "C",
+    "C",
+    "B",
+    "A"
+  ],
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 7,
+    "stem_English_words": 6,
+    "options_English_words_with_repeated_bank": 18,
+    "output_response_positions": 6
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "figure_asset": {
+    "path": "GapCompletion20261017/Authored/primary2-word-pictures-2.svg",
+    "sha256": "cfcd7a4d1c42a952030e730273083019a204a430cfa9a64b710e81b64cc3ec78"
+  },
+  "visual_candidate_objects": [
+    {
+      "word": "cup",
+      "candidate_objects": [
+        "ball",
+        "cup",
+        "ruler"
+      ]
+    },
+    {
+      "word": "star",
+      "candidate_objects": [
+        "book",
+        "pencil",
+        "star"
+      ]
+    },
+    {
+      "word": "ball",
+      "candidate_objects": [
+        "cup",
+        "ruler",
+        "ball"
+      ]
+    },
+    {
+      "word": "pencil",
+      "candidate_objects": [
+        "star",
+        "ball",
+        "pencil"
+      ]
+    },
+    {
+      "word": "book",
+      "candidate_objects": [
+        "pencil",
+        "book",
+        "cup"
+      ]
+    },
+    {
+      "word": "ruler",
+      "candidate_objects": [
+        "ruler",
+        "star",
+        "book"
+      ]
+    }
+  ],
+  "visual_panels": 18,
+  "exposure_family": "everyday_object_icons;overlap_with_P1_not_independent_lexical_exposure"
+}

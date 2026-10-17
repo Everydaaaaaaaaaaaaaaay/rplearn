@@ -34569,6 +34569,150 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "gap-completion19-and-multiple-fill-answers20261017-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "complete_original_group_author_review+IABwholegroups+local_deterministic_comparison",
+      "tool_version": "0.1",
+      "parameters": [
+        "19newwholegroups120positions;300total2040positions;100cells3drafts",
+        "9sourcebindingsallreused;0newpaperdownloads;34/224sourceand14authoritycountsunchanged",
+        "7newfillgroups48positions59acceptedforms;unknownreview_notwrong;prior14wholegroupheld",
+        "54pictureplacements6originalSVGs;sharediconlexicalexposure_not54independentfamilies",
+        "19IABfullgroups;old12selectioncontrols;newfillcontrols;noAIorproductioncalls"
+      ],
+      "pages": 14,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/author-gap-completion-v0.1.py",
+          "bytes": 28831,
+          "sha256": "9a5157d7e3a80f692f3b705f83701731413f026863991b690a034247506c28b1",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/freeze-gap-completion-v0.1.py",
+          "bytes": 4033,
+          "sha256": "9532ecd41ee8a2d6f29fdcd6c754c714fd89167aae5273b7469f93e7a358dcc7",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/register-gap-completion-evidence-v0.1.py",
+          "bytes": 3905,
+          "sha256": "111a1d78ff0e008e520ca9428646daf97619650f826d2e6fe8521b62ac5534f6",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/fill-variants-discovery-v0.1.json",
+          "bytes": 18805,
+          "sha256": "1c543d89f3abed7fe03329db5668d2d2a6c86caa1eeaf9b5f870025a6dba4cb5",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/fill-variants-lexical-followup-v0.1.json",
+          "bytes": 35191,
+          "sha256": "6c87bcad8bccd9d5fd9798476da93c089fa5e3f16b51245cff635cd365354a04",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-completion-all19-browser-v0.1.json",
+          "bytes": 22782,
+          "sha256": "531bfca4b3d4b6760d24a71ab87d2465f4abc1c4cedad5192be2467492d7b33c",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-fill-browser-boundaries-v0.1.json",
+          "bytes": 926,
+          "sha256": "fca371daeab846f1660cc8c89c21d500d62ddbb44d2af410c785142a32aa8346",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-fill-multiple-answer-proof-v0.1.png",
+          "bytes": 78535,
+          "sha256": "4c080602601a13c5598c873c73be9026a72c79fff4f8817af8d62fa72ee74bff",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-completion-review-check-v0.1.json",
+          "bytes": 1053,
+          "sha256": "d2c46340c756fc2fb623de907ee2faded950987c13f4416ddfdd30e402445d84",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-selection-core-check-v0.1.json",
+          "bytes": 225,
+          "sha256": "f491817de5609efdbfec47c5436220249a740aeca411f64ad651d26d3a1b9ccd",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-fill-core-check-v0.1.json",
+          "bytes": 219,
+          "sha256": "f45f47324a8cc9401fbe01b06a6227057b61121accf2fffd827fb89bbac0c5f2",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-authority-reuse-check-v0.1.json",
+          "bytes": 449,
+          "sha256": "6456f856a0130fef3ceff33bd48201122a4a3842e17837ce8247ee585a503ac8",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review300-gap-completion-delta-v0.1.json",
+          "bytes": 197052,
+          "sha256": "c946bfb0dfd4d1a6bca324a346a0d232c38bc33a7e4acf7426f9eeca140757c6",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-completion-exposure-screen-v0.1.json",
+          "bytes": 1148,
+          "sha256": "4d917ac02c5923f401bc20f7b500bd771108da436781f8f5f855ec6e2f09c4e4",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "gap-completion-final-unproven-rejection-removed20261017-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "focused_derived_form_rejection_review+bound_revision+IAB",
+      "tool_version": "0.1",
+      "parameters": [
+        "0newgroups;19newgroups120responsesoverall;300current2040responses",
+        "studenttextandacceptedformsunchanged;oneuncertainrejectionroutedtoreview",
+        "wholegroupsandpinnedrevisionSHAverified;noAIproductioneval"
+      ],
+      "pages": 5,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/refine-derived-rejection-v0.1.py",
+          "bytes": 2809,
+          "sha256": "6a5aeda30328c9a5cc04c08d0452df078054a349bd241fd68489497dcf0aaae3",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/register-gap-completion-final-v0.1.py",
+          "bytes": 2298,
+          "sha256": "ca68576fa15cab8e6ae453b929acb44d909fcdfad85a3b7ac80b8f1b66687a30",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-derived-rejection-browser-v0.1.json",
+          "bytes": 885,
+          "sha256": "21147c16457e9395a35252ac619ea82cf39baa83c7124191849e18df34b56142",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-completion-review-check-v0.2.json",
+          "bytes": 1053,
+          "sha256": "74d54967288edec5c8e2875e2c0c990551fef285058def871effdc30bdfed32b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/gap-fill-core-check-v0.2.json",
+          "bytes": 219,
+          "sha256": "f45f47324a8cc9401fbe01b06a6227057b61121accf2fffd827fb89bbac0c5f2",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [

@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "bindings": [
+    {
+      "id": "p1numbers",
+      "level": "primary1",
+      "family": "number_word_completion",
+      "responses": 8,
+      "options_each": 0,
+      "source_index": {
+        "path": "FirstRelease/AllLevels/selected-source-batch-v0.1.json",
+        "sha256": "e2b8119d9d0ca34f8725d70537423194a4b44b33f40fbe5975d28704d19e346a"
+      },
+      "collection": "groups",
+      "source_group_id": "primary1.xuehai.upper.numberwords",
+      "source_record_sha256": "7c7123aa9916421da0388ce8ad3294391d5970fe8d26ee49cc2fc9d54cd93997",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "p1categories",
+      "level": "primary1",
+      "family": "word_classification",
+      "responses": 11,
+      "options_each": 3,
+      "source_index": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "collection": "modes",
+      "source_group_id": "p1.2016lower.classification",
+      "source_record_sha256": "b545e7a33f425ecb4c92a21cf8148c276824c74a5f4a9048f76dceed4c2c6b29",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "p1pictures",
+      "level": "primary1",
+      "family": "word_picture_matching",
+      "responses": 4,
+      "options_each": 4,
+      "source_index": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "collection": "modes",
+      "source_group_id": "p1.2016lower.picturematching",
+      "source_record_sha256": "fa5d449b7fffdb50de44b04e598bee78f9302999f81eee3cac06cfa431b58a54",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "p2words",
+      "level": "primary2",
+      "family": "word_picture_choice",
+      "responses": 6,
+      "options_each": 3,
+      "source_index": {
+        "path": "FirstRelease/AllLevels/selected-source-batch-v0.1.json",
+        "sha256": "e2b8119d9d0ca34f8725d70537423194a4b44b33f40fbe5975d28704d19e346a"
+      },
+      "collection": "groups",
+      "source_group_id": "primary2.bzxz.upper.wordpictures",
+      "source_record_sha256": "619eb5888f25aaab7a9296f54b669a1e6d8cc6fac924c761b0c7183823a0f56e",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "p2matching",
+      "level": "primary2",
+      "family": "dialogue_matching",
+      "responses": 5,
+      "options_each": 5,
+      "source_index": {
+        "path": "FirstRelease/AllLevels/selected-source-batch-v0.1.json",
+        "sha256": "e2b8119d9d0ca34f8725d70537423194a4b44b33f40fbe5975d28704d19e346a"
+      },
+      "collection": "groups",
+      "source_group_id": "primary2.bzxz.upper.questionmatching",
+      "source_record_sha256": "db455e792b76cb08052a4d02c5c14e690b549b71b7fd3b7d5e453ff87f16dd31",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "p2sentences",
+      "level": "primary2",
+      "family": "picture_sentence_choice",
+      "responses": 5,
+      "options_each": 3,
+      "source_index": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "collection": "modes",
+      "source_group_id": "p2.2021shanghai.picture_sentences",
+      "source_record_sha256": "4d081fe1be0c5f3b57f0421bdaee4a7deaa8c6d8a4ebb51433e8cea790eeeda8",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "p2functions",
+      "level": "primary2",
+      "family": "function_choice",
+      "responses": 5,
+      "options_each": 3,
+      "source_index": {
+        "path": "Expansion20261016/ModeSources-v0.4.json",
+        "sha256": "2d1e04c4a05e22ffb2b49216a869640f37f223f28dda3df7c3e63234f3eac375"
+      },
+      "collection": "modes",
+      "source_group_id": "p2.2021shanghai.function",
+      "source_record_sha256": "f2a5d77e829431e64a62c09f168188c58bde841073a9f4d5e2d05dca4f20196a",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g7phonetic",
+      "level": 7,
+      "family": "phonetic_word_completion",
+      "responses": 4,
+      "options_each": 0,
+      "source_author_audit": {
+        "path": "FirstRelease/Timeboxed/grade7-phonetic-word-completion-author-check-v0.1.json",
+        "sha256": "1d8684fc13d3d58140cdb897ef7a7866f5838516a5205db2aad7d152f52d76b8"
+      },
+      "source_group_id": "g7.xicheng2025.phonetic",
+      "source_original_key_not_gold": true,
+      "new_source_count": 0,
+      "source_reference": {
+        "parent_document": {
+          "path": "build/english-benchmark-research-20261012/raw/grade7-xicheng2025-public-paper-key20261014.pdf",
+          "sha256": "5d302d564efc6ba5973bfbe6d9cce42e27a65323878ec655563a08473f393d70"
+        },
+        "transcription": {
+          "path": "build/english-benchmark-research-20261012/baseline-sentence-bank-source-text20261015t-v0.1.json",
+          "sha256": "f0f8dbc3dda2e93c934e1f015629267bc42be90084f973f56277605fe5cdec64"
+        },
+        "record_index": 4,
+        "record_sha256": "2fc2aac992e22d64392fead798170073f29ab6f48d296fc808685307495a3879"
+      },
+      "no_new_numeric_word_limit": true
+    },
+    {
+      "id": "advancedformation",
+      "level": "advanced",
+      "family": "passage_form",
+      "responses": 8,
+      "options_each": 0,
+      "source_index": {
+        "path": "AuthorityGap20261017/SelectedSourceModes-v0.10.json",
+        "sha256": "45916d6073ff0d3b08fd8406f7bf8cd3d02abb0604a5f2b9195bee4c7a4801e9"
+      },
+      "collection": "groups",
+      "source_group_id": "advanced.c1.sample1.part3",
+      "source_record_sha256": "abc5a84fea0bde7254a241384be032399f3ea201442f54936a8b4acec6c72f5b",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true,
+      "one_derived_word": true,
+      "answered_examples": 1,
+      "case_protocol": "capital_letters;local_preview_case_insensitive"
+    }
+  ],
+  "new_source_modes": 0,
+  "lexical_evidence": {
+    "path": "GapCompletion20261017/LexicalEvidence-v0.1.json",
+    "sha256": "53dc6d001169064c9652a2d67f99cdf2cf124864be29d084f94ccb0c6317e2d8"
+  }
+}

@@ -4,7 +4,7 @@ const vm=require('node:vm');
 const path=require('node:path');
 const source=fs.readFileSync(path.join(__dirname,'quality_review_interactions.js'),'utf8');
 const start=source.indexOf('function closedSelectionComparison(');
-const end=source.indexOf('\nfunction clearSelectionComparison(',start);
+const end=source.indexOf('\nfunction normalizeFill(',start);
 assert(start>=0&&end>start);
 const compare=vm.runInNewContext('('+source.slice(start,end)+')');
 const questions=Array.from({length:20},(_,i)=>({number:i+1,options:[['A','first'],['B','second'],['C','third']],answer:i%2?'B':'A'}));

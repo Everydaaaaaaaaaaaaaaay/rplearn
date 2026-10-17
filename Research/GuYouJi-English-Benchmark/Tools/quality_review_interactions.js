@@ -12,7 +12,7 @@ function inputFor(g,q){
  const saved=drafts[g.id]||{};
  if(g.fixedSharedBank)return '<select class="short-answer" name="'+q.number+'" aria-label="'+escapeText(q.stem)+'"><option value="">请选择</option>'+q.options.map(([letter,text])=>'<option value="'+letter+'" '+(saved[q.number]===letter?'selected':'')+'>'+(g.kind==='dialogue_ordering'?escapeText(text):letter+'. '+escapeText(text))+'</option>').join('')+'</select>';
  if(q.options.length)return q.options.map(([letter,text])=>'<label class="choice"><input type="radio" name="'+q.number+'" value="'+letter+'" '+(saved[q.number]===letter?'checked':'')+'><span>'+letter+'. '+(q.optionImages?'<img class="option-image" src="'+escapeText(q.optionImages[letter].src)+'" alt="'+escapeText(q.optionImages[letter].alt)+'" width="300" height="180">':escapeText(text))+'</span></label>').join('');
- if(q.knownForms){const key=String(q.number)+'.1';return '<input class="short-answer" type="text" name="'+key+'" aria-label="'+escapeText(q.stem)+'" value="'+escapeText(saved[key]||'')+'" autocomplete="off" lang="en">';}
+ if(q.acceptedAnswers||q.knownForms){const key=String(q.number)+'.1';return '<input class="short-answer" type="text" name="'+key+'" aria-label="'+escapeText(q.stem)+'" value="'+escapeText(saved[key]||'')+'" autocomplete="off" lang="en">';}
  const parts=q.parts||[{label:q.stem}];return parts.map((part,i)=>{const key=String(q.number)+'.'+(i+1);return (part.opening?'<p class="fixed" lang="en">'+escapeText(part.opening)+'</p>':'')+'<label class="written">'+escapeText(part.label)+'<textarea name="'+key+'" rows="'+(g.responseMode==='writing_review'?9:3)+'" lang="en">'+escapeText(saved[key]||'')+'</textarea></label>';}).join('');
 }
 function mediaReady(g){const images=[...el('student').querySelectorAll('img')],expected=[...(g.requiredPassageImages||[]),...g.questions.flatMap(q=>q.optionImages?Object.values(q.optionImages):[])],count=(g.requiredImageAssets?.length||0)+(g.requiredPassageImages?.length||0),audio=[...el('student').querySelectorAll('audio')],tracks=g.requiredAudioAssets||[];return expected.length===count&&images.length===count&&images.every((img,i)=>img.complete&&img.naturalWidth>0&&img.getAttribute('src')===expected[i].src&&img.getAttribute('alt')===expected[i].alt)&&audio.length===tracks.length&&audio.every((a,i)=>!a.error&&a.readyState>=1&&Number.isFinite(a.duration)&&a.duration>0&&a.getAttribute('src')===tracks[i].src);}
@@ -29,6 +29,38 @@ function closedSelectionComparison(questions,saved={}){
  }
  const rows=questions.map(q=>{const chosen=saved[q.number]||'';return {number:q.number,chosen,reference:q.answer,state:!chosen?'unanswered':chosen===q.answer?'match':'different'};});
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,rows};
+}
+function normalizeFill(value,protocol){
+ if(typeof value!=='string')return null;
+ const text=value.trim();
+ if(protocol==='latin_word_v1')return /^[A-Za-z]+$/.test(text)?text.toUpperCase():null;
+ if(protocol==='ascii_integer_v1'){
+  const digits=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
+  return /^[0-9]+$/.test(digits)?digits.replace(/^0+(?=\d)/,''):null;
+ }
+ return null;
+}
+function answerComparison(questions,saved={}){
+ if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};
+ const rows=[],numbers=new Set();
+ for(const q of questions){
+  if(!Number.isInteger(q.number)||numbers.has(q.number)||!Array.isArray(q.options))return {available:false,reason:'题号或完整作答协议未绑定。'};
+  numbers.add(q.number);
+  if(q.options.length){
+   const selection=closedSelectionComparison([q],saved);
+   if(!selection.available)return selection;
+   rows.push(selection.rows[0]);continue;
+  }
+  const contract=q.fillMarking,accepted=q.acceptedAnswers;
+  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','ascii_integer_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  const forms=accepted.map(a=>normalizeFill(a,contract.normalization)),rejected=contract.rejectedAnswers.map(a=>normalizeFill(a,contract.normalization));
+  if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1')return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
+  const chosen=saved[String(q.number)+'.1']??'';
+  if(typeof chosen!=='string')return {available:false,reason:'填写值格式无效。'};
+  const normalized=normalizeFill(chosen,contract.normalization);
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null||rejected.includes(normalized)||contract.unlisted==='different'?'different':'review'});
+ }
+ return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,rows};
 }
 function clearSelectionComparison(){el('selection-comparison').hidden=true;el('selection-comparison').textContent='';}
 function render(){
@@ -47,7 +79,7 @@ function render(){
  el('task-instruction').textContent=instruction;el('task-instruction').hidden=!instruction;
  el('answer-toggle').hidden=!g;el('reset').hidden=!g;el('answer-toggle').textContent='查看参考与解析';
  el('compare-selections').hidden=!g;
- const comparisonEligibility=closedSelectionComparison(g?.questions);
+ const comparisonEligibility=answerComparison(g?.questions);
  el('compare-selections').disabled=!comparisonEligibility.available;
  el('compare-selections').title=comparisonEligibility.reason||'仅对照作者参考，不代表独立质量验收。';
  if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本完整题组已暂停：'+escapeText(cell.pauseReason)+' 不截去部分空格后冒充完整组；来源观察仍保留。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
@@ -60,13 +92,13 @@ function render(){
  const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;clearSelectionComparison();}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
  el('source-note').innerHTML='<p>完整作者稿：<a href="../../Research/GuYouJi-English-Benchmark/'+encodeURI(g.candidate.path)+'" target="_blank" rel="noopener">'+escapeText(g.id)+'</a></p><p>来源形式参照：'+escapeText((g.anchor_group_ids||[]).join(' / ')||'原卷未配对写作任务，详见作者稿')+'</p>';
  el('answer-toggle').onclick=()=>{if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后查看参考。';return;}el('notice').textContent=prototypeNotice;el('teacher').hidden=!el('teacher').hidden;el('answer-toggle').textContent=el('teacher').hidden?'查看参考与解析':'收起参考与解析';
-  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
+  el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.answer?'作者参考 '+escapeText(q.answer):q.acceptedAnswers?'可接受形式 '+escapeText(q.acceptedAnswers.join(' / ')):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('compare-selections').onclick=()=>{
   if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后核对。';return;}
-  const result=closedSelectionComparison(g.questions,drafts[g.id]);
+  const result=answerComparison(g.questions,drafts[g.id]);
   if(!result.available){el('notice').textContent=result.reason;return;}
   el('notice').textContent=prototypeNotice;
-  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答。</strong><p>这是本机字母对照，作者参考仍可能有误，不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'所选 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答'}[r.state])+'）</li>').join('')+'</ol>';
+  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong><p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
   el('selection-comparison').hidden=false;
  };
  el('reset').onclick=()=>{delete drafts[g.id];render();};

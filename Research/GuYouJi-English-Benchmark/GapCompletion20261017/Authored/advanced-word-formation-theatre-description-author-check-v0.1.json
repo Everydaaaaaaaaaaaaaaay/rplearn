@@ -1,0 +1,228 @@
+{
+  "version": "0.1",
+  "id": "advanced-word-formation-theatre-description",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "51eb2b530e1df2f255e5a1544bb8e8c52b352d222598b3ce89efa89ee4a31818",
+  "source_binding": "advancedformation",
+  "source_bindings": {
+    "path": "GapCompletion20261017/SourceBindings-v0.1.json",
+    "sha256": "73afab62746787130244a5b4a5987fe1a2043f3bbf4ceb814372fa25ddd8346c"
+  },
+  "source_group_id": "advanced.c1.sample1.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（ORGANISE）",
+      "options": [],
+      "acceptedAnswers": [
+        "ORGANISATION",
+        "ORGANIZATION"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "ORGANISE",
+          "ORGANISATIONS"
+        ]
+      },
+      "rationale": "a local arts后单数机构名词；两种英美拼写指同一机构。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空（AVAILABLE）",
+      "options": [],
+      "acceptedAnswers": [
+        "AVAILABILITY"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "AVAILABLE"
+        ]
+      },
+      "rationale": "the...of every device要求可用性名词；available是形容词。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（RECOGNISE）",
+      "options": [],
+      "acceptedAnswers": [
+        "RECOGNISABLE",
+        "RECOGNIZABLE"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "RECOGNISE",
+          "RECOGNITION"
+        ]
+      },
+      "rationale": "label前形容词，immediately修饰“可识别的”；两种拼写同义。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（JUDGE）",
+      "options": [],
+      "acceptedAnswers": [
+        "JUDGEMENT",
+        "JUDGMENT"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "JUDGE",
+          "JUDGING"
+        ]
+      },
+      "rationale": "make a...about引入一次判断；两种名词拼写均接受。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（EXPECT）",
+      "options": [],
+      "acceptedAnswers": [
+        "UNEXPECTED"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "EXPECT",
+          "EXPECTED"
+        ]
+      },
+      "rationale": "排练才暴露的问题由后文解释为未预料情况；expected词形虽正确但与叙述转折不合。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空（CLEAR）",
+      "options": [],
+      "acceptedAnswers": [
+        "CLEARLY"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "CLEAR",
+          "CLEARNESS"
+        ]
+      },
+      "rationale": "spoke后方式副词，enough后置；clear为形容词。"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（SUGGEST）",
+      "options": [],
+      "acceptedAnswers": [
+        "SUGGESTIONS"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "SUGGEST",
+          "SUGGESTION"
+        ]
+      },
+      "rationale": "邀请观众意见，后句明确plural heading与ideas，故复数。"
+    },
+    {
+      "number": 8,
+      "stem": "第8空（COLLABORATE）",
+      "options": [],
+      "acceptedAnswers": [
+        "COLLABORATION"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "latin_word_v1",
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "COLLABORATE",
+          "COLLABORATIVE"
+        ]
+      },
+      "rationale": "close...between作名词搭配，指合作；动词原形不能作该宾语。"
+    }
+  ],
+  "canonical_response_block_sha256": "f86eb9adca67dde5bebe015057d25ac09de824b4787c5f6ee883ea2175237497",
+  "student_passage": "A small theatre spent several weeks on the (0) PREPARATION (PREPARE) of its first audio-described performance. The aim was to describe visible action during pauses in the dialogue, without speaking over the actors.\n\nA local arts (1) ____ (ORGANISE) lent the theatre a set of headsets. Before the first rehearsal, the team checked the (2) ____ (AVAILABLE) of every device. Each character needed an immediately (3) ____ (RECOGNISE) label, so the script used names rather than vague references such as “the person on the left”. The describer had to make a (4) ____ (JUDGE) about which gestures mattered to the plot. Reading every stage direction aloud was not an option.\n\nThe first rehearsal exposed an (5) ____ (EXPECT) problem: a noisy scene change left no quiet interval for a crucial description. The director moved that information to an earlier pause. The describer then spoke (6) ____ (CLEAR) enough for each word to be heard. After the performance, the team invited written (7) ____ (SUGGEST) from audience members. The plural heading on the form read “Your ideas”. Making the production accessible had required close (8) ____ (COLLABORATE) between people who normally worked in separate rooms.",
+  "author_answer_vector": [
+    [
+      "ORGANISATION",
+      "ORGANIZATION"
+    ],
+    [
+      "AVAILABILITY"
+    ],
+    [
+      "RECOGNISABLE",
+      "RECOGNIZABLE"
+    ],
+    [
+      "JUDGEMENT",
+      "JUDGMENT"
+    ],
+    [
+      "UNEXPECTED"
+    ],
+    [
+      "CLEARLY"
+    ],
+    [
+      "SUGGESTIONS"
+    ],
+    [
+      "COLLABORATION"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "load_measure": {
+    "body_English_words": 178,
+    "stem_English_words": 8,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "given_stems": [
+    "ORGANISE",
+    "AVAILABLE",
+    "RECOGNISE",
+    "JUDGE",
+    "EXPECT",
+    "CLEAR",
+    "SUGGEST",
+    "COLLABORATE"
+  ],
+  "answered_examples": 1,
+  "one_derived_word": true,
+  "fully_filled_passage": "A small theatre spent several weeks on the (0) PREPARATION (PREPARE) of its first audio-described performance. The aim was to describe visible action during pauses in the dialogue, without speaking over the actors.\n\nA local arts (1) ORGANISATION (ORGANISE) lent the theatre a set of headsets. Before the first rehearsal, the team checked the (2) AVAILABILITY (AVAILABLE) of every device. Each character needed an immediately (3) RECOGNISABLE (RECOGNISE) label, so the script used names rather than vague references such as “the person on the left”. The describer had to make a (4) JUDGEMENT (JUDGE) about which gestures mattered to the plot. Reading every stage direction aloud was not an option.\n\nThe first rehearsal exposed an (5) UNEXPECTED (EXPECT) problem: a noisy scene change left no quiet interval for a crucial description. The director moved that information to an earlier pause. The describer then spoke (6) CLEARLY (CLEAR) enough for each word to be heard. After the performance, the team invited written (7) SUGGESTIONS (SUGGEST) from audience members. The plural heading on the form read “Your ideas”. Making the production accessible had required close (8) COLLABORATION (COLLABORATE) between people who normally worked in separate rooms.",
+  "lexical_evidence": {
+    "path": "GapCompletion20261017/LexicalEvidence-v0.1.json",
+    "sha256": "53dc6d001169064c9652a2d67f99cdf2cf124864be29d084f94ccb0c6317e2d8"
+  },
+  "accepted_sets_not_independent_exhaustiveness_certificate": true,
+  "full_fill_variant_combinations_context_reviewed": 8
+}

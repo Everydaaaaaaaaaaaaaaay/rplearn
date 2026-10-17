@@ -1,0 +1,107 @@
+{
+  "version": "0.4",
+  "owner_instruction": "作文这一类需要AI判断对错的主观题，暂时不收集、不出题、不纳入当前交付要求。",
+  "scope": "15_product_levels_objective_tasks_kindergarten_excluded",
+  "paused_families": [
+    "application_writing",
+    "read_then_continue",
+    "picture_continuation",
+    "sentence_translation",
+    "open_reading_response",
+    "mixed_reading_response",
+    "open_table_completion",
+    "dialogue_open_completion"
+  ],
+  "pause_rationale": "这些现有完整组包含自由表达、语义等价、开放观点或非穷尽答案集合；不能把少量参考答案当作全部合法答案，也不裁掉主观子题冒充原完整组。",
+  "retained_tasks": "选择、配对、判断、受约束词汇/语法/词库填空；具体新题须先有可靠确定性答案和允许变体规则。",
+  "admission_rule": "已核词形可供本机参考核对；未列词形待复核，不当错误。需要整体语义评分的自由表达仍暂停。",
+  "pause_actions": [
+    "no_new_acquisition",
+    "no_new_authoring",
+    "exclude_from_current_preview",
+    "exclude_from_current_required_gaps"
+  ],
+  "historical_files": "preserve_unchanged_as_inactive_reference;not_current_work_or_coverage_requirements",
+  "remaining_preview_is_not_production_marking_verified": true,
+  "automation": "none;direct continuation request, no inherited old deadline",
+  "owner_scope_extension": "2026-10-16用户明确幼儿启蒙先不考虑；扩大其余全部档位真实样本搜寻，每个已确认可确定性判分的题型至少一完整原创大题；小学允许非纸笔/活动式形式，不套中学正式卷。",
+  "previous_policy": {
+    "path": "Expansion20261016/ScopePolicy-v0.1.json",
+    "sha256": "8bb36afc0c3473d8867820f244cf8650ff7f1627d7f47cdb3c9a21c3108d2ce7"
+  },
+  "product_levels": [
+    {
+      "id": "primary1",
+      "label": "小学1年级"
+    },
+    {
+      "id": "primary2",
+      "label": "小学2年级"
+    },
+    {
+      "id": "primary3",
+      "label": "小学3年级"
+    },
+    {
+      "id": "primary4",
+      "label": "小学4年级"
+    },
+    {
+      "id": "primary5",
+      "label": "小学5年级"
+    },
+    {
+      "id": "primary6",
+      "label": "小学6年级"
+    },
+    {
+      "id": "junior1",
+      "label": "初中1年级"
+    },
+    {
+      "id": "junior2",
+      "label": "初中2年级"
+    },
+    {
+      "id": "junior3",
+      "label": "初中3年级"
+    },
+    {
+      "id": "senior1",
+      "label": "高中1年级"
+    },
+    {
+      "id": "senior2",
+      "label": "高中2年级"
+    },
+    {
+      "id": "senior3",
+      "label": "高中3年级"
+    },
+    {
+      "id": "undergraduate",
+      "label": "大学英语四级"
+    },
+    {
+      "id": "postgraduate",
+      "label": "大学英语六级"
+    },
+    {
+      "id": "advanced",
+      "label": "高级英语（专业与学术）"
+    }
+  ],
+  "level_identity_source": "Packages/LingoKit/Sources/PersistenceKit/Contracts/DomainEnums.swift DifficultyLevel",
+  "independent_exam_directions": "not_added_as_product_levels;existing materials may inform actual objective patterns",
+  "excluded_levels": [
+    "kindergarten"
+  ],
+  "evidence_priority": [
+    "actual_complete_school_assessment_tasks",
+    "official_complete_sample_tasks_for_CET_and_advanced",
+    "public_reposts_with_explicit_unverified_school_identity",
+    "plans_or_format_outlines_only_as_candidates_not_complete_mode"
+  ],
+  "not_required": "幼儿启蒙、需AI语义判分的主观题、未取得完整必要输入的候选不计当前必补类型",
+  "owner_fill_clarification": "2026-10-17：填空通常一个正确答案，少数可有两个或三个；逐题保留合理变体，不因答案多于一个暂停，不设人为上限。"
+}
