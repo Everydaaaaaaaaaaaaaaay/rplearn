@@ -38,7 +38,10 @@ def check(data, plan):
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
             if b.get('task_mode') == 'lowprimary_picture_listening':
-                from compile_lowprimary_picture_listening import check as check_lowprimary_picture
+                if a.get('lowprimary_sentence_picture'):
+                    from compile_lowprimary_sentence_picture import check as check_lowprimary_picture
+                else:
+                    from compile_lowprimary_picture_listening import check as check_lowprimary_picture
                 check_lowprimary_picture(g,a,b,source)
             if b.get('task_mode') == 'lowprimary_lexical_listening':
                 from compile_lowprimary_lexical_listening import check as check_lowprimary_lexical

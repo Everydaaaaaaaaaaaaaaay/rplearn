@@ -1,0 +1,475 @@
+{
+  "version": "0.1",
+  "id": "primary1-sentences10-pictures-a",
+  "grade": "primary1",
+  "family": "listening_picture_choice",
+  "family_label": "听音选图",
+  "title": "小一：十句二图选择 A",
+  "lowprimary_sentence_picture": true,
+  "source_group_id": "p1.unit5.2022-23.sentences10",
+  "source_binding": "p1.unit5.2022-23.sentences10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary1PictureListeningSourceBindings-v0.1.json",
+    "sha256": "952fe3aae96dd0a2200271ecd7b39006d468b6f26c4c4ad34da9f6f4eb4e7e41"
+  },
+  "source_repeat_count": 2,
+  "render_repeat_count": 2,
+  "current_nonpaper_equivalence": false,
+  "source_original_audio_missing": true,
+  "source_reference_key_missing": true,
+  "audio_prompt_style": "number_only_no_repeat_announcement",
+  "speakers": {
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 125
+    }
+  },
+  "audio_introduction": "Listen and look.",
+  "instruction": "听句子，选出相符的图片A或B。每个句子读两遍，共十项；红圈指出动物的部位。",
+  "format_summary": "十个完整句 / 每句两张独立候选图 / 十回应 / 每项两遍；保留整节，不截六题。",
+  "source_notice": "参照自署2022–2023一年级上Unit5公开练习第二节，完整十个句子、每题两图、每项两遍。不是认证普通校考或现行非纸笔蓝图。只核到公开题图/印刷脚本，原音、原PDF、答案页及原图义独立验证缺；第三四节公开图与脚本不配套，未纳入。本稿用自有对象/动作/部位/点卡/数量/颜色图与本机合成句子，录音只报题号并读两遍；红圈仅为部位指示，点卡为数字听辨图形，不是从原图复制。三稿部分复用对象和图形，不当60独立视觉样本。语速、发音、儿童识图听辨、独立教研/学生/商用/生产未验证。",
+  "clips": [
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Hello, I'm a bird."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1pictures628/bird-v0.1.svg",
+              "sha256": "4d413ad4860d6aba20f4f008db55d90cfb380fd391092ab84a07ea3c85844654"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1pictures628/fish-v0.1.svg",
+              "sha256": "931bb830b5a3c9b106ba23417c42c813058386bdab3460c2e1a51bec9086f817"
+            }
+          },
+          "answer": "A",
+          "rationale": "A：与句子相符。问候中自称bird，只有鸟图符合；鱼不是bird；B：与句子不符。问候中自称bird，只有鸟图符合；鱼不是bird"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Please open the book."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/closedbook-v0.1.svg",
+              "sha256": "3907af5f416922816bf23c1eaff15cb7afa25ffeef340b2e69aaf129279eb258"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1pictures628/book-v0.1.svg",
+              "sha256": "420e2b2bfa3ab27802fbb8db8a37419d7093e6642138854c1d3496cad80783e4"
+            }
+          },
+          "answer": "B",
+          "rationale": "A：与句子不符。open要求展开书；合上的书不符合；B：与句子相符。open要求展开书；合上的书不符合"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Touch your nose, please."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/touch-nose-v0.1.svg",
+              "sha256": "81b51f2395b2f9c92d07c93b4e775d332400ff840ba66441534d1c2ff5c6ab9e"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/touch-ear-v0.1.svg",
+              "sha256": "7c2941a6b2682b393e131bfa49fe8235c4fc27f081e420ab4d838782b535f93e"
+            }
+          },
+          "answer": "A",
+          "rationale": "A：与句子相符。nose是脸中央鼻子；手指触耳不是触鼻；B：与句子不符。nose是脸中央鼻子；手指触耳不是触鼻"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Put your hand up."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/handdown-v0.1.svg",
+              "sha256": "2cdcd3039fdd27c7023d68fa9adf2fc86a68adf9cd959225f75cb5b1cf04455d"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/handup-v0.1.svg",
+              "sha256": "182fd06f6bf5b7f907413611e3317291d75fd176bfcdc6f5afa23bbbc8c44562"
+            }
+          },
+          "answer": "B",
+          "rationale": "A：与句子不符。up要求手举起；手垂下相反；B：与句子相符。up要求手举起；手垂下相反"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Let's read a book."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/reading-v0.1.svg",
+              "sha256": "dba52bc1d6d2e320dd3c71c68538ccc04d9a539d411e602b1c113c3a4c0183d5"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/drawing-v0.1.svg",
+              "sha256": "1d18cf225509f2194904873196719accb84c3b2c808eb101300bfed911c67890"
+            }
+          },
+          "answer": "A",
+          "rationale": "A：与句子相符。read a book对应打开阅读书页；拿笔画纸不符合；B：与句子不符。read a book对应打开阅读书页；拿笔画纸不符合"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Show me four."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/dots3-v0.1.svg",
+              "sha256": "123481cbf98c1ee282113749a0e2da9215060772cb4972f1d92469e2e2f2ec0f"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/dots4-v0.1.svg",
+              "sha256": "d0b3678ca535e6b4fd4afcfd142670560601897ccf50043ac242cf473f8e5521"
+            }
+          },
+          "answer": "B",
+          "rationale": "A：与句子不符。four对应四点卡；三点卡数量不足；B：与句子相符。four对应四点卡；三点卡数量不足"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "I have two pencils."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/pencil3-v0.1.svg",
+              "sha256": "579ace5a0802901fca2dc183a720de1d14ba07d1301c09b1498f818278f0e6d6"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/pencil2-v0.1.svg",
+              "sha256": "83a7e79fdfa5054466d82b41544d0dfba816a7a08e2b35fc441c70cf765da2ac"
+            }
+          },
+          "answer": "B",
+          "rationale": "A：与句子不符。two pencils须两支铅笔；三支数量不同；B：与句子相符。two pencils须两支铅笔；三支数量不同"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Look at the fish's tail."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/fish-tail-v0.1.svg",
+              "sha256": "878c3c63905af0bf03e77ef44b3a78edd394f8e2bc98d4ca370d908cb65f85d9"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/fish-eye-v0.1.svg",
+              "sha256": "e82acc7db0bd60138d7a8a858694a766ffeef7d568dbe78453a1e3f1b8d3255c"
+            }
+          },
+          "answer": "A",
+          "rationale": "A：与句子相符。红圈指鱼尾；圈眼睛不是tail；B：与句子不符。红圈指鱼尾；圈眼睛不是tail"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "I like apples."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1pictures628/hat-v0.1.svg",
+              "sha256": "92f5a45f2628de9c1d38532b762e9a89926fb80dd38fb846309d82b881a8f05f"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1pictures628/apple-v0.1.svg",
+              "sha256": "1e328ce6aa7d663c84a7d41eae4c32fb0d2e2785c257c97f3f7346834bf45120"
+            }
+          },
+          "answer": "B",
+          "rationale": "A：与句子不符。apple图对应apples物类；帽子不是苹果；B：与句子相符。apple图对应apples物类；帽子不是苹果"
+        }
+      ]
+    },
+    {
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The bag is red."
+        }
+      ],
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "questions": [
+        {
+          "stem": "听句子，选图片。",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/bag-red-v0.1.svg",
+              "sha256": "5c5c84bf0e66ea0a4f79715921f9158f667dba7e9872feaa85edf1976ca319bf"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/owned-p1sentences631/bag-blue-v0.1.svg",
+              "sha256": "c0b4ee06b3f9af16a85eeafe361a95ef9e0bf12a6ff05e685975296d0bbbe77a"
+            }
+          },
+          "answer": "A",
+          "rationale": "A：与句子相符。red要求红书包；蓝书包颜色不符；B：与句子不符。red要求红书包；蓝书包颜色不符"
+        }
+      ]
+    }
+  ],
+  "semantic_pairs": [
+    {
+      "sentence": "Hello, I'm a bird.",
+      "A": "bird",
+      "B": "fish",
+      "reference": "A",
+      "best_picture": "bird"
+    },
+    {
+      "sentence": "Please open the book.",
+      "A": "closedbook",
+      "B": "book",
+      "reference": "B",
+      "best_picture": "book"
+    },
+    {
+      "sentence": "Touch your nose, please.",
+      "A": "touch-nose",
+      "B": "touch-ear",
+      "reference": "A",
+      "best_picture": "touch-nose"
+    },
+    {
+      "sentence": "Put your hand up.",
+      "A": "handdown",
+      "B": "handup",
+      "reference": "B",
+      "best_picture": "handup"
+    },
+    {
+      "sentence": "Let's read a book.",
+      "A": "reading",
+      "B": "drawing",
+      "reference": "A",
+      "best_picture": "reading"
+    },
+    {
+      "sentence": "Show me four.",
+      "A": "dots3",
+      "B": "dots4",
+      "reference": "B",
+      "best_picture": "dots4"
+    },
+    {
+      "sentence": "I have two pencils.",
+      "A": "pencil3",
+      "B": "pencil2",
+      "reference": "B",
+      "best_picture": "pencil2"
+    },
+    {
+      "sentence": "Look at the fish's tail.",
+      "A": "fish-tail",
+      "B": "fish-eye",
+      "reference": "A",
+      "best_picture": "fish-tail"
+    },
+    {
+      "sentence": "I like apples.",
+      "A": "hat",
+      "B": "apple",
+      "reference": "B",
+      "best_picture": "apple"
+    },
+    {
+      "sentence": "The bag is red.",
+      "A": "bag-red",
+      "B": "bag-blue",
+      "reference": "A",
+      "best_picture": "bag-red"
+    }
+  ]
+}
