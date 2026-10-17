@@ -60,8 +60,11 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching'}
-    if draft.get('shared_picture_listening'):
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
+    if draft.get('sequence_table_listening'):
+        from listening_sequence_table_contract import validate_draft
+        validate_draft(draft)
+    elif draft.get('shared_picture_listening'):
         from shared_picture_listening_contract import validate_draft
         validate_draft(draft)
     elif draft.get('illustrated_listening'):
@@ -146,7 +149,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
+    if draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
         repeat_count=draft['render_repeat_count']
     elif draft.get('junior_source_bound') or draft.get('senior_short_source_bound'):
         repeat_count=draft['source_repeat_count']

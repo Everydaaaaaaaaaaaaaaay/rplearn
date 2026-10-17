@@ -119,6 +119,14 @@ function render(){
  const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
+ // The source has four people rows and five item columns: five assignments.
+ // Radio names bind a whole item column, so a person may prepare several items.
+ if(g.responseTable){
+  const t=g.responseTable,form=el('responses'),printed=el('student').querySelector('table'),saved=drafts[g.id]||{};
+  if(printed&&t.people.length===4&&t.columns.length===5&&g.questions.length===5){
+   printed.remove();form.innerHTML='<div class="table-scroll"><table class="listening-assignment-table"><caption>'+escapeText(t.caption)+'</caption><thead><tr><th scope="col">人物 / 物品</th>'+t.columns.map((c,i)=>'<th scope="col">'+(i+1)+'. '+escapeText(c)+'</th>').join('')+'</tr></thead><tbody>'+t.people.map(([letter,name])=>'<tr><th scope="row">'+escapeText(name)+'</th>'+g.questions.map(q=>'<td><label><input type="radio" name="'+q.number+'" value="'+letter+'" aria-label="'+escapeText(q.stem+' — '+name)+'" '+(saved[q.number]===letter?'checked':'')+'></label></td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+  }
+ }
  // Each short conversation has one printed question. Keep its player beside
  // that question without changing the frozen five-part material or its order.
  if(['listening_short_conversation_choice','listening_word_phrase_choice','listening_picture_choice'].includes(g.kind)){

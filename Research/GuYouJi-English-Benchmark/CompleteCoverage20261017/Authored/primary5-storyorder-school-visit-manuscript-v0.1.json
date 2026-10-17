@@ -1,0 +1,207 @@
+{
+  "version": "0.1",
+  "id": "primary5-storyorder-school-visit",
+  "title": "小五故事图排序：参观准备",
+  "grade": "primary5",
+  "family": "listening_picture_ordering",
+  "family_label": "听短文图片排序",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part4",
+  "source_binding": "p5order",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.19.json",
+    "sha256": "2a5cc800adb153b40fdbef90711d0b98dfdccc10eb441ea623e5934323cc6897"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.19.json",
+  "sequence_table_listening": true,
+  "render_repeat_count": 3,
+  "source_repeat_count": 3,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 115
+    }
+  },
+  "audio_introduction": "Look at all five pictures. Listen to the whole story and put the pictures in order.",
+  "instruction": "听一篇完整故事三遍，将A—E五图按事情发生的先后排列，依次选出第1—5件事对应图片。本机前后25秒、重播间25秒及提示只作审阅编排，可重播，不冒精确源时序。",
+  "source_form_notice": "小五同一公开期末卷：一完整旅行叙述、五图片按时序排列、短文三遍；原图与音轨缺，印本脚本/参考序可核，原图逐位身份仍未绑定。标题地域/学校施测未认证，原键不当gold；自有图音不补平源缺口。",
+  "format_summary": "1完整故事 / 5图 / 5时序回应 / 3遍",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture2-v0.1.svg",
+      "sha256": "10096b1766e0d6e754abf5e6cd9e8eea3cca107a276e705a60bc3187634c9978"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture8-v0.1.svg",
+      "sha256": "f9308fd94bfbe5006e7efdbd723de886120ef32059f0cbfb7d1696d30afc0624"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture5-v0.1.svg",
+      "sha256": "8744bc87c55e968f7c7021facf68e736e2ceddc9b3e67e5c117c82c14063f4ec"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture3-v0.1.svg",
+      "sha256": "1420828839de45ceb8252f93ced481b519eaf1652031cafc6c1ed2ec1054c5c8"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture1-v0.1.svg",
+      "sha256": "fd0b0582b98d34096f23e1be6760fce2d1ed62561855f0b1b5f2210653fb14a1"
+    }
+  ],
+  "visual_panel_semantics": {
+    "A": "cycle",
+    "B": "photo",
+    "C": "read",
+    "D": "bus",
+    "E": "write"
+  },
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Yesterday, I got ready for our school visit. First, I read a book about the old town. Next, I wrote a short letter to our guide. Then I took a photograph of the school garden. After that, I rode my bicycle to the meeting point. Finally, I got on a bus with my classmates. We were all excited about the visit."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1件事对应哪幅图？",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "完整故事第1件事是read a book，对应图C；其余图：A cycle, B photo, D bus, E write，各属其他时序，不因图面顺序或已用标签决定答案。"
+        },
+        {
+          "stem": "第2件事对应哪幅图？",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "完整故事第2件事是write a letter，对应图E；其余图：A cycle, B photo, C read, D bus，各属其他时序，不因图面顺序或已用标签决定答案。"
+        },
+        {
+          "stem": "第3件事对应哪幅图？",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "完整故事第3件事是take a photograph，对应图B；其余图：A cycle, C read, D bus, E write，各属其他时序，不因图面顺序或已用标签决定答案。"
+        },
+        {
+          "stem": "第4件事对应哪幅图？",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "完整故事第4件事是ride a bicycle，对应图A；其余图：B photo, C read, D bus, E write，各属其他时序，不因图面顺序或已用标签决定答案。"
+        },
+        {
+          "stem": "第5件事对应哪幅图？",
+          "options": [
+            [
+              "A",
+              "图A"
+            ],
+            [
+              "B",
+              "图B"
+            ],
+            [
+              "C",
+              "图C"
+            ],
+            [
+              "D",
+              "图D"
+            ],
+            [
+              "E",
+              "图E"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "完整故事第5件事是get on a bus，对应图D；其余图：A cycle, B photo, C read, E write，各属其他时序，不因图面顺序或已用标签决定答案。"
+        }
+      ]
+    }
+  ]
+}

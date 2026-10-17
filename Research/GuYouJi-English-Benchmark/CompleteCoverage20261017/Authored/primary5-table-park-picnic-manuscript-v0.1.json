@@ -1,0 +1,199 @@
+{
+  "version": "0.1",
+  "id": "primary5-table-park-picnic",
+  "title": "小五人物物品表：公园野餐",
+  "grade": "primary5",
+  "family": "listening_table_matching",
+  "family_label": "听短文人物物品表",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part5",
+  "source_binding": "p5table",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.19.json",
+    "sha256": "2a5cc800adb153b40fdbef90711d0b98dfdccc10eb441ea623e5934323cc6897"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.19.json",
+  "sequence_table_listening": true,
+  "render_repeat_count": 3,
+  "source_repeat_count": 3,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 115
+    }
+  },
+  "audio_introduction": "Look at the four people and the five things. Listen to the letter and choose who prepared each thing.",
+  "instruction": "听一封完整书信三遍，在四人五物品表中为每件物品选准备它的人。每列一个人，同一人可准备多件，共5项分配，不是20道题。本机前后25秒、重播间25秒及提示只作审阅编排，可重播，不冒精确源时序。",
+  "source_form_notice": "小五同一公开期末卷：一完整书信、四人行五物品列、短文三遍；Grandma对应两件，不能误作五人一一配对。原表图片列头/键布局尚未完整核，印本脚本可核、原音轨缺。标题地域/学校施测未认证，原键不当gold；自有图音不补平源缺口。",
+  "format_summary": "1完整书信 / 4人行×5物品列 / 5分配回应 / 一人可多物品 / 3遍",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/table-five-items-bank-v0.1.svg",
+      "sha256": "06987d5c104d78be10e08db87c0711130e8fa7824ecbe1a4c2b039a40ae21b6c"
+    }
+  ],
+  "visual_panel_semantics": {
+    "1": "hat",
+    "2": "water bottle",
+    "3": "sandwich",
+    "4": "map",
+    "5": "football"
+  },
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dear Kim, We are ready for your visit to the park. Dad packed a hat to keep the sun off your face. Mum made a sandwich for your lunch. Aunt Lucy filled a water bottle and also found a map of the park. Alex brought a football for us to play with. Each thing on the list is ready. We will meet you at the park gate tomorrow. Love, Emma"
+        }
+      ],
+      "questions": [
+        {
+          "stem": "图1的物品由谁准备？",
+          "options": [
+            [
+              "A",
+              "Dad"
+            ],
+            [
+              "B",
+              "Mum"
+            ],
+            [
+              "C",
+              "Aunt Lucy"
+            ],
+            [
+              "D",
+              "Alex"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "Dear Kim, We are ready for your visit to the park. Dad packed a hat to keep the sun off your face. Mum made a sandwich for your lunch. Aunt Lucy filled a water bottle and also found a map of the park. Alex brought a football for us to play with. Each thing on the list is ready. We will meet you at the park gate tomorrow. Love, Emma 图1是a hat；录音明确由Dad准备，其他三人并未准备该物品。Dad可对应多件，不能一一排除或将二十格算二十回应。"
+        },
+        {
+          "stem": "图2的物品由谁准备？",
+          "options": [
+            [
+              "A",
+              "Dad"
+            ],
+            [
+              "B",
+              "Mum"
+            ],
+            [
+              "C",
+              "Aunt Lucy"
+            ],
+            [
+              "D",
+              "Alex"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "Dear Kim, We are ready for your visit to the park. Dad packed a hat to keep the sun off your face. Mum made a sandwich for your lunch. Aunt Lucy filled a water bottle and also found a map of the park. Alex brought a football for us to play with. Each thing on the list is ready. We will meet you at the park gate tomorrow. Love, Emma 图2是a water bottle；录音明确由Aunt Lucy准备，其他三人并未准备该物品。Aunt Lucy可对应多件，不能一一排除或将二十格算二十回应。"
+        },
+        {
+          "stem": "图3的物品由谁准备？",
+          "options": [
+            [
+              "A",
+              "Dad"
+            ],
+            [
+              "B",
+              "Mum"
+            ],
+            [
+              "C",
+              "Aunt Lucy"
+            ],
+            [
+              "D",
+              "Alex"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "Dear Kim, We are ready for your visit to the park. Dad packed a hat to keep the sun off your face. Mum made a sandwich for your lunch. Aunt Lucy filled a water bottle and also found a map of the park. Alex brought a football for us to play with. Each thing on the list is ready. We will meet you at the park gate tomorrow. Love, Emma 图3是a sandwich；录音明确由Mum准备，其他三人并未准备该物品。Mum可对应多件，不能一一排除或将二十格算二十回应。"
+        },
+        {
+          "stem": "图4的物品由谁准备？",
+          "options": [
+            [
+              "A",
+              "Dad"
+            ],
+            [
+              "B",
+              "Mum"
+            ],
+            [
+              "C",
+              "Aunt Lucy"
+            ],
+            [
+              "D",
+              "Alex"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "Dear Kim, We are ready for your visit to the park. Dad packed a hat to keep the sun off your face. Mum made a sandwich for your lunch. Aunt Lucy filled a water bottle and also found a map of the park. Alex brought a football for us to play with. Each thing on the list is ready. We will meet you at the park gate tomorrow. Love, Emma 图4是a map；录音明确由Aunt Lucy准备，其他三人并未准备该物品。Aunt Lucy可对应多件，不能一一排除或将二十格算二十回应。"
+        },
+        {
+          "stem": "图5的物品由谁准备？",
+          "options": [
+            [
+              "A",
+              "Dad"
+            ],
+            [
+              "B",
+              "Mum"
+            ],
+            [
+              "C",
+              "Aunt Lucy"
+            ],
+            [
+              "D",
+              "Alex"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "Dear Kim, We are ready for your visit to the park. Dad packed a hat to keep the sun off your face. Mum made a sandwich for your lunch. Aunt Lucy filled a water bottle and also found a map of the park. Alex brought a football for us to play with. Each thing on the list is ready. We will meet you at the park gate tomorrow. Love, Emma 图5是a football；录音明确由Alex准备，其他三人并未准备该物品。Alex可对应多件，不能一一排除或将二十格算二十回应。"
+        }
+      ]
+    }
+  ],
+  "response_table": {
+    "people": [
+      [
+        "A",
+        "Dad"
+      ],
+      [
+        "B",
+        "Mum"
+      ],
+      [
+        "C",
+        "Aunt Lucy"
+      ],
+      [
+        "D",
+        "Alex"
+      ]
+    ],
+    "columns": [
+      "图1",
+      "图2",
+      "图3",
+      "图4",
+      "图5"
+    ],
+    "caption": "四人 × 五物品：每列选准备该物品的人；同一人可准备多件物品"
+  }
+}

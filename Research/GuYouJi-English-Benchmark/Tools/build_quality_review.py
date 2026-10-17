@@ -148,6 +148,8 @@ def full_markdown_candidate(meta):
     if any(q.get('optionImageAssets')for q in questions):
         from quality_review_images import attach_option_images
         attach_option_images(group)
+    if audit.get('response_table'):
+        group['responseTable'] = copy.deepcopy(audit['response_table'])
     if audio_tracks:
         group['requiredAudioAssets'] = audio_tracks
     if meta['family']=='listening_double_matching':
