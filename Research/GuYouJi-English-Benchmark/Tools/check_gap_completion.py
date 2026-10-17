@@ -37,6 +37,34 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'junior_mixed10_bound_positions':
+                view=next(v for v in json.loads(load_ref(source['source_view_manifest']).read_text())['views'] if v['group_id']==source['id'])
+                assert hashlib.sha256(json.dumps(view,ensure_ascii=False,sort_keys=True).encode()).hexdigest()==source['inherited_view_record_sha256']
+                load_ref(source['source_catalogue'])
+                if b['level']==7:
+                    raw=load_ref(view['source_text']).read_text()
+                    body=raw[view['start_offset']:view['end_offset']]
+                    assert hashlib.sha256(body.encode()).hexdigest()==view['material_sha256']
+                    numbers=view['expected_blank_ids']
+                    hinted=[n for n,hint in re.findall(r'_{3,}(\d+)_{3,}\s*(?:\(([^)]+)\))?',body) if hint]
+                    given=[int(n)-numbers[0]+1 for n in hinted]
+                    assert given==[n-numbers[0]+1 for n in view['observed_given_hint_slots']]
+                    component=next(c for c in view['components']if c['role']=='student_instruction')
+                    instruction=raw[component['start_offset']:component['end_offset']]
+                    assert hashlib.sha256(instruction.encode()).hexdigest()==component['sha256']
+                else:
+                    record=json.loads(load_ref(view['transcription']).read_text())['records'][view['record_index']]
+                    assert record['id']==source['id']
+                    instruction=next(c['text']for c in record['components']if c['role']=='instruction')
+                    hints=[c['item_id']for c in record['components']if c['role']=='given_hint']
+                    numbers=source['source_question_numbers']
+                    given=[n-numbers[0]+1 for n in hints]
+                    for asset in view['source_images']: load_ref(asset)
+                assert re.search('[1一]个适当的单词',instruction) and '括号内单词的正确形式' in instruction
+                assert numbers==source['source_question_numbers'] and len(numbers)==10
+                assert given==b['given_positions']==source['given_positions']==a['given_positions']
+                assert len(given)==7 and source['ungiven_max_words']==1 and source['given_max_words'] is None
+                assert a['mixed_given_ungiven_grammar'] and a['subgroup_counts']==[10]
             if b.get('task_mode') == 'keyword_transformation_six3to6':
                 selected=json.loads(load_ref(source['selected_native']).read_text())
                 assert selected['original']==source['source'] and selected['key']==source['key_reference']

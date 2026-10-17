@@ -4,7 +4,7 @@ Object.assign(labels,reviewData.levelLabels||{});
 const el=id=>document.getElementById(id),escapeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let activeGrade=7,activeFamily='reading_choice';const drafts={},selectedVariants={};
 const groupIds=cell=>cell.groupIds||(cell.groupId?[cell.groupId]:[]);
-const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'暂停·需语义判分':cell.state==='source_observed_deterministic_admission_pending'?'待审判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?groupIds(cell).length+'稿 / 目标3稿':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
+const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'旧稿暂缓·待补代表':cell.state==='source_observed_deterministic_admission_pending'?'待审判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?groupIds(cell).length+'稿 / 目标3稿':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
 function select(grade,family){activeGrade=grade;activeFamily=family;if(!reviewData.cells.find(c=>c.grade===grade&&c.family===family).observed)el('show-unknown').checked=true;render();}
 function selectGrade(grade){const current=reviewData.cells.find(c=>c.grade===grade&&c.family===activeFamily),available=reviewData.cells.find(c=>c.grade===grade&&c.groupId);select(grade,current?.groupId?activeFamily:available?.family||activeFamily);}
 function makeButton(label,pressed,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(pressed));b.onclick=fn;return b;}
@@ -89,7 +89,7 @@ function render(){
  const comparisonEligibility=answerComparison(g?.questions);
  el('compare-selections').disabled=!comparisonEligibility.available;
  el('compare-selections').title=comparisonEligibility.reason||'仅对照作者参考，不代表独立质量验收。';
- if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本完整题组已暂停：'+escapeText(cell.pauseReason)+' 不截去部分空格后冒充完整组；来源观察仍保留。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
+ if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本格的旧完整题组已暂缓：'+escapeText(cell.pauseReason)+' 保留来源与旧稿，不截空冒充完整组；这不表示整个题型均需AI判分，符合约束的新完整代表仍可补编。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
  const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
