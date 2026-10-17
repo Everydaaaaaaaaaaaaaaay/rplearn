@@ -37,6 +37,32 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'bounded_source_prompt_completion':
+                view=next(v for v in json.loads(load_ref(source['source_view_manifest']).read_text())['views']if v['group_id']==source['id'])
+                assert hashlib.sha256(json.dumps(view,ensure_ascii=False,sort_keys=True).encode()).hexdigest()==source['inherited_view_record_sha256']
+                raw=load_ref(view['source_text']).read_text()
+                for component in view['components']+view['material_segments']:
+                    fragment=raw[component['start_offset']:component['end_offset']]
+                    assert hashlib.sha256(fragment.encode()).hexdigest()==component['sha256']
+                instruction=next(c for c in view['components']if c['role']=='student_instruction')
+                assert instruction['sha256']==source['instruction_sha256']
+                given=[c.get('item_id')for c in view['components']if c['role']=='given_form_hint']
+                assert given==source['given_positions']==a['given_positions']
+                assert a['bounded_source_prompt_completion'] and a['source_count_increment']==0
+                assert len(view.get('items',view.get('units',[])))==b['responses']
+                if b['family']=='sentence_form':
+                    assert given==[2,3,5,6,7,8,10,11,13,14] and b['responses']==15
+                    assert all(q['fillMarking']['maxWords']==(None if q['number']in given else 1)for q in a['review_response_tasks'])
+                else:
+                    assert all(q['fillMarking']['maxWords']is None for q in a['review_response_tasks'])
+                if b['family']=='passage_chinese_completion':
+                    assert re.findall(r'\((\d+)\) ____',a['student_passage'])==[str(n)for n in range(1,11)]
+                    assert '____'not in a['filled_passage']
+                assert a['full_fill_variant_combinations']==__import__('math').prod(len(q['acceptedAnswers'])for q in a['review_response_tasks'])
+                for q,row in zip(a['review_response_tasks'],a['full_slot_substitutions']):
+                    frame=a['student_passage']if b['family']=='passage_chinese_completion'else q['stem']
+                    filled=[frame.replace('('+str(q['number'])+') ____',v)if b['family']=='passage_chinese_completion'else re.sub(r'[a-z]?____',v,frame,count=1)for v in q['acceptedAnswers']]
+                    assert row['accepted_full_inputs']==filled and row['number']==q['number']
             if b.get('task_mode') == 'complete_root_word_bank':
                 view=next(v for v in json.loads(load_ref(source['source_view_manifest']).read_text())['views']if v['group_id']==source['id'])
                 assert hashlib.sha256(json.dumps(view,ensure_ascii=False,sort_keys=True).encode()).hexdigest()==source['inherited_view_record_sha256']
@@ -249,11 +275,11 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
-                pattern='[0-9]+' if c['normalization']=='ascii_integer_v1' else '[A-Za-z]+(?: [A-Za-z]+)*' if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
+                pattern='[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
                 assert all(re.fullmatch(pattern, value) for value in q['acceptedAnswers'] + c['rejectedAnswers'])
                 if a.get('one_word_open_cloze'):
                     assert c['maxWords']==1 and all(len(v.split())==1 for v in q['acceptedAnswers'])

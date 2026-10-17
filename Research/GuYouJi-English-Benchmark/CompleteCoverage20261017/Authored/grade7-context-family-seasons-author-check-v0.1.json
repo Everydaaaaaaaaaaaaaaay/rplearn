@@ -1,0 +1,161 @@
+{
+  "version": "0.1",
+  "id": "grade7-context-family-seasons",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "3853f89ed4e29d8cec5afce992b8744bee5593bee953636b848479fb81590a07",
+  "source_binding": "g7context",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.initialWords",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "My aunt has one child, a d____（女儿）, called Helen.",
+      "options": [],
+      "acceptedAnswers": [
+        "daughter"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "daughters"
+        ]
+      },
+      "rationale": "one child与中文女儿限定单数daughter。"
+    },
+    {
+      "number": 2,
+      "stem": "The last month of the year is D____（十二月）.",
+      "options": [],
+      "acceptedAnswers": [
+        "December"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "November"
+        ]
+      },
+      "rationale": "最后一月与中文共同限定December。"
+    },
+    {
+      "number": 3,
+      "stem": "There is no water left in the glass; it is e____（空的）.",
+      "options": [],
+      "acceptedAnswers": [
+        "empty"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "full"
+        ]
+      },
+      "rationale": "empty描述没有水，首字母e。"
+    },
+    {
+      "number": 4,
+      "stem": "We write the date at the t____（顶部） of the page, above the title.",
+      "options": [],
+      "acceptedAnswers": [
+        "top"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "bottom"
+        ]
+      },
+      "rationale": "at the top与above title说明顶部。"
+    },
+    {
+      "number": 5,
+      "stem": "The baby has only two t____（牙齿） so far.",
+      "options": [],
+      "acceptedAnswers": [
+        "teeth"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "tooth"
+        ]
+      },
+      "rationale": "two后tooth不规则复数teeth。"
+    }
+  ],
+  "canonical_response_block_sha256": "2814e2888219323b77c70a0a0f36e5f218a5d15c8bca0a0e0859cfe2c3187d44",
+  "student_passage": "以下各句彼此独立。首字母已印出的空，请在输入框填写完整单词（包括该首字母）。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "My aunt has one child, a daughter（女儿）, called Helen."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The last month of the year is DDecember（十二月）."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "There is no water left in the glass; it is empty（空的）."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "We write the date at the top（顶部） of the page, above the title."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "The baby has only two teeth（牙齿） so far."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 1,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 49,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "accepted_output_words_range": [
+      5,
+      5
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

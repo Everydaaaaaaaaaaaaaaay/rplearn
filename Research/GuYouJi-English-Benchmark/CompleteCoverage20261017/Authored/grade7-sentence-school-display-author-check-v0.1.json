@@ -1,0 +1,426 @@
+{
+  "version": "0.1",
+  "id": "grade7-sentence-school-display",
+  "grade": 7,
+  "questions": 15,
+  "candidate_sha256": "302cf709208ddaac306954fdd79094259553ed7544e7a41643c059a3720819f5",
+  "source_binding": "g7sentence",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A pair means two things, not one ____ three.",
+      "options": [],
+      "acceptedAnswers": [
+        "or"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "and"
+        ]
+      },
+      "rationale": "not one or three列排除数量。"
+    },
+    {
+      "number": 2,
+      "stem": "The green rulers belong to us. They are ____ (we) rulers.",
+      "options": [],
+      "acceptedAnswers": [
+        "our"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "ours"
+        ]
+      },
+      "rationale": "名词前物主限定词our。"
+    },
+    {
+      "number": 3,
+      "stem": "Look! There ____ (be) a single bird on the sign.",
+      "options": [],
+      "acceptedAnswers": [
+        "is"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "are"
+        ]
+      },
+      "rationale": "当前观察单数存在句is。"
+    },
+    {
+      "number": 4,
+      "stem": "The cat is hiding ____ the table; only its tail comes out from beneath it.",
+      "options": [],
+      "acceptedAnswers": [
+        "under",
+        "beneath"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "above"
+        ]
+      },
+      "rationale": "under/beneath均在桌子下，后文beneath印证位置。"
+    },
+    {
+      "number": 5,
+      "stem": "The child lost two baby ____ (tooth) this month.",
+      "options": [],
+      "acceptedAnswers": [
+        "teeth"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "tooth"
+        ]
+      },
+      "rationale": "two后tooth复数teeth。"
+    },
+    {
+      "number": 6,
+      "stem": "The scarf belongs to Jack alone. This is ____ (Jack) scarf.",
+      "options": [],
+      "acceptedAnswers": [
+        "Jack's"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "Jack"
+        ]
+      },
+      "rationale": "唯一所有者Jack的所有格。"
+    },
+    {
+      "number": 7,
+      "stem": "We have four clean ____ (brush) ready for painting.",
+      "options": [],
+      "acceptedAnswers": [
+        "brushes"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "brush"
+        ]
+      },
+      "rationale": "four后brush复数brushes。"
+    },
+    {
+      "number": 8,
+      "stem": "Please do not ____ (touch) the wet paint.",
+      "options": [],
+      "acceptedAnswers": [
+        "touch"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "touches"
+        ]
+      },
+      "rationale": "do not后原形touch。"
+    },
+    {
+      "number": 9,
+      "stem": "—____ gloves are these? —They belong to my sister.",
+      "options": [],
+      "acceptedAnswers": [
+        "Whose"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "问答所有权，Whose。"
+    },
+    {
+      "number": 10,
+      "stem": "The visitors took a lesson in ____ (China) cooking.",
+      "options": [],
+      "acceptedAnswers": [
+        "Chinese"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "China"
+        ]
+      },
+      "rationale": "Chinese修饰cooking。"
+    },
+    {
+      "number": 11,
+      "stem": "She read the warning ____ (careful) before opening the tin.",
+      "options": [],
+      "acceptedAnswers": [
+        "carefully"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "careful"
+        ]
+      },
+      "rationale": "修饰read的方式副词；未给比较上下文不列比较式，但未知不直接错。"
+    },
+    {
+      "number": 12,
+      "stem": "We saw ____ owl near the school; the bird flew away immediately.",
+      "options": [],
+      "acceptedAnswers": [
+        "an"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "a"
+        ]
+      },
+      "rationale": "owl元音起首首次引入an；the在共享知识语境可成立但未列待复核。"
+    },
+    {
+      "number": 13,
+      "stem": "Our teacher gave ____ (we) a new task.",
+      "options": [],
+      "acceptedAnswers": [
+        "us"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "we"
+        ]
+      },
+      "rationale": "give后作宾语us。"
+    },
+    {
+      "number": 14,
+      "stem": "Would you like ____ (come) to the display with us tomorrow?",
+      "options": [],
+      "acceptedAnswers": [
+        "to come",
+        "to be coming"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "coming"
+        ]
+      },
+      "rationale": "like后普通/进行不定式对未来出席均合法。"
+    },
+    {
+      "number": 15,
+      "stem": "The room was quiet ____ every child was reading silently.",
+      "options": [],
+      "acceptedAnswers": [
+        "because",
+        "as",
+        "since"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "三种原因连词均合完整因果语境。"
+    }
+  ],
+  "canonical_response_block_sha256": "38d5b449aef923672b359e5a97e6b5481153b7ce862a7680d76f15eb915ec83c",
+  "student_passage": "以下十五句彼此独立，保留给词与无给词位置。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14
+  ],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "A pair means two things, not one or three."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The green rulers belong to us. They are our (we) rulers."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "Look! There is (be) a single bird on the sign."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "The cat is hiding under the table; only its tail comes out from beneath it.",
+        "The cat is hiding beneath the table; only its tail comes out from beneath it."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "The child lost two baby teeth (tooth) this month."
+      ]
+    },
+    {
+      "number": 6,
+      "accepted_full_inputs": [
+        "The scarf belongs to Jack alone. This is Jack's (Jack) scarf."
+      ]
+    },
+    {
+      "number": 7,
+      "accepted_full_inputs": [
+        "We have four clean brushes (brush) ready for painting."
+      ]
+    },
+    {
+      "number": 8,
+      "accepted_full_inputs": [
+        "Please do not touch (touch) the wet paint."
+      ]
+    },
+    {
+      "number": 9,
+      "accepted_full_inputs": [
+        "—Whose gloves are these? —They belong to my sister."
+      ]
+    },
+    {
+      "number": 10,
+      "accepted_full_inputs": [
+        "The visitors took a lesson in Chinese (China) cooking."
+      ]
+    },
+    {
+      "number": 11,
+      "accepted_full_inputs": [
+        "She read the warning carefully (careful) before opening the tin."
+      ]
+    },
+    {
+      "number": 12,
+      "accepted_full_inputs": [
+        "We saw an owl near the school; the bird flew away immediately."
+      ]
+    },
+    {
+      "number": 13,
+      "accepted_full_inputs": [
+        "Our teacher gave us (we) a new task."
+      ]
+    },
+    {
+      "number": 14,
+      "accepted_full_inputs": [
+        "Would you like to come (come) to the display with us tomorrow?",
+        "Would you like to be coming (come) to the display with us tomorrow?"
+      ]
+    },
+    {
+      "number": 15,
+      "accepted_full_inputs": [
+        "The room was quiet because every child was reading silently.",
+        "The room was quiet as every child was reading silently.",
+        "The room was quiet since every child was reading silently."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 12,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 136,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 15,
+    "accepted_output_words_range": [
+      16,
+      17
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

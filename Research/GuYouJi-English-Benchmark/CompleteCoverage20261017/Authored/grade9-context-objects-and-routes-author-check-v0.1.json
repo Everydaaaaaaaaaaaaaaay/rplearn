@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "grade9-context-objects-and-routes",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "b73f9aaa8b1a5298a8509b91d560629b0dd192f2edeccde8e512598a183af14c",
+  "source_binding": "g9context",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.initialWords",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The road sign gives the d____ to the station as two kilometres, not the time needed to walk there.",
+      "options": [],
+      "acceptedAnswers": [
+        "distance"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "direction"
+        ]
+      },
+      "rationale": "公里是距离distance，不是耗时。"
+    },
+    {
+      "number": 2,
+      "stem": "The box weighed less after the bricks were taken out; it was much l____ than before.",
+      "options": [],
+      "acceptedAnswers": [
+        "lighter"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "light"
+        ]
+      },
+      "rationale": "重量比较lighter。"
+    },
+    {
+      "number": 3,
+      "stem": "The knife is not sharp enough to cut the string; it is too b____.",
+      "options": [],
+      "acceptedAnswers": [
+        "blunt"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "blunt钝与not sharp同义。"
+    },
+    {
+      "number": 4,
+      "stem": "This bottle holds one l____ of water, which is one thousand millilitres.",
+      "options": [],
+      "acceptedAnswers": [
+        "litre",
+        "liter"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "litres"
+        ]
+      },
+      "rationale": "英美拼写litre/liter同量；不按语义相似无限收。"
+    },
+    {
+      "number": 5,
+      "stem": "The painting is a c____ of the original; the real one is kept in the museum.",
+      "options": [],
+      "acceptedAnswers": [
+        "copy"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "copy与original/real对照。"
+    }
+  ],
+  "canonical_response_block_sha256": "6dd0185e5f88547121ff9566a2aaf7d2dc224788ce41c82d5bd8c17fc2063dc8",
+  "student_passage": "以下各句彼此独立。首字母已印出的空，请在输入框填写完整单词（包括该首字母）。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "The road sign gives the distance to the station as two kilometres, not the time needed to walk there."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The box weighed less after the bricks were taken out; it was much lighter than before."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "The knife is not sharp enough to cut the string; it is too blunt."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "This bottle holds one litre of water, which is one thousand millilitres.",
+        "This bottle holds one liter of water, which is one thousand millilitres."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "The painting is a copy of the original; the real one is kept in the museum."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 2,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 77,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "accepted_output_words_range": [
+      5,
+      5
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

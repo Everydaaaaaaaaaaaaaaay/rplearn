@@ -1,0 +1,161 @@
+{
+  "version": "0.1",
+  "id": "grade7-context-classroom-things",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "602332ae410bd86eff611f9954f4e7386851121e5194d8393bfe8f193f4be225",
+  "source_binding": "g7context",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.initialWords",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A square has four c____（角）.",
+      "options": [],
+      "acceptedAnswers": [
+        "corners"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "corner"
+        ]
+      },
+      "rationale": "four后复数corners。"
+    },
+    {
+      "number": 2,
+      "stem": "January is the f____（第一） month of the year.",
+      "options": [],
+      "acceptedAnswers": [
+        "first"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "fourth"
+        ]
+      },
+      "rationale": "January的顺序明示，序数first。"
+    },
+    {
+      "number": 3,
+      "stem": "The two pupils did the work by t____（他们自己）; no one helped them.",
+      "options": [],
+      "acceptedAnswers": [
+        "themselves"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "them"
+        ]
+      },
+      "rationale": "复数反身themselves，by后表示自行。"
+    },
+    {
+      "number": 4,
+      "stem": "I keep my pencils in a pencil b____（盒子）, not loose in my bag.",
+      "options": [],
+      "acceptedAnswers": [
+        "box"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "boxes"
+        ]
+      },
+      "rationale": "a pencil box单数，首字母b。"
+    },
+    {
+      "number": 5,
+      "stem": "This is a q____（问题）, so it ends with a question mark.",
+      "options": [],
+      "acceptedAnswers": [
+        "question"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "questions"
+        ]
+      },
+      "rationale": "名词question对应问号与中文。"
+    }
+  ],
+  "canonical_response_block_sha256": "4300495d78338748400bf424146898bbc9ffbc2a596c92412bfb83f72b43ee5e",
+  "student_passage": "以下各句彼此独立。首字母已印出的空，请在输入框填写完整单词（包括该首字母）。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "A square has four corners（角）."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "January is the first（第一） month of the year."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "The two pupils did the work by themselves（他们自己）; no one helped them."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "I keep my pencils in a pencil box（盒子）, not loose in my bag."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "This is a question（问题）, so it ends with a question mark."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 1,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 49,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "accepted_output_words_range": [
+      5,
+      5
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

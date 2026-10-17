@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "grade9-context-measures-and-records",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "22a6d2f67484f6b809c8ac0fafc55c5918ddf748dacb3149033e93f90008d5f0",
+  "source_binding": "g9context",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.initialWords",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The runner beat the previous best time and set a new r____ for the school.",
+      "options": [],
+      "acceptedAnswers": [
+        "record"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "recording"
+        ]
+      },
+      "rationale": "set a new record打破此前最佳，词义定位。"
+    },
+    {
+      "number": 2,
+      "stem": "The earthquake lasted only a few s____, less than half a minute.",
+      "options": [],
+      "acceptedAnswers": [
+        "seconds"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "second"
+        ]
+      },
+      "rationale": "few后时间单位seconds，与half a minute对照。"
+    },
+    {
+      "number": 3,
+      "stem": "The teacher drew a c____ with a compass; every point on the line was the same distance from its centre.",
+      "options": [],
+      "acceptedAnswers": [
+        "circle"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "cube"
+        ]
+      },
+      "rationale": "圆的几何定义定位circle。"
+    },
+    {
+      "number": 4,
+      "stem": "The two sides of the paper looked alike, so I made a small mark to tell the d____ between them.",
+      "options": [],
+      "acceptedAnswers": [
+        "difference"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "different"
+        ]
+      },
+      "rationale": "tell the difference between辨别差异。"
+    },
+    {
+      "number": 5,
+      "stem": "After adding the five numbers together, she wrote the t____ at the bottom of the column.",
+      "options": [],
+      "acceptedAnswers": [
+        "total"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "相加结果total，列底合计。"
+    }
+  ],
+  "canonical_response_block_sha256": "f0677e3e7585df7b86fc262241ae8ec6fa0109729a7c1af3ddf4725e9a945b80",
+  "student_passage": "以下各句彼此独立。首字母已印出的空，请在输入框填写完整单词（包括该首字母）。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "The runner beat the previous best time and set a new record for the school."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The earthquake lasted only a few seconds, less than half a minute."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "The teacher drew a circle with a compass; every point on the line was the same distance from its centre."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "The two sides of the paper looked alike, so I made a small mark to tell the difference between them."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "After adding the five numbers together, she wrote the total at the bottom of the column."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 1,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 83,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "accepted_output_words_range": [
+      5,
+      5
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

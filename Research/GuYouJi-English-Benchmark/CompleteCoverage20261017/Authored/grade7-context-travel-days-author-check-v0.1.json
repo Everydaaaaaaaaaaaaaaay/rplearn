@@ -1,0 +1,161 @@
+{
+  "version": "0.1",
+  "id": "grade7-context-travel-days",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "eea09b7c0498c6291b55ddda0b14d37826b2d5bf82e257d69571fc1fcee94877",
+  "source_binding": "g7context",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.initialWords",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The day after Wednesday is T____（星期四）.",
+      "options": [],
+      "acceptedAnswers": [
+        "Thursday"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "Tuesday"
+        ]
+      },
+      "rationale": "日名与星期四双重限定，首字母T。"
+    },
+    {
+      "number": 2,
+      "stem": "The red bag is mine, but the blue one belongs to Lily; it is h____（她的）.",
+      "options": [],
+      "acceptedAnswers": [
+        "hers"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "her"
+        ]
+      },
+      "rationale": "句末独立物主代词hers，不用限定词her。"
+    },
+    {
+      "number": 3,
+      "stem": "There are sixty m____（分钟） in one hour.",
+      "options": [],
+      "acceptedAnswers": [
+        "minutes"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "minute"
+        ]
+      },
+      "rationale": "sixty后复数minutes，小时与分钟关系明示。"
+    },
+    {
+      "number": 4,
+      "stem": "Please use a k____（刀） to cut this large apple into four pieces.",
+      "options": [],
+      "acceptedAnswers": [
+        "knife"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "knives"
+        ]
+      },
+      "rationale": "a后单数knife；汉语和首字母共同定位。"
+    },
+    {
+      "number": 5,
+      "stem": "The bus stops o____（在……外面） the school gate, on the street rather than in the playground.",
+      "options": [],
+      "acceptedAnswers": [
+        "outside"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "inside"
+        ]
+      },
+      "rationale": "outside与校门外街道位置吻合。"
+    }
+  ],
+  "canonical_response_block_sha256": "1ad65ab979ecf5548af5acfaa4858fa7d573231d03bfd78c6ab4caff28049184",
+  "student_passage": "以下各句彼此独立。首字母已印出的空，请在输入框填写完整单词（包括该首字母）。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "The day after Wednesday is TThursday（星期四）."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The red bag is mine, but the blue one belongs to Lily; it is hers（她的）."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "There are sixty minutes（分钟） in one hour."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "Please use a knife（刀） to cut this large apple into four pieces."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "The bus stops outside（在……外面） the school gate, on the street rather than in the playground."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 1,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 55,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "accepted_output_words_range": [
+      5,
+      5
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

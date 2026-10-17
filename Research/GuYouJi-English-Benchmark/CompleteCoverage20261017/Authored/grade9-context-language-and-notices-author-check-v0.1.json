@@ -1,0 +1,157 @@
+{
+  "version": "0.1",
+  "id": "grade9-context-language-and-notices",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "ba7d6f413324b386a54f1599a73e76c7c3093ef505aeb2e2b485e0e144b48133",
+  "source_binding": "g9context",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade9-chengdu2025-21cnjy23208601.initialWords",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Please put these names in a____ order, from A to Z.",
+      "options": [],
+      "acceptedAnswers": [
+        "alphabetical"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "alphabet"
+        ]
+      },
+      "rationale": "from A to Z定义alphabetical order。"
+    },
+    {
+      "number": 2,
+      "stem": "The notice says the pool is c____ for repairs, so nobody may swim there today.",
+      "options": [],
+      "acceptedAnswers": [
+        "closed"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "close"
+        ]
+      },
+      "rationale": "closed for repairs不能入泳。"
+    },
+    {
+      "number": 3,
+      "stem": "A word with the opposite meaning is an a____; for example, hot is one for cold.",
+      "options": [],
+      "acceptedAnswers": [
+        "antonym"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "adjective"
+        ]
+      },
+      "rationale": "术语定义antonym，不依赖整句语义评分。"
+    },
+    {
+      "number": 4,
+      "stem": "She could not hear the announcement because the loudspeaker was s____; it made no sound at all.",
+      "options": [],
+      "acceptedAnswers": [
+        "silent"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "silent与no sound共同限制；未知同义形式仍复核。"
+    },
+    {
+      "number": 5,
+      "stem": "The missing page is page ten: page nine is followed d____ by page eleven in this copy.",
+      "options": [],
+      "acceptedAnswers": [
+        "directly"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "directly表示中间没有第十页，与followed by完整结构。"
+    }
+  ],
+  "canonical_response_block_sha256": "1385e9f994639eb82e6b9e82a98543a888426c46f87df465e37927425c4eff9a",
+  "student_passage": "以下各句彼此独立。首字母已印出的空，请在输入框填写完整单词（包括该首字母）。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "Please put these names in alphabetical order, from A to Z."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The notice says the pool is closed for repairs, so nobody may swim there today."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "A word with the opposite meaning is an antonym; for example, hot is one for cold."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "She could not hear the announcement because the loudspeaker was silent; it made no sound at all."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "The missing page is page ten: page nine is followed directly by page eleven in this copy."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 1,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 76,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "accepted_output_words_range": [
+      5,
+      5
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

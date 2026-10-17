@@ -1,0 +1,424 @@
+{
+  "version": "0.1",
+  "id": "grade7-sentence-lost-property",
+  "grade": 7,
+  "questions": 15,
+  "candidate_sha256": "b43c5afd65293707a1b5e44e450bbad3dd6dcf8d634e7bf36ea884eccf1aa59c",
+  "source_binding": "g7sentence",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  },
+  "source_group_id": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "There are seven days ____ a week.",
+      "options": [],
+      "acceptedAnswers": [
+        "in"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "on"
+        ]
+      },
+      "rationale": "seven days in a week；无给词一词。"
+    },
+    {
+      "number": 2,
+      "stem": "This is ____ (I) red notebook, not yours.",
+      "options": [],
+      "acceptedAnswers": [
+        "my"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "me"
+        ]
+      },
+      "rationale": "名词前用物主限定词my。"
+    },
+    {
+      "number": 3,
+      "stem": "Look at this photo: there ____ (be) exactly three children in it.",
+      "options": [],
+      "acceptedAnswers": [
+        "are"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "is"
+        ]
+      },
+      "rationale": "当前照片说明三个孩子，用are；其他时间形式未列不直接错。"
+    },
+    {
+      "number": 4,
+      "stem": "The ball is sitting ____ top of the cupboard.",
+      "options": [],
+      "acceptedAnswers": [
+        "on"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "under"
+        ]
+      },
+      "rationale": "on top of固定空间表达。"
+    },
+    {
+      "number": 5,
+      "stem": "A person normally has two ____ (foot).",
+      "options": [],
+      "acceptedAnswers": [
+        "feet"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "foot"
+        ]
+      },
+      "rationale": "two后不规则复数feet。"
+    },
+    {
+      "number": 6,
+      "stem": "The jacket belongs to Emma alone. It is ____ (Emma) jacket.",
+      "options": [],
+      "acceptedAnswers": [
+        "Emma's"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "Emma"
+        ]
+      },
+      "rationale": "明确单一所有者Emma，所有格Emma’s；直弯引号等价。"
+    },
+    {
+      "number": 7,
+      "stem": "There are three printed ____ (notice) on this board.",
+      "options": [],
+      "acceptedAnswers": [
+        "notices"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "notice"
+        ]
+      },
+      "rationale": "three后可数复数notices。"
+    },
+    {
+      "number": 8,
+      "stem": "What can you ____ (see) through the window?",
+      "options": [],
+      "acceptedAnswers": [
+        "see"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "sees"
+        ]
+      },
+      "rationale": "can后动词原形see。"
+    },
+    {
+      "number": 9,
+      "stem": "—____ red bag is this? —It belongs to Tom.",
+      "options": [],
+      "acceptedAnswers": [
+        "Whose"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "按答语询问所有者Whose，其他问法待语境复核。"
+    },
+    {
+      "number": 10,
+      "stem": "We ate some ____ (China) food at the festival.",
+      "options": [],
+      "acceptedAnswers": [
+        "Chinese"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "China"
+        ]
+      },
+      "rationale": "国别形容词Chinese修饰food。"
+    },
+    {
+      "number": 11,
+      "stem": "The box is ____ (real) heavy; I cannot lift it.",
+      "options": [],
+      "acceptedAnswers": [
+        "really"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "real"
+        ]
+      },
+      "rationale": "副词really修饰heavy。"
+    },
+    {
+      "number": 12,
+      "stem": "Maya plays ____ violin in the school orchestra.",
+      "options": [],
+      "acceptedAnswers": [
+        "the",
+        "a"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "the violin指演奏乐器，a violin可指一把具体小提琴；都合当前句。"
+    },
+    {
+      "number": 13,
+      "stem": "The guide asked ____ (we) to wait by the door.",
+      "options": [],
+      "acceptedAnswers": [
+        "us"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "our"
+        ]
+      },
+      "rationale": "asked后的宾格us。"
+    },
+    {
+      "number": 14,
+      "stem": "Would you like ____ (go) to the island by boat tomorrow?",
+      "options": [],
+      "acceptedAnswers": [
+        "to go",
+        "to be going"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "going"
+        ]
+      },
+      "rationale": "would like后普通/进行不定式均可表达明天行程；不补给词一词限制。"
+    },
+    {
+      "number": 15,
+      "stem": "I stayed indoors ____ I had a fever and needed rest.",
+      "options": [],
+      "acceptedAnswers": [
+        "because",
+        "as",
+        "since"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "三个一词连词均能表达发烧导致留在室内。"
+    }
+  ],
+  "canonical_response_block_sha256": "61a52edab20814727664cc5a92d718990a4ce20b61c6b30464b2ab5662280023",
+  "student_passage": "以下十五句彼此独立，保留给词与无给词位置。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14
+  ],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "There are seven days in a week."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "This is my (I) red notebook, not yours."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "Look at this photo: there are (be) exactly three children in it."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "The ball is sitting on top of the cupboard."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "A person normally has two feet (foot)."
+      ]
+    },
+    {
+      "number": 6,
+      "accepted_full_inputs": [
+        "The jacket belongs to Emma alone. It is Emma's (Emma) jacket."
+      ]
+    },
+    {
+      "number": 7,
+      "accepted_full_inputs": [
+        "There are three printed notices (notice) on this board."
+      ]
+    },
+    {
+      "number": 8,
+      "accepted_full_inputs": [
+        "What can you see (see) through the window?"
+      ]
+    },
+    {
+      "number": 9,
+      "accepted_full_inputs": [
+        "—Whose red bag is this? —It belongs to Tom."
+      ]
+    },
+    {
+      "number": 10,
+      "accepted_full_inputs": [
+        "We ate some Chinese (China) food at the festival."
+      ]
+    },
+    {
+      "number": 11,
+      "accepted_full_inputs": [
+        "The box is really (real) heavy; I cannot lift it."
+      ]
+    },
+    {
+      "number": 12,
+      "accepted_full_inputs": [
+        "Maya plays the violin in the school orchestra.",
+        "Maya plays a violin in the school orchestra."
+      ]
+    },
+    {
+      "number": 13,
+      "accepted_full_inputs": [
+        "The guide asked us (we) to wait by the door."
+      ]
+    },
+    {
+      "number": 14,
+      "accepted_full_inputs": [
+        "Would you like to go (go) to the island by boat tomorrow?",
+        "Would you like to be going (go) to the island by boat tomorrow?"
+      ]
+    },
+    {
+      "number": 15,
+      "accepted_full_inputs": [
+        "I stayed indoors because I had a fever and needed rest.",
+        "I stayed indoors as I had a fever and needed rest.",
+        "I stayed indoors since I had a fever and needed rest."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 12,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 124,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 15,
+    "accepted_output_words_range": [
+      16,
+      17
+    ]
+  },
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
