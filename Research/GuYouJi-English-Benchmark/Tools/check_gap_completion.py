@@ -37,6 +37,30 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'four_of_six_sentence_insertion':
+                selected=json.loads(load_ref(source['selected_native']).read_text())
+                raw=selected['selected_student_insertion']
+                assert selected['original']==source['source_html']
+                assert source['complete_selected_group_reviewed'] and source['kind']==b['family']=='shared_insertion'
+                assert [int(n) for n in re.findall(r'_{3,}(\d+)_{3,}',raw)]==source['source_question_numbers']
+                source_options=re.findall(r'^([A-F])[.．]\s*(.+)$',raw,re.M)
+                assert [label for label,_ in source_options]==list('ABCDEF')
+                assert source['responses']==b['responses']==4 and b['options_each']==6
+                assert source['reuse_rule']==b['reuse_rule']==a['source_reuse_rule']
+                if b['reuse_rule']=='once_explicit':
+                    assert 'Each sentence can be used only once.' in raw
+                    assert 'two more sentences than you need' in raw
+                    assert len(set(q['answer']for q in g['questions']))==4
+                else:
+                    assert b['reuse_rule']=='not_visible_not_inferred'
+                assert re.findall(r'\((\d+)\) ____',a['student_passage'])==list('1234')
+                assert all(q['options']==a['shared_candidates'] for q in g['questions'])
+                assert a['shared_candidates_unique']==6 and len(a['choice_pair_audit'])==24
+                assert {(r['response_number'],r['candidate'])for r in a['choice_pair_audit']}=={(n,c)for n in range(1,5)for c in 'ABCDEF'}
+                assert all(r['is_best']==(g['questions'][r['response_number']-1]['answer']==r['candidate']) and r['reason'] for r in a['choice_pair_audit'])
+                assert load_ref(meta['candidate']).read_text().count('### 共享候选')==1
+                assert a['load_measure']['options_English_words_unique_bank']==sum(words(t)for _,t in a['shared_candidates'])
+                assert a['subgroup_counts']==[4] and a['materials']==1 and '____' not in a['filled_passage']
             if b.get('task_mode') == 'one_word_open_cloze':
                 assert source['complete_selected_group_reviewed'] and source['kind']==b['family']=='open_cloze'
                 selected=json.loads(load_ref(source['selected_native']).read_text())
@@ -155,7 +179,9 @@ def check(data, plan):
     assert len(seen) == index['new_complete_groups']
     assert sum(m['questions'] for m in index['candidates']) == index['new_response_positions']
     selected_modes = json.loads(load_ref(plan['current_complete_coverage_source_modes']).read_text()) if plan.get('current_complete_coverage_source_modes') else {}
-    return {'groups': len(seen), 'responses': index['new_response_positions'], 'new_sources': 0,
+    return {'groups': len(seen), 'responses': index['new_response_positions'],
+            'new_sources': selected_modes.get('new_source_papers', 0),
+            'new_sources_count_scope': selected_modes.get('source_parent_count_scope', 'no_new_source_parents'),
             'new_source_papers': selected_modes.get('new_source_papers', 0),
             'new_selected_specific_modes': selected_modes.get('new_selected_specific_modes', 0),
             'accepted_forms_bound': True, 'unlisted_lexical_forms_need_review': True,

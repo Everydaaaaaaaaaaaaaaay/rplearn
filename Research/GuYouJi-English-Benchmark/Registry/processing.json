@@ -35163,6 +35163,121 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "complete-coverage-senior-four6-sixgroups-v0.1",
+      "source_acquisition_ids": [
+        "completecoverage-discovery-shanghai-g10-public26002103",
+        "completecoverage-discovery-shanghai-g11-public23262830"
+      ],
+      "tool": "source_bound_four_of_six_insertion+CUA_IAB+24pairs_pergroup",
+      "tool_version": "0.1",
+      "parameters": [
+        "6newwholegroups24responses;321total2208;315reused",
+        "G10reuseunknown;G11onceexplicit;2newselectedconcretemodes",
+        "4blanks6sharedcandidates_each;144authorchoicepairreasons;notteacherreview",
+        "6realIABgroups24responses;wrong/unanswered/reset/switchpreservation",
+        "draftfactsandcrossslotambiguityfixed;offtopicdistractorsreplaced"
+      ],
+      "pages": 13,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/author-senior-four-of-six-v0.1.py",
+          "bytes": 30914,
+          "sha256": "119df7ac33f397f1d1cb8220ceda9e91349df95bca499b3d77f84e64d466ce35",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/refine-senior-four-of-six-v0.1.py",
+          "bytes": 5325,
+          "sha256": "81f8b14f2d3561ed8b92d79f4d74604d9815abd4a9048827437a136e7f5a59a8",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/polish-senior-four-of-six-v0.1.py",
+          "bytes": 8851,
+          "sha256": "21818e32606ef9c9d4c3e05742f5e73a3dc535149fbfd5953d981fdc229c9329",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/checkpoint-senior-four-of-six-v0.1.py",
+          "bytes": 7706,
+          "sha256": "69820efbecdb6eb1b09b74f957c0aa8242ffdb01ecd10180a58ea1c56f9cd3a8",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-review-check-v0.1.json",
+          "bytes": 1119,
+          "sha256": "81d8959e5196dc40e32916ac5f8632f3a4eaac922a4a81d174b26bcf794a271f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-review-check-v0.2.json",
+          "bytes": 1119,
+          "sha256": "81d8959e5196dc40e32916ac5f8632f3a4eaac922a4a81d174b26bcf794a271f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-review-check-v0.3.json",
+          "bytes": 1119,
+          "sha256": "81d8959e5196dc40e32916ac5f8632f3a4eaac922a4a81d174b26bcf794a271f",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-final-check-v0.1.json",
+          "bytes": 1216,
+          "sha256": "34aa1ca093490187c97889c46e91fdbacea1b3fcc4892338287380b9d52f4a6e",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-fill-core-check-v0.1.json",
+          "bytes": 283,
+          "sha256": "400fc5eb0a96160eea20560a253d656d1302392e3771777d69017e4ee4ff5ce0",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-selection-core-check-v0.1.json",
+          "bytes": 225,
+          "sha256": "f491817de5609efdbfec47c5436220249a740aeca411f64ad651d26d3a1b9ccd",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6-browser-v0.1.json",
+          "bytes": 1001,
+          "sha256": "c802ecec04b3c9bc2d7d29607a086dd94d9a1926c9c777f31c17537f3c88d4ee",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6-body-family-screen-v0.1.json",
+          "bytes": 3071,
+          "sha256": "5144d53cc4d1dd861889591a585cf8ebe4f6b86c29d991b61536fa670fb0f529",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review321-senior-four6-delta-v0.1.json",
+          "bytes": 98940,
+          "sha256": "07818ffee4fbd41b6045b03bf1522758b946e54561ba8c4918ee7884ffe357ae",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "complete-coverage-seniorfour6-frozen-check-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "check_all_levels_review.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "frozen_delta_chain321_completegroups2208responses2newparentlabels3cumulativeselectedmodes"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/seniorfour6321-frozen-check-v0.1.json",
+          "bytes": 1216,
+          "sha256": "34aa1ca093490187c97889c46e91fdbacea1b3fcc4892338287380b9d52f4a6e",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
