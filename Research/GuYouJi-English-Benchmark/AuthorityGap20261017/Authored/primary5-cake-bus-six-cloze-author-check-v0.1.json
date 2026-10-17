@@ -1,0 +1,341 @@
+{
+  "version": "0.1",
+  "id": "primary5-cake-bus-six-cloze",
+  "grade": "primary5",
+  "questions": 6,
+  "candidate_sha256": "8c8dd93228024bf743f3aa6d09a1e073deb90d170e97d069d335e08096282f53",
+  "canonical_response_block_sha256": "845426d8b8f62a3c3d8be4ff3c1ae5aa4d142fd210d7c901d479a2d437715626",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "box"
+        ],
+        [
+          "B",
+          "plate"
+        ],
+        [
+          "C",
+          "bottle"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "后文反复thebox及opensbox明确包装为box；bottle瓶子、plate盘子都不是这次后文回指容器。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "get on"
+        ],
+        [
+          "B",
+          "get off"
+        ],
+        [
+          "C",
+          "take off"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Theycomein throughfrontdoor直接说明上车geton；getoff为下车方向相反，takeoff不表示进公交车。多词短语整体填一个空、一次选答。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "flying"
+        ],
+        [
+          "B",
+          "swimming"
+        ],
+        [
+          "C",
+          "standing"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "公交内无空座、站在Mina旁使standing合场景；flying飞行和swimming游泳都与车内等座场景不符。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "both"
+        ],
+        [
+          "B",
+          "another"
+        ],
+        [
+          "C",
+          "every"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "hands为复数，bothhands双手语法成立；every/another通常接单数可数名词，此处hands直接复数不合。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "she"
+        ],
+        [
+          "B",
+          "he"
+        ],
+        [
+          "C",
+          "her"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "thanks后需宾语，her回指Mina；she/he是主格不能作此动词宾语。"
+    },
+    {
+      "number": 6,
+      "stem": "第6空",
+      "options": [
+        [
+          "A",
+          "angry"
+        ],
+        [
+          "B",
+          "happy"
+        ],
+        [
+          "C",
+          "afraid"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Grandpasmiles并赞赏找到兼顾蛋糕和让座的方法，happy支持愉悦；angry愤怒/afraid害怕与笑和肯定的表态不符。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.7.json",
+    "sha256": "9c6d0f6c5e60003696479520c057c5de9ac27d86773ff5af95649fd1179c54bd"
+  },
+  "source_group_id": "p5.gcyls2024.attributed.suzhou2022.volunteers6",
+  "source_observation": {
+    "source_responses": 6,
+    "source_reuse_rule": "independent_per_gap_no_once_constraint",
+    "source_material": {
+      "passages": 1,
+      "gaps": 6,
+      "complete_unit": "as_presented_in_compilation;original_exam_section_scope_unknown",
+      "source_exam_attribution": "2022春江苏苏州五年级统考期末",
+      "authoritative_school_origin_verified": false,
+      "multiple_word_candidate_entries": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "On Sunday, Mina is taking a cake to her grandpa. The cake is in a big (1) ____. She sits down on the bus and puts the box on the seat next to her.\n\nA few stops later, many people (2) ____ the bus. They come in through the front door. Mina sees an old woman (3) ____ beside her because there are no empty seats. “Please take this seat,” Mina says. She puts the box on her own knees and holds it with (4) ____ hands. The old woman thanks (5) ____.\n\nAt Grandpa's home, Mina opens the box. The cake is still in one piece. Grandpa smiles and is (6) ____ to hear about her trip. “You found a safe place for the cake and a seat for someone else,” he says.",
+  "author_answer_vector": [
+    "A",
+    "A",
+    "C",
+    "A",
+    "C",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 122,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 21,
+    "output_response_positions": 6,
+    "output_mode": "closed_letter_selection",
+    "completed_body_English_words": 129,
+    "requirement_English_words": 0,
+    "output_letter_count": 6
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "On Sunday, Mina is taking a cake to her grandpa. The cake is in a big (1) ____. She sits down on the bus and puts the box on the seat next to her.\n\nA few stops later, many people (2) ____ the bus. They come in through the front door. Mina sees an old woman (3) ____ beside her because there are no empty seats. “Please take this seat,” Mina says. She puts the box on her own knees and holds it with (4) ____ hands. The old woman thanks (5) ____.\n\nAt Grandpa's home, Mina opens the box. The cake is still in one piece. Grandpa smiles and is (6) ____ to hear about her trip. “You found a safe place for the cake and a seat for someone else,” he says.",
+  "completed_passage": "On Sunday, Mina is taking a cake to her grandpa. The cake is in a big box. She sits down on the bus and puts the box on the seat next to her.\n\nA few stops later, many people get on the bus. They come in through the front door. Mina sees an old woman standing beside her because there are no empty seats. “Please take this seat,” Mina says. She puts the box on her own knees and holds it with both hands. The old woman thanks her.\n\nAt Grandpa's home, Mina opens the box. The cake is still in one piece. Grandpa smiles and is happy to hear about her trip. “You found a safe place for the cake and a seat for someone else,” he says.",
+  "passage_count": 1,
+  "gap_count": 6,
+  "whole_passage_refilled": true,
+  "option_order_trace": [
+    {
+      "number": 1,
+      "before_options": [
+        [
+          "A",
+          "box"
+        ],
+        [
+          "B",
+          "bottle"
+        ],
+        [
+          "C",
+          "plate"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "后文反复thebox及opensbox明确包装为box；bottle瓶子、plate盘子都不是这次后文回指容器。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "box"
+    },
+    {
+      "number": 2,
+      "before_options": [
+        [
+          "A",
+          "get on"
+        ],
+        [
+          "B",
+          "get off"
+        ],
+        [
+          "C",
+          "take off"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "Theycomein throughfrontdoor直接说明上车geton；getoff为下车方向相反，takeoff不表示进公交车。多词短语整体填一个空、一次选答。",
+      "old_to_new": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "accepted_text": "get on"
+    },
+    {
+      "number": 3,
+      "before_options": [
+        [
+          "A",
+          "standing"
+        ],
+        [
+          "B",
+          "flying"
+        ],
+        [
+          "C",
+          "swimming"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "公交内无空座、站在Mina旁使standing合场景；flying飞行和swimming游泳都与车内等座场景不符。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "standing"
+    },
+    {
+      "number": 4,
+      "before_options": [
+        [
+          "A",
+          "both"
+        ],
+        [
+          "B",
+          "every"
+        ],
+        [
+          "C",
+          "another"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "hands为复数，bothhands双手语法成立；every/another通常接单数可数名词，此处hands直接复数不合。",
+      "old_to_new": {
+        "A": "A",
+        "C": "B",
+        "B": "C"
+      },
+      "accepted_text": "both"
+    },
+    {
+      "number": 5,
+      "before_options": [
+        [
+          "A",
+          "her"
+        ],
+        [
+          "B",
+          "she"
+        ],
+        [
+          "C",
+          "he"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "thanks后需宾语，her回指Mina；she/he是主格不能作此动词宾语。",
+      "old_to_new": {
+        "B": "A",
+        "C": "B",
+        "A": "C"
+      },
+      "accepted_text": "her"
+    },
+    {
+      "number": 6,
+      "before_options": [
+        [
+          "A",
+          "happy"
+        ],
+        [
+          "B",
+          "angry"
+        ],
+        [
+          "C",
+          "afraid"
+        ]
+      ],
+      "before_key": "A",
+      "before_reason": "Grandpasmiles并赞赏找到兼顾蛋糕和让座的方法，happy支持愉悦；angry愤怒/afraid害怕与笑和肯定的表态不符。",
+      "old_to_new": {
+        "B": "A",
+        "A": "B",
+        "C": "C"
+      },
+      "accepted_text": "happy"
+    }
+  ],
+  "no_original_exam_origin_authentication_claimed": true,
+  "source_gender_underspecification_not_reproduced": true
+}
