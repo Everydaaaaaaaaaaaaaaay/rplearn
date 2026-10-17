@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'academic_information_tristate':
                 from compile_academic_information import check as check_academic_information
                 check_academic_information(g,a,b,source)
+            if b.get('task_mode') == 'academic_matching_features':
+                from compile_academic_features import check as check_academic_features
+                check_academic_features(g,a,b,source)
             if b.get('task_mode') == 'inherited_cet_reading':
                 from compile_inherited_reading import check as check_inherited_reading
                 check_inherited_reading(g,a,b,source)
