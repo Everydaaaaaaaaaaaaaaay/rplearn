@@ -17,7 +17,21 @@ def check(group, audit, binding, source):
     raw = load_ref(selected['source']).read_text()
     for span in selected['spans']:
         assert hashlib.sha256(raw[span['start']:span['end']].encode()).hexdigest() == span['sha256']
-    if source['level'] == 7:
+    if source['id'] == 'grade7-huangshan2026-21cnjy25150014.listening.sectionI':
+        student=next(s for s in selected['spans'] if s['role']=='whole_first_section')
+        student_text=raw[student['start']:student['end']]
+        key_span=next(s for s in selected['spans'] if s['role']=='published_key')
+        assert '1-5. BACAC' in raw[key_span['start']:key_span['end']]
+        assert '每段对话读两遍' in student_text and selected['reference_keys']==list('BACAC')
+        assert len(re.findall(r'\n[1-5]\. ',student_text))==5
+        assert all(len(re.findall(r'\b'+k+r'\. ',student_text))==5 for k in 'ABC')
+        assert source['features']['candidate_media']=='all_printed_text'
+        assert not source['features']['source_actual_speaker_roles_verified']
+        assert source['features']['roles_are_owned_rendering_not_source_gender_claim']
+        assert not selected['source_script_acquired'] and selected['source_full_printed_input_verified']
+        assert source['features']['source_timing_not_printed']
+        assert source['features']['preview_seconds_per_question'] is None and source['features']['answer_seconds_per_question'] is None
+    elif source['level'] == 7:
         key_span=next(s for s in selected['spans'] if s['role']=='published_key_and_complete_printed_script')
         key_text=raw[key_span['start']:key_span['end']]
         if source['kind']=='listening_table_completion':

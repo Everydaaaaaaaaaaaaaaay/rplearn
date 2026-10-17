@@ -1,0 +1,211 @@
+{
+  "version": "0.1",
+  "id": "grade7-short-library-rabbit",
+  "title": "初一短对话：图书馆与兔子",
+  "grade": 7,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "grade7-huangshan2026-21cnjy25150014.listening.sectionI",
+  "source_binding": "g7huangshanshort5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.26.json",
+    "sha256": "c3cb60d810362a72d4fafdd253d72095714976de5a4ef3a992161189b7208ae7"
+  },
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 95
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 95
+    }
+  },
+  "source_notice": "参照七上期末公开题面五独立短对话、每题三文字候选、两遍、每题1分。本卷网页归黄山，正文只印学年/第一学期/七年级，原校及施测未认证；源音轨/脚本缺、实际声音角色未知。原题未印停顿，本稿M/W角色与每题前后5秒为本机编排。不同于合肥月考首两题空候选，不能用本卷恢复其未知图片。全部脚本、题目、候选与配音原创，非自然语流、学生难度或独立教研验证。",
+  "timing_notice": "原源未印停顿；本机每段前后各5秒，非原卷时序",
+  "instruction": "听五段独立短对话，每段一题，从A、B、C三个文字选项中选最佳答案。每段两遍；本机每段前后各留5秒供审阅，页面可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Is the reading club on Tuesday, Ben?"
+        },
+        {
+          "speaker": "M",
+          "text": "No, it is on Thursday. Tuesday is for the chess club."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When is the reading club?",
+          "options": [
+            [
+              "A",
+              "On Tuesday."
+            ],
+            [
+              "B",
+              "On Thursday."
+            ],
+            [
+              "C",
+              "On Friday."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：Tuesday是棋社；B：男方明确Thursday；C：未提周五读书社"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Do you have a dog, Jane?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. My pet has long ears and likes carrots. It is a white rabbit."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What pet does Jane have?",
+          "options": [
+            [
+              "A",
+              "A rabbit."
+            ],
+            [
+              "B",
+              "A dog."
+            ],
+            [
+              "C",
+              "A cat."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确white rabbit；B：问句dog被否定；C：没有猫"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Where is your blue schoolbag, Sam?"
+        },
+        {
+          "speaker": "M",
+          "text": "Under the chair. The green bag on the desk is my brother’s."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where is Sam’s schoolbag?",
+          "options": [
+            [
+              "A",
+              "On the desk."
+            ],
+            [
+              "B",
+              "By the door."
+            ],
+            [
+              "C",
+              "Under the chair."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：桌上绿色是兄弟的；B：没有门边；C：Sam回答Under chair"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Can your sister play the piano, Lucy?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, but she can play the guitar very well. I play the piano."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What can Lucy’s sister do?",
+          "options": [
+            [
+              "A",
+              "Play the piano."
+            ],
+            [
+              "B",
+              "Play the guitar."
+            ],
+            [
+              "C",
+              "Play tennis."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：Lucy本人弹钢琴；B：she can play guitar指sister；C：没有网球"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Are these three pens yours, Tom?"
+        },
+        {
+          "speaker": "M",
+          "text": "Only the black one. The two red pens are Lily’s."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How many of the pens belong to Tom?",
+          "options": [
+            [
+              "A",
+              "One."
+            ],
+            [
+              "B",
+              "Two."
+            ],
+            [
+              "C",
+              "Three."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：only black one；B：two是Lily红笔数；C：three总数非Tom数"
+        }
+      ]
+    }
+  ]
+}

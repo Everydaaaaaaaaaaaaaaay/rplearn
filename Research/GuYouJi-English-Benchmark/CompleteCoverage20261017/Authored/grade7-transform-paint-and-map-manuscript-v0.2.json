@@ -1,0 +1,108 @@
+{
+  "version": "0.2",
+  "id": "grade7-transform-paint-and-map",
+  "title": "初一句型转换：绘画与地图",
+  "grade": 7,
+  "family": "sentence_transformation",
+  "source_group_id": "grade7-huangshan2026-21cnjy25150014.transform.sectionIX",
+  "source_binding": "g7huangshantransform5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ControlledTransformationBindings-v0.1.json",
+    "sha256": "ead583dc643d384164b23aee74f251dd90dc21de82663aa009608e54dc49e2ea"
+  },
+  "instruction": "按每项提示完成同义改写或疑问句转换。五项任务各有两个空，共十空；第4项加粗内容为提问目标。全部原句和印出的目标句均须保留。",
+  "source_notice": "参照公开七上期末五句转换/十个计分空、每空0.5分，五种操作与输出框架分列。本源74题下划线在公开文本中丢失，不按参考键补造原目标；本稿自行明确标记所有者目标，其他原句/提示/目标句/十空完整。原校未认证、参考键非gold；What/How两形式同等接受。原源未印统一每空词数上限，未知形式待复核，不采用AI语义评分；独立教研/学生/商用/生产未验证。 Oxford公开词条用法另核different from/to/than，三个介词与different完整回填均通顺且保持比较含义；初稿仅from尚未入页，版本保留。本稿仍不宣称穷尽所有改写。",
+  "sentences": [
+    {
+      "operation": "combine_both_and",
+      "original": "Nora can draw well. Evan can draw well too.",
+      "target": "(1) ____ Nora (2) ____ Evan can draw well.",
+      "accepted": [
+        [
+          "Both"
+        ],
+        [
+          "and"
+        ]
+      ],
+      "direction": "把两句合成一句，保留两个人和共同的能力。",
+      "rationale": "Both… and…连接两个人；两人都能画画，未改变can所指能力。",
+      "marked_target": null
+    },
+    {
+      "operation": "why_not_to_what_how_about",
+      "original": "Why not paint a small box?",
+      "target": "(3) ____ (4) ____ painting a small box?",
+      "accepted": [
+        [
+          "What",
+          "How"
+        ],
+        [
+          "about"
+        ]
+      ],
+      "direction": "改为同义建议句，保留印出的动名词短语。",
+      "rationale": "What about和How about都可提出同一建议；后接印出的动名词短语，两个第一空答案同等接受。",
+      "marked_target": null
+    },
+    {
+      "operation": "not_same_to_different_from",
+      "original": "My map is not the same as yours.",
+      "target": "My map is (5) ____ (6) ____ yours.",
+      "accepted": [
+        [
+          "different"
+        ],
+        [
+          "from",
+          "to",
+          "than"
+        ]
+      ],
+      "direction": "改为同义句，保留肯定形式的be和印出的yours。",
+      "rationale": "not the same as与different from意义对应；different描述差别，from接比较对象。 Oxford不同搭配用法支持different from/to/than加名词性补足语；from最通用，to偏英式，than偏北美，本卷未限定方言，因此三者均接受，不把偏好当错误。",
+      "marked_target": null
+    },
+    {
+      "operation": "underlined_possessor_question",
+      "original": "Those are **Mia's** gloves.",
+      "target": "(7) ____ gloves (8) ____ those?",
+      "accepted": [
+        [
+          "Whose"
+        ],
+        [
+          "are"
+        ]
+      ],
+      "direction": "对加粗的所有者部分提问，其他内容按印出的目标句保留。",
+      "rationale": "目标是所有者Mia's，用Whose；those与复数gloves对应are，组成所有者疑问句。",
+      "marked_target": "Mia's"
+    },
+    {
+      "operation": "firstperson_be_to_secondperson_question",
+      "original": "I’m in the music club.",
+      "target": "(9) ____ (10) ____ in the music club?",
+      "accepted": [
+        [
+          "Are"
+        ],
+        [
+          "you"
+        ]
+      ],
+      "direction": "对说话人提一般疑问句，把第一人称转为第二人称。",
+      "rationale": "第一人称I’m改为向对方询问的Are you；保留原所属社团，不扩写其他信息。",
+      "marked_target": null
+    }
+  ],
+  "previous_unadmitted_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-transform-paint-and-map-manuscript-v0.1.json",
+    "sha256": "e8269fce73e5b4cba655906859e008c6ab44d5c76274d0c04a5adb027743881d"
+  },
+  "different_usage_evidence": {
+    "path": "build/english-benchmark-authority-20261017/different-oxford-public-reader-v0.1.json",
+    "sha256": "18412ab7fefbe5fb711e2aefd7e2c6f297bfbad1d7c13441a96db42af7b874a9"
+  }
+}

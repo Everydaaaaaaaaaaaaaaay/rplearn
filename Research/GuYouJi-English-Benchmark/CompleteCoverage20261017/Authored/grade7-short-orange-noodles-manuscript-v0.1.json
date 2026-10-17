@@ -1,0 +1,211 @@
+{
+  "version": "0.1",
+  "id": "grade7-short-orange-noodles",
+  "title": "初一短对话：橘子与面条",
+  "grade": 7,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "grade7-huangshan2026-21cnjy25150014.listening.sectionI",
+  "source_binding": "g7huangshanshort5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.26.json",
+    "sha256": "c3cb60d810362a72d4fafdd253d72095714976de5a4ef3a992161189b7208ae7"
+  },
+  "junior_source_bound": true,
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 95
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 95
+    }
+  },
+  "source_notice": "参照七上期末公开题面五独立短对话、每题三文字候选、两遍、每题1分。本卷网页归黄山，正文只印学年/第一学期/七年级，原校及施测未认证；源音轨/脚本缺、实际声音角色未知。原题未印停顿，本稿M/W角色与每题前后5秒为本机编排。不同于合肥月考首两题空候选，不能用本卷恢复其未知图片。全部脚本、题目、候选与配音原创，非自然语流、学生难度或独立教研验证。",
+  "timing_notice": "原源未印停顿；本机每段前后各5秒，非原卷时序",
+  "instruction": "听五段独立短对话，每段一题，从A、B、C三个文字选项中选最佳答案。每段两遍；本机每段前后各留5秒供审阅，页面可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Would you like some tea, Emma?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, thank you. I would like a glass of water."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does Emma want to drink?",
+          "options": [
+            [
+              "A",
+              "Tea."
+            ],
+            [
+              "B",
+              "Milk."
+            ],
+            [
+              "C",
+              "Water."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：拒绝tea；B：未要milk；C：明确glass water"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Is your new classroom on the first floor?"
+        },
+        {
+          "speaker": "M",
+          "text": "No, it is on the second floor, next to the music room."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Which floor is the classroom on?",
+          "options": [
+            [
+              "A",
+              "The first floor."
+            ],
+            [
+              "B",
+              "The second floor."
+            ],
+            [
+              "C",
+              "The third floor."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：否定first；B：明确second；C：未提third"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What do we need for lunch, Mum?"
+        },
+        {
+          "speaker": "W",
+          "text": "We have rice and fish. Please buy some noodles at the shop."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What should the boy buy?",
+          "options": [
+            [
+              "A",
+              "Noodles."
+            ],
+            [
+              "B",
+              "Rice."
+            ],
+            [
+              "C",
+              "Fish."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：Please buy noodles；B：rice已经有；C：fish已经有"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "What colour are your football shoes, Jack?"
+        },
+        {
+          "speaker": "M",
+          "text": "They are orange. My running shoes are blue, and my old shoes are black."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What colour are Jack’s football shoes?",
+          "options": [
+            [
+              "A",
+              "Blue."
+            ],
+            [
+              "B",
+              "Black."
+            ],
+            [
+              "C",
+              "Orange."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：blue跑鞋；B：black旧鞋；C：orange足球鞋"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Does your father go to work by bus?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. His office is near our home, so he walks there."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How does the girl’s father go to work?",
+          "options": [
+            [
+              "A",
+              "By bus."
+            ],
+            [
+              "B",
+              "On foot."
+            ],
+            [
+              "C",
+              "By bike."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：bus被否定；B：walks对应On foot；C：未提骑车"
+        }
+      ]
+    }
+  ]
+}

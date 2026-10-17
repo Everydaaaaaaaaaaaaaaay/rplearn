@@ -1,5 +1,6 @@
 """Specific observed junior configurations, separate from any year-wide rules."""
 CONFIGS = {
+ 'grade7-huangshan2026-21cnjy25150014.listening.sectionI': (7, 'listening_short_conversation_choice', [1]*5, ['MW']*5, 2, 1),
  'grade7-hefei2025-21cnjy26607976.listening.sectionII': (7, 'listening_long_conversation_choice', [2,3], ['MW','MW'], 2, 1),
  'grade7-hefei2025-21cnjy26607976.listening.sectionIII': (7, 'listening_passage_choice', [5], ['N'], 2, 1),
  'grade7-hefei2025-21cnjy26607976.listening.sectionIV': (7, 'listening_table_completion', [5], ['N'], 2, 1),
@@ -28,5 +29,6 @@ def validate_draft(draft):
                 assert q['fillMarking']['maxWords']==1 and q['fillMarking']['unlisted']=='review'
             else:
                 assert [k for k, _ in q['options']] == ['A','B','C'] and q['answer'] in 'ABC'
+                assert len({v.strip().casefold() for _,v in q['options']})==3 and all(v.strip() for _,v in q['options'])
                 assert all(k+'：' in q['rationale'] for k in 'ABC')
     return grade, family, counts, roles, repeats, points
