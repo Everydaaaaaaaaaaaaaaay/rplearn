@@ -1,6 +1,6 @@
 """Complete two-choice extracts, four sentence gaps and five spatial labels."""
 import re
-COUNTS={'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6}
+COUNTS={'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10}
 ROLES=['lower_left_room','inner_right_room','far_wall_shelves','upper_middle_room','right_annex']
 
 def validate_draft(d):
@@ -10,7 +10,7 @@ def validate_draft(d):
     c=d['clips'][0];assert len(c['questions'])==COUNTS[kind]
     assert c['preview_seconds']==c['answer_seconds']==5*COUNTS[kind]
     assert all(t['text'].strip() for t in c['turns'])
-    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs'}else{'M','W'})
+    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion'}else{'M','W'})
     text=' '.join(t['text']for t in c['turns']);fold=lambda v:re.sub(r'[-‐‑–]',' ',v).lower()
     if kind=='listening_plan_label_matching':
         assert len(c['turns'])==1 and d['plan_roles']==ROLES
@@ -21,14 +21,16 @@ def validate_draft(d):
     for n,q in enumerate(c['questions'],1):
         assert q['evidence_quote'] and q['evidence_quote']in text and q['rationale']
         offsets.append(text.index(q['evidence_quote']))
-        if kind in {'listening_dialogue_sentence_completion','listening_short_answer_pairs'}:
+        if kind in {'listening_dialogue_sentence_completion','listening_short_answer_pairs','listening_note_table_completion'}:
             assert not q['options']
             if kind=='listening_dialogue_sentence_completion':assert q['stem'].count('____')==1
             assert q['acceptedAnswers'] and len({v.upper()for v in q['acceptedAnswers']})==len(q['acceptedAnswers'])
-            assert all(1<=len(v.split())<=(3 if kind=='listening_short_answer_pairs'else 2) for v in q['acceptedAnswers'])
-            assert all(re.search(r'(?<![a-z])'+re.escape(fold(v))+r'(?![a-z])',fold(text)) for v in q['acceptedAnswers'])
+            assert all(1<=len(v.split())<=(2 if kind=='listening_dialogue_sentence_completion'else 3) for v in q['acceptedAnswers'])
+            if kind!='listening_note_table_completion' or n not in [4,6,9]:assert all(re.search(r'(?<![a-z])'+re.escape(fold(v))+r'(?![a-z])',fold(text)) for v in q['acceptedAnswers'])
             assert q['rejection_reasons'] and set(q['rejected'])==set(q['rejection_reasons'])
             assert not set(q['acceptedAnswers'])&set(q['rejected'])
+            if kind!='listening_note_table_completion' or n!=9:
+                assert all(re.fullmatch("[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*",v)for v in q['acceptedAnswers']+q['rejected'])
         else:
             labels=list('ABCDEFGHI'if kind=='listening_plan_label_matching'else'ABC')
             assert [k for k,v in q['options']]==labels and q['answer']in labels
@@ -46,4 +48,15 @@ def validate_draft(d):
             assert len(set(v.lower()for v in forms))==len(forms) and all(q['acceptedAnswers']==forms for q in qs)
             assert prompt['stem'] in qs[0]['stem'] and prompt['stem'] in qs[1]['stem']
         assert d['printed_example'] in d['prompts'][1]['stem'] and all(d['printed_example'] not in q['acceptedAnswers'] for q in c['questions'][2:4])
+    if kind=='listening_note_table_completion':
+        assert len(c['turns'])==2 and d['subgroups']==[6,4]
+        assert len(d['table_rows'])==3 and all(len(r)==5 for r in d['table_rows'])
+        assert d['table_columns']==['Day','Time','Event','Venue','Ticket price']
+        assert [[r,col]for r,row in enumerate(d['table_rows'])for col,value in enumerate(row)if '____'in value]==[[0,3],[1,2],[1,4],[2,2]]
+        assert len(d['printed_facilities'])==6 and all(d['printed_facilities'])
+        assert d['fixed_history'] and d['planning_decade'] and d['centre_name']
+        assert 1800<=d['opening_year']<=2100 and 1<=d['open_days']<=366
+        assert c['questions'][3]['acceptedAnswers']==[str(d['opening_year']),str(d['opening_year']//10*10)+'s','the '+str(d['opening_year']//10*10)+'s']
+        assert c['questions'][5]['acceptedAnswers'][0]==str(d['open_days'])
+        assert d['ticket_pence']>0 and c['questions'][8]['value_kind']=='sterling'
     return True

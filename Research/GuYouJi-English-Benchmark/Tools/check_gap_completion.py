@@ -383,6 +383,7 @@ def check(data, plan):
                 if a.get('cambridge_additional_academic'):
                     expected_protocol='source_list_v1' if q['number']==2 else 'source_excerpt_v1'
                 if a.get('academic_form_listening'):expected_protocol={3:'uk_postcode_v1',4:'metric_length_v1',5:'metric_length_v1',8:'sterling_amount_v1'}.get(q['number'],'source_excerpt_v1')
+                if a.get('note_table_structure') and q['number']==9:expected_protocol='sterling_amount_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
