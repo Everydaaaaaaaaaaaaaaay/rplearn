@@ -60,7 +60,7 @@ def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching'}
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion'}
     if family=='listening_extract_choice':
         assert len(draft['clips']) == draft['extracts'] == 3
         assert [len(c['questions']) for c in draft['clips']] == [2,2,2]
@@ -71,6 +71,10 @@ def render(manuscript, output, version='0.1'):
             assert len(clip['questions'])==6
             assert set(t['speaker'] for t in clip['turns'])=={'I','G1','G2'}
             assert all(len(q['options'])==4 for q in clip['questions'])
+        elif family=='listening_sentence_completion':
+            assert len(clip['questions'])==8
+            assert len(clip['turns'])==1 and clip['turns'][0]['speaker']=='N'
+            assert all(not q['options'] and q['acceptedAnswers'] for q in clip['questions'])
         else:
             assert len(clip['questions'])==10
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']

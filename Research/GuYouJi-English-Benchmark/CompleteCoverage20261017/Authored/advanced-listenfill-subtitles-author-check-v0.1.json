@@ -1,0 +1,246 @@
+{
+  "version": "0.1",
+  "id": "advanced-listenfill-subtitles",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "279ec3bdd21d6a67750d4f724352d254d617bf9e72be23f94a8c98d1bea09411",
+  "source_binding": "advancedlistencomplete8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.3.json",
+    "sha256": "535e4172cd1318b51b25faec6f148e2b5d6ab112e72d3e957029dda5cda57de6"
+  },
+  "source_group_id": "advanced.c1.sample1.listening.part2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The organisation responsible for Maya’s project was a film ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "archive"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "cinema"
+        ]
+      },
+      "rationale": "archive拥有影片并组织项目，cinema仅广告所在地点。"
+    },
+    {
+      "number": 2,
+      "stem": "The ____ on each video helped Maya locate speech precisely.",
+      "options": [],
+      "acceptedAnswers": [
+        "time code",
+        "timecode"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "interview"
+        ]
+      },
+      "rationale": "time code标定位点；timecode连写为同一技术词的已列正字法变体，未作模糊词根匹配。"
+    },
+    {
+      "number": 3,
+      "stem": "The main initial difficulty with understanding the recordings was the speakers’ ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "accent"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "noise"
+        ]
+      },
+      "rationale": "音质好，难点明确是口音accent。"
+    },
+    {
+      "number": 4,
+      "stem": "Maya gives ____ as an example of a sound whose meaning needed to be retained.",
+      "options": [],
+      "acceptedAnswers": [
+        "laughter"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "speech"
+        ]
+      },
+      "rationale": "笑声改变话语友善/严肃含义，故保留文字提示。"
+    },
+    {
+      "number": 5,
+      "stem": "Maya had not expected to spend so much time deciding on ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "line breaks"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "characters"
+        ]
+      },
+      "rationale": "专段反思line breaks，按意群而非固定字符数分行。"
+    },
+    {
+      "number": 6,
+      "stem": "The coordinator described the trial screening as a ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "rehearsal"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "screening"
+        ]
+      },
+      "rationale": "试放叫rehearsal，非正式公映。"
+    },
+    {
+      "number": 7,
+      "stem": "Maya learnt that ____ could communicate something without an added explanation.",
+      "options": [],
+      "acceptedAnswers": [
+        "silence"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "laughter"
+        ]
+      },
+      "rationale": "空白停顿可传达内容，不必每处加解释。"
+    },
+    {
+      "number": 8,
+      "stem": "Maya says her use of ____ improved most during the project.",
+      "options": [],
+      "acceptedAnswers": [
+        "punctuation"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "emails"
+        ]
+      },
+      "rationale": "结尾明确标点变化比只盯单词更影响阅读。"
+    }
+  ],
+  "canonical_response_block_sha256": "eae1ff6de101fd144627e64b28723ae0838793a0614b5b06fb753e0bba5890c8",
+  "student_passage": "You will hear Maya talking about a project to create subtitles for a collection of short films.\n\n[音频1（完整8题；内含两遍，开始前45秒读题）](../../../../build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-subtitles-extract1-v0.1.m4a)",
+  "body_load_text": "You will hear Maya talking about a project to create subtitles for a collection of short films.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/ListeningScripts/advanced-listenfill-subtitles-manuscript-v0.1.json",
+    "sha256": "9cc3e4450829657e7e06b63535ae98ab7140285012f15a5bb7a3e65710b4fcec"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-subtitles-audio-v0.1.json",
+    "sha256": "5e060b83f0087fb35d7249648814dcf0f99f1ac2fb3d687ab7f5196d5b2bd8fb"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-subtitles-extract1-v0.1.m4a",
+      "sha256": "f458729ad0b5257fc958b83b748f648a50c4e4729f59d1686d4cda00131e05a8",
+      "seconds": 395.7089342403628,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "listening_sentence_completion": true,
+  "no_fixed_numeric_word_cap_added": true,
+  "author_answer_vector": [
+    [
+      "archive"
+    ],
+    [
+      "time code",
+      "timecode"
+    ],
+    [
+      "accent"
+    ],
+    [
+      "laughter"
+    ],
+    [
+      "line breaks"
+    ],
+    [
+      "rehearsal"
+    ],
+    [
+      "silence"
+    ],
+    [
+      "punctuation"
+    ]
+  ],
+  "load_measure": {
+    "body_English_words": 17,
+    "stem_English_words": 82,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8,
+    "audio_dialogue_English_words_once": 462,
+    "audio_spoken_words_with_repetition": 971,
+    "audio_seconds_with_pauses": 395.7089342403628,
+    "accepted_output_words_range": [
+      9,
+      10
+    ],
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

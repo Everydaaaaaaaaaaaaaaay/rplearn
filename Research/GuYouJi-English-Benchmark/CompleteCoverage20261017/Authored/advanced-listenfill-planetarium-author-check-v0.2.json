@@ -1,0 +1,254 @@
+{
+  "version": "0.2",
+  "id": "advanced-listenfill-planetarium",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "b9003c1b756a2e82899e13f39460bb157bfed7dbca0db365f8dbcdd69c80ab1a",
+  "source_binding": "advancedlistencomplete8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.3.json",
+    "sha256": "535e4172cd1318b51b25faec6f148e2b5d6ab112e72d3e957029dda5cda57de6"
+  },
+  "source_group_id": "advanced.c1.sample1.listening.part2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Naomi first saw a travelling planetarium in a ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "sports hall",
+        "hall",
+        "school sports hall"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "museum"
+        ]
+      },
+      "rationale": "录音首次地点是学校sports hall；hall保留上位词且题面未要求精确到运动用途。museum是被否定的预想。 school sports hall三词也是录音中的实际名词组，加入同等接受。"
+    },
+    {
+      "number": 2,
+      "stem": "The dome is kept upright by an ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "electric fan"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "framework"
+        ]
+      },
+      "rationale": "明说electric fan持续送气而非内部框架；题面an不能单填fan。"
+    },
+    {
+      "number": 3,
+      "stem": "The audience sits on a ____ brought by the team.",
+      "options": [],
+      "acceptedAnswers": [
+        "carpet"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "chair"
+        ]
+      },
+      "rationale": "carpet铺地供观众坐，chairs明确不用。"
+    },
+    {
+      "number": 4,
+      "stem": "Assistants use a ____ to move around during the show.",
+      "options": [],
+      "acceptedAnswers": [
+        "red torch",
+        "torch"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "projector"
+        ]
+      },
+      "rationale": "red torch为完整所听名词组，torch也完成题面；非普通亮灯。"
+    },
+    {
+      "number": 5,
+      "stem": "The presenter initially draws attention to the ____ in the projected image.",
+      "options": [],
+      "acceptedAnswers": [
+        "horizon"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "stars"
+        ]
+      },
+      "rationale": "先认horizon以确定方向，星名稍后才出现。"
+    },
+    {
+      "number": 6,
+      "stem": "Naomi records the children’s ____ after each visit.",
+      "options": [],
+      "acceptedAnswers": [
+        "questions"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "attendance"
+        ]
+      },
+      "rationale": "她记录questions，attendance由办公室记不重复。"
+    },
+    {
+      "number": 7,
+      "stem": "Naomi checks the ____ before changing the length of a visit.",
+      "options": [],
+      "acceptedAnswers": [
+        "timetable"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "van"
+        ]
+      },
+      "rationale": "最后事务段明确check timetable再改时长。"
+    },
+    {
+      "number": 8,
+      "stem": "Naomi compares her role to that of a ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "conductor"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "presenter"
+        ]
+      },
+      "rationale": "末段偏好conductor而非spare presenter，比喻协调各部件。"
+    }
+  ],
+  "canonical_response_block_sha256": "e6afe72d08ccbd6f9fa77d8025e7e80fdb33d7c26960d690b68ceb118bee5deb",
+  "student_passage": "You will hear Naomi talking about her experience as an assistant with a travelling planetarium.\n\n[音频1（完整8题；内含两遍，开始前45秒读题）](../../../../build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-planetarium-extract1-v0.1.m4a)",
+  "body_load_text": "You will hear Naomi talking about her experience as an assistant with a travelling planetarium.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/ListeningScripts/advanced-listenfill-planetarium-manuscript-v0.2.json",
+    "sha256": "b5a719d963b36574a2e3d8d9fdd855969a8d1b7f4ed69c4faa4bf5efd448370f"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-planetarium-audio-v0.2.json",
+    "sha256": "1ac53db3096cdbbd26c4cbc14d42185eda483d304a601b76109a1a4699993e92"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-planetarium-extract1-v0.1.m4a",
+      "sha256": "b1c0af4bdb114373c7e01b168f2e3ee4c05a0ee5d1716fab5199808c719d0726",
+      "seconds": 383.0347392290249,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "listening_sentence_completion": true,
+  "no_fixed_numeric_word_cap_added": true,
+  "author_answer_vector": [
+    [
+      "sports hall",
+      "hall",
+      "school sports hall"
+    ],
+    [
+      "electric fan"
+    ],
+    [
+      "carpet"
+    ],
+    [
+      "red torch",
+      "torch"
+    ],
+    [
+      "horizon"
+    ],
+    [
+      "questions"
+    ],
+    [
+      "timetable"
+    ],
+    [
+      "conductor"
+    ]
+  ],
+  "load_measure": {
+    "body_English_words": 15,
+    "stem_English_words": 69,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8,
+    "audio_dialogue_English_words_once": 439,
+    "audio_spoken_words_with_repetition": 923,
+    "audio_seconds_with_pauses": 383.0347392290249,
+    "accepted_output_words_range": [
+      9,
+      12
+    ],
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "previous_author_check": {
+    "path": "CompleteCoverage20261017/Authored/advanced-listenfill-planetarium-author-check-v0.1.json",
+    "sha256": "ece6a5e01cf81e7538f067ece9e8879a78592c370282cc38df05b562618a6d5b"
+  }
+}

@@ -37,6 +37,17 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'listening_sentence_completion8':
+                selected=json.loads(load_ref(source['selected_native']).read_text())
+                assert selected['paper']==source['source'] and selected['paper_page']==4
+                assert re.findall(r'\((\d+)\)',selected['student_task'])==[str(n)for n in range(7,15)]
+                assert 'a word or short phrase' in ' '.join(selected['student_task'].split())
+                assert source['features']==b['source_features'] and source['features']['no_numeric_max_words']
+                assert len(selected['published_key_forms'])==8 and 'Josh Brady' in selected['script']
+                assert selected['source_audio']==source['original_audio_assets'][0]
+                load_ref(selected['source_audio']);load_ref(selected['source_audio_decode'])
+                from compile_sentence_completion_listening import check as check_listenfill
+                check_listenfill(g,a,b,source)
             if b.get('task_mode') == 'junior_mixed10_bound_positions':
                 view=next(v for v in json.loads(load_ref(source['source_view_manifest']).read_text())['views'] if v['group_id']==source['id'])
                 assert hashlib.sha256(json.dumps(view,ensure_ascii=False,sort_keys=True).encode()).hexdigest()==source['inherited_view_record_sha256']
@@ -181,7 +192,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])
@@ -194,7 +205,7 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])

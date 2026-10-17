@@ -1,0 +1,246 @@
+{
+  "version": "0.1",
+  "id": "advanced-listenfill-toollibrary",
+  "grade": "advanced",
+  "questions": 8,
+  "candidate_sha256": "938a8275fca6cb53ca22d928edea1a7850c05416e28ed7b1b84e24effeec783a",
+  "source_binding": "advancedlistencomplete8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.3.json",
+    "sha256": "535e4172cd1318b51b25faec6f148e2b5d6ab112e72d3e957029dda5cda57de6"
+  },
+  "source_group_id": "advanced.c1.sample1.listening.part2",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The tool library was initially housed in a ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "shed"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "shop"
+        ]
+      },
+      "rationale": "首次地点shed，empty shop因租金被否。"
+    },
+    {
+      "number": 2,
+      "stem": "Borrowers leave a ____ which is returned with the equipment.",
+      "options": [],
+      "acceptedAnswers": [
+        "deposit"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "subscription"
+        ]
+      },
+      "rationale": "deposit可退还，不是monthly subscription。"
+    },
+    {
+      "number": 3,
+      "stem": "Each item is identified by a ____ on both its tag and borrowing record.",
+      "options": [],
+      "acceptedAnswers": [
+        "code"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "name"
+        ]
+      },
+      "rationale": "同名借者易混，给设备的code用于记录。"
+    },
+    {
+      "number": 4,
+      "stem": "Amir’s team takes ____ to record each item’s condition.",
+      "options": [],
+      "acceptedAnswers": [
+        "photographs",
+        "photos"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "notes"
+        ]
+      },
+      "rationale": "录音先说photographs后photos，同一事物两个实际听到的词均接收。"
+    },
+    {
+      "number": 5,
+      "stem": "The addition of ____ made transporting heavy equipment easier.",
+      "options": [],
+      "acceptedAnswers": [
+        "wheels"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "tags"
+        ]
+      },
+      "rationale": "wheels装在箱底让步行借者能拉设备。"
+    },
+    {
+      "number": 6,
+      "stem": "The material supplied for people to use up in workshops is ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "sandpaper"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "wood"
+        ]
+      },
+      "rationale": "sandpaper消耗品不逐片回收，和反复借工具分开。"
+    },
+    {
+      "number": 7,
+      "stem": "Equipment can now be returned on ____ mornings.",
+      "options": [],
+      "acceptedAnswers": [
+        "Saturday"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "Sunday"
+        ]
+      },
+      "rationale": "新归还时段Saturday mornings，晚上留给借用说明。"
+    },
+    {
+      "number": 8,
+      "stem": "Amir thinks the most noticeable benefit is an increase in people’s ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "confidence"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "money"
+        ]
+      },
+      "rationale": "明确最明显是confidence，而非只省钱。"
+    }
+  ],
+  "canonical_response_block_sha256": "16114ff31b8d7331247606b9a7d5c310579ab5acb9192efef7587715a2eabd1e",
+  "student_passage": "You will hear a volunteer called Amir describing the first year of a community tool library.\n\n[音频1（完整8题；内含两遍，开始前45秒读题）](../../../../build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-toollibrary-extract1-v0.1.m4a)",
+  "body_load_text": "You will hear a volunteer called Amir describing the first year of a community tool library.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/ListeningScripts/advanced-listenfill-toollibrary-manuscript-v0.1.json",
+    "sha256": "051637ff8bb36cf97a6447f3e71a647636d9fcc902814e8cf1d912643017d583"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-toollibrary-audio-v0.1.json",
+    "sha256": "b39dca888327363148c0f06153b4ec62e60748dc4a3a8e3c75e0554257582d28"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/advanced-listenfill-toollibrary-extract1-v0.1.m4a",
+      "sha256": "98be7499e50cfca096df4cc7148245152818e1caa58c6f07c232de6addf56612",
+      "seconds": 397.3985487528345,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "listening_sentence_completion": true,
+  "no_fixed_numeric_word_cap_added": true,
+  "author_answer_vector": [
+    [
+      "shed"
+    ],
+    [
+      "deposit"
+    ],
+    [
+      "code"
+    ],
+    [
+      "photographs",
+      "photos"
+    ],
+    [
+      "wheels"
+    ],
+    [
+      "sandpaper"
+    ],
+    [
+      "Saturday"
+    ],
+    [
+      "confidence"
+    ]
+  ],
+  "load_measure": {
+    "body_English_words": 16,
+    "stem_English_words": 75,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8,
+    "audio_dialogue_English_words_once": 440,
+    "audio_spoken_words_with_repetition": 926,
+    "audio_seconds_with_pauses": 397.3985487528345,
+    "accepted_output_words_range": [
+      8,
+      8
+    ],
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

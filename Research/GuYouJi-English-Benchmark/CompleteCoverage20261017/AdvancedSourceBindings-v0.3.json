@@ -1,0 +1,102 @@
+{
+  "version": "0.3",
+  "bindings": [
+    {
+      "id": "advancedopencloze8",
+      "level": "advanced",
+      "family": "open_cloze",
+      "task_mode": "one_word_open_cloze",
+      "responses": 8,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AdvancedSourceModes-v0.1.json",
+        "sha256": "ffb2ab23b43fb02192421eb8775f347af6cd0f958735dee87d9a0a52c3af079f"
+      },
+      "collection": "groups",
+      "source_group_id": "advanced.c1.sample1.opencloze",
+      "source_record_sha256": "0fcaa42bcbf1c99181fded63bbe75a966ac6ffa13bd82e9d469278c34cdf5708",
+      "source_features": {
+        "materials": 1,
+        "solved_examples": 1,
+        "responses": 8,
+        "hints": 0,
+        "word_limit_each": 1,
+        "shared_candidates": 0
+      },
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "advancedkwt6sample2022",
+      "level": "advanced",
+      "family": "keyword_transformation",
+      "task_mode": "keyword_transformation_six3to6",
+      "responses": 6,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AdvancedSourceModes-v0.2.json",
+        "sha256": "bb80e917d8ba1ca804d9117b8d17c2c978d3e6b2d2ea6e700d1915ab6f8c9230"
+      },
+      "collection": "groups",
+      "source_group_id": "advanced.c1.sample1.keywordtransformation",
+      "source_record_sha256": "b40e337c58010f96a0114379a2b16700eda5b878078065d8fece47960785916b",
+      "source_features": {
+        "responses": 6,
+        "solved_examples": 1,
+        "source_question_numbers": [
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "min_words": 3,
+        "max_words": 6,
+        "keyword_unchanged": true,
+        "parts_each": [
+          "lead_in",
+          "keyword",
+          "gapped_sentence"
+        ],
+        "scoring_segments_per_response": 2,
+        "not12responses": true
+      },
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "advancedlistencomplete8",
+      "level": "advanced",
+      "family": "listening_sentence_completion",
+      "task_mode": "listening_sentence_completion8",
+      "responses": 8,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AdvancedSourceModes-v0.3.json",
+        "sha256": "efb315403d8bb1a82abd8f11a695d4960d193dfea252f3c3687c2ad617345b4e"
+      },
+      "collection": "groups",
+      "source_group_id": "advanced.c1.sample1.listening.part2",
+      "source_record_sha256": "73fb4ebe0dce0d189976f1cb6b20563aac513ec7919cc0846b672220e14241e0",
+      "source_features": {
+        "monologues": 1,
+        "responses": 8,
+        "one_gap_per_sentence": true,
+        "source_order_preserved": true,
+        "repetitions": 2,
+        "word_limit": "one_word_or_short_phrase;usually3_not_hardcap",
+        "no_numeric_max_words": true,
+        "spelling": "British_and_US_forms_accepted"
+      },
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    }
+  ],
+  "new_paper_acquisitions": 0,
+  "new_selected_specific_modes": 1,
+  "previous": {
+    "path": "CompleteCoverage20261017/AdvancedSourceBindings-v0.2.json",
+    "sha256": "99313a736ff22c0f524eebf26f9bc0737b76ee4f3f824a043158abda3b103623"
+  }
+}

@@ -18,7 +18,7 @@ def ref(p):
             'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
 
 
-def build(page):
+def build(page,version="0.1"):
     data=extract(page)
     _,plan=resolve_plan(data['active_run_plan'])
     atlas=json.loads(load_ref(plan['current_authority_atlas']).read_text())
@@ -59,15 +59,19 @@ def build(page):
     assert sum(r['current_type_count']for r in rows)==data['source_form_representative_cells']
     # Persist the actual labels too; families in old imports may have different
     # internal spellings, which must not silently turn into a missing form.
+    required={
+        'undergraduate':{'reading_choice','shared_bank','paragraph_matching','listening_news_choice','listening_long_conversation_choice','listening_passage_choice'},
+        'postgraduate':{'reading_choice','shared_bank','paragraph_matching','listening_long_conversation_choice','listening_passage_choice','listening_lecture_choice'},
+        'advanced':{'choice_cloze','open_cloze','passage_form','keyword_transformation','reading_choice','cross_text_matching','paragraph_gap_insertion','multiple_text_information_matching','listening_extract_choice','listening_sentence_completion','listening_interview_choice','listening_double_matching'}}
     adult=[]
     for level in ['undergraduate','postgraduate','advanced']:
         r=next(r for r in rows if r['level']==level)
         adult.append(dict(level=level,displayed_families=[c['family']for c in r['current_types']],
             authoritative_type_count=12 if level=='advanced'else 6,
             boundary='C1reference8reading_use+4listening;notproductadvanced_equivalence'if level=='advanced'else'CETspecificblueprint;notdegreepopulation',
-            known_missing=['listening_sentence_completion']if level=='advanced'else[],
+            known_missing=sorted(required[level]-{c['family']for c in r['current_types']}),
             school_writing_and_translation_excluded=True))
-    return dict(version='0.1',scope='15levels_current_source_author_configuration_inventory',current_plan=ref(load_ref(data['active_run_plan']) if isinstance(data['active_run_plan'],dict) else BASE/data['active_run_plan']),
+    return dict(version=version,scope='15levels_current_source_author_configuration_inventory',current_plan=ref(load_ref(data['active_run_plan']) if isinstance(data['active_run_plan'],dict) else BASE/data['active_run_plan']),
         authority_atlas=plan['current_authority_atlas'],middle_appearance=ref(appearance),
         groups=len(data['groups']),responses=sum(len(g['questions'])for g in data['groups'].values()),display_cells=data['source_form_representative_cells'],
         levels=rows,adult_blueprint_comparison=adult,
@@ -78,7 +82,7 @@ def build(page):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--page',type=Path,default=REPO/'build/english-benchmark-quality-review/index.html');p.add_argument('--output',type=Path,required=True);a=p.parse_args();result=build(a.page)
+    p=argparse.ArgumentParser();p.add_argument('--page',type=Path,default=REPO/'build/english-benchmark-quality-review/index.html');p.add_argument('--output',type=Path,required=True);p.add_argument('--version',default='0.1');a=p.parse_args();result=build(a.page,a.version)
     if a.output.exists():raise ValueError('Frozen inventories must not be overwritten')
     a.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:result[k]for k in ['groups','responses','display_cells','observed_source_cells_without_author','all_required_types_complete']}))
