@@ -221,6 +221,13 @@ def build_current(output):
             cell['groupId'] = cell['groupId'] or group['id']
             data['groups'][group['id']] = group
         data['gap_completion_index'] = plan['current_gap_completion']
+    if plan.get('current_pending_source_modes'):
+        from pending_source_modes import records as pending_records, attach as attach_pending
+        modes = pending_records(plan, data['groups'], data['grades'])
+        attach_pending(cells, labels, modes)
+        data['pending_source_modes_index'] = plan['current_pending_source_modes']
+        data['pending_specific_modes'] = modes
+        data['unfilled_specific_modes'] = sum(bool(m['remainingWholeOriginals']) for m in modes)
     if plan.get('current_coverage_audit'):
         data['coverage_audit'] = json.loads(load_ref(plan['current_coverage_audit']).read_text())
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,

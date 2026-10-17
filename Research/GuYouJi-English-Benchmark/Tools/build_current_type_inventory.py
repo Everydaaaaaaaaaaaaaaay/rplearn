@@ -79,6 +79,7 @@ def build(page,version="0.1"):
         observed_source_cells_without_author=sum(len(r['observed_source_cells_without_current_author'])for r in rows),
         additional_media_and_current_nonpaper_gaps_retained=True,unknown_cartesian_product_not_required=True,
         original_paused_groups=data['paused_concrete_groups'],
+        pending_specific_modes=data.get('pending_specific_modes',[]),unfilled_specific_modes=data.get('unfilled_specific_modes',0),
         full_source_and_author_count_separate=True,all_required_types_complete=False,independent_teacher_student_commercial_production=False)
 
 

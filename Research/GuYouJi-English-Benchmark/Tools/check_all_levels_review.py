@@ -140,6 +140,17 @@ def check(page):
             if not cell['groupId']:
                 assert cell['state']==pending['state'] and cell['pauseReason']==pending['pauseReason']
                 assert not cell['groupIds'], 'Source-only evidence cannot count as an authored variant'
+    if plan.get('current_pending_source_modes'):
+        from pending_source_modes import records as pending_records
+        modes = pending_records(plan, data['groups'], data['grades'])
+        assert data['pending_source_modes_index'] == plan['current_pending_source_modes']
+        assert data['pending_specific_modes'] == modes
+        assert data['unfilled_specific_modes'] == sum(bool(m['remainingWholeOriginals']) for m in modes)
+        for mode in modes:
+            cell = next(c for c in data['cells'] if c['grade']==mode['grade'] and c['family']==mode['family'])
+            assert cell['observed'] and ((mode['id'] in cell.get('pendingSpecificModes', [])) == bool(mode['remainingWholeOriginals']))
+            if not cell['groupId']:
+                assert cell['state']=='source_structure_observed_author_pending' and cell['pauseReason'] and not cell['groupIds']
     reachable = [ident for c in data['cells'] for ident in c.get('groupIds', [c['groupId']] if c['groupId'] else [])]
     assert len(reachable)==len(set(reachable)) and set(reachable)==set(data['groups'])
     for cell in data['cells']:
@@ -324,6 +335,7 @@ def check(page):
     from check_gap_completion import check as check_gap_completion
     continuation=check_gap_completion(data,plan)
     return {'levels':level_count,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
+            'unfilled_specific_modes':data.get('unfilled_specific_modes',0),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),
             'payload_preservation_or_pinned_revision_passed':True,'pinned_author_revisions':len(revised),
             'specific_complete_groups_paused':len(held),

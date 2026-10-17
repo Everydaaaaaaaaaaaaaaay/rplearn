@@ -4,7 +4,7 @@ Object.assign(labels,reviewData.levelLabels||{});
 const el=id=>document.getElementById(id),escapeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let activeGrade=7,activeFamily='reading_choice';const drafts={},selectedVariants={};
 const groupIds=cell=>cell.groupIds||(cell.groupId?[cell.groupId]:[]);
-const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'旧稿暂缓·待补代表':cell.state==='source_observed_deterministic_admission_pending'?'待审判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?groupIds(cell).length+'稿 / 目标3稿':!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
+const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'旧稿暂缓·待补代表':cell.state==='source_observed_deterministic_admission_pending'?'待审判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?groupIds(cell).length+'稿 / 目标3稿'+(cell.pendingSpecificModes?.length?'；另'+cell.pendingSpecificModes.length+'模式待补':''):!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
 function select(grade,family){activeGrade=grade;activeFamily=family;if(!reviewData.cells.find(c=>c.grade===grade&&c.family===family).observed)el('show-unknown').checked=true;render();}
 function selectGrade(grade){const current=reviewData.cells.find(c=>c.grade===grade&&c.family===activeFamily),available=reviewData.cells.find(c=>c.grade===grade&&c.groupId);select(grade,current?.groupId?activeFamily:available?.family||activeFamily);}
 function makeButton(label,pressed,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(pressed));b.onclick=fn;return b;}
@@ -101,7 +101,7 @@ function render(){
  const comparisonEligibility=answerComparison(g?.questions);
  el('compare-selections').disabled=!comparisonEligibility.available;
  el('compare-selections').title=comparisonEligibility.reason||'仅对照作者参考，不代表独立质量验收。';
- if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本格的旧完整题组已暂缓：'+escapeText(cell.pauseReason)+' 保留来源与旧稿，不截空冒充完整组；这不表示整个题型均需AI判分，符合约束的新完整代表仍可补编。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent='';return;}
+ if(!g){el('student').innerHTML='<p class="empty">'+(cell.state==='paused_requires_semantic_adjudication'?'本格的旧完整题组已暂缓：'+escapeText(cell.pauseReason)+' 保留来源与旧稿，不截空冒充完整组；这不表示整个题型均需AI判分，符合约束的新完整代表仍可补编。':cell.pauseReason?escapeText(cell.pauseReason):!cell.observed?'当前样本还不足以确认这个年级的此类题型，暂不据此编题。':cell.state.startsWith('existing_simulated')?'已有模拟来源参照稿，普通学校样本的完整形式仍待核对；本格暂未交付。':'这个年级已有此类题的样本证据，完整原创代表题仍在补充。')+'</p>';el('source-note').textContent=(reviewData.pending_specific_modes||[]).filter(m=>m.grade===cell.grade&&m.family===cell.family&&m.remainingWholeOriginals).map(m=>m.title+'：'+m.remainingWholeOriginals+'组完整原创待补。'+m.source_gap).join('\n');return;}
  const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
@@ -143,7 +143,12 @@ function render(){
  };
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
-el('coverage').textContent=reviewData.current_scope_policy?'当前展示 '+reviewData.preview_cells+' 道完整大题，已有稿件涉及 '+reviewData.source_form_representative_cells+' 个档位/题型格，其中 '+(reviewData.three_variant_cells||0)+' 格达到三稿数量目标。此数量不代表题型已经收全，听力、地方具体模式及配套仍在补核。需AI整体语义评分的主观题仍暂停。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 个历史完整填空组暂缓，新编组不替其解除暂停。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
+el('coverage').textContent=reviewData.current_scope_policy?'当前展示 '+reviewData.preview_cells+' 道完整大题，已有稿件涉及 '+reviewData.source_form_representative_cells+' 个档位/题型格，其中 '+(reviewData.three_variant_cells||0)+' 格达到三稿数量目标。此数量不代表题型已经收全，听力、地方具体模式及配套仍在补核。'+(reviewData.unfilled_specific_modes?'另有 '+reviewData.unfilled_specific_modes+' 个已观察的具体模式尚未达到三套完整原创，矩阵已列待补。':'')+'需AI整体语义评分的主观题仍暂停。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 个历史完整填空组暂缓，新编组不替其解除暂停。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
+if(reviewData.pending_specific_modes?.length&&el('pending-modes')){
+ const pending=reviewData.pending_specific_modes.filter(m=>m.remainingWholeOriginals);
+ el('pending-modes').hidden=!pending.length;
+ el('pending-modes-body').innerHTML='<p>以下已观察到完整结构，原始配套状态逐项保留；待补稿数只计同一具体来源模式的完整原创，不用同题型另一配置抵数。</p><ul>'+pending.map(m=>'<li><strong>'+escapeText(labels[m.grade]+' · '+m.title)+'</strong>：已有'+m.currentGroupIds.length+' / 目标'+m.target_whole_originals+'完整组。'+escapeText(m.source_gap)+'</li>').join('')+'</ul>';
+}
 const families=[...new Set(reviewData.cells.map(c=>c.family))];
 if(el('coverage-audit')){
  const audit=reviewData.coverage_audit;
