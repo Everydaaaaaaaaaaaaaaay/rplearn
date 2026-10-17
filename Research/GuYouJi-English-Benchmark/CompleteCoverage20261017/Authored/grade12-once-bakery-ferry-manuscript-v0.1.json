@@ -1,0 +1,231 @@
+{
+  "version": "0.1",
+  "id": "grade12-once-bakery-ferry",
+  "title": "高三单遍：面包、地图与渡船",
+  "grade": 12,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "grade12-shandong202411-21cnjy21677145.listening.sectionA",
+  "source_binding": "g12shandongshort5once",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.25.json",
+    "sha256": "beea74799e4762eab44378bbbadf8f833b14df5d6c1cc63b7f9da3d7a5cf90ce"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.26.json",
+  "senior_short_source_bound": true,
+  "source_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 100
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 100
+    }
+  },
+  "source_notice": "参照高三山东公开读者层第一节：五独立短对话各一题三选、每段一遍、听后十秒兼作本题作答与读下一题，本节未印已解示例。网页称期中，正文为2025届第二次诊断/2024.11，原校发布未认证；题面、印出脚本和键可核，原录音缺，普通HTTP500，不绕门取文件。与高三既有两遍/已解示例模式分开，不能按年级统一复用播放次数。全部对话、问题、候选和合成音轨为原创；本机审阅可重播，不当自然语流、年级/难度等值、独立教研、学生、商用或生产通过。",
+  "instruction": "听五段独立短对话，每段一题，从A、B、C中选最佳答案。每段一遍，听后10秒兼作本题作答与读下一题；本组不含已解示例。审阅页面可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I ordered twenty bread rolls for eleven o’clock. Are they ready?"
+        },
+        {
+          "speaker": "W",
+          "text": "Twelve are in this bag. The other eight are still in the oven, but they’ll be out in ten minutes."
+        },
+        {
+          "speaker": "M",
+          "text": "That’s all right. I’m a little early anyway."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How many bread rolls are still being baked?",
+          "options": [
+            [
+              "A",
+              "Eight."
+            ],
+            [
+              "B",
+              "Twelve."
+            ],
+            [
+              "C",
+              "Twenty."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：other eight still in oven明确八个未出炉；B：十二个已在袋中；C：二十是总订单，不是仍在烤的数量"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I can’t find the walking maps. Aren’t they usually in the top drawer?"
+        },
+        {
+          "speaker": "M",
+          "text": "They were, but we moved them to the shelf beside the office door yesterday. The drawer now holds spare keys."
+        },
+        {
+          "speaker": "W",
+          "text": "Thanks. I’ll look on the shelf."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where are the maps now?",
+          "options": [
+            [
+              "A",
+              "In the top drawer."
+            ],
+            [
+              "B",
+              "On a shelf by the office door."
+            ],
+            [
+              "C",
+              "Beside the spare keys in a box."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：抽屉是旧位置，已放备用钥匙；B：昨天迁至门边架上，末句确认；C：钥匙在抽屉，不与地图同在箱中"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "It’s getting warm in here. Shall I open the window?"
+        },
+        {
+          "speaker": "W",
+          "text": "The traffic noise would make it hard to hear the recording. Could we use the fan instead?"
+        },
+        {
+          "speaker": "M",
+          "text": "Good idea. I’ll switch it on and leave the window shut."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What do the speakers decide to do?",
+          "options": [
+            [
+              "A",
+              "Stop listening to the recording."
+            ],
+            [
+              "B",
+              "Open the window despite the noise."
+            ],
+            [
+              "C",
+              "Use the fan with the window closed."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：他们保护录音可听性，未停听；B：明确leave window shut；C：switch fan on且关窗，两句一致"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I’ve reached the harbour, but there’s a notice saying today’s ferry has been cancelled."
+        },
+        {
+          "speaker": "M",
+          "text": "Yes, the wind is too strong. Your ticket will be valid tomorrow if the weather improves."
+        },
+        {
+          "speaker": "W",
+          "text": "I’ll check the forecast before making another trip down here."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why is the woman unable to take the ferry today?",
+          "options": [
+            [
+              "A",
+              "She has arrived after its departure."
+            ],
+            [
+              "B",
+              "Strong wind has stopped the service."
+            ],
+            [
+              "C",
+              "Her ticket is valid only next week."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：已取消而非已经开走；B：wind too strong为直接原因；C：票可用于明天，不是下周才有效"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Would you like to join us on the coastal walk this Saturday? The weather should be lovely."
+        },
+        {
+          "speaker": "W",
+          "text": "I’d love to, but I’ve promised to help my brother move into his new flat. Could you tell me when you plan the next walk?"
+        },
+        {
+          "speaker": "M",
+          "text": "Of course. I’ll let you know."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why does the woman decline the invitation?",
+          "options": [
+            [
+              "A",
+              "She has a prior family commitment."
+            ],
+            [
+              "B",
+              "She dislikes walking near the sea."
+            ],
+            [
+              "C",
+              "She expects bad weather that day."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：已答应帮弟兄搬家，A准确；B：I’d love to且问下次说明非讨厌；C：天气预报lovely，并非预计坏天气"
+        }
+      ]
+    }
+  ]
+}

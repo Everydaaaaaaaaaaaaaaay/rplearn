@@ -1,0 +1,235 @@
+{
+  "version": "0.1",
+  "id": "grade12-once-printing-train",
+  "title": "高三单遍：打印文件与行程变化",
+  "grade": 12,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "grade12-shandong202411-21cnjy21677145.listening.sectionA",
+  "source_binding": "g12shandongshort5once",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.25.json",
+    "sha256": "beea74799e4762eab44378bbbadf8f833b14df5d6c1cc63b7f9da3d7a5cf90ce"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.26.json",
+  "senior_short_source_bound": true,
+  "source_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 100
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 100
+    }
+  },
+  "source_notice": "参照高三山东公开读者层第一节：五独立短对话各一题三选、每段一遍、听后十秒兼作本题作答与读下一题，本节未印已解示例。网页称期中，正文为2025届第二次诊断/2024.11，原校发布未认证；题面、印出脚本和键可核，原录音缺，普通HTTP500，不绕门取文件。与高三既有两遍/已解示例模式分开，不能按年级统一复用播放次数。全部对话、问题、候选和合成音轨为原创；本机审阅可重播，不当自然语流、年级/难度等值、独立教研、学生、商用或生产通过。",
+  "instruction": "听五段独立短对话，每段一题，从A、B、C中选最佳答案。每段一遍，听后10秒兼作本题作答与读下一题；本组不含已解示例。审阅页面可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I’ve brought you a printed copy of the report. I thought that would be easier to read."
+        },
+        {
+          "speaker": "M",
+          "text": "Thank you, but could you send the file as well? The print is rather small, and I can enlarge it on my screen."
+        },
+        {
+          "speaker": "W",
+          "text": "Certainly. I’ll email it now."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Why does the man want the electronic file?",
+          "options": [
+            [
+              "A",
+              "To change the report’s conclusions."
+            ],
+            [
+              "B",
+              "To make the text easier to read."
+            ],
+            [
+              "C",
+              "To print copies for a large meeting."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：没有要求更改结论；B：print small与enlarge screen明确放大阅读；C：未提出开大会或大量打印"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I thought you were leaving on the seven o’clock train. Why are you still here?"
+        },
+        {
+          "speaker": "W",
+          "text": "That service has been cancelled. They’ve put me on the eight o’clock one instead. There’s no extra charge."
+        },
+        {
+          "speaker": "M",
+          "text": "At least you haven’t had to buy a more expensive ticket."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When will the woman now leave?",
+          "options": [
+            [
+              "A",
+              "At six o’clock."
+            ],
+            [
+              "B",
+              "At seven o’clock."
+            ],
+            [
+              "C",
+              "At eight o’clock."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：未提六点新班次；B：七点已取消；C：改乘八点明确为新安排"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "The hotel has just told us the swimming pool will be closed during our stay."
+        },
+        {
+          "speaker": "M",
+          "text": "If only we’d known that before we paid. The pool was the main reason I chose that hotel."
+        },
+        {
+          "speaker": "W",
+          "text": "Shall I ask whether we can change the booking?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes, please."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How does the man feel about the booking?",
+          "options": [
+            [
+              "A",
+              "He regrets making it without that information."
+            ],
+            [
+              "B",
+              "He is delighted that the pool will be quieter."
+            ],
+            [
+              "C",
+              "He is indifferent to the pool being closed."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：if only已知再订与泳池为主因说明遗憾；B：关闭不能解释为安静享受，且男方明显失望；C：pool是选择主因，并同意改订，非无所谓"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Have you chosen a subject for your local radio project?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. There’s a bus driver who has worked on the same route for thirty years. I’ve arranged to ask her how the neighbourhood has changed."
+        },
+        {
+          "speaker": "M",
+          "text": "That should give you a story beyond the timetable."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is the woman planning to do?",
+          "options": [
+            [
+              "A",
+              "Apply for a job driving a bus."
+            ],
+            [
+              "B",
+              "Prepare a new bus timetable."
+            ],
+            [
+              "C",
+              "Interview an experienced local driver."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：她在做广播项目，非应聘驾驶；B：beyond timetable不是编新时刻表；C：arranged to ask从业三十年司机社区变化，C准确"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I can reserve the small meeting room for you, but the larger one is already booked."
+        },
+        {
+          "speaker": "M",
+          "text": "There’ll only be six of us, so the small room will be fine. Please reserve it for Thursday afternoon."
+        },
+        {
+          "speaker": "W",
+          "text": "All right. I’ll send you the confirmation shortly."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the man ask the woman to do?",
+          "options": [
+            [
+              "A",
+              "Book the smaller room."
+            ],
+            [
+              "B",
+              "Cancel the larger room’s booking."
+            ],
+            [
+              "C",
+              "Invite more people to the meeting."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确please reserve small room周四下午；B：大房间他人已订，未要求取消；C：六人适合小间，未要求加人"
+        }
+      ]
+    }
+  ]
+}
