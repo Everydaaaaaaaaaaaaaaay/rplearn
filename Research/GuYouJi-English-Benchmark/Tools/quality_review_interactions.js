@@ -105,6 +105,14 @@ function render(){
  const questions=g.questions.map(q=>'<fieldset><legend>'+q.number+'. '+(q.stemHtml||escapeText(q.stem))+'</legend>'+inputFor(g,q)+'</fieldset>').join('');
  el('notice').textContent=prototypeNotice;
  el('student').innerHTML=g.studentBeforeHtml!==undefined&&g.studentBeforeHtml!==null?g.studentBeforeHtml+'<form id="responses">'+questions+'</form>'+g.studentAfterHtml:g.passageHtml+'<form id="responses">'+questions+'</form>';
+ // Each short conversation has one printed question. Keep its player beside
+ // that question without changing the frozen five-part material or its order.
+ if(g.kind==='listening_short_conversation_choice'){
+  const tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')];
+  if(tracks.length===g.questions.length&&fields.length===tracks.length&&g.requiredAudioAssets?.every((a,i)=>a.response_numbers.length===1&&a.response_numbers[0]===g.questions[i].number)){
+   tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='对话'+(i+1))heading.remove();fields[i].querySelector('legend').after(track);});
+  }
+ }
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});

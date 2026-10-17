@@ -1,0 +1,215 @@
+{
+  "version": "0.1",
+  "id": "grade10-shortlisten-report-and-library",
+  "title": "高一短对话：报告与借书时间",
+  "grade": 10,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionA",
+  "source_binding": "g10short5once",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.2.json",
+    "sha256": "24a971ccc98b5009a3d010fd9ca8a5f35e7fa2ababdbdfecc9b5eba017bfe2ac"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.2.json",
+  "source_hear_each_piece_once": true,
+  "source_answer_seconds": 10,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "words_per_minute": 160
+    },
+    "W": {
+      "voice": "Samantha",
+      "words_per_minute": 160
+    }
+  },
+  "audio_introduction": "Five short conversations.",
+  "instruction": "听五段独立短对话，每段对应一道题，从A、B、C中选最佳答案。每条音轨内对话一遍，末尾留10秒作答与读下一题。此为完整五题第一节，不截六题；本机可重播只用于审阅，非正式考试次数控制。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Is my report ready to send? I have checked the figures twice."
+        },
+        {
+          "speaker": "W",
+          "text": "The figures are fine, and the writing is clear. But the title still says last year. Change that before you send it to the club secretary."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What should the man change?",
+          "options": [
+            [
+              "A",
+              "The length of the report."
+            ],
+            [
+              "B",
+              "The year in the title."
+            ],
+            [
+              "C",
+              "The figures in the report."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "W明确title still says last year并要求改；A未谈篇幅，C明确figures fine。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I usually collect books from the library van at a quarter past nine. Is it the same on Wednesday?"
+        },
+        {
+          "speaker": "M",
+          "text": "No. On Wednesdays it arrives thirty minutes later, after its stop at the hospital."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When does the library van arrive on Wednesday?",
+          "options": [
+            [
+              "A",
+              "At 8:45."
+            ],
+            [
+              "B",
+              "At 9:15."
+            ],
+            [
+              "C",
+              "At 9:45."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "9:15推迟30分钟是9:45；A倒减，B忽略Wednesday例外。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Can I move to the empty seat by the window?"
+        },
+        {
+          "speaker": "W",
+          "text": "Please stay in your seat with your belt fastened until we have taken off. I can help you change seats once we are in the air."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where are the speakers?",
+          "options": [
+            [
+              "A",
+              "On a plane."
+            ],
+            [
+              "B",
+              "On a city bus."
+            ],
+            [
+              "C",
+              "In a taxi."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "taken off与in the air定位飞机；B、C陆路交通不符合。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Would you like the back as short as the sides?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes, please, but leave a little more at the front."
+        },
+        {
+          "speaker": "W",
+          "text": "All right. Keep your head straight while I use the scissors."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Who is the woman most likely to be?",
+          "options": [
+            [
+              "A",
+              "A shop cashier."
+            ],
+            [
+              "B",
+              "A photographer."
+            ],
+            [
+              "C",
+              "A hairdresser."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "头发前后两侧长度与剪刀支持理发师；A无结账，B无拍照。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Did the art festival reply about your painting?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes! They have chosen it for the main hall. I can hardly wait to tell my family. I never expected it to be accepted."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How does the woman feel?",
+          "options": [
+            [
+              "A",
+              "Delighted."
+            ],
+            [
+              "B",
+              "Uninterested."
+            ],
+            [
+              "C",
+              "Disappointed."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "画入选主厅、迫不及待告知家人支持高兴；B不感兴趣/C失望与整段反应不符。"
+        }
+      ]
+    }
+  ]
+}

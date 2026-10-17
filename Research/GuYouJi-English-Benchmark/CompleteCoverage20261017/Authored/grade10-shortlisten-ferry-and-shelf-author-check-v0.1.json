@@ -1,0 +1,195 @@
+{
+  "version": "0.1",
+  "id": "grade10-shortlisten-ferry-and-shelf",
+  "grade": 10,
+  "questions": 5,
+  "candidate_sha256": "93ea92c71406232c0daa2b1af50d281f11a150090e29d06438103f2156b902c6",
+  "source_binding": "g10short5once",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.2.json",
+    "sha256": "24a971ccc98b5009a3d010fd9ca8a5f35e7fa2ababdbdfecc9b5eba017bfe2ac"
+  },
+  "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionA",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What is the woman's problem?",
+      "options": [
+        [
+          "A",
+          "The numbers are too small to read."
+        ],
+        [
+          "B",
+          "The journey takes too long."
+        ],
+        [
+          "C",
+          "She has lost the timetable."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "tiny numbers与without glasses定位字小；B她否认旅程问题，C没有丢时刻表。"
+    },
+    {
+      "number": 2,
+      "stem": "When will the last ferry leave today?",
+      "options": [
+        [
+          "A",
+          "At 6:40."
+        ],
+        [
+          "B",
+          "At 6:55."
+        ],
+        [
+          "C",
+          "At 7:15."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "6:40推迟15分钟为6:55；A未计延迟，C把原时刻误当七点再加15。"
+    },
+    {
+      "number": 3,
+      "stem": "Where does the conversation probably take place?",
+      "options": [
+        [
+          "A",
+          "At a theatre ticket desk."
+        ],
+        [
+          "B",
+          "At an airport check-in desk."
+        ],
+        [
+          "C",
+          "At a restaurant entrance."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "balcony seats/performance/stage door共同指剧院售票；B无航班，C无用餐。"
+    },
+    {
+      "number": 4,
+      "stem": "What does the man probably do?",
+      "options": [
+        [
+          "A",
+          "He cooks meals."
+        ],
+        [
+          "B",
+          "He makes clothes."
+        ],
+        [
+          "C",
+          "He makes wooden furniture."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "测量木板、裁切并装木架支持木工家具；A和B与材料和操作不符。"
+    },
+    {
+      "number": 5,
+      "stem": "How does the woman feel now?",
+      "options": [
+        [
+          "A",
+          "Angry."
+        ],
+        [
+          "B",
+          "Relieved."
+        ],
+        [
+          "C",
+          "Lonely."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "thank goodness与stop worrying支持如释重负；A生气、C孤独无依据。"
+    }
+  ],
+  "canonical_response_block_sha256": "6c6a581f61e6487af66e6b480bc5bd3134a1a13b2bb592b96c3671dacea8e3b9",
+  "student_passage": "### 对话1\n\n[对话1（第1题；一遍，末尾10秒）](../../../../build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract1-v0.1.m4a)\n\n### 对话2\n\n[对话2（第2题；一遍，末尾10秒）](../../../../build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract2-v0.1.m4a)\n\n### 对话3\n\n[对话3（第3题；一遍，末尾10秒）](../../../../build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract3-v0.1.m4a)\n\n### 对话4\n\n[对话4（第4题；一遍，末尾10秒）](../../../../build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract4-v0.1.m4a)\n\n### 对话5\n\n[对话5（第5题；一遍，末尾10秒）](../../../../build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract5-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade10-shortlisten-ferry-and-shelf-manuscript-v0.1.json",
+    "sha256": "f6e1214d72957bb9d7782cda808da983ce4c8bd6717b6cdbfe3aee1a1316439d"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-audio-v0.1.json",
+    "sha256": "cb61ec2f1cb5602db8246b56c9549c768470f3175d6f9d3a8a9b6b3827aab93a"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract1-v0.1.m4a",
+      "sha256": "77939df8ac79fc7b24eefcdb2649d0b0d826f4b01b0114f479bc7b0784f3d596",
+      "seconds": 22.343945578231292,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract2-v0.1.m4a",
+      "sha256": "5f06c78e31a7a1a2797b8eda3e5c420fb21b362ce337795753492ec4b0161153",
+      "seconds": 20.094149659863945,
+      "response_numbers": [
+        2
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract3-v0.1.m4a",
+      "sha256": "a84f4562d76494f9b842f5aefbbb05fee968f70aaa9a24530f51675f6ca82a60",
+      "seconds": 21.749433106575964,
+      "response_numbers": [
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract4-v0.1.m4a",
+      "sha256": "bd591f580b5ee2922ede866d9d3e79d9a5554426057e296b3b3b185f70fcdefa",
+      "seconds": 20.256190476190476,
+      "response_numbers": [
+        4
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade10-shortlisten-ferry-and-shelf-extract5-v0.1.m4a",
+      "sha256": "5a7529f53791f762cf6f0a42523f71f4845793fb589d37664973403e8df93e90",
+      "seconds": 22.54503401360544,
+      "response_numbers": [
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "short_dialogue_listening": true,
+  "source_script_pending_not_hidden": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 31,
+    "options_English_words_with_repeated_bank": 48,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 171,
+    "audio_spoken_words_with_instructions": 176,
+    "audio_seconds_with_pauses": 106.98875283446712,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

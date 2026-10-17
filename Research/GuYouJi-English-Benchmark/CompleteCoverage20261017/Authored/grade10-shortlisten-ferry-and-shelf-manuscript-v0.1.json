@@ -1,0 +1,211 @@
+{
+  "version": "0.1",
+  "id": "grade10-shortlisten-ferry-and-shelf",
+  "title": "高一短对话：渡船与木架",
+  "grade": 10,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionA",
+  "source_binding": "g10short5once",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.2.json",
+    "sha256": "24a971ccc98b5009a3d010fd9ca8a5f35e7fa2ababdbdfecc9b5eba017bfe2ac"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.2.json",
+  "source_hear_each_piece_once": true,
+  "source_answer_seconds": 10,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "words_per_minute": 160
+    },
+    "W": {
+      "voice": "Samantha",
+      "words_per_minute": 160
+    }
+  },
+  "audio_introduction": "Five short conversations.",
+  "instruction": "听五段独立短对话，每段对应一道题，从A、B、C中选最佳答案。每条音轨内对话一遍，末尾留10秒作答与读下一题。此为完整五题第一节，不截六题；本机可重播只用于审阅，非正式考试次数控制。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "You said you could not use the new timetable. Is the journey too long?"
+        },
+        {
+          "speaker": "W",
+          "text": "The journey is fine. It is the print that bothers me. Without my glasses, I cannot make out any of those tiny numbers."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is the woman's problem?",
+          "options": [
+            [
+              "A",
+              "The numbers are too small to read."
+            ],
+            [
+              "B",
+              "The journey takes too long."
+            ],
+            [
+              "C",
+              "She has lost the timetable."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "tiny numbers与without glasses定位字小；B她否认旅程问题，C没有丢时刻表。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "I thought the last ferry left at twenty to seven."
+        },
+        {
+          "speaker": "M",
+          "text": "That is the usual time. Today it is leaving fifteen minutes later because the crew need to finish a check."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When will the last ferry leave today?",
+          "options": [
+            [
+              "A",
+              "At 6:40."
+            ],
+            [
+              "B",
+              "At 6:55."
+            ],
+            [
+              "C",
+              "At 7:15."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "6:40推迟15分钟为6:55；A未计延迟，C把原时刻误当七点再加15。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are there any seats left in the balcony for the next performance?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, two in the front row. If you buy them now, you can collect the tickets at the counter beside the stage door."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where does the conversation probably take place?",
+          "options": [
+            [
+              "A",
+              "At a theatre ticket desk."
+            ],
+            [
+              "B",
+              "At an airport check-in desk."
+            ],
+            [
+              "C",
+              "At a restaurant entrance."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "balcony seats/performance/stage door共同指剧院售票；B无航班，C无用餐。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Will this piece of wood be wide enough for the new shelf?"
+        },
+        {
+          "speaker": "M",
+          "text": "Let me measure it. Yes, but I will cut a little off the end before fitting it between the cupboards."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the man probably do?",
+          "options": [
+            [
+              "A",
+              "He cooks meals."
+            ],
+            [
+              "B",
+              "He makes clothes."
+            ],
+            [
+              "C",
+              "He makes wooden furniture."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "测量木板、裁切并装木架支持木工家具；A和B与材料和操作不符。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Here is your wallet. It was under the chair, exactly where you were sitting."
+        },
+        {
+          "speaker": "W",
+          "text": "Thank goodness! I was beginning to think I had left it on the bus. Now I can stop worrying about all my cards."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How does the woman feel now?",
+          "options": [
+            [
+              "A",
+              "Angry."
+            ],
+            [
+              "B",
+              "Relieved."
+            ],
+            [
+              "C",
+              "Lonely."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "thank goodness与stop worrying支持如释重负；A生气、C孤独无依据。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "version": "0.2",
+  "id": "grade10-shortlisten-camera-and-dance",
+  "title": "高一短对话：相机与舞蹈课",
+  "grade": 10,
+  "family": "listening_short_conversation_choice",
+  "family_label": "短对话听力单选",
+  "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionA",
+  "source_binding": "g10short5once",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.2.json",
+    "sha256": "24a971ccc98b5009a3d010fd9ca8a5f35e7fa2ababdbdfecc9b5eba017bfe2ac"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.2.json",
+  "source_hear_each_piece_once": true,
+  "source_answer_seconds": 10,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 80
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 80
+    }
+  },
+  "audio_introduction": "Five short conversations.",
+  "instruction": "听五段独立短对话，每段对应一道题，从A、B、C中选最佳答案。每条音轨内对话一遍，末尾留10秒作答与读下一题。此为完整五题第一节，不截六题；本机可重播只用于审阅，非正式考试次数控制。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Could I borrow your camera for the harbour trip on Friday?"
+        },
+        {
+          "speaker": "W",
+          "text": "Of course. It has been in the cupboard for months, though. Plug it in tonight, or you may find the battery empty when you get there."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the woman suggest the man do?",
+          "options": [
+            [
+              "A",
+              "Buy a camera."
+            ],
+            [
+              "B",
+              "Charge the camera."
+            ],
+            [
+              "C",
+              "Change the date of the trip."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "B由Plug it in tonight与empty battery支持；A她同意借出，无须买；C没有建议改出行日期。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Does your dance class start at ten past three every day?"
+        },
+        {
+          "speaker": "M",
+          "text": "From Monday to Thursday, yes. On Friday it begins twenty minutes earlier because our teacher has to catch a train."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When does the dance class start on Friday?",
+          "options": [
+            [
+              "A",
+              "At 2:50."
+            ],
+            [
+              "B",
+              "At 3:10."
+            ],
+            [
+              "C",
+              "At 3:30."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "3:10提前20分钟为2:50；B是周一至周四常规时间；C把提前当推迟。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I like this jacket, but the sleeves are rather short. Could I try a larger size?"
+        },
+        {
+          "speaker": "W",
+          "text": "Certainly. The fitting room is behind you. I will bring the next size in blue and grey."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where are the speakers probably?",
+          "options": [
+            [
+              "A",
+              "At a hotel."
+            ],
+            [
+              "B",
+              "At a railway station."
+            ],
+            [
+              "C",
+              "In a clothes shop."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "试穿尺码、袖长和fitting room共同定位服装店；A酒店和B车站不能解释服装试穿情境。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Will this hurt? I have never had a tooth taken out before."
+        },
+        {
+          "speaker": "M",
+          "text": "You may feel some pressure, but the area is numb now. Keep your head still and raise your hand if you need me to stop."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What is the man most likely to be?",
+          "options": [
+            [
+              "A",
+              "A sports coach."
+            ],
+            [
+              "B",
+              "A dentist."
+            ],
+            [
+              "C",
+              "A chef."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "拔牙、局部numb与停止治疗手势共同支持牙医；A无运动，C无烹饪。录音场景虚构，不作医疗建议。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 0,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I am sorry. The last two tickets for tonight were sold a few minutes ago."
+        },
+        {
+          "speaker": "W",
+          "text": "Oh, what a pity. My brother is only here for one evening, and I had been looking forward to taking him to the show."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How does the woman feel?",
+          "options": [
+            [
+              "A",
+              "Delighted."
+            ],
+            [
+              "B",
+              "Indifferent."
+            ],
+            [
+              "C",
+              "Disappointed."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "期待带哥哥看演出却无票、what a pity表失望；A高兴相反，B冷漠与期待矛盾。"
+        }
+      ]
+    }
+  ],
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade10-shortlisten-camera-and-dance-manuscript-v0.1.json",
+    "sha256": "25f8412d7126208dfcd78707cda2cc6d92784a32c487b606eb7efa26f04ad68f"
+  },
+  "rate_revision": "Parameter160producedapprox211Englishwordtokens/mininprobes;lowerparameter80withactualdurationmeasurement;notstudentorsourceratecalibration"
+}

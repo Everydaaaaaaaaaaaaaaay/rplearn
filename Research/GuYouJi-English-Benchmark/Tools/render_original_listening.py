@@ -60,8 +60,13 @@ def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false'}
-    if family=='listening_extract_choice':
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice'}
+    if family=='listening_short_conversation_choice':
+        assert len(draft['clips'])==5
+        assert all(len(c['questions'])==1 and len(c['questions'][0]['options'])==3 for c in draft['clips'])
+        assert all(set(t['speaker']for t in c['turns'])=={'M','W'}for c in draft['clips'])
+        assert all(c['preview_seconds']==0 and c['answer_seconds']==10 for c in draft['clips'])
+    elif family=='listening_extract_choice':
         assert len(draft['clips']) == draft['extracts'] == 3
         assert [len(c['questions']) for c in draft['clips']] == [2,2,2]
     else:
@@ -83,7 +88,10 @@ def render(manuscript, output, version='0.1'):
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if family=='listening_true_false':
+    if family=='listening_short_conversation_choice':
+        assert draft['source_hear_each_piece_once'] and draft['source_answer_seconds']==10
+        repeat_count=1
+    elif family=='listening_true_false':
         assert draft['source_replay_rule']=='not_explicit' and draft['render_repeat_count']==1
         repeat_count=1
     else:
@@ -130,9 +138,9 @@ def render(manuscript, output, version='0.1'):
             def pause(seconds):
                 append(b'\0\0'*int(seconds*RATE), 'silence')
 
-            response_numbers=([2*number-1,2*number] if family=='listening_extract_choice'
+            response_numbers=([number] if family=='listening_short_conversation_choice' else [2*number-1,2*number] if family=='listening_extract_choice'
                               else list(range(1,len(clip['questions'])+1)))
-            intro=(f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
+            intro=(f'Text {number}.' if family=='listening_short_conversation_choice' else f'Extract {number}. {clip["context"]} Questions {2*number-1} and {2*number}.'
                    if family=='listening_extract_choice' else draft['audio_introduction'])
             append(speech(intro,'Daniel',165),'introduction',intro)
             pause(clip.get('preview_seconds',8))
@@ -142,16 +150,18 @@ def render(manuscript, output, version='0.1'):
                 if repeat == 2:
                     append(speech(repeat_prompt,'Daniel',165),'repeat_instruction',repeat_prompt)
                     pause(1)
-                for turn in clip['turns']:
+                for turn_index,turn in enumerate(clip['turns']):
                     if family=='listening_double_matching':
                         prompt='Speaker '+turn['speaker'][1:]+'.'
                         append(speech(prompt,'Daniel',165),'speaker_announcement',prompt,repeat=repeat)
                         pause(.6)
                     voice=draft['speakers'][turn['speaker']]
-                    data=speech(turn['text'],voice['voice'],voice['words_per_minute'])
+                    speed=voice['rate_parameter']if 'rate_parameter'in voice else voice['words_per_minute']
+                    data=speech(turn['text'],voice['voice'],speed)
                     append(data,'dialogue',turn['text'],turn['speaker'],repeat)
-                    pause(2 if family=='listening_double_matching' else .35)
-                pause(2)
+                    if family!='listening_short_conversation_choice' or turn_index<len(clip['turns'])-1:
+                        pause(2 if family=='listening_double_matching' else .35)
+                pause(clip.get('answer_seconds',2))
             combined=scratch/f'extract{number}.wav'
             with wave.open(str(combined),'wb') as stream:
                 stream.setparams((1,2,RATE,0,'NONE','not compressed'))
@@ -164,6 +174,8 @@ def render(manuscript, output, version='0.1'):
             peak=audioop.max(decoded_data,2)
             assert abs(decoded_frames-frame) <= 4096 and peak>0
             spoken_once=' '.join(t['text'] for t in clip['turns'])
+            speech_frames=sum(s['end_frame']-s['start_frame']for s in segments if s['role']=='dialogue')
+            estimated_word_rate=repeat_count*words(spoken_once)/(speech_frames/RATE)*60
             announcement_words=(sum(words('Speaker '+t['speaker'][1:]+'.') for t in clip['turns'])*2
                                 if family=='listening_double_matching' else 0)
             track=dict(label=f'音频{number}（第{response_numbers[0]}—{response_numbers[-1]}题）',
@@ -171,6 +183,9 @@ def render(manuscript, output, version='0.1'):
                        mime_type='audio/mp4', seconds=decoded_frames/RATE,
                        response_numbers=response_numbers, repeat_count=repeat_count,
                        dialogue_words_once=words(spoken_once),
+                       dialogue_seconds_excluding_added_pauses=speech_frames/RATE,
+                       observed_English_word_tokens_per_minute=estimated_word_rate,
+                       rate_parameter_not_actual_word_rate_or_difficulty=True,
                        spoken_words_with_instructions=repeat_count*words(spoken_once)+words(intro)+(repeat_count-1)*words(repeat_prompt)+announcement_words,
                        sample_rate=RATE, pcm_frames_before_encoding=frame,
                        decoded_frames=decoded_frames, peak_abs_sample=peak, segments=segments)

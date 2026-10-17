@@ -1,0 +1,44 @@
+{
+  "version": "0.2",
+  "bindings": [
+    {
+      "id": "g7publisherTF4",
+      "level": 7,
+      "family": "listening_true_false",
+      "task_mode": "publisher_conversation_tf4",
+      "responses": 4,
+      "options_each": 2,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.1.json",
+        "sha256": "7a9b7f34d4d17e02de0253f6ab529fee2298ed85722a66aa0e1b70e17f4a464e"
+      },
+      "collection": "groups",
+      "source_group_id": "pep.g7lower.u1.sectionA.1c",
+      "source_record_sha256": "ef6b4c2c79a44e39c12c8831d433ad2c276911f4ccc0cb631b5c8a071944ee64",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g10short5once",
+      "level": 10,
+      "family": "listening_short_conversation_choice",
+      "task_mode": "ordinary_short_dialogues5once",
+      "responses": 5,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.2.json",
+        "sha256": "16e98057bef9a6967055ef59b3270715d2489019f5017f9538dc5349a55163f3"
+      },
+      "collection": "groups",
+      "source_group_id": "zhengzhou.g10.2024-25upper.listening.sectionA",
+      "source_record_sha256": "624b2db0a16b80c582c6887710061c2c6d4774092abfa0f1299cbae69e36e885",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true,
+      "source_script_still_pending": true
+    }
+  ],
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  }
+}
