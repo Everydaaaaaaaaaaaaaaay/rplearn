@@ -102,10 +102,14 @@ const page=fs.readFileSync(path.join(__dirname,'../../../build/english-benchmark
 const data=JSON.parse(page.match(/<script id="quality-data" type="application\/json">(.*?)<\/script>/s)[1]);
 let groups=0,responses=0,alternatives=0,actualOnceBanks=0;
 for(const g of Object.values(data.groups).filter(g=>g.questions.some(q=>q.acceptedAnswers))){
- const saved=Object.fromEntries(g.questions.map(q=>[q.number+'.1',q.acceptedAnswers[0]]));
+ const saved=Object.fromEntries(g.questions.map(q=>[q.number+'.1',q.fillPair?q.fillPair.members[q.fillPair.positions.indexOf(q.number)].forms[0]:q.acceptedAnswers[0]]));
  assert.equal(compare(g.questions,saved).matched,g.questions.length);
  for(const q of g.questions){
-  for(const form of q.acceptedAnswers){assert.equal(compare(g.questions,{...saved,[q.number+'.1']:form.toLowerCase()}).matched,g.questions.length);alternatives++;}
+  for(const form of q.acceptedAnswers){
+   const vector={...saved,[q.number+'.1']:form.toLowerCase()};
+   if(q.fillPair){const c=q.fillPair,member=c.members.findIndex(m=>m.forms.includes(form)),other=c.positions.find(n=>n!==q.number);assert(member>=0);vector[other+'.1']=c.members[1-member].forms[0];}
+   assert.equal(compare(g.questions,vector).matched,g.questions.length);alternatives++;
+  }
   for(const wrong of q.fillMarking.rejectedAnswers)assert.equal(compare(g.questions,{...saved,[q.number+'.1']:wrong}).different,1);
  }
  if(g.questions[0].bankReuse==='once'){

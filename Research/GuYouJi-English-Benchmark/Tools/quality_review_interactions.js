@@ -96,6 +96,7 @@ function smallCount(value){
  return typeof value==='string'&&/^[0-9]+$/.test(value)?value:null;
 }
 function answerComparison(questions,saved={}){
+ if(Array.isArray(questions)&&questions.some(q=>q.fillPair))return fillPairComparison(questions,saved);
  if(Array.isArray(questions)&&questions.some(q=>q.selectionSet))return selectionSetComparison(questions,saved);
  if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};
  const onceBank=questions.some(q=>q.bankReuse!==undefined),knownBankRoots=new Map(),bankEntries=new Set();
@@ -144,6 +145,32 @@ function answerComparison(questions,saved={}){
  if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}
  const bankConflicts=[...usedBankRoots].filter(([,positions])=>positions.length>1).map(([entry,numbers])=>({entry,numbers}));
  return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,bankConflicts,rows};
+}
+function fillPairComparison(questions,saved={}){
+ // Two response positions identify two different referents within one prompt.
+ // Aliases share a member ID; they cannot earn two matches for one referent.
+ const base=answerComparison(questions.map(q=>{const copy={...q};delete copy.fillPair;return copy;}),saved);
+ if(!base.available)return base;
+ const pairs=new Map(),conflicts=[];
+ for(const q of questions){
+  const c=q.fillPair;if(!c)continue;
+  if(q.options.length||q.fillMarking?.normalization!=='source_excerpt_v1'||!c||c.version!==1||typeof c.id!=='string'||!c.id||c.order!=='either'||c.distinctReferents!==true||c.localMatchingRule!=='distinct_known_referents_once'||!Array.isArray(c.positions)||c.positions.length!==2||new Set(c.positions).size!==2||!c.positions.every(Number.isInteger)||!c.positions.includes(q.number)||!Array.isArray(c.members)||c.members.length!==2||c.members.some(m=>!m||typeof m!=='object')||new Set(c.members.map(m=>m.id)).size!==2)return {available:false,reason:'双答案提示的完整双响应、顺序或不同指代规则未绑定。'};
+  const prior=pairs.get(c.id)||[];prior.push(q);pairs.set(c.id,prior);
+ }
+ for(const [id,qs]of pairs){
+  const c=qs[0].fillPair;
+  if(qs.length!==2||!c.positions.every((n,i)=>qs[i]?.number===n)||qs.some(q=>JSON.stringify(q.fillPair)!==JSON.stringify(c)||JSON.stringify(q.fillMarking)!==JSON.stringify(qs[0].fillMarking)||JSON.stringify(q.acceptedAnswers)!==JSON.stringify(qs[0].acceptedAnswers)))return {available:false,reason:'双答案提示被截断、重排或答案范围不一致，暂不核对。'};
+  const aliases=new Map();
+  for(const member of c.members){
+   if(typeof member.id!=='string'||!member.id||!Array.isArray(member.forms)||!member.forms.length)return {available:false,reason:'双答案的同指合法形式尚未绑定。'};
+   for(const form of member.forms){const normalized=normalizeFill(form,'source_excerpt_v1');if(normalized===null||aliases.has(normalized))return {available:false,reason:'双答案形式重复或对应多个指代，暂不核对。'};aliases.set(normalized,member.id);}
+  }
+  const forms=qs[0].acceptedAnswers.map(v=>normalizeFill(v,'source_excerpt_v1'));
+  if(forms.length!==aliases.size||forms.some(v=>!aliases.has(v)))return {available:false,reason:'双答案同指形式与逐空接受范围不一致。'};
+  const used=new Set();
+  for(const q of qs){const row=base.rows.find(r=>r.number===q.number),member=aliases.get(normalizeFill(row.chosen,'source_excerpt_v1'));row.reference=c.members.map(m=>m.forms.join(' / ')).join('；')+'（两项顺序任意，同一项不重复）';if(row.state==='match'&&member){if(used.has(member)){row.state='different';conflicts.push({id,number:q.number,member});}used.add(member);}}
+ }
+ return {...base,matched:base.rows.filter(r=>r.state==='match').length,different:base.rows.filter(r=>r.state==='different').length,fillPairConflicts:conflicts};
 }
 function clearSelectionComparison(){el('selection-comparison').hidden=true;el('selection-comparison').textContent='';}
 function render(){
@@ -214,7 +241,7 @@ function render(){
   const result=answerComparison(g.questions,drafts[g.id]);
   if(!result.available){el('notice').textContent=result.reason;return;}
   el('notice').textContent=prototypeNotice;
-  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong>'+(result.selectionConflicts?.length?'<p>同一多选提示中重复选择不重复计入；各提示之间独立。此处按作者定义核对不同正确选项，不冒称原考试部分给分规则。</p>':'')+(result.bankConflicts?.length?'<p class="bank-conflict">词库复用冲突：'+result.bankConflicts.map(c=>escapeText(c.entry)+'（第'+c.numbers.join('、')+'空）').join('；')+'。这些作答重复使用同一词库项，整组尚未符合每项一次的规则；不据此擅自分配部分分。未列词形仍待复核，不自动猜词根。</p>':'')+'<p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
+  el('selection-comparison').innerHTML='<strong>按作者参考：'+result.matched+'/'+result.total+' 项一致；'+result.different+' 项不同；'+result.unanswered+' 项未答；'+result.review+' 项待复核。</strong>'+(result.fillPairConflicts?.length?'<p>同一双答案提示内的两空须指向不同项目；同一项目的两个合法别名不重复计入。不同提示独立，未列表达仍待复核；本机一致项统计不等于原考试部分给分。</p>':'')+(result.selectionConflicts?.length?'<p>同一多选提示中重复选择不重复计入；各提示之间独立。此处按作者定义核对不同正确选项，不冒称原考试部分给分规则。</p>':'')+(result.bankConflicts?.length?'<p class="bank-conflict">词库复用冲突：'+result.bankConflicts.map(c=>escapeText(c.entry)+'（第'+c.numbers.join('、')+'空）').join('；')+'。这些作答重复使用同一词库项，整组尚未符合每项一次的规则；不据此擅自分配部分分。未列词形仍待复核，不自动猜词根。</p>':'')+'<p>本机按逐题规则核对，已列合法变体同等接受。未列词形不直接判错；待复核项不计为错误。作者自审不代表独立教研或生产判分通过。</p><ol>'+result.rows.map(r=>'<li>第'+r.number+'题：'+(r.chosen?'作答 '+escapeText(r.chosen):'未作答')+'；作者参考 '+escapeText(r.reference)+'（'+({match:'一致',different:'不同',unanswered:'未答',review:'待复核'}[r.state])+'）</li>').join('')+'</ol>';
   el('selection-comparison').hidden=false;
  };
  el('reset').onclick=()=>{delete drafts[g.id];render();};
