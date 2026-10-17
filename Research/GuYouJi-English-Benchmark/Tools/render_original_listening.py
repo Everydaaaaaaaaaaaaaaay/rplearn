@@ -60,8 +60,11 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
-    if draft.get('sequence_table_listening'):
+    assert family in {'listening_letter_completion','listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false','listening_picture_choice','listening_person_sport_matching','listening_description_picture_matching','listening_picture_ordering','listening_table_matching'}
+    if draft.get('band_reference_only'):
+        from band_phonics_contract import validate_draft
+        validate_draft(draft)
+    elif draft.get('sequence_table_listening'):
         from listening_sequence_table_contract import validate_draft
         validate_draft(draft)
     elif draft.get('shared_picture_listening'):
@@ -149,7 +152,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
+    if draft.get('band_reference_only') or draft.get('sequence_table_listening') or draft.get('shared_picture_listening') or draft.get('illustrated_listening'):
         repeat_count=draft['render_repeat_count']
     elif draft.get('junior_source_bound') or draft.get('senior_short_source_bound'):
         repeat_count=draft['source_repeat_count']
@@ -193,6 +196,19 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
                 run(['say','-v',voice,'-r',str(speed),'-o',str(aiff),'-f',str(prompt)])
                 run(['afconvert','-f','WAVE','-d',f'LEI16@{RATE}','-c','1',str(aiff),str(pcm)])
                 data=read_pcm(pcm)
+                if draft.get('band_reference_only') and draft.get('local_render_max_word_rate'):
+                    # A local presentation choice, never an inferred source speed
+                    # or a claim of target-child calibration. Preserve pitch.
+                    limit=draft['local_render_max_word_rate']
+                    assert 90 <= limit <= 130
+                    measured=words(text)*60/(len(data)/2/RATE)
+                    if measured>limit:
+                        stretched=scratch/(tag+'-stretched.wav')
+                        factor=limit/measured
+                        assert .5 <= factor < 1
+                        run(['ffmpeg','-nostdin','-v','error','-i',str(pcm),'-af',f'atempo={factor:.8f}',
+                             '-ar',str(RATE),'-ac','1','-c:a','pcm_s16le',str(stretched)])
+                        data=read_pcm(stretched);stretched.unlink()
                 assert data and audioop.max(data,2) > 0
                 utterance_cache[key] = data
                 prompt.unlink(); aiff.unlink(); pcm.unlink()
@@ -295,6 +311,11 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
                   tool='macOS say + afconvert;local synthesis only',voices=draft['speakers'],tracks=tracks,
                   no_source_recording_reused=True,temporary_PCM_not_retained=True,whole_final_audio_decode_passed=True,
                   independent_listening_pronunciation_prosody_student_commercial_production_validated=False)
+    if draft.get('band_reference_only'):
+        manifest.update(band_reference_only=True,individual_grade=None,
+                        local_render_max_word_rate=draft.get('local_render_max_word_rate'),
+                        local_rate_method='pitch_preserving_ffmpeg_atempo_when_synthesized_rate_exceeds_local_cap',
+                        source_replay_timing_and_speech_rate_unknown=True)
     if prior is not None:manifest.update(reused_verified_audio_manifest=dict(path=str(reuse_manifest.relative_to(REPO)),sha256=digest(reuse_manifest)),rerendered_track_numbers=list(render_only),unchanged_tracks_reused_without_copy=True)
     manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     return manifest_path

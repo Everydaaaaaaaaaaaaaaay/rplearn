@@ -1,0 +1,258 @@
+{
+  "version": "0.1",
+  "id": "ks1-band-artroom",
+  "title": "美术角补充用品",
+  "grade": null,
+  "source_band": "HK_KS1",
+  "band_reference_only": true,
+  "mainland_grade_equivalence_established": false,
+  "family": "listening_letter_completion",
+  "source_group_id": "hk-edb.ks1.dictation.shoppinglist",
+  "source_review": {
+    "path": "CompleteCoverage20261017/LowPrimaryBandReferenceReview-v0.1.json",
+    "sha256": "044157a05f8be0a50402038fca2547ddd6a4c08368605cabbb40d68329375aef"
+  },
+  "candidate_letters": [
+    "p",
+    "b"
+  ],
+  "lists": [
+    {
+      "name": "Ben",
+      "speaker": "M",
+      "items": [
+        {
+          "prefix": "some",
+          "full_word": "paper",
+          "letter": "p",
+          "stub": "_aper",
+          "example": true
+        },
+        {
+          "prefix": "some",
+          "full_word": "brushes",
+          "letter": "b",
+          "stub": "_rushes",
+          "number": 1
+        },
+        {
+          "prefix": "some",
+          "full_word": "pencils",
+          "letter": "p",
+          "stub": "_encils",
+          "number": 2
+        },
+        {
+          "prefix": "some",
+          "full_word": "beads",
+          "letter": "b",
+          "stub": "_eads",
+          "number": 3
+        },
+        {
+          "prefix": "some",
+          "full_word": "paint",
+          "letter": "p",
+          "stub": "_aint",
+          "number": 4
+        }
+      ]
+    },
+    {
+      "name": "Penny",
+      "speaker": "W",
+      "items": [
+        {
+          "prefix": "some",
+          "full_word": "boxes",
+          "letter": "b",
+          "stub": "_oxes",
+          "number": 5
+        },
+        {
+          "prefix": "some",
+          "full_word": "boards",
+          "letter": "b",
+          "stub": "_oards",
+          "number": 6
+        },
+        {
+          "prefix": "some",
+          "full_word": "pins",
+          "letter": "p",
+          "stub": "_ins",
+          "number": 7
+        },
+        {
+          "prefix": "some",
+          "full_word": "buttons",
+          "letter": "b",
+          "stub": "_uttons",
+          "number": 8
+        },
+        {
+          "prefix": "some",
+          "full_word": "posters",
+          "letter": "p",
+          "stub": "_osters",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 60
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 60
+    }
+  },
+  "local_render_max_word_rate": 110,
+  "audio_introduction": "Listen to the whole conversation. Write p or b in each blank.",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 20,
+      "answer_seconds": 20,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Penny, we need supplies for the new art corner. There is paper on my list. The first letter of paper is already filled in as the example."
+        },
+        {
+          "speaker": "W",
+          "text": "Let us buy the other things today, Ben. What comes after paper?"
+        },
+        {
+          "speaker": "M",
+          "text": "Brushes and pencils. Our old brushes are dry, and the pencils are very short."
+        },
+        {
+          "speaker": "W",
+          "text": "I have boxes for the small supplies and boards for the wall."
+        },
+        {
+          "speaker": "M",
+          "text": "I also need beads for a picture frame and paint for our big sign."
+        },
+        {
+          "speaker": "W",
+          "text": "Then I will add pins and buttons to my list. The last thing is posters. We can put them above the art table."
+        },
+        {
+          "speaker": "M",
+          "text": "That is everything. Please bring your list when we go shopping."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "owner": "Ben",
+          "stem": "Ben：some _rushes",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Ben的清单包含brushes；本空只补首字母b，保留其余字母得到完整词brushes。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Brushes and pencils. Our old brushes are dry, and the pencils are very short."
+        },
+        {
+          "number": 2,
+          "owner": "Ben",
+          "stem": "Ben：some _encils",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Ben的清单包含pencils；本空只补首字母p，保留其余字母得到完整词pencils。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Brushes and pencils. Our old brushes are dry, and the pencils are very short."
+        },
+        {
+          "number": 3,
+          "owner": "Ben",
+          "stem": "Ben：some _eads",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Ben的清单包含beads；本空只补首字母b，保留其余字母得到完整词beads。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I also need beads for a picture frame and paint for our big sign."
+        },
+        {
+          "number": 4,
+          "owner": "Ben",
+          "stem": "Ben：some _aint",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Ben的清单包含paint；本空只补首字母p，保留其余字母得到完整词paint。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I also need beads for a picture frame and paint for our big sign."
+        },
+        {
+          "number": 5,
+          "owner": "Penny",
+          "stem": "Penny：some _oxes",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Penny的清单包含boxes；本空只补首字母b，保留其余字母得到完整词boxes。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I have boxes for the small supplies and boards for the wall."
+        },
+        {
+          "number": 6,
+          "owner": "Penny",
+          "stem": "Penny：some _oards",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Penny的清单包含boards；本空只补首字母b，保留其余字母得到完整词boards。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I have boxes for the small supplies and boards for the wall."
+        },
+        {
+          "number": 7,
+          "owner": "Penny",
+          "stem": "Penny：some _ins",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Penny的清单包含pins；本空只补首字母p，保留其余字母得到完整词pins。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Then I will add pins and buttons to my list. The last thing is posters. We can put them above the art table."
+        },
+        {
+          "number": 8,
+          "owner": "Penny",
+          "stem": "Penny：some _uttons",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Penny的清单包含buttons；本空只补首字母b，保留其余字母得到完整词buttons。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Then I will add pins and buttons to my list. The last thing is posters. We can put them above the art table."
+        },
+        {
+          "number": 9,
+          "owner": "Penny",
+          "stem": "Penny：some _osters",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Penny的清单包含posters；本空只补首字母p，保留其余字母得到完整词posters。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Then I will add pins and buttons to my list. The last thing is posters. We can put them above the art table."
+        }
+      ]
+    }
+  ],
+  "instruction": "听一段完整对话，完成两个人各五行的清单。左列首行为已解示例，其余9处只填 p 或 b，不填完整单词。源遍数及读答时间未知；本机单遍、前后各20秒，可重播，属于审阅安排。",
+  "local_rate_notice": "本机对话按实测词速做保留音高的减速，约110英文词/分钟；不是原录音速度，也未完成儿童难度或自然听辨标定。",
+  "scope_notice": "香港KS1学段官方教学形式的原创参照；未绑定内地小学具体年级，不计入15档年级覆盖或当前内地非纸笔真题。两列、9响应、一个示例、p/b候选和整段对话保留；主题和措辞为原创。"
+}

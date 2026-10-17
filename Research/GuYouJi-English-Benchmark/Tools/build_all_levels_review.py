@@ -233,6 +233,9 @@ def build_current(output):
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
                      'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
                      for level in data['grades'] for family, label in labels.items()]
+    if plan.get('current_band_phonics_originals'):
+        from build_band_phonics_review import build as build_band
+        data['supplemental_band_review']=build_band(plan['current_band_phonics_originals'],output/'ks1-band-reference.html')
     data['preview_cells'] = len(data['groups'])
     data['source_positive_cells'] = sum(c['observed'] for c in data['cells'])
     data['source_form_representative_cells'] = sum(bool(c.get('groupId')) for c in data['cells'])
@@ -244,6 +247,8 @@ def build_current(output):
     header = '<th scope="col">题型</th>'+''.join('<th scope="col">'+data['levelLabels'][str(level)]+'</th>' for level in data['grades'])
     template = re.sub(r'<thead><tr><th scope="col">题型</th>.*?</tr></thead>', '<thead><tr>'+header+'</tr></thead>', template)
     page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE/'Tools/quality_review_interactions.js').read_text())
+    if data.get('supplemental_band_review'):
+        page=page.replace('<nav id="grades"','<p><a id="band-reference-link" href="ks1-band-reference.html">KS1 学段补充试做：3完整原创 · 27处字母听填</a><br><span class="footnote">香港P1—3学段参照，单独计量，不增加下方具体年级覆盖。</span></p><nav id="grades"',1)
     (output/'index.html').write_text(page)
     complete_sources = json.loads(load_ref(plan['current_complete_coverage_source_modes']).read_text()) if plan.get('current_complete_coverage_source_modes') else {}
     report = {'version': '0.1', 'level_count': len(data['grades']), 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
@@ -277,7 +282,9 @@ def main(output):
         build_current(staging)
         from check_all_levels_review import check
         check(staging/'index.html')
-        for name in ['index.html','build-report-v0.1.json']:
+        names=['index.html','build-report-v0.1.json']
+        if (staging/'ks1-band-reference.html').exists():names.append('ks1-band-reference.html')
+        for name in names:
             (staging/name).replace(output/name)
 
 

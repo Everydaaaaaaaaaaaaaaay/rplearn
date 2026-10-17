@@ -94,6 +94,13 @@ def expansion_modes(data,plan,additions):
 def check(page):
     data=extract(page);policy=json.loads(load_ref(data['current_scope_policy']).read_text())
     _,plan=resolve_plan(data.get('active_run_plan','FirstRelease/AllLevelsObjectiveRun-2026-10-16.json'))
+    if plan.get('current_band_phonics_originals'):
+        from build_band_phonics_review import check as check_band
+        supplemental=data['supplemental_band_review']
+        assert supplemental['index']==plan['current_band_phonics_originals']
+        assert supplemental['band_reference_only'] and not supplemental['grade_specific_coverage_counted']
+        result=check_band(page.parent/supplemental['url'])
+        assert result['whole_originals']==supplemental['whole_originals']==3 and result['responses']==27
     revisions=json.loads(load_ref(plan['current_authored_revisions']).read_text())['records'] if plan.get('current_authored_revisions') else []
     revised={r['id']:r for r in revisions}
     assert len(revised)==len(revisions)

@@ -1,0 +1,258 @@
+{
+  "version": "0.1",
+  "id": "ks1-band-picnic",
+  "title": "野餐前的两张清单",
+  "grade": null,
+  "source_band": "HK_KS1",
+  "band_reference_only": true,
+  "mainland_grade_equivalence_established": false,
+  "family": "listening_letter_completion",
+  "source_group_id": "hk-edb.ks1.dictation.shoppinglist",
+  "source_review": {
+    "path": "CompleteCoverage20261017/LowPrimaryBandReferenceReview-v0.1.json",
+    "sha256": "044157a05f8be0a50402038fca2547ddd6a4c08368605cabbb40d68329375aef"
+  },
+  "candidate_letters": [
+    "p",
+    "b"
+  ],
+  "lists": [
+    {
+      "name": "Milo",
+      "speaker": "M",
+      "items": [
+        {
+          "prefix": "a",
+          "full_word": "plate",
+          "letter": "p",
+          "stub": "_late",
+          "example": true
+        },
+        {
+          "prefix": "some",
+          "full_word": "bread",
+          "letter": "b",
+          "stub": "_read",
+          "number": 1
+        },
+        {
+          "prefix": "some",
+          "full_word": "pears",
+          "letter": "p",
+          "stub": "_ears",
+          "number": 2
+        },
+        {
+          "prefix": "some",
+          "full_word": "biscuits",
+          "letter": "b",
+          "stub": "_iscuits",
+          "number": 3
+        },
+        {
+          "prefix": "some",
+          "full_word": "peaches",
+          "letter": "p",
+          "stub": "_eaches",
+          "number": 4
+        }
+      ]
+    },
+    {
+      "name": "Anna",
+      "speaker": "W",
+      "items": [
+        {
+          "prefix": "some",
+          "full_word": "popcorn",
+          "letter": "p",
+          "stub": "_opcorn",
+          "number": 5
+        },
+        {
+          "prefix": "some",
+          "full_word": "buns",
+          "letter": "b",
+          "stub": "_uns",
+          "number": 6
+        },
+        {
+          "prefix": "some",
+          "full_word": "peppers",
+          "letter": "p",
+          "stub": "_eppers",
+          "number": 7
+        },
+        {
+          "prefix": "some",
+          "full_word": "potatoes",
+          "letter": "p",
+          "stub": "_otatoes",
+          "number": 8
+        },
+        {
+          "prefix": "some",
+          "full_word": "berries",
+          "letter": "b",
+          "stub": "_erries",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 60
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 60
+    }
+  },
+  "local_render_max_word_rate": 110,
+  "audio_introduction": "Listen to the whole conversation. Write p or b in each blank.",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 20,
+      "answer_seconds": 20,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Anna, let us check our picnic lists before we go to the shop. I have a plate on my list. The first letter of plate is already written as an example."
+        },
+        {
+          "speaker": "W",
+          "text": "Good idea, Milo. What food will you get?"
+        },
+        {
+          "speaker": "M",
+          "text": "I will buy some bread for lunch and some pears for the fruit basket."
+        },
+        {
+          "speaker": "W",
+          "text": "My list starts with popcorn. I will also buy some buns and some peppers."
+        },
+        {
+          "speaker": "M",
+          "text": "Please leave room for my biscuits and peaches in the picnic bag."
+        },
+        {
+          "speaker": "W",
+          "text": "Of course. I still need potatoes for the salad and berries for our fruit cups."
+        },
+        {
+          "speaker": "M",
+          "text": "Now we both have five things. Let us take our lists to the shop."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "owner": "Milo",
+          "stem": "Milo：some _read",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Milo的清单包含bread；本空只补首字母b，保留其余字母得到完整词bread。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I will buy some bread for lunch and some pears for the fruit basket."
+        },
+        {
+          "number": 2,
+          "owner": "Milo",
+          "stem": "Milo：some _ears",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Milo的清单包含pears；本空只补首字母p，保留其余字母得到完整词pears。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I will buy some bread for lunch and some pears for the fruit basket."
+        },
+        {
+          "number": 3,
+          "owner": "Milo",
+          "stem": "Milo：some _iscuits",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Milo的清单包含biscuits；本空只补首字母b，保留其余字母得到完整词biscuits。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Please leave room for my biscuits and peaches in the picnic bag."
+        },
+        {
+          "number": 4,
+          "owner": "Milo",
+          "stem": "Milo：some _eaches",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Milo的清单包含peaches；本空只补首字母p，保留其余字母得到完整词peaches。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Please leave room for my biscuits and peaches in the picnic bag."
+        },
+        {
+          "number": 5,
+          "owner": "Anna",
+          "stem": "Anna：some _opcorn",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Anna的清单包含popcorn；本空只补首字母p，保留其余字母得到完整词popcorn。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My list starts with popcorn. I will also buy some buns and some peppers."
+        },
+        {
+          "number": 6,
+          "owner": "Anna",
+          "stem": "Anna：some _uns",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Anna的清单包含buns；本空只补首字母b，保留其余字母得到完整词buns。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My list starts with popcorn. I will also buy some buns and some peppers."
+        },
+        {
+          "number": 7,
+          "owner": "Anna",
+          "stem": "Anna：some _eppers",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Anna的清单包含peppers；本空只补首字母p，保留其余字母得到完整词peppers。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My list starts with popcorn. I will also buy some buns and some peppers."
+        },
+        {
+          "number": 8,
+          "owner": "Anna",
+          "stem": "Anna：some _otatoes",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Anna的清单包含potatoes；本空只补首字母p，保留其余字母得到完整词potatoes。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Of course. I still need potatoes for the salad and berries for our fruit cups."
+        },
+        {
+          "number": 9,
+          "owner": "Anna",
+          "stem": "Anna：some _erries",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Anna的清单包含berries；本空只补首字母b，保留其余字母得到完整词berries。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "Of course. I still need potatoes for the salad and berries for our fruit cups."
+        }
+      ]
+    }
+  ],
+  "instruction": "听一段完整对话，完成两个人各五行的清单。左列首行为已解示例，其余9处只填 p 或 b，不填完整单词。源遍数及读答时间未知；本机单遍、前后各20秒，可重播，属于审阅安排。",
+  "local_rate_notice": "本机对话按实测词速做保留音高的减速，约110英文词/分钟；不是原录音速度，也未完成儿童难度或自然听辨标定。",
+  "scope_notice": "香港KS1学段官方教学形式的原创参照；未绑定内地小学具体年级，不计入15档年级覆盖或当前内地非纸笔真题。两列、9响应、一个示例、p/b候选和整段对话保留；主题和措辞为原创。"
+}

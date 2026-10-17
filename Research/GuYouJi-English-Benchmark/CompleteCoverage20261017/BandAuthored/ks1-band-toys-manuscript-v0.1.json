@@ -1,0 +1,258 @@
+{
+  "version": "0.1",
+  "id": "ks1-band-toys",
+  "title": "班级玩具架",
+  "grade": null,
+  "source_band": "HK_KS1",
+  "band_reference_only": true,
+  "mainland_grade_equivalence_established": false,
+  "family": "listening_letter_completion",
+  "source_group_id": "hk-edb.ks1.dictation.shoppinglist",
+  "source_review": {
+    "path": "CompleteCoverage20261017/LowPrimaryBandReferenceReview-v0.1.json",
+    "sha256": "044157a05f8be0a50402038fca2547ddd6a4c08368605cabbb40d68329375aef"
+  },
+  "candidate_letters": [
+    "p",
+    "b"
+  ],
+  "lists": [
+    {
+      "name": "Bill",
+      "speaker": "M",
+      "items": [
+        {
+          "prefix": "a",
+          "full_word": "ball",
+          "letter": "b",
+          "stub": "_all",
+          "example": true
+        },
+        {
+          "prefix": "a",
+          "full_word": "panda",
+          "letter": "p",
+          "stub": "_anda",
+          "number": 1
+        },
+        {
+          "prefix": "a",
+          "full_word": "boat",
+          "letter": "b",
+          "stub": "_oat",
+          "number": 2
+        },
+        {
+          "prefix": "a",
+          "full_word": "penguin",
+          "letter": "p",
+          "stub": "_enguin",
+          "number": 3
+        },
+        {
+          "prefix": "a",
+          "full_word": "bus",
+          "letter": "b",
+          "stub": "_us",
+          "number": 4
+        }
+      ]
+    },
+    {
+      "name": "Polly",
+      "speaker": "W",
+      "items": [
+        {
+          "prefix": "a",
+          "full_word": "plane",
+          "letter": "p",
+          "stub": "_lane",
+          "number": 5
+        },
+        {
+          "prefix": "a",
+          "full_word": "bear",
+          "letter": "b",
+          "stub": "_ear",
+          "number": 6
+        },
+        {
+          "prefix": "a",
+          "full_word": "puzzle",
+          "letter": "p",
+          "stub": "_uzzle",
+          "number": 7
+        },
+        {
+          "prefix": "a",
+          "full_word": "pig",
+          "letter": "p",
+          "stub": "_ig",
+          "number": 8
+        },
+        {
+          "prefix": "a",
+          "full_word": "bike",
+          "letter": "b",
+          "stub": "_ike",
+          "number": 9
+        }
+      ]
+    }
+  ],
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 60
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 60
+    }
+  },
+  "local_render_max_word_rate": 110,
+  "audio_introduction": "Listen to the whole conversation. Write p or b in each blank.",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 20,
+      "answer_seconds": 20,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Polly, our class has a little money for new toys. We have two shopping lists. My first toy is a ball. Its first letter is already written as the example."
+        },
+        {
+          "speaker": "W",
+          "text": "What else is on your list, Bill?"
+        },
+        {
+          "speaker": "M",
+          "text": "A panda and a boat. The panda will go beside the books. The boat can float in water."
+        },
+        {
+          "speaker": "W",
+          "text": "I will choose a plane and a bear. The plane has blue wings. The bear is soft and brown."
+        },
+        {
+          "speaker": "M",
+          "text": "My last two toys are a penguin and a bus. The penguin is black and white. The bus has four wheels."
+        },
+        {
+          "speaker": "W",
+          "text": "My list also has a puzzle, a pig and a bike. The pig is pink. The bike has two wheels."
+        },
+        {
+          "speaker": "M",
+          "text": "Let us show both lists to our teacher before we buy the toys."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "owner": "Bill",
+          "stem": "Bill：a _anda",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Bill的清单包含panda；本空只补首字母p，保留其余字母得到完整词panda。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "A panda and a boat. The panda will go beside the books. The boat can float in water."
+        },
+        {
+          "number": 2,
+          "owner": "Bill",
+          "stem": "Bill：a _oat",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Bill的清单包含boat；本空只补首字母b，保留其余字母得到完整词boat。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "A panda and a boat. The panda will go beside the books. The boat can float in water."
+        },
+        {
+          "number": 3,
+          "owner": "Bill",
+          "stem": "Bill：a _enguin",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Bill的清单包含penguin；本空只补首字母p，保留其余字母得到完整词penguin。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My last two toys are a penguin and a bus. The penguin is black and white. The bus has four wheels."
+        },
+        {
+          "number": 4,
+          "owner": "Bill",
+          "stem": "Bill：a _us",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Bill的清单包含bus；本空只补首字母b，保留其余字母得到完整词bus。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My last two toys are a penguin and a bus. The penguin is black and white. The bus has four wheels."
+        },
+        {
+          "number": 5,
+          "owner": "Polly",
+          "stem": "Polly：a _lane",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Polly的清单包含plane；本空只补首字母p，保留其余字母得到完整词plane。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I will choose a plane and a bear. The plane has blue wings. The bear is soft and brown."
+        },
+        {
+          "number": 6,
+          "owner": "Polly",
+          "stem": "Polly：a _ear",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Polly的清单包含bear；本空只补首字母b，保留其余字母得到完整词bear。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "I will choose a plane and a bear. The plane has blue wings. The bear is soft and brown."
+        },
+        {
+          "number": 7,
+          "owner": "Polly",
+          "stem": "Polly：a _uzzle",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Polly的清单包含puzzle；本空只补首字母p，保留其余字母得到完整词puzzle。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My list also has a puzzle, a pig and a bike. The pig is pink. The bike has two wheels."
+        },
+        {
+          "number": 8,
+          "owner": "Polly",
+          "stem": "Polly：a _ig",
+          "options": [],
+          "acceptedAnswers": [
+            "p"
+          ],
+          "rationale": "录音中Polly的清单包含pig；本空只补首字母p，保留其余字母得到完整词pig。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My list also has a puzzle, a pig and a bike. The pig is pink. The bike has two wheels."
+        },
+        {
+          "number": 9,
+          "owner": "Polly",
+          "stem": "Polly：a _ike",
+          "options": [],
+          "acceptedAnswers": [
+            "b"
+          ],
+          "rationale": "录音中Polly的清单包含bike；本空只补首字母b，保留其余字母得到完整词bike。另一候选字母不对应该人实际说出的词；不靠其他空已用字母排除。",
+          "source_sentence": "My list also has a puzzle, a pig and a bike. The pig is pink. The bike has two wheels."
+        }
+      ]
+    }
+  ],
+  "instruction": "听一段完整对话，完成两个人各五行的清单。左列首行为已解示例，其余9处只填 p 或 b，不填完整单词。源遍数及读答时间未知；本机单遍、前后各20秒，可重播，属于审阅安排。",
+  "local_rate_notice": "本机对话按实测词速做保留音高的减速，约110英文词/分钟；不是原录音速度，也未完成儿童难度或自然听辨标定。",
+  "scope_notice": "香港KS1学段官方教学形式的原创参照；未绑定内地小学具体年级，不计入15档年级覆盖或当前内地非纸笔真题。两列、9响应、一个示例、p/b候选和整段对话保留；主题和措辞为原创。"
+}
