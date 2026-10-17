@@ -41,9 +41,11 @@ def check(data, plan):
                 view=next(v for v in json.loads(load_ref(b['source_view']).read_text())['views'] if v['group_id']==b['source_group_id'])
                 load_ref(view['parent_document'])
                 assert source['complete_selected_group_reviewed']
-                if b['level']==10:
-                    assert source['features']['subgroup_slots']==b['subgroup_counts']==[4,3,3]
+                if view.get('response_slots'):
+                    assert source['features']['subgroup_slots']==b['subgroup_counts']
+                    assert [len(m['blank_numbers']) for m in view['materials']]==b['subgroup_counts']
                     assert b['given_positions']==[slot['ordinal'] for slot in view['response_slots'] if slot['given_hint']]
+                    assert [slot['word_limit'] for slot in view['response_slots']]==[None if i in b['given_positions'] else 1 for i in range(1,b['responses']+1)]
                 else:
                     assert source['features']['materials']==1
                     assert b['given_positions']==[n-55 for n in view['source_policy']['given_word_numbers']]

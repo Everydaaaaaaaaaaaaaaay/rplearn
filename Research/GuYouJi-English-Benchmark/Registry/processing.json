@@ -34858,6 +34858,101 @@
           "exit_code": 0
         }
       ]
+    },
+    {
+      "id": "complete-coverage-g11-threepassage3-v0.1",
+      "source_acquisition_ids": [
+        "bj-grade11-yanqing2024upper-20261013"
+      ],
+      "tool": "source_bound_g11_threepassage_grammar+IAB+accepted_multiword_contract",
+      "tool_version": "0.1",
+      "parameters": [
+        "3newwholegroups30responses;312total2160;309reused",
+        "exact3/3/4seven_given_positions1,2,3,5,8,9,10;3ungivenoneword",
+        "0newsourcepapers;14historicgroupsstillheld;goalactive",
+        "30realIABresponses;negative_and_unlisted_controls;noAIorproductioncalls"
+      ],
+      "pages": 10,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/author-g11-threepassage-v0.1.py",
+          "bytes": 13762,
+          "sha256": "c40370686607c3a702535eed674b1d4a81822974ea2e4ab7663a2e6872c375ee",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/refine-g11-threepassage-v0.1.py",
+          "bytes": 2542,
+          "sha256": "4a9e0786059daf675d36f67df3cf00149fe9ff2a33886bc255d5df8a2fbd2a7b",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/checkpoint-g11-threepassage-v0.1.py",
+          "bytes": 5574,
+          "sha256": "822751d26b1ad75184abcd66d2402a98e8fa870d1e8368c02eedc07c40476107",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple312-review-check-v0.1.json",
+          "bytes": 1053,
+          "sha256": "effe4e2ef6f8ae04160ce352d1fd7e0fcef2980e92986107af2bb72ce00d1ea9",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple312-review-check-v0.2.json",
+          "bytes": 1053,
+          "sha256": "effe4e2ef6f8ae04160ce352d1fd7e0fcef2980e92986107af2bb72ce00d1ea9",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple312-fill-core-check-v0.1.json",
+          "bytes": 283,
+          "sha256": "8ec895c57301eeae2f882f8d920f56ef936a3a9d48a6e94983662038a310f997",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple312-selection-core-check-v0.1.json",
+          "bytes": 225,
+          "sha256": "f491817de5609efdbfec47c5436220249a740aeca411f64ad651d26d3a1b9ccd",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple3-browser-v0.1.json",
+          "bytes": 936,
+          "sha256": "f6703a75a448fc0b6b839ee692b6fba224865bc127ef0e68f29a39a267badac4",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/review312-g11-triple-delta-v0.1.json",
+          "bytes": 42094,
+          "sha256": "f1fe43c2e92a95d0d8f60d6c2e9b900509b358d75906203150a1e3b0551b72a5",
+          "exit_code": 0
+        },
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple3-body-screen-v0.1.json",
+          "bytes": 1272,
+          "sha256": "bf03c8a66e7817ce1b4a1d6fc630f90463b3fa543cdf05b8852f333b72a75561",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "id": "complete-coverage-g11-triple-frozen-check-v0.1",
+      "source_acquisition_ids": [],
+      "tool": "check_all_levels_review.py",
+      "tool_version": "0.1",
+      "parameters": [
+        "frozen_delta_chain312_completegroups2160responses"
+      ],
+      "pages": 1,
+      "page_records": [
+        {
+          "output": "build/english-benchmark-authority-20261017/g11triple312-frozen-check-v0.1.json",
+          "bytes": 1053,
+          "sha256": "effe4e2ef6f8ae04160ce352d1fd7e0fcef2980e92986107af2bb72ce00d1ea9",
+          "exit_code": 0
+        }
+      ]
     }
   ],
   "observed_errors": [
