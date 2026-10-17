@@ -1,0 +1,116 @@
+{
+  "version": "0.1",
+  "id": "primary6-passageTF-island-rain",
+  "title": "小六听短文判断：岛上的雨天",
+  "grade": "primary6",
+  "family": "listening_passage_true_false",
+  "family_label": "听短文判断",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part4",
+  "source_binding": "p6passageTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.15.json",
+    "sha256": "d064df25a122884e43ded1cc19383f40722ef40ebd43373a415de3109ce6ce83"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.15.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 125
+    }
+  },
+  "audio_introduction": "Read the five statements. Listen to the whole passage.",
+  "instruction": "阅读全部五个陈述，听一段完整短文，判断各陈述与短文信息是否一致。选T（一致）或F（不一致）。原卷未印遍数和停顿；本机短文一遍、前后各25秒，可重播，只作审阅安排。",
+  "source_form_notice": "小六东城区公开期末原页第四大题一完整短文/五个印出陈述T-F已核，地区学期正文有据，原校施测未认证。源录音/脚本/参考键缺、重播和停顿未知，不从陈述倒造原答案。本稿完整原创录音/五陈述及依据，非源gold或独立难度验证。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "My name is Hannah. This is my second visit to Green Island. Last year I came with my school, but this time I am here with my parents and my brother. It rained all morning, so we stayed inside and played cards. The rain has stopped now. This afternoon we plan to cycle to the lighthouse. Tomorrow morning we are going out in a small boat with a local guide. My brother hopes to see seals, but the guide says we may not see any. Even with the rain, I am enjoying the holiday. I would love to come back again."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "This is Hannah's first visit to the island.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "明确second visit，去年和学校来过，非首次。"
+        },
+        {
+          "stem": "Hannah is visiting the island with her family this time.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "这次与父母和兄弟同行，不把去年的学校行程混入。"
+        },
+        {
+          "stem": "The family played cards during the rainy morning.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "雨天留在室内玩牌，与陈述一致。"
+        },
+        {
+          "stem": "They plan to take the boat trip this afternoon.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "下午计划骑车去灯塔，坐船是明早。"
+        },
+        {
+          "stem": "Hannah would like to visit the island again.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "结尾明确would love to come back again；不从音色猜情绪。"
+        }
+      ]
+    }
+  ]
+}

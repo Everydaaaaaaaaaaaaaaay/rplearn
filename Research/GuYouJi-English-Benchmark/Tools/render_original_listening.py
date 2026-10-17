@@ -60,13 +60,19 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion'}
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching','listening_long_conversation_choice','listening_passage_choice','listening_table_completion','listening_passage_true_false'}
     if draft.get('senior_short_source_bound'):
         from senior_short_listening_contract import validate_draft
         validate_draft(draft)
     elif draft.get('junior_source_bound'):
         from junior_listening_contract import validate_draft
         validate_draft(draft)
+    elif family=='listening_passage_true_false':
+        assert draft['grade']=='primary6' and len(draft['clips'])==1
+        assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
+        c=draft['clips'][0];assert len(c['questions'])==5 and len(c['turns'])==1 and c['turns'][0]['speaker']=='N'
+        assert c['preview_seconds']==c['answer_seconds']==25
+        assert all([k for k,_ in q['options']]==['T','F']for q in c['questions'])
     elif family=='listening_picture_matching':
         assert draft['grade']=='primary3' and len(draft['clips'])==1
         assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
@@ -139,7 +145,7 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
     elif family=='listening_passage_completion' or family=='listening_dialogue_choice' and draft['grade']=='primary5':
         assert draft['source_repeat_count']==3
         repeat_count=3
-    elif family in {'listening_dialogue_choice','listening_picture_true_false','listening_picture_matching'}:
+    elif family in {'listening_dialogue_choice','listening_picture_true_false','listening_picture_matching','listening_passage_true_false'}:
         repeat_count=1
     elif family=='listening_short_conversation_choice':
         assert draft['source_hear_each_piece_once'] and draft['source_answer_seconds']==10

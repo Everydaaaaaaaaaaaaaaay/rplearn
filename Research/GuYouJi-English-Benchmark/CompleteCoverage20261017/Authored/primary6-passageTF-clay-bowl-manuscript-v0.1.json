@@ -1,0 +1,116 @@
+{
+  "version": "0.1",
+  "id": "primary6-passageTF-clay-bowl",
+  "title": "小六听短文判断：陶碗课",
+  "grade": "primary6",
+  "family": "listening_passage_true_false",
+  "family_label": "听短文判断",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part4",
+  "source_binding": "p6passageTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.15.json",
+    "sha256": "d064df25a122884e43ded1cc19383f40722ef40ebd43373a415de3109ce6ce83"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.15.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 125
+    }
+  },
+  "audio_introduction": "Read the five statements. Listen to the whole passage.",
+  "instruction": "阅读全部五个陈述，听一段完整短文，判断各陈述与短文信息是否一致。选T（一致）或F（不一致）。原卷未印遍数和停顿；本机短文一遍、前后各25秒，可重播，只作审阅安排。",
+  "source_form_notice": "小六东城区公开期末原页第四大题一完整短文/五个印出陈述T-F已核，地区学期正文有据，原校施测未认证。源录音/脚本/参考键缺、重播和停顿未知，不从陈述倒造原答案。本稿完整原创录音/五陈述及依据，非源gold或独立难度验证。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "I am Daniel. On Saturday I went to a pottery class with my friend Leo. We nearly arrived late because we waited at the wrong bus stop. Luckily, the next bus came quickly. Our teacher showed us how to make a small bowl. I had never worked with clay before, and my first bowl fell over. The teacher gave me some more clay, and I tried again. Leo made a cup instead of a bowl. We could not take our work home that day because it still needed to go into the kiln. We will collect it next weekend. I plan to give my bowl to my grandmother."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Daniel went to the class alone.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "明确with my friend Leo，非独自。"
+        },
+        {
+          "stem": "They first waited at the wrong bus stop.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "明确wrong bus stop，后来下一班车来得快。"
+        },
+        {
+          "stem": "Daniel's first bowl was successful.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "first bowl fell over，老师给泥重做。"
+        },
+        {
+          "stem": "Leo made a cup.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Leo chose a cup instead of a bowl，不能把Daniel作品移给他。"
+        },
+        {
+          "stem": "Daniel plans to give his bowl to his grandmother.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "末句明确赠送计划，未说当天已取回作品。"
+        }
+      ]
+    }
+  ]
+}

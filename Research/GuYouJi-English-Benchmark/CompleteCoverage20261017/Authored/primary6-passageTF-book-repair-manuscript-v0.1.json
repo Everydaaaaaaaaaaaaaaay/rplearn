@@ -1,0 +1,116 @@
+{
+  "version": "0.1",
+  "id": "primary6-passageTF-book-repair",
+  "title": "小六听短文判断：修补一本书",
+  "grade": "primary6",
+  "family": "listening_passage_true_false",
+  "family_label": "听短文判断",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part4",
+  "source_binding": "p6passageTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.15.json",
+    "sha256": "d064df25a122884e43ded1cc19383f40722ef40ebd43373a415de3109ce6ce83"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.15.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 125
+    }
+  },
+  "audio_introduction": "Read the five statements. Listen to the whole passage.",
+  "instruction": "阅读全部五个陈述，听一段完整短文，判断各陈述与短文信息是否一致。选T（一致）或F（不一致）。原卷未印遍数和停顿；本机短文一遍、前后各25秒，可重播，只作审阅安排。",
+  "source_form_notice": "小六东城区公开期末原页第四大题一完整短文/五个印出陈述T-F已核，地区学期正文有据，原校施测未认证。源录音/脚本/参考键缺、重播和停顿未知，不从陈述倒造原答案。本稿完整原创录音/五陈述及依据，非源gold或独立难度验证。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "I am Nora. I found an old storybook in a box at home on Sunday. It belonged to my mother when she was a child. Some pages were loose, but none were missing. I wanted to use ordinary sticky tape to fix them. My mother said that might damage the paper later, so we took the book to a free repair session at the library. A volunteer showed us how to attach the loose pages with special paper strips. We did the work ourselves while she helped. The book is now back on our shelf at home. I am glad we repaired it instead of throwing it away."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Nora borrowed the book from the school library.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "书在家中箱子里找到，原属母亲；后去图书馆修，非从校图书馆借。"
+        },
+        {
+          "stem": "Several pages were missing from the book.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "有松页但明确none were missing，不能混同。"
+        },
+        {
+          "stem": "The repair session was free.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "明确a free repair session at the library。"
+        },
+        {
+          "stem": "Nora and her mother did the repair with help from a volunteer.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "we did the work ourselves while she helped，谁动手谁帮助分开。"
+        },
+        {
+          "stem": "The repaired book is now at home.",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "明确back on our shelf at home。"
+        }
+      ]
+    }
+  ]
+}

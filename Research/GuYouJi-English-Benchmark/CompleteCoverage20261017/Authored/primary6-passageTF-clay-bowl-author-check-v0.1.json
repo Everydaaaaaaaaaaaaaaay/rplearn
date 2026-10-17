@@ -1,0 +1,138 @@
+{
+  "version": "0.1",
+  "id": "primary6-passageTF-clay-bowl",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "e41f2926ab026477806f1b30b15fa57753cda8d503bb68726d2815a0dd500b25",
+  "source_binding": "p6passageTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.15.json",
+    "sha256": "d064df25a122884e43ded1cc19383f40722ef40ebd43373a415de3109ce6ce83"
+  },
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part4",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Daniel went to the class alone.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "明确with my friend Leo，非独自。"
+    },
+    {
+      "number": 2,
+      "stem": "They first waited at the wrong bus stop.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "明确wrong bus stop，后来下一班车来得快。"
+    },
+    {
+      "number": 3,
+      "stem": "Daniel's first bowl was successful.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "first bowl fell over，老师给泥重做。"
+    },
+    {
+      "number": 4,
+      "stem": "Leo made a cup.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Leo chose a cup instead of a bowl，不能把Daniel作品移给他。"
+    },
+    {
+      "number": 5,
+      "stem": "Daniel plans to give his bowl to his grandmother.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "末句明确赠送计划，未说当天已取回作品。"
+    }
+  ],
+  "canonical_response_block_sha256": "5b6f6efcdeafafa90c65356d66e57a0a92d83a1f6b09c3257c1281c56cea85a5",
+  "student_passage": "[完整短文五题音频（本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-clay-bowl-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-passageTF-clay-bowl-manuscript-v0.1.json",
+    "sha256": "4ccf60109a96400e140b2fd8160cb6c35a50f0aea2a5c3b762ae9ff87887ff7b"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-clay-bowl-audio-v0.1.json",
+    "sha256": "f140d19079b383185c3337430b473ab83f67fec95cef02cd52a475330d45b010"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-clay-bowl-extract1-v0.1.m4a",
+      "sha256": "8aeccda403c6e9c298a6572b95be5c761c48bdcda71c11d0413c5687227860df",
+      "seconds": 87.24979591836734,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_passage_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 32,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 108,
+    "audio_spoken_words_with_instructions": 117,
+    "audio_seconds_with_pauses": 87.24979591836734
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

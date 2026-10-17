@@ -1,0 +1,138 @@
+{
+  "version": "0.1",
+  "id": "primary6-passageTF-book-repair",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "0bca841e3ff565a95dd95ad4fb240f731f25959bebf61d4c428f12fa236602c7",
+  "source_binding": "p6passageTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.15.json",
+    "sha256": "d064df25a122884e43ded1cc19383f40722ef40ebd43373a415de3109ce6ce83"
+  },
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part4",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Nora borrowed the book from the school library.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "书在家中箱子里找到，原属母亲；后去图书馆修，非从校图书馆借。"
+    },
+    {
+      "number": 2,
+      "stem": "Several pages were missing from the book.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "有松页但明确none were missing，不能混同。"
+    },
+    {
+      "number": 3,
+      "stem": "The repair session was free.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "明确a free repair session at the library。"
+    },
+    {
+      "number": 4,
+      "stem": "Nora and her mother did the repair with help from a volunteer.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "we did the work ourselves while she helped，谁动手谁帮助分开。"
+    },
+    {
+      "number": 5,
+      "stem": "The repaired book is now at home.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "明确back on our shelf at home。"
+    }
+  ],
+  "canonical_response_block_sha256": "6423ad30416dd2c996f181c6dd24340c97ceb3b26df3d76d8a7ec5ce7bf59ba5",
+  "student_passage": "[完整短文五题音频（本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-book-repair-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-passageTF-book-repair-manuscript-v0.1.json",
+    "sha256": "79fe2447d07ea3ae0ef8538024bf533c84a563320eceb598d072583f67253071"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-book-repair-audio-v0.1.json",
+    "sha256": "13d37f6b1fa303df936b8278a1ef7b973e40a321995ff755a08218f6b9ebaf5c"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-book-repair-extract1-v0.1.m4a",
+      "sha256": "59fc90ced80166e41d35c3bac59387b263058551406f96c977c92533fe9170c5",
+      "seconds": 87.1849433106576,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_passage_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 39,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 108,
+    "audio_spoken_words_with_instructions": 117,
+    "audio_seconds_with_pauses": 87.1849433106576
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

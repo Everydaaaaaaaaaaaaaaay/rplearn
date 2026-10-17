@@ -1,0 +1,138 @@
+{
+  "version": "0.1",
+  "id": "primary6-passageTF-island-rain",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "d345ee6d550e151da91c2f660d1c0138ff28c04b700e8f5c7d4c7a4a65b3c980",
+  "source_binding": "p6passageTF5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.15.json",
+    "sha256": "d064df25a122884e43ded1cc19383f40722ef40ebd43373a415de3109ce6ce83"
+  },
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part4",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "This is Hannah's first visit to the island.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "明确second visit，去年和学校来过，非首次。"
+    },
+    {
+      "number": 2,
+      "stem": "Hannah is visiting the island with her family this time.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "这次与父母和兄弟同行，不把去年的学校行程混入。"
+    },
+    {
+      "number": 3,
+      "stem": "The family played cards during the rainy morning.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "雨天留在室内玩牌，与陈述一致。"
+    },
+    {
+      "number": 4,
+      "stem": "They plan to take the boat trip this afternoon.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "下午计划骑车去灯塔，坐船是明早。"
+    },
+    {
+      "number": 5,
+      "stem": "Hannah would like to visit the island again.",
+      "options": [
+        [
+          "T",
+          "一致"
+        ],
+        [
+          "F",
+          "不一致"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "结尾明确would love to come back again；不从音色猜情绪。"
+    }
+  ],
+  "canonical_response_block_sha256": "e29dd3da9d93cfb025a6eaaf497919d236be30e2b27bcd6df5beea7e76333176",
+  "student_passage": "[完整短文五题音频（本机一遍，可重播）](../../../../build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-island-rain-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-passageTF-island-rain-manuscript-v0.1.json",
+    "sha256": "fab3ed80637bd599bbb14a94fb3df063af1bc419ef05e0761cd8e2738f736224"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-island-rain-audio-v0.1.json",
+    "sha256": "6c6ddd717a0972ac0abe91615953bc69eb94e285be147ccca59afd0360a03805"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary6-passageTF-island-rain-extract1-v0.1.m4a",
+      "sha256": "d0af4717afccfb697b59816d428c8e55b0784938d58dac8e54591312d6f0ecb2",
+      "seconds": 85.54725623582766,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_passage_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 43,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 101,
+    "audio_spoken_words_with_instructions": 110,
+    "audio_seconds_with_pauses": 85.54725623582766
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
