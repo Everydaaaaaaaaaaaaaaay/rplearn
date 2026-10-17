@@ -145,12 +145,12 @@ function render(){
  if(g.kind==='listening_picture_true_false'){
   const pictures=[...el('student').querySelectorAll('img.passage-image')].map(img=>img.closest('figure')),tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')];
   if(pictures.length===g.questions.length&&tracks.length===pictures.length&&g.requiredAudioAssets?.every((a,i)=>a.response_numbers.length===1&&a.response_numbers[0]===g.questions[i].number)){
-   pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='图片'+(i+1))heading.remove();fields[i].querySelector('legend').after(picture,tracks[i]);});
+   pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&['图片'+(i+1),'第'+(i+1)+'图'].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(picture,tracks[i]);});
   }
  }
- if(g.kind==='listening_picture_matching'){
+ if(g.kind==='listening_picture_matching'||g.pictureToEventRank){
   const pictures=[...el('student').querySelectorAll('img.passage-image')].map(img=>img.closest('figure')),fields=[...el('responses').querySelectorAll('fieldset')];
-  if(pictures.length===g.questions.length){pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='图片'+(i+1))heading.remove();fields[i].querySelector('legend').after(picture);});}
+  if(pictures.length===g.questions.length){pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&['图片'+(i+1),'第'+(i+1)+'图'].includes(heading.textContent.trim()))heading.remove();fields[i].querySelector('legend').after(picture);});}
  }
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();

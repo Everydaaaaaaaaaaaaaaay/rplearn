@@ -1,0 +1,210 @@
+{
+  "version": "0.1",
+  "id": "primary4-eventrank-saturday-home",
+  "title": "小四图片填时序：周六在家",
+  "grade": "primary4",
+  "family": "listening_picture_ordering",
+  "family_label": "听短文图片排序",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part4",
+  "source_binding": "p4pictureeventrank5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.23.json",
+    "sha256": "cbb4d79f14fbec693964e7f16cc36fa129cdbb0c021b61852a23be26ac1a3adb"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.23.json",
+  "sequence_table_listening": true,
+  "picture_to_event_rank": true,
+  "render_repeat_count": 1,
+  "source_repeat_count": null,
+  "source_replay_rule": "not_printed",
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 100
+    }
+  },
+  "audio_introduction": "Look at all five pictures. Listen to the whole passage. A is the first event and E is the last.",
+  "instruction": "听一篇完整短文，为全部5幅编号图各选事情发生的次序：A第1件事、B第2件事、C第3件事、D第4件事、E第5件事。每图填写时序字母，不把时序格当图片字母。源遍数/停顿未印；本机全篇一遍、前后25秒可重播，仅为审阅编排。",
+  "source_form_notice": "小四房山普通卷原页16—20是五幅编号图，每图接收A—E时序字母；A最先、E最后，不是给五个时序格选择图片字母。原图/题面在库，原音轨/脚本/键缺，答案听力略，原实际事件次序未猜；正文区/年级/学期已核、施测未认证。遍数/停顿未印，本机整篇一遍前后25秒可重播，单属审阅安排。",
+  "local_timing_notice": "本机全篇一遍、前后25秒，没有源三遍要求；原遍数/时序未知，不继承别卷。",
+  "format_summary": "1完整短文 / 5编号图各填A—E事件次序 / 5回应 / 源遍数未知、本机1遍",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture2-v0.2.svg",
+      "sha256": "08cafdbd639b82fdae3bf0fff002016ea9d8a90ea124f0fb30363a1085b645fe"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture1-v0.1.svg",
+      "sha256": "fd0b0582b98d34096f23e1be6760fce2d1ed62561855f0b1b5f2210653fb14a1"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture4-v0.1.svg",
+      "sha256": "147a93c3b6cac3e2447c8e6ff6d626da21d3cdc360f9b36e4c24b52473dd36d6"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture5-v0.1.svg",
+      "sha256": "8744bc87c55e968f7c7021facf68e736e2ceddc9b3e67e5c117c82c14063f4ec"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture1-v0.1.svg",
+      "sha256": "0f08c94c7eb15ebc0439030d416ace6cf4e65e47de7a7e020dfb622ddfabf8af"
+    }
+  ],
+  "visual_panel_semantics": {
+    "1": "wash",
+    "2": "write",
+    "3": "cook",
+    "4": "read",
+    "5": "water"
+  },
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "This is my plan for Saturday. First, I will read my new book. Next, I will write a letter to my friend. Then I will water the plant by the window. After that, I will wash my hands. Finally, I will cook some soup for lunch. These are the five things I will do."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图的事情在短文中排第几？",
+          "options": [
+            [
+              "A",
+              "第1件事"
+            ],
+            [
+              "B",
+              "第2件事"
+            ],
+            [
+              "C",
+              "第3件事"
+            ],
+            [
+              "D",
+              "第4件事"
+            ],
+            [
+              "E",
+              "第5件事"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "第1图是wash；完整短文第4件事为此活动，故填D。完整时序为A read, B write, C water, D wash, E cook；其余次序标记分别指其他事件，不按图片排版顺序作答。"
+        },
+        {
+          "stem": "第2图的事情在短文中排第几？",
+          "options": [
+            [
+              "A",
+              "第1件事"
+            ],
+            [
+              "B",
+              "第2件事"
+            ],
+            [
+              "C",
+              "第3件事"
+            ],
+            [
+              "D",
+              "第4件事"
+            ],
+            [
+              "E",
+              "第5件事"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "第2图是write；完整短文第2件事为此活动，故填B。完整时序为A read, B write, C water, D wash, E cook；其余次序标记分别指其他事件，不按图片排版顺序作答。"
+        },
+        {
+          "stem": "第3图的事情在短文中排第几？",
+          "options": [
+            [
+              "A",
+              "第1件事"
+            ],
+            [
+              "B",
+              "第2件事"
+            ],
+            [
+              "C",
+              "第3件事"
+            ],
+            [
+              "D",
+              "第4件事"
+            ],
+            [
+              "E",
+              "第5件事"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "第3图是cook；完整短文第5件事为此活动，故填E。完整时序为A read, B write, C water, D wash, E cook；其余次序标记分别指其他事件，不按图片排版顺序作答。"
+        },
+        {
+          "stem": "第4图的事情在短文中排第几？",
+          "options": [
+            [
+              "A",
+              "第1件事"
+            ],
+            [
+              "B",
+              "第2件事"
+            ],
+            [
+              "C",
+              "第3件事"
+            ],
+            [
+              "D",
+              "第4件事"
+            ],
+            [
+              "E",
+              "第5件事"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "第4图是read；完整短文第1件事为此活动，故填A。完整时序为A read, B write, C water, D wash, E cook；其余次序标记分别指其他事件，不按图片排版顺序作答。"
+        },
+        {
+          "stem": "第5图的事情在短文中排第几？",
+          "options": [
+            [
+              "A",
+              "第1件事"
+            ],
+            [
+              "B",
+              "第2件事"
+            ],
+            [
+              "C",
+              "第3件事"
+            ],
+            [
+              "D",
+              "第4件事"
+            ],
+            [
+              "E",
+              "第5件事"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "第5图是water；完整短文第3件事为此活动，故填C。完整时序为A read, B write, C water, D wash, E cook；其余次序标记分别指其他事件，不按图片排版顺序作答。"
+        }
+      ]
+    }
+  ]
+}
