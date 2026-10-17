@@ -7,6 +7,13 @@ from compile_short_dialogue_listening import ref
 from render_original_listening import words
 
 
+def coloured_item(colour,name,capitalized=False):
+    # These source-bound charts use the finite colour vocabulary below.
+    assert colour in {'blue','red','black','green','white','yellow','orange','brown'}
+    article='an' if colour=='orange' else 'a'
+    return (article.capitalize() if capitalized else article)+' '+colour+' '+name
+
+
 def validate(d):
     assert d['shop_grid_reading'] and d['grade']==7 and d['family']=='reading_choice'
     assert d['source_group_id']=='grade7-huangshan2026-21cnjy25150014.reading.A'
@@ -41,7 +48,7 @@ def validate(d):
             for k,pair in q['option_pairs'].items():
                 assert len(pair)==2 and [z[0]for z in pair]in[[0,1],[2,3]]
                 truth[k]=all(d['items'][i]['store']==q['store'] and colour in d['items'][i]['colours']for i,colour in pair)
-                labels.append([k,'A '+pair[0][1]+' '+d['items'][pair[0][0]]['name']+' and a '+pair[1][1]+' '+d['items'][pair[1][0]]['name']+'.'])
+                labels.append([k,coloured_item(pair[0][1],d['items'][pair[0][0]]['name'],True)+' and '+coloured_item(pair[1][1],d['items'][pair[1][0]]['name'])+'.'])
             assert q['options']==labels
         assert set(truth)==set('ABCD') and [k for k,v in truth.items()if v]==[q['answer']]
         computed.append(truth)
@@ -88,9 +95,13 @@ def validate_figure_text(d,raw):
     return '\n'.join(values)
 
 
-def compile_author(manuscript,version='0.1'):
+def compile_author(manuscript,version='0.1',reuse_figure=None):
     d=json.loads(manuscript.read_text());truth=validate(d);bp=load_ref(d['source_bindings']);b=next(x for x in json.loads(bp.read_text())['bindings']if x['id']==d['source_binding'])
-    fp=manuscript.parent/(d['id']+'-figure-v'+version+'.svg');fig=figure(d,fp);root=ET.fromstring(fp.read_bytes());visible='\n'.join(''.join(n.itertext())for n in root.iter()if n.tag.split('}')[-1]=='text')
+    if reuse_figure:
+        fp=load_ref(reuse_figure);fig=ref(fp)
+    else:
+        fp=manuscript.parent/(d['id']+'-figure-v'+version+'.svg');fig=figure(d,fp)
+    visible=validate_figure_text(d,fp.read_bytes())
     tasks=[{k:q[k]for k in ['number','stem','options','answer']}|dict(rationale='；'.join(k+'：'+q['candidate_reasons'][k]for k in 'ABCD'))for q in d['questions']]
     alt='Four product cards in a two-by-two grid. '+'; '.join(visible.splitlines());body='!['+alt+']('+str(fp)+')';block=response_markdown(tasks)
     p=manuscript.parent/(d['id']+'-v'+version+'.md');ap=manuscript.parent/(d['id']+'-author-check-v'+version+'.json');assert not p.exists()and not ap.exists();p.write_text('# '+d['title']+'\n\n## 学生题面\n\n'+d['instruction']+'\n\n'+body+'\n\n<!-- responses:start -->\n\n'+block+'\n\n<!-- responses:end -->\n\n## 作者核对\n\n'+d['source_notice']+'\n')
