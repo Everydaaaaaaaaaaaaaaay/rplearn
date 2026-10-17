@@ -1,0 +1,171 @@
+{
+  "id": "cet4-single-nightbus-requests",
+  "title": "四级：夜间公交的临时下客点",
+  "grade": "undergraduate",
+  "family": "reading_choice",
+  "source_group_id": "cet4.2016.sample.reading2",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedCETReadingSourceBindings-v0.1.json",
+    "sha256": "9c927da4b3fb41189614faf4c8acfd156eca1d113097cba92901ce70b09938ec"
+  },
+  "source_binding": "inherited-cet-reading-0",
+  "instruction": "Read the passage and choose the best answer to each question. 每篇五题，每题只选一项；全部材料与问题均需作答。",
+  "source_notice": "参照已核考试院2016大纲及完整样题：每篇五题、每题四候选，四级每篇300—350词、六级400—450词；单篇完整练习与整节两篇十题分列，不把单篇冒充整节。本文城镇、机构、人物、事件与研究均为原创虚构，按文意作答，不作现实事实。旧官方样题原键既有风险保留，不当独立gold；本稿逐项依据与干扰反证为作者自审，独立教研、学生、商用及生产未验证，不证明产品档位人群等值。",
+  "passages": [
+    {
+      "text": "In the fictional town of Alwick, the last bus from the shopping district followed the same route as the daytime service. Passengers could predict exactly where it would stop. But several cleaners finishing work late had to walk back along a dark road after leaving it. The regular route passed their street without stopping because there was no marked bus stop there.\n\nA drivers’ representative proposed allowing passengers to request an extra stop after nine in the evening. The bus would keep its usual route, but a driver could choose a safe place between official stops when somebody asked. Supporters thought this would shorten the final walk without requiring an additional service. The proposal did not promise a bus to every passenger’s door.\n\nSome residents worried that repeated requests would make arrival times unreliable. Rather than introduce the arrangement everywhere, the council tried it on one evening route for a month. Drivers noted requests and any delays. They also recorded occasions when they could not stop safely, so a refusal would not be mistaken for forgetting a passenger.\n\nThe trial produced fewer requests than residents had feared, although a football match caused an unusually busy evening. Drivers wanted a clear rule about requests near road crossings. Passengers wanted the driver to explain a refusal before passing their street. Both points concerned how the arrangement should operate, rather than whether late workers deserved consideration.\n\nThe council continued the trial while developing clearer guidance. Its transport officer resisted describing the change as a replacement for proper stops or street lighting. Those improvements involved different decisions and remained necessary in some places. The request system offered a useful response to a particular difficulty, she said, but its success would depend on passengers understanding its limits and drivers having enough information to act consistently.",
+      "questions": [
+        {
+          "number": 1,
+          "stem": "What problem prompted the proposed change?",
+          "options": [
+            [
+              "A",
+              "Late workers faced a difficult walk after leaving the bus."
+            ],
+            [
+              "B",
+              "The last bus no longer passed through the shopping district."
+            ],
+            [
+              "C",
+              "Drivers were unable to remember the usual route."
+            ],
+            [
+              "D",
+              "Cleaners needed an extra daytime service to their workplace."
+            ]
+          ],
+          "answer": "A",
+          "evidence": "had to walk back along a dark road",
+          "candidate_reasons": {
+            "A": "首段明确下车后暗路折返，A准确",
+            "B": "末班车从商业区出发，不是取消经过",
+            "C": "路线固定可预测，非司机遗忘",
+            "D": "问题是夜间回家步行，不是白天上班班次"
+          }
+        },
+        {
+          "number": 2,
+          "stem": "How would the requested stops work?",
+          "options": [
+            [
+              "A",
+              "Drivers would leave the route to reach individual homes."
+            ],
+            [
+              "B",
+              "Passengers would choose where official bus stops were built."
+            ],
+            [
+              "C",
+              "Drivers could stop safely between existing stops on the same route."
+            ],
+            [
+              "D",
+              "Every late bus would stop at each street whether requested or not."
+            ]
+          ],
+          "answer": "C",
+          "evidence": "The bus would keep its usual route",
+          "candidate_reasons": {
+            "A": "明确keep usual route且不承诺送家门",
+            "B": "乘客请求临时下车，不决定建设正式站点",
+            "C": "同一路线、官方站间安全处下客符合机制",
+            "D": "需有人请求，并非每街自动停"
+          }
+        },
+        {
+          "number": 3,
+          "stem": "Why did the council initially use only one route?",
+          "options": [
+            [
+              "A",
+              "To find out whether late workers would abandon public transport."
+            ],
+            [
+              "B",
+              "To examine requests and delays before extending the arrangement."
+            ],
+            [
+              "C",
+              "To establish that extra stops would never affect journey times."
+            ],
+            [
+              "D",
+              "To limit the service permanently to football spectators."
+            ]
+          ],
+          "answer": "B",
+          "evidence": "tried it on one evening route for a month",
+          "candidate_reasons": {
+            "A": "没有测试放弃公交的目的",
+            "B": "居民担心延误，试验记录请求与延误，B符合",
+            "C": "试验考察影响，不预先证明永不延误",
+            "D": "足球只是异常忙晚，未限定受众"
+          }
+        },
+        {
+          "number": 4,
+          "stem": "What did the concerns raised after the trial mainly address?",
+          "options": [
+            [
+              "A",
+              "The responsibility of cleaners for installing street lights."
+            ],
+            [
+              "B",
+              "The need to replace drivers with transport officers."
+            ],
+            [
+              "C",
+              "Whether passengers should pay for each requested stop."
+            ],
+            [
+              "D",
+              "Rules and communication needed to operate the system."
+            ]
+          ],
+          "answer": "D",
+          "evidence": "Both points concerned how the arrangement should operate",
+          "candidate_reasons": {
+            "A": "没有把照明安装责任交清洁工",
+            "B": "未要求替换司机",
+            "C": "未讨论逐站加价",
+            "D": "安全请求位置与拒停解释均属操作与沟通"
+          }
+        },
+        {
+          "number": 5,
+          "stem": "How does the transport officer view the request system?",
+          "options": [
+            [
+              "A",
+              "As an alternative that makes fixed stops unnecessary."
+            ],
+            [
+              "B",
+              "As a helpful measure with practical limits."
+            ],
+            [
+              "C",
+              "As a service suitable only for unusually busy evenings."
+            ],
+            [
+              "D",
+              "As a reason to postpone all improvements to street lighting."
+            ]
+          ],
+          "answer": "B",
+          "evidence": "a useful response to a particular difficulty",
+          "candidate_reasons": {
+            "A": "明确不能替代proper stops",
+            "B": "有用但范围及执行有条件，B概括",
+            "C": "足球忙晚非唯一适用情境",
+            "D": "照明有些地方仍必要，并未全推迟"
+          }
+        }
+      ]
+    }
+  ]
+}

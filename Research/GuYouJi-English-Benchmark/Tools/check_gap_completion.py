@@ -43,6 +43,9 @@ def check(data, plan):
             if b.get('task_mode') == 'junior_source_bound_listening':
                 from compile_junior_listening import check as check_junior_listening
                 check_junior_listening(g,a,b,source)
+            if b.get('task_mode') == 'inherited_cet_reading':
+                from compile_inherited_reading import check as check_inherited_reading
+                check_inherited_reading(g,a,b,source)
             if b.get('task_mode') == 'inherited_shared_five':
                 from compile_inherited_shared import check as check_inherited_shared
                 check_inherited_shared(g,a,b,source)
