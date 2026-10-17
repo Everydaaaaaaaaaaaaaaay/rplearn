@@ -35,11 +35,25 @@ def pinned_revision(prior,current,record):
     for group in [prior,current]:
         load_ref(group['candidate']);load_ref(group['author_check'])
     assert len(prior['questions'])==len(current['questions'])==record['response_count']
+    if record.get('source_notice_only_correction'):
+        assert prior['questions']==current['questions']
+        assert prior.get('requiredAudioAssets')==current.get('requiredAudioAssets')
     for key in ['grade','kind','anchor_group_ids','responseMode','instruction','fixedSharedBank','sourceFormNotice','requiredPassageImages']:
         # Per-question radio groups omit this optional flag; an omitted flag has
         # the same renderer behavior as false. Keep every other field required.
         old_value = prior.get(key, False) if key == 'fixedSharedBank' else prior[key]
         new_value = current.get(key, False) if key == 'fixedSharedBank' else current[key]
+        if record.get('source_notice_only_correction') and key=='sourceFormNotice':
+            assert hashlib.sha256(old_value.encode()).hexdigest()==record['old_source_notice_sha256']
+            assert hashlib.sha256(new_value.encode()).hexdigest()==record['new_source_notice_sha256']
+            continue
+        if record.get('source_notice_only_correction') and key=='requiredPassageImages':
+            assert len(old_value)==len(new_value)
+            for old_image,new_image in zip(old_value,new_value):
+                load_ref(old_image['asset']);load_ref(new_image['asset'])
+                assert old_image['asset']['sha256']==new_image['asset']['sha256']
+                assert {k:v for k,v in old_image.items()if k!='asset'}=={k:v for k,v in new_image.items()if k!='asset'}
+            continue
         assert old_value == new_value, 'Revision altered source form: '+key
     assert record['source_form_kept'] and record['reason']
     return True
