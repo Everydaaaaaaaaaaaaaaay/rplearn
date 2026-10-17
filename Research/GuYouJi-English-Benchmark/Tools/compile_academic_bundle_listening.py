@@ -55,8 +55,9 @@ def compile_author(manuscript,manifest,version='0.1'):
         if q['options']:
             task=dict(number=n,stem=q['stem'],options=q['options'],answer=q['answer'],rationale=q['rationale']+'；'+'；'.join(k+'：'+v for k,v in q['candidate_reasons'].items()))
         else:
-            task=dict(number=n,stem=q['stem'],options=[],acceptedAnswers=q['acceptedAnswers'],answer=' / '.join(q['acceptedAnswers']),rationale=q['rationale']+' 排除：'+'；'.join(k+'：'+v for k,v in q['rejection_reasons'].items()),fillMarking=dict(version=1,review='author_context_checked',normalization='source_excerpt_v1',sourceBound=True,unknownSyntax='review',hyphenatedWordCount='one',maxWords=1 if kind=='listening_research_table_completion'else 2 if kind=='listening_dialogue_sentence_completion'else 3,unlisted='review',rejectedAnswers=q['rejected']))
+            task=dict(number=n,stem=q['stem'],options=[],acceptedAnswers=q['acceptedAnswers'],answer=' / '.join(q['acceptedAnswers']),rationale=q['rationale']+' 排除：'+'；'.join(k+'：'+v for k,v in q['rejection_reasons'].items()),fillMarking=dict(version=1,review='author_context_checked',normalization='source_excerpt_v1',sourceBound=True,unknownSyntax='review',hyphenatedWordCount='one',maxWords=1 if kind=='listening_research_table_completion'else 2 if kind in {'listening_dialogue_sentence_completion','listening_summary_completion'}else 3,unlisted='review',rejectedAnswers=q['rejected']))
             if q.get('fillPair'):task['fillPair']=q['fillPair']
+            if kind=='listening_summary_completion':task['fillMarking']['numberAllowance']='one'
             if kind=='listening_note_table_completion' and n==9:
                 task['fillMarking']=dict(version=1,review='author_context_checked',normalization='sterling_amount_v1',sourceBound=True,unknownSyntax='review',maxWords=3,numberAllowance='one',unlisted='review',rejectedAnswers=q['rejected'],sterlingPence=d['ticket_pence'],currencyPrinted='£',currencyPrintedLocation='other_table_row')
         if kind=='listening_multiselect':task['selectionSet']=dict(version=1,id=d['id']+'-prompt',positions=[1,2,3],correct=d['correct'],order='either',distinct=True,localMatchingRule='distinct_correct_options_once')
@@ -98,6 +99,11 @@ def compile_author(manuscript,manifest,version='0.1'):
         fp=manuscript.parent/(d['id']+'-figure-v'+version+'.svg');fig=draw_flowchart(d,fp)
         body+='\n\n!['+d['flow_alt']+']('+str(fp)+')';body_load='\n'.join(d['flow_nodes'])
         extra.update(figure_asset=fig,flow_structure=dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards'),figure_English_words=words(d['flow_title']+' Choose'),image_alt_English_words=words(d['flow_alt']))
+    if kind=='listening_summary_completion':
+        body+='\n\n### '+d['summary_title']+'\n\n'+d['summary_text'];body_load=d['summary_text']
+        members=d['clips'][0]['questions'][3]['fillPair']['members'];alias_to_member={v:m['id']for m in members for v in m['forms']}
+        vectors=[list(v)for v in product(*(q['acceptedAnswers']for q in qs))if alias_to_member[v[3]]!=alias_to_member[v[4]]]
+        extra.update(whole_answer_vectors=vectors,whole_vector_scope='full_cross_product_of_listed_forms_with_distinct_pair_referents',summary_structure=dict(continuous_prose=True,responses=6,max_words=2,number_allowed=True,unordered_pair=[4,5]),source_text_input_layer=True)
     teacher='\n\n'.join(t['speaker']+': '+t['text']for t in c['turns'])+'\n\n'+d['source_notice'];block=response_markdown(qs);p=manuscript.parent/(d['id']+'-v'+version+'.md');ap=manuscript.parent/(d['id']+'-author-check-v'+version+'.json');assert not p.exists()and not ap.exists()
     p.write_text('# '+d['title']+'\n\n## 学生题面\n\n'+d['instruction']+'\n\n'+body+'\n\n<!-- responses:start -->\n\n'+block+'\n\n<!-- responses:end -->\n\n## 作者核对\n\n'+teacher+'\n')
     a=dict(version=version,id=d['id'],grade='advanced',questions=len(qs),candidate_sha256=ref(p)['sha256'],source_binding=b['id'],source_bindings=ref(bp),source_group_id=s['id'],manuscript=ref(manuscript),audio_generation=ref(manifest),audio_assets=[{k:track[k]for k in ['path','sha256','seconds','response_numbers','repeat_count','mime_type']}],audio_transcript_in_teacher_only=True,academic_bundle_listening=True,review_response_tasks=qs,canonical_response_block_sha256=hashlib.sha256(block.encode()).hexdigest(),student_passage=body,body_load_text=body_load,source_count_increment=0,authored_student_inputs_complete=True,load_measure=dict(body_English_words=words(body_load),stem_English_words=sum(words(q['stem'])for q in qs),options_English_words_with_repeated_bank=sum(words(v)for q in qs for k,v in q['options']),output_instruction_English_words=words(d['instruction']),output_response_positions=len(qs),audio_dialogue_English_words_once=track['dialogue_words_once'],audio_spoken_words_with_instructions=track['spoken_words_with_instructions'],audio_seconds_with_pauses=track['seconds']),source_level_equivalence_established=False,independent_teacher_student_commercial_production_validated=False,**extra);ap.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n')
@@ -108,7 +114,11 @@ def compile_author(manuscript,manifest,version='0.1'):
 def check(g,a,b,s):
     d=json.loads(load_ref(a['manuscript']).read_text());validate_draft(d);gen=json.loads(load_ref(a['audio_generation']).read_text());track=gen['tracks'][0]
     assert gen['manuscript']==a['manuscript'] and gen['whole_final_audio_decode_passed'] and gen['no_source_recording_reused']
-    if d['family']=='listening_flowchart_matching':
+    if d['family']=='listening_summary_completion':
+        assert s['source_complete_text_task_and_script_reader_verified'] and s['source_text_input_has_no_necessary_figure']
+        assert not s['source_raw_PDF_visual_verified'] and not s['source_original_audio_acquired']
+        load_ref(s['source_script_reader'])
+    elif d['family']=='listening_flowchart_matching':
         assert s['source_full_printed_input_verified'] and not s['source_original_script_verified'] and not s['source_original_key_verified']
     else:assert s['source_full_printed_input_and_script_verified']
     assert not s['source_original_key_is_gold']
@@ -119,7 +129,10 @@ def check(g,a,b,s):
     assert all(t['text']in g['reviewText']and t['text']not in g['passageHtml']for t in d['clips'][0]['turns'])
     assert g['questions']==a['review_response_tasks']
     native=None
-    if d['family']=='listening_flowchart_matching':
+    if d['family']=='listening_summary_completion':
+        load_ref(s['source'])
+        assert s['features']['max_words']==2 and s['features']['responses']==6
+    elif d['family']=='listening_flowchart_matching':
         assert s['selected_pages_all_visually_reviewed'] and s['source_original_audio_acquired']
         assert s['original_audio_complete_stream_decode_checked'] and not s['original_audio_script_semantic_match_verified']
         for original in s['original_audio_assets']:load_ref(original)
@@ -150,6 +163,12 @@ def check(g,a,b,s):
         assert a['note_table_structure']==dict(notes=6,table=4,rows=3,columns=5,one_whole_track=True)
         assert g['questions'][8]['fillMarking']['sterlingPence']==d['ticket_pence']
         assert g['passageHtml'].count('<table')==2
+    elif d['family']=='listening_summary_completion':
+        assert a['summary_structure']==dict(continuous_prose=True,responses=6,max_words=2,number_allowed=True,unordered_pair=[4,5])
+        assert not g['requiredPassageImages'] and len(g['questions'])==6
+        assert g['questions'][3]['fillPair']==g['questions'][4]['fillPair']
+        assert all(q['fillMarking']['maxWords']==2 and q['fillMarking']['numberAllowance']=='one'for q in g['questions'])
+        assert d['summary_text']in a['student_passage']
     elif d['family']=='listening_flowchart_matching':
         assert s['features']['nodes']==7 and s['features']['responses']==6 and s['features']['shared_candidates']==9
         assert a['flow_structure']==dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards')

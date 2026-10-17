@@ -1,6 +1,6 @@
 """Complete two-choice extracts, four sentence gaps and five spatial labels."""
 import re
-COUNTS={'listening_flowchart_matching':6,'listening_multiselect':3,'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
+COUNTS={'listening_summary_completion':6,'listening_flowchart_matching':6,'listening_multiselect':3,'listening_dialogue_choice':2,'listening_dialogue_sentence_completion':4,'listening_plan_label_matching':5,'listening_short_answer_pairs':6,'listening_note_table_completion':10,'listening_research_table_completion':5}
 ROLES=['lower_left_room','inner_right_room','far_wall_shelves','upper_middle_room','right_annex']
 
 def validate_draft(d):
@@ -10,7 +10,7 @@ def validate_draft(d):
     c=d['clips'][0];assert len(c['questions'])==COUNTS[kind]
     assert c['preview_seconds']==c['answer_seconds']==5*COUNTS[kind]
     assert all(t['text'].strip() for t in c['turns'])
-    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion'}else{'M','W','S'}if kind=='listening_flowchart_matching'else{'M','W'})
+    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion','listening_summary_completion'}else{'M','W','S'}if kind=='listening_flowchart_matching'else{'M','W'})
     text=' '.join(t['text']for t in c['turns']);fold=lambda v:re.sub(r'[-‐‑–]',' ',v).lower()
     if kind=='listening_plan_label_matching':
         assert len(c['turns'])==1 and d['plan_roles']==ROLES
@@ -21,11 +21,11 @@ def validate_draft(d):
     for n,q in enumerate(c['questions'],1):
         assert q['evidence_quote'] and q['evidence_quote']in text and q['rationale']
         offsets.append(text.index(q['evidence_quote']))
-        if kind in {'listening_dialogue_sentence_completion','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion'}:
+        if kind in {'listening_dialogue_sentence_completion','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion','listening_summary_completion'}:
             assert not q['options']
             if kind=='listening_dialogue_sentence_completion':assert q['stem'].count('____')==1
             assert q['acceptedAnswers'] and len({v.upper()for v in q['acceptedAnswers']})==len(q['acceptedAnswers'])
-            assert all(1<=len(v.split())<=(1 if kind=='listening_research_table_completion'else 2 if kind=='listening_dialogue_sentence_completion'else 3) for v in q['acceptedAnswers'])
+            assert all(1<=len(v.split())<=(1 if kind=='listening_research_table_completion'else 2 if kind in {'listening_dialogue_sentence_completion','listening_summary_completion'}else 3) for v in q['acceptedAnswers'])
             if kind!='listening_note_table_completion' or n not in [4,6,9]:assert all(re.search(r'(?<![a-z])'+re.escape(fold(v))+r'(?![a-z])',fold(text)) for v in q['acceptedAnswers'])
             assert q['rejection_reasons'] and set(q['rejected'])==set(q['rejection_reasons'])
             assert not set(q['acceptedAnswers'])&set(q['rejected'])
@@ -59,6 +59,18 @@ def validate_draft(d):
         assert c['questions'][3]['acceptedAnswers']==[str(d['opening_year']),str(d['opening_year']//10*10)+'s','the '+str(d['opening_year']//10*10)+'s']
         assert c['questions'][5]['acceptedAnswers'][0]==str(d['open_days'])
         assert d['ticket_pence']>0 and c['questions'][8]['value_kind']=='sterling'
+    if kind=='listening_summary_completion':
+        assert len(c['turns'])==1 and d['max_words']==2 and d['number_allowed']
+        assert [int(v)for v in re.findall(r'(\d) ____',d['summary_text'])]==list(range(1,7))
+        assert '4 ____ or 5 ____'in d['summary_text']
+        pair=c['questions'][3]['fillPair'];assert pair==c['questions'][4]['fillPair']
+        assert pair['positions']==[4,5] and pair['order']=='either' and pair['distinctReferents'] and pair['localMatchingRule']=='distinct_known_referents_once'
+        assert len(pair['members'])==2 and len({m['id']for m in pair['members']})==2
+        forms=[v for m in pair['members']for v in m['forms']]
+        assert c['questions'][3]['acceptedAnswers']==c['questions'][4]['acceptedAnswers']==forms
+        assert len(set(v.lower()for v in forms))==len(forms)
+        assert c['questions'][3]['rejected']==c['questions'][4]['rejected']
+        assert d['source_task_form_only'] and not d['source_B1_is_advanced_norm']
     if kind=='listening_flowchart_matching':
         assert set(d['speakers'])=={'M','W','S'} and all(v['voice']for v in d['speakers'].values())
         assert len(d['flow_nodes'])==7 and len(c['turns'])>=2

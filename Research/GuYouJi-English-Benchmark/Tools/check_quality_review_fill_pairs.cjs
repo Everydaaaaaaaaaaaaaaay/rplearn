@@ -10,4 +10,15 @@ for(const name of ['version','positions','order','distinctReferents','localMatch
 for(const change of [q=>q[0].fillPair.members[1].forms.push('library'),q=>q[0].acceptedAnswers.pop(),q=>q[1].fillPair={...q[1].fillPair,id:'other'},q=>q[1].fillMarking={...q[1].fillMarking,maxWords:2},q=>q.reverse(),q=>q.pop(),q=>q[0].fillPair.members[0].forms=[],q=>q[0].fillPair.members[0].id='']){const bad=structuredClone(qs);change(bad);assert.equal(ctx.compare(bad).available,false);cases++;}
 const all=[...structuredClone(qs),...structuredClone(qs).map(q=>({...q,number:q.number+2,fillPair:{...q.fillPair,id:'other',positions:[3,4]}}))];check(all,{'1.1':'library','2.1':'town hall','3.1':'town hall','4.1':'library'},['match','match','match','match']);
 const mixed=[...structuredClone(qs),{number:3,options:[],acceptedAnswers:['language'],fillMarking:contract}];check(mixed,{'1.1':'library','2.1':'town hall','3.1':'language'},['match','match','match']);
+// A whole prose summary has ordinary gaps surrounding one unordered pair.
+const summaryContract={...contract,maxWords:2,numberAllowance:'one',rejectedAnswers:['clear','concise']},summaryPair={...c,id:'summary-qualities',positions:[4,5],members:[{id:'vagueness',forms:['vague']},{id:'repetition',forms:['repetitive']}]};
+const summary=['purpose','systematically','volunteers',null,null,'trail'].map((answer,i)=>({number:i+1,options:[],acceptedAnswers:answer?[answer]:['vague','repetitive'],fillMarking:summaryContract,...(!answer?{fillPair:summaryPair}:{})}));
+const baseline={'1.1':'purpose','2.1':'systematically','3.1':'volunteers','4.1':'vague','5.1':'repetitive','6.1':'trail'};
+check(summary,baseline,Array(6).fill('match'));check(summary,{...baseline,'4.1':'repetitive','5.1':'vague'},Array(6).fill('match'));
+check(summary,{...baseline,'4.1':'vague','5.1':'vague'},['match','match','match','match','different','match']);
+check(summary,{...baseline,'4.1':'unlisted'},['match','match','match','review','match','match']);
+check(summary,{...baseline,'2.1':'unlisted'},['match','review','match','match','match','match']);
+check(summary,{...baseline,'6.1':'three extra words'},['match','match','match','match','match','different']);
+check(summary,{...baseline,'3.1':''},['match','match','unanswered','match','match','match']);
+const truncated=structuredClone(summary);truncated.splice(4,1);assert.equal(ctx.compare(truncated,baseline).available,false);cases++;
 console.log(JSON.stringify({passed:true,cases,unordered_two_referents:true,aliases_not_double_counted:true,independent_prompts:true,unknown_review:true,no_three_answer_cap:true,partial_score_not_source_score:true}));
