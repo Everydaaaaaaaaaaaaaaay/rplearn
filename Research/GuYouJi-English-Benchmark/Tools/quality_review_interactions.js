@@ -35,6 +35,10 @@ function normalizeFill(value,protocol){
  const text=value.trim();
  if(protocol==='latin_word_v1')return /^[A-Za-z]+$/.test(text)?text.toUpperCase():null;
  if(protocol==='english_phrase_v1')return /^[A-Za-z]+(?:['’-][A-Za-z]+)*(?:\s+[A-Za-z]+(?:['’-][A-Za-z]+)*)*$/.test(text)?text.replace(/’/g,"'").replace(/\s+/g,' ').toUpperCase():null;
+ if(protocol==='source_excerpt_v1'){
+  const excerpt=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10)).replace(/[‐‑–−]/g,'-').replace(/’/g,"'");
+  return /^[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?:\s+[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*$/.test(excerpt)?excerpt.replace(/\s+/g,' ').toUpperCase():null;
+ }
  if(protocol==='clock_hour_v1'){
   const clock=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10)).replace(/：/g,':').replace(/．/g,'.');
   return /^(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)$/.test(clock)?clock.toUpperCase():null;
@@ -83,7 +87,8 @@ function answerComparison(questions,saved={}){
    rows.push(selection.rows[0]);continue;
   }
   const contract=q.fillMarking,accepted=q.acceptedAnswers;
-  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','ascii_integer_v1','clock_hour_v1','small_count_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','source_excerpt_v1','ascii_integer_v1','clock_hour_v1','small_count_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(contract.normalization==='source_excerpt_v1'&&(contract.sourceBound!==true||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||!Number.isInteger(contract.maxWords)||contract.maxWords<1||contract.hyphenatedWordCount!=='one'))return {available:false,reason:'摘词填空的材料边界、限词或未知格式规则未绑定。'};
   if(contract.normalization==='clock_hour_v1'&&(contract.clockFrame!=='p.m.'||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==1||!Number.isInteger(contract.wholeHour)||contract.wholeHour<1||contract.wholeHour>12||accepted.some(a=>clockMinutes(normalizeFill(a,'clock_hour_v1'))!==contract.wholeHour*60)))return {available:false,reason:'时间空的单位、限词或未知格式复核规则未绑定。'};
   if(contract.normalization==='small_count_v1'&&(contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==1||!Number.isInteger(contract.wholeCount)||contract.wholeCount<0||contract.wholeCount>20||!accepted.some(a=>/^[A-Za-z]+$/.test(a))||!accepted.some(a=>/^[0-9]+$/.test(a))||accepted.some(a=>String(smallCount(normalizeFill(a,'small_count_v1')))!==String(contract.wholeCount))))return {available:false,reason:'小整数空的数值、限词或未知格式复核规则未绑定。'};
   if(contract.normalization==='english_phrase_v1'&&!(contract.maxWords===null||Number.isInteger(contract.maxWords)&&contract.maxWords>0))return {available:false,reason:'单空限词规则未绑定。'};
@@ -101,7 +106,7 @@ function answerComparison(questions,saved={}){
   const wrongInitial=normalized!==null&&contract.requiredInitial!==undefined&&!normalized.startsWith(contract.requiredInitial.toUpperCase());
   const differentClock=contract.normalization==='clock_hour_v1'&&clockMinutes(normalized)!==null&&clockMinutes(normalized)!==contract.wholeHour*60;
   const differentCount=contract.normalization==='small_count_v1'&&smallCount(normalized)!==null&&String(smallCount(normalized))!==String(contract.wholeCount);
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(['clock_hour_v1','small_count_v1'].includes(contract.normalization)?'review':'different'):differentClock||differentCount||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(['clock_hour_v1','small_count_v1','source_excerpt_v1'].includes(contract.normalization)?'review':'different'):differentClock||differentCount||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
  const usedBankRoots=new Map();
  if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}

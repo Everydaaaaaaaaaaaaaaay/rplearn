@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'academic_information_tristate':
                 from compile_academic_information import check as check_academic_information
                 check_academic_information(g,a,b,source)
+            if b.get('task_mode') == 'academic_extracted_completion':
+                from compile_academic_extraction import check as check_academic_extraction
+                check_academic_extraction(g,a,b,source)
             if b.get('task_mode') == 'academic_matching_features':
                 from compile_academic_features import check as check_academic_features
                 check_academic_features(g,a,b,source)
@@ -352,10 +355,12 @@ def check(data, plan):
                 if meta['family']=='listening_table_completion' and a.get('junior_source_bound'):
                     if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
                     elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'
+                if a.get('academic_extracted_completion'):expected_protocol='source_excerpt_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
                 pattern='(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)' if c['normalization']=='clock_hour_v1' else '(?:[0-9]+|[A-Za-z]+)' if c['normalization']=='small_count_v1' else '[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
+                if c['normalization']=='source_excerpt_v1':pattern="[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*"
                 assert all(re.fullmatch(pattern, value) for value in q['acceptedAnswers'] + c['rejectedAnswers'])
                 if c['normalization']=='small_count_v1':
                     names='zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split()
