@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "id": "grade7-mixed8-days-and-colours",
+  "grade": 7,
+  "questions": 8,
+  "candidate_sha256": "6bf7f8aea7cf794ac1bd9bb770cc07fe90bf9ec3cf3a41690e4b62c99b893435",
+  "source_binding": "g7mixed8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.2.json",
+    "sha256": "13c1353041b67f648be38cc0522f267d67cc6ac17e337d9d4337ed5d12a813a0"
+  },
+  "source_group_id": "grade7-suzhou2025-21cnjy23303742.wordSentences",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "There are seven ____（天） in one week.",
+      "options": [],
+      "acceptedAnswers": [
+        "days"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "day"
+        ]
+      },
+      "rationale": "seven后复数days。"
+    },
+    {
+      "number": 2,
+      "stem": "Five plus four is ____（九）.",
+      "options": [],
+      "acceptedAnswers": [
+        "nine"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "nineteen"
+        ]
+      },
+      "rationale": "5+4=9，英文nine。"
+    },
+    {
+      "number": 3,
+      "stem": "The month after May is ____（六月）.",
+      "options": [],
+      "acceptedAnswers": [
+        "June"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "July"
+        ]
+      },
+      "rationale": "顺序与中文共同限定June。"
+    },
+    {
+      "number": 4,
+      "stem": "My uncle has two ____（女儿）, Anna and Lily.",
+      "options": [],
+      "acceptedAnswers": [
+        "daughters"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "daughter"
+        ]
+      },
+      "rationale": "two后复数daughters。"
+    },
+    {
+      "number": 5,
+      "stem": "One minute has sixty s____.",
+      "options": [],
+      "acceptedAnswers": [
+        "seconds"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "second"
+        ],
+        "requiredInitial": "s"
+      },
+      "rationale": "一分钟60秒；sixty后复数seconds，首字母s。"
+    },
+    {
+      "number": 6,
+      "stem": "The number between nineteen and twenty-one is t____.",
+      "options": [],
+      "acceptedAnswers": [
+        "twenty"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "twelve"
+        ],
+        "requiredInitial": "t"
+      },
+      "rationale": "19与21之间整数20，twenty。"
+    },
+    {
+      "number": 7,
+      "stem": "For directions, the opposite of left is r____.",
+      "options": [],
+      "acceptedAnswers": [
+        "right"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "left",
+          "write"
+        ],
+        "requiredInitial": "r"
+      },
+      "rationale": "明确方向义，right而非left或write。"
+    },
+    {
+      "number": 8,
+      "stem": "Red is my favourite c____.",
+      "options": [],
+      "acceptedAnswers": [
+        "colour",
+        "color"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "colours",
+          "colors"
+        ],
+        "requiredInitial": "c"
+      },
+      "rationale": "同一颜色名词，英美拼写都合完整句、首字母c与一词。"
+    }
+  ],
+  "canonical_response_block_sha256": "427ebb21536544ecb196c02287830d95d607ec060af96b91a3f13744b09c5989",
+  "student_passage": "以下八句彼此独立。前四句有汉语注释，后四句有首字母；全部每空一词。首字母空填写完整单词，包括已印的首字母。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "There are seven days（天） in one week."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "Five plus four is nine（九）."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "The month after May is June（六月）."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "My uncle has two daughters（女儿）, Anna and Lily."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "One minute has sixty seconds."
+      ]
+    },
+    {
+      "number": 6,
+      "accepted_full_inputs": [
+        "The number between nineteen and twenty-one is twenty."
+      ]
+    },
+    {
+      "number": 7,
+      "accepted_full_inputs": [
+        "For directions, the opposite of left is right."
+      ]
+    },
+    {
+      "number": 8,
+      "accepted_full_inputs": [
+        "Red is my favourite colour.",
+        "Red is my favourite color."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 2,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 49,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8,
+    "accepted_output_words_range": [
+      8,
+      8
+    ]
+  },
+  "independent_teacher_student_commercial_production_validated": false
+}

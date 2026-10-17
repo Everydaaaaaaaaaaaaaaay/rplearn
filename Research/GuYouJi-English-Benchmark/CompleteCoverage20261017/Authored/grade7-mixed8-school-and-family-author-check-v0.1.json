@@ -1,0 +1,241 @@
+{
+  "version": "0.1",
+  "id": "grade7-mixed8-school-and-family",
+  "grade": 7,
+  "questions": 8,
+  "candidate_sha256": "eeec0f0db14003d629a1f0f562f4567427832384e9856564b3a1b5b0972f54b1",
+  "source_binding": "g7mixed8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.2.json",
+    "sha256": "13c1353041b67f648be38cc0522f267d67cc6ac17e337d9d4337ed5d12a813a0"
+  },
+  "source_group_id": "grade7-suzhou2025-21cnjy23303742.wordSentences",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Give each of the two children a pencil. We need two ____（铅笔）.",
+      "options": [],
+      "acceptedAnswers": [
+        "pencils"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "pencil"
+        ]
+      },
+      "rationale": "two后复数pencils。"
+    },
+    {
+      "number": 2,
+      "stem": "Seven plus one is ____（八）.",
+      "options": [],
+      "acceptedAnswers": [
+        "eight"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "eighteen"
+        ]
+      },
+      "rationale": "7+1=8，eight。"
+    },
+    {
+      "number": 3,
+      "stem": "The day between Monday and Wednesday is ____（星期二）.",
+      "options": [],
+      "acceptedAnswers": [
+        "Tuesday"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "Thursday"
+        ]
+      },
+      "rationale": "星期一/三之间是Tuesday。"
+    },
+    {
+      "number": 4,
+      "stem": "My father's sister is my ____（姑妈）.",
+      "options": [],
+      "acceptedAnswers": [
+        "aunt"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "uncle"
+        ]
+      },
+      "rationale": "父亲姐妹为aunt，非uncle。"
+    },
+    {
+      "number": 5,
+      "stem": "The past tense of sing is s____.",
+      "options": [],
+      "acceptedAnswers": [
+        "sang"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "sing",
+          "sung"
+        ],
+        "requiredInitial": "s"
+      },
+      "rationale": "题干明指sing过去式sang，不是过去分词sung。"
+    },
+    {
+      "number": 6,
+      "stem": "Write the number 12 as an English word: t____.",
+      "options": [],
+      "acceptedAnswers": [
+        "twelve"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "twenty"
+        ],
+        "requiredInitial": "t"
+      },
+      "rationale": "数字12的英文twelve。"
+    },
+    {
+      "number": 7,
+      "stem": "The noun formed by adding -er to read is r____.",
+      "options": [],
+      "acceptedAnswers": [
+        "reader"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "read",
+          "reading"
+        ],
+        "requiredInitial": "r"
+      },
+      "rationale": "read加-er得到reader，单词不可拆。"
+    },
+    {
+      "number": 8,
+      "stem": "My aunt's daughter is my c____.",
+      "options": [],
+      "acceptedAnswers": [
+        "cousin"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "cousins"
+        ],
+        "requiredInitial": "c"
+      },
+      "rationale": "亲属关系为cousin，单数由一名daughter限定。"
+    }
+  ],
+  "canonical_response_block_sha256": "4338673053189a8cf5d57a6cf9565cb24448dea43d72e54d88b3f5e7e425aa9d",
+  "student_passage": "以下八句彼此独立。前四句有汉语注释，后四句有首字母；全部每空一词。首字母空填写完整单词，包括已印的首字母。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "Give each of the two children a pencil. We need two pencils（铅笔）."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "Seven plus one is eight（八）."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "The day between Monday and Wednesday is Tuesday（星期二）."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "My father's sister is my aunt（姑妈）."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "The past tense of sing is sang."
+      ]
+    },
+    {
+      "number": 6,
+      "accepted_full_inputs": [
+        "Write the number 12 as an English word: twelve."
+      ]
+    },
+    {
+      "number": 7,
+      "accepted_full_inputs": [
+        "The noun formed by adding -er to read is reader."
+      ]
+    },
+    {
+      "number": 8,
+      "accepted_full_inputs": [
+        "My aunt's daughter is my cousin."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 1,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 58,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8,
+    "accepted_output_words_range": [
+      8,
+      8
+    ]
+  },
+  "independent_teacher_student_commercial_production_validated": false
+}

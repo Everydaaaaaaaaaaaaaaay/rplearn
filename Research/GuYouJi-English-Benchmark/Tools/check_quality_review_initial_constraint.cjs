@@ -1,0 +1,23 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const source=fs.readFileSync(path.join(__dirname,'quality_review_interactions.js'),'utf8');
+const begin=source.indexOf('function closedSelectionComparison('),end=source.indexOf('\nfunction clearSelectionComparison(',begin);
+const context=vm.createContext({});vm.runInContext(source.slice(begin,end)+'\nthis.compare=answerComparison;',context);const compare=context.compare;
+const task={number:1,stem:'Red is my favourite c____.',options:[],acceptedAnswers:['colour','color'],fillMarking:{version:1,review:'author_context_checked',normalization:'english_phrase_v1',maxWords:1,requiredInitial:'c',unlisted:'review',rejectedAnswers:['colours']}};
+for(const value of ['colour','color',' COLOR '])assert.equal(compare([task],{'1.1':value}).matched,1);
+assert.equal(compare([task],{'1.1':'cleaner'}).review,1);
+assert.equal(compare([task],{'1.1':'hue'}).different,1);
+assert.equal(compare([task],{'1.1':'common colour'}).different,1);
+assert.equal(compare([task],{'1.1':'colours'}).different,1);
+assert.equal(compare([task],{'1.1':''}).unanswered,1);
+for(const requiredInitial of ['','co',3])assert.equal(compare([{...task,fillMarking:{...task.fillMarking,requiredInitial}}]).available,false);
+assert.equal(compare([{...task,fillMarking:{...task.fillMarking,maxWords:null}}]).available,false);
+assert.equal(compare([{...task,acceptedAnswers:['colour','hue']}]).available,false);
+const html=fs.readFileSync(path.resolve(__dirname,'../../../build/english-benchmark-quality-review/index.html'),'utf8');
+const data=JSON.parse(html.match(/<script id="quality-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+const groups=Object.values(data.groups).filter(g=>g.id.startsWith('grade7-mixed8-'));
+assert.equal(groups.length,3);let accepted=0;
+for(const group of groups){assert.equal(group.questions.length,8);for(const q of group.questions){assert.equal(q.fillMarking.maxWords,1);assert.equal(!!q.fillMarking.requiredInitial,q.number>4);for(const form of q.acceptedAnswers){assert.equal(compare(group.questions,{[q.number+'.1']:form}).matched,1);accepted++;}}}
+console.log(JSON.stringify({passed:true,synthetic_cases:13,actual_groups:3,actual_positions:24,accepted_forms:accepted,unknown_same_initial_needs_review:true,wrong_initial_or_word_limit_is_different:true,unbound_initial_constraints_rejected:true,local_not_production:true}));

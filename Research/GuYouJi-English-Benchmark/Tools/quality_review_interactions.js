@@ -79,6 +79,7 @@ function answerComparison(questions,saved={}){
   if(contract.normalization==='english_phrase_v1'&&!(contract.maxWords===null||Number.isInteger(contract.maxWords)&&contract.maxWords>0))return {available:false,reason:'单空限词规则未绑定。'};
   if(contract.minWords!==undefined&&(contract.normalization!=='english_phrase_v1'||!Number.isInteger(contract.minWords)||contract.minWords<1||contract.maxWords!==null&&contract.minWords>contract.maxWords||contract.wordCountAmbiguity!=='review'))return {available:false,reason:'最少词数或未核计词形式的处理规则尚未绑定。'};
   const forms=accepted.map(a=>normalizeFill(a,contract.normalization)),rejected=contract.rejectedAnswers.map(a=>normalizeFill(a,contract.normalization));
+  if(contract.requiredInitial!==undefined&&(!['latin_word_v1','english_phrase_v1'].includes(contract.normalization)||contract.maxWords!==1||typeof contract.requiredInitial!=='string'||!/^[A-Za-z]$/.test(contract.requiredInitial)||forms.some(a=>!a.startsWith(contract.requiredInitial.toUpperCase()))))return {available:false,reason:'首字母与一词答案范围未一致绑定。'};
   if(contract.requiredWord!==undefined&&(contract.normalization!=='english_phrase_v1'||typeof contract.requiredWord!=='string'||!/^[A-Za-z]+$/.test(contract.requiredWord)||forms.some(a=>!a.split(' ').includes(contract.requiredWord.toUpperCase()))))return {available:false,reason:'关键词原形与可接受答案未一致绑定。'};
   if(new Set(forms).size!==forms.length||rejected.some(a=>a===null||forms.includes(a))||contract.unlisted==='different'&&contract.normalization!=='ascii_integer_v1'||contract.maxWords&&forms.some(a=>a.split(' ').length>contract.maxWords)||contract.minWords&&forms.some(a=>a.split(' ').length<contract.minWords))return {available:false,reason:'填写答案协议存在重复、冲突或未经支持的排他规则。'};
   const chosen=saved[String(q.number)+'.1']??'';
@@ -87,8 +88,9 @@ function answerComparison(questions,saved={}){
   const outsideLimit=normalized!==null&&(contract.maxWords&&normalized.split(' ').length>contract.maxWords||contract.minWords&&normalized.split(' ').length<contract.minWords);
   const uncertainWordCount=normalized!==null&&contract.wordCountAmbiguity==='review'&&/['-]/.test(normalized);
   const missingKeyword=normalized!==null&&contract.requiredWord!==undefined&&!normalized.split(' ').includes(contract.requiredWord.toUpperCase());
+  const wrongInitial=normalized!==null&&contract.requiredInitial!==undefined&&!normalized.startsWith(contract.requiredInitial.toUpperCase());
   const differentClock=contract.normalization==='clock_hour_v1'&&clockMinutes(normalized)!==null&&clockMinutes(normalized)!==contract.wholeHour*60;
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(contract.normalization==='clock_hour_v1'?'review':'different'):differentClock||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(contract.normalization==='clock_hour_v1'?'review':'different'):differentClock||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
  const usedBankRoots=new Map();
  if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}

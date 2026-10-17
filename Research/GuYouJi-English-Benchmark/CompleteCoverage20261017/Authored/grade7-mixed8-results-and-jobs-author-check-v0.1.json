@@ -1,0 +1,243 @@
+{
+  "version": "0.1",
+  "id": "grade7-mixed8-results-and-jobs",
+  "grade": 7,
+  "questions": 8,
+  "candidate_sha256": "11dfd48b30eef7fbc76a89df184288523a15c0d80c927f23deb99218a7b5c5e3",
+  "source_binding": "g7mixed8",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.2.json",
+    "sha256": "13c1353041b67f648be38cc0522f267d67cc6ac17e337d9d4337ed5d12a813a0"
+  },
+  "source_group_id": "grade7-suzhou2025-21cnjy23303742.wordSentences",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Of our five runners, Ben finished before everyone else. He was ____（第一）.",
+      "options": [],
+      "acceptedAnswers": [
+        "first"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "five"
+        ]
+      },
+      "rationale": "在五人中早于其余人即first。"
+    },
+    {
+      "number": 2,
+      "stem": "The game ended ten minutes ago; we ____（赢） it by two points.",
+      "options": [],
+      "acceptedAnswers": [
+        "won"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "win",
+          "wins"
+        ]
+      },
+      "rationale": "ended与ago明确已结束过去，win过去式won。"
+    },
+    {
+      "number": 3,
+      "stem": "A year has twelve ____（月份）.",
+      "options": [],
+      "acceptedAnswers": [
+        "months"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "month"
+        ]
+      },
+      "rationale": "twelve后复数months。"
+    },
+    {
+      "number": 4,
+      "stem": "You made just one ____（承诺）: to return the book on Friday.",
+      "options": [],
+      "acceptedAnswers": [
+        "promise"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "promises"
+        ]
+      },
+      "rationale": "just one限定单数promise。"
+    },
+    {
+      "number": 5,
+      "stem": "Complete the comparison: short, shorter; small, s____.",
+      "options": [],
+      "acceptedAnswers": [
+        "smaller"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "small",
+          "smallest"
+        ],
+        "requiredInitial": "s"
+      },
+      "rationale": "与shorter平行比较级smaller。"
+    },
+    {
+      "number": 6,
+      "stem": "Spell the number 30 in words: t____.",
+      "options": [],
+      "acceptedAnswers": [
+        "thirty"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "thirteen"
+        ],
+        "requiredInitial": "t"
+      },
+      "rationale": "30英文thirty，不是thirteen。"
+    },
+    {
+      "number": 7,
+      "stem": "Someone who reports the news is a r____.",
+      "options": [],
+      "acceptedAnswers": [
+        "reporter"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "reader"
+        ],
+        "requiredInitial": "r"
+      },
+      "rationale": "报道新闻的职业reporter，首字母r。"
+    },
+    {
+      "number": 8,
+      "stem": "A person who cooks meals as a job is a c____.",
+      "options": [],
+      "acceptedAnswers": [
+        "cook",
+        "chef"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "cooker"
+        ],
+        "requiredInitial": "c"
+      },
+      "rationale": "cook与chef都可指职业厨师，均一词、c开头、冠词a后合法。"
+    }
+  ],
+  "canonical_response_block_sha256": "35f09173e9907013320f9b5b740a270a3cb492bd62b3f03c216ec7d6d5f26ead",
+  "student_passage": "以下八句彼此独立。前四句有汉语注释，后四句有首字母；全部每空一词。首字母空填写完整单词，包括已印的首字母。",
+  "bounded_source_prompt_completion": true,
+  "given_positions": [],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "Of our five runners, Ben finished before everyone else. He was first（第一）."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "The game ended ten minutes ago; we won（赢） it by two points."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "A year has twelve months（月份）."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "You made just one promise（承诺）: to return the book on Friday."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "Complete the comparison: short, shorter; small, smaller."
+      ]
+    },
+    {
+      "number": 6,
+      "accepted_full_inputs": [
+        "Spell the number 30 in words: thirty."
+      ]
+    },
+    {
+      "number": 7,
+      "accepted_full_inputs": [
+        "Someone who reports the news is a reporter."
+      ]
+    },
+    {
+      "number": 8,
+      "accepted_full_inputs": [
+        "A person who cooks meals as a job is a cook.",
+        "A person who cooks meals as a job is a chef."
+      ]
+    }
+  ],
+  "full_fill_variant_combinations": 2,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 68,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 8,
+    "accepted_output_words_range": [
+      8,
+      8
+    ]
+  },
+  "independent_teacher_student_commercial_production_validated": false
+}

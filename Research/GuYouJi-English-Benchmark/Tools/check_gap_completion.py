@@ -96,7 +96,15 @@ def check(data, plan):
                     assert given==[2,3,5,6,7,8,10,11,13,14] and b['responses']==15
                     assert all(q['fillMarking']['maxWords']==(None if q['number']in given else 1)for q in a['review_response_tasks'])
                 else:
-                    assert all(q['fillMarking']['maxWords']is None for q in a['review_response_tasks'])
+                    assert all(q['fillMarking']['maxWords']==source.get('maximum_words_each') for q in a['review_response_tasks'])
+                if source.get('mixed_chinese_initial_eight'):
+                    assert b['responses']==8 and source['Chinese_hint_positions']==[1,2,3,4] and source['initial_hint_positions']==[5,6,7,8]
+                    assert [c['item_id']for c in view['components']if c['role']=='Chinese_hint_or_gloss']==source['Chinese_hint_positions']
+                    assert [i['ordinal']for i in view['items']if i['visible_blanks'][0]['printed_initial']is not None]==source['initial_hint_positions']
+                    for q in a['review_response_tasks']:
+                        hint=re.search(r'([A-Za-z])____',q['stem'])
+                        assert (hint is not None)==(q['number']in source['initial_hint_positions'])
+                        assert q['fillMarking'].get('requiredInitial')==(hint[1]if hint else None)
                 if b['family']=='passage_chinese_completion':
                     assert re.findall(r'\((\d+)\) ____',a['student_passage'])==[str(n)for n in range(1,11)]
                     assert '____'not in a['filled_passage']

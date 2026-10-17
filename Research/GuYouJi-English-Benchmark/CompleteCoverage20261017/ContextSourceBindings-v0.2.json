@@ -1,0 +1,111 @@
+{
+  "version": "0.2",
+  "bindings": [
+    {
+      "id": "g7context",
+      "level": 7,
+      "family": "context_word_completion",
+      "task_mode": "bounded_source_prompt_completion",
+      "responses": 5,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/ContextSourceModes-v0.1.json",
+        "sha256": "1ac9afa0f7d47b74a6a5174a5ece852311fbf0e4d913047f56820f20f59e16de"
+      },
+      "collection": "groups",
+      "source_group_id": "grade7-hefei2025-21cnjy26607976.initialWords",
+      "source_record_sha256": "0eb428ed0c1ac786312037a8dd4fcbfe778bd9976461522b96130baf99d92934",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g7sentence",
+      "level": 7,
+      "family": "sentence_form",
+      "task_mode": "bounded_source_prompt_completion",
+      "responses": 15,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/ContextSourceModes-v0.1.json",
+        "sha256": "1ac9afa0f7d47b74a6a5174a5ece852311fbf0e4d913047f56820f20f59e16de"
+      },
+      "collection": "groups",
+      "source_group_id": "grade7-jinan2025-21cnjy24695341.sentenceForms",
+      "source_record_sha256": "b34be375b5f9c4355a24fc14e6fe81ad4e509e64bdcba0215a1e7132ccc245fb",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g8Chinese",
+      "level": 8,
+      "family": "passage_chinese_completion",
+      "task_mode": "bounded_source_prompt_completion",
+      "responses": 10,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/ContextSourceModes-v0.1.json",
+        "sha256": "1ac9afa0f7d47b74a6a5174a5ece852311fbf0e4d913047f56820f20f59e16de"
+      },
+      "collection": "groups",
+      "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.passageChinese",
+      "source_record_sha256": "7cd2dd190a41822888dd07a1a8e8e5cf7e0996a6a5ff9d2db52e81af271d1255",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g9context",
+      "level": 9,
+      "family": "context_word_completion",
+      "task_mode": "bounded_source_prompt_completion",
+      "responses": 5,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/ContextSourceModes-v0.1.json",
+        "sha256": "1ac9afa0f7d47b74a6a5174a5ece852311fbf0e4d913047f56820f20f59e16de"
+      },
+      "collection": "groups",
+      "source_group_id": "grade9-chengdu2025-21cnjy23208601.initialWords",
+      "source_record_sha256": "2f5d0616b82565b67a6a90a8adf24c9c8672025ccb643a34381c5cf8ad440174",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g11context",
+      "level": 11,
+      "family": "context_word_completion",
+      "task_mode": "bounded_source_prompt_completion",
+      "responses": 10,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/ContextSourceModes-v0.1.json",
+        "sha256": "1ac9afa0f7d47b74a6a5174a5ece852311fbf0e4d913047f56820f20f59e16de"
+      },
+      "collection": "groups",
+      "source_group_id": "grade11-heze2026-21cnjy24886046.words",
+      "source_record_sha256": "5e348543008a369516852ac2a404ce9fe19efcac9e199f3559d3e992d403d13b",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "g7mixed8",
+      "level": 7,
+      "family": "context_word_completion",
+      "task_mode": "bounded_source_prompt_completion",
+      "responses": 8,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/ContextSourceModes-v0.2.json",
+        "sha256": "562beec23d57ae68858b9e161e30f659a94fe351542bb718528f704affe64b48"
+      },
+      "collection": "groups",
+      "source_group_id": "grade7-suzhou2025-21cnjy23303742.wordSentences",
+      "source_record_sha256": "bb868f1c0928b4c9342e1db84bac1e78630237210af573d58d993b51495dcc48",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    }
+  ],
+  "previous": {
+    "path": "CompleteCoverage20261017/ContextSourceBindings-v0.1.json",
+    "sha256": "d45a43b9c2cbfbbfb125c12b40f1eb7ef2d7ddd4236de6455a887a3d7f7e1ebd"
+  }
+}
