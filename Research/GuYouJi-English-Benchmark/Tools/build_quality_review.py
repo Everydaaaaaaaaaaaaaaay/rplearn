@@ -52,7 +52,9 @@ def full_markdown_candidate(meta):
     def render_images(value):
         result, cursor = [], 0
         for embed in re.finditer(r'^!\[([^\]]+)\]\(([^)]+)\)\s*$', value, re.M):
-            path = (Path(meta['candidate']['path']).parent / embed[2]).as_posix()
+            # Bound generated assets may live in the ignored research cache.
+            # load_ref still enforces a portable path and the registered SHA.
+            path = embed[2] if embed[2].startswith('build/') else (Path(meta['candidate']['path']).parent / embed[2]).as_posix()
             matching = [r for r in assets if r['path'] == path]
             if len(matching) != 1:
                 raise ValueError('Unbound required input image')
