@@ -35,15 +35,16 @@ def draw_plan(d,path):
 def draw_flowchart(d,path):
     from textwrap import wrap
     esc=html.escape
-    raw='<svg xmlns="http://www.w3.org/2000/svg" width="930" height="1060" viewBox="0 0 930 1060"><rect width="930" height="1060" fill="white"/><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#244a3d"/></marker></defs><g font-family="Arial,sans-serif" fill="#152e25">'
+    height=max(1060,72+138*len(d['flow_nodes']))
+    raw=f'<svg xmlns="http://www.w3.org/2000/svg" width="930" height="{height}" viewBox="0 0 930 {height}"><rect width="930" height="{height}" fill="white"/><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#244a3d"/></marker></defs><g font-family="Arial,sans-serif" fill="#152e25">'
     raw+='<text x="35" y="38" font-size="23" font-weight="bold">'+esc(d['flow_title'])+'</text>'
     for n,node in enumerate(d['flow_nodes']):
         y=72+138*n
         raw+='<rect x="35" y="'+str(y)+'" width="510" height="90" rx="4" fill="#f8fbf8" stroke="#315c4d" stroke-width="2"/>'
         lines=wrap(node,width=47)
         for j,line in enumerate(lines):raw+='<text x="55" y="'+str(y+34+j*25)+'" font-size="19">'+esc(line)+'</text>'
-        if n<6:raw+='<path d="M290 '+str(y+94)+' V'+str(y+130)+'" stroke="#244a3d" stroke-width="3" marker-end="url(#arrow)"/>'
-    raw+='<rect x="580" y="72" width="315" height="710" fill="#f1f6f2" stroke="#567769"/><text x="600" y="108" font-size="20" font-weight="bold">Choose A–I</text>'
+        if n<len(d['flow_nodes'])-1:raw+='<path d="M290 '+str(y+94)+' V'+str(y+130)+'" stroke="#244a3d" stroke-width="3" marker-end="url(#arrow)"/>'
+    raw+='<rect x="580" y="72" width="315" height="710" fill="#f1f6f2" stroke="#567769"/><text x="600" y="108" font-size="20" font-weight="bold">Choose A–'+d['candidates'][-1][0]+'</text>'
     for n,(k,v)in enumerate(d['candidates']):
         for j,line in enumerate(wrap(k+'. '+v,width=26)):raw+='<text x="600" y="'+str(155+n*65+j*23)+'" font-size="18">'+esc(line)+'</text>'
     raw+='</g></svg>';assert not path.exists();path.write_text(raw);return ref(path)
@@ -98,7 +99,9 @@ def compile_author(manuscript,manifest,version='0.1'):
     if kind=='listening_flowchart_matching':
         fp=manuscript.parent/(d['id']+'-figure-v'+version+'.svg');fig=draw_flowchart(d,fp)
         body+='\n\n!['+d['flow_alt']+']('+str(fp)+')';body_load='\n'.join(d['flow_nodes'])
-        extra.update(figure_asset=fig,flow_structure=dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards'),figure_English_words=words(d['flow_title']+' Choose'),image_alt_English_words=words(d['flow_alt']))
+        structure=dict(nodes=len(d['flow_nodes']),responses=len(qs),shared_candidates=len(d['candidates']),arrows=d['arrows'])
+        structure.update(printed_stage_indices=d['printed_stage_indices']) if 'printed_stage_indices'in d else structure.update(printed_stage_index=d['printed_stage_index'])
+        extra.update(figure_asset=fig,flow_structure=structure,figure_English_words=words(d['flow_title']+' Choose'),image_alt_English_words=words(d['flow_alt']))
     if kind=='listening_summary_completion':
         body+='\n\n### '+d['summary_title']+'\n\n'+d['summary_text'];body_load=d['summary_text']
         members=d['clips'][0]['questions'][3]['fillPair']['members'];alias_to_member={v:m['id']for m in members for v in m['forms']}
@@ -119,7 +122,8 @@ def check(g,a,b,s):
         assert not s['source_raw_PDF_visual_verified'] and not s['source_original_audio_acquired']
         load_ref(s['source_script_reader'])
     elif d['family']=='listening_flowchart_matching':
-        assert s['source_full_printed_input_verified'] and not s['source_original_script_verified'] and not s['source_original_key_verified']
+        assert s['source_full_printed_input_verified']
+        if d['source_group_id']!='idp.listening.flow5of8':assert not s['source_original_script_verified'] and not s['source_original_key_verified']
     else:assert s['source_full_printed_input_and_script_verified']
     assert not s['source_original_key_is_gold']
     assert len(g['requiredAudioAssets'])==1 and g['requiredAudioAssets'][0]['asset']=={k:track[k]for k in ['path','sha256']}
@@ -133,10 +137,14 @@ def check(g,a,b,s):
         load_ref(s['source'])
         assert s['features']['max_words']==2 and s['features']['responses']==6
     elif d['family']=='listening_flowchart_matching':
-        assert s['selected_pages_all_visually_reviewed'] and s['source_original_audio_acquired']
-        assert s['original_audio_complete_stream_decode_checked'] and not s['original_audio_script_semantic_match_verified']
-        for original in s['original_audio_assets']:load_ref(original)
-        load_ref(s['source_native_index'])
+        if d['source_group_id']=='idp.listening.flow5of8':
+            assert s['source_visual_verified'] and not s['source_original_audio_acquired']
+            load_ref(s['source_visual']);load_ref(s['companion_reader'])
+        else:
+            assert s['selected_pages_all_visually_reviewed'] and s['source_original_audio_acquired']
+            assert s['original_audio_complete_stream_decode_checked'] and not s['original_audio_script_semantic_match_verified']
+            for original in s['original_audio_assets']:load_ref(original)
+            load_ref(s['source_native_index'])
     elif d['family'] in {'listening_research_table_completion','listening_multiselect'}:
         assert s['source_visual_verified'] and s['source_full_printed_input_and_script_verified'] and not s['source_original_audio_acquired']
         load_ref(s['source_visual'])
@@ -170,8 +178,12 @@ def check(g,a,b,s):
         assert all(q['fillMarking']['maxWords']==2 and q['fillMarking']['numberAllowance']=='one'for q in g['questions'])
         assert d['summary_text']in a['student_passage']
     elif d['family']=='listening_flowchart_matching':
-        assert s['features']['nodes']==7 and s['features']['responses']==6 and s['features']['shared_candidates']==9
-        assert a['flow_structure']==dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards')
+        if d['source_group_id']=='idp.listening.flow5of8':
+            assert a['flow_structure']==dict(nodes=8,responses=5,shared_candidates=8,printed_stage_indices=[0,3,4],arrows='linear_downwards')
+            assert all(s['features'][k]==v for k,v in a['flow_structure'].items())
+        else:
+            assert s['features']['nodes']==7 and s['features']['responses']==6 and s['features']['shared_candidates']==9
+            assert a['flow_structure']==dict(nodes=7,responses=6,shared_candidates=9,printed_stage_index=5,arrows='linear_downwards')
         assert g['fixedSharedBank'] and len(g['requiredPassageImages'])==1
         assert s['source_whole_ten_response_section_complete'] is False
     elif d['family']=='listening_multiselect':

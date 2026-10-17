@@ -5,12 +5,14 @@ ROLES=['lower_left_room','inner_right_room','far_wall_shelves','upper_middle_roo
 
 def validate_draft(d):
     kind=d['family'];assert kind in COUNTS and d['grade']=='advanced' and d['academic_bundle_listening']
-    assert d['source_repeat_count']==(1 if kind=='listening_flowchart_matching'else None) and d['render_repeat_count']==1
+    flow5=kind=='listening_flowchart_matching' and d['source_group_id']=='idp.listening.flow5of8'
+    count=5 if flow5 else COUNTS[kind]
+    assert d['source_repeat_count']==(1 if kind=='listening_flowchart_matching' and not flow5 else None) and d['render_repeat_count']==1
     assert len(d['clips'])==1 and d['fictional_illustrative_case']
-    c=d['clips'][0];assert len(c['questions'])==COUNTS[kind]
-    assert c['preview_seconds']==c['answer_seconds']==5*COUNTS[kind]
+    c=d['clips'][0];assert len(c['questions'])==count
+    assert c['preview_seconds']==c['answer_seconds']==5*count
     assert all(t['text'].strip() for t in c['turns'])
-    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion','listening_summary_completion'}else{'M','W','S'}if kind=='listening_flowchart_matching'else{'M','W'})
+    assert set(t['speaker']for t in c['turns'])==({'N'}if kind in {'listening_plan_label_matching','listening_short_answer_pairs','listening_note_table_completion','listening_research_table_completion','listening_summary_completion'}else{'M','W','S'}if kind=='listening_flowchart_matching' and not flow5 else{'M','W'})
     text=' '.join(t['text']for t in c['turns']);fold=lambda v:re.sub(r'[-‐‑–]',' ',v).lower()
     if kind=='listening_plan_label_matching':
         assert len(c['turns'])==1 and d['plan_roles']==ROLES
@@ -32,7 +34,7 @@ def validate_draft(d):
             if kind!='listening_note_table_completion' or n!=9:
                 assert all(re.fullmatch("[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*",v)for v in q['acceptedAnswers']+q['rejected'])
         else:
-            labels=list('ABCDEFGHI'if kind in {'listening_plan_label_matching','listening_flowchart_matching'}else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
+            labels=list('ABCDEFGH'if flow5 else'ABCDEFGHI'if kind in {'listening_plan_label_matching','listening_flowchart_matching'}else'ABCDEFGH'if kind=='listening_multiselect'else'ABC')
             assert [k for k,v in q['options']]==labels and q['answer']in labels
             assert set(q['candidate_reasons'])==set(labels) and all(q['candidate_reasons'].values())
             if kind=='listening_plan_label_matching':assert q['options']==d['candidates'] and q['answer']==d['answers_by_position'][n-1]
@@ -71,7 +73,17 @@ def validate_draft(d):
         assert len(set(v.lower()for v in forms))==len(forms)
         assert c['questions'][3]['rejected']==c['questions'][4]['rejected']
         assert d['source_task_form_only'] and not d['source_B1_is_advanced_norm']
-    if kind=='listening_flowchart_matching':
+    if flow5:
+        assert set(d['speakers'])=={'M','W'} and all(v['voice']for v in d['speakers'].values())
+        assert len(d['flow_nodes'])==8 and len(c['turns'])>=2
+        assert [k for k,v in d['candidates']]==list('ABCDEFGH') and len({v for k,v in d['candidates']})==8
+        assert len(d['answers_by_position'])==5 and len(set(d['answers_by_position']))==5
+        assert d['source_scope']=='whole_printed_five_response_eight_candidate_flow'
+        assert d['printed_stage_indices']==[0,3,4] and all('____' not in d['flow_nodes'][i]for i in [0,3,4])
+        assert [int(re.search(r'(\d) ____',v)[1])for v in d['flow_nodes']if '____'in v]==list(range(1,6))
+        assert d['arrows']=='linear_downwards' and d['source_reuse_rule']=='not_printed'
+        for n,q in enumerate(c['questions']):assert q['answer']==d['answers_by_position'][n] and q['options']==d['candidates']
+    elif kind=='listening_flowchart_matching':
         assert set(d['speakers'])=={'M','W','S'} and all(v['voice']for v in d['speakers'].values())
         assert len(d['flow_nodes'])==7 and len(c['turns'])>=2
         assert [k for k,v in d['candidates']]==list('ABCDEFGHI') and len({v for k,v in d['candidates']})==9
