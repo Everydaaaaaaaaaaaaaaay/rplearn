@@ -1,0 +1,198 @@
+{
+  "version": "0.1",
+  "id": "advanced-city-map-cross-reviews",
+  "grade": "advanced",
+  "questions": 4,
+  "candidate_sha256": "43758cbb7a3073e2aac91b74767c14c935262f02d0af1a653cbda5aa196309e1",
+  "canonical_response_block_sha256": "d7a0d8ccf02b0b62e77c8131b25169ae4dadf649306ba826b0913841731c7eb6",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which reviewer differs from the other three about giving one recommended route visual priority?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C要求可信备选不突出唯一合理路，A/B/D均赞成一条推荐路线优先；只有C反对。三人并非认为地图只能印一条路，D保留其他路线但反对同权重。"
+    },
+    {
+      "number": 2,
+      "stem": "Which other reviewer shares reviewer A's view of wrong turns as evidence about a map's design?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A将wrong turns当设计未解释处而保留；C明确must remain visible可暴露误导设计。B主张剔除可避免错转，D没有对错转是否作为设计证据表态；other排除A。"
+    },
+    {
+      "number": 3,
+      "stem": "Which other reviewer agrees with reviewer C that anonymous logs alone can adequately test whether visitors reach their destinations?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "C称就到达目的地这一实践问题记录足够、无需访谈；D也限定destination-reaching足够。A/B均说还需来访者解释，不能因也谈匿名记录就视为赞同；other排除C。"
+    },
+    {
+      "number": 4,
+      "stem": "Which reviewer takes a different view from reviewer B on imposing a common colour scheme across districts?",
+      "options": [
+        [
+          "A",
+          "Reviewer A"
+        ],
+        [
+          "B",
+          "Reviewer B"
+        ],
+        [
+          "C",
+          "Reviewer C"
+        ],
+        [
+          "D",
+          "Reviewer D"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "B反对全市统一，C/D也主张保留地方色彩规则；A明确支持common scheme使邻区沿用。只有A在同一统一色彩政策问题上不同；不把D夸门边标志例子误当支持颜色统一。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedAdvancedCrossReviewBridge-v0.1.json",
+    "sha256": "bb916922ec02e6b15acd70cc7c49141d0efdc1f15c03232bef3ea264db14a163"
+  },
+  "source_group_id": "advanced.c1.2022.part6",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "explicit_repeat_allowed",
+    "source_material": {
+      "reviews": 4,
+      "same_book": 1,
+      "cross_opinion_comparisons": 4,
+      "reuse_rule_printed": true
+    },
+    "source_candidates": {
+      "per_response": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "shared_bank": true,
+      "unique_shared_entries": 4
+    }
+  },
+  "student_passage": "### A City on One Sheet\n\nFour fictional reviewers discuss the same fictional book.\n\nA — Nina Cole\n\nThe book is strongest when it insists that a visitor should be able to identify one recommended route at a glance. A map need not advertise every possible journey to serve the person standing confused at a junction. I would also retain the author's proposed common colour scheme across districts: a convention learned in one neighbourhood should remain useful in the next. Where I depart from the book is its confidence in anonymous movement records. A trail ending at the intended building cannot tell us whether somebody understood the map or simply followed another pedestrian. Conversations with visitors are indispensable. Those conversations should include their wrong turns, which are useful indications of what a design failed to explain, not embarrassing departures to be removed from the account.\n\nB — Omar Finch\n\nFor a newcomer in a hurry, the book's prominent recommended route is more helpful than a display of equally weighted alternatives. On that point its practical advice deserves adoption. Its desire to make every district look alike is less convincing. Local maps should be permitted to use different colours when local landmarks make those choices intelligible. I am equally cautious about treating anonymous journey logs as a sufficient test of success. We need visitors' explanations as well as their destinations. Unlike the author, however, I would exclude journeys in which readers simply ignore a plainly visible sign. Such avoidable wrong turns introduce noise into the evaluation of the map itself; they should not automatically count as evidence that the design needs changing.\n\nC — Ruth Salim\n\nThe author gives too much prominence to a single preferred route. The credible alternatives should have equal visual weight. Visitors have different purposes, and a good map should present credible alternatives without making one appear to be the only sensible journey. I am more persuaded by the proposal to evaluate maps through anonymous journey logs. For the practical question of whether visitors reach their destinations, those records are sufficient; additional interviews are not essential to that assessment. Repeated wrong turns in the records are part of the evidence and must remain visible, since they can expose a misleading design. Nor should colour conventions be imposed uniformly across the city. A district needs the freedom to reflect its own features, even if that asks visitors to learn a small amount of local visual vocabulary.\n\nD — Paul Devlin\n\nThe argument for one clearly privileged route is persuasive. The other possibilities can remain available, but giving them identical visual weight would make the first decision harder than necessary. I also accept the book's claim that anonymous records can provide a sufficient evaluation of destination-reaching. A reliable account of completed journeys need not be supplemented by an account of every reader's private reasoning. This is a narrower claim than saying the records explain every difficulty, and the distinction matters. The proposed city-wide colour scheme, by contrast, would sacrifice useful local differences for an appearance of tidiness. Districts should retain their own schemes where appropriate. The author's examples of signs placed beside doorways are particularly well chosen, although that is a different matter from the colour policy.",
+  "author_answer_vector": [
+    "C",
+    "C",
+    "D",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 522,
+    "stem_English_words": 66,
+    "options_English_words_with_repeated_bank": 32,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 3,
+    "output_letter_count": 4,
+    "review_heading_names_in_body_measure": true,
+    "material_title_and_intro_English_words": 13,
+    "student_material_English_words_all": 535,
+    "shared_reviewer_bank_English_words_once": 8,
+    "requirement_Chinese_Han": 63,
+    "requirement_total_characters": 76
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A — Nina Cole\n\nThe book is strongest when it insists that a visitor should be able to identify one recommended route at a glance. A map need not advertise every possible journey to serve the person standing confused at a junction. I would also retain the author's proposed common colour scheme across districts: a convention learned in one neighbourhood should remain useful in the next. Where I depart from the book is its confidence in anonymous movement records. A trail ending at the intended building cannot tell us whether somebody understood the map or simply followed another pedestrian. Conversations with visitors are indispensable. Those conversations should include their wrong turns, which are useful indications of what a design failed to explain, not embarrassing departures to be removed from the account.\n\nB — Omar Finch\n\nFor a newcomer in a hurry, the book's prominent recommended route is more helpful than a display of equally weighted alternatives. On that point its practical advice deserves adoption. Its desire to make every district look alike is less convincing. Local maps should be permitted to use different colours when local landmarks make those choices intelligible. I am equally cautious about treating anonymous journey logs as a sufficient test of success. We need visitors' explanations as well as their destinations. Unlike the author, however, I would exclude journeys in which readers simply ignore a plainly visible sign. Such avoidable wrong turns introduce noise into the evaluation of the map itself; they should not automatically count as evidence that the design needs changing.\n\nC — Ruth Salim\n\nThe author gives too much prominence to a single preferred route. The credible alternatives should have equal visual weight. Visitors have different purposes, and a good map should present credible alternatives without making one appear to be the only sensible journey. I am more persuaded by the proposal to evaluate maps through anonymous journey logs. For the practical question of whether visitors reach their destinations, those records are sufficient; additional interviews are not essential to that assessment. Repeated wrong turns in the records are part of the evidence and must remain visible, since they can expose a misleading design. Nor should colour conventions be imposed uniformly across the city. A district needs the freedom to reflect its own features, even if that asks visitors to learn a small amount of local visual vocabulary.\n\nD — Paul Devlin\n\nThe argument for one clearly privileged route is persuasive. The other possibilities can remain available, but giving them identical visual weight would make the first decision harder than necessary. I also accept the book's claim that anonymous records can provide a sufficient evaluation of destination-reaching. A reliable account of completed journeys need not be supplemented by an account of every reader's private reasoning. This is a narrower claim than saying the records explain every difficulty, and the distinction matters. The proposed city-wide colour scheme, by contrast, would sacrifice useful local differences for an appearance of tidiness. Districts should retain their own schemes where appropriate. The author's examples of signs placed beside doorways are particularly well chosen, although that is a different matter from the colour policy.",
+  "paragraphs": [
+    "A — Nina Cole\n\nThe book is strongest when it insists that a visitor should be able to identify one recommended route at a glance. A map need not advertise every possible journey to serve the person standing confused at a junction. I would also retain the author's proposed common colour scheme across districts: a convention learned in one neighbourhood should remain useful in the next. Where I depart from the book is its confidence in anonymous movement records. A trail ending at the intended building cannot tell us whether somebody understood the map or simply followed another pedestrian. Conversations with visitors are indispensable. Those conversations should include their wrong turns, which are useful indications of what a design failed to explain, not embarrassing departures to be removed from the account.",
+    "B — Omar Finch\n\nFor a newcomer in a hurry, the book's prominent recommended route is more helpful than a display of equally weighted alternatives. On that point its practical advice deserves adoption. Its desire to make every district look alike is less convincing. Local maps should be permitted to use different colours when local landmarks make those choices intelligible. I am equally cautious about treating anonymous journey logs as a sufficient test of success. We need visitors' explanations as well as their destinations. Unlike the author, however, I would exclude journeys in which readers simply ignore a plainly visible sign. Such avoidable wrong turns introduce noise into the evaluation of the map itself; they should not automatically count as evidence that the design needs changing.",
+    "C — Ruth Salim\n\nThe author gives too much prominence to a single preferred route. The credible alternatives should have equal visual weight. Visitors have different purposes, and a good map should present credible alternatives without making one appear to be the only sensible journey. I am more persuaded by the proposal to evaluate maps through anonymous journey logs. For the practical question of whether visitors reach their destinations, those records are sufficient; additional interviews are not essential to that assessment. Repeated wrong turns in the records are part of the evidence and must remain visible, since they can expose a misleading design. Nor should colour conventions be imposed uniformly across the city. A district needs the freedom to reflect its own features, even if that asks visitors to learn a small amount of local visual vocabulary.",
+    "D — Paul Devlin\n\nThe argument for one clearly privileged route is persuasive. The other possibilities can remain available, but giving them identical visual weight would make the first decision harder than necessary. I also accept the book's claim that anonymous records can provide a sufficient evaluation of destination-reaching. A reliable account of completed journeys need not be supplemented by an account of every reader's private reasoning. This is a narrower claim than saying the records explain every difficulty, and the distinction matters. The proposed city-wide colour scheme, by contrast, would sacrifice useful local differences for an appearance of tidiness. Districts should retain their own schemes where appropriate. The author's examples of signs placed beside doorways are particularly well chosen, although that is a different matter from the colour policy."
+  ],
+  "material_book_count": 1,
+  "review_count": 4,
+  "opinion_relation_matrix": {
+    "single_recommended_route": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true
+    },
+    "wrong_turns_keep_as_design_evidence": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": null
+    },
+    "anonymous_logs_alone_sufficient_for_destination_test": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": true
+    },
+    "uniform_district_colour_scheme": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false
+    }
+  },
+  "explicit_repeat_allowed": true,
+  "source_questions37to40_mappedauthor1to4": true,
+  "comparison_not_single_text_keyword_lookup": true,
+  "unknown_opinion_not_false": true,
+  "prefreeze_scope_revision": "Cexplicitlyrequiresequalvisualweight;notmerelycriticisingexcessprominencewhileallowingsomepriority"
+}

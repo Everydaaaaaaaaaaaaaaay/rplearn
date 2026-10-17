@@ -1,0 +1,618 @@
+{
+  "version": "0.29",
+  "as_of_local_date": "2026-10-17",
+  "scope": "15levels_authority_first_then_source_gaps",
+  "authorities": [
+    {
+      "id": "moe-assessment2025",
+      "role": "national_assessment_policy_not_question_blueprint",
+      "title": "教育部2025日常考试管理",
+      "url": "https://www.moe.gov.cn/srcsite/A06/s3321/202512/t20251216_1423634.html",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/moe-dailyexam-management2025-native.html",
+          "sha256": "ea5bde5a671feba1f5eb25b4ede7a1ff9aae27548d0e289145447c8b6c5190a7"
+        }
+      ],
+      "scope": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        "junior1",
+        "junior2",
+        "junior3",
+        "senior1",
+        "senior2",
+        "senior3"
+      ],
+      "finding": "小学一二年级不进行纸笔考试；试卷按课程标准与教学实际，未规定逐年级固定题型目录。"
+    },
+    {
+      "id": "moe-curriculum2022",
+      "role": "national_band_targets_and_assessment_forms_not_fixed_grade_paper",
+      "title": "义务教育英语课程标准2022官方原件",
+      "url": "https://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/moe-english2022-full.pdf",
+          "sha256": "59ec3971e0dbd6ca487c4e4972cbc80effaf2fd62418d07e5f62c6698fa222fb"
+        }
+      ],
+      "locator": {
+        "physical_pages": [
+          20,
+          42,
+          65,
+          66,
+          67,
+          68
+        ],
+        "printed_pages": [
+          13,
+          35,
+          58,
+          59,
+          60,
+          61
+        ]
+      },
+      "finding": "预备级视听说；3—4/5—6/7—9分学段。评价形式含选择、填空、判断、匹配等，不是每年级固定配比。"
+    },
+    {
+      "id": "revision2025-selected",
+      "role": "curriculum_original_pages_reposted_by_university_not_new_MOE_authenticated_download",
+      "title": "2025日常修订课标既有原页",
+      "url": "https://dfl.aku.edu.cn/info/1565/10170.htm",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/aku-junior2025-page016.jpg",
+          "sha256": "4eaab31430b5470ff7ff8488e24569a9e039f93a73866c5a520c613f659eb560"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/aku-junior2025-page038.jpg",
+          "sha256": "2f34347316cd57f2f70250150408eeaaa3a5e6e12a9ba2447065a5cade9718bf"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/aku-junior2025-page063.jpg",
+          "sha256": "75f08e92c122e83495e1998eb493dc0af0b08a885118de713530b8caa0368c0a"
+        }
+      ],
+      "visually_read_image_indices": [
+        16,
+        38,
+        63
+      ],
+      "printed_pages": [
+        13,
+        35,
+        60
+      ],
+      "finding": "分学段、低年级听做与测评形式原页核对；不能据此恢复主观题或机械形式训练。"
+    },
+    {
+      "id": "luxu-school2024",
+      "role": "official_school_post_exam_analysis_type_presence_not_full_items",
+      "title": "芦墟实小2023—2024学年第一学期质量分析",
+      "url": "https://wjlxsyxx.wujiang.edu.cn/2024_02/20_10/content-130689.html",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/wujiang-school-analysis.html",
+          "sha256": "b546df0e043c1658c389228bea9a22c16a08b40c3d64e3e5d6109752e7a78c81"
+        }
+      ],
+      "scope": [
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6"
+      ],
+      "finding": "三年级有笔试排序，四年级阅读选择，五年级完形，六年级阅读多种操作；听力含表格。人数及成绩不当产品标定，未刊完整题面或统一全国规格。"
+    },
+    {
+      "id": "bjeea-listening",
+      "role": "official_local_exam_formats_not_all_junior_grades_or_all_regions",
+      "title": "北京考试院初中听说机考题型",
+      "url": "https://www.bjeea.cn/html/zkzz/faq/2025/1210/87740.html",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-research-20261012/record_beijing_mode20261013.py",
+          "sha256": "4d90effbfe6d90111a7d391c857748778c9cc4de254742ca708ef17edf0125d3"
+        }
+      ],
+      "finding": "听后选择是闭集；回答、转述、朗读不因此恢复。地方学考形式不当初一至初三所有普通卷共同蓝图。"
+    },
+    {
+      "id": "shmeea-junior2025",
+      "role": "official_local_exam_review_not_full_task_catalog",
+      "title": "上海考试院2025初中英语评析",
+      "url": "https://www.shmeea.edu.cn/page/08000/20250615/19514.html",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/shmeea-junior2025-review-native20261013.html",
+          "sha256": "ded05953e7774fc66733c7683ee8230f8bb7b5d4dc52a26124359ca1b1ac2420"
+        }
+      ],
+      "finding": "听力、语法词汇、阅读含路线图/图标/信息表；官方评析不替代全题面和配套。"
+    },
+    {
+      "id": "zhejiang-senior2025",
+      "role": "official_exam_review_not_grade10_11_uniform_paper",
+      "title": "浙江考试院2025全国一卷评析",
+      "url": "https://www.zjzs.net/art/2025/6/9/art_31_11269.html",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/zhejiang-national1-review.html",
+          "sha256": "f7b6683346d5de70fcd801fd315dff69d58e661d9563bbbba1bbd4f5339cefb8"
+        }
+      ],
+      "finding": "阅读、七选五、完形、语法等语言操作；不把升学卷题量推广给所有高一/高二普通卷。"
+    },
+    {
+      "id": "cet4-format",
+      "role": "official_specific_exam_blueprint",
+      "title": "教育考试院四级笔试结构",
+      "url": "https://cet.neea.edu.cn/html1/report/16123/196-1.htm",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/cet4-format.html",
+          "sha256": "2811871775831ea1b529a551bc21f1a48bb1a8f7155501be3a139d485802c22e"
+        }
+      ],
+      "finding": "客观部分听力新闻7、长对话8、篇章10；词汇10、长篇匹配10、仔细阅读10。写作/翻译暂停。"
+    },
+    {
+      "id": "cet6-format",
+      "role": "official_specific_exam_blueprint",
+      "title": "教育考试院六级笔试结构",
+      "url": "https://cet.neea.edu.cn/html1/report/16123/201-1.htm",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/cet6-format.html",
+          "sha256": "8921b0aa6ca848720da1025fc62a126fca0ca8e2e22ae099e6ca3ae5c87cd05a"
+        }
+      ],
+      "finding": "客观部分听力长对话8、篇章7、讲话报道讲座10；词汇10、长篇匹配10、仔细阅读10。写作/翻译暂停。"
+    },
+    {
+      "id": "c1-format",
+      "role": "official_reference_exam_not_product_advanced_equivalence",
+      "title": "Cambridge C1 Advanced格式",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/format/",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/c1-format.html",
+          "sha256": "3a6f5eb433dc31dfe5516a685221d3d93cee413222c1b4054e9ec3a33daa8791"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/c1-preparation.html",
+          "sha256": "5997f403212b6f760f61b04a9c06ff629c186d9c7aac9458511e1b10d5b2cfb0"
+        }
+      ],
+      "finding": "阅读语言运用按8部分分辨；完形/给词构形/单选/跨文观点/段落插入/信息匹配不同，听力另4部分。开放填空与转换须单独判分准入。"
+    },
+    {
+      "id": "cse2024",
+      "role": "ability_framework_not_question_type_or_product_level_equivalence",
+      "title": "教育考试院中国英语能力等级量表项目介绍",
+      "url": "https://cse.neea.edu.cn/html1/folder/1505/28-1.htm",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-research-20261012/raw/cse2024-project-introduction.html",
+          "sha256": "0b35c14e164bc252baffc4f4859d11818c19932d4219f1ceb09611b9f3b60d6d"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/moe-cse2024-revision-announcement.html",
+          "sha256": "63ced2a7d955b299ece3b80d7342796cf5a45cc069ce9747e62f5d42164b8062"
+        }
+      ],
+      "finding": "跨学段能力标准，不直接规定产品高级档等于某等级，也不提供统一专业学术试卷题型。"
+    },
+    {
+      "id": "c1-handbook-listening",
+      "role": "official_listening_taskform_and_source_scripts_keys;not_productadvanced_equivalence",
+      "title": "C1 Advanced official handbook: listening tasks and selected sample1 scripts/key",
+      "url": "https://www.cambridgeenglish.org/Images/167804-c1-advanced-handbook.pdf",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/c1-handbook-original-v0.1.pdf",
+          "sha256": "de53d5853405f3e25163c90dcd3771c83c9df4a87ce5d9a7163b785964f9ccb5"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/c1-handbook-listening-selected-native-v0.1.json",
+          "sha256": "3d80fb89b0dce02481119948291ac8022443b7ccce0c95367f7316f7cc62db09"
+        },
+        {
+          "path": "AuthorityGap20261017/C1ListeningPairing-v0.1.json",
+          "sha256": "110e12922f055320e1534ad08d7343192fb9005b05a405d98f6ce1744597961e"
+        }
+      ],
+      "finding": "三段短录音六题三选、完整双嘉宾访谈六题四选、五独白两八项候选库十回应；纸版2022题面与现手册digital标题差异保留，按内容核配，不冒称两种考试交付方式等同。"
+    },
+    {
+      "id": "shanghai-lowprimary-historical-guide",
+      "role": "historical_local_curriculum_evaluation_framework_not_current_test_blueprint",
+      "title": "上海市教委教研室署名低年段英语评价指南（试行稿）学校公开副本",
+      "url": "https://chongb.hpe.cn/infomng/PZLUPLOAD/WZFBW1001/pdf/T20091003150306085522.pdf",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/primary12-hpe-curriculum-evaluation-guide-v0.1.pdf",
+          "sha256": "f067ed9d92fe0fef394499d727aa9265ea1dad2b82efd1f783d4b3f5829340f7"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/primary12-hpe-guide-review-v0.1.json",
+          "sha256": "fb07bc81cc0383550684e698a39643e268b2de9f230a0f6e5e1f3d6a29820bfa"
+        }
+      ],
+      "scope": [
+        "primary1",
+        "primary2"
+      ],
+      "finding": "一二年级有基于指令/图示的倾听与认读活动和同伴调查等表现任务；原案例依赖真实同伴问答/过程观察，没有可直接入库的固定答案闭集全组。页脚为2015排版，非URL2009或检索2025出版证明；现行效力未证。"
+    }
+  ],
+  "levels": [
+    {
+      "level": "primary1",
+      "label": "小学1年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "shanghai-lowprimary-historical-guide"
+      ],
+      "requirements_summary": "预备级：视听说、听指认/闭集指令；不以纸笔卷作现行蓝图；历史上海指南补充字母音形/直观词汇/听指认与倾听过程，开放同伴调查不纳本轮闭集作者",
+      "existing_display_types": [
+        "数字词转数字",
+        "词卡归类",
+        "图词配对"
+      ],
+      "existing_authored_groups": 3,
+      "existing_responses": 23,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "primary2",
+      "label": "小学2年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "shanghai-lowprimary-historical-guide"
+      ],
+      "requirements_summary": "预备级：视听说、图卡/实物活动；不以纸笔卷作现行蓝图；历史上海指南补充字母音形/直观词汇/听指认与倾听过程，开放同伴调查不纳本轮闭集作者",
+      "existing_display_types": [
+        "共享候选对话补全",
+        "单词选图片",
+        "看图选句",
+        "情境功能选择"
+      ],
+      "existing_authored_groups": 4,
+      "existing_responses": 21,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "primary3",
+      "label": "小学3年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "luxu-school2024"
+      ],
+      "requirements_summary": "一级（3—4）：图文、情境、词句、简短阅读与排序等地方实测形式",
+      "existing_display_types": [
+        "共享候选对话补全",
+        "阅读正误判断",
+        "共享词库填空",
+        "字母组合补全",
+        "字母大小写配对判断",
+        "对话句序排列"
+      ],
+      "existing_authored_groups": 18,
+      "existing_responses": 90,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "primary4",
+      "label": "小学4年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "luxu-school2024"
+      ],
+      "requirements_summary": "一级（3—4）：图文选择/匹配、词库、阅读；具体按本地卷",
+      "existing_display_types": [
+        "单选完形",
+        "共享候选对话补全",
+        "阅读单选",
+        "阅读正误判断",
+        "共享词库填空",
+        "图词配对",
+        "单词类别辨别",
+        "情境与共享表达配对"
+      ],
+      "existing_authored_groups": 24,
+      "existing_responses": 138,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "primary5",
+      "label": "小学5年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "luxu-school2024"
+      ],
+      "requirements_summary": "二级（5—6）：语篇词汇/完形、对话、图表/多卡阅读等",
+      "existing_display_types": [
+        "单选完形",
+        "共享候选对话补全",
+        "阅读单选",
+        "阅读正误判断",
+        "独立句单选",
+        "共享词库填空",
+        "表格信息单选",
+        "多信息卡正误判断",
+        "闭集多操作阅读"
+      ],
+      "existing_authored_groups": 25,
+      "existing_responses": 132,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "primary6",
+      "label": "小学6年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "luxu-school2024"
+      ],
+      "requirements_summary": "二级（5—6）：图文、词句、完形/词库、多操作阅读等",
+      "existing_display_types": [
+        "共享候选对话补全",
+        "阅读正误判断",
+        "独立句单选",
+        "共享词库填空",
+        "表格信息单选",
+        "图词配对",
+        "情境功能选择",
+        "标记部分读音判断",
+        "闭集多操作阅读",
+        "句图配对"
+      ],
+      "existing_authored_groups": 28,
+      "existing_responses": 165,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "junior1",
+      "label": "初中1年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "bjeea-listening",
+        "shmeea-junior2025"
+      ],
+      "requirements_summary": "三级（7—9）：常见笔试选择/语篇填空/配对/衔接，听力单独配套；逐年级靠普通卷核实",
+      "existing_display_types": [
+        "单选完形",
+        "情境对话单选",
+        "共享候选对话补全",
+        "语法选择语篇",
+        "段落标题配对",
+        "音标提示词汇补全",
+        "人物需求/候选配对",
+        "阅读单选",
+        "独立句单选",
+        "共享句空衔接"
+      ],
+      "existing_authored_groups": 18,
+      "existing_responses": 120,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "junior2",
+      "label": "初中2年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "bjeea-listening",
+        "shmeea-junior2025"
+      ],
+      "requirements_summary": "三级（7—9）：常见笔试选择/语篇填空/配对/衔接，听力单独配套；逐年级靠普通卷核实",
+      "existing_display_types": [
+        "单选完形",
+        "人物需求/候选配对",
+        "阅读单选",
+        "独立句单选",
+        "共享句空衔接"
+      ],
+      "existing_authored_groups": 9,
+      "existing_responses": 52,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "junior3",
+      "label": "初中3年级",
+      "authority_ids": [
+        "moe-assessment2025",
+        "moe-curriculum2022",
+        "revision2025-selected",
+        "bjeea-listening",
+        "shmeea-junior2025"
+      ],
+      "requirements_summary": "三级（7—9）：常见笔试选择/语篇填空/配对/衔接，听力单独配套；逐年级靠普通卷核实",
+      "existing_display_types": [
+        "单选完形",
+        "共享候选对话补全",
+        "语法选择语篇",
+        "人物需求/候选配对",
+        "阅读单选",
+        "阅读正误判断",
+        "独立句单选",
+        "共享句空衔接"
+      ],
+      "existing_authored_groups": 14,
+      "existing_responses": 105,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "senior1",
+      "label": "高中1年级",
+      "authority_ids": [
+        "zhejiang-senior2025"
+      ],
+      "requirements_summary": "高中课标与地方卷：阅读/完形/语法词汇/衔接和听力，不从高考统一推本年级题量",
+      "existing_display_types": [
+        "单选完形",
+        "阅读单选",
+        "独立句单选",
+        "共享词库填空",
+        "共享句空衔接"
+      ],
+      "existing_authored_groups": 7,
+      "existing_responses": 69,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "senior2",
+      "label": "高中2年级",
+      "authority_ids": [
+        "zhejiang-senior2025"
+      ],
+      "requirements_summary": "高中课标与地方卷：阅读/完形/语法词汇/衔接和听力，不从高考统一推本年级题量",
+      "existing_display_types": [
+        "单选完形",
+        "阅读单选",
+        "独立句单选",
+        "共享句空衔接",
+        "表格信息单选"
+      ],
+      "existing_authored_groups": 7,
+      "existing_responses": 57,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "senior3",
+      "label": "高中3年级",
+      "authority_ids": [
+        "zhejiang-senior2025"
+      ],
+      "requirements_summary": "高中课标与地方卷：阅读/完形/语法词汇/衔接和听力，不从高考统一推本年级题量",
+      "existing_display_types": [
+        "单选完形",
+        "阅读单选",
+        "独立句单选",
+        "共享句空衔接"
+      ],
+      "existing_authored_groups": 6,
+      "existing_responses": 69,
+      "per_grade_national_fixed_type_set_claimed": false
+    },
+    {
+      "level": "undergraduate",
+      "label": "大学英语四级",
+      "authority_ids": [
+        "cet4-format"
+      ],
+      "requirements_summary": "CET4：3类阅读＋新闻/长对话/篇章3类听力；不是大学学历通用卷",
+      "existing_display_types": [
+        "阅读单选",
+        "共享词库填空",
+        "长篇段落信息匹配",
+        "三新闻听力单选",
+        "两长对话听力单选",
+        "篇章听力单选"
+      ],
+      "existing_authored_groups": 14,
+      "existing_responses": 124,
+      "per_grade_national_fixed_type_set_claimed": false,
+      "source_only_types_pending_authors": [],
+      "additional_listening_evidence": {
+        "path": "AuthorityGap20261017/CET2024ListeningPairing-v0.1.json",
+        "sha256": "e961d7da9c091b83e81fc5d68e9aeef3a16cab5ff9a9c15b83518d44dfb3c6ce"
+      },
+      "listening_boundary": "三类听力各有至少一完整原创；四级新闻三稿，其他各一稿。源为2024转载完整题面/脚本/键/同页媒体；原创自有脚本/合成试听，每节材料与问题一遍、卷面仅候选，局部编号不冒原题号；未独立听辨/自然语流/学生难度/产品等值。"
+    },
+    {
+      "level": "postgraduate",
+      "label": "大学英语六级",
+      "authority_ids": [
+        "cet6-format"
+      ],
+      "requirements_summary": "CET6：3类阅读＋长对话/篇章/讲话讲座3类听力；不是研究生通用卷",
+      "existing_display_types": [
+        "阅读单选",
+        "共享词库填空",
+        "长篇段落信息匹配",
+        "两长对话听力单选",
+        "篇章听力单选",
+        "讲座讲话听力单选"
+      ],
+      "existing_authored_groups": 12,
+      "existing_responses": 110,
+      "per_grade_national_fixed_type_set_claimed": false,
+      "source_only_types_pending_authors": [],
+      "additional_listening_evidence": {
+        "path": "AuthorityGap20261017/CET2024ListeningPairing-v0.1.json",
+        "sha256": "e961d7da9c091b83e81fc5d68e9aeef3a16cab5ff9a9c15b83518d44dfb3c6ce"
+      },
+      "listening_boundary": "三类听力各有至少一完整原创；四级新闻三稿，其他各一稿。源为2024转载完整题面/脚本/键/同页媒体；原创自有脚本/合成试听，每节材料与问题一遍、卷面仅候选，局部编号不冒原题号；未独立听辨/自然语流/学生难度/产品等值。"
+    },
+    {
+      "level": "advanced",
+      "label": "高级英语（专业与学术）",
+      "authority_ids": [
+        "c1-format",
+        "cse2024",
+        "c1-handbook-listening"
+      ],
+      "requirements_summary": "专业/学术能力边界未建；C1为五类已展示笔试形式及三类已配齐源音频听力的参照，未建立产品/CEFR等值。给词构形仍待合法形式准入。",
+      "existing_display_types": [
+        "单选完形",
+        "阅读单选",
+        "跨文本观点匹配",
+        "段落插入衔接",
+        "多文本信息匹配",
+        "三段短录音听力选择",
+        "完整访谈听力单选",
+        "五人独白双任务配对"
+      ],
+      "existing_authored_groups": 20,
+      "existing_responses": 136,
+      "per_grade_national_fixed_type_set_claimed": false,
+      "source_only_types_pending_authors": []
+    }
+  ],
+  "scope_policy": {
+    "path": "Expansion20261016/ScopePolicy-v0.1.json",
+    "sha256": "8bb36afc0c3473d8867820f244cf8650ff7f1627d7f47cdb3c9a21c3108d2ce7"
+  },
+  "baseline_coverage": {
+    "path": "Expansion20261016/Coverage-v0.1.json",
+    "sha256": "dbfaf8b6855cf0bc2ba2b6453635d584d1dde18dd27dde31f7b0342e1d674997"
+  },
+  "source_type_and_author_type_separate": true,
+  "unknown_cartesian_cells_not_used_as_required_types": true,
+  "subjective_still_paused": true,
+  "previous_atlas": {
+    "path": "AuthorityGap20261017/AuthorityAtlas-v0.28.json",
+    "sha256": "4b880b1b2a3a7e71a80497e3447cfc35354561fcb5004d8944d89efcff3ce7d8"
+  },
+  "current_original_coverage_target": {
+    "path": "AuthorityGap20261017/OriginalCoverageTarget-v0.34.json",
+    "sha256": "8e176d34e28db64b23ed21b10274f0b5800b530949022d2f1dd78cd4f43537a1"
+  },
+  "additional_selected_mode_evidence": {
+    "path": "AuthorityGap20261017/SelectedSourceModes-v0.8.json",
+    "sha256": "1fd7b08d686337b49c619187f5f2090265394ac92650578b0dabed573d95ed96"
+  }
+}
