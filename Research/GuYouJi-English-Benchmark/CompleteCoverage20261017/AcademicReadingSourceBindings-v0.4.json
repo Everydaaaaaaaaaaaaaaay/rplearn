@@ -1,0 +1,111 @@
+{
+  "version": "0.4",
+  "bindings": [
+    {
+      "id": "academic_info_tristate3",
+      "level": "advanced",
+      "family": "reading_information_tristate",
+      "task_mode": "academic_information_tristate",
+      "responses": 3,
+      "options_each": 3,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicReadingSourceModes-v0.1.json",
+        "sha256": "6248318940a065c10b33380efa6381a94bfdf6be8174ed4cb486a305e5a0a533"
+      },
+      "collection": "groups",
+      "source_group_id": "advanced.official-academic-reference.information-tristate3",
+      "source_record_sha256": "0f24c633f2b01495418bf6d16803951a53d835d16c381be27b3cf5e922d30672",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "academic_features4",
+      "level": "advanced",
+      "family": "matching_features",
+      "task_mode": "academic_matching_features",
+      "responses": 4,
+      "options_each": 5,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicReadingSourceModes-v0.2.json",
+        "sha256": "3ece63c43b90ba10e834ced0dae78ff43d60be2e03611368870ead81e8c4e3db"
+      },
+      "collection": "groups",
+      "source_group_id": "academic-reference.sample.matching_features",
+      "source_record_sha256": "08d0127ef85c8b8cd09b6e6a91817aa42f15572a80051de7492b05512bf10546",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "academic_table_completion",
+      "level": "advanced",
+      "family": "table_completion",
+      "task_mode": "academic_extracted_completion",
+      "responses": 5,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicReadingSourceModes-v0.3.json",
+        "sha256": "29f76249e1dcfabd5730e31d216778cfefad20f4ff3fb7cbaf4e4b41232f9032"
+      },
+      "collection": "groups",
+      "source_group_id": "academic-reference.sample.table_completion",
+      "source_record_sha256": "cace701c894f467acce89584c356b1ad3e9240502dbb16cb34f74e34155c1f38",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "academic_flow_chart_completion",
+      "level": "advanced",
+      "family": "flow_chart_completion",
+      "task_mode": "academic_extracted_completion",
+      "responses": 3,
+      "options_each": 0,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicReadingSourceModes-v0.3.json",
+        "sha256": "29f76249e1dcfabd5730e31d216778cfefad20f4ff3fb7cbaf4e4b41232f9032"
+      },
+      "collection": "groups",
+      "source_group_id": "academic-reference.sample.flow_chart_completion",
+      "source_record_sha256": "90f826bde647578cf7431827641407a33acf69bdba71bd4b55b1cdba5514de11",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "academic_paragraph_heading_matching",
+      "level": "advanced",
+      "family": "paragraph_heading_matching",
+      "task_mode": "academic_shared_pairing",
+      "responses": 4,
+      "options_each": 8,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicReadingSourceModes-v0.4.json",
+        "sha256": "2b19665ec087acbdc711e15482ed9642253d9599d88b61d2f2e0ec7895b06339"
+      },
+      "collection": "groups",
+      "source_group_id": "academic-reference.sample.heading_matching",
+      "source_record_sha256": "327ac95bdbf20835a9ce64baebcaac058f427b72eee614911d1af3f8e8dafc6d",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    },
+    {
+      "id": "academic_sentence_end_matching",
+      "level": "advanced",
+      "family": "sentence_end_matching",
+      "task_mode": "academic_shared_pairing",
+      "responses": 3,
+      "options_each": 6,
+      "source_index": {
+        "path": "CompleteCoverage20261017/AcademicReadingSourceModes-v0.4.json",
+        "sha256": "2b19665ec087acbdc711e15482ed9642253d9599d88b61d2f2e0ec7895b06339"
+      },
+      "collection": "groups",
+      "source_group_id": "academic-reference.sample.sentence_end_matching",
+      "source_record_sha256": "ec51972faeb2ac00c49ec7384ca1a3e70794cec6ec9eb26c5175adf9d72dc53d",
+      "new_source_count": 0,
+      "source_original_key_not_gold": true
+    }
+  ],
+  "previous": {
+    "path": "CompleteCoverage20261017/AcademicReadingSourceBindings-v0.3.json",
+    "sha256": "7f9aefbfb82620fe961eda34b90e14a4dc6bec1fe9f30e230644f9b30725016a"
+  }
+}

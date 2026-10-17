@@ -49,6 +49,9 @@ def check(data, plan):
             if b.get('task_mode') == 'academic_information_tristate':
                 from compile_academic_information import check as check_academic_information
                 check_academic_information(g,a,b,source)
+            if b.get('task_mode') == 'academic_shared_pairing':
+                from compile_academic_pairing import check as check_academic_pairing
+                check_academic_pairing(g,a,b,source)
             if b.get('task_mode') == 'academic_extracted_completion':
                 from compile_academic_extraction import check as check_academic_extraction
                 check_academic_extraction(g,a,b,source)
