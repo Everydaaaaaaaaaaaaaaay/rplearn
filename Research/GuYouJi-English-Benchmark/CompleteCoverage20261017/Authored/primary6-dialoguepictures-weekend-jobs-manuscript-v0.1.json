@@ -1,0 +1,425 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguepictures-weekend-jobs",
+  "title": "小六六对话配图：周末小事",
+  "grade": "primary6",
+  "family": "listening_picture_matching",
+  "family_label": "听对话标号配图",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part2",
+  "source_binding": "p6dialoguepictures6",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.16.json",
+    "sha256": "882f2e09007a8cd034448959ea56b3efe81d4d190205940b5a4cb566721d988b"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.16.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 115
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 115
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 115
+    }
+  },
+  "audio_introduction": "Listen to dialogues A to F. Match all six pictures to dialogues.",
+  "instruction": "听A—F六段完整对话，为全部6幅图各选相符对话的字母。没有额外规定每字母只能用一次。原卷未印遍数/时序；本机全组一遍、前后各15秒，可重播，不当原卷规则。",
+  "source_form_notice": "小六公开东城区期末原页完整六对话A—F配六图已核，正文有区/学年/学期，原校施测未认证；源音轨/脚本/键缺、遍数及复用未知。本稿完整原创对话，配套图复用自有已核几何图，不当18独立主题/曝光或儿童识图、独立难度验证。",
+  "teacher_source_notice": "\n\n小六公开东城区期末原页完整六对话A—F配六图已核，正文有区/学年/学期，原校施测未认证；源音轨/脚本/键缺、遍数及复用未知。本稿完整原创对话，配套图复用自有已核几何图，不当18独立主题/曝光或儿童识图、独立难度验证。\n\n每个标号后有完整M/W问答，六段合为一个完整大题/六回应，不算六套。完整源角色与键不凭无录音的图猜。源复用次数未印，本稿不加每项一次；无复用冲突扣分。三个版本共18图位复用12个自有单场景图，只有对话/组合新编，主题与视觉曝光不独立。脚本默认隐藏；本机合成不当源gold、独立教研、学生、商用或生产通过。",
+  "format_summary": "6段A—F对话 / 6图各选对话标签 / 共6回应 / 源复用及遍数未知 / 本机全组一遍可重播",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture6-v0.1.svg",
+      "sha256": "d31f50430f117fbfdd5f4d996bb46d2aacce42ea327cd915b02796fc040d7196"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture7-v0.1.svg",
+      "sha256": "9bddd69863f3ce33f1f37c0208120fee731c0ecb37c41d91eb0aef24a86b86ad"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture3-v0.1.svg",
+      "sha256": "3791352762ee8858ccc6c56dea327ac4bb6cb10c2964e98febd716f60ee05c01"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture9-v0.1.svg",
+      "sha256": "15922d5fad3d2aea32ba88faf369b241ee069313192bcf7551868a88830f499e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture2-v0.2.svg",
+      "sha256": "08cafdbd639b82fdae3bf0fff002016ea9d8a90ea124f0fb30363a1085b645fe"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture3-v0.1.svg",
+      "sha256": "1420828839de45ceb8252f93ced481b519eaf1652031cafc6c1ed2ec1054c5c8"
+    }
+  ],
+  "visual_panel_semantics": [
+    "图为fish；对话D的完整问答明确描述对应动作/对象",
+    "图为sweep；对话E的完整问答明确描述对应动作/对象",
+    "图为carry；对话B的完整问答明确描述对应动作/对象",
+    "图为rain；对话F的完整问答明确描述对应动作/对象",
+    "图为wash；对话A的完整问答明确描述对应动作/对象",
+    "图为bus；对话C的完整问答明确描述对应动作/对象"
+  ],
+  "audio_dialogue_units": [
+    {
+      "label": "A",
+      "scene": "wash",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are your hands ready for lunch?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not yet. I am washing them under the tap before I touch any food."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "scene": "carry",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Would you like some help with that box?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, please. I am carrying it with both hands, but it is heavier than I expected."
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "scene": "bus",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Does this vehicle run on railway tracks?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. It is a bus. People get on through the door beside the front windows."
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "scene": "fish",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What is that long rod for?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am using it to catch fish. The line goes from its end down to the water."
+        }
+      ]
+    },
+    {
+      "label": "E",
+      "scene": "sweep",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why are you moving that broom across the floor?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am sweeping up the dust before we move the chairs back."
+        }
+      ]
+    },
+    {
+      "label": "F",
+      "scene": "rain",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Why have you opened your umbrella?"
+        },
+        {
+          "speaker": "W",
+          "text": "It has started raining, and I still have to walk to the gate."
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dialogue A."
+        },
+        {
+          "speaker": "M",
+          "text": "Are your hands ready for lunch?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not yet. I am washing them under the tap before I touch any food."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue B."
+        },
+        {
+          "speaker": "M",
+          "text": "Would you like some help with that box?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, please. I am carrying it with both hands, but it is heavier than I expected."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue C."
+        },
+        {
+          "speaker": "M",
+          "text": "Does this vehicle run on railway tracks?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. It is a bus. People get on through the door beside the front windows."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue D."
+        },
+        {
+          "speaker": "M",
+          "text": "What is that long rod for?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am using it to catch fish. The line goes from its end down to the water."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue E."
+        },
+        {
+          "speaker": "M",
+          "text": "Why are you moving that broom across the floor?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am sweeping up the dust before we move the chairs back."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue F."
+        },
+        {
+          "speaker": "M",
+          "text": "Why have you opened your umbrella?"
+        },
+        {
+          "speaker": "W",
+          "text": "It has started raining, and I still have to walk to the gate."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "图为fish；对话D的完整问答明确描述对应动作/对象；A描述wash不符本图；B描述carry不符本图；C描述bus不符本图；E描述sweep不符本图；F描述rain不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第2图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "图为sweep；对话E的完整问答明确描述对应动作/对象；A描述wash不符本图；B描述carry不符本图；C描述bus不符本图；D描述fish不符本图；F描述rain不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第3图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "图为carry；对话B的完整问答明确描述对应动作/对象；A描述wash不符本图；C描述bus不符本图；D描述fish不符本图；E描述sweep不符本图；F描述rain不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第4图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "图为rain；对话F的完整问答明确描述对应动作/对象；A描述wash不符本图；B描述carry不符本图；C描述bus不符本图；D描述fish不符本图；E描述sweep不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第5图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "图为wash；对话A的完整问答明确描述对应动作/对象；B描述carry不符本图；C描述bus不符本图；D描述fish不符本图；E描述sweep不符本图；F描述rain不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第6图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "图为bus；对话C的完整问答明确描述对应动作/对象；A描述wash不符本图；B描述carry不符本图；D描述fish不符本图；E描述sweep不符本图；F描述rain不符本图。不靠排除已使用标签作答。"
+        }
+      ]
+    }
+  ]
+}

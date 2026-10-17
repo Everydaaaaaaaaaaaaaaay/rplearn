@@ -1,0 +1,425 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialoguepictures-before-visitors",
+  "title": "小六六对话配图：访客来之前",
+  "grade": "primary6",
+  "family": "listening_picture_matching",
+  "family_label": "听对话标号配图",
+  "source_group_id": "primary6.dongcheng2024-25upper.listening.part2",
+  "source_binding": "p6dialoguepictures6",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.16.json",
+    "sha256": "882f2e09007a8cd034448959ea56b3efe81d4d190205940b5a4cb566721d988b"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.16.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 115
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 115
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 115
+    }
+  },
+  "audio_introduction": "Listen to dialogues A to F. Match all six pictures to dialogues.",
+  "instruction": "听A—F六段完整对话，为全部6幅图各选相符对话的字母。没有额外规定每字母只能用一次。原卷未印遍数/时序；本机全组一遍、前后各15秒，可重播，不当原卷规则。",
+  "source_form_notice": "小六公开东城区期末原页完整六对话A—F配六图已核，正文有区/学年/学期，原校施测未认证；源音轨/脚本/键缺、遍数及复用未知。本稿完整原创对话，配套图复用自有已核几何图，不当18独立主题/曝光或儿童识图、独立难度验证。",
+  "teacher_source_notice": "\n\n小六公开东城区期末原页完整六对话A—F配六图已核，正文有区/学年/学期，原校施测未认证；源音轨/脚本/键缺、遍数及复用未知。本稿完整原创对话，配套图复用自有已核几何图，不当18独立主题/曝光或儿童识图、独立难度验证。\n\n每个标号后有完整M/W问答，六段合为一个完整大题/六回应，不算六套。完整源角色与键不凭无录音的图猜。源复用次数未印，本稿不加每项一次；无复用冲突扣分。三个版本共18图位复用12个自有单场景图，只有对话/组合新编，主题与视觉曝光不独立。脚本默认隐藏；本机合成不当源gold、独立教研、学生、商用或生产通过。",
+  "format_summary": "6段A—F对话 / 6图各选对话标签 / 共6回应 / 源复用及遍数未知 / 本机全组一遍可重播",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture3-v0.1.svg",
+      "sha256": "3791352762ee8858ccc6c56dea327ac4bb6cb10c2964e98febd716f60ee05c01"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-tools-and-travel-picture2-v0.2.svg",
+      "sha256": "08cafdbd639b82fdae3bf0fff002016ea9d8a90ea124f0fb30363a1085b645fe"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture5-v0.1.svg",
+      "sha256": "8744bc87c55e968f7c7021facf68e736e2ceddc9b3e67e5c117c82c14063f4ec"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture1-v0.1.svg",
+      "sha256": "fd0b0582b98d34096f23e1be6760fce2d1ed62561855f0b1b5f2210653fb14a1"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture2-v0.1.svg",
+      "sha256": "10096b1766e0d6e754abf5e6cd9e8eea3cca107a276e705a60bc3187634c9978"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary6-picturelisten-everyday-actions-picture4-v0.1.svg",
+      "sha256": "147a93c3b6cac3e2447c8e6ff6d626da21d3cdc360f9b36e4c24b52473dd36d6"
+    }
+  ],
+  "visual_panel_semantics": [
+    "图为carry；对话E的完整问答明确描述对应动作/对象",
+    "图为wash；对话F的完整问答明确描述对应动作/对象",
+    "图为read；对话D的完整问答明确描述对应动作/对象",
+    "图为write；对话A的完整问答明确描述对应动作/对象",
+    "图为cycle；对话C的完整问答明确描述对应动作/对象",
+    "图为cook；对话B的完整问答明确描述对应动作/对象"
+  ],
+  "audio_dialogue_units": [
+    {
+      "label": "A",
+      "scene": "write",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Have you finished the message for the visitors?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not quite. I am writing the last line on this paper, then I will leave it at the desk."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "scene": "cook",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "You are wearing a cook's hat. Are you making lunch?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. I am stirring the soup in the pot. The visitors will eat after their tour."
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "scene": "cycle",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "How are you getting to the meeting point?"
+        },
+        {
+          "speaker": "W",
+          "text": "On my bicycle. I am riding there now, so I do not miss the start."
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "scene": "read",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What are you holding open in front of you?"
+        },
+        {
+          "speaker": "W",
+          "text": "A book about the town. I am reading a page before I show the visitors around."
+        }
+      ]
+    },
+    {
+      "label": "E",
+      "scene": "carry",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Where are you taking that large box?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am carrying it to the storeroom. These things must be put away before everyone arrives."
+        }
+      ]
+    },
+    {
+      "label": "F",
+      "scene": "wash",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are you filling the pot at that sink?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. I am washing my hands. I have just finished moving the dusty chairs."
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dialogue A."
+        },
+        {
+          "speaker": "M",
+          "text": "Have you finished the message for the visitors?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not quite. I am writing the last line on this paper, then I will leave it at the desk."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue B."
+        },
+        {
+          "speaker": "M",
+          "text": "You are wearing a cook's hat. Are you making lunch?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. I am stirring the soup in the pot. The visitors will eat after their tour."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue C."
+        },
+        {
+          "speaker": "M",
+          "text": "How are you getting to the meeting point?"
+        },
+        {
+          "speaker": "W",
+          "text": "On my bicycle. I am riding there now, so I do not miss the start."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue D."
+        },
+        {
+          "speaker": "M",
+          "text": "What are you holding open in front of you?"
+        },
+        {
+          "speaker": "W",
+          "text": "A book about the town. I am reading a page before I show the visitors around."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue E."
+        },
+        {
+          "speaker": "M",
+          "text": "Where are you taking that large box?"
+        },
+        {
+          "speaker": "W",
+          "text": "I am carrying it to the storeroom. These things must be put away before everyone arrives."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue F."
+        },
+        {
+          "speaker": "M",
+          "text": "Are you filling the pot at that sink?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. I am washing my hands. I have just finished moving the dusty chairs."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "图为carry；对话E的完整问答明确描述对应动作/对象；A描述write不符本图；B描述cook不符本图；C描述cycle不符本图；D描述read不符本图；F描述wash不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第2图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "图为wash；对话F的完整问答明确描述对应动作/对象；A描述write不符本图；B描述cook不符本图；C描述cycle不符本图；D描述read不符本图；E描述carry不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第3图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "图为read；对话D的完整问答明确描述对应动作/对象；A描述write不符本图；B描述cook不符本图；C描述cycle不符本图；E描述carry不符本图；F描述wash不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第4图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "图为write；对话A的完整问答明确描述对应动作/对象；B描述cook不符本图；C描述cycle不符本图；D描述read不符本图；E描述carry不符本图；F描述wash不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第5图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "图为cycle；对话C的完整问答明确描述对应动作/对象；A描述write不符本图；B描述cook不符本图；D描述read不符本图；E描述carry不符本图；F描述wash不符本图。不靠排除已使用标签作答。"
+        },
+        {
+          "stem": "第6图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ],
+            [
+              "F",
+              "对话F"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "图为cook；对话B的完整问答明确描述对应动作/对象；A描述write不符本图；C描述cycle不符本图；D描述read不符本图；E描述carry不符本图；F描述wash不符本图。不靠排除已使用标签作答。"
+        }
+      ]
+    }
+  ]
+}

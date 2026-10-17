@@ -74,10 +74,10 @@ def render(manuscript, output, version='0.1', reuse_manifest=None, render_only=N
         assert c['preview_seconds']==c['answer_seconds']==25
         assert all([k for k,_ in q['options']]==['T','F']for q in c['questions'])
     elif family=='listening_picture_matching':
-        assert draft['grade']=='primary3' and len(draft['clips'])==1
+        assert (draft['grade'],len(draft['figures']))in {('primary3',5),('primary6',6)} and len(draft['clips'])==1
         assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
         c=draft['clips'][0];units=draft['audio_dialogue_units']
-        assert [u['label']for u in units]==list('ABCDE') and len(c['questions'])==len(draft['figures'])==5
+        assert [u['label']for u in units]==list('ABCDEF'[:len(draft['figures'])]) and len(c['questions'])==len(draft['figures'])
         assert c['turns']==[t for u in units for t in [dict(speaker='N',text='Dialogue '+u['label']+'.')]+u['turns']]
         assert all([t['speaker']for t in u['turns']]==['M','W']for u in units)
         assert c['preview_seconds']==c['answer_seconds']==15
