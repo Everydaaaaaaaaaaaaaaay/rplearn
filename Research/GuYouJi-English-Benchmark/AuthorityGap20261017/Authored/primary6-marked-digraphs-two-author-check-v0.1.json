@@ -1,0 +1,154 @@
+{
+  "version": "0.1",
+  "id": "primary6-marked-digraphs-two",
+  "grade": "primary6",
+  "questions": 4,
+  "candidate_sha256": "1477e9a2eb056f7e85ff1b50997256163688eb441534fe633a6eb1d7981c7b37",
+  "canonical_response_block_sha256": "fc4796290222ed79ce55b8156ebeb507ab97d89a940225c4c0708ccca7070d47",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "sh[ee]p — gr[ee]n",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "只比较方括号内的字母部分；两处通常标准英式教学读音分别为/iː/和/iː/，因此选T。F把相同音误判为不同；未比较整个单词。"
+    },
+    {
+      "number": 2,
+      "stem": "ki[ng] — ri[ng]",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "只比较方括号内的字母部分；两处通常标准英式教学读音分别为/ŋ/和/ŋ/，因此选T。F把相同音误判为不同；未比较整个单词。"
+    },
+    {
+      "number": 3,
+      "stem": "[th]ink — [th]is",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "只比较方括号内的字母部分；两处通常标准英式教学读音分别为/θ/和/ð/，因此选F。T把不同音误判为相同；相同拼写不保证相同读音。"
+    },
+    {
+      "number": 4,
+      "stem": "[c]at — [c]ity",
+      "options": [
+        [
+          "T",
+          "T：相同"
+        ],
+        [
+          "F",
+          "F：不同"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "只比较方括号内的字母部分；两处通常标准英式教学读音分别为/k/和/s/，因此选F。T把不同音误判为相同；相同拼写不保证相同读音。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary56LanguageBridge-v0.1.json",
+    "sha256": "bbce0947b6d6a0997e4d76192b7fcc7eddba50b79f79108b521731d7cd8351a1"
+  },
+  "source_group_id": "primary6.minzhi2016-17.phon",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 0,
+      "marked_span_wordpairs": 4,
+      "source_spans": [
+        "ar/ar",
+        "ow/ow",
+        "ea/ea",
+        "magazinefirst_a/amazinginitial_a"
+      ],
+      "not_wholeword_or_audio_task": true
+    },
+    "source_candidates": {
+      "per_response": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "T",
+    "T",
+    "F",
+    "F"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 18,
+    "options_English_words_with_repeated_bank": 8,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 2,
+    "output_letter_count": 4,
+    "marked_word_tokens": 8
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "marked_pair_strings": [
+    "sh[ee]p — gr[ee]n",
+    "ki[ng] — ri[ng]",
+    "[th]ink — [th]is",
+    "[c]at — [c]ity"
+  ],
+  "marked_span_IPA_pairs": [
+    [
+      "/iː/",
+      "/iː/"
+    ],
+    [
+      "/ŋ/",
+      "/ŋ/"
+    ],
+    [
+      "/θ/",
+      "/ð/"
+    ],
+    [
+      "/k/",
+      "/s/"
+    ]
+  ],
+  "lexical_consonant_expansion_from_vowel_source_not_grade6_curriculum_requirement": true,
+  "audio_required": false,
+  "reference_accent": "usual_standard_British_teaching_pronunciation_not_all_dialects",
+  "auxiliary_dictionary_checks": "websearchsnapshots_only_whereIPAvisible;directpronunciationpages403;notall14headwordsindependentlyretrieved"
+}

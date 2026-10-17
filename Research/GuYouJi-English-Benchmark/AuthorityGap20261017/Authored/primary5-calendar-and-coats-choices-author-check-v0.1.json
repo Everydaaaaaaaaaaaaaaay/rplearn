@@ -1,0 +1,174 @@
+{
+  "version": "0.1",
+  "id": "primary5-calendar-and-coats-choices",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "cbf8f2e337cb6e320c7b483586311119cee8e64307519aae82f5384236a7b758",
+  "canonical_response_block_sha256": "80741e38a578aea92d06f5902b6add947c7759096f730a6ad40aa51aa4b87c8f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Your shoes are wet. Please ____ your shoes before you go into the room.",
+      "options": [
+        [
+          "A",
+          "put on"
+        ],
+        [
+          "B",
+          "take off"
+        ],
+        [
+          "C",
+          "wake up"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "进屋前脱下湿鞋，take off恰当；put on是穿上，与脱鞋方向相反；wake up指唤醒，不表达鞋的穿脱。"
+    },
+    {
+      "number": 2,
+      "stem": "The music lesson begins ____ nine o'clock ____ Monday.",
+      "options": [
+        [
+          "A",
+          "at, on"
+        ],
+        [
+          "B",
+          "on, at"
+        ],
+        [
+          "C",
+          "in, on"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "具体钟点用at，星期用on，A两处同时符合。B把二者次序颠倒；C把钟点用in。两空合为一次选答。"
+    },
+    {
+      "number": 3,
+      "stem": "I am Amy. I have one sister, Eva. This bag belongs to Eva, not to me. It is ____, not ____.",
+      "options": [
+        [
+          "A",
+          "her, mine"
+        ],
+        [
+          "B",
+          "hers, my"
+        ],
+        [
+          "C",
+          "hers, mine"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Eva是女性且已明示所有人；独立所有格用hers，not后无名词用mine。A的her和B的my都需要后接名词，不能独立表示此处所属。两空一响应，不靠猜人物。"
+    },
+    {
+      "number": 4,
+      "stem": "Last Saturday, we ____ paper boats at home.",
+      "options": [
+        [
+          "A",
+          "make"
+        ],
+        [
+          "B",
+          "made"
+        ],
+        [
+          "C",
+          "making"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Last Saturday明确过去，made是make过去式。A原形不合该过去时间；C非限定形式且缺助动词。"
+    },
+    {
+      "number": 5,
+      "stem": "—Would you like some orange juice?\n—____. I am thirsty.",
+      "options": [
+        [
+          "A",
+          "Yes, please"
+        ],
+        [
+          "B",
+          "Happy New Year"
+        ],
+        [
+          "C",
+          "Good night"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A接受饮料且与口渴相符；B新年祝福、C晚安均不回应饮料邀请。只比较所给候选中的最佳应答。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary56LanguageBridge-v0.1.json",
+    "sha256": "bbce0947b6d6a0997e4d76192b7fcc7eddba50b79f79108b521731d7cd8351a1"
+  },
+  "source_group_id": "primary5.luohu2026.monthly.public.singlechoice",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 0,
+      "independent_situations": 5,
+      "blank_counts": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "two_blanks_one_compound_choice": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 55,
+    "options_English_words_with_repeated_bank": 28,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "authored_blank_counts": [
+    1,
+    2,
+    2,
+    1,
+    1
+  ],
+  "compound_choice_is_one_response": true,
+  "source_original_section_heading_unknown": true,
+  "prefreeze_editorial_correction": "take off them invalid particle/pronoun order removed;final take off your shoes full noun phrase"
+}

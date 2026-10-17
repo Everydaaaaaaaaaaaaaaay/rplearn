@@ -1,0 +1,162 @@
+{
+  "version": "0.1",
+  "id": "primary6-help-and-information-functions",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "96ddf52fdab9bb6bd3c22e53e94d1d4ce307a20f160dcb33686f5e6acf3188bc",
+  "canonical_response_block_sha256": "e7f7d6702a59baca9892751da26bbd633887731974426dbbf957fd5b50a351fe",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "你在图书馆找不到某本书，想请管理员帮忙找。你会说：",
+      "options": [
+        [
+          "A",
+          "Could you help me find this book, please?"
+        ],
+        [
+          "B",
+          "How old are you?"
+        ],
+        [
+          "C",
+          "I do not like this colour."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A向管理员请求找书，符合角色与目的；B问年龄，C评价颜色，均未请求找书。"
+    },
+    {
+      "number": 2,
+      "stem": "你是售货员，顾客问这支笔多少钱。价签写着5元。你会回答：",
+      "options": [
+        [
+          "A",
+          "It is on the desk."
+        ],
+        [
+          "B",
+          "It is five yuan."
+        ],
+        [
+          "C",
+          "There are five pens."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B给明示价格；A给位置，C给数量，即使同有five也不回答多少钱。"
+    },
+    {
+      "number": 3,
+      "stem": "朋友问你明天怎样去博物馆。你已决定乘公共汽车。你会回答：",
+      "options": [
+        [
+          "A",
+          "At nine o'clock."
+        ],
+        [
+          "B",
+          "To the museum."
+        ],
+        [
+          "C",
+          "By bus."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C给已设定交通方式；A钟点，B目的地都不回答怎样去。"
+    },
+    {
+      "number": 4,
+      "stem": "你不小心踩到同学的脚，需要为自己的行为道歉。你会说：",
+      "options": [
+        [
+          "A",
+          "I am sorry."
+        ],
+        [
+          "B",
+          "Thank you."
+        ],
+        [
+          "C",
+          "Happy birthday."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A为自己的踩脚行为道歉；B感谢，C生日祝福不表达道歉，避免源14.2致谢/回礼竞争。"
+    },
+    {
+      "number": 5,
+      "stem": "你是游客，想知道去火车站怎么走。你向路人问：",
+      "options": [
+        [
+          "A",
+          "When is your birthday?"
+        ],
+        [
+          "B",
+          "How can I get to the station?"
+        ],
+        [
+          "C",
+          "What is your favourite sport?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B问去火车站的路线；A问生日、C问喜好，都不达问路目的。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary56LanguageBridge-v0.1.json",
+    "sha256": "bbce0947b6d6a0997e4d76192b7fcc7eddba50b79f79108b521731d7cd8351a1"
+  },
+  "source_group_id": "primary6.minzhi2016-17.contexts",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 0,
+      "Chinese_function_contexts": 5
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "A",
+    "B",
+    "C",
+    "A",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 62,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5,
+    "stem_Chinese_Han": 112,
+    "stem_total_characters": 129
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "Chinese_contexts": 5,
+  "roles_explicit": true,
+  "source_truncated_and_overlapping_functions_not_reused": true,
+  "no_necessary_image_or_audio": true
+}

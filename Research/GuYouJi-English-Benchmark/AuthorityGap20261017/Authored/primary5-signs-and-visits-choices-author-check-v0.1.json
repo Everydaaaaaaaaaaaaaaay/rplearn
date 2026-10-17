@@ -1,0 +1,173 @@
+{
+  "version": "0.1",
+  "id": "primary5-signs-and-visits-choices",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "3d89bed9b44124821d3987fad2d87e0f67eb92ab82b9bfe81065c60e05fc2c64",
+  "canonical_response_block_sha256": "9a139f53283f34a6231ab9b49b8a034d689b129527f3bd7e1c72cdec8b734796",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The room is dark. Please ____ the light so that we can read.",
+      "options": [
+        [
+          "A",
+          "turn off"
+        ],
+        [
+          "B",
+          "put away"
+        ],
+        [
+          "C",
+          "turn on"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "为了在暗房读书需开灯，turn on为开；turn off关灯方向相反；put away收存不等于开启灯。"
+    },
+    {
+      "number": 2,
+      "stem": "The train leaves at 10:20 and arrives at 11:00 on the same morning. It leaves ____ ten twenty and takes ____ minutes.",
+      "options": [
+        [
+          "A",
+          "at, forty"
+        ],
+        [
+          "B",
+          "in, forty"
+        ],
+        [
+          "C",
+          "at, eighty"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "钟点用at；同日上午10:20至11:00为40分钟。B介词错；C计算错。两处条件共同决定一次选择，不拆为两回应。"
+    },
+    {
+      "number": 3,
+      "stem": "I am Ben. This cap belongs to me. My brother has a different cap. This one is ____, not ____.",
+      "options": [
+        [
+          "A",
+          "my, his"
+        ],
+        [
+          "B",
+          "mine, him"
+        ],
+        [
+          "C",
+          "mine, his"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Ben陈述帽子属于自己，独立表语mine；兄弟的独立所属his。A my缺名词；B him为宾格不表示所属。两空一响应且所有权明示。"
+    },
+    {
+      "number": 4,
+      "stem": "Tomorrow is our class photo day. We ____ ready at nine tomorrow morning.",
+      "options": [
+        [
+          "A",
+          "were"
+        ],
+        [
+          "B",
+          "will be"
+        ],
+        [
+          "C",
+          "will have"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明示明天九点，将来形容词表语用will be ready；were为过去，will have后不能直接以ready补成此谓语。"
+    },
+    {
+      "number": 5,
+      "stem": "—I cannot carry this big box. Can you help me, please?\n—____.",
+      "options": [
+        [
+          "A",
+          "Of course. Let me carry it with you"
+        ],
+        [
+          "B",
+          "I am twelve years old"
+        ],
+        [
+          "C",
+          "It is under the desk"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A明确同意并协助搬箱；B报年龄，C报位置都不回应求助。未借未用选项排除。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary56LanguageBridge-v0.1.json",
+    "sha256": "bbce0947b6d6a0997e4d76192b7fcc7eddba50b79f79108b521731d7cd8351a1"
+  },
+  "source_group_id": "primary5.luohu2026.monthly.public.singlechoice",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 0,
+      "independent_situations": 5,
+      "blank_counts": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "two_blanks_one_compound_choice": true
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "C",
+    "A",
+    "C",
+    "B",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 71,
+    "options_English_words_with_repeated_bank": 41,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "authored_blank_counts": [
+    1,
+    2,
+    2,
+    1,
+    1
+  ],
+  "compound_choice_is_one_response": true,
+  "source_original_section_heading_unknown": true
+}

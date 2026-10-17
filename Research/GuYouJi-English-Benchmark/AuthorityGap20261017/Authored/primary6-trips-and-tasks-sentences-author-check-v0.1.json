@@ -1,0 +1,269 @@
+{
+  "version": "0.1",
+  "id": "primary6-trips-and-tasks-sentences",
+  "grade": "primary6",
+  "questions": 10,
+  "candidate_sha256": "5a444ff01b83cfa2aaa3c8de8df0271b389a0361f8a71926c014b8d4ef21cb21",
+  "canonical_response_block_sha256": "6efc1ff63ec7aeafe8918bb2709899cd16bb3824baa61ab81a3f85d325a6c279",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "There are three ____ in the basket.",
+      "options": [
+        [
+          "A",
+          "potato"
+        ],
+        [
+          "B",
+          "potatoes"
+        ],
+        [
+          "C",
+          "potatos"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "three要求可数复数potatoes；A单数，C常规拼写错误，不采用source You dictionary错拼。"
+    },
+    {
+      "number": 2,
+      "stem": "—____ did you get home yesterday?\n—At half past five.",
+      "options": [
+        [
+          "A",
+          "Where"
+        ],
+        [
+          "B",
+          "Who"
+        ],
+        [
+          "C",
+          "When"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "答句给时间，When对应；Where问地点、Who问人物，均不匹配。"
+    },
+    {
+      "number": 3,
+      "stem": "My desk is 80 cm wide. Yours is 60 cm wide. My desk is ____ than yours.",
+      "options": [
+        [
+          "A",
+          "wider"
+        ],
+        [
+          "B",
+          "wide"
+        ],
+        [
+          "C",
+          "widest"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明示80>60且than需比较级wider；wide原级、widest最高级不合该结构。数值为虚构设定，不用鲸寿命事实。"
+    },
+    {
+      "number": 4,
+      "stem": "We ____ the windows yesterday afternoon.",
+      "options": [
+        [
+          "A",
+          "clean"
+        ],
+        [
+          "B",
+          "cleaned"
+        ],
+        [
+          "C",
+          "cleaning"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "yesterday afternoon限定过去，cleaned合适；clean原形时态不合，cleaning缺助动词。"
+    },
+    {
+      "number": 5,
+      "stem": "Listen! Someone ____ at the door now.",
+      "options": [
+        [
+          "A",
+          "knocked"
+        ],
+        [
+          "B",
+          "knock"
+        ],
+        [
+          "C",
+          "is knocking"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Listen及now指当前正在敲门；someone单数用is knocking。A过去、B原形均不构成此时正在发生的谓语。"
+    },
+    {
+      "number": 6,
+      "stem": "This notebook belongs to Lucy. Please give it to ____.",
+      "options": [
+        [
+          "A",
+          "she"
+        ],
+        [
+          "B",
+          "hers"
+        ],
+        [
+          "C",
+          "her"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "介词to后指Lucy用宾格her。she主格；hers为独立所属，不能在此指收件人Lucy本人。"
+    },
+    {
+      "number": 7,
+      "stem": "There is not ____ milk in the bottle. It is completely empty.",
+      "options": [
+        [
+          "A",
+          "any"
+        ],
+        [
+          "B",
+          "many"
+        ],
+        [
+          "C",
+          "a"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "否定句不可数milk可用any；many用于可数复数，a用于可数单数。空瓶明示没有牛奶，不以图片猜。"
+    },
+    {
+      "number": 8,
+      "stem": "My brother wants ____ a cook when he grows up.",
+      "options": [
+        [
+          "A",
+          "be"
+        ],
+        [
+          "B",
+          "to be"
+        ],
+        [
+          "C",
+          "being"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "want后用to be不定式补语；be缺to，being不作此处want的目标职业补语。"
+    },
+    {
+      "number": 9,
+      "stem": "The library closes ____ six o'clock.",
+      "options": [
+        [
+          "A",
+          "on"
+        ],
+        [
+          "B",
+          "in"
+        ],
+        [
+          "C",
+          "at"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "具体钟点前用at；on用于日期等，in用于时段，均不合six oclock这一位置。"
+    },
+    {
+      "number": 10,
+      "stem": "You must not ____ your bike inside the hall.",
+      "options": [
+        [
+          "A",
+          "ride"
+        ],
+        [
+          "B",
+          "rides"
+        ],
+        [
+          "C",
+          "riding"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "情态must not后用原形ride；rides第三人称单数、riding分词不合。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedPrimary56LanguageBridge-v0.1.json",
+    "sha256": "bbce0947b6d6a0997e4d76192b7fcc7eddba50b79f79108b521731d7cd8351a1"
+  },
+  "source_group_id": "primary6.minzhi2016-17.grammar",
+  "source_observation": {
+    "source_responses": 10,
+    "source_reuse_rule": "independent",
+    "source_material": {
+      "passages": 0,
+      "independent_sentence_or_dialogue_tasks": 10
+    },
+    "source_candidates": {
+      "per_response": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "shared_bank": false
+    }
+  },
+  "student_passage": "",
+  "author_answer_vector": [
+    "B",
+    "C",
+    "A",
+    "B",
+    "C",
+    "C",
+    "A",
+    "B",
+    "C",
+    "A"
+  ],
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 82,
+    "options_English_words_with_repeated_bank": 32,
+    "output_response_positions": 10,
+    "output_mode": "closed_letter_selection",
+    "requirement_English_words": 0,
+    "output_letter_count": 10
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "",
+  "independent_tasks": 10,
+  "no_necessary_image_or_audio": true,
+  "source_whale_lifespan_or_typo_not_reused": true
+}
