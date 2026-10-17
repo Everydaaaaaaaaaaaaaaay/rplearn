@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "grade7-monolisten-school-trail",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "48684b92b841caef1d1c799d912ba2731f332713899b81935c15842b0e275d5c",
+  "source_binding": "g7hefeilistenIII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIII",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "How many students are in each group?",
+      "options": [
+        [
+          "A",
+          "Three."
+        ],
+        [
+          "B",
+          "Four."
+        ],
+        [
+          "C",
+          "Five."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未说三人；B：明确groups of four；C：五是地点数"
+    },
+    {
+      "number": 2,
+      "stem": "What colour is the card?",
+      "options": [
+        [
+          "A",
+          "Yellow."
+        ],
+        [
+          "B",
+          "Blue."
+        ],
+        [
+          "C",
+          "Green."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：明确yellow card；B：未给蓝卡；C：Green是教师姓名，非卡色"
+    },
+    {
+      "number": 3,
+      "stem": "Where does the trail start?",
+      "options": [
+        [
+          "A",
+          "At the main gate."
+        ],
+        [
+          "B",
+          "In Room Nine."
+        ],
+        [
+          "C",
+          "At the library."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：没说校门开始；B：下雨才回九教室；C：明确start at library"
+    },
+    {
+      "number": 4,
+      "stem": "What should students do if it rains?",
+      "options": [
+        [
+          "A",
+          "Run to the garden."
+        ],
+        [
+          "B",
+          "Return to Room Nine."
+        ],
+        [
+          "C",
+          "Go home alone."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：不应跑且无花园安排；B：明确雨天回Room Nine；C：要求跟组、不单独回家"
+    },
+    {
+      "number": 5,
+      "stem": "Who should get the finished card?",
+      "options": [
+        [
+          "A",
+          "Mr Green."
+        ],
+        [
+          "B",
+          "The school cook."
+        ],
+        [
+          "C",
+          "A group leader."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：讲述老师说give card to me；B：没给厨师；C：未说交组长"
+    }
+  ],
+  "canonical_response_block_sha256": "74ec38207963587baf59aeb8fe0135b748e7d8ccef92325b4c8956cec44a9ac2",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-school-trail-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-monolisten-school-trail-manuscript-v0.1.json",
+    "sha256": "4f47e16276fd30040be94e31e69a47bf6a80174fe27e824214f922c7db67b7e0"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-school-trail-audio-v0.1.json",
+    "sha256": "1a6ac904b0cb35a872769a02aa1ca5af1c483dca9422b0694f020c32ccbeda8a"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-school-trail-extract1-v0.1.m4a",
+      "sha256": "dcc8bec0b16d0934eb9654b162f127dc4158ea743a18a986b49d3c61ddd20ff5",
+      "seconds": 143.08857142857144,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 30,
+    "options_English_words_with_repeated_bank": 35,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 107,
+    "audio_spoken_words_with_instructions": 226,
+    "audio_seconds_with_pauses": 143.08857142857144,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

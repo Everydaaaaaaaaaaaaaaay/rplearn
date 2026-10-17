@@ -1,0 +1,145 @@
+{
+  "version": "0.1",
+  "id": "grade7-monolisten-puppet-stage",
+  "title": "初一短文：班级木偶戏",
+  "grade": 7,
+  "family": "listening_passage_choice",
+  "family_label": "篇章听力单选",
+  "junior_source_bound": true,
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIII",
+  "source_binding": "g7hefeilistenIII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.24.json",
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen and choose the best answer.",
+  "instruction": "听一篇完整短文，完成全部5题，每题A/B/C三选。每材料听两遍。源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "source_notice": "初一公开月考说明中的完整题面、参考键和印出脚本已核，说明首行标合肥三十中/七上十月月考；原校施测及原版页面身份未独立认证。原音轨未取得，标题含音频不等于已取得。两遍有明文，精确读答时间未印；原参考键不是gold，原创录音不补成原源音频或学生标定。",
+  "timing_notice": "源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "My name is Tom. Our class will give a puppet show on Wednesday. We wanted to use the school hall, but another class needs it that day. Our show will be in Room Six. We have made six puppets from old socks. I will move the rabbit, and my friend Emma will move the fox. The story is about two animals looking for a new home after a storm. My sister helped us make small trees from paper. The show starts at two thirty and lasts twenty minutes. Please come ten minutes early. You may bring a younger brother or sister. There is no ticket to buy."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where will the show be?",
+          "options": [
+            [
+              "A",
+              "In the school hall."
+            ],
+            [
+              "B",
+              "In Room Six."
+            ],
+            [
+              "C",
+              "In the garden."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：原想用大厅但冲突；B：最后用Room Six；C：没有花园"
+        },
+        {
+          "stem": "What are the puppets made from?",
+          "options": [
+            [
+              "A",
+              "Old socks."
+            ],
+            [
+              "B",
+              "Paper bags."
+            ],
+            [
+              "C",
+              "Plastic bottles."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确old socks；B：纸做的是树；C：没用塑料瓶"
+        },
+        {
+          "stem": "Which animal will Tom move?",
+          "options": [
+            [
+              "A",
+              "A fox."
+            ],
+            [
+              "B",
+              "A dog."
+            ],
+            [
+              "C",
+              "A rabbit."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：狐狸由Emma操控；B：未有狗角色；C：Tom操控兔子"
+        },
+        {
+          "stem": "Who helped make the trees?",
+          "options": [
+            [
+              "A",
+              "Emma's brother."
+            ],
+            [
+              "B",
+              "Tom's sister."
+            ],
+            [
+              "C",
+              "Their teacher."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未提Emma弟弟；B：讲述者说my sister；C：未说老师做树"
+        },
+        {
+          "stem": "When does the show start?",
+          "options": [
+            [
+              "A",
+              "At 2:00."
+            ],
+            [
+              "B",
+              "At 2:20."
+            ],
+            [
+              "C",
+              "At 2:30."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：未说两点；B：提前十分钟到是2:20；C：明确two thirty"
+        }
+      ]
+    }
+  ]
+}

@@ -43,6 +43,10 @@ function normalizeFill(value,protocol){
   const digits=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
   return /^[0-9]+$/.test(digits)?digits.replace(/^0+(?=\d)/,''):null;
  }
+ if(protocol==='small_count_v1'){
+  const count=text.replace(/[０-９]/g,c=>String(c.charCodeAt(0)-0xFF10));
+  return /^[0-9]+$/.test(count)?count.replace(/^0+(?=\d)/,''):/^[A-Za-z]+$/.test(count)?count.toUpperCase():null;
+ }
  return null;
 }
 function clockMinutes(value){
@@ -52,6 +56,11 @@ function clockMinutes(value){
  const m=value.match(/^([0-9]{1,2})(?:[:.]([0-9]{2}))?$/);
  if(!m)return null;const hour=Number(m[1]),minute=Number(m[2]||0);
  return hour>=1&&hour<=12&&minute<60?hour*60+minute:null;
+}
+function smallCount(value){
+ const names=['ZERO','ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN','EIGHT','NINE','TEN','ELEVEN','TWELVE','THIRTEEN','FOURTEEN','FIFTEEN','SIXTEEN','SEVENTEEN','EIGHTEEN','NINETEEN','TWENTY'];
+ const word=names.indexOf(value);if(word>=0)return word;
+ return typeof value==='string'&&/^[0-9]+$/.test(value)?value:null;
 }
 function answerComparison(questions,saved={}){
  if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};
@@ -74,8 +83,9 @@ function answerComparison(questions,saved={}){
    rows.push(selection.rows[0]);continue;
   }
   const contract=q.fillMarking,accepted=q.acceptedAnswers;
-  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','ascii_integer_v1','clock_hour_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
+  if(!contract||contract.version!==1||contract.review!=='author_context_checked'||!['latin_word_v1','english_phrase_v1','ascii_integer_v1','clock_hour_v1','small_count_v1'].includes(contract.normalization)||!['review','different'].includes(contract.unlisted)||!Array.isArray(accepted)||!accepted.length||accepted.some(a=>typeof a!=='string'||normalizeFill(a,contract.normalization)===null)||!Array.isArray(contract.rejectedAnswers))return {available:false,reason:'此组填写答案尚无完整的可接受形式与规范化协议，暂不自动核对。'};
   if(contract.normalization==='clock_hour_v1'&&(contract.clockFrame!=='p.m.'||contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==1||!Number.isInteger(contract.wholeHour)||contract.wholeHour<1||contract.wholeHour>12||accepted.some(a=>clockMinutes(normalizeFill(a,'clock_hour_v1'))!==contract.wholeHour*60)))return {available:false,reason:'时间空的单位、限词或未知格式复核规则未绑定。'};
+  if(contract.normalization==='small_count_v1'&&(contract.unknownSyntax!=='review'||contract.unlisted!=='review'||contract.maxWords!==1||!Number.isInteger(contract.wholeCount)||contract.wholeCount<0||contract.wholeCount>20||!accepted.some(a=>/^[A-Za-z]+$/.test(a))||!accepted.some(a=>/^[0-9]+$/.test(a))||accepted.some(a=>String(smallCount(normalizeFill(a,'small_count_v1')))!==String(contract.wholeCount))))return {available:false,reason:'小整数空的数值、限词或未知格式复核规则未绑定。'};
   if(contract.normalization==='english_phrase_v1'&&!(contract.maxWords===null||Number.isInteger(contract.maxWords)&&contract.maxWords>0))return {available:false,reason:'单空限词规则未绑定。'};
   if(contract.minWords!==undefined&&(contract.normalization!=='english_phrase_v1'||!Number.isInteger(contract.minWords)||contract.minWords<1||contract.maxWords!==null&&contract.minWords>contract.maxWords||contract.wordCountAmbiguity!=='review'))return {available:false,reason:'最少词数或未核计词形式的处理规则尚未绑定。'};
   const forms=accepted.map(a=>normalizeFill(a,contract.normalization)),rejected=contract.rejectedAnswers.map(a=>normalizeFill(a,contract.normalization));
@@ -90,7 +100,8 @@ function answerComparison(questions,saved={}){
   const missingKeyword=normalized!==null&&contract.requiredWord!==undefined&&!normalized.split(' ').includes(contract.requiredWord.toUpperCase());
   const wrongInitial=normalized!==null&&contract.requiredInitial!==undefined&&!normalized.startsWith(contract.requiredInitial.toUpperCase());
   const differentClock=contract.normalization==='clock_hour_v1'&&clockMinutes(normalized)!==null&&clockMinutes(normalized)!==contract.wholeHour*60;
-  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(contract.normalization==='clock_hour_v1'?'review':'different'):differentClock||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
+  const differentCount=contract.normalization==='small_count_v1'&&smallCount(normalized)!==null&&String(smallCount(normalized))!==String(contract.wholeCount);
+  rows.push({number:q.number,chosen,reference:accepted.join(' / '),state:!chosen.trim()?'unanswered':forms.includes(normalized)?'match':normalized===null?(['clock_hour_v1','small_count_v1'].includes(contract.normalization)?'review':'different'):differentClock||differentCount||wrongInitial||rejected.includes(normalized)||missingKeyword||outsideLimit&&!uncertainWordCount||contract.unlisted==='different'?'different':'review'});
  }
  const usedBankRoots=new Map();
  if(onceBank)for(const row of rows){const root=knownBankRoots.get(normalizeFill(row.chosen,'english_phrase_v1'));if(root){const positions=usedBankRoots.get(root)||[];positions.push(row.number);usedBankRoots.set(root,positions);}}

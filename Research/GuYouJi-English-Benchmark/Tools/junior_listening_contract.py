@@ -1,5 +1,8 @@
 """Specific observed junior configurations, separate from any year-wide rules."""
 CONFIGS = {
+ 'grade7-hefei2025-21cnjy26607976.listening.sectionII': (7, 'listening_long_conversation_choice', [2,3], ['MW','MW'], 2, 1),
+ 'grade7-hefei2025-21cnjy26607976.listening.sectionIII': (7, 'listening_passage_choice', [5], ['N'], 2, 1),
+ 'grade7-hefei2025-21cnjy26607976.listening.sectionIV': (7, 'listening_table_completion', [5], ['N'], 2, 1),
  'grade8-xiaoshan2025-21cnjy22251031.listening.sectionA': (8, 'listening_short_conversation_choice', [1,1,1,1,1], ['MW']*5, 1, 1),
  'grade8-xiaoshan2025-21cnjy22251031.listening.sectionB': (8, 'listening_long_conversation_choice', [2,3], ['MW']*2, 2, 1.5),
  'grade8-xiaoshan2025-21cnjy22251031.listening.sectionC': (8, 'listening_passage_choice', [5], ['N'], 2, 1.5),

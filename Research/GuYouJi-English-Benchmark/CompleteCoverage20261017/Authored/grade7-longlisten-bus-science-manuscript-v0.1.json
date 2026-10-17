@@ -1,0 +1,194 @@
+{
+  "version": "0.1",
+  "id": "grade7-longlisten-bus-science",
+  "title": "初一两对话：公交车与科学社",
+  "grade": 7,
+  "family": "listening_long_conversation_choice",
+  "family_label": "两长对话听力单选",
+  "junior_source_bound": true,
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionII",
+  "source_binding": "g7hefeilistenII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.24.json",
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen and choose the best answer.",
+  "instruction": "听两段完整对话，第一段2题，第二段3题，各从A/B/C选最佳答案。每材料听两遍。源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "source_notice": "初一公开月考说明中的完整题面、参考键和印出脚本已核，说明首行标合肥三十中/七上十月月考；原校施测及原版页面身份未独立认证。原音轨未取得，标题含音频不等于已取得。两遍有明文，精确读答时间未印；原参考键不是gold，原创录音不补成原源音频或学生标定。",
+  "timing_notice": "源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Which bus goes to the swimming pool, Miss? Number Six?"
+        },
+        {
+          "speaker": "W",
+          "text": "Number Six goes to the park. You need Number Nine."
+        },
+        {
+          "speaker": "M",
+          "text": "Thank you. Should I wait outside the bank?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. The stop is outside the post office."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Which bus should the boy take?",
+          "options": [
+            [
+              "A",
+              "Number Six."
+            ],
+            [
+              "B",
+              "Number Three."
+            ],
+            [
+              "C",
+              "Number Nine."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：六路去公园；B：未提三路；C：九路去泳池"
+        },
+        {
+          "stem": "Where is the bus stop?",
+          "options": [
+            [
+              "A",
+              "Outside the bank."
+            ],
+            [
+              "B",
+              "Outside the post office."
+            ],
+            [
+              "C",
+              "Outside the park."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：被明确否定；B：女士明确邮局外；C：公园是六路目的地"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Mina, does the science club meet on Tuesday?"
+        },
+        {
+          "speaker": "W",
+          "text": "We usually meet then, but this week it is on Thursday."
+        },
+        {
+          "speaker": "M",
+          "text": "Are we using the science room?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. We will meet in the library. We are going to make small paper bridges."
+        },
+        {
+          "speaker": "M",
+          "text": "Do I need to buy any paper?"
+        },
+        {
+          "speaker": "W",
+          "text": "The club has enough paper. Just bring some glue."
+        },
+        {
+          "speaker": "M",
+          "text": "All right. I will put it in my bag now."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When is the meeting this week?",
+          "options": [
+            [
+              "A",
+              "Tuesday."
+            ],
+            [
+              "B",
+              "Thursday."
+            ],
+            [
+              "C",
+              "Friday."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：平时周二，本周改了；B：明确this week Thursday；C：未说周五"
+        },
+        {
+          "stem": "What will they make?",
+          "options": [
+            [
+              "A",
+              "Paper bridges."
+            ],
+            [
+              "B",
+              "Toy cars."
+            ],
+            [
+              "C",
+              "Paper boats."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确small paper bridges；B：无小汽车；C：无纸船"
+        },
+        {
+          "stem": "What should the boy bring?",
+          "options": [
+            [
+              "A",
+              "Paper."
+            ],
+            [
+              "B",
+              "Scissors."
+            ],
+            [
+              "C",
+              "Glue."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：社团纸足够；B：未要求剪刀；C：明确just bring glue"
+        }
+      ]
+    }
+  ]
+}

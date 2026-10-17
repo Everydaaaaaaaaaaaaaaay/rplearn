@@ -1,0 +1,155 @@
+{
+  "version": "0.3",
+  "id": "grade7-familytable-amber",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "10233fbf940b4b3422e6762c2fc4f4028f5f716f42c78ca81c7acc69b1c13a27",
+  "source_binding": "g7hefeilistenIV",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIV",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Iris and Lee have (1) ____ children.",
+      "options": [],
+      "acceptedAnswers": [
+        "three",
+        "3"
+      ],
+      "rationale": "录音完整陈述支持此空：Iris and Lee have three children.。英文数词与对应阿拉伯数字同等接受；不加已印出的children或years old。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "small_count_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [],
+        "wholeCount": 3,
+        "unknownSyntax": "review"
+      }
+    },
+    {
+      "number": 2,
+      "stem": "Maya is Amber's (2) ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "mother",
+        "mum",
+        "mom"
+      ],
+      "rationale": "录音完整陈述支持此空：Maya is Amber's mother.。按录音中的亲属身份填一词，不从姓名猜性别或关系。 该空问亲属身份而非逐字抄原录音，mother/mum/mom在本句均指同一已确定身份，逐一回填成立；其他未核词形待复核，不据此声称合法词穷尽。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "number": 3,
+      "stem": "Leo is Amber's (3) ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "brother"
+      ],
+      "rationale": "录音完整陈述支持此空：Leo is Amber's brother.。按录音中的亲属身份填一词，不从姓名猜性别或关系。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "number": 4,
+      "stem": "Leo is (4) ____ years old.",
+      "options": [],
+      "acceptedAnswers": [
+        "six",
+        "6"
+      ],
+      "rationale": "录音完整陈述支持此空：Leo is six years old.。英文数词与对应阿拉伯数字同等接受；不加已印出的children或years old。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "small_count_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [],
+        "wholeCount": 6,
+        "unknownSyntax": "review"
+      }
+    },
+    {
+      "number": 5,
+      "stem": "Ava is Amber's (5) ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "aunt",
+        "auntie",
+        "aunty"
+      ],
+      "rationale": "录音完整陈述支持此空：Ava is Amber's aunt.。按录音中的亲属身份填一词，不从姓名猜性别或关系。 该空问亲属身份而非逐字抄原录音，aunt/auntie/aunty在本句均指同一已确定身份，逐一回填成立；其他未核词形待复核，不据此声称合法词穷尽。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    }
+  ],
+  "canonical_response_block_sha256": "c91331b15ffbb36cb0d56aaee481739e3a467a0a1940637b835e13dab30cd2b4",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-familytable-amber-extract1-v0.1.m4a)\n\n### Amber's Family\n\n| People | Information |\n|---|---|\n| Iris and Lee | Grandparents; they have (1) ____ children. |\n| Maya | Amber's (2) ____. |\n| Leo | Amber's (3) ____; (4) ____ years old. |\n| Ava | Amber's (5) ____; lives in Canada. |",
+  "body_load_text": "### Amber's Family\n\n| People | Information |\n|---|---|\n| Iris and Lee | Grandparents; they have (1) ____ children. |\n| Maya | Amber's (2) ____. |\n| Leo | Amber's (3) ____; (4) ____ years old. |\n| Ava | Amber's (5) ____; lives in Canada. |",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-familytable-amber-manuscript-v0.3.json",
+    "sha256": "0ef77158b89d4260bd49a181b88472b0d50394aeaef9a9d57ec51b582eae044c"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-familytable-amber-audio-v0.4.json",
+    "sha256": "8893fe7964f8207739e18bfcf30fca4ba596dcaa6942b09018852726d0f12fc9"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-familytable-amber-extract1-v0.1.m4a",
+      "sha256": "8e9b4c0708e847414093afc81c009161a4caf352b96efd954091395f611df9d4",
+      "seconds": 110.52331065759637,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 22,
+    "stem_English_words": 18,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 61,
+    "audio_spoken_words_with_instructions": 134,
+    "audio_seconds_with_pauses": 110.52331065759637,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 36
+}

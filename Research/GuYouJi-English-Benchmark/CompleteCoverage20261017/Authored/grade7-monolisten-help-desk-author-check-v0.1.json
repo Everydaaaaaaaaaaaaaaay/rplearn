@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "grade7-monolisten-help-desk",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "13c577d831fb97aa116cc6a95347ac1a047a48e93128ef665afb499d0ff5b393",
+  "source_binding": "g7hefeilistenIII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIII",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where will the help desk be?",
+      "options": [
+        [
+          "A",
+          "Near the main gate."
+        ],
+        [
+          "B",
+          "Beside the pool."
+        ],
+        [
+          "C",
+          "In the library."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：明确main gate；B：没说泳池；C：没说图书馆"
+    },
+    {
+      "number": 2,
+      "stem": "Which box is for lost clothes?",
+      "options": [
+        [
+          "A",
+          "Red."
+        ],
+        [
+          "B",
+          "Green."
+        ],
+        [
+          "C",
+          "Blue."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：没说红盒；B：绿盒放其他东西；C：蓝盒放衣服"
+    },
+    {
+      "number": 3,
+      "stem": "What should students write on a card?",
+      "options": [
+        [
+          "A",
+          "Their phone number."
+        ],
+        [
+          "B",
+          "Their name and class."
+        ],
+        [
+          "C",
+          "Their home address."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未要电话；B：明确name and class；C：未要家庭地址"
+    },
+    {
+      "number": 4,
+      "stem": "When will the desk close?",
+      "options": [
+        [
+          "A",
+          "At 8 a.m."
+        ],
+        [
+          "B",
+          "At 12 noon."
+        ],
+        [
+          "C",
+          "At 4 p.m."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：八点是开放时间；B：未说中午关闭；C：明确下午四点关闭"
+    },
+    {
+      "number": 5,
+      "stem": "Who will keep lost phones?",
+      "options": [
+        [
+          "A",
+          "Mr Lee."
+        ],
+        [
+          "B",
+          "Rosa's sister."
+        ],
+        [
+          "C",
+          "The school cook."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：老师李先生放办公室；B：没有姐姐；C：没有厨师"
+    }
+  ],
+  "canonical_response_block_sha256": "7075089f03ab57e7dbcf4c05df9002456c8addcf85a0b5b04b1d2ed8074584b8",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-help-desk-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-monolisten-help-desk-manuscript-v0.1.json",
+    "sha256": "ae1a9ad789093897f0f35419df98a0fc05cac4bd9a62285eeb6112c26eeed051"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-help-desk-audio-v0.1.json",
+    "sha256": "75817ae5ad168e86abc9ca5bdd715125c5f7fe3c2549a153597ba5c37846cb7b"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-help-desk-extract1-v0.1.m4a",
+      "sha256": "57884dc69b80dfa7137f61481412503f341bccaf88b7f1013150fea275ed94bd",
+      "seconds": 138.54027210884354,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 29,
+    "options_English_words_with_repeated_bank": 38,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 107,
+    "audio_spoken_words_with_instructions": 226,
+    "audio_seconds_with_pauses": 138.54027210884354,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

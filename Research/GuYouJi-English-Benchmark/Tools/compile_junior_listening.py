@@ -17,7 +17,18 @@ def check(group, audit, binding, source):
     raw = load_ref(selected['source']).read_text()
     for span in selected['spans']:
         assert hashlib.sha256(raw[span['start']:span['end']].encode()).hexdigest() == span['sha256']
-    if source['level'] == 8:
+    if source['level'] == 7:
+        key_span=next(s for s in selected['spans'] if s['role']=='published_key_and_complete_printed_script')
+        key_text=raw[key_span['start']:key_span['end']]
+        if source['kind']=='listening_table_completion':
+            keys={int(n):v.split('##') for n,v in re.findall(r'(1[6-9]|20)\.\s*(\S+)',key_text)}
+        else:
+            keys={int(n):k for n,k in re.findall(r'(\d+)\.\s*([ABC])',key_text)}
+        assert selected['reference_keys']==[keys[n] for n in selected['source_question_numbers']]
+        assert selected['source_full_printed_input_verified'] and not selected['whole_original_paper_layout_verified']
+        assert source['features']['source_timing_not_printed']
+        assert source['features']['preview_seconds_per_question'] is None and source['features']['answer_seconds_per_question'] is None
+    elif source['level'] == 8:
         key_span=next(s for s in selected['spans'] if s['role']=='published_key_including_conflicting_header')
         keys={int(n):k for n,k in re.findall(r'(\d+)\.\s*([ABC])',raw[key_span['start']:key_span['end']])}
         assert selected['reference_keys']==[keys[n] for n in selected['source_question_numbers']]
@@ -78,9 +89,13 @@ def check(group, audit, binding, source):
     if family=='listening_table_completion':
         assert re.findall(r'\((\d+)\) ____',draft['student_table'])==[str(n) for n in range(1,6)]
         assert draft['student_table'] in audit['student_passage']
-        assert group['questions'][0]['fillMarking']['normalization']=='clock_hour_v1'
+        if grade==7:
+            assert draft['table_response_counts_by_row']==source['features']['response_counts_by_row']==[1,1,2,1]
+            assert [q['fillMarking']['normalization'] for q in group['questions']]==['small_count_v1','english_phrase_v1','english_phrase_v1','small_count_v1','english_phrase_v1']
+        else:
+            assert group['questions'][0]['fillMarking']['normalization']=='clock_hour_v1'
+            assert all(q['fillMarking']['normalization']=='english_phrase_v1' for q in group['questions'][1:])
         assert all(q['fillMarking']['maxWords']==1 for q in group['questions'])
-        assert all(q['fillMarking']['normalization']=='english_phrase_v1' for q in group['questions'][1:])
         assert audit['full_fill_variant_combinations']==__import__('math').prod(len(q['acceptedAnswers']) for q in group['questions'])
     assert audit['audio_transcript_in_teacher_only'] and audit['source_companion_gap_visible']
     return True

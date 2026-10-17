@@ -331,12 +331,19 @@ def check(data, plan):
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
                 expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') or a.get('primary_whole_listening') or a.get('junior_source_bound') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
-                if meta['family']=='listening_table_completion' and q['number']==1:expected_protocol='clock_hour_v1'
+                if meta['family']=='listening_table_completion' and a.get('junior_source_bound'):
+                    if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
+                    elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
-                pattern='(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)' if c['normalization']=='clock_hour_v1' else '[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
+                pattern='(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)' if c['normalization']=='clock_hour_v1' else '(?:[0-9]+|[A-Za-z]+)' if c['normalization']=='small_count_v1' else '[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
                 assert all(re.fullmatch(pattern, value) for value in q['acceptedAnswers'] + c['rejectedAnswers'])
+                if c['normalization']=='small_count_v1':
+                    names='zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split()
+                    value=c['wholeCount'];assert type(value)is int and 0<=value<=20
+                    assert c['unknownSyntax']=='review' and c['maxWords']==1
+                    assert set(q['acceptedAnswers'])=={str(value),names[value]}
                 if a.get('one_word_open_cloze'):
                     assert c['maxWords']==1 and all(len(v.split())==1 for v in q['acceptedAnswers'])
                 if a.get('mixed_given_ungiven_grammar'):

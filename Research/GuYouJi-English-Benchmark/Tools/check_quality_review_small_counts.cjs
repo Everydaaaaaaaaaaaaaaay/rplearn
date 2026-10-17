@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const source=fs.readFileSync(path.join(__dirname,'quality_review_interactions.js'),'utf8'),start=source.indexOf('function closedSelectionComparison('),end=source.indexOf('\nfunction clearSelectionComparison(',start),context=vm.createContext({});
+vm.runInContext(source.slice(start,end)+'\nthis.compare=answerComparison;',context);const compare=context.compare;
+const q={number:1,options:[],acceptedAnswers:['three','3'],fillMarking:{version:1,review:'author_context_checked',normalization:'small_count_v1',maxWords:1,wholeCount:3,unknownSyntax:'review',unlisted:'review',rejectedAnswers:[]}};
+const samples=[['three','matched'],['THREE','matched'],['3','matched'],['03','matched'],['３','matched'],['０３','matched'],['4','different'],['four','different'],['thirteen','different'],['333333333333333333333','different'],['3.0','review'],['Ⅲ','review'],['三','review'],['a few','review'],['','unanswered']];
+for(const [value,state]of samples)assert.equal(compare([q],{'1.1':value})[state],1,JSON.stringify({value,state}));
+for(const delta of [{wholeCount:21},{wholeCount:'3'},{wholeCount:-1},{unknownSyntax:'different'},{unlisted:'different'},{maxWords:2}])assert.equal(compare([{...q,fillMarking:{...q.fillMarking,...delta}}]).available,false);
+assert.equal(compare([{...q,acceptedAnswers:['three','4']}]).available,false);
+assert.equal(compare([{...q,acceptedAnswers:['3']}]).available,false);
+const html=fs.readFileSync(path.resolve(__dirname,'../../../build/english-benchmark-quality-review/index.html'),'utf8');const data=JSON.parse(html.match(/<script id="quality-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+const groups=Object.values(data.groups).filter(g=>g.id.startsWith('grade7-familytable-'));assert.equal(groups.length,3);let positions=0,forms=0;
+for(const g of groups){const saved=Object.fromEntries(g.questions.map(q=>[q.number+'.1',q.acceptedAnswers[0]]));for(const slot of g.questions.filter(q=>q.fillMarking.normalization==='small_count_v1')){positions++;for(const value of [...slot.acceptedAnswers,'0'+slot.fillMarking.wholeCount,String(slot.fillMarking.wholeCount).replace(/[0-9]/g,c=>String.fromCharCode(c.charCodeAt(0)+0xfee0))]){assert.equal(compare(g.questions,{...saved,[slot.number+'.1']:value}).matched,5);forms++;}assert.equal(compare(g.questions,{...saved,[slot.number+'.1']:String(slot.fillMarking.wholeCount+1)}).different,1);assert.equal(compare(g.questions,{...saved,[slot.number+'.1']:slot.fillMarking.wholeCount+'.0'}).review,1);}}
+assert.equal(positions,6);
+console.log(JSON.stringify({passed:true,synthetic_cases:samples.length,invalid_protocol_cases:8,actual_whole_groups:groups.length,actual_count_positions:positions,actual_positive_forms:forms,number_words_digits_fullwidth_leadingzero_supported:true,unknown_syntax_needs_review:true,arbitrary_large_integer_comparison_not_float_rounded:true}));

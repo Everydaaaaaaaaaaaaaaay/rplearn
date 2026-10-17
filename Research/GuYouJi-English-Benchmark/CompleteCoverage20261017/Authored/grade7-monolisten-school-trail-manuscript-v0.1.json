@@ -1,0 +1,145 @@
+{
+  "version": "0.1",
+  "id": "grade7-monolisten-school-trail",
+  "title": "初一短文：校园寻路活动",
+  "grade": 7,
+  "family": "listening_passage_choice",
+  "family_label": "篇章听力单选",
+  "junior_source_bound": true,
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIII",
+  "source_binding": "g7hefeilistenIII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.24.json",
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen and choose the best answer.",
+  "instruction": "听一篇完整短文，完成全部5题，每题A/B/C三选。每材料听两遍。源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "source_notice": "初一公开月考说明中的完整题面、参考键和印出脚本已核，说明首行标合肥三十中/七上十月月考；原校施测及原版页面身份未独立认证。原音轨未取得，标题含音频不等于已取得。两遍有明文，精确读答时间未印；原参考键不是gold，原创录音不补成原源音频或学生标定。",
+  "timing_notice": "源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Good morning. I am Mr Green, your English teacher. Today our class will do a school trail. You will work in groups of four. Each group will get a map and a yellow card. Start at the library, then follow the map to five places around the school. Read the English sign at each place and write one letter on your card. The five letters will make a word. Do not run, and please stay with your group. If it rains, come back to Room Nine. We have an indoor trail ready there. The activity ends at eleven. Give your card to me at the classroom door."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How many students are in each group?",
+          "options": [
+            [
+              "A",
+              "Three."
+            ],
+            [
+              "B",
+              "Four."
+            ],
+            [
+              "C",
+              "Five."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未说三人；B：明确groups of four；C：五是地点数"
+        },
+        {
+          "stem": "What colour is the card?",
+          "options": [
+            [
+              "A",
+              "Yellow."
+            ],
+            [
+              "B",
+              "Blue."
+            ],
+            [
+              "C",
+              "Green."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确yellow card；B：未给蓝卡；C：Green是教师姓名，非卡色"
+        },
+        {
+          "stem": "Where does the trail start?",
+          "options": [
+            [
+              "A",
+              "At the main gate."
+            ],
+            [
+              "B",
+              "In Room Nine."
+            ],
+            [
+              "C",
+              "At the library."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：没说校门开始；B：下雨才回九教室；C：明确start at library"
+        },
+        {
+          "stem": "What should students do if it rains?",
+          "options": [
+            [
+              "A",
+              "Run to the garden."
+            ],
+            [
+              "B",
+              "Return to Room Nine."
+            ],
+            [
+              "C",
+              "Go home alone."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：不应跑且无花园安排；B：明确雨天回Room Nine；C：要求跟组、不单独回家"
+        },
+        {
+          "stem": "Who should get the finished card?",
+          "options": [
+            [
+              "A",
+              "Mr Green."
+            ],
+            [
+              "B",
+              "The school cook."
+            ],
+            [
+              "C",
+              "A group leader."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：讲述老师说give card to me；B：没给厨师；C：未说交组长"
+        }
+      ]
+    }
+  ]
+}

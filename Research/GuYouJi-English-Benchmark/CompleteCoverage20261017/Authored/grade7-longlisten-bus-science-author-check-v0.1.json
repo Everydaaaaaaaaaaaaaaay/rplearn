@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "id": "grade7-longlisten-bus-science",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "c75958c9df053283952c8fcbedb6f997dfbafe9df8400059af3dc76a159a6c66",
+  "source_binding": "g7hefeilistenII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionII",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Which bus should the boy take?",
+      "options": [
+        [
+          "A",
+          "Number Six."
+        ],
+        [
+          "B",
+          "Number Three."
+        ],
+        [
+          "C",
+          "Number Nine."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：六路去公园；B：未提三路；C：九路去泳池"
+    },
+    {
+      "number": 2,
+      "stem": "Where is the bus stop?",
+      "options": [
+        [
+          "A",
+          "Outside the bank."
+        ],
+        [
+          "B",
+          "Outside the post office."
+        ],
+        [
+          "C",
+          "Outside the park."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：被明确否定；B：女士明确邮局外；C：公园是六路目的地"
+    },
+    {
+      "number": 3,
+      "stem": "When is the meeting this week?",
+      "options": [
+        [
+          "A",
+          "Tuesday."
+        ],
+        [
+          "B",
+          "Thursday."
+        ],
+        [
+          "C",
+          "Friday."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：平时周二，本周改了；B：明确this week Thursday；C：未说周五"
+    },
+    {
+      "number": 4,
+      "stem": "What will they make?",
+      "options": [
+        [
+          "A",
+          "Paper bridges."
+        ],
+        [
+          "B",
+          "Toy cars."
+        ],
+        [
+          "C",
+          "Paper boats."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：明确small paper bridges；B：无小汽车；C：无纸船"
+    },
+    {
+      "number": 5,
+      "stem": "What should the boy bring?",
+      "options": [
+        [
+          "A",
+          "Paper."
+        ],
+        [
+          "B",
+          "Scissors."
+        ],
+        [
+          "C",
+          "Glue."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：社团纸足够；B：未要求剪刀；C：明确just bring glue"
+    }
+  ],
+  "canonical_response_block_sha256": "c1a40275fc7d6e4a93fe9f4d1277d14182dc84776738ac0226f9ed3f3e7c553c",
+  "student_passage": "### 材料1\n\n[材料1（第1—2题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-bus-science-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第3—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-bus-science-extract2-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-longlisten-bus-science-manuscript-v0.1.json",
+    "sha256": "fa8a46b6a29bbd4c8c3120439750138d97a98526b8ce79ff7e1787ee3e824799"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-bus-science-audio-v0.1.json",
+    "sha256": "29a08a46e900f27333b8bbca83f2c3512268214cc0000d7c0ee3968a25de6ca3"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-bus-science-extract1-v0.1.m4a",
+      "sha256": "80481c3bbfaeab6b1ccb12a0b721ebcb63d4e9f6f27bd66ef7a3ebd2f443b184",
+      "seconds": 63.686031746031745,
+      "response_numbers": [
+        1,
+        2
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-bus-science-extract2-v0.1.m4a",
+      "sha256": "5445d1ff40d5ca47255ad350e9e51be5c0dfbb809733b41b1928585c071650b4",
+      "seconds": 94.72993197278912,
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 26,
+    "options_English_words_with_repeated_bank": 28,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 102,
+    "audio_spoken_words_with_instructions": 228,
+    "audio_seconds_with_pauses": 158.41596371882088,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

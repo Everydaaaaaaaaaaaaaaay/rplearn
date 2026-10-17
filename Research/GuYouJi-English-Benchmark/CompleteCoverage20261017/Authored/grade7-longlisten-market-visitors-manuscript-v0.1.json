@@ -1,0 +1,198 @@
+{
+  "version": "0.1",
+  "id": "grade7-longlisten-market-visitors",
+  "title": "初一两对话：集市与来访同学",
+  "grade": 7,
+  "family": "listening_long_conversation_choice",
+  "family_label": "两长对话听力单选",
+  "junior_source_bound": true,
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionII",
+  "source_binding": "g7hefeilistenII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.24.json",
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen and choose the best answer.",
+  "instruction": "听两段完整对话，第一段2题，第二段3题，各从A/B/C选最佳答案。每材料听两遍。源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "source_notice": "初一公开月考说明中的完整题面、参考键和印出脚本已核，说明首行标合肥三十中/七上十月月考；原校施测及原版页面身份未独立认证。原音轨未取得，标题含音频不等于已取得。两遍有明文，精确读答时间未印；原参考键不是gold，原创录音不补成原源音频或学生标定。",
+  "timing_notice": "源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "How much are these apples?"
+        },
+        {
+          "speaker": "W",
+          "text": "Four yuan a bag. There are three apples in each bag."
+        },
+        {
+          "speaker": "M",
+          "text": "I will take two bags, please."
+        },
+        {
+          "speaker": "W",
+          "text": "Here you are. That is eight yuan."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How many bags will the boy buy?",
+          "options": [
+            [
+              "A",
+              "Two."
+            ],
+            [
+              "B",
+              "Three."
+            ],
+            [
+              "C",
+              "Four."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：男孩明确two bags；B：每袋苹果数；C：每袋价格不是袋数"
+        },
+        {
+          "stem": "How much will he pay?",
+          "options": [
+            [
+              "A",
+              "Four yuan."
+            ],
+            [
+              "B",
+              "Six yuan."
+            ],
+            [
+              "C",
+              "Eight yuan."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：一袋价格；B：未报六元；C：两袋共八元，结账也明确"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are the visitors coming to our school on Friday?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, but they will arrive at eleven, not ten."
+        },
+        {
+          "speaker": "M",
+          "text": "Will we show them the garden first?"
+        },
+        {
+          "speaker": "W",
+          "text": "The music room comes first. They want to hear our school band."
+        },
+        {
+          "speaker": "M",
+          "text": "What will we do after lunch?"
+        },
+        {
+          "speaker": "W",
+          "text": "We will take them to the garden. Remember to bring your camera."
+        },
+        {
+          "speaker": "M",
+          "text": "I cannot. My brother is using it."
+        },
+        {
+          "speaker": "W",
+          "text": "Then bring your notebook. You can write down the visitors' names for our class report."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When will the visitors arrive?",
+          "options": [
+            [
+              "A",
+              "At 10:00."
+            ],
+            [
+              "B",
+              "At 11:00."
+            ],
+            [
+              "C",
+              "At 12:00."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：十点被否定；B：明确eleven；C：未说十二点"
+        },
+        {
+          "stem": "Where will they go first?",
+          "options": [
+            [
+              "A",
+              "The garden."
+            ],
+            [
+              "B",
+              "The dining room."
+            ],
+            [
+              "C",
+              "The music room."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：花园在午饭后；B：午饭前先听乐队，不是食堂参观；C：明确music room comes first"
+        },
+        {
+          "stem": "What will the boy bring?",
+          "options": [
+            [
+              "A",
+              "His notebook."
+            ],
+            [
+              "B",
+              "His camera."
+            ],
+            [
+              "C",
+              "His brother's report."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：最后改带notebook；B：相机被弟弟使用；C：报告还未写，也未说弟弟报告"
+        }
+      ]
+    }
+  ]
+}

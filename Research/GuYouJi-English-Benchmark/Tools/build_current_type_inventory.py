@@ -44,7 +44,7 @@ def build(page,version="0.1"):
                 group_ids=ids,source_group_ids=sorted({a for g in groups for a in g['anchor_group_ids']}),
                 configurations=[dict(id=g['id'],payload_sha256=group_sha(g),responses=len(g['questions']),options_per_response=[len(q['options'])for q in g['questions']],
                     format_summary=g.get('formatSummary'),instruction=g.get('instruction'),fixed_shared_bank=g.get('fixedSharedBank',False),
-                    word_limits=[{'number':q['number'],'given_lemma':q.get('givenLemma'),'min_words':q['fillMarking'].get('minWords'),'max_words':q['fillMarking'].get('maxWords'),'required_keyword':q['fillMarking'].get('requiredWord'),'required_initial':q['fillMarking'].get('requiredInitial'),'bank_entry':q.get('bankEntry'),'bank_reuse_rule':q.get('bankReuse')}
+                    word_limits=[{'number':q['number'],'normalization':q['fillMarking'].get('normalization'),'whole_count':q['fillMarking'].get('wholeCount'),'unknown_syntax':q['fillMarking'].get('unknownSyntax'),'given_lemma':q.get('givenLemma'),'min_words':q['fillMarking'].get('minWords'),'max_words':q['fillMarking'].get('maxWords'),'required_keyword':q['fillMarking'].get('requiredWord'),'required_initial':q['fillMarking'].get('requiredInitial'),'bank_entry':q.get('bankEntry'),'bank_reuse_rule':q.get('bankReuse')}
                                  for q in g['questions']if q.get('fillMarking')],
                     audio_tracks=len(g.get('requiredAudioAssets',[])),required_images=len(g.get('requiredPassageImages',[]))+len(g.get('requiredImageAssets',[])),
                     candidate=g['candidate'],author_check=g['author_check'])for g in groups],

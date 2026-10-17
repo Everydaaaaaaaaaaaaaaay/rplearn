@@ -1,0 +1,194 @@
+{
+  "version": "0.1",
+  "id": "grade7-longlisten-basketball-wallet",
+  "title": "初一两对话：球场与钱包",
+  "grade": 7,
+  "family": "listening_long_conversation_choice",
+  "family_label": "两长对话听力单选",
+  "junior_source_bound": true,
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionII",
+  "source_binding": "g7hefeilistenII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.24.json",
+  "source_repeat_count": 2,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen and choose the best answer.",
+  "instruction": "听两段完整对话，第一段2题，第二段3题，各从A/B/C选最佳答案。每材料听两遍。源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "source_notice": "初一公开月考说明中的完整题面、参考键和印出脚本已核，说明首行标合肥三十中/七上十月月考；原校施测及原版页面身份未独立认证。原音轨未取得，标题含音频不等于已取得。两遍有明文，精确读答时间未印；原参考键不是gold，原创录音不补成原源音频或学生标定。",
+  "timing_notice": "源未印精确读答停顿；本机每题前后各5秒，只作审阅编排，可重播。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Hi, Nina. Are we going to practise basketball at ten tomorrow?"
+        },
+        {
+          "speaker": "W",
+          "text": "The court is busy at ten. Let us meet there at half past nine."
+        },
+        {
+          "speaker": "M",
+          "text": "Fine. I will bring the basketball."
+        },
+        {
+          "speaker": "W",
+          "text": "Good. I have two bottles of water for us."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When will they meet?",
+          "options": [
+            [
+              "A",
+              "At 9:00."
+            ],
+            [
+              "B",
+              "At 9:30."
+            ],
+            [
+              "C",
+              "At 10:00."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未约九点；B：最终约定half past nine；C：十点球场有人，已改时间"
+        },
+        {
+          "stem": "What will the boy bring?",
+          "options": [
+            [
+              "A",
+              "A basketball."
+            ],
+            [
+              "B",
+              "Two bottles of water."
+            ],
+            [
+              "C",
+              "A football."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：男孩明确带basketball；B：水由Nina带；C：未带足球"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Excuse me. Did anyone find a wallet this morning? It is green."
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. A boy in Class Four brought one to the school office."
+        },
+        {
+          "speaker": "M",
+          "text": "That sounds like mine. Where did he find it?"
+        },
+        {
+          "speaker": "W",
+          "text": "Under a bench in the playground."
+        },
+        {
+          "speaker": "M",
+          "text": "Can I collect it now?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. Please tell the office teacher what is inside it."
+        },
+        {
+          "speaker": "M",
+          "text": "There is a small photo of my dog inside."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What colour is the wallet?",
+          "options": [
+            [
+              "A",
+              "Black."
+            ],
+            [
+              "B",
+              "Blue."
+            ],
+            [
+              "C",
+              "Green."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "A：不是黑色；B：不是蓝色；C：男孩明确green"
+        },
+        {
+          "stem": "Where was it found?",
+          "options": [
+            [
+              "A",
+              "Under a playground bench."
+            ],
+            [
+              "B",
+              "Inside a classroom."
+            ],
+            [
+              "C",
+              "Beside the school gate."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "A：明确under a bench in playground；B：Class Four是拾到者班级而非地点；C：未说校门边"
+        },
+        {
+          "stem": "What is inside the wallet?",
+          "options": [
+            [
+              "A",
+              "A bus ticket."
+            ],
+            [
+              "B",
+              "A photo of a dog."
+            ],
+            [
+              "C",
+              "A library card."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "A：未说车票；B：男孩明确狗照片；C：未说借书证"
+        }
+      ]
+    }
+  ]
+}

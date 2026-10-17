@@ -1,0 +1,151 @@
+{
+  "version": "0.2",
+  "id": "grade7-familytable-ella",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "59cabf87d54ac41ae3d366be29bd6c9d89f23c3c09c2fa35d218993f3116ed96",
+  "source_binding": "g7hefeilistenIV",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIV",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "June and Peter have (1) ____ children.",
+      "options": [],
+      "acceptedAnswers": [
+        "four",
+        "4"
+      ],
+      "rationale": "录音完整陈述支持此空：June and Peter have four children.。英文数词与对应阿拉伯数字同等接受；不加已印出的children或years old。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "small_count_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [],
+        "wholeCount": 4,
+        "unknownSyntax": "review"
+      }
+    },
+    {
+      "number": 2,
+      "stem": "Sarah is Ella's (2) ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "mother"
+      ],
+      "rationale": "录音完整陈述支持此空：Sarah is Ella's mother.。按录音中的亲属身份填一词，不从姓名猜性别或关系。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "number": 3,
+      "stem": "Ben is Ella's (3) ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "brother"
+      ],
+      "rationale": "录音完整陈述支持此空：Ben is Ella's brother.。按录音中的亲属身份填一词，不从姓名猜性别或关系。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    },
+    {
+      "number": 4,
+      "stem": "Ben is (4) ____ years old.",
+      "options": [],
+      "acceptedAnswers": [
+        "seven",
+        "7"
+      ],
+      "rationale": "录音完整陈述支持此空：Ben is seven years old.。英文数词与对应阿拉伯数字同等接受；不加已印出的children或years old。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "small_count_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [],
+        "wholeCount": 7,
+        "unknownSyntax": "review"
+      }
+    },
+    {
+      "number": 5,
+      "stem": "Nora is Ella's (5) ____.",
+      "options": [],
+      "acceptedAnswers": [
+        "aunt"
+      ],
+      "rationale": "录音完整陈述支持此空：Nora is Ella's aunt.。按录音中的亲属身份填一词，不从姓名猜性别或关系。",
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      }
+    }
+  ],
+  "canonical_response_block_sha256": "fb17bc07eb472cfd361ae2800de2bd81c8a5fa61aaa79a1d276155981bf69ac7",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-familytable-ella-extract1-v0.1.m4a)\n\n### Ella's Family\n\n| People | Information |\n|---|---|\n| June and Peter | Grandparents; they have (1) ____ children. |\n| Sarah | Ella's (2) ____. |\n| Ben | Ella's (3) ____; (4) ____ years old. |\n| Nora | Ella's (5) ____; lives in China. |",
+  "body_load_text": "### Ella's Family\n\n| People | Information |\n|---|---|\n| June and Peter | Grandparents; they have (1) ____ children. |\n| Sarah | Ella's (2) ____. |\n| Ben | Ella's (3) ____; (4) ____ years old. |\n| Nora | Ella's (5) ____; lives in China. |",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-familytable-ella-manuscript-v0.2.json",
+    "sha256": "2fbed9c0766119a66f0abaa81fe39e5f7abd99dbe3f77d4aa0d53ddf5dcb07db"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-familytable-ella-audio-v0.3.json",
+    "sha256": "9ea24dd471d22dee84a2422d315b1ad906bcb877fe9b05fb1f6221bb36c34a6d"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-familytable-ella-extract1-v0.1.m4a",
+      "sha256": "be3d505f27ea9c48d6c5c844b10a627dc2cdbd2f05ba856e146a305915c09091",
+      "seconds": 111.45210884353742,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 22,
+    "stem_English_words": 18,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 61,
+    "audio_spoken_words_with_instructions": 134,
+    "audio_seconds_with_pauses": 111.45210884353742,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 4
+}

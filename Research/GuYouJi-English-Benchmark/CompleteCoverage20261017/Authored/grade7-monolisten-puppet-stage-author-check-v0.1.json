@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "grade7-monolisten-puppet-stage",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "bb3346d397d93a3bab2f4aed9161761182779b34edae675f59e599886f6541a8",
+  "source_binding": "g7hefeilistenIII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionIII",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Where will the show be?",
+      "options": [
+        [
+          "A",
+          "In the school hall."
+        ],
+        [
+          "B",
+          "In Room Six."
+        ],
+        [
+          "C",
+          "In the garden."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：原想用大厅但冲突；B：最后用Room Six；C：没有花园"
+    },
+    {
+      "number": 2,
+      "stem": "What are the puppets made from?",
+      "options": [
+        [
+          "A",
+          "Old socks."
+        ],
+        [
+          "B",
+          "Paper bags."
+        ],
+        [
+          "C",
+          "Plastic bottles."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：明确old socks；B：纸做的是树；C：没用塑料瓶"
+    },
+    {
+      "number": 3,
+      "stem": "Which animal will Tom move?",
+      "options": [
+        [
+          "A",
+          "A fox."
+        ],
+        [
+          "B",
+          "A dog."
+        ],
+        [
+          "C",
+          "A rabbit."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：狐狸由Emma操控；B：未有狗角色；C：Tom操控兔子"
+    },
+    {
+      "number": 4,
+      "stem": "Who helped make the trees?",
+      "options": [
+        [
+          "A",
+          "Emma's brother."
+        ],
+        [
+          "B",
+          "Tom's sister."
+        ],
+        [
+          "C",
+          "Their teacher."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未提Emma弟弟；B：讲述者说my sister；C：未说老师做树"
+    },
+    {
+      "number": 5,
+      "stem": "When does the show start?",
+      "options": [
+        [
+          "A",
+          "At 2:00."
+        ],
+        [
+          "B",
+          "At 2:20."
+        ],
+        [
+          "C",
+          "At 2:30."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：未说两点；B：提前十分钟到是2:20；C：明确two thirty"
+    }
+  ],
+  "canonical_response_block_sha256": "1175c61e2f073204c6b23d180cc33b38ac75b442ee8b094e7275558493994bcd",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-puppet-stage-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-monolisten-puppet-stage-manuscript-v0.1.json",
+    "sha256": "2b5e31ab9fb767a83b443f4a0f336174a9f97c1eeda1e01b92d38c6b1a605c37"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-puppet-stage-audio-v0.1.json",
+    "sha256": "772a0339b9ff850fb6c282c858d4f091aa9d066cae0bc7ef82a6dadc3e3e893d"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-monolisten-puppet-stage-extract1-v0.1.m4a",
+      "sha256": "d09c4019f408a71b057f10c5db790f5828fbdc7f7ba322cc089df20e5d79c9b3",
+      "seconds": 142.4524716553288,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 26,
+    "options_English_words_with_repeated_bank": 31,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 107,
+    "audio_spoken_words_with_instructions": 226,
+    "audio_seconds_with_pauses": 142.4524716553288,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

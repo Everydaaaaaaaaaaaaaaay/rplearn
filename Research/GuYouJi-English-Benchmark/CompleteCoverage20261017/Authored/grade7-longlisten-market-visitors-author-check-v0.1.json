@@ -1,0 +1,168 @@
+{
+  "version": "0.1",
+  "id": "grade7-longlisten-market-visitors",
+  "grade": 7,
+  "questions": 5,
+  "candidate_sha256": "b41d546c4c958d7a93863b44aef1ca4ce8fd60a883123227554cff90128df3fd",
+  "source_binding": "g7hefeilistenII",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.24.json",
+    "sha256": "4f1cc0335bedd3faa0881cd186ed188d6d085d976091261b043264fa068efbc3"
+  },
+  "source_group_id": "grade7-hefei2025-21cnjy26607976.listening.sectionII",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "How many bags will the boy buy?",
+      "options": [
+        [
+          "A",
+          "Two."
+        ],
+        [
+          "B",
+          "Three."
+        ],
+        [
+          "C",
+          "Four."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：男孩明确two bags；B：每袋苹果数；C：每袋价格不是袋数"
+    },
+    {
+      "number": 2,
+      "stem": "How much will he pay?",
+      "options": [
+        [
+          "A",
+          "Four yuan."
+        ],
+        [
+          "B",
+          "Six yuan."
+        ],
+        [
+          "C",
+          "Eight yuan."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：一袋价格；B：未报六元；C：两袋共八元，结账也明确"
+    },
+    {
+      "number": 3,
+      "stem": "When will the visitors arrive?",
+      "options": [
+        [
+          "A",
+          "At 10:00."
+        ],
+        [
+          "B",
+          "At 11:00."
+        ],
+        [
+          "C",
+          "At 12:00."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：十点被否定；B：明确eleven；C：未说十二点"
+    },
+    {
+      "number": 4,
+      "stem": "Where will they go first?",
+      "options": [
+        [
+          "A",
+          "The garden."
+        ],
+        [
+          "B",
+          "The dining room."
+        ],
+        [
+          "C",
+          "The music room."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：花园在午饭后；B：午饭前先听乐队，不是食堂参观；C：明确music room comes first"
+    },
+    {
+      "number": 5,
+      "stem": "What will the boy bring?",
+      "options": [
+        [
+          "A",
+          "His notebook."
+        ],
+        [
+          "B",
+          "His camera."
+        ],
+        [
+          "C",
+          "His brother's report."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：最后改带notebook；B：相机被弟弟使用；C：报告还未写，也未说弟弟报告"
+    }
+  ],
+  "canonical_response_block_sha256": "5cd5e6e5e3808ace5617c5cd52834729f8356aedb6987da9980d963fc50cca51",
+  "student_passage": "### 材料1\n\n[材料1（第1—2题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-market-visitors-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第3—5题；2遍）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-market-visitors-extract2-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-longlisten-market-visitors-manuscript-v0.1.json",
+    "sha256": "0ae0aaace9cab49608fa5d326c45349fcbfad5e0dd7a16e5c74ee83c4c286872"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-market-visitors-audio-v0.1.json",
+    "sha256": "208343a0f51b4ed4b6e00b6910795f35fe8608055bcc9b658cf0f567e76803c3"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-market-visitors-extract1-v0.1.m4a",
+      "sha256": "ad8820e3f321a3206f3de889af8828a9e19ba8f0a6911da287f350a2145b818e",
+      "seconds": 53.68557823129252,
+      "response_numbers": [
+        1,
+        2
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-longlisten-market-visitors-extract2-v0.1.m4a",
+      "sha256": "924094f73fe8ed6fd16883adf2a1fb2ba109c85550847056685a6d4808dfc0af",
+      "seconds": 104.14761904761905,
+      "response_numbers": [
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 2,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "junior_source_bound": true,
+  "source_companion_gap_visible": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 27,
+    "options_English_words_with_repeated_bank": 27,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 106,
+    "audio_spoken_words_with_instructions": 236,
+    "audio_seconds_with_pauses": 157.83319727891157,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
