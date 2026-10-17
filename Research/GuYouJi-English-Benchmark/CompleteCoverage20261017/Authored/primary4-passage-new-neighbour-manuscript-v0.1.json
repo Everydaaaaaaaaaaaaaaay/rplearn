@@ -1,0 +1,139 @@
+{
+  "version": "0.1",
+  "id": "primary4-passage-new-neighbour",
+  "title": "小四短文听力：新邻居",
+  "grade": "primary4",
+  "family": "listening_passage_choice",
+  "family_label": "篇章听力单选",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part5",
+  "source_binding": "p4passage5text",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.22.json",
+  "illustrated_listening": true,
+  "render_repeat_count": 1,
+  "source_replay_rule": "not_printed",
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    }
+  },
+  "audio_introduction": "Look at all five questions. Listen to the whole passage.",
+  "instruction": "先看全部五题，听一段完整短文，从每题A、B、C三个文字选项中选最佳答案，完成全部五题。源遍数/时序未印；本机每材料一遍，每题前后5秒，可重播，只作审阅编排。",
+  "source_form_notice": "小四房山普通卷一完整短文五题，各三文字候选，不加图片；原区/学期/年级正文可核，施测未认证，原音轨/脚本/键缺，答案听力略。遍数停顿未印，本机每材料一遍、每题前后5秒可重播，只作审阅实现。",
+  "local_timing_notice": "本机每段只一遍，前后各5秒乘该段题数；源遍数和精确时序未知，不作原卷规则。",
+  "format_summary": "1完整短文 / 5题各3文字候选 / 源遍数未知、本机1遍",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "My name is Maya. I am nine years old. I live in a small town beside a lake. My favourite food is vegetable soup. On Sundays, I often read books with my brother. We go to the library after lunch. This winter holiday, I will visit my grandparents on their farm. I want to help them feed the hens. I am looking forward to the visit."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How old is Maya?",
+          "options": [
+            [
+              "A",
+              "Eight."
+            ],
+            [
+              "B",
+              "Nine."
+            ],
+            [
+              "C",
+              "Ten."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "首句年龄nine；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "Where does she live?",
+          "options": [
+            [
+              "A",
+              "Beside a lake."
+            ],
+            [
+              "B",
+              "Near the sea."
+            ],
+            [
+              "C",
+              "On a mountain."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "明确small town beside a lake；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "What is her favourite food?",
+          "options": [
+            [
+              "A",
+              "Fruit salad."
+            ],
+            [
+              "B",
+              "Rice cakes."
+            ],
+            [
+              "C",
+              "Vegetable soup."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "明确favourite food is vegetable soup；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "What does she often do on Sundays?",
+          "options": [
+            [
+              "A",
+              "Reads books."
+            ],
+            [
+              "B",
+              "Plays football."
+            ],
+            [
+              "C",
+              "Goes fishing."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "often read books with brother；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "Who will she visit this winter holiday?",
+          "options": [
+            [
+              "A",
+              "Her teacher."
+            ],
+            [
+              "B",
+              "Her grandparents."
+            ],
+            [
+              "C",
+              "Her friend."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "明确visit grandparents on their farm；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialogue122-ruler-farm-book",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "57660b840a5d2e736a824b458af0724e35a365895d75e5a8a435b379fa729af8",
+  "source_binding": "p4dialogue122image",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What does the boy want to do?",
+      "options": [
+        [
+          "A",
+          "Borrow a ruler."
+        ],
+        [
+          "B",
+          "Buy a pencil."
+        ],
+        [
+          "C",
+          "Make a cake."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "男孩明确请求borrow your ruler，未说买铅笔或做蛋糕；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 2,
+      "stem": "Where does Amy's uncle live?",
+      "options": [
+        [
+          "A",
+          "In a city centre."
+        ],
+        [
+          "B",
+          "On a farm."
+        ],
+        [
+          "C",
+          "Beside a beach."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "Amy明确说on a farm；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 3,
+      "stem": "What will Amy do this weekend?",
+      "options": [
+        [
+          "A",
+          "Ride a bike."
+        ],
+        [
+          "B",
+          "Go swimming."
+        ],
+        [
+          "C",
+          "Collect eggs."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "她否定骑车，并明确collect eggs；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 4,
+      "stem": "Where is the boy now?",
+      "options": [
+        [
+          "A",
+          ""
+        ],
+        [
+          "B",
+          ""
+        ],
+        [
+          "C",
+          ""
+        ]
+      ],
+      "optionImageAssets": {
+        "A": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-library-v0.1.svg",
+          "sha256": "46efac3ed55220845bb1e78bf50aecd002df48bf5a8a3c43dbf036bd0fc92790"
+        },
+        "B": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-airport-v0.1.svg",
+          "sha256": "6f674e63c52c45d7e47a3db3587ee6b2e20f41e919aa4d509153441ba8a589e4"
+        },
+        "C": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-shop-v0.1.svg",
+          "sha256": "fe3d337396fa6941f1386c0d4279de7179294ca3a20fac44b1c9cad4f58d11a4"
+        }
+      },
+      "answer": "A",
+      "rationale": "借书回家、出示library card共同支持图A图书馆；机场与商店不提供该借阅关系；A是借阅书籍场所，B是有飞机/航站楼场所，C是售货柜台场所，逐项与录音核对，不按旧图字母猜。"
+    },
+    {
+      "number": 5,
+      "stem": "Which book would he like?",
+      "options": [
+        [
+          "A",
+          "Big and blue."
+        ],
+        [
+          "B",
+          "Big and green."
+        ],
+        [
+          "C",
+          "Small and green."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "男孩否定small green，明确big green；其他候选与该段明确陈述不符，不用已用答案排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "3500ee4adba9d16148a1daa025d6dc695ddb4fed3a4177501104fdfc65d104cf",
+  "student_passage": "### 材料1\n\n[材料1（第1—1题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第2—3题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-extract2-v0.1.m4a)\n\n### 材料3\n\n[材料3（第4—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-extract3-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-dialogue122-ruler-farm-book-manuscript-v0.1.json",
+    "sha256": "f5fbac88d720eaa6172b3f825267afa8a9ac67b0ca740382a09ab453b4bfc8c9"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-audio-v0.1.json",
+    "sha256": "31b5a6c23527904ccb7a28487fdeae93374f7d384caf007bfa555a5b9e31f9d1"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-extract1-v0.1.m4a",
+      "sha256": "83c64a296950d911243ba9d2b22193753b027fe49634684417930a53eaac20f7",
+      "seconds": 16.620816326530612,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-extract2-v0.1.m4a",
+      "sha256": "c9b9cc20a1ae189390b6411e47a568b75cb5198ad247fecc75057aee81596113",
+      "seconds": 33.18294784580499,
+      "response_numbers": [
+        2,
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-ruler-farm-book-extract3-v0.1.m4a",
+      "sha256": "979441f82adbefc19ee7abf679e386c6ed000846fb4d2fb8bdefcb8929159864",
+      "seconds": 33.82136054421769,
+      "response_numbers": [
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "illustrated_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 28,
+    "options_English_words_with_repeated_bank": 35,
+    "picture_option_positions": 3,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 77,
+    "audio_spoken_words_with_instructions": 89,
+    "audio_seconds_with_pauses": 83.6251247165533
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

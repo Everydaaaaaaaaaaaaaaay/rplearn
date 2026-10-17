@@ -1,0 +1,207 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialogue122-board-coast-hat",
+  "title": "小四三对话：黑板、海边和帽子",
+  "grade": "primary4",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part3",
+  "source_binding": "p4dialogue122image",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.22.json",
+  "illustrated_listening": true,
+  "render_repeat_count": 1,
+  "source_replay_rule": "not_printed",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 110
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    }
+  },
+  "audio_introduction": "Listen to the dialogue.",
+  "instruction": "听三段完整对话，依次回答1题、2题、2题，共5题。第4题三个图片候选，其余文字候选，全部保留。源遍数/时序未印；本机每材料一遍，每题前后5秒，可重播，只作审阅编排。",
+  "source_form_notice": "小四房山普通卷三对话1/2/2共五题，各三选，第14题即本组第4题才为三图，其余四题文字；原区/学期/年级正文可核，施测未认证，原音轨/脚本/键缺，答案听力略。遍数停顿未印，本机每材料一遍、每题前后5秒可重播，只作审阅实现。",
+  "local_timing_notice": "本机每段只一遍，前后各5秒乘该段题数；源遍数和精确时序未知，不作原卷规则。",
+  "format_summary": "3完整对话 / 1-2-2五题 / 第4题3图其余3文字选项 / 源遍数未知、本机1遍",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "May I clean the board for you?"
+        },
+        {
+          "speaker": "W",
+          "text": "Thank you. You can use this cloth."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the boy offer to do?",
+          "options": [
+            [
+              "A",
+              "Read a book."
+            ],
+            [
+              "B",
+              "Draw a bird."
+            ],
+            [
+              "C",
+              "Clean the board."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "明确请求clean the board；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Does your uncle live in the mountains, Rose?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. His home is near the sea."
+        },
+        {
+          "speaker": "M",
+          "text": "Are you going to swim there this Saturday?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not this time. He will take me out in his small boat."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where is Rose's uncle's home?",
+          "options": [
+            [
+              "A",
+              "In the mountains."
+            ],
+            [
+              "B",
+              "Near the sea."
+            ],
+            [
+              "C",
+              "In a forest."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "否定山里，明确near the sea；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "What will Rose do this Saturday?",
+          "options": [
+            [
+              "A",
+              "Go out in a boat."
+            ],
+            [
+              "B",
+              "Go swimming."
+            ],
+            [
+              "C",
+              "Climb a mountain."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "否定这次游泳，明确乘叔叔小船出海；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "I would like to buy a hat. How much is this big red one?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is ten pounds. We also have a small red hat and a big green one."
+        },
+        {
+          "speaker": "M",
+          "text": "I will buy the big red hat, please."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where is the boy now?",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ],
+            [
+              "C",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/p4-choice-library-v0.1.svg",
+              "sha256": "46efac3ed55220845bb1e78bf50aecd002df48bf5a8a3c43dbf036bd0fc92790"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/p4-choice-airport-v0.1.svg",
+              "sha256": "6f674e63c52c45d7e47a3db3587ee6b2e20f41e919aa4d509153441ba8a589e4"
+            },
+            "C": {
+              "path": "build/english-benchmark-authority-20261017/p4-choice-shop-v0.1.svg",
+              "sha256": "fe3d337396fa6941f1386c0d4279de7179294ca3a20fac44b1c9cad4f58d11a4"
+            }
+          },
+          "answer": "C",
+          "rationale": "询价和buy a hat共同支持C售货商店，不是A借书或B乘机；A是借阅书籍场所，B是有飞机/航站楼场所，C是售货柜台场所，逐项与录音核对，不按旧图字母猜。"
+        },
+        {
+          "stem": "Which hat will he buy?",
+          "options": [
+            [
+              "A",
+              "Small and red."
+            ],
+            [
+              "B",
+              "Big and green."
+            ],
+            [
+              "C",
+              "Big and red."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "最终明确buy the big red hat，非另两可选帽；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    }
+  ]
+}

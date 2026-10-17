@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "primary4-passage-welcome-leo",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "5e200bc13e10980d950bf25ba616127c287cfbce21b34eeed9b9e5a8a9d63df7",
+  "source_binding": "p4passage5text",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part5",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "How old is Leo?",
+      "options": [
+        [
+          "A",
+          "Nine."
+        ],
+        [
+          "B",
+          "Eleven."
+        ],
+        [
+          "C",
+          "Ten."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确ten years old；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 2,
+      "stem": "Where does he live?",
+      "options": [
+        [
+          "A",
+          "In a forest."
+        ],
+        [
+          "B",
+          "In a city near the sea."
+        ],
+        [
+          "C",
+          "On a farm."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明确city near sea；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 3,
+      "stem": "Which food does he like best?",
+      "options": [
+        [
+          "A",
+          "Noodles."
+        ],
+        [
+          "B",
+          "Dumplings."
+        ],
+        [
+          "C",
+          "Bread."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明确like noodles best；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 4,
+      "stem": "What does he often do at weekends?",
+      "options": [
+        [
+          "A",
+          "Plays tennis."
+        ],
+        [
+          "B",
+          "Rides a bicycle."
+        ],
+        [
+          "C",
+          "Goes swimming."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明确often ride bicycle in park；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 5,
+      "stem": "Where will he go this winter holiday?",
+      "options": [
+        [
+          "A",
+          "To a library."
+        ],
+        [
+          "B",
+          "To a farm."
+        ],
+        [
+          "C",
+          "To the science museum."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确science museum with class；其他候选与该段明确陈述不符，不用已用答案排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "7fd1921f6b73f4896bc3c41e4c499121d93361021e8f717960d8b9b72d02c7e5",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-passage-welcome-leo-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-passage-welcome-leo-manuscript-v0.1.json",
+    "sha256": "0b3821a419b00ed3a01d28a5b970b1df1b7edf1c634608c88a6b5c22c6aaec6c"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary4-passage-welcome-leo-audio-v0.1.json",
+    "sha256": "4a25632f5d0ec0870dd475909c3f13b33f781e1ad9bbcfc65b015865d6f3a2b0"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-passage-welcome-leo-extract1-v0.1.m4a",
+      "sha256": "4a682599b6a19a2ab0a58270bc0d1ce139f745abd191850b6f901ca42083ae67",
+      "seconds": 77.28907029478458,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "illustrated_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 28,
+    "options_English_words_with_repeated_bank": 35,
+    "picture_option_positions": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 70,
+    "audio_spoken_words_with_instructions": 80,
+    "audio_seconds_with_pauses": 77.28907029478458
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

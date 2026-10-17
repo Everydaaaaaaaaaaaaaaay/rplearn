@@ -1,0 +1,207 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialogue122-water-forest-bag",
+  "title": "小四三对话：水、树林和行李",
+  "grade": "primary4",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part3",
+  "source_binding": "p4dialogue122image",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.22.json",
+  "illustrated_listening": true,
+  "render_repeat_count": 1,
+  "source_replay_rule": "not_printed",
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 110
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    }
+  },
+  "audio_introduction": "Listen to the dialogue.",
+  "instruction": "听三段完整对话，依次回答1题、2题、2题，共5题。第4题三个图片候选，其余文字候选，全部保留。源遍数/时序未印；本机每材料一遍，每题前后5秒，可重播，只作审阅编排。",
+  "source_form_notice": "小四房山普通卷三对话1/2/2共五题，各三选，第14题即本组第4题才为三图，其余四题文字；原区/学期/年级正文可核，施测未认证，原音轨/脚本/键缺，答案听力略。遍数停顿未印，本机每材料一遍、每题前后5秒可重播，只作审阅实现。",
+  "local_timing_notice": "本机每段只一遍，前后各5秒乘该段题数；源遍数和精确时序未知，不作原卷规则。",
+  "format_summary": "3完整对话 / 1-2-2五题 / 第4题3图其余3文字选项 / 源遍数未知、本机1遍",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 5,
+      "answer_seconds": 5,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "It is hot. Can I have some water?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. There is a bottle on the table."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What does the boy want?",
+          "options": [
+            [
+              "A",
+              "A new ball."
+            ],
+            [
+              "B",
+              "Some water."
+            ],
+            [
+              "C",
+              "A ruler."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "明确要some water；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Where does your aunt live, Lily?"
+        },
+        {
+          "speaker": "W",
+          "text": "She lives beside a forest."
+        },
+        {
+          "speaker": "M",
+          "text": "Will you go fishing when you visit her on Sunday?"
+        },
+        {
+          "speaker": "W",
+          "text": "No. We are going to take a long walk in the forest."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where does Lily's aunt live?",
+          "options": [
+            [
+              "A",
+              "Beside a forest."
+            ],
+            [
+              "B",
+              "On a farm."
+            ],
+            [
+              "C",
+              "Near the sea."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "明确beside a forest；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "What will Lily do on Sunday?",
+          "options": [
+            [
+              "A",
+              "Play football."
+            ],
+            [
+              "B",
+              "Go fishing."
+            ],
+            [
+              "C",
+              "Take a long walk."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "否定钓鱼并明确take a long walk；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 10,
+      "answer_seconds": 10,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "My plane has arrived, but I cannot find my bag."
+        },
+        {
+          "speaker": "W",
+          "text": "Please tell the airport help desk. Is this small blue bag yours?"
+        },
+        {
+          "speaker": "M",
+          "text": "No. Mine is big and blue."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Where is the boy now?",
+          "options": [
+            [
+              "A",
+              ""
+            ],
+            [
+              "B",
+              ""
+            ],
+            [
+              "C",
+              ""
+            ]
+          ],
+          "optionImageAssets": {
+            "A": {
+              "path": "build/english-benchmark-authority-20261017/p4-choice-library-v0.1.svg",
+              "sha256": "46efac3ed55220845bb1e78bf50aecd002df48bf5a8a3c43dbf036bd0fc92790"
+            },
+            "B": {
+              "path": "build/english-benchmark-authority-20261017/p4-choice-airport-v0.1.svg",
+              "sha256": "6f674e63c52c45d7e47a3db3587ee6b2e20f41e919aa4d509153441ba8a589e4"
+            },
+            "C": {
+              "path": "build/english-benchmark-authority-20261017/p4-choice-shop-v0.1.svg",
+              "sha256": "fe3d337396fa6941f1386c0d4279de7179294ca3a20fac44b1c9cad4f58d11a4"
+            }
+          },
+          "answer": "B",
+          "rationale": "飞机已到、机场帮助台与行李共同支持B机场，非A图书馆/C商店；A是借阅书籍场所，B是有飞机/航站楼场所，C是售货柜台场所，逐项与录音核对，不按旧图字母猜。"
+        },
+        {
+          "stem": "What is his bag like?",
+          "options": [
+            [
+              "A",
+              "Big and blue."
+            ],
+            [
+              "B",
+              "Big and green."
+            ],
+            [
+              "C",
+              "Small and blue."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "明确mine is big and blue，否定small blue；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    }
+  ]
+}

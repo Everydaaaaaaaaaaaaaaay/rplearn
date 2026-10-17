@@ -1,0 +1,191 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialogue122-board-coast-hat",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "f47a23a66e4d7d16cb9970645afe8ce961f100cccd6bd02cee7652f407e6923f",
+  "source_binding": "p4dialogue122image",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What does the boy offer to do?",
+      "options": [
+        [
+          "A",
+          "Read a book."
+        ],
+        [
+          "B",
+          "Draw a bird."
+        ],
+        [
+          "C",
+          "Clean the board."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确请求clean the board；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 2,
+      "stem": "Where is Rose's uncle's home?",
+      "options": [
+        [
+          "A",
+          "In the mountains."
+        ],
+        [
+          "B",
+          "Near the sea."
+        ],
+        [
+          "C",
+          "In a forest."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "否定山里，明确near the sea；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 3,
+      "stem": "What will Rose do this Saturday?",
+      "options": [
+        [
+          "A",
+          "Go out in a boat."
+        ],
+        [
+          "B",
+          "Go swimming."
+        ],
+        [
+          "C",
+          "Climb a mountain."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "否定这次游泳，明确乘叔叔小船出海；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 4,
+      "stem": "Where is the boy now?",
+      "options": [
+        [
+          "A",
+          ""
+        ],
+        [
+          "B",
+          ""
+        ],
+        [
+          "C",
+          ""
+        ]
+      ],
+      "optionImageAssets": {
+        "A": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-library-v0.1.svg",
+          "sha256": "46efac3ed55220845bb1e78bf50aecd002df48bf5a8a3c43dbf036bd0fc92790"
+        },
+        "B": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-airport-v0.1.svg",
+          "sha256": "6f674e63c52c45d7e47a3db3587ee6b2e20f41e919aa4d509153441ba8a589e4"
+        },
+        "C": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-shop-v0.1.svg",
+          "sha256": "fe3d337396fa6941f1386c0d4279de7179294ca3a20fac44b1c9cad4f58d11a4"
+        }
+      },
+      "answer": "C",
+      "rationale": "询价和buy a hat共同支持C售货商店，不是A借书或B乘机；A是借阅书籍场所，B是有飞机/航站楼场所，C是售货柜台场所，逐项与录音核对，不按旧图字母猜。"
+    },
+    {
+      "number": 5,
+      "stem": "Which hat will he buy?",
+      "options": [
+        [
+          "A",
+          "Small and red."
+        ],
+        [
+          "B",
+          "Big and green."
+        ],
+        [
+          "C",
+          "Big and red."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "最终明确buy the big red hat，非另两可选帽；其他候选与该段明确陈述不符，不用已用答案排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "c185c959a4f3270ddc2738b59c65953dfd6fdb115ea6c9a754ce5d19e4fd3193",
+  "student_passage": "### 材料1\n\n[材料1（第1—1题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第2—3题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-extract2-v0.1.m4a)\n\n### 材料3\n\n[材料3（第4—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-extract3-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-dialogue122-board-coast-hat-manuscript-v0.1.json",
+    "sha256": "12ef9accf15a6f6f1f9c8735b4eb1c951b76b75e5101128d1c0de9ea6a1bee5b"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-audio-v0.1.json",
+    "sha256": "05fcc099a8408b310fe28591a23d9e3b0f3fb45b9490ec46fabc775c8ead99c0"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-extract1-v0.1.m4a",
+      "sha256": "3ecb1a96887cd1ccbace543629860e142026ba0ae910a4ce384dd0c598129cf4",
+      "seconds": 16.70607709750567,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-extract2-v0.1.m4a",
+      "sha256": "b7609f4ed95edc1ecc9315cab298ec3601d935f832ca115b304787d282480387",
+      "seconds": 34.379501133786846,
+      "response_numbers": [
+        2,
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-board-coast-hat-extract3-v0.1.m4a",
+      "sha256": "2818ea253053aa4aa1877b113151728e7ca1e4cdd9ca99cad98dcd854f4d3168",
+      "seconds": 33.805351473922904,
+      "response_numbers": [
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "illustrated_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 28,
+    "options_English_words_with_repeated_bank": 37,
+    "picture_option_positions": 3,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 87,
+    "audio_spoken_words_with_instructions": 99,
+    "audio_seconds_with_pauses": 84.89092970521543
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

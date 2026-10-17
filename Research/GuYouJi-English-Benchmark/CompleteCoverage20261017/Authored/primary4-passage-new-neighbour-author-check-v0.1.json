@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "primary4-passage-new-neighbour",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "ad880aa22488f2bd1391067caab88833eb7f796a9a11ef1200505f41856a727f",
+  "source_binding": "p4passage5text",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part5",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "How old is Maya?",
+      "options": [
+        [
+          "A",
+          "Eight."
+        ],
+        [
+          "B",
+          "Nine."
+        ],
+        [
+          "C",
+          "Ten."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "首句年龄nine；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 2,
+      "stem": "Where does she live?",
+      "options": [
+        [
+          "A",
+          "Beside a lake."
+        ],
+        [
+          "B",
+          "Near the sea."
+        ],
+        [
+          "C",
+          "On a mountain."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明确small town beside a lake；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 3,
+      "stem": "What is her favourite food?",
+      "options": [
+        [
+          "A",
+          "Fruit salad."
+        ],
+        [
+          "B",
+          "Rice cakes."
+        ],
+        [
+          "C",
+          "Vegetable soup."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确favourite food is vegetable soup；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 4,
+      "stem": "What does she often do on Sundays?",
+      "options": [
+        [
+          "A",
+          "Reads books."
+        ],
+        [
+          "B",
+          "Plays football."
+        ],
+        [
+          "C",
+          "Goes fishing."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "often read books with brother；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 5,
+      "stem": "Who will she visit this winter holiday?",
+      "options": [
+        [
+          "A",
+          "Her teacher."
+        ],
+        [
+          "B",
+          "Her grandparents."
+        ],
+        [
+          "C",
+          "Her friend."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明确visit grandparents on their farm；其他候选与该段明确陈述不符，不用已用答案排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "16ad0cddb1af164b3e4baa24d9574edb13681fb954947b2cdae50907e107c6ff",
+  "student_passage": "### 材料1\n\n[材料1（第1—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-passage-new-neighbour-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-passage-new-neighbour-manuscript-v0.1.json",
+    "sha256": "645cca37edc34a756071d82220b96d05ff4d6510d8893edc878ac39fc7536344"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary4-passage-new-neighbour-audio-v0.1.json",
+    "sha256": "dca1c39b929cf6b6419640dcef4f419d84908fdb1fc910b1a14d5f27ef24e74b"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-passage-new-neighbour-extract1-v0.1.m4a",
+      "sha256": "dad0a64f09ac591b2859a8284dfe0c9fb694bd47d2a4f3845b23c801e7d702f7",
+      "seconds": 76.47310657596371,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "illustrated_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 27,
+    "options_English_words_with_repeated_bank": 30,
+    "picture_option_positions": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 66,
+    "audio_spoken_words_with_instructions": 76,
+    "audio_seconds_with_pauses": 76.47310657596371
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

@@ -1,0 +1,139 @@
+{
+  "version": "0.1",
+  "id": "primary4-passage-welcome-leo",
+  "title": "小四短文听力：认识里奥",
+  "grade": "primary4",
+  "family": "listening_passage_choice",
+  "family_label": "篇章听力单选",
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part5",
+  "source_binding": "p4passage5text",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.22.json",
+  "illustrated_listening": true,
+  "render_repeat_count": 1,
+  "source_replay_rule": "not_printed",
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 110
+    }
+  },
+  "audio_introduction": "Look at all five questions. Listen to the whole passage.",
+  "instruction": "先看全部五题，听一段完整短文，从每题A、B、C三个文字选项中选最佳答案，完成全部五题。源遍数/时序未印；本机每材料一遍，每题前后5秒，可重播，只作审阅编排。",
+  "source_form_notice": "小四房山普通卷一完整短文五题，各三文字候选，不加图片；原区/学期/年级正文可核，施测未认证，原音轨/脚本/键缺，答案听力略。遍数停顿未印，本机每材料一遍、每题前后5秒可重播，只作审阅实现。",
+  "local_timing_notice": "本机每段只一遍，前后各5秒乘该段题数；源遍数和精确时序未知，不作原卷规则。",
+  "format_summary": "1完整短文 / 5题各3文字候选 / 源遍数未知、本机1遍",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Hello, I am Leo. I am ten years old. I live in a city near the sea. I like noodles best. My father makes them for me on Fridays. At weekends, I often ride my bicycle in the park with my cousin. We stop to watch the ducks. This winter holiday, I will go to the science museum with my class. I want to see the big model plane there."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "How old is Leo?",
+          "options": [
+            [
+              "A",
+              "Nine."
+            ],
+            [
+              "B",
+              "Eleven."
+            ],
+            [
+              "C",
+              "Ten."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "明确ten years old；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "Where does he live?",
+          "options": [
+            [
+              "A",
+              "In a forest."
+            ],
+            [
+              "B",
+              "In a city near the sea."
+            ],
+            [
+              "C",
+              "On a farm."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "明确city near sea；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "Which food does he like best?",
+          "options": [
+            [
+              "A",
+              "Noodles."
+            ],
+            [
+              "B",
+              "Dumplings."
+            ],
+            [
+              "C",
+              "Bread."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "明确like noodles best；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "What does he often do at weekends?",
+          "options": [
+            [
+              "A",
+              "Plays tennis."
+            ],
+            [
+              "B",
+              "Rides a bicycle."
+            ],
+            [
+              "C",
+              "Goes swimming."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "明确often ride bicycle in park；其他候选与该段明确陈述不符，不用已用答案排除。"
+        },
+        {
+          "stem": "Where will he go this winter holiday?",
+          "options": [
+            [
+              "A",
+              "To a library."
+            ],
+            [
+              "B",
+              "To a farm."
+            ],
+            [
+              "C",
+              "To the science museum."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "明确science museum with class；其他候选与该段明确陈述不符，不用已用答案排除。"
+        }
+      ]
+    }
+  ]
+}

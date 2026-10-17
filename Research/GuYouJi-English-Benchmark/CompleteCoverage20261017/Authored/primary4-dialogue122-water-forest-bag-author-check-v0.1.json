@@ -1,0 +1,191 @@
+{
+  "version": "0.1",
+  "id": "primary4-dialogue122-water-forest-bag",
+  "grade": "primary4",
+  "questions": 5,
+  "candidate_sha256": "f9c5948218e44cf585dc39fe6b17dad019a283745f8111ddf7f28defaf96cfb1",
+  "source_binding": "p4dialogue122image",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.22.json",
+    "sha256": "74640a0507276a9c5258a3c51a79bf5734a5a3fe11da11d1466edb167bc74c4e"
+  },
+  "source_group_id": "primary4.fangshan2024-25upper.listening.part3",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What does the boy want?",
+      "options": [
+        [
+          "A",
+          "A new ball."
+        ],
+        [
+          "B",
+          "Some water."
+        ],
+        [
+          "C",
+          "A ruler."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "明确要some water；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 2,
+      "stem": "Where does Lily's aunt live?",
+      "options": [
+        [
+          "A",
+          "Beside a forest."
+        ],
+        [
+          "B",
+          "On a farm."
+        ],
+        [
+          "C",
+          "Near the sea."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明确beside a forest；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 3,
+      "stem": "What will Lily do on Sunday?",
+      "options": [
+        [
+          "A",
+          "Play football."
+        ],
+        [
+          "B",
+          "Go fishing."
+        ],
+        [
+          "C",
+          "Take a long walk."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "否定钓鱼并明确take a long walk；其他候选与该段明确陈述不符，不用已用答案排除。"
+    },
+    {
+      "number": 4,
+      "stem": "Where is the boy now?",
+      "options": [
+        [
+          "A",
+          ""
+        ],
+        [
+          "B",
+          ""
+        ],
+        [
+          "C",
+          ""
+        ]
+      ],
+      "optionImageAssets": {
+        "A": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-library-v0.1.svg",
+          "sha256": "46efac3ed55220845bb1e78bf50aecd002df48bf5a8a3c43dbf036bd0fc92790"
+        },
+        "B": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-airport-v0.1.svg",
+          "sha256": "6f674e63c52c45d7e47a3db3587ee6b2e20f41e919aa4d509153441ba8a589e4"
+        },
+        "C": {
+          "path": "build/english-benchmark-authority-20261017/p4-choice-shop-v0.1.svg",
+          "sha256": "fe3d337396fa6941f1386c0d4279de7179294ca3a20fac44b1c9cad4f58d11a4"
+        }
+      },
+      "answer": "B",
+      "rationale": "飞机已到、机场帮助台与行李共同支持B机场，非A图书馆/C商店；A是借阅书籍场所，B是有飞机/航站楼场所，C是售货柜台场所，逐项与录音核对，不按旧图字母猜。"
+    },
+    {
+      "number": 5,
+      "stem": "What is his bag like?",
+      "options": [
+        [
+          "A",
+          "Big and blue."
+        ],
+        [
+          "B",
+          "Big and green."
+        ],
+        [
+          "C",
+          "Small and blue."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明确mine is big and blue，否定small blue；其他候选与该段明确陈述不符，不用已用答案排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "27db48977f3fc804af5ed565106f3d423ca7f901de60906821d1c7c89da08ea8",
+  "student_passage": "### 材料1\n\n[材料1（第1—1题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-extract1-v0.1.m4a)\n\n### 材料2\n\n[材料2（第2—3题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-extract2-v0.1.m4a)\n\n### 材料3\n\n[材料3（第4—5题；本机1遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-extract3-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-dialogue122-water-forest-bag-manuscript-v0.1.json",
+    "sha256": "9c5b4bd646c91fa32ce449059ea9988f5b9257a946feda82b959c31496e9a2b4"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-audio-v0.1.json",
+    "sha256": "39df575cd76a6e53be62ee402c91daec250060d0fdee7a382142a7fae04d96f2"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-extract1-v0.1.m4a",
+      "sha256": "6e6badbe5496d9f1e23d3e02820018561971f819c291f799a66ffbba7dd7b76e",
+      "seconds": 17.40621315192744,
+      "response_numbers": [
+        1
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-extract2-v0.1.m4a",
+      "sha256": "ce3c880a84ede62a609cf91b2912b285b81c334276c0ca2409fd3e7c57942976",
+      "seconds": 33.59637188208617,
+      "response_numbers": [
+        2,
+        3
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary4-dialogue122-water-forest-bag-extract3-v0.1.m4a",
+      "sha256": "dce2df23ff784d415b94fc66bb4040047b809cf50c5fd1cdc62741737333a00a",
+      "seconds": 32.81192743764172,
+      "response_numbers": [
+        4,
+        5
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "illustrated_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 26,
+    "options_English_words_with_repeated_bank": 33,
+    "picture_option_positions": 3,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 77,
+    "audio_spoken_words_with_instructions": 89,
+    "audio_seconds_with_pauses": 83.81451247165532
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}
