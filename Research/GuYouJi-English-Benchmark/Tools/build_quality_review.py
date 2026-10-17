@@ -44,7 +44,9 @@ def full_markdown_candidate(meta):
     student = re.sub(r'<!-- (?:passage|table):(?:start|end) -->\s*', '', student)
     if '<!--' in student:
         raise ValueError('Unknown input marker')
-    assets = [audit[k] for k in ['graph_asset', 'figure_asset'] if audit.get(k)]
+    assets = [audit[k] for k in ['graph_asset', 'figure_asset'] if audit.get(k)] + audit.get('figure_assets', [])
+    if len({a['path'] for a in assets}) != len(assets):
+        raise ValueError('Repeated required figure binding')
     images = []
     audio_assets = audit.get('audio_assets', [])
     audio_tracks = []
@@ -54,7 +56,11 @@ def full_markdown_candidate(meta):
         for embed in re.finditer(r'^!\[([^\]]+)\]\(([^)]+)\)\s*$', value, re.M):
             # Bound generated assets may live in the ignored research cache.
             # load_ref still enforces a portable path and the registered SHA.
-            path = embed[2] if embed[2].startswith('build/') else (Path(meta['candidate']['path']).parent / embed[2]).as_posix()
+            if embed[2].startswith('build/'):
+                path = embed[2]
+            else:
+                target = (BASE / Path(meta['candidate']['path']).parent / embed[2]).resolve()
+                path = str(target.relative_to(BASE)) if target.is_relative_to(BASE) else str(target.relative_to(REPO))
             matching = [r for r in assets if r['path'] == path]
             if len(matching) != 1:
                 raise ValueError('Unbound required input image')

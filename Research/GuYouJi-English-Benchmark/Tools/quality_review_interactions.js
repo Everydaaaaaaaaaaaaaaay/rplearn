@@ -120,6 +120,12 @@ function render(){
    tracks.forEach((track,i)=>{const heading=track.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='材料'+(i+1))heading.remove();fields[assets[i].response_numbers[0]-1].querySelector('legend').after(track);});
   }
  }
+ if(g.kind==='listening_picture_true_false'){
+  const pictures=[...el('student').querySelectorAll('img.passage-image')].map(img=>img.closest('figure')),tracks=[...el('student').querySelectorAll('figure.listening-track')],fields=[...el('responses').querySelectorAll('fieldset')];
+  if(pictures.length===g.questions.length&&tracks.length===pictures.length&&g.requiredAudioAssets?.every((a,i)=>a.response_numbers.length===1&&a.response_numbers[0]===g.questions[i].number)){
+   pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='图片'+(i+1))heading.remove();fields[i].querySelector('legend').after(picture,tracks[i]);});
+  }
+ }
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});

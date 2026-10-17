@@ -1,0 +1,350 @@
+{
+  "version": "0.1",
+  "id": "primary3-picturelisten-things-and-time",
+  "title": "小三听句看图：物品与时间",
+  "grade": "primary3",
+  "family": "listening_picture_true_false",
+  "family_label": "听句看图判断",
+  "source_group_id": "primary3.dongcheng2025-26upper.listening.part1",
+  "source_binding": "p3pictureTF10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.6.json",
+    "sha256": "2a8d22dfc6781d82ea1bfe358df6adcb54fc00c973788084dc41eff7cb73f7b8"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.6.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "source_sentences": 10,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen and look.",
+  "instruction": "听10个句子，看每题对应图片，选T（一致）或F（不一致）。各图与句子均为原创，完整10题。原样卷未印重播遍数与停顿；本机每句一遍、前2秒后3秒，可重播，不当原卷规则。原音轨/脚本/参考键缺。",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture1-v0.1.svg",
+      "sha256": "e3a75d3dd106b6cbdcd93addaec992ed655740254503f521dedcf865d10f5373"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture2-v0.1.svg",
+      "sha256": "e309e77209f289c83d34155850af192e33731fcf669afba08f3a8de362ffacbc"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture3-v0.1.svg",
+      "sha256": "64fcd4da8bcd57279568443aa71fa134bf02da17291ebe89e1c8f8b2aa99123f"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture4-v0.1.svg",
+      "sha256": "ba6cee576410ee043673f43dee8ac1d7866f9ffc941edd408a595abbcf393bd4"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture5-v0.1.svg",
+      "sha256": "db1002c789be71be3c84a5571af9fe941dc8d86e30c3054faf6ae8c9427d4315"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture6-v0.1.svg",
+      "sha256": "e8c6c8c7d8edb5ff601e434e4dce7a47828885dbc55dcb226abaf8d73f357f6e"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture7-v0.1.svg",
+      "sha256": "833aeaf72840bc6b8105a448d53c2c483eced41c530590a1df60f3075f2894e1"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture8-v0.1.svg",
+      "sha256": "241fa42f3a1cd4961aaf18806dca79f66e485af54f14c1235854b9290d55e8bc"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture9-v0.1.svg",
+      "sha256": "073ef884530e5c475ddbe25f90642ef3a2b4bda9bae481bbe4bc8d454e6cf560"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-picturelisten-things-and-time-picture10-v0.1.svg",
+      "sha256": "c8d2c286b339bde7f85ad996123ea36ecb838cee450279a754289d73431daefb"
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "It is an apple."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "图为一颗苹果，与apple一致。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "I can see three cats."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第2图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "图为两只猫；three数量不符。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "The ball is blue."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第3图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "球为红色；blue不符，不依赖其他物品。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "There are two pencils."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第4图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "两支铅笔，与two pencils一致。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "This is a cup."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第5图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "带把手杯子，与cup一致。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "It is six o'clock."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第6图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "分针12时针3，三点而非六点。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "This is a book."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第7图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "展开的书，与book一致。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "It is a cat."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第8图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "扁嘴羽翅鸭子，非猫。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "I can see a hat."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第9图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "带帽檐的帽子，与hat一致。"
+        }
+      ]
+    },
+    {
+      "context": "",
+      "preview_seconds": 2,
+      "answer_seconds": 3,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "It is raining."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第10图与所听句子一致吗？",
+          "options": [
+            [
+              "T",
+              "一致"
+            ],
+            [
+              "F",
+              "不一致"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "太阳与光线，无下雨图示。"
+        }
+      ]
+    }
+  ]
+}
