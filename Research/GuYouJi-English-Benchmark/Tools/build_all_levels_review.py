@@ -249,6 +249,10 @@ def build_current(output):
         for issue in data['coverage_audit']['issues']:
             if not isinstance(issue.get('levels'),list) or not issue['levels'] or not set(issue['levels']) <= set(data['grades']) or not all(isinstance(issue.get(k),str) and issue[k].strip() for k in ['id','label','state_label','detail']):
                 raise ValueError('Incomplete coverage issue display contract')
+    if plan.get('current_source_companion_updates'):
+        from source_companion_updates import load_updates
+        data['source_companion_updates'] = load_updates(plan, data['groups'])
+        data['source_companion_updates_index'] = plan['current_source_companion_updates']
     data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
                      'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
                      for level in data['grades'] for family, label in labels.items()]

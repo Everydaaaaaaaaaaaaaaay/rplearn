@@ -362,6 +362,10 @@ def check(page):
     variants=authority_variants(data,plan)
     from check_gap_completion import check as check_gap_completion
     continuation=check_gap_completion(data,plan)
+    if plan.get('current_source_companion_updates'):
+        from source_companion_updates import load_updates
+        assert data['source_companion_updates_index'] == plan['current_source_companion_updates']
+        assert data['source_companion_updates'] == load_updates(plan, data['groups'])
     return {'levels':level_count,'levels_with_preview':len(set(g['grade']for g in data['groups'].values())),
             'unfilled_specific_modes':data.get('unfilled_specific_modes',0),
             'complete_groups':len(data['groups']),'responses':sum(len(g['questions'])for g in data['groups'].values()),

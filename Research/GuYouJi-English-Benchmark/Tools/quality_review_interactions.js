@@ -233,7 +233,8 @@ function render(){
  el('grades').innerHTML='';reviewData.grades.forEach(grade=>el('grades').append(makeButton(labels[grade],grade===activeGrade,()=>selectGrade(grade))));
  el('families').innerHTML='';reviewData.cells.filter(c=>c.grade===activeGrade&&(c.observed||el('show-unknown').checked)).forEach(c=>el('families').append(makeButton(c.label+' · '+titleState(c),c.family===activeFamily,()=>select(activeGrade,c.family))));
  const earlyNotice=['primary1','primary2'].includes(activeGrade)?'现行要求小学一二年级不进行纸笔考试；这里保留的历史纸笔形式稿仅供形式审阅，非现行年级测评标准。非纸笔闭集活动仍在补完整样本。 ':'';
- const prototypeNotice=earlyNotice+(cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||''));
+ const companionUpdates=(reviewData.source_companion_updates||[]).filter(u=>u.author_group_ids.includes(g?.id));
+ const prototypeNotice=earlyNotice+(companionUpdates.length?'编稿时来源状态：':'')+(cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||''))+companionUpdates.map(u=>' 后续补核（'+u.checked_on+'）：'+u.notice).join('');
  el('task-title').textContent=labels[activeGrade]+' · '+cell.label;el('teacher').hidden=true;el('teacher-content').innerHTML='';el('notice').textContent='';clearSelectionComparison();
  el('variant-picker').hidden=ids.length<2;
  el('variants').innerHTML=ids.map((id,i)=>'<option value="'+escapeText(id)+'" '+(id===selected?'selected':'')+'>'+escapeText('第'+(i+1)+'稿 · '+(reviewData.groups[id].title||id))+'</option>').join('');
@@ -287,6 +288,7 @@ function render(){
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});
  const save=e=>{if(e.target.name){(drafts[g.id]||=(Object.create(null)))[e.target.name]=e.target.value;clearSelectionComparison();}};el('responses').oninput=save;el('responses').onchange=save;el('responses').onsubmit=e=>e.preventDefault();
  el('source-note').innerHTML='<p>完整作者稿：<a href="'+candidateHref(g.candidate)+'" target="_blank" rel="noopener">'+escapeText(g.id)+'</a></p><p>来源形式参照：'+escapeText((g.anchor_group_ids||[]).join(' / ')||'原卷未配对写作任务，详见作者稿')+'</p>';
+ el('source-note').innerHTML+=companionUpdates.map(u=>'<p>后续配套补核：<a href="'+candidateHref(u.review)+'" target="_blank" rel="noopener">'+escapeText(u.label)+'</a> '+escapeText(u.notice)+'</p>').join('');
  el('answer-toggle').onclick=()=>{if(!mediaReady(g)){el('notice').textContent='必要图片或音频尚未完整载入，请等待加载完成后查看参考。';return;}el('notice').textContent=prototypeNotice;el('teacher').hidden=!el('teacher').hidden;el('answer-toggle').textContent=el('teacher').hidden?'查看参考与解析':'收起参考与解析';
   el('teacher-content').innerHTML=g.questions.map(q=>'<div class="answer"><strong>'+q.number+'. '+(q.selectionSet?'作者参考集合 '+escapeText(q.selectionSet.correct.join(' / '))+'（本提示内顺序任意）':q.answer?'作者参考 '+escapeText(q.answer):q.acceptedAnswers?'可接受形式 '+escapeText(q.acceptedAnswers.join(' / ')):q.knownForms?'作者参考形式 '+escapeText(q.knownForms.join(' / ')):q.referenceAnswers?'作者参考表达 '+escapeText(q.referenceAnswers.join(' / ')):'完整表达：按任务要点复核')+'</strong><p>'+escapeText(q.rationale||'')+'</p></div>').join('')+(g.reviewHtml||'');};
  el('compare-selections').onclick=()=>{
