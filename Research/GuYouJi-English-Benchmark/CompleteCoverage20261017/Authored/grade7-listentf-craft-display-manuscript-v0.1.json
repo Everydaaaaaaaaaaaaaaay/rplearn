@@ -1,0 +1,135 @@
+{
+  "version": "0.1",
+  "id": "grade7-listentf-craft-display",
+  "title": "初一听对话判断：手工作品展",
+  "grade": 7,
+  "family": "listening_true_false",
+  "family_label": "听对话判断",
+  "source_group_id": "pep.g7lower.u1.sectionA.1c",
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.1.json",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  },
+  "source_binding": "g7publisherTF4",
+  "source_replay_rule": "not_explicit",
+  "render_repeat_count": 1,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "words_per_minute": 150
+    },
+    "T": {
+      "voice": "Daniel",
+      "words_per_minute": 150
+    },
+    "L": {
+      "voice": "Alex",
+      "words_per_minute": 150
+    }
+  },
+  "instruction": "听完整对话，判断四个陈述正误，选T（正确）或F（错误）。本机音轨内对话一遍，可自行重播；来源未规定统一重播次数，不当成考试只能听一次。",
+  "audio_introduction": "Listen to the conversation. Nora, Tom and Liam are at a craft display. Read the four statements. Choose true or false.",
+  "clips": [
+    {
+      "context": "Nora, Tom and Liam are at a craft display.",
+      "preview_seconds": 0,
+      "turns": [
+        {
+          "speaker": "T",
+          "text": "I like these model boats."
+        },
+        {
+          "speaker": "N",
+          "text": "Me too. What do you like about them, Tom?"
+        },
+        {
+          "speaker": "T",
+          "text": "The small painted windows. Liam, do you like them?"
+        },
+        {
+          "speaker": "L",
+          "text": "Yes. I want to make one myself."
+        },
+        {
+          "speaker": "N",
+          "text": "Look at these paper kites. I do not like them very much. The strings fall off too easily."
+        },
+        {
+          "speaker": "T",
+          "text": "I do like them. The children at this school made all the kites."
+        },
+        {
+          "speaker": "L",
+          "text": "Can we look at the boats first, then come back here?"
+        },
+        {
+          "speaker": "N",
+          "text": "Sure. The boats are by the big window."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "All three children like the model boats.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Tom说喜欢、Nora说Me too、Liam回答Yes并想自己做；F与三人的明确回应冲突。"
+        },
+        {
+          "stem": "Nora likes the paper kites very much.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "Nora明确do not like them very much；T与否定态度冲突。"
+        },
+        {
+          "stem": "The children at the school made the paper kites.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Tom明确school children made all the kites；F与原句冲突，不推断模型船作者。"
+        },
+        {
+          "stem": "The children plan to look at the kites before the boats.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "Liam提出boats first then come back，Nora同意；T倒置行动次序。"
+        }
+      ]
+    }
+  ]
+}

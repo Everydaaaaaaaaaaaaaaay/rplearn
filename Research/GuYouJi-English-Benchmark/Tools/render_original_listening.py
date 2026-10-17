@@ -60,7 +60,7 @@ def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion'}
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false'}
     if family=='listening_extract_choice':
         assert len(draft['clips']) == draft['extracts'] == 3
         assert [len(c['questions']) for c in draft['clips']] == [2,2,2]
@@ -75,12 +75,20 @@ def render(manuscript, output, version='0.1'):
             assert len(clip['questions'])==8
             assert len(clip['turns'])==1 and clip['turns'][0]['speaker']=='N'
             assert all(not q['options'] and q['acceptedAnswers'] for q in clip['questions'])
+        elif family=='listening_true_false':
+            assert len(clip['questions'])==4 and len({t['speaker']for t in clip['turns']})==3
+            assert all([k for k,_ in q['options']]==['T','F']for q in clip['questions'])
         else:
             assert len(clip['questions'])==10
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    assert draft['source_hear_each_piece_twice']
+    if family=='listening_true_false':
+        assert draft['source_replay_rule']=='not_explicit' and draft['render_repeat_count']==1
+        repeat_count=1
+    else:
+        assert draft['source_hear_each_piece_twice']
+        repeat_count=2
     assert output.resolve().is_relative_to((REPO/'build').resolve())
     output.mkdir(parents=True, exist_ok=True)
     assert re.fullmatch(r'\d+\.\d+',version)
@@ -130,7 +138,7 @@ def render(manuscript, output, version='0.1'):
             pause(clip.get('preview_seconds',8))
             repeat_prompt=('Now you will hear the extract again.' if family=='listening_extract_choice'
                            else 'Now you will hear the whole recording again.')
-            for repeat in [1,2]:
+            for repeat in range(1,repeat_count+1):
                 if repeat == 2:
                     append(speech(repeat_prompt,'Daniel',165),'repeat_instruction',repeat_prompt)
                     pause(1)
@@ -161,9 +169,9 @@ def render(manuscript, output, version='0.1'):
             track=dict(label=f'音频{number}（第{response_numbers[0]}—{response_numbers[-1]}题）',
                        path=str(target.relative_to(REPO)), sha256=digest(target), bytes=target.stat().st_size,
                        mime_type='audio/mp4', seconds=decoded_frames/RATE,
-                       response_numbers=response_numbers, repeat_count=2,
+                       response_numbers=response_numbers, repeat_count=repeat_count,
                        dialogue_words_once=words(spoken_once),
-                       spoken_words_with_instructions=2*words(spoken_once)+words(intro)+words(repeat_prompt)+announcement_words,
+                       spoken_words_with_instructions=repeat_count*words(spoken_once)+words(intro)+(repeat_count-1)*words(repeat_prompt)+announcement_words,
                        sample_rate=RATE, pcm_frames_before_encoding=frame,
                        decoded_frames=decoded_frames, peak_abs_sample=peak, segments=segments)
             tracks.append(track)

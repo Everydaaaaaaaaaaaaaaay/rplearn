@@ -1,0 +1,136 @@
+{
+  "version": "0.2",
+  "id": "grade7-listentf-costume-boxes",
+  "title": "初一听对话判断：演出服箱子",
+  "grade": 7,
+  "family": "listening_true_false",
+  "family_label": "听对话判断",
+  "source_group_id": "pep.g7lower.u1.sectionA.1c",
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.1.json",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  },
+  "source_binding": "g7publisherTF4",
+  "source_replay_rule": "not_explicit",
+  "render_repeat_count": 1,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "words_per_minute": 150
+    },
+    "T": {
+      "voice": "Daniel",
+      "words_per_minute": 150
+    },
+    "L": {
+      "voice": "Alex",
+      "words_per_minute": 150
+    }
+  },
+  "instruction": "听完整对话，判断四个陈述正误，选T（正确）或F（错误）。本机音轨内对话一遍，可自行重播；来源未规定统一重播次数，不当成考试只能听一次。",
+  "audio_introduction": "Listen to the conversation. Nina, Toby and Leo are getting ready for a school play. Read the four statements. Choose true or false.",
+  "clips": [
+    {
+      "context": "Nina, Toby and Leo are getting ready for a school play.",
+      "preview_seconds": 0,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Toby, do we have all the clothes for the play?"
+        },
+        {
+          "speaker": "T",
+          "text": "Yes, Nina. There are two boxes here. The blue box has the hats, and the red one has the coats."
+        },
+        {
+          "speaker": "L",
+          "text": "I can carry both boxes to the hall."
+        },
+        {
+          "speaker": "N",
+          "text": "Thank you, Leo, but the red one is heavy. Let us carry that one together."
+        },
+        {
+          "speaker": "T",
+          "text": "I will take the blue box. Are we going through the garden?"
+        },
+        {
+          "speaker": "N",
+          "text": "No. It is raining now. We can use the inside stairs."
+        },
+        {
+          "speaker": "L",
+          "text": "Fine. Let us move the boxes before the other pupils arrive."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "The hats are in the red box.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "原录音说blue box has the hats；红盒装coats，因此T与收纳位置冲突。"
+        },
+        {
+          "stem": "Nina and Leo plan to carry the red box together.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Nina拒绝Leo独搬、明确let us carry that one together，双方共同搬；F与计划冲突。"
+        },
+        {
+          "stem": "The children decide to go through the garden.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "Nina因下雨否定garden路线，提出inside stairs；T与明确路线冲突。"
+        },
+        {
+          "stem": "The other pupils have not arrived yet.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Leo提出在其他同学到达之前搬，说明此刻尚未到；F改变时序。"
+        }
+      ]
+    }
+  ],
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-listentf-costume-boxes-manuscript-v0.1.json",
+    "sha256": "56a4857e36f0108ade616c86f8dbe6170192c34264e313425ceba10b87d15182"
+  },
+  "answer_pattern_not_copied_from_source": true
+}

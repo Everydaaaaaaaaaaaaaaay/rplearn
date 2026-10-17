@@ -1,0 +1,121 @@
+{
+  "version": "0.1",
+  "id": "grade7-listentf-craft-display",
+  "grade": 7,
+  "questions": 4,
+  "candidate_sha256": "86a04bb551b1a8609b0221d55016d87839975442aa56ed3c70318b1731388adb",
+  "source_binding": "g7publisherTF4",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  },
+  "source_group_id": "pep.g7lower.u1.sectionA.1c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "All three children like the model boats.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Tom说喜欢、Nora说Me too、Liam回答Yes并想自己做；F与三人的明确回应冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "Nora likes the paper kites very much.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Nora明确do not like them very much；T与否定态度冲突。"
+    },
+    {
+      "number": 3,
+      "stem": "The children at the school made the paper kites.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Tom明确school children made all the kites；F与原句冲突，不推断模型船作者。"
+    },
+    {
+      "number": 4,
+      "stem": "The children plan to look at the kites before the boats.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Liam提出boats first then come back，Nora同意；T倒置行动次序。"
+    }
+  ],
+  "canonical_response_block_sha256": "6c721ca0451e5147e333eee55d5ff197c3707073d49dd6934a21c8accfd35b1e",
+  "student_passage": "Nora, Tom and Liam are at a craft display.\n\n[完整对话音频（四题；音轨内一遍，可自行重播）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-listentf-craft-display-extract1-v0.1.m4a)",
+  "body_load_text": "Nora, Tom and Liam are at a craft display.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-listentf-craft-display-manuscript-v0.1.json",
+    "sha256": "7eff1a6efe0bdffd81712f6ab64aae88c1d9f9c7131513cb19acef24ea0ed601"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-listentf-craft-display-audio-v0.1.json",
+    "sha256": "cc611db067c14ce9e77524224fc002351232053440d9f1e4f4c0d1335a65c3e6"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-listentf-craft-display-extract1-v0.1.m4a",
+      "sha256": "d19a80749c383a077d615d3d4fb5798d9c5dc2fb2c49f9cb23a55a90a397337d",
+      "seconds": 42.709160997732425,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "publisher_listening_true_false": true,
+  "load_measure": {
+    "body_English_words": 9,
+    "stem_English_words": 34,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 4,
+    "audio_dialogue_English_words_once": 80,
+    "audio_spoken_words_with_instructions": 101,
+    "audio_seconds_with_pauses": 42.709160997732425,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

@@ -1,0 +1,121 @@
+{
+  "version": "0.1",
+  "id": "grade7-listentf-bicycle-message",
+  "grade": 7,
+  "questions": 4,
+  "candidate_sha256": "b9b37c1a80a9169d5e06cc8636ac4a777859f51bc993b64f61303158b514331f",
+  "source_binding": "g7publisherTF4",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  },
+  "source_group_id": "pep.g7lower.u1.sectionA.1c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Ted is having a new wheel put on his bicycle.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Ted明说putting on a new wheel；F与修理内容冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "The shop closes at half past four.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "half past four是可取车时间，Nell明说五点关门；T把两个时间混为一谈。"
+    },
+    {
+      "number": 3,
+      "stem": "Luke offers to collect the bicycle for Ted.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Luke说I can collect it for you；F与主动帮助冲突。"
+    },
+    {
+      "number": 4,
+      "stem": "Ted decides to keep the ticket with him.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Ted结尾决定leave the ticket with Luke now；T与明确决定相反。"
+    }
+  ],
+  "canonical_response_block_sha256": "eddafe427772c42b22f68ff3a4fcb8984011ea4d1c41d68336747b6d30d20a1a",
+  "student_passage": "Nell, Ted and Luke are talking outside a bicycle repair shop.\n\n[完整对话音频（四题；音轨内一遍，可自行重播）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-listentf-bicycle-message-extract1-v0.1.m4a)",
+  "body_load_text": "Nell, Ted and Luke are talking outside a bicycle repair shop.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-listentf-bicycle-message-manuscript-v0.1.json",
+    "sha256": "7c25ad24d8191e00cf9b264c43d8cd7f72fe4142f1ece859d2096d7d021bc846"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-listentf-bicycle-message-audio-v0.1.json",
+    "sha256": "496bc823633b37301a1dfbbc3802ce3ce3dc427a4e241154e3628417be8502bc"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-listentf-bicycle-message-extract1-v0.1.m4a",
+      "sha256": "6b13326e28c8ae537065e564e54760d33d0aac2291c1222ca8a365db3cdf5cec",
+      "seconds": 46.275827664399095,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "publisher_listening_true_false": true,
+  "load_measure": {
+    "body_English_words": 11,
+    "stem_English_words": 33,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 4,
+    "audio_dialogue_English_words_once": 89,
+    "audio_spoken_words_with_instructions": 112,
+    "audio_seconds_with_pauses": 46.275827664399095,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

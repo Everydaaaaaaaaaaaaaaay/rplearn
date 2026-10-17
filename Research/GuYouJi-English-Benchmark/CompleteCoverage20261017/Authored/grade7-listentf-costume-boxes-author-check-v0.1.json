@@ -1,0 +1,121 @@
+{
+  "version": "0.1",
+  "id": "grade7-listentf-costume-boxes",
+  "grade": 7,
+  "questions": 4,
+  "candidate_sha256": "a0512d603cbc4ab0111d1b1f76fe614873dc0a97aba9afd3d6e7bf90174869b0",
+  "source_binding": "g7publisherTF4",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  },
+  "source_group_id": "pep.g7lower.u1.sectionA.1c",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The hats are in the blue box.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Toby明说blue box has the hats；F与收纳信息冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "Leo will carry the red box alone.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Nina说let us carry that one together；T忽略两人共同搬运的决定。"
+    },
+    {
+      "number": 3,
+      "stem": "The children decide to use the inside stairs.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "T",
+      "rationale": "Nina提出inside stairs，Leo接受；F与实际路线冲突。"
+    },
+    {
+      "number": 4,
+      "stem": "The other pupils have already arrived.",
+      "options": [
+        [
+          "T",
+          "正确"
+        ],
+        [
+          "F",
+          "错误"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Leo说before the other pupils arrive，说明此刻尚未到；T改变时序。"
+    }
+  ],
+  "canonical_response_block_sha256": "95be8051ad5184354c54c5d76821f512c6f08c925766e812e022cd32afd872ca",
+  "student_passage": "Nina, Toby and Leo are getting ready for a school play.\n\n[完整对话音频（四题；音轨内一遍，可自行重播）](../../../../build/english-benchmark-authority-20261017/original-audio/grade7-listentf-costume-boxes-extract1-v0.1.m4a)",
+  "body_load_text": "Nina, Toby and Leo are getting ready for a school play.",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-listentf-costume-boxes-manuscript-v0.1.json",
+    "sha256": "56a4857e36f0108ade616c86f8dbe6170192c34264e313425ceba10b87d15182"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/grade7-listentf-costume-boxes-audio-v0.1.json",
+    "sha256": "b91d5ec9fc2e675694ad7ae6ceb09e95f6ec68d61d4794cdb7a5eae2d2e8078f"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/grade7-listentf-costume-boxes-extract1-v0.1.m4a",
+      "sha256": "d29ca4f638e895922483133bf9eb28501777c8e14170a5466078a69991befe12",
+      "seconds": 44.62916099773243,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "repeat_count": 1,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "publisher_listening_true_false": true,
+  "load_measure": {
+    "body_English_words": 11,
+    "stem_English_words": 28,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 4,
+    "audio_dialogue_English_words_once": 87,
+    "audio_spoken_words_with_instructions": 110,
+    "audio_seconds_with_pauses": 44.62916099773243,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

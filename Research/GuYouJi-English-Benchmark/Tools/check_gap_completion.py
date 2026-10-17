@@ -37,6 +37,9 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'publisher_conversation_tf4':
+                from compile_school_listening import check as check_school_listening
+                check_school_listening(g,a,b,source)
             if b.get('task_mode') == 'bounded_source_prompt_completion':
                 view=next(v for v in json.loads(load_ref(source['source_view_manifest']).read_text())['views']if v['group_id']==source['id'])
                 assert hashlib.sha256(json.dumps(view,ensure_ascii=False,sort_keys=True).encode()).hexdigest()==source['inherited_view_record_sha256']
@@ -262,7 +265,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') else a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])

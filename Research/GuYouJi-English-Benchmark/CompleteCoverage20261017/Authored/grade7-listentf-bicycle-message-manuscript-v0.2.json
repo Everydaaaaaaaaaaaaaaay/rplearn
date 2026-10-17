@@ -1,0 +1,136 @@
+{
+  "version": "0.2",
+  "id": "grade7-listentf-bicycle-message",
+  "title": "初一听对话判断：自行车留言",
+  "grade": 7,
+  "family": "listening_true_false",
+  "family_label": "听对话判断",
+  "source_group_id": "pep.g7lower.u1.sectionA.1c",
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.1.json",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.1.json",
+    "sha256": "8d48f6ab406f15795e23c91dd091a3a00b94e643e3ebf5cf151e6867a27cdd30"
+  },
+  "source_binding": "g7publisherTF4",
+  "source_replay_rule": "not_explicit",
+  "render_repeat_count": 1,
+  "speakers": {
+    "N": {
+      "voice": "Samantha",
+      "words_per_minute": 150
+    },
+    "T": {
+      "voice": "Daniel",
+      "words_per_minute": 150
+    },
+    "L": {
+      "voice": "Alex",
+      "words_per_minute": 150
+    }
+  },
+  "instruction": "听完整对话，判断四个陈述正误，选T（正确）或F（错误）。本机音轨内对话一遍，可自行重播；来源未规定统一重播次数，不当成考试只能听一次。",
+  "audio_introduction": "Listen to the conversation. Nell, Ted and Luke are talking outside a bicycle repair shop. Read the four statements. Choose true or false.",
+  "clips": [
+    {
+      "context": "Nell, Ted and Luke are talking outside a bicycle repair shop.",
+      "preview_seconds": 0,
+      "turns": [
+        {
+          "speaker": "L",
+          "text": "Ted, is your bicycle ready?"
+        },
+        {
+          "speaker": "T",
+          "text": "Not yet, Luke. The man is putting on a new wheel. He says I can collect it at half past four."
+        },
+        {
+          "speaker": "N",
+          "text": "But the shop closes at five. Can you get here in time?"
+        },
+        {
+          "speaker": "T",
+          "text": "I have music practice until twenty past four, so I cannot walk here quickly enough."
+        },
+        {
+          "speaker": "L",
+          "text": "I can collect it for you. My lesson finishes at four."
+        },
+        {
+          "speaker": "N",
+          "text": "Good idea. Ted, write down the number on your paper ticket for Luke."
+        },
+        {
+          "speaker": "T",
+          "text": "Thanks, both of you. I will leave the ticket with Luke now."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "Ted is having a new wheel put on his bicycle.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Ted明说putting on a new wheel；F与修理内容冲突。"
+        },
+        {
+          "stem": "The shop closes at five o'clock.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "T",
+          "rationale": "Nell明确五点关门；四点半是取车时间，F混淆两个时间。"
+        },
+        {
+          "stem": "Ted offers to collect a bicycle for Luke.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "是Luke替Ted取车，而非Ted替Luke；T倒置人物角色。"
+        },
+        {
+          "stem": "Ted decides to keep the ticket with him.",
+          "options": [
+            [
+              "T",
+              "正确"
+            ],
+            [
+              "F",
+              "错误"
+            ]
+          ],
+          "answer": "F",
+          "rationale": "Ted结尾决定leave the ticket with Luke now；T与明确决定相反。"
+        }
+      ]
+    }
+  ],
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade7-listentf-bicycle-message-manuscript-v0.1.json",
+    "sha256": "7c25ad24d8191e00cf9b264c43d8cd7f72fe4142f1ece859d2096d7d021bc846"
+  },
+  "answer_pattern_not_copied_from_source": true
+}
