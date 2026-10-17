@@ -1,0 +1,294 @@
+{
+  "version": "0.1",
+  "id": "grade10-sharing-rentals-insertion",
+  "grade": 10,
+  "questions": 5,
+  "candidate_sha256": "5adec3561934ada3d0eb25bd613d526ff286f40a145dd0bc5b565e2e3d210fa8",
+  "canonical_response_block_sha256": "71da02ee37c1ae656ee982f2905544d4dbdbbfc1f0847af1cb9659e4c2c3f355",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "Put a particular name beside every planned handover."
+        ],
+        [
+          "B",
+          "Inspect the agreement after using it"
+        ],
+        [
+          "C",
+          "The activity should finish early enough to leave time for returning the set."
+        ],
+        [
+          "D",
+          "A clear report makes the problem available for discussion."
+        ],
+        [
+          "E",
+          "Check that the pieces you need appear on the written list."
+        ],
+        [
+          "F",
+          "The lender must stay open until your activity finishes."
+        ],
+        [
+          "G",
+          "Choose accessories only by their colour."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E核writtenlist承photo不一定包含，后asking missingpart回扣；G颜色无包含证据，A交接/B后顾/C返程/D损坏报告尚非included，F强迫加时无据。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "Put a particular name beside every planned handover."
+        ],
+        [
+          "B",
+          "Inspect the agreement after using it"
+        ],
+        [
+          "C",
+          "The activity should finish early enough to leave time for returning the set."
+        ],
+        [
+          "D",
+          "A clear report makes the problem available for discussion."
+        ],
+        [
+          "E",
+          "Check that the pieces you need appear on the written list."
+        ],
+        [
+          "F",
+          "The lender must stay open until your activity finishes."
+        ],
+        [
+          "G",
+          "Choose accessories only by their colour."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A给每handover具体人名，承不要someone，下句recordwhen补时间；E物件列表不指责任者，B回顾/C返还/D损坏/G颜色/F延时均不解person。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "Put a particular name beside every planned handover."
+        ],
+        [
+          "B",
+          "Inspect the agreement after using it"
+        ],
+        [
+          "C",
+          "The activity should finish early enough to leave time for returning the set."
+        ],
+        [
+          "D",
+          "A clear report makes the problem available for discussion."
+        ],
+        [
+          "E",
+          "Check that the pieces you need appear on the written list."
+        ],
+        [
+          "F",
+          "The lender must stay open until your activity finishes."
+        ],
+        [
+          "G",
+          "Choose accessories only by their colour."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C留收拾交通核查time，承不同deadlines；F lender muststayopen与计划遵其closing冲突，A/E是人/物，B/D/G都不给返程时间缓冲。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "Put a particular name beside every planned handover."
+        ],
+        [
+          "B",
+          "Inspect the agreement after using it"
+        ],
+        [
+          "C",
+          "The activity should finish early enough to leave time for returning the set."
+        ],
+        [
+          "D",
+          "A clear report makes the problem available for discussion."
+        ],
+        [
+          "E",
+          "Check that the pieces you need appear on the written list."
+        ],
+        [
+          "F",
+          "The lender must stay open until your activity finishes."
+        ],
+        [
+          "G",
+          "Choose accessories only by their colour."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "Dclearreport回记录损坏告知，后Itlets discussionactualproblem对应；A交接人未通报damage，B回顾在归还后，C时间/E清单/F关门/G色都非即时损坏报告。"
+    },
+    {
+      "number": 5,
+      "stem": "第5处",
+      "options": [
+        [
+          "A",
+          "Put a particular name beside every planned handover."
+        ],
+        [
+          "B",
+          "Inspect the agreement after using it"
+        ],
+        [
+          "C",
+          "The activity should finish early enough to leave time for returning the set."
+        ],
+        [
+          "D",
+          "A clear report makes the problem available for discussion."
+        ],
+        [
+          "E",
+          "Check that the pieces you need appear on the written list."
+        ],
+        [
+          "F",
+          "The lender must stay open until your activity finishes."
+        ],
+        [
+          "G",
+          "Choose accessories only by their colour."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B使用后检查agreement，统摄afterreturn/revisednext，A/E走前清单/C返程/D报告局部，F/G反合理agreement，不概括反思改进。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g10.wenzhou2025.insertion",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "heading"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "Borrowing a set of equipment as a group can save individual effort, but it creates shared responsibilities. A useful agreement needs to describe the whole journey of the equipment, not just the exciting activity for which it is borrowed.\n\n#### Find out what is included\n\nRead the list supplied by the lender. The photograph on an advertisement may show accessories that are not included in the actual set. (1) ____ Asking before collection is easier than discovering a missing part when everyone is ready to begin.\n\n#### Name the next person\n\nA group may plan to pass the set from one member to another. Do not rely on the phrase “someone will take it”. (2) ____ The record should also show when the change of responsibility happens. That way, a later question has a clear starting point.\n\n#### Allow time for the return\n\nThe activity's finishing time and the lender's closing time are different deadlines. (3) ____ Packing, travel and a final check all require time after the equipment is no longer being used. A plan that ignores those steps can fail even when the activity ends punctually.\n\nIf one piece is damaged, record what happened and tell the lender rather than passing it silently to the next borrower. (4) ____ It lets everyone discuss an actual problem instead of guessing later who first noticed it.\n\n#### (5) ____\n\nAfter the return, look at which parts of the agreement worked and which caused confusion. Keep a brief revised version for the next occasion. The aim is a practical routine that the group can improve, not a promise that no problem will ever occur.\n\n共享候选（两项不用）：\n\nA. Put a particular name beside every planned handover.\nB. Inspect the agreement after using it\nC. The activity should finish early enough to leave time for returning the set.\nD. A clear report makes the problem available for discussion.\nE. Check that the pieces you need appear on the written list.\nF. The lender must stay open until your activity finishes.\nG. Choose accessories only by their colour.",
+  "author_answer_vector": [
+    "E",
+    "A",
+    "C",
+    "D",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 259,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 310,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 62,
+    "filled_article_English_words": 306,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "Borrowing a set of equipment as a group can save individual effort, but it creates shared responsibilities. A useful agreement needs to describe the whole journey of the equipment, not just the exciting activity for which it is borrowed.\n\nFind out what is included\n\nRead the list supplied by the lender. The photograph on an advertisement may show accessories that are not included in the actual set. (1) ____ Asking before collection is easier than discovering a missing part when everyone is ready to begin.\n\nName the next person\n\nA group may plan to pass the set from one member to another. Do not rely on the phrase “someone will take it”. (2) ____ The record should also show when the change of responsibility happens. That way, a later question has a clear starting point.\n\nAllow time for the return\n\nThe activity's finishing time and the lender's closing time are different deadlines. (3) ____ Packing, travel and a final check all require time after the equipment is no longer being used. A plan that ignores those steps can fail even when the activity ends punctually.\n\nIf one piece is damaged, record what happened and tell the lender rather than passing it silently to the next borrower. (4) ____ It lets everyone discuss an actual problem instead of guessing later who first noticed it.\n\n(5) ____\n\nAfter the return, look at which parts of the agreement worked and which caused confusion. Keep a brief revised version for the next occasion. The aim is a practical routine that the group can improve, not a promise that no problem will ever occur.",
+  "shared_bank": [
+    [
+      "A",
+      "Put a particular name beside every planned handover."
+    ],
+    [
+      "B",
+      "Inspect the agreement after using it"
+    ],
+    [
+      "C",
+      "The activity should finish early enough to leave time for returning the set."
+    ],
+    [
+      "D",
+      "A clear report makes the problem available for discussion."
+    ],
+    [
+      "E",
+      "Check that the pieces you need appear on the written list."
+    ],
+    [
+      "F",
+      "The lender must stay open until your activity finishes."
+    ],
+    [
+      "G",
+      "Choose accessories only by their colour."
+    ]
+  ],
+  "unused_bank_labels": [
+    "F",
+    "G"
+  ],
+  "filled_article": "Borrowing a set of equipment as a group can save individual effort, but it creates shared responsibilities. A useful agreement needs to describe the whole journey of the equipment, not just the exciting activity for which it is borrowed.\n\n#### Find out what is included\n\nRead the list supplied by the lender. The photograph on an advertisement may show accessories that are not included in the actual set. Check that the pieces you need appear on the written list. Asking before collection is easier than discovering a missing part when everyone is ready to begin.\n\n#### Name the next person\n\nA group may plan to pass the set from one member to another. Do not rely on the phrase “someone will take it”. Put a particular name beside every planned handover. The record should also show when the change of responsibility happens. That way, a later question has a clear starting point.\n\n#### Allow time for the return\n\nThe activity's finishing time and the lender's closing time are different deadlines. The activity should finish early enough to leave time for returning the set. Packing, travel and a final check all require time after the equipment is no longer being used. A plan that ignores those steps can fail even when the activity ends punctually.\n\nIf one piece is damaged, record what happened and tell the lender rather than passing it silently to the next borrower. A clear report makes the problem available for discussion. It lets everyone discuss an actual problem instead of guessing later who first noticed it.\n\n#### Inspect the agreement after using it\n\nAfter the return, look at which parts of the agreement worked and which caused confusion. Keep a brief revised version for the next occasion. The aim is a practical routine that the group can improve, not a promise that no problem will ever occur.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence",
+    "heading"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": false
+}

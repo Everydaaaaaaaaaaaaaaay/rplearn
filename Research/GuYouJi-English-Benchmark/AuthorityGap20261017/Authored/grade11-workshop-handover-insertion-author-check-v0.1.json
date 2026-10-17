@@ -1,0 +1,294 @@
+{
+  "version": "0.1",
+  "id": "grade11-workshop-handover-insertion",
+  "grade": 11,
+  "questions": 5,
+  "candidate_sha256": "bd23779c5cf2102b615360e6e45734a1bcbb8bcd5b2fa4b479ef701f99b33f93",
+  "canonical_response_block_sha256": "ce1210b4e2ee8600f5c31c435351fb53894c3a8c92022cc0612dec8aacf63316",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "Return to the cards whose size is settled but whose colour is not"
+        ],
+        [
+          "B",
+          "If the workshop has already given final approval"
+        ],
+        [
+          "C",
+          "Separate agreed facts from unfinished choices"
+        ],
+        [
+          "D",
+          "A reader needs to know where to pick up the work"
+        ],
+        [
+          "E",
+          "With those responsibilities clear, close the handover loop"
+        ],
+        [
+          "F",
+          "Ask every reader to repeat the project’s entire history"
+        ],
+        [
+          "G",
+          "If a client holds the final decision about colour"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D读者要知接手处，接so begin nextaction及samplecards；C状态区分后节，A回卡例还未给，E职责未查不能close，B/G条件不解起步行动，F重复历史反首段。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "Return to the cards whose size is settled but whose colour is not"
+        ],
+        [
+          "B",
+          "If the workshop has already given final approval"
+        ],
+        [
+          "C",
+          "Separate agreed facts from unfinished choices"
+        ],
+        [
+          "D",
+          "A reader needs to know where to pick up the work"
+        ],
+        [
+          "E",
+          "With those responsibilities clear, close the handover loop"
+        ],
+        [
+          "F",
+          "Ask every reader to repeat the project’s entire history"
+        ],
+        [
+          "G",
+          "If a client holds the final decision about colour"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C区分确定事实和未完选择，统摄sizeapproved/colourwaiting；D接手动机在前，A回单卡例不括状态区分，E后闭环，B/G批准分句不作该题段概括，F历史反。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "Return to the cards whose size is settled but whose colour is not"
+        ],
+        [
+          "B",
+          "If the workshop has already given final approval"
+        ],
+        [
+          "C",
+          "Separate agreed facts from unfinished choices"
+        ],
+        [
+          "D",
+          "A reader needs to know where to pick up the work"
+        ],
+        [
+          "E",
+          "With those responsibilities clear, close the handover loop"
+        ],
+        [
+          "F",
+          "Ask every reader to repeat the project’s entire history"
+        ],
+        [
+          "G",
+          "If a client holds the final decision about colour"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A回已给size已定colour未定，下文The readerneedsize/colour精确展开；C泛命令不如回sameexample，D动机非状态歧义，E未查职责过早，B/G条件接句号缺主句，F全文历史反。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "Return to the cards whose size is settled but whose colour is not"
+        ],
+        [
+          "B",
+          "If the workshop has already given final approval"
+        ],
+        [
+          "C",
+          "Separate agreed facts from unfinished choices"
+        ],
+        [
+          "D",
+          "A reader needs to know where to pick up the work"
+        ],
+        [
+          "E",
+          "With those responsibilities clear, close the handover loop"
+        ],
+        [
+          "F",
+          "Ask every reader to repeat the project’s entire history"
+        ],
+        [
+          "G",
+          "If a client holds the final decision about colour"
+        ]
+      ],
+      "answer": "G",
+      "rationale": "Gclient持colorfinaldecision应将trial结果送thatperson，后workshopauthority对比；B已经finalapproved再送thatperson未有外人先行且与待批冲突，A/C/D/E/F并非所需外部授权条件。"
+    },
+    {
+      "number": 5,
+      "stem": "第5处",
+      "options": [
+        [
+          "A",
+          "Return to the cards whose size is settled but whose colour is not"
+        ],
+        [
+          "B",
+          "If the workshop has already given final approval"
+        ],
+        [
+          "C",
+          "Separate agreed facts from unfinished choices"
+        ],
+        [
+          "D",
+          "A reader needs to know where to pick up the work"
+        ],
+        [
+          "E",
+          "With those responsibilities clear, close the handover loop"
+        ],
+        [
+          "F",
+          "Ask every reader to repeat the project’s entire history"
+        ],
+        [
+          "G",
+          "If a client holds the final decision about colour"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E职责清楚后closehandoverloop，下文接收确认与行动记录实现闭环；D动机/C状态/A单例不引receiptrecord，B/G条件后句号缺主句，F全文历史违短可用原则。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g11.spring2024.insertionE",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "opening_clause",
+        "heading",
+        "sentence",
+        "if_clause",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "A workshop handover is useful only if the next person can continue the work without reconstructing every decision. A long account is not necessarily a helpful one. The following sequence offers a way to prepare a short, usable record.\n\n#### Say what comes next\n\n(1) ____, so begin with the action that the next person is expected to take. For example, write that three sample cards need checking before printing, rather than filling the first page with the history of the project. Background can follow when it explains a decision the reader needs to make.\n\n#### (2) ____\n\nOnce the next action is clear, distinguish settled decisions from choices that are still open. A card's final size may already have been approved, while its colour is awaiting a trial print. Mark that difference instead of describing both as “almost finished”.\n\n#### Examine the example again\n\nUnclear status words can turn a request into an assumption. (3) ____. The reader needs to know that size requires no new decision, whereas the colour still needs checking. A short note can make that distinction more clearly than several cheerful sentences about progress.\n\n#### Match approval to responsibility\n\nDifferent choices may belong to different people. (4) ____, send the colour result to that person before approving the print run. If the workshop itself has final authority, record its own approval. Passing information on is not the same as acquiring the right to approve it.\n\n(5) ____. Leave space for the next person to confirm what was received and record what they did. The handover then becomes a connection between two stages of work, rather than a document whose accuracy nobody checks after it is sent.\n\n共享候选（两项不用）：\n\nA. Return to the cards whose size is settled but whose colour is not\nB. If the workshop has already given final approval\nC. Separate agreed facts from unfinished choices\nD. A reader needs to know where to pick up the work\nE. With those responsibilities clear, close the handover loop\nF. Ask every reader to repeat the project’s entire history\nG. If a client holds the final decision about colour",
+  "author_answer_vector": [
+    "D",
+    "C",
+    "A",
+    "G",
+    "E"
+  ],
+  "load_measure": {
+    "body_English_words": 267,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 320,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 64,
+    "filled_article_English_words": 314,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A workshop handover is useful only if the next person can continue the work without reconstructing every decision. A long account is not necessarily a helpful one. The following sequence offers a way to prepare a short, usable record.\n\nSay what comes next\n\n(1) ____, so begin with the action that the next person is expected to take. For example, write that three sample cards need checking before printing, rather than filling the first page with the history of the project. Background can follow when it explains a decision the reader needs to make.\n\n(2) ____\n\nOnce the next action is clear, distinguish settled decisions from choices that are still open. A card's final size may already have been approved, while its colour is awaiting a trial print. Mark that difference instead of describing both as “almost finished”.\n\nExamine the example again\n\nUnclear status words can turn a request into an assumption. (3) ____. The reader needs to know that size requires no new decision, whereas the colour still needs checking. A short note can make that distinction more clearly than several cheerful sentences about progress.\n\nMatch approval to responsibility\n\nDifferent choices may belong to different people. (4) ____, send the colour result to that person before approving the print run. If the workshop itself has final authority, record its own approval. Passing information on is not the same as acquiring the right to approve it.\n\n(5) ____. Leave space for the next person to confirm what was received and record what they did. The handover then becomes a connection between two stages of work, rather than a document whose accuracy nobody checks after it is sent.",
+  "shared_bank": [
+    [
+      "A",
+      "Return to the cards whose size is settled but whose colour is not"
+    ],
+    [
+      "B",
+      "If the workshop has already given final approval"
+    ],
+    [
+      "C",
+      "Separate agreed facts from unfinished choices"
+    ],
+    [
+      "D",
+      "A reader needs to know where to pick up the work"
+    ],
+    [
+      "E",
+      "With those responsibilities clear, close the handover loop"
+    ],
+    [
+      "F",
+      "Ask every reader to repeat the project’s entire history"
+    ],
+    [
+      "G",
+      "If a client holds the final decision about colour"
+    ]
+  ],
+  "unused_bank_labels": [
+    "B",
+    "F"
+  ],
+  "filled_article": "A workshop handover is useful only if the next person can continue the work without reconstructing every decision. A long account is not necessarily a helpful one. The following sequence offers a way to prepare a short, usable record.\n\n#### Say what comes next\n\nA reader needs to know where to pick up the work, so begin with the action that the next person is expected to take. For example, write that three sample cards need checking before printing, rather than filling the first page with the history of the project. Background can follow when it explains a decision the reader needs to make.\n\n#### Separate agreed facts from unfinished choices\n\nOnce the next action is clear, distinguish settled decisions from choices that are still open. A card's final size may already have been approved, while its colour is awaiting a trial print. Mark that difference instead of describing both as “almost finished”.\n\n#### Examine the example again\n\nUnclear status words can turn a request into an assumption. Return to the cards whose size is settled but whose colour is not. The reader needs to know that size requires no new decision, whereas the colour still needs checking. A short note can make that distinction more clearly than several cheerful sentences about progress.\n\n#### Match approval to responsibility\n\nDifferent choices may belong to different people. If a client holds the final decision about colour, send the colour result to that person before approving the print run. If the workshop itself has final authority, record its own approval. Passing information on is not the same as acquiring the right to approve it.\n\nWith those responsibilities clear, close the handover loop. Leave space for the next person to confirm what was received and record what they did. The handover then becomes a connection between two stages of work, rather than a document whose accuracy nobody checks after it is sent.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "opening_clause",
+    "heading",
+    "sentence",
+    "if_clause",
+    "sentence"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": true
+}

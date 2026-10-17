@@ -1,0 +1,296 @@
+{
+  "version": "0.1",
+  "id": "grade9-quiet-walk-insertion",
+  "grade": 9,
+  "questions": 5,
+  "candidate_sha256": "34de5e3aac6dd3c050f1250e71a99711be0f7fd7e796d6e852919a584b4d79af",
+  "canonical_response_block_sha256": "f942d31c4f8d3aa4c2f41387b43ca48e62d4f254162a3354d8dcf91341d556a1",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "Choose a place where everyone can pause together."
+        ],
+        [
+          "B",
+          "We can slow down whenever somebody needs us to."
+        ],
+        [
+          "C",
+          "Review the walk afterwards"
+        ],
+        [
+          "D",
+          "The fastest member should keep all plans private."
+        ],
+        [
+          "E",
+          "Discuss those different wishes before choosing the route."
+        ],
+        [
+          "F",
+          "It should be possible to ask that person directly."
+        ],
+        [
+          "G",
+          "Buy the heaviest bags you can find."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E回扣conversation/notice等不同wishes，选择路线前讨论；A已经细定停点、B直接引语缺引语语境、C回顾尚未走、D/G反合作及轻装，Fthatperson此时未指定。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "Choose a place where everyone can pause together."
+        ],
+        [
+          "B",
+          "We can slow down whenever somebody needs us to."
+        ],
+        [
+          "C",
+          "Review the walk afterwards"
+        ],
+        [
+          "D",
+          "The fastest member should keep all plans private."
+        ],
+        [
+          "E",
+          "Discuss those different wishes before choosing the route."
+        ],
+        [
+          "F",
+          "It should be possible to ask that person directly."
+        ],
+        [
+          "G",
+          "Buy the heaviest bags you can find."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B正好是组员说的慢行许可，nextsentence sloweraskchange呼应；D最快私藏反，A祈使停点不回应速度承诺，C回顾/G重袋/E选路/F指定携水者均非本段pace提醒。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "Choose a place where everyone can pause together."
+        ],
+        [
+          "B",
+          "We can slow down whenever somebody needs us to."
+        ],
+        [
+          "C",
+          "Review the walk afterwards"
+        ],
+        [
+          "D",
+          "The fastest member should keep all plans private."
+        ],
+        [
+          "E",
+          "Discuss those different wishes before choosing the route."
+        ],
+        [
+          "F",
+          "It should be possible to ask that person directly."
+        ],
+        [
+          "G",
+          "Buy the heaviest bags you can find."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A给共同停点，后stops/tree nextpause回扣；E泛议不同愿望不能供meetingpoint具体做法，B速度不是路线停点，C回顾/D私藏/F携水/G重包均偏段。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "Choose a place where everyone can pause together."
+        ],
+        [
+          "B",
+          "We can slow down whenever somebody needs us to."
+        ],
+        [
+          "C",
+          "Review the walk afterwards"
+        ],
+        [
+          "D",
+          "The fastest member should keep all plans private."
+        ],
+        [
+          "E",
+          "Discuss those different wishes before choosing the route."
+        ],
+        [
+          "F",
+          "It should be possible to ask that person directly."
+        ],
+        [
+          "G",
+          "Buy the heaviest bags you can find."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Fthatperson回携水者，直接询问避免搜所有bag；A停点/B降速/C回顾/E路线/D私藏/G重包均不解决携水联系方式。"
+    },
+    {
+      "number": 5,
+      "stem": "第5处",
+      "options": [
+        [
+          "A",
+          "Choose a place where everyone can pause together."
+        ],
+        [
+          "B",
+          "We can slow down whenever somebody needs us to."
+        ],
+        [
+          "C",
+          "Review the walk afterwards"
+        ],
+        [
+          "D",
+          "The fastest member should keep all plans private."
+        ],
+        [
+          "E",
+          "Discuss those different wishes before choosing the route."
+        ],
+        [
+          "F",
+          "It should be possible to ask that person directly."
+        ],
+        [
+          "G",
+          "Buy the heaviest bags you can find."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C回顾步行标题统摄end/askcomments/nextwalk；A停点/B速度/E走前意愿/F携水只局部且不是该反思段，D/G反文意。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g9.suzhou2024.insertion",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "sentence",
+        "quoted_reminder",
+        "sentence",
+        "sentence",
+        "heading"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "A short group walk can be enjoyable without turning into a race. Before inviting people, think about what sort of walk the group wants. Some may want conversation; others may want time to notice their surroundings. (1) ____\n\n#### Agree on a pace\n\nA faster walker should not decide the speed without checking the others. When the group leaves the meeting point, one person can say, “(2) ____” This gives slower walkers permission to ask for a change before they become tired.\n\n#### Keep the route clear\n\nChoose a path with a few easy meeting points, especially if it has narrow sections. (3) ____ If someone stops to look at a tree, everyone will know where the next pause will be. A meeting point is more useful than a vague promise not to get too far ahead.\n\n#### Share supplies simply\n\nTake only what you need and keep shared supplies easy to find. If one person is carrying the water, say who that is before setting off. (4) ____ A clear arrangement avoids everybody searching different bags at the same time.\n\n#### (5) ____\n\nAt the end, ask which parts of the route people enjoyed and where the pace felt uncomfortable. Use those comments when planning another walk. The point is to learn how this particular group likes to travel together, not to name the fastest member.\n\n共享候选（两项不用）：\n\nA. Choose a place where everyone can pause together.\nB. We can slow down whenever somebody needs us to.\nC. Review the walk afterwards\nD. The fastest member should keep all plans private.\nE. Discuss those different wishes before choosing the route.\nF. It should be possible to ask that person directly.\nG. Buy the heaviest bags you can find.",
+  "author_answer_vector": [
+    "E",
+    "B",
+    "A",
+    "F",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 213,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 265,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 53,
+    "filled_article_English_words": 251,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A short group walk can be enjoyable without turning into a race. Before inviting people, think about what sort of walk the group wants. Some may want conversation; others may want time to notice their surroundings. (1) ____\n\nAgree on a pace\n\nA faster walker should not decide the speed without checking the others. When the group leaves the meeting point, one person can say, “(2) ____” This gives slower walkers permission to ask for a change before they become tired.\n\nKeep the route clear\n\nChoose a path with a few easy meeting points, especially if it has narrow sections. (3) ____ If someone stops to look at a tree, everyone will know where the next pause will be. A meeting point is more useful than a vague promise not to get too far ahead.\n\nShare supplies simply\n\nTake only what you need and keep shared supplies easy to find. If one person is carrying the water, say who that is before setting off. (4) ____ A clear arrangement avoids everybody searching different bags at the same time.\n\n(5) ____\n\nAt the end, ask which parts of the route people enjoyed and where the pace felt uncomfortable. Use those comments when planning another walk. The point is to learn how this particular group likes to travel together, not to name the fastest member.",
+  "shared_bank": [
+    [
+      "A",
+      "Choose a place where everyone can pause together."
+    ],
+    [
+      "B",
+      "We can slow down whenever somebody needs us to."
+    ],
+    [
+      "C",
+      "Review the walk afterwards"
+    ],
+    [
+      "D",
+      "The fastest member should keep all plans private."
+    ],
+    [
+      "E",
+      "Discuss those different wishes before choosing the route."
+    ],
+    [
+      "F",
+      "It should be possible to ask that person directly."
+    ],
+    [
+      "G",
+      "Buy the heaviest bags you can find."
+    ]
+  ],
+  "unused_bank_labels": [
+    "D",
+    "G"
+  ],
+  "filled_article": "A short group walk can be enjoyable without turning into a race. Before inviting people, think about what sort of walk the group wants. Some may want conversation; others may want time to notice their surroundings. Discuss those different wishes before choosing the route.\n\n#### Agree on a pace\n\nA faster walker should not decide the speed without checking the others. When the group leaves the meeting point, one person can say, “We can slow down whenever somebody needs us to.” This gives slower walkers permission to ask for a change before they become tired.\n\n#### Keep the route clear\n\nChoose a path with a few easy meeting points, especially if it has narrow sections. Choose a place where everyone can pause together. If someone stops to look at a tree, everyone will know where the next pause will be. A meeting point is more useful than a vague promise not to get too far ahead.\n\n#### Share supplies simply\n\nTake only what you need and keep shared supplies easy to find. If one person is carrying the water, say who that is before setting off. It should be possible to ask that person directly. A clear arrangement avoids everybody searching different bags at the same time.\n\n#### Review the walk afterwards\n\nAt the end, ask which parts of the route people enjoyed and where the pace felt uncomfortable. Use those comments when planning another walk. The point is to learn how this particular group likes to travel together, not to name the fastest member.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "sentence",
+    "quoted_reminder",
+    "sentence",
+    "sentence",
+    "heading"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": false,
+  "existing_printed_section_headings": 3,
+  "prefreeze_heading_correction": "threeprintedheadingsplusmissingfourth_preserved"
+}

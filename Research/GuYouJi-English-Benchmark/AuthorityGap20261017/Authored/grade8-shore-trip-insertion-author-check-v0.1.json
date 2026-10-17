@@ -1,0 +1,213 @@
+{
+  "version": "0.1",
+  "id": "grade8-shore-trip-insertion",
+  "grade": 8,
+  "questions": 4,
+  "candidate_sha256": "dac72ab663dae10c1d3ece9beac3d36ddd2f9fb45c5ec01936183d69e6eef41f",
+  "canonical_response_block_sha256": "e865ff803a392ee1119f6a602570f6874c83f23e0a895620427dce5eb54af3a9",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "We carried all the stones home in a heavy bag."
+        ],
+        [
+          "B",
+          "The photograph on my phone was my favourite memory."
+        ],
+        [
+          "C",
+          "Sand kept blowing into our faces."
+        ],
+        [
+          "D",
+          "I soon found a round one and a very flat one."
+        ],
+        [
+          "E",
+          "We found a small shelter beside a closed café."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C强风吹沙导致不踢球回车，后So承因果；A把石带走与后leave相反，B照片末段已完成，D发现石还未到rocks，E雨棚因雨在第三段。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "We carried all the stones home in a heavy bag."
+        ],
+        [
+          "B",
+          "The photograph on my phone was my favourite memory."
+        ],
+        [
+          "C",
+          "Sand kept blowing into our faces."
+        ],
+        [
+          "D",
+          "I soon found a round one and a very flat one."
+        ],
+        [
+          "E",
+          "We found a small shelter beside a closed café."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D新增圆石/扁石，与heart一起形成them拍照后放回；A带回与leave矛盾，B只是照片评价无新增石可数，C沙和E棚非石形线索。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "We carried all the stones home in a heavy bag."
+        ],
+        [
+          "B",
+          "The photograph on my phone was my favourite memory."
+        ],
+        [
+          "C",
+          "Sand kept blowing into our faces."
+        ],
+        [
+          "D",
+          "I soon found a round one and a very flat one."
+        ],
+        [
+          "E",
+          "We found a small shelter beside a closed café."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E找到cafe边棚，inside/seats/window解释避雨午餐；A重袋带石反，B照片无座窗，C吹沙/D石形不能提供雨中inside处所。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "We carried all the stones home in a heavy bag."
+        ],
+        [
+          "B",
+          "The photograph on my phone was my favourite memory."
+        ],
+        [
+          "C",
+          "Sand kept blowing into our faces."
+        ],
+        [
+          "D",
+          "I soon found a round one and a very flat one."
+        ],
+        [
+          "E",
+          "We found a small shelter beside a closed café."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B照片作为最喜欢记忆，下一句show it对应phonephoto；A重袋与未带石反，C沙/D石形/E棚均不提供可展示的照片先行词。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g8.changjun2024.insertion",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 4,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_entries": 5,
+      "explicit_spare": 1
+    }
+  },
+  "student_passage": "### September 3\n\nOur family went to a beach today. I had packed a football because I wanted to play on the sand. When we arrived, however, the wind was strong. (1) ____ So we put the ball back in the car and went for a walk.\n\nNear the rocks, I found a smooth stone shaped like a heart. Dad said we could look for different shapes without taking stones away from the beach. (2) ____ We placed them together, took a photograph and then left them where we had found them.\n\nIt began to rain just before noon. (3) ____ From our seats inside, we could still see the waves through a large window. We ate our sandwiches there.\n\nWhen the rain stopped, we returned to the car. I was sorry not to have played football, but I had enjoyed looking closely at the beach. (4) ____ I will show it to my friend tomorrow and tell her about the heart-shaped stone.\n\n共享候选（一项不用）：\n\nA. We carried all the stones home in a heavy bag.\nB. The photograph on my phone was my favourite memory.\nC. Sand kept blowing into our faces.\nD. I soon found a round one and a very flat one.\nE. We found a small shelter beside a closed café.",
+  "author_answer_vector": [
+    "C",
+    "D",
+    "E",
+    "B"
+  ],
+  "load_measure": {
+    "body_English_words": 154,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 180,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 45,
+    "filled_article_English_words": 189,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "September 3\n\nOur family went to a beach today. I had packed a football because I wanted to play on the sand. When we arrived, however, the wind was strong. (1) ____ So we put the ball back in the car and went for a walk.\n\nNear the rocks, I found a smooth stone shaped like a heart. Dad said we could look for different shapes without taking stones away from the beach. (2) ____ We placed them together, took a photograph and then left them where we had found them.\n\nIt began to rain just before noon. (3) ____ From our seats inside, we could still see the waves through a large window. We ate our sandwiches there.\n\nWhen the rain stopped, we returned to the car. I was sorry not to have played football, but I had enjoyed looking closely at the beach. (4) ____ I will show it to my friend tomorrow and tell her about the heart-shaped stone.",
+  "shared_bank": [
+    [
+      "A",
+      "We carried all the stones home in a heavy bag."
+    ],
+    [
+      "B",
+      "The photograph on my phone was my favourite memory."
+    ],
+    [
+      "C",
+      "Sand kept blowing into our faces."
+    ],
+    [
+      "D",
+      "I soon found a round one and a very flat one."
+    ],
+    [
+      "E",
+      "We found a small shelter beside a closed café."
+    ]
+  ],
+  "unused_bank_labels": [
+    "A"
+  ],
+  "filled_article": "### September 3\n\nOur family went to a beach today. I had packed a football because I wanted to play on the sand. When we arrived, however, the wind was strong. Sand kept blowing into our faces. So we put the ball back in the car and went for a walk.\n\nNear the rocks, I found a smooth stone shaped like a heart. Dad said we could look for different shapes without taking stones away from the beach. I soon found a round one and a very flat one. We placed them together, took a photograph and then left them where we had found them.\n\nIt began to rain just before noon. We found a small shelter beside a closed café. From our seats inside, we could still see the waves through a large window. We ate our sandwiches there.\n\nWhen the rain stopped, we returned to the car. I was sorry not to have played football, but I had enjoyed looking closely at the beach. The photograph on my phone was my favourite memory. I will show it to my friend tomorrow and tell her about the heart-shaped stone.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": false
+}

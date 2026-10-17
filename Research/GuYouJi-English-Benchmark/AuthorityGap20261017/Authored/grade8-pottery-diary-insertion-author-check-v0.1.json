@@ -1,0 +1,213 @@
+{
+  "version": "0.1",
+  "id": "grade8-pottery-diary-insertion",
+  "grade": 8,
+  "questions": 4,
+  "candidate_sha256": "bb62ecf6a87ffcbe4d2b2775ccd0b5ddea82369cd1c983fb27a527dd0c2d4641",
+  "canonical_response_block_sha256": "d268f2cfc061d924092be7ff6109878a081171397e28e2cdfea2e26cb6300c10",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "I asked for fresh clay and tried a simpler shape."
+        ],
+        [
+          "B",
+          "The doors were still closed when we got there."
+        ],
+        [
+          "C",
+          "It cost more than the money I had left for shopping."
+        ],
+        [
+          "D",
+          "We were told to return the following Saturday."
+        ],
+        [
+          "E",
+          "The lesson had ended before we left home."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B对应arrived early和下句ten opened，未开门→开门连贯；A制作需进门后，C价格在末段，D返取日期未有制品，E已结束与之后上课反。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "I asked for fresh clay and tried a simpler shape."
+        ],
+        [
+          "B",
+          "The doors were still closed when we got there."
+        ],
+        [
+          "C",
+          "It cost more than the money I had left for shopping."
+        ],
+        [
+          "D",
+          "We were told to return the following Saturday."
+        ],
+        [
+          "E",
+          "The lesson had ended before we left home."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A从高杯塌转新泥/简单形状，下文This time smallbowl回扣；B门、C价、D取件、E课已结束均不解释再做小碗。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "I asked for fresh clay and tried a simpler shape."
+        ],
+        [
+          "B",
+          "The doors were still closed when we got there."
+        ],
+        [
+          "C",
+          "It cost more than the money I had left for shopping."
+        ],
+        [
+          "D",
+          "We were told to return the following Saturday."
+        ],
+        [
+          "E",
+          "The lesson had ended before we left home."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D给出followingSaturday取件，下句wrote date回扣；A/B/C/E均不提供未来领取日期，E反已经还需烧制的时间。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "I asked for fresh clay and tried a simpler shape."
+        ],
+        [
+          "B",
+          "The doors were still closed when we got there."
+        ],
+        [
+          "C",
+          "It cost more than the money I had left for shopping."
+        ],
+        [
+          "D",
+          "We were told to return the following Saturday."
+        ],
+        [
+          "E",
+          "The lesson had ended before we left home."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C解释不买蓝盘并保留车费，cost购物余额对应；A泥/B门/D领取时间/E课已结束均不解释购物预算。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g8.changjun2024.insertion",
+  "source_observation": {
+    "source_responses": 4,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 4,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "shared_entries": 5,
+      "explicit_spare": 1
+    }
+  },
+  "student_passage": "### August 8\n\nToday my cousin and I visited a pottery workshop. We arrived early, before the other visitors. (1) ____ The teacher opened it at ten and invited everyone in.\n\nFirst, she gave each of us a piece of soft clay. I wanted to make a tall cup, but its sides kept falling down. (2) ____ This time I made a small bowl with a wide bottom. It stayed in shape.\n\nBefore lunch, we put our names under the bowls. We could not take them home that day because they still needed to be fired. (3) ____ I wrote the date in my diary so that I would not forget.\n\nIn the afternoon, we looked at finished pottery in the shop. I liked a blue plate, but I decided not to buy it. (4) ____ I wanted to leave enough money for the bus home. I was happy to have made something of my own, even though I would have to wait to collect it.\n\n共享候选（一项不用）：\n\nA. I asked for fresh clay and tried a simpler shape.\nB. The doors were still closed when we got there.\nC. It cost more than the money I had left for shopping.\nD. We were told to return the following Saturday.\nE. The lesson had ended before we left home.",
+  "author_answer_vector": [
+    "B",
+    "A",
+    "D",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 156,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 184,
+    "output_response_positions": 4,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 46,
+    "filled_article_English_words": 194,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 4
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "August 8\n\nToday my cousin and I visited a pottery workshop. We arrived early, before the other visitors. (1) ____ The teacher opened it at ten and invited everyone in.\n\nFirst, she gave each of us a piece of soft clay. I wanted to make a tall cup, but its sides kept falling down. (2) ____ This time I made a small bowl with a wide bottom. It stayed in shape.\n\nBefore lunch, we put our names under the bowls. We could not take them home that day because they still needed to be fired. (3) ____ I wrote the date in my diary so that I would not forget.\n\nIn the afternoon, we looked at finished pottery in the shop. I liked a blue plate, but I decided not to buy it. (4) ____ I wanted to leave enough money for the bus home. I was happy to have made something of my own, even though I would have to wait to collect it.",
+  "shared_bank": [
+    [
+      "A",
+      "I asked for fresh clay and tried a simpler shape."
+    ],
+    [
+      "B",
+      "The doors were still closed when we got there."
+    ],
+    [
+      "C",
+      "It cost more than the money I had left for shopping."
+    ],
+    [
+      "D",
+      "We were told to return the following Saturday."
+    ],
+    [
+      "E",
+      "The lesson had ended before we left home."
+    ]
+  ],
+  "unused_bank_labels": [
+    "E"
+  ],
+  "filled_article": "### August 8\n\nToday my cousin and I visited a pottery workshop. We arrived early, before the other visitors. The doors were still closed when we got there. The teacher opened it at ten and invited everyone in.\n\nFirst, she gave each of us a piece of soft clay. I wanted to make a tall cup, but its sides kept falling down. I asked for fresh clay and tried a simpler shape. This time I made a small bowl with a wide bottom. It stayed in shape.\n\nBefore lunch, we put our names under the bowls. We could not take them home that day because they still needed to be fired. We were told to return the following Saturday. I wrote the date in my diary so that I would not forget.\n\nIn the afternoon, we looked at finished pottery in the shop. I liked a blue plate, but I decided not to buy it. It cost more than the money I had left for shopping. I wanted to leave enough money for the bus home. I was happy to have made something of my own, even though I would have to wait to collect it.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": false
+}

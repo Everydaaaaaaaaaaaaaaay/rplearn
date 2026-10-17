@@ -1,0 +1,294 @@
+{
+  "version": "0.1",
+  "id": "grade11-exhibition-labels-insertion",
+  "grade": 11,
+  "questions": 5,
+  "candidate_sha256": "1135ebc40af7c8afa3b1e17b4854743dac5181d3a82b109a2e1ca7f8c0f65dec",
+  "canonical_response_block_sha256": "112c4b040daa39f003e7016e9bfe217c8387e7fe5e68c212eba4403e0a1bed2e",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "If the photograph belongs to an outside owner"
+        ],
+        [
+          "B",
+          "Check what the evidence can support"
+        ],
+        [
+          "C",
+          "If no photograph is being printed"
+        ],
+        [
+          "D",
+          "A visible detail can give visitors a reason to pause"
+        ],
+        [
+          "E",
+          "With the evidence and image rights checked, test the label in place"
+        ],
+        [
+          "F",
+          "Go back to the repair receipt and the seam"
+        ],
+        [
+          "G",
+          "Write the printer’s name in larger letters"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D完整起首分句解释为何细节让人停留，接so startdetail；B查证标题属下一节，F回example尚未给，E已查妥过早，A/C条件与so开端因果不合，G打印人非观看动机。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "If the photograph belongs to an outside owner"
+        ],
+        [
+          "B",
+          "Check what the evidence can support"
+        ],
+        [
+          "C",
+          "If no photograph is being printed"
+        ],
+        [
+          "D",
+          "A visible detail can give visitors a reason to pause"
+        ],
+        [
+          "E",
+          "With the evidence and image rights checked, test the label in place"
+        ],
+        [
+          "F",
+          "Go back to the repair receipt and the seam"
+        ],
+        [
+          "G",
+          "Write the printer’s name in larger letters"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B查证能支持什么，统摄receipt能证付款日不能证初用；D观者停留属于前节，F回一个例非统摄证据边界，E测试在后，A/C图权条件及G打印名字均非本段。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "If the photograph belongs to an outside owner"
+        ],
+        [
+          "B",
+          "Check what the evidence can support"
+        ],
+        [
+          "C",
+          "If no photograph is being printed"
+        ],
+        [
+          "D",
+          "A visible detail can give visitors a reason to pause"
+        ],
+        [
+          "E",
+          "With the evidence and image rights checked, test the label in place"
+        ],
+        [
+          "F",
+          "Go back to the repair receipt and the seam"
+        ],
+        [
+          "G",
+          "Write the printer’s name in larger letters"
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F回已给receipt/seam，后The receipt才有明确局部对照；D动机/B泛查证弱于已有example回扣，E全查妥尚未权利，A/C条件接句号缺主句，G不说明日期证据。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "If the photograph belongs to an outside owner"
+        ],
+        [
+          "B",
+          "Check what the evidence can support"
+        ],
+        [
+          "C",
+          "If no photograph is being printed"
+        ],
+        [
+          "D",
+          "A visible detail can give visitors a reason to pause"
+        ],
+        [
+          "E",
+          "With the evidence and image rights checked, test the label in place"
+        ],
+        [
+          "F",
+          "Go back to the repair receipt and the seam"
+        ],
+        [
+          "G",
+          "Write the printer’s name in larger letters"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A外主照片需reproductionpermission，后teamowns另一分支精确对照；C无图却去申请该图复印权与本段有图前提不合，B/D/E/F/G不是所需外主条件，标点/主句关系亦不合。"
+    },
+    {
+      "number": 5,
+      "stem": "第5处",
+      "options": [
+        [
+          "A",
+          "If the photograph belongs to an outside owner"
+        ],
+        [
+          "B",
+          "Check what the evidence can support"
+        ],
+        [
+          "C",
+          "If no photograph is being printed"
+        ],
+        [
+          "D",
+          "A visible detail can give visitors a reason to pause"
+        ],
+        [
+          "E",
+          "With the evidence and image rights checked, test the label in place"
+        ],
+        [
+          "F",
+          "Go back to the repair receipt and the seam"
+        ],
+        [
+          "G",
+          "Write the printer’s name in larger letters"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E证据与image rights均查妥后在场测试，后Put draftbesideobject呼应；B查证已做/F回单例/D动机不进入place测试，A/C条件后句号缺主句，G打印人名偏题。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g11.spring2024.insertionE",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "opening_clause",
+        "heading",
+        "sentence",
+        "if_clause",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "A useful exhibition label does more than give an object a name. It helps a visitor notice something worth examining. Before writing, decide what this particular object can help a visitor understand.\n\n#### Begin with a reason to look\n\n(1) ____, so start with a detail that makes the object worth a closer look. A repaired seam in an old bag, for example, can raise a question about how it was used. You do not need to tell the whole history in the opening line.\n\n#### (2) ____\n\nAfter choosing that detail, check which statements are supported by the records. A date written on a repair receipt may establish when the work was paid for, but not exactly when the bag was first used. Keep those two claims separate when describing the seam.\n\n#### Return to the example\n\nA confident sentence can hide a weak link. (3) ____. The receipt can support the payment date, while the earlier history remains uncertain. Saying so gives visitors a way to understand the limit rather than asking them to accept an unexplained conclusion.\n\n#### Check the reproduction plan\n\nSome labels include a photograph that belongs to someone outside the exhibition team. (4) ____, obtain the required reproduction permission before sending the label to the printer. If the team owns the image, check the internal record instead. These are different routes for establishing what may be printed.\n\n(5) ____. Put the draft beside the object and ask a reader to use them together. If the reader cannot find the seam mentioned in the text, revise the wording or placement before deciding that the label is finished.\n\n共享候选（两项不用）：\n\nA. If the photograph belongs to an outside owner\nB. Check what the evidence can support\nC. If no photograph is being printed\nD. A visible detail can give visitors a reason to pause\nE. With the evidence and image rights checked, test the label in place\nF. Go back to the repair receipt and the seam\nG. Write the printer’s name in larger letters",
+  "author_answer_vector": [
+    "D",
+    "B",
+    "F",
+    "A",
+    "E"
+  ],
+  "load_measure": {
+    "body_English_words": 258,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 290,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 58,
+    "filled_article_English_words": 303,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A useful exhibition label does more than give an object a name. It helps a visitor notice something worth examining. Before writing, decide what this particular object can help a visitor understand.\n\nBegin with a reason to look\n\n(1) ____, so start with a detail that makes the object worth a closer look. A repaired seam in an old bag, for example, can raise a question about how it was used. You do not need to tell the whole history in the opening line.\n\n(2) ____\n\nAfter choosing that detail, check which statements are supported by the records. A date written on a repair receipt may establish when the work was paid for, but not exactly when the bag was first used. Keep those two claims separate when describing the seam.\n\nReturn to the example\n\nA confident sentence can hide a weak link. (3) ____. The receipt can support the payment date, while the earlier history remains uncertain. Saying so gives visitors a way to understand the limit rather than asking them to accept an unexplained conclusion.\n\nCheck the reproduction plan\n\nSome labels include a photograph that belongs to someone outside the exhibition team. (4) ____, obtain the required reproduction permission before sending the label to the printer. If the team owns the image, check the internal record instead. These are different routes for establishing what may be printed.\n\n(5) ____. Put the draft beside the object and ask a reader to use them together. If the reader cannot find the seam mentioned in the text, revise the wording or placement before deciding that the label is finished.",
+  "shared_bank": [
+    [
+      "A",
+      "If the photograph belongs to an outside owner"
+    ],
+    [
+      "B",
+      "Check what the evidence can support"
+    ],
+    [
+      "C",
+      "If no photograph is being printed"
+    ],
+    [
+      "D",
+      "A visible detail can give visitors a reason to pause"
+    ],
+    [
+      "E",
+      "With the evidence and image rights checked, test the label in place"
+    ],
+    [
+      "F",
+      "Go back to the repair receipt and the seam"
+    ],
+    [
+      "G",
+      "Write the printer’s name in larger letters"
+    ]
+  ],
+  "unused_bank_labels": [
+    "C",
+    "G"
+  ],
+  "filled_article": "A useful exhibition label does more than give an object a name. It helps a visitor notice something worth examining. Before writing, decide what this particular object can help a visitor understand.\n\n#### Begin with a reason to look\n\nA visible detail can give visitors a reason to pause, so start with a detail that makes the object worth a closer look. A repaired seam in an old bag, for example, can raise a question about how it was used. You do not need to tell the whole history in the opening line.\n\n#### Check what the evidence can support\n\nAfter choosing that detail, check which statements are supported by the records. A date written on a repair receipt may establish when the work was paid for, but not exactly when the bag was first used. Keep those two claims separate when describing the seam.\n\n#### Return to the example\n\nA confident sentence can hide a weak link. Go back to the repair receipt and the seam. The receipt can support the payment date, while the earlier history remains uncertain. Saying so gives visitors a way to understand the limit rather than asking them to accept an unexplained conclusion.\n\n#### Check the reproduction plan\n\nSome labels include a photograph that belongs to someone outside the exhibition team. If the photograph belongs to an outside owner, obtain the required reproduction permission before sending the label to the printer. If the team owns the image, check the internal record instead. These are different routes for establishing what may be printed.\n\nWith the evidence and image rights checked, test the label in place. Put the draft beside the object and ask a reader to use them together. If the reader cannot find the seam mentioned in the text, revise the wording or placement before deciding that the label is finished.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "opening_clause",
+    "heading",
+    "sentence",
+    "if_clause",
+    "sentence"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": true
+}

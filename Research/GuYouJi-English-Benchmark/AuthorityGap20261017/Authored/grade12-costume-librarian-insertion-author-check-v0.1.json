@@ -1,0 +1,294 @@
+{
+  "version": "0.1",
+  "id": "grade12-costume-librarian-insertion",
+  "grade": 12,
+  "questions": 5,
+  "candidate_sha256": "3c3619080794aa7ec7ece9a724cabeb37eac2e4e2546de1c54cf598015f240ae",
+  "canonical_response_block_sha256": "4ff102298281d8c684bd4c3dac212acf5f9463d060847f82a5b2f2a043276c73",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "She told them to cut every garment to the same length."
+        ],
+        [
+          "B",
+          "She asked them to use a reversible alteration instead of cutting it."
+        ],
+        [
+          "C",
+          "That history helped keep the reasons for decisions available."
+        ],
+        [
+          "D",
+          "She replaced every photograph with a list of colours."
+        ],
+        [
+          "E",
+          "She began recording each garment’s condition with a dated photograph."
+        ],
+        [
+          "F",
+          "She checked whether the agreed collection times left room for the journey back."
+        ],
+        [
+          "G",
+          "She used a shared booking record showing when requests had been received."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "E缺按钮归属争议→datedconditionphoto，后thatrecord可借前比；D去掉照片反，B裙改后段，G排期/F回程/C历史稍后，A全剪反。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "She told them to cut every garment to the same length."
+        ],
+        [
+          "B",
+          "She asked them to use a reversible alteration instead of cutting it."
+        ],
+        [
+          "C",
+          "That history helped keep the reasons for decisions available."
+        ],
+        [
+          "D",
+          "She replaced every photograph with a list of colours."
+        ],
+        [
+          "E",
+          "She began recording each garment’s condition with a dated photograph."
+        ],
+        [
+          "F",
+          "She checked whether the agreed collection times left room for the journey back."
+        ],
+        [
+          "G",
+          "She used a shared booking record showing when requests had been received."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "B建议可逆修改而不剪，后temporaryfoldacceptable/cuttingnot逐项解释；A剪全部反，D色替照片/E状态照/G排期/F回程/C历史都不回答改短方式。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "She told them to cut every garment to the same length."
+        ],
+        [
+          "B",
+          "She asked them to use a reversible alteration instead of cutting it."
+        ],
+        [
+          "C",
+          "That history helped keep the reasons for decisions available."
+        ],
+        [
+          "D",
+          "She replaced every photograph with a list of colours."
+        ],
+        [
+          "E",
+          "She began recording each garment’s condition with a dated photograph."
+        ],
+        [
+          "F",
+          "She checked whether the agreed collection times left room for the journey back."
+        ],
+        [
+          "G",
+          "She used a shared booking record showing when requests had been received."
+        ]
+      ],
+      "answer": "G",
+      "rationale": "G共享按收到请求时间记录，后clash联系双方及visiblearrangement呼应；D/E照片不解先后请求，F归还时间不是申请顺序，B/A裁改/C历史非预约处理。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "She told them to cut every garment to the same length."
+        ],
+        [
+          "B",
+          "She asked them to use a reversible alteration instead of cutting it."
+        ],
+        [
+          "C",
+          "That history helped keep the reasons for decisions available."
+        ],
+        [
+          "D",
+          "She replaced every photograph with a list of colours."
+        ],
+        [
+          "E",
+          "She began recording each garment’s condition with a dated photograph."
+        ],
+        [
+          "F",
+          "She checked whether the agreed collection times left room for the journey back."
+        ],
+        [
+          "G",
+          "She used a shared booking record showing when requests had been received."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "F查collectiontime留journeyback，后movedearlier减少晚归；仅重closinghour已失败，A/B剪裁、D/E图、G请求先后、C历史均不解释提前取以能归。"
+    },
+    {
+      "number": 5,
+      "stem": "第5处",
+      "options": [
+        [
+          "A",
+          "She told them to cut every garment to the same length."
+        ],
+        [
+          "B",
+          "She asked them to use a reversible alteration instead of cutting it."
+        ],
+        [
+          "C",
+          "That history helped keep the reasons for decisions available."
+        ],
+        [
+          "D",
+          "She replaced every photograph with a list of colours."
+        ],
+        [
+          "E",
+          "She began recording each garment’s condition with a dated photograph."
+        ],
+        [
+          "F",
+          "She checked whether the agreed collection times left room for the journey back."
+        ],
+        [
+          "G",
+          "She used a shared booking record showing when requests had been received."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "Cthat history回smallnotebook含被拒和现规则，后futurehelperunderstandwhy对应；G预约/E照片/D色/A/B裁改/F回程均只是已记个例，不概括保存决策理由。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g12.national2025.insertion",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "This fictional portrait follows Bea, who looks after a costume cupboard used by several neighbourhood theatre groups. People often imagine that her work consists of hanging clothes in rows. Bea says the harder part is preserving enough information for a garment to be borrowed, used and returned without a new argument at every stage.\n\nThe labels originally showed only size and colour. A long coat borrowed for a performance came back with a removable button missing. The next group thought the coat had always been incomplete. (1) ____ Borrowers could compare the garment with that record before taking responsibility for it.\n\nPhotographs helped, but they did not explain which changes were allowed. One group wanted to shorten a skirt for a child actor. (2) ____ A temporary fold was acceptable; cutting the fabric was not. Bea made the difference explicit before the scissors appeared, rather than treating a reasonable question as evidence of carelessness.\n\nSome costumes were popular enough to receive overlapping requests. Bea did not settle these by giving the loudest caller priority. (3) ____ When a clash remained, she contacted both groups about alternative dates or garments. A visible arrangement could be discussed; a private favour could not be checked by anyone else.\n\nNear the end of a busy season, she noticed that borrowers regularly arrived after the building's closing time. Repeating the closing hour had not solved the problem. (4) ____ Once the final collection was moved earlier, fewer people were left with a garment they had no agreed way to return that evening.\n\nBea kept a small notebook of such adjustments. It included rejected ideas as well as rules still in use. (5) ____ A future helper would need to understand why a rule existed before deciding whether a new situation called for a change. The cupboard was organised, but its organisation was never meant to become an unexplained tradition.\n\n共享候选（两项不用）：\n\nA. She told them to cut every garment to the same length.\nB. She asked them to use a reversible alteration instead of cutting it.\nC. That history helped keep the reasons for decisions available.\nD. She replaced every photograph with a list of colours.\nE. She began recording each garment’s condition with a dated photograph.\nF. She checked whether the agreed collection times left room for the journey back.\nG. She used a shared booking record showing when requests had been received.",
+  "author_answer_vector": [
+    "E",
+    "B",
+    "G",
+    "F",
+    "C"
+  ],
+  "load_measure": {
+    "body_English_words": 304,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 380,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 76,
+    "filled_article_English_words": 360,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "This fictional portrait follows Bea, who looks after a costume cupboard used by several neighbourhood theatre groups. People often imagine that her work consists of hanging clothes in rows. Bea says the harder part is preserving enough information for a garment to be borrowed, used and returned without a new argument at every stage.\n\nThe labels originally showed only size and colour. A long coat borrowed for a performance came back with a removable button missing. The next group thought the coat had always been incomplete. (1) ____ Borrowers could compare the garment with that record before taking responsibility for it.\n\nPhotographs helped, but they did not explain which changes were allowed. One group wanted to shorten a skirt for a child actor. (2) ____ A temporary fold was acceptable; cutting the fabric was not. Bea made the difference explicit before the scissors appeared, rather than treating a reasonable question as evidence of carelessness.\n\nSome costumes were popular enough to receive overlapping requests. Bea did not settle these by giving the loudest caller priority. (3) ____ When a clash remained, she contacted both groups about alternative dates or garments. A visible arrangement could be discussed; a private favour could not be checked by anyone else.\n\nNear the end of a busy season, she noticed that borrowers regularly arrived after the building's closing time. Repeating the closing hour had not solved the problem. (4) ____ Once the final collection was moved earlier, fewer people were left with a garment they had no agreed way to return that evening.\n\nBea kept a small notebook of such adjustments. It included rejected ideas as well as rules still in use. (5) ____ A future helper would need to understand why a rule existed before deciding whether a new situation called for a change. The cupboard was organised, but its organisation was never meant to become an unexplained tradition.",
+  "shared_bank": [
+    [
+      "A",
+      "She told them to cut every garment to the same length."
+    ],
+    [
+      "B",
+      "She asked them to use a reversible alteration instead of cutting it."
+    ],
+    [
+      "C",
+      "That history helped keep the reasons for decisions available."
+    ],
+    [
+      "D",
+      "She replaced every photograph with a list of colours."
+    ],
+    [
+      "E",
+      "She began recording each garment’s condition with a dated photograph."
+    ],
+    [
+      "F",
+      "She checked whether the agreed collection times left room for the journey back."
+    ],
+    [
+      "G",
+      "She used a shared booking record showing when requests had been received."
+    ]
+  ],
+  "unused_bank_labels": [
+    "A",
+    "D"
+  ],
+  "filled_article": "This fictional portrait follows Bea, who looks after a costume cupboard used by several neighbourhood theatre groups. People often imagine that her work consists of hanging clothes in rows. Bea says the harder part is preserving enough information for a garment to be borrowed, used and returned without a new argument at every stage.\n\nThe labels originally showed only size and colour. A long coat borrowed for a performance came back with a removable button missing. The next group thought the coat had always been incomplete. She began recording each garment’s condition with a dated photograph. Borrowers could compare the garment with that record before taking responsibility for it.\n\nPhotographs helped, but they did not explain which changes were allowed. One group wanted to shorten a skirt for a child actor. She asked them to use a reversible alteration instead of cutting it. A temporary fold was acceptable; cutting the fabric was not. Bea made the difference explicit before the scissors appeared, rather than treating a reasonable question as evidence of carelessness.\n\nSome costumes were popular enough to receive overlapping requests. Bea did not settle these by giving the loudest caller priority. She used a shared booking record showing when requests had been received. When a clash remained, she contacted both groups about alternative dates or garments. A visible arrangement could be discussed; a private favour could not be checked by anyone else.\n\nNear the end of a busy season, she noticed that borrowers regularly arrived after the building's closing time. Repeating the closing hour had not solved the problem. She checked whether the agreed collection times left room for the journey back. Once the final collection was moved earlier, fewer people were left with a garment they had no agreed way to return that evening.\n\nBea kept a small notebook of such adjustments. It included rejected ideas as well as rules still in use. That history helped keep the reasons for decisions available. A future helper would need to understand why a rule existed before deciding whether a new situation called for a change. The cupboard was organised, but its organisation was never meant to become an unexplained tradition.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": false
+}

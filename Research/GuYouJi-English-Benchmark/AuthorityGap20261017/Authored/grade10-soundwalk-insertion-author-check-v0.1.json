@@ -1,0 +1,294 @@
+{
+  "version": "0.1",
+  "id": "grade10-soundwalk-insertion",
+  "grade": 10,
+  "questions": 5,
+  "candidate_sha256": "229ff9eead2ab5889789c2fc5fb8d596ee9442afc9ece48d44b2dfaf65ffb0f1",
+  "canonical_response_block_sha256": "fc7118bcf7cf2e4e01f795ad62ccea1dec74fbc055896c508262875d2e03dc97",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1处",
+      "options": [
+        [
+          "A",
+          "That trial can reveal gaps the designers no longer notice."
+        ],
+        [
+          "B",
+          "The longest file is always the best one."
+        ],
+        [
+          "C",
+          "Write down the place and the date when saving each file."
+        ],
+        [
+          "D",
+          "Preserve the record with the recording"
+        ],
+        [
+          "E",
+          "A visitor must guess where every sound came from."
+        ],
+        [
+          "F",
+          "Let that purpose guide what you choose to record."
+        ],
+        [
+          "G",
+          "Permission needs checking before the file is released, not afterwards."
+        ]
+      ],
+      "answer": "F",
+      "rationale": "Fthatpurpose回节目标/doorwayrhythm，guidewhatrecord回应不因空间录长；B绝对最长反，C地点下一节，G许可后节，A外人试走尚未，D存档/E猜点均不解释目标筛选。"
+    },
+    {
+      "number": 2,
+      "stem": "第2处",
+      "options": [
+        [
+          "A",
+          "That trial can reveal gaps the designers no longer notice."
+        ],
+        [
+          "B",
+          "The longest file is always the best one."
+        ],
+        [
+          "C",
+          "Write down the place and the date when saving each file."
+        ],
+        [
+          "D",
+          "Preserve the record with the recording"
+        ],
+        [
+          "E",
+          "A visitor must guess where every sound came from."
+        ],
+        [
+          "F",
+          "Let that purpose guide what you choose to record."
+        ],
+        [
+          "G",
+          "Permission needs checking before the file is released, not afterwards."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "C保存文件写地点日期，后findintendedplace/wrongstop直接承；F目的泛不供定位记录，G许可非地，A测试后段，D存档标题此处需要具体句，B/E反清晰位置。"
+    },
+    {
+      "number": 3,
+      "stem": "第3处",
+      "options": [
+        [
+          "A",
+          "That trial can reveal gaps the designers no longer notice."
+        ],
+        [
+          "B",
+          "The longest file is always the best one."
+        ],
+        [
+          "C",
+          "Write down the place and the date when saving each file."
+        ],
+        [
+          "D",
+          "Preserve the record with the recording"
+        ],
+        [
+          "E",
+          "A visitor must guess where every sound came from."
+        ],
+        [
+          "F",
+          "Let that purpose guide what you choose to record."
+        ],
+        [
+          "G",
+          "Permission needs checking before the file is released, not afterwards."
+        ]
+      ],
+      "answer": "G",
+      "rationale": "G许可需发表前查，下句conditionsnotmet留不发表；A试走/F目的/C日期/D存档均非发布边界，B/E与许可无关。"
+    },
+    {
+      "number": 4,
+      "stem": "第4处",
+      "options": [
+        [
+          "A",
+          "That trial can reveal gaps the designers no longer notice."
+        ],
+        [
+          "B",
+          "The longest file is always the best one."
+        ],
+        [
+          "C",
+          "Write down the place and the date when saving each file."
+        ],
+        [
+          "D",
+          "Preserve the record with the recording"
+        ],
+        [
+          "E",
+          "A visitor must guess where every sound came from."
+        ],
+        [
+          "F",
+          "Let that purpose guide what you choose to record."
+        ],
+        [
+          "G",
+          "Permission needs checking before the file is released, not afterwards."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "Athattrial回外人试走，后wherecannotlocate改notes说明暴露设计者忽略空白；E必须猜地点反测试清晰指令，B录长无关，C记地/G许可/F目的/D档案都非试走作用。"
+    },
+    {
+      "number": 5,
+      "stem": "第5处",
+      "options": [
+        [
+          "A",
+          "That trial can reveal gaps the designers no longer notice."
+        ],
+        [
+          "B",
+          "The longest file is always the best one."
+        ],
+        [
+          "C",
+          "Write down the place and the date when saving each file."
+        ],
+        [
+          "D",
+          "Preserve the record with the recording"
+        ],
+        [
+          "E",
+          "A visitor must guess where every sound came from."
+        ],
+        [
+          "F",
+          "Let that purpose guide what you choose to record."
+        ],
+        [
+          "G",
+          "Permission needs checking before the file is released, not afterwards."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "D档案与记录同存标题，统摄approvedfiles/location/permission/routechanges；C只记录地点日期不括permission与复用条件，A试走/F目的/G许可只单环节，B/E反。"
+    }
+  ],
+  "source_index": {
+    "path": "AuthorityGap20261017/InheritedMiddleInsertionBridge-v0.1.json",
+    "sha256": "e13411c66f920f23b1dfb8cffbe941f253e05269319b0470b78ee0da78dde0c8"
+  },
+  "source_group_id": "g10.wenzhou2025.insertion",
+  "source_observation": {
+    "source_responses": 5,
+    "source_reuse_rule": "not_explicit_do_not_assume_once",
+    "source_material": {
+      "articles": 1,
+      "gaps": 5,
+      "slot_roles": [
+        "sentence",
+        "sentence",
+        "sentence",
+        "sentence",
+        "heading"
+      ]
+    },
+    "source_candidates": {
+      "per_response": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "shared_entries": 7,
+      "explicit_spare": 2
+    }
+  },
+  "student_passage": "A campus sound walk can help a group notice places it usually crosses without much attention. Participants record short sounds and link them to stops on a route. The project needs clear choices about recording, listening and publication.\n\n#### Decide what a stop should reveal\n\nA recording is more useful when it has a purpose. At a busy doorway, for example, the group might want listeners to notice the rhythm of arrivals rather than identify particular speakers. (1) ____ A clear aim can keep the group from collecting long recordings simply because the device has enough space.\n\n#### Keep a location record\n\nA file name such as “new sound 7” gives little help a week later. (2) ____ The notes need not describe every noise, but they should allow another member to find the intended place. Otherwise, a sound may be placed beside the wrong stop on the route.\n\n#### Check what may be shared\n\nA sound made in a public part of a school is not automatically something the group should publish. Follow the school's recording rules and obtain any required permission. (3) ____ Leaving a recording unpublished is a reasonable choice when those conditions have not been met.\n\nBefore the final route is announced, ask someone outside the group to follow it. (4) ____ Where a listener cannot locate a stop or understand an instruction, change the route notes. This is a test of the instructions, not a competition to identify the most sounds.\n\n#### (5) ____\n\nKeep a copy of the approved files together with their location notes and permission record. If the route changes, review those links before reusing the recordings. A useful archive preserves the conditions under which its material can be understood and shared.\n\n共享候选（两项不用）：\n\nA. That trial can reveal gaps the designers no longer notice.\nB. The longest file is always the best one.\nC. Write down the place and the date when saving each file.\nD. Preserve the record with the recording\nE. A visitor must guess where every sound came from.\nF. Let that purpose guide what you choose to record.\nG. Permission needs checking before the file is released, not afterwards.",
+  "author_answer_vector": [
+    "F",
+    "C",
+    "G",
+    "A",
+    "D"
+  ],
+  "load_measure": {
+    "body_English_words": 275,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 315,
+    "output_response_positions": 5,
+    "output_mode": "closed_letter_selection",
+    "shared_bank_English_words_once": 63,
+    "filled_article_English_words": 321,
+    "requirement_English_words": 2,
+    "requirement_Chinese_Han": 41,
+    "requirement_total_characters": 48,
+    "output_letter_count": 5
+  },
+  "source_original_key_not_gold": true,
+  "source_level_equivalence_established": false,
+  "fictional_content_not_empirical_fact_gold": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "authored_student_inputs_complete": true,
+  "body_load_text": "A campus sound walk can help a group notice places it usually crosses without much attention. Participants record short sounds and link them to stops on a route. The project needs clear choices about recording, listening and publication.\n\nDecide what a stop should reveal\n\nA recording is more useful when it has a purpose. At a busy doorway, for example, the group might want listeners to notice the rhythm of arrivals rather than identify particular speakers. (1) ____ A clear aim can keep the group from collecting long recordings simply because the device has enough space.\n\nKeep a location record\n\nA file name such as “new sound 7” gives little help a week later. (2) ____ The notes need not describe every noise, but they should allow another member to find the intended place. Otherwise, a sound may be placed beside the wrong stop on the route.\n\nCheck what may be shared\n\nA sound made in a public part of a school is not automatically something the group should publish. Follow the school's recording rules and obtain any required permission. (3) ____ Leaving a recording unpublished is a reasonable choice when those conditions have not been met.\n\nBefore the final route is announced, ask someone outside the group to follow it. (4) ____ Where a listener cannot locate a stop or understand an instruction, change the route notes. This is a test of the instructions, not a competition to identify the most sounds.\n\n(5) ____\n\nKeep a copy of the approved files together with their location notes and permission record. If the route changes, review those links before reusing the recordings. A useful archive preserves the conditions under which its material can be understood and shared.",
+  "shared_bank": [
+    [
+      "A",
+      "That trial can reveal gaps the designers no longer notice."
+    ],
+    [
+      "B",
+      "The longest file is always the best one."
+    ],
+    [
+      "C",
+      "Write down the place and the date when saving each file."
+    ],
+    [
+      "D",
+      "Preserve the record with the recording"
+    ],
+    [
+      "E",
+      "A visitor must guess where every sound came from."
+    ],
+    [
+      "F",
+      "Let that purpose guide what you choose to record."
+    ],
+    [
+      "G",
+      "Permission needs checking before the file is released, not afterwards."
+    ]
+  ],
+  "unused_bank_labels": [
+    "B",
+    "E"
+  ],
+  "filled_article": "A campus sound walk can help a group notice places it usually crosses without much attention. Participants record short sounds and link them to stops on a route. The project needs clear choices about recording, listening and publication.\n\n#### Decide what a stop should reveal\n\nA recording is more useful when it has a purpose. At a busy doorway, for example, the group might want listeners to notice the rhythm of arrivals rather than identify particular speakers. Let that purpose guide what you choose to record. A clear aim can keep the group from collecting long recordings simply because the device has enough space.\n\n#### Keep a location record\n\nA file name such as “new sound 7” gives little help a week later. Write down the place and the date when saving each file. The notes need not describe every noise, but they should allow another member to find the intended place. Otherwise, a sound may be placed beside the wrong stop on the route.\n\n#### Check what may be shared\n\nA sound made in a public part of a school is not automatically something the group should publish. Follow the school's recording rules and obtain any required permission. Permission needs checking before the file is released, not afterwards. Leaving a recording unpublished is a reasonable choice when those conditions have not been met.\n\nBefore the final route is announced, ask someone outside the group to follow it. That trial can reveal gaps the designers no longer notice. Where a listener cannot locate a stop or understand an instruction, change the route notes. This is a test of the instructions, not a competition to identify the most sounds.\n\n#### Preserve the record with the recording\n\nKeep a copy of the approved files together with their location notes and permission record. If the route changes, review those links before reusing the recordings. A useful archive preserves the conditions under which its material can be understood and shared.",
+  "material_article_count": 1,
+  "slot_roles": [
+    "sentence",
+    "sentence",
+    "sentence",
+    "sentence",
+    "heading"
+  ],
+  "whole_article_all_slots_refilled": true,
+  "no_added_once_limit": true,
+  "source39_bestness_not_copied": false
+}
