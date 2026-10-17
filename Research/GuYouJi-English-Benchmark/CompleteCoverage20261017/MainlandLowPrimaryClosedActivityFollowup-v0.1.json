@@ -1,0 +1,95 @@
+{
+  "version": "0.1",
+  "scope": "mainland_lowprimary_firstparty_activity_observation_not_complete_assessment_sample",
+  "previous_band_boundary": {
+    "path": "CompleteCoverage20261017/LowPrimaryBandReferenceReview-v0.1.json",
+    "sha256": "044157a05f8be0a50402038fca2547ddd6a4c08368605cabbb40d68329375aef"
+  },
+  "source_news": {
+    "school": "贵阳一中新世界学校",
+    "url": "https://www.yzxsj.com/index.php?a=show&c=index&catid=84&id=717&m=content",
+    "native": {
+      "path": "build/english-benchmark-authority-20261017/guiyang-newworld-nonpaper2022-v0.1.html",
+      "sha256": "e4968232929af1b3902b0f4418557485d6abedaa2fc7b6b19717dd18e499e2fe"
+    },
+    "photo": {
+      "path": "build/english-benchmark-authority-20261017/guiyang-newworld-english-photo2022-v0.1.jpg",
+      "sha256": "c0efdabf92a8a4a41f0119ca2bb26d4cdb9681dbe64feb1eb0f787707dd90626"
+    },
+    "native_review": {
+      "path": "build/english-benchmark-authority-20261017/guiyang-closedcards-native-review-v0.1.json",
+      "sha256": "ae3fb4e5891bdfa05c9116c42932004510760c4dc54956b36f94c4661b56567b"
+    },
+    "body_level": "primary1",
+    "source_event": "2022-01-07",
+    "closed_response_activity_observed": true,
+    "task": "听颜色词/短句，敲对应带英文词的颜色卡",
+    "known_single_example": "red_to_red_card",
+    "original_required_cardpool_size": null,
+    "whole_response_count": null,
+    "full_script_and_key_bundle": false,
+    "source_whole_group_admitted": false,
+    "possible_digital_response": "click_card_would_be_an_authored_adaptation_not_the_native_physical_response",
+    "source_input_confound": "Cards carry printed English words as well as colours; not pure colour-only listening stimulus"
+  },
+  "other_followups": [
+    {
+      "url": "https://wjlxsyxx.wujiang.edu.cn/2026_06/28_16/content-172691.html",
+      "news_date": "2026-06-28",
+      "event_date": "2026-06-25",
+      "levels_not_separately_allocated": [
+        "primary1",
+        "primary2"
+      ],
+      "finding": "School news says word reading, sentence formation and songs; these oral/performance tasks remain paused. No full closed question/card/script/key bundle in the text.",
+      "evidence": {
+        "path": "build/english-benchmark-authority-20261017/lowprimary-web66-v0.1.json",
+        "sha256": "30ca99c5fdcdc84b4710a8489a9c44de4d1cbdede781f531234c01d5de747154"
+      },
+      "new_closed_sample": false
+    },
+    {
+      "url": "https://wjlxsyxx.wujiang.edu.cn/2026_02/06_11/content-167440.html",
+      "news_date": "2026-02-06",
+      "finding": "School news encourages speaking English; not a complete closed assessment source.",
+      "evidence": {
+        "path": "build/english-benchmark-authority-20261017/lowprimary-web66-v0.1.json",
+        "sha256": "30ca99c5fdcdc84b4710a8489a9c44de4d1cbdede781f531234c01d5de747154"
+      },
+      "new_closed_sample": false
+    },
+    {
+      "url": "https://www.gwfx.net/info/1060/14938.htm",
+      "finding": "Search snippet lists a lucky-card station, but two normal reader opens timed out. No full page or cards acquired; do not repeat route without new evidence.",
+      "evidence": [
+        {
+          "path": "build/english-benchmark-authority-20261017/lowprimary-web65-v0.1.json",
+          "sha256": "47eb6908c3af9549e7d3fc8e28bf3eefb5de590f5cda68a47d0028f95f5e90a1"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/lowprimary-web67-v0.1.json",
+          "sha256": "f1fdf65c90059c7365555600ab61d3d5f6838a34296367e09e35f36f03d42ac8"
+        }
+      ],
+      "new_closed_sample": false
+    }
+  ],
+  "search_evidence": {
+    "path": "build/english-benchmark-authority-20261017/lowprimary-web64-v0.1.json",
+    "sha256": "a1405eb32051e6d236c6f2e83cc037c5fa07d9640f5a03a30ba73dd9790b87be"
+  },
+  "network_fetch": {
+    "path": "build/english-benchmark-authority-20261017/guiyang-closedcards-fetch-v0.1.json",
+    "sha256": "d3f1d9e0d5d185ad996638476a73a6b2c9a9c49fcce5f56d492a65105b714772"
+  },
+  "browser_photo_inspection": "IABphoto_open_andinventory_each_timedout;normalpublicHTTPphoto_acquired_andlocal_original_viewed;no_gate_bypass_or_auth",
+  "new_complete_source_question_groups": 0,
+  "new_source_parent_papers": 0,
+  "new_question_responses": 0,
+  "new_author_groups": 0,
+  "current_main_groups": 502,
+  "current_main_responses": 3509,
+  "grade1_closed_activities_exist_but_specific_input_bundle_unresolved": true,
+  "no_implicit_reinstatement_of_oral_subjective_groups": true,
+  "goal_complete": false
+}
