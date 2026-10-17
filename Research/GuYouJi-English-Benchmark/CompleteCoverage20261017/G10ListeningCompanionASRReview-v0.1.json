@@ -1,0 +1,393 @@
+{
+  "version": "0.1",
+  "scope": "existing_official_audio_automatic_extension_and_source_key_quality_followup",
+  "source_asr_manifest": {
+    "path": "build/english-benchmark-authority-20261017/g10-source-asr-extension-manifest-v0.1.json",
+    "sha256": "d0e4538aa51ad8250eac719863ca9d98d0beb5fb1d1af097c2b84d34c40d2bba"
+  },
+  "selection": {
+    "path": "build/english-benchmark-authority-20261017/g10-long5-asr-selections-v0.1.json",
+    "sha256": "93d718afcbd49c2d97fe1a6ea0fd750f4546c6f10f1e7bdb6a3f28a55269200e"
+  },
+  "key_view": {
+    "path": "build/english-benchmark-authority-20261017/g10-listening20-published-key-view-v0.1.json",
+    "sha256": "9729a3661142e587414590b2739e3ce987cbb3191f372f45a7e3dc806c7e98f4"
+  },
+  "question_images": [
+    {
+      "path": "build/english-benchmark-authority-20261017/zhengzhou-g10-page2-preview-v0.1.png",
+      "sha256": "2642caf687acf6121dba300659a27537d45b44f012d9f64a8c58b078197271b1"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/zhengzhou-g10-page3-preview-v0.1.png",
+      "sha256": "e9831841a1b7b53d02d7d196ad4ed0a5a6896debdf08a61a1025ab31bfb23106"
+    }
+  ],
+  "audio_duration_ms": 1097325.688,
+  "old_60to240_probe_reused": true,
+  "new_transcribed_ranges_ms": [
+    [
+      0,
+      60000
+    ],
+    [
+      240000,
+      1097325.688
+    ]
+  ],
+  "automatic_alignment": [
+    {
+      "source_question": 6,
+      "published_key": "C",
+      "automatic_cue": "I have been taking ballet classes",
+      "pairing_note": "A_not_a_professional_dancer_B_does_not_run_room_C_exercises",
+      "source_material": 6,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 7,
+      "published_key": "A",
+      "automatic_cue": "I prefer running in the park",
+      "pairing_note": "Aexplicit_Bhouse_Cgym_notpreferred",
+      "source_material": 6,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 8,
+      "published_key": "A",
+      "automatic_cue": "children's safety at home",
+      "pairing_note": "Afocus_Bsafeplacesnottopic_Cdangerswithoutat_homebroader",
+      "source_material": 7,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 9,
+      "published_key": "C",
+      "automatic_cue": "getting broken bones is the highest",
+      "pairing_note": "C_asheard_Acuts_Bburns_notmaximum;medicalclaimnotrealityverified",
+      "source_material": 7,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 10,
+      "published_key": "C",
+      "automatic_cue": "most important life skill",
+      "pairing_note": "Cimportantlifeskill_Afewdangerscontradicted_Bschoolsnotstated",
+      "source_material": 7,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 11,
+      "published_key": "B",
+      "automatic_cue": "I lost my wallet",
+      "pairing_note": "Bmissingwallet_Anotlostway_Cbodynotstated",
+      "source_material": 8,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 12,
+      "published_key": "A",
+      "automatic_cue": "I have already done that",
+      "pairing_note": "APolicealready_Bnewspaperonlysuggested_Cmanagercallnotdone",
+      "source_material": 8,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 13,
+      "published_key": "C",
+      "automatic_cue": "I will call him",
+      "pairing_note": "Cunclecall_Aadvisesbreakfast_notpromisetreat_Bnoloan",
+      "source_material": 8,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 14,
+      "published_key": "B",
+      "automatic_cue": "thank you for joining us today",
+      "pairing_note": "Binterviewquestions_Anotreportingnews_Cnotdirectfamilycounselling",
+      "source_material": 9,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 15,
+      "published_key": "A",
+      "automatic_cue": "share my responsibilities at home",
+      "pairing_note": "Astudyandhome_Bprojectpartners_Cpublicrecognitionnotstated",
+      "source_material": 9,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 16,
+      "published_key": "C",
+      "automatic_cue": "better time management",
+      "pairing_note": "officialCfamilyparticipation_andAmanagingtimebothsupported_inautomatictext_requiresauralkeyreview",
+      "source_material": 9,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": true,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 17,
+      "published_key": "C",
+      "automatic_cue": "From that idea came a new culture",
+      "pairing_note": "CDIYidea_Youngandoldbothpossible_notoriginage",
+      "source_material": 10,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 18,
+      "published_key": "A",
+      "automatic_cue": "want to learn new skills",
+      "pairing_note": "Alearn_Bneedobjects_negated_Cyouthinterest_notstated",
+      "source_material": 10,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 19,
+      "published_key": "C",
+      "automatic_cue": "websites for makers to share",
+      "pairing_note": "CInternet_A3Dprinters_Brobots_aretoolsnotsharingchannel",
+      "source_material": 10,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    },
+    {
+      "source_question": 20,
+      "published_key": "B",
+      "automatic_cue": "too expensive for common people",
+      "pairing_note": "Bpricebarriergiven_Askilllack_Cguidancelacknotgiven;datedaffordabilitynot2026fact",
+      "source_material": 10,
+      "conditional_automatic_support_only": true,
+      "safe_positive_anchor": false,
+      "requires_key_review": false,
+      "independent_aural_verified": false
+    }
+  ],
+  "source_question16_risk": {
+    "source_question": 16,
+    "printed_stem": "How does Charles Martin intend to remove his family's concerns?",
+    "printed_options": [
+      [
+        "A",
+        "By managing his time wisely."
+      ],
+      [
+        "B",
+        "By stopping the community project."
+      ],
+      [
+        "C",
+        "By inviting his family to community work."
+      ]
+    ],
+    "published_key": "C",
+    "automatic_supported_candidates": [
+      "A",
+      "C"
+    ],
+    "automatic_cues": [
+      {
+        "segment": 88,
+        "offsets": {
+          "from": 790000,
+          "to": 798000
+        },
+        "text": " I'm making an effort to invite them to join in some of the community activities, so it becomes a family effort."
+      },
+      {
+        "segment": 89,
+        "offsets": {
+          "from": 798000,
+          "to": 804000
+        },
+        "text": " And I have been working on better time management."
+      },
+      {
+        "segment": 100,
+        "offsets": {
+          "from": 859000,
+          "to": 867000
+        },
+        "text": " I'm making an effort to invite them to join in some of the community activities, so it becomes a family effort."
+      },
+      {
+        "segment": 101,
+        "offsets": {
+          "from": 867000,
+          "to": 872000
+        },
+        "text": " And I have been working on better time management."
+      }
+    ],
+    "status": "potential_dual_support_requires_source_aural_and_key_quality_review",
+    "source_key_declared_wrong": false,
+    "not_gold": true,
+    "own3_corresponding_items": [
+      {
+        "id": "grade10-fiveLong-bell-festival",
+        "candidate": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-bell-festival-v0.1.md",
+          "sha256": "77e26563fd2ff4cdb5152316d440d2027a100c2622fc684e36ba5ebfec9240c9"
+        },
+        "author_check": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-bell-festival-author-check-v0.1.json",
+          "sha256": "58653ae3e2b1f7cab8c77cf873fbae644e3c5416165f5a439f17df5946e0042b"
+        },
+        "manuscript": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-bell-festival-manuscript-v0.1.json",
+          "sha256": "2a823212b398c345fe6c372c9a4584616d72d84b32ded8ce82edaad863ce0ec2"
+        },
+        "response_position": 11,
+        "source_correspondence_position": 16,
+        "own_stem": "What condition did the photographer set?",
+        "own_options": [
+          [
+            "A",
+            "Her name must be included."
+          ],
+          [
+            "B",
+            "All copies must be sold."
+          ],
+          [
+            "C",
+            "The photos must remain unedited."
+          ]
+        ],
+        "own_answer": "A",
+        "own_rationale": "A：明确署名；B：无销售要求；C：无不准编辑条件",
+        "fourth_clip_script": "You have three photographs of the old bridge. Which will you put in the display? I like the one at sunset, but it hides the repair work. The photograph from the riverbank shows the new stone clearly. Then use that one. Visitors need to understand what changed. I agree. I will keep the sunset picture for the cover of our club magazine. Remember to ask the photographer before printing either picture. She has already agreed, as long as we include her name.",
+        "manual_corresponding_item_review": "single_target_distinct_candidates_no_dual_supported_strategy_found",
+        "payload_changed": false
+      },
+      {
+        "id": "grade10-fiveLong-path-costumes",
+        "candidate": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-path-costumes-v0.1.md",
+          "sha256": "4b0045c33e77c2ae544e5d96a0583b8179bb20c9379352ed175cd12660e5c1a6"
+        },
+        "author_check": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-path-costumes-author-check-v0.1.json",
+          "sha256": "a8f548eb2237394f5a7199e942210710b05ff4499165eae91af7f7ce44462c85"
+        },
+        "manuscript": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-path-costumes-manuscript-v0.1.json",
+          "sha256": "3327dea8eb779c03eb40b26c86f2be287ba2279aec41870cf9089d0cca8acb23"
+        },
+        "response_position": 11,
+        "source_correspondence_position": 16,
+        "own_stem": "Why print one copy first?",
+        "own_options": [
+          [
+            "A",
+            "To check readability."
+          ],
+          [
+            "B",
+            "To sell it at the station."
+          ],
+          [
+            "C",
+            "To replace the online map."
+          ]
+        ],
+        "own_answer": "A",
+        "own_rationale": "A：试读标签是否清楚；B：未售卖；C：详细在线图仍保留",
+        "fourth_clip_script": "The walking club wants a map with every footpath on it. That could be difficult to read. Most visitors only need the route between the station and the lake. So you think we should simplify it? Yes. Keep the main route, the toilets and the bus stops. We can provide a link to a detailed map for people who want more. Good. I will remove the minor paths and enlarge the labels. Then print one copy first, so we can test whether the names are readable.",
+        "manual_corresponding_item_review": "single_target_distinct_candidates_no_dual_supported_strategy_found",
+        "payload_changed": false
+      },
+      {
+        "id": "grade10-fiveLong-sound-letter",
+        "candidate": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-sound-letter-v0.1.md",
+          "sha256": "d55c09089d46566d4a0c43d876381cd1528004e45bd0f160099b50b746526023"
+        },
+        "author_check": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-sound-letter-author-check-v0.1.json",
+          "sha256": "b94bfbb0e8184bed1f1ba6c7675565f01a44b68aeff03c47597689b07d03ae07"
+        },
+        "manuscript": {
+          "path": "CompleteCoverage20261017/Authored/grade10-fiveLong-sound-letter-manuscript-v0.1.json",
+          "sha256": "5ee5c7b5ebd59e25ec44496c1bb8bfffc5ed00bdc3415b77273ef8bcf18e5d81"
+        },
+        "response_position": 11,
+        "source_correspondence_position": 16,
+        "own_stem": "How will the circle probably be used?",
+        "own_options": [
+          [
+            "A",
+            "For every public concert."
+          ],
+          [
+            "B",
+            "Mainly for practice."
+          ],
+          [
+            "C",
+            "Only for photographs."
+          ]
+        ],
+        "own_answer": "B",
+        "own_rationale": "A：演出顾及观众不会这样；B：明确练习有用；C：不是拍照用途",
+        "fourth_clip_script": "The choir sounded different today. Were there fewer singers? The same number came, but we stood in a circle instead of rows. Why did you change that? In rows, the back singers could hardly hear the front. In a circle, everyone could hear the whole group. Will you stand like that for the concert? Probably not; the audience needs to see us. But it is useful for practice.",
+        "manual_corresponding_item_review": "single_target_distinct_candidates_no_dual_supported_strategy_found",
+        "payload_changed": false
+      }
+    ]
+  },
+  "all_five_long_materials_have_automatic_drafts": true,
+  "source_Text8_marker_not_recognised": true,
+  "source_complete_verified_transcript": false,
+  "source_roles_independent_aural_verified": false,
+  "source_key_gold": false,
+  "factual_claims_not_verified": [
+    "home_accident_relative_frequency",
+    "maker_technology_prices_and_affordability"
+  ],
+  "new_acquisitions": 0,
+  "new_authored_groups": 0,
+  "new_original_audio": 0,
+  "main_groups": 502,
+  "main_responses": 3509,
+  "goal_complete": false
+}
