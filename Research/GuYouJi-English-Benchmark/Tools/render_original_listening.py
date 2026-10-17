@@ -60,8 +60,16 @@ def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion'}
-    if family=='listening_passage_completion':
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion','listening_picture_matching'}
+    if family=='listening_picture_matching':
+        assert draft['grade']=='primary3' and len(draft['clips'])==1
+        assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
+        c=draft['clips'][0];units=draft['audio_dialogue_units']
+        assert [u['label']for u in units]==list('ABCDE') and len(c['questions'])==len(draft['figures'])==5
+        assert c['turns']==[t for u in units for t in [dict(speaker='N',text='Dialogue '+u['label']+'.')]+u['turns']]
+        assert all([t['speaker']for t in u['turns']]==['M','W']for u in units)
+        assert c['preview_seconds']==c['answer_seconds']==15
+    elif family=='listening_passage_completion':
         assert len(draft['clips'])==1 and draft['source_repeat_count']==3
         c=draft['clips'][0]
         assert len(c['questions'])==5 and len(c['turns'])==1 and c['turns'][0]['speaker']=='N'
@@ -122,7 +130,7 @@ def render(manuscript, output, version='0.1'):
     if family=='listening_passage_completion' or family=='listening_dialogue_choice' and draft['grade']=='primary5':
         assert draft['source_repeat_count']==3
         repeat_count=3
-    elif family in {'listening_dialogue_choice','listening_picture_true_false'}:
+    elif family in {'listening_dialogue_choice','listening_picture_true_false','listening_picture_matching'}:
         repeat_count=1
     elif family=='listening_short_conversation_choice':
         assert draft['source_hear_each_piece_once'] and draft['source_answer_seconds']==10

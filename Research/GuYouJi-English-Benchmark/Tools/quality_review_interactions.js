@@ -126,6 +126,10 @@ function render(){
    pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='图片'+(i+1))heading.remove();fields[i].querySelector('legend').after(picture,tracks[i]);});
   }
  }
+ if(g.kind==='listening_picture_matching'){
+  const pictures=[...el('student').querySelectorAll('img.passage-image')].map(img=>img.closest('figure')),fields=[...el('responses').querySelectorAll('fieldset')];
+  if(pictures.length===g.questions.length){pictures.forEach((picture,i)=>{const heading=picture.previousElementSibling;if(heading?.tagName==='H3'&&heading.textContent.trim()==='图片'+(i+1))heading.remove();fields[i].querySelector('legend').after(picture);});}
+ }
  const firstParagraph=el('student').firstElementChild;
  if(firstParagraph?.tagName==='P'&&firstParagraph.textContent.trim()===instruction.trim())firstParagraph.remove();
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=()=>{if(el('student').contains(a))el('notice').textContent='必要音频无法载入，请刷新重试；本组尚不能完整作答。';};});

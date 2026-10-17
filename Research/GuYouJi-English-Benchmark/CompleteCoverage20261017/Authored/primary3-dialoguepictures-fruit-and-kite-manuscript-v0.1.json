@@ -1,0 +1,335 @@
+{
+  "version": "0.1",
+  "id": "primary3-dialoguepictures-fruit-and-kite",
+  "title": "小三对话配图：水果与风筝",
+  "grade": "primary3",
+  "family": "listening_picture_matching",
+  "family_label": "听对话标号配图",
+  "source_group_id": "primary3.dongcheng2025-26upper.listening.part2",
+  "source_binding": "p3dialoguepictures5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.9.json",
+    "sha256": "f4eba1be293c549ae636695470f9a6ec767faa675816c0bf8eb2bb7c04e06ea9"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.9.json",
+  "source_replay_rule": "not_printed",
+  "render_repeat_count": 1,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Listen to dialogues A to E. Match each picture to a dialogue.",
+  "instruction": "听A—E五段短对话，为全部5幅图各选相符的对话字母。没有额外规定每字母只能用一次。原样卷未印重播/停顿；本机全组一遍、前后各15秒，可重播，不当原卷规则。源音轨/脚本/参考键缺。",
+  "figures": [
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-dialoguepictures-fruit-and-kite-picture1-v0.1.svg",
+      "sha256": "8e309867f8365d93502f6fd5db43dcff29a24b6851d16602a822909282a2ecc1"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-dialoguepictures-fruit-and-kite-picture2-v0.1.svg",
+      "sha256": "1b167bcfdb8fa394b12f8203823fa8e80c4d7509bfcf481daa941df3b8f1a924"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-dialoguepictures-fruit-and-kite-picture3-v0.1.svg",
+      "sha256": "184a108ef556a27dc7dd4830aedaaef5684643d0fda8fe5210dea1f1cc2818c6"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-dialoguepictures-fruit-and-kite-picture4-v0.1.svg",
+      "sha256": "225f1bf5e7be7d3527732dc791110ba43f64944d969c044391ca53dc66e8b804"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary3-dialoguepictures-fruit-and-kite-picture5-v0.1.svg",
+      "sha256": "42a6a4db7b1e59b4b67aadabb70231e0fa77833d99ffb4371b651e3ad4cc851d"
+    }
+  ],
+  "visual_panel_semantics": [
+    "两颗红苹果，C问答明确two apples",
+    "三点钟面，A明确three oclock",
+    "蓝包，E明确blue bag",
+    "猫在桌面下，B明确under table",
+    "带线菱形风筝，D明确kite"
+  ],
+  "audio_dialogue_units": [
+    {
+      "label": "A",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What time is it?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is three o'clock."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Where is the cat?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is under the table."
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "How many apples can you see?"
+        },
+        {
+          "speaker": "W",
+          "text": "I can see two apples."
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "What is that in the sky?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is a kite."
+        }
+      ]
+    },
+    {
+      "label": "E",
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Is this your bag?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. It is my blue bag."
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 15,
+      "answer_seconds": 15,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dialogue A."
+        },
+        {
+          "speaker": "M",
+          "text": "What time is it?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is three o'clock."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue B."
+        },
+        {
+          "speaker": "M",
+          "text": "Where is the cat?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is under the table."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue C."
+        },
+        {
+          "speaker": "M",
+          "text": "How many apples can you see?"
+        },
+        {
+          "speaker": "W",
+          "text": "I can see two apples."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue D."
+        },
+        {
+          "speaker": "M",
+          "text": "What is that in the sky?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is a kite."
+        },
+        {
+          "speaker": "N",
+          "text": "Dialogue E."
+        },
+        {
+          "speaker": "M",
+          "text": "Is this your bag?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. It is my blue bag."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "C",
+          "rationale": "两颗红苹果，C问答明确two apples；A说的是It is three o'clock.；B说的是It is under the table.；D说的是It is a kite.；E说的是Yes. It is my blue bag.。每题独立凭图音匹配，不靠排除已用字母。"
+        },
+        {
+          "stem": "第2图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "A",
+          "rationale": "三点钟面，A明确three oclock；B说的是It is under the table.；C说的是I can see two apples.；D说的是It is a kite.；E说的是Yes. It is my blue bag.。每题独立凭图音匹配，不靠排除已用字母。"
+        },
+        {
+          "stem": "第3图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "E",
+          "rationale": "蓝包，E明确blue bag；A说的是It is three o'clock.；B说的是It is under the table.；C说的是I can see two apples.；D说的是It is a kite.。每题独立凭图音匹配，不靠排除已用字母。"
+        },
+        {
+          "stem": "第4图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "B",
+          "rationale": "猫在桌面下，B明确under table；A说的是It is three o'clock.；C说的是I can see two apples.；D说的是It is a kite.；E说的是Yes. It is my blue bag.。每题独立凭图音匹配，不靠排除已用字母。"
+        },
+        {
+          "stem": "第5图匹配哪段对话？",
+          "options": [
+            [
+              "A",
+              "对话A"
+            ],
+            [
+              "B",
+              "对话B"
+            ],
+            [
+              "C",
+              "对话C"
+            ],
+            [
+              "D",
+              "对话D"
+            ],
+            [
+              "E",
+              "对话E"
+            ]
+          ],
+          "answer": "D",
+          "rationale": "带线菱形风筝，D明确kite；A说的是It is three o'clock.；B说的是It is under the table.；C说的是I can see two apples.；E说的是Yes. It is my blue bag.。每题独立凭图音匹配，不靠排除已用字母。"
+        }
+      ]
+    }
+  ]
+}
