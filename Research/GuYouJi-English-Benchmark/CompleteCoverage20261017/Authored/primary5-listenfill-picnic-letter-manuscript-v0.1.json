@@ -1,0 +1,140 @@
+{
+  "version": "0.1",
+  "id": "primary5-listenfill-picnic-letter",
+  "title": "小五书信听写：野餐准备",
+  "grade": "primary5",
+  "family": "listening_passage_completion",
+  "family_label": "听短文语篇填词",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part6",
+  "source_binding": "p5whole6five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.8.json",
+  "source_repeat_count": 3,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Read the questions. Then listen to the whole recording.",
+  "instruction": "听完整书信三遍，根据录音补全同一封信中的5空。按实际听词填写，已核英美拼写同等接受，未列形式待复核；不另加原卷未印的数字词数上限。 本机听前25秒、最后25秒及中间提示为演示编排，原卷未印精确时序；可自主重播。源题面/印本脚本/参考键可核，原录音未取得。",
+  "clips": [
+    {
+      "context": "Dear Ben,\n\nOur class had a picnic on Saturday. We met near my (1) ____ park. Before we left, we made some (2) ____ in the school kitchen. Two of our (3) ____ came to help. We carried the food (4) ____ because the boxes were open. At the park, we played games and shared our lunch. We put all the rubbish in a bag. Before going home, we (5) ____ the empty boxes to school. Everyone helped to wash them.\n\nBest,\nAmy",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dear Ben,\n\nOur class had a picnic on Saturday. We met near my favourite park. Before we left, we made some sandwiches in the school kitchen. Two of our neighbours came to help. We carried the food carefully because the boxes were open. At the park, we played games and shared our lunch. We put all the rubbish in a bag. Before going home, we returned the empty boxes to school. Everyone helped to wash them.\n\nBest,\nAmy"
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1空",
+          "options": [],
+          "acceptedAnswers": [
+            "favourite",
+            "favorite"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "favour"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为favourite，全篇该位置回填与时态/搭配一致。英美拼写favourite/favorite指同一听词，同等接受。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第2空",
+          "options": [],
+          "acceptedAnswers": [
+            "sandwiches"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "sandwich"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为sandwiches，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第3空",
+          "options": [],
+          "acceptedAnswers": [
+            "neighbours",
+            "neighbors"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "neighbouring"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为neighbours，全篇该位置回填与时态/搭配一致。英美拼写neighbours/neighbors指同一听词，同等接受。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第4空",
+          "options": [],
+          "acceptedAnswers": [
+            "carefully"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "careful"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为carefully，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第5空",
+          "options": [],
+          "acceptedAnswers": [
+            "returned"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "returning"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为returned，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        }
+      ]
+    }
+  ],
+  "accepted_forms_checked_in_full_letter": true
+}

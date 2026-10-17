@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholelisten-boat-museum",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "25387165d61f5034cf3458024d063ac9369a21544c844099c90c5ad0f09b740d",
+  "source_binding": "p5whole7five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_group_id": "primary5.guilin2024-25lower.listening.part7",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "On which day will they visit?",
+      "options": [
+        [
+          "A",
+          "Sunday."
+        ],
+        [
+          "B",
+          "Saturday."
+        ],
+        [
+          "C",
+          "Friday."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "周日关门，改周六；A为初提被否定，C无。"
+    },
+    {
+      "number": 2,
+      "stem": "Where is the museum?",
+      "options": [
+        [
+          "A",
+          "In a large library."
+        ],
+        [
+          "B",
+          "Beside the school."
+        ],
+        [
+          "C",
+          "In an old house near the river."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "老房近河；桥旁大楼是图书馆非博物馆。"
+    },
+    {
+      "number": 3,
+      "stem": "What will they see?",
+      "options": [
+        [
+          "A",
+          "Small wooden boats."
+        ],
+        [
+          "B",
+          "Large toy trains."
+        ],
+        [
+          "C",
+          "New sports cars."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明确小木船，可看制作；B/C无。"
+    },
+    {
+      "number": 4,
+      "stem": "How long does the journey take?",
+      "options": [
+        [
+          "A",
+          "Ten minutes."
+        ],
+        [
+          "B",
+          "Thirty minutes."
+        ],
+        [
+          "C",
+          "Twenty minutes."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "明确20分钟；A/B与数字不符。"
+    },
+    {
+      "number": 5,
+      "stem": "How will they travel?",
+      "options": [
+        [
+          "A",
+          "By bus."
+        ],
+        [
+          "B",
+          "By train."
+        ],
+        [
+          "C",
+          "On foot."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "明确bus；B/C未选。"
+    }
+  ],
+  "canonical_response_block_sha256": "43541b486ff91364f9719fe8ae2dce8806a732fb6442b45ffceaf0f724c454d8",
+  "student_passage": "[完整五题音频（三遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary5-wholelisten-boat-museum-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-wholelisten-boat-museum-manuscript-v0.1.json",
+    "sha256": "759b1ed1888d20d72348d2dcf0007c191731a4c29f0bab1db4a313554c067acd"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary5-wholelisten-boat-museum-audio-v0.1.json",
+    "sha256": "b4ca1e4082013b1021d8180092cad8b4bcee09a69c45a1ea6a49abce1dfa3e14"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary5-wholelisten-boat-museum-extract1-v0.1.m4a",
+      "sha256": "bc1289471c190bef255fb4b88cdc3701efa35ecd25eb7a2b5a5cc97b62ef79aa",
+      "seconds": 197.46204081632652,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 3,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_whole_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 24,
+    "options_English_words_with_repeated_bank": 38,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 102,
+    "audio_spoken_words_with_instructions": 326,
+    "audio_seconds_with_pauses": 197.46204081632652,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

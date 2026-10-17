@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholelisten-theatre-tour",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "e7e0273cd1927848a6309041ec4e144a7835793daf0640696d34f788d52cafef",
+  "source_binding": "p5whole7five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_group_id": "primary5.guilin2024-25lower.listening.part7",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "What will the class watch?",
+      "options": [
+        [
+          "A",
+          "A full public play."
+        ],
+        [
+          "B",
+          "A film about actors."
+        ],
+        [
+          "C",
+          "The actors practising."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "排练非完整演出，A被否定B无。"
+    },
+    {
+      "number": 2,
+      "stem": "Where should the class meet?",
+      "options": [
+        [
+          "A",
+          "Outside the school office."
+        ],
+        [
+          "B",
+          "In the costume room."
+        ],
+        [
+          "C",
+          "At the theatre ticket desk."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "学校办公室外集合，B参观处C无。"
+    },
+    {
+      "number": 3,
+      "stem": "When should the class meet?",
+      "options": [
+        [
+          "A",
+          "At half past ten."
+        ],
+        [
+          "B",
+          "At ten."
+        ],
+        [
+          "C",
+          "At half past nine."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "10点集合，10:30参观开始，C无。"
+    },
+    {
+      "number": 4,
+      "stem": "What may the boy do in the costume room?",
+      "options": [
+        [
+          "A",
+          "Take photos of every costume."
+        ],
+        [
+          "B",
+          "Try on the actors' clothes."
+        ],
+        [
+          "C",
+          "Draw in his notebook."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "禁止拍照可画图，B未许可。"
+    },
+    {
+      "number": 5,
+      "stem": "What will the actors do after practising?",
+      "options": [
+        [
+          "A",
+          "Answer questions."
+        ],
+        [
+          "B",
+          "Take the class back to school."
+        ],
+        [
+          "C",
+          "Sell their costumes."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "留15分钟回答；B/C无。"
+    }
+  ],
+  "canonical_response_block_sha256": "0eb5708fb106b1660a93d1fc36e5c7285616f007a2a28039ba4504947115a2ff",
+  "student_passage": "[完整五题音频（三遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary5-wholelisten-theatre-tour-extract1-v0.1.m4a)",
+  "body_load_text": "",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-wholelisten-theatre-tour-manuscript-v0.1.json",
+    "sha256": "cb64ac0320e6efbfc5eac884ca9f93c582166ee65858b07c0183cf4dc131b37d"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary5-wholelisten-theatre-tour-audio-v0.1.json",
+    "sha256": "fbbd0614a4bbe475a08f28ebdeab12845b499234cda34a396942b187cfd09770"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary5-wholelisten-theatre-tour-extract1-v0.1.m4a",
+      "sha256": "e191733b44273d98d1dfff94e5c85016c02fd878bec5cfa5eef8953a20351c93",
+      "seconds": 211.9047619047619,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 3,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_whole_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 31,
+    "options_English_words_with_repeated_bank": 59,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 118,
+    "audio_spoken_words_with_instructions": 374,
+    "audio_seconds_with_pauses": 211.9047619047619,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false
+}

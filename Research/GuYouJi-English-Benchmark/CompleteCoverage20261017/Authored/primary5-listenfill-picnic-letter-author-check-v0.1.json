@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "id": "primary5-listenfill-picnic-letter",
+  "grade": "primary5",
+  "questions": 5,
+  "candidate_sha256": "d30db7b37f883236f03a54f49dd1c469dbadcb388bced06824a79ee22d6536d9",
+  "source_binding": "p5whole6five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_group_id": "primary5.guilin2024-25lower.listening.part6",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [],
+      "acceptedAnswers": [
+        "favourite",
+        "favorite"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "favour"
+        ],
+        "review": "author_context_checked"
+      },
+      "rationale": "录音对应词为favourite，全篇该位置回填与时态/搭配一致。英美拼写favourite/favorite指同一听词，同等接受。不以未列近义表达自动判错，未列形式待复核。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [],
+      "acceptedAnswers": [
+        "sandwiches"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "sandwich"
+        ],
+        "review": "author_context_checked"
+      },
+      "rationale": "录音对应词为sandwiches，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [],
+      "acceptedAnswers": [
+        "neighbours",
+        "neighbors"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "neighbouring"
+        ],
+        "review": "author_context_checked"
+      },
+      "rationale": "录音对应词为neighbours，全篇该位置回填与时态/搭配一致。英美拼写neighbours/neighbors指同一听词，同等接受。不以未列近义表达自动判错，未列形式待复核。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [],
+      "acceptedAnswers": [
+        "carefully"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "careful"
+        ],
+        "review": "author_context_checked"
+      },
+      "rationale": "录音对应词为carefully，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [],
+      "acceptedAnswers": [
+        "returned"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "returning"
+        ],
+        "review": "author_context_checked"
+      },
+      "rationale": "录音对应词为returned，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+    }
+  ],
+  "canonical_response_block_sha256": "eccbc4f16ed0d0cc816a634e041eef67fcec4a82adf0a8131438730ac009c7da",
+  "student_passage": "Dear Ben,\n\nOur class had a picnic on Saturday. We met near my (1) ____ park. Before we left, we made some (2) ____ in the school kitchen. Two of our (3) ____ came to help. We carried the food (4) ____ because the boxes were open. At the park, we played games and shared our lunch. We put all the rubbish in a bag. Before going home, we (5) ____ the empty boxes to school. Everyone helped to wash them.\n\nBest,\nAmy\n\n[完整五题音频（三遍）](../../../../build/english-benchmark-authority-20261017/original-audio/primary5-listenfill-picnic-letter-extract1-v0.1.m4a)",
+  "body_load_text": "Dear Ben,\n\nOur class had a picnic on Saturday. We met near my (1) ____ park. Before we left, we made some (2) ____ in the school kitchen. Two of our (3) ____ came to help. We carried the food (4) ____ because the boxes were open. At the park, we played games and shared our lunch. We put all the rubbish in a bag. Before going home, we (5) ____ the empty boxes to school. Everyone helped to wash them.\n\nBest,\nAmy",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-listenfill-picnic-letter-manuscript-v0.1.json",
+    "sha256": "809995bc877f841f14458ca1539f221de2d919fbbed4983225976e0f6a41c203"
+  },
+  "audio_generation": {
+    "path": "build/english-benchmark-authority-20261017/original-audio/primary5-listenfill-picnic-letter-audio-v0.1.json",
+    "sha256": "2b5a7a6bd2f0672a28bd454b1ce6933637370e59279791b32e2dada7b7074efc"
+  },
+  "audio_assets": [
+    {
+      "path": "build/english-benchmark-authority-20261017/original-audio/primary5-listenfill-picnic-letter-extract1-v0.1.m4a",
+      "sha256": "fc0ef1c5b236adb4079d5cd613ff5932625149e5f928b881d6fd049560af683d",
+      "seconds": 161.15374149659863,
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeat_count": 3,
+      "mime_type": "audio/mp4"
+    }
+  ],
+  "audio_transcript_in_teacher_only": true,
+  "primary_whole_listening": true,
+  "source_timing_unknown_preserved": true,
+  "load_measure": {
+    "body_English_words": 73,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "audio_dialogue_English_words_once": 78,
+    "audio_spoken_words_with_instructions": 259,
+    "audio_seconds_with_pauses": 161.15374149659863,
+    "artifact_URLs_excluded_from_reading_load": true
+  },
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "source_level_equivalence_established": false,
+  "independent_teacher_student_commercial_production_validated": false,
+  "canonical_filled_letter": "Dear Ben,\n\nOur class had a picnic on Saturday. We met near my favourite park. Before we left, we made some sandwiches in the school kitchen. Two of our neighbours came to help. We carried the food carefully because the boxes were open. At the park, we played games and shared our lunch. We put all the rubbish in a bag. Before going home, we returned the empty boxes to school. Everyone helped to wash them.\n\nBest,\nAmy",
+  "full_variant_combinations": 4,
+  "accepted_outputs_not_capped_at_three": true
+}

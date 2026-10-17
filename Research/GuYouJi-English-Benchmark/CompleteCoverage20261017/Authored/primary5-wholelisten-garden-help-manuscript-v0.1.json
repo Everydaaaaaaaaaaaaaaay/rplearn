@@ -1,0 +1,174 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholelisten-garden-help",
+  "title": "小五整对话：花园帮手",
+  "grade": "primary5",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part7",
+  "source_binding": "p5whole7five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.8.json",
+  "source_repeat_count": 3,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Read the questions. Then listen to the whole recording.",
+  "instruction": "听完整对话三遍，回答全部5题，每题三选。 本机听前25秒、最后25秒及中间提示为演示编排，原卷未印精确时序；可自主重播。源题面/印本脚本/参考键可核，原录音未取得。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "W",
+          "text": "Can you help at the school garden on Monday, Sam?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes. Where should I meet you?"
+        },
+        {
+          "speaker": "W",
+          "text": "At the front gate at half past nine. We will walk to the garden together."
+        },
+        {
+          "speaker": "M",
+          "text": "Should I bring some plants?"
+        },
+        {
+          "speaker": "W",
+          "text": "The teacher has the plants. Bring your old gloves. We will put the plants into large pots."
+        },
+        {
+          "speaker": "M",
+          "text": "Do we need to carry water from home?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, there is water at the garden. Bring a bottle for yourself, though."
+        },
+        {
+          "speaker": "M",
+          "text": "What if it rains?"
+        },
+        {
+          "speaker": "W",
+          "text": "We will work in the covered area beside the hall. We do not need to cancel the activity."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "When will Sam help?",
+          "options": [
+            [
+              "A",
+              "On Sunday."
+            ],
+            [
+              "B",
+              "On Friday."
+            ],
+            [
+              "C",
+              "On Monday."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "开头Monday；其他日未约。"
+        },
+        {
+          "stem": "Where will the children meet?",
+          "options": [
+            [
+              "A",
+              "At the school front gate."
+            ],
+            [
+              "B",
+              "Inside the garden."
+            ],
+            [
+              "C",
+              "At the bus station."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "前门集合后步行花园；B为终点非集合处，C无。"
+        },
+        {
+          "stem": "What should Sam bring for the work?",
+          "options": [
+            [
+              "A",
+              "New plants."
+            ],
+            [
+              "B",
+              "Old gloves."
+            ],
+            [
+              "C",
+              "A large pot."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "植物老师备，需旧手套；C未要求自带。"
+        },
+        {
+          "stem": "How will they reach the garden from the meeting place?",
+          "options": [
+            [
+              "A",
+              "By car."
+            ],
+            [
+              "B",
+              "By bus."
+            ],
+            [
+              "C",
+              "On foot."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "walk together；A/B无。"
+        },
+        {
+          "stem": "What will they do if it rains?",
+          "options": [
+            [
+              "A",
+              "Cancel the activity."
+            ],
+            [
+              "B",
+              "Work in a covered area."
+            ],
+            [
+              "C",
+              "Bring all the plants home."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "有顶区域继续；A明说不需取消，C无。"
+        }
+      ]
+    }
+  ]
+}

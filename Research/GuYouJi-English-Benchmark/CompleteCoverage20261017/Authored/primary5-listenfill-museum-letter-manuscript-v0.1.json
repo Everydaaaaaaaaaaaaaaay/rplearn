@@ -1,0 +1,138 @@
+{
+  "version": "0.1",
+  "id": "primary5-listenfill-museum-letter",
+  "title": "小五书信听写：雨天参观",
+  "grade": "primary5",
+  "family": "listening_passage_completion",
+  "family_label": "听短文语篇填词",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part6",
+  "source_binding": "p5whole6five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.8.json",
+  "source_repeat_count": 3,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Read the questions. Then listen to the whole recording.",
+  "instruction": "听完整书信三遍，根据录音补全同一封信中的5空。按实际听词填写，已核英美拼写同等接受，未列形式待复核；不另加原卷未印的数字词数上限。 本机听前25秒、最后25秒及中间提示为演示编排，原卷未印精确时序；可自主重播。源题面/印本脚本/参考键可核，原录音未取得。",
+  "clips": [
+    {
+      "context": "Dear Jack,\n\nIt was wet yesterday, so Dad took us to a small museum. We waited for ten (1) ____ outside. Inside, a woman showed us some old toys. My sister liked a (2) ____ wooden boat. I liked a train with red wheels. We were (3) ____ to see how the toys moved. After the visit, we went to the shop. I bought a (4) ____ for you and wrote this letter at home. I hope we can visit the museum (5) ____ next month.\n\nBest,\nTom",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dear Jack,\n\nIt was wet yesterday, so Dad took us to a small museum. We waited for ten minutes outside. Inside, a woman showed us some old toys. My sister liked a beautiful wooden boat. I liked a train with red wheels. We were excited to see how the toys moved. After the visit, we went to the shop. I bought a postcard for you and wrote this letter at home. I hope we can visit the museum together next month.\n\nBest,\nTom"
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1空",
+          "options": [],
+          "acceptedAnswers": [
+            "minutes"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "minute"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为minutes，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第2空",
+          "options": [],
+          "acceptedAnswers": [
+            "beautiful"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "beauty"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为beautiful，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第3空",
+          "options": [],
+          "acceptedAnswers": [
+            "excited"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "exciting"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为excited，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第4空",
+          "options": [],
+          "acceptedAnswers": [
+            "postcard"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "postcards"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为postcard，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第5空",
+          "options": [],
+          "acceptedAnswers": [
+            "together"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "altogether"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为together，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        }
+      ]
+    }
+  ],
+  "accepted_forms_checked_in_full_letter": true
+}

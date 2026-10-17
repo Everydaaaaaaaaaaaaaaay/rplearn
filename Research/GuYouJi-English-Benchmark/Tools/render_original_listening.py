@@ -60,8 +60,14 @@ def render(manuscript, output, version='0.1'):
     manuscript=manuscript.resolve(); output=output.resolve()
     draft = json.loads(manuscript.read_text())
     family=draft['family']
-    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice'}
-    if family=='listening_word_phrase_choice':
+    assert family in {'listening_extract_choice','listening_interview_choice','listening_double_matching','listening_sentence_completion','listening_true_false','listening_short_conversation_choice','listening_multi_question_choice','listening_dialogue_choice','listening_picture_true_false','listening_word_phrase_choice','listening_passage_completion'}
+    if family=='listening_passage_completion':
+        assert len(draft['clips'])==1 and draft['source_repeat_count']==3
+        c=draft['clips'][0]
+        assert len(c['questions'])==5 and len(c['turns'])==1 and c['turns'][0]['speaker']=='N'
+        assert all(not q['options'] and q['acceptedAnswers']for q in c['questions'])
+        assert c['preview_seconds']==c['answer_seconds']==25
+    elif family=='listening_word_phrase_choice':
         assert len(draft['clips'])==draft['source_sentences']==10 and draft['source_hear_each_piece_twice']
         assert all(len(c['questions'])==len(c['turns'])==1 and c['turns'][0]['speaker']=='N' and [k for k,_ in c['questions'][0]['options']]==['A','B','C'] and c['preview_seconds']==2 and c['answer_seconds']==3 for c in draft['clips'])
     elif family=='listening_picture_true_false':
@@ -69,8 +75,12 @@ def render(manuscript, output, version='0.1'):
         assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
         assert all(len(c['questions'])==len(c['turns'])==1 and c['turns'][0]['speaker']=='N' and [k for k,_ in c['questions'][0]['options']]==['T','F'] and c['preview_seconds']==2 and c['answer_seconds']==3 for c in draft['clips'])
     elif family=='listening_dialogue_choice':
-        assert [len(c['questions'])for c in draft['clips']]==draft['source_questions_per_clip']==[1,2,2]
-        assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
+        if draft['grade']=='primary6':
+            assert [len(c['questions'])for c in draft['clips']]==draft['source_questions_per_clip']==[1,2,2]
+            assert draft['source_replay_rule']=='not_printed' and draft['render_repeat_count']==1
+        else:
+            assert draft['grade']=='primary5' and draft['source_repeat_count']==3
+            assert len(draft['clips'])==1 and len(draft['clips'][0]['questions'])==5
         for c in draft['clips']:
             assert set(t['speaker']for t in c['turns'])=={'M','W'}
             assert c['preview_seconds']==c['answer_seconds']==5*len(c['questions'])
@@ -109,7 +119,10 @@ def render(manuscript, output, version='0.1'):
             assert [t['speaker'] for t in clip['turns']]==['S1','S2','S3','S4','S5']
             assert len(draft['banks'])==2 and all(len(b['options'])==8 for b in draft['banks'])
             assert all(q['options']==draft['banks'][i//5]['options'] for i,q in enumerate(clip['questions']))
-    if family in {'listening_dialogue_choice','listening_picture_true_false'}:
+    if family=='listening_passage_completion' or family=='listening_dialogue_choice' and draft['grade']=='primary5':
+        assert draft['source_repeat_count']==3
+        repeat_count=3
+    elif family in {'listening_dialogue_choice','listening_picture_true_false'}:
         repeat_count=1
     elif family=='listening_short_conversation_choice':
         assert draft['source_hear_each_piece_once'] and draft['source_answer_seconds']==10
@@ -171,7 +184,7 @@ def render(manuscript, output, version='0.1'):
             repeat_prompt=('Now you will hear the extract again.' if family=='listening_extract_choice'
                            else 'Now you will hear the whole recording again.')
             for repeat in range(1,repeat_count+1):
-                if repeat == 2:
+                if repeat > 1:
                     append(speech(repeat_prompt,'Daniel',165),'repeat_instruction',repeat_prompt)
                     pause(1)
                 for turn_index,turn in enumerate(clip['turns']):
@@ -185,7 +198,7 @@ def render(manuscript, output, version='0.1'):
                     append(data,'dialogue',turn['text'],turn['speaker'],repeat)
                     if family!='listening_short_conversation_choice' or turn_index<len(clip['turns'])-1:
                         pause(2 if family=='listening_double_matching' else .35)
-                pause(1 if family in {'listening_multi_question_choice','listening_word_phrase_choice'}and repeat<repeat_count else clip.get('answer_seconds',2))
+                pause(1 if family in {'listening_multi_question_choice','listening_word_phrase_choice','listening_passage_completion','listening_dialogue_choice'}and repeat<repeat_count else clip.get('answer_seconds',2))
             combined=scratch/f'extract{number}.wav'
             with wave.open(str(combined),'wb') as stream:
                 stream.setparams((1,2,RATE,0,'NONE','not compressed'))

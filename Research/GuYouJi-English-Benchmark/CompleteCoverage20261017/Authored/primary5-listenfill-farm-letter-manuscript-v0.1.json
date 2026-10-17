@@ -1,0 +1,140 @@
+{
+  "version": "0.1",
+  "id": "primary5-listenfill-farm-letter",
+  "title": "小五书信听写：农场来信",
+  "grade": "primary5",
+  "family": "listening_passage_completion",
+  "family_label": "听短文语篇填词",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part6",
+  "source_binding": "p5whole6five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.8.json",
+  "source_repeat_count": 3,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Read the questions. Then listen to the whole recording.",
+  "instruction": "听完整书信三遍，根据录音补全同一封信中的5空。按实际听词填写，已核英美拼写同等接受，未列形式待复核；不另加原卷未印的数字词数上限。 本机听前25秒、最后25秒及中间提示为演示编排，原卷未印精确时序；可自主重播。源题面/印本脚本/参考键可核，原录音未取得。",
+  "clips": [
+    {
+      "context": "Dear Emma,\n\nLast Sunday, I visited a small farm with my family. We (1) ____ there by bus. The journey took forty (2) ____. A woman showed us the garden. There were many (3) ____ flowers beside the path. After lunch, my brother (4) ____ a picture of a brown horse. I took some photos and helped to carry the bags. It was a (5) ____ day. I would like to go again.\n\nBest,\nLucy",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "N",
+          "text": "Dear Emma,\n\nLast Sunday, I visited a small farm with my family. We travelled there by bus. The journey took forty minutes. A woman showed us the garden. There were many colourful flowers beside the path. After lunch, my brother drew a picture of a brown horse. I took some photos and helped to carry the bags. It was a wonderful day. I would like to go again.\n\nBest,\nLucy"
+        }
+      ],
+      "questions": [
+        {
+          "stem": "第1空",
+          "options": [],
+          "acceptedAnswers": [
+            "travelled",
+            "traveled"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "travels"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为travelled，全篇该位置回填与时态/搭配一致。英美拼写travelled/traveled指同一听词，同等接受。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第2空",
+          "options": [],
+          "acceptedAnswers": [
+            "minutes"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "minute"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为minutes，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第3空",
+          "options": [],
+          "acceptedAnswers": [
+            "colourful",
+            "colorful"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "colour"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为colourful，全篇该位置回填与时态/搭配一致。英美拼写colourful/colorful指同一听词，同等接受。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第4空",
+          "options": [],
+          "acceptedAnswers": [
+            "drew"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "draw"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为drew，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        },
+        {
+          "stem": "第5空",
+          "options": [],
+          "acceptedAnswers": [
+            "wonderful"
+          ],
+          "fillMarking": {
+            "version": 1,
+            "normalization": "english_phrase_v1",
+            "maxWords": null,
+            "unlisted": "review",
+            "rejectedAnswers": [
+              "wonder"
+            ],
+            "review": "author_context_checked"
+          },
+          "rationale": "录音对应词为wonderful，全篇该位置回填与时态/搭配一致。不以未列近义表达自动判错，未列形式待复核。"
+        }
+      ]
+    }
+  ],
+  "accepted_forms_checked_in_full_letter": true
+}

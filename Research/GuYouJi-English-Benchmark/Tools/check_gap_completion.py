@@ -37,6 +37,9 @@ def check(data, plan):
                     load_ref(source[key])
             assert source.get('responses',len(source.get('question_numbers',[]))) == b['responses']
             assert source.get('level',source.get('grade')) == b['level']
+            if b.get('task_mode') == 'primary_whole_five_three_pass':
+                from compile_primary_whole_listening import check as check_primary_whole
+                check_primary_whole(g,a,b,source)
             if b.get('task_mode') == 'primary_wordphrase10twice':
                 from compile_word_listening import check as check_word_listening
                 check_word_listening(g,a,b,source)
@@ -280,7 +283,7 @@ def check(data, plan):
         assert hashlib.sha256(printed.encode()).hexdigest() == a['canonical_response_block_sha256']
         assert a['student_passage'] in text
         load = a['load_measure']
-        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') else a['student_passage'])
+        assert load['body_English_words'] == words(a['body_load_text'] if a.get('listening_sentence_completion') or a.get('publisher_listening_true_false') or a.get('short_dialogue_listening') or a.get('multi_question_listening') or a.get('primary_dialogue_listening') or a.get('picture_listening') or a.get('word_phrase_listening') or a.get('primary_whole_listening') else a['student_passage'])
         assert load['stem_English_words'] == sum(words(q['stem']) for q in g['questions'])
         assert load['options_English_words_with_repeated_bank'] == sum(words(t) for q in g['questions'] for _, t in q['options'])
         assert load['output_response_positions'] == len(g['questions'])
@@ -293,7 +296,7 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') or a.get('primary_whole_listening') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 assert c['normalization'] == expected_protocol
                 assert c['unlisted'] == ('different' if meta['family'] == 'number_word_completion' else 'review')
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])

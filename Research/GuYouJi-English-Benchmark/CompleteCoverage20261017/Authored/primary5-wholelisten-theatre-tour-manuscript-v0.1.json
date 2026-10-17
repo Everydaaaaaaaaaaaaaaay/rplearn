@@ -1,0 +1,178 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholelisten-theatre-tour",
+  "title": "小五整对话：剧院探访",
+  "grade": "primary5",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part7",
+  "source_binding": "p5whole7five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.8.json",
+  "source_repeat_count": 3,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Read the questions. Then listen to the whole recording.",
+  "instruction": "听完整对话三遍，回答全部5题，每题三选。 本机听前25秒、最后25秒及中间提示为演示编排，原卷未印精确时序；可自主重播。源题面/印本脚本/参考键可核，原录音未取得。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Are we going to watch a play at the theatre tomorrow, Anna?"
+        },
+        {
+          "speaker": "W",
+          "text": "Not a full play. We are going to watch the actors practise, and then see the room where they keep their costumes."
+        },
+        {
+          "speaker": "M",
+          "text": "Where should our class meet?"
+        },
+        {
+          "speaker": "W",
+          "text": "Outside the school office at ten. The visit starts at half past ten."
+        },
+        {
+          "speaker": "M",
+          "text": "Can I take photos of the costumes?"
+        },
+        {
+          "speaker": "W",
+          "text": "The theatre has asked us not to take photos in that room. You can draw a picture in your notebook instead."
+        },
+        {
+          "speaker": "M",
+          "text": "Will we see the actors after they practise?"
+        },
+        {
+          "speaker": "W",
+          "text": "Yes. They will answer our questions for fifteen minutes."
+        },
+        {
+          "speaker": "M",
+          "text": "I want to ask how they remember all their words."
+        },
+        {
+          "speaker": "W",
+          "text": "Write it down now, so you do not forget to ask."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "What will the class watch?",
+          "options": [
+            [
+              "A",
+              "A full public play."
+            ],
+            [
+              "B",
+              "A film about actors."
+            ],
+            [
+              "C",
+              "The actors practising."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "排练非完整演出，A被否定B无。"
+        },
+        {
+          "stem": "Where should the class meet?",
+          "options": [
+            [
+              "A",
+              "Outside the school office."
+            ],
+            [
+              "B",
+              "In the costume room."
+            ],
+            [
+              "C",
+              "At the theatre ticket desk."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "学校办公室外集合，B参观处C无。"
+        },
+        {
+          "stem": "When should the class meet?",
+          "options": [
+            [
+              "A",
+              "At half past ten."
+            ],
+            [
+              "B",
+              "At ten."
+            ],
+            [
+              "C",
+              "At half past nine."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "10点集合，10:30参观开始，C无。"
+        },
+        {
+          "stem": "What may the boy do in the costume room?",
+          "options": [
+            [
+              "A",
+              "Take photos of every costume."
+            ],
+            [
+              "B",
+              "Try on the actors' clothes."
+            ],
+            [
+              "C",
+              "Draw in his notebook."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "禁止拍照可画图，B未许可。"
+        },
+        {
+          "stem": "What will the actors do after practising?",
+          "options": [
+            [
+              "A",
+              "Answer questions."
+            ],
+            [
+              "B",
+              "Take the class back to school."
+            ],
+            [
+              "C",
+              "Sell their costumes."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "留15分钟回答；B/C无。"
+        }
+      ]
+    }
+  ]
+}

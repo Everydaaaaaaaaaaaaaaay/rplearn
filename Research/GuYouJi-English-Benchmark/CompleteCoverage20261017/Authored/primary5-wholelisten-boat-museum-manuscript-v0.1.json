@@ -1,0 +1,178 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholelisten-boat-museum",
+  "title": "小五整对话：小船博物馆",
+  "grade": "primary5",
+  "family": "listening_dialogue_choice",
+  "family_label": "听对话回答问题",
+  "source_group_id": "primary5.guilin2024-25lower.listening.part7",
+  "source_binding": "p5whole7five3pass",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolListeningSourceBindings-v0.8.json",
+    "sha256": "5e4c80450cad0722b53fa3e110e02bb45a2d8dcac2a02827fcf820084b480a9d"
+  },
+  "source_index": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.8.json",
+  "source_repeat_count": 3,
+  "speakers": {
+    "M": {
+      "voice": "Daniel",
+      "rate_parameter": 65
+    },
+    "W": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    },
+    "N": {
+      "voice": "Samantha",
+      "rate_parameter": 65
+    }
+  },
+  "audio_introduction": "Read the questions. Then listen to the whole recording.",
+  "instruction": "听完整对话三遍，回答全部5题，每题三选。 本机听前25秒、最后25秒及中间提示为演示编排，原卷未印精确时序；可自主重播。源题面/印本脚本/参考键可核，原录音未取得。",
+  "clips": [
+    {
+      "context": "",
+      "preview_seconds": 25,
+      "answer_seconds": 25,
+      "turns": [
+        {
+          "speaker": "M",
+          "text": "Shall we visit the boat museum on Sunday, Lily?"
+        },
+        {
+          "speaker": "W",
+          "text": "It is closed on Sundays. Let us go on Saturday instead."
+        },
+        {
+          "speaker": "M",
+          "text": "Good idea. Is it the large building beside the bridge?"
+        },
+        {
+          "speaker": "W",
+          "text": "No, that is the library. The museum is in an old house near the river."
+        },
+        {
+          "speaker": "M",
+          "text": "What can we see there?"
+        },
+        {
+          "speaker": "W",
+          "text": "Small wooden boats. Some are only as long as your hand. We can watch a person making one."
+        },
+        {
+          "speaker": "M",
+          "text": "How will we get there?"
+        },
+        {
+          "speaker": "W",
+          "text": "By bus. It takes twenty minutes from our school."
+        },
+        {
+          "speaker": "M",
+          "text": "Then I will bring my camera."
+        },
+        {
+          "speaker": "W",
+          "text": "Ask before taking photos. Some parts of the room are not open for photographs."
+        }
+      ],
+      "questions": [
+        {
+          "stem": "On which day will they visit?",
+          "options": [
+            [
+              "A",
+              "Sunday."
+            ],
+            [
+              "B",
+              "Saturday."
+            ],
+            [
+              "C",
+              "Friday."
+            ]
+          ],
+          "answer": "B",
+          "rationale": "周日关门，改周六；A为初提被否定，C无。"
+        },
+        {
+          "stem": "Where is the museum?",
+          "options": [
+            [
+              "A",
+              "In a large library."
+            ],
+            [
+              "B",
+              "Beside the school."
+            ],
+            [
+              "C",
+              "In an old house near the river."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "老房近河；桥旁大楼是图书馆非博物馆。"
+        },
+        {
+          "stem": "What will they see?",
+          "options": [
+            [
+              "A",
+              "Small wooden boats."
+            ],
+            [
+              "B",
+              "Large toy trains."
+            ],
+            [
+              "C",
+              "New sports cars."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "明确小木船，可看制作；B/C无。"
+        },
+        {
+          "stem": "How long does the journey take?",
+          "options": [
+            [
+              "A",
+              "Ten minutes."
+            ],
+            [
+              "B",
+              "Thirty minutes."
+            ],
+            [
+              "C",
+              "Twenty minutes."
+            ]
+          ],
+          "answer": "C",
+          "rationale": "明确20分钟；A/B与数字不符。"
+        },
+        {
+          "stem": "How will they travel?",
+          "options": [
+            [
+              "A",
+              "By bus."
+            ],
+            [
+              "B",
+              "By train."
+            ],
+            [
+              "C",
+              "On foot."
+            ]
+          ],
+          "answer": "A",
+          "rationale": "明确bus；B/C未选。"
+        }
+      ]
+    }
+  ]
+}
