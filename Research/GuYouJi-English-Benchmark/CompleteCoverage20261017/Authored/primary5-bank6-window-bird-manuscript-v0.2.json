@@ -1,0 +1,71 @@
+{
+  "id": "primary5-bank6-window-bird",
+  "title": "小五：窗外的客人",
+  "grade": "primary5",
+  "family": "shared_bank",
+  "source_group_id": "p5.taizhou2025.storybank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.3.json",
+    "sha256": "dd1c9457f1c19d298cd3ecaf8fd6da7005f25d0996173b70b8efd08ebed483ff"
+  },
+  "source_binding": "inherited-p5-shared-1",
+  "instruction": "从共享候选中选择合适的词完成全文，填写序号。有一项多余。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "green"
+    ],
+    [
+      "B",
+      "bird"
+    ],
+    [
+      "C",
+      "under"
+    ],
+    [
+      "D",
+      "sing"
+    ],
+    [
+      "E",
+      "open"
+    ],
+    [
+      "F",
+      "noisy"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "绿色的",
+    "B": "鸟",
+    "C": "在……下面",
+    "D": "唱歌",
+    "E": "打开的",
+    "F": "吵闹的"
+  },
+  "passage": "I hear a sound outside my room. A little (1) ____ is sitting on the apple tree. It has feathers (羽毛) and two wings. I keep the window closed because our cat is beside me. Then Mum takes the cat downstairs. Now I can leave the window (2) ____ and hear the sound clearly. The little singer begins to (3) ____ again. I sit (4) ____ the desk, with the desk top above my head, to pick up my pencil. When I stand up, I see the bright (5) ____ leaves around our visitor. None of them have turned yellow yet.",
+  "slots": [
+    {
+      "answer": "B",
+      "rule": "有羽毛和两翼、停在树上的小动物限定bird"
+    },
+    {
+      "answer": "E",
+      "rule": "先closed后猫被带走，现在leave the window后的状态与能听清相连，须为open"
+    },
+    {
+      "answer": "D",
+      "rule": "begins to后接动词原形，与little singer和听到声音一致，应为sing"
+    },
+    {
+      "answer": "C",
+      "rule": "desk top above my head明确人位于桌面下方，需要位置介词under"
+    },
+    {
+      "answer": "A",
+      "rule": "leaves尚未变黄且bright修饰颜色，限定green，不是噪声形容词noisy"
+    }
+  ]
+}

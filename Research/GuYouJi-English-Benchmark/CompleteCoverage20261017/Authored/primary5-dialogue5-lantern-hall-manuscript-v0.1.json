@@ -1,0 +1,66 @@
+{
+  "id": "primary5-dialogue5-lantern-hall",
+  "title": "小五：周日的灯笼课",
+  "grade": "primary5",
+  "family": "dialogue_matching",
+  "source_group_id": "p5.fangshan2025.dialogue",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-3",
+  "instruction": "从共享候选中选择合适的句完成全文，填写序号。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "What time does it start?"
+    ],
+    [
+      "B",
+      "My aunt is coming with me."
+    ],
+    [
+      "C",
+      "I’m going to the community hall."
+    ],
+    [
+      "D",
+      "How will you get there?"
+    ],
+    [
+      "E",
+      "I’ll make a paper lantern."
+    ]
+  ],
+  "candidate_roles": {
+    "A": "询问开始时间",
+    "B": "说明同行人",
+    "C": "说明目的地",
+    "D": "询问交通方式",
+    "E": "说明制作活动"
+  },
+  "passage": "Leo: Where are you going on Sunday, Eva?\n\nEva: (1) ____\n\nLeo: What will you make there?\n\nEva: (2) ____\n\nLeo: (3) ____\n\nEva: At ten in the morning.\n\nLeo: (4) ____\n\nEva: By bus.\n\nLeo: Who is coming with you?\n\nEva: (5) ____\n\nLeo: Have a good time!",
+  "slots": [
+    {
+      "answer": "C",
+      "rule": "上句Where are you going问目的地，需要community hall地点回答"
+    },
+    {
+      "answer": "E",
+      "rule": "What will you make问制作的东西，需要paper lantern活动回答"
+    },
+    {
+      "answer": "A",
+      "rule": "下句At ten in the morning是开始时间，需要询问开始时间"
+    },
+    {
+      "answer": "D",
+      "rule": "下句By bus说明交通方式，需要How will you get there问句"
+    },
+    {
+      "answer": "B",
+      "rule": "Who is coming with you问同行人，需要my aunt回答"
+    }
+  ]
+}

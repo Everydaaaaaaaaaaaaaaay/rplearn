@@ -1,0 +1,71 @@
+{
+  "id": "primary5-dialogue6-honey-jars",
+  "title": "小五：通往义卖会的蜂蜜罐",
+  "grade": "primary5",
+  "family": "dialogue_matching",
+  "source_group_id": "p5.taizhou2025.dialoguebank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-4",
+  "instruction": "从共享候选中选择合适的句完成全文，填写序号。有一项多余。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "Who are you going to visit?"
+    ],
+    [
+      "B",
+      "Would you like to come to the fair?"
+    ],
+    [
+      "C",
+      "How much is one jar?"
+    ],
+    [
+      "D",
+      "What is inside it?"
+    ],
+    [
+      "E",
+      "Where is the fair?"
+    ],
+    [
+      "F",
+      "Why are you carrying honey?"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "询问将拜访的人",
+    "B": "邀请对方来义卖会",
+    "C": "询问一罐蜂蜜价格",
+    "D": "询问包内物品",
+    "E": "询问义卖会地点",
+    "F": "询问携带蜂蜜原因"
+  },
+  "passage": "Mina: Hello, Ken. Your bag looks heavy. (1) ____\n\nKen: Three jars of honey. They are from my grandpa’s farm. (2) ____\n\nMina: My cousin. It’s his birthday today. (3) ____\n\nKen: We are selling it at our school fair to buy new balls for our class.\n\nMina: (4) ____\n\nKen: In the school yard, beside the main gate. (5) ____\n\nMina: Yes, I can come after the party. See you there!",
+  "slots": [
+    {
+      "answer": "D",
+      "rule": "下句Three jars of honey是包内内容，需要What is inside it问句"
+    },
+    {
+      "answer": "A",
+      "rule": "Mina下句My cousin回答拜访对象，需要Who are you going to visit问句"
+    },
+    {
+      "answer": "F",
+      "rule": "下句解释卖蜂蜜筹款的目的，需要询问携带蜂蜜原因"
+    },
+    {
+      "answer": "E",
+      "rule": "下句In the school yard给出义卖会位置，需要问fair地点，Who are you going to visit询问人而非地点"
+    },
+    {
+      "answer": "B",
+      "rule": "下句Yes, I can come after the party回应邀请，需要Would you like...问句"
+    }
+  ]
+}

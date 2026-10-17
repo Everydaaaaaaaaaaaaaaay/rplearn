@@ -1,0 +1,66 @@
+{
+  "id": "primary5-bank5-train-window",
+  "title": "小五：清晨的火车",
+  "grade": "primary5",
+  "family": "shared_bank",
+  "source_group_id": "p5.fangshan2025.bank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.3.json",
+    "sha256": "dd1c9457f1c19d298cd3ecaf8fd6da7005f25d0996173b70b8efd08ebed483ff"
+  },
+  "source_binding": "inherited-p5-shared-0",
+  "instruction": "从共享候选中选择合适的词完成全文，填写序号。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "ticket"
+    ],
+    [
+      "B",
+      "two"
+    ],
+    [
+      "C",
+      "window"
+    ],
+    [
+      "D",
+      "station"
+    ],
+    [
+      "E",
+      "early"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "乘车凭证",
+    "B": "数量二",
+    "C": "窗户",
+    "D": "火车站",
+    "E": "早"
+  },
+  "passage": "On Saturday, we get up (1) ____. It is only five o’clock in the morning, and the streets are dark. Dad and I walk to the railway (2) ____. Our train leaves from there at six. Dad buys (3) ____ tickets, one for him and one for me. I put my (4) ____ in my pocket. The worker needs to check it before I get on the train. My seat is beside the (5) ____. I can see fields through the glass as we travel.",
+  "slots": [
+    {
+      "answer": "E",
+      "rule": "only five o’clock与天仍黑限定起床时间早，需要表示早的副词"
+    },
+    {
+      "answer": "D",
+      "rule": "railway和Our train leaves from there共同限定出发地点为火车站"
+    },
+    {
+      "answer": "B",
+      "rule": "后文one for him and one for me明确两张，需数量词二"
+    },
+    {
+      "answer": "A",
+      "rule": "需要车站工作人员检查的、放进口袋的乘车凭证是车票"
+    },
+    {
+      "answer": "C",
+      "rule": "through the glass看外面田野限定座位在窗边"
+    }
+  ]
+}

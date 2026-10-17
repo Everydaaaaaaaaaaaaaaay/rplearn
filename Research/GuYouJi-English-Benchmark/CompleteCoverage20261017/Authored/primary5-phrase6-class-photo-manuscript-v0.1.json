@@ -1,0 +1,71 @@
+{
+  "id": "primary5-phrase6-class-photo",
+  "title": "小五：合影前的帽子",
+  "grade": "primary5",
+  "family": "shared_bank",
+  "source_group_id": "p5.taizhou2025.phrasebank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-2",
+  "instruction": "从共享候选中选择合适的短语完成全文，填写序号。有一项多余。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "looks for"
+    ],
+    [
+      "B",
+      "takes a photo"
+    ],
+    [
+      "C",
+      "on foot"
+    ],
+    [
+      "D",
+      "puts on"
+    ],
+    [
+      "E",
+      "a pair of"
+    ],
+    [
+      "F",
+      "in front of"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "寻找",
+    "B": "拍照",
+    "C": "步行",
+    "D": "戴上",
+    "E": "一双",
+    "F": "在……前面"
+  },
+  "passage": "Our class needs a picture for the school wall. Tom (1) ____ his cap and pulls it down over his hair. Then he (2) ____ his missing shoes. He checks under the bed and finds (3) ____ blue shoes there, one left shoe and one right shoe. We meet outside. We stand (4) ____ a white wall, with the wall behind us. Tom’s sister holds a camera. She counts, “One, two, three!” and (5) ____. Everyone smiles at the camera.",
+  "slots": [
+    {
+      "answer": "D",
+      "rule": "后文pulls it down over his hair说明把帽子戴上，需puts on而非寻找"
+    },
+    {
+      "answer": "A",
+      "rule": "missing shoes和checks/finds明确先寻找鞋子，需looks for"
+    },
+    {
+      "answer": "E",
+      "rule": "后接blue shoes且一左一右，需数量短语a pair of"
+    },
+    {
+      "answer": "F",
+      "rule": "wall behind us限定人站在墙前，需in front of"
+    },
+    {
+      "answer": "B",
+      "rule": "拿相机、数一二三并对镜头微笑限定takes a photo"
+    }
+  ]
+}

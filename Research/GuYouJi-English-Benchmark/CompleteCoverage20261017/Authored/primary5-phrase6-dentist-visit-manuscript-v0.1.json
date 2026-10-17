@@ -1,0 +1,71 @@
+{
+  "id": "primary5-phrase6-dentist-visit",
+  "title": "小五：牙医与新牙刷",
+  "grade": "primary5",
+  "family": "shared_bank",
+  "source_group_id": "p5.taizhou2025.phrasebank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-2",
+  "instruction": "从共享候选中选择合适的短语完成全文，填写序号。有一项多余。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "gets off"
+    ],
+    [
+      "B",
+      "opens his mouth"
+    ],
+    [
+      "C",
+      "next to"
+    ],
+    [
+      "D",
+      "brushes his teeth"
+    ],
+    [
+      "E",
+      "has a toothache"
+    ],
+    [
+      "F",
+      "takes a bus"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "下车",
+    "B": "张嘴",
+    "C": "紧邻",
+    "D": "刷牙",
+    "E": "牙痛",
+    "F": "坐公共汽车"
+  },
+  "passage": "Ben (1) ____ this morning. His back tooth hurts when he tries to eat. Dad takes him to a dentist (牙医). The clinic is (2) ____ a flower shop; the two shops share a wall. Ben (3) ____ to the clinic because it is too far to walk. Inside, the dentist asks to see his teeth. Ben (4) ____, and she looks carefully. She helps him and gives him a new toothbrush (牙刷). After dinner that evening, Ben (5) ____ with the new toothbrush. He wants to take better care of them.",
+  "slots": [
+    {
+      "answer": "E",
+      "rule": "后牙进食时疼痛，需has a toothache说明症状"
+    },
+    {
+      "answer": "C",
+      "rule": "is后两店共墙，需位置短语next to"
+    },
+    {
+      "answer": "F",
+      "rule": "too far to walk和to the clinic说明交通方式，takes a bus后可接目的地，gets off需补所下交通工具不能直接gets off to the clinic"
+    },
+    {
+      "answer": "B",
+      "rule": "牙医要看牙，随后she looks carefully，须张开嘴巴"
+    },
+    {
+      "answer": "D",
+      "rule": "with the new toothbrush及照顾them限定用牙刷刷牙"
+    }
+  ]
+}

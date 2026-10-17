@@ -1,0 +1,66 @@
+{
+  "id": "primary5-dialogue5-cat-helper",
+  "title": "小五：照顾邻居家的猫",
+  "grade": "primary5",
+  "family": "dialogue_matching",
+  "source_group_id": "p5.fangshan2025.dialogue",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-3",
+  "instruction": "从共享候选中选择合适的句完成全文，填写序号。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "My brother comes with me."
+    ],
+    [
+      "B",
+      "I’m here to feed Mr Li’s cat."
+    ],
+    [
+      "C",
+      "How often do you come here?"
+    ],
+    [
+      "D",
+      "It’s under the kitchen table."
+    ],
+    [
+      "E",
+      "What does it eat?"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "说明同行人",
+    "B": "说明来这里的目的",
+    "C": "询问来访频率",
+    "D": "说明猫的位置",
+    "E": "询问猫的食物"
+  },
+  "passage": "Anna: Why are you here, Jack?\n\nJack: (1) ____\n\nAnna: Where is the cat now?\n\nJack: (2) ____\n\nAnna: (3) ____\n\nJack: It eats a little fish and rice. Mr Li leaves the food in the fridge.\n\nAnna: (4) ____\n\nJack: Every afternoon, while Mr Li is away.\n\nAnna: Who comes with you?\n\nJack: (5) ____\n\nAnna: You are both kind to help.",
+  "slots": [
+    {
+      "answer": "B",
+      "rule": "Why are you here问来访目的，需要喂猫的说明"
+    },
+    {
+      "answer": "D",
+      "rule": "Where is the cat now问猫位置，需要under the kitchen table"
+    },
+    {
+      "answer": "E",
+      "rule": "下句It eats...说明饮食，需要What does it eat问句"
+    },
+    {
+      "answer": "C",
+      "rule": "下句Every afternoon说明频率，需要How often问句"
+    },
+    {
+      "answer": "A",
+      "rule": "Who comes with you问同行人，需要my brother说明"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "primary5-bank6-bakery-bell",
+  "title": "小五：面包房的铃声",
+  "grade": "primary5",
+  "family": "shared_bank",
+  "source_group_id": "p5.taizhou2025.storybank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-1",
+  "instruction": "从共享候选中选择合适的词完成全文，填写序号。有一项多余。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "bread"
+    ],
+    [
+      "B",
+      "snow"
+    ],
+    [
+      "C",
+      "before"
+    ],
+    [
+      "D",
+      "warm"
+    ],
+    [
+      "E",
+      "bell"
+    ],
+    [
+      "F",
+      "sleeping"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "面包",
+    "B": "雪",
+    "C": "在……之前",
+    "D": "温暖的",
+    "E": "铃",
+    "F": "睡觉中的"
+  },
+  "passage": "It is six in the morning. My little brother is still (1) ____ in bed, but I am awake. I go downstairs with Dad. He makes (2) ____ in our bakery (面包房). I put the fresh loaves into paper bags. They come straight from the oven (烤箱), so they are still (3) ____. A small (4) ____ rings above the door when our first customer comes in. We must finish putting the bags on the shelf (5) ____ we can sell them. The shop is open now, and the street begins to get busy.",
+  "slots": [
+    {
+      "answer": "F",
+      "rule": "is still与in bed及but I am awake构成睡着与醒着的对比，需要睡觉的状态"
+    },
+    {
+      "answer": "A",
+      "rule": "bakery、fresh loaves与oven共同限定所做食品为面包"
+    },
+    {
+      "answer": "D",
+      "rule": "从烤箱刚取出，still后接温度状态形容词，须为温暖的"
+    },
+    {
+      "answer": "E",
+      "rule": "small名词作主语且rings above the door限定门铃"
+    },
+    {
+      "answer": "C",
+      "rule": "先完成上架才卖，finish...we can...需要连接先后关系的before"
+    }
+  ]
+}

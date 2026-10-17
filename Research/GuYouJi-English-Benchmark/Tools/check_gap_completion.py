@@ -43,6 +43,9 @@ def check(data, plan):
             if b.get('task_mode') == 'junior_source_bound_listening':
                 from compile_junior_listening import check as check_junior_listening
                 check_junior_listening(g,a,b,source)
+            if b.get('task_mode') == 'inherited_shared_five':
+                from compile_inherited_shared import check as check_inherited_shared
+                check_inherited_shared(g,a,b,source)
             if b.get('task_mode') == 'inherited_complete_cloze':
                 from compile_inherited_cloze import check as check_inherited_cloze
                 check_inherited_cloze(g,a,b,source)
@@ -278,7 +281,7 @@ def check(data, plan):
                 assert re.findall(r'\((\d+)\) ____', a['student_passage'])==list('12345678')
                 assert '(0)' in a['student_passage'] and '____' not in a['filled_passage']
                 assert a['subgroup_counts']==[8] and a['given_positions']==[]
-            if b.get('source_view'):
+            if b.get('source_view') and b.get('task_mode') != 'inherited_shared_five':
                 view=next(v for v in json.loads(load_ref(b['source_view']).read_text())['views'] if v['group_id']==b['source_group_id'])
                 load_ref(view['parent_document'])
                 assert source['complete_selected_group_reviewed']
@@ -381,8 +384,11 @@ def check(data, plan):
             for q, scene in zip(g['questions'], a['visual_semantics']):
                 assert dict(q['options'])[q['answer']] == scene['correct_sentence']
         if meta['family'] == 'dialogue_matching':
-            assert a['source_reuse'] == 'not_explicit' and '只用一次' in meta['instruction']
-            assert '不额外规定' in meta['instruction']
+            if a.get('inherited_shared_five'):
+                assert b['reuse_rule']=='not_explicit' and '不额外限制' in meta['instruction']
+            else:
+                assert a['source_reuse'] == 'not_explicit' and '只用一次' in meta['instruction']
+                assert '不额外规定' in meta['instruction']
             assert all(q['options'] == g['questions'][0]['options'] for q in g['questions'])
         if meta['family'] == 'passage_form' and meta['grade']=='advanced':
             assert a['one_derived_word'] and a['answered_examples'] == 1

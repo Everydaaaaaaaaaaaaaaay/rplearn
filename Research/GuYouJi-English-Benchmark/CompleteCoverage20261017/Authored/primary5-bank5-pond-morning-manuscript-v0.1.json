@@ -1,0 +1,66 @@
+{
+  "id": "primary5-bank5-pond-morning",
+  "title": "小五：池塘边的小篮子",
+  "grade": "primary5",
+  "family": "shared_bank",
+  "source_group_id": "p5.fangshan2025.bank",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/InheritedWrittenSourceBindings-v0.2.json",
+    "sha256": "d676cd8bd056c230e30d32d59eebb2d96fd13c82bc82f6efb46e5af8bf014d53"
+  },
+  "source_binding": "inherited-p5-shared-0",
+  "instruction": "从共享候选中选择合适的词完成全文，填写序号。按原形选择；原卷未明确候选复用次数，本稿不额外限制。",
+  "source_notice": "按已存公开普通期末卷或其公开转载中的完整五空组参照，所有候选共享，原形选择。五候选组未另印多余项，六候选组明示一项多余；源均未明确每项只用一次，本稿不添加该限制。房山正文页已核，泰州公开可见三组题面完整但原键未取得；原校发布未认证，不当gold。原创全组与逐候选回填为作者自审，独立教研、学生、商用和生产未验证。",
+  "shared_candidates": [
+    [
+      "A",
+      "water"
+    ],
+    [
+      "B",
+      "basket"
+    ],
+    [
+      "C",
+      "morning"
+    ],
+    [
+      "D",
+      "ducks"
+    ],
+    [
+      "E",
+      "small"
+    ]
+  ],
+  "candidate_roles": {
+    "A": "水",
+    "B": "篮子",
+    "C": "上午",
+    "D": "鸭子",
+    "E": "小的"
+  },
+  "passage": "My grandma has a pond behind her house. I visit her in the (1) ____, just after breakfast. The pond is very (2) ____, much smaller than our classroom. There are three white (3) ____ on it. They have flat beaks (扁嘴) and can swim. Grandma brings a (4) ____ with a handle. She puts some leaves in it, and I carry it for her. The birds eat the leaves. Then Grandma gives me a bottle of drinking (5) ____. I am thirsty, so I have a drink.",
+  "slots": [
+    {
+      "answer": "C",
+      "rule": "just after breakfast说明上午，需要时间名词"
+    },
+    {
+      "answer": "E",
+      "rule": "very后接形容词，much smaller进一步限定体积小"
+    },
+    {
+      "answer": "D",
+      "rule": "three与白色、扁嘴、会游泳一起限定复数动物鸭子"
+    },
+    {
+      "answer": "B",
+      "rule": "带提手、能装叶子并让人提的容器限定篮子"
+    },
+    {
+      "answer": "A",
+      "rule": "drinking和thirsty/have a drink限定可饮用的水"
+    }
+  ]
+}
