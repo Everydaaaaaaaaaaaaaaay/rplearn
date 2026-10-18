@@ -1,0 +1,416 @@
+{
+  "version": "0.2",
+  "id": "primary3-commonchoices10-art",
+  "grade": "primary3",
+  "questions": 10,
+  "candidate_sha256": "63bf4d82eeb9ff4b0749802308c665439aa1b13b39065ae064868cfa48580aac",
+  "manuscript": {
+    "path": "/Users/tiantian/eng/Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/Authored/primary3-commonchoices10-art-manuscript-v0.1.json",
+    "sha256": "333e7898b4c2a72b04976d43206d1b7119e566ea0a5923a422687837c66f6896"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_group_id": "p3-yancheng2025.sentencechoice10",
+  "canonical_response_block_sha256": "c179baa2ebf99d2be2bc9281d65f7f360ee73a809e113937e7f3afe67ccb336f",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The paint is wet. Keep your hands off it. Don't ____ it.",
+      "options": [
+        [
+          "A",
+          "touch"
+        ],
+        [
+          "B",
+          "look at"
+        ],
+        [
+          "C",
+          "walk past"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：keep your hands off明确不要碰，对应touch。；B：看不等于手碰，不是这条提醒所禁动作。；C：从旁走过不等于手碰，不合明确的hands off。"
+    },
+    {
+      "number": 2,
+      "stem": "—Is this a storybook? —____ It has stories in it.",
+      "options": [
+        [
+          "A",
+          "No, it isn't."
+        ],
+        [
+          "B",
+          "Yes, it is."
+        ],
+        [
+          "C",
+          "I don't know."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：后句说明有故事，与否定storybook冲突。；B：后句说明故事内容，支持肯定。；C：后文提供明确故事依据，不合此处不知道。"
+    },
+    {
+      "number": 3,
+      "stem": "Five books are inside the bag. —What are those ____ the bag? —____ books.",
+      "options": [
+        [
+          "A",
+          "in; It's"
+        ],
+        [
+          "B",
+          "on; They're"
+        ],
+        [
+          "C",
+          "in; They're"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：those books为复数，不能用It is。；B：题面inside不是on表面。；C：inside对应in，books复数对应They are。"
+    },
+    {
+      "number": 4,
+      "stem": "—What's this? —____ You can drink from it.",
+      "options": [
+        [
+          "A",
+          "It's a cup."
+        ],
+        [
+          "B",
+          "She's my mum."
+        ],
+        [
+          "C",
+          "He's my brother."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：cup是可以从中喝水的物品。；B：介绍母亲不回答可用来喝水的物品。；C：介绍哥哥或弟弟，不合物品问题。"
+    },
+    {
+      "number": 5,
+      "stem": "—____ my cap? —It's on the chair.",
+      "options": [
+        [
+          "A",
+          "What's"
+        ],
+        [
+          "B",
+          "Where's"
+        ],
+        [
+          "C",
+          "Who's"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：问身份，不能由on the chair的位置直接回答。；B：询问帽子位置，由椅子上回答。；C：问人物不合cap和位置回答。"
+    },
+    {
+      "number": 6,
+      "stem": "—Look at this little rabbit. —____ cute!",
+      "options": [
+        [
+          "A",
+          "What"
+        ],
+        [
+          "B",
+          "What a"
+        ],
+        [
+          "C",
+          "How"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：不能单接cute结束此感叹结构。；B：后面缺单数名词，结构不完整。；C：How cute为完整的形容词感叹。"
+    },
+    {
+      "number": 7,
+      "stem": "—Do you have an ____? —Yes, I do.",
+      "options": [
+        [
+          "A",
+          "cap"
+        ],
+        [
+          "B",
+          "apple"
+        ],
+        [
+          "C",
+          "dogs"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：cap是辅音音素开头，不用an。；B：apple为元音音素开头的单数词。；C：复数dogs不能跟an。"
+    },
+    {
+      "number": 8,
+      "stem": "—Are these ____? —No, ____.",
+      "options": [
+        [
+          "A",
+          "pigs; they aren't"
+        ],
+        [
+          "B",
+          "pig; they aren't"
+        ],
+        [
+          "C",
+          "pigs; they are"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：these pigs复数一致，No接否定。；B：these后不能用单数pig。；C：与No的否定回答冲突。"
+    },
+    {
+      "number": 9,
+      "stem": "—Would you like some juice? —____",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "See you."
+        ],
+        [
+          "C",
+          "Yes, please."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：此邀请的自然礼貌接受不以do照答。；B：告别语不回答是否要果汁。；C：礼貌接受饮料邀请。"
+    },
+    {
+      "number": 10,
+      "stem": "My cap is black and orange. —What colour is your cap? —____",
+      "options": [
+        [
+          "A",
+          "Blue and white."
+        ],
+        [
+          "B",
+          "Black and orange."
+        ],
+        [
+          "C",
+          "Red and green."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：与题面帽子颜色不符。；B：与题面明确给出的颜色一致。；C：与题面颜色不符。"
+    }
+  ],
+  "student_passage": "",
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "A",
+      "grounds": {
+        "A": "keep your hands off明确不要碰，对应touch。",
+        "B": "看不等于手碰，不是这条提醒所禁动作。",
+        "C": "从旁走过不等于手碰，不合明确的hands off。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "B",
+      "grounds": {
+        "A": "后句说明有故事，与否定storybook冲突。",
+        "B": "后句说明故事内容，支持肯定。",
+        "C": "后文提供明确故事依据，不合此处不知道。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "C",
+      "grounds": {
+        "A": "those books为复数，不能用It is。",
+        "B": "题面inside不是on表面。",
+        "C": "inside对应in，books复数对应They are。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "A",
+      "grounds": {
+        "A": "cup是可以从中喝水的物品。",
+        "B": "介绍母亲不回答可用来喝水的物品。",
+        "C": "介绍哥哥或弟弟，不合物品问题。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "B",
+      "grounds": {
+        "A": "问身份，不能由on the chair的位置直接回答。",
+        "B": "询问帽子位置，由椅子上回答。",
+        "C": "问人物不合cap和位置回答。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "C",
+      "grounds": {
+        "A": "不能单接cute结束此感叹结构。",
+        "B": "后面缺单数名词，结构不完整。",
+        "C": "How cute为完整的形容词感叹。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "B",
+      "grounds": {
+        "A": "cap是辅音音素开头，不用an。",
+        "B": "apple为元音音素开头的单数词。",
+        "C": "复数dogs不能跟an。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "A",
+      "grounds": {
+        "A": "these pigs复数一致，No接否定。",
+        "B": "these后不能用单数pig。",
+        "C": "与No的否定回答冲突。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "C",
+      "grounds": {
+        "A": "此邀请的自然礼貌接受不以do照答。",
+        "B": "告别语不回答是否要果汁。",
+        "C": "礼貌接受饮料邀请。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "B",
+      "grounds": {
+        "A": "与题面帽子颜色不符。",
+        "B": "与题面明确给出的颜色一致。",
+        "C": "与题面颜色不符。"
+      }
+    }
+  ],
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      3,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "author_input_complete": true,
+  "source_key_copied": false,
+  "independent_teacher_student_commercial_production": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 77,
+    "options_English_words": 64,
+    "stem_Han_characters": 0,
+    "options_Han_characters": 0,
+    "visible_blank_slots": 12,
+    "output_letter_count": 10,
+    "shared_options": false,
+    "images": 0,
+    "audio": 0
+  },
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/Authored/primary3-commonchoices10-art-author-check-v0.1.json",
+    "sha256": "21add6f11df9e4cee094097b358cf13f5ade54b2eeb0fc5eaaadaabe2a5b20f6"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSourceBindings-v0.1.json",
+    "sha256": "a12a87c9abc5401bf93b9ce69f8bb7d1eab077109796f137a9e8aeec3a7881b0"
+  },
+  "source_binding": "p3-yancheng2025.sentencechoice10.binding",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "all_candidate_backfills": [
+    {
+      "A": "The paint is wet. Keep your hands off it. Don't touch it.",
+      "B": "The paint is wet. Keep your hands off it. Don't look at it.",
+      "C": "The paint is wet. Keep your hands off it. Don't walk past it."
+    },
+    {
+      "A": "—Is this a storybook? —No, it isn't. It has stories in it.",
+      "B": "—Is this a storybook? —Yes, it is. It has stories in it.",
+      "C": "—Is this a storybook? —I don't know. It has stories in it."
+    },
+    {
+      "A": "Five books are inside the bag. —What are those in the bag? —It's books.",
+      "B": "Five books are inside the bag. —What are those on the bag? —They're books.",
+      "C": "Five books are inside the bag. —What are those in the bag? —They're books."
+    },
+    {
+      "A": "—What's this? —It's a cup. You can drink from it.",
+      "B": "—What's this? —She's my mum. You can drink from it.",
+      "C": "—What's this? —He's my brother. You can drink from it."
+    },
+    {
+      "A": "—What's my cap? —It's on the chair.",
+      "B": "—Where's my cap? —It's on the chair.",
+      "C": "—Who's my cap? —It's on the chair."
+    },
+    {
+      "A": "—Look at this little rabbit. —What cute!",
+      "B": "—Look at this little rabbit. —What a cute!",
+      "C": "—Look at this little rabbit. —How cute!"
+    },
+    {
+      "A": "—Do you have an cap? —Yes, I do.",
+      "B": "—Do you have an apple? —Yes, I do.",
+      "C": "—Do you have an dogs? —Yes, I do."
+    },
+    {
+      "A": "—Are these pigs? —No, they aren't.",
+      "B": "—Are these pig? —No, they aren't.",
+      "C": "—Are these pigs? —No, they are."
+    },
+    {
+      "A": "—Would you like some juice? —Yes, I do.",
+      "B": "—Would you like some juice? —See you.",
+      "C": "—Would you like some juice? —Yes, please."
+    },
+    {
+      "A": "My cap is black and orange. —What colour is your cap? —Blue and white.",
+      "B": "My cap is black and orange. —What colour is your cap? —Black and orange.",
+      "C": "My cap is black and orange. —What colour is your cap? —Red and green."
+    }
+  ]
+}

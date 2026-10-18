@@ -91,6 +91,9 @@ def check(data, plan):
             if b.get('task_mode') == 'ten_sentence_four_choices':
                 from compile_ten_sentence_choices import check as check_ten_sentence_choices
                 check_ten_sentence_choices(g,a,b,source)
+            if b.get('task_mode') == 'common_primary_ten_sentence_choices':
+                from primary_common_choice_contract import check as check_common_primary_choices
+                check_common_primary_choices(g,a,b,source)
             if b.get('task_mode') in {'given_forms5', 'dialogue_clauses5'}:
                 from compile_primary6_written_groups import check as check_primary6_written
                 check_primary6_written(g,a,b,source)

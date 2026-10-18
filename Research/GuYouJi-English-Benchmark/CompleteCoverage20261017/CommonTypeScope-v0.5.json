@@ -1,0 +1,2255 @@
+{
+  "version": "0.5",
+  "owner_requests_common_types_only": true,
+  "owner_correction_date": "2026-10-18",
+  "one_observation_implies_required_type": false,
+  "unknown_cartesian_cells_are_backlog": false,
+  "originals_and_historical_metadata_preserved": true,
+  "commonness_review_complete": false,
+  "display_notice": "题型按代表卷收缩并合并重复标签；地区形式注明适用范围。小学、低年级和部分初中保留项仍属初筛，不以当前数量宣称全国常见性或穷尽。",
+  "required_specific_mode_ids": [],
+  "concrete_configuration_each_requires_three_originals": false,
+  "target": "每个本轮确认保留的常见题型至少三套完整原创；篇数/子组/响应数/媒体按所选来源保真，但不再逐个特殊配置强制补三稿",
+  "levels": [
+    {
+      "level": "primary1",
+      "label": "小学1年级",
+      "retained_types": [
+        {
+          "display_family": "word_picture_matching",
+          "label": "图词配对",
+          "source_families": [
+            "word_picture_matching"
+          ]
+        },
+        {
+          "display_family": "listening_picture_true_false",
+          "label": "听音判断图意",
+          "source_families": [
+            "listening_picture_true_false"
+          ]
+        },
+        {
+          "display_family": "listening_picture_choice",
+          "label": "听音选图",
+          "source_families": [
+            "listening_picture_choice"
+          ]
+        }
+      ],
+      "classification_status": "conservative_sample_supported_shortlist;crossregion_commonness_review_pending",
+      "notice": "低年级仅保留常见图音/识词互动的初筛项；已有历史纸笔稿不充作现行学校无纸笔测评，仍需代表性活动材料核对。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": "primary2",
+      "label": "小学2年级",
+      "retained_types": [
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching"
+          ]
+        },
+        {
+          "display_family": "word_picture_choice",
+          "label": "单词选图片",
+          "source_families": [
+            "word_picture_choice"
+          ]
+        },
+        {
+          "display_family": "picture_sentence_choice",
+          "label": "看图选句",
+          "source_families": [
+            "picture_sentence_choice"
+          ]
+        },
+        {
+          "display_family": "function_choice",
+          "label": "情境功能选择",
+          "source_families": [
+            "function_choice"
+          ]
+        },
+        {
+          "display_family": "listening_word_phrase_choice",
+          "label": "听辨词语",
+          "source_families": [
+            "listening_word_phrase_choice"
+          ]
+        },
+        {
+          "display_family": "listening_sentence_choice",
+          "label": "听句二选",
+          "source_families": [
+            "listening_sentence_choice"
+          ]
+        }
+      ],
+      "classification_status": "conservative_sample_supported_shortlist;crossregion_commonness_review_pending",
+      "notice": "低年级仅保留常见图音/识词互动的初筛项；已有历史纸笔稿不充作现行学校无纸笔测评，仍需代表性活动材料核对。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": "primary3",
+      "label": "小学3年级",
+      "retained_types": [
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching"
+          ]
+        },
+        {
+          "display_family": "reading_tf",
+          "label": "阅读判断",
+          "source_families": [
+            "reading_tf"
+          ]
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ]
+        },
+        {
+          "display_family": "letter_completion",
+          "label": "字母组合补全",
+          "source_families": [
+            "letter_completion"
+          ]
+        },
+        {
+          "display_family": "dialogue_ordering",
+          "label": "对话句序排列",
+          "source_families": [
+            "dialogue_ordering"
+          ]
+        },
+        {
+          "display_family": "listening_picture_true_false",
+          "label": "听音判断图意",
+          "source_families": [
+            "listening_picture_true_false"
+          ]
+        },
+        {
+          "display_family": "listening_picture_matching",
+          "label": "听音配图/配对",
+          "source_families": [
+            "listening_picture_matching",
+            "listening_person_sport_matching"
+          ]
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "representative_notice": "本轮补的是校方分析与地区卷支持的常规单选家族；原生文字选节完整、原键和原校施测未认证，不以三稿证明全国频率。 "
+        }
+      ],
+      "classification_status": "conservative_sample_supported_shortlist;crossregion_commonness_review_pending",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+          "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.1.json",
+          "sha256": "41f9bb79fc1a6b430e78606be3670784880d2fd3c2ee5cb49910b5903c348c5d"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.2.json",
+          "sha256": "d8791fd275617b808777802c8512aa73fc0cd9df87034ec4064fd5e149263218"
+        }
+      ]
+    },
+    {
+      "level": "primary4",
+      "label": "小学4年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ]
+        },
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching",
+            "function_matching"
+          ]
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice"
+          ]
+        },
+        {
+          "display_family": "reading_tf",
+          "label": "阅读判断",
+          "source_families": [
+            "reading_tf"
+          ]
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ]
+        },
+        {
+          "display_family": "word_picture_matching",
+          "label": "图词配对",
+          "source_families": [
+            "word_picture_matching"
+          ]
+        },
+        {
+          "display_family": "word_category_choice",
+          "label": "单词类别辨别",
+          "source_families": [
+            "word_category_choice"
+          ]
+        },
+        {
+          "display_family": "listening_passage_choice",
+          "label": "篇章听力单选",
+          "source_families": [
+            "listening_passage_choice"
+          ]
+        },
+        {
+          "display_family": "listening_dialogue_choice",
+          "label": "听对话回答问题",
+          "source_families": [
+            "listening_dialogue_choice"
+          ]
+        },
+        {
+          "display_family": "listening_picture_true_false",
+          "label": "听音判断图意",
+          "source_families": [
+            "listening_picture_true_false"
+          ]
+        },
+        {
+          "display_family": "listening_picture_matching",
+          "label": "听音配图/配对",
+          "source_families": [
+            "listening_picture_matching"
+          ]
+        },
+        {
+          "display_family": "listening_picture_ordering",
+          "label": "听短文图片排序",
+          "source_families": [
+            "listening_picture_ordering"
+          ]
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "representative_notice": "本轮补的是校方分析与地区卷支持的常规单选家族；原生文字选节完整、原键和原校施测未认证，不以三稿证明全国频率。 "
+        }
+      ],
+      "classification_status": "conservative_sample_supported_shortlist;crossregion_commonness_review_pending",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+          "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.1.json",
+          "sha256": "41f9bb79fc1a6b430e78606be3670784880d2fd3c2ee5cb49910b5903c348c5d"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.2.json",
+          "sha256": "d8791fd275617b808777802c8512aa73fc0cd9df87034ec4064fd5e149263218"
+        }
+      ]
+    },
+    {
+      "level": "primary5",
+      "label": "小学5年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ]
+        },
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching"
+          ]
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice",
+            "table_reading_choice",
+            "closed_mixed_reading",
+            "picture_paragraph_matching"
+          ]
+        },
+        {
+          "display_family": "reading_tf",
+          "label": "阅读判断",
+          "source_families": [
+            "reading_tf",
+            "card_reading_tf"
+          ]
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ]
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ]
+        },
+        {
+          "display_family": "word_picture_matching",
+          "label": "图词配对",
+          "source_families": [
+            "word_picture_matching"
+          ]
+        },
+        {
+          "display_family": "listening_dialogue_choice",
+          "label": "听对话回答问题",
+          "source_families": [
+            "listening_dialogue_choice"
+          ]
+        },
+        {
+          "display_family": "listening_word_phrase_choice",
+          "label": "听辨词语",
+          "source_families": [
+            "listening_word_phrase_choice"
+          ]
+        },
+        {
+          "display_family": "listening_passage_completion",
+          "label": "听短文语篇填词",
+          "source_families": [
+            "listening_passage_completion"
+          ]
+        },
+        {
+          "display_family": "listening_picture_choice",
+          "label": "听音选图",
+          "source_families": [
+            "listening_picture_choice"
+          ]
+        },
+        {
+          "display_family": "listening_picture_matching",
+          "label": "听音配图/配对",
+          "source_families": [
+            "listening_description_picture_matching"
+          ]
+        },
+        {
+          "display_family": "listening_picture_ordering",
+          "label": "听短文图片排序",
+          "source_families": [
+            "listening_picture_ordering"
+          ]
+        }
+      ],
+      "classification_status": "conservative_sample_supported_shortlist;crossregion_commonness_review_pending",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": "primary6",
+      "label": "小学6年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ]
+        },
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching"
+          ]
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice",
+            "table_reading_choice",
+            "closed_mixed_reading"
+          ]
+        },
+        {
+          "display_family": "reading_tf",
+          "label": "阅读判断",
+          "source_families": [
+            "reading_tf"
+          ]
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择（含情境交际）",
+          "source_families": [
+            "sentence_choice",
+            "function_choice"
+          ]
+        },
+        {
+          "display_family": "sentence_form",
+          "label": "词汇/词形填空",
+          "source_families": [
+            "sentence_form"
+          ],
+          "representative_notice": "仅保留通常的给词变形完整稿；历史双句共词联填移作研究参考。 "
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ]
+        },
+        {
+          "display_family": "word_picture_matching",
+          "label": "图词配对",
+          "source_families": [
+            "word_picture_matching"
+          ]
+        },
+        {
+          "display_family": "word_category_choice",
+          "label": "单词类别辨别",
+          "source_families": [
+            "word_category_choice"
+          ]
+        },
+        {
+          "display_family": "marked_sound_tf",
+          "label": "标记部分读音判断",
+          "source_families": [
+            "marked_sound_tf"
+          ]
+        },
+        {
+          "display_family": "sentence_picture_matching",
+          "label": "句图配对",
+          "source_families": [
+            "sentence_picture_matching"
+          ]
+        },
+        {
+          "display_family": "listening_passage_choice",
+          "label": "篇章听力单选",
+          "source_families": [
+            "listening_passage_choice"
+          ]
+        },
+        {
+          "display_family": "listening_dialogue_choice",
+          "label": "听对话回答问题",
+          "source_families": [
+            "listening_dialogue_choice"
+          ]
+        },
+        {
+          "display_family": "listening_picture_true_false",
+          "label": "听音判断图意",
+          "source_families": [
+            "listening_picture_true_false"
+          ]
+        },
+        {
+          "display_family": "listening_picture_matching",
+          "label": "听音配图/配对",
+          "source_families": [
+            "listening_picture_matching"
+          ]
+        },
+        {
+          "display_family": "listening_passage_true_false",
+          "label": "听短文判断",
+          "source_families": [
+            "listening_passage_true_false"
+          ]
+        },
+        {
+          "display_family": "word_order_sentence",
+          "label": "给词组句",
+          "source_families": [
+            "word_order_sentence"
+          ]
+        }
+      ],
+      "classification_status": "conservative_sample_supported_shortlist;crossregion_commonness_review_pending",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": 7,
+      "label": "初中1年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "grade7-hefei2025-21cnjy26607976",
+            "grade7-jinan2025-21cnjy24695341",
+            "grade7-suzhou2025-21cnjy23303742",
+            "grade7-wuhan2025-21cnjy23303148",
+            "grade7-xicheng2025-public-paper-key20261014",
+            "suzhou-changshu2019-grade7-upper",
+            "xdf-grade7-2021lower-paper-20261013"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "context_word_completion",
+          "label": "语境词汇补全",
+          "source_families": [
+            "context_word_completion"
+          ],
+          "selected_parent_labels": [
+            "grade7-hefei2025-21cnjy26607976",
+            "grade7-suzhou2025-21cnjy23303742"
+          ],
+          "selected_parent_label_count": 2,
+          "representative_notice": "所选书面结构记录在2个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching"
+          ],
+          "selected_parent_labels": [
+            "grade7-hefei2025-21cnjy26607976"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "所选书面结构记录在1个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "grammar_choice_cloze",
+          "label": "语法选择语篇",
+          "source_families": [
+            "grammar_choice_cloze"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ],
+          "selected_parent_labels": [
+            "grade7-suzhou2025-21cnjy23303742",
+            "grade7-wuhan2025-21cnjy23303148",
+            "grade7-xicheng2025-public-paper-key20261014"
+          ],
+          "selected_parent_label_count": 3,
+          "representative_notice": "所选书面结构记录在3个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "profile_matching",
+            "reading_choice",
+            "mixed_closed_reading"
+          ],
+          "selected_parent_labels": [
+            "grade7-hefei2025-21cnjy26607976",
+            "grade7-jinan2025-21cnjy24695341",
+            "grade7-suzhou2025-21cnjy23303742",
+            "grade7-wuhan2025-21cnjy23303148",
+            "grade7-xicheng2025-public-paper-key20261014",
+            "suzhou-changshu2019-grade7-upper",
+            "xdf-grade7-2021lower-paper-20261013"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择（含情境交际）",
+          "source_families": [
+            "sentence_choice",
+            "dialogue_choice"
+          ],
+          "selected_parent_labels": [
+            "grade7-hefei2025-21cnjy26607976",
+            "grade7-jinan2025-21cnjy24695341",
+            "grade7-wuhan2025-21cnjy23303148",
+            "grade7-xicheng2025-public-paper-key20261014"
+          ],
+          "selected_parent_label_count": 4,
+          "representative_notice": "所选书面结构记录在4个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_form",
+          "label": "词汇/词形填空",
+          "source_families": [
+            "sentence_form"
+          ],
+          "selected_parent_labels": [
+            "grade7-jinan2025-21cnjy24695341"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "所选书面结构记录在1个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ],
+          "selected_parent_labels": [
+            "grade7-suzhou2025-21cnjy23303742",
+            "grade7-wuhan2025-21cnjy23303148",
+            "grade7-xicheng2025-public-paper-key20261014",
+            "xdf-grade7-2021lower-paper-20261013"
+          ],
+          "selected_parent_label_count": 4,
+          "representative_notice": "所选书面结构记录在4个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "shared_insertion",
+          "label": "阅读选句填空",
+          "source_families": [
+            "shared_insertion"
+          ],
+          "selected_parent_labels": [
+            "grade7-jinan2025-21cnjy24695341",
+            "grade7-suzhou2025-21cnjy23303742",
+            "heading-candidate-grade7-jiexiu-2507579320261015r"
+          ],
+          "selected_parent_label_count": 3,
+          "representative_notice": "所选书面结构记录在3个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "listening_long_conversation_choice",
+          "label": "两长对话听力单选",
+          "source_families": [
+            "listening_long_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_passage_choice",
+          "label": "篇章听力单选",
+          "source_families": [
+            "listening_passage_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_true_false",
+          "label": "听对话判断",
+          "source_families": [
+            "listening_true_false"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_short_conversation_choice",
+          "label": "短对话听力选择",
+          "source_families": [
+            "listening_short_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_table_completion",
+          "label": "听信息表填词/数字",
+          "source_families": [
+            "listening_table_completion"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "sentence_transformation",
+          "label": "受约束句型转换",
+          "source_families": [
+            "sentence_transformation"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        }
+      ],
+      "classification_status": "selected_paper_recurrence_reviewed_not_national_prevalence",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": 8,
+      "label": "初中2年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "bj-grade8-xicheng2025upper-20261013",
+            "gaokzx-fengtai2026-paper-key20261014-record",
+            "grade8-changjun2024-midterm-paper-key20261014",
+            "grade8-fengtai2025upper-candidate20261014",
+            "grade8-hubei2026-21cnjy26105408",
+            "grade8-xiaoshan2025-21cnjy22251031",
+            "xschu-bnu2026-paper-key20261014-record"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ],
+          "selected_parent_labels": [
+            "grade8-changjun2024-midterm-paper-key20261014",
+            "grade8-xiaoshan2025-21cnjy22251031",
+            "xschu-bnu2026-paper-key20261014-record"
+          ],
+          "selected_parent_label_count": 3,
+          "representative_notice": "所选书面结构记录在3个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "profile_matching",
+            "reading_choice",
+            "mixed_closed_reading"
+          ],
+          "selected_parent_labels": [
+            "bj-grade8-xicheng2025upper-20261013",
+            "gaokzx-fengtai2026-paper-key20261014-record",
+            "grade8-changjun2024-midterm-paper-key20261014",
+            "grade8-fengtai2025upper-candidate20261014",
+            "grade8-hubei2026-21cnjy26105408",
+            "grade8-xiaoshan2025-21cnjy22251031",
+            "xschu-bnu2026-paper-key20261014-record"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "selected_parent_labels": [
+            "gaokzx-fengtai2026-paper-key20261014-record",
+            "grade8-fengtai2025upper-candidate20261014",
+            "xschu-bnu2026-paper-key20261014-record"
+          ],
+          "selected_parent_label_count": 3,
+          "representative_notice": "所选书面结构记录在3个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ],
+          "selected_parent_labels": [
+            "grade8-hubei2026-21cnjy26105408",
+            "grade8-xiaoshan2025-21cnjy22251031"
+          ],
+          "selected_parent_label_count": 2,
+          "representative_notice": "所选书面结构记录在2个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "shared_insertion",
+          "label": "阅读选句填空",
+          "source_families": [
+            "shared_insertion"
+          ],
+          "selected_parent_labels": [
+            "grade8-changjun2024-midterm-paper-key20261014",
+            "grade8-hubei2026-21cnjy26105408"
+          ],
+          "selected_parent_label_count": 2,
+          "representative_notice": "所选书面结构记录在2个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "listening_long_conversation_choice",
+          "label": "两长对话听力单选",
+          "source_families": [
+            "listening_long_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_passage_choice",
+          "label": "篇章听力单选",
+          "source_families": [
+            "listening_passage_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_short_conversation_choice",
+          "label": "短对话听力选择",
+          "source_families": [
+            "listening_short_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        }
+      ],
+      "classification_status": "selected_paper_recurrence_reviewed_not_national_prevalence",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": 9,
+      "label": "初中3年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+            "fuzhou2025-exam-bundle-public-full",
+            "grade9-boxing2025-21cnjy24857076",
+            "grade9-chengdu2025-21cnjy23208601",
+            "grade9-nanshan2026-21cnjy25758947",
+            "grade9-zhongshan2025-21cnjy22278047",
+            "suzhou2024-official-english-paper-image20261014"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "context_word_completion",
+          "label": "语境词汇补全",
+          "source_families": [
+            "context_word_completion"
+          ],
+          "selected_parent_labels": [
+            "grade9-chengdu2025-21cnjy23208601",
+            "suzhou2024-official-english-paper-image20261014"
+          ],
+          "selected_parent_label_count": 2,
+          "representative_notice": "所选书面结构记录在2个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "dialogue_matching",
+          "label": "问答/对话配对",
+          "source_families": [
+            "dialogue_matching"
+          ],
+          "selected_parent_labels": [
+            "grade9-chengdu2025-21cnjy23208601"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "所选书面结构记录在1个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "grammar_choice_cloze",
+          "label": "语法选择语篇",
+          "source_families": [
+            "grammar_choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "grade9-zhongshan2025-21cnjy22278047"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "所选书面结构记录在1个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ],
+          "selected_parent_labels": [
+            "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+            "fuzhou2025-exam-bundle-public-full",
+            "grade9-boxing2025-21cnjy24857076",
+            "grade9-nanshan2026-21cnjy25758947",
+            "suzhou2024-official-english-paper-image20261014"
+          ],
+          "selected_parent_label_count": 5,
+          "representative_notice": "所选书面结构记录在5个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "profile_matching",
+            "reading_choice"
+          ],
+          "selected_parent_labels": [
+            "fuzhou-fujian2026-exam-bundle-bounded16020261013",
+            "fuzhou2025-exam-bundle-public-full",
+            "grade9-boxing2025-21cnjy24857076",
+            "grade9-chengdu2025-21cnjy23208601",
+            "grade9-nanshan2026-21cnjy25758947",
+            "grade9-zhongshan2025-21cnjy22278047",
+            "suzhou2024-official-english-paper-image20261014"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_tf",
+          "label": "阅读判断",
+          "source_families": [
+            "reading_tf"
+          ],
+          "selected_parent_labels": [
+            "grade9-chengdu2025-21cnjy23208601"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "所选书面结构记录在1个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "selected_parent_labels": [
+            "grade9-boxing2025-21cnjy24857076",
+            "grade9-chengdu2025-21cnjy23208601"
+          ],
+          "selected_parent_label_count": 2,
+          "representative_notice": "所选书面结构记录在2个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ],
+          "selected_parent_labels": [
+            "grade9-chengdu2025-21cnjy23208601",
+            "grade9-zhongshan2025-21cnjy22278047",
+            "suzhou2024-official-english-paper-image20261014"
+          ],
+          "selected_parent_label_count": 3,
+          "representative_notice": "所选书面结构记录在3个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "shared_insertion",
+          "label": "阅读选句填空",
+          "source_families": [
+            "shared_insertion"
+          ],
+          "selected_parent_labels": [
+            "fuzhou2025-exam-bundle-public-full",
+            "grade9-boxing2025-21cnjy24857076",
+            "grade9-chengdu2025-21cnjy23208601",
+            "grade9-nanshan2026-21cnjy25758947",
+            "suzhou2024-official-english-paper-image20261014"
+          ],
+          "selected_parent_label_count": 5,
+          "representative_notice": "所选书面结构记录在5个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "listening_short_conversation_choice",
+          "label": "短对话听力选择",
+          "source_families": [
+            "listening_short_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_multi_question_choice",
+          "label": "长对话/独白听力选择",
+          "source_families": [
+            "listening_multi_question_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_table_completion",
+          "label": "听信息表填词/数字",
+          "source_families": [
+            "listening_table_completion"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        }
+      ],
+      "classification_status": "selected_paper_recurrence_reviewed_not_national_prevalence",
+      "notice": "本轮为样本支持的常见题型初筛，地区重复出现情况仍在核对；不再为无依据的跨档位题型或单次特别编排补稿。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": 10,
+      "label": "高中1年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "bj-grade10-shijingshan2024lower-20261013",
+            "grade10-2025yearend-explanation-candidate20261014",
+            "grade10-jinhua2025-21cnjy22399612",
+            "grade10-shenzhenlower2026-21cnjy26167651",
+            "grade10-weishi2026-21cnjy25962499",
+            "grade10-wenzhou2025-midterm-paper-key20261014"
+          ],
+          "selected_parent_label_count": 6,
+          "representative_notice": "所选书面结构记录在6个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ],
+          "selected_parent_labels": [
+            "bj-grade10-shijingshan2024lower-20261013",
+            "grade10-2025yearend-explanation-candidate20261014",
+            "grade10-jinhua2025-21cnjy22399612",
+            "grade10-shenzhenlower2026-21cnjy26167651",
+            "grade10-weishi2026-21cnjy25962499",
+            "grade10-wenzhou2025-midterm-paper-key20261014"
+          ],
+          "selected_parent_label_count": 6,
+          "representative_notice": "所选书面结构记录在6个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice"
+          ],
+          "selected_parent_labels": [
+            "bj-grade10-shijingshan2024lower-20261013",
+            "grade10-2025yearend-explanation-candidate20261014",
+            "grade10-jinhua2025-21cnjy22399612",
+            "grade10-shenzhenlower2026-21cnjy26167651",
+            "grade10-weishi2026-21cnjy25962499",
+            "grade10-wenzhou2025-midterm-paper-key20261014"
+          ],
+          "selected_parent_label_count": 6,
+          "representative_notice": "所选书面结构记录在6个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "selected_parent_labels": [
+            "grade10-shenzhenlower2026-21cnjy26167651"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "地区卷型：天津等地区保留单项选择，全国Ⅰ卷主干不含此节。 "
+        },
+        {
+          "display_family": "shared_insertion",
+          "label": "阅读选句填空",
+          "source_families": [
+            "shared_insertion"
+          ],
+          "selected_parent_labels": [
+            "grade10-jinhua2025-21cnjy22399612",
+            "grade10-shenzhenlower2026-21cnjy26167651",
+            "grade10-weishi2026-21cnjy25962499",
+            "grade10-wenzhou2025-midterm-paper-key20261014"
+          ],
+          "selected_parent_label_count": 4,
+          "representative_notice": "所选书面结构记录在4个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "listening_short_conversation_choice",
+          "label": "短对话听力选择",
+          "source_families": [
+            "listening_short_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_multi_question_choice",
+          "label": "长对话/独白听力选择",
+          "source_families": [
+            "listening_multi_question_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        }
+      ],
+      "classification_status": "selected_paper_recurrence_reviewed_not_national_prevalence",
+      "notice": "本轮按常见高中客观题收缩；单项选择保留天津等地区卷型，不表示全国卷都有。旧短文改错退出当前常见目标。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+          "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/common-scope-owner-reader-v0.1.json",
+          "sha256": "c68683504c8d7dfe47495dbad819c1fb5fc0eaebf30be8f6cff8c1fb743fa5ae"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": 11,
+      "label": "高中2年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "bj-grade11-yanqing2024upper-20261013",
+            "grade11-2025lower-crossregion-candidate-20261013",
+            "grade11-heze2026-21cnjy24886046",
+            "grade11-spring2024-public-bundle20261014",
+            "grade11-tianjin2026-21cnjy26082071",
+            "grade11-yinchuan2026-21cnjy25860535"
+          ],
+          "selected_parent_label_count": 6,
+          "representative_notice": "所选书面结构记录在6个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ],
+          "selected_parent_labels": [
+            "bj-grade11-yanqing2024upper-20261013",
+            "grade11-2025lower-crossregion-candidate-20261013",
+            "grade11-heze2026-21cnjy24886046",
+            "grade11-spring2024-public-bundle20261014",
+            "grade11-yinchuan2026-21cnjy25860535"
+          ],
+          "selected_parent_label_count": 5,
+          "representative_notice": "所选书面结构记录在5个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice",
+            "table_reading_choice"
+          ],
+          "selected_parent_labels": [
+            "bj-grade11-yanqing2024upper-20261013",
+            "grade11-2025lower-crossregion-candidate-20261013",
+            "grade11-heze2026-21cnjy24886046",
+            "grade11-spring2024-public-bundle20261014",
+            "grade11-tianjin2026-21cnjy26082071",
+            "grade11-yinchuan2026-21cnjy25860535"
+          ],
+          "selected_parent_label_count": 6,
+          "representative_notice": "所选书面结构记录在6个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "selected_parent_labels": [
+            "grade11-tianjin2026-21cnjy26082071"
+          ],
+          "selected_parent_label_count": 1,
+          "representative_notice": "地区卷型：天津等地区保留单项选择，全国Ⅰ卷主干不含此节。 "
+        },
+        {
+          "display_family": "shared_insertion",
+          "label": "阅读选句填空",
+          "source_families": [
+            "shared_insertion"
+          ],
+          "selected_parent_labels": [
+            "grade11-heze2026-21cnjy24886046",
+            "grade11-spring2024-public-bundle20261014",
+            "grade11-yinchuan2026-21cnjy25860535"
+          ],
+          "selected_parent_label_count": 3,
+          "representative_notice": "所选书面结构记录在3个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "listening_short_conversation_choice",
+          "label": "短对话听力选择",
+          "source_families": [
+            "listening_short_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_multi_question_choice",
+          "label": "长对话/独白听力选择",
+          "source_families": [
+            "listening_multi_question_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        }
+      ],
+      "classification_status": "selected_paper_recurrence_reviewed_not_national_prevalence",
+      "notice": "本轮按常见高中客观题收缩；单项选择保留天津等地区卷型，不表示全国卷都有。旧短文改错退出当前常见目标。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+          "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/common-scope-owner-reader-v0.1.json",
+          "sha256": "c68683504c8d7dfe47495dbad819c1fb5fc0eaebf30be8f6cff8c1fb743fa5ae"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": 12,
+      "label": "高中3年级",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ],
+          "selected_parent_labels": [
+            "grade12-anshan2025upper-monitor-candidate20261014",
+            "grade12-jianghuai2024-firstjoint-20261013",
+            "grade12-linyi2025-21cnjy24838709",
+            "grade12-national2025-paper-commentary20261014",
+            "grade12-tianjin2025-21cnjy24812550",
+            "grade12-tianjinlower2025-21cnjy22402528",
+            "grade12-yali2026-21cnjy25133058"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ],
+          "selected_parent_labels": [
+            "grade12-anshan2025upper-monitor-candidate20261014",
+            "grade12-jianghuai2024-firstjoint-20261013",
+            "grade12-linyi2025-21cnjy24838709",
+            "grade12-national2025-paper-commentary20261014",
+            "grade12-yali2026-21cnjy25133058"
+          ],
+          "selected_parent_label_count": 5,
+          "representative_notice": "所选书面结构记录在5个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice"
+          ],
+          "selected_parent_labels": [
+            "grade12-anshan2025upper-monitor-candidate20261014",
+            "grade12-jianghuai2024-firstjoint-20261013",
+            "grade12-linyi2025-21cnjy24838709",
+            "grade12-national2025-paper-commentary20261014",
+            "grade12-tianjin2025-21cnjy24812550",
+            "grade12-tianjinlower2025-21cnjy22402528",
+            "grade12-yali2026-21cnjy25133058"
+          ],
+          "selected_parent_label_count": 7,
+          "representative_notice": "所选书面结构记录在7个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "sentence_choice",
+          "label": "单项选择",
+          "source_families": [
+            "sentence_choice"
+          ],
+          "selected_parent_labels": [
+            "grade12-tianjin2025-21cnjy24812550",
+            "grade12-tianjinlower2025-21cnjy22402528"
+          ],
+          "selected_parent_label_count": 2,
+          "representative_notice": "地区卷型：天津等地区保留单项选择，全国Ⅰ卷主干不含此节。 "
+        },
+        {
+          "display_family": "shared_insertion",
+          "label": "阅读选句填空",
+          "source_families": [
+            "shared_insertion"
+          ],
+          "selected_parent_labels": [
+            "grade12-anshan2025upper-monitor-candidate20261014",
+            "grade12-linyi2025-21cnjy24838709",
+            "grade12-national2025-paper-commentary20261014",
+            "grade12-yali2026-21cnjy25133058"
+          ],
+          "selected_parent_label_count": 4,
+          "representative_notice": "所选书面结构记录在4个父卷标签中出现；这是样本内复现，非全国频率或独立认证卷数。 "
+        },
+        {
+          "display_family": "listening_short_conversation_choice",
+          "label": "短对话听力选择",
+          "source_families": [
+            "listening_short_conversation_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        },
+        {
+          "display_family": "listening_multi_question_choice",
+          "label": "长对话/独白听力选择",
+          "source_families": [
+            "listening_multi_question_choice"
+          ],
+          "selected_parent_labels": [],
+          "selected_parent_label_count": 0
+        }
+      ],
+      "classification_status": "selected_paper_recurrence_reviewed_not_national_prevalence",
+      "notice": "本轮按常见高中客观题收缩；单项选择保留天津等地区卷型，不表示全国卷都有。旧短文改错退出当前常见目标。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/raw/grade12-national2025-paper-commentary20261014.pdf",
+          "sha256": "c20fe4a7d5227ede24a0519008501d5852c272de03c5bb4290cd7e5a035a531e"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/common-scope-owner-reader-v0.1.json",
+          "sha256": "c68683504c8d7dfe47495dbad819c1fb5fc0eaebf30be8f6cff8c1fb743fa5ae"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": "undergraduate",
+      "label": "大学英语四级",
+      "retained_types": [
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice"
+          ]
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ]
+        },
+        {
+          "display_family": "paragraph_matching",
+          "label": "长篇段落信息匹配",
+          "source_families": [
+            "paragraph_matching"
+          ]
+        },
+        {
+          "display_family": "listening_news_choice",
+          "label": "三新闻听力单选",
+          "source_families": [
+            "listening_news_choice"
+          ]
+        },
+        {
+          "display_family": "listening_long_conversation_choice",
+          "label": "两长对话听力单选",
+          "source_families": [
+            "listening_long_conversation_choice"
+          ]
+        },
+        {
+          "display_family": "listening_passage_choice",
+          "label": "篇章听力单选",
+          "source_families": [
+            "listening_passage_choice"
+          ]
+        }
+      ],
+      "classification_status": "official_CET_format_core",
+      "notice": "",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/cet4-format.html",
+          "sha256": "2811871775831ea1b529a551bc21f1a48bb1a8f7155501be3a139d485802c22e"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": "postgraduate",
+      "label": "大学英语六级",
+      "retained_types": [
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice"
+          ]
+        },
+        {
+          "display_family": "shared_bank",
+          "label": "选词填空",
+          "source_families": [
+            "shared_bank"
+          ]
+        },
+        {
+          "display_family": "paragraph_matching",
+          "label": "长篇段落信息匹配",
+          "source_families": [
+            "paragraph_matching"
+          ]
+        },
+        {
+          "display_family": "listening_long_conversation_choice",
+          "label": "两长对话听力单选",
+          "source_families": [
+            "listening_long_conversation_choice"
+          ]
+        },
+        {
+          "display_family": "listening_passage_choice",
+          "label": "篇章听力单选",
+          "source_families": [
+            "listening_passage_choice"
+          ]
+        },
+        {
+          "display_family": "listening_lecture_choice",
+          "label": "讲座讲话听力单选",
+          "source_families": [
+            "listening_lecture_choice"
+          ]
+        }
+      ],
+      "classification_status": "official_CET_format_core",
+      "notice": "",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/cet6-format.html",
+          "sha256": "8921b0aa6ca848720da1025fc62a126fca0ca8e2e22ae099e6ca3ae5c87cd05a"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    },
+    {
+      "level": "advanced",
+      "label": "高级英语（专业与学术）",
+      "retained_types": [
+        {
+          "display_family": "choice_cloze",
+          "label": "完形填空",
+          "source_families": [
+            "choice_cloze"
+          ]
+        },
+        {
+          "display_family": "open_cloze",
+          "label": "无给词单词完形",
+          "source_families": [
+            "open_cloze"
+          ]
+        },
+        {
+          "display_family": "passage_form",
+          "label": "语法填空",
+          "source_families": [
+            "passage_form"
+          ]
+        },
+        {
+          "display_family": "keyword_transformation",
+          "label": "关键词句式转换",
+          "source_families": [
+            "keyword_transformation"
+          ]
+        },
+        {
+          "display_family": "reading_choice",
+          "label": "阅读理解（含图表与配对）",
+          "source_families": [
+            "reading_choice"
+          ]
+        },
+        {
+          "display_family": "cross_text_matching",
+          "label": "跨文本观点匹配",
+          "source_families": [
+            "cross_text_matching"
+          ]
+        },
+        {
+          "display_family": "paragraph_gap_insertion",
+          "label": "段落插入衔接",
+          "source_families": [
+            "paragraph_gap_insertion"
+          ]
+        },
+        {
+          "display_family": "multiple_text_information_matching",
+          "label": "多文本信息匹配",
+          "source_families": [
+            "multiple_text_information_matching"
+          ]
+        },
+        {
+          "display_family": "listening_extract_choice",
+          "label": "三段短录音听力选择",
+          "source_families": [
+            "listening_extract_choice"
+          ]
+        },
+        {
+          "display_family": "listening_sentence_completion",
+          "label": "独白听句补全",
+          "source_families": [
+            "listening_sentence_completion"
+          ]
+        },
+        {
+          "display_family": "listening_interview_choice",
+          "label": "完整访谈听力单选",
+          "source_families": [
+            "listening_interview_choice"
+          ]
+        },
+        {
+          "display_family": "listening_double_matching",
+          "label": "五人独白双任务配对",
+          "source_families": [
+            "listening_double_matching"
+          ]
+        }
+      ],
+      "classification_status": "one_selected_C1_reference_framework_not_all_advanced_exams_or_product_equivalence",
+      "notice": "本轮先按既有C1公开题型框架保留常见能力任务，其他学术考试的特别操作移为参考；不宣称与产品档位或考试分数等值。 ",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.168.json",
+          "sha256": "5fa2ed89228a18f19850381174c9ac0a04dc764e628d526000d39ccc4e5e6224"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/c1-format.html",
+          "sha256": "3a6f5eb433dc31dfe5516a685221d3d93cee413222c1b4054e9ec3a33daa8791"
+        },
+        {
+          "path": "build/english-benchmark-authority-20261017/c1-preparation.html",
+          "sha256": "5997f403212b6f760f61b04a9c06ff629c186d9c7aac9458511e1b10d5b2cfb0"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    }
+  ],
+  "reference_only_family_cells": [
+    {
+      "level": "primary1",
+      "family": "number_word_completion",
+      "label": "数字词转数字",
+      "group_ids": [
+        "primary1-eight-number-words",
+        "primary1-number-words-small",
+        "primary1-number-words-mixed"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": "primary1",
+      "family": "word_classification",
+      "label": "词卡归类",
+      "group_ids": [
+        "primary1-eleven-category-cards",
+        "primary1-category-cards-1",
+        "primary1-category-cards-2"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": "primary3",
+      "family": "letter_case_tf",
+      "label": "字母大小写配对判断",
+      "group_ids": [
+        "primary3-five-letter-pairs",
+        "primary3-letter-pairs-curves",
+        "primary3-letter-pairs-shapes"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": "primary5",
+      "family": "listening_table_matching",
+      "label": "听短文人物物品表",
+      "group_ids": [
+        "primary5-table-park-picnic",
+        "primary5-table-team-outing",
+        "primary5-table-countryside-walk"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": 7,
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "group_ids": [
+        "grade7-five-club-headings",
+        "grade7-show-preparation-headings",
+        "grade7-new-area-headings"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": 7,
+      "family": "phonetic_word_completion",
+      "label": "音标提示词汇补全",
+      "group_ids": [
+        "grade7-phonetic-word-completion",
+        "grade7-phonetic-context-1",
+        "grade7-phonetic-context-2"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": 8,
+      "family": "passage_chinese_completion",
+      "label": "阅读后中文补全",
+      "group_ids": [
+        "grade8-chinese-model-street",
+        "grade8-chinese-cake-delivery",
+        "grade8-chinese-chess-table"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": 10,
+      "family": "shared_bank",
+      "label": "共享词库填空",
+      "group_ids": [
+        "grade10-platform-sketchbook-bank",
+        "grade10-theatre-kitten-fixedbank",
+        "grade10-flower-portrait-fixedbank"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": 10,
+      "family": "passage_word_editing",
+      "label": "短文词语增删改",
+      "group_ids": [
+        "grade10-editing-lost-property",
+        "grade10-editing-seed-packets",
+        "grade10-editing-town-game"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "旧卷/地方形式，未证当前主流普通卷持续采用；退出当前目标"
+    },
+    {
+      "level": 11,
+      "family": "context_word_completion",
+      "label": "语境词汇补全",
+      "group_ids": [
+        "grade11-context-report-and-archive",
+        "grade11-context-workshop-decisions",
+        "grade11-context-evidence-and-design"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "尚未证明是该年级常见形式，移出当前目标，非断言不存在"
+    },
+    {
+      "level": 11,
+      "family": "passage_word_editing",
+      "label": "短文词语增删改",
+      "group_ids": [
+        "grade11-editing-percussion-cases",
+        "grade11-editing-language-cafe",
+        "grade11-editing-bicycle-records"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "旧卷/地方形式，未证当前主流普通卷持续采用；退出当前目标"
+    },
+    {
+      "level": 12,
+      "family": "passage_word_editing",
+      "label": "短文词语增删改",
+      "group_ids": [
+        "grade12-editing-caption-audit",
+        "grade12-editing-refill-counters",
+        "grade12-editing-reference-shelves"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "旧卷/地方形式，未证当前主流普通卷持续采用；退出当前目标"
+    },
+    {
+      "level": "advanced",
+      "family": "paragraph_heading_matching",
+      "label": "段落标题配对",
+      "group_ids": [
+        "advanced-headings-theatre-sightlines",
+        "advanced-headings-field-notebooks",
+        "advanced-headings-shoreline-sketches"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_dialogue_choice",
+      "label": "听对话回答问题",
+      "group_ids": [
+        "advanced-audio-choice-projector",
+        "advanced-audio-choice-display",
+        "advanced-audio-choice-crates"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "reading_information_tristate",
+      "label": "阅读信息三态判断",
+      "group_ids": [
+        "advanced-tristate-humidity-logs",
+        "advanced-tristate-sign-trial",
+        "advanced-tristate-pottery-register"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "matching_features",
+      "label": "特征归类配对",
+      "group_ids": [
+        "advanced-features-sound-archive",
+        "advanced-features-river-sampling",
+        "advanced-features-manuscript-imaging"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "table_completion",
+      "label": "表格抽词补全",
+      "group_ids": [
+        "advanced-table-tile-lifters",
+        "advanced-table-projector-cases",
+        "advanced-table-seed-drums"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "flow_chart_completion",
+      "label": "流程图抽词补全",
+      "group_ids": [
+        "advanced-flow-sheet-feeder",
+        "advanced-flow-image-queue",
+        "advanced-flow-entry-desk"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "sentence_end_matching",
+      "label": "句首句尾衔接配对",
+      "group_ids": [
+        "advanced-endings-repair-network",
+        "advanced-endings-exhibition-rest",
+        "advanced-endings-school-margins"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "reading_multiselect",
+      "label": "阅读多选",
+      "group_ids": [
+        "advanced-multiselect-fabric-swatches",
+        "advanced-multiselect-display-boxes",
+        "advanced-multiselect-interview-index"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "note_text_completion",
+      "label": "笔记抽词补全",
+      "group_ids": [
+        "advanced-notes-photographic-survey",
+        "advanced-notes-tree-records",
+        "advanced-notes-rhythm-collector"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "reading_sentence_completion",
+      "label": "阅读句子抽词补全",
+      "group_ids": [
+        "advanced-sentences-pottery-stamps",
+        "advanced-sentences-map-copies",
+        "advanced-sentences-cloth-seams"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "summary_text_completion",
+      "label": "摘要抽词补全",
+      "group_ids": [
+        "advanced-summary-map-keys",
+        "advanced-summary-workshop-guide",
+        "advanced-summary-access-notes"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "summary_bank_completion",
+      "label": "摘要共享词库补全",
+      "group_ids": [
+        "advanced-summarybank-archive-relations",
+        "advanced-summarybank-field-kit",
+        "advanced-summarybank-timetable-records"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "diagram_label_completion",
+      "label": "示意图标注抽词",
+      "group_ids": [
+        "advanced-diagram-proof-desk",
+        "advanced-diagram-card-desk",
+        "advanced-diagram-leaflet-desk"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "reading_writer_claims_tristate",
+      "label": "作者观点三态判断",
+      "group_ids": [
+        "advanced-claims-night-route",
+        "advanced-claims-seed-loans",
+        "advanced-claims-rehearsal-pauses"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "paragraph_information_matching",
+      "label": "段落特定信息匹配",
+      "group_ids": [
+        "advanced-information-saltworks",
+        "advanced-information-courtyard-cinema",
+        "advanced-information-mineral-transfer"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "bounded_extracted_short_answers",
+      "label": "限词原文短答",
+      "group_ids": [
+        "advanced-shortanswer-echo-survey",
+        "advanced-shortanswer-rain-ledgers",
+        "advanced-shortanswer-beacon-records"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_intention_classification",
+      "label": "听力选项意向归类",
+      "group_ids": [
+        "advanced-audio-module-design",
+        "advanced-audio-module-language",
+        "advanced-audio-module-environment"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_description_matching",
+      "label": "听力描述配候选",
+      "group_ids": [
+        "advanced-audio-guesthouse-rehearsal",
+        "advanced-audio-hotel-rail-trip",
+        "advanced-audio-inn-coastal-study"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_dialogue_sentence_completion",
+      "label": "对话听句补全",
+      "group_ids": [
+        "advanced-audio-sentences-conservation",
+        "advanced-audio-sentences-carpentry",
+        "advanced-audio-sentences-illustration"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_plan_label_matching",
+      "label": "听力平面图匹配",
+      "group_ids": [
+        "advanced-audio-plan-records",
+        "advanced-audio-plan-media",
+        "advanced-audio-plan-harbour"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_short_answer_pairs",
+      "label": "听力双答案短答",
+      "group_ids": [
+        "advanced-audio-pairs-arts",
+        "advanced-audio-pairs-workshop",
+        "advanced-audio-pairs-fieldcentre"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_form_completion",
+      "label": "听力表单补全",
+      "group_ids": [
+        "advanced-audio-form-drawing",
+        "advanced-audio-form-music",
+        "advanced-audio-form-costume"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_note_table_completion",
+      "label": "听力笔记与表格整组",
+      "group_ids": [
+        "advanced-audio-notestable-sound",
+        "advanced-audio-notestable-craft",
+        "advanced-audio-notestable-dance"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_research_table_completion",
+      "label": "听力独立研究表格",
+      "group_ids": [
+        "advanced-audio-researchtable-archive",
+        "advanced-audio-researchtable-garden",
+        "advanced-audio-researchtable-makers"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_multiselect",
+      "label": "听力八选三",
+      "group_ids": [
+        "advanced-audio-multiselect-theatre",
+        "advanced-audio-multiselect-studio",
+        "advanced-audio-multiselect-fieldcentre"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_flowchart_matching",
+      "label": "听力流程图候选匹配",
+      "group_ids": [
+        "advanced-audio-flow-soundwalk",
+        "advanced-audio-flow-harbour",
+        "advanced-audio-flow-puppets",
+        "advanced-audio-flow5-gallery",
+        "advanced-audio-flow5-parcel",
+        "advanced-audio-flow5-tile",
+        "advanced-inspera-flow5-prop-register",
+        "advanced-inspera-flow5-sensor-trial",
+        "advanced-inspera-flow5-story-archive"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "advanced",
+      "family": "listening_summary_completion",
+      "label": "听力连续摘要补全",
+      "group_ids": [
+        "advanced-audio-summary-layered-review",
+        "advanced-audio-summary-paired-briefing",
+        "advanced-audio-summary-material-record"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "另一参照框架的具体操作，当前产品需用与常见性尚未确认；保留研究参考，不断言该考试罕见"
+    },
+    {
+      "level": "primary6",
+      "family": "context_word_completion",
+      "label": "课文依赖首字母练习",
+      "group_ids": [
+        "primary6-course10-borrowing",
+        "primary6-course10-parade",
+        "primary6-course10-map"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "源要求依课文首字母回忆，课文版本缺失；作者改为可见课文练习，不能代表常规语境首字母填空，退出主页面。不是断言小学没有首字母题。"
+    }
+  ],
+  "reference_only_specific_mode_ids": [
+    "grade10-weishi2026-21cnjy25962499.reading.complete_section",
+    "gaokzx-fengtai2026-paper-key20261014-record.reading.closed_scene_heading_section13"
+  ],
+  "unknown_synthetic_cells_removed": 1183,
+  "scope_decisions_not_prevalence_statistics": true,
+  "senior3_phonetic_candidate_removed_not_claimed_nationally_impossible": true,
+  "previous": {
+    "path": "CompleteCoverage20261017/CommonTypeScope-v0.4.json",
+    "sha256": "dee207fa426176a44635cb3517a29eac28fec3dbfa89c333f6fc65f0fbd47cfa"
+  },
+  "representative_review": {
+    "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.3.json",
+    "sha256": "0d7294b339c3f14f606bb321e6786a02f8003732497e3b2839110088621ea233"
+  },
+  "reference_only_group_ids": [
+    "primary6-pairfill10-paint",
+    "primary6-pairfill10-train",
+    "primary6-pairfill10-garden",
+    "primary6-course10-borrowing",
+    "primary6-course10-parade",
+    "primary6-course10-map"
+  ],
+  "reference_only_author_decisions": [
+    {
+      "group_ids": [
+        "primary6-pairfill10-paint",
+        "primary6-pairfill10-train",
+        "primary6-pairfill10-garden"
+      ],
+      "reason": "历史2017转载卷双句共词联填仅一父卷，未证是常规小学词形题的常用配置，当前退出；普通给词变形三稿继续保留。"
+    },
+    {
+      "group_ids": [
+        "primary6-course10-borrowing",
+        "primary6-course10-parade",
+        "primary6-course10-map"
+      ],
+      "reason": "源要求依课文首字母回忆，课文版本缺失；作者改为可见课文练习，不能代表常规语境首字母填空，退出主页面。不是断言小学没有首字母题。"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "version": "0.2",
+  "id": "primary4-commonchoices10-show",
+  "grade": "primary4",
+  "family": "sentence_choice",
+  "title": "小四：音乐课、画笔与共同难题",
+  "source_group_id": "p4-jianye2025.sentencechoice10",
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "instruction": "从每题的A、B、C三个选项中选择最合适的一项。两空或三空的题目须选一个完整组合，每题只填一个字母。 组合中的“/”表示相应空不填介词。",
+  "items": [
+    {
+      "stem": "Here is some ____ for your tea. It is white and you can drink it.",
+      "key": "B",
+      "options": [
+        "apples",
+        "milk",
+        "biscuits"
+      ],
+      "grounds": [
+        "apples为复数，与is、it不一致，也非饮品。",
+        "milk不可数，符合some、is、it及可饮用白色液体。",
+        "biscuits复数且不是可喝的液体。"
+      ]
+    },
+    {
+      "stem": "The music lesson starts now. It's time ____ sing.",
+      "key": "A",
+      "options": [
+        "to",
+        "in",
+        "for"
+      ],
+      "grounds": [
+        "time to接动词原形sing。",
+        "time in sing不成结构。",
+        "for后不直接接该动词原形。"
+      ]
+    },
+    {
+      "stem": "—How many ____ are there? —Five drums beside the piano.",
+      "key": "C",
+      "options": [
+        "drum",
+        "balls",
+        "drums"
+      ],
+      "grounds": [
+        "many要求复数，不能用单数。",
+        "回答明确是drums，不是balls。",
+        "复数drums与many和Five drums一致。"
+      ]
+    },
+    {
+      "stem": "We draw ____ seven ____ the morning ____ every Saturday.",
+      "key": "B",
+      "options": [
+        "at; on; in",
+        "at; in; /",
+        "in; in; at"
+      ],
+      "grounds": [
+        "一般时段morning用in，every Saturday前不加in。",
+        "at seven、in the morning正确，every Saturday前不加介词。",
+        "钟点不用in，every Saturday前不加at。"
+      ]
+    },
+    {
+      "stem": "Amy has new socks. Look at ____ socks! ____ green.",
+      "key": "A",
+      "options": [
+        "her; They're",
+        "she; They're",
+        "her; It's"
+      ],
+      "grounds": [
+        "Amy用her修饰，socks复数用They are。",
+        "socks前不用主格she作物主限定。",
+        "socks复数，不能用It is。"
+      ]
+    },
+    {
+      "stem": "This cup has only clean brushes, not dirty ones. Take a ____ brush, not a ____ one.",
+      "key": "C",
+      "options": [
+        "dirty; clean",
+        "dirty; dirty",
+        "clean; dirty"
+      ],
+      "grounds": [
+        "把允许拿的干净笔与不拿的脏笔反过来。",
+        "第一空与only clean冲突。",
+        "与干净笔可拿、脏笔不拿的要求一致。"
+      ]
+    },
+    {
+      "stem": "My aunt is in the music room. —____ your ____ there? —Yes, she is.",
+      "key": "B",
+      "options": [
+        "Are; aunt",
+        "Is; aunt",
+        "Is; uncles"
+      ],
+      "grounds": [
+        "aunt单数不与Are搭配。",
+        "aunt单数用Is，she回答一致。",
+        "uncles复数并且不对应she。"
+      ]
+    },
+    {
+      "stem": "—____ ruler is that? —It's ____.",
+      "key": "C",
+      "options": [
+        "Whose; Lily",
+        "Who's; Lily's",
+        "Whose; Lily's"
+      ],
+      "grounds": [
+        "后句表示所有关系，需所有格。",
+        "Who is不是这里的物主疑问词。",
+        "Whose询问所有关系，由Lily所有格回答。"
+      ]
+    },
+    {
+      "stem": "—Our kite broke before the show. We feel sad. —____",
+      "key": "A",
+      "options": [
+        "I'm sorry to hear that.",
+        "Congratulations!",
+        "You are welcome."
+      ],
+      "grounds": [
+        "对风筝坏掉及难过直接表示同情。",
+        "祝贺不适合这条坏消息。",
+        "没有感谢，不用不用谢回应。"
+      ]
+    },
+    {
+      "stem": "We both lost our homework and need to find it. We are in the same boat. Here, “in the same boat” means ____.",
+      "key": "C",
+      "options": [
+        "乘坐同一条船",
+        "有不同的难题",
+        "处于相同的困境"
+      ],
+      "grounds": [
+        "题面在谈同样丢了作业，没有乘船。",
+        "与both lost our homework的共同困境不符。",
+        "两人同样丢了作业，支持共同困境的比喻。"
+      ]
+    }
+  ],
+  "source_notice": "参照公开转载的建邺标签2025下四年级完整十题三选节；按完整独立句/短对话与原联选位置编写，不冒称全国统一卷型。公开原生文字完整，不等于原校/实际施测/原版视觉认证；原键未取。源歧义保留研究记录，原创另写明确语境，逐项给出依据，不复制问题原键。自有题目与人物均为作者编写，未作独立教研、学生难度/区分度或商用/生产验证。 第10题用引号明确标记词组目标，不冒称复现原卷下划线排版；中文释义为封闭候选，非自由翻译。 第4题保留源组合中的/空介词项，并显式解释符号。",
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-commonchoices10-show-manuscript-v0.1.json",
+    "sha256": "da95530c751294318d50fc8fc320b7ab9155e18261b591297273ccab242fbf9a"
+  }
+}

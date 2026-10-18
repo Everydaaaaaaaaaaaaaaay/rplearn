@@ -1,0 +1,416 @@
+{
+  "version": "0.3",
+  "id": "primary3-commonchoices10-desk",
+  "grade": "primary3",
+  "questions": 10,
+  "candidate_sha256": "63e5d514bf404884f0f3b1c82b7866830876411930c24b7de3de592238224706",
+  "manuscript": {
+    "path": "/Users/tiantian/eng/Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/Authored/primary3-commonchoices10-desk-manuscript-v0.1.json",
+    "sha256": "77f387a33d968bd7cbf99f8a182949981421d96da50ce2f7540ef01e56f80c8f"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_group_id": "p3-yancheng2025.sentencechoice10",
+  "canonical_response_block_sha256": "1a68c58bca29f41a2753f24254b351ca640498daa7c365995404a95d7fde0fa1",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Keep your voice low. Don't ____!",
+      "options": [
+        [
+          "A",
+          "smile"
+        ],
+        [
+          "B",
+          "shout"
+        ],
+        [
+          "C",
+          "sit"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：微笑不违反低声要求，不能表达此处禁止大声的意思。；B：shout指大声喊，正与前句低声要求相对。；C：坐下不涉及音量，不合这条提醒。"
+    },
+    {
+      "number": 2,
+      "stem": "—Is this a ruler? —____ It is a long ruler.",
+      "options": [
+        [
+          "A",
+          "No, it isn't."
+        ],
+        [
+          "B",
+          "I don't know."
+        ],
+        [
+          "C",
+          "Yes, it is."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：后句明确是尺子，与否定冲突。；B：后句已明确其身份，不合不知道。；C：后句long ruler明确支持肯定回答。"
+    },
+    {
+      "number": 3,
+      "stem": "Six crayons are inside the box. —What are those ____ the box? —____ crayons.",
+      "options": [
+        [
+          "A",
+          "in; They're"
+        ],
+        [
+          "B",
+          "on; They're"
+        ],
+        [
+          "C",
+          "in; It's"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：inside对应in，those及复数crayons对应They are。；B：on表示表面上，与inside不同。；C：those和crayons是复数，不能用It is。"
+    },
+    {
+      "number": 4,
+      "stem": "—What's this? —____ It is for writing.",
+      "options": [
+        [
+          "A",
+          "She's my aunt."
+        ],
+        [
+          "B",
+          "It's a pencil."
+        ],
+        [
+          "C",
+          "He's Ben."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：介绍女性，不能回答所问书写物品。；B：a pencil是可以写字的物品，回答this所指物。；C：介绍男性，不合this及书写用途。"
+    },
+    {
+      "number": 5,
+      "stem": "—____ my bag? —It's under the desk.",
+      "options": [
+        [
+          "A",
+          "Who's"
+        ],
+        [
+          "B",
+          "What's"
+        ],
+        [
+          "C",
+          "Where's"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：问谁，不以桌下的位置作答。；B：问是什么，不合后句位置回答。；C：询问书包位置，由under the desk回答。"
+    },
+    {
+      "number": 6,
+      "stem": "—Look at my new kite. —____ nice!",
+      "options": [
+        [
+          "A",
+          "How"
+        ],
+        [
+          "B",
+          "What a"
+        ],
+        [
+          "C",
+          "What"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：How后可接形容词nice作感叹。；B：What a后需形容词加单数名词，题面没有名词。；C：此结构不能仅接形容词nice结束。"
+    },
+    {
+      "number": 7,
+      "stem": "—Do you have an ____? —No, I do not.",
+      "options": [
+        [
+          "A",
+          "pencil"
+        ],
+        [
+          "B",
+          "books"
+        ],
+        [
+          "C",
+          "egg"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：pencil以辅音音素开头，不接an。；B：books是复数，不接an。；C：egg是元音音素开头的单数词，和an相配。"
+    },
+    {
+      "number": 8,
+      "stem": "—Are these ____? —No, ____.",
+      "options": [
+        [
+          "A",
+          "duck; they aren't"
+        ],
+        [
+          "B",
+          "ducks; they aren't"
+        ],
+        [
+          "C",
+          "ducks; they are"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：these要求复数，不用单数duck。；B：these ducks复数一致，No接they are not。；C：No和肯定they are冲突。"
+    },
+    {
+      "number": 9,
+      "stem": "—Would you like some milk? —____",
+      "options": [
+        [
+          "A",
+          "No, thanks."
+        ],
+        [
+          "B",
+          "No, I don't."
+        ],
+        [
+          "C",
+          "You are welcome."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：对食物饮料的邀请可礼貌谢绝。；B：此处回答Would you like的邀请，不用助动词do照答。；C：不是收到感谢，不能用不用谢回应邀请。"
+    },
+    {
+      "number": 10,
+      "stem": "My kite is yellow and green. —What colour is your kite? —____",
+      "options": [
+        [
+          "A",
+          "Red and white."
+        ],
+        [
+          "B",
+          "Blue and black."
+        ],
+        [
+          "C",
+          "Yellow and green."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：与题面yellow and green不符。；B：与题面两种颜色不符。；C：直接符合题面已给颜色，不依赖未提供的图片。"
+    }
+  ],
+  "student_passage": "",
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "B",
+      "grounds": {
+        "A": "微笑不违反低声要求，不能表达此处禁止大声的意思。",
+        "B": "shout指大声喊，正与前句低声要求相对。",
+        "C": "坐下不涉及音量，不合这条提醒。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "C",
+      "grounds": {
+        "A": "后句明确是尺子，与否定冲突。",
+        "B": "后句已明确其身份，不合不知道。",
+        "C": "后句long ruler明确支持肯定回答。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "A",
+      "grounds": {
+        "A": "inside对应in，those及复数crayons对应They are。",
+        "B": "on表示表面上，与inside不同。",
+        "C": "those和crayons是复数，不能用It is。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "B",
+      "grounds": {
+        "A": "介绍女性，不能回答所问书写物品。",
+        "B": "a pencil是可以写字的物品，回答this所指物。",
+        "C": "介绍男性，不合this及书写用途。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "C",
+      "grounds": {
+        "A": "问谁，不以桌下的位置作答。",
+        "B": "问是什么，不合后句位置回答。",
+        "C": "询问书包位置，由under the desk回答。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "A",
+      "grounds": {
+        "A": "How后可接形容词nice作感叹。",
+        "B": "What a后需形容词加单数名词，题面没有名词。",
+        "C": "此结构不能仅接形容词nice结束。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "C",
+      "grounds": {
+        "A": "pencil以辅音音素开头，不接an。",
+        "B": "books是复数，不接an。",
+        "C": "egg是元音音素开头的单数词，和an相配。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "B",
+      "grounds": {
+        "A": "these要求复数，不用单数duck。",
+        "B": "these ducks复数一致，No接they are not。",
+        "C": "No和肯定they are冲突。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "A",
+      "grounds": {
+        "A": "对食物饮料的邀请可礼貌谢绝。",
+        "B": "此处回答Would you like的邀请，不用助动词do照答。",
+        "C": "不是收到感谢，不能用不用谢回应邀请。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "C",
+      "grounds": {
+        "A": "与题面yellow and green不符。",
+        "B": "与题面两种颜色不符。",
+        "C": "直接符合题面已给颜色，不依赖未提供的图片。"
+      }
+    }
+  ],
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      3,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "author_input_complete": true,
+  "source_key_copied": false,
+  "independent_teacher_student_commercial_production": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 71,
+    "options_English_words": 62,
+    "stem_Han_characters": 0,
+    "options_Han_characters": 0,
+    "visible_blank_slots": 12,
+    "output_letter_count": 10,
+    "shared_options": false,
+    "images": 0,
+    "audio": 0
+  },
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/Authored/primary3-commonchoices10-desk-author-check-v0.2.json",
+    "sha256": "6bfbd95499d7f2cc1a9406662a5f1d90a25111c040eb931859880df7a9844a10"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSourceBindings-v0.1.json",
+    "sha256": "a12a87c9abc5401bf93b9ce69f8bb7d1eab077109796f137a9e8aeec3a7881b0"
+  },
+  "source_binding": "p3-yancheng2025.sentencechoice10.binding",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "all_candidate_backfills": [
+    {
+      "A": "Keep your voice low. Don't smile!",
+      "B": "Keep your voice low. Don't shout!",
+      "C": "Keep your voice low. Don't sit!"
+    },
+    {
+      "A": "—Is this a ruler? —No, it isn't. It is a long ruler.",
+      "B": "—Is this a ruler? —I don't know. It is a long ruler.",
+      "C": "—Is this a ruler? —Yes, it is. It is a long ruler."
+    },
+    {
+      "A": "Six crayons are inside the box. —What are those in the box? —They're crayons.",
+      "B": "Six crayons are inside the box. —What are those on the box? —They're crayons.",
+      "C": "Six crayons are inside the box. —What are those in the box? —It's crayons."
+    },
+    {
+      "A": "—What's this? —She's my aunt. It is for writing.",
+      "B": "—What's this? —It's a pencil. It is for writing.",
+      "C": "—What's this? —He's Ben. It is for writing."
+    },
+    {
+      "A": "—Who's my bag? —It's under the desk.",
+      "B": "—What's my bag? —It's under the desk.",
+      "C": "—Where's my bag? —It's under the desk."
+    },
+    {
+      "A": "—Look at my new kite. —How nice!",
+      "B": "—Look at my new kite. —What a nice!",
+      "C": "—Look at my new kite. —What nice!"
+    },
+    {
+      "A": "—Do you have an pencil? —No, I do not.",
+      "B": "—Do you have an books? —No, I do not.",
+      "C": "—Do you have an egg? —No, I do not."
+    },
+    {
+      "A": "—Are these duck? —No, they aren't.",
+      "B": "—Are these ducks? —No, they aren't.",
+      "C": "—Are these ducks? —No, they are."
+    },
+    {
+      "A": "—Would you like some milk? —No, thanks.",
+      "B": "—Would you like some milk? —No, I don't.",
+      "C": "—Would you like some milk? —You are welcome."
+    },
+    {
+      "A": "My kite is yellow and green. —What colour is your kite? —Red and white.",
+      "B": "My kite is yellow and green. —What colour is your kite? —Blue and black.",
+      "C": "My kite is yellow and green. —What colour is your kite? —Yellow and green."
+    }
+  ]
+}

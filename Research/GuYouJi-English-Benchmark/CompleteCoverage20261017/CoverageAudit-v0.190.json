@@ -1,0 +1,142 @@
+{
+  "version": "0.190",
+  "scope": "current_common_type_representativeness_and_quality_audit",
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/CoverageAudit-v0.189.json",
+    "sha256": "ba0bf50662f49fc6afc58c44f9101353c5621fc70ed54d50553272003ff6166a"
+  },
+  "scope_notice": "按2026-10-18用户更正，只围绕各档位常见客观题型；旧全配置覆盖、地方特别模式三稿和未知笛卡尔积不再是本轮验收。旧问题留在历史审计，不等于当前待办。",
+  "all_required_types_complete": false,
+  "issues": [
+    {
+      "id": "common-type-representative-review",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "常见性逐档复核",
+      "state_label": "常规小学单选两缺口已补三稿；其余初筛常见性继续核",
+      "detail": "三、四年级各选完整十题三选节，各三套完整原创；三年级两题两空联选，四年级一题三空/四题两空，/空介词保留。来源原生文字完整不等于原键/原校施测认证；lessons/subjects等源歧义未复制。其他小学保留项、一二年级现行完整闭集及高级产品映射仍未全证，不恢复所有特殊配置扩库。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.4.json",
+          "sha256": "dee207fa426176a44635cb3517a29eac28fec3dbfa89c333f6fc65f0fbd47cfa"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.2.json",
+          "sha256": "2274068b899ea263523e9f09698cd66b890f912ae0b0c5094fe2b9debe263708"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+          "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.1.json",
+          "sha256": "41f9bb79fc1a6b430e78606be3670784880d2fd3c2ee5cb49910b5903c348c5d"
+        }
+      ]
+    },
+    {
+      "id": "retained-common-original-quality",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "保留题目质量",
+      "state_label": "完整题面与判分已有核验，继续处理具体正确性问题",
+      "detail": "不再按每个特别篇数/题数/图片配置新编三稿。已有稿必须保留完整材料与配套、答案/合法变体、逐项依据；未列词形待复核，不设2或3个答案上限。独立教师/学生、权利商用和生产验证另列，当前后端固定六题未接完整组。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.3.json",
+          "sha256": "1d590482b4e7c084543fbdec9b23a07d8187b608282ba4b5b9b897f152fb9884"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.2.json",
+          "sha256": "e8527dfe0166e04b8ae4f7d04e310c63dba02f1dce53461fad24de12f5df2353"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.2.json",
+          "sha256": "875606a028c4cbf5cc9df4c4cfbb0698461c896b5c980f8cf98be04971a6f27d"
+        }
+      ]
+    },
+    {
+      "id": "early-primary-common-nonpaper-boundary",
+      "levels": [
+        "primary1",
+        "primary2"
+      ],
+      "label": "低年级常用活动与历史纸笔边界",
+      "state_label": "仅保留图音/识词初筛，仍缺代表性现行完整活动材料",
+      "detail": "历史纸笔稿不当现行学校无纸笔测评。只定向找常见闭集活动的必要输入和规则，不把每篇报道的新站点列作必补，不恢复口头主观评分。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.3.json",
+          "sha256": "1d590482b4e7c084543fbdec9b23a07d8187b608282ba4b5b9b897f152fb9884"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.2.json",
+          "sha256": "e8527dfe0166e04b8ae4f7d04e310c63dba02f1dce53461fad24de12f5df2353"
+        },
+        {
+          "path": "CompleteCoverage20261017/MainlandLowPrimaryClosedActivityFollowup-v0.18.json",
+          "sha256": "437ffa8abf4402d4bf52391b3a7672ffc1b53b80c6f9235586f259edbecb53ad"
+        }
+      ]
+    },
+    {
+      "id": "primary-common-choice-not-odd-modes",
+      "levels": [
+        "primary3",
+        "primary4"
+      ],
+      "label": "常规单项选择的实际缺口",
+      "state_label": "两年级各三完整稿、共60回应已准备；页面行为核验中",
+      "detail": "盐城标签三年级与建邺标签四年级完整十题三选节支持本轮常规单选；自有题干、候选和逐项依据齐备。原键缺、原校未认证及源歧义不变；不新增其他刚见小节为必补。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.4.json",
+          "sha256": "dee207fa426176a44635cb3517a29eac28fec3dbfa89c333f6fc65f0fbd47cfa"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.2.json",
+          "sha256": "2274068b899ea263523e9f09698cd66b890f912ae0b0c5094fe2b9debe263708"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+          "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.1.json",
+          "sha256": "41f9bb79fc1a6b430e78606be3670784880d2fd3c2ee5cb49910b5903c348c5d"
+        }
+      ]
+    }
+  ]
+}

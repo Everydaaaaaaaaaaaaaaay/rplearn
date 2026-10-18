@@ -1,0 +1,418 @@
+{
+  "version": "0.4",
+  "id": "primary3-commonchoices10-farm",
+  "grade": "primary3",
+  "questions": 10,
+  "candidate_sha256": "6b3c909f05b9df33f55a6e090665fd9d9403dd41ee4197bb7712b84b898e8fed",
+  "manuscript": {
+    "path": "/Users/tiantian/eng/Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/Authored/primary3-commonchoices10-farm-manuscript-v0.1.json",
+    "sha256": "5024e2a5b2014867c7fc1bb05b700cf0b6e7cf346658c5c20cb8c75a5b9ee362"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_group_id": "p3-yancheng2025.sentencechoice10",
+  "canonical_response_block_sha256": "413ff40f29543f88bb445449ea06c5275d26b3bb3ad193961072d7b782441859",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "The gate must stay closed. Don't ____ it.",
+      "options": [
+        [
+          "A",
+          "close"
+        ],
+        [
+          "B",
+          "look at"
+        ],
+        [
+          "C",
+          "open"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：close使门保持关闭，不是这里要禁止的动作。；B：看门不改变关闭状态，不合这条禁令的目的。；C：open会使门不再关闭，和前句要求冲突。"
+    },
+    {
+      "number": 2,
+      "stem": "—Is that a toy bus? —____ It is a red toy bus.",
+      "options": [
+        [
+          "A",
+          "Yes, it is."
+        ],
+        [
+          "B",
+          "No, it isn't."
+        ],
+        [
+          "C",
+          "I don't know."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：后句说明它是红色玩具巴士，支持肯定回答。；B：与后句明确身份冲突。；C：随后已明确玩具身份，不合不知道。"
+    },
+    {
+      "number": 3,
+      "stem": "The apples grow on this tree. —What are those ____ the tree? —____ apples.",
+      "options": [
+        [
+          "A",
+          "in; They're"
+        ],
+        [
+          "B",
+          "on; They're"
+        ],
+        [
+          "C",
+          "on; It's"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：题面明确苹果长在树上，按自然生长关系用on而非in。；B：已给on this tree，apples复数用They are。；C：those apples为复数，不用It is。"
+    },
+    {
+      "number": 4,
+      "stem": "—What's that? —____ You can sit on it.",
+      "options": [
+        [
+          "A",
+          "He's my dad."
+        ],
+        [
+          "B",
+          "She's Lucy."
+        ],
+        [
+          "C",
+          "It's a chair."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：介绍父亲不合可坐的物品。；B：介绍女性不合所问物品。；C：chair是可坐的物品，回答that的身份。"
+    },
+    {
+      "number": 5,
+      "stem": "—____ the toy train? —It's behind the door.",
+      "options": [
+        [
+          "A",
+          "Where's"
+        ],
+        [
+          "B",
+          "Who's"
+        ],
+        [
+          "C",
+          "What's"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：位置问句由behind the door回答。；B：问人，玩具及门后的回答都不合。；C：问身份而后句给位置，不相邻。"
+    },
+    {
+      "number": 6,
+      "stem": "—This birthday card is for you. —____ lovely!",
+      "options": [
+        [
+          "A",
+          "What a"
+        ],
+        [
+          "B",
+          "How"
+        ],
+        [
+          "C",
+          "What"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：后缺单数名词，不能只接lovely结束。；B：How加形容词构成感叹。；C：What后此处缺名词结构。"
+    },
+    {
+      "number": 7,
+      "stem": "—Is there an ____ in your bag? —Yes, there is.",
+      "options": [
+        [
+          "A",
+          "orange"
+        ],
+        [
+          "B",
+          "ruler"
+        ],
+        [
+          "C",
+          "pens"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：orange是元音音素开头的单数名词。；B：ruler开头是辅音音素，不用an。；C：复数pens不接an。"
+    },
+    {
+      "number": 8,
+      "stem": "—Are those ____? —No, ____.",
+      "options": [
+        [
+          "A",
+          "sheep; they are"
+        ],
+        [
+          "B",
+          "sheeps; they aren't"
+        ],
+        [
+          "C",
+          "sheep; they aren't"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：No不能接肯定they are。；B：sheep单复数同形，sheeps不是此处规范复数。；C：those搭配复数sheep，No接否定they are not。"
+    },
+    {
+      "number": 9,
+      "stem": "—Would you like a cake? —____",
+      "options": [
+        [
+          "A",
+          "Yes, I do."
+        ],
+        [
+          "B",
+          "Yes, please."
+        ],
+        [
+          "C",
+          "Good night."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：Would you like的邀请不用do作这种照答。；B：礼貌接受所提供的蛋糕。；C：晚安不回应食物邀请。"
+    },
+    {
+      "number": 10,
+      "stem": "My toy bus is red and blue. —What colour is it? —____",
+      "options": [
+        [
+          "A",
+          "Red and blue."
+        ],
+        [
+          "B",
+          "Green and white."
+        ],
+        [
+          "C",
+          "Yellow and black."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：与题面已给颜色相符。；B：与已给颜色不符。；C：与已给颜色不符。"
+    }
+  ],
+  "student_passage": "",
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "C",
+      "grounds": {
+        "A": "close使门保持关闭，不是这里要禁止的动作。",
+        "B": "看门不改变关闭状态，不合这条禁令的目的。",
+        "C": "open会使门不再关闭，和前句要求冲突。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "A",
+      "grounds": {
+        "A": "后句说明它是红色玩具巴士，支持肯定回答。",
+        "B": "与后句明确身份冲突。",
+        "C": "随后已明确玩具身份，不合不知道。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "B",
+      "grounds": {
+        "A": "题面明确苹果长在树上，按自然生长关系用on而非in。",
+        "B": "已给on this tree，apples复数用They are。",
+        "C": "those apples为复数，不用It is。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "C",
+      "grounds": {
+        "A": "介绍父亲不合可坐的物品。",
+        "B": "介绍女性不合所问物品。",
+        "C": "chair是可坐的物品，回答that的身份。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "A",
+      "grounds": {
+        "A": "位置问句由behind the door回答。",
+        "B": "问人，玩具及门后的回答都不合。",
+        "C": "问身份而后句给位置，不相邻。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "B",
+      "grounds": {
+        "A": "后缺单数名词，不能只接lovely结束。",
+        "B": "How加形容词构成感叹。",
+        "C": "What后此处缺名词结构。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "A",
+      "grounds": {
+        "A": "orange是元音音素开头的单数名词。",
+        "B": "ruler开头是辅音音素，不用an。",
+        "C": "复数pens不接an。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "C",
+      "grounds": {
+        "A": "No不能接肯定they are。",
+        "B": "sheep单复数同形，sheeps不是此处规范复数。",
+        "C": "those搭配复数sheep，No接否定they are not。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "B",
+      "grounds": {
+        "A": "Would you like的邀请不用do作这种照答。",
+        "B": "礼貌接受所提供的蛋糕。",
+        "C": "晚安不回应食物邀请。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "A",
+      "grounds": {
+        "A": "与题面已给颜色相符。",
+        "B": "与已给颜色不符。",
+        "C": "与已给颜色不符。"
+      }
+    }
+  ],
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      3,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "author_input_complete": true,
+  "source_key_copied": false,
+  "independent_teacher_student_commercial_production": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 79,
+    "options_English_words": 62,
+    "stem_Han_characters": 0,
+    "options_Han_characters": 0,
+    "visible_blank_slots": 12,
+    "output_letter_count": 10,
+    "shared_options": false,
+    "images": 0,
+    "audio": 0,
+    "options_English_words_with_repeated_bank": 62,
+    "output_response_positions": 10
+  },
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/Authored/primary3-commonchoices10-farm-author-check-v0.3.json",
+    "sha256": "0f225301a0f9c4565badd7fea661c40805261000ac075e3e426a8627b8f7b349"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSourceBindings-v0.1.json",
+    "sha256": "a12a87c9abc5401bf93b9ce69f8bb7d1eab077109796f137a9e8aeec3a7881b0"
+  },
+  "source_binding": "p3-yancheng2025.sentencechoice10.binding",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "all_candidate_backfills": [
+    {
+      "A": "The gate must stay closed. Don't close it.",
+      "B": "The gate must stay closed. Don't look at it.",
+      "C": "The gate must stay closed. Don't open it."
+    },
+    {
+      "A": "—Is that a toy bus? —Yes, it is. It is a red toy bus.",
+      "B": "—Is that a toy bus? —No, it isn't. It is a red toy bus.",
+      "C": "—Is that a toy bus? —I don't know. It is a red toy bus."
+    },
+    {
+      "A": "The apples grow on this tree. —What are those in the tree? —They're apples.",
+      "B": "The apples grow on this tree. —What are those on the tree? —They're apples.",
+      "C": "The apples grow on this tree. —What are those on the tree? —It's apples."
+    },
+    {
+      "A": "—What's that? —He's my dad. You can sit on it.",
+      "B": "—What's that? —She's Lucy. You can sit on it.",
+      "C": "—What's that? —It's a chair. You can sit on it."
+    },
+    {
+      "A": "—Where's the toy train? —It's behind the door.",
+      "B": "—Who's the toy train? —It's behind the door.",
+      "C": "—What's the toy train? —It's behind the door."
+    },
+    {
+      "A": "—This birthday card is for you. —What a lovely!",
+      "B": "—This birthday card is for you. —How lovely!",
+      "C": "—This birthday card is for you. —What lovely!"
+    },
+    {
+      "A": "—Is there an orange in your bag? —Yes, there is.",
+      "B": "—Is there an ruler in your bag? —Yes, there is.",
+      "C": "—Is there an pens in your bag? —Yes, there is."
+    },
+    {
+      "A": "—Are those sheep? —No, they are.",
+      "B": "—Are those sheeps? —No, they aren't.",
+      "C": "—Are those sheep? —No, they aren't."
+    },
+    {
+      "A": "—Would you like a cake? —Yes, I do.",
+      "B": "—Would you like a cake? —Yes, please.",
+      "C": "—Would you like a cake? —Good night."
+    },
+    {
+      "A": "My toy bus is red and blue. —What colour is it? —Red and blue.",
+      "B": "My toy bus is red and blue. —What colour is it? —Green and white.",
+      "C": "My toy bus is red and blue. —What colour is it? —Yellow and black."
+    }
+  ]
+}

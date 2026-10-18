@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "primary3-commonchoices10-farm",
+  "grade": "primary3",
+  "family": "sentence_choice",
+  "title": "小三：农场、玩具与生日卡",
+  "source_group_id": "p3-yancheng2025.sentencechoice10",
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      3,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "instruction": "从每题的A、B、C三个选项中选择最合适的一项。两空题选择一个完整组合，每题只填一个字母。",
+  "items": [
+    {
+      "stem": "The gate must stay closed. Don't ____ it.",
+      "key": "C",
+      "options": [
+        "close",
+        "look at",
+        "open"
+      ],
+      "grounds": [
+        "close使门保持关闭，不是这里要禁止的动作。",
+        "看门不改变关闭状态，不合这条禁令的目的。",
+        "open会使门不再关闭，和前句要求冲突。"
+      ]
+    },
+    {
+      "stem": "—Is that a toy bus? —____ It is a red toy bus.",
+      "key": "A",
+      "options": [
+        "Yes, it is.",
+        "No, it isn't.",
+        "I don't know."
+      ],
+      "grounds": [
+        "后句说明它是红色玩具巴士，支持肯定回答。",
+        "与后句明确身份冲突。",
+        "随后已明确玩具身份，不合不知道。"
+      ]
+    },
+    {
+      "stem": "The apples grow on this tree. —What are those ____ the tree? —____ apples.",
+      "key": "B",
+      "options": [
+        "in; They're",
+        "on; They're",
+        "on; It's"
+      ],
+      "grounds": [
+        "题面明确苹果长在树上，按自然生长关系用on而非in。",
+        "已给on this tree，apples复数用They are。",
+        "those apples为复数，不用It is。"
+      ]
+    },
+    {
+      "stem": "—What's that? —____ You can sit on it.",
+      "key": "C",
+      "options": [
+        "He's my dad.",
+        "She's Lucy.",
+        "It's a chair."
+      ],
+      "grounds": [
+        "介绍父亲不合可坐的物品。",
+        "介绍女性不合所问物品。",
+        "chair是可坐的物品，回答that的身份。"
+      ]
+    },
+    {
+      "stem": "—____ the toy train? —It's behind the door.",
+      "key": "A",
+      "options": [
+        "Where's",
+        "Who's",
+        "What's"
+      ],
+      "grounds": [
+        "位置问句由behind the door回答。",
+        "问人，玩具及门后的回答都不合。",
+        "问身份而后句给位置，不相邻。"
+      ]
+    },
+    {
+      "stem": "—This birthday card is for you. —____ lovely!",
+      "key": "B",
+      "options": [
+        "What a",
+        "How",
+        "What"
+      ],
+      "grounds": [
+        "后缺单数名词，不能只接lovely结束。",
+        "How加形容词构成感叹。",
+        "What后此处缺名词结构。"
+      ]
+    },
+    {
+      "stem": "—Is there an ____ in your bag? —Yes, there is.",
+      "key": "A",
+      "options": [
+        "orange",
+        "ruler",
+        "pens"
+      ],
+      "grounds": [
+        "orange是元音音素开头的单数名词。",
+        "ruler开头是辅音音素，不用an。",
+        "复数pens不接an。"
+      ]
+    },
+    {
+      "stem": "—Are those ____? —No, ____.",
+      "key": "C",
+      "options": [
+        "sheep; they are",
+        "sheeps; they aren't",
+        "sheep; they aren't"
+      ],
+      "grounds": [
+        "No不能接肯定they are。",
+        "sheep单复数同形，sheeps不是此处规范复数。",
+        "those搭配复数sheep，No接否定they are not。"
+      ]
+    },
+    {
+      "stem": "—Would you like a cake? —____",
+      "key": "B",
+      "options": [
+        "Yes, I do.",
+        "Yes, please.",
+        "Good night."
+      ],
+      "grounds": [
+        "Would you like的邀请不用do作这种照答。",
+        "礼貌接受所提供的蛋糕。",
+        "晚安不回应食物邀请。"
+      ]
+    },
+    {
+      "stem": "My toy bus is red and blue. —What colour is it? —____",
+      "key": "A",
+      "options": [
+        "Red and blue.",
+        "Green and white.",
+        "Yellow and black."
+      ],
+      "grounds": [
+        "与题面已给颜色相符。",
+        "与已给颜色不符。",
+        "与已给颜色不符。"
+      ]
+    }
+  ],
+  "source_notice": "参照公开转载的盐城标签2025春三年级完整十题三选节；按完整独立句/短对话与原联选位置编写，不冒称全国统一卷型。公开原生文字完整，不等于原校/实际施测/原版视觉认证；原键未取。源歧义保留研究记录，原创另写明确语境，逐项给出依据，不复制问题原键。自有题目与人物均为作者编写，未作独立教研、学生难度/区分度或商用/生产验证。"
+}

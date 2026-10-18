@@ -1,0 +1,421 @@
+{
+  "version": "0.4",
+  "id": "primary4-commonchoices10-club",
+  "grade": "primary4",
+  "questions": 10,
+  "candidate_sha256": "42650fb50e7bc627e0bf783e0c091d4d312f874528e01126f8829b9b663db166",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-commonchoices10-club-manuscript-v0.2.json",
+    "sha256": "ad42ed36a5eb0395f5f66a88ebfa65367a87c3561ba0960c9c3f51431e61b3c9"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_group_id": "p4-jianye2025.sentencechoice10",
+  "canonical_response_block_sha256": "f4c1964e4211784021701798222305c386a410f59f66c1487a8e0c01a0f622c8",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Here is some ____ for you. You can drink it.",
+      "options": [
+        [
+          "A",
+          "water"
+        ],
+        [
+          "B",
+          "oranges"
+        ],
+        [
+          "C",
+          "pies"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：some water不可数，和is及drink it一致。；B：oranges复数不与is和it一致，也不能直接当饮品。；C：pies复数不与is、it及drink一致。"
+    },
+    {
+      "number": 2,
+      "stem": "It's four o'clock. It's time ____ go to the art room.",
+      "options": [
+        [
+          "A",
+          "for"
+        ],
+        [
+          "B",
+          "in"
+        ],
+        [
+          "C",
+          "to"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：后面是动词go，time for不直接接此动词原形。；B：time in go不是该结构。；C：time to加动词原形go。"
+    },
+    {
+      "number": 3,
+      "stem": "—How many ____ do you have this morning? —Three: English, Maths and PE.",
+      "options": [
+        [
+          "A",
+          "lesson"
+        ],
+        [
+          "B",
+          "lessons"
+        ],
+        [
+          "C",
+          "pencils"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：How many要求复数，不能用单数lesson。；B：How many lessons复数一致，后面列三节。；C：后面是三种课而非铅笔，语义不合。"
+    },
+    {
+      "number": 4,
+      "stem": "We read ____ six ____ the evening ____ every Sunday.",
+      "options": [
+        [
+          "A",
+          "at; in; /"
+        ],
+        [
+          "B",
+          "on; in; at"
+        ],
+        [
+          "C",
+          "at; on; in"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：at six、in the evening正确；every Sunday前不加介词，以/表示空项。；B：钟点不用on；every Sunday前不能加at。；C：一般时段the evening用in，every Sunday前不加in。"
+    },
+    {
+      "number": 5,
+      "stem": "Lily has new jeans. Look at ____ jeans! ____ blue.",
+      "options": [
+        [
+          "A",
+          "she; They're"
+        ],
+        [
+          "B",
+          "her; It's"
+        ],
+        [
+          "C",
+          "her; They're"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：jeans前需形容词性物主代词，不用主格she。；B：jeans为复数，不用It is。；C：Lily用her修饰jeans，复数用They are。"
+    },
+    {
+      "number": 6,
+      "stem": "I have only blue pencils, not red ones. I can lend a ____ pencil, but not a ____ one.",
+      "options": [
+        [
+          "A",
+          "red; blue"
+        ],
+        [
+          "B",
+          "blue; red"
+        ],
+        [
+          "C",
+          "red; red"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：把已有和没有的颜色反过来了。；B：符合只有蓝笔、没有红笔。；C：第一空红笔与only blue冲突。"
+    },
+    {
+      "number": 7,
+      "stem": "My dad is a teacher. —____ your ____ at school? —Yes, he is.",
+      "options": [
+        [
+          "A",
+          "Is; dad"
+        ],
+        [
+          "B",
+          "Are; dad"
+        ],
+        [
+          "C",
+          "Is; sisters"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：dad为单数，和Is及he一致。；B：dad为单数，不用Are。；C：sisters是复数，与Is和he都不一致。"
+    },
+    {
+      "number": 8,
+      "stem": "—____ bag is it? —It's ____.",
+      "options": [
+        [
+          "A",
+          "Who's; Anna's"
+        ],
+        [
+          "B",
+          "Whose; Anna"
+        ],
+        [
+          "C",
+          "Whose; Anna's"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：Who is问人，不在bag前表示谁的。；B：后句所有关系需Anna的所有格。；C：Whose问谁的，名词所有格回答。"
+    },
+    {
+      "number": 9,
+      "stem": "—I'm sad. Our outdoor game is cancelled. —____",
+      "options": [
+        [
+          "A",
+          "Well done!"
+        ],
+        [
+          "B",
+          "I'm sorry to hear that."
+        ],
+        [
+          "C",
+          "Happy birthday!"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：称赞完成得好不回应所说的难过和取消。；B：直接回应坏消息并表示同情。；C：没有生日情境，不合此回应。"
+    },
+    {
+      "number": 10,
+      "stem": "I cannot lift this box alone. Can you give me a hand? Here, “give me a hand” means ____.",
+      "options": [
+        [
+          "A",
+          "帮我一下"
+        ],
+        [
+          "B",
+          "送我一只手"
+        ],
+        [
+          "C",
+          "把你的手举高"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：无法独自抬箱子是在请求帮助。；B：上下文不是赠送身体部位。；C：不是在要求举手，而是请求帮忙抬箱。"
+    }
+  ],
+  "student_passage": "",
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "A",
+      "grounds": {
+        "A": "some water不可数，和is及drink it一致。",
+        "B": "oranges复数不与is和it一致，也不能直接当饮品。",
+        "C": "pies复数不与is、it及drink一致。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "C",
+      "grounds": {
+        "A": "后面是动词go，time for不直接接此动词原形。",
+        "B": "time in go不是该结构。",
+        "C": "time to加动词原形go。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "B",
+      "grounds": {
+        "A": "How many要求复数，不能用单数lesson。",
+        "B": "How many lessons复数一致，后面列三节。",
+        "C": "后面是三种课而非铅笔，语义不合。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "A",
+      "grounds": {
+        "A": "at six、in the evening正确；every Sunday前不加介词，以/表示空项。",
+        "B": "钟点不用on；every Sunday前不能加at。",
+        "C": "一般时段the evening用in，every Sunday前不加in。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "C",
+      "grounds": {
+        "A": "jeans前需形容词性物主代词，不用主格she。",
+        "B": "jeans为复数，不用It is。",
+        "C": "Lily用her修饰jeans，复数用They are。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "B",
+      "grounds": {
+        "A": "把已有和没有的颜色反过来了。",
+        "B": "符合只有蓝笔、没有红笔。",
+        "C": "第一空红笔与only blue冲突。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "A",
+      "grounds": {
+        "A": "dad为单数，和Is及he一致。",
+        "B": "dad为单数，不用Are。",
+        "C": "sisters是复数，与Is和he都不一致。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "C",
+      "grounds": {
+        "A": "Who is问人，不在bag前表示谁的。",
+        "B": "后句所有关系需Anna的所有格。",
+        "C": "Whose问谁的，名词所有格回答。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "B",
+      "grounds": {
+        "A": "称赞完成得好不回应所说的难过和取消。",
+        "B": "直接回应坏消息并表示同情。",
+        "C": "没有生日情境，不合此回应。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "A",
+      "grounds": {
+        "A": "无法独自抬箱子是在请求帮助。",
+        "B": "上下文不是赠送身体部位。",
+        "C": "不是在要求举手，而是请求帮忙抬箱。"
+      }
+    }
+  ],
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "author_input_complete": true,
+  "source_key_copied": false,
+  "independent_teacher_student_commercial_production": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 103,
+    "options_English_words": 50,
+    "stem_Han_characters": 0,
+    "options_Han_characters": 15,
+    "visible_blank_slots": 16,
+    "output_letter_count": 10,
+    "shared_options": false,
+    "images": 0,
+    "audio": 0,
+    "options_English_words_with_repeated_bank": 50,
+    "output_response_positions": 10
+  },
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/Authored/primary4-commonchoices10-club-author-check-v0.3.json",
+    "sha256": "5c8443cc7bf078305d4e9e00b7e5c6e1b8e443c8d69b04ddef14b815639519e4"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSourceBindings-v0.1.json",
+    "sha256": "a12a87c9abc5401bf93b9ce69f8bb7d1eab077109796f137a9e8aeec3a7881b0"
+  },
+  "source_binding": "p4-jianye2025.sentencechoice10.binding",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "all_candidate_backfills": [
+    {
+      "A": "Here is some water for you. You can drink it.",
+      "B": "Here is some oranges for you. You can drink it.",
+      "C": "Here is some pies for you. You can drink it."
+    },
+    {
+      "A": "It's four o'clock. It's time for go to the art room.",
+      "B": "It's four o'clock. It's time in go to the art room.",
+      "C": "It's four o'clock. It's time to go to the art room."
+    },
+    {
+      "A": "—How many lesson do you have this morning? —Three: English, Maths and PE.",
+      "B": "—How many lessons do you have this morning? —Three: English, Maths and PE.",
+      "C": "—How many pencils do you have this morning? —Three: English, Maths and PE."
+    },
+    {
+      "A": "We read at six in the evening  every Sunday.",
+      "B": "We read on six in the evening at every Sunday.",
+      "C": "We read at six on the evening in every Sunday."
+    },
+    {
+      "A": "Lily has new jeans. Look at she jeans! They're blue.",
+      "B": "Lily has new jeans. Look at her jeans! It's blue.",
+      "C": "Lily has new jeans. Look at her jeans! They're blue."
+    },
+    {
+      "A": "I have only blue pencils, not red ones. I can lend a red pencil, but not a blue one.",
+      "B": "I have only blue pencils, not red ones. I can lend a blue pencil, but not a red one.",
+      "C": "I have only blue pencils, not red ones. I can lend a red pencil, but not a red one."
+    },
+    {
+      "A": "My dad is a teacher. —Is your dad at school? —Yes, he is.",
+      "B": "My dad is a teacher. —Are your dad at school? —Yes, he is.",
+      "C": "My dad is a teacher. —Is your sisters at school? —Yes, he is."
+    },
+    {
+      "A": "—Who's bag is it? —It's Anna's.",
+      "B": "—Whose bag is it? —It's Anna.",
+      "C": "—Whose bag is it? —It's Anna's."
+    },
+    {
+      "A": "—I'm sad. Our outdoor game is cancelled. —Well done!",
+      "B": "—I'm sad. Our outdoor game is cancelled. —I'm sorry to hear that.",
+      "C": "—I'm sad. Our outdoor game is cancelled. —Happy birthday!"
+    },
+    {
+      "A": "I cannot lift this box alone. Can you give me a hand? Here, “give me a hand” means 帮我一下.",
+      "B": "I cannot lift this box alone. Can you give me a hand? Here, “give me a hand” means 送我一只手.",
+      "C": "I cannot lift this box alone. Can you give me a hand? Here, “give me a hand” means 把你的手举高."
+    }
+  ]
+}

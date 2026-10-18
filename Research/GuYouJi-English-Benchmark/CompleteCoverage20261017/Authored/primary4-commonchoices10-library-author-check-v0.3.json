@@ -1,0 +1,419 @@
+{
+  "version": "0.3",
+  "id": "primary4-commonchoices10-library",
+  "grade": "primary4",
+  "questions": 10,
+  "candidate_sha256": "cc3da2ae0699698ae074b12cb20c9aa59116b3adf3f420e80e3b13ffaa2feeb3",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary4-commonchoices10-library-manuscript-v0.2.json",
+    "sha256": "eb4f044dba76b68da8d3a90424fcde8e30dadb2fa88ba34af772e3353b308db9"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_group_id": "p4-jianye2025.sentencechoice10",
+  "canonical_response_block_sha256": "27ac599a3cce98abc6d662cd110829fefc24e10a9175716ece4edbb3f0c81e9a",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Here is some ____ in a bowl. You can eat it with a spoon.",
+      "options": [
+        [
+          "A",
+          "grapes"
+        ],
+        [
+          "B",
+          "sandwiches"
+        ],
+        [
+          "C",
+          "rice"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：复数grapes与is及it不一致。；B：复数sandwiches与is和it不一致。；C：rice不可数，和some、is、it及碗中食物一致。"
+    },
+    {
+      "number": 2,
+      "stem": "It's twelve. It's time ____ have lunch.",
+      "options": [
+        [
+          "A",
+          "for"
+        ],
+        [
+          "B",
+          "to"
+        ],
+        [
+          "C",
+          "at"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：for后此处不能直接接动词have。；B：time to have lunch为正确动词结构。；C：time at have不构成该结构。"
+    },
+    {
+      "number": 3,
+      "stem": "—How many ____ can you see? —Four tables in this room.",
+      "options": [
+        [
+          "A",
+          "tables"
+        ],
+        [
+          "B",
+          "table"
+        ],
+        [
+          "C",
+          "windows"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：many后复数，与回答Four tables直接一致。；B：many后不用单数。；C：回答是tables，不是windows。"
+    },
+    {
+      "number": 4,
+      "stem": "We have lunch ____ one ____ the afternoon ____ every Friday.",
+      "options": [
+        [
+          "A",
+          "in; in; at"
+        ],
+        [
+          "B",
+          "at; on; on"
+        ],
+        [
+          "C",
+          "at; in; /"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：钟点不用in，every Friday前不加at。；B：一般时段the afternoon不用on，every Friday前不加on。；C：at one、in the afternoon正确，every Friday前不加介词。"
+    },
+    {
+      "number": 5,
+      "stem": "Ben has new shoes. Look at ____ shoes! ____ brown.",
+      "options": [
+        [
+          "A",
+          "his; It's"
+        ],
+        [
+          "B",
+          "his; They're"
+        ],
+        [
+          "C",
+          "he; They're"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：shoes为复数，不用It is。；B：Ben用his修饰，shoes复数用They are。；C：名词前用his，不用主格he。"
+    },
+    {
+      "number": 6,
+      "stem": "There is only milk, not juice, in the fridge. I can get ____, but not ____.",
+      "options": [
+        [
+          "A",
+          "milk; juice"
+        ],
+        [
+          "B",
+          "juice; milk"
+        ],
+        [
+          "C",
+          "juice; juice"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：与only milk及not juice一致。；B：将有和没有的饮料反过来了。；C：第一空与只有milk冲突。"
+    },
+    {
+      "number": 7,
+      "stem": "My mum works in this library. —____ your ____ here? —Yes, she is.",
+      "options": [
+        [
+          "A",
+          "Are; mum"
+        ],
+        [
+          "B",
+          "Is; brothers"
+        ],
+        [
+          "C",
+          "Is; mum"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：mum单数不与Are一致。；B：brothers复数不与Is及she一致。；C：mum单数配Is，并由she回答。"
+    },
+    {
+      "number": 8,
+      "stem": "—____ coat is this? —It's ____.",
+      "options": [
+        [
+          "A",
+          "Whose; Sam's"
+        ],
+        [
+          "B",
+          "Who's; Sam's"
+        ],
+        [
+          "C",
+          "Whose; Sam"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：Whose问谁的，用Sam所有格回答。；B：Who is不在coat前表达所有关系。；C：后句需要所有格，不是Sam主格名词。"
+    },
+    {
+      "number": 9,
+      "stem": "—Our class trip is cancelled. I feel sad. —____",
+      "options": [
+        [
+          "A",
+          "Happy New Year!"
+        ],
+        [
+          "B",
+          "Good job!"
+        ],
+        [
+          "C",
+          "What a pity!"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：没有新年语境，不回应坏消息。；B：称赞完成任务不回应行程取消的难过。；C：直接表达对取消行程的遗憾。"
+    },
+    {
+      "number": 10,
+      "stem": "This puzzle is very easy for me. I finish it in a minute. It is a piece of cake! Here, “a piece of cake” means ____.",
+      "options": [
+        [
+          "A",
+          "一块真正的蛋糕"
+        ],
+        [
+          "B",
+          "很容易的事"
+        ],
+        [
+          "C",
+          "一件很难的事"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：上下文在谈解谜的容易程度，没有食用蛋糕。；B：前文very easy及很快完成支持此比喻。；C：与very easy冲突。"
+    }
+  ],
+  "student_passage": "",
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "C",
+      "grounds": {
+        "A": "复数grapes与is及it不一致。",
+        "B": "复数sandwiches与is和it不一致。",
+        "C": "rice不可数，和some、is、it及碗中食物一致。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "B",
+      "grounds": {
+        "A": "for后此处不能直接接动词have。",
+        "B": "time to have lunch为正确动词结构。",
+        "C": "time at have不构成该结构。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "A",
+      "grounds": {
+        "A": "many后复数，与回答Four tables直接一致。",
+        "B": "many后不用单数。",
+        "C": "回答是tables，不是windows。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "C",
+      "grounds": {
+        "A": "钟点不用in，every Friday前不加at。",
+        "B": "一般时段the afternoon不用on，every Friday前不加on。",
+        "C": "at one、in the afternoon正确，every Friday前不加介词。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "B",
+      "grounds": {
+        "A": "shoes为复数，不用It is。",
+        "B": "Ben用his修饰，shoes复数用They are。",
+        "C": "名词前用his，不用主格he。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "A",
+      "grounds": {
+        "A": "与only milk及not juice一致。",
+        "B": "将有和没有的饮料反过来了。",
+        "C": "第一空与只有milk冲突。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "C",
+      "grounds": {
+        "A": "mum单数不与Are一致。",
+        "B": "brothers复数不与Is及she一致。",
+        "C": "mum单数配Is，并由she回答。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "A",
+      "grounds": {
+        "A": "Whose问谁的，用Sam所有格回答。",
+        "B": "Who is不在coat前表达所有关系。",
+        "C": "后句需要所有格，不是Sam主格名词。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "C",
+      "grounds": {
+        "A": "没有新年语境，不回应坏消息。",
+        "B": "称赞完成任务不回应行程取消的难过。",
+        "C": "直接表达对取消行程的遗憾。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "B",
+      "grounds": {
+        "A": "上下文在谈解谜的容易程度，没有食用蛋糕。",
+        "B": "前文very easy及很快完成支持此比喻。",
+        "C": "与very easy冲突。"
+      }
+    }
+  ],
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "author_input_complete": true,
+  "source_key_copied": false,
+  "independent_teacher_student_commercial_production": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 107,
+    "options_English_words": 49,
+    "stem_Han_characters": 0,
+    "options_Han_characters": 18,
+    "visible_blank_slots": 16,
+    "output_letter_count": 10,
+    "shared_options": false,
+    "images": 0,
+    "audio": 0
+  },
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/Authored/primary4-commonchoices10-library-author-check-v0.1.json",
+    "sha256": "6d4920728fd0ea2f47410463d9b58c19abb62ec3f8589e688e454aad91c63b3a"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSourceBindings-v0.1.json",
+    "sha256": "a12a87c9abc5401bf93b9ce69f8bb7d1eab077109796f137a9e8aeec3a7881b0"
+  },
+  "source_binding": "p4-jianye2025.sentencechoice10.binding",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "all_candidate_backfills": [
+    {
+      "A": "Here is some grapes in a bowl. You can eat it with a spoon.",
+      "B": "Here is some sandwiches in a bowl. You can eat it with a spoon.",
+      "C": "Here is some rice in a bowl. You can eat it with a spoon."
+    },
+    {
+      "A": "It's twelve. It's time for have lunch.",
+      "B": "It's twelve. It's time to have lunch.",
+      "C": "It's twelve. It's time at have lunch."
+    },
+    {
+      "A": "—How many tables can you see? —Four tables in this room.",
+      "B": "—How many table can you see? —Four tables in this room.",
+      "C": "—How many windows can you see? —Four tables in this room."
+    },
+    {
+      "A": "We have lunch in one in the afternoon at every Friday.",
+      "B": "We have lunch at one on the afternoon on every Friday.",
+      "C": "We have lunch at one in the afternoon  every Friday."
+    },
+    {
+      "A": "Ben has new shoes. Look at his shoes! It's brown.",
+      "B": "Ben has new shoes. Look at his shoes! They're brown.",
+      "C": "Ben has new shoes. Look at he shoes! They're brown."
+    },
+    {
+      "A": "There is only milk, not juice, in the fridge. I can get milk, but not juice.",
+      "B": "There is only milk, not juice, in the fridge. I can get juice, but not milk.",
+      "C": "There is only milk, not juice, in the fridge. I can get juice, but not juice."
+    },
+    {
+      "A": "My mum works in this library. —Are your mum here? —Yes, she is.",
+      "B": "My mum works in this library. —Is your brothers here? —Yes, she is.",
+      "C": "My mum works in this library. —Is your mum here? —Yes, she is."
+    },
+    {
+      "A": "—Whose coat is this? —It's Sam's.",
+      "B": "—Who's coat is this? —It's Sam's.",
+      "C": "—Whose coat is this? —It's Sam."
+    },
+    {
+      "A": "—Our class trip is cancelled. I feel sad. —Happy New Year!",
+      "B": "—Our class trip is cancelled. I feel sad. —Good job!",
+      "C": "—Our class trip is cancelled. I feel sad. —What a pity!"
+    },
+    {
+      "A": "This puzzle is very easy for me. I finish it in a minute. It is a piece of cake! Here, “a piece of cake” means 一块真正的蛋糕.",
+      "B": "This puzzle is very easy for me. I finish it in a minute. It is a piece of cake! Here, “a piece of cake” means 很容易的事.",
+      "C": "This puzzle is very easy for me. I finish it in a minute. It is a piece of cake! Here, “a piece of cake” means 一件很难的事."
+    }
+  ]
+}

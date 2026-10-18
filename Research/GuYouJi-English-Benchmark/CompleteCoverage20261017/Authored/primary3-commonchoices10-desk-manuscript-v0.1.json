@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "primary3-commonchoices10-desk",
+  "grade": "primary3",
+  "family": "sentence_choice",
+  "title": "小三：文具、盒子与风筝",
+  "source_group_id": "p3-yancheng2025.sentencechoice10",
+  "source_index": {
+    "path": "CompleteCoverage20261017/PrimaryCommonChoiceSelectedSources-v0.1.json",
+    "sha256": "b5104ee6769f62a6fc3c16763dae482d8bf75413a03e36ecb8a442b5cc9290c0"
+  },
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      3,
+      8
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "instruction": "从每题的A、B、C三个选项中选择最合适的一项。两空题选择一个完整组合，每题只填一个字母。",
+  "items": [
+    {
+      "stem": "Keep your voice low. Don't ____!",
+      "key": "B",
+      "options": [
+        "smile",
+        "shout",
+        "sit"
+      ],
+      "grounds": [
+        "微笑不违反低声要求，不能表达此处禁止大声的意思。",
+        "shout指大声喊，正与前句低声要求相对。",
+        "坐下不涉及音量，不合这条提醒。"
+      ]
+    },
+    {
+      "stem": "—Is this a ruler? —____ It is a long ruler.",
+      "key": "C",
+      "options": [
+        "No, it isn't.",
+        "I don't know.",
+        "Yes, it is."
+      ],
+      "grounds": [
+        "后句明确是尺子，与否定冲突。",
+        "后句已明确其身份，不合不知道。",
+        "后句long ruler明确支持肯定回答。"
+      ]
+    },
+    {
+      "stem": "Six crayons are inside the box. —What are those ____ the box? —____ crayons.",
+      "key": "A",
+      "options": [
+        "in; They're",
+        "on; They're",
+        "in; It's"
+      ],
+      "grounds": [
+        "inside对应in，those及复数crayons对应They are。",
+        "on表示表面上，与inside不同。",
+        "those和crayons是复数，不能用It is。"
+      ]
+    },
+    {
+      "stem": "—What's this? —____ It is for writing.",
+      "key": "B",
+      "options": [
+        "She's my aunt.",
+        "It's a pencil.",
+        "He's Ben."
+      ],
+      "grounds": [
+        "介绍女性，不能回答所问书写物品。",
+        "a pencil是可以写字的物品，回答this所指物。",
+        "介绍男性，不合this及书写用途。"
+      ]
+    },
+    {
+      "stem": "—____ my bag? —It's under the desk.",
+      "key": "C",
+      "options": [
+        "Who's",
+        "What's",
+        "Where's"
+      ],
+      "grounds": [
+        "问谁，不以桌下的位置作答。",
+        "问是什么，不合后句位置回答。",
+        "询问书包位置，由under the desk回答。"
+      ]
+    },
+    {
+      "stem": "—Look at my new kite. —____ nice!",
+      "key": "A",
+      "options": [
+        "How",
+        "What a",
+        "What"
+      ],
+      "grounds": [
+        "How后可接形容词nice作感叹。",
+        "What a后需形容词加单数名词，题面没有名词。",
+        "此结构不能仅接形容词nice结束。"
+      ]
+    },
+    {
+      "stem": "—Do you have an ____? —No, I do not.",
+      "key": "C",
+      "options": [
+        "pencil",
+        "books",
+        "egg"
+      ],
+      "grounds": [
+        "pencil以辅音音素开头，不接an。",
+        "books是复数，不接an。",
+        "egg是元音音素开头的单数词，和an相配。"
+      ]
+    },
+    {
+      "stem": "—Are these ____? —No, ____.",
+      "key": "B",
+      "options": [
+        "duck; they aren't",
+        "ducks; they aren't",
+        "ducks; they are"
+      ],
+      "grounds": [
+        "these要求复数，不用单数duck。",
+        "these ducks复数一致，No接they are not。",
+        "No和肯定they are冲突。"
+      ]
+    },
+    {
+      "stem": "—Would you like some milk? —____",
+      "key": "A",
+      "options": [
+        "No, thanks.",
+        "No, I don't.",
+        "You are welcome."
+      ],
+      "grounds": [
+        "对食物饮料的邀请可礼貌谢绝。",
+        "此处回答Would you like的邀请，不用助动词do照答。",
+        "不是收到感谢，不能用不用谢回应邀请。"
+      ]
+    },
+    {
+      "stem": "My kite is yellow and green. —What colour is your kite? —____",
+      "key": "C",
+      "options": [
+        "Red and white.",
+        "Blue and black.",
+        "Yellow and green."
+      ],
+      "grounds": [
+        "与题面yellow and green不符。",
+        "与题面两种颜色不符。",
+        "直接符合题面已给颜色，不依赖未提供的图片。"
+      ]
+    }
+  ],
+  "source_notice": "参照公开转载的盐城标签2025春三年级完整十题三选节；按完整独立句/短对话与原联选位置编写，不冒称全国统一卷型。公开原生文字完整，不等于原校/实际施测/原版视觉认证；原键未取。源歧义保留研究记录，原创另写明确语境，逐项给出依据，不复制问题原键。自有题目与人物均为作者编写，未作独立教研、学生难度/区分度或商用/生产验证。"
+}

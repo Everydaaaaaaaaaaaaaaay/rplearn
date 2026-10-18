@@ -1,0 +1,121 @@
+{
+  "version": "0.1",
+  "groups": [
+    {
+      "id": "p3-yancheng2025.sentencechoice10",
+      "level": "primary3",
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/p3-yancheng2025-common-choice10-native-v0.1.json",
+        "sha256": "04787d530b872557d8e4986e8d09211d7d0f43b19e3193e910542c529683a2aa"
+      },
+      "selected_native": {
+        "path": "build/english-benchmark-authority-20261017/p3-yancheng2025-common-choice10-native-v0.1.json",
+        "sha256": "04787d530b872557d8e4986e8d09211d7d0f43b19e3193e910542c529683a2aa"
+      },
+      "input_complete": true,
+      "input_layer": "selected_native_text_only",
+      "responses": 10,
+      "options_each": 3,
+      "features": {
+        "sentence_tasks": 10,
+        "responses": 10,
+        "options_each": 3,
+        "shared_bank": false,
+        "visible_blank_slots_each": [
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        "joint_choice_positions": [
+          3,
+          8
+        ],
+        "response_mode": "one_letter_each",
+        "necessary_audio": false,
+        "necessary_images": false
+      },
+      "source_key_acquired": false,
+      "school_exam_authentication": false,
+      "quality_notes": [
+        "十题ABC独立候选；两空或三空联选仍只一回应；不按固定六题截断。",
+        "完整仅指公开原生文字选节，非原校/实际施测/原版排版认证；没有发布键。",
+        "网页地名/教材来自标题；正文只见2025春三年级英语，不凭标题补认证。",
+        "源1根据睡觉推talk但eat并不必然冲突；源4指示代词回答存在语用选择；不称源题唯一最佳已验。"
+      ]
+    },
+    {
+      "id": "p4-jianye2025.sentencechoice10",
+      "level": "primary4",
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/p4-jianye2025-common-choice10-native-v0.1.json",
+        "sha256": "0594281c5bd0c2b8e58ccfc9cd9eded45753b0c920cd22fe0f1d6f1e2f00739c"
+      },
+      "selected_native": {
+        "path": "build/english-benchmark-authority-20261017/p4-jianye2025-common-choice10-native-v0.1.json",
+        "sha256": "0594281c5bd0c2b8e58ccfc9cd9eded45753b0c920cd22fe0f1d6f1e2f00739c"
+      },
+      "input_complete": true,
+      "input_layer": "selected_native_text_only",
+      "responses": 10,
+      "options_each": 3,
+      "features": {
+        "sentence_tasks": 10,
+        "responses": 10,
+        "options_each": 3,
+        "shared_bank": false,
+        "visible_blank_slots_each": [
+          1,
+          1,
+          1,
+          3,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1
+        ],
+        "joint_choice_positions": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "response_mode": "one_letter_each",
+        "necessary_audio": false,
+        "necessary_images": false
+      },
+      "source_key_acquired": false,
+      "school_exam_authentication": false,
+      "quality_notes": [
+        "十题ABC独立候选；两空或三空联选仍只一回应；不按固定六题截断。",
+        "完整仅指公开原生文字选节，非原校/实际施测/原版排版认证；没有发布键。",
+        "源3 What lessons/subjects do you have today两项均有合理读法；不复制歧义或当gold。",
+        "源9 go picnics措辞风险；源10标记目标在文字中明确，原下划线视觉未核，不造原版视觉等值。"
+      ]
+    }
+  ],
+  "new_selected_complete_native_sections": 2,
+  "new_authenticated_papers": 0,
+  "new_ordinary_parent_labels": 2,
+  "source_keys_not_gold": true,
+  "other_new_preview_sections_not_automatically_added": true,
+  "corroborating_school_analysis": {
+    "path": "build/english-benchmark-authority-20261017/wujiang-school-analysis.html",
+    "sha256": "b546df0e043c1658c389228bea9a22c16a08b40c3d64e3e5d6109752e7a78c81"
+  },
+  "common_representative_review": {
+    "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+    "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+  }
+}
