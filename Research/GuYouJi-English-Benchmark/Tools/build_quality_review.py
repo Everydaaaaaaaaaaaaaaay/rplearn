@@ -72,11 +72,21 @@ def full_markdown_candidate(meta):
             image = {'src': 'data:image/svg+xml;base64,'+base64.b64encode(raw).decode(), 'alt': embed[1],
                      'asset': {'path': asset['path'], 'sha256': asset['sha256']}, 'width': width, 'height': height}
             images.append(image)
-            result.append(material_view(value[cursor:embed.start()], unordered_lists=bool(audit.get('source_bound_credit_notice_reading_section'))))
+            caption_html = ''
+            next_cursor = embed.end()
+            if audit.get('source_bound_native14_profile_research_section'):
+                media = next(m for m in audit['illustrative_media'] if m['asset'] == asset)
+                caption = media['caption']
+                marker = re.match(r'[ \t\r\n]*\*'+re.escape(caption)+r'\*[ \t]*(?:\r?\n|$)', value[next_cursor:])
+                if marker is None:
+                    raise ValueError('Bound illustration caption must follow its image')
+                next_cursor += marker.end()
+                caption_html = '<figcaption>'+html.escape(caption)+'</figcaption>'
+            result.append(material_view(value[cursor:embed.start()], unordered_lists=bool(audit.get('source_bound_credit_notice_reading_section') or audit.get('source_bound_native14_profile_research_section'))))
             result.append('<figure><img class="passage-image" src="'+image['src']+'" alt="'+html.escape(image['alt'], quote=True)+
-                          '" width="'+str(width)+'" height="'+str(height)+'"></figure>')
-            cursor = embed.end()
-        result.append(material_view(value[cursor:], unordered_lists=bool(audit.get('source_bound_credit_notice_reading_section'))))
+                          '" width="'+str(width)+'" height="'+str(height)+'">'+caption_html+'</figure>')
+            cursor = next_cursor
+        result.append(material_view(value[cursor:], unordered_lists=bool(audit.get('source_bound_credit_notice_reading_section') or audit.get('source_bound_native14_profile_research_section'))))
         return ''.join(result)
 
     def render_input(value):

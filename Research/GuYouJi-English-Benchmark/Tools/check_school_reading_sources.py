@@ -222,6 +222,14 @@ def run(bindings_path):
                 'native_whole38_as28':lambda x:x.__setitem__('selected_objective_header',x['whole_objective_header']),
                 'native_lexical_shortened':lambda x:x['lexical_target_spans'][0].__setitem__('whitespace_normalized','no strings'),
             })
+            if s['level']==11:
+                cases.update({
+                    'native12bullets_truncated':lambda x:x['A_bullet_sections'][0]['bullet_spans'].pop(),
+                    'native_caption_dropped':lambda x:x['illustrative_source_media'][0].__setitem__('caption',''),
+                    'native_photo_record_dropped':lambda x:x['illustrative_source_media'].pop(),
+                    'native_photo_as_keyed_graph':lambda x:x['illustrative_source_media'][1].__setitem__('required_for_unique_answer',True),
+                    'native_Q26_key_silently_repaired':lambda x:x['source_keys']['items'][5].__setitem__('published_answer','D'),
+                })
         rejected=[]
         for name,mutate in cases.items():
             bad=copy.deepcopy(s);mutate(bad);bb=copy.deepcopy(b);bb['source_record_sha256']=digest(json.dumps(bad,ensure_ascii=False,sort_keys=True))

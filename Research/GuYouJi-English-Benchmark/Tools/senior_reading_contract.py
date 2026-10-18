@@ -96,8 +96,11 @@ def validate(d,b,s):
         from senior_graph_reading_contract import validate as validate_graph
         validate_graph(d,s)
     if s.get('native14_author_gate'):
-        from senior_care14_reading_contract import validate as validate_care14
-        validate_care14(d,s)
+        if s['native14_author_gate']=='grade10_care_notice14_v1':
+            from senior_care14_reading_contract import validate as validate_native14
+        else:
+            from senior_profile14_reading_contract import validate as validate_native14
+        validate_native14(d,s)
     if c['required_tables']:
         assert c['required_tables']==['A.fee_table'] and not c['required_lists']
         table=d['required_table'];assert table['id']=='A.fee_table'
@@ -150,8 +153,13 @@ def body_text(d):
 
 
 def unit_load_text(d,text):
-    # Opt in for graph manuscripts only; keep all frozen text-only counts intact.
-    return re.sub(r'^!\[[^\]]+\]\([^)]+\)\s*$', '', text, flags=re.M) if d.get('source_bound_graph_reading_section') else text
+    # Opt in for bound media only; keep frozen text-only counts intact.
+    if d.get('source_bound_graph_reading_section') or d.get('source_bound_native14_profile_research_section'):
+        text=re.sub(r'^!\[[^\]]+\]\([^)]+\)\s*$', '', text, flags=re.M)
+    if d.get('source_bound_native14_profile_research_section'):
+        for media in d['illustrative_media']:
+            text=text.replace('*'+media['caption']+'*','')
+    return text
 
 
 def check(g,a,b,s):
@@ -161,6 +169,9 @@ def check(g,a,b,s):
     assert g['questions']==d['questions']
     if d.get('source_bound_graph_reading_section'):
         from senior_graph_reading_contract import check_rendered
+        check_rendered(g,a,d)
+    elif d.get('source_bound_native14_profile_research_section'):
+        from senior_profile14_reading_contract import check_rendered
         check_rendered(g,a,d)
     else:
         assert not g['requiredPassageImages']

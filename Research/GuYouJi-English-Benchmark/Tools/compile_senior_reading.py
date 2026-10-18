@@ -40,6 +40,17 @@ def compile_author(manuscript, version='0.1'):
         audit['load_measure'].update(notice_required_fields=5,research_accounts=2,
                                     output_requirement_Han_characters=len(re.findall('[\u3400-\u9fff]',d['instruction'])),
                                     stem_Han_characters=sum(len(re.findall('[\u3400-\u9fff]',q['stem']))for q in qs))
+    if d.get('source_bound_native14_profile_research_section'):
+        audit.update(source_bound_native14_profile_research_section=True,
+                     volunteer_notice=d['volunteer_notice'],illustrative_media=d['illustrative_media'],
+                     figure_assets=[m['asset']for m in d['illustrative_media']],
+                     bird_study=d['bird_study'],meal_study=d['meal_study'],answer_evidence=d['answer_evidence'])
+        audit['load_measure'].update(notice_bullet_sections=3,notice_bullet_entries=12,
+                                    illustrative_images=2,illustrative_images_not_response_coded=True,
+                                    image_caption_English_words=sum(words(m['caption'])for m in d['illustrative_media']),
+                                    image_alt_English_words=sum(words(m['alt'])for m in d['illustrative_media']),
+                                    image_markup_and_captions_excluded_from_body=True,
+                                    output_requirement_Han_characters=len(re.findall('[\u3400-\u9fff]',d['instruction'])))
     if d.get('credit_notice'):
         from senior_credit_reading_contract import format_credit
         policy=d['credit_notice']
