@@ -1,0 +1,379 @@
+{
+  "version": "0.1",
+  "id": "primary6-fourchoice10-trip",
+  "grade": "primary6",
+  "questions": 10,
+  "source_binding": "p6-fourchoice10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6FourChoiceSourceBindings-v0.1.json",
+    "sha256": "bc28e7782a29f7e780acb2dd2d3a56a8bfdb16e571ccce18644be8bf0fcc1a61"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.sentences4x10",
+  "candidate_sha256": "eef9ef0b66df088bde24841d03a1dd6d2f1b6f00af38507c9516c593fe839ccf",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-fourchoice10-trip-manuscript-v0.1.json",
+    "sha256": "a101e4859535845883c7b9b49cf4d555b6f66d828e0e5cce697a09668300b6a5"
+  },
+  "canonical_response_block_sha256": "588dc73e801240d4288e723289b4a2394671349e0f294364b794882f7bcef190",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "You want to interrupt a teacher politely to ask a question. Say, \"____\"",
+      "options": [
+        [
+          "A",
+          "You are welcome."
+        ],
+        [
+          "B",
+          "Good night."
+        ],
+        [
+          "C",
+          "Excuse me."
+        ],
+        [
+          "D",
+          "Happy birthday."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：回应感谢，不是引起注意。；B：晚间告别，不符合提问场景。；C：礼貌引起注意后提问。；D：生日祝福，题面无生日情境。"
+    },
+    {
+      "number": 2,
+      "stem": "To find when the next bus leaves, check the ____.",
+      "options": [
+        [
+          "A",
+          "recipe"
+        ],
+        [
+          "B",
+          "timetable"
+        ],
+        [
+          "C",
+          "dictionary"
+        ],
+        [
+          "D",
+          "menu"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：食谱说明做菜，不提供班次。；B：时刻表提供班次时间。；C：词典释词，不提供公交班次。；D：菜单列食物，不提供公交班次。"
+    },
+    {
+      "number": 3,
+      "stem": "This walking route is ____ than the one beside the river.",
+      "options": [
+        [
+          "A",
+          "shorter"
+        ],
+        [
+          "B",
+          "short"
+        ],
+        [
+          "C",
+          "shortest"
+        ],
+        [
+          "D",
+          "more shorter"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：than比较两条路线，用比较级shorter。；B：原级short不直接接此than比较。；C：最高级shortest不用于此两项than比较。；D：more与-er重复。"
+    },
+    {
+      "number": 4,
+      "stem": "The gate opens at eight. We arrived at 7:45, fifteen minutes ____.",
+      "options": [
+        [
+          "A",
+          "lately"
+        ],
+        [
+          "B",
+          "nearly"
+        ],
+        [
+          "C",
+          "quietly"
+        ],
+        [
+          "D",
+          "early"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：lately指近来，不表示提前十五分钟。；B：nearly不能作此minutes后的时间关系补语。；C：quietly表示方式，不表达钟点差。；D：比开门早十五分钟。"
+    },
+    {
+      "number": 5,
+      "stem": "I was reading when the bus arrived. Ask about the activity: ____ were you doing ____ the bus arrived?",
+      "options": [
+        [
+          "A",
+          "Where, what"
+        ],
+        [
+          "B",
+          "What, when"
+        ],
+        [
+          "C",
+          "When, what"
+        ],
+        [
+          "D",
+          "What, who"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：Where不问活动，what不能连接此从句。；B：What询问活动，when引出公交到达的时刻。；C：When不问活动，第二个what也不合从句。；D：who不能在the bus主语前作此时间连词。"
+    },
+    {
+      "number": 6,
+      "stem": "Our bus leaves ____ half past seven every morning.",
+      "options": [
+        [
+          "A",
+          "at"
+        ],
+        [
+          "B",
+          "on"
+        ],
+        [
+          "C",
+          "in"
+        ],
+        [
+          "D",
+          "under"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：钟点前用at。；B：on不用于此钟点。；C：in不用于此钟点。；D：under不是此时间介词。"
+    },
+    {
+      "number": 7,
+      "stem": "The two boys ____ for the guide when I saw them yesterday.",
+      "options": [
+        [
+          "A",
+          "was waiting"
+        ],
+        [
+          "B",
+          "is waiting"
+        ],
+        [
+          "C",
+          "were waiting"
+        ],
+        [
+          "D",
+          "am waiting"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：was不与复数boys一致。；B：is既为现在时又不与复数主语一致。；C：复数主语和过去观察与were waiting一致。；D：am只与I搭配。"
+    },
+    {
+      "number": 8,
+      "stem": "The new bridge is much ____ than the old one.",
+      "options": [
+        [
+          "A",
+          "wide"
+        ],
+        [
+          "B",
+          "widest"
+        ],
+        [
+          "C",
+          "more wider"
+        ],
+        [
+          "D",
+          "wider"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：wide为原级。；B：widest为最高级，不配此than比较。；C：more与wider重复比较。；D：much修饰比较级wider，than引出比较。"
+    },
+    {
+      "number": 9,
+      "stem": "The basket is strong ____ to hold these bottles.",
+      "options": [
+        [
+          "A",
+          "much"
+        ],
+        [
+          "B",
+          "enough"
+        ],
+        [
+          "C",
+          "many"
+        ],
+        [
+          "D",
+          "most"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：much不能在strong后构成此结构。；B：形容词后enough接to不定式。；C：many用于可数名词，不构成此结构。；D：most不能在strong后构成此结构。"
+    },
+    {
+      "number": 10,
+      "stem": "This is ____ suitcase in the shop.",
+      "options": [
+        [
+          "A",
+          "the lightest"
+        ],
+        [
+          "B",
+          "lightest"
+        ],
+        [
+          "C",
+          "lighter"
+        ],
+        [
+          "D",
+          "light"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：带the的最高级可修饰后面的单数可数名词。；B：lightest前缺限定词。；C：lighter前缺限定词，且无此比较结构。；D：light前缺限定词。"
+    }
+  ],
+  "student_passage": "",
+  "ten_sentence_four_choices": true,
+  "joint_decision_positions": [
+    5
+  ],
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "C",
+      "grounds": {
+        "A": "回应感谢，不是引起注意。",
+        "B": "晚间告别，不符合提问场景。",
+        "C": "礼貌引起注意后提问。",
+        "D": "生日祝福，题面无生日情境。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "B",
+      "grounds": {
+        "A": "食谱说明做菜，不提供班次。",
+        "B": "时刻表提供班次时间。",
+        "C": "词典释词，不提供公交班次。",
+        "D": "菜单列食物，不提供公交班次。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "A",
+      "grounds": {
+        "A": "than比较两条路线，用比较级shorter。",
+        "B": "原级short不直接接此than比较。",
+        "C": "最高级shortest不用于此两项than比较。",
+        "D": "more与-er重复。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "D",
+      "grounds": {
+        "A": "lately指近来，不表示提前十五分钟。",
+        "B": "nearly不能作此minutes后的时间关系补语。",
+        "C": "quietly表示方式，不表达钟点差。",
+        "D": "比开门早十五分钟。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "B",
+      "grounds": {
+        "A": "Where不问活动，what不能连接此从句。",
+        "B": "What询问活动，when引出公交到达的时刻。",
+        "C": "When不问活动，第二个what也不合从句。",
+        "D": "who不能在the bus主语前作此时间连词。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "A",
+      "grounds": {
+        "A": "钟点前用at。",
+        "B": "on不用于此钟点。",
+        "C": "in不用于此钟点。",
+        "D": "under不是此时间介词。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "C",
+      "grounds": {
+        "A": "was不与复数boys一致。",
+        "B": "is既为现在时又不与复数主语一致。",
+        "C": "复数主语和过去观察与were waiting一致。",
+        "D": "am只与I搭配。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "D",
+      "grounds": {
+        "A": "wide为原级。",
+        "B": "widest为最高级，不配此than比较。",
+        "C": "more与wider重复比较。",
+        "D": "much修饰比较级wider，than引出比较。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "B",
+      "grounds": {
+        "A": "much不能在strong后构成此结构。",
+        "B": "形容词后enough接to不定式。",
+        "C": "many用于可数名词，不构成此结构。",
+        "D": "most不能在strong后构成此结构。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "A",
+      "grounds": {
+        "A": "带the的最高级可修饰后面的单数可数名词。",
+        "B": "lightest前缺限定词。",
+        "C": "lighter前缺限定词，且无此比较结构。",
+        "D": "light前缺限定词。"
+      }
+    }
+  ],
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 100,
+    "options_English_words_with_repeated_bank": 56,
+    "output_response_positions": 10,
+    "visible_blank_slots": 11,
+    "output_letter_count": 10
+  }
+}

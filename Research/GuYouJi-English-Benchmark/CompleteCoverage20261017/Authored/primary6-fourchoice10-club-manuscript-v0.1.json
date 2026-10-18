@@ -1,0 +1,177 @@
+{
+  "version": "0.1",
+  "id": "primary6-fourchoice10-club",
+  "title": "小六：社团与器材",
+  "grade": "primary6",
+  "family": "sentence_choice",
+  "source_group_id": "primary6.shenzhenexperiment2017.sentences4x10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6FourChoiceSourceBindings-v0.1.json",
+    "sha256": "bc28e7782a29f7e780acb2dd2d3a56a8bfdb16e571ccce18644be8bf0fcc1a61"
+  },
+  "source_binding": "p6-fourchoice10",
+  "instruction": "完成全部十题，每题从A、B、C、D选一个最佳答案。第5题有两个空，需选择同时适合两空的一组词，仍只选一个字母。",
+  "source_notice": "结构参照同一历史教辅导出卷首节完整十题四选，独立句或短语境；第5题两个题面空由一项组合回答，整组10回应/11空，不拆成11题。卷标题自署2016–17深圳实验学校小学部六下，原校/实际施测未认证，原答案页缺。源1/5/7/10存在语用、从句或词形边界风险，4/8事实语境和9印法问题保留，未当唯一键或gold。原创逐题反查四候选，未复制上述风险；独立教研、学生、商用、生产未验证。",
+  "items": [
+    {
+      "stem": "A friend says, \"Thank you for returning my notebook.\" You reply, \"____\"",
+      "options": [
+        "You are welcome.",
+        "Excuse me.",
+        "I am sorry.",
+        "See you tomorrow."
+      ],
+      "grounds": [
+        "回应对方的感谢。",
+        "请求引起注意，不回应感谢。",
+        "道歉，题面未有过错。",
+        "告别，未回应感谢。"
+      ],
+      "key": "A"
+    },
+    {
+      "stem": "To find which page explains how to make the paper boat, look at the book's ____.",
+      "options": [
+        "cover colour",
+        "price",
+        "author photo",
+        "contents"
+      ],
+      "grounds": [
+        "封面颜色不提供内容页码。",
+        "价格不提供内容页码。",
+        "作者照片不提供内容页码。",
+        "目录提供内容和页码。"
+      ],
+      "key": "D"
+    },
+    {
+      "stem": "The wooden stool is ____ than the metal chair.",
+      "options": [
+        "light",
+        "lightest",
+        "lighter",
+        "more lighter"
+      ],
+      "grounds": [
+        "light为原级。",
+        "lightest为最高级。",
+        "than前用比较级lighter。",
+        "more与lighter重复。"
+      ],
+      "key": "C"
+    },
+    {
+      "stem": "The hall opens at two. We arrived at 1:50, ten minutes ____.",
+      "options": [
+        "lately",
+        "early",
+        "nearly",
+        "softly"
+      ],
+      "grounds": [
+        "lately表示近来。",
+        "比开门提前十分钟。",
+        "nearly不能在这里作时间差补语。",
+        "softly表示轻柔的方式。"
+      ],
+      "key": "B"
+    },
+    {
+      "stem": "I was tuning the guitar when the bell rang. Ask about the activity: ____ were you doing ____ the bell rang?",
+      "options": [
+        "What, when",
+        "Where, what",
+        "When, what",
+        "What, who"
+      ],
+      "grounds": [
+        "What问活动，when引出响铃时刻。",
+        "Where不问活动，what不连接此从句。",
+        "When不问所做活动，第二空what不合此从句。",
+        "who不能连接the bell rang作时间从句。"
+      ],
+      "key": "A"
+    },
+    {
+      "stem": "The music lesson begins ____ three o'clock on Tuesdays.",
+      "options": [
+        "in",
+        "on",
+        "between",
+        "at"
+      ],
+      "grounds": [
+        "in不用于此钟点。",
+        "on不用于此钟点。",
+        "between需要成对端点，不直接用于此单点。",
+        "钟点前用at。"
+      ],
+      "key": "D"
+    },
+    {
+      "stem": "The three students ____ the stage when I entered yesterday.",
+      "options": [
+        "was cleaning",
+        "were cleaning",
+        "is cleaning",
+        "am cleaning"
+      ],
+      "grounds": [
+        "was不与复数students一致。",
+        "复数students与过去时were cleaning一致。",
+        "is不与复数主语及过去语境一致。",
+        "am只与I搭配。"
+      ],
+      "key": "B"
+    },
+    {
+      "stem": "This rope is much ____ than the thin string.",
+      "options": [
+        "thick",
+        "thickest",
+        "thicker",
+        "more thicker"
+      ],
+      "grounds": [
+        "thick是原级。",
+        "thickest是最高级。",
+        "比较级thicker与much及than相配。",
+        "more与thicker重复。"
+      ],
+      "key": "C"
+    },
+    {
+      "stem": "The lamp is bright ____ for us to read the small labels.",
+      "options": [
+        "enough",
+        "much",
+        "many",
+        "most"
+      ],
+      "grounds": [
+        "bright enough to read表达亮度足够。",
+        "much不放在bright后构成此结构。",
+        "many不构成此形容词结构。",
+        "most不构成此形容词结构。"
+      ],
+      "key": "A"
+    },
+    {
+      "stem": "This is ____ drum in our cupboard.",
+      "options": [
+        "smallest",
+        "smaller",
+        "the smallest",
+        "small"
+      ],
+      "grounds": [
+        "单数可数名词前缺限定词。",
+        "smaller前缺限定词。",
+        "the smallest作定语修饰drum。",
+        "small前缺限定词。"
+      ],
+      "key": "C"
+    }
+  ]
+}

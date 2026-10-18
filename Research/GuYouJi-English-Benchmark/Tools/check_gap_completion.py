@@ -52,6 +52,9 @@ def check(data, plan):
             if b.get('task_mode') == 'paired_word_fill':
                 from compile_paired_word_fill import check as check_paired_word_fill
                 check_paired_word_fill(g,a,b,source)
+            if b.get('task_mode') == 'ten_sentence_four_choices':
+                from compile_ten_sentence_choices import check as check_ten_sentence_choices
+                check_ten_sentence_choices(g,a,b,source)
             if b.get('task_mode') == 'complete_word_category_choice':
                 from word_category_contract import check as check_word_categories
                 check_word_categories(g,a,b,source)
