@@ -1,0 +1,1014 @@
+{
+  "version": "0.1",
+  "id": "grade11-reading15-table-pouch",
+  "grade": 11,
+  "questions": 15,
+  "candidate_sha256": "c7cea5474cafe871f449540756e1b3cf978820b28cd7599e65ffbdf894eb8239",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-pouch-manuscript-v0.2.json",
+    "sha256": "7874d07790816c3248f0551eebce9ce08a0a2aa04135f8ec852e6d901570b7b5"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.4.json",
+    "sha256": "f9b800218513d6abc274b7d3bb673214dd391006df7d4295195a619be6e8ff02"
+  },
+  "source_binding": "grade11-tianjin2026-21cnjy26082071.reading.complete_section.binding",
+  "school_complete_senior_reading_section": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · Who may use the Westhaven Archive Access Service?",
+      "options": [
+        [
+          "A",
+          "A retired college tutor whose archive membership has been verified."
+        ],
+        [
+          "B",
+          "Anyone who already owns a recording disc."
+        ],
+        [
+          "C",
+          "A graduate with no current college role."
+        ],
+        [
+          "D",
+          "A person who has bought a visitor ticket."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：资格明确退休导师经核可用；B：有唱片不是本校资格；C：明确排除无现职毕业生；D：访客票不足",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "borrower_eligibility"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · What should a user do after receiving a disc-recall notice?",
+      "options": [
+        [
+          "A",
+          "Wait until a transcript of the talk has been supplied."
+        ],
+        [
+          "B",
+          "Renew the disc using its catalogue number."
+        ],
+        [
+          "C",
+          "Return only the case and retain the disc until the original date."
+        ],
+        [
+          "D",
+          "Follow the earlier return date in the notice."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：借盘与文本独立服务；B：不得续借；C：无保留盘许可；D：召回日期取代原日期",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "recall_rule"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · Why should a request include precise recording details?",
+      "options": [
+        [
+          "A",
+          "To remove the fee for a request from an external partner."
+        ],
+        [
+          "B",
+          "To allow visitors to replace membership with a catalogue reference."
+        ],
+        [
+          "C",
+          "To distinguish similar talks and reduce clarification delays."
+        ],
+        [
+          "D",
+          "To make the disc available as quickly as every transcript."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：费用由类别材料决定；B：目录号非资格替代；C：明确区分相似题名避免追问；D：两类通常时限不同非确保相同",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "request_accuracy"
+    },
+    {
+      "number": 4,
+      "stem": "A组 · Which of the following requests has the highest fee?",
+      "options": [
+        [
+          "A",
+          "A disc loan from Civic Archives."
+        ],
+        [
+          "B",
+          "A transcript copy from External Partner Archives."
+        ],
+        [
+          "C",
+          "A disc loan from Commercial Archives."
+        ],
+        [
+          "D",
+          "A transcript copy from Commercial Archives."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：Civic Archives的Disc loan费用为16，低于所给候选最高24；B：External Partner Archives的Transcript copy费用为15，低于所给候选最高24；C：Commercial Archives的Disc loan费用为24，在这四候选中最高，全表最大未列入候选；D：Commercial Archives的Transcript copy费用为11，低于所给候选最高24",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "table_fee_comparison"
+    },
+    {
+      "number": 5,
+      "stem": "A组 · What is the main function of passage A?",
+      "options": [
+        [
+          "A",
+          "To advertise an annual public music subscription."
+        ],
+        [
+          "B",
+          "To explain eligibility, requests, access and charges for archive material."
+        ],
+        [
+          "C",
+          "To review the quality of several recorded talks."
+        ],
+        [
+          "D",
+          "To train partner archives to repair damaged discs."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：非年费公共音乐服务；B：全服务流程及收费；C：未评价内容质量；D：无修盘培训",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "whole_service_purpose"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · How does the narrator respond to the neighbour’s comment?",
+      "options": [
+        [
+          "A",
+          "The narrator denies that the son can travel to rehearsal alone."
+        ],
+        [
+          "B",
+          "The narrator immediately abandons the pouch routine altogether."
+        ],
+        [
+          "C",
+          "The narrator accepts the son’s ability but sees another meaning in the habit."
+        ],
+        [
+          "D",
+          "The narrator asks the neighbour to inspect the instrument case."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：明承认能力；B：仍检查且改为合作；C：承认儿子能做但邻居未尽理解习惯；D：未交邻居检查",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "narrator_attitude"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What does “hold on to” in paragraph 3 mean?",
+      "options": [
+        [
+          "A",
+          "Continue keeping a role rather than letting it change."
+        ],
+        [
+          "B",
+          "Carry the pouch tightly during the journey."
+        ],
+        [
+          "C",
+          "Write down a new set of rehearsal instructions."
+        ],
+        [
+          "D",
+          "Take responsibility only when explicitly asked."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：舍不得放下组织者身份；B：语境是角色非抓袋；C：指保留角色非直接写指令；D：那是后文改进而非仍抓住角色",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "context_phrase_meaning"
+    },
+    {
+      "number": 8,
+      "stem": "B组 · Why was the son’s request about the pouch important?",
+      "options": [
+        [
+          "A",
+          "It proved that reminders always improve rehearsals."
+        ],
+        [
+          "B",
+          "It distinguished accepting useful help from accepting unsolicited direction."
+        ],
+        [
+          "C",
+          "It meant that the teacher’s required spare part was unnecessary."
+        ],
+        [
+          "D",
+          "It showed that he no longer wanted any contact with the narrator."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：提醒像远程指挥惹不适；B：不是拒一切帮助而要工具非意见；C：没否认所需备用件；D：明确未拒绝所有帮助",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "daily_action_significance"
+    },
+    {
+      "number": 9,
+      "stem": "B组 · What did the short-pencil incident teach the narrator?",
+      "options": [
+        [
+          "A",
+          "The son had forgotten the agreement to check his own supplies."
+        ],
+        [
+          "B",
+          "The narrator should replace small objects before asking about them."
+        ],
+        [
+          "C",
+          "An apparent problem may be someone else’s deliberate choice."
+        ],
+        [
+          "D",
+          "A longer pencil would have guaranteed a successful rehearsal."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：恰自主检查安排；B：问后才知原因反向提醒；C：短笔有意配小支架而非疏忽；D：无演奏成功保证",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "consistent_message_purpose"
+    },
+    {
+      "number": 10,
+      "stem": "B组 · Which statement best captures the main idea of passage B?",
+      "options": [
+        [
+          "A",
+          "The main purpose of musical practice is to keep equipment organised."
+        ],
+        [
+          "B",
+          "Parents should withdraw all practical help once a child can travel alone."
+        ],
+        [
+          "C",
+          "Care is best shown by making every decision in advance."
+        ],
+        [
+          "D",
+          "Helping a growing child may require changing how responsibility is shared."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：整理工具只是亲子反思媒介；B：仍提供特定帮助；C：后文反思别主导；D：从私下检查到按需协助自主工作",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "whole_main_idea"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · What initially made tava useful to Renn market workers?",
+      "options": [
+        [
+          "A",
+          "It gave a precise date for the first trading journey."
+        ],
+        [
+          "B",
+          "It provided a shared name for an unfamiliar type of dish."
+        ],
+        [
+          "C",
+          "It prevented all other words for containers from being used."
+        ],
+        [
+          "D",
+          "It described every object produced by the Eska potters."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：词的命名与旅日无关；B：第二段省去每次描述独特柄；C：无排他禁其他词；D：最初特指浅带柄盘",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "stated_explanation"
+    },
+    {
+      "number": 12,
+      "stem": "C组 · Why is the classroom experiment mentioned?",
+      "options": [
+        [
+          "A",
+          "To establish that all borrowing follows one fixed historical path."
+        ],
+        [
+          "B",
+          "To illustrate how learners might extend a label while showing variation."
+        ],
+        [
+          "C",
+          "To identify the first person who changed tava in Renn."
+        ],
+        [
+          "D",
+          "To demonstrate that the two towns speak a real documented language."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：明确非普遍规律；B：部分扩用部分限旧物说明差异；C：明确无法定首创且实验非历史复现；D：社区语言均虚构",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "cited_study_function"
+    },
+    {
+      "number": 13,
+      "stem": "C组 · What distinction appears in the later Renn notes?",
+      "options": [
+        [
+          "A",
+          "The word could name a new object while retaining its older use."
+        ],
+        [
+          "B",
+          "All speakers agreed on the new meaning at the same time."
+        ],
+        [
+          "C",
+          "The original dish had disappeared before the word changed."
+        ],
+        [
+          "D",
+          "The wooden tray had become an Eska pottery product."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：木托新用同时仍称陶盘；B：不能证明全居民接受；C：没有旧物消失且旧义仍在；D：明不是Eska陶工产品",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "explicit_comparison_difference"
+    },
+    {
+      "number": 14,
+      "stem": "C组 · What does “a label can outgrow its first job” mean here?",
+      "options": [
+        [
+          "A",
+          "Speakers must keep a borrowed word within its earliest recorded meaning."
+        ],
+        [
+          "B",
+          "A physical label becomes larger as an object gets older."
+        ],
+        [
+          "C",
+          "A word loses every earlier meaning as soon as a new use appears."
+        ],
+        [
+          "D",
+          "A word may acquire uses beyond the object it first named."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：末段否认最早记录是强制规则；B：非标签尺寸变化；C：明确旧义不必消失；D：旧名可以扩向新物情境",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "metaphorical_phrase"
+    },
+    {
+      "number": 15,
+      "stem": "C组 · What is the point of the market worker’s closing remark?",
+      "options": [
+        [
+          "A",
+          "A name may spread to new contexts without the original object travelling with it."
+        ],
+        [
+          "B",
+          "A word’s meaning can be understood without any context."
+        ],
+        [
+          "C",
+          "The pots were lost on a journey before reaching Renn."
+        ],
+        [
+          "D",
+          "The experiment established the exact route taken by the first trader."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：词语比器物走得更远的核心；B：正文明确靠语境判断所指；C：没有遗失故事；D：实验不证明具体起源路线",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "closing_quote_purpose"
+    }
+  ],
+  "canonical_response_block_sha256": "1c6b34e9638c86f8630ed52c24b1fb262e8ed7d46fbfe3754d51dceeee5c6ee8",
+  "student_passage": "### A组（第1—5题）\n\n#### A1\n\nWesthaven Archive Access Service\n\nThe college archive can obtain a physical recording disc from a partner collection when its own copy is unavailable. It can also request an approved digital transcript of a recorded talk. These are separate services under the following fictional rules; ordering one does not include the other.\n\nEligible users\nCurrently registered college students, current employees and retired college tutors with verified archive membership may apply. Graduates without a present college role and holders of visitor tickets cannot use this service. Retired tutors should confirm their membership before their first request.\n\nApplying and waiting\nUse the online form and give the recording title, speaker and catalogue reference. Precise information helps the archive distinguish between talks with similar titles and limits delays caused by follow-up questions. Transcripts normally take two working days. A disc normally takes five to seven, although fragile or frequently requested recordings can take longer.\n\nAccess and return\nYour notification email explains when the item is available. Pick up a disc at the college archive counter you selected on the form. A transcript is opened from the email link after account sign-in. The slip inside a disc case gives its return date. The supplying archive may require an earlier return; the date in that recall notice then applies. Disc loans cannot be renewed.\n\nFees\nChoose the supplying archive’s row and the requested material’s column. These fictional credit amounts are charged once per request, with no annual membership fee added by this service.\n\n| Supplying archive | Disc loan (credits) | Transcript copy (credits) |\n| --- | --- | --- |\n| Civic Archives | 16 | 7 |\n| Commercial Archives | 24 | 11 |\n| External Partner Archives | 36 | 15 |\n\nYour college collection counter does not determine the supplying category. For a transcript, there is no physical disc to collect or return.\n\n### B组（第6—10题）\n\n#### B1\n\nI still check the small repair pouch in my son’s instrument case before his first rehearsal of the month. It contains a pencil, a clean cloth and the simple spare part his teacher told him to carry. A neighbour once laughed that a student old enough to travel to rehearsals alone could surely check his own bag. She was right about what he could do, but not quite right about what the habit means to us.\n\nAt first, it was purely practical. When he was younger, a missing pencil could consume ten minutes of a lesson while everyone looked for one. We learned to replace what was used rather than discover an empty pocket at the next rehearsal. I liked the tidy certainty of it: three familiar objects, three small problems less likely to interrupt his work. That certainty is much easier to manage than the uneven business of helping someone grow up.\n\nI have had to learn not to **hold on to** the role of organiser simply because it makes me feel useful. As his playing improved, I began slipping suggestions into the pouch: practise this passage, ask about that difficult entry. What I thought of as thoughtful reminders started to look like instructions travelling into a room where I was not present. He eventually asked if the pouch could contain tools again, rather than my opinions.\n\nI was embarrassed, especially because he was not rejecting all help. He was asking to decide what help he needed. We agreed that he would check the contents and tell me if something needed replacing; I could still help find a spare part. The monthly check became a conversation at the kitchen table instead of a private inspection after he had gone to bed. If the pencil had already been replaced, there was nothing for me to correct.\n\nOne month he left for rehearsal with a drawing pencil that seemed too short to me. I nearly put in a longer one, then stopped and asked. He had chosen the short pencil because it fitted a small holder on his music stand. I had mistaken a deliberate choice for a problem. The explanation did not make me a perfect listener, but it gave me a useful example to remember the next time I was tempted to act first.\n\nThe pouch cannot protect him from a disappointing rehearsal, and I cannot pack away every difficulty he may encounter. What I can offer is a readiness to help with a specific request. I still care about the contents, but I care more about the agreement around them: useful help should support the work he wants to do, rather than quietly return responsibility to me.\n\n### C组（第11—15题）\n\n#### C1\n\nA word can travel with an object and later be used where that object has never been seen. This possibility is explored in a fictional language project set in two invented harbour towns, Eska and Renn. Its records concern the made-up word tava. They are a reading case study, not a real account of any community’s language or a claim that all borrowed words change in the same way.\n\nIn the project’s earliest fictional records, Eska potters used tava for a shallow clay dish with a carrying handle. Traders took examples of the dish to Renn, where market workers began using the same sound as a convenient name for it. Researcher Mina Orr suggests that a shared label saved buyers and sellers from describing the unusual handle every time. At this stage, the use of the word and the movement of the object were closely connected.\n\nA later set of workshop notes showed a change. Some Renn workers used tava for a handled wooden tray, even though Eska potters did not make that object. Interviews suggested that these speakers had noticed a useful similarity in function: both items could carry several small things at once. The records supported an extension in use, but they could not show exactly which person first made the extension or whether all residents accepted it.\n\nAn invented classroom experiment illustrated a related possibility without reproducing the towns’ history. Thirty adult volunteers learned an unfamiliar label for a handled container. Later, some also applied it to a different container with a similar carrying function. Others restricted the label to the original object. Thus the study showed variation among learners. It did not prove that a laboratory choice explains every change recorded in an actual community over many years.\n\nOrr describes the broader idea by saying **a label can outgrow its first job**. A word initially useful for identifying one imported object may acquire another use when speakers find it convenient. The expression does not mean that older meanings must disappear. In the fictional Renn notes, tava continued to name the clay dish as well as the wooden tray. Context helped listeners decide which one a speaker wanted.\n\nThe project therefore follows usage rather than treating a word’s earliest recorded meaning as a rule that later speakers must obey. It also keeps evidence of change separate from guesses about an exact origin. A market worker summed up the fictional example: “The word travelled farther than the pot.” The remark points to how a name may reach new situations and objects, even when the original item does not accompany it.",
+  "body_load_text": "Westhaven Archive Access Service\n\nThe college archive can obtain a physical recording disc from a partner collection when its own copy is unavailable. It can also request an approved digital transcript of a recorded talk. These are separate services under the following fictional rules; ordering one does not include the other.\n\nEligible users\nCurrently registered college students, current employees and retired college tutors with verified archive membership may apply. Graduates without a present college role and holders of visitor tickets cannot use this service. Retired tutors should confirm their membership before their first request.\n\nApplying and waiting\nUse the online form and give the recording title, speaker and catalogue reference. Precise information helps the archive distinguish between talks with similar titles and limits delays caused by follow-up questions. Transcripts normally take two working days. A disc normally takes five to seven, although fragile or frequently requested recordings can take longer.\n\nAccess and return\nYour notification email explains when the item is available. Pick up a disc at the college archive counter you selected on the form. A transcript is opened from the email link after account sign-in. The slip inside a disc case gives its return date. The supplying archive may require an earlier return; the date in that recall notice then applies. Disc loans cannot be renewed.\n\nFees\nChoose the supplying archive’s row and the requested material’s column. These fictional credit amounts are charged once per request, with no annual membership fee added by this service.\n\n| Supplying archive | Disc loan (credits) | Transcript copy (credits) |\n| --- | --- | --- |\n| Civic Archives | 16 | 7 |\n| Commercial Archives | 24 | 11 |\n| External Partner Archives | 36 | 15 |\n\nYour college collection counter does not determine the supplying category. For a transcript, there is no physical disc to collect or return.\n\nI still check the small repair pouch in my son’s instrument case before his first rehearsal of the month. It contains a pencil, a clean cloth and the simple spare part his teacher told him to carry. A neighbour once laughed that a student old enough to travel to rehearsals alone could surely check his own bag. She was right about what he could do, but not quite right about what the habit means to us.\n\nAt first, it was purely practical. When he was younger, a missing pencil could consume ten minutes of a lesson while everyone looked for one. We learned to replace what was used rather than discover an empty pocket at the next rehearsal. I liked the tidy certainty of it: three familiar objects, three small problems less likely to interrupt his work. That certainty is much easier to manage than the uneven business of helping someone grow up.\n\nI have had to learn not to **hold on to** the role of organiser simply because it makes me feel useful. As his playing improved, I began slipping suggestions into the pouch: practise this passage, ask about that difficult entry. What I thought of as thoughtful reminders started to look like instructions travelling into a room where I was not present. He eventually asked if the pouch could contain tools again, rather than my opinions.\n\nI was embarrassed, especially because he was not rejecting all help. He was asking to decide what help he needed. We agreed that he would check the contents and tell me if something needed replacing; I could still help find a spare part. The monthly check became a conversation at the kitchen table instead of a private inspection after he had gone to bed. If the pencil had already been replaced, there was nothing for me to correct.\n\nOne month he left for rehearsal with a drawing pencil that seemed too short to me. I nearly put in a longer one, then stopped and asked. He had chosen the short pencil because it fitted a small holder on his music stand. I had mistaken a deliberate choice for a problem. The explanation did not make me a perfect listener, but it gave me a useful example to remember the next time I was tempted to act first.\n\nThe pouch cannot protect him from a disappointing rehearsal, and I cannot pack away every difficulty he may encounter. What I can offer is a readiness to help with a specific request. I still care about the contents, but I care more about the agreement around them: useful help should support the work he wants to do, rather than quietly return responsibility to me.\n\nA word can travel with an object and later be used where that object has never been seen. This possibility is explored in a fictional language project set in two invented harbour towns, Eska and Renn. Its records concern the made-up word tava. They are a reading case study, not a real account of any community’s language or a claim that all borrowed words change in the same way.\n\nIn the project’s earliest fictional records, Eska potters used tava for a shallow clay dish with a carrying handle. Traders took examples of the dish to Renn, where market workers began using the same sound as a convenient name for it. Researcher Mina Orr suggests that a shared label saved buyers and sellers from describing the unusual handle every time. At this stage, the use of the word and the movement of the object were closely connected.\n\nA later set of workshop notes showed a change. Some Renn workers used tava for a handled wooden tray, even though Eska potters did not make that object. Interviews suggested that these speakers had noticed a useful similarity in function: both items could carry several small things at once. The records supported an extension in use, but they could not show exactly which person first made the extension or whether all residents accepted it.\n\nAn invented classroom experiment illustrated a related possibility without reproducing the towns’ history. Thirty adult volunteers learned an unfamiliar label for a handled container. Later, some also applied it to a different container with a similar carrying function. Others restricted the label to the original object. Thus the study showed variation among learners. It did not prove that a laboratory choice explains every change recorded in an actual community over many years.\n\nOrr describes the broader idea by saying **a label can outgrow its first job**. A word initially useful for identifying one imported object may acquire another use when speakers find it convenient. The expression does not mean that older meanings must disappear. In the fictional Renn notes, tava continued to name the clay dish as well as the wooden tray. Context helped listeners decide which one a speaker wanted.\n\nThe project therefore follows usage rather than treating a word’s earliest recorded meaning as a rule that later speakers must obey. It also keeps evidence of change separate from guesses about an exact origin. A market worker summed up the fictional example: “The word travelled farther than the pot.” The remark points to how a name may reach new situations and objects, even when the original item does not accompany it.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "A retired college tutor whose archive membership has been verified.",
+      "is_best": true,
+      "reason": "资格明确退休导师经核可用",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "Anyone who already owns a recording disc.",
+      "is_best": false,
+      "reason": "有唱片不是本校资格",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "A graduate with no current college role.",
+      "is_best": false,
+      "reason": "明确排除无现职毕业生",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "A person who has bought a visitor ticket.",
+      "is_best": false,
+      "reason": "访客票不足",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "Wait until a transcript of the talk has been supplied.",
+      "is_best": false,
+      "reason": "借盘与文本独立服务",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "Renew the disc using its catalogue number.",
+      "is_best": false,
+      "reason": "不得续借",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "Return only the case and retain the disc until the original date.",
+      "is_best": false,
+      "reason": "无保留盘许可",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "Follow the earlier return date in the notice.",
+      "is_best": true,
+      "reason": "召回日期取代原日期",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "To remove the fee for a request from an external partner.",
+      "is_best": false,
+      "reason": "费用由类别材料决定",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "To allow visitors to replace membership with a catalogue reference.",
+      "is_best": false,
+      "reason": "目录号非资格替代",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "To distinguish similar talks and reduce clarification delays.",
+      "is_best": true,
+      "reason": "明确区分相似题名避免追问",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "To make the disc available as quickly as every transcript.",
+      "is_best": false,
+      "reason": "两类通常时限不同非确保相同",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "A disc loan from Civic Archives.",
+      "is_best": false,
+      "reason": "Civic Archives的Disc loan费用为16，低于所给候选最高24",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "A transcript copy from External Partner Archives.",
+      "is_best": false,
+      "reason": "External Partner Archives的Transcript copy费用为15，低于所给候选最高24",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "A disc loan from Commercial Archives.",
+      "is_best": true,
+      "reason": "Commercial Archives的Disc loan费用为24，在这四候选中最高，全表最大未列入候选",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "A transcript copy from Commercial Archives.",
+      "is_best": false,
+      "reason": "Commercial Archives的Transcript copy费用为11，低于所给候选最高24",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "To advertise an annual public music subscription.",
+      "is_best": false,
+      "reason": "非年费公共音乐服务",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "To explain eligibility, requests, access and charges for archive material.",
+      "is_best": true,
+      "reason": "全服务流程及收费",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "To review the quality of several recorded talks.",
+      "is_best": false,
+      "reason": "未评价内容质量",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "To train partner archives to repair damaged discs.",
+      "is_best": false,
+      "reason": "无修盘培训",
+      "material_label": "A"
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "The narrator denies that the son can travel to rehearsal alone.",
+      "is_best": false,
+      "reason": "明承认能力",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "The narrator immediately abandons the pouch routine altogether.",
+      "is_best": false,
+      "reason": "仍检查且改为合作",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "The narrator accepts the son’s ability but sees another meaning in the habit.",
+      "is_best": true,
+      "reason": "承认儿子能做但邻居未尽理解习惯",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "The narrator asks the neighbour to inspect the instrument case.",
+      "is_best": false,
+      "reason": "未交邻居检查",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "Continue keeping a role rather than letting it change.",
+      "is_best": true,
+      "reason": "舍不得放下组织者身份",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Carry the pouch tightly during the journey.",
+      "is_best": false,
+      "reason": "语境是角色非抓袋",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "Write down a new set of rehearsal instructions.",
+      "is_best": false,
+      "reason": "指保留角色非直接写指令",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Take responsibility only when explicitly asked.",
+      "is_best": false,
+      "reason": "那是后文改进而非仍抓住角色",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "It proved that reminders always improve rehearsals.",
+      "is_best": false,
+      "reason": "提醒像远程指挥惹不适",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "It distinguished accepting useful help from accepting unsolicited direction.",
+      "is_best": true,
+      "reason": "不是拒一切帮助而要工具非意见",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "It meant that the teacher’s required spare part was unnecessary.",
+      "is_best": false,
+      "reason": "没否认所需备用件",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "It showed that he no longer wanted any contact with the narrator.",
+      "is_best": false,
+      "reason": "明确未拒绝所有帮助",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "The son had forgotten the agreement to check his own supplies.",
+      "is_best": false,
+      "reason": "恰自主检查安排",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "The narrator should replace small objects before asking about them.",
+      "is_best": false,
+      "reason": "问后才知原因反向提醒",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "An apparent problem may be someone else’s deliberate choice.",
+      "is_best": true,
+      "reason": "短笔有意配小支架而非疏忽",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "A longer pencil would have guaranteed a successful rehearsal.",
+      "is_best": false,
+      "reason": "无演奏成功保证",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "The main purpose of musical practice is to keep equipment organised.",
+      "is_best": false,
+      "reason": "整理工具只是亲子反思媒介",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Parents should withdraw all practical help once a child can travel alone.",
+      "is_best": false,
+      "reason": "仍提供特定帮助",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "Care is best shown by making every decision in advance.",
+      "is_best": false,
+      "reason": "后文反思别主导",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "Helping a growing child may require changing how responsibility is shared.",
+      "is_best": true,
+      "reason": "从私下检查到按需协助自主工作",
+      "material_label": "B"
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "It gave a precise date for the first trading journey.",
+      "is_best": false,
+      "reason": "词的命名与旅日无关",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "It provided a shared name for an unfamiliar type of dish.",
+      "is_best": true,
+      "reason": "第二段省去每次描述独特柄",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "It prevented all other words for containers from being used.",
+      "is_best": false,
+      "reason": "无排他禁其他词",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "It described every object produced by the Eska potters.",
+      "is_best": false,
+      "reason": "最初特指浅带柄盘",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "To establish that all borrowing follows one fixed historical path.",
+      "is_best": false,
+      "reason": "明确非普遍规律",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "To illustrate how learners might extend a label while showing variation.",
+      "is_best": true,
+      "reason": "部分扩用部分限旧物说明差异",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "To identify the first person who changed tava in Renn.",
+      "is_best": false,
+      "reason": "明确无法定首创且实验非历史复现",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "To demonstrate that the two towns speak a real documented language.",
+      "is_best": false,
+      "reason": "社区语言均虚构",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "The word could name a new object while retaining its older use.",
+      "is_best": true,
+      "reason": "木托新用同时仍称陶盘",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "All speakers agreed on the new meaning at the same time.",
+      "is_best": false,
+      "reason": "不能证明全居民接受",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "The original dish had disappeared before the word changed.",
+      "is_best": false,
+      "reason": "没有旧物消失且旧义仍在",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "The wooden tray had become an Eska pottery product.",
+      "is_best": false,
+      "reason": "明不是Eska陶工产品",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Speakers must keep a borrowed word within its earliest recorded meaning.",
+      "is_best": false,
+      "reason": "末段否认最早记录是强制规则",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "A physical label becomes larger as an object gets older.",
+      "is_best": false,
+      "reason": "非标签尺寸变化",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "A word loses every earlier meaning as soon as a new use appears.",
+      "is_best": false,
+      "reason": "明确旧义不必消失",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "A word may acquire uses beyond the object it first named.",
+      "is_best": true,
+      "reason": "旧名可以扩向新物情境",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "A name may spread to new contexts without the original object travelling with it.",
+      "is_best": true,
+      "reason": "词语比器物走得更远的核心",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "A word’s meaning can be understood without any context.",
+      "is_best": false,
+      "reason": "正文明确靠语境判断所指",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "The pots were lost on a journey before reaching Renn.",
+      "is_best": false,
+      "reason": "没有遗失故事",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "The experiment established the exact route taken by the first trader.",
+      "is_best": false,
+      "reason": "实验不证明具体起源路线",
+      "material_label": "C"
+    }
+  ],
+  "subgroup_response_counts": [
+    5,
+    5,
+    5
+  ],
+  "subgroup_material_units": [
+    1,
+    1,
+    1
+  ],
+  "material_unit_load": [
+    {
+      "label": "A",
+      "intro_words": 0,
+      "words": [
+        286
+      ]
+    },
+    {
+      "label": "B",
+      "intro_words": 0,
+      "words": [
+        449
+      ]
+    },
+    {
+      "label": "C",
+      "intro_words": 0,
+      "words": [
+        433
+      ]
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 1168,
+    "body_Han_characters": 0,
+    "stem_English_words": 148,
+    "options_English_words_with_repeated_bank": 571,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 6,
+    "display_material_label_English_words": 6,
+    "table_English_words_in_body": 15,
+    "table_numeric_cells": 6,
+    "table_data_rows": 3,
+    "table_value_columns": 2
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "required_table": {
+    "id": "A.fee_table",
+    "headers": [
+      "Supplying archive",
+      "Disc loan (credits)",
+      "Transcript copy (credits)"
+    ],
+    "materials": [
+      "Disc loan",
+      "Transcript copy"
+    ],
+    "row_labels": [
+      "Civic Archives",
+      "Commercial Archives",
+      "External Partner Archives"
+    ],
+    "cells": [
+      [
+        16,
+        7
+      ],
+      [
+        24,
+        11
+      ],
+      [
+        36,
+        15
+      ]
+    ]
+  },
+  "fee_comparison": {
+    "question_number": 4,
+    "option_cells": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        1
+      ],
+      "C": [
+        1,
+        0
+      ],
+      "D": [
+        1,
+        1
+      ]
+    }
+  },
+  "lexical_paragraph": 3,
+  "source_bound_three_passage_fee_table_section": true
+}

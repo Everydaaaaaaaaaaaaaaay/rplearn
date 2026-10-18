@@ -1,0 +1,1014 @@
+{
+  "version": "0.1",
+  "id": "grade11-reading15-table-cup",
+  "grade": 11,
+  "questions": 15,
+  "candidate_sha256": "184e65de1164b8da9afe7b1d543d58a00bd86058406774db7864ad39b56e1d0d",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-cup-manuscript-v0.2.json",
+    "sha256": "1efbbeac71fa682b3f81c0086a7aaab44d3fe66cc2eaa9aa957c2f9e9a5b724a"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.4.json",
+    "sha256": "f9b800218513d6abc274b7d3bb673214dd391006df7d4295195a619be6e8ff02"
+  },
+  "source_binding": "grade11-tianjin2026-21cnjy26082071.reading.complete_section.binding",
+  "school_complete_senior_reading_section": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · Who is eligible to make a teaching-material request?",
+      "options": [
+        [
+          "A",
+          "Anyone who has paid to join a partner centre’s course."
+        ],
+        [
+          "B",
+          "Any guest attending a public lecture."
+        ],
+        [
+          "C",
+          "A retired Pellwick instructor with confirmed membership."
+        ],
+        [
+          "D",
+          "A former student relying only on an old library card."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：课程缴费不赋予本校资格；B：访客须问其他服务非本资格；C：资格段明确退休教师经确认可用；D：旧学生卡单独不足",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "borrower_eligibility"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · What happens when a kit is recalled?",
+      "options": [
+        [
+          "A",
+          "The college office turns the loan into a permanent purchase."
+        ],
+        [
+          "B",
+          "The new date in the email replaces the date attached to the case."
+        ],
+        [
+          "C",
+          "The borrower may renew it if no college user is waiting."
+        ],
+        [
+          "D",
+          "The supplying centre must wait until the original date."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：没有转购规则；B：召回邮件新日期取代箱上日期；C：明确即使无人等也不得续借；D：明确可更早召回",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "recall_rule"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · How can an applicant help avoid clarification delays?",
+      "options": [
+        [
+          "A",
+          "Choose the nearest collection office regardless of the item details."
+        ],
+        [
+          "B",
+          "Ask for every physical kit to arrive within one working day."
+        ],
+        [
+          "C",
+          "Apply for a worksheet and assume it reserves the kit too."
+        ],
+        [
+          "D",
+          "Provide the kit number or the worksheet’s full title."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：取件办公室不解决识别不清；B：一天是工作纸通常时限非套件；C：末段明确不预留套件；D：准确编号题名可减少追问延迟",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "request_accuracy"
+    },
+    {
+      "number": 4,
+      "stem": "A组 · Which of the following requests has the highest fee?",
+      "options": [
+        [
+          "A",
+          "A worksheet copy from School Centres."
+        ],
+        [
+          "B",
+          "A kit loan from School Centres."
+        ],
+        [
+          "C",
+          "A worksheet copy from Visiting Partner Centres."
+        ],
+        [
+          "D",
+          "A kit loan from Community Centres."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：School Centres的Worksheet copy费用为9，低于所给候选最高22；B：School Centres的Kit loan费用为22，在这四候选中最高，全表最大未列入候选；C：Visiting Partner Centres的Worksheet copy费用为12，低于所给候选最高22；D：Community Centres的Kit loan费用为14，低于所给候选最高22",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "table_fee_comparison"
+    },
+    {
+      "number": 5,
+      "stem": "A组 · What is passage A mainly designed to do?",
+      "options": [
+        [
+          "A",
+          "Explain how centres should create electronic worksheets."
+        ],
+        [
+          "B",
+          "Explain the procedures and conditions of a material-request service."
+        ],
+        [
+          "C",
+          "Evaluate the educational quality of different kits."
+        ],
+        [
+          "D",
+          "Invite the public to enrol in new teaching courses."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：无工作纸制作程序；B：资格申请收取归还收费完整说明；C：无教学质量比较；D：开头否认办理课程报名",
+      "materialLabel": "A",
+      "points": 2.5,
+      "operation": "whole_service_purpose"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What does the narrator now acknowledge about setting out the second cup?",
+      "options": [
+        [
+          "A",
+          "It is mainly intended to impress the narrator’s friends."
+        ],
+        [
+          "B",
+          "It is necessary because the daughter visits every Saturday."
+        ],
+        [
+          "C",
+          "It ensures that the daughter will report all her difficulties."
+        ],
+        [
+          "D",
+          "It expresses an invitation more than a need to save time."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：朋友仅提问非主要受众；B：明确不每周来；C：不要求解释且不保证来；D：首段承认省时非主因而是邀请",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "narrator_attitude"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What does “keep a door open” in paragraph 3 mean?",
+      "options": [
+        [
+          "A",
+          "Remain available for contact without requiring it."
+        ],
+        [
+          "B",
+          "Make each visit a formal review of the apprenticeship."
+        ],
+        [
+          "C",
+          "Avoid mentioning any difficult subject in future."
+        ],
+        [
+          "D",
+          "Leave the flat unlocked for deliveries."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：后文欢迎无须好消息及末段可不来；B：恰担心变面谈审查；C：仍有有用对话非永避困难；D：非实际门锁指令",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "context_phrase_meaning"
+    },
+    {
+      "number": 8,
+      "stem": "B组 · What does the narrator learn from the morning after the difficult meeting?",
+      "options": [
+        [
+          "A",
+          "A change of subject proves that no meaningful contact is possible."
+        ],
+        [
+          "B",
+          "The daughter wants the narrator to speak to her supervisor."
+        ],
+        [
+          "C",
+          "Being together need not require another account of what went wrong."
+        ],
+        [
+          "D",
+          "Offering a quick solution is always the most welcome response."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：看布恰成为相伴方式；B：没有请代联系；C：女儿已解释一小时后静饮看布亦能相伴；D：过快建议使女儿需解释自己",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "daily_action_significance"
+    },
+    {
+      "number": 9,
+      "stem": "B组 · Why does the narrator put the unused cup away without sending a photograph?",
+      "options": [
+        [
+          "A",
+          "To keep an invitation from becoming an obligation."
+        ],
+        [
+          "B",
+          "To persuade the daughter to stop visiting until work improves."
+        ],
+        [
+          "C",
+          "To punish the daughter for changing her plans."
+        ],
+        [
+          "D",
+          "To hide the fact that tea was available that morning."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：不让女儿为父母失望负责；B：欢迎不依好消息；C：无惩罚且尊重不来；D：非隐瞒可喝茶事实",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "consistent_message_purpose"
+    },
+    {
+      "number": 10,
+      "stem": "B组 · Which idea best expresses the essay’s main point?",
+      "options": [
+        [
+          "A",
+          "A flexible everyday ritual can offer welcome without demanding disclosure."
+        ],
+        [
+          "B",
+          "Parents should assess an apprenticeship through weekly reports."
+        ],
+        [
+          "C",
+          "A family habit loses its value whenever a child moves away."
+        ],
+        [
+          "D",
+          "Conversation is useful only when it solves a practical problem."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：整篇茶杯邀请倾听及不强迫；B：明确不愿变进度面试；C：搬走后习惯仍可欢迎且可调整；D：相伴等待本身有价值",
+      "materialLabel": "B",
+      "points": 2.5,
+      "operation": "whole_main_idea"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · What explanation does Hale propose for comfortable pauses?",
+      "options": [
+        [
+          "A",
+          "Drawing removes the need for any later discussion."
+        ],
+        [
+          "B",
+          "A shared focus may make each person’s activity easier to understand."
+        ],
+        [
+          "C",
+          "The absence of speech proves that the partners agree on everything."
+        ],
+        [
+          "D",
+          "People who know each other cannot feel awkward."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：静看后再讨论；B：共同任务减少对对方行为的不确定；C：无此完全一致证据；D：明确否认此规则",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "stated_explanation"
+    },
+    {
+      "number": 12,
+      "stem": "C组 · Why is the follow-up study described?",
+      "options": [
+        [
+          "A",
+          "To compare comfort ratings under two pause-instruction conditions."
+        ],
+        [
+          "B",
+          "To determine whether every observer can read private feelings."
+        ],
+        [
+          "C",
+          "To show that quieter pairs always produce better drawings."
+        ],
+        [
+          "D",
+          "To establish a treatment for social anxiety."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：一组明确共识静看另一无指令并比舒适度；B：该研究主比较参与者评级后段才观察；C：明确未测作品好坏；D：末段明确非治疗",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "cited_study_function"
+    },
+    {
+      "number": 13,
+      "stem": "C组 · What did the observer comparison suggest?",
+      "options": [
+        [
+          "A",
+          "Participants’ ratings were shown to measure every aspect of interaction."
+        ],
+        [
+          "B",
+          "Observers consistently rated every instructed pair as uncomfortable."
+        ],
+        [
+          "C",
+          "A silent scene did not reliably reveal how comfortable its participants felt."
+        ],
+        [
+          "D",
+          "Observers heard all the instructions before judging the pairs."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：明确不等全维度；B：未报告一律不舒服；C：外部观察不能可靠识别最高舒适组；D：明确不知道哪组获指令",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "explicit_comparison_difference"
+    },
+    {
+      "number": 14,
+      "stem": "C组 · What does “a space rather than a hole” mean in this context?",
+      "options": [
+        [
+          "A",
+          "Silence always indicates that a person has been excluded."
+        ],
+        [
+          "B",
+          "Every conversation should contain pauses of a fixed length."
+        ],
+        [
+          "C",
+          "A pause can serve an understood purpose rather than signal something missing."
+        ],
+        [
+          "D",
+          "A room must be made larger before people can talk comfortably."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：区分排斥的沉默与共识暂停；B：无普适定长规则；C：空间有共同察看目的并非缺话；D：非物理空间改建",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "metaphorical_phrase"
+    },
+    {
+      "number": 15,
+      "stem": "C组 · What does the participant’s final comment illustrate?",
+      "options": [
+        [
+          "A",
+          "The drawing was improved by exactly one minute of silence."
+        ],
+        [
+          "B",
+          "The pair wanted to leave the workshop without finishing."
+        ],
+        [
+          "C",
+          "The participants had forgotten what they were asked to draw."
+        ],
+        [
+          "D",
+          "Quiet could form part of the shared work for that pair."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：未测作品且无确定提升量；B：无离开意图；C：不是忘题；D：给图画时间而非无话可说",
+      "materialLabel": "C",
+      "points": 2.5,
+      "operation": "closing_quote_purpose"
+    }
+  ],
+  "canonical_response_block_sha256": "be0058cb03c7a8e7c3b21b8c00a2b5837612e50d0d0176730ccc4e1b5303f5a8",
+  "student_passage": "### A组（第1—5题）\n\n#### A1\n\nPellwick Learning Network: Teaching-Material Requests\n\nA member of Pellwick College may request a teaching kit from another centre when the college’s own kit is unavailable. Digital copies of approved activity worksheets can also be requested. This fictional service supplies materials for study and teaching; it does not enrol users in the centres’ courses.\n\nWho may apply\nCurrent Pellwick students and employees are eligible, as are retired Pellwick instructors whose membership has been confirmed. A former student’s old library card is not enough. Guests attending a public lecture must ask their host to explain other available services.\n\nMaking a request\nGive the kit’s catalogue number or the worksheet’s full title on the electronic form. Accurate details reduce delays caused by requests for clarification. A worksheet usually becomes available within one working day. A physical kit normally takes four to eight working days, and a kit already reserved elsewhere may take longer.\n\nReceiving and returning material\nA notification is sent to your registered email address. Collect a kit from the college office you chose on the form; open a worksheet through your account using the email link. A kit’s due date is attached to its case. If the supplying centre needs it sooner, a recall email gives a revised return date, which replaces the date on the case. Kits cannot be renewed, even if no other Pellwick user is waiting.\n\nFees per request\nThe supplying centre’s category determines the fee, regardless of your collection office. All figures are fictional credits.\n\n| Supplying centre | Kit loan (credits) | Worksheet copy (credits) |\n| --- | --- | --- |\n| Community Centres | 14 | 6 |\n| School Centres | 22 | 9 |\n| Visiting Partner Centres | 30 | 12 |\n\nThe fee is for the requested material only. It is not a course fee, and ordering a worksheet does not reserve the matching physical kit.\n\n### B组（第6—10题）\n\n#### B1\n\nA second cup waits beside the kettle on Saturday mornings, even though my daughter now lives across town and does not visit every week. Friends sometimes ask why I set it out before I know whether she is coming. I used to say that it saved a minute later. Now I can admit that saving time has little to do with it. The cup is an invitation I can make without demanding an answer.\n\nWhen she first started an apprenticeship, she often called at our flat after the early bus. She would be carrying a bag of fabric samples, tired before her working day had properly begun. Making tea was a practical thing I could do while she checked the address of a delivery or searched for a missing note. We talked because we happened to be standing in the same small kitchen, not because I had scheduled a discussion about her future.\n\nI still want to **keep a door open**, though I no longer expect to hear every detail of her week. She is learning a trade I do not understand particularly well. If each visit becomes an interview about her progress, I suspect she will begin to feel she needs a polished report before calling round. The spare cup reminds me that being welcome should not depend on having good news, or indeed on having much news at all.\n\nOne morning she arrived after a difficult meeting with her supervisor. I asked a question too quickly and began suggesting what she should have said. She put down the samples and told me, gently but clearly, that she had already spent an hour explaining herself. For a while we drank in silence. Then she showed me a piece of cloth she liked. That small change of subject was not an avoidance of everything important. It was a way of being together that did not require another explanation.\n\nI cannot claim that tea makes an unhappy morning disappear. Sometimes she leaves as worried as she arrived, and sometimes I still confuse helping with offering a solution. But I am learning that attention can take the form of waiting as well as asking. We have had useful conversations while washing cups, after we had stopped trying to produce one.\n\nWhen she sends a message saying she cannot come, I put the second cup back on the shelf. I do not send her a photograph of it or ask why she is staying away. An invitation would become a burden if I made her responsible for my disappointment. I hope the habit can remain flexible: a familiar place to pause when she wants it, and no debt to repay when she does not.\n\n### C组（第11—15题）\n\n#### C1\n\nSilence in a conversation is often treated as something to repair. In the fictional adult-learning centre at Norridge, however, tutors noticed that some drawing partners worked together quietly and reported feeling comfortable. The observation prompted a question: does every pause mean that a conversation has failed, or can a shared activity give silence a different meaning?\n\nTutor Ren Hale began by collecting short accounts from workshop members. New partners sometimes interpreted a pause as a sign that the other person was bored. Partners who had established a way of working together more often described the same kind of pause as time for looking closely. Hale suggested that a common task can provide an understood focus, reducing uncertainty about what the other person is doing. This was an explanation to investigate, not a rule that familiar people never feel awkward.\n\nAn invented follow-up study involved twenty-four pairs of adults completing a drawing task. Half the pairs received a shared instruction to inspect the drawing quietly for a minute before discussing it. The others received no such instruction. Afterwards, each participant rated how comfortable the pause had felt. The instructed pairs gave higher comfort ratings on average. The task was brief, and the researchers did not measure whether their drawings were better.\n\nObservers who watched silent clips of the activity provided a useful contrast. Without knowing which instruction a pair had received, observers could not reliably identify the pairs reporting the most comfort. A quiet scene seen from outside was therefore not a dependable guide to how the people in it felt. This finding does not mean that people’s own reports are complete measures of every aspect of an interaction; it shows why the two perspectives were kept separate.\n\nHale calls an agreed pause **a space rather than a hole**. A hole suggests that something necessary is missing. A space can have a purpose: both people know that they are examining the same problem and will speak again when they have something to contribute. The distinction depends on shared understanding. Silence imposed by exclusion, fear or an ignored question would be a different case, and the centre’s study offers no reason to dismiss it.\n\nThe project has encouraged tutors to explain the purpose of quiet periods instead of simply insisting that groups talk more. It has not produced a treatment for social anxiety or a universal guide to conversation. One participant’s comment captures the narrower point: “We were not out of things to say; we were giving the drawing time.” The silence, for that pair, belonged to the activity rather than interrupting it.",
+  "body_load_text": "Pellwick Learning Network: Teaching-Material Requests\n\nA member of Pellwick College may request a teaching kit from another centre when the college’s own kit is unavailable. Digital copies of approved activity worksheets can also be requested. This fictional service supplies materials for study and teaching; it does not enrol users in the centres’ courses.\n\nWho may apply\nCurrent Pellwick students and employees are eligible, as are retired Pellwick instructors whose membership has been confirmed. A former student’s old library card is not enough. Guests attending a public lecture must ask their host to explain other available services.\n\nMaking a request\nGive the kit’s catalogue number or the worksheet’s full title on the electronic form. Accurate details reduce delays caused by requests for clarification. A worksheet usually becomes available within one working day. A physical kit normally takes four to eight working days, and a kit already reserved elsewhere may take longer.\n\nReceiving and returning material\nA notification is sent to your registered email address. Collect a kit from the college office you chose on the form; open a worksheet through your account using the email link. A kit’s due date is attached to its case. If the supplying centre needs it sooner, a recall email gives a revised return date, which replaces the date on the case. Kits cannot be renewed, even if no other Pellwick user is waiting.\n\nFees per request\nThe supplying centre’s category determines the fee, regardless of your collection office. All figures are fictional credits.\n\n| Supplying centre | Kit loan (credits) | Worksheet copy (credits) |\n| --- | --- | --- |\n| Community Centres | 14 | 6 |\n| School Centres | 22 | 9 |\n| Visiting Partner Centres | 30 | 12 |\n\nThe fee is for the requested material only. It is not a course fee, and ordering a worksheet does not reserve the matching physical kit.\n\nA second cup waits beside the kettle on Saturday mornings, even though my daughter now lives across town and does not visit every week. Friends sometimes ask why I set it out before I know whether she is coming. I used to say that it saved a minute later. Now I can admit that saving time has little to do with it. The cup is an invitation I can make without demanding an answer.\n\nWhen she first started an apprenticeship, she often called at our flat after the early bus. She would be carrying a bag of fabric samples, tired before her working day had properly begun. Making tea was a practical thing I could do while she checked the address of a delivery or searched for a missing note. We talked because we happened to be standing in the same small kitchen, not because I had scheduled a discussion about her future.\n\nI still want to **keep a door open**, though I no longer expect to hear every detail of her week. She is learning a trade I do not understand particularly well. If each visit becomes an interview about her progress, I suspect she will begin to feel she needs a polished report before calling round. The spare cup reminds me that being welcome should not depend on having good news, or indeed on having much news at all.\n\nOne morning she arrived after a difficult meeting with her supervisor. I asked a question too quickly and began suggesting what she should have said. She put down the samples and told me, gently but clearly, that she had already spent an hour explaining herself. For a while we drank in silence. Then she showed me a piece of cloth she liked. That small change of subject was not an avoidance of everything important. It was a way of being together that did not require another explanation.\n\nI cannot claim that tea makes an unhappy morning disappear. Sometimes she leaves as worried as she arrived, and sometimes I still confuse helping with offering a solution. But I am learning that attention can take the form of waiting as well as asking. We have had useful conversations while washing cups, after we had stopped trying to produce one.\n\nWhen she sends a message saying she cannot come, I put the second cup back on the shelf. I do not send her a photograph of it or ask why she is staying away. An invitation would become a burden if I made her responsible for my disappointment. I hope the habit can remain flexible: a familiar place to pause when she wants it, and no debt to repay when she does not.\n\nSilence in a conversation is often treated as something to repair. In the fictional adult-learning centre at Norridge, however, tutors noticed that some drawing partners worked together quietly and reported feeling comfortable. The observation prompted a question: does every pause mean that a conversation has failed, or can a shared activity give silence a different meaning?\n\nTutor Ren Hale began by collecting short accounts from workshop members. New partners sometimes interpreted a pause as a sign that the other person was bored. Partners who had established a way of working together more often described the same kind of pause as time for looking closely. Hale suggested that a common task can provide an understood focus, reducing uncertainty about what the other person is doing. This was an explanation to investigate, not a rule that familiar people never feel awkward.\n\nAn invented follow-up study involved twenty-four pairs of adults completing a drawing task. Half the pairs received a shared instruction to inspect the drawing quietly for a minute before discussing it. The others received no such instruction. Afterwards, each participant rated how comfortable the pause had felt. The instructed pairs gave higher comfort ratings on average. The task was brief, and the researchers did not measure whether their drawings were better.\n\nObservers who watched silent clips of the activity provided a useful contrast. Without knowing which instruction a pair had received, observers could not reliably identify the pairs reporting the most comfort. A quiet scene seen from outside was therefore not a dependable guide to how the people in it felt. This finding does not mean that people’s own reports are complete measures of every aspect of an interaction; it shows why the two perspectives were kept separate.\n\nHale calls an agreed pause **a space rather than a hole**. A hole suggests that something necessary is missing. A space can have a purpose: both people know that they are examining the same problem and will speak again when they have something to contribute. The distinction depends on shared understanding. Silence imposed by exclusion, fear or an ignored question would be a different case, and the centre’s study offers no reason to dismiss it.\n\nThe project has encouraged tutors to explain the purpose of quiet periods instead of simply insisting that groups talk more. It has not produced a treatment for social anxiety or a universal guide to conversation. One participant’s comment captures the narrower point: “We were not out of things to say; we were giving the drawing time.” The silence, for that pair, belonged to the activity rather than interrupting it.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "Anyone who has paid to join a partner centre’s course.",
+      "is_best": false,
+      "reason": "课程缴费不赋予本校资格",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "Any guest attending a public lecture.",
+      "is_best": false,
+      "reason": "访客须问其他服务非本资格",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "A retired Pellwick instructor with confirmed membership.",
+      "is_best": true,
+      "reason": "资格段明确退休教师经确认可用",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "A former student relying only on an old library card.",
+      "is_best": false,
+      "reason": "旧学生卡单独不足",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "The college office turns the loan into a permanent purchase.",
+      "is_best": false,
+      "reason": "没有转购规则",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "The new date in the email replaces the date attached to the case.",
+      "is_best": true,
+      "reason": "召回邮件新日期取代箱上日期",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "The borrower may renew it if no college user is waiting.",
+      "is_best": false,
+      "reason": "明确即使无人等也不得续借",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "The supplying centre must wait until the original date.",
+      "is_best": false,
+      "reason": "明确可更早召回",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "Choose the nearest collection office regardless of the item details.",
+      "is_best": false,
+      "reason": "取件办公室不解决识别不清",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "Ask for every physical kit to arrive within one working day.",
+      "is_best": false,
+      "reason": "一天是工作纸通常时限非套件",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "Apply for a worksheet and assume it reserves the kit too.",
+      "is_best": false,
+      "reason": "末段明确不预留套件",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "Provide the kit number or the worksheet’s full title.",
+      "is_best": true,
+      "reason": "准确编号题名可减少追问延迟",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "A worksheet copy from School Centres.",
+      "is_best": false,
+      "reason": "School Centres的Worksheet copy费用为9，低于所给候选最高22",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "A kit loan from School Centres.",
+      "is_best": true,
+      "reason": "School Centres的Kit loan费用为22，在这四候选中最高，全表最大未列入候选",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "A worksheet copy from Visiting Partner Centres.",
+      "is_best": false,
+      "reason": "Visiting Partner Centres的Worksheet copy费用为12，低于所给候选最高22",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "A kit loan from Community Centres.",
+      "is_best": false,
+      "reason": "Community Centres的Kit loan费用为14，低于所给候选最高22",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "Explain how centres should create electronic worksheets.",
+      "is_best": false,
+      "reason": "无工作纸制作程序",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "Explain the procedures and conditions of a material-request service.",
+      "is_best": true,
+      "reason": "资格申请收取归还收费完整说明",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "Evaluate the educational quality of different kits.",
+      "is_best": false,
+      "reason": "无教学质量比较",
+      "material_label": "A"
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "Invite the public to enrol in new teaching courses.",
+      "is_best": false,
+      "reason": "开头否认办理课程报名",
+      "material_label": "A"
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "It is mainly intended to impress the narrator’s friends.",
+      "is_best": false,
+      "reason": "朋友仅提问非主要受众",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "It is necessary because the daughter visits every Saturday.",
+      "is_best": false,
+      "reason": "明确不每周来",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "It ensures that the daughter will report all her difficulties.",
+      "is_best": false,
+      "reason": "不要求解释且不保证来",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "It expresses an invitation more than a need to save time.",
+      "is_best": true,
+      "reason": "首段承认省时非主因而是邀请",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "Remain available for contact without requiring it.",
+      "is_best": true,
+      "reason": "后文欢迎无须好消息及末段可不来",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Make each visit a formal review of the apprenticeship.",
+      "is_best": false,
+      "reason": "恰担心变面谈审查",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "Avoid mentioning any difficult subject in future.",
+      "is_best": false,
+      "reason": "仍有有用对话非永避困难",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Leave the flat unlocked for deliveries.",
+      "is_best": false,
+      "reason": "非实际门锁指令",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "A change of subject proves that no meaningful contact is possible.",
+      "is_best": false,
+      "reason": "看布恰成为相伴方式",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "The daughter wants the narrator to speak to her supervisor.",
+      "is_best": false,
+      "reason": "没有请代联系",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "Being together need not require another account of what went wrong.",
+      "is_best": true,
+      "reason": "女儿已解释一小时后静饮看布亦能相伴",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "Offering a quick solution is always the most welcome response.",
+      "is_best": false,
+      "reason": "过快建议使女儿需解释自己",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "To keep an invitation from becoming an obligation.",
+      "is_best": true,
+      "reason": "不让女儿为父母失望负责",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "To persuade the daughter to stop visiting until work improves.",
+      "is_best": false,
+      "reason": "欢迎不依好消息",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "To punish the daughter for changing her plans.",
+      "is_best": false,
+      "reason": "无惩罚且尊重不来",
+      "material_label": "B"
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "To hide the fact that tea was available that morning.",
+      "is_best": false,
+      "reason": "非隐瞒可喝茶事实",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "A flexible everyday ritual can offer welcome without demanding disclosure.",
+      "is_best": true,
+      "reason": "整篇茶杯邀请倾听及不强迫",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Parents should assess an apprenticeship through weekly reports.",
+      "is_best": false,
+      "reason": "明确不愿变进度面试",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "A family habit loses its value whenever a child moves away.",
+      "is_best": false,
+      "reason": "搬走后习惯仍可欢迎且可调整",
+      "material_label": "B"
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "Conversation is useful only when it solves a practical problem.",
+      "is_best": false,
+      "reason": "相伴等待本身有价值",
+      "material_label": "B"
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "Drawing removes the need for any later discussion.",
+      "is_best": false,
+      "reason": "静看后再讨论",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "A shared focus may make each person’s activity easier to understand.",
+      "is_best": true,
+      "reason": "共同任务减少对对方行为的不确定",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "The absence of speech proves that the partners agree on everything.",
+      "is_best": false,
+      "reason": "无此完全一致证据",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "People who know each other cannot feel awkward.",
+      "is_best": false,
+      "reason": "明确否认此规则",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "To compare comfort ratings under two pause-instruction conditions.",
+      "is_best": true,
+      "reason": "一组明确共识静看另一无指令并比舒适度",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "To determine whether every observer can read private feelings.",
+      "is_best": false,
+      "reason": "该研究主比较参与者评级后段才观察",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "To show that quieter pairs always produce better drawings.",
+      "is_best": false,
+      "reason": "明确未测作品好坏",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "To establish a treatment for social anxiety.",
+      "is_best": false,
+      "reason": "末段明确非治疗",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "Participants’ ratings were shown to measure every aspect of interaction.",
+      "is_best": false,
+      "reason": "明确不等全维度",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "Observers consistently rated every instructed pair as uncomfortable.",
+      "is_best": false,
+      "reason": "未报告一律不舒服",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "A silent scene did not reliably reveal how comfortable its participants felt.",
+      "is_best": true,
+      "reason": "外部观察不能可靠识别最高舒适组",
+      "material_label": "C"
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "Observers heard all the instructions before judging the pairs.",
+      "is_best": false,
+      "reason": "明确不知道哪组获指令",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Silence always indicates that a person has been excluded.",
+      "is_best": false,
+      "reason": "区分排斥的沉默与共识暂停",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Every conversation should contain pauses of a fixed length.",
+      "is_best": false,
+      "reason": "无普适定长规则",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "A pause can serve an understood purpose rather than signal something missing.",
+      "is_best": true,
+      "reason": "空间有共同察看目的并非缺话",
+      "material_label": "C"
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "A room must be made larger before people can talk comfortably.",
+      "is_best": false,
+      "reason": "非物理空间改建",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "The drawing was improved by exactly one minute of silence.",
+      "is_best": false,
+      "reason": "未测作品且无确定提升量",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "The pair wanted to leave the workshop without finishing.",
+      "is_best": false,
+      "reason": "无离开意图",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "The participants had forgotten what they were asked to draw.",
+      "is_best": false,
+      "reason": "不是忘题",
+      "material_label": "C"
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "Quiet could form part of the shared work for that pair.",
+      "is_best": true,
+      "reason": "给图画时间而非无话可说",
+      "material_label": "C"
+    }
+  ],
+  "subgroup_response_counts": [
+    5,
+    5,
+    5
+  ],
+  "subgroup_material_units": [
+    1,
+    1,
+    1
+  ],
+  "material_unit_load": [
+    {
+      "label": "A",
+      "intro_words": 0,
+      "words": [
+        289
+      ]
+    },
+    {
+      "label": "B",
+      "intro_words": 0,
+      "words": [
+        451
+      ]
+    },
+    {
+      "label": "C",
+      "intro_words": 0,
+      "words": [
+        434
+      ]
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 1174,
+    "body_Han_characters": 0,
+    "stem_English_words": 150,
+    "options_English_words_with_repeated_bank": 552,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 6,
+    "display_material_label_English_words": 6,
+    "table_English_words_in_body": 15,
+    "table_numeric_cells": 6,
+    "table_data_rows": 3,
+    "table_value_columns": 2
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "required_table": {
+    "id": "A.fee_table",
+    "headers": [
+      "Supplying centre",
+      "Kit loan (credits)",
+      "Worksheet copy (credits)"
+    ],
+    "materials": [
+      "Kit loan",
+      "Worksheet copy"
+    ],
+    "row_labels": [
+      "Community Centres",
+      "School Centres",
+      "Visiting Partner Centres"
+    ],
+    "cells": [
+      [
+        14,
+        6
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        30,
+        12
+      ]
+    ]
+  },
+  "fee_comparison": {
+    "question_number": 4,
+    "option_cells": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        1,
+        0
+      ],
+      "C": [
+        2,
+        1
+      ],
+      "D": [
+        0,
+        0
+      ]
+    }
+  },
+  "lexical_paragraph": 3,
+  "source_bound_three_passage_fee_table_section": true
+}

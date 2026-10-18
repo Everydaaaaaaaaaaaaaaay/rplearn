@@ -1,9 +1,19 @@
 """Validate complete senior reading sections without reusing junior fixed counts."""
 import json
+import html
 import re
 from grade_mode_evidence import load_ref
 from check_school_reading_sources import validate as validate_source,digest
-from school_reading_contract import material,ranges
+from school_reading_contract import ranges
+
+
+def table_markup(t):
+    return '| '+' | '.join(t['headers'])+' |\n| '+ ' | '.join(['---']*3)+' |\n'+'\n'.join('| '+label+' | '+ ' | '.join(str(v)for v in values)+' |'for label,values in zip(t['row_labels'],t['cells']))
+
+
+def table_option(table,row,col):
+    noun=table['materials'][col].lower();article='An'if noun[0] in 'aeiou'else'A'
+    return article+' '+noun+' from '+table['row_labels'][row]+'.'
 
 
 def validate(d,b,s):
@@ -48,6 +58,40 @@ def validate(d,b,s):
         assert qs[10]['operation']=='whole_material_purpose'
         assert qs[14]['operation']=='application_attitude'
         assert 'limitations' in d['research_scope'] and d['research_scope']['limitations']
+    if c['required_tables']:
+        assert c['required_tables']==['A.fee_table'] and not c['required_lists']
+        table=d['required_table'];assert table['id']=='A.fee_table'
+        assert len(table['headers'])==3 and all(x.strip()for x in table['headers'])
+        assert len(table['materials'])==len(set(table['materials']))==2
+        assert table['headers'][1:]==[m+' (credits)'for m in table['materials']]
+        assert len(table['row_labels'])==len(set(table['row_labels']))==3
+        assert len(table['cells'])==3 and all(len(row)==2 for row in table['cells'])
+        assert all(isinstance(v,int)and v>0 for row in table['cells']for v in row)
+        markup=table_markup(table)
+        assert sections[0]['units'][0].count(markup)==1
+        assert len([line for line in sections[0]['units'][0].splitlines()if line.startswith('|')])==5
+        assert all(not re.search(r'^\|',u,re.M)for sec in sections[1:]for u in sec['units'])
+        comparison=d['fee_comparison'];assert comparison['question_number']==4
+        assert qs[3]['operation']=='table_fee_comparison'
+        assert set(comparison['option_cells'])==set('ABCD')
+        costs={}
+        for label,(row,col)in comparison['option_cells'].items():
+            assert row in range(3)and col in range(2)
+            costs[label]=table['cells'][row][col]
+            assert dict(qs[3]['options'])[label]==table_option(table,row,col)
+        best=max(costs.values());assert list(costs.values()).count(best)==1
+        assert qs[3]['answer']==next(k for k,v in costs.items()if v==best)
+        assert best<max(v for row in table['cells']for v in row)
+        assert qs[6]['operation']=='context_phrase_meaning'
+        paras=sections[1]['units'][0].split('\n\n');pnum=d['lexical_paragraph']
+        assert '**'+d['lexical_target']+'**' in paras[pnum-1]
+        assert 'paragraph '+str(pnum) in qs[6]['stem'] and d['lexical_target'] in qs[6]['stem']
+        assert qs[13]['operation']=='metaphorical_phrase'
+        assert '**'+d['metaphor_target']+'**' in sections[2]['units'][0]
+        assert d['metaphor_target'] in qs[13]['stem']
+        assert qs[14]['operation']=='closing_quote_purpose'
+        assert d['closing_quote'] in sections[2]['units'][0].split('\n\n')[-1]
+        assert d['research_scope']['limitations']
     return render(sections,c)
 
 
@@ -80,5 +124,12 @@ def check(g,a,b,s):
             assert row['is_best']==(label==q['answer']) and row['material_label']==q['materialLabel']
     for label,nums in ranges(s['configuration']):
         assert label+'组（第'+str(nums[0])+'—'+str(nums[-1])+'题）' in g['passageHtml']
+    if d.get('required_table'):
+        assert a['required_table']==d['required_table'] and a['fee_comparison']==d['fee_comparison']
+        rendered=g['passageHtml'];assert rendered.count('<table>')==1
+        fragment=rendered.split('<table>')[1].split('</table>')[0]
+        rows=[[html.unescape(re.sub('<[^>]+>','',value))for value in re.findall(r'<t[hd]>(.*?)</t[hd]>',row,re.S)]for row in re.findall(r'<tr>(.*?)</tr>',fragment,re.S)]
+        t=d['required_table'];assert rows==[t['headers']]+[[label]+[str(v)for v in values]for label,values in zip(t['row_labels'],t['cells'])]
+        assert a['load_measure']['table_numeric_cells']==6
     assert a['source_original_key_not_gold']
     return True

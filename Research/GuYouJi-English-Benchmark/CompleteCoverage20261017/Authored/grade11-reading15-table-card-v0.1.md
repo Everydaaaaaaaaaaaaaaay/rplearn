@@ -1,0 +1,197 @@
+# 高二完整阅读三篇十五题：馆际服务、空白卡与物件记忆
+
+## 学生题面
+
+阅读A—C三篇的全部材料及费用表，回答第1至第15题；每题从A、B、C、D四个选项中选出最合适的一项。每题2.5分，共37.5分。人物、机构、服务规则、研究和语言案例均为虚构。
+
+### A组（第1—5题）
+
+#### A1
+
+Marlowe College: Material Exchange Service
+
+The exchange desk can obtain a book missing from the college collection or request a digital article copy from another library. These are two different requests, with different delivery arrangements. The rules below apply to this fictional college service only.
+
+Eligibility
+Students currently enrolled at Marlowe, serving staff and retired Marlowe lecturers may apply. Former students and visitors holding a day pass cannot use the exchange desk. A retired lecturer’s old staff number is accepted after the desk confirms it.
+
+Request and waiting time
+Enter the title, author and publication details in the online request form. Exact details help staff locate the correct item and avoid having to ask you again. Articles normally arrive in two working days; books normally take between six and nine. Rare items may take longer, so these periods are estimates rather than guarantees.
+
+Collection and return
+An email tells you when a book is ready at the college desk you selected. Its return date is printed on a slip inside the cover. The supplying library may recall it earlier, in which case you must return it by the new date in the recall email. Physical loans cannot be extended. Digital article copies are accessed through the link in your notification, after you sign into your college account.
+
+Charges
+Fees depend on the supplying library’s category and the material requested. All amounts below are in fictional credits and cover a single request, not a yearly subscription.
+
+| Library category | Book loan (credits) | Article copy (credits) |
+| --- | --- | --- |
+| Civic Libraries | 18 | 8 |
+| Commercial Libraries | 26 | 12 |
+| Overseas Partners | 34 | 16 |
+
+Check the relevant row and column before confirming your request. Collection at a college desk does not change the category of the library supplying the item.
+
+### B组（第6—10题）
+
+#### B1
+
+When other parents hear that I still put a blank card into my daughter’s workshop bag each Saturday, they tend to smile as though I am keeping an unnecessary childhood habit alive. I used to offer a hurried explanation. These days I am less concerned about making the routine sound sensible to everyone. My daughter knows the card is there, and she knows she can leave it unused.
+
+There is a practical history behind it. When she first joined a weekend model-making group, she often came home with a question she could no longer remember clearly. A card was easier to find in her bag than a loose corner of an instruction sheet. I added a pencil, and sometimes she wrote down a measurement or sketched a joint. That small convenience remains useful, but it is no longer the whole reason I keep preparing one.
+
+As she has grown older, I have tried to **leave room for** her decisions rather than fill every page with mine. When she was small, I was quick to draw a solution beside her uncertain lines. The card now goes into the bag empty. I do not write a target at the top or suggest what a successful afternoon should produce. She can use it for a question, a failed idea or nothing at all. Its blankness reminds me to wait.
+
+That is harder than it sounds. On one Saturday she returned with a neat drawing of a frame that would not stand up. My first impulse was to point to the missing support. Instead, I asked whether she wanted to explain what she had tried. She did, at considerable length. We eventually discussed the support, but only after I had discovered what she liked about the original shape. Had I begun with my correction, I would have missed that part.
+
+I do not imagine that a piece of card solves the difficult business of listening. There are evenings when I interrupt, and afternoons when she does not want to talk. Nor do I expect her to preserve every card as a treasured record. Most end up in the recycling box. The value lies in the possibility of a conversation, not in producing a collection that proves I am an attentive parent.
+
+Next year she may stop attending the group, and the habit will probably change. For now, placing the card beside her bag is a small way of remembering the kind of help I want to offer: available without taking charge. When she leaves it untouched, I am learning to regard that as a choice rather than a disappointment.
+
+### C组（第11—15题）
+
+#### C1
+
+Why can an ordinary object matter so much to its owner while leaving a visitor unmoved? In the fictional town of Elmere, a local history project has collected accounts of everyday possessions. Its reports suggest that an object’s personal importance often comes from the situations it recalls, rather than from its price or usefulness alone. The project concerns remembered experiences, not a claim that possessions can replace people.
+
+The collection began with interviews. Volunteers described a chipped mug, an old key or a sewing tool, then explained why they had kept it. Many stories involved repeated activities: tea after a late shift, opening a first home, learning a task beside a relative. According to project researcher Lora Venn, repetition may allow a simple physical detail to become associated with a whole familiar scene. A visitor sees a worn handle; its owner remembers who held it.
+
+A separate invented study at Elmere Learning Centre gave this explanation a more focused test. Forty adults viewed photographs of an object they had personally used and a similar object unfamiliar to them. They described an event brought to mind by each picture. The familiar pictures produced more specific personal accounts on average. This comparison supports a connection between familiarity and recalled detail in that task; it does not establish that keeping more possessions improves memory generally.
+
+There were differences within the familiar category, too. An expensive object did not necessarily produce a more detailed account than an inexpensive one. Some volunteers reported a clear memory for a shared household tool they did not own. The researchers therefore separated use and ownership in their notes. Their findings would have been misleading if every familiar object had simply been labelled “mine”.
+
+Venn calls a meaningful object **a doorway into a remembered situation**. The object does not contain a complete recording that everyone can retrieve. Rather, its appearance can prompt a person to reconstruct part of an experience, with gaps and changes. A photograph or a spoken story may perform a similar role. The team has not measured the underlying brain processes, and these accounts cannot diagnose anyone’s memory health.
+
+For museum volunteers, this suggests a practical question: before describing an object as valuable, ask valuable to whom, and why. One contributor brought a wooden spoon with no unusual design and no high sale price. She remembered learning to cook beside a friend who later moved away. “The handle is ordinary; the afternoon is mine,” she said. Her words capture the difference between the object that can be displayed and the experience that gives it meaning.
+
+<!-- responses:start -->
+
+1. A组 · Who may apply to use the Material Exchange Service?
+   A. A visitor carrying a day pass.
+   B. A former student with no current college role.
+   C. A retired Marlowe lecturer whose former staff number is confirmed.
+   D. A member of the public who pays a yearly subscription.
+
+2. A组 · What must a borrower do if a supplying library recalls a book?
+   A. Send it back only after receiving a second reminder.
+   B. Ask the college desk to extend the original loan.
+   C. Return it by the new date given in the recall email.
+   D. Keep it until the date originally printed inside the cover.
+
+3. A组 · Why does the form ask for exact publication details?
+   A. They help staff identify the right item without further questions.
+   B. They change an overseas library into a civic supplier.
+   C. They determine whether a borrower can keep the digital copy forever.
+   D. They allow every book to arrive within two working days.
+
+4. A组 · Which of the following requests has the highest fee?
+   A. A book loan from Civic Libraries.
+   B. A book loan from Commercial Libraries.
+   C. An article copy from Overseas Partners.
+   D. An article copy from Commercial Libraries.
+
+5. A组 · What is the main purpose of passage A?
+   A. To explain how eligible college users can request and receive outside material.
+   B. To compare the literary value of books from several countries.
+   C. To persuade all local residents to buy library subscriptions.
+   D. To tell supplying libraries how to design their catalogues.
+
+6. B组 · How has the narrator’s response to other parents changed?
+   A. The narrator wants other families to adopt exactly the same habit.
+   B. The narrator feels less need to justify the routine to them.
+   C. The narrator now seeks their advice before preparing each card.
+   D. The narrator has stopped preparing cards after their criticism.
+
+7. B组 · What does “leave room for” in paragraph 3 mean?
+   A. Allow space for independent choices.
+   B. Keep personal opinions hidden from the daughter permanently.
+   C. Reserve every card for a perfect final drawing.
+   D. Make the workshop physically larger.
+
+8. B组 · What does the empty card chiefly represent to the narrator now?
+   A. A replacement for talking about the daughter’s work.
+   B. A reminder to offer help without deciding the outcome first.
+   C. A record proving that every workshop has been successful.
+   D. A way to correct mistakes before the daughter sees them.
+
+9. B组 · Why does the narrator recount the frame that would not stand up?
+   A. To prove that asking questions always removes the need for advice.
+   B. To explain why the daughter should give up designing frames.
+   C. To suggest that a neat drawing guarantees a working model.
+   D. To show how listening first revealed something an immediate correction would miss.
+
+10. B组 · Which statement best sums up passage B?
+   A. Practical equipment matters more than listening to a child.
+   B. An old habit must remain unchanged when a child grows up.
+   C. Careful parents should keep every object their children produce.
+   D. A small routine helps a parent practise making support available without taking over.
+
+11. C组 · According to Venn, how may an ordinary object gain personal importance?
+   A. Its surface stores a recording that any visitor can recover.
+   B. Repeated use can connect its details with remembered situations.
+   C. Its owner learns a history that is identical for all users.
+   D. Its market price determines how complete a memory will be.
+
+12. C组 · Why is the Learning Centre study included?
+   A. To give a focused comparison relevant to the familiarity explanation.
+   B. To demonstrate the medical benefits of owning many things.
+   C. To calculate the sale price of donated museum objects.
+   D. To establish that photographs are the only effective memory cues.
+
+13. C组 · What distinction did the researchers find important?
+   A. Unfamiliar objects could not prompt any account at all.
+   B. Expensive objects always prompted the most detailed accounts.
+   C. An object could be familiar through use without being personally owned.
+   D. All volunteers attached the same importance to their possessions.
+
+14. C组 · What does “a doorway into a remembered situation” suggest?
+   A. An owner must return to the original room to remember.
+   B. An object contains an exact account of the past.
+   C. A display case physically separates owners from their memories.
+   D. An object can serve as a cue for reconstructing an experience.
+
+15. C组 · What does the contributor’s final remark emphasise?
+   A. Only valuable objects can preserve a friendship.
+   B. The museum can reproduce her afternoon for every visitor.
+   C. The personal experience, rather than an unusual design, gives the spoon meaning.
+   D. The spoon should be sold because handmade objects are rare.
+
+<!-- responses:end -->
+
+## 作者核对
+
+参照既存天津转载、题首自署高二年级英语学科第二次质量检测试卷阅读整节：A服务规则及3行×2费用表/B第一人称反思/C解释性研究报道，三篇各五题共15四选，每题2.5分共37.5分；不是四篇3+4+4+4。转载标签不补原校认证，原键非gold。原表题比较候选最大20不等全表最大25、B57段号错位及C神经/健康断言与近义候选风险另留。本稿机构规则、人物、活动、研究及语言案例均虚构；服务里提到的物件/录音只是阅读内容，不需另听音轨。全部3篇/费用表/15题/60候选理由由作者核对，不证明独立教研、学生、商用或生产通过；不将这套计分当年级统一要求。
+
+### 答案与逐项依据
+
+1. C。A：访客日票明确排除；B：毕业生明确排除；C：资格段明确退休本校讲师确认旧号可申请；D：未设公共年费资格且费用非年订阅
+
+2. C。A：未给等第二提醒许可；B：实体借阅不得延长；C：收回通知的新日期优先；D：召回会提前更改期限
+
+3. A。A：明确准确定位避免追问；B：取件处或题名信息不改供应类别；C：无永久保存规则；D：两工作日为文章估时非所有图书
+
+4. B。A：Civic Libraries的Book loan费用为18，低于所给候选最高26；B：Commercial Libraries的Book loan费用为26，在这四候选中最高，全表最大未列入候选；C：Overseas Partners的Article copy费用为16，低于所给候选最高26；D：Commercial Libraries的Article copy费用为12，低于所给候选最高26
+
+5. A。A：资格申请收取归还及收费全流程；B：费用分类非文学评价；C：限本校资格且非年订阅推广；D：面向借阅者非目录编制人员
+
+6. B。A：未提劝所有家庭照做；B：曾匆忙解释现不太担心说服别人；C：无逐卡征询且现较自主；D：仍持续每周放卡
+
+7. A。A：后文不替写目标让女儿自选；B：会讨论支撑并非永久不表达；C：可写失败想法亦可不用；D：语境为决策自主非扩场地
+
+8. B。A：意在可能开启对话；B：空白提醒等候不主导结果；C：明确非收集表现证明；D：没有预写且先听后讨论
+
+9. D。A：后来仍讨论支撑且承认会打断；B：未劝退出设计；C：漂亮图恰未能站立；D：先听才得知原形状吸引她的原因
+
+10. D。A：由实用转向倾听；B：预计明年习惯会变；C：明确多数回收非收藏；D：放空白卡连接成长及支持方式
+
+11. B。A：第五段明确非完整记录；B：第二段重复活动关联场景；C：个人经验不同；D：第四段价格不必更多细节
+
+12. A。A：比较熟悉陌生图片及个人回忆细节；B：明确非一般记忆医疗效果；C：未做估价；D：后文话语亦可提示
+
+13. C。A：只报告平均差别非全无；B：明确未必；C：共享工具并非本人所有而熟悉；D：个体经历差异
+
+14. D。A：无地点回返要求；B：明确非完整录制；C：非物理隔离含义；D：后文外观引出不完整重构
+
+15. C。A：低价普通物件恰有意义；B：经验无法人人相同提取；C：普通柄与属于自己的下午形成对照；D：无稀有或出售主张
+
+全15题及全部材料保留；每题2.5分，共37.5分。作者依据为模型自审，不当独立教研、学生、商用或生产验证。

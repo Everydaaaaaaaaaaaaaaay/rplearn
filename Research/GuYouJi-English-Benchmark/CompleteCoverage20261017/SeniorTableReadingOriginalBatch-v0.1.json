@@ -1,0 +1,336 @@
+{
+  "version": "0.1",
+  "scope": "grade11_three_passage5x3_complete_reading_with_fee_table_three_originals",
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolReadingSelectedSources-v0.4.json",
+    "sha256": "aae035876cec1ee257f0849acc22a5671993fa57b4c9bd1f5cc80539d151faaa"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.4.json",
+    "sha256": "f9b800218513d6abc274b7d3bb673214dd391006df7d4295195a619be6e8ff02"
+  },
+  "source_genre_review": {
+    "path": "CompleteCoverage20261017/SeniorReadingGenreSubstructureReview-v0.1.json",
+    "sha256": "24a765f10e0144d68d5eb57006561bf1cd6870a4c6131c38e11ea2a474e40b7a"
+  },
+  "records": [
+    {
+      "id": "grade11-reading15-table-card",
+      "source_group_id": "grade11-tianjin2026-21cnjy26082071.reading.complete_section",
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-card-v0.1.md",
+        "sha256": "9ad9cce4d0b4eb28a65eccf27a7aa1fd1fa3a1d2aaff537d8933dbe1531a3a04"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-card-author-check-v0.1.json",
+        "sha256": "eb087d3c8bdabf847f7c7f13d87a1ad332c7211261a2d7ed11163ad48b7a5676"
+      },
+      "load_measure": {
+        "body_English_words": 1150,
+        "body_Han_characters": 0,
+        "stem_English_words": 150,
+        "options_English_words_with_repeated_bank": 558,
+        "options_Han_characters": 0,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 6,
+        "display_material_label_English_words": 6,
+        "table_English_words_in_body": 14,
+        "table_numeric_cells": 6,
+        "table_data_rows": 3,
+        "table_value_columns": 2
+      },
+      "per_unit_load": [
+        {
+          "label": "A",
+          "intro_words": 0,
+          "words": [
+            285
+          ]
+        },
+        {
+          "label": "B",
+          "intro_words": 0,
+          "words": [
+            436
+          ]
+        },
+        {
+          "label": "C",
+          "intro_words": 0,
+          "words": [
+            429
+          ]
+        }
+      ],
+      "source_body_words_per_passage": [
+        267,
+        450,
+        410
+      ],
+      "required_table": {
+        "id": "A.fee_table",
+        "headers": [
+          "Library category",
+          "Book loan (credits)",
+          "Article copy (credits)"
+        ],
+        "materials": [
+          "Book loan",
+          "Article copy"
+        ],
+        "row_labels": [
+          "Civic Libraries",
+          "Commercial Libraries",
+          "Overseas Partners"
+        ],
+        "cells": [
+          [
+            18,
+            8
+          ],
+          [
+            26,
+            12
+          ],
+          [
+            34,
+            16
+          ]
+        ]
+      },
+      "fee_question_option_costs": {
+        "A": 18,
+        "B": 26,
+        "C": 16,
+        "D": 12
+      },
+      "whole_table_maximum_not_in_options": 34,
+      "answer_label_counts": {
+        "C": 4,
+        "A": 4,
+        "B": 4,
+        "D": 3
+      },
+      "max_same_label_run": 2
+    },
+    {
+      "id": "grade11-reading15-table-cup",
+      "source_group_id": "grade11-tianjin2026-21cnjy26082071.reading.complete_section",
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-cup-v0.1.md",
+        "sha256": "184e65de1164b8da9afe7b1d543d58a00bd86058406774db7864ad39b56e1d0d"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-cup-author-check-v0.1.json",
+        "sha256": "d0ea91a6b1b2da8b793c8aa73a71453a3a259c217872f182445a7c0689bc113e"
+      },
+      "load_measure": {
+        "body_English_words": 1174,
+        "body_Han_characters": 0,
+        "stem_English_words": 150,
+        "options_English_words_with_repeated_bank": 552,
+        "options_Han_characters": 0,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 6,
+        "display_material_label_English_words": 6,
+        "table_English_words_in_body": 15,
+        "table_numeric_cells": 6,
+        "table_data_rows": 3,
+        "table_value_columns": 2
+      },
+      "per_unit_load": [
+        {
+          "label": "A",
+          "intro_words": 0,
+          "words": [
+            289
+          ]
+        },
+        {
+          "label": "B",
+          "intro_words": 0,
+          "words": [
+            451
+          ]
+        },
+        {
+          "label": "C",
+          "intro_words": 0,
+          "words": [
+            434
+          ]
+        }
+      ],
+      "source_body_words_per_passage": [
+        267,
+        450,
+        410
+      ],
+      "required_table": {
+        "id": "A.fee_table",
+        "headers": [
+          "Supplying centre",
+          "Kit loan (credits)",
+          "Worksheet copy (credits)"
+        ],
+        "materials": [
+          "Kit loan",
+          "Worksheet copy"
+        ],
+        "row_labels": [
+          "Community Centres",
+          "School Centres",
+          "Visiting Partner Centres"
+        ],
+        "cells": [
+          [
+            14,
+            6
+          ],
+          [
+            22,
+            9
+          ],
+          [
+            30,
+            12
+          ]
+        ]
+      },
+      "fee_question_option_costs": {
+        "A": 9,
+        "B": 22,
+        "C": 12,
+        "D": 14
+      },
+      "whole_table_maximum_not_in_options": 30,
+      "answer_label_counts": {
+        "C": 4,
+        "B": 4,
+        "D": 3,
+        "A": 4
+      },
+      "max_same_label_run": 2
+    },
+    {
+      "id": "grade11-reading15-table-pouch",
+      "source_group_id": "grade11-tianjin2026-21cnjy26082071.reading.complete_section",
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-pouch-v0.1.md",
+        "sha256": "c7cea5474cafe871f449540756e1b3cf978820b28cd7599e65ffbdf894eb8239"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade11-reading15-table-pouch-author-check-v0.1.json",
+        "sha256": "21973633761283f58eb41a96dde023096e75269d6827972ca0868af17a7d2bbc"
+      },
+      "load_measure": {
+        "body_English_words": 1168,
+        "body_Han_characters": 0,
+        "stem_English_words": 148,
+        "options_English_words_with_repeated_bank": 571,
+        "options_Han_characters": 0,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 6,
+        "display_material_label_English_words": 6,
+        "table_English_words_in_body": 15,
+        "table_numeric_cells": 6,
+        "table_data_rows": 3,
+        "table_value_columns": 2
+      },
+      "per_unit_load": [
+        {
+          "label": "A",
+          "intro_words": 0,
+          "words": [
+            286
+          ]
+        },
+        {
+          "label": "B",
+          "intro_words": 0,
+          "words": [
+            449
+          ]
+        },
+        {
+          "label": "C",
+          "intro_words": 0,
+          "words": [
+            433
+          ]
+        }
+      ],
+      "source_body_words_per_passage": [
+        267,
+        450,
+        410
+      ],
+      "required_table": {
+        "id": "A.fee_table",
+        "headers": [
+          "Supplying archive",
+          "Disc loan (credits)",
+          "Transcript copy (credits)"
+        ],
+        "materials": [
+          "Disc loan",
+          "Transcript copy"
+        ],
+        "row_labels": [
+          "Civic Archives",
+          "Commercial Archives",
+          "External Partner Archives"
+        ],
+        "cells": [
+          [
+            16,
+            7
+          ],
+          [
+            24,
+            11
+          ],
+          [
+            36,
+            15
+          ]
+        ]
+      },
+      "fee_question_option_costs": {
+        "A": 16,
+        "B": 15,
+        "C": 24,
+        "D": 11
+      },
+      "whole_table_maximum_not_in_options": 36,
+      "answer_label_counts": {
+        "A": 4,
+        "D": 3,
+        "C": 4,
+        "B": 4
+      },
+      "max_same_label_run": 2
+    }
+  ],
+  "prior_groups": 712,
+  "prior_responses": 5165,
+  "new_complete_groups": 3,
+  "new_responses": 45,
+  "current_groups": 715,
+  "current_responses": 5210,
+  "all180candidates_author_context_read": true,
+  "fictional_service_and_research_not_real_claims": true,
+  "source_single_passages_not_whole_section_substitutes": true,
+  "three_passages_not_four_despite_same15responses": true,
+  "fee_maximum_comparison_limited_to_given_options": true,
+  "word_context_actual_paragraph3_marked_not_source_locator_conflict": true,
+  "body_headings_stems_table_cells_candidates_output_measured_separately": true,
+  "new_source_downloads": 0,
+  "new_processed_transcripts": 0,
+  "new_authenticated_school_papers": 0,
+  "independent_teacher_student_commercial_production": false,
+  "all_required_types_complete": false
+}
