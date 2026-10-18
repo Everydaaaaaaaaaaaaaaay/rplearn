@@ -1,0 +1,44 @@
+{
+  "version": "0.1",
+  "owner_instruction": "本轮结束后停止研究扩样，转入真实学习系统测试入口与现有能力实测",
+  "research_status": "stopped_after_current_round_by_owner",
+  "previous_current_plan": {
+    "path": "CompleteCoverage20261017/ReviewPlan-v0.458.json",
+    "sha256": "8c823f8c44d5bc0642dc6c0c2125d4e149b8f8b9556b21032c1c84480ac1e53b"
+  },
+  "new_public_header_observations": [
+    {
+      "level": "primary4",
+      "family": "word_category_choice",
+      "selection": {
+        "path": "build/english-benchmark-authority-20261017/p4-beipiao-representative-headers-working-v0.1.json",
+        "sha256": "beef8fea2be6da129d47f26c2ffb8ab047c439d4abd0311212c1e2e46a000e87"
+      },
+      "finding": "北票转载标题称2024—25四下；正文四年级第二学期学习评价，第二节为六题三选类别辨别。没有把预览当整卷、正文地域或独立认证实考。"
+    },
+    {
+      "level": "primary6",
+      "family": "marked_sound_tf",
+      "selection": {
+        "path": "build/english-benchmark-authority-20261017/p6-feidong-representative-headers-working-v0.1.json",
+        "sha256": "820c9ab6e443a301064536c24b36094fcf47de16b7a818e733b18263d33a2a8b"
+      },
+      "finding": "肥东转载标题称2024—25六下；可见第五节判断画线部分读音T/F。web读取失败后直接公开请求成功，只保存必要标题。没有原键/完整标记输入核验，不作可发布题目或全国常见率。"
+    }
+  ],
+  "new_complete_source_papers": 0,
+  "new_authenticated_source_parents": 0,
+  "new_original_groups": 0,
+  "new_required_types": 0,
+  "preserved_research_groups": 772,
+  "preserved_responses": 5903,
+  "main_review_groups": 634,
+  "main_review_responses": 5090,
+  "main_review_cells": 141,
+  "reference_only_groups": 138,
+  "current_payloads_unchanged": true,
+  "remaining_research_scope": "小学部分家族代表性与一二年级当前活动全输入、高中原音脚本键配套及独立教研/学生验证仍未完成；按用户要求不继续扩样，不冒称全国题型穷尽。",
+  "handoff": "App真实挑战界面、正式服务端组卷/媒体/判分/补答；先用实际已发布内容。来源观察与旧原键不自动发布。",
+  "kindergarten_and_subjective_excluded": true,
+  "whole_research_complete": false
+}
