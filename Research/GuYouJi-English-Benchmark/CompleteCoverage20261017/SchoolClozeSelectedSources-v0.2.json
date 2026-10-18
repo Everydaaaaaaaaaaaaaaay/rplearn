@@ -1,0 +1,151 @@
+{
+  "version": "0.2",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.1.json",
+    "sha256": "4e0cd68b390d369759a5000b66a0e3222d6cf273209202556ae2d8c94a6d1783"
+  },
+  "scope": "two_newly_bound_previously_observed_grade7_single_material_cloze_configurations_only",
+  "groups": [
+    {
+      "id": "grade7-suzhou2025-21cnjy23303742.cloze",
+      "level": 7,
+      "kind": "choice_cloze",
+      "responses": 10,
+      "options_each": 4,
+      "configuration": {
+        "materials": 1,
+        "responses": 10,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 10,
+            "options_each": 4
+          }
+        ],
+        "options_each": 4,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1
+        ],
+        "section_points": 10,
+        "necessary_images": false
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_spans": [
+        {
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade7-suzhou2025-21cnjy23303742-resource-v0.2.txt",
+            "sha256": "c6d0bf732502571679d9f1fe24fa95ad2cda22c2508b6a1a097341fa67fc4ebe"
+          },
+          "start_offset": 3229,
+          "end_offset": 4646,
+          "sha256": "b9f8e608d2e5604e14cf08a2dcb1f40eefc9eac01b7abc79be9e8621be2890b9",
+          "question_numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "instruction": "先通读下面的短文，掌握其大意，然后在每小题所给的A、B、C、D四个选项中，选出可以填入空白处的最佳选项，并在答题卡上将该项涂黑。",
+          "instruction_sha256": "ae88b91da35c3123e0b969922c8b4fbc47fd2a65023afd3ff43e13816dd993ef"
+        }
+      ],
+      "reconciliation": {
+        "path": "CompleteCoverage20261017/SchoolClozeConfigurationReconciliation-v0.1.json",
+        "sha256": "89f0bee0c4ebec53869a02b80d653d700334d0180ee5082010f58e5c5dafb8f8"
+      },
+      "source_identity": "public_repost_label_and_body_not_original_school_authentication",
+      "body_grade_seen": true,
+      "body_region_not_added_from_filename": true,
+      "printed_body_title": "初一年级期末试卷 英语2025.06",
+      "published_key_quality": "not_independent_gold",
+      "source_material_english_words": 169,
+      "selected_cloze_contains_no_external_media_dependency": true
+    },
+    {
+      "id": "grade7-wuhan2025-21cnjy23303148.cloze",
+      "level": 7,
+      "kind": "choice_cloze",
+      "responses": 15,
+      "options_each": 4,
+      "configuration": {
+        "materials": 1,
+        "responses": 15,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 15,
+            "options_each": 4
+          }
+        ],
+        "options_each": 4,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1
+        ],
+        "section_points": 15,
+        "necessary_images": false
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_spans": [
+        {
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade7-wuhan2025-21cnjy23303148-resource-v0.2.txt",
+            "sha256": "57146dada9ca57abc4cc061fe4f7ac7ae9859fe408dd547f06b6671c789d936b"
+          },
+          "start_offset": 4981,
+          "end_offset": 6854,
+          "sha256": "454f48c9406c069952ae7c939f5768bd9c9378f9730651be8cde30dee326b0db",
+          "question_numbers": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "instruction": "阅读下面短文，从短文后各题所给的四个选项中，选出可以填入空白处的最佳答案。",
+          "instruction_sha256": "b8983536ea8616b56131e3bcf4c1ea53722590af0bc29c21b5f02558ef4c94b6"
+        }
+      ],
+      "reconciliation": {
+        "path": "CompleteCoverage20261017/SchoolClozeConfigurationReconciliation-v0.1.json",
+        "sha256": "89f0bee0c4ebec53869a02b80d653d700334d0180ee5082010f58e5c5dafb8f8"
+      },
+      "source_identity": "public_repost_label_and_body_not_original_school_authentication",
+      "body_grade_seen": true,
+      "body_region_not_added_from_filename": true,
+      "printed_body_title": "2024—2025学年度第二学期期末质量检测七年级英语试卷",
+      "published_key_quality": "not_independent_gold",
+      "source_material_english_words": 196,
+      "selected_cloze_contains_no_external_media_dependency": true
+    }
+  ],
+  "new_sources": 0,
+  "new_authenticated_school_papers": 0
+}

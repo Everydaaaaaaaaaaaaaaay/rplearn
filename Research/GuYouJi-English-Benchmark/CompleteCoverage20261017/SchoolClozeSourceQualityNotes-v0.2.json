@@ -1,0 +1,57 @@
+{
+  "version": "0.2",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.1.json",
+    "sha256": "2519f34456bccabff63cbcf965ba1cd43e4c444f94dd5f8690dcc57546c88a05"
+  },
+  "scope": "additional_grade7_source_key_and_fact_risks_not_independent_adjudication",
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.2.json",
+    "sha256": "edf2b2e4a4e2bc4007c3d6d36f7b363e4aedd7dd5c674022ca55475b7b5ca435"
+  },
+  "rows": [
+    {
+      "source_group_id": "grade7-suzhou2025-21cnjy23303742.cloze",
+      "body_grade_year_as_seen": "初一年级期末试卷 英语2025.06",
+      "region_repost_label_only": true,
+      "potential_key_ambiguities": [
+        {
+          "source_number": 4,
+          "candidate_labels": [
+            "B",
+            "C",
+            "D"
+          ],
+          "texts": [
+            "over",
+            "across",
+            "through"
+          ],
+          "reason": "风在树梢上/横过/穿过均存在可辩护读法，未有可靠排他条件，不当已核唯一源键。"
+        },
+        {
+          "source_number": 6,
+          "candidate_labels": [
+            "B",
+            "C"
+          ],
+          "texts": [
+            "calm",
+            "comfortable"
+          ],
+          "reason": "make us feel calm/comfortable两者均可与倾听自然声语境相连，不由题面独立排除其中一项。"
+        }
+      ],
+      "medical_and_study_claims": "原文大脑/心率/身心效果及研究未独立核验，不复制为作者事实或健康建议。"
+    },
+    {
+      "source_group_id": "grade7-wuhan2025-21cnjy23303148.cloze",
+      "body_grade_year_as_seen": "2024—2025学年度第二学期期末质量检测七年级英语试卷",
+      "region_repost_label_only": true,
+      "source_key_is_gold": false,
+      "travel_facts_and_personal_preferences": "行程温度食物等为原文自述，不当一般出行气候知识，原创另编虚构行程。"
+    }
+  ],
+  "structure_usable_not_answer_or_fact_gold": true,
+  "new_source_files": 0
+}
