@@ -1,0 +1,1320 @@
+{
+  "version": "0.3",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolReadingSelectedSources-v0.2.json",
+    "sha256": "caf45a5a9f2bc05c93cd5ea1c896ff5d3afd6c7bf2994bc1aba0b68f57c4d951"
+  },
+  "scope": "five_actual_senior_complete_reading_section_configurations_not_cartesian_counts",
+  "groups": [
+    {
+      "id": "grade10-jinhua2025-21cnjy22399612.reading.complete_section",
+      "level": 10,
+      "kind": "reading_choice",
+      "responses": 15,
+      "options_each": 4,
+      "configuration": {
+        "responses": 15,
+        "options_each": 4,
+        "passage_count": 4,
+        "subgroup_count": 4,
+        "text_unit_count": 7,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 3,
+            "material_units": 4,
+            "genre": "four_book_profiles"
+          },
+          {
+            "label": "B",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "reported_cultural_design_event"
+          },
+          {
+            "label": "C",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "promotional_product_introduction"
+          },
+          {
+            "label": "D",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "research_report_with_application_limit"
+          }
+        ],
+        "response_distribution": [
+          3,
+          4,
+          4,
+          4
+        ],
+        "points_each": 2.5,
+        "selected_objective_points": 37.5,
+        "all_selected_subgroups_mandatory": true,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "necessary_images": false,
+        "source_wordload_not_grade_limit": true,
+        "required_tables": [],
+        "required_lists": []
+      },
+      "source_spans": [
+        {
+          "label": "A",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "start_offset": 2676,
+          "end_offset": 4800,
+          "sha256": "d11b3dd2341f253d29f5d2197b232f6b79c5c4246104420c78a1d71f9c3bd785",
+          "body_start_offset": 2678,
+          "body_end_offset": 4283,
+          "body_sha256": "e8393bf0d0dd809ef39319f046f8aad6c6ac1d3e6b96c416378d6d178c94872f",
+          "source_member_id": "grade10-jinhua2025-21cnjy22399612.readingA",
+          "question_numbers": [
+            21,
+            22,
+            23
+          ],
+          "material_unit_count": 4,
+          "body_English_words": 284
+        },
+        {
+          "label": "B",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "start_offset": 4801,
+          "end_offset": 7413,
+          "sha256": "a0066844e40bc2040117b96fa70d05767fc4b800751fa895e48ac0c04ea12c9b",
+          "body_start_offset": 4803,
+          "body_end_offset": 6545,
+          "body_sha256": "bb715057468241e4439818a96252b5a69f14e05e2e631ab6ed43cf540ab9a4f8",
+          "source_member_id": "grade10-jinhua2025-21cnjy22399612.readingB",
+          "question_numbers": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 258
+        },
+        {
+          "label": "C",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "start_offset": 7414,
+          "end_offset": 10291,
+          "sha256": "aa3041b6bc8303847a061c05d3160e9a5bc9fdcacc0508b4cb1881fc3ed6d6c4",
+          "body_start_offset": 7416,
+          "body_end_offset": 9465,
+          "body_sha256": "b6cea8b01b44980312f762daefe85995ad534968b33c6fa329b53a699763e4f1",
+          "source_member_id": "grade10-jinhua2025-21cnjy22399612.readingC",
+          "question_numbers": [
+            28,
+            29,
+            30,
+            31
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 342
+        },
+        {
+          "label": "D",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "start_offset": 10292,
+          "end_offset": 13233,
+          "sha256": "29a623dcc0bb41aaed538dd0c2497ab3fb3981142fb71ae6fb84656ec2f337f2",
+          "body_start_offset": 10294,
+          "body_end_offset": 12331,
+          "body_sha256": "30fd5e47beeeb80b278603d492807d4f16a8abdbf01c368c7b65062cd8b6deab",
+          "source_member_id": "grade10-jinhua2025-21cnjy22399612.readingD",
+          "question_numbers": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 355
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "grade10-jinhua2025-21cnjy22399612.readingA",
+          "paper_id": "grade10-jinhua2025-21cnjy22399612",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade10-jinhua2025-21cnjy22399612.readingB",
+          "paper_id": "grade10-jinhua2025-21cnjy22399612",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade10-jinhua2025-21cnjy22399612.readingC",
+          "paper_id": "grade10-jinhua2025-21cnjy22399612",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade10-jinhua2025-21cnjy22399612.readingD",
+          "paper_id": "grade10-jinhua2025-21cnjy22399612",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 10
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+            "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "whole_objective_header": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade10-jinhua2025-21cnjy22399612-resource-v0.2.txt",
+          "sha256": "2ba20abc150fd4d74abf8c06cd5ade1c89348adb8dd827919342ea95e4fc1b28"
+        },
+        "start_offset": 2614,
+        "end_offset": 2676,
+        "text": "第一节 (共15小题;每小题2.5分,满分37.5分)\n阅读下列短文，从每题所给的A、B、C和D四个选项中，选出最佳选项。\n",
+        "sha256": "e4aa0bbd07b0c1d162648b2e0625d489d2013204944e04dd3193303e246766ed"
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_identity": "cached_public_repost_title_and_question_body_not_authenticated_school_release",
+      "source_title_as_seen": [
+        "金华十校2024—2025学年第一学期期末调研考试",
+        "高一英语试题卷"
+      ],
+      "source_material_english_words": 1239,
+      "source_members_full_input_confirmation_inherited": true,
+      "source_whole_header_and_all_candidate_rows_now_reverified": true,
+      "authors_genre_model_ready": true,
+      "genre_substructure_further_review_before_authoring": false,
+      "source_A_intro": "The following is a list of favorite books chosen by our readers. Try one, you might like it! If you have a favorite book you would like to share, let us know!\n",
+      "source_A_book_entries": [
+        {
+          "title": "The Perks of Being a Wallflower",
+          "relative_start": 159,
+          "relative_end": 537,
+          "sha256": "87963daecffd3aeefdbd16543fbfd9722ac8dca1a5e470b1c3209c07cfe25ad9"
+        },
+        {
+          "title": "Project Hail Mary",
+          "relative_start": 537,
+          "relative_end": 943,
+          "sha256": "e45965aa1bf2d6c6dfa8882c94c175891f5f90343debc04870b802fc4d98469c"
+        },
+        {
+          "title": "The Flatshare",
+          "relative_start": 943,
+          "relative_end": 1274,
+          "sha256": "887e31e0d0c0e70fe820e4923fc1135ae5c939b82e1510a950d927e39c822f2b"
+        },
+        {
+          "title": "The Great Gatsby",
+          "relative_start": 1274,
+          "relative_end": 1605,
+          "sha256": "19f62b996ede9553a318c3974f636d01685130ffdcb22ca13bd1809280eb206c"
+        }
+      ]
+    },
+    {
+      "id": "grade11-heze2026-21cnjy24886046.reading.complete_section",
+      "level": 11,
+      "kind": "reading_choice",
+      "responses": 15,
+      "options_each": 4,
+      "configuration": {
+        "responses": 15,
+        "options_each": 4,
+        "passage_count": 4,
+        "subgroup_count": 4,
+        "text_unit_count": 7,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 3,
+            "material_units": 4,
+            "genre": "four_family_program_profiles"
+          },
+          {
+            "label": "B",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "reported_personal_service_event"
+          },
+          {
+            "label": "C",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "informational_explanation"
+          },
+          {
+            "label": "D",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "research_comparison_report"
+          }
+        ],
+        "response_distribution": [
+          3,
+          4,
+          4,
+          4
+        ],
+        "points_each": 2,
+        "selected_objective_points": 30,
+        "all_selected_subgroups_mandatory": true,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "necessary_images": false,
+        "source_wordload_not_grade_limit": true,
+        "required_tables": [],
+        "required_lists": []
+      },
+      "source_spans": [
+        {
+          "label": "A",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "start_offset": 2924,
+          "end_offset": 5357,
+          "sha256": "f395415730ddf4875d239ffa27b3e7b2e59d6dd5e67a058fa3a0332e722d58a2",
+          "body_start_offset": 2926,
+          "body_end_offset": 4782,
+          "body_sha256": "ce3afa9eb9590ebf7d6b0a96595cd9aae24146904ef90093d07425a20aa06a2b",
+          "source_member_id": "grade11-heze2026-21cnjy24886046.readingA",
+          "question_numbers": [
+            21,
+            22,
+            23
+          ],
+          "material_unit_count": 4,
+          "body_English_words": 292
+        },
+        {
+          "label": "B",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "start_offset": 5358,
+          "end_offset": 7863,
+          "sha256": "2396f35f8a8670aeb8e525d5561103ce0cfd1e423f989e0b8509ffa86c98da19",
+          "body_start_offset": 5360,
+          "body_end_offset": 7116,
+          "body_sha256": "c4432afea4b6d18d2a5d5686fda7619ab1b8d9aa9ca0c3641bb4fc1da30766d5",
+          "source_member_id": "grade11-heze2026-21cnjy24886046.readingB",
+          "question_numbers": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 321
+        },
+        {
+          "label": "C",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "start_offset": 7864,
+          "end_offset": 10460,
+          "sha256": "6ce62a0bea0a530e06510f4e8a1891956231fa55b5fecb0c9c5e7d8ca8ad1d33",
+          "body_start_offset": 7866,
+          "body_end_offset": 9732,
+          "body_sha256": "e5018b556fa3c11b2f47684bf7038b20f352aa4ae6a28b70344d2270747c5898",
+          "source_member_id": "grade11-heze2026-21cnjy24886046.readingC",
+          "question_numbers": [
+            28,
+            29,
+            30,
+            31
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 312
+        },
+        {
+          "label": "D",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "start_offset": 10461,
+          "end_offset": 13190,
+          "sha256": "d64d6fabfa00adacfc3575966438567c057aa35ea2fe845af6cd6900493c2fc2",
+          "body_start_offset": 10463,
+          "body_end_offset": 12410,
+          "body_sha256": "c84d2a7387e5b38e1e3c420f3979732f5d6bcfbd9f2ad49d84607b60ccc3965d",
+          "source_member_id": "grade11-heze2026-21cnjy24886046.readingD",
+          "question_numbers": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 297
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "grade11-heze2026-21cnjy24886046.readingA",
+          "paper_id": "grade11-heze2026-21cnjy24886046",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade11-heze2026-21cnjy24886046.readingB",
+          "paper_id": "grade11-heze2026-21cnjy24886046",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade11-heze2026-21cnjy24886046.readingC",
+          "paper_id": "grade11-heze2026-21cnjy24886046",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade11-heze2026-21cnjy24886046.readingD",
+          "paper_id": "grade11-heze2026-21cnjy24886046",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text"
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+            "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "whole_objective_header": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade11-heze2026-21cnjy24886046-resource-v0.2.txt",
+          "sha256": "6fa585939ffbdbc3998aaa7240dbc3ca17d7bd5442564d08eb5f01fea8e33eff"
+        },
+        "start_offset": 2869,
+        "end_offset": 2924,
+        "text": "第一节（共15小题；每小题2分，满分30分）\n阅读下列短文，从题所给的A、B、C、D四个选项中选出最佳选项。\n",
+        "sha256": "a4593bd96d74ed80345c8aec033b5eb4a54ed177f9d26078718fe97e40eca20f"
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_identity": "cached_public_repost_title_and_question_body_not_authenticated_school_release",
+      "source_title_as_seen": [
+        "1月份教学诊断检测高二英语试题",
+        "（考试时间：120分钟  试卷满分：150分）"
+      ],
+      "source_material_english_words": 1222,
+      "source_members_full_input_confirmation_inherited": true,
+      "source_whole_header_and_all_candidate_rows_now_reverified": true,
+      "authors_genre_model_ready": false,
+      "genre_substructure_further_review_before_authoring": true
+    },
+    {
+      "id": "grade12-yali2026-21cnjy25133058.reading.complete_section",
+      "level": 12,
+      "kind": "reading_choice",
+      "responses": 15,
+      "options_each": 4,
+      "configuration": {
+        "responses": 15,
+        "options_each": 4,
+        "passage_count": 4,
+        "subgroup_count": 4,
+        "text_unit_count": 4,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 3,
+            "material_units": 1,
+            "genre": "graduation_requirement_notice"
+          },
+          {
+            "label": "B",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "reported_conservation_work"
+          },
+          {
+            "label": "C",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "informational_explanation"
+          },
+          {
+            "label": "D",
+            "responses": 4,
+            "material_units": 1,
+            "genre": "research_report"
+          }
+        ],
+        "response_distribution": [
+          3,
+          4,
+          4,
+          4
+        ],
+        "points_each": 2.5,
+        "selected_objective_points": 37.5,
+        "all_selected_subgroups_mandatory": true,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "necessary_images": false,
+        "source_wordload_not_grade_limit": true,
+        "required_tables": [],
+        "required_lists": [
+          "A.credit_requirements"
+        ]
+      },
+      "source_spans": [
+        {
+          "label": "A",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "start_offset": 3244,
+          "end_offset": 5491,
+          "sha256": "e40334d68001c92907add2a3b0df20c7e5539865b78c7aa3c304e44691956064",
+          "body_start_offset": 3246,
+          "body_end_offset": 4965,
+          "body_sha256": "23975ce09389fd36e1b060294979e295a287f3318cad1a161871e2680944984d",
+          "source_member_id": "grade12-yali2026-21cnjy25133058.readingA",
+          "question_numbers": [
+            21,
+            22,
+            23
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 197
+        },
+        {
+          "label": "B",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "start_offset": 5492,
+          "end_offset": 8382,
+          "sha256": "1cd8368f51677e9d6584b4526e4aeed99b96e3e9702d1e7cbe0a5c93507c1541",
+          "body_start_offset": 5494,
+          "body_end_offset": 7440,
+          "body_sha256": "c62fca66a9d7f1e85f34829d5983df195fa990903424cb98d4c9ef4cf2fc23e1",
+          "source_member_id": "grade12-yali2026-21cnjy25133058.readingB",
+          "question_numbers": [
+            24,
+            25,
+            26,
+            27
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 313
+        },
+        {
+          "label": "C",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "start_offset": 8383,
+          "end_offset": 11446,
+          "sha256": "000f1c83b9c178d06a414db2bb01f37c6309ac4f20b47fb2c6a7c5b4e1569b5c",
+          "body_start_offset": 8385,
+          "body_end_offset": 10612,
+          "body_sha256": "b03f1f35f90ac8d371c399fe442654a8f0fe7a96b588266a7f2c7eeeaebef4ba",
+          "source_member_id": "grade12-yali2026-21cnjy25133058.readingC",
+          "question_numbers": [
+            28,
+            29,
+            30,
+            31
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 349
+        },
+        {
+          "label": "D",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "start_offset": 11447,
+          "end_offset": 14575,
+          "sha256": "b3ce8496c3db1913c48b7e8ee358c3e9353cfc2d8436a99ba4cc3204f890eb52",
+          "body_start_offset": 11449,
+          "body_end_offset": 13535,
+          "body_sha256": "a55849a26d872688dc537f0db7fa4f3a573bc60796374b42d131f5df124fb154",
+          "source_member_id": "grade12-yali2026-21cnjy25133058.readingD",
+          "question_numbers": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 294
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "grade12-yali2026-21cnjy25133058.readingA",
+          "paper_id": "grade12-yali2026-21cnjy25133058",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "A",
+              "input": "text",
+              "source_fact_risk": true,
+              "source_candidate_multiple_supported_options": false,
+              "source_key_question29": null
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade12-yali2026-21cnjy25133058.readingB",
+          "paper_id": "grade12-yali2026-21cnjy25133058",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "B",
+              "input": "text",
+              "source_fact_risk": false,
+              "source_candidate_multiple_supported_options": false,
+              "source_key_question29": null
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade12-yali2026-21cnjy25133058.readingC",
+          "paper_id": "grade12-yali2026-21cnjy25133058",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "C",
+              "input": "text",
+              "source_fact_risk": true,
+              "source_candidate_multiple_supported_options": true,
+              "source_key_question29": "D"
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade12-yali2026-21cnjy25133058.readingD",
+          "paper_id": "grade12-yali2026-21cnjy25133058",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "necessary_input_complete": true,
+              "part": "D",
+              "input": "text",
+              "source_fact_risk": true,
+              "source_candidate_multiple_supported_options": false,
+              "source_key_question29": null
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+            "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "whole_objective_header": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade12-yali2026-21cnjy25133058-resource-v0.2.txt",
+          "sha256": "fecd3c5bdf20afd828a5d8d304ce9136a2c57409d3219e29b4e1dd9c588b00a5"
+        },
+        "start_offset": 3182,
+        "end_offset": 3244,
+        "text": "第一节 (共15 小题;每小题2.5分,满分37.5分)\n阅读下列短文，从每题所给的A、B、C、D四个选项中选出最佳选项。\n",
+        "sha256": "1bf7d616e281f2fa9e895a049391c0a44f0f071a0852670993e92882720029ca"
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_identity": "cached_public_repost_title_and_question_body_not_authenticated_school_release",
+      "source_title_as_seen": [
+        "高三英语",
+        "本试题卷分为听力、阅读、语言运用和写作四个部分，共10页。时量120分钟。满分150分。"
+      ],
+      "source_material_english_words": 1153,
+      "source_members_full_input_confirmation_inherited": true,
+      "source_whole_header_and_all_candidate_rows_now_reverified": true,
+      "authors_genre_model_ready": false,
+      "genre_substructure_further_review_before_authoring": true
+    },
+    {
+      "id": "grade11-tianjin2026-21cnjy26082071.reading.complete_section",
+      "level": 11,
+      "kind": "reading_choice",
+      "responses": 15,
+      "options_each": 4,
+      "configuration": {
+        "responses": 15,
+        "options_each": 4,
+        "passage_count": 3,
+        "subgroup_count": 3,
+        "text_unit_count": 3,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "service_notice_with_fee_table"
+          },
+          {
+            "label": "B",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "personal_narrative"
+          },
+          {
+            "label": "C",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "informational_report"
+          }
+        ],
+        "response_distribution": [
+          5,
+          5,
+          5
+        ],
+        "points_each": 2.5,
+        "selected_objective_points": 37.5,
+        "all_selected_subgroups_mandatory": true,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "necessary_images": false,
+        "source_wordload_not_grade_limit": true,
+        "required_tables": [
+          "A.fee_table"
+        ],
+        "required_lists": []
+      },
+      "source_spans": [
+        {
+          "label": "A",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+            "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+          },
+          "start_offset": 8407,
+          "end_offset": 11366,
+          "sha256": "99a73e8171bf68c0384be3769fdfaf139e282235349574a4f64d53458a324c48",
+          "body_start_offset": 8409,
+          "body_end_offset": 10065,
+          "body_sha256": "d877a7f11fb5229344181394f45865bf21a0b4c09b3aca4cf64f645db06dd290",
+          "source_member_id": "grade11-tianjin2026-21cnjy26082071.readingA",
+          "question_numbers": [
+            51,
+            52,
+            53,
+            54,
+            55
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 267
+        },
+        {
+          "label": "B",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+            "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+          },
+          "start_offset": 11367,
+          "end_offset": 15224,
+          "sha256": "4cdeffc95ab4e04de2e9ec1a1178cdb61b1458a82da847e2d6428c69432a7bcc",
+          "body_start_offset": 11369,
+          "body_end_offset": 13983,
+          "body_sha256": "5e4b00b6cb5b4d6615865513b74aea3cc82c57db062b077c1871418b7fb0e858",
+          "source_member_id": "grade11-tianjin2026-21cnjy26082071.readingB",
+          "question_numbers": [
+            56,
+            57,
+            58,
+            59,
+            60
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 450
+        },
+        {
+          "label": "C",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+            "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+          },
+          "start_offset": 15225,
+          "end_offset": 19270,
+          "sha256": "bf95e2054a6b04dc3ae9449bce0e1537a5bdc32bbd8409d6fe7568ed7e6aa4d6",
+          "body_start_offset": 15227,
+          "body_end_offset": 17845,
+          "body_sha256": "80c9f94059d5a1de9916bb009544cf19afc3f208a5cb8e26c779367009db5a08",
+          "source_member_id": "grade11-tianjin2026-21cnjy26082071.readingC",
+          "question_numbers": [
+            61,
+            62,
+            63,
+            64,
+            65
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 410
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "grade11-tianjin2026-21cnjy26082071.readingA",
+          "paper_id": "grade11-tianjin2026-21cnjy26082071",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "A",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+            "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade11-tianjin2026-21cnjy26082071.readingB",
+          "paper_id": "grade11-tianjin2026-21cnjy26082071",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "B",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+            "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade11-tianjin2026-21cnjy26082071.readingC",
+          "paper_id": "grade11-tianjin2026-21cnjy26082071",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "C",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 11
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+            "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "whole_objective_header": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade11-tianjin2026-21cnjy26082071-resource-v0.2.txt",
+          "sha256": "10fb2080d59120dae6c64cd8748dd000a624a1b6279a7f56f73592c100d6e868"
+        },
+        "start_offset": 8342,
+        "end_offset": 8407,
+        "text": "第三节：阅读理解（共15小题，每小题2.5分，满分37.5分）\n阅读下列短文，从每题所给的A、B、C、D四个选项中选出最佳选项。\n",
+        "sha256": "5e37208056a75035fc1f5e506ce8d177725a7708e3b5944b603c9a8a914f1222"
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_identity": "cached_public_repost_title_and_question_body_not_authenticated_school_release",
+      "source_title_as_seen": [
+        "高二年级英语学科第二次质量检测试卷",
+        "本试卷分第I卷（选择题）和第II卷两部分，满分150分，考试时间100分钟。"
+      ],
+      "source_material_english_words": 1127,
+      "source_members_full_input_confirmation_inherited": true,
+      "source_whole_header_and_all_candidate_rows_now_reverified": true,
+      "authors_genre_model_ready": false,
+      "genre_substructure_further_review_before_authoring": true
+    },
+    {
+      "id": "grade12-tianjinlower2025-21cnjy22402528.reading.complete_section",
+      "level": 12,
+      "kind": "reading_choice",
+      "responses": 20,
+      "options_each": 4,
+      "configuration": {
+        "responses": 20,
+        "options_each": 4,
+        "passage_count": 4,
+        "subgroup_count": 4,
+        "text_unit_count": 4,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "advice_article_with_steps"
+          },
+          {
+            "label": "B",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "personal_letter_narrative"
+          },
+          {
+            "label": "C",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "migration_research_report"
+          },
+          {
+            "label": "D",
+            "responses": 5,
+            "material_units": 1,
+            "genre": "survey_report"
+          }
+        ],
+        "response_distribution": [
+          5,
+          5,
+          5,
+          5
+        ],
+        "points_each": 2.5,
+        "selected_objective_points": 50,
+        "all_selected_subgroups_mandatory": true,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "necessary_images": false,
+        "source_wordload_not_grade_limit": true,
+        "required_tables": [],
+        "required_lists": [
+          "A.numbered_advice_steps"
+        ]
+      },
+      "source_spans": [
+        {
+          "label": "A",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "start_offset": 6174,
+          "end_offset": 9556,
+          "sha256": "d3fc5ac5ef2caa791715a9f939218c23e0ec5cfe0b4dd9cd14230898d43a82f9",
+          "body_start_offset": 6176,
+          "body_end_offset": 8394,
+          "body_sha256": "38492b8b5461a3494da86cbe5204bd7e8c7e710658e4927015e2f317f99dc344",
+          "source_member_id": "grade12-tianjinlower2025-21cnjy22402528.readingA",
+          "question_numbers": [
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 402
+        },
+        {
+          "label": "B",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "start_offset": 9557,
+          "end_offset": 12758,
+          "sha256": "fcc8bd1b12c643b278949952d36df8d1e207a4072612109eddd612801e90c2db",
+          "body_start_offset": 9559,
+          "body_end_offset": 11665,
+          "body_sha256": "a62d98cdc1981ed51cbe2abf033f582eda654f1a1248d7854ac3643c803e3ea0",
+          "source_member_id": "grade12-tianjinlower2025-21cnjy22402528.readingB",
+          "question_numbers": [
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 367
+        },
+        {
+          "label": "C",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "start_offset": 12759,
+          "end_offset": 16124,
+          "sha256": "4b0942553a0d1b448a4d00a5de39688f3c18443cc45d363e0d829ff50d645d4d",
+          "body_start_offset": 12761,
+          "body_end_offset": 14779,
+          "body_sha256": "aeaa288d5258ca064c15062ffc5a70a1ef07675545e932a8a747321b4c323bdb",
+          "source_member_id": "grade12-tianjinlower2025-21cnjy22402528.readingC",
+          "question_numbers": [
+            46,
+            47,
+            48,
+            49,
+            50
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 309
+        },
+        {
+          "label": "D",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "start_offset": 16125,
+          "end_offset": 20169,
+          "sha256": "b40082c55a18a0408313ac03c8533b859826157dbc808c9b6b5fc6c87bc60ce5",
+          "body_start_offset": 16127,
+          "body_end_offset": 18728,
+          "body_sha256": "78d2f98746af8e23ede2e4da59be6889244666240852b4d9c6aaada7fa67c335",
+          "source_member_id": "grade12-tianjinlower2025-21cnjy22402528.readingD",
+          "question_numbers": [
+            51,
+            52,
+            53,
+            54,
+            55
+          ],
+          "material_unit_count": 1,
+          "body_English_words": 414
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "grade12-tianjinlower2025-21cnjy22402528.readingA",
+          "paper_id": "grade12-tianjinlower2025-21cnjy22402528",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "A",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade12-tianjinlower2025-21cnjy22402528.readingB",
+          "paper_id": "grade12-tianjinlower2025-21cnjy22402528",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "B",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade12-tianjinlower2025-21cnjy22402528.readingC",
+          "paper_id": "grade12-tianjinlower2025-21cnjy22402528",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "C",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "grade12-tianjinlower2025-21cnjy22402528.readingD",
+          "paper_id": "grade12-tianjinlower2025-21cnjy22402528",
+          "shape": {
+            "family": "reading_choice",
+            "responses": 5,
+            "options_each": 4,
+            "details": {
+              "part": "D",
+              "input": "text",
+              "necessary_input_complete": true
+            },
+            "grade": 12
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+            "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "whole_objective_header": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade12-tianjinlower2025-21cnjy22402528-resource-v0.2.txt",
+          "sha256": "159ed9a866323258745e6a4f33c540c731d66f1e27f9894da0a89cefc92f3ee5"
+        },
+        "start_offset": 6108,
+        "end_offset": 6174,
+        "text": "第二部分：阅读理解 (共20小题;每小题2.5分，满分50分)\n阅读下列短文，从每题所给的A、B、C、D四个选项中，选出最佳选项。\n",
+        "sha256": "1b754b3f533c2691502ce4e837f1e75b5b8af2b2ae53139eed502c198a483a31"
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_identity": "cached_public_repost_title_and_question_body_not_authenticated_school_release",
+      "source_title_as_seen": [
+        "笔试",
+        "天津市第二十五中学2024-2025年高三下学期开学考"
+      ],
+      "source_material_english_words": 1492,
+      "source_members_full_input_confirmation_inherited": true,
+      "source_whole_header_and_all_candidate_rows_now_reverified": true,
+      "authors_genre_model_ready": false,
+      "genre_substructure_further_review_before_authoring": true,
+      "genre_label_correction": "Initial structural placeholder extended_notice replaced after opening body: A is an advice article with steps; B a granddaughter-addressed personal letter narrative. Other genres remain provisional until full author model review."
+    }
+  ],
+  "new_source_downloads": 0,
+  "new_authenticated_school_papers": 0
+}
