@@ -78,14 +78,18 @@ struct LearningTrialView: View {
                         .accessibilityIdentifier("learning.trial.resume")
                 }
             }
-            if let message = model.error ?? rosterError {
-                Section { Text(message).foregroundStyle(.red); Button("重新加载") { Task { await load() } } }
-            }
-            if let notice = model.notice { Section { Text(notice).foregroundStyle(.secondary) } }
         }
         .disabled(model.isBusy)
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 8) {
+                if let message = model.error ?? rosterError {
+                    Text(message).font(.footnote).foregroundStyle(.red)
+                    Button("重新加载") { Task { await load() } }
+                        .disabled(model.isBusy)
+                }
+                if let notice = model.notice {
+                    Text(notice).font(.footnote).foregroundStyle(.secondary)
+                }
                 if let current = model.journey?.currentLevel {
                     Text("账号当前档位：\(DifficultyLevel(rawValue: current)?.displayName ?? current)")
                         .font(.caption).foregroundStyle(.secondary)
@@ -108,7 +112,11 @@ struct LearningTrialView: View {
         .navigationTitle("学习实测")
         .navigationBarTitleDisplayMode(.inline)
         .task { await load() }
-        .task(id: selectedCharacterID) { await model.load(characterID: selectedCharacterID) }
+        .onChange(of: selectedCharacterID) { previous, current in
+            // 首次选旅伴由 load() 顺序完成；避免 id 变化取消正在读取的初始请求。
+            guard previous != nil else { return }
+            Task { await model.load(characterID: current) }
+        }
         .fullScreenCover(item: $model.presentedAttempt, onDismiss: {
             Task { await model.load(characterID: selectedCharacterID) }
         }) { attempt in

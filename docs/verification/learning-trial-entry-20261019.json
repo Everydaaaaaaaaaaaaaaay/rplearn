@@ -1,6 +1,6 @@
 {
   "date": "2026-10-19",
-  "status": "native_entry_implemented_real_sign_in_pending",
+  "status": "authenticated_catalog_read_startup_fix_installed_waiting_for_sign_in",
   "research_stopped_by_owner": true,
   "research_close": "Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/ResearchRoundCloseForLearningTrial-v0.1.json",
   "entry": "Debug App / 我的 / 学习实测 · 切换档位做题",
@@ -28,7 +28,7 @@
     "ios_architecture": "passed",
     "shell_syntax": "passed",
     "latest_build_installed": true,
-    "native_computer_use": "real sign-in screen observed; no authenticated UI test yet"
+    "native_computer_use": "signed-in catalog read succeeded after explicit reload; first-load cancellation race corrected and compiled; reinstall returned to sign-in gate, normal restore retry did not restore it"
   },
   "evidence": [
     {
@@ -46,11 +46,38 @@
     {
       "path": "build/learning-trial-login-20261019.png",
       "sha256": "30395659a78a0b7cfa9bf645ceccb23dbbee38861437e91bb5678c3201dee997"
+    },
+    {
+      "path": "build/learning-trial-authenticated-build.log",
+      "sha256": "c06690628522540bf0da04cfbd9e0668604628fe3611c2e67aa4eddc96d08c98"
+    },
+    {
+      "path": "build/learning-trial-auth-restore-retry.log",
+      "sha256": "1e0ddbc033a8ac01ffb5cbacd9d5469b4359b91d51eb4e6791ab7397d9cd934c"
     }
   ],
   "pending": [
-    "owner signs in through the native login screen; no password sent in chat",
-    "authenticated 15-level navigation, actual native submission, media playback and result readback"
+    "owner signs in once more after the corrected app installation; no further restart planned",
+    "verify corrected first load, remaining live level counts, actual native submission and media playback"
   ],
-  "independent_teacher_student_validation_not_claimed": true
+  "independent_teacher_student_validation_not_claimed": true,
+  "observed_live_catalog_counts": {
+    "primary6": 6,
+    "junior1": 6,
+    "junior2": 6,
+    "junior3": 9,
+    "senior1": 8,
+    "senior2": 11,
+    "senior3": 8,
+    "undergraduate": 2,
+    "postgraduate": 2,
+    "advanced": 2
+  },
+  "live_observation_limits": "Counts were read from native accessibility output after authenticated reload; primary1to5 counts and native answers/media are not yet verified.",
+  "startup_fix": {
+    "change": "one initial roster+catalog load; later non-initial companion selections refresh without cancelling the initial request",
+    "error_visibility": "errors and retry action moved to fixed footer",
+    "build": "passed",
+    "manual_first_load_after_fix": "pending renewed native sign-in"
+  }
 }
