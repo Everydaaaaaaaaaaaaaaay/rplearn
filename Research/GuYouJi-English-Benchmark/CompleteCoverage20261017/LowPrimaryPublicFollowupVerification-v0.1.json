@@ -1,0 +1,53 @@
+{
+  "version": "0.1",
+  "followup": {
+    "path": "CompleteCoverage20261017/MainlandLowPrimaryClosedActivityFollowup-v0.8.json",
+    "sha256": "254295b953c5cb53b2739753cc704d801585ce43a3d9d5629d685ae7ecbf32fd"
+  },
+  "plan": {
+    "path": "CompleteCoverage20261017/ReviewPlan-v0.314.json",
+    "sha256": "439368228dc854e248a2f6e17d24e1002f064fef7ea1dc62682810221ad2ab85"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.193.json",
+    "sha256": "0f494d7a4dc5c1230e4c4e7d0b4a0daf723054546fb56a13740691afc395c9c6"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/lowprimary691-public-readers-v0.1.json",
+        "sha256": "412e2d44f6767396a09ea15fbef6370ab77dfdbfb84210e3a9d3c883c2d72ad5"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/lowprimary691-linked-evaluation-portals-v0.1.json",
+        "sha256": "1429a49ecc7d69fa3bd739b9d264ce21fcf6fe5b5486663aa396ad66f2d1c12b"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "new_assets": 4,
+  "new_bytes": 57256,
+  "new_full_snapshots": 0,
+  "current_groups": 691,
+  "current_responses": 4901,
+  "populated_family_cells": 195,
+  "remaining_specific_modes": 5,
+  "remaining_restored_cloze_originals": 15,
+  "new_source_whole_groups": 0,
+  "new_author_groups": 0,
+  "all_payloads_and_pins_reused": true,
+  "student_marking_code_or_questions_changed": false,
+  "UI_evidence_reused": {
+    "path": "build/english-benchmark-authority-20261017/cloze691-browser-v0.1.json",
+    "sha256": "33482fcf0027a7dc65867d0af4ae8892acef9d1c0c4111bdb1911a6885d1c918"
+  },
+  "source_cases_school_design_score_not_student_English_score": true,
+  "closed_or_paused_sites_not_bypassed": true,
+  "school_links_not_contacted": true,
+  "full_lowprimary_closed_input_bundle_still_unknown": true,
+  "user_no_links_not_waiting_for_user_upload": true,
+  "goal_complete": false
+}
