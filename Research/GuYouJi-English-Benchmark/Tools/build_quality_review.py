@@ -163,6 +163,9 @@ def full_markdown_candidate(meta):
     if audit.get('school_closed_mixed_reading11'):
         from mixed_closed_reading_contract import render_target
         passage_html = render_target(passage_html, audit)
+    if audit.get('junior_shared_device_picture_reading11'):
+        from device_reading_contract import render_phrase
+        passage_html = render_phrase(passage_html, audit)
     teacher_html = material_view(teacher)
     if '\n' in closing:
         teacher_html = teacher_html.replace(html.escape(closing), html.escape(closing).replace('\n', '<br>'))

@@ -58,6 +58,9 @@ def check(data, plan):
             if b.get('task_mode') == 'school_closed_mixed_reading11':
                 from mixed_closed_reading_contract import check as check_closed_mixed
                 check_closed_mixed(g,a,b,source)
+            if b.get('task_mode') == 'junior_shared_device_picture_reading11':
+                from device_reading_contract import check as check_device_reading
+                check_device_reading(g,a,b,source)
             if b.get('task_mode') == 'school_senior_caves_friendship_river_forecast15':
                 from senior_river_reading_contract import check as check_senior_river
                 check_senior_river(g,a,b,source)
