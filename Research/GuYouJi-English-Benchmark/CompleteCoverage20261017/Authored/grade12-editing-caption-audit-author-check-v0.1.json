@@ -1,0 +1,219 @@
+{
+  "version": "0.1",
+  "id": "grade12-editing-caption-audit",
+  "grade": 12,
+  "questions": 10,
+  "candidate_sha256": "e3a8ec7c02bc4d40297d11993eca212490de37193c5b70a0ee92f8ba22c94864",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.2.json",
+    "sha256": "c7f0b42d1014e640de95d81694037c92f97ae723da5eeac626787f78c12a1f97"
+  },
+  "source_binding": "g12-unhinted10-word-editing",
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "author_grammar_and_corrected_variant_review": true,
+  "word_editing": {
+    "version": 1,
+    "errors": 10,
+    "firstScoredEdits": 10,
+    "wordsPerEdit": 1,
+    "maxEditsPerSentence": 2,
+    "order": "any",
+    "unlisted": "review",
+    "normalization": "non_case_target_word_v1",
+    "caseOnlyTargets": false,
+    "sentences": [
+      "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive.",
+      "We soon found that three photograph had been placed under the wrong dates.",
+      "A handwritten note suggested that the oldest picture was took outside the first school building.",
+      "Instead of accept the note immediately, we compared the window shapes with a second picture.",
+      "The volunteer showed us the second picture had worked in the archive for years, and she explained her doubts patient.",
+      "She asked us look for evidence in the building records rather than guess from the clothes people wore.",
+      "One record included an useful sketch, but its date was difficult to read.",
+      "After examine the original page, we agreed that the caption should mention the uncertainty.",
+      "We did not presented the suggested date as a fact, which made our account more careful rather than less useful.",
+      "Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was more clearer."
+    ]
+  },
+  "student_passage": "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive.\n\nWe soon found that three photograph had been placed under the wrong dates.\n\nA handwritten note suggested that the oldest picture was took outside the first school building.\n\nInstead of accept the note immediately, we compared the window shapes with a second picture.\n\nThe volunteer showed us the second picture had worked in the archive for years, and she explained her doubts patient.\n\nShe asked us look for evidence in the building records rather than guess from the clothes people wore.\n\nOne record included an useful sketch, but its date was difficult to read.\n\nAfter examine the original page, we agreed that the caption should mention the uncertainty.\n\nWe did not presented the suggested date as a fact, which made our account more careful rather than less useful.\n\nVisitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was more clearer.",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "修改记录1（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 2,
+          "position": 6,
+          "operation": "replace",
+          "text": "photographs"
+        }
+      ],
+      "rationale": "three photographs复数，不按最古老一张的后续讨论把三张改成单数。"
+    },
+    {
+      "number": 2,
+      "stem": "修改记录2（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 3,
+          "position": 10,
+          "operation": "replace",
+          "text": "taken"
+        }
+      ],
+      "rationale": "照片被拍摄，was taken需要过去分词taken。"
+    },
+    {
+      "number": 3,
+      "stem": "修改记录3（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 4,
+          "position": 3,
+          "operation": "replace",
+          "text": "accepting"
+        }
+      ],
+      "rationale": "Instead of后用accepting。"
+    },
+    {
+      "number": 4,
+      "stem": "修改记录4（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 3,
+          "operation": "insert",
+          "text": "who"
+        },
+        {
+          "sentence": 5,
+          "position": 3,
+          "operation": "insert",
+          "text": "that"
+        },
+        {
+          "sentence": 5,
+          "position": 3,
+          "operation": "replace",
+          "text": "showing"
+        }
+      ],
+      "rationale": "volunteer与had worked为主句主语谓语，中间展示照片的信息需who/that从句或showing主动分词定语。"
+    },
+    {
+      "number": 5,
+      "stem": "修改记录5（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 20,
+          "operation": "replace",
+          "text": "patiently"
+        }
+      ],
+      "rationale": "修饰explained，用patiently。"
+    },
+    {
+      "number": 6,
+      "stem": "修改记录6（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 6,
+          "position": 4,
+          "operation": "insert",
+          "text": "to"
+        }
+      ],
+      "rationale": "asked us to look，加to；rather than guess与不定式内容对照，其原形不另计错。"
+    },
+    {
+      "number": 7,
+      "stem": "修改记录7（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 4,
+          "operation": "replace",
+          "text": "a"
+        }
+      ],
+      "rationale": "useful以辅音/j/开头，用a useful sketch。"
+    },
+    {
+      "number": 8,
+      "stem": "修改记录8（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 2,
+          "operation": "replace",
+          "text": "examining"
+        }
+      ],
+      "rationale": "After后无独立主语，动名词examining。"
+    },
+    {
+      "number": 9,
+      "stem": "修改记录9（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 4,
+          "operation": "replace",
+          "text": "present"
+        }
+      ],
+      "rationale": "did not后用原形present。"
+    },
+    {
+      "number": 10,
+      "stem": "修改记录10（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 10,
+          "position": 23,
+          "operation": "delete",
+          "text": ""
+        },
+        {
+          "sentence": 10,
+          "position": 24,
+          "operation": "replace",
+          "text": "clear"
+        }
+      ],
+      "rationale": "more clearer重复比较，可删more，也可clearer改clear成为more clear；同一处问题的两种一词修法。"
+    }
+  ],
+  "canonical_response_block_sha256": "f6005bf3f988e224e57eec7ec2283124bee461a460c2be1ae23fd4a983ceed26",
+  "corrected_passage_variants": [
+    "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive. We soon found that three photographs had been placed under the wrong dates. A handwritten note suggested that the oldest picture was taken outside the first school building. Instead of accepting the note immediately, we compared the window shapes with a second picture. The volunteer who showed us the second picture had worked in the archive for years, and she explained her doubts patiently. She asked us to look for evidence in the building records rather than guess from the clothes people wore. One record included a useful sketch, but its date was difficult to read. After examining the original page, we agreed that the caption should mention the uncertainty. We did not present the suggested date as a fact, which made our account more careful rather than less useful. Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was clearer.",
+    "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive. We soon found that three photographs had been placed under the wrong dates. A handwritten note suggested that the oldest picture was taken outside the first school building. Instead of accepting the note immediately, we compared the window shapes with a second picture. The volunteer who showed us the second picture had worked in the archive for years, and she explained her doubts patiently. She asked us to look for evidence in the building records rather than guess from the clothes people wore. One record included a useful sketch, but its date was difficult to read. After examining the original page, we agreed that the caption should mention the uncertainty. We did not present the suggested date as a fact, which made our account more careful rather than less useful. Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was more clear.",
+    "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive. We soon found that three photographs had been placed under the wrong dates. A handwritten note suggested that the oldest picture was taken outside the first school building. Instead of accepting the note immediately, we compared the window shapes with a second picture. The volunteer that showed us the second picture had worked in the archive for years, and she explained her doubts patiently. She asked us to look for evidence in the building records rather than guess from the clothes people wore. One record included a useful sketch, but its date was difficult to read. After examining the original page, we agreed that the caption should mention the uncertainty. We did not present the suggested date as a fact, which made our account more careful rather than less useful. Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was clearer.",
+    "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive. We soon found that three photographs had been placed under the wrong dates. A handwritten note suggested that the oldest picture was taken outside the first school building. Instead of accepting the note immediately, we compared the window shapes with a second picture. The volunteer that showed us the second picture had worked in the archive for years, and she explained her doubts patiently. She asked us to look for evidence in the building records rather than guess from the clothes people wore. One record included a useful sketch, but its date was difficult to read. After examining the original page, we agreed that the caption should mention the uncertainty. We did not present the suggested date as a fact, which made our account more careful rather than less useful. Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was more clear.",
+    "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive. We soon found that three photographs had been placed under the wrong dates. A handwritten note suggested that the oldest picture was taken outside the first school building. Instead of accepting the note immediately, we compared the window shapes with a second picture. The volunteer showing us the second picture had worked in the archive for years, and she explained her doubts patiently. She asked us to look for evidence in the building records rather than guess from the clothes people wore. One record included a useful sketch, but its date was difficult to read. After examining the original page, we agreed that the caption should mention the uncertainty. We did not present the suggested date as a fact, which made our account more careful rather than less useful. Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was clearer.",
+    "When our school prepared an exhibition of old photographs, I joined a team that checked the captions against the archive. We soon found that three photographs had been placed under the wrong dates. A handwritten note suggested that the oldest picture was taken outside the first school building. Instead of accepting the note immediately, we compared the window shapes with a second picture. The volunteer showing us the second picture had worked in the archive for years, and she explained her doubts patiently. She asked us to look for evidence in the building records rather than guess from the clothes people wore. One record included a useful sketch, but its date was difficult to read. After examining the original page, we agreed that the caption should mention the uncertainty. We did not present the suggested date as a fact, which made our account more careful rather than less useful. Visitors could then see both our conclusion and the evidence on which it was based, and several said that this approach was more clear."
+  ],
+  "full_edit_variant_combinations": 6,
+  "load_measure": {
+    "body_English_words": 172,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 0,
+    "output_requirement": "十处位置+操作+单词，不是十段自由表达"
+  }
+}

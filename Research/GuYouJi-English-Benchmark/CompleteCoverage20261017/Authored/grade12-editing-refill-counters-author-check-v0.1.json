@@ -1,0 +1,211 @@
+{
+  "version": "0.1",
+  "id": "grade12-editing-refill-counters",
+  "grade": 12,
+  "questions": 10,
+  "candidate_sha256": "de20f499c2f7640105e83a2dee2caef152924e45ed62dd950eef8e9a35674470",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.2.json",
+    "sha256": "c7f0b42d1014e640de95d81694037c92f97ae723da5eeac626787f78c12a1f97"
+  },
+  "source_binding": "g12-unhinted10-word-editing",
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "author_grammar_and_corrected_variant_review": true,
+  "word_editing": {
+    "version": 1,
+    "errors": 10,
+    "firstScoredEdits": 10,
+    "wordsPerEdit": 1,
+    "maxEditsPerSentence": 2,
+    "order": "any",
+    "unlisted": "review",
+    "normalization": "non_case_target_word_v1",
+    "caseOnlyTargets": false,
+    "sentences": [
+      "During a school project, our group compared two ways of recording how often students used a bottle-refill point.",
+      "At first, we placed a sheet beside the tap and asked each user add a mark.",
+      "The number of marks were low, although the caretaker said that the area had been busy.",
+      "Rather than concluding that few students used the tap, we watched the process careful during one lunch break.",
+      "Several student filled their bottles but left without noticing the sheet, which was partly hidden behind a sign.",
+      "We moved the sheet and tested a second method that did not depended on users writing anything.",
+      "A volunteer counted each visit, while another observer checked that the same person was not counted two time during a single visit.",
+      "Comparing the records helped us recognised that the first method had missed visits, not that the tap itself had become more popular.",
+      "Before present our findings, we agreed that neither method were perfect and made a note of the remaining limits.",
+      "The teacher accepted our revision and asked us to to keep the limits clear in the final report."
+    ]
+  },
+  "student_passage": "During a school project, our group compared two ways of recording how often students used a bottle-refill point.\n\nAt first, we placed a sheet beside the tap and asked each user add a mark.\n\nThe number of marks were low, although the caretaker said that the area had been busy.\n\nRather than concluding that few students used the tap, we watched the process careful during one lunch break.\n\nSeveral student filled their bottles but left without noticing the sheet, which was partly hidden behind a sign.\n\nWe moved the sheet and tested a second method that did not depended on users writing anything.\n\nA volunteer counted each visit, while another observer checked that the same person was not counted two time during a single visit.\n\nComparing the records helped us recognised that the first method had missed visits, not that the tap itself had become more popular.\n\nBefore present our findings, we agreed that neither method were perfect and made a note of the remaining limits.\n\nThe teacher accepted our revision and asked us to to keep the limits clear in the final report.",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "修改记录1（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 2,
+          "position": 14,
+          "operation": "insert",
+          "text": "to"
+        }
+      ],
+      "rationale": "asked each user to add，加to在add前。"
+    },
+    {
+      "number": 2,
+      "stem": "修改记录2（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 3,
+          "position": 5,
+          "operation": "replace",
+          "text": "was"
+        }
+      ],
+      "rationale": "The number作中心主语，was low；marks不是主句中心主语。"
+    },
+    {
+      "number": 3,
+      "stem": "修改记录3（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 4,
+          "position": 14,
+          "operation": "replace",
+          "text": "carefully"
+        }
+      ],
+      "rationale": "修饰watched，用carefully。"
+    },
+    {
+      "number": 4,
+      "stem": "修改记录4（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 2,
+          "operation": "replace",
+          "text": "students"
+        }
+      ],
+      "rationale": "Several students明确复数。"
+    },
+    {
+      "number": 5,
+      "stem": "修改记录5（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 6,
+          "position": 13,
+          "operation": "replace",
+          "text": "depend"
+        }
+      ],
+      "rationale": "did not后原形depend。"
+    },
+    {
+      "number": 6,
+      "stem": "修改记录6（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 18,
+          "operation": "replace",
+          "text": "times"
+        }
+      ],
+      "rationale": "two times表示同一次访问被重复计两次，times用复数；不能按时间不可数义保留two time。"
+    },
+    {
+      "number": 7,
+      "stem": "修改记录7（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 6,
+          "operation": "replace",
+          "text": "recognise"
+        },
+        {
+          "sentence": 8,
+          "position": 6,
+          "operation": "replace",
+          "text": "recognize"
+        }
+      ],
+      "rationale": "helped us后可直接接原形recognise/recognize；英国和美国拼写同等接受。此次一词修法不额外添加to。"
+    },
+    {
+      "number": 8,
+      "stem": "修改记录8（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 2,
+          "operation": "replace",
+          "text": "presenting"
+        }
+      ],
+      "rationale": "Before后动名词presenting。"
+    },
+    {
+      "number": 9,
+      "stem": "修改记录9（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 10,
+          "operation": "replace",
+          "text": "was"
+        }
+      ],
+      "rationale": "neither method单数，was perfect，不按两个方法的总体概念用were。"
+    },
+    {
+      "number": 10,
+      "stem": "修改记录10（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 10,
+          "position": 9,
+          "operation": "delete",
+          "text": ""
+        },
+        {
+          "sentence": 10,
+          "position": 10,
+          "operation": "delete",
+          "text": ""
+        }
+      ],
+      "rationale": "to重复，可删第一个或第二个；虽然位置不同，修订结果相同，只计一个错误。"
+    }
+  ],
+  "canonical_response_block_sha256": "f6005bf3f988e224e57eec7ec2283124bee461a460c2be1ae23fd4a983ceed26",
+  "corrected_passage_variants": [
+    "During a school project, our group compared two ways of recording how often students used a bottle-refill point. At first, we placed a sheet beside the tap and asked each user to add a mark. The number of marks was low, although the caretaker said that the area had been busy. Rather than concluding that few students used the tap, we watched the process carefully during one lunch break. Several students filled their bottles but left without noticing the sheet, which was partly hidden behind a sign. We moved the sheet and tested a second method that did not depend on users writing anything. A volunteer counted each visit, while another observer checked that the same person was not counted two times during a single visit. Comparing the records helped us recognise that the first method had missed visits, not that the tap itself had become more popular. Before presenting our findings, we agreed that neither method was perfect and made a note of the remaining limits. The teacher accepted our revision and asked us to keep the limits clear in the final report.",
+    "During a school project, our group compared two ways of recording how often students used a bottle-refill point. At first, we placed a sheet beside the tap and asked each user to add a mark. The number of marks was low, although the caretaker said that the area had been busy. Rather than concluding that few students used the tap, we watched the process carefully during one lunch break. Several students filled their bottles but left without noticing the sheet, which was partly hidden behind a sign. We moved the sheet and tested a second method that did not depend on users writing anything. A volunteer counted each visit, while another observer checked that the same person was not counted two times during a single visit. Comparing the records helped us recognise that the first method had missed visits, not that the tap itself had become more popular. Before presenting our findings, we agreed that neither method was perfect and made a note of the remaining limits. The teacher accepted our revision and asked us to keep the limits clear in the final report.",
+    "During a school project, our group compared two ways of recording how often students used a bottle-refill point. At first, we placed a sheet beside the tap and asked each user to add a mark. The number of marks was low, although the caretaker said that the area had been busy. Rather than concluding that few students used the tap, we watched the process carefully during one lunch break. Several students filled their bottles but left without noticing the sheet, which was partly hidden behind a sign. We moved the sheet and tested a second method that did not depend on users writing anything. A volunteer counted each visit, while another observer checked that the same person was not counted two times during a single visit. Comparing the records helped us recognize that the first method had missed visits, not that the tap itself had become more popular. Before presenting our findings, we agreed that neither method was perfect and made a note of the remaining limits. The teacher accepted our revision and asked us to keep the limits clear in the final report.",
+    "During a school project, our group compared two ways of recording how often students used a bottle-refill point. At first, we placed a sheet beside the tap and asked each user to add a mark. The number of marks was low, although the caretaker said that the area had been busy. Rather than concluding that few students used the tap, we watched the process carefully during one lunch break. Several students filled their bottles but left without noticing the sheet, which was partly hidden behind a sign. We moved the sheet and tested a second method that did not depend on users writing anything. A volunteer counted each visit, while another observer checked that the same person was not counted two times during a single visit. Comparing the records helped us recognize that the first method had missed visits, not that the tap itself had become more popular. Before presenting our findings, we agreed that neither method was perfect and made a note of the remaining limits. The teacher accepted our revision and asked us to keep the limits clear in the final report."
+  ],
+  "full_edit_variant_combinations": 4,
+  "load_measure": {
+    "body_English_words": 185,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 0,
+    "output_requirement": "十处位置+操作+单词，不是十段自由表达"
+  }
+}

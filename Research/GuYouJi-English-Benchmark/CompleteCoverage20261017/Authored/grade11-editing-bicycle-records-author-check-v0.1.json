@@ -1,0 +1,219 @@
+{
+  "version": "0.1",
+  "id": "grade11-editing-bicycle-records",
+  "grade": 11,
+  "questions": 10,
+  "candidate_sha256": "f557dba8b895ad4f2bf135f6bbde2cf3d9053512859c4701cb390858a22fcbcf",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.2.json",
+    "sha256": "c7f0b42d1014e640de95d81694037c92f97ae723da5eeac626787f78c12a1f97"
+  },
+  "source_binding": "g11-unhinted10-word-editing",
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "author_grammar_and_corrected_variant_review": true,
+  "word_editing": {
+    "version": 1,
+    "errors": 10,
+    "firstScoredEdits": 10,
+    "wordsPerEdit": 1,
+    "maxEditsPerSentence": 2,
+    "order": "any",
+    "unlisted": "review",
+    "normalization": "non_case_target_word_v1",
+    "caseOnlyTargets": false,
+    "sentences": [
+      "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders.",
+      "I designed the first page, but I forgot include a space for the date of each repair.",
+      "Two member tested the page by recording the work they had done on an old bicycle.",
+      "They careful compared the boxes with the length of their notes.",
+      "The new writing area was wide than the old one, so longer notes could fit on the page.",
+      "I then showed the page to the mechanic fixed our club's bicycles, and she approved the change.",
+      "She told us that every record should to describe both the problem and the work carried out.",
+      "During the next meeting, each rider were given a page, but one of the pages had two missing section.",
+      "We corrected the printing error before put the pages into separate folders.",
+      "Members have frequent checked the folders since then, so we know the extra space is useful."
+    ]
+  },
+  "student_passage": "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders.\n\nI designed the first page, but I forgot include a space for the date of each repair.\n\nTwo member tested the page by recording the work they had done on an old bicycle.\n\nThey careful compared the boxes with the length of their notes.\n\nThe new writing area was wide than the old one, so longer notes could fit on the page.\n\nI then showed the page to the mechanic fixed our club's bicycles, and she approved the change.\n\nShe told us that every record should to describe both the problem and the work carried out.\n\nDuring the next meeting, each rider were given a page, but one of the pages had two missing section.\n\nWe corrected the printing error before put the pages into separate folders.\n\nMembers have frequent checked the folders since then, so we know the extra space is useful.",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "修改记录1（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 2,
+          "position": 9,
+          "operation": "insert",
+          "text": "to"
+        }
+      ],
+      "rationale": "forgot to include表示忘记预留日期空间，加to。"
+    },
+    {
+      "number": 2,
+      "stem": "修改记录2（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 3,
+          "position": 2,
+          "operation": "replace",
+          "text": "members"
+        }
+      ],
+      "rationale": "Two members，明确可数复数。"
+    },
+    {
+      "number": 3,
+      "stem": "修改记录3（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 4,
+          "position": 2,
+          "operation": "replace",
+          "text": "carefully"
+        }
+      ],
+      "rationale": "They与compared间修饰动作，用carefully。"
+    },
+    {
+      "number": 4,
+      "stem": "修改记录4（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 6,
+          "operation": "replace",
+          "text": "wider"
+        }
+      ],
+      "rationale": "than the old one要求比较级wider。"
+    },
+    {
+      "number": 5,
+      "stem": "修改记录5（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 6,
+          "position": 9,
+          "operation": "insert",
+          "text": "who"
+        },
+        {
+          "sentence": 6,
+          "position": 9,
+          "operation": "insert",
+          "text": "that"
+        },
+        {
+          "sentence": 6,
+          "position": 9,
+          "operation": "replace",
+          "text": "fixing"
+        }
+      ],
+      "rationale": "mechanic后who/that引出限定从句，或fixing主动分词定语；三修法不重复计一个错误。"
+    },
+    {
+      "number": 6,
+      "stem": "修改记录6（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 8,
+          "operation": "delete",
+          "text": ""
+        },
+        {
+          "sentence": 7,
+          "position": 7,
+          "operation": "replace",
+          "text": "ought"
+        }
+      ],
+      "rationale": "should describe删to，或ought to describe改should为ought；后者仍表达记录应写明内容的要求。"
+    },
+    {
+      "number": 7,
+      "stem": "修改记录7（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 7,
+          "operation": "replace",
+          "text": "was"
+        }
+      ],
+      "rationale": "each rider单数被动was given，不能按所有骑手的集合概念用were。"
+    },
+    {
+      "number": 8,
+      "stem": "修改记录8（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 19,
+          "operation": "replace",
+          "text": "sections"
+        }
+      ],
+      "rationale": "two missing sections明确复数。"
+    },
+    {
+      "number": 9,
+      "stem": "修改记录9（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 7,
+          "operation": "replace",
+          "text": "putting"
+        }
+      ],
+      "rationale": "before后此处动名词putting；不加一个新主语制造完整从句。"
+    },
+    {
+      "number": 10,
+      "stem": "修改记录10（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 10,
+          "position": 3,
+          "operation": "replace",
+          "text": "frequently"
+        }
+      ],
+      "rationale": "have与checked之间用副词frequently表检查频率。"
+    }
+  ],
+  "canonical_response_block_sha256": "f6005bf3f988e224e57eec7ec2283124bee461a460c2be1ae23fd4a983ceed26",
+  "corrected_passage_variants": [
+    "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders. I designed the first page, but I forgot to include a space for the date of each repair. Two members tested the page by recording the work they had done on an old bicycle. They carefully compared the boxes with the length of their notes. The new writing area was wider than the old one, so longer notes could fit on the page. I then showed the page to the mechanic who fixed our club's bicycles, and she approved the change. She told us that every record should describe both the problem and the work carried out. During the next meeting, each rider was given a page, but one of the pages had two missing sections. We corrected the printing error before putting the pages into separate folders. Members have frequently checked the folders since then, so we know the extra space is useful.",
+    "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders. I designed the first page, but I forgot to include a space for the date of each repair. Two members tested the page by recording the work they had done on an old bicycle. They carefully compared the boxes with the length of their notes. The new writing area was wider than the old one, so longer notes could fit on the page. I then showed the page to the mechanic who fixed our club's bicycles, and she approved the change. She told us that every record ought to describe both the problem and the work carried out. During the next meeting, each rider was given a page, but one of the pages had two missing sections. We corrected the printing error before putting the pages into separate folders. Members have frequently checked the folders since then, so we know the extra space is useful.",
+    "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders. I designed the first page, but I forgot to include a space for the date of each repair. Two members tested the page by recording the work they had done on an old bicycle. They carefully compared the boxes with the length of their notes. The new writing area was wider than the old one, so longer notes could fit on the page. I then showed the page to the mechanic that fixed our club's bicycles, and she approved the change. She told us that every record should describe both the problem and the work carried out. During the next meeting, each rider was given a page, but one of the pages had two missing sections. We corrected the printing error before putting the pages into separate folders. Members have frequently checked the folders since then, so we know the extra space is useful.",
+    "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders. I designed the first page, but I forgot to include a space for the date of each repair. Two members tested the page by recording the work they had done on an old bicycle. They carefully compared the boxes with the length of their notes. The new writing area was wider than the old one, so longer notes could fit on the page. I then showed the page to the mechanic that fixed our club's bicycles, and she approved the change. She told us that every record ought to describe both the problem and the work carried out. During the next meeting, each rider was given a page, but one of the pages had two missing sections. We corrected the printing error before putting the pages into separate folders. Members have frequently checked the folders since then, so we know the extra space is useful.",
+    "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders. I designed the first page, but I forgot to include a space for the date of each repair. Two members tested the page by recording the work they had done on an old bicycle. They carefully compared the boxes with the length of their notes. The new writing area was wider than the old one, so longer notes could fit on the page. I then showed the page to the mechanic fixing our club's bicycles, and she approved the change. She told us that every record should describe both the problem and the work carried out. During the next meeting, each rider was given a page, but one of the pages had two missing sections. We corrected the printing error before putting the pages into separate folders. Members have frequently checked the folders since then, so we know the extra space is useful.",
+    "Our cycling club decided to keep a repair record for each bicycle that members lent to new riders. I designed the first page, but I forgot to include a space for the date of each repair. Two members tested the page by recording the work they had done on an old bicycle. They carefully compared the boxes with the length of their notes. The new writing area was wider than the old one, so longer notes could fit on the page. I then showed the page to the mechanic fixing our club's bicycles, and she approved the change. She told us that every record ought to describe both the problem and the work carried out. During the next meeting, each rider was given a page, but one of the pages had two missing sections. We corrected the printing error before putting the pages into separate folders. Members have frequently checked the folders since then, so we know the extra space is useful."
+  ],
+  "full_edit_variant_combinations": 6,
+  "load_measure": {
+    "body_English_words": 161,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 0,
+    "output_requirement": "十处位置+操作+单词，不是十段自由表达"
+  }
+}

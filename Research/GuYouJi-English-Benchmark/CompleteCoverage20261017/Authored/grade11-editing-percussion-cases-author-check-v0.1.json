@@ -1,0 +1,219 @@
+{
+  "version": "0.1",
+  "id": "grade11-editing-percussion-cases",
+  "grade": 11,
+  "questions": 10,
+  "candidate_sha256": "8b2f39a3bfc16f310dd276744809f7af4f6d11aa4784426de3a6cf26c70a04ae",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SeniorProofreadingBindings-v0.2.json",
+    "sha256": "c7f0b42d1014e640de95d81694037c92f97ae723da5eeac626787f78c12a1f97"
+  },
+  "source_binding": "g11-unhinted10-word-editing",
+  "source_count_increment": 0,
+  "source_key_not_copied": true,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "author_grammar_and_corrected_variant_review": true,
+  "word_editing": {
+    "version": 1,
+    "errors": 10,
+    "firstScoredEdits": 10,
+    "wordsPerEdit": 1,
+    "maxEditsPerSentence": 2,
+    "order": "any",
+    "unlisted": "review",
+    "normalization": "non_case_target_word_v1",
+    "caseOnlyTargets": false,
+    "sentences": [
+      "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip.",
+      "The group had three large case, but none of the labels showed which instrument belonged inside.",
+      "The organiser asked me make a new list while the players finished their rehearsal.",
+      "I measured each case careful and copied its number onto a paper tag.",
+      "One player pointed out that I had wrote the same number on two tags.",
+      "I corrected the list, and the organiser thanked the volunteers stayed late to check the cases.",
+      "We were tired, but everyone looked forward to hear the group perform the next day.",
+      "Before closing the cupboard, we checked that each small drum were protected by a soft cloth and that no strap was missing.",
+      "The organiser gave us some useful advices, and we were very proudly of our careful work.",
+      "She also reminded us that we should to check the labels again when the cases came back."
+    ]
+  },
+  "student_passage": "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip.\n\nThe group had three large case, but none of the labels showed which instrument belonged inside.\n\nThe organiser asked me make a new list while the players finished their rehearsal.\n\nI measured each case careful and copied its number onto a paper tag.\n\nOne player pointed out that I had wrote the same number on two tags.\n\nI corrected the list, and the organiser thanked the volunteers stayed late to check the cases.\n\nWe were tired, but everyone looked forward to hear the group perform the next day.\n\nBefore closing the cupboard, we checked that each small drum were protected by a soft cloth and that no strap was missing.\n\nThe organiser gave us some useful advices, and we were very proudly of our careful work.\n\nShe also reminded us that we should to check the labels again when the cases came back.",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "修改记录1（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 2,
+          "position": 6,
+          "operation": "replace",
+          "text": "cases"
+        }
+      ],
+      "rationale": "three限定可数名词复数cases。"
+    },
+    {
+      "number": 2,
+      "stem": "修改记录2（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 3,
+          "position": 5,
+          "operation": "insert",
+          "text": "to"
+        }
+      ],
+      "rationale": "asked me to make，补to于make前。"
+    },
+    {
+      "number": 3,
+      "stem": "修改记录3（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 4,
+          "position": 5,
+          "operation": "replace",
+          "text": "carefully"
+        }
+      ],
+      "rationale": "修饰measured动作，用副词carefully。"
+    },
+    {
+      "number": 4,
+      "stem": "修改记录4（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 5,
+          "position": 8,
+          "operation": "replace",
+          "text": "written"
+        }
+      ],
+      "rationale": "had后的完成式需要过去分词written。"
+    },
+    {
+      "number": 5,
+      "stem": "修改记录5（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 6,
+          "position": 11,
+          "operation": "insert",
+          "text": "who"
+        },
+        {
+          "sentence": 6,
+          "position": 11,
+          "operation": "insert",
+          "text": "that"
+        },
+        {
+          "sentence": 6,
+          "position": 11,
+          "operation": "replace",
+          "text": "staying"
+        }
+      ],
+      "rationale": "volunteers后可加who/that引出定语从句，也可用staying作主动分词定语；均与留下检查的人相符，同一错误只计一次。"
+    },
+    {
+      "number": 6,
+      "stem": "修改记录6（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 7,
+          "position": 9,
+          "operation": "replace",
+          "text": "hearing"
+        }
+      ],
+      "rationale": "looked forward to中的to为介词，后用hearing。"
+    },
+    {
+      "number": 7,
+      "stem": "修改记录7（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 8,
+          "position": 11,
+          "operation": "replace",
+          "text": "was"
+        }
+      ],
+      "rationale": "each small drum单数，过去被动用was protected。"
+    },
+    {
+      "number": 8,
+      "stem": "修改记录8（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 7,
+          "operation": "replace",
+          "text": "advice"
+        }
+      ],
+      "rationale": "此处为日常建议，advice不可数，不能用advices。"
+    },
+    {
+      "number": 9,
+      "stem": "修改记录9（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 9,
+          "position": 12,
+          "operation": "replace",
+          "text": "proud"
+        }
+      ],
+      "rationale": "were后表人的状态，be proud of，不用副词proudly。"
+    },
+    {
+      "number": 10,
+      "stem": "修改记录10（任选错误，顺序不限）",
+      "options": [],
+      "editAlternatives": [
+        {
+          "sentence": 10,
+          "position": 8,
+          "operation": "delete",
+          "text": ""
+        },
+        {
+          "sentence": 10,
+          "position": 7,
+          "operation": "replace",
+          "text": "ought"
+        }
+      ],
+      "rationale": "should后直接接原形，删to；或should改ought成为ought to check，仍表达检查义务。其他未核修法待复核，不宣称两种穷尽。"
+    }
+  ],
+  "canonical_response_block_sha256": "f6005bf3f988e224e57eec7ec2283124bee461a460c2be1ae23fd4a983ceed26",
+  "corrected_passage_variants": [
+    "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip. The group had three large cases, but none of the labels showed which instrument belonged inside. The organiser asked me to make a new list while the players finished their rehearsal. I measured each case carefully and copied its number onto a paper tag. One player pointed out that I had written the same number on two tags. I corrected the list, and the organiser thanked the volunteers who stayed late to check the cases. We were tired, but everyone looked forward to hearing the group perform the next day. Before closing the cupboard, we checked that each small drum was protected by a soft cloth and that no strap was missing. The organiser gave us some useful advice, and we were very proud of our careful work. She also reminded us that we should check the labels again when the cases came back.",
+    "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip. The group had three large cases, but none of the labels showed which instrument belonged inside. The organiser asked me to make a new list while the players finished their rehearsal. I measured each case carefully and copied its number onto a paper tag. One player pointed out that I had written the same number on two tags. I corrected the list, and the organiser thanked the volunteers who stayed late to check the cases. We were tired, but everyone looked forward to hearing the group perform the next day. Before closing the cupboard, we checked that each small drum was protected by a soft cloth and that no strap was missing. The organiser gave us some useful advice, and we were very proud of our careful work. She also reminded us that we ought to check the labels again when the cases came back.",
+    "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip. The group had three large cases, but none of the labels showed which instrument belonged inside. The organiser asked me to make a new list while the players finished their rehearsal. I measured each case carefully and copied its number onto a paper tag. One player pointed out that I had written the same number on two tags. I corrected the list, and the organiser thanked the volunteers that stayed late to check the cases. We were tired, but everyone looked forward to hearing the group perform the next day. Before closing the cupboard, we checked that each small drum was protected by a soft cloth and that no strap was missing. The organiser gave us some useful advice, and we were very proud of our careful work. She also reminded us that we should check the labels again when the cases came back.",
+    "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip. The group had three large cases, but none of the labels showed which instrument belonged inside. The organiser asked me to make a new list while the players finished their rehearsal. I measured each case carefully and copied its number onto a paper tag. One player pointed out that I had written the same number on two tags. I corrected the list, and the organiser thanked the volunteers that stayed late to check the cases. We were tired, but everyone looked forward to hearing the group perform the next day. Before closing the cupboard, we checked that each small drum was protected by a soft cloth and that no strap was missing. The organiser gave us some useful advice, and we were very proud of our careful work. She also reminded us that we ought to check the labels again when the cases came back.",
+    "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip. The group had three large cases, but none of the labels showed which instrument belonged inside. The organiser asked me to make a new list while the players finished their rehearsal. I measured each case carefully and copied its number onto a paper tag. One player pointed out that I had written the same number on two tags. I corrected the list, and the organiser thanked the volunteers staying late to check the cases. We were tired, but everyone looked forward to hearing the group perform the next day. Before closing the cupboard, we checked that each small drum was protected by a soft cloth and that no strap was missing. The organiser gave us some useful advice, and we were very proud of our careful work. She also reminded us that we should check the labels again when the cases came back.",
+    "During the spring term, I helped a youth music group prepare its instrument cases for a weekend trip. The group had three large cases, but none of the labels showed which instrument belonged inside. The organiser asked me to make a new list while the players finished their rehearsal. I measured each case carefully and copied its number onto a paper tag. One player pointed out that I had written the same number on two tags. I corrected the list, and the organiser thanked the volunteers staying late to check the cases. We were tired, but everyone looked forward to hearing the group perform the next day. Before closing the cupboard, we checked that each small drum was protected by a soft cloth and that no strap was missing. The organiser gave us some useful advice, and we were very proud of our careful work. She also reminded us that we ought to check the labels again when the cases came back."
+  ],
+  "full_edit_variant_combinations": 6,
+  "load_measure": {
+    "body_English_words": 161,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10,
+    "output_requirement_English_words": 0,
+    "output_requirement": "十处位置+操作+单词，不是十段自由表达"
+  }
+}
