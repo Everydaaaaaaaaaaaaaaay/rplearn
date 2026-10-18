@@ -1,0 +1,248 @@
+{
+  "version": "0.5",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.4.json",
+    "sha256": "a64e208b664ae854fb900283b454d77163e0c0bc096c96bce0eca5ee1b5f1153"
+  },
+  "scope": "three_previously_observed_grade8_single_material_configurations; two_image_complete_transcripts_and_one_existing_text",
+  "groups": [
+    {
+      "id": "g8.changjun2024.cloze",
+      "level": 8,
+      "kind": "choice_cloze",
+      "responses": 10,
+      "options_each": 3,
+      "configuration": {
+        "materials": 1,
+        "responses": 10,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 10,
+            "options_each": 3
+          }
+        ],
+        "options_each": 3,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1.5
+        ],
+        "section_points": 15.0,
+        "necessary_images": false
+      },
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_full_inputs_verified": true,
+      "source_spans": [
+        {
+          "source": {
+            "path": "build/english-benchmark-authority-20261017/g8changjun-cloze-visual-transcript-v0.1.txt",
+            "sha256": "9b0e7807151e896d97a1686e54f68987cc5d1e988e2bcf76b832182ee68d71a0"
+          },
+          "start_offset": 85,
+          "end_offset": 1784,
+          "sha256": "388384b0967267d28744a6a75c1d2ea8bd4ce54d4740d04e134ef94b865f24da",
+          "question_numbers": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "instruction": "阅读下面短文，从每题所给的A、B、C三个选项中选出可以填入空白处的最佳选项。",
+          "instruction_sha256": "b9df2584c14ee13843867cf2b782aae2058d383178ca4f225a3b2dac3e5fb3aa"
+        }
+      ],
+      "reconciliation": {
+        "path": "CompleteCoverage20261017/SchoolClozeConfigurationReconciliation-v0.1.json",
+        "sha256": "89f0bee0c4ebec53869a02b80d653d700334d0180ee5082010f58e5c5dafb8f8"
+      },
+      "source_identity": "public_repost_label_and_body_not_original_school_authentication",
+      "printed_body_title": "2024年秋季八年级期中限时检测试卷 英语（C卷）",
+      "body_grade_seen": true,
+      "body_region_not_added_from_filename": true,
+      "published_key_quality": "not_independent_gold",
+      "source_material_english_words": 239,
+      "selected_cloze_contains_no_external_media_dependency": true,
+      "source_pdf": {
+        "path": "build/english-benchmark-research-20261012/raw/grade8-changjun2024-midterm-paper-key20261014.pdf",
+        "sha256": "50fcae7cf123843ce34b2fe9b66134e765fc281537e28d746c79e5b3c7cadec2"
+      },
+      "source_input_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-changjun2024-midterm-inspection-07.png",
+          "sha256": "8500a2c7ec9d6042aeac9bb244b5981a65f2177ecb9426a82e33007879672038"
+        }
+      ],
+      "transcript_scope": "selected_whole_cloze_visually_transcribed_from_existing_page_images; blank marks, spacing and quote typography normalized; title not added to image text",
+      "image_all_body_and_all_candidate_rows_visually_verified": true,
+      "necessary_input_not_inferred_from_old_null_flag": true
+    },
+    {
+      "id": "g8.2025.cloze",
+      "level": 8,
+      "kind": "choice_cloze",
+      "responses": 10,
+      "options_each": 4,
+      "configuration": {
+        "materials": 1,
+        "responses": 10,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 10,
+            "options_each": 4
+          }
+        ],
+        "options_each": 4,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1
+        ],
+        "section_points": 10,
+        "necessary_images": false
+      },
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_full_inputs_verified": true,
+      "source_spans": [
+        {
+          "source": {
+            "path": "build/english-benchmark-authority-20261017/g8xicheng-cloze-visual-transcript-v0.1.txt",
+            "sha256": "7acd3f33ceca1e2053568a18166193f043219a600df2c676502470dc5023f705"
+          },
+          "start_offset": 61,
+          "end_offset": 2596,
+          "sha256": "d2276c304985e0c54dcf7931182aa9bcb2439dd748eba0cf3d924eb8241fc181",
+          "question_numbers": [
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "instruction": "阅读下面短文，根据短文内容从后面各题所给的A、B、C、D四个选项中，选择最佳选项。",
+          "instruction_sha256": "028227425814b87debf39c6cc4264338e847f49f93c9468d997d54c12490d3b6"
+        }
+      ],
+      "reconciliation": {
+        "path": "CompleteCoverage20261017/SchoolClozeConfigurationReconciliation-v0.1.json",
+        "sha256": "89f0bee0c4ebec53869a02b80d653d700334d0180ee5082010f58e5c5dafb8f8"
+      },
+      "source_identity": "public_repost_label_and_body_not_original_school_authentication",
+      "printed_body_title": "北京市西城区2024—2025学年度第一学期期末试卷 八年级英语",
+      "body_grade_seen": true,
+      "body_region_not_added_from_filename": true,
+      "published_key_quality": "not_independent_gold",
+      "source_material_english_words": 354,
+      "selected_cloze_contains_no_external_media_dependency": true,
+      "source_pdf": {
+        "path": "build/english-benchmark-research-20261012/raw/bj-grade8-xicheng2025upper-20261013.pdf",
+        "sha256": "225516737e0e5cee6be03fb83f02aca25fbee02a207f963d22b3432c679cef32"
+      },
+      "source_input_images": [
+        {
+          "path": "build/english-benchmark-research-20261012/firstrelease-bj-grade8-xicheng2025upper-p03-20261013.png",
+          "sha256": "39d56d6d7cc2017ae30406ba58d82e5e58fa4a9d55c982372a4fe7f2cb0f5dbb"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/firstrelease-bj-grade8-xicheng2025upper-p04-20261013.png",
+          "sha256": "9379b1496fb8ff5fdc1d31d93d08ff08170c41afd9be2955420339fca3b779a7"
+        }
+      ],
+      "transcript_scope": "selected_whole_cloze_visually_transcribed_from_existing_page_images; blank marks, spacing and quote typography normalized; title not added to image text",
+      "image_all_body_and_all_candidate_rows_visually_verified": true,
+      "necessary_input_not_inferred_from_old_null_flag": true
+    },
+    {
+      "id": "grade8-xiaoshan2025-21cnjy22251031.cloze",
+      "level": 8,
+      "kind": "choice_cloze",
+      "responses": 15,
+      "options_each": 4,
+      "configuration": {
+        "materials": 1,
+        "responses": 15,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 15,
+            "options_each": 4
+          }
+        ],
+        "options_each": 4,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1
+        ],
+        "section_points": 15,
+        "necessary_images": false
+      },
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "source_full_inputs_verified": true,
+      "source_spans": [
+        {
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade8-xiaoshan2025-21cnjy22251031-resource-v0.2.txt",
+            "sha256": "c1f039f3c6144f61198ba75686100144531c9a1593bb5298d26325fdcc0144ab"
+          },
+          "start_offset": 10980,
+          "end_offset": 13857,
+          "sha256": "a9220ac382ad04461c6d3d2ea1b6be7704eef21cb8a40bc65c9d2acc23689080",
+          "question_numbers": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50
+          ],
+          "instruction": "通读下面短文，掌握其大意，然后在各题所给的四个选项中选出一个最佳选项。",
+          "instruction_sha256": "a732644f84011ea3d6e6c2e298d89d1b47b2b6bfc21358f0e7c77639d64d6045"
+        }
+      ],
+      "reconciliation": {
+        "path": "CompleteCoverage20261017/SchoolClozeConfigurationReconciliation-v0.1.json",
+        "sha256": "89f0bee0c4ebec53869a02b80d653d700334d0180ee5082010f58e5c5dafb8f8"
+      },
+      "source_identity": "public_repost_label_and_body_not_original_school_authentication",
+      "printed_body_title": "2024学年第一学期期末学业水平测试 八年级英语试题卷",
+      "body_grade_seen": true,
+      "body_region_not_added_from_filename": true,
+      "published_key_quality": "not_independent_gold",
+      "source_material_english_words": 316,
+      "selected_cloze_contains_no_external_media_dependency": true
+    }
+  ],
+  "new_sources": 0,
+  "new_authenticated_school_papers": 0
+}

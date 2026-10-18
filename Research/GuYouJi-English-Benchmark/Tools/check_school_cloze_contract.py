@@ -63,6 +63,12 @@ def run(page):
             'source_span_changed':lambda s:s['source_spans'][0].__setitem__('sha256','0'*64),
             'cartesian_option_count':lambda s:s.__setitem__('options_each',3 if s['options_each']==4 else 4),
         }
+        if source.get('source_pdf'):
+            source_cases.update({
+                'visual_verification_false':lambda s:s.__setitem__('image_all_body_and_all_candidate_rows_visually_verified',False),
+                'source_page_images_missing':lambda s:s.__setitem__('source_input_images',[]),
+                'source_image_sha_changed':lambda s:s['source_input_images'][0].__setitem__('sha256','0'*64),
+            })
         if len(draft['sections'])>1:
             source_cases.update({
                 'unrelated_parent':lambda s:s['source_observations'][1].__setitem__('paper_id','different-parent'),

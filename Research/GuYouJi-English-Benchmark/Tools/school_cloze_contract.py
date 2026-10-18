@@ -82,6 +82,11 @@ def validate(draft, binding, source):
     assert draft['source_group_id'] == binding['source_group_id'] == source['id']
     assert binding['source_record_sha256'] == digest(json.dumps(source, sort_keys=True, ensure_ascii=False))
     assert source['source_full_inputs_verified'] and not source['source_key_is_gold']
+    if source.get('source_pdf'):
+        load_ref(source['source_pdf'])
+        assert source['image_all_body_and_all_candidate_rows_visually_verified']
+        assert source['source_input_images']
+        for image_ref in source['source_input_images']:load_ref(image_ref)
     assert source['source_count_increment'] == 0 and binding['new_source_count'] == 0
     count = source['responses']; options = source['options_each']
     assert binding['responses'] == count and binding['options_each'] == options
