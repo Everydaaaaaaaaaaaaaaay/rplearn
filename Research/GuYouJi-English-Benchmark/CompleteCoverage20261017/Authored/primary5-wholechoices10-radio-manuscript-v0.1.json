@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholechoices10-radio",
+  "grade": "primary5",
+  "family": "sentence_choice",
+  "title": "小五：校园电台、运动日与收纳",
+  "source_group_id": "p5.guilin2025.readingthinking.choice10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary5WholeChoiceSourceBindings-v0.1.json",
+    "sha256": "ca082f15eca56fc2a1763d073aba2d7c236a9bd98a9ae210418972e833274b2f"
+  },
+  "source_binding": "p5.guilin2025.readingthinking.choice10.binding",
+  "instruction": "从每题的A、B、C三个独立选项中选出最合适的一项。第5题有两个空，选一个完整组合；每题只填一个字母，完成全部十题。",
+  "source_notice": "参照已存桂林标签2024—2025下五年级第十一节完整十题三选，选节十题有原生文字与刊键，原校施测和原版排版未认证。原键非gold；午餐时刻、馆规、服饰、石块视角和节日行为不当普适事实。自有稿用明确计划、规则和虚构物品约束语境，保留第5两空联选，不抄源事实或歧义。旧连续五题的原大题边界未见，移研究参考；本稿非新题型或三独立来源、未标定难度区分度，独立教研/学生/商用/生产未证。",
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      5
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "items": [
+    {
+      "stem": "Her job is reporting news on our school radio. She is a ____.",
+      "key": "A",
+      "options": [
+        "reporter",
+        "dancer",
+        "cook"
+      ],
+      "grounds": [
+        "reporter为报道新闻的人，符合题面职业定义。",
+        "dancer为舞者，不是报道新闻这一工作。",
+        "cook为厨师，不是所定义的工作。"
+      ]
+    },
+    {
+      "stem": "Our plan says: “Afternoon snack 15:30.” At 15:30, we have a ____.",
+      "key": "C",
+      "options": [
+        "breakfast",
+        "dinner",
+        "snack"
+      ],
+      "grounds": [
+        "安排明确是afternoon snack，不是早餐。",
+        "安排不是晚餐。",
+        "符合本题明确给出的下午加餐安排。"
+      ]
+    },
+    {
+      "stem": "The sports-day rule says “Keep off the grass.” We must not ____.",
+      "key": "B",
+      "options": [
+        "walk on the path",
+        "step on the grass",
+        "sit on the bench"
+      ],
+      "grounds": [
+        "在小径上走不违反远离草地的规定。",
+        "直接违反明确给出的Keep off the grass。",
+        "坐在长椅上不是踏草地，不是此规则禁止动作。"
+      ]
+    },
+    {
+      "stem": "Mei needs a yellow hat, not a coat or a blue hat. She chooses the ____.",
+      "key": "A",
+      "options": [
+        "yellow hat",
+        "yellow coat",
+        "blue hat"
+      ],
+      "grounds": [
+        "颜色和物品类别都符合。",
+        "颜色对，但外套不是帽子。",
+        "类别对，颜色不符。"
+      ]
+    },
+    {
+      "stem": "Bag A is open; bag B is closed. A is ____, but B is ____.",
+      "key": "C",
+      "options": [
+        "closed; open",
+        "open; open",
+        "open; closed"
+      ],
+      "grounds": [
+        "将两只包的状态反转了。",
+        "第二项与B closed冲突。",
+        "两项均直接符合题面给定状态。"
+      ]
+    },
+    {
+      "stem": "This ticket has the name of a film and my seat number. I use it at the ____.",
+      "key": "B",
+      "options": [
+        "library",
+        "cinema",
+        "post office"
+      ],
+      "grounds": [
+        "该票用于影片座位，不是图书馆借书。",
+        "影片和座位号共同指向影院。",
+        "该票不是邮局业务凭证。"
+      ]
+    },
+    {
+      "stem": "To measure a line in centimetres, I use the marks on a ____.",
+      "key": "A",
+      "options": [
+        "ruler",
+        "glue stick",
+        "rubber"
+      ],
+      "grounds": [
+        "尺上的刻度可量线长，符合定义。",
+        "胶棒用于黏合，不提供题面所述测量刻度功能。",
+        "橡皮用于擦除，不是有量厘米刻度的尺。"
+      ]
+    },
+    {
+      "stem": "I ____ a message to our teacher yesterday.",
+      "key": "C",
+      "options": [
+        "send",
+        "sending",
+        "sent"
+      ],
+      "grounds": [
+        "yesterday明确过去时间，不用原形send。",
+        "没有助动词，不用sending单独作本句谓语。",
+        "sent为send的过去式，符合时间。"
+      ]
+    },
+    {
+      "stem": "At Badge Day, we give a badge and keep a different one, without paying. We ____.",
+      "key": "B",
+      "options": [
+        "buy badges",
+        "swap badges",
+        "draw badges"
+      ],
+      "grounds": [
+        "明确不付款，不是购买。",
+        "给出一枚并保留另一枚，符合交换。",
+        "没有绘画行为，不能以draw概括交换。"
+      ]
+    },
+    {
+      "stem": "Our toy robot has red hands and blue feet. Its hands are ____.",
+      "key": "A",
+      "options": [
+        "red",
+        "blue",
+        "green"
+      ],
+      "grounds": [
+        "直接符合作者玩具的已给手部颜色。",
+        "blue描述脚，不是手。",
+        "与已给red hands不符。"
+      ]
+    }
+  ]
+}

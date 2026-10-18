@@ -1,0 +1,67 @@
+{
+  "version": "0.2",
+  "scope": "primary_retained_common_type_review_followup_and_whole_group_quality",
+  "primary5_sentence_choice": {
+    "prior_source_boundary": "original section heading not visible;five contiguous independent tasks not proven a whole paper section",
+    "prior_source_index": {
+      "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+      "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+    },
+    "reference_only_author_ids": [
+      "primary5-five-situation-choices",
+      "primary5-calendar-and-coats-choices",
+      "primary5-signs-and-visits-choices"
+    ],
+    "current_source": {
+      "path": "CompleteCoverage20261017/Primary5WholeChoiceSelectedSource-v0.1.json",
+      "sha256": "56ac7ce0839f8e25f86647d18f3ce4d42808bbfa0629bc0fe4fcf01872d6be57"
+    },
+    "decision": "same common family,use complete ten-item section;do not create a separate new type",
+    "source_reused_not_new_parent": true
+  },
+  "other_review_findings": [
+    {
+      "level": "primary3",
+      "family": "letter_completion",
+      "finding": "嘉兴南湖公开原生指令明确听音补字母，长春朝阳本次仅保存检索/可见指令层；两者都不用于证明无音频书面字母组合选择常见，也不升级完整任务/音轨/键。",
+      "urls": [
+        "https://zy.21cnjy.com/26417434",
+        "https://zy.21cnjy.com/23683456"
+      ],
+      "new_complete_source_groups": 0
+    },
+    {
+      "level": "primary4",
+      "family": "choice_cloze",
+      "finding": "已核石景山2024—25完整5空二选为地区观察；23192903检索标题为专项训练，原生页面本次未读出，不重计普通实考复现或称全国常见。未新增配置任务。",
+      "source_index": {
+        "path": "AuthorityGap20261017/SelectedSourceModes-v0.10.json",
+        "sha256": "45916d6073ff0d3b08fd8406f7bf8cd3d02abb0604a5f2b9195bee4c7a4801e9"
+      },
+      "excluded_frequency_url": "https://zy.21cnjy.com/23192903",
+      "new_complete_source_groups": 0
+    },
+    {
+      "level": "primary5",
+      "family": "listening",
+      "finding": "桂林23831389已在库，不重复计新样本；三江8019590网页本次读取超时，未把搜索摘要或声称有音频当全输入。",
+      "urls": [
+        "https://zy.21cnjy.com/23831389",
+        "https://tiku.zujuan.com/map/paper-8019590.shtml"
+      ],
+      "new_complete_source_groups": 0
+    }
+  ],
+  "one_observation_not_required_type": true,
+  "not_completed_primary_commonness_review": true,
+  "not_new_all_mode_backlog": true,
+  "new_downloads": 0,
+  "previous": {
+    "path": "CompleteCoverage20261017/PrimaryCommonTypeFollowup-v0.1.json",
+    "sha256": "8cade08babcae8d006db0915cd968b9cf1d295b4c407348f7fe239474049bff9"
+  },
+  "public_instruction_headers": {
+    "path": "build/english-benchmark-authority-20261017/primary-type769-public-header-selections-v0.1.json",
+    "sha256": "b20484f9b9e78e297624997a159f7c293e65ae0fc81db48ff0f4abe361713109"
+  }
+}

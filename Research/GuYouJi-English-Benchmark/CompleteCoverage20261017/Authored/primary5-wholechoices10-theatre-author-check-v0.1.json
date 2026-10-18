@@ -1,0 +1,407 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholechoices10-theatre",
+  "grade": "primary5",
+  "questions": 10,
+  "candidate_sha256": "cfd899ac6b05f14b2ec6fd14abc7cf53d0f3940e852ed07aa65c0178c4bf5223",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-wholechoices10-theatre-manuscript-v0.1.json",
+    "sha256": "fd7239bfde6e77c725f27fb5f72098026f1cc7c65a3efe7890530b9679ce0a6f"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary5WholeChoiceSourceBindings-v0.1.json",
+    "sha256": "ca082f15eca56fc2a1763d073aba2d7c236a9bd98a9ae210418972e833274b2f"
+  },
+  "source_binding": "p5.guilin2025.readingthinking.choice10.binding",
+  "source_index": {
+    "path": "CompleteCoverage20261017/Primary5WholeChoiceSelectedSource-v0.1.json",
+    "sha256": "56ac7ce0839f8e25f86647d18f3ce4d42808bbfa0629bc0fe4fcf01872d6be57"
+  },
+  "source_group_id": "p5.guilin2025.readingthinking.choice10",
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      5
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "source_count_increment": 0,
+  "student_passage": "",
+  "canonical_response_block_sha256": "18102e3b3a67407209ce57cb63c138615e04f05b6bca73f907e18d354f37893d",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "My aunt's job is writing stories. She is a ____.",
+      "options": [
+        [
+          "A",
+          "visitor"
+        ],
+        [
+          "B",
+          "writer"
+        ],
+        [
+          "C",
+          "driver"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：visitor表示访客，不是写故事这一职业名称。；B：writer是以写作为工作的人，正合题面。；C：driver表示驾驶员，不是所定义的工作。"
+    },
+    {
+      "number": 2,
+      "stem": "Our meal plan says: “Lunch 12:15.” At 12:15, we have ____.",
+      "options": [
+        [
+          "A",
+          "lunch"
+        ],
+        [
+          "B",
+          "breakfast"
+        ],
+        [
+          "C",
+          "dinner"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：按本题给定计划该时刻为午餐，不推论所有家庭。；B：题面该时刻安排的不是早餐。；C：题面安排的不是晚餐。"
+    },
+    {
+      "number": 3,
+      "stem": "Our library rule says “Keep the books clean.” We must not ____.",
+      "options": [
+        [
+          "A",
+          "borrow books"
+        ],
+        [
+          "B",
+          "read carefully"
+        ],
+        [
+          "C",
+          "draw on the books"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：借书本身不违反保持书本干净的规则。；B：仔细阅读不违反该规则。；C：在书上画画违反明确给出的保持书本干净规则。"
+    },
+    {
+      "number": 4,
+      "stem": "For the class play, Sam must wear a red coat. He needs the ____.",
+      "options": [
+        [
+          "A",
+          "blue coat"
+        ],
+        [
+          "B",
+          "red coat"
+        ],
+        [
+          "C",
+          "red hat"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：颜色不符明确的red要求。；B：颜色和衣物类别同时符合。；C：颜色虽对，但hat不是指定的coat。"
+    },
+    {
+      "number": 5,
+      "stem": "Box A has no books; box B is filled with books. A is ____, but B is ____.",
+      "options": [
+        [
+          "A",
+          "empty; full"
+        ],
+        [
+          "B",
+          "full; empty"
+        ],
+        [
+          "C",
+          "empty; empty"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：A没有书为空，B装满书为满，两项均合。；B：把两箱的状态反过来了。；C：第二项与B装满书冲突。"
+    },
+    {
+      "number": 6,
+      "stem": "This paper shows my film name and seat number at the cinema. It is my ____.",
+      "options": [
+        [
+          "A",
+          "passport"
+        ],
+        [
+          "B",
+          "map"
+        ],
+        [
+          "C",
+          "ticket"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：护照不是显示电影和影院座位的入场凭证。；B：地图不是指定影片座位的凭证。；C：影院票含影片及座位信息，符合描述。"
+    },
+    {
+      "number": 7,
+      "stem": "I put these two sheets together with a sticky liquid called ____.",
+      "options": [
+        [
+          "A",
+          "string"
+        ],
+        [
+          "B",
+          "glue"
+        ],
+        [
+          "C",
+          "scissors"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：string是线，不是黏性液体。；B：glue为黏合纸张的胶，符合液体及黏合功能。；C：scissors是剪切工具，不是黏性液体。"
+    },
+    {
+      "number": 8,
+      "stem": "Last night the children ____ a shadow play.",
+      "options": [
+        [
+          "A",
+          "saw"
+        ],
+        [
+          "B",
+          "see"
+        ],
+        [
+          "C",
+          "seeing"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：Last night明确过去时间，saw为see的过去式。；B：原形see不合本句明确的过去时间。；C：句中缺少助动词，不能单用seeing作谓语。"
+    },
+    {
+      "number": 9,
+      "stem": "At Book Day, we give a book and keep a different one, without paying. We ____.",
+      "options": [
+        [
+          "A",
+          "buy books"
+        ],
+        [
+          "B",
+          "return borrowed books"
+        ],
+        [
+          "C",
+          "swap books"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：明确without paying，不是购买。；B：题面是互换并保留不同的书，不是归还借书。；C：互相给出并保留不同的书，符合swap交换。"
+    },
+    {
+      "number": 10,
+      "stem": "The toy instructions say “Push with the back legs.” We push with its ____ legs.",
+      "options": [
+        [
+          "A",
+          "front"
+        ],
+        [
+          "B",
+          "back"
+        ],
+        [
+          "C",
+          "four"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：与给定说明back相反。；B：直接符合这件玩具的说明，不泛化真实动物。；C：题面指定后腿，不是四条腿都推。"
+    }
+  ],
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "B",
+      "grounds": {
+        "A": "visitor表示访客，不是写故事这一职业名称。",
+        "B": "writer是以写作为工作的人，正合题面。",
+        "C": "driver表示驾驶员，不是所定义的工作。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "A",
+      "grounds": {
+        "A": "按本题给定计划该时刻为午餐，不推论所有家庭。",
+        "B": "题面该时刻安排的不是早餐。",
+        "C": "题面安排的不是晚餐。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "C",
+      "grounds": {
+        "A": "借书本身不违反保持书本干净的规则。",
+        "B": "仔细阅读不违反该规则。",
+        "C": "在书上画画违反明确给出的保持书本干净规则。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "B",
+      "grounds": {
+        "A": "颜色不符明确的red要求。",
+        "B": "颜色和衣物类别同时符合。",
+        "C": "颜色虽对，但hat不是指定的coat。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "A",
+      "grounds": {
+        "A": "A没有书为空，B装满书为满，两项均合。",
+        "B": "把两箱的状态反过来了。",
+        "C": "第二项与B装满书冲突。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "C",
+      "grounds": {
+        "A": "护照不是显示电影和影院座位的入场凭证。",
+        "B": "地图不是指定影片座位的凭证。",
+        "C": "影院票含影片及座位信息，符合描述。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "B",
+      "grounds": {
+        "A": "string是线，不是黏性液体。",
+        "B": "glue为黏合纸张的胶，符合液体及黏合功能。",
+        "C": "scissors是剪切工具，不是黏性液体。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "A",
+      "grounds": {
+        "A": "Last night明确过去时间，saw为see的过去式。",
+        "B": "原形see不合本句明确的过去时间。",
+        "C": "句中缺少助动词，不能单用seeing作谓语。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "C",
+      "grounds": {
+        "A": "明确without paying，不是购买。",
+        "B": "题面是互换并保留不同的书，不是归还借书。",
+        "C": "互相给出并保留不同的书，符合swap交换。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "B",
+      "grounds": {
+        "A": "与给定说明back相反。",
+        "B": "直接符合这件玩具的说明，不泛化真实动物。",
+        "C": "题面指定后腿，不是四条腿都推。"
+      }
+    }
+  ],
+  "all_candidate_backfills": [
+    {
+      "A": "My aunt's job is writing stories. She is a visitor.",
+      "B": "My aunt's job is writing stories. She is a writer.",
+      "C": "My aunt's job is writing stories. She is a driver."
+    },
+    {
+      "A": "Our meal plan says: “Lunch 12:15.” At 12:15, we have lunch.",
+      "B": "Our meal plan says: “Lunch 12:15.” At 12:15, we have breakfast.",
+      "C": "Our meal plan says: “Lunch 12:15.” At 12:15, we have dinner."
+    },
+    {
+      "A": "Our library rule says “Keep the books clean.” We must not borrow books.",
+      "B": "Our library rule says “Keep the books clean.” We must not read carefully.",
+      "C": "Our library rule says “Keep the books clean.” We must not draw on the books."
+    },
+    {
+      "A": "For the class play, Sam must wear a red coat. He needs the blue coat.",
+      "B": "For the class play, Sam must wear a red coat. He needs the red coat.",
+      "C": "For the class play, Sam must wear a red coat. He needs the red hat."
+    },
+    {
+      "A": "Box A has no books; box B is filled with books. A is empty, but B is full.",
+      "B": "Box A has no books; box B is filled with books. A is full, but B is empty.",
+      "C": "Box A has no books; box B is filled with books. A is empty, but B is empty."
+    },
+    {
+      "A": "This paper shows my film name and seat number at the cinema. It is my passport.",
+      "B": "This paper shows my film name and seat number at the cinema. It is my map.",
+      "C": "This paper shows my film name and seat number at the cinema. It is my ticket."
+    },
+    {
+      "A": "I put these two sheets together with a sticky liquid called string.",
+      "B": "I put these two sheets together with a sticky liquid called glue.",
+      "C": "I put these two sheets together with a sticky liquid called scissors."
+    },
+    {
+      "A": "Last night the children saw a shadow play.",
+      "B": "Last night the children see a shadow play.",
+      "C": "Last night the children seeing a shadow play."
+    },
+    {
+      "A": "At Book Day, we give a book and keep a different one, without paying. We buy books.",
+      "B": "At Book Day, we give a book and keep a different one, without paying. We return borrowed books.",
+      "C": "At Book Day, we give a book and keep a different one, without paying. We swap books."
+    },
+    {
+      "A": "The toy instructions say “Push with the back legs.” We push with its front legs.",
+      "B": "The toy instructions say “Push with the back legs.” We push with its back legs.",
+      "C": "The toy instructions say “Push with the back legs.” We push with its four legs."
+    }
+  ],
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 119,
+    "options_English_words_with_repeated_bank": 45,
+    "output_response_positions": 10,
+    "visible_blank_slots": 11,
+    "output_letter_count": 10,
+    "source_stem_English_words": 85,
+    "source_options_English_words": 47,
+    "difficulty_or_reading_time_equivalence_claimed": false
+  }
+}

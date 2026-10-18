@@ -1,0 +1,181 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholechoices10-museum",
+  "grade": "primary5",
+  "family": "sentence_choice",
+  "title": "小五：博物馆、午后与记录",
+  "source_group_id": "p5.guilin2025.readingthinking.choice10",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary5WholeChoiceSourceBindings-v0.1.json",
+    "sha256": "ca082f15eca56fc2a1763d073aba2d7c236a9bd98a9ae210418972e833274b2f"
+  },
+  "source_binding": "p5.guilin2025.readingthinking.choice10.binding",
+  "instruction": "从每题的A、B、C三个独立选项中选出最合适的一项。第5题有两个空，选一个完整组合；每题只填一个字母，完成全部十题。",
+  "source_notice": "参照已存桂林标签2024—2025下五年级第十一节完整十题三选，选节十题有原生文字与刊键，原校施测和原版排版未认证。原键非gold；午餐时刻、馆规、服饰、石块视角和节日行为不当普适事实。自有稿用明确计划、规则和虚构物品约束语境，保留第5两空联选，不抄源事实或歧义。旧连续五题的原大题边界未见，移研究参考；本稿非新题型或三独立来源、未标定难度区分度，独立教研/学生/商用/生产未证。",
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      5
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "items": [
+    {
+      "stem": "My uncle's job is driving a bus. He is a ____.",
+      "key": "C",
+      "options": [
+        "singer",
+        "writer",
+        "driver"
+      ],
+      "grounds": [
+        "singer是歌手，不是以驾驶巴士为工作的职业。",
+        "writer是作家，不是该工作名称。",
+        "driver是驾驶员，符合题面定义。"
+      ]
+    },
+    {
+      "stem": "Our meal plan says: “Dinner 18:30.” At 18:30, we have ____.",
+      "key": "B",
+      "options": [
+        "breakfast",
+        "dinner",
+        "lunch"
+      ],
+      "grounds": [
+        "给定安排是晚餐，不是早餐。",
+        "与本题提供的Dinner 18:30相符。",
+        "与给定晚餐安排不符。"
+      ]
+    },
+    {
+      "stem": "The museum rule says “No photos inside.” Inside, we must not ____.",
+      "key": "A",
+      "options": [
+        "take photos",
+        "read the labels",
+        "walk quietly"
+      ],
+      "grounds": [
+        "直接违反明确给出的No photos规定。",
+        "读标签不是该条规定禁止的拍照行为。",
+        "安静走动不是该条规定禁止的拍照行为。"
+      ]
+    },
+    {
+      "stem": "Our team needs white shirts, not white hats or blue shirts. We choose the ____.",
+      "key": "C",
+      "options": [
+        "white hats",
+        "blue shirts",
+        "white shirts"
+      ],
+      "grounds": [
+        "虽为白色，但帽子不是衬衫。",
+        "衬衫类别对，蓝色不符。",
+        "衣物类别和颜色都符合要求。"
+      ]
+    },
+    {
+      "stem": "Brush A has a “Clean” label; brush B has a “Dirty” label. A is ____, but B is ____.",
+      "key": "B",
+      "options": [
+        "dirty; clean",
+        "clean; dirty",
+        "clean; clean"
+      ],
+      "grounds": [
+        "将题面两标签对应关系反转。",
+        "A为Clean、B为Dirty，逐项符合。",
+        "B为Dirty，不是Clean。"
+      ]
+    },
+    {
+      "stem": "This card has my name and lets me borrow books from our library. It is a ____.",
+      "key": "A",
+      "options": [
+        "library card",
+        "bus ticket",
+        "passport"
+      ],
+      "grounds": [
+        "姓名及在本图书馆借书功能符合图书卡。",
+        "巴士票不授权从图书馆借书。",
+        "护照不是本图书馆借书卡。"
+      ]
+    },
+    {
+      "stem": "To remove the pencil marks, I use a soft rubber tool: an ____.",
+      "key": "C",
+      "options": [
+        "ruler",
+        "scissors",
+        "eraser"
+      ],
+      "grounds": [
+        "ruler为尺，和软橡胶擦除工具的定义不同。",
+        "scissors为剪刀，不是橡胶擦除工具。",
+        "eraser是擦除铅笔痕迹的橡皮，符合定义及an。"
+      ]
+    },
+    {
+      "stem": "We ____ three photos in the museum garden yesterday.",
+      "key": "B",
+      "options": [
+        "take",
+        "took",
+        "taking"
+      ],
+      "grounds": [
+        "yesterday明确过去时间，原形take不合。",
+        "took为take的过去式，符合本句。",
+        "无助动词时不能单用taking作谓语。"
+      ]
+    },
+    {
+      "stem": "At our toy exchange, we give one toy and keep another, without paying. We ____.",
+      "key": "A",
+      "options": [
+        "swap toys",
+        "buy toys",
+        "repair toys"
+      ],
+      "grounds": [
+        "题面互换并保留另一玩具，就是交换玩具。",
+        "明确不付钱，不是购买。",
+        "没有修理操作，不能以repair概括互换。"
+      ]
+    },
+    {
+      "stem": "Our paper bird has black wings and white feet. Its feet are ____.",
+      "key": "C",
+      "options": [
+        "black",
+        "brown",
+        "white"
+      ],
+      "grounds": [
+        "黑色描述的是翅膀，不是脚。",
+        "题面未给棕色，脚明确为white。",
+        "直接符合作者纸鸟的脚色，不当真实物种事实。"
+      ]
+    }
+  ]
+}

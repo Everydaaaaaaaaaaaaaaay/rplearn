@@ -1,0 +1,407 @@
+{
+  "version": "0.1",
+  "id": "primary5-wholechoices10-museum",
+  "grade": "primary5",
+  "questions": 10,
+  "candidate_sha256": "854ab75e0b35a43e8392d1c6c79016855bfd89b1ec95776b38cfe9637644f53a",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary5-wholechoices10-museum-manuscript-v0.1.json",
+    "sha256": "fd3a7c80b609e5473877c993ec92dc174b32967f83820d94272e64cf0032eadd"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary5WholeChoiceSourceBindings-v0.1.json",
+    "sha256": "ca082f15eca56fc2a1763d073aba2d7c236a9bd98a9ae210418972e833274b2f"
+  },
+  "source_binding": "p5.guilin2025.readingthinking.choice10.binding",
+  "source_index": {
+    "path": "CompleteCoverage20261017/Primary5WholeChoiceSelectedSource-v0.1.json",
+    "sha256": "56ac7ce0839f8e25f86647d18f3ce4d42808bbfa0629bc0fe4fcf01872d6be57"
+  },
+  "source_group_id": "p5.guilin2025.readingthinking.choice10",
+  "source_features": {
+    "sentence_tasks": 10,
+    "responses": 10,
+    "options_each": 3,
+    "shared_bank": false,
+    "visible_blank_slots_each": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "joint_choice_positions": [
+      5
+    ],
+    "response_mode": "one_letter_each",
+    "necessary_audio": false,
+    "necessary_images": false
+  },
+  "source_count_increment": 0,
+  "student_passage": "",
+  "canonical_response_block_sha256": "1e1bfcb55f8d92d3b6c0dd64e31a7a74de3ce47039831fa6960c3b7fff78ddfa",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "My uncle's job is driving a bus. He is a ____.",
+      "options": [
+        [
+          "A",
+          "singer"
+        ],
+        [
+          "B",
+          "writer"
+        ],
+        [
+          "C",
+          "driver"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：singer是歌手，不是以驾驶巴士为工作的职业。；B：writer是作家，不是该工作名称。；C：driver是驾驶员，符合题面定义。"
+    },
+    {
+      "number": 2,
+      "stem": "Our meal plan says: “Dinner 18:30.” At 18:30, we have ____.",
+      "options": [
+        [
+          "A",
+          "breakfast"
+        ],
+        [
+          "B",
+          "dinner"
+        ],
+        [
+          "C",
+          "lunch"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：给定安排是晚餐，不是早餐。；B：与本题提供的Dinner 18:30相符。；C：与给定晚餐安排不符。"
+    },
+    {
+      "number": 3,
+      "stem": "The museum rule says “No photos inside.” Inside, we must not ____.",
+      "options": [
+        [
+          "A",
+          "take photos"
+        ],
+        [
+          "B",
+          "read the labels"
+        ],
+        [
+          "C",
+          "walk quietly"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：直接违反明确给出的No photos规定。；B：读标签不是该条规定禁止的拍照行为。；C：安静走动不是该条规定禁止的拍照行为。"
+    },
+    {
+      "number": 4,
+      "stem": "Our team needs white shirts, not white hats or blue shirts. We choose the ____.",
+      "options": [
+        [
+          "A",
+          "white hats"
+        ],
+        [
+          "B",
+          "blue shirts"
+        ],
+        [
+          "C",
+          "white shirts"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：虽为白色，但帽子不是衬衫。；B：衬衫类别对，蓝色不符。；C：衣物类别和颜色都符合要求。"
+    },
+    {
+      "number": 5,
+      "stem": "Brush A has a “Clean” label; brush B has a “Dirty” label. A is ____, but B is ____.",
+      "options": [
+        [
+          "A",
+          "dirty; clean"
+        ],
+        [
+          "B",
+          "clean; dirty"
+        ],
+        [
+          "C",
+          "clean; clean"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：将题面两标签对应关系反转。；B：A为Clean、B为Dirty，逐项符合。；C：B为Dirty，不是Clean。"
+    },
+    {
+      "number": 6,
+      "stem": "This card has my name and lets me borrow books from our library. It is a ____.",
+      "options": [
+        [
+          "A",
+          "library card"
+        ],
+        [
+          "B",
+          "bus ticket"
+        ],
+        [
+          "C",
+          "passport"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：姓名及在本图书馆借书功能符合图书卡。；B：巴士票不授权从图书馆借书。；C：护照不是本图书馆借书卡。"
+    },
+    {
+      "number": 7,
+      "stem": "To remove the pencil marks, I use a soft rubber tool: an ____.",
+      "options": [
+        [
+          "A",
+          "ruler"
+        ],
+        [
+          "B",
+          "scissors"
+        ],
+        [
+          "C",
+          "eraser"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：ruler为尺，和软橡胶擦除工具的定义不同。；B：scissors为剪刀，不是橡胶擦除工具。；C：eraser是擦除铅笔痕迹的橡皮，符合定义及an。"
+    },
+    {
+      "number": 8,
+      "stem": "We ____ three photos in the museum garden yesterday.",
+      "options": [
+        [
+          "A",
+          "take"
+        ],
+        [
+          "B",
+          "took"
+        ],
+        [
+          "C",
+          "taking"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：yesterday明确过去时间，原形take不合。；B：took为take的过去式，符合本句。；C：无助动词时不能单用taking作谓语。"
+    },
+    {
+      "number": 9,
+      "stem": "At our toy exchange, we give one toy and keep another, without paying. We ____.",
+      "options": [
+        [
+          "A",
+          "swap toys"
+        ],
+        [
+          "B",
+          "buy toys"
+        ],
+        [
+          "C",
+          "repair toys"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：题面互换并保留另一玩具，就是交换玩具。；B：明确不付钱，不是购买。；C：没有修理操作，不能以repair概括互换。"
+    },
+    {
+      "number": 10,
+      "stem": "Our paper bird has black wings and white feet. Its feet are ____.",
+      "options": [
+        [
+          "A",
+          "black"
+        ],
+        [
+          "B",
+          "brown"
+        ],
+        [
+          "C",
+          "white"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：黑色描述的是翅膀，不是脚。；B：题面未给棕色，脚明确为white。；C：直接符合作者纸鸟的脚色，不当真实物种事实。"
+    }
+  ],
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "C",
+      "grounds": {
+        "A": "singer是歌手，不是以驾驶巴士为工作的职业。",
+        "B": "writer是作家，不是该工作名称。",
+        "C": "driver是驾驶员，符合题面定义。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "B",
+      "grounds": {
+        "A": "给定安排是晚餐，不是早餐。",
+        "B": "与本题提供的Dinner 18:30相符。",
+        "C": "与给定晚餐安排不符。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "A",
+      "grounds": {
+        "A": "直接违反明确给出的No photos规定。",
+        "B": "读标签不是该条规定禁止的拍照行为。",
+        "C": "安静走动不是该条规定禁止的拍照行为。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "C",
+      "grounds": {
+        "A": "虽为白色，但帽子不是衬衫。",
+        "B": "衬衫类别对，蓝色不符。",
+        "C": "衣物类别和颜色都符合要求。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "B",
+      "grounds": {
+        "A": "将题面两标签对应关系反转。",
+        "B": "A为Clean、B为Dirty，逐项符合。",
+        "C": "B为Dirty，不是Clean。"
+      }
+    },
+    {
+      "number": 6,
+      "key": "A",
+      "grounds": {
+        "A": "姓名及在本图书馆借书功能符合图书卡。",
+        "B": "巴士票不授权从图书馆借书。",
+        "C": "护照不是本图书馆借书卡。"
+      }
+    },
+    {
+      "number": 7,
+      "key": "C",
+      "grounds": {
+        "A": "ruler为尺，和软橡胶擦除工具的定义不同。",
+        "B": "scissors为剪刀，不是橡胶擦除工具。",
+        "C": "eraser是擦除铅笔痕迹的橡皮，符合定义及an。"
+      }
+    },
+    {
+      "number": 8,
+      "key": "B",
+      "grounds": {
+        "A": "yesterday明确过去时间，原形take不合。",
+        "B": "took为take的过去式，符合本句。",
+        "C": "无助动词时不能单用taking作谓语。"
+      }
+    },
+    {
+      "number": 9,
+      "key": "A",
+      "grounds": {
+        "A": "题面互换并保留另一玩具，就是交换玩具。",
+        "B": "明确不付钱，不是购买。",
+        "C": "没有修理操作，不能以repair概括互换。"
+      }
+    },
+    {
+      "number": 10,
+      "key": "C",
+      "grounds": {
+        "A": "黑色描述的是翅膀，不是脚。",
+        "B": "题面未给棕色，脚明确为white。",
+        "C": "直接符合作者纸鸟的脚色，不当真实物种事实。"
+      }
+    }
+  ],
+  "all_candidate_backfills": [
+    {
+      "A": "My uncle's job is driving a bus. He is a singer.",
+      "B": "My uncle's job is driving a bus. He is a writer.",
+      "C": "My uncle's job is driving a bus. He is a driver."
+    },
+    {
+      "A": "Our meal plan says: “Dinner 18:30.” At 18:30, we have breakfast.",
+      "B": "Our meal plan says: “Dinner 18:30.” At 18:30, we have dinner.",
+      "C": "Our meal plan says: “Dinner 18:30.” At 18:30, we have lunch."
+    },
+    {
+      "A": "The museum rule says “No photos inside.” Inside, we must not take photos.",
+      "B": "The museum rule says “No photos inside.” Inside, we must not read the labels.",
+      "C": "The museum rule says “No photos inside.” Inside, we must not walk quietly."
+    },
+    {
+      "A": "Our team needs white shirts, not white hats or blue shirts. We choose the white hats.",
+      "B": "Our team needs white shirts, not white hats or blue shirts. We choose the blue shirts.",
+      "C": "Our team needs white shirts, not white hats or blue shirts. We choose the white shirts."
+    },
+    {
+      "A": "Brush A has a “Clean” label; brush B has a “Dirty” label. A is dirty, but B is clean.",
+      "B": "Brush A has a “Clean” label; brush B has a “Dirty” label. A is clean, but B is dirty.",
+      "C": "Brush A has a “Clean” label; brush B has a “Dirty” label. A is clean, but B is clean."
+    },
+    {
+      "A": "This card has my name and lets me borrow books from our library. It is a library card.",
+      "B": "This card has my name and lets me borrow books from our library. It is a bus ticket.",
+      "C": "This card has my name and lets me borrow books from our library. It is a passport."
+    },
+    {
+      "A": "To remove the pencil marks, I use a soft rubber tool: an ruler.",
+      "B": "To remove the pencil marks, I use a soft rubber tool: an scissors.",
+      "C": "To remove the pencil marks, I use a soft rubber tool: an eraser."
+    },
+    {
+      "A": "We take three photos in the museum garden yesterday.",
+      "B": "We took three photos in the museum garden yesterday.",
+      "C": "We taking three photos in the museum garden yesterday."
+    },
+    {
+      "A": "At our toy exchange, we give one toy and keep another, without paying. We swap toys.",
+      "B": "At our toy exchange, we give one toy and keep another, without paying. We buy toys.",
+      "C": "At our toy exchange, we give one toy and keep another, without paying. We repair toys."
+    },
+    {
+      "A": "Our paper bird has black wings and white feet. Its feet are black.",
+      "B": "Our paper bird has black wings and white feet. Its feet are brown.",
+      "C": "Our paper bird has black wings and white feet. Its feet are white."
+    }
+  ],
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 122,
+    "options_English_words_with_repeated_bank": 45,
+    "output_response_positions": 10,
+    "visible_blank_slots": 11,
+    "output_letter_count": 10,
+    "source_stem_English_words": 85,
+    "source_options_English_words": 47,
+    "difficulty_or_reading_time_equivalence_claimed": false
+  }
+}

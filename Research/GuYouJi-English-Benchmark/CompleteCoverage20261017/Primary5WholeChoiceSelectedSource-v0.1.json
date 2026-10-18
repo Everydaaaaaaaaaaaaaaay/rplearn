@@ -1,0 +1,67 @@
+{
+  "version": "0.1",
+  "groups": [
+    {
+      "id": "p5.guilin2025.readingthinking.choice10",
+      "level": "primary5",
+      "kind": "sentence_choice",
+      "source": {
+        "path": "build/english-benchmark-authority-20261017/primary5-guilin23831389-native-v0.1.html",
+        "sha256": "73e2f8167889d5ace861ea2c81cf5d06552642704d175371b70ff77728a5b1b0"
+      },
+      "selected_native": {
+        "path": "build/english-benchmark-authority-20261017/primary5-guilin11-whole-choice10-native-v0.1.json",
+        "sha256": "0ce52c18372e4b7b72ab502561ccb97c975dc4af990b35c8123655cfee306718"
+      },
+      "input_complete": true,
+      "input_layer": "selected_native_text_only",
+      "responses": 10,
+      "options_each": 3,
+      "features": {
+        "sentence_tasks": 10,
+        "responses": 10,
+        "options_each": 3,
+        "shared_bank": false,
+        "visible_blank_slots_each": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "joint_choice_positions": [
+          5
+        ],
+        "response_mode": "one_letter_each",
+        "necessary_audio": false,
+        "necessary_images": false
+      },
+      "source_key_acquired": true,
+      "source_key_is_gold": false,
+      "school_exam_authentication": false,
+      "limitations": [
+        "完整十题原生文字与刊键；原卷排版、施测身份和学校发布未认证",
+        "只给看得见的52/53/54/58/61编号；其余用题组内顺序，不猜补源印刷题号",
+        "53午餐时间、54馆规、55季节服饰、56石块大小视角及60国庆活动有常识/语境/教材依赖；不作普适事实gold或照抄成新题",
+        "本轮不纳邻节9、10、12或14为新增必补题型"
+      ]
+    }
+  ],
+  "new_complete_original_downloads": 0,
+  "new_source_parents": 0,
+  "new_selected_native_section": 1,
+  "reused_source": {
+    "path": "build/english-benchmark-authority-20261017/primary5-guilin23831389-native-v0.1.html",
+    "sha256": "73e2f8167889d5ace861ea2c81cf5d06552642704d175371b70ff77728a5b1b0"
+  },
+  "old_boundary_uncertainty": {
+    "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+    "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+  },
+  "common_family_not_new_type": true
+}

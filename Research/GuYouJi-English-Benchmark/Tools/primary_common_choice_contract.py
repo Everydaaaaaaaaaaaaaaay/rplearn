@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+import unicodedata
 from grade_mode_evidence import load_ref
 
 
@@ -17,12 +18,27 @@ def check(group, audit, binding, source):
     selected = json.loads(load_ref(source['selected_native']).read_text())
     block = selected['selected_native_block']
     assert hashlib.sha256(block.encode()).hexdigest() == selected['block_sha256']
-    numbers = re.findall(r'(?m)^(?:[（(]\s*[）)]\s*)?(\d+)\.', block)
-    assert list(map(int, numbers)) == list(range(1, 11))
-    assert len(re.findall(r'(?<![A-Za-z])[ABC]\.', block)) == 30
-    assert not selected['source_original_key_acquired']
+    if selected.get('source_native_subsection') == 'primary5_guilin11':
+        from bs4 import BeautifulSoup
+        native = BeautifulSoup(load_ref(selected['source_html']).read_text(), 'html.parser').get_text('\n', strip=True)
+        assert source['level'] == 'primary5' and '小学五年级' in native
+        assert native[selected['start_offset']:selected['end_offset']] == block
+        assert [r['ordinal'] for r in selected['items']] == list(range(1, 11))
+        assert [r['printed_number'] for r in selected['items']] == [52, 53, 54, None, None, None, 58, None, None, 61]
+        assert [r['visible_blank_slots'] for r in selected['items']] == source['features']['visible_blank_slots_each']
+        assert len(re.findall(r'(?<![A-Za-z])[ABC]\.', unicodedata.normalize('NFKC', block))) == 30
+        assert selected['published_key_raw'] in native
+        assert selected['published_key_vector'] == list('CBCBBBACAB')
+        assert selected['source_original_key_acquired'] and source['source_key_acquired']
+        assert source['source_key_is_gold'] is False
+    else:
+        numbers = re.findall(r'(?m)^(?:[（(]\s*[）)]\s*)?(\d+)\.', block)
+        assert list(map(int, numbers)) == list(range(1, 11))
+        assert len(re.findall(r'(?<![A-Za-z])[ABC]\.', block)) == 30
+        assert not selected['source_original_key_acquired']
+        assert not source['source_key_acquired']
     assert not selected['source_school_authenticated']
-    assert not source['source_key_acquired'] and not source['school_exam_authentication']
+    assert not source['school_exam_authentication']
     assert source['input_layer'] == 'selected_native_text_only'
     assert binding['source_features'] == source['features'] == audit['source_features']
     assert binding['level'] == group['grade'] == source['level']

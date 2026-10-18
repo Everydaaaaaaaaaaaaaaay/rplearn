@@ -1,0 +1,59 @@
+{
+  "version": "0.1",
+  "scope": "primary_retained_common_type_review_followup_and_whole_group_quality",
+  "primary5_sentence_choice": {
+    "prior_source_boundary": "original section heading not visible;five contiguous independent tasks not proven a whole paper section",
+    "prior_source_index": {
+      "path": "FirstRelease/AllLevels/selected-source-batch-v0.3.json",
+      "sha256": "40694a85e701e685d20db20f6df766b4c9831e1f6906b07252cc79e00219bb25"
+    },
+    "reference_only_author_ids": [
+      "primary5-five-situation-choices",
+      "primary5-calendar-and-coats-choices",
+      "primary5-signs-and-visits-choices"
+    ],
+    "current_source": {
+      "path": "CompleteCoverage20261017/Primary5WholeChoiceSelectedSource-v0.1.json",
+      "sha256": "56ac7ce0839f8e25f86647d18f3ce4d42808bbfa0629bc0fe4fcf01872d6be57"
+    },
+    "decision": "same common family,use complete ten-item section;do not create a separate new type",
+    "source_reused_not_new_parent": true
+  },
+  "other_review_findings": [
+    {
+      "level": "primary3",
+      "family": "letter_completion",
+      "finding": "新检索的嘉兴南湖26417434和长春朝阳23683456标签来源明确听音/听单词补字母；不能用来证明无听力书面字母组合选择的常见性，当前旧书面形式仍属初筛。",
+      "urls": [
+        "https://zy.21cnjy.com/26417434",
+        "https://zy.21cnjy.com/23683456"
+      ],
+      "new_complete_source_groups": 0
+    },
+    {
+      "level": "primary4",
+      "family": "choice_cloze",
+      "finding": "已核石景山2024—25完整5空二选为地区观察；新搜23192903是专项训练，不能重计普通实考试卷或据其称全国常见。未新增具体配置任务。",
+      "source_index": {
+        "path": "AuthorityGap20261017/SelectedSourceModes-v0.10.json",
+        "sha256": "45916d6073ff0d3b08fd8406f7bf8cd3d02abb0604a5f2b9195bee4c7a4801e9"
+      },
+      "excluded_frequency_url": "https://zy.21cnjy.com/23192903",
+      "new_complete_source_groups": 0
+    },
+    {
+      "level": "primary5",
+      "family": "listening",
+      "finding": "桂林23831389已在库，不重复计新样本；三江8019590网页本次读取超时，未把搜索摘要或声称有音频当全输入。",
+      "urls": [
+        "https://zy.21cnjy.com/23831389",
+        "https://tiku.zujuan.com/map/paper-8019590.shtml"
+      ],
+      "new_complete_source_groups": 0
+    }
+  ],
+  "one_observation_not_required_type": true,
+  "not_completed_primary_commonness_review": true,
+  "not_new_all_mode_backlog": true,
+  "new_downloads": 0
+}
