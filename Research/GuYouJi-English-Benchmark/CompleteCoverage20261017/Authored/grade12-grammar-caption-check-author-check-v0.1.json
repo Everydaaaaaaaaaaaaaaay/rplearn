@@ -1,0 +1,280 @@
+{
+  "version": "0.1",
+  "id": "grade12-grammar-caption-check",
+  "grade": 12,
+  "questions": 10,
+  "candidate_sha256": "13bcc35bca35a3f4ae6e0c50b1e2df3eac79b59768a2fe46bc46026c46df90cb",
+  "source_binding": "seniorgrammar12",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.1.json",
+    "sha256": "2c14f01b24af4abfbf284c833df2d14dbf8d0cf2ceba5d73e83f5b98603194f3"
+  },
+  "source_group_id": "g12.2025anshan.grammar",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "between"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "among"
+        ]
+      },
+      "rationale": "the difference between the two versions的固定关系，两个版本之间的差异。",
+      "givenLemma": null
+    },
+    {
+      "number": 2,
+      "stem": "第2空（they）",
+      "options": [],
+      "acceptedAnswers": [
+        "their"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "they",
+          "theirs"
+        ]
+      },
+      "rationale": "own lines前用物主限定词their，与actors对应。",
+      "givenLemma": "they"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（need）",
+      "options": [],
+      "acceptedAnswers": [
+        "needs",
+        "needed"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "needing"
+        ]
+      },
+      "rationale": "现行字幕原则可用needs；置于过去项目叙事内也可用needed。两种时态视角均与全文相容，不强行唯一。",
+      "givenLemma": "need"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（crowd）",
+      "options": [],
+      "acceptedAnswers": [
+        "crowded"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "crowding"
+        ]
+      },
+      "rationale": "look后的表语形容词，crowded描述字幕挤满屏幕。",
+      "givenLemma": "crowd"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "the"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "a"
+        ]
+      },
+      "rationale": "the same为固定限定结构，同一场景、同一屏幕。",
+      "givenLemma": null
+    },
+    {
+      "number": 6,
+      "stem": "第6空（keep）",
+      "options": [],
+      "acceptedAnswers": [
+        "to keep"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "keeping"
+        ]
+      },
+      "rationale": "it was essential to keep...不定式作后置的实际主语，指测试时保持条件一致的要求。",
+      "givenLemma": "keep"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "that"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "what"
+        ]
+      },
+      "rationale": "so+形容词+that引出具体结果，从句有完整主语谓语。",
+      "givenLemma": null
+    },
+    {
+      "number": 8,
+      "stem": "第8空（child）",
+      "options": [],
+      "acceptedAnswers": [
+        "children"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "child",
+          "childs"
+        ]
+      },
+      "rationale": "two要求child不规则复数children。",
+      "givenLemma": "child"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（suggest）",
+      "options": [],
+      "acceptedAnswers": [
+        "suggestions"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "suggest",
+          "suggestion"
+        ]
+      },
+      "rationale": "all three限定三个可数建议，需复数名词suggestions。",
+      "givenLemma": "suggest"
+    },
+    {
+      "number": 10,
+      "stem": "第10空（accurate）",
+      "options": [],
+      "acceptedAnswers": [
+        "accurately"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "accurate",
+          "more accurately"
+        ]
+      },
+      "rationale": "more已给，副词accurately修饰followed，不能双加more。",
+      "givenLemma": "accurate"
+    }
+  ],
+  "canonical_response_block_sha256": "ba36dabb97600706dd3603816f48a5b39092110251cc375c616e60bede04f400",
+  "student_passage": "A school drama group prepared captions for a short video of its latest performance. The first difference (1) ____ the two draft versions was easy to spot: one used a separate line for every pause, while the other joined several speeches together. Before either version was shown, the actors checked (2) ____ (they) own lines against the script. Each change of speaker (3) ____ (need) a clear label; otherwise, a viewer could attribute a remark to the wrong character.\n\nLong captions made the screen look (4) ____ (crowd). Simply shortening every line was not a satisfactory answer, because a brief word could still carry an important part of the story. The group tested both versions using (5) ____ same scene and the same screen. Their teacher reminded them that it was essential (6) ____ (keep) the conditions consistent if they wanted to make a useful comparison. One revised caption was so clear (7) ____ the viewers identified the speaker without looking away from the action.\n\nTwo (8) ____ (child) from a younger class watched the trial. All three (9) ____ (suggest) they offered concerned moments when a caption vanished before a character finished speaking. The group extended those captions and tested the scene again. This time, the viewers followed the exchange more (10) ____ (accurate). The team kept the original drafts as well as the revision, so the changes could be explained rather than merely claimed.",
+  "author_answer_vector": [
+    [
+      "between"
+    ],
+    [
+      "their"
+    ],
+    [
+      "needs",
+      "needed"
+    ],
+    [
+      "crowded"
+    ],
+    [
+      "the"
+    ],
+    [
+      "to keep"
+    ],
+    [
+      "that"
+    ],
+    [
+      "children"
+    ],
+    [
+      "suggestions"
+    ],
+    [
+      "accurately"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "mixed_given_ungiven_grammar": true,
+  "subgroup_counts": [
+    10
+  ],
+  "given_positions": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    9,
+    10
+  ],
+  "filled_passage": "A school drama group prepared captions for a short video of its latest performance. The first difference (1) between the two draft versions was easy to spot: one used a separate line for every pause, while the other joined several speeches together. Before either version was shown, the actors checked (2) their (they) own lines against the script. Each change of speaker (3) needs (need) a clear label; otherwise, a viewer could attribute a remark to the wrong character.\n\nLong captions made the screen look (4) crowded (crowd). Simply shortening every line was not a satisfactory answer, because a brief word could still carry an important part of the story. The group tested both versions using (5) the same scene and the same screen. Their teacher reminded them that it was essential (6) to keep (keep) the conditions consistent if they wanted to make a useful comparison. One revised caption was so clear (7) that the viewers identified the speaker without looking away from the action.\n\nTwo (8) children (child) from a younger class watched the trial. All three (9) suggestions (suggest) they offered concerned moments when a caption vanished before a character finished speaking. The group extended those captions and tested the scene again. This time, the viewers followed the exchange more (10) accurately (accurate). The team kept the original drafts as well as the revision, so the changes could be explained rather than merely claimed.",
+  "load_measure": {
+    "body_English_words": 216,
+    "stem_English_words": 7,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 2,
+  "source_level_equivalence_established": false
+}

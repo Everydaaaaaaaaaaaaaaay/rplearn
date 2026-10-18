@@ -1,0 +1,280 @@
+{
+  "version": "0.1",
+  "id": "grade12-grammar-data-cards",
+  "grade": 12,
+  "questions": 10,
+  "candidate_sha256": "4cbb9d9e200ca95c2b919002b3e1d28dc1872b6b96f71cb7424bcc3fc166385b",
+  "source_binding": "seniorgrammar12",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.1.json",
+    "sha256": "2c14f01b24af4abfbf284c833df2d14dbf8d0cf2ceba5d73e83f5b98603194f3"
+  },
+  "source_group_id": "g12.2025anshan.grammar",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "the"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "a"
+        ]
+      },
+      "rationale": "at the end of固定结构，特指本次活动的结束。",
+      "givenLemma": null
+    },
+    {
+      "number": 2,
+      "stem": "第2空（hypothesis）",
+      "options": [],
+      "acceptedAnswers": [
+        "hypotheses"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "hypothesis",
+          "hypothesises"
+        ]
+      },
+      "rationale": "two competing后需hypothesis的不规则复数hypotheses。",
+      "givenLemma": "hypothesis"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（collect）",
+      "options": [],
+      "acceptedAnswers": [
+        "collected"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "collecting"
+        ]
+      },
+      "rationale": "data与collect为被动关系，collected作后置分词定语；正文明确数据为虚构，不提升为真实实验事实。",
+      "givenLemma": "collect"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（look）",
+      "options": [],
+      "acceptedAnswers": [
+        "looked"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "look",
+          "would have looked"
+        ]
+      },
+      "rationale": "would have在空前已经给出，空内只填过去分词looked，完整回填would have looked。",
+      "givenLemma": "look"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "which"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "that",
+          "whom"
+        ]
+      },
+      "rationale": "逗号后的none of which引导非限制性从句，cards为物。",
+      "givenLemma": null
+    },
+    {
+      "number": 6,
+      "stem": "第6空（convince）",
+      "options": [],
+      "acceptedAnswers": [
+        "convincing"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "convinced",
+          "more convincing"
+        ]
+      },
+      "rationale": "more已给；convincing描述解释有说服力，convinced描述被说服的人，不合explanation。",
+      "givenLemma": "convince"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "or"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "nor"
+        ]
+      },
+      "rationale": "whether X or Y的两种可能：覆盖全部卡片，还是只符合偏爱的卡片。",
+      "givenLemma": null
+    },
+    {
+      "number": 8,
+      "stem": "第8空（lose）",
+      "options": [],
+      "acceptedAnswers": [
+        "loss"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "lose",
+          "lost"
+        ]
+      },
+      "rationale": "the...of any card中需名词loss，指卡片遗失。",
+      "givenLemma": "lose"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（care）",
+      "options": [],
+      "acceptedAnswers": [
+        "careful"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "carefully"
+        ]
+      },
+      "rationale": "distinction前形容词careful，全文反复核查支持仔细区分；其他未核词形保留待复核。",
+      "givenLemma": "care"
+    },
+    {
+      "number": 10,
+      "stem": "第10空（present）",
+      "options": [],
+      "acceptedAnswers": [
+        "presenting"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "to present",
+          "present"
+        ]
+      },
+      "rationale": "avoid后接动名词；本句避免把练习呈现为科学证据，用presenting。",
+      "givenLemma": "present"
+    }
+  ],
+  "canonical_response_block_sha256": "4bee2b0fa1914117a7e12a8a40803df5845b465b99bd155d031410a778976f7a",
+  "student_passage": "At (1) ____ end of a classroom investigation, our group had two competing (2) ____ (hypothesis). We were using fictional data cards to practise evaluating an argument, rather than conducting a real experiment. Each card described a plant, a growing condition and a final height. The data (3) ____ (collect) on the cards had been invented by our teacher, and no one was expected to draw conclusions about real plants.\n\nOne student noticed that a card had been placed in the wrong group. If we had discarded it instead of correcting its label, our chart would have (4) ____ (look) much neater at yesterday's meeting. That appearance, however, would have depended on removing an inconvenient observation. We checked all the cards, none of (5) ____ could be traced to an actual plant, and corrected the grouping before discussing the two explanations.\n\nOne explanation seemed more (6) ____ (convince) than the other, but we had to say why. The question was whether it accounted for every card (7) ____ merely fitted the cards we preferred. Keeping a numbered list prevented the (8) ____ (lose) of any card during the discussion. We also made a (9) ____ (care) distinction between a description of the pattern and a claim about its cause. In our final report, we avoided (10) ____ (present) the exercise as scientific evidence. Its value lay in revealing how a small decision about a label could change an apparently persuasive argument.",
+  "author_answer_vector": [
+    [
+      "the"
+    ],
+    [
+      "hypotheses"
+    ],
+    [
+      "collected"
+    ],
+    [
+      "looked"
+    ],
+    [
+      "which"
+    ],
+    [
+      "convincing"
+    ],
+    [
+      "or"
+    ],
+    [
+      "loss"
+    ],
+    [
+      "careful"
+    ],
+    [
+      "presenting"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "mixed_given_ungiven_grammar": true,
+  "subgroup_counts": [
+    10
+  ],
+  "given_positions": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    9,
+    10
+  ],
+  "filled_passage": "At (1) the end of a classroom investigation, our group had two competing (2) hypotheses (hypothesis). We were using fictional data cards to practise evaluating an argument, rather than conducting a real experiment. Each card described a plant, a growing condition and a final height. The data (3) collected (collect) on the cards had been invented by our teacher, and no one was expected to draw conclusions about real plants.\n\nOne student noticed that a card had been placed in the wrong group. If we had discarded it instead of correcting its label, our chart would have (4) looked (look) much neater at yesterday's meeting. That appearance, however, would have depended on removing an inconvenient observation. We checked all the cards, none of (5) which could be traced to an actual plant, and corrected the grouping before discussing the two explanations.\n\nOne explanation seemed more (6) convincing (convince) than the other, but we had to say why. The question was whether it accounted for every card (7) or merely fitted the cards we preferred. Keeping a numbered list prevented the (8) loss (lose) of any card during the discussion. We also made a (9) careful (care) distinction between a description of the pattern and a claim about its cause. In our final report, we avoided (10) presenting (present) the exercise as scientific evidence. Its value lay in revealing how a small decision about a label could change an apparently persuasive argument.",
+  "load_measure": {
+    "body_English_words": 221,
+    "stem_English_words": 7,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 1,
+  "source_level_equivalence_established": false
+}

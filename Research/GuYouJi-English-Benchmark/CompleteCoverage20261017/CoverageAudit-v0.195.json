@@ -1,0 +1,153 @@
+{
+  "version": "0.195",
+  "scope": "current_common_type_representativeness_and_quality_audit",
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/CoverageAudit-v0.194.json",
+    "sha256": "9c60387af29deb83c1df0ef5502c0a80ccd45311d388d1f80493a81c9a0204cb"
+  },
+  "scope_notice": "按2026-10-18用户更正，只围绕各档位常见客观题型；旧全配置覆盖、地方特别模式三稿和未知笛卡尔积不再是本轮验收。旧问题留在历史审计，不等于当前待办。",
+  "all_required_types_complete": false,
+  "issues": [
+    {
+      "id": "common-type-representative-review",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "常见性逐档复核",
+      "state_label": "三至五年级常规单选完整稿已补；两项未证核心形式移参考",
+      "detail": "三年级旧卷书面字母补全与四年级石景山五空二选退出必补，不以听音材料或专项标题充常见性。不据此断言不存在或全国罕见。保留题型按代表卷核验全输入和答案，不再逐个特殊配置扩目标；其他小学初筛及低小现行活动边界仍需核对。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.9.json",
+          "sha256": "b30341c45ff8fd8b166abbaddaaf5cbb0f08a34089464b265f00ac9a6d48e86e"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.8.json",
+          "sha256": "2054d6b8001c76d8fd56b64b8d0ef2a7a7ba66e54f0229c956bdfec40e36024c"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonCorePruning-v0.1.json",
+          "sha256": "1564769161682823b53f91c6259a852e4f71f989bfd7cf515f7e8f2c0bbadcde"
+        }
+      ]
+    },
+    {
+      "id": "retained-common-original-quality",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "保留题目质量",
+      "state_label": "高三语法新增三篇不同结构完整稿，30回应与双答案核验通过",
+      "detail": "旧三篇集中相似语法序列，本轮补冠词、代词、主谓一致、模态被动、词性转换、比较结构和连接结构等内容差异；仍同一普通题型，不新增必补配置。31接受形式、44明确错项、四种完整回填、三组空答/错一项/解析/重置及一项双答案实测通过；未列词形待复核。其余保留题质量与原听力配套仍开放，作者自审和本机检查非独立教研/学生/生产验证。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/SeniorGrammarDiversityBatch-v0.2.json",
+          "sha256": "6fc4f7792f4ad0c8b48f439df30f694bc4d486777783f477dba291b4cd077f58"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.10.json",
+          "sha256": "02044062b8505b28b9ac15cb176d9e020f73762ddb2e49c6a687e9a0f86234e5"
+        }
+      ]
+    },
+    {
+      "id": "early-primary-common-nonpaper-boundary",
+      "levels": [
+        "primary1",
+        "primary2"
+      ],
+      "label": "低年级常用活动与历史纸笔边界",
+      "state_label": "仅保留图音/识词初筛，仍缺代表性现行完整活动材料",
+      "detail": "历史纸笔稿不当现行学校无纸笔测评。只定向找常见闭集活动的必要输入和规则，不把每篇报道的新站点列作必补，不恢复口头主观评分。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.3.json",
+          "sha256": "1d590482b4e7c084543fbdec9b23a07d8187b608282ba4b5b9b897f152fb9884"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.2.json",
+          "sha256": "e8527dfe0166e04b8ae4f7d04e310c63dba02f1dce53461fad24de12f5df2353"
+        },
+        {
+          "path": "CompleteCoverage20261017/MainlandLowPrimaryClosedActivityFollowup-v0.18.json",
+          "sha256": "437ffa8abf4402d4bf52391b3a7672ffc1b53b80c6f9235586f259edbecb53ad"
+        }
+      ]
+    },
+    {
+      "id": "primary-common-choice-not-odd-modes",
+      "levels": [
+        "primary3",
+        "primary4"
+      ],
+      "label": "常规单项选择的实际缺口",
+      "state_label": "已补齐：两年级各三完整稿，60回应/解析/重置实际核验通过",
+      "detail": "三年级12空、10字母；四年级16空、10字母，含/空介词联选。原生文字两完整选节、180候选回填和逐项依据、42反向合同通过。源键缺、原校未认证及源歧义保留；三个自有稿不当三个独立来源或难度标定。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.5.json",
+          "sha256": "de845a04ed8bd7a4ef65d6ea0f57830cef917c4702d0e6d686e0d6d7950f80b8"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.3.json",
+          "sha256": "0d7294b339c3f14f606bb321e6786a02f8003732497e3b2839110088621ea233"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonChoiceOriginalBatch-v0.2.json",
+          "sha256": "d8791fd275617b808777802c8512aa73fc0cd9df87034ec4064fd5e149263218"
+        }
+      ]
+    },
+    {
+      "id": "primary5-whole-singlechoice-boundary",
+      "levels": [
+        "primary5"
+      ],
+      "label": "五年级单选完整题节边界",
+      "state_label": "已替换：三套完整十题，30回应/两空联选/解析/重置实测通过",
+      "detail": "旧连续五题原节标题未见，转研究参考；已存桂林完整十题三选替换主展示，非新增必补类型。原生文字部分印刷编号缺失以ordinal保留，不猜补，刊键非gold。新稿119—124题干词对源85，候选45—50对源47；为明确语境更长，不称难度/用时等值。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/Primary5WholeChoiceOriginalBatch-v0.2.json",
+          "sha256": "dfba9eae1fde08129e14fd8add5ef5ea9b6b6d37535d3bbdc7755bcae93edf0b"
+        },
+        {
+          "path": "CompleteCoverage20261017/PrimaryCommonTypeFollowup-v0.2.json",
+          "sha256": "b044f9312a198376b01713c8e691f158cf846611fd27abfdd0189407e4503c73"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.7.json",
+          "sha256": "72dafe757b73dc2afab05034fd7201efb79ae72abf6f7a6f985eddc8dd491bde"
+        }
+      ]
+    }
+  ]
+}

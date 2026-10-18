@@ -1,0 +1,276 @@
+{
+  "version": "0.1",
+  "id": "grade12-grammar-tool-loans",
+  "grade": 12,
+  "questions": 10,
+  "candidate_sha256": "3ec9518b63a8adea3cacbb11b857ca24078c6bef637c4ab14f6c6799bd2a429e",
+  "source_binding": "seniorgrammar12",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/GrammarSourceBindings-v0.1.json",
+    "sha256": "2c14f01b24af4abfbf284c833df2d14dbf8d0cf2ceba5d73e83f5b98603194f3"
+  },
+  "source_group_id": "g12.2025anshan.grammar",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "an"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "a"
+        ]
+      },
+      "rationale": "object为元音音素起首的单数可数名词，此处首次泛指一件物品，an。",
+      "givenLemma": null
+    },
+    {
+      "number": 2,
+      "stem": "第2空（receive）",
+      "options": [],
+      "acceptedAnswers": [
+        "receives"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "receive"
+        ]
+      },
+      "rationale": "叙述现行规则，every borrower为单数，第三人称单数receives。",
+      "givenLemma": "receive"
+    },
+    {
+      "number": 3,
+      "stem": "第3空（they）",
+      "options": [],
+      "acceptedAnswers": [
+        "their"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "they",
+          "theirs"
+        ]
+      },
+      "rationale": "names前用所属限定词their，回指借用者，不用主格或独立物主代词。",
+      "givenLemma": "they"
+    },
+    {
+      "number": 4,
+      "stem": "第4空（size）",
+      "options": [],
+      "acceptedAnswers": [
+        "sizes"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "size"
+        ]
+      },
+      "rationale": "of different sizes表示不同尺寸，different后此处用可数复数。",
+      "givenLemma": "size"
+    },
+    {
+      "number": 5,
+      "stem": "第5空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "which"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "that"
+        ]
+      },
+      "rationale": "逗号后非限制性关系从句指前句整件事，which作主语；that不能如此引导。",
+      "givenLemma": null
+    },
+    {
+      "number": 6,
+      "stem": "第6空（return）",
+      "options": [],
+      "acceptedAnswers": [
+        "be returned"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "returned",
+          "be returning"
+        ]
+      },
+      "rationale": "must后须原形，被归还为被动，be returned保留必要助动词。",
+      "givenLemma": "return"
+    },
+    {
+      "number": 7,
+      "stem": "第7空（无提示，填1词）",
+      "options": [],
+      "acceptedAnswers": [
+        "but"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": 1,
+        "unlisted": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "not because X, but because Y否定前一个原因并给出真正原因；完整回填检验对应结构。",
+      "givenLemma": null
+    },
+    {
+      "number": 8,
+      "stem": "第8空（easy）",
+      "options": [],
+      "acceptedAnswers": [
+        "easily"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "easy",
+          "more easily"
+        ]
+      },
+      "rationale": "more已在空前；用副词easily修饰trace，不能再填more easily形成双more。",
+      "givenLemma": "easy"
+    },
+    {
+      "number": 9,
+      "stem": "第9空（leave）",
+      "options": [],
+      "acceptedAnswers": [
+        "was left"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "were left"
+        ]
+      },
+      "rationale": "last Friday的单一已发生事件，drill为被留下物，用was left。其他时态视角未核不自动判错。",
+      "givenLemma": "leave"
+    },
+    {
+      "number": 10,
+      "stem": "第10空（decide）",
+      "options": [],
+      "acceptedAnswers": [
+        "decision"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "rejectedAnswers": [
+          "decide",
+          "decisive"
+        ]
+      },
+      "rationale": "their final...was中需单数名词作主语，decision指该次决定。",
+      "givenLemma": "decide"
+    }
+  ],
+  "canonical_response_block_sha256": "ed83c74a1553e0433f44395fdd38674f8bfad2581baea9975c68a5a8b45f0e8c",
+  "student_passage": "At our neighbourhood lending room, a borrowed tool is never just (1) ____ object that disappears through the door. Every borrower (2) ____ (receive) a numbered card. The volunteers write down (3) ____ (they) names and the expected return dates before handing over any equipment. The shelves hold tools of different (4) ____ (size), so a clear record matters more than a quick glance at an empty space.\n\nEach tool belongs on a numbered hook, (5) ____ makes a missing item easy to identify. The tools must (6) ____ (return) before the date on the card. This is not because the volunteers enjoy paperwork, (7) ____ because another person may be waiting for the same item. A change of plan can usually be arranged if the borrower calls first. With these records, the volunteers can trace a missing tool more (8) ____ (easy) than they could with their old notebook.\n\nA drill (9) ____ (leave) outside the locked room last Friday. Nobody had signed it back in, and the volunteers could not tell whether its owner had brought it back or another person had found it. Their final (10) ____ (decide) was to contact the borrower before changing the record. The gap in the notebook was small; the uncertainty it created was not.",
+  "author_answer_vector": [
+    [
+      "an"
+    ],
+    [
+      "receives"
+    ],
+    [
+      "their"
+    ],
+    [
+      "sizes"
+    ],
+    [
+      "which"
+    ],
+    [
+      "be returned"
+    ],
+    [
+      "but"
+    ],
+    [
+      "easily"
+    ],
+    [
+      "was left"
+    ],
+    [
+      "decision"
+    ]
+  ],
+  "authored_student_inputs_complete": true,
+  "mixed_given_ungiven_grammar": true,
+  "subgroup_counts": [
+    10
+  ],
+  "given_positions": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    9,
+    10
+  ],
+  "filled_passage": "At our neighbourhood lending room, a borrowed tool is never just (1) an object that disappears through the door. Every borrower (2) receives (receive) a numbered card. The volunteers write down (3) their (they) names and the expected return dates before handing over any equipment. The shelves hold tools of different (4) sizes (size), so a clear record matters more than a quick glance at an empty space.\n\nEach tool belongs on a numbered hook, (5) which makes a missing item easy to identify. The tools must (6) be returned (return) before the date on the card. This is not because the volunteers enjoy paperwork, (7) but because another person may be waiting for the same item. A change of plan can usually be arranged if the borrower calls first. With these records, the volunteers can trace a missing tool more (8) easily (easy) than they could with their old notebook.\n\nA drill (9) was left (leave) outside the locked room last Friday. Nobody had signed it back in, and the volunteers could not tell whether its owner had brought it back or another person had found it. Their final (10) decision (decide) was to contact the borrower before changing the record. The gap in the notebook was small; the uncertainty it created was not.",
+  "load_measure": {
+    "body_English_words": 193,
+    "stem_English_words": 7,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 10
+  },
+  "source_count_increment": 0,
+  "independent_teacher_student_commercial_production_validated": false,
+  "full_fill_variant_combinations": 1,
+  "source_level_equivalence_established": false
+}
