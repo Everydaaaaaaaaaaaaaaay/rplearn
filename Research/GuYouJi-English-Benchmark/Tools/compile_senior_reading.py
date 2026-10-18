@@ -31,6 +31,12 @@ def compile_author(manuscript, version='0.1'):
         audit['load_measure'].update(compulsory_credit_entries=len(policy['compulsory']),half_credit_entries=sum(x['credits']==0.5 for x in policy['compulsory']),online_nested_credits=policy['online_credits'],community_hours_not_credits=policy['community_hours'])
     if d.get('program_policy'):
         audit.update(source_bound_four_program_reading_section=True,program_policy=d['program_policy'],program_match=d['program_match'],research_conditions=d['research_conditions'])
+    if d.get('job_notice'):
+        audit.update(source_bound_job_notice_reading_section=True,job_notice=d['job_notice'],
+                     applicant_options=d['applicant_options'],survey=d['survey'],robot=d['robot'],
+                     answer_evidence=d['answer_evidence'])
+        audit['load_measure'].update(job_advert_subheadings=6,minimum_license_years_inclusive=3,
+                                    pay_every_weeks=2,weekly_pay750_not_monthly=True)
     if d.get('source_bound_steps_letter_migration_survey'):
         audit.update(source_bound_steps_letter_migration_survey=True,
                      steps=d['steps'],letter=d['letter'],migration=d['migration'],

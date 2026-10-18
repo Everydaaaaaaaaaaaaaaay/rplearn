@@ -24,9 +24,14 @@ def validate(source,binding):
     header=raw[h['start_offset']:h['end_offset']]
     assert header==h['text'] and digest(header)==h['sha256']
     assert '阅读下列短文' in header and '任选' not in header
-    assert int(re.search(r'共\s*(\d+)\s*小题',header)[1])==source['responses']
-    assert float(re.search(r'每小题\s*([0-9.]+)\s*分',header)[1])==c['points_each']
-    assert float(re.search(r'满分\s*([0-9.]+)\s*分',header)[1])==c['selected_objective_points']
+    selected=source.get('selected_objective_header',h)
+    assert selected['source']==h['source']
+    assert h['start_offset']<=selected['start_offset']<selected['end_offset']<=h['end_offset']
+    selected_text=raw[selected['start_offset']:selected['end_offset']]
+    assert selected_text==selected['text'] and digest(selected_text)==selected['sha256']
+    assert int(re.search(r'共\s*(\d+)\s*小题',selected_text)[1])==source['responses']
+    assert float(re.search(r'每小题\s*([0-9.]+)\s*分',selected_text)[1])==c['points_each']
+    assert float(re.search(r'满分\s*([0-9.]+)\s*分',selected_text)[1])==c['selected_objective_points']
     assert source['responses']*c['points_each']==c['selected_objective_points']
     assert c['all_selected_subgroups_mandatory'] and not c['shared_candidates']
     assert not c['necessary_audio'] and not c['necessary_images']
@@ -43,7 +48,20 @@ def validate(source,binding):
         assert ob['paper_id']==source['source_observations'][0]['paper_id']
         assert ob['shape']['grade']==source['level'] and ob['shape']['family']=='reading_choice'
         assert ob['shape']['responses']==sub['responses']==len(sp['question_numbers'])
-        assert ob['shape']['options_each']==4 and ob['necessary_input_complete'] is True
+        assert ob['shape']['options_each']==4
+        if source.get('source_member_input_confirmations'):
+            # A new readthrough can resolve an old unknown, not erase a known gap.
+            confirmations=source['source_member_input_confirmations']
+            assert len(confirmations)==len(source['source_observations'])
+            confirmation=confirmations[i]
+            assert ob['necessary_input_complete'] is None
+            assert confirmation==dict(member_id=ob['id'],source=sp['source'],
+                whole_span_sha256=sp['sha256'],body_sha256=sp['body_sha256'],
+                question_numbers=sp['question_numbers'],options_each=4,
+                all_text_and_candidates_read=True,necessary_media=False,
+                old_unknown_retained=True,source_key_is_gold=False)
+        else:
+            assert ob['necessary_input_complete'] is True
         assert sp['start_offset']>=previous_end;previous_end=sp['end_offset']
         selected=raw[sp['start_offset']:sp['end_offset']]
         assert selected.startswith(sp['label']+'\n') and digest(selected)==sp['sha256']
@@ -93,6 +111,19 @@ def validate(source,binding):
     if re.search(r'(?m)^Step\s+1\s',bodies['A']):
         assert 'A.numbered_advice_steps' in c['required_lists']
         assert c['subgroups'][0]['genre']=='advice_article_with_steps'
+    if c['subgroups'][0]['genre']=='job_qualification_advertisement_with_subheadings':
+        assert source.get('source_member_input_confirmations') and source.get('selected_objective_header')
+        assert selected_text.startswith('第一节')
+        blocks=source['A_required_subheadings'];assert len(blocks)==6
+        assert [x['heading']for x in blocks]==['Key duties','Schedule','Location','Qualifications','Compensation (待遇)','Work challenges']
+        for i,block in enumerate(blocks):
+            text=bodies['A'][block['relative_start']:block['relative_end']]
+            assert text.startswith(block['heading']) and digest(text)==block['sha256']
+            assert block['relative_end']==(blocks[i+1]['relative_start']if i+1<len(blocks)else len(bodies['A']))
+        for text in ['at least 21','3+ years','40 hours per week','Tuesday to Saturday','Monday to Friday','$750/week','every two weeks','Preferred skills']:
+            assert text in bodies['A']
+        assert source['qualification_fields']['license_endpoint_inclusive_not_over3']
+        assert source['qualification_fields']['preferred_experience_not_mandatory']
     assert source['authors_genre_model_ready'] != source['genre_substructure_further_review_before_authoring']
     return True
 
@@ -126,6 +157,20 @@ def run(bindings_path):
             cases['mandatory_fee_table_omitted']=lambda x:x['configuration'].__setitem__('required_tables',[])
         if s['configuration']['required_lists']:
             cases['mandatory_list_omitted']=lambda x:x['configuration'].__setitem__('required_lists',[])
+        if s.get('source_member_input_confirmations'):
+            cases.update({
+                'readthrough_confirmation_missing':lambda x:x['source_member_input_confirmations'].pop(),
+                'old_unknown_overwritten':lambda x:x['source_observations'][0].__setitem__('necessary_input_complete',True),
+                'known_missing_input_promoted':lambda x:x['source_observations'][0].__setitem__('necessary_input_complete',False),
+                'readthrough_span_SHA_wrong':lambda x:x['source_member_input_confirmations'][0].__setitem__('whole_span_sha256','0'*64),
+                'readthrough_key_gold_upgrade':lambda x:x['source_member_input_confirmations'][0].__setitem__('source_key_is_gold',True),
+                'selected_header_SHA_wrong':lambda x:x['selected_objective_header'].__setitem__('sha256','0'*64),
+                'whole50_as_selected37_5':lambda x:x.__setitem__('selected_objective_header',x['whole_objective_header']),
+                'sixth_advert_section_missing':lambda x:x['A_required_subheadings'].pop(),
+                'advert_heading_SHA_wrong':lambda x:x['A_required_subheadings'][3].__setitem__('sha256','0'*64),
+                'license_endpoint_excluded':lambda x:x['qualification_fields'].__setitem__('license_endpoint_inclusive_not_over3',False),
+                'preferred_as_mandatory':lambda x:x['qualification_fields'].__setitem__('preferred_experience_not_mandatory',False),
+            })
         rejected=[]
         for name,mutate in cases.items():
             bad=copy.deepcopy(s);mutate(bad);bb=copy.deepcopy(b);bb['source_record_sha256']=digest(json.dumps(bad,ensure_ascii=False,sort_keys=True))
