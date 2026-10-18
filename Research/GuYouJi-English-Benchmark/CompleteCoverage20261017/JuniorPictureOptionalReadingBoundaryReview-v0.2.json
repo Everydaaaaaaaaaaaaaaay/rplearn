@@ -1,0 +1,401 @@
+{
+  "version": "0.2",
+  "previous_reconciliation": {
+    "path": "CompleteCoverage20261017/SchoolReadingConfigurationReconciliation-v0.33.json",
+    "sha256": "14baaa7adbed043a86fcc719d5d6e76b74381155b843901e113cf30c31886436"
+  },
+  "records": [
+    {
+      "level": 8,
+      "paper_id": "xschu-bnu2026-paper-key20261014-record",
+      "source_count_increment": 0,
+      "new_author_groups": 0,
+      "source_key_is_gold": false,
+      "original_unknown_observations_retained": true,
+      "source_PDF": {
+        "path": "build/english-benchmark-research-20261012/xschu-bnu2026-paper-key20261014.pdf",
+        "sha256": "36f2bf8cc8678076380cfd71207c64bc9ff4a71e5d1778167cc3615c85033761"
+      },
+      "native_pages": {
+        "path": "build/english-benchmark-research-20261012/xschu-bnu2026-native-pages20261014.json",
+        "sha256": "88fcccd3865741d3d569b9c2f4afa31944c92eb7d19834699bacb11349294c88"
+      },
+      "source_projection": {
+        "path": "build/english-benchmark-authority-20261017/bnu8-reading-selected-projection-v0.1.json",
+        "sha256": "cfd62e5e7bf13ecfae4c470729e32d0e268be7e6e3df086754125aab7c8304ed"
+      },
+      "source_full_inputs_verified": true,
+      "full_input_verification_scope": "selected original public-repost PDF pages/native fragments and manual image input review;not school authenticity,key validity,factual verification or full-paper admission",
+      "requires_source_binding_and_specific_author_contract": true,
+      "authors_genre_model_ready": false,
+      "grade_exclusivity_established": false,
+      "source_identity": {
+        "title": "2026 北京北师大实验中学初二（上）期末 英语",
+        "date": "2026.1",
+        "title_not_original_school_authentication": true,
+        "declared_question_pages": 12,
+        "public_repost_actual_question_pages": 10,
+        "conflict_preserved": true,
+        "source_optional_not_higher_product_level_or_CEFR": true
+      },
+      "id": "xschu-bnu2026-paper-key20261014-record.reading.closed_picture_mixed_section11",
+      "kind": "mixed_closed_reading",
+      "responses": 11,
+      "options_each": 4,
+      "source_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-04.png",
+          "sha256": "45a8d528d6aa171d421fc69d51c371d4d581522b9e72e994400a496333d4eabd"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-05.png",
+          "sha256": "9d3b0394f46e4a8cae3a9eb04faa815001b6031e731fe3fbcbdf26afb30d6dea"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-06.png",
+          "sha256": "14052cc6e8a08cd4f0dc9c570a05870b277b4a7932d66ad4187b3365f44ac9f3"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-07.png",
+          "sha256": "db19c74c7fb5bcfc89ce906771db4d5a7c701e96b7ee2aec7f34b7c2e7d09293"
+        }
+      ],
+      "source_key_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-12.png",
+          "sha256": "955ba7869cf77478d261c213904b1aa47bc0ba4cec34cbaede390fb52267e8e6"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-13.png",
+          "sha256": "b6594f7d72e6b88550f96ea15ff4e6db39a1c80a860a94eac912673a035a0559"
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "g8.bnu2026.readingB",
+          "paper_id": "xschu-bnu2026-paper-key20261014-record",
+          "shape": {
+            "grade": 8,
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "input": "text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        },
+        {
+          "id": "g8.bnu2026.readingC",
+          "paper_id": "xschu-bnu2026-paper-key20261014-record",
+          "shape": {
+            "grade": 8,
+            "family": "reading_choice",
+            "responses": 4,
+            "options_each": 4,
+            "details": {
+              "input": "text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "additional_existing_sibling_member": "g8.bnu2026.imageMatching",
+      "configuration": {
+        "passage_count": 3,
+        "subgroup_count": 3,
+        "text_unit_count": 5,
+        "material_unit_distribution": [
+          3,
+          1,
+          1
+        ],
+        "response_distribution": [
+          3,
+          4,
+          4
+        ],
+        "responses": 11,
+        "options_each_by_subgroup": [
+          4,
+          4,
+          4
+        ],
+        "candidate_rule_by_subgroup": [
+          "one_shared_four_device_picture_bank",
+          "independent_four_per_question",
+          "independent_four_per_question"
+        ],
+        "points_each": 2,
+        "selected_objective_points": 22,
+        "umbrella_reading_points32_not_selected22": true,
+        "separate_open44to47_10points_paused": true,
+        "shared_candidates_only_A": true,
+        "necessary_audio": false,
+        "required_images": [
+          "A.four_device_picture_candidates_in_2by2_grid",
+          "A.three_profile_faces"
+        ],
+        "all_selected_subgroups_mandatory": true,
+        "A_extra_candidates": 1,
+        "A_each_entry_once_explicit": false,
+        "A_observed_key_distinct": true
+      },
+      "subgroups": [
+        {
+          "label": "A",
+          "responses": 3,
+          "material_units": 3,
+          "genre": "three_needs_with_faces_shared_four_electronic_device_picture_bank",
+          "question_numbers": [
+            33,
+            34,
+            35
+          ]
+        },
+        {
+          "label": "B",
+          "responses": 4,
+          "material_units": 1,
+          "genre": "sixparagraph_firstperson_wrongclub_belonging_narrative",
+          "question_numbers": [
+            36,
+            37,
+            38,
+            39
+          ]
+        },
+        {
+          "label": "C",
+          "responses": 4,
+          "material_units": 1,
+          "genre": "sixparagraph_digital_companion_survey_benefits_risks_report",
+          "question_numbers": [
+            40,
+            41,
+            42,
+            43
+          ]
+        }
+      ],
+      "published_keys": [
+        {
+          "number": 33,
+          "published_answer": "B"
+        },
+        {
+          "number": 34,
+          "published_answer": "D"
+        },
+        {
+          "number": 35,
+          "published_answer": "A"
+        },
+        {
+          "number": 36,
+          "published_answer": "D"
+        },
+        {
+          "number": 37,
+          "published_answer": "B"
+        },
+        {
+          "number": 38,
+          "published_answer": "D"
+        },
+        {
+          "number": 39,
+          "published_answer": "B"
+        },
+        {
+          "number": 40,
+          "published_answer": "A"
+        },
+        {
+          "number": 41,
+          "published_answer": "D"
+        },
+        {
+          "number": 42,
+          "published_answer": "C"
+        },
+        {
+          "number": 43,
+          "published_answer": "B"
+        }
+      ],
+      "same_specific_whole_section_authors": 0,
+      "old_profile_matching_not_whole11": true,
+      "source_quality_risks": [
+        "A pictures not four text activity cards;unselected C only describe visible pen/notebook/phone,do not invent features or brand. Three profilefaces present. No explicit allonce ban.",
+        "B lastpage continuation remains sixth paragraph;writer is stand-in but no team member absent,so no actual debate that season. Simile pleasant music not literal playback.",
+        "Q41 calls integratedwith underlined;original page6 and necessary 2x crop show phrase but no underline ink visible. Keep this formatting discrepancy;author should mark queried phrase explicitly,not claim exact facsimile.",
+        "C reported >1000 US teens and >70% ever use,oneinthree social interactions,half distrust,one-third serious matters are source assertions/different measures,not equal denominators or verified causal effects. Source Q42C fail socially broader than narrower friendship-risk wording;not independently established prediction.",
+        "Source title and declared12 versus actual10questionpage conflict preserved;reference answers appear in repost with commentary,not authenticated school gold."
+      ],
+      "existing_private_review": {
+        "path": "build/english-benchmark-research-20261012/grade8-bnu2026-nine-groups-private-review20261014.json",
+        "sha256": "dfc7978902775081ccb84d4e93a32639b7ec27d76e311adfe89c95a6848ce9cc"
+      },
+      "target_phrase_crop": {
+        "path": "build/english-benchmark-authority-20261017/bnu8-integrated-phrase-inspection-v0.1.png",
+        "sha256": "6bab4fed4e8dfa10515f67fda0cb6e63db938ff1400f1e276055c2e6017203a2"
+      }
+    },
+    {
+      "level": 8,
+      "paper_id": "xschu-bnu2026-paper-key20261014-record",
+      "source_count_increment": 0,
+      "new_author_groups": 0,
+      "source_key_is_gold": false,
+      "original_unknown_observations_retained": true,
+      "source_PDF": {
+        "path": "build/english-benchmark-research-20261012/xschu-bnu2026-paper-key20261014.pdf",
+        "sha256": "36f2bf8cc8678076380cfd71207c64bc9ff4a71e5d1778167cc3615c85033761"
+      },
+      "native_pages": {
+        "path": "build/english-benchmark-research-20261012/xschu-bnu2026-native-pages20261014.json",
+        "sha256": "88fcccd3865741d3d569b9c2f4afa31944c92eb7d19834699bacb11349294c88"
+      },
+      "source_projection": {
+        "path": "build/english-benchmark-authority-20261017/bnu8-reading-selected-projection-v0.1.json",
+        "sha256": "cfd62e5e7bf13ecfae4c470729e32d0e268be7e6e3df086754125aab7c8304ed"
+      },
+      "source_full_inputs_verified": true,
+      "full_input_verification_scope": "selected original public-repost PDF pages/native fragments and manual image input review;not school authenticity,key validity,factual verification or full-paper admission",
+      "requires_source_binding_and_specific_author_contract": true,
+      "authors_genre_model_ready": false,
+      "grade_exclusivity_established": false,
+      "source_identity": {
+        "title": "2026 北京北师大实验中学初二（上）期末 英语",
+        "date": "2026.1",
+        "title_not_original_school_authentication": true,
+        "declared_question_pages": 12,
+        "public_repost_actual_question_pages": 10,
+        "conflict_preserved": true,
+        "source_optional_not_higher_product_level_or_CEFR": true
+      },
+      "id": "xschu-bnu2026-paper-key20261014-record.reading.optional_curiosity_section3",
+      "kind": "reading_choice",
+      "responses": 3,
+      "options_each": 4,
+      "source_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-09.png",
+          "sha256": "56cf542c365ea4f13775fb31d7580146ea40d5e5e8ac15f04d277f176546130f"
+        },
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-10.png",
+          "sha256": "63c8bc7fb7720244a52c8b9af995b44f0ac534bade935cb76005e77c9d28bb6f"
+        }
+      ],
+      "source_key_pages": [
+        {
+          "path": "build/english-benchmark-research-20261012/grade8-bnu2026-inspection-15.png",
+          "sha256": "e9f278ee41dfa402e2cdce20407cff7cd84503e3ff65cc98f34ada18101242e3"
+        }
+      ],
+      "source_observations": [
+        {
+          "id": "g8.bnu2026.optionalReading",
+          "paper_id": "xschu-bnu2026-paper-key20261014-record",
+          "shape": {
+            "grade": 8,
+            "family": "reading_choice",
+            "responses": 3,
+            "options_each": 4,
+            "details": {
+              "input": "text"
+            }
+          },
+          "layer": "baseline_selected117",
+          "necessary_input_complete": null,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false
+        }
+      ],
+      "configuration": {
+        "passage_count": 1,
+        "subgroup_count": 1,
+        "text_unit_count": 1,
+        "material_unit_distribution": [
+          1
+        ],
+        "response_distribution": [
+          3
+        ],
+        "responses": 3,
+        "options_each": 4,
+        "points_each": 2,
+        "selected_objective_points": 6,
+        "optional_umbrella10_not_selected6": true,
+        "separate_grammar53to56_4points_excluded": true,
+        "report_paragraphs": 6,
+        "example_paragraph": 3,
+        "shared_candidates": false,
+        "necessary_audio": false,
+        "required_images": [],
+        "all_selected_subgroups_mandatory": true
+      },
+      "subgroups": [
+        {
+          "label": "X",
+          "responses": 3,
+          "material_units": 1,
+          "genre": "sixparagraph_curiosity_essay_definition_everyday_example_application",
+          "question_numbers": [
+            57,
+            58,
+            59
+          ]
+        }
+      ],
+      "published_keys": [
+        {
+          "number": 57,
+          "published_answer": "D"
+        },
+        {
+          "number": 58,
+          "published_answer": "D"
+        },
+        {
+          "number": 59,
+          "published_answer": "C"
+        }
+      ],
+      "same_specific_whole_section_authors": 0,
+      "source_quality_risks": [
+        "57 publishedD is precise gap-definition but B has support from paragraph1 linking curiosity with learning/growing;retain plausible alternative support risk. Do not upgrade reference D as independent unique gold,quietly add B as secondgold,or copy ambiguity to originals.",
+        "58D is everydayexample purpose,59C differentpeople links to paragraph5;do not turn source candle anecdote into general candle burning/safety advice. Atleastonehour statement unverified and productdependent.",
+        "Source use of optional reflects school scoring arrangement,not advancedrank. Sixpoints distinct from optional10 including priorfourgrammar;original subjective and open sections remain excluded."
+      ],
+      "existing_private_review": {
+        "path": "build/english-benchmark-research-20261012/grade8-bnu2026-nine-groups-private-review20261014.json",
+        "sha256": "dfc7978902775081ccb84d4e93a32639b7ec27d76e311adfe89c95a6848ce9cc"
+      }
+    }
+  ],
+  "newly_classified_old_reading_records": 3,
+  "additional_sibling_members_not_added_to_old127": 1,
+  "old306structures41parentlabels_unchanged": true,
+  "new_downloads": 0,
+  "new_rendered_pages": 0,
+  "new_necessary_crops": 1,
+  "all_selected_inputs_and_all_keys_read": true,
+  "source_key_not_gold": true,
+  "new_authors": 0,
+  "new_same_specific_originals_needed": 6,
+  "all_required_types_complete": false,
+  "previous": {
+    "path": "CompleteCoverage20261017/JuniorPictureOptionalReadingBoundaryReview-v0.1.json",
+    "sha256": "378661d40fa0a9c3807484c503411c73d070b3da7772e30e5304804286079f7f"
+  },
+  "metadata_correction": "Verified additional sibling member is g8.bnu2026.imageMatching in frozen private source review;earlier profileMatching label was not an actual source member ID. Source inputs/counts/keys unchanged."
+}
