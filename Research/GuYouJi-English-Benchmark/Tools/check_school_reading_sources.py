@@ -65,6 +65,17 @@ def validate(source,binding):
             assert text.startswith(entry['title']) and digest(text)==entry['sha256']
             cursor=entry['relative_end']
         assert cursor==len(bodies['A'])
+    if source.get('program_profile_entry_spans_bound'):
+        assert c['subgroups'][0]['genre']=='four_family_program_profiles'
+        assert c['subgroups'][0]['material_units']==len(source['source_A_program_entries'])==4
+        intro=source['source_A_program_intro'];cursor=intro['relative_end']
+        assert digest(bodies['A'][:cursor])==intro['sha256']
+        for entry in source['source_A_program_entries']:
+            assert entry['relative_start']==cursor
+            text=bodies['A'][cursor:entry['relative_end']]
+            assert text.startswith(entry['title']+'\n') and digest(text)==entry['sha256']
+            cursor=entry['relative_end']
+        assert cursor==len(bodies['A'])
     if 'Interlibrary Loan Fees' in bodies['A']:
         assert c['required_tables']==['A.fee_table']
         assert re.findall(r'(?m)^(Non-Profit Libraries|For-Profit Libraries|International Libraries)\s+\$(\d+)\s+\$(\d+)',bodies['A'])==[
@@ -97,6 +108,9 @@ def run(bindings_path):
         }
         if s.get('source_A_book_entries'):
             cases['missing_fourth_book']=lambda x:x['source_A_book_entries'].pop()
+        if s.get('program_profile_entry_spans_bound'):
+            cases['missing_fourth_program']=lambda x:x['source_A_program_entries'].pop()
+            cases['wrong_program_intro_SHA']=lambda x:x['source_A_program_intro'].__setitem__('sha256','0'*64)
         if s['configuration']['required_tables']:
             cases['mandatory_fee_table_omitted']=lambda x:x['configuration'].__setitem__('required_tables',[])
         if s['configuration']['required_lists']:

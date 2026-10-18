@@ -1,0 +1,1006 @@
+{
+  "version": "0.1",
+  "id": "grade11-reading15-program-labels",
+  "grade": 11,
+  "questions": 15,
+  "candidate_sha256": "d9cdfae9ccb87ac97fda7800cb8fae4033750d86d5184b9e0e72e6c60364dff0",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade11-reading15-program-labels-manuscript-v0.1.json",
+    "sha256": "8695af8a1c5b6a33cb83eb94bb5dccd7225365274263a84390f7e9128c459f10"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.5.json",
+    "sha256": "12fcb463b5cb1ba578f97c8cfabe2e031a0f7210810974e6a8e427be87387c78"
+  },
+  "source_binding": "grade11-heze2026-21cnjy24886046.reading.complete_section.binding",
+  "school_complete_senior_reading_section": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · What must a family do before joining any of the four programmes?",
+      "options": [
+        [
+          "A",
+          "Purchase specialist equipment."
+        ],
+        [
+          "B",
+          "Complete a course with homework."
+        ],
+        [
+          "C",
+          "Buy an annual museum membership."
+        ],
+        [
+          "D",
+          "Reserve a place online."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：居家项也不需专用器材；B：周末项明确非作业课程；C：明确预约非会员资格；D：导语明确全部免费但都须提前网上预约",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "program_booking_detail"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · Which programme is specifically designed for families with children aged 0–5?",
+      "options": [
+        [
+          "A",
+          "Small Discoverers"
+        ],
+        [
+          "B",
+          "One Object, Many Questions"
+        ],
+        [
+          "C",
+          "Object Weekends"
+        ],
+        [
+          "D",
+          "Collections at Home"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：该项明确专为0–5岁儿童家庭设计；B：面向3–8，非题干完整0–5目标范围；C：欢迎所有年龄，但未以0–5为专门目标人群；D：按居家参与定位，未专列0–5目标年龄",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "target_program_match"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · What do One Object, Many Questions and Collections at Home share?",
+      "options": [
+        [
+          "A",
+          "They both require all children to be aged 3–8."
+        ],
+        [
+          "B",
+          "They both schedule a visiting maker every time."
+        ],
+        [
+          "C",
+          "They both meet in the museum’s learning room."
+        ],
+        [
+          "D",
+          "They each take place once a month."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：D未限这一年龄；B：C只是有时且D不安排；C：D在线居家；D：C和D都明列每月一次",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "cross_program_comparison"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · What difficulty did Lena experience at the printing desk?",
+      "options": [
+        [
+          "A",
+          "Her printed pages were always delivered to another library."
+        ],
+        [
+          "B",
+          "The printer accepted only one paper size."
+        ],
+        [
+          "C",
+          "The price display changed before she could finish reading it."
+        ],
+        [
+          "D",
+          "Staff refused to explain any of the charges."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：无此交付问题；B：有多种尺寸可选；C：首段明确显示切换过快；D：她常请重复并非拒绝",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "supported_detail"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · Why did Dev avoid simply selecting Lena’s usual settings?",
+      "options": [
+        [
+          "A",
+          "He wanted her to be able to choose what she needed that day."
+        ],
+        [
+          "B",
+          "He wanted to test her knowledge of the new language."
+        ],
+        [
+          "C",
+          "He hoped to remove the need for supervisor approval."
+        ],
+        [
+          "D",
+          "He had forgotten that she visited regularly."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：熟悉习惯不代表当天需求且请她选择；B：明确不是阅读测试；C：卡片仍经主管核查；D：明确注意到固定来访",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "service_motive"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · Which description best fits Dev’s action?",
+      "options": [
+        [
+          "A",
+          "Competitive and impatient."
+        ],
+        [
+          "B",
+          "Considerate and responsive."
+        ],
+        [
+          "C",
+          "Generous but unwilling to listen."
+        ],
+        [
+          "D",
+          "Cautious but determined to keep the old system unchanged."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：没有竞胜且不催促；B：先询问且采纳Lena布局建议；C：实际认真采纳反馈；D：明确修卡及使用安排",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "characterization"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What is the main message of the report?",
+      "options": [
+        [
+          "A",
+          "Learning a language should be completed before using public services."
+        ],
+        [
+          "B",
+          "Printed cards can answer every question a visitor has."
+        ],
+        [
+          "C",
+          "A modest change can improve service when users help shape it."
+        ],
+        [
+          "D",
+          "Familiar customers should receive identical orders each time."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：无此准入主张；B：末段明确不能；C：小卡配合用户建议增加自主欢迎感；D：文中反对此假设",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "central_message"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · What is passage C mainly about?",
+      "options": [
+        [
+          "A",
+          "Why all local collections should use workshop labels."
+        ],
+        [
+          "B",
+          "How to remove personal stories from a history room."
+        ],
+        [
+          "C",
+          "Why wooden handles are difficult to manufacture."
+        ],
+        [
+          "D",
+          "How the purpose of a catalogue can shape its categories."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：明确保留不同体系；B：保存故事语境非去除；C：制造非主题；D：不同问题驱动不同分类及互通",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "whole_main_idea"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · Why did the history room keep household accounts with objects?",
+      "options": [
+        [
+          "A",
+          "Its visitors often wanted to reconstruct a setting or period."
+        ],
+        [
+          "B",
+          "Its workers needed to select replacement parts rapidly."
+        ],
+        [
+          "C",
+          "It wanted to hide objects from workshop volunteers."
+        ],
+        [
+          "D",
+          "It lacked any information about how objects had been used."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：第二段说明面向语境与年代问题；B：这是修理作坊目的；C：无藏物意图；D：正因收集使用叙述",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "stated_cause"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · What does “divergence” mean in this context?",
+      "options": [
+        [
+          "A",
+          "Agreement on one identical classification."
+        ],
+        [
+          "B",
+          "Development in different directions."
+        ],
+        [
+          "C",
+          "A complete exchange of every object."
+        ],
+        [
+          "D",
+          "A mistake in measuring a handle."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：明确未成为相同视角；B：紧接解释为走向不同安排；C：只是记录体系分化；D：非尺寸误测",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "context_word_meaning"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · Where would passage C most likely appear?",
+      "options": [
+        [
+          "A",
+          "In instructions for assembling a wooden handle."
+        ],
+        [
+          "B",
+          "In a magazine article explaining information systems."
+        ],
+        [
+          "C",
+          "On a receipt for a tool repair."
+        ],
+        [
+          "D",
+          "In a novel’s list of characters."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：无组装步骤；B：用案例解释分类与信息互通；C：非单次收费凭据；D：非人物表",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "probable_publication_type"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · What did the Orley study mainly evaluate?",
+      "options": [
+        [
+          "A",
+          "The lifetime cost of replacing library buildings."
+        ],
+        [
+          "B",
+          "Whether readers preferred printed books to digital copies."
+        ],
+        [
+          "C",
+          "Correct book-routing decisions under a time limit."
+        ],
+        [
+          "D",
+          "The safety of self-driving vehicles on public roads."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：无建筑寿命成本；B：不是读者偏好研究；C：首段定义结果非一般技术价值；D：明确非真实交通安全",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "research_focus"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · How were the findings obtained?",
+      "options": [
+        [
+          "A",
+          "By listing three unrelated experiments at different centres."
+        ],
+        [
+          "B",
+          "By comparing three decision conditions in the same simulation."
+        ],
+        [
+          "C",
+          "By asking only software designers about their opinions."
+        ],
+        [
+          "D",
+          "By changing the time limit for each group."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：文中明确非三独立实验；B：同模拟三等组不同决策条件；C：招30成人进行任务；D：均相同时间",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "three_condition_comparison"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · What conclusion fits the reported results?",
+      "options": [
+        [
+          "A",
+          "Adding software removes all need for training."
+        ],
+        [
+          "B",
+          "Every automated route was completed correctly."
+        ],
+        [
+          "C",
+          "Review by people helped this tool handle notices it had missed."
+        ],
+        [
+          "D",
+          "Manual planning can never be useful in libraries."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：末段明确培训仍重要；B：自动组保留封闭区路线；C：结合组利用闭架通告纠正旧计划；D：只一次有限任务非永不有用",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "bounded_conclusion"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · Which title best matches passage D?",
+      "options": [
+        [
+          "A",
+          "Testing How People and a Routing Tool Can Work Together."
+        ],
+        [
+          "B",
+          "Three Independent Experiments Prove All AI Is Efficient."
+        ],
+        [
+          "C",
+          "Why Libraries Must End All Manual Planning."
+        ],
+        [
+          "D",
+          "A Software Tool That Makes Library Closures Impossible."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：三条件比较及具体分工评估贯穿；B：方法和外推均与正文冲突；C：无必须禁止人工的主张；D：不消除闭架只是信息处理",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "whole_material_title"
+    }
+  ],
+  "canonical_response_block_sha256": "55a0a2e49fe719ee69c8346556fb9620e55d015cf3fd8ea723ac9d56e9373489",
+  "student_passage": "### A组（第1—3题）\n\nNorthgate Museum welcomes families to explore objects and the stories around them. All four programmes are free, but every family must reserve a place online before taking part. A reservation applies to the named session; it is not a general museum membership. Adults take part with their children, and no previous knowledge of the collections is needed. Read the four descriptions before choosing.\n\n#### A1\n\nObject Weekends\nDesigned for visitors of all ages, these sessions run on selected weekends throughout the year. A museum guide brings out an everyday object and asks how it might have been used. Visitors can compare materials, try a simple construction activity and talk with staff. Each weekend has a different topic; it is not a weekly course with homework.\n\n#### A2\n\nSmall Discoverers\nThis programme is specifically designed for families with children aged 0–5. At the reserved session, adults and children move between low activity stations, exploring a theme through objects, picture books and play. Families may choose their order of activities after arrival. They still need the advance reservation required above; flexible movement does not mean unbooked admission.\n\n#### A3\n\nOne Object, Many Questions\nHeld once each month, this programme is designed for families with children aged 3–8. A museum educator uses several items from the collection to introduce that month’s question. Families make or compare something together, and an invited maker sometimes joins the discussion. The activities take place in the museum’s learning room.\n\n#### A4\n\nCollections at Home\nThis online session is for families joining from home. It is held once each month and led by museum educators, with no visiting maker scheduled. Families use ordinary household items to explore a collection-related idea. A short materials list is sent after booking; specialist equipment is not needed. The aim is shared exploration rather than producing an identical object in every home.\n\n### B组（第4—7题）\n\n#### B1\n\nWhen visitor Lena started using the self-service printing desk at fictional Hillcross Library, choosing the right charge was more difficult than collecting the pages. Several prices were displayed on a screen that changed before she had finished reading. Lena, who was learning the local language, usually asked staff to repeat the information and worried that she was delaying the queue.\n\nLibrary assistant Dev noticed that she returned on the same afternoon each week. He could have selected the usual settings for her without asking, but he realised that a familiar order was not necessarily the order she wanted that day. Instead, he asked whether a small written list of the choices would help. Lena said it would, provided she could keep the list beside her while using the machine.\n\nDev prepared a plain card showing the current page sizes and charges. He checked it with his supervisor and asked Lena to point out anything unclear. She suggested putting the size beside the price instead of listing all sizes first and all prices later. The revised card also remained available to other visitors; it was not marked with her name or treated as a test of her reading.\n\nThe following week, Lena selected a different paper size and completed the request herself. What impressed her was not that somebody had guessed her usual choice. “I could see the alternatives and decide,” she said. Dev had spent only a short time preparing the card, but he had also taken her suggestion seriously.\n\nThe library has since placed copies beside the desk. Staff still offer help, and a card cannot answer every question or remove every language difficulty. Yet Dev sees the change as part of ordinary service rather than a special favour. “Knowing a visitor’s routine should help us ask a better question,” he says, “not stop us asking one.” For Lena, the improvement was small enough to fit beside a printer and important enough to change how welcome she felt.\n\n### C组（第8—11题）\n\n#### C1\n\nTwo catalogues in the fictional town of Fenwick list many of the same objects but place them under different headings. The repair workshop groups a wooden handle with other tool parts. The local history room places a similar handle beside objects from an old kitchen. Neither arrangement is simply a careless version of the other: each was developed to answer a different kind of question.\n\nThe workshop’s system grew from practical requests. A worker looking for something to fit a damaged tool needed to compare size, shape and function quickly. Grouping parts by the work they could do was useful. The history room, by contrast, collected accounts of how objects had been used by particular households. Its visitors often wanted to reconstruct a setting or a period, so keeping related stories together made sense.\n\nThe difference became troublesome when the two organisations began sharing records. A volunteer searching one familiar category assumed that an object absent from it was absent from the collection. In fact, it appeared under another heading. The difficulty came from treating a category as a natural property of an object rather than as a choice made for a purpose.\n\nThe teams described this **divergence** as a movement towards different arrangements. They did not erase one catalogue and force every user into the other. Instead, they added short explanations and links between related entries. A handle could be found through its role as a part or through its place in a household account. The new links changed access without claiming that the two perspectives had become identical.\n\nThis fictional example illustrates why exchanging information requires more than copying labels. Users need to know what question a category helps answer and what it may leave out. A common access guide can make different systems easier to use while preserving useful distinctions. Difference, in this case, is neither a reason to stop cooperating nor evidence that one group thinks better than the other.\n\n### D组（第12—15题）\n\n#### D1\n\nCould a combination of people and software sort returned books more effectively than either working alone? An invented study at Orley Training Centre compared three decision conditions in a library simulation. It examined correct routing decisions under a time limit, not the safety of real transport systems or the value of every form of artificial intelligence.\n\nThirty adults were randomly assigned to three equal groups. All saw the same list of returned books, shelf positions and temporary closures. In the manual-only condition, participants planned routes using the printed information. In the automatic-only condition, they accepted a scheduling tool’s routes without changing them. In the combined condition, they could review the tool’s suggestions and correct them using the closure notices. Everyone received the same practice task and worked for the same period.\n\nThe combined group completed the most correct routes on average. The tool rapidly arranged ordinary items, while participants sometimes noticed a closure that its stored plan had missed. The manual group spent more time on routine ordering. The automatic group produced routes quickly but retained some routes through closed areas. Speed alone would therefore have given an incomplete picture of success.\n\nThese findings came from one comparison of three conditions, not from three separately described experiments. They suggest that, for this task and tool, human review and automated organisation could complement one another. They do not show that a combined system always wins. If every closure were already represented accurately in the tool, the balance might differ.\n\nResearcher Bea Lin argues that future trials should vary the notices, time available and participants’ experience. Training would also matter: being allowed to override a suggestion is different from knowing when an override is justified. The centre plans to examine those questions before recommending any workplace use. Its immediate lesson is to evaluate the particular division of work, rather than to assume that adding software automatically removes the need for judgement.",
+  "body_load_text": "Northgate Museum welcomes families to explore objects and the stories around them. All four programmes are free, but every family must reserve a place online before taking part. A reservation applies to the named session; it is not a general museum membership. Adults take part with their children, and no previous knowledge of the collections is needed. Read the four descriptions before choosing.\n\nObject Weekends\nDesigned for visitors of all ages, these sessions run on selected weekends throughout the year. A museum guide brings out an everyday object and asks how it might have been used. Visitors can compare materials, try a simple construction activity and talk with staff. Each weekend has a different topic; it is not a weekly course with homework.\n\nSmall Discoverers\nThis programme is specifically designed for families with children aged 0–5. At the reserved session, adults and children move between low activity stations, exploring a theme through objects, picture books and play. Families may choose their order of activities after arrival. They still need the advance reservation required above; flexible movement does not mean unbooked admission.\n\nOne Object, Many Questions\nHeld once each month, this programme is designed for families with children aged 3–8. A museum educator uses several items from the collection to introduce that month’s question. Families make or compare something together, and an invited maker sometimes joins the discussion. The activities take place in the museum’s learning room.\n\nCollections at Home\nThis online session is for families joining from home. It is held once each month and led by museum educators, with no visiting maker scheduled. Families use ordinary household items to explore a collection-related idea. A short materials list is sent after booking; specialist equipment is not needed. The aim is shared exploration rather than producing an identical object in every home.\n\nWhen visitor Lena started using the self-service printing desk at fictional Hillcross Library, choosing the right charge was more difficult than collecting the pages. Several prices were displayed on a screen that changed before she had finished reading. Lena, who was learning the local language, usually asked staff to repeat the information and worried that she was delaying the queue.\n\nLibrary assistant Dev noticed that she returned on the same afternoon each week. He could have selected the usual settings for her without asking, but he realised that a familiar order was not necessarily the order she wanted that day. Instead, he asked whether a small written list of the choices would help. Lena said it would, provided she could keep the list beside her while using the machine.\n\nDev prepared a plain card showing the current page sizes and charges. He checked it with his supervisor and asked Lena to point out anything unclear. She suggested putting the size beside the price instead of listing all sizes first and all prices later. The revised card also remained available to other visitors; it was not marked with her name or treated as a test of her reading.\n\nThe following week, Lena selected a different paper size and completed the request herself. What impressed her was not that somebody had guessed her usual choice. “I could see the alternatives and decide,” she said. Dev had spent only a short time preparing the card, but he had also taken her suggestion seriously.\n\nThe library has since placed copies beside the desk. Staff still offer help, and a card cannot answer every question or remove every language difficulty. Yet Dev sees the change as part of ordinary service rather than a special favour. “Knowing a visitor’s routine should help us ask a better question,” he says, “not stop us asking one.” For Lena, the improvement was small enough to fit beside a printer and important enough to change how welcome she felt.\n\nTwo catalogues in the fictional town of Fenwick list many of the same objects but place them under different headings. The repair workshop groups a wooden handle with other tool parts. The local history room places a similar handle beside objects from an old kitchen. Neither arrangement is simply a careless version of the other: each was developed to answer a different kind of question.\n\nThe workshop’s system grew from practical requests. A worker looking for something to fit a damaged tool needed to compare size, shape and function quickly. Grouping parts by the work they could do was useful. The history room, by contrast, collected accounts of how objects had been used by particular households. Its visitors often wanted to reconstruct a setting or a period, so keeping related stories together made sense.\n\nThe difference became troublesome when the two organisations began sharing records. A volunteer searching one familiar category assumed that an object absent from it was absent from the collection. In fact, it appeared under another heading. The difficulty came from treating a category as a natural property of an object rather than as a choice made for a purpose.\n\nThe teams described this **divergence** as a movement towards different arrangements. They did not erase one catalogue and force every user into the other. Instead, they added short explanations and links between related entries. A handle could be found through its role as a part or through its place in a household account. The new links changed access without claiming that the two perspectives had become identical.\n\nThis fictional example illustrates why exchanging information requires more than copying labels. Users need to know what question a category helps answer and what it may leave out. A common access guide can make different systems easier to use while preserving useful distinctions. Difference, in this case, is neither a reason to stop cooperating nor evidence that one group thinks better than the other.\n\nCould a combination of people and software sort returned books more effectively than either working alone? An invented study at Orley Training Centre compared three decision conditions in a library simulation. It examined correct routing decisions under a time limit, not the safety of real transport systems or the value of every form of artificial intelligence.\n\nThirty adults were randomly assigned to three equal groups. All saw the same list of returned books, shelf positions and temporary closures. In the manual-only condition, participants planned routes using the printed information. In the automatic-only condition, they accepted a scheduling tool’s routes without changing them. In the combined condition, they could review the tool’s suggestions and correct them using the closure notices. Everyone received the same practice task and worked for the same period.\n\nThe combined group completed the most correct routes on average. The tool rapidly arranged ordinary items, while participants sometimes noticed a closure that its stored plan had missed. The manual group spent more time on routine ordering. The automatic group produced routes quickly but retained some routes through closed areas. Speed alone would therefore have given an incomplete picture of success.\n\nThese findings came from one comparison of three conditions, not from three separately described experiments. They suggest that, for this task and tool, human review and automated organisation could complement one another. They do not show that a combined system always wins. If every closure were already represented accurately in the tool, the balance might differ.\n\nResearcher Bea Lin argues that future trials should vary the notices, time available and participants’ experience. Training would also matter: being allowed to override a suggestion is different from knowing when an override is justified. The centre plans to examine those questions before recommending any workplace use. Its immediate lesson is to evaluate the particular division of work, rather than to assume that adding software automatically removes the need for judgement.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "Purchase specialist equipment.",
+      "is_best": false,
+      "reason": "居家项也不需专用器材",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "Complete a course with homework.",
+      "is_best": false,
+      "reason": "周末项明确非作业课程",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "Buy an annual museum membership.",
+      "is_best": false,
+      "reason": "明确预约非会员资格",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "Reserve a place online.",
+      "is_best": true,
+      "reason": "导语明确全部免费但都须提前网上预约",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "Small Discoverers",
+      "is_best": true,
+      "reason": "该项明确专为0–5岁儿童家庭设计",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "One Object, Many Questions",
+      "is_best": false,
+      "reason": "面向3–8，非题干完整0–5目标范围",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "Object Weekends",
+      "is_best": false,
+      "reason": "欢迎所有年龄，但未以0–5为专门目标人群",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "Collections at Home",
+      "is_best": false,
+      "reason": "按居家参与定位，未专列0–5目标年龄",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "They both require all children to be aged 3–8.",
+      "is_best": false,
+      "reason": "D未限这一年龄",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "They both schedule a visiting maker every time.",
+      "is_best": false,
+      "reason": "C只是有时且D不安排",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "They both meet in the museum’s learning room.",
+      "is_best": false,
+      "reason": "D在线居家",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "They each take place once a month.",
+      "is_best": true,
+      "reason": "C和D都明列每月一次",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "Her printed pages were always delivered to another library.",
+      "is_best": false,
+      "reason": "无此交付问题",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "The printer accepted only one paper size.",
+      "is_best": false,
+      "reason": "有多种尺寸可选",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "The price display changed before she could finish reading it.",
+      "is_best": true,
+      "reason": "首段明确显示切换过快",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "Staff refused to explain any of the charges.",
+      "is_best": false,
+      "reason": "她常请重复并非拒绝",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "He wanted her to be able to choose what she needed that day.",
+      "is_best": true,
+      "reason": "熟悉习惯不代表当天需求且请她选择",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "He wanted to test her knowledge of the new language.",
+      "is_best": false,
+      "reason": "明确不是阅读测试",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "He hoped to remove the need for supervisor approval.",
+      "is_best": false,
+      "reason": "卡片仍经主管核查",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "He had forgotten that she visited regularly.",
+      "is_best": false,
+      "reason": "明确注意到固定来访",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "Competitive and impatient.",
+      "is_best": false,
+      "reason": "没有竞胜且不催促",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "Considerate and responsive.",
+      "is_best": true,
+      "reason": "先询问且采纳Lena布局建议",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "Generous but unwilling to listen.",
+      "is_best": false,
+      "reason": "实际认真采纳反馈",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "Cautious but determined to keep the old system unchanged.",
+      "is_best": false,
+      "reason": "明确修卡及使用安排",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "Learning a language should be completed before using public services.",
+      "is_best": false,
+      "reason": "无此准入主张",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "Printed cards can answer every question a visitor has.",
+      "is_best": false,
+      "reason": "末段明确不能",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "A modest change can improve service when users help shape it.",
+      "is_best": true,
+      "reason": "小卡配合用户建议增加自主欢迎感",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Familiar customers should receive identical orders each time.",
+      "is_best": false,
+      "reason": "文中反对此假设",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "Why all local collections should use workshop labels.",
+      "is_best": false,
+      "reason": "明确保留不同体系",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "How to remove personal stories from a history room.",
+      "is_best": false,
+      "reason": "保存故事语境非去除",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "Why wooden handles are difficult to manufacture.",
+      "is_best": false,
+      "reason": "制造非主题",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "How the purpose of a catalogue can shape its categories.",
+      "is_best": true,
+      "reason": "不同问题驱动不同分类及互通",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "Its visitors often wanted to reconstruct a setting or period.",
+      "is_best": true,
+      "reason": "第二段说明面向语境与年代问题",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "Its workers needed to select replacement parts rapidly.",
+      "is_best": false,
+      "reason": "这是修理作坊目的",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "It wanted to hide objects from workshop volunteers.",
+      "is_best": false,
+      "reason": "无藏物意图",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "It lacked any information about how objects had been used.",
+      "is_best": false,
+      "reason": "正因收集使用叙述",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "Agreement on one identical classification.",
+      "is_best": false,
+      "reason": "明确未成为相同视角",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Development in different directions.",
+      "is_best": true,
+      "reason": "紧接解释为走向不同安排",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "A complete exchange of every object.",
+      "is_best": false,
+      "reason": "只是记录体系分化",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "A mistake in measuring a handle.",
+      "is_best": false,
+      "reason": "非尺寸误测",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "In instructions for assembling a wooden handle.",
+      "is_best": false,
+      "reason": "无组装步骤",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "In a magazine article explaining information systems.",
+      "is_best": true,
+      "reason": "用案例解释分类与信息互通",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "On a receipt for a tool repair.",
+      "is_best": false,
+      "reason": "非单次收费凭据",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "In a novel’s list of characters.",
+      "is_best": false,
+      "reason": "非人物表",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "The lifetime cost of replacing library buildings.",
+      "is_best": false,
+      "reason": "无建筑寿命成本",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "Whether readers preferred printed books to digital copies.",
+      "is_best": false,
+      "reason": "不是读者偏好研究",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "Correct book-routing decisions under a time limit.",
+      "is_best": true,
+      "reason": "首段定义结果非一般技术价值",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "The safety of self-driving vehicles on public roads.",
+      "is_best": false,
+      "reason": "明确非真实交通安全",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "By listing three unrelated experiments at different centres.",
+      "is_best": false,
+      "reason": "文中明确非三独立实验",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "By comparing three decision conditions in the same simulation.",
+      "is_best": true,
+      "reason": "同模拟三等组不同决策条件",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "By asking only software designers about their opinions.",
+      "is_best": false,
+      "reason": "招30成人进行任务",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "By changing the time limit for each group.",
+      "is_best": false,
+      "reason": "均相同时间",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Adding software removes all need for training.",
+      "is_best": false,
+      "reason": "末段明确培训仍重要",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Every automated route was completed correctly.",
+      "is_best": false,
+      "reason": "自动组保留封闭区路线",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "Review by people helped this tool handle notices it had missed.",
+      "is_best": true,
+      "reason": "结合组利用闭架通告纠正旧计划",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "Manual planning can never be useful in libraries.",
+      "is_best": false,
+      "reason": "只一次有限任务非永不有用",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "Testing How People and a Routing Tool Can Work Together.",
+      "is_best": true,
+      "reason": "三条件比较及具体分工评估贯穿",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "Three Independent Experiments Prove All AI Is Efficient.",
+      "is_best": false,
+      "reason": "方法和外推均与正文冲突",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "Why Libraries Must End All Manual Planning.",
+      "is_best": false,
+      "reason": "无必须禁止人工的主张",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "A Software Tool That Makes Library Closures Impossible.",
+      "is_best": false,
+      "reason": "不消除闭架只是信息处理",
+      "material_label": "D"
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "subgroup_material_units": [
+    4,
+    1,
+    1,
+    1
+  ],
+  "material_unit_load": [
+    {
+      "label": "A",
+      "intro_words": 63,
+      "words": [
+        60,
+        57,
+        54,
+        66
+      ]
+    },
+    {
+      "label": "B",
+      "intro_words": 0,
+      "words": [
+        330
+      ]
+    },
+    {
+      "label": "C",
+      "intro_words": 0,
+      "words": [
+        324
+      ]
+    },
+    {
+      "label": "D",
+      "intro_words": 0,
+      "words": [
+        321
+      ]
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 1275,
+    "body_Han_characters": 0,
+    "stem_English_words": 134,
+    "options_English_words_with_repeated_bank": 438,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 6,
+    "display_material_label_English_words": 11
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_bound_four_program_reading_section": true,
+  "program_policy": {
+    "all_free": true,
+    "all_require_advance_booking": true,
+    "student_policy_text": "All four programmes are free, but every family must reserve a place online before taking part.",
+    "targeted_age_bands": [
+      "visitors of all ages",
+      "families with children aged 0–5",
+      "families with children aged 3–8",
+      "families joining from home"
+    ],
+    "profile_titles": [
+      "Object Weekends",
+      "Small Discoverers",
+      "One Object, Many Questions",
+      "Collections at Home"
+    ],
+    "monthly_profile_indices": [
+      2,
+      3
+    ]
+  },
+  "program_match": {
+    "question_number": 2,
+    "profile_index": 1,
+    "target_age_band": "families with children aged 0–5",
+    "option_profile_indices": {
+      "A": 1,
+      "B": 2,
+      "C": 0,
+      "D": 3
+    }
+  },
+  "research_conditions": [
+    "manual-only condition",
+    "automatic-only condition",
+    "combined condition"
+  ]
+}

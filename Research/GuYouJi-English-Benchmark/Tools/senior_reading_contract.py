@@ -33,7 +33,7 @@ def validate(d,b,s):
         assert section['genre']==sub['genre'] and section['response_numbers']==nums
         assert len(section['units'])==sub['material_units']
         assert all(u.strip()for u in section['units'])
-        assert bool(section.get('intro'))==bool(label=='A' and s.get('source_A_intro'))
+        assert bool(section.get('intro'))==bool(label=='A' and (s.get('source_A_intro')or s.get('source_A_program_intro')))
         for k in nums:
             q=qs[k-1]
             assert q['materialLabel']==label and q['points']==c['points_each']
@@ -58,6 +58,31 @@ def validate(d,b,s):
         assert qs[10]['operation']=='whole_material_purpose'
         assert qs[14]['operation']=='application_attitude'
         assert 'limitations' in d['research_scope'] and d['research_scope']['limitations']
+    if c['subgroups'][0]['genre']=='four_family_program_profiles':
+        assert s['program_profile_entry_spans_bound'] and len(s['source_A_program_entries'])==4
+        assert c['response_distribution']==[3,4,4,4] and c['points_each']==2
+        assert qs[0]['operation']=='program_booking_detail' and qs[1]['operation']=='target_program_match'
+        assert qs[2]['operation']=='cross_program_comparison'
+        policy=d['program_policy'];assert policy['all_free'] and policy['all_require_advance_booking']
+        assert policy['student_policy_text'] in sections[0]['intro']
+        assert len(policy['targeted_age_bands'])==4 and d['program_match']['question_number']==2
+        assert policy['targeted_age_bands'][d['program_match']['profile_index']]==d['program_match']['target_age_band']
+        assert len(policy['profile_titles'])==len(set(policy['profile_titles']))==4
+        assert set(d['program_match']['option_profile_indices'])==set('ABCD')
+        for label,index in d['program_match']['option_profile_indices'].items():
+            assert index in range(4) and dict(qs[1]['options'])[label]==policy['profile_titles'][index]
+        assert qs[1]['answer']==next(label for label,index in d['program_match']['option_profile_indices'].items()if index==d['program_match']['profile_index'])
+        for i,u in enumerate(sections[0]['units']):
+            assert u.startswith(policy['profile_titles'][i]+'\n') and policy['targeted_age_bands'][i] in u
+        assert d['program_match']['target_age_band'] in qs[1]['stem']
+        assert policy['monthly_profile_indices']==[2,3]
+        assert all('once each month' in sections[0]['units'][i].casefold()for i in policy['monthly_profile_indices'])
+        assert qs[9]['operation']=='context_word_meaning'
+        assert '**'+d['lexical_target']+'**' in sections[2]['units'][0] and d['lexical_target'] in qs[9]['stem']
+        assert qs[12]['operation']=='three_condition_comparison'
+        assert len(d['research_conditions'])==3 and len(set(d['research_conditions']))==3
+        assert all(v in sections[3]['units'][0]for v in d['research_conditions'])
+        assert d['research_scope']['limitations']
     if c['required_tables']:
         assert c['required_tables']==['A.fee_table'] and not c['required_lists']
         table=d['required_table'];assert table['id']=='A.fee_table'
@@ -124,6 +149,9 @@ def check(g,a,b,s):
             assert row['is_best']==(label==q['answer']) and row['material_label']==q['materialLabel']
     for label,nums in ranges(s['configuration']):
         assert label+'组（第'+str(nums[0])+'—'+str(nums[-1])+'题）' in g['passageHtml']
+    if d.get('program_policy'):
+        assert a['program_policy']==d['program_policy'] and a['program_match']==d['program_match']
+        assert a['research_conditions']==d['research_conditions']
     if d.get('required_table'):
         assert a['required_table']==d['required_table'] and a['fee_comparison']==d['fee_comparison']
         rendered=g['passageHtml'];assert rendered.count('<table>')==1

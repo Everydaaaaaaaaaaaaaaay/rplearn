@@ -1,0 +1,1006 @@
+{
+  "version": "0.1",
+  "id": "grade11-reading15-program-trolley",
+  "grade": 11,
+  "questions": 15,
+  "candidate_sha256": "a864e62cb09237a6c4d03c631b359ad61a4feb4639dfa496b5b32744d01f5950",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade11-reading15-program-trolley-manuscript-v0.1.json",
+    "sha256": "a5938d54d7c6ef408df79091f1d58bac128745095ff6d2f50cb1024571306748"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolReadingSourceBindings-v0.5.json",
+    "sha256": "12fcb463b5cb1ba578f97c8cfabe2e031a0f7210810974e6a8e427be87387c78"
+  },
+  "source_binding": "grade11-heze2026-21cnjy24886046.reading.complete_section.binding",
+  "school_complete_senior_reading_section": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A组 · What is required before a family attends any programme?",
+      "options": [
+        [
+          "A",
+          "Attendance at an earlier event."
+        ],
+        [
+          "B",
+          "An online reservation for the session."
+        ],
+        [
+          "C",
+          "Payment for a continuing course."
+        ],
+        [
+          "D",
+          "Ownership of specialist building tools."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：首项明确无先修要求；B：导语明确四项均须在线预约；C：全部免费且不属连续课程名额；D：没有此装备准入",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "program_booking_detail"
+    },
+    {
+      "number": 2,
+      "stem": "A组 · Which programme is specifically designed for families with children aged 0–5?",
+      "options": [
+        [
+          "A",
+          "Window Workshop"
+        ],
+        [
+          "B",
+          "City Pieces"
+        ],
+        [
+          "C",
+          "Tiny Tracks"
+        ],
+        [
+          "D",
+          "Routes and Stories"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：按居家参与定位，未专列0–5目标年龄；B：面向3–8，非题干完整0–5目标范围；C：该项明确专为0–5岁儿童家庭设计；D：欢迎所有年龄，但未以0–5为专门目标人群",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "target_program_match"
+    },
+    {
+      "number": 3,
+      "stem": "A组 · What do City Pieces and Window Workshop have in common?",
+      "options": [
+        [
+          "A",
+          "They are held once a month."
+        ],
+        [
+          "B",
+          "They are both held in the museum studio."
+        ],
+        [
+          "C",
+          "They both exclude adults from the activity."
+        ],
+        [
+          "D",
+          "They always include a visiting designer."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：两项明确每月一次；B：D在线居家；C：成人参与且C明确不托管；D：C仅有时D无安排",
+      "materialLabel": "A",
+      "points": 2,
+      "operation": "cross_program_comparison"
+    },
+    {
+      "number": 4,
+      "stem": "B组 · What made the counter arrangement awkward for Tomas that week?",
+      "options": [
+        [
+          "A",
+          "The library had stopped accepting his borrowing card."
+        ],
+        [
+          "B",
+          "The staff trolley was already full of other visitors’ bags."
+        ],
+        [
+          "C",
+          "He had to manage his books and bag while one arm was in a sling."
+        ],
+        [
+          "D",
+          "His reserved books had been sent to another branch."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：只找卡非失效；B：当时推车空着；C：首段明确手臂悬带和高柜负担；D：无送错分馆",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "supported_detail"
+    },
+    {
+      "number": 5,
+      "stem": "B组 · Why did Nila ask Tomas where he wanted the books placed?",
+      "options": [
+        [
+          "A",
+          "To avoid allowing him to check the book titles."
+        ],
+        [
+          "B",
+          "To respond to his particular request without deciding his needs for him."
+        ],
+        [
+          "C",
+          "To find out whether he had brought the correct books back."
+        ],
+        [
+          "D",
+          "To persuade him to use a delivery service instead."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：恰使其可核题名；B：先问位置不擅代选代提；C：是领预约书非核还书；D：无转递送服务",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "service_motive"
+    },
+    {
+      "number": 6,
+      "stem": "B组 · What quality does Nila’s response chiefly show?",
+      "options": [
+        [
+          "A",
+          "Attentiveness to users’ preferences."
+        ],
+        [
+          "B",
+          "Concern only with finishing each transaction quickly."
+        ],
+        [
+          "C",
+          "Confidence that all visitors require identical assistance."
+        ],
+        [
+          "D",
+          "A desire to keep all equipment behind the counter."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：询问且共同试摆采纳建议；B：给时间且不替其仓促办完；C：明确仍先问且需求不同；D：改放外侧便用",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "characterization"
+    },
+    {
+      "number": 7,
+      "stem": "B组 · What does the report suggest about improving everyday service?",
+      "options": [
+        [
+          "A",
+          "An improvement matters only if it solves every problem."
+        ],
+        [
+          "B",
+          "A specific request can reveal a useful change to a routine."
+        ],
+        [
+          "C",
+          "Every access difficulty requires entirely new equipment."
+        ],
+        [
+          "D",
+          "Staff should decide visitors’ needs before speaking to them."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：承认未解决所有仍有价值；B：一次请求引出推车摆放改进；C：用既有普通推车；D：全文强调先问",
+      "materialLabel": "B",
+      "points": 2,
+      "operation": "central_message"
+    },
+    {
+      "number": 8,
+      "stem": "C组 · What is passage C mainly concerned with?",
+      "options": [
+        [
+          "A",
+          "Different definitions can make similarly labelled figures misleading to compare."
+        ],
+        [
+          "B",
+          "Why workshop staff should replace desk staff."
+        ],
+        [
+          "C",
+          "How to make all customers collect repairs on the same day."
+        ],
+        [
+          "D",
+          "Why accurate records are unnecessary in planning."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：同名完成时间起止不同导致误比；B：无换岗主张；C：非催领教程；D：恰记录准确仍需明确定义",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "whole_main_idea"
+    },
+    {
+      "number": 9,
+      "stem": "C组 · Why was the desk team’s recorded interval longer in scope?",
+      "options": [
+        [
+          "A",
+          "It recorded only the slowest repair each day."
+        ],
+        [
+          "B",
+          "It counted the same active work twice by mistake."
+        ],
+        [
+          "C",
+          "Its staff used less precise clocks than the workshop."
+        ],
+        [
+          "D",
+          "It included waiting stages beyond active repair work."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：无只录最慢设定；B：定义不同非重复计数；C：无钟表精度差异；D：从送入到领回含等件等顾客",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "stated_cause"
+    },
+    {
+      "number": 10,
+      "stem": "C组 · What does “incompatible” mean as used in the text?",
+      "options": [
+        [
+          "A",
+          "Impossible to record with any accuracy."
+        ],
+        [
+          "B",
+          "Identical in both start and end events."
+        ],
+        [
+          "C",
+          "Unnecessary for every practical question."
+        ],
+        [
+          "D",
+          "Not directly comparable as equivalent measures."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：原记录仔细准确；B：起止恰不同；C：保留两种分别回答不同问题；D：后文明确不能视作同一区间的等价描述",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "context_word_meaning"
+    },
+    {
+      "number": 11,
+      "stem": "C组 · Where would this text most likely be published?",
+      "options": [
+        [
+          "A",
+          "On a customer’s payment receipt."
+        ],
+        [
+          "B",
+          "In a catalogue of replacement clocks."
+        ],
+        [
+          "C",
+          "In a fictional character’s private letter."
+        ],
+        [
+          "D",
+          "In an explanatory article about interpreting data."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：非单个付款记录；B：无钟表产品；C：说明文非私信；D：案例说明指标含义与比较",
+      "materialLabel": "C",
+      "points": 2,
+      "operation": "probable_publication_type"
+    },
+    {
+      "number": 12,
+      "stem": "D组 · What did the packing study mainly assess?",
+      "options": [
+        [
+          "A",
+          "Correct order completion under three planning conditions."
+        ],
+        [
+          "B",
+          "A full week’s effect on worker fatigue."
+        ],
+        [
+          "C",
+          "Workers’ opinions about every type of warehouse."
+        ],
+        [
+          "D",
+          "The price of replacing every box in a company."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：定义结果为正确装单而非仅快；B：明确未测周疲劳；C：非全仓库态度调查；D：无换箱成本",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "research_focus"
+    },
+    {
+      "number": 13,
+      "stem": "D组 · How did the researchers investigate the question?",
+      "options": [
+        [
+          "A",
+          "They described three independent studies in different industries."
+        ],
+        [
+          "B",
+          "They let only the reviewed-tool group practise."
+        ],
+        [
+          "C",
+          "They compared equal groups using three conditions on the same task."
+        ],
+        [
+          "D",
+          "They gave each group a different working period."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：明确一次任务三条件；B：所有同等练习；C：36人随机等分同任务三条件；D：各组时间相同",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "three_condition_comparison"
+    },
+    {
+      "number": 14,
+      "stem": "D组 · What does the report imply about using the tool?",
+      "options": [
+        [
+          "A",
+          "Following suggestions without reading was the role that performed best."
+        ],
+        [
+          "B",
+          "Checking relevant notices contributed to the tested combination’s success."
+        ],
+        [
+          "C",
+          "The result rules out benefits from any later software improvement."
+        ],
+        [
+          "D",
+          "Fast plans necessarily met every separation requirement."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：末段明确不等被测审阅角色；B：人审查出模板漏的分隔说明；C：承认数据变好可能改变结果；D：纯工具组有违分隔要求",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "bounded_conclusion"
+    },
+    {
+      "number": 15,
+      "stem": "D组 · Which title best suits passage D?",
+      "options": [
+        [
+          "A",
+          "Why Every Box Should Be Packed Automatically."
+        ],
+        [
+          "B",
+          "Three Experiments End Debate about Warehouse Software."
+        ],
+        [
+          "C",
+          "Planning Tools and Human Review: Testing a Division of Work."
+        ],
+        [
+          "D",
+          "A Week-Long Trial Shows That People Need No Training."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：不主张全自动；B：方法和普适结论均不符；C：三条件测试具体分工；D：未测整周且培训重要",
+      "materialLabel": "D",
+      "points": 2,
+      "operation": "whole_material_title"
+    }
+  ],
+  "canonical_response_block_sha256": "5ecf1f2736c96a9cf8463ea417b3fc407a0f3139553e0634557737b98fe65818",
+  "student_passage": "### A组（第1—3题）\n\nThe fictional Citywheel Museum offers four ways for families to explore movement, making and everyday life. All four programmes are free, but every family must reserve a place online before taking part. Booking confirms one session rather than a place on a continuing course. The advertised age group describes the programme’s intended audience, so check the description as well as the title before reserving.\n\n#### A1\n\nRoutes and Stories\nThese sessions welcome visitors of all ages on selected public-holiday weekends. A guide uses objects from the transport collection to begin conversations about ordinary journeys. Families can make a simple route model and compare their ideas with other groups. Topics change between sessions; attending an earlier event is not a requirement for joining a later one.\n\n#### A2\n\nTiny Tracks\nA programme specifically designed for families with children aged 0–5, Tiny Tracks combines a short picture-book introduction with playful exploration of objects and materials. Children take part with an accompanying adult. Once admitted to the reserved session, a family can move between activities at its own pace. This flexibility concerns the activities, not whether a booking is required.\n\n#### A3\n\nCity Pieces\nOnce each month, an educator leads this programme for families with children aged 3–8. Participants compare several collection objects connected to that month’s theme, then build or draw together. A visiting designer sometimes demonstrates a technique. This session is held in the museum studio, and adults are expected to join in rather than leave children there.\n\n#### A4\n\nWindow Workshop\nAn online gathering for families joining from home, Window Workshop takes place once each month. Museum educators suggest a way to explore a collection theme using materials commonly found at home. There is no scheduled visiting designer. Families receive a preparation note after booking and can choose how to adapt the activity to their available space.\n\n### B组（第4—7题）\n\n#### B1\n\nAt the fictional Berrin Library, regular borrower Tomas usually collected reserved books from a high counter. One week he arrived with his arm in a sling and discovered that managing a heavy bag while reaching for the books was awkward. He asked assistant Nila to set them down while he found his card. What happened next began with a question rather than a guess.\n\nNila did not assume that Tomas wanted someone else to choose or carry everything for him. She asked where he would like the books placed. He pointed to an empty trolley beside the counter. With the books there, he could check the titles and arrange his bag without balancing the whole pile against his body. He thanked her for giving him time instead of completing the transaction over his head.\n\nThe trolley had previously been kept behind the desk for staff returns. Nila asked the supervisor whether one could remain in front during busy periods. Before changing the arrangement, she tried two positions with Tomas so that it would not block the path or prevent someone reaching the counter. His suggestion was to keep it beside the lower end, where a visitor could ask to use it.\n\nThe following weeks showed that the change was useful to other borrowers too: one was sorting books for several family members, and another needed to put down a bulky bag. Staff still asked before moving anyone’s belongings. A convenient surface did not mean that all visitors wanted the same help, or that the library knew why each person found it useful.\n\nTomas later wrote a short message thanking Nila. “I asked for somewhere to put the books, and she listened to the somewhere,” he said. Nila describes the trolley as ordinary equipment finally being used from a visitor’s point of view. The library has not solved every access problem, but it has changed a routine by paying attention to a specific request. That, for her, is a practical part of welcoming people rather than an exceptional act of rescue.\n\n### C组（第8—11题）\n\n#### C1\n\nWhen two teams report different completion times for the same kind of task, it is tempting to decide immediately that one works faster. A fictional repair centre discovered why that conclusion can be premature. Its desk team and workshop team both used the heading “time to completion”, but the two clocks did not begin at the same event.\n\nThe desk team measured from the moment a customer handed in an object until it was collected. Its figure included waiting for a part and waiting for the customer to return. The workshop team measured only the time between starting the repair and finishing the work. That shorter period answered a useful question about active work, but it was not a measurement of the customer’s entire wait.\n\nThe distinction emerged at a planning meeting. A manager compared the totals and asked why the desk was so slow. Desk staff pointed out that they did not perform the repairs whose timing appeared in the workshop column. Nor could they control when a customer came back. The numbers had been gathered carefully, yet their shared heading invited a comparison that the definitions did not support.\n\nFor that purpose, the measures were **incompatible**: they could not be treated as equivalent descriptions of the same interval. The centre did not discard either record. It renamed the columns, wrote a start and end event beside each one, and added separate waiting stages. A reader could then ask about active repair time or about overall service time without confusing the two.\n\nThe example is about the meaning of a measure, not an argument against comparing performance. A fair comparison requires a shared definition or a clear account of the difference. Counting more precisely does not by itself repair a mismatch in what is being counted. Before asking which number is better, it is worth asking what work, delay or experience each number actually represents.\n\n### D组（第12—15题）\n\n#### D1\n\nA fictional packing workshop has tested whether workers using a planning tool should be allowed to revise its instructions. The tool assigned small items to boxes, taking account of size but sometimes failing to recognise a newly added instruction to keep two items apart. The study compared one task under three conditions, not the general merits of all warehouse software.\n\nThirty-six adult volunteers were randomly allocated to equal groups. Everyone received the same order lists, item descriptions and separation notices. In the human-only condition, participants made a packing plan without the tool. In the tool-only condition, they followed its proposed plans without revision. In the reviewed-tool condition, they could examine and change a proposal before completing each order. All groups had equal practice and the same working period.\n\nThe reviewed-tool group completed the largest number of correct orders on average. The tool reduced some routine arranging, while human reviewers noticed separation notices that its stored template had missed. The human-only group often produced valid plans but completed fewer orders in the time. The tool-only group worked quickly, but some completed boxes failed the separation requirement. The researchers counted correct orders rather than treating the fastest completion as automatically best.\n\nThe comparison suggests that a particular combination of routine organisation and informed checking can be useful. It does not establish a permanent advantage for every mixed system. Better data in a later tool, different orders or inexperienced reviewers could change the outcome. The study also did not measure fatigue over a full working week.\n\nProject lead Sora Pell says that future training should help reviewers understand why they accept or change a suggestion. A worker who clicks approval without reading the notice is not performing the role tested here. Before recommending workplace use, the team wants trials with more varied tasks and tools. It describes the result as a question about designing the division of work, rather than a reason to remove people from the process.",
+  "body_load_text": "The fictional Citywheel Museum offers four ways for families to explore movement, making and everyday life. All four programmes are free, but every family must reserve a place online before taking part. Booking confirms one session rather than a place on a continuing course. The advertised age group describes the programme’s intended audience, so check the description as well as the title before reserving.\n\nRoutes and Stories\nThese sessions welcome visitors of all ages on selected public-holiday weekends. A guide uses objects from the transport collection to begin conversations about ordinary journeys. Families can make a simple route model and compare their ideas with other groups. Topics change between sessions; attending an earlier event is not a requirement for joining a later one.\n\nTiny Tracks\nA programme specifically designed for families with children aged 0–5, Tiny Tracks combines a short picture-book introduction with playful exploration of objects and materials. Children take part with an accompanying adult. Once admitted to the reserved session, a family can move between activities at its own pace. This flexibility concerns the activities, not whether a booking is required.\n\nCity Pieces\nOnce each month, an educator leads this programme for families with children aged 3–8. Participants compare several collection objects connected to that month’s theme, then build or draw together. A visiting designer sometimes demonstrates a technique. This session is held in the museum studio, and adults are expected to join in rather than leave children there.\n\nWindow Workshop\nAn online gathering for families joining from home, Window Workshop takes place once each month. Museum educators suggest a way to explore a collection theme using materials commonly found at home. There is no scheduled visiting designer. Families receive a preparation note after booking and can choose how to adapt the activity to their available space.\n\nAt the fictional Berrin Library, regular borrower Tomas usually collected reserved books from a high counter. One week he arrived with his arm in a sling and discovered that managing a heavy bag while reaching for the books was awkward. He asked assistant Nila to set them down while he found his card. What happened next began with a question rather than a guess.\n\nNila did not assume that Tomas wanted someone else to choose or carry everything for him. She asked where he would like the books placed. He pointed to an empty trolley beside the counter. With the books there, he could check the titles and arrange his bag without balancing the whole pile against his body. He thanked her for giving him time instead of completing the transaction over his head.\n\nThe trolley had previously been kept behind the desk for staff returns. Nila asked the supervisor whether one could remain in front during busy periods. Before changing the arrangement, she tried two positions with Tomas so that it would not block the path or prevent someone reaching the counter. His suggestion was to keep it beside the lower end, where a visitor could ask to use it.\n\nThe following weeks showed that the change was useful to other borrowers too: one was sorting books for several family members, and another needed to put down a bulky bag. Staff still asked before moving anyone’s belongings. A convenient surface did not mean that all visitors wanted the same help, or that the library knew why each person found it useful.\n\nTomas later wrote a short message thanking Nila. “I asked for somewhere to put the books, and she listened to the somewhere,” he said. Nila describes the trolley as ordinary equipment finally being used from a visitor’s point of view. The library has not solved every access problem, but it has changed a routine by paying attention to a specific request. That, for her, is a practical part of welcoming people rather than an exceptional act of rescue.\n\nWhen two teams report different completion times for the same kind of task, it is tempting to decide immediately that one works faster. A fictional repair centre discovered why that conclusion can be premature. Its desk team and workshop team both used the heading “time to completion”, but the two clocks did not begin at the same event.\n\nThe desk team measured from the moment a customer handed in an object until it was collected. Its figure included waiting for a part and waiting for the customer to return. The workshop team measured only the time between starting the repair and finishing the work. That shorter period answered a useful question about active work, but it was not a measurement of the customer’s entire wait.\n\nThe distinction emerged at a planning meeting. A manager compared the totals and asked why the desk was so slow. Desk staff pointed out that they did not perform the repairs whose timing appeared in the workshop column. Nor could they control when a customer came back. The numbers had been gathered carefully, yet their shared heading invited a comparison that the definitions did not support.\n\nFor that purpose, the measures were **incompatible**: they could not be treated as equivalent descriptions of the same interval. The centre did not discard either record. It renamed the columns, wrote a start and end event beside each one, and added separate waiting stages. A reader could then ask about active repair time or about overall service time without confusing the two.\n\nThe example is about the meaning of a measure, not an argument against comparing performance. A fair comparison requires a shared definition or a clear account of the difference. Counting more precisely does not by itself repair a mismatch in what is being counted. Before asking which number is better, it is worth asking what work, delay or experience each number actually represents.\n\nA fictional packing workshop has tested whether workers using a planning tool should be allowed to revise its instructions. The tool assigned small items to boxes, taking account of size but sometimes failing to recognise a newly added instruction to keep two items apart. The study compared one task under three conditions, not the general merits of all warehouse software.\n\nThirty-six adult volunteers were randomly allocated to equal groups. Everyone received the same order lists, item descriptions and separation notices. In the human-only condition, participants made a packing plan without the tool. In the tool-only condition, they followed its proposed plans without revision. In the reviewed-tool condition, they could examine and change a proposal before completing each order. All groups had equal practice and the same working period.\n\nThe reviewed-tool group completed the largest number of correct orders on average. The tool reduced some routine arranging, while human reviewers noticed separation notices that its stored template had missed. The human-only group often produced valid plans but completed fewer orders in the time. The tool-only group worked quickly, but some completed boxes failed the separation requirement. The researchers counted correct orders rather than treating the fastest completion as automatically best.\n\nThe comparison suggests that a particular combination of routine organisation and informed checking can be useful. It does not establish a permanent advantage for every mixed system. Better data in a later tool, different orders or inexperienced reviewers could change the outcome. The study also did not measure fatigue over a full working week.\n\nProject lead Sora Pell says that future training should help reviewers understand why they accept or change a suggestion. A worker who clicks approval without reading the notice is not performing the role tested here. Before recommending workplace use, the team wants trials with more varied tasks and tools. It describes the result as a question about designing the division of work, rather than a reason to remove people from the process.",
+  "question_candidate_audit": [
+    {
+      "number": 1,
+      "label": "A",
+      "text": "Attendance at an earlier event.",
+      "is_best": false,
+      "reason": "首项明确无先修要求",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "B",
+      "text": "An online reservation for the session.",
+      "is_best": true,
+      "reason": "导语明确四项均须在线预约",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "C",
+      "text": "Payment for a continuing course.",
+      "is_best": false,
+      "reason": "全部免费且不属连续课程名额",
+      "material_label": "A"
+    },
+    {
+      "number": 1,
+      "label": "D",
+      "text": "Ownership of specialist building tools.",
+      "is_best": false,
+      "reason": "没有此装备准入",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "A",
+      "text": "Window Workshop",
+      "is_best": false,
+      "reason": "按居家参与定位，未专列0–5目标年龄",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "B",
+      "text": "City Pieces",
+      "is_best": false,
+      "reason": "面向3–8，非题干完整0–5目标范围",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "C",
+      "text": "Tiny Tracks",
+      "is_best": true,
+      "reason": "该项明确专为0–5岁儿童家庭设计",
+      "material_label": "A"
+    },
+    {
+      "number": 2,
+      "label": "D",
+      "text": "Routes and Stories",
+      "is_best": false,
+      "reason": "欢迎所有年龄，但未以0–5为专门目标人群",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "A",
+      "text": "They are held once a month.",
+      "is_best": true,
+      "reason": "两项明确每月一次",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "B",
+      "text": "They are both held in the museum studio.",
+      "is_best": false,
+      "reason": "D在线居家",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "C",
+      "text": "They both exclude adults from the activity.",
+      "is_best": false,
+      "reason": "成人参与且C明确不托管",
+      "material_label": "A"
+    },
+    {
+      "number": 3,
+      "label": "D",
+      "text": "They always include a visiting designer.",
+      "is_best": false,
+      "reason": "C仅有时D无安排",
+      "material_label": "A"
+    },
+    {
+      "number": 4,
+      "label": "A",
+      "text": "The library had stopped accepting his borrowing card.",
+      "is_best": false,
+      "reason": "只找卡非失效",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "B",
+      "text": "The staff trolley was already full of other visitors’ bags.",
+      "is_best": false,
+      "reason": "当时推车空着",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "C",
+      "text": "He had to manage his books and bag while one arm was in a sling.",
+      "is_best": true,
+      "reason": "首段明确手臂悬带和高柜负担",
+      "material_label": "B"
+    },
+    {
+      "number": 4,
+      "label": "D",
+      "text": "His reserved books had been sent to another branch.",
+      "is_best": false,
+      "reason": "无送错分馆",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "A",
+      "text": "To avoid allowing him to check the book titles.",
+      "is_best": false,
+      "reason": "恰使其可核题名",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "B",
+      "text": "To respond to his particular request without deciding his needs for him.",
+      "is_best": true,
+      "reason": "先问位置不擅代选代提",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "C",
+      "text": "To find out whether he had brought the correct books back.",
+      "is_best": false,
+      "reason": "是领预约书非核还书",
+      "material_label": "B"
+    },
+    {
+      "number": 5,
+      "label": "D",
+      "text": "To persuade him to use a delivery service instead.",
+      "is_best": false,
+      "reason": "无转递送服务",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "A",
+      "text": "Attentiveness to users’ preferences.",
+      "is_best": true,
+      "reason": "询问且共同试摆采纳建议",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "B",
+      "text": "Concern only with finishing each transaction quickly.",
+      "is_best": false,
+      "reason": "给时间且不替其仓促办完",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "C",
+      "text": "Confidence that all visitors require identical assistance.",
+      "is_best": false,
+      "reason": "明确仍先问且需求不同",
+      "material_label": "B"
+    },
+    {
+      "number": 6,
+      "label": "D",
+      "text": "A desire to keep all equipment behind the counter.",
+      "is_best": false,
+      "reason": "改放外侧便用",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "A",
+      "text": "An improvement matters only if it solves every problem.",
+      "is_best": false,
+      "reason": "承认未解决所有仍有价值",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "B",
+      "text": "A specific request can reveal a useful change to a routine.",
+      "is_best": true,
+      "reason": "一次请求引出推车摆放改进",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "C",
+      "text": "Every access difficulty requires entirely new equipment.",
+      "is_best": false,
+      "reason": "用既有普通推车",
+      "material_label": "B"
+    },
+    {
+      "number": 7,
+      "label": "D",
+      "text": "Staff should decide visitors’ needs before speaking to them.",
+      "is_best": false,
+      "reason": "全文强调先问",
+      "material_label": "B"
+    },
+    {
+      "number": 8,
+      "label": "A",
+      "text": "Different definitions can make similarly labelled figures misleading to compare.",
+      "is_best": true,
+      "reason": "同名完成时间起止不同导致误比",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "B",
+      "text": "Why workshop staff should replace desk staff.",
+      "is_best": false,
+      "reason": "无换岗主张",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "C",
+      "text": "How to make all customers collect repairs on the same day.",
+      "is_best": false,
+      "reason": "非催领教程",
+      "material_label": "C"
+    },
+    {
+      "number": 8,
+      "label": "D",
+      "text": "Why accurate records are unnecessary in planning.",
+      "is_best": false,
+      "reason": "恰记录准确仍需明确定义",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "A",
+      "text": "It recorded only the slowest repair each day.",
+      "is_best": false,
+      "reason": "无只录最慢设定",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "B",
+      "text": "It counted the same active work twice by mistake.",
+      "is_best": false,
+      "reason": "定义不同非重复计数",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "C",
+      "text": "Its staff used less precise clocks than the workshop.",
+      "is_best": false,
+      "reason": "无钟表精度差异",
+      "material_label": "C"
+    },
+    {
+      "number": 9,
+      "label": "D",
+      "text": "It included waiting stages beyond active repair work.",
+      "is_best": true,
+      "reason": "从送入到领回含等件等顾客",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "A",
+      "text": "Impossible to record with any accuracy.",
+      "is_best": false,
+      "reason": "原记录仔细准确",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "B",
+      "text": "Identical in both start and end events.",
+      "is_best": false,
+      "reason": "起止恰不同",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "C",
+      "text": "Unnecessary for every practical question.",
+      "is_best": false,
+      "reason": "保留两种分别回答不同问题",
+      "material_label": "C"
+    },
+    {
+      "number": 10,
+      "label": "D",
+      "text": "Not directly comparable as equivalent measures.",
+      "is_best": true,
+      "reason": "后文明确不能视作同一区间的等价描述",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "A",
+      "text": "On a customer’s payment receipt.",
+      "is_best": false,
+      "reason": "非单个付款记录",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "B",
+      "text": "In a catalogue of replacement clocks.",
+      "is_best": false,
+      "reason": "无钟表产品",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "C",
+      "text": "In a fictional character’s private letter.",
+      "is_best": false,
+      "reason": "说明文非私信",
+      "material_label": "C"
+    },
+    {
+      "number": 11,
+      "label": "D",
+      "text": "In an explanatory article about interpreting data.",
+      "is_best": true,
+      "reason": "案例说明指标含义与比较",
+      "material_label": "C"
+    },
+    {
+      "number": 12,
+      "label": "A",
+      "text": "Correct order completion under three planning conditions.",
+      "is_best": true,
+      "reason": "定义结果为正确装单而非仅快",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "B",
+      "text": "A full week’s effect on worker fatigue.",
+      "is_best": false,
+      "reason": "明确未测周疲劳",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "C",
+      "text": "Workers’ opinions about every type of warehouse.",
+      "is_best": false,
+      "reason": "非全仓库态度调查",
+      "material_label": "D"
+    },
+    {
+      "number": 12,
+      "label": "D",
+      "text": "The price of replacing every box in a company.",
+      "is_best": false,
+      "reason": "无换箱成本",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "A",
+      "text": "They described three independent studies in different industries.",
+      "is_best": false,
+      "reason": "明确一次任务三条件",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "B",
+      "text": "They let only the reviewed-tool group practise.",
+      "is_best": false,
+      "reason": "所有同等练习",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "C",
+      "text": "They compared equal groups using three conditions on the same task.",
+      "is_best": true,
+      "reason": "36人随机等分同任务三条件",
+      "material_label": "D"
+    },
+    {
+      "number": 13,
+      "label": "D",
+      "text": "They gave each group a different working period.",
+      "is_best": false,
+      "reason": "各组时间相同",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "A",
+      "text": "Following suggestions without reading was the role that performed best.",
+      "is_best": false,
+      "reason": "末段明确不等被测审阅角色",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "B",
+      "text": "Checking relevant notices contributed to the tested combination’s success.",
+      "is_best": true,
+      "reason": "人审查出模板漏的分隔说明",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "C",
+      "text": "The result rules out benefits from any later software improvement.",
+      "is_best": false,
+      "reason": "承认数据变好可能改变结果",
+      "material_label": "D"
+    },
+    {
+      "number": 14,
+      "label": "D",
+      "text": "Fast plans necessarily met every separation requirement.",
+      "is_best": false,
+      "reason": "纯工具组有违分隔要求",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "A",
+      "text": "Why Every Box Should Be Packed Automatically.",
+      "is_best": false,
+      "reason": "不主张全自动",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "B",
+      "text": "Three Experiments End Debate about Warehouse Software.",
+      "is_best": false,
+      "reason": "方法和普适结论均不符",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "C",
+      "text": "Planning Tools and Human Review: Testing a Division of Work.",
+      "is_best": true,
+      "reason": "三条件测试具体分工",
+      "material_label": "D"
+    },
+    {
+      "number": 15,
+      "label": "D",
+      "text": "A Week-Long Trial Shows That People Need No Training.",
+      "is_best": false,
+      "reason": "未测整周且培训重要",
+      "material_label": "D"
+    }
+  ],
+  "subgroup_response_counts": [
+    3,
+    4,
+    4,
+    4
+  ],
+  "subgroup_material_units": [
+    4,
+    1,
+    1,
+    1
+  ],
+  "material_unit_load": [
+    {
+      "label": "A",
+      "intro_words": 64,
+      "words": [
+        60,
+        60,
+        57,
+        58
+      ]
+    },
+    {
+      "label": "B",
+      "intro_words": 0,
+      "words": [
+        340
+      ]
+    },
+    {
+      "label": "C",
+      "intro_words": 0,
+      "words": [
+        316
+      ]
+    },
+    {
+      "label": "D",
+      "intro_words": 0,
+      "words": [
+        332
+      ]
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 1287,
+    "body_Han_characters": 0,
+    "stem_English_words": 144,
+    "options_English_words_with_repeated_bank": 455,
+    "options_Han_characters": 0,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 6,
+    "display_material_label_English_words": 11
+  },
+  "source_original_key_not_gold": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_bound_four_program_reading_section": true,
+  "program_policy": {
+    "all_free": true,
+    "all_require_advance_booking": true,
+    "student_policy_text": "All four programmes are free, but every family must reserve a place online before taking part.",
+    "targeted_age_bands": [
+      "visitors of all ages",
+      "families with children aged 0–5",
+      "families with children aged 3–8",
+      "families joining from home"
+    ],
+    "profile_titles": [
+      "Routes and Stories",
+      "Tiny Tracks",
+      "City Pieces",
+      "Window Workshop"
+    ],
+    "monthly_profile_indices": [
+      2,
+      3
+    ]
+  },
+  "program_match": {
+    "question_number": 2,
+    "profile_index": 1,
+    "target_age_band": "families with children aged 0–5",
+    "option_profile_indices": {
+      "A": 3,
+      "B": 2,
+      "C": 1,
+      "D": 0
+    }
+  },
+  "research_conditions": [
+    "human-only condition",
+    "tool-only condition",
+    "reviewed-tool condition"
+  ]
+}
