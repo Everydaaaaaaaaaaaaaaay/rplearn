@@ -7,12 +7,18 @@ private actor AudioTestService: LearningServing {
     var fail = false
     var delayed = false
     var pending: [CheckedContinuation<Data, Error>] = []
+    private(set) var downloadCount = 0
+    private(set) var maximumPending = 0
     func setDelayed() { delayed = true }
     func failDownloads() { fail = true }
+    func resumeDownloads() { fail = false; delayed = false }
     func finishDownload() { if !pending.isEmpty { pending.removeFirst().resume(returning: Data([1, 2, 3])) } }
     func learningAudio(_ attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        downloadCount += 1
         if fail { throw BackendClientError.invalidResponse }
-        if delayed { return try await withCheckedThrowingContinuation { pending.append($0) } }
+        if delayed { return try await withCheckedThrowingContinuation {
+            pending.append($0); maximumPending = max(maximumPending, pending.count)
+        } }
         return Data([1, 2, 3])
     }
     func learningCharacter(_ characterID: UUID) async throws -> BackendLearningCharacter { throw BackendClientError.invalidResponse }
@@ -87,15 +93,16 @@ struct LearningAudioTests {
     func optionPlaybackIsolation(kind: String) async throws {
         let service = AudioTestService()
         var playbacks: [TestAudioPlayback] = []
-        let model = LearningAudioOptionsModel {
+        let model = LearningAudioOptionsModel { cache in
             let playback = TestAudioPlayback(); playbacks.append(playback)
-            return LearningAudioModel(service: service, playback: playback)
+            return LearningAudioModel(service: service, playback: playback, cache: cache)
         }
         let data = Data(#"{"id":"sounds","type":"audioChoice","goalId":"test.goal","instruction":"选声音","prompt":"工程测试","hint":"工程提示","audioOptions":[{"id":"a","audio":{"assetId":"audio.a"}},{"id":"b","audio":{"assetId":"audio.b"}}]}"#.utf8)
         var publicQuestion = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
         publicQuestion["type"] = kind
         let question = try JSONDecoder().decode(LearningQuestion.self, from: JSONSerialization.data(withJSONObject: publicQuestion))
-        await model.prepare(attemptID: UUID(), question: question)
+        let attemptID = UUID()
+        await model.prepare(attemptID: attemptID, question: question)
         let first = try #require(model.players["a"]), second = try #require(model.players["b"])
         #expect(!model.hasListenedToAll)
         model.play("a"); try await waitForPlayback(first)
@@ -110,8 +117,81 @@ struct LearningAudioTests {
         model.reset()
         playbacks[0].completions[1](true)
         #expect(model.players.isEmpty); #expect(!model.hasListenedToAll)
-        await model.prepare(attemptID: UUID(), question: question)
+        await model.prepare(attemptID: attemptID, question: question)
         #expect(!model.hasListenedToAll)
+        #expect(await service.downloadCount == 2)
+        await model.prepare(attemptID: UUID(), question: question)
+        #expect(await service.downloadCount == 4)
+    }
+
+    @Test("声音选项最多三路并发，完成一路后补位")
+    func optionDownloadsAreBoundedAndConcurrent() async throws {
+        let service = AudioTestService(); await service.setDelayed()
+        let model = LearningAudioOptionsModel { cache in
+            LearningAudioModel(service: service, playback: TestAudioPlayback(), cache: cache)
+        }
+        let options = (0..<5).map { ["id": "option.\($0)", "audio": ["assetId": "audio.\($0)"]] as [String: Any] }
+        let data = try JSONSerialization.data(withJSONObject: ["id": "sounds", "type": "audioChoice",
+            "goalId": "test.goal", "instruction": "选声音", "prompt": "工程测试", "hint": "工程提示", "audioOptions": options])
+        let question = try JSONDecoder().decode(LearningQuestion.self, from: data)
+        let loading = Task { await model.prepare(attemptID: UUID(), question: question) }
+        for _ in 0..<100 {
+            if await service.pending.count == 3 { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(await service.downloadCount == 3)
+        await service.finishDownload()
+        for _ in 0..<100 {
+            if await service.downloadCount == 4 { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(await service.downloadCount == 4)
+        // 切题后不再启动排队请求，迟到下载也不能复活播放器。
+        model.reset()
+        for _ in 0..<3 { await service.finishDownload() }
+        await loading.value
+        #expect(await service.downloadCount == 4)
+        #expect(await service.maximumPending == 3)
+        #expect(model.players.isEmpty)
+    }
+
+    @Test("音频缓存按字节淘汰旧素材，跨题和跨挑战不复用")
+    func audioCacheEvictsAndScopesDownloads() async throws {
+        let service = AudioTestService()
+        let cache = LearningAudioCache(byteLimit: 6)
+        let attempt = UUID()
+        func load(_ asset: String, question: String = "q", attemptID: UUID? = nil) async throws {
+            _ = try await cache.load(service: service, attemptID: attemptID ?? attempt, questionID: question, assetID: asset)
+        }
+        try await load("a"); try await load("b"); try await load("a")
+        #expect(await service.downloadCount == 2)
+        try await load("c"); try await load("b")
+        #expect(await service.downloadCount == 4)
+        try await load("b", question: "other"); try await load("b", attemptID: UUID())
+        #expect(await service.downloadCount == 6)
+    }
+
+    @Test("下载失败或取消后可重新下载，不缓存失败结果")
+    func audioCacheDoesNotRetainFailuresOrCancellation() async throws {
+        let service = AudioTestService()
+        let cache = LearningAudioCache()
+        let attempt = UUID()
+        await service.failDownloads()
+        await #expect(throws: BackendClientError.self) {
+            _ = try await cache.load(service: service, attemptID: attempt, questionID: "q", assetID: "a")
+        }
+        await service.resumeDownloads(); await service.setDelayed()
+        let loading = Task { try await cache.load(service: service, attemptID: attempt, questionID: "q", assetID: "a") }
+        for _ in 0..<100 {
+            if await service.pending.count == 1 { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        loading.cancel(); await service.finishDownload()
+        await #expect(throws: CancellationError.self) { _ = try await loading.value }
+        await service.resumeDownloads()
+        let data = try await cache.load(service: service, attemptID: attempt, questionID: "q", assetID: "a")
+        #expect(data == Data([1, 2, 3]))
+        #expect(await service.downloadCount == 3)
     }
 
 }

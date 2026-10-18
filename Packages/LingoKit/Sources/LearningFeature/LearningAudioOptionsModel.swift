@@ -6,10 +6,11 @@ import Observation
 @MainActor @Observable
 final class LearningAudioOptionsModel {
     private(set) var players: [String: LearningAudioModel] = [:]
-    @ObservationIgnored private let makePlayer: () -> LearningAudioModel
+    @ObservationIgnored private let makePlayer: (LearningAudioCache) -> LearningAudioModel
+    @ObservationIgnored private let cache = LearningAudioCache()
     @ObservationIgnored private var revision = UUID()
 
-    init(makePlayer: @escaping () -> LearningAudioModel) { self.makePlayer = makePlayer }
+    init(makePlayer: @escaping (LearningAudioCache) -> LearningAudioModel) { self.makePlayer = makePlayer }
 
     var hasListenedToAll: Bool { !players.isEmpty && players.values.allSatisfy(\.hasListened) }
 
@@ -18,10 +19,25 @@ final class LearningAudioOptionsModel {
         guard let question, [.audioChoice, .audioMatching].contains(question.type) else { return }
         let requestRevision = revision
         let options = question.audioOptions ?? []
-        for option in options { players[option.id] = makePlayer() }
-        for option in options {
-            guard revision == requestRevision, !Task.isCancelled else { return }
-            await players[option.id]?.prepare(attemptID: attemptID, questionID: question.id, assetID: option.audio.assetId)
+        let jobs = options.map { option in
+            let player = makePlayer(cache)
+            players[option.id] = player
+            return (option, player)
+        }
+        await withTaskGroup(of: Void.self) { group in
+            var next = 0
+            func enqueue() {
+                let (option, player) = jobs[next]
+                next += 1
+                group.addTask {
+                    await player.prepare(attemptID: attemptID, questionID: question.id, assetID: option.audio.assetId)
+                }
+            }
+            for _ in 0..<min(3, jobs.count) { enqueue() }
+            while await group.next() != nil {
+                guard revision == requestRevision, !Task.isCancelled else { group.cancelAll(); return }
+                if next < jobs.count { enqueue() }
+            }
         }
     }
 

@@ -5,6 +5,41 @@ import Foundation
 import Observation
 import SpeechKit
 
+/// 只在当前挑战内复用音频，不跨账号或挑战共享；失败和取消均不入缓存。
+actor LearningAudioCache {
+    private struct Key: Hashable {
+        let attemptID: UUID
+        let questionID: String
+        let assetID: String
+    }
+    private let byteLimit: Int
+    private var entries: [Key: Data] = [:]
+    private var order: [Key] = []
+    private var byteCount = 0
+
+    init(byteLimit: Int = 8 * 1024 * 1024) { self.byteLimit = byteLimit }
+
+    func load(service: any LearningServing, attemptID: UUID, questionID: String, assetID: String) async throws -> Data {
+        try Task.checkCancellation()
+        let key = Key(attemptID: attemptID, questionID: questionID, assetID: assetID)
+        if let cached = entries[key] {
+            order.removeAll { $0 == key }; order.append(key)
+            return cached
+        }
+        let data = try await service.learningAudio(attemptID, questionID: questionID, assetID: assetID)
+        try Task.checkCancellation()
+        guard data.count <= byteLimit else { return data }
+        if let previous = entries.removeValue(forKey: key) { byteCount -= previous.count }
+        order.removeAll { $0 == key }
+        while byteCount + data.count > byteLimit || order.count >= 12 {
+            let oldest = order.removeFirst()
+            byteCount -= entries.removeValue(forKey: oldest)?.count ?? 0
+        }
+        entries[key] = data; order.append(key); byteCount += data.count
+        return data
+    }
+}
+
 @MainActor
 protocol LearningAudioPlayback: AnyObject {
     func play(data: Data, rate: Float, completed: @escaping @MainActor @Sendable (Bool) -> Void) async throws
@@ -21,12 +56,13 @@ final class LearningAudioModel {
     @ObservationIgnored private let service: any LearningServing
     @ObservationIgnored private let playback: any LearningAudioPlayback
     @ObservationIgnored private let beforePlayback: @Sendable () async -> Void
+    @ObservationIgnored private let cache: LearningAudioCache
     @ObservationIgnored private var data: Data?
     @ObservationIgnored private var revision = UUID()
     @ObservationIgnored private var playTask: Task<Void, Never>?
 
-    init(service: any LearningServing, playback: any LearningAudioPlayback, beforePlayback: @escaping @Sendable () async -> Void = {}) {
-        self.service = service; self.playback = playback; self.beforePlayback = beforePlayback
+    init(service: any LearningServing, playback: any LearningAudioPlayback, beforePlayback: @escaping @Sendable () async -> Void = {}, cache: LearningAudioCache = LearningAudioCache()) {
+        self.service = service; self.playback = playback; self.beforePlayback = beforePlayback; self.cache = cache
     }
 
     func prepare(attemptID: UUID, question: LearningQuestion?) async {
@@ -39,7 +75,7 @@ final class LearningAudioModel {
         let requestRevision = revision
         state = .loading
         do {
-            let loaded = try await service.learningAudio(attemptID, questionID: questionID, assetID: assetID)
+            let loaded = try await cache.load(service: service, attemptID: attemptID, questionID: questionID, assetID: assetID)
             guard revision == requestRevision, !Task.isCancelled else { return }
             data = loaded; state = .ready
         } catch {

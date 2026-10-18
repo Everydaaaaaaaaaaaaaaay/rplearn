@@ -29,8 +29,8 @@ public struct LearningChallengeView: View {
         _model = State(initialValue: LearningChallengeModel(attempt: attempt, service: service, afterFinish: afterFinish)); self.character = character
         _pictures = State(initialValue: LearningImageModel(service: service))
         _audio = State(initialValue: LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback))
-        _audioOptions = State(initialValue: LearningAudioOptionsModel {
-            LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback)
+        _audioOptions = State(initialValue: LearningAudioOptionsModel { cache in
+            LearningAudioModel(service: service, playback: NativeLearningAudioPlayback(session: audioSession), beforePlayback: beforePlayback, cache: cache)
         })
     }
     private var theme: LearningTheme { LearningTheme(role: model.attempt.unit.roleKey) }
