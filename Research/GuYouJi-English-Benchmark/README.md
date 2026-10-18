@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+**2026-10-18恢复遗漏高中短文改错家族：** [三个来源与完整操作](CompleteCoverage20261017/SeniorProofreadingDiscovery-v0.1.json)、[当前缺口与恢复验证](CompleteCoverage20261017/SeniorProofreadingDiscoveryVerification-v0.1.json)复用高二2019阶段卷原1/9/10页，另核校方高一期末练习及渭南高三2023上期中公开转载的完整十处增删改；不是新增认证原校卷。高一校方页仅读者选段可核，普通GET403未重试绕过；高二无原键，高三短键加who/解析另许noticed改noticing，Since句三拟改处与每句最多两处冲突均保留，不升gold。此家族此前未入当前队列，现三年级各一配置、各三原创合九稿与完整位置操作界面明确待补；不把十提示空当找错任务。页面三档待补状态已实测，655/4391、192有稿格及41修订原载荷保持。增量五对象约171KB、三定向恢复SHA通过，无新快照；旧低小/配套/独立验证依赖继续，任务未完成。
+
 **2026-10-18高中余14组语境复核：** [修订与保留](CompleteCoverage20261017/SeniorGrammarContextReview-v0.2.json)、[验证恢复](CompleteCoverage20261017/SeniorGrammarContextVerification-v0.2.json)核14完整组140空，修9组10处：see/notice两空补push/stand，另两高三目的空补only/just，声图排除项误词根to interrupt改为to interview；五not only空原and排除论据不足，移待复核，未宣布正确。met的carry及could not help的but laugh未越给词范围自动接收；正文/词根/限词/子组不变。190完整组合1900回应、15实际整组150回应、18边界及九解析重置通过；41精确修订登记，另646载荷与14暂停组保留。655/4391、192格不增；合前四组共18高中语法组完成作者语境核读，不当独立教研或答案穷尽。五对象约215KB增量归档、三定向恢复SHA通过，无新快照；低小现行闭集、源全输入/音频/键及独立验证仍开放。
 
 **2026-10-18高中四组语境复核与停钟修订：** [问题与边界](CompleteCoverage20261017/SeniorGrammarContextReview-v0.1.json)、[实测与恢复](CompleteCoverage20261017/SeniorGrammarContextVerification-v0.1.json)只核四完整组40空，非全部高中或独立教师。高三停钟第4空改由本句them回指齿轮支持复数，纠正误引前句several diagrams；第7空but/only/just均接受，未充分核实的and排除移待复核。原正文/题干/词根/限词及其余九空接受形式不变，96→288全组变体本机核对通过，三正确整组30回应、三边界向量、新解析/重置实际通过；精确旧载荷→新载荷登记34项，另654组、14暂停组保留。655/4391、192格不增，来源/独立验证缺口继续；余14高中语法组按记录逐组复核，不重跑全库。7对象约209KB增量归档、三定向恢复通过，无新快照。
