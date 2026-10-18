@@ -1,0 +1,93 @@
+{
+  "version": "0.1",
+  "id": "primary6-givenforms5-journey",
+  "title": "小六：安静的旅程与包裹",
+  "grade": "primary6",
+  "family": "sentence_form",
+  "mode": "given_forms5",
+  "source_group_id": "primary6.shenzhenexperiment2017.givenforms5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_binding": "p6-written-givenforms5",
+  "instruction": "用括号中所给单词的适当形式填空，完成全部五句。每空不限填一词；已核实的合法变体同等接受，其他表达可能显示待复核。",
+  "source_notice": "参照同一公开历史教辅导出卷的五题给词填空，保留五独立句、逐空给词、明确不限一词。该卷标题自署2016–17深圳实验学校六下，原校与实际施测未认证、原键缺；原He is is重印及walk多时态风险保留。自有句框独立重写，部分给出助动词缩小形态歧义，不复制源错句或声称精确能力等值。已核常用变体同等接受，合法表达未穷尽，未列形式待复核。独立教研、学生、商用和生产未验证。",
+  "variant_evidence": {
+    "path": "build/english-benchmark-authority-20261017/p6written643-publisher-variants-v0.1.json",
+    "sha256": "d4a24b63a0060118bc98561ad9a2435719d140c77176d2127284c3690f51c23b"
+  },
+  "sentences": [
+    {
+      "frame": "Please close the library door ____, so that the readers can keep working.",
+      "lemma": "quiet",
+      "accepted": [
+        "quietly"
+      ],
+      "grounds": {
+        "quietly": "副词quietly修饰close，符合图书馆语境。"
+      },
+      "rejected": {
+        "quiet": "形容词不在此处直接修饰close。"
+      }
+    },
+    {
+      "frame": "My aunt has ____ across Canada by train twice.",
+      "lemma": "travel",
+      "accepted": [
+        "travelled",
+        "traveled"
+      ],
+      "grounds": {
+        "travelled": "has后过去分词，双l为英式常用形式。",
+        "traveled": "单l为词典列出的美式过去分词，同等接受。"
+      },
+      "rejected": {
+        "travel": "has后需要过去分词。",
+        "travelling": "has后不能直接接-ing构成此完成时。"
+      }
+    },
+    {
+      "frame": "The padded seat felt softer and supported my back better. It was ____ than the hard stool.",
+      "lemma": "comfortable",
+      "accepted": [
+        "more comfortable"
+      ],
+      "grounds": {
+        "more comfortable": "前句具体舒适性比较支持more comfortable，than需要比较级。"
+      },
+      "rejected": {
+        "comfortable": "原级不能直接承接此than比较。",
+        "most comfortable": "最高级不合此than比较。"
+      }
+    },
+    {
+      "frame": "Mr Hill drives the school bus. He is its ____.",
+      "lemma": "drive",
+      "accepted": [
+        "driver"
+      ],
+      "grounds": {
+        "driver": "its后表示开车的人用单数名词driver。"
+      },
+      "rejected": {
+        "drive": "此义需人物名词，不是drive。",
+        "drivers": "题面一名Mr Hill对应单数，不用复数。"
+      }
+    },
+    {
+      "frame": "Mum was ____ the small parcel in brown paper when the phone rang.",
+      "lemma": "wrap",
+      "accepted": [
+        "wrapping"
+      ],
+      "grounds": {
+        "wrapping": "was后主动进行时用wrapping，双写p。"
+      },
+      "rejected": {
+        "wrap": "was后不能接原形构成此主动进行时。",
+        "wraping": "漏双写p，不是规范词形。"
+      }
+    }
+  ]
+}

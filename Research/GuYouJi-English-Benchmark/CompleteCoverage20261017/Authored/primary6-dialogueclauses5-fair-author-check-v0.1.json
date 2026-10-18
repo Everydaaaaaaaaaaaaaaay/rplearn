@@ -1,0 +1,373 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialogueclauses5-fair",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "aa6d19d744a92e0a83a2711e434951b4bede56796e5b80dd3adbafb7c2392f54",
+  "source_binding": "p6-written-dialogue3clauses",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.dialogue3clauses",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-dialogueclauses5-fair-manuscript-v0.1.json",
+    "sha256": "cda84f9152cb9c746f5539dfa55246d238399c4894d2c2dd20c79cea55beac3d"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "And each hat has a silver star on top."
+        ],
+        [
+          "B",
+          "Group Blue is making paper hats, isn't it?"
+        ],
+        [
+          "C",
+          "And their bell rings at ten fifteen."
+        ],
+        [
+          "D",
+          "What is Group Red practising?"
+        ],
+        [
+          "E",
+          "but I would rather ring the bells."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：尚未提帽子，且下一句直接介绍Red正在排练什么。；B：下句介绍Red而非确认Blue的纸帽任务，不回应tag问句。；C：尚未介绍哪队的bell，且下一句并非钟点问题的回答。；D：下一句直接回答Red在排练木偶戏。；E：没有前述偏好作but转折，也不询问Red的排练。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "And each hat has a silver star on top."
+        ],
+        [
+          "B",
+          "Group Blue is making paper hats, isn't it?"
+        ],
+        [
+          "C",
+          "And their bell rings at ten fifteen."
+        ],
+        [
+          "D",
+          "What is Group Red practising?"
+        ],
+        [
+          "E",
+          "but I would rather ring the bells."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：纸帽银星不提供Anna下一句所据的十点十五分。；B：确认Blue制帽应由Yes/No及Blue的信息回答，下一句却谈到场钟点。；C：给出响铃十点十五分，Anna的then到场钟点有直接依据。；D：刚说明Red排练木偶戏后重问，且Anna的到场时间不回答该问句。；E：偏好敲铃不提供十点十五分，缺下一句时间依据。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "And each hat has a silver star on top."
+        ],
+        [
+          "B",
+          "Group Blue is making paper hats, isn't it?"
+        ],
+        [
+          "C",
+          "And their bell rings at ten fifteen."
+        ],
+        [
+          "D",
+          "What is Group Red practising?"
+        ],
+        [
+          "E",
+          "but I would rather ring the bells."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：陈述纸帽有银星不适合作为Yes确认某队活动的问句。；B：Yes确认Blue制纸帽，接着说明其安静制帽桌。；C：陈述Red铃的钟点，后文their table无bells转Blue缺问句引入。；D：Yes不能回答What问何种排练；后文也未答Red演出。；E：敲铃偏好不引出Yes及Blue安静制帽桌。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "And each hat has a silver star on top."
+        ],
+        [
+          "B",
+          "Group Blue is making paper hats, isn't it?"
+        ],
+        [
+          "C",
+          "And their bell rings at ten fifteen."
+        ],
+        [
+          "D",
+          "What is Group Red practising?"
+        ],
+        [
+          "E",
+          "but I would rather ring the bells."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：帽上的银星为下句put the stars on the hats提供直接对象。；B：重复刚被Yes回答的问题，下句却提出贴星，缺星信息。；C：Blue桌明说no bells，与their bell矛盾，也未引星。；D：转问Red排练什么，下句未回答而谈贴星。；E：转向敲铃偏好而不引出下句制帽贴星。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "And each hat has a silver star on top."
+        ],
+        [
+          "B",
+          "Group Blue is making paper hats, isn't it?"
+        ],
+        [
+          "C",
+          "And their bell rings at ten fifteen."
+        ],
+        [
+          "D",
+          "What is Group Red practising?"
+        ],
+        [
+          "E",
+          "but I would rather ring the bells."
+        ]
+      ],
+      "answer": "E",
+      "rationale": "A：帽的星星不能被ring，two little ones需可敲的bells。；B：问句不接前逗号的偏好陈述，后文two可敲对象仍未引入。；C：其bell单个时刻信息不支持此处偏好转向和two little ones，且前文Blue无铃。；D：WH问句不能在此逗号后接成句，后文也不答排练内容。；E：but说明相较制帽更愿敲铃，下句two little ones to ring承接bells。"
+    }
+  ],
+  "canonical_response_block_sha256": "1ba71f57facc330614e6d8e1e23ba14cc72b8d79aa38ec04ba2e388f1f2d85dc",
+  "student_passage": "Anna: Hi, Bo. (1) ____\n\nBo: Group Red is practising a puppet show. They use a bell to start it. (2) ____\n\nAnna: I will come at ten fifteen, then.\n\nBo: (3) ____\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. (4) ____\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, (5) ____ There are two little ones to ring at the start and end of our show.",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 71,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 180,
+    "output_response_positions": 5,
+    "options_English_words_unique_bank": 36
+  },
+  "dialogue_clauses5": true,
+  "shared_candidates": [
+    [
+      "A",
+      "And each hat has a silver star on top."
+    ],
+    [
+      "B",
+      "Group Blue is making paper hats, isn't it?"
+    ],
+    [
+      "C",
+      "And their bell rings at ten fifteen."
+    ],
+    [
+      "D",
+      "What is Group Red practising?"
+    ],
+    [
+      "E",
+      "but I would rather ring the bells."
+    ]
+  ],
+  "filled_passage": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show.",
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "尚未提帽子，且下一句直接介绍Red正在排练什么。",
+      "full_group_substitution": "Anna: Hi, Bo. And each hat has a silver star on top.\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "下句介绍Red而非确认Blue的纸帽任务，不回应tag问句。",
+      "full_group_substitution": "Anna: Hi, Bo. Group Blue is making paper hats, isn't it?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "尚未介绍哪队的bell，且下一句并非钟点问题的回答。",
+      "full_group_substitution": "Anna: Hi, Bo. And their bell rings at ten fifteen.\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 1,
+      "candidate": "D",
+      "is_best": true,
+      "reason": "下一句直接回答Red在排练木偶戏。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 1,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "没有前述偏好作but转折，也不询问Red的排练。",
+      "full_group_substitution": "Anna: Hi, Bo. but I would rather ring the bells.\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "纸帽银星不提供Anna下一句所据的十点十五分。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And each hat has a silver star on top.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "确认Blue制帽应由Yes/No及Blue的信息回答，下一句却谈到场钟点。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. Group Blue is making paper hats, isn't it?\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "is_best": true,
+      "reason": "给出响铃十点十五分，Anna的then到场钟点有直接依据。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 2,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "刚说明Red排练木偶戏后重问，且Anna的到场时间不回答该问句。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. What is Group Red practising?\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 2,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "偏好敲铃不提供十点十五分，缺下一句时间依据。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. but I would rather ring the bells.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "陈述纸帽有银星不适合作为Yes确认某队活动的问句。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: And each hat has a silver star on top.\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "is_best": true,
+      "reason": "Yes确认Blue制纸帽，接着说明其安静制帽桌。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "陈述Red铃的钟点，后文their table无bells转Blue缺问句引入。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: And their bell rings at ten fifteen.\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 3,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "Yes不能回答What问何种排练；后文也未答Red演出。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: What is Group Red practising?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 3,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "敲铃偏好不引出Yes及Blue安静制帽桌。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: but I would rather ring the bells.\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "is_best": true,
+      "reason": "帽上的银星为下句put the stars on the hats提供直接对象。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "重复刚被Yes回答的问题，下句却提出贴星，缺星信息。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. Group Blue is making paper hats, isn't it?\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "Blue桌明说no bells，与their bell矛盾，也未引星。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And their bell rings at ten fifteen.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 4,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "转问Red排练什么，下句未回答而谈贴星。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. What is Group Red practising?\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 4,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "转向敲铃偏好而不引出下句制帽贴星。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. but I would rather ring the bells.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "帽的星星不能被ring，two little ones需可敲的bells。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, And each hat has a silver star on top. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "问句不接前逗号的偏好陈述，后文two可敲对象仍未引入。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, Group Blue is making paper hats, isn't it? There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "其bell单个时刻信息不支持此处偏好转向和two little ones，且前文Blue无铃。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, And their bell rings at ten fifteen. There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 5,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "WH问句不能在此逗号后接成句，后文也不答排练内容。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, What is Group Red practising? There are two little ones to ring at the start and end of our show."
+    },
+    {
+      "number": 5,
+      "candidate": "E",
+      "is_best": true,
+      "reason": "but说明相较制帽更愿敲铃，下句two little ones to ring承接bells。",
+      "full_group_substitution": "Anna: Hi, Bo. What is Group Red practising?\n\nBo: Group Red is practising a puppet show. They use a bell to start it. And their bell rings at ten fifteen.\n\nAnna: I will come at ten fifteen, then.\n\nBo: Group Blue is making paper hats, isn't it?\n\nAnna: Yes. Their quiet table has paper and glue, but no bells. And each hat has a silver star on top.\n\nBo: Can I help you put the stars on the hats?\n\nAnna: Thanks. I enjoy making hats, but I would rather ring the bells. There are two little ones to ring at the start and end of our show."
+    }
+  ],
+  "reuse_rule": "not_explicit"
+}

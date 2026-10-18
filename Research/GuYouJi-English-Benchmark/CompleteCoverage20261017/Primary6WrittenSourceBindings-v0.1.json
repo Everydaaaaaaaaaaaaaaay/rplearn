@@ -1,0 +1,70 @@
+{
+  "version": "0.1",
+  "bindings": [
+    {
+      "id": "p6-written-givenforms5",
+      "source_index": {
+        "path": "CompleteCoverage20261017/SelectedSourceModes-v0.59.json",
+        "sha256": "f4afd4360182ef0a9b1efe19b77130e43fe28f8449e2d0ee0f2374872876c3e8"
+      },
+      "collection": "groups",
+      "source_group_id": "primary6.shenzhenexperiment2017.givenforms5",
+      "source_record_sha256": "dd109d3c64e9ddbea7912f903d8adb0052bd549e88d212d7e07cc7f1c23c70ab",
+      "level": "primary6",
+      "family": "sentence_form",
+      "responses": 5,
+      "options_each": 0,
+      "source_features": {
+        "sentence_tasks": 5,
+        "responses": 5,
+        "given_positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "source_max_words_each": null,
+        "maximum_one_word_explicitly_rejected": true
+      },
+      "task_mode": "given_forms5",
+      "source_original_key_not_gold": true,
+      "new_source_count": 0
+    },
+    {
+      "id": "p6-written-dialogue3clauses",
+      "source_index": {
+        "path": "CompleteCoverage20261017/SelectedSourceModes-v0.59.json",
+        "sha256": "f4afd4360182ef0a9b1efe19b77130e43fe28f8449e2d0ee0f2374872876c3e8"
+      },
+      "collection": "groups",
+      "source_group_id": "primary6.shenzhenexperiment2017.dialogue3clauses",
+      "source_record_sha256": "75c0eae4680eed5ff49060cbd7123350cf2b8ad1f83c82750f46af37bbefa287",
+      "level": "primary6",
+      "family": "dialogue_matching",
+      "responses": 5,
+      "options_each": 5,
+      "source_features": {
+        "dialogues": 1,
+        "speakers": 2,
+        "responses": 5,
+        "shared_candidates": 5,
+        "complete_question_candidate_count": 2,
+        "conjunction_initial_clause_candidate_count": 3,
+        "printed_frame_period_before_slots": [
+          2,
+          4
+        ],
+        "printed_frame_comma_before_slots": [
+          5
+        ],
+        "reuse_rule": "not_explicit"
+      },
+      "task_mode": "dialogue_clauses5",
+      "source_original_key_not_gold": true,
+      "new_source_count": 0,
+      "reuse_rule": "not_explicit"
+    }
+  ],
+  "new_source_count": 0
+}

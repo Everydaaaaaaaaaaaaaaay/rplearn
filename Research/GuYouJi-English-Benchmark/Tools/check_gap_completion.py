@@ -55,6 +55,9 @@ def check(data, plan):
             if b.get('task_mode') == 'ten_sentence_four_choices':
                 from compile_ten_sentence_choices import check as check_ten_sentence_choices
                 check_ten_sentence_choices(g,a,b,source)
+            if b.get('task_mode') in {'given_forms5', 'dialogue_clauses5'}:
+                from compile_primary6_written_groups import check as check_primary6_written
+                check_primary6_written(g,a,b,source)
             if b.get('task_mode') == 'complete_word_category_choice':
                 from word_category_contract import check as check_word_categories
                 check_word_categories(g,a,b,source)
@@ -402,7 +405,7 @@ def check(data, plan):
                 assert q['acceptedAnswers'] and len(set(q['acceptedAnswers'])) == len(q['acceptedAnswers'])
                 c = q['fillMarking']
                 assert c['review'] == 'author_context_checked' and c['version'] == 1
-                expected_protocol='english_phrase_v1' if a.get('paired_word_fill') or a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') or a.get('primary_whole_listening') or a.get('junior_source_bound') or a.get('controlled_sentence_transformation') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
+                expected_protocol='english_phrase_v1' if a.get('given_forms5') or a.get('paired_word_fill') or a.get('mixed_given_ungiven_grammar') or a.get('one_word_open_cloze') or a.get('keyword_transformation') or a.get('listening_sentence_completion') or a.get('word_bank_completion') or a.get('bounded_source_prompt_completion') or a.get('primary_whole_listening') or a.get('junior_source_bound') or a.get('controlled_sentence_transformation') else 'ascii_integer_v1' if meta['family']=='number_word_completion' else 'latin_word_v1'
                 if meta['family']=='listening_table_completion' and a.get('junior_source_bound'):
                     if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
                     elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'
@@ -459,7 +462,10 @@ def check(data, plan):
             for q, scene in zip(g['questions'], a['visual_semantics']):
                 assert dict(q['options'])[q['answer']] == scene['correct_sentence']
         if meta['family'] == 'dialogue_matching':
-            if a.get('inherited_shared_five'):
+            if a.get('dialogue_clauses5'):
+                assert a['reuse_rule'] == b['reuse_rule'] == 'not_explicit'
+                assert '未规定每项只用一次' in meta['instruction']
+            elif a.get('inherited_shared_five'):
                 assert b['reuse_rule']=='not_explicit' and '不额外限制' in meta['instruction']
             else:
                 assert a['source_reuse'] == 'not_explicit' and '只用一次' in meta['instruction']

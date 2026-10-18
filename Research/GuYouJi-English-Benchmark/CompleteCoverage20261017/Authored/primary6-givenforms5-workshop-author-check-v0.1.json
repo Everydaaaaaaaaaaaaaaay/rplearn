@@ -1,0 +1,180 @@
+{
+  "version": "0.1",
+  "id": "primary6-givenforms5-workshop",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "a9e3ee0b34e076756022f748a9db5ff4ef7215b25070ece59b1ffae74b841572",
+  "source_binding": "p6-written-givenforms5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.givenforms5",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-givenforms5-workshop-manuscript-v0.1.json",
+    "sha256": "6ba1cb7b2d7cf8948de323cf947476eb1a7f84b6b4277d1b4b9516e7d46f1e24"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Handle the glass jars ____, so that you do not break them. (careful)",
+      "options": [],
+      "givenLemma": "careful",
+      "acceptedAnswers": [
+        "carefully"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "careful"
+        ]
+      },
+      "rationale": "carefully：副词carefully修饰handle。；careful：此处需副词修饰动作，不能直接用形容词。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 2,
+      "stem": "I have often ____ about flying over our town. (dream)",
+      "options": [],
+      "givenLemma": "dream",
+      "acceptedAnswers": [
+        "dreamt",
+        "dreamed"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "dream",
+          "dreaming"
+        ]
+      },
+      "rationale": "dreamt：have后用过去分词dreamt，词典列明。；dreamed：dreamed同为过去分词，不因另一拼写而判错。；dream：have后需要过去分词。；dreaming：have后不能直接接-ing构成此完成时。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 3,
+      "stem": "This tool can open tins as well as cut string. For these two jobs it is ____ than the tool that only cuts string. (useful)",
+      "options": [],
+      "givenLemma": "useful",
+      "acceptedAnswers": [
+        "more useful"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "useful",
+          "most useful"
+        ]
+      },
+      "rationale": "more useful：两项任务都可完成而另一只能完成一项，语境支持more useful。；useful：原级不直接接此than比较。；most useful：最高级不合than比较。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 4,
+      "stem": "Ms Park teaches our science class. She is our science ____. (teach)",
+      "options": [],
+      "givenLemma": "teach",
+      "acceptedAnswers": [
+        "teacher"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "teach",
+          "teachers"
+        ]
+      },
+      "rationale": "teacher：表示教科学的人，用单数teacher。；teach：our science后需人物名词。；teachers：一个Ms Park对应单数，不是复数。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 5,
+      "stem": "Ben was ____ onto the bus when his ticket fell from his hand. (step)",
+      "options": [],
+      "givenLemma": "step",
+      "acceptedAnswers": [
+        "stepping"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "step",
+          "steping"
+        ]
+      },
+      "rationale": "stepping：was后进行时用stepping，双写p。；step：was后原形不成此主动进行时。；steping：漏双写p，不是规范词形。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    }
+  ],
+  "canonical_response_block_sha256": "989d92ca49a01641bcd743cb4905d50a8ec80f33f05bfaf20ab80475f542ec77",
+  "student_passage": "",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 69,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_known_form_word_counts": [
+      [
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2
+      ],
+      [
+        1
+      ],
+      [
+        1
+      ]
+    ]
+  },
+  "given_forms5": true,
+  "fully_filled_sentence_sets": [
+    [
+      "Handle the glass jars carefully, so that you do not break them.",
+      "I have often dreamt about flying over our town.",
+      "This tool can open tins as well as cut string. For these two jobs it is more useful than the tool that only cuts string.",
+      "Ms Park teaches our science class. She is our science teacher.",
+      "Ben was stepping onto the bus when his ticket fell from his hand."
+    ],
+    [
+      "Handle the glass jars carefully, so that you do not break them.",
+      "I have often dreamed about flying over our town.",
+      "This tool can open tins as well as cut string. For these two jobs it is more useful than the tool that only cuts string.",
+      "Ms Park teaches our science class. She is our science teacher.",
+      "Ben was stepping onto the bus when his ticket fell from his hand."
+    ]
+  ],
+  "full_fill_variant_combinations": 2,
+  "variant_evidence": {
+    "path": "build/english-benchmark-authority-20261017/p6written643-publisher-variants-v0.1.json",
+    "sha256": "d4a24b63a0060118bc98561ad9a2435719d140c77176d2127284c3690f51c23b"
+  }
+}

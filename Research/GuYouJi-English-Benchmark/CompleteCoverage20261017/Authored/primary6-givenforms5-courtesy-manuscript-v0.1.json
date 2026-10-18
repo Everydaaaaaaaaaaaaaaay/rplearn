@@ -1,0 +1,93 @@
+{
+  "version": "0.1",
+  "id": "primary6-givenforms5-courtesy",
+  "title": "小六：礼貌、学习与游泳",
+  "grade": "primary6",
+  "family": "sentence_form",
+  "mode": "given_forms5",
+  "source_group_id": "primary6.shenzhenexperiment2017.givenforms5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_binding": "p6-written-givenforms5",
+  "instruction": "用括号中所给单词的适当形式填空，完成全部五句。每空不限填一词；已核实的合法变体同等接受，其他表达可能显示待复核。",
+  "source_notice": "参照同一公开历史教辅导出卷的五题给词填空，保留五独立句、逐空给词、明确不限一词。该卷标题自署2016–17深圳实验学校六下，原校与实际施测未认证、原键缺；原He is is重印及walk多时态风险保留。自有句框独立重写，部分给出助动词缩小形态歧义，不复制源错句或声称精确能力等值。已核常用变体同等接受，合法表达未穷尽，未列形式待复核。独立教研、学生、商用和生产未验证。",
+  "variant_evidence": {
+    "path": "build/english-benchmark-authority-20261017/p6written643-publisher-variants-v0.1.json",
+    "sha256": "d4a24b63a0060118bc98561ad9a2435719d140c77176d2127284c3690f51c23b"
+  },
+  "sentences": [
+    {
+      "frame": "When the visitor thanked her, Sara smiled ____.",
+      "lemma": "polite",
+      "accepted": [
+        "politely"
+      ],
+      "grounds": {
+        "politely": "副词修饰smiled，表示有礼貌地微笑。"
+      },
+      "rejected": {
+        "polite": "形容词不能在这里直接修饰smiled。"
+      }
+    },
+    {
+      "frame": "Our class has already ____ how to make a paper fan.",
+      "lemma": "learn",
+      "accepted": [
+        "learned",
+        "learnt"
+      ],
+      "grounds": {
+        "learned": "has后用过去分词，learned合法。",
+        "learnt": "learnt也是已核过去分词，和learned同等接受。"
+      },
+      "rejected": {
+        "learn": "has后缺过去分词。",
+        "learning": "has后不能直接接learning构成此完成时。"
+      }
+    },
+    {
+      "frame": "The first story held my attention much longer than the second. I found it ____ than the second one.",
+      "lemma": "interesting",
+      "accepted": [
+        "more interesting"
+      ],
+      "grounds": {
+        "more interesting": "前句明确第一篇更吸引注意，比较级more interesting符合语义和than结构。"
+      },
+      "rejected": {
+        "interesting": "此处有than比较，原级不合。",
+        "most interesting": "最高级不合两项than比较。"
+      }
+    },
+    {
+      "frame": "Tom swims for the school team. He is an excellent ____.",
+      "lemma": "swim",
+      "accepted": [
+        "swimmer"
+      ],
+      "grounds": {
+        "swimmer": "an excellent后需单数可数的人物名词swimmer。"
+      },
+      "rejected": {
+        "swim": "原形动词不是此处表示运动员的名词。",
+        "swimmers": "an后不接复数。"
+      }
+    },
+    {
+      "frame": "The children were ____ towards the finish line when I took the photo.",
+      "lemma": "run",
+      "accepted": [
+        "running"
+      ],
+      "grounds": {
+        "running": "were后用running构成过去进行时，双写n。"
+      },
+      "rejected": {
+        "run": "were后原形不成此主动进行时。",
+        "runned": "run无runned词形。"
+      }
+    }
+  ]
+}

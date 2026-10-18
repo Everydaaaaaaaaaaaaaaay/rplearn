@@ -1,0 +1,373 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialogueclauses5-music",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "5bb0101939ae0b3aeaf43ee2426fbc475c4209623824129310b33d3329b63029",
+  "source_binding": "p6-written-dialogue3clauses",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.dialogue3clauses",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-dialogueclauses5-music-manuscript-v0.1.json",
+    "sha256": "52bcd1a82e27893c1d2c7ef6a2e5d9a46e1d26cfb842724d33e73fd77b2f123a"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "And I keep it in a red case."
+        ],
+        [
+          "B",
+          "What is your favourite instrument?"
+        ],
+        [
+          "C",
+          "but I prefer harmonicas（口琴）when I travel."
+        ],
+        [
+          "D",
+          "And its E string is broken."
+        ],
+        [
+          "E",
+          "You play a recorder, don't you?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：尚未介绍it，且下句直接回答最喜爱的乐器，不是说明琴盒。；B：下句My favourite instrument直接回答这一问句。；C：没有可转折的偏好前句，且不引出Mia最喜爱的乐器。；D：此前没有乐器供its指代，也不询问喜爱何种乐器。；E：下句谈Mia的violin而不回答recorder的确认；与明确favourite问答不合。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "And I keep it in a red case."
+        ],
+        [
+          "B",
+          "What is your favourite instrument?"
+        ],
+        [
+          "C",
+          "but I prefer harmonicas（口琴）when I travel."
+        ],
+        [
+          "D",
+          "And its E string is broken."
+        ],
+        [
+          "E",
+          "You play a recorder, don't you?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：给出琴盒而未说明弦坏，接下来的Then换E弦没有依据。；B：Mia已刚说明自己的最爱，反问后Leo却说换弦，不构成相邻问答。；C：改谈旅行口琴，无法解释下一句更换violin的E弦。；D：其E弦坏与下一句需要新E弦直接衔接。；E：此处问recorder，下一句却说新E弦而非确认，话轮不合。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "And I keep it in a red case."
+        ],
+        [
+          "B",
+          "What is your favourite instrument?"
+        ],
+        [
+          "C",
+          "but I prefer harmonicas（口琴）when I travel."
+        ],
+        [
+          "D",
+          "And its E string is broken."
+        ],
+        [
+          "E",
+          "You play a recorder, don't you?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "A：这里需要能由Yes及Leo介绍recorder回答的问题；琴盒陈述不合。；B：Yes不能回答WH最喜爱何种乐器的问句。；C：Mia的旅行偏好不引出Leo的Yes确认。；D：断弦陈述不引出Leo对自己吹recorder的Yes确认。；E：带tag的recorder确认问句由Yes及I play a recorder直接回答。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "And I keep it in a red case."
+        ],
+        [
+          "B",
+          "What is your favourite instrument?"
+        ],
+        [
+          "C",
+          "but I prefer harmonicas（口琴）when I travel."
+        ],
+        [
+          "D",
+          "And its E string is broken."
+        ],
+        [
+          "E",
+          "You play a recorder, don't you?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：it承接recorder，red case又为下一问that red case提供明确指代。；B：反问最喜欢什么乐器，下一句却问红盒，不回答该问句。；C：偏好口琴未引入下句that red case。；D：前文明说该recorder无弦，断E弦矛盾，且未引红盒。；E：Leo刚说自己吹recorder，此处反问Mia是否吹recorder且下一句不回答，未引红盒。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "And I keep it in a red case."
+        ],
+        [
+          "B",
+          "What is your favourite instrument?"
+        ],
+        [
+          "C",
+          "but I prefer harmonicas（口琴）when I travel."
+        ],
+        [
+          "D",
+          "And its E string is broken."
+        ],
+        [
+          "E",
+          "You play a recorder, don't you?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：红盒未提供下句two所指的旅行乐器，且没有转向外出偏好的衔接。；B：逗号处需要续接分句，WH问句不能连接该句；下文也非回答。；C：but转向旅行更爱口琴；two和leave the recorder at home共同指向口琴。；D：无弦recorder不可能断E弦；也不引出外出携带的two。；E：确认问句不接此逗号形成同一句，后文two缺指代。"
+    }
+  ],
+  "canonical_response_block_sha256": "0bc2ef700128d546254ce893de5db72e1b67892f1ffbc51079f1afd1e13c0d85",
+  "student_passage": "Leo: Hi, Mia. (1) ____\n\nMia: My favourite instrument is the violin. Mine has four strings. (2) ____\n\nLeo: Then you need a new E string before you can play it.\n\nMia: (3) ____\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. (4) ____\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, (5) ____ I keep two in my pocket for long journeys and leave the recorder at home.",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 70,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 160,
+    "output_response_positions": 5,
+    "options_English_words_unique_bank": 32
+  },
+  "dialogue_clauses5": true,
+  "shared_candidates": [
+    [
+      "A",
+      "And I keep it in a red case."
+    ],
+    [
+      "B",
+      "What is your favourite instrument?"
+    ],
+    [
+      "C",
+      "but I prefer harmonicas（口琴）when I travel."
+    ],
+    [
+      "D",
+      "And its E string is broken."
+    ],
+    [
+      "E",
+      "You play a recorder, don't you?"
+    ]
+  ],
+  "filled_passage": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home.",
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "尚未介绍it，且下句直接回答最喜爱的乐器，不是说明琴盒。",
+      "full_group_substitution": "Leo: Hi, Mia. And I keep it in a red case.\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "is_best": true,
+      "reason": "下句My favourite instrument直接回答这一问句。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "没有可转折的偏好前句，且不引出Mia最喜爱的乐器。",
+      "full_group_substitution": "Leo: Hi, Mia. but I prefer harmonicas（口琴）when I travel.\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 1,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "此前没有乐器供its指代，也不询问喜爱何种乐器。",
+      "full_group_substitution": "Leo: Hi, Mia. And its E string is broken.\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 1,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "下句谈Mia的violin而不回答recorder的确认；与明确favourite问答不合。",
+      "full_group_substitution": "Leo: Hi, Mia. You play a recorder, don't you?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "给出琴盒而未说明弦坏，接下来的Then换E弦没有依据。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And I keep it in a red case.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "Mia已刚说明自己的最爱，反问后Leo却说换弦，不构成相邻问答。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. What is your favourite instrument?\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "改谈旅行口琴，无法解释下一句更换violin的E弦。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. but I prefer harmonicas（口琴）when I travel.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 2,
+      "candidate": "D",
+      "is_best": true,
+      "reason": "其E弦坏与下一句需要新E弦直接衔接。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 2,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "此处问recorder，下一句却说新E弦而非确认，话轮不合。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. You play a recorder, don't you?\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "这里需要能由Yes及Leo介绍recorder回答的问题；琴盒陈述不合。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: And I keep it in a red case.\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "Yes不能回答WH最喜爱何种乐器的问句。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: What is your favourite instrument?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "Mia的旅行偏好不引出Leo的Yes确认。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: but I prefer harmonicas（口琴）when I travel.\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 3,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "断弦陈述不引出Leo对自己吹recorder的Yes确认。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: And its E string is broken.\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 3,
+      "candidate": "E",
+      "is_best": true,
+      "reason": "带tag的recorder确认问句由Yes及I play a recorder直接回答。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "is_best": true,
+      "reason": "it承接recorder，red case又为下一问that red case提供明确指代。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "反问最喜欢什么乐器，下一句却问红盒，不回答该问句。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. What is your favourite instrument?\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "偏好口琴未引入下句that red case。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. but I prefer harmonicas（口琴）when I travel.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 4,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "前文明说该recorder无弦，断E弦矛盾，且未引红盒。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And its E string is broken.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 4,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "Leo刚说自己吹recorder，此处反问Mia是否吹recorder且下一句不回答，未引红盒。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. You play a recorder, don't you?\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "红盒未提供下句two所指的旅行乐器，且没有转向外出偏好的衔接。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, And I keep it in a red case. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "逗号处需要续接分句，WH问句不能连接该句；下文也非回答。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, What is your favourite instrument? I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "is_best": true,
+      "reason": "but转向旅行更爱口琴；two和leave the recorder at home共同指向口琴。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, but I prefer harmonicas（口琴）when I travel. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 5,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "无弦recorder不可能断E弦；也不引出外出携带的two。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, And its E string is broken. I keep two in my pocket for long journeys and leave the recorder at home."
+    },
+    {
+      "number": 5,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "确认问句不接此逗号形成同一句，后文two缺指代。",
+      "full_group_substitution": "Leo: Hi, Mia. What is your favourite instrument?\n\nMia: My favourite instrument is the violin. Mine has four strings. And its E string is broken.\n\nLeo: Then you need a new E string before you can play it.\n\nMia: You play a recorder, don't you?\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. And I keep it in a red case.\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, You play a recorder, don't you? I keep two in my pocket for long journeys and leave the recorder at home."
+    }
+  ],
+  "reuse_rule": "not_explicit"
+}

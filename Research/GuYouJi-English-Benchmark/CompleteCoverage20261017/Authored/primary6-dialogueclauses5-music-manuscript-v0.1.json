@@ -1,0 +1,91 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialogueclauses5-music",
+  "title": "小六：乐器、断弦与琴盒",
+  "grade": "primary6",
+  "family": "dialogue_matching",
+  "mode": "dialogue_clauses5",
+  "source_group_id": "primary6.shenzhenexperiment2017.dialogue3clauses",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_binding": "p6-written-dialogue3clauses",
+  "instruction": "从A—E五个共享候选中选择最合适的项，完成全部五空，填字母。部分项续接前面的句子，请连同前后话轮阅读；未规定每项只用一次。",
+  "source_notice": "结构参照同一历史公开教辅卷的完整五空对话：二人七轮、五共享候选，含两完整问句和三and/but起始并列续接分句；原槽2/4前句号、槽5前逗号。原卷C/D猫狗描述存在互换风险，无原键，不认证源唯一答案。自有稿以具体前后指代和矛盾逐项核对，句号后And按自有标点规范大写。原指令未明示每项一次，不加一次限制。原校/实际施测、独立教研、学生、商用、生产未验证。",
+  "passage": "Leo: Hi, Mia. (1) ____\n\nMia: My favourite instrument is the violin. Mine has four strings. (2) ____\n\nLeo: Then you need a new E string before you can play it.\n\nMia: (3) ____\n\nLeo: Yes. I play a recorder（竖笛）. It is a wooden pipe with no strings. (4) ____\n\nMia: Is that red case yours?\n\nLeo: Yes. I like playing the recorder, (5) ____ I keep two in my pocket for long journeys and leave the recorder at home.",
+  "shared_candidates": [
+    [
+      "A",
+      "And I keep it in a red case."
+    ],
+    [
+      "B",
+      "What is your favourite instrument?"
+    ],
+    [
+      "C",
+      "but I prefer harmonicas（口琴）when I travel."
+    ],
+    [
+      "D",
+      "And its E string is broken."
+    ],
+    [
+      "E",
+      "You play a recorder, don't you?"
+    ]
+  ],
+  "slots": [
+    {
+      "answer": "B",
+      "grounds": {
+        "A": "尚未介绍it，且下句直接回答最喜爱的乐器，不是说明琴盒。",
+        "B": "下句My favourite instrument直接回答这一问句。",
+        "C": "没有可转折的偏好前句，且不引出Mia最喜爱的乐器。",
+        "D": "此前没有乐器供its指代，也不询问喜爱何种乐器。",
+        "E": "下句谈Mia的violin而不回答recorder的确认；与明确favourite问答不合。"
+      }
+    },
+    {
+      "answer": "D",
+      "grounds": {
+        "A": "给出琴盒而未说明弦坏，接下来的Then换E弦没有依据。",
+        "B": "Mia已刚说明自己的最爱，反问后Leo却说换弦，不构成相邻问答。",
+        "C": "改谈旅行口琴，无法解释下一句更换violin的E弦。",
+        "D": "其E弦坏与下一句需要新E弦直接衔接。",
+        "E": "此处问recorder，下一句却说新E弦而非确认，话轮不合。"
+      }
+    },
+    {
+      "answer": "E",
+      "grounds": {
+        "A": "这里需要能由Yes及Leo介绍recorder回答的问题；琴盒陈述不合。",
+        "B": "Yes不能回答WH最喜爱何种乐器的问句。",
+        "C": "Mia的旅行偏好不引出Leo的Yes确认。",
+        "D": "断弦陈述不引出Leo对自己吹recorder的Yes确认。",
+        "E": "带tag的recorder确认问句由Yes及I play a recorder直接回答。"
+      }
+    },
+    {
+      "answer": "A",
+      "grounds": {
+        "A": "it承接recorder，red case又为下一问that red case提供明确指代。",
+        "B": "反问最喜欢什么乐器，下一句却问红盒，不回答该问句。",
+        "C": "偏好口琴未引入下句that red case。",
+        "D": "前文明说该recorder无弦，断E弦矛盾，且未引红盒。",
+        "E": "Leo刚说自己吹recorder，此处反问Mia是否吹recorder且下一句不回答，未引红盒。"
+      }
+    },
+    {
+      "answer": "C",
+      "grounds": {
+        "A": "红盒未提供下句two所指的旅行乐器，且没有转向外出偏好的衔接。",
+        "B": "逗号处需要续接分句，WH问句不能连接该句；下文也非回答。",
+        "C": "but转向旅行更爱口琴；two和leave the recorder at home共同指向口琴。",
+        "D": "无弦recorder不可能断E弦；也不引出外出携带的two。",
+        "E": "确认问句不接此逗号形成同一句，后文two缺指代。"
+      }
+    }
+  ]
+}

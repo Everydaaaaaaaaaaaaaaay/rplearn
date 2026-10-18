@@ -1,0 +1,373 @@
+{
+  "version": "0.1",
+  "id": "primary6-dialogueclauses5-picnic",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "bc630a8f66378b3e4bc8484e27ffcb0ef6f26672e67112bdf2e4e9110f62991e",
+  "source_binding": "p6-written-dialogue3clauses",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.dialogue3clauses",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-dialogueclauses5-picnic-manuscript-v0.1.json",
+    "sha256": "31117927554b31a09fd94e64535a04aee394ef278ff1f9328b106435ee53bcda"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "第1空",
+      "options": [
+        [
+          "A",
+          "but I prefer cold sandwiches for picnics."
+        ],
+        [
+          "B",
+          "And I keep their hot water in an insulated box."
+        ],
+        [
+          "C",
+          "You have brought noodles today, haven't you?"
+        ],
+        [
+          "D",
+          "And it is in a blue bowl."
+        ],
+        [
+          "E",
+          "What is your favourite picnic food?"
+        ]
+      ],
+      "answer": "E",
+      "rationale": "A：没有前述偏好供but转折，下句直接回答最喜爱野餐食物。；B：their hot water尚无先行食物，且不引出My favourite问答。；C：下一句介绍cold fruit salad，不确认是否带面条。；D：it尚无食物指代，也不询问最喜爱什么。；E：My favourite picnic food直接回答此WH问句。"
+    },
+    {
+      "number": 2,
+      "stem": "第2空",
+      "options": [
+        [
+          "A",
+          "but I prefer cold sandwiches for picnics."
+        ],
+        [
+          "B",
+          "And I keep their hot water in an insulated box."
+        ],
+        [
+          "C",
+          "You have brought noodles today, haven't you?"
+        ],
+        [
+          "D",
+          "And it is in a blue bowl."
+        ],
+        [
+          "E",
+          "What is your favourite picnic food?"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：改谈三明治未引出下一句that blue bowl。；B：冷水果沙拉不需其hot water，且下句蓝碗未引入。；C：确认面条的问题未由下句回答，且没有蓝碗信息。；D：it承接fruit salad并引出blue bowl，Nina随后愿提该蓝碗。；E：重复最爱食物问题，下句却说搬蓝碗，不成问答。"
+    },
+    {
+      "number": 3,
+      "stem": "第3空",
+      "options": [
+        [
+          "A",
+          "but I prefer cold sandwiches for picnics."
+        ],
+        [
+          "B",
+          "And I keep their hot water in an insulated box."
+        ],
+        [
+          "C",
+          "You have brought noodles today, haven't you?"
+        ],
+        [
+          "D",
+          "And it is in a blue bowl."
+        ],
+        [
+          "E",
+          "What is your favourite picnic food?"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：三明治偏好陈述不对应Nina的Yes及带面条确认。；B：热水箱陈述并非Nina带面条的确认问句。；C：Yes及I brought packet noodles直接确认此tag问句。；D：蓝碗陈述不对应Yes确认带面条。；E：WH问最爱食物不能用Yes回答。"
+    },
+    {
+      "number": 4,
+      "stem": "第4空",
+      "options": [
+        [
+          "A",
+          "but I prefer cold sandwiches for picnics."
+        ],
+        [
+          "B",
+          "And I keep their hot water in an insulated box."
+        ],
+        [
+          "C",
+          "You have brought noodles today, haven't you?"
+        ],
+        [
+          "D",
+          "And it is in a blue bowl."
+        ],
+        [
+          "E",
+          "What is your favourite picnic food?"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：转向三明治偏好未引入下句that insulated box。；B：their指面条，所需热水在保温箱；下句问该箱是否重。；C：Nina刚说明带面条，再问对方带面条且下句问箱子不回答，未引箱。；D：蓝碗属于Omar的水果沙拉，不引出Nina的热水箱。；E：反问最喜爱食物，下句未回答而问箱，话轮不合。"
+    },
+    {
+      "number": 5,
+      "stem": "第5空",
+      "options": [
+        [
+          "A",
+          "but I prefer cold sandwiches for picnics."
+        ],
+        [
+          "B",
+          "And I keep their hot water in an insulated box."
+        ],
+        [
+          "C",
+          "You have brought noodles today, haven't you?"
+        ],
+        [
+          "D",
+          "And it is in a blue bowl."
+        ],
+        [
+          "E",
+          "What is your favourite picnic food?"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：but对比热面条与冷三明治；They不用热水及下次不带箱与三明治一致。；B：再说面条热水在箱中，与下句They need no hot water直接矛盾。；C：确认问句不接逗号偏好句，后文也不是该问句回答。；D：蓝碗it单数不能引出不需热水的They，且无偏好转向。；E：WH问句不接此逗号构成同句，后文They缺新食物指代。"
+    }
+  ],
+  "canonical_response_block_sha256": "c3e7fbd5b9340248a70e7f6f918d9083111ba7101bf9f44d755f154e925985dc",
+  "student_passage": "Nina: Hi, Omar. (1) ____\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. (2) ____\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: (3) ____\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. (4) ____\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, (5) ____ They need no hot water, so I can leave the box at home next time.",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 73,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 185,
+    "output_response_positions": 5,
+    "options_English_words_unique_bank": 37
+  },
+  "dialogue_clauses5": true,
+  "shared_candidates": [
+    [
+      "A",
+      "but I prefer cold sandwiches for picnics."
+    ],
+    [
+      "B",
+      "And I keep their hot water in an insulated box."
+    ],
+    [
+      "C",
+      "You have brought noodles today, haven't you?"
+    ],
+    [
+      "D",
+      "And it is in a blue bowl."
+    ],
+    [
+      "E",
+      "What is your favourite picnic food?"
+    ]
+  ],
+  "filled_passage": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time.",
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "没有前述偏好供but转折，下句直接回答最喜爱野餐食物。",
+      "full_group_substitution": "Nina: Hi, Omar. but I prefer cold sandwiches for picnics.\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "their hot water尚无先行食物，且不引出My favourite问答。",
+      "full_group_substitution": "Nina: Hi, Omar. And I keep their hot water in an insulated box.\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "下一句介绍cold fruit salad，不确认是否带面条。",
+      "full_group_substitution": "Nina: Hi, Omar. You have brought noodles today, haven't you?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 1,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "it尚无食物指代，也不询问最喜爱什么。",
+      "full_group_substitution": "Nina: Hi, Omar. And it is in a blue bowl.\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 1,
+      "candidate": "E",
+      "is_best": true,
+      "reason": "My favourite picnic food直接回答此WH问句。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "改谈三明治未引出下一句that blue bowl。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. but I prefer cold sandwiches for picnics.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "冷水果沙拉不需其hot water，且下句蓝碗未引入。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And I keep their hot water in an insulated box.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "确认面条的问题未由下句回答，且没有蓝碗信息。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. You have brought noodles today, haven't you?\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 2,
+      "candidate": "D",
+      "is_best": true,
+      "reason": "it承接fruit salad并引出blue bowl，Nina随后愿提该蓝碗。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 2,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "重复最爱食物问题，下句却说搬蓝碗，不成问答。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. What is your favourite picnic food?\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "三明治偏好陈述不对应Nina的Yes及带面条确认。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: but I prefer cold sandwiches for picnics.\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "热水箱陈述并非Nina带面条的确认问句。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: And I keep their hot water in an insulated box.\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "is_best": true,
+      "reason": "Yes及I brought packet noodles直接确认此tag问句。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 3,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "蓝碗陈述不对应Yes确认带面条。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: And it is in a blue bowl.\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 3,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "WH问最爱食物不能用Yes回答。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: What is your favourite picnic food?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "is_best": false,
+      "reason": "转向三明治偏好未引入下句that insulated box。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. but I prefer cold sandwiches for picnics.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "is_best": true,
+      "reason": "their指面条，所需热水在保温箱；下句问该箱是否重。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "Nina刚说明带面条，再问对方带面条且下句问箱子不回答，未引箱。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. You have brought noodles today, haven't you?\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 4,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "蓝碗属于Omar的水果沙拉，不引出Nina的热水箱。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And it is in a blue bowl.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 4,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "反问最喜爱食物，下句未回答而问箱，话轮不合。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. What is your favourite picnic food?\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "is_best": true,
+      "reason": "but对比热面条与冷三明治；They不用热水及下次不带箱与三明治一致。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, but I prefer cold sandwiches for picnics. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "is_best": false,
+      "reason": "再说面条热水在箱中，与下句They need no hot water直接矛盾。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, And I keep their hot water in an insulated box. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "is_best": false,
+      "reason": "确认问句不接逗号偏好句，后文也不是该问句回答。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, You have brought noodles today, haven't you? They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 5,
+      "candidate": "D",
+      "is_best": false,
+      "reason": "蓝碗it单数不能引出不需热水的They，且无偏好转向。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, And it is in a blue bowl. They need no hot water, so I can leave the box at home next time."
+    },
+    {
+      "number": 5,
+      "candidate": "E",
+      "is_best": false,
+      "reason": "WH问句不接此逗号构成同句，后文They缺新食物指代。",
+      "full_group_substitution": "Nina: Hi, Omar. What is your favourite picnic food?\n\nOmar: My favourite picnic food is cold fruit salad. I have made some for today. And it is in a blue bowl.\n\nNina: I can carry that blue bowl to the picnic table.\n\nOmar: You have brought noodles today, haven't you?\n\nNina: Yes. I brought packet noodles（袋装面条）. They need hot water before we can eat them. And I keep their hot water in an insulated box.\n\nOmar: Is that insulated box（保温箱）heavy?\n\nNina: A little. I like hot noodles, What is your favourite picnic food? They need no hot water, so I can leave the box at home next time."
+    }
+  ],
+  "reuse_rule": "not_explicit"
+}

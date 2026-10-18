@@ -1,0 +1,180 @@
+{
+  "version": "0.1",
+  "id": "primary6-givenforms5-courtesy",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "2370a45fb6d2d92449cdb1e74dd5c45c0af375f8ad6fcc1c717fad662941d0c8",
+  "source_binding": "p6-written-givenforms5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WrittenSourceBindings-v0.1.json",
+    "sha256": "3f654d07dba0de45bd42a7df9c2dfb31710a8ae7444dbd5773dcf38c3cfcc383"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.givenforms5",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-givenforms5-courtesy-manuscript-v0.1.json",
+    "sha256": "abb8727517f1642c695101117448e163ddcc14a8e4c4d4564e1909af66468728"
+  },
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "When the visitor thanked her, Sara smiled ____. (polite)",
+      "options": [],
+      "givenLemma": "polite",
+      "acceptedAnswers": [
+        "politely"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "polite"
+        ]
+      },
+      "rationale": "politely：副词修饰smiled，表示有礼貌地微笑。；polite：形容词不能在这里直接修饰smiled。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 2,
+      "stem": "Our class has already ____ how to make a paper fan. (learn)",
+      "options": [],
+      "givenLemma": "learn",
+      "acceptedAnswers": [
+        "learned",
+        "learnt"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "learn",
+          "learning"
+        ]
+      },
+      "rationale": "learned：has后用过去分词，learned合法。；learnt：learnt也是已核过去分词，和learned同等接受。；learn：has后缺过去分词。；learning：has后不能直接接learning构成此完成时。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 3,
+      "stem": "The first story held my attention much longer than the second. I found it ____ than the second one. (interesting)",
+      "options": [],
+      "givenLemma": "interesting",
+      "acceptedAnswers": [
+        "more interesting"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "interesting",
+          "most interesting"
+        ]
+      },
+      "rationale": "more interesting：前句明确第一篇更吸引注意，比较级more interesting符合语义和than结构。；interesting：此处有than比较，原级不合。；most interesting：最高级不合两项than比较。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 4,
+      "stem": "Tom swims for the school team. He is an excellent ____. (swim)",
+      "options": [],
+      "givenLemma": "swim",
+      "acceptedAnswers": [
+        "swimmer"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "swim",
+          "swimmers"
+        ]
+      },
+      "rationale": "swimmer：an excellent后需单数可数的人物名词swimmer。；swim：原形动词不是此处表示运动员的名词。；swimmers：an后不接复数。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    },
+    {
+      "number": 5,
+      "stem": "The children were ____ towards the finish line when I took the photo. (run)",
+      "options": [],
+      "givenLemma": "run",
+      "acceptedAnswers": [
+        "running"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "english_phrase_v1",
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": [
+          "run",
+          "runned"
+        ]
+      },
+      "rationale": "running：were后用running构成过去进行时，双写n。；run：were后原形不成此主动进行时。；runned：run无runned词形。；未列出的形式尚未穷尽核实，显示待复核，不据此断言错误。"
+    }
+  ],
+  "canonical_response_block_sha256": "5dc86839f70ca0fa00f7fa069e94aa13a3d23a04029591f93c34edac7f4dea3d",
+  "student_passage": "",
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 62,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "output_known_form_word_counts": [
+      [
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2
+      ],
+      [
+        1
+      ],
+      [
+        1
+      ]
+    ]
+  },
+  "given_forms5": true,
+  "fully_filled_sentence_sets": [
+    [
+      "When the visitor thanked her, Sara smiled politely.",
+      "Our class has already learned how to make a paper fan.",
+      "The first story held my attention much longer than the second. I found it more interesting than the second one.",
+      "Tom swims for the school team. He is an excellent swimmer.",
+      "The children were running towards the finish line when I took the photo."
+    ],
+    [
+      "When the visitor thanked her, Sara smiled politely.",
+      "Our class has already learnt how to make a paper fan.",
+      "The first story held my attention much longer than the second. I found it more interesting than the second one.",
+      "Tom swims for the school team. He is an excellent swimmer.",
+      "The children were running towards the finish line when I took the photo."
+    ]
+  ],
+  "full_fill_variant_combinations": 2,
+  "variant_evidence": {
+    "path": "build/english-benchmark-authority-20261017/p6written643-publisher-variants-v0.1.json",
+    "sha256": "d4a24b63a0060118bc98561ad9a2435719d140c77176d2127284c3690f51c23b"
+  }
+}
