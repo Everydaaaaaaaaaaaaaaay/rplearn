@@ -1,0 +1,124 @@
+{
+  "version": "0.14",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.13.json",
+    "sha256": "b67acda01c844d2b8ebb151986a14a93e5e1a52a12899686aed1cb1a7ad480cd"
+  },
+  "scope": "tenth_batch_grade8_one15x4_three_whole_school_narratives",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.5.json",
+    "sha256": "29e1cac8e0ffb7871219b3d77ca9f715bcc083ca039128d7957c64e300e20427"
+  },
+  "source_quality_notes": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.5.json",
+    "sha256": "5fc9bc7b903c78a034047ff1914fa042cfc3a9f62e510cfeb17fa160d4700f58"
+  },
+  "records": [
+    {
+      "id": "grade8-fifteen-four-cloze-lost-box",
+      "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.cloze",
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-lost-box-v0.1.md",
+        "sha256": "3bfabe931874e894b8dd0854aef823e33fdd4f4862d0a421d9a9363c21f6db66"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-lost-box-author-check-v0.1.json",
+        "sha256": "3206d1516ec62fcf0fcfa55c3e5bde9c77a8f950d99edaac94ba0222aa766bb8"
+      },
+      "load_measure": {
+        "body_English_words": 286,
+        "body_Han_characters": 0,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 60,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 0
+      },
+      "source_body_words": 316,
+      "answer_label_counts": {
+        "D": 3,
+        "C": 4,
+        "B": 4,
+        "A": 4
+      },
+      "max_same_label_run": 2
+    },
+    {
+      "id": "grade8-fifteen-four-cloze-marble-run",
+      "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.cloze",
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-marble-run-v0.1.md",
+        "sha256": "d00a168266aa352c907adad546684ec3a2d43e76fb97ca0819046fb884e8a7af"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-marble-run-author-check-v0.1.json",
+        "sha256": "de4fb2aef8c0bbc4ade9e8f7d0959729d3e52516a5f4c7abb811e4222d3867a8"
+      },
+      "load_measure": {
+        "body_English_words": 303,
+        "body_Han_characters": 0,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 60,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 0
+      },
+      "source_body_words": 316,
+      "answer_label_counts": {
+        "C": 4,
+        "D": 3,
+        "B": 4,
+        "A": 4
+      },
+      "max_same_label_run": 2
+    },
+    {
+      "id": "grade8-fifteen-four-cloze-wrong-sound",
+      "source_group_id": "grade8-xiaoshan2025-21cnjy22251031.cloze",
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-wrong-sound-v0.1.md",
+        "sha256": "cc545ee31e80af9f215f01c24c7eed7d2f4627b63765d5102ebc60b06ed92115"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-wrong-sound-author-check-v0.1.json",
+        "sha256": "241bd4f7210083c1b01442d9f73f7825c088432a7096e27f395eb12f339330f6"
+      },
+      "load_measure": {
+        "body_English_words": 301,
+        "body_Han_characters": 0,
+        "stem_English_words": 0,
+        "options_English_words_with_repeated_bank": 60,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 0
+      },
+      "source_body_words": 316,
+      "answer_label_counts": {
+        "C": 4,
+        "A": 4,
+        "D": 3,
+        "B": 4
+      },
+      "max_same_label_run": 2
+    }
+  ],
+  "prior_groups": 694,
+  "prior_responses": 4931,
+  "new_complete_groups": 3,
+  "new_responses": 45,
+  "current_groups": 697,
+  "current_responses": 4976,
+  "source_selected_body_words": 316,
+  "selected_restored_modes_filled_so_far": 11,
+  "remaining_modes": 3,
+  "remaining_whole_originals": 9,
+  "all45gaps180candidate_full_group_substitutions_author_read": true,
+  "one_whole_material_not_sliced_to_ten_or_six": true,
+  "no_necessary_unseen_diagram_or_audio": true,
+  "fictional_school_events_not_student_or_technology_validation": true,
+  "no_source_files_added": true,
+  "new_processed_transcripts": 0,
+  "new_authenticated_school_papers": 0,
+  "independent_teacher_student_commercial_production": false,
+  "all_required_types_complete": false
+}

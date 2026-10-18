@@ -1,0 +1,159 @@
+{
+  "version": "0.12",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalVerification-v0.11.json",
+    "sha256": "31490a74761b18dbb0fdb15295bfda67da790b04586e7064884ddcf5ca0770f6"
+  },
+  "batch": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.14.json",
+    "sha256": "16e047195dbdd854b9c001faef53c619ca469f58d2f37fe0820bdf7ee3f81e23"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.5.json",
+    "sha256": "2759d6f0916be0063515a1362cc5e221d5e432817ce5879cb9f09b916ff60a46"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.5.json",
+    "sha256": "29e1cac8e0ffb7871219b3d77ca9f715bcc083ca039128d7957c64e300e20427"
+  },
+  "source_quality_notes": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.5.json",
+    "sha256": "5fc9bc7b903c78a034047ff1914fa042cfc3a9f62e510cfeb17fa160d4700f58"
+  },
+  "pending_index": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.70.json",
+    "sha256": "04ab4d78ffbb8ba7c741c9899813989c6857a7507c4e6682d17f1f41bb6a0750"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.123.json",
+    "sha256": "7cd03508f7a9625d97977cc12efb465e349278d028c7c78183141575b9d1cec2"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/cloze697-contract-v0.1.json",
+    "sha256": "42d2836b37c329ef8e964b92e60f0db143fb6c143b126e486a1d404a5c47d62a"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/cloze697-browser-v0.1.json",
+    "sha256": "69cb65067c1b5100b8396b96b388f1cec8171edec5c779097e06e8144999a47a"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/cloze697-family-load-review-v0.1.json",
+    "sha256": "c05ea6788a7e6b5444dd14dc2480ce45cd80a559dfe2627779069ac424fb18bd"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/cloze697-final-check-v0.1.json",
+    "sha256": "78cc922cb7346891f268ca17639accafbcf99d426b8e1de715d7dc200a211e72"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.195.json",
+    "sha256": "dbb37d160447b9ee0a37b493942b989d98e227aadf0ffe37b9f77753ba4cb2d7"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review697-school-cloze-delta-v0.1.json",
+        "sha256": "6fdaabc701b109f24f6b693ce10cd9a6840afbd15b6f4ea238e66dd8c252e0af"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze697-browser-v0.1.json",
+        "sha256": "69cb65067c1b5100b8396b96b388f1cec8171edec5c779097e06e8144999a47a"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze697-school-review-v0.1.png",
+        "sha256": "fb9bd9f2fd338fc3cb06d09e7c584f60dd45548f05ec3c23d64af72e487a42cc"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-lost-box-v0.1.md",
+        "sha256": "3bfabe931874e894b8dd0854aef823e33fdd4f4862d0a421d9a9363c21f6db66"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-marble-run-v0.1.md",
+        "sha256": "d00a168266aa352c907adad546684ec3a2d43e76fb97ca0819046fb884e8a7af"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade8-fifteen-four-cloze-wrong-sound-v0.1.md",
+        "sha256": "cc545ee31e80af9f215f01c24c7eed7d2f4627b63765d5102ebc60b06ed92115"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    }
+  ],
+  "browser_MD_open_not_claimed": true,
+  "screenshots": [
+    {
+      "path": "build/english-benchmark-authority-20261017/cloze697-school-review-v0.1.png",
+      "sha256": "fb9bd9f2fd338fc3cb06d09e7c584f60dd45548f05ec3c23d64af72e487a42cc"
+    }
+  ],
+  "runtime_rules_reused": [
+    {
+      "path": "Tools/school_cloze_contract.py",
+      "sha256": "d979f1a78f4b237ab80c1fff236c19e96793b4d0f395c97e4ee694348dc71f88"
+    },
+    {
+      "path": "Tools/check_school_cloze_contract.py",
+      "sha256": "dfb62366b6c6f26a7566a7f3c50de494dfc638dee7c752fe65d71c3e9dccbf99"
+    },
+    {
+      "path": "Tools/compile_school_cloze.py",
+      "sha256": "96f54d5ab46b79987bce25b78feb86c6423e79a45b9a79ffabfbb09ea3d49eab"
+    }
+  ],
+  "current_groups": 697,
+  "current_responses": 4976,
+  "populated_family_cells": 195,
+  "new_groups": 3,
+  "new_responses": 45,
+  "new_full_candidate_substitutions": 180,
+  "new_contract_negative_controls": 48,
+  "prior30_contract_negative_controls": 588,
+  "all33_contract_negative_controls": 636,
+  "all33_full_candidate_substitutions": 1905,
+  "actual_UI_correct_responses": 45,
+  "actual_UI_wrong_blank_vectors": 6,
+  "actual_UI_candidate_positions": 180,
+  "actual_teacher_reset_groups": 3,
+  "source_selected_body_words": 316,
+  "authored_body_words": [
+    286,
+    303,
+    301
+  ],
+  "source_single_school_narrative_complete": true,
+  "existing_grade8_eight_or_ten_gaps_not_counted_as_fifteen": true,
+  "source_text_SHA_bound": true,
+  "source_input_evidence_reused_without_new_download": true,
+  "source_key_and_grammar_risks_not_gold": true,
+  "no_grade_wordload_difficulty_time_equivalence": true,
+  "source_downloads": 0,
+  "new_processed_transcripts": 0,
+  "new_authenticated_school_papers": 0,
+  "archive_new_objects": 10,
+  "archive_new_bytes": 242014,
+  "new_full_snapshots": 0,
+  "now_pending_restored_cloze_modes": 3,
+  "now_missing_restored_cloze_originals": 9,
+  "old694_payloads_and47pins_preserved": true,
+  "other_family_concrete_configuration_reconciliation_still_required": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}
