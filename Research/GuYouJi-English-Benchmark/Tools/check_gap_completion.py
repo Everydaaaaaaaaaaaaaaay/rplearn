@@ -61,6 +61,9 @@ def check(data, plan):
             if b.get('task_mode') == 'word_order_five':
                 from compile_word_order_groups import check as check_word_order
                 check_word_order(g,a,b,source)
+            if b.get('task_mode') == 'five_joint_reading':
+                from compile_five_joint_reading import check as check_five_joint_reading
+                check_five_joint_reading(g,a,b,source)
             if b.get('task_mode') == 'complete_word_category_choice':
                 from word_category_contract import check as check_word_categories
                 check_word_categories(g,a,b,source)

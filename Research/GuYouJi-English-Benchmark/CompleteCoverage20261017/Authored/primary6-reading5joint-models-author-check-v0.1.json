@@ -1,0 +1,227 @@
+{
+  "version": "0.1",
+  "id": "primary6-reading5joint-models",
+  "grade": "primary6",
+  "questions": 5,
+  "source_binding": "p6-prose5x4-reader-separated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6FiveJointReadingSourceBindings-v0.1.json",
+    "sha256": "673963b64db554f8a95c0733314d3e26dc82c636ba4fd05f269ac7467dcb6f0e"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.prose5x4",
+  "source_companion": {
+    "path": "build/english-benchmark-authority-20261017/p6reader649-full-story-witness-v0.1.json",
+    "sha256": "2ebe09ab0354675ee207459f0b4e4e308c8441ee17c65531d992ecfa5859594e"
+  },
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-reading5joint-models-manuscript-v0.1.json",
+    "sha256": "28f7987c6b50cefcc79a6dddc0f63b22b7e69ca91f204d4e6dc8abf256261259"
+  },
+  "candidate_sha256": "4313550b3c9d7fe34c66ff3cf699954a835f0319ce26736ca6573cceb687825e",
+  "five_joint_reading": true,
+  "raw_exam_not_repaired": true,
+  "reader_witness_not_school_administration": true,
+  "canonical_response_block_sha256": "f3b1219dec7cd26e6f21e64dbb89522b050372da4b99c5ecd0ae8d691852c4cf",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Leo usually chooses a model ____.",
+      "options": [
+        [
+          "A",
+          "boat"
+        ],
+        [
+          "B",
+          "bus"
+        ],
+        [
+          "C",
+          "train"
+        ],
+        [
+          "D",
+          "plane"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：model boat是May这次的选择，不是Leo通常的选择。；B：首段直接说Leo usually chose a model bus。；C：文中没有Leo通常选火车的依据。；D：文中没有Leo通常选飞机的依据。"
+    },
+    {
+      "number": 2,
+      "stem": "What was the weather like outside?",
+      "options": [
+        [
+          "A",
+          "It was snowing."
+        ],
+        [
+          "B",
+          "It was completely dry."
+        ],
+        [
+          "C",
+          "It was thundering."
+        ],
+        [
+          "D",
+          "It was raining."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：没有下雪的描述，已明确的天气为雨。；B：雨打窗户，非完全干燥。；C：原文未说明打雷，不能由下雨自动推出打雷。；D：第二段Rain was tapping on the windows明确为下雨。"
+    },
+    {
+      "number": 3,
+      "stem": "____ when Leo was about to fit the last wheel.",
+      "options": [
+        [
+          "A",
+          "The doorbell rang."
+        ],
+        [
+          "B",
+          "May chose her boat."
+        ],
+        [
+          "C",
+          "The family finished the shelf."
+        ],
+        [
+          "D",
+          "Grandfather put away the cloth."
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：第二段when将装最后一只轮子的一刻与门铃响连接。；B：May选船在首段，较早发生。；C：shelf是下周计划，尚未完成。；D：没有祖父在那一刻收布的描述。"
+    },
+    {
+      "number": 4,
+      "stem": "____ took a cloth from a blue drawer, and May fetched the brush from ____.",
+      "options": [
+        [
+          "A",
+          "Leo / a box beside the window"
+        ],
+        [
+          "B",
+          "Grandfather / the blue drawer"
+        ],
+        [
+          "C",
+          "Grandfather / a box beside the window"
+        ],
+        [
+          "D",
+          "May / the display shelf"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：刷子位置对，但取布者是祖父而非Leo。；B：人物对，但蓝抽屉存布，刷子来自窗边盒。；C：第三段分别说明祖父从蓝抽屉取布、May从窗边盒取刷，两事实均对。；D：人物和刷子位置都不对；display shelf还是下周计划。"
+    },
+    {
+      "number": 5,
+      "stem": "What does the family plan to do the following Sunday?",
+      "options": [
+        [
+          "A",
+          "Move the shop to another street."
+        ],
+        [
+          "B",
+          "Make a covered display shelf."
+        ],
+        [
+          "C",
+          "Return the neighbour's book."
+        ],
+        [
+          "D",
+          "Leave the models outside."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：没有搬店计划。；B：末段明确决定下周日做带罩的展示架。；C：本次是邻居来归还书，不是他们计划下周还书。；D：他们希望防尘，计划带罩架，非把模型留在室外。"
+    }
+  ],
+  "student_passage": "Every Sunday morning, the Chen family met in a room above their shop to work on models. Leo usually chose a model bus. This time he picked a small red bus and set its four loose wheels on the table. His sister May chose a model boat.\n\nRain was tapping on the windows, so they stayed inside. When Leo was about to press the last wheel onto his bus, the doorbell rang. A neighbour had come to return a book. Leo put the bus down before going to the door.\n\nGrandfather took a soft cloth from a blue drawer. May fetched a tiny brush from a box beside the window. Together they cleaned dust from the models. The brush reached corners that the cloth could not.\n\nBy noon both models were clean. The family decided to make a covered display shelf the following Sunday. They wanted visitors to see the models without leaving them out in the dust.",
+  "student_paragraphs": [
+    "Every Sunday morning, the Chen family met in a room above their shop to work on models. Leo usually chose a model bus. This time he picked a small red bus and set its four loose wheels on the table. His sister May chose a model boat.",
+    "Rain was tapping on the windows, so they stayed inside. When Leo was about to press the last wheel onto his bus, the doorbell rang. A neighbour had come to return a book. Leo put the bus down before going to the door.",
+    "Grandfather took a soft cloth from a blue drawer. May fetched a tiny brush from a box beside the window. Together they cleaned dust from the models. The brush reached corners that the cloth could not.",
+    "By noon both models were clean. The family decided to make a covered display shelf the following Sunday. They wanted visitors to see the models without leaving them out in the dust."
+  ],
+  "joint_decision_positions": [
+    4
+  ],
+  "visible_blank_slots_each": [
+    1,
+    0,
+    1,
+    2,
+    0
+  ],
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "B",
+      "grounds": {
+        "A": "model boat是May这次的选择，不是Leo通常的选择。",
+        "B": "首段直接说Leo usually chose a model bus。",
+        "C": "文中没有Leo通常选火车的依据。",
+        "D": "文中没有Leo通常选飞机的依据。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "D",
+      "grounds": {
+        "A": "没有下雪的描述，已明确的天气为雨。",
+        "B": "雨打窗户，非完全干燥。",
+        "C": "原文未说明打雷，不能由下雨自动推出打雷。",
+        "D": "第二段Rain was tapping on the windows明确为下雨。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "A",
+      "grounds": {
+        "A": "第二段when将装最后一只轮子的一刻与门铃响连接。",
+        "B": "May选船在首段，较早发生。",
+        "C": "shelf是下周计划，尚未完成。",
+        "D": "没有祖父在那一刻收布的描述。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "C",
+      "grounds": {
+        "A": "刷子位置对，但取布者是祖父而非Leo。",
+        "B": "人物对，但蓝抽屉存布，刷子来自窗边盒。",
+        "C": "第三段分别说明祖父从蓝抽屉取布、May从窗边盒取刷，两事实均对。",
+        "D": "人物和刷子位置都不对；display shelf还是下周计划。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "B",
+      "grounds": {
+        "A": "没有搬店计划。",
+        "B": "末段明确决定下周日做带罩的展示架。",
+        "C": "本次是邻居来归还书，不是他们计划下周还书。",
+        "D": "他们希望防尘，计划带罩架，非把模型留在室外。"
+      }
+    }
+  ],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 158,
+    "stem_English_words": 43,
+    "options_English_words_with_repeated_bank": 73,
+    "output_response_positions": 5,
+    "visible_blank_slots": 4,
+    "joint_choice_response_positions": 1
+  }
+}

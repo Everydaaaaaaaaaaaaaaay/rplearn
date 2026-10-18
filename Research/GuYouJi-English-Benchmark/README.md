@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+**2026-10-18小六五题四选阅读各三稿：** [三稿与分层](CompleteCoverage20261017/Primary6FiveJointReadingOriginalBatch-v0.1.json)、[验证与恢复](CompleteCoverage20261017/Primary6FiveJointReadingVerification-v0.1.json)新增3完整组15回应，当前649/4331、190有稿格。第4题两空联选仍只计一回应；三篇完整四段故事及60候选依据齐备，45反向契约、15实际回应、6空答错答向量与三解析重置通过。另核完整同文Spectrum缓存读者四段141词，和原教辅末句残缺分版本，不当原卷补页、原校认证或中国小二适配；原输入/键缺单独保留。增量9对象约174KB、三定向恢复SHA通过，无新快照。余依课文十首字母、缺文十空四选两配置6稿及低小现行/原音/源键/独立验证继续，未称任务完整。
+
 **2026-10-18小六三缺文/课文配置配套追查：** [已得与未得](CompleteCoverage20261017/Primary6DamagedSourceCompanionFollowup-v0.1.json)、[验证恢复](CompleteCoverage20261017/Primary6DamagedSourceCompanionVerification-v0.1.json)保持646/4316、189格及3配置9稿待补。已存深圳朗文六下转载HTML逐字对应首字母1/3/10，其他7课文未齐；必要图站TLS过期，未关闭证书检查。Game Night同文完整结尾及出版商目录148页仅为读者层线索，原文件403/浏览器观察超时，未当原卷补件。完形找到八上Jackson/trip/Saturday同家族变体，4A/5A/8B与原小学Wood缺词/Friday不同，不补写原开头。0认证父卷/0新模式/0新稿；原全输入与键仍缺，继续合法替代来源追查，不重复失败路径。
 
 **2026-10-18小六五词池组句各三稿：** [本批](CompleteCoverage20261017/Primary6WordOrderOriginalBatch-v0.1.json)、[验证恢复](CompleteCoverage20261017/Primary6WordOrderVerification-v0.1.json)新增3完整组15回应，当前646/4316、189有稿格。保留五词池13/11/7/8/8词，词池重复I按两次使用；单独核大小写与标点，不套忽略大小写的填词规则。每稿2/2/24/4/2合法句式，102句逐一全组页面实测；形容词三表语或定语/表语组合及两种并列逗号风格均接受，未知语序待复核，无三答案上限。85判分与36源/稿反向控制、三组分流/大小写问号及解析重置通过，旧643与33修订保持；0新源，原错印/缺键/学校未认证保留。余依课文首字母、缺文阅读与缺文完形3配置9稿及低小现行/源配套/独立验证继续，未称任务完整。

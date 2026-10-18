@@ -1,0 +1,107 @@
+{
+  "version": "0.2",
+  "id": "primary6-reading5joint-seedbox",
+  "title": "小六阅读：风中的种子袋",
+  "grade": "primary6",
+  "family": "reading_choice",
+  "source_group_id": "primary6.shenzhenexperiment2017.prose5x4",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6FiveJointReadingSourceBindings-v0.1.json",
+    "sha256": "673963b64db554f8a95c0733314d3e26dc82c636ba4fd05f269ac7467dcb6f0e"
+  },
+  "source_binding": "p6-prose5x4-reader-separated",
+  "instruction": "阅读完整故事，完成全部五题，每题从A—D中选一个最佳答案。第4题两个空要选同时符合两项事实的一组答案，仍只选一个字母。",
+  "source_notice": "结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。",
+  "paragraphs": [
+    "On the first Saturday of each month, Willow Street held a seed swap in the schoolyard. Nora usually brought beans because they were easy for her to pack. That morning she put six little bean bags in a wooden box. Her brother Max carried empty pots.",
+    "It was windy but dry. The ground was firm, and the trees kept shaking. Just as Nora was about to label her first pot, a gust blew an empty paper bag under the table. Max caught it before it reached the gate.",
+    "Nora's aunt took some labels from a green tin. Max found tape on the bottom shelf of the tool cupboard. They fixed a label to every pot and put a small stone on each empty bag.",
+    "The simple change worked. Before going home, they agreed to bring cloth bags to the next swap so the wind would not carry them away."
+  ],
+  "items": [
+    {
+      "stem": "Nora usually brings ____ to the seed swap.",
+      "options": [
+        "peas",
+        "flower seeds",
+        "beans",
+        "radishes"
+      ],
+      "grounds": [
+        "文中没有说她通常带豌豆，通常物品明列为beans。",
+        "通常带的是beans，不是flower seeds。",
+        "首段明说Nora usually brought beans。",
+        "通常带的是beans，未列radishes。"
+      ],
+      "key": "C"
+    },
+    {
+      "stem": "What was the weather like during the swap?",
+      "options": [
+        "Windy but dry.",
+        "Rain kept falling.",
+        "There was no wind at all.",
+        "Snow covered the yard."
+      ],
+      "grounds": [
+        "第二段直接说明windy but dry，并写树摇动。",
+        "dry与一直下雨不合。",
+        "windy及trees kept shaking排除完全无风。",
+        "文中未描述积雪，实际给出的天气是有风而干燥。"
+      ],
+      "key": "A"
+    },
+    {
+      "stem": "____ just as Nora was about to label her first pot.",
+      "options": [
+        "Nora put the bean bags in the wooden box.",
+        "Max arrived carrying empty pots.",
+        "Everyone went home.",
+        "An empty bag blew under the table."
+      ],
+      "grounds": [
+        "装好豆袋发生在首段准备阶段，非Just as所接事件。",
+        "Max提空盆是首段到场信息，非贴标签一刻。",
+        "回家在最后一段，时间更晚。",
+        "第二段Just as将贴标签前一刻与纸袋被吹到桌下明确连接。"
+      ],
+      "key": "D"
+    },
+    {
+      "stem": "____ took labels from a green tin, and Max found the tape in ____.",
+      "options": [
+        "Nora / the tool cupboard",
+        "Nora's aunt / the tool cupboard",
+        "Nora's aunt / the wooden box",
+        "Max / the green tin"
+      ],
+      "grounds": [
+        "胶带地点正确，但取标签的人是aunt而非Nora。",
+        "第三段两条事实分别为aunt取标签、Max从工具柜底层找胶带，两部分都对。",
+        "取标签的人对，胶带来自工具柜，非木箱。",
+        "两条事实都错：取标签为aunt，胶带在工具柜。"
+      ],
+      "key": "B"
+    },
+    {
+      "stem": "What do Nora and Max plan to bring to the next swap?",
+      "options": [
+        "Cloth bags.",
+        "More empty paper bags.",
+        "A new gate.",
+        "A box of matches."
+      ],
+      "grounds": [
+        "末段明确agreed to bring cloth bags，目的是不被风带走。",
+        "空纸袋是本次遇到的问题，没有增加空纸袋的计划。",
+        "gate只作纸袋差点吹到的地点，没有买新门计划。",
+        "全文无火柴或带火柴计划。"
+      ],
+      "key": "A"
+    }
+  ],
+  "previous_manuscript": {
+    "path": "/Users/tiantian/eng/Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/Authored/primary6-reading5joint-seedbox-manuscript-v0.1.json",
+    "sha256": "ca0d0f99bf1fae0307ab3ebc350ee678d151014e9db147acbed791f8a4601f64"
+  }
+}

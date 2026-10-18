@@ -1,0 +1,227 @@
+{
+  "version": "0.2",
+  "id": "primary6-reading5joint-route",
+  "grade": "primary6",
+  "questions": 5,
+  "source_binding": "p6-prose5x4-reader-separated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6FiveJointReadingSourceBindings-v0.1.json",
+    "sha256": "673963b64db554f8a95c0733314d3e26dc82c636ba4fd05f269ac7467dcb6f0e"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.prose5x4",
+  "source_companion": {
+    "path": "build/english-benchmark-authority-20261017/p6reader649-full-story-witness-v0.1.json",
+    "sha256": "2ebe09ab0354675ee207459f0b4e4e308c8441ee17c65531d992ecfa5859594e"
+  },
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-reading5joint-route-manuscript-v0.2.json",
+    "sha256": "9c622d9831135026ed87855b9fcbaa2000980eab6a3fccd9e28f665798442e72"
+  },
+  "candidate_sha256": "289ff77bc1da3450474b8c3218e3e13259d2ab045269a97f35313cd890c7a197",
+  "five_joint_reading": true,
+  "raw_exam_not_repaired": true,
+  "reader_witness_not_school_administration": true,
+  "canonical_response_block_sha256": "51e5b2d4a342cdff1b754fc282185419f64b9f03748755d3bd23caf8a5d08306",
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "Priya usually helped at ____.",
+      "options": [
+        [
+          "A",
+          "the school kitchen"
+        ],
+        [
+          "B",
+          "the sports shop"
+        ],
+        [
+          "C",
+          "the bus stop"
+        ],
+        [
+          "D",
+          "the welcome desk"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：没有她通常在厨房帮忙的说明。；B：文中没有sports shop工作。；C：bus stop未出现，通常位置为迎新台。；D：首段直接给出Priya usually helped at the welcome desk。"
+    },
+    {
+      "number": 2,
+      "stem": "What was the weather like on Friday evening?",
+      "options": [
+        [
+          "A",
+          "Warm and rainy."
+        ],
+        [
+          "B",
+          "Cool and dry."
+        ],
+        [
+          "C",
+          "Hot and sunny."
+        ],
+        [
+          "D",
+          "Cold and snowy."
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：cool与no rain不支持warm and rainy。；B：第二段clear、cool、no rain支持凉爽干燥。；C：文中是cool，不是hot；没说阳光强烈。；D：没有下雪的描述，实际说晴朗、凉爽且无雨。"
+    },
+    {
+      "number": 3,
+      "stem": "____ just as Priya was about to open the box.",
+      "options": [
+        [
+          "A",
+          "Dan arrived with Priya."
+        ],
+        [
+          "B",
+          "The families finished the walk."
+        ],
+        [
+          "C",
+          "A teacher called everyone to the noticeboard."
+        ],
+        [
+          "D",
+          "Priya put the desk away."
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：两人提前到达在首段，早于准备开盒时刻。；B：完成散步是后续事件，不是开盒前一刻。；C：第二段Just as直接连接老师召集大家到布告板。；D：未写此刻收起桌子；当时还在准备迎新。"
+    },
+    {
+      "number": 4,
+      "stem": "____ brought new cards from the office, and Ms Hall got the markers from ____.",
+      "options": [
+        [
+          "A",
+          "Dan / a yellow basket"
+        ],
+        [
+          "B",
+          "Priya / a yellow basket"
+        ],
+        [
+          "C",
+          "Dan / the office"
+        ],
+        [
+          "D",
+          "Ms Hall / the old route sign"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：第三段Dan从办公室拿新卡，Ms Hall从黄篮子取笔，两个事实都对。；B：黄篮子对，拿卡的人是Dan而非Priya。；C：Dan对，办公室是卡的来源，笔来自黄篮子。；D：人物与笔的来源均不符；旧路线牌不是存笔地点。"
+    },
+    {
+      "number": 5,
+      "stem": "What do Priya and Dan plan to do next time?",
+      "options": [
+        [
+          "A",
+          "Start without looking at the route cards."
+        ],
+        [
+          "B",
+          "Ask families to follow the closed path."
+        ],
+        [
+          "C",
+          "Give out old cards without changing the sign."
+        ],
+        [
+          "D",
+          "Check the route with a teacher before setting up."
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：计划是先核路线，不是不看卡就开始。；B：封闭路径本次已避开，无下次让家庭走封闭路径的计划。；C：本次校正卡与牌一致，下次计划先核路线，不发旧卡。；D：末段明确先和老师核路线，再布置迎新台。"
+    }
+  ],
+  "student_passage": "Once a term, Millbridge School held a small evening walk for families. Priya usually helped at the welcome desk. She liked giving out route cards and explaining where the walk began. On Friday she arrived early with her friend Dan.\n\nThe sky was clear and the air was cool. There was no rain. Just as Priya was about to open the box of route cards, a teacher asked everyone to gather near the noticeboard. One path was closed, and the walk would follow a shorter route.\n\nDan brought new cards from the office. Ms Hall took thick markers from a yellow basket. They crossed out the old route on the sign and drew the new one. Then they checked that the cards and the sign showed the same path.\n\nThe walk started a few minutes late, but nobody took the wrong path. Next time, Priya and Dan planned to check the route with a teacher before setting up the desk.",
+  "student_paragraphs": [
+    "Once a term, Millbridge School held a small evening walk for families. Priya usually helped at the welcome desk. She liked giving out route cards and explaining where the walk began. On Friday she arrived early with her friend Dan.",
+    "The sky was clear and the air was cool. There was no rain. Just as Priya was about to open the box of route cards, a teacher asked everyone to gather near the noticeboard. One path was closed, and the walk would follow a shorter route.",
+    "Dan brought new cards from the office. Ms Hall took thick markers from a yellow basket. They crossed out the old route on the sign and drew the new one. Then they checked that the cards and the sign showed the same path.",
+    "The walk started a few minutes late, but nobody took the wrong path. Next time, Priya and Dan planned to check the route with a teacher before setting up the desk."
+  ],
+  "joint_decision_positions": [
+    4
+  ],
+  "visible_blank_slots_each": [
+    1,
+    0,
+    1,
+    2,
+    0
+  ],
+  "candidate_reason_rows": [
+    {
+      "number": 1,
+      "key": "D",
+      "grounds": {
+        "A": "没有她通常在厨房帮忙的说明。",
+        "B": "文中没有sports shop工作。",
+        "C": "bus stop未出现，通常位置为迎新台。",
+        "D": "首段直接给出Priya usually helped at the welcome desk。"
+      }
+    },
+    {
+      "number": 2,
+      "key": "B",
+      "grounds": {
+        "A": "cool与no rain不支持warm and rainy。",
+        "B": "第二段clear、cool、no rain支持凉爽干燥。",
+        "C": "文中是cool，不是hot；没说阳光强烈。",
+        "D": "没有下雪的描述，实际说晴朗、凉爽且无雨。"
+      }
+    },
+    {
+      "number": 3,
+      "key": "C",
+      "grounds": {
+        "A": "两人提前到达在首段，早于准备开盒时刻。",
+        "B": "完成散步是后续事件，不是开盒前一刻。",
+        "C": "第二段Just as直接连接老师召集大家到布告板。",
+        "D": "未写此刻收起桌子；当时还在准备迎新。"
+      }
+    },
+    {
+      "number": 4,
+      "key": "A",
+      "grounds": {
+        "A": "第三段Dan从办公室拿新卡，Ms Hall从黄篮子取笔，两个事实都对。",
+        "B": "黄篮子对，拿卡的人是Dan而非Priya。",
+        "C": "Dan对，办公室是卡的来源，笔来自黄篮子。",
+        "D": "人物与笔的来源均不符；旧路线牌不是存笔地点。"
+      }
+    },
+    {
+      "number": 5,
+      "key": "D",
+      "grounds": {
+        "A": "计划是先核路线，不是不看卡就开始。",
+        "B": "封闭路径本次已避开，无下次让家庭走封闭路径的计划。",
+        "C": "本次校正卡与牌一致，下次计划先核路线，不发旧卡。",
+        "D": "末段明确先和老师核路线，再布置迎新台。"
+      }
+    }
+  ],
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 160,
+    "stem_English_words": 44,
+    "options_English_words_with_repeated_bank": 93,
+    "output_response_positions": 5,
+    "visible_blank_slots": 4,
+    "joint_choice_response_positions": 1
+  }
+}

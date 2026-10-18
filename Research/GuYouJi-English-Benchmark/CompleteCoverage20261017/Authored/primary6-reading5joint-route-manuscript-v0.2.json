@@ -1,0 +1,107 @@
+{
+  "version": "0.2",
+  "id": "primary6-reading5joint-route",
+  "title": "小六阅读：迎新台的路线卡",
+  "grade": "primary6",
+  "family": "reading_choice",
+  "source_group_id": "primary6.shenzhenexperiment2017.prose5x4",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6FiveJointReadingSourceBindings-v0.1.json",
+    "sha256": "673963b64db554f8a95c0733314d3e26dc82c636ba4fd05f269ac7467dcb6f0e"
+  },
+  "source_binding": "p6-prose5x4-reader-separated",
+  "instruction": "阅读完整故事，完成全部五题，每题从A—D中选一个最佳答案。第4题两个空要选同时符合两项事实的一组答案，仍只选一个字母。",
+  "source_notice": "结构参照自署2016–17深圳实验学校小学部六下的历史教辅导出：单篇五题四选，第4题中有两处题面空，但只选一组两项组合，整组仍五回应。原卷末句缺文、Cody/Cady等印法及原键缺保留，原校/施测未认证；完整同文故事另在Spectrum公开缓存读者版本核读，非原卷补页，不把读者版覆盖原件，也不按其Grade2标签推中国小二适配。本文为全新完整作者材料，逐项自审，不声称源已完整、gold或能力等值。独立教研、学生、商用和生产未验证。",
+  "paragraphs": [
+    "Once a term, Millbridge School held a small evening walk for families. Priya usually helped at the welcome desk. She liked giving out route cards and explaining where the walk began. On Friday she arrived early with her friend Dan.",
+    "The sky was clear and the air was cool. There was no rain. Just as Priya was about to open the box of route cards, a teacher asked everyone to gather near the noticeboard. One path was closed, and the walk would follow a shorter route.",
+    "Dan brought new cards from the office. Ms Hall took thick markers from a yellow basket. They crossed out the old route on the sign and drew the new one. Then they checked that the cards and the sign showed the same path.",
+    "The walk started a few minutes late, but nobody took the wrong path. Next time, Priya and Dan planned to check the route with a teacher before setting up the desk."
+  ],
+  "items": [
+    {
+      "stem": "Priya usually helped at ____.",
+      "options": [
+        "the school kitchen",
+        "the sports shop",
+        "the bus stop",
+        "the welcome desk"
+      ],
+      "grounds": [
+        "没有她通常在厨房帮忙的说明。",
+        "文中没有sports shop工作。",
+        "bus stop未出现，通常位置为迎新台。",
+        "首段直接给出Priya usually helped at the welcome desk。"
+      ],
+      "key": "D"
+    },
+    {
+      "stem": "What was the weather like on Friday evening?",
+      "options": [
+        "Warm and rainy.",
+        "Cool and dry.",
+        "Hot and sunny.",
+        "Cold and snowy."
+      ],
+      "grounds": [
+        "cool与no rain不支持warm and rainy。",
+        "第二段clear、cool、no rain支持凉爽干燥。",
+        "文中是cool，不是hot；没说阳光强烈。",
+        "没有下雪的描述，实际说晴朗、凉爽且无雨。"
+      ],
+      "key": "B"
+    },
+    {
+      "stem": "____ just as Priya was about to open the box.",
+      "options": [
+        "Dan arrived with Priya.",
+        "The families finished the walk.",
+        "A teacher called everyone to the noticeboard.",
+        "Priya put the desk away."
+      ],
+      "grounds": [
+        "两人提前到达在首段，早于准备开盒时刻。",
+        "完成散步是后续事件，不是开盒前一刻。",
+        "第二段Just as直接连接老师召集大家到布告板。",
+        "未写此刻收起桌子；当时还在准备迎新。"
+      ],
+      "key": "C"
+    },
+    {
+      "stem": "____ brought new cards from the office, and Ms Hall got the markers from ____.",
+      "options": [
+        "Dan / a yellow basket",
+        "Priya / a yellow basket",
+        "Dan / the office",
+        "Ms Hall / the old route sign"
+      ],
+      "grounds": [
+        "第三段Dan从办公室拿新卡，Ms Hall从黄篮子取笔，两个事实都对。",
+        "黄篮子对，拿卡的人是Dan而非Priya。",
+        "Dan对，办公室是卡的来源，笔来自黄篮子。",
+        "人物与笔的来源均不符；旧路线牌不是存笔地点。"
+      ],
+      "key": "A"
+    },
+    {
+      "stem": "What do Priya and Dan plan to do next time?",
+      "options": [
+        "Start without looking at the route cards.",
+        "Ask families to follow the closed path.",
+        "Give out old cards without changing the sign.",
+        "Check the route with a teacher before setting up."
+      ],
+      "grounds": [
+        "计划是先核路线，不是不看卡就开始。",
+        "封闭路径本次已避开，无下次让家庭走封闭路径的计划。",
+        "本次校正卡与牌一致，下次计划先核路线，不发旧卡。",
+        "末段明确先和老师核路线，再布置迎新台。"
+      ],
+      "key": "D"
+    }
+  ],
+  "previous_manuscript": {
+    "path": "/Users/tiantian/eng/Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/Authored/primary6-reading5joint-route-manuscript-v0.1.json",
+    "sha256": "ad4c3810117b3c13ec88ba31c3b53ec333cf4b0a929356543befde2030f48972"
+  }
+}
