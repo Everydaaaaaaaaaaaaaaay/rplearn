@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+**2026-10-18小六十空四选完形各三稿：** [本批与稿件](CompleteCoverage20261017/Primary6TenFourClozeOriginalBatch-v0.2.json)、[验证与恢复](CompleteCoverage20261017/Primary6TenFourClozeVerification-v0.1.json)新增3完整新故事30回应，当前652/4361、191有稿格。120候选逐一整组回填，45反向契约、30实际回应、6空答错答向量和三解析重置通过；slow up等可替代候选已在未发布草稿中修正。主参照原小学教辅十空四独立候选结构，另核公开小学练习仅为形状旁证，不增认证校卷或修复原开头/缺键；该练习54空语用及气候陈述保留风险。三新故事不复制原动物死亡笑话。增量12对象约225KB、三定向恢复SHA通过，无新快照。余依课文十首字母一配置3稿及低小现行/源配套/独立验证继续，未称任务完整。
+
 **2026-10-18小六五题四选阅读各三稿：** [三稿与分层](CompleteCoverage20261017/Primary6FiveJointReadingOriginalBatch-v0.1.json)、[验证与恢复](CompleteCoverage20261017/Primary6FiveJointReadingVerification-v0.1.json)新增3完整组15回应，当前649/4331、190有稿格。第4题两空联选仍只计一回应；三篇完整四段故事及60候选依据齐备，45反向契约、15实际回应、6空答错答向量与三解析重置通过。另核完整同文Spectrum缓存读者四段141词，和原教辅末句残缺分版本，不当原卷补页、原校认证或中国小二适配；原输入/键缺单独保留。增量9对象约174KB、三定向恢复SHA通过，无新快照。余依课文十首字母、缺文十空四选两配置6稿及低小现行/原音/源键/独立验证继续，未称任务完整。
 
 **2026-10-18小六三缺文/课文配置配套追查：** [已得与未得](CompleteCoverage20261017/Primary6DamagedSourceCompanionFollowup-v0.1.json)、[验证恢复](CompleteCoverage20261017/Primary6DamagedSourceCompanionVerification-v0.1.json)保持646/4316、189格及3配置9稿待补。已存深圳朗文六下转载HTML逐字对应首字母1/3/10，其他7课文未齐；必要图站TLS过期，未关闭证书检查。Game Night同文完整结尾及出版商目录148页仅为读者层线索，原文件403/浏览器观察超时，未当原卷补件。完形找到八上Jackson/trip/Saturday同家族变体，4A/5A/8B与原小学Wood缺词/Friday不同，不补写原开头。0认证父卷/0新模式/0新稿；原全输入与键仍缺，继续合法替代来源追查，不重复失败路径。

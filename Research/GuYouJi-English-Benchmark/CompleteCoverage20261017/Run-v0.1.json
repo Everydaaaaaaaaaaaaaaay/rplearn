@@ -7,25 +7,25 @@
   "goal_active": true,
   "all_required_types_complete": false,
   "national_taxonomy_exhaustive": false,
-  "prior_page_groups": 646,
-  "prior_page_responses": 4316,
+  "prior_page_groups": 649,
+  "prior_page_responses": 4331,
   "this_batch_groups": 3,
-  "this_batch_responses": 15,
-  "current_plan_path": "CompleteCoverage20261017/ReviewPlan-v0.264.json",
+  "this_batch_responses": 30,
+  "current_plan_path": "CompleteCoverage20261017/ReviewPlan-v0.267.json",
   "next_priorities": [
-    "Courseinitial10 requires complete counterpart course texts beyond1/3/10; no inferred missing text",
-    "Cloze10x4 full-input counterpart; Jackson eighth-grade version remains separate",
-    "Source companions and lowprimary closed current activities; independent validation remains unverified"
+    "Complete course counterpart texts for P6 courseinitial10, still only1/3/10 native matches; no guessed source keys",
+    "Preserve missing raw cloze input/key after author target met; public practice only corroborates shape",
+    "Lowprimary current nonpaper closed input pools, original listening companions and G10Q16dual-support; independent validation remains open"
   ],
   "no_old_automation_restored": true,
-  "current_preview_groups": 649,
-  "current_preview_responses": 4331,
-  "current_complete_display_cells": 190,
+  "current_preview_groups": 652,
+  "current_preview_responses": 4361,
+  "current_complete_display_cells": 191,
   "current_coverage_audit": {
-    "path": "CompleteCoverage20261017/CoverageAudit-v0.123.json",
-    "sha256": "bcc6497ad2fc6d2a972e2c5025eb4b40f5642964b46c597a83246fcf97d33b7c"
+    "path": "CompleteCoverage20261017/CoverageAudit-v0.124.json",
+    "sha256": "050f337b4ee7b9ef65154bd01ed668369331616b9d0b6bde722980a5b966dff2"
   },
-  "latest_batch": "p6reading649-five-choices-with-joint-decision",
+  "latest_batch": "p6cloze652-full-ten-independent-four-choice-stories",
   "still_active": true,
   "latest_listening_followup": {
     "path": "CompleteCoverage20261017/SeniorListeningFollowup-v0.3.json",
@@ -51,15 +51,15 @@
     "sha256": "24a8654b6388f729d213a06a059a7a733d3347a06c283cb1429c41d41cc7a047"
   },
   "current_type_inventory": {
-    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.97.json",
-    "sha256": "6cfad3dc8586ef930d4a8392094bdf161cd09f2ae133a54274dd94f6555ce175"
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.99.json",
+    "sha256": "e7ad819bf771164fede6adee2eaa2af1c8d9b3e616e763fd752fc81896bf2074"
   },
   "inherited_source_modes_rebound_this_batch": 0,
   "advanced_listening_completion_pairing": {
     "path": "CompleteCoverage20261017/C1ListeningCompletionPairing-v0.1.json",
     "sha256": "510ac06342cfc6c8e3a2b0a17a4ee2ef98449b57912533ef8737277bc3a2c06a"
   },
-  "source_observed_cells_without_author": 2,
+  "source_observed_cells_without_author": 1,
   "latest_school_listening_source": {
     "path": "CompleteCoverage20261017/SchoolListeningSourceModes-v0.25.json",
     "sha256": "a170616760eb982d289604d73bc80849f960be2d31494f3b843d67b7cb3923a9"
@@ -69,12 +69,12 @@
     "sha256": "d10e3c486893a4c61a4a3461afcb9e74d8263c5e8612f47c75473e5a8b89194f"
   },
   "current_pending_source_modes": {
-    "path": "CompleteCoverage20261017/PendingObservedModes-v0.53.json",
-    "sha256": "c865215d28a314dd68a254cd184aba171efaabac21065acfea642932f86d02d4"
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.54.json",
+    "sha256": "ed4fbaf2c1f2551c2ca066c2f9367d81d31be6d9dd846b0df3012acae6230e5f"
   },
-  "pending_specific_modes": 2,
-  "pending_observed_family_cells_without_author": 2,
-  "pending_same_mode_whole_originals": 6,
+  "pending_specific_modes": 1,
+  "pending_observed_family_cells_without_author": 1,
+  "pending_same_mode_whole_originals": 3,
   "latest_junior_listening_discovery": {
     "path": "CompleteCoverage20261017/Grade7OrdinaryListeningDiscovery-v0.1.json",
     "sha256": "55e951c0c8408d68ffb0f1529d49f511954dd02c0477bee25086a865b5a0fb0d"
@@ -220,8 +220,8 @@
     "sha256": "45916d6073ff0d3b08fd8406f7bf8cd3d02abb0604a5f2b9195bee4c7a4801e9"
   },
   "current_gap_completion": {
-    "path": "CompleteCoverage20261017/AuthoredIndex-v0.111.json",
-    "sha256": "a74cd1a5e0cc952499badb0c0db411e86dab9c66db737885f41ae462229097b0"
+    "path": "CompleteCoverage20261017/AuthoredIndex-v0.113.json",
+    "sha256": "bb74fa4daf2ca121af8de915aa42ebb2768cebd25ebfa88d6ebc2a034e85bd6f"
   },
   "current_lowprimary_band_reference": {
     "path": "CompleteCoverage20261017/LowPrimaryBandReferenceReview-v0.1.json",
@@ -274,8 +274,8 @@
     "sha256": "d635cf86853b674fa0076b5c3dbe1afb13228e2dbaa91b1219c946fedfb183c3"
   },
   "latest_browser_proof": {
-    "path": "build/english-benchmark-authority-20261017/p6reading649-browser-v0.1.json",
-    "sha256": "4ad903a7e40199fb31fe0961944f8f0393b00c8c64850b55705cbdaa4ecd805a"
+    "path": "build/english-benchmark-authority-20261017/p6cloze652-browser-v0.1.json",
+    "sha256": "32cb8854e02167fb5b11304e0940e1a5378ce96eafc786366fef6aaf18ad2678"
   },
   "current_primary2_lexical_discovery": {
     "path": "CompleteCoverage20261017/Primary2LexicalListeningDiscovery-v0.1.json",
@@ -348,8 +348,8 @@
     "sha256": "f08ead074f7697cfdac5fe62ebec83f83efe234c60746641f6e60756718da872"
   },
   "latest_verification": {
-    "path": "CompleteCoverage20261017/Primary6FiveJointReadingVerification-v0.1.json",
-    "sha256": "feb344b7613bcb48368731fcb3e9b8ab79c37b930c235b07f784616e07e5e682"
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeVerification-v0.1.json",
+    "sha256": "4b8cda0f02d05e361eab1957b368435d0e94df6b111f652571f5b1bd1dd457db"
   },
   "new_authenticated_source_parents_this_batch": 0,
   "current_primary6_pairedword_batch": {
@@ -361,9 +361,9 @@
     "path": "CompleteCoverage20261017/Primary6WrittenModeDiscovery-v0.2.json",
     "sha256": "8c7152893944ba3067b38202c0f9f60f709ebe179b125f1673b1f25431fe99b2"
   },
-  "current_unfilled_specific_modes": 2,
-  "current_unfilled_family_cells": 2,
-  "remaining_same_mode_whole_original_target": 6,
+  "current_unfilled_specific_modes": 1,
+  "current_unfilled_family_cells": 1,
+  "remaining_same_mode_whole_original_target": 3,
   "current_primary6_written_batch": {
     "path": "CompleteCoverage20261017/Primary6WrittenOriginalBatch-v0.1.json",
     "sha256": "55e0662bcea01df4b048f78b68163a6b4d393353797b8b26827a85db954a4e16"
@@ -383,8 +383,8 @@
     "sha256": "4ceec5c8dd12fc0c2d05996000a66a831b3a8c2ce3fc37776f6f27bd9eadd922"
   },
   "latest_review_delta": {
-    "path": "build/english-benchmark-authority-20261017/review649-joint-reading-delta-v0.1.json",
-    "sha256": "a2fd414dc44eeca55bb30ecd809298c41ac2de8728e516af6c4512e08ea9c6a9"
+    "path": "build/english-benchmark-authority-20261017/review652-cloze10four-delta-v0.2.json",
+    "sha256": "6a3cb3c341b684028a3490aca1aa5a9a8c22e1b2a00cd979ace3ea76d84bc72a"
   },
   "current_primary6_five_joint_reading_batch": {
     "path": "CompleteCoverage20261017/Primary6FiveJointReadingOriginalBatch-v0.1.json",
@@ -393,5 +393,13 @@
   "current_primary6_five_joint_reading_source_review": {
     "path": "CompleteCoverage20261017/Primary6FiveJointReadingSourceReview-v0.1.json",
     "sha256": "dbd438d915caa1d1d8b4d9f9da21c75bd549ad0f82361b224fed262746886e3d"
+  },
+  "current_primary6_ten_four_cloze_batch": {
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeOriginalBatch-v0.2.json",
+    "sha256": "c1185ec013ea9fcfe49ce8b8cef7103d89c2c2e7d40f0181c5aa65326fe20466"
+  },
+  "current_primary6_ten_four_cloze_source_review": {
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeSourceReview-v0.1.json",
+    "sha256": "db3a45f81033398f2e8c298ba3fbdd6847cebc5e10f0cc77dcdbded4d1f8d18e"
   }
 }

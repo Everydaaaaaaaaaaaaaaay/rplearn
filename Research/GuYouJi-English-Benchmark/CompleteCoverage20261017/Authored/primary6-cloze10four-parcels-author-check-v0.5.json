@@ -1,0 +1,599 @@
+{
+  "version": "0.5",
+  "id": "primary6-cloze10four-parcels",
+  "grade": "primary6",
+  "questions": 10,
+  "source_binding": "p6-cloze10four-raw-structure-separated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeSourceBindings-v0.3.json",
+    "sha256": "67fee20f24a3ef50904d077158a23cffed06de359557fd6d04648a81f5388dcb"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.cloze10x4",
+  "source_companion": {
+    "path": "build/english-benchmark-authority-20261017/p6cloze652-shape-companion-v0.1.json",
+    "sha256": "5a97bfb889ec21d8adb049f535403315dc66904bfa732d1b29ed6d2f328d8102"
+  },
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-cloze10four-parcels-manuscript-v0.5.json",
+    "sha256": "ace5c72f7205e221a0b692a2d59cb17e4a85c417462a9ec9055817ae82b117ee"
+  },
+  "candidate_sha256": "01c0f938aac4b3150691a84c25981cf399bc8865404525db659c59331024d1e6",
+  "canonical_response_block_sha256": "5ef5df82fabf10aef96c9ffb5f9fdef05016d74a4f7efa816468be4ae661042f",
+  "review_response_tasks": [
+    {
+      "options": [
+        [
+          "A",
+          "boxes"
+        ],
+        [
+          "B",
+          "cups"
+        ],
+        [
+          "C",
+          "bags"
+        ],
+        [
+          "D",
+          "plates"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：后两句明确两只box及盒盖，与boxes一致。；B：cups与后文两盒及盖色不一致。；C：bags与后文boxes不一致。；D：plates与两盒盖不一致。",
+      "number": 1,
+      "stem": "第1空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "it"
+        ],
+        [
+          "B",
+          "they"
+        ],
+        [
+          "C",
+          "their"
+        ],
+        [
+          "D",
+          "them"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：it只能代单数，不是两盒。；B：they为主格，不能作take宾语。；C：their是所有格，后缺中心名词。；D：take的宾语指前文两盒，用them。",
+      "number": 2,
+      "stem": "第2空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "under"
+        ],
+        [
+          "B",
+          "between"
+        ],
+        [
+          "C",
+          "inside"
+        ],
+        [
+          "D",
+          "above"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：under与and连接两界点不构成此搭配。；B：between A and B表示住在银行与邮局之间。；C：inside与and两地标不构成此位置关系。；D：above并不与and构成两界点之间搭配。",
+      "number": 3,
+      "stem": "第3空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "cloud"
+        ],
+        [
+          "B",
+          "river"
+        ],
+        [
+          "C",
+          "table"
+        ],
+        [
+          "D",
+          "road"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：厨房云不是可放卡片处。；B：厨房里的河流不合日常房间场景。；C：厨房桌面可放卡片；其余不是厨房家具。；D：厨房道路不合所述室内场景。",
+      "number": 4,
+      "stem": "第4空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "know"
+        ],
+        [
+          "B",
+          "knows"
+        ],
+        [
+          "C",
+          "knew"
+        ],
+        [
+          "D",
+          "knowing"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：did not后接动词原形know，表示不能确定对应地址；B：did not后不接三单knows；C：did not已标过去，后不接过去式knew；D：did not后不接分词knowing",
+      "number": 5,
+      "stem": "第5空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "asking"
+        ],
+        [
+          "B",
+          "asked"
+        ],
+        [
+          "C",
+          "asks"
+        ],
+        [
+          "D",
+          "ask"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：与went并列须过去谓语，非asking。；B：went back and asked为过去并列动作。；C：过去叙事不改第三人称现在asks。；D：and与went并列不是原形ask。",
+      "number": 6,
+      "stem": "第6空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "at"
+        ],
+        [
+          "B",
+          "from"
+        ],
+        [
+          "C",
+          "of"
+        ],
+        [
+          "D",
+          "with"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：at不表示使用绳子。；B：from不表示工具。；C：of不表示用绳系住的工具关系。；D：用细绳把卡系到盒上，用with表工具。",
+      "number": 7,
+      "stem": "第7空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "because"
+        ],
+        [
+          "B",
+          "or"
+        ],
+        [
+          "C",
+          "but"
+        ],
+        [
+          "D",
+          "unless"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：女儿接盒不是本人不在的原因。；B：or表达选择而非实际发生的两事实。；C：本人不在但女儿接收，but转折。；D：unless为条件，与已发生的接收不合。",
+      "number": 8,
+      "stem": "第8空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "twelve"
+        ],
+        [
+          "B",
+          "six"
+        ],
+        [
+          "C",
+          "two"
+        ],
+        [
+          "D",
+          "ten"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：两盒各六块，总数十二，后句six and six再次限定。；B：six仅一盒，不是全部两盒。；C：two为盒数，不是糕点块数。；D：ten与6+6不符。",
+      "number": 9,
+      "stem": "第9空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "No"
+        ],
+        [
+          "B",
+          "Yes"
+        ],
+        [
+          "C",
+          "Never"
+        ],
+        [
+          "D",
+          "Nothing"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：No否定已送出两盒的事实。；B：全部送出且核数正确，对whether作肯定回答Yes。；C：Never表示从未，和本次已投递相反。；D：Nothing不是该是否问句的适当肯定答语。",
+      "number": 10,
+      "stem": "第10空"
+    }
+  ],
+  "student_passage": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper (1) ____. One box had a red lid, and the other had a green lid. She asked me to take (2) ____ to two different houses.\n\nThe red box was for Mr Lee, who lived (3) ____ the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen (4) ____.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not (5) ____ the right address for each box, so I went back and (6) ____ Grandma. She showed me the cards.\n\nThis time I tied each card to the right box (7) ____ a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, (8) ____ her daughter took the other box. When I got home, Grandma asked whether I had delivered all (9) ____ cakes. I counted six and six in my head. '(10) ____!' I said.",
+  "filled_passage": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said.",
+  "source_count_increment": 0,
+  "ten_four_cloze": true,
+  "raw_exam_not_repaired": true,
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "text": "boxes",
+      "is_best": true,
+      "reason": "后两句明确两只box及盒盖，与boxes一致。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "text": "cups",
+      "is_best": false,
+      "reason": "cups与后文两盒及盖色不一致。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper cups. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "text": "bags",
+      "is_best": false,
+      "reason": "bags与后文boxes不一致。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper bags. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 1,
+      "candidate": "D",
+      "text": "plates",
+      "is_best": false,
+      "reason": "plates与两盒盖不一致。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper plates. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "text": "it",
+      "is_best": false,
+      "reason": "it只能代单数，不是两盒。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take it to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "text": "they",
+      "is_best": false,
+      "reason": "they为主格，不能作take宾语。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take they to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "text": "their",
+      "is_best": false,
+      "reason": "their是所有格，后缺中心名词。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take their to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 2,
+      "candidate": "D",
+      "text": "them",
+      "is_best": true,
+      "reason": "take的宾语指前文两盒，用them。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "text": "under",
+      "is_best": false,
+      "reason": "under与and连接两界点不构成此搭配。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived under the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "text": "between",
+      "is_best": true,
+      "reason": "between A and B表示住在银行与邮局之间。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "text": "inside",
+      "is_best": false,
+      "reason": "inside与and两地标不构成此位置关系。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived inside the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 3,
+      "candidate": "D",
+      "text": "above",
+      "is_best": false,
+      "reason": "above并不与and构成两界点之间搭配。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived above the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "text": "cloud",
+      "is_best": false,
+      "reason": "厨房云不是可放卡片处。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen cloud.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "text": "river",
+      "is_best": false,
+      "reason": "厨房里的河流不合日常房间场景。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen river.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "text": "table",
+      "is_best": true,
+      "reason": "厨房桌面可放卡片；其余不是厨房家具。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 4,
+      "candidate": "D",
+      "text": "road",
+      "is_best": false,
+      "reason": "厨房道路不合所述室内场景。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen road.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "text": "know",
+      "is_best": true,
+      "reason": "did not后接动词原形know，表示不能确定对应地址",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "text": "knows",
+      "is_best": false,
+      "reason": "did not后不接三单knows",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not knows the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "text": "knew",
+      "is_best": false,
+      "reason": "did not已标过去，后不接过去式knew",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not knew the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 5,
+      "candidate": "D",
+      "text": "knowing",
+      "is_best": false,
+      "reason": "did not后不接分词knowing",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not knowing the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 6,
+      "candidate": "A",
+      "text": "asking",
+      "is_best": false,
+      "reason": "与went并列须过去谓语，非asking。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asking Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 6,
+      "candidate": "B",
+      "text": "asked",
+      "is_best": true,
+      "reason": "went back and asked为过去并列动作。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 6,
+      "candidate": "C",
+      "text": "asks",
+      "is_best": false,
+      "reason": "过去叙事不改第三人称现在asks。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asks Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 6,
+      "candidate": "D",
+      "text": "ask",
+      "is_best": false,
+      "reason": "and与went并列不是原形ask。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and ask Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 7,
+      "candidate": "A",
+      "text": "at",
+      "is_best": false,
+      "reason": "at不表示使用绳子。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box at a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 7,
+      "candidate": "B",
+      "text": "from",
+      "is_best": false,
+      "reason": "from不表示工具。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box from a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 7,
+      "candidate": "C",
+      "text": "of",
+      "is_best": false,
+      "reason": "of不表示用绳系住的工具关系。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box of a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 7,
+      "candidate": "D",
+      "text": "with",
+      "is_best": true,
+      "reason": "用细绳把卡系到盒上，用with表工具。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 8,
+      "candidate": "A",
+      "text": "because",
+      "is_best": false,
+      "reason": "女儿接盒不是本人不在的原因。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, because her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 8,
+      "candidate": "B",
+      "text": "or",
+      "is_best": false,
+      "reason": "or表达选择而非实际发生的两事实。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, or her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 8,
+      "candidate": "C",
+      "text": "but",
+      "is_best": true,
+      "reason": "本人不在但女儿接收，but转折。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 8,
+      "candidate": "D",
+      "text": "unless",
+      "is_best": false,
+      "reason": "unless为条件，与已发生的接收不合。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, unless her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 9,
+      "candidate": "A",
+      "text": "twelve",
+      "is_best": true,
+      "reason": "两盒各六块，总数十二，后句six and six再次限定。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 9,
+      "candidate": "B",
+      "text": "six",
+      "is_best": false,
+      "reason": "six仅一盒，不是全部两盒。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all six cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 9,
+      "candidate": "C",
+      "text": "two",
+      "is_best": false,
+      "reason": "two为盒数，不是糕点块数。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all two cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 9,
+      "candidate": "D",
+      "text": "ten",
+      "is_best": false,
+      "reason": "ten与6+6不符。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all ten cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 10,
+      "candidate": "A",
+      "text": "No",
+      "is_best": false,
+      "reason": "No否定已送出两盒的事实。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'No!' I said."
+    },
+    {
+      "number": 10,
+      "candidate": "B",
+      "text": "Yes",
+      "is_best": true,
+      "reason": "全部送出且核数正确，对whether作肯定回答Yes。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Yes!' I said."
+    },
+    {
+      "number": 10,
+      "candidate": "C",
+      "text": "Never",
+      "is_best": false,
+      "reason": "Never表示从未，和本次已投递相反。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Never!' I said."
+    },
+    {
+      "number": 10,
+      "candidate": "D",
+      "text": "Nothing",
+      "is_best": false,
+      "reason": "Nothing不是该是否问句的适当肯定答语。",
+      "full_group_substitution": "On Sunday morning, Grandma baked small cakes for her neighbours. She put six cakes in each of two paper boxes. One box had a red lid, and the other had a green lid. She asked me to take them to two different houses.\n\nThe red box was for Mr Lee, who lived between the bank and the post office. The green one was for Mrs Hill at the end of the street. I wrote their names on cards, but I left the cards on the kitchen table.\n\nHalfway down the street, I noticed my mistake. I could not remember which colour belonged to which person. I did not know the right address for each box, so I went back and asked Grandma. She showed me the cards.\n\nThis time I tied each card to the right box with a piece of string. Mr Lee was at home and thanked me. Mrs Hill was out, but her daughter took the other box. When I got home, Grandma asked whether I had delivered all twelve cakes. I counted six and six in my head. 'Nothing!' I said."
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 175,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 40,
+    "output_response_positions": 10
+  },
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

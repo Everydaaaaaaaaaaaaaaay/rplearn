@@ -1,0 +1,598 @@
+{
+  "version": "0.2",
+  "id": "primary6-cloze10four-puppet",
+  "grade": "primary6",
+  "questions": 10,
+  "source_binding": "p6-cloze10four-raw-structure-separated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeSourceBindings-v0.1.json",
+    "sha256": "9850aaa5aac55b58f18db4e11049d0497cc0b40decbb0a5668b646ec40141692"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.cloze10x4",
+  "source_companion": {
+    "path": "build/english-benchmark-authority-20261017/p6cloze652-shape-companion-v0.1.json",
+    "sha256": "5a97bfb889ec21d8adb049f535403315dc66904bfa732d1b29ed6d2f328d8102"
+  },
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-cloze10four-puppet-manuscript-v0.2.json",
+    "sha256": "7461097e9a88ee9d873f7fcc83663b05cf6c7fb593269b187715a748fc0d9fe6"
+  },
+  "candidate_sha256": "399a6104427df367b9677ca767639910f9e0e142f96d3a369d942f84f0a12a54",
+  "canonical_response_block_sha256": "97c80b5af7268ae70b231bd3cd79aad44ef50cda3be00848e236aba75d9a51f1",
+  "review_response_tasks": [
+    {
+      "options": [
+        [
+          "A",
+          "from"
+        ],
+        [
+          "B",
+          "over"
+        ],
+        [
+          "C",
+          "to"
+        ],
+        [
+          "D",
+          "through"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：from把礼堂变为起点，与后文返回路线不合。；B：over表示跨越礼堂，非带进礼堂的目的地关系。；C：方向是到学校礼堂，to标目的地。；D：through表示穿过礼堂，不是带到演出地。",
+      "number": 1,
+      "stem": "第1空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "empty"
+        ],
+        [
+          "B",
+          "heavy"
+        ],
+        [
+          "C",
+          "hungry"
+        ],
+        [
+          "D",
+          "asleep"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：两个木偶在袋里且有木头，empty不合。；B：木头做的头解释重量较重。；C：木偶没有文中进食需求。；D：没有睡眠事件，且木头材料不解释睡着。",
+      "number": 2,
+      "stem": "第2空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "under"
+        ],
+        [
+          "B",
+          "during"
+        ],
+        [
+          "C",
+          "since"
+        ],
+        [
+          "D",
+          "until"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：椅子下面是可找地面物品的位置。；B：during表示期间，不能接椅子作空间地点。；C：since不表示椅子下面。；D：until表示直到，不构成此处找物地点。",
+      "number": 3,
+      "stem": "第3空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "clock"
+        ],
+        [
+          "B",
+          "river"
+        ],
+        [
+          "C",
+          "cake"
+        ],
+        [
+          "D",
+          "hole"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：钟不能解释袋底漏物或被缝好。；B：袋底河流不合袋子语境。；C：蛋糕不能解释底部漏物和缝补。；D：底部小洞能解释木偶掉出，末段缝洞呼应。",
+      "number": 4,
+      "stem": "第4空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "out"
+        ],
+        [
+          "B",
+          "up"
+        ],
+        [
+          "C",
+          "off"
+        ],
+        [
+          "D",
+          "on"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：pick it out是挑选，不是从地上拾起。；B：pick it up是把掉地物拾起，随后男孩拿着鸭木偶。；C：pick it off是从表面摘除，不合beside the gate拾到情境。；D：pick on是欺负或挑人，不合拾物。",
+      "number": 5,
+      "stem": "第5空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "him"
+        ],
+        [
+          "B",
+          "her"
+        ],
+        [
+          "C",
+          "it"
+        ],
+        [
+          "D",
+          "them"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：所谢对象是前句单数男孩，宾格him。；B：男孩不是her所指的女性。；C：it不能在此指帮助他们的男孩。；D：只有一名男孩，不用复数them。",
+      "number": 6,
+      "stem": "第6空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "because"
+        ],
+        [
+          "B",
+          "unless"
+        ],
+        [
+          "C",
+          "while"
+        ],
+        [
+          "D",
+          "before"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：持狐不是另一人持鸭的原因。；B：unless引条件，和已就绪同时演出不合。；C：两人同时分别持木偶，while并行。；D：before将持狐和持鸭误排先后。",
+      "number": 7,
+      "stem": "第7空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "neither"
+        ],
+        [
+          "B",
+          "every"
+        ],
+        [
+          "C",
+          "much"
+        ],
+        [
+          "D",
+          "both"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：neither后不能直接接此复数名词，且两件均在场。；B：every要求单数，不接puppets。；C：much不修饰可数复数puppets。；D：狐鸭两个都放上桌，both加复数puppets。",
+      "number": 8,
+      "stem": "第8空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "unless"
+        ],
+        [
+          "B",
+          "before"
+        ],
+        [
+          "C",
+          "during"
+        ],
+        [
+          "D",
+          "since"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：unless不直接接leaving home表此时间安排。；B：出门前检查袋子才能预防漏物；before leaving。；C：during不接此动名词时间从句形式。；D：since表示自从，与下次出门前预防不合。",
+      "number": 9,
+      "stem": "第9空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "find"
+        ],
+        [
+          "B",
+          "thank"
+        ],
+        [
+          "C",
+          "lose"
+        ],
+        [
+          "D",
+          "watch"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：不想找到另一演员与预防丢失不合。；B：他们已感谢男孩，并非不想感谢演员。；C：此前差点丢木偶，下次不想再丢另一演员。；D：演出目的不支持不愿观看演员。",
+      "number": 10,
+      "stem": "第10空"
+    }
+  ],
+  "student_passage": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag (1) ____ the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite (2) ____.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked (3) ____ the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small (4) ____ in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it (5) ____ beside the gate. We thanked (6) ____ and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox (7) ____ I held the duck. We were ready at last. After the play, I put (8) ____ puppets on a table and sewed the hole. Next time I will check the bag (9) ____ leaving home. I do not want to (10) ____ another actor!",
+  "filled_passage": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!",
+  "ten_four_cloze": true,
+  "raw_exam_not_repaired": true,
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "text": "from",
+      "is_best": false,
+      "reason": "from把礼堂变为起点，与后文返回路线不合。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag from the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "text": "over",
+      "is_best": false,
+      "reason": "over表示跨越礼堂，非带进礼堂的目的地关系。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag over the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "text": "to",
+      "is_best": true,
+      "reason": "方向是到学校礼堂，to标目的地。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 1,
+      "candidate": "D",
+      "text": "through",
+      "is_best": false,
+      "reason": "through表示穿过礼堂，不是带到演出地。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag through the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "text": "empty",
+      "is_best": false,
+      "reason": "两个木偶在袋里且有木头，empty不合。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite empty.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "text": "heavy",
+      "is_best": true,
+      "reason": "木头做的头解释重量较重。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "text": "hungry",
+      "is_best": false,
+      "reason": "木偶没有文中进食需求。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite hungry.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 2,
+      "candidate": "D",
+      "text": "asleep",
+      "is_best": false,
+      "reason": "没有睡眠事件，且木头材料不解释睡着。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite asleep.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "text": "under",
+      "is_best": true,
+      "reason": "椅子下面是可找地面物品的位置。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "text": "during",
+      "is_best": false,
+      "reason": "during表示期间，不能接椅子作空间地点。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked during the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "text": "since",
+      "is_best": false,
+      "reason": "since不表示椅子下面。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked since the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 3,
+      "candidate": "D",
+      "text": "until",
+      "is_best": false,
+      "reason": "until表示直到，不构成此处找物地点。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked until the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "text": "clock",
+      "is_best": false,
+      "reason": "钟不能解释袋底漏物或被缝好。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small clock in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "text": "river",
+      "is_best": false,
+      "reason": "袋底河流不合袋子语境。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small river in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "text": "cake",
+      "is_best": false,
+      "reason": "蛋糕不能解释底部漏物和缝补。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small cake in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 4,
+      "candidate": "D",
+      "text": "hole",
+      "is_best": true,
+      "reason": "底部小洞能解释木偶掉出，末段缝洞呼应。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "text": "out",
+      "is_best": false,
+      "reason": "pick it out是挑选，不是从地上拾起。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it out beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "text": "up",
+      "is_best": true,
+      "reason": "pick it up是把掉地物拾起，随后男孩拿着鸭木偶。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "text": "off",
+      "is_best": false,
+      "reason": "pick it off是从表面摘除，不合beside the gate拾到情境。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it off beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 5,
+      "candidate": "D",
+      "text": "on",
+      "is_best": false,
+      "reason": "pick on是欺负或挑人，不合拾物。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it on beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 6,
+      "candidate": "A",
+      "text": "him",
+      "is_best": true,
+      "reason": "所谢对象是前句单数男孩，宾格him。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 6,
+      "candidate": "B",
+      "text": "her",
+      "is_best": false,
+      "reason": "男孩不是her所指的女性。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked her and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 6,
+      "candidate": "C",
+      "text": "it",
+      "is_best": false,
+      "reason": "it不能在此指帮助他们的男孩。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked it and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 6,
+      "candidate": "D",
+      "text": "them",
+      "is_best": false,
+      "reason": "只有一名男孩，不用复数them。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked them and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 7,
+      "candidate": "A",
+      "text": "because",
+      "is_best": false,
+      "reason": "持狐不是另一人持鸭的原因。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox because I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 7,
+      "candidate": "B",
+      "text": "unless",
+      "is_best": false,
+      "reason": "unless引条件，和已就绪同时演出不合。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox unless I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 7,
+      "candidate": "C",
+      "text": "while",
+      "is_best": true,
+      "reason": "两人同时分别持木偶，while并行。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 7,
+      "candidate": "D",
+      "text": "before",
+      "is_best": false,
+      "reason": "before将持狐和持鸭误排先后。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox before I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 8,
+      "candidate": "A",
+      "text": "neither",
+      "is_best": false,
+      "reason": "neither后不能直接接此复数名词，且两件均在场。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put neither puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 8,
+      "candidate": "B",
+      "text": "every",
+      "is_best": false,
+      "reason": "every要求单数，不接puppets。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put every puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 8,
+      "candidate": "C",
+      "text": "much",
+      "is_best": false,
+      "reason": "much不修饰可数复数puppets。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put much puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 8,
+      "candidate": "D",
+      "text": "both",
+      "is_best": true,
+      "reason": "狐鸭两个都放上桌，both加复数puppets。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 9,
+      "candidate": "A",
+      "text": "unless",
+      "is_best": false,
+      "reason": "unless不直接接leaving home表此时间安排。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag unless leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 9,
+      "candidate": "B",
+      "text": "before",
+      "is_best": true,
+      "reason": "出门前检查袋子才能预防漏物；before leaving。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 9,
+      "candidate": "C",
+      "text": "during",
+      "is_best": false,
+      "reason": "during不接此动名词时间从句形式。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag during leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 9,
+      "candidate": "D",
+      "text": "since",
+      "is_best": false,
+      "reason": "since表示自从，与下次出门前预防不合。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag since leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 10,
+      "candidate": "A",
+      "text": "find",
+      "is_best": false,
+      "reason": "不想找到另一演员与预防丢失不合。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to find another actor!"
+    },
+    {
+      "number": 10,
+      "candidate": "B",
+      "text": "thank",
+      "is_best": false,
+      "reason": "他们已感谢男孩，并非不想感谢演员。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to thank another actor!"
+    },
+    {
+      "number": 10,
+      "candidate": "C",
+      "text": "lose",
+      "is_best": true,
+      "reason": "此前差点丢木偶，下次不想再丢另一演员。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to lose another actor!"
+    },
+    {
+      "number": 10,
+      "candidate": "D",
+      "text": "watch",
+      "is_best": false,
+      "reason": "演出目的不支持不愿观看演员。",
+      "full_group_substitution": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag to the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite heavy.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked under the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small hole in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it up beside the gate. We thanked him and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox while I held the duck. We were ready at last. After the play, I put both puppets on a table and sewed the hole. Next time I will check the bag before leaving home. I do not want to watch another actor!"
+    }
+  ],
+  "load_measure": {
+    "body_English_words": 176,
+    "stem_English_words": 0,
+    "options_English_words_with_repeated_bank": 40,
+    "output_response_positions": 10
+  },
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false
+}

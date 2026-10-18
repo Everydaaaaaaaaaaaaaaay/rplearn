@@ -1,0 +1,48 @@
+{
+  "version": "0.2",
+  "bindings": [
+    {
+      "id": "p6-cloze10four-raw-structure-separated",
+      "level": "primary6",
+      "family": "choice_cloze",
+      "task_mode": "complete_ten_four_cloze",
+      "responses": 10,
+      "options_each": 4,
+      "source_index": {
+        "path": "CompleteCoverage20261017/SelectedSourceModes-v0.59.json",
+        "sha256": "f4afd4360182ef0a9b1efe19b77130e43fe28f8449e2d0ee0f2374872876c3e8"
+      },
+      "collection": "groups",
+      "source_group_id": "primary6.shenzhenexperiment2017.cloze10x4",
+      "source_features": {
+        "passages": 1,
+        "responses": 10,
+        "options_each": 4,
+        "numbered_gaps": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "shared_bank": false
+      },
+      "source_companion": {
+        "path": "build/english-benchmark-authority-20261017/p6cloze652-shape-companion-v0.1.json",
+        "sha256": "5a97bfb889ec21d8adb049f535403315dc66904bfa732d1b29ed6d2f328d8102"
+      },
+      "raw_exam_not_repaired": true,
+      "new_source_count": 0,
+      "source_record_sha256": "5fa7804a1efc0436287c354c00825bd333928879f8e309146c258857048dc7cc"
+    }
+  ],
+  "previous": {
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeSourceBindings-v0.1.json",
+    "sha256": "9850aaa5aac55b58f18db4e11049d0497cc0b40decbb0a5668b646ec40141692"
+  }
+}

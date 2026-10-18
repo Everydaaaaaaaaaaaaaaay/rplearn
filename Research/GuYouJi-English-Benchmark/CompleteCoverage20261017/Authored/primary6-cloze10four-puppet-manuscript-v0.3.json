@@ -1,0 +1,262 @@
+{
+  "version": "0.3",
+  "id": "primary6-cloze10four-puppet",
+  "grade": "primary6",
+  "family": "choice_cloze",
+  "title": "小六完形：剧院门前的小木偶",
+  "source_binding": "p6-cloze10four-raw-structure-separated",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6TenFourClozeSourceBindings-v0.2.json",
+    "sha256": "a74a2b2a6ff597923f80dcc7b970c6d3bdba4b9f5538c67f02eec509ceaef7ec"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.cloze10x4",
+  "instruction": "先通读完整故事，再为全部十个空各选一个最佳答案。每空四个独立候选，只填A—D字母。",
+  "source_notice": "结构主参照自署2016–17深圳实验学校小学部六下历史教辅中的单篇十空四选。原开头缺词、原键缺失及学校施测未认证均保留；另核六上教辅公开读者十空四选作结构旁证，该练习的54空及气候表述仍有质量风险，非第二认证校卷，也不修补旧卷。本题是全新完整作者故事，不搬动物死亡笑话；结构、作者完整输入和源键质量分层，独立教研/学生/商用/生产未验证。",
+  "passage": "Last Friday, our class put on a puppet play. The stage was in the school hall, so I carried a blue cloth bag (1) ____ the hall for the show. Inside it were two puppets, a fox and a duck. Their heads were made of wood, so they were quite (2) ____.\n\nBefore the show, I opened the bag and found only the fox. Where was the duck? I looked (3) ____ the chairs, but the floor was empty. Then Mia pointed to the bag. There was a small (4) ____ in its bottom. The duck might have fallen out on the way.\n\nWe walked back along the same path. Near the school gate, a younger boy was holding our duck. He had picked it (5) ____ beside the gate. We thanked (6) ____ and hurried back.\n\nThe audience was still waiting. At the same moment, Mia held the fox (7) ____ I held the duck. We were ready at last. After the play, I put (8) ____ puppets on a table and sewed the hole. Next time I will check the bag (9) ____ leaving home. I do not want to (10) ____ another actor!",
+  "questions": [
+    {
+      "options": [
+        [
+          "A",
+          "from"
+        ],
+        [
+          "B",
+          "over"
+        ],
+        [
+          "C",
+          "to"
+        ],
+        [
+          "D",
+          "through"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：from把礼堂变为起点，与后文返回路线不合。；B：over表示跨越礼堂，非带进礼堂的目的地关系。；C：方向是到学校礼堂，to标目的地。；D：through表示穿过礼堂，不是带到演出地。",
+      "number": 1,
+      "stem": "第1空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "empty"
+        ],
+        [
+          "B",
+          "heavy"
+        ],
+        [
+          "C",
+          "hungry"
+        ],
+        [
+          "D",
+          "asleep"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：两个木偶在袋里且有木头，empty不合。；B：木头做的头解释重量较重。；C：木偶没有文中进食需求。；D：没有睡眠事件，且木头材料不解释睡着。",
+      "number": 2,
+      "stem": "第2空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "under"
+        ],
+        [
+          "B",
+          "during"
+        ],
+        [
+          "C",
+          "since"
+        ],
+        [
+          "D",
+          "until"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：椅子下面是可找地面物品的位置。；B：during表示期间，不能接椅子作空间地点。；C：since不表示椅子下面。；D：until表示直到，不构成此处找物地点。",
+      "number": 3,
+      "stem": "第3空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "clock"
+        ],
+        [
+          "B",
+          "river"
+        ],
+        [
+          "C",
+          "cake"
+        ],
+        [
+          "D",
+          "hole"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：钟不能解释袋底漏物或被缝好。；B：袋底河流不合袋子语境。；C：蛋糕不能解释底部漏物和缝补。；D：底部小洞能解释木偶掉出，末段缝洞呼应。",
+      "number": 4,
+      "stem": "第4空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "out"
+        ],
+        [
+          "B",
+          "up"
+        ],
+        [
+          "C",
+          "off"
+        ],
+        [
+          "D",
+          "on"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：pick it out是挑选，不是从地上拾起。；B：pick it up是把掉地物拾起，随后男孩拿着鸭木偶。；C：pick it off是从表面摘除，不合beside the gate拾到情境。；D：pick on是欺负或挑人，不合拾物。",
+      "number": 5,
+      "stem": "第5空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "him"
+        ],
+        [
+          "B",
+          "her"
+        ],
+        [
+          "C",
+          "it"
+        ],
+        [
+          "D",
+          "them"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：所谢对象是前句单数男孩，宾格him。；B：男孩不是her所指的女性。；C：it不能在此指帮助他们的男孩。；D：只有一名男孩，不用复数them。",
+      "number": 6,
+      "stem": "第6空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "because"
+        ],
+        [
+          "B",
+          "unless"
+        ],
+        [
+          "C",
+          "while"
+        ],
+        [
+          "D",
+          "before"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：持狐不是另一人持鸭的原因。；B：unless引条件，和已就绪同时演出不合。；C：两人同时分别持木偶，while并行。；D：before将持狐和持鸭误排先后。",
+      "number": 7,
+      "stem": "第7空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "neither"
+        ],
+        [
+          "B",
+          "every"
+        ],
+        [
+          "C",
+          "much"
+        ],
+        [
+          "D",
+          "both"
+        ]
+      ],
+      "answer": "D",
+      "rationale": "A：neither后不能直接接此复数名词，且两件均在场。；B：every要求单数，不接puppets。；C：much不修饰可数复数puppets。；D：狐鸭两个都放上桌，both加复数puppets。",
+      "number": 8,
+      "stem": "第8空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "unless"
+        ],
+        [
+          "B",
+          "before"
+        ],
+        [
+          "C",
+          "during"
+        ],
+        [
+          "D",
+          "since"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：unless不直接接leaving home表此时间安排。；B：出门前检查袋子才能预防漏物；before leaving。；C：during不接此动名词时间从句形式。；D：since表示自从，与下次出门前预防不合。",
+      "number": 9,
+      "stem": "第9空"
+    },
+    {
+      "options": [
+        [
+          "A",
+          "find"
+        ],
+        [
+          "B",
+          "thank"
+        ],
+        [
+          "C",
+          "lose"
+        ],
+        [
+          "D",
+          "watch"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：不想找到另一演员与预防丢失不合。；B：他们已感谢男孩，并非不想感谢演员。；C：此前差点丢木偶，下次不想再丢另一演员。；D：演出目的不支持不愿观看演员。",
+      "number": 10,
+      "stem": "第10空"
+    }
+  ],
+  "previous_manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-cloze10four-puppet-manuscript-v0.2.json",
+    "sha256": "7461097e9a88ee9d873f7fcc83663b05cf6c7fb593269b187715a748fc0d9fe6"
+  }
+}
