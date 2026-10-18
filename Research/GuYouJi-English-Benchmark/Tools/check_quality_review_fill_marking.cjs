@@ -106,7 +106,7 @@ for(const g of Object.values(data.groups).filter(g=>g.questions.some(q=>q.accept
  assert.equal(compare(g.questions,saved).matched,g.questions.length);
  for(const q of g.questions){
   for(const form of q.acceptedAnswers){
-   const vector={...saved,[q.number+'.1']:form.toLowerCase()};
+   const vector={...saved,[q.number+'.1']:q.wordOrder?form:form.toLowerCase()};
    if(q.fillPair){const c=q.fillPair,member=c.members.findIndex(m=>m.forms.includes(form)),other=c.positions.find(n=>n!==q.number);assert(member>=0);vector[other+'.1']=c.members[1-member].forms[0];}
    assert.equal(compare(g.questions,vector).matched,g.questions.length);alternatives++;
   }

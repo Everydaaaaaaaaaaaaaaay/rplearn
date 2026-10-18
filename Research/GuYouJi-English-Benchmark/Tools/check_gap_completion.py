@@ -58,6 +58,9 @@ def check(data, plan):
             if b.get('task_mode') in {'given_forms5', 'dialogue_clauses5'}:
                 from compile_primary6_written_groups import check as check_primary6_written
                 check_primary6_written(g,a,b,source)
+            if b.get('task_mode') == 'word_order_five':
+                from compile_word_order_groups import check as check_word_order
+                check_word_order(g,a,b,source)
             if b.get('task_mode') == 'complete_word_category_choice':
                 from word_category_contract import check as check_word_categories
                 check_word_categories(g,a,b,source)
@@ -410,6 +413,7 @@ def check(data, plan):
                     if meta['grade']==7 and q['number'] in [1,4]:expected_protocol='small_count_v1'
                     elif meta['grade']==9 and q['number']==1:expected_protocol='clock_hour_v1'
                 if a.get('academic_bundle_listening') or a.get('academic_extracted_completion') or a.get('academic_text_extraction') or a.get('academic_summary_or_diagram'):expected_protocol='source_excerpt_v1'
+                if a.get('word_order_five'):expected_protocol='whole_sentence_tokens_v1'
                 if a.get('cambridge_additional_academic'):
                     expected_protocol='source_list_v1' if q['number']==2 else 'source_excerpt_v1'
                 if a.get('academic_form_listening'):expected_protocol={3:'uk_postcode_v1',4:'metric_length_v1',5:'metric_length_v1',8:'sterling_amount_v1'}.get(q['number'],'source_excerpt_v1')
@@ -419,6 +423,7 @@ def check(data, plan):
                 assert not set(c['rejectedAnswers']) & set(q['acceptedAnswers'])
                 pattern='(?:[0-9]{1,2}(?:[:.][0-9]{2})?|[A-Za-z]+)' if c['normalization']=='clock_hour_v1' else '(?:[0-9]+|[A-Za-z]+)' if c['normalization']=='small_count_v1' else '[0-9]+' if c['normalization']=='ascii_integer_v1' else "[A-Za-z]+(?:['’-][A-Za-z]+)*(?: [A-Za-z]+(?:['’-][A-Za-z]+)*)*" if c['normalization']=='english_phrase_v1' else '[A-Za-z]+'
                 if c['normalization']=='source_excerpt_v1':pattern="[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*(?: [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*)*"
+                if c['normalization']=='whole_sentence_tokens_v1':pattern="[A-Z][A-Za-z']*(?:(?: |, )[A-Za-z]+(?:'[A-Za-z]+)*)*[.?]"
                 if c['normalization']=='source_list_v1':pattern='[A-Za-z]+(?: [A-Za-z]+)*'
                 if c['normalization']=='uk_postcode_v1':pattern='[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][A-Z]{2}'
                 if c['normalization']in {'metric_length_v1','sterling_amount_v1'}:pattern='[A-Za-z0-9£½¾][A-Za-z0-9£½¾.,/ -]*'

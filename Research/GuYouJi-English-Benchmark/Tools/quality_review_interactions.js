@@ -17,7 +17,7 @@ function inputFor(g,q){
   const compact=q.optionImages&&q.options.length<=3&&Object.values(q.optionImages).every(image=>image.width<=300&&image.height<=300);
   return compact?'<div class="picture-choices" style="--picture-choice-count:'+q.options.length+'">'+choices+'</div>':choices;
  }
- if(q.acceptedAnswers||q.knownForms){const key=String(q.number)+'.1';return '<input class="short-answer" type="text" name="'+key+'" aria-label="'+escapeText(q.stem)+'" value="'+escapeText(saved[key]||'')+'" autocomplete="off" lang="en">';}
+ if(q.acceptedAnswers||q.knownForms){const key=String(q.number)+'.1';if(q.wordOrder)return '<textarea class="short-answer" name="'+key+'" aria-label="'+escapeText(q.stem)+'" rows="3" autocomplete="off" lang="en">'+escapeText(saved[key]||'')+'</textarea>';return '<input class="short-answer" type="text" name="'+key+'" aria-label="'+escapeText(q.stem)+'" value="'+escapeText(saved[key]||'')+'" autocomplete="off" lang="en">';}
  const parts=q.parts||[{label:q.stem}];return parts.map((part,i)=>{const key=String(q.number)+'.'+(i+1);return (part.opening?'<p class="fixed" lang="en">'+escapeText(part.opening)+'</p>':'')+'<label class="written">'+escapeText(part.label)+'<textarea name="'+key+'" rows="'+(g.responseMode==='writing_review'?9:3)+'" lang="en">'+escapeText(saved[key]||'')+'</textarea></label>';}).join('');
 }
 function mediaReady(g){const images=[...el('student').querySelectorAll('img')],expected=[...(g.requiredPassageImages||[]),...g.questions.flatMap(q=>q.optionImages?Object.values(q.optionImages):[])],count=(g.requiredImageAssets?.length||0)+(g.requiredPassageImages?.length||0),audio=[...el('student').querySelectorAll('audio')],tracks=g.requiredAudioAssets||[];return expected.length===count&&images.length===count&&images.every((img,i)=>img.complete&&img.naturalWidth>0&&img.getAttribute('src')===expected[i].src&&img.getAttribute('alt')===expected[i].alt)&&audio.length===tracks.length&&audio.every((a,i)=>!a.error&&a.readyState>=1&&Number.isFinite(a.duration)&&a.duration>0&&a.getAttribute('src')===tracks[i].src);}
@@ -61,6 +61,7 @@ function selectionSetComparison(questions,saved={}){
 function normalizeFill(value,protocol){
  if(typeof value!=='string')return null;
  const text=value.trim();
+ if(protocol==='whole_sentence_tokens_v1')return sentenceTokenForm(value)?.text??null;
  if(protocol==='latin_word_v1')return /^[A-Za-z]+$/.test(text)?text.toUpperCase():null;
  if(protocol==='english_phrase_v1')return /^[A-Za-z]+(?:['’-][A-Za-z]+)*(?:\s+[A-Za-z]+(?:['’-][A-Za-z]+)*)*$/.test(text)?text.replace(/’/g,"'").replace(/\s+/g,' ').toUpperCase():null;
  if(protocol==='source_excerpt_v1'){
@@ -139,7 +140,35 @@ function smallCount(value){
  const word=names.indexOf(value);if(word>=0)return word;
  return typeof value==='string'&&/^[0-9]+$/.test(value)?value:null;
 }
+function sentenceTokenForm(value){
+ if(typeof value!=='string')return null;
+ const text=value.trim().replace(/’/g,"'").replace(/\s+/g,' ').replace(/\s*,\s*/g,', ').replace(/\s+([.!?])$/,'$1');
+ // Do not silently remove unknown punctuation or split an apostrophe word.
+ if(!/^[A-Za-z]+(?:'[A-Za-z]+)*(?:(?: |, )[A-Za-z]+(?:'[A-Za-z]+)*)*[.!?]?$/.test(text))return null;
+ return {text,tokens:text.match(/[A-Za-z]+(?:'[A-Za-z]+)*/g),ending:/[.!?]$/.test(text)?text.slice(-1):''};
+}
+function wordOrderComparison(questions,saved={}){
+ const rows=[];
+ const first=questions[0]?.wordOrder;
+ if(!first||first.version!==1||typeof first.id!=='string'||!first.id||JSON.stringify(first.positions)!=='[1,2,3,4,5]'||questions.length!==5)return {available:false,reason:'完整五题词池组尚未绑定，暂不核对。'};
+ for(const [i,q]of questions.entries()){
+  const c=q.fillMarking,pool=q.wordPool;
+  if(q.number!==first.positions[i]||JSON.stringify(q.wordOrder)!==JSON.stringify(first)||q.options?.length!==0||c?.version!==1||c.review!=='author_context_checked'||c.normalization!=='whole_sentence_tokens_v1'||c.unlisted!=='review'||c.unknownSyntax!=='review'||c.maxWords!==null||c.useAllTokens!=='exact_multiset'||c.caseRule!=='sentence_initial_and_printed_tokens'||!Array.isArray(c.endings)||c.endings.length!==1||!['.','?'].includes(c.endings[0])||!Array.isArray(c.rejectedAnswers)||c.rejectedAnswers.length!==0||!Array.isArray(pool)||pool.length<2||pool.some(t=>typeof t!=='string'||!/^[A-Za-z]+(?:'[A-Za-z]+)*$/.test(t))||!Array.isArray(q.acceptedAnswers)||!q.acceptedAnswers.length)return {available:false,reason:'组句的完整词池、大小写、标点或合法语序尚未绑定。'};
+  const multiset=tokens=>tokens.map(t=>t.toLowerCase()).sort().join('|'),expected=multiset(pool),cases=new Map();
+  for(const token of pool){const key=token.toLowerCase();if(cases.has(key)&&cases.get(key)!==token)return {available:false,reason:'词池中的同词大小写规则相互冲突。'};cases.set(key,token);}
+  const hasValidCase=form=>form.tokens.every((t,n)=>{const printed=cases.get(t.toLowerCase());return printed!==undefined&&t===(n===0?printed[0].toUpperCase()+printed.slice(1):printed);});
+  const forms=q.acceptedAnswers.map(sentenceTokenForm);
+  if(forms.some(f=>f===null||multiset(f.tokens)!==expected||!hasValidCase(f)||!c.endings.includes(f.ending))||new Set(forms.map(f=>f.text)).size!==forms.length)return {available:false,reason:'参考句有词池增删、大小写标点冲突或重复，暂不核对。'};
+  const chosen=saved[String(q.number)+'.1']??'';
+  if(typeof chosen!=='string')return {available:false,reason:'填写值格式无效。'};
+  const form=sentenceTokenForm(chosen),listed=form!==null&&forms.some(f=>f.text===form.text);
+  const violates=form!==null&&(multiset(form.tokens)!==expected||!hasValidCase(form)||!c.endings.includes(form.ending));
+  rows.push({number:q.number,chosen,reference:q.acceptedAnswers.join(' / '),state:!chosen.trim()?'unanswered':listed?'match':violates?'different':'review'});
+ }
+ return {available:true,total:rows.length,matched:rows.filter(r=>r.state==='match').length,different:rows.filter(r=>r.state==='different').length,unanswered:rows.filter(r=>r.state==='unanswered').length,review:rows.filter(r=>r.state==='review').length,rows};
+}
 function answerComparison(questions,saved={}){
+ if(Array.isArray(questions)&&questions.some(q=>q.wordOrder||q.fillMarking?.normalization==='whole_sentence_tokens_v1'))return wordOrderComparison(questions,saved);
  if(Array.isArray(questions)&&questions.some(q=>q.fillPair))return fillPairComparison(questions,saved);
  if(Array.isArray(questions)&&questions.some(q=>q.selectionSet))return selectionSetComparison(questions,saved);
  if(!Array.isArray(questions)||!questions.length)return {available:false,reason:'没有完整题组可核对。'};

@@ -1,0 +1,411 @@
+{
+  "version": "0.1",
+  "id": "primary6-wordorder5-bakery",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "400635c2c6062422d31b38bd5a2fd9a44480971e0ebdb83dc6fca2786c0b0576",
+  "source_binding": "p6-wordorder5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WordOrderSourceBindings-v0.1.json",
+    "sha256": "c29451cf0dacf81debde6d6b1440bdfee5cc95a3ea737336f1e80e8f8cb55b9a"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.wordorder5",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-wordorder5-bakery-manuscript-v0.1.json",
+    "sha256": "31d47455cf8e33075c9619f785b371b87013f22d320237a19a0c65de22954468"
+  },
+  "word_order_five": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "词池：I / when / outside / umbrella / wet / my / leave / always / I / bakery / the / to / go",
+      "options": [],
+      "wordPool": [
+        "I",
+        "when",
+        "outside",
+        "umbrella",
+        "wet",
+        "my",
+        "leave",
+        "always",
+        "I",
+        "bakery",
+        "the",
+        "to",
+        "go"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-bakery",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "When I go to the bakery, I always leave my wet umbrella outside.",
+        "I always leave my wet umbrella outside when I go to the bakery."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "when时间从句可置前，也可放在主句后；前置版本加逗号。两处I须分别使用，always修饰主句动作。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 2,
+      "stem": "词池：almost / was / it / door / front / our / on / knocked / somebody / when / midday",
+      "options": [],
+      "wordPool": [
+        "almost",
+        "was",
+        "it",
+        "door",
+        "front",
+        "our",
+        "on",
+        "knocked",
+        "somebody",
+        "when",
+        "midday"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-bakery",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "It was almost midday when somebody knocked on our front door.",
+        "When somebody knocked on our front door, it was almost midday."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "It was时间说明与when从句可前后互换，前置从句加逗号。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 3,
+      "stem": "词池：tall / are / bottles / some / empty / and / narrow",
+      "options": [],
+      "wordPool": [
+        "tall",
+        "are",
+        "bottles",
+        "some",
+        "empty",
+        "and",
+        "narrow"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-bakery",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "Some bottles are tall, narrow and empty.",
+        "Some bottles are tall, narrow, and empty.",
+        "Some tall bottles are narrow and empty.",
+        "Some tall and narrow bottles are empty.",
+        "Some bottles are tall, empty and narrow.",
+        "Some bottles are tall, empty, and narrow.",
+        "Some tall bottles are empty and narrow.",
+        "Some tall and empty bottles are narrow.",
+        "Some bottles are narrow, tall and empty.",
+        "Some bottles are narrow, tall, and empty.",
+        "Some narrow bottles are tall and empty.",
+        "Some narrow and tall bottles are empty.",
+        "Some bottles are narrow, empty and tall.",
+        "Some bottles are narrow, empty, and tall.",
+        "Some narrow bottles are empty and tall.",
+        "Some narrow and empty bottles are tall.",
+        "Some bottles are empty, tall and narrow.",
+        "Some bottles are empty, tall, and narrow.",
+        "Some empty bottles are tall and narrow.",
+        "Some empty and tall bottles are narrow.",
+        "Some bottles are empty, narrow and tall.",
+        "Some bottles are empty, narrow, and tall.",
+        "Some empty bottles are narrow and tall.",
+        "Some empty and narrow bottles are tall."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "三形容词可在be后协调列举（两种并列逗号风格），也可用一个作名词定语、余二作表语，或二个协调定语、余一作表语；24种已核句均不增删词。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 4,
+      "stem": "词池：the / are / tulips / think / I / flowers / spring / brightest",
+      "options": [],
+      "wordPool": [
+        "the",
+        "are",
+        "tulips",
+        "think",
+        "I",
+        "flowers",
+        "spring",
+        "brightest"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-bakery",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "I think tulips are the brightest spring flowers.",
+        "Tulips are the brightest spring flowers, I think.",
+        "The brightest spring flowers are tulips, I think.",
+        "I think the brightest spring flowers are tulips."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "I think为判断框架，可放句首或作句末插入语；后面主系表可按已列两种名词短语次序组成完整句。此为说话者意见，非外部事实命题。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 5,
+      "stem": "词池：the / when / holding / you / were / what / started / rain",
+      "options": [],
+      "wordPool": [
+        "the",
+        "when",
+        "holding",
+        "you",
+        "were",
+        "what",
+        "started",
+        "rain"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-bakery",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "What were you holding when the rain started?",
+        "When the rain started, what were you holding?"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "?"
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "what问携带/拿着/画什么，主句保持were you加-ing倒装；when从句前置或后置均可，句末用问号。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "b8afefacf2946028cf3cb1a1e6e09a28336a97e29fc8eeade4d0958e4bfefde5",
+  "student_passage": "",
+  "fully_filled_sentences": [
+    "When I go to the bakery, I always leave my wet umbrella outside.",
+    "It was almost midday when somebody knocked on our front door.",
+    "Some bottles are tall, narrow and empty.",
+    "I think tulips are the brightest spring flowers.",
+    "What were you holding when the rain started?"
+  ],
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "When I go to the bakery, I always leave my wet umbrella outside.",
+        "I always leave my wet umbrella outside when I go to the bakery."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "It was almost midday when somebody knocked on our front door.",
+        "When somebody knocked on our front door, it was almost midday."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "Some bottles are tall, narrow and empty.",
+        "Some bottles are tall, narrow, and empty.",
+        "Some tall bottles are narrow and empty.",
+        "Some tall and narrow bottles are empty.",
+        "Some bottles are tall, empty and narrow.",
+        "Some bottles are tall, empty, and narrow.",
+        "Some tall bottles are empty and narrow.",
+        "Some tall and empty bottles are narrow.",
+        "Some bottles are narrow, tall and empty.",
+        "Some bottles are narrow, tall, and empty.",
+        "Some narrow bottles are tall and empty.",
+        "Some narrow and tall bottles are empty.",
+        "Some bottles are narrow, empty and tall.",
+        "Some bottles are narrow, empty, and tall.",
+        "Some narrow bottles are empty and tall.",
+        "Some narrow and empty bottles are tall.",
+        "Some bottles are empty, tall and narrow.",
+        "Some bottles are empty, tall, and narrow.",
+        "Some empty bottles are tall and narrow.",
+        "Some empty and tall bottles are narrow.",
+        "Some bottles are empty, narrow and tall.",
+        "Some bottles are empty, narrow, and tall.",
+        "Some empty bottles are narrow and tall.",
+        "Some empty and narrow bottles are tall."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "I think tulips are the brightest spring flowers.",
+        "Tulips are the brightest spring flowers, I think.",
+        "The brightest spring flowers are tulips, I think.",
+        "I think the brightest spring flowers are tulips."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "What were you holding when the rain started?",
+        "When the rain started, what were you holding?"
+      ]
+    }
+  ],
+  "independent_word_pools": true,
+  "full_fill_variant_combinations": 768,
+  "cartesian_payload_not_duplicated": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 47,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "printed_pool_tokens_each": [
+      13,
+      11,
+      7,
+      8,
+      8
+    ],
+    "output_known_sentence_tokens_each": [
+      [
+        13,
+        13
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      [
+        8,
+        8,
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ]
+    ]
+  }
+}

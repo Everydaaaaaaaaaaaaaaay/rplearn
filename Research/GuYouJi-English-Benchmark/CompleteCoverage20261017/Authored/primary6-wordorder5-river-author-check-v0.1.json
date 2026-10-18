@@ -1,0 +1,411 @@
+{
+  "version": "0.1",
+  "id": "primary6-wordorder5-river",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "94c98de0840dba816875aaa444674f761d8c5756ae7f49085df742f74490c667",
+  "source_binding": "p6-wordorder5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WordOrderSourceBindings-v0.1.json",
+    "sha256": "c29451cf0dacf81debde6d6b1440bdfee5cc95a3ea737336f1e80e8f8cb55b9a"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.wordorder5",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-wordorder5-river-manuscript-v0.1.json",
+    "sha256": "9395583028f780f07185df80e1c0d5913cb0292ad421758dfc9f041247e598bb"
+  },
+  "word_order_five": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "词池：I / when / nearby / dog / small / my / keep / always / I / river / the / along / walk",
+      "options": [],
+      "wordPool": [
+        "I",
+        "when",
+        "nearby",
+        "dog",
+        "small",
+        "my",
+        "keep",
+        "always",
+        "I",
+        "river",
+        "the",
+        "along",
+        "walk"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-river",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "When I walk along the river, I always keep my small dog nearby.",
+        "I always keep my small dog nearby when I walk along the river."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "when时间从句可置前，也可放在主句后；前置版本加逗号。两处I须分别使用，always修饰主句动作。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 2,
+      "stem": "词池：about / was / it / gate / open / the / noticed / neighbour / our / when / midnight",
+      "options": [],
+      "wordPool": [
+        "about",
+        "was",
+        "it",
+        "gate",
+        "open",
+        "the",
+        "noticed",
+        "neighbour",
+        "our",
+        "when",
+        "midnight"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-river",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "It was about midnight when our neighbour noticed the open gate.",
+        "When our neighbour noticed the open gate, it was about midnight."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "It was时间说明与when从句可前后互换，前置从句加逗号。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 3,
+      "stem": "词池：blue / are / tents / some / cheap / and / small",
+      "options": [],
+      "wordPool": [
+        "blue",
+        "are",
+        "tents",
+        "some",
+        "cheap",
+        "and",
+        "small"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-river",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "Some tents are blue, small and cheap.",
+        "Some tents are blue, small, and cheap.",
+        "Some blue tents are small and cheap.",
+        "Some blue and small tents are cheap.",
+        "Some tents are blue, cheap and small.",
+        "Some tents are blue, cheap, and small.",
+        "Some blue tents are cheap and small.",
+        "Some blue and cheap tents are small.",
+        "Some tents are small, blue and cheap.",
+        "Some tents are small, blue, and cheap.",
+        "Some small tents are blue and cheap.",
+        "Some small and blue tents are cheap.",
+        "Some tents are small, cheap and blue.",
+        "Some tents are small, cheap, and blue.",
+        "Some small tents are cheap and blue.",
+        "Some small and cheap tents are blue.",
+        "Some tents are cheap, blue and small.",
+        "Some tents are cheap, blue, and small.",
+        "Some cheap tents are blue and small.",
+        "Some cheap and blue tents are small.",
+        "Some tents are cheap, small and blue.",
+        "Some tents are cheap, small, and blue.",
+        "Some cheap tents are small and blue.",
+        "Some cheap and small tents are blue."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "三形容词可在be后协调列举（两种并列逗号风格），也可用一个作名词定语、余二作表语，或二个协调定语、余一作表语；24种已核句均不增删词。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 4,
+      "stem": "词池：the / are / trams / think / I / vehicles / street / quietest",
+      "options": [],
+      "wordPool": [
+        "the",
+        "are",
+        "trams",
+        "think",
+        "I",
+        "vehicles",
+        "street",
+        "quietest"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-river",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "I think trams are the quietest street vehicles.",
+        "Trams are the quietest street vehicles, I think.",
+        "The quietest street vehicles are trams, I think.",
+        "I think the quietest street vehicles are trams."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "I think为判断框架，可放句首或作句末插入语；后面主系表可按已列两种名词短语次序组成完整句。此为说话者意见，非外部事实命题。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 5,
+      "stem": "词池：the / when / drawing / you / were / what / ended / music",
+      "options": [],
+      "wordPool": [
+        "the",
+        "when",
+        "drawing",
+        "you",
+        "were",
+        "what",
+        "ended",
+        "music"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-river",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "What were you drawing when the music ended?",
+        "When the music ended, what were you drawing?"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "?"
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "what问携带/拿着/画什么，主句保持were you加-ing倒装；when从句前置或后置均可，句末用问号。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "24a9b29bc8193c3b25639dd422deec1b77741c3af5c01199b49ee26192e6c5b0",
+  "student_passage": "",
+  "fully_filled_sentences": [
+    "When I walk along the river, I always keep my small dog nearby.",
+    "It was about midnight when our neighbour noticed the open gate.",
+    "Some tents are blue, small and cheap.",
+    "I think trams are the quietest street vehicles.",
+    "What were you drawing when the music ended?"
+  ],
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "When I walk along the river, I always keep my small dog nearby.",
+        "I always keep my small dog nearby when I walk along the river."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "It was about midnight when our neighbour noticed the open gate.",
+        "When our neighbour noticed the open gate, it was about midnight."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "Some tents are blue, small and cheap.",
+        "Some tents are blue, small, and cheap.",
+        "Some blue tents are small and cheap.",
+        "Some blue and small tents are cheap.",
+        "Some tents are blue, cheap and small.",
+        "Some tents are blue, cheap, and small.",
+        "Some blue tents are cheap and small.",
+        "Some blue and cheap tents are small.",
+        "Some tents are small, blue and cheap.",
+        "Some tents are small, blue, and cheap.",
+        "Some small tents are blue and cheap.",
+        "Some small and blue tents are cheap.",
+        "Some tents are small, cheap and blue.",
+        "Some tents are small, cheap, and blue.",
+        "Some small tents are cheap and blue.",
+        "Some small and cheap tents are blue.",
+        "Some tents are cheap, blue and small.",
+        "Some tents are cheap, blue, and small.",
+        "Some cheap tents are blue and small.",
+        "Some cheap and blue tents are small.",
+        "Some tents are cheap, small and blue.",
+        "Some tents are cheap, small, and blue.",
+        "Some cheap tents are small and blue.",
+        "Some cheap and small tents are blue."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "I think trams are the quietest street vehicles.",
+        "Trams are the quietest street vehicles, I think.",
+        "The quietest street vehicles are trams, I think.",
+        "I think the quietest street vehicles are trams."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "What were you drawing when the music ended?",
+        "When the music ended, what were you drawing?"
+      ]
+    }
+  ],
+  "independent_word_pools": true,
+  "full_fill_variant_combinations": 768,
+  "cartesian_payload_not_duplicated": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 47,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "printed_pool_tokens_each": [
+      13,
+      11,
+      7,
+      8,
+      8
+    ],
+    "output_known_sentence_tokens_each": [
+      [
+        13,
+        13
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      [
+        8,
+        8,
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ]
+    ]
+  }
+}

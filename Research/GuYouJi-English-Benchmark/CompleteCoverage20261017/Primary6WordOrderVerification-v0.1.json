@@ -1,0 +1,79 @@
+{
+  "version": "0.1",
+  "batch": {
+    "path": "CompleteCoverage20261017/Primary6WordOrderOriginalBatch-v0.1.json",
+    "sha256": "43141aa56dbc534165de6ec4cc730a34a6176a26815117684ea3c9ea19dc7fb4"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WordOrderSourceBindings-v0.1.json",
+    "sha256": "c29451cf0dacf81debde6d6b1440bdfee5cc95a3ea737336f1e80e8f8cb55b9a"
+  },
+  "current_inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.95.json",
+    "sha256": "ce6b514d4524eba241ad160bfda56660502d2d7151152fcc041899172a5db594"
+  },
+  "marking": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-marking-v0.1.json",
+    "sha256": "5d730fdbb1ad3396258c480fb5f54710a1db785ffe8f28d182fc5c599f96b7f6"
+  },
+  "contracts": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-contracts-v0.1.json",
+    "sha256": "d14222f1e91569cd570ba41d5a978872d653cc0723eaec9f6bd94cf923a0a937"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-browser-v0.1.json",
+    "sha256": "974ce8d2b1923a44830ef4d4d538a81d52c5c0452b95963b7654e61f286c853a"
+  },
+  "pending_browser": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-pending-ui-v0.1.json",
+    "sha256": "d0f38b88ffa60e923812101bfafe0fb622af7c4ecdc70178eda056d293eeb469"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-final-check-v0.1.json",
+    "sha256": "7a0fd1fd238791b9333d6f767d3f534241fde3ce34ecb66fcb8a22fa67465075"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-family-load-v0.1.json",
+    "sha256": "4cf1f1d238046cd484ce136c3c6c67fc9986d165d8fb3b7e200dfcb5d8f4bb40"
+  },
+  "screenshot": {
+    "path": "build/english-benchmark-authority-20261017/wordorder646-review-v0.1.png",
+    "sha256": "d1ed4d05cfe19a9fca502b4929aded6a29dd561fe644fded86d7f6bdbecd1e44"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.169.json",
+    "sha256": "e762084d165f6bfa089da1f490eca78dc7a5adf585c3fa5ac3b436cb99ef9343"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review646-wordorder-delta-v0.1.json",
+        "sha256": "4aa449d586d372c90a0dd0ed7f19eaf2b5547a16f93d89a99cfe6d6acab84597"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/wordorder646-review-v0.1.png",
+        "sha256": "d1ed4d05cfe19a9fca502b4929aded6a29dd561fe644fded86d7f6bdbecd1e44"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "new_originals": 3,
+  "new_responses": 15,
+  "actual_known_sentences_in_whole_UI": 102,
+  "actual_wrong_blank_review_vectors": 3,
+  "actual_case_question_punctuation_vectors": 3,
+  "all_three_review_reset": true,
+  "marking_risk_controls": 85,
+  "source_author_negative_controls": 36,
+  "old643_group_payloads_preserved": true,
+  "pinned_revision_count": 33,
+  "remaining_specific_modes": 3,
+  "remaining_same_mode_whole_originals": 9,
+  "new_source_count": 0,
+  "independent_teacher_student_commercial_production": false,
+  "backend_fixed_six_unchanged": true,
+  "all_required_types_complete": false
+}

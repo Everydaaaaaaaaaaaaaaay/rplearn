@@ -1,0 +1,411 @@
+{
+  "version": "0.1",
+  "id": "primary6-wordorder5-crossing",
+  "grade": "primary6",
+  "questions": 5,
+  "candidate_sha256": "7ee367dc9e499cad5966d73409120703f0cff418ea11b185fd12f58fc24b1859",
+  "source_binding": "p6-wordorder5",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/Primary6WordOrderSourceBindings-v0.1.json",
+    "sha256": "c29451cf0dacf81debde6d6b1440bdfee5cc95a3ea737336f1e80e8f8cb55b9a"
+  },
+  "source_group_id": "primary6.shenzhenexperiment2017.wordorder5",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/primary6-wordorder5-crossing-manuscript-v0.1.json",
+    "sha256": "d675c3567da1f711cac1f9e839b46a64307e17dc0f3ecea543d682a6e60bddf3"
+  },
+  "word_order_five": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "词池：I / when / first / go / children / younger / the / let / always / I / crossing / the / reach",
+      "options": [],
+      "wordPool": [
+        "I",
+        "when",
+        "first",
+        "go",
+        "children",
+        "younger",
+        "the",
+        "let",
+        "always",
+        "I",
+        "crossing",
+        "the",
+        "reach"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-crossing",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "When I reach the crossing, I always let the younger children go first.",
+        "I always let the younger children go first when I reach the crossing."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "when时间从句可置前，也可放在主句后；前置版本加逗号。两处I须分别使用，always修饰主句动作。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 2,
+      "stem": "词池：nearly / was / it / bell / fire / the / heard / we / when / o'clock / seven",
+      "options": [],
+      "wordPool": [
+        "nearly",
+        "was",
+        "it",
+        "bell",
+        "fire",
+        "the",
+        "heard",
+        "we",
+        "when",
+        "o'clock",
+        "seven"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-crossing",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "It was nearly seven o'clock when we heard the fire bell.",
+        "When we heard the fire bell, it was nearly seven o'clock."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "过去时间说明与when从句可前后互换；o'clock保留撇号，不拆成两个词。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 3,
+      "stem": "词池：small / are / boxes / some / strong / and / light",
+      "options": [],
+      "wordPool": [
+        "small",
+        "are",
+        "boxes",
+        "some",
+        "strong",
+        "and",
+        "light"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-crossing",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "Some boxes are small, light and strong.",
+        "Some boxes are small, light, and strong.",
+        "Some small boxes are light and strong.",
+        "Some small and light boxes are strong.",
+        "Some boxes are small, strong and light.",
+        "Some boxes are small, strong, and light.",
+        "Some small boxes are strong and light.",
+        "Some small and strong boxes are light.",
+        "Some boxes are light, small and strong.",
+        "Some boxes are light, small, and strong.",
+        "Some light boxes are small and strong.",
+        "Some light and small boxes are strong.",
+        "Some boxes are light, strong and small.",
+        "Some boxes are light, strong, and small.",
+        "Some light boxes are strong and small.",
+        "Some light and strong boxes are small.",
+        "Some boxes are strong, small and light.",
+        "Some boxes are strong, small, and light.",
+        "Some strong boxes are small and light.",
+        "Some strong and small boxes are light.",
+        "Some boxes are strong, light and small.",
+        "Some boxes are strong, light, and small.",
+        "Some strong boxes are light and small.",
+        "Some strong and light boxes are small."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "三形容词可在be后协调列举（两种并列逗号风格），也可用一个作名词定语、余二作表语，或二个协调定语、余一作表语；24种已核句均不增删词。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 4,
+      "stem": "词池：the / are / puzzles / think / I / games / useful / most",
+      "options": [],
+      "wordPool": [
+        "the",
+        "are",
+        "puzzles",
+        "think",
+        "I",
+        "games",
+        "useful",
+        "most"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-crossing",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "I think puzzles are the most useful games.",
+        "Puzzles are the most useful games, I think.",
+        "The most useful games are puzzles, I think.",
+        "I think the most useful games are puzzles."
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "."
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "I think为判断框架，可放句首或作句末插入语；后面主系表可按已列两种名词短语次序组成完整句。此为说话者意见，非外部事实命题。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    },
+    {
+      "number": 5,
+      "stem": "词池：the / when / carrying / you / were / what / stopped / lift",
+      "options": [],
+      "wordPool": [
+        "the",
+        "when",
+        "carrying",
+        "you",
+        "were",
+        "what",
+        "stopped",
+        "lift"
+      ],
+      "wordOrder": {
+        "version": 1,
+        "id": "primary6-wordorder5-crossing",
+        "positions": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "acceptedAnswers": [
+        "What were you carrying when the lift stopped?",
+        "When the lift stopped, what were you carrying?"
+      ],
+      "fillMarking": {
+        "version": 1,
+        "review": "author_context_checked",
+        "normalization": "whole_sentence_tokens_v1",
+        "useAllTokens": "exact_multiset",
+        "caseRule": "sentence_initial_and_printed_tokens",
+        "endings": [
+          "?"
+        ],
+        "maxWords": null,
+        "unlisted": "review",
+        "unknownSyntax": "review",
+        "rejectedAnswers": []
+      },
+      "rationale": "what问携带/拿着/画什么，主句保持were you加-ing倒装；when从句前置或后置均可，句末用问号。；全部给词必须使用，重复项按出现次数使用，不增删或变形。已列语序同等接受；其他排列待复核，不据一个参考句排除。"
+    }
+  ],
+  "canonical_response_block_sha256": "458a41aa702f28d292ceb69cc85ae7b94b63aec9f726cffdf9d8aef18979d312",
+  "student_passage": "",
+  "fully_filled_sentences": [
+    "When I reach the crossing, I always let the younger children go first.",
+    "It was nearly seven o'clock when we heard the fire bell.",
+    "Some boxes are small, light and strong.",
+    "I think puzzles are the most useful games.",
+    "What were you carrying when the lift stopped?"
+  ],
+  "full_slot_substitutions": [
+    {
+      "number": 1,
+      "accepted_full_inputs": [
+        "When I reach the crossing, I always let the younger children go first.",
+        "I always let the younger children go first when I reach the crossing."
+      ]
+    },
+    {
+      "number": 2,
+      "accepted_full_inputs": [
+        "It was nearly seven o'clock when we heard the fire bell.",
+        "When we heard the fire bell, it was nearly seven o'clock."
+      ]
+    },
+    {
+      "number": 3,
+      "accepted_full_inputs": [
+        "Some boxes are small, light and strong.",
+        "Some boxes are small, light, and strong.",
+        "Some small boxes are light and strong.",
+        "Some small and light boxes are strong.",
+        "Some boxes are small, strong and light.",
+        "Some boxes are small, strong, and light.",
+        "Some small boxes are strong and light.",
+        "Some small and strong boxes are light.",
+        "Some boxes are light, small and strong.",
+        "Some boxes are light, small, and strong.",
+        "Some light boxes are small and strong.",
+        "Some light and small boxes are strong.",
+        "Some boxes are light, strong and small.",
+        "Some boxes are light, strong, and small.",
+        "Some light boxes are strong and small.",
+        "Some light and strong boxes are small.",
+        "Some boxes are strong, small and light.",
+        "Some boxes are strong, small, and light.",
+        "Some strong boxes are small and light.",
+        "Some strong and small boxes are light.",
+        "Some boxes are strong, light and small.",
+        "Some boxes are strong, light, and small.",
+        "Some strong boxes are light and small.",
+        "Some strong and light boxes are small."
+      ]
+    },
+    {
+      "number": 4,
+      "accepted_full_inputs": [
+        "I think puzzles are the most useful games.",
+        "Puzzles are the most useful games, I think.",
+        "The most useful games are puzzles, I think.",
+        "I think the most useful games are puzzles."
+      ]
+    },
+    {
+      "number": 5,
+      "accepted_full_inputs": [
+        "What were you carrying when the lift stopped?",
+        "When the lift stopped, what were you carrying?"
+      ]
+    }
+  ],
+  "independent_word_pools": true,
+  "full_fill_variant_combinations": 768,
+  "cartesian_payload_not_duplicated": true,
+  "source_count_increment": 0,
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "load_measure": {
+    "body_English_words": 0,
+    "stem_English_words": 47,
+    "options_English_words_with_repeated_bank": 0,
+    "output_response_positions": 5,
+    "printed_pool_tokens_each": [
+      13,
+      11,
+      7,
+      8,
+      8
+    ],
+    "output_known_sentence_tokens_each": [
+      [
+        13,
+        13
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      [
+        8,
+        8,
+        8,
+        8
+      ],
+      [
+        8,
+        8
+      ]
+    ]
+  }
+}
