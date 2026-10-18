@@ -1,5 +1,7 @@
 # GuYouJi English Benchmark
 
+**2026-10-18小六课文配套现对应7/10：** [新页图与未得](CompleteCoverage20261017/Primary6DamagedSourceCompanionFollowup-v0.2.json)、[核验与恢复](CompleteCoverage20261017/Primary6DamagedSourceCompanionVerification-v0.2.json)从实际公开帖子HTML嵌入页图正常取得消防员/校工/农夫材料，新对应2/5/6/8，连同原1/3/10共7题；4/7/9、具体版次及正式键仍未知。无账号/门槛绕过或TLS关闭；旧图403和点读站证书过期路径不再重试。18张相关/排除用原图与3原HTML保留，约2MB增量去重归档、四定向恢复通过，不复制整库。652/4361、191格及一配置三稿待补保持；页面已实测显示7/10与4/7/9未知，不升级为全输入。接续已观察Unit4公开复习音频线索及低小/原音/独立验证，未称完整。
+
 **2026-10-18小六十空四选完形各三稿：** [本批与稿件](CompleteCoverage20261017/Primary6TenFourClozeOriginalBatch-v0.2.json)、[验证与恢复](CompleteCoverage20261017/Primary6TenFourClozeVerification-v0.1.json)新增3完整新故事30回应，当前652/4361、191有稿格。120候选逐一整组回填，45反向契约、30实际回应、6空答错答向量和三解析重置通过；slow up等可替代候选已在未发布草稿中修正。主参照原小学教辅十空四独立候选结构，另核公开小学练习仅为形状旁证，不增认证校卷或修复原开头/缺键；该练习54空语用及气候陈述保留风险。三新故事不复制原动物死亡笑话。增量12对象约225KB、三定向恢复SHA通过，无新快照。余依课文十首字母一配置3稿及低小现行/源配套/独立验证继续，未称任务完整。
 
 **2026-10-18小六五题四选阅读各三稿：** [三稿与分层](CompleteCoverage20261017/Primary6FiveJointReadingOriginalBatch-v0.1.json)、[验证与恢复](CompleteCoverage20261017/Primary6FiveJointReadingVerification-v0.1.json)新增3完整组15回应，当前649/4331、190有稿格。第4题两空联选仍只计一回应；三篇完整四段故事及60候选依据齐备，45反向契约、15实际回应、6空答错答向量与三解析重置通过。另核完整同文Spectrum缓存读者四段141词，和原教辅末句残缺分版本，不当原卷补页、原校认证或中国小二适配；原输入/键缺单独保留。增量9对象约174KB、三定向恢复SHA通过，无新快照。余依课文十首字母、缺文十空四选两配置6稿及低小现行/原音/源键/独立验证继续，未称任务完整。
