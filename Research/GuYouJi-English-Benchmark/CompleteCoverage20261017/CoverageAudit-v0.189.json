@@ -1,0 +1,126 @@
+{
+  "version": "0.189",
+  "scope": "current_common_type_representativeness_and_quality_audit",
+  "previous_audit": {
+    "path": "CompleteCoverage20261017/CoverageAudit-v0.188.json",
+    "sha256": "3f47e6bcbd7c2528d3285bc6913765e9e9fbcee6febc8f05c3e50b65f194f166"
+  },
+  "scope_notice": "按2026-10-18用户更正，只围绕各档位常见客观题型；旧全配置覆盖、地方特别模式三稿和未知笛卡尔积不再是本轮验收。旧问题留在历史审计，不等于当前待办。",
+  "all_required_types_complete": false,
+  "issues": [
+    {
+      "id": "common-type-representative-review",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "常见性逐档复核",
+      "state_label": "中学41父卷标签已按家族去重对照；小学对照代表卷，仍有明确实际缺口",
+      "detail": "高中书面四主干在已选父卷反复出现，地区单选另标；不以41标签称独立认证或全国普遍率。小学三四年级常规单选有校方或卷面支持，现有目录却无作者，是应定向补的真实方向；先取得完整常规节再编，不从分析猜候选/题数。其余小学保留项仍为初筛，一二年级现行无纸笔活动及高级产品映射未完成。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.3.json",
+          "sha256": "1d590482b4e7c084543fbdec9b23a07d8187b608282ba4b5b9b897f152fb9884"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.2.json",
+          "sha256": "e8527dfe0166e04b8ae4f7d04e310c63dba02f1dce53461fad24de12f5df2353"
+        }
+      ]
+    },
+    {
+      "id": "retained-common-original-quality",
+      "levels": [
+        "primary1",
+        "primary2",
+        "primary3",
+        "primary4",
+        "primary5",
+        "primary6",
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        "undergraduate",
+        "postgraduate",
+        "advanced"
+      ],
+      "label": "保留题目质量",
+      "state_label": "完整题面与判分已有核验，继续处理具体正确性问题",
+      "detail": "不再按每个特别篇数/题数/图片配置新编三稿。已有稿必须保留完整材料与配套、答案/合法变体、逐项依据；未列词形待复核，不设2或3个答案上限。独立教师/学生、权利商用和生产验证另列，当前后端固定六题未接完整组。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.3.json",
+          "sha256": "1d590482b4e7c084543fbdec9b23a07d8187b608282ba4b5b9b897f152fb9884"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.2.json",
+          "sha256": "e8527dfe0166e04b8ae4f7d04e310c63dba02f1dce53461fad24de12f5df2353"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.2.json",
+          "sha256": "875606a028c4cbf5cc9df4c4cfbb0698461c896b5c980f8cf98be04971a6f27d"
+        }
+      ]
+    },
+    {
+      "id": "early-primary-common-nonpaper-boundary",
+      "levels": [
+        "primary1",
+        "primary2"
+      ],
+      "label": "低年级常用活动与历史纸笔边界",
+      "state_label": "仅保留图音/识词初筛，仍缺代表性现行完整活动材料",
+      "detail": "历史纸笔稿不当现行学校无纸笔测评。只定向找常见闭集活动的必要输入和规则，不把每篇报道的新站点列作必补，不恢复口头主观评分。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeScope-v0.3.json",
+          "sha256": "1d590482b4e7c084543fbdec9b23a07d8187b608282ba4b5b9b897f152fb9884"
+        },
+        {
+          "path": "CompleteCoverage20261017/CommonTypeReviewInventory-v0.2.json",
+          "sha256": "e8527dfe0166e04b8ae4f7d04e310c63dba02f1dce53461fad24de12f5df2353"
+        },
+        {
+          "path": "CompleteCoverage20261017/MainlandLowPrimaryClosedActivityFollowup-v0.18.json",
+          "sha256": "437ffa8abf4402d4bf52391b3a7672ffc1b53b80c6f9235586f259edbecb53ad"
+        }
+      ]
+    },
+    {
+      "id": "primary-common-choice-not-odd-modes",
+      "levels": [
+        "primary3",
+        "primary4"
+      ],
+      "label": "常规单项选择的实际缺口",
+      "state_label": "优先补完整常规题节，不再追少见配置",
+      "detail": "三年级校方分析与江都标签卷第八节同见单选；四年级校方期末分析第六节为选择。目前作者目录尚无这两格。需完整题面、候选与键核对后编题，评论/截断网页不作为完整gold，也不放出无依据的待补按钮。",
+      "evidence": [
+        {
+          "path": "CompleteCoverage20261017/CommonTypeRepresentativeReview-v0.1.json",
+          "sha256": "761cbe09ddbd8b0d9bce2f27493054e5bfea9550cefb6d35eea5eeeb52fd7b1d"
+        }
+      ]
+    }
+  ]
+}
