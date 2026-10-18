@@ -1,0 +1,243 @@
+{
+  "version": "0.11",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.10.json",
+    "sha256": "badd48cf0d65658b5f6c01a616fd5b4da7492833fff9d5f9058c367eb93417ca"
+  },
+  "scope": "seventh_batch_grade9_whole_two_materials_5plus10_three_options_weighted_three_originals",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.4.json",
+    "sha256": "368433d1eb73948b32c3254c98742ea89720190ec84983520124a0df77e6cdea"
+  },
+  "source_quality_notes": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.4.json",
+    "sha256": "72820d7314265afc0ce4ad93582b0f4ea2428ba36e68f12719a58b68b3f5ca3b"
+  },
+  "records": [
+    {
+      "id": "grade9-two-cloze-frame-workshop",
+      "source_group_id": "grade9-chengdu2025-21cnjy23208601.clozeWhole",
+      "source_member_ids": [
+        "grade9-chengdu2025-21cnjy23208601.clozeA",
+        "grade9-chengdu2025-21cnjy23208601.clozeB"
+      ],
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-frame-workshop-v0.1.md",
+        "sha256": "e07b9c40ce59a6912e4e6e4c71ab38e238225cb1f5d32653f6e205d3b59c1683"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-frame-workshop-author-check-v0.1.json",
+        "sha256": "0e322ada091fe27ad9ecdc6fc64434b780925df23c5fe022f2737844feb1b063"
+      },
+      "load_measure": {
+        "body_English_words": 278,
+        "body_Han_characters": 6,
+        "stem_English_words": 15,
+        "options_English_words_with_repeated_bank": 48,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 4
+      },
+      "per_material_load": [
+        {
+          "label": "A",
+          "response_numbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "body_English_words": 97,
+          "body_Han_characters": 0,
+          "points_each": 2
+        },
+        {
+          "label": "B",
+          "response_numbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "body_English_words": 179,
+          "body_Han_characters": 0,
+          "points_each": 1
+        }
+      ],
+      "source_body_words": [
+        99,
+        194
+      ],
+      "answer_label_counts": {
+        "C": 5,
+        "A": 5,
+        "B": 5
+      },
+      "max_same_label_run": 3
+    },
+    {
+      "id": "grade9-two-cloze-route-library",
+      "source_group_id": "grade9-chengdu2025-21cnjy23208601.clozeWhole",
+      "source_member_ids": [
+        "grade9-chengdu2025-21cnjy23208601.clozeA",
+        "grade9-chengdu2025-21cnjy23208601.clozeB"
+      ],
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-route-library-v0.1.md",
+        "sha256": "dcda38a1a3f4ede00f2b31a779f8833145f943d09f45368d3084bba496fa27bf"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-route-library-author-check-v0.1.json",
+        "sha256": "f7f93467697db2761e016bb429d3343744262cffd8eae180fb3b3535faf93fc9"
+      },
+      "load_measure": {
+        "body_English_words": 300,
+        "body_Han_characters": 6,
+        "stem_English_words": 15,
+        "options_English_words_with_repeated_bank": 46,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 4
+      },
+      "per_material_load": [
+        {
+          "label": "A",
+          "response_numbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "body_English_words": 110,
+          "body_Han_characters": 0,
+          "points_each": 2
+        },
+        {
+          "label": "B",
+          "response_numbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "body_English_words": 188,
+          "body_Han_characters": 0,
+          "points_each": 1
+        }
+      ],
+      "source_body_words": [
+        99,
+        194
+      ],
+      "answer_label_counts": {
+        "C": 5,
+        "A": 5,
+        "B": 5
+      },
+      "max_same_label_run": 2
+    },
+    {
+      "id": "grade9-two-cloze-basket-newsroom",
+      "source_group_id": "grade9-chengdu2025-21cnjy23208601.clozeWhole",
+      "source_member_ids": [
+        "grade9-chengdu2025-21cnjy23208601.clozeA",
+        "grade9-chengdu2025-21cnjy23208601.clozeB"
+      ],
+      "responses": 15,
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-basket-newsroom-v0.1.md",
+        "sha256": "29f9d48215eac491b4bf1fcde5592e628928122ca3b373f6078cc5657276d362"
+      },
+      "author_check": {
+        "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-basket-newsroom-author-check-v0.1.json",
+        "sha256": "3764f893c123bf62a68e2ef19c5ca9ea30d61d37d1553081031d33c18ab3bf1c"
+      },
+      "load_measure": {
+        "body_English_words": 289,
+        "body_Han_characters": 6,
+        "stem_English_words": 15,
+        "options_English_words_with_repeated_bank": 46,
+        "output_response_positions": 15,
+        "output_requirement_English_words": 4
+      },
+      "per_material_load": [
+        {
+          "label": "A",
+          "response_numbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "body_English_words": 99,
+          "body_Han_characters": 0,
+          "points_each": 2
+        },
+        {
+          "label": "B",
+          "response_numbers": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "body_English_words": 188,
+          "body_Han_characters": 0,
+          "points_each": 1
+        }
+      ],
+      "source_body_words": [
+        99,
+        194
+      ],
+      "answer_label_counts": {
+        "B": 5,
+        "C": 5,
+        "A": 5
+      },
+      "max_same_label_run": 2
+    }
+  ],
+  "prior_groups": 685,
+  "prior_responses": 4826,
+  "new_complete_groups": 3,
+  "new_responses": 45,
+  "current_groups": 688,
+  "current_responses": 4871,
+  "source_selected_body_words": [
+    99,
+    194
+  ],
+  "selected_restored_modes_filled_so_far": 8,
+  "remaining_modes": 6,
+  "remaining_whole_originals": 18,
+  "all45gaps135candidate_full_group_substitutions_author_read": true,
+  "two_materials_mandatory_and_mapped": true,
+  "individual_five_or_ten_not_counted_as_whole_fifteen": true,
+  "source_key_and_grammar_risks_not_copied": true,
+  "no_source_files_added": true,
+  "new_authenticated_school_papers": 0,
+  "independent_teacher_student_commercial_production": false,
+  "all_required_types_complete": false
+}

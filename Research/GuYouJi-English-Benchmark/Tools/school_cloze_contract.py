@@ -72,6 +72,8 @@ def validate_whole_section(source):
         assert obs['shape']['details']['section_materials']==config['materials']
         assert obs['shape']['details']['section_subgroup_slots']==[s['responses'] for s in config['subgroups']]
         assert obs['necessary_input_complete'] is True
+        if 'points_each' in obs['shape']['details']:
+            assert obs['shape']['details']['points_each']==points[index]
 
 
 def validate(draft, binding, source):
@@ -107,7 +109,9 @@ def validate(draft, binding, source):
             for number in numbers:
                 q=draft['questions'][number-1]
                 assert q['materialLabel']==label and q['points']==points
-                assert q['stem']==label+'篇 · 第'+str(number)+'空'
+                expected_stem=label+'篇 · 第'+str(number)+'空'
+                if len(set(config['points_each_subgroup']))>1:expected_stem+='（'+str(points)+'分）'
+                assert q['stem']==expected_stem
     passage = student_material(sections)
     assert re.findall(r'\((\d+)\) ____',passage) == list(map(str,range(1,count+1)))
     filled = passage

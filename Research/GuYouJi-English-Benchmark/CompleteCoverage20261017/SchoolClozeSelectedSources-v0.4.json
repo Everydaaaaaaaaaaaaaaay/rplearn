@@ -1,0 +1,184 @@
+{
+  "version": "0.4",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.3.json",
+    "sha256": "192376b71ab20f63cbb2220d175f675b92c8c39c7d62056a67301e96f3a911be"
+  },
+  "scope": "one_previously_observed_chengdu_exam_labelled_whole_section_not_ordinary_school_parent",
+  "groups": [
+    {
+      "id": "grade9-chengdu2025-21cnjy23208601.clozeWhole",
+      "level": 9,
+      "kind": "choice_cloze",
+      "responses": 15,
+      "options_each": 3,
+      "configuration": {
+        "materials": 2,
+        "responses": 15,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 5,
+            "options_each": 3
+          },
+          {
+            "label": "B",
+            "responses": 10,
+            "options_each": 3
+          }
+        ],
+        "options_each": 3,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          2,
+          1
+        ],
+        "section_points": 20
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "paper_id": "grade9-chengdu2025-21cnjy23208601",
+      "source_member_ids": [
+        "grade9-chengdu2025-21cnjy23208601.clozeA",
+        "grade9-chengdu2025-21cnjy23208601.clozeB"
+      ],
+      "source_observations": [
+        {
+          "id": "grade9-chengdu2025-21cnjy23208601.clozeA",
+          "paper_id": "grade9-chengdu2025-21cnjy23208601",
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 5,
+            "options_each": 3,
+            "details": {
+              "materials": 1,
+              "part": "A",
+              "section_materials": 2,
+              "section_subgroup_slots": [
+                5,
+                10
+              ],
+              "points_each": 2
+            },
+            "grade": 9
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+            "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false,
+          "input_confirmation_scope": "selected_cloze_material_all_numbered_blanks_all_option_rows; source instruction reviewed in paper block; not key correctness"
+        },
+        {
+          "id": "grade9-chengdu2025-21cnjy23208601.clozeB",
+          "paper_id": "grade9-chengdu2025-21cnjy23208601",
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 10,
+            "options_each": 3,
+            "details": {
+              "materials": 1,
+              "part": "B",
+              "section_materials": 2,
+              "section_subgroup_slots": [
+                5,
+                10
+              ],
+              "points_each": 1
+            },
+            "grade": 9
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+            "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false,
+          "input_confirmation_scope": "selected_cloze_material_all_numbered_blanks_all_option_rows; source instruction reviewed in paper block; not key correctness"
+        }
+      ],
+      "source_spans": [
+        {
+          "label": "A",
+          "source_member_id": "grade9-chengdu2025-21cnjy23208601.clozeA",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+            "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+          },
+          "start_offset": 3937,
+          "end_offset": 4681,
+          "sha256": "cd0a7bfd61961e7bbc60ea574a6f203824c92a2e500e458a0c2bb9f64f8f0661",
+          "question_numbers": [
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "instruction": "七、完形填空阅读下面两篇短文，根据短文内容，从A、B、C三个选项中选出可以填入空白处的最佳选项。（共15小题；计20分。A篇每小题2分，计10分；B篇每小题1分，计10分）",
+          "instruction_sha256": "022b402a89fe0016fb990e3770b3855e7e96d329c2bf67e0c0709bbfb61c6f48"
+        },
+        {
+          "label": "B",
+          "source_member_id": "grade9-chengdu2025-21cnjy23208601.clozeB",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+            "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+          },
+          "start_offset": 5372,
+          "end_offset": 6838,
+          "sha256": "a2b9b0f5b92ffa251e13d3b15672a65a42ac4b2dc0d608fdeaf4da56a5f5492a",
+          "question_numbers": [
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "instruction": "七、完形填空阅读下面两篇短文，根据短文内容，从A、B、C三个选项中选出可以填入空白处的最佳选项。（共15小题；计20分。A篇每小题2分，计10分；B篇每小题1分，计10分）",
+          "instruction_sha256": "022b402a89fe0016fb990e3770b3855e7e96d329c2bf67e0c0709bbfb61c6f48"
+        }
+      ],
+      "whole_section": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade9-chengdu2025-21cnjy23208601-resource-v0.2.txt",
+          "sha256": "48652096d5ceef56e0ad3f61b68aba7e8aeae25085434119bb8d9438f59362ca"
+        },
+        "start_offset": 3848,
+        "end_offset": 3934,
+        "sha256": "022b402a89fe0016fb990e3770b3855e7e96d329c2bf67e0c0709bbfb61c6f48",
+        "member_ids": [
+          "grade9-chengdu2025-21cnjy23208601.clozeA",
+          "grade9-chengdu2025-21cnjy23208601.clozeB"
+        ],
+        "mandatory_all_materials": true
+      },
+      "source_material_english_words": [
+        99,
+        194
+      ],
+      "printed_body_title": "2025年四川省成都市中考真题",
+      "source_type_as_printed": "2025年四川省成都市中考真题",
+      "source_not_ordinary_school_paper": true,
+      "source_original_school_authentication": false,
+      "published_key_quality": "not_independent_gold",
+      "new_paper_count": 0
+    }
+  ],
+  "new_sources": 0,
+  "new_authenticated_school_papers": 0
+}

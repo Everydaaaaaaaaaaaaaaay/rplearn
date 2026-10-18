@@ -1,0 +1,761 @@
+{
+  "version": "0.1",
+  "id": "grade9-two-cloze-route-library",
+  "grade": 9,
+  "questions": 15,
+  "candidate_sha256": "dcda38a1a3f4ede00f2b31a779f8833145f943d09f45368d3084bba496fa27bf",
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.4.json",
+    "sha256": "368433d1eb73948b32c3254c98742ea89720190ec84983520124a0df77e6cdea"
+  },
+  "source_binding": "grade9-chengdu2025-21cnjy23208601.clozeWhole.binding",
+  "manuscript": {
+    "path": "CompleteCoverage20261017/Authored/grade9-two-cloze-route-library-manuscript-v0.1.json",
+    "sha256": "9c23b21dceccae7b0b123bd9cfca4226676862f2c86600d6ab21111d26a2c842"
+  },
+  "source_count_increment": 0,
+  "school_complete_cloze": true,
+  "review_response_tasks": [
+    {
+      "number": 1,
+      "stem": "A篇 · 第1空（2分）",
+      "materialLabel": "A",
+      "points": 2,
+      "options": [
+        [
+          "A",
+          "widest"
+        ],
+        [
+          "B",
+          "noisiest"
+        ],
+        [
+          "C",
+          "shortest"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：没有路线宽度信息，时间对比不能推出宽度；B：没有声音信息，不能用时长判断噪声；C：五分钟比另一条十五分钟短，对应最短路线"
+    },
+    {
+      "number": 2,
+      "stem": "A篇 · 第2空（2分）",
+      "materialLabel": "A",
+      "points": 2,
+      "options": [
+        [
+          "A",
+          "pointless"
+        ],
+        [
+          "B",
+          "successful"
+        ],
+        [
+          "C",
+          "essential"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：十点开门比阿姨九点离开迟，等开门无法赶在离家前交包裹；B：当时尚未等且等会错过，不能说等待已成功；C：有另一条路线可走，等不利于按时交付，非必需"
+    },
+    {
+      "number": 3,
+      "stem": "A篇 · 第3空（2分）",
+      "materialLabel": "A",
+      "points": 2,
+      "options": [
+        [
+          "A",
+          "return"
+        ],
+        [
+          "B",
+          "post"
+        ],
+        [
+          "C",
+          "receive"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：阿姨尚未收到，无退还我物品情节；B：阿姨是在站旁从我手上收，不是把包裹邮寄出去；C：我带包裹给阿姨，她在车站收取"
+    },
+    {
+      "number": 4,
+      "stem": "A篇 · 第4空（2分）",
+      "materialLabel": "A",
+      "points": 2,
+      "options": [
+        [
+          "A",
+          "wasted"
+        ],
+        [
+          "B",
+          "saved"
+        ],
+        [
+          "C",
+          "doubled"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：不用再走到家，作者总结省时，非反耗时；B：站旁交付省去剩下到阿姨家的路程，反省时；C：没提供两倍耗时，而且免去剩余路程"
+    },
+    {
+      "number": 5,
+      "stem": "A篇 · 第5空（2分）",
+      "materialLabel": "A",
+      "points": 2,
+      "options": [
+        [
+          "A",
+          "unexpected"
+        ],
+        [
+          "B",
+          "unfriendly"
+        ],
+        [
+          "C",
+          "impossible"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：原计划到阿姨家交付，途中相遇并非预期；B：阿姨delighted，非不友好相遇；C：已经实际相遇，不是不可能的相遇"
+    },
+    {
+      "number": 6,
+      "stem": "B篇 · 第6空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "however"
+        ],
+        [
+          "B",
+          "therefore"
+        ],
+        [
+          "C",
+          "similarly"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：原以为容易，实际看不懂规则，以however标转折；B：不懂规则不是工作容易的必然结果，非因此；C：前后是预期与困难反差，不是相似例"
+    },
+    {
+      "number": 7,
+      "stem": "B篇 · 第7空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "owner"
+        ],
+        [
+          "B",
+          "price"
+        ],
+        [
+          "C",
+          "subject"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：是公共馆分类标签，非以个人书主区别；B：未提售书价格，分类按主题而非售价；C：列Last Train其实故事非交通，说明标题不保证主题分类"
+    },
+    {
+      "number": 8,
+      "stem": "B篇 · 第8空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "objected"
+        ],
+        [
+          "B",
+          "related"
+        ],
+        [
+          "C",
+          "listened"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：数字不对书架标志表示反对；B：标签数字与书架标志对应，relate to符合；C：数字不会听书架标志"
+    },
+    {
+      "number": 9,
+      "stem": "B篇 · 第9空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "back"
+        ],
+        [
+          "B",
+          "outside"
+        ],
+        [
+          "C",
+          "upside down"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：hold everyone back指拖慢大家，与slowly相呼应；B：馆内整理不表示把所有人留在馆外；C：hold everyone upside down是把人倒提，与整理慢无关"
+    },
+    {
+      "number": 10,
+      "stem": "B篇 · 第10空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "invisible"
+        ],
+        [
+          "B",
+          "independent"
+        ],
+        [
+          "C",
+          "careless"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：能自行工作不是变得看不见；B：先核几本再放手，明确rather than dependent；C：accuracy更重要，协助不是使其粗心"
+    },
+    {
+      "number": 11,
+      "stem": "B篇 · 第11空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "invent"
+        ],
+        [
+          "B",
+          "erase"
+        ],
+        [
+          "C",
+          "identify"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：见到的实际种类不是要创造新种类；B：没有要把昆虫从图片抹去的要求；C：想知道庭院里见到的各类昆虫，图鉴便于辨认"
+    },
+    {
+      "number": 12,
+      "stem": "B篇 · 第12空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "impossible"
+        ],
+        [
+          "B",
+          "slower"
+        ],
+        [
+          "C",
+          "easier"
+        ]
+      ],
+      "answer": "C",
+      "rationale": "A：已成功找到图鉴，非无法找资料；B：此处概括秩序改善检索，不是作者初学速度；C：理解分类后可找到合适材料，信息更易检索"
+    },
+    {
+      "number": 13,
+      "stem": "B篇 · 第13空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "sell"
+        ],
+        [
+          "B",
+          "use"
+        ],
+        [
+          "C",
+          "destroy"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：未有出售馆内分类制度的情节；B：记下分类系统供下周使用；C：写下是保留以便下次用，不是摧毁"
+    },
+    {
+      "number": 14,
+      "stem": "B篇 · 第14空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "before"
+        ],
+        [
+          "B",
+          "unless"
+        ],
+        [
+          "C",
+          "between"
+        ]
+      ],
+      "answer": "A",
+      "rationale": "A：先解释标签后要求效率，before后接动名词表示先后；B：unless后不能只用asking构成此处条件从句；C：between需要对应两个边界，不能单接asking构成此处先解释后催快的时间关系"
+    },
+    {
+      "number": 15,
+      "stem": "B篇 · 第15空（1分）",
+      "materialLabel": "B",
+      "points": 1,
+      "options": [
+        [
+          "A",
+          "publish"
+        ],
+        [
+          "B",
+          "follow"
+        ],
+        [
+          "C",
+          "break"
+        ]
+      ],
+      "answer": "B",
+      "rationale": "A：新成员整理书不需要出版规则；B：follow a rule遵守规则，与理解规则之所以然相对；C：说明规则是为帮助合理遵守，不是教破坏规则"
+    }
+  ],
+  "canonical_response_block_sha256": "8d38aa37ad80b660f07143e58ead972f9a2dc2790ee06344284fcad493025e06",
+  "student_passage": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the (1) ____ route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore (2) ____. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to (3) ____ the parcel there. I no longer needed to walk to her house. What seemed a delay had actually (4) ____ me time. Plans sometimes change, and a different route can bring an (5) ____ meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, (6) ____, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the (7) ____.\" The Last Train was a story, not a transport guide. She showed me how the label numbers (8) ____ to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone (9) ____. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more (10) ____, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to (11) ____ the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information (12) ____ to find. I wrote down the system to (13) ____ it next week. Now I explain the labels to newcomers (14) ____ asking them to hurry. Understanding a rule helps more than simply being told to (15) ____ it.",
+  "filled_passage": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it.",
+  "choice_pair_audit": [
+    {
+      "number": 1,
+      "candidate": "A",
+      "text": "widest",
+      "is_best": false,
+      "reason": "没有路线宽度信息，时间对比不能推出宽度",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the widest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 1,
+      "candidate": "B",
+      "text": "noisiest",
+      "is_best": false,
+      "reason": "没有声音信息，不能用时长判断噪声",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the noisiest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 1,
+      "candidate": "C",
+      "text": "shortest",
+      "is_best": true,
+      "reason": "五分钟比另一条十五分钟短，对应最短路线",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 2,
+      "candidate": "A",
+      "text": "pointless",
+      "is_best": true,
+      "reason": "十点开门比阿姨九点离开迟，等开门无法赶在离家前交包裹",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 2,
+      "candidate": "B",
+      "text": "successful",
+      "is_best": false,
+      "reason": "当时尚未等且等会错过，不能说等待已成功",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore successful. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 2,
+      "candidate": "C",
+      "text": "essential",
+      "is_best": false,
+      "reason": "有另一条路线可走，等不利于按时交付，非必需",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore essential. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 3,
+      "candidate": "A",
+      "text": "return",
+      "is_best": false,
+      "reason": "阿姨尚未收到，无退还我物品情节",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to return the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "text": "post",
+      "is_best": false,
+      "reason": "阿姨是在站旁从我手上收，不是把包裹邮寄出去",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to post the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 3,
+      "candidate": "C",
+      "text": "receive",
+      "is_best": true,
+      "reason": "我带包裹给阿姨，她在车站收取",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 4,
+      "candidate": "A",
+      "text": "wasted",
+      "is_best": false,
+      "reason": "不用再走到家，作者总结省时，非反耗时",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually wasted me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 4,
+      "candidate": "B",
+      "text": "saved",
+      "is_best": true,
+      "reason": "站旁交付省去剩下到阿姨家的路程，反省时",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 4,
+      "candidate": "C",
+      "text": "doubled",
+      "is_best": false,
+      "reason": "没提供两倍耗时，而且免去剩余路程",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually doubled me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 5,
+      "candidate": "A",
+      "text": "unexpected",
+      "is_best": true,
+      "reason": "原计划到阿姨家交付，途中相遇并非预期",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 5,
+      "candidate": "B",
+      "text": "unfriendly",
+      "is_best": false,
+      "reason": "阿姨delighted，非不友好相遇",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unfriendly meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 5,
+      "candidate": "C",
+      "text": "impossible",
+      "is_best": false,
+      "reason": "已经实际相遇，不是不可能的相遇",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an impossible meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 6,
+      "candidate": "A",
+      "text": "however",
+      "is_best": true,
+      "reason": "原以为容易，实际看不懂规则，以however标转折",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 6,
+      "candidate": "B",
+      "text": "therefore",
+      "is_best": false,
+      "reason": "不懂规则不是工作容易的必然结果，非因此",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, therefore, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 6,
+      "candidate": "C",
+      "text": "similarly",
+      "is_best": false,
+      "reason": "前后是预期与困难反差，不是相似例",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, similarly, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 7,
+      "candidate": "A",
+      "text": "owner",
+      "is_best": false,
+      "reason": "是公共馆分类标签，非以个人书主区别",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the owner.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 7,
+      "candidate": "B",
+      "text": "price",
+      "is_best": false,
+      "reason": "未提售书价格，分类按主题而非售价",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the price.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 7,
+      "candidate": "C",
+      "text": "subject",
+      "is_best": true,
+      "reason": "列Last Train其实故事非交通，说明标题不保证主题分类",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 8,
+      "candidate": "A",
+      "text": "objected",
+      "is_best": false,
+      "reason": "数字不对书架标志表示反对",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers objected to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 8,
+      "candidate": "B",
+      "text": "related",
+      "is_best": true,
+      "reason": "标签数字与书架标志对应，relate to符合",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 8,
+      "candidate": "C",
+      "text": "listened",
+      "is_best": false,
+      "reason": "数字不会听书架标志",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers listened to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 9,
+      "candidate": "A",
+      "text": "back",
+      "is_best": true,
+      "reason": "hold everyone back指拖慢大家，与slowly相呼应",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 9,
+      "candidate": "B",
+      "text": "outside",
+      "is_best": false,
+      "reason": "馆内整理不表示把所有人留在馆外",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone outside. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 9,
+      "candidate": "C",
+      "text": "upside down",
+      "is_best": false,
+      "reason": "hold everyone upside down是把人倒提，与整理慢无关",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone upside down. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 10,
+      "candidate": "A",
+      "text": "invisible",
+      "is_best": false,
+      "reason": "能自行工作不是变得看不见",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more invisible, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 10,
+      "candidate": "B",
+      "text": "independent",
+      "is_best": true,
+      "reason": "先核几本再放手，明确rather than dependent",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 10,
+      "candidate": "C",
+      "text": "careless",
+      "is_best": false,
+      "reason": "accuracy更重要，协助不是使其粗心",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more careless, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 11,
+      "candidate": "A",
+      "text": "invent",
+      "is_best": false,
+      "reason": "见到的实际种类不是要创造新种类",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to invent the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 11,
+      "candidate": "B",
+      "text": "erase",
+      "is_best": false,
+      "reason": "没有要把昆虫从图片抹去的要求",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to erase the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 11,
+      "candidate": "C",
+      "text": "identify",
+      "is_best": true,
+      "reason": "想知道庭院里见到的各类昆虫，图鉴便于辨认",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 12,
+      "candidate": "A",
+      "text": "impossible",
+      "is_best": false,
+      "reason": "已成功找到图鉴，非无法找资料",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information impossible to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 12,
+      "candidate": "B",
+      "text": "slower",
+      "is_best": false,
+      "reason": "此处概括秩序改善检索，不是作者初学速度",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information slower to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 12,
+      "candidate": "C",
+      "text": "easier",
+      "is_best": true,
+      "reason": "理解分类后可找到合适材料，信息更易检索",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 13,
+      "candidate": "A",
+      "text": "sell",
+      "is_best": false,
+      "reason": "未有出售馆内分类制度的情节",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to sell it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 13,
+      "candidate": "B",
+      "text": "use",
+      "is_best": true,
+      "reason": "记下分类系统供下周使用",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 13,
+      "candidate": "C",
+      "text": "destroy",
+      "is_best": false,
+      "reason": "写下是保留以便下次用，不是摧毁",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to destroy it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 14,
+      "candidate": "A",
+      "text": "before",
+      "is_best": true,
+      "reason": "先解释标签后要求效率，before后接动名词表示先后",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 14,
+      "candidate": "B",
+      "text": "unless",
+      "is_best": false,
+      "reason": "unless后不能只用asking构成此处条件从句",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers unless asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 14,
+      "candidate": "C",
+      "text": "between",
+      "is_best": false,
+      "reason": "between需要对应两个边界，不能单接asking构成此处先解释后催快的时间关系",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers between asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 15,
+      "candidate": "A",
+      "text": "publish",
+      "is_best": false,
+      "reason": "新成员整理书不需要出版规则",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to publish it."
+    },
+    {
+      "number": 15,
+      "candidate": "B",
+      "text": "follow",
+      "is_best": true,
+      "reason": "follow a rule遵守规则，与理解规则之所以然相对",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to follow it."
+    },
+    {
+      "number": 15,
+      "candidate": "C",
+      "text": "break",
+      "is_best": false,
+      "reason": "说明规则是为帮助合理遵守，不是教破坏规则",
+      "full_group_substitution": "### A篇（第1—5空）\n\nI left home early to take a parcel to Aunt May. The path through the garden was usually the shortest route, only five minutes instead of fifteen. That morning, however, the gate was locked. A notice said it would open at ten, an hour after my aunt had to leave. Waiting was therefore pointless. I turned towards the longer route. Two minutes along it, I met my aunt at a bus stop. She had come out early and was delighted to receive the parcel there. I no longer needed to walk to her house. What seemed a delay had actually saved me time. Plans sometimes change, and a different route can bring an unexpected meeting.\n\n### B篇（第6—15空）\n\nOn my first morning as a library volunteer, I put returned books in order. I had imagined an easy job. The shelves, however, followed rules I did not know. Books with similar titles were sometimes far apart.\n\nI began arranging them by title. The librarian stopped me gently. \"A title doesn't always tell you the subject.\" The Last Train was a story, not a transport guide. She showed me how the label numbers related to the shelf signs.\n\nI worked so slowly that I felt I was holding everyone back. Another volunteer said accuracy mattered more than speed. He checked a few books with me, then stepped back. His help made me more independent, rather than more dependent.\n\nLater, a child wanted a book about insects. She hoped to identify the kinds she had seen in her garden. We found a picture guide, not the adventure story I had first considered.\n\nOrder was not just for tidy shelves: it made information easier to find. I wrote down the system to use it next week. Now I explain the labels to newcomers before asking them to hurry. Understanding a rule helps more than simply being told to break it."
+    }
+  ],
+  "authored_student_inputs_complete": true,
+  "independent_teacher_student_commercial_production_validated": false,
+  "source_key_not_copied": true,
+  "load_measure": {
+    "body_English_words": 300,
+    "body_Han_characters": 6,
+    "stem_English_words": 15,
+    "options_English_words_with_repeated_bank": 46,
+    "output_response_positions": 15,
+    "output_requirement_English_words": 4
+  },
+  "school_cloze_materials": [
+    {
+      "label": "A",
+      "response_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "body_English_words": 110,
+      "body_Han_characters": 0,
+      "points_each": 2
+    },
+    {
+      "label": "B",
+      "response_numbers": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "body_English_words": 188,
+      "body_Han_characters": 0,
+      "points_each": 1
+    }
+  ],
+  "display_heading_English_words": 2,
+  "body_count_includes_visible_material_labels": true
+}

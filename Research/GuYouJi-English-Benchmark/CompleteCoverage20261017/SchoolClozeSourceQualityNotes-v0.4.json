@@ -1,0 +1,76 @@
+{
+  "version": "0.4",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.3.json",
+    "sha256": "b2855b6cfc426e6a03a7b50e47c2ad5582246d5878a1383de53aee0f7e027e93"
+  },
+  "scope": "chengdu_labelled_exam_whole_cloze_not_gold_or_added_ordinary_parent",
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.4.json",
+    "sha256": "a64e208b664ae854fb900283b454d77163e0c0bc096c96bce0eca5ee1b5f1153"
+  },
+  "rows": [
+    {
+      "source_group_id": "grade9-chengdu2025-21cnjy23208601.clozeWhole",
+      "source_member_ids": [
+        "grade9-chengdu2025-21cnjy23208601.clozeA",
+        "grade9-chengdu2025-21cnjy23208601.clozeB"
+      ],
+      "body_title_as_seen": "2025年四川省成都市中考真题",
+      "title_independent_authentication": false,
+      "source_exam_label_kept_not_ordinary_paper": true,
+      "whole_header": "七、完形填空阅读下面两篇短文，根据短文内容，从A、B、C三个选项中选出可以填入空白处的最佳选项。（共15小题；计20分。A篇每小题2分，计10分；B篇每小题1分，计10分）",
+      "selected_material_words": [
+        99,
+        194
+      ],
+      "source_key_is_gold": false,
+      "potential_key_ambiguities": [
+        {
+          "source_number": 19,
+          "candidate_labels": [
+            "B",
+            "C"
+          ],
+          "texts": [
+            "even",
+            "once"
+          ],
+          "reason": "We...cleaned既可强调even也可陈述一次once，原叙述对该副词排他性不强。"
+        },
+        {
+          "source_number": 26,
+          "candidate_labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "texts": [
+            "returned",
+            "went",
+            "came"
+          ],
+          "reason": "returned/went/came to our apartment皆可叙述去或回住所，空间叙述不独立排除各表述。"
+        },
+        {
+          "source_number": 27,
+          "candidate_labels": [
+            "B",
+            "C"
+          ],
+          "texts": [
+            "Actually",
+            "Soon"
+          ],
+          "reason": "Soon表时间，Actually语用也可引入管理员到来；原键C为所给叙事最佳而非充分排他证明。"
+        }
+      ],
+      "grammar_not_authoring_gold": [
+        "原called a maintenance staff的staff集合名词不当单名维修人员句法范本",
+        "原Living...is not easy,but not for me仅人物自述，不当迁移或文化适应事实"
+      ],
+      "no_claim_all_other_source_keys_unambiguous": true
+    }
+  ],
+  "new_source_files": 0
+}
