@@ -8,6 +8,7 @@ def records(plan, groups, levels):
     if not reference:
         return []
     catalog = json.loads(load_ref(reference).read_text())
+    common_scope = json.loads(load_ref(plan['current_common_type_scope']).read_text()) if plan.get('current_common_type_scope') else None
     assert catalog['observations_count'] == len(catalog['rows'])
     assert catalog['source_counts_not_incremented'] and not catalog['national_taxonomy_exhaustive']
     result=[];seen=set()
@@ -19,7 +20,7 @@ def records(plan, groups, levels):
         assert row['source_group_id'] and row['source_gap'] and row['author_count_requires_same_specific_source_group']
         for evidence in row['evidence']:load_ref(evidence)
         authored=[g['id'] for g in groups.values() if g['grade']==row['grade'] and g['kind']==row['family'] and row['source_group_id'] in g['anchor_group_ids']]
-        result.append({**row,'currentGroupIds':authored,'remainingWholeOriginals':max(0,row['target_whole_originals']-len(authored))})
+        result.append({**row,'currentGroupIds':authored,'remainingWholeOriginals':max(0,row['target_whole_originals']-len(authored)), **({'requiredForCurrentScope':row['id'] in common_scope['required_specific_mode_ids']} if common_scope else {})})
     return result
 
 
@@ -32,7 +33,7 @@ def attach(cells, labels, modes):
         cell=cells.setdefault(key,dict(grade=row['grade'],family=row['family'],label=row['label'],observed=True,state='source_structure_observed_author_pending',groupId=None,groupIds=[]))
         cell['observed']=True
         cell.setdefault('pendingSpecificModes',[])
-        if row['remainingWholeOriginals']:
+        if row['remainingWholeOriginals'] and row.get('requiredForCurrentScope',True):
             cell['pendingSpecificModes'].append(row['id'])
             if not cell.get('groupId'):
                 cell['pauseReason']='结构已观察，完整原创待补。'+row['title']+'：'+row['source_gap']

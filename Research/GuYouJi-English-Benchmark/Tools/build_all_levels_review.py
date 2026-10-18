@@ -243,7 +243,7 @@ def build_current(output):
         attach_pending(cells, labels, modes)
         data['pending_source_modes_index'] = plan['current_pending_source_modes']
         data['pending_specific_modes'] = modes
-        data['unfilled_specific_modes'] = sum(bool(m['remainingWholeOriginals']) for m in modes)
+        data['unfilled_specific_modes'] = sum(bool(m['remainingWholeOriginals']) and m.get('requiredForCurrentScope',True) for m in modes)
     if plan.get('current_coverage_audit'):
         data['coverage_audit'] = json.loads(load_ref(plan['current_coverage_audit']).read_text())
         for issue in data['coverage_audit']['issues']:
@@ -253,9 +253,12 @@ def build_current(output):
         from source_companion_updates import load_updates
         data['source_companion_updates'] = load_updates(plan, data['groups'])
         data['source_companion_updates_index'] = plan['current_source_companion_updates']
-    data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
-                     'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
-                     for level in data['grades'] for family, label in labels.items()]
+    if plan.get('current_common_type_scope'):
+        data['cells'] = [c for c in cells.values() if c['grade'] in data['grades'] and c['observed']]
+    else:
+        data['cells'] = [cells.get((level, family), {'grade': level, 'family': family, 'label': label, 'observed': False,
+                         'state': 'source_evidence_unknown_do_not_invent_grade_adaptation', 'groupId': None})
+                         for level in data['grades'] for family, label in labels.items()]
     if plan.get('current_band_phonics_originals'):
         from build_band_phonics_review import build as build_band
         data['supplemental_band_review']=build_band(plan['current_band_phonics_originals'],output/'ks1-band-reference.html')
@@ -264,6 +267,8 @@ def build_current(output):
     data['source_form_representative_cells'] = sum(bool(c.get('groupId')) for c in data['cells'])
     data['multi_variant_cells'] = sum(len(c.get('groupIds', [])) > 1 for c in data['cells'])
     data['three_variant_cells'] = sum(len(c.get('groupIds', [])) >= 3 for c in data['cells'])
+    from review_common_scope import apply as apply_common_scope
+    apply_common_scope(data, plan)
     data['extra_authored_index'] = ref(additions_path)
     encoded = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     template = (BASE/'Tools/quality_review_template.html').read_text()
@@ -272,6 +277,10 @@ def build_current(output):
     page = template.replace('__REVIEW_DATA__', encoded).replace('__REVIEW_SCRIPT__', (BASE/'Tools/quality_review_interactions.js').read_text())
     if data.get('supplemental_band_review'):
         page=page.replace('<nav id="grades"','<p><a id="band-reference-link" href="ks1-band-reference.html">KS1 学段补充试做：3完整原创 · 27处字母听填</a><br><span class="footnote">香港P1—3学段参照，单独计量，不增加下方具体年级覆盖。</span></p><nav id="grades"',1)
+    if data.get('common_type_view'):
+        page=re.sub(r'<p><a id="band-reference-link".*?</p>', '', page, count=1)
+        page=page.replace('<label class="footnote"><input id="show-unknown" type="checkbox"> 显示证据不足的题型</label>', '<input id="show-unknown" type="checkbox" hidden><p class="footnote" id="common-scope-notice">只展示本轮保留的常见题型；未证常见的地方特别模式和无依据的跨档位题型已移出当前目标。</p>')
+        page=page.replace('“暂无证据”不表示该年级没有这种题型。听力配套尚未完整验证。', '不以单卷出现或尚无样本自动增加题型；地区差异按实际卷型注明。听力配套尚未完整验证。')
     (output/'index.html').write_text(page)
     complete_sources = json.loads(load_ref(plan['current_complete_coverage_source_modes']).read_text()) if plan.get('current_complete_coverage_source_modes') else {}
     report = {'version': '0.1', 'level_count': len(data['grades']), 'levels_with_preview': len({g['grade'] for g in data['groups'].values()}),
@@ -292,6 +301,8 @@ def build_current(output):
               'paused_complete_groups_with_open_legal_sets': len(holds['records']),
               'source_mode_and_age_calibration_not_established_for_unobserved_cells': True,
               'independent_student_commercial_production_admission': False, 'index_html_sha256': hashlib.sha256(page.encode()).hexdigest()}
+    if data.get('common_type_view'):
+        report['common_review']={k:data['common_type_view'][k] for k in ['active_groups','active_responses','active_level_type_cells','reference_only_groups','commonness_review_complete']}
     (output/'build-report-v0.1.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
     print(json.dumps(report))
 

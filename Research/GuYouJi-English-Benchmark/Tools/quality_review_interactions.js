@@ -1,4 +1,5 @@
 const reviewData=JSON.parse(document.getElementById('quality-data').textContent);
+const catalogCells=reviewData.common_type_view?.cells||reviewData.cells;
 const labels={7:'初一',8:'初二',9:'初三',10:'高一',11:'高二',12:'高三'};
 Object.assign(labels,reviewData.levelLabels||{});
 const el=id=>document.getElementById(id),escapeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -6,8 +7,8 @@ let activeGrade=7,activeFamily='reading_choice';const drafts={},selectedVariants
 const groupIds=cell=>cell.groupIds||(cell.groupId?[cell.groupId]:[]);
 const candidateHref=reference=>'../../'+(reference.path.startsWith('build/')?'':'Research/GuYouJi-English-Benchmark/')+encodeURI(reference.path);
 const titleState=cell=>cell.state==='paused_requires_semantic_adjudication'?'旧稿暂缓·待补代表':cell.state==='source_observed_deterministic_admission_pending'?'待审判分':cell.state==='author_prototype_source_mode_pending'?'原型·模式待核':cell.groupId?groupIds(cell).length+'稿 / 目标3稿'+(cell.pendingSpecificModes?.length?'；另'+cell.pendingSpecificModes.length+'模式待补':''):!cell.observed?'暂无证据':cell.state.startsWith('existing_simulated')?'来源待核':'待补题';
-function select(grade,family){activeGrade=grade;activeFamily=family;if(!reviewData.cells.find(c=>c.grade===grade&&c.family===family).observed)el('show-unknown').checked=true;render();}
-function selectGrade(grade){const current=reviewData.cells.find(c=>c.grade===grade&&c.family===activeFamily),available=reviewData.cells.find(c=>c.grade===grade&&c.groupId);select(grade,current?.groupId?activeFamily:available?.family||activeFamily);}
+function select(grade,family){const next=catalogCells.find(c=>c.grade===grade&&c.family===family);if(!next)return;activeGrade=grade;activeFamily=family;if(!next.observed)el('show-unknown').checked=true;render();}
+function selectGrade(grade){const current=catalogCells.find(c=>c.grade===grade&&c.family===activeFamily),available=catalogCells.find(c=>c.grade===grade&&c.groupId);select(grade,current?.groupId?activeFamily:available?.family||activeFamily);}
 function makeButton(label,pressed,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-pressed',String(pressed));b.onclick=fn;return b;}
 function inputFor(g,q){
  if(g.wordEditing)return editingInput(g,q);
@@ -311,13 +312,13 @@ function fillPairComparison(questions,saved={}){
 function clearSelectionComparison(){el('selection-comparison').hidden=true;el('selection-comparison').textContent='';}
 function render(){
  el('student').querySelectorAll('audio').forEach(a=>{a.onerror=null;a.pause();});
- const cell=reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily),ids=groupIds(cell),variantKey=String(activeGrade)+':'+activeFamily;
+ const cell=catalogCells.find(c=>c.grade===activeGrade&&c.family===activeFamily),ids=groupIds(cell),variantKey=String(activeGrade)+':'+activeFamily;
  const selected=ids.includes(selectedVariants[variantKey])?selectedVariants[variantKey]:cell.groupId,g=reviewData.groups[selected];
  el('grades').innerHTML='';reviewData.grades.forEach(grade=>el('grades').append(makeButton(labels[grade],grade===activeGrade,()=>selectGrade(grade))));
- el('families').innerHTML='';reviewData.cells.filter(c=>c.grade===activeGrade&&(c.observed||el('show-unknown').checked)).forEach(c=>el('families').append(makeButton(c.label+' · '+titleState(c),c.family===activeFamily,()=>select(activeGrade,c.family))));
+ el('families').innerHTML='';catalogCells.filter(c=>c.grade===activeGrade&&(c.observed||el('show-unknown').checked)).forEach(c=>el('families').append(makeButton(c.label+' · '+titleState(c),c.family===activeFamily,()=>select(activeGrade,c.family))));
  const earlyNotice=['primary1','primary2'].includes(activeGrade)?'现行要求小学一二年级不进行纸笔考试；这里保留的历史纸笔形式稿仅供形式审阅，非现行年级测评标准。非纸笔闭集活动仍在补完整样本。 ':'';
  const companionUpdates=(reviewData.source_companion_updates||[]).filter(u=>u.author_group_ids.includes(g?.id));
- const prototypeNotice=earlyNotice+(companionUpdates.length?'编稿时来源状态：':'')+(cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||''))+companionUpdates.map(u=>' 后续补核（'+u.checked_on+'）：'+u.notice).join('');
+ const prototypeNotice=(cell.scopeNotice||'')+earlyNotice+(companionUpdates.length?'编稿时来源状态：':'')+(cell.state==='author_prototype_source_mode_pending'?'作者设计原型：原样本的必要图示与角色仍缺。此处展示原创完整图题，面板结构由作者设计，不能当作原卷模式已经核证。':(g?.sourceFormNotice||''))+companionUpdates.map(u=>' 后续补核（'+u.checked_on+'）：'+u.notice).join('');
  el('task-title').textContent=labels[activeGrade]+' · '+cell.label;el('teacher').hidden=true;el('teacher-content').innerHTML='';el('notice').textContent='';clearSelectionComparison();
  el('variant-picker').hidden=ids.length<2;
  el('variants').innerHTML=ids.map((id,i)=>'<option value="'+escapeText(id)+'" '+(id===selected?'selected':'')+'>'+escapeText('第'+(i+1)+'稿 · '+(reviewData.groups[id].title||id))+'</option>').join('');
@@ -388,17 +389,18 @@ function render(){
  el('reset').onclick=()=>{delete drafts[g.id];render();};
 }
 el('coverage').textContent=reviewData.current_scope_policy?'当前展示 '+reviewData.preview_cells+' 道完整大题，已有稿件涉及 '+reviewData.source_form_representative_cells+' 个档位/题型格，其中 '+(reviewData.three_variant_cells||0)+' 格达到三稿数量目标。此数量不代表题型已经收全，听力、地方具体模式及配套仍在补核。'+(reviewData.unfilled_specific_modes?'另有 '+reviewData.unfilled_specific_modes+' 个已观察的具体模式尚未达到三套完整原创，矩阵已列待补。':'')+'需AI整体语义评分的主观题仍暂停。'+(reviewData.paused_concrete_groups?'另有 '+reviewData.paused_concrete_groups+' 个历史完整填空组暂缓，新编组不替其解除暂停。':''):'当前 '+(reviewData.source_form_representative_cells||reviewData.preview_cells)+' 个年级/题型格有样本完整形式参照；另 '+(reviewData.prototype_source_mode_pending_cells||0)+' 个设计原型待核源图，其余证据状态逐项列明。';
+if(reviewData.common_type_view){const v=reviewData.common_type_view;el('coverage').textContent='当前常见题型初筛展示 '+v.active_groups+' 道完整大题、'+v.active_level_type_cells+' 个档位/题型格；另 '+v.reference_only_groups+' 道既有稿转为研究参考。已删除无依据的跨档位候选，地方特别配置不再自动成为必补目标。'+v.notice;}
 if(reviewData.pending_specific_modes?.length&&el('pending-modes')){
- const pending=reviewData.pending_specific_modes.filter(m=>m.remainingWholeOriginals);
+ const pending=reviewData.pending_specific_modes.filter(m=>m.remainingWholeOriginals&&m.requiredForCurrentScope!==false);
  el('pending-modes').hidden=!pending.length;
  el('pending-modes-body').innerHTML='<p>以下已观察到题组结构或读者层骨架；完整题面、必要媒体及配套的缺口逐项列明。待补稿数只计同一具体来源模式的完整原创，不用同题型另一配置抵数。</p><ul>'+pending.map(m=>'<li><strong>'+escapeText(labels[m.grade]+' · '+m.title)+'</strong>：已有'+m.currentGroupIds.length+' / 目标'+m.target_whole_originals+'完整组。'+escapeText(m.source_gap)+'</li>').join('')+'</ul>';
 }
-const families=[...new Set(reviewData.cells.map(c=>c.family))];
+const families=[...new Set(catalogCells.map(c=>c.family))];
 if(el('coverage-audit')){
- const audit=reviewData.coverage_audit;
+ const audit=reviewData.display_coverage_audit||reviewData.coverage_audit;
  el('coverage-audit').hidden=!audit;
  if(audit)el('coverage-audit-body').innerHTML='<p>'+escapeText(audit.scope_notice)+'</p><ul>'+audit.issues.map(i=>'<li>'+escapeText(i.levels.map(l=>labels[l]||l).join('、')+'：'+i.label+' — '+i.state_label+'。'+i.detail)+'</li>').join('')+'</ul>';
 }
-el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(reviewData.cells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=reviewData.cells.find(c=>c.grade===grade&&c.family===f);return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
+el('matrix-body').innerHTML=families.map(f=>'<tr><th scope="row">'+escapeText(catalogCells.find(c=>c.family===f).label)+'</th>'+reviewData.grades.map(grade=>{const c=catalogCells.find(c=>c.grade===grade&&c.family===f);if(!c)return '<td class="unknown" aria-label="不在当前档位范围">—</td>';return '<td><button type="button" data-grade="'+grade+'" data-family="'+f+'" class="'+(c.state==='author_prototype_source_mode_pending'?'pending':c.groupId?'ready':!c.observed?'unknown':'pending')+'">'+titleState(c)+'</button></td>';}).join('')+'</tr>').join('');
 el('matrix-body').onclick=e=>{const b=e.target.closest('button[data-grade]');if(b)select(reviewData.grades.find(g=>String(g)===b.dataset.grade),b.dataset.family);};
-el('show-unknown').onchange=()=>{if(!el('show-unknown').checked&&!reviewData.cells.find(c=>c.grade===activeGrade&&c.family===activeFamily).observed)activeFamily=reviewData.cells.find(c=>c.grade===activeGrade&&c.groupId)?.family||activeFamily;render();};render();
+el('show-unknown').onchange=()=>{if(!el('show-unknown').checked&&!catalogCells.find(c=>c.grade===activeGrade&&c.family===activeFamily).observed)activeFamily=catalogCells.find(c=>c.grade===activeGrade&&c.groupId)?.family||activeFamily;render();};render();

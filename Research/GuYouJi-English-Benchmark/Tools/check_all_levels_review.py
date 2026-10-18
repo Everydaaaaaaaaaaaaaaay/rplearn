@@ -173,7 +173,11 @@ def check(page):
     assert data['grades']==[aliases.get(r['id'],r['id']) for r in policy['product_levels']]
     assert len(data['grades'])==len(set(data['grades']))==level_count
     assert not(set(data['grades']) & set(policy.get('excluded_levels',[])))
-    assert len(data['cells'])==level_count*len(set(c['family']for c in data['cells']))
+    if plan.get('current_common_type_scope'):
+        from review_common_scope import check as check_common_scope
+        check_common_scope(data,plan)
+    else:
+        assert len(data['cells'])==level_count*len(set(c['family']for c in data['cells']))
     assert len({c['label'] for c in data['cells']})==len({c['family'] for c in data['cells']}), 'Duplicate display family alias'
     assert len(set((c['grade'],c['family'])for c in data['cells']))==len(data['cells'])
     assert not(set(c['family']for c in data['cells']) & set(policy['paused_families']))
@@ -191,10 +195,10 @@ def check(page):
         modes = pending_records(plan, data['groups'], data['grades'])
         assert data['pending_source_modes_index'] == plan['current_pending_source_modes']
         assert data['pending_specific_modes'] == modes
-        assert data['unfilled_specific_modes'] == sum(bool(m['remainingWholeOriginals']) for m in modes)
+        assert data['unfilled_specific_modes'] == sum(bool(m['remainingWholeOriginals']) and m.get('requiredForCurrentScope',True) for m in modes)
         for mode in modes:
             cell = next(c for c in data['cells'] if c['grade']==mode['grade'] and c['family']==mode['family'])
-            assert cell['observed'] and ((mode['id'] in cell.get('pendingSpecificModes', [])) == bool(mode['remainingWholeOriginals']))
+            assert cell['observed'] and ((mode['id'] in cell.get('pendingSpecificModes', [])) == bool(mode['remainingWholeOriginals'] and mode.get('requiredForCurrentScope',True)))
             if not cell['groupId']:
                 assert cell['state']=='source_structure_observed_author_pending' and cell['pauseReason'] and not cell['groupIds']
     reachable = [ident for c in data['cells'] for ident in c.get('groupIds', [c['groupId']] if c['groupId'] else [])]

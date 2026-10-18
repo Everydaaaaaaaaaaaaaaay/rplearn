@@ -1,0 +1,26 @@
+{
+  "version": "0.1",
+  "owner_request": "先剔除不常见和无实际依据的跨档位题型，再按代表卷和地区常见形式施工",
+  "supersedes": "旧目标的每个已观察具体配置都必须三稿、穷尽所有地方题型与69/66旧阅读记录全部核完才停止",
+  "current_required_work": [
+    "逐档用代表性试卷核常见题型，必要时看不同地区复现；题型家族与局部配置分开",
+    "已知且保留的常见类型每型至少三完整原创，补实际质量/输入/可接受答案与变体",
+    "测试当前页面，报告代表卷覆盖范围与真实未解决缺口"
+  ],
+  "not_required": [
+    "高三音标提示词汇补全等笛卡尔积未知格",
+    "每个首次观察到的特别篇数/配图/题数配置三稿",
+    "未证常见的地方特别模式及旧短文改错",
+    "外部全部考试框架、全国题型穷尽和未经授权的学生/商用/生产验证"
+  ],
+  "scope": {
+    "path": "CompleteCoverage20261017/CommonTypeScope-v0.1.json",
+    "sha256": "98bc763039f83b50cf738f58637203d7d4dcb98270d4996634fb72bf8897174b"
+  },
+  "policy": {
+    "path": "CompleteCoverage20261017/ScopePolicy-v0.2.json",
+    "sha256": "b16c2cb9405645b2d433ec6c07b825e2b1ba4bb3e46b86d9a1f58c801ec92f6d"
+  },
+  "originals_preserved": true,
+  "no_new_automation_or_old_deadline": true
+}
