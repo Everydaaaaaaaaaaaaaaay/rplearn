@@ -1,6 +1,6 @@
 {
   "date": "2026-10-19",
-  "status": "authenticated_catalog_read_startup_fix_installed_waiting_for_sign_in",
+  "status": "authenticated_native_acceptance_passed_with_stated_limits",
   "research_stopped_by_owner": true,
   "research_close": "Research/GuYouJi-English-Benchmark/CompleteCoverage20261017/ResearchRoundCloseForLearningTrial-v0.1.json",
   "entry": "Debug App / 我的 / 学习实测 · 切换档位做题",
@@ -28,7 +28,7 @@
     "ios_architecture": "passed",
     "shell_syntax": "passed",
     "latest_build_installed": true,
-    "native_computer_use": "signed-in catalog read succeeded after explicit reload; first-load cancellation race corrected and compiled; reinstall returned to sign-in gate, normal restore retry did not restore it"
+    "native_computer_use": "After owner sign-in, corrected entry loaded real friend and all 15 live catalog counts without explicit reload. Started an 18-question senior3 attempt; complete native audio playback unlocked checking; two server-graded correct answers each displayed +1 point. Save/resume returned to 2/18. Requesting undergraduate with this active senior3 attempt was blocked, leaving account at senior3."
   },
   "evidence": [
     {
@@ -54,14 +54,28 @@
     {
       "path": "build/learning-trial-auth-restore-retry.log",
       "sha256": "1e0ddbc033a8ac01ffb5cbacd9d5469b4359b91d51eb4e6791ab7397d9cd934c"
+    },
+    {
+      "path": "build/learning-trial-audio-native-20261019.png",
+      "sha256": "a08363e98a0f3e774e5b7ffa0e05d285f7803c05879c8f194fcd3ad4862ebbac"
+    },
+    {
+      "path": "build/learning-trial-native-resume-20261019.png",
+      "sha256": "ee9012803fa8d2a72c76f31ec42eab36fad2543481f15d880e9591c26a3efef7"
+    },
+    {
+      "path": "build/learning-trial-native-resume-20261019.txt",
+      "sha256": "309bfb395e3789d92f01d39aca541e67221a7e08c15ded0a2427829878b7b14b"
     }
   ],
-  "pending": [
-    "owner signs in once more after the corrected app installation; no further restart planned",
-    "verify corrected first load, remaining live level counts, actual native submission and media playback"
-  ],
+  "pending": [],
   "independent_teacher_student_validation_not_claimed": true,
   "observed_live_catalog_counts": {
+    "primary1": 9,
+    "primary2": 6,
+    "primary3": 9,
+    "primary4": 10,
+    "primary5": 6,
     "primary6": 6,
     "junior1": 6,
     "junior2": 6,
@@ -73,11 +87,37 @@
     "postgraduate": 2,
     "advanced": 2
   },
-  "live_observation_limits": "Counts were read from native accessibility output after authenticated reload; primary1to5 counts and native answers/media are not yet verified.",
+  "live_observation_limits": "All 15 catalog counts read from authenticated native accessibility output. Interactive acceptance sampled senior3 only; no claim that every question, level, media asset, incorrect answer, finish or retry flow was manually tested.",
   "startup_fix": {
     "change": "one initial roster+catalog load; later non-initial companion selections refresh without cancelling the initial request",
     "error_visibility": "errors and retry action moved to fixed footer",
     "build": "passed",
-    "manual_first_load_after_fix": "pending renewed native sign-in"
+    "manual_first_load_after_fix": "passed after renewed sign-in: real friend, all live counts and enabled start appeared without manual reload"
+  },
+  "not_verified_in_native_acceptance": [
+    "All 15 levels individually starting and completing attempts",
+    "Incorrect-answer feedback, first-round finish and retry UI",
+    "Listening content accuracy or independent teacher/student calibration",
+    "Cross-process login restoration; app intentionally left running after owner sign-in"
+  ],
+  "native_acceptance": {
+    "surface": "Device Hub / iPhone 17 Pro / iOS 26.1",
+    "backend": "https://rplearn.haruyuki.cn",
+    "level": "senior3",
+    "unit_title": "桥下的纸船",
+    "question_count": 18,
+    "submitted_answers": 2,
+    "server_feedback": "both correct, each displayed +1 point and explanation",
+    "audio": "native play entered playing state, then complete-listen state; checking stayed disabled before full playback and enabled afterwards",
+    "save_resume": "twice resumed at 2/18 on third question, a full-sentence listening input",
+    "cross_level_protection": "undergraduate request blocked while companion had active senior3 attempt; account level remained senior3",
+    "account_effects_observed": [
+      "2 submitted correct answers",
+      "2 displayed reward points",
+      "active senior3 attempt preserved at 2/18",
+      "debug fill used to skip chat threshold"
+    ],
+    "left_for_owner": "authenticated app remains on third question of active senior3 attempt; selected and account levels senior3",
+    "no_additional_restart_or_reinstall": true
   }
 }

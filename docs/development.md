@@ -165,7 +165,10 @@ Scripts/preview.sh preview learning-test # 已构建后复用产物
 已发布题库为准，不以研究数量冒充可抽题量。这个入口仅在 Debug 构建中提供，没有发布 App Store 版本。
 入口流程定向验证为 `Scripts/test.sh -only-testing:LingoTripTests/LearningTrialTests`；
 原判分及组卷的隔离验证可按需运行 `Scripts/verify-backend-workflows.py --phase integration`
-并选择 `learning-bank.test.ts` 和 `learning-api.test.ts`。隔离测试不代表原生端已登录实测通过。
+并选择 `learning-bank.test.ts` 和 `learning-api.test.ts`。隔离测试与原生实测分开记录。2026-10-19 已通过真实登录后的 15 档供题数量读取，以及高三
+18 题挑战的听力播放门槛、两题服务器判分、各 +1 点反馈、保存续做与跨档保护。
+这次人工抽查未逐档完成整套题，也未覆盖结束与补答全部流程；具体证据及限制见
+[实测验收记录](verification/learning-trial-entry-20261019.json)。
 
 ## 启动速度与偶发慢启动
 
