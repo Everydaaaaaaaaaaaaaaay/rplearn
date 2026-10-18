@@ -147,8 +147,8 @@ public struct EncounterService: Sendable {
         let fallback = alreadyKnown ? "Hey, good to see you again! How have you been?" : "Hi! What brought you here today?"
         let request = LLMRequest(
             task: .characterGeneration, tier: .balanced,
-            system: "Write one short natural English opening line for this activity. Return only the spoken line. Do not invent shared experiences, personal memories, a new job, or a change of identity. The scene is \(activityContext). Character: \(card.name), \(card.occupation), personality: \(card.personality), hobbies: \(card.hobbies.joined(separator: ", ")). The listener \(alreadyKnown ? "has met this person before; acknowledge a reunion without inventing past events" : "is meeting them for the first time").",
-            messages: [.user("Say the opening line.")], maxTokens: 120, temperature: 0.7
+            system: "为这次活动写一句简短、自然的英语开场白，只返回说出的台词。不得编造共同经历、个人记忆、新工作或身份变化。场景：\(activityContext)。角色：\(card.name)，职业：\(card.occupation)，性格：\(card.personality)，爱好：\(card.hobbies.joined(separator: ", "))。听者\(alreadyKnown ? "以前见过此人；自然表达重逢，但不要编造过去事件" : "是第一次见到此人")。",
+            messages: [.user("说出开场白。")], maxTokens: 120, temperature: 0.7
         )
         do {
             let line = try await llm.complete(request).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -256,7 +256,7 @@ public struct EncounterService: Sendable {
                 activityContext: activityContext,
                 diversityGuidance: diversityGuidance
             ),
-            messages: [.user("Generate one character now.")],
+            messages: [.user("现在生成一位角色。")],
             maxTokens: 1_100,
             temperature: 1.0,
             responseFormat: .jsonSchema(name: "character_card", schema: Self.schema)
@@ -335,56 +335,41 @@ public struct EncounterService: Sendable {
     ) -> String {
         let originRule = switch origin {
         case .local:
-            "The character is a LOCAL living in \(region.nameEn): nationality matches \(region.countryNameEn)."
+            "角色是住在 \(region.nameEn) 的当地人，国籍与 \(region.countryNameEn) 一致。"
         case .domestic:
-            "The character is from ANOTHER city of \(region.countryNameEn) (not \(region.nameEn)), currently in \(region.nameEn) for work/study/travel. Mention the hometown in background."
+            "角色来自 \(region.countryNameEn) 的另一座城市（不是 \(region.nameEn)），目前因工作、学习或旅行来到 \(region.nameEn)。在背景中说明家乡。"
         case .foreigner:
-            "The character is a FOREIGNER (not from \(region.countryNameEn)) who lives in or visits \(region.nameEn). Pick an interesting nationality."
+            "角色是住在或到访 \(region.nameEn) 的外国人（不来自 \(region.countryNameEn)），选择一个有意思的国籍。"
         }
         let namesRule = existingNames.isEmpty
             ? ""
-            : "Do NOT use these names: \(existingNames.sorted().joined(separator: ", "))."
+            : "不得使用以下姓名：\(existingNames.sorted().joined(separator: ", "))。"
         let meetingRule = activityContext.map {
-            "The meeting happens during this activity: \($0). The occupation, routine or interests should make the presence plausible, and opening_line must fit this exact moment."
-        } ?? "The meeting happens during an ordinary local activity."
+            "相遇发生在这项活动中：\($0)。职业、生活习惯或兴趣应让出现在此处显得合理；opening_line 必须符合当前这一刻。"
+        } ?? "相遇发生在普通的当地活动中。"
         let diversityRule = diversityGuidance.isEmpty
             ? ""
-            : "A previous candidate overlapped the library. Follow every correction below:\n- "
+            : "之前的候选与角色库重叠，请逐条遵循以下修正：\n- "
                 + diversityGuidance.joined(separator: "\n- ")
         return """
-        You create a believable stranger the user bumps into in \(region.nameEn) \
-        (\(region.countryNameEn)). \(originRule)
+        你要创作一位用户在 \(region.nameEn)（\(region.countryNameEn)）偶然遇到的可信陌生人。\(originRule)
 
         \(meetingRule)
         \(diversityRule)
 
-        Requirements:
-        - Diverse and specific: a real-feeling occupation, 3-4 concrete hobbies, distinctive \
-        personality with one small flaw, provisional appearance, one-sentence speech style, \
-        a two-sentence background. \(namesRule)
-        - Write every item in hobbies as a concise, natural Simplified Chinese UI tag \
-        (for example: "做手工意面", "收藏黑胶唱片", "打乒乓球"). Do not include English translations \
-        or punctuation in those hobby tags.
-        - The user is a Chinese English learner at level: \(PromptBuilder.languageGuidance(for: userLevel))
-        - opening_line: the character's first casual words to the user in English \
-        (they just met during an activity), matching that level. 1-2 sentences, friendly, natural.
-        - Add a short personal signature, birthday (MM-DD), hometown and spoken languages.
-        - activity_rhythm describes when this person is naturally reachable. Choose earlyBird, daytime, \
-        nightOwl or irregular from their occupation, habits and background; do not default everyone to daytime.
-        - Define a stable voice bible: 2-4 values, 1-2 human flaws, 3-5 observable conversational habits, \
-        1-3 boundaries, and 4 short anchor lines covering ordinary talk, awkwardness, disagreement and care. \
-        These must all express the same personality and speech style. Write these fields in English.
-        - Choose age (14-85) and gender freely for a believable person. Do not prefer a \
-        youthful, conventionally attractive character by default.
-        - Classify the identity into diversity_profile using only the allowed enum values. The profile must \
-        truthfully summarize the occupation domain, social function, interaction style, interests, traits, \
-        background motif, energy, warmth and structure. It is checked against the shared character library.
-        - Appearance will be finalized from a reviewed portrait after this narrative is generated. \
-        Keep appearance provisional; do not lock hair, eye color, facial features, body build, \
-        clothing or pose into background, personality, opening_line or other narrative fields. \
-        Nationality, occupation and personality must remain independent of the portrait style.
-        - gender is one of: male / female / other.
-        Respond with JSON only.
+        要求：
+        - 具体且多样：可信的职业、3—4 个具体爱好、有一个小缺点的鲜明性格、暂定外貌、一句话说话风格，以及两句话背景。\(namesRule)
+        - hobbies 每项必须是简洁、自然的简体中文界面标签，如“做手工意面”“收藏黑胶唱片”“打乒乓球”；不含英文翻译或标点。
+        - 用户是中国英语学习者，水平为：\(PromptBuilder.languageGuidance(for: userLevel))
+        - opening_line 是双方刚在活动中相遇时，角色对用户说的第一句随意英语，匹配该水平，1—2 句，友好自然。
+        - 添加简短个人签名、生日（MM-DD）、家乡和所说语言。
+        - activity_rhythm 描述此人自然可联系的时间：根据职业、习惯、背景选择 earlyBird、daytime、nightOwl 或 irregular，不要全部默认 daytime。
+        - 定义稳定的角色说话规范：2—4 项价值观、1—2 个真实缺点、3—5 个可观察对话习惯、1—3 项边界，以及 4 条分别体现日常、尴尬、分歧与关心的短台词。这些字段都用英语，表达同一套性格和说话风格。
+        - 自由选择 14—85 岁年龄和性别，形成可信人物，不要默认偏好年轻、传统审美上好看的角色。
+        - diversity_profile 只能使用允许的枚举值，真实概括职业领域、社会功能、互动风格、兴趣、特征、背景主题、活力、温暖程度和结构性。它会与共享角色库核对。
+        - 外貌会在叙事生成后根据已审核头像最终确定，目前仅为暂定。不要把发型、眼睛颜色、面部特征、体型、衣着或姿态锁定进背景、性格、opening_line 或其他叙事字段。国籍、职业和性格必须独立于头像风格。
+        - gender 只能是 male / female / other。
+        只返回 JSON。
         """
     }
 

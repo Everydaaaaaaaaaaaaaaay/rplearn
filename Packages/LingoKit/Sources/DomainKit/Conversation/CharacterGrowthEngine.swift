@@ -198,13 +198,13 @@ public enum CharacterGrowthEngine {
             .prefix(4)
         guard !active.isEmpty else { return nil }
         let lines = active.map { arc in
-            "- \(stageInstruction(for: arc)); do not claim success or invent an off-screen event without supplied memory evidence."
+            "- \(stageInstruction(for: arc)); 没有提供的记忆证据，不得声称已经成功或编造线下事件。"
         }.joined(separator: "\n")
         return """
-        ## Private, relationship-specific personal growth
-        Your core identity remains stable. These are slow changes emerging specifically through this friendship, not a replacement personality:
+        ## 私有的、仅属于这段关系的个人成长
+        你的核心身份保持稳定。以下是这段友谊中缓慢出现的变化，不是替换人格：
         \(lines)
-        Mention this growth only when the topic naturally connects to it. Allow hesitation and occasional relapse.
+        只有话题自然相关时才提及成长。允许犹豫和偶尔退回旧习惯。
         """
     }
 
@@ -219,13 +219,13 @@ public enum CharacterGrowthEngine {
         let behavior = behaviorDescription(trait: arc.trait, direction: arc.direction)
         switch arc.stage {
         case .considering:
-            return "You have begun considering whether to \(behavior), but you have not changed yet"
+            return "你开始考虑是否要\(behavior)，但尚未改变"
         case .experimenting:
-            return "You are cautiously trying to \(behavior), with mixed success"
+            return "你正谨慎尝试\(behavior)，有成有败"
         case .integrating:
-            return "You increasingly remember to \(behavior), though old habits still appear under pressure"
+            return "你越来越能记得\(behavior)，但压力下仍会出现旧习惯"
         case .established:
-            return "You have gradually learned to \(behavior), while keeping the recognizable temperament underneath"
+            return "你逐渐学会\(behavior)，同时保留原本可辨认的性情"
         }
     }
 
@@ -234,22 +234,22 @@ public enum CharacterGrowthEngine {
         direction: CharacterGrowthDirection
     ) -> String {
         switch (trait, direction) {
-        case (.impulsivity, .decrease): "pause before consequential decisions"
-        case (.impulsivity, .increase): "act more spontaneously when the stakes are low"
-        case (.patience, .increase): "give people and difficult tasks more time"
-        case (.patience, .decrease): "state sooner when waiting or indecision is frustrating you"
-        case (.assertiveness, .increase): "express your own needs and opinions more clearly"
-        case (.assertiveness, .decrease): "leave more room before pressing your own position"
-        case (.openness, .increase): "consider unfamiliar perspectives before dismissing them"
-        case (.openness, .decrease): "protect your convictions instead of agreeing automatically"
-        case (.selfConfidence, .increase): "trust your considered judgement more often"
-        case (.selfConfidence, .decrease): "check confident assumptions before acting on them"
-        case (.emotionalExpression, .increase): "name important feelings more honestly"
-        case (.emotionalExpression, .decrease): "choose more carefully when and how much to disclose"
-        case (.flexibility, .increase): "adapt plans when new evidence appears"
-        case (.flexibility, .decrease): "keep worthwhile commitments instead of changing course too quickly"
-        case (.responsibility, .increase): "follow through and consider how choices affect others"
-        case (.responsibility, .decrease): "stop taking responsibility for everything around you"
+        case (.impulsivity, .decrease): "在重要决定前停一下"
+        case (.impulsivity, .increase): "在风险低时更随性地行动"
+        case (.patience, .increase): "给他人和困难任务更多时间"
+        case (.patience, .decrease): "等待或犹豫令你烦躁时更早表达"
+        case (.assertiveness, .increase): "更清楚地表达自己的需要和观点"
+        case (.assertiveness, .decrease): "坚持自己立场前先留出更多空间"
+        case (.openness, .increase): "否定陌生观点前先考虑"
+        case (.openness, .decrease): "守住自己的信念而非自动同意"
+        case (.selfConfidence, .increase): "更常相信自己深思后的判断"
+        case (.selfConfidence, .decrease): "行动前检查那些自信的假设"
+        case (.emotionalExpression, .increase): "更诚实地说出重要感受"
+        case (.emotionalExpression, .decrease): "更谨慎地选择何时披露、披露多少"
+        case (.flexibility, .increase): "出现新证据时调整计划"
+        case (.flexibility, .decrease): "履行值得的承诺而不是太快改变方向"
+        case (.responsibility, .increase): "贯彻行动并考虑选择对他人的影响"
+        case (.responsibility, .decrease): "停止为身边所有事情承担责任"
         }
     }
 

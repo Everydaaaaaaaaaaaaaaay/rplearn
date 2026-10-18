@@ -101,12 +101,12 @@ struct ProactiveMessageServiceTests {
 
         #expect(prompt.contains("street photographer"))
         #expect(prompt.contains("I went hiking yesterday."))
-        #expect(prompt.contains("Chinese English learner"))
-        #expect(prompt.contains("study abroad"))
-        #expect(prompt.contains("university learner"))
-        #expect(prompt.contains("Do not guilt"))
-        #expect(prompt.contains("comprehension ceiling"))
-        #expect(prompt.contains("6-14 words total"))
+        #expect(prompt.contains("中国英语学习者"))
+        #expect(prompt.contains("海外留学"))
+        #expect(prompt.contains("大学生"))
+        #expect(prompt.contains("不要使朋友内疚"))
+        #expect(prompt.contains("理解难度的上限"))
+        #expect(prompt.contains("总计 6—14 个英语词"))
     }
 
     @Test("主动消息按投递时刻写作且不叠加未回答的问题")
@@ -138,11 +138,11 @@ struct ProactiveMessageServiceTests {
             deliveryDate: delivery
         )
 
-        #expect(prompt.contains("## Trusted present-time context"))
+        #expect(prompt.contains("## 可信的当前时间语境"))
         #expect(prompt.contains("2026-09-06"))
-        #expect(prompt.contains("last message is still unanswered"))
-        #expect(prompt.contains("Do not repeat it or stack another question"))
-        #expect(prompt.contains("preserve its facts, plan status, emotional continuity"))
+        #expect(prompt.contains("上一条消息还未得到回复"))
+        #expect(prompt.contains("不要重复或再叠加问题"))
+        #expect(prompt.contains("保留事实、计划状态、情绪连续性"))
     }
 
     @Test("首次联系明确延续已约好的旅行伙伴关系")
@@ -154,9 +154,9 @@ struct ProactiveMessageServiceTests {
             recentMessages: []
         )
 
-        #expect(prompt.contains("already been introduced"))
-        #expect(prompt.contains("expected the two of you to be in touch"))
-        #expect(prompt.contains("Never act shocked"))
+        #expect(prompt.contains("已经互相介绍"))
+        #expect(prompt.contains("预期双方会联系"))
+        #expect(prompt.contains("不要因对方联系你而惊讶"))
     }
 
     @Test("与既定关系矛盾的惊讶开场会被重写")

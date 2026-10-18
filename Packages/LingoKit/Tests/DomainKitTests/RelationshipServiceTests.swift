@@ -307,8 +307,8 @@ struct RelationshipServiceTests {
         )
         let mock = MockLLMProvider(completeHandler: { request in
             #expect(request.task == .coachReview)
-            #expect(request.system?.contains("never English proficiency") == true)
-            #expect(request.system?.contains("declining an invitation") == true)
+            #expect(request.system?.contains("绝不依据英语熟练度") == true)
+            #expect(request.system?.contains("谢绝邀请") == true)
             return """
             {"coach_review":{"has_issues":true,"issues":[{"quote":"very like","type":"grammar","correction":"really like","explanation_zh":"really 修饰动词"}]},"relationship":{"warmth":0.7,"responsiveness":0.9,"respect":0.9,"empathy":0.3,"reciprocity":0.6,"disclosure":0.2,"resonance":0.7,"engagement":0.9,"boundary_harm":0,"repair":0,"significance":0.6,"confidence":0.9,"reason_zh":"认真接住了共同兴趣"}}
             """

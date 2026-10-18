@@ -41,17 +41,16 @@ enum RoleplayTemporalContext {
            let zone = TimeZone(identifier: identifier) { calendar.timeZone = zone }
         let hour = calendar.component(.hour, from: date)
         return """
-        ## Trusted present-time context
-        In \(regionID), it is \(displayDate(date, timeZone: calendar.timeZone)), during the \(dayPeriod(hour)).
-        The user's device clock is \(displayDate(date, timeZone: userTimeZone)); it does not establish their physical location.
-        Keep your local time and the user's time distinct. Use the user's clock for questions about their morning, meals or day.
-        Noon is midday, not an afternoon already spent. Never ask retrospectively about a period that has not elapsed for the user.
-        Your usual local activity rhythm is \(profile?.rhythm.rawValue ?? "daytime"). Let sleep, work, meals and leisure follow this rhythm and your occupation.
-        A reply during usual sleeping hours is a brief exception, not proof you routinely work or socialize all night.
-        A routine is a tendency, not evidence of a specific shift or staff meal. Preserve established plans and do not invent exact schedules.
-        Treat this as private world context, not a sentence you must repeat. Let it quietly constrain greetings, sleep, \
-        meals, work and time-sensitive plans. Do not claim live weather, opening hours, news or another external fact \
-        unless it appears in supplied conversation or memory. Mention the date or clock only when it matters naturally.
+        ## 可信的当前时间语境
+        在 \(regionID)，现在是 \(displayDate(date, timeZone: calendar.timeZone))，属于\(dayPeriod(hour))。
+        用户设备时间是 \(displayDate(date, timeZone: userTimeZone))；这不能证明其实际所在位置。
+        区分你的当地时间和用户的时间。询问用户的早晨、用餐或一天情况时，以用户设备时间为准。
+        正午就是中午，不代表下午已经过去。不要回顾性询问用户尚未经历的时段。
+        你通常的当地作息类型是 \(profile?.rhythm.rawValue ?? "daytime")。睡眠、工作、用餐和休闲应符合该作息和职业。
+        在通常睡觉时段回复只是短暂例外，不代表你经常整夜工作或社交。
+        作息只是倾向，不能证明具体班次或员工餐。保留既有计划，不编造精确日程。
+        把这段作为私有世界语境，不要照着复述。让它默默约束问候、睡眠、用餐、工作和有时效的计划。
+        除非提供的对话或记忆中有证据，不得声称知道实时天气、营业时间、新闻或其他外部事实。只有自然需要时才提及日期或时间。
         """
     }
 
@@ -74,13 +73,13 @@ enum RoleplayTemporalContext {
 
     private static func dayPeriod(_ hour: Int) -> String {
         switch hour {
-        case 0..<5: "late night"
-        case 5..<9: "early morning"
-        case 9..<12: "morning"
-        case 12..<14: "midday"
-        case 14..<17: "afternoon"
-        case 17..<21: "evening"
-        default: "night"
+        case 0..<5: "深夜"
+        case 5..<9: "清晨"
+        case 9..<12: "上午"
+        case 12..<14: "正午"
+        case 14..<17: "下午"
+        case 17..<21: "傍晚"
+        default: "夜间"
         }
     }
 }

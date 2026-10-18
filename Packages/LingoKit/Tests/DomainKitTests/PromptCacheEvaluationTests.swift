@@ -1,3 +1,4 @@
+import CoreKit
 import Foundation
 import LLMKit
 import Testing
@@ -39,9 +40,10 @@ struct PromptCacheEvaluationTests {
             }
         }
         let systems = bodies.compactMap { ($0["messages"] as? [[String: String]])?.first?["content"] }
-        let fixedPrefixes = systems.map { $0.components(separatedBy: "## Trusted present-time context")[0] }
+        let fixedPrefixes = systems.map { $0.components(separatedBy: "## 可信的当前时间语境")[0] }
         #expect(Set(fixedPrefixes).count == 1)
-        #expect(fixedPrefixes[0].count > 5_000)
+        // 中文与英文的字符/token 比不同，按项目估算器检查缓存前缀规模。
+        #expect(TokenEstimator.estimate(fixedPrefixes[0]) > 1_024)
         #expect(Set(systems).count == 4)
         let output = URL(fileURLWithPath: "/tmp/lingotrip-cache-fixture.json")
         try JSONSerialization.data(withJSONObject: bodies, options: [.sortedKeys, .prettyPrinted]).write(to: output)

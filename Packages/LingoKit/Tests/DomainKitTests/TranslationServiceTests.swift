@@ -8,7 +8,7 @@ struct TranslationServiceTests {
     func composerEnglishDirection() async throws {
         let service = TranslationService(llm: MockLLMProvider(completeHandler: { request in
             #expect(request.task == .translation)
-            #expect(request.system?.contains("Chinese into natural, simple conversational English") == true)
+            #expect(request.system?.contains("中文译成自然、简单的英语口语") == true)
             #expect(request.messages == [.user("把名字发给我吧")])
             return "  Please send me the name.  "
         }))

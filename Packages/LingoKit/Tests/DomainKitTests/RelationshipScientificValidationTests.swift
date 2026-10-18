@@ -725,18 +725,18 @@ struct RelationshipScientificValidationTests {
         let character = try #require(try await roster.character(id: characterID))
         let mock = MockLLMProvider(completeHandler: { request in
             let prompt = request.system ?? ""
-            #expect(prompt.contains("never apply a nationality stereotype"))
-            #expect(prompt.contains("Culturally plausible brevity"))
-            #expect(prompt.contains("Disclosure alone is not intimacy"))
-            #expect(prompt.contains("active, constructive response to positive news"))
-            #expect(prompt.contains("the word “sorry” alone is insufficient"))
-            #expect(prompt.contains("Do not demand immediate or exact reciprocity"))
-            #expect(prompt.contains("match the support actually requested or expressed"))
-            #expect(prompt.contains("Unsolicited fixing, pressure, minimising, or taking over"))
-            #expect(prompt.contains("respecting a refusal or asking what support is wanted"))
-            #expect(prompt.contains("Directive guidance may be practically useful"))
-            #expect(prompt.contains("preserves the other person's agency and choice"))
-            #expect(prompt.contains("Disagreement or declining advice can still be autonomy-supportive"))
+            #expect(prompt.contains("不得套用国籍刻板印象"))
+            #expect(prompt.contains("文化上合理的简短"))
+            #expect(prompt.contains("自我披露本身不等于亲密"))
+            #expect(prompt.contains("对好消息积极且有建设性的回应"))
+            #expect(prompt.contains("仅说“sorry”不够"))
+            #expect(prompt.contains("不要要求立即或完全对等的回报"))
+            #expect(prompt.contains("匹配对方实际请求或表达的需要"))
+            #expect(prompt.contains("未经请求地解决问题、施压、淡化感受或接管局面"))
+            #expect(prompt.contains("尊重拒绝或询问想要什么支持"))
+            #expect(prompt.contains("指令式指导可以有实际帮助"))
+            #expect(prompt.contains("保留对方的自主和选择"))
+            #expect(prompt.contains("不同意或拒绝建议仍可能支持自主性"))
             return Self.neutralReviewJSON
         })
 
@@ -753,8 +753,8 @@ struct RelationshipScientificValidationTests {
     func relationshipPromptForbidsInventedSharedHistory() {
         let prompt = RelationshipEngine.promptContext(.initial, at: now)
 
-        #expect(prompt.contains("Do not invent shared experiences"))
-        #expect(prompt.contains("specific personal facts require supplied conversation or memory evidence"))
+        #expect(prompt.contains("不得编造共同经历"))
+        #expect(prompt.contains("具体个人事实必须有提供的对话或记忆证据"))
     }
 
     @Test("三十次空洞接触不如三次高质量回应且不会伪造稳定性")

@@ -270,9 +270,9 @@ struct MemoryServiceTests {
 
         let request = try #require(await recorder.lastRequest)
         #expect(request.messages.first?.content.contains("] Friend: message 0") == true)
-        #expect(request.system?.contains("timestamps are authoritative metadata") == true)
-        #expect(request.system?.contains("proposed, confirmed, rescheduled, cancelled or completed") == true)
-        #expect(request.system?.contains("never infer that a proposed or confirmed off-screen event was completed") == true)
+        #expect(request.system?.contains("时间戳是可信元数据") == true)
+        #expect(request.system?.contains("提出、确认、改期、取消还是完成") == true)
+        #expect(request.system?.contains("绝不能推断已提出或已确认的线下事件已经完成") == true)
     }
 
     @Test("记忆压缩携带既有记忆并要求跨批次去重")
@@ -299,11 +299,11 @@ struct MemoryServiceTests {
         )
 
         let request = try #require(await recorder.lastRequest)
-        #expect(request.system?.contains("Use them only for de-duplication") == true)
-        #expect(request.system?.contains("family or relationships") == true)
-        #expect(request.system?.contains("never omit them merely to keep the list shorter") == true)
+        #expect(request.system?.contains("只能用于去重") == true)
+        #expect(request.system?.contains("家庭或人际关系") == true)
+        #expect(request.system?.contains("绝不能仅为缩短列表而省略") == true)
         #expect(request.messages.first?.content.contains("Friend prefers quiet cafés") == true)
-        #expect(request.messages.first?.content.contains("New timestamped chat excerpt") == true)
+        #expect(request.messages.first?.content.contains("待提取的新对话摘录") == true)
     }
 
     @Test("仍含相对日期的模型记忆不会进入长期上下文")
@@ -345,8 +345,8 @@ struct MemoryServiceTests {
         let sections = await service.memorySections(characterID: fixture.characterID)
         #expect(sections.count == 1)
         #expect(sections.first?.contains("Friend likes cats") == true)
-        #expect(sections.first?.contains("[note recorded") == true)
-        #expect(sections.first?.hasPrefix("[Recent things") == true)
+        #expect(sections.first?.contains("[记录时间") == true)
+        #expect(sections.first?.hasPrefix("[你记得的近期聊天内容]") == true)
 
         // 无记忆时为空
         let empty = await service.memorySections(characterID: UUID())
@@ -367,9 +367,9 @@ struct MemoryServiceTests {
         let service = MemoryService(llm: MockLLMProvider(), chatStore: fixture.chatStore, memoryStore: fixture.memoryStore)
         let sections = await service.memorySections(characterID: fixture.characterID)
         #expect(sections.count == 2)
-        #expect(sections[0].hasPrefix("[Long-term"))
+        #expect(sections[0].hasPrefix("[你对朋友的长期了解]"))
         #expect(sections[0].contains("Friend is from Chengdu"))
-        #expect(sections[1].hasPrefix("[Recent things"))
+        #expect(sections[1].hasPrefix("[你记得的近期聊天内容]"))
         #expect(sections[1].contains("Friend went to a concert"))
     }
 
@@ -429,7 +429,7 @@ struct MemoryServiceTests {
         #expect(sections.count == 1)
         #expect(sections[0].contains("prefers tea to coffee"))
         #expect(!sections[0].contains("meet tomorrow"))
-        #expect(sections[0].contains("newer cancellation, correction or reschedule supersedes"))
+        #expect(sections[0].contains("较新的取消、更正或改期会取代"))
     }
 
     @Test("quota 随订阅变化")

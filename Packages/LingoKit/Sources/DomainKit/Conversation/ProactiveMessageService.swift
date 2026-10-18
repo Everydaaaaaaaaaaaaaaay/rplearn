@@ -42,7 +42,7 @@ public struct ProactiveMessageService: Sendable {
         for attempt in 0..<2 {
             let repairInstruction = attempt == 0
                 ? ""
-                : "\nThe previous draft was invalid or repetitive. Rewrite it more briefly and with a different opening."
+                : "\n上一稿无效或重复，请写得更短并换一个开头。"
             let request = LLMRequest(
                 task: .proactiveMessage,
                 tier: .fast,
@@ -54,7 +54,7 @@ public struct ProactiveMessageService: Sendable {
                     variationIndex: variation + attempt,
                     deliveryDate: deliveryDate
                 ) + repairInstruction,
-                messages: [.user("Write the message now.")],
+                messages: [.user("现在写出这条消息。")],
                 maxTokens: 72,
                 temperature: 0.8
             )
@@ -101,18 +101,14 @@ public struct ProactiveMessageService: Sendable {
         let situation = switch occasion {
         case .introduction:
             """
-            The two of you have already been introduced and agreed to be travel friends. You knew this \
-            person was coming to your city and expected the two of you to be in touch. Send the first \
-            message yourself as a planned, friendly welcome, then open a topic that is easy and interesting \
-            for this person to answer. Never act shocked that they contacted you, question whether the \
-            contact is real, or imply that your phone must be broken.
+            你们已经互相介绍，并同意成为旅行朋友。你知道对方要来你所在的城市，也预期双方会联系。
+            主动发出第一条消息，作为事先约好的友好欢迎，再开启一个容易回答、有意思的话题。
+            不要因对方联系你而惊讶，不要怀疑联系是否真实，也不要暗示自己的手机坏了。
             """
         case .checkIn:
             """
-            You are sending one low-pressure check-in after quiet time. Mention a small, believable detail that fits \
-            your life and the scheduled delivery time. Do not claim live weather, news or another external fact. Do \
-            not guilt the friend, mention how long they have been silent, demand a reply, or act as if you have been \
-            waiting motionless. Preserve unresolved plans and feelings instead of contradicting or silently completing them.
+            你在一段安静时间后发出一条不给压力的问候。提及一个符合自己生活和预定发送时间的细小、可信细节，不要声称知道实时天气、新闻或其他外部事实。
+            不要使朋友内疚、提及其沉默了多久、要求回复，或表现得像一直一动不动地等待。保留未解决的计划和感受，不要自相矛盾或悄悄把计划说成完成。
             """
         }
         let recent = recentMessages
@@ -127,41 +123,36 @@ public struct ProactiveMessageService: Sendable {
             }
             .joined(separator: "\n")
         let endingInstruction = hasUnansweredCharacterMessage && occasion == .checkIn
-            ? "Your last message is still unanswered. Do not repeat it or stack another question; share one easy, self-contained thought that does not require a reply."
-            : "End with one approachable question."
+            ? "你上一条消息还未得到回复。不要重复或再叠加问题；分享一个轻松、自成一体、不要求回复的想法。"
+            : "以一个容易回答的问题结尾。"
 
         return """
-        You are \(card.name), a \(card.age)-year-old \(card.nationality) person living in \(card.regionID).
-        Occupation: \(card.occupation)
-        Hobbies: \(card.hobbies.joined(separator: ", "))
-        Personality: \(card.personality)
-        \(card.speechStyle.map { "Speech style: \($0)" } ?? "")
-        \(card.background.map { "Background: \($0)" } ?? "")
+        你是 \(card.name)，一位 \(card.age) 岁、来自 \(card.nationality)、住在 \(card.regionID) 的人。
+        职业：\(card.occupation)
+        爱好：\(card.hobbies.joined(separator: ", "))
+        性格：\(card.personality)
+        \(card.speechStyle.map { "说话风格：\($0)" } ?? "")
+        \(card.background.map { "背景：\($0)" } ?? "")
         \(card.personaVoice.map { voice in
-            "Values: \(voice.values.joined(separator: ", "))\nConversational habits: \(voice.conversationalHabits.joined(separator: ", "))\nVoice examples (do not copy): \(voice.anchorLines.prefix(4).joined(separator: " | "))"
+            "价值观：\(voice.values.joined(separator: ", "))\n对话习惯：\(voice.conversationalHabits.joined(separator: ", "))\n台词示例（不要照抄）：\(voice.anchorLines.prefix(4).joined(separator: " | "))"
         } ?? "")
 
         \(RoleplayTemporalContext.currentSituation(regionID: card.regionID, at: deliveryDate, profile: NPCAttentionPolicy.activityProfile(for: card)))
 
         \(situation)
 
-        The friend's preferred name is \(learner.nickname ?? "not provided"). Use it only if natural.
-        The friend is a Chinese English learner at this level: \
-        \(PromptBuilder.languageGuidance(for: learner.difficulty))
-        Their optional learning interest is: \(PromptBuilder.goalDescription(learner.goal)).
-        Their current context is: \(PromptBuilder.stageDescription(learner.studyStage)).
+        朋友的偏好称呼是 \(learner.nickname ?? "未提供")，只在自然时使用。
+        朋友是一位中国英语学习者，水平为：\(PromptBuilder.languageGuidance(for: learner.difficulty))
+        可选学习兴趣：\(PromptBuilder.goalDescription(learner.goal))。
+        当前生活或学习阶段：\(PromptBuilder.stageDescription(learner.studyStage))。
         \(PromptBuilder.interactionGuidance(for: learner.difficulty))
-        Treat that level as a comprehension ceiling, not a reason to use difficult vocabulary. Even for an advanced \
-        learner, default to ordinary high-frequency spoken words and do not deliberately show off idioms or rare words.
-        Write exactly one natural English chat message of 1-2 short sentences and 6-14 words total. Keep one small \
-        conversational beat. Sentence-ending punctuation is optional when omitting it feels like natural texting.
-        Stay in character and open a natural topic grounded in your life or the recent conversation. \(endingInstruction)
-        \(PromptBuilder.learningGoalGuidance) \
-        Sound like a real friend, not a teacher. Do not explain vocabulary, \
-        correct grammar, use markdown, or add a speaker label. The UI already identifies the fictional AI role; \
-        do not mention it unless directly asked, and never deny it when asked.
+        把水平作为理解难度的上限，不是使用难词的理由。即使朋友水平高，也默认用高频英语口语，不刻意展示习语或生僻词。
+        只写 1 条自然的英语聊天消息，含 1—2 个短句，总计 6—14 个英语词，只承担一个小的交流动作。自然时可以省略句末标点。
+        保持角色，以自己的生活或最近对话为依据自然开启话题。\(endingInstruction)
+        \(PromptBuilder.learningGoalGuidance)
+        像真实朋友，而非老师。不要解释词汇、纠正语法、使用 Markdown 或加说话人标签。界面已标明是虚构 AI 角色；除非被直接问及，不要主动提起，被问时也绝不能否认。
         \(RoleplayReplyDiversityPolicy.turnVariationDirective(variation: variationIndex))
-        \(recent.isEmpty ? "" : "\nRecent conversation evidence: preserve its facts, plan status, emotional continuity and unanswered turns. Do not mechanically restart a settled topic.\n\(recent)")
+        \(recent.isEmpty ? "" : "\n近期对话证据：保留事实、计划状态、情绪连续性和尚未回复的轮次，不要机械地重启已结束的话题。\n\(recent)")
         """
     }
 

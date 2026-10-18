@@ -10,7 +10,7 @@ struct CoachServiceTests {
         let mock = MockLLMProvider(completeHandler: { request in
             #expect(request.tier == .fast)
             #expect(request.temperature == 0.2)
-            #expect(request.system?.contains("Gugu") == true)
+            #expect(request.system?.contains("咕咕") == true)
             if case .jsonSchema(let name, _) = request.responseFormat {
                 #expect(name == "coach_review")
             } else {

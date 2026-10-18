@@ -272,8 +272,8 @@ public struct BackendLLMProvider: LLMProvider {
             let schemaText = String(decoding: schemaData, as: UTF8.self)
             systemParts.insert(
                 """
-                Return only one JSON object matching schema "\(name)". Do not add Markdown or explanation.
-                JSON Schema:
+                只返回一个符合 schema“\(name)”的 JSON 对象，不添加 Markdown 或解释。
+                JSON Schema：
                 \(schemaText)
                 """, at: 0
             )

@@ -180,9 +180,9 @@ struct CharacterGrowthEngineTests {
             evidenceMessageID: UUID()
         )
         let prompt = try #require(CharacterGrowthEngine.promptContext(snapshot))
-        #expect(prompt.contains("core identity remains stable"))
-        #expect(prompt.contains("do not claim success or invent an off-screen event"))
-        #expect(prompt.contains("not changed yet"))
+        #expect(prompt.contains("核心身份保持稳定"))
+        #expect(prompt.contains("不得声称已经成功或编造线下事件"))
+        #expect(prompt.contains("尚未改变"))
     }
 
     @Test("暂停后拒绝新证据，恢复后可以继续成长")

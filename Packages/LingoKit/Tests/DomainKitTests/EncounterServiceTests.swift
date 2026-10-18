@@ -131,12 +131,12 @@ struct EncounterServiceTests {
             activityContext: "Browsing a weekend food market",
             diversityGuidance: ["Choose an occupation outside hospitality-food."]
         )
-        #expect(prompt.contains("ANOTHER city"))
-        #expect(prompt.contains("Do NOT use these names: A, B"))
-        #expect(prompt.contains("Simplified Chinese UI tag"))
+        #expect(prompt.contains("另一座城市"))
+        #expect(prompt.contains("不得使用以下姓名：A, B"))
+        #expect(prompt.contains("简体中文界面标签"))
         #expect(prompt.contains("weekend food market"))
-        #expect(prompt.contains("stable voice bible"))
-        #expect(prompt.contains("previous candidate overlapped"))
+        #expect(prompt.contains("稳定的角色说话规范"))
+        #expect(prompt.contains("之前的候选与角色库重叠"))
         #expect(prompt.contains("outside hospitality-food"))
         #expect(prompt.contains("diversity_profile"))
     }
