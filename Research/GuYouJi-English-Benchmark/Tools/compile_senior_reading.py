@@ -31,6 +31,13 @@ def compile_author(manuscript, version='0.1'):
         audit['load_measure'].update(compulsory_credit_entries=len(policy['compulsory']),half_credit_entries=sum(x['credits']==0.5 for x in policy['compulsory']),online_nested_credits=policy['online_credits'],community_hours_not_credits=policy['community_hours'])
     if d.get('program_policy'):
         audit.update(source_bound_four_program_reading_section=True,program_policy=d['program_policy'],program_match=d['program_match'],research_conditions=d['research_conditions'])
+    if d.get('source_bound_steps_letter_migration_survey'):
+        audit.update(source_bound_steps_letter_migration_survey=True,
+                     steps=d['steps'],letter=d['letter'],migration=d['migration'],
+                     survey=d['survey'],answer_evidence=d['answer_evidence'])
+        audit['load_measure'].update(ordered_advice_steps=4,complete_private_letter=1,
+                                    migration_units=['captured_individuals','sampled_individuals','tracked_individuals','completed_flights'],
+                                    survey_scales=['0 to 10','1 to 3'])
     if d.get('required_table'):
         audit.update(required_table=d['required_table'],fee_comparison=d['fee_comparison'],lexical_paragraph=d['lexical_paragraph'],source_bound_three_passage_fee_table_section=True)
         audit['load_measure'].update(table_English_words_in_body=words(table_markup(d['required_table'])),table_numeric_cells=6,table_data_rows=3,table_value_columns=2)

@@ -86,6 +86,9 @@ def validate(d,b,s):
     if 'A.credit_requirements' in c['required_lists']:
         from senior_credit_reading_contract import validate as validate_credit
         validate_credit(d,s)
+    if 'A.numbered_advice_steps' in c['required_lists']:
+        from senior_steps_reading_contract import validate as validate_steps
+        validate_steps(d,s)
     if c['required_tables']:
         assert c['required_tables']==['A.fee_table'] and not c['required_lists']
         table=d['required_table'];assert table['id']=='A.fee_table'
@@ -154,6 +157,9 @@ def check(g,a,b,s):
         assert label+'组（第'+str(nums[0])+'—'+str(nums[-1])+'题）' in g['passageHtml']
     if d.get('credit_notice'):
         from senior_credit_reading_contract import check_rendered
+        check_rendered(g,a,d)
+    if d.get('source_bound_steps_letter_migration_survey'):
+        from senior_steps_reading_contract import check_rendered
         check_rendered(g,a,d)
     if d.get('program_policy'):
         assert a['program_policy']==d['program_policy'] and a['program_match']==d['program_match']
