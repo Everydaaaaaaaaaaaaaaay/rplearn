@@ -1,0 +1,64 @@
+{
+  "version": "0.1",
+  "scope": "remove_unconfirmed_or_region_specific_primary_forms_from_required_common_core",
+  "owner_common_types_only": true,
+  "decisions": [
+    {
+      "level": "primary3",
+      "family": "letter_completion",
+      "label": "字母组合补全",
+      "group_ids": [
+        "primary3-five-letter-completions",
+        "primary3-letter-completions-family",
+        "primary3-letter-completions-outdoors"
+      ],
+      "source_group_ids": [
+        "p3.lower.spelling",
+        "primary3.lower.undated.spelling"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "书面无音字母组合选择目前仅有年份不明旧卷选节；本次复核的嘉兴南湖/长春朝阳为听音补字母，不能为这一书面形式补常见性证据。退出当前核心与必补，不判为不存在，也不新增听音补字母任务。",
+      "evidence_layer": "undated_written_selected_task_not_corroborated_by_listening_headers"
+    },
+    {
+      "level": "primary4",
+      "family": "choice_cloze",
+      "label": "单选完形",
+      "group_ids": [
+        "primary4-library-sign-cloze",
+        "primary4-garden-note-cloze",
+        "primary4-missing-glove-cloze"
+      ],
+      "source_group_ids": [
+        "p4.shijingshan2025.choicecloze"
+      ],
+      "decision": "reference_only_not_required",
+      "reason": "已核石景山2024—2025第一学期五空二选完形为真实地区观察层；额外检索仅专项训练标题，不能计作普通卷复现。当前不将此四年级地区编排设为核心必补；保留全部样本与三稿，不据单一来源断言罕见或全国不用。",
+      "evidence_layer": "selected_regional_paper_not_promoted_to_crossregional_core"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "Primary/Grade3/selected-source-groups-v0.1.json",
+      "sha256": "bf2e842dd140644e6169197250ee081754417e5dd0b42aa57b4cbd92bec63fe6"
+    },
+    {
+      "path": "AuthorityGap20261017/SelectedSourceModes-v0.10.json",
+      "sha256": "45916d6073ff0d3b08fd8406f7bf8cd3d02abb0604a5f2b9195bee4c7a4801e9"
+    },
+    {
+      "path": "CompleteCoverage20261017/PrimaryCommonTypeFollowup-v0.2.json",
+      "sha256": "b044f9312a198376b01713c8e691f158cf846611fd27abfdd0189407e4503c73"
+    },
+    {
+      "path": "build/english-benchmark-authority-20261017/primary-type769-public-header-selections-v0.1.json",
+      "sha256": "b20484f9b9e78e297624997a159f7c293e65ae0fc81db48ff0f4abe361713109"
+    }
+  ],
+  "not_single_source_equals_rare": true,
+  "new_required_types": 0,
+  "new_sources": 0,
+  "new_authors": 0,
+  "all_old_payloads_preserved": true,
+  "no_exhaustive_configuration_queue": true
+}
