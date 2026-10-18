@@ -1,0 +1,187 @@
+{
+  "version": "0.3",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.2.json",
+    "sha256": "edf2b2e4a4e2bc4007c3d6d36f7b363e4aedd7dd5c674022ca55475b7b5ca435"
+  },
+  "scope": "one_previously_observed_whole_section_two_materials_not_two_new_parents",
+  "groups": [
+    {
+      "id": "grade7-hefei2025-21cnjy26607976.clozeWhole",
+      "level": 7,
+      "kind": "choice_cloze",
+      "responses": 20,
+      "options_each": 4,
+      "configuration": {
+        "materials": 2,
+        "responses": 20,
+        "subgroups": [
+          {
+            "label": "A",
+            "responses": 10,
+            "options_each": 4
+          },
+          {
+            "label": "B",
+            "responses": 10,
+            "options_each": 4
+          }
+        ],
+        "options_each": 4,
+        "shared_bank": false,
+        "each_gap_independent": true,
+        "necessary_audio": false,
+        "source_word_limit_not_inferred": true,
+        "points_each_subgroup": [
+          1,
+          1
+        ],
+        "section_points": 20
+      },
+      "source_full_inputs_verified": true,
+      "source_key_is_gold": false,
+      "source_count_increment": 0,
+      "paper_id": "grade7-hefei2025-21cnjy26607976",
+      "source_member_ids": [
+        "grade7-hefei2025-21cnjy26607976.clozeA",
+        "grade7-hefei2025-21cnjy26607976.clozeB"
+      ],
+      "source_observations": [
+        {
+          "id": "grade7-hefei2025-21cnjy26607976.clozeA",
+          "paper_id": "grade7-hefei2025-21cnjy26607976",
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "part": "A",
+              "materials": 1,
+              "section_materials": 2,
+              "section_subgroup_slots": [
+                10,
+                10
+              ],
+              "necessary_input_complete": true
+            },
+            "grade": 7
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+            "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false,
+          "input_confirmation_scope": "selected_cloze_material_all_numbered_blanks_all_option_rows; source instruction reviewed in paper block; not key correctness"
+        },
+        {
+          "id": "grade7-hefei2025-21cnjy26607976.clozeB",
+          "paper_id": "grade7-hefei2025-21cnjy26607976",
+          "shape": {
+            "family": "choice_cloze",
+            "responses": 10,
+            "options_each": 4,
+            "details": {
+              "part": "B",
+              "materials": 1,
+              "section_materials": 2,
+              "section_subgroup_slots": [
+                10,
+                10
+              ],
+              "necessary_input_complete": true
+            },
+            "grade": 7
+          },
+          "layer": "new_structure_only",
+          "source_text_ref": {
+            "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+            "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+          },
+          "necessary_input_complete": true,
+          "positive_answer_anchor_admitted": false,
+          "production_supported": false,
+          "input_confirmation_scope": "selected_cloze_material_all_numbered_blanks_all_option_rows; source instruction reviewed in paper block; not key correctness"
+        }
+      ],
+      "source_spans": [
+        {
+          "label": "A",
+          "source_member_id": "grade7-hefei2025-21cnjy26607976.clozeA",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+            "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+          },
+          "start_offset": 2872,
+          "end_offset": 3999,
+          "sha256": "bbcc3d39ecad94c6b29ae48d7bee3d600373933deb4d4687e1ebdfeabfceddee",
+          "question_numbers": [
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "instruction": "阅读下列短文，从每小题所给的A、B、C、D四个选项中选出一个最佳选项。",
+          "instruction_sha256": "8edc795cb83dfdd66dbb87865aa10bfefa204a92c5935b4397f2fb305b37b16e"
+        },
+        {
+          "label": "B",
+          "source_member_id": "grade7-hefei2025-21cnjy26607976.clozeB",
+          "source": {
+            "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+            "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+          },
+          "start_offset": 4002,
+          "end_offset": 4975,
+          "sha256": "78e13e9148c3d289f70d464e29fdc29247a195d6fe08de650c100548c10cc131",
+          "question_numbers": [
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50
+          ],
+          "instruction": "阅读下列短文，从每小题所给的A、B、C、D四个选项中选出一个最佳选项。",
+          "instruction_sha256": "8edc795cb83dfdd66dbb87865aa10bfefa204a92c5935b4397f2fb305b37b16e"
+        }
+      ],
+      "whole_section": {
+        "source": {
+          "path": "build/english-benchmark-research-20261012/grade7-hefei2025-21cnjy26607976-resource-v0.2.txt",
+          "sha256": "69dfdf9d6db3e68f8675e8ec955d566961bf40a7f64296009f54a75e15943ae8"
+        },
+        "start_offset": 2808,
+        "end_offset": 2869,
+        "sha256": "20e739082e6b54f1fb23fc31eb51e60536329a82dc0ed3467ce72c59157dd6fe",
+        "member_ids": [
+          "grade7-hefei2025-21cnjy26607976.clozeA",
+          "grade7-hefei2025-21cnjy26607976.clozeB"
+        ],
+        "mandatory_all_materials": true
+      },
+      "source_material_english_words": [
+        116,
+        94
+      ],
+      "printed_body_title": "安徽省合肥市第三十中学2025-2026学年七年级上学期10月月考英语试题",
+      "source_original_school_authentication": false,
+      "published_key_quality": "not_independent_gold",
+      "new_paper_count": 0
+    }
+  ],
+  "new_sources": 0,
+  "new_authenticated_school_papers": 0
+}

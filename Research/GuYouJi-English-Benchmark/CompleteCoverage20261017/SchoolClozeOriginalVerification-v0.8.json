@@ -1,0 +1,175 @@
+{
+  "version": "0.8",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalVerification-v0.7.json",
+    "sha256": "5a3917046b1707f7756b9b040be0884620ae3e12ec3283b7eacea065fc92ec63"
+  },
+  "batch": {
+    "path": "CompleteCoverage20261017/SchoolClozeOriginalBatch-v0.10.json",
+    "sha256": "badd48cf0d65658b5f6c01a616fd5b4da7492833fff9d5f9058c367eb93417ca"
+  },
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.3.json",
+    "sha256": "192376b71ab20f63cbb2220d175f675b92c8c39c7d62056a67301e96f3a911be"
+  },
+  "source_bindings": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceBindings-v0.3.json",
+    "sha256": "a29c6e051263edbe8b0126fe5566ac925e37674785b4177837c1cba75db6bf6d"
+  },
+  "source_quality_notes": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.3.json",
+    "sha256": "b2855b6cfc426e6a03a7b50e47c2ad5582246d5878a1383de53aee0f7e027e93"
+  },
+  "pending_index": {
+    "path": "CompleteCoverage20261017/PendingObservedModes-v0.66.json",
+    "sha256": "9f7e3f4b80964dc228505881b0bd218b15d0cd5bc1416a6eb2aee47247a44ec6"
+  },
+  "inventory": {
+    "path": "CompleteCoverage20261017/CurrentTypeInventory-v0.119.json",
+    "sha256": "043562576f736d027696253dbf7e6864548923e33d5608e1b15c5f2acdb51ffb"
+  },
+  "contract": {
+    "path": "build/english-benchmark-authority-20261017/cloze685-contract-v0.1.json",
+    "sha256": "439dd435aaf86fdce879bb9a56504c6e0187afd18666122454552c2738bd0d48"
+  },
+  "browser": {
+    "path": "build/english-benchmark-authority-20261017/cloze685-browser-v0.1.json",
+    "sha256": "7d209454a70339ac14c0cf43373a12f9ce57795235e630f21d9253f6ae5206e1"
+  },
+  "family_load": {
+    "path": "build/english-benchmark-authority-20261017/cloze685-family-load-review-v0.1.json",
+    "sha256": "80d70f0ab2423759314a7bf2af71fd31792c9226baa62a19356edbaf13b56461"
+  },
+  "final_check": {
+    "path": "build/english-benchmark-authority-20261017/cloze685-final-check-v0.1.json",
+    "sha256": "1baf367a07368ec032ac7c05c51f229b283cec5760c42ffac9d3bf1fc053d897"
+  },
+  "archive": {
+    "path": "build/english-benchmark-authority-20261017/incremental-archive-v0.189.json",
+    "sha256": "2a335451c99517b472cae0aaa3be81895bd06c2ceb7d54e2ba5ff7c82a29747b"
+  },
+  "targeted_restores": [
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/review685-school-cloze-delta-v0.1.json",
+        "sha256": "57a302f28f12b74d47952d1c99c3a06587e288abd6f95f6d79fa1aee455e0775"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze685-browser-v0.1.json",
+        "sha256": "7d209454a70339ac14c0cf43373a12f9ce57795235e630f21d9253f6ae5206e1"
+      },
+      "restored_SHA_verified": true
+    },
+    {
+      "asset": {
+        "path": "build/english-benchmark-authority-20261017/cloze685-two-material-review-v0.1.png",
+        "sha256": "0747c4f345f151924a555f86cf1f9584f3f36b4ff07c62682d9b87119da0417c"
+      },
+      "restored_SHA_verified": true
+    }
+  ],
+  "candidate_HTTP_links": [
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade7-two-cloze-art-family-v0.1.md",
+        "sha256": "e55187b2e99026921a4ecdab32eb9cc8b7c579d12fd887f6773457914938300c"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade7-two-cloze-library-sports-v0.1.md",
+        "sha256": "2ca28ef03cfa251828eccab90efb6df831ab3bc65a717a10ded1dab1146eaf4b"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    },
+    {
+      "candidate": {
+        "path": "CompleteCoverage20261017/Authored/grade7-two-cloze-garden-desk-v0.1.md",
+        "sha256": "d63e4567890fd8d5ed53caf85d46eed9bf29ee53626fdee6ba772e528cf73c6b"
+      },
+      "HTTP_status": 200,
+      "served_SHA256_matches": true
+    }
+  ],
+  "browser_MD_open_not_claimed": true,
+  "screenshots": [
+    {
+      "path": "build/english-benchmark-authority-20261017/cloze685-two-material-review-v0.1.png",
+      "sha256": "0747c4f345f151924a555f86cf1f9584f3f36b4ff07c62682d9b87119da0417c"
+    }
+  ],
+  "runtime_rules_reused_or_changed": [
+    {
+      "path": "Tools/school_cloze_contract.py",
+      "sha256": "e3581e4f70c592047dc397b0d48ae7a8015b29cdbbd9199a84d7d31d8989f4a0"
+    },
+    {
+      "path": "Tools/check_school_cloze_contract.py",
+      "sha256": "86846c38012916c691f7ae1a100ffe08ae92d44a303645f32b8a1a67e2da15af"
+    },
+    {
+      "path": "Tools/compile_school_cloze.py",
+      "sha256": "96f54d5ab46b79987bce25b78feb86c6423e79a45b9a79ffabfbb09ea3d49eab"
+    }
+  ],
+  "current_groups": 685,
+  "current_responses": 4826,
+  "populated_family_cells": 195,
+  "new_groups": 3,
+  "new_responses": 60,
+  "new_full_candidate_substitutions": 240,
+  "new_contract_negative_controls": 93,
+  "prior18_contract_negative_controls": 288,
+  "all21_contract_negative_controls": 381,
+  "all21_full_candidate_substitutions": 1380,
+  "actual_UI_correct_responses": 60,
+  "actual_UI_aonly_wrongA_wrongB_blank_vectors": 12,
+  "actual_UI_candidate_positions": 240,
+  "actual_teacher_reset_groups": 3,
+  "source_selected_body_words": [
+    116,
+    94
+  ],
+  "authored_material_body_words": [
+    [
+      104,
+      103
+    ],
+    [
+      103,
+      104
+    ],
+    [
+      104,
+      107
+    ]
+  ],
+  "visible_headings_and_stems_map_whole_two_materials": true,
+  "each_whole_has20responses_not_six_or_ten": true,
+  "source_self_signed_body_identity_not_authenticated": true,
+  "source_nice_warm_key_and_grammar_risks_not_gold": true,
+  "no_grade_wordload_difficulty_time_equivalence": true,
+  "source_downloads": 0,
+  "new_authenticated_school_papers": 0,
+  "archive_new_objects": 10,
+  "archive_new_bytes": 259197,
+  "new_full_snapshots": 0,
+  "cache_cleanup": {
+    "regenerable_pip_http_v2_logical_bytes_removed": 225724403,
+    "df_available_after_approx_MiB": 521,
+    "logical_directory_bytes_not_actual_APFS_freed_claim": true,
+    "research_or_restore_point_deleted": false
+  },
+  "now_pending_restored_cloze_modes": 7,
+  "now_missing_restored_cloze_originals": 21,
+  "old682_payloads_and47pins_preserved": true,
+  "other_family_concrete_configuration_reconciliation_still_required": true,
+  "all_required_types_complete": false,
+  "independent_teacher_student_commercial_production": false
+}

@@ -1,0 +1,48 @@
+{
+  "version": "0.3",
+  "previous": {
+    "path": "CompleteCoverage20261017/SchoolClozeSourceQualityNotes-v0.2.json",
+    "sha256": "df800741ab415b57fda3241d905cd95ef9825807347f449ef3f98fcbe5240e6d"
+  },
+  "scope": "additional_hefei_whole_section_source_risks_not_independent_adjudication",
+  "source_index": {
+    "path": "CompleteCoverage20261017/SchoolClozeSelectedSources-v0.3.json",
+    "sha256": "192376b71ab20f63cbb2220d175f675b92c8c39c7d62056a67301e96f3a911be"
+  },
+  "rows": [
+    {
+      "source_group_id": "grade7-hefei2025-21cnjy26607976.clozeWhole",
+      "source_member_ids": [
+        "grade7-hefei2025-21cnjy26607976.clozeA",
+        "grade7-hefei2025-21cnjy26607976.clozeB"
+      ],
+      "body_title_as_seen": "安徽省合肥市第三十中学2025-2026学年七年级上学期10月月考英语试题",
+      "body_identity_self_signed_not_authenticated": true,
+      "whole_header": "Ⅵ.完形填空（共20小题；每小题1分，满分20分）\n阅读下列短文，从每小题所给的A、B、C、D四个选项中选出一个最佳选项。",
+      "selected_material_words": [
+        116,
+        94
+      ],
+      "source_key_is_gold": false,
+      "potential_key_ambiguities": [
+        {
+          "source_number": 50,
+          "candidate_labels": [
+            "A",
+            "D"
+          ],
+          "texts": [
+            "nice",
+            "warm"
+          ],
+          "reason": "均可与We all like her very much所述亲切教师相容，题面不独立保证唯一排他。"
+        }
+      ],
+      "grammar_not_authoring_gold": [
+        "原A含Because开头独立片段",
+        "原B间接问句保留how many...are there语序，不作为作者语序模板"
+      ]
+    }
+  ],
+  "new_source_files": 0
+}

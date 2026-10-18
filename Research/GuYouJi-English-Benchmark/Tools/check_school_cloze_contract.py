@@ -41,18 +41,40 @@ def run(page):
         cases['wrong_source_anchor'] = lambda d: d.__setitem__('source_group_id','different-count-source')
         cases['wrong_grade'] = lambda d: d.__setitem__('grade',12 if d['grade']!=12 else 11)
         cases['extra_material_not_bound'] = lambda d: d['sections'].append(copy.deepcopy(d['sections'][0]))
+        if len(draft['sections'])>1:
+            cases.update({
+                'only_A_material':lambda d:d['sections'].__delitem__(slice(1,None)),
+                'swap_passage_bodies':lambda d:[d['sections'][i].__setitem__('passage',draft['sections'][1-i]['passage'])for i in range(2)],
+                'wrong_material_label':lambda d:d['sections'][1].__setitem__('label','A'),
+                'wrong_section_range':lambda d:d['sections'][1].__setitem__('response_numbers',list(range(1,len(d['sections'][1]['response_numbers'])+1))),
+                'wrong_response_material':lambda d:d['questions'][-1].__setitem__('materialLabel','A'),
+                'wrong_response_stem':lambda d:d['questions'][-1].__setitem__('stem','A篇 · 第'+str(len(d['questions']))+'空'),
+                'wrong_response_points':lambda d:d['questions'][0].__setitem__('points',99),
+            })
         rejected=[]
         for name,mutate in cases.items():
             bad=copy.deepcopy(draft);mutate(bad)
             try:validate(bad,binding,source)
             except (AssertionError,ValueError,KeyError):rejected.append(name)
             else:raise AssertionError('Invalid complete group accepted: '+name)
-        for name,mutate in {
+        source_cases={
             'false_full_input':lambda s:s.__setitem__('source_full_inputs_verified',False),
             'source_promoted_to_gold':lambda s:s.__setitem__('source_key_is_gold',True),
             'source_span_changed':lambda s:s['source_spans'][0].__setitem__('sha256','0'*64),
             'cartesian_option_count':lambda s:s.__setitem__('options_each',3 if s['options_each']==4 else 4),
-        }.items():
+        }
+        if len(draft['sections'])>1:
+            source_cases.update({
+                'unrelated_parent':lambda s:s['source_observations'][1].__setitem__('paper_id','different-parent'),
+                'whole_header_digest_changed':lambda s:s['whole_section'].__setitem__('sha256','0'*64),
+                'wrong_whole_score':lambda s:s['configuration'].__setitem__('section_points',99),
+                'one_member_reused':lambda s:s['source_member_ids'].__setitem__(1,s['source_member_ids'][0]),
+                'second_source_span_missing':lambda s:s['source_spans'].__delitem__(slice(1,None)),
+                'optional_A_or_B_invented':lambda s:s['whole_section'].__setitem__('mandatory_all_materials',False),
+                'second_member_input_missing':lambda s:s['source_observations'][1].__setitem__('necessary_input_complete',False),
+                'invented_different_subgroup_points':lambda s:s['configuration'].__setitem__('points_each_subgroup',[1.5,.5]),
+            })
+        for name,mutate in source_cases.items():
             bad=copy.deepcopy(source);mutate(bad)
             # Rehash the altered record so these exercise the policy/span guard,
             # rather than merely failing the record-identity guard.

@@ -5,7 +5,7 @@ from pathlib import Path
 from compile_short_dialogue_listening import ref
 from grade_mode_evidence import load_ref
 from quality_review_contract import response_markdown
-from school_cloze_contract import digest, validate
+from school_cloze_contract import digest, validate, section_ranges
 
 
 def words(text):
@@ -34,5 +34,9 @@ def compile_author(manuscript):
                 full=full.replace('('+str(other['number'])+') ____',value if q['number']==other['number'] else dict(other['options'])[other['answer']])
             pairs.append(dict(number=q['number'],candidate=label,text=value,is_best=label==q['answer'],reason=reasons[label],full_group_substitution=full))
     audit=dict(version='0.1',id=draft['id'],grade=draft['grade'],questions=len(qs),candidate_sha256=ref(candidate)['sha256'],source_bindings=ref(bp),source_binding=binding['id'],manuscript=ref(manuscript),source_count_increment=0,school_complete_cloze=True,review_response_tasks=qs,canonical_response_block_sha256=digest(block),student_passage=passage,filled_passage=filled,choice_pair_audit=pairs,authored_student_inputs_complete=True,independent_teacher_student_commercial_production_validated=False,source_key_not_copied=True,load_measure=dict(body_English_words=words(passage),body_Han_characters=len(re.findall('[\u3400-\u9fff]',passage)),stem_English_words=sum(words(q['stem'])for q in qs),options_English_words_with_repeated_bank=sum(words(v)for q in qs for _,v in q['options']),output_response_positions=len(qs),output_requirement_English_words=words(draft['instruction'])))
+    if len(draft['sections'])>1:
+        audit['school_cloze_materials']=[dict(label=label,response_numbers=numbers,body_English_words=words(section['passage']),body_Han_characters=len(re.findall('[\u3400-\u9fff]',section['passage'])),points_each=source['configuration']['points_each_subgroup'][i])for i,(section,(label,numbers))in enumerate(zip(draft['sections'],section_ranges(draft['sections'])))]
+        audit['display_heading_English_words']=len(draft['sections'])
+        audit['body_count_includes_visible_material_labels']=True
     ap.write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n')
     return dict(id=draft['id'],title=draft['title'],grade=draft['grade'],family=draft['family'],family_label='单选完形',questions=len(qs),candidate=ref(candidate),author_check=ref(ap),source_group_ids=[source['id']],instruction=draft['instruction'],source_form_notice=draft['source_notice'],format_summary=draft['format_summary'])
